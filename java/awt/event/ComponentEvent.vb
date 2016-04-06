@@ -115,7 +115,7 @@ Namespace java.awt.event
 		''' <exception cref="IllegalArgumentException"> if <code>source</code> is null </exception>
 		''' <seealso cref= #getComponent() </seealso>
 		''' <seealso cref= #getID() </seealso>
-		Public Sub New(ByVal source As java.awt.Component, ByVal id As Integer)
+		Public Sub New(  source As java.awt.Component,   id As Integer)
 			MyBase.New(source, id)
 		End Sub
 

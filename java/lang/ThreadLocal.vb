@@ -132,7 +132,7 @@ Namespace java.lang
 		''' <returns> a new thread local variable </returns>
 		''' <exception cref="NullPointerException"> if the specified supplier is null
 		''' @since 1.8 </exception>
-		Public Shared Function withInitial(Of S, T1 As S)(ByVal supplier As java.util.function.Supplier(Of T1)) As ThreadLocal(Of S)
+		Public Shared Function withInitial(Of S, T1 As S)(  supplier As java.util.function.Supplier(Of T1)) As ThreadLocal(Of S)
 			Return New SuppliedThreadLocal(Of )(supplier)
 		End Function
 
@@ -188,7 +188,7 @@ Namespace java.lang
 		''' </summary>
 		''' <param name="value"> the value to be stored in the current thread's copy of
 		'''        this thread-local. </param>
-		Public Overridable Sub [set](ByVal value As T)
+		Public Overridable Sub [set](  value As T)
 			Dim t As Thread = Thread.CurrentThread
 			Dim map_Renamed As ThreadLocalMap = getMap(t)
 			If map_Renamed IsNot Nothing Then
@@ -220,7 +220,7 @@ Namespace java.lang
 		''' </summary>
 		''' <param name="t"> the current thread </param>
 		''' <returns> the map </returns>
-		Friend Overridable Function getMap(ByVal t As Thread) As ThreadLocalMap
+		Friend Overridable Function getMap(  t As Thread) As ThreadLocalMap
 			Return t.threadLocals
 		End Function
 
@@ -230,7 +230,7 @@ Namespace java.lang
 		''' </summary>
 		''' <param name="t"> the current thread </param>
 		''' <param name="firstValue"> value for the initial entry of the map </param>
-		Friend Overridable Sub createMap(ByVal t As Thread, ByVal firstValue As T)
+		Friend Overridable Sub createMap(  t As Thread,   firstValue As T)
 			t.threadLocals = New ThreadLocalMap(Me, firstValue)
 		End Sub
 
@@ -240,7 +240,7 @@ Namespace java.lang
 		''' </summary>
 		''' <param name="parentMap"> the map associated with parent thread </param>
 		''' <returns> a map containing the parent's inheritable bindings </returns>
-		Friend Shared Function createInheritedMap(ByVal parentMap As ThreadLocalMap) As ThreadLocalMap
+		Friend Shared Function createInheritedMap(  parentMap As ThreadLocalMap) As ThreadLocalMap
 			Return New ThreadLocalMap(parentMap)
 		End Function
 
@@ -252,7 +252,7 @@ Namespace java.lang
 		''' This technique is preferable to the alternative of embedding
 		''' instanceof tests in methods.
 		''' </summary>
-		Friend Overridable Function childValue(ByVal parentValue As T) As T
+		Friend Overridable Function childValue(  parentValue As T) As T
 			Throw New UnsupportedOperationException
 		End Function
 
@@ -266,7 +266,7 @@ Namespace java.lang
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 			Private ReadOnly supplier As java.util.function.Supplier(Of ? As T)
 
-			Friend Sub New(Of T1 As T)(ByVal supplier As java.util.function.Supplier(Of T1))
+			Friend Sub New(Of T1 As T)(  supplier As java.util.function.Supplier(Of T1))
 				Me.supplier = java.util.Objects.requireNonNull(supplier)
 			End Sub
 
@@ -302,7 +302,7 @@ Namespace java.lang
 				''' The value associated with this ThreadLocal. </summary>
 				Friend value As Object
 
-				Friend Sub New(Of T1)(ByVal k As ThreadLocal(Of T1), ByVal v As Object)
+				Friend Sub New(Of T1)(  k As ThreadLocal(Of T1),   v As Object)
 					MyBase.New(k)
 					value = v
 				End Sub
@@ -333,7 +333,7 @@ Namespace java.lang
 			''' Set the resize threshold to maintain at worst a 2/3 load factor.
 			''' </summary>
 			Private Property threshold As Integer
-				Set(ByVal len As Integer)
+				Set(  len As Integer)
 					threshold = len * 2 \ 3
 				End Set
 			End Property
@@ -341,14 +341,14 @@ Namespace java.lang
 			''' <summary>
 			''' Increment i modulo len.
 			''' </summary>
-			Private Shared Function nextIndex(ByVal i As Integer, ByVal len As Integer) As Integer
+			Private Shared Function nextIndex(  i As Integer,   len As Integer) As Integer
 				Return (If(i + 1 < len, i + 1, 0))
 			End Function
 
 			''' <summary>
 			''' Decrement i modulo len.
 			''' </summary>
-			Private Shared Function prevIndex(ByVal i As Integer, ByVal len As Integer) As Integer
+			Private Shared Function prevIndex(  i As Integer,   len As Integer) As Integer
 				Return (If(i - 1 >= 0, i - 1, len - 1))
 			End Function
 
@@ -357,7 +357,7 @@ Namespace java.lang
 			''' ThreadLocalMaps are constructed lazily, so we only create
 			''' one when we have at least one entry to put in it.
 			''' </summary>
-			Friend Sub New(Of T1)(ByVal firstKey As ThreadLocal(Of T1), ByVal firstValue As Object)
+			Friend Sub New(Of T1)(  firstKey As ThreadLocal(Of T1),   firstValue As Object)
 				table = New Entry(INITIAL_CAPACITY - 1){}
 				Dim i As Integer = firstKey.threadLocalHashCode And (INITIAL_CAPACITY - 1)
 				table(i) = New Entry(firstKey, firstValue)
@@ -370,7 +370,7 @@ Namespace java.lang
 			''' from given parent map. Called only by createInheritedMap.
 			''' </summary>
 			''' <param name="parentMap"> the map associated with parent thread. </param>
-			Private Sub New(ByVal parentMap As ThreadLocalMap)
+			Private Sub New(  parentMap As ThreadLocalMap)
 				Dim parentTable As Entry() = parentMap.table
 				Dim len As Integer = parentTable.Length
 				threshold = len
@@ -404,7 +404,7 @@ Namespace java.lang
 			''' </summary>
 			''' <param name="key"> the thread local object </param>
 			''' <returns> the entry associated with key, or null if no such </returns>
-			Private Function getEntry(Of T1)(ByVal key As ThreadLocal(Of T1)) As Entry
+			Private Function getEntry(Of T1)(  key As ThreadLocal(Of T1)) As Entry
 				Dim i As Integer = key.threadLocalHashCode And (table.Length - 1)
 				Dim e As Entry = table(i)
 				If e IsNot Nothing AndAlso e.get() Is key Then
@@ -422,7 +422,7 @@ Namespace java.lang
 			''' <param name="i"> the table index for key's hash code </param>
 			''' <param name="e"> the entry at table[i] </param>
 			''' <returns> the entry associated with key, or null if no such </returns>
-			Private Function getEntryAfterMiss(Of T1)(ByVal key As ThreadLocal(Of T1), ByVal i As Integer, ByVal e As Entry) As Entry
+			Private Function getEntryAfterMiss(Of T1)(  key As ThreadLocal(Of T1),   i As Integer,   e As Entry) As Entry
 				Dim tab As Entry() = table
 				Dim len As Integer = tab.Length
 
@@ -445,7 +445,7 @@ Namespace java.lang
 			''' </summary>
 			''' <param name="key"> the thread local object </param>
 			''' <param name="value"> the value to be set </param>
-			Private Sub [set](Of T1)(ByVal key As ThreadLocal(Of T1), ByVal value As Object)
+			Private Sub [set](Of T1)(  key As ThreadLocal(Of T1),   value As Object)
 
 				' We don't use a fast path as with get() because it is at
 				' least as common to use set() to create new entries as
@@ -483,7 +483,7 @@ Namespace java.lang
 			''' <summary>
 			''' Remove the entry for key.
 			''' </summary>
-			Private Sub remove(Of T1)(ByVal key As ThreadLocal(Of T1))
+			Private Sub remove(Of T1)(  key As ThreadLocal(Of T1))
 				Dim tab As Entry() = table
 				Dim len As Integer = tab.Length
 				Dim i As Integer = key.threadLocalHashCode And (len-1)
@@ -513,7 +513,7 @@ Namespace java.lang
 			''' <param name="value"> the value to be associated with key </param>
 			''' <param name="staleSlot"> index of the first stale entry encountered while
 			'''         searching for key. </param>
-			Private Sub replaceStaleEntry(Of T1)(ByVal key As ThreadLocal(Of T1), ByVal value As Object, ByVal staleSlot As Integer)
+			Private Sub replaceStaleEntry(Of T1)(  key As ThreadLocal(Of T1),   value As Object,   staleSlot As Integer)
 				Dim tab As Entry() = table
 				Dim len As Integer = tab.Length
 				Dim e As Entry
@@ -580,7 +580,7 @@ Namespace java.lang
 			''' <returns> the index of the next null slot after staleSlot
 			''' (all between staleSlot and this slot will have been checked
 			''' for expunging). </returns>
-			Private Function expungeStaleEntry(ByVal staleSlot As Integer) As Integer
+			Private Function expungeStaleEntry(  staleSlot As Integer) As Integer
 				Dim tab As Entry() = table
 				Dim len As Integer = tab.Length
 
@@ -642,7 +642,7 @@ Namespace java.lang
 			''' seems to work well.)
 			''' </param>
 			''' <returns> true if any stale entries have been removed. </returns>
-			Private Function cleanSomeSlots(ByVal i As Integer, ByVal n As Integer) As Boolean
+			Private Function cleanSomeSlots(  i As Integer,   n As Integer) As Boolean
 				Dim removed As Boolean = False
 				Dim tab As Entry() = table
 				Dim len As Integer = tab.Length

@@ -430,7 +430,7 @@ Namespace java.util.concurrent
 		''' </summary>
 		''' <param name="completer"> this task's completer, or {@code null} if none </param>
 		''' <param name="initialPendingCount"> the initial pending count </param>
-		Protected Friend Sub New(Of T1)(ByVal completer As CountedCompleter(Of T1), ByVal initialPendingCount As Integer)
+		Protected Friend Sub New(Of T1)(  completer As CountedCompleter(Of T1),   initialPendingCount As Integer)
 			Me.completer = completer
 			Me.pending = initialPendingCount
 		End Sub
@@ -440,7 +440,7 @@ Namespace java.util.concurrent
 		''' and an initial pending count of zero.
 		''' </summary>
 		''' <param name="completer"> this task's completer, or {@code null} if none </param>
-		Protected Friend Sub New(Of T1)(ByVal completer As CountedCompleter(Of T1))
+		Protected Friend Sub New(Of T1)(  completer As CountedCompleter(Of T1))
 			Me.completer = completer
 		End Sub
 
@@ -468,7 +468,7 @@ Namespace java.util.concurrent
 		''' </summary>
 		''' <param name="caller"> the task invoking this method (which may
 		''' be this task itself) </param>
-		Public Overridable Sub onCompletion(Of T1)(ByVal caller As CountedCompleter(Of T1))
+		Public Overridable Sub onCompletion(Of T1)(  caller As CountedCompleter(Of T1))
 		End Sub
 
 		''' <summary>
@@ -488,7 +488,7 @@ Namespace java.util.concurrent
 		''' be this task itself) </param>
 		''' <returns> {@code true} if this exception should be propagated to this
 		''' task's completer, if one exists </returns>
-		Public Overridable Function onExceptionalCompletion(Of T1)(ByVal ex As Throwable, ByVal caller As CountedCompleter(Of T1)) As Boolean
+		Public Overridable Function onExceptionalCompletion(Of T1)(  ex As Throwable,   caller As CountedCompleter(Of T1)) As Boolean
 			Return True
 		End Function
 
@@ -512,7 +512,7 @@ Namespace java.util.concurrent
 			Get
 				Return pending
 			End Get
-			Set(ByVal count As Integer)
+			Set(  count As Integer)
 				pending = count
 			End Set
 		End Property
@@ -522,7 +522,7 @@ Namespace java.util.concurrent
 		''' Adds (atomically) the given value to the pending count.
 		''' </summary>
 		''' <param name="delta"> the value to add </param>
-		Public Sub addToPendingCount(ByVal delta As Integer)
+		Public Sub addToPendingCount(  delta As Integer)
 			U.getAndAddInt(Me, PENDING, delta)
 		End Sub
 
@@ -533,7 +533,7 @@ Namespace java.util.concurrent
 		''' <param name="expected"> the expected value </param>
 		''' <param name="count"> the new value </param>
 		''' <returns> {@code true} if successful </returns>
-		Public Function compareAndSetPendingCount(ByVal expected As Integer, ByVal count As Integer) As Boolean
+		Public Function compareAndSetPendingCount(  expected As Integer,   count As Integer) As Boolean
 			Return U.compareAndSwapInt(Me, PENDING, expected, count)
 		End Function
 
@@ -641,7 +641,7 @@ Namespace java.util.concurrent
 		''' more simply using {@code quietlyCompleteRoot();}.
 		''' </summary>
 		''' <param name="rawResult"> the raw result </param>
-		Public Overridable Sub complete(ByVal rawResult As T)
+		Public Overridable Sub complete(  rawResult As T)
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 			Dim p As CountedCompleter(Of ?)
 			rawResult = rawResult
@@ -722,7 +722,7 @@ Namespace java.util.concurrent
 		''' <param name="maxTasks"> the maximum number of tasks to process.  If
 		'''                 less than or equal to zero, then no tasks are
 		'''                 processed. </param>
-		Public Sub helpComplete(ByVal maxTasks As Integer)
+		Public Sub helpComplete(  maxTasks As Integer)
 			Dim t As Thread
 			Dim wt As ForkJoinWorkerThread
 			If maxTasks > 0 AndAlso status >= 0 Then
@@ -739,7 +739,7 @@ Namespace java.util.concurrent
 		''' <summary>
 		''' Supports ForkJoinTask exception propagation.
 		''' </summary>
-		Friend Overridable Sub internalPropagateException(ByVal ex As Throwable)
+		Friend Overridable Sub internalPropagateException(  ex As Throwable)
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 			Dim a As CountedCompleter(Of ?) = Me, s As CountedCompleter(Of ?) = a
 'JAVA TO VB CONVERTER TODO TASK: Assignments within expressions are not supported in VB
@@ -770,7 +770,7 @@ Namespace java.util.concurrent
 			Get
 				Return Nothing
 			End Get
-			Set(ByVal t As T)
+			Set(  t As T)
 			End Set
 		End Property
 

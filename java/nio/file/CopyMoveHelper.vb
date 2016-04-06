@@ -46,7 +46,7 @@ Namespace java.nio.file
 			Private Sub New()
 			End Sub
 
-			Shared Function parse(ParamArray ByVal options As CopyOption()) As CopyOptions
+			Shared Function parse(ParamArray   options As CopyOption()) As CopyOptions
 				Dim result As New CopyOptions
 				For Each [option] As CopyOption In options
 					If [option] = StandardCopyOption.REPLACE_EXISTING Then
@@ -72,7 +72,7 @@ Namespace java.nio.file
 		''' Converts the given array of options for moving a file to options suitable
 		''' for copying the file when a move is implemented as copy + delete.
 		''' </summary>
-		Private Shared Function convertMoveToCopyOptions(ParamArray ByVal options As CopyOption()) As CopyOption()
+		Private Shared Function convertMoveToCopyOptions(ParamArray   options As CopyOption()) As CopyOption()
 			Dim len As Integer = options.Length
 			Dim newOptions As CopyOption() = New CopyOption(len+2 - 1){}
 			For i As Integer = 0 To len - 1
@@ -89,7 +89,7 @@ Namespace java.nio.file
 		''' Simple copy for use when source and target are associated with different
 		''' providers
 		''' </summary>
-		Friend Shared Sub copyToForeignTarget(ByVal source As Path, ByVal target As Path, ParamArray ByVal options As CopyOption())
+		Friend Shared Sub copyToForeignTarget(  source As Path,   target As Path, ParamArray   options As CopyOption())
 			Dim opts As CopyOptions = CopyOptions.parse(options)
 			Dim linkOptions As LinkOption() = If(opts.followLinks, New LinkOption(){}, New LinkOption){ LinkOption.NOFOLLOW_LINKS }
 
@@ -134,7 +134,7 @@ Namespace java.nio.file
 		''' Simple move implements as copy+delete for use when source and target are
 		''' associated with different providers
 		''' </summary>
-		Friend Shared Sub moveToForeignTarget(ByVal source As Path, ByVal target As Path, ParamArray ByVal options As CopyOption())
+		Friend Shared Sub moveToForeignTarget(  source As Path,   target As Path, ParamArray   options As CopyOption())
 			copyToForeignTarget(source, target, convertMoveToCopyOptions(options))
 			Files.delete(source)
 		End Sub

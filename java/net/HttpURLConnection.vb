@@ -111,7 +111,7 @@ Namespace java.net
 		''' <param name="n">   an index, where {@code n >=0}. </param>
 		''' <returns>  the key for the {@code n}<sup>th</sup> header field,
 		'''          or {@code null} if the key does not exist. </returns>
-		Public Overrides Function getHeaderFieldKey(ByVal n As Integer) As String
+		Public Overrides Function getHeaderFieldKey(  n As Integer) As String
 			Return Nothing
 		End Function
 
@@ -148,7 +148,7 @@ Namespace java.net
 		''' <seealso cref=     #setChunkedStreamingMode(int)
 		''' @since 1.5 </seealso>
 		Public Overridable Property fixedLengthStreamingMode As Integer
-			Set(ByVal contentLength As Integer)
+			Set(  contentLength As Integer)
 				If connected Then Throw New IllegalStateException("Already connected")
 				If chunkLength <> -1 Then Throw New IllegalStateException("Chunked encoding streaming mode set")
 				If contentLength < 0 Then Throw New IllegalArgumentException("invalid content length")
@@ -188,7 +188,7 @@ Namespace java.net
 		''' 
 		''' @since 1.7 </exception>
 		Public Overridable Property fixedLengthStreamingMode As Long
-			Set(ByVal contentLength As Long)
+			Set(  contentLength As Long)
 				If connected Then Throw New IllegalStateException("Already connected")
 				If chunkLength <> -1 Then Throw New IllegalStateException("Chunked encoding streaming mode set")
 				If contentLength < 0 Then Throw New IllegalArgumentException("invalid content length")
@@ -227,7 +227,7 @@ Namespace java.net
 		''' <seealso cref=     #setFixedLengthStreamingMode(int)
 		''' @since 1.5 </seealso>
 		Public Overridable Property chunkedStreamingMode As Integer
-			Set(ByVal chunklen As Integer)
+			Set(  chunklen As Integer)
 				If connected Then Throw New IllegalStateException("Can't set streaming mode: already connected")
 				If fixedContentLength <> -1 OrElse fixedContentLengthLong <> -1 Then Throw New IllegalStateException("Fixed length streaming mode set")
 				chunkLength = If(chunklen <=0, DEFAULT_CHUNK_SIZE, chunklen)
@@ -248,7 +248,7 @@ Namespace java.net
 		''' <returns>  the value of the {@code n}<sup>th</sup> header field,
 		'''          or {@code null} if the value does not exist. </returns>
 		''' <seealso cref=     java.net.HttpURLConnection#getHeaderFieldKey(int) </seealso>
-		Public Overrides Function getHeaderField(ByVal n As Integer) As String
+		Public Overrides Function getHeaderField(  n As Integer) As String
 			Return Nothing
 		End Function
 
@@ -297,7 +297,7 @@ Namespace java.net
 		''' <summary>
 		''' Constructor for the HttpURLConnection. </summary>
 		''' <param name="u"> the URL </param>
-		Protected Friend Sub New(ByVal u As URL)
+		Protected Friend Sub New(  u As URL)
 			MyBase.New(u)
 		End Sub
 
@@ -319,7 +319,7 @@ Namespace java.net
 		''' <seealso cref=        SecurityManager#checkSetFactory </seealso>
 		''' <seealso cref= #getFollowRedirects() </seealso>
 		Public Shared Property followRedirects As Boolean
-			Set(ByVal [set] As Boolean)
+			Set(  [set] As Boolean)
 				Dim sec As SecurityManager = System.securityManager
 				If sec IsNot Nothing Then sec.checkSetFactory()
 				followRedirects = [set]
@@ -345,7 +345,7 @@ Namespace java.net
 		''' <seealso cref= #getInstanceFollowRedirects
 		''' @since 1.3 </seealso>
 		 Public Overridable Property instanceFollowRedirects As Boolean
-			 Set(ByVal followRedirects As Boolean)
+			 Set(  followRedirects As Boolean)
 				instanceFollowRedirects = followRedirects
 			 End Set
 			 Get
@@ -375,7 +375,7 @@ Namespace java.net
 		'''              NetPermission is not granted. </exception>
 		''' <seealso cref= #getRequestMethod() </seealso>
 		Public Overridable Property requestMethod As String
-			Set(ByVal method As String)
+			Set(  method As String)
 				If connected Then Throw New ProtocolException("Can't reset method: already connected")
 				' This restriction will prevent people from using this class to
 				' experiment w/ new HTTP methods using java.  But it should
@@ -497,7 +497,7 @@ Namespace java.net
 		End Property
 
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Overrides Function getHeaderFieldDate(ByVal name As String, ByVal [Default] As Long) As Long
+		Public Overrides Function getHeaderFieldDate(  name As String,   [Default] As Long) As Long
 			Dim dateString As String = getHeaderField(name)
 			Try
 				If dateString.IndexOf("GMT") = -1 Then dateString = dateString & " GMT"

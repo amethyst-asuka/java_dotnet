@@ -107,7 +107,7 @@ Namespace java.awt.im
 		''' <seealso cref= InputMethodHighlight#RAW_TEXT </seealso>
 		''' <seealso cref= InputMethodHighlight#CONVERTED_TEXT </seealso>
 		''' <exception cref="IllegalArgumentException"> if a state other than RAW_TEXT or CONVERTED_TEXT is given </exception>
-		Public Sub New(ByVal selected As Boolean, ByVal state As Integer)
+		Public Sub New(  selected As Boolean,   state As Integer)
 			Me.New(selected, state, 0, Nothing)
 		End Sub
 
@@ -120,7 +120,7 @@ Namespace java.awt.im
 		''' <seealso cref= InputMethodHighlight#RAW_TEXT </seealso>
 		''' <seealso cref= InputMethodHighlight#CONVERTED_TEXT </seealso>
 		''' <exception cref="IllegalArgumentException"> if a state other than RAW_TEXT or CONVERTED_TEXT is given </exception>
-		Public Sub New(ByVal selected As Boolean, ByVal state As Integer, ByVal variation As Integer)
+		Public Sub New(  selected As Boolean,   state As Integer,   variation As Integer)
 			Me.New(selected, state, variation, Nothing)
 		End Sub
 
@@ -135,7 +135,7 @@ Namespace java.awt.im
 		''' <seealso cref= InputMethodHighlight#CONVERTED_TEXT </seealso>
 		''' <exception cref="IllegalArgumentException"> if a state other than RAW_TEXT or CONVERTED_TEXT is given
 		''' @since 1.3 </exception>
-		Public Sub New(Of T1)(ByVal selected As Boolean, ByVal state As Integer, ByVal variation As Integer, ByVal style As IDictionary(Of T1))
+		Public Sub New(Of T1)(  selected As Boolean,   state As Integer,   variation As Integer,   style As IDictionary(Of T1))
 			Me.selected = selected
 			If Not(state = RAW_TEXT OrElse state = CONVERTED_TEXT) Then Throw New IllegalArgumentException("unknown input method highlight state")
 			Me.state = state

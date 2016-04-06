@@ -131,7 +131,7 @@ Namespace java.util.concurrent
 		''' <summary>
 		''' Circularly decrement i.
 		''' </summary>
-		Friend Function dec(ByVal i As Integer) As Integer
+		Friend Function dec(  i As Integer) As Integer
 			Return (If(i = 0, items.Length, i)) - 1
 		End Function
 
@@ -139,7 +139,7 @@ Namespace java.util.concurrent
 		''' Returns item at index i.
 		''' </summary>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Friend Function itemAt(ByVal i As Integer) As E
+		Friend Function itemAt(  i As Integer) As E
 			Return CType(items(i), E)
 		End Function
 
@@ -147,7 +147,7 @@ Namespace java.util.concurrent
 		''' Throws NullPointerException if argument is null.
 		''' </summary>
 		''' <param name="v"> the element </param>
-		Private Shared Sub checkNotNull(ByVal v As Object)
+		Private Shared Sub checkNotNull(  v As Object)
 			If v Is Nothing Then Throw New NullPointerException
 		End Sub
 
@@ -155,7 +155,7 @@ Namespace java.util.concurrent
 		''' Inserts element at current put position, advances, and signals.
 		''' Call only when holding lock.
 		''' </summary>
-		Private Sub enqueue(ByVal x As E)
+		Private Sub enqueue(  x As E)
 			' assert lock.getHoldCount() == 1;
 			' assert items[putIndex] == null;
 			Dim items As Object() = Me.items
@@ -190,7 +190,7 @@ Namespace java.util.concurrent
 		''' Utility for remove(Object) and iterator.remove.
 		''' Call only when holding lock.
 		''' </summary>
-		Friend Overridable Sub removeAt(ByVal removeIndex As Integer)
+		Friend Overridable Sub removeAt(  removeIndex As Integer)
 			' assert lock.getHoldCount() == 1;
 			' assert items[removeIndex] != null;
 			' assert removeIndex >= 0 && removeIndex < items.length;
@@ -232,7 +232,7 @@ Namespace java.util.concurrent
 		''' </summary>
 		''' <param name="capacity"> the capacity of this queue </param>
 		''' <exception cref="IllegalArgumentException"> if {@code capacity < 1} </exception>
-		Public Sub New(ByVal capacity As Integer)
+		Public Sub New(  capacity As Integer)
 			Me.New(capacity, False)
 		End Sub
 
@@ -245,7 +245,7 @@ Namespace java.util.concurrent
 		'''        on insertion or removal, are processed in FIFO order;
 		'''        if {@code false} the access order is unspecified. </param>
 		''' <exception cref="IllegalArgumentException"> if {@code capacity < 1} </exception>
-		Public Sub New(ByVal capacity As Integer, ByVal fair As Boolean)
+		Public Sub New(  capacity As Integer,   fair As Boolean)
 			If capacity <= 0 Then Throw New IllegalArgumentException
 			Me.items = New Object(capacity - 1){}
 			lock = New java.util.concurrent.locks.ReentrantLock(fair)
@@ -268,7 +268,7 @@ Namespace java.util.concurrent
 		'''         {@code c.size()}, or less than 1. </exception>
 		''' <exception cref="NullPointerException"> if the specified collection or any
 		'''         of its elements are null </exception>
-		Public Sub New(Of T1 As E)(ByVal capacity As Integer, ByVal fair As Boolean, ByVal c As ICollection(Of T1))
+		Public Sub New(Of T1 As E)(  capacity As Integer,   fair As Boolean,   c As ICollection(Of T1))
 			Me.New(capacity, fair)
 
 			Dim lock As java.util.concurrent.locks.ReentrantLock = Me.lock
@@ -301,7 +301,7 @@ Namespace java.util.concurrent
 		''' <returns> {@code true} (as specified by <seealso cref="Collection#add"/>) </returns>
 		''' <exception cref="IllegalStateException"> if this queue is full </exception>
 		''' <exception cref="NullPointerException"> if the specified element is null </exception>
-		Public Overridable Function add(ByVal e As E) As Boolean
+		Public Overridable Function add(  e As E) As Boolean
 			Return MyBase.add(e)
 		End Function
 
@@ -313,7 +313,7 @@ Namespace java.util.concurrent
 		''' which can fail to insert an element only by throwing an exception.
 		''' </summary>
 		''' <exception cref="NullPointerException"> if the specified element is null </exception>
-		Public Overridable Function offer(ByVal e As E) As Boolean
+		Public Overridable Function offer(  e As E) As Boolean
 			checkNotNull(e)
 			Dim lock As java.util.concurrent.locks.ReentrantLock = Me.lock
 			lock.lock()
@@ -335,7 +335,7 @@ Namespace java.util.concurrent
 		''' </summary>
 		''' <exception cref="InterruptedException"> {@inheritDoc} </exception>
 		''' <exception cref="NullPointerException"> {@inheritDoc} </exception>
-		Public Overridable Sub put(ByVal e As E)
+		Public Overridable Sub put(  e As E)
 			checkNotNull(e)
 			Dim lock As java.util.concurrent.locks.ReentrantLock = Me.lock
 			lock.lockInterruptibly()
@@ -356,7 +356,7 @@ Namespace java.util.concurrent
 		''' </summary>
 		''' <exception cref="InterruptedException"> {@inheritDoc} </exception>
 		''' <exception cref="NullPointerException"> {@inheritDoc} </exception>
-		Public Overridable Function offer(ByVal e As E, ByVal timeout As Long, ByVal unit As TimeUnit) As Boolean
+		Public Overridable Function offer(  e As E,   timeout As Long,   unit As TimeUnit) As Boolean
 
 			checkNotNull(e)
 			Dim nanos As Long = unit.toNanos(timeout)
@@ -397,7 +397,7 @@ Namespace java.util.concurrent
 			End Try
 		End Function
 
-		Public Overridable Function poll(ByVal timeout As Long, ByVal unit As TimeUnit) As E Implements BlockingQueue(Of E).poll
+		Public Overridable Function poll(  timeout As Long,   unit As TimeUnit) As E Implements BlockingQueue(Of E).poll
 			Dim nanos As Long = unit.toNanos(timeout)
 			Dim lock As java.util.concurrent.locks.ReentrantLock = Me.lock
 			lock.lockInterruptibly()
@@ -477,7 +477,7 @@ Namespace java.util.concurrent
 		''' </summary>
 		''' <param name="o"> element to be removed from this queue, if present </param>
 		''' <returns> {@code true} if this queue changed as a result of the call </returns>
-		Public Overridable Function remove(ByVal o As Object) As Boolean Implements BlockingQueue(Of E).remove
+		Public Overridable Function remove(  o As Object) As Boolean Implements BlockingQueue(Of E).remove
 			If o Is Nothing Then Return False
 			Dim items As Object() = Me.items
 			Dim lock As java.util.concurrent.locks.ReentrantLock = Me.lock
@@ -508,7 +508,7 @@ Namespace java.util.concurrent
 		''' </summary>
 		''' <param name="o"> object to be checked for containment in this queue </param>
 		''' <returns> {@code true} if this queue contains the specified element </returns>
-		Public Overridable Function contains(ByVal o As Object) As Boolean Implements BlockingQueue(Of E).contains
+		Public Overridable Function contains(  o As Object) As Boolean Implements BlockingQueue(Of E).contains
 			If o Is Nothing Then Return False
 			Dim items As Object() = Me.items
 			Dim lock As java.util.concurrent.locks.ReentrantLock = Me.lock
@@ -596,7 +596,7 @@ Namespace java.util.concurrent
 		'''         this queue </exception>
 		''' <exception cref="NullPointerException"> if the specified array is null </exception>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Overridable Function toArray(Of T)(ByVal a As T()) As T()
+		Public Overridable Function toArray(Of T)(  a As T()) As T()
 			Dim items As Object() = Me.items
 			Dim lock As java.util.concurrent.locks.ReentrantLock = Me.lock
 			lock.lock()
@@ -679,7 +679,7 @@ Namespace java.util.concurrent
 		''' <exception cref="NullPointerException">          {@inheritDoc} </exception>
 		''' <exception cref="IllegalArgumentException">      {@inheritDoc} </exception>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Overridable Function drainTo(Of T1)(ByVal c As ICollection(Of T1)) As Integer Implements BlockingQueue(Of E).drainTo
+		Public Overridable Function drainTo(Of T1)(  c As ICollection(Of T1)) As Integer Implements BlockingQueue(Of E).drainTo
 			Return drainTo(c,  java.lang.[Integer].Max_Value)
 		End Function
 
@@ -688,7 +688,7 @@ Namespace java.util.concurrent
 		''' <exception cref="NullPointerException">          {@inheritDoc} </exception>
 		''' <exception cref="IllegalArgumentException">      {@inheritDoc} </exception>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Overridable Function drainTo(Of T1)(ByVal c As ICollection(Of T1), ByVal maxElements As Integer) As Integer Implements BlockingQueue(Of E).drainTo
+		Public Overridable Function drainTo(Of T1)(  c As ICollection(Of T1),   maxElements As Integer) As Integer Implements BlockingQueue(Of E).drainTo
 			checkNotNull(c)
 			If c Is Me Then Throw New IllegalArgumentException
 			If maxElements <= 0 Then Return 0
@@ -810,7 +810,7 @@ Namespace java.util.concurrent
 
 				Friend [next] As Node
 
-				Friend Sub New(ByVal outerInstance As ArrayBlockingQueue.Itrs, ByVal [iterator] As Itr, ByVal [next] As Node)
+				Friend Sub New(  outerInstance As ArrayBlockingQueue.Itrs,   [iterator] As Itr,   [next] As Node)
 						Me.outerInstance = outerInstance
 					MyBase.New([iterator])
 					Me.next = [next]
@@ -832,7 +832,7 @@ Namespace java.util.concurrent
 			Private Const SHORT_SWEEP_PROBES As Integer = 4
 			Private Const LONG_SWEEP_PROBES As Integer = 16
 
-			Friend Sub New(ByVal outerInstance As ArrayBlockingQueue, ByVal initial As Itr)
+			Friend Sub New(  outerInstance As ArrayBlockingQueue,   initial As Itr)
 					Me.outerInstance = outerInstance
 				register(initial)
 			End Sub
@@ -844,7 +844,7 @@ Namespace java.util.concurrent
 			''' </summary>
 			''' <param name="tryHarder"> whether to start in try-harder mode, because
 			''' there is known to be at least one iterator to collect </param>
-			Friend Overridable Sub doSomeSweeping(ByVal tryHarder As Boolean)
+			Friend Overridable Sub doSomeSweeping(  tryHarder As Boolean)
 				' assert lock.getHoldCount() == 1;
 				' assert head != null;
 				Dim probes As Integer = If(tryHarder, LONG_SWEEP_PROBES, SHORT_SWEEP_PROBES)
@@ -900,7 +900,7 @@ Namespace java.util.concurrent
 			''' <summary>
 			''' Adds a new iterator to the linked list of tracked iterators.
 			''' </summary>
-			Friend Overridable Sub register(ByVal itr As Itr)
+			Friend Overridable Sub register(  itr As Itr)
 				' assert lock.getHoldCount() == 1;
 				head = New Node(Me, itr, head)
 			End Sub
@@ -941,7 +941,7 @@ Namespace java.util.concurrent
 			''' 
 			''' Notifies all iterators, and expunges any that are now stale.
 			''' </summary>
-			Friend Overridable Sub removedAt(ByVal removedIndex As Integer)
+			Friend Overridable Sub removedAt(  removedIndex As Integer)
 				Dim o As Node = Nothing
 				Dim p As Node = head
 				Do While p IsNot Nothing
@@ -1064,7 +1064,7 @@ Namespace java.util.concurrent
 			''' Special value for prevTakeIndex indicating "detached mode" </summary>
 			Private Const DETACHED As Integer = -3
 
-			Friend Sub New(ByVal outerInstance As ArrayBlockingQueue)
+			Friend Sub New(  outerInstance As ArrayBlockingQueue)
 					Me.outerInstance = outerInstance
 				' assert lock.getHoldCount() == 0;
 				lastRet = NONE
@@ -1106,7 +1106,7 @@ Namespace java.util.concurrent
 				End Get
 			End Property
 
-			Private Function incCursor(ByVal index As Integer) As Integer
+			Private Function incCursor(  index As Integer) As Integer
 				' assert lock.getHoldCount() == 1;
 				index += 1
 				If index = outerInstance.items.Length Then index = 0
@@ -1118,7 +1118,7 @@ Namespace java.util.concurrent
 			''' Returns true if index is invalidated by the given number of
 			''' dequeues, starting from prevTakeIndex.
 			''' </summary>
-			Private Function invalidated(ByVal index As Integer, ByVal prevTakeIndex As Integer, ByVal dequeues As Long, ByVal length As Integer) As Boolean
+			Private Function invalidated(  index As Integer,   prevTakeIndex As Integer,   dequeues As Long,   length As Integer) As Boolean
 				If index < 0 Then Return False
 				Dim distance As Integer = index - prevTakeIndex
 				If distance < 0 Then distance += length
@@ -1297,7 +1297,7 @@ Namespace java.util.concurrent
 				' Caller will unlink from itrs when convenient.
 			End Sub
 
-			Private Function distance(ByVal index As Integer, ByVal prevTakeIndex As Integer, ByVal length As Integer) As Integer
+			Private Function distance(  index As Integer,   prevTakeIndex As Integer,   length As Integer) As Integer
 				Dim distance_Renamed As Integer = index - prevTakeIndex
 				If distance_Renamed < 0 Then distance_Renamed += length
 				Return distance_Renamed
@@ -1307,7 +1307,7 @@ Namespace java.util.concurrent
 			''' Called whenever an interior remove (not at takeIndex) occurred.
 			''' </summary>
 			''' <returns> true if this iterator should be unlinked from itrs </returns>
-			Friend Overridable Function removedAt(ByVal removedIndex As Integer) As Boolean
+			Friend Overridable Function removedAt(  removedIndex As Integer) As Boolean
 				' assert lock.getHoldCount() == 1;
 				If detached Then Return True
 

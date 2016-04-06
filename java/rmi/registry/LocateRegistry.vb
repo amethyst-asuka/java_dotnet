@@ -72,7 +72,7 @@ Namespace java.rmi.registry
 		''' <returns> reference (a stub) to the remote object registry </returns>
 		''' <exception cref="RemoteException"> if the reference could not be created
 		''' @since JDK1.1 </exception>
-		Public Shared Function getRegistry(ByVal port As Integer) As Registry
+		Public Shared Function getRegistry(  port As Integer) As Registry
 			Return getRegistry(Nothing, port)
 		End Function
 
@@ -85,7 +85,7 @@ Namespace java.rmi.registry
 		''' <returns> reference (a stub) to the remote object registry </returns>
 		''' <exception cref="RemoteException"> if the reference could not be created
 		''' @since JDK1.1 </exception>
-		Public Shared Function getRegistry(ByVal host As String) As Registry
+		Public Shared Function getRegistry(  host As String) As Registry
 			Return getRegistry(host, Registry.REGISTRY_PORT)
 		End Function
 
@@ -99,7 +99,7 @@ Namespace java.rmi.registry
 		''' <returns> reference (a stub) to the remote object registry </returns>
 		''' <exception cref="RemoteException"> if the reference could not be created
 		''' @since JDK1.1 </exception>
-		Public Shared Function getRegistry(ByVal host As String, ByVal port As Integer) As Registry
+		Public Shared Function getRegistry(  host As String,   port As Integer) As Registry
 			Return getRegistry(host, port, Nothing)
 		End Function
 
@@ -120,7 +120,7 @@ Namespace java.rmi.registry
 		''' <returns> reference (a stub) to the remote registry </returns>
 		''' <exception cref="RemoteException"> if the reference could not be created
 		''' @since 1.2 </exception>
-		Public Shared Function getRegistry(ByVal host As String, ByVal port As Integer, ByVal csf As java.rmi.server.RMIClientSocketFactory) As Registry
+		Public Shared Function getRegistry(  host As String,   port As Integer,   csf As java.rmi.server.RMIClientSocketFactory) As Registry
 			Dim registry_Renamed As Registry = Nothing
 
 			If port <= 0 Then port = Registry.REGISTRY_PORT
@@ -170,7 +170,7 @@ Namespace java.rmi.registry
 		''' <exception cref="RemoteException"> if the registry could not be exported
 		''' @since JDK1.1
 		'''  </exception>
-		Public Shared Function createRegistry(ByVal port As Integer) As Registry
+		Public Shared Function createRegistry(  port As Integer) As Registry
 			Return New sun.rmi.registry.RegistryImpl(port)
 		End Function
 
@@ -202,7 +202,7 @@ Namespace java.rmi.registry
 		''' <exception cref="RemoteException"> if the registry could not be exported
 		''' @since 1.2
 		'''  </exception>
-		Public Shared Function createRegistry(ByVal port As Integer, ByVal csf As java.rmi.server.RMIClientSocketFactory, ByVal ssf As java.rmi.server.RMIServerSocketFactory) As Registry
+		Public Shared Function createRegistry(  port As Integer,   csf As java.rmi.server.RMIClientSocketFactory,   ssf As java.rmi.server.RMIServerSocketFactory) As Registry
 			Return New sun.rmi.registry.RegistryImpl(port, csf, ssf)
 		End Function
 	End Class

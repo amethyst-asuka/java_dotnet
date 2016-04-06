@@ -101,7 +101,7 @@ Namespace java.lang
         '     * This constructor is not used and prevents the default constructor being
         '     * generated.
         '     
-        Private Sub New(ByVal loader As  ClassLoader)
+        Private Sub New(  loader As  ClassLoader)
             ' Initialize final field for classLoader.  The initialization value of non-null
             ' prevents future JIT optimizations from assuming this final field is null.
             classLoader = loader
@@ -221,7 +221,7 @@ Namespace java.lang
         '''            by this method fails </exception>
         ''' <exception cref="ClassNotFoundException"> if the class cannot be located </exception>
         'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-        Public Shared Function forName(ByVal className As String) As [Class]
+        Public Shared Function forName(  className As String) As [Class]
             Dim caller As [Class] = sun.reflect.Reflection.callerClass
             Return forName0(className, True, classLoader.getClassLoader(caller), caller)
         End Function
@@ -288,7 +288,7 @@ Namespace java.lang
         ''' <seealso cref=       java.lang.ClassLoader
         ''' @since     1.2 </seealso>
         'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-        Public Shared Function forName(ByVal name As String, ByVal initialize As Boolean, ByVal loader As  ClassLoader) As [Class]
+        Public Shared Function forName(  name As String,   initialize As Boolean,   loader As  ClassLoader) As [Class]
             Dim caller As [Class] = Nothing
             Dim sm As SecurityManager = System.securityManager
             If sm IsNot Nothing Then
@@ -307,7 +307,7 @@ Namespace java.lang
         ''' Called after security check for system loader access checks have been made. </summary>
         'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
         <DllImport("unknown")>
-        Private Shared Function forName0(ByVal name As String, ByVal initialize As Boolean, ByVal loader As  ClassLoader, ByVal caller As [Class]) As  [Class]
+        Private Shared Function forName0(  name As String,   initialize As Boolean,   loader As  ClassLoader,   caller As [Class]) As  [Class]
 		End Function
 
         ''' <summary>
@@ -434,7 +434,7 @@ Namespace java.lang
         ''' @since JDK1.1 </returns>
         'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
         <DllImport("unknown")>
-        Public Function isInstance(ByVal obj As Object) As Boolean
+        Public Function isInstance(  obj As Object) As Boolean
         End Function
 
 
@@ -463,7 +463,7 @@ Namespace java.lang
         ''' @since JDK1.1 </exception>
         'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
         <DllImport("unknown")>
-        Public Function isAssignableFrom(ByVal cls As [Class]) As Boolean
+        Public Function isAssignableFrom(  cls As [Class]) As Boolean
         End Function
 
 
@@ -961,7 +961,7 @@ Namespace java.lang
         ''' </summary>
         'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
         <DllImport("unknown")>
-        Friend Sub setSigners(ByVal signers As Object())
+        Friend Sub setSigners(  signers As Object())
         End Sub
 
 
@@ -1076,7 +1076,7 @@ Namespace java.lang
             Private name As String
             Private descriptor As String
 
-            Private Sub New(ByVal enclosingInfo As Object())
+            Private Sub New(  enclosingInfo As Object())
                 If enclosingInfo.Length <> 3 Then Throw New InternalError("Malformed enclosing method information")
                 Try
                     ' The array is expected to have three elements:
@@ -1136,7 +1136,7 @@ Namespace java.lang
 
         End Class
 
-        Private Shared Function toClass(ByVal o As Type) As [Class]
+        Private Shared Function toClass(  o As Type) As [Class]
             If TypeOf o Is GenericArrayType Then Return Array.newInstance(toClass(CType(o, GenericArrayType).genericComponentType), 0).GetType()
             Return CType(o, [Class])
         End Function
@@ -1381,7 +1381,7 @@ Namespace java.lang
         ''' Character.isDigit answers {@code true} to some non-ascii
         ''' digits.  This one does not.
         ''' </summary>
-        Private Shared Function isAsciiDigit(ByVal c As Char) As Boolean
+        Private Shared Function isAsciiDigit(  c As Char) As Boolean
             Return "0"c <= c AndAlso c <= "9"c
         End Function
 
@@ -1722,7 +1722,7 @@ Namespace java.lang
         ''' @jls 8.2 Class Members
         ''' @jls 8.3 Field Declarations </exception>
         'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-        Public Function getField(ByVal name As String) As Field
+        Public Function getField(  name As String) As Field
             checkMemberAccess(Member.PUBLIC, sun.reflect.Reflection.callerClass, True)
             Dim field_Renamed As Field = getField0(name)
             If field_Renamed Is Nothing Then Throw New NoSuchFieldException(name)
@@ -1801,7 +1801,7 @@ Namespace java.lang
         ''' @jls 8.4 Method Declarations
         ''' @since JDK1.1 </exception>
         'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-        Public Function getMethod(ByVal name As String, ParamArray ByVal parameterTypes As  [Class]()) As Method
+        Public Function getMethod(  name As String, ParamArray   parameterTypes As  [Class]()) As Method
 			checkMemberAccess(Member.PUBLIC, sun.reflect.Reflection.callerClass, True)
             Dim method_Renamed As Method = getMethod0(name, parameterTypes, True)
             If method_Renamed Is Nothing Then Throw New NoSuchMethodException(name & "." & name + argumentTypesToString(parameterTypes))
@@ -1838,7 +1838,7 @@ Namespace java.lang
         ''' 
         ''' @since JDK1.1 </exception>
         'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-        Public Function getConstructor(ParamArray ByVal parameterTypes As  [Class]()) As Constructor(Of T)
+        Public Function getConstructor(ParamArray   parameterTypes As  [Class]()) As Constructor(Of T)
 			checkMemberAccess(Member.PUBLIC, sun.reflect.Reflection.callerClass, True)
             Return getConstructor0(parameterTypes, Member.PUBLIC)
         End Function
@@ -2084,7 +2084,7 @@ Namespace java.lang
         ''' @jls 8.2 Class Members
         ''' @jls 8.3 Field Declarations </exception>
         'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-        Public Function getDeclaredField(ByVal name As String) As Field
+        Public Function getDeclaredField(  name As String) As Field
             checkMemberAccess(Member.DECLARED, sun.reflect.Reflection.callerClass, True)
             Dim field_Renamed As Field = searchFields(privateGetDeclaredFields(False), name)
             If field_Renamed Is Nothing Then Throw New NoSuchFieldException(name)
@@ -2140,7 +2140,7 @@ Namespace java.lang
         ''' @jls 8.4 Method Declarations
         ''' @since JDK1.1 </exception>
         'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-        Public Function getDeclaredMethod(ByVal name As String, ParamArray ByVal parameterTypes As  [Class]()) As Method
+        Public Function getDeclaredMethod(  name As String, ParamArray   parameterTypes As  [Class]()) As Method
 			checkMemberAccess(Member.DECLARED, sun.reflect.Reflection.callerClass, True)
             Dim method_Renamed As Method = searchMethods(privateGetDeclaredMethods(False), name, parameterTypes)
             If method_Renamed Is Nothing Then Throw New NoSuchMethodException(name & "." & name + argumentTypesToString(parameterTypes))
@@ -2186,7 +2186,7 @@ Namespace java.lang
         ''' 
         ''' @since JDK1.1 </exception>
         'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-        Public Function getDeclaredConstructor(ParamArray ByVal parameterTypes As  [Class]()) As Constructor(Of T)
+        Public Function getDeclaredConstructor(ParamArray   parameterTypes As  [Class]()) As Constructor(Of T)
 			checkMemberAccess(Member.DECLARED, sun.reflect.Reflection.callerClass, True)
             Return getConstructor0(parameterTypes, Member.DECLARED)
         End Function
@@ -2225,7 +2225,7 @@ Namespace java.lang
         '''              no resource with this name is found </returns>
         ''' <exception cref="NullPointerException"> If {@code name} is {@code null}
         ''' @since  JDK1.1 </exception>
-        Public Function getResourceAsStream(ByVal name As String) As java.io.InputStream
+        Public Function getResourceAsStream(  name As String) As java.io.InputStream
             name = resolveName(name)
             Dim cl As  ClassLoader = classLoader0
             If cl Is Nothing Then Return classLoader.getSystemResourceAsStream(name)
@@ -2265,7 +2265,7 @@ Namespace java.lang
         ''' <returns>      A  <seealso cref="java.net.URL"/> object or {@code null} if no
         '''              resource with this name is found
         ''' @since  JDK1.1 </returns>
-        Public Function getResource(ByVal name As String) As java.net.URL
+        Public Function getResource(  name As String) As java.net.URL
             name = resolveName(name)
             Dim cl As  ClassLoader = classLoader0
             If cl Is Nothing Then Return classLoader.getSystemResource(name)
@@ -2330,7 +2330,7 @@ Namespace java.lang
         '     
         'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
         <DllImport("unknown")>
-        Friend Shared Function getPrimitiveClass(ByVal name As String) As  [Class]
+        Friend Shared Function getPrimitiveClass(  name As String) As  [Class]
 		End Function
 
         '    
@@ -2342,7 +2342,7 @@ Namespace java.lang
         '     * <p> Default policy: allow all clients access with normal Java access
         '     * control.
         '     
-        Private Sub checkMemberAccess(ByVal which As Integer, ByVal caller As [Class], ByVal checkProxyInterfaces As Boolean)
+        Private Sub checkMemberAccess(  which As Integer,   caller As [Class],   checkProxyInterfaces As Boolean)
             Dim s As SecurityManager = System.securityManager
             If s IsNot Nothing Then
                 '             Default policy allows access to all {@link Member#PUBLIC} members,
@@ -2364,7 +2364,7 @@ Namespace java.lang
         '     * class under the current package access policy. If access is denied,
         '     * throw a SecurityException.
         '     
-        Private Sub checkPackageAccess(ByVal ccl As  ClassLoader, ByVal checkProxyInterfaces As Boolean)
+        Private Sub checkPackageAccess(  ccl As  ClassLoader,   checkProxyInterfaces As Boolean)
             Dim s As SecurityManager = System.securityManager
             If s IsNot Nothing Then
                 Dim cl As  ClassLoader = classLoader0
@@ -2387,7 +2387,7 @@ Namespace java.lang
         ''' Add a package name prefix if the name is not absolute Remove leading "/"
         ''' if name is absolute
         ''' </summary>
-        Private Function resolveName(ByVal name As String) As String
+        Private Function resolveName(  name As String) As String
             If name Is Nothing Then Return name
             If Not name.StartsWith("/") Then
                 Dim c As  [Class] = Me
@@ -2418,21 +2418,21 @@ Namespace java.lang
             Private Shared ReadOnly annotationDataOffset As Long
 
 
-            Private Shared Function objectFieldOffset(ByVal fields As Field(), ByVal fieldName As String) As Long
+            Private Shared Function objectFieldOffset(  fields As Field(),   fieldName As String) As Long
                 Dim field As Field = searchFields(fields, fieldName)
                 If field Is Nothing Then Throw New [Error]("No " & fieldName & " field found in java.lang.Class")
                 Return unsafe.objectFieldOffset(field)
             End Function
 
-            Friend Shared Function casReflectionData(Of T)(ByVal clazz As [Class], ByVal oldData As SoftReference(Of ReflectionData(Of T)), ByVal newData As SoftReference(Of ReflectionData(Of T))) As Boolean
+            Friend Shared Function casReflectionData(Of T)(  clazz As [Class],   oldData As SoftReference(Of ReflectionData(Of T)),   newData As SoftReference(Of ReflectionData(Of T))) As Boolean
                 Return unsafe.compareAndSwapObject(clazz, reflectionDataOffset, oldData, newData)
             End Function
 
-            Friend Shared Function casAnnotationType(Of T)(ByVal clazz As [Class], ByVal oldType As AnnotationType, ByVal newType As AnnotationType) As Boolean
+            Friend Shared Function casAnnotationType(Of T)(  clazz As [Class],   oldType As AnnotationType,   newType As AnnotationType) As Boolean
                 Return unsafe.compareAndSwapObject(clazz, annotationTypeOffset, oldType, newType)
             End Function
 
-            Friend Shared Function casAnnotationData(Of T)(ByVal clazz As [Class], ByVal oldData As AnnotationData, ByVal newData As AnnotationData) As Boolean
+            Friend Shared Function casAnnotationData(Of T)(  clazz As [Class],   oldData As AnnotationData,   newData As AnnotationData) As Boolean
                 Return unsafe.compareAndSwapObject(clazz, annotationDataOffset, oldData, newData)
             End Function
         End Class
@@ -2469,7 +2469,7 @@ Namespace java.lang
 			' Value of classRedefinedCount when we created this ReflectionData instance
 			Friend ReadOnly redefinedCount As Integer
 
-            Friend Sub New(ByVal redefinedCount As Integer)
+            Friend Sub New(  redefinedCount As Integer)
                 Me.redefinedCount = redefinedCount
             End Sub
         End Class
@@ -2496,7 +2496,7 @@ Namespace java.lang
             Return newReflectionData(reflectionData_Renamed, classRedefinedCount)
         End Function
 
-        Private Function newReflectionData(ByVal oldReflectionData As SoftReference(Of ReflectionData(Of T)), ByVal classRedefinedCount As Integer) As ReflectionData(Of T)
+        Private Function newReflectionData(  oldReflectionData As SoftReference(Of ReflectionData(Of T)),   classRedefinedCount As Integer) As ReflectionData(Of T)
             If Not useCaches Then Return Nothing
 
             Do
@@ -2558,7 +2558,7 @@ Namespace java.lang
         <DllImport("unknown")>
         Friend Function getRawTypeAnnotations() As SByte()
         End Function
-        Friend Shared Function getExecutableTypeAnnotationBytes(ByVal ex As Executable) As SByte()
+        Friend Shared Function getExecutableTypeAnnotationBytes(  ex As Executable) As SByte()
             Return reflectionFactory.getExecutableTypeAnnotationBytes(ex)
         End Function
 
@@ -2576,7 +2576,7 @@ Namespace java.lang
         ' Returns an array of "root" fields. These Field objects must NOT
         ' be propagated to the outside world, but must instead be copied
         ' via ReflectionFactory.copyField.
-        Private Function privateGetDeclaredFields(ByVal publicOnly As Boolean) As Field()
+        Private Function privateGetDeclaredFields(  publicOnly As Boolean) As Field()
             checkInitted()
             Dim res As Field()
             Dim rd As ReflectionData(Of T) = reflectionData()
@@ -2599,7 +2599,7 @@ Namespace java.lang
         ' Returns an array of "root" fields. These Field objects must NOT
         ' be propagated to the outside world, but must instead be copied
         ' via ReflectionFactory.copyField.
-        Private Function privateGetPublicFields(ByVal traversedInterfaces As java.util.Set(Of [Class])) As Field()
+        Private Function privateGetPublicFields(  traversedInterfaces As java.util.Set(Of [Class])) As Field()
             checkInitted()
             Dim res As Field()
             Dim rd As ReflectionData(Of T) = reflectionData()
@@ -2637,7 +2637,7 @@ Namespace java.lang
             Return res
         End Function
 
-        Private Shared Sub addAll(ByVal c As ICollection(Of Field), ByVal o As Field())
+        Private Shared Sub addAll(  c As ICollection(Of Field),   o As Field())
             For i As Integer = 0 To o.Length - 1
                 c.Add(o(i))
             Next i
@@ -2653,7 +2653,7 @@ Namespace java.lang
         ' Returns an array of "root" constructors. These Constructor
         ' objects must NOT be propagated to the outside world, but must
         ' instead be copied via ReflectionFactory.copyConstructor.
-        Private Function privateGetDeclaredConstructors(ByVal publicOnly As Boolean) As Constructor(Of T)()
+        Private Function privateGetDeclaredConstructors(  publicOnly As Boolean) As Constructor(Of T)()
             checkInitted()
             Dim res As Constructor(Of T)()
             Dim rd As ReflectionData(Of T) = reflectionData()
@@ -2689,7 +2689,7 @@ Namespace java.lang
         ' Returns an array of "root" methods. These Method objects must NOT
         ' be propagated to the outside world, but must instead be copied
         ' via ReflectionFactory.copyMethod.
-        Private Function privateGetDeclaredMethods(ByVal publicOnly As Boolean) As Method()
+        Private Function privateGetDeclaredMethods(  publicOnly As Boolean) As Method()
             checkInitted()
             Dim res As Method()
             Dim rd As ReflectionData(Of T) = reflectionData()
@@ -2719,7 +2719,7 @@ Namespace java.lang
                 Me.New(20)
             End Sub
 
-            Friend Sub New(ByVal initialSize As Integer)
+            Friend Sub New(  initialSize As Integer)
                 If initialSize < 2 Then Throw New IllegalArgumentException("Size should be 2 or more")
 
                 methods = New Method(initialSize - 1) {}
@@ -2731,7 +2731,7 @@ Namespace java.lang
                 Return defaults <> 0
             End Function
 
-            Friend Overridable Sub add(ByVal m As Method)
+            Friend Overridable Sub add(  m As Method)
                 If length_Renamed = methods.Length Then methods = java.util.Arrays.copyOf(methods, 2 * methods.Length)
                 methods(length_Renamed) = m
                 length_Renamed += 1
@@ -2739,19 +2739,19 @@ Namespace java.lang
                 If m IsNot Nothing AndAlso m.default Then defaults += 1
             End Sub
 
-            Friend Overridable Sub addAll(ByVal ma As Method())
+            Friend Overridable Sub addAll(  ma As Method())
                 For i As Integer = 0 To ma.Length - 1
                     add(ma(i))
                 Next i
             End Sub
 
-            Friend Overridable Sub addAll(ByVal ma As MethodArray)
+            Friend Overridable Sub addAll(  ma As MethodArray)
                 For i As Integer = 0 To ma.length() - 1
                     add(ma.get(i))
                 Next i
             End Sub
 
-            Friend Overridable Sub addIfNotPresent(ByVal newMethod As Method)
+            Friend Overridable Sub addIfNotPresent(  newMethod As Method)
                 For i As Integer = 0 To length_Renamed - 1
                     Dim m As Method = methods(i)
                     If m Is newMethod OrElse (m IsNot Nothing AndAlso m.Equals(newMethod)) Then Return
@@ -2759,7 +2759,7 @@ Namespace java.lang
                 add(newMethod)
             End Sub
 
-            Friend Overridable Sub addAllIfNotPresent(ByVal newMethods As MethodArray)
+            Friend Overridable Sub addAllIfNotPresent(  newMethods As MethodArray)
                 For i As Integer = 0 To newMethods.length() - 1
                     Dim m As Method = newMethods.get(i)
                     If m IsNot Nothing Then addIfNotPresent(m)
@@ -2769,7 +2769,7 @@ Namespace java.lang
             '         Add Methods declared in an interface to this MethodArray.
             '         * Static methods declared in interfaces are not inherited.
             '         
-            Friend Overridable Sub addInterfaceMethods(ByVal methods As Method())
+            Friend Overridable Sub addInterfaceMethods(  methods As Method())
                 For Each candidate As Method In methods
                     If Not Modifier.isStatic(candidate.modifiers) Then add(candidate)
                 Next candidate
@@ -2779,7 +2779,7 @@ Namespace java.lang
                 Return length_Renamed
             End Function
 
-            Friend Overridable Function [get](ByVal i As Integer) As Method
+            Friend Overridable Function [get](  i As Integer) As Method
                 Return methods(i)
             End Function
 
@@ -2792,19 +2792,19 @@ Namespace java.lang
                 End Get
             End Property
 
-            Friend Overridable Sub removeByNameAndDescriptor(ByVal toRemove As Method)
+            Friend Overridable Sub removeByNameAndDescriptor(  toRemove As Method)
                 For i As Integer = 0 To length_Renamed - 1
                     Dim m As Method = methods(i)
                     If m IsNot Nothing AndAlso matchesNameAndDescriptor(m, toRemove) Then remove(i)
                 Next i
             End Sub
 
-            Private Sub remove(ByVal i As Integer)
+            Private Sub remove(  i As Integer)
                 If methods(i) IsNot Nothing AndAlso methods(i).default Then defaults -= 1
                 methods(i) = Nothing
             End Sub
 
-            Private Function matchesNameAndDescriptor(ByVal m1 As Method, ByVal m2 As Method) As Boolean
+            Private Function matchesNameAndDescriptor(  m1 As Method,   m2 As Method) As Boolean
                 Return m1.returnType = m2.returnType AndAlso m1.name = m2.name AndAlso arrayContentsEq(m1.parameterTypes, m2.parameterTypes) ' name is guaranteed to be interned
             End Function
 
@@ -2854,7 +2854,7 @@ Namespace java.lang
             End Property
 
             ' Returns true if m1 is more specific than m2
-            Friend Shared Function hasMoreSpecificClass(ByVal m1 As Method, ByVal m2 As Method) As Boolean
+            Friend Shared Function hasMoreSpecificClass(  m1 As Method,   m2 As Method) As Boolean
                 Dim m1Class As  [Class] = m1.declaringClass
                 Dim m2Class As  [Class] = m2.declaringClass
                 Return m1Class IsNot m2Class AndAlso m1Class.IsSubclassOf(m2Class)
@@ -2923,7 +2923,7 @@ Namespace java.lang
         ' Helpers for fetchers of one field, method, or constructor
         '
 
-        Private Shared Function searchFields(ByVal fields As Field(), ByVal name As String) As Field
+        Private Shared Function searchFields(  fields As Field(),   name As String) As Field
             Dim internedName As String = name.Intern()
             For i As Integer = 0 To fields.Length - 1
                 If fields(i).name = internedName Then Return reflectionFactory.copyField(fields(i))
@@ -2931,7 +2931,7 @@ Namespace java.lang
             Return Nothing
         End Function
 
-        Private Function getField0(ByVal name As String) As Field
+        Private Function getField0(  name As String) As Field
             ' Note: the intent is that the search algorithm this routine
             ' uses be equivalent to the ordering imposed by
             ' privateGetPublicFields(). It fetches only the declared
@@ -2961,7 +2961,7 @@ Namespace java.lang
             Return Nothing
         End Function
 
-        Private Shared Function searchMethods(ByVal methods As Method(), ByVal name As String, ByVal parameterTypes As  [Class]()) As Method
+        Private Shared Function searchMethods(  methods As Method(),   name As String,   parameterTypes As  [Class]()) As Method
 			Dim res As Method = Nothing
             Dim internedName As String = name.Intern()
             For i As Integer = 0 To methods.Length - 1
@@ -2972,7 +2972,7 @@ Namespace java.lang
             Return (If(res Is Nothing, res, reflectionFactory.copyMethod(res)))
         End Function
 
-        Private Function getMethod0(ByVal name As String, ByVal parameterTypes As  [Class](), ByVal includeStaticMethods As Boolean) As Method
+        Private Function getMethod0(  name As String,   parameterTypes As  [Class](),   includeStaticMethods As Boolean) As Method
 			Dim interfaceCandidates As New MethodArray(2)
             Dim res As Method = privateGetMethodRecursive(name, parameterTypes, includeStaticMethods, interfaceCandidates)
             If res IsNot Nothing Then Return res
@@ -2982,7 +2982,7 @@ Namespace java.lang
             Return interfaceCandidates.first ' may be null
         End Function
 
-        Private Function privateGetMethodRecursive(ByVal name As String, ByVal parameterTypes As  [Class](), ByVal includeStaticMethods As Boolean, ByVal allInterfaceCandidates As MethodArray) As Method
+        Private Function privateGetMethodRecursive(  name As String,   parameterTypes As  [Class](),   includeStaticMethods As Boolean,   allInterfaceCandidates As MethodArray) As Method
 			' Note: the intent is that the search algorithm this routine
 			' uses be equivalent to the ordering imposed by
 			' privateGetPublicMethods(). It fetches only the declared
@@ -3022,7 +3022,7 @@ Namespace java.lang
             Return Nothing
         End Function
 
-        Private Function getConstructor0(ByVal parameterTypes As  [Class](), ByVal which As Integer) As Constructor(Of T)
+        Private Function getConstructor0(  parameterTypes As  [Class](),   which As Integer) As Constructor(Of T)
 			Dim constructors_Renamed As Constructor(Of T)() = privateGetDeclaredConstructors((which = Member.PUBLIC))
             For Each constructor_Renamed As Constructor(Of T) In constructors_Renamed
                 If arrayContentsEq(parameterTypes, constructor_Renamed.parameterTypes) Then Return reflectionFactory.copyConstructor(constructor_Renamed)
@@ -3034,7 +3034,7 @@ Namespace java.lang
         ' Other helpers and base implementation
         '
 
-        Private Shared Function arrayContentsEq(ByVal a1 As Object(), ByVal a2 As Object()) As Boolean
+        Private Shared Function arrayContentsEq(  a1 As Object(),   a2 As Object()) As Boolean
             If a1 Is Nothing Then Return a2 Is Nothing OrElse a2.Length = 0
 
             If a2 Is Nothing Then Return a1.Length = 0
@@ -3048,7 +3048,7 @@ Namespace java.lang
             Return True
         End Function
 
-        Private Shared Function copyFields(ByVal arg As Field()) As Field()
+        Private Shared Function copyFields(  arg As Field()) As Field()
             Dim out As Field() = New Field(arg.Length - 1) {}
             Dim fact As sun.reflect.ReflectionFactory = reflectionFactory
             For i As Integer = 0 To arg.Length - 1
@@ -3057,7 +3057,7 @@ Namespace java.lang
             Return out
         End Function
 
-        Private Shared Function copyMethods(ByVal arg As Method()) As Method()
+        Private Shared Function copyMethods(  arg As Method()) As Method()
             Dim out As Method() = New Method(arg.Length - 1) {}
             Dim fact As sun.reflect.ReflectionFactory = reflectionFactory
             For i As Integer = 0 To arg.Length - 1
@@ -3066,7 +3066,7 @@ Namespace java.lang
             Return out
         End Function
 
-        Private Shared Function copyConstructors(Of U)(ByVal arg As Constructor(Of U)()) As Constructor(Of U)()
+        Private Shared Function copyConstructors(Of U)(  arg As Constructor(Of U)()) As Constructor(Of U)()
             Dim out As Constructor(Of U)() = arg.Clone()
             Dim fact As sun.reflect.ReflectionFactory = reflectionFactory
             For i As Integer = 0 To out.Length - 1
@@ -3077,22 +3077,22 @@ Namespace java.lang
 
         'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
         <DllImport("unknown")>
-        Private Function getDeclaredFields0(ByVal publicOnly As Boolean) As Field()
+        Private Function getDeclaredFields0(  publicOnly As Boolean) As Field()
         End Function
         'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
         <DllImport("unknown")>
-        Private Function getDeclaredMethods0(ByVal publicOnly As Boolean) As Method()
+        Private Function getDeclaredMethods0(  publicOnly As Boolean) As Method()
         End Function
         'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
         <DllImport("unknown")>
-        Private Function getDeclaredConstructors0(ByVal publicOnly As Boolean) As Constructor(Of T)()
+        Private Function getDeclaredConstructors0(  publicOnly As Boolean) As Constructor(Of T)()
         End Function
         'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
         <DllImport("unknown")>
         Private Function getDeclaredClasses0() As  [Class]()
 		End Function
 
-        Private Shared Function argumentTypesToString(ByVal argTypes As  [Class]()) As String
+        Private Shared Function argumentTypesToString(  argTypes As  [Class]()) As String
 			Dim buf As New StringBuilder
             buf.append("(")
             If argTypes IsNot Nothing Then
@@ -3168,7 +3168,7 @@ Namespace java.lang
         ' Retrieves the desired assertion status of this class from the VM
         'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
         <DllImport("unknown")>
-        Private Shared Function desiredAssertionStatus0(ByVal clazz As [Class]) As Boolean
+        Private Shared Function desiredAssertionStatus0(  clazz As [Class]) As Boolean
         End Function
 
         ''' <summary>
@@ -3318,12 +3318,12 @@ Namespace java.lang
         ''' 
         ''' @since 1.5 </exception>
         'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-        Public Function cast(ByVal obj As Object) As T
+        Public Function cast(  obj As Object) As T
             If obj IsNot Nothing AndAlso (Not isInstance(obj)) Then Throw New ClassCastException(cannotCastMsg(obj))
             Return CType(obj, T)
         End Function
 
-        Private Function cannotCastMsg(ByVal obj As Object) As String
+        Private Function cannotCastMsg(  obj As Object) As String
             Return "Cannot cast " & obj.GetType().Name & " to " & name
         End Function
 
@@ -3349,7 +3349,7 @@ Namespace java.lang
         '''    the class itself).
         ''' @since 1.5 </exception>
         'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-        Public Function asSubclass(Of U)(ByVal clazz As [Class]) As  [Class]
+        Public Function asSubclass(Of U)(  clazz As [Class]) As  [Class]
 			If Me.IsSubclassOf(clazz) Then
                 Return CType(Me, [Class])
             Else
@@ -3360,7 +3360,7 @@ Namespace java.lang
         ''' <exception cref="NullPointerException"> {@inheritDoc}
         ''' @since 1.5 </exception>
         'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-        Public Function getAnnotation(Of A As annotation)(ByVal annotationClass As [Class]) As A
+        Public Function getAnnotation(Of A As annotation)(  annotationClass As [Class]) As A
             java.util.Objects.requireNonNull(annotationClass)
 
             Return CType(annotationData().annotations(annotationClass), A)
@@ -3370,13 +3370,13 @@ Namespace java.lang
         ''' {@inheritDoc} </summary>
         ''' <exception cref="NullPointerException"> {@inheritDoc}
         ''' @since 1.5 </exception>
-        Public Overrides Function isAnnotationPresent(ByVal annotationClass As [Class]) As Boolean Implements AnnotatedElement.isAnnotationPresent
+        Public Overrides Function isAnnotationPresent(  annotationClass As [Class]) As Boolean Implements AnnotatedElement.isAnnotationPresent
             Return outerInstance.isAnnotationPresent(annotationClass)
         End Function
 
         ''' <exception cref="NullPointerException"> {@inheritDoc}
         ''' @since 1.8 </exception>
-        Public Overrides Function getAnnotationsByType(Of A As annotation)(ByVal annotationClass As [Class]) As A()
+        Public Overrides Function getAnnotationsByType(Of A As annotation)(  annotationClass As [Class]) As A()
             java.util.Objects.requireNonNull(annotationClass)
 
             Dim annotationData As AnnotationData = annotationData()
@@ -3395,7 +3395,7 @@ Namespace java.lang
         ''' <exception cref="NullPointerException"> {@inheritDoc}
         ''' @since 1.8 </exception>
         'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-        Public Overrides Function getDeclaredAnnotation(Of A As annotation)(ByVal annotationClass As [Class]) As A
+        Public Overrides Function getDeclaredAnnotation(Of A As annotation)(  annotationClass As [Class]) As A
             java.util.Objects.requireNonNull(annotationClass)
 
             Return CType(annotationData().declaredAnnotations(annotationClass), A)
@@ -3403,7 +3403,7 @@ Namespace java.lang
 
         ''' <exception cref="NullPointerException"> {@inheritDoc}
         ''' @since 1.8 </exception>
-        Public Overrides Function getDeclaredAnnotationsByType(Of A As annotation)(ByVal annotationClass As [Class]) As A()
+        Public Overrides Function getDeclaredAnnotationsByType(Of A As annotation)(  annotationClass As [Class]) As A()
             java.util.Objects.requireNonNull(annotationClass)
 
             Return AnnotationSupport.getDirectlyAndIndirectlyPresent(annotationData().declaredAnnotations, annotationClass)
@@ -3426,7 +3426,7 @@ Namespace java.lang
             ' Value of classRedefinedCount when we created this AnnotationData instance
             Friend ReadOnly redefinedCount As Integer
 
-            Friend Sub New(ByVal annotations As IDictionary(Of [Class], annotation), ByVal declaredAnnotations As IDictionary(Of [Class], annotation), ByVal redefinedCount As Integer)
+            Friend Sub New(  annotations As IDictionary(Of [Class], annotation),   declaredAnnotations As IDictionary(Of [Class], annotation),   redefinedCount As Integer)
                 Me.annotations = annotations
                 Me.declaredAnnotations = declaredAnnotations
                 Me.redefinedCount = redefinedCount
@@ -3451,7 +3451,7 @@ Namespace java.lang
             Loop
         End Function
 
-        Private Function createAnnotationData(ByVal classRedefinedCount As Integer) As AnnotationData
+        Private Function createAnnotationData(  classRedefinedCount As Integer) As AnnotationData
             Dim declaredAnnotations_Renamed As IDictionary(Of [Class], annotation) = AnnotationParser.parseAnnotations(rawAnnotations, constantPool, Me)
             Dim superClass As  [Class] = superClass
             Dim annotations_Renamed As IDictionary(Of [Class], annotation) = Nothing
@@ -3483,7 +3483,7 @@ Namespace java.lang
         <NonSerialized>
         Private annotationType As AnnotationType
 
-        Friend Function casAnnotationType(ByVal oldType As AnnotationType, ByVal newType As AnnotationType) As Boolean
+        Friend Function casAnnotationType(  oldType As AnnotationType,   newType As AnnotationType) As Boolean
             Return Atomic.casAnnotationType(Me, oldType, newType)
         End Function
 

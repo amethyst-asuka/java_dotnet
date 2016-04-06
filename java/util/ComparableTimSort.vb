@@ -119,7 +119,7 @@ Namespace java.util
 		''' <param name="work"> a workspace array (slice) </param>
 		''' <param name="workBase"> origin of usable space in work array </param>
 		''' <param name="workLen"> usable size of work array </param>
-		Private Sub New(ByVal a As Object(), ByVal work As Object(), ByVal workBase As Integer, ByVal workLen As Integer)
+		Private Sub New(  a As Object(),   work As Object(),   workBase As Integer,   workLen As Integer)
 			Me.a = a
 
 			' Allocate temp storage (which may be increased later if necessary)
@@ -173,7 +173,7 @@ Namespace java.util
 		''' <param name="workBase"> origin of usable space in work array </param>
 		''' <param name="workLen"> usable size of work array
 		''' @since 1.8 </param>
-		Friend Shared Sub sort(ByVal a As Object(), ByVal lo As Integer, ByVal hi As Integer, ByVal work As Object(), ByVal workBase As Integer, ByVal workLen As Integer)
+		Friend Shared Sub sort(  a As Object(),   lo As Integer,   hi As Integer,   work As Object(),   workBase As Integer,   workLen As Integer)
 			Debug.Assert(a IsNot Nothing AndAlso lo >= 0 AndAlso lo <= hi AndAlso hi <= a.Length)
 
 			Dim nRemaining As Integer = hi - lo
@@ -236,7 +236,7 @@ Namespace java.util
 		''' <param name="start"> the index of the first element in the range that is
 		'''        not already known to be sorted ({@code lo <= start <= hi}) </param>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Private Shared Sub binarySort(ByVal a As Object(), ByVal lo As Integer, ByVal hi As Integer, ByVal start As Integer)
+		Private Shared Sub binarySort(  a As Object(),   lo As Integer,   hi As Integer,   start As Integer)
 			Debug.Assert(lo <= start AndAlso start <= hi)
 			If start = lo Then start += 1
 			Do While start < hi
@@ -308,7 +308,7 @@ Namespace java.util
 		''' <returns>  the length of the run beginning at the specified position in
 		'''          the specified array </returns>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Private Shared Function countRunAndMakeAscending(ByVal a As Object(), ByVal lo As Integer, ByVal hi As Integer) As Integer
+		Private Shared Function countRunAndMakeAscending(  a As Object(),   lo As Integer,   hi As Integer) As Integer
 			Debug.Assert(lo < hi)
 			Dim runHi As Integer = lo + 1
 			If runHi = hi Then Return 1
@@ -336,7 +336,7 @@ Namespace java.util
 		''' <param name="a"> the array in which a range is to be reversed </param>
 		''' <param name="lo"> the index of the first element in the range to be reversed </param>
 		''' <param name="hi"> the index after the last element in the range to be reversed </param>
-		Private Shared Sub reverseRange(ByVal a As Object(), ByVal lo As Integer, ByVal hi As Integer)
+		Private Shared Sub reverseRange(  a As Object(),   lo As Integer,   hi As Integer)
 			hi -= 1
 			Do While lo < hi
 				Dim t As Object = a(lo)
@@ -363,7 +363,7 @@ Namespace java.util
 		''' </summary>
 		''' <param name="n"> the length of the array to be sorted </param>
 		''' <returns> the length of the minimum run to be merged </returns>
-		Private Shared Function minRunLength(ByVal n As Integer) As Integer
+		Private Shared Function minRunLength(  n As Integer) As Integer
 			Debug.Assert(n >= 0)
 			Dim r As Integer = 0 ' Becomes 1 if any 1 bits are shifted off
 			Do While n >= MIN_MERGE
@@ -378,7 +378,7 @@ Namespace java.util
 		''' </summary>
 		''' <param name="runBase"> index of the first element in the run </param>
 		''' <param name="runLen">  the number of elements in the run </param>
-		Private Sub pushRun(ByVal runBase As Integer, ByVal runLen As Integer)
+		Private Sub pushRun(  runBase As Integer,   runLen As Integer)
 			Me.runBase(stackSize) = runBase
 			Me.runLen(stackSize) = runLen
 			stackSize += 1
@@ -428,7 +428,7 @@ Namespace java.util
 		''' </summary>
 		''' <param name="i"> stack index of the first of the two runs to merge </param>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Private Sub mergeAt(ByVal i As Integer)
+		Private Sub mergeAt(  i As Integer)
 			Debug.Assert(stackSize >= 2)
 			Debug.Assert(i >= 0)
 			Debug.Assert(i = stackSize - 2 OrElse i = stackSize - 3)
@@ -494,7 +494,7 @@ Namespace java.util
 		'''    In other words, key belongs at index b + k; or in other words,
 		'''    the first k elements of a should precede key, and the last n - k
 		'''    should follow it. </returns>
-		Private Shared Function gallopLeft(ByVal key As Comparable(Of Object), ByVal a As Object(), ByVal base As Integer, ByVal len As Integer, ByVal hint As Integer) As Integer
+		Private Shared Function gallopLeft(  key As Comparable(Of Object),   a As Object(),   base As Integer,   len As Integer,   hint As Integer) As Integer
 			Debug.Assert(len > 0 AndAlso hint >= 0 AndAlso hint < len)
 
 			Dim lastOfs As Integer = 0
@@ -559,7 +559,7 @@ Namespace java.util
 		''' <param name="hint"> the index at which to begin the search, 0 <= hint < n.
 		'''     The closer hint is to the result, the faster this method will run. </param>
 		''' <returns> the int k,  0 <= k <= n such that a[b + k - 1] <= key < a[b + k] </returns>
-		Private Shared Function gallopRight(ByVal key As Comparable(Of Object), ByVal a As Object(), ByVal base As Integer, ByVal len As Integer, ByVal hint As Integer) As Integer
+		Private Shared Function gallopRight(  key As Comparable(Of Object),   a As Object(),   base As Integer,   len As Integer,   hint As Integer) As Integer
 			Debug.Assert(len > 0 AndAlso hint >= 0 AndAlso hint < len)
 
 			Dim ofs As Integer = 1
@@ -629,7 +629,7 @@ Namespace java.util
 		'''        (must be aBase + aLen) </param>
 		''' <param name="len2">  length of second run to be merged (must be > 0) </param>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Private Sub mergeLo(ByVal base1 As Integer, ByVal len1 As Integer, ByVal base2 As Integer, ByVal len2 As Integer)
+		Private Sub mergeLo(  base1 As Integer,   len1 As Integer,   base2 As Integer,   len2 As Integer)
 			Debug.Assert(len1 > 0 AndAlso len2 > 0 AndAlso base1 + len1 = base2)
 
 			' Copy first run into temp array
@@ -752,7 +752,7 @@ Namespace java.util
 		'''        (must be aBase + aLen) </param>
 		''' <param name="len2">  length of second run to be merged (must be > 0) </param>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Private Sub mergeHi(ByVal base1 As Integer, ByVal len1 As Integer, ByVal base2 As Integer, ByVal len2 As Integer)
+		Private Sub mergeHi(  base1 As Integer,   len1 As Integer,   base2 As Integer,   len2 As Integer)
 			Debug.Assert(len1 > 0 AndAlso len2 > 0 AndAlso base1 + len1 = base2)
 
 			' Copy second run into temp array
@@ -876,7 +876,7 @@ Namespace java.util
 		''' </summary>
 		''' <param name="minCapacity"> the minimum required capacity of the tmp array </param>
 		''' <returns> tmp, whether or not it grew </returns>
-		Private Function ensureCapacity(ByVal minCapacity As Integer) As Object()
+		Private Function ensureCapacity(  minCapacity As Integer) As Object()
 			If tmpLen < minCapacity Then
 				' Compute smallest power of 2 > minCapacity
 				Dim newSize As Integer = minCapacity

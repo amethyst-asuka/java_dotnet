@@ -39,7 +39,7 @@ Namespace java.awt.geom
 		Friend affine As AffineTransform
 		Friend index As Integer
 
-		Friend Sub New(ByVal q As QuadCurve2D, ByVal at As AffineTransform)
+		Friend Sub New(  q As QuadCurve2D,   at As AffineTransform)
 			Me.quad = q
 			Me.affine = at
 		End Sub
@@ -90,7 +90,7 @@ Namespace java.awt.geom
 		''' <seealso cref= #SEG_QUADTO </seealso>
 		''' <seealso cref= #SEG_CUBICTO </seealso>
 		''' <seealso cref= #SEG_CLOSE </seealso>
-		Public Overridable Function currentSegment(ByVal coords As Single()) As Integer Implements PathIterator.currentSegment
+		Public Overridable Function currentSegment(  coords As Single()) As Integer Implements PathIterator.currentSegment
 			If done Then Throw New NoSuchElementException("quad iterator iterator out of bounds")
 			Dim type As Integer
 			If index = 0 Then
@@ -125,7 +125,7 @@ Namespace java.awt.geom
 		''' <seealso cref= #SEG_QUADTO </seealso>
 		''' <seealso cref= #SEG_CUBICTO </seealso>
 		''' <seealso cref= #SEG_CLOSE </seealso>
-		Public Overridable Function currentSegment(ByVal coords As Double()) As Integer Implements PathIterator.currentSegment
+		Public Overridable Function currentSegment(  coords As Double()) As Integer Implements PathIterator.currentSegment
 			If done Then Throw New NoSuchElementException("quad iterator iterator out of bounds")
 			Dim type As Integer
 			If index = 0 Then

@@ -32,7 +32,7 @@ Namespace java.util.zip
 	Friend Class ZStreamRef
 
 		Private address_Renamed As Long
-		Friend Sub New(ByVal address As Long)
+		Friend Sub New(  address As Long)
 			Me.address_Renamed = address
 		End Sub
 

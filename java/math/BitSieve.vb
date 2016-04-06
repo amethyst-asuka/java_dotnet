@@ -95,7 +95,7 @@ Namespace java.math
 		''' candidates. The new sieve begins at the specified base, which must
 		''' be even.
 		''' </summary>
-		Friend Sub New(ByVal base As BigInteger, ByVal searchLen As Integer)
+		Friend Sub New(  base As BigInteger,   searchLen As Integer)
 	'        
 	'         * Candidates are indicated by clear bits in the sieve. As a candidates
 	'         * nonprimality is calculated, a bit is set in the sieve to eliminate
@@ -131,21 +131,21 @@ Namespace java.math
 		''' <summary>
 		''' Given a bit index return unit index containing it.
 		''' </summary>
-		Private Shared Function unitIndex(ByVal bitIndex As Integer) As Integer
+		Private Shared Function unitIndex(  bitIndex As Integer) As Integer
 			Return CInt(CUInt(bitIndex) >> 6)
 		End Function
 
 		''' <summary>
 		''' Return a unit that masks the specified bit in its unit.
 		''' </summary>
-		Private Shared Function bit(ByVal bitIndex As Integer) As Long
+		Private Shared Function bit(  bitIndex As Integer) As Long
 			Return 1L << (bitIndex And ((1<<6) - 1))
 		End Function
 
 		''' <summary>
 		''' Get the value of the bit at the specified index.
 		''' </summary>
-		Private Function [get](ByVal bitIndex As Integer) As Boolean
+		Private Function [get](  bitIndex As Integer) As Boolean
 			Dim unitIndex As Integer = unitIndex(bitIndex)
 			Return ((bits(unitIndex) And bit(bitIndex)) <> 0)
 		End Function
@@ -153,7 +153,7 @@ Namespace java.math
 		''' <summary>
 		''' Set the bit at the specified index.
 		''' </summary>
-		Private Sub [set](ByVal bitIndex As Integer)
+		Private Sub [set](  bitIndex As Integer)
 			Dim unitIndex As Integer = unitIndex(bitIndex)
 			bits(unitIndex) = bits(unitIndex) Or bit(bitIndex)
 		End Sub
@@ -163,7 +163,7 @@ Namespace java.math
 		''' array that occurs at or after start. It will not search past the
 		''' specified limit. It returns -1 if there is no such clear bit.
 		''' </summary>
-		Private Function sieveSearch(ByVal limit As Integer, ByVal start As Integer) As Integer
+		Private Function sieveSearch(  limit As Integer,   start As Integer) As Integer
 			If start >= limit Then Return -1
 
 			Dim index As Integer = start
@@ -179,7 +179,7 @@ Namespace java.math
 		''' multiples of the specified step starting at the specified start index,
 		''' up to the specified limit.
 		''' </summary>
-		Private Sub sieveSingle(ByVal limit As Integer, ByVal start As Integer, ByVal [step] As Integer)
+		Private Sub sieveSingle(  limit As Integer,   start As Integer,   [step] As Integer)
 			Do While start < limit
 				[set](start)
 				start += [step]
@@ -189,7 +189,7 @@ Namespace java.math
 		''' <summary>
 		''' Test probable primes in the sieve and return successful candidates.
 		''' </summary>
-		Friend Overridable Function retrieve(ByVal initValue As BigInteger, ByVal certainty As Integer, ByVal random As Random) As BigInteger
+		Friend Overridable Function retrieve(  initValue As BigInteger,   certainty As Integer,   random As Random) As BigInteger
 			' Examine the sieve one long at a time to find possible primes
 			Dim offset As Integer = 1
 			For i As Integer = 0 To bits.Length - 1

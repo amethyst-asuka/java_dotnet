@@ -76,7 +76,7 @@ Namespace java.lang
 		''' message string is set to <code>null</code>.
 		''' </summary>
 		''' <param name="thrown"> The exception thrown </param>
-		Public Sub New(ByVal thrown As Throwable)
+		Public Sub New(  thrown As Throwable)
 			initCause(Nothing) ' Disallow subsequent initCause
 			Me.exception_Renamed = thrown
 		End Sub
@@ -90,7 +90,7 @@ Namespace java.lang
 		''' 
 		''' </summary>
 		''' <param name="s"> the detail message </param>
-		Public Sub New(ByVal s As String)
+		Public Sub New(  s As String)
 			MyBase.New(s)
 			initCause(Nothing) ' Disallow subsequent initCause
 		End Sub

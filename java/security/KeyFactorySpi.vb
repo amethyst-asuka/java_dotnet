@@ -76,7 +76,7 @@ Namespace java.security
 		''' </returns>
 		''' <exception cref="InvalidKeySpecException"> if the given key specification
 		''' is inappropriate for this key factory to produce a public key. </exception>
-		Protected Friend MustOverride Function engineGeneratePublic(ByVal keySpec As java.security.spec.KeySpec) As PublicKey
+		Protected Friend MustOverride Function engineGeneratePublic(  keySpec As java.security.spec.KeySpec) As PublicKey
 
 		''' <summary>
 		''' Generates a private key object from the provided key
@@ -88,7 +88,7 @@ Namespace java.security
 		''' </returns>
 		''' <exception cref="InvalidKeySpecException"> if the given key specification
 		''' is inappropriate for this key factory to produce a private key. </exception>
-		Protected Friend MustOverride Function engineGeneratePrivate(ByVal keySpec As java.security.spec.KeySpec) As PrivateKey
+		Protected Friend MustOverride Function engineGeneratePrivate(  keySpec As java.security.spec.KeySpec) As PrivateKey
 
 		''' <summary>
 		''' Returns a specification (key material) of the given key
@@ -112,7 +112,7 @@ Namespace java.security
 		''' <exception cref="InvalidKeySpecException"> if the requested key specification is
 		''' inappropriate for the given key, or the given key cannot be dealt with
 		''' (e.g., the given key has an unrecognized format). </exception>
-		Protected Friend MustOverride Function engineGetKeySpec(Of T As java.security.spec.KeySpec)(ByVal key As Key, ByVal keySpec As [Class]) As T
+		Protected Friend MustOverride Function engineGetKeySpec(Of T As java.security.spec.KeySpec)(  key As Key,   keySpec As [Class]) As T
 
 		''' <summary>
 		''' Translates a key object, whose provider may be unknown or
@@ -125,7 +125,7 @@ Namespace java.security
 		''' </returns>
 		''' <exception cref="InvalidKeyException"> if the given key cannot be processed
 		''' by this key factory. </exception>
-		Protected Friend MustOverride Function engineTranslateKey(ByVal key As Key) As Key
+		Protected Friend MustOverride Function engineTranslateKey(  key As Key) As Key
 
 	End Class
 

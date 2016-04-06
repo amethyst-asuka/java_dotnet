@@ -67,7 +67,7 @@ Namespace java.beans
 		''' </param>
 		''' <seealso cref= #getValue </seealso>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Sub New(ByVal target As Object, ByVal methodName As String, ByVal arguments As Object())
+		Public Sub New(  target As Object,   methodName As String,   arguments As Object())
 			MyBase.New(target, methodName, arguments)
 		End Sub
 
@@ -91,7 +91,7 @@ Namespace java.beans
 		''' <param name="arguments">  the array of arguments to invoke the specified method
 		''' </param>
 		''' <seealso cref= #setValue </seealso>
-		Public Sub New(ByVal value As Object, ByVal target As Object, ByVal methodName As String, ByVal arguments As Object())
+		Public Sub New(  value As Object,   target As Object,   methodName As String,   arguments As Object())
 			Me.New(target, methodName, arguments)
 			value = value
 		End Sub
@@ -150,14 +150,14 @@ Namespace java.beans
 				If value Is unbound Then value = invoke()
 				Return value
 			End Get
-			Set(ByVal value As Object)
+			Set(  value As Object)
 				Me.value = value
 			End Set
 		End Property
 
 
 		'pp
-	 Friend Overrides Function instanceName(ByVal instance As Object) As String
+	 Friend Overrides Function instanceName(  instance As Object) As String
 			Return If(instance Is unbound, "<unbound>", MyBase.instanceName(instance))
 	 End Function
 

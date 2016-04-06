@@ -64,7 +64,7 @@ Namespace java.util.zip
 		'''                         compression method used is unsupported </exception>
 		''' <exception cref="IOException"> if an I/O error has occurred </exception>
 		''' <exception cref="IllegalArgumentException"> if {@code size <= 0} </exception>
-		Public Sub New(ByVal [in] As java.io.InputStream, ByVal size As Integer)
+		Public Sub New(  [in] As java.io.InputStream,   size As Integer)
 			MyBase.New([in], New Inflater(True), size)
 			usesDefaultInflater = True
 			readHeader([in])
@@ -77,7 +77,7 @@ Namespace java.util.zip
 		''' <exception cref="ZipException"> if a GZIP format error has occurred or the
 		'''                         compression method used is unsupported </exception>
 		''' <exception cref="IOException"> if an I/O error has occurred </exception>
-		Public Sub New(ByVal [in] As java.io.InputStream)
+		Public Sub New(  [in] As java.io.InputStream)
 			Me.New([in], 512)
 		End Sub
 
@@ -98,7 +98,7 @@ Namespace java.util.zip
 		''' <exception cref="ZipException"> if the compressed input data is corrupt. </exception>
 		''' <exception cref="IOException"> if an I/O error has occurred.
 		'''  </exception>
-		Public Overrides Function read(ByVal buf As SByte(), ByVal [off] As Integer, ByVal len As Integer) As Integer
+		Public Overrides Function read(  buf As SByte(),   [off] As Integer,   len As Integer) As Integer
 			ensureOpen()
 			If eos Then Return -1
 			Dim n As Integer = MyBase.read(buf, [off], len)
@@ -144,7 +144,7 @@ Namespace java.util.zip
 	'     * Reads GZIP member header and returns the total byte number
 	'     * of this member header.
 	'     
-		Private Function readHeader(ByVal this_in As java.io.InputStream) As Integer
+		Private Function readHeader(  this_in As java.io.InputStream) As Integer
 			Dim [in] As New CheckedInputStream(this_in, crc)
 			crc.reset()
 			' Check header magic
@@ -224,7 +224,7 @@ Namespace java.util.zip
 	'    
 	'     * Reads unsigned integer in Intel byte order.
 	'     
-		Private Function readUInt(ByVal [in] As java.io.InputStream) As Long
+		Private Function readUInt(  [in] As java.io.InputStream) As Long
 			Dim s As Long = readUShort([in])
 			Return (CLng(readUShort([in])) << 16) Or s
 		End Function
@@ -232,7 +232,7 @@ Namespace java.util.zip
 	'    
 	'     * Reads unsigned short in Intel byte order.
 	'     
-		Private Function readUShort(ByVal [in] As java.io.InputStream) As Integer
+		Private Function readUShort(  [in] As java.io.InputStream) As Integer
 			Dim b As Integer = readUByte([in])
 			Return (readUByte([in]) << 8) Or b
 		End Function
@@ -240,7 +240,7 @@ Namespace java.util.zip
 	'    
 	'     * Reads unsigned java.lang.[Byte].
 	'     
-		Private Function readUByte(ByVal [in] As java.io.InputStream) As Integer
+		Private Function readUByte(  [in] As java.io.InputStream) As Integer
 			Dim b As Integer = [in].read()
 			If b = -1 Then Throw New java.io.EOFException
 			If b < -1 OrElse b > 255 Then Throw New java.io.IOException(Me.in.GetType().name & ".read() returned value out of range -1..255: " & b)
@@ -253,7 +253,7 @@ Namespace java.util.zip
 	'     * Skips bytes of input data blocking until all bytes are skipped.
 	'     * Does not assume that the input stream is capable of seeking.
 	'     
-		Private Sub skipBytes(ByVal [in] As java.io.InputStream, ByVal n As Integer)
+		Private Sub skipBytes(  [in] As java.io.InputStream,   n As Integer)
 			Do While n > 0
 				Dim len As Integer = [in].read(tmpbuf, 0,If(n < tmpbuf.Length, n, tmpbuf.Length))
 				If len = -1 Then Throw New java.io.EOFException

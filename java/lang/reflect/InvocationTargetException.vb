@@ -68,7 +68,7 @@ Namespace java.lang.reflect
 		''' Constructs a InvocationTargetException with a target exception.
 		''' </summary>
 		''' <param name="target"> the target exception </param>
-		Public Sub New(ByVal target As Throwable)
+		Public Sub New(  target As Throwable)
 			MyBase.New(CType(Nothing, Throwable)) ' Disallow initCause
 			Me.target = target
 		End Sub
@@ -79,7 +79,7 @@ Namespace java.lang.reflect
 		''' </summary>
 		''' <param name="target"> the target exception </param>
 		''' <param name="s">      the detail message </param>
-		Public Sub New(ByVal target As Throwable, ByVal s As String)
+		Public Sub New(  target As Throwable,   s As String)
 			MyBase.New(s, Nothing) ' Disallow initCause
 			Me.target = target
 		End Sub

@@ -281,7 +281,7 @@ Namespace java.math
         ''' <param name="val"> big-endian two's-complement binary representation of
         '''         Big java.lang.[Integer]. </param>
         ''' <exception cref="NumberFormatException"> {@code val} is zero bytes java.lang.[Long]. </exception>
-        Public Sub New(ByVal val As SByte())
+        Public Sub New(  val As SByte())
             If val.Length = 0 Then Throw New NumberFormatException("Zero length BigInteger")
 
             If val(0) < 0 Then
@@ -300,7 +300,7 @@ Namespace java.math
         ''' Big java.lang.[Integer]. The input array is assumed to be in <i>big-endian</i>
         ''' int-order: the most significant int is in the zeroth element.
         ''' </summary>
-        Private Sub New(ByVal val As Integer())
+        Private Sub New(  val As Integer())
             If val.Length = 0 Then Throw New NumberFormatException("Zero length BigInteger")
 
             If val(0) < 0 Then
@@ -328,7 +328,7 @@ Namespace java.math
         ''' <exception cref="NumberFormatException"> {@code signum} is not one of the three
         '''         legal values (-1, 0, and 1), or {@code signum} is 0 and
         '''         {@code magnitude} contains one or more non-zero bytes. </exception>
-        Public Sub New(ByVal signum As Integer, ByVal magnitude As SByte())
+        Public Sub New(  signum As Integer,   magnitude As SByte())
             Me.mag = stripLeadingZeroBytes(magnitude)
 
             If signum < -1 OrElse signum > 1 Then Throw (New NumberFormatException("Invalid signum value"))
@@ -348,7 +348,7 @@ Namespace java.math
         ''' arguments and copies the magnitude so this constructor would be
         ''' safe for external use.
         ''' </summary>
-        Private Sub New(ByVal signum As Integer, ByVal magnitude As Integer())
+        Private Sub New(  signum As Integer,   magnitude As Integer())
             Me.mag = stripLeadingZeroInts(magnitude)
 
             If signum < -1 OrElse signum > 1 Then Throw (New NumberFormatException("Invalid signum value"))
@@ -378,7 +378,7 @@ Namespace java.math
         '''         outside the range from <seealso cref="Character#MIN_RADIX"/> to
         '''         <seealso cref="Character#MAX_RADIX"/>, inclusive. </exception>
         ''' <seealso cref=    Character#digit </seealso>
-        Public Sub New(ByVal val As String, ByVal radix As Integer)
+        Public Sub New(  val As String,   radix As Integer)
             Dim cursor As Integer = 0, numDigits As Integer
             Dim len As Integer = val.Length()
 
@@ -447,7 +447,7 @@ Namespace java.math
         '     * Constructs a new BigInteger using a char array with radix=10.
         '     * Sign is precalculated outside and not allowed in the val.
         '     
-        Friend Sub New(ByVal val As Char(), ByVal sign As Integer, ByVal len As Integer)
+        Friend Sub New(  val As Char(),   sign As Integer,   len As Integer)
             Dim cursor As Integer = 0, numDigits As Integer
 
             ' Skip leading zeros and compute number of digits in magnitude
@@ -492,7 +492,7 @@ Namespace java.math
         ' Create an integer with the digits between the two indexes
         ' Assumes start < end. The result may be negative, but it
         ' is to be treated as an unsigned value.
-        Private Function parseInt(ByVal source As Char(), ByVal start As Integer, ByVal [end] As Integer) As Integer
+        Private Function parseInt(  source As Char(),   start As Integer,   [end] As Integer) As Integer
             Dim result As Integer = Character.digit(source(start), 10)
             start += 1
             If result = -1 Then Throw New NumberFormatException(New String(source))
@@ -511,7 +511,7 @@ Namespace java.math
         Private Shared bitsPerDigit As Long() = {0, 0, 1024, 1624, 2048, 2378, 2648, 2875, 3072, 3247, 3402, 3543, 3672, 3790, 3899, 4001, 4096, 4186, 4271, 4350, 4426, 4498, 4567, 4633, 4696, 4756, 4814, 4870, 4923, 4975, 5025, 5074, 5120, 5166, 5210, 5253, 5295}
 
         ' Multiply x array times word y in place, and add word z
-        Private Shared Sub destructiveMulAdd(ByVal x As Integer(), ByVal y As Integer, ByVal z As Integer)
+        Private Shared Sub destructiveMulAdd(  x As Integer(),   y As Integer,   z As Integer)
             ' Perform the multiplication word by word
             Dim ylong As Long = y And LONG_MASK
             Dim zlong As Long = z And LONG_MASK
@@ -548,7 +548,7 @@ Namespace java.math
         ''' <exception cref="NumberFormatException"> {@code val} is not a valid representation
         '''         of a Big java.lang.[Integer]. </exception>
         ''' <seealso cref=    Character#digit </seealso>
-        Public Sub New(ByVal val As String)
+        Public Sub New(  val As String)
             Me.New(val, 10)
         End Sub
 
@@ -564,11 +564,11 @@ Namespace java.math
         '''         Big java.lang.[Integer]. </param>
         ''' <exception cref="IllegalArgumentException"> {@code numBits} is negative. </exception>
         ''' <seealso cref= #bitLength() </seealso>
-        Public Sub New(ByVal numBits As Integer, ByVal rnd As Random)
+        Public Sub New(  numBits As Integer,   rnd As Random)
             Me.New(1, randomBits(numBits, rnd))
         End Sub
 
-        Private Shared Function randomBits(ByVal numBits As Integer, ByVal rnd As Random) As SByte()
+        Private Shared Function randomBits(  numBits As Integer,   rnd As Random) As SByte()
             If numBits < 0 Then Throw New IllegalArgumentException("numBits must be non-negative")
             Dim numBytes As Integer = CInt((CLng(numBits) + 7) \ 8) ' avoid overflow
             Dim randomBits_Renamed As SByte() = New SByte(numBytes - 1) {}
@@ -600,7 +600,7 @@ Namespace java.math
         '''         tested for primality. </param>
         ''' <exception cref="ArithmeticException"> {@code bitLength < 2} or {@code bitLength} is too large. </exception>
         ''' <seealso cref=    #bitLength() </seealso>
-        Public Sub New(ByVal bitLength As Integer, ByVal certainty As Integer, ByVal rnd As Random)
+        Public Sub New(  bitLength As Integer,   certainty As Integer,   rnd As Random)
             Dim prime As BigInteger
 
             If bitLength < 2 Then Throw New ArithmeticException("bitLength < 2")
@@ -629,7 +629,7 @@ Namespace java.math
         ''' <exception cref="ArithmeticException"> {@code bitLength < 2} or {@code bitLength} is too large. </exception>
         ''' <seealso cref=    #bitLength()
         ''' @since 1.4 </seealso>
-        Public Shared Function probablePrime(ByVal bitLength As Integer, ByVal rnd As Random) As BigInteger
+        Public Shared Function probablePrime(  bitLength As Integer,   rnd As Random) As BigInteger
             If bitLength < 2 Then Throw New ArithmeticException("bitLength < 2")
 
             Return (If(bitLength < SMALL_PRIME_THRESHOLD, smallPrime(bitLength, DEFAULT_PRIME_CERTAINTY, rnd), largePrime(bitLength, DEFAULT_PRIME_CERTAINTY, rnd)))
@@ -642,7 +642,7 @@ Namespace java.math
         ''' 
         ''' This method assumes bitLength > 1.
         ''' </summary>
-        Private Shared Function smallPrime(ByVal bitLength As Integer, ByVal certainty As Integer, ByVal rnd As Random) As BigInteger
+        Private Shared Function smallPrime(  bitLength As Integer,   certainty As Integer,   rnd As Random) As BigInteger
             Dim magLen As Integer = CInt(CUInt((bitLength + 31)) >> 5)
             Dim temp As Integer() = New Integer(magLen - 1) {}
             Dim highBit As Integer = 1 << ((bitLength + 31) And &H1F) ' High bit of high int
@@ -680,7 +680,7 @@ Namespace java.math
         ''' a sieve to eliminate most composites before using a more expensive
         ''' test.
         ''' </summary>
-        Private Shared Function largePrime(ByVal bitLength As Integer, ByVal certainty As Integer, ByVal rnd As Random) As BigInteger
+        Private Shared Function largePrime(  bitLength As Integer,   certainty As Integer,   rnd As Random) As BigInteger
             Dim p As BigInteger
             p = (New BigInteger(bitLength, rnd)).bitBit(bitLength - 1)
             p.mag(p.mag.Length - 1) = p.mag(p.mag.Length - 1) And &HFFFFFFFEL
@@ -759,7 +759,7 @@ Namespace java.math
             Loop
         End Function
 
-        Private Shared Function getPrimeSearchLen(ByVal bitLength As Integer) As Integer
+        Private Shared Function getPrimeSearchLen(  bitLength As Integer) As Integer
             If bitLength > PRIME_SEARCH_BIT_LENGTH_LIMIT + 1 Then Throw New ArithmeticException("Prime search implementation restriction on bitLength")
             Return bitLength \ 20 * 64
         End Function
@@ -777,7 +777,7 @@ Namespace java.math
         '''         this method is proportional to the value of this parameter. </param>
         ''' <returns> {@code true} if this BigInteger is probably prime,
         '''         {@code false} if it's definitely composite. </returns>
-        Friend Overridable Function primeToCertainty(ByVal certainty As Integer, ByVal random As Random) As Boolean
+        Friend Overridable Function primeToCertainty(  certainty As Integer,   random As Random) As Boolean
             Dim rounds As Integer = 0
             Dim n As Integer =  (System.Math.Min(certainty,  java.lang.[Integer].Max_Value - 1) + 1) / 2
 
@@ -834,7 +834,7 @@ Namespace java.math
         ''' Computes Jacobi(p,n).
         ''' Assumes n positive, odd, n>=3.
         ''' </summary>
-        Private Shared Function jacobiSymbol(ByVal p As Integer, ByVal n As BigInteger) As Integer
+        Private Shared Function jacobiSymbol(  p As Integer,   n As BigInteger) As Integer
             If p = 0 Then Return 0
 
             ' Algorithm and comments adapted from Colin Plumb's C library.
@@ -884,7 +884,7 @@ Namespace java.math
                 Return 0
         End Function
 
-        Private Shared Function lucasLehmerSequence(ByVal z As Integer, ByVal k As BigInteger, ByVal n As BigInteger) As BigInteger
+        Private Shared Function lucasLehmerSequence(  z As Integer,   k As BigInteger,   n As BigInteger) As BigInteger
             Dim d As BigInteger = Big java.lang.[Integer].valueOf(z)
             Dim u As BigInteger = ONE
             Dim u2 As BigInteger
@@ -926,7 +926,7 @@ Namespace java.math
         ''' This BigInteger is a positive, odd number greater than 2.
         ''' iterations<=50.
         ''' </summary>
-        Private Function passesMillerRabin(ByVal iterations As Integer, ByVal rnd As Random) As Boolean
+        Private Function passesMillerRabin(  iterations As Integer,   rnd As Random) As Boolean
             ' Find a and m such that m is odd and this == 1 + 2**a * m
             Dim thisMinusOne As BigInteger = Me.subtract(ONE)
             Dim m As BigInteger = thisMinusOne
@@ -958,7 +958,7 @@ Namespace java.math
         ''' with the arguments reversed in two ways: it assumes that its
         ''' arguments are correct, and it doesn't copy the magnitude array.
         ''' </summary>
-        Friend Sub New(ByVal magnitude As Integer(), ByVal signum As Integer)
+        Friend Sub New(  magnitude As Integer(),   signum As Integer)
             Me.signum_Renamed = (If(magnitude.Length = 0, 0, signum))
             Me.mag = magnitude
             If mag.Length >= MAX_MAG_LENGTH Then checkRange()
@@ -968,7 +968,7 @@ Namespace java.math
         ''' This private constructor is for internal use and assumes that its
         ''' arguments are correct.
         ''' </summary>
-        Private Sub New(ByVal magnitude As SByte(), ByVal signum As Integer)
+        Private Sub New(  magnitude As SByte(),   signum As Integer)
             Me.signum_Renamed = (If(magnitude.Length = 0, 0, signum))
             Me.mag = stripLeadingZeroBytes(magnitude)
             If mag.Length >= MAX_MAG_LENGTH Then checkRange()
@@ -997,7 +997,7 @@ Namespace java.math
         ''' </summary>
         ''' <param name="val"> value of the BigInteger to return. </param>
         ''' <returns> a BigInteger with the specified value. </returns>
-        Public Shared Function valueOf(ByVal val As Long) As BigInteger
+        Public Shared Function valueOf(  val As Long) As BigInteger
             ' If -MAX_CONSTANT < val < MAX_CONSTANT, return stashed constant
             If val = 0 Then Return ZERO
             If val > 0 AndAlso val <= MAX_CONSTANT Then
@@ -1012,7 +1012,7 @@ Namespace java.math
         ''' <summary>
         ''' Constructs a BigInteger with the specified value, which may not be zero.
         ''' </summary>
-        Private Sub New(ByVal val As Long)
+        Private Sub New(  val As Long)
             If val < 0 Then
                 val = -val
                 signum_Renamed = -1
@@ -1036,7 +1036,7 @@ Namespace java.math
         ''' Assumes that the input array will not be modified (the returned
         ''' BigInteger will reference the input array if feasible).
         ''' </summary>
-        Private Shared Function valueOf(ByVal val As Integer()) As BigInteger
+        Private Shared Function valueOf(  val As Integer()) As BigInteger
             Return (If(val(0) > 0, New BigInteger(val, 1), New BigInteger(val)))
         End Function
 
@@ -1136,7 +1136,7 @@ Namespace java.math
         ''' </summary>
         ''' <param name="val"> value to be added to this Big java.lang.[Integer]. </param>
         ''' <returns> {@code this + val} </returns>
-        Public Overridable Function add(ByVal val As BigInteger) As BigInteger
+        Public Overridable Function add(  val As BigInteger) As BigInteger
             If val.signum_Renamed = 0 Then Return Me
             If signum_Renamed = 0 Then Return val
             If val.signum_Renamed = signum_Renamed Then Return New BigInteger(add(mag, val.mag), signum_Renamed)
@@ -1153,7 +1153,7 @@ Namespace java.math
         ''' Package private methods used by BigDecimal code to add a BigInteger
         ''' with a java.lang.[Long]. Assumes val is not equal to INFLATED.
         ''' </summary>
-        Friend Overridable Function add(ByVal val As Long) As BigInteger
+        Friend Overridable Function add(  val As Long) As BigInteger
             If val = 0 Then Return Me
             If signum_Renamed = 0 Then Return valueOf(val)
             If java.lang.[Long].signum(val) = signum_Renamed Then Return New BigInteger(add(mag, System.Math.Abs(val)), signum_Renamed)
@@ -1170,7 +1170,7 @@ Namespace java.math
         ''' a reference to that array.  Assumes x.length &gt; 0 and val is
         ''' non-negative
         ''' </summary>
-        Private Shared Function add(ByVal x As Integer(), ByVal val As Long) As Integer()
+        Private Shared Function add(  x As Integer(),   val As Long) As Integer()
             Dim y As Integer()
             Dim sum As Long = 0
             Dim xIndex As Integer = x.Length
@@ -1225,7 +1225,7 @@ Namespace java.math
         ''' a new int array to hold the answer and returns a reference to that
         ''' array.
         ''' </summary>
-        Private Shared Function add(ByVal x As Integer(), ByVal y As Integer()) As Integer()
+        Private Shared Function add(  x As Integer(),   y As Integer()) As Integer()
             ' If x is shorter, swap the two arrays
             If x.Length < y.Length Then
                 Dim tmp As Integer() = x
@@ -1274,7 +1274,7 @@ Namespace java.math
             Return result
         End Function
 
-        Private Shared Function subtract(ByVal val As Long, ByVal little As Integer()) As Integer()
+        Private Shared Function subtract(  val As Long,   little As Integer()) As Integer()
             Dim highWord As Integer = CInt(CLng(CULng(val) >> 32))
             If highWord = 0 Then
                 Dim result As Integer() = New Integer(0) {}
@@ -1310,7 +1310,7 @@ Namespace java.math
         ''' answer.
         ''' assumes val &gt;= 0
         ''' </summary>
-        Private Shared Function subtract(ByVal big As Integer(), ByVal val As Long) As Integer()
+        Private Shared Function subtract(  big As Integer(),   val As Long) As Integer()
             Dim highWord As Integer = CInt(CLng(CULng(val) >> 32))
             Dim bigIndex As Integer = big.Length
             Dim result As Integer() = New Integer(bigIndex - 1) {}
@@ -1351,7 +1351,7 @@ Namespace java.math
         ''' </summary>
         ''' <param name="val"> value to be subtracted from this Big java.lang.[Integer]. </param>
         ''' <returns> {@code this - val} </returns>
-        Public Overridable Function subtract(ByVal val As BigInteger) As BigInteger
+        Public Overridable Function subtract(  val As BigInteger) As BigInteger
             If val.signum_Renamed = 0 Then Return Me
             If signum_Renamed = 0 Then Return val.negate()
             If val.signum_Renamed <> signum_Renamed Then Return New BigInteger(add(mag, val.mag), signum_Renamed)
@@ -1369,7 +1369,7 @@ Namespace java.math
         ''' than the second.  This method allocates the space necessary to hold the
         ''' answer.
         ''' </summary>
-        Private Shared Function subtract(ByVal big As Integer(), ByVal little As Integer()) As Integer()
+        Private Shared Function subtract(  big As Integer(),   little As Integer()) As Integer()
             Dim bigIndex As Integer = big.Length
             Dim result As Integer() = New Integer(bigIndex - 1) {}
             Dim littleIndex As Integer = little.Length
@@ -1408,7 +1408,7 @@ Namespace java.math
         ''' </summary>
         ''' <param name="val"> value to be multiplied by this Big java.lang.[Integer]. </param>
         ''' <returns> {@code this * val} </returns>
-        Public Overridable Function multiply(ByVal val As BigInteger) As BigInteger
+        Public Overridable Function multiply(  val As BigInteger) As BigInteger
             If val.signum_Renamed = 0 OrElse signum_Renamed = 0 Then Return ZERO
 
             Dim xlen As Integer = mag.Length
@@ -1433,7 +1433,7 @@ Namespace java.math
             End If
         End Function
 
-        Private Shared Function multiplyByInt(ByVal x As Integer(), ByVal y As Integer, ByVal sign As Integer) As BigInteger
+        Private Shared Function multiplyByInt(  x As Integer(),   y As Integer,   sign As Integer) As BigInteger
             If  java.lang.[Integer].bitCount(y) = 1 Then Return New BigInteger(shiftLeft(x,  java.lang.[Integer].numberOfTrailingZeros(y)), sign)
             Dim xlen As Integer = x.Length
             Dim rmag As Integer() = New Integer(xlen) {}
@@ -1458,7 +1458,7 @@ Namespace java.math
         ''' Package private methods used by BigDecimal code to multiply a BigInteger
         ''' with a java.lang.[Long]. Assumes v is not equal to INFLATED.
         ''' </summary>
-        Friend Overridable Function multiply(ByVal v As Long) As BigInteger
+        Friend Overridable Function multiply(  v As Long) As BigInteger
             If v = 0 OrElse signum_Renamed = 0 Then Return ZERO
             If v = BigDecimal.INFLATED_Renamed Then Return multiply(Big java.lang.[Integer].valueOf(v))
             Dim rsign As Integer = (If(v > 0, signum_Renamed, -signum_Renamed))
@@ -1497,7 +1497,7 @@ Namespace java.math
         ''' Multiplies int arrays x and y to the specified lengths and places
         ''' the result into z. There will be no leading zeros in the resultant array.
         ''' </summary>
-        Private Function multiplyToLen(ByVal x As Integer(), ByVal xlen As Integer, ByVal y As Integer(), ByVal ylen As Integer, ByVal z As Integer()) As Integer()
+        Private Function multiplyToLen(  x As Integer(),   xlen As Integer,   y As Integer(),   ylen As Integer,   z As Integer()) As Integer()
             Dim xstart As Integer = xlen - 1
             Dim ystart As Integer = ylen - 1
 
@@ -1546,7 +1546,7 @@ Namespace java.math
         ''' 
         ''' See:  http://en.wikipedia.org/wiki/Karatsuba_algorithm
         ''' </summary>
-        Private Shared Function multiplyKaratsuba(ByVal x As BigInteger, ByVal y As BigInteger) As BigInteger
+        Private Shared Function multiplyKaratsuba(  x As BigInteger,   y As BigInteger) As BigInteger
             Dim xlen As Integer = x.mag.Length
             Dim ylen As Integer = y.mag.Length
 
@@ -1604,7 +1604,7 @@ Namespace java.math
         ''' LNCS #4547. Springer, Madrid, Spain, June 21-22, 2007.
         ''' 
         ''' </summary>
-        Private Shared Function multiplyToomCook3(ByVal a As BigInteger, ByVal b As BigInteger) As BigInteger
+        Private Shared Function multiplyToomCook3(  a As BigInteger,   b As BigInteger) As BigInteger
             Dim alen As Integer = a.mag.Length
             Dim blen As Integer = b.mag.Length
 
@@ -1677,7 +1677,7 @@ Namespace java.math
         ''' <param name="fullsize"> The size of the larger integer array, used to align
         ''' slices to the appropriate position when multiplying different-sized
         ''' numbers. </param>
-        Private Function getToomSlice(ByVal lowerSize As Integer, ByVal upperSize As Integer, ByVal slice As Integer, ByVal fullsize As Integer) As BigInteger
+        Private Function getToomSlice(  lowerSize As Integer,   upperSize As Integer,   slice As Integer,   fullsize As Integer) As BigInteger
             Dim start, [end], sliceSize, len, offset As Integer
 
             len = mag.Length
@@ -1751,7 +1751,7 @@ Namespace java.math
         ''' Returns a new BigInteger representing n lower ints of the number.
         ''' This is used by Karatsuba multiplication and Karatsuba squaring.
         ''' </summary>
-        Private Function getLower(ByVal n As Integer) As BigInteger
+        Private Function getLower(  n As Integer) As BigInteger
             Dim len As Integer = mag.Length
 
             If len <= n Then Return abs()
@@ -1767,7 +1767,7 @@ Namespace java.math
         ''' ints of the number.  This is used by Karatsuba multiplication and
         ''' Karatsuba squaring.
         ''' </summary>
-        Private Function getUpper(ByVal n As Integer) As BigInteger
+        Private Function getUpper(  n As Integer) As BigInteger
             Dim len As Integer = mag.Length
 
             If len <= n Then Return ZERO
@@ -1805,7 +1805,7 @@ Namespace java.math
         ''' Squares the contents of the int array x. The result is placed into the
         ''' int array z.  The contents of x are not changed.
         ''' </summary>
-        Private Shared Function squareToLen(ByVal x As Integer(), ByVal len As Integer, ByVal z As Integer()) As Integer()
+        Private Shared Function squareToLen(  x As Integer(),   len As Integer,   z As Integer()) As Integer()
             '        
             '         * The algorithm used here is adapted from Colin Plumb's C library.
             '         * Technique: Consider the partial products in the multiplication
@@ -1956,7 +1956,7 @@ Namespace java.math
         ''' <param name="val"> value by which this BigInteger is to be divided. </param>
         ''' <returns> {@code this / val} </returns>
         ''' <exception cref="ArithmeticException"> if {@code val} is zero. </exception>
-        Public Overridable Function divide(ByVal val As BigInteger) As BigInteger
+        Public Overridable Function divide(  val As BigInteger) As BigInteger
             If val.mag.Length < BURNIKEL_ZIEGLER_THRESHOLD OrElse mag.Length - val.mag.Length < BURNIKEL_ZIEGLER_OFFSET Then
                 Return divideKnuth(val)
             Else
@@ -1971,7 +1971,7 @@ Namespace java.math
         ''' <returns> {@code this / val} </returns>
         ''' <exception cref="ArithmeticException"> if {@code val} is zero. </exception>
         ''' <seealso cref= MutableBigInteger#divideKnuth(MutableBigInteger, MutableBigInteger, boolean) </seealso>
-        Private Function divideKnuth(ByVal val As BigInteger) As BigInteger
+        Private Function divideKnuth(  val As BigInteger) As BigInteger
             Dim q As New MutableBigInteger, a As New MutableBigInteger(Me.mag), b As New MutableBigInteger(val.mag)
 
             a.divideKnuth(b, q, False)
@@ -1988,7 +1988,7 @@ Namespace java.math
         '''         is the initial element, and the remainder {@code (this % val)}
         '''         is the final element. </returns>
         ''' <exception cref="ArithmeticException"> if {@code val} is zero. </exception>
-        Public Overridable Function divideAndRemainder(ByVal val As BigInteger) As BigInteger()
+        Public Overridable Function divideAndRemainder(  val As BigInteger) As BigInteger()
             If val.mag.Length < BURNIKEL_ZIEGLER_THRESHOLD OrElse mag.Length - val.mag.Length < BURNIKEL_ZIEGLER_OFFSET Then
                 Return divideAndRemainderKnuth(val)
             Else
@@ -1998,7 +1998,7 @@ Namespace java.math
 
         ''' <summary>
         ''' Long division </summary>
-        Private Function divideAndRemainderKnuth(ByVal val As BigInteger) As BigInteger()
+        Private Function divideAndRemainderKnuth(  val As BigInteger) As BigInteger()
             Dim result As BigInteger() = New BigInteger(1) {}
             Dim q As New MutableBigInteger, a As New MutableBigInteger(Me.mag), b As New MutableBigInteger(val.mag)
             Dim r As MutableBigInteger = a.divideKnuth(b, q)
@@ -2014,7 +2014,7 @@ Namespace java.math
         '''         remainder computed. </param>
         ''' <returns> {@code this % val} </returns>
         ''' <exception cref="ArithmeticException"> if {@code val} is zero. </exception>
-        Public Overridable Function remainder(ByVal val As BigInteger) As BigInteger
+        Public Overridable Function remainder(  val As BigInteger) As BigInteger
             If val.mag.Length < BURNIKEL_ZIEGLER_THRESHOLD OrElse mag.Length - val.mag.Length < BURNIKEL_ZIEGLER_OFFSET Then
                 Return remainderKnuth(val)
             Else
@@ -2024,7 +2024,7 @@ Namespace java.math
 
         ''' <summary>
         ''' Long division </summary>
-        Private Function remainderKnuth(ByVal val As BigInteger) As BigInteger
+        Private Function remainderKnuth(  val As BigInteger) As BigInteger
             Dim q As New MutableBigInteger, a As New MutableBigInteger(Me.mag), b As New MutableBigInteger(val.mag)
 
             Return a.divideKnuth(b, q).toBigInteger(Me.signum_Renamed)
@@ -2034,7 +2034,7 @@ Namespace java.math
         ''' Calculates {@code this / val} using the Burnikel-Ziegler algorithm. </summary>
         ''' <param name="val"> the divisor </param>
         ''' <returns> {@code this / val} </returns>
-        Private Function divideBurnikelZiegler(ByVal val As BigInteger) As BigInteger
+        Private Function divideBurnikelZiegler(  val As BigInteger) As BigInteger
             Return divideAndRemainderBurnikelZiegler(val)(0)
         End Function
 
@@ -2042,7 +2042,7 @@ Namespace java.math
         ''' Calculates {@code this % val} using the Burnikel-Ziegler algorithm. </summary>
         ''' <param name="val"> the divisor </param>
         ''' <returns> {@code this % val} </returns>
-        Private Function remainderBurnikelZiegler(ByVal val As BigInteger) As BigInteger
+        Private Function remainderBurnikelZiegler(  val As BigInteger) As BigInteger
             Return divideAndRemainderBurnikelZiegler(val)(1)
         End Function
 
@@ -2051,7 +2051,7 @@ Namespace java.math
         ''' Burnikel-Ziegler algorithm. </summary>
         ''' <param name="val"> the divisor </param>
         ''' <returns> an array containing the quotient and remainder </returns>
-        Private Function divideAndRemainderBurnikelZiegler(ByVal val As BigInteger) As BigInteger()
+        Private Function divideAndRemainderBurnikelZiegler(  val As BigInteger) As BigInteger()
             Dim q As New MutableBigInteger
             Dim r As (New MutableBigInteger(Me)).divideAndRemainderBurnikelZiegler(New MutableBigInteger(val), q)
 			Dim qBigInt As BigInteger = If(q.zero, ZERO, q.toBigInteger(signum_Renamed * val.signum_Renamed))
@@ -2067,7 +2067,7 @@ Namespace java.math
         ''' <returns> <tt>this<sup>exponent</sup></tt> </returns>
         ''' <exception cref="ArithmeticException"> {@code exponent} is negative.  (This would
         '''         cause the operation to yield a non-integer value.) </exception>
-        Public Overridable Function pow(ByVal exponent As Integer) As BigInteger
+        Public Overridable Function pow(  exponent As Integer) As BigInteger
             If exponent < 0 Then Throw New ArithmeticException("Negative exponent")
             If signum_Renamed = 0 Then Return (If(exponent = 0, ONE, Me))
 
@@ -2169,7 +2169,7 @@ Namespace java.math
         ''' </summary>
         ''' <param name="val"> value with which the GCD is to be computed. </param>
         ''' <returns> {@code GCD(abs(this), abs(val))} </returns>
-        Public Overridable Function gcd(ByVal val As BigInteger) As BigInteger
+        Public Overridable Function gcd(  val As BigInteger) As BigInteger
             If val.signum_Renamed = 0 Then
                 Return Me.abs()
             ElseIf Me.signum_Renamed = 0 Then
@@ -2187,7 +2187,7 @@ Namespace java.math
         ''' <summary>
         ''' Package private method to return bit length for an  java.lang.[Integer].
         ''' </summary>
-        Friend Shared Function bitLengthForInt(ByVal n As Integer) As Integer
+        Friend Shared Function bitLengthForInt(  n As Integer) As Integer
             Return 32 -  java.lang.[Integer].numberOfLeadingZeros(n)
         End Function
 
@@ -2195,7 +2195,7 @@ Namespace java.math
         ''' Left shift int array a up to len by n bits. Returns the array that
         ''' results from the shift since space may have to be reallocated.
         ''' </summary>
-        Private Shared Function leftShift(ByVal a As Integer(), ByVal len As Integer, ByVal n As Integer) As Integer()
+        Private Shared Function leftShift(  a As Integer(),   len As Integer,   n As Integer) As Integer()
             Dim nInts As Integer = CInt(CUInt(n) >> 5)
             Dim nBits As Integer = n And &H1F
             Dim bitsInHighWord As Integer = bitLengthForInt(a(0))
@@ -2220,7 +2220,7 @@ Namespace java.math
         End Function
 
         ' shifts a up to len right n bits assumes no leading zeros, 0<n<32
-        Friend Shared Sub primitiveRightShift(ByVal a As Integer(), ByVal len As Integer, ByVal n As Integer)
+        Friend Shared Sub primitiveRightShift(  a As Integer(),   len As Integer,   n As Integer)
             Dim n2 As Integer = 32 - n
             Dim i As Integer = len - 1
             Dim c As Integer = a(i)
@@ -2234,7 +2234,7 @@ Namespace java.math
 		End Sub
 
         ' shifts a up to len left n bits assumes no leading zeros, 0<=n<32
-        Friend Shared Sub primitiveLeftShift(ByVal a As Integer(), ByVal len As Integer, ByVal n As Integer)
+        Friend Shared Sub primitiveLeftShift(  a As Integer(),   len As Integer,   n As Integer)
             If len = 0 OrElse n = 0 Then Return
 
             Dim n2 As Integer = 32 - n
@@ -2254,7 +2254,7 @@ Namespace java.math
         ''' Calculate bitlength of contents of the first len elements an int array,
         ''' assuming there are no leading zero ints.
         ''' </summary>
-        Private Shared Function bitLength(ByVal val As Integer(), ByVal len As Integer) As Integer
+        Private Shared Function bitLength(  val As Integer(),   len As Integer) As Integer
             If len = 0 Then Return 0
             Return ((len - 1) << 5) + bitLengthForInt(val(0))
         End Function
@@ -2296,7 +2296,7 @@ Namespace java.math
         ''' <returns> {@code this mod m} </returns>
         ''' <exception cref="ArithmeticException"> {@code m} &le; 0 </exception>
         ''' <seealso cref=    #remainder </seealso>
-        Public Overridable Function [mod](ByVal m As BigInteger) As BigInteger
+        Public Overridable Function [mod](  m As BigInteger) As BigInteger
             If m.signum_Renamed <= 0 Then Throw New ArithmeticException("BigInteger: modulus not positive")
 
             Dim result As BigInteger = Me.remainder(m)
@@ -2315,7 +2315,7 @@ Namespace java.math
         '''         negative and this BigInteger is not <i>relatively
         '''         prime</i> to {@code m}. </exception>
         ''' <seealso cref=    #modInverse </seealso>
-        Public Overridable Function modPow(ByVal exponent As BigInteger, ByVal m As BigInteger) As BigInteger
+        Public Overridable Function modPow(  exponent As BigInteger,   m As BigInteger) As BigInteger
             If m.signum_Renamed <= 0 Then Throw New ArithmeticException("BigInteger: modulus not positive")
 
             ' Trivial cases
@@ -2383,7 +2383,7 @@ Namespace java.math
         ''' Returns a BigInteger whose value is x to the power of y mod z.
         ''' Assumes: z is odd && x < z.
         ''' </summary>
-        Private Function oddModPow(ByVal y As BigInteger, ByVal z As BigInteger) As BigInteger
+        Private Function oddModPow(  y As BigInteger,   z As BigInteger) As BigInteger
             '    
             '     * The algorithm is adapted from Colin Plumb's C library.
             '     *
@@ -2609,7 +2609,7 @@ Namespace java.math
         ''' Montgomery reduce n, modulo mod.  This reduces modulo mod and divides
         ''' by 2^(32*mlen). Adapted from Colin Plumb's C library.
         ''' </summary>
-        Private Shared Function montReduce(ByVal n As Integer(), ByVal [mod] As Integer(), ByVal mlen As Integer, ByVal inv As Integer) As Integer()
+        Private Shared Function montReduce(  n As Integer(),   [mod] As Integer(),   mlen As Integer,   inv As Integer) As Integer()
             Dim c As Integer = 0
             Dim len As Integer = mlen
             Dim offset As Integer = 0
@@ -2638,7 +2638,7 @@ Namespace java.math
         '     * Returns -1, 0 or +1 as big-endian unsigned int array arg1 is less than,
         '     * equal to, or greater than arg2 up to length len.
         '     
-        Private Shared Function intArrayCmpToLen(ByVal arg1 As Integer(), ByVal arg2 As Integer(), ByVal len As Integer) As Integer
+        Private Shared Function intArrayCmpToLen(  arg1 As Integer(),   arg2 As Integer(),   len As Integer) As Integer
             For i As Integer = 0 To len - 1
                 Dim b1 As Long = arg1(i) And LONG_MASK
                 Dim b2 As Long = arg2(i) And LONG_MASK
@@ -2651,7 +2651,7 @@ Namespace java.math
         ''' <summary>
         ''' Subtracts two numbers of same length, returning borrow.
         ''' </summary>
-        Private Shared Function subN(ByVal a As Integer(), ByVal b As Integer(), ByVal len As Integer) As Integer
+        Private Shared Function subN(  a As Integer(),   b As Integer(),   len As Integer) As Integer
             Dim sum As Long = 0
 
             len -= 1
@@ -2667,7 +2667,7 @@ Namespace java.math
         ''' <summary>
         ''' Multiply an array by one word k and add to result, return the carry
         ''' </summary>
-        Friend Shared Function mulAdd(ByVal out As Integer(), ByVal [in] As Integer(), ByVal offset As Integer, ByVal len As Integer, ByVal k As Integer) As Integer
+        Friend Shared Function mulAdd(  out As Integer(),   [in] As Integer(),   offset As Integer,   len As Integer,   k As Integer) As Integer
             Dim kLong As Long = k And LONG_MASK
             Dim carry As Long = 0
 
@@ -2685,7 +2685,7 @@ Namespace java.math
         ''' Add one word to the number a mlen words into a. Return the resulting
         ''' carry.
         ''' </summary>
-        Friend Shared Function addOne(ByVal a As Integer(), ByVal offset As Integer, ByVal mlen As Integer, ByVal carry As Integer) As Integer
+        Friend Shared Function addOne(  a As Integer(),   offset As Integer,   mlen As Integer,   carry As Integer) As Integer
             offset = a.Length - 1 - mlen - offset
             Dim t As Long = (a(offset) And LONG_MASK) + (carry And LONG_MASK)
 
@@ -2708,7 +2708,7 @@ Namespace java.math
         ''' <summary>
         ''' Returns a BigInteger whose value is (this ** exponent) mod (2**p)
         ''' </summary>
-        Private Function modPow2(ByVal exponent As BigInteger, ByVal p As Integer) As BigInteger
+        Private Function modPow2(  exponent As BigInteger,   p As Integer) As BigInteger
             '        
             '         * Perform exponentiation using repeated squaring trick, chopping off
             '         * high order bits as indicated by modulus.
@@ -2734,7 +2734,7 @@ Namespace java.math
         ''' Returns a BigInteger whose value is this mod(2**p).
         ''' Assumes that this {@code BigInteger >= 0} and {@code p > 0}.
         ''' </summary>
-        Private Function mod2(ByVal p As Integer) As BigInteger
+        Private Function mod2(  p As Integer) As BigInteger
             If bitLength() <= p Then Return Me
 
             ' Copy remaining ints of mag
@@ -2757,7 +2757,7 @@ Namespace java.math
         ''' <exception cref="ArithmeticException"> {@code  m} &le; 0, or this BigInteger
         '''         has no multiplicative inverse mod m (that is, this BigInteger
         '''         is not <i>relatively prime</i> to m). </exception>
-        Public Overridable Function modInverse(ByVal m As BigInteger) As BigInteger
+        Public Overridable Function modInverse(  m As BigInteger) As BigInteger
             If m.signum_Renamed <> 1 Then Throw New ArithmeticException("BigInteger: modulus not positive")
 
             If m.Equals(ONE) Then Return ZERO
@@ -2786,7 +2786,7 @@ Namespace java.math
         ''' <param name="n"> shift distance, in bits. </param>
         ''' <returns> {@code this << n} </returns>
         ''' <seealso cref= #shiftRight </seealso>
-        Public Overridable Function shiftLeft(ByVal n As Integer) As BigInteger
+        Public Overridable Function shiftLeft(  n As Integer) As BigInteger
             If signum_Renamed = 0 Then Return ZERO
             If n > 0 Then
                 Return New BigInteger(shiftLeft(mag, n), signum_Renamed)
@@ -2807,7 +2807,7 @@ Namespace java.math
         ''' <param name="mag"> magnitude, the most-significant int ({@code mag[0]}) must be non-zero. </param>
         ''' <param name="n"> unsigned shift distance, in bits. </param>
         ''' <returns> {@code mag << n} </returns>
-        Private Shared Function shiftLeft(ByVal mag As Integer(), ByVal n As Integer) As Integer()
+        Private Shared Function shiftLeft(  mag As Integer(),   n As Integer) As Integer()
             Dim nInts As Integer = CInt(CUInt(n) >> 5)
             Dim nBits As Integer = n And &H1F
             Dim magLen As Integer = mag.Length
@@ -2847,7 +2847,7 @@ Namespace java.math
         ''' <param name="n"> shift distance, in bits. </param>
         ''' <returns> {@code this >> n} </returns>
         ''' <seealso cref= #shiftLeft </seealso>
-        Public Overridable Function shiftRight(ByVal n As Integer) As BigInteger
+        Public Overridable Function shiftRight(  n As Integer) As BigInteger
             If signum_Renamed = 0 Then Return ZERO
             If n > 0 Then
                 Return shiftRightImpl(n)
@@ -2867,7 +2867,7 @@ Namespace java.math
         ''' </summary>
         ''' <param name="n"> unsigned shift distance, in bits. </param>
         ''' <returns> {@code this >> n} </returns>
-        Private Function shiftRightImpl(ByVal n As Integer) As BigInteger
+        Private Function shiftRightImpl(  n As Integer) As BigInteger
             Dim nInts As Integer = CInt(CUInt(n) >> 5)
             Dim nBits As Integer = n And &H1F
             Dim magLen As Integer = mag.Length
@@ -2916,7 +2916,7 @@ Namespace java.math
             Return New BigInteger(newMag, signum_Renamed)
         End Function
 
-        Friend Overridable Function javaIncrement(ByVal val As Integer()) As Integer()
+        Friend Overridable Function javaIncrement(  val As Integer()) As Integer()
             Dim lastSum As Integer = 0
             Dim i As Integer = val.Length - 1
             Do While i >= 0 AndAlso lastSum = 0
@@ -2940,7 +2940,7 @@ Namespace java.math
         ''' </summary>
         ''' <param name="val"> value to be AND'ed with this Big java.lang.[Integer]. </param>
         ''' <returns> {@code this & val} </returns>
-        Public Overridable Function [and](ByVal val As BigInteger) As BigInteger
+        Public Overridable Function [and](  val As BigInteger) As BigInteger
             Dim result As Integer() = New Integer (System.Math.Max(intLength(), val.intLength()) - 1) {}
             For i As Integer = 0 To result.Length - 1
                 result(i) = (getInt(result.Length - i - 1) And val.getInt(result.Length - i - 1))
@@ -2956,7 +2956,7 @@ Namespace java.math
         ''' </summary>
         ''' <param name="val"> value to be OR'ed with this Big java.lang.[Integer]. </param>
         ''' <returns> {@code this | val} </returns>
-        Public Overridable Function [or](ByVal val As BigInteger) As BigInteger
+        Public Overridable Function [or](  val As BigInteger) As BigInteger
             Dim result As Integer() = New Integer (System.Math.Max(intLength(), val.intLength()) - 1) {}
             For i As Integer = 0 To result.Length - 1
                 result(i) = (getInt(result.Length - i - 1) Or val.getInt(result.Length - i - 1))
@@ -2972,7 +2972,7 @@ Namespace java.math
         ''' </summary>
         ''' <param name="val"> value to be XOR'ed with this Big java.lang.[Integer]. </param>
         ''' <returns> {@code this ^ val} </returns>
-        Public Overridable Function [xor](ByVal val As BigInteger) As BigInteger
+        Public Overridable Function [xor](  val As BigInteger) As BigInteger
             Dim result As Integer() = New Integer (System.Math.Max(intLength(), val.intLength()) - 1) {}
             For i As Integer = 0 To result.Length - 1
                 result(i) = (getInt(result.Length - i - 1) Xor val.getInt(result.Length - i - 1))
@@ -3005,7 +3005,7 @@ Namespace java.math
         ''' </summary>
         ''' <param name="val"> value to be complemented and AND'ed with this Big java.lang.[Integer]. </param>
         ''' <returns> {@code this & ~val} </returns>
-        Public Overridable Function andNot(ByVal val As BigInteger) As BigInteger
+        Public Overridable Function andNot(  val As BigInteger) As BigInteger
             Dim result As Integer() = New Integer (System.Math.Max(intLength(), val.intLength()) - 1) {}
             For i As Integer = 0 To result.Length - 1
                 result(i) = (getInt(result.Length - i - 1) And (Not val.getInt(result.Length - i - 1)))
@@ -3024,7 +3024,7 @@ Namespace java.math
         ''' <param name="n"> index of bit to test. </param>
         ''' <returns> {@code true} if and only if the designated bit is set. </returns>
         ''' <exception cref="ArithmeticException"> {@code n} is negative. </exception>
-        Public Overridable Function testBit(ByVal n As Integer) As Boolean
+        Public Overridable Function testBit(  n As Integer) As Boolean
             If n < 0 Then Throw New ArithmeticException("Negative bit address")
 
             Return (getInt(CInt(CUInt(n) >> 5)) And (1 << (n And 31))) <> 0
@@ -3037,7 +3037,7 @@ Namespace java.math
         ''' <param name="n"> index of bit to set. </param>
         ''' <returns> {@code this | (1<<n)} </returns>
         ''' <exception cref="ArithmeticException"> {@code n} is negative. </exception>
-        Public Overridable Function setBit(ByVal n As Integer) As BigInteger
+        Public Overridable Function setBit(  n As Integer) As BigInteger
             If n < 0 Then Throw New ArithmeticException("Negative bit address")
 
             Dim intNum As Integer = CInt(CUInt(n) >> 5)
@@ -3060,7 +3060,7 @@ Namespace java.math
         ''' <param name="n"> index of bit to clear. </param>
         ''' <returns> {@code this & ~(1<<n)} </returns>
         ''' <exception cref="ArithmeticException"> {@code n} is negative. </exception>
-        Public Overridable Function clearBit(ByVal n As Integer) As BigInteger
+        Public Overridable Function clearBit(  n As Integer) As BigInteger
             If n < 0 Then Throw New ArithmeticException("Negative bit address")
 
             Dim intNum As Integer = CInt(CUInt(n) >> 5)
@@ -3083,7 +3083,7 @@ Namespace java.math
         ''' <param name="n"> index of bit to flip. </param>
         ''' <returns> {@code this ^ (1<<n)} </returns>
         ''' <exception cref="ArithmeticException"> {@code n} is negative. </exception>
-        Public Overridable Function flipBit(ByVal n As Integer) As BigInteger
+        Public Overridable Function flipBit(  n As Integer) As BigInteger
             If n < 0 Then Throw New ArithmeticException("Negative bit address")
 
             Dim intNum As Integer = CInt(CUInt(n) >> 5)
@@ -3219,7 +3219,7 @@ Namespace java.math
         '''         this method is proportional to the value of this parameter. </param>
         ''' <returns> {@code true} if this BigInteger is probably prime,
         '''         {@code false} if it's definitely composite. </returns>
-        Public Overridable Function isProbablePrime(ByVal certainty As Integer) As Boolean
+        Public Overridable Function isProbablePrime(  certainty As Integer) As Boolean
             If certainty <= 0 Then Return True
             Dim w As BigInteger = Me.abs()
             If w.Equals(TWO) Then Return True
@@ -3242,7 +3242,7 @@ Namespace java.math
         ''' <param name="val"> BigInteger to which this BigInteger is to be compared. </param>
         ''' <returns> -1, 0 or 1 as this BigInteger is numerically less than, equal
         '''         to, or greater than {@code val}. </returns>
-        Public Overridable Function compareTo(ByVal val As BigInteger) As Integer Implements Comparable(Of BigInteger).compareTo
+        Public Overridable Function compareTo(  val As BigInteger) As Integer Implements Comparable(Of BigInteger).compareTo
             If signum_Renamed = val.signum_Renamed Then
                 Select Case signum_Renamed
                     Case 1
@@ -3263,7 +3263,7 @@ Namespace java.math
         ''' <param name="val"> BigInteger whose magnitude array to be compared. </param>
         ''' <returns> -1, 0 or 1 as this magnitude array is less than, equal to or
         '''         greater than the magnitude aray for the specified BigInteger's. </returns>
-        Friend Function compareMagnitude(ByVal val As BigInteger) As Integer
+        Friend Function compareMagnitude(  val As BigInteger) As Integer
             Dim m1 As Integer() = mag
             Dim len1 As Integer = m1.Length
             Dim m2 As Integer() = val.mag
@@ -3282,7 +3282,7 @@ Namespace java.math
         ''' Version of compareMagnitude that compares magnitude with long value.
         ''' val can't be java.lang.[Long].MIN_VALUE.
         ''' </summary>
-        Friend Function compareMagnitude(ByVal val As Long) As Integer
+        Friend Function compareMagnitude(  val As Long) As Integer
             Debug.Assert(val <> java.lang.[Long].MIN_VALUE)
             Dim m1 As Integer() = mag
             Dim len As Integer = m1.Length
@@ -3314,7 +3314,7 @@ Namespace java.math
         ''' <param name="x"> Object to which this BigInteger is to be compared. </param>
         ''' <returns> {@code true} if and only if the specified Object is a
         '''         BigInteger whose value is numerically equal to this Big java.lang.[Integer]. </returns>
-        Public Overrides Function Equals(ByVal x As Object) As Boolean
+        Public Overrides Function Equals(  x As Object) As Boolean
             ' This test is just an optimization, which may or may not help
             If x Is Me Then Return True
 
@@ -3341,7 +3341,7 @@ Namespace java.math
         ''' <param name="val"> value with which the minimum is to be computed. </param>
         ''' <returns> the BigInteger whose value is the lesser of this BigInteger and
         '''         {@code val}.  If they are equal, either may be returned. </returns>
-        Public Overridable Function min(ByVal val As BigInteger) As BigInteger
+        Public Overridable Function min(  val As BigInteger) As BigInteger
             Return (If(compareTo(val) < 0, Me, val))
         End Function
 
@@ -3351,7 +3351,7 @@ Namespace java.math
         ''' <param name="val"> value with which the maximum is to be computed. </param>
         ''' <returns> the BigInteger whose value is the greater of this and
         '''         {@code val}.  If they are equal, either may be returned. </returns>
-        Public Overridable Function max(ByVal val As BigInteger) As BigInteger
+        Public Overridable Function max(  val As BigInteger) As BigInteger
             Return (If(compareTo(val) > 0, Me, val))
         End Function
 
@@ -3388,7 +3388,7 @@ Namespace java.math
         ''' <seealso cref=    Integer#toString </seealso>
         ''' <seealso cref=    Character#forDigit </seealso>
         ''' <seealso cref=    #BigInteger(java.lang.String, int) </seealso>
-        Public Overrides Function ToString(ByVal radix As Integer) As String
+        Public Overrides Function ToString(  radix As Integer) As String
             If signum_Renamed = 0 Then Return "0"
             If radix < Character.MIN_RADIX OrElse radix > Character.MAX_RADIX Then radix = 10
 
@@ -3410,7 +3410,7 @@ Namespace java.math
 
         ''' <summary>
         ''' This method is used to perform toString when arguments are small. </summary>
-        Private Function smallToString(ByVal radix As Integer) As String
+        Private Function smallToString(  radix As Integer) As String
             If signum_Renamed = 0 Then Return "0"
 
             ' Compute upper bound on number of digit groups and allocate space
@@ -3460,7 +3460,7 @@ Namespace java.math
         ''' <param name="sb">     The StringBuilder that will be appended to in place. </param>
         ''' <param name="radix">  The base to convert to. </param>
         ''' <param name="digits"> The minimum number of digits to pad to. </param>
-        Private Shared Sub toString(ByVal u As BigInteger, ByVal sb As StringBuilder, ByVal radix As Integer, ByVal digits As Integer)
+        Private Shared Sub toString(  u As BigInteger,   sb As StringBuilder,   radix As Integer,   digits As Integer)
             '         If we're smaller than a certain threshold, use the smallToString
             '           method, padding with leading zeroes when necessary. 
             If u.mag.Length <= SCHOENHAGE_BASE_CONVERSION_THRESHOLD Then
@@ -3503,7 +3503,7 @@ Namespace java.math
         ''' This could be changed to a more complicated caching method using
         ''' {@code Future}.
         ''' </summary>
-        Private Shared Function getRadixConversionCache(ByVal radix As Integer, ByVal exponent As Integer) As BigInteger
+        Private Shared Function getRadixConversionCache(  radix As Integer,   exponent As Integer) As BigInteger
             Dim cacheLine As BigInteger() = powerCache(radix) ' volatile read
             If exponent < cacheLine.Length Then Return cacheLine(exponent)
 
@@ -3785,7 +3785,7 @@ Namespace java.math
         ''' <summary>
         ''' Returns a copy of the input array stripped of any leading zero bytes.
         ''' </summary>
-        Private Shared Function stripLeadingZeroInts(ByVal val As Integer()) As Integer()
+        Private Shared Function stripLeadingZeroInts(  val As Integer()) As Integer()
             Dim vlen As Integer = val.Length
             Dim keep As Integer
 
@@ -3802,7 +3802,7 @@ Namespace java.math
         ''' Returns the input array stripped of any leading zero bytes.
         ''' Since the source is trusted the copying may be skipped.
         ''' </summary>
-        Private Shared Function trustedStripLeadingZeroInts(ByVal val As Integer()) As Integer()
+        Private Shared Function trustedStripLeadingZeroInts(  val As Integer()) As Integer()
             Dim vlen As Integer = val.Length
             Dim keep As Integer
 
@@ -3818,7 +3818,7 @@ Namespace java.math
         ''' <summary>
         ''' Returns a copy of the input array stripped of any leading zero bytes.
         ''' </summary>
-        Private Shared Function stripLeadingZeroBytes(ByVal a As SByte()) As Integer()
+        Private Shared Function stripLeadingZeroBytes(  a As SByte()) As Integer()
             Dim byteLength As Integer = a.Length
             Dim keep As Integer
 
@@ -3850,7 +3850,7 @@ Namespace java.math
         ''' Takes an array a representing a negative 2's-complement number and
         ''' returns the minimal (no leading zero bytes) unsigned whose value is -a.
         ''' </summary>
-        Private Shared Function makePositive(ByVal a As SByte()) As Integer()
+        Private Shared Function makePositive(  a As SByte()) As Integer()
             Dim keep, k As Integer
             Dim byteLength As Integer = a.Length
 
@@ -3905,7 +3905,7 @@ Namespace java.math
         ''' Takes an array a representing a negative 2's-complement number and
         ''' returns the minimal (no leading zero ints) unsigned whose value is -a.
         ''' </summary>
-        Private Shared Function makePositive(ByVal a As Integer()) As Integer()
+        Private Shared Function makePositive(  a As Integer()) As Integer()
             Dim keep, j As Integer
 
             ' Find first non-sign (0xffffffff) int of input
@@ -3993,7 +3993,7 @@ Namespace java.math
         ''' be arbitrarily high (values are logically preceded by infinitely many
         ''' sign ints).
         ''' </summary>
-        Private Function getInt(ByVal n As Integer) As Integer
+        Private Function getInt(  n As Integer) As Integer
             If n < 0 Then Return 0
             If n >= mag.Length Then Return signInt()
 
@@ -4059,7 +4059,7 @@ Namespace java.math
         ''' readObject because those fields already have a 0 value be default since
         ''' defaultReadObject is not being used.
         ''' </summary>
-        Private Sub readObject(ByVal s As java.io.ObjectInputStream)
+        Private Sub readObject(  s As java.io.ObjectInputStream)
             '        
             '         * In order to maintain compatibility with previous serialized forms,
             '         * the magnitude of a BigInteger is serialized as an array of bytes.
@@ -4108,11 +4108,11 @@ Namespace java.math
             Private Shared ReadOnly signumOffset As Long
             Private Shared ReadOnly magOffset As Long
 
-            Friend Shared Sub putSign(ByVal bi As BigInteger, ByVal sign As Integer)
+            Friend Shared Sub putSign(  bi As BigInteger,   sign As Integer)
                 unsafe.putIntVolatile(bi, signumOffset, sign)
             End Sub
 
-            Friend Shared Sub putMag(ByVal bi As BigInteger, ByVal magnitude As Integer())
+            Friend Shared Sub putMag(  bi As BigInteger,   magnitude As Integer())
                 unsafe.putObjectVolatile(bi, magOffset, magnitude)
             End Sub
         End Class
@@ -4125,7 +4125,7 @@ Namespace java.math
         ''' @serialData two necessary fields are written as well as obsolete
         '''             fields for compatibility with older versions.
         ''' </summary>
-        Private Sub writeObject(ByVal s As java.io.ObjectOutputStream)
+        Private Sub writeObject(  s As java.io.ObjectOutputStream)
             ' set the values of the Serializable fields
             Dim fields As java.io.ObjectOutputStream.PutField = s.putFields()
             fields.put("signum", signum_Renamed)

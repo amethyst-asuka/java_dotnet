@@ -73,39 +73,39 @@ Namespace java.lang
 
 		Private Const serialVersionUID As Long = -8017839552603542824L
 
-		Private Shared Function validateName(ByVal name As String) As String
+		Private Shared Function validateName(  name As String) As String
 			' An initial `=' indicates a magic Windows variable name -- OK
 			If name.IndexOf("="c, 1) <> -1 OrElse name.IndexOf(ChrW(&H0000)) <> -1 Then Throw New IllegalArgumentException("Invalid environment variable name: """ & name & """")
 			Return name
 		End Function
 
-		Private Shared Function validateValue(ByVal value As String) As String
+		Private Shared Function validateValue(  value As String) As String
 			If value.IndexOf(ChrW(&H0000)) <> -1 Then Throw New IllegalArgumentException("Invalid environment variable value: """ & value & """")
 			Return value
 		End Function
 
-		Private Shared Function nonNullString(ByVal o As Object) As String
+		Private Shared Function nonNullString(  o As Object) As String
 			If o Is Nothing Then Throw New NullPointerException
 			Return CStr(o)
 		End Function
 
-		Public Function put(ByVal key As String, ByVal value As String) As String
+		Public Function put(  key As String,   value As String) As String
 			Return MyBase.put(validateName(key), validateValue(value))
 		End Function
 
-		Public Function [get](ByVal key As Object) As String
+		Public Function [get](  key As Object) As String
 			Return MyBase.get(nonNullString(key))
 		End Function
 
-		Public Function containsKey(ByVal key As Object) As Boolean
+		Public Function containsKey(  key As Object) As Boolean
 			Return MyBase.containsKey(nonNullString(key))
 		End Function
 
-		Public Function containsValue(ByVal value As Object) As Boolean
+		Public Function containsValue(  value As Object) As Boolean
 			Return MyBase.containsValue(nonNullString(value))
 		End Function
 
-		Public Function remove(ByVal key As Object) As String
+		Public Function remove(  key As Object) As String
 			Return MyBase.remove(nonNullString(key))
 		End Function
 
@@ -113,7 +113,7 @@ Namespace java.lang
 			Implements KeyValuePair(Of String, String)
 
 			Private ReadOnly e As KeyValuePair(Of String, String)
-			Public Sub New(ByVal e As KeyValuePair(Of String, String))
+			Public Sub New(  e As KeyValuePair(Of String, String))
 				Me.e = e
 			End Sub
 			Public Overridable Property key As String
@@ -126,13 +126,13 @@ Namespace java.lang
 					Return e.Value
 				End Get
 			End Property
-			Public Overridable Function setValue(ByVal value As String) As String
+			Public Overridable Function setValue(  value As String) As String
 				Return e.valuelue(validateValue(value))
 			End Function
 			Public Overrides Function ToString() As String
 				Return key & "=" & value
 			End Function
-			Public Overrides Function Equals(ByVal o As Object) As Boolean
+			Public Overrides Function Equals(  o As Object) As Boolean
 				Return e.Equals(o)
 			End Function
 			Public Overrides Function GetHashCode() As Integer
@@ -144,7 +144,7 @@ Namespace java.lang
 			Inherits AbstractSet(Of KeyValuePair(Of String, String))
 
 			Private ReadOnly s As [Set](Of KeyValuePair(Of String, String))
-			Public Sub New(ByVal s As [Set](Of KeyValuePair(Of String, String)))
+			Public Sub New(  s As [Set](Of KeyValuePair(Of String, String)))
 				Me.s = s
 			End Sub
 			Public Overridable Function size() As Integer
@@ -176,17 +176,17 @@ Namespace java.lang
 					i.remove()
 				End Sub
 			End Class
-			Private Shared Function checkedEntry(ByVal o As Object) As KeyValuePair(Of String, String)
+			Private Shared Function checkedEntry(  o As Object) As KeyValuePair(Of String, String)
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
 				Dim e As KeyValuePair(Of String, String) = CType(o, KeyValuePair(Of String, String))
 				nonNullString(e.Key)
 				nonNullString(e.Value)
 				Return e
 			End Function
-			Public Overridable Function contains(ByVal o As Object) As Boolean
+			Public Overridable Function contains(  o As Object) As Boolean
 				Return s.contains(checkedEntry(o))
 			End Function
-			Public Overridable Function remove(ByVal o As Object) As Boolean
+			Public Overridable Function remove(  o As Object) As Boolean
 				Return s.remove(checkedEntry(o))
 			End Function
 		End Class
@@ -195,7 +195,7 @@ Namespace java.lang
 			Inherits AbstractCollection(Of String)
 
 			Private ReadOnly c As Collection(Of String)
-			Public Sub New(ByVal c As Collection(Of String))
+			Public Sub New(  c As Collection(Of String))
 				Me.c = c
 			End Sub
 			Public Overridable Function size() As Integer
@@ -212,10 +212,10 @@ Namespace java.lang
 			Public Overridable Function [iterator]() As [Iterator](Of String)
 				Return c.GetEnumerator()
 			End Function
-			Public Overridable Function contains(ByVal o As Object) As Boolean
+			Public Overridable Function contains(  o As Object) As Boolean
 				Return c.contains(nonNullString(o))
 			End Function
-			Public Overridable Function remove(ByVal o As Object) As Boolean
+			Public Overridable Function remove(  o As Object) As Boolean
 				Return c.remove(nonNullString(o))
 			End Function
 		End Class
@@ -224,7 +224,7 @@ Namespace java.lang
 			Inherits AbstractSet(Of String)
 
 			Private ReadOnly s As [Set](Of String)
-			Public Sub New(ByVal s As [Set](Of String))
+			Public Sub New(  s As [Set](Of String))
 				Me.s = s
 			End Sub
 			Public Overridable Function size() As Integer
@@ -241,10 +241,10 @@ Namespace java.lang
 			Public Overridable Function [iterator]() As [Iterator](Of String)
 				Return s.GetEnumerator()
 			End Function
-			Public Overridable Function contains(ByVal o As Object) As Boolean
+			Public Overridable Function contains(  o As Object) As Boolean
 				Return s.contains(nonNullString(o))
 			End Function
-			Public Overridable Function remove(ByVal o As Object) As Boolean
+			Public Overridable Function remove(  o As Object) As Boolean
 				Return s.remove(nonNullString(o))
 			End Function
 		End Class
@@ -265,7 +265,7 @@ Namespace java.lang
 		Private NotInheritable Class NameComparator
 			Implements Comparator(Of String)
 
-			Public Function compare(ByVal s1 As String, ByVal s2 As String) As Integer Implements Comparator(Of String).compare
+			Public Function compare(  s1 As String,   s2 As String) As Integer Implements Comparator(Of String).compare
 				' We can't use String.compareToIgnoreCase since it
 				' canonicalizes to lower case, while Windows
 				' canonicalizes to upper case!  For example, "_" should
@@ -289,7 +289,7 @@ Namespace java.lang
 		Private NotInheritable Class EntryComparator
 			Implements Comparator(Of KeyValuePair(Of String, String))
 
-			Public Function compare(ByVal e1 As KeyValuePair(Of String, String), ByVal e2 As KeyValuePair(Of String, String)) As Integer
+			Public Function compare(  e1 As KeyValuePair(Of String, String),   e2 As KeyValuePair(Of String, String)) As Integer
 				Return nameComparator.Compare(e1.Key, e2.Key)
 			End Function
 		End Class
@@ -328,12 +328,12 @@ Namespace java.lang
 			MyBase.New()
 		End Sub
 
-		Private Sub New(ByVal capacity As Integer)
+		Private Sub New(  capacity As Integer)
 			MyBase.New(capacity)
 		End Sub
 
 		' Only for use by System.getenv(String)
-		Friend Shared Function getenv(ByVal name As String) As String
+		Friend Shared Function getenv(  name As String) As String
 			' The original implementation used a native call to _wgetenv,
 			' but it turns out that _wgetenv is only consistent with
 			' GetEnvironmentStringsW (for non-ASCII) if `wmain' is used
@@ -357,7 +357,7 @@ Namespace java.lang
 		End Function
 
 		' Only for use by ProcessBuilder.environment(String[] envp)
-		Friend Shared Function emptyEnvironment(ByVal capacity As Integer) As Map(Of String, String)
+		Friend Shared Function emptyEnvironment(  capacity As Integer) As Map(Of String, String)
 			Return New ProcessEnvironment(capacity)
 		End Function
 
@@ -395,16 +395,16 @@ Namespace java.lang
 		End Function
 
 		' add the environment variable to the child, if it exists in parent
-		Private Shared Sub addToEnvIfSet(ByVal sb As StringBuilder, ByVal name As String)
+		Private Shared Sub addToEnvIfSet(  sb As StringBuilder,   name As String)
 			Dim s As String = getenv(name)
 			If s IsNot Nothing Then addToEnv(sb, name, s)
 		End Sub
 
-		Private Shared Sub addToEnv(ByVal sb As StringBuilder, ByVal name As String, ByVal val As String)
+		Private Shared Sub addToEnv(  sb As StringBuilder,   name As String,   val As String)
 			sb.append(name).append("="c).append(val).append(ChrW(&H0000))
 		End Sub
 
-		Friend Shared Function toEnvironmentBlock(ByVal map As Map(Of String, String)) As String
+		Friend Shared Function toEnvironmentBlock(  map As Map(Of String, String)) As String
 			Return If(map Is Nothing, Nothing, CType(map, ProcessEnvironment).toEnvironmentBlock())
 		End Function
 	End Class

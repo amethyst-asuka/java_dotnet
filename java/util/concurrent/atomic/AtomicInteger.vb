@@ -75,7 +75,7 @@ Namespace java.util.concurrent.atomic
 		''' Creates a new AtomicInteger with the given initial value.
 		''' </summary>
 		''' <param name="initialValue"> the initial value </param>
-		Public Sub New(ByVal initialValue As Integer)
+		Public Sub New(  initialValue As Integer)
 			value = initialValue
 		End Sub
 
@@ -97,7 +97,7 @@ Namespace java.util.concurrent.atomic
 		''' Sets to the given value.
 		''' </summary>
 		''' <param name="newValue"> the new value </param>
-		Public Sub [set](ByVal newValue As Integer)
+		Public Sub [set](  newValue As Integer)
 			value = newValue
 		End Sub
 
@@ -106,7 +106,7 @@ Namespace java.util.concurrent.atomic
 		''' </summary>
 		''' <param name="newValue"> the new value
 		''' @since 1.6 </param>
-		Public Sub lazySet(ByVal newValue As Integer)
+		Public Sub lazySet(  newValue As Integer)
 			unsafe.putOrderedInt(Me, valueOffset, newValue)
 		End Sub
 
@@ -115,7 +115,7 @@ Namespace java.util.concurrent.atomic
 		''' </summary>
 		''' <param name="newValue"> the new value </param>
 		''' <returns> the previous value </returns>
-		Public Function getAndSet(ByVal newValue As Integer) As Integer
+		Public Function getAndSet(  newValue As Integer) As Integer
 			Return unsafe.getAndSetInt(Me, valueOffset, newValue)
 		End Function
 
@@ -127,7 +127,7 @@ Namespace java.util.concurrent.atomic
 		''' <param name="update"> the new value </param>
 		''' <returns> {@code true} if successful. False return indicates that
 		''' the actual value was not equal to the expected value. </returns>
-		Public Function compareAndSet(ByVal expect As Integer, ByVal update As Integer) As Boolean
+		Public Function compareAndSet(  expect As Integer,   update As Integer) As Boolean
 			Return unsafe.compareAndSwapInt(Me, valueOffset, expect, update)
 		End Function
 
@@ -142,7 +142,7 @@ Namespace java.util.concurrent.atomic
 		''' <param name="expect"> the expected value </param>
 		''' <param name="update"> the new value </param>
 		''' <returns> {@code true} if successful </returns>
-		Public Function weakCompareAndSet(ByVal expect As Integer, ByVal update As Integer) As Boolean
+		Public Function weakCompareAndSet(  expect As Integer,   update As Integer) As Boolean
 			Return unsafe.compareAndSwapInt(Me, valueOffset, expect, update)
 		End Function
 
@@ -171,7 +171,7 @@ Namespace java.util.concurrent.atomic
 		''' </summary>
 		''' <param name="delta"> the value to add </param>
 		''' <returns> the previous value </returns>
-		Public Function getAndAdd(ByVal delta As Integer) As Integer
+		Public Function getAndAdd(  delta As Integer) As Integer
 			Return unsafe.getAndAddInt(Me, valueOffset, delta)
 		End Function
 
@@ -196,7 +196,7 @@ Namespace java.util.concurrent.atomic
 		''' </summary>
 		''' <param name="delta"> the value to add </param>
 		''' <returns> the updated value </returns>
-		Public Function addAndGet(ByVal delta As Integer) As Integer
+		Public Function addAndGet(  delta As Integer) As Integer
 			Return unsafe.getAndAddInt(Me, valueOffset, delta) + delta
 		End Function
 
@@ -209,7 +209,7 @@ Namespace java.util.concurrent.atomic
 		''' <param name="updateFunction"> a side-effect-free function </param>
 		''' <returns> the previous value
 		''' @since 1.8 </returns>
-		Public Function getAndUpdate(ByVal updateFunction As java.util.function.IntUnaryOperator) As Integer
+		Public Function getAndUpdate(  updateFunction As java.util.function.IntUnaryOperator) As Integer
 			Dim prev, [next] As Integer
 			Do
 				prev = [get]()
@@ -227,7 +227,7 @@ Namespace java.util.concurrent.atomic
 		''' <param name="updateFunction"> a side-effect-free function </param>
 		''' <returns> the updated value
 		''' @since 1.8 </returns>
-		Public Function updateAndGet(ByVal updateFunction As java.util.function.IntUnaryOperator) As Integer
+		Public Function updateAndGet(  updateFunction As java.util.function.IntUnaryOperator) As Integer
 			Dim prev, [next] As Integer
 			Do
 				prev = [get]()
@@ -249,7 +249,7 @@ Namespace java.util.concurrent.atomic
 		''' <param name="accumulatorFunction"> a side-effect-free function of two arguments </param>
 		''' <returns> the previous value
 		''' @since 1.8 </returns>
-		Public Function getAndAccumulate(ByVal x As Integer, ByVal accumulatorFunction As java.util.function.IntBinaryOperator) As Integer
+		Public Function getAndAccumulate(  x As Integer,   accumulatorFunction As java.util.function.IntBinaryOperator) As Integer
 			Dim prev, [next] As Integer
 			Do
 				prev = [get]()
@@ -271,7 +271,7 @@ Namespace java.util.concurrent.atomic
 		''' <param name="accumulatorFunction"> a side-effect-free function of two arguments </param>
 		''' <returns> the updated value
 		''' @since 1.8 </returns>
-		Public Function accumulateAndGet(ByVal x As Integer, ByVal accumulatorFunction As java.util.function.IntBinaryOperator) As Integer
+		Public Function accumulateAndGet(  x As Integer,   accumulatorFunction As java.util.function.IntBinaryOperator) As Integer
 			Dim prev, [next] As Integer
 			Do
 				prev = [get]()

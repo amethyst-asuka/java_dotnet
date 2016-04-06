@@ -146,7 +146,7 @@ Namespace java.util.logging
 		''' <exception cref="IllegalArgumentException"> if the host or port are invalid. </exception>
 		''' <exception cref="IOException"> if we are unable to connect to the target
 		'''         host and port. </exception>
-		Public Sub New(ByVal host As String, ByVal port As Integer)
+		Public Sub New(  host As String,   port As Integer)
 			sealed = False
 			configure()
 			sealed = True
@@ -191,7 +191,7 @@ Namespace java.util.logging
 		''' <param name="record">  description of the log event. A null record is
 		'''                 silently ignored and is not published </param>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overrides Sub publish(ByVal record As LogRecord)
+		Public Overrides Sub publish(  record As LogRecord)
 			If Not isLoggable(record) Then Return
 			MyBase.publish(record)
 			flush()

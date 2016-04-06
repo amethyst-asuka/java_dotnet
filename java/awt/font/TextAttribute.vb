@@ -259,7 +259,7 @@ Namespace java.awt.font
 		''' Constructs a <code>TextAttribute</code> with the specified name. </summary>
 		''' <param name="name"> the attribute name to assign to this
 		''' <code>TextAttribute</code> </param>
-		Protected Friend Sub New(ByVal name As String)
+		Protected Friend Sub New(  name As String)
 			MyBase.New(name)
 			If Me.GetType() Is GetType(TextAttribute) Then instanceMap(name) = Me
 		End Sub

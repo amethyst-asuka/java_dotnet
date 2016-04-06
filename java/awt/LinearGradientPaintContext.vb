@@ -67,7 +67,7 @@ Namespace java.awt
 		''' <param name="cycleMethod"> either NO_CYCLE, REFLECT, or REPEAT </param>
 		''' <param name="colorSpace"> which colorspace to use for interpolation,
 		'''                   either SRGB or LINEAR_RGB </param>
-		Friend Sub New(ByVal paint As LinearGradientPaint, ByVal cm As java.awt.image.ColorModel, ByVal deviceBounds As Rectangle, ByVal userBounds As java.awt.geom.Rectangle2D, ByVal t As java.awt.geom.AffineTransform, ByVal hints As RenderingHints, ByVal start As java.awt.geom.Point2D, ByVal [end] As java.awt.geom.Point2D, ByVal fractions As Single(), ByVal colors As Color(), ByVal cycleMethod As java.awt.MultipleGradientPaint.CycleMethod, ByVal colorSpace As java.awt.MultipleGradientPaint.ColorSpaceType)
+		Friend Sub New(  paint As LinearGradientPaint,   cm As java.awt.image.ColorModel,   deviceBounds As Rectangle,   userBounds As java.awt.geom.Rectangle2D,   t As java.awt.geom.AffineTransform,   hints As RenderingHints,   start As java.awt.geom.Point2D,   [end] As java.awt.geom.Point2D,   fractions As Single(),   colors As Color(),   cycleMethod As java.awt.MultipleGradientPaint.CycleMethod,   colorSpace As java.awt.MultipleGradientPaint.ColorSpaceType)
 			MyBase.New(paint, cm, deviceBounds, userBounds, t, hints, fractions, colors, cycleMethod, colorSpace)
 
 			' A given point in the raster should take on the same color as its
@@ -109,7 +109,7 @@ Namespace java.awt
 		''' </summary>
 		''' <param name="x">,y,w,h the area in device space for which colors are
 		''' generated. </param>
-		Protected Friend Overrides Sub fillRaster(ByVal pixels As Integer(), ByVal [off] As Integer, ByVal adjust As Integer, ByVal x As Integer, ByVal y As Integer, ByVal w As Integer, ByVal h As Integer)
+		Protected Friend Overrides Sub fillRaster(  pixels As Integer(),   [off] As Integer,   adjust As Integer,   x As Integer,   y As Integer,   w As Integer,   h As Integer)
 			' current value for row gradients
 			Dim g As Single = 0
 

@@ -77,7 +77,7 @@ Namespace java.lang.annotation
 		''' </summary>
 		''' <returns> true if the specified object represents an annotation
 		'''     that is logically equivalent to this one, otherwise false </returns>
-		Function Equals(ByVal obj As Object) As Boolean
+		Function Equals(  obj As Object) As Boolean
 
 		''' <summary>
 		''' Returns the hash code of this annotation, as defined below:

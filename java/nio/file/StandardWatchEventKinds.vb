@@ -81,7 +81,7 @@ Namespace java.nio.file
 
 			Private ReadOnly name_Renamed As String
 			Private ReadOnly type_Renamed As  [Class]
-			Friend Sub New(ByVal name As String, ByVal type As [Class])
+			Friend Sub New(  name As String,   type As [Class])
 				Me.name_Renamed = name
 				Me.type_Renamed = type
 			End Sub

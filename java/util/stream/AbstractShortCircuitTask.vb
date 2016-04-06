@@ -62,7 +62,7 @@ Namespace java.util.stream
 		'''               up to this operation </param>
 		''' <param name="spliterator"> the {@code Spliterator} describing the source for this
 		'''                    pipeline </param>
-		Protected Friend Sub New(ByVal helper As PipelineHelper(Of P_OUT), ByVal spliterator As java.util.Spliterator(Of P_IN))
+		Protected Friend Sub New(  helper As PipelineHelper(Of P_OUT),   spliterator As java.util.Spliterator(Of P_IN))
 			MyBase.New(helper, spliterator)
 			sharedResult = New java.util.concurrent.atomic.AtomicReference(Of )(Nothing)
 		End Sub
@@ -73,7 +73,7 @@ Namespace java.util.stream
 		''' <param name="parent"> parent task in the computation tree </param>
 		''' <param name="spliterator"> the {@code Spliterator} for the portion of the
 		'''                    computation tree described by this task </param>
-		Protected Friend Sub New(ByVal parent As K, ByVal spliterator As java.util.Spliterator(Of P_IN))
+		Protected Friend Sub New(  parent As K,   spliterator As java.util.Spliterator(Of P_IN))
 			MyBase.New(parent, spliterator)
 			sharedResult = parent.sharedResult
 		End Sub
@@ -143,7 +143,7 @@ Namespace java.util.stream
 		''' the computation to terminate early.
 		''' </summary>
 		''' <param name="result"> the result found </param>
-		Protected Friend Overridable Sub shortCircuit(ByVal result As R)
+		Protected Friend Overridable Sub shortCircuit(  result As R)
 			If result IsNot Nothing Then sharedResult.compareAndSet(Nothing, result)
 		End Sub
 
@@ -153,9 +153,9 @@ Namespace java.util.stream
 		''' </summary>
 		''' <param name="localResult"> The result to set for this task </param>
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
-        Protected Friend Overrides Sub setLocalResult(ByVal localResult As R) 'JavaToDotNetTempPropertySetlocalResult
+        Protected Friend Overrides Sub setLocalResult(  localResult As R) 'JavaToDotNetTempPropertySetlocalResult
 		Protected Friend Overrides Property localResult As R
-			Set(ByVal localResult As R)
+			Set(  localResult As R)
 				If root Then
 					If localResult IsNot Nothing Then sharedResult.compareAndSet(Nothing, localResult)
 				Else

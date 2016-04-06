@@ -120,7 +120,7 @@ Namespace java.time.temporal
 		''' <param name="max">  the maximum value </param>
 		''' <returns> the ValueRange for min, max, not null </returns>
 		''' <exception cref="IllegalArgumentException"> if the minimum is greater than the maximum </exception>
-		Public Shared Function [of](ByVal min As Long, ByVal max As Long) As ValueRange
+		Public Shared Function [of](  min As Long,   max As Long) As ValueRange
 			If min > max Then Throw New IllegalArgumentException("Minimum value must be less than maximum value")
 			Return New ValueRange(min, min, max, max)
 		End Function
@@ -138,7 +138,7 @@ Namespace java.time.temporal
 		''' <exception cref="IllegalArgumentException"> if
 		'''     the minimum is greater than the smallest maximum,
 		'''  or the smallest maximum is greater than the largest maximum </exception>
-		Public Shared Function [of](ByVal min As Long, ByVal maxSmallest As Long, ByVal maxLargest As Long) As ValueRange
+		Public Shared Function [of](  min As Long,   maxSmallest As Long,   maxLargest As Long) As ValueRange
 			Return [of](min, min, maxSmallest, maxLargest)
 		End Function
 
@@ -156,7 +156,7 @@ Namespace java.time.temporal
 		'''     the smallest minimum is greater than the smallest maximum,
 		'''  or the smallest maximum is greater than the largest maximum
 		'''  or the largest minimum is greater than the largest maximum </exception>
-		Public Shared Function [of](ByVal minSmallest As Long, ByVal minLargest As Long, ByVal maxSmallest As Long, ByVal maxLargest As Long) As ValueRange
+		Public Shared Function [of](  minSmallest As Long,   minLargest As Long,   maxSmallest As Long,   maxLargest As Long) As ValueRange
 			If minSmallest > minLargest Then Throw New IllegalArgumentException("Smallest minimum value must be less than largest minimum value")
 			If maxSmallest > maxLargest Then Throw New IllegalArgumentException("Smallest maximum value must be less than largest maximum value")
 			If minLargest > maxLargest Then Throw New IllegalArgumentException("Minimum value must be less than maximum value")
@@ -170,7 +170,7 @@ Namespace java.time.temporal
 		''' <param name="minLargest">  the largest minimum value </param>
 		''' <param name="maxSmallest">  the smallest minimum value </param>
 		''' <param name="maxLargest">  the largest minimum value </param>
-		Private Sub New(ByVal minSmallest As Long, ByVal minLargest As Long, ByVal maxSmallest As Long, ByVal maxLargest As Long)
+		Private Sub New(  minSmallest As Long,   minLargest As Long,   maxSmallest As Long,   maxLargest As Long)
 			Me.minSmallest = minSmallest
 			Me.minLargest = minLargest
 			Me.maxSmallest = maxSmallest
@@ -270,7 +270,7 @@ Namespace java.time.temporal
 		''' </summary>
 		''' <param name="value">  the value to check </param>
 		''' <returns> true if the value is valid </returns>
-		Public Function isValidValue(ByVal value As Long) As Boolean
+		Public Function isValidValue(  value As Long) As Boolean
 			Return (value >= minimum AndAlso value <= maximum)
 		End Function
 
@@ -282,7 +282,7 @@ Namespace java.time.temporal
 		''' </summary>
 		''' <param name="value">  the value to check </param>
 		''' <returns> true if the value is valid and fits in an {@code int} </returns>
-		Public Function isValidIntValue(ByVal value As Long) As Boolean
+		Public Function isValidIntValue(  value As Long) As Boolean
 			Return intValue AndAlso isValidValue(value)
 		End Function
 
@@ -296,7 +296,7 @@ Namespace java.time.temporal
 		''' <param name="field">  the field being checked, may be null </param>
 		''' <returns> the value that was passed in </returns>
 		''' <seealso cref= #isValidValue(long) </seealso>
-		Public Function checkValidValue(ByVal value As Long, ByVal field As TemporalField) As Long
+		Public Function checkValidValue(  value As Long,   field As TemporalField) As Long
 			If isValidValue(value) = False Then Throw New java.time.DateTimeException(genInvalidFieldMessage(field, value))
 			Return value
 		End Function
@@ -312,12 +312,12 @@ Namespace java.time.temporal
 		''' <param name="field">  the field being checked, may be null </param>
 		''' <returns> the value that was passed in </returns>
 		''' <seealso cref= #isValidIntValue(long) </seealso>
-		Public Function checkValidIntValue(ByVal value As Long, ByVal field As TemporalField) As Integer
+		Public Function checkValidIntValue(  value As Long,   field As TemporalField) As Integer
 			If isValidIntValue(value) = False Then Throw New java.time.DateTimeException(genInvalidFieldMessage(field, value))
 			Return CInt(value)
 		End Function
 
-		Private Function genInvalidFieldMessage(ByVal field As TemporalField, ByVal value As Long) As String
+		Private Function genInvalidFieldMessage(  field As TemporalField,   value As Long) As String
 			If field IsNot Nothing Then
 				Return "Invalid value for " & field & " (valid values " & Me & "): " & value
 			Else
@@ -336,7 +336,7 @@ Namespace java.time.temporal
 		'''  or the smallest maximum is greater than the largest maximum
 		'''  or the largest minimum is greater than the largest maximum </exception>
 		''' <exception cref="ClassNotFoundException"> if a class cannot be resolved </exception>
-		Private Sub readObject(ByVal s As java.io.ObjectInputStream)
+		Private Sub readObject(  s As java.io.ObjectInputStream)
 			s.defaultReadObject()
 			If minSmallest > minLargest Then Throw New java.io.InvalidObjectException("Smallest minimum value must be less than largest minimum value")
 			If maxSmallest > maxLargest Then Throw New java.io.InvalidObjectException("Smallest maximum value must be less than largest maximum value")
@@ -353,7 +353,7 @@ Namespace java.time.temporal
 		''' </summary>
 		''' <param name="obj">  the object to check, null returns false </param>
 		''' <returns> true if this is equal to the other range </returns>
-		Public Overrides Function Equals(ByVal obj As Object) As Boolean
+		Public Overrides Function Equals(  obj As Object) As Boolean
 			If obj Is Me Then Return True
 			If TypeOf obj Is ValueRange Then
 				Dim other As ValueRange = CType(obj, ValueRange)

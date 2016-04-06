@@ -134,7 +134,7 @@ Namespace java.awt.image
 		''' <returns> the size of the data type </returns>
 		''' <exception cref="IllegalArgumentException"> if <code>type</code> is less than
 		'''         zero or greater than <seealso cref="#TYPE_DOUBLE"/> </exception>
-		Public Shared Function getDataTypeSize(ByVal type As Integer) As Integer
+		Public Shared Function getDataTypeSize(  type As Integer) As Integer
 			If type < TYPE_BYTE OrElse type > TYPE_DOUBLE Then Throw New IllegalArgumentException("Unknown data type " & type)
 			Return dataTypeSize(type)
 		End Function
@@ -145,7 +145,7 @@ Namespace java.awt.image
 		''' </summary>
 		'''  <param name="dataType"> the data type of this <code>DataBuffer</code> </param>
 		'''  <param name="size"> the size of the banks </param>
-		Protected Friend Sub New(ByVal dataType As Integer, ByVal size As Integer)
+		Protected Friend Sub New(  dataType As Integer,   size As Integer)
 			Me.New(UNTRACKABLE, dataType, size)
 		End Sub
 
@@ -157,7 +157,7 @@ Namespace java.awt.image
 		'''  <param name="dataType"> the data type of this <code>DataBuffer</code> </param>
 		'''  <param name="size"> the size of the banks
 		'''  @since 1.7 </param>
-		Friend Sub New(ByVal initialState As sun.java2d.StateTrackable.State, ByVal dataType As Integer, ByVal size As Integer)
+		Friend Sub New(  initialState As sun.java2d.StateTrackable.State,   dataType As Integer,   size As Integer)
 			Me.theTrackable = sun.java2d.StateTrackableDelegate.createInstance(initialState)
 			Me.dataType = dataType
 			Me.banks = 1
@@ -174,7 +174,7 @@ Namespace java.awt.image
 		'''  <param name="size"> the size of the banks </param>
 		'''  <param name="numBanks"> the number of banks in this
 		'''         <code>DataBuffer</code> </param>
-		Protected Friend Sub New(ByVal dataType As Integer, ByVal size As Integer, ByVal numBanks As Integer)
+		Protected Friend Sub New(  dataType As Integer,   size As Integer,   numBanks As Integer)
 			Me.New(UNTRACKABLE, dataType, size, numBanks)
 		End Sub
 
@@ -189,7 +189,7 @@ Namespace java.awt.image
 		'''  <param name="numBanks"> the number of banks in this
 		'''         <code>DataBuffer</code>
 		'''  @since 1.7 </param>
-		Friend Sub New(ByVal initialState As sun.java2d.StateTrackable.State, ByVal dataType As Integer, ByVal size As Integer, ByVal numBanks As Integer)
+		Friend Sub New(  initialState As sun.java2d.StateTrackable.State,   dataType As Integer,   size As Integer,   numBanks As Integer)
 			Me.theTrackable = sun.java2d.StateTrackableDelegate.createInstance(initialState)
 			Me.dataType = dataType
 			Me.banks = numBanks
@@ -207,7 +207,7 @@ Namespace java.awt.image
 		'''  <param name="numBanks"> the number of banks in this
 		'''         <code>DataBuffer</code> </param>
 		'''  <param name="offset"> the offset for each bank </param>
-		Protected Friend Sub New(ByVal dataType As Integer, ByVal size As Integer, ByVal numBanks As Integer, ByVal offset As Integer)
+		Protected Friend Sub New(  dataType As Integer,   size As Integer,   numBanks As Integer,   offset As Integer)
 			Me.New(UNTRACKABLE, dataType, size, numBanks, offset)
 		End Sub
 
@@ -223,7 +223,7 @@ Namespace java.awt.image
 		'''         <code>DataBuffer</code> </param>
 		'''  <param name="offset"> the offset for each bank
 		'''  @since 1.7 </param>
-		Friend Sub New(ByVal initialState As sun.java2d.StateTrackable.State, ByVal dataType As Integer, ByVal size As Integer, ByVal numBanks As Integer, ByVal offset As Integer)
+		Friend Sub New(  initialState As sun.java2d.StateTrackable.State,   dataType As Integer,   size As Integer,   numBanks As Integer,   offset As Integer)
 			Me.theTrackable = sun.java2d.StateTrackableDelegate.createInstance(initialState)
 			Me.dataType = dataType
 			Me.banks = numBanks
@@ -248,7 +248,7 @@ Namespace java.awt.image
 		'''  <param name="offsets"> an array containing an offset for each bank. </param>
 		'''  <exception cref="ArrayIndexOutOfBoundsException"> if <code>numBanks</code>
 		'''          does not equal the length of <code>offsets</code> </exception>
-		Protected Friend Sub New(ByVal dataType As Integer, ByVal size As Integer, ByVal numBanks As Integer, ByVal offsets As Integer())
+		Protected Friend Sub New(  dataType As Integer,   size As Integer,   numBanks As Integer,   offsets As Integer())
 			Me.New(UNTRACKABLE, dataType, size, numBanks, offsets)
 		End Sub
 
@@ -268,7 +268,7 @@ Namespace java.awt.image
 		'''  <exception cref="ArrayIndexOutOfBoundsException"> if <code>numBanks</code>
 		'''          does not equal the length of <code>offsets</code>
 		'''  @since 1.7 </exception>
-		Friend Sub New(ByVal initialState As sun.java2d.StateTrackable.State, ByVal dataType As Integer, ByVal size As Integer, ByVal numBanks As Integer, ByVal offsets As Integer())
+		Friend Sub New(  initialState As sun.java2d.StateTrackable.State,   dataType As Integer,   size As Integer,   numBanks As Integer,   offsets As Integer())
 			If numBanks <> offsets.Length Then Throw New ArrayIndexOutOfBoundsException("Number of banks" & " does not match number of bank offsets")
 			Me.theTrackable = sun.java2d.StateTrackableDelegate.createInstance(initialState)
 			Me.dataType = dataType
@@ -330,7 +330,7 @@ Namespace java.awt.image
         ''' <returns> the data array element at the specified index. </returns>
         ''' <seealso cref= #setElem(int, int) </seealso>
         ''' <seealso cref= #setElem(int, int, int) </seealso>
-        Public Overridable Function getElem(ByVal i As Integer) As Integer
+        Public Overridable Function getElem(  i As Integer) As Integer
 			Return getElem(0,i)
 		End Function
 
@@ -343,7 +343,7 @@ Namespace java.awt.image
 		'''         specified bank at the specified index. </returns>
 		''' <seealso cref= #setElem(int, int) </seealso>
 		''' <seealso cref= #setElem(int, int, int) </seealso>
-		Public MustOverride Function getElem(ByVal bank As Integer, ByVal i As Integer) As Integer
+		Public MustOverride Function getElem(  bank As Integer,   i As Integer) As Integer
 
 		''' <summary>
 		''' Sets the requested data array element in the first (default) bank
@@ -353,7 +353,7 @@ Namespace java.awt.image
 		''' the data array </param>
 		''' <seealso cref= #getElem(int) </seealso>
 		''' <seealso cref= #getElem(int, int) </seealso>
-		Public Overridable Sub setElem(ByVal i As Integer, ByVal val As Integer)
+		Public Overridable Sub setElem(  i As Integer,   val As Integer)
 			elemlem(0,i,val)
 		End Sub
 
@@ -366,7 +366,7 @@ Namespace java.awt.image
 		''' at the specified index in the data array </param>
 		''' <seealso cref= #getElem(int) </seealso>
 		''' <seealso cref= #getElem(int, int) </seealso>
-		Public MustOverride Sub setElem(ByVal bank As Integer, ByVal i As Integer, ByVal val As Integer)
+		Public MustOverride Sub setElem(  bank As Integer,   i As Integer,   val As Integer)
 
 		''' <summary>
 		''' Returns the requested data array element from the first (default) bank
@@ -378,7 +378,7 @@ Namespace java.awt.image
 		'''  specified index. </returns>
 		''' <seealso cref= #setElemFloat(int, float) </seealso>
 		''' <seealso cref= #setElemFloat(int, int, float) </seealso>
-		Public Overridable Function getElemFloat(ByVal i As Integer) As Single
+		Public Overridable Function getElemFloat(  i As Integer) As Single
 			Return CSng(getElem(i))
 		End Function
 
@@ -394,7 +394,7 @@ Namespace java.awt.image
 		''' specified bank at the specified index. </returns>
 		''' <seealso cref= #setElemFloat(int, float) </seealso>
 		''' <seealso cref= #setElemFloat(int, int, float) </seealso>
-		Public Overridable Function getElemFloat(ByVal bank As Integer, ByVal i As Integer) As Single
+		Public Overridable Function getElemFloat(  bank As Integer,   i As Integer) As Single
 			Return CSng(getElem(bank,i))
 		End Function
 
@@ -408,7 +408,7 @@ Namespace java.awt.image
 		''' the data array </param>
 		''' <seealso cref= #getElemFloat(int) </seealso>
 		''' <seealso cref= #getElemFloat(int, int) </seealso>
-		Public Overridable Sub setElemFloat(ByVal i As Integer, ByVal val As Single)
+		Public Overridable Sub setElemFloat(  i As Integer,   val As Single)
 			elemlem(i,CInt(Fix(val)))
 		End Sub
 
@@ -423,7 +423,7 @@ Namespace java.awt.image
 		''' the specified index in the data array </param>
 		''' <seealso cref= #getElemFloat(int) </seealso>
 		''' <seealso cref= #getElemFloat(int, int) </seealso>
-		Public Overridable Sub setElemFloat(ByVal bank As Integer, ByVal i As Integer, ByVal val As Single)
+		Public Overridable Sub setElemFloat(  bank As Integer,   i As Integer,   val As Single)
 			elemlem(bank,i,CInt(Fix(val)))
 		End Sub
 
@@ -438,7 +438,7 @@ Namespace java.awt.image
 		''' index in the data array. </returns>
 		''' <seealso cref= #setElemDouble(int, double) </seealso>
 		''' <seealso cref= #setElemDouble(int, int, double) </seealso>
-		Public Overridable Function getElemDouble(ByVal i As Integer) As Double
+		Public Overridable Function getElemDouble(  i As Integer) As Double
 			Return CDbl(getElem(i))
 		End Function
 
@@ -453,7 +453,7 @@ Namespace java.awt.image
 		''' bank at the specified index in the data array. </returns>
 		''' <seealso cref= #setElemDouble(int, double) </seealso>
 		''' <seealso cref= #setElemDouble(int, int, double) </seealso>
-		Public Overridable Function getElemDouble(ByVal bank As Integer, ByVal i As Integer) As Double
+		Public Overridable Function getElemDouble(  bank As Integer,   i As Integer) As Double
 			Return CDbl(getElem(bank,i))
 		End Function
 
@@ -467,7 +467,7 @@ Namespace java.awt.image
 		''' in the data array </param>
 		''' <seealso cref= #getElemDouble(int) </seealso>
 		''' <seealso cref= #getElemDouble(int, int) </seealso>
-		Public Overridable Sub setElemDouble(ByVal i As Integer, ByVal val As Double)
+		Public Overridable Sub setElemDouble(  i As Integer,   val As Double)
 			elemlem(i,CInt(Fix(val)))
 		End Sub
 
@@ -482,11 +482,11 @@ Namespace java.awt.image
 		''' at the specified index of the data array </param>
 		''' <seealso cref= #getElemDouble(int) </seealso>
 		''' <seealso cref= #getElemDouble(int, int) </seealso>
-		Public Overridable Sub setElemDouble(ByVal bank As Integer, ByVal i As Integer, ByVal val As Double)
+		Public Overridable Sub setElemDouble(  bank As Integer,   i As Integer,   val As Double)
 			elemlem(bank,i,CInt(Fix(val)))
 		End Sub
 
-		Friend Shared Function toIntArray(ByVal obj As Object) As Integer()
+		Friend Shared Function toIntArray(  obj As Object) As Integer()
 			If TypeOf obj Is Integer() Then
 				Return CType(obj, Integer())
 			ElseIf obj Is Nothing Then

@@ -58,7 +58,7 @@ Namespace java.security.spec
 		''' </summary>
 		''' <param name="keysize"> the modulus size (specified in number of bits) </param>
 		''' <param name="publicExponent"> the public exponent </param>
-		Public Sub New(ByVal keysize As Integer, ByVal publicExponent As System.Numerics.BigInteger)
+		Public Sub New(  keysize As Integer,   publicExponent As System.Numerics.BigInteger)
 			Me.keysize = keysize
 			Me.publicExponent = publicExponent
 		End Sub

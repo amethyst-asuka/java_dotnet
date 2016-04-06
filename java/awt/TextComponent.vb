@@ -117,7 +117,7 @@ Namespace java.awt
 		'''             returns true </exception>
 		''' <seealso cref=        java.awt.GraphicsEnvironment#isHeadless </seealso>
 		''' <seealso cref=        java.awt.Cursor </seealso>
-		Friend Sub New(ByVal text As String)
+		Friend Sub New(  text As String)
 			GraphicsEnvironment.checkHeadless()
 			Me.text = If(text IsNot Nothing, text, "")
 			cursor = Cursor.getPredefinedCursor(Cursor.TEXT_CURSOR)
@@ -148,7 +148,7 @@ Namespace java.awt
 		''' <param name="enable"> true to enable, false to disable </param>
 		''' <seealso cref= #processKeyEvent
 		''' @since 1.2 </seealso>
-		Public Overrides Sub enableInputMethods(ByVal enable As Boolean)
+		Public Overrides Sub enableInputMethods(  enable As Boolean)
 			checkForEnableIM = False
 			MyBase.enableInputMethods(enable)
 		End Sub
@@ -214,7 +214,7 @@ Namespace java.awt
 		''' <seealso cref=         java.awt.TextComponent#getText </seealso>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
 		Public Overridable Property text As String
-			Set(ByVal t As String)
+			Set(  t As String)
 				Dim skipTextEvent As Boolean = (text Is Nothing OrElse text.empty) AndAlso (t Is Nothing OrElse t.empty)
 				text = If(t IsNot Nothing, t, "")
 				Dim peer_Renamed As java.awt.peer.TextComponentPeer = CType(Me.peer, java.awt.peer.TextComponentPeer)
@@ -253,7 +253,7 @@ Namespace java.awt
 			Get
 				Return editable
 			End Get
-			Set(ByVal b As Boolean)
+			Set(  b As Boolean)
 				If editable = b Then Return
     
 				editable = b
@@ -281,7 +281,7 @@ Namespace java.awt
     
 				Return MyBase.background
 			End Get
-			Set(ByVal c As Color)
+			Set(  c As Color)
 				backgroundSetByClientCode = True
 				MyBase.background = c
 			End Set
@@ -301,7 +301,7 @@ Namespace java.awt
 				If peer_Renamed IsNot Nothing Then selectionStart = peer_Renamed.selectionStart
 				Return selectionStart
 			End Get
-			Set(ByVal selectionStart As Integer)
+			Set(  selectionStart As Integer)
 		'         Route through select method to enforce consistent policy
 		'         * between selectionStart and selectionEnd.
 		'         
@@ -323,7 +323,7 @@ Namespace java.awt
 				If peer_Renamed IsNot Nothing Then selectionEnd = peer_Renamed.selectionEnd
 				Return selectionEnd
 			End Get
-			Set(ByVal selectionEnd As Integer)
+			Set(  selectionEnd As Integer)
 		'         Route through select method to enforce consistent policy
 		'         * between selectionStart and selectionEnd.
 		'         
@@ -364,7 +364,7 @@ Namespace java.awt
 		''' <seealso cref=          java.awt.TextComponent#setSelectionEnd </seealso>
 		''' <seealso cref=          java.awt.TextComponent#selectAll </seealso>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Sub [select](ByVal selectionStart As Integer, ByVal selectionEnd As Integer)
+		Public Overridable Sub [select](  selectionStart As Integer,   selectionEnd As Integer)
 			Dim text_Renamed As String = text
 			If selectionStart < 0 Then selectionStart = 0
 			If selectionStart > text_Renamed.length() Then selectionStart = text_Renamed.length()
@@ -407,7 +407,7 @@ Namespace java.awt
 		''' @since        JDK1.1 </exception>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
 		Public Overridable Property caretPosition As Integer
-			Set(ByVal position As Integer)
+			Set(  position As Integer)
 				If position < 0 Then Throw New IllegalArgumentException("position less than zero.")
     
 				Dim maxposition As Integer = text.length()
@@ -449,7 +449,7 @@ Namespace java.awt
 		''' <seealso cref=             #getTextListeners </seealso>
 		''' <seealso cref=             java.awt.event.TextListener </seealso>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Sub addTextListener(ByVal l As TextListener)
+		Public Overridable Sub addTextListener(  l As TextListener)
 			If l Is Nothing Then Return
 			textListener = AWTEventMulticaster.add(textListener, l)
 			newEventsOnly = True
@@ -469,7 +469,7 @@ Namespace java.awt
 		''' <seealso cref=             java.awt.event.TextListener
 		''' @since           JDK1.1 </seealso>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Sub removeTextListener(ByVal l As TextListener)
+		Public Overridable Sub removeTextListener(  l As TextListener)
 			If l Is Nothing Then Return
 			textListener = AWTEventMulticaster.remove(textListener, l)
 		End Sub
@@ -525,7 +525,7 @@ Namespace java.awt
 		''' </exception>
 		''' <seealso cref= #getTextListeners
 		''' @since 1.3 </seealso>
-		Public Overrides Function getListeners(Of T As java.util.EventListener)(ByVal listenerType As [Class]) As T()
+		Public Overrides Function getListeners(Of T As java.util.EventListener)(  listenerType As [Class]) As T()
 			Dim l As java.util.EventListener = Nothing
 			If listenerType Is GetType(TextListener) Then
 				l = textListener
@@ -536,7 +536,7 @@ Namespace java.awt
 		End Function
 
 		' REMIND: remove when filtering is done at lower level
-		Friend Overrides Function eventEnabled(ByVal e As AWTEvent) As Boolean
+		Friend Overrides Function eventEnabled(  e As AWTEvent) As Boolean
 			If e.id = TextEvent.TEXT_VALUE_CHANGED Then
 				If (eventMask And AWTEvent.TEXT_EVENT_MASK) <> 0 OrElse textListener IsNot Nothing Then Return True
 				Return False
@@ -553,7 +553,7 @@ Namespace java.awt
 		''' exception.
 		''' </summary>
 		''' <param name="e"> the event </param>
-		Protected Friend Overrides Sub processEvent(ByVal e As AWTEvent)
+		Protected Friend Overrides Sub processEvent(  e As AWTEvent)
 			If TypeOf e Is TextEvent Then
 				processTextEvent(CType(e, TextEvent))
 				Return
@@ -579,7 +579,7 @@ Namespace java.awt
 		''' </summary>
 		''' <param name="e"> the text event </param>
 		''' <seealso cref= Component#enableEvents </seealso>
-		Protected Friend Overridable Sub processTextEvent(ByVal e As TextEvent)
+		Protected Friend Overridable Sub processTextEvent(  e As TextEvent)
 			Dim listener As TextListener = textListener
 			If listener IsNot Nothing Then
 				Dim id As Integer = e.iD
@@ -643,7 +643,7 @@ Namespace java.awt
 		''' </summary>
 		''' <seealso cref= AWTEventMulticaster#save(ObjectOutputStream, String, EventListener) </seealso>
 		''' <seealso cref= java.awt.Component#textListenerK </seealso>
-		Private Sub writeObject(ByVal s As java.io.ObjectOutputStream)
+		Private Sub writeObject(  s As java.io.ObjectOutputStream)
 			' Serialization support.  Since the value of the fields
 			' selectionStart, selectionEnd, and text aren't necessarily
 			' up to date, we sync them up with the peer before serializing.
@@ -672,7 +672,7 @@ Namespace java.awt
 		''' <seealso cref= #removeTextListener </seealso>
 		''' <seealso cref= #addTextListener </seealso>
 		''' <seealso cref= java.awt.GraphicsEnvironment#isHeadless </seealso>
-		Private Sub readObject(ByVal s As java.io.ObjectInputStream)
+		Private Sub readObject(  s As java.io.ObjectInputStream)
 			GraphicsEnvironment.checkHeadless()
 			s.defaultReadObject()
 
@@ -740,7 +740,7 @@ Namespace java.awt
 			''' Constructs an AccessibleAWTTextComponent.  Adds a listener to track
 			''' caret change.
 			''' </summary>
-			Public Sub New(ByVal outerInstance As TextComponent)
+			Public Sub New(  outerInstance As TextComponent)
 					Me.outerInstance = outerInstance
 				outerInstance.addTextListener(Me)
 			End Sub
@@ -748,7 +748,7 @@ Namespace java.awt
 			''' <summary>
 			''' TextListener notification of a text value change.
 			''' </summary>
-			Public Overridable Sub textValueChanged(ByVal textEvent_Renamed As TextEvent) Implements TextListener.textValueChanged
+			Public Overridable Sub textValueChanged(  textEvent_Renamed As TextEvent) Implements TextListener.textValueChanged
 				Dim cpos As Integer? = Convert.ToInt32(outerInstance.caretPosition)
 				outerInstance.firePropertyChange(ACCESSIBLE_TEXT_PROPERTY, Nothing, cpos)
 			End Sub
@@ -814,7 +814,7 @@ Namespace java.awt
 			''' </summary>
 			''' <param name="p"> the Point in local coordinates </param>
 			''' <returns> the zero-based index of the character under Point p. </returns>
-			Public Overridable Function getIndexAtPoint(ByVal p As Point) As Integer
+			Public Overridable Function getIndexAtPoint(  p As Point) As Integer
 				Return -1
 			End Function
 
@@ -826,7 +826,7 @@ Namespace java.awt
 			''' </summary>
 			''' <param name="i"> the index into the String &gt;= 0 </param>
 			''' <returns> the screen coordinates of the character's bounding box </returns>
-			Public Overridable Function getCharacterBounds(ByVal i As Integer) As Rectangle
+			Public Overridable Function getCharacterBounds(  i As Integer) As Rectangle
 				Return Nothing
 			End Function
 
@@ -859,7 +859,7 @@ Namespace java.awt
 			''' </summary>
 			''' <param name="i"> the zero-based index into the text </param>
 			''' <returns> the AttributeSet of the character </returns>
-			Public Overridable Function getCharacterAttribute(ByVal i As Integer) As javax.swing.text.AttributeSet
+			Public Overridable Function getCharacterAttribute(  i As Integer) As javax.swing.text.AttributeSet
 				Return Nothing ' No attributes in TextComponent
 			End Function
 
@@ -912,7 +912,7 @@ Namespace java.awt
 			''' <param name="index"> an index within the text &gt;= 0 </param>
 			''' <returns> the letter, word, or sentence,
 			'''   null for an invalid index or part </returns>
-			Public Overridable Function getAtIndex(ByVal part As Integer, ByVal index As Integer) As String
+			Public Overridable Function getAtIndex(  part As Integer,   index As Integer) As String
 				If index < 0 OrElse index >= outerInstance.text.length() Then Return Nothing
 				Select Case part
 				Case AccessibleText.CHARACTER
@@ -941,7 +941,7 @@ Namespace java.awt
 			''' Needed to unify forward and backward searching.
 			''' The method assumes that s is the text assigned to words.
 			''' </summary>
-			Private Function findWordLimit(ByVal index As Integer, ByVal words As java.text.BreakIterator, ByVal direction As Boolean, ByVal s As String) As Integer
+			Private Function findWordLimit(  index As Integer,   words As java.text.BreakIterator,   direction As Boolean,   s As String) As Integer
 				' Fix for 4256660 and 4256661.
 				' Words iterator is different from character and sentence iterators
 				' in that end of one word is not necessarily start of another word.
@@ -967,7 +967,7 @@ Namespace java.awt
 			''' <param name="index"> an index within the text &gt;= 0 </param>
 			''' <returns> the letter, word, or sentence, null for an invalid
 			'''  index or part </returns>
-			Public Overridable Function getAfterIndex(ByVal part As Integer, ByVal index As Integer) As String
+			Public Overridable Function getAfterIndex(  part As Integer,   index As Integer) As String
 				If index < 0 OrElse index >= outerInstance.text.length() Then Return Nothing
 				Select Case part
 				Case AccessibleText.CHARACTER
@@ -1005,7 +1005,7 @@ Namespace java.awt
 			''' <param name="index"> an index within the text &gt;= 0 </param>
 			''' <returns> the letter, word, or sentence, null for an invalid index
 			'''  or part </returns>
-			Public Overridable Function getBeforeIndex(ByVal part As Integer, ByVal index As Integer) As String
+			Public Overridable Function getBeforeIndex(  part As Integer,   index As Integer) As String
 				If index < 0 OrElse index >outerInstance.text.length()-1 Then Return Nothing
 				Select Case part
 				Case AccessibleText.CHARACTER

@@ -44,7 +44,7 @@ Namespace java.beans
 		''' </summary>
 		''' <param name="mess"> Descriptive message </param>
 		''' <param name="evt"> A PropertyChangeEvent describing the vetoed change. </param>
-		Public Sub New(ByVal mess As String, ByVal evt As PropertyChangeEvent)
+		Public Sub New(  mess As String,   evt As PropertyChangeEvent)
 			MyBase.New(mess)
 			Me.evt = evt
 		End Sub

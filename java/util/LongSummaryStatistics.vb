@@ -82,7 +82,7 @@ Namespace java.util
 		''' Records a new {@code int} value into the summary information.
 		''' </summary>
 		''' <param name="value"> the input value </param>
-		Public Overrides Sub accept(ByVal value As Integer)
+		Public Overrides Sub accept(  value As Integer)
 			accept(CLng(value))
 		End Sub
 
@@ -90,7 +90,7 @@ Namespace java.util
 		''' Records a new {@code long} value into the summary information.
 		''' </summary>
 		''' <param name="value"> the input value </param>
-		Public Overrides Sub accept(ByVal value As Long)
+		Public Overrides Sub accept(  value As Long)
 			count += 1
 			sum += value
 			min = System.Math.Min(min, value)
@@ -103,7 +103,7 @@ Namespace java.util
 		''' </summary>
 		''' <param name="other"> another {@code LongSummaryStatistics} </param>
 		''' <exception cref="NullPointerException"> if {@code other} is null </exception>
-		Public Overridable Sub combine(ByVal other As LongSummaryStatistics)
+		Public Overridable Sub combine(  other As LongSummaryStatistics)
 			count += other.count
 			sum += other.sum
 			min = System.Math.Min(min, other.min)

@@ -60,7 +60,7 @@ Namespace java.awt.image
 		''' <param name="imgf"> the specified <code>ImageFilter</code> </param>
 		''' <seealso cref= ImageFilter </seealso>
 		''' <seealso cref= java.awt.Component#createImage </seealso>
-		Public Sub New(ByVal orig As java.awt.image.ImageProducer, ByVal imgf As java.awt.image.ImageFilter)
+		Public Sub New(  orig As java.awt.image.ImageProducer,   imgf As java.awt.image.ImageFilter)
 			src = orig
 			filter = imgf
 		End Sub
@@ -89,7 +89,7 @@ Namespace java.awt.image
 		''' <param name="ic">  the consumer for the filtered image </param>
 		''' <seealso cref= ImageConsumer </seealso>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Sub addConsumer(ByVal ic As java.awt.image.ImageConsumer)
+		Public Overridable Sub addConsumer(  ic As java.awt.image.ImageConsumer)
 			If proxies Is Nothing Then proxies = New Hashtable
 			If Not proxies.ContainsKey(ic) Then
 				Dim imgf As java.awt.image.ImageFilter = filter.getFilterInstance(ic)
@@ -113,7 +113,7 @@ Namespace java.awt.image
 		''' <returns> true if the ImageConsumer is on the list; false otherwise </returns>
 		''' <seealso cref= ImageConsumer </seealso>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Function isConsumer(ByVal ic As java.awt.image.ImageConsumer) As Boolean
+		Public Overridable Function isConsumer(  ic As java.awt.image.ImageConsumer) As Boolean
 			Return (proxies IsNot Nothing AndAlso proxies.ContainsKey(ic))
 		End Function
 
@@ -130,7 +130,7 @@ Namespace java.awt.image
 		''' </summary>
 		''' <seealso cref= ImageConsumer </seealso>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Sub removeConsumer(ByVal ic As java.awt.image.ImageConsumer)
+		Public Overridable Sub removeConsumer(  ic As java.awt.image.ImageConsumer)
 			If proxies IsNot Nothing Then
 				Dim imgf As java.awt.image.ImageFilter = CType(proxies(ic), java.awt.image.ImageFilter)
 				If imgf IsNot Nothing Then
@@ -163,7 +163,7 @@ Namespace java.awt.image
 		''' </summary>
 		''' <param name="ic">  the consumer for the filtered image </param>
 		''' <seealso cref= ImageConsumer </seealso>
-		Public Overridable Sub startProduction(ByVal ic As java.awt.image.ImageConsumer)
+		Public Overridable Sub startProduction(  ic As java.awt.image.ImageConsumer)
 			If proxies Is Nothing Then proxies = New Hashtable
 			Dim imgf As java.awt.image.ImageFilter = CType(proxies(ic), java.awt.image.ImageFilter)
 			If imgf Is Nothing Then
@@ -187,7 +187,7 @@ Namespace java.awt.image
 		''' and its behavior if called from user code is unspecified.
 		''' </summary>
 		''' <seealso cref= ImageConsumer </seealso>
-		Public Overridable Sub requestTopDownLeftRightResend(ByVal ic As java.awt.image.ImageConsumer)
+		Public Overridable Sub requestTopDownLeftRightResend(  ic As java.awt.image.ImageConsumer)
 			If proxies IsNot Nothing Then
 				Dim imgf As java.awt.image.ImageFilter = CType(proxies(ic), java.awt.image.ImageFilter)
 				If imgf IsNot Nothing Then imgf.resendTopDownLeftRight(src)

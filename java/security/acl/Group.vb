@@ -50,7 +50,7 @@ Namespace java.security.acl
 		''' </param>
 		''' <returns> true if the member was successfully added,
 		''' false if the principal was already a member. </returns>
-		Function addMember(ByVal user As java.security.Principal) As Boolean
+		Function addMember(  user As java.security.Principal) As Boolean
 
 		''' <summary>
 		''' Removes the specified member from the group.
@@ -59,7 +59,7 @@ Namespace java.security.acl
 		''' </param>
 		''' <returns> true if the principal was removed, or
 		''' false if the principal was not a member. </returns>
-		Function removeMember(ByVal user As java.security.Principal) As Boolean
+		Function removeMember(  user As java.security.Principal) As Boolean
 
 		''' <summary>
 		''' Returns true if the passed principal is a member of the group.
@@ -70,7 +70,7 @@ Namespace java.security.acl
 		''' </param>
 		''' <returns> true if the principal is a member of this group,
 		''' false otherwise. </returns>
-		Function isMember(ByVal member As java.security.Principal) As Boolean
+		Function isMember(  member As java.security.Principal) As Boolean
 
 
 		''' <summary>

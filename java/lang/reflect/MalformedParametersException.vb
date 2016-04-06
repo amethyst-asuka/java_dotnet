@@ -66,7 +66,7 @@ Namespace java.lang.reflect
 		''' Create a {@code MalformedParametersException}.
 		''' </summary>
 		''' <param name="reason"> The reason for the exception. </param>
-		Public Sub New(ByVal reason As String)
+		Public Sub New(  reason As String)
 			MyBase.New(reason)
 		End Sub
 	End Class

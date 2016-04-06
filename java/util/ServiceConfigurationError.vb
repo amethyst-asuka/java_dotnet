@@ -66,7 +66,7 @@ Namespace java.util
 		''' </summary>
 		''' <param name="msg">  The message, or <tt>null</tt> if there is no message
 		'''  </param>
-		Public Sub New(ByVal msg As String)
+		Public Sub New(  msg As String)
 			MyBase.New(msg)
 		End Sub
 
@@ -77,7 +77,7 @@ Namespace java.util
 		''' </param>
 		''' <param name="cause">  The cause, or <tt>null</tt> if the cause is nonexistent
 		'''                or unknown </param>
-		Public Sub New(ByVal msg As String, ByVal cause As Throwable)
+		Public Sub New(  msg As String,   cause As Throwable)
 			MyBase.New(msg, cause)
 		End Sub
 

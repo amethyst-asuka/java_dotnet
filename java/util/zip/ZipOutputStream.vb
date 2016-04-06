@@ -55,7 +55,7 @@ Namespace java.util.zip
 		Private Class XEntry
 			Friend ReadOnly entry As ZipEntry
 			Friend ReadOnly offset As Long
-			Public Sub New(ByVal entry As ZipEntry, ByVal offset As Long)
+			Public Sub New(  entry As ZipEntry,   offset As Long)
 				Me.entry = entry
 				Me.offset = offset
 			End Sub
@@ -75,7 +75,7 @@ Namespace java.util.zip
 
 		Private ReadOnly zc As ZipCoder
 
-		Private Shared Function version(ByVal e As ZipEntry) As Integer
+		Private Shared Function version(  e As ZipEntry) As Integer
 			Select Case e.method
 			Case DEFLATED
 				Return 20
@@ -109,7 +109,7 @@ Namespace java.util.zip
 		''' to encode the entry names and comments.
 		''' </summary>
 		''' <param name="out"> the actual output stream </param>
-		Public Sub New(ByVal out As java.io.OutputStream)
+		Public Sub New(  out As java.io.OutputStream)
 			Me.New(out, java.nio.charset.StandardCharsets.UTF_8)
 		End Sub
 
@@ -122,7 +122,7 @@ Namespace java.util.zip
 		'''                to be used to encode the entry names and comments
 		''' 
 		''' @since 1.7 </param>
-		Public Sub New(ByVal out As java.io.OutputStream, ByVal charset As java.nio.charset.Charset)
+		Public Sub New(  out As java.io.OutputStream,   charset As java.nio.charset.Charset)
 			MyBase.New(out, New Deflater(Deflater.DEFAULT_COMPRESSION, True))
 			If charset Is Nothing Then Throw New NullPointerException("charset is null")
 			Me.zc = ZipCoder.get(charset)
@@ -135,7 +135,7 @@ Namespace java.util.zip
 		''' <exception cref="IllegalArgumentException"> if the length of the specified
 		'''            ZIP file comment is greater than 0xFFFF bytes </exception>
 		Public Overridable Property comment As String
-			Set(ByVal comment As String)
+			Set(  comment As String)
 				If comment IsNot Nothing Then
 					Me.comment = zc.getBytes(comment)
 					If Me.comment.Length > &Hffff Then Throw New IllegalArgumentException("ZIP file comment too java.lang.[Long].")
@@ -151,7 +151,7 @@ Namespace java.util.zip
 		''' <exception cref="IllegalArgumentException"> if the specified compression method
 		'''            is invalid </exception>
 		Public Overridable Property method As Integer
-			Set(ByVal method As Integer)
+			Set(  method As Integer)
 				If method <> DEFLATED AndAlso method <> STORED Then Throw New IllegalArgumentException("invalid compression method")
 				Me.method = method
 			End Set
@@ -163,7 +163,7 @@ Namespace java.util.zip
 		''' <param name="level"> the compression level (0-9) </param>
 		''' <exception cref="IllegalArgumentException"> if the compression level is invalid </exception>
 		Public Overridable Property level As Integer
-			Set(ByVal level As Integer)
+			Set(  level As Integer)
 				def.level = level
 			End Set
 		End Property
@@ -177,7 +177,7 @@ Namespace java.util.zip
 		''' <param name="e"> the ZIP entry to be written </param>
 		''' <exception cref="ZipException"> if a ZIP format error has occurred </exception>
 		''' <exception cref="IOException"> if an I/O error has occurred </exception>
-		Public Overridable Sub putNextEntry(ByVal e As ZipEntry)
+		Public Overridable Sub putNextEntry(  e As ZipEntry)
 			ensureOpen()
 			If current IsNot Nothing Then closeEntry() ' close previous entry
 			If e.xdostime = -1 Then e.time = System.currentTimeMillis()
@@ -260,7 +260,7 @@ Namespace java.util.zip
 		''' <exception cref="ZipException"> if a ZIP file error has occurred </exception>
 		''' <exception cref="IOException"> if an I/O error has occurred </exception>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overrides Sub write(ByVal b As SByte(), ByVal [off] As Integer, ByVal len As Integer)
+		Public Overrides Sub write(  b As SByte(),   [off] As Integer,   len As Integer)
 			ensureOpen()
 			If [off] < 0 OrElse len < 0 OrElse [off] > b.Length - len Then
 				Throw New IndexOutOfBoundsException
@@ -316,7 +316,7 @@ Namespace java.util.zip
 	'    
 	'     * Writes local file (LOC) header for specified entry.
 	'     
-		Private Sub writeLOC(ByVal xentry As XEntry)
+		Private Sub writeLOC(  xentry As XEntry)
 			Dim e As ZipEntry = xentry.entry
 			Dim flag As Integer = e.flag
 			Dim hasZip64 As Boolean = False
@@ -394,7 +394,7 @@ Namespace java.util.zip
 	'    
 	'     * Writes extra data descriptor (EXT) for specified entry.
 	'     
-		Private Sub writeEXT(ByVal e As ZipEntry)
+		Private Sub writeEXT(  e As ZipEntry)
 			writeInt(EXTSIG) ' EXT header signature
 			writeInt(e.crc) ' crc-32
 			If e.csize >= ZIP64_MAGICVAL OrElse e.size >= ZIP64_MAGICVAL Then
@@ -410,7 +410,7 @@ Namespace java.util.zip
 	'     * Write central directory (CEN) header for specified entry.
 	'     * REMIND: add support for file attributes
 	'     
-		Private Sub writeCEN(ByVal xentry As XEntry)
+		Private Sub writeCEN(  xentry As XEntry)
 			Dim e As ZipEntry = xentry.entry
 			Dim flag As Integer = e.flag
 			Dim version As Integer = version(e)
@@ -505,7 +505,7 @@ Namespace java.util.zip
 	'    
 	'     * Writes end of central directory (END) header.
 	'     
-		Private Sub writeEND(ByVal [off] As Long, ByVal len As Long)
+		Private Sub writeEND(  [off] As Long,   len As Long)
 			Dim hasZip64 As Boolean = False
 			Dim xlen As Long = len
 			Dim xoff As Long = [off]
@@ -560,7 +560,7 @@ Namespace java.util.zip
 	'    
 	'     * Returns the length of extra data without EXTT and ZIP64.
 	'     
-		Private Function getExtraLen(ByVal extra As SByte()) As Integer
+		Private Function getExtraLen(  extra As SByte()) As Integer
 			If extra Is Nothing Then Return 0
 			Dim skipped As Integer = 0
 			Dim len As Integer = extra.Length
@@ -581,7 +581,7 @@ Namespace java.util.zip
 	'     * Extra timestamp and ZIP64 data is handled/output separately
 	'     * in writeLOC and writeCEN.
 	'     
-		Private Sub writeExtra(ByVal extra As SByte())
+		Private Sub writeExtra(  extra As SByte())
 			If extra IsNot Nothing Then
 				Dim len As Integer = extra.Length
 				Dim [off] As Integer = 0
@@ -602,7 +602,7 @@ Namespace java.util.zip
 	'    
 	'     * Writes a 8-bit byte to the output stream.
 	'     
-		Private Sub writeByte(ByVal v As Integer)
+		Private Sub writeByte(  v As Integer)
 			Dim out As java.io.OutputStream = Me.out
 			out.write(v And &Hff)
 			written += 1
@@ -611,7 +611,7 @@ Namespace java.util.zip
 	'    
 	'     * Writes a 16-bit short to the output stream in little-endian byte order.
 	'     
-		Private Sub writeShort(ByVal v As Integer)
+		Private Sub writeShort(  v As Integer)
 			Dim out As java.io.OutputStream = Me.out
 			out.write((CInt(CUInt(v) >> 0)) And &Hff)
 			out.write((CInt(CUInt(v) >> 8)) And &Hff)
@@ -621,7 +621,7 @@ Namespace java.util.zip
 	'    
 	'     * Writes a 32-bit int to the output stream in little-endian byte order.
 	'     
-		Private Sub writeInt(ByVal v As Long)
+		Private Sub writeInt(  v As Long)
 			Dim out As java.io.OutputStream = Me.out
 			out.write(CInt(Fix((CLng(CULng(v) >> 0)) And &Hff)))
 			out.write(CInt(Fix((CLng(CULng(v) >> 8)) And &Hff)))
@@ -633,7 +633,7 @@ Namespace java.util.zip
 	'    
 	'     * Writes a 64-bit int to the output stream in little-endian byte order.
 	'     
-		Private Sub writeLong(ByVal v As Long)
+		Private Sub writeLong(  v As Long)
 			Dim out As java.io.OutputStream = Me.out
 			out.write(CInt(Fix((CLng(CULng(v) >> 0)) And &Hff)))
 			out.write(CInt(Fix((CLng(CULng(v) >> 8)) And &Hff)))
@@ -649,7 +649,7 @@ Namespace java.util.zip
 	'    
 	'     * Writes an array of bytes to the output stream.
 	'     
-		Private Sub writeBytes(ByVal b As SByte(), ByVal [off] As Integer, ByVal len As Integer)
+		Private Sub writeBytes(  b As SByte(),   [off] As Integer,   len As Integer)
 			MyBase.out.write(b, [off], len)
 			written += len
 		End Sub

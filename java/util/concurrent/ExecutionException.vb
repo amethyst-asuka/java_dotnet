@@ -64,7 +64,7 @@ Namespace java.util.concurrent
 		''' initialized by a call to <seealso cref="#initCause(Throwable) initCause"/>.
 		''' </summary>
 		''' <param name="message"> the detail message </param>
-		Protected Friend Sub New(ByVal message As String)
+		Protected Friend Sub New(  message As String)
 			MyBase.New(message)
 		End Sub
 
@@ -75,7 +75,7 @@ Namespace java.util.concurrent
 		''' <param name="message"> the detail message </param>
 		''' <param name="cause"> the cause (which is saved for later retrieval by the
 		'''         <seealso cref="#getCause()"/> method) </param>
-		Public Sub New(ByVal message As String, ByVal cause As Throwable)
+		Public Sub New(  message As String,   cause As Throwable)
 			MyBase.New(message, cause)
 		End Sub
 
@@ -87,7 +87,7 @@ Namespace java.util.concurrent
 		''' </summary>
 		''' <param name="cause"> the cause (which is saved for later retrieval by the
 		'''         <seealso cref="#getCause()"/> method) </param>
-		Public Sub New(ByVal cause As Throwable)
+		Public Sub New(  cause As Throwable)
 			MyBase.New(cause)
 		End Sub
 	End Class

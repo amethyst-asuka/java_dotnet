@@ -51,7 +51,7 @@ Namespace java.io
 		''' </summary>
 		''' <param name="out">  a Writer object to provide the underlying stream. </param>
 		''' <exception cref="NullPointerException"> if <code>out</code> is <code>null</code> </exception>
-		Protected Friend Sub New(ByVal out As Writer)
+		Protected Friend Sub New(  out As Writer)
 			MyBase.New(out)
 			Me.out = out
 		End Sub
@@ -60,7 +60,7 @@ Namespace java.io
 		''' Writes a single character.
 		''' </summary>
 		''' <exception cref="IOException">  If an I/O error occurs </exception>
-		Public Overrides Sub write(ByVal c As Integer)
+		Public Overrides Sub write(  c As Integer)
 			out.write(c)
 		End Sub
 

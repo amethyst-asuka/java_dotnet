@@ -71,7 +71,7 @@ Namespace java.net
 		''' Package-private constructor to create a ServerSocket associated with
 		''' the given SocketImpl.
 		''' </summary>
-		Friend Sub New(ByVal impl As SocketImpl)
+		Friend Sub New(  impl As SocketImpl)
 			Me.impl = impl
 			impl.serverSocket = Me
 		End Sub
@@ -121,7 +121,7 @@ Namespace java.net
 		''' <seealso cref=        java.net.SocketImplFactory#createSocketImpl() </seealso>
 		''' <seealso cref=        java.net.ServerSocket#setSocketFactory(java.net.SocketImplFactory) </seealso>
 		''' <seealso cref=        SecurityManager#checkListen </seealso>
-		Public Sub New(ByVal port As Integer)
+		Public Sub New(  port As Integer)
 			Me.New(port, 50, Nothing)
 		End Sub
 
@@ -173,7 +173,7 @@ Namespace java.net
 		''' <seealso cref=        java.net.SocketImplFactory#createSocketImpl() </seealso>
 		''' <seealso cref=        java.net.ServerSocket#setSocketFactory(java.net.SocketImplFactory) </seealso>
 		''' <seealso cref=        SecurityManager#checkListen </seealso>
-		Public Sub New(ByVal port As Integer, ByVal backlog As Integer)
+		Public Sub New(  port As Integer,   backlog As Integer)
 			Me.New(port, backlog, Nothing)
 		End Sub
 
@@ -221,7 +221,7 @@ Namespace java.net
 		''' <seealso cref= SocketImpl </seealso>
 		''' <seealso cref= SecurityManager#checkListen
 		''' @since   JDK1.1 </seealso>
-		Public Sub New(ByVal port As Integer, ByVal backlog As Integer, ByVal bindAddr As InetAddress)
+		Public Sub New(  port As Integer,   backlog As Integer,   bindAddr As InetAddress)
 			implmpl()
 			If port < 0 OrElse port > &HFFFF Then Throw New IllegalArgumentException("Port value out of range: " & port)
 			If backlog < 1 Then backlog = 50
@@ -313,7 +313,7 @@ Namespace java.net
 		''' <exception cref="IllegalArgumentException"> if endpoint is a
 		'''          SocketAddress subclass not supported by this socket
 		''' @since 1.4 </exception>
-		Public Overridable Sub bind(ByVal endpoint As SocketAddress)
+		Public Overridable Sub bind(  endpoint As SocketAddress)
 			bind(endpoint, 50)
 		End Sub
 
@@ -341,7 +341,7 @@ Namespace java.net
 		''' <exception cref="IllegalArgumentException"> if endpoint is a
 		'''          SocketAddress subclass not supported by this socket
 		''' @since 1.4 </exception>
-		Public Overridable Sub bind(ByVal endpoint As SocketAddress, ByVal backlog As Integer)
+		Public Overridable Sub bind(  endpoint As SocketAddress,   backlog As Integer)
 			If closed Then Throw New SocketException("Socket is closed")
 			If (Not oldImpl) AndAlso bound Then Throw New SocketException("Already bound")
 			If endpoint Is Nothing Then endpoint = New InetSocketAddress(0)
@@ -505,7 +505,7 @@ Namespace java.net
 		''' @since   JDK1.1
 		''' @revised 1.4
 		''' @spec JSR-51 </exception>
-		Protected Friend Sub implAccept(ByVal s As Socket)
+		Protected Friend Sub implAccept(  s As Socket)
 			Dim si As SocketImpl = Nothing
 			Try
 				If s.impl Is Nothing Then
@@ -617,7 +617,7 @@ Namespace java.net
 		''' <seealso cref= #getSoTimeout() </seealso>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
 		Public Overridable Property soTimeout As Integer
-			Set(ByVal timeout As Integer)
+			Set(  timeout As Integer)
 				If closed Then Throw New SocketException("Socket is closed")
 				impl.optionion(SocketOptions.SO_TIMEOUT, New Integer?(timeout))
 			End Set
@@ -670,7 +670,7 @@ Namespace java.net
 		''' <seealso cref= #isBound() </seealso>
 		''' <seealso cref= #isClosed() </seealso>
 		Public Overridable Property reuseAddress As Boolean
-			Set(ByVal [on] As Boolean)
+			Set(  [on] As Boolean)
 				If closed Then Throw New SocketException("Socket is closed")
 				impl.optionion(SocketOptions.SO_REUSEADDR, Convert.ToBoolean([on]))
 			End Set
@@ -743,7 +743,7 @@ Namespace java.net
 		''' <seealso cref=        SecurityManager#checkSetFactory </seealso>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
 		Public Shared Property socketFactory As SocketImplFactory
-			Set(ByVal fac As SocketImplFactory)
+			Set(  fac As SocketImplFactory)
 				If factory IsNot Nothing Then Throw New SocketException("factory already defined")
 				Dim security As SecurityManager = System.securityManager
 				If security IsNot Nothing Then security.checkSetFactory()
@@ -788,7 +788,7 @@ Namespace java.net
 		''' <seealso cref= #getReceiveBufferSize </seealso>
 		 <MethodImpl(MethodImplOptions.Synchronized)> _
 		 Public Overridable Property receiveBufferSize As Integer
-			 Set(ByVal size As Integer)
+			 Set(  size As Integer)
 				If Not(size > 0) Then Throw New IllegalArgumentException("negative receive size")
 				If closed Then Throw New SocketException("Socket is closed")
 				impl.optionion(SocketOptions.SO_RCVBUF, New Integer?(size))
@@ -840,7 +840,7 @@ Namespace java.net
 		'''         bandwidth
 		''' 
 		''' @since 1.5 </param>
-		Public Overridable Sub setPerformancePreferences(ByVal connectionTime As Integer, ByVal latency As Integer, ByVal bandwidth As Integer)
+		Public Overridable Sub setPerformancePreferences(  connectionTime As Integer,   latency As Integer,   bandwidth As Integer)
 			' Not implemented yet 
 		End Sub
 

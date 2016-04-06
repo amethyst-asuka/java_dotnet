@@ -75,7 +75,7 @@ Namespace java.security
         ''' <param name="name"> name of the Permission object being created.
         '''  </param>
 
-        Public Sub New(ByVal name As String)
+        Public Sub New(  name As String)
 			Me.name = name
 		End Sub
 
@@ -96,7 +96,7 @@ Namespace java.security
 		''' <seealso cref= GuardedObject </seealso>
 		''' <seealso cref= SecurityManager#checkPermission
 		'''  </seealso>
-		Public Overridable Sub checkGuard(ByVal [object] As Object) Implements Guard.checkGuard
+		Public Overridable Sub checkGuard(  [object] As Object) Implements Guard.checkGuard
 			Dim sm As SecurityManager = System.securityManager
 			If sm IsNot Nothing Then sm.checkPermission(Me)
 		End Sub
@@ -117,7 +117,7 @@ Namespace java.security
 		''' <returns> true if the specified permission is implied by this object,
 		''' false if not. </returns>
 
-		Public MustOverride Function implies(ByVal permission As Permission) As Boolean
+		Public MustOverride Function implies(  permission As Permission) As Boolean
 
         ''' <summary>
         ''' Checks two Permission objects for equality.
@@ -129,7 +129,7 @@ Namespace java.security
         ''' </param>
         ''' <returns> true if both Permission objects are equivalent. </returns>
 
-        Public MustOverride Overrides Function Equals(ByVal obj As Object) As Boolean
+        Public MustOverride Overrides Function Equals(  obj As Object) As Boolean
 
         ''' <summary>
         ''' Returns the hash code value for this Permission object.

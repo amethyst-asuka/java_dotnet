@@ -205,7 +205,7 @@ Namespace java.lang
         ''' </summary>
         ''' <param name="f">   the float to be converted. </param>
         ''' <returns> a string representation of the argument. </returns>
-        Public Overloads Shared Function ToString(ByVal f As Single) As String
+        Public Overloads Shared Function ToString(  f As Single) As String
             Return sun.misc.FloatingDecimal.toJavaFormatString(f)
         End Function
 
@@ -282,7 +282,7 @@ Namespace java.lang
         ''' <returns> a hex string representation of the argument.
         ''' @since 1.5
         ''' @author Joseph D. Darcy </returns>
-        Public Shared Function toHexString(ByVal f As Single) As String
+        Public Shared Function toHexString(  f As Single) As String
 			If System.Math.Abs(f) < sun.misc.FloatConsts.MIN_NORMAL AndAlso f <> 0.0f Then ' float subnormal
                 ' Adjust exponent to create subnormal double, then
                 ' replace subnormal double exponent with subnormal float
@@ -410,7 +410,7 @@ Namespace java.lang
 		'''          represented by the {@code String} argument. </returns>
 		''' <exception cref="NumberFormatException">  if the string does not contain a
 		'''          parsable number. </exception>
-		Public Shared Function valueOf(ByVal s As String) As Float
+		Public Shared Function valueOf(  s As String) As Float
 			Return New Float(parseFloat(s))
 		End Function
 
@@ -426,7 +426,7 @@ Namespace java.lang
 		''' <param name="f"> a float value. </param>
 		''' <returns> a {@code Float} instance representing {@code f}.
 		''' @since  1.5 </returns>
-		Public Shared Function valueOf(ByVal f As Single) As Float
+		Public Shared Function valueOf(  f As Single) As Float
 			Return New Float(f)
 		End Function
 
@@ -443,7 +443,7 @@ Namespace java.lang
 		'''               parsable {@code float}. </exception>
 		''' <seealso cref=    java.lang.Float#valueOf(String)
 		''' @since 1.2 </seealso>
-		Public Shared Function parseFloat(ByVal s As String) As Single
+		Public Shared Function parseFloat(  s As String) As Single
 			Return sun.misc.FloatingDecimal.parseFloat(s)
 		End Function
 
@@ -454,7 +454,7 @@ Namespace java.lang
 		''' <param name="v">   the value to be tested. </param>
 		''' <returns>  {@code true} if the argument is NaN;
 		'''          {@code false} otherwise. </returns>
-		Public Shared Function isNaN(ByVal v As Single) As Boolean
+		Public Shared Function isNaN(  v As Single) As Boolean
 			Return (v <> v)
 		End Function
 
@@ -465,7 +465,7 @@ Namespace java.lang
 		''' <param name="v">   the value to be tested. </param>
 		''' <returns>  {@code true} if the argument is positive infinity or
 		'''          negative infinity; {@code false} otherwise. </returns>
-		Public Shared Function isInfinite(ByVal v As Single) As Boolean
+		Public Shared Function isInfinite(  v As Single) As Boolean
 			Return (v = POSITIVE_INFINITY) OrElse (v = NEGATIVE_INFINITY)
 		End Function
 
@@ -479,7 +479,7 @@ Namespace java.lang
 		''' <returns> {@code true} if the argument is a finite
 		''' floating-point value, {@code false} otherwise.
 		''' @since 1.8 </returns>
-		 Public Shared Function isFinite(ByVal f As Single) As Boolean
+		 Public Shared Function isFinite(  f As Single) As Boolean
 			Return System.Math.Abs(f) <= sun.misc.FloatConsts.MAX_VALUE
 		 End Function
 
@@ -495,7 +495,7 @@ Namespace java.lang
 		''' represents the primitive {@code float} argument.
 		''' </summary>
 		''' <param name="value">   the value to be represented by the {@code Float}. </param>
-		Public Sub New(ByVal value As Single)
+		Public Sub New(  value As Single)
 			Me.value = value
 		End Sub
 
@@ -504,7 +504,7 @@ Namespace java.lang
 		''' represents the argument converted to type {@code float}.
 		''' </summary>
 		''' <param name="value">   the value to be represented by the {@code Float}. </param>
-		Public Sub New(ByVal value As Double)
+		Public Sub New(  value As Double)
 			Me.value = CSng(value)
 		End Sub
 
@@ -518,7 +518,7 @@ Namespace java.lang
 		''' <exception cref="NumberFormatException">  if the string does not contain a
 		'''               parsable number. </exception>
 		''' <seealso cref=        java.lang.Float#valueOf(java.lang.String) </seealso>
-		Public Sub New(ByVal s As String)
+		Public Sub New(  s As String)
 			value = parseFloat(s)
 		End Sub
 
@@ -642,7 +642,7 @@ Namespace java.lang
         ''' <param name="value"> the value to hash </param>
         ''' <returns> a hash code value for a {@code float} value.
         ''' @since 1.8 </returns>
-        Public Overloads Shared Function GetHashCode(ByVal value As Single) As Integer
+        Public Overloads Shared Function GetHashCode(  value As Single) As Integer
             Return floatToIntBits(value)
         End Function
 
@@ -685,7 +685,7 @@ Namespace java.lang
         ''' <returns>  {@code true} if the objects are the same;
         '''          {@code false} otherwise. </returns>
         ''' <seealso cref= java.lang.Float#floatToIntBits(float) </seealso>
-        Public Overrides Function Equals(ByVal obj As Object) As Boolean
+        Public Overrides Function Equals(  obj As Object) As Boolean
 			Return (TypeOf obj Is Float) AndAlso (floatToIntBits(CSng(obj).value) = floatToIntBits(value))
 		End Function
 
@@ -719,7 +719,7 @@ Namespace java.lang
 		''' </summary>
 		''' <param name="value">   a floating-point number. </param>
 		''' <returns> the bits that represent the floating-point number. </returns>
-		Public Shared Function floatToIntBits(ByVal value As Single) As Integer
+		Public Shared Function floatToIntBits(  value As Single) As Integer
 			Dim result As Integer = floatToRawIntBits(value)
 			' Check for NaN based on values of bit fields, maximum
 			' exponent and nonzero significand.
@@ -763,7 +763,7 @@ Namespace java.lang
 		''' @since 1.3 </returns>
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Public Shared Function floatToRawIntBits(ByVal value As Single) As Integer
+		Public Shared Function floatToRawIntBits(  value As Single) As Integer
 		End Function
 
 		''' <summary>
@@ -826,7 +826,7 @@ Namespace java.lang
 		'''          pattern. </returns>
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Public Shared Function intBitsToFloat(ByVal bits As Integer) As Single
+		Public Shared Function intBitsToFloat(  bits As Integer) As Single
 		End Function
 
 		''' <summary>
@@ -860,7 +860,7 @@ Namespace java.lang
 		''' 
 		''' @since   1.2 </returns>
 		''' <seealso cref= Comparable#compareTo(Object) </seealso>
-		Public Function compareTo(ByVal anotherFloat As Float) As Integer Implements Comparable(Of Float).compareTo
+		Public Function compareTo(  anotherFloat As Float) As Integer Implements Comparable(Of Float).compareTo
 			Return Float.Compare(value, anotherFloat.value)
 		End Function
 
@@ -881,7 +881,7 @@ Namespace java.lang
 		'''          if {@code f1} is numerically greater than
 		'''          {@code f2}.
 		''' @since 1.4 </returns>
-		Public Shared Function compare(ByVal f1 As Single, ByVal f2 As Single) As Integer
+		Public Shared Function compare(  f1 As Single,   f2 As Single) As Integer
 			If f1 < f2 Then Return -1 ' Neither val is NaN, thisVal is smaller
 			If f1 > f2 Then Return 1 ' Neither val is NaN, thisVal is larger
 
@@ -901,7 +901,7 @@ Namespace java.lang
 		''' @jls 4.2.4 Floating-Point Operations </returns>
 		''' <seealso cref= java.util.function.BinaryOperator
 		''' @since 1.8 </seealso>
-		Public Shared Function sum(ByVal a As Single, ByVal b As Single) As Single
+		Public Shared Function sum(  a As Single,   b As Single) As Single
 			Return a + b
 		End Function
 
@@ -914,7 +914,7 @@ Namespace java.lang
 		''' <returns> the greater of {@code a} and {@code b} </returns>
 		''' <seealso cref= java.util.function.BinaryOperator
 		''' @since 1.8 </seealso>
-		Public Shared Function max(ByVal a As Single, ByVal b As Single) As Single
+		Public Shared Function max(  a As Single,   b As Single) As Single
 			Return System.Math.Max(a, b)
 		End Function
 
@@ -927,7 +927,7 @@ Namespace java.lang
 		''' <returns> the smaller of {@code a} and {@code b} </returns>
 		''' <seealso cref= java.util.function.BinaryOperator
 		''' @since 1.8 </seealso>
-		Public Shared Function min(ByVal a As Single, ByVal b As Single) As Single
+		Public Shared Function min(  a As Single,   b As Single) As Single
 			Return System.Math.Min(a, b)
 		End Function
 

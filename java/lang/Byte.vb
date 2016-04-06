@@ -72,7 +72,7 @@ Namespace java.lang
         ''' <param name="b"> the {@code byte} to be converted </param>
         ''' <returns> the string representation of the specified {@code byte} </returns>
         ''' <seealso cref= java.lang.Integer#toString(int) </seealso>
-        Public Overloads Shared Function ToString(ByVal b As SByte) As String
+        Public Overloads Shared Function ToString(  b As SByte) As String
             Return Convert.ToString(CInt(b), 10)
         End Function
 
@@ -101,7 +101,7 @@ Namespace java.lang
         ''' <param name="b"> a byte value. </param>
         ''' <returns> a {@code Byte} instance representing {@code b}.
         ''' @since  1.5 </returns>
-        Public Shared Function valueOf(ByVal b As SByte) As [Byte]
+        Public Shared Function valueOf(  b As SByte) As [Byte]
             Const offset As Integer = 128
             Return ByteCache.cache(CInt(b) + offset)
         End Function
@@ -146,7 +146,7 @@ Namespace java.lang
         '''                   argument in the specified radix </returns>
         ''' <exception cref="NumberFormatException"> If the string does
         '''                  not contain a parsable {@code byte}. </exception>
-        Public Shared Function parseByte(ByVal s As String, ByVal radix As Integer) As SByte
+        Public Shared Function parseByte(  s As String,   radix As Integer) As SByte
 			Dim i As Integer = Convert.ToInt32(s, radix)
 			If i < MIN_VALUE OrElse i > MAX_VALUE Then Throw New NumberFormatException("Value out of range. Value:""" & s & """ Radix:" & radix)
             Return CSByte(i)
@@ -169,7 +169,7 @@ Namespace java.lang
 		'''                  argument in decimal </returns>
 		''' <exception cref="NumberFormatException"> if the string does not
 		'''                  contain a parsable {@code byte}. </exception>
-		Public Shared Function parseByte(ByVal s As String) As SByte
+		Public Shared Function parseByte(  s As String) As SByte
 			Return parseByte(s, 10)
 		End Function
 
@@ -197,7 +197,7 @@ Namespace java.lang
         '''                  specified radix. </returns>
         ''' <exception cref="NumberFormatException"> If the {@code String} does
         '''                  not contain a parsable {@code byte}. </exception>
-        Public Shared Function valueOf(ByVal s As String, ByVal radix As Integer) As [Byte]
+        Public Shared Function valueOf(  s As String,   radix As Integer) As [Byte]
             Return valueOf(parseByte(s, radix))
         End Function
 
@@ -222,7 +222,7 @@ Namespace java.lang
         '''                  represented by the string argument </returns>
         ''' <exception cref="NumberFormatException"> If the {@code String} does
         '''                  not contain a parsable {@code byte}. </exception>
-        Public Shared Function valueOf(ByVal s As String) As [Byte]
+        Public Shared Function valueOf(  s As String) As [Byte]
             Return valueOf(s, 10)
         End Function
 
@@ -267,7 +267,7 @@ Namespace java.lang
         ''' <exception cref="NumberFormatException">  if the {@code String} does not
         '''            contain a parsable {@code byte}. </exception>
         ''' <seealso cref= java.lang.Byte#parseByte(java.lang.String, int) </seealso>
-        Public Shared Function decode(ByVal nm As String) As [Byte]
+        Public Shared Function decode(  nm As String) As [Byte]
             Dim i As Integer = java.lang.[Integer].decode(nm)
             If i < MIN_VALUE OrElse i > MAX_VALUE Then Throw New NumberFormatException("Value " & i & " out of range from input " & nm)
             Return valueOf(CSByte(i))
@@ -286,7 +286,7 @@ Namespace java.lang
 		''' </summary>
 		''' <param name="value">     the value to be represented by the
 		'''                  {@code Byte}. </param>
-		Public Sub New(ByVal value As SByte)
+		Public Sub New(  value As SByte)
 			Me.value = value
 		End Sub
 
@@ -302,7 +302,7 @@ Namespace java.lang
 		''' <exception cref="NumberFormatException"> If the {@code String}
 		'''                  does not contain a parsable {@code byte}. </exception>
 		''' <seealso cref=        java.lang.Byte#parseByte(java.lang.String, int) </seealso>
-		Public Sub New(ByVal s As String)
+		Public Sub New(  s As String)
 			Me.value = parseByte(s, 10)
 		End Sub
 
@@ -388,7 +388,7 @@ Namespace java.lang
         ''' <param name="value"> the value to hash </param>
         ''' <returns> a hash code value for a {@code byte} value.
         ''' @since 1.8 </returns>
-        Public Overloads Shared Function GetHashCode(ByVal value As SByte) As Integer
+        Public Overloads Shared Function GetHashCode(  value As SByte) As Integer
             Return CInt(value)
         End Function
 
@@ -401,7 +401,7 @@ Namespace java.lang
         ''' <param name="obj">       the object to compare with </param>
         ''' <returns>          {@code true} if the objects are the same;
         '''                  {@code false} otherwise. </returns>
-        Public Overrides Function Equals(ByVal obj As Object) As Boolean
+        Public Overrides Function Equals(  obj As Object) As Boolean
 			If TypeOf obj Is Byte Then Return value = CByte(obj)
 			Return False
 		End Function
@@ -418,7 +418,7 @@ Namespace java.lang
         '''           greater than the argument {@code Byte} (signed
         '''           comparison).
         ''' @since   1.2 </returns>
-        Public Function compareTo(ByVal anotherByte As [Byte]) As Integer Implements Comparable(Of [Byte]).compareTo
+        Public Function compareTo(  anotherByte As [Byte]) As Integer Implements Comparable(Of [Byte]).compareTo
             Return compare(Me.value, anotherByte.value)
         End Function
 
@@ -435,7 +435,7 @@ Namespace java.lang
         '''         a value less than {@code 0} if {@code x < y}; and
         '''         a value greater than {@code 0} if {@code x > y}
         ''' @since 1.7 </returns>
-        Public Shared Function compare(ByVal x As SByte, ByVal y As SByte) As Integer
+        Public Shared Function compare(  x As SByte,   y As SByte) As Integer
 			Return x - y
 		End Function
 
@@ -454,7 +454,7 @@ Namespace java.lang
 		''' <returns> the argument converted to {@code int} by an unsigned
 		'''         conversion
 		''' @since 1.8 </returns>
-		Public Shared Function toUnsignedInt(ByVal x As SByte) As Integer
+		Public Shared Function toUnsignedInt(  x As SByte) As Integer
 			Return (CInt(x)) And &Hff
 		End Function
 
@@ -473,7 +473,7 @@ Namespace java.lang
 		''' <returns> the argument converted to {@code long} by an unsigned
 		'''         conversion
 		''' @since 1.8 </returns>
-		Public Shared Function toUnsignedLong(ByVal x As SByte) As Long
+		Public Shared Function toUnsignedLong(  x As SByte) As Long
 			Return (CLng(x)) And &HffL
 		End Function
 

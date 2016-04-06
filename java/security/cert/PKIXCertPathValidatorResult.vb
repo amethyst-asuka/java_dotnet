@@ -74,7 +74,7 @@ Namespace java.security.cert
 		''' <param name="subjectPublicKey"> the public key of the subject </param>
 		''' <exception cref="NullPointerException"> if the {@code subjectPublicKey} or
 		''' {@code trustAnchor} parameters are {@code null} </exception>
-		Public Sub New(ByVal trustAnchor As TrustAnchor, ByVal policyTree As PolicyNode, ByVal subjectPublicKey As java.security.PublicKey)
+		Public Sub New(  trustAnchor As TrustAnchor,   policyTree As PolicyNode,   subjectPublicKey As java.security.PublicKey)
 			If subjectPublicKey Is Nothing Then Throw New NullPointerException("subjectPublicKey must be non-null")
 			If trustAnchor Is Nothing Then Throw New NullPointerException("trustAnchor must be non-null")
 			Me.trustAnchor = trustAnchor

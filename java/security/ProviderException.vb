@@ -53,7 +53,7 @@ Namespace java.security
 		''' particular exception.
 		''' </summary>
 		''' <param name="s"> the detail message. </param>
-		Public Sub New(ByVal s As String)
+		Public Sub New(  s As String)
 			MyBase.New(s)
 		End Sub
 
@@ -67,7 +67,7 @@ Namespace java.security
 		'''        <seealso cref="#getCause()"/> method).  (A {@code null} value is permitted,
 		'''        and indicates that the cause is nonexistent or unknown.)
 		''' @since 1.5 </param>
-		Public Sub New(ByVal message As String, ByVal cause As Throwable)
+		Public Sub New(  message As String,   cause As Throwable)
 			MyBase.New(message, cause)
 		End Sub
 
@@ -81,7 +81,7 @@ Namespace java.security
 		'''        <seealso cref="#getCause()"/> method).  (A {@code null} value is permitted,
 		'''        and indicates that the cause is nonexistent or unknown.)
 		''' @since 1.5 </param>
-		Public Sub New(ByVal cause As Throwable)
+		Public Sub New(  cause As Throwable)
 			MyBase.New(cause)
 		End Sub
 	End Class

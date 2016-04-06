@@ -78,7 +78,7 @@ Namespace java.security.cert
 		''' <exception cref="NullPointerException"> if {@code revocationDate},
 		'''    {@code reason}, {@code authority}, or
 		'''    {@code extensions} is {@code null} </exception>
-		Public Sub New(ByVal revocationDate As DateTime?, ByVal reason As CRLReason, ByVal authority As javax.security.auth.x500.X500Principal, ByVal extensions As IDictionary(Of String, Extension))
+		Public Sub New(  revocationDate As DateTime?,   reason As CRLReason,   authority As javax.security.auth.x500.X500Principal,   extensions As IDictionary(Of String, Extension))
 			If revocationDate Is Nothing OrElse reason Is Nothing OrElse authority Is Nothing OrElse extensions Is Nothing Then Throw New NullPointerException
 			Me.revocationDate = New DateTime?(revocationDate.Value.time)
 			Me.reason = reason
@@ -180,7 +180,7 @@ Namespace java.security.cert
 		''' flag (boolean), the length of the encoded extension value byte array
 		''' (int), and the encoded extension value bytes.
 		''' </summary>
-		Private Sub writeObject(ByVal oos As java.io.ObjectOutputStream)
+		Private Sub writeObject(  oos As java.io.ObjectOutputStream)
 			' Write out the non-transient fields
 			' (revocationDate, reason, authority)
 			oos.defaultWriteObject()
@@ -206,7 +206,7 @@ Namespace java.security.cert
 		''' <summary>
 		''' Deserialize the {@code CertificateRevokedException} instance.
 		''' </summary>
-		Private Sub readObject(ByVal ois As java.io.ObjectInputStream)
+		Private Sub readObject(  ois As java.io.ObjectInputStream)
 			' Read in the non-transient fields
 			' (revocationDate, reason, authority)
 			ois.defaultReadObject()

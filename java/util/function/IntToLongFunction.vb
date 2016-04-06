@@ -42,7 +42,7 @@ Namespace java.util.function
 		''' </summary>
 		''' <param name="value"> the function argument </param>
 		''' <returns> the function result </returns>
-		Function applyAsLong(ByVal value As Integer) As Long
+		Function applyAsLong(  value As Integer) As Long
 	End Interface
 
 End Namespace

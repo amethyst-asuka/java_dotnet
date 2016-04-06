@@ -44,7 +44,7 @@ Namespace java.io
 		''' This provides a detailed message.
 		''' </summary>
 		''' <param name="s"> the detailed message associated with the exception. </param>
-		Public Sub New(ByVal s As String)
+		Public Sub New(  s As String)
 			MyBase.New(s)
 		End Sub
 	End Class

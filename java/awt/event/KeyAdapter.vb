@@ -56,19 +56,19 @@ Namespace java.awt.event
 		''' Invoked when a key has been typed.
 		''' This event occurs when a key press is followed by a key release.
 		''' </summary>
-		Public Overridable Sub keyTyped(ByVal e As KeyEvent) Implements KeyListener.keyTyped
+		Public Overridable Sub keyTyped(  e As KeyEvent) Implements KeyListener.keyTyped
 		End Sub
 
 		''' <summary>
 		''' Invoked when a key has been pressed.
 		''' </summary>
-		Public Overridable Sub keyPressed(ByVal e As KeyEvent) Implements KeyListener.keyPressed
+		Public Overridable Sub keyPressed(  e As KeyEvent) Implements KeyListener.keyPressed
 		End Sub
 
 		''' <summary>
 		''' Invoked when a key has been released.
 		''' </summary>
-		Public Overridable Sub keyReleased(ByVal e As KeyEvent) Implements KeyListener.keyReleased
+		Public Overridable Sub keyReleased(  e As KeyEvent) Implements KeyListener.keyReleased
 		End Sub
 	End Class
 

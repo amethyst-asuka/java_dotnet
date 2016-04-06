@@ -175,7 +175,7 @@ Namespace java.lang.instrument
 		''' <returns>  a well-formed class file buffer (the result of the transform),
 		'''            or <code>null</code> if no transform is performed. </returns>
 		''' <seealso cref= Instrumentation#redefineClasses </seealso>
-		Function transform(ByVal loader As  ClassLoader, ByVal className As String, ByVal classBeingRedefined As [Class], ByVal protectionDomain As java.security.ProtectionDomain, ByVal classfileBuffer As SByte()) As SByte()
+		Function transform(  loader As  ClassLoader,   className As String,   classBeingRedefined As [Class],   protectionDomain As java.security.ProtectionDomain,   classfileBuffer As SByte()) As SByte()
 	End Interface
 
 End Namespace

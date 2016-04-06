@@ -90,7 +90,7 @@ Namespace java.rmi.activation
 		Implements ActivationInstantiator
 
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-			Public MustOverride Function newInstance(ByVal id As ActivationID, ByVal desc As ActivationDesc) As java.rmi.MarshalledObject<? As java.rmi.Remote>
+			Public MustOverride Function newInstance(  id As ActivationID,   desc As ActivationDesc) As java.rmi.MarshalledObject<? As java.rmi.Remote>
 		''' <summary>
 		''' @serial the group's identifier
 		''' </summary>
@@ -133,7 +133,7 @@ Namespace java.rmi.activation
 		''' <exception cref="UnsupportedOperationException"> if and only if activation is
 		'''          not supported by this implementation
 		''' @since   1.2 </exception>
-		Protected Friend Sub New(ByVal groupID As ActivationGroupID)
+		Protected Friend Sub New(  groupID As ActivationGroupID)
 			' call super constructor to export the object
 			MyBase.New()
 			Me.groupID = groupID
@@ -176,7 +176,7 @@ Namespace java.rmi.activation
 		''' <exception cref="RemoteException"> if call informing monitor fails </exception>
 		''' <exception cref="ActivationException"> if group is inactive
 		''' @since 1.2 </exception>
-		Public Overridable Function inactiveObject(ByVal id As ActivationID) As Boolean
+		Public Overridable Function inactiveObject(  id As ActivationID) As Boolean
 			monitor.inactiveObject(id)
 			Return True
 		End Function
@@ -196,7 +196,7 @@ Namespace java.rmi.activation
 		''' <exception cref="RemoteException"> if call informing monitor fails </exception>
 		''' <exception cref="ActivationException"> if group is inactive
 		''' @since 1.2 </exception>
-		Public MustOverride Sub activeObject(ByVal id As ActivationID, ByVal obj As java.rmi.Remote)
+		Public MustOverride Sub activeObject(  id As ActivationID,   obj As java.rmi.Remote)
 
 		''' <summary>
 		''' Create and set the activation group for the current VM.  The
@@ -263,7 +263,7 @@ Namespace java.rmi.activation
 		''' <seealso cref= SecurityManager#checkSetFactory
 		''' @since 1.2 </seealso>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Shared Function createGroup(ByVal id As ActivationGroupID, ByVal desc As ActivationGroupDesc, ByVal incarnation As Long) As ActivationGroup
+		Public Shared Function createGroup(  id As ActivationGroupID,   desc As ActivationGroupDesc,   incarnation As Long) As ActivationGroup
 			Dim security As SecurityManager = System.securityManager
 			If security IsNot Nothing Then security.checkSetFactory()
 
@@ -374,7 +374,7 @@ Namespace java.rmi.activation
 		''' @since 1.2 </seealso>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
 		Public Shared Property system As ActivationSystem
-			Set(ByVal system_Renamed As ActivationSystem)
+			Set(  system_Renamed As ActivationSystem)
 				Dim security As SecurityManager = System.securityManager
 				If security IsNot Nothing Then security.checkSetFactory()
     
@@ -408,7 +408,7 @@ Namespace java.rmi.activation
 		''' <exception cref="RemoteException"> if call informing monitor fails </exception>
 		''' <exception cref="ActivationException"> if an activation error occurs
 		''' @since 1.2 </exception>
-		Protected Friend Overridable Sub activeObject(Of T1 As java.rmi.Remote)(ByVal id As ActivationID, ByVal mobj As java.rmi.MarshalledObject(Of T1))
+		Protected Friend Overridable Sub activeObject(Of T1 As java.rmi.Remote)(  id As ActivationID,   mobj As java.rmi.MarshalledObject(Of T1))
 			monitor.activeObject(id, mobj)
 		End Sub
 

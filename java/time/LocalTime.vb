@@ -229,7 +229,7 @@ Namespace java.time
 		''' </summary>
 		''' <param name="zone">  the zone ID to use, not null </param>
 		''' <returns> the current time using the system clock, not null </returns>
-		Public Shared Function now(ByVal zone As ZoneId) As LocalTime
+		Public Shared Function now(  zone As ZoneId) As LocalTime
 			Return now(Clock.system(zone))
 		End Function
 
@@ -242,7 +242,7 @@ Namespace java.time
 		''' </summary>
 		''' <param name="clock">  the clock to use, not null </param>
 		''' <returns> the current time, not null </returns>
-		Public Shared Function now(ByVal clock_Renamed As Clock) As LocalTime
+		Public Shared Function now(  clock_Renamed As Clock) As LocalTime
 			java.util.Objects.requireNonNull(clock_Renamed, "clock")
 			' inline OffsetTime factory to avoid creating object and InstantProvider checks
 			Dim now_Renamed As Instant = clock_Renamed.instant() ' called once
@@ -263,7 +263,7 @@ Namespace java.time
 		''' <param name="minute">  the minute-of-hour to represent, from 0 to 59 </param>
 		''' <returns> the local time, not null </returns>
 		''' <exception cref="DateTimeException"> if the value of any field is out of range </exception>
-		Public Shared Function [of](ByVal hour As Integer, ByVal minute As Integer) As LocalTime
+		Public Shared Function [of](  hour As Integer,   minute As Integer) As LocalTime
 			HOUR_OF_DAY.checkValidValue(hour)
 			If minute = 0 Then Return HOURS(hour) ' for performance
 			MINUTE_OF_HOUR.checkValidValue(minute)
@@ -281,7 +281,7 @@ Namespace java.time
 		''' <param name="second">  the second-of-minute to represent, from 0 to 59 </param>
 		''' <returns> the local time, not null </returns>
 		''' <exception cref="DateTimeException"> if the value of any field is out of range </exception>
-		Public Shared Function [of](ByVal hour As Integer, ByVal minute As Integer, ByVal second As Integer) As LocalTime
+		Public Shared Function [of](  hour As Integer,   minute As Integer,   second As Integer) As LocalTime
 			HOUR_OF_DAY.checkValidValue(hour)
 			If (minute Or second) = 0 Then Return HOURS(hour) ' for performance
 			MINUTE_OF_HOUR.checkValidValue(minute)
@@ -300,7 +300,7 @@ Namespace java.time
 		''' <param name="nanoOfSecond">  the nano-of-second to represent, from 0 to 999,999,999 </param>
 		''' <returns> the local time, not null </returns>
 		''' <exception cref="DateTimeException"> if the value of any field is out of range </exception>
-		Public Shared Function [of](ByVal hour As Integer, ByVal minute As Integer, ByVal second As Integer, ByVal nanoOfSecond As Integer) As LocalTime
+		Public Shared Function [of](  hour As Integer,   minute As Integer,   second As Integer,   nanoOfSecond As Integer) As LocalTime
 			HOUR_OF_DAY.checkValidValue(hour)
 			MINUTE_OF_HOUR.checkValidValue(minute)
 			SECOND_OF_MINUTE.checkValidValue(second)
@@ -318,7 +318,7 @@ Namespace java.time
 		''' <param name="secondOfDay">  the second-of-day, from {@code 0} to {@code 24 * 60 * 60 - 1} </param>
 		''' <returns> the local time, not null </returns>
 		''' <exception cref="DateTimeException"> if the second-of-day value is invalid </exception>
-		Public Shared Function ofSecondOfDay(ByVal secondOfDay As Long) As LocalTime
+		Public Shared Function ofSecondOfDay(  secondOfDay As Long) As LocalTime
 			SECOND_OF_DAY.checkValidValue(secondOfDay)
 			Dim hours_Renamed As Integer = CInt(secondOfDay \ SECONDS_PER_HOUR)
 			secondOfDay -= hours_Renamed * SECONDS_PER_HOUR
@@ -335,7 +335,7 @@ Namespace java.time
 		''' <param name="nanoOfDay">  the nano of day, from {@code 0} to {@code 24 * 60 * 60 * 1,000,000,000 - 1} </param>
 		''' <returns> the local time, not null </returns>
 		''' <exception cref="DateTimeException"> if the nanos of day value is invalid </exception>
-		Public Shared Function ofNanoOfDay(ByVal nanoOfDay As Long) As LocalTime
+		Public Shared Function ofNanoOfDay(  nanoOfDay As Long) As LocalTime
 			NANO_OF_DAY.checkValidValue(nanoOfDay)
 			Dim hours_Renamed As Integer = CInt(nanoOfDay \ NANOS_PER_HOUR)
 			nanoOfDay -= hours_Renamed * NANOS_PER_HOUR
@@ -363,7 +363,7 @@ Namespace java.time
 		''' <param name="temporal">  the temporal object to convert, not null </param>
 		''' <returns> the local time, not null </returns>
 		''' <exception cref="DateTimeException"> if unable to convert to a {@code LocalTime} </exception>
-		Public Shared Function [from](ByVal temporal As java.time.temporal.TemporalAccessor) As LocalTime
+		Public Shared Function [from](  temporal As java.time.temporal.TemporalAccessor) As LocalTime
 			java.util.Objects.requireNonNull(temporal, "temporal")
 			Dim time As LocalTime = temporal.query(java.time.temporal.TemporalQueries.localTime())
 			If time Is Nothing Then Throw New DateTimeException("Unable to obtain LocalTime from TemporalAccessor: " & temporal & " of type " & temporal.GetType().name)
@@ -380,7 +380,7 @@ Namespace java.time
 		''' <param name="text">  the text to parse such as "10:15:30", not null </param>
 		''' <returns> the parsed local time, not null </returns>
 		''' <exception cref="DateTimeParseException"> if the text cannot be parsed </exception>
-		Public Shared Function parse(ByVal text As CharSequence) As LocalTime
+		Public Shared Function parse(  text As CharSequence) As LocalTime
 			Return parse(text, java.time.format.DateTimeFormatter.ISO_LOCAL_TIME)
 		End Function
 
@@ -393,7 +393,7 @@ Namespace java.time
 		''' <param name="formatter">  the formatter to use, not null </param>
 		''' <returns> the parsed local time, not null </returns>
 		''' <exception cref="DateTimeParseException"> if the text cannot be parsed </exception>
-		Public Shared Function parse(ByVal text As CharSequence, ByVal formatter As java.time.format.DateTimeFormatter) As LocalTime
+		Public Shared Function parse(  text As CharSequence,   formatter As java.time.format.DateTimeFormatter) As LocalTime
 			java.util.Objects.requireNonNull(formatter, "formatter")
 			Return formatter.parse(text, LocalTime::from)
 		End Function
@@ -409,7 +409,7 @@ Namespace java.time
 		''' <param name="second">  the second-of-minute to represent, validated from 0 to 59 </param>
 		''' <param name="nanoOfSecond">  the nano-of-second to represent, validated from 0 to 999,999,999 </param>
 		''' <returns> the local time, not null </returns>
-		Private Shared Function create(ByVal hour As Integer, ByVal minute As Integer, ByVal second As Integer, ByVal nanoOfSecond As Integer) As LocalTime
+		Private Shared Function create(  hour As Integer,   minute As Integer,   second As Integer,   nanoOfSecond As Integer) As LocalTime
 			If (minute Or second Or nanoOfSecond) = 0 Then Return HOURS(hour)
 			Return New LocalTime(hour, minute, second, nanoOfSecond)
 		End Function
@@ -421,7 +421,7 @@ Namespace java.time
 		''' <param name="minute">  the minute-of-hour to represent, validated from 0 to 59 </param>
 		''' <param name="second">  the second-of-minute to represent, validated from 0 to 59 </param>
 		''' <param name="nanoOfSecond">  the nano-of-second to represent, validated from 0 to 999,999,999 </param>
-		Private Sub New(ByVal hour As Integer, ByVal minute As Integer, ByVal second As Integer, ByVal nanoOfSecond As Integer)
+		Private Sub New(  hour As Integer,   minute As Integer,   second As Integer,   nanoOfSecond As Integer)
 			Me.hour = CByte(hour)
 			Me.minute = CByte(minute)
 			Me.second = CByte(second)
@@ -465,7 +465,7 @@ Namespace java.time
 		''' </summary>
 		''' <param name="field">  the field to check, null returns false </param>
 		''' <returns> true if the field is supported on this time, false if not </returns>
-		Public Overrides Function isSupported(ByVal field As java.time.temporal.TemporalField) As Boolean
+		Public Overrides Function isSupported(  field As java.time.temporal.TemporalField) As Boolean
 			If TypeOf field Is java.time.temporal.ChronoField Then Return field.timeBased
 			Return field IsNot Nothing AndAlso field.isSupportedBy(Me)
 		End Function
@@ -497,7 +497,7 @@ Namespace java.time
 		''' </summary>
 		''' <param name="unit">  the unit to check, null returns false </param>
 		''' <returns> true if the unit can be added/subtracted, false if not </returns>
-		Public Overrides Function isSupported(ByVal unit As java.time.temporal.TemporalUnit) As Boolean ' override for Javadoc
+		Public Overrides Function isSupported(  unit As java.time.temporal.TemporalUnit) As Boolean ' override for Javadoc
 			If TypeOf unit Is java.time.temporal.ChronoUnit Then Return unit.timeBased
 			Return unit IsNot Nothing AndAlso unit.isSupportedBy(Me)
 		End Function
@@ -525,7 +525,7 @@ Namespace java.time
 		''' <returns> the range of valid values for the field, not null </returns>
 		''' <exception cref="DateTimeException"> if the range for the field cannot be obtained </exception>
 		''' <exception cref="UnsupportedTemporalTypeException"> if the field is not supported </exception>
-		Public Overrides Function range(ByVal field As java.time.temporal.TemporalField) As java.time.temporal.ValueRange ' override for Javadoc
+		Public Overrides Function range(  field As java.time.temporal.TemporalField) As java.time.temporal.ValueRange ' override for Javadoc
 			Return outerInstance.range(field)
 		End Function
 
@@ -555,7 +555,7 @@ Namespace java.time
 		''' <exception cref="UnsupportedTemporalTypeException"> if the field is not supported or
 		'''         the range of values exceeds an {@code int} </exception>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
-		Public Overrides Function [get](ByVal field As java.time.temporal.TemporalField) As Integer ' override for Javadoc and performance
+		Public Overrides Function [get](  field As java.time.temporal.TemporalField) As Integer ' override for Javadoc and performance
 			If TypeOf field Is java.time.temporal.ChronoField Then Return get0(field)
 			Return outerInstance.get(field)
 		End Function
@@ -582,7 +582,7 @@ Namespace java.time
 		''' <exception cref="DateTimeException"> if a value for the field cannot be obtained </exception>
 		''' <exception cref="UnsupportedTemporalTypeException"> if the field is not supported </exception>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
-		Public Overrides Function getLong(ByVal field As java.time.temporal.TemporalField) As Long
+		Public Overrides Function getLong(  field As java.time.temporal.TemporalField) As Long
 			If TypeOf field Is java.time.temporal.ChronoField Then
 				If field = NANO_OF_DAY Then Return toNanoOfDay()
 				If field = MICRO_OF_DAY Then Return toNanoOfDay() \ 1000
@@ -591,7 +591,7 @@ Namespace java.time
 			Return field.getFrom(Me)
 		End Function
 
-		Private Function get0(ByVal field As java.time.temporal.TemporalField) As Integer
+		Private Function get0(  field As java.time.temporal.TemporalField) As Integer
 			Select Case CType(field, java.time.temporal.ChronoField)
 				Case NANO_OF_SECOND
 					Return nano
@@ -690,7 +690,7 @@ Namespace java.time
 		''' <returns> a {@code LocalTime} based on {@code this} with the adjustment made, not null </returns>
 		''' <exception cref="DateTimeException"> if the adjustment cannot be made </exception>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
-		Public Overrides Function [with](ByVal adjuster As java.time.temporal.TemporalAdjuster) As LocalTime
+		Public Overrides Function [with](  adjuster As java.time.temporal.TemporalAdjuster) As LocalTime
 			' optimizations
 			If TypeOf adjuster Is LocalTime Then Return CType(adjuster, LocalTime)
 			Return CType(adjuster.adjustInto(Me), LocalTime)
@@ -777,7 +777,7 @@ Namespace java.time
 		''' <exception cref="DateTimeException"> if the field cannot be set </exception>
 		''' <exception cref="UnsupportedTemporalTypeException"> if the field is not supported </exception>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
-		Public Overrides Function [with](ByVal field As java.time.temporal.TemporalField, ByVal newValue As Long) As LocalTime
+		Public Overrides Function [with](  field As java.time.temporal.TemporalField,   newValue As Long) As LocalTime
 			If TypeOf field Is java.time.temporal.ChronoField Then
 				Dim f As java.time.temporal.ChronoField = CType(field, java.time.temporal.ChronoField)
 				f.checkValidValue(newValue)
@@ -827,7 +827,7 @@ Namespace java.time
 		''' <param name="hour">  the hour-of-day to set in the result, from 0 to 23 </param>
 		''' <returns> a {@code LocalTime} based on this time with the requested hour, not null </returns>
 		''' <exception cref="DateTimeException"> if the hour value is invalid </exception>
-		Public Function withHour(ByVal hour As Integer) As LocalTime
+		Public Function withHour(  hour As Integer) As LocalTime
 			If Me.hour = hour Then Return Me
 			HOUR_OF_DAY.checkValidValue(hour)
 			Return create(hour, minute, second, nano)
@@ -841,7 +841,7 @@ Namespace java.time
 		''' <param name="minute">  the minute-of-hour to set in the result, from 0 to 59 </param>
 		''' <returns> a {@code LocalTime} based on this time with the requested minute, not null </returns>
 		''' <exception cref="DateTimeException"> if the minute value is invalid </exception>
-		Public Function withMinute(ByVal minute As Integer) As LocalTime
+		Public Function withMinute(  minute As Integer) As LocalTime
 			If Me.minute = minute Then Return Me
 			MINUTE_OF_HOUR.checkValidValue(minute)
 			Return create(hour, minute, second, nano)
@@ -855,7 +855,7 @@ Namespace java.time
 		''' <param name="second">  the second-of-minute to set in the result, from 0 to 59 </param>
 		''' <returns> a {@code LocalTime} based on this time with the requested second, not null </returns>
 		''' <exception cref="DateTimeException"> if the second value is invalid </exception>
-		Public Function withSecond(ByVal second As Integer) As LocalTime
+		Public Function withSecond(  second As Integer) As LocalTime
 			If Me.second = second Then Return Me
 			SECOND_OF_MINUTE.checkValidValue(second)
 			Return create(hour, minute, second, nano)
@@ -869,7 +869,7 @@ Namespace java.time
 		''' <param name="nanoOfSecond">  the nano-of-second to set in the result, from 0 to 999,999,999 </param>
 		''' <returns> a {@code LocalTime} based on this time with the requested nanosecond, not null </returns>
 		''' <exception cref="DateTimeException"> if the nanos value is invalid </exception>
-		Public Function withNano(ByVal nanoOfSecond As Integer) As LocalTime
+		Public Function withNano(  nanoOfSecond As Integer) As LocalTime
 			If Me.nano = nanoOfSecond Then Return Me
 			NANO_OF_SECOND.checkValidValue(nanoOfSecond)
 			Return create(hour, minute, second, nanoOfSecond)
@@ -895,7 +895,7 @@ Namespace java.time
 		''' <returns> a {@code LocalTime} based on this time with the time truncated, not null </returns>
 		''' <exception cref="DateTimeException"> if unable to truncate </exception>
 		''' <exception cref="UnsupportedTemporalTypeException"> if the unit is not supported </exception>
-		Public Function truncatedTo(ByVal unit As java.time.temporal.TemporalUnit) As LocalTime
+		Public Function truncatedTo(  unit As java.time.temporal.TemporalUnit) As LocalTime
 			If unit = java.time.temporal.ChronoUnit.NANOS Then Return Me
 			Dim unitDur As Duration = unit.duration
 			If unitDur.seconds > SECONDS_PER_DAY Then Throw New java.time.temporal.UnsupportedTemporalTypeException("Unit is too large to be used for truncation")
@@ -925,7 +925,7 @@ Namespace java.time
 		''' <returns> a {@code LocalTime} based on this time with the addition made, not null </returns>
 		''' <exception cref="DateTimeException"> if the addition cannot be made </exception>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
-		Public Overrides Function plus(ByVal amountToAdd As java.time.temporal.TemporalAmount) As LocalTime
+		Public Overrides Function plus(  amountToAdd As java.time.temporal.TemporalAmount) As LocalTime
 			Return CType(amountToAdd.addTo(Me), LocalTime)
 		End Function
 
@@ -980,7 +980,7 @@ Namespace java.time
 		''' <exception cref="DateTimeException"> if the addition cannot be made </exception>
 		''' <exception cref="UnsupportedTemporalTypeException"> if the unit is not supported </exception>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
-		Public Overrides Function plus(ByVal amountToAdd As Long, ByVal unit As java.time.temporal.TemporalUnit) As LocalTime
+		Public Overrides Function plus(  amountToAdd As Long,   unit As java.time.temporal.TemporalUnit) As LocalTime
 			If TypeOf unit Is java.time.temporal.ChronoUnit Then
 				Select Case CType(unit, java.time.temporal.ChronoUnit)
 					Case NANOS
@@ -1014,7 +1014,7 @@ Namespace java.time
 		''' </summary>
 		''' <param name="hoursToAdd">  the hours to add, may be negative </param>
 		''' <returns> a {@code LocalTime} based on this time with the hours added, not null </returns>
-		Public Function plusHours(ByVal hoursToAdd As Long) As LocalTime
+		Public Function plusHours(  hoursToAdd As Long) As LocalTime
 			If hoursToAdd = 0 Then Return Me
 			Dim newHour As Integer = (CInt(Fix(hoursToAdd Mod HOURS_PER_DAY)) + hour + HOURS_PER_DAY) Mod HOURS_PER_DAY
 			Return create(newHour, minute, second, nano)
@@ -1030,7 +1030,7 @@ Namespace java.time
 		''' </summary>
 		''' <param name="minutesToAdd">  the minutes to add, may be negative </param>
 		''' <returns> a {@code LocalTime} based on this time with the minutes added, not null </returns>
-		Public Function plusMinutes(ByVal minutesToAdd As Long) As LocalTime
+		Public Function plusMinutes(  minutesToAdd As Long) As LocalTime
 			If minutesToAdd = 0 Then Return Me
 			Dim mofd As Integer = hour * MINUTES_PER_HOUR + minute
 			Dim newMofd As Integer = (CInt(Fix(minutesToAdd Mod MINUTES_PER_DAY)) + mofd + MINUTES_PER_DAY) Mod MINUTES_PER_DAY
@@ -1050,7 +1050,7 @@ Namespace java.time
 		''' </summary>
 		''' <param name="secondstoAdd">  the seconds to add, may be negative </param>
 		''' <returns> a {@code LocalTime} based on this time with the seconds added, not null </returns>
-		Public Function plusSeconds(ByVal secondstoAdd As Long) As LocalTime
+		Public Function plusSeconds(  secondstoAdd As Long) As LocalTime
 			If secondstoAdd = 0 Then Return Me
 			Dim sofd As Integer = hour * SECONDS_PER_HOUR + minute * SECONDS_PER_MINUTE + second
 			Dim newSofd As Integer = (CInt(Fix(secondstoAdd Mod SECONDS_PER_DAY)) + sofd + SECONDS_PER_DAY) Mod SECONDS_PER_DAY
@@ -1071,7 +1071,7 @@ Namespace java.time
 		''' </summary>
 		''' <param name="nanosToAdd">  the nanos to add, may be negative </param>
 		''' <returns> a {@code LocalTime} based on this time with the nanoseconds added, not null </returns>
-		Public Function plusNanos(ByVal nanosToAdd As Long) As LocalTime
+		Public Function plusNanos(  nanosToAdd As Long) As LocalTime
 			If nanosToAdd = 0 Then Return Me
 			Dim nofd As Long = toNanoOfDay()
 			Dim newNofd As Long = ((nanosToAdd Mod NANOS_PER_DAY) + nofd + NANOS_PER_DAY) Mod NANOS_PER_DAY
@@ -1103,7 +1103,7 @@ Namespace java.time
 		''' <returns> a {@code LocalTime} based on this time with the subtraction made, not null </returns>
 		''' <exception cref="DateTimeException"> if the subtraction cannot be made </exception>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
-		Public Overrides Function minus(ByVal amountToSubtract As java.time.temporal.TemporalAmount) As LocalTime
+		Public Overrides Function minus(  amountToSubtract As java.time.temporal.TemporalAmount) As LocalTime
 			Return CType(amountToSubtract.subtractFrom(Me), LocalTime)
 		End Function
 
@@ -1125,7 +1125,7 @@ Namespace java.time
 		''' <exception cref="DateTimeException"> if the subtraction cannot be made </exception>
 		''' <exception cref="UnsupportedTemporalTypeException"> if the unit is not supported </exception>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
-		Public Overrides Function minus(ByVal amountToSubtract As Long, ByVal unit As java.time.temporal.TemporalUnit) As LocalTime
+		Public Overrides Function minus(  amountToSubtract As Long,   unit As java.time.temporal.TemporalUnit) As LocalTime
 			Return (If(amountToSubtract = java.lang.[Long].MIN_VALUE, plus(Long.Max_Value, unit).plus(1, unit), plus(-amountToSubtract, unit)))
 		End Function
 
@@ -1140,7 +1140,7 @@ Namespace java.time
 		''' </summary>
 		''' <param name="hoursToSubtract">  the hours to subtract, may be negative </param>
 		''' <returns> a {@code LocalTime} based on this time with the hours subtracted, not null </returns>
-		Public Function minusHours(ByVal hoursToSubtract As Long) As LocalTime
+		Public Function minusHours(  hoursToSubtract As Long) As LocalTime
 			Return plusHours(-(hoursToSubtract Mod HOURS_PER_DAY))
 		End Function
 
@@ -1154,7 +1154,7 @@ Namespace java.time
 		''' </summary>
 		''' <param name="minutesToSubtract">  the minutes to subtract, may be negative </param>
 		''' <returns> a {@code LocalTime} based on this time with the minutes subtracted, not null </returns>
-		Public Function minusMinutes(ByVal minutesToSubtract As Long) As LocalTime
+		Public Function minusMinutes(  minutesToSubtract As Long) As LocalTime
 			Return plusMinutes(-(minutesToSubtract Mod MINUTES_PER_DAY))
 		End Function
 
@@ -1168,7 +1168,7 @@ Namespace java.time
 		''' </summary>
 		''' <param name="secondsToSubtract">  the seconds to subtract, may be negative </param>
 		''' <returns> a {@code LocalTime} based on this time with the seconds subtracted, not null </returns>
-		Public Function minusSeconds(ByVal secondsToSubtract As Long) As LocalTime
+		Public Function minusSeconds(  secondsToSubtract As Long) As LocalTime
 			Return plusSeconds(-(secondsToSubtract Mod SECONDS_PER_DAY))
 		End Function
 
@@ -1182,7 +1182,7 @@ Namespace java.time
 		''' </summary>
 		''' <param name="nanosToSubtract">  the nanos to subtract, may be negative </param>
 		''' <returns> a {@code LocalTime} based on this time with the nanoseconds subtracted, not null </returns>
-		Public Function minusNanos(ByVal nanosToSubtract As Long) As LocalTime
+		Public Function minusNanos(  nanosToSubtract As Long) As LocalTime
 			Return plusNanos(-(nanosToSubtract Mod NANOS_PER_DAY))
 		End Function
 
@@ -1205,7 +1205,7 @@ Namespace java.time
 		''' <exception cref="DateTimeException"> if unable to query (defined by the query) </exception>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs (defined by the query) </exception>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Overrides Function query(Of R)(ByVal query_Renamed As java.time.temporal.TemporalQuery(Of R)) As R
+		Public Overrides Function query(Of R)(  query_Renamed As java.time.temporal.TemporalQuery(Of R)) As R
 			If query_Renamed Is java.time.temporal.TemporalQueries.chronology() OrElse query_Renamed Is java.time.temporal.TemporalQueries.zoneId() OrElse query_Renamed Is java.time.temporal.TemporalQueries.zone() OrElse query_Renamed Is java.time.temporal.TemporalQueries.offset() Then
 				Return Nothing
 			ElseIf query_Renamed Is java.time.temporal.TemporalQueries.localTime() Then
@@ -1243,7 +1243,7 @@ Namespace java.time
 		''' <returns> the adjusted object, not null </returns>
 		''' <exception cref="DateTimeException"> if unable to make the adjustment </exception>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
-		Public Overrides Function adjustInto(ByVal temporal As java.time.temporal.Temporal) As java.time.temporal.Temporal
+		Public Overrides Function adjustInto(  temporal As java.time.temporal.Temporal) As java.time.temporal.Temporal
 			Return temporal.with(NANO_OF_DAY, toNanoOfDay())
 		End Function
 
@@ -1293,7 +1293,7 @@ Namespace java.time
 		'''  temporal cannot be converted to a {@code LocalTime} </exception>
 		''' <exception cref="UnsupportedTemporalTypeException"> if the unit is not supported </exception>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
-		Public Overrides Function [until](ByVal endExclusive As java.time.temporal.Temporal, ByVal unit As java.time.temporal.TemporalUnit) As Long
+		Public Overrides Function [until](  endExclusive As java.time.temporal.Temporal,   unit As java.time.temporal.TemporalUnit) As Long
 			Dim [end] As LocalTime = LocalTime.from(endExclusive)
 			If TypeOf unit Is java.time.temporal.ChronoUnit Then
 				Dim nanosUntil As Long = [end].toNanoOfDay() - toNanoOfDay() ' no overflow
@@ -1326,7 +1326,7 @@ Namespace java.time
 		''' <param name="formatter">  the formatter to use, not null </param>
 		''' <returns> the formatted time string, not null </returns>
 		''' <exception cref="DateTimeException"> if an error occurs during printing </exception>
-		Public Function format(ByVal formatter As java.time.format.DateTimeFormatter) As String
+		Public Function format(  formatter As java.time.format.DateTimeFormatter) As String
 			java.util.Objects.requireNonNull(formatter, "formatter")
 			Return formatter.format(Me)
 		End Function
@@ -1340,7 +1340,7 @@ Namespace java.time
 		''' </summary>
 		''' <param name="date">  the date to combine with, not null </param>
 		''' <returns> the local date-time formed from this time and the specified date, not null </returns>
-		Public Function atDate(ByVal [date] As LocalDate) As LocalDateTime
+		Public Function atDate(  [date] As LocalDate) As LocalDateTime
 			Return LocalDateTime.of(date_Renamed, Me)
 		End Function
 
@@ -1352,7 +1352,7 @@ Namespace java.time
 		''' </summary>
 		''' <param name="offset">  the offset to combine with, not null </param>
 		''' <returns> the offset time formed from this time and the specified offset, not null </returns>
-		Public Function atOffset(ByVal offset As ZoneOffset) As OffsetTime
+		Public Function atOffset(  offset As ZoneOffset) As OffsetTime
 			Return OffsetTime.of(Me, offset)
 		End Function
 
@@ -1392,7 +1392,7 @@ Namespace java.time
 		''' <param name="other">  the other time to compare to, not null </param>
 		''' <returns> the comparator value, negative if less, positive if greater </returns>
 		''' <exception cref="NullPointerException"> if {@code other} is null </exception>
-		Public Overrides Function compareTo(ByVal other As LocalTime) As Integer Implements Comparable(Of LocalTime).compareTo
+		Public Overrides Function compareTo(  other As LocalTime) As Integer Implements Comparable(Of LocalTime).compareTo
 			Dim cmp As Integer =  java.lang.[Integer].Compare(hour, other.hour)
 			If cmp = 0 Then
 				cmp =  java.lang.[Integer].Compare(minute, other.minute)
@@ -1412,7 +1412,7 @@ Namespace java.time
 		''' <param name="other">  the other time to compare to, not null </param>
 		''' <returns> true if this is after the specified time </returns>
 		''' <exception cref="NullPointerException"> if {@code other} is null </exception>
-		Public Function isAfter(ByVal other As LocalTime) As Boolean
+		Public Function isAfter(  other As LocalTime) As Boolean
 			Return compareTo(other) > 0
 		End Function
 
@@ -1424,7 +1424,7 @@ Namespace java.time
 		''' <param name="other">  the other time to compare to, not null </param>
 		''' <returns> true if this point is before the specified time </returns>
 		''' <exception cref="NullPointerException"> if {@code other} is null </exception>
-		Public Function isBefore(ByVal other As LocalTime) As Boolean
+		Public Function isBefore(  other As LocalTime) As Boolean
 			Return compareTo(other) < 0
 		End Function
 
@@ -1440,7 +1440,7 @@ Namespace java.time
 		''' </summary>
 		''' <param name="obj">  the object to check, null returns false </param>
 		''' <returns> true if this is equal to the other time </returns>
-		Public Overrides Function Equals(ByVal obj As Object) As Boolean
+		Public Overrides Function Equals(  obj As Object) As Boolean
 			If Me Is obj Then Return True
 			If TypeOf obj Is LocalTime Then
 				Dim other As LocalTime = CType(obj, LocalTime)
@@ -1537,11 +1537,11 @@ Namespace java.time
 		''' </summary>
 		''' <param name="s"> the stream to read </param>
 		''' <exception cref="InvalidObjectException"> always </exception>
-		Private Sub readObject(ByVal s As java.io.ObjectInputStream)
+		Private Sub readObject(  s As java.io.ObjectInputStream)
 			Throw New java.io.InvalidObjectException("Deserialization via serialization delegate")
 		End Sub
 
-		Friend Sub writeExternal(ByVal out As java.io.DataOutput)
+		Friend Sub writeExternal(  out As java.io.DataOutput)
 			If nano = 0 Then
 				If second = 0 Then
 					If minute = 0 Then
@@ -1563,7 +1563,7 @@ Namespace java.time
 			End If
 		End Sub
 
-		Shared Function readExternal(ByVal [in] As java.io.DataInput) As LocalTime
+		Shared Function readExternal(  [in] As java.io.DataInput) As LocalTime
 			Dim hour_Renamed As Integer = [in].readByte()
 			Dim minute_Renamed As Integer = 0
 			Dim second_Renamed As Integer = 0

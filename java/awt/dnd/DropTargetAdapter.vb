@@ -72,10 +72,10 @@ Namespace java.awt.dnd
 	Public MustInherit Class DropTargetAdapter
 		Implements DropTargetListener
 
-			Public MustOverride Sub drop(ByVal dtde As java.awt.dnd.DropTargetDropEvent) Implements DropTargetListener.drop
-			Public MustOverride Sub dropActionChanged(ByVal dtde As java.awt.dnd.DropTargetDragEvent) Implements DropTargetListener.dropActionChanged
-			Public MustOverride Sub dragOver(ByVal dtde As java.awt.dnd.DropTargetDragEvent) Implements DropTargetListener.dragOver
-			Public MustOverride Sub dragEnter(ByVal dtde As java.awt.dnd.DropTargetDragEvent) Implements DropTargetListener.dragEnter
+			Public MustOverride Sub drop(  dtde As java.awt.dnd.DropTargetDropEvent) Implements DropTargetListener.drop
+			Public MustOverride Sub dropActionChanged(  dtde As java.awt.dnd.DropTargetDragEvent) Implements DropTargetListener.dropActionChanged
+			Public MustOverride Sub dragOver(  dtde As java.awt.dnd.DropTargetDragEvent) Implements DropTargetListener.dragOver
+			Public MustOverride Sub dragEnter(  dtde As java.awt.dnd.DropTargetDragEvent) Implements DropTargetListener.dragEnter
 
 		''' <summary>
 		''' Called while a drag operation is ongoing, when the mouse pointer enters
@@ -83,7 +83,7 @@ Namespace java.awt.dnd
 		''' registered with this listener.
 		''' </summary>
 		''' <param name="dtde"> the <code>DropTargetDragEvent</code> </param>
-		Public Overridable Sub dragEnter(ByVal dtde As DropTargetDragEvent)
+		Public Overridable Sub dragEnter(  dtde As DropTargetDragEvent)
 		End Sub
 
 		''' <summary>
@@ -92,7 +92,7 @@ Namespace java.awt.dnd
 		''' registered with this listener.
 		''' </summary>
 		''' <param name="dtde"> the <code>DropTargetDragEvent</code> </param>
-		Public Overridable Sub dragOver(ByVal dtde As DropTargetDragEvent)
+		Public Overridable Sub dragOver(  dtde As DropTargetDragEvent)
 		End Sub
 
 		''' <summary>
@@ -100,7 +100,7 @@ Namespace java.awt.dnd
 		''' the current drop gesture.
 		''' </summary>
 		''' <param name="dtde"> the <code>DropTargetDragEvent</code> </param>
-		Public Overridable Sub dropActionChanged(ByVal dtde As DropTargetDragEvent)
+		Public Overridable Sub dropActionChanged(  dtde As DropTargetDragEvent)
 		End Sub
 
 		''' <summary>
@@ -109,7 +109,7 @@ Namespace java.awt.dnd
 		''' <code>DropTarget</code> registered with this listener.
 		''' </summary>
 		''' <param name="dte"> the <code>DropTargetEvent</code> </param>
-		Public Overridable Sub dragExit(ByVal dte As DropTargetEvent) Implements DropTargetListener.dragExit
+		Public Overridable Sub dragExit(  dte As DropTargetEvent) Implements DropTargetListener.dragExit
 		End Sub
 	End Class
 

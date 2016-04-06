@@ -84,7 +84,7 @@ Namespace java.security.spec
 	   ''' {@code crtCoefficient}, is null. </exception>
 	   ''' <exception cref="IllegalArgumentException"> if an empty, i.e. 0-length,
 	   ''' {@code otherPrimeInfo} is specified. </exception>
-		Public Sub New(ByVal modulus As System.Numerics.BigInteger, ByVal publicExponent As System.Numerics.BigInteger, ByVal privateExponent As System.Numerics.BigInteger, ByVal primeP As System.Numerics.BigInteger, ByVal primeQ As System.Numerics.BigInteger, ByVal primeExponentP As System.Numerics.BigInteger, ByVal primeExponentQ As System.Numerics.BigInteger, ByVal crtCoefficient As System.Numerics.BigInteger, ByVal otherPrimeInfo As RSAOtherPrimeInfo())
+		Public Sub New(  modulus As System.Numerics.BigInteger,   publicExponent As System.Numerics.BigInteger,   privateExponent As System.Numerics.BigInteger,   primeP As System.Numerics.BigInteger,   primeQ As System.Numerics.BigInteger,   primeExponentP As System.Numerics.BigInteger,   primeExponentQ As System.Numerics.BigInteger,   crtCoefficient As System.Numerics.BigInteger,   otherPrimeInfo As RSAOtherPrimeInfo())
 			MyBase.New(modulus, privateExponent)
 			If modulus Is Nothing Then Throw New NullPointerException("the modulus parameter must be " & "non-null")
 			If publicExponent Is Nothing Then Throw New NullPointerException("the publicExponent parameter " & "must be non-null")

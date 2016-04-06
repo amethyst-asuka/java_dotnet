@@ -163,7 +163,7 @@ Namespace java.awt
 		''' <exception cref="HeadlessException"> if
 		'''        <code>GraphicsEnvironment.isHeadless</code> returns true </exception>
 		''' <seealso cref= java.awt.GraphicsEnvironment#isHeadless() </seealso>
-		Public Sub New(ByVal text As String)
+		Public Sub New(  text As String)
 			Me.New(text, 0, 0, SCROLLBARS_BOTH)
 		End Sub
 
@@ -180,7 +180,7 @@ Namespace java.awt
 		''' <exception cref="HeadlessException"> if
 		'''     <code>GraphicsEnvironment.isHeadless</code> returns true </exception>
 		''' <seealso cref= java.awt.GraphicsEnvironment#isHeadless() </seealso>
-		Public Sub New(ByVal rows As Integer, ByVal columns As Integer)
+		Public Sub New(  rows As Integer,   columns As Integer)
 			Me.New("", rows, columns, SCROLLBARS_BOTH)
 		End Sub
 
@@ -200,7 +200,7 @@ Namespace java.awt
 		''' <exception cref="HeadlessException"> if
 		'''   <code>GraphicsEnvironment.isHeadless</code> returns true </exception>
 		''' <seealso cref= java.awt.GraphicsEnvironment#isHeadless() </seealso>
-		Public Sub New(ByVal text As String, ByVal rows As Integer, ByVal columns As Integer)
+		Public Sub New(  text As String,   rows As Integer,   columns As Integer)
 			Me.New(text, rows, columns, SCROLLBARS_BOTH)
 		End Sub
 
@@ -238,7 +238,7 @@ Namespace java.awt
 		''' <exception cref="HeadlessException"> if
 		'''    <code>GraphicsEnvironment.isHeadless</code> returns true </exception>
 		''' <seealso cref= java.awt.GraphicsEnvironment#isHeadless() </seealso>
-		Public Sub New(ByVal text As String, ByVal rows As Integer, ByVal columns As Integer, ByVal scrollbars As Integer)
+		Public Sub New(  text As String,   rows As Integer,   columns As Integer,   scrollbars As Integer)
 			MyBase.New(text)
 
 			Me.rows = If(rows >= 0, rows, 0)
@@ -291,14 +291,14 @@ Namespace java.awt
 		''' <seealso cref=        java.awt.TextArea#replaceRange </seealso>
 		''' <seealso cref=        java.awt.TextArea#append
 		''' @since      JDK1.1 </seealso>
-		Public Overridable Sub insert(ByVal str As String, ByVal pos As Integer)
+		Public Overridable Sub insert(  str As String,   pos As Integer)
 			insertText(str, pos)
 		End Sub
 
 		''' @deprecated As of JDK version 1.1,
 		''' replaced by <code>insert(String, int)</code>. 
 		<Obsolete("As of JDK version 1.1,"), MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Sub insertText(ByVal str As String, ByVal pos As Integer)
+		Public Overridable Sub insertText(  str As String,   pos As Integer)
 			Dim peer_Renamed As java.awt.peer.TextAreaPeer = CType(Me.peer, java.awt.peer.TextAreaPeer)
 			If peer_Renamed IsNot Nothing Then
 				peer_Renamed.insert(str, pos)
@@ -316,14 +316,14 @@ Namespace java.awt
 		''' <param name="str"> the non-<code>null</code> text to append </param>
 		''' <seealso cref=       java.awt.TextArea#insert
 		''' @since     JDK1.1 </seealso>
-		Public Overridable Sub append(ByVal str As String)
+		Public Overridable Sub append(  str As String)
 			appendText(str)
 		End Sub
 
 		''' @deprecated As of JDK version 1.1,
 		''' replaced by <code>append(String)</code>. 
 		<Obsolete("As of JDK version 1.1,"), MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Sub appendText(ByVal str As String)
+		Public Overridable Sub appendText(  str As String)
 			If peer IsNot Nothing Then
 				insertText(str, text.length())
 			Else
@@ -349,14 +349,14 @@ Namespace java.awt
 		''' <param name="end">      the end position </param>
 		''' <seealso cref=       java.awt.TextArea#insert
 		''' @since     JDK1.1 </seealso>
-		Public Overridable Sub replaceRange(ByVal str As String, ByVal start As Integer, ByVal [end] As Integer)
+		Public Overridable Sub replaceRange(  str As String,   start As Integer,   [end] As Integer)
 			replaceText(str, start, [end])
 		End Sub
 
 		''' @deprecated As of JDK version 1.1,
 		''' replaced by <code>replaceRange(String, int, int)</code>. 
 		<Obsolete("As of JDK version 1.1,"), MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Sub replaceText(ByVal str As String, ByVal start As Integer, ByVal [end] As Integer)
+		Public Overridable Sub replaceText(  str As String,   start As Integer,   [end] As Integer)
 			Dim peer_Renamed As java.awt.peer.TextAreaPeer = CType(Me.peer, java.awt.peer.TextAreaPeer)
 			If peer_Renamed IsNot Nothing Then
 				peer_Renamed.replaceRange(str, start, [end])
@@ -375,7 +375,7 @@ Namespace java.awt
 			Get
 				Return rows
 			End Get
-			Set(ByVal rows As Integer)
+			Set(  rows As Integer)
 				Dim oldVal As Integer = Me.rows
 				If rows < 0 Then Throw New IllegalArgumentException("rows less than zero.")
 				If rows <> oldVal Then
@@ -395,7 +395,7 @@ Namespace java.awt
 			Get
 				Return columns
 			End Get
-			Set(ByVal columns As Integer)
+			Set(  columns As Integer)
 				Dim oldVal As Integer = Me.columns
 				If columns < 0 Then Throw New IllegalArgumentException("columns less than zero.")
 				If columns <> oldVal Then
@@ -439,14 +439,14 @@ Namespace java.awt
 		'''                       number of rows and columns </returns>
 		''' <seealso cref=       java.awt.Component#getPreferredSize
 		''' @since     JDK1.1 </seealso>
-		Public Overridable Function getPreferredSize(ByVal rows As Integer, ByVal columns As Integer) As Dimension
+		Public Overridable Function getPreferredSize(  rows As Integer,   columns As Integer) As Dimension
 			Return preferredSize(rows, columns)
 		End Function
 
 		''' @deprecated As of JDK version 1.1,
 		''' replaced by <code>getPreferredSize(int, int)</code>. 
 		<Obsolete("As of JDK version 1.1,")> _
-		Public Overridable Function preferredSize(ByVal rows As Integer, ByVal columns As Integer) As Dimension
+		Public Overridable Function preferredSize(  rows As Integer,   columns As Integer) As Dimension
 			SyncLock treeLock
 				Dim peer_Renamed As java.awt.peer.TextAreaPeer = CType(Me.peer, java.awt.peer.TextAreaPeer)
 				Return If(peer_Renamed IsNot Nothing, peer_Renamed.getPreferredSize(rows, columns), MyBase.preferredSize())
@@ -483,14 +483,14 @@ Namespace java.awt
 		'''                       number of rows and columns </returns>
 		''' <seealso cref=       java.awt.Component#getMinimumSize
 		''' @since     JDK1.1 </seealso>
-		Public Overridable Function getMinimumSize(ByVal rows As Integer, ByVal columns As Integer) As Dimension
+		Public Overridable Function getMinimumSize(  rows As Integer,   columns As Integer) As Dimension
 			Return minimumSize(rows, columns)
 		End Function
 
 		''' @deprecated As of JDK version 1.1,
 		''' replaced by <code>getMinimumSize(int, int)</code>. 
 		<Obsolete("As of JDK version 1.1,")> _
-		Public Overridable Function minimumSize(ByVal rows As Integer, ByVal columns As Integer) As Dimension
+		Public Overridable Function minimumSize(  rows As Integer,   columns As Integer) As Dimension
 			SyncLock treeLock
 				Dim peer_Renamed As java.awt.peer.TextAreaPeer = CType(Me.peer, java.awt.peer.TextAreaPeer)
 				Return If(peer_Renamed IsNot Nothing, peer_Renamed.getMinimumSize(rows, columns), MyBase.minimumSize())
@@ -560,7 +560,7 @@ Namespace java.awt
 		''' <code>GraphicsEnvironment.isHeadless()</code> returns
 		''' <code>true</code> </exception>
 		''' <seealso cref= java.awt.GraphicsEnvironment#isHeadless </seealso>
-		Private Sub readObject(ByVal s As java.io.ObjectInputStream)
+		Private Sub readObject(  s As java.io.ObjectInputStream)
 			' HeadlessException will be thrown by TextComponent's readObject
 			s.defaultReadObject()
 
@@ -611,7 +611,7 @@ Namespace java.awt
 
 			Private ReadOnly outerInstance As TextArea
 
-			Public Sub New(ByVal outerInstance As TextArea)
+			Public Sub New(  outerInstance As TextArea)
 				Me.outerInstance = outerInstance
 			End Sub
 

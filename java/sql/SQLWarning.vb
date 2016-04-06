@@ -56,7 +56,7 @@ Namespace java.sql
 		''' <param name="reason"> a description of the warning </param>
 		''' <param name="SQLState"> an XOPEN or SQL:2003 code identifying the warning </param>
 		''' <param name="vendorCode"> a database vendor-specific warning code </param>
-		 Public Sub New(ByVal reason As String, ByVal SQLState As String, ByVal vendorCode As Integer)
+		 Public Sub New(  reason As String,   SQLState As String,   vendorCode As Integer)
 			MyBase.New(reason, SQLState, vendorCode)
 			DriverManager.println("SQLWarning: reason(" & reason & ") SQLState(" & SQLState & ") vendor code(" & vendorCode & ")")
 		 End Sub
@@ -73,7 +73,7 @@ Namespace java.sql
 		''' <p> </summary>
 		''' <param name="reason"> a description of the warning </param>
 		''' <param name="SQLState"> an XOPEN or SQL:2003 code identifying the warning </param>
-		Public Sub New(ByVal reason As String, ByVal SQLState As String)
+		Public Sub New(  reason As String,   SQLState As String)
 			MyBase.New(reason, SQLState)
 			DriverManager.println("SQLWarning: reason(" & reason & ") SQLState(" & SQLState & ")")
 		End Sub
@@ -89,7 +89,7 @@ Namespace java.sql
 		''' <seealso cref="Throwable#initCause(java.lang.Throwable)"/> method.
 		''' <p> </summary>
 		''' <param name="reason"> a description of the warning </param>
-		Public Sub New(ByVal reason As String)
+		Public Sub New(  reason As String)
 			MyBase.New(reason)
 			DriverManager.println("SQLWarning: reason(" & reason & ")")
 		End Sub
@@ -120,7 +120,7 @@ Namespace java.sql
 		''' <p> </summary>
 		''' <param name="cause"> the underlying reason for this <code>SQLWarning</code> (which is saved for later retrieval by the <code>getCause()</code> method); may be null indicating
 		'''     the cause is non-existent or unknown. </param>
-		Public Sub New(ByVal cause As Throwable)
+		Public Sub New(  cause As Throwable)
 			MyBase.New(cause)
 			DriverManager.println("SQLWarning")
 		End Sub
@@ -136,7 +136,7 @@ Namespace java.sql
 		''' <param name="cause">  the underlying reason for this <code>SQLWarning</code>
 		''' (which is saved for later retrieval by the <code>getCause()</code> method);
 		''' may be null indicating the cause is non-existent or unknown. </param>
-		Public Sub New(ByVal reason As String, ByVal cause As Throwable)
+		Public Sub New(  reason As String,   cause As Throwable)
 			MyBase.New(reason,cause)
 			DriverManager.println("SQLWarning : reason(" & reason & ")")
 		End Sub
@@ -151,7 +151,7 @@ Namespace java.sql
 		''' <param name="SQLState"> an XOPEN or SQL:2003 code identifying the warning </param>
 		''' <param name="cause"> the underlying reason for this <code>SQLWarning</code> (which is saved for later retrieval by the <code>getCause()</code> method); may be null indicating
 		'''     the cause is non-existent or unknown. </param>
-		Public Sub New(ByVal reason As String, ByVal SQLState As String, ByVal cause As Throwable)
+		Public Sub New(  reason As String,   SQLState As String,   cause As Throwable)
 			MyBase.New(reason,SQLState,cause)
 			DriverManager.println("SQLWarning: reason(" & reason & ") SQLState(" & SQLState & ")")
 		End Sub
@@ -167,7 +167,7 @@ Namespace java.sql
 		''' <param name="vendorCode"> a database vendor-specific warning code </param>
 		''' <param name="cause"> the underlying reason for this <code>SQLWarning</code> (which is saved for later retrieval by the <code>getCause()</code> method); may be null indicating
 		'''     the cause is non-existent or unknown. </param>
-		Public Sub New(ByVal reason As String, ByVal SQLState As String, ByVal vendorCode As Integer, ByVal cause As Throwable)
+		Public Sub New(  reason As String,   SQLState As String,   vendorCode As Integer,   cause As Throwable)
 			MyBase.New(reason,SQLState,vendorCode,cause)
 			DriverManager.println("SQLWarning: reason(" & reason & ") SQLState(" & SQLState & ") vendor code(" & vendorCode & ")")
 
@@ -189,7 +189,7 @@ Namespace java.sql
 					Throw New [Error]("SQLWarning chain holds value that is not a SQLWarning")
 				End Try
 			End Get
-			Set(ByVal w As SQLWarning)
+			Set(  w As SQLWarning)
 				nextException = w
 			End Set
 		End Property

@@ -51,7 +51,7 @@ Namespace java.nio
 	'
 	'    
 
-		Friend Sub New(ByVal cap As Integer, ByVal lim As Integer) ' package-private
+		Friend Sub New(  cap As Integer,   lim As Integer) ' package-private
 
 
 
@@ -64,7 +64,7 @@ Namespace java.nio
 
 		End Sub
 
-		Friend Sub New(ByVal buf As Short(), ByVal [off] As Integer, ByVal len As Integer) ' package-private
+		Friend Sub New(  buf As Short(),   [off] As Integer,   len As Integer) ' package-private
 
 
 
@@ -77,7 +77,7 @@ Namespace java.nio
 
 		End Sub
 
-		Protected Friend Sub New(ByVal buf As Short(), ByVal mark As Integer, ByVal pos As Integer, ByVal lim As Integer, ByVal cap As Integer, ByVal [off] As Integer)
+		Protected Friend Sub New(  buf As Short(),   mark As Integer,   pos As Integer,   lim As Integer,   cap As Integer,   [off] As Integer)
 
 
 
@@ -152,7 +152,7 @@ Namespace java.nio
 			End Get
 		End Property
 
-		Public Overrides Function put(ByVal x As Short) As ShortBuffer
+		Public Overrides Function put(  x As Short) As ShortBuffer
 
 
 
@@ -161,7 +161,7 @@ Namespace java.nio
 
 		End Function
 
-		Public Overrides Function put(ByVal i As Integer, ByVal x As Short) As ShortBuffer
+		Public Overrides Function put(  i As Integer,   x As Short) As ShortBuffer
 
 
 
@@ -170,7 +170,7 @@ Namespace java.nio
 
 		End Function
 
-		Public Overrides Function put(ByVal src As Short(), ByVal offset As Integer, ByVal length As Integer) As ShortBuffer
+		Public Overrides Function put(  src As Short(),   offset As Integer,   length As Integer) As ShortBuffer
 
 
 
@@ -183,7 +183,7 @@ Namespace java.nio
 
 		End Function
 
-		Public Overrides Function put(ByVal src As ShortBuffer) As ShortBuffer
+		Public Overrides Function put(  src As ShortBuffer) As ShortBuffer
 
 
 

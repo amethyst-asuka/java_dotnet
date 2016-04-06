@@ -101,7 +101,7 @@ Namespace java.security.cert
 		Inherits CRL
 		Implements X509Extension
 
-			Public MustOverride Function getExtensionValue(ByVal oid As String) As SByte() Implements X509Extension.getExtensionValue
+			Public MustOverride Function getExtensionValue(  oid As String) As SByte() Implements X509Extension.getExtensionValue
 			Public MustOverride ReadOnly Property nonCriticalExtensionOIDs As java.util.Set(Of String) Implements X509Extension.getNonCriticalExtensionOIDs
 			Public MustOverride ReadOnly Property criticalExtensionOIDs As java.util.Set(Of String) Implements X509Extension.getCriticalExtensionOIDs
 			Public MustOverride Function hasUnsupportedCriticalExtension() As Boolean Implements X509Extension.hasUnsupportedCriticalExtension
@@ -127,7 +127,7 @@ Namespace java.security.cert
 		''' </param>
 		''' <returns> true iff the encoded forms of the two CRLs
 		''' match, false otherwise. </returns>
-		Public Overrides Function Equals(ByVal other As Object) As Boolean
+		Public Overrides Function Equals(  other As Object) As Boolean
 			If Me Is other Then Return True
 			If Not(TypeOf other Is X509CRL) Then Return False
 			Try
@@ -177,7 +177,7 @@ Namespace java.security.cert
 		''' <exception cref="NoSuchProviderException"> if there's no default provider. </exception>
 		''' <exception cref="SignatureException"> on signature errors. </exception>
 		''' <exception cref="CRLException"> on encoding errors. </exception>
-		Public MustOverride Sub verify(ByVal key As java.security.PublicKey)
+		Public MustOverride Sub verify(  key As java.security.PublicKey)
 
 		''' <summary>
 		''' Verifies that this CRL was signed using the
@@ -194,7 +194,7 @@ Namespace java.security.cert
 		''' <exception cref="NoSuchProviderException"> on incorrect provider. </exception>
 		''' <exception cref="SignatureException"> on signature errors. </exception>
 		''' <exception cref="CRLException"> on encoding errors. </exception>
-		Public MustOverride Sub verify(ByVal key As java.security.PublicKey, ByVal sigProvider As String)
+		Public MustOverride Sub verify(  key As java.security.PublicKey,   sigProvider As String)
 
 		''' <summary>
 		''' Verifies that this CRL was signed using the
@@ -217,7 +217,7 @@ Namespace java.security.cert
 		''' <exception cref="SignatureException"> on signature errors. </exception>
 		''' <exception cref="CRLException"> on encoding errors.
 		''' @since 1.8 </exception>
-		Public Overridable Sub verify(ByVal key As java.security.PublicKey, ByVal sigProvider As java.security.Provider)
+		Public Overridable Sub verify(  key As java.security.PublicKey,   sigProvider As java.security.Provider)
 			sun.security.x509.X509CRLImpl.verify(Me, key, sigProvider)
 		End Sub
 
@@ -320,7 +320,7 @@ Namespace java.security.cert
 		''' <returns> the entry with the given serial number, or null if no such entry
 		''' exists in this CRL. </returns>
 		''' <seealso cref= X509CRLEntry </seealso>
-		Public MustOverride Function getRevokedCertificate(ByVal serialNumber As System.Numerics.BigInteger) As X509CRLEntry
+		Public MustOverride Function getRevokedCertificate(  serialNumber As System.Numerics.BigInteger) As X509CRLEntry
 
 		''' <summary>
 		''' Get the CRL entry, if any, for the given certificate.
@@ -338,7 +338,7 @@ Namespace java.security.cert
 		''' <exception cref="NullPointerException"> if certificate is null
 		''' 
 		''' @since 1.5 </exception>
-		Public Overridable Function getRevokedCertificate(ByVal certificate As X509Certificate) As X509CRLEntry
+		Public Overridable Function getRevokedCertificate(  certificate As X509Certificate) As X509CRLEntry
 			Dim certIssuer As javax.security.auth.x500.X500Principal = certificate.issuerX500Principal
 			Dim crlIssuer As javax.security.auth.x500.X500Principal = issuerX500Principal
 			If certIssuer.Equals(crlIssuer) = False Then Return Nothing

@@ -150,7 +150,7 @@ Namespace java.awt.font
 		''' <param name="text"> the source paragraph.  Cannot be null. </param>
 		''' <param name="frc"> the information about a graphics device which is needed
 		'''       to measure the text correctly.  Cannot be null. </param>
-		Public Sub New(ByVal text As java.text.AttributedCharacterIterator, ByVal frc As java.awt.font.FontRenderContext)
+		Public Sub New(  text As java.text.AttributedCharacterIterator,   frc As java.awt.font.FontRenderContext)
 
 			fFrc = frc
 			initAll(text)
@@ -178,7 +178,7 @@ Namespace java.awt.font
 		''' Initialize state, including fChars array, direction, and
 		''' fBidi.
 		''' </summary>
-		Private Sub initAll(ByVal text As java.text.AttributedCharacterIterator)
+		Private Sub initAll(  text As java.text.AttributedCharacterIterator)
 
 			fStart = text.beginIndex
 
@@ -242,7 +242,7 @@ Namespace java.awt.font
 		''' Generate components for the paragraph.  fChars, fBidi should have been
 		''' initialized already.
 		''' </summary>
-		Private Sub generateComponents(ByVal startingAt As Integer, ByVal endingAt As Integer)
+		Private Sub generateComponents(  startingAt As Integer,   endingAt As Integer)
 
 			If collectStats Then formattedChars += (endingAt-startingAt)
 			Dim layoutFlags As Integer = 0 ' no extra info yet, bidi determines run and line direction
@@ -273,7 +273,7 @@ Namespace java.awt.font
 			'debugFormatCount += (endingAt-startingAt);
 		End Sub
 
-		Private Function calcLineBreak(ByVal pos As Integer, ByVal maxAdvance As Single) As Integer
+		Private Function calcLineBreak(  pos As Integer,   maxAdvance As Single) As Integer
 
 			' either of these statements removes the bug:
 			'generateComponents(0, fChars.length);
@@ -334,7 +334,7 @@ Namespace java.awt.font
 		''' of trailing whitespace characters to move to the end of a
 		''' line taken from the given range.
 		''' </summary>
-		Private Function trailingCdWhitespaceStart(ByVal startPos As Integer, ByVal limitPos As Integer) As Integer
+		Private Function trailingCdWhitespaceStart(  startPos As Integer,   limitPos As Integer) As Integer
 
 			If fLevels IsNot Nothing Then
 				' Back up over counterdirectional whitespace
@@ -352,7 +352,7 @@ Namespace java.awt.font
 			Return startPos
 		End Function
 
-		Private Function makeComponentsOnRange(ByVal startPos As Integer, ByVal limitPos As Integer) As sun.font.TextLineComponent()
+		Private Function makeComponentsOnRange(  startPos As Integer,   limitPos As Integer) As sun.font.TextLineComponent()
 
 			' sigh I really hate to do this here since it's part of the
 			' bidi algorithm.
@@ -430,7 +430,7 @@ Namespace java.awt.font
 			Return components
 		End Function
 
-		Private Function makeTextLineOnRange(ByVal startPos As Integer, ByVal limitPos As Integer) As TextLine
+		Private Function makeTextLineOnRange(  startPos As Integer,   limitPos As Integer) As TextLine
 
 			Dim charsLtoV As Integer() = Nothing
 			Dim charLevels As SByte() = Nothing
@@ -448,12 +448,12 @@ Namespace java.awt.font
 
 		End Function
 
-		Private Sub ensureComponents(ByVal start As Integer, ByVal limit As Integer)
+		Private Sub ensureComponents(  start As Integer,   limit As Integer)
 
 			If start < fComponentStart OrElse limit > fComponentLimit Then generateComponents(start, limit)
 		End Sub
 
-		Private Sub makeLayoutWindow(ByVal localStart As Integer)
+		Private Sub makeLayoutWindow(  localStart As Integer)
 
 			Dim compStart As Integer = localStart
 			Dim compLimit As Integer = fChars.Length
@@ -498,7 +498,7 @@ Namespace java.awt.font
 		'''  than <code>maxAdvance</code> in graphical width </returns>
 		''' <exception cref="IllegalArgumentException"> if <code>start</code> is
 		'''          less than the beginning of the paragraph. </exception>
-		Public Function getLineBreakIndex(ByVal start As Integer, ByVal maxAdvance As Single) As Integer
+		Public Function getLineBreakIndex(  start As Integer,   maxAdvance As Single) As Integer
 
 			Dim localStart As Integer = start - fStart
 
@@ -522,7 +522,7 @@ Namespace java.awt.font
 		''' <exception cref="IllegalArgumentException"> if <code>start</code> or
 		'''          <code>limit</code> is not between the beginning of
 		'''          the paragraph and the end of the paragraph. </exception>
-		Public Function getAdvanceBetween(ByVal start As Integer, ByVal limit As Integer) As Single
+		Public Function getAdvanceBetween(  start As Integer,   limit As Integer) As Single
 
 			Dim localStart As Integer = start - fStart
 			Dim localLimit As Integer = limit - fStart
@@ -546,7 +546,7 @@ Namespace java.awt.font
 		''' <exception cref="IllegalArgumentException"> if <code>start</code> or
 		'''          <code>limit</code> is not between the beginning of
 		'''          the paragraph and the end of the paragraph. </exception>
-		Public Function getLayout(ByVal start As Integer, ByVal limit As Integer) As TextLayout
+		Public Function getLayout(  start As Integer,   limit As Integer) As TextLayout
 
 			Dim localStart As Integer = start - fStart
 			Dim localLimit As Integer = limit - fStart
@@ -593,7 +593,7 @@ Namespace java.awt.font
 		'''         or equal to the end of <code>newParagraph</code> </exception>
 		''' <exception cref="NullPointerException"> if <code>newParagraph</code> is
 		'''         <code>null</code> </exception>
-		Public Sub insertChar(ByVal newParagraph As java.text.AttributedCharacterIterator, ByVal insertPos As Integer)
+		Public Sub insertChar(  newParagraph As java.text.AttributedCharacterIterator,   insertPos As Integer)
 
 			If collectStats Then printStats()
 			If wantStats Then collectStats = True
@@ -642,7 +642,7 @@ Namespace java.awt.font
 		'''         than the end of <code>newParagraph</code> </exception>
 		''' <exception cref="NullPointerException"> if <code>newParagraph</code> is
 		'''         <code>null</code> </exception>
-		Public Sub deleteChar(ByVal newParagraph As java.text.AttributedCharacterIterator, ByVal deletePos As Integer)
+		Public Sub deleteChar(  newParagraph As java.text.AttributedCharacterIterator,   deletePos As Integer)
 
 			fStart = newParagraph.beginIndex
 			Dim [end] As Integer = newParagraph.endIndex

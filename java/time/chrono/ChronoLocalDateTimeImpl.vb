@@ -156,7 +156,7 @@ Namespace java.time.chrono
 		''' <param name="date">  the local date, not null </param>
 		''' <param name="time">  the local time, not null </param>
 		''' <returns> the local date-time, not null </returns>
-		Shared Function [of](Of R As ChronoLocalDate)(ByVal [date] As R, ByVal time As java.time.LocalTime) As ChronoLocalDateTimeImpl(Of R)
+		Shared Function [of](Of R As ChronoLocalDate)(  [date] As R,   time As java.time.LocalTime) As ChronoLocalDateTimeImpl(Of R)
 			Return New ChronoLocalDateTimeImpl(Of )(date_Renamed, time)
 		End Function
 
@@ -168,7 +168,7 @@ Namespace java.time.chrono
 		''' <returns> the date-time checked and cast to {@code ChronoLocalDateTime}, not null </returns>
 		''' <exception cref="ClassCastException"> if the date-time cannot be cast to ChronoLocalDateTimeImpl
 		'''  or the chronology is not equal this Chronology </exception>
-		Shared Function ensureValid(Of R As ChronoLocalDate)(ByVal chrono As Chronology, ByVal temporal As java.time.temporal.Temporal) As ChronoLocalDateTimeImpl(Of R)
+		Shared Function ensureValid(Of R As ChronoLocalDate)(  chrono As Chronology,   temporal As java.time.temporal.Temporal) As ChronoLocalDateTimeImpl(Of R)
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
 			Dim other As ChronoLocalDateTimeImpl(Of R) = CType(temporal, ChronoLocalDateTimeImpl(Of R))
 			If chrono.Equals(other.chronology) = False Then Throw New ClassCastException("Chronology mismatch, required: " & chrono.id & ", actual: " & other.chronology.id)
@@ -180,7 +180,7 @@ Namespace java.time.chrono
 		''' </summary>
 		''' <param name="date">  the date part of the date-time, not null </param>
 		''' <param name="time">  the time part of the date-time, not null </param>
-		Private Sub New(ByVal [date] As D, ByVal time As java.time.LocalTime)
+		Private Sub New(  [date] As D,   time As java.time.LocalTime)
 			java.util.Objects.requireNonNull(date_Renamed, "date")
 			java.util.Objects.requireNonNull(time, "time")
 			Me.date = date_Renamed
@@ -194,7 +194,7 @@ Namespace java.time.chrono
 		''' <param name="newDate">  the date of the new date-time, not null </param>
 		''' <param name="newTime">  the time of the new date-time, not null </param>
 		''' <returns> the date-time, not null </returns>
-		Private Function [with](ByVal newDate As java.time.temporal.Temporal, ByVal newTime As java.time.LocalTime) As ChronoLocalDateTimeImpl(Of D)
+		Private Function [with](  newDate As java.time.temporal.Temporal,   newTime As java.time.LocalTime) As ChronoLocalDateTimeImpl(Of D)
 			If [date] Is newDate AndAlso time Is newTime Then Return Me
 			' Validate that the new Temporal is a ChronoLocalDate (and not something else)
 			Dim cd As D = ChronoLocalDateImpl.ensureValid([date].chronology, newDate)
@@ -211,7 +211,7 @@ Namespace java.time.chrono
 		End Function
 
 		'-----------------------------------------------------------------------
-		Public Overrides Function isSupported(ByVal field As java.time.temporal.TemporalField) As Boolean Implements ChronoLocalDateTime(Of D).isSupported
+		Public Overrides Function isSupported(  field As java.time.temporal.TemporalField) As Boolean Implements ChronoLocalDateTime(Of D).isSupported
 			If TypeOf field Is java.time.temporal.ChronoField Then
 				Dim f As java.time.temporal.ChronoField = CType(field, java.time.temporal.ChronoField)
 				Return f.dateBased OrElse f.timeBased
@@ -219,7 +219,7 @@ Namespace java.time.chrono
 			Return field IsNot Nothing AndAlso field.isSupportedBy(Me)
 		End Function
 
-		Public Overrides Function range(ByVal field As java.time.temporal.TemporalField) As java.time.temporal.ValueRange
+		Public Overrides Function range(  field As java.time.temporal.TemporalField) As java.time.temporal.ValueRange
 			If TypeOf field Is java.time.temporal.ChronoField Then
 				Dim f As java.time.temporal.ChronoField = CType(field, java.time.temporal.ChronoField)
 				Return (If(f.timeBased, time.range(field), [date].range(field)))
@@ -227,7 +227,7 @@ Namespace java.time.chrono
 			Return field.rangeRefinedBy(Me)
 		End Function
 
-		Public Overrides Function [get](ByVal field As java.time.temporal.TemporalField) As Integer
+		Public Overrides Function [get](  field As java.time.temporal.TemporalField) As Integer
 			If TypeOf field Is java.time.temporal.ChronoField Then
 				Dim f As java.time.temporal.ChronoField = CType(field, java.time.temporal.ChronoField)
 				Return (If(f.timeBased, time.get(field), [date].get(field)))
@@ -235,7 +235,7 @@ Namespace java.time.chrono
 			Return range(field).checkValidIntValue(getLong(field), field)
 		End Function
 
-		Public Overrides Function getLong(ByVal field As java.time.temporal.TemporalField) As Long
+		Public Overrides Function getLong(  field As java.time.temporal.TemporalField) As Long
 			If TypeOf field Is java.time.temporal.ChronoField Then
 				Dim f As java.time.temporal.ChronoField = CType(field, java.time.temporal.ChronoField)
 				Return (If(f.timeBased, time.getLong(field), [date].getLong(field)))
@@ -245,7 +245,7 @@ Namespace java.time.chrono
 
 		'-----------------------------------------------------------------------
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Overrides Function [with](ByVal adjuster As java.time.temporal.TemporalAdjuster) As ChronoLocalDateTimeImpl(Of D)
+		Public Overrides Function [with](  adjuster As java.time.temporal.TemporalAdjuster) As ChronoLocalDateTimeImpl(Of D)
 			If TypeOf adjuster Is ChronoLocalDate Then
 				' The Chronology is checked in with(date,time)
 				Return [with](CType(adjuster, ChronoLocalDate), time)
@@ -259,7 +259,7 @@ Namespace java.time.chrono
 			Return ChronoLocalDateTimeImpl.ensureValid([date].chronology, CType(adjuster.adjustInto(Me), ChronoLocalDateTimeImpl(Of ?)))
 		End Function
 
-		Public Overrides Function [with](ByVal field As java.time.temporal.TemporalField, ByVal newValue As Long) As ChronoLocalDateTimeImpl(Of D)
+		Public Overrides Function [with](  field As java.time.temporal.TemporalField,   newValue As Long) As ChronoLocalDateTimeImpl(Of D)
 			If TypeOf field Is java.time.temporal.ChronoField Then
 				Dim f As java.time.temporal.ChronoField = CType(field, java.time.temporal.ChronoField)
 				If f.timeBased Then
@@ -272,7 +272,7 @@ Namespace java.time.chrono
 		End Function
 
 		'-----------------------------------------------------------------------
-		Public Overrides Function plus(ByVal amountToAdd As Long, ByVal unit As java.time.temporal.TemporalUnit) As ChronoLocalDateTimeImpl(Of D)
+		Public Overrides Function plus(  amountToAdd As Long,   unit As java.time.temporal.TemporalUnit) As ChronoLocalDateTimeImpl(Of D)
 			If TypeOf unit Is java.time.temporal.ChronoUnit Then
 				Dim f As java.time.temporal.ChronoUnit = CType(unit, java.time.temporal.ChronoUnit)
 				Select Case f
@@ -296,28 +296,28 @@ Namespace java.time.chrono
 			Return ChronoLocalDateTimeImpl.ensureValid([date].chronology, unit.addTo(Me, amountToAdd))
 		End Function
 
-		Private Function plusDays(ByVal days As Long) As ChronoLocalDateTimeImpl(Of D)
+		Private Function plusDays(  days As Long) As ChronoLocalDateTimeImpl(Of D)
 			Return [with]([date].plus(days, java.time.temporal.ChronoUnit.DAYS), time)
 		End Function
 
-		Private Function plusHours(ByVal hours As Long) As ChronoLocalDateTimeImpl(Of D)
+		Private Function plusHours(  hours As Long) As ChronoLocalDateTimeImpl(Of D)
 			Return plusWithOverflow([date], hours, 0, 0, 0)
 		End Function
 
-		Private Function plusMinutes(ByVal minutes As Long) As ChronoLocalDateTimeImpl(Of D)
+		Private Function plusMinutes(  minutes As Long) As ChronoLocalDateTimeImpl(Of D)
 			Return plusWithOverflow([date], 0, minutes, 0, 0)
 		End Function
 
-		Friend Function plusSeconds(ByVal seconds As Long) As ChronoLocalDateTimeImpl(Of D)
+		Friend Function plusSeconds(  seconds As Long) As ChronoLocalDateTimeImpl(Of D)
 			Return plusWithOverflow([date], 0, 0, seconds, 0)
 		End Function
 
-		Private Function plusNanos(ByVal nanos As Long) As ChronoLocalDateTimeImpl(Of D)
+		Private Function plusNanos(  nanos As Long) As ChronoLocalDateTimeImpl(Of D)
 			Return plusWithOverflow([date], 0, 0, 0, nanos)
 		End Function
 
 		'-----------------------------------------------------------------------
-		Private Function plusWithOverflow(ByVal newDate As D, ByVal hours As Long, ByVal minutes As Long, ByVal seconds As Long, ByVal nanos As Long) As ChronoLocalDateTimeImpl(Of D)
+		Private Function plusWithOverflow(  newDate As D,   hours As Long,   minutes As Long,   seconds As Long,   nanos As Long) As ChronoLocalDateTimeImpl(Of D)
 			' 9223372036854775808 long, 2147483648 int
 			If (hours Or minutes Or seconds Or nanos) = 0 Then Return [with](newDate, time)
 			Dim totDays As Long = nanos \ NANOS_PER_DAY + seconds \ SECONDS_PER_DAY + minutes \ MINUTES_PER_DAY + hours \ HOURS_PER_DAY '   max/24 -    max/24*60 -    max/24*60*60 -    max/24*60*60*1B
@@ -331,12 +331,12 @@ Namespace java.time.chrono
 		End Function
 
 		'-----------------------------------------------------------------------
-		Public Overrides Function atZone(ByVal zone As java.time.ZoneId) As ChronoZonedDateTime(Of D) Implements ChronoLocalDateTime(Of D).atZone
+		Public Overrides Function atZone(  zone As java.time.ZoneId) As ChronoZonedDateTime(Of D) Implements ChronoLocalDateTime(Of D).atZone
 			Return ChronoZonedDateTimeImpl.ofBest(Me, zone, Nothing)
 		End Function
 
 		'-----------------------------------------------------------------------
-		Public Overrides Function [until](ByVal endExclusive As java.time.temporal.Temporal, ByVal unit As java.time.temporal.TemporalUnit) As Long
+		Public Overrides Function [until](  endExclusive As java.time.temporal.Temporal,   unit As java.time.temporal.TemporalUnit) As Long
 			java.util.Objects.requireNonNull(endExclusive, "endExclusive")
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
 			Dim [end] As ChronoLocalDateTime(Of D) = CType(chronology.localDateTime(endExclusive), ChronoLocalDateTime(Of D))
@@ -390,24 +390,24 @@ Namespace java.time.chrono
 		''' </summary>
 		''' <param name="s"> the stream to read </param>
 		''' <exception cref="InvalidObjectException"> always </exception>
-		Private Sub readObject(ByVal s As java.io.ObjectInputStream)
+		Private Sub readObject(  s As java.io.ObjectInputStream)
 			Throw New java.io.InvalidObjectException("Deserialization via serialization delegate")
 		End Sub
 
-		Friend Sub writeExternal(ByVal out As java.io.ObjectOutput)
+		Friend Sub writeExternal(  out As java.io.ObjectOutput)
 			out.writeObject([date])
 			out.writeObject(time)
 		End Sub
 
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-		Friend Shared Function readExternal(ByVal [in] As java.io.ObjectInput) As ChronoLocalDateTime(Of ?)
+		Friend Shared Function readExternal(  [in] As java.io.ObjectInput) As ChronoLocalDateTime(Of ?)
 			Dim date_Renamed As ChronoLocalDate = CType([in].readObject(), ChronoLocalDate)
 			Dim time As java.time.LocalTime = CType([in].readObject(), java.time.LocalTime)
 			Return date_Renamed.atTime(time)
 		End Function
 
 		'-----------------------------------------------------------------------
-		Public Overrides Function Equals(ByVal obj As Object) As Boolean
+		Public Overrides Function Equals(  obj As Object) As Boolean
 			If Me Is obj Then Return True
 			If TypeOf obj Is ChronoLocalDateTime Then Return compareTo(CType(obj, ChronoLocalDateTime(Of ?))) = 0
 			Return False

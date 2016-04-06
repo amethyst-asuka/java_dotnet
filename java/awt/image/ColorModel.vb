@@ -267,7 +267,7 @@ Namespace java.awt.image
         ''' <param name="bits"> the number of bits of a pixel </param>
         ''' <exception cref="IllegalArgumentException"> if the number
         '''          of bits in <code>bits</code> is less than 1 </exception>
-        Public Sub New(ByVal bits As Integer)
+        Public Sub New(  bits As Integer)
             pixel_bits = bits
             If bits < 1 Then Throw New IllegalArgumentException("Number of bits must be > 0")
             numComponents = 4
@@ -322,7 +322,7 @@ Namespace java.awt.image
         '''          of bits in <code>bits</code> is less than 1 or if
         '''          any of the elements in <code>bits</code> is less than 0. </exception>
         ''' <seealso cref= java.awt.Transparency </seealso>
-        Protected Friend Sub New(ByVal pixel_bits As Integer, ByVal bits As Integer(), ByVal cspace As java.awt.Color.colorSpace, ByVal hasAlpha As Boolean, ByVal isAlphaPremultiplied As Boolean, ByVal transparency As Integer, ByVal transferType As Integer)
+        Protected Friend Sub New(  pixel_bits As Integer,   bits As Integer(),   cspace As java.awt.Color.colorSpace,   hasAlpha As Boolean,   isAlphaPremultiplied As Boolean,   transparency As Integer,   transferType As Integer)
             colorSpace = cspace
             colorSpaceType = cspace.type
             numColorComponents = cspace.numComponents
@@ -427,7 +427,7 @@ Namespace java.awt.image
         '''         less than zero </exception>
         ''' <exception cref="NullPointerException"> if the number of bits array is
         '''         <code>null</code> </exception>
-        Public Overridable Function getComponentSize(ByVal componentIdx As Integer) As Integer
+        Public Overridable Function getComponentSize(  componentIdx As Integer) As Integer
             ' REMIND:
             If nBits Is Nothing Then Throw New NullPointerException("Number of bits array is null.")
 
@@ -498,7 +498,7 @@ Namespace java.awt.image
         ''' the value.  If the alpha value is 0, the red value is 0. </summary>
         ''' <param name="pixel"> a specified pixel </param>
         ''' <returns> the value of the red component of the specified pixel. </returns>
-        Public MustOverride Function getRed(ByVal pixel As Integer) As Integer
+        Public MustOverride Function getRed(  pixel As Integer) As Integer
 
         ''' <summary>
         ''' Returns the green color component for the specified pixel, scaled
@@ -512,7 +512,7 @@ Namespace java.awt.image
         ''' the value.  If the alpha value is 0, the green value is 0. </summary>
         ''' <param name="pixel"> the specified pixel </param>
         ''' <returns> the value of the green component of the specified pixel. </returns>
-        Public MustOverride Function getGreen(ByVal pixel As Integer) As Integer
+        Public MustOverride Function getGreen(  pixel As Integer) As Integer
 
         ''' <summary>
         ''' Returns the blue color component for the specified pixel, scaled
@@ -526,7 +526,7 @@ Namespace java.awt.image
         ''' 0, the blue value is 0. </summary>
         ''' <param name="pixel"> the specified pixel </param>
         ''' <returns> the value of the blue component of the specified pixel. </returns>
-        Public MustOverride Function getBlue(ByVal pixel As Integer) As Integer
+        Public MustOverride Function getBlue(  pixel As Integer) As Integer
 
         ''' <summary>
         ''' Returns the alpha component for the specified pixel, scaled
@@ -536,7 +536,7 @@ Namespace java.awt.image
         ''' representable as a single int. </summary>
         ''' <param name="pixel"> the specified pixel </param>
         ''' <returns> the value of alpha component of the specified pixel. </returns>
-        Public MustOverride Function getAlpha(ByVal pixel As Integer) As Integer
+        Public MustOverride Function getAlpha(  pixel As Integer) As Integer
 
         ''' <summary>
         ''' Returns the color/alpha components of the pixel in the default
@@ -552,7 +552,7 @@ Namespace java.awt.image
         ''' <returns> the RGB value of the color/alpha components of the
         '''          specified pixel. </returns>
         ''' <seealso cref= ColorModel#getRGBdefault </seealso>
-        Public Overridable Function getRGB(ByVal pixel As Integer) As Integer
+        Public Overridable Function getRGB(  pixel As Integer) As Integer
             Return (getAlpha(pixel) << 24) Or (getRed(pixel) << 16) Or (getGreen(pixel) << 8) Or (getBlue(pixel) << 0)
         End Function
 
@@ -591,7 +591,7 @@ Namespace java.awt.image
         ''' <exception cref="UnsupportedOperationException"> if this
         '''  <code>tranferType</code> is not supported by this
         '''  <code>ColorModel</code> </exception>
-        Public Overridable Function getRed(ByVal inData As Object) As Integer
+        Public Overridable Function getRed(  inData As Object) As Integer
             Dim pixel As Integer = 0, length As Integer = 0
             Select Case transferType
                 Case DataBuffer.TYPE_BYTE
@@ -651,7 +651,7 @@ Namespace java.awt.image
         ''' <exception cref="UnsupportedOperationException"> if this
         '''  <code>tranferType</code> is not supported by this
         '''  <code>ColorModel</code> </exception>
-        Public Overridable Function getGreen(ByVal inData As Object) As Integer
+        Public Overridable Function getGreen(  inData As Object) As Integer
             Dim pixel As Integer = 0, length As Integer = 0
             Select Case transferType
                 Case DataBuffer.TYPE_BYTE
@@ -711,7 +711,7 @@ Namespace java.awt.image
         ''' <exception cref="UnsupportedOperationException"> if this
         '''  <code>tranferType</code> is not supported by this
         '''  <code>ColorModel</code> </exception>
-        Public Overridable Function getBlue(ByVal inData As Object) As Integer
+        Public Overridable Function getBlue(  inData As Object) As Integer
             Dim pixel As Integer = 0, length As Integer = 0
             Select Case transferType
                 Case DataBuffer.TYPE_BYTE
@@ -767,7 +767,7 @@ Namespace java.awt.image
         ''' <exception cref="UnsupportedOperationException"> if this
         '''  <code>tranferType</code> is not supported by this
         '''  <code>ColorModel</code> </exception>
-        Public Overridable Function getAlpha(ByVal inData As Object) As Integer
+        Public Overridable Function getAlpha(  inData As Object) As Integer
             Dim pixel As Integer = 0, length As Integer = 0
             Select Case transferType
                 Case DataBuffer.TYPE_BYTE
@@ -808,7 +808,7 @@ Namespace java.awt.image
         ''' <param name="inData"> the specified pixel </param>
         ''' <returns> the color and alpha components of the specified pixel. </returns>
         ''' <seealso cref= ColorModel#getRGBdefault </seealso>
-        Public Overridable Function getRGB(ByVal inData As Object) As Integer
+        Public Overridable Function getRGB(  inData As Object) As Integer
             Return (getAlpha(inData) << 24) Or (getRed(inData) << 16) Or (getGreen(inData) << 8) Or (getBlue(inData) << 0)
         End Function
 
@@ -848,7 +848,7 @@ Namespace java.awt.image
         '''  method is not supported by this <code>ColorModel</code> </exception>
         ''' <seealso cref= WritableRaster#setDataElements </seealso>
         ''' <seealso cref= SampleModel#setDataElements </seealso>
-        Public Overridable Function getDataElements(ByVal rgb As Integer, ByVal pixel As Object) As Object
+        Public Overridable Function getDataElements(  rgb As Integer,   pixel As Object) As Object
             Throw New UnsupportedOperationException("This method is not supported by this color model.")
         End Function
 
@@ -883,7 +883,7 @@ Namespace java.awt.image
         ''' specified pixel starting at the specified offset. </returns>
         ''' <exception cref="UnsupportedOperationException"> if this
         '''          method is not supported by this <code>ColorModel</code> </exception>
-        Public Overridable Function getComponents(ByVal pixel As Integer, ByVal components As Integer(), ByVal offset As Integer) As Integer()
+        Public Overridable Function getComponents(  pixel As Integer,   components As Integer(),   offset As Integer) As Integer()
             Throw New UnsupportedOperationException("This method is not supported by this color model.")
         End Function
 
@@ -923,7 +923,7 @@ Namespace java.awt.image
         ''' specified pixel starting at the specified offset. </returns>
         ''' <exception cref="UnsupportedOperationException"> if this
         '''          method is not supported by this <code>ColorModel</code> </exception>
-        Public Overridable Function getComponents(ByVal pixel As Object, ByVal components As Integer(), ByVal offset As Integer) As Integer()
+        Public Overridable Function getComponents(  pixel As Object,   components As Integer(),   offset As Integer) As Integer()
             Throw New UnsupportedOperationException("This method is not supported by this color model.")
         End Function
 
@@ -972,7 +972,7 @@ Namespace java.awt.image
         '''          <code>super(bits)</code> constructor, but did not
         '''          override this method.  See the constructor,
         '''          <seealso cref="#ColorModel(int)"/>. </exception>
-        Public Overridable Function getUnnormalizedComponents(ByVal normComponents As Single(), ByVal normOffset As Integer, ByVal components As Integer(), ByVal offset As Integer) As Integer()
+        Public Overridable Function getUnnormalizedComponents(  normComponents As Single(),   normOffset As Integer,   components As Integer(),   offset As Integer) As Integer()
             ' Make sure that someone isn't using a custom color model
             ' that called the super(bits) constructor.
             If colorSpace Is Nothing Then Throw New UnsupportedOperationException("This method is not supported " & "by this color model.")
@@ -1046,7 +1046,7 @@ Namespace java.awt.image
         '''          <seealso cref="#ColorModel(int)"/>. </exception>
         ''' <exception cref="UnsupportedOperationException"> if this method is unable
         '''          to determine the number of bits per component </exception>
-        Public Overridable Function getNormalizedComponents(ByVal components As Integer(), ByVal offset As Integer, ByVal normComponents As Single(), ByVal normOffset As Integer) As Single()
+        Public Overridable Function getNormalizedComponents(  components As Integer(),   offset As Integer,   normComponents As Single(),   normOffset As Integer) As Single()
             ' Make sure that someone isn't using a custom color model
             ' that called the super(bits) constructor.
             If colorSpace Is Nothing Then Throw New UnsupportedOperationException("This method is not supported by " & "this color model.")
@@ -1113,7 +1113,7 @@ Namespace java.awt.image
         '''  <code>offset</code> </exception>
         ''' <exception cref="UnsupportedOperationException"> if this
         '''  method is not supported by this <code>ColorModel</code> </exception>
-        Public Overridable Function getDataElement(ByVal components As Integer(), ByVal offset As Integer) As Integer
+        Public Overridable Function getDataElement(  components As Integer(),   offset As Integer) As Integer
             Throw New UnsupportedOperationException("This method is not supported " & "by this color model.")
         End Function
 
@@ -1162,7 +1162,7 @@ Namespace java.awt.image
         '''  method is not supported by this <code>ColorModel</code> </exception>
         ''' <seealso cref= WritableRaster#setDataElements </seealso>
         ''' <seealso cref= SampleModel#setDataElements </seealso>
-        Public Overridable Function getDataElements(ByVal components As Integer(), ByVal offset As Integer, ByVal obj As Object) As Object
+        Public Overridable Function getDataElements(  components As Integer(),   offset As Integer,   obj As Object) As Object
             Throw New UnsupportedOperationException("This method has not been implemented " & "for this color model.")
         End Function
 
@@ -1197,7 +1197,7 @@ Namespace java.awt.image
         '''  hold all of the color and alpha components starting at
         '''  <code>normOffset</code>
         ''' @since 1.4 </exception>
-        Public Overridable Function getDataElement(ByVal normComponents As Single(), ByVal normOffset As Integer) As Integer
+        Public Overridable Function getDataElement(  normComponents As Single(),   normOffset As Integer) As Integer
             Dim components_Renamed As Integer() = getUnnormalizedComponents(normComponents, normOffset, Nothing, 0)
             Return getDataElement(components_Renamed, 0)
         End Function
@@ -1242,7 +1242,7 @@ Namespace java.awt.image
         ''' <seealso cref= WritableRaster#setDataElements </seealso>
         ''' <seealso cref= SampleModel#setDataElements
         ''' @since 1.4 </seealso>
-        Public Overridable Function getDataElements(ByVal normComponents As Single(), ByVal normOffset As Integer, ByVal obj As Object) As Object
+        Public Overridable Function getDataElements(  normComponents As Single(),   normOffset As Integer,   obj As Object) As Object
             Dim components_Renamed As Integer() = getUnnormalizedComponents(normComponents, normOffset, Nothing, 0)
             Return getDataElements(components_Renamed, 0, obj)
         End Function
@@ -1299,7 +1299,7 @@ Namespace java.awt.image
         ''' <exception cref="UnsupportedOperationException"> if this method is unable
         '''          to determine the number of bits per component
         ''' @since 1.4 </exception>
-        Public Overridable Function getNormalizedComponents(ByVal pixel As Object, ByVal normComponents As Single(), ByVal normOffset As Integer) As Single()
+        Public Overridable Function getNormalizedComponents(  pixel As Object,   normComponents As Single(),   normOffset As Integer) As Single()
             Dim components_Renamed As Integer() = getComponents(pixel, Nothing, 0)
             Return getNormalizedComponents(components_Renamed, 0, normComponents, normOffset)
         End Function
@@ -1312,7 +1312,7 @@ Namespace java.awt.image
         ''' <returns> <code>true</code> if the specified <code>Object</code>
         ''' is an instance of <code>ColorModel</code> and equals this
         ''' <code>ColorModel</code>; <code>false</code> otherwise. </returns>
-        Public Overrides Function Equals(ByVal obj As Object) As Boolean
+        Public Overrides Function Equals(  obj As Object) As Boolean
             If Not (TypeOf obj Is ColorModel) Then Return False
             Dim cm As ColorModel = CType(obj, ColorModel)
 
@@ -1382,7 +1382,7 @@ Namespace java.awt.image
         ''' premultiplied; <code>false</code> otherwise </param>
         ''' <returns> a <code>ColorModel</code> object that represents the
         ''' coerced data. </returns>
-        Public Overridable Function coerceData(ByVal raster_Renamed As WritableRaster, ByVal isAlphaPremultiplied As Boolean) As ColorModel
+        Public Overridable Function coerceData(  raster_Renamed As WritableRaster,   isAlphaPremultiplied As Boolean) As ColorModel
             Throw New UnsupportedOperationException("This method is not supported by this color model")
         End Function
 
@@ -1400,7 +1400,7 @@ Namespace java.awt.image
         ''' <exception cref="UnsupportedOperationException"> if this
         '''         method has not been implemented for this
         '''         <code>ColorModel</code> </exception>
-        Public Overridable Function isCompatibleRaster(ByVal raster_Renamed As Raster) As Boolean
+        Public Overridable Function isCompatibleRaster(  raster_Renamed As Raster) As Boolean
             Throw New UnsupportedOperationException("This method has not been implemented for this ColorModel.")
         End Function
 
@@ -1420,7 +1420,7 @@ Namespace java.awt.image
         '''          method is not supported by this <code>ColorModel</code> </exception>
         ''' <seealso cref= WritableRaster </seealso>
         ''' <seealso cref= SampleModel </seealso>
-        Public Overridable Function createCompatibleWritableRaster(ByVal w As Integer, ByVal h As Integer) As WritableRaster
+        Public Overridable Function createCompatibleWritableRaster(  w As Integer,   h As Integer) As WritableRaster
             Throw New UnsupportedOperationException("This method is not supported by this color model")
         End Function
 
@@ -1439,7 +1439,7 @@ Namespace java.awt.image
         ''' <exception cref="UnsupportedOperationException"> if this
         '''          method is not supported by this <code>ColorModel</code> </exception>
         ''' <seealso cref= SampleModel </seealso>
-        Public Overridable Function createCompatibleSampleModel(ByVal w As Integer, ByVal h As Integer) As SampleModel
+        Public Overridable Function createCompatibleSampleModel(  w As Integer,   h As Integer) As SampleModel
             Throw New UnsupportedOperationException("This method is not supported by this color model")
         End Function
 
@@ -1457,7 +1457,7 @@ Namespace java.awt.image
         ''' <exception cref="UnsupportedOperationException"> if this
         '''          method is not supported by this <code>ColorModel</code> </exception>
         ''' <seealso cref= SampleModel </seealso>
-        Public Overridable Function isCompatibleSampleModel(ByVal sm As SampleModel) As Boolean
+        Public Overridable Function isCompatibleSampleModel(  sm As SampleModel) As Boolean
             Throw New UnsupportedOperationException("This method is not supported by this color model")
         End Function
 
@@ -1494,7 +1494,7 @@ Namespace java.awt.image
         ''' <param name="raster"> the specified <code>Raster</code> </param>
         ''' <returns> a <code>Raster</code> representing the alpha channel of
         ''' an image, obtained from the specified <code>Raster</code>. </returns>
-        Public Overridable Function getAlphaRaster(ByVal raster_Renamed As WritableRaster) As WritableRaster
+        Public Overridable Function getAlphaRaster(  raster_Renamed As WritableRaster) As WritableRaster
             Return Nothing
         End Function
 
@@ -1507,7 +1507,7 @@ Namespace java.awt.image
             Return New String("ColorModel: #pixelBits = " & pixel_bits & " numComponents = " & numComponents & " color space = " & colorSpace & " transparency = " & transparency & " has alpha = " & supportsAlpha & " isAlphaPre = " & isAlphaPremultiplied_Renamed)
         End Function
 
-        Friend Shared Function getDefaultTransferType(ByVal pixel_bits As Integer) As Integer
+        Friend Shared Function getDefaultTransferType(  pixel_bits As Integer) As Integer
             If pixel_bits <= 8 Then
                 Return DataBuffer.TYPE_BYTE
             ElseIf pixel_bits <= 16 Then
@@ -1530,13 +1530,13 @@ Namespace java.awt.image
         Friend Shared g16Tos8Map As IDictionary(Of java.awt.Color.ICC_ColorSpace, SByte()) = Nothing ' 16-bit gray values to 8-bit sRGB values
         Friend Shared lg16Toog16Map As IDictionary(Of java.awt.Color.ICC_ColorSpace, Short()) = Nothing ' 16-bit linear to 16-bit "other" gray
 
-        Friend Shared Function isLinearRGBspace(ByVal cs As java.awt.Color.colorSpace) As Boolean
+        Friend Shared Function isLinearRGBspace(  cs As java.awt.Color.colorSpace) As Boolean
             ' Note: CMM.LINEAR_RGBspace will be null if the linear
             ' RGB space has not been created yet.
             Return (cs Is sun.java2d.cmm.CMSManager.LINEAR_RGBspace)
         End Function
 
-        Friend Shared Function isLinearGRAYspace(ByVal cs As java.awt.Color.colorSpace) As Boolean
+        Friend Shared Function isLinearGRAYspace(  cs As java.awt.Color.colorSpace) As Boolean
             ' Note: CMM.GRAYspace will be null if the linear
             ' gray space has not been created yet.
             Return (cs Is sun.java2d.cmm.CMSManager.GRAYspace)
@@ -1629,7 +1629,7 @@ Namespace java.awt.image
         '     * then the sRGB triple (sval,sval,sval) is the best match to gval.
         '     * Cache references to any computed LUT in a Map.
         '
-        Friend Shared Function getGray8TosRGB8LUT(ByVal grayCS As java.awt.Color.ICC_ColorSpace) As SByte()
+        Friend Shared Function getGray8TosRGB8LUT(  grayCS As java.awt.Color.ICC_ColorSpace) As SByte()
             If isLinearGRAYspace(grayCS) Then Return linearRGB8TosRGB8LUT
             If g8Tos8Map IsNot Nothing Then
                 Dim g8Tos8LUT As SByte() = g8Tos8Map(grayCS)
@@ -1668,7 +1668,7 @@ Namespace java.awt.image
         '     * linear gray ColorSpace to the appropriate 8-bit value in the
         '     * grayCS ColorSpace.  Cache references to any computed LUT in a Map.
         '
-        Friend Shared Function getLinearGray16ToOtherGray8LUT(ByVal grayCS As java.awt.Color.ICC_ColorSpace) As SByte()
+        Friend Shared Function getLinearGray16ToOtherGray8LUT(  grayCS As java.awt.Color.ICC_ColorSpace) As SByte()
             If lg16Toog8Map IsNot Nothing Then
                 Dim lg16Toog8LUT As SByte() = lg16Toog8Map(grayCS)
                 If lg16Toog8LUT IsNot Nothing Then Return lg16Toog8LUT
@@ -1701,7 +1701,7 @@ Namespace java.awt.image
         '     * then the sRGB triple (sval,sval,sval) is the best match to gval.
         '     * Cache references to any computed LUT in a Map.
         '
-        Friend Shared Function getGray16TosRGB8LUT(ByVal grayCS As java.awt.Color.ICC_ColorSpace) As SByte()
+        Friend Shared Function getGray16TosRGB8LUT(  grayCS As java.awt.Color.ICC_ColorSpace) As SByte()
             If isLinearGRAYspace(grayCS) Then Return linearRGB16TosRGB8LUT
             If g16Tos8Map IsNot Nothing Then
                 Dim g16Tos8LUT As SByte() = g16Tos8Map(grayCS)
@@ -1743,7 +1743,7 @@ Namespace java.awt.image
         '     * linear gray ColorSpace to the appropriate 16-bit value in the
         '     * grayCS ColorSpace.  Cache references to any computed LUT in a Map.
         '
-        Friend Shared Function getLinearGray16ToOtherGray16LUT(ByVal grayCS As java.awt.Color.ICC_ColorSpace) As Short()
+        Friend Shared Function getLinearGray16ToOtherGray16LUT(  grayCS As java.awt.Color.ICC_ColorSpace) As Short()
             If lg16Toog16Map IsNot Nothing Then
                 Dim lg16Toog16LUT As Short() = lg16Toog16Map(grayCS)
                 If lg16Toog16LUT IsNot Nothing Then Return lg16Toog16LUT

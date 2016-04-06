@@ -121,7 +121,7 @@ Namespace java.security
         ''' The non-duplicate domains are copied from the array. Subsequent
         ''' changes to the array will not affect this AccessControlContext. </param>
         ''' <exception cref="NullPointerException"> if {@code context} is {@code null} </exception>
-        Public Sub New(ByVal context As ProtectionDomain())
+        Public Sub New(  context As ProtectionDomain())
 			If context.Length = 0 Then
 				Me.context = Nothing
 			ElseIf context.Length = 1 Then
@@ -164,7 +164,7 @@ Namespace java.security
 		'''          caller does not have the "createAccessControlContext"
 		'''          <seealso cref="SecurityPermission"/>
 		''' @since 1.3 </exception>
-		Public Sub New(ByVal acc As AccessControlContext, ByVal combiner As DomainCombiner)
+		Public Sub New(  acc As AccessControlContext,   combiner As DomainCombiner)
 
 			Me.New(acc, combiner, False)
 		End Sub
@@ -174,7 +174,7 @@ Namespace java.security
 		''' the security check for <seealso cref="SecurityConstants.CREATE_ACC_PERMISSION"/>
 		''' permission
 		''' </summary>
-		Friend Sub New(ByVal acc As AccessControlContext, ByVal combiner As DomainCombiner, ByVal preauthorized As Boolean)
+		Friend Sub New(  acc As AccessControlContext,   combiner As DomainCombiner,   preauthorized As Boolean)
 			If Not preauthorized Then
 				Dim sm As SecurityManager = System.securityManager
 				If sm IsNot Nothing Then
@@ -202,7 +202,7 @@ Namespace java.security
 		''' This "argument wrapper" context will be passed as the actual context
 		''' parameter on an internal doPrivileged() call used in the implementation.
 		''' </summary>
-		Friend Sub New(ByVal caller As ProtectionDomain, ByVal combiner As DomainCombiner, ByVal parent As AccessControlContext, ByVal context As AccessControlContext, ByVal perms As Permission())
+		Friend Sub New(  caller As ProtectionDomain,   combiner As DomainCombiner,   parent As AccessControlContext,   context As AccessControlContext,   perms As Permission())
 	'        
 	'         * Combine the domains from the doPrivileged() context into our
 	'         * wrapper context, if necessary.

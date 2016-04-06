@@ -91,7 +91,7 @@ Namespace java.sql
 	  ''' this method </exception>
 	  ''' <seealso cref= #setBytes
 	  ''' @since 1.2 </seealso>
-	  Function getBytes(ByVal pos As Long, ByVal length As Integer) As SByte()
+	  Function getBytes(  pos As Long,   length As Integer) As SByte()
 
 	  ''' <summary>
 	  ''' Retrieves the <code>BLOB</code> value designated by this
@@ -122,7 +122,7 @@ Namespace java.sql
 	  ''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 	  ''' this method
 	  ''' @since 1.2 </exception>
-	  Function position(SByte ByVal  As pattern(), ByVal start As Long) As Long
+	  Function position(SByte    As pattern(),   start As Long) As Long
 
 	  ''' <summary>
 	  ''' Retrieves the byte position in the <code>BLOB</code> value
@@ -140,7 +140,7 @@ Namespace java.sql
 	  ''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 	  ''' this method
 	  ''' @since 1.2 </exception>
-	  Function position(ByVal pattern As Blob, ByVal start As Long) As Long
+	  Function position(  pattern As Blob,   start As Long) As Long
 
 		' -------------------------- JDBC 3.0 -----------------------------------
 
@@ -171,7 +171,7 @@ Namespace java.sql
 		''' this method </exception>
 		''' <seealso cref= #getBytes
 		''' @since 1.4 </seealso>
-		Function setBytes(ByVal pos As Long, ByVal bytes As SByte()) As Integer
+		Function setBytes(  pos As Long,   bytes As SByte()) As Integer
 
 		''' <summary>
 		''' Writes all or part of the given <code>byte</code> array to the
@@ -206,7 +206,7 @@ Namespace java.sql
 		''' this method </exception>
 		''' <seealso cref= #getBytes
 		''' @since 1.4 </seealso>
-		Function setBytes(ByVal pos As Long, ByVal bytes As SByte(), ByVal offset As Integer, ByVal len As Integer) As Integer
+		Function setBytes(  pos As Long,   bytes As SByte(),   offset As Integer,   len As Integer) As Integer
 
 		''' <summary>
 		''' Retrieves a stream that can be used to write to the <code>BLOB</code>
@@ -234,7 +234,7 @@ Namespace java.sql
 		''' this method </exception>
 		''' <seealso cref= #getBinaryStream
 		''' @since 1.4 </seealso>
-		Function setBinaryStream(ByVal pos As Long) As java.io.OutputStream
+		Function setBinaryStream(  pos As Long) As java.io.OutputStream
 
 		''' <summary>
 		''' Truncates the <code>BLOB</code> value that this <code>Blob</code>
@@ -253,7 +253,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.4 </exception>
-		Sub truncate(ByVal len As Long)
+		Sub truncate(  len As Long)
 
 		''' <summary>
 		''' This method frees the <code>Blob</code> object and releases the resources that
@@ -288,7 +288,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.6 </exception>
-		Function getBinaryStream(ByVal pos As Long, ByVal length As Long) As java.io.InputStream
+		Function getBinaryStream(  pos As Long,   length As Long) As java.io.InputStream
 	End Interface
 
 End Namespace

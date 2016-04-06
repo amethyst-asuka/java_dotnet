@@ -81,7 +81,7 @@ Namespace java.util.concurrent
 		''' </summary>
 		''' <param name="pool"> the pool this thread works in </param>
 		''' <exception cref="NullPointerException"> if pool is null </exception>
-		Protected Friend Sub New(ByVal pool As ForkJoinPool)
+		Protected Friend Sub New(  pool As ForkJoinPool)
 			' Use a placeholder until a useful name can be set in registerWorker
 			MyBase.New("aForkJoinWorkerThread")
 			Me.pool = pool
@@ -91,7 +91,7 @@ Namespace java.util.concurrent
 		''' <summary>
 		''' Version for InnocuousForkJoinWorkerThread
 		''' </summary>
-		Friend Sub New(ByVal pool As ForkJoinPool, ByVal threadGroup As ThreadGroup, ByVal acc As java.security.AccessControlContext)
+		Friend Sub New(  pool As ForkJoinPool,   threadGroup As ThreadGroup,   acc As java.security.AccessControlContext)
 			MyBase.New(threadGroup, Nothing, "aForkJoinWorkerThread")
 			U.putOrderedObject(Me, INHERITEDACCESSCONTROLCONTEXT, acc)
 			eraseThreadLocals() ' clear before registering
@@ -143,7 +143,7 @@ Namespace java.util.concurrent
 		''' </summary>
 		''' <param name="exception"> the exception causing this thread to abort due
 		''' to an unrecoverable error, or {@code null} if completed normally </param>
-		Protected Friend Overridable Sub onTermination(ByVal exception_Renamed As Throwable)
+		Protected Friend Overridable Sub onTermination(  exception_Renamed As Throwable)
 		End Sub
 
 		''' <summary>
@@ -220,7 +220,7 @@ Namespace java.util.concurrent
 			Private Shared ReadOnly INNOCUOUS_ACC As New java.security.AccessControlContext(New java.security.ProtectionDomain() { New java.security.ProtectionDomain(Nothing, Nothing)
 					Friend })
 
-			Friend Sub New(ByVal pool As ForkJoinPool)
+			Friend Sub New(  pool As ForkJoinPool)
 				MyBase.New(pool, innocuousThreadGroup, INNOCUOUS_ACC)
 			End Sub
 
@@ -234,11 +234,11 @@ Namespace java.util.concurrent
 				Get
 					Return ClassLoader.systemClassLoader
 				End Get
-				Set(ByVal cl As  ClassLoader)
+				Set(  cl As  ClassLoader)
 			End Property
 
 			Public Overrides Property uncaughtExceptionHandler As UncaughtExceptionHandler
-				Set(ByVal x As UncaughtExceptionHandler)
+				Set(  x As UncaughtExceptionHandler)
 				End Set
 			End Property
 				Throw New SecurityException("setContextClassLoader")

@@ -153,12 +153,12 @@ Namespace java.time.temporal
 		''' </summary>
 		''' <param name="temporal">  the temporal object to check, not null </param>
 		''' <returns> true if the unit is supported </returns>
-		default Function isSupportedBy(ByVal temporal As Temporal) As Boolean
-			Sub [New](temporal ByVal java.time.LocalTime As instanceof)
+		default Function isSupportedBy(  temporal As Temporal) As Boolean
+			Sub [New](temporal   java.time.LocalTime As instanceof)
 				ReadOnly Property timeBased As [Return]
-			Sub [New](temporal ByVal java.time.chrono.ChronoLocalDate As instanceof)
+			Sub [New](temporal   java.time.chrono.ChronoLocalDate As instanceof)
 				ReadOnly Property dateBased As [Return]
-			Sub [New](temporal instanceof java.time.chrono.ChronoLocalDateTime || temporal ByVal java.time.chrono.ChronoZonedDateTime As instanceof)
+			Sub [New](temporal instanceof java.time.chrono.ChronoLocalDateTime || temporal   java.time.chrono.ChronoZonedDateTime As instanceof)
 'JAVA TO VB CONVERTER TODO TASK: Interfaces cannot contain fields in .NET:
 '				Return True;
 			Try
@@ -166,16 +166,16 @@ Namespace java.time.temporal
 				temporal.plus(1, Me);
 'JAVA TO VB CONVERTER TODO TASK: Interfaces cannot contain fields in .NET:
 '				Return True;
-			Sub [New](ByVal ex As UnsupportedTemporalTypeException)
+			Sub [New](  ex As UnsupportedTemporalTypeException)
 'JAVA TO VB CONVERTER TODO TASK: Interfaces cannot contain fields in .NET:
 '				Return False;
-			Sub [New](ByVal ex As RuntimeException)
+			Sub [New](  ex As RuntimeException)
 				Try
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 					temporal.plus(-1, Me);
 'JAVA TO VB CONVERTER TODO TASK: Interfaces cannot contain fields in .NET:
 '					Return True;
-				Sub [New](ByVal ex2 As RuntimeException)
+				Sub [New](  ex2 As RuntimeException)
 'JAVA TO VB CONVERTER TODO TASK: Interfaces cannot contain fields in .NET:
 '					Return False;
 
@@ -212,7 +212,7 @@ Namespace java.time.temporal
 		''' <returns> the adjusted temporal object, not null </returns>
 		''' <exception cref="DateTimeException"> if the amount cannot be added </exception>
 		''' <exception cref="UnsupportedTemporalTypeException"> if the unit is not supported by the temporal </exception>
-		 Function addTo(Of R As Temporal)(ByVal temporal As R, ByVal amount As Long) As R
+		 Function addTo(Of R As Temporal)(  temporal As R,   amount As Long) As R
 
 		'-----------------------------------------------------------------------
 		''' <summary>
@@ -268,7 +268,7 @@ Namespace java.time.temporal
 		'''  temporal cannot be converted to the same type as the start temporal </exception>
 		''' <exception cref="UnsupportedTemporalTypeException"> if the unit is not supported by the temporal </exception>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
-		Function between(ByVal temporal1Inclusive As Temporal, ByVal temporal2Exclusive As Temporal) As Long
+		Function between(  temporal1Inclusive As Temporal,   temporal2Exclusive As Temporal) As Long
 
 		'-----------------------------------------------------------------------
 		''' <summary>

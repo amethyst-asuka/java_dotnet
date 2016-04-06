@@ -54,7 +54,7 @@ Namespace java.awt.peer
 		''' See java.awt.GraphicsConfiguration documentation for more
 		''' details about virtual screen devices.
 		''' </summary>
-		Function fillPointWithCoords(ByVal point As java.awt.Point) As Integer
+		Function fillPointWithCoords(  point As java.awt.Point) As Integer
 
 		''' <summary>
 		''' Returns whether or not the window is located under the mouse
@@ -62,7 +62,7 @@ Namespace java.awt.peer
 		''' if it is showing on the screen, and the mouse pointer is above
 		''' the part of the window that is not obscured by any other windows.
 		''' </summary>
-		Function isWindowUnderMouse(ByVal w As java.awt.Window) As Boolean
+		Function isWindowUnderMouse(  w As java.awt.Window) As Boolean
 
 	End Interface
 

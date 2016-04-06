@@ -63,7 +63,7 @@ Namespace java.security
 		''' </returns>
 		''' <exception cref="IllegalArgumentException"> if primitives or algorithm is null
 		'''     or empty </exception>
-		Function permits(ByVal primitives As java.util.Set(Of CryptoPrimitive), ByVal algorithm As String, ByVal parameters As AlgorithmParameters) As Boolean
+		Function permits(  primitives As java.util.Set(Of CryptoPrimitive),   algorithm As String,   parameters As AlgorithmParameters) As Boolean
 
 		''' <summary>
 		''' Determines whether a key is granted permission for the specified
@@ -79,7 +79,7 @@ Namespace java.security
 		''' </returns>
 		''' <exception cref="IllegalArgumentException"> if primitives is null or empty,
 		'''     or the key is null </exception>
-		Function permits(ByVal primitives As java.util.Set(Of CryptoPrimitive), ByVal key As Key) As Boolean
+		Function permits(  primitives As java.util.Set(Of CryptoPrimitive),   key As Key) As Boolean
 
 		''' <summary>
 		''' Determines whether an algorithm and the corresponding key are granted
@@ -96,7 +96,7 @@ Namespace java.security
 		''' </returns>
 		''' <exception cref="IllegalArgumentException"> if primitives or algorithm is null
 		'''     or empty, or the key is null </exception>
-		Function permits(ByVal primitives As java.util.Set(Of CryptoPrimitive), ByVal algorithm As String, ByVal key As Key, ByVal parameters As AlgorithmParameters) As Boolean
+		Function permits(  primitives As java.util.Set(Of CryptoPrimitive),   algorithm As String,   key As Key,   parameters As AlgorithmParameters) As Boolean
 
 	End Interface
 

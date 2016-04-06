@@ -54,7 +54,7 @@ Namespace java.awt.peer
 		''' <param name="activeWindow">
 		''' </param>
 		''' <seealso cref= KeyboardFocusManager#clearGlobalFocusOwner() </seealso>
-		Sub clearGlobalFocusOwner(ByVal activeWindow As java.awt.Window)
+		Sub clearGlobalFocusOwner(  activeWindow As java.awt.Window)
 
 	End Interface
 

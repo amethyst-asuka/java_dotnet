@@ -513,12 +513,12 @@ Namespace java.util.concurrent.locks
 			Friend Sub New() ' Used to establish initial head or SHARED marker
 			End Sub
 
-			Friend Sub New(ByVal thread_Renamed As Thread, ByVal mode As Node) ' Used by addWaiter
+			Friend Sub New(  thread_Renamed As Thread,   mode As Node) ' Used by addWaiter
 				Me.nextWaiter = mode
 				Me.thread_Renamed = thread_Renamed
 			End Sub
 
-			Friend Sub New(ByVal thread_Renamed As Thread, ByVal waitStatus As Integer) ' Used by Condition
+			Friend Sub New(  thread_Renamed As Thread,   waitStatus As Integer) ' Used by Condition
 				Me.waitStatus = waitStatus
 				Me.thread_Renamed = thread_Renamed
 			End Sub
@@ -556,7 +556,7 @@ Namespace java.util.concurrent.locks
 			Get
 				Return state
 			End Get
-			Set(ByVal newState As Integer)
+			Set(  newState As Integer)
 				state = newState
 			End Set
 		End Property
@@ -572,7 +572,7 @@ Namespace java.util.concurrent.locks
 		''' <param name="update"> the new value </param>
 		''' <returns> {@code true} if successful. False return indicates that the actual
 		'''         value was not equal to the expected value. </returns>
-		Protected Friend Function compareAndSetState(ByVal expect As Integer, ByVal update As Integer) As Boolean
+		Protected Friend Function compareAndSetState(  expect As Integer,   update As Integer) As Boolean
 			' See below for intrinsics setup to support this
 			Return unsafe.compareAndSwapInt(Me, stateOffset, expect, update)
 		End Function
@@ -590,7 +590,7 @@ Namespace java.util.concurrent.locks
 		''' Inserts node into queue, initializing if necessary. See picture above. </summary>
 		''' <param name="node"> the node to insert </param>
 		''' <returns> node's predecessor </returns>
-		Private Function enq(ByVal node_Renamed As Node) As Node
+		Private Function enq(  node_Renamed As Node) As Node
 			Do
 				Dim t As Node = tail
 				If t Is Nothing Then ' Must initialize
@@ -610,7 +610,7 @@ Namespace java.util.concurrent.locks
 		''' </summary>
 		''' <param name="mode"> Node.EXCLUSIVE for exclusive, Node.SHARED for shared </param>
 		''' <returns> the new node </returns>
-		Private Function addWaiter(ByVal mode As Node) As Node
+		Private Function addWaiter(  mode As Node) As Node
 			Dim node_Renamed As New Node(Thread.CurrentThread, mode)
 			' Try the fast path of enq; backup to full enq on failure
 			Dim pred As Node = tail
@@ -632,7 +632,7 @@ Namespace java.util.concurrent.locks
 		''' </summary>
 		''' <param name="node"> the node </param>
 		Private Property head As Node
-			Set(ByVal node_Renamed As Node)
+			Set(  node_Renamed As Node)
 				head = node_Renamed
 				node_Renamed.thread_Renamed = Nothing
 				node_Renamed.prev = Nothing
@@ -643,7 +643,7 @@ Namespace java.util.concurrent.locks
 		''' Wakes up node's successor, if one exists.
 		''' </summary>
 		''' <param name="node"> the node </param>
-		Private Sub unparkSuccessor(ByVal node_Renamed As Node)
+		Private Sub unparkSuccessor(  node_Renamed As Node)
 	'        
 	'         * If status is negative (i.e., possibly needing signal) try
 	'         * to clear in anticipation of signalling.  It is OK if this
@@ -709,7 +709,7 @@ Namespace java.util.concurrent.locks
 		''' </summary>
 		''' <param name="node"> the node </param>
 		''' <param name="propagate"> the return value from a tryAcquireShared </param>
-		Private Sub setHeadAndPropagate(ByVal node_Renamed As Node, ByVal propagate As Integer)
+		Private Sub setHeadAndPropagate(  node_Renamed As Node,   propagate As Integer)
 			Dim h As Node = head ' Record old head for check below
 			head = node_Renamed
 	'        
@@ -741,7 +741,7 @@ Namespace java.util.concurrent.locks
 		''' Cancels an ongoing attempt to acquire.
 		''' </summary>
 		''' <param name="node"> the node </param>
-		Private Sub cancelAcquire(ByVal node_Renamed As Node)
+		Private Sub cancelAcquire(  node_Renamed As Node)
 			' Ignore if node doesn't exist
 			If node_Renamed Is Nothing Then Return
 
@@ -791,7 +791,7 @@ Namespace java.util.concurrent.locks
 		''' <param name="pred"> node's predecessor holding status </param>
 		''' <param name="node"> the node </param>
 		''' <returns> {@code true} if thread should block </returns>
-		Private Shared Function shouldParkAfterFailedAcquire(ByVal pred As Node, ByVal node_Renamed As Node) As Boolean
+		Private Shared Function shouldParkAfterFailedAcquire(  pred As Node,   node_Renamed As Node) As Boolean
 			Dim ws As Integer = pred.waitStatus
 			If ws = Node.SIGNAL Then Return True
 			If ws > 0 Then
@@ -847,7 +847,7 @@ Namespace java.util.concurrent.locks
 		''' <param name="node"> the node </param>
 		''' <param name="arg"> the acquire argument </param>
 		''' <returns> {@code true} if interrupted while waiting </returns>
-		Friend Function acquireQueued(ByVal node_Renamed As Node, ByVal arg As Integer) As Boolean
+		Friend Function acquireQueued(  node_Renamed As Node,   arg As Integer) As Boolean
 			Dim failed As Boolean = True
 			Try
 				Dim interrupted As Boolean = False
@@ -869,7 +869,7 @@ Namespace java.util.concurrent.locks
 		''' <summary>
 		''' Acquires in exclusive interruptible mode. </summary>
 		''' <param name="arg"> the acquire argument </param>
-		Private Sub doAcquireInterruptibly(ByVal arg As Integer)
+		Private Sub doAcquireInterruptibly(  arg As Integer)
 			Dim node_Renamed As Node = addWaiter(Node.EXCLUSIVE)
 			Dim failed As Boolean = True
 			Try
@@ -894,7 +894,7 @@ Namespace java.util.concurrent.locks
 		''' <param name="arg"> the acquire argument </param>
 		''' <param name="nanosTimeout"> max wait time </param>
 		''' <returns> {@code true} if acquired </returns>
-		Private Function doAcquireNanos(ByVal arg As Integer, ByVal nanosTimeout As Long) As Boolean
+		Private Function doAcquireNanos(  arg As Integer,   nanosTimeout As Long) As Boolean
 			If nanosTimeout <= 0L Then Return False
 			Dim deadline As Long = System.nanoTime() + nanosTimeout
 			Dim node_Renamed As Node = addWaiter(Node.EXCLUSIVE)
@@ -921,7 +921,7 @@ Namespace java.util.concurrent.locks
 		''' <summary>
 		''' Acquires in shared uninterruptible mode. </summary>
 		''' <param name="arg"> the acquire argument </param>
-		Private Sub doAcquireShared(ByVal arg As Integer)
+		Private Sub doAcquireShared(  arg As Integer)
 			Dim node_Renamed As Node = addWaiter(Node.SHARED)
 			Dim failed As Boolean = True
 			Try
@@ -948,7 +948,7 @@ Namespace java.util.concurrent.locks
 		''' <summary>
 		''' Acquires in shared interruptible mode. </summary>
 		''' <param name="arg"> the acquire argument </param>
-		Private Sub doAcquireSharedInterruptibly(ByVal arg As Integer)
+		Private Sub doAcquireSharedInterruptibly(  arg As Integer)
 			Dim node_Renamed As Node = addWaiter(Node.SHARED)
 			Dim failed As Boolean = True
 			Try
@@ -976,7 +976,7 @@ Namespace java.util.concurrent.locks
 		''' <param name="arg"> the acquire argument </param>
 		''' <param name="nanosTimeout"> max wait time </param>
 		''' <returns> {@code true} if acquired </returns>
-		Private Function doAcquireSharedNanos(ByVal arg As Integer, ByVal nanosTimeout As Long) As Boolean
+		Private Function doAcquireSharedNanos(  arg As Integer,   nanosTimeout As Long) As Boolean
 			If nanosTimeout <= 0L Then Return False
 			Dim deadline As Long = System.nanoTime() + nanosTimeout
 			Dim node_Renamed As Node = addWaiter(Node.SHARED)
@@ -1030,7 +1030,7 @@ Namespace java.util.concurrent.locks
 		'''         thrown in a consistent fashion for synchronization to work
 		'''         correctly. </exception>
 		''' <exception cref="UnsupportedOperationException"> if exclusive mode is not supported </exception>
-		Protected Friend Overridable Function tryAcquire(ByVal arg As Integer) As Boolean
+		Protected Friend Overridable Function tryAcquire(  arg As Integer) As Boolean
 			Throw New UnsupportedOperationException
 		End Function
 
@@ -1055,7 +1055,7 @@ Namespace java.util.concurrent.locks
 		'''         thrown in a consistent fashion for synchronization to work
 		'''         correctly. </exception>
 		''' <exception cref="UnsupportedOperationException"> if exclusive mode is not supported </exception>
-		Protected Friend Overridable Function tryRelease(ByVal arg As Integer) As Boolean
+		Protected Friend Overridable Function tryRelease(  arg As Integer) As Boolean
 			Throw New UnsupportedOperationException
 		End Function
 
@@ -1090,7 +1090,7 @@ Namespace java.util.concurrent.locks
 		'''         thrown in a consistent fashion for synchronization to work
 		'''         correctly. </exception>
 		''' <exception cref="UnsupportedOperationException"> if shared mode is not supported </exception>
-		Protected Friend Overridable Function tryAcquireShared(ByVal arg As Integer) As Integer
+		Protected Friend Overridable Function tryAcquireShared(  arg As Integer) As Integer
 			Throw New UnsupportedOperationException
 		End Function
 
@@ -1114,7 +1114,7 @@ Namespace java.util.concurrent.locks
 		'''         thrown in a consistent fashion for synchronization to work
 		'''         correctly. </exception>
 		''' <exception cref="UnsupportedOperationException"> if shared mode is not supported </exception>
-		Protected Friend Overridable Function tryReleaseShared(ByVal arg As Integer) As Boolean
+		Protected Friend Overridable Function tryReleaseShared(  arg As Integer) As Boolean
 			Throw New UnsupportedOperationException
 		End Function
 
@@ -1149,7 +1149,7 @@ Namespace java.util.concurrent.locks
 		''' <param name="arg"> the acquire argument.  This value is conveyed to
 		'''        <seealso cref="#tryAcquire"/> but is otherwise uninterpreted and
 		'''        can represent anything you like. </param>
-		Public Sub acquire(ByVal arg As Integer)
+		Public Sub acquire(  arg As Integer)
 			If (Not tryAcquire(arg)) AndAlso acquireQueued(addWaiter(Node.EXCLUSIVE), arg) Then selfInterrupt()
 		End Sub
 
@@ -1166,7 +1166,7 @@ Namespace java.util.concurrent.locks
 		'''        <seealso cref="#tryAcquire"/> but is otherwise uninterpreted and
 		'''        can represent anything you like. </param>
 		''' <exception cref="InterruptedException"> if the current thread is interrupted </exception>
-		Public Sub acquireInterruptibly(ByVal arg As Integer)
+		Public Sub acquireInterruptibly(  arg As Integer)
 			If Thread.interrupted() Then Throw New InterruptedException
 			If Not tryAcquire(arg) Then doAcquireInterruptibly(arg)
 		End Sub
@@ -1187,7 +1187,7 @@ Namespace java.util.concurrent.locks
 		''' <param name="nanosTimeout"> the maximum number of nanoseconds to wait </param>
 		''' <returns> {@code true} if acquired; {@code false} if timed out </returns>
 		''' <exception cref="InterruptedException"> if the current thread is interrupted </exception>
-		Public Function tryAcquireNanos(ByVal arg As Integer, ByVal nanosTimeout As Long) As Boolean
+		Public Function tryAcquireNanos(  arg As Integer,   nanosTimeout As Long) As Boolean
 			If Thread.interrupted() Then Throw New InterruptedException
 			Return tryAcquire(arg) OrElse doAcquireNanos(arg, nanosTimeout)
 		End Function
@@ -1201,7 +1201,7 @@ Namespace java.util.concurrent.locks
 		'''        <seealso cref="#tryRelease"/> but is otherwise uninterpreted and
 		'''        can represent anything you like. </param>
 		''' <returns> the value returned from <seealso cref="#tryRelease"/> </returns>
-		Public Function release(ByVal arg As Integer) As Boolean
+		Public Function release(  arg As Integer) As Boolean
 			If tryRelease(arg) Then
 				Dim h As Node = head
 				If h IsNot Nothing AndAlso h.waitStatus <> 0 Then unparkSuccessor(h)
@@ -1220,7 +1220,7 @@ Namespace java.util.concurrent.locks
 		''' <param name="arg"> the acquire argument.  This value is conveyed to
 		'''        <seealso cref="#tryAcquireShared"/> but is otherwise uninterpreted
 		'''        and can represent anything you like. </param>
-		Public Sub acquireShared(ByVal arg As Integer)
+		Public Sub acquireShared(  arg As Integer)
 			If tryAcquireShared(arg) < 0 Then doAcquireShared(arg)
 		End Sub
 
@@ -1236,7 +1236,7 @@ Namespace java.util.concurrent.locks
 		''' otherwise uninterpreted and can represent anything
 		''' you like. </param>
 		''' <exception cref="InterruptedException"> if the current thread is interrupted </exception>
-		Public Sub acquireSharedInterruptibly(ByVal arg As Integer)
+		Public Sub acquireSharedInterruptibly(  arg As Integer)
 			If Thread.interrupted() Then Throw New InterruptedException
 			If tryAcquireShared(arg) < 0 Then doAcquireSharedInterruptibly(arg)
 		End Sub
@@ -1256,7 +1256,7 @@ Namespace java.util.concurrent.locks
 		''' <param name="nanosTimeout"> the maximum number of nanoseconds to wait </param>
 		''' <returns> {@code true} if acquired; {@code false} if timed out </returns>
 		''' <exception cref="InterruptedException"> if the current thread is interrupted </exception>
-		Public Function tryAcquireSharedNanos(ByVal arg As Integer, ByVal nanosTimeout As Long) As Boolean
+		Public Function tryAcquireSharedNanos(  arg As Integer,   nanosTimeout As Long) As Boolean
 			If Thread.interrupted() Then Throw New InterruptedException
 			Return tryAcquireShared(arg) >= 0 OrElse doAcquireSharedNanos(arg, nanosTimeout)
 		End Function
@@ -1269,7 +1269,7 @@ Namespace java.util.concurrent.locks
 		'''        <seealso cref="#tryReleaseShared"/> but is otherwise uninterpreted
 		'''        and can represent anything you like. </param>
 		''' <returns> the value returned from <seealso cref="#tryReleaseShared"/> </returns>
-		Public Function releaseShared(ByVal arg As Integer) As Boolean
+		Public Function releaseShared(  arg As Integer) As Boolean
 			If tryReleaseShared(arg) Then
 				doReleaseShared()
 				Return True
@@ -1371,7 +1371,7 @@ Namespace java.util.concurrent.locks
 		''' <param name="thread"> the thread </param>
 		''' <returns> {@code true} if the given thread is on the queue </returns>
 		''' <exception cref="NullPointerException"> if the thread is null </exception>
-		Public Function isQueued(ByVal thread_Renamed As Thread) As Boolean
+		Public Function isQueued(  thread_Renamed As Thread) As Boolean
 			If thread_Renamed Is Nothing Then Throw New NullPointerException
 			Dim p As Node = tail
 			Do While p IsNot Nothing
@@ -1562,7 +1562,7 @@ Namespace java.util.concurrent.locks
 		''' a condition queue, is now waiting to reacquire on sync queue. </summary>
 		''' <param name="node"> the node </param>
 		''' <returns> true if is reacquiring </returns>
-		Friend Function isOnSyncQueue(ByVal node_Renamed As Node) As Boolean
+		Friend Function isOnSyncQueue(  node_Renamed As Node) As Boolean
 			If node_Renamed.waitStatus = Node.CONDITION OrElse node_Renamed.prev Is Nothing Then Return False
 			If node_Renamed.next IsNot Nothing Then ' If has successor, it must be on queue Return True
 	'        
@@ -1580,7 +1580,7 @@ Namespace java.util.concurrent.locks
 		''' Returns true if node is on sync queue by searching backwards from tail.
 		''' Called only when needed by isOnSyncQueue. </summary>
 		''' <returns> true if present </returns>
-		Private Function findNodeFromTail(ByVal node_Renamed As Node) As Boolean
+		Private Function findNodeFromTail(  node_Renamed As Node) As Boolean
 			Dim t As Node = tail
 			Do
 				If t Is node_Renamed Then Return True
@@ -1595,7 +1595,7 @@ Namespace java.util.concurrent.locks
 		''' <param name="node"> the node </param>
 		''' <returns> true if successfully transferred (else the node was
 		''' cancelled before signal) </returns>
-		Friend Function transferForSignal(ByVal node_Renamed As Node) As Boolean
+		Friend Function transferForSignal(  node_Renamed As Node) As Boolean
 	'        
 	'         * If cannot change waitStatus, the node has been cancelled.
 	'         
@@ -1619,7 +1619,7 @@ Namespace java.util.concurrent.locks
 		''' </summary>
 		''' <param name="node"> the node </param>
 		''' <returns> true if cancelled before the node was signalled </returns>
-		Friend Function transferAfterCancelledWait(ByVal node_Renamed As Node) As Boolean
+		Friend Function transferAfterCancelledWait(  node_Renamed As Node) As Boolean
 			If compareAndSetWaitStatus(node_Renamed, Node.CONDITION, 0) Then
 				enq(node_Renamed)
 				Return True
@@ -1641,7 +1641,7 @@ Namespace java.util.concurrent.locks
 		''' Cancels node and throws exception on failure. </summary>
 		''' <param name="node"> the condition node for this wait </param>
 		''' <returns> previous sync state </returns>
-		Friend Function fullyRelease(ByVal node_Renamed As Node) As Integer
+		Friend Function fullyRelease(  node_Renamed As Node) As Integer
 			Dim failed As Boolean = True
 			Try
 				Dim savedState As Integer = state
@@ -1665,7 +1665,7 @@ Namespace java.util.concurrent.locks
 		''' <param name="condition"> the condition </param>
 		''' <returns> {@code true} if owned </returns>
 		''' <exception cref="NullPointerException"> if the condition is null </exception>
-		Public Function owns(ByVal condition As ConditionObject) As Boolean
+		Public Function owns(  condition As ConditionObject) As Boolean
 			Return condition.isOwnedBy(Me)
 		End Function
 
@@ -1684,7 +1684,7 @@ Namespace java.util.concurrent.locks
 		''' <exception cref="IllegalArgumentException"> if the given condition is
 		'''         not associated with this synchronizer </exception>
 		''' <exception cref="NullPointerException"> if the condition is null </exception>
-		Public Function hasWaiters(ByVal condition As ConditionObject) As Boolean
+		Public Function hasWaiters(  condition As ConditionObject) As Boolean
 			If Not owns(condition) Then Throw New IllegalArgumentException("Not owner")
 			Return condition.hasWaiters()
 		End Function
@@ -1704,7 +1704,7 @@ Namespace java.util.concurrent.locks
 		''' <exception cref="IllegalArgumentException"> if the given condition is
 		'''         not associated with this synchronizer </exception>
 		''' <exception cref="NullPointerException"> if the condition is null </exception>
-		Public Function getWaitQueueLength(ByVal condition As ConditionObject) As Integer
+		Public Function getWaitQueueLength(  condition As ConditionObject) As Integer
 			If Not owns(condition) Then Throw New IllegalArgumentException("Not owner")
 			Return condition.waitQueueLength
 		End Function
@@ -1724,7 +1724,7 @@ Namespace java.util.concurrent.locks
 		''' <exception cref="IllegalArgumentException"> if the given condition is
 		'''         not associated with this synchronizer </exception>
 		''' <exception cref="NullPointerException"> if the condition is null </exception>
-		Public Function getWaitingThreads(ByVal condition As ConditionObject) As ICollection(Of Thread)
+		Public Function getWaitingThreads(  condition As ConditionObject) As ICollection(Of Thread)
 			If Not owns(condition) Then Throw New IllegalArgumentException("Not owner")
 			Return condition.waitingThreads
 		End Function
@@ -1763,7 +1763,7 @@ Namespace java.util.concurrent.locks
 			''' <summary>
 			''' Creates a new {@code ConditionObject} instance.
 			''' </summary>
-			Public Sub New(ByVal outerInstance As AbstractQueuedSynchronizer)
+			Public Sub New(  outerInstance As AbstractQueuedSynchronizer)
 					Me.outerInstance = outerInstance
 			End Sub
 
@@ -1794,7 +1794,7 @@ Namespace java.util.concurrent.locks
 			''' null. Split out from signal in part to encourage compilers
 			''' to inline the case of no waiters. </summary>
 			''' <param name="first"> (non-null) the first node on condition queue </param>
-			Private Sub doSignal(ByVal first As Node)
+			Private Sub doSignal(  first As Node)
 				Do
 					firstWaiter = first.nextWaiter
 					If firstWaiter Is Nothing Then lastWaiter = Nothing
@@ -1806,7 +1806,7 @@ Namespace java.util.concurrent.locks
 			''' <summary>
 			''' Removes and transfers all nodes. </summary>
 			''' <param name="first"> (non-null) the first node on condition queue </param>
-			Private Sub doSignalAll(ByVal first As Node)
+			Private Sub doSignalAll(  first As Node)
 					firstWaiter = Nothing
 					lastWaiter = firstWaiter
 				Do
@@ -1919,7 +1919,7 @@ Namespace java.util.concurrent.locks
 			''' before signalled, REINTERRUPT if after signalled, or
 			''' 0 if not interrupted.
 			''' </summary>
-			Private Function checkInterruptWhileWaiting(ByVal node_Renamed As Node) As Integer
+			Private Function checkInterruptWhileWaiting(  node_Renamed As Node) As Integer
 				Return If(Thread.interrupted(), (If(outerInstance.transferAfterCancelledWait(node_Renamed), THROW_IE, REINTERRUPT)), 0)
 			End Function
 
@@ -1927,7 +1927,7 @@ Namespace java.util.concurrent.locks
 			''' Throws InterruptedException, reinterrupts current thread, or
 			''' does nothing, depending on mode.
 			''' </summary>
-			Private Sub reportInterruptAfterWait(ByVal interruptMode As Integer)
+			Private Sub reportInterruptAfterWait(  interruptMode As Integer)
 				If interruptMode = THROW_IE Then
 					Throw New InterruptedException
 				ElseIf interruptMode = REINTERRUPT Then
@@ -1976,7 +1976,7 @@ Namespace java.util.concurrent.locks
 			''' <li> If interrupted while blocked in step 4, throw InterruptedException.
 			''' </ol>
 			''' </summary>
-			Public Function awaitNanos(ByVal nanosTimeout As Long) As Long Implements Condition.awaitNanos
+			Public Function awaitNanos(  nanosTimeout As Long) As Long Implements Condition.awaitNanos
 				If Thread.interrupted() Then Throw New InterruptedException
 				Dim node_Renamed As Node = addConditionWaiter()
 				Dim savedState As Integer = outerInstance.fullyRelease(node_Renamed)
@@ -2012,7 +2012,7 @@ Namespace java.util.concurrent.locks
 			''' <li> If timed out while blocked in step 4, return false, else true.
 			''' </ol>
 			''' </summary>
-			Public Function awaitUntil(ByVal deadline As DateTime?) As Boolean Implements Condition.awaitUntil
+			Public Function awaitUntil(  deadline As DateTime?) As Boolean Implements Condition.awaitUntil
 				Dim abstime As Long = deadline.Value.time
 				If Thread.interrupted() Then Throw New InterruptedException
 				Dim node_Renamed As Node = addConditionWaiter()
@@ -2048,7 +2048,7 @@ Namespace java.util.concurrent.locks
 			''' <li> If timed out while blocked in step 4, return false, else true.
 			''' </ol>
 			''' </summary>
-			Public Function [await](ByVal time As Long, ByVal unit As java.util.concurrent.TimeUnit) As Boolean Implements Condition.await
+			Public Function [await](  time As Long,   unit As java.util.concurrent.TimeUnit) As Boolean Implements Condition.await
 				Dim nanosTimeout As Long = unit.toNanos(time)
 				If Thread.interrupted() Then Throw New InterruptedException
 				Dim node_Renamed As Node = addConditionWaiter()
@@ -2079,7 +2079,7 @@ Namespace java.util.concurrent.locks
 			''' synchronization object.
 			''' </summary>
 			''' <returns> {@code true} if owned </returns>
-			Friend Function isOwnedBy(ByVal sync As AbstractQueuedSynchronizer) As Boolean
+			Friend Function isOwnedBy(  sync As AbstractQueuedSynchronizer) As Boolean
 				Return sync Is AbstractQueuedSynchronizer.this
 			End Function
 
@@ -2178,28 +2178,28 @@ Namespace java.util.concurrent.locks
 		''' <summary>
 		''' CAS head field. Used only by enq.
 		''' </summary>
-		Private Function compareAndSetHead(ByVal update As Node) As Boolean
+		Private Function compareAndSetHead(  update As Node) As Boolean
 			Return unsafe.compareAndSwapObject(Me, headOffset, Nothing, update)
 		End Function
 
 		''' <summary>
 		''' CAS tail field. Used only by enq.
 		''' </summary>
-		Private Function compareAndSetTail(ByVal expect As Node, ByVal update As Node) As Boolean
+		Private Function compareAndSetTail(  expect As Node,   update As Node) As Boolean
 			Return unsafe.compareAndSwapObject(Me, tailOffset, expect, update)
 		End Function
 
 		''' <summary>
 		''' CAS waitStatus field of a node.
 		''' </summary>
-		Private Shared Function compareAndSetWaitStatus(ByVal node_Renamed As Node, ByVal expect As Integer, ByVal update As Integer) As Boolean
+		Private Shared Function compareAndSetWaitStatus(  node_Renamed As Node,   expect As Integer,   update As Integer) As Boolean
 			Return unsafe.compareAndSwapInt(node_Renamed, waitStatusOffset, expect, update)
 		End Function
 
 		''' <summary>
 		''' CAS next field of a node.
 		''' </summary>
-		Private Shared Function compareAndSetNext(ByVal node_Renamed As Node, ByVal expect As Node, ByVal update As Node) As Boolean
+		Private Shared Function compareAndSetNext(  node_Renamed As Node,   expect As Node,   update As Node) As Boolean
 			Return unsafe.compareAndSwapObject(node_Renamed, nextOffset, expect, update)
 		End Function
 	End Class

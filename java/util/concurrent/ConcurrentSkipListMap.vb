@@ -394,7 +394,7 @@ Namespace java.util.concurrent
 		''' <summary>
 		''' compareAndSet head node
 		''' </summary>
-		Private Function casHead(ByVal cmp As HeadIndex(Of K, V), ByVal val As HeadIndex(Of K, V)) As Boolean
+		Private Function casHead(  cmp As HeadIndex(Of K, V),   val As HeadIndex(Of K, V)) As Boolean
 			Return UNSAFE.compareAndSwapObject(Me, headOffset, cmp, val)
 		End Function
 
@@ -417,7 +417,7 @@ Namespace java.util.concurrent
 			''' <summary>
 			''' Creates a new regular node.
 			''' </summary>
-			Friend Sub New(ByVal key As K, ByVal value As Object, ByVal [next] As Node(Of K, V))
+			Friend Sub New(  key As K,   value As Object,   [next] As Node(Of K, V))
 				Me.key = key
 				Me.value = value
 				Me.next = [next]
@@ -430,7 +430,7 @@ Namespace java.util.concurrent
 			''' but this doesn't distinguish markers from the base-level
 			''' header node (head.node), which also has a null key.
 			''' </summary>
-			Friend Sub New(ByVal [next] As Node(Of K, V))
+			Friend Sub New(  [next] As Node(Of K, V))
 				Me.key = Nothing
 				Me.value = Me
 				Me.next = [next]
@@ -439,14 +439,14 @@ Namespace java.util.concurrent
 			''' <summary>
 			''' compareAndSet value field
 			''' </summary>
-			Friend Function casValue(ByVal cmp As Object, ByVal val As Object) As Boolean
+			Friend Function casValue(  cmp As Object,   val As Object) As Boolean
 				Return UNSAFE.compareAndSwapObject(Me, valueOffset, cmp, val)
 			End Function
 
 			''' <summary>
 			''' compareAndSet next field
 			''' </summary>
-			Friend Function casNext(ByVal cmp As Node(Of K, V), ByVal val As Node(Of K, V)) As Boolean
+			Friend Function casNext(  cmp As Node(Of K, V),   val As Node(Of K, V)) As Boolean
 				Return UNSAFE.compareAndSwapObject(Me, nextOffset, cmp, val)
 			End Function
 
@@ -477,7 +477,7 @@ Namespace java.util.concurrent
 			''' Tries to append a deletion marker to this node. </summary>
 			''' <param name="f"> the assumed current successor of this node </param>
 			''' <returns> true if successful </returns>
-			Friend Function appendMarker(ByVal f As Node(Of K, V)) As Boolean
+			Friend Function appendMarker(  f As Node(Of K, V)) As Boolean
 				Return casNext(f, New Node(Of K, V)(f))
 			End Function
 
@@ -487,7 +487,7 @@ Namespace java.util.concurrent
 			''' field seen to be null. </summary>
 			''' <param name="b"> predecessor </param>
 			''' <param name="f"> successor </param>
-			Friend Sub helpDelete(ByVal b As Node(Of K, V), ByVal f As Node(Of K, V))
+			Friend Sub helpDelete(  b As Node(Of K, V),   f As Node(Of K, V))
 	'            
 	'             * Rechecking links and then doing only one of the
 	'             * help-out stages per call tends to minimize CAS
@@ -565,7 +565,7 @@ Namespace java.util.concurrent
 			''' <summary>
 			''' Creates index node with given values.
 			''' </summary>
-			Friend Sub New(ByVal node_Renamed As Node(Of K, V), ByVal down As Index(Of K, V), ByVal right As Index(Of K, V))
+			Friend Sub New(  node_Renamed As Node(Of K, V),   down As Index(Of K, V),   right As Index(Of K, V))
 				Me.node_Renamed = node_Renamed
 				Me.down = down
 				Me.right = right
@@ -574,7 +574,7 @@ Namespace java.util.concurrent
 			''' <summary>
 			''' compareAndSet right field
 			''' </summary>
-			Friend Function casRight(ByVal cmp As Index(Of K, V), ByVal val As Index(Of K, V)) As Boolean
+			Friend Function casRight(  cmp As Index(Of K, V),   val As Index(Of K, V)) As Boolean
 				Return UNSAFE.compareAndSwapObject(Me, rightOffset, cmp, val)
 			End Function
 
@@ -592,7 +592,7 @@ Namespace java.util.concurrent
 			''' <param name="succ"> the expected current successor </param>
 			''' <param name="newSucc"> the new successor </param>
 			''' <returns> true if successful </returns>
-			Friend Function link(ByVal succ As Index(Of K, V), ByVal newSucc As Index(Of K, V)) As Boolean
+			Friend Function link(  succ As Index(Of K, V),   newSucc As Index(Of K, V)) As Boolean
 				Dim n As Node(Of K, V) = node_Renamed
 				newSucc.right = succ
 				Return n.value IsNot Nothing AndAlso casRight(succ, newSucc)
@@ -604,7 +604,7 @@ Namespace java.util.concurrent
 			''' is known to be deleted. </summary>
 			''' <param name="succ"> the expected current successor </param>
 			''' <returns> true if successful </returns>
-			Friend Function unlink(ByVal succ As Index(Of K, V)) As Boolean
+			Friend Function unlink(  succ As Index(Of K, V)) As Boolean
 				Return node_Renamed.value IsNot Nothing AndAlso casRight(succ, succ.right)
 			End Function
 
@@ -631,7 +631,7 @@ Namespace java.util.concurrent
 			Inherits Index(Of K, V)
 
 			Friend ReadOnly level As Integer
-			Friend Sub New(ByVal node_Renamed As Node(Of K, V), ByVal down As Index(Of K, V), ByVal right As Index(Of K, V), ByVal level As Integer)
+			Friend Sub New(  node_Renamed As Node(Of K, V),   down As Index(Of K, V),   right As Index(Of K, V),   level As Integer)
 				MyBase.New(node_Renamed, down, right)
 				Me.level = level
 			End Sub
@@ -644,7 +644,7 @@ Namespace java.util.concurrent
 		''' Called only by methods that have performed required type checks.
 		''' </summary>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Friend Shared Function cpr(ByVal c As IComparer, ByVal x As Object, ByVal y As Object) As Integer
+		Friend Shared Function cpr(  c As IComparer,   x As Object,   y As Object) As Integer
 			Return If(c IsNot Nothing, c.Compare(x, y), CType(x, Comparable).CompareTo(y))
 		End Function
 
@@ -658,7 +658,7 @@ Namespace java.util.concurrent
 		''' <param name="key"> the key </param>
 		''' <returns> a predecessor of key </returns>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Private Function findPredecessor(Of T1)(ByVal key As Object, ByVal cmp As IComparer(Of T1)) As Node(Of K, V)
+		Private Function findPredecessor(Of T1)(  key As Object,   cmp As IComparer(Of T1)) As Node(Of K, V)
 			If key Is Nothing Then Throw New NullPointerException ' don't postpone errors
 			Do
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
@@ -727,7 +727,7 @@ Namespace java.util.concurrent
 		''' </summary>
 		''' <param name="key"> the key </param>
 		''' <returns> node holding key, or null if no such </returns>
-		Private Function findNode(ByVal key As Object) As Node(Of K, V)
+		Private Function findNode(  key As Object) As Node(Of K, V)
 			If key Is Nothing Then Throw New NullPointerException ' don't postpone errors
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
@@ -764,7 +764,7 @@ Namespace java.util.concurrent
 		''' </summary>
 		''' <param name="key"> the key </param>
 		''' <returns> the value, or null if absent </returns>
-		Private Function doGet(ByVal key As Object) As V
+		Private Function doGet(  key As Object) As V
 			If key Is Nothing Then Throw New NullPointerException
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
@@ -808,7 +808,7 @@ Namespace java.util.concurrent
 		''' <param name="value"> the value that must be associated with key </param>
 		''' <param name="onlyIfAbsent"> if should not insert if already present </param>
 		''' <returns> the old value, or null if newly inserted </returns>
-		Private Function doPut(ByVal key As K, ByVal value As V, ByVal onlyIfAbsent As Boolean) As V
+		Private Function doPut(  key As K,   value As V,   onlyIfAbsent As Boolean) As V
 			Dim z As Node(Of K, V) ' added node
 			If key Is Nothing Then Throw New NullPointerException
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
@@ -960,7 +960,7 @@ Namespace java.util.concurrent
 		''' <param name="value"> if non-null, the value that must be
 		''' associated with key </param>
 		''' <returns> the node, or null if not found </returns>
-		Friend Function doRemove(ByVal key As Object, ByVal value As Object) As V
+		Friend Function doRemove(  key As Object,   value As Object) As V
 			If key Is Nothing Then Throw New NullPointerException
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
@@ -1233,7 +1233,7 @@ Namespace java.util.concurrent
 		''' <param name="rel"> the relation -- OR'ed combination of EQ, LT, GT </param>
 		''' <returns> nearest node fitting relation, or null if no such </returns>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Friend Function findNear(Of T1)(ByVal key As K, ByVal rel As Integer, ByVal cmp As IComparer(Of T1)) As Node(Of K, V)
+		Friend Function findNear(Of T1)(  key As K,   rel As Integer,   cmp As IComparer(Of T1)) As Node(Of K, V)
 			If key Is Nothing Then Throw New NullPointerException
 			Do
 				Dim b As Node(Of K, V) = findPredecessor(key, cmp)
@@ -1263,7 +1263,7 @@ Namespace java.util.concurrent
 		''' <param name="key"> the key </param>
 		''' <param name="rel"> the relation -- OR'ed combination of EQ, LT, GT </param>
 		''' <returns> Entry fitting relation, or null if no such </returns>
-		Friend Function getNear(ByVal key As K, ByVal rel As Integer) As java.util.AbstractMap.SimpleImmutableEntry(Of K, V)
+		Friend Function getNear(  key As K,   rel As Integer) As java.util.AbstractMap.SimpleImmutableEntry(Of K, V)
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 			Dim cmp As IComparer(Of ?) = comparator_Renamed
@@ -1294,7 +1294,7 @@ Namespace java.util.concurrent
 		'''        If {@code null}, the {@link Comparable natural
 		'''        ordering} of the keys will be used. </param>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Sub New(Of T1)(ByVal comparator As IComparer(Of T1))
+		Public Sub New(Of T1)(  comparator As IComparer(Of T1))
 			Me.comparator_Renamed = comparator
 			initialize()
 		End Sub
@@ -1310,7 +1310,7 @@ Namespace java.util.concurrent
 		''' <exception cref="NullPointerException"> if the specified map or any of its keys
 		'''         or values are null </exception>
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-		Public Sub New(Of T1 As K, ? As V)(ByVal m As IDictionary(Of T1))
+		Public Sub New(Of T1 As K, ? As V)(  m As IDictionary(Of T1))
 			Me.comparator_Renamed = Nothing
 			initialize()
 			putAll(m)
@@ -1324,7 +1324,7 @@ Namespace java.util.concurrent
 		'''        map, and whose comparator is to be used to sort this map </param>
 		''' <exception cref="NullPointerException"> if the specified sorted map or any of
 		'''         its keys or values are null </exception>
-		Public Sub New(Of T1 As V)(ByVal m As java.util.SortedMap(Of T1))
+		Public Sub New(Of T1 As V)(  m As java.util.SortedMap(Of T1))
 			Me.comparator_Renamed = m.comparator()
 			initialize()
 			buildFromSorted(m)
@@ -1352,7 +1352,7 @@ Namespace java.util.concurrent
 		''' given sorted map.  Call only from constructor or clone
 		''' method.
 		''' </summary>
-		Private Sub buildFromSorted(Of T1 As V)(ByVal map As java.util.SortedMap(Of T1))
+		Private Sub buildFromSorted(Of T1 As V)(  map As java.util.SortedMap(Of T1))
 			If map Is Nothing Then Throw New NullPointerException
 
 			Dim h As HeadIndex(Of K, V) = head
@@ -1421,7 +1421,7 @@ Namespace java.util.concurrent
 		''' {@code null}. The key-value mappings are emitted in key-order
 		''' (as determined by the Comparator, or by the keys' natural
 		''' ordering if no Comparator). </exception>
-		Private Sub writeObject(ByVal s As java.io.ObjectOutputStream)
+		Private Sub writeObject(  s As java.io.ObjectOutputStream)
 			' Write out the Comparator and any hidden stuff
 			s.defaultWriteObject()
 
@@ -1445,7 +1445,7 @@ Namespace java.util.concurrent
 		'''         could not be found </exception>
 		''' <exception cref="java.io.IOException"> if an I/O error occurs </exception>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Private Sub readObject(ByVal s As java.io.ObjectInputStream)
+		Private Sub readObject(  s As java.io.ObjectInputStream)
 			' Read in the Comparator and any hidden stuff
 			s.defaultReadObject()
 			' Reset transients
@@ -1518,7 +1518,7 @@ Namespace java.util.concurrent
 		''' <exception cref="ClassCastException"> if the specified key cannot be compared
 		'''         with the keys currently in the map </exception>
 		''' <exception cref="NullPointerException"> if the specified key is null </exception>
-		Public Overridable Function containsKey(ByVal key As Object) As Boolean
+		Public Overridable Function containsKey(  key As Object) As Boolean
 			Return doGet(key) IsNot Nothing
 		End Function
 
@@ -1535,7 +1535,7 @@ Namespace java.util.concurrent
 		''' <exception cref="ClassCastException"> if the specified key cannot be compared
 		'''         with the keys currently in the map </exception>
 		''' <exception cref="NullPointerException"> if the specified key is null </exception>
-		Public Overridable Function [get](ByVal key As Object) As V
+		Public Overridable Function [get](  key As Object) As V
 			Return doGet(key)
 		End Function
 
@@ -1549,7 +1549,7 @@ Namespace java.util.concurrent
 		''' <returns> the mapping for the key, if present; else the defaultValue </returns>
 		''' <exception cref="NullPointerException"> if the specified key is null
 		''' @since 1.8 </exception>
-		Public Overridable Function getOrDefault(ByVal key As Object, ByVal defaultValue As V) As V
+		Public Overridable Function getOrDefault(  key As Object,   defaultValue As V) As V
 			Dim v As V
 'JAVA TO VB CONVERTER TODO TASK: Assignments within expressions are not supported in VB
 			Return If((v = doGet(key)) Is Nothing, defaultValue, v)
@@ -1567,7 +1567,7 @@ Namespace java.util.concurrent
 		''' <exception cref="ClassCastException"> if the specified key cannot be compared
 		'''         with the keys currently in the map </exception>
 		''' <exception cref="NullPointerException"> if the specified key or value is null </exception>
-		Public Overridable Function put(ByVal key As K, ByVal value As V) As V
+		Public Overridable Function put(  key As K,   value As V) As V
 			If value Is Nothing Then Throw New NullPointerException
 			Return doPut(key, value, False)
 		End Function
@@ -1581,7 +1581,7 @@ Namespace java.util.concurrent
 		''' <exception cref="ClassCastException"> if the specified key cannot be compared
 		'''         with the keys currently in the map </exception>
 		''' <exception cref="NullPointerException"> if the specified key is null </exception>
-		Public Overridable Function remove(ByVal key As Object) As V
+		Public Overridable Function remove(  key As Object) As V
 			Return doRemove(key, Nothing)
 		End Function
 
@@ -1596,7 +1596,7 @@ Namespace java.util.concurrent
 		''' <returns> {@code true} if a mapping to {@code value} exists;
 		'''         {@code false} otherwise </returns>
 		''' <exception cref="NullPointerException"> if the specified value is null </exception>
-		Public Overridable Function containsValue(ByVal value As Object) As Boolean
+		Public Overridable Function containsValue(  value As Object) As Boolean
 			If value Is Nothing Then Throw New NullPointerException
 			Dim n As Node(Of K, V) = findFirst()
 			Do While n IsNot Nothing
@@ -1663,7 +1663,7 @@ Namespace java.util.concurrent
 		'''         or the mappingFunction is null
 		''' @since 1.8 </exception>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Overridable Function computeIfAbsent(Of T1 As V)(ByVal key As K, ByVal mappingFunction As java.util.function.Function(Of T1)) As V
+		Public Overridable Function computeIfAbsent(Of T1 As V)(  key As K,   mappingFunction As java.util.function.Function(Of T1)) As V
 			If key Is Nothing OrElse mappingFunction Is Nothing Then Throw New NullPointerException
 			Dim v, p, r As V
 			v = doGet(key)
@@ -1685,7 +1685,7 @@ Namespace java.util.concurrent
 		'''         or the remappingFunction is null
 		''' @since 1.8 </exception>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Overridable Function computeIfPresent(Of T1 As V)(ByVal key As K, ByVal remappingFunction As java.util.function.BiFunction(Of T1)) As V
+		Public Overridable Function computeIfPresent(Of T1 As V)(  key As K,   remappingFunction As java.util.function.BiFunction(Of T1)) As V
 			If key Is Nothing OrElse remappingFunction Is Nothing Then Throw New NullPointerException
 			Dim n As Node(Of K, V)
 			Dim v As Object
@@ -1720,7 +1720,7 @@ Namespace java.util.concurrent
 		'''         or the remappingFunction is null
 		''' @since 1.8 </exception>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Overridable Function compute(Of T1 As V)(ByVal key As K, ByVal remappingFunction As java.util.function.BiFunction(Of T1)) As V
+		Public Overridable Function compute(Of T1 As V)(  key As K,   remappingFunction As java.util.function.BiFunction(Of T1)) As V
 			If key Is Nothing OrElse remappingFunction Is Nothing Then Throw New NullPointerException
 			Do
 				Dim n As Node(Of K, V)
@@ -1763,7 +1763,7 @@ Namespace java.util.concurrent
 		'''         or the remappingFunction is null
 		''' @since 1.8 </exception>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Overridable Function merge(Of T1 As V)(ByVal key As K, ByVal value As V, ByVal remappingFunction As java.util.function.BiFunction(Of T1)) As V
+		Public Overridable Function merge(Of T1 As V)(  key As K,   value As V,   remappingFunction As java.util.function.BiFunction(Of T1)) As V
 			If key Is Nothing OrElse value Is Nothing OrElse remappingFunction Is Nothing Then Throw New NullPointerException
 			Do
 				Dim n As Node(Of K, V)
@@ -1938,7 +1938,7 @@ Namespace java.util.concurrent
 		''' </summary>
 		''' <param name="o"> object to be compared for equality with this map </param>
 		''' <returns> {@code true} if the specified object is equal to this map </returns>
-		Public Overrides Function Equals(ByVal o As Object) As Boolean
+		Public Overrides Function Equals(  o As Object) As Boolean
 			If o Is Me Then Return True
 			If Not(TypeOf o Is IDictionary) Then Return False
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
@@ -1971,7 +1971,7 @@ Namespace java.util.concurrent
 		''' <exception cref="ClassCastException"> if the specified key cannot be compared
 		'''         with the keys currently in the map </exception>
 		''' <exception cref="NullPointerException"> if the specified key or value is null </exception>
-		Public Overridable Function putIfAbsent(ByVal key As K, ByVal value As V) As V
+		Public Overridable Function putIfAbsent(  key As K,   value As V) As V
 			If value Is Nothing Then Throw New NullPointerException
 			Return doPut(key, value, True)
 		End Function
@@ -1982,7 +1982,7 @@ Namespace java.util.concurrent
 		''' <exception cref="ClassCastException"> if the specified key cannot be compared
 		'''         with the keys currently in the map </exception>
 		''' <exception cref="NullPointerException"> if the specified key is null </exception>
-		Public Overridable Function remove(ByVal key As Object, ByVal value As Object) As Boolean
+		Public Overridable Function remove(  key As Object,   value As Object) As Boolean
 			If key Is Nothing Then Throw New NullPointerException
 			Return value IsNot Nothing AndAlso doRemove(key, value) IsNot Nothing
 		End Function
@@ -1993,7 +1993,7 @@ Namespace java.util.concurrent
 		''' <exception cref="ClassCastException"> if the specified key cannot be compared
 		'''         with the keys currently in the map </exception>
 		''' <exception cref="NullPointerException"> if any of the arguments are null </exception>
-		Public Overridable Function replace(ByVal key As K, ByVal oldValue As V, ByVal newValue As V) As Boolean
+		Public Overridable Function replace(  key As K,   oldValue As V,   newValue As V) As Boolean
 			If key Is Nothing OrElse oldValue Is Nothing OrElse newValue Is Nothing Then Throw New NullPointerException
 			Do
 				Dim n As Node(Of K, V)
@@ -2016,7 +2016,7 @@ Namespace java.util.concurrent
 		''' <exception cref="ClassCastException"> if the specified key cannot be compared
 		'''         with the keys currently in the map </exception>
 		''' <exception cref="NullPointerException"> if the specified key or value is null </exception>
-		Public Overridable Function replace(ByVal key As K, ByVal value As V) As V
+		Public Overridable Function replace(  key As K,   value As V) As V
 			If key Is Nothing OrElse value Is Nothing Then Throw New NullPointerException
 			Do
 				Dim n As Node(Of K, V)
@@ -2057,7 +2057,7 @@ Namespace java.util.concurrent
 		''' <exception cref="ClassCastException"> {@inheritDoc} </exception>
 		''' <exception cref="NullPointerException"> if {@code fromKey} or {@code toKey} is null </exception>
 		''' <exception cref="IllegalArgumentException"> {@inheritDoc} </exception>
-		Public Overridable Function subMap(ByVal fromKey As K, ByVal fromInclusive As Boolean, ByVal toKey As K, ByVal toInclusive As Boolean) As java.util.concurrent.ConcurrentNavigableMap(Of K, V)
+		Public Overridable Function subMap(  fromKey As K,   fromInclusive As Boolean,   toKey As K,   toInclusive As Boolean) As java.util.concurrent.ConcurrentNavigableMap(Of K, V)
 			If fromKey Is Nothing OrElse toKey Is Nothing Then Throw New NullPointerException
 			Return New SubMap(Of K, V) (Me, fromKey, fromInclusive, toKey, toInclusive, False)
 		End Function
@@ -2065,7 +2065,7 @@ Namespace java.util.concurrent
 		''' <exception cref="ClassCastException"> {@inheritDoc} </exception>
 		''' <exception cref="NullPointerException"> if {@code toKey} is null </exception>
 		''' <exception cref="IllegalArgumentException"> {@inheritDoc} </exception>
-		Public Overridable Function headMap(ByVal toKey As K, ByVal inclusive As Boolean) As java.util.concurrent.ConcurrentNavigableMap(Of K, V)
+		Public Overridable Function headMap(  toKey As K,   inclusive As Boolean) As java.util.concurrent.ConcurrentNavigableMap(Of K, V)
 			If toKey Is Nothing Then Throw New NullPointerException
 			Return New SubMap(Of K, V) (Me, Nothing, False, toKey, inclusive, False)
 		End Function
@@ -2073,7 +2073,7 @@ Namespace java.util.concurrent
 		''' <exception cref="ClassCastException"> {@inheritDoc} </exception>
 		''' <exception cref="NullPointerException"> if {@code fromKey} is null </exception>
 		''' <exception cref="IllegalArgumentException"> {@inheritDoc} </exception>
-		Public Overridable Function tailMap(ByVal fromKey As K, ByVal inclusive As Boolean) As java.util.concurrent.ConcurrentNavigableMap(Of K, V)
+		Public Overridable Function tailMap(  fromKey As K,   inclusive As Boolean) As java.util.concurrent.ConcurrentNavigableMap(Of K, V)
 			If fromKey Is Nothing Then Throw New NullPointerException
 			Return New SubMap(Of K, V) (Me, fromKey, inclusive, Nothing, False, False)
 		End Function
@@ -2081,21 +2081,21 @@ Namespace java.util.concurrent
 		''' <exception cref="ClassCastException"> {@inheritDoc} </exception>
 		''' <exception cref="NullPointerException"> if {@code fromKey} or {@code toKey} is null </exception>
 		''' <exception cref="IllegalArgumentException"> {@inheritDoc} </exception>
-		Public Overridable Function subMap(ByVal fromKey As K, ByVal toKey As K) As java.util.concurrent.ConcurrentNavigableMap(Of K, V)
+		Public Overridable Function subMap(  fromKey As K,   toKey As K) As java.util.concurrent.ConcurrentNavigableMap(Of K, V)
 			Return subMap(fromKey, True, toKey, False)
 		End Function
 
 		''' <exception cref="ClassCastException"> {@inheritDoc} </exception>
 		''' <exception cref="NullPointerException"> if {@code toKey} is null </exception>
 		''' <exception cref="IllegalArgumentException"> {@inheritDoc} </exception>
-		Public Overridable Function headMap(ByVal toKey As K) As java.util.concurrent.ConcurrentNavigableMap(Of K, V)
+		Public Overridable Function headMap(  toKey As K) As java.util.concurrent.ConcurrentNavigableMap(Of K, V)
 			Return headMap(toKey, False)
 		End Function
 
 		''' <exception cref="ClassCastException"> {@inheritDoc} </exception>
 		''' <exception cref="NullPointerException"> if {@code fromKey} is null </exception>
 		''' <exception cref="IllegalArgumentException"> {@inheritDoc} </exception>
-		Public Overridable Function tailMap(ByVal fromKey As K) As java.util.concurrent.ConcurrentNavigableMap(Of K, V)
+		Public Overridable Function tailMap(  fromKey As K) As java.util.concurrent.ConcurrentNavigableMap(Of K, V)
 			Return tailMap(fromKey, True)
 		End Function
 
@@ -2109,13 +2109,13 @@ Namespace java.util.concurrent
 		''' </summary>
 		''' <exception cref="ClassCastException"> {@inheritDoc} </exception>
 		''' <exception cref="NullPointerException"> if the specified key is null </exception>
-		Public Overridable Function lowerEntry(ByVal key As K) As KeyValuePair(Of K, V)
+		Public Overridable Function lowerEntry(  key As K) As KeyValuePair(Of K, V)
 			Return getNear(key, LT)
 		End Function
 
 		''' <exception cref="ClassCastException"> {@inheritDoc} </exception>
 		''' <exception cref="NullPointerException"> if the specified key is null </exception>
-		Public Overridable Function lowerKey(ByVal key As K) As K
+		Public Overridable Function lowerKey(  key As K) As K
 			Dim n As Node(Of K, V) = findNear(key, LT, comparator_Renamed)
 			Return If(n Is Nothing, Nothing, n.key)
 		End Function
@@ -2129,14 +2129,14 @@ Namespace java.util.concurrent
 		''' <param name="key"> the key </param>
 		''' <exception cref="ClassCastException"> {@inheritDoc} </exception>
 		''' <exception cref="NullPointerException"> if the specified key is null </exception>
-		Public Overridable Function floorEntry(ByVal key As K) As KeyValuePair(Of K, V)
+		Public Overridable Function floorEntry(  key As K) As KeyValuePair(Of K, V)
 			Return getNear(key, LT Or EQ)
 		End Function
 
 		''' <param name="key"> the key </param>
 		''' <exception cref="ClassCastException"> {@inheritDoc} </exception>
 		''' <exception cref="NullPointerException"> if the specified key is null </exception>
-		Public Overridable Function floorKey(ByVal key As K) As K
+		Public Overridable Function floorKey(  key As K) As K
 			Dim n As Node(Of K, V) = findNear(key, LT Or EQ, comparator_Renamed)
 			Return If(n Is Nothing, Nothing, n.key)
 		End Function
@@ -2149,13 +2149,13 @@ Namespace java.util.concurrent
 		''' </summary>
 		''' <exception cref="ClassCastException"> {@inheritDoc} </exception>
 		''' <exception cref="NullPointerException"> if the specified key is null </exception>
-		Public Overridable Function ceilingEntry(ByVal key As K) As KeyValuePair(Of K, V)
+		Public Overridable Function ceilingEntry(  key As K) As KeyValuePair(Of K, V)
 			Return getNear(key, GT Or EQ)
 		End Function
 
 		''' <exception cref="ClassCastException"> {@inheritDoc} </exception>
 		''' <exception cref="NullPointerException"> if the specified key is null </exception>
-		Public Overridable Function ceilingKey(ByVal key As K) As K
+		Public Overridable Function ceilingKey(  key As K) As K
 			Dim n As Node(Of K, V) = findNear(key, GT Or EQ, comparator_Renamed)
 			Return If(n Is Nothing, Nothing, n.key)
 		End Function
@@ -2169,14 +2169,14 @@ Namespace java.util.concurrent
 		''' <param name="key"> the key </param>
 		''' <exception cref="ClassCastException"> {@inheritDoc} </exception>
 		''' <exception cref="NullPointerException"> if the specified key is null </exception>
-		Public Overridable Function higherEntry(ByVal key As K) As KeyValuePair(Of K, V)
+		Public Overridable Function higherEntry(  key As K) As KeyValuePair(Of K, V)
 			Return getNear(key, GT)
 		End Function
 
 		''' <param name="key"> the key </param>
 		''' <exception cref="ClassCastException"> {@inheritDoc} </exception>
 		''' <exception cref="NullPointerException"> if the specified key is null </exception>
-		Public Overridable Function higherKey(ByVal key As K) As K
+		Public Overridable Function higherKey(  key As K) As K
 			Dim n As Node(Of K, V) = findNear(key, GT, comparator_Renamed)
 			Return If(n Is Nothing, Nothing, n.key)
 		End Function
@@ -2254,7 +2254,7 @@ Namespace java.util.concurrent
 
 			''' <summary>
 			''' Initializes ascending iterator for entire range. </summary>
-			Friend Sub New(ByVal outerInstance As ConcurrentSkipListMap)
+			Friend Sub New(  outerInstance As ConcurrentSkipListMap)
 					Me.outerInstance = outerInstance
 				[next] = outerInstance.findFirst()
 				Do While [next] IsNot Nothing
@@ -2307,7 +2307,7 @@ Namespace java.util.concurrent
 
 			Private ReadOnly outerInstance As ConcurrentSkipListMap
 
-			Public Sub New(ByVal outerInstance As ConcurrentSkipListMap)
+			Public Sub New(  outerInstance As ConcurrentSkipListMap)
 				Me.outerInstance = outerInstance
 			End Sub
 
@@ -2323,7 +2323,7 @@ Namespace java.util.concurrent
 
 			Private ReadOnly outerInstance As ConcurrentSkipListMap
 
-			Public Sub New(ByVal outerInstance As ConcurrentSkipListMap)
+			Public Sub New(  outerInstance As ConcurrentSkipListMap)
 				Me.outerInstance = outerInstance
 			End Sub
 
@@ -2339,7 +2339,7 @@ Namespace java.util.concurrent
 
 			Private ReadOnly outerInstance As ConcurrentSkipListMap
 
-			Public Sub New(ByVal outerInstance As ConcurrentSkipListMap)
+			Public Sub New(  outerInstance As ConcurrentSkipListMap)
 				Me.outerInstance = outerInstance
 			End Sub
 
@@ -2373,7 +2373,7 @@ Namespace java.util.concurrent
 	'     * needing type-tests for Iterator methods.
 	'     
 
-		Friend Shared Function toList(Of E)(ByVal c As ICollection(Of E)) As IList(Of E)
+		Friend Shared Function toList(Of E)(  c As ICollection(Of E)) As IList(Of E)
 			' Using size() here would be a pessimization.
 			Dim list As New List(Of E)
 			For Each e As E In c
@@ -2388,7 +2388,7 @@ Namespace java.util.concurrent
 
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 			Friend ReadOnly m As java.util.concurrent.ConcurrentNavigableMap(Of E, ?)
-			Friend Sub New(Of T1)(ByVal map As java.util.concurrent.ConcurrentNavigableMap(Of T1))
+			Friend Sub New(Of T1)(  map As java.util.concurrent.ConcurrentNavigableMap(Of T1))
 				m = map
 			End Sub
 			Public Function size() As Integer
@@ -2399,25 +2399,25 @@ Namespace java.util.concurrent
 					Return m.empty
 				End Get
 			End Property
-			Public Function contains(ByVal o As Object) As Boolean
+			Public Function contains(  o As Object) As Boolean
 				Return m.containsKey(o)
 			End Function
-			Public Function remove(ByVal o As Object) As Boolean
+			Public Function remove(  o As Object) As Boolean
 				Return m.remove(o) IsNot Nothing
 			End Function
 			Public Sub clear()
 				m.clear()
 			End Sub
-			Public Function lower(ByVal e As E) As E
+			Public Function lower(  e As E) As E
 				Return m.lowerKey(e)
 			End Function
-			Public Function floor(ByVal e As E) As E
+			Public Function floor(  e As E) As E
 				Return m.floorKey(e)
 			End Function
-			Public Function ceiling(ByVal e As E) As E
+			Public Function ceiling(  e As E) As E
 				Return m.ceilingKey(e)
 			End Function
-			Public Function higher(ByVal e As E) As E
+			Public Function higher(  e As E) As E
 				Return m.higherKey(e)
 			End Function
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
@@ -2449,7 +2449,7 @@ Namespace java.util.concurrent
 					Return CType(m, ConcurrentSkipListMap.SubMap(Of E, Object)).keyIterator()
 				End If
 			End Function
-			Public Overrides Function Equals(ByVal o As Object) As Boolean
+			Public Overrides Function Equals(  o As Object) As Boolean
 				If o Is Me Then Return True
 				If Not(TypeOf o Is java.util.Set) Then Return False
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
@@ -2466,28 +2466,28 @@ Namespace java.util.concurrent
 			Public Function toArray() As Object()
 				Return toList(Me).ToArray()
 			End Function
-			Public Function toArray(Of T)(ByVal a As T()) As T()
+			Public Function toArray(Of T)(  a As T()) As T()
 				Return toList(Me).ToArray(a)
 			End Function
 			Public Function descendingIterator() As IEnumerator(Of E)
 				Return descendingSet().GetEnumerator()
 			End Function
-			Public Function subSet(ByVal fromElement As E, ByVal fromInclusive As Boolean, ByVal toElement As E, ByVal toInclusive As Boolean) As java.util.NavigableSet(Of E)
+			Public Function subSet(  fromElement As E,   fromInclusive As Boolean,   toElement As E,   toInclusive As Boolean) As java.util.NavigableSet(Of E)
 				Return New KeySet(Of E)(m.subMap(fromElement, fromInclusive, toElement, toInclusive))
 			End Function
-			Public Function headSet(ByVal toElement As E, ByVal inclusive As Boolean) As java.util.NavigableSet(Of E)
+			Public Function headSet(  toElement As E,   inclusive As Boolean) As java.util.NavigableSet(Of E)
 				Return New KeySet(Of E)(m.headMap(toElement, inclusive))
 			End Function
-			Public Function tailSet(ByVal fromElement As E, ByVal inclusive As Boolean) As java.util.NavigableSet(Of E)
+			Public Function tailSet(  fromElement As E,   inclusive As Boolean) As java.util.NavigableSet(Of E)
 				Return New KeySet(Of E)(m.tailMap(fromElement, inclusive))
 			End Function
-			Public Function subSet(ByVal fromElement As E, ByVal toElement As E) As java.util.NavigableSet(Of E)
+			Public Function subSet(  fromElement As E,   toElement As E) As java.util.NavigableSet(Of E)
 				Return subSet(fromElement, True, toElement, False)
 			End Function
-			Public Function headSet(ByVal toElement As E) As java.util.NavigableSet(Of E)
+			Public Function headSet(  toElement As E) As java.util.NavigableSet(Of E)
 				Return headSet(toElement, False)
 			End Function
-			Public Function tailSet(ByVal fromElement As E) As java.util.NavigableSet(Of E)
+			Public Function tailSet(  fromElement As E) As java.util.NavigableSet(Of E)
 				Return tailSet(fromElement, True)
 			End Function
 			Public Function descendingSet() As java.util.NavigableSet(Of E)
@@ -2510,7 +2510,7 @@ Namespace java.util.concurrent
 
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 			Friend ReadOnly m As java.util.concurrent.ConcurrentNavigableMap(Of ?, E)
-			Friend Sub New(Of T1)(ByVal map As java.util.concurrent.ConcurrentNavigableMap(Of T1))
+			Friend Sub New(Of T1)(  map As java.util.concurrent.ConcurrentNavigableMap(Of T1))
 				m = map
 			End Sub
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
@@ -2531,7 +2531,7 @@ Namespace java.util.concurrent
 			Public Function size() As Integer
 				Return m.size()
 			End Function
-			Public Function contains(ByVal o As Object) As Boolean
+			Public Function contains(  o As Object) As Boolean
 				Return m.containsValue(o)
 			End Function
 			Public Sub clear()
@@ -2540,7 +2540,7 @@ Namespace java.util.concurrent
 			Public Function toArray() As Object()
 				Return toList(Me).ToArray()
 			End Function
-			Public Function toArray(Of T)(ByVal a As T()) As T()
+			Public Function toArray(Of T)(  a As T()) As T()
 				Return toList(Me).ToArray(a)
 			End Function
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
@@ -2559,7 +2559,7 @@ Namespace java.util.concurrent
 			Inherits java.util.AbstractSet(Of KeyValuePair(Of K1, V1))
 
 			Friend ReadOnly m As java.util.concurrent.ConcurrentNavigableMap(Of K1, V1)
-			Friend Sub New(ByVal map As java.util.concurrent.ConcurrentNavigableMap(Of K1, V1))
+			Friend Sub New(  map As java.util.concurrent.ConcurrentNavigableMap(Of K1, V1))
 				m = map
 			End Sub
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
@@ -2571,14 +2571,14 @@ Namespace java.util.concurrent
 				End If
 			End Function
 
-			Public Function contains(ByVal o As Object) As Boolean
+			Public Function contains(  o As Object) As Boolean
 				If Not(TypeOf o Is DictionaryEntry) Then Return False
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 				Dim e As KeyValuePair(Of ?, ?) = CType(o, KeyValuePair(Of ?, ?))
 				Dim v As V1 = m.get(e.Key)
 				Return v IsNot Nothing AndAlso v.Equals(e.Value)
 			End Function
-			Public Function remove(ByVal o As Object) As Boolean
+			Public Function remove(  o As Object) As Boolean
 				If Not(TypeOf o Is DictionaryEntry) Then Return False
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 				Dim e As KeyValuePair(Of ?, ?) = CType(o, KeyValuePair(Of ?, ?))
@@ -2595,7 +2595,7 @@ Namespace java.util.concurrent
 			Public Sub clear()
 				m.clear()
 			End Sub
-			Public Overrides Function Equals(ByVal o As Object) As Boolean
+			Public Overrides Function Equals(  o As Object) As Boolean
 				If o Is Me Then Return True
 				If Not(TypeOf o Is java.util.Set) Then Return False
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
@@ -2612,7 +2612,7 @@ Namespace java.util.concurrent
 			Public Function toArray() As Object()
 				Return toList(Me).ToArray()
 			End Function
-			Public Function toArray(Of T)(ByVal a As T()) As T()
+			Public Function toArray(Of T)(  a As T()) As T()
 				Return toList(Me).ToArray(a)
 			End Function
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
@@ -2674,7 +2674,7 @@ Namespace java.util.concurrent
 			''' <summary>
 			''' Creates a new submap, initializing all fields.
 			''' </summary>
-			Friend Sub New(ByVal map As ConcurrentSkipListMap(Of K, V), ByVal fromKey As K, ByVal fromInclusive As Boolean, ByVal toKey As K, ByVal toInclusive As Boolean, ByVal isDescending As Boolean)
+			Friend Sub New(  map As ConcurrentSkipListMap(Of K, V),   fromKey As K,   fromInclusive As Boolean,   toKey As K,   toInclusive As Boolean,   isDescending As Boolean)
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 				Dim cmp As IComparer(Of ?) = map.comparator_Renamed
@@ -2690,26 +2690,26 @@ Namespace java.util.concurrent
 			' ----------------  Utilities -------------- 
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Friend Function tooLow(Of T1)(ByVal key As Object, ByVal cmp As IComparer(Of T1)) As Boolean
+			Friend Function tooLow(Of T1)(  key As Object,   cmp As IComparer(Of T1)) As Boolean
 				Dim c As Integer
 'JAVA TO VB CONVERTER TODO TASK: Assignments within expressions are not supported in VB
 				Return (lo IsNot Nothing AndAlso ((c = cpr(cmp, key, lo)) < 0 OrElse (c = 0 AndAlso (Not loInclusive))))
 			End Function
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Friend Function tooHigh(Of T1)(ByVal key As Object, ByVal cmp As IComparer(Of T1)) As Boolean
+			Friend Function tooHigh(Of T1)(  key As Object,   cmp As IComparer(Of T1)) As Boolean
 				Dim c As Integer
 'JAVA TO VB CONVERTER TODO TASK: Assignments within expressions are not supported in VB
 				Return (hi IsNot Nothing AndAlso ((c = cpr(cmp, key, hi)) > 0 OrElse (c = 0 AndAlso (Not hiInclusive))))
 			End Function
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Friend Function inBounds(Of T1)(ByVal key As Object, ByVal cmp As IComparer(Of T1)) As Boolean
+			Friend Function inBounds(Of T1)(  key As Object,   cmp As IComparer(Of T1)) As Boolean
 				Return (Not tooLow(key, cmp)) AndAlso Not tooHigh(key, cmp)
 			End Function
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Friend Sub checkKeyBounds(Of T1)(ByVal key As K, ByVal cmp As IComparer(Of T1))
+			Friend Sub checkKeyBounds(Of T1)(  key As K,   cmp As IComparer(Of T1))
 				If key Is Nothing Then Throw New NullPointerException
 				If Not inBounds(key, cmp) Then Throw New IllegalArgumentException("key out of range")
 			End Sub
@@ -2718,7 +2718,7 @@ Namespace java.util.concurrent
 			''' Returns true if node key is less than upper bound of range.
 			''' </summary>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Friend Function isBeforeEnd(Of T1)(ByVal n As ConcurrentSkipListMap.Node(Of K, V), ByVal cmp As IComparer(Of T1)) As Boolean
+			Friend Function isBeforeEnd(Of T1)(  n As ConcurrentSkipListMap.Node(Of K, V),   cmp As IComparer(Of T1)) As Boolean
 				If n Is Nothing Then Return False
 				If hi Is Nothing Then Return True
 				Dim k As K = n.key
@@ -2733,7 +2733,7 @@ Namespace java.util.concurrent
 			''' most usages need to check bounds.
 			''' </summary>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Friend Function loNode(Of T1)(ByVal cmp As IComparer(Of T1)) As ConcurrentSkipListMap.Node(Of K, V)
+			Friend Function loNode(Of T1)(  cmp As IComparer(Of T1)) As ConcurrentSkipListMap.Node(Of K, V)
 				If lo Is Nothing Then
 					Return m.findFirst()
 				ElseIf loInclusive Then
@@ -2748,7 +2748,7 @@ Namespace java.util.concurrent
 			''' most usages need to check bounds.
 			''' </summary>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Friend Function hiNode(Of T1)(ByVal cmp As IComparer(Of T1)) As ConcurrentSkipListMap.Node(Of K, V)
+			Friend Function hiNode(Of T1)(  cmp As IComparer(Of T1)) As ConcurrentSkipListMap.Node(Of K, V)
 				If hi Is Nothing Then
 					Return m.findLast()
 				ElseIf hiInclusive Then
@@ -2843,7 +2843,7 @@ Namespace java.util.concurrent
 			''' <summary>
 			''' Submap version of ConcurrentSkipListMap.getNearEntry
 			''' </summary>
-			Friend Function getNearEntry(ByVal key As K, ByVal rel As Integer) As KeyValuePair(Of K, V)
+			Friend Function getNearEntry(  key As K,   rel As Integer) As KeyValuePair(Of K, V)
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 				Dim cmp As IComparer(Of ?) = m.comparator_Renamed
@@ -2866,7 +2866,7 @@ Namespace java.util.concurrent
 			End Function
 
 			' Almost the same as getNearEntry, except for keys
-			Friend Function getNearKey(ByVal key As K, ByVal rel As Integer) As K
+			Friend Function getNearKey(  key As K,   rel As Integer) As K
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 				Dim cmp As IComparer(Of ?) = m.comparator_Renamed
@@ -2905,22 +2905,22 @@ Namespace java.util.concurrent
 
 			' ----------------  Map API methods -------------- 
 
-			Public Function containsKey(ByVal key As Object) As Boolean
+			Public Function containsKey(  key As Object) As Boolean
 				If key Is Nothing Then Throw New NullPointerException
 				Return inBounds(key, m.comparator_Renamed) AndAlso m.containsKey(key)
 			End Function
 
-			Public Function [get](ByVal key As Object) As V
+			Public Function [get](  key As Object) As V
 				If key Is Nothing Then Throw New NullPointerException
 				Return If((Not inBounds(key, m.comparator_Renamed)), Nothing, m.get(key))
 			End Function
 
-			Public Function put(ByVal key As K, ByVal value As V) As V
+			Public Function put(  key As K,   value As V) As V
 				checkKeyBounds(key, m.comparator_Renamed)
 				Return m.put(key, value)
 			End Function
 
-			Public Function remove(ByVal key As Object) As V
+			Public Function remove(  key As Object) As V
 				Return If((Not inBounds(key, m.comparator_Renamed)), Nothing, m.remove(key))
 			End Function
 
@@ -2946,7 +2946,7 @@ Namespace java.util.concurrent
 				End Get
 			End Property
 
-			Public Function containsValue(ByVal value As Object) As Boolean
+			Public Function containsValue(  value As Object) As Boolean
 				If value Is Nothing Then Throw New NullPointerException
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
@@ -2973,21 +2973,21 @@ Namespace java.util.concurrent
 
 			' ----------------  ConcurrentMap API methods -------------- 
 
-			Public Function putIfAbsent(ByVal key As K, ByVal value As V) As V
+			Public Function putIfAbsent(  key As K,   value As V) As V
 				checkKeyBounds(key, m.comparator_Renamed)
 				Return m.putIfAbsent(key, value)
 			End Function
 
-			Public Function remove(ByVal key As Object, ByVal value As Object) As Boolean
+			Public Function remove(  key As Object,   value As Object) As Boolean
 				Return inBounds(key, m.comparator_Renamed) AndAlso m.remove(key, value)
 			End Function
 
-			Public Function replace(ByVal key As K, ByVal oldValue As V, ByVal newValue As V) As Boolean
+			Public Function replace(  key As K,   oldValue As V,   newValue As V) As Boolean
 				checkKeyBounds(key, m.comparator_Renamed)
 				Return m.replace(key, oldValue, newValue)
 			End Function
 
-			Public Function replace(ByVal key As K, ByVal value As V) As V
+			Public Function replace(  key As K,   value As V) As V
 				checkKeyBounds(key, m.comparator_Renamed)
 				Return m.replace(key, value)
 			End Function
@@ -3011,7 +3011,7 @@ Namespace java.util.concurrent
 			''' Utility to create submaps, where given bounds override
 			''' unbounded(null) ones and/or are checked against bounded ones.
 			''' </summary>
-			Friend Function newSubMap(ByVal fromKey As K, ByVal fromInclusive As Boolean, ByVal toKey As K, ByVal toInclusive As Boolean) As SubMap(Of K, V)
+			Friend Function newSubMap(  fromKey As K,   fromInclusive As Boolean,   toKey As K,   toInclusive As Boolean) As SubMap(Of K, V)
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 				Dim cmp As IComparer(Of ?) = m.comparator_Renamed
@@ -3044,30 +3044,30 @@ Namespace java.util.concurrent
 				Return New SubMap(Of K, V)(m, fromKey, fromInclusive, toKey, toInclusive, isDescending)
 			End Function
 
-			Public Function subMap(ByVal fromKey As K, ByVal fromInclusive As Boolean, ByVal toKey As K, ByVal toInclusive As Boolean) As SubMap(Of K, V)
+			Public Function subMap(  fromKey As K,   fromInclusive As Boolean,   toKey As K,   toInclusive As Boolean) As SubMap(Of K, V)
 				If fromKey Is Nothing OrElse toKey Is Nothing Then Throw New NullPointerException
 				Return newSubMap(fromKey, fromInclusive, toKey, toInclusive)
 			End Function
 
-			Public Function headMap(ByVal toKey As K, ByVal inclusive As Boolean) As SubMap(Of K, V)
+			Public Function headMap(  toKey As K,   inclusive As Boolean) As SubMap(Of K, V)
 				If toKey Is Nothing Then Throw New NullPointerException
 				Return newSubMap(Nothing, False, toKey, inclusive)
 			End Function
 
-			Public Function tailMap(ByVal fromKey As K, ByVal inclusive As Boolean) As SubMap(Of K, V)
+			Public Function tailMap(  fromKey As K,   inclusive As Boolean) As SubMap(Of K, V)
 				If fromKey Is Nothing Then Throw New NullPointerException
 				Return newSubMap(fromKey, inclusive, Nothing, False)
 			End Function
 
-			Public Function subMap(ByVal fromKey As K, ByVal toKey As K) As SubMap(Of K, V)
+			Public Function subMap(  fromKey As K,   toKey As K) As SubMap(Of K, V)
 				Return subMap(fromKey, True, toKey, False)
 			End Function
 
-			Public Function headMap(ByVal toKey As K) As SubMap(Of K, V)
+			Public Function headMap(  toKey As K) As SubMap(Of K, V)
 				Return headMap(toKey, False)
 			End Function
 
-			Public Function tailMap(ByVal fromKey As K) As SubMap(Of K, V)
+			Public Function tailMap(  fromKey As K) As SubMap(Of K, V)
 				Return tailMap(fromKey, True)
 			End Function
 
@@ -3077,35 +3077,35 @@ Namespace java.util.concurrent
 
 			' ----------------  Relational methods -------------- 
 
-			Public Function ceilingEntry(ByVal key As K) As KeyValuePair(Of K, V)
+			Public Function ceilingEntry(  key As K) As KeyValuePair(Of K, V)
 				Return getNearEntry(key, GT Or EQ)
 			End Function
 
-			Public Function ceilingKey(ByVal key As K) As K
+			Public Function ceilingKey(  key As K) As K
 				Return getNearKey(key, GT Or EQ)
 			End Function
 
-			Public Function lowerEntry(ByVal key As K) As KeyValuePair(Of K, V)
+			Public Function lowerEntry(  key As K) As KeyValuePair(Of K, V)
 				Return getNearEntry(key, LT)
 			End Function
 
-			Public Function lowerKey(ByVal key As K) As K
+			Public Function lowerKey(  key As K) As K
 				Return getNearKey(key, LT)
 			End Function
 
-			Public Function floorEntry(ByVal key As K) As KeyValuePair(Of K, V)
+			Public Function floorEntry(  key As K) As KeyValuePair(Of K, V)
 				Return getNearEntry(key, LT Or EQ)
 			End Function
 
-			Public Function floorKey(ByVal key As K) As K
+			Public Function floorKey(  key As K) As K
 				Return getNearKey(key, LT Or EQ)
 			End Function
 
-			Public Function higherEntry(ByVal key As K) As KeyValuePair(Of K, V)
+			Public Function higherEntry(  key As K) As KeyValuePair(Of K, V)
 				Return getNearEntry(key, GT)
 			End Function
 
-			Public Function higherKey(ByVal key As K) As K
+			Public Function higherKey(  key As K) As K
 				Return getNearKey(key, GT)
 			End Function
 
@@ -3210,7 +3210,7 @@ Namespace java.util.concurrent
 				''' Cache of next value field to maintain weak consistency </summary>
 				Friend nextValue As V
 
-				Friend Sub New(ByVal outerInstance As ConcurrentSkipListMap.SubMap)
+				Friend Sub New(  outerInstance As ConcurrentSkipListMap.SubMap)
 						Me.outerInstance = outerInstance
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
@@ -3300,7 +3300,7 @@ Namespace java.util.concurrent
 				End Function
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-				Public Overridable Function tryAdvance(Of T1)(ByVal action As java.util.function.Consumer(Of T1)) As Boolean
+				Public Overridable Function tryAdvance(Of T1)(  action As java.util.function.Consumer(Of T1)) As Boolean
 					If hasNext() Then
 						action.accept(next())
 						Return True
@@ -3309,7 +3309,7 @@ Namespace java.util.concurrent
 				End Function
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-				Public Overridable Sub forEachRemaining(Of T1)(ByVal action As java.util.function.Consumer(Of T1))
+				Public Overridable Sub forEachRemaining(Of T1)(  action As java.util.function.Consumer(Of T1))
 					Do While hasNext()
 						action.accept(next())
 					Loop
@@ -3326,7 +3326,7 @@ Namespace java.util.concurrent
 
 				Private ReadOnly outerInstance As ConcurrentSkipListMap.SubMap
 
-				Public Sub New(ByVal outerInstance As ConcurrentSkipListMap.SubMap)
+				Public Sub New(  outerInstance As ConcurrentSkipListMap.SubMap)
 					Me.outerInstance = outerInstance
 				End Sub
 
@@ -3345,7 +3345,7 @@ Namespace java.util.concurrent
 
 				Private ReadOnly outerInstance As ConcurrentSkipListMap.SubMap
 
-				Public Sub New(ByVal outerInstance As ConcurrentSkipListMap.SubMap)
+				Public Sub New(  outerInstance As ConcurrentSkipListMap.SubMap)
 					Me.outerInstance = outerInstance
 				End Sub
 
@@ -3371,7 +3371,7 @@ Namespace java.util.concurrent
 
 				Private ReadOnly outerInstance As ConcurrentSkipListMap.SubMap
 
-				Public Sub New(ByVal outerInstance As ConcurrentSkipListMap.SubMap)
+				Public Sub New(  outerInstance As ConcurrentSkipListMap.SubMap)
 					Me.outerInstance = outerInstance
 				End Sub
 
@@ -3390,7 +3390,7 @@ Namespace java.util.concurrent
 		' default Map method overrides
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Overridable Sub forEach(Of T1)(ByVal action As java.util.function.BiConsumer(Of T1))
+		Public Overridable Sub forEach(Of T1)(  action As java.util.function.BiConsumer(Of T1))
 			If action Is Nothing Then Throw New NullPointerException
 			Dim v As V
 			Dim n As Node(Of K, V) = findFirst()
@@ -3402,7 +3402,7 @@ Namespace java.util.concurrent
 		End Sub
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Overridable Sub replaceAll(Of T1 As V)(ByVal [function] As java.util.function.BiFunction(Of T1))
+		Public Overridable Sub replaceAll(Of T1 As V)(  [function] As java.util.function.BiFunction(Of T1))
 			If [function] Is Nothing Then Throw New NullPointerException
 			Dim v As V
 			Dim n As Node(Of K, V) = findFirst()
@@ -3444,7 +3444,7 @@ Namespace java.util.concurrent
 			Friend current As Node(Of K, V) ' current traversal node; initialize at origin
 			Friend est As Integer ' pseudo-size estimate
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Friend Sub New(Of T1)(ByVal comparator As IComparer(Of T1), ByVal row As Index(Of K, V), ByVal origin As Node(Of K, V), ByVal fence As K, ByVal est As Integer)
+			Friend Sub New(Of T1)(  comparator As IComparer(Of T1),   row As Index(Of K, V),   origin As Node(Of K, V),   fence As K,   est As Integer)
 				Me.comparator = comparator
 				Me.row = row
 				Me.current = origin
@@ -3462,7 +3462,7 @@ Namespace java.util.concurrent
 			Implements java.util.Spliterator(Of K)
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Friend Sub New(Of T1)(ByVal comparator As IComparer(Of T1), ByVal row As Index(Of K, V), ByVal origin As Node(Of K, V), ByVal fence As K, ByVal est As Integer)
+			Friend Sub New(Of T1)(  comparator As IComparer(Of T1),   row As Index(Of K, V),   origin As Node(Of K, V),   fence As K,   est As Integer)
 				MyBase.New(comparator, row, origin, fence, est)
 			End Sub
 
@@ -3500,7 +3500,7 @@ q = row
 			End Function
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Sub forEachRemaining(Of T1)(ByVal action As java.util.function.Consumer(Of T1))
+			Public Sub forEachRemaining(Of T1)(  action As java.util.function.Consumer(Of T1))
 				If action Is Nothing Then Throw New NullPointerException
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
@@ -3520,7 +3520,7 @@ q = row
 			End Sub
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Function tryAdvance(Of T1)(ByVal action As java.util.function.Consumer(Of T1)) As Boolean
+			Public Function tryAdvance(Of T1)(  action As java.util.function.Consumer(Of T1)) As Boolean
 				If action Is Nothing Then Throw New NullPointerException
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
@@ -3580,7 +3580,7 @@ q = row
 			Implements java.util.Spliterator(Of V)
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Friend Sub New(Of T1)(ByVal comparator As IComparer(Of T1), ByVal row As Index(Of K, V), ByVal origin As Node(Of K, V), ByVal fence As K, ByVal est As Integer)
+			Friend Sub New(Of T1)(  comparator As IComparer(Of T1),   row As Index(Of K, V),   origin As Node(Of K, V),   fence As K,   est As Integer)
 				MyBase.New(comparator, row, origin, fence, est)
 			End Sub
 
@@ -3618,7 +3618,7 @@ q = row
 			End Function
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Sub forEachRemaining(Of T1)(ByVal action As java.util.function.Consumer(Of T1))
+			Public Sub forEachRemaining(Of T1)(  action As java.util.function.Consumer(Of T1))
 				If action Is Nothing Then Throw New NullPointerException
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
@@ -3642,7 +3642,7 @@ q = row
 			End Sub
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Function tryAdvance(Of T1)(ByVal action As java.util.function.Consumer(Of T1)) As Boolean
+			Public Function tryAdvance(Of T1)(  action As java.util.function.Consumer(Of T1)) As Boolean
 				If action Is Nothing Then Throw New NullPointerException
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
@@ -3697,7 +3697,7 @@ q = row
 			Implements java.util.Spliterator(Of KeyValuePair(Of K, V))
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Friend Sub New(Of T1)(ByVal comparator As IComparer(Of T1), ByVal row As Index(Of K, V), ByVal origin As Node(Of K, V), ByVal fence As K, ByVal est As Integer)
+			Friend Sub New(Of T1)(  comparator As IComparer(Of T1),   row As Index(Of K, V),   origin As Node(Of K, V),   fence As K,   est As Integer)
 				MyBase.New(comparator, row, origin, fence, est)
 			End Sub
 
@@ -3735,7 +3735,7 @@ q = row
 			End Function
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Sub forEachRemaining(Of T1)(ByVal action As java.util.function.Consumer(Of T1))
+			Public Sub forEachRemaining(Of T1)(  action As java.util.function.Consumer(Of T1))
 				If action Is Nothing Then Throw New NullPointerException
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
@@ -3759,7 +3759,7 @@ q = row
 			End Sub
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Function tryAdvance(Of T1)(ByVal action As java.util.function.Consumer(Of T1)) As Boolean
+			Public Function tryAdvance(Of T1)(  action As java.util.function.Consumer(Of T1)) As Boolean
 				If action Is Nothing Then Throw New NullPointerException
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:

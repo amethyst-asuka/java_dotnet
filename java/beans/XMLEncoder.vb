@@ -220,7 +220,7 @@ Namespace java.beans
 		Private Class ValueData
 			Private ReadOnly outerInstance As XMLEncoder
 
-			Public Sub New(ByVal outerInstance As XMLEncoder)
+			Public Sub New(  outerInstance As XMLEncoder)
 				Me.outerInstance = outerInstance
 			End Sub
 
@@ -241,7 +241,7 @@ Namespace java.beans
 		'''          if <code>out</code> is <code>null</code>
 		''' </exception>
 		''' <seealso cref= XMLDecoder#XMLDecoder(InputStream) </seealso>
-		Public Sub New(ByVal out As OutputStream)
+		Public Sub New(  out As OutputStream)
 			Me.New(out, "UTF-8", True, 0)
 		End Sub
 
@@ -276,7 +276,7 @@ Namespace java.beans
 		''' <seealso cref= Charset#forName(String)
 		''' 
 		''' @since 1.7 </seealso>
-		Public Sub New(ByVal out As OutputStream, ByVal charset As String, ByVal declaration As Boolean, ByVal indentation As Integer)
+		Public Sub New(  out As OutputStream,   charset As String,   declaration As Boolean,   indentation As Integer)
 			If out Is Nothing Then Throw New IllegalArgumentException("the output stream cannot be null")
 			If indentation < 0 Then Throw New IllegalArgumentException("the indentation must be >= 0")
 			Dim cs As java.nio.charset.Charset = java.nio.charset.Charset.forName(charset)
@@ -297,7 +297,7 @@ Namespace java.beans
 		''' </param>
 		''' <seealso cref= #getOwner </seealso>
 		Public Overridable Property owner As Object
-			Set(ByVal owner As Object)
+			Set(  owner As Object)
 				Me.owner = owner
 				writeExpression(New Expression(Me, "getOwner", New Object(){}))
 			End Set
@@ -313,7 +313,7 @@ Namespace java.beans
 		''' <param name="o"> The object to be written to the stream.
 		''' </param>
 		''' <seealso cref= XMLDecoder#readObject </seealso>
-		Public Overrides Sub writeObject(ByVal o As Object)
+		Public Overrides Sub writeObject(  o As Object)
 			If internal Then
 				MyBase.writeObject(o)
 			Else
@@ -321,7 +321,7 @@ Namespace java.beans
 			End If
 		End Sub
 
-		Private Function statementList(ByVal target As Object) As List(Of Statement)
+		Private Function statementList(  target As Object) As List(Of Statement)
 			Dim list As List(Of Statement) = targetToStatementList.get(target)
 			If list Is Nothing Then
 				list = New List(Of )
@@ -331,7 +331,7 @@ Namespace java.beans
 		End Function
 
 
-		Private Sub mark(ByVal o As Object, ByVal isArgument As Boolean)
+		Private Sub mark(  o As Object,   isArgument As Boolean)
 			If o Is Nothing OrElse o Is Me Then Return
 			Dim d As ValueData = getValueData(o)
 			Dim exp As Expression = d.exp
@@ -353,7 +353,7 @@ Namespace java.beans
 			End If
 		End Sub
 
-		Private Sub mark(ByVal stm As Statement)
+		Private Sub mark(  stm As Statement)
 			Dim args As Object() = stm.arguments
 			For i As Integer = 0 To args.Length - 1
 				Dim arg As Object = args(i)
@@ -373,7 +373,7 @@ Namespace java.beans
 		''' <param name="oldStm"> The statement that will be written
 		'''               to the stream. </param>
 		''' <seealso cref= java.beans.PersistenceDelegate#initialize </seealso>
-		Public Overrides Sub writeStatement(ByVal oldStm As Statement)
+		Public Overrides Sub writeStatement(  oldStm As Statement)
 			' System.out.println("XMLEncoder::writeStatement: " + oldStm);
 			Dim internal As Boolean = Me.internal
 			Me.internal = True
@@ -422,7 +422,7 @@ Namespace java.beans
 		''' <param name="oldExp"> The expression that will be written
 		'''               to the stream. </param>
 		''' <seealso cref= java.beans.PersistenceDelegate#initialize </seealso>
-		Public Overrides Sub writeExpression(ByVal oldExp As Expression)
+		Public Overrides Sub writeExpression(  oldExp As Expression)
 			Dim internal As Boolean = Me.internal
 			Me.internal = True
 			Dim oldValue As Object = getValue(oldExp)
@@ -507,11 +507,11 @@ Namespace java.beans
 			End Try
 		End Sub
 
-		Private Function quote(ByVal s As String) As String
+		Private Function quote(  s As String) As String
 			Return """" & s & """"
 		End Function
 
-		Private Function getValueData(ByVal o As Object) As ValueData
+		Private Function getValueData(  o As Object) As ValueData
 			Dim d As ValueData = valueToExpression.get(o)
 			If d Is Nothing Then
 				d = New ValueData(Me)
@@ -538,11 +538,11 @@ Namespace java.beans
 		''' <param name="code">  the 32-bit Unicode code point being tested </param>
 		''' <returns>  <code>true</code> if the Unicode code point is valid,
 		'''          <code>false</code> otherwise </returns>
-		Private Shared Function isValidCharCode(ByVal code As Integer) As Boolean
+		Private Shared Function isValidCharCode(  code As Integer) As Boolean
 			Return (&H20 <= code AndAlso code <= &HD7FF) OrElse (&HA = code) OrElse (&H9 = code) OrElse (&HD = code) OrElse (&HE000 <= code AndAlso code <= &HFFFD) OrElse (&H10000 <= code AndAlso code <= &H10ffff)
 		End Function
 
-		Private Sub writeln(ByVal exp As String)
+		Private Sub writeln(  exp As String)
 			Try
 				Dim sb As New StringBuilder
 				For i As Integer = 0 To indentation - 1
@@ -556,7 +556,7 @@ Namespace java.beans
 			End Try
 		End Sub
 
-		Private Sub outputValue(ByVal value As Object, ByVal outer As Object, ByVal isArgument As Boolean)
+		Private Sub outputValue(  value As Object,   outer As Object,   isArgument As Boolean)
 			If value Is Nothing Then
 				writeln("<null/>")
 				Return
@@ -613,7 +613,7 @@ Namespace java.beans
 			End If
 		End Sub
 
-		Private Shared Function quoteCharCode(ByVal code As Integer) As String
+		Private Shared Function quoteCharCode(  code As Integer) As String
 			Select Case code
 			  Case "&"c
 				  Return "&amp;"
@@ -632,11 +632,11 @@ Namespace java.beans
 			End Select
 		End Function
 
-		Private Shared Function createString(ByVal code As Integer) As String
+		Private Shared Function createString(  code As Integer) As String
 			Return "<char code=""#" & Convert.ToString(code, 16) & """/>"
 		End Function
 
-		Private Function createString(ByVal [string] As String) As String
+		Private Function createString(  [string] As String) As String
 			Dim sb As New StringBuilder
 			sb.append("<string>")
 			Dim index As Integer = 0
@@ -661,7 +661,7 @@ Namespace java.beans
 			Return sb.ToString()
 		End Function
 
-		Private Sub outputStatement(ByVal exp As Statement, ByVal outer As Object, ByVal isArgument As Boolean)
+		Private Sub outputStatement(  exp As Statement,   outer As Object,   isArgument As Boolean)
 			Dim target As Object = exp.target
 			Dim methodName As String = exp.methodName
 
@@ -713,7 +713,7 @@ Namespace java.beans
 			outputXML(tag, attributes, value_Renamed, args)
 		End Sub
 
-		Private Sub outputXML(ByVal tag As String, ByVal attributes As String, ByVal value As Object, ParamArray ByVal args As Object())
+		Private Sub outputXML(  tag As String,   attributes As String,   value As Object, ParamArray   args As Object())
 			Dim statements As List(Of Statement) = statementList(value)
 			' Use XML's short form when there is no body.
 			If args.Length = 0 AndAlso statements.size() = 0 Then
@@ -738,7 +738,7 @@ Namespace java.beans
 		End Sub
 
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Friend Shared Function primitiveTypeFor(ByVal wrapper As [Class]) As  [Class]
+		Friend Shared Function primitiveTypeFor(  wrapper As [Class]) As  [Class]
 			If wrapper Is GetType(Boolean) Then Return  java.lang.[Boolean].TYPE
 			If wrapper Is GetType(Byte) Then Return java.lang.[Byte].TYPE
 			If wrapper Is GetType(Character) Then Return Character.TYPE

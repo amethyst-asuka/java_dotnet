@@ -47,7 +47,7 @@ Namespace java.awt.datatransfer
             parameters = New Dictionary(Of String, String)
         End Sub
 
-		Public Sub New(ByVal rawdata As String)
+		Public Sub New(  rawdata As String)
             parameters = New Dictionary(Of String, String)
 
             '    now parse rawdata
@@ -75,7 +75,7 @@ Namespace java.awt.datatransfer
 		''' the same set of parameter names and associated values. The
 		''' order of the parameters is not considered.
 		''' </summary>
-		Public Overrides Function Equals(ByVal thatObject As Object) As Boolean
+		Public Overrides Function Equals(  thatObject As Object) As Boolean
 			'System.out.println("MimeTypeParameterList.equals("+this+","+thatObject+")");
 			If Not(TypeOf thatObject Is MimeTypeParameterList) Then Return False
 			Dim that As MimeTypeParameterList = CType(thatObject, MimeTypeParameterList)
@@ -105,7 +105,7 @@ Namespace java.awt.datatransfer
 		''' <summary>
 		''' A routine for parsing the parameter list out of a String.
 		''' </summary>
-		Protected Friend Overridable Sub parse(ByVal rawdata As String)
+		Protected Friend Overridable Sub parse(  rawdata As String)
 			Dim length As Integer = rawdata.length()
 			If length > 0 Then
 				Dim currentIndex As Integer = skipWhiteSpace(rawdata, 0)
@@ -241,7 +241,7 @@ Namespace java.awt.datatransfer
         ''' Retrieve the value associated with the given name, or null if there
         ''' is no current association.
         ''' </summary>
-        Public Overridable Function [get](ByVal name As String) As String
+        Public Overridable Function [get](  name As String) As String
 			Return parameters(name.Trim().ToLower())
 		End Function
 
@@ -249,14 +249,14 @@ Namespace java.awt.datatransfer
 		''' Set the value to be associated with the given name, replacing
 		''' any previous association.
 		''' </summary>
-		Public Overridable Sub [set](ByVal name As String, ByVal value As String)
+		Public Overridable Sub [set](  name As String,   value As String)
 			parameters(name.Trim().ToLower()) = value
 		End Sub
 
 		''' <summary>
 		''' Remove any value associated with the given name.
 		''' </summary>
-		Public Overridable Sub remove(ByVal name As String)
+		Public Overridable Sub remove(  name As String)
 			parameters.Remove(name.Trim().ToLower())
 		End Sub
 
@@ -307,7 +307,7 @@ Namespace java.awt.datatransfer
 		''' <summary>
 		''' Determine whether or not a given character belongs to a legal token.
 		''' </summary>
-		Private Shared Function isTokenChar(ByVal c As Char) As Boolean
+		Private Shared Function isTokenChar(  c As Char) As Boolean
 			Return ((AscW(c) > &O40) AndAlso (AscW(c) < &O177)) AndAlso (TSPECIALS.IndexOf(c) < 0)
 		End Function
 
@@ -315,7 +315,7 @@ Namespace java.awt.datatransfer
 		''' return the index of the first non white space character in
 		''' rawdata at or after index i.
 		''' </summary>
-		Private Shared Function skipWhiteSpace(ByVal rawdata As String, ByVal i As Integer) As Integer
+		Private Shared Function skipWhiteSpace(  rawdata As String,   i As Integer) As Integer
 			Dim length As Integer = rawdata.length()
 			If i < length Then
 				Dim c As Char = rawdata.Chars(i)
@@ -331,7 +331,7 @@ Namespace java.awt.datatransfer
 		''' <summary>
 		''' A routine that knows how and when to quote and escape the given value.
 		''' </summary>
-		Private Shared Function quote(ByVal value As String) As String
+		Private Shared Function quote(  value As String) As String
 			Dim needsQuotes As Boolean = False
 
 			'    check to see if we actually have to quote this thing
@@ -367,7 +367,7 @@ Namespace java.awt.datatransfer
 		''' <summary>
 		''' A routine that knows how to strip the quotes and escape sequences from the given value.
 		''' </summary>
-		Private Shared Function unquote(ByVal value As String) As String
+		Private Shared Function unquote(  value As String) As String
 			Dim valueLength As Integer = value.length()
 			Dim buffer As New StringBuilder(valueLength)
 

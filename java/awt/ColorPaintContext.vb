@@ -36,7 +36,7 @@ Namespace java.awt
 		Friend color_Renamed As Integer
 		Friend savedTile As java.awt.image.WritableRaster
 
-		Protected Friend Sub New(ByVal color_Renamed As Integer, ByVal cm As java.awt.image.ColorModel)
+		Protected Friend Sub New(  color_Renamed As Integer,   cm As java.awt.image.ColorModel)
 			Me.color_Renamed = color_Renamed
 		End Sub
 
@@ -68,7 +68,7 @@ Namespace java.awt
 		End Property
 
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Function getRaster(ByVal x As Integer, ByVal y As Integer, ByVal w As Integer, ByVal h As Integer) As java.awt.image.Raster Implements PaintContext.getRaster
+		Public Overridable Function getRaster(  x As Integer,   y As Integer,   w As Integer,   h As Integer) As java.awt.image.Raster Implements PaintContext.getRaster
 			Dim t As java.awt.image.WritableRaster = savedTile
 
 			If t Is Nothing OrElse w > t.width OrElse h > t.height Then

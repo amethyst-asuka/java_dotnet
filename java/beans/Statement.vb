@@ -54,7 +54,7 @@ Namespace java.beans
 		Private Class ExceptionListenerAnonymousInnerClassHelper
 			Implements ExceptionListener
 
-			Public Overridable Sub exceptionThrown(ByVal e As Exception) Implements ExceptionListener.exceptionThrown
+			Public Overridable Sub exceptionThrown(  e As Exception) Implements ExceptionListener.exceptionThrown
 				Console.Error.WriteLine(e)
 				' e.printStackTrace();
 				Console.Error.WriteLine("Continuing ...")
@@ -82,7 +82,7 @@ Namespace java.beans
 		''' <param name="methodName">  the name of the method to invoke on the specified target </param>
 		''' <param name="arguments">  the array of arguments to invoke the specified method </param>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Sub New(ByVal target As Object, ByVal methodName As String, ByVal arguments As Object())
+		Public Sub New(  target As Object,   methodName As String,   arguments As Object())
 			Me.target = target
 			Me.methodName = methodName
 			Me.arguments = If(arguments Is Nothing, emptyArray, arguments.clone())
@@ -281,7 +281,7 @@ Namespace java.beans
 			Throw New NoSuchMethodException(ToString())
 		End Function
 
-		Friend Overridable Function instanceName(ByVal instance As Object) As String
+		Friend Overridable Function instanceName(  instance As Object) As String
 			If instance Is Nothing Then
 				Return "null"
 			ElseIf instance.GetType() Is GetType(String) Then
@@ -316,7 +316,7 @@ Namespace java.beans
 			Return result.ToString()
 		End Function
 
-		Friend Shared Function getMethod(ByVal type As [Class], ByVal name As String, ParamArray ByVal args As  [Class]()) As Method
+		Friend Shared Function getMethod(  type As [Class],   name As String, ParamArray   args As  [Class]()) As Method
 			Try
 				Return com.sun.beans.finder.MethodFinder.findMethod(type, name, args)
 			Catch exception_Renamed As NoSuchMethodException

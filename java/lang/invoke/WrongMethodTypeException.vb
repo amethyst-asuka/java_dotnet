@@ -57,7 +57,7 @@ Namespace java.lang.invoke
 		''' detail message.
 		''' </summary>
 		''' <param name="s"> the detail message. </param>
-		Public Sub New(ByVal s As String)
+		Public Sub New(  s As String)
 			MyBase.New(s)
 		End Sub
 
@@ -69,7 +69,7 @@ Namespace java.lang.invoke
 		''' <param name="cause"> the cause of the exception, or null. </param>
 		'FIXME: make this public in MR1
 		'non-public
-	 Friend Sub New(ByVal s As String, ByVal cause As Throwable)
+	 Friend Sub New(  s As String,   cause As Throwable)
 			MyBase.New(s, cause)
 	 End Sub
 
@@ -80,7 +80,7 @@ Namespace java.lang.invoke
 		''' <param name="cause"> the cause of the exception, or null. </param>
 		'FIXME: make this public in MR1
 		'non-public
-	 Friend Sub New(ByVal cause As Throwable)
+	 Friend Sub New(  cause As Throwable)
 			MyBase.New(cause)
 	 End Sub
 	End Class

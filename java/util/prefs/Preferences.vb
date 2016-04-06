@@ -342,7 +342,7 @@ Namespace java.util.prefs
 		''' <exception cref="SecurityException"> if a security manager is present and
 		'''         it denies <tt>RuntimePermission("preferences")</tt>. </exception>
 		''' <seealso cref=    RuntimePermission </seealso>
-		Public Shared Function userNodeForPackage(ByVal c As [Class]) As Preferences
+		Public Shared Function userNodeForPackage(  c As [Class]) As Preferences
 			Return userRoot().node(nodeName(c))
 		End Function
 
@@ -385,7 +385,7 @@ Namespace java.util.prefs
 		''' <exception cref="SecurityException"> if a security manager is present and
 		'''         it denies <tt>RuntimePermission("preferences")</tt>. </exception>
 		''' <seealso cref=    RuntimePermission </seealso>
-		Public Shared Function systemNodeForPackage(ByVal c As [Class]) As Preferences
+		Public Shared Function systemNodeForPackage(  c As [Class]) As Preferences
 			Return systemRoot().node(nodeName(c))
 		End Function
 
@@ -395,7 +395,7 @@ Namespace java.util.prefs
 		''' </summary>
 		''' <exception cref="IllegalArgumentException"> if the package has node preferences
 		'''         node associated with it. </exception>
-		Private Shared Function nodeName(ByVal c As [Class]) As String
+		Private Shared Function nodeName(  c As [Class]) As String
 			If c.array Then Throw New IllegalArgumentException("Arrays have no associated preferences node.")
 			Dim className As String = c.name
 			Dim pkgEndIndex As Integer = className.LastIndexOf("."c)
@@ -458,7 +458,7 @@ Namespace java.util.prefs
 		'''       <tt>MAX_VALUE_LENGTH</tt>. </exception>
 		''' <exception cref="IllegalStateException"> if this node (or an ancestor) has been
 		'''         removed with the <seealso cref="#removeNode()"/> method. </exception>
-		Public MustOverride Sub put(ByVal key As String, ByVal value As String)
+		Public MustOverride Sub put(  key As String,   value As String)
 
 		''' <summary>
 		''' Returns the value associated with the specified key in this preference
@@ -480,7 +480,7 @@ Namespace java.util.prefs
 		'''         removed with the <seealso cref="#removeNode()"/> method. </exception>
 		''' <exception cref="NullPointerException"> if <tt>key</tt> is <tt>null</tt>.  (A
 		'''         <tt>null</tt> value for <tt>def</tt> <i>is</i> permitted.) </exception>
-		Public MustOverride Function [get](ByVal key As String, ByVal def As String) As String
+		Public MustOverride Function [get](  key As String,   def As String) As String
 
 		''' <summary>
 		''' Removes the value associated with the specified key in this preference
@@ -495,7 +495,7 @@ Namespace java.util.prefs
 		''' <exception cref="NullPointerException"> if <tt>key</tt> is <tt>null</tt>. </exception>
 		''' <exception cref="IllegalStateException"> if this node (or an ancestor) has been
 		'''         removed with the <seealso cref="#removeNode()"/> method. </exception>
-		Public MustOverride Sub remove(ByVal key As String)
+		Public MustOverride Sub remove(  key As String)
 
 		''' <summary>
 		''' Removes all of the preferences (key-value associations) in this
@@ -530,7 +530,7 @@ Namespace java.util.prefs
 		''' <exception cref="IllegalStateException"> if this node (or an ancestor) has been
 		'''         removed with the <seealso cref="#removeNode()"/> method. </exception>
 		''' <seealso cref= #getInt(String,int) </seealso>
-		Public MustOverride Sub putInt(ByVal key As String, ByVal value As Integer)
+		Public MustOverride Sub putInt(  key As String,   value As Integer)
 
 		''' <summary>
 		''' Returns the int value represented by the string associated with the
@@ -561,7 +561,7 @@ Namespace java.util.prefs
 		''' <exception cref="NullPointerException"> if <tt>key</tt> is <tt>null</tt>. </exception>
 		''' <seealso cref= #putInt(String,int) </seealso>
 		''' <seealso cref= #get(String,String) </seealso>
-		Public MustOverride Function getInt(ByVal key As String, ByVal def As Integer) As Integer
+		Public MustOverride Function getInt(  key As String,   def As Integer) As Integer
 
 		''' <summary>
 		''' Associates a string representing the specified long value with the
@@ -578,7 +578,7 @@ Namespace java.util.prefs
 		''' <exception cref="IllegalStateException"> if this node (or an ancestor) has been
 		'''         removed with the <seealso cref="#removeNode()"/> method. </exception>
 		''' <seealso cref= #getLong(String,long) </seealso>
-		Public MustOverride Sub putLong(ByVal key As String, ByVal value As Long)
+		Public MustOverride Sub putLong(  key As String,   value As Long)
 
 		''' <summary>
 		''' Returns the long value represented by the string associated with the
@@ -609,7 +609,7 @@ Namespace java.util.prefs
 		''' <exception cref="NullPointerException"> if <tt>key</tt> is <tt>null</tt>. </exception>
 		''' <seealso cref= #putLong(String,long) </seealso>
 		''' <seealso cref= #get(String,String) </seealso>
-		Public MustOverride Function getLong(ByVal key As String, ByVal def As Long) As Long
+		Public MustOverride Function getLong(  key As String,   def As Long) As Long
 
 		''' <summary>
 		''' Associates a string representing the specified boolean value with the
@@ -627,7 +627,7 @@ Namespace java.util.prefs
 		'''         removed with the <seealso cref="#removeNode()"/> method. </exception>
 		''' <seealso cref= #getBoolean(String,boolean) </seealso>
 		''' <seealso cref= #get(String,String) </seealso>
-		Public MustOverride Sub putBoolean(ByVal key As String, ByVal value As Boolean)
+		Public MustOverride Sub putBoolean(  key As String,   value As Boolean)
 
 		''' <summary>
 		''' Returns the boolean value represented by the string associated with the
@@ -662,7 +662,7 @@ Namespace java.util.prefs
 		''' <exception cref="NullPointerException"> if <tt>key</tt> is <tt>null</tt>. </exception>
 		''' <seealso cref= #get(String,String) </seealso>
 		''' <seealso cref= #putBoolean(String,boolean) </seealso>
-		Public MustOverride Function getBoolean(ByVal key As String, ByVal def As Boolean) As Boolean
+		Public MustOverride Function getBoolean(  key As String,   def As Boolean) As Boolean
 
 		''' <summary>
 		''' Associates a string representing the specified float value with the
@@ -679,7 +679,7 @@ Namespace java.util.prefs
 		''' <exception cref="IllegalStateException"> if this node (or an ancestor) has been
 		'''         removed with the <seealso cref="#removeNode()"/> method. </exception>
 		''' <seealso cref= #getFloat(String,float) </seealso>
-		Public MustOverride Sub putFloat(ByVal key As String, ByVal value As Single)
+		Public MustOverride Sub putFloat(  key As String,   value As Single)
 
 		''' <summary>
 		''' Returns the float value represented by the string associated with the
@@ -709,7 +709,7 @@ Namespace java.util.prefs
 		''' <exception cref="NullPointerException"> if <tt>key</tt> is <tt>null</tt>. </exception>
 		''' <seealso cref= #putFloat(String,float) </seealso>
 		''' <seealso cref= #get(String,String) </seealso>
-		Public MustOverride Function getFloat(ByVal key As String, ByVal def As Single) As Single
+		Public MustOverride Function getFloat(  key As String,   def As Single) As Single
 
 		''' <summary>
 		''' Associates a string representing the specified double value with the
@@ -726,7 +726,7 @@ Namespace java.util.prefs
 		''' <exception cref="IllegalStateException"> if this node (or an ancestor) has been
 		'''         removed with the <seealso cref="#removeNode()"/> method. </exception>
 		''' <seealso cref= #getDouble(String,double) </seealso>
-		Public MustOverride Sub putDouble(ByVal key As String, ByVal value As Double)
+		Public MustOverride Sub putDouble(  key As String,   value As Double)
 
 		''' <summary>
 		''' Returns the double value represented by the string associated with the
@@ -756,7 +756,7 @@ Namespace java.util.prefs
 		''' <exception cref="NullPointerException"> if <tt>key</tt> is <tt>null</tt>. </exception>
 		''' <seealso cref= #putDouble(String,double) </seealso>
 		''' <seealso cref= #get(String,String) </seealso>
-		Public MustOverride Function getDouble(ByVal key As String, ByVal def As Double) As Double
+		Public MustOverride Function getDouble(  key As String,   def As Double) As Double
 
 		''' <summary>
 		''' Associates a string representing the specified byte array with the
@@ -780,7 +780,7 @@ Namespace java.util.prefs
 		'''         removed with the <seealso cref="#removeNode()"/> method. </exception>
 		''' <seealso cref= #getByteArray(String,byte[]) </seealso>
 		''' <seealso cref= #get(String,String) </seealso>
-		Public MustOverride Sub putByteArray(ByVal key As String, ByVal value As SByte())
+		Public MustOverride Sub putByteArray(  key As String,   value As SByte())
 
 		''' <summary>
 		''' Returns the byte array value represented by the string associated with
@@ -818,7 +818,7 @@ Namespace java.util.prefs
 		'''         <tt>null</tt> value for <tt>def</tt> <i>is</i> permitted.) </exception>
 		''' <seealso cref= #get(String,String) </seealso>
 		''' <seealso cref= #putByteArray(String,byte[]) </seealso>
-		Public MustOverride Function getByteArray(ByVal key As String, ByVal def As SByte()) As SByte()
+		Public MustOverride Function getByteArray(  key As String,   def As SByte()) As SByte()
 
 		''' <summary>
 		''' Returns all of the keys that have an associated value in this
@@ -882,7 +882,7 @@ Namespace java.util.prefs
 		''' <exception cref="IllegalStateException"> if this node (or an ancestor) has been
 		'''         removed with the <seealso cref="#removeNode()"/> method. </exception>
 		''' <seealso cref= #flush() </seealso>
-		Public MustOverride Function node(ByVal pathName As String) As Preferences
+		Public MustOverride Function node(  pathName As String) As Preferences
 
 		''' <summary>
 		''' Returns true if the named preference node exists in the same tree
@@ -909,7 +909,7 @@ Namespace java.util.prefs
 		''' <exception cref="IllegalStateException"> if this node (or an ancestor) has been
 		'''         removed with the <seealso cref="#removeNode()"/> method and
 		'''         <tt>pathName</tt> is not the empty string (<tt>""</tt>). </exception>
-		Public MustOverride Function nodeExists(ByVal pathName As String) As Boolean
+		Public MustOverride Function nodeExists(  pathName As String) As Boolean
 
 		''' <summary>
 		''' Removes this preference node and all of its descendants, invalidating
@@ -1034,7 +1034,7 @@ Namespace java.util.prefs
 		'''         removed with the <seealso cref="#removeNode()"/> method. </exception>
 		''' <seealso cref= #removePreferenceChangeListener(PreferenceChangeListener) </seealso>
 		''' <seealso cref= #addNodeChangeListener(NodeChangeListener) </seealso>
-		Public MustOverride Sub addPreferenceChangeListener(ByVal pcl As PreferenceChangeListener)
+		Public MustOverride Sub addPreferenceChangeListener(  pcl As PreferenceChangeListener)
 
 		''' <summary>
 		''' Removes the specified preference change listener, so it no longer
@@ -1046,7 +1046,7 @@ Namespace java.util.prefs
 		''' <exception cref="IllegalStateException"> if this node (or an ancestor) has been
 		'''         removed with the <seealso cref="#removeNode()"/> method. </exception>
 		''' <seealso cref= #addPreferenceChangeListener(PreferenceChangeListener) </seealso>
-		Public MustOverride Sub removePreferenceChangeListener(ByVal pcl As PreferenceChangeListener)
+		Public MustOverride Sub removePreferenceChangeListener(  pcl As PreferenceChangeListener)
 
 		''' <summary>
 		''' Registers the specified listener to receive <i>node change events</i>
@@ -1076,7 +1076,7 @@ Namespace java.util.prefs
 		'''         removed with the <seealso cref="#removeNode()"/> method. </exception>
 		''' <seealso cref= #removeNodeChangeListener(NodeChangeListener) </seealso>
 		''' <seealso cref= #addPreferenceChangeListener(PreferenceChangeListener) </seealso>
-		Public MustOverride Sub addNodeChangeListener(ByVal ncl As NodeChangeListener)
+		Public MustOverride Sub addNodeChangeListener(  ncl As NodeChangeListener)
 
 		''' <summary>
 		''' Removes the specified <tt>NodeChangeListener</tt>, so it no longer
@@ -1088,7 +1088,7 @@ Namespace java.util.prefs
 		''' <exception cref="IllegalStateException"> if this node (or an ancestor) has been
 		'''         removed with the <seealso cref="#removeNode()"/> method. </exception>
 		''' <seealso cref= #addNodeChangeListener(NodeChangeListener) </seealso>
-		Public MustOverride Sub removeNodeChangeListener(ByVal ncl As NodeChangeListener)
+		Public MustOverride Sub removeNodeChangeListener(  ncl As NodeChangeListener)
 
 		''' <summary>
 		''' Emits on the specified output stream an XML document representing all
@@ -1117,7 +1117,7 @@ Namespace java.util.prefs
 		''' <seealso cref=    #importPreferences(InputStream) </seealso>
 		''' <exception cref="IllegalStateException"> if this node (or an ancestor) has been
 		'''         removed with the <seealso cref="#removeNode()"/> method. </exception>
-		Public MustOverride Sub exportNode(ByVal os As java.io.OutputStream)
+		Public MustOverride Sub exportNode(  os As java.io.OutputStream)
 
 		''' <summary>
 		''' Emits an XML document representing all of the preferences contained
@@ -1147,7 +1147,7 @@ Namespace java.util.prefs
 		'''         removed with the <seealso cref="#removeNode()"/> method. </exception>
 		''' <seealso cref=    #importPreferences(InputStream) </seealso>
 		''' <seealso cref=    #exportNode(OutputStream) </seealso>
-		Public MustOverride Sub exportSubtree(ByVal os As java.io.OutputStream)
+		Public MustOverride Sub exportSubtree(  os As java.io.OutputStream)
 
 		''' <summary>
 		''' Imports all of the preferences represented by the XML document on the
@@ -1180,7 +1180,7 @@ Namespace java.util.prefs
 		''' <exception cref="SecurityException"> If a security manager is present and
 		'''         it denies <tt>RuntimePermission("preferences")</tt>. </exception>
 		''' <seealso cref=    RuntimePermission </seealso>
-		Public Shared Sub importPreferences(ByVal [is] As java.io.InputStream)
+		Public Shared Sub importPreferences(  [is] As java.io.InputStream)
 			XmlSupport.importPreferences([is])
 		End Sub
 	End Class

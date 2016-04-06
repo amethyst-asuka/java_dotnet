@@ -263,7 +263,7 @@ Namespace java.time.temporal
 		''' </summary>
 		''' <param name="locale">  the locale to use, not null </param>
 		''' <returns> the week-definition, not null </returns>
-		Public Shared Function [of](ByVal locale As java.util.Locale) As WeekFields
+		Public Shared Function [of](  locale As java.util.Locale) As WeekFields
 			java.util.Objects.requireNonNull(locale, "locale")
 			locale = New java.util.Locale(locale.language, locale.country) ' elminate variants
 
@@ -292,7 +292,7 @@ Namespace java.time.temporal
 		''' <returns> the week-definition, not null </returns>
 		''' <exception cref="IllegalArgumentException"> if the minimal days value is less than one
 		'''      or greater than 7 </exception>
-		Public Shared Function [of](ByVal firstDayOfWeek As java.time.DayOfWeek, ByVal minimalDaysInFirstWeek As Integer) As WeekFields
+		Public Shared Function [of](  firstDayOfWeek As java.time.DayOfWeek,   minimalDaysInFirstWeek As Integer) As WeekFields
 			Dim key As String = firstDayOfWeek.ToString() & minimalDaysInFirstWeek
 			Dim rules As WeekFields = CACHE.get(key)
 			If rules Is Nothing Then
@@ -310,7 +310,7 @@ Namespace java.time.temporal
 		''' <param name="firstDayOfWeek">  the first day of the week, not null </param>
 		''' <param name="minimalDaysInFirstWeek">  the minimal number of days in the first week, from 1 to 7 </param>
 		''' <exception cref="IllegalArgumentException"> if the minimal days value is invalid </exception>
-		Private Sub New(ByVal firstDayOfWeek As java.time.DayOfWeek, ByVal minimalDaysInFirstWeek As Integer)
+		Private Sub New(  firstDayOfWeek As java.time.DayOfWeek,   minimalDaysInFirstWeek As Integer)
 			java.util.Objects.requireNonNull(firstDayOfWeek, "firstDayOfWeek")
 			If minimalDaysInFirstWeek < 1 OrElse minimalDaysInFirstWeek > 7 Then Throw New IllegalArgumentException("Minimal number of days is invalid")
 			Me.firstDayOfWeek = firstDayOfWeek
@@ -326,7 +326,7 @@ Namespace java.time.temporal
 		''' <exception cref="InvalidObjectException"> if the serialized object has an invalid
 		'''     value for firstDayOfWeek or minimalDays. </exception>
 		''' <exception cref="ClassNotFoundException"> if a class cannot be resolved </exception>
-		Private Sub readObject(ByVal s As java.io.ObjectInputStream)
+		Private Sub readObject(  s As java.io.ObjectInputStream)
 			s.defaultReadObject()
 			If firstDayOfWeek Is Nothing Then Throw New java.io.InvalidObjectException("firstDayOfWeek is null")
 
@@ -587,7 +587,7 @@ Namespace java.time.temporal
 		''' </summary>
 		''' <param name="object">  the other rules to compare to, null returns false </param>
 		''' <returns> true if this is equal to the specified rules </returns>
-		Public Overrides Function Equals(ByVal [object] As Object) As Boolean
+		Public Overrides Function Equals(  [object] As Object) As Boolean
 			If Me Is object_Renamed Then Return True
 			If TypeOf object_Renamed Is WeekFields Then Return GetHashCode() = object_Renamed.GetHashCode()
 			Return False
@@ -629,7 +629,7 @@ Namespace java.time.temporal
 			''' The WeekDefintion of the first day of the week is used with
 			''' the ISO DAY_OF_WEEK field to compute week boundaries.
 			''' </summary>
-			Shared Function ofDayOfWeekField(ByVal weekDef As WeekFields) As ComputedDayOfField
+			Shared Function ofDayOfWeekField(  weekDef As WeekFields) As ComputedDayOfField
 				Return New ComputedDayOfField("DayOfWeek", weekDef, DAYS, WEEKS, DAY_OF_WEEK_RANGE)
 			End Function
 
@@ -637,7 +637,7 @@ Namespace java.time.temporal
 			''' Returns a field to access the week of month,
 			''' computed based on a WeekFields. </summary>
 			''' <seealso cref= WeekFields#weekOfMonth() </seealso>
-			Shared Function ofWeekOfMonthField(ByVal weekDef As WeekFields) As ComputedDayOfField
+			Shared Function ofWeekOfMonthField(  weekDef As WeekFields) As ComputedDayOfField
 				Return New ComputedDayOfField("WeekOfMonth", weekDef, WEEKS, MONTHS, WEEK_OF_MONTH_RANGE)
 			End Function
 
@@ -645,7 +645,7 @@ Namespace java.time.temporal
 			''' Returns a field to access the week of year,
 			''' computed based on a WeekFields. </summary>
 			''' <seealso cref= WeekFields#weekOfYear() </seealso>
-			Shared Function ofWeekOfYearField(ByVal weekDef As WeekFields) As ComputedDayOfField
+			Shared Function ofWeekOfYearField(  weekDef As WeekFields) As ComputedDayOfField
 				Return New ComputedDayOfField("WeekOfYear", weekDef, WEEKS, YEARS, WEEK_OF_YEAR_RANGE)
 			End Function
 
@@ -653,7 +653,7 @@ Namespace java.time.temporal
 			''' Returns a field to access the week of week-based-year,
 			''' computed based on a WeekFields. </summary>
 			''' <seealso cref= WeekFields#weekOfWeekBasedYear() </seealso>
-			Shared Function ofWeekOfWeekBasedYearField(ByVal weekDef As WeekFields) As ComputedDayOfField
+			Shared Function ofWeekOfWeekBasedYearField(  weekDef As WeekFields) As ComputedDayOfField
 				Return New ComputedDayOfField("WeekOfWeekBasedYear", weekDef, WEEKS, IsoFields.WEEK_BASED_YEARS, WEEK_OF_WEEK_BASED_YEAR_RANGE)
 			End Function
 
@@ -661,7 +661,7 @@ Namespace java.time.temporal
 			''' Returns a field to access the week of week-based-year,
 			''' computed based on a WeekFields. </summary>
 			''' <seealso cref= WeekFields#weekBasedYear() </seealso>
-			Shared Function ofWeekBasedYearField(ByVal weekDef As WeekFields) As ComputedDayOfField
+			Shared Function ofWeekBasedYearField(  weekDef As WeekFields) As ComputedDayOfField
 				Return New ComputedDayOfField("WeekBasedYear", weekDef, IsoFields.WEEK_BASED_YEARS, FOREVER, ChronoField.YEAR.range())
 			End Function
 
@@ -673,7 +673,7 @@ Namespace java.time.temporal
 			''' <param name="wowby"> the week of the week-based-year </param>
 			''' <param name="dow"> the day of the week </param>
 			''' <returns> a ChronoLocalDate for the requested year, week of year, and day of week </returns>
-			Private Function ofWeekBasedYear(ByVal chrono As java.time.chrono.Chronology, ByVal yowby As Integer, ByVal wowby As Integer, ByVal dow As Integer) As java.time.chrono.ChronoLocalDate
+			Private Function ofWeekBasedYear(  chrono As java.time.chrono.Chronology,   yowby As Integer,   wowby As Integer,   dow As Integer) As java.time.chrono.ChronoLocalDate
 				Dim date_Renamed As java.time.chrono.ChronoLocalDate = chrono.date(yowby, 1, 1)
 				Dim ldow As Integer = localizedDayOfWeek(date_Renamed)
 				Dim offset As Integer = startOfWeekOffset(1, ldow)
@@ -693,7 +693,7 @@ Namespace java.time.temporal
 			Private ReadOnly rangeUnit As TemporalUnit
 			Private ReadOnly range_Renamed As ValueRange
 
-			Private Sub New(ByVal name As String, ByVal weekDef As WeekFields, ByVal baseUnit As TemporalUnit, ByVal rangeUnit As TemporalUnit, ByVal range As ValueRange)
+			Private Sub New(  name As String,   weekDef As WeekFields,   baseUnit As TemporalUnit,   rangeUnit As TemporalUnit,   range As ValueRange)
 				Me.name = name
 				Me.weekDef = weekDef
 				Me.baseUnit = baseUnit
@@ -706,7 +706,7 @@ Namespace java.time.temporal
 			Private Shared ReadOnly WEEK_OF_YEAR_RANGE As ValueRange = ValueRange.of(0, 1, 52, 54)
 			Private Shared ReadOnly WEEK_OF_WEEK_BASED_YEAR_RANGE As ValueRange = ValueRange.of(1, 52, 53)
 
-			Public Overrides Function getFrom(ByVal temporal As TemporalAccessor) As Long Implements TemporalField.getFrom
+			Public Overrides Function getFrom(  temporal As TemporalAccessor) As Long Implements TemporalField.getFrom
 				If rangeUnit = WEEKS Then ' day-of-week
 					Return localizedDayOfWeek(temporal) ' week-of-month
 				ElseIf rangeUnit = MONTHS Then
@@ -722,25 +722,25 @@ Namespace java.time.temporal
 				End If
 			End Function
 
-			Private Function localizedDayOfWeek(ByVal temporal As TemporalAccessor) As Integer
+			Private Function localizedDayOfWeek(  temporal As TemporalAccessor) As Integer
 				Dim sow As Integer = weekDef.firstDayOfWeek.value
 				Dim isoDow As Integer = temporal.get(DAY_OF_WEEK)
 				Return System.Math.floorMod(isoDow - sow, 7) + 1
 			End Function
 
-			Private Function localizedDayOfWeek(ByVal isoDow As Integer) As Integer
+			Private Function localizedDayOfWeek(  isoDow As Integer) As Integer
 				Dim sow As Integer = weekDef.firstDayOfWeek.value
 				Return System.Math.floorMod(isoDow - sow, 7) + 1
 			End Function
 
-			Private Function localizedWeekOfMonth(ByVal temporal As TemporalAccessor) As Long
+			Private Function localizedWeekOfMonth(  temporal As TemporalAccessor) As Long
 				Dim dow As Integer = localizedDayOfWeek(temporal)
 				Dim dom As Integer = temporal.get(DAY_OF_MONTH)
 				Dim offset As Integer = startOfWeekOffset(dom, dow)
 				Return computeWeek(offset, dom)
 			End Function
 
-			Private Function localizedWeekOfYear(ByVal temporal As TemporalAccessor) As Long
+			Private Function localizedWeekOfYear(  temporal As TemporalAccessor) As Long
 				Dim dow As Integer = localizedDayOfWeek(temporal)
 				Dim doy As Integer = temporal.get(DAY_OF_YEAR)
 				Dim offset As Integer = startOfWeekOffset(doy, dow)
@@ -752,7 +752,7 @@ Namespace java.time.temporal
 			''' The year can be the previous year, the current year, or the next year. </summary>
 			''' <param name="temporal"> a date of any chronology, not null </param>
 			''' <returns> the year of week-based-year for the date </returns>
-			Private Function localizedWeekBasedYear(ByVal temporal As TemporalAccessor) As Integer
+			Private Function localizedWeekBasedYear(  temporal As TemporalAccessor) As Integer
 				Dim dow As Integer = localizedDayOfWeek(temporal)
 				Dim year_Renamed As Integer = temporal.get(YEAR)
 				Dim doy As Integer = temporal.get(DAY_OF_YEAR)
@@ -780,7 +780,7 @@ Namespace java.time.temporal
 			''' <param name="temporal">  a date of any chronology </param>
 			''' <returns> the week of the year </returns>
 			''' <seealso cref= #localizedWeekBasedYear(java.time.temporal.TemporalAccessor) </seealso>
-			Private Function localizedWeekOfWeekBasedYear(ByVal temporal As TemporalAccessor) As Integer
+			Private Function localizedWeekOfWeekBasedYear(  temporal As TemporalAccessor) As Integer
 				Dim dow As Integer = localizedDayOfWeek(temporal)
 				Dim doy As Integer = temporal.get(DAY_OF_YEAR)
 				Dim offset As Integer = startOfWeekOffset(doy, dow)
@@ -808,7 +808,7 @@ Namespace java.time.temporal
 			''' <param name="day">  the day; 1 through infinity </param>
 			''' <param name="dow">  the day of the week of that day; 1 through 7 </param>
 			''' <returns>  an offset in days to align a day with the start of the first 'full' week </returns>
-			Private Function startOfWeekOffset(ByVal day As Integer, ByVal dow As Integer) As Integer
+			Private Function startOfWeekOffset(  day As Integer,   dow As Integer) As Integer
 				' offset of first day corresponding to the day of week in first 7 days (zero origin)
 				Dim weekStart As Integer = System.Math.floorMod(day - dow, 7)
 				Dim offset As Integer = -weekStart
@@ -823,12 +823,12 @@ Namespace java.time.temporal
 			'''     from <seealso cref="#startOfWeekOffset"/>. </param>
 			''' <param name="day">  the day for which to compute the week number </param>
 			''' <returns> the week number where zero is used for a partial week and 1 for the first full week </returns>
-			Private Function computeWeek(ByVal offset As Integer, ByVal day As Integer) As Integer
+			Private Function computeWeek(  offset As Integer,   day As Integer) As Integer
 				Return ((7 + offset + (day - 1)) \ 7)
 			End Function
 
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-			Public Overrides Function adjustInto(Of R As Temporal)(ByVal temporal As R, ByVal newValue As Long) As R Implements TemporalField.adjustInto
+			Public Overrides Function adjustInto(Of R As Temporal)(  temporal As R,   newValue As Long) As R Implements TemporalField.adjustInto
 				' Check the new value and get the old value of the field
 				Dim newVal As Integer = range_Renamed.checkValidIntValue(newValue, Me) ' lenient check range
 				Dim currentVal As Integer = temporal.get(Me)
@@ -846,7 +846,7 @@ Namespace java.time.temporal
 				End If
 			End Function
 
-			Public Overrides Function resolve(ByVal fieldValues As IDictionary(Of TemporalField, Long?), ByVal partialTemporal As TemporalAccessor, ByVal resolverStyle As java.time.format.ResolverStyle) As java.time.chrono.ChronoLocalDate
+			Public Overrides Function resolve(  fieldValues As IDictionary(Of TemporalField, Long?),   partialTemporal As TemporalAccessor,   resolverStyle As java.time.format.ResolverStyle) As java.time.chrono.ChronoLocalDate
 				Dim value As Long = fieldValues(Me)
 				Dim newValue As Integer = System.Math.toIntExact(value) ' broad limit makes overflow checking lighter
 				' first convert localized day-of-week to ISO day-of-week
@@ -881,7 +881,7 @@ Namespace java.time.temporal
 				Return Nothing
 			End Function
 
-			Private Function resolveWoM(ByVal fieldValues As IDictionary(Of TemporalField, Long?), ByVal chrono As java.time.chrono.Chronology, ByVal year_Renamed As Integer, ByVal month As Long, ByVal wom As Long, ByVal localDow As Integer, ByVal resolverStyle As java.time.format.ResolverStyle) As java.time.chrono.ChronoLocalDate
+			Private Function resolveWoM(  fieldValues As IDictionary(Of TemporalField, Long?),   chrono As java.time.chrono.Chronology,   year_Renamed As Integer,   month As Long,   wom As Long,   localDow As Integer,   resolverStyle As java.time.format.ResolverStyle) As java.time.chrono.ChronoLocalDate
 				Dim date_Renamed As java.time.chrono.ChronoLocalDate
 				If resolverStyle = java.time.format.ResolverStyle.LENIENT Then
 					date_Renamed = chrono.date(year_Renamed, 1, 1).plus (System.Math.subtractExact(month, 1), MONTHS)
@@ -904,7 +904,7 @@ Namespace java.time.temporal
 				Return date_Renamed
 			End Function
 
-			Private Function resolveWoY(ByVal fieldValues As IDictionary(Of TemporalField, Long?), ByVal chrono As java.time.chrono.Chronology, ByVal year_Renamed As Integer, ByVal woy As Long, ByVal localDow As Integer, ByVal resolverStyle As java.time.format.ResolverStyle) As java.time.chrono.ChronoLocalDate
+			Private Function resolveWoY(  fieldValues As IDictionary(Of TemporalField, Long?),   chrono As java.time.chrono.Chronology,   year_Renamed As Integer,   woy As Long,   localDow As Integer,   resolverStyle As java.time.format.ResolverStyle) As java.time.chrono.ChronoLocalDate
 				Dim date_Renamed As java.time.chrono.ChronoLocalDate = chrono.date(year_Renamed, 1, 1)
 				If resolverStyle = java.time.format.ResolverStyle.LENIENT Then
 					Dim weeks As Long = System.Math.subtractExact(woy, localizedWeekOfYear(date_Renamed))
@@ -923,7 +923,7 @@ Namespace java.time.temporal
 				Return date_Renamed
 			End Function
 
-			Private Function resolveWBY(ByVal fieldValues As IDictionary(Of TemporalField, Long?), ByVal chrono As java.time.chrono.Chronology, ByVal localDow As Integer, ByVal resolverStyle As java.time.format.ResolverStyle) As java.time.chrono.ChronoLocalDate
+			Private Function resolveWBY(  fieldValues As IDictionary(Of TemporalField, Long?),   chrono As java.time.chrono.Chronology,   localDow As Integer,   resolverStyle As java.time.format.ResolverStyle) As java.time.chrono.ChronoLocalDate
 				Dim yowby As Integer = weekDef.weekBasedYear.range().checkValidIntValue(fieldValues(weekDef.weekBasedYear), weekDef.weekBasedYear)
 				Dim date_Renamed As java.time.chrono.ChronoLocalDate
 				If resolverStyle = java.time.format.ResolverStyle.LENIENT Then
@@ -944,7 +944,7 @@ Namespace java.time.temporal
 			End Function
 
 			'-----------------------------------------------------------------------
-			Public Overrides Function getDisplayName(ByVal locale As java.util.Locale) As String Implements TemporalField.getDisplayName
+			Public Overrides Function getDisplayName(  locale As java.util.Locale) As String Implements TemporalField.getDisplayName
 				java.util.Objects.requireNonNull(locale, "locale")
 				If rangeUnit = YEARS Then ' only have values for week-of-year
 					Dim lr As sun.util.locale.provider.LocaleResources = sun.util.locale.provider.LocaleProviderAdapter.resourceBundleBased.getLocaleResources(locale)
@@ -983,7 +983,7 @@ Namespace java.time.temporal
 			End Function
 
 			'-----------------------------------------------------------------------
-			Public Overrides Function isSupportedBy(ByVal temporal As TemporalAccessor) As Boolean Implements TemporalField.isSupportedBy
+			Public Overrides Function isSupportedBy(  temporal As TemporalAccessor) As Boolean Implements TemporalField.isSupportedBy
 				If temporal.isSupported(DAY_OF_WEEK) Then
 					If rangeUnit = WEEKS Then ' day-of-week
 						Return True ' week-of-month
@@ -1000,7 +1000,7 @@ Namespace java.time.temporal
 				Return False
 			End Function
 
-			Public Overrides Function rangeRefinedBy(ByVal temporal As TemporalAccessor) As ValueRange Implements TemporalField.rangeRefinedBy
+			Public Overrides Function rangeRefinedBy(  temporal As TemporalAccessor) As ValueRange Implements TemporalField.rangeRefinedBy
 				If rangeUnit = ChronoUnit.WEEKS Then ' day-of-week
 					Return range_Renamed ' week-of-month
 				ElseIf rangeUnit = MONTHS Then
@@ -1021,7 +1021,7 @@ Namespace java.time.temporal
 			''' <param name="temporal"> the temporal </param>
 			''' <param name="field"> the field to get the range of </param>
 			''' <returns> the ValueRange with the range adjusted to weeks. </returns>
-			Private Function rangeByWeek(ByVal temporal As TemporalAccessor, ByVal field As TemporalField) As ValueRange
+			Private Function rangeByWeek(  temporal As TemporalAccessor,   field As TemporalField) As ValueRange
 				Dim dow As Integer = localizedDayOfWeek(temporal)
 				Dim offset As Integer = startOfWeekOffset(temporal.get(field), dow)
 				Dim fieldRange As ValueRange = temporal.range(field)
@@ -1032,7 +1032,7 @@ Namespace java.time.temporal
 			''' Map the field range to a week range of a week year. </summary>
 			''' <param name="temporal">  the temporal </param>
 			''' <returns> the ValueRange with the range adjusted to weeks. </returns>
-			Private Function rangeWeekOfWeekBasedYear(ByVal temporal As TemporalAccessor) As ValueRange
+			Private Function rangeWeekOfWeekBasedYear(  temporal As TemporalAccessor) As ValueRange
 				If Not temporal.isSupported(DAY_OF_YEAR) Then Return WEEK_OF_YEAR_RANGE
 				Dim dow As Integer = localizedDayOfWeek(temporal)
 				Dim doy As Integer = temporal.get(DAY_OF_YEAR)

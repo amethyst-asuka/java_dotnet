@@ -72,7 +72,7 @@ Namespace java.awt.image.renderable
 		''' <returns> a <code>RenderContext</code> for
 		'''         the source at the specified index of the parameters
 		'''         Vector contained in the specified ParameterBlock. </returns>
-		Function mapRenderContext(ByVal i As Integer, ByVal renderContext As RenderContext, ByVal paramBlock As ParameterBlock, ByVal image As RenderableImage) As RenderContext
+		Function mapRenderContext(  i As Integer,   renderContext As RenderContext,   paramBlock As ParameterBlock,   image As RenderableImage) As RenderContext
 
         ''' <summary>
         ''' Creates a rendering, given a RenderContext and a ParameterBlock
@@ -89,7 +89,7 @@ Namespace java.awt.image.renderable
         ''' <returns> a <code>RenderedImage</code> from the sources and parameters
         '''         in the specified ParameterBlock and according to the
         '''         rendering instructions in the specified RenderContext. </returns>
-        Overloads Function create(ByVal renderContext As RenderContext, ByVal paramBlock As ParameterBlock) As RenderedImage
+        Overloads Function create(  renderContext As RenderContext,   paramBlock As ParameterBlock) As RenderedImage
 
         ''' <summary>
         ''' Returns the bounding box for the output of the operation,
@@ -101,7 +101,7 @@ Namespace java.awt.image.renderable
         '''        sources and parameters. </param>
         ''' <returns> a Rectangle2D specifying the rendering-independent
         '''         bounding box of the output. </returns>
-        Function getBounds2D(ByVal paramBlock As ParameterBlock) As java.awt.geom.Rectangle2D
+        Function getBounds2D(  paramBlock As ParameterBlock) As java.awt.geom.Rectangle2D
 
 		''' <summary>
 		''' Gets the appropriate instance of the property specified by the name
@@ -112,7 +112,7 @@ Namespace java.awt.image.renderable
 		'''        sources and parameters. </param>
 		''' <param name="name"> a String naming the desired property. </param>
 		''' <returns> an object reference to the value of the property requested. </returns>
-		Function getProperty(ByVal paramBlock As ParameterBlock, ByVal name As String) As Object
+		Function getProperty(  paramBlock As ParameterBlock,   name As String) As Object
 
 		''' <summary>
 		''' Returns a list of names recognized by getProperty. </summary>

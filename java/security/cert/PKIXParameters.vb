@@ -106,7 +106,7 @@ Namespace java.security.cert
 		''' {@code null} </exception>
 		''' <exception cref="ClassCastException"> if any of the elements in the {@code Set}
 		''' are not of type {@code java.security.cert.TrustAnchor} </exception>
-		Public Sub New(ByVal trustAnchors As java.util.Set(Of TrustAnchor))
+		Public Sub New(  trustAnchors As java.util.Set(Of TrustAnchor))
 			trustAnchors = trustAnchors
 
 			Me.unmodInitialPolicies = java.util.Collections.emptySet(Of String)()
@@ -127,7 +127,7 @@ Namespace java.security.cert
 		''' <exception cref="InvalidAlgorithmParameterException"> if the keystore does
 		''' not contain at least one trusted certificate entry </exception>
 		''' <exception cref="NullPointerException"> if the keystore is {@code null} </exception>
-		Public Sub New(ByVal keystore As java.security.KeyStore)
+		Public Sub New(  keystore As java.security.KeyStore)
 			If keystore Is Nothing Then Throw New NullPointerException("the keystore parameter must be " & "non-null")
 			Dim hashSet As java.util.Set(Of TrustAnchor) = New HashSet(Of TrustAnchor)
 			Dim aliases As System.Collections.IEnumerator(Of String) = keystore.aliases()
@@ -158,7 +158,7 @@ Namespace java.security.cert
 			Get
 				Return Me.unmodTrustAnchors
 			End Get
-			Set(ByVal trustAnchors As java.util.Set(Of TrustAnchor))
+			Set(  trustAnchors As java.util.Set(Of TrustAnchor))
 				If trustAnchors Is Nothing Then Throw New NullPointerException("the trustAnchors parameters must" & " be non-null")
 				If trustAnchors.empty Then Throw New java.security.InvalidAlgorithmParameterException("the trustAnchors " & "parameter must be non-empty")
 				Dim i As IEnumerator(Of TrustAnchor) = trustAnchors.GetEnumerator()
@@ -187,7 +187,7 @@ Namespace java.security.cert
 			Get
 				Return Me.unmodInitialPolicies
 			End Get
-			Set(ByVal initialPolicies As java.util.Set(Of String))
+			Set(  initialPolicies As java.util.Set(Of String))
 				If initialPolicies IsNot Nothing Then
 					Dim i As IEnumerator(Of String) = initialPolicies.GetEnumerator()
 					Do While i.MoveNext()
@@ -218,7 +218,7 @@ Namespace java.security.cert
 		''' </exception>
 		''' <seealso cref= #getCertStores </seealso>
 		Public Overridable Property certStores As IList(Of CertStore)
-			Set(ByVal stores As IList(Of CertStore))
+			Set(  stores As IList(Of CertStore))
 				If stores Is Nothing Then
 					Me.certStores = New List(Of CertStore)
 				Else
@@ -240,7 +240,7 @@ Namespace java.security.cert
 		''' </summary>
 		''' <param name="store"> the {@code CertStore} to add. If {@code null},
 		''' the store is ignored (not added to list). </param>
-		Public Overridable Sub addCertStore(ByVal store As CertStore)
+		Public Overridable Sub addCertStore(  store As CertStore)
 			If store IsNot Nothing Then Me.certStores.Add(store)
 		End Sub
 
@@ -263,7 +263,7 @@ Namespace java.security.cert
 		''' </summary>
 		''' <param name="val"> the new value of the RevocationEnabled flag </param>
 		Public Overridable Property revocationEnabled As Boolean
-			Set(ByVal val As Boolean)
+			Set(  val As Boolean)
 				revocationEnabled = val
 			End Set
 			Get
@@ -280,7 +280,7 @@ Namespace java.security.cert
 		''' <param name="val"> {@code true} if explicit policy is to be required,
 		''' {@code false} otherwise </param>
 		Public Overridable Property explicitPolicyRequired As Boolean
-			Set(ByVal val As Boolean)
+			Set(  val As Boolean)
 				explicitPolicyRequired = val
 			End Set
 			Get
@@ -297,7 +297,7 @@ Namespace java.security.cert
 		''' <param name="val"> {@code true} if policy mapping is to be inhibited,
 		''' {@code false} otherwise </param>
 		Public Overridable Property policyMappingInhibited As Boolean
-			Set(ByVal val As Boolean)
+			Set(  val As Boolean)
 				policyMappingInhibited = val
 			End Set
 			Get
@@ -315,7 +315,7 @@ Namespace java.security.cert
 		''' <param name="val"> {@code true} if the any policy OID is to be
 		''' inhibited, {@code false} otherwise </param>
 		Public Overridable Property anyPolicyInhibited As Boolean
-			Set(ByVal val As Boolean)
+			Set(  val As Boolean)
 				anyPolicyInhibited = val
 			End Set
 			Get
@@ -347,7 +347,7 @@ Namespace java.security.cert
 		''' <seealso cref= #getPolicyQualifiersRejected </seealso>
 		''' <seealso cref= PolicyQualifierInfo </seealso>
 		Public Overridable Property policyQualifiersRejected As Boolean
-			Set(ByVal qualifiersRejected As Boolean)
+			Set(  qualifiersRejected As Boolean)
 				policyQualifiersRejected = qualifiersRejected
 			End Set
 			Get
@@ -373,7 +373,7 @@ Namespace java.security.cert
 					Return CDate(Me.date.Value.clone())
 				End If
 			End Get
-			Set(ByVal [date] As DateTime?)
+			Set(  [date] As DateTime?)
 				If date_Renamed IsNot Nothing Then
 					Me.date = CDate(date_Renamed.Value.clone())
 				Else
@@ -419,7 +419,7 @@ Namespace java.security.cert
 		''' are not of type {@code java.security.cert.PKIXCertPathChecker} </exception>
 		''' <seealso cref= #getCertPathCheckers </seealso>
 		Public Overridable Property certPathCheckers As IList(Of PKIXCertPathChecker)
-			Set(ByVal checkers As IList(Of PKIXCertPathChecker))
+			Set(  checkers As IList(Of PKIXCertPathChecker))
 				If checkers IsNot Nothing Then
 					Dim tmpList As IList(Of PKIXCertPathChecker) = New List(Of PKIXCertPathChecker)
 					For Each checker As PKIXCertPathChecker In checkers
@@ -450,7 +450,7 @@ Namespace java.security.cert
 		''' </summary>
 		''' <param name="checker"> a {@code PKIXCertPathChecker} to add to the list of
 		''' checks. If {@code null}, the checker is ignored (not added to list). </param>
-		Public Overridable Sub addCertPathChecker(ByVal checker As PKIXCertPathChecker)
+		Public Overridable Sub addCertPathChecker(  checker As PKIXCertPathChecker)
 			If checker IsNot Nothing Then certPathCheckers.Add(CType(checker.clone(), PKIXCertPathChecker))
 		End Sub
 
@@ -464,7 +464,7 @@ Namespace java.security.cert
 			Get
 				Return Me.sigProvider
 			End Get
-			Set(ByVal sigProvider As String)
+			Set(  sigProvider As String)
 				Me.sigProvider = sigProvider
 			End Set
 		End Property
@@ -489,7 +489,7 @@ Namespace java.security.cert
 					Return Nothing
 				End If
 			End Get
-			Set(ByVal selector As CertSelector)
+			Set(  selector As CertSelector)
 				If selector IsNot Nothing Then
 					certSelector = CType(selector.clone(), CertSelector)
 				Else

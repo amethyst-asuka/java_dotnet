@@ -187,7 +187,7 @@ Namespace java.nio.channels.spi
 		'''          If an I/O error occurs
 		''' 
 		''' @since 1.7 </exception>
-		Public MustOverride Function openDatagramChannel(ByVal family As java.net.ProtocolFamily) As DatagramChannel
+		Public MustOverride Function openDatagramChannel(  family As java.net.ProtocolFamily) As DatagramChannel
 
 		''' <summary>
 		''' Opens a pipe.

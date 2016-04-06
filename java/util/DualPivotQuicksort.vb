@@ -107,7 +107,7 @@ Namespace java.util
 		''' <param name="work"> a workspace array (slice) </param>
 		''' <param name="workBase"> origin of usable space in work array </param>
 		''' <param name="workLen"> usable size of work array </param>
-		Friend Shared Sub sort(ByVal a As Integer(), ByVal left As Integer, ByVal right As Integer, ByVal work As Integer(), ByVal workBase As Integer, ByVal workLen As Integer)
+		Friend Shared Sub sort(  a As Integer(),   left As Integer,   right As Integer,   work As Integer(),   workBase As Integer,   workLen As Integer)
 			' Use Quicksort on small arrays
 			If right - left < QUICKSORT_THRESHOLD Then
 				sort(a, left, right, True)
@@ -259,7 +259,7 @@ Namespace java.util
 		''' <param name="left"> the index of the first element, inclusive, to be sorted </param>
 		''' <param name="right"> the index of the last element, inclusive, to be sorted </param>
 		''' <param name="leftmost"> indicates if this part is the leftmost in the range </param>
-		Private Shared Sub sort(ByVal a As Integer(), ByVal left As Integer, ByVal right As Integer, ByVal leftmost As Boolean)
+		Private Shared Sub sort(  a As Integer(),   left As Integer,   right As Integer,   leftmost As Boolean)
 			Dim length As Integer = right - left + 1
 
 			' Use insertion sort on tiny arrays
@@ -659,7 +659,7 @@ k = left
 		''' <param name="work"> a workspace array (slice) </param>
 		''' <param name="workBase"> origin of usable space in work array </param>
 		''' <param name="workLen"> usable size of work array </param>
-		Friend Shared Sub sort(ByVal a As Long(), ByVal left As Integer, ByVal right As Integer, ByVal work As Long(), ByVal workBase As Integer, ByVal workLen As Integer)
+		Friend Shared Sub sort(  a As Long(),   left As Integer,   right As Integer,   work As Long(),   workBase As Integer,   workLen As Integer)
 			' Use Quicksort on small arrays
 			If right - left < QUICKSORT_THRESHOLD Then
 				sort(a, left, right, True)
@@ -811,7 +811,7 @@ k = left
 		''' <param name="left"> the index of the first element, inclusive, to be sorted </param>
 		''' <param name="right"> the index of the last element, inclusive, to be sorted </param>
 		''' <param name="leftmost"> indicates if this part is the leftmost in the range </param>
-		Private Shared Sub sort(ByVal a As Long(), ByVal left As Integer, ByVal right As Integer, ByVal leftmost As Boolean)
+		Private Shared Sub sort(  a As Long(),   left As Integer,   right As Integer,   leftmost As Boolean)
 			Dim length As Integer = right - left + 1
 
 			' Use insertion sort on tiny arrays
@@ -1211,7 +1211,7 @@ k = left
 		''' <param name="work"> a workspace array (slice) </param>
 		''' <param name="workBase"> origin of usable space in work array </param>
 		''' <param name="workLen"> usable size of work array </param>
-		Friend Shared Sub sort(ByVal a As Short(), ByVal left As Integer, ByVal right As Integer, ByVal work As Short(), ByVal workBase As Integer, ByVal workLen As Integer)
+		Friend Shared Sub sort(  a As Short(),   left As Integer,   right As Integer,   work As Short(),   workBase As Integer,   workLen As Integer)
 			' Use counting sort on large arrays
 			If right - left > COUNTING_SORT_THRESHOLD_FOR_SHORT_OR_CHAR Then
 				Dim count As Integer() = New Integer(NUM_SHORT_VALUES - 1){}
@@ -1257,7 +1257,7 @@ k = left
 		''' <param name="work"> a workspace array (slice) </param>
 		''' <param name="workBase"> origin of usable space in work array </param>
 		''' <param name="workLen"> usable size of work array </param>
-		Private Shared Sub doSort(ByVal a As Short(), ByVal left As Integer, ByVal right As Integer, ByVal work As Short(), ByVal workBase As Integer, ByVal workLen As Integer)
+		Private Shared Sub doSort(  a As Short(),   left As Integer,   right As Integer,   work As Short(),   workBase As Integer,   workLen As Integer)
 			' Use Quicksort on small arrays
 			If right - left < QUICKSORT_THRESHOLD Then
 				sort(a, left, right, True)
@@ -1409,7 +1409,7 @@ k = left
 		''' <param name="left"> the index of the first element, inclusive, to be sorted </param>
 		''' <param name="right"> the index of the last element, inclusive, to be sorted </param>
 		''' <param name="leftmost"> indicates if this part is the leftmost in the range </param>
-		Private Shared Sub sort(ByVal a As Short(), ByVal left As Integer, ByVal right As Integer, ByVal leftmost As Boolean)
+		Private Shared Sub sort(  a As Short(),   left As Integer,   right As Integer,   leftmost As Boolean)
 			Dim length As Integer = right - left + 1
 
 			' Use insertion sort on tiny arrays
@@ -1809,7 +1809,7 @@ k = left
 		''' <param name="work"> a workspace array (slice) </param>
 		''' <param name="workBase"> origin of usable space in work array </param>
 		''' <param name="workLen"> usable size of work array </param>
-		Friend Shared Sub sort(ByVal a As Char(), ByVal left As Integer, ByVal right As Integer, ByVal work As Char(), ByVal workBase As Integer, ByVal workLen As Integer)
+		Friend Shared Sub sort(  a As Char(),   left As Integer,   right As Integer,   work As Char(),   workBase As Integer,   workLen As Integer)
 			' Use counting sort on large arrays
 			If right - left > COUNTING_SORT_THRESHOLD_FOR_SHORT_OR_CHAR Then
 				Dim count As Integer() = New Integer(NUM_CHAR_VALUES - 1){}
@@ -1855,7 +1855,7 @@ k = left
 		''' <param name="work"> a workspace array (slice) </param>
 		''' <param name="workBase"> origin of usable space in work array </param>
 		''' <param name="workLen"> usable size of work array </param>
-		Private Shared Sub doSort(ByVal a As Char(), ByVal left As Integer, ByVal right As Integer, ByVal work As Char(), ByVal workBase As Integer, ByVal workLen As Integer)
+		Private Shared Sub doSort(  a As Char(),   left As Integer,   right As Integer,   work As Char(),   workBase As Integer,   workLen As Integer)
 			' Use Quicksort on small arrays
 			If right - left < QUICKSORT_THRESHOLD Then
 				sort(a, left, right, True)
@@ -2007,7 +2007,7 @@ k = left
 		''' <param name="left"> the index of the first element, inclusive, to be sorted </param>
 		''' <param name="right"> the index of the last element, inclusive, to be sorted </param>
 		''' <param name="leftmost"> indicates if this part is the leftmost in the range </param>
-		Private Shared Sub sort(ByVal a As Char(), ByVal left As Integer, ByVal right As Integer, ByVal leftmost As Boolean)
+		Private Shared Sub sort(  a As Char(),   left As Integer,   right As Integer,   leftmost As Boolean)
 			Dim length As Integer = right - left + 1
 
 			' Use insertion sort on tiny arrays
@@ -2407,7 +2407,7 @@ k = left
 		''' <param name="a"> the array to be sorted </param>
 		''' <param name="left"> the index of the first element, inclusive, to be sorted </param>
 		''' <param name="right"> the index of the last element, inclusive, to be sorted </param>
-		Friend Shared Sub sort(ByVal a As SByte(), ByVal left As Integer, ByVal right As Integer)
+		Friend Shared Sub sort(  a As SByte(),   left As Integer,   right As Integer)
 			' Use counting sort on large arrays
 			If right - left > COUNTING_SORT_THRESHOLD_FOR_BYTE Then
 				Dim count As Integer() = New Integer(NUM_BYTE_VALUES - 1){}
@@ -2463,7 +2463,7 @@ j = i
 		''' <param name="work"> a workspace array (slice) </param>
 		''' <param name="workBase"> origin of usable space in work array </param>
 		''' <param name="workLen"> usable size of work array </param>
-		Friend Shared Sub sort(ByVal a As Single(), ByVal left As Integer, ByVal right As Integer, ByVal work As Single(), ByVal workBase As Integer, ByVal workLen As Integer)
+		Friend Shared Sub sort(  a As Single(),   left As Integer,   right As Integer,   work As Single(),   workBase As Integer,   workLen As Integer)
 	'        
 	'         * Phase 1: Move NaNs to the end of the array.
 	'         
@@ -2556,7 +2556,7 @@ j = i
 		''' <param name="work"> a workspace array (slice) </param>
 		''' <param name="workBase"> origin of usable space in work array </param>
 		''' <param name="workLen"> usable size of work array </param>
-		Private Shared Sub doSort(ByVal a As Single(), ByVal left As Integer, ByVal right As Integer, ByVal work As Single(), ByVal workBase As Integer, ByVal workLen As Integer)
+		Private Shared Sub doSort(  a As Single(),   left As Integer,   right As Integer,   work As Single(),   workBase As Integer,   workLen As Integer)
 			' Use Quicksort on small arrays
 			If right - left < QUICKSORT_THRESHOLD Then
 				sort(a, left, right, True)
@@ -2708,7 +2708,7 @@ j = i
 		''' <param name="left"> the index of the first element, inclusive, to be sorted </param>
 		''' <param name="right"> the index of the last element, inclusive, to be sorted </param>
 		''' <param name="leftmost"> indicates if this part is the leftmost in the range </param>
-		Private Shared Sub sort(ByVal a As Single(), ByVal left As Integer, ByVal right As Integer, ByVal leftmost As Boolean)
+		Private Shared Sub sort(  a As Single(),   left As Integer,   right As Integer,   leftmost As Boolean)
 			Dim length As Integer = right - left + 1
 
 			' Use insertion sort on tiny arrays
@@ -3108,7 +3108,7 @@ k = left
 		''' <param name="work"> a workspace array (slice) </param>
 		''' <param name="workBase"> origin of usable space in work array </param>
 		''' <param name="workLen"> usable size of work array </param>
-		Friend Shared Sub sort(ByVal a As Double(), ByVal left As Integer, ByVal right As Integer, ByVal work As Double(), ByVal workBase As Integer, ByVal workLen As Integer)
+		Friend Shared Sub sort(  a As Double(),   left As Integer,   right As Integer,   work As Double(),   workBase As Integer,   workLen As Integer)
 	'        
 	'         * Phase 1: Move NaNs to the end of the array.
 	'         
@@ -3201,7 +3201,7 @@ k = left
 		''' <param name="work"> a workspace array (slice) </param>
 		''' <param name="workBase"> origin of usable space in work array </param>
 		''' <param name="workLen"> usable size of work array </param>
-		Private Shared Sub doSort(ByVal a As Double(), ByVal left As Integer, ByVal right As Integer, ByVal work As Double(), ByVal workBase As Integer, ByVal workLen As Integer)
+		Private Shared Sub doSort(  a As Double(),   left As Integer,   right As Integer,   work As Double(),   workBase As Integer,   workLen As Integer)
 			' Use Quicksort on small arrays
 			If right - left < QUICKSORT_THRESHOLD Then
 				sort(a, left, right, True)
@@ -3353,7 +3353,7 @@ k = left
 		''' <param name="left"> the index of the first element, inclusive, to be sorted </param>
 		''' <param name="right"> the index of the last element, inclusive, to be sorted </param>
 		''' <param name="leftmost"> indicates if this part is the leftmost in the range </param>
-		Private Shared Sub sort(ByVal a As Double(), ByVal left As Integer, ByVal right As Integer, ByVal leftmost As Boolean)
+		Private Shared Sub sort(  a As Double(),   left As Integer,   right As Integer,   leftmost As Boolean)
 			Dim length As Integer = right - left + 1
 
 			' Use insertion sort on tiny arrays

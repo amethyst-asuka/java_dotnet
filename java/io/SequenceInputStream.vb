@@ -63,7 +63,7 @@ Namespace java.io
 		''' </summary>
 		''' <param name="e">   an enumeration of input streams. </param>
 		''' <seealso cref=     java.util.Enumeration </seealso>
-		Public Sub New(Of T1 As java.io.InputStream)(ByVal e As System.Collections.IEnumerator(Of T1))
+		Public Sub New(Of T1 As java.io.InputStream)(  e As System.Collections.IEnumerator(Of T1))
 			Me.e = e
 			Try
 				nextStream()
@@ -83,7 +83,7 @@ Namespace java.io
 		''' </summary>
 		''' <param name="s1">   the first input stream to read. </param>
 		''' <param name="s2">   the second input stream to read. </param>
-		Public Sub New(ByVal s1 As java.io.InputStream, ByVal s2 As java.io.InputStream)
+		Public Sub New(  s1 As java.io.InputStream,   s2 As java.io.InputStream)
 			Dim v As New List(Of java.io.InputStream)(2)
 
 			v.Add(s1)

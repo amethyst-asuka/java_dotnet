@@ -40,7 +40,7 @@ Namespace java.beans
 		''' </summary>
 		''' <param name="e"> The exception that was caught.
 		'''  </param>
-		Sub exceptionThrown(ByVal e As Exception)
+		Sub exceptionThrown(  e As Exception)
 	End Interface
 
 End Namespace

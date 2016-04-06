@@ -114,9 +114,9 @@ Namespace java.security.cert
 		''' <seealso cref= #getIssuers
 		''' @since 1.5 </seealso>
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
-        Public Overridable Sub setIssuers(ByVal issuers As Collection(Of javax.security.auth.x500.X500Principal)) 'JavaToDotNetTempPropertySetissuers
+        Public Overridable Sub setIssuers(  issuers As Collection(Of javax.security.auth.x500.X500Principal)) 'JavaToDotNetTempPropertySetissuers
 		Public Overridable Property issuers As Collection(Of javax.security.auth.x500.X500Principal)
-			Set(ByVal issuers As Collection(Of javax.security.auth.x500.X500Principal))
+			Set(  issuers As Collection(Of javax.security.auth.x500.X500Principal))
 				If (issuers Is Nothing) OrElse issuers.empty Then
 					issuerNames = Nothing
 					issuerX500Principals = Nothing
@@ -194,9 +194,9 @@ Namespace java.security.cert
 		''' <exception cref="IOException"> if a parsing error occurs </exception>
 		''' <seealso cref= #getIssuerNames </seealso>
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
-        Public Overridable Sub setIssuerNames(Of T1)(ByVal names As Collection(Of T1)) 'JavaToDotNetTempPropertySetissuerNames
+        Public Overridable Sub setIssuerNames(Of T1)(  names As Collection(Of T1)) 'JavaToDotNetTempPropertySetissuerNames
 		Public Overridable Property issuerNames(Of T1) As Collection(Of T1)
-			Set(ByVal names As Collection(Of T1))
+			Set(  names As Collection(Of T1))
 				If names Is Nothing OrElse names.size() = 0 Then
 					issuerNames = Nothing
 					issuerX500Principals = Nothing
@@ -222,7 +222,7 @@ Namespace java.security.cert
 		''' </summary>
 		''' <param name="issuer"> the issuer as X500Principal
 		''' @since 1.5 </param>
-		Public Overridable Sub addIssuer(ByVal issuer As javax.security.auth.x500.X500Principal)
+		Public Overridable Sub addIssuer(  issuer As javax.security.auth.x500.X500Principal)
 			addIssuerNameInternal(issuer.encoded, issuer)
 		End Sub
 
@@ -245,7 +245,7 @@ Namespace java.security.cert
 		''' </summary>
 		''' <param name="name"> the name in RFC 2253 form </param>
 		''' <exception cref="IOException"> if a parsing error occurs </exception>
-		Public Overridable Sub addIssuerName(ByVal name As String)
+		Public Overridable Sub addIssuerName(  name As String)
 			addIssuerNameInternal(name, (New sun.security.x509.X500Name(name)).asX500Principal())
 		End Sub
 
@@ -272,7 +272,7 @@ Namespace java.security.cert
 		''' </summary>
 		''' <param name="name"> a byte array containing the name in ASN.1 DER encoded form </param>
 		''' <exception cref="IOException"> if a parsing error occurs </exception>
-		Public Overridable Sub addIssuerName(ByVal name As SByte())
+		Public Overridable Sub addIssuerName(  name As SByte())
 			' clone because byte arrays are modifiable
 			addIssuerNameInternal(name.clone(), (New sun.security.x509.X500Name(name)).asX500Principal())
 		End Sub
@@ -286,7 +286,7 @@ Namespace java.security.cert
 		''' <param name="name"> the name in string or byte array form </param>
 		''' <param name="principal"> the name in X500Principal form </param>
 		''' <exception cref="IOException"> if a parsing error occurs </exception>
-		Private Sub addIssuerNameInternal(ByVal name As Object, ByVal principal As javax.security.auth.x500.X500Principal)
+		Private Sub addIssuerNameInternal(  name As Object,   principal As javax.security.auth.x500.X500Principal)
 			If issuerNames Is Nothing Then issuerNames = New HashSet(Of Object)
 			If issuerX500Principals Is Nothing Then issuerX500Principals = New HashSet(Of javax.security.auth.x500.X500Principal)
 			issuerNames.add(name)
@@ -303,7 +303,7 @@ Namespace java.security.cert
 		'''              not an acceptable value. </param>
 		''' <returns> a deep copy of the specified {@code Collection} </returns>
 		''' <exception cref="IOException"> if a parsing error occurs </exception>
-		Private Shared Function cloneAndCheckIssuerNames(Of T1)(ByVal names As Collection(Of T1)) As HashSet(Of Object)
+		Private Shared Function cloneAndCheckIssuerNames(Of T1)(  names As Collection(Of T1)) As HashSet(Of Object)
 			Dim namesCopy As New HashSet(Of Object)
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 			Dim i As [Iterator](Of ?) = names.GetEnumerator()
@@ -333,7 +333,7 @@ Namespace java.security.cert
 		'''              not an acceptable value. </param>
 		''' <returns> a deep copy of the specified {@code Collection} </returns>
 		''' <exception cref="RuntimeException"> if a parsing error occurs </exception>
-		Private Shared Function cloneIssuerNames(ByVal names As Collection(Of Object)) As HashSet(Of Object)
+		Private Shared Function cloneIssuerNames(  names As Collection(Of Object)) As HashSet(Of Object)
 			Try
 				Return cloneAndCheckIssuerNames(names)
 			Catch ioe As java.io.IOException
@@ -352,7 +352,7 @@ Namespace java.security.cert
 		'''              not an acceptable value. </param>
 		''' <returns> a HashSet of issuerX500Principals </returns>
 		''' <exception cref="IOException"> if a parsing error occurs </exception>
-		Private Shared Function parseIssuerNames(ByVal names As Collection(Of Object)) As HashSet(Of javax.security.auth.x500.X500Principal)
+		Private Shared Function parseIssuerNames(  names As Collection(Of Object)) As HashSet(Of javax.security.auth.x500.X500Principal)
 			Dim x500Principals As New HashSet(Of javax.security.auth.x500.X500Principal)
 			Dim t As [Iterator](Of Object) = names.GetEnumerator()
 			Do While t.MoveNext()
@@ -378,7 +378,7 @@ Namespace java.security.cert
 		''' </summary>
 		''' <param name="minCRL"> the minimum CRL number accepted (or {@code null}) </param>
 		Public Overridable Property minCRLNumber As System.Numerics.BigInteger
-			Set(ByVal minCRL As System.Numerics.BigInteger)
+			Set(  minCRL As System.Numerics.BigInteger)
 				Me.minCRL = minCRL
 			End Set
 		End Property
@@ -391,7 +391,7 @@ Namespace java.security.cert
 		''' </summary>
 		''' <param name="maxCRL"> the maximum CRL number accepted (or {@code null}) </param>
 		Public Overridable Property maxCRLNumber As System.Numerics.BigInteger
-			Set(ByVal maxCRL As System.Numerics.BigInteger)
+			Set(  maxCRL As System.Numerics.BigInteger)
 				Me.maxCRL = maxCRL
 			End Set
 		End Property
@@ -411,9 +411,9 @@ Namespace java.security.cert
 		'''                    (or {@code null}) </param>
 		''' <seealso cref= #getDateAndTime </seealso>
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
-        Public Overridable Sub setDateAndTime(ByVal dateAndTime As Date) 'JavaToDotNetTempPropertySetdateAndTime
+        Public Overridable Sub setDateAndTime(  dateAndTime As Date) 'JavaToDotNetTempPropertySetdateAndTime
 		Public Overridable Property dateAndTime As Date
-			Set(ByVal dateAndTime As Date)
+			Set(  dateAndTime As Date)
 				If dateAndTime Is Nothing Then
 					Me.dateAndTime = Nothing
 				Else
@@ -428,7 +428,7 @@ Namespace java.security.cert
 		''' Sets the dateAndTime criterion and allows for the specified clock skew
 		''' (in milliseconds) when checking against the validity period of the CRL.
 		''' </summary>
-		Friend Overridable Sub setDateAndTime(ByVal dateAndTime As Date, ByVal skew As Long)
+		Friend Overridable Sub setDateAndTime(  dateAndTime As Date,   skew As Long)
 			Me.dateAndTime = (If(dateAndTime Is Nothing, Nothing, New Date(dateAndTime.time)))
 			Me.skew = skew
 		End Sub
@@ -444,9 +444,9 @@ Namespace java.security.cert
 		'''             (or {@code null}) </param>
 		''' <seealso cref= #getCertificateChecking </seealso>
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
-        Public Overridable Sub setCertificateChecking(ByVal cert As X509Certificate) 'JavaToDotNetTempPropertySetcertificateChecking
+        Public Overridable Sub setCertificateChecking(  cert As X509Certificate) 'JavaToDotNetTempPropertySetcertificateChecking
 		Public Overridable Property certificateChecking As X509Certificate
-			Set(ByVal cert As X509Certificate)
+			Set(  cert As X509Certificate)
 				certChecking = cert
 			End Set
 			Get
@@ -521,7 +521,7 @@ Namespace java.security.cert
 		''' <param name="crl"> the {@code CRL} to be checked </param>
 		''' <returns> {@code true} if the {@code CRL} should be selected,
 		'''         {@code false} otherwise </returns>
-		Public Overridable Function match(ByVal crl As CRL) As Boolean Implements CRLSelector.match
+		Public Overridable Function match(  crl As CRL) As Boolean Implements CRLSelector.match
 			If Not(TypeOf crl Is X509CRL) Then Return False
 			Dim xcrl As X509CRL = CType(crl, X509CRL)
 

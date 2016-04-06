@@ -50,7 +50,7 @@ Namespace java.beans
 		''' <code>Method</code>.
 		''' </summary>
 		''' <param name="method">    The low-level method information. </param>
-		Public Sub New(ByVal method As Method)
+		Public Sub New(  method As Method)
 			Me.New(method, Nothing)
 		End Sub
 
@@ -63,7 +63,7 @@ Namespace java.beans
 		''' <param name="method">    The low-level method information. </param>
 		''' <param name="parameterDescriptors">  Descriptive information for each of the
 		'''                          method's parameters. </param>
-		Public Sub New(ByVal method As Method, ByVal parameterDescriptors As ParameterDescriptor())
+		Public Sub New(  method As Method,   parameterDescriptors As ParameterDescriptor())
 			name = method.name
 			method = method
 			Me.parameterDescriptors = If(parameterDescriptors IsNot Nothing, parameterDescriptors.clone(), Nothing)
@@ -98,7 +98,7 @@ Namespace java.beans
 				End If
 				Return method_Renamed
 			End Get
-			Set(ByVal method As Method)
+			Set(  method As Method)
 				If method Is Nothing Then Return
 				If class0 Is Nothing Then class0 = method.declaringClass
 				params = getParameterTypes(class0, method)
@@ -109,9 +109,9 @@ Namespace java.beans
 
 		<MethodImpl(MethodImplOptions.Synchronized)> _
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
-        Private Sub setParams(ByVal param As  [Class][]) 'JavaToDotNetTempPropertySetparams
+        Private Sub setParams(  param As  [Class][]) 'JavaToDotNetTempPropertySetparams
 		Private Property params As  [Class]()
-			Set(ByVal param As  [Class]())
+			Set(  param As  [Class]())
 				If param Is Nothing Then Return
 				paramNames = New String(param.Length - 1){}
 				params = New List(Of )(param.Length)
@@ -157,7 +157,7 @@ Namespace java.beans
 			End Get
 		End Property
 
-		Private Shared Function resolve(ByVal oldMethod As Method, ByVal newMethod As Method) As Method
+		Private Shared Function resolve(  oldMethod As Method,   newMethod As Method) As Method
 			If oldMethod Is Nothing Then Return newMethod
 			If newMethod Is Nothing Then Return oldMethod
 			Return If((Not oldMethod.synthetic) AndAlso newMethod.synthetic, oldMethod, newMethod)
@@ -171,7 +171,7 @@ Namespace java.beans
 	'     * @param y  The second (higher priority) MethodDescriptor
 	'     
 
-		Friend Sub New(ByVal x As MethodDescriptor, ByVal y As MethodDescriptor)
+		Friend Sub New(  x As MethodDescriptor,   y As MethodDescriptor)
 			MyBase.New(x, y)
 
 			Me.methodRef.set(resolve(x.methodRef.get(), y.methodRef.get()))
@@ -188,7 +188,7 @@ Namespace java.beans
 	'     * Package-private dup constructor
 	'     * This must isolate the new object from any changes to the old object.
 	'     
-		Friend Sub New(ByVal old As MethodDescriptor)
+		Friend Sub New(  old As MethodDescriptor)
 			MyBase.New(old)
 
 			Me.methodRef.set(old.method)
@@ -204,7 +204,7 @@ Namespace java.beans
 			End If
 		End Sub
 
-		Friend Overrides Sub appendTo(ByVal sb As StringBuilder)
+		Friend Overrides Sub appendTo(  sb As StringBuilder)
 			appendTo(sb, "method", Me.methodRef.get())
 			If Me.parameterDescriptors IsNot Nothing Then
 				sb.append("; parameterDescriptors={")

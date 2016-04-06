@@ -70,7 +70,7 @@ Namespace java.util.zip
 		''' <exception cref="IllegalArgumentException"> if {@code size <= 0}
 		''' 
 		''' @since 1.7 </exception>
-		Public Sub New(ByVal out As java.io.OutputStream, ByVal def As Deflater, ByVal size As Integer, ByVal syncFlush As Boolean)
+		Public Sub New(  out As java.io.OutputStream,   def As Deflater,   size As Integer,   syncFlush As Boolean)
 			MyBase.New(out)
 			If out Is Nothing OrElse def Is Nothing Then
 				Throw New NullPointerException
@@ -94,7 +94,7 @@ Namespace java.util.zip
 		''' <param name="def"> the compressor ("deflater") </param>
 		''' <param name="size"> the output buffer size </param>
 		''' <exception cref="IllegalArgumentException"> if {@code size <= 0} </exception>
-		Public Sub New(ByVal out As java.io.OutputStream, ByVal def As Deflater, ByVal size As Integer)
+		Public Sub New(  out As java.io.OutputStream,   def As Deflater,   size As Integer)
 			Me.New(out, def, size, False)
 		End Sub
 
@@ -111,7 +111,7 @@ Namespace java.util.zip
 		'''        stream, otherwise only flushes the output stream
 		''' 
 		''' @since 1.7 </param>
-		Public Sub New(ByVal out As java.io.OutputStream, ByVal def As Deflater, ByVal syncFlush As Boolean)
+		Public Sub New(  out As java.io.OutputStream,   def As Deflater,   syncFlush As Boolean)
 			Me.New(out, def, 512, syncFlush)
 		End Sub
 
@@ -125,7 +125,7 @@ Namespace java.util.zip
 		''' </summary>
 		''' <param name="out"> the output stream </param>
 		''' <param name="def"> the compressor ("deflater") </param>
-		Public Sub New(ByVal out As java.io.OutputStream, ByVal def As Deflater)
+		Public Sub New(  out As java.io.OutputStream,   def As Deflater)
 			Me.New(out, def, 512, False)
 		End Sub
 
@@ -144,7 +144,7 @@ Namespace java.util.zip
 		'''        stream, otherwise only flushes the output stream
 		''' 
 		''' @since 1.7 </param>
-		Public Sub New(ByVal out As java.io.OutputStream, ByVal syncFlush As Boolean)
+		Public Sub New(  out As java.io.OutputStream,   syncFlush As Boolean)
 			Me.New(out, New Deflater, 512, syncFlush)
 			usesDefaultDeflater = True
 		End Sub
@@ -156,7 +156,7 @@ Namespace java.util.zip
 		''' the 2-argument constructor DeflaterOutputStream(out, false).
 		''' </summary>
 		''' <param name="out"> the output stream </param>
-		Public Sub New(ByVal out As java.io.OutputStream)
+		Public Sub New(  out As java.io.OutputStream)
 			Me.New(out, False)
 			usesDefaultDeflater = True
 		End Sub
@@ -166,7 +166,7 @@ Namespace java.util.zip
 		''' block until the byte can be written. </summary>
 		''' <param name="b"> the byte to be written </param>
 		''' <exception cref="IOException"> if an I/O error has occurred </exception>
-		Public Overrides Sub write(ByVal b As Integer)
+		Public Overrides Sub write(  b As Integer)
 			Dim buf As SByte() = New SByte(0){}
 			buf(0) = CByte(b And &Hff)
 			write(buf, 0, 1)
@@ -179,7 +179,7 @@ Namespace java.util.zip
 		''' <param name="off"> the start offset of the data </param>
 		''' <param name="len"> the length of the data </param>
 		''' <exception cref="IOException"> if an I/O error has occurred </exception>
-		Public Overrides Sub write(ByVal b As SByte(), ByVal [off] As Integer, ByVal len As Integer)
+		Public Overrides Sub write(  b As SByte(),   [off] As Integer,   len As Integer)
 			If def.finished() Then Throw New java.io.IOException("write beyond end of stream")
 			If ([off] Or len Or ([off] + len) Or (b.Length - ([off] + len))) < 0 Then
 				Throw New IndexOutOfBoundsException

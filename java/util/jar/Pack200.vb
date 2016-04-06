@@ -565,7 +565,7 @@ Namespace java.util.jar
 			''' <param name="in"> a JarFile </param>
 			''' <param name="out"> an OutputStream </param>
 			''' <exception cref="IOException"> if an error is encountered. </exception>
-			Sub pack(ByVal [in] As JarFile, ByVal out As java.io.OutputStream)
+			Sub pack(  [in] As JarFile,   out As java.io.OutputStream)
 
 			''' <summary>
 			''' Takes a JarInputStream and converts it into a Pack200 archive.
@@ -580,7 +580,7 @@ Namespace java.util.jar
 			''' <param name="in"> a JarInputStream </param>
 			''' <param name="out"> an OutputStream </param>
 			''' <exception cref="IOException"> if an error is encountered. </exception>
-			Sub pack(ByVal [in] As JarInputStream, ByVal out As java.io.OutputStream)
+			Sub pack(  [in] As JarInputStream,   out As java.io.OutputStream)
 
 			''' <summary>
 			''' Registers a listener for PropertyChange events on the properties map.
@@ -604,7 +604,7 @@ Namespace java.util.jar
 			'''             can poll the value of the <seealso cref="#PROGRESS PROGRESS"/>
 			'''             property instead. 
 			<Obsolete("The dependency on {@code PropertyChangeListener} creates")> _
-			default Sub addPropertyChangeListener(ByVal listener As java.beans.PropertyChangeListener)
+			default Sub addPropertyChangeListener(  listener As java.beans.PropertyChangeListener)
 
 			''' <summary>
 			''' Remove a listener for PropertyChange events, added by
@@ -624,7 +624,7 @@ Namespace java.util.jar
 			'''             Java platform. This method will be removed in a future
 			'''             release. 
 			<Obsolete("The dependency on {@code PropertyChangeListener} creates")> _
-			default Sub removePropertyChangeListener(ByVal listener As java.beans.PropertyChangeListener)
+			default Sub removePropertyChangeListener(  listener As java.beans.PropertyChangeListener)
 		End Interface
 
 		''' <summary>
@@ -727,7 +727,7 @@ Namespace java.util.jar
 			''' <param name="in"> an InputStream. </param>
 			''' <param name="out"> a JarOutputStream. </param>
 			''' <exception cref="IOException"> if an error is encountered. </exception>
-			Sub unpack(ByVal [in] As java.io.InputStream, ByVal out As JarOutputStream)
+			Sub unpack(  [in] As java.io.InputStream,   out As JarOutputStream)
 
 			''' <summary>
 			''' Read a Pack200 archive, and write the encoded JAR to
@@ -737,7 +737,7 @@ Namespace java.util.jar
 			''' <param name="in"> a File. </param>
 			''' <param name="out"> a JarOutputStream. </param>
 			''' <exception cref="IOException"> if an error is encountered. </exception>
-			Sub unpack(ByVal [in] As java.io.File, ByVal out As JarOutputStream)
+			Sub unpack(  [in] As java.io.File,   out As JarOutputStream)
 
 			''' <summary>
 			''' Registers a listener for PropertyChange events on the properties map.
@@ -761,7 +761,7 @@ Namespace java.util.jar
 			'''             unpacker can poll the value of the {@link #PROGRESS
 			'''             PROGRESS} property instead. 
 			<Obsolete("The dependency on {@code PropertyChangeListener} creates")> _
-			default Sub addPropertyChangeListener(ByVal listener As java.beans.PropertyChangeListener)
+			default Sub addPropertyChangeListener(  listener As java.beans.PropertyChangeListener)
 
 			''' <summary>
 			''' Remove a listener for PropertyChange events, added by
@@ -781,7 +781,7 @@ Namespace java.util.jar
 			'''             Java platform. This method will be removed in a future
 			'''             release. 
 			<Obsolete("The dependency on {@code PropertyChangeListener} creates")> _
-			default Sub removePropertyChangeListener(ByVal listener As java.beans.PropertyChangeListener)
+			default Sub removePropertyChangeListener(  listener As java.beans.PropertyChangeListener)
 		End Interface
 
 		' Private stuff....
@@ -793,7 +793,7 @@ Namespace java.util.jar
 		Private Shared unpackerImpl As  [Class]
 
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Private Shared Function newInstance(ByVal prop As String) As Object
+		Private Shared Function newInstance(  prop As String) As Object
 			Dim implName As String = "(unknown)"
 			Try
 				Dim impl As  [Class] = If(PACK_PROVIDER.Equals(prop), packerImpl, unpackerImpl)

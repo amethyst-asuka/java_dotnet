@@ -82,7 +82,7 @@ Namespace java.beans
 		''' Constructs a <code>VetoableChangeSupport</code> object.
 		''' </summary>
 		''' <param name="sourceBean">  The bean to be given as the source for any events. </param>
-		Public Sub New(ByVal sourceBean As Object)
+		Public Sub New(  sourceBean As Object)
 			If sourceBean Is Nothing Then Throw New NullPointerException
 			source = sourceBean
 		End Sub
@@ -96,7 +96,7 @@ Namespace java.beans
 		''' is taken.
 		''' </summary>
 		''' <param name="listener">  The VetoableChangeListener to be added </param>
-		Public Overridable Sub addVetoableChangeListener(ByVal listener As VetoableChangeListener)
+		Public Overridable Sub addVetoableChangeListener(  listener As VetoableChangeListener)
 			If listener Is Nothing Then Return
 			If TypeOf listener Is VetoableChangeListenerProxy Then
 				Dim proxy As VetoableChangeListenerProxy = CType(listener, VetoableChangeListenerProxy)
@@ -117,7 +117,7 @@ Namespace java.beans
 		''' thrown and no action is taken.
 		''' </summary>
 		''' <param name="listener">  The VetoableChangeListener to be removed </param>
-		Public Overridable Sub removeVetoableChangeListener(ByVal listener As VetoableChangeListener)
+		Public Overridable Sub removeVetoableChangeListener(  listener As VetoableChangeListener)
 			If listener Is Nothing Then Return
 			If TypeOf listener Is VetoableChangeListenerProxy Then
 				Dim proxy As VetoableChangeListenerProxy = CType(listener, VetoableChangeListenerProxy)
@@ -176,7 +176,7 @@ Namespace java.beans
 		''' </summary>
 		''' <param name="propertyName">  The name of the property to listen on. </param>
 		''' <param name="listener">  The VetoableChangeListener to be added </param>
-		Public Overridable Sub addVetoableChangeListener(ByVal propertyName As String, ByVal listener As VetoableChangeListener)
+		Public Overridable Sub addVetoableChangeListener(  propertyName As String,   listener As VetoableChangeListener)
 			If listener Is Nothing OrElse propertyName Is Nothing Then Return
 			listener = Me.map.extract(listener)
 			If listener IsNot Nothing Then Me.map.add(propertyName, listener)
@@ -194,7 +194,7 @@ Namespace java.beans
 		''' </summary>
 		''' <param name="propertyName">  The name of the property that was listened on. </param>
 		''' <param name="listener">  The VetoableChangeListener to be removed </param>
-		Public Overridable Sub removeVetoableChangeListener(ByVal propertyName As String, ByVal listener As VetoableChangeListener)
+		Public Overridable Sub removeVetoableChangeListener(  propertyName As String,   listener As VetoableChangeListener)
 			If listener Is Nothing OrElse propertyName Is Nothing Then Return
 			listener = Me.map.extract(listener)
 			If listener IsNot Nothing Then Me.map.remove(propertyName, listener)
@@ -210,7 +210,7 @@ Namespace java.beans
 		'''         or if <code>propertyName</code> is null, an empty array is
 		'''         returned.
 		''' @since 1.4 </returns>
-		Public Overridable Function getVetoableChangeListeners(ByVal propertyName As String) As VetoableChangeListener()
+		Public Overridable Function getVetoableChangeListeners(  propertyName As String) As VetoableChangeListener()
 			Return Me.map.getListeners(propertyName)
 		End Function
 
@@ -234,7 +234,7 @@ Namespace java.beans
 		''' <param name="oldValue">      the old value of the property </param>
 		''' <param name="newValue">      the new value of the property </param>
 		''' <exception cref="PropertyVetoException"> if one of listeners vetoes the property update </exception>
-		Public Overridable Sub fireVetoableChange(ByVal propertyName As String, ByVal oldValue As Object, ByVal newValue As Object)
+		Public Overridable Sub fireVetoableChange(  propertyName As String,   oldValue As Object,   newValue As Object)
 			If oldValue Is Nothing OrElse newValue Is Nothing OrElse (Not oldValue.Equals(newValue)) Then fireVetoableChange(New PropertyChangeEvent(Me.source, propertyName, oldValue, newValue))
 		End Sub
 
@@ -258,7 +258,7 @@ Namespace java.beans
 		''' <param name="oldValue">      the old value of the property </param>
 		''' <param name="newValue">      the new value of the property </param>
 		''' <exception cref="PropertyVetoException"> if one of listeners vetoes the property update </exception>
-		Public Overridable Sub fireVetoableChange(ByVal propertyName As String, ByVal oldValue As Integer, ByVal newValue As Integer)
+		Public Overridable Sub fireVetoableChange(  propertyName As String,   oldValue As Integer,   newValue As Integer)
 			If oldValue <> newValue Then fireVetoableChange(propertyName, Convert.ToInt32(oldValue), Convert.ToInt32(newValue))
 		End Sub
 
@@ -282,7 +282,7 @@ Namespace java.beans
 		''' <param name="oldValue">      the old value of the property </param>
 		''' <param name="newValue">      the new value of the property </param>
 		''' <exception cref="PropertyVetoException"> if one of listeners vetoes the property update </exception>
-		Public Overridable Sub fireVetoableChange(ByVal propertyName As String, ByVal oldValue As Boolean, ByVal newValue As Boolean)
+		Public Overridable Sub fireVetoableChange(  propertyName As String,   oldValue As Boolean,   newValue As Boolean)
 			If oldValue <> newValue Then fireVetoableChange(propertyName, Convert.ToBoolean(oldValue), Convert.ToBoolean(newValue))
 		End Sub
 
@@ -301,7 +301,7 @@ Namespace java.beans
 		''' </summary>
 		''' <param name="event">  the {@code PropertyChangeEvent} to be fired </param>
 		''' <exception cref="PropertyVetoException"> if one of listeners vetoes the property update </exception>
-		Public Overridable Sub fireVetoableChange(ByVal [event] As PropertyChangeEvent)
+		Public Overridable Sub fireVetoableChange(  [event] As PropertyChangeEvent)
 			Dim oldValue As Object = [event].oldValue
 			Dim newValue As Object = [event].newValue
 			If oldValue Is Nothing OrElse newValue Is Nothing OrElse (Not oldValue.Equals(newValue)) Then
@@ -349,7 +349,7 @@ Namespace java.beans
 		''' </summary>
 		''' <param name="propertyName">  the property name. </param>
 		''' <returns> true if there are one or more listeners for the given property </returns>
-		Public Overridable Function hasListeners(ByVal propertyName As String) As Boolean
+		Public Overridable Function hasListeners(  propertyName As String) As Boolean
 			Return Me.map.hasListeners(propertyName)
 		End Function
 
@@ -359,7 +359,7 @@ Namespace java.beans
 		''' At serialization time we skip non-serializable listeners and
 		''' only serialize the serializable listeners.
 		''' </summary>
-		Private Sub writeObject(ByVal s As java.io.ObjectOutputStream)
+		Private Sub writeObject(  s As java.io.ObjectOutputStream)
 			Dim children As Dictionary(Of String, VetoableChangeSupport) = Nothing
 			Dim listeners As VetoableChangeListener() = Nothing
 			SyncLock Me.map
@@ -389,7 +389,7 @@ Namespace java.beans
 			s.writeObject(Nothing)
 		End Sub
 
-		Private Sub readObject(ByVal s As java.io.ObjectInputStream)
+		Private Sub readObject(  s As java.io.ObjectInputStream)
 			Me.map = New VetoableChangeListenerMap
 
 			Dim fields As java.io.ObjectInputStream.GetField = s.readFields()
@@ -447,7 +447,7 @@ Namespace java.beans
 			''' </summary>
 			''' <param name="length">  the array length </param>
 			''' <returns>        an array with specified length </returns>
-			Protected Friend Overrides Function newArray(ByVal length As Integer) As VetoableChangeListener()
+			Protected Friend Overrides Function newArray(  length As Integer) As VetoableChangeListener()
 				Return If(0 < length, New VetoableChangeListener(length - 1){}, EMPTY)
 			End Function
 
@@ -458,14 +458,14 @@ Namespace java.beans
 			''' <param name="name">      the name of the property to listen on </param>
 			''' <param name="listener">  the listener to process events </param>
 			''' <returns>          a {@code VetoableChangeListenerProxy} object </returns>
-			Protected Friend Overrides Function newProxy(ByVal name As String, ByVal listener As VetoableChangeListener) As VetoableChangeListener
+			Protected Friend Overrides Function newProxy(  name As String,   listener As VetoableChangeListener) As VetoableChangeListener
 				Return New VetoableChangeListenerProxy(name, listener)
 			End Function
 
 			''' <summary>
 			''' {@inheritDoc}
 			''' </summary>
-			Public Function extract(ByVal listener As VetoableChangeListener) As VetoableChangeListener
+			Public Function extract(  listener As VetoableChangeListener) As VetoableChangeListener
 				Do While TypeOf listener Is VetoableChangeListenerProxy
 					listener = CType(listener, VetoableChangeListenerProxy).listener
 				Loop

@@ -92,7 +92,7 @@ Namespace java.rmi.server
 		''' </exception>
 		''' <exception cref="ClassNotFoundException"> if a definition for the class
 		''' could not be found at the specified location </exception>
-		Public MustOverride Function loadClass(ByVal codebase As String, ByVal name As String, ByVal defaultLoader As  ClassLoader) As  [Class]
+		Public MustOverride Function loadClass(  codebase As String,   name As String,   defaultLoader As  ClassLoader) As  [Class]
 
 		''' <summary>
 		''' Provides the implementation for
@@ -127,7 +127,7 @@ Namespace java.rmi.server
 		''' <seealso cref="java.lang.reflect.Proxy#getProxyClass(ClassLoader,Class[])"/>
 		''' would throw an <code>IllegalArgumentException</code> for the given
 		''' interface list) </exception>
-		Public MustOverride Function loadProxyClass(ByVal codebase As String, ByVal interfaces As String(), ByVal defaultLoader As  ClassLoader) As  [Class]
+		Public MustOverride Function loadProxyClass(  codebase As String,   interfaces As String(),   defaultLoader As  ClassLoader) As  [Class]
 
 		''' <summary>
 		''' Provides the implementation for
@@ -159,7 +159,7 @@ Namespace java.rmi.server
 		''' invocation of its <code>checkPermission</code> method fails, or
 		''' if the caller does not have permission to connect to all of the
 		''' URLs in the codebase URL path </exception>
-		Public MustOverride Function getClassLoader(ByVal codebase As String) As  ClassLoader ' SecurityException
+		Public MustOverride Function getClassLoader(  codebase As String) As  ClassLoader ' SecurityException
 
 		''' <summary>
 		''' Provides the implementation for
@@ -175,7 +175,7 @@ Namespace java.rmi.server
 		''' it gets marshalled, or <code>null</code>
 		''' </returns>
 		''' <exception cref="NullPointerException"> if <code>cl</code> is <code>null</code> </exception>
-		Public MustOverride Function getClassAnnotation(ByVal cl As [Class]) As String
+		Public MustOverride Function getClassAnnotation(  cl As [Class]) As String
 	End Class
 
 End Namespace

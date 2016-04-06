@@ -136,7 +136,7 @@ Namespace java.util
 		''' <param name="initialCapacity"> the initial capacity for this priority queue </param>
 		''' <exception cref="IllegalArgumentException"> if {@code initialCapacity} is less
 		'''         than 1 </exception>
-		Public Sub New(ByVal initialCapacity As Integer)
+		Public Sub New(  initialCapacity As Integer)
 			Me.New(initialCapacity, Nothing)
 		End Sub
 
@@ -149,7 +149,7 @@ Namespace java.util
 		'''         natural ordering} of the elements will be used.
 		''' @since 1.8 </param>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Sub New(Of T1)(ByVal comparator As Comparator(Of T1))
+		Public Sub New(Of T1)(  comparator As Comparator(Of T1))
 			Me.New(DEFAULT_INITIAL_CAPACITY, comparator)
 		End Sub
 
@@ -164,7 +164,7 @@ Namespace java.util
 		''' <exception cref="IllegalArgumentException"> if {@code initialCapacity} is
 		'''         less than 1 </exception>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Sub New(Of T1)(ByVal initialCapacity As Integer, ByVal comparator As Comparator(Of T1))
+		Public Sub New(Of T1)(  initialCapacity As Integer,   comparator As Comparator(Of T1))
 			' Note: This restriction of at least one is not actually needed,
 			' but continues for 1.5 compatibility
 			If initialCapacity < 1 Then Throw New IllegalArgumentException
@@ -188,7 +188,7 @@ Namespace java.util
 		''' <exception cref="NullPointerException"> if the specified collection or any
 		'''         of its elements are null </exception>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Sub New(Of T1 As E)(ByVal c As Collection(Of T1))
+		Public Sub New(Of T1 As E)(  c As Collection(Of T1))
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 			If TypeOf c Is SortedSet(Of ?) Then
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
@@ -225,7 +225,7 @@ Namespace java.util
 		''' <exception cref="NullPointerException"> if the specified priority queue or any
 		'''         of its elements are null </exception>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Sub New(Of T1 As E)(ByVal c As PriorityQueue(Of T1))
+		Public Sub New(Of T1 As E)(  c As PriorityQueue(Of T1))
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 			Me.comparator_Renamed = CType(c.comparator(), Comparator(Of ?))
@@ -245,14 +245,14 @@ Namespace java.util
 		''' <exception cref="NullPointerException"> if the specified sorted set or any
 		'''         of its elements are null </exception>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Sub New(Of T1 As E)(ByVal c As SortedSet(Of T1))
+		Public Sub New(Of T1 As E)(  c As SortedSet(Of T1))
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 			Me.comparator_Renamed = CType(c.comparator(), Comparator(Of ?))
 			initElementsFromCollection(c)
 		End Sub
 
-		Private Sub initFromPriorityQueue(Of T1 As E)(ByVal c As PriorityQueue(Of T1))
+		Private Sub initFromPriorityQueue(Of T1 As E)(  c As PriorityQueue(Of T1))
 			If c.GetType() Is GetType(PriorityQueue) Then
 				Me.queue = c.ToArray()
 				Me.size_Renamed = c.size()
@@ -261,7 +261,7 @@ Namespace java.util
 			End If
 		End Sub
 
-		Private Sub initElementsFromCollection(Of T1 As E)(ByVal c As Collection(Of T1))
+		Private Sub initElementsFromCollection(Of T1 As E)(  c As Collection(Of T1))
 			Dim a As Object() = c.ToArray()
 			' If c.toArray incorrectly doesn't return Object[], copy it.
 			If a.GetType() IsNot GetType(Object()) Then a = Arrays.copyOf(a, a.Length, GetType(Object()))
@@ -279,7 +279,7 @@ Namespace java.util
 		''' Initializes queue array with elements from the given Collection.
 		''' </summary>
 		''' <param name="c"> the collection </param>
-		Private Sub initFromCollection(Of T1 As E)(ByVal c As Collection(Of T1))
+		Private Sub initFromCollection(Of T1 As E)(  c As Collection(Of T1))
 			initElementsFromCollection(c)
 			heapify()
 		End Sub
@@ -296,7 +296,7 @@ Namespace java.util
 		''' Increases the capacity of the array.
 		''' </summary>
 		''' <param name="minCapacity"> the desired minimum capacity </param>
-		Private Sub grow(ByVal minCapacity As Integer)
+		Private Sub grow(  minCapacity As Integer)
 			Dim oldCapacity As Integer = queue.Length
 			' Double size if small; else grow by 50%
 			Dim newCapacity As Integer = oldCapacity + (If(oldCapacity < 64, (oldCapacity + 2), (oldCapacity >> 1)))
@@ -306,7 +306,7 @@ Namespace java.util
 			Array.Copy(queue, queue, newCapacity)
 		End Sub
 
-		Private Shared Function hugeCapacity(ByVal minCapacity As Integer) As Integer
+		Private Shared Function hugeCapacity(  minCapacity As Integer) As Integer
 			If minCapacity < 0 Then ' overflow Throw New OutOfMemoryError
 			Return If(minCapacity > MAX_ARRAY_SIZE,  java.lang.[Integer].Max_Value, MAX_ARRAY_SIZE)
 		End Function
@@ -319,7 +319,7 @@ Namespace java.util
 		'''         compared with elements currently in this priority queue
 		'''         according to the priority queue's ordering </exception>
 		''' <exception cref="NullPointerException"> if the specified element is null </exception>
-		Public Overridable Function add(ByVal e As E) As Boolean
+		Public Overridable Function add(  e As E) As Boolean
 			Return offer(e)
 		End Function
 
@@ -331,7 +331,7 @@ Namespace java.util
 		'''         compared with elements currently in this priority queue
 		'''         according to the priority queue's ordering </exception>
 		''' <exception cref="NullPointerException"> if the specified element is null </exception>
-		Public Overridable Function offer(ByVal e As E) As Boolean
+		Public Overridable Function offer(  e As E) As Boolean
 			If e Is Nothing Then Throw New NullPointerException
 			modCount += 1
 			Dim i As Integer = size_Renamed
@@ -350,7 +350,7 @@ Namespace java.util
 			Return If(size_Renamed = 0, Nothing, CType(queue(0), E))
 		End Function
 
-		Private Function indexOf(ByVal o As Object) As Integer
+		Private Function indexOf(  o As Object) As Integer
 			If o IsNot Nothing Then
 				For i As Integer = 0 To size_Renamed - 1
 					If o.Equals(queue(i)) Then Return i
@@ -369,7 +369,7 @@ Namespace java.util
 		''' </summary>
 		''' <param name="o"> element to be removed from this queue, if present </param>
 		''' <returns> {@code true} if this queue changed as a result of the call </returns>
-		Public Overridable Function remove(ByVal o As Object) As Boolean
+		Public Overridable Function remove(  o As Object) As Boolean
 			Dim i As Integer = IndexOf(o)
 			If i = -1 Then
 				Return False
@@ -385,7 +385,7 @@ Namespace java.util
 		''' </summary>
 		''' <param name="o"> element to be removed from this queue, if present </param>
 		''' <returns> {@code true} if removed </returns>
-		Friend Overridable Function removeEq(ByVal o As Object) As Boolean
+		Friend Overridable Function removeEq(  o As Object) As Boolean
 			For i As Integer = 0 To size_Renamed - 1
 				If o Is queue(i) Then
 					removeAt(i)
@@ -402,7 +402,7 @@ Namespace java.util
 		''' </summary>
 		''' <param name="o"> object to be checked for containment in this queue </param>
 		''' <returns> {@code true} if this queue contains the specified element </returns>
-		Public Overridable Function contains(ByVal o As Object) As Boolean
+		Public Overridable Function contains(  o As Object) As Boolean
 			Return IndexOf(o) <> -1
 		End Function
 
@@ -458,7 +458,7 @@ Namespace java.util
 		'''         this queue </exception>
 		''' <exception cref="NullPointerException"> if the specified array is null </exception>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Overridable Function toArray(Of T)(ByVal a As T()) As T()
+		Public Overridable Function toArray(Of T)(  a As T()) As T()
 			Dim size As Integer = Me.size_Renamed
 			If a.Length < size Then Return CType(Arrays.copyOf(queue, size, a.GetType()), T())
 			Array.Copy(queue, 0, a, 0, size)
@@ -480,7 +480,7 @@ Namespace java.util
 
 			Private ReadOnly outerInstance As PriorityQueue
 
-			Public Sub New(ByVal outerInstance As PriorityQueue)
+			Public Sub New(  outerInstance As PriorityQueue)
 				Me.outerInstance = outerInstance
 			End Sub
 
@@ -607,7 +607,7 @@ Namespace java.util
 		''' avoid missing traversing elements.
 		''' </summary>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Private Function removeAt(ByVal i As Integer) As E
+		Private Function removeAt(  i As Integer) As E
 			' assert i >= 0 && i < size;
 			modCount += 1
 			size_Renamed -= 1
@@ -637,7 +637,7 @@ Namespace java.util
 		''' </summary>
 		''' <param name="k"> the position to fill </param>
 		''' <param name="x"> the item to insert </param>
-		Private Sub siftUp(ByVal k As Integer, ByVal x As E)
+		Private Sub siftUp(  k As Integer,   x As E)
 			If comparator_Renamed IsNot Nothing Then
 				siftUpUsingComparator(k, x)
 			Else
@@ -646,7 +646,7 @@ Namespace java.util
 		End Sub
 
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Private Sub siftUpComparable(ByVal k As Integer, ByVal x As E)
+		Private Sub siftUpComparable(  k As Integer,   x As E)
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 			Dim key As Comparable(Of ?) = CType(x, Comparable(Of ?))
@@ -661,7 +661,7 @@ Namespace java.util
 		End Sub
 
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Private Sub siftUpUsingComparator(ByVal k As Integer, ByVal x As E)
+		Private Sub siftUpUsingComparator(  k As Integer,   x As E)
 			Do While k > 0
 				Dim parent As Integer = CInt(CUInt((k - 1)) >> 1)
 				Dim e As Object = queue(parent)
@@ -679,7 +679,7 @@ Namespace java.util
 		''' </summary>
 		''' <param name="k"> the position to fill </param>
 		''' <param name="x"> the item to insert </param>
-		Private Sub siftDown(ByVal k As Integer, ByVal x As E)
+		Private Sub siftDown(  k As Integer,   x As E)
 			If comparator_Renamed IsNot Nothing Then
 				siftDownUsingComparator(k, x)
 			Else
@@ -688,7 +688,7 @@ Namespace java.util
 		End Sub
 
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Private Sub siftDownComparable(ByVal k As Integer, ByVal x As E)
+		Private Sub siftDownComparable(  k As Integer,   x As E)
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 			Dim key As Comparable(Of ?) = CType(x, Comparable(Of ?))
@@ -708,7 +708,7 @@ Namespace java.util
 		End Sub
 
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Private Sub siftDownUsingComparator(ByVal k As Integer, ByVal x As E)
+		Private Sub siftDownUsingComparator(  k As Integer,   x As E)
 			Dim half As Integer = CInt(CUInt(size_Renamed) >> 1)
 			Do While k < half
 				Dim child As Integer = (k << 1) + 1
@@ -754,7 +754,7 @@ Namespace java.util
 		'''             emitted (int), followed by all of its elements
 		'''             (each an {@code Object}) in the proper order. </summary>
 		''' <param name="s"> the stream </param>
-		Private Sub writeObject(ByVal s As java.io.ObjectOutputStream)
+		Private Sub writeObject(  s As java.io.ObjectOutputStream)
 			' Write out element count, and any hidden stuff
 			s.defaultWriteObject()
 
@@ -772,7 +772,7 @@ Namespace java.util
 		''' (that is, deserializes it).
 		''' </summary>
 		''' <param name="s"> the stream </param>
-		Private Sub readObject(ByVal s As java.io.ObjectInputStream)
+		Private Sub readObject(  s As java.io.ObjectInputStream)
 			' Read in size, and any hidden stuff
 			s.defaultReadObject()
 
@@ -821,7 +821,7 @@ Namespace java.util
 
 			''' <summary>
 			''' Creates new spliterator covering the given range </summary>
-			Friend Sub New(ByVal pq As PriorityQueue(Of E), ByVal origin As Integer, ByVal fence As Integer, ByVal expectedModCount As Integer)
+			Friend Sub New(  pq As PriorityQueue(Of E),   origin As Integer,   fence As Integer,   expectedModCount As Integer)
 				Me.pq = pq
 				Me.index = origin
 				Me.fence = fence
@@ -849,7 +849,7 @@ Namespace java.util
 
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Sub forEachRemaining(Of T1)(ByVal action As java.util.function.Consumer(Of T1)) Implements Spliterator(Of E).forEachRemaining
+			Public Sub forEachRemaining(Of T1)(  action As java.util.function.Consumer(Of T1)) Implements Spliterator(Of E).forEachRemaining
 				Dim i, hi, mc As Integer ' hoist accesses and checks from loop
 				Dim q As PriorityQueue(Of E)
 				Dim a As Object()
@@ -886,7 +886,7 @@ Namespace java.util
 			End Sub
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Function tryAdvance(Of T1)(ByVal action As java.util.function.Consumer(Of T1)) As Boolean Implements Spliterator(Of E).tryAdvance
+			Public Function tryAdvance(Of T1)(  action As java.util.function.Consumer(Of T1)) As Boolean Implements Spliterator(Of E).tryAdvance
 				If action Is Nothing Then Throw New NullPointerException
 				Dim hi As Integer = fence, lo As Integer = index
 				If lo >= 0 AndAlso lo < hi Then

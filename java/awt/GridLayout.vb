@@ -162,7 +162,7 @@ Namespace java.awt
 		'''                   any number of rows. </param>
 		''' <param name="cols">   the columns, with the value zero meaning
 		'''                   any number of columns. </param>
-		Public Sub New(ByVal rows As Integer, ByVal cols As Integer)
+		Public Sub New(  rows As Integer,   cols As Integer)
 			Me.New(rows, cols, 0, 0)
 		End Sub
 
@@ -189,7 +189,7 @@ Namespace java.awt
 		''' <exception cref="IllegalArgumentException">  if the value of both
 		'''                  <code>rows</code> and <code>cols</code> is
 		'''                  set to zero </exception>
-		Public Sub New(ByVal rows As Integer, ByVal cols As Integer, ByVal hgap As Integer, ByVal vgap As Integer)
+		Public Sub New(  rows As Integer,   cols As Integer,   hgap As Integer,   vgap As Integer)
 			If (rows = 0) AndAlso (cols = 0) Then Throw New IllegalArgumentException("rows and cols cannot both be zero")
 			Me.rows = rows
 			Me.cols = cols
@@ -205,7 +205,7 @@ Namespace java.awt
 			Get
 				Return rows
 			End Get
-			Set(ByVal rows As Integer)
+			Set(  rows As Integer)
 				If (rows = 0) AndAlso (Me.cols = 0) Then Throw New IllegalArgumentException("rows and cols cannot both be zero")
 				Me.rows = rows
 			End Set
@@ -220,7 +220,7 @@ Namespace java.awt
 			Get
 				Return cols
 			End Get
-			Set(ByVal cols As Integer)
+			Set(  cols As Integer)
 				If (cols = 0) AndAlso (Me.rows = 0) Then Throw New IllegalArgumentException("rows and cols cannot both be zero")
 				Me.cols = cols
 			End Set
@@ -235,7 +235,7 @@ Namespace java.awt
 			Get
 				Return hgap
 			End Get
-			Set(ByVal hgap As Integer)
+			Set(  hgap As Integer)
 				Me.hgap = hgap
 			End Set
 		End Property
@@ -249,7 +249,7 @@ Namespace java.awt
 			Get
 				Return vgap
 			End Get
-			Set(ByVal vgap As Integer)
+			Set(  vgap As Integer)
 				Me.vgap = vgap
 			End Set
 		End Property
@@ -259,13 +259,13 @@ Namespace java.awt
 		''' Adds the specified component with the specified name to the layout. </summary>
 		''' <param name="name"> the name of the component </param>
 		''' <param name="comp"> the component to be added </param>
-		Public Overridable Sub addLayoutComponent(ByVal name As String, ByVal comp As Component) Implements LayoutManager.addLayoutComponent
+		Public Overridable Sub addLayoutComponent(  name As String,   comp As Component) Implements LayoutManager.addLayoutComponent
 		End Sub
 
 		''' <summary>
 		''' Removes the specified component from the layout. </summary>
 		''' <param name="comp"> the component to be removed </param>
-		Public Overridable Sub removeLayoutComponent(ByVal comp As Component) Implements LayoutManager.removeLayoutComponent
+		Public Overridable Sub removeLayoutComponent(  comp As Component) Implements LayoutManager.removeLayoutComponent
 		End Sub
 
 		''' <summary>
@@ -287,7 +287,7 @@ Namespace java.awt
 		'''                      subcomponents of the specified container </returns>
 		''' <seealso cref=       java.awt.GridLayout#minimumLayoutSize </seealso>
 		''' <seealso cref=       java.awt.Container#getPreferredSize() </seealso>
-		Public Overridable Function preferredLayoutSize(ByVal parent As Container) As Dimension Implements LayoutManager.preferredLayoutSize
+		Public Overridable Function preferredLayoutSize(  parent As Container) As Dimension Implements LayoutManager.preferredLayoutSize
 		  SyncLock parent.treeLock
 			Dim insets_Renamed As Insets = parent.insets
 			Dim ncomponents As Integer = parent.componentCount
@@ -330,7 +330,7 @@ Namespace java.awt
 		'''                      subcomponents of the specified container </returns>
 		''' <seealso cref=         java.awt.GridLayout#preferredLayoutSize </seealso>
 		''' <seealso cref=         java.awt.Container#doLayout </seealso>
-		Public Overridable Function minimumLayoutSize(ByVal parent As Container) As Dimension Implements LayoutManager.minimumLayoutSize
+		Public Overridable Function minimumLayoutSize(  parent As Container) As Dimension Implements LayoutManager.minimumLayoutSize
 		  SyncLock parent.treeLock
 			Dim insets_Renamed As Insets = parent.insets
 			Dim ncomponents As Integer = parent.componentCount
@@ -371,7 +371,7 @@ Namespace java.awt
 		''' <param name="parent">   the container in which to do the layout </param>
 		''' <seealso cref=        java.awt.Container </seealso>
 		''' <seealso cref=        java.awt.Container#doLayout </seealso>
-		Public Overridable Sub layoutContainer(ByVal parent As Container) Implements LayoutManager.layoutContainer
+		Public Overridable Sub layoutContainer(  parent As Container) Implements LayoutManager.layoutContainer
 		  SyncLock parent.treeLock
 			Dim insets_Renamed As Insets = parent.insets
 			Dim ncomponents As Integer = parent.componentCount

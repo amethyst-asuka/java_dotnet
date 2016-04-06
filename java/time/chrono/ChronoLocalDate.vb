@@ -258,16 +258,16 @@ Namespace java.time.chrono
 		''' <returns> the date, not null </returns>
 		''' <exception cref="DateTimeException"> if unable to convert to a {@code ChronoLocalDate} </exception>
 		''' <seealso cref= Chronology#date(TemporalAccessor) </seealso>
-		Shared Function [from](ByVal temporal As java.time.temporal.TemporalAccessor) As ChronoLocalDate
-			Sub [New](temporal ByVal ChronoLocalDate As instanceof)
+		Shared Function [from](  temporal As java.time.temporal.TemporalAccessor) As ChronoLocalDate
+			Sub [New](temporal   ChronoLocalDate As instanceof)
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 				Return (ChronoLocalDate) temporal;
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 			java.util.Objects.requireNonNull(temporal, "temporal");
 'JAVA TO VB CONVERTER TODO TASK: Interfaces cannot contain fields in .NET:
 '			Chronology chrono = temporal.query(java.time.temporal.TemporalQueries.chronology());
-			Sub [New](chrono == ByVal [Nothing] As )
-				throw Function java.time.DateTimeException("Unable to obtain ChronoLocalDate from TemporalAccessor: " & temporal.getClass() ByVal  As ) As New
+			Sub [New](chrono ==   [Nothing] As )
+				throw Function java.time.DateTimeException("Unable to obtain ChronoLocalDate from TemporalAccessor: " & temporal.getClass()    As ) As New
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 			Return chrono.date(temporal);
 
@@ -328,7 +328,7 @@ Namespace java.time.chrono
 		''' </summary>
 		''' <returns> the length of the year in days </returns>
 		default Function lengthOfYear() As Integer
-			Sub [New](isLeapYear() ? 366 : ByVal 365 As )
+			Sub [New](isLeapYear() ? 366 :   365 As )
 
 		''' <summary>
 		''' Checks if the specified field is supported.
@@ -348,8 +348,8 @@ Namespace java.time.chrono
 		''' </summary>
 		''' <param name="field">  the field to check, null returns false </param>
 		''' <returns> true if the field can be queried, false if not </returns>
-		default Overrides Function isSupported(ByVal field As java.time.temporal.TemporalField) As Boolean
-			Sub [New](field ByVal java.time.temporal.ChronoField As instanceof)
+		default Overrides Function isSupported(  field As java.time.temporal.TemporalField) As Boolean
+			Sub [New](field   java.time.temporal.ChronoField As instanceof)
 				ReadOnly Property field.isDateBased() As [Return]
 'JAVA TO VB CONVERTER TODO TASK: Interfaces cannot contain fields in .NET:
 '			Return field != Nothing && field.isSupportedBy(Me);
@@ -371,8 +371,8 @@ Namespace java.time.chrono
 		''' </summary>
 		''' <param name="unit">  the unit to check, null returns false </param>
 		''' <returns> true if the unit can be added/subtracted, false if not </returns>
-		default Overrides Function isSupported(ByVal unit As java.time.temporal.TemporalUnit) As Boolean
-			Sub [New](unit ByVal java.time.temporal.ChronoUnit As instanceof)
+		default Overrides Function isSupported(  unit As java.time.temporal.TemporalUnit) As Boolean
+			Sub [New](unit   java.time.temporal.ChronoUnit As instanceof)
 				ReadOnly Property unit.isDateBased() As [Return]
 'JAVA TO VB CONVERTER TODO TASK: Interfaces cannot contain fields in .NET:
 '			Return unit != Nothing && unit.isSupportedBy(Me);
@@ -383,49 +383,49 @@ Namespace java.time.chrono
 		''' {@inheritDoc} </summary>
 		''' <exception cref="DateTimeException"> {@inheritDoc} </exception>
 		''' <exception cref="ArithmeticException"> {@inheritDoc} </exception>
-		default Overrides Function [with](ByVal adjuster As java.time.temporal.TemporalAdjuster) As ChronoLocalDate
-			Function ChronoLocalDateImpl.ensureValid(getChronology() ByVal  As , outerInstance.with(adjuster) ByVal  As ) As [Return]
+		default Overrides Function [with](  adjuster As java.time.temporal.TemporalAdjuster) As ChronoLocalDate
+			Function ChronoLocalDateImpl.ensureValid(getChronology()    As , outerInstance.with(adjuster)    As ) As [Return]
 
 		''' <summary>
 		''' {@inheritDoc} </summary>
 		''' <exception cref="DateTimeException"> {@inheritDoc} </exception>
 		''' <exception cref="UnsupportedTemporalTypeException"> {@inheritDoc} </exception>
 		''' <exception cref="ArithmeticException"> {@inheritDoc} </exception>
-		default Overrides Function [with](ByVal field As java.time.temporal.TemporalField, ByVal newValue As Long) As ChronoLocalDate
-			Sub [New](field ByVal java.time.temporal.ChronoField As instanceof)
-				throw Function java.time.temporal.UnsupportedTemporalTypeException("Unsupported field: " & ByVal field As ) As New
-			Function ChronoLocalDateImpl.ensureValid(getChronology() ByVal  As , field.adjustInto(Me, newValue) ByVal  As ) As [Return]
+		default Overrides Function [with](  field As java.time.temporal.TemporalField,   newValue As Long) As ChronoLocalDate
+			Sub [New](field   java.time.temporal.ChronoField As instanceof)
+				throw Function java.time.temporal.UnsupportedTemporalTypeException("Unsupported field: " &   field As ) As New
+			Function ChronoLocalDateImpl.ensureValid(getChronology()    As , field.adjustInto(Me, newValue)    As ) As [Return]
 
 		''' <summary>
 		''' {@inheritDoc} </summary>
 		''' <exception cref="DateTimeException"> {@inheritDoc} </exception>
 		''' <exception cref="ArithmeticException"> {@inheritDoc} </exception>
-		default Overrides Function plus(ByVal amount As java.time.temporal.TemporalAmount) As ChronoLocalDate
-			Function ChronoLocalDateImpl.ensureValid(getChronology() ByVal  As , outerInstance.plus(amount) ByVal  As ) As [Return]
+		default Overrides Function plus(  amount As java.time.temporal.TemporalAmount) As ChronoLocalDate
+			Function ChronoLocalDateImpl.ensureValid(getChronology()    As , outerInstance.plus(amount)    As ) As [Return]
 
 		''' <summary>
 		''' {@inheritDoc} </summary>
 		''' <exception cref="DateTimeException"> {@inheritDoc} </exception>
 		''' <exception cref="ArithmeticException"> {@inheritDoc} </exception>
-		default Overrides Function plus(ByVal amountToAdd As Long, ByVal unit As java.time.temporal.TemporalUnit) As ChronoLocalDate
-			Sub [New](unit ByVal java.time.temporal.ChronoUnit As instanceof)
-				throw Function java.time.temporal.UnsupportedTemporalTypeException("Unsupported unit: " & ByVal unit As ) As New
-			Function ChronoLocalDateImpl.ensureValid(getChronology() ByVal  As , unit.addTo(Me, amountToAdd) ByVal  As ) As [Return]
+		default Overrides Function plus(  amountToAdd As Long,   unit As java.time.temporal.TemporalUnit) As ChronoLocalDate
+			Sub [New](unit   java.time.temporal.ChronoUnit As instanceof)
+				throw Function java.time.temporal.UnsupportedTemporalTypeException("Unsupported unit: " &   unit As ) As New
+			Function ChronoLocalDateImpl.ensureValid(getChronology()    As , unit.addTo(Me, amountToAdd)    As ) As [Return]
 
 		''' <summary>
 		''' {@inheritDoc} </summary>
 		''' <exception cref="DateTimeException"> {@inheritDoc} </exception>
 		''' <exception cref="ArithmeticException"> {@inheritDoc} </exception>
-		default Overrides Function minus(ByVal amount As java.time.temporal.TemporalAmount) As ChronoLocalDate
-			Function ChronoLocalDateImpl.ensureValid(getChronology() ByVal  As , outerInstance.minus(amount) ByVal  As ) As [Return]
+		default Overrides Function minus(  amount As java.time.temporal.TemporalAmount) As ChronoLocalDate
+			Function ChronoLocalDateImpl.ensureValid(getChronology()    As , outerInstance.minus(amount)    As ) As [Return]
 
 		''' <summary>
 		''' {@inheritDoc} </summary>
 		''' <exception cref="DateTimeException"> {@inheritDoc} </exception>
 		''' <exception cref="UnsupportedTemporalTypeException"> {@inheritDoc} </exception>
 		''' <exception cref="ArithmeticException"> {@inheritDoc} </exception>
-		default Overrides Function minus(ByVal amountToSubtract As Long, ByVal unit As java.time.temporal.TemporalUnit) As ChronoLocalDate
-			Function ChronoLocalDateImpl.ensureValid(getChronology() ByVal  As , outerInstance.minus(amountToSubtract, unit) ByVal  As ) As [Return]
+		default Overrides Function minus(  amountToSubtract As Long,   unit As java.time.temporal.TemporalUnit) As ChronoLocalDate
+			Function ChronoLocalDateImpl.ensureValid(getChronology()    As , outerInstance.minus(amountToSubtract, unit)    As ) As [Return]
 
 		'-----------------------------------------------------------------------
 		''' <summary>
@@ -446,17 +446,17 @@ Namespace java.time.chrono
 		''' <exception cref="DateTimeException"> if unable to query (defined by the query) </exception>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs (defined by the query) </exception>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		default Overrides Function query(ByVal query As java.time.temporal.TemporalQuery(Of R)) As R(Of R)
-			Sub [New](query == java.time.temporal.TemporalQueries.zoneId() || query == java.time.temporal.TemporalQueries.zone() || query == java.time.temporal.TemporalQueries.offset() ByVal  As )
+		default Overrides Function query(  query As java.time.temporal.TemporalQuery(Of R)) As R(Of R)
+			Sub [New](query == java.time.temporal.TemporalQueries.zoneId() || query == java.time.temporal.TemporalQueries.zone() || query == java.time.temporal.TemporalQueries.offset()    As )
 'JAVA TO VB CONVERTER TODO TASK: Interfaces cannot contain fields in .NET:
 '				Return Nothing;
-			Function [if](query == java.time.temporal.TemporalQueries.localTime() ByVal  As ) As else
+			Function [if](query == java.time.temporal.TemporalQueries.localTime()    As ) As else
 'JAVA TO VB CONVERTER TODO TASK: Interfaces cannot contain fields in .NET:
 '				Return Nothing;
-			Function [if](query == java.time.temporal.TemporalQueries.chronology() ByVal  As ) As else
+			Function [if](query == java.time.temporal.TemporalQueries.chronology()    As ) As else
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 				Return (R) getChronology();
-			Function [if](query == java.time.temporal.TemporalQueries.precision() ByVal  As ) As else
+			Function [if](query == java.time.temporal.TemporalQueries.precision()    As ) As else
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 				Return (R) DAYS;
 			' inline TemporalAccessor.super.query(query) as an optimization
@@ -487,7 +487,7 @@ Namespace java.time.chrono
 		''' <returns> the adjusted object, not null </returns>
 		''' <exception cref="DateTimeException"> if unable to make the adjustment </exception>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
-		default Overrides Function adjustInto(ByVal temporal As java.time.temporal.Temporal) As java.time.temporal.Temporal
+		default Overrides Function adjustInto(  temporal As java.time.temporal.Temporal) As java.time.temporal.Temporal
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 			Return temporal.with(EPOCH_DAY, toEpochDay());
 
@@ -536,7 +536,7 @@ Namespace java.time.chrono
 		'''  temporal cannot be converted to a {@code ChronoLocalDate} </exception>
 		''' <exception cref="UnsupportedTemporalTypeException"> if the unit is not supported </exception>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
-		Overrides Function [until](ByVal endExclusive As java.time.temporal.Temporal, ByVal unit As java.time.temporal.TemporalUnit) As Long ' override for Javadoc
+		Overrides Function [until](  endExclusive As java.time.temporal.Temporal,   unit As java.time.temporal.TemporalUnit) As Long ' override for Javadoc
 
 		''' <summary>
 		''' Calculates the period between this date and another date as a {@code ChronoPeriod}.
@@ -558,7 +558,7 @@ Namespace java.time.chrono
 		''' <returns> the period between this date and the end date, not null </returns>
 		''' <exception cref="DateTimeException"> if the period cannot be calculated </exception>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
-		Function [until](ByVal endDateExclusive As ChronoLocalDate) As ChronoPeriod
+		Function [until](  endDateExclusive As ChronoLocalDate) As ChronoPeriod
 
 		''' <summary>
 		''' Formats this date using the specified formatter.
@@ -573,7 +573,7 @@ Namespace java.time.chrono
 		''' <param name="formatter">  the formatter to use, not null </param>
 		''' <returns> the formatted date string, not null </returns>
 		''' <exception cref="DateTimeException"> if an error occurs during printing </exception>
-		default Function format(ByVal formatter As java.time.format.DateTimeFormatter) As String
+		default Function format(  formatter As java.time.format.DateTimeFormatter) As String
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 			java.util.Objects.requireNonNull(formatter, "formatter");
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
@@ -590,7 +590,7 @@ Namespace java.time.chrono
 		''' <returns> the local date-time formed from this date and the specified time, not null </returns>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-		default Function atTime(ByVal localTime As java.time.LocalTime) As ChronoLocalDateTime(Of ?)
+		default Function atTime(  localTime As java.time.LocalTime) As ChronoLocalDateTime(Of ?)
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 			Return ChronoLocalDateTimeImpl.of(Me, localTime);
 
@@ -637,10 +637,10 @@ Namespace java.time.chrono
 		''' </summary>
 		''' <param name="other">  the other date to compare to, not null </param>
 		''' <returns> the comparator value, negative if less, positive if greater </returns>
-		default Overrides Function compareTo(ByVal other As ChronoLocalDate) As Integer
+		default Overrides Function compareTo(  other As ChronoLocalDate) As Integer
 'JAVA TO VB CONVERTER TODO TASK: Interfaces cannot contain fields in .NET:
 '			int cmp = java.lang.[Long].compare(toEpochDay(), other.toEpochDay());
-			Sub [New](cmp == ByVal 0 As )
+			Sub [New](cmp ==   0 As )
 				ReadOnly Property cmp = chronology As
 'JAVA TO VB CONVERTER TODO TASK: Interfaces cannot contain fields in .NET:
 '			Return cmp;
@@ -658,7 +658,7 @@ Namespace java.time.chrono
 		''' </summary>
 		''' <param name="other">  the other date to compare to, not null </param>
 		''' <returns> true if this is after the specified date </returns>
-		default Function isAfter(ByVal other As ChronoLocalDate) As Boolean
+		default Function isAfter(  other As ChronoLocalDate) As Boolean
 			Function Me.toEpochDay() As [Return]
 
 		''' <summary>
@@ -674,7 +674,7 @@ Namespace java.time.chrono
 		''' </summary>
 		''' <param name="other">  the other date to compare to, not null </param>
 		''' <returns> true if this is before the specified date </returns>
-		default Function isBefore(ByVal other As ChronoLocalDate) As Boolean
+		default Function isBefore(  other As ChronoLocalDate) As Boolean
 			Function Me.toEpochDay() As [Return]
 
 		''' <summary>
@@ -690,7 +690,7 @@ Namespace java.time.chrono
 		''' </summary>
 		''' <param name="other">  the other date to compare to, not null </param>
 		''' <returns> true if the underlying date is equal to the specified date </returns>
-		default Function isEqual(ByVal other As ChronoLocalDate) As Boolean
+		default Function isEqual(  other As ChronoLocalDate) As Boolean
 			Function Me.toEpochDay() As [Return]
 
 		'-----------------------------------------------------------------------
@@ -704,7 +704,7 @@ Namespace java.time.chrono
 		''' </summary>
 		''' <param name="obj">  the object to check, null returns false </param>
 		''' <returns> true if this is equal to the other date </returns>
-		Overrides Function Equals(ByVal obj As Object) As Boolean
+		Overrides Function Equals(  obj As Object) As Boolean
 
 		''' <summary>
 		''' A hash code for this date.

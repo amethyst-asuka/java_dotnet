@@ -188,7 +188,7 @@ Namespace java.time.chrono
 		''' <returns> the Thai Buddhist local date, not null </returns>
 		''' <exception cref="DateTimeException"> if unable to create the date </exception>
 		''' <exception cref="ClassCastException"> if the {@code era} is not a {@code ThaiBuddhistEra} </exception>
-		Public Overrides Function [date](ByVal era As Era, ByVal yearOfEra As Integer, ByVal month As Integer, ByVal dayOfMonth As Integer) As ThaiBuddhistDate
+		Public Overrides Function [date](  era As Era,   yearOfEra As Integer,   month As Integer,   dayOfMonth As Integer) As ThaiBuddhistDate
 			Return [date](prolepticYear(era, yearOfEra), month, dayOfMonth)
 		End Function
 
@@ -201,7 +201,7 @@ Namespace java.time.chrono
 		''' <param name="dayOfMonth">  the day-of-month </param>
 		''' <returns> the Thai Buddhist local date, not null </returns>
 		''' <exception cref="DateTimeException"> if unable to create the date </exception>
-		Public Overrides Function [date](ByVal prolepticYear As Integer, ByVal month As Integer, ByVal dayOfMonth As Integer) As ThaiBuddhistDate
+		Public Overrides Function [date](  prolepticYear As Integer,   month As Integer,   dayOfMonth As Integer) As ThaiBuddhistDate
 			Return New ThaiBuddhistDate(java.time.LocalDate.of(prolepticYear - YEARS_DIFFERENCE, month, dayOfMonth))
 		End Function
 
@@ -215,7 +215,7 @@ Namespace java.time.chrono
 		''' <returns> the Thai Buddhist local date, not null </returns>
 		''' <exception cref="DateTimeException"> if unable to create the date </exception>
 		''' <exception cref="ClassCastException"> if the {@code era} is not a {@code ThaiBuddhistEra} </exception>
-		Public Overrides Function dateYearDay(ByVal era As Era, ByVal yearOfEra As Integer, ByVal dayOfYear As Integer) As ThaiBuddhistDate
+		Public Overrides Function dateYearDay(  era As Era,   yearOfEra As Integer,   dayOfYear As Integer) As ThaiBuddhistDate
 			Return dateYearDay(prolepticYear(era, yearOfEra), dayOfYear)
 		End Function
 
@@ -227,7 +227,7 @@ Namespace java.time.chrono
 		''' <param name="dayOfYear">  the day-of-year </param>
 		''' <returns> the Thai Buddhist local date, not null </returns>
 		''' <exception cref="DateTimeException"> if unable to create the date </exception>
-		Public Overrides Function dateYearDay(ByVal prolepticYear As Integer, ByVal dayOfYear As Integer) As ThaiBuddhistDate
+		Public Overrides Function dateYearDay(  prolepticYear As Integer,   dayOfYear As Integer) As ThaiBuddhistDate
 			Return New ThaiBuddhistDate(java.time.LocalDate.ofYearDay(prolepticYear - YEARS_DIFFERENCE, dayOfYear))
 		End Function
 
@@ -237,7 +237,7 @@ Namespace java.time.chrono
 		''' <param name="epochDay">  the epoch day </param>
 		''' <returns> the Thai Buddhist local date, not null </returns>
 		''' <exception cref="DateTimeException"> if unable to create the date </exception>
-		Public Overrides Function dateEpochDay(ByVal epochDay As Long) As ThaiBuddhistDate ' override with covariant return type
+		Public Overrides Function dateEpochDay(  epochDay As Long) As ThaiBuddhistDate ' override with covariant return type
 			Return New ThaiBuddhistDate(java.time.LocalDate.ofEpochDay(epochDay))
 		End Function
 
@@ -245,31 +245,31 @@ Namespace java.time.chrono
 			Return dateNow(java.time.Clock.systemDefaultZone())
 		End Function
 
-		Public Overrides Function dateNow(ByVal zone As java.time.ZoneId) As ThaiBuddhistDate
+		Public Overrides Function dateNow(  zone As java.time.ZoneId) As ThaiBuddhistDate
 			Return dateNow(java.time.Clock.system(zone))
 		End Function
 
-		Public Overrides Function dateNow(ByVal clock_Renamed As java.time.Clock) As ThaiBuddhistDate
+		Public Overrides Function dateNow(  clock_Renamed As java.time.Clock) As ThaiBuddhistDate
 			Return [date](java.time.LocalDate.now(clock_Renamed))
 		End Function
 
-		Public Overrides Function [date](ByVal temporal As java.time.temporal.TemporalAccessor) As ThaiBuddhistDate
+		Public Overrides Function [date](  temporal As java.time.temporal.TemporalAccessor) As ThaiBuddhistDate
 			If TypeOf temporal Is ThaiBuddhistDate Then Return CType(temporal, ThaiBuddhistDate)
 			Return New ThaiBuddhistDate(java.time.LocalDate.from(temporal))
 		End Function
 
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Overrides Function localDateTime(ByVal temporal As java.time.temporal.TemporalAccessor) As ChronoLocalDateTime(Of ThaiBuddhistDate)
+		Public Overrides Function localDateTime(  temporal As java.time.temporal.TemporalAccessor) As ChronoLocalDateTime(Of ThaiBuddhistDate)
 			Return CType(MyBase.localDateTime(temporal), ChronoLocalDateTime(Of ThaiBuddhistDate))
 		End Function
 
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Overrides Function zonedDateTime(ByVal temporal As java.time.temporal.TemporalAccessor) As ChronoZonedDateTime(Of ThaiBuddhistDate)
+		Public Overrides Function zonedDateTime(  temporal As java.time.temporal.TemporalAccessor) As ChronoZonedDateTime(Of ThaiBuddhistDate)
 			Return CType(MyBase.zonedDateTime(temporal), ChronoZonedDateTime(Of ThaiBuddhistDate))
 		End Function
 
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Overrides Function zonedDateTime(ByVal instant_Renamed As java.time.Instant, ByVal zone As java.time.ZoneId) As ChronoZonedDateTime(Of ThaiBuddhistDate)
+		Public Overrides Function zonedDateTime(  instant_Renamed As java.time.Instant,   zone As java.time.ZoneId) As ChronoZonedDateTime(Of ThaiBuddhistDate)
 			Return CType(MyBase.zonedDateTime(instant_Renamed, zone), ChronoZonedDateTime(Of ThaiBuddhistDate))
 		End Function
 
@@ -283,16 +283,16 @@ Namespace java.time.chrono
 		''' </summary>
 		''' <param name="prolepticYear">  the proleptic-year to check, not validated for range </param>
 		''' <returns> true if the year is a leap year </returns>
-		Public Overrides Function isLeapYear(ByVal prolepticYear As Long) As Boolean
+		Public Overrides Function isLeapYear(  prolepticYear As Long) As Boolean
 			Return IsoChronology.INSTANCE.isLeapYear(prolepticYear - YEARS_DIFFERENCE)
 		End Function
 
-		Public Overrides Function prolepticYear(ByVal era As Era, ByVal yearOfEra As Integer) As Integer
+		Public Overrides Function prolepticYear(  era As Era,   yearOfEra As Integer) As Integer
 			If TypeOf era Is ThaiBuddhistEra = False Then Throw New ClassCastException("Era must be BuddhistEra")
 			[Return] (If(era = ThaiBuddhistEra.BE, yearOfEra, 1 - yearOfEra))
 		End Function
 
-		Public Overrides Function eraOf(ByVal eraValue As Integer) As ThaiBuddhistEra
+		Public Overrides Function eraOf(  eraValue As Integer) As ThaiBuddhistEra
 			Return ThaiBuddhistEra.of(eraValue)
 		End Function
 
@@ -301,7 +301,7 @@ Namespace java.time.chrono
 		End Function
 
 		'-----------------------------------------------------------------------
-		Public Overrides Function range(ByVal field As java.time.temporal.ChronoField) As java.time.temporal.ValueRange
+		Public Overrides Function range(  field As java.time.temporal.ChronoField) As java.time.temporal.ValueRange
 			Select Case field
 				Case PROLEPTIC_MONTH
 					Dim range_Renamed As java.time.temporal.ValueRange = PROLEPTIC_MONTH.range()
@@ -317,7 +317,7 @@ Namespace java.time.chrono
 		End Function
 
 		'-----------------------------------------------------------------------
-		Public Overrides Function resolveDate(ByVal fieldValues As IDictionary(Of java.time.temporal.TemporalField, Long?), ByVal resolverStyle As java.time.format.ResolverStyle) As ThaiBuddhistDate ' override for return type
+		Public Overrides Function resolveDate(  fieldValues As IDictionary(Of java.time.temporal.TemporalField, Long?),   resolverStyle As java.time.format.ResolverStyle) As ThaiBuddhistDate ' override for return type
 			Return CType(MyBase.resolveDate(fieldValues, resolverStyle), ThaiBuddhistDate)
 		End Function
 
@@ -341,7 +341,7 @@ Namespace java.time.chrono
 		''' </summary>
 		''' <param name="s"> the stream to read </param>
 		''' <exception cref="InvalidObjectException"> always </exception>
-		Private Sub readObject(ByVal s As java.io.ObjectInputStream)
+		Private Sub readObject(  s As java.io.ObjectInputStream)
 			Throw New java.io.InvalidObjectException("Deserialization via serialization delegate")
 		End Sub
 	End Class

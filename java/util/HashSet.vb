@@ -117,7 +117,7 @@ Namespace java.util
 		''' </summary>
 		''' <param name="c"> the collection whose elements are to be placed into this set </param>
 		''' <exception cref="NullPointerException"> if the specified collection is null </exception>
-		Public Sub New(Of T1 As E)(ByVal c As Collection(Of T1))
+		Public Sub New(Of T1 As E)(  c As Collection(Of T1))
 			map = New HashMap(Of ) (System.Math.Max(CInt(Fix(c.size()/.75f)) + 1, 16))
 			addAll(c)
 		End Sub
@@ -130,7 +130,7 @@ Namespace java.util
 		''' <param name="loadFactor">        the load factor of the hash map </param>
 		''' <exception cref="IllegalArgumentException"> if the initial capacity is less
 		'''             than zero, or if the load factor is nonpositive </exception>
-		Public Sub New(ByVal initialCapacity As Integer, ByVal loadFactor As Single)
+		Public Sub New(  initialCapacity As Integer,   loadFactor As Single)
 			map = New HashMap(Of )(initialCapacity, loadFactor)
 		End Sub
 
@@ -141,7 +141,7 @@ Namespace java.util
 		''' <param name="initialCapacity">   the initial capacity of the hash table </param>
 		''' <exception cref="IllegalArgumentException"> if the initial capacity is less
 		'''             than zero </exception>
-		Public Sub New(ByVal initialCapacity As Integer)
+		Public Sub New(  initialCapacity As Integer)
 			map = New HashMap(Of )(initialCapacity)
 		End Sub
 
@@ -157,7 +157,7 @@ Namespace java.util
 		'''             constructor from other int, float constructor.) </param>
 		''' <exception cref="IllegalArgumentException"> if the initial capacity is less
 		'''             than zero, or if the load factor is nonpositive </exception>
-		Friend Sub New(ByVal initialCapacity As Integer, ByVal loadFactor As Single, ByVal dummy As Boolean)
+		Friend Sub New(  initialCapacity As Integer,   loadFactor As Single,   dummy As Boolean)
 			map = New LinkedHashMap(Of )(initialCapacity, loadFactor)
 		End Sub
 
@@ -197,7 +197,7 @@ Namespace java.util
 		''' </summary>
 		''' <param name="o"> element whose presence in this set is to be tested </param>
 		''' <returns> <tt>true</tt> if this set contains the specified element </returns>
-		Public Overridable Function contains(ByVal o As Object) As Boolean Implements Set(Of E).contains
+		Public Overridable Function contains(  o As Object) As Boolean Implements Set(Of E).contains
 			Return map.containsKey(o)
 		End Function
 
@@ -212,7 +212,7 @@ Namespace java.util
 		''' <param name="e"> element to be added to this set </param>
 		''' <returns> <tt>true</tt> if this set did not already contain the specified
 		''' element </returns>
-		Public Overridable Function add(ByVal e As E) As Boolean
+		Public Overridable Function add(  e As E) As Boolean
 			Return map.put(e, PRESENT) Is Nothing
 		End Function
 
@@ -227,7 +227,7 @@ Namespace java.util
 		''' </summary>
 		''' <param name="o"> object to be removed from this set, if present </param>
 		''' <returns> <tt>true</tt> if the set contained the specified element </returns>
-		Public Overridable Function remove(ByVal o As Object) As Boolean Implements Set(Of E).remove
+		Public Overridable Function remove(  o As Object) As Boolean Implements Set(Of E).remove
 			Return map.remove(o) Is PRESENT
 		End Function
 
@@ -265,7 +265,7 @@ Namespace java.util
 		'''             (int), followed by all of its elements (each an Object) in
 		'''             no particular order.
 		''' </summary>
-		Private Sub writeObject(ByVal s As java.io.ObjectOutputStream)
+		Private Sub writeObject(  s As java.io.ObjectOutputStream)
 			' Write out any hidden serialization magic
 			s.defaultWriteObject()
 
@@ -286,7 +286,7 @@ Namespace java.util
 		''' Reconstitute the <tt>HashSet</tt> instance from a stream (that is,
 		''' deserialize it).
 		''' </summary>
-		Private Sub readObject(ByVal s As java.io.ObjectInputStream)
+		Private Sub readObject(  s As java.io.ObjectInputStream)
 			' Read in any hidden serialization magic
 			s.defaultReadObject()
 

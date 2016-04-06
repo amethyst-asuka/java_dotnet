@@ -89,7 +89,7 @@ Namespace java.awt
 		''' <param name="d">   the specified dimension for the
 		'''               <code>width</code> and
 		'''               <code>height</code> values </param>
-		Public Sub New(ByVal d As Dimension)
+		Public Sub New(  d As Dimension)
 			Me.New(d.width, d.height)
 		End Sub
 
@@ -99,7 +99,7 @@ Namespace java.awt
 		''' </summary>
 		''' <param name="width"> the specified width </param>
 		''' <param name="height"> the specified height </param>
-		Public Sub New(ByVal width As Integer, ByVal height As Integer)
+		Public Sub New(  width As Integer,   height As Integer)
 			Me.width = width
 			Me.height = height
 		End Sub
@@ -126,7 +126,7 @@ Namespace java.awt
         ''' <param name="width">  the new width for the <code>Dimension</code> object </param>
         ''' <param name="height"> the new height for the <code>Dimension</code> object
         ''' @since 1.2 </param>
-        Public Overrides Sub setSize(ByVal width As Double, ByVal height As Double)
+        Public Overrides Sub setSize(  width As Double,   height As Double)
             Me._width = CInt(Fix(System.Math.Ceiling(width)))
             Me._height = CInt(Fix(System.Math.Ceiling(height)))
         End Sub
@@ -145,7 +145,7 @@ Namespace java.awt
             Get
                 Return New Dimension(width, height)
             End Get
-            Set(ByVal d As Dimension)
+            Set(  d As Dimension)
                 sizeize(d.width, d.height)
             End Set
         End Property
@@ -162,7 +162,7 @@ Namespace java.awt
         ''' <seealso cref=      java.awt.Dimension#getSize </seealso>
         ''' <seealso cref=      java.awt.Component#setSize
         ''' @since    1.1 </seealso>
-        Public Sub setSize(ByVal width As Integer, ByVal height As Integer)
+        Public Sub setSize(  width As Integer,   height As Integer)
             Me._width = width
             Me._height = height
         End Sub
@@ -170,7 +170,7 @@ Namespace java.awt
         ''' <summary>
         ''' Checks whether two dimension objects have equal values.
         ''' </summary>
-        Public Overrides Function Equals(ByVal obj As Object) As Boolean
+        Public Overrides Function Equals(  obj As Object) As Boolean
 			If TypeOf obj Is Dimension Then
 				Dim d As Dimension = CType(obj, Dimension)
 				Return (width = d.width) AndAlso (height = d.height)

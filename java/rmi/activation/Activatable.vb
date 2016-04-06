@@ -91,7 +91,7 @@ Namespace java.rmi.activation
 		''' not supported by this implementation.
 		''' @since 1.2
 		'''  </exception>
-		Protected Friend Sub New(Of T1)(ByVal location As String, ByVal data As java.rmi.MarshalledObject(Of T1), ByVal restart As Boolean, ByVal port As Integer)
+		Protected Friend Sub New(Of T1)(  location As String,   data As java.rmi.MarshalledObject(Of T1),   restart As Boolean,   port As Integer)
 			MyBase.New()
 			id = exportObject(Me, location, data, restart, port)
 		End Sub
@@ -138,7 +138,7 @@ Namespace java.rmi.activation
 		''' not supported by this implementation.
 		''' @since 1.2
 		'''  </exception>
-		Protected Friend Sub New(Of T1)(ByVal location As String, ByVal data As java.rmi.MarshalledObject(Of T1), ByVal restart As Boolean, ByVal port As Integer, ByVal csf As java.rmi.server.RMIClientSocketFactory, ByVal ssf As java.rmi.server.RMIServerSocketFactory)
+		Protected Friend Sub New(Of T1)(  location As String,   data As java.rmi.MarshalledObject(Of T1),   restart As Boolean,   port As Integer,   csf As java.rmi.server.RMIClientSocketFactory,   ssf As java.rmi.server.RMIServerSocketFactory)
 			MyBase.New()
 			id = exportObject(Me, location, data, restart, port, csf, ssf)
 		End Sub
@@ -164,7 +164,7 @@ Namespace java.rmi.activation
 		''' <exception cref="UnsupportedOperationException"> if and only if activation is
 		''' not supported by this implementation
 		''' @since 1.2 </exception>
-		Protected Friend Sub New(ByVal id As ActivationID, ByVal port As Integer)
+		Protected Friend Sub New(  id As ActivationID,   port As Integer)
 			MyBase.New()
 			Me.id = id
 			exportObject(Me, id, port)
@@ -194,7 +194,7 @@ Namespace java.rmi.activation
 		''' <exception cref="UnsupportedOperationException"> if and only if activation is
 		''' not supported by this implementation
 		''' @since 1.2 </exception>
-		Protected Friend Sub New(ByVal id As ActivationID, ByVal port As Integer, ByVal csf As java.rmi.server.RMIClientSocketFactory, ByVal ssf As java.rmi.server.RMIServerSocketFactory)
+		Protected Friend Sub New(  id As ActivationID,   port As Integer,   csf As java.rmi.server.RMIClientSocketFactory,   ssf As java.rmi.server.RMIServerSocketFactory)
 			MyBase.New()
 			Me.id = id
 			exportObject(Me, id, port, csf, ssf)
@@ -225,7 +225,7 @@ Namespace java.rmi.activation
 		''' <exception cref="UnsupportedOperationException"> if and only if activation is
 		''' not supported by this implementation
 		''' @since 1.2 </exception>
-		Public Shared Function register(ByVal desc As ActivationDesc) As java.rmi.Remote
+		Public Shared Function register(  desc As ActivationDesc) As java.rmi.Remote
 			' register object with activator.
 			Dim id_Renamed As ActivationID = ActivationGroup.system.registerObject(desc)
 			Return sun.rmi.server.ActivatableRef.getStub(desc, id_Renamed)
@@ -257,7 +257,7 @@ Namespace java.rmi.activation
 		''' <exception cref="UnsupportedOperationException"> if and only if activation is
 		''' not supported by this implementation
 		''' @since 1.2 </exception>
-		Public Shared Function inactive(ByVal id As ActivationID) As Boolean
+		Public Shared Function inactive(  id As ActivationID) As Boolean
 			Return ActivationGroup.currentGroup().inactiveObject(id)
 		End Function
 
@@ -273,7 +273,7 @@ Namespace java.rmi.activation
 		''' <exception cref="UnsupportedOperationException"> if and only if activation is
 		''' not supported by this implementation
 		''' @since 1.2 </exception>
-		Public Shared Sub unregister(ByVal id As ActivationID)
+		Public Shared Sub unregister(  id As ActivationID)
 			ActivationGroup.system.unregisterObject(id)
 		End Sub
 
@@ -317,7 +317,7 @@ Namespace java.rmi.activation
 		''' not supported by this implementation
 		''' @since 1.2
 		'''  </exception>
-		Public Shared Function exportObject(Of T1)(ByVal obj As java.rmi.Remote, ByVal location As String, ByVal data As java.rmi.MarshalledObject(Of T1), ByVal restart As Boolean, ByVal port As Integer) As ActivationID
+		Public Shared Function exportObject(Of T1)(  obj As java.rmi.Remote,   location As String,   data As java.rmi.MarshalledObject(Of T1),   restart As Boolean,   port As Integer) As ActivationID
 			Return exportObject(obj, location, data, restart, port, Nothing, Nothing)
 		End Function
 
@@ -386,7 +386,7 @@ Namespace java.rmi.activation
 		''' not supported by this implementation
 		''' @since 1.2
 		'''  </exception>
-		Public Shared Function exportObject(Of T1)(ByVal obj As java.rmi.Remote, ByVal location As String, ByVal data As java.rmi.MarshalledObject(Of T1), ByVal restart As Boolean, ByVal port As Integer, ByVal csf As java.rmi.server.RMIClientSocketFactory, ByVal ssf As java.rmi.server.RMIServerSocketFactory) As ActivationID
+		Public Shared Function exportObject(Of T1)(  obj As java.rmi.Remote,   location As String,   data As java.rmi.MarshalledObject(Of T1),   restart As Boolean,   port As Integer,   csf As java.rmi.server.RMIClientSocketFactory,   ssf As java.rmi.server.RMIServerSocketFactory) As ActivationID
 			Dim desc As New ActivationDesc(obj.GetType().name, location, data, restart)
 	'        
 	'         * Register descriptor.
@@ -444,7 +444,7 @@ Namespace java.rmi.activation
 		''' <exception cref="UnsupportedOperationException"> if and only if activation is
 		''' not supported by this implementation
 		''' @since 1.2 </exception>
-		Public Shared Function exportObject(ByVal obj As java.rmi.Remote, ByVal id As ActivationID, ByVal port As Integer) As java.rmi.Remote
+		Public Shared Function exportObject(  obj As java.rmi.Remote,   id As ActivationID,   port As Integer) As java.rmi.Remote
 			Return exportObject(obj, New sun.rmi.server.ActivatableServerRef(id, port))
 		End Function
 
@@ -471,7 +471,7 @@ Namespace java.rmi.activation
 		''' <exception cref="UnsupportedOperationException"> if and only if activation is
 		''' not supported by this implementation
 		''' @since 1.2 </exception>
-		Public Shared Function exportObject(ByVal obj As java.rmi.Remote, ByVal id As ActivationID, ByVal port As Integer, ByVal csf As java.rmi.server.RMIClientSocketFactory, ByVal ssf As java.rmi.server.RMIServerSocketFactory) As java.rmi.Remote
+		Public Shared Function exportObject(  obj As java.rmi.Remote,   id As ActivationID,   port As Integer,   csf As java.rmi.server.RMIClientSocketFactory,   ssf As java.rmi.server.RMIServerSocketFactory) As java.rmi.Remote
 			Return exportObject(obj, New sun.rmi.server.ActivatableServerRef(id, port, csf, ssf))
 		End Function
 
@@ -494,14 +494,14 @@ Namespace java.rmi.activation
 		''' <exception cref="UnsupportedOperationException"> if and only if activation is
 		''' not supported by this implementation
 		''' @since 1.2 </exception>
-		Public Shared Function unexportObject(ByVal obj As java.rmi.Remote, ByVal force As Boolean) As Boolean
+		Public Shared Function unexportObject(  obj As java.rmi.Remote,   force As Boolean) As Boolean
 			Return sun.rmi.transport.ObjectTable.unexportObject(obj, force)
 		End Function
 
 		''' <summary>
 		''' Exports the specified object using the specified server ref.
 		''' </summary>
-		Private Shared Function exportObject(ByVal obj As java.rmi.Remote, ByVal sref As sun.rmi.server.ActivatableServerRef) As java.rmi.Remote
+		Private Shared Function exportObject(  obj As java.rmi.Remote,   sref As sun.rmi.server.ActivatableServerRef) As java.rmi.Remote
 			' if obj extends Activatable, set its ref.
 			If TypeOf obj Is Activatable Then CType(obj, Activatable).ref = sref
 			Return sref.exportObject(obj, Nothing, False)

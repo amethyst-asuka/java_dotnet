@@ -109,7 +109,7 @@ Namespace java.net
 			holder().family = IPv4
 		End Sub
 
-		Friend Sub New(ByVal hostName As String, ByVal addr As SByte())
+		Friend Sub New(  hostName As String,   addr As SByte())
 			holder().hostName = hostName
 			holder().family = IPv4
 			If addr IsNot Nothing Then
@@ -123,7 +123,7 @@ Namespace java.net
 			End If
 			holder().originalHostName = hostName
 		End Sub
-		Friend Sub New(ByVal hostName As String, ByVal address As Integer)
+		Friend Sub New(  hostName As String,   address As Integer)
 			holder().hostName = hostName
 			holder().family = IPv4
 			holder().address = address
@@ -354,7 +354,7 @@ Namespace java.net
 		''' <returns>  {@code true} if the objects are the same;
 		'''          {@code false} otherwise. </returns>
 		''' <seealso cref=     java.net.InetAddress#getAddress() </seealso>
-		Public Overrides Function Equals(ByVal obj As Object) As Boolean
+		Public Overrides Function Equals(  obj As Object) As Boolean
 			Return (obj IsNot Nothing) AndAlso (TypeOf obj Is Inet4Address) AndAlso (CType(obj, InetAddress).holder().address = holder().address)
 		End Function
 
@@ -368,7 +368,7 @@ Namespace java.net
 	'     * @since 1.4
 	'     
 
-		Friend Shared Function numericToTextFormat(ByVal src As SByte()) As String
+		Friend Shared Function numericToTextFormat(  src As SByte()) As String
 			Return (src(0) And &Hff) & "." & (src(1) And &Hff) & "." & (src(2) And &Hff) & "." & (src(3) And &Hff)
 		End Function
 

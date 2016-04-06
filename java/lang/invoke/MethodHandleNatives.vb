@@ -44,37 +44,37 @@ Namespace java.lang.invoke
 
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Friend Shared Sub init(ByVal self As MemberName, ByVal ref As Object)
+		Friend Shared Sub init(  self As MemberName,   ref As Object)
 		End Sub
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Friend Shared Sub expand(ByVal self As MemberName)
+		Friend Shared Sub expand(  self As MemberName)
 		End Sub
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Friend Shared Function resolve(ByVal self As MemberName, ByVal caller As [Class]) As MemberName
+		Friend Shared Function resolve(  self As MemberName,   caller As [Class]) As MemberName
 		End Function
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Friend Shared Function getMembers(ByVal defc As [Class], ByVal matchName As String, ByVal matchSig As String, ByVal matchFlags As Integer, ByVal caller As [Class], ByVal skip As Integer, ByVal results As MemberName()) As Integer
+		Friend Shared Function getMembers(  defc As [Class],   matchName As String,   matchSig As String,   matchFlags As Integer,   caller As [Class],   skip As Integer,   results As MemberName()) As Integer
 		End Function
 
 		'/ Field layout queries parallel to sun.misc.Unsafe:
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Friend Shared Function objectFieldOffset(ByVal self As MemberName) As Long
+		Friend Shared Function objectFieldOffset(  self As MemberName) As Long
 		End Function
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Friend Shared Function staticFieldOffset(ByVal self As MemberName) As Long
+		Friend Shared Function staticFieldOffset(  self As MemberName) As Long
 		End Function
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Friend Shared Function staticFieldBase(ByVal self As MemberName) As Object
+		Friend Shared Function staticFieldBase(  self As MemberName) As Object
 		End Function
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Friend Shared Function getMemberVMInfo(ByVal self As MemberName) As Object
+		Friend Shared Function getMemberVMInfo(  self As MemberName) As Object
 		End Function
 
 		'/ MethodHandle support
@@ -86,7 +86,7 @@ Namespace java.lang.invoke
 		''' </summary>
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Friend Shared Function getConstant(ByVal which As Integer) As Integer
+		Friend Shared Function getConstant(  which As Integer) As Integer
 		End Function
 
 		Friend Shared ReadOnly COUNT_GWT As Boolean
@@ -97,11 +97,11 @@ Namespace java.lang.invoke
 		''' Tell the JVM that we need to change the target of a CallSite. </summary>
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Friend Shared Sub setCallSiteTargetNormal(ByVal site As CallSite, ByVal target As MethodHandle)
+		Friend Shared Sub setCallSiteTargetNormal(  site As CallSite,   target As MethodHandle)
 		End Sub
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Friend Shared Sub setCallSiteTargetVolatile(ByVal site As CallSite, ByVal target As MethodHandle)
+		Friend Shared Sub setCallSiteTargetVolatile(  site As CallSite,   target As MethodHandle)
 		End Sub
 
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
@@ -164,38 +164,38 @@ Namespace java.lang.invoke
 			Friend Const REF_NONE As SByte = 0, REF_getField As SByte = 1, REF_getStatic As SByte = 2, REF_putField As SByte = 3, REF_putStatic As SByte = 4, REF_invokeVirtual As SByte = 5, REF_invokeStatic As SByte = 6, REF_invokeSpecial As SByte = 7, REF_newInvokeSpecial As SByte = 8, REF_invokeInterface As SByte = 9, REF_LIMIT As SByte = 10 ' null value
 		End Class
 
-		Friend Shared Function refKindIsValid(ByVal refKind As Integer) As Boolean
+		Friend Shared Function refKindIsValid(  refKind As Integer) As Boolean
 			Return (refKind > REF_NONE AndAlso refKind < REF_LIMIT)
 		End Function
-		Friend Shared Function refKindIsField(ByVal refKind As SByte) As Boolean
+		Friend Shared Function refKindIsField(  refKind As SByte) As Boolean
 			assert(refKindIsValid(refKind))
 			Return (refKind <= REF_putStatic)
 		End Function
-		Friend Shared Function refKindIsGetter(ByVal refKind As SByte) As Boolean
+		Friend Shared Function refKindIsGetter(  refKind As SByte) As Boolean
 			assert(refKindIsValid(refKind))
 			Return (refKind <= REF_getStatic)
 		End Function
-		Friend Shared Function refKindIsSetter(ByVal refKind As SByte) As Boolean
+		Friend Shared Function refKindIsSetter(  refKind As SByte) As Boolean
 			Return refKindIsField(refKind) AndAlso Not refKindIsGetter(refKind)
 		End Function
-		Friend Shared Function refKindIsMethod(ByVal refKind As SByte) As Boolean
+		Friend Shared Function refKindIsMethod(  refKind As SByte) As Boolean
 			Return (Not refKindIsField(refKind)) AndAlso (refKind <> REF_newInvokeSpecial)
 		End Function
-		Friend Shared Function refKindIsConstructor(ByVal refKind As SByte) As Boolean
+		Friend Shared Function refKindIsConstructor(  refKind As SByte) As Boolean
 			Return (refKind = REF_newInvokeSpecial)
 		End Function
-		Friend Shared Function refKindHasReceiver(ByVal refKind As SByte) As Boolean
+		Friend Shared Function refKindHasReceiver(  refKind As SByte) As Boolean
 			assert(refKindIsValid(refKind))
 			Return (refKind And 1) <> 0
 		End Function
-		Friend Shared Function refKindIsStatic(ByVal refKind As SByte) As Boolean
+		Friend Shared Function refKindIsStatic(  refKind As SByte) As Boolean
 			Return (Not refKindHasReceiver(refKind)) AndAlso (refKind <> REF_newInvokeSpecial)
 		End Function
-		Friend Shared Function refKindDoesDispatch(ByVal refKind As SByte) As Boolean
+		Friend Shared Function refKindDoesDispatch(  refKind As SByte) As Boolean
 			assert(refKindIsValid(refKind))
 			Return (refKind = REF_invokeVirtual OrElse refKind = REF_invokeInterface)
 		End Function
-		Friend Shared Function refKindName(ByVal refKind As SByte) As String
+		Friend Shared Function refKindName(  refKind As SByte) As String
 			assert(refKindIsValid(refKind))
 			Select Case refKind
 			Case REF_getField
@@ -223,7 +223,7 @@ Namespace java.lang.invoke
 
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Private Shared Function getNamedCon(ByVal which As Integer, ByVal name As Object()) As Integer
+		Private Shared Function getNamedCon(  which As Integer,   name As Object()) As Integer
 		End Function
 		Friend Shared Function verifyConstants() As Boolean
 			Dim box As Object() = { Nothing }
@@ -266,7 +266,7 @@ Namespace java.lang.invoke
 		''' <summary>
 		''' The JVM is linking an invokedynamic instruction.  Create a reified call site for it.
 		''' </summary>
-		Friend Shared Function linkCallSite(ByVal callerObj As Object, ByVal bootstrapMethodObj As Object, ByVal nameObj As Object, ByVal typeObj As Object, ByVal staticArguments As Object, ByVal appendixResult As Object()) As MemberName
+		Friend Shared Function linkCallSite(  callerObj As Object,   bootstrapMethodObj As Object,   nameObj As Object,   typeObj As Object,   staticArguments As Object,   appendixResult As Object()) As MemberName
 			Dim bootstrapMethod As MethodHandle = CType(bootstrapMethodObj, MethodHandle)
 			Dim caller As  [Class] = CType(callerObj, [Class])
 			Dim name As String = nameObj.ToString().intern()
@@ -274,7 +274,7 @@ Namespace java.lang.invoke
 			If Not TRACE_METHOD_LINKAGE Then Return linkCallSiteImpl(caller, bootstrapMethod, name, type, staticArguments, appendixResult)
 			Return linkCallSiteTracing(caller, bootstrapMethod, name, type, staticArguments, appendixResult)
 		End Function
-		Friend Shared Function linkCallSiteImpl(ByVal caller As [Class], ByVal bootstrapMethod As MethodHandle, ByVal name As String, ByVal type As MethodType, ByVal staticArguments As Object, ByVal appendixResult As Object()) As MemberName
+		Friend Shared Function linkCallSiteImpl(  caller As [Class],   bootstrapMethod As MethodHandle,   name As String,   type As MethodType,   staticArguments As Object,   appendixResult As Object()) As MemberName
 			Dim callSite_Renamed As CallSite = CallSite.makeSite(bootstrapMethod, name, type, staticArguments, caller)
 			If TypeOf callSite_Renamed Is ConstantCallSite Then
 				appendixResult(0) = callSite_Renamed.dynamicInvoker()
@@ -285,7 +285,7 @@ Namespace java.lang.invoke
 			End If
 		End Function
 		' Tracing logic:
-		Friend Shared Function linkCallSiteTracing(ByVal caller As [Class], ByVal bootstrapMethod As MethodHandle, ByVal name As String, ByVal type As MethodType, ByVal staticArguments As Object, ByVal appendixResult As Object()) As MemberName
+		Friend Shared Function linkCallSiteTracing(  caller As [Class],   bootstrapMethod As MethodHandle,   name As String,   type As MethodType,   staticArguments As Object,   appendixResult As Object()) As MemberName
 			Dim bsmReference As Object = bootstrapMethod.internalMemberName()
 			If bsmReference Is Nothing Then bsmReference = bootstrapMethod
 			Dim staticArglist As Object = (If(TypeOf staticArguments Is Object(), CType(staticArguments, Object()), staticArguments))
@@ -303,7 +303,7 @@ Namespace java.lang.invoke
 		''' <summary>
 		''' The JVM wants a pointer to a MethodType.  Oblige it by finding or creating one.
 		''' </summary>
-		Friend Shared Function findMethodHandleType(ByVal rtype As [Class], ByVal ptypes As  [Class]()) As MethodType
+		Friend Shared Function findMethodHandleType(  rtype As [Class],   ptypes As  [Class]()) As MethodType
 			Return MethodType.makeImpl(rtype, ptypes, True)
 		End Function
 
@@ -374,11 +374,11 @@ Namespace java.lang.invoke
 		''' special cases in reflective code such as {@code findVirtual}
 		''' or {@code revealDirect}.
 		''' </summary>
-		Friend Shared Function linkMethod(ByVal callerClass As [Class], ByVal refKind As Integer, ByVal defc As [Class], ByVal name As String, ByVal type As Object, ByVal appendixResult As Object()) As MemberName
+		Friend Shared Function linkMethod(  callerClass As [Class],   refKind As Integer,   defc As [Class],   name As String,   type As Object,   appendixResult As Object()) As MemberName
 			If Not TRACE_METHOD_LINKAGE Then Return linkMethodImpl(callerClass, refKind, defc, name, type, appendixResult)
 			Return linkMethodTracing(callerClass, refKind, defc, name, type, appendixResult)
 		End Function
-		Friend Shared Function linkMethodImpl(ByVal callerClass As [Class], ByVal refKind As Integer, ByVal defc As [Class], ByVal name As String, ByVal type As Object, ByVal appendixResult As Object()) As MemberName
+		Friend Shared Function linkMethodImpl(  callerClass As [Class],   refKind As Integer,   defc As [Class],   name As String,   type As Object,   appendixResult As Object()) As MemberName
 			Try
 				If defc Is GetType(MethodHandle) AndAlso refKind = REF_invokeVirtual Then Return Invokers.methodHandleInvokeLinkerMethod(name, fixMethodType(callerClass, type), appendixResult)
 			Catch ex As Throwable
@@ -390,7 +390,7 @@ Namespace java.lang.invoke
 			End Try
 			Throw New LinkageError("no such method " & defc.name & "." & name+type)
 		End Function
-		Private Shared Function fixMethodType(ByVal callerClass As [Class], ByVal type As Object) As MethodType
+		Private Shared Function fixMethodType(  callerClass As [Class],   type As Object) As MethodType
 			If TypeOf type Is MethodType Then
 				Return CType(type, MethodType)
 			Else
@@ -398,7 +398,7 @@ Namespace java.lang.invoke
 			End If
 		End Function
 		' Tracing logic:
-		Friend Shared Function linkMethodTracing(ByVal callerClass As [Class], ByVal refKind As Integer, ByVal defc As [Class], ByVal name As String, ByVal type As Object, ByVal appendixResult As Object()) As MemberName
+		Friend Shared Function linkMethodTracing(  callerClass As [Class],   refKind As Integer,   defc As [Class],   name As String,   type As Object,   appendixResult As Object()) As MemberName
 			Console.WriteLine("linkMethod " & defc.name & "." & name+type & "/" &  java.lang.[Integer].toHexString(refKind))
 			Try
 				Dim res As MemberName = linkMethodImpl(callerClass, refKind, defc, name, type, appendixResult)
@@ -419,7 +419,7 @@ Namespace java.lang.invoke
 		''' Recent versions of the JVM may also pass a resolved MemberName for the type.
 		''' In that case, the name is ignored and may be null.
 		''' </summary>
-		Friend Shared Function linkMethodHandleConstant(ByVal callerClass As [Class], ByVal refKind As Integer, ByVal defc As [Class], ByVal name As String, ByVal type As Object) As MethodHandle
+		Friend Shared Function linkMethodHandleConstant(  callerClass As [Class],   refKind As Integer,   defc As [Class],   name As String,   type As Object) As MethodHandle
 			Try
 				Dim lookup As Lookup = IMPL_LOOKUP.in(callerClass)
 				assert(refKindIsValid(refKind))
@@ -448,7 +448,7 @@ Namespace java.lang.invoke
 		''' Use best possible cause for err.initCause(), substituting the
 		''' cause for err itself if the cause has the same (or better) type.
 		''' </summary>
-		Private Shared Function initCauseFrom(ByVal err As [Error], ByVal ex As Exception) As [Error]
+		Private Shared Function initCauseFrom(  err As [Error],   ex As Exception) As [Error]
 			Dim th As Throwable = ex.cause
 			If err.GetType().IsInstanceOfType(th) Then Return CType(th, [Error])
 			err.initCause(If(th Is Nothing, ex, th))
@@ -460,13 +460,13 @@ Namespace java.lang.invoke
 		''' I.e., does it call Reflection.getCallerClass or a similer method
 		''' to ask about the identity of its caller?
 		''' </summary>
-		Friend Shared Function isCallerSensitive(ByVal mem As MemberName) As Boolean
+		Friend Shared Function isCallerSensitive(  mem As MemberName) As Boolean
 			If Not mem.invocable Then ' fields are not caller sensitive Return False
 
 			Return mem.callerSensitive OrElse canBeCalledVirtual(mem)
 		End Function
 
-		Friend Shared Function canBeCalledVirtual(ByVal mem As MemberName) As Boolean
+		Friend Shared Function canBeCalledVirtual(  mem As MemberName) As Boolean
 			assert(mem.invocable)
 			Dim defc As  [Class] = mem.declaringClass
 			Select Case mem.name
@@ -478,7 +478,7 @@ Namespace java.lang.invoke
 			Return False
 		End Function
 
-		Friend Shared Function canBeCalledVirtual(ByVal symbolicRef As MemberName, ByVal definingClass As [Class]) As Boolean
+		Friend Shared Function canBeCalledVirtual(  symbolicRef As MemberName,   definingClass As [Class]) As Boolean
 			Dim symbolicRefClass As  [Class] = symbolicRef.declaringClass
 			If symbolicRefClass Is definingClass Then Return True
 			If symbolicRef.static OrElse symbolicRef.private Then Return False

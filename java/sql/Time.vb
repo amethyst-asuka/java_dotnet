@@ -57,7 +57,7 @@ Namespace java.sql
 		''' @deprecated Use the constructor that takes a milliseconds value
 		'''             in place of this constructor 
 		<Obsolete("Use the constructor that takes a milliseconds value")> _
-		Public Sub New(ByVal hour As Integer, ByVal minute As Integer, ByVal second As Integer)
+		Public Sub New(  hour As Integer,   minute As Integer,   second As Integer)
 			MyBase.New(70, 0, 1, hour, minute, second)
 		End Sub
 
@@ -67,7 +67,7 @@ Namespace java.sql
 		''' <param name="time"> milliseconds since January 1, 1970, 00:00:00 GMT;
 		'''             a negative number is milliseconds before
 		'''               January 1, 1970, 00:00:00 GMT </param>
-		Public Sub New(ByVal time_Renamed As Long)
+		Public Sub New(  time_Renamed As Long)
 			MyBase.New(time_Renamed)
 		End Sub
 
@@ -78,7 +78,7 @@ Namespace java.sql
 		'''             a negative number is milliseconds before
 		'''               January 1, 1970, 00:00:00 GMT </param>
 		Public Overrides Property time As Long
-			Set(ByVal time_Renamed As Long)
+			Set(  time_Renamed As Long)
 				MyBase.time = time_Renamed
 			End Set
 		End Property
@@ -88,7 +88,7 @@ Namespace java.sql
 		''' </summary>
 		''' <param name="s"> time in format "hh:mm:ss" </param>
 		''' <returns> a corresponding <code>Time</code> object </returns>
-		Public Shared Function valueOf(ByVal s As String) As Time
+		Public Shared Function valueOf(  s As String) As Time
 			Dim hour As Integer
 			Dim minute As Integer
 			Dim second As Integer
@@ -156,7 +156,7 @@ Namespace java.sql
 			Get
 				Throw New System.ArgumentException
 			End Get
-			Set(ByVal i As Integer)
+			Set(  i As Integer)
 				Throw New System.ArgumentException
 			End Set
 		End Property
@@ -174,7 +174,7 @@ Namespace java.sql
 			Get
 				Throw New System.ArgumentException
 			End Get
-			Set(ByVal i As Integer)
+			Set(  i As Integer)
 				Throw New System.ArgumentException
 			End Set
 		End Property
@@ -206,7 +206,7 @@ Namespace java.sql
 			Get
 				Throw New System.ArgumentException
 			End Get
-			Set(ByVal i As Integer)
+			Set(  i As Integer)
 				Throw New System.ArgumentException
 			End Set
 		End Property
@@ -230,7 +230,7 @@ Namespace java.sql
 		''' <exception cref="NullPointerException"> if {@code time} is null
 		''' @since 1.8 </exception>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Shared Function valueOf(ByVal time_Renamed As java.time.LocalTime) As Time
+		Public Shared Function valueOf(  time_Renamed As java.time.LocalTime) As Time
 			Return New Time(time_Renamed.hour, time_Renamed.minute, time_Renamed.second)
 		End Function
 

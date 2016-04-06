@@ -33,12 +33,12 @@ Namespace java.awt.font
 		Private pos As Integer
 		Private begin As Integer
 
-		Friend Sub New(ByVal chars As Char())
+		Friend Sub New(  chars As Char())
 
 			reset(chars, 0)
 		End Sub
 
-		Friend Sub New(ByVal chars As Char(), ByVal begin As Integer)
+		Friend Sub New(  chars As Char(),   begin As Integer)
 
 			reset(chars, begin)
 		End Sub
@@ -125,7 +125,7 @@ Namespace java.awt.font
 		''' getBeginIndex() to getEndIndex().  An IllegalArgumentException is thrown
 		''' if an invalid value is supplied. </param>
 		''' <returns> the character at the specified position or DONE if the specified position is equal to getEndIndex() </returns>
-		Public Overridable Function setIndex(ByVal position As Integer) As Char
+		Public Overridable Function setIndex(  position As Integer) As Char
 
 			position -= begin
 			If position < 0 OrElse position > chars.Length Then Throw New IllegalArgumentException("Invalid index")
@@ -170,11 +170,11 @@ Namespace java.awt.font
 			Return c
 		End Function
 
-		Friend Overridable Sub reset(ByVal chars As Char())
+		Friend Overridable Sub reset(  chars As Char())
 			reset(chars, 0)
 		End Sub
 
-		Friend Overridable Sub reset(ByVal chars As Char(), ByVal begin As Integer)
+		Friend Overridable Sub reset(  chars As Char(),   begin As Integer)
 
 			Me.chars = chars
 			Me.begin = begin

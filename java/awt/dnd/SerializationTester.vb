@@ -44,11 +44,11 @@ Namespace java.awt.dnd
 		Private Class OutputStreamAnonymousInnerClassHelper
 			Inherits java.io.OutputStream
 
-			Public Overrides Sub write(ByVal b As Integer)
+			Public Overrides Sub write(  b As Integer)
 			End Sub
 		End Class
 
-		Friend Shared Function test(ByVal obj As Object) As Boolean
+		Friend Shared Function test(  obj As Object) As Boolean
 			If Not(TypeOf obj Is java.io.Serializable) Then Return False
 
 			Try

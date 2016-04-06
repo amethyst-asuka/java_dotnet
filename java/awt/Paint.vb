@@ -96,7 +96,7 @@ Namespace java.awt
 		''' <seealso cref= Rectangle2D </seealso>
 		''' <seealso cref= AffineTransform </seealso>
 		''' <seealso cref= RenderingHints </seealso>
-		Function createContext(ByVal cm As java.awt.image.ColorModel, ByVal deviceBounds As Rectangle, ByVal userBounds As java.awt.geom.Rectangle2D, ByVal xform As java.awt.geom.AffineTransform, ByVal hints As RenderingHints) As PaintContext
+		Function createContext(  cm As java.awt.image.ColorModel,   deviceBounds As Rectangle,   userBounds As java.awt.geom.Rectangle2D,   xform As java.awt.geom.AffineTransform,   hints As RenderingHints) As PaintContext
 
 	End Interface
 

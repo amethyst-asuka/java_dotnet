@@ -44,7 +44,7 @@ Namespace java.util.function
 		''' <param name="left"> the first operand </param>
 		''' <param name="right"> the second operand </param>
 		''' <returns> the operator result </returns>
-		Function applyAsLong(ByVal left As Long, ByVal right As Long) As Long
+		Function applyAsLong(  left As Long,   right As Long) As Long
 	End Interface
 
 End Namespace

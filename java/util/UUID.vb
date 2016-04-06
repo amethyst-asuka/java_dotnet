@@ -106,7 +106,7 @@ Namespace java.util
 	'    
 	'     * Private constructor which uses a byte array to construct the new UUID.
 	'     
-		Private Sub New(ByVal data As SByte())
+		Private Sub New(  data As SByte())
 			Dim msb As Long = 0
 			Dim lsb As Long = 0
 			Debug.Assert(data.Length = 16, "data must be 16 bytes in length")
@@ -131,7 +131,7 @@ Namespace java.util
 		''' </param>
 		''' <param name="leastSigBits">
 		'''         The least significant bits of the {@code UUID} </param>
-		Public Sub New(ByVal mostSigBits As Long, ByVal leastSigBits As Long)
+		Public Sub New(  mostSigBits As Long,   leastSigBits As Long)
 			Me.mostSigBits = mostSigBits
 			Me.leastSigBits = leastSigBits
 		End Sub
@@ -163,7 +163,7 @@ Namespace java.util
 		'''         A byte array to be used to construct a {@code UUID}
 		''' </param>
 		''' <returns>  A {@code UUID} generated from the specified array </returns>
-		Public Shared Function nameUUIDFromBytes(ByVal name As SByte()) As UUID
+		Public Shared Function nameUUIDFromBytes(  name As SByte()) As UUID
 			Dim md As MessageDigest
 			Try
 				md = MessageDigest.getInstance("MD5")
@@ -191,7 +191,7 @@ Namespace java.util
 		'''          If name does not conform to the string representation as
 		'''          described in <seealso cref="#toString"/>
 		'''  </exception>
-		Public Shared Function fromString(ByVal name As String) As UUID
+		Public Shared Function fromString(  name As String) As UUID
 			Dim components As String() = name.Split("-")
 			If components.Length <> 5 Then Throw New IllegalArgumentException("Invalid UUID string: " & name)
 			For i As Integer = 0 To 4
@@ -368,7 +368,7 @@ Namespace java.util
 
 		''' <summary>
 		''' Returns val represented by the specified number of hex digits. </summary>
-		Private Shared Function digits(ByVal val As Long, ByVal digits_Renamed As Integer) As String
+		Private Shared Function digits(  val As Long,   digits_Renamed As Integer) As String
 			Dim hi As Long = 1L << (digits_Renamed * 4)
 			Return java.lang.[Long].toHexString(hi Or (val And (hi - 1))).Substring(1)
 		End Function
@@ -393,7 +393,7 @@ Namespace java.util
 		''' </param>
 		''' <returns>  {@code true} if the objects are the same; {@code false}
 		'''          otherwise </returns>
-		Public Overrides Function Equals(ByVal obj As Object) As Boolean
+		Public Overrides Function Equals(  obj As Object) As Boolean
 			If (Nothing Is obj) OrElse (obj.GetType() IsNot GetType(UUID)) Then Return False
 			Dim id As UUID = CType(obj, UUID)
 			Return (mostSigBits = id.mostSigBits AndAlso leastSigBits = id.leastSigBits)
@@ -414,7 +414,7 @@ Namespace java.util
 		''' <returns>  -1, 0 or 1 as this {@code UUID} is less than, equal to, or
 		'''          greater than {@code val}
 		'''  </returns>
-		Public Function compareTo(ByVal val As UUID) As Integer Implements Comparable(Of UUID).compareTo
+		Public Function compareTo(  val As UUID) As Integer Implements Comparable(Of UUID).compareTo
 			' The ordering is intentionally set up so that the UUIDs
 			' can simply be numerically compared as two numbers
 			Return (If(Me.mostSigBits < val.mostSigBits, -1, (If(Me.mostSigBits > val.mostSigBits, 1, (If(Me.leastSigBits < val.leastSigBits, -1, (If(Me.leastSigBits > val.leastSigBits, 1, 0))))))))

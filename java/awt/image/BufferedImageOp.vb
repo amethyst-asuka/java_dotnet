@@ -76,7 +76,7 @@ Namespace java.awt.image
 		''' <exception cref="IllegalArgumentException"> If the source and/or destination
 		''' image is not compatible with the types of images allowed by the class
 		''' implementing this filter. </exception>
-		Function filter(ByVal src As BufferedImage, ByVal dest As BufferedImage) As BufferedImage
+		Function filter(  src As BufferedImage,   dest As BufferedImage) As BufferedImage
 
 		''' <summary>
 		''' Returns the bounding box of the filtered destination image.
@@ -88,7 +88,7 @@ Namespace java.awt.image
 		''' </param>
 		''' <returns> The <CODE>Rectangle2D</CODE> representing the destination
 		''' image's bounding box. </returns>
-		Function getBounds2D(ByVal src As BufferedImage) As java.awt.geom.Rectangle2D
+		Function getBounds2D(  src As BufferedImage) As java.awt.geom.Rectangle2D
 
 		''' <summary>
 		''' Creates a zeroed destination image with the correct size and number of
@@ -102,7 +102,7 @@ Namespace java.awt.image
 		''' the <CODE>ColorModel</CODE> of the source is used.
 		''' </param>
 		''' <returns> The zeroed destination image. </returns>
-		Function createCompatibleDestImage(ByVal src As BufferedImage, ByVal destCM As ColorModel) As BufferedImage
+		Function createCompatibleDestImage(  src As BufferedImage,   destCM As ColorModel) As BufferedImage
 
 		''' <summary>
 		''' Returns the location of the corresponding destination point given a
@@ -114,7 +114,7 @@ Namespace java.awt.image
 		''' </param>
 		''' <returns> The <CODE>Point2D</CODE> in the destination image that
 		''' corresponds to the specified point in the source image. </returns>
-		Function getPoint2D(ByVal srcPt As java.awt.geom.Point2D, ByVal dstPt As java.awt.geom.Point2D) As java.awt.geom.Point2D
+		Function getPoint2D(  srcPt As java.awt.geom.Point2D,   dstPt As java.awt.geom.Point2D) As java.awt.geom.Point2D
 
 		''' <summary>
 		''' Returns the rendering hints for this operation.

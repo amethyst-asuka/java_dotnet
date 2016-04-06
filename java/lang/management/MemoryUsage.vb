@@ -129,7 +129,7 @@ Namespace java.lang.management
 		''' <li> <tt>committed</tt> is greater than the value of <tt>max</tt>
 		'''      <tt>max</tt> if defined.</li>
 		''' </ul> </exception>
-		Public Sub New(ByVal init As Long, ByVal used As Long, ByVal committed As Long, ByVal max As Long)
+		Public Sub New(  init As Long,   used As Long,   committed As Long,   max As Long)
 			If init < -1 Then Throw New IllegalArgumentException("init parameter = " & init & " is negative but not -1.")
 			If max < -1 Then Throw New IllegalArgumentException("max parameter = " & max & " is negative but not -1.")
 			If used < 0 Then Throw New IllegalArgumentException("used parameter = " & used & " is negative.")
@@ -147,7 +147,7 @@ Namespace java.lang.management
 		''' Constructs a <tt>MemoryUsage</tt> object from a
 		''' <seealso cref="CompositeData CompositeData"/>.
 		''' </summary>
-		Private Sub New(ByVal cd As javax.management.openmbean.CompositeData)
+		Private Sub New(  cd As javax.management.openmbean.CompositeData)
 			' validate the input composite data
 			sun.management.MemoryUsageCompositeData.validateCompositeData(cd)
 
@@ -264,7 +264,7 @@ Namespace java.lang.management
 		''' <returns> a <tt>MemoryUsage</tt> object represented by <tt>cd</tt>
 		'''         if <tt>cd</tt> is not <tt>null</tt>;
 		'''         <tt>null</tt> otherwise. </returns>
-		Public Shared Function [from](ByVal cd As javax.management.openmbean.CompositeData) As MemoryUsage
+		Public Shared Function [from](  cd As javax.management.openmbean.CompositeData) As MemoryUsage
 			If cd Is Nothing Then Return Nothing
 
 			If TypeOf cd Is sun.management.MemoryUsageCompositeData Then

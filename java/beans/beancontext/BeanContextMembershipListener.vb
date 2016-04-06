@@ -45,7 +45,7 @@ Namespace java.beans.beancontext
 		''' <code>BeanContext</code> that this listener is registered with. </summary>
 		''' <param name="bcme"> The <code>BeanContextMembershipEvent</code>
 		''' describing the change that occurred. </param>
-		Sub childrenAdded(ByVal bcme As java.beans.beancontext.BeanContextMembershipEvent)
+		Sub childrenAdded(  bcme As java.beans.beancontext.BeanContextMembershipEvent)
 
 		''' <summary>
 		''' Called when a child or list of children is removed
@@ -53,7 +53,7 @@ Namespace java.beans.beancontext
 		''' is registered with. </summary>
 		''' <param name="bcme"> The <code>BeanContextMembershipEvent</code>
 		''' describing the change that occurred. </param>
-		Sub childrenRemoved(ByVal bcme As java.beans.beancontext.BeanContextMembershipEvent)
+		Sub childrenRemoved(  bcme As java.beans.beancontext.BeanContextMembershipEvent)
 	End Interface
 
 End Namespace

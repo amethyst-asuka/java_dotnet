@@ -110,7 +110,7 @@ Namespace java.security
 		''' Constructs a new identity scope with the specified name.
 		''' </summary>
 		''' <param name="name"> the scope name. </param>
-		Public Sub New(ByVal name As String)
+		Public Sub New(  name As String)
 			MyBase.New(name)
 		End Sub
 
@@ -122,7 +122,7 @@ Namespace java.security
 		''' </param>
 		''' <exception cref="KeyManagementException"> if there is already an identity
 		''' with the same name in the scope. </exception>
-		Public Sub New(ByVal name As String, ByVal scope As IdentityScope)
+		Public Sub New(  name As String,   scope As IdentityScope)
 			MyBase.New(name, scope)
 		End Sub
 
@@ -138,7 +138,7 @@ Namespace java.security
 				If scope Is Nothing Then initializeSystemScope()
 				Return scope
 			End Get
-			Set(ByVal scope As IdentityScope)
+			Set(  scope As IdentityScope)
 				check("setSystemScope")
 				IdentityScope.scope = scope
 			End Set
@@ -159,7 +159,7 @@ Namespace java.security
 		''' </param>
 		''' <returns> the identity named {@code name}, or null if there are
 		''' no identities named {@code name} in this scope. </returns>
-		Public MustOverride Function getIdentity(ByVal name As String) As Identity
+		Public MustOverride Function getIdentity(  name As String) As Identity
 
 		''' <summary>
 		''' Retrieves the identity whose name is the same as that of the
@@ -171,7 +171,7 @@ Namespace java.security
 		''' <returns> the identity whose name is the same as that of the
 		''' principal, or null if there are no identities of the same name
 		''' in this scope. </returns>
-		Public Overridable Function getIdentity(ByVal principal As Principal) As Identity
+		Public Overridable Function getIdentity(  principal As Principal) As Identity
 			Return getIdentity(principal.name)
 		End Function
 
@@ -182,7 +182,7 @@ Namespace java.security
 		''' </param>
 		''' <returns> the identity with the given key, or null if there are
 		''' no identities in this scope with that key. </returns>
-		Public MustOverride Function getIdentity(ByVal key As PublicKey) As Identity
+		Public MustOverride Function getIdentity(  key As PublicKey) As Identity
 
 		''' <summary>
 		''' Adds an identity to this identity scope.
@@ -193,7 +193,7 @@ Namespace java.security
 		''' valid, a name conflict occurs, another identity has the same
 		''' public key as the identity being added, or another exception
 		''' occurs.  </exception>
-		Public MustOverride Sub addIdentity(ByVal identity As Identity)
+		Public MustOverride Sub addIdentity(  identity As Identity)
 
 		''' <summary>
 		''' Removes an identity from this identity scope.
@@ -202,7 +202,7 @@ Namespace java.security
 		''' </param>
 		''' <exception cref="KeyManagementException"> if the identity is missing,
 		''' or another exception occurs. </exception>
-		Public MustOverride Sub removeIdentity(ByVal identity As Identity)
+		Public MustOverride Sub removeIdentity(  identity As Identity)
 
 		''' <summary>
 		''' Returns an enumeration of all identities in this identity scope.
@@ -220,7 +220,7 @@ Namespace java.security
 			Return MyBase.ToString() & "[" & size() & "]"
 		End Function
 
-		Private Shared Sub check(ByVal directive As String)
+		Private Shared Sub check(  directive As String)
 			Dim security_Renamed As SecurityManager = System.securityManager
 			If security_Renamed IsNot Nothing Then security_Renamed.checkSecurityAccess(directive)
 		End Sub

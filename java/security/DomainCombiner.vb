@@ -105,7 +105,7 @@ Namespace java.security
 		''' </param>
 		''' <returns> a new array consisting of the updated ProtectionDomains,
 		'''          or {@code null}. </returns>
-		Function combine(ByVal currentDomains As ProtectionDomain(), ByVal assignedDomains As ProtectionDomain()) As ProtectionDomain()
+		Function combine(  currentDomains As ProtectionDomain(),   assignedDomains As ProtectionDomain()) As ProtectionDomain()
 	End Interface
 
 End Namespace

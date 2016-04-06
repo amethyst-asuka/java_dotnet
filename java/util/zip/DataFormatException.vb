@@ -48,7 +48,7 @@ Namespace java.util.zip
 		''' Constructs a DataFormatException with the specified detail message.
 		''' A detail message is a String that describes this particular exception. </summary>
 		''' <param name="s"> the String containing a detail message </param>
-		Public Sub New(ByVal s As String)
+		Public Sub New(  s As String)
 			MyBase.New(s)
 		End Sub
 	End Class

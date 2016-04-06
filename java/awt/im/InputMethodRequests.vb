@@ -91,7 +91,7 @@ Namespace java.awt.im
 		''' <param name="offset"> the offset within the composed text, if there is composed
 		''' text; null otherwise </param>
 		''' <returns> a rectangle representing the screen location of the offset </returns>
-		Function getTextLocation(ByVal offset As java.awt.font.TextHitInfo) As java.awt.Rectangle
+		Function getTextLocation(  offset As java.awt.font.TextHitInfo) As java.awt.Rectangle
 
 		''' <summary>
 		''' Gets the offset within the composed text for the specified absolute x
@@ -107,7 +107,7 @@ Namespace java.awt.im
 		''' <param name="x"> the absolute x coordinate on screen </param>
 		''' <param name="y"> the absolute y coordinate on screen </param>
 		''' <returns> a text hit info describing the offset in the composed text. </returns>
-		Function getLocationOffset(ByVal x As Integer, ByVal y As Integer) As java.awt.font.TextHitInfo
+		Function getLocationOffset(  x As Integer,   y As Integer) As java.awt.font.TextHitInfo
 
 		''' <summary>
 		''' Gets the offset of the insert position in the committed text contained
@@ -137,7 +137,7 @@ Namespace java.awt.im
 		''' <param name="attributes"> a list of attributes that the input method is
 		''' interested in </param>
 		''' <returns> an iterator providing access to the text and its attributes </returns>
-		Function getCommittedText(ByVal beginIndex As Integer, ByVal endIndex As Integer, ByVal attributes As java.text.AttributedCharacterIterator.Attribute()) As java.text.AttributedCharacterIterator
+		Function getCommittedText(  beginIndex As Integer,   endIndex As Integer,   attributes As java.text.AttributedCharacterIterator.Attribute()) As java.text.AttributedCharacterIterator
 
 		''' <summary>
 		''' Gets the length of the entire text contained in the text
@@ -169,7 +169,7 @@ Namespace java.awt.im
 		''' interested in </param>
 		''' <returns> the latest committed text, or null when the "Undo Commit"
 		''' feature is not supported </returns>
-		Function cancelLatestCommittedText(ByVal attributes As java.text.AttributedCharacterIterator.Attribute()) As java.text.AttributedCharacterIterator
+		Function cancelLatestCommittedText(  attributes As java.text.AttributedCharacterIterator.Attribute()) As java.text.AttributedCharacterIterator
 
 		''' <summary>
 		''' Gets the currently selected text from the text editing component.
@@ -191,7 +191,7 @@ Namespace java.awt.im
 		''' <param name="attributes"> a list of attributes that the input method is
 		''' interested in </param>
 		''' <returns> the currently selected text </returns>
-		Function getSelectedText(ByVal attributes As java.text.AttributedCharacterIterator.Attribute()) As java.text.AttributedCharacterIterator
+		Function getSelectedText(  attributes As java.text.AttributedCharacterIterator.Attribute()) As java.text.AttributedCharacterIterator
 	End Interface
 
 End Namespace

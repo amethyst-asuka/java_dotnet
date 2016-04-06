@@ -287,7 +287,7 @@ Namespace java.util
 					Return Nothing
 				End Get
 			End Property
-			Protected Friend Overrides Function handleGetObject(ByVal key As String) As Object
+			Protected Friend Overrides Function handleGetObject(  key As String) As Object
 				Return Nothing
 			End Function
 			Public Overrides Function ToString() As String
@@ -401,7 +401,7 @@ Namespace java.util
 		''' <exception cref="MissingResourceException"> if no object for the given key can be found </exception>
 		''' <exception cref="ClassCastException"> if the object found for the given key is not a string </exception>
 		''' <returns> the string for the given key </returns>
-		Public Function getString(ByVal key As String) As String
+		Public Function getString(  key As String) As String
 			Return CStr(getObject(key))
 		End Function
 
@@ -417,7 +417,7 @@ Namespace java.util
 		''' <exception cref="MissingResourceException"> if no object for the given key can be found </exception>
 		''' <exception cref="ClassCastException"> if the object found for the given key is not a string array </exception>
 		''' <returns> the string array for the given key </returns>
-		Public Function getStringArray(ByVal key As String) As String()
+		Public Function getStringArray(  key As String) As String()
 			Return CType(getObject(key), String())
 		End Function
 
@@ -433,7 +433,7 @@ Namespace java.util
 		''' <exception cref="NullPointerException"> if <code>key</code> is <code>null</code> </exception>
 		''' <exception cref="MissingResourceException"> if no object for the given key can be found </exception>
 		''' <returns> the object for the given key </returns>
-		Public Function getObject(ByVal key As String) As Object
+		Public Function getObject(  key As String) As Object
 			Dim obj As Object = handleGetObject(key)
 			If obj Is Nothing Then
 				If parent IsNot Nothing Then obj = parent.getObject(key)
@@ -458,7 +458,7 @@ Namespace java.util
 	'     * Automatic determination of the ClassLoader to be used to load
 	'     * resources on behalf of the client.
 	'     
-		Private Shared Function getLoader(ByVal caller As [Class]) As  ClassLoader
+		Private Shared Function getLoader(  caller As [Class]) As  ClassLoader
 			Dim cl As  ClassLoader = If(caller Is Nothing, Nothing, caller.classLoader)
 			If cl Is Nothing Then cl = RBClassLoader.INSTANCE
 			Return cl
@@ -483,15 +483,15 @@ Namespace java.util
 
 			Private Sub New()
 			End Sub
-			Public Overrides Function loadClass(ByVal name As String) As  [Class]
+			Public Overrides Function loadClass(  name As String) As  [Class]
 				If loader IsNot Nothing Then Return loader.loadClass(name)
 				Return Type.GetType(name)
 			End Function
-			Public Overrides Function getResource(ByVal name As String) As java.net.URL
+			Public Overrides Function getResource(  name As String) As java.net.URL
 				If loader IsNot Nothing Then Return loader.getResource(name)
 				Return ClassLoader.getSystemResource(name)
 			End Function
-			Public Overrides Function getResourceAsStream(ByVal name As String) As java.io.InputStream
+			Public Overrides Function getResourceAsStream(  name As String) As java.io.InputStream
 				If loader IsNot Nothing Then Return loader.getResourceAsStream(name)
 				Return ClassLoader.getSystemResourceAsStream(name)
 			End Function
@@ -504,7 +504,7 @@ Namespace java.util
 		''' </summary>
 		''' <param name="parent"> this bundle's parent bundle. </param>
 		Protected Friend Overridable Property parent As ResourceBundle
-			Set(ByVal parent As ResourceBundle)
+			Set(  parent As ResourceBundle)
 				Debug.Assert(parent IsNot NONEXISTENT_BUNDLE)
 				Me.parent = parent
 			End Set
@@ -548,7 +548,7 @@ Namespace java.util
 			' of this instance.
 			Private hashCodeCache As Integer
 
-			Friend Sub New(ByVal baseName As String, ByVal locale_Renamed As Locale, ByVal loader As  ClassLoader)
+			Friend Sub New(  baseName As String,   locale_Renamed As Locale,   loader As  ClassLoader)
 				Me.name = baseName
 				Me.locale_Renamed = locale_Renamed
 				If loader Is Nothing Then
@@ -565,7 +565,7 @@ Namespace java.util
 				End Get
 			End Property
 
-			Friend Overridable Function setName(ByVal baseName As String) As CacheKey
+			Friend Overridable Function setName(  baseName As String) As CacheKey
 				If Not Me.name.Equals(baseName) Then
 					Me.name = baseName
 					calculateHashCode()
@@ -579,7 +579,7 @@ Namespace java.util
 				End Get
 			End Property
 
-			Friend Overridable Function setLocale(ByVal locale_Renamed As Locale) As CacheKey
+			Friend Overridable Function setLocale(  locale_Renamed As Locale) As CacheKey
 				If Not Me.locale_Renamed.Equals(locale_Renamed) Then
 					Me.locale_Renamed = locale_Renamed
 					calculateHashCode()
@@ -593,7 +593,7 @@ Namespace java.util
 				End Get
 			End Property
 
-			Public Overrides Function Equals(ByVal other As Object) As Boolean
+			Public Overrides Function Equals(  other As Object) As Boolean
 				If Me Is other Then Return True
 				Try
 					Dim otherEntry As CacheKey = CType(other, CacheKey)
@@ -644,14 +644,14 @@ Namespace java.util
 				Get
 					Return format
 				End Get
-				Set(ByVal format As String)
+				Set(  format As String)
 					Me.format = format
 				End Set
 			End Property
 
 
 			Private Property cause As Throwable
-				Set(ByVal cause As Throwable)
+				Set(  cause As Throwable)
 					If Me.cause Is Nothing Then
 						Me.cause = cause
 					Else
@@ -698,7 +698,7 @@ Namespace java.util
 
 			Private cacheKey As CacheKey
 
-			Friend Sub New(ByVal referent As  ClassLoader, ByVal q As ReferenceQueue(Of Object), ByVal key As CacheKey)
+			Friend Sub New(  referent As  ClassLoader,   q As ReferenceQueue(Of Object),   key As CacheKey)
 				MyBase.New(referent, q)
 				cacheKey = key
 			End Sub
@@ -720,7 +720,7 @@ Namespace java.util
 
 			Private cacheKey As CacheKey
 
-			Friend Sub New(ByVal referent As ResourceBundle, ByVal q As ReferenceQueue(Of Object), ByVal key As CacheKey)
+			Friend Sub New(  referent As ResourceBundle,   q As ReferenceQueue(Of Object),   key As CacheKey)
 				MyBase.New(referent, q)
 				cacheKey = key
 			End Sub
@@ -750,7 +750,7 @@ Namespace java.util
 		'''     if no resource bundle for the specified base name can be found </exception>
 		''' <returns> a resource bundle for the given base name and the default locale </returns>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Shared Function getBundle(ByVal baseName As String) As ResourceBundle
+		Public Shared Function getBundle(  baseName As String) As ResourceBundle
 			Return getBundleImpl(baseName, Locale.default, getLoader(sun.reflect.Reflection.callerClass), getDefaultControl(baseName))
 		End Function
 
@@ -788,7 +788,7 @@ Namespace java.util
 		'''        needed.
 		''' @since 1.6 </exception>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Shared Function getBundle(ByVal baseName As String, ByVal control_Renamed As Control) As ResourceBundle
+		Public Shared Function getBundle(  baseName As String,   control_Renamed As Control) As ResourceBundle
 			Return getBundleImpl(baseName, Locale.default, getLoader(sun.reflect.Reflection.callerClass), control_Renamed)
 		End Function
 
@@ -813,7 +813,7 @@ Namespace java.util
 		'''        if no resource bundle for the specified base name can be found </exception>
 		''' <returns> a resource bundle for the given base name and locale </returns>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Shared Function getBundle(ByVal baseName As String, ByVal locale_Renamed As Locale) As ResourceBundle
+		Public Shared Function getBundle(  baseName As String,   locale_Renamed As Locale) As ResourceBundle
 			Return getBundleImpl(baseName, locale_Renamed, getLoader(sun.reflect.Reflection.callerClass), getDefaultControl(baseName))
 		End Function
 
@@ -854,7 +854,7 @@ Namespace java.util
 		'''        needed.
 		''' @since 1.6 </exception>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Shared Function getBundle(ByVal baseName As String, ByVal targetLocale As Locale, ByVal control_Renamed As Control) As ResourceBundle
+		Public Shared Function getBundle(  baseName As String,   targetLocale As Locale,   control_Renamed As Control) As ResourceBundle
 			Return getBundleImpl(baseName, targetLocale, getLoader(sun.reflect.Reflection.callerClass), control_Renamed)
 		End Function
 
@@ -1038,7 +1038,7 @@ Namespace java.util
 		''' <exception cref="MissingResourceException">
 		'''        if no resource bundle for the specified base name can be found
 		''' @since 1.2 </exception>
-		Public Shared Function getBundle(ByVal baseName As String, ByVal locale_Renamed As Locale, ByVal loader As  ClassLoader) As ResourceBundle
+		Public Shared Function getBundle(  baseName As String,   locale_Renamed As Locale,   loader As  ClassLoader) As ResourceBundle
 			If loader Is Nothing Then Throw New NullPointerException
 			Return getBundleImpl(baseName, locale_Renamed, loader, getDefaultControl(baseName))
 		End Function
@@ -1251,12 +1251,12 @@ Namespace java.util
 		'''        Note that validation of <code>control</code> is performed as
 		'''        needed.
 		''' @since 1.6 </exception>
-		Public Shared Function getBundle(ByVal baseName As String, ByVal targetLocale As Locale, ByVal loader As  ClassLoader, ByVal control_Renamed As Control) As ResourceBundle
+		Public Shared Function getBundle(  baseName As String,   targetLocale As Locale,   loader As  ClassLoader,   control_Renamed As Control) As ResourceBundle
 			If loader Is Nothing OrElse control_Renamed Is Nothing Then Throw New NullPointerException
 			Return getBundleImpl(baseName, targetLocale, loader, control_Renamed)
 		End Function
 
-		Private Shared Function getDefaultControl(ByVal baseName As String) As Control
+		Private Shared Function getDefaultControl(  baseName As String) As Control
 			If providers IsNot Nothing Then
 				For Each provider As java.util.spi.ResourceBundleControlProvider In providers
 					Dim control_Renamed As Control = provider.getControl(baseName)
@@ -1266,7 +1266,7 @@ Namespace java.util
 			Return Control.INSTANCE
 		End Function
 
-		Private Shared Function getBundleImpl(ByVal baseName As String, ByVal locale_Renamed As Locale, ByVal loader As  ClassLoader, ByVal control_Renamed As Control) As ResourceBundle
+		Private Shared Function getBundleImpl(  baseName As String,   locale_Renamed As Locale,   loader As  ClassLoader,   control_Renamed As Control) As ResourceBundle
 			If locale_Renamed Is Nothing OrElse control_Renamed Is Nothing Then Throw New NullPointerException
 
 			' We create a CacheKey here for use by this call. The base
@@ -1333,7 +1333,7 @@ Namespace java.util
 		''' Checks if the given <code>List</code> is not null, not empty,
 		''' not having null in its elements.
 		''' </summary>
-		Private Shared Function checkList(Of T1)(ByVal a As List(Of T1)) As Boolean
+		Private Shared Function checkList(Of T1)(  a As List(Of T1)) As Boolean
 			Dim valid As Boolean = (a IsNot Nothing AndAlso (Not a.empty))
 			If valid Then
 				Dim size As Integer = a.size()
@@ -1346,7 +1346,7 @@ Namespace java.util
 			Return valid
 		End Function
 
-		Private Shared Function findBundle(ByVal cacheKey As CacheKey, ByVal candidateLocales As List(Of Locale), ByVal formats As List(Of String), ByVal index As Integer, ByVal control_Renamed As Control, ByVal baseBundle As ResourceBundle) As ResourceBundle
+		Private Shared Function findBundle(  cacheKey As CacheKey,   candidateLocales As List(Of Locale),   formats As List(Of String),   index As Integer,   control_Renamed As Control,   baseBundle As ResourceBundle) As ResourceBundle
 			Dim targetLocale As Locale = candidateLocales.get(index)
 			Dim parent_Renamed As ResourceBundle = Nothing
 			If index <> candidateLocales.size() - 1 Then
@@ -1411,7 +1411,7 @@ Namespace java.util
 			Return parent_Renamed
 		End Function
 
-		Private Shared Function loadBundle(ByVal cacheKey As CacheKey, ByVal formats As List(Of String), ByVal control_Renamed As Control, ByVal reload As Boolean) As ResourceBundle
+		Private Shared Function loadBundle(  cacheKey As CacheKey,   formats As List(Of String),   control_Renamed As Control,   reload As Boolean) As ResourceBundle
 
 			' Here we actually load the bundle in the order of formats
 			' specified by the getFormats() value.
@@ -1447,7 +1447,7 @@ Namespace java.util
 			Return bundle_Renamed
 		End Function
 
-		Private Shared Function isValidBundle(ByVal bundle As ResourceBundle) As Boolean
+		Private Shared Function isValidBundle(  bundle As ResourceBundle) As Boolean
 			Return bundle IsNot Nothing AndAlso bundle IsNot NONEXISTENT_BUNDLE
 		End Function
 
@@ -1455,7 +1455,7 @@ Namespace java.util
 		''' Determines whether any of resource bundles in the parent chain,
 		''' including the leaf, have expired.
 		''' </summary>
-		Private Shared Function hasValidParentChain(ByVal bundle As ResourceBundle) As Boolean
+		Private Shared Function hasValidParentChain(  bundle As ResourceBundle) As Boolean
 			Dim now As Long = System.currentTimeMillis()
 			Do While bundle IsNot Nothing
 				If bundle.expired Then Return False
@@ -1472,7 +1472,7 @@ Namespace java.util
 		''' <summary>
 		''' Throw a MissingResourceException with proper message
 		''' </summary>
-		Private Shared Sub throwMissingResourceException(ByVal baseName As String, ByVal locale_Renamed As Locale, ByVal cause As Throwable)
+		Private Shared Sub throwMissingResourceException(  baseName As String,   locale_Renamed As Locale,   cause As Throwable)
 			' If the cause is a MissingResourceException, avoid creating
 			' a long chain. (6355009)
 			If TypeOf cause Is MissingResourceException Then cause = Nothing
@@ -1488,7 +1488,7 @@ Namespace java.util
 		''' <returns> the cached bundle, or null if the bundle is not found in the
 		''' cache or its parent has expired. <code>bundle.expire</code> is true
 		''' upon return if the bundle in the cache has expired. </returns>
-		Private Shared Function findBundleInCache(ByVal cacheKey As CacheKey, ByVal control_Renamed As Control) As ResourceBundle
+		Private Shared Function findBundleInCache(  cacheKey As CacheKey,   control_Renamed As Control) As ResourceBundle
 			Dim bundleRef As BundleReference = cacheList.get(cacheKey)
 			If bundleRef Is Nothing Then Return Nothing
 			Dim bundle_Renamed As ResourceBundle = bundleRef.get()
@@ -1582,7 +1582,7 @@ Namespace java.util
 		''' <returns> the ResourceBundle for the cacheKey; if someone has put
 		''' the bundle before this call, the one found in the cache is
 		''' returned. </returns>
-		Private Shared Function putBundleInCache(ByVal cacheKey As CacheKey, ByVal bundle As ResourceBundle, ByVal control_Renamed As Control) As ResourceBundle
+		Private Shared Function putBundleInCache(  cacheKey As CacheKey,   bundle As ResourceBundle,   control_Renamed As Control) As ResourceBundle
 			expirationTimeime(cacheKey, control_Renamed)
 			If cacheKey.expirationTime <> Control.TTL_DONT_CACHE Then
 				Dim key As CacheKey = CType(cacheKey.clone(), CacheKey)
@@ -1613,7 +1613,7 @@ Namespace java.util
 			Return bundle
 		End Function
 
-		Private Shared Sub setExpirationTime(ByVal cacheKey As CacheKey, ByVal control_Renamed As Control)
+		Private Shared Sub setExpirationTime(  cacheKey As CacheKey,   control_Renamed As Control)
 			Dim ttl As Long = control_Renamed.getTimeToLive(cacheKey.name, cacheKey.locale)
 			If ttl >= 0 Then
 				' If any expiration time is specified, set the time to be
@@ -1647,7 +1647,7 @@ Namespace java.util
 		''' <exception cref="NullPointerException"> if <code>loader</code> is null
 		''' @since 1.6 </exception>
 		''' <seealso cref= ResourceBundle.Control#getTimeToLive(String,Locale) </seealso>
-		Public Shared Sub clearCache(ByVal loader As  ClassLoader)
+		Public Shared Sub clearCache(  loader As  ClassLoader)
 			If loader Is Nothing Then Throw New NullPointerException
 			Dim [set] As java.util.concurrent.ConcurrentMap(Of CacheKey, BundleReference).KeyCollection = cacheList.Keys
 			For Each key As CacheKey In [set]
@@ -1663,7 +1663,7 @@ Namespace java.util
 		''' <param name="key"> the key for the desired object </param>
 		''' <exception cref="NullPointerException"> if <code>key</code> is <code>null</code> </exception>
 		''' <returns> the object for the given key, or null </returns>
-		Protected Friend MustOverride Function handleGetObject(ByVal key As String) As Object
+		Protected Friend MustOverride Function handleGetObject(  key As String) As Object
 
 		''' <summary>
 		''' Returns an enumeration of the keys.
@@ -1684,7 +1684,7 @@ Namespace java.util
 		''' <exception cref="NullPointerException">
 		'''         if <code>key</code> is <code>null</code>
 		''' @since 1.6 </exception>
-		Public Overridable Function containsKey(ByVal key As String) As Boolean
+		Public Overridable Function containsKey(  key As String) As Boolean
 			If key Is Nothing Then Throw New NullPointerException
 			Dim rb As ResourceBundle = Me
 			Do While rb IsNot Nothing
@@ -1964,7 +1964,7 @@ Namespace java.util
 			'''        if <code>formats</code> is <code>null</code> </exception>
 			''' <exception cref="IllegalArgumentException">
 			'''        if <code>formats</code> is unknown </exception>
-			Public Shared Function getControl(ByVal formats As List(Of String)) As Control
+			Public Shared Function getControl(  formats As List(Of String)) As Control
 				If formats.Equals(Control.FORMAT_PROPERTIES) Then Return SingleFormatControl.PROPERTIES_ONLY
 				If formats.Equals(Control.FORMAT_CLASS) Then Return SingleFormatControl.CLASS_ONLY
 				If formats.Equals(Control.FORMAT_DEFAULT) Then Return Control.INSTANCE
@@ -1992,7 +1992,7 @@ Namespace java.util
 			'''        if <code>formats</code> is <code>null</code> </exception>
 			''' <exception cref="IllegalArgumentException">
 			'''        if <code>formats</code> is unknown </exception>
-			Public Shared Function getNoFallbackControl(ByVal formats As List(Of String)) As Control
+			Public Shared Function getNoFallbackControl(  formats As List(Of String)) As Control
 				If formats.Equals(Control.FORMAT_DEFAULT) Then Return NoFallbackControl.NO_FALLBACK
 				If formats.Equals(Control.FORMAT_PROPERTIES) Then Return NoFallbackControl.PROPERTIES_ONLY_NO_FALLBACK
 				If formats.Equals(Control.FORMAT_CLASS) Then Return NoFallbackControl.CLASS_ONLY_NO_FALLBACK
@@ -2032,7 +2032,7 @@ Namespace java.util
 			''' <seealso cref= #FORMAT_DEFAULT </seealso>
 			''' <seealso cref= #FORMAT_CLASS </seealso>
 			''' <seealso cref= #FORMAT_PROPERTIES </seealso>
-			Public Overridable Function getFormats(ByVal baseName As String) As List(Of String)
+			Public Overridable Function getFormats(  baseName As String) As List(Of String)
 				If baseName Is Nothing Then Throw New NullPointerException
 				Return FORMAT_DEFAULT
 			End Function
@@ -2214,7 +2214,7 @@ Namespace java.util
 			''' <exception cref="NullPointerException">
 			'''        if <code>baseName</code> or <code>locale</code> is
 			'''        <code>null</code> </exception>
-			Public Overridable Function getCandidateLocales(ByVal baseName As String, ByVal locale_Renamed As Locale) As List(Of Locale)
+			Public Overridable Function getCandidateLocales(  baseName As String,   locale_Renamed As Locale) As List(Of Locale)
 				If baseName Is Nothing Then Throw New NullPointerException
 				Return New List(Of )(CANDIDATES_CACHE.get(locale_Renamed.baseLocale))
 			End Function
@@ -2224,7 +2224,7 @@ Namespace java.util
 			Private Class CandidateListCache
 				Inherits sun.util.locale.LocaleObjectCache(Of sun.util.locale.BaseLocale, List(Of Locale))
 
-				Protected Friend Overridable Function createObject(ByVal base As sun.util.locale.BaseLocale) As List(Of Locale)
+				Protected Friend Overridable Function createObject(  base As sun.util.locale.BaseLocale) As List(Of Locale)
 					Dim language As String = base.language
 					Dim script As String = base.script
 					Dim region As String = base.region
@@ -2288,7 +2288,7 @@ Namespace java.util
 					Return getDefaultList(language, script, region, [variant])
 				End Function
 
-				Private Shared Function getDefaultList(ByVal language As String, ByVal script As String, ByVal region As String, ByVal [variant] As String) As List(Of Locale)
+				Private Shared Function getDefaultList(  language As String,   script As String,   region As String,   [variant] As String) As List(Of Locale)
 					Dim variants As List(Of String) = Nothing
 
 					If [variant].length() > 0 Then
@@ -2364,7 +2364,7 @@ Namespace java.util
 			''' <exception cref="NullPointerException">
 			'''        if <code>baseName</code> or <code>locale</code>
 			'''        is <code>null</code> </exception>
-			Public Overridable Function getFallbackLocale(ByVal baseName As String, ByVal locale_Renamed As Locale) As Locale
+			Public Overridable Function getFallbackLocale(  baseName As String,   locale_Renamed As Locale) As Locale
 				If baseName Is Nothing Then Throw New NullPointerException
 				Dim defaultLocale As Locale = Locale.default
 				Return If(locale_Renamed.Equals(defaultLocale), Nothing, defaultLocale)
@@ -2465,7 +2465,7 @@ Namespace java.util
 			''' <exception cref="IOException">
 			'''        if an error occurred when reading resources using
 			'''        any I/O operations </exception>
-			Public Overridable Function newBundle(ByVal baseName As String, ByVal locale_Renamed As Locale, ByVal format As String, ByVal loader As  ClassLoader, ByVal reload As Boolean) As ResourceBundle
+			Public Overridable Function newBundle(  baseName As String,   locale_Renamed As Locale,   format As String,   loader As  ClassLoader,   reload As Boolean) As ResourceBundle
 				Dim bundleName As String = toBundleName(baseName, locale_Renamed)
 				Dim bundle As ResourceBundle = Nothing
 				If format.Equals("java.class") Then
@@ -2574,7 +2574,7 @@ Namespace java.util
 			''' <exception cref="NullPointerException">
 			'''        if <code>baseName</code> or <code>locale</code> is
 			'''        <code>null</code> </exception>
-			Public Overridable Function getTimeToLive(ByVal baseName As String, ByVal locale_Renamed As Locale) As Long
+			Public Overridable Function getTimeToLive(  baseName As String,   locale_Renamed As Locale) As Long
 				If baseName Is Nothing OrElse locale_Renamed Is Nothing Then Throw New NullPointerException
 				Return TTL_NO_EXPIRATION_CONTROL
 			End Function
@@ -2626,7 +2626,7 @@ Namespace java.util
 			'''        if <code>baseName</code>, <code>locale</code>,
 			'''        <code>format</code>, <code>loader</code>, or
 			'''        <code>bundle</code> is <code>null</code> </exception>
-			Public Overridable Function needsReload(ByVal baseName As String, ByVal locale_Renamed As Locale, ByVal format As String, ByVal loader As  ClassLoader, ByVal bundle As ResourceBundle, ByVal loadTime As Long) As Boolean
+			Public Overridable Function needsReload(  baseName As String,   locale_Renamed As Locale,   format As String,   loader As  ClassLoader,   bundle As ResourceBundle,   loadTime As Long) As Boolean
 				If bundle Is Nothing Then Throw New NullPointerException
 				If format.Equals("java.class") OrElse format.Equals("java.properties") Then format = format.Substring(5)
 				Dim result As Boolean = False
@@ -2701,7 +2701,7 @@ Namespace java.util
 			''' <exception cref="NullPointerException">
 			'''        if <code>baseName</code> or <code>locale</code>
 			'''        is <code>null</code> </exception>
-			Public Overridable Function toBundleName(ByVal baseName As String, ByVal locale_Renamed As Locale) As String
+			Public Overridable Function toBundleName(  baseName As String,   locale_Renamed As Locale) As String
 				If locale_Renamed Is Locale.ROOT Then Return baseName
 
 				Dim language As String = locale_Renamed.language
@@ -2753,13 +2753,13 @@ Namespace java.util
 			''' <exception cref="NullPointerException">
 			'''         if <code>bundleName</code> or <code>suffix</code>
 			'''         is <code>null</code> </exception>
-			Public Function toResourceName(ByVal bundleName As String, ByVal suffix As String) As String
+			Public Function toResourceName(  bundleName As String,   suffix As String) As String
 				Dim sb As New StringBuilder(bundleName.length() + 1 + suffix.length())
 				sb.append(bundleName.replace("."c, "/"c)).append("."c).append(suffix)
 				Return sb.ToString()
 			End Function
 
-			Private Function toResourceName0(ByVal bundleName As String, ByVal suffix As String) As String
+			Private Function toResourceName0(  bundleName As String,   suffix As String) As String
 				' application protocol check
 				If bundleName.contains("://") Then
 					Return Nothing
@@ -2778,11 +2778,11 @@ Namespace java.util
 
 			Private ReadOnly formats As List(Of String)
 
-			Protected Friend Sub New(ByVal formats As List(Of String))
+			Protected Friend Sub New(  formats As List(Of String))
 				Me.formats = formats
 			End Sub
 
-			Public Overrides Function getFormats(ByVal baseName As String) As List(Of String)
+			Public Overrides Function getFormats(  baseName As String) As List(Of String)
 				If baseName Is Nothing Then Throw New NullPointerException
 				Return formats
 			End Function
@@ -2797,11 +2797,11 @@ Namespace java.util
 
 			Private Shared ReadOnly CLASS_ONLY_NO_FALLBACK As Control = New NoFallbackControl(FORMAT_CLASS)
 
-			Protected Friend Sub New(ByVal formats As List(Of String))
+			Protected Friend Sub New(  formats As List(Of String))
 				MyBase.New(formats)
 			End Sub
 
-			Public Overrides Function getFallbackLocale(ByVal baseName As String, ByVal locale_Renamed As Locale) As Locale
+			Public Overrides Function getFallbackLocale(  baseName As String,   locale_Renamed As Locale) As Locale
 				If baseName Is Nothing OrElse locale_Renamed Is Nothing Then Throw New NullPointerException
 				Return Nothing
 			End Function

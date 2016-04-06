@@ -413,7 +413,7 @@ Namespace java.text
 		''' <seealso cref= java.text.NumberFormat#getNumberInstance </seealso>
 		''' <seealso cref= java.text.NumberFormat#getCurrencyInstance </seealso>
 		''' <seealso cref= java.text.NumberFormat#getPercentInstance </seealso>
-		Public Sub New(ByVal pattern As String)
+		Public Sub New(  pattern As String)
 			' Always applyPattern after the symbols are set
 			Me.symbols = DecimalFormatSymbols.getInstance(java.util.Locale.getDefault(java.util.Locale.Category.FORMAT))
 			applyPattern(pattern, False)
@@ -440,7 +440,7 @@ Namespace java.text
 		''' <seealso cref= java.text.NumberFormat#getCurrencyInstance </seealso>
 		''' <seealso cref= java.text.NumberFormat#getPercentInstance </seealso>
 		''' <seealso cref= java.text.DecimalFormatSymbols </seealso>
-		Public Sub New(ByVal pattern As String, ByVal symbols As DecimalFormatSymbols)
+		Public Sub New(  pattern As String,   symbols As DecimalFormatSymbols)
 			' Always applyPattern after the symbols are set
 			Me.symbols = CType(symbols.clone(), DecimalFormatSymbols)
 			applyPattern(pattern, False)
@@ -467,7 +467,7 @@ Namespace java.text
 		''' <exception cref="ArithmeticException"> if rounding is needed with rounding
 		'''                   mode being set to RoundingMode.UNNECESSARY </exception>
 		''' <seealso cref=              java.text.FieldPosition </seealso>
-		Public NotOverridable Overrides Function format(ByVal number As Object, ByVal toAppendTo As StringBuffer, ByVal pos As FieldPosition) As StringBuffer
+		Public NotOverridable Overrides Function format(  number As Object,   toAppendTo As StringBuffer,   pos As FieldPosition) As StringBuffer
 			If TypeOf number Is Long? OrElse TypeOf number Is Integer? OrElse TypeOf number Is Short? OrElse TypeOf number Is Byte OrElse TypeOf number Is java.util.concurrent.atomic.AtomicInteger OrElse TypeOf number Is java.util.concurrent.atomic.AtomicLong OrElse (TypeOf number Is System.Numerics.BigInteger AndAlso CType(number, System.Numerics.BigInteger).bitLength() < 64) Then
 				Return format(CType(number, Number), toAppendTo, pos)
 			ElseIf TypeOf number Is Decimal Then
@@ -491,7 +491,7 @@ Namespace java.text
 		'''            mode being set to RoundingMode.UNNECESSARY </exception>
 		''' <returns> The formatted number string </returns>
 		''' <seealso cref= java.text.FieldPosition </seealso>
-		Public Overrides Function format(ByVal number As Double, ByVal result As StringBuffer, ByVal fieldPosition As FieldPosition) As StringBuffer
+		Public Overrides Function format(  number As Double,   result As StringBuffer,   fieldPosition As FieldPosition) As StringBuffer
 			' If fieldPosition is a DontCareFieldPosition instance we can
 			' try to go to fast-path code.
 			Dim tryFastPath As Boolean = False
@@ -522,7 +522,7 @@ Namespace java.text
 		''' <exception cref="ArithmeticException"> if rounding is needed with rounding
 		'''                  mode being set to RoundingMode.UNNECESSARY </exception>
 		''' <returns> The formatted number string </returns>
-		Private Function format(ByVal number As Double, ByVal result As StringBuffer, ByVal [delegate] As FieldDelegate) As StringBuffer
+		Private Function format(  number As Double,   result As StringBuffer,   [delegate] As FieldDelegate) As StringBuffer
 			If java.lang.[Double].IsNaN(number) OrElse (Double.IsInfinity(number) AndAlso multiplier = 0) Then
 				Dim iFieldStart As Integer = result.length()
 				result.append(symbols.naN)
@@ -590,7 +590,7 @@ Namespace java.text
 		'''                  mode being set to RoundingMode.UNNECESSARY </exception>
 		''' <returns> The formatted number string </returns>
 		''' <seealso cref= java.text.FieldPosition </seealso>
-		Public Overrides Function format(ByVal number As Long, ByVal result As StringBuffer, ByVal fieldPosition As FieldPosition) As StringBuffer
+		Public Overrides Function format(  number As Long,   result As StringBuffer,   fieldPosition As FieldPosition) As StringBuffer
 			fieldPosition.beginIndex = 0
 			fieldPosition.endIndex = 0
 
@@ -606,7 +606,7 @@ Namespace java.text
 		''' <exception cref="ArithmeticException"> if rounding is needed with rounding
 		'''                   mode being set to RoundingMode.UNNECESSARY </exception>
 		''' <seealso cref= java.text.FieldPosition </seealso>
-		Private Function format(ByVal number As Long, ByVal result As StringBuffer, ByVal [delegate] As FieldDelegate) As StringBuffer
+		Private Function format(  number As Long,   result As StringBuffer,   [delegate] As FieldDelegate) As StringBuffer
 			Dim isNegative As Boolean = (number < 0)
 			If isNegative Then number = -number
 
@@ -663,7 +663,7 @@ Namespace java.text
 		''' <exception cref="ArithmeticException"> if rounding is needed with rounding
 		'''                   mode being set to RoundingMode.UNNECESSARY </exception>
 		''' <seealso cref= java.text.FieldPosition </seealso>
-		Private Function format(ByVal number As Decimal, ByVal result As StringBuffer, ByVal fieldPosition As FieldPosition) As StringBuffer
+		Private Function format(  number As Decimal,   result As StringBuffer,   fieldPosition As FieldPosition) As StringBuffer
 			fieldPosition.beginIndex = 0
 			fieldPosition.endIndex = 0
 			Return format(number, result, fieldPosition.fieldDelegate)
@@ -677,7 +677,7 @@ Namespace java.text
 		''' <exception cref="ArithmeticException"> if rounding is needed with rounding
 		'''                   mode being set to RoundingMode.UNNECESSARY </exception>
 		''' <returns> The formatted number string </returns>
-		Private Function format(ByVal number As Decimal, ByVal result As StringBuffer, ByVal [delegate] As FieldDelegate) As StringBuffer
+		Private Function format(  number As Decimal,   result As StringBuffer,   [delegate] As FieldDelegate) As StringBuffer
 			If multiplier <> 1 Then number = number * bigDecimalMultiplier
 			Dim isNegative As Boolean = number.signum() = -1
 			If isNegative Then number = -number
@@ -705,7 +705,7 @@ Namespace java.text
 		''' <exception cref="ArithmeticException"> if rounding is needed with rounding
 		'''                   mode being set to RoundingMode.UNNECESSARY </exception>
 		''' <seealso cref= java.text.FieldPosition </seealso>
-		Private Function format(ByVal number As System.Numerics.BigInteger, ByVal result As StringBuffer, ByVal fieldPosition As FieldPosition) As StringBuffer
+		Private Function format(  number As System.Numerics.BigInteger,   result As StringBuffer,   fieldPosition As FieldPosition) As StringBuffer
 			fieldPosition.beginIndex = 0
 			fieldPosition.endIndex = 0
 
@@ -721,7 +721,7 @@ Namespace java.text
 		''' <exception cref="ArithmeticException"> if rounding is needed with rounding
 		'''                   mode being set to RoundingMode.UNNECESSARY </exception>
 		''' <seealso cref= java.text.FieldPosition </seealso>
-		Private Function format(ByVal number As System.Numerics.BigInteger, ByVal result As StringBuffer, ByVal [delegate] As FieldDelegate, ByVal formatLong As Boolean) As StringBuffer
+		Private Function format(  number As System.Numerics.BigInteger,   result As StringBuffer,   [delegate] As FieldDelegate,   formatLong As Boolean) As StringBuffer
 			If multiplier <> 1 Then number = number * bigIntegerMultiplier
 			Dim isNegative As Boolean = number.signum() = -1
 			If isNegative Then number = -number
@@ -767,7 +767,7 @@ Namespace java.text
 		''' <param name="obj"> The object to format </param>
 		''' <returns> AttributedCharacterIterator describing the formatted value.
 		''' @since 1.4 </returns>
-		Public Overrides Function formatToCharacterIterator(ByVal obj As Object) As AttributedCharacterIterator
+		Public Overrides Function formatToCharacterIterator(  obj As Object) As AttributedCharacterIterator
 			Dim [delegate] As New CharacterIteratorFieldDelegate
 			Dim sb As New StringBuffer
 
@@ -991,7 +991,7 @@ Namespace java.text
 		''' fractional value.
 		''' </param>
 		''' <returns> the decision that must be taken regarding half-even rounding. </returns>
-		Private Function exactRoundUp(ByVal fractionalPart As Double, ByVal scaledFractionalPartAsInt As Integer) As Boolean
+		Private Function exactRoundUp(  fractionalPart As Double,   scaledFractionalPartAsInt As Integer) As Boolean
 
 	'         exactRoundUp() method is called by fastDoubleFormat() only.
 	'         * The precondition expected to be verified by the passed parameters is :
@@ -1122,7 +1122,7 @@ Namespace java.text
 		''' <param name="backwardIndex"> the position from which we start storing digits in
 		'''  digitsBuffer.
 		'''  </param>
-		Private Sub collectIntegralDigits(ByVal number As Integer, ByVal digitsBuffer As Char(), ByVal backwardIndex As Integer)
+		Private Sub collectIntegralDigits(  number As Integer,   digitsBuffer As Char(),   backwardIndex As Integer)
 			Dim index As Integer = backwardIndex
 			Dim q As Integer
 			Dim r As Integer
@@ -1168,7 +1168,7 @@ Namespace java.text
 		''' <param name="startIndex"> the position from which we start storing digits in
 		'''  digitsBuffer.
 		'''  </param>
-		Private Sub collectFractionalDigits(ByVal number As Integer, ByVal digitsBuffer As Char(), ByVal startIndex As Integer)
+		Private Sub collectFractionalDigits(  number As Integer,   digitsBuffer As Char(),   startIndex As Integer)
 			Dim index As Integer = startIndex
 
 			Dim digitOnes As Char = DigitArrays.DigitOnes1000(number)
@@ -1215,7 +1215,7 @@ Namespace java.text
 		''' <param name="suffix">     Char sequence to append as a suffix.
 		'''  </param>
 		'    private  Sub  addAffixes(boolean isNegative, char[] container) {
-		Private Sub addAffixes(ByVal container As Char(), ByVal prefix As Char(), ByVal suffix As Char())
+		Private Sub addAffixes(  container As Char(),   prefix As Char(),   suffix As Char())
 
 			' We add affixes only if needed (affix length > 0).
 			Dim pl As Integer = prefix.Length
@@ -1233,7 +1233,7 @@ Namespace java.text
 		''' <param name="prefix"> The prefix characters to prepend to result. </param>
 		''' <param name="len"> The number of chars to prepend. </param>
 		''' <param name="container"> Char array container which to prepend the prefix </param>
-		Private Sub prependPrefix(ByVal prefix As Char(), ByVal len As Integer, ByVal container As Char())
+		Private Sub prependPrefix(  prefix As Char(),   len As Integer,   container As Char())
 
 			fastPathData.firstUsedIndex -= len
 			Dim startIndex As Integer = fastPathData.firstUsedIndex
@@ -1272,7 +1272,7 @@ Namespace java.text
 		''' <param name="suffix"> The suffix characters to append to result. </param>
 		''' <param name="len"> The number of chars to append. </param>
 		''' <param name="container"> Char array container which to append the suffix </param>
-		Private Sub appendSuffix(ByVal suffix As Char(), ByVal len As Integer, ByVal container As Char())
+		Private Sub appendSuffix(  suffix As Char(),   len As Integer,   container As Char())
 
 			Dim startIndex As Integer = fastPathData.lastFreeIndex
 
@@ -1314,7 +1314,7 @@ Namespace java.text
 		''' We loop backward starting from last used index in {@code fastPathData}.
 		''' </summary>
 		''' <param name="digitsBuffer"> The char array container where the digits are stored. </param>
-		Private Sub localizeDigits(ByVal digitsBuffer As Char())
+		Private Sub localizeDigits(  digitsBuffer As Char())
 
 			' We will localize only the digits, using the groupingSize,
 			' and taking into account fractional part.
@@ -1347,7 +1347,7 @@ Namespace java.text
 		''' </summary>
 		''' <param name="d"> the double value to be formatted. </param>
 		''' <param name="negative"> Flag precising if {@code d} is negative. </param>
-		Private Sub fastDoubleFormat(ByVal d As Double, ByVal negative As Boolean)
+		Private Sub fastDoubleFormat(  d As Double,   negative As Boolean)
 
 			Dim container As Char() = fastPathData.fastPathContainer
 
@@ -1439,7 +1439,7 @@ Namespace java.text
 		''' <param name="d"> The double value to be formatted
 		''' </param>
 		''' <returns> the formatted result for {@code d} as a string. </returns>
-		Friend Overrides Function fastFormat(ByVal d As Double) As String
+		Friend Overrides Function fastFormat(  d As Double) As String
 			' (Re-)Evaluates fast-path status if needed.
 			If fastPathCheckNeeded Then checkAndSetFastPathStatus()
 
@@ -1476,7 +1476,7 @@ Namespace java.text
 		''' Complete the formatting of a finite number.  On entry, the digitList must
 		''' be filled in with the correct digits.
 		''' </summary>
-		Private Function subformat(ByVal result As StringBuffer, ByVal [delegate] As FieldDelegate, ByVal isNegative As Boolean, ByVal isInteger As Boolean, ByVal maxIntDigits As Integer, ByVal minIntDigits As Integer, ByVal maxFraDigits As Integer, ByVal minFraDigits As Integer) As StringBuffer
+		Private Function subformat(  result As StringBuffer,   [delegate] As FieldDelegate,   isNegative As Boolean,   isInteger As Boolean,   maxIntDigits As Integer,   minIntDigits As Integer,   maxFraDigits As Integer,   minFraDigits As Integer) As StringBuffer
 			' NOTE: This isn't required anymore because DigitList takes care of this.
 			'
 			'  // The negative of the exponent represents the number of leading
@@ -1739,7 +1739,7 @@ Namespace java.text
 		''' <p>
 		''' This is used by <code>subformat</code> to add the prefix/suffix.
 		''' </summary>
-		Private Sub append(ByVal result As StringBuffer, ByVal [string] As String, ByVal [delegate] As FieldDelegate, ByVal positions As FieldPosition(), ByVal signAttribute As Format.Field)
+		Private Sub append(  result As StringBuffer,   [string] As String,   [delegate] As FieldDelegate,   positions As FieldPosition(),   signAttribute As Format.Field)
 			Dim start As Integer = result.length()
 
 			If string_Renamed.length() > 0 Then
@@ -1812,7 +1812,7 @@ Namespace java.text
 		''' <returns>     the parsed value, or <code>null</code> if the parse fails </returns>
 		''' <exception cref="NullPointerException"> if <code>text</code> or
 		'''             <code>pos</code> is null. </exception>
-		Public Overrides Function parse(ByVal text As String, ByVal pos As ParsePosition) As Number
+		Public Overrides Function parse(  text As String,   pos As ParsePosition) As Number
 			' special case NaN
 			If text.regionMatches(pos.index, symbols.naN, 0, symbols.naN.length()) Then
 				pos.index = pos.index + symbols.naN.length()
@@ -1947,7 +1947,7 @@ Namespace java.text
 		''' infinite values and integer only. </param>
 		''' <param name="status"> Upon return contains boolean status flags indicating
 		''' whether the value was infinite and whether it was positive. </param>
-		Private Function subparse(ByVal text As String, ByVal parsePosition As ParsePosition, ByVal positivePrefix As String, ByVal negativePrefix As String, ByVal digits As DigitList, ByVal isExponent As Boolean, ByVal status As Boolean()) As Boolean
+		Private Function subparse(  text As String,   parsePosition As ParsePosition,   positivePrefix As String,   negativePrefix As String,   digits As DigitList,   isExponent As Boolean,   status As Boolean()) As Boolean
 			Dim position As Integer = parsePosition.index
 			Dim oldStart As Integer = parsePosition.index
 			Dim backup As Integer
@@ -2146,7 +2146,7 @@ Namespace java.text
 					Return Nothing ' should never happen
 				End Try
 			End Get
-			Set(ByVal newSymbols As DecimalFormatSymbols)
+			Set(  newSymbols As DecimalFormatSymbols)
 				Try
 					' don't allow multiple references
 					symbols = CType(newSymbols.clone(), DecimalFormatSymbols)
@@ -2169,7 +2169,7 @@ Namespace java.text
 			Get
 				Return positivePrefix
 			End Get
-			Set(ByVal newValue As String)
+			Set(  newValue As String)
 				positivePrefix = newValue
 				posPrefixPattern = Nothing
 				positivePrefixFieldPositions = Nothing
@@ -2207,7 +2207,7 @@ Namespace java.text
 			Get
 				Return negativePrefix
 			End Get
-			Set(ByVal newValue As String)
+			Set(  newValue As String)
 				negativePrefix = newValue
 				negPrefixPattern = Nothing
 				fastPathCheckNeeded = True
@@ -2244,7 +2244,7 @@ Namespace java.text
 			Get
 				Return positiveSuffix
 			End Get
-			Set(ByVal newValue As String)
+			Set(  newValue As String)
 				positiveSuffix = newValue
 				posSuffixPattern = Nothing
 				fastPathCheckNeeded = True
@@ -2281,7 +2281,7 @@ Namespace java.text
 			Get
 				Return negativeSuffix
 			End Get
-			Set(ByVal newValue As String)
+			Set(  newValue As String)
 				negativeSuffix = newValue
 				negSuffixPattern = Nothing
 				fastPathCheckNeeded = True
@@ -2319,7 +2319,7 @@ Namespace java.text
 			Get
 				Return multiplier
 			End Get
-			Set(ByVal newValue As Integer)
+			Set(  newValue As Integer)
 				multiplier = newValue
 				bigDecimalMultiplier = Nothing
 				bigIntegerMultiplier = Nothing
@@ -2332,7 +2332,7 @@ Namespace java.text
 		''' {@inheritDoc}
 		''' </summary>
 		Public Overrides Property groupingUsed As Boolean
-			Set(ByVal newValue As Boolean)
+			Set(  newValue As Boolean)
 				MyBase.groupingUsed = newValue
 				fastPathCheckNeeded = True
 			End Set
@@ -2351,7 +2351,7 @@ Namespace java.text
 			Get
 				Return groupingSize
 			End Get
-			Set(ByVal newValue As Integer)
+			Set(  newValue As Integer)
 				groupingSize = CByte(newValue)
 				fastPathCheckNeeded = True
 			End Set
@@ -2369,7 +2369,7 @@ Namespace java.text
 			Get
 				Return decimalSeparatorAlwaysShown
 			End Get
-			Set(ByVal newValue As Boolean)
+			Set(  newValue As Boolean)
 				decimalSeparatorAlwaysShown = newValue
 				fastPathCheckNeeded = True
 			End Set
@@ -2388,7 +2388,7 @@ Namespace java.text
 			Get
 				Return parseBigDecimal
 			End Get
-			Set(ByVal newValue As Boolean)
+			Set(  newValue As Boolean)
 				parseBigDecimal = newValue
 			End Set
 		End Property
@@ -2421,7 +2421,7 @@ Namespace java.text
 		''' <summary>
 		''' Overrides equals
 		''' </summary>
-		Public Overrides Function Equals(ByVal obj As Object) As Boolean
+		Public Overrides Function Equals(  obj As Object) As Boolean
 			If obj Is Nothing Then Return False
 			If Not MyBase.Equals(obj) Then Return False ' super does class check
 			Dim other As DecimalFormat = CType(obj, DecimalFormat)
@@ -2496,7 +2496,7 @@ Namespace java.text
 		''' <param name="pattern"> the non-null, possibly empty pattern </param>
 		''' <param name="buffer"> a scratch StringBuffer; its contents will be lost </param>
 		''' <returns> the expanded equivalent of pattern </returns>
-		Private Function expandAffix(ByVal pattern As String, ByVal buffer As StringBuffer) As String
+		Private Function expandAffix(  pattern As String,   buffer As StringBuffer) As String
 			buffer.length = 0
 			Dim i As Integer=0
 			Do While i<pattern.length()
@@ -2541,7 +2541,7 @@ Namespace java.text
 		''' </summary>
 		''' <param name="pattern"> the non-null, possibly empty pattern </param>
 		''' <returns> FieldPosition array of the resulting fields. </returns>
-		Private Function expandAffix(ByVal pattern As String) As FieldPosition()
+		Private Function expandAffix(  pattern As String) As FieldPosition()
 			Dim positions As List(Of FieldPosition) = Nothing
 			Dim stringIndex As Integer = 0
 			Dim i As Integer=0
@@ -2612,7 +2612,7 @@ Namespace java.text
 		''' expAffix is appended as a literal affix. </param>
 		''' <param name="localized"> true if the appended pattern should contain localized
 		''' pattern characters; otherwise, non-localized pattern chars are appended </param>
-		Private Sub appendAffix(ByVal buffer As StringBuffer, ByVal affixPattern As String, ByVal expAffix As String, ByVal localized As Boolean)
+		Private Sub appendAffix(  buffer As StringBuffer,   affixPattern As String,   expAffix As String,   localized As Boolean)
 			If affixPattern Is Nothing Then
 				appendAffix(buffer, expAffix, localized)
 			Else
@@ -2656,7 +2656,7 @@ Namespace java.text
 		''' there are special characters.  Single quotes themselves must be
 		''' escaped in either case.
 		''' </summary>
-		Private Sub appendAffix(ByVal buffer As StringBuffer, ByVal affix As String, ByVal localized As Boolean)
+		Private Sub appendAffix(  buffer As StringBuffer,   affix As String,   localized As Boolean)
 			Dim needQuote As Boolean
 			If localized Then
 				needQuote = affix.IndexOf(symbols.zeroDigit) >= 0 OrElse affix.IndexOf(symbols.groupingSeparator) >= 0 OrElse affix.IndexOf(symbols.decimalSeparator) >= 0 OrElse affix.IndexOf(symbols.percent) >= 0 OrElse affix.IndexOf(symbols.perMill) >= 0 OrElse affix.IndexOf(symbols.digit) >= 0 OrElse affix.IndexOf(symbols.patternSeparator) >= 0 OrElse affix.IndexOf(symbols.minusSign) >= 0 OrElse affix.IndexOf(CURRENCY_SIGN) >= 0
@@ -2679,7 +2679,7 @@ Namespace java.text
 		''' <summary>
 		''' Does the real work of generating a pattern.  
 		''' </summary>
-		Private Function toPattern(ByVal localized As Boolean) As String
+		Private Function toPattern(  localized As Boolean) As String
 			Dim result As New StringBuffer
 			For j As Integer = 1 To 0 Step -1
 				If j = 1 Then
@@ -2741,7 +2741,7 @@ Namespace java.text
 		''' <param name="pattern"> a new pattern </param>
 		''' <exception cref="NullPointerException"> if <code>pattern</code> is null </exception>
 		''' <exception cref="IllegalArgumentException"> if the given pattern is invalid. </exception>
-		Public Overridable Sub applyPattern(ByVal pattern As String)
+		Public Overridable Sub applyPattern(  pattern As String)
 			applyPattern(pattern, False)
 		End Sub
 
@@ -2767,14 +2767,14 @@ Namespace java.text
 		''' <param name="pattern"> a new pattern </param>
 		''' <exception cref="NullPointerException"> if <code>pattern</code> is null </exception>
 		''' <exception cref="IllegalArgumentException"> if the given pattern is invalid. </exception>
-		Public Overridable Sub applyLocalizedPattern(ByVal pattern As String)
+		Public Overridable Sub applyLocalizedPattern(  pattern As String)
 			applyPattern(pattern, True)
 		End Sub
 
 		''' <summary>
 		''' Does the real work of applying a pattern.
 		''' </summary>
-		Private Sub applyPattern(ByVal pattern As String, ByVal localized As Boolean)
+		Private Sub applyPattern(  pattern As String,   localized As Boolean)
 			Dim zeroDigit As Char = PATTERN_ZERO_DIGIT
 			Dim groupingSeparator As Char = PATTERN_GROUPING_SEPARATOR
 			Dim decimalSeparator As Char = PATTERN_DECIMAL_SEPARATOR
@@ -3060,7 +3060,7 @@ Namespace java.text
 		''' 309 is used. Negative input values are replaced with 0. </summary>
 		''' <seealso cref= NumberFormat#setMaximumIntegerDigits </seealso>
 		Public Overrides Property maximumIntegerDigits As Integer
-			Set(ByVal newValue As Integer)
+			Set(  newValue As Integer)
 				maximumIntegerDigits = System.Math.Min (System.Math.Max(0, newValue), MAXIMUM_INTEGER_DIGITS)
 				MyBase.maximumIntegerDigits = If(maximumIntegerDigits > DOUBLE_INTEGER_DIGITS, DOUBLE_INTEGER_DIGITS, maximumIntegerDigits)
 				If minimumIntegerDigits > maximumIntegerDigits Then
@@ -3082,7 +3082,7 @@ Namespace java.text
 		''' 309 is used. Negative input values are replaced with 0. </summary>
 		''' <seealso cref= NumberFormat#setMinimumIntegerDigits </seealso>
 		Public Overrides Property minimumIntegerDigits As Integer
-			Set(ByVal newValue As Integer)
+			Set(  newValue As Integer)
 				minimumIntegerDigits = System.Math.Min (System.Math.Max(0, newValue), MAXIMUM_INTEGER_DIGITS)
 				MyBase.minimumIntegerDigits = If(minimumIntegerDigits > DOUBLE_INTEGER_DIGITS, DOUBLE_INTEGER_DIGITS, minimumIntegerDigits)
 				If minimumIntegerDigits > maximumIntegerDigits Then
@@ -3104,7 +3104,7 @@ Namespace java.text
 		''' 340 is used. Negative input values are replaced with 0. </summary>
 		''' <seealso cref= NumberFormat#setMaximumFractionDigits </seealso>
 		Public Overrides Property maximumFractionDigits As Integer
-			Set(ByVal newValue As Integer)
+			Set(  newValue As Integer)
 				maximumFractionDigits = System.Math.Min (System.Math.Max(0, newValue), MAXIMUM_FRACTION_DIGITS)
 				MyBase.maximumFractionDigits = If(maximumFractionDigits > DOUBLE_FRACTION_DIGITS, DOUBLE_FRACTION_DIGITS, maximumFractionDigits)
 				If minimumFractionDigits > maximumFractionDigits Then
@@ -3126,7 +3126,7 @@ Namespace java.text
 		''' 340 is used. Negative input values are replaced with 0. </summary>
 		''' <seealso cref= NumberFormat#setMinimumFractionDigits </seealso>
 		Public Overrides Property minimumFractionDigits As Integer
-			Set(ByVal newValue As Integer)
+			Set(  newValue As Integer)
 				minimumFractionDigits = System.Math.Min (System.Math.Max(0, newValue), MAXIMUM_FRACTION_DIGITS)
 				MyBase.minimumFractionDigits = If(minimumFractionDigits > DOUBLE_FRACTION_DIGITS, DOUBLE_FRACTION_DIGITS, minimumFractionDigits)
 				If minimumFractionDigits > maximumFractionDigits Then
@@ -3157,7 +3157,7 @@ Namespace java.text
 			Get
 				Return symbols.currency
 			End Get
-			Set(ByVal currency As java.util.Currency)
+			Set(  currency As java.util.Currency)
 				If currency IsNot symbols.currency Then
 					symbols.currency = currency
 					If isCurrencyFormat Then expandAffixes()
@@ -3177,7 +3177,7 @@ Namespace java.text
 			Get
 				Return roundingMode
 			End Get
-			Set(ByVal roundingMode As java.math.RoundingMode)
+			Set(  roundingMode As java.math.RoundingMode)
 				If roundingMode Is Nothing Then Throw New NullPointerException
     
 				Me.roundingMode = roundingMode
@@ -3230,7 +3230,7 @@ Namespace java.text
 		''' literal values.  This is exactly what we want, since that corresponds to
 		''' the pre-version-2 behavior.
 		''' </summary>
-		Private Sub readObject(ByVal stream As java.io.ObjectInputStream)
+		Private Sub readObject(  stream As java.io.ObjectInputStream)
 			stream.defaultReadObject()
 			digitList = New DigitList
 

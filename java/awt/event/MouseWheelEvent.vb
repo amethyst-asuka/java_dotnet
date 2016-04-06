@@ -187,7 +187,7 @@ Namespace java.awt.event
 		''' <exception cref="IllegalArgumentException"> if <code>source</code> is null </exception>
 		''' <seealso cref= MouseEvent#MouseEvent(java.awt.Component, int, long, int, int, int, int, boolean) </seealso>
 		''' <seealso cref= MouseEvent#MouseEvent(java.awt.Component, int, long, int, int, int, int, int, int, boolean, int) </seealso>
-		Public Sub New(ByVal source As java.awt.Component, ByVal id As Integer, ByVal [when] As Long, ByVal modifiers As Integer, ByVal x As Integer, ByVal y As Integer, ByVal clickCount As Integer, ByVal popupTrigger As Boolean, ByVal scrollType As Integer, ByVal scrollAmount As Integer, ByVal wheelRotation As Integer)
+		Public Sub New(  source As java.awt.Component,   id As Integer,   [when] As Long,   modifiers As Integer,   x As Integer,   y As Integer,   clickCount As Integer,   popupTrigger As Boolean,   scrollType As Integer,   scrollAmount As Integer,   wheelRotation As Integer)
 
 			Me.New(source, id, [when], modifiers, x, y, 0, 0, clickCount, popupTrigger, scrollType, scrollAmount, wheelRotation)
 		End Sub
@@ -230,7 +230,7 @@ Namespace java.awt.event
 		''' <seealso cref= MouseEvent#MouseEvent(java.awt.Component, int, long, int, int, int, int, boolean) </seealso>
 		''' <seealso cref= MouseEvent#MouseEvent(java.awt.Component, int, long, int, int, int, int, int, int, boolean, int)
 		''' @since 1.6 </seealso>
-		Public Sub New(ByVal source As java.awt.Component, ByVal id As Integer, ByVal [when] As Long, ByVal modifiers As Integer, ByVal x As Integer, ByVal y As Integer, ByVal xAbs As Integer, ByVal yAbs As Integer, ByVal clickCount As Integer, ByVal popupTrigger As Boolean, ByVal scrollType As Integer, ByVal scrollAmount As Integer, ByVal wheelRotation As Integer)
+		Public Sub New(  source As java.awt.Component,   id As Integer,   [when] As Long,   modifiers As Integer,   x As Integer,   y As Integer,   xAbs As Integer,   yAbs As Integer,   clickCount As Integer,   popupTrigger As Boolean,   scrollType As Integer,   scrollAmount As Integer,   wheelRotation As Integer)
 
 			Me.New(source, id, [when], modifiers, x, y, xAbs, yAbs, clickCount, popupTrigger, scrollType, scrollAmount, wheelRotation, wheelRotation)
 
@@ -280,7 +280,7 @@ Namespace java.awt.event
 		''' <seealso cref= MouseEvent#MouseEvent(java.awt.Component, int, long, int, int, int, int, boolean) </seealso>
 		''' <seealso cref= MouseEvent#MouseEvent(java.awt.Component, int, long, int, int, int, int, int, int, boolean, int)
 		''' @since 1.7 </seealso>
-		Public Sub New(ByVal source As java.awt.Component, ByVal id As Integer, ByVal [when] As Long, ByVal modifiers As Integer, ByVal x As Integer, ByVal y As Integer, ByVal xAbs As Integer, ByVal yAbs As Integer, ByVal clickCount As Integer, ByVal popupTrigger As Boolean, ByVal scrollType As Integer, ByVal scrollAmount As Integer, ByVal wheelRotation As Integer, ByVal preciseWheelRotation As Double)
+		Public Sub New(  source As java.awt.Component,   id As Integer,   [when] As Long,   modifiers As Integer,   x As Integer,   y As Integer,   xAbs As Integer,   yAbs As Integer,   clickCount As Integer,   popupTrigger As Boolean,   scrollType As Integer,   scrollAmount As Integer,   wheelRotation As Integer,   preciseWheelRotation As Double)
 
 			MyBase.New(source, id, [when], modifiers, x, y, xAbs, yAbs, clickCount, popupTrigger, MouseEvent.NOBUTTON)
 

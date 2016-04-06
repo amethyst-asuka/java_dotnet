@@ -51,7 +51,7 @@ Namespace java.nio
 	'
 	'    
 
-		Friend Sub New(ByVal cap As Integer, ByVal lim As Integer) ' package-private
+		Friend Sub New(  cap As Integer,   lim As Integer) ' package-private
 
 
 
@@ -64,7 +64,7 @@ Namespace java.nio
 
 		End Sub
 
-		Friend Sub New(ByVal buf As Double(), ByVal [off] As Integer, ByVal len As Integer) ' package-private
+		Friend Sub New(  buf As Double(),   [off] As Integer,   len As Integer) ' package-private
 
 
 
@@ -77,7 +77,7 @@ Namespace java.nio
 
 		End Sub
 
-		Protected Friend Sub New(ByVal buf As Double(), ByVal mark As Integer, ByVal pos As Integer, ByVal lim As Integer, ByVal cap As Integer, ByVal [off] As Integer)
+		Protected Friend Sub New(  buf As Double(),   mark As Integer,   pos As Integer,   lim As Integer,   cap As Integer,   [off] As Integer)
 
 
 
@@ -152,7 +152,7 @@ Namespace java.nio
 			End Get
 		End Property
 
-		Public Overrides Function put(ByVal x As Double) As DoubleBuffer
+		Public Overrides Function put(  x As Double) As DoubleBuffer
 
 
 
@@ -161,7 +161,7 @@ Namespace java.nio
 
 		End Function
 
-		Public Overrides Function put(ByVal i As Integer, ByVal x As Double) As DoubleBuffer
+		Public Overrides Function put(  i As Integer,   x As Double) As DoubleBuffer
 
 
 
@@ -170,7 +170,7 @@ Namespace java.nio
 
 		End Function
 
-		Public Overrides Function put(ByVal src As Double(), ByVal offset As Integer, ByVal length As Integer) As DoubleBuffer
+		Public Overrides Function put(  src As Double(),   offset As Integer,   length As Integer) As DoubleBuffer
 
 
 
@@ -183,7 +183,7 @@ Namespace java.nio
 
 		End Function
 
-		Public Overrides Function put(ByVal src As DoubleBuffer) As DoubleBuffer
+		Public Overrides Function put(  src As DoubleBuffer) As DoubleBuffer
 
 
 

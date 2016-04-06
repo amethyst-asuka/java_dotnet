@@ -276,7 +276,7 @@ Namespace java.nio
 		' Creates a new buffer with the given mark, position, limit, capacity,
 		' backing array, and array offset
 		'
-		Friend Sub New(ByVal mark As Integer, ByVal pos As Integer, ByVal lim As Integer, ByVal cap As Integer, ByVal hb As Short(), ByVal offset As Integer) ' package-private
+		Friend Sub New(  mark As Integer,   pos As Integer,   lim As Integer,   cap As Integer,   hb As Short(),   offset As Integer) ' package-private
 			MyBase.New(mark, pos, lim, cap)
 			Me.hb = hb
 			Me.offset = offset
@@ -284,7 +284,7 @@ Namespace java.nio
 
 		' Creates a new buffer with the given mark, position, limit, and capacity
 		'
-		Friend Sub New(ByVal mark As Integer, ByVal pos As Integer, ByVal lim As Integer, ByVal cap As Integer) ' package-private
+		Friend Sub New(  mark As Integer,   pos As Integer,   lim As Integer,   cap As Integer) ' package-private
 			Me.New(mark, pos, lim, cap, Nothing, 0)
 		End Sub
 
@@ -327,7 +327,7 @@ Namespace java.nio
 		''' </returns>
 		''' <exception cref="IllegalArgumentException">
 		'''          If the <tt>capacity</tt> is a negative integer </exception>
-		Public Shared Function allocate(ByVal capacity As Integer) As ShortBuffer
+		Public Shared Function allocate(  capacity As Integer) As ShortBuffer
 			If capacity < 0 Then Throw New IllegalArgumentException
 			Return New HeapShortBuffer(capacity, capacity)
 		End Function
@@ -362,7 +362,7 @@ Namespace java.nio
 		''' <exception cref="IndexOutOfBoundsException">
 		'''          If the preconditions on the <tt>offset</tt> and <tt>length</tt>
 		'''          parameters do not hold </exception>
-		Public Shared Function wrap(ByVal array As Short(), ByVal offset As Integer, ByVal length As Integer) As ShortBuffer
+		Public Shared Function wrap(  array As Short(),   offset As Integer,   length As Integer) As ShortBuffer
 			Try
 				Return New HeapShortBuffer(array, offset, length)
 			Catch x As IllegalArgumentException
@@ -385,7 +385,7 @@ Namespace java.nio
 		'''         The array that will back this buffer
 		''' </param>
 		''' <returns>  The new short buffer </returns>
-		Public Shared Function wrap(ByVal array As Short()) As ShortBuffer
+		Public Shared Function wrap(  array As Short()) As ShortBuffer
 			Return wrap(array, 0, array.Length)
 		End Function
 
@@ -564,7 +564,7 @@ Namespace java.nio
 		''' </exception>
 		''' <exception cref="ReadOnlyBufferException">
 		'''          If this buffer is read-only </exception>
-		Public MustOverride Function put(ByVal s As Short) As ShortBuffer
+		Public MustOverride Function put(  s As Short) As ShortBuffer
 
 		''' <summary>
 		''' Absolute <i>get</i> method.  Reads the short at the given
@@ -578,7 +578,7 @@ Namespace java.nio
 		''' <exception cref="IndexOutOfBoundsException">
 		'''          If <tt>index</tt> is negative
 		'''          or not smaller than the buffer's limit </exception>
-		Public MustOverride Function [get](ByVal index As Integer) As Short
+		Public MustOverride Function [get](  index As Integer) As Short
 
 
 
@@ -613,7 +613,7 @@ Namespace java.nio
 		''' </exception>
 		''' <exception cref="ReadOnlyBufferException">
 		'''          If this buffer is read-only </exception>
-		Public MustOverride Function put(ByVal index As Integer, ByVal s As Short) As ShortBuffer
+		Public MustOverride Function put(  index As Integer,   s As Short) As ShortBuffer
 
 
 		' -- Bulk get operations --
@@ -667,7 +667,7 @@ Namespace java.nio
 		''' <exception cref="IndexOutOfBoundsException">
 		'''          If the preconditions on the <tt>offset</tt> and <tt>length</tt>
 		'''          parameters do not hold </exception>
-		Public Overridable Function [get](ByVal dst As Short(), ByVal offset As Integer, ByVal length As Integer) As ShortBuffer
+		Public Overridable Function [get](  dst As Short(),   offset As Integer,   length As Integer) As ShortBuffer
 			checkBounds(offset, length, dst.Length)
 			If length > remaining() Then Throw New BufferUnderflowException
 			Dim [end] As Integer = offset + length
@@ -695,7 +695,7 @@ Namespace java.nio
 		''' <exception cref="BufferUnderflowException">
 		'''          If there are fewer than <tt>length</tt> shorts
 		'''          remaining in this buffer </exception>
-		Public Overridable Function [get](ByVal dst As Short()) As ShortBuffer
+		Public Overridable Function [get](  dst As Short()) As ShortBuffer
 			Return [get](dst, 0, dst.Length)
 		End Function
 
@@ -742,7 +742,7 @@ Namespace java.nio
 		''' </exception>
 		''' <exception cref="ReadOnlyBufferException">
 		'''          If this buffer is read-only </exception>
-		Public Overridable Function put(ByVal src As ShortBuffer) As ShortBuffer
+		Public Overridable Function put(  src As ShortBuffer) As ShortBuffer
 			If src Is Me Then Throw New IllegalArgumentException
 			If [readOnly] Then Throw New ReadOnlyBufferException
 			Dim n As Integer = src.remaining()
@@ -803,7 +803,7 @@ Namespace java.nio
 		''' </exception>
 		''' <exception cref="ReadOnlyBufferException">
 		'''          If this buffer is read-only </exception>
-		Public Overridable Function put(ByVal src As Short(), ByVal offset As Integer, ByVal length As Integer) As ShortBuffer
+		Public Overridable Function put(  src As Short(),   offset As Integer,   length As Integer) As ShortBuffer
 			checkBounds(offset, length, src.Length)
 			If length > remaining() Then Throw New BufferOverflowException
 			Dim [end] As Integer = offset + length
@@ -834,7 +834,7 @@ Namespace java.nio
 		''' </exception>
 		''' <exception cref="ReadOnlyBufferException">
 		'''          If this buffer is read-only </exception>
-		Public Function put(ByVal src As Short()) As ShortBuffer
+		Public Function put(  src As Short()) As ShortBuffer
 			Return put(src, 0, src.Length)
 		End Function
 
@@ -1124,7 +1124,7 @@ Namespace java.nio
 		''' </param>
 		''' <returns>  <tt>true</tt> if, and only if, this buffer is equal to the
 		'''           given object </returns>
-		Public Overrides Function Equals(ByVal ob As Object) As Boolean
+		Public Overrides Function Equals(  ob As Object) As Boolean
 			If Me Is ob Then Return True
 			If Not(TypeOf ob Is ShortBuffer) Then Return False
 			Dim that As ShortBuffer = CType(ob, ShortBuffer)
@@ -1140,7 +1140,7 @@ Namespace java.nio
 			Return True
 		End Function
 
-		Private Shared Function Equals(ByVal x As Short, ByVal y As Short) As Boolean
+		Private Shared Function Equals(  x As Short,   y As Short) As Boolean
 
 
 
@@ -1170,7 +1170,7 @@ Namespace java.nio
 		''' </summary>
 		''' <returns>  A negative integer, zero, or a positive integer as this buffer
 		'''          is less than, equal to, or greater than the given buffer </returns>
-		Public Overridable Function compareTo(ByVal that As ShortBuffer) As Integer Implements Comparable(Of ShortBuffer).compareTo
+		Public Overridable Function compareTo(  that As ShortBuffer) As Integer Implements Comparable(Of ShortBuffer).compareTo
 			Dim n As Integer = Me.position() + System.Math.Min(Me.remaining(), that.remaining())
 			Dim i As Integer = Me.position()
 			Dim j As Integer = that.position()
@@ -1183,7 +1183,7 @@ Namespace java.nio
 			Return Me.remaining() - that.remaining()
 		End Function
 
-		Private Shared Function compare(ByVal x As Short, ByVal y As Short) As Integer
+		Private Shared Function compare(  x As Short,   y As Short) As Integer
 
 
 

@@ -51,7 +51,7 @@ Namespace java.nio.charset
 		''' </summary>
 		''' <param name="charsetName">
 		'''         The illegal charset name </param>
-		Public Sub New(ByVal charsetName As String)
+		Public Sub New(  charsetName As String)
 			MyBase.New(Convert.ToString(charsetName))
 		Me.charsetName = charsetName
 		End Sub

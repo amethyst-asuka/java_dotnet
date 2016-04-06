@@ -56,7 +56,7 @@ Namespace java.security
 		''' <param name="publicKey"> the public key.
 		''' </param>
 		''' <param name="privateKey"> the private key. </param>
-		Public Sub New(ByVal publicKey As PublicKey, ByVal privateKey As PrivateKey)
+		Public Sub New(  publicKey As PublicKey,   privateKey As PrivateKey)
 			Me.publicKey = publicKey
 			Me.privateKey = privateKey
 		End Sub

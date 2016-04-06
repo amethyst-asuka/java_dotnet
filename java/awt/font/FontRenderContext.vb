@@ -101,7 +101,7 @@ Namespace java.awt.font
 		''' has anti-aliasing. </param>
 		''' <param name="usesFractionalMetrics"> determines if the newly constructed
 		''' object has fractional metrics. </param>
-		Public Sub New(ByVal tx As java.awt.geom.AffineTransform, ByVal isAntiAliased As Boolean, ByVal usesFractionalMetrics As Boolean)
+		Public Sub New(  tx As java.awt.geom.AffineTransform,   isAntiAliased As Boolean,   usesFractionalMetrics As Boolean)
 			If tx IsNot Nothing AndAlso (Not tx.identity) Then Me.tx = New java.awt.geom.AffineTransform(tx)
 			If isAntiAliased Then
 				aaHintValue = VALUE_TEXT_ANTIALIAS_ON
@@ -138,7 +138,7 @@ Namespace java.awt.font
 		''' <exception cref="IllegalArgumentException"> if the hints are not one of the
 		''' legal values.
 		''' @since 1.6 </exception>
-		Public Sub New(ByVal tx As java.awt.geom.AffineTransform, ByVal aaHint As Object, ByVal fmHint As Object)
+		Public Sub New(  tx As java.awt.geom.AffineTransform,   aaHint As Object,   fmHint As Object)
 			If tx IsNot Nothing AndAlso (Not tx.identity) Then Me.tx = New java.awt.geom.AffineTransform(tx)
 			Try
 				If KEY_TEXT_ANTIALIASING.isCompatibleValue(aaHint) Then
@@ -291,7 +291,7 @@ Namespace java.awt.font
         ''' <returns> <code>true</code> if the specified object is equal to
         '''         this <code>FontRenderContext</code>; <code>false</code>
         '''         otherwise. </returns>
-        Public Overrides Function Equals(ByVal obj As Object) As Boolean
+        Public Overrides Function Equals(  obj As Object) As Boolean
             Try
                 Return Equals(CType(obj, FontRenderContext))
             Catch e As classCastException
@@ -307,7 +307,7 @@ Namespace java.awt.font
 		'''         this <code>FontRenderContext</code>; <code>false</code>
 		'''         otherwise.
 		''' @since 1.4 </returns>
-		Public Overrides Function Equals(ByVal rhs As FontRenderContext) As Boolean
+		Public Overrides Function Equals(  rhs As FontRenderContext) As Boolean
 			If Me Is rhs Then Return True
 			If rhs Is Nothing Then Return False
 

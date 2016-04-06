@@ -78,7 +78,7 @@ Namespace java.lang
 		''' specified detail message.
 		''' </summary>
 		''' <param name="s">   the detail message. </param>
-		Public Sub New(ByVal s As String)
+		Public Sub New(  s As String)
 			MyBase.New(s, Nothing) '  Disallow initCause
 		End Sub
 
@@ -90,7 +90,7 @@ Namespace java.lang
 		''' <param name="s"> the detail message </param>
 		''' <param name="ex"> the exception that was raised while loading the class
 		''' @since 1.2 </param>
-		Public Sub New(ByVal s As String, ByVal ex As Throwable)
+		Public Sub New(  s As String,   ex As Throwable)
 			MyBase.New(s, Nothing) '  Disallow initCause
 			Me.ex = ex
 		End Sub

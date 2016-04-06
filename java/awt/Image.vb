@@ -63,7 +63,7 @@ Namespace java.awt
 		'''                   if the width is not yet known. </returns>
 		''' <seealso cref=       java.awt.Image#getHeight </seealso>
 		''' <seealso cref=       java.awt.image.ImageObserver </seealso>
-		Public MustOverride Function getWidth(ByVal observer As java.awt.image.ImageObserver) As Integer
+		Public MustOverride Function getWidth(  observer As java.awt.image.ImageObserver) As Integer
 
 		''' <summary>
 		''' Determines the height of the image. If the height is not yet known,
@@ -74,7 +74,7 @@ Namespace java.awt
 		'''                   if the height is not yet known. </returns>
 		''' <seealso cref=       java.awt.Image#getWidth </seealso>
 		''' <seealso cref=       java.awt.image.ImageObserver </seealso>
-		Public MustOverride Function getHeight(ByVal observer As java.awt.image.ImageObserver) As Integer
+		Public MustOverride Function getHeight(  observer As java.awt.image.ImageObserver) As Integer
 
 		''' <summary>
 		''' Gets the object that produces the pixels for the image.
@@ -115,7 +115,7 @@ Namespace java.awt
 		''' <exception cref="NullPointerException"> if the property name is null. </exception>
 		''' <seealso cref=         java.awt.image.ImageObserver </seealso>
 		''' <seealso cref=         java.awt.Image#UndefinedProperty </seealso>
-		Public MustOverride Function getProperty(ByVal name As String, ByVal observer As java.awt.image.ImageObserver) As Object
+		Public MustOverride Function getProperty(  name As String,   observer As java.awt.image.ImageObserver) As Object
 
 		''' <summary>
 		''' The <code>UndefinedProperty</code> object should be returned whenever a
@@ -152,7 +152,7 @@ Namespace java.awt
 		''' <seealso cref=        java.awt.Image#SCALE_REPLICATE </seealso>
 		''' <seealso cref=        java.awt.Image#SCALE_AREA_AVERAGING
 		''' @since      JDK1.1 </seealso>
-		Public Overridable Function getScaledInstance(ByVal width As Integer, ByVal height As Integer, ByVal hints As Integer) As Image
+		Public Overridable Function getScaledInstance(  width As Integer,   height As Integer,   hints As Integer) As Image
 			Dim filter As java.awt.image.ImageFilter
 			If (hints And (SCALE_SMOOTH Or SCALE_AREA_AVERAGING)) <> 0 Then
 				filter = New java.awt.image.AreaAveragingScaleFilter(width, height)
@@ -265,7 +265,7 @@ Namespace java.awt
 		''' <seealso cref= java.awt.image.VolatileImage#getCapabilities()
 		''' VolatileImage.getCapabilities()
 		''' @since 1.5 </seealso>
-		Public Overridable Function getCapabilities(ByVal gc As GraphicsConfiguration) As ImageCapabilities
+		Public Overridable Function getCapabilities(  gc As GraphicsConfiguration) As ImageCapabilities
 			If surfaceManager IsNot Nothing Then Return surfaceManager.getCapabilities(gc)
 			' Note: this is just a default object that gets returned in the
 			' absence of any more specific information from a surfaceManager.
@@ -296,7 +296,7 @@ Namespace java.awt
 		''' than zero or greater than 1.
 		''' @since 1.5 </exception>
 		Public Overridable Property accelerationPriority As Single
-			Set(ByVal priority As Single)
+			Set(  priority As Single)
 				If priority < 0 OrElse priority > 1 Then Throw New IllegalArgumentException("Priority must be a value " & "between 0 and 1, inclusive")
 				accelerationPriority = priority
 				If surfaceManager IsNot Nothing Then surfaceManager.accelerationPriority = accelerationPriority

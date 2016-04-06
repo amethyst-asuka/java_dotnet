@@ -136,7 +136,7 @@ Namespace java.util.concurrent
 		''' <exception cref="RejectedExecutionException"> if this task cannot be
 		''' accepted for execution </exception>
 		''' <exception cref="NullPointerException"> if command is null </exception>
-		Sub execute(ByVal command As Runnable)
+		Sub execute(  command As Runnable)
 	End Interface
 
 End Namespace

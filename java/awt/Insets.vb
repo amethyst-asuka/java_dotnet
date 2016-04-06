@@ -97,7 +97,7 @@ Namespace java.awt
 		''' <param name="left">   the inset from the left. </param>
 		''' <param name="bottom">   the inset from the bottom. </param>
 		''' <param name="right">   the inset from the right. </param>
-		Public Sub New(ByVal top As Integer, ByVal left As Integer, ByVal bottom As Integer, ByVal right As Integer)
+		Public Sub New(  top As Integer,   left As Integer,   bottom As Integer,   right As Integer)
 			Me.top = top
 			Me.left = left
 			Me.bottom = bottom
@@ -112,7 +112,7 @@ Namespace java.awt
 		''' <param name="bottom">   the inset from the bottom. </param>
 		''' <param name="right">   the inset from the right.
 		''' @since 1.5 </param>
-		Public Overridable Sub [set](ByVal top As Integer, ByVal left As Integer, ByVal bottom As Integer, ByVal right As Integer)
+		Public Overridable Sub [set](  top As Integer,   left As Integer,   bottom As Integer,   right As Integer)
 			Me.top = top
 			Me.left = left
 			Me.bottom = bottom
@@ -127,7 +127,7 @@ Namespace java.awt
 		''' <returns>      <code>true</code> if the two insets are equal;
 		'''                          otherwise <code>false</code>.
 		''' @since       JDK1.1 </returns>
-		Public Overrides Function Equals(ByVal obj As Object) As Boolean
+		Public Overrides Function Equals(  obj As Object) As Boolean
 			If TypeOf obj Is Insets Then
 				Dim insets_Renamed As Insets = CType(obj, Insets)
 				Return ((top = insets_Renamed.top) AndAlso (left = insets_Renamed.left) AndAlso (bottom = insets_Renamed.bottom) AndAlso (right = insets_Renamed.right))

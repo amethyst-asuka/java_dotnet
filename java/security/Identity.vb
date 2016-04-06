@@ -63,9 +63,9 @@ Namespace java.security
 
         'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
         Public MustOverride Return getPrincipals(Me);
-			Public Function [if](subject = ByVal [Nothing] As ) As [MustOverride]
-            Public MustOverride Function implies(ByVal subject As javax.security.auth.Subject) As default
-			Public MustOverride Function Equals(ByVal another As Object) As Boolean
+			Public Function [if](subject =   [Nothing] As ) As [MustOverride]
+            Public MustOverride Function implies(  subject As javax.security.auth.Subject) As default
+			Public MustOverride Function Equals(  another As Object) As Boolean
 
         ''' <summary>
         ''' use serialVersionUID from JDK 1.1.x for interoperability </summary>
@@ -121,7 +121,7 @@ Namespace java.security
         ''' </param>
         ''' <exception cref="KeyManagementException"> if there is already an identity
         ''' with the same name in the scope. </exception>
-        Public Sub New(ByVal name As String, ByVal scope As IdentityScope)
+        Public Sub New(  name As String,   scope As IdentityScope)
             Me.New(name)
             If scope IsNot Nothing Then scope.addIdentity(Me)
             Me.scope = scope
@@ -131,7 +131,7 @@ Namespace java.security
         ''' Constructs an identity with the specified name and no scope.
         ''' </summary>
         ''' <param name="name"> the identity name. </param>
-        Public Sub New(ByVal name As String)
+        Public Sub New(  name As String)
             Me.name = name
         End Sub
 
@@ -165,7 +165,7 @@ Namespace java.security
             Get
                 Return publicKey
             End Get
-            Set(ByVal key As PublicKey)
+            Set(  key As PublicKey)
 
                 check("setIdentityPublicKey")
                 Me.publicKey = key
@@ -210,7 +210,7 @@ Namespace java.security
         ''' <seealso cref= #getInfo </seealso>
         ''' <seealso cref= SecurityManager#checkSecurityAccess </seealso>
         Public Overridable Property info As String
-            Set(ByVal info As String)
+            Set(  info As String)
                 check("setIdentityInfo")
                 Me.info = info
             End Set
@@ -241,7 +241,7 @@ Namespace java.security
         ''' adding a certificate.
         ''' </exception>
         ''' <seealso cref= SecurityManager#checkSecurityAccess </seealso>
-        Public Overridable Sub addCertificate(ByVal certificate As Certificate)
+        Public Overridable Sub addCertificate(  certificate As Certificate)
 
             check("addIdentityCertificate")
 
@@ -254,7 +254,7 @@ Namespace java.security
             certificates_Renamed.addElement(certificate)
         End Sub
 
-        Private Function keyEquals(ByVal aKey As PublicKey, ByVal anotherKey As PublicKey) As Boolean
+        Private Function keyEquals(  aKey As PublicKey,   anotherKey As PublicKey) As Boolean
             Dim aKeyFormat As String = aKey.format
             Dim anotherKeyFormat As String = anotherKey.format
             If (aKeyFormat Is Nothing) Xor (anotherKeyFormat Is Nothing) Then Return False
@@ -282,7 +282,7 @@ Namespace java.security
         ''' removing a certificate.
         ''' </exception>
         ''' <seealso cref= SecurityManager#checkSecurityAccess </seealso>
-        Public Overridable Sub removeCertificate(ByVal certificate As Certificate)
+        Public Overridable Sub removeCertificate(  certificate As Certificate)
             check("removeIdentityCertificate")
             If certificates_Renamed IsNot Nothing Then certificates_Renamed.removeElement(certificate)
         End Sub
@@ -313,7 +313,7 @@ Namespace java.security
         ''' <returns> true if the objects are considered equal, false otherwise.
         ''' </returns>
         ''' <seealso cref= #identityEquals </seealso>
-        Public NotOverridable Overrides Function Equals(ByVal identity As Object) As Boolean
+        Public NotOverridable Overrides Function Equals(  identity As Object) As Boolean
 
             If identity Is Me Then Return True
 
@@ -340,7 +340,7 @@ Namespace java.security
         ''' otherwise.
         ''' </returns>
         ''' <seealso cref= #equals </seealso>
-        Protected Friend Overridable Function identityEquals(ByVal identity As Identity) As Boolean
+        Protected Friend Overridable Function identityEquals(  identity As Identity) As Boolean
             If Not name.equalsIgnoreCase(identity.name) Then Return False
 
             If (publicKey Is Nothing) Xor (identity.publicKey Is Nothing) Then Return False
@@ -406,7 +406,7 @@ Namespace java.security
         ''' </exception>
         ''' <seealso cref= #toString </seealso>
         ''' <seealso cref= SecurityManager#checkSecurityAccess </seealso>
-        Public Overrides Function ToString(ByVal detailed As Boolean) As String
+        Public Overrides Function ToString(  detailed As Boolean) As String
             Dim out As String = ToString()
             If detailed Then
                 out += vbLf
@@ -456,7 +456,7 @@ Namespace java.security
             Return name.GetHashCode()
         End Function
 
-        Private Shared Sub check(ByVal directive As String)
+        Private Shared Sub check(  directive As String)
             Dim security_Renamed As SecurityManager = System.securityManager
             If security_Renamed IsNot Nothing Then security_Renamed.checkSecurityAccess(directive)
         End Sub

@@ -84,7 +84,7 @@ Namespace java.awt
 		'''         further action with regard to the KeyEvent; <code>false</code>
 		'''         otherwise </returns>
 		''' <seealso cref= KeyboardFocusManager#redispatchEvent </seealso>
-		Function dispatchKeyEvent(ByVal e As java.awt.event.KeyEvent) As Boolean
+		Function dispatchKeyEvent(  e As java.awt.event.KeyEvent) As Boolean
 	End Interface
 
 End Namespace

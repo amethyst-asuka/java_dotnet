@@ -65,7 +65,7 @@ Namespace java.text
 			maxFieldIndex = -1
 		End Sub
 
-		Friend Overridable Function [set](ByVal index As Integer, ByVal value As Integer) As CalendarBuilder
+		Friend Overridable Function [set](  index As Integer,   value As Integer) As CalendarBuilder
 			If index = ISO_DAY_OF_WEEK Then
 				index = DAY_OF_WEEK
 				value = toCalendarDayOfWeek(value)
@@ -77,25 +77,25 @@ Namespace java.text
 			Return Me
 		End Function
 
-		Friend Overridable Function addYear(ByVal value As Integer) As CalendarBuilder
+		Friend Overridable Function addYear(  value As Integer) As CalendarBuilder
 			field(MAX_FIELD + YEAR) += value
 			field(MAX_FIELD + WEEK_YEAR) += value
 			Return Me
 		End Function
 
-		Friend Overridable Function isSet(ByVal index As Integer) As Boolean
+		Friend Overridable Function isSet(  index As Integer) As Boolean
 			If index = ISO_DAY_OF_WEEK Then index = DAY_OF_WEEK
 			Return field(index) > UNSET
 		End Function
 
-		Friend Overridable Function clear(ByVal index As Integer) As CalendarBuilder
+		Friend Overridable Function clear(  index As Integer) As CalendarBuilder
 			If index = ISO_DAY_OF_WEEK Then index = DAY_OF_WEEK
 			field(index) = UNSET
 			field(MAX_FIELD + index) = 0
 			Return Me
 		End Function
 
-		Friend Overridable Function establish(ByVal cal As DateTime?) As DateTime?
+		Friend Overridable Function establish(  cal As DateTime?) As DateTime?
 			Dim weekDate As Boolean = isSet(WEEK_YEAR) AndAlso field(WEEK_YEAR) > field(YEAR)
 			If weekDate AndAlso (Not cal.Value.weekDateSupported) Then
 				' Use YEAR instead
@@ -148,16 +148,16 @@ Namespace java.text
 			Return sb.ToString()
 		End Function
 
-		Friend Shared Function toISODayOfWeek(ByVal calendarDayOfWeek As Integer) As Integer
+		Friend Shared Function toISODayOfWeek(  calendarDayOfWeek As Integer) As Integer
 			Return If(calendarDayOfWeek = SUNDAY, 7, calendarDayOfWeek - 1)
 		End Function
 
-		Friend Shared Function toCalendarDayOfWeek(ByVal isoDayOfWeek As Integer) As Integer
+		Friend Shared Function toCalendarDayOfWeek(  isoDayOfWeek As Integer) As Integer
 			If Not isValidDayOfWeek(isoDayOfWeek) Then Return isoDayOfWeek
 			Return If(isoDayOfWeek = 7, SUNDAY, isoDayOfWeek + 1)
 		End Function
 
-		Friend Shared Function isValidDayOfWeek(ByVal dayOfWeek As Integer) As Boolean
+		Friend Shared Function isValidDayOfWeek(  dayOfWeek As Integer) As Boolean
 			Return dayOfWeek > 0 AndAlso dayOfWeek <= 7
 		End Function
 	End Class

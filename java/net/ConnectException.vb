@@ -44,7 +44,7 @@ Namespace java.net
 		''' A detail message is a String that gives a specific
 		''' description of this error. </summary>
 		''' <param name="msg"> the detail message </param>
-		Public Sub New(ByVal msg As String)
+		Public Sub New(  msg As String)
 			MyBase.New(msg)
 		End Sub
 

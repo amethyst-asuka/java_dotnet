@@ -194,14 +194,14 @@ Namespace java.util
 		''' <summary>
 		''' Use NULL_KEY for key if it is null.
 		''' </summary>
-		Private Shared Function maskNull(ByVal key As Object) As Object
+		Private Shared Function maskNull(  key As Object) As Object
 			Return (If(key Is Nothing, NULL_KEY, key))
 		End Function
 
 		''' <summary>
 		''' Returns internal representation of null key back to caller as null.
 		''' </summary>
-		Friend Shared Function unmaskNull(ByVal key As Object) As Object
+		Friend Shared Function unmaskNull(  key As Object) As Object
 			Return (If(key Is NULL_KEY, Nothing, key))
 		End Function
 
@@ -221,7 +221,7 @@ Namespace java.util
 		''' </summary>
 		''' <param name="expectedMaxSize"> the expected maximum size of the map </param>
 		''' <exception cref="IllegalArgumentException"> if <tt>expectedMaxSize</tt> is negative </exception>
-		Public Sub New(ByVal expectedMaxSize As Integer)
+		Public Sub New(  expectedMaxSize As Integer)
 			If expectedMaxSize < 0 Then Throw New IllegalArgumentException("expectedMaxSize is negative: " & expectedMaxSize)
 			init(capacity(expectedMaxSize))
 		End Sub
@@ -233,7 +233,7 @@ Namespace java.util
 		''' expectedMaxSize)/2, if such a number exists.  Otherwise returns
 		''' MAXIMUM_CAPACITY.
 		''' </summary>
-		Private Shared Function capacity(ByVal expectedMaxSize As Integer) As Integer
+		Private Shared Function capacity(  expectedMaxSize As Integer) As Integer
 			' assert expectedMaxSize >= 0;
 			Return If(expectedMaxSize > MAXIMUM_CAPACITY \ 3, MAXIMUM_CAPACITY, If(expectedMaxSize <= 2 * MINIMUM_CAPACITY \ 3, MINIMUM_CAPACITY,  java.lang.[Integer].highestOneBit(expectedMaxSize + (expectedMaxSize << 1))))
 		End Function
@@ -243,7 +243,7 @@ Namespace java.util
 		''' capacity, which is assumed to be a power of two between
 		''' MINIMUM_CAPACITY and MAXIMUM_CAPACITY inclusive.
 		''' </summary>
-		Private Sub init(ByVal initCapacity As Integer)
+		Private Sub init(  initCapacity As Integer)
 			' assert (initCapacity & -initCapacity) == initCapacity; // power of 2
 			' assert initCapacity >= MINIMUM_CAPACITY;
 			' assert initCapacity <= MAXIMUM_CAPACITY;
@@ -258,7 +258,7 @@ Namespace java.util
         ''' <param name="m"> the map whose mappings are to be placed into this map </param>
         ''' <exception cref="NullPointerException"> if the specified map is null </exception>
         'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-        Public Sub New(ByVal m As Map(Of K, V))
+        Public Sub New(  m As Map(Of K, V))
             ' Allow for a bit of growth
             Me.New(CInt(Fix((1 + m.size()) * 1.1)))
             putAll(m)
@@ -287,7 +287,7 @@ Namespace java.util
         ''' <summary>
         ''' Returns index for Object x.
         ''' </summary>
-        Private Shared Function hash(ByVal x As Object, ByVal length As Integer) As Integer
+        Private Shared Function hash(  x As Object,   length As Integer) As Integer
 			Dim h As Integer = System.identityHashCode(x)
 			' Multiply by -127, and left-shift to use least bit as part of hash
 			Return ((h << 1) - (h << 8)) And (length - 1)
@@ -296,7 +296,7 @@ Namespace java.util
 		''' <summary>
 		''' Circularly traverses table of size len.
 		''' </summary>
-		Private Shared Function nextKeyIndex(ByVal i As Integer, ByVal len As Integer) As Integer
+		Private Shared Function nextKeyIndex(  i As Integer,   len As Integer) As Integer
 			Return (If(i + 2 < len, i + 2, 0))
 		End Function
 
@@ -316,7 +316,7 @@ Namespace java.util
         ''' distinguish these two cases.
         ''' </summary>
         ''' <seealso cref= #put(Object, Object) </seealso>
-        Public Overrides Function [get](ByVal key As Object) As V Implements Map(Of K, V).get
+        Public Overrides Function [get](  key As Object) As V Implements Map(Of K, V).get
             Dim k As Object = maskNull(key)
             Dim tab As Object() = table
             Dim len As Integer = tab.Length
@@ -337,7 +337,7 @@ Namespace java.util
         ''' <returns>  <code>true</code> if the specified object reference is a key
         '''          in this map </returns>
         ''' <seealso cref=     #containsValue(Object) </seealso>
-        Public Overrides Function containsKey(ByVal key As Object) As Boolean Implements Map(Of K, V).containsKey
+        Public Overrides Function containsKey(  key As Object) As Boolean Implements Map(Of K, V).containsKey
             Dim k As Object = maskNull(key)
             Dim tab As Object() = table
             Dim len As Integer = tab.Length
@@ -358,7 +358,7 @@ Namespace java.util
         ''' <returns> <tt>true</tt> if this map maps one or more keys to the
         '''         specified object reference </returns>
         ''' <seealso cref=     #containsKey(Object) </seealso>
-        Public Overrides Function containsValue(ByVal value As Object) As Boolean Implements Map(Of K, V).containsValue
+        Public Overrides Function containsValue(  value As Object) As Boolean Implements Map(Of K, V).containsValue
             Dim tab As Object() = table
             For i As Integer = 1 To tab.Length - 1 Step 2
                 If tab(i) Is value AndAlso tab(i - 1) IsNot Nothing Then Return True
@@ -374,7 +374,7 @@ Namespace java.util
         ''' <param name="value"> possible value </param>
         ''' <returns>  <code>true</code> if and only if the specified key-value
         '''          mapping is in the map </returns>
-        Private Function containsMapping(ByVal key As Object, ByVal value As Object) As Boolean
+        Private Function containsMapping(  key As Object,   value As Object) As Boolean
 			Dim k As Object = maskNull(key)
 			Dim tab As Object() = table
 			Dim len As Integer = tab.Length
@@ -401,7 +401,7 @@ Namespace java.util
 		''' <seealso cref=     Object#equals(Object) </seealso>
 		''' <seealso cref=     #get(Object) </seealso>
 		''' <seealso cref=     #containsKey(Object) </seealso>
-		Public Overridable Function put(ByVal key As K, ByVal value As V) As V Implements Map(Of K, V).put
+		Public Overridable Function put(  key As K,   value As V) As V Implements Map(Of K, V).put
 			Dim k As Object = maskNull(key)
 
 			retryAfterResize:
@@ -438,7 +438,7 @@ Namespace java.util
 		''' </summary>
 		''' <param name="newCapacity"> the new capacity, must be a power of two. </param>
 		''' <returns> whether a resize did in fact take place </returns>
-		Private Function resize(ByVal newCapacity As Integer) As Boolean
+		Private Function resize(  newCapacity As Integer) As Boolean
 			' assert (newCapacity & -newCapacity) == newCapacity; // power of 2
 			Dim newLength As Integer = newCapacity * 2
 
@@ -477,7 +477,7 @@ Namespace java.util
         ''' </summary>
         ''' <param name="m"> mappings to be stored in this map </param>
         ''' <exception cref="NullPointerException"> if the specified map is null </exception>
-        Public Overrides Sub putAll(ByVal m As Map(Of K, V)) Implements Map(Of K, V).putAll
+        Public Overrides Sub putAll(  m As Map(Of K, V)) Implements Map(Of K, V).putAll
             Dim n As Integer = m.size()
             If n = 0 Then Return
             If n > size_Renamed Then resize(capacity(n)) ' conservatively pre-expand
@@ -496,7 +496,7 @@ Namespace java.util
         '''         <tt>null</tt> if there was no mapping for <tt>key</tt>.
         '''         (A <tt>null</tt> return can also indicate that the map
         '''         previously associated <tt>null</tt> with <tt>key</tt>.) </returns>
-        Public Overridable Function remove(ByVal key As Object) As V Implements Map(Of K, V).remove
+        Public Overridable Function remove(  key As Object) As V Implements Map(Of K, V).remove
 			Dim k As Object = maskNull(key)
 			Dim tab As Object() = table
 			Dim len As Integer = tab.Length
@@ -525,7 +525,7 @@ Namespace java.util
 		''' <param name="value"> possible value </param>
 		''' <returns>  <code>true</code> if and only if the specified key-value
 		'''          mapping was in the map </returns>
-		Private Function removeMapping(ByVal key As Object, ByVal value As Object) As Boolean
+		Private Function removeMapping(  key As Object,   value As Object) As Boolean
 			Dim k As Object = maskNull(key)
 			Dim tab As Object() = table
 			Dim len As Integer = tab.Length
@@ -553,7 +553,7 @@ Namespace java.util
 		''' collision properties required by get, put, etc.
 		''' </summary>
 		''' <param name="d"> the index of a newly empty deleted slot </param>
-		Private Sub closeDeletion(ByVal d As Integer)
+		Private Sub closeDeletion(  d As Integer)
 			' Adapted from Knuth Section 6.4 Algorithm R
 			Dim tab As Object() = table
 			Dim len As Integer = tab.Length
@@ -613,7 +613,7 @@ Namespace java.util
 		''' <param name="o"> object to be compared for equality with this map </param>
 		''' <returns> <tt>true</tt> if the specified object is equal to this map </returns>
 		''' <seealso cref= Object#equals(Object) </seealso>
-		Public Overrides Function Equals(ByVal o As Object) As Boolean
+		Public Overrides Function Equals(  o As Object) As Boolean
 			If o Is Me Then
 				Return True
 			ElseIf TypeOf o Is IdentityHashMap Then
@@ -689,7 +689,7 @@ Namespace java.util
 
 			Private ReadOnly outerInstance As IdentityHashMap
 
-			Public Sub New(ByVal outerInstance As IdentityHashMap)
+			Public Sub New(  outerInstance As IdentityHashMap)
 				Me.outerInstance = outerInstance
 			End Sub
 
@@ -804,7 +804,7 @@ Namespace java.util
 
 			Private ReadOnly outerInstance As IdentityHashMap
 
-			Public Sub New(ByVal outerInstance As IdentityHashMap)
+			Public Sub New(  outerInstance As IdentityHashMap)
 				Me.outerInstance = outerInstance
 			End Sub
 
@@ -819,7 +819,7 @@ Namespace java.util
 
 			Private ReadOnly outerInstance As IdentityHashMap
 
-			Public Sub New(ByVal outerInstance As IdentityHashMap)
+			Public Sub New(  outerInstance As IdentityHashMap)
 				Me.outerInstance = outerInstance
 			End Sub
 
@@ -834,7 +834,7 @@ Namespace java.util
 
 			Private ReadOnly outerInstance As IdentityHashMap
 
-			Public Sub New(ByVal outerInstance As IdentityHashMap)
+			Public Sub New(  outerInstance As IdentityHashMap)
 				Me.outerInstance = outerInstance
 			End Sub
 
@@ -859,7 +859,7 @@ Namespace java.util
 
 				Private index As Integer
 
-				Private Sub New(ByVal outerInstance As IdentityHashMap.EntryIterator, ByVal index As Integer)
+				Private Sub New(  outerInstance As IdentityHashMap.EntryIterator,   index As Integer)
 						Me.outerInstance = outerInstance
 					Me.index = index
 				End Sub
@@ -881,7 +881,7 @@ Namespace java.util
 				End Property
 
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-				Public Overridable Function setValue(ByVal value As V) As V
+				Public Overridable Function setValue(  value As V) As V
 					checkIndexForEntryUse()
 					Dim oldValue As V = CType(outerInstance.traversalTable(index+1), V)
 					outerInstance.traversalTable(index+1) = value
@@ -890,7 +890,7 @@ Namespace java.util
 					Return oldValue
 				End Function
 
-				Public Overrides Function Equals(ByVal o As Object) As Boolean
+				Public Overrides Function Equals(  o As Object) As Boolean
 					If index < 0 Then Return MyBase.Equals(o)
 
 					If Not(TypeOf o Is DictionaryEntry) Then Return False
@@ -979,7 +979,7 @@ Namespace java.util
 
 			Private ReadOnly outerInstance As IdentityHashMap
 
-			Public Sub New(ByVal outerInstance As IdentityHashMap)
+			Public Sub New(  outerInstance As IdentityHashMap)
 				Me.outerInstance = outerInstance
 			End Sub
 
@@ -989,10 +989,10 @@ Namespace java.util
 			Public Overridable Function size() As Integer
 				Return outerInstance.size_Renamed
 			End Function
-			Public Overridable Function contains(ByVal o As Object) As Boolean
+			Public Overridable Function contains(  o As Object) As Boolean
 				Return outerInstance.containsKey(o)
 			End Function
-			Public Overridable Function remove(ByVal o As Object) As Boolean
+			Public Overridable Function remove(  o As Object) As Boolean
 				Dim oldSize As Integer = outerInstance.size_Renamed
 				outerInstance.remove(o)
 				Return outerInstance.size_Renamed <> oldSize
@@ -1002,7 +1002,7 @@ Namespace java.util
 	'         * the former contains an optimization that results in incorrect
 	'         * behavior when c is a smaller "normal" (non-identity-based) Set.
 	'         
-			Public Overridable Function removeAll(Of T1)(ByVal c As Collection(Of T1)) As Boolean
+			Public Overridable Function removeAll(Of T1)(  c As Collection(Of T1)) As Boolean
 				Objects.requireNonNull(c)
 				Dim modified As Boolean = False
 				Dim i As [Iterator](Of K) = [iterator]()
@@ -1028,7 +1028,7 @@ Namespace java.util
 				Return ToArray(New Object(){})
 			End Function
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-			Public Overridable Function toArray(Of T)(ByVal a As T()) As T()
+			Public Overridable Function toArray(Of T)(  a As T()) As T()
 				Dim expectedModCount As Integer = outerInstance.modCount
 				Dim size As Integer = size()
 				If a.Length < size Then a = CType(Array.newInstance(a.GetType().GetElementType(), size), T())
@@ -1091,7 +1091,7 @@ Namespace java.util
 
 			Private ReadOnly outerInstance As IdentityHashMap
 
-			Public Sub New(ByVal outerInstance As IdentityHashMap)
+			Public Sub New(  outerInstance As IdentityHashMap)
 				Me.outerInstance = outerInstance
 			End Sub
 
@@ -1101,10 +1101,10 @@ Namespace java.util
 			Public Overridable Function size() As Integer
 				Return outerInstance.size_Renamed
 			End Function
-			Public Overridable Function contains(ByVal o As Object) As Boolean
+			Public Overridable Function contains(  o As Object) As Boolean
 				Return outerInstance.containsValue(o)
 			End Function
-			Public Overridable Function remove(ByVal o As Object) As Boolean
+			Public Overridable Function remove(  o As Object) As Boolean
 				Dim i As [Iterator](Of V) = [iterator]()
 				Do While i.MoveNext()
 					If i.Current Is o Then
@@ -1121,7 +1121,7 @@ Namespace java.util
 				Return ToArray(New Object(){})
 			End Function
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-			Public Overridable Function toArray(Of T)(ByVal a As T()) As T()
+			Public Overridable Function toArray(Of T)(  a As T()) As T()
 				Dim expectedModCount As Integer = outerInstance.modCount
 				Dim size As Integer = size()
 				If a.Length < size Then a = CType(Array.newInstance(a.GetType().GetElementType(), size), T())
@@ -1199,20 +1199,20 @@ Namespace java.util
 
 			Private ReadOnly outerInstance As IdentityHashMap
 
-			Public Sub New(ByVal outerInstance As IdentityHashMap)
+			Public Sub New(  outerInstance As IdentityHashMap)
 				Me.outerInstance = outerInstance
 			End Sub
 
 			Public Overridable Function [iterator]() As [Iterator](Of KeyValuePair(Of K, V))
 				Return New EntryIterator
 			End Function
-			Public Overridable Function contains(ByVal o As Object) As Boolean
+			Public Overridable Function contains(  o As Object) As Boolean
 				If Not(TypeOf o Is DictionaryEntry) Then Return False
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 				Dim entry As KeyValuePair(Of ?, ?) = CType(o, KeyValuePair(Of ?, ?))
 				Return outerInstance.containsMapping(entry.Key, entry.Value)
 			End Function
-			Public Overridable Function remove(ByVal o As Object) As Boolean
+			Public Overridable Function remove(  o As Object) As Boolean
 				If Not(TypeOf o Is DictionaryEntry) Then Return False
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 				Dim entry As KeyValuePair(Of ?, ?) = CType(o, KeyValuePair(Of ?, ?))
@@ -1229,7 +1229,7 @@ Namespace java.util
 	'         * the former contains an optimization that results in incorrect
 	'         * behavior when c is a smaller "normal" (non-identity-based) Set.
 	'         
-			Public Overridable Function removeAll(Of T1)(ByVal c As Collection(Of T1)) As Boolean
+			Public Overridable Function removeAll(Of T1)(  c As Collection(Of T1)) As Boolean
 				Objects.requireNonNull(c)
 				Dim modified As Boolean = False
 				Dim i As [Iterator](Of KeyValuePair(Of K, V)) = [iterator]()
@@ -1247,7 +1247,7 @@ Namespace java.util
 			End Function
 
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-			Public Overridable Function toArray(Of T)(ByVal a As T()) As T()
+			Public Overridable Function toArray(Of T)(  a As T()) As T()
 				Dim expectedModCount As Integer = outerInstance.modCount
 				Dim size As Integer = size()
 				If a.Length < size Then a = CType(Array.newInstance(a.GetType().GetElementType(), size), T())
@@ -1288,7 +1288,7 @@ Namespace java.util
 		'''          IdentityHashMap.  The key-value mappings are emitted in no
 		'''          particular order.
 		''' </summary>
-		Private Sub writeObject(ByVal s As java.io.ObjectOutputStream)
+		Private Sub writeObject(  s As java.io.ObjectOutputStream)
 			' Write out and any hidden stuff
 			s.defaultWriteObject()
 
@@ -1310,7 +1310,7 @@ Namespace java.util
 		''' Reconstitutes the <tt>IdentityHashMap</tt> instance from a stream (i.e.,
 		''' deserializes it).
 		''' </summary>
-		Private Sub readObject(ByVal s As java.io.ObjectInputStream)
+		Private Sub readObject(  s As java.io.ObjectInputStream)
 			' Read in any hidden stuff
 			s.defaultReadObject()
 
@@ -1333,7 +1333,7 @@ Namespace java.util
 		''' The put method for readObject.  It does not resize the table,
 		''' update modCount, etc.
 		''' </summary>
-		Private Sub putForCreate(ByVal key As K, ByVal value As V)
+		Private Sub putForCreate(  key As K,   value As V)
 			Dim k As Object = maskNull(key)
 			Dim tab As Object() = table
 			Dim len As Integer = tab.Length
@@ -1352,7 +1352,7 @@ Namespace java.util
 
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Overrides Sub forEach(Of T1)(ByVal action As java.util.function.BiConsumer(Of T1)) Implements Map(Of K, V).forEach
+		Public Overrides Sub forEach(Of T1)(  action As java.util.function.BiConsumer(Of T1)) Implements Map(Of K, V).forEach
 			Objects.requireNonNull(action)
 			Dim expectedModCount As Integer = modCount
 
@@ -1367,7 +1367,7 @@ Namespace java.util
 
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Overrides Sub replaceAll(Of T1 As V)(ByVal [function] As java.util.function.BiFunction(Of T1)) Implements Map(Of K, V).replaceAll
+		Public Overrides Sub replaceAll(Of T1 As V)(  [function] As java.util.function.BiFunction(Of T1)) Implements Map(Of K, V).replaceAll
 			Objects.requireNonNull([function])
 			Dim expectedModCount As Integer = modCount
 
@@ -1391,7 +1391,7 @@ Namespace java.util
 			Friend est As Integer ' size estimate
 			Friend expectedModCount As Integer ' initialized when fence set
 
-			Friend Sub New(ByVal map As IdentityHashMap(Of K, V), ByVal origin As Integer, ByVal fence As Integer, ByVal est As Integer, ByVal expectedModCount As Integer)
+			Friend Sub New(  map As IdentityHashMap(Of K, V),   origin As Integer,   fence As Integer,   est As Integer,   expectedModCount As Integer)
 				Me.map = map
 				Me.index = origin
 				Me.fence = fence
@@ -1423,7 +1423,7 @@ Namespace java.util
 			Inherits IdentityHashMapSpliterator(Of K, V)
 			Implements Spliterator(Of K)
 
-			Friend Sub New(ByVal map As IdentityHashMap(Of K, V), ByVal origin As Integer, ByVal fence As Integer, ByVal est As Integer, ByVal expectedModCount As Integer)
+			Friend Sub New(  map As IdentityHashMap(Of K, V),   origin As Integer,   fence As Integer,   est As Integer,   expectedModCount As Integer)
 				MyBase.New(map, origin, fence, est, expectedModCount)
 			End Sub
 
@@ -1435,7 +1435,7 @@ Namespace java.util
 
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Sub forEachRemaining(Of T1)(ByVal action As java.util.function.Consumer(Of T1)) Implements Spliterator(Of K).forEachRemaining
+			Public Sub forEachRemaining(Of T1)(  action As java.util.function.Consumer(Of T1)) Implements Spliterator(Of K).forEachRemaining
 				If action Is Nothing Then Throw New NullPointerException
 				Dim i, hi, mc As Integer
 				Dim key As Object
@@ -1459,7 +1459,7 @@ Namespace java.util
 
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Function tryAdvance(Of T1)(ByVal action As java.util.function.Consumer(Of T1)) As Boolean Implements Spliterator(Of K).tryAdvance
+			Public Function tryAdvance(Of T1)(  action As java.util.function.Consumer(Of T1)) As Boolean Implements Spliterator(Of K).tryAdvance
 				If action Is Nothing Then Throw New NullPointerException
 				Dim a As Object() = map.table
 				Dim hi As Integer = fence
@@ -1484,7 +1484,7 @@ Namespace java.util
 			Inherits IdentityHashMapSpliterator(Of K, V)
 			Implements Spliterator(Of V)
 
-			Friend Sub New(ByVal m As IdentityHashMap(Of K, V), ByVal origin As Integer, ByVal fence As Integer, ByVal est As Integer, ByVal expectedModCount As Integer)
+			Friend Sub New(  m As IdentityHashMap(Of K, V),   origin As Integer,   fence As Integer,   est As Integer,   expectedModCount As Integer)
 				MyBase.New(m, origin, fence, est, expectedModCount)
 			End Sub
 
@@ -1495,7 +1495,7 @@ Namespace java.util
 			End Function
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Sub forEachRemaining(Of T1)(ByVal action As java.util.function.Consumer(Of T1)) Implements Spliterator(Of V).forEachRemaining
+			Public Sub forEachRemaining(Of T1)(  action As java.util.function.Consumer(Of T1)) Implements Spliterator(Of V).forEachRemaining
 				If action Is Nothing Then Throw New NullPointerException
 				Dim i, hi, mc As Integer
 				Dim m As IdentityHashMap(Of K, V)
@@ -1520,7 +1520,7 @@ Namespace java.util
 			End Sub
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Function tryAdvance(Of T1)(ByVal action As java.util.function.Consumer(Of T1)) As Boolean Implements Spliterator(Of V).tryAdvance
+			Public Function tryAdvance(Of T1)(  action As java.util.function.Consumer(Of T1)) As Boolean Implements Spliterator(Of V).tryAdvance
 				If action Is Nothing Then Throw New NullPointerException
 				Dim a As Object() = map.table
 				Dim hi As Integer = fence
@@ -1548,7 +1548,7 @@ Namespace java.util
 			Inherits IdentityHashMapSpliterator(Of K, V)
 			Implements Spliterator(Of KeyValuePair(Of K, V))
 
-			Friend Sub New(ByVal m As IdentityHashMap(Of K, V), ByVal origin As Integer, ByVal fence As Integer, ByVal est As Integer, ByVal expectedModCount As Integer)
+			Friend Sub New(  m As IdentityHashMap(Of K, V),   origin As Integer,   fence As Integer,   est As Integer,   expectedModCount As Integer)
 				MyBase.New(m, origin, fence, est, expectedModCount)
 			End Sub
 
@@ -1559,7 +1559,7 @@ Namespace java.util
 			End Function
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Sub forEachRemaining(Of T1)(ByVal action As java.util.function.Consumer(Of T1)) Implements Spliterator(Of KeyValuePair(Of K, V)).forEachRemaining
+			Public Sub forEachRemaining(Of T1)(  action As java.util.function.Consumer(Of T1)) Implements Spliterator(Of KeyValuePair(Of K, V)).forEachRemaining
 				If action Is Nothing Then Throw New NullPointerException
 				Dim i, hi, mc As Integer
 				Dim m As IdentityHashMap(Of K, V)
@@ -1588,7 +1588,7 @@ Namespace java.util
 			End Sub
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Function tryAdvance(Of T1)(ByVal action As java.util.function.Consumer(Of T1)) As Boolean Implements Spliterator(Of KeyValuePair(Of K, V)).tryAdvance
+			Public Function tryAdvance(Of T1)(  action As java.util.function.Consumer(Of T1)) As Boolean Implements Spliterator(Of KeyValuePair(Of K, V)).tryAdvance
 				If action Is Nothing Then Throw New NullPointerException
 				Dim a As Object() = map.table
 				Dim hi As Integer = fence

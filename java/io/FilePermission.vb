@@ -182,7 +182,7 @@ Namespace java.io
 		''' </summary>
 		''' <param name="mask"> the actions mask to use.
 		'''  </param>
-		Private Sub init(ByVal mask As Integer)
+		Private Sub init(  mask As Integer)
 			If (mask And ALL) <> mask Then Throw New IllegalArgumentException("invalid actions mask")
 
 			If mask = NONE Then Throw New IllegalArgumentException("invalid actions mask")
@@ -275,7 +275,7 @@ Namespace java.io
 		''' <exception cref="IllegalArgumentException">
 		'''          If actions is <code>null</code>, empty or contains an action
 		'''          other than the specified possible actions. </exception>
-		Public Sub New(ByVal path As String, ByVal actions As String)
+		Public Sub New(  path As String,   actions As String)
 			MyBase.New(path)
 			init(getMask(actions))
 		End Sub
@@ -291,7 +291,7 @@ Namespace java.io
 		''' <param name="mask"> the action mask to use. </param>
 
 		' package private for use by the FilePermissionCollection add method
-		Friend Sub New(ByVal path As String, ByVal mask As Integer)
+		Friend Sub New(  path As String,   mask As Integer)
 			MyBase.New(path)
 			init(mask)
 		End Sub
@@ -315,7 +315,7 @@ Namespace java.io
 		''' <returns> <code>true</code> if the specified permission is not
 		'''                  <code>null</code> and is implied by this object,
 		'''                  <code>false</code> otherwise. </returns>
-		Public Overrides Function implies(ByVal p As Permission) As Boolean
+		Public Overrides Function implies(  p As Permission) As Boolean
 			If Not(TypeOf p Is FilePermission) Then Return False
 
 			Dim that As FilePermission = CType(p, FilePermission)
@@ -333,7 +333,7 @@ Namespace java.io
 		''' </summary>
 		''' <param name="that"> the FilePermission to check against. </param>
 		''' <returns> the effective mask </returns>
-		Friend Function impliesIgnoreMask(ByVal that As FilePermission) As Boolean
+		Friend Function impliesIgnoreMask(  that As FilePermission) As Boolean
 			If Me.directory Then
 				If Me.recursive Then
 					' make sure that.path is longer then path so
@@ -382,7 +382,7 @@ Namespace java.io
 		''' <returns> <code>true</code> if obj is a FilePermission, and has the same
 		'''          pathname and actions as this FilePermission object,
 		'''          <code>false</code> otherwise. </returns>
-		Public Overrides Function Equals(ByVal obj As Object) As Boolean
+		Public Overrides Function Equals(  obj As Object) As Boolean
 			If obj Is Me Then Return True
 
 			If Not(TypeOf obj Is FilePermission) Then Return False
@@ -405,7 +405,7 @@ Namespace java.io
 		''' </summary>
 		''' <param name="actions"> the action string. </param>
 		''' <returns> the actions mask. </returns>
-		Private Shared Function getMask(ByVal actions As String) As Integer
+		Private Shared Function getMask(  actions As String) As Integer
 			Dim mask_Renamed As Integer = NONE
 
 			' Null action valid?
@@ -505,7 +505,7 @@ Namespace java.io
 		''' read, write, execute, delete, readlink.
 		''' </summary>
 		''' <returns> the canonical string representation of the actions. </returns>
-		Private Shared Function getActions(ByVal mask As Integer) As String
+		Private Shared Function getActions(  mask As Integer) As String
 			Dim sb As New StringBuilder
 			Dim comma As Boolean = False
 
@@ -608,7 +608,7 @@ Namespace java.io
 		''' to a stream. The actions are serialized, and the superclass
 		''' takes care of the name.
 		''' </summary>
-		Private Sub writeObject(ByVal s As ObjectOutputStream)
+		Private Sub writeObject(  s As ObjectOutputStream)
 			' Write out the actions. The superclass takes care of the name
 			' call getActions to make sure actions field is initialized
 			If actions Is Nothing Then actions
@@ -619,7 +619,7 @@ Namespace java.io
 		''' readObject is called to restore the state of the FilePermission from
 		''' a stream.
 		''' </summary>
-		Private Sub readObject(ByVal s As ObjectInputStream)
+		Private Sub readObject(  s As ObjectInputStream)
 			' Read in the actions, then restore everything else by calling init.
 			s.defaultReadObject()
 			init(getMask(actions))
@@ -679,7 +679,7 @@ Namespace java.io
 		''' </exception>
 		''' <exception cref="SecurityException"> - if this FilePermissionCollection object
 		'''                                has been marked readonly </exception>
-		Public Overrides Sub add(ByVal permission As Permission)
+		Public Overrides Sub add(  permission As Permission)
 			If Not(TypeOf permission Is FilePermission) Then Throw New IllegalArgumentException("invalid permission: " & permission)
 			If [readOnly] Then Throw New SecurityException("attempt to add a Permission to a readonly PermissionCollection")
 
@@ -696,7 +696,7 @@ Namespace java.io
 		''' </param>
 		''' <returns> true if "permission" is a proper subset of a permission in
 		''' the set, false if not. </returns>
-		Public Overrides Function implies(ByVal permission As Permission) As Boolean
+		Public Overrides Function implies(  permission As Permission) As Boolean
 			If Not(TypeOf permission Is FilePermission) Then Return False
 
 			Dim fp As FilePermission = CType(permission, FilePermission)
@@ -750,7 +750,7 @@ Namespace java.io
 	'     * Writes the contents of the perms field out as a Vector for
 	'     * serialization compatibility with earlier releases.
 	'     
-		Private Sub writeObject(ByVal out As ObjectOutputStream)
+		Private Sub writeObject(  out As ObjectOutputStream)
 			' Don't call out.defaultWriteObject()
 
 			' Write out Vector
@@ -767,7 +767,7 @@ Namespace java.io
 	'    
 	'     * Reads in a Vector of FilePermissions and saves them in the perms field.
 	'     
-		Private Sub readObject(ByVal [in] As ObjectInputStream)
+		Private Sub readObject(  [in] As ObjectInputStream)
 			' Don't call defaultReadObject()
 
 			' Read in serialized fields

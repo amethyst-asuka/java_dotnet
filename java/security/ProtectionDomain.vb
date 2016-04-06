@@ -57,17 +57,17 @@ Namespace java.security
 			Private Sub New()
 			End Sub
 
-			Public Overrides Function doIntersectionPrivilege(Of T)(ByVal action As PrivilegedAction(Of T), ByVal stack As AccessControlContext, ByVal context As AccessControlContext) As T
+			Public Overrides Function doIntersectionPrivilege(Of T)(  action As PrivilegedAction(Of T),   stack As AccessControlContext,   context As AccessControlContext) As T
 				If action Is Nothing Then Throw New NullPointerException
 
 				Return AccessController.doPrivileged(action, getCombinedACC(context, stack))
 			End Function
 
-			Public Overrides Function doIntersectionPrivilege(Of T)(ByVal action As PrivilegedAction(Of T), ByVal context As AccessControlContext) As T
+			Public Overrides Function doIntersectionPrivilege(Of T)(  action As PrivilegedAction(Of T),   context As AccessControlContext) As T
 				Return doIntersectionPrivilege(action, AccessController.context, context)
 			End Function
 
-			Private Shared Function getCombinedACC(ByVal context As AccessControlContext, ByVal stack As AccessControlContext) As AccessControlContext
+			Private Shared Function getCombinedACC(  context As AccessControlContext,   stack As AccessControlContext) As AccessControlContext
 				Dim acc As New AccessControlContext(context, stack.combiner, True)
 
 				Return (New AccessControlContext(stack.context, acc)).optimize()
@@ -133,7 +133,7 @@ Namespace java.security
 		''' </summary>
 		''' <param name="codesource"> the codesource associated with this domain </param>
 		''' <param name="permissions"> the permissions granted to this domain </param>
-		Public Sub New(ByVal codesource As CodeSource, ByVal permissions As PermissionCollection)
+		Public Sub New(  codesource As CodeSource,   permissions As PermissionCollection)
 			Me.codesource = codesource
 			If permissions IsNot Nothing Then
 				Me.permissions = permissions
@@ -173,7 +173,7 @@ Namespace java.security
 		''' <seealso cref= Policy#refresh </seealso>
 		''' <seealso cref= Policy#getPermissions(ProtectionDomain)
 		''' @since 1.4 </seealso>
-		Public Sub New(ByVal codesource As CodeSource, ByVal permissions As PermissionCollection, ByVal classloader As  ClassLoader, ByVal principals As Principal())
+		Public Sub New(  codesource As CodeSource,   permissions As PermissionCollection,   classloader As  ClassLoader,   principals As Principal())
 			Me.codesource = codesource
 			If permissions IsNot Nothing Then
 				Me.permissions = permissions
@@ -258,7 +258,7 @@ Namespace java.security
 		''' <param name="permission"> the Permission object to check.
 		''' </param>
 		''' <returns> true if "permission" is implicit to this ProtectionDomain. </returns>
-		Public Overridable Function implies(ByVal permission As Permission) As Boolean
+		Public Overridable Function implies(  permission As Permission) As Boolean
 
 			If hasAllPerm Then Return True
 
@@ -436,7 +436,7 @@ Namespace java.security
 		Friend NotInheritable Class Key
 			Private ReadOnly outerInstance As ProtectionDomain
 
-			Public Sub New(ByVal outerInstance As ProtectionDomain)
+			Public Sub New(  outerInstance As ProtectionDomain)
 				Me.outerInstance = outerInstance
 			End Sub
 

@@ -42,7 +42,7 @@ Namespace java.util.zip
 		''' Creates an output stream with the specified Checksum. </summary>
 		''' <param name="out"> the output stream </param>
 		''' <param name="cksum"> the checksum </param>
-		Public Sub New(ByVal out As java.io.OutputStream, ByVal cksum As Checksum)
+		Public Sub New(  out As java.io.OutputStream,   cksum As Checksum)
 			MyBase.New(out)
 			Me.cksum = cksum
 		End Sub
@@ -51,7 +51,7 @@ Namespace java.util.zip
 		''' Writes a java.lang.[Byte]. Will block until the byte is actually written. </summary>
 		''' <param name="b"> the byte to be written </param>
 		''' <exception cref="IOException"> if an I/O error has occurred </exception>
-		Public Overrides Sub write(ByVal b As Integer)
+		Public Overrides Sub write(  b As Integer)
 			out.write(b)
 			cksum.update(b)
 		End Sub
@@ -63,7 +63,7 @@ Namespace java.util.zip
 		''' <param name="off"> the start offset of the data </param>
 		''' <param name="len"> the number of bytes to be written </param>
 		''' <exception cref="IOException"> if an I/O error has occurred </exception>
-		Public Overrides Sub write(ByVal b As SByte(), ByVal [off] As Integer, ByVal len As Integer)
+		Public Overrides Sub write(  b As SByte(),   [off] As Integer,   len As Integer)
 			out.write(b, [off], len)
 			cksum.update(b, [off], len)
 		End Sub

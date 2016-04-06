@@ -71,7 +71,7 @@ Namespace java.awt.dnd
 		''' <exception cref="HeadlessException"> if GraphicsEnvironment.isHeadless()
 		'''            returns true </exception>
 		''' <seealso cref= java.awt.GraphicsEnvironment#isHeadless </seealso>
-		Public Sub New(ByVal c As java.awt.Component, ByVal ops As Integer, ByVal dtl As DropTargetListener, ByVal act As Boolean, ByVal fm As java.awt.datatransfer.FlavorMap)
+		Public Sub New(  c As java.awt.Component,   ops As Integer,   dtl As DropTargetListener,   act As Boolean,   fm As java.awt.datatransfer.FlavorMap)
 			If java.awt.GraphicsEnvironment.headless Then Throw New java.awt.HeadlessException
 
 			component_Renamed = c
@@ -114,7 +114,7 @@ Namespace java.awt.dnd
 		''' <exception cref="HeadlessException"> if GraphicsEnvironment.isHeadless()
 		'''            returns true </exception>
 		''' <seealso cref= java.awt.GraphicsEnvironment#isHeadless </seealso>
-		Public Sub New(ByVal c As java.awt.Component, ByVal ops As Integer, ByVal dtl As DropTargetListener, ByVal act As Boolean)
+		Public Sub New(  c As java.awt.Component,   ops As Integer,   dtl As DropTargetListener,   act As Boolean)
 			Me.New(c, ops, dtl, act, Nothing)
 		End Sub
 
@@ -138,7 +138,7 @@ Namespace java.awt.dnd
 		''' <exception cref="HeadlessException"> if GraphicsEnvironment.isHeadless()
 		'''            returns true </exception>
 		''' <seealso cref= java.awt.GraphicsEnvironment#isHeadless </seealso>
-		Public Sub New(ByVal c As java.awt.Component, ByVal dtl As DropTargetListener)
+		Public Sub New(  c As java.awt.Component,   dtl As DropTargetListener)
 			Me.New(c, DnDConstants.ACTION_COPY_OR_MOVE, dtl, True, Nothing)
 		End Sub
 
@@ -155,7 +155,7 @@ Namespace java.awt.dnd
 		''' <exception cref="HeadlessException"> if GraphicsEnvironment.isHeadless()
 		'''            returns true </exception>
 		''' <seealso cref= java.awt.GraphicsEnvironment#isHeadless </seealso>
-		Public Sub New(ByVal c As java.awt.Component, ByVal ops As Integer, ByVal dtl As DropTargetListener)
+		Public Sub New(  c As java.awt.Component,   ops As Integer,   dtl As DropTargetListener)
 			Me.New(c, ops, dtl, True)
 		End Sub
 
@@ -171,7 +171,7 @@ Namespace java.awt.dnd
 
 		<MethodImpl(MethodImplOptions.Synchronized)> _
 		Public Overridable Property component As java.awt.Component
-			Set(ByVal c As java.awt.Component)
+			Set(  c As java.awt.Component)
 				If component_Renamed Is c OrElse component_Renamed IsNot Nothing AndAlso component_Renamed.Equals(c) Then Return
     
 				Dim old As java.awt.Component
@@ -218,7 +218,7 @@ Namespace java.awt.dnd
 		''' <seealso cref= java.awt.dnd.DnDConstants </seealso>
 
 		Public Overridable Property defaultActions As Integer
-			Set(ByVal ops As Integer)
+			Set(  ops As Integer)
 				dropTargetContext.targetActions = ops And (DnDConstants.ACTION_COPY_OR_MOVE Or DnDConstants.ACTION_REFERENCE)
 			End Set
 			Get
@@ -230,7 +230,7 @@ Namespace java.awt.dnd
 	'     * Called by DropTargetContext.setTargetActions()
 	'     * with appropriate synchronization.
 	'     
-		Friend Overridable Sub doSetDefaultActions(ByVal ops As Integer)
+		Friend Overridable Sub doSetDefaultActions(  ops As Integer)
 			actions = ops
 		End Sub
 
@@ -244,7 +244,7 @@ Namespace java.awt.dnd
 
 		<MethodImpl(MethodImplOptions.Synchronized)> _
 		Public Overridable Property active As Boolean
-			Set(ByVal isActive As Boolean)
+			Set(  isActive As Boolean)
 				If isActive <> active Then active = isActive
     
 				If Not active Then clearAutoscroll()
@@ -266,7 +266,7 @@ Namespace java.awt.dnd
 		''' <code>DropTarget</code>. </exception>
 
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Sub addDropTargetListener(ByVal dtl As DropTargetListener)
+		Public Overridable Sub addDropTargetListener(  dtl As DropTargetListener)
 			If dtl Is Nothing Then Return
 
 			If Equals(dtl) Then Throw New IllegalArgumentException("DropTarget may not be its own Listener")
@@ -284,7 +284,7 @@ Namespace java.awt.dnd
 		''' <param name="dtl"> the DropTargetListener to deregister. </param>
 
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Sub removeDropTargetListener(ByVal dtl As DropTargetListener)
+		Public Overridable Sub removeDropTargetListener(  dtl As DropTargetListener)
 			If dtl IsNot Nothing AndAlso dtListener IsNot Nothing Then
 				If dtListener.Equals(dtl) Then
 					dtListener = Nothing
@@ -308,7 +308,7 @@ Namespace java.awt.dnd
 		''' </exception>
 		''' <seealso cref= #isActive </seealso>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Sub dragEnter(ByVal dtde As DropTargetDragEvent)
+		Public Overridable Sub dragEnter(  dtde As DropTargetDragEvent)
 			isDraggingInside = True
 
 			If Not active Then Return
@@ -336,7 +336,7 @@ Namespace java.awt.dnd
 		''' </exception>
 		''' <seealso cref= #isActive </seealso>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Sub dragOver(ByVal dtde As DropTargetDragEvent)
+		Public Overridable Sub dragOver(  dtde As DropTargetDragEvent)
 			If Not active Then Return
 
 			If dtListener IsNot Nothing AndAlso active Then dtListener.dragOver(dtde)
@@ -358,7 +358,7 @@ Namespace java.awt.dnd
 		''' </exception>
 		''' <seealso cref= #isActive </seealso>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Sub dropActionChanged(ByVal dtde As DropTargetDragEvent)
+		Public Overridable Sub dropActionChanged(  dtde As DropTargetDragEvent)
 			If Not active Then Return
 
 			If dtListener IsNot Nothing Then dtListener.dropActionChanged(dtde)
@@ -381,7 +381,7 @@ Namespace java.awt.dnd
 		''' </param>
 		''' <seealso cref= #isActive </seealso>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Sub dragExit(ByVal dte As DropTargetEvent) Implements DropTargetListener.dragExit
+		Public Overridable Sub dragExit(  dte As DropTargetEvent) Implements DropTargetListener.dragExit
 			isDraggingInside = False
 
 			If Not active Then Return
@@ -406,7 +406,7 @@ Namespace java.awt.dnd
 		''' </exception>
 		''' <seealso cref= #isActive </seealso>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Sub drop(ByVal dtde As DropTargetDropEvent)
+		Public Overridable Sub drop(  dtde As DropTargetDropEvent)
 			isDraggingInside = False
 
 			clearAutoscroll()
@@ -431,7 +431,7 @@ Namespace java.awt.dnd
 			Get
 				Return flavorMap
 			End Get
-			Set(ByVal fm As java.awt.datatransfer.FlavorMap)
+			Set(  fm As java.awt.datatransfer.FlavorMap)
 				flavorMap = If(fm Is Nothing, java.awt.datatransfer.SystemFlavorMap.defaultFlavorMap, fm)
 			End Set
 		End Property
@@ -454,7 +454,7 @@ Namespace java.awt.dnd
 		''' <param name="peer"> The Peer of the Component we are associated with!
 		'''  </param>
 
-		Public Overridable Sub addNotify(ByVal peer As java.awt.peer.ComponentPeer)
+		Public Overridable Sub addNotify(  peer As java.awt.peer.ComponentPeer)
 			If peer Is componentPeer Then Return
 
 			componentPeer = peer
@@ -488,7 +488,7 @@ Namespace java.awt.dnd
 		''' <P> </summary>
 		''' <param name="peer"> The Peer of the Component we are being disassociated from! </param>
 
-		Public Overridable Sub removeNotify(ByVal peer As java.awt.peer.ComponentPeer)
+		Public Overridable Sub removeNotify(  peer As java.awt.peer.ComponentPeer)
 			If nativePeer IsNot Nothing Then CType(nativePeer, java.awt.dnd.peer.DropTargetPeer).removeDropTarget(Me)
 
 				nativePeer = Nothing
@@ -537,7 +537,7 @@ Namespace java.awt.dnd
 		'''             instance, or <code>null</code>.
 		''' @since 1.4
 		''' </summary>
-		Private Sub writeObject(ByVal s As java.io.ObjectOutputStream)
+		Private Sub writeObject(  s As java.io.ObjectOutputStream)
 			s.defaultWriteObject()
 
 			s.writeObject(If(SerializationTester.test(dtListener), dtListener, Nothing))
@@ -555,7 +555,7 @@ Namespace java.awt.dnd
 		''' 
 		''' @since 1.4
 		''' </summary>
-		Private Sub readObject(ByVal s As java.io.ObjectInputStream)
+		Private Sub readObject(  s As java.io.ObjectInputStream)
 			Dim f As java.io.ObjectInputStream.GetField = s.readFields()
 
 			Try
@@ -594,7 +594,7 @@ Namespace java.awt.dnd
 			''' <param name="c"> the <code>Component</code> </param>
 			''' <param name="p"> the <code>Point</code> </param>
 
-			Protected Friend Sub New(ByVal c As java.awt.Component, ByVal p As java.awt.Point)
+			Protected Friend Sub New(  c As java.awt.Component,   p As java.awt.Point)
 				MyBase.New()
 
 				component_Renamed = c
@@ -659,7 +659,7 @@ Namespace java.awt.dnd
 			''' <param name="newLocn"> the <code>Point</code> </param>
 
 			<MethodImpl(MethodImplOptions.Synchronized)> _
-			Protected Friend Overridable Sub updateLocation(ByVal newLocn As java.awt.Point)
+			Protected Friend Overridable Sub updateLocation(  newLocn As java.awt.Point)
 				prev = locn
 				locn = newLocn
 
@@ -684,7 +684,7 @@ Namespace java.awt.dnd
 			''' <param name="e"> the <code>ActionEvent</code> </param>
 
 			<MethodImpl(MethodImplOptions.Synchronized)> _
-			Public Overridable Sub actionPerformed(ByVal e As java.awt.event.ActionEvent)
+			Public Overridable Sub actionPerformed(  e As java.awt.event.ActionEvent)
 				updateRegion()
 
 				If outer.contains(locn) AndAlso (Not inner.contains(locn)) Then autoScroll.autoscroll(locn)
@@ -717,7 +717,7 @@ Namespace java.awt.dnd
 		''' <param name="c"> the <code>Component</code> </param>
 		''' <param name="p"> the <code>Point</code> </param>
 
-		Protected Friend Overridable Function createDropTargetAutoScroller(ByVal c As java.awt.Component, ByVal p As java.awt.Point) As DropTargetAutoScroller
+		Protected Friend Overridable Function createDropTargetAutoScroller(  c As java.awt.Component,   p As java.awt.Point) As DropTargetAutoScroller
 			Return New DropTargetAutoScroller(c, p)
 		End Function
 
@@ -726,7 +726,7 @@ Namespace java.awt.dnd
 		''' <P> </summary>
 		''' <param name="p"> the <code>Point</code> </param>
 
-		Protected Friend Overridable Sub initializeAutoscrolling(ByVal p As java.awt.Point)
+		Protected Friend Overridable Sub initializeAutoscrolling(  p As java.awt.Point)
 			If component_Renamed Is Nothing OrElse Not(TypeOf component_Renamed Is Autoscroll) Then Return
 
 			autoScroller = createDropTargetAutoScroller(component_Renamed, p)
@@ -737,7 +737,7 @@ Namespace java.awt.dnd
 		''' <P> </summary>
 		''' <param name="dragCursorLocn"> the <code>Point</code> </param>
 
-		Protected Friend Overridable Sub updateAutoscroll(ByVal dragCursorLocn As java.awt.Point)
+		Protected Friend Overridable Sub updateAutoscroll(  dragCursorLocn As java.awt.Point)
 			If autoScroller IsNot Nothing Then autoScroller.updateLocation(dragCursorLocn)
 		End Sub
 

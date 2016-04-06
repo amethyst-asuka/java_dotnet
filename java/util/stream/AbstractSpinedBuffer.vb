@@ -87,7 +87,7 @@ Namespace java.util.stream
 		''' Construct with a specified initial capacity.
 		''' </summary>
 		''' <param name="initialCapacity"> The minimum expected number of elements </param>
-		Protected Friend Sub New(ByVal initialCapacity As Integer)
+		Protected Friend Sub New(  initialCapacity As Integer)
 			If initialCapacity < 0 Then Throw New IllegalArgumentException("Illegal Capacity: " & initialCapacity)
 
 			Me.initialChunkPower = System.Math.Max(MIN_CHUNK_POWER,  java.lang.[Integer].SIZE -  java.lang.[Integer].numberOfLeadingZeros(initialCapacity - 1))
@@ -112,7 +112,7 @@ Namespace java.util.stream
 		''' <summary>
 		''' How big should the nth chunk be?
 		''' </summary>
-		Protected Friend Overridable Function chunkSize(ByVal n As Integer) As Integer
+		Protected Friend Overridable Function chunkSize(  n As Integer) As Integer
 			Dim power As Integer = If(n = 0 OrElse n = 1, initialChunkPower, System.Math.Min(initialChunkPower + n - 1, AbstractSpinedBuffer.MAX_CHUNK_POWER))
 			Return 1 << power
 		End Function

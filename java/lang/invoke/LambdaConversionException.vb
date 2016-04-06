@@ -44,7 +44,7 @@ Namespace java.lang.invoke
 		''' <summary>
 		''' Constructs a {@code LambdaConversionException} with a message. </summary>
 		''' <param name="message"> the detail message </param>
-		Public Sub New(ByVal message As String)
+		Public Sub New(  message As String)
 			MyBase.New(message)
 		End Sub
 
@@ -52,14 +52,14 @@ Namespace java.lang.invoke
 		''' Constructs a {@code LambdaConversionException} with a message and cause. </summary>
 		''' <param name="message"> the detail message </param>
 		''' <param name="cause"> the cause </param>
-		Public Sub New(ByVal message As String, ByVal cause As Throwable)
+		Public Sub New(  message As String,   cause As Throwable)
 			MyBase.New(message, cause)
 		End Sub
 
 		''' <summary>
 		''' Constructs a {@code LambdaConversionException} with a cause. </summary>
 		''' <param name="cause"> the cause </param>
-		Public Sub New(ByVal cause As Throwable)
+		Public Sub New(  cause As Throwable)
 			MyBase.New(cause)
 		End Sub
 
@@ -70,7 +70,7 @@ Namespace java.lang.invoke
 		''' <param name="cause"> the cause </param>
 		''' <param name="enableSuppression"> whether or not suppressed exceptions are enabled </param>
 		''' <param name="writableStackTrace"> whether or not the stack trace is writable </param>
-		Public Sub New(ByVal message As String, ByVal cause As Throwable, ByVal enableSuppression As Boolean, ByVal writableStackTrace As Boolean)
+		Public Sub New(  message As String,   cause As Throwable,   enableSuppression As Boolean,   writableStackTrace As Boolean)
 			MyBase.New(message, cause, enableSuppression, writableStackTrace)
 		End Sub
 	End Class

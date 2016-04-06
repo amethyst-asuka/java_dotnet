@@ -43,7 +43,7 @@ Namespace java.awt.peer
 		''' <param name="m"> the menu to add
 		''' </param>
 		''' <seealso cref= MenuBar#add(Menu) </seealso>
-		Sub addMenu(ByVal m As java.awt.Menu)
+		Sub addMenu(  m As java.awt.Menu)
 
 		''' <summary>
 		''' Deletes a menu from the menu bar.
@@ -51,7 +51,7 @@ Namespace java.awt.peer
 		''' <param name="index"> the index of the menu to remove
 		''' </param>
 		''' <seealso cref= MenuBar#remove(int) </seealso>
-		Sub delMenu(ByVal index As Integer)
+		Sub delMenu(  index As Integer)
 
 		''' <summary>
 		''' Adds a help menu to the menu bar.
@@ -59,7 +59,7 @@ Namespace java.awt.peer
 		''' <param name="m"> the help menu to add
 		''' </param>
 		''' <seealso cref= MenuBar#setHelpMenu(Menu) </seealso>
-		Sub addHelpMenu(ByVal m As java.awt.Menu)
+		Sub addHelpMenu(  m As java.awt.Menu)
 	End Interface
 
 End Namespace

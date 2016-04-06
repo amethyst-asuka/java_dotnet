@@ -59,7 +59,7 @@ Namespace java.awt
 		Friend rowincxerr As Integer
 		Friend rowincyerr As Integer
 
-		Public Shared Function getContext(ByVal bufImg As java.awt.image.BufferedImage, ByVal xform As java.awt.geom.AffineTransform, ByVal hints As RenderingHints, ByVal devBounds As Rectangle) As PaintContext
+		Public Shared Function getContext(  bufImg As java.awt.image.BufferedImage,   xform As java.awt.geom.AffineTransform,   hints As RenderingHints,   devBounds As Rectangle) As PaintContext
 			Dim raster_Renamed As java.awt.image.WritableRaster = bufImg.raster
 			Dim cm As java.awt.image.ColorModel = bufImg.colorModel
 			Dim maxw As Integer = devBounds.width
@@ -81,7 +81,7 @@ Namespace java.awt
 			Return New Any(raster_Renamed, cm, xform, maxw, filter)
 		End Function
 
-		Public Shared Function isFilterableICM(ByVal cm As java.awt.image.ColorModel) As Boolean
+		Public Shared Function isFilterableICM(  cm As java.awt.image.ColorModel) As Boolean
 			If TypeOf cm Is java.awt.image.IndexColorModel Then
 				Dim icm As java.awt.image.IndexColorModel = CType(cm, java.awt.image.IndexColorModel)
 				If icm.mapSize <= 256 Then Return True
@@ -89,7 +89,7 @@ Namespace java.awt
 			Return False
 		End Function
 
-		Public Shared Function isFilterableDCM(ByVal cm As java.awt.image.ColorModel) As Boolean
+		Public Shared Function isFilterableDCM(  cm As java.awt.image.ColorModel) As Boolean
 			If TypeOf cm Is java.awt.image.DirectColorModel Then
 				Dim dcm As java.awt.image.DirectColorModel = CType(cm, java.awt.image.DirectColorModel)
 				Return (isMaskOK(dcm.alphaMask, True) AndAlso isMaskOK(dcm.redMask, False) AndAlso isMaskOK(dcm.greenMask, False) AndAlso isMaskOK(dcm.blueMask, False))
@@ -97,18 +97,18 @@ Namespace java.awt
 			Return False
 		End Function
 
-		Public Shared Function isMaskOK(ByVal mask As Integer, ByVal canbezero As Boolean) As Boolean
+		Public Shared Function isMaskOK(  mask As Integer,   canbezero As Boolean) As Boolean
 			If canbezero AndAlso mask = 0 Then Return True
 			Return (mask = &Hff OrElse mask = &Hff00 OrElse mask = &Hff0000 OrElse mask = &Hff000000L)
 		End Function
 
-		Public Shared Function getInternedColorModel(ByVal cm As java.awt.image.ColorModel) As java.awt.image.ColorModel
+		Public Shared Function getInternedColorModel(  cm As java.awt.image.ColorModel) As java.awt.image.ColorModel
 			If xrgbmodel Is cm OrElse xrgbmodel.Equals(cm) Then Return xrgbmodel
 			If argbmodel Is cm OrElse argbmodel.Equals(cm) Then Return argbmodel
 			Return cm
 		End Function
 
-		Friend Sub New(ByVal cm As java.awt.image.ColorModel, ByVal xform As java.awt.geom.AffineTransform, ByVal bWidth As Integer, ByVal bHeight As Integer, ByVal maxw As Integer)
+		Friend Sub New(  cm As java.awt.image.ColorModel,   xform As java.awt.geom.AffineTransform,   bWidth As Integer,   bHeight As Integer,   maxw As Integer)
 			Me.colorModel = getInternedColorModel(cm)
 			Me.bWidth = bWidth
 			Me.bHeight = bHeight
@@ -136,11 +136,11 @@ Namespace java.awt
 
 		End Sub
 
-		Friend Shared Function fractAsInt(ByVal d As Double) As Integer
+		Friend Shared Function fractAsInt(  d As Double) As Integer
 			Return CInt(Fix((d Mod 1.0) *  java.lang.[Integer].Max_Value))
 		End Function
 
-		Friend Shared Function [mod](ByVal num As Double, ByVal den As Double) As Double
+		Friend Shared Function [mod](  num As Double,   den As Double) As Double
 			num = num Mod den
 			If num < 0 Then
 				num += den
@@ -170,7 +170,7 @@ Namespace java.awt
 		''' operation. </summary>
 		''' <param name="x">,y,w,h The area in device space for which colors are
 		''' generated. </param>
-		Public Overridable Function getRaster(ByVal x As Integer, ByVal y As Integer, ByVal w As Integer, ByVal h As Integer) As java.awt.image.Raster Implements PaintContext.getRaster
+		Public Overridable Function getRaster(  x As Integer,   y As Integer,   w As Integer,   h As Integer) As java.awt.image.Raster Implements PaintContext.getRaster
 			If outRas Is Nothing OrElse outRas.width < w OrElse outRas.height < h Then outRas = makeRaster((If(h = 1, System.Math.Max(w, maxWidth), w)), h)
 			Dim X_Renamed As Double = [mod](xOrg + x * incXAcross + y * incXDown, bWidth)
 			Dim Y_Renamed As Double = [mod](yOrg + x * incYAcross + y * incYDown, bHeight)
@@ -186,7 +186,7 @@ Namespace java.awt
 		Private Shared argbRasRef As WeakReference(Of java.awt.image.Raster)
 
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Friend Shared Function makeRaster(ByVal cm As java.awt.image.ColorModel, ByVal srcRas As java.awt.image.Raster, ByVal w As Integer, ByVal h As Integer) As java.awt.image.WritableRaster
+		Friend Shared Function makeRaster(  cm As java.awt.image.ColorModel,   srcRas As java.awt.image.Raster,   w As Integer,   h As Integer) As java.awt.image.WritableRaster
 			If xrgbmodel Is cm Then
 				If xrgbRasRef IsNot Nothing Then
 					Dim wr As java.awt.image.WritableRaster = CType(xrgbRasRef.get(), java.awt.image.WritableRaster)
@@ -222,7 +222,7 @@ Namespace java.awt
 		End Function
 
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Friend Shared Sub dropRaster(ByVal cm As java.awt.image.ColorModel, ByVal outRas As java.awt.image.Raster)
+		Friend Shared Sub dropRaster(  cm As java.awt.image.ColorModel,   outRas As java.awt.image.Raster)
 			If outRas Is Nothing Then Return
 			If xrgbmodel Is cm Then
 				xrgbRasRef = New WeakReference(Of )(outRas)
@@ -234,7 +234,7 @@ Namespace java.awt
 		Private Shared byteRasRef As WeakReference(Of java.awt.image.Raster)
 
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Friend Shared Function makeByteRaster(ByVal srcRas As java.awt.image.Raster, ByVal w As Integer, ByVal h As Integer) As java.awt.image.WritableRaster
+		Friend Shared Function makeByteRaster(  srcRas As java.awt.image.Raster,   w As Integer,   h As Integer) As java.awt.image.WritableRaster
 			If byteRasRef IsNot Nothing Then
 				Dim wr As java.awt.image.WritableRaster = CType(byteRasRef.get(), java.awt.image.WritableRaster)
 				If wr IsNot Nothing AndAlso wr.width >= w AndAlso wr.height >= h Then
@@ -251,13 +251,13 @@ Namespace java.awt
 		End Function
 
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Friend Shared Sub dropByteRaster(ByVal outRas As java.awt.image.Raster)
+		Friend Shared Sub dropByteRaster(  outRas As java.awt.image.Raster)
 			If outRas Is Nothing Then Return
 			byteRasRef = New WeakReference(Of )(outRas)
 		End Sub
 
-		Public MustOverride Function makeRaster(ByVal w As Integer, ByVal h As Integer) As java.awt.image.WritableRaster
-		Public MustOverride Sub setRaster(ByVal x As Integer, ByVal y As Integer, ByVal xerr As Integer, ByVal yerr As Integer, ByVal w As Integer, ByVal h As Integer, ByVal bWidth As Integer, ByVal bHeight As Integer, ByVal colincx As Integer, ByVal colincxerr As Integer, ByVal colincy As Integer, ByVal colincyerr As Integer, ByVal rowincx As Integer, ByVal rowincxerr As Integer, ByVal rowincy As Integer, ByVal rowincyerr As Integer)
+		Public MustOverride Function makeRaster(  w As Integer,   h As Integer) As java.awt.image.WritableRaster
+		Public MustOverride Sub setRaster(  x As Integer,   y As Integer,   xerr As Integer,   yerr As Integer,   w As Integer,   h As Integer,   bWidth As Integer,   bHeight As Integer,   colincx As Integer,   colincxerr As Integer,   colincy As Integer,   colincyerr As Integer,   rowincx As Integer,   rowincxerr As Integer,   rowincy As Integer,   rowincyerr As Integer)
 
 	'    
 	'     * Blends the four ARGB values in the rgbs array using the factors

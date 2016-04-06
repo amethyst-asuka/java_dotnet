@@ -66,7 +66,7 @@ Namespace java.util
 		''' <param name="item">   the item to be pushed onto this stack. </param>
 		''' <returns>  the <code>item</code> argument. </returns>
 		''' <seealso cref=     java.util.Vector#addElement </seealso>
-		Public Overridable Function push(ByVal item As E) As E
+		Public Overridable Function push(  item As E) As E
 			addElement(item)
 
 			Return item
@@ -128,7 +128,7 @@ Namespace java.util
 		'''          the object is located; the return value <code>-1</code>
 		'''          indicates that the object is not on the stack. </returns>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Function search(ByVal o As Object) As Integer
+		Public Overridable Function search(  o As Object) As Integer
 			Dim i As Integer = LastIndexOf(o)
 
 			If i >= 0 Then Return size() - i

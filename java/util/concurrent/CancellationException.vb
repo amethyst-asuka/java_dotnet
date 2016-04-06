@@ -59,7 +59,7 @@ Namespace java.util.concurrent
 		''' message.
 		''' </summary>
 		''' <param name="message"> the detail message </param>
-		Public Sub New(ByVal message As String)
+		Public Sub New(  message As String)
 			MyBase.New(message)
 		End Sub
 	End Class

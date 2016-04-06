@@ -72,7 +72,7 @@ Namespace java.awt.image.renderable
 		''' </summary>
 		''' <param name="rdblImage"> the RenderableImage to be rendered. </param>
 		''' <param name="rc"> the RenderContext to use for producing the pixels. </param>
-		Public Sub New(ByVal rdblImage As RenderableImage, ByVal rc As RenderContext)
+		Public Sub New(  rdblImage As RenderableImage,   rc As RenderContext)
 			Me.rdblImage = rdblImage
 			Me.rc = rc
 		End Sub
@@ -83,7 +83,7 @@ Namespace java.awt.image.renderable
 		''' <param name="rc"> the new RenderContext. </param>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
 		Public Overridable Property renderContext As RenderContext
-			Set(ByVal rc As RenderContext)
+			Set(  rc As RenderContext)
 				Me.rc = rc
 			End Set
 		End Property
@@ -94,7 +94,7 @@ Namespace java.awt.image.renderable
 	   ''' </summary>
 	   ''' <param name="ic"> an ImageConsumer to be added to the interest list. </param>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Sub addConsumer(ByVal ic As java.awt.image.ImageConsumer)
+		Public Overridable Sub addConsumer(  ic As java.awt.image.ImageConsumer)
 			If Not ics.Contains(ic) Then ics.Add(ic)
 		End Sub
 
@@ -105,7 +105,7 @@ Namespace java.awt.image.renderable
 		''' <param name="ic"> the ImageConsumer to be checked. </param>
 		''' <returns> true if the ImageConsumer is on the list; false otherwise. </returns>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Function isConsumer(ByVal ic As java.awt.image.ImageConsumer) As Boolean
+		Public Overridable Function isConsumer(  ic As java.awt.image.ImageConsumer) As Boolean
 			Return ics.Contains(ic)
 		End Function
 
@@ -115,7 +115,7 @@ Namespace java.awt.image.renderable
 		''' </summary>
 		''' <param name="ic"> the ImageConsumer to be removed. </param>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Sub removeConsumer(ByVal ic As java.awt.image.ImageConsumer)
+		Public Overridable Sub removeConsumer(  ic As java.awt.image.ImageConsumer)
 			ics.Remove(ic)
 		End Sub
 
@@ -126,7 +126,7 @@ Namespace java.awt.image.renderable
 		''' </summary>
 		''' <param name="ic"> the ImageConsumer to be added to the list of consumers. </param>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Sub startProduction(ByVal ic As java.awt.image.ImageConsumer)
+		Public Overridable Sub startProduction(  ic As java.awt.image.ImageConsumer)
 			addConsumer(ic)
 			' Need to build a runnable object for the Thread.
 			Dim thread_Renamed As New Thread(Me, "RenderableImageProducer Thread")
@@ -138,7 +138,7 @@ Namespace java.awt.image.renderable
 		''' one more time in top-down, left-right order.
 		''' </summary>
 		''' <param name="ic"> the ImageConsumer requesting the resend. </param>
-		Public Overridable Sub requestTopDownLeftRightResend(ByVal ic As java.awt.image.ImageConsumer)
+		Public Overridable Sub requestTopDownLeftRightResend(  ic As java.awt.image.ImageConsumer)
 			' So far, all pixels are already sent in TDLR order
 		End Sub
 

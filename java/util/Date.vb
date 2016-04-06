@@ -163,7 +163,7 @@ Namespace java.util
 		''' </summary>
 		''' <param name="date">   the milliseconds since January 1, 1970, 00:00:00 GMT. </param>
 		''' <seealso cref=     java.lang.System#currentTimeMillis() </seealso>
-		Public Sub New(ByVal [date] As Long)
+		Public Sub New(  [date] As Long)
 			fastTime = date_Renamed
 		End Sub
 
@@ -181,7 +181,7 @@ Namespace java.util
 		''' replaced by <code>Calendar.set(year + 1900, month, date)</code>
 		''' or <code>GregorianCalendar(year + 1900, month, date)</code>. 
 		<Obsolete("As of JDK version 1.1,")> _
-		Public Sub New(ByVal year As Integer, ByVal month As Integer, ByVal [date] As Integer)
+		Public Sub New(  year As Integer,   month As Integer,   [date] As Integer)
 			Me.New(year, month, date_Renamed, 0, 0, 0)
 		End Sub
 
@@ -203,7 +203,7 @@ Namespace java.util
 		''' hrs, min)</code> or <code>GregorianCalendar(year + 1900,
 		''' month, date, hrs, min)</code>. 
 		<Obsolete("As of JDK version 1.1,")> _
-		Public Sub New(ByVal year As Integer, ByVal month As Integer, ByVal [date] As Integer, ByVal hrs As Integer, ByVal min As Integer)
+		Public Sub New(  year As Integer,   month As Integer,   [date] As Integer,   hrs As Integer,   min As Integer)
 			Me.New(year, month, date_Renamed, hrs, min, 0)
 		End Sub
 
@@ -226,7 +226,7 @@ Namespace java.util
 		''' hrs, min, sec)</code> or <code>GregorianCalendar(year + 1900,
 		''' month, date, hrs, min, sec)</code>. 
 		<Obsolete("As of JDK version 1.1,")> _
-		Public Sub New(ByVal year As Integer, ByVal month As Integer, ByVal [date] As Integer, ByVal hrs As Integer, ByVal min As Integer, ByVal sec As Integer)
+		Public Sub New(  year As Integer,   month As Integer,   [date] As Integer,   hrs As Integer,   min As Integer,   sec As Integer)
 			Dim y As Integer = year + 1900
 			' month is 0-based. So we have to normalize month to support java.lang.[Long].MAX_VALUE.
 			If month >= 12 Then
@@ -255,7 +255,7 @@ Namespace java.util
 		''' @deprecated As of JDK version 1.1,
 		''' replaced by <code>DateFormat.parse(String s)</code>. 
 		<Obsolete("As of JDK version 1.1,")> _
-		Public Sub New(ByVal s As String)
+		Public Sub New(  s As String)
 			Me.New(parse(s))
 		End Sub
 
@@ -299,7 +299,7 @@ Namespace java.util
 		''' month, date, hrs, min, sec)</code>, using a UTC
 		''' <code>TimeZone</code>, followed by <code>Calendar.getTime().getTime()</code>. 
 		<Obsolete("As of JDK version 1.1,")> _
-		Public Shared Function UTC(ByVal year As Integer, ByVal month As Integer, ByVal [date] As Integer, ByVal hrs As Integer, ByVal min As Integer, ByVal sec As Integer) As Long
+		Public Shared Function UTC(  year As Integer,   month As Integer,   [date] As Integer,   hrs As Integer,   min As Integer,   sec As Integer) As Long
 			Dim y As Integer = year + 1900
 			' month is 0-based. So we have to normalize month to support java.lang.[Long].MAX_VALUE.
 			If month >= 12 Then
@@ -434,7 +434,7 @@ Namespace java.util
 		''' @deprecated As of JDK version 1.1,
 		''' replaced by <code>DateFormat.parse(String s)</code>. 
 		<Obsolete("As of JDK version 1.1,")> _
-		Public Shared Function parse(ByVal s As String) As Long
+		Public Shared Function parse(  s As String) As Long
 			Dim year_Renamed As Integer =  java.lang.[Integer].MIN_VALUE
 			Dim mon As Integer = -1
 			Dim mday As Integer = -1
@@ -617,7 +617,7 @@ Namespace java.util
 			Get
 				Return normalize().year - 1900
 			End Get
-			Set(ByVal year As Integer)
+			Set(  year As Integer)
 				calendarDate.normalizedYear = year + 1900
 			End Set
 		End Property
@@ -638,7 +638,7 @@ Namespace java.util
 			Get
 				Return normalize().month - 1 ' adjust 1-based to 0-based
 			End Get
-			Set(ByVal month As Integer)
+			Set(  month As Integer)
 				Dim y As Integer = 0
 				If month >= 12 Then
 					y = month \ 12
@@ -671,7 +671,7 @@ Namespace java.util
 			Get
 				Return normalize().dayOfMonth
 			End Get
-			Set(ByVal [date] As Integer)
+			Set(  [date] As Integer)
 				calendarDate.dayOfMonth = date_Renamed
 			End Set
 		End Property
@@ -713,7 +713,7 @@ Namespace java.util
 			Get
 				Return normalize().hours
 			End Get
-			Set(ByVal hours As Integer)
+			Set(  hours As Integer)
 				calendarDate.hours = hours
 			End Set
 		End Property
@@ -733,7 +733,7 @@ Namespace java.util
 			Get
 				Return normalize().minutes
 			End Get
-			Set(ByVal minutes As Integer)
+			Set(  minutes As Integer)
 				calendarDate.minutes = minutes
 			End Set
 		End Property
@@ -754,7 +754,7 @@ Namespace java.util
 			Get
 				Return normalize().seconds
 			End Get
-			Set(ByVal seconds As Integer)
+			Set(  seconds As Integer)
 				calendarDate.seconds = seconds
 			End Set
 		End Property
@@ -770,7 +770,7 @@ Namespace java.util
 			Get
 				Return timeImpl
 			End Get
-			Set(ByVal time As Long)
+			Set(  time As Long)
 				fastTime = time
 				[cdate] = Nothing
 			End Set
@@ -793,7 +793,7 @@ Namespace java.util
 		'''            earlier than the instant represented by <tt>when</tt>;
 		'''          <code>false</code> otherwise. </returns>
 		''' <exception cref="NullPointerException"> if <code>when</code> is null. </exception>
-		Public Overridable Function before(ByVal [when] As Date) As Boolean
+		Public Overridable Function before(  [when] As Date) As Boolean
 			Return getMillisOf(Me) < getMillisOf([when])
 		End Function
 
@@ -806,7 +806,7 @@ Namespace java.util
 		'''          instant represented by <tt>when</tt>;
 		'''          <code>false</code> otherwise. </returns>
 		''' <exception cref="NullPointerException"> if <code>when</code> is null. </exception>
-		Public Overridable Function after(ByVal [when] As Date) As Boolean
+		Public Overridable Function after(  [when] As Date) As Boolean
 			Return getMillisOf(Me) > getMillisOf([when])
 		End Function
 
@@ -824,7 +824,7 @@ Namespace java.util
 		''' <returns>  <code>true</code> if the objects are the same;
 		'''          <code>false</code> otherwise. </returns>
 		''' <seealso cref=     java.util.Date#getTime() </seealso>
-		Public Overrides Function Equals(ByVal obj As Object) As Boolean
+		Public Overrides Function Equals(  obj As Object) As Boolean
 			Return TypeOf obj Is Date AndAlso time = CDate(obj).time
 		End Function
 
@@ -832,7 +832,7 @@ Namespace java.util
 		''' Returns the millisecond value of this <code>Date</code> object
 		''' without affecting its internal state.
 		''' </summary>
-		Shared Function getMillisOf(ByVal [date] As Date) As Long
+		Shared Function getMillisOf(  [date] As Date) As Long
 			If date_Renamed.cdate Is Nothing OrElse date_Renamed.cdate.normalized Then Return date_Renamed.fastTime
 			Dim d As sun.util.calendar.BaseCalendar.Date = CType(date_Renamed.cdate.clone(), sun.util.calendar.BaseCalendar.Date)
 			Return gcal.getTime(d)
@@ -848,7 +848,7 @@ Namespace java.util
 		'''      <code>0</code> if this Date is after the Date argument.
 		''' @since   1.2 </returns>
 		''' <exception cref="NullPointerException"> if <code>anotherDate</code> is null. </exception>
-		Public Overridable Function compareTo(ByVal anotherDate As Date) As Integer Implements Comparable(Of Date).compareTo
+		Public Overridable Function compareTo(  anotherDate As Date) As Integer Implements Comparable(Of Date).compareTo
 			Dim thisTime As Long = getMillisOf(Me)
 			Dim anotherTime As Long = getMillisOf(anotherDate)
 			Return (If(thisTime<anotherTime, -1, (If(thisTime=anotherTime, 0, 1))))
@@ -926,7 +926,7 @@ Namespace java.util
 		''' "monday" -> "Mon") and stored the abbreviation in the given
 		''' <code>StringBuilder</code>.
 		''' </summary>
-		Private Shared Function convertToAbbr(ByVal sb As StringBuilder, ByVal name As String) As StringBuilder
+		Private Shared Function convertToAbbr(  sb As StringBuilder,   name As String) As StringBuilder
 			sb.append(Char.ToUpper(name.Chars(0)))
 			sb.append(name.Chars(1)).append(name.Chars(2))
 			Return sb
@@ -1083,7 +1083,7 @@ Namespace java.util
 		End Function
 
 		' fastTime and the returned data are in sync upon return.
-		Private Function normalize(ByVal [date] As sun.util.calendar.BaseCalendar.Date) As sun.util.calendar.BaseCalendar.Date
+		Private Function normalize(  [date] As sun.util.calendar.BaseCalendar.Date) As sun.util.calendar.BaseCalendar.Date
 			Dim y As Integer = date_Renamed.normalizedYear
 			Dim m As Integer = date_Renamed.month
 			Dim d As Integer = date_Renamed.dayOfMonth
@@ -1138,12 +1138,12 @@ Namespace java.util
 		''' </summary>
 		''' <param name="year"> normalized calendar year (not -1900) </param>
 		''' <returns> the CalendarSystem to use for the specified date </returns>
-		Private Shared Function getCalendarSystem(ByVal year As Integer) As sun.util.calendar.BaseCalendar
+		Private Shared Function getCalendarSystem(  year As Integer) As sun.util.calendar.BaseCalendar
 			If year >= 1582 Then Return gcal
 			Return julianCalendar
 		End Function
 
-		Private Shared Function getCalendarSystem(ByVal utc As Long) As sun.util.calendar.BaseCalendar
+		Private Shared Function getCalendarSystem(  utc As Long) As sun.util.calendar.BaseCalendar
 			' Quickly check if the time stamp given by `utc' is the Epoch
 			' or later. If it's before 1970, we convert the cutover to
 			' local time to compare.
@@ -1151,7 +1151,7 @@ Namespace java.util
 			Return julianCalendar
 		End Function
 
-		Private Shared Function getCalendarSystem(ByVal [cdate] As sun.util.calendar.BaseCalendar.Date) As sun.util.calendar.BaseCalendar
+		Private Shared Function getCalendarSystem(  [cdate] As sun.util.calendar.BaseCalendar.Date) As sun.util.calendar.BaseCalendar
 			If jcal Is Nothing Then Return gcal
 			If [cdate].era IsNot Nothing Then Return jcal
 			Return gcal
@@ -1172,14 +1172,14 @@ Namespace java.util
 		'''             is emitted (long).  This represents the offset from
 		'''             January 1, 1970, 00:00:00 GMT in milliseconds.
 		''' </summary>
-		Private Sub writeObject(ByVal s As java.io.ObjectOutputStream)
+		Private Sub writeObject(  s As java.io.ObjectOutputStream)
 			s.writeLong(timeImpl)
 		End Sub
 
 		''' <summary>
 		''' Reconstitute this object from a stream (i.e., deserialize it).
 		''' </summary>
-		Private Sub readObject(ByVal s As java.io.ObjectInputStream)
+		Private Sub readObject(  s As java.io.ObjectInputStream)
 			fastTime = s.readLong()
 		End Sub
 
@@ -1202,7 +1202,7 @@ Namespace java.util
 		''' <exception cref="IllegalArgumentException"> if the instant is too large to
 		'''  represent as a {@code Date}
 		''' @since 1.8 </exception>
-		Public Shared Function [from](ByVal instant As java.time.Instant) As Date
+		Public Shared Function [from](  instant As java.time.Instant) As Date
 			Try
 				Return New Date(instant.toEpochMilli())
 			Catch ex As ArithmeticException

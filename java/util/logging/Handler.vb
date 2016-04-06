@@ -93,7 +93,7 @@ Namespace java.util.logging
 		''' </summary>
 		''' <param name="record">  description of the log event. A null record is
 		'''                 silently ignored and is not published </param>
-		Public MustOverride Sub publish(ByVal record As LogRecord)
+		Public MustOverride Sub publish(  record As LogRecord)
 
 		''' <summary>
 		''' Flush any buffered output.
@@ -124,7 +124,7 @@ Namespace java.util.logging
 		'''             the caller does not have <tt>LoggingPermission("control")</tt>. </exception>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
 		Public Overridable Property formatter As Formatter
-			Set(ByVal newFormatter As Formatter)
+			Set(  newFormatter As Formatter)
 				checkPermission()
 				' Check for a null pointer:
 				newFormatter.GetType()
@@ -150,7 +150,7 @@ Namespace java.util.logging
 		'''          not supported. </exception>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
 		Public Overridable Property encoding As String
-			Set(ByVal encoding As String)
+			Set(  encoding As String)
 				checkPermission()
 				If encoding IsNot Nothing Then
 					Try
@@ -179,7 +179,7 @@ Namespace java.util.logging
 		'''             the caller does not have <tt>LoggingPermission("control")</tt>. </exception>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
 		Public Overridable Property filter As Filter
-			Set(ByVal newFilter As Filter)
+			Set(  newFilter As Filter)
 				checkPermission()
 				filter = newFilter
 			End Set
@@ -200,7 +200,7 @@ Namespace java.util.logging
 		'''             the caller does not have <tt>LoggingPermission("control")</tt>. </exception>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
 		Public Overridable Property errorManager As ErrorManager
-			Set(ByVal em As ErrorManager)
+			Set(  em As ErrorManager)
 				checkPermission()
 				If em Is Nothing Then Throw New NullPointerException
 				errorManager_Renamed = em
@@ -221,7 +221,7 @@ Namespace java.util.logging
 	   ''' <param name="msg">    a descriptive string (may be null) </param>
 	   ''' <param name="ex">     an exception (may be null) </param>
 	   ''' <param name="code">   an error code defined in ErrorManager </param>
-		Protected Friend Overridable Sub reportError(ByVal msg As String, ByVal ex As Exception, ByVal code As Integer)
+		Protected Friend Overridable Sub reportError(  msg As String,   ex As Exception,   code As Integer)
 			Try
 				errorManager_Renamed.error(msg, ex, code)
 			Catch ex2 As Exception
@@ -244,7 +244,7 @@ Namespace java.util.logging
 		'''             the caller does not have <tt>LoggingPermission("control")</tt>. </exception>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
 		Public Overridable Property level As Level
-			Set(ByVal newLevel As Level)
+			Set(  newLevel As Level)
 				If newLevel Is Nothing Then Throw New NullPointerException
 				checkPermission()
 				logLevel = newLevel
@@ -267,7 +267,7 @@ Namespace java.util.logging
 		''' <param name="record">  a <tt>LogRecord</tt> </param>
 		''' <returns> true if the <tt>LogRecord</tt> would be logged.
 		'''  </returns>
-		Public Overridable Function isLoggable(ByVal record As LogRecord) As Boolean
+		Public Overridable Function isLoggable(  record As LogRecord) As Boolean
 			Dim levelValue As Integer = level
 			If record.level < levelValue OrElse levelValue = offValue Then Return False
 			Dim filter_Renamed As Filter = filter

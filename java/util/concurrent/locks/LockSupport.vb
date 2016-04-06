@@ -123,7 +123,7 @@ Namespace java.util.concurrent.locks
 		Private Sub New() ' Cannot be instantiated.
 		End Sub
 
-		Private Shared Sub setBlocker(ByVal t As Thread, ByVal arg As Object)
+		Private Shared Sub setBlocker(  t As Thread,   arg As Object)
 			' Even though volatile, hotspot doesn't need a write barrier here.
 			UNSAFE.putObject(t, parkBlockerOffset, arg)
 		End Sub
@@ -138,7 +138,7 @@ Namespace java.util.concurrent.locks
 		''' </summary>
 		''' <param name="thread"> the thread to unpark, or {@code null}, in which case
 		'''        this operation has no effect </param>
-		Public Shared Sub unpark(ByVal thread_Renamed As Thread)
+		Public Shared Sub unpark(  thread_Renamed As Thread)
 			If thread_Renamed IsNot Nothing Then UNSAFE.unpark(thread_Renamed)
 		End Sub
 
@@ -169,7 +169,7 @@ Namespace java.util.concurrent.locks
 		''' <param name="blocker"> the synchronization object responsible for this
 		'''        thread parking
 		''' @since 1.6 </param>
-		Public Shared Sub park(ByVal blocker As Object)
+		Public Shared Sub park(  blocker As Object)
 			Dim t As Thread = Thread.CurrentThread
 			blockerker(t, blocker)
 			UNSAFE.park(False, 0L)
@@ -207,7 +207,7 @@ Namespace java.util.concurrent.locks
 		'''        thread parking </param>
 		''' <param name="nanos"> the maximum number of nanoseconds to wait
 		''' @since 1.6 </param>
-		Public Shared Sub parkNanos(ByVal blocker As Object, ByVal nanos As Long)
+		Public Shared Sub parkNanos(  blocker As Object,   nanos As Long)
 			If nanos > 0 Then
 				Dim t As Thread = Thread.CurrentThread
 				blockerker(t, blocker)
@@ -248,7 +248,7 @@ Namespace java.util.concurrent.locks
 		''' <param name="deadline"> the absolute time, in milliseconds from the Epoch,
 		'''        to wait until
 		''' @since 1.6 </param>
-		Public Shared Sub parkUntil(ByVal blocker As Object, ByVal deadline As Long)
+		Public Shared Sub parkUntil(  blocker As Object,   deadline As Long)
 			Dim t As Thread = Thread.CurrentThread
 			blockerker(t, blocker)
 			UNSAFE.park(True, deadline)
@@ -266,7 +266,7 @@ Namespace java.util.concurrent.locks
 		''' <returns> the blocker </returns>
 		''' <exception cref="NullPointerException"> if argument is null
 		''' @since 1.6 </exception>
-		Public Shared Function getBlocker(ByVal t As Thread) As Object
+		Public Shared Function getBlocker(  t As Thread) As Object
 			If t Is Nothing Then Throw New NullPointerException
 			Return UNSAFE.getObjectVolatile(t, parkBlockerOffset)
 		End Function
@@ -328,7 +328,7 @@ Namespace java.util.concurrent.locks
 		''' upon return.
 		''' </summary>
 		''' <param name="nanos"> the maximum number of nanoseconds to wait </param>
-		Public Shared Sub parkNanos(ByVal nanos As Long)
+		Public Shared Sub parkNanos(  nanos As Long)
 			If nanos > 0 Then UNSAFE.park(False, nanos)
 		End Sub
 
@@ -361,7 +361,7 @@ Namespace java.util.concurrent.locks
 		''' </summary>
 		''' <param name="deadline"> the absolute time, in milliseconds from the Epoch,
 		'''        to wait until </param>
-		Public Shared Sub parkUntil(ByVal deadline As Long)
+		Public Shared Sub parkUntil(  deadline As Long)
 			UNSAFE.park(True, deadline)
 		End Sub
 

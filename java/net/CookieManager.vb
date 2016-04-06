@@ -145,7 +145,7 @@ Namespace java.net
 		'''                          to be used by cookie manager as policy callback.
 		'''                          if {@code null}, ACCEPT_ORIGINAL_SERVER will
 		'''                          be used. </param>
-		Public Sub New(ByVal store As CookieStore, ByVal cookiePolicy As CookiePolicy)
+		Public Sub New(  store As CookieStore,   cookiePolicy As CookiePolicy)
 			' use default cookie policy if not specify one
 			policyCallback = If(cookiePolicy Is Nothing, CookiePolicy.ACCEPT_ORIGINAL_SERVER, cookiePolicy)
 
@@ -170,7 +170,7 @@ Namespace java.net
 		''' <param name="cookiePolicy">      the cookie policy. Can be {@code null}, which
 		'''                          has no effects on current cookie policy. </param>
 		Public Overridable Property cookiePolicy As CookiePolicy
-			Set(ByVal cookiePolicy As CookiePolicy)
+			Set(  cookiePolicy As CookiePolicy)
 				If cookiePolicy IsNot Nothing Then policyCallback = cookiePolicy
 			End Set
 		End Property
@@ -187,7 +187,7 @@ Namespace java.net
 		End Property
 
 
-		Public Overrides Function [get](ByVal uri As URI, ByVal requestHeaders As IDictionary(Of String, IList(Of String))) As IDictionary(Of String, IList(Of String))
+		Public Overrides Function [get](  uri As URI,   requestHeaders As IDictionary(Of String, IList(Of String))) As IDictionary(Of String, IList(Of String))
 			' pre-condition check
 			If uri Is Nothing OrElse requestHeaders Is Nothing Then Throw New IllegalArgumentException("Argument is null")
 
@@ -228,7 +228,7 @@ Namespace java.net
 			Return java.util.Collections.unmodifiableMap(cookieMap)
 		End Function
 
-		Public Overrides Sub put(ByVal uri As URI, ByVal responseHeaders As IDictionary(Of String, IList(Of String)))
+		Public Overrides Sub put(  uri As URI,   responseHeaders As IDictionary(Of String, IList(Of String)))
 			' pre-condition check
 			If uri Is Nothing OrElse responseHeaders Is Nothing Then Throw New IllegalArgumentException("Argument is null")
 
@@ -308,7 +308,7 @@ Namespace java.net
 		' ---------------- Private operations -------------- 
 
 		' to determine whether or not accept this cookie
-		Private Function shouldAcceptInternal(ByVal uri As URI, ByVal cookie As HttpCookie) As Boolean
+		Private Function shouldAcceptInternal(  uri As URI,   cookie As HttpCookie) As Boolean
 			Try
 				Return policyCallback.shouldAccept(uri, cookie) ' pretect against malicious callback
 			Catch ignored As Exception
@@ -317,7 +317,7 @@ Namespace java.net
 		End Function
 
 
-		Private Shared Function isInPortList(ByVal lst As String, ByVal port As Integer) As Boolean
+		Private Shared Function isInPortList(  lst As String,   port As Integer) As Boolean
 			Dim i As Integer = lst.IndexOf(",")
 			Dim val As Integer = -1
 			Do While i > 0
@@ -342,7 +342,7 @@ Namespace java.net
 	'    
 	'     * path-matches algorithm, as defined by RFC 2965
 	'     
-		Private Function pathMatches(ByVal path As String, ByVal pathToMatchWith As String) As Boolean
+		Private Function pathMatches(  path As String,   pathToMatchWith As String) As Boolean
 			If path = pathToMatchWith Then Return True
 			If path Is Nothing OrElse pathToMatchWith Is Nothing Then Return False
 			If path.StartsWith(pathToMatchWith) Then Return True
@@ -355,7 +355,7 @@ Namespace java.net
 	'     * sort cookies with respect to their path: those with more specific Path attributes
 	'     * precede those with less specific, as defined in RFC 2965 sec. 3.3.4
 	'     
-		Private Function sortByPath(ByVal cookies As IList(Of HttpCookie)) As IList(Of String)
+		Private Function sortByPath(  cookies As IList(Of HttpCookie)) As IList(Of String)
 			java.util.Collections.sort(cookies, New CookiePathComparator)
 
 			Dim cookieHeader As IList(Of String) = New List(Of String)
@@ -375,7 +375,7 @@ Namespace java.net
 		Friend Class CookiePathComparator
 			Implements IComparer(Of HttpCookie)
 
-			Public Overridable Function compare(ByVal c1 As HttpCookie, ByVal c2 As HttpCookie) As Integer
+			Public Overridable Function compare(  c1 As HttpCookie,   c2 As HttpCookie) As Integer
 				If c1 Is c2 Then Return 0
 				If c1 Is Nothing Then Return -1
 				If c2 Is Nothing Then Return 1

@@ -65,7 +65,7 @@ Namespace java.rmi.server
 		''' <returns> a socket connected to the specified host and port. </returns>
 		''' <exception cref="IOException"> if an I/O error occurs during socket creation
 		''' @since 1.2 </exception>
-		Function createSocket(ByVal host As String, ByVal port As Integer) As Socket
+		Function createSocket(  host As String,   port As Integer) As Socket
 	End Interface
 
 End Namespace

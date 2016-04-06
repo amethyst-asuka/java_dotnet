@@ -63,7 +63,7 @@ Namespace java.sql
 		'''        <code>ParameterMetaData.parameterNullableUnknown</code> </returns>
 		''' <exception cref="SQLException"> if a database access error occurs
 		''' @since 1.4 </exception>
-		Function isNullable(ByVal param As Integer) As Integer
+		Function isNullable(  param As Integer) As Integer
 
 		''' <summary>
 		''' The constant indicating that a
@@ -93,7 +93,7 @@ Namespace java.sql
 		''' <returns> <code>true</code> if so; <code>false</code> otherwise </returns>
 		''' <exception cref="SQLException"> if a database access error occurs
 		''' @since 1.4 </exception>
-		Function isSigned(ByVal param As Integer) As Boolean
+		Function isSigned(  param As Integer) As Boolean
 
 		''' <summary>
 		''' Retrieves the designated parameter's specified column size.
@@ -109,7 +109,7 @@ Namespace java.sql
 		''' <returns> precision </returns>
 		''' <exception cref="SQLException"> if a database access error occurs
 		''' @since 1.4 </exception>
-		Function getPrecision(ByVal param As Integer) As Integer
+		Function getPrecision(  param As Integer) As Integer
 
 		''' <summary>
 		''' Retrieves the designated parameter's number of digits to right of the decimal point.
@@ -119,7 +119,7 @@ Namespace java.sql
 		''' <returns> scale </returns>
 		''' <exception cref="SQLException"> if a database access error occurs
 		''' @since 1.4 </exception>
-		Function getScale(ByVal param As Integer) As Integer
+		Function getScale(  param As Integer) As Integer
 
 		''' <summary>
 		''' Retrieves the designated parameter's SQL type.
@@ -129,7 +129,7 @@ Namespace java.sql
 		''' <exception cref="SQLException"> if a database access error occurs
 		''' @since 1.4 </exception>
 		''' <seealso cref= Types </seealso>
-		Function getParameterType(ByVal param As Integer) As Integer
+		Function getParameterType(  param As Integer) As Integer
 
 		''' <summary>
 		''' Retrieves the designated parameter's database-specific type name.
@@ -139,7 +139,7 @@ Namespace java.sql
 		''' a user-defined type, then a fully-qualified type name is returned. </returns>
 		''' <exception cref="SQLException"> if a database access error occurs
 		''' @since 1.4 </exception>
-		Function getParameterTypeName(ByVal param As Integer) As String
+		Function getParameterTypeName(  param As Integer) As String
 
 
 		''' <summary>
@@ -154,7 +154,7 @@ Namespace java.sql
 		'''         for custom mapping. </returns>
 		''' <exception cref="SQLException"> if a database access error occurs
 		''' @since 1.4 </exception>
-		Function getParameterClassName(ByVal param As Integer) As String
+		Function getParameterClassName(  param As Integer) As String
 
 		''' <summary>
 		''' The constant indicating that the mode of the parameter is unknown.
@@ -191,7 +191,7 @@ Namespace java.sql
 		'''        <code>ParameterMetaData.parameterModeUnknown</code>. </returns>
 		''' <exception cref="SQLException"> if a database access error occurs
 		''' @since 1.4 </exception>
-		Function getParameterMode(ByVal param As Integer) As Integer
+		Function getParameterMode(  param As Integer) As Integer
 	End Interface
 
 End Namespace

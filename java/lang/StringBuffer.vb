@@ -126,7 +126,7 @@ Namespace java.lang
 		''' <param name="capacity">  the initial capacity. </param>
 		''' <exception cref="NegativeArraySizeException">  if the {@code capacity}
 		'''               argument is less than {@code 0}. </exception>
-		Public Sub New(ByVal capacity As Integer)
+		Public Sub New(  capacity As Integer)
 			MyBase.New(capacity)
 		End Sub
 
@@ -136,7 +136,7 @@ Namespace java.lang
 		''' {@code 16} plus the length of the string argument.
 		''' </summary>
 		''' <param name="str">   the initial contents of the buffer. </param>
-		Public Sub New(ByVal str As String)
+		Public Sub New(  str As String)
 			MyBase.New(str.length() + 16)
 			append(str)
 		End Sub
@@ -153,7 +153,7 @@ Namespace java.lang
 		''' </summary>
 		''' <param name="seq">   the sequence to copy.
 		''' @since 1.5 </param>
-		Public Sub New(ByVal seq As CharSequence)
+		Public Sub New(  seq As CharSequence)
 			Me.New(seq.length() + 16)
 			append(seq)
 		End Sub
@@ -170,7 +170,7 @@ Namespace java.lang
 
 
         <MethodImpl(MethodImplOptions.Synchronized)>
-        Public Sub ensureCapacity(ByVal minimumCapacity As Integer)
+        Public Sub ensureCapacity(  minimumCapacity As Integer)
             If minimumCapacity > value.Length Then expandCapacity(minimumCapacity)
         End Sub
 
@@ -186,7 +186,7 @@ Namespace java.lang
         ''' <seealso cref=        #length() </seealso>
         <MethodImpl(MethodImplOptions.Synchronized)> _
 		Public Overrides Property length As Integer
-			Set(ByVal newLength As Integer)
+			Set(  newLength As Integer)
 				toStringCache = Nothing
 				MyBase.length = newLength
 			End Set
@@ -195,7 +195,7 @@ Namespace java.lang
 		''' <exception cref="IndexOutOfBoundsException"> {@inheritDoc} </exception>
 		''' <seealso cref=        #length() </seealso>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overrides Function charAt(ByVal index As Integer) As Char Implements CharSequence.charAt
+		Public Overrides Function charAt(  index As Integer) As Char Implements CharSequence.charAt
 			If (index < 0) OrElse (index >= count) Then Throw New StringIndexOutOfBoundsException(index)
 			Return value(index)
 		End Function
@@ -204,7 +204,7 @@ Namespace java.lang
 		''' @since      1.5
 		''' </summary>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overrides Function codePointAt(ByVal index As Integer) As Integer
+		Public Overrides Function codePointAt(  index As Integer) As Integer
 			Return MyBase.codePointAt(index)
 		End Function
 
@@ -212,7 +212,7 @@ Namespace java.lang
 		''' @since     1.5
 		''' </summary>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overrides Function codePointBefore(ByVal index As Integer) As Integer
+		Public Overrides Function codePointBefore(  index As Integer) As Integer
 			Return MyBase.codePointBefore(index)
 		End Function
 
@@ -220,7 +220,7 @@ Namespace java.lang
 		''' @since     1.5
 		''' </summary>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overrides Function codePointCount(ByVal beginIndex As Integer, ByVal endIndex As Integer) As Integer
+		Public Overrides Function codePointCount(  beginIndex As Integer,   endIndex As Integer) As Integer
 			Return MyBase.codePointCount(beginIndex, endIndex)
 		End Function
 
@@ -228,34 +228,34 @@ Namespace java.lang
 		''' @since     1.5
 		''' </summary>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overrides Function offsetByCodePoints(ByVal index As Integer, ByVal codePointOffset As Integer) As Integer
+		Public Overrides Function offsetByCodePoints(  index As Integer,   codePointOffset As Integer) As Integer
 			Return MyBase.offsetByCodePoints(index, codePointOffset)
 		End Function
 
 		''' <exception cref="IndexOutOfBoundsException"> {@inheritDoc} </exception>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overrides Sub getChars(ByVal srcBegin As Integer, ByVal srcEnd As Integer, ByVal dst As Char(), ByVal dstBegin As Integer)
+		Public Overrides Sub getChars(  srcBegin As Integer,   srcEnd As Integer,   dst As Char(),   dstBegin As Integer)
 			MyBase.getChars(srcBegin, srcEnd, dst, dstBegin)
 		End Sub
 
 		''' <exception cref="IndexOutOfBoundsException"> {@inheritDoc} </exception>
 		''' <seealso cref=        #length() </seealso>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overrides Sub setCharAt(ByVal index As Integer, ByVal ch As Char)
+		Public Overrides Sub setCharAt(  index As Integer,   ch As Char)
 			If (index < 0) OrElse (index >= count) Then Throw New StringIndexOutOfBoundsException(index)
 			toStringCache = Nothing
 			value(index) = ch
 		End Sub
 
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overrides Function append(ByVal obj As Object) As StringBuffer
+		Public Overrides Function append(  obj As Object) As StringBuffer
 			toStringCache = Nothing
 			MyBase.append(Convert.ToString(obj))
 			Return Me
 		End Function
 
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overrides Function append(ByVal str As String) As StringBuffer
+		Public Overrides Function append(  str As String) As StringBuffer
 			toStringCache = Nothing
 			MyBase.append(str)
 			Return Me
@@ -285,7 +285,7 @@ Namespace java.lang
 		''' <returns>  a reference to this object.
 		''' @since 1.4 </returns>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overrides Function append(ByVal sb As StringBuffer) As StringBuffer
+		Public Overrides Function append(  sb As StringBuffer) As StringBuffer
 			toStringCache = Nothing
 			MyBase.append(sb)
 			Return Me
@@ -295,7 +295,7 @@ Namespace java.lang
 		''' @since 1.8
 		''' </summary>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Friend Overrides Function append(ByVal asb As AbstractStringBuilder) As StringBuffer
+		Friend Overrides Function append(  asb As AbstractStringBuilder) As StringBuffer
 			toStringCache = Nothing
 			MyBase.append(asb)
 			Return Me
@@ -322,7 +322,7 @@ Namespace java.lang
 		''' <returns>  a reference to this object.
 		''' @since 1.5 </returns>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overrides Function append(ByVal s As CharSequence) As StringBuffer
+		Public Overrides Function append(  s As CharSequence) As StringBuffer
 			toStringCache = Nothing
 			MyBase.append(s)
 			Return Me
@@ -331,14 +331,14 @@ Namespace java.lang
 		''' <exception cref="IndexOutOfBoundsException"> {@inheritDoc}
 		''' @since      1.5 </exception>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overrides Function append(ByVal s As CharSequence, ByVal start As Integer, ByVal [end] As Integer) As StringBuffer
+		Public Overrides Function append(  s As CharSequence,   start As Integer,   [end] As Integer) As StringBuffer
 			toStringCache = Nothing
 			MyBase.append(s, start, [end])
 			Return Me
 		End Function
 
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overrides Function append(ByVal str As Char()) As StringBuffer
+		Public Overrides Function append(  str As Char()) As StringBuffer
 			toStringCache = Nothing
 			MyBase.append(str)
 			Return Me
@@ -346,28 +346,28 @@ Namespace java.lang
 
 		''' <exception cref="IndexOutOfBoundsException"> {@inheritDoc} </exception>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overrides Function append(ByVal str As Char(), ByVal offset As Integer, ByVal len As Integer) As StringBuffer
+		Public Overrides Function append(  str As Char(),   offset As Integer,   len As Integer) As StringBuffer
 			toStringCache = Nothing
 			MyBase.append(str, offset, len)
 			Return Me
 		End Function
 
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overrides Function append(ByVal b As Boolean) As StringBuffer
+		Public Overrides Function append(  b As Boolean) As StringBuffer
 			toStringCache = Nothing
 			MyBase.append(b)
 			Return Me
 		End Function
 
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overrides Function append(ByVal c As Char) As StringBuffer
+		Public Overrides Function append(  c As Char) As StringBuffer
 			toStringCache = Nothing
 			MyBase.append(c)
 			Return Me
 		End Function
 
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overrides Function append(ByVal i As Integer) As StringBuffer
+		Public Overrides Function append(  i As Integer) As StringBuffer
 			toStringCache = Nothing
 			MyBase.append(i)
 			Return Me
@@ -377,28 +377,28 @@ Namespace java.lang
 		''' @since 1.5
 		''' </summary>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overrides Function appendCodePoint(ByVal codePoint As Integer) As StringBuffer
+		Public Overrides Function appendCodePoint(  codePoint As Integer) As StringBuffer
 			toStringCache = Nothing
 			MyBase.appendCodePoint(codePoint)
 			Return Me
 		End Function
 
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overrides Function append(ByVal lng As Long) As StringBuffer
+		Public Overrides Function append(  lng As Long) As StringBuffer
 			toStringCache = Nothing
 			MyBase.append(lng)
 			Return Me
 		End Function
 
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overrides Function append(ByVal f As Single) As StringBuffer
+		Public Overrides Function append(  f As Single) As StringBuffer
 			toStringCache = Nothing
 			MyBase.append(f)
 			Return Me
 		End Function
 
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overrides Function append(ByVal d As Double) As StringBuffer
+		Public Overrides Function append(  d As Double) As StringBuffer
 			toStringCache = Nothing
 			MyBase.append(d)
 			Return Me
@@ -407,7 +407,7 @@ Namespace java.lang
 		''' <exception cref="StringIndexOutOfBoundsException"> {@inheritDoc}
 		''' @since      1.2 </exception>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overrides Function delete(ByVal start As Integer, ByVal [end] As Integer) As StringBuffer
+		Public Overrides Function delete(  start As Integer,   [end] As Integer) As StringBuffer
 			toStringCache = Nothing
 			MyBase.delete(start, [end])
 			Return Me
@@ -416,7 +416,7 @@ Namespace java.lang
 		''' <exception cref="StringIndexOutOfBoundsException"> {@inheritDoc}
 		''' @since      1.2 </exception>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overrides Function deleteCharAt(ByVal index As Integer) As StringBuffer
+		Public Overrides Function deleteCharAt(  index As Integer) As StringBuffer
 			toStringCache = Nothing
 			MyBase.deleteCharAt(index)
 			Return Me
@@ -425,7 +425,7 @@ Namespace java.lang
 		''' <exception cref="StringIndexOutOfBoundsException"> {@inheritDoc}
 		''' @since      1.2 </exception>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overrides Function replace(ByVal start As Integer, ByVal [end] As Integer, ByVal str As String) As StringBuffer
+		Public Overrides Function replace(  start As Integer,   [end] As Integer,   str As String) As StringBuffer
 			toStringCache = Nothing
 			MyBase.replace(start, [end], str)
 			Return Me
@@ -434,28 +434,28 @@ Namespace java.lang
 		''' <exception cref="StringIndexOutOfBoundsException"> {@inheritDoc}
 		''' @since      1.2 </exception>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overrides Function substring(ByVal start As Integer) As String
+		Public Overrides Function substring(  start As Integer) As String
 			Return Substring(start, count)
 		End Function
 
 		''' <exception cref="IndexOutOfBoundsException"> {@inheritDoc}
 		''' @since      1.4 </exception>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overrides Function subSequence(ByVal start As Integer, ByVal [end] As Integer) As CharSequence Implements CharSequence.subSequence
+		Public Overrides Function subSequence(  start As Integer,   [end] As Integer) As CharSequence Implements CharSequence.subSequence
 			Return MyBase.Substring(start, [end] - start)
 		End Function
 
 		''' <exception cref="StringIndexOutOfBoundsException"> {@inheritDoc}
 		''' @since      1.2 </exception>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overrides Function substring(ByVal start As Integer, ByVal [end] As Integer) As String
+		Public Overrides Function substring(  start As Integer,   [end] As Integer) As String
 			Return MyBase.Substring(start, [end] - start)
 		End Function
 
 		''' <exception cref="StringIndexOutOfBoundsException"> {@inheritDoc}
 		''' @since      1.2 </exception>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overrides Function insert(ByVal index As Integer, ByVal str As Char(), ByVal offset As Integer, ByVal len As Integer) As StringBuffer
+		Public Overrides Function insert(  index As Integer,   str As Char(),   offset As Integer,   len As Integer) As StringBuffer
 			toStringCache = Nothing
 			MyBase.insert(index, str, offset, len)
 			Return Me
@@ -463,7 +463,7 @@ Namespace java.lang
 
 		''' <exception cref="StringIndexOutOfBoundsException"> {@inheritDoc} </exception>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overrides Function insert(ByVal offset As Integer, ByVal obj As Object) As StringBuffer
+		Public Overrides Function insert(  offset As Integer,   obj As Object) As StringBuffer
 			toStringCache = Nothing
 			MyBase.insert(offset, Convert.ToString(obj))
 			Return Me
@@ -471,7 +471,7 @@ Namespace java.lang
 
 		''' <exception cref="StringIndexOutOfBoundsException"> {@inheritDoc} </exception>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overrides Function insert(ByVal offset As Integer, ByVal str As String) As StringBuffer
+		Public Overrides Function insert(  offset As Integer,   str As String) As StringBuffer
 			toStringCache = Nothing
 			MyBase.insert(offset, str)
 			Return Me
@@ -479,7 +479,7 @@ Namespace java.lang
 
 		''' <exception cref="StringIndexOutOfBoundsException"> {@inheritDoc} </exception>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overrides Function insert(ByVal offset As Integer, ByVal str As Char()) As StringBuffer
+		Public Overrides Function insert(  offset As Integer,   str As Char()) As StringBuffer
 			toStringCache = Nothing
 			MyBase.insert(offset, str)
 			Return Me
@@ -487,7 +487,7 @@ Namespace java.lang
 
 		''' <exception cref="IndexOutOfBoundsException"> {@inheritDoc}
 		''' @since      1.5 </exception>
-		Public Overrides Function insert(ByVal dstOffset As Integer, ByVal s As CharSequence) As StringBuffer
+		Public Overrides Function insert(  dstOffset As Integer,   s As CharSequence) As StringBuffer
 			' Note, synchronization achieved via invocations of other StringBuffer methods
 			' after narrowing of s to specific type
 			' Ditto for toStringCache clearing
@@ -498,14 +498,14 @@ Namespace java.lang
 		''' <exception cref="IndexOutOfBoundsException"> {@inheritDoc}
 		''' @since      1.5 </exception>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overrides Function insert(ByVal dstOffset As Integer, ByVal s As CharSequence, ByVal start As Integer, ByVal [end] As Integer) As StringBuffer
+		Public Overrides Function insert(  dstOffset As Integer,   s As CharSequence,   start As Integer,   [end] As Integer) As StringBuffer
 			toStringCache = Nothing
 			MyBase.insert(dstOffset, s, start, [end])
 			Return Me
 		End Function
 
 		''' <exception cref="StringIndexOutOfBoundsException"> {@inheritDoc} </exception>
-		Public Overrides Function insert(ByVal offset As Integer, ByVal b As Boolean) As StringBuffer
+		Public Overrides Function insert(  offset As Integer,   b As Boolean) As StringBuffer
 			' Note, synchronization achieved via invocation of StringBuffer insert(int, String)
 			' after conversion of b to String by super class method
 			' Ditto for toStringCache clearing
@@ -515,14 +515,14 @@ Namespace java.lang
 
 		''' <exception cref="IndexOutOfBoundsException"> {@inheritDoc} </exception>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overrides Function insert(ByVal offset As Integer, ByVal c As Char) As StringBuffer
+		Public Overrides Function insert(  offset As Integer,   c As Char) As StringBuffer
 			toStringCache = Nothing
 			MyBase.insert(offset, c)
 			Return Me
 		End Function
 
 		''' <exception cref="StringIndexOutOfBoundsException"> {@inheritDoc} </exception>
-		Public Overrides Function insert(ByVal offset As Integer, ByVal i As Integer) As StringBuffer
+		Public Overrides Function insert(  offset As Integer,   i As Integer) As StringBuffer
 			' Note, synchronization achieved via invocation of StringBuffer insert(int, String)
 			' after conversion of i to String by super class method
 			' Ditto for toStringCache clearing
@@ -531,7 +531,7 @@ Namespace java.lang
 		End Function
 
 		''' <exception cref="StringIndexOutOfBoundsException"> {@inheritDoc} </exception>
-		Public Overrides Function insert(ByVal offset As Integer, ByVal l As Long) As StringBuffer
+		Public Overrides Function insert(  offset As Integer,   l As Long) As StringBuffer
 			' Note, synchronization achieved via invocation of StringBuffer insert(int, String)
 			' after conversion of l to String by super class method
 			' Ditto for toStringCache clearing
@@ -540,7 +540,7 @@ Namespace java.lang
 		End Function
 
 		''' <exception cref="StringIndexOutOfBoundsException"> {@inheritDoc} </exception>
-		Public Overrides Function insert(ByVal offset As Integer, ByVal f As Single) As StringBuffer
+		Public Overrides Function insert(  offset As Integer,   f As Single) As StringBuffer
 			' Note, synchronization achieved via invocation of StringBuffer insert(int, String)
 			' after conversion of f to String by super class method
 			' Ditto for toStringCache clearing
@@ -549,7 +549,7 @@ Namespace java.lang
 		End Function
 
 		''' <exception cref="StringIndexOutOfBoundsException"> {@inheritDoc} </exception>
-		Public Overrides Function insert(ByVal offset As Integer, ByVal d As Double) As StringBuffer
+		Public Overrides Function insert(  offset As Integer,   d As Double) As StringBuffer
 			' Note, synchronization achieved via invocation of StringBuffer insert(int, String)
 			' after conversion of d to String by super class method
 			' Ditto for toStringCache clearing
@@ -560,7 +560,7 @@ Namespace java.lang
 		''' <summary>
 		''' @since      1.4
 		''' </summary>
-		Public Overrides Function indexOf(ByVal str As String) As Integer
+		Public Overrides Function indexOf(  str As String) As Integer
 			' Note, synchronization achieved via invocations of other StringBuffer methods
 			Return MyBase.IndexOf(str)
 		End Function
@@ -569,14 +569,14 @@ Namespace java.lang
 		''' @since      1.4
 		''' </summary>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overrides Function indexOf(ByVal str As String, ByVal fromIndex As Integer) As Integer
+		Public Overrides Function indexOf(  str As String,   fromIndex As Integer) As Integer
 			Return MyBase.IndexOf(str, fromIndex)
 		End Function
 
 		''' <summary>
 		''' @since      1.4
 		''' </summary>
-		Public Overrides Function lastIndexOf(ByVal str As String) As Integer
+		Public Overrides Function lastIndexOf(  str As String) As Integer
 			' Note, synchronization achieved via invocations of other StringBuffer methods
 			Return LastIndexOf(str, count)
 		End Function
@@ -585,7 +585,7 @@ Namespace java.lang
 		''' @since      1.4
 		''' </summary>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overrides Function lastIndexOf(ByVal str As String, ByVal fromIndex As Integer) As Integer
+		Public Overrides Function lastIndexOf(  str As String,   fromIndex As Integer) As Integer
 			Return MyBase.LastIndexOf(str, fromIndex)
 		End Function
 
@@ -623,7 +623,7 @@ Namespace java.lang
 		''' a stream.
 		''' </summary>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Private Sub writeObject(ByVal s As java.io.ObjectOutputStream)
+		Private Sub writeObject(  s As java.io.ObjectOutputStream)
 			Dim fields As java.io.ObjectOutputStream.PutField = s.putFields()
 			fields.put("value", value)
 			fields.put("count", count)
@@ -635,7 +635,7 @@ Namespace java.lang
 		''' readObject is called to restore the state of the StringBuffer from
 		''' a stream.
 		''' </summary>
-		Private Sub readObject(ByVal s As java.io.ObjectInputStream)
+		Private Sub readObject(  s As java.io.ObjectInputStream)
 			Dim fields As java.io.ObjectInputStream.GetField = s.readFields()
 			value = CType(fields.get("value", Nothing), Char())
 			count = fields.get("count", 0)

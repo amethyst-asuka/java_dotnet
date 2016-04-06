@@ -47,7 +47,7 @@ Namespace java.util.function
 		''' <param name="u"> the second input argument </param>
 		''' <returns> {@code true} if the input arguments match the predicate,
 		''' otherwise {@code false} </returns>
-		Function test(ByVal t As T, ByVal u As U) As Boolean
+		Function test(  t As T,   u As U) As Boolean
 
 		''' <summary>
 		''' Returns a composed predicate that represents a short-circuiting logical
@@ -65,10 +65,10 @@ Namespace java.util.function
 		''' AND of this predicate and the {@code other} predicate </returns>
 		''' <exception cref="NullPointerException"> if other is null </exception>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		default Function [and](Of T1)(ByVal other As BiPredicate(Of T1)) As BiPredicate(Of T, U)
+		default Function [and](Of T1)(  other As BiPredicate(Of T1)) As BiPredicate(Of T, U)
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 			java.util.Objects.requireNonNull(other);
-			Sub [New](ByVal t As T, ByVal u As U)
+			Sub [New](  t As T,   u As U)
 
 		''' <summary>
 		''' Returns a predicate that represents the logical negation of this
@@ -77,7 +77,7 @@ Namespace java.util.function
 		''' <returns> a predicate that represents the logical negation of this
 		''' predicate </returns>
 		default Function negate() As BiPredicate(Of T, U)
-			Sub [New](ByVal t As T, ByVal u As U)
+			Sub [New](  t As T,   u As U)
 
 		''' <summary>
 		''' Returns a composed predicate that represents a short-circuiting logical
@@ -95,10 +95,10 @@ Namespace java.util.function
 		''' OR of this predicate and the {@code other} predicate </returns>
 		''' <exception cref="NullPointerException"> if other is null </exception>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		default Function [or](Of T1)(ByVal other As BiPredicate(Of T1)) As BiPredicate(Of T, U)
+		default Function [or](Of T1)(  other As BiPredicate(Of T1)) As BiPredicate(Of T, U)
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 			java.util.Objects.requireNonNull(other);
-			Sub [New](ByVal t As T, ByVal u As U)
+			Sub [New](  t As T,   u As U)
 	End Interface
 
 End Namespace

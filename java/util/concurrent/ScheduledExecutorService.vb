@@ -108,7 +108,7 @@ Namespace java.util.concurrent
 		'''         scheduled for execution </exception>
 		''' <exception cref="NullPointerException"> if command is null </exception>
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-		Function schedule(ByVal command As Runnable, ByVal delay As Long, ByVal unit As TimeUnit) As ScheduledFuture(Of ?)
+		Function schedule(  command As Runnable,   delay As Long,   unit As TimeUnit) As ScheduledFuture(Of ?)
 
 		''' <summary>
 		''' Creates and executes a ScheduledFuture that becomes enabled after the
@@ -122,7 +122,7 @@ Namespace java.util.concurrent
 		''' <exception cref="RejectedExecutionException"> if the task cannot be
 		'''         scheduled for execution </exception>
 		''' <exception cref="NullPointerException"> if callable is null </exception>
-		 Function schedule(Of V)(ByVal callable As Callable(Of V), ByVal delay As Long, ByVal unit As TimeUnit) As ScheduledFuture(Of V)
+		 Function schedule(Of V)(  callable As Callable(Of V),   delay As Long,   unit As TimeUnit) As ScheduledFuture(Of V)
 
 		''' <summary>
 		''' Creates and executes a periodic action that becomes enabled first
@@ -149,7 +149,7 @@ Namespace java.util.concurrent
 		''' <exception cref="NullPointerException"> if command is null </exception>
 		''' <exception cref="IllegalArgumentException"> if period less than or equal to zero </exception>
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-		Function scheduleAtFixedRate(ByVal command As Runnable, ByVal initialDelay As Long, ByVal period As Long, ByVal unit As TimeUnit) As ScheduledFuture(Of ?)
+		Function scheduleAtFixedRate(  command As Runnable,   initialDelay As Long,   period As Long,   unit As TimeUnit) As ScheduledFuture(Of ?)
 
 		''' <summary>
 		''' Creates and executes a periodic action that becomes enabled first
@@ -173,7 +173,7 @@ Namespace java.util.concurrent
 		''' <exception cref="NullPointerException"> if command is null </exception>
 		''' <exception cref="IllegalArgumentException"> if delay less than or equal to zero </exception>
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-		Function scheduleWithFixedDelay(ByVal command As Runnable, ByVal initialDelay As Long, ByVal delay As Long, ByVal unit As TimeUnit) As ScheduledFuture(Of ?)
+		Function scheduleWithFixedDelay(  command As Runnable,   initialDelay As Long,   delay As Long,   unit As TimeUnit) As ScheduledFuture(Of ?)
 
 	End Interface
 

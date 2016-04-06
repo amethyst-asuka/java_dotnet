@@ -84,7 +84,7 @@ Namespace java.awt
 		''' <exception cref="HeadlessException"> if GraphicsEnvironment.isHeadless()
 		''' returns true. </exception>
 		''' <seealso cref= java.awt.GraphicsEnvironment#isHeadless </seealso>
-		Public Sub New(ByVal label_Renamed As String)
+		Public Sub New(  label_Renamed As String)
 			MyBase.New(label_Renamed)
 		End Sub
 
@@ -153,7 +153,7 @@ Namespace java.awt
 	   ''' <exception cref="IllegalArgumentException"> if the origin is not in the
 	   '''                parent's hierarchy </exception>
 	   ''' <exception cref="RuntimeException"> if the parent is not showing on screen </exception>
-		Public Overridable Sub show(ByVal origin As Component, ByVal x As Integer, ByVal y As Integer)
+		Public Overridable Sub show(  origin As Component,   x As Integer,   y As Integer)
 			' Use localParent for thread safety.
 			Dim localParent As MenuContainer = parent
 			If localParent Is Nothing Then Throw New NullPointerException("parent is null")
@@ -209,7 +209,7 @@ Namespace java.awt
 
 			Private ReadOnly outerInstance As PopupMenu
 
-			Public Sub New(ByVal outerInstance As PopupMenu)
+			Public Sub New(  outerInstance As PopupMenu)
 				Me.outerInstance = outerInstance
 			End Sub
 

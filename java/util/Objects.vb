@@ -55,7 +55,7 @@ Namespace java.util
 		''' <returns> {@code true} if the arguments are equal to each other
 		''' and {@code false} otherwise </returns>
 		''' <seealso cref= Object#equals(Object) </seealso>
-		Public Shared Function Equals(ByVal a As Object, ByVal b As Object) As Boolean
+		Public Shared Function Equals(  a As Object,   b As Object) As Boolean
 			Return (a Is b) OrElse (a IsNot Nothing AndAlso a.Equals(b))
 		End Function
 
@@ -75,7 +75,7 @@ Namespace java.util
 	   ''' and {@code false} otherwise </returns>
 	   ''' <seealso cref= Arrays#deepEquals(Object[], Object[]) </seealso>
 	   ''' <seealso cref= Objects#equals(Object, Object) </seealso>
-		Public Shared Function deepEquals(ByVal a As Object, ByVal b As Object) As Boolean
+		Public Shared Function deepEquals(  a As Object,   b As Object) As Boolean
 			If a Is b Then
 				Return True
 			ElseIf a Is Nothing OrElse b Is Nothing Then
@@ -93,7 +93,7 @@ Namespace java.util
 		''' <returns> the hash code of a non-{@code null} argument and 0 for
 		''' a {@code null} argument </returns>
 		''' <seealso cref= Object#hashCode </seealso>
-		Public Shared Function GetHashCode(ByVal o As Object) As Integer
+		Public Shared Function GetHashCode(  o As Object) As Integer
 			Return If(o IsNot Nothing, o.GetHashCode(), 0)
 		End Function
 
@@ -122,7 +122,7 @@ Namespace java.util
 	   ''' <returns> a hash value of the sequence of input values </returns>
 	   ''' <seealso cref= Arrays#hashCode(Object[]) </seealso>
 	   ''' <seealso cref= List#hashCode </seealso>
-		Public Shared Function hash(ParamArray ByVal values As Object()) As Integer
+		Public Shared Function hash(ParamArray   values As Object()) As Integer
 			Return Arrays.hashCode(values)
 		End Function
 
@@ -135,7 +135,7 @@ Namespace java.util
 		''' null} argument and {@code "null"} for a {@code null} argument </returns>
 		''' <seealso cref= Object#toString </seealso>
 		''' <seealso cref= String#valueOf(Object) </seealso>
-		Public Shared Function ToString(ByVal o As Object) As String
+		Public Shared Function ToString(  o As Object) As String
 			Return Convert.ToString(o)
 		End Function
 
@@ -151,7 +151,7 @@ Namespace java.util
 		''' argument if it is not {@code null} and the second argument
 		''' otherwise. </returns>
 		''' <seealso cref= Objects#toString(Object) </seealso>
-		Public Shared Function ToString(ByVal o As Object, ByVal nullDefault As String) As String
+		Public Shared Function ToString(  o As Object,   nullDefault As String) As String
 			Return If(o IsNot Nothing, o.ToString(), nullDefault)
 		End Function
 
@@ -175,7 +175,7 @@ Namespace java.util
 		''' <seealso cref= Comparable </seealso>
 		''' <seealso cref= Comparator </seealso>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Shared Function compare(Of T, T1)(ByVal a As T, ByVal b As T, ByVal c As Comparator(Of T1)) As Integer
+		Public Shared Function compare(Of T, T1)(  a As T,   b As T,   c As Comparator(Of T1)) As Integer
 			Return If(a Is b, 0, c.Compare(a, b))
 		End Function
 
@@ -193,7 +193,7 @@ Namespace java.util
 		''' @param <T> the type of the reference </param>
 		''' <returns> {@code obj} if not {@code null} </returns>
 		''' <exception cref="NullPointerException"> if {@code obj} is {@code null} </exception>
-		Public Shared Function requireNonNull(Of T)(ByVal obj As T) As T
+		Public Shared Function requireNonNull(Of T)(  obj As T) As T
 			If obj Is Nothing Then Throw New NullPointerException
 			Return obj
 		End Function
@@ -216,7 +216,7 @@ Namespace java.util
 		''' @param <T> the type of the reference </param>
 		''' <returns> {@code obj} if not {@code null} </returns>
 		''' <exception cref="NullPointerException"> if {@code obj} is {@code null} </exception>
-		Public Shared Function requireNonNull(Of T)(ByVal obj As T, ByVal message As String) As T
+		Public Shared Function requireNonNull(Of T)(  obj As T,   message As String) As T
 			If obj Is Nothing Then Throw New NullPointerException(message)
 			Return obj
 		End Function
@@ -234,7 +234,7 @@ Namespace java.util
 		''' </returns>
 		''' <seealso cref= java.util.function.Predicate
 		''' @since 1.8 </seealso>
-		Public Shared Function isNull(ByVal obj As Object) As Boolean
+		Public Shared Function isNull(  obj As Object) As Boolean
 			Return obj Is Nothing
 		End Function
 
@@ -251,7 +251,7 @@ Namespace java.util
 		''' </returns>
 		''' <seealso cref= java.util.function.Predicate
 		''' @since 1.8 </seealso>
-		Public Shared Function nonNull(ByVal obj As Object) As Boolean
+		Public Shared Function nonNull(  obj As Object) As Boolean
 			Return obj IsNot Nothing
 		End Function
 
@@ -274,7 +274,7 @@ Namespace java.util
 		''' <returns> {@code obj} if not {@code null} </returns>
 		''' <exception cref="NullPointerException"> if {@code obj} is {@code null}
 		''' @since 1.8 </exception>
-		Public Shared Function requireNonNull(Of T)(ByVal obj As T, ByVal messageSupplier As java.util.function.Supplier(Of String)) As T
+		Public Shared Function requireNonNull(Of T)(  obj As T,   messageSupplier As java.util.function.Supplier(Of String)) As T
 			If obj Is Nothing Then Throw New NullPointerException(messageSupplier.get())
 			Return obj
 		End Function

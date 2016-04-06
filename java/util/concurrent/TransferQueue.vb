@@ -83,7 +83,7 @@ Namespace java.util.concurrent
 		''' <exception cref="NullPointerException"> if the specified element is null </exception>
 		''' <exception cref="IllegalArgumentException"> if some property of the specified
 		'''         element prevents it from being added to this queue </exception>
-		Function tryTransfer(ByVal e As E) As Boolean
+		Function tryTransfer(  e As E) As Boolean
 
 		''' <summary>
 		''' Transfers the element to a consumer, waiting if necessary to do so.
@@ -101,7 +101,7 @@ Namespace java.util.concurrent
 		''' <exception cref="NullPointerException"> if the specified element is null </exception>
 		''' <exception cref="IllegalArgumentException"> if some property of the specified
 		'''         element prevents it from being added to this queue </exception>
-		Sub transfer(ByVal e As E)
+		Sub transfer(  e As E)
 
 		''' <summary>
 		''' Transfers the element to a consumer if it is possible to do so
@@ -129,7 +129,7 @@ Namespace java.util.concurrent
 		''' <exception cref="NullPointerException"> if the specified element is null </exception>
 		''' <exception cref="IllegalArgumentException"> if some property of the specified
 		'''         element prevents it from being added to this queue </exception>
-		Function tryTransfer(ByVal e As E, ByVal timeout As Long, ByVal unit As TimeUnit) As Boolean
+		Function tryTransfer(  e As E,   timeout As Long,   unit As TimeUnit) As Boolean
 
 		''' <summary>
 		''' Returns {@code true} if there is at least one consumer waiting

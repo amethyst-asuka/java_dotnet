@@ -42,7 +42,7 @@ Namespace java.nio.file
 		''' </summary>
 		''' <param name="file">
 		'''          a string identifying the file or {@code null} if not known. </param>
-		Public Sub New(ByVal file As String)
+		Public Sub New(  file As String)
 			MyBase.New(file)
 		End Sub
 
@@ -55,7 +55,7 @@ Namespace java.nio.file
 		'''          a string identifying the other file or {@code null} if not known. </param>
 		''' <param name="reason">
 		'''          a reason message with additional information or {@code null} </param>
-		Public Sub New(ByVal file As String, ByVal other As String, ByVal reason As String)
+		Public Sub New(  file As String,   other As String,   reason As String)
 			MyBase.New(file, other, reason)
 		End Sub
 	End Class

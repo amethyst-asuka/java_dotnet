@@ -111,7 +111,7 @@ Namespace java.util.concurrent
 		''' <param name="c"> the collection of elements to initially contain </param>
 		''' <exception cref="NullPointerException"> if the specified collection or any
 		'''         of its elements are null </exception>
-		Public Sub New(Of T1 As E)(ByVal c As Collection(Of T1))
+		Public Sub New(Of T1 As E)(  c As Collection(Of T1))
 			Me.addAll(c)
 		End Sub
 
@@ -121,7 +121,7 @@ Namespace java.util.concurrent
 		''' <param name="e"> the element to add </param>
 		''' <returns> {@code true} (as specified by <seealso cref="Collection#add"/>) </returns>
 		''' <exception cref="NullPointerException"> if the specified element is null </exception>
-		Public Overridable Function add(ByVal e As E) As Boolean
+		Public Overridable Function add(  e As E) As Boolean
 			Return offer(e)
 		End Function
 
@@ -131,7 +131,7 @@ Namespace java.util.concurrent
 		''' <param name="e"> the element to add </param>
 		''' <returns> {@code true} </returns>
 		''' <exception cref="NullPointerException"> if the specified element is null </exception>
-		Public Overridable Function offer(ByVal e As E) As Boolean
+		Public Overridable Function offer(  e As E) As Boolean
 			Dim lock As java.util.concurrent.locks.ReentrantLock = Me.lock
 			lock.lock()
 			Try
@@ -152,7 +152,7 @@ Namespace java.util.concurrent
 		''' </summary>
 		''' <param name="e"> the element to add </param>
 		''' <exception cref="NullPointerException"> {@inheritDoc} </exception>
-		Public Overridable Sub put(ByVal e As E)
+		Public Overridable Sub put(  e As E)
 			offer(e)
 		End Sub
 
@@ -165,7 +165,7 @@ Namespace java.util.concurrent
 		''' <param name="unit"> This parameter is ignored as the method never blocks </param>
 		''' <returns> {@code true} </returns>
 		''' <exception cref="NullPointerException"> {@inheritDoc} </exception>
-		Public Overridable Function offer(ByVal e As E, ByVal timeout As Long, ByVal unit As TimeUnit) As Boolean
+		Public Overridable Function offer(  e As E,   timeout As Long,   unit As TimeUnit) As Boolean
 			Return offer(e)
 		End Function
 
@@ -236,7 +236,7 @@ Namespace java.util.concurrent
 		'''         specified waiting time elapses before an element with
 		'''         an expired delay becomes available </returns>
 		''' <exception cref="InterruptedException"> {@inheritDoc} </exception>
-		Public Overridable Function poll(ByVal timeout As Long, ByVal unit As TimeUnit) As E Implements BlockingQueue(Of E).poll
+		Public Overridable Function poll(  timeout As Long,   unit As TimeUnit) As E Implements BlockingQueue(Of E).poll
 			Dim nanos As Long = unit.toNanos(timeout)
 			Dim lock As java.util.concurrent.locks.ReentrantLock = Me.lock
 			lock.lockInterruptibly()
@@ -318,7 +318,7 @@ Namespace java.util.concurrent
 		''' <exception cref="NullPointerException">          {@inheritDoc} </exception>
 		''' <exception cref="IllegalArgumentException">      {@inheritDoc} </exception>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Overridable Function drainTo(Of T1)(ByVal c As Collection(Of T1)) As Integer
+		Public Overridable Function drainTo(Of T1)(  c As Collection(Of T1)) As Integer
 			If c Is Nothing Then Throw New NullPointerException
 			If c Is Me Then Throw New IllegalArgumentException
 			Dim lock As java.util.concurrent.locks.ReentrantLock = Me.lock
@@ -343,7 +343,7 @@ Namespace java.util.concurrent
 		''' <exception cref="NullPointerException">          {@inheritDoc} </exception>
 		''' <exception cref="IllegalArgumentException">      {@inheritDoc} </exception>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Overridable Function drainTo(Of T1)(ByVal c As Collection(Of T1), ByVal maxElements As Integer) As Integer
+		Public Overridable Function drainTo(Of T1)(  c As Collection(Of T1),   maxElements As Integer) As Integer
 			If c Is Nothing Then Throw New NullPointerException
 			If c Is Me Then Throw New IllegalArgumentException
 			If maxElements <= 0 Then Return 0
@@ -445,7 +445,7 @@ Namespace java.util.concurrent
 		'''         is not a supertype of the runtime type of every element in
 		'''         this queue </exception>
 		''' <exception cref="NullPointerException"> if the specified array is null </exception>
-		Public Overridable Function toArray(Of T)(ByVal a As T()) As T()
+		Public Overridable Function toArray(Of T)(  a As T()) As T()
 			Dim lock As java.util.concurrent.locks.ReentrantLock = Me.lock
 			lock.lock()
 			Try
@@ -459,7 +459,7 @@ Namespace java.util.concurrent
 		''' Removes a single instance of the specified element from this
 		''' queue, if it is present, whether or not it has expired.
 		''' </summary>
-		Public Overridable Function remove(ByVal o As Object) As Boolean Implements BlockingQueue(Of E).remove
+		Public Overridable Function remove(  o As Object) As Boolean Implements BlockingQueue(Of E).remove
 			Dim lock As java.util.concurrent.locks.ReentrantLock = Me.lock
 			lock.lock()
 			Try
@@ -472,7 +472,7 @@ Namespace java.util.concurrent
 		''' <summary>
 		''' Identity-based version for use in Itr.remove
 		''' </summary>
-		Friend Overridable Sub removeEQ(ByVal o As Object)
+		Friend Overridable Sub removeEQ(  o As Object)
 			Dim lock As java.util.concurrent.locks.ReentrantLock = Me.lock
 			lock.lock()
 			Try
@@ -513,7 +513,7 @@ Namespace java.util.concurrent
 			Friend cursor As Integer ' index of next element to return
 			Friend lastRet As Integer ' index of last element, or -1 if no such
 
-			Friend Sub New(ByVal outerInstance As DelayQueue, ByVal array As Object())
+			Friend Sub New(  outerInstance As DelayQueue,   array As Object())
 					Me.outerInstance = outerInstance
 				lastRet = -1
 				Me.array = array

@@ -50,7 +50,7 @@ Namespace java.beans
 		Private threshold As Integer = 6 ' the next size value at which to resize
 		Private size As Integer = 0 ' the number of key-value mappings
 
-		Public Overridable Function [get](ByVal key As Object) As T
+		Public Overridable Function [get](  key As Object) As T
 			removeStaleEntries()
 			If key Is Nothing Then key = NULL
 			Dim hash As Integer = key.GetHashCode()
@@ -97,7 +97,7 @@ Namespace java.beans
 			End SyncLock
 		End Function
 
-		Protected Friend MustOverride Function create(ByVal key As Object) As T
+		Protected Friend MustOverride Function create(  key As Object) As T
 
 		Private Sub removeStaleEntries()
 			Dim ref As Object = Me.queue.poll()
@@ -132,7 +132,7 @@ Namespace java.beans
 			End If
 		End Sub
 
-		Private Sub transfer(ByVal oldTable As Entry(Of T)(), ByVal newTable As Entry(Of T)())
+		Private Sub transfer(  oldTable As Entry(Of T)(),   newTable As Entry(Of T)())
 			For i As Integer = 0 To oldTable.Length - 1
 				Dim entry As Entry(Of T) = oldTable(i)
 				oldTable(i) = Nothing
@@ -155,12 +155,12 @@ Namespace java.beans
 
 
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Private Function newTable(ByVal length As Integer) As Entry(Of T)()
+		Private Function newTable(  length As Integer) As Entry(Of T)()
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 			Return CType(New Entry(Of ?)(length - 1){}, Entry(Of T)())
 		End Function
 
-		Private Shared Function getIndex(Of T1)(ByVal table As Entry(Of T1)(), ByVal hash As Integer) As Integer
+		Private Shared Function getIndex(Of T1)(  table As Entry(Of T1)(),   hash As Integer) As Integer
 			Return hash And (table.Length - 1)
 		End Function
 
@@ -173,14 +173,14 @@ Namespace java.beans
 'JAVA TO VB CONVERTER TODO TASK: There is no VB equivalent to 'volatile':
 			Private [next] As Entry(Of T)
 
-			Friend Sub New(ByVal key As Object, ByVal hash As Integer, ByVal value As T, ByVal queue As ReferenceQueue(Of Object), ByVal [next] As Entry(Of T))
+			Friend Sub New(  key As Object,   hash As Integer,   value As T,   queue As ReferenceQueue(Of Object),   [next] As Entry(Of T))
 				MyBase.New(key, queue)
 				Me.hash = hash
 				Me.value = value
 				Me.next = [next]
 			End Sub
 
-			Friend Overridable Function isMatched(ByVal key As Object, ByVal hash As Integer) As Boolean
+			Friend Overridable Function isMatched(  key As Object,   hash As Integer) As Boolean
 				Return (Me.hash = hash) AndAlso (key Is get())
 			End Function
 		End Class

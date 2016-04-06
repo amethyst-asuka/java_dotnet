@@ -84,7 +84,7 @@ Namespace java.net
 		''' <exception cref="SocketException"> if the option is unrecognized,
 		''' the socket is closed, or some low-level error occurred </exception>
 		''' <seealso cref= #getOption(int) </seealso>
-		Sub setOption(ByVal optID As Integer, ByVal value As Object)
+		Sub setOption(  optID As Integer,   value As Object)
 
 		''' <summary>
 		''' Fetch the value of an option.
@@ -118,7 +118,7 @@ Namespace java.net
 		''' <exception cref="SocketException"> if <I>optID</I> is unknown along the
 		'''         protocol stack (including the SocketImpl) </exception>
 		''' <seealso cref= #setOption(int, java.lang.Object) </seealso>
-		Function getOption(ByVal optID As Integer) As Object
+		Function getOption(  optID As Integer) As Object
 
 		''' <summary>
 		''' The java-supported BSD-style options.

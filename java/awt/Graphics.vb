@@ -153,7 +153,7 @@ Namespace java.awt
 		''' <returns>     a new graphics context. </returns>
 		''' <seealso cref=        java.awt.Graphics#translate </seealso>
 		''' <seealso cref=        java.awt.Graphics#clipRect </seealso>
-		Public Overridable Function create(ByVal x As Integer, ByVal y As Integer, ByVal width As Integer, ByVal height As Integer) As Graphics
+		Public Overridable Function create(  x As Integer,   y As Integer,   width As Integer,   height As Integer) As Graphics
 			Dim g As Graphics = create()
 			If g Is Nothing Then Return Nothing
 			g.translate(x, y)
@@ -171,7 +171,7 @@ Namespace java.awt
 		''' to this new origin. </summary>
 		''' <param name="x">   the <i>x</i> coordinate. </param>
 		''' <param name="y">   the <i>y</i> coordinate. </param>
-		Public MustOverride Sub translate(ByVal x As Integer, ByVal y As Integer)
+		Public MustOverride Sub translate(  x As Integer,   y As Integer)
 
 		''' <summary>
 		''' Gets this graphics context's current color. </summary>
@@ -234,7 +234,7 @@ Namespace java.awt
 		''' <seealso cref=       java.awt.Graphics#getFont </seealso>
 		''' <seealso cref=       java.awt.FontMetrics </seealso>
 		''' <seealso cref=       java.awt.Graphics#getFontMetrics() </seealso>
-		Public MustOverride Function getFontMetrics(ByVal f As Font) As FontMetrics
+		Public MustOverride Function getFontMetrics(  f As Font) As FontMetrics
 
 
 		''' <summary>
@@ -273,7 +273,7 @@ Namespace java.awt
 		''' <param name="height"> the height of the rectangle to intersect the clip with </param>
 		''' <seealso cref= #setClip(int, int, int, int) </seealso>
 		''' <seealso cref= #setClip(Shape) </seealso>
-		Public MustOverride Sub clipRect(ByVal x As Integer, ByVal y As Integer, ByVal width As Integer, ByVal height As Integer)
+		Public MustOverride Sub clipRect(  x As Integer,   y As Integer,   width As Integer,   height As Integer)
 
 		''' <summary>
 		''' Sets the current clip to the rectangle specified by the given
@@ -289,7 +289,7 @@ Namespace java.awt
 		''' <seealso cref=         java.awt.Graphics#setClip(Shape) </seealso>
 		''' <seealso cref=         java.awt.Graphics#getClip
 		''' @since       JDK1.1 </seealso>
-		Public MustOverride Sub setClip(ByVal x As Integer, ByVal y As Integer, ByVal width As Integer, ByVal height As Integer)
+		Public MustOverride Sub setClip(  x As Integer,   y As Integer,   width As Integer,   height As Integer)
 
 		''' <summary>
 		''' Gets the current clipping area.
@@ -327,7 +327,7 @@ Namespace java.awt
 		''' <param name="height"> the height of the source rectangle. </param>
 		''' <param name="dx"> the horizontal distance to copy the pixels. </param>
 		''' <param name="dy"> the vertical distance to copy the pixels. </param>
-		Public MustOverride Sub copyArea(ByVal x As Integer, ByVal y As Integer, ByVal width As Integer, ByVal height As Integer, ByVal dx As Integer, ByVal dy As Integer)
+		Public MustOverride Sub copyArea(  x As Integer,   y As Integer,   width As Integer,   height As Integer,   dx As Integer,   dy As Integer)
 
 		''' <summary>
 		''' Draws a line, using the current color, between the points
@@ -337,7 +337,7 @@ Namespace java.awt
 		''' <param name="y1">  the first point's <i>y</i> coordinate. </param>
 		''' <param name="x2">  the second point's <i>x</i> coordinate. </param>
 		''' <param name="y2">  the second point's <i>y</i> coordinate. </param>
-		Public MustOverride Sub drawLine(ByVal x1 As Integer, ByVal y1 As Integer, ByVal x2 As Integer, ByVal y2 As Integer)
+		Public MustOverride Sub drawLine(  x1 As Integer,   y1 As Integer,   x2 As Integer,   y2 As Integer)
 
 		''' <summary>
 		''' Fills the specified rectangle.
@@ -357,7 +357,7 @@ Namespace java.awt
 		''' <param name="height">   the height of the rectangle to be filled. </param>
 		''' <seealso cref=           java.awt.Graphics#clearRect </seealso>
 		''' <seealso cref=           java.awt.Graphics#drawRect </seealso>
-		Public MustOverride Sub fillRect(ByVal x As Integer, ByVal y As Integer, ByVal width As Integer, ByVal height As Integer)
+		Public MustOverride Sub fillRect(  x As Integer,   y As Integer,   width As Integer,   height As Integer)
 
 		''' <summary>
 		''' Draws the outline of the specified rectangle.
@@ -374,7 +374,7 @@ Namespace java.awt
 		''' <param name="height">   the height of the rectangle to be drawn. </param>
 		''' <seealso cref=          java.awt.Graphics#fillRect </seealso>
 		''' <seealso cref=          java.awt.Graphics#clearRect </seealso>
-		Public Overridable Sub drawRect(ByVal x As Integer, ByVal y As Integer, ByVal width As Integer, ByVal height As Integer)
+		Public Overridable Sub drawRect(  x As Integer,   y As Integer,   width As Integer,   height As Integer)
 			If (width < 0) OrElse (height < 0) Then Return
 
 			If height = 0 OrElse width = 0 Then
@@ -405,7 +405,7 @@ Namespace java.awt
 		''' <seealso cref=         java.awt.Graphics#setColor(java.awt.Color) </seealso>
 		''' <seealso cref=         java.awt.Graphics#setPaintMode </seealso>
 		''' <seealso cref=         java.awt.Graphics#setXORMode(java.awt.Color) </seealso>
-		Public MustOverride Sub clearRect(ByVal x As Integer, ByVal y As Integer, ByVal width As Integer, ByVal height As Integer)
+		Public MustOverride Sub clearRect(  x As Integer,   y As Integer,   width As Integer,   height As Integer)
 
 		''' <summary>
 		''' Draws an outlined round-cornered rectangle using this graphics
@@ -422,7 +422,7 @@ Namespace java.awt
 		''' <param name="arcHeight"> the vertical diameter of the arc
 		'''                    at the four corners. </param>
 		''' <seealso cref=        java.awt.Graphics#fillRoundRect </seealso>
-		Public MustOverride Sub drawRoundRect(ByVal x As Integer, ByVal y As Integer, ByVal width As Integer, ByVal height As Integer, ByVal arcWidth As Integer, ByVal arcHeight As Integer)
+		Public MustOverride Sub drawRoundRect(  x As Integer,   y As Integer,   width As Integer,   height As Integer,   arcWidth As Integer,   arcHeight As Integer)
 
 		''' <summary>
 		''' Fills the specified rounded corner rectangle with the current color.
@@ -439,7 +439,7 @@ Namespace java.awt
 		''' <param name="arcHeight"> the vertical diameter
 		'''                     of the arc at the four corners. </param>
 		''' <seealso cref=         java.awt.Graphics#drawRoundRect </seealso>
-		Public MustOverride Sub fillRoundRect(ByVal x As Integer, ByVal y As Integer, ByVal width As Integer, ByVal height As Integer, ByVal arcWidth As Integer, ByVal arcHeight As Integer)
+		Public MustOverride Sub fillRoundRect(  x As Integer,   y As Integer,   width As Integer,   height As Integer,   arcWidth As Integer,   arcHeight As Integer)
 
 		''' <summary>
 		''' Draws a 3-D highlighted outline of the specified rectangle.
@@ -459,7 +459,7 @@ Namespace java.awt
 		'''                      appears to be raised above the surface
 		'''                      or sunk into the surface. </param>
 		''' <seealso cref=         java.awt.Graphics#fill3DRect </seealso>
-		Public Overridable Sub draw3DRect(ByVal x As Integer, ByVal y As Integer, ByVal width As Integer, ByVal height As Integer, ByVal raised As Boolean)
+		Public Overridable Sub draw3DRect(  x As Integer,   y As Integer,   width As Integer,   height As Integer,   raised As Boolean)
 			Dim c As Color = color
 			Dim brighter As Color = c.brighter()
 			Dim darker As Color = c.darker()
@@ -487,7 +487,7 @@ Namespace java.awt
 		'''                      rectangle appears to be raised above the surface
 		'''                      or etched into the surface. </param>
 		''' <seealso cref=         java.awt.Graphics#draw3DRect </seealso>
-		Public Overridable Sub fill3DRect(ByVal x As Integer, ByVal y As Integer, ByVal width As Integer, ByVal height As Integer, ByVal raised As Boolean)
+		Public Overridable Sub fill3DRect(  x As Integer,   y As Integer,   width As Integer,   height As Integer,   raised As Boolean)
 			Dim c As Color = color
 			Dim brighter As Color = c.brighter()
 			Dim darker As Color = c.darker()
@@ -519,7 +519,7 @@ Namespace java.awt
 		''' <param name="width"> the width of the oval to be drawn. </param>
 		''' <param name="height"> the height of the oval to be drawn. </param>
 		''' <seealso cref=         java.awt.Graphics#fillOval </seealso>
-		Public MustOverride Sub drawOval(ByVal x As Integer, ByVal y As Integer, ByVal width As Integer, ByVal height As Integer)
+		Public MustOverride Sub drawOval(  x As Integer,   y As Integer,   width As Integer,   height As Integer)
 
 		''' <summary>
 		''' Fills an oval bounded by the specified rectangle with the
@@ -531,7 +531,7 @@ Namespace java.awt
 		''' <param name="width"> the width of the oval to be filled. </param>
 		''' <param name="height"> the height of the oval to be filled. </param>
 		''' <seealso cref=         java.awt.Graphics#drawOval </seealso>
-		Public MustOverride Sub fillOval(ByVal x As Integer, ByVal y As Integer, ByVal width As Integer, ByVal height As Integer)
+		Public MustOverride Sub fillOval(  x As Integer,   y As Integer,   width As Integer,   height As Integer)
 
 		''' <summary>
 		''' Draws the outline of a circular or elliptical arc
@@ -569,7 +569,7 @@ Namespace java.awt
 		''' <param name="arcAngle"> the angular extent of the arc,
 		'''                    relative to the start angle. </param>
 		''' <seealso cref=         java.awt.Graphics#fillArc </seealso>
-		Public MustOverride Sub drawArc(ByVal x As Integer, ByVal y As Integer, ByVal width As Integer, ByVal height As Integer, ByVal startAngle As Integer, ByVal arcAngle As Integer)
+		Public MustOverride Sub drawArc(  x As Integer,   y As Integer,   width As Integer,   height As Integer,   startAngle As Integer,   arcAngle As Integer)
 
 		''' <summary>
 		''' Fills a circular or elliptical arc covering the specified rectangle.
@@ -606,7 +606,7 @@ Namespace java.awt
 		''' <param name="arcAngle"> the angular extent of the arc,
 		'''                    relative to the start angle. </param>
 		''' <seealso cref=         java.awt.Graphics#drawArc </seealso>
-		Public MustOverride Sub fillArc(ByVal x As Integer, ByVal y As Integer, ByVal width As Integer, ByVal height As Integer, ByVal startAngle As Integer, ByVal arcAngle As Integer)
+		Public MustOverride Sub fillArc(  x As Integer,   y As Integer,   width As Integer,   height As Integer,   startAngle As Integer,   arcAngle As Integer)
 
 		''' <summary>
 		''' Draws a sequence of connected lines defined by
@@ -619,7 +619,7 @@ Namespace java.awt
 		''' <param name="nPoints"> the total number of points </param>
 		''' <seealso cref=         java.awt.Graphics#drawPolygon(int[], int[], int)
 		''' @since       JDK1.1 </seealso>
-		Public MustOverride Sub drawPolyline(Integer ByVal As xPoints(), ByVal yPoints As Integer(), ByVal nPoints As Integer)
+		Public MustOverride Sub drawPolyline(Integer   As xPoints(),   yPoints As Integer(),   nPoints As Integer)
 
 		''' <summary>
 		''' Draws a closed polygon defined by
@@ -639,7 +639,7 @@ Namespace java.awt
 		''' <param name="nPoints">   a the total number of points. </param>
 		''' <seealso cref=          java.awt.Graphics#fillPolygon </seealso>
 		''' <seealso cref=          java.awt.Graphics#drawPolyline </seealso>
-		Public MustOverride Sub drawPolygon(Integer ByVal As xPoints(), ByVal yPoints As Integer(), ByVal nPoints As Integer)
+		Public MustOverride Sub drawPolygon(Integer   As xPoints(),   yPoints As Integer(),   nPoints As Integer)
 
 		''' <summary>
 		''' Draws the outline of a polygon defined by the specified
@@ -647,7 +647,7 @@ Namespace java.awt
 		''' <param name="p"> the polygon to draw. </param>
 		''' <seealso cref=          java.awt.Graphics#fillPolygon </seealso>
 		''' <seealso cref=          java.awt.Graphics#drawPolyline </seealso>
-		Public Overridable Sub drawPolygon(ByVal p As Polygon)
+		Public Overridable Sub drawPolygon(  p As Polygon)
 			drawPolygon(p.xpoints, p.ypoints, p.npoints)
 		End Sub
 
@@ -670,7 +670,7 @@ Namespace java.awt
 		''' <param name="yPoints">   a an array of <code>y</code> coordinates. </param>
 		''' <param name="nPoints">   a the total number of points. </param>
 		''' <seealso cref=          java.awt.Graphics#drawPolygon(int[], int[], int) </seealso>
-		Public MustOverride Sub fillPolygon(Integer ByVal As xPoints(), ByVal yPoints As Integer(), ByVal nPoints As Integer)
+		Public MustOverride Sub fillPolygon(Integer   As xPoints(),   yPoints As Integer(),   nPoints As Integer)
 
 		''' <summary>
 		''' Fills the polygon defined by the specified Polygon object with
@@ -680,7 +680,7 @@ Namespace java.awt
 		''' even-odd fill rule, also known as the alternating rule. </summary>
 		''' <param name="p"> the polygon to fill. </param>
 		''' <seealso cref=          java.awt.Graphics#drawPolygon(int[], int[], int) </seealso>
-		Public Overridable Sub fillPolygon(ByVal p As Polygon)
+		Public Overridable Sub fillPolygon(  p As Polygon)
 			fillPolygon(p.xpoints, p.ypoints, p.npoints)
 		End Sub
 
@@ -695,7 +695,7 @@ Namespace java.awt
 		''' <exception cref="NullPointerException"> if <code>str</code> is <code>null</code>. </exception>
 		''' <seealso cref=         java.awt.Graphics#drawBytes </seealso>
 		''' <seealso cref=         java.awt.Graphics#drawChars </seealso>
-		Public MustOverride Sub drawString(ByVal str As String, ByVal x As Integer, ByVal y As Integer)
+		Public MustOverride Sub drawString(  str As String,   x As Integer,   y As Integer)
 
 		''' <summary>
 		''' Renders the text of the specified iterator applying its attributes
@@ -711,7 +711,7 @@ Namespace java.awt
 		''' <code>null</code>. </exception>
 		''' <seealso cref=         java.awt.Graphics#drawBytes </seealso>
 		''' <seealso cref=         java.awt.Graphics#drawChars </seealso>
-	   Public MustOverride Sub drawString(ByVal [iterator] As java.text.AttributedCharacterIterator, ByVal x As Integer, ByVal y As Integer)
+	   Public MustOverride Sub drawString(  [iterator] As java.text.AttributedCharacterIterator,   x As Integer,   y As Integer)
 
 		''' <summary>
 		''' Draws the text given by the specified character array, using this

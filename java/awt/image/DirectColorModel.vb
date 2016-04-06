@@ -147,7 +147,7 @@ Namespace java.awt.image
 		''' <param name="bmask"> specifies a mask indicating which bits in an
 		'''         integer pixel contain the blue component
 		'''  </param>
-		Public Sub New(ByVal bits As Integer, ByVal rmask As Integer, ByVal gmask As Integer, ByVal bmask As Integer)
+		Public Sub New(  bits As Integer,   rmask As Integer,   gmask As Integer,   bmask As Integer)
 			Me.New(bits, rmask, gmask, bmask, 0)
 		End Sub
 
@@ -175,7 +175,7 @@ Namespace java.awt.image
 		'''         integer pixel contain the blue component </param>
 		''' <param name="amask"> specifies a mask indicating which bits in an
 		'''         integer pixel contain the alpha component </param>
-		Public Sub New(ByVal bits As Integer, ByVal rmask As Integer, ByVal gmask As Integer, ByVal bmask As Integer, ByVal amask As Integer)
+		Public Sub New(  bits As Integer,   rmask As Integer,   gmask As Integer,   bmask As Integer,   amask As Integer)
 			MyBase.New(java.awt.color.ColorSpace.getInstance(java.awt.color.ColorSpace.CS_sRGB), bits, rmask, gmask, bmask, amask, False,If(amask = 0, java.awt.Transparency.OPAQUE, java.awt.Transparency.TRANSLUCENT), ColorModel.getDefaultTransferType(bits))
 			fieldslds()
 		End Sub
@@ -220,7 +220,7 @@ Namespace java.awt.image
 		''' <exception cref="IllegalArgumentException"> if <code>space</code> is not a
 		'''         TYPE_RGB space or if the min/max normalized component
 		'''         values are not 0.0/1.0. </exception>
-		Public Sub New(ByVal space As java.awt.color.ColorSpace, ByVal bits As Integer, ByVal rmask As Integer, ByVal gmask As Integer, ByVal bmask As Integer, ByVal amask As Integer, ByVal isAlphaPremultiplied As Boolean, ByVal transferType As Integer)
+		Public Sub New(  space As java.awt.color.ColorSpace,   bits As Integer,   rmask As Integer,   gmask As Integer,   bmask As Integer,   amask As Integer,   isAlphaPremultiplied As Boolean,   transferType As Integer)
 			MyBase.New(space, bits, rmask, gmask, bmask, amask, isAlphaPremultiplied,If(amask = 0, java.awt.Transparency.OPAQUE, java.awt.Transparency.TRANSLUCENT), transferType)
 			If ColorModel.isLinearRGBspace(colorSpace) Then
 				is_LinearRGB = True
@@ -297,7 +297,7 @@ Namespace java.awt.image
 	'     * it to the default sRGB ColorSpace and returns the R, G, and B
 	'     * components as float values between 0.0 and 1.0.
 	'     
-		Private Function getDefaultRGBComponents(ByVal pixel As Integer) As Single()
+		Private Function getDefaultRGBComponents(  pixel As Integer) As Single()
 			Dim components_Renamed As Integer() = getComponents(pixel, Nothing, 0)
 			Dim norm As Single() = getNormalizedComponents(components_Renamed, 0, Nothing, 0)
 			' Note that getNormalizedComponents returns non-premultiplied values
@@ -305,7 +305,7 @@ Namespace java.awt.image
 		End Function
 
 
-		Private Function getsRGBComponentFromsRGB(ByVal pixel As Integer, ByVal idx As Integer) As Integer
+		Private Function getsRGBComponentFromsRGB(  pixel As Integer,   idx As Integer) As Integer
 			Dim c As Integer = (CInt(CUInt((pixel And maskArray(idx))) >> maskOffsets(idx)))
 			If isAlphaPremultiplied_Renamed Then
 				Dim a As Integer = (CInt(CUInt((pixel And maskArray(3))) >> maskOffsets(3)))
@@ -317,7 +317,7 @@ Namespace java.awt.image
 		End Function
 
 
-		Private Function getsRGBComponentFromLinearRGB(ByVal pixel As Integer, ByVal idx As Integer) As Integer
+		Private Function getsRGBComponentFromLinearRGB(  pixel As Integer,   idx As Integer) As Integer
 			Dim c As Integer = (CInt(CUInt((pixel And maskArray(idx))) >> maskOffsets(idx)))
 			If isAlphaPremultiplied_Renamed Then
 				Dim factor As Single = CSng((1 << lRGBprecision) - 1)
@@ -347,7 +347,7 @@ Namespace java.awt.image
 		''' <param name="pixel"> the specified pixel </param>
 		''' <returns> the red color component for the specified pixel, from
 		'''         0 to 255 in the sRGB <code>ColorSpace</code>. </returns>
-		Public NotOverridable Overrides Function getRed(ByVal pixel As Integer) As Integer
+		Public NotOverridable Overrides Function getRed(  pixel As Integer) As Integer
 			If is_sRGB Then
 				Return getsRGBComponentFromsRGB(pixel, 0)
 			ElseIf is_LinearRGB Then
@@ -369,7 +369,7 @@ Namespace java.awt.image
 		''' <param name="pixel"> the specified pixel </param>
 		''' <returns> the green color component for the specified pixel, from
 		'''         0 to 255 in the sRGB <code>ColorSpace</code>. </returns>
-		Public NotOverridable Overrides Function getGreen(ByVal pixel As Integer) As Integer
+		Public NotOverridable Overrides Function getGreen(  pixel As Integer) As Integer
 			If is_sRGB Then
 				Return getsRGBComponentFromsRGB(pixel, 1)
 			ElseIf is_LinearRGB Then
@@ -391,7 +391,7 @@ Namespace java.awt.image
 		''' <param name="pixel"> the specified pixel </param>
 		''' <returns> the blue color component for the specified pixel, from
 		'''         0 to 255 in the sRGB <code>ColorSpace</code>. </returns>
-		Public NotOverridable Overrides Function getBlue(ByVal pixel As Integer) As Integer
+		Public NotOverridable Overrides Function getBlue(  pixel As Integer) As Integer
 			If is_sRGB Then
 				Return getsRGBComponentFromsRGB(pixel, 2)
 			ElseIf is_LinearRGB Then
@@ -407,7 +407,7 @@ Namespace java.awt.image
 		''' <param name="pixel"> the specified pixel </param>
 		''' <returns> the value of the alpha component of <code>pixel</code>
 		'''         from 0 to 255. </returns>
-		Public NotOverridable Overrides Function getAlpha(ByVal pixel As Integer) As Integer
+		Public NotOverridable Overrides Function getAlpha(  pixel As Integer) As Integer
 			If Not supportsAlpha Then Return 255
 			Dim a As Integer = (CInt(CUInt((pixel And maskArray(3))) >> maskOffsets(3)))
 			If scaleFactors(3) <> 1.0f Then a = CInt(Fix(a * scaleFactors(3) + 0.5f))
@@ -426,7 +426,7 @@ Namespace java.awt.image
 		''' <returns> the RGB value of the color/alpha components of the specified
 		'''         pixel. </returns>
 		''' <seealso cref= ColorModel#getRGBdefault </seealso>
-		Public NotOverridable Overrides Function getRGB(ByVal pixel As Integer) As Integer
+		Public NotOverridable Overrides Function getRGB(  pixel As Integer) As Integer
 			If is_sRGB OrElse is_LinearRGB Then Return (getAlpha(pixel) << 24) Or (getRed(pixel) << 16) Or (getGreen(pixel) << 8) Or (getBlue(pixel) << 0)
 			Dim rgb_Renamed As Single() = getDefaultRGBComponents(pixel)
 			Return (getAlpha(pixel) << 24) Or ((CInt(Fix(rgb_Renamed(0) * 255.0f + 0.5f))) << 16) Or ((CInt(Fix(rgb_Renamed(1) * 255.0f + 0.5f))) << 8) Or ((CInt(Fix(rgb_Renamed(2) * 255.0f + 0.5f))) << 0)
@@ -462,7 +462,7 @@ Namespace java.awt.image
 		'''         primitive array of type <code>transferType</code> </exception>
 		''' <exception cref="UnsupportedOperationException"> if this <code>transferType</code>
 		'''         is not supported by this color model </exception>
-		Public Overrides Function getRed(ByVal inData As Object) As Integer
+		Public Overrides Function getRed(  inData As Object) As Integer
 			Dim pixel As Integer=0
 			Select Case transferType
 				Case DataBuffer.TYPE_BYTE
@@ -510,7 +510,7 @@ Namespace java.awt.image
 		'''         primitive array of type <code>transferType</code> </exception>
 		''' <exception cref="UnsupportedOperationException"> if this <code>transferType</code>
 		'''         is not supported by this color model </exception>
-		Public Overrides Function getGreen(ByVal inData As Object) As Integer
+		Public Overrides Function getGreen(  inData As Object) As Integer
 			Dim pixel As Integer=0
 			Select Case transferType
 				Case DataBuffer.TYPE_BYTE
@@ -558,7 +558,7 @@ Namespace java.awt.image
 		'''         primitive array of type <code>transferType</code> </exception>
 		''' <exception cref="UnsupportedOperationException"> if this <code>transferType</code>
 		'''         is not supported by this color model </exception>
-		Public Overrides Function getBlue(ByVal inData As Object) As Integer
+		Public Overrides Function getBlue(  inData As Object) As Integer
 			Dim pixel As Integer=0
 			Select Case transferType
 				Case DataBuffer.TYPE_BYTE
@@ -603,7 +603,7 @@ Namespace java.awt.image
 		''' <exception cref="UnsupportedOperationException"> if this
 		'''  <code>tranferType</code> is not supported by this
 		'''  <code>ColorModel</code> </exception>
-		Public Overrides Function getAlpha(ByVal inData As Object) As Integer
+		Public Overrides Function getAlpha(  inData As Object) As Integer
 			Dim pixel As Integer=0
 			Select Case transferType
 				Case DataBuffer.TYPE_BYTE
@@ -646,7 +646,7 @@ Namespace java.awt.image
 		'''            <code>transferType</code> is not supported by this
 		'''            <code>ColorModel</code> </exception>
 		''' <seealso cref= ColorModel#getRGBdefault </seealso>
-		Public Overrides Function getRGB(ByVal inData As Object) As Integer
+		Public Overrides Function getRGB(  inData As Object) As Integer
 			Dim pixel As Integer=0
 			Select Case transferType
 				Case DataBuffer.TYPE_BYTE
@@ -697,7 +697,7 @@ Namespace java.awt.image
 		'''  <code>ColorModel</code> </exception>
 		''' <seealso cref= WritableRaster#setDataElements </seealso>
 		''' <seealso cref= SampleModel#setDataElements </seealso>
-		Public Overrides Function getDataElements(ByVal rgb As Integer, ByVal pixel As Object) As Object
+		Public Overrides Function getDataElements(  rgb As Integer,   pixel As Object) As Object
 			'REMIND: maybe more efficient not to use int array for
 			'DataBuffer.TYPE_USHORT and DataBuffer.TYPE_INT
 			Dim intpixel As Integer() = Nothing
@@ -838,7 +838,7 @@ Namespace java.awt.image
 		''' which to start storing the color and alpha components </param>
 		''' <returns> an array containing the color and alpha components of the
 		''' specified pixel starting at the specified offset. </returns>
-		Public NotOverridable Overrides Function getComponents(ByVal pixel As Integer, ByVal components As Integer(), ByVal offset As Integer) As Integer()
+		Public NotOverridable Overrides Function getComponents(  pixel As Integer,   components As Integer(),   offset As Integer) As Integer()
 			If components Is Nothing Then components = New Integer(offset+numComponents - 1){}
 
 			For i As Integer = 0 To numComponents - 1
@@ -886,7 +886,7 @@ Namespace java.awt.image
 		''' <exception cref="UnsupportedOperationException"> if this
 		'''            <code>transferType</code> is not supported by this
 		'''            color model </exception>
-		Public NotOverridable Overrides Function getComponents(ByVal pixel As Object, ByVal components As Integer(), ByVal offset As Integer) As Integer()
+		Public NotOverridable Overrides Function getComponents(  pixel As Object,   components As Integer(),   offset As Integer) As Integer()
 			Dim intpixel As Integer=0
 			Select Case transferType
 				Case DataBuffer.TYPE_BYTE
@@ -916,7 +916,7 @@ Namespace java.awt.image
 		'''         is less than or equal to zero </exception>
 		''' <seealso cref= WritableRaster </seealso>
 		''' <seealso cref= SampleModel </seealso>
-		Public NotOverridable Overrides Function createCompatibleWritableRaster(ByVal w As Integer, ByVal h As Integer) As WritableRaster
+		Public NotOverridable Overrides Function createCompatibleWritableRaster(  w As Integer,   h As Integer) As WritableRaster
 			If (w <= 0) OrElse (h <= 0) Then Throw New IllegalArgumentException("Width (" & w & ") and height (" & h & ") cannot be <= 0")
 			Dim bandmasks As Integer()
 			If supportsAlpha Then
@@ -955,7 +955,7 @@ Namespace java.awt.image
 		'''  the <code>components</code> array is not large enough to
 		'''  hold all of the color and alpha components starting at
 		'''  <code>offset</code> </exception>
-		Public Overrides Function getDataElement(ByVal components As Integer(), ByVal offset As Integer) As Integer
+		Public Overrides Function getDataElement(  components As Integer(),   offset As Integer) As Integer
 			Dim pixel As Integer = 0
 			For i As Integer = 0 To numComponents - 1
 				pixel = pixel Or ((components(offset+i)<<maskOffsets(i)) And maskArray(i))
@@ -1004,7 +1004,7 @@ Namespace java.awt.image
 		'''            color model </exception>
 		''' <seealso cref= WritableRaster#setDataElements </seealso>
 		''' <seealso cref= SampleModel#setDataElements </seealso>
-		Public Overrides Function getDataElements(ByVal components As Integer(), ByVal offset As Integer, ByVal obj As Object) As Object
+		Public Overrides Function getDataElements(  components As Integer(),   offset As Integer,   obj As Object) As Object
 			Dim pixel As Integer = 0
 			For i As Integer = 0 To numComponents - 1
 				pixel = pixel Or ((components(offset+i)<<maskOffsets(i)) And maskArray(i))
@@ -1065,7 +1065,7 @@ Namespace java.awt.image
 		''' <exception cref="UnsupportedOperationException"> if this
 		'''            <code>transferType</code> is not supported by this
 		'''            color model </exception>
-		Public NotOverridable Overrides Function coerceData(ByVal raster_Renamed As WritableRaster, ByVal isAlphaPremultiplied As Boolean) As ColorModel
+		Public NotOverridable Overrides Function coerceData(  raster_Renamed As WritableRaster,   isAlphaPremultiplied As Boolean) As ColorModel
 			If (Not supportsAlpha) OrElse Me.alphaPremultiplied = isAlphaPremultiplied Then Return Me
 
 			Dim w As Integer = raster_Renamed.width
@@ -1248,7 +1248,7 @@ Namespace java.awt.image
 		''' <param name="raster"> the <seealso cref="Raster"/> object to test for compatibility </param>
 		''' <returns> <code>true</code> if <code>raster</code> is compatible
 		''' with this <code>ColorModel</code>; <code>false</code> otherwise. </returns>
-		Public Overrides Function isCompatibleRaster(ByVal raster_Renamed As Raster) As Boolean
+		Public Overrides Function isCompatibleRaster(  raster_Renamed As Raster) As Boolean
 			Dim sm As SampleModel = raster_Renamed.sampleModel
 			Dim spsm As SinglePixelPackedSampleModel
 			If TypeOf sm Is SinglePixelPackedSampleModel Then

@@ -39,7 +39,7 @@ Namespace java.awt.geom
 		Friend affine As AffineTransform
 		Friend index As Integer
 
-		Friend Sub New(ByVal e As Ellipse2D, ByVal at As AffineTransform)
+		Friend Sub New(  e As Ellipse2D,   at As AffineTransform)
 			Me.x = e.x
 			Me.y = e.y
 			Me.w = e.width
@@ -106,7 +106,7 @@ Namespace java.awt.geom
 		''' <seealso cref= #SEG_QUADTO </seealso>
 		''' <seealso cref= #SEG_CUBICTO </seealso>
 		''' <seealso cref= #SEG_CLOSE </seealso>
-		Public Overridable Function currentSegment(ByVal coords As Single()) As Integer Implements PathIterator.currentSegment
+		Public Overridable Function currentSegment(  coords As Single()) As Integer Implements PathIterator.currentSegment
 			If done Then Throw New NoSuchElementException("ellipse iterator out of bounds")
 			If index = 5 Then Return SEG_CLOSE
 			If index = 0 Then
@@ -144,7 +144,7 @@ Namespace java.awt.geom
 		''' <seealso cref= #SEG_QUADTO </seealso>
 		''' <seealso cref= #SEG_CUBICTO </seealso>
 		''' <seealso cref= #SEG_CLOSE </seealso>
-		Public Overridable Function currentSegment(ByVal coords As Double()) As Integer Implements PathIterator.currentSegment
+		Public Overridable Function currentSegment(  coords As Double()) As Integer Implements PathIterator.currentSegment
 			If done Then Throw New NoSuchElementException("ellipse iterator out of bounds")
 			If index = 5 Then Return SEG_CLOSE
 			If index = 0 Then

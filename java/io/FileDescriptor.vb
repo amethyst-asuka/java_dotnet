@@ -164,10 +164,10 @@ Namespace java.io
 
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Private Shared Function [set](ByVal d As Integer) As Long
+		Private Shared Function [set](  d As Integer) As Long
 		End Function
 
-		Private Shared Function standardStream(ByVal fd As Integer) As FileDescriptor
+		Private Shared Function standardStream(  fd As Integer) As FileDescriptor
 			Dim desc As New FileDescriptor
 			desc.handle = set(fd)
 			Return desc
@@ -185,7 +185,7 @@ Namespace java.io
 		''' needed to make closeAll simpler.
 		''' </summary>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Friend Sub attach(ByVal c As Closeable)
+		Friend Sub attach(  c As Closeable)
 			If parent Is Nothing Then
 				' first caller gets to do this
 				parent = c
@@ -206,7 +206,7 @@ Namespace java.io
 		''' </summary>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Friend Sub closeAll(ByVal releaser As Closeable)
+		Friend Sub closeAll(  releaser As Closeable)
 			If Not closed Then
 				closed = True
 				Dim ioe As IOException = Nothing

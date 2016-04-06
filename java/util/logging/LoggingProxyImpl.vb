@@ -39,32 +39,32 @@ Namespace java.util.logging
 		Private Sub New()
 		End Sub
 
-		Public Overrides Function getLogger(ByVal name As String) As Object
+		Public Overrides Function getLogger(  name As String) As Object
 			' always create a platform logger with the resource bundle name
 			Return Logger.getPlatformLogger(name)
 		End Function
 
-		Public Overrides Function getLevel(ByVal logger_Renamed As Object) As Object
+		Public Overrides Function getLevel(  logger_Renamed As Object) As Object
 			Return CType(logger_Renamed, Logger).level
 		End Function
 
-		Public Overrides Sub setLevel(ByVal logger_Renamed As Object, ByVal newLevel As Object)
+		Public Overrides Sub setLevel(  logger_Renamed As Object,   newLevel As Object)
 			CType(logger_Renamed, Logger).level = CType(newLevel, Level)
 		End Sub
 
-		Public Overrides Function isLoggable(ByVal logger_Renamed As Object, ByVal level_Renamed As Object) As Boolean
+		Public Overrides Function isLoggable(  logger_Renamed As Object,   level_Renamed As Object) As Boolean
 			Return CType(logger_Renamed, Logger).isLoggable(CType(level_Renamed, Level))
 		End Function
 
-		Public Overrides Sub log(ByVal logger_Renamed As Object, ByVal level_Renamed As Object, ByVal msg As String)
+		Public Overrides Sub log(  logger_Renamed As Object,   level_Renamed As Object,   msg As String)
 			CType(logger_Renamed, Logger).log(CType(level_Renamed, Level), msg)
 		End Sub
 
-		Public Overrides Sub log(ByVal logger_Renamed As Object, ByVal level_Renamed As Object, ByVal msg As String, ByVal t As Throwable)
+		Public Overrides Sub log(  logger_Renamed As Object,   level_Renamed As Object,   msg As String,   t As Throwable)
 			CType(logger_Renamed, Logger).log(CType(level_Renamed, Level), msg, t)
 		End Sub
 
-		Public Overrides Sub log(ByVal logger_Renamed As Object, ByVal level_Renamed As Object, ByVal msg As String, ParamArray ByVal params As Object())
+		Public Overrides Sub log(  logger_Renamed As Object,   level_Renamed As Object,   msg As String, ParamArray   params As Object())
 			CType(logger_Renamed, Logger).log(CType(level_Renamed, Level), msg, params)
 		End Sub
 
@@ -74,33 +74,33 @@ Namespace java.util.logging
 			End Get
 		End Property
 
-		Public Overrides Function getLoggerLevel(ByVal loggerName As String) As String
+		Public Overrides Function getLoggerLevel(  loggerName As String) As String
 			Return LogManager.loggingMXBean.getLoggerLevel(loggerName)
 		End Function
 
-		Public Overrides Sub setLoggerLevel(ByVal loggerName As String, ByVal levelName As String)
+		Public Overrides Sub setLoggerLevel(  loggerName As String,   levelName As String)
 			LogManager.loggingMXBean.loggerLevelvel(loggerName, levelName)
 		End Sub
 
-		Public Overrides Function getParentLoggerName(ByVal loggerName As String) As String
+		Public Overrides Function getParentLoggerName(  loggerName As String) As String
 			Return LogManager.loggingMXBean.getParentLoggerName(loggerName)
 		End Function
 
-		Public Overrides Function parseLevel(ByVal levelName As String) As Object
+		Public Overrides Function parseLevel(  levelName As String) As Object
 			Dim level_Renamed As Level = Level.findLevel(levelName)
 			If level_Renamed Is Nothing Then Throw New IllegalArgumentException("Unknown level """ & levelName & """")
 			Return level_Renamed
 		End Function
 
-		Public Overrides Function getLevelName(ByVal level_Renamed As Object) As String
+		Public Overrides Function getLevelName(  level_Renamed As Object) As String
 			Return CType(level_Renamed, Level).levelName
 		End Function
 
-		Public Overrides Function getLevelValue(ByVal level_Renamed As Object) As Integer
+		Public Overrides Function getLevelValue(  level_Renamed As Object) As Integer
 			Return CType(level_Renamed, Level)
 		End Function
 
-		Public Overrides Function getProperty(ByVal key As String) As String
+		Public Overrides Function getProperty(  key As String) As String
 			Return LogManager.logManager.getProperty(key)
 		End Function
 	End Class

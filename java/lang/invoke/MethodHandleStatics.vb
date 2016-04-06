@@ -96,7 +96,7 @@ Namespace java.lang.invoke
 	 End Function
 
 		'non-public
-	 Friend Shared Function getNameString(ByVal target As MethodHandle, ByVal type As MethodType) As String
+	 Friend Shared Function getNameString(  target As MethodHandle,   type As MethodType) As String
 			If type Is Nothing Then type = target.type()
 			Dim name As MemberName = Nothing
 			If target IsNot Nothing Then name = target.internalMemberName()
@@ -105,17 +105,17 @@ Namespace java.lang.invoke
 	 End Function
 
 		'non-public
-	 Friend Shared Function getNameString(ByVal target As MethodHandle, ByVal typeHolder As MethodHandle) As String
+	 Friend Shared Function getNameString(  target As MethodHandle,   typeHolder As MethodHandle) As String
 			Return getNameString(target,If(typeHolder Is Nothing, CType(Nothing, MethodType), typeHolder.type()))
 	 End Function
 
 		'non-public
-	 Friend Shared Function getNameString(ByVal target As MethodHandle) As String
+	 Friend Shared Function getNameString(  target As MethodHandle) As String
 			Return getNameString(target, CType(Nothing, MethodType))
 	 End Function
 
 		'non-public
-	 Friend Shared Function addTypeString(ByVal obj As Object, ByVal target As MethodHandle) As String
+	 Friend Shared Function addTypeString(  obj As Object,   target As MethodHandle) As String
 			Dim str As String = Convert.ToString(obj)
 			If target Is Nothing Then Return str
 			Dim paren As Integer = str.IndexOf("("c)
@@ -125,41 +125,41 @@ Namespace java.lang.invoke
 
 		' handy shared exception makers (they simplify the common case code)
 		'non-public
-	 Friend Shared Function newInternalError(ByVal message As String) As InternalError
+	 Friend Shared Function newInternalError(  message As String) As InternalError
 			Return New InternalError(message)
 	 End Function
 		'non-public
-	 Friend Shared Function newInternalError(ByVal message As String, ByVal cause As Throwable) As InternalError
+	 Friend Shared Function newInternalError(  message As String,   cause As Throwable) As InternalError
 			Return New InternalError(message, cause)
 	 End Function
 		'non-public
-	 Friend Shared Function newInternalError(ByVal cause As Throwable) As InternalError
+	 Friend Shared Function newInternalError(  cause As Throwable) As InternalError
 			Return New InternalError(cause)
 	 End Function
 		'non-public
-	 Friend Shared Function newIllegalStateException(ByVal message As String) As RuntimeException
+	 Friend Shared Function newIllegalStateException(  message As String) As RuntimeException
 			Return New IllegalStateException(message)
 	 End Function
 		'non-public
-	 Friend Shared Function newIllegalStateException(ByVal message As String, ByVal obj As Object) As RuntimeException
+	 Friend Shared Function newIllegalStateException(  message As String,   obj As Object) As RuntimeException
 			Return New IllegalStateException(message(message, obj))
 	 End Function
 		'non-public
-	 Friend Shared Function newIllegalArgumentException(ByVal message As String) As RuntimeException
+	 Friend Shared Function newIllegalArgumentException(  message As String) As RuntimeException
 			Return New IllegalArgumentException(message)
 	 End Function
 		'non-public
-	 Friend Shared Function newIllegalArgumentException(ByVal message As String, ByVal obj As Object) As RuntimeException
+	 Friend Shared Function newIllegalArgumentException(  message As String,   obj As Object) As RuntimeException
 			Return New IllegalArgumentException(message(message, obj))
 	 End Function
 		'non-public
-	 Friend Shared Function newIllegalArgumentException(ByVal message As String, ByVal obj As Object, ByVal obj2 As Object) As RuntimeException
+	 Friend Shared Function newIllegalArgumentException(  message As String,   obj As Object,   obj2 As Object) As RuntimeException
 			Return New IllegalArgumentException(message(message, obj, obj2))
 	 End Function
 		''' <summary>
 		''' Propagate unchecked exceptions and errors, but wrap anything checked and throw that instead. </summary>
 		'non-public
-	 Friend Shared Function uncaughtException(ByVal ex As Throwable) As [Error]
+	 Friend Shared Function uncaughtException(  ex As Throwable) As [Error]
 			If TypeOf ex Is Error Then Throw CType(ex, [Error])
 			If TypeOf ex Is RuntimeException Then Throw CType(ex, RuntimeException)
 			Throw newInternalError("uncaught exception", ex)
@@ -167,11 +167,11 @@ Namespace java.lang.invoke
 		Friend Shared Function NYI() As [Error]
 			Throw New AssertionError("NYI")
 		End Function
-		Private Shared Function message(ByVal message_Renamed As String, ByVal obj As Object) As String
+		Private Shared Function message(  message_Renamed As String,   obj As Object) As String
 			If obj IsNot Nothing Then message_Renamed = message_Renamed & ": " & obj
 			Return message_Renamed
 		End Function
-		Private Shared Function message(ByVal message_Renamed As String, ByVal obj As Object, ByVal obj2 As Object) As String
+		Private Shared Function message(  message_Renamed As String,   obj As Object,   obj2 As Object) As String
 			If obj IsNot Nothing OrElse obj2 IsNot Nothing Then message_Renamed = message_Renamed & ": " & obj & ", " & obj2
 			Return message_Renamed
 		End Function

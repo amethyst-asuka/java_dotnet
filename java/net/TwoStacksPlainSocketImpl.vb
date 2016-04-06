@@ -77,11 +77,11 @@ Namespace java.net
 			initProto()
 		End Sub
 
-		Public Sub New(ByVal exclBind As Boolean)
+		Public Sub New(  exclBind As Boolean)
 			exclusiveBind = exclBind
 		End Sub
 
-		Public Sub New(ByVal fd As java.io.FileDescriptor, ByVal exclBind As Boolean)
+		Public Sub New(  fd As java.io.FileDescriptor,   exclBind As Boolean)
 			Me.fd = fd
 			exclusiveBind = exclBind
 		End Sub
@@ -91,7 +91,7 @@ Namespace java.net
 		''' is a stream socket (true) or an unconnected UDP socket (false).
 		''' </summary>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Protected Friend Overrides Sub create(ByVal stream As Boolean)
+		Protected Friend Overrides Sub create(  stream As Boolean)
 			fd1 = New java.io.FileDescriptor
 			Try
 				MyBase.create(stream)
@@ -106,12 +106,12 @@ Namespace java.net
 		 ''' <param name="address"> the address </param>
 		 ''' <param name="port"> the port </param>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Protected Friend Overrides Sub bind(ByVal address As InetAddress, ByVal lport As Integer)
+		Protected Friend Overrides Sub bind(  address As InetAddress,   lport As Integer)
 			MyBase.bind(address, lport)
 			If address.anyLocalAddress Then anyLocalBoundAddr = address
 		End Sub
 
-		Public Overrides Function getOption(ByVal opt As Integer) As Object
+		Public Overrides Function getOption(  opt As Integer) As Object
 			If closedOrPending Then Throw New SocketException("Socket Closed")
 			If opt = SO_BINDADDR Then
 				If fd IsNot Nothing AndAlso fd1 IsNot Nothing Then Return anyLocalBoundAddr
@@ -126,11 +126,11 @@ Namespace java.net
 			End If
 		End Function
 
-		Friend Overrides Sub socketBind(ByVal address As InetAddress, ByVal port As Integer)
+		Friend Overrides Sub socketBind(  address As InetAddress,   port As Integer)
 			socketBind(address, port, exclusiveBind)
 		End Sub
 
-		Friend Overrides Sub socketSetOption(ByVal opt As Integer, ByVal [on] As Boolean, ByVal value As Object)
+		Friend Overrides Sub socketSetOption(  opt As Integer,   [on] As Boolean,   value As Object)
 			' SO_REUSEADDR emulated when using exclusive bind
 			If opt = SO_REUSEADDR AndAlso exclusiveBind Then
 				isReuseAddress = [on]
@@ -205,27 +205,27 @@ Namespace java.net
 
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Friend Sub socketCreate(ByVal isServer As Boolean)
+		Friend Sub socketCreate(  isServer As Boolean)
 		End Sub
 
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Friend Sub socketConnect(ByVal address As InetAddress, ByVal port As Integer, ByVal timeout As Integer)
+		Friend Sub socketConnect(  address As InetAddress,   port As Integer,   timeout As Integer)
 		End Sub
 
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Friend Sub socketBind(ByVal address As InetAddress, ByVal port As Integer, ByVal exclBind As Boolean)
+		Friend Sub socketBind(  address As InetAddress,   port As Integer,   exclBind As Boolean)
 		End Sub
 
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Friend Sub socketListen(ByVal count As Integer)
+		Friend Sub socketListen(  count As Integer)
 		End Sub
 
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Friend Sub socketAccept(ByVal s As SocketImpl)
+		Friend Sub socketAccept(  s As SocketImpl)
 		End Sub
 
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
@@ -235,27 +235,27 @@ Namespace java.net
 
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Friend Sub socketClose0(ByVal useDeferredClose As Boolean)
+		Friend Sub socketClose0(  useDeferredClose As Boolean)
 		End Sub
 
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Friend Sub socketShutdown(ByVal howto As Integer)
+		Friend Sub socketShutdown(  howto As Integer)
 		End Sub
 
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Friend Sub socketNativeSetOption(ByVal cmd As Integer, ByVal [on] As Boolean, ByVal value As Object)
+		Friend Sub socketNativeSetOption(  cmd As Integer,   [on] As Boolean,   value As Object)
 		End Sub
 
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Friend Function socketGetOption(ByVal opt As Integer, ByVal iaContainerObj As Object) As Integer
+		Friend Function socketGetOption(  opt As Integer,   iaContainerObj As Object) As Integer
 		End Function
 
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Friend Sub socketSendUrgentData(ByVal data As Integer)
+		Friend Sub socketSendUrgentData(  data As Integer)
 		End Sub
 	End Class
 

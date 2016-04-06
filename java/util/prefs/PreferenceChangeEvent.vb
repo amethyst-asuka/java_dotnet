@@ -64,7 +64,7 @@ Namespace java.util.prefs
 		''' <param name="key">  The key of the preference that was changed. </param>
 		''' <param name="newValue">  The new value of the preference, or <tt>null</tt>
 		'''                  if the preference is being removed. </param>
-		Public Sub New(ByVal node As Preferences, ByVal key As String, ByVal newValue As String)
+		Public Sub New(  node As Preferences,   key As String,   newValue As String)
 			MyBase.New(node)
 			Me.key = key
 			Me.newValue = newValue
@@ -105,7 +105,7 @@ Namespace java.util.prefs
 		''' Throws NotSerializableException, since NodeChangeEvent objects
 		''' are not intended to be serializable.
 		''' </summary>
-		 Private Sub writeObject(ByVal out As java.io.ObjectOutputStream)
+		 Private Sub writeObject(  out As java.io.ObjectOutputStream)
 			 Throw New java.io.NotSerializableException("Not serializable.")
 		 End Sub
 
@@ -113,7 +113,7 @@ Namespace java.util.prefs
 		''' Throws NotSerializableException, since PreferenceChangeEvent objects
 		''' are not intended to be serializable.
 		''' </summary>
-		 Private Sub readObject(ByVal [in] As java.io.ObjectInputStream)
+		 Private Sub readObject(  [in] As java.io.ObjectInputStream)
 			 Throw New java.io.NotSerializableException("Not serializable.")
 		 End Sub
 

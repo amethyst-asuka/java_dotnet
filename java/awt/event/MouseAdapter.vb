@@ -72,52 +72,52 @@ Namespace java.awt.event
 		''' <summary>
 		''' {@inheritDoc}
 		''' </summary>
-		Public Overridable Sub mouseClicked(ByVal e As MouseEvent) Implements MouseListener.mouseClicked
+		Public Overridable Sub mouseClicked(  e As MouseEvent) Implements MouseListener.mouseClicked
 		End Sub
 
 		''' <summary>
 		''' {@inheritDoc}
 		''' </summary>
-		Public Overridable Sub mousePressed(ByVal e As MouseEvent) Implements MouseListener.mousePressed
+		Public Overridable Sub mousePressed(  e As MouseEvent) Implements MouseListener.mousePressed
 		End Sub
 
 		''' <summary>
 		''' {@inheritDoc}
 		''' </summary>
-		Public Overridable Sub mouseReleased(ByVal e As MouseEvent) Implements MouseListener.mouseReleased
+		Public Overridable Sub mouseReleased(  e As MouseEvent) Implements MouseListener.mouseReleased
 		End Sub
 
 		''' <summary>
 		''' {@inheritDoc}
 		''' </summary>
-		Public Overridable Sub mouseEntered(ByVal e As MouseEvent) Implements MouseListener.mouseEntered
+		Public Overridable Sub mouseEntered(  e As MouseEvent) Implements MouseListener.mouseEntered
 		End Sub
 
 		''' <summary>
 		''' {@inheritDoc}
 		''' </summary>
-		Public Overridable Sub mouseExited(ByVal e As MouseEvent) Implements MouseListener.mouseExited
-		End Sub
-
-		''' <summary>
-		''' {@inheritDoc}
-		''' @since 1.6
-		''' </summary>
-		Public Overridable Sub mouseWheelMoved(ByVal e As MouseWheelEvent) Implements MouseWheelListener.mouseWheelMoved
+		Public Overridable Sub mouseExited(  e As MouseEvent) Implements MouseListener.mouseExited
 		End Sub
 
 		''' <summary>
 		''' {@inheritDoc}
 		''' @since 1.6
 		''' </summary>
-		Public Overridable Sub mouseDragged(ByVal e As MouseEvent) Implements MouseMotionListener.mouseDragged
+		Public Overridable Sub mouseWheelMoved(  e As MouseWheelEvent) Implements MouseWheelListener.mouseWheelMoved
 		End Sub
 
 		''' <summary>
 		''' {@inheritDoc}
 		''' @since 1.6
 		''' </summary>
-		Public Overridable Sub mouseMoved(ByVal e As MouseEvent) Implements MouseMotionListener.mouseMoved
+		Public Overridable Sub mouseDragged(  e As MouseEvent) Implements MouseMotionListener.mouseDragged
+		End Sub
+
+		''' <summary>
+		''' {@inheritDoc}
+		''' @since 1.6
+		''' </summary>
+		Public Overridable Sub mouseMoved(  e As MouseEvent) Implements MouseMotionListener.mouseMoved
 		End Sub
 	End Class
 

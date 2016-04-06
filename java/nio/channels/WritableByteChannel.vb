@@ -96,7 +96,7 @@ Namespace java.nio.channels
 		''' </exception>
 		''' <exception cref="IOException">
 		'''          If some other I/O error occurs </exception>
-		Function write(ByVal src As java.nio.ByteBuffer) As Integer
+		Function write(  src As java.nio.ByteBuffer) As Integer
 
 	End Interface
 

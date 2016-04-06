@@ -305,7 +305,7 @@ Namespace java.net
 		''' <seealso cref=        java.net.URLStreamHandler </seealso>
 		''' <seealso cref=        java.net.URLStreamHandlerFactory#createURLStreamHandler(
 		'''                  java.lang.String) </seealso>
-		Public Sub New(ByVal protocol As String, ByVal host As String, ByVal port As Integer, ByVal file As String)
+		Public Sub New(  protocol As String,   host As String,   port As Integer,   file As String)
 			Me.New(protocol, host, port, file, Nothing)
 		End Sub
 
@@ -326,7 +326,7 @@ Namespace java.net
 		''' <exception cref="MalformedURLException">  if an unknown protocol is specified. </exception>
 		''' <seealso cref=        java.net.URL#URL(java.lang.String, java.lang.String,
 		'''                  int, java.lang.String) </seealso>
-		Public Sub New(ByVal protocol As String, ByVal host As String, ByVal file As String)
+		Public Sub New(  protocol As String,   host As String,   file As String)
 			Me.New(protocol, host, -1, file)
 		End Sub
 
@@ -368,7 +368,7 @@ Namespace java.net
 		'''                  java.lang.String) </seealso>
 		''' <seealso cref=        SecurityManager#checkPermission </seealso>
 		''' <seealso cref=        java.net.NetPermission </seealso>
-		Public Sub New(ByVal protocol As String, ByVal host As String, ByVal port As Integer, ByVal file As String, ByVal handler As URLStreamHandler)
+		Public Sub New(  protocol As String,   host As String,   port As Integer,   file As String,   handler As URLStreamHandler)
 			If handler IsNot Nothing Then
 				Dim sm As SecurityManager = System.securityManager
 				If sm IsNot Nothing Then checkSpecifyHandler(sm)
@@ -419,7 +419,7 @@ Namespace java.net
 		''' <exception cref="MalformedURLException">  if no protocol is specified, or an
 		'''               unknown protocol is found, or {@code spec} is {@code null}. </exception>
 		''' <seealso cref=        java.net.URL#URL(java.net.URL, java.lang.String) </seealso>
-		Public Sub New(ByVal spec As String)
+		Public Sub New(  spec As String)
 			Me.New(Nothing, spec)
 		End Sub
 
@@ -469,7 +469,7 @@ Namespace java.net
 		''' <seealso cref=        java.net.URLStreamHandler </seealso>
 		''' <seealso cref=        java.net.URLStreamHandler#parseURL(java.net.URL,
 		'''                  java.lang.String, int, int) </seealso>
-		Public Sub New(ByVal context As URL, ByVal spec As String)
+		Public Sub New(  context As URL,   spec As String)
 			Me.New(context, spec, Nothing)
 		End Sub
 
@@ -492,7 +492,7 @@ Namespace java.net
 		''' <seealso cref=        java.net.URLStreamHandler </seealso>
 		''' <seealso cref=        java.net.URLStreamHandler#parseURL(java.net.URL,
 		'''                  java.lang.String, int, int) </seealso>
-		Public Sub New(ByVal context As URL, ByVal spec As String, ByVal handler As URLStreamHandler)
+		Public Sub New(  context As URL,   spec As String,   handler As URLStreamHandler)
 			Dim original As String = spec
 			Dim i, limit, c As Integer
 			Dim start As Integer = 0
@@ -595,7 +595,7 @@ Namespace java.net
 	'    
 	'     * Returns true if specified string is a valid protocol name.
 	'     
-		Private Function isValidProtocol(ByVal protocol As String) As Boolean
+		Private Function isValidProtocol(  protocol As String) As Boolean
 			Dim len As Integer = protocol.length()
 			If len < 1 Then Return False
 			Dim c As Char = protocol.Chars(0)
@@ -610,7 +610,7 @@ Namespace java.net
 	'    
 	'     * Checks for permission to specify a stream handler.
 	'     
-		Private Sub checkSpecifyHandler(ByVal sm As SecurityManager)
+		Private Sub checkSpecifyHandler(  sm As SecurityManager)
 			sm.checkPermission(sun.security.util.SecurityConstants.SPECIFY_HANDLER_PERMISSION)
 		End Sub
 
@@ -624,7 +624,7 @@ Namespace java.net
 		'''   <param name="port"> the port number on the host </param>
 		''' <param name="file"> the file on the host </param>
 		''' <param name="ref"> the internal reference in the URL </param>
-		Friend Sub [set](ByVal protocol As String, ByVal host As String, ByVal port As Integer, ByVal file As String, ByVal ref As String)
+		Friend Sub [set](  protocol As String,   host As String,   port As Integer,   file As String,   ref As String)
 			SyncLock Me
 				Me.protocol = protocol
 				Me.host = host
@@ -660,7 +660,7 @@ Namespace java.net
 		''' <param name="ref"> the internal reference in the URL </param>
 		''' <param name="query"> the query part of this URL
 		''' @since 1.3 </param>
-		Friend Sub [set](ByVal protocol As String, ByVal host As String, ByVal port As Integer, ByVal authority As String, ByVal userInfo As String, ByVal path As String, ByVal query As String, ByVal ref As String)
+		Friend Sub [set](  protocol As String,   host As String,   port As Integer,   authority As String,   userInfo As String,   path As String,   query As String,   ref As String)
 			SyncLock Me
 				Me.protocol = protocol
 				Me.host = host
@@ -824,7 +824,7 @@ Namespace java.net
 		''' <param name="obj">   the URL to compare against. </param>
 		''' <returns>  {@code true} if the objects are the same;
 		'''          {@code false} otherwise. </returns>
-		Public Overrides Function Equals(ByVal obj As Object) As Boolean
+		Public Overrides Function Equals(  obj As Object) As Boolean
 			If Not(TypeOf obj Is URL) Then Return False
 			Dim u2 As URL = CType(obj, URL)
 
@@ -856,7 +856,7 @@ Namespace java.net
 		''' <param name="other">   the {@code URL} to compare against. </param>
 		''' <returns>  {@code true} if they reference the same remote object;
 		'''          {@code false} otherwise. </returns>
-		Public Function sameFile(ByVal other As URL) As Boolean
+		Public Function sameFile(  other As URL) As Boolean
 			Return handler.sameFile(Me, other)
 		End Function
 
@@ -962,7 +962,7 @@ Namespace java.net
 		''' <seealso cref=        java.net.URLStreamHandler#openConnection(java.net.URL,
 		'''             java.net.Proxy)
 		''' @since      1.5 </seealso>
-		Public Function openConnection(ByVal proxy_Renamed As Proxy) As URLConnection
+		Public Function openConnection(  proxy_Renamed As Proxy) As URLConnection
 			If proxy_Renamed Is Nothing Then Throw New IllegalArgumentException("proxy can not be null")
 
 			' Create a copy of Proxy as a security measure
@@ -1023,7 +1023,7 @@ Namespace java.net
 		''' <exception cref="IOException">  if an I/O exception occurs. </exception>
 		''' <seealso cref=        java.net.URLConnection#getContent(Class[])
 		''' @since 1.3 </seealso>
-		Public Function getContent(ByVal classes As  [Class]()) As Object
+		Public Function getContent(  classes As  [Class]()) As Object
 			Return openConnection().getContent(classes)
 		End Function
 
@@ -1055,7 +1055,7 @@ Namespace java.net
 		''' <seealso cref=        java.net.URLStreamHandlerFactory </seealso>
 		''' <seealso cref=        SecurityManager#checkSetFactory </seealso>
 		Public Shared Property uRLStreamHandlerFactory As URLStreamHandlerFactory
-			Set(ByVal fac As URLStreamHandlerFactory)
+			Set(  fac As URLStreamHandlerFactory)
 				SyncLock streamHandlerLock
 					If factory IsNot Nothing Then Throw New [Error]("factory already defined")
 					Dim security As SecurityManager = System.securityManager
@@ -1075,7 +1075,7 @@ Namespace java.net
 		''' <summary>
 		''' Returns the Stream Handler. </summary>
 		''' <param name="protocol"> the protocol to use </param>
-		Friend Shared Function getURLStreamHandler(ByVal protocol As String) As URLStreamHandler
+		Friend Shared Function getURLStreamHandler(  protocol As String) As URLStreamHandler
 
 			Dim handler As URLStreamHandler = handlers(protocol)
 			If handler Is Nothing Then
@@ -1175,7 +1175,7 @@ Namespace java.net
 		''' throw an IOException if it does not.
 		''' </summary>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Private Sub writeObject(ByVal s As java.io.ObjectOutputStream)
+		Private Sub writeObject(  s As java.io.ObjectOutputStream)
 			s.defaultWriteObject() ' write the fields
 		End Sub
 
@@ -1185,7 +1185,7 @@ Namespace java.net
 		''' stream handler.
 		''' </summary>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Private Sub readObject(ByVal s As java.io.ObjectInputStream)
+		Private Sub readObject(  s As java.io.ObjectInputStream)
 			Dim gf As java.io.ObjectInputStream.GetField = s.readFields()
 			Dim protocol_Renamed As String = CStr(gf.get("protocol", Nothing))
 			If getURLStreamHandler(protocol_Renamed) Is Nothing Then Throw New java.io.IOException("unknown protocol: " & protocol_Renamed)
@@ -1225,7 +1225,7 @@ Namespace java.net
 			Return replacementURL
 	   End Function
 
-		Private Function setDeserializedFields(ByVal handler As URLStreamHandler) As URL
+		Private Function setDeserializedFields(  handler As URLStreamHandler) As URL
 			Dim replacementURL As URL
 			Dim userInfo_Renamed As String = Nothing
 			Dim protocol_Renamed As String = tempState.protocol
@@ -1303,7 +1303,7 @@ Namespace java.net
 			Return replacementURL
 		End Function
 
-		Private Function isBuiltinStreamHandler(ByVal handlerClassName As String) As Boolean
+		Private Function isBuiltinStreamHandler(  handlerClassName As String) As Boolean
 			Return (handlerClassName.StartsWith(BUILTIN_HANDLERS_PREFIX))
 		End Function
 
@@ -1323,7 +1323,7 @@ Namespace java.net
 		End Sub
 
 		Private Property serializedHashCode As Integer
-			Set(ByVal hc As Integer)
+			Set(  hc As Integer)
 				Me.hashCode_Renamed = hc
 			End Set
 		End Property
@@ -1332,7 +1332,7 @@ Namespace java.net
 	Friend Class Parts
 		Friend path, query, ref As String
 
-		Friend Sub New(ByVal file As String)
+		Friend Sub New(  file As String)
 			Dim ind As Integer = file.IndexOf("#"c)
 			ref = If(ind < 0, Nothing, file.Substring(ind + 1))
 			file = If(ind < 0, file, file.Substring(0, ind))
@@ -1373,7 +1373,7 @@ Namespace java.net
 		Private ReadOnly ref As String
 		Private ReadOnly hashCode As Integer
 
-		Public Sub New(ByVal protocol As String, ByVal host As String, ByVal port As Integer, ByVal authority As String, ByVal file As String, ByVal ref As String, ByVal GetHashCode As Integer)
+		Public Sub New(  protocol As String,   host As String,   port As Integer,   authority As String,   file As String,   ref As String,   GetHashCode As Integer)
 			Me.protocol = protocol
 			Me.host = host
 			Me.port = port

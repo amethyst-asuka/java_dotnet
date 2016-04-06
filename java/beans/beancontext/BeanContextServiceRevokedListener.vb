@@ -40,7 +40,7 @@ Namespace java.beans.beancontext
 		''' this service will no longer be satisfied. </summary>
 		''' <param name="bcsre"> the <code>BeanContextServiceRevokedEvent</code> received
 		''' by this listener. </param>
-		Sub serviceRevoked(ByVal bcsre As java.beans.beancontext.BeanContextServiceRevokedEvent)
+		Sub serviceRevoked(  bcsre As java.beans.beancontext.BeanContextServiceRevokedEvent)
 	End Interface
 
 End Namespace

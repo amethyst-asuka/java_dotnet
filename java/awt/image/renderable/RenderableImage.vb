@@ -87,7 +87,7 @@ Namespace java.awt.image.renderable
 		''' <param name="name"> the name of the property to get, as a String. </param>
 		''' <returns> a reference to the property Object, or the value
 		'''         java.awt.Image.UndefinedProperty. </returns>
-		Function getProperty(ByVal name As String) As Object
+		Function getProperty(  name As String) As Object
 
 		''' <summary>
 		''' Returns a list of names recognized by getProperty. </summary>
@@ -156,7 +156,7 @@ Namespace java.awt.image.renderable
 		''' <param name="h"> the height of rendered image in pixels, or 0. </param>
 		''' <param name="hints"> a RenderingHints object containing hints. </param>
 		''' <returns> a RenderedImage containing the rendered data. </returns>
-		Function createScaledRendering(ByVal w As Integer, ByVal h As Integer, ByVal hints As java.awt.RenderingHints) As RenderedImage
+		Function createScaledRendering(  w As Integer,   h As Integer,   hints As java.awt.RenderingHints) As RenderedImage
 
 		''' <summary>
 		''' Returnd a RenderedImage instance of this image with a default
@@ -183,7 +183,7 @@ Namespace java.awt.image.renderable
 		''' </summary>
 		''' <param name="renderContext"> the RenderContext to use to produce the rendering. </param>
 		''' <returns> a RenderedImage containing the rendered data. </returns>
-		Function createRendering(ByVal renderContext As RenderContext) As RenderedImage
+		Function createRendering(  renderContext As RenderContext) As RenderedImage
 	End Interface
 
 End Namespace

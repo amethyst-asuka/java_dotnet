@@ -43,7 +43,7 @@ Namespace java.util.function
 		''' </summary>
 		''' <param name="operand"> the operand </param>
 		''' <returns> the operator result </returns>
-		Function applyAsDouble(ByVal operand As Double) As Double
+		Function applyAsDouble(  operand As Double) As Double
 
 		''' <summary>
 		''' Returns a composed operator that first applies the {@code before}
@@ -57,10 +57,10 @@ Namespace java.util.function
 		''' <exception cref="NullPointerException"> if before is null
 		''' </exception>
 		''' <seealso cref= #andThen(DoubleUnaryOperator) </seealso>
-		default Function compose(ByVal before As DoubleUnaryOperator) As DoubleUnaryOperator
+		default Function compose(  before As DoubleUnaryOperator) As DoubleUnaryOperator
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 			java.util.Objects.requireNonNull(before);
-			Sub [New](ByVal v As Double)
+			Sub [New](  v As Double)
 
 		''' <summary>
 		''' Returns a composed operator that first applies this operator to
@@ -74,10 +74,10 @@ Namespace java.util.function
 		''' <exception cref="NullPointerException"> if after is null
 		''' </exception>
 		''' <seealso cref= #compose(DoubleUnaryOperator) </seealso>
-		default Function andThen(ByVal after As DoubleUnaryOperator) As DoubleUnaryOperator
+		default Function andThen(  after As DoubleUnaryOperator) As DoubleUnaryOperator
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 			java.util.Objects.requireNonNull(after);
-			Sub [New](ByVal t As Double)
+			Sub [New](  t As Double)
 
 		''' <summary>
 		''' Returns a unary operator that always returns its input argument.

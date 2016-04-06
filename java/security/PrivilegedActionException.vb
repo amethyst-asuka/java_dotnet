@@ -64,7 +64,7 @@ Namespace java.security
 		''' the specific Exception.
 		''' </summary>
 		''' <param name="exception"> The exception thrown </param>
-		Public Sub New(ByVal exception_Renamed As Exception)
+		Public Sub New(  exception_Renamed As Exception)
 			MyBase.New(CType(Nothing, Throwable)) ' Disallow initCause
 			Me.exception_Renamed = exception_Renamed
 		End Sub

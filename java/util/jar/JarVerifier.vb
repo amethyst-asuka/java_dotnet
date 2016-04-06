@@ -93,7 +93,7 @@ Namespace java.util.jar
 		''' collect -DIGEST-MANIFEST values for blacklist </summary>
 		Private manifestDigests As  ArrayList
 
-		Public Sub New(ByVal rawBytes As SByte())
+		Public Sub New(  rawBytes As SByte())
 			manifestRawBytes = rawBytes
 			sigFileSigners = New Dictionary(Of )
 			verifiedSigners = New Dictionary(Of )
@@ -108,7 +108,7 @@ Namespace java.util.jar
 		''' keeps various state information depending on what type of
 		''' file is being parsed.
 		''' </summary>
-		Public Overridable Sub beginEntry(ByVal je As JarEntry, ByVal mev As sun.security.util.ManifestEntryVerifier)
+		Public Overridable Sub beginEntry(  je As JarEntry,   mev As sun.security.util.ManifestEntryVerifier)
 			If je Is Nothing Then Return
 
 			If debug IsNot Nothing Then debug.println("beginEntry " & je.name)
@@ -182,7 +182,7 @@ Namespace java.util.jar
 		''' update a single java.lang.[Byte].
 		''' </summary>
 
-		Public Overridable Sub update(ByVal b As Integer, ByVal mev As sun.security.util.ManifestEntryVerifier)
+		Public Overridable Sub update(  b As Integer,   mev As sun.security.util.ManifestEntryVerifier)
 			If b <> -1 Then
 				If parsingBlockOrSF Then
 					baos.write(b)
@@ -198,7 +198,7 @@ Namespace java.util.jar
 		''' update an array of bytes.
 		''' </summary>
 
-		Public Overridable Sub update(ByVal n As Integer, ByVal b As SByte(), ByVal [off] As Integer, ByVal len As Integer, ByVal mev As sun.security.util.ManifestEntryVerifier)
+		Public Overridable Sub update(  n As Integer,   b As SByte(),   [off] As Integer,   len As Integer,   mev As sun.security.util.ManifestEntryVerifier)
 			If n <> -1 Then
 				If parsingBlockOrSF Then
 					baos.write(b, [off], n)
@@ -213,7 +213,7 @@ Namespace java.util.jar
 		''' <summary>
 		''' called when we reach the end of entry in one of the read() methods.
 		''' </summary>
-		Private Sub processEntry(ByVal mev As sun.security.util.ManifestEntryVerifier)
+		Private Sub processEntry(  mev As sun.security.util.ManifestEntryVerifier)
 			If Not parsingBlockOrSF Then
 				Dim je As JarEntry = mev.entry
 				If (je IsNot Nothing) AndAlso (je.signers Is Nothing) Then
@@ -306,11 +306,11 @@ Namespace java.util.jar
 		''' @deprecated
 		''' </summary>
 		<Obsolete> _
-		Public Overridable Function getCerts(ByVal name As String) As java.security.cert.Certificate()
+		Public Overridable Function getCerts(  name As String) As java.security.cert.Certificate()
 			Return mapSignersToCertArray(getCodeSigners(name))
 		End Function
 
-		Public Overridable Function getCerts(ByVal jar As JarFile, ByVal entry As JarEntry) As java.security.cert.Certificate()
+		Public Overridable Function getCerts(  jar As JarFile,   entry As JarEntry) As java.security.cert.Certificate()
 			Return mapSignersToCertArray(getCodeSigners(jar, entry))
 		End Function
 
@@ -319,11 +319,11 @@ Namespace java.util.jar
 		''' the given file in the jar. this array is not cloned.
 		''' 
 		''' </summary>
-		Public Overridable Function getCodeSigners(ByVal name As String) As CodeSigner()
+		Public Overridable Function getCodeSigners(  name As String) As CodeSigner()
 			Return verifiedSigners.get(name)
 		End Function
 
-		Public Overridable Function getCodeSigners(ByVal jar As JarFile, ByVal entry As JarEntry) As CodeSigner()
+		Public Overridable Function getCodeSigners(  jar As JarFile,   entry As JarEntry) As CodeSigner()
 			Dim name As String = entry.name
 			If eagerValidation AndAlso sigFileSigners.get(name) IsNot Nothing Then
 	'            
@@ -348,7 +348,7 @@ Namespace java.util.jar
 	'     * Convert an array of signers into an array of concatenated certificate
 	'     * arrays.
 	'     
-		Private Shared Function mapSignersToCertArray(ByVal signers As CodeSigner()) As java.security.cert.Certificate()
+		Private Shared Function mapSignersToCertArray(  signers As CodeSigner()) As java.security.cert.Certificate()
 
 			If signers IsNot Nothing Then
 				Dim certChains As New List(Of java.security.cert.Certificate)
@@ -401,7 +401,7 @@ Namespace java.util.jar
 			Private mev As sun.security.util.ManifestEntryVerifier
 			Private numLeft As Long
 
-			Friend Sub New(ByVal man As Manifest, ByVal je As JarEntry, ByVal [is] As InputStream, ByVal jv As JarVerifier)
+			Friend Sub New(  man As Manifest,   je As JarEntry,   [is] As InputStream,   jv As JarVerifier)
 				Me.is = [is]
 				Me.jv = jv
 				Me.mev = New sun.security.util.ManifestEntryVerifier(man)

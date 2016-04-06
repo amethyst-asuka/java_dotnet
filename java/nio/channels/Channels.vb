@@ -50,7 +50,7 @@ Namespace java.nio.channels
 		Private Sub New() ' No instantiation
 		End Sub
 
-		Private Shared Sub checkNotNull(ByVal o As Object, ByVal name As String)
+		Private Shared Sub checkNotNull(  o As Object,   name As String)
 			If o Is Nothing Then Throw New NullPointerException("""" & name & """ is null!")
 		End Sub
 
@@ -58,7 +58,7 @@ Namespace java.nio.channels
 		''' Write all remaining bytes in buffer to the given channel.
 		''' If the channel is selectable then it must be configured blocking.
 		''' </summary>
-		Private Shared Sub writeFullyImpl(ByVal ch As WritableByteChannel, ByVal bb As java.nio.ByteBuffer)
+		Private Shared Sub writeFullyImpl(  ch As WritableByteChannel,   bb As java.nio.ByteBuffer)
 			Do While bb.remaining() > 0
 				Dim n As Integer = ch.write(bb)
 				If n <= 0 Then Throw New RuntimeException("no bytes written")
@@ -70,7 +70,7 @@ Namespace java.nio.channels
 		''' </summary>
 		''' <exception cref="IllegalBlockingModeException">
 		'''          If the channel is selectable and configured non-blocking. </exception>
-		Private Shared Sub writeFully(ByVal ch As WritableByteChannel, ByVal bb As java.nio.ByteBuffer)
+		Private Shared Sub writeFully(  ch As WritableByteChannel,   bb As java.nio.ByteBuffer)
 			If TypeOf ch Is SelectableChannel Then
 				Dim sc As SelectableChannel = CType(ch, SelectableChannel)
 				SyncLock sc.blockingLock()
@@ -99,7 +99,7 @@ Namespace java.nio.channels
 		'''         The channel from which bytes will be read
 		''' </param>
 		''' <returns>  A new input stream </returns>
-		Public Shared Function newInputStream(ByVal ch As ReadableByteChannel) As java.io.InputStream
+		Public Shared Function newInputStream(  ch As ReadableByteChannel) As java.io.InputStream
 			checkNotNull(ch, "ch")
 			Return New sun.nio.ch.ChannelInputStream(ch)
 		End Function
@@ -117,7 +117,7 @@ Namespace java.nio.channels
 		'''         The channel to which bytes will be written
 		''' </param>
 		''' <returns>  A new output stream </returns>
-		Public Shared Function newOutputStream(ByVal ch As WritableByteChannel) As java.io.OutputStream
+		Public Shared Function newOutputStream(  ch As WritableByteChannel) As java.io.OutputStream
 			checkNotNull(ch, "ch")
 
 			Return New OutputStreamAnonymousInnerClassHelper
@@ -131,14 +131,14 @@ Namespace java.nio.channels
 			Private b1 As SByte() = Nothing
 
 			<MethodImpl(MethodImplOptions.Synchronized)> _
-			Public Overrides Sub write(ByVal b As Integer)
+			Public Overrides Sub write(  b As Integer)
 			   If b1 Is Nothing Then b1 = New SByte(0){}
 				b1(0) = CByte(b)
 				Me.write(b1)
 			End Sub
 
 			<MethodImpl(MethodImplOptions.Synchronized)> _
-			Public Overrides Sub write(ByVal bs As SByte(), ByVal [off] As Integer, ByVal len As Integer)
+			Public Overrides Sub write(  bs As SByte(),   [off] As Integer,   len As Integer)
 				If ([off] < 0) OrElse ([off] > bs.Length) OrElse (len < 0) OrElse (([off] + len) > bs.Length) OrElse (([off] + len) < 0) Then
 					Throw New IndexOutOfBoundsException
 				ElseIf len = 0 Then
@@ -172,7 +172,7 @@ Namespace java.nio.channels
 		''' <returns>  A new input stream
 		''' 
 		''' @since 1.7 </returns>
-		Public Shared Function newInputStream(ByVal ch As AsynchronousByteChannel) As java.io.InputStream
+		Public Shared Function newInputStream(  ch As AsynchronousByteChannel) As java.io.InputStream
 			checkNotNull(ch, "ch")
 			Return New InputStreamAnonymousInnerClassHelper
 		End Function
@@ -193,7 +193,7 @@ Namespace java.nio.channels
 			End Function
 
 			<MethodImpl(MethodImplOptions.Synchronized)> _
-			Public Overrides Function read(ByVal bs As SByte(), ByVal [off] As Integer, ByVal len As Integer) As Integer
+			Public Overrides Function read(  bs As SByte(),   [off] As Integer,   len As Integer) As Integer
 				If ([off] < 0) OrElse ([off] > bs.Length) OrElse (len < 0) OrElse (([off] + len) > bs.Length) OrElse (([off] + len) < 0) Then
 					Throw New IndexOutOfBoundsException
 				ElseIf len = 0 Then
@@ -240,7 +240,7 @@ Namespace java.nio.channels
 		''' <returns>  A new output stream
 		''' 
 		''' @since 1.7 </returns>
-		Public Shared Function newOutputStream(ByVal ch As AsynchronousByteChannel) As java.io.OutputStream
+		Public Shared Function newOutputStream(  ch As AsynchronousByteChannel) As java.io.OutputStream
 			checkNotNull(ch, "ch")
 			Return New OutputStreamAnonymousInnerClassHelper2
 		End Function
@@ -253,14 +253,14 @@ Namespace java.nio.channels
 			Private b1 As SByte() = Nothing
 
 			<MethodImpl(MethodImplOptions.Synchronized)> _
-			Public Overrides Sub write(ByVal b As Integer)
+			Public Overrides Sub write(  b As Integer)
 			   If b1 Is Nothing Then b1 = New SByte(0){}
 				b1(0) = CByte(b)
 				Me.write(b1)
 			End Sub
 
 			<MethodImpl(MethodImplOptions.Synchronized)> _
-			Public Overrides Sub write(ByVal bs As SByte(), ByVal [off] As Integer, ByVal len As Integer)
+			Public Overrides Sub write(  bs As SByte(),   [off] As Integer,   len As Integer)
 				If ([off] < 0) OrElse ([off] > bs.Length) OrElse (len < 0) OrElse (([off] + len) > bs.Length) OrElse (([off] + len) < 0) Then
 					Throw New IndexOutOfBoundsException
 				ElseIf len = 0 Then
@@ -307,7 +307,7 @@ Namespace java.nio.channels
 		'''         The stream from which bytes are to be read
 		''' </param>
 		''' <returns>  A new readable byte channel </returns>
-		Public Shared Function newChannel(ByVal [in] As java.io.InputStream) As ReadableByteChannel
+		Public Shared Function newChannel(  [in] As java.io.InputStream) As ReadableByteChannel
 			checkNotNull([in], "in")
 
 			If TypeOf [in] Is java.io.FileInputStream AndAlso GetType(java.io.FileInputStream).Equals([in].GetType()) Then Return CType([in], java.io.FileInputStream).channel
@@ -325,11 +325,11 @@ Namespace java.nio.channels
 			Private open As Boolean = True
 			Private readLock As New Object
 
-			Friend Sub New(ByVal [in] As java.io.InputStream)
+			Friend Sub New(  [in] As java.io.InputStream)
 				Me.in = [in]
 			End Sub
 
-			Public Overridable Function read(ByVal dst As java.nio.ByteBuffer) As Integer Implements ReadableByteChannel.read
+			Public Overridable Function read(  dst As java.nio.ByteBuffer) As Integer Implements ReadableByteChannel.read
 				Dim len As Integer = dst.remaining()
 				Dim totalRead As Integer = 0
 				Dim bytesRead As Integer = 0
@@ -375,7 +375,7 @@ Namespace java.nio.channels
 		'''         The stream to which bytes are to be written
 		''' </param>
 		''' <returns>  A new writable byte channel </returns>
-		Public Shared Function newChannel(ByVal out As java.io.OutputStream) As WritableByteChannel
+		Public Shared Function newChannel(  out As java.io.OutputStream) As WritableByteChannel
 			checkNotNull(out, "out")
 
 			If TypeOf out Is java.io.FileOutputStream AndAlso GetType(java.io.FileOutputStream).Equals(out.GetType()) Then Return CType(out, java.io.FileOutputStream).channel
@@ -393,11 +393,11 @@ Namespace java.nio.channels
 			Private open As Boolean = True
 			Private writeLock As New Object
 
-			Friend Sub New(ByVal out As java.io.OutputStream)
+			Friend Sub New(  out As java.io.OutputStream)
 				Me.out = out
 			End Sub
 
-			Public Overridable Function write(ByVal src As java.nio.ByteBuffer) As Integer Implements WritableByteChannel.write
+			Public Overridable Function write(  src As java.nio.ByteBuffer) As Integer Implements WritableByteChannel.write
 				Dim len As Integer = src.remaining()
 				Dim totalWritten As Integer = 0
 				SyncLock writeLock
@@ -451,7 +451,7 @@ Namespace java.nio.channels
 		'''         default capacity is to be used
 		''' </param>
 		''' <returns>  A new reader </returns>
-		Public Shared Function newReader(ByVal ch As ReadableByteChannel, ByVal dec As java.nio.charset.CharsetDecoder, ByVal minBufferCap As Integer) As java.io.Reader
+		Public Shared Function newReader(  ch As ReadableByteChannel,   dec As java.nio.charset.CharsetDecoder,   minBufferCap As Integer) As java.io.Reader
 			checkNotNull(ch, "ch")
 			Return sun.nio.cs.StreamDecoder.forDecoder(ch, dec.reset(), minBufferCap)
 		End Function
@@ -484,7 +484,7 @@ Namespace java.nio.channels
 		''' <exception cref="UnsupportedCharsetException">
 		'''          If no support for the named charset is available
 		'''          in this instance of the Java virtual machine </exception>
-		Public Shared Function newReader(ByVal ch As ReadableByteChannel, ByVal csName As String) As java.io.Reader
+		Public Shared Function newReader(  ch As ReadableByteChannel,   csName As String) As java.io.Reader
 			checkNotNull(csName, "csName")
 			Return newReader(ch, java.nio.charset.Charset.forName(csName).newDecoder(), -1)
 		End Function
@@ -513,7 +513,7 @@ Namespace java.nio.channels
 		'''         default capacity is to be used
 		''' </param>
 		''' <returns>  A new writer </returns>
-		Public Shared Function newWriter(ByVal ch As WritableByteChannel, ByVal enc As java.nio.charset.CharsetEncoder, ByVal minBufferCap As Integer) As java.io.Writer
+		Public Shared Function newWriter(  ch As WritableByteChannel,   enc As java.nio.charset.CharsetEncoder,   minBufferCap As Integer) As java.io.Writer
 			checkNotNull(ch, "ch")
 			Return sun.nio.cs.StreamEncoder.forEncoder(ch, enc.reset(), minBufferCap)
 		End Function
@@ -546,7 +546,7 @@ Namespace java.nio.channels
 		''' <exception cref="UnsupportedCharsetException">
 		'''          If no support for the named charset is available
 		'''          in this instance of the Java virtual machine </exception>
-		Public Shared Function newWriter(ByVal ch As WritableByteChannel, ByVal csName As String) As java.io.Writer
+		Public Shared Function newWriter(  ch As WritableByteChannel,   csName As String) As java.io.Writer
 			checkNotNull(csName, "csName")
 			Return newWriter(ch, java.nio.charset.Charset.forName(csName).newEncoder(), -1)
 		End Function

@@ -181,12 +181,12 @@ Namespace java.security
 		''' for information about standard RNG algorithm names.
 		''' </summary>
 		''' <param name="seed"> the seed. </param>
-		Public Sub New(ByVal seed As SByte())
+		Public Sub New(  seed As SByte())
 			MyBase.New(0)
 			getDefaultPRNG(True, seed)
 		End Sub
 
-		Private Sub getDefaultPRNG(ByVal setSeed As Boolean, ByVal seed As SByte())
+		Private Sub getDefaultPRNG(  setSeed As Boolean,   seed As SByte())
 			Dim prng As String = prngAlgorithm
 			If prng Is Nothing Then
 				' bummer, get the SUN implementation
@@ -218,11 +218,11 @@ Namespace java.security
 		''' </summary>
 		''' <param name="secureRandomSpi"> the SecureRandom implementation. </param>
 		''' <param name="provider"> the provider. </param>
-		Protected Friend Sub New(ByVal secureRandomSpi As SecureRandomSpi, ByVal provider_Renamed As Provider)
+		Protected Friend Sub New(  secureRandomSpi As SecureRandomSpi,   provider_Renamed As Provider)
 			Me.New(secureRandomSpi, provider_Renamed, Nothing)
 		End Sub
 
-		Private Sub New(ByVal secureRandomSpi As SecureRandomSpi, ByVal provider_Renamed As Provider, ByVal algorithm As String)
+		Private Sub New(  secureRandomSpi As SecureRandomSpi,   provider_Renamed As Provider,   algorithm As String)
 			MyBase.New(0)
 			Me.secureRandomSpi = secureRandomSpi
 			Me.provider_Renamed = provider_Renamed
@@ -266,7 +266,7 @@ Namespace java.security
 		''' <seealso cref= Provider
 		''' 
 		''' @since 1.2 </seealso>
-		Public Shared Function getInstance(ByVal algorithm As String) As SecureRandom
+		Public Shared Function getInstance(  algorithm As String) As SecureRandom
 			Dim instance_Renamed As sun.security.jca.GetInstance.Instance = GetInstance.getInstance("SecureRandom", GetType(SecureRandomSpi), algorithm)
 			Return New SecureRandom(CType(instance_Renamed.impl, SecureRandomSpi), instance_Renamed.provider, algorithm)
 		End Function
@@ -313,7 +313,7 @@ Namespace java.security
 		''' <seealso cref= Provider
 		''' 
 		''' @since 1.2 </seealso>
-		Public Shared Function getInstance(ByVal algorithm As String, ByVal provider_Renamed As String) As SecureRandom
+		Public Shared Function getInstance(  algorithm As String,   provider_Renamed As String) As SecureRandom
 			Dim instance_Renamed As sun.security.jca.GetInstance.Instance = GetInstance.getInstance("SecureRandom", GetType(SecureRandomSpi), algorithm, provider_Renamed)
 			Return New SecureRandom(CType(instance_Renamed.impl, SecureRandomSpi), instance_Renamed.provider, algorithm)
 		End Function
@@ -353,7 +353,7 @@ Namespace java.security
 		''' <seealso cref= Provider
 		''' 
 		''' @since 1.4 </seealso>
-		Public Shared Function getInstance(ByVal algorithm As String, ByVal provider_Renamed As Provider) As SecureRandom
+		Public Shared Function getInstance(  algorithm As String,   provider_Renamed As Provider) As SecureRandom
 			Dim instance_Renamed As sun.security.jca.GetInstance.Instance = GetInstance.getInstance("SecureRandom", GetType(SecureRandomSpi), algorithm, provider_Renamed)
 			Return New SecureRandom(CType(instance_Renamed.impl, SecureRandomSpi), instance_Renamed.provider, algorithm)
 		End Function
@@ -400,7 +400,7 @@ Namespace java.security
 		''' <seealso cref= #getSeed </seealso>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
 		Public Overridable Property seed As SByte()
-			Set(ByVal seed As SByte())
+			Set(  seed As SByte())
 				secureRandomSpi.engineSetSeed(seed)
 			End Set
 		End Property
@@ -418,7 +418,7 @@ Namespace java.security
 		''' </param>
 		''' <seealso cref= #getSeed </seealso>
 		Public Overrides Property seed As Long
-			Set(ByVal seed As Long)
+			Set(  seed As Long)
 		'        
 		'         * Ignore call from super constructor (as well as any other calls
 		'         * unfortunate enough to be passing 0).  It's critical that we
@@ -439,7 +439,7 @@ Namespace java.security
 		''' </summary>
 		''' <param name="bytes"> the array to be filled in with random bytes. </param>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overrides Sub nextBytes(ByVal bytes As SByte())
+		Public Overrides Sub nextBytes(  bytes As SByte())
 			secureRandomSpi.engineNextBytes(bytes)
 		End Sub
 
@@ -456,7 +456,7 @@ Namespace java.security
 		''' </param>
 		''' <returns> an {@code int} containing the user-specified number
 		''' of pseudo-random bits (right justified, with leading zeros). </returns>
-		Protected Friend NotOverridable Overrides Function [next](ByVal numBits As Integer) As Integer
+		Protected Friend NotOverridable Overrides Function [next](  numBits As Integer) As Integer
 			Dim numBytes As Integer = (numBits+7)\8
 			Dim b As SByte() = New SByte(numBytes - 1){}
 			Dim next_Renamed As Integer = 0
@@ -485,7 +485,7 @@ Namespace java.security
 		''' <returns> the seed bytes.
 		''' </returns>
 		''' <seealso cref= #setSeed </seealso>
-		Public Shared Function getSeed(ByVal numBytes As Integer) As SByte()
+		Public Shared Function getSeed(  numBytes As Integer) As SByte()
 			If seedGenerator Is Nothing Then seedGenerator = New SecureRandom
 			Return seedGenerator.generateSeed(numBytes)
 		End Function
@@ -498,7 +498,7 @@ Namespace java.security
 		''' <param name="numBytes"> the number of seed bytes to generate.
 		''' </param>
 		''' <returns> the seed bytes. </returns>
-		Public Overridable Function generateSeed(ByVal numBytes As Integer) As SByte()
+		Public Overridable Function generateSeed(  numBytes As Integer) As SByte()
 			Return secureRandomSpi.engineGenerateSeed(numBytes)
 		End Function
 
@@ -506,7 +506,7 @@ Namespace java.security
 		''' Helper function to convert a long into a byte array (least significant
 		''' byte first).
 		''' </summary>
-		Private Shared Function longToByteArray(ByVal l As Long) As SByte()
+		Private Shared Function longToByteArray(  l As Long) As SByte()
 			Dim retVal As SByte() = New SByte(7){}
 
 			For i As Integer = 0 To 7

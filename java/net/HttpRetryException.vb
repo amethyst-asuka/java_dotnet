@@ -48,7 +48,7 @@ Namespace java.net
 		''' </summary>
 		''' <param name="detail">   the detail message. </param>
 		''' <param name="code">   the HTTP response code from server. </param>
-		Public Sub New(ByVal detail As String, ByVal code As Integer)
+		Public Sub New(  detail As String,   code As Integer)
 			MyBase.New(detail)
 			responseCode_Renamed = code
 		End Sub
@@ -60,7 +60,7 @@ Namespace java.net
 		''' <param name="detail">   the detail message. </param>
 		''' <param name="code">   the HTTP response code from server. </param>
 		''' <param name="location">   the URL to be redirected to </param>
-		Public Sub New(ByVal detail As String, ByVal code As Integer, ByVal location As String)
+		Public Sub New(  detail As String,   code As Integer,   location As String)
 			MyBase.New(detail)
 			responseCode_Renamed = code
 			Me.location = location

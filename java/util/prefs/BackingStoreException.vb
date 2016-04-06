@@ -43,7 +43,7 @@ Namespace java.util.prefs
 		''' Constructs a BackingStoreException with the specified detail message.
 		''' </summary>
 		''' <param name="s"> the detail message. </param>
-		Public Sub New(ByVal s As String)
+		Public Sub New(  s As String)
 			MyBase.New(s)
 		End Sub
 
@@ -51,7 +51,7 @@ Namespace java.util.prefs
 		''' Constructs a BackingStoreException with the specified cause.
 		''' </summary>
 		''' <param name="cause"> the cause </param>
-		Public Sub New(ByVal cause As Throwable)
+		Public Sub New(  cause As Throwable)
 			MyBase.New(cause)
 		End Sub
 

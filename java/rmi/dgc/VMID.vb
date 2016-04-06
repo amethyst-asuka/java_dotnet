@@ -100,7 +100,7 @@ Namespace java.rmi.dgc
 		''' Compare this VMID to another, and return true if they are the
 		''' same identifier.
 		''' </summary>
-		Public Overrides Function Equals(ByVal obj As Object) As Boolean
+		Public Overrides Function Equals(  obj As Object) As Boolean
 			If TypeOf obj Is VMID Then
 				Dim vmid As VMID = CType(obj, VMID)
 				If Not uid.Equals(vmid.uid) Then Return False

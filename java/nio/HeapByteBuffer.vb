@@ -54,7 +54,7 @@ Namespace java.nio
         '
         '    
 
-        Friend Sub New(ByVal cap As Integer, ByVal lim As Integer) ' package-private
+        Friend Sub New(  cap As Integer,   lim As Integer) ' package-private
 
             MyBase.New(-1, 0, lim, cap, New SByte(cap - 1) {}, 0)
             '        
@@ -67,7 +67,7 @@ Namespace java.nio
 
         End Sub
 
-        Friend Sub New(ByVal buf As SByte(), ByVal [off] As Integer, ByVal len As Integer) ' package-private
+        Friend Sub New(  buf As SByte(),   [off] As Integer,   len As Integer) ' package-private
 
             MyBase.New(-1, [off], [off] + len, buf.Length, buf, 0)
             '        
@@ -80,7 +80,7 @@ Namespace java.nio
 
         End Sub
 
-        Protected Friend Sub New(ByVal buf As SByte(), ByVal mark As Integer, ByVal pos As Integer, ByVal lim As Integer, ByVal cap As Integer, ByVal [off] As Integer)
+        Protected Friend Sub New(  buf As SByte(),   mark As Integer,   pos As Integer,   lim As Integer,   cap As Integer,   [off] As Integer)
 
             MyBase.New(mark, pos, lim, cap, buf, [off])
             '        
@@ -111,7 +111,7 @@ Namespace java.nio
 
 
 
-        Protected Friend Overridable Function ix(ByVal i As Integer) As Integer
+        Protected Friend Overridable Function ix(  i As Integer) As Integer
             Return i + offset
         End Function
 
@@ -119,7 +119,7 @@ Namespace java.nio
             Return hb(ix(nextGetIndex()))
         End Function
 
-        Public Overrides Function [get](ByVal i As Integer) As SByte
+        Public Overrides Function [get](  i As Integer) As SByte
             Return hb(ix(checkIndex(i)))
         End Function
 
@@ -129,7 +129,7 @@ Namespace java.nio
 
 
 
-        Public Overrides Function [get](ByVal dst As SByte(), ByVal offset As Integer, ByVal length As Integer) As ByteBuffer
+        Public Overrides Function [get](  dst As SByte(),   offset As Integer,   length As Integer) As ByteBuffer
             checkBounds(offset, length, dst.Length)
             If length > remaining() Then Throw New BufferUnderflowException
             array.Copy(hb, ix(position()), dst, offset, length)
@@ -151,7 +151,7 @@ Namespace java.nio
             End Get
         End Property
 
-        Public Overrides Function put(ByVal x As SByte) As ByteBuffer
+        Public Overrides Function put(  x As SByte) As ByteBuffer
 
             hb(ix(nextPutIndex())) = x
             Return Me
@@ -160,7 +160,7 @@ Namespace java.nio
 
         End Function
 
-        Public Overrides Function put(ByVal i As Integer, ByVal x As SByte) As ByteBuffer
+        Public Overrides Function put(  i As Integer,   x As SByte) As ByteBuffer
 
             hb(ix(checkIndex(i))) = x
             Return Me
@@ -169,7 +169,7 @@ Namespace java.nio
 
         End Function
 
-        Public Overrides Function put(ByVal src As SByte(), ByVal offset As Integer, ByVal length As Integer) As ByteBuffer
+        Public Overrides Function put(  src As SByte(),   offset As Integer,   length As Integer) As ByteBuffer
 
             checkBounds(offset, length, src.Length)
             If length > remaining() Then Throw New BufferOverflowException
@@ -181,7 +181,7 @@ Namespace java.nio
 
         End Function
 
-        Public Overrides Function put(ByVal src As ByteBuffer) As ByteBuffer
+        Public Overrides Function put(  src As ByteBuffer) As ByteBuffer
 
             If TypeOf src Is HeapByteBuffer Then
                 If src Is Me Then Throw New IllegalArgumentException
@@ -221,11 +221,11 @@ Namespace java.nio
 
 
 
-        Friend Overrides Function _get(ByVal i As Integer) As SByte ' package-private
+        Friend Overrides Function _get(  i As Integer) As SByte ' package-private
             Return hb(i)
         End Function
 
-        Friend Overrides Sub _put(ByVal i As Integer, ByVal b As SByte) ' package-private
+        Friend Overrides Sub _put(  i As Integer,   b As SByte) ' package-private
 
             hb(i) = b
 
@@ -243,13 +243,13 @@ Namespace java.nio
             End Get
         End Property
 
-        Public Overrides Function getChar(ByVal i As Integer) As Char
+        Public Overrides Function getChar(  i As Integer) As Char
             Return Bits.getChar(Me, ix(checkIndex(i, 2)), bigEndian)
         End Function
 
 
 
-        Public Overrides Function putChar(ByVal x As Char) As ByteBuffer
+        Public Overrides Function putChar(  x As Char) As ByteBuffer
 
             Bits.putChar(Me, ix(nextPutIndex(2)), x, bigEndian)
             Return Me
@@ -258,7 +258,7 @@ Namespace java.nio
 
         End Function
 
-        Public Overrides Function putChar(ByVal i As Integer, ByVal x As Char) As ByteBuffer
+        Public Overrides Function putChar(  i As Integer,   x As Char) As ByteBuffer
 
             Bits.putChar(Me, ix(checkIndex(i, 2)), x, bigEndian)
             Return Me
@@ -284,13 +284,13 @@ Namespace java.nio
             End Get
         End Property
 
-        Public Overrides Function getShort(ByVal i As Integer) As Short
+        Public Overrides Function getShort(  i As Integer) As Short
             Return Bits.getShort(Me, ix(checkIndex(i, 2)), bigEndian)
         End Function
 
 
 
-        Public Overrides Function putShort(ByVal x As Short) As ByteBuffer
+        Public Overrides Function putShort(  x As Short) As ByteBuffer
 
             Bits.putShort(Me, ix(nextPutIndex(2)), x, bigEndian)
             Return Me
@@ -299,7 +299,7 @@ Namespace java.nio
 
         End Function
 
-        Public Overrides Function putShort(ByVal i As Integer, ByVal x As Short) As ByteBuffer
+        Public Overrides Function putShort(  i As Integer,   x As Short) As ByteBuffer
 
             Bits.putShort(Me, ix(checkIndex(i, 2)), x, bigEndian)
             Return Me
@@ -325,13 +325,13 @@ Namespace java.nio
             End Get
         End Property
 
-        Public Overrides Function getInt(ByVal i As Integer) As Integer
+        Public Overrides Function getInt(  i As Integer) As Integer
             Return Bits.getInt(Me, ix(checkIndex(i, 4)), bigEndian)
         End Function
 
 
 
-        Public Overrides Function putInt(ByVal x As Integer) As ByteBuffer
+        Public Overrides Function putInt(  x As Integer) As ByteBuffer
 
             Bits.putInt(Me, ix(nextPutIndex(4)), x, bigEndian)
             Return Me
@@ -340,7 +340,7 @@ Namespace java.nio
 
         End Function
 
-        Public Overrides Function putInt(ByVal i As Integer, ByVal x As Integer) As ByteBuffer
+        Public Overrides Function putInt(  i As Integer,   x As Integer) As ByteBuffer
 
             Bits.putInt(Me, ix(checkIndex(i, 4)), x, bigEndian)
             Return Me
@@ -366,13 +366,13 @@ Namespace java.nio
             End Get
         End Property
 
-        Public Overrides Function getLong(ByVal i As Integer) As Long
+        Public Overrides Function getLong(  i As Integer) As Long
             Return Bits.getLong(Me, ix(checkIndex(i, 8)), bigEndian)
         End Function
 
 
 
-        Public Overrides Function putLong(ByVal x As Long) As ByteBuffer
+        Public Overrides Function putLong(  x As Long) As ByteBuffer
 
             Bits.putLong(Me, ix(nextPutIndex(8)), x, bigEndian)
             Return Me
@@ -381,7 +381,7 @@ Namespace java.nio
 
         End Function
 
-        Public Overrides Function putLong(ByVal i As Integer, ByVal x As Long) As ByteBuffer
+        Public Overrides Function putLong(  i As Integer,   x As Long) As ByteBuffer
 
             Bits.putLong(Me, ix(checkIndex(i, 8)), x, bigEndian)
             Return Me
@@ -407,13 +407,13 @@ Namespace java.nio
             End Get
         End Property
 
-        Public Overrides Function getFloat(ByVal i As Integer) As Single
+        Public Overrides Function getFloat(  i As Integer) As Single
             Return Bits.getFloat(Me, ix(checkIndex(i, 4)), bigEndian)
         End Function
 
 
 
-        Public Overrides Function putFloat(ByVal x As Single) As ByteBuffer
+        Public Overrides Function putFloat(  x As Single) As ByteBuffer
 
             Bits.putFloat(Me, ix(nextPutIndex(4)), x, bigEndian)
             Return Me
@@ -422,7 +422,7 @@ Namespace java.nio
 
         End Function
 
-        Public Overrides Function putFloat(ByVal i As Integer, ByVal x As Single) As ByteBuffer
+        Public Overrides Function putFloat(  i As Integer,   x As Single) As ByteBuffer
 
             Bits.putFloat(Me, ix(checkIndex(i, 4)), x, bigEndian)
             Return Me
@@ -448,13 +448,13 @@ Namespace java.nio
             End Get
         End Property
 
-        Public Overrides Function getDouble(ByVal i As Integer) As Double
+        Public Overrides Function getDouble(  i As Integer) As Double
             Return Bits.getDouble(Me, ix(checkIndex(i, 8)), bigEndian)
         End Function
 
 
 
-        Public Overrides Function putDouble(ByVal x As Double) As ByteBuffer
+        Public Overrides Function putDouble(  x As Double) As ByteBuffer
 
             Bits.putDouble(Me, ix(nextPutIndex(8)), x, bigEndian)
             Return Me
@@ -463,7 +463,7 @@ Namespace java.nio
 
         End Function
 
-        Public Overrides Function putDouble(ByVal i As Integer, ByVal x As Double) As ByteBuffer
+        Public Overrides Function putDouble(  i As Integer,   x As Double) As ByteBuffer
 
             Bits.putDouble(Me, ix(checkIndex(i, 8)), x, bigEndian)
             Return Me

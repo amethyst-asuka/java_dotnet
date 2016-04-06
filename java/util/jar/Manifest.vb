@@ -61,7 +61,7 @@ Namespace java.util.jar
 		''' </summary>
 		''' <param name="is"> the input stream containing manifest data </param>
 		''' <exception cref="IOException"> if an I/O error has occurred </exception>
-		Public Sub New(ByVal [is] As java.io.InputStream)
+		Public Sub New(  [is] As java.io.InputStream)
 			read([is])
 		End Sub
 
@@ -69,7 +69,7 @@ Namespace java.util.jar
 		''' Constructs a new Manifest that is a copy of the specified Manifest.
 		''' </summary>
 		''' <param name="man"> the Manifest to copy </param>
-		Public Sub New(ByVal man As Manifest)
+		Public Sub New(  man As Manifest)
 			attr.putAll(man.mainAttributes)
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET Dictionary equivalent to the Java 'putAll' method:
 			entries.putAll(man.entries)
@@ -119,7 +119,7 @@ Namespace java.util.jar
 		''' </summary>
 		''' <param name="name"> entry name </param>
 		''' <returns> the Attributes for the specified entry name </returns>
-		Public Overridable Function getAttributes(ByVal name As String) As Attributes
+		Public Overridable Function getAttributes(  name As String) As Attributes
 			Return entries(name)
 		End Function
 
@@ -139,7 +139,7 @@ Namespace java.util.jar
 		''' <param name="out"> the output stream </param>
 		''' <exception cref="IOException"> if an I/O error has occurred </exception>
 		''' <seealso cref= #getMainAttributes </seealso>
-		Public Overridable Sub write(ByVal out As java.io.OutputStream)
+		Public Overridable Sub write(  out As java.io.OutputStream)
 			Dim dos As New java.io.DataOutputStream(out)
 			' Write out the main attributes for the manifest
 			attr.writeMain(dos)
@@ -165,7 +165,7 @@ Namespace java.util.jar
 		''' <summary>
 		''' Adds line breaks to enforce a maximum 72 bytes per line.
 		''' </summary>
-		Friend Shared Sub make72Safe(ByVal line As StringBuffer)
+		Friend Shared Sub make72Safe(  line As StringBuffer)
 			Dim length As Integer = line.length()
 			If length > 72 Then
 				Dim index As Integer = 70
@@ -185,7 +185,7 @@ Namespace java.util.jar
 		''' </summary>
 		''' <param name="is"> the input stream </param>
 		''' <exception cref="IOException"> if an I/O error has occurred </exception>
-		Public Overridable Sub read(ByVal [is] As java.io.InputStream)
+		Public Overridable Sub read(  [is] As java.io.InputStream)
 			' Buffered input stream for reading manifest data
 			Dim fis As New FastInputStream([is])
 			' Line buffer
@@ -256,7 +256,7 @@ Namespace java.util.jar
 			Loop
 		End Sub
 
-		Private Function parseName(ByVal lbuf As SByte(), ByVal len As Integer) As String
+		Private Function parseName(  lbuf As SByte(),   len As Integer) As String
 			If toLower(lbuf(0)) = AscW("n"c) AndAlso toLower(lbuf(1)) = AscW("a"c) AndAlso toLower(lbuf(2)) = AscW("m"c) AndAlso toLower(lbuf(3)) = AscW("e"c) AndAlso lbuf(4) = AscW(":"c) AndAlso lbuf(5) = AscW(" "c) Then
 				Try
 					Return New String(lbuf, 6, len - 6, "UTF8")
@@ -266,7 +266,7 @@ Namespace java.util.jar
 			Return Nothing
 		End Function
 
-		Private Function toLower(ByVal c As Integer) As Integer
+		Private Function toLower(  c As Integer) As Integer
 			Return If(c >= "A"c AndAlso c <= "Z"c, AscW("a"c) + (c - AscW("A"c)), c)
 		End Function
 
@@ -277,7 +277,7 @@ Namespace java.util.jar
 		''' <param name="o"> the object to be compared </param>
 		''' <returns> true if the specified Object is also a Manifest and has
 		''' the same main Attributes and entries </returns>
-		Public Overrides Function Equals(ByVal o As Object) As Boolean
+		Public Overrides Function Equals(  o As Object) As Boolean
 			If TypeOf o Is Manifest Then
 				Dim m As Manifest = CType(o, Manifest)
 				Return attr.Equals(m.mainAttributes) AndAlso entries.Equals(m.entries)
@@ -314,11 +314,11 @@ Namespace java.util.jar
 			Private count As Integer = 0
 			Private pos As Integer = 0
 
-			Friend Sub New(ByVal [in] As java.io.InputStream)
+			Friend Sub New(  [in] As java.io.InputStream)
 				Me.New([in], 8192)
 			End Sub
 
-			Friend Sub New(ByVal [in] As java.io.InputStream, ByVal size As Integer)
+			Friend Sub New(  [in] As java.io.InputStream,   size As Integer)
 				MyBase.New([in])
 				buf = New SByte(size - 1){}
 			End Sub
@@ -333,7 +333,7 @@ Namespace java.util.jar
 					Return java.lang.[Byte].toUnsignedInt(buf(tempVar))
 			End Function
 
-			Public Overrides Function read(ByVal b As SByte(), ByVal [off] As Integer, ByVal len As Integer) As Integer
+			Public Overrides Function read(  b As SByte(),   [off] As Integer,   len As Integer) As Integer
 				Dim avail As Integer = count - pos
 				If avail <= 0 Then
 					If len >= buf.Length Then Return [in].read(b, [off], len)
@@ -351,7 +351,7 @@ Namespace java.util.jar
 	'         * Reads 'len' bytes from the input stream, or until an end-of-line
 	'         * is reached. Returns the number of bytes read.
 	'         
-			Public Overridable Function readLine(ByVal b As SByte(), ByVal [off] As Integer, ByVal len As Integer) As Integer
+			Public Overridable Function readLine(  b As SByte(),   [off] As Integer,   len As Integer) As Integer
 				Dim tbuf As SByte() = Me.buf
 				Dim total As Integer = 0
 				Do While total < len
@@ -388,11 +388,11 @@ Namespace java.util.jar
 				Return buf(pos)
 			End Function
 
-			Public Overridable Function readLine(ByVal b As SByte()) As Integer
+			Public Overridable Function readLine(  b As SByte()) As Integer
 				Return readLine(b, 0, b.Length)
 			End Function
 
-			Public Overrides Function skip(ByVal n As Long) As Long
+			Public Overrides Function skip(  n As Long) As Long
 				If n <= 0 Then Return 0
 				Dim avail As Long = count - pos
 				If avail <= 0 Then Return [in].skip(n)

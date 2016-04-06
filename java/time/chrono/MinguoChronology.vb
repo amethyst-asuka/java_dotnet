@@ -157,7 +157,7 @@ Namespace java.time.chrono
 		''' <returns> the Minguo local date, not null </returns>
 		''' <exception cref="DateTimeException"> if unable to create the date </exception>
 		''' <exception cref="ClassCastException"> if the {@code era} is not a {@code MinguoEra} </exception>
-		Public Overrides Function [date](ByVal era As Era, ByVal yearOfEra As Integer, ByVal month As Integer, ByVal dayOfMonth As Integer) As MinguoDate
+		Public Overrides Function [date](  era As Era,   yearOfEra As Integer,   month As Integer,   dayOfMonth As Integer) As MinguoDate
 			Return [date](prolepticYear(era, yearOfEra), month, dayOfMonth)
 		End Function
 
@@ -170,7 +170,7 @@ Namespace java.time.chrono
 		''' <param name="dayOfMonth">  the day-of-month </param>
 		''' <returns> the Minguo local date, not null </returns>
 		''' <exception cref="DateTimeException"> if unable to create the date </exception>
-		Public Overrides Function [date](ByVal prolepticYear As Integer, ByVal month As Integer, ByVal dayOfMonth As Integer) As MinguoDate
+		Public Overrides Function [date](  prolepticYear As Integer,   month As Integer,   dayOfMonth As Integer) As MinguoDate
 			Return New MinguoDate(java.time.LocalDate.of(prolepticYear + YEARS_DIFFERENCE, month, dayOfMonth))
 		End Function
 
@@ -184,7 +184,7 @@ Namespace java.time.chrono
 		''' <returns> the Minguo local date, not null </returns>
 		''' <exception cref="DateTimeException"> if unable to create the date </exception>
 		''' <exception cref="ClassCastException"> if the {@code era} is not a {@code MinguoEra} </exception>
-		Public Overrides Function dateYearDay(ByVal era As Era, ByVal yearOfEra As Integer, ByVal dayOfYear As Integer) As MinguoDate
+		Public Overrides Function dateYearDay(  era As Era,   yearOfEra As Integer,   dayOfYear As Integer) As MinguoDate
 			Return dateYearDay(prolepticYear(era, yearOfEra), dayOfYear)
 		End Function
 
@@ -196,7 +196,7 @@ Namespace java.time.chrono
 		''' <param name="dayOfYear">  the day-of-year </param>
 		''' <returns> the Minguo local date, not null </returns>
 		''' <exception cref="DateTimeException"> if unable to create the date </exception>
-		Public Overrides Function dateYearDay(ByVal prolepticYear As Integer, ByVal dayOfYear As Integer) As MinguoDate
+		Public Overrides Function dateYearDay(  prolepticYear As Integer,   dayOfYear As Integer) As MinguoDate
 			Return New MinguoDate(java.time.LocalDate.ofYearDay(prolepticYear + YEARS_DIFFERENCE, dayOfYear))
 		End Function
 
@@ -206,7 +206,7 @@ Namespace java.time.chrono
 		''' <param name="epochDay">  the epoch day </param>
 		''' <returns> the Minguo local date, not null </returns>
 		''' <exception cref="DateTimeException"> if unable to create the date </exception>
-		Public Overrides Function dateEpochDay(ByVal epochDay As Long) As MinguoDate ' override with covariant return type
+		Public Overrides Function dateEpochDay(  epochDay As Long) As MinguoDate ' override with covariant return type
 			Return New MinguoDate(java.time.LocalDate.ofEpochDay(epochDay))
 		End Function
 
@@ -214,31 +214,31 @@ Namespace java.time.chrono
 			Return dateNow(java.time.Clock.systemDefaultZone())
 		End Function
 
-		Public Overrides Function dateNow(ByVal zone As java.time.ZoneId) As MinguoDate
+		Public Overrides Function dateNow(  zone As java.time.ZoneId) As MinguoDate
 			Return dateNow(java.time.Clock.system(zone))
 		End Function
 
-		Public Overrides Function dateNow(ByVal clock_Renamed As java.time.Clock) As MinguoDate
+		Public Overrides Function dateNow(  clock_Renamed As java.time.Clock) As MinguoDate
 			Return [date](java.time.LocalDate.now(clock_Renamed))
 		End Function
 
-		Public Overrides Function [date](ByVal temporal As java.time.temporal.TemporalAccessor) As MinguoDate
+		Public Overrides Function [date](  temporal As java.time.temporal.TemporalAccessor) As MinguoDate
 			If TypeOf temporal Is MinguoDate Then Return CType(temporal, MinguoDate)
 			Return New MinguoDate(java.time.LocalDate.from(temporal))
 		End Function
 
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Overrides Function localDateTime(ByVal temporal As java.time.temporal.TemporalAccessor) As ChronoLocalDateTime(Of MinguoDate)
+		Public Overrides Function localDateTime(  temporal As java.time.temporal.TemporalAccessor) As ChronoLocalDateTime(Of MinguoDate)
 			Return CType(MyBase.localDateTime(temporal), ChronoLocalDateTime(Of MinguoDate))
 		End Function
 
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Overrides Function zonedDateTime(ByVal temporal As java.time.temporal.TemporalAccessor) As ChronoZonedDateTime(Of MinguoDate)
+		Public Overrides Function zonedDateTime(  temporal As java.time.temporal.TemporalAccessor) As ChronoZonedDateTime(Of MinguoDate)
 			Return CType(MyBase.zonedDateTime(temporal), ChronoZonedDateTime(Of MinguoDate))
 		End Function
 
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Overrides Function zonedDateTime(ByVal instant_Renamed As java.time.Instant, ByVal zone As java.time.ZoneId) As ChronoZonedDateTime(Of MinguoDate)
+		Public Overrides Function zonedDateTime(  instant_Renamed As java.time.Instant,   zone As java.time.ZoneId) As ChronoZonedDateTime(Of MinguoDate)
 			Return CType(MyBase.zonedDateTime(instant_Renamed, zone), ChronoZonedDateTime(Of MinguoDate))
 		End Function
 
@@ -252,16 +252,16 @@ Namespace java.time.chrono
 		''' </summary>
 		''' <param name="prolepticYear">  the proleptic-year to check, not validated for range </param>
 		''' <returns> true if the year is a leap year </returns>
-		Public Overrides Function isLeapYear(ByVal prolepticYear As Long) As Boolean
+		Public Overrides Function isLeapYear(  prolepticYear As Long) As Boolean
 			Return IsoChronology.INSTANCE.isLeapYear(prolepticYear + YEARS_DIFFERENCE)
 		End Function
 
-		Public Overrides Function prolepticYear(ByVal era As Era, ByVal yearOfEra As Integer) As Integer
+		Public Overrides Function prolepticYear(  era As Era,   yearOfEra As Integer) As Integer
 			If TypeOf era Is MinguoEra = False Then Throw New ClassCastException("Era must be MinguoEra")
 			[Return] (If(era = MinguoEra.ROC, yearOfEra, 1 - yearOfEra))
 		End Function
 
-		Public Overrides Function eraOf(ByVal eraValue As Integer) As MinguoEra
+		Public Overrides Function eraOf(  eraValue As Integer) As MinguoEra
 			Return MinguoEra.of(eraValue)
 		End Function
 
@@ -270,7 +270,7 @@ Namespace java.time.chrono
 		End Function
 
 		'-----------------------------------------------------------------------
-		Public Overrides Function range(ByVal field As java.time.temporal.ChronoField) As java.time.temporal.ValueRange
+		Public Overrides Function range(  field As java.time.temporal.ChronoField) As java.time.temporal.ValueRange
 			Select Case field
 				Case PROLEPTIC_MONTH
 					Dim range_Renamed As java.time.temporal.ValueRange = PROLEPTIC_MONTH.range()
@@ -286,7 +286,7 @@ Namespace java.time.chrono
 		End Function
 
 		'-----------------------------------------------------------------------
-		Public Overrides Function resolveDate(ByVal fieldValues As IDictionary(Of java.time.temporal.TemporalField, Long?), ByVal resolverStyle As java.time.format.ResolverStyle) As MinguoDate ' override for return type
+		Public Overrides Function resolveDate(  fieldValues As IDictionary(Of java.time.temporal.TemporalField, Long?),   resolverStyle As java.time.format.ResolverStyle) As MinguoDate ' override for return type
 			Return CType(MyBase.resolveDate(fieldValues, resolverStyle), MinguoDate)
 		End Function
 
@@ -310,7 +310,7 @@ Namespace java.time.chrono
 		''' </summary>
 		''' <param name="s"> the stream to read </param>
 		''' <exception cref="InvalidObjectException"> always </exception>
-		Private Sub readObject(ByVal s As java.io.ObjectInputStream)
+		Private Sub readObject(  s As java.io.ObjectInputStream)
 			Throw New java.io.InvalidObjectException("Deserialization via serialization delegate")
 		End Sub
 	End Class

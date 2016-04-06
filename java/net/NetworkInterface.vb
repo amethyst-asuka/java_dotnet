@@ -83,7 +83,7 @@ Namespace java.net
 		Friend Sub New()
 		End Sub
 
-		Friend Sub New(ByVal name As String, ByVal index As Integer, ByVal addrs As InetAddress())
+		Friend Sub New(  name As String,   index As Integer,   addrs As InetAddress())
 			Me.name = name
 			Me.index = index
 			Me.addrs = addrs
@@ -306,7 +306,7 @@ Namespace java.net
 		''' </exception>
 		''' <exception cref="NullPointerException">
 		'''          If the specified name is {@code null}. </exception>
-		Public Shared Function getByName(ByVal name As String) As NetworkInterface
+		Public Shared Function getByName(  name As String) As NetworkInterface
 			If name Is Nothing Then Throw New NullPointerException
 			Return getByName0(name)
 		End Function
@@ -321,7 +321,7 @@ Namespace java.net
 		''' <exception cref="IllegalArgumentException"> if index has a negative value </exception>
 		''' <seealso cref= #getIndex()
 		''' @since 1.7 </seealso>
-		Public Shared Function getByIndex(ByVal index As Integer) As NetworkInterface
+		Public Shared Function getByIndex(  index As Integer) As NetworkInterface
 			If index < 0 Then Throw New IllegalArgumentException("Interface index can't be negative")
 			Return getByIndex0(index)
 		End Function
@@ -347,7 +347,7 @@ Namespace java.net
 		''' </exception>
 		''' <exception cref="NullPointerException">
 		'''          If the specified address is {@code null}. </exception>
-		Public Shared Function getByInetAddress(ByVal addr As InetAddress) As NetworkInterface
+		Public Shared Function getByInetAddress(  addr As InetAddress) As NetworkInterface
 			If addr Is Nothing Then Throw New NullPointerException
 			If Not(TypeOf addr Is Inet4Address OrElse TypeOf addr Is Inet6Address) Then Throw New IllegalArgumentException("invalid address type")
 			Return getByInetAddress0(addr)
@@ -402,17 +402,17 @@ Namespace java.net
 
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Private Shared Function getByName0(ByVal name As String) As NetworkInterface
+		Private Shared Function getByName0(  name As String) As NetworkInterface
 		End Function
 
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Private Shared Function getByIndex0(ByVal index As Integer) As NetworkInterface
+		Private Shared Function getByIndex0(  index As Integer) As NetworkInterface
 		End Function
 
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Private Shared Function getByInetAddress0(ByVal addr As InetAddress) As NetworkInterface
+		Private Shared Function getByInetAddress0(  addr As InetAddress) As NetworkInterface
 		End Function
 
 		''' <summary>
@@ -531,27 +531,27 @@ Namespace java.net
 
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Private Shared Function isUp0(ByVal name As String, ByVal ind As Integer) As Boolean
+		Private Shared Function isUp0(  name As String,   ind As Integer) As Boolean
 		End Function
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Private Shared Function isLoopback0(ByVal name As String, ByVal ind As Integer) As Boolean
+		Private Shared Function isLoopback0(  name As String,   ind As Integer) As Boolean
 		End Function
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Private Shared Function supportsMulticast0(ByVal name As String, ByVal ind As Integer) As Boolean
+		Private Shared Function supportsMulticast0(  name As String,   ind As Integer) As Boolean
 		End Function
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Private Shared Function isP2P0(ByVal name As String, ByVal ind As Integer) As Boolean
+		Private Shared Function isP2P0(  name As String,   ind As Integer) As Boolean
 		End Function
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Private Shared Function getMacAddr0(ByVal inAddr As SByte(), ByVal name As String, ByVal ind As Integer) As SByte()
+		Private Shared Function getMacAddr0(  inAddr As SByte(),   name As String,   ind As Integer) As SByte()
 		End Function
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Private Shared Function getMTU0(ByVal name As String, ByVal ind As Integer) As Integer
+		Private Shared Function getMTU0(  name As String,   ind As Integer) As Integer
 		End Function
 
 		''' <summary>
@@ -567,7 +567,7 @@ Namespace java.net
 		''' <returns>  {@code true} if the objects are the same;
 		'''          {@code false} otherwise. </returns>
 		''' <seealso cref=     java.net.InetAddress#getAddress() </seealso>
-		Public Overrides Function Equals(ByVal obj As Object) As Boolean
+		Public Overrides Function Equals(  obj As Object) As Boolean
 			If Not(TypeOf obj Is NetworkInterface) Then Return False
 			Dim that As NetworkInterface = CType(obj, NetworkInterface)
 			If Me.name IsNot Nothing Then

@@ -72,7 +72,7 @@ Namespace java.net
 		'''             creation of a class loader. </exception>
 		''' <exception cref="NullPointerException"> if {@code urls} is {@code null}. </exception>
 		''' <seealso cref= SecurityManager#checkCreateClassLoader </seealso>
-		Public Sub New(ByVal urls As URL(), ByVal parent As  ClassLoader)
+		Public Sub New(  urls As URL(),   parent As  ClassLoader)
 			MyBase.New(parent)
 			' this is to make the stack depth consistent with 1.1
 			Dim security As SecurityManager = System.securityManager
@@ -81,7 +81,7 @@ Namespace java.net
 			Me.acc = java.security.AccessController.context
 		End Sub
 
-		Friend Sub New(ByVal urls As URL(), ByVal parent As  ClassLoader, ByVal acc As java.security.AccessControlContext)
+		Friend Sub New(  urls As URL(),   parent As  ClassLoader,   acc As java.security.AccessControlContext)
 			MyBase.New(parent)
 			' this is to make the stack depth consistent with 1.1
 			Dim security As SecurityManager = System.securityManager
@@ -110,7 +110,7 @@ Namespace java.net
 		'''             creation of a class loader. </exception>
 		''' <exception cref="NullPointerException"> if {@code urls} is {@code null}. </exception>
 		''' <seealso cref= SecurityManager#checkCreateClassLoader </seealso>
-		Public Sub New(ByVal urls As URL())
+		Public Sub New(  urls As URL())
 			MyBase.New()
 			' this is to make the stack depth consistent with 1.1
 			Dim security As SecurityManager = System.securityManager
@@ -119,7 +119,7 @@ Namespace java.net
 			Me.acc = java.security.AccessController.context
 		End Sub
 
-		Friend Sub New(ByVal urls As URL(), ByVal acc As java.security.AccessControlContext)
+		Friend Sub New(  urls As URL(),   acc As java.security.AccessControlContext)
 			MyBase.New()
 			' this is to make the stack depth consistent with 1.1
 			Dim security As SecurityManager = System.securityManager
@@ -148,7 +148,7 @@ Namespace java.net
 		'''             creation of a class loader. </exception>
 		''' <exception cref="NullPointerException"> if {@code urls} is {@code null}. </exception>
 		''' <seealso cref= SecurityManager#checkCreateClassLoader </seealso>
-		Public Sub New(ByVal urls As URL(), ByVal parent As  ClassLoader, ByVal factory As URLStreamHandlerFactory)
+		Public Sub New(  urls As URL(),   parent As  ClassLoader,   factory As URLStreamHandlerFactory)
 			MyBase.New(parent)
 			' this is to make the stack depth consistent with 1.1
 			Dim security As SecurityManager = System.securityManager
@@ -188,7 +188,7 @@ Namespace java.net
 		'''          if the resource could not be found
 		''' 
 		''' @since  1.7 </returns>
-		Public Overrides Function getResourceAsStream(ByVal name As String) As java.io.InputStream
+		Public Overrides Function getResourceAsStream(  name As String) As java.io.InputStream
 			Dim url As URL = getResource(name)
 			Try
 				If url Is Nothing Then Return Nothing
@@ -278,7 +278,7 @@ Namespace java.net
 		''' method has no effect.
 		''' </summary>
 		''' <param name="url"> the URL to be added to the search path of URLs </param>
-		Protected Friend Overridable Sub addURL(ByVal url As URL)
+		Protected Friend Overridable Sub addURL(  url As URL)
 			ucp.addURL(url)
 		End Sub
 
@@ -303,7 +303,7 @@ Namespace java.net
 		''' <exception cref="ClassNotFoundException"> if the class could not be found,
 		'''            or if the loader is closed. </exception>
 		''' <exception cref="NullPointerException"> if {@code name} is {@code null}. </exception>
-		Protected Friend Overrides Function findClass(ByVal name As String) As  [Class]
+		Protected Friend Overrides Function findClass(  name As String) As  [Class]
 			Dim result As  [Class]
 			Try
 				result = java.security.AccessController.doPrivileged(New PrivilegedExceptionActionAnonymousInnerClassHelper(Of T)
@@ -337,7 +337,7 @@ Namespace java.net
 	'     * If non-null, verify the package using the specified code
 	'     * source and manifest.
 	'     
-		Private Function getAndVerifyPackage(ByVal pkgname As String, ByVal man As java.util.jar.Manifest, ByVal url As URL) As Package
+		Private Function getAndVerifyPackage(  pkgname As String,   man As java.util.jar.Manifest,   url As URL) As Package
 			Dim pkg As Package = getPackage(pkgname)
 			If pkg IsNot Nothing Then
 				' Package found, so check package sealing.
@@ -355,7 +355,7 @@ Namespace java.net
 
 		' Also called by VM to define Package for classes loaded from the CDS
 		' archive
-		Private Sub definePackageInternal(ByVal pkgname As String, ByVal man As java.util.jar.Manifest, ByVal url As URL)
+		Private Sub definePackageInternal(  pkgname As String,   man As java.util.jar.Manifest,   url As URL)
 			If getAndVerifyPackage(pkgname, man, url) Is Nothing Then
 				Try
 					If man IsNot Nothing Then
@@ -376,7 +376,7 @@ Namespace java.net
 	'     * Resource. The resulting Class must be resolved before it can be
 	'     * used.
 	'     
-		Private Function defineClass(ByVal name As String, ByVal res As sun.misc.Resource) As  [Class]
+		Private Function defineClass(  name As String,   res As sun.misc.Resource) As  [Class]
 			Dim t0 As Long = System.nanoTime()
 			Dim i As Integer = name.LastIndexOf("."c)
 			Dim url As URL = res.codeSourceURL
@@ -418,7 +418,7 @@ Namespace java.net
 		'''              an existing package either in this class loader or one
 		'''              of its ancestors </exception>
 		''' <returns> the newly defined Package object </returns>
-		Protected Friend Overridable Function definePackage(ByVal name As String, ByVal man As java.util.jar.Manifest, ByVal url As URL) As Package
+		Protected Friend Overridable Function definePackage(  name As String,   man As java.util.jar.Manifest,   url As URL) As Package
 			Dim path As String = name.replace("."c, "/"c) & "/"
 			Dim specTitle As String = Nothing, specVersion As String = Nothing, specVendor As String = Nothing
 			Dim implTitle As String = Nothing, implVersion As String = Nothing, implVendor As String = Nothing
@@ -453,7 +453,7 @@ Namespace java.net
 	'     * Returns true if the specified package name is sealed according to the
 	'     * given manifest.
 	'     
-		Private Function isSealed(ByVal name As String, ByVal man As java.util.jar.Manifest) As Boolean
+		Private Function isSealed(  name As String,   man As java.util.jar.Manifest) As Boolean
 			Dim path As String = name.replace("."c, "/"c) & "/"
 			Dim attr As java.util.jar.Attributes = man.getAttributes(path)
 			Dim sealed_Renamed As String = Nothing
@@ -471,7 +471,7 @@ Namespace java.net
 		''' <param name="name"> the name of the resource </param>
 		''' <returns> a {@code URL} for the resource, or {@code null}
 		''' if the resource could not be found, or if the loader is closed. </returns>
-		Public Overrides Function findResource(ByVal name As String) As URL
+		Public Overrides Function findResource(  name As String) As URL
 	'        
 	'         * The same restriction to finding classes applies to resources
 	'         
@@ -496,7 +496,7 @@ Namespace java.net
 		''' <exception cref="IOException"> if an I/O exception occurs </exception>
 		''' <returns> an {@code Enumeration} of {@code URL}s
 		'''         If the loader is closed, the Enumeration will be empty. </returns>
-		Public Overrides Function findResources(ByVal name As String) As System.Collections.IEnumerator(Of URL)
+		Public Overrides Function findResources(  name As String) As System.Collections.IEnumerator(Of URL)
 			Dim e As System.Collections.IEnumerator(Of URL) = ucp.findResources(name, True)
 
 			Return New EnumerationAnonymousInnerClassHelper(Of E)
@@ -561,7 +561,7 @@ Namespace java.net
 		''' <param name="codesource"> the codesource </param>
 		''' <exception cref="NullPointerException"> if {@code codesource} is {@code null}. </exception>
 		''' <returns> the permissions granted to the codesource </returns>
-		Protected Friend Overridable Function getPermissions(ByVal codesource As java.security.CodeSource) As java.security.PermissionCollection
+		Protected Friend Overridable Function getPermissions(  codesource As java.security.CodeSource) As java.security.PermissionCollection
 			Dim perms As java.security.PermissionCollection = MyBase.getPermissions(codesource)
 
 			Dim url As URL = codesource.location
@@ -638,7 +638,7 @@ Namespace java.net
 		''' <param name="parent"> the parent class loader for delegation </param>
 		''' <exception cref="NullPointerException"> if {@code urls} is {@code null}. </exception>
 		''' <returns> the resulting class loader </returns>
-		Public Shared Function newInstance(ByVal urls As URL(), ByVal parent As  ClassLoader) As URLClassLoader
+		Public Shared Function newInstance(  urls As URL(),   parent As  ClassLoader) As URLClassLoader
 			' Save the caller's context
 			Dim acc As java.security.AccessControlContext = java.security.AccessController.context
 			' Need a privileged block to create the class loader
@@ -665,7 +665,7 @@ Namespace java.net
 		''' <param name="urls"> the URLs to search for classes and resources </param>
 		''' <exception cref="NullPointerException"> if {@code urls} is {@code null}. </exception>
 		''' <returns> the resulting class loader </returns>
-		Public Shared Function newInstance(ByVal urls As URL()) As URLClassLoader
+		Public Shared Function newInstance(  urls As URL()) As URLClassLoader
 			' Save the caller's context
 			Dim acc As java.security.AccessControlContext = java.security.AccessController.context
 			' Need a privileged block to create the class loader
@@ -707,15 +707,15 @@ Namespace java.net
 			ClassLoader.registerAsParallelCapable()
 		End Sub
 
-		Friend Sub New(ByVal urls As URL(), ByVal parent As  ClassLoader, ByVal acc As java.security.AccessControlContext)
+		Friend Sub New(  urls As URL(),   parent As  ClassLoader,   acc As java.security.AccessControlContext)
 			MyBase.New(urls, parent, acc)
 		End Sub
 
-		Friend Sub New(ByVal urls As URL(), ByVal acc As java.security.AccessControlContext)
+		Friend Sub New(  urls As URL(),   acc As java.security.AccessControlContext)
 			MyBase.New(urls, acc)
 		End Sub
 
-		Public NotOverridable Overrides Function loadClass(ByVal name As String, ByVal resolve As Boolean) As  [Class]
+		Public NotOverridable Overrides Function loadClass(  name As String,   resolve As Boolean) As  [Class]
 			' First check if we have permission to access the package. This
 			' should go away once we've added support for exported packages.
 			Dim sm As SecurityManager = System.securityManager

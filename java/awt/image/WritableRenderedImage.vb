@@ -72,14 +72,14 @@ Namespace java.awt.image
 	  ''' Adds an observer.  If the observer is already present,
 	  ''' it will receive multiple notifications. </summary>
 	  ''' <param name="to"> the specified <code>TileObserver</code> </param>
-	  Sub addTileObserver(ByVal [to] As TileObserver)
+	  Sub addTileObserver(  [to] As TileObserver)
 
 	  ''' <summary>
 	  ''' Removes an observer.  If the observer was not registered,
 	  ''' nothing happens.  If the observer was registered for multiple
 	  ''' notifications, it will now be registered for one fewer. </summary>
 	  ''' <param name="to"> the specified <code>TileObserver</code> </param>
-	  Sub removeTileObserver(ByVal [to] As TileObserver)
+	  Sub removeTileObserver(  [to] As TileObserver)
 
 	  ''' <summary>
 	  ''' Checks out a tile for writing.
@@ -91,7 +91,7 @@ Namespace java.awt.image
 	  ''' <param name="tileX"> the X index of the tile. </param>
 	  ''' <param name="tileY"> the Y index of the tile. </param>
 	  ''' <returns> a writable tile. </returns>
-	  Function getWritableTile(ByVal tileX As Integer, ByVal tileY As Integer) As WritableRaster
+	  Function getWritableTile(  tileX As Integer,   tileY As Integer) As WritableRaster
 
 	  ''' <summary>
 	  ''' Relinquishes the right to write to a tile.  If the caller
@@ -106,7 +106,7 @@ Namespace java.awt.image
 	  ''' </summary>
 	  ''' <param name="tileX"> the X index of the tile. </param>
 	  ''' <param name="tileY"> the Y index of the tile. </param>
-	  Sub releaseWritableTile(ByVal tileX As Integer, ByVal tileY As Integer)
+	  Sub releaseWritableTile(  tileX As Integer,   tileY As Integer)
 
 	  ''' <summary>
 	  ''' Returns whether a tile is currently checked out for writing.
@@ -115,7 +115,7 @@ Namespace java.awt.image
 	  ''' <param name="tileY"> the Y index of the tile. </param>
 	  ''' <returns> <code>true</code> if specified tile is checked out
 	  '''         for writing; <code>false</code> otherwise. </returns>
-	  Function isTileWritable(ByVal tileX As Integer, ByVal tileY As Integer) As Boolean
+	  Function isTileWritable(  tileX As Integer,   tileY As Integer) As Boolean
 
 	  ''' <summary>
 	  ''' Returns an array of Point objects indicating which tiles

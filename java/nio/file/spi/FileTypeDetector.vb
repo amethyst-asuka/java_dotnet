@@ -51,7 +51,7 @@ Namespace java.nio.file.spi
 			If sm IsNot Nothing Then sm.checkPermission(New RuntimePermission("fileTypeDetector"))
 			Return Nothing
 		End Function
-		Private Sub New(ByVal ignore As Void)
+		Private Sub New(  ignore As Void)
 		End Sub
 
 		''' <summary>
@@ -96,7 +96,7 @@ Namespace java.nio.file.spi
 		'''          is invoked to check read access to the file.
 		''' </exception>
 		''' <seealso cref= java.nio.file.Files#probeContentType </seealso>
-		Public MustOverride Function probeContentType(ByVal path As java.nio.file.Path) As String
+		Public MustOverride Function probeContentType(  path As java.nio.file.Path) As String
 	End Class
 
 End Namespace

@@ -170,7 +170,7 @@ Namespace java.awt
 		'''         the <code>Shape</code> boundary; <code>false</code>
 		'''         otherwise.
 		''' @since 1.2 </returns>
-		Function contains(ByVal x As Double, ByVal y As Double) As Boolean
+		Function contains(  x As Double,   y As Double) As Boolean
 
 		''' <summary>
 		''' Tests if a specified <seealso cref="Point2D"/> is inside the boundary
@@ -182,7 +182,7 @@ Namespace java.awt
 		'''          inside the boundary of the <code>Shape</code>;
 		'''          <code>false</code> otherwise.
 		''' @since 1.2 </returns>
-		Function contains(ByVal p As java.awt.geom.Point2D) As Boolean
+		Function contains(  p As java.awt.geom.Point2D) As Boolean
 
 		''' <summary>
 		''' Tests if the interior of the <code>Shape</code> intersects the
@@ -221,7 +221,7 @@ Namespace java.awt
 		'''          would be too expensive to perform; <code>false</code> otherwise. </returns>
 		''' <seealso cref= java.awt.geom.Area
 		''' @since 1.2 </seealso>
-		Function intersects(ByVal x As Double, ByVal y As Double, ByVal w As Double, ByVal h As Double) As Boolean
+		Function intersects(  x As Double,   y As Double,   w As Double,   h As Double) As Boolean
 
 		''' <summary>
 		''' Tests if the interior of the <code>Shape</code> intersects the
@@ -252,7 +252,7 @@ Namespace java.awt
 		'''          otherwise. </returns>
 		''' <seealso cref= #intersects(double, double, double, double)
 		''' @since 1.2 </seealso>
-		Function intersects(ByVal r As java.awt.geom.Rectangle2D) As Boolean
+		Function intersects(  r As java.awt.geom.Rectangle2D) As Boolean
 
 		''' <summary>
 		''' Tests if the interior of the <code>Shape</code> entirely contains
@@ -295,7 +295,7 @@ Namespace java.awt
 		''' <seealso cref= java.awt.geom.Area </seealso>
 		''' <seealso cref= #intersects
 		''' @since 1.2 </seealso>
-		Function contains(ByVal x As Double, ByVal y As Double, ByVal w As Double, ByVal h As Double) As Boolean
+		Function contains(  x As Double,   y As Double,   w As Double,   h As Double) As Boolean
 
 		''' <summary>
 		''' Tests if the interior of the <code>Shape</code> entirely contains the
@@ -328,7 +328,7 @@ Namespace java.awt
 		'''          perform. </returns>
 		''' <seealso cref= #contains(double, double, double, double)
 		''' @since 1.2 </seealso>
-		Function contains(ByVal r As java.awt.geom.Rectangle2D) As Boolean
+		Function contains(  r As java.awt.geom.Rectangle2D) As Boolean
 
 		''' <summary>
 		''' Returns an iterator object that iterates along the
@@ -353,7 +353,7 @@ Namespace java.awt
 		''' <returns> a new <code>PathIterator</code> object, which independently
 		'''          traverses the geometry of the <code>Shape</code>.
 		''' @since 1.2 </returns>
-		Function getPathIterator(ByVal at As java.awt.geom.AffineTransform) As java.awt.geom.PathIterator
+		Function getPathIterator(  at As java.awt.geom.AffineTransform) As java.awt.geom.PathIterator
 
 		''' <summary>
 		''' Returns an iterator object that iterates along the <code>Shape</code>
@@ -395,7 +395,7 @@ Namespace java.awt
 		''' <returns> a new <code>PathIterator</code> that independently traverses
 		'''         a flattened view of the geometry of the  <code>Shape</code>.
 		''' @since 1.2 </returns>
-		Function getPathIterator(ByVal at As java.awt.geom.AffineTransform, ByVal flatness As Double) As java.awt.geom.PathIterator
+		Function getPathIterator(  at As java.awt.geom.AffineTransform,   flatness As Double) As java.awt.geom.PathIterator
 	End Interface
 
 End Namespace

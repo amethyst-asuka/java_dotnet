@@ -107,7 +107,7 @@ Namespace java.io
         ''' </summary>
         ''' <param name="src">   the stream to connect to. </param>
         ''' <exception cref="IOException">  if an I/O error occurs. </exception>
-        Public Sub New(ByVal src As PipedOutputStream)
+        Public Sub New(  src As PipedOutputStream)
             Me.New(src, DEFAULT_PIPE_SIZE)
         End Sub
 
@@ -124,7 +124,7 @@ Namespace java.io
         ''' <exception cref="IOException">  if an I/O error occurs. </exception>
         ''' <exception cref="IllegalArgumentException"> if {@code pipeSize <= 0}.
         ''' @since      1.6 </exception>
-        Public Sub New(ByVal src As PipedOutputStream, ByVal pipeSize As Integer)
+        Public Sub New(  src As PipedOutputStream,   pipeSize As Integer)
             initPipe(pipeSize)
             connect(src)
         End Sub
@@ -152,11 +152,11 @@ Namespace java.io
         ''' <param name="pipeSize"> the size of the pipe's buffer. </param>
         ''' <exception cref="IllegalArgumentException"> if {@code pipeSize <= 0}.
         ''' @since      1.6 </exception>
-        Public Sub New(ByVal pipeSize As Integer)
+        Public Sub New(  pipeSize As Integer)
             initPipe(pipeSize)
         End Sub
 
-        Private Sub initPipe(ByVal pipeSize As Integer)
+        Private Sub initPipe(  pipeSize As Integer)
             If pipeSize <= 0 Then Throw New IllegalArgumentException("Pipe Size <= 0")
             buffer = New SByte(pipeSize - 1) {}
         End Sub
@@ -183,7 +183,7 @@ Namespace java.io
         ''' </summary>
         ''' <param name="src">   The piped output stream to connect to. </param>
         ''' <exception cref="IOException">  if an I/O error occurs. </exception>
-        Public Overridable Sub connect(ByVal src As PipedOutputStream)
+        Public Overridable Sub connect(  src As PipedOutputStream)
             src.connect(Me)
         End Sub
 
@@ -196,7 +196,7 @@ Namespace java.io
         '''          closed, or if an I/O error occurs.
         ''' @since     JDK1.1 </exception>
         <MethodImpl(MethodImplOptions.Synchronized)>
-        Protected Friend Overridable Sub receive(ByVal b As Integer)
+        Protected Friend Overridable Sub receive(  b As Integer)
             checkStateForReceive()
             writeSide = Thread.CurrentThread
             If [in] = out Then awaitSpace()

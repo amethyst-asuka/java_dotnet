@@ -61,7 +61,7 @@ Namespace java.security
 		''' </param>
 		''' <exception cref="InvalidParameterException"> if the {@code keysize} is not
 		''' supported by this KeyPairGeneratorSpi object. </exception>
-		Public MustOverride Sub initialize(ByVal keysize As Integer, ByVal random As SecureRandom)
+		Public MustOverride Sub initialize(  keysize As Integer,   random As SecureRandom)
 
 		''' <summary>
 		''' Initializes the key pair generator using the specified parameter
@@ -84,7 +84,7 @@ Namespace java.security
 		''' are inappropriate for this key pair generator.
 		''' 
 		''' @since 1.2 </exception>
-		Public Overridable Sub initialize(ByVal params As java.security.spec.AlgorithmParameterSpec, ByVal random As SecureRandom)
+		Public Overridable Sub initialize(  params As java.security.spec.AlgorithmParameterSpec,   random As SecureRandom)
 				Throw New UnsupportedOperationException
 		End Sub
 

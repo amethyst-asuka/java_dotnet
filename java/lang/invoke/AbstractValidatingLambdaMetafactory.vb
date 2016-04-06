@@ -102,7 +102,7 @@ Namespace java.lang.invoke
 		'''                          bridged to the implementation method </param>
 		''' <exception cref="LambdaConversionException"> If any of the meta-factory protocol
 		''' invariants are violated </exception>
-		Friend Sub New(ByVal caller As MethodHandles.Lookup, ByVal invokedType As MethodType, ByVal samMethodName As String, ByVal samMethodType As MethodType, ByVal implMethod As MethodHandle, ByVal instantiatedMethodType As MethodType, ByVal isSerializable As Boolean, ByVal markerInterfaces As  [Class](), ByVal additionalBridges As MethodType())
+		Friend Sub New(  caller As MethodHandles.Lookup,   invokedType As MethodType,   samMethodName As String,   samMethodType As MethodType,   implMethod As MethodHandle,   instantiatedMethodType As MethodType,   isSerializable As Boolean,   markerInterfaces As  [Class](),   additionalBridges As MethodType())
 			If (caller.lookupModes() And MethodHandles.Lookup.PRIVATE) = 0 Then Throw New LambdaConversionException(String.Format("Invalid caller: {0}", caller.lookupClass().name))
 			Me.targetClass = caller.lookupClass()
 			Me.invokedType = invokedType
@@ -222,7 +222,7 @@ Namespace java.lang.invoke
 		''' <param name="toType"> Type to convert to </param>
 		''' <param name="strict"> If true, do strict checks, else allow that fromType may be parameterized </param>
 		''' <returns> True if 'fromType' can be passed to an argument of 'toType' </returns>
-		Private Function isAdaptableTo(ByVal fromType As [Class], ByVal toType As [Class], ByVal [strict] As Boolean) As Boolean
+		Private Function isAdaptableTo(  fromType As [Class],   toType As [Class],   [strict] As Boolean) As Boolean
 			If fromType.Equals(toType) Then Return True
 			If fromType.primitive Then
 				Dim wfrom As sun.invoke.util.Wrapper = forPrimitiveType(fromType)
@@ -258,10 +258,10 @@ Namespace java.lang.invoke
 		''' Check type adaptability for return types --
 		''' special handling of  Sub  type) and parameterized fromType </summary>
 		''' <returns> True if 'fromType' can be converted to 'toType' </returns>
-		Private Function isAdaptableToAsReturn(ByVal fromType As [Class], ByVal toType As [Class]) As Boolean
+		Private Function isAdaptableToAsReturn(  fromType As [Class],   toType As [Class]) As Boolean
 			Return toType.Equals(GetType(void)) OrElse (Not fromType.Equals(GetType(void))) AndAlso isAdaptableTo(fromType, toType, False)
 		End Function
-		Private Function isAdaptableToAsReturnStrict(ByVal fromType As [Class], ByVal toType As [Class]) As Boolean
+		Private Function isAdaptableToAsReturnStrict(  fromType As [Class],   toType As [Class]) As Boolean
 			If fromType.Equals(GetType(void)) Then Return toType.Equals(GetType(void))
 			Return isAdaptableTo(fromType, toType, True)
 		End Function

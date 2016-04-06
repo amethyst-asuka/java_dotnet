@@ -124,7 +124,7 @@ Namespace java.util.concurrent
 			''' </summary>
 			Friend [next] As Node(Of E)
 
-			Friend Sub New(ByVal x As E)
+			Friend Sub New(  x As E)
 				item = x
 			End Sub
 		End Class
@@ -179,7 +179,7 @@ Namespace java.util.concurrent
 		''' </summary>
 		''' <param name="capacity"> the capacity of this deque </param>
 		''' <exception cref="IllegalArgumentException"> if {@code capacity} is less than 1 </exception>
-		Public Sub New(ByVal capacity As Integer)
+		Public Sub New(  capacity As Integer)
 			If capacity <= 0 Then Throw New IllegalArgumentException
 			Me.capacity = capacity
 		End Sub
@@ -193,7 +193,7 @@ Namespace java.util.concurrent
 		''' <param name="c"> the collection of elements to initially contain </param>
 		''' <exception cref="NullPointerException"> if the specified collection or any
 		'''         of its elements are null </exception>
-		Public Sub New(Of T1 As E)(ByVal c As ICollection(Of T1))
+		Public Sub New(Of T1 As E)(  c As ICollection(Of T1))
 			Me.New( java.lang.[Integer].Max_Value)
 			Dim lock As java.util.concurrent.locks.ReentrantLock = Me.lock
 			lock.lock() ' Never contended, but necessary for visibility
@@ -213,7 +213,7 @@ Namespace java.util.concurrent
 		''' <summary>
 		''' Links node as first element, or returns false if full.
 		''' </summary>
-		Private Function linkFirst(ByVal node As Node(Of E)) As Boolean
+		Private Function linkFirst(  node As Node(Of E)) As Boolean
 			' assert lock.isHeldByCurrentThread();
 			If count >= capacity Then Return False
 			Dim f As Node(Of E) = first
@@ -232,7 +232,7 @@ Namespace java.util.concurrent
 		''' <summary>
 		''' Links node as last element, or returns false if full.
 		''' </summary>
-		Private Function linkLast(ByVal node As Node(Of E)) As Boolean
+		Private Function linkLast(  node As Node(Of E)) As Boolean
 			' assert lock.isHeldByCurrentThread();
 			If count >= capacity Then Return False
 			Dim l As Node(Of E) = last
@@ -295,7 +295,7 @@ Namespace java.util.concurrent
 		''' <summary>
 		''' Unlinks x.
 		''' </summary>
-		Friend Overridable Sub unlink(ByVal x As Node(Of E))
+		Friend Overridable Sub unlink(  x As Node(Of E))
 			' assert lock.isHeldByCurrentThread();
 			Dim p As Node(Of E) = x.prev
 			Dim n As Node(Of E) = x.next
@@ -318,18 +318,18 @@ Namespace java.util.concurrent
 
 		''' <exception cref="IllegalStateException"> if this deque is full </exception>
 		''' <exception cref="NullPointerException"> {@inheritDoc} </exception>
-		Public Overridable Sub addFirst(ByVal e As E)
+		Public Overridable Sub addFirst(  e As E)
 			If Not offerFirst(e) Then Throw New IllegalStateException("Deque full")
 		End Sub
 
 		''' <exception cref="IllegalStateException"> if this deque is full </exception>
 		''' <exception cref="NullPointerException">  {@inheritDoc} </exception>
-		Public Overridable Sub addLast(ByVal e As E)
+		Public Overridable Sub addLast(  e As E)
 			If Not offerLast(e) Then Throw New IllegalStateException("Deque full")
 		End Sub
 
 		''' <exception cref="NullPointerException"> {@inheritDoc} </exception>
-		Public Overridable Function offerFirst(ByVal e As E) As Boolean
+		Public Overridable Function offerFirst(  e As E) As Boolean
 			If e Is Nothing Then Throw New NullPointerException
 			Dim node As New Node(Of E)(e)
 			Dim lock As java.util.concurrent.locks.ReentrantLock = Me.lock
@@ -342,7 +342,7 @@ Namespace java.util.concurrent
 		End Function
 
 		''' <exception cref="NullPointerException"> {@inheritDoc} </exception>
-		Public Overridable Function offerLast(ByVal e As E) As Boolean
+		Public Overridable Function offerLast(  e As E) As Boolean
 			If e Is Nothing Then Throw New NullPointerException
 			Dim node As New Node(Of E)(e)
 			Dim lock As java.util.concurrent.locks.ReentrantLock = Me.lock
@@ -356,7 +356,7 @@ Namespace java.util.concurrent
 
 		''' <exception cref="NullPointerException"> {@inheritDoc} </exception>
 		''' <exception cref="InterruptedException"> {@inheritDoc} </exception>
-		Public Overridable Sub putFirst(ByVal e As E)
+		Public Overridable Sub putFirst(  e As E)
 			If e Is Nothing Then Throw New NullPointerException
 			Dim node As New Node(Of E)(e)
 			Dim lock As java.util.concurrent.locks.ReentrantLock = Me.lock
@@ -372,7 +372,7 @@ Namespace java.util.concurrent
 
 		''' <exception cref="NullPointerException"> {@inheritDoc} </exception>
 		''' <exception cref="InterruptedException"> {@inheritDoc} </exception>
-		Public Overridable Sub putLast(ByVal e As E)
+		Public Overridable Sub putLast(  e As E)
 			If e Is Nothing Then Throw New NullPointerException
 			Dim node As New Node(Of E)(e)
 			Dim lock As java.util.concurrent.locks.ReentrantLock = Me.lock
@@ -388,7 +388,7 @@ Namespace java.util.concurrent
 
 		''' <exception cref="NullPointerException"> {@inheritDoc} </exception>
 		''' <exception cref="InterruptedException"> {@inheritDoc} </exception>
-		Public Overridable Function offerFirst(ByVal e As E, ByVal timeout As Long, ByVal unit As TimeUnit) As Boolean
+		Public Overridable Function offerFirst(  e As E,   timeout As Long,   unit As TimeUnit) As Boolean
 			If e Is Nothing Then Throw New NullPointerException
 			Dim node As New Node(Of E)(e)
 			Dim nanos As Long = unit.toNanos(timeout)
@@ -407,7 +407,7 @@ Namespace java.util.concurrent
 
 		''' <exception cref="NullPointerException"> {@inheritDoc} </exception>
 		''' <exception cref="InterruptedException"> {@inheritDoc} </exception>
-		Public Overridable Function offerLast(ByVal e As E, ByVal timeout As Long, ByVal unit As TimeUnit) As Boolean
+		Public Overridable Function offerLast(  e As E,   timeout As Long,   unit As TimeUnit) As Boolean
 			If e Is Nothing Then Throw New NullPointerException
 			Dim node As New Node(Of E)(e)
 			Dim nanos As Long = unit.toNanos(timeout)
@@ -490,7 +490,7 @@ Namespace java.util.concurrent
 			End Try
 		End Function
 
-		Public Overridable Function pollFirst(ByVal timeout As Long, ByVal unit As TimeUnit) As E Implements BlockingDeque(Of E).pollFirst
+		Public Overridable Function pollFirst(  timeout As Long,   unit As TimeUnit) As E Implements BlockingDeque(Of E).pollFirst
 			Dim nanos As Long = unit.toNanos(timeout)
 			Dim lock As java.util.concurrent.locks.ReentrantLock = Me.lock
 			lock.lockInterruptibly()
@@ -508,7 +508,7 @@ Namespace java.util.concurrent
 			End Try
 		End Function
 
-		Public Overridable Function pollLast(ByVal timeout As Long, ByVal unit As TimeUnit) As E Implements BlockingDeque(Of E).pollLast
+		Public Overridable Function pollLast(  timeout As Long,   unit As TimeUnit) As E Implements BlockingDeque(Of E).pollLast
 			Dim nanos As Long = unit.toNanos(timeout)
 			Dim lock As java.util.concurrent.locks.ReentrantLock = Me.lock
 			lock.lockInterruptibly()
@@ -564,7 +564,7 @@ Namespace java.util.concurrent
 			End Try
 		End Function
 
-		Public Overridable Function removeFirstOccurrence(ByVal o As Object) As Boolean Implements BlockingDeque(Of E).removeFirstOccurrence
+		Public Overridable Function removeFirstOccurrence(  o As Object) As Boolean Implements BlockingDeque(Of E).removeFirstOccurrence
 			If o Is Nothing Then Return False
 			Dim lock As java.util.concurrent.locks.ReentrantLock = Me.lock
 			lock.lock()
@@ -583,7 +583,7 @@ Namespace java.util.concurrent
 			End Try
 		End Function
 
-		Public Overridable Function removeLastOccurrence(ByVal o As Object) As Boolean Implements BlockingDeque(Of E).removeLastOccurrence
+		Public Overridable Function removeLastOccurrence(  o As Object) As Boolean Implements BlockingDeque(Of E).removeLastOccurrence
 			If o Is Nothing Then Return False
 			Dim lock As java.util.concurrent.locks.ReentrantLock = Me.lock
 			lock.lock()
@@ -613,25 +613,25 @@ Namespace java.util.concurrent
 		''' </summary>
 		''' <exception cref="IllegalStateException"> if this deque is full </exception>
 		''' <exception cref="NullPointerException"> if the specified element is null </exception>
-		Public Overridable Function add(ByVal e As E) As Boolean
+		Public Overridable Function add(  e As E) As Boolean
 			addLast(e)
 			Return True
 		End Function
 
 		''' <exception cref="NullPointerException"> if the specified element is null </exception>
-		Public Overridable Function offer(ByVal e As E) As Boolean
+		Public Overridable Function offer(  e As E) As Boolean
 			Return offerLast(e)
 		End Function
 
 		''' <exception cref="NullPointerException"> {@inheritDoc} </exception>
 		''' <exception cref="InterruptedException"> {@inheritDoc} </exception>
-		Public Overridable Sub put(ByVal e As E)
+		Public Overridable Sub put(  e As E)
 			putLast(e)
 		End Sub
 
 		''' <exception cref="NullPointerException"> {@inheritDoc} </exception>
 		''' <exception cref="InterruptedException"> {@inheritDoc} </exception>
-		Public Overridable Function offer(ByVal e As E, ByVal timeout As Long, ByVal unit As TimeUnit) As Boolean
+		Public Overridable Function offer(  e As E,   timeout As Long,   unit As TimeUnit) As Boolean
 			Return offerLast(e, timeout, unit)
 		End Function
 
@@ -656,7 +656,7 @@ Namespace java.util.concurrent
 			Return takeFirst()
 		End Function
 
-		Public Overridable Function poll(ByVal timeout As Long, ByVal unit As TimeUnit) As E Implements BlockingDeque(Of E).poll
+		Public Overridable Function poll(  timeout As Long,   unit As TimeUnit) As E Implements BlockingDeque(Of E).poll
 			Return pollFirst(timeout, unit)
 		End Function
 
@@ -703,7 +703,7 @@ Namespace java.util.concurrent
 		''' <exception cref="NullPointerException">          {@inheritDoc} </exception>
 		''' <exception cref="IllegalArgumentException">      {@inheritDoc} </exception>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Overridable Function drainTo(Of T1)(ByVal c As ICollection(Of T1)) As Integer
+		Public Overridable Function drainTo(Of T1)(  c As ICollection(Of T1)) As Integer
 			Return drainTo(c,  java.lang.[Integer].Max_Value)
 		End Function
 
@@ -712,7 +712,7 @@ Namespace java.util.concurrent
 		''' <exception cref="NullPointerException">          {@inheritDoc} </exception>
 		''' <exception cref="IllegalArgumentException">      {@inheritDoc} </exception>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Overridable Function drainTo(Of T1)(ByVal c As ICollection(Of T1), ByVal maxElements As Integer) As Integer
+		Public Overridable Function drainTo(Of T1)(  c As ICollection(Of T1),   maxElements As Integer) As Integer
 			If c Is Nothing Then Throw New NullPointerException
 			If c Is Me Then Throw New IllegalArgumentException
 			If maxElements <= 0 Then Return 0
@@ -734,7 +734,7 @@ Namespace java.util.concurrent
 
 		''' <exception cref="IllegalStateException"> if this deque is full </exception>
 		''' <exception cref="NullPointerException"> {@inheritDoc} </exception>
-		Public Overridable Sub push(ByVal e As E)
+		Public Overridable Sub push(  e As E)
 			addFirst(e)
 		End Sub
 
@@ -758,7 +758,7 @@ Namespace java.util.concurrent
 		''' </summary>
 		''' <param name="o"> element to be removed from this deque, if present </param>
 		''' <returns> {@code true} if this deque changed as a result of the call </returns>
-		Public Overridable Function remove(ByVal o As Object) As Boolean Implements BlockingDeque(Of E).remove
+		Public Overridable Function remove(  o As Object) As Boolean Implements BlockingDeque(Of E).remove
 			Return removeFirstOccurrence(o)
 		End Function
 
@@ -783,7 +783,7 @@ Namespace java.util.concurrent
 		''' </summary>
 		''' <param name="o"> object to be checked for containment in this deque </param>
 		''' <returns> {@code true} if this deque contains the specified element </returns>
-		Public Overridable Function contains(ByVal o As Object) As Boolean Implements BlockingDeque(Of E).contains
+		Public Overridable Function contains(  o As Object) As Boolean Implements BlockingDeque(Of E).contains
 			If o Is Nothing Then Return False
 			Dim lock As java.util.concurrent.locks.ReentrantLock = Me.lock
 			lock.lock()
@@ -906,7 +906,7 @@ Namespace java.util.concurrent
 		'''         this deque </exception>
 		''' <exception cref="NullPointerException"> if the specified array is null </exception>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Overridable Function toArray(Of T)(ByVal a As T()) As T()
+		Public Overridable Function toArray(Of T)(  a As T()) As T()
 			Dim lock As java.util.concurrent.locks.ReentrantLock = Me.lock
 			lock.lock()
 			Try
@@ -1025,9 +1025,9 @@ Namespace java.util.concurrent
 			Private lastRet As Node(Of E)
 
 			Friend MustOverride Function firstNode() As Node(Of E)
-			Friend MustOverride Function nextNode(ByVal n As Node(Of E)) As Node(Of E)
+			Friend MustOverride Function nextNode(  n As Node(Of E)) As Node(Of E)
 
-			Friend Sub New(ByVal outerInstance As LinkedBlockingDeque)
+			Friend Sub New(  outerInstance As LinkedBlockingDeque)
 					Me.outerInstance = outerInstance
 				' set to initial position
 				Dim lock As java.util.concurrent.locks.ReentrantLock = outerInstance.lock
@@ -1044,7 +1044,7 @@ Namespace java.util.concurrent
 			''' Returns the successor node of the given non-null, but
 			''' possibly previously deleted, node.
 			''' </summary>
-			Private Function succ(ByVal n As Node(Of E)) As Node(Of E)
+			Private Function succ(  n As Node(Of E)) As Node(Of E)
 				' Chains of deleted nodes ending in null or self-links
 				' are possible if multiple interior nodes are removed.
 				Do
@@ -1109,14 +1109,14 @@ Namespace java.util.concurrent
 
 			Private ReadOnly outerInstance As LinkedBlockingDeque
 
-			Public Sub New(ByVal outerInstance As LinkedBlockingDeque)
+			Public Sub New(  outerInstance As LinkedBlockingDeque)
 				Me.outerInstance = outerInstance
 			End Sub
 
 			Friend Overrides Function firstNode() As Node(Of E)
 				Return outerInstance.first
 			End Function
-			Friend Overrides Function nextNode(ByVal n As Node(Of E)) As Node(Of E)
+			Friend Overrides Function nextNode(  n As Node(Of E)) As Node(Of E)
 				Return n.next
 			End Function
 		End Class
@@ -1128,14 +1128,14 @@ Namespace java.util.concurrent
 
 			Private ReadOnly outerInstance As LinkedBlockingDeque
 
-			Public Sub New(ByVal outerInstance As LinkedBlockingDeque)
+			Public Sub New(  outerInstance As LinkedBlockingDeque)
 				Me.outerInstance = outerInstance
 			End Sub
 
 			Friend Overrides Function firstNode() As Node(Of E)
 				Return outerInstance.last
 			End Function
-			Friend Overrides Function nextNode(ByVal n As Node(Of E)) As Node(Of E)
+			Friend Overrides Function nextNode(  n As Node(Of E)) As Node(Of E)
 				Return n.prev
 			End Function
 		End Class
@@ -1151,7 +1151,7 @@ Namespace java.util.concurrent
 			Friend batch As Integer ' batch size for splits
 			Friend exhausted As Boolean ' true when no more nodes
 			Friend est As Long ' size estimate
-			Friend Sub New(ByVal queue As LinkedBlockingDeque(Of E))
+			Friend Sub New(  queue As LinkedBlockingDeque(Of E))
 				Me.queue = queue
 				Me.est = queue.size()
 			End Sub
@@ -1202,7 +1202,7 @@ Namespace java.util.concurrent
 			End Function
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Sub forEachRemaining(Of T1)(ByVal action As java.util.function.Consumer(Of T1))
+			Public Sub forEachRemaining(Of T1)(  action As java.util.function.Consumer(Of T1))
 				If action Is Nothing Then Throw New NullPointerException
 				Dim q As LinkedBlockingDeque(Of E) = Me.queue
 				Dim lock As java.util.concurrent.locks.ReentrantLock = q.lock
@@ -1228,7 +1228,7 @@ Namespace java.util.concurrent
 			End Sub
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Function tryAdvance(Of T1)(ByVal action As java.util.function.Consumer(Of T1)) As Boolean
+			Public Function tryAdvance(Of T1)(  action As java.util.function.Consumer(Of T1)) As Boolean
 				If action Is Nothing Then Throw New NullPointerException
 				Dim q As LinkedBlockingDeque(Of E) = Me.queue
 				Dim lock As java.util.concurrent.locks.ReentrantLock = q.lock
@@ -1285,7 +1285,7 @@ Namespace java.util.concurrent
 		''' <exception cref="java.io.IOException"> if an I/O error occurs
 		''' @serialData The capacity (int), followed by elements (each an
 		''' {@code Object}) in the proper order, followed by a null </exception>
-		Private Sub writeObject(ByVal s As java.io.ObjectOutputStream)
+		Private Sub writeObject(  s As java.io.ObjectOutputStream)
 			Dim lock As java.util.concurrent.locks.ReentrantLock = Me.lock
 			lock.lock()
 			Try
@@ -1310,7 +1310,7 @@ Namespace java.util.concurrent
 		''' <exception cref="ClassNotFoundException"> if the class of a serialized object
 		'''         could not be found </exception>
 		''' <exception cref="java.io.IOException"> if an I/O error occurs </exception>
-		Private Sub readObject(ByVal s As java.io.ObjectInputStream)
+		Private Sub readObject(  s As java.io.ObjectInputStream)
 			s.defaultReadObject()
 			count = 0
 			first = Nothing

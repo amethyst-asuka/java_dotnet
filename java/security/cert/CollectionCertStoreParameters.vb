@@ -82,7 +82,7 @@ Namespace java.security.cert
 		'''        {@code Certificate}s and {@code CRL}s </param>
 		''' <exception cref="NullPointerException"> if {@code collection} is
 		''' {@code null} </exception>
-		Public Sub New(Of T1)(ByVal collection As ICollection(Of T1))
+		Public Sub New(Of T1)(  collection As ICollection(Of T1))
 			If collection Is Nothing Then Throw New NullPointerException
 			coll = collection
 		End Sub

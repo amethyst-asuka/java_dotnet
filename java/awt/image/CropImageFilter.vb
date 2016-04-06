@@ -57,7 +57,7 @@ Namespace java.awt.image
         ''' <param name="y"> the y location of the top of the rectangle to be extracted </param>
         ''' <param name="w"> the width of the rectangle to be extracted </param>
         ''' <param name="h"> the height of the rectangle to be extracted </param>
-        Public Sub New(ByVal x As Integer, ByVal y As Integer, ByVal w As Integer, ByVal h As Integer)
+        Public Sub New(  x As Integer,   y As Integer,   w As Integer,   h As Integer)
             cropX = x
             cropY = y
             cropW = w
@@ -78,7 +78,7 @@ Namespace java.awt.image
         ''' with the filtering operation.
         ''' </summary>
         Public Overrides WriteOnly Property properties(Of T1) As Dictionary(Of T1)
-            Set(ByVal props As Dictionary(Of T1))
+            Set(  props As Dictionary(Of T1))
                 Dim p As Dictionary(Of Object, Object) = CType(props.clone(), Dictionary(Of Object, Object))
                 p("croprect") = New java.awt.Rectangle(cropX, cropY, cropW, cropH)
                 MyBase.properties = p
@@ -96,7 +96,7 @@ Namespace java.awt.image
         ''' this method directly since that operation could interfere
         ''' with the filtering operation. </summary>
         ''' <seealso cref= ImageConsumer </seealso>
-        Public Overrides Sub setDimensions(ByVal w As Integer, ByVal h As Integer)
+        Public Overrides Sub setDimensions(  w As Integer,   h As Integer)
             consumer.dimensionsons(cropW, cropH)
         End Sub
 

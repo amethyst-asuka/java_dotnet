@@ -48,18 +48,18 @@ Namespace java.net
 		End Function
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Public Function lookupAllHostAddr(ByVal hostname As String) As InetAddress()
+		Public Function lookupAllHostAddr(  hostname As String) As InetAddress()
 		End Function
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Public Function getHostByAddr(ByVal addr As SByte()) As String
+		Public Function getHostByAddr(  addr As SByte()) As String
 		End Function
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Private Function isReachable0(ByVal addr As SByte(), ByVal scope As Integer, ByVal timeout As Integer, ByVal inf As SByte(), ByVal ttl As Integer, ByVal if_scope As Integer) As Boolean
+		Private Function isReachable0(  addr As SByte(),   scope As Integer,   timeout As Integer,   inf As SByte(),   ttl As Integer,   if_scope As Integer) As Boolean
 		End Function
 
-		Public Overridable Function isReachable(ByVal addr As InetAddress, ByVal timeout As Integer, ByVal netif As NetworkInterface, ByVal ttl As Integer) As Boolean Implements InetAddressImpl.isReachable
+		Public Overridable Function isReachable(  addr As InetAddress,   timeout As Integer,   netif As NetworkInterface,   ttl As Integer) As Boolean Implements InetAddressImpl.isReachable
 			Dim ifaddr As SByte() = Nothing
 			Dim scope As Integer = -1
 			Dim netif_scope As Integer = -1

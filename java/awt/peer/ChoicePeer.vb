@@ -45,7 +45,7 @@ Namespace java.awt.peer
 		''' <param name="index"> the index where to add the item
 		''' </param>
 		''' <seealso cref= Choice#add(String) </seealso>
-		Sub add(ByVal item As String, ByVal index As Integer)
+		Sub add(  item As String,   index As Integer)
 
 		''' <summary>
 		''' Removes the item at index {@code index} from the combo box list.
@@ -53,7 +53,7 @@ Namespace java.awt.peer
 		''' <param name="index"> the index where to remove the item
 		''' </param>
 		''' <seealso cref= Choice#remove(int) </seealso>
-		Sub remove(ByVal index As Integer)
+		Sub remove(  index As Integer)
 
 		''' <summary>
 		''' Removes all items from the combo box list.
@@ -67,7 +67,7 @@ Namespace java.awt.peer
 		''' <param name="index"> the index which should be selected
 		''' </param>
 		''' <seealso cref= Choice#select(int) </seealso>
-		Sub [select](ByVal index As Integer)
+		Sub [select](  index As Integer)
 
 	End Interface
 

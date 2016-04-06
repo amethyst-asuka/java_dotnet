@@ -120,7 +120,7 @@ Namespace java.time.zone
 		''' <returns> the transition, not null </returns>
 		''' <exception cref="IllegalArgumentException"> if {@code offsetBefore} and {@code offsetAfter}
 		'''         are equal, or {@code transition.getNano()} returns non-zero value </exception>
-		Public Shared Function [of](ByVal transition As java.time.LocalDateTime, ByVal offsetBefore As java.time.ZoneOffset, ByVal offsetAfter As java.time.ZoneOffset) As ZoneOffsetTransition
+		Public Shared Function [of](  transition As java.time.LocalDateTime,   offsetBefore As java.time.ZoneOffset,   offsetAfter As java.time.ZoneOffset) As ZoneOffsetTransition
 			java.util.Objects.requireNonNull(transition, "transition")
 			java.util.Objects.requireNonNull(offsetBefore, "offsetBefore")
 			java.util.Objects.requireNonNull(offsetAfter, "offsetAfter")
@@ -135,7 +135,7 @@ Namespace java.time.zone
 		''' <param name="transition">  the transition date-time with the offset before the transition, not null </param>
 		''' <param name="offsetBefore">  the offset before the transition, not null </param>
 		''' <param name="offsetAfter">  the offset at and after the transition, not null </param>
-		Friend Sub New(ByVal transition As java.time.LocalDateTime, ByVal offsetBefore As java.time.ZoneOffset, ByVal offsetAfter As java.time.ZoneOffset)
+		Friend Sub New(  transition As java.time.LocalDateTime,   offsetBefore As java.time.ZoneOffset,   offsetAfter As java.time.ZoneOffset)
 			Me.transition = transition
 			Me.offsetBefore = offsetBefore
 			Me.offsetAfter = offsetAfter
@@ -147,7 +147,7 @@ Namespace java.time.zone
 		''' <param name="epochSecond">  the transition epoch-second </param>
 		''' <param name="offsetBefore">  the offset before the transition, not null </param>
 		''' <param name="offsetAfter">  the offset at and after the transition, not null </param>
-		Friend Sub New(ByVal epochSecond As Long, ByVal offsetBefore As java.time.ZoneOffset, ByVal offsetAfter As java.time.ZoneOffset)
+		Friend Sub New(  epochSecond As Long,   offsetBefore As java.time.ZoneOffset,   offsetAfter As java.time.ZoneOffset)
 			Me.transition = java.time.LocalDateTime.ofEpochSecond(epochSecond, 0, offsetBefore)
 			Me.offsetBefore = offsetBefore
 			Me.offsetAfter = offsetAfter
@@ -159,7 +159,7 @@ Namespace java.time.zone
 		''' </summary>
 		''' <param name="s"> the stream to read </param>
 		''' <exception cref="InvalidObjectException"> always </exception>
-		Private Sub readObject(ByVal s As java.io.ObjectInputStream)
+		Private Sub readObject(  s As java.io.ObjectInputStream)
 			Throw New java.io.InvalidObjectException("Deserialization via serialization delegate")
 		End Sub
 
@@ -188,7 +188,7 @@ Namespace java.time.zone
 		''' </summary>
 		''' <param name="out">  the output stream, not null </param>
 		''' <exception cref="IOException"> if an error occurs </exception>
-		Friend Sub writeExternal(ByVal out As java.io.DataOutput)
+		Friend Sub writeExternal(  out As java.io.DataOutput)
 			Ser.writeEpochSec(toEpochSecond(), out)
 			Ser.writeOffset(offsetBefore, out)
 			Ser.writeOffset(offsetAfter, out)
@@ -200,7 +200,7 @@ Namespace java.time.zone
 		''' <param name="in">  the input stream, not null </param>
 		''' <returns> the created object, not null </returns>
 		''' <exception cref="IOException"> if an error occurs </exception>
-		Shared Function readExternal(ByVal [in] As java.io.DataInput) As ZoneOffsetTransition
+		Shared Function readExternal(  [in] As java.io.DataInput) As ZoneOffsetTransition
 			Dim epochSecond As Long = Ser.readEpochSec([in])
 			Dim before As java.time.ZoneOffset = Ser.readOffset([in])
 			Dim after As java.time.ZoneOffset = Ser.readOffset([in])
@@ -351,7 +351,7 @@ Namespace java.time.zone
 		''' </summary>
 		''' <param name="offset">  the offset to check, null returns false </param>
 		''' <returns> true if the offset is valid during the transition </returns>
-		Public Function isValidOffset(ByVal offset As java.time.ZoneOffset) As Boolean
+		Public Function isValidOffset(  offset As java.time.ZoneOffset) As Boolean
 			Return If(gap, False, (offsetBefore.Equals(offset) OrElse offsetAfter.Equals(offset)))
 		End Function
 
@@ -377,7 +377,7 @@ Namespace java.time.zone
 		''' </summary>
 		''' <param name="transition">  the transition to compare to, not null </param>
 		''' <returns> the comparator value, negative if less, positive if greater </returns>
-		Public Overrides Function compareTo(ByVal transition As ZoneOffsetTransition) As Integer Implements Comparable(Of ZoneOffsetTransition).compareTo
+		Public Overrides Function compareTo(  transition As ZoneOffsetTransition) As Integer Implements Comparable(Of ZoneOffsetTransition).compareTo
 			Return Me.instant.CompareTo(transition.instant)
 		End Function
 
@@ -389,7 +389,7 @@ Namespace java.time.zone
 		''' </summary>
 		''' <param name="other">  the other object to compare to, null returns false </param>
 		''' <returns> true if equal </returns>
-		Public Overrides Function Equals(ByVal other As Object) As Boolean
+		Public Overrides Function Equals(  other As Object) As Boolean
 			If other Is Me Then Return True
 			If TypeOf other Is ZoneOffsetTransition Then
 				Dim d As ZoneOffsetTransition = CType(other, ZoneOffsetTransition)

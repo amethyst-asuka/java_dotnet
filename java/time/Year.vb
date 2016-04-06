@@ -155,7 +155,7 @@ Namespace java.time
 		''' </summary>
 		''' <param name="zone">  the zone ID to use, not null </param>
 		''' <returns> the current year using the system clock, not null </returns>
-		Public Shared Function now(ByVal zone As ZoneId) As Year
+		Public Shared Function now(  zone As ZoneId) As Year
 			Return now(Clock.system(zone))
 		End Function
 
@@ -168,7 +168,7 @@ Namespace java.time
 		''' </summary>
 		''' <param name="clock">  the clock to use, not null </param>
 		''' <returns> the current year, not null </returns>
-		Public Shared Function now(ByVal clock_Renamed As Clock) As Year
+		Public Shared Function now(  clock_Renamed As Clock) As Year
 			Dim now_Renamed As LocalDate = LocalDate.now(clock_Renamed) ' called once
 			Return Year.of(now_Renamed.year)
 		End Function
@@ -187,7 +187,7 @@ Namespace java.time
 		''' <param name="isoYear">  the ISO proleptic year to represent, from {@code MIN_VALUE} to {@code MAX_VALUE} </param>
 		''' <returns> the year, not null </returns>
 		''' <exception cref="DateTimeException"> if the field is invalid </exception>
-		Public Shared Function [of](ByVal isoYear As Integer) As Year
+		Public Shared Function [of](  isoYear As Integer) As Year
 			YEAR.checkValidValue(isoYear)
 			Return New Year(isoYear)
 		End Function
@@ -210,7 +210,7 @@ Namespace java.time
 		''' <param name="temporal">  the temporal object to convert, not null </param>
 		''' <returns> the year, not null </returns>
 		''' <exception cref="DateTimeException"> if unable to convert to a {@code Year} </exception>
-		Public Shared Function [from](ByVal temporal As java.time.temporal.TemporalAccessor) As Year
+		Public Shared Function [from](  temporal As java.time.temporal.TemporalAccessor) As Year
 			If TypeOf temporal Is Year Then Return CType(temporal, Year)
 			java.util.Objects.requireNonNull(temporal, "temporal")
 			Try
@@ -231,7 +231,7 @@ Namespace java.time
 		''' <param name="text">  the text to parse such as "2007", not null </param>
 		''' <returns> the parsed year, not null </returns>
 		''' <exception cref="DateTimeParseException"> if the text cannot be parsed </exception>
-		Public Shared Function parse(ByVal text As CharSequence) As Year
+		Public Shared Function parse(  text As CharSequence) As Year
 			Return parse(text, PARSER)
 		End Function
 
@@ -244,7 +244,7 @@ Namespace java.time
 		''' <param name="formatter">  the formatter to use, not null </param>
 		''' <returns> the parsed year, not null </returns>
 		''' <exception cref="DateTimeParseException"> if the text cannot be parsed </exception>
-		Public Shared Function parse(ByVal text As CharSequence, ByVal formatter As java.time.format.DateTimeFormatter) As Year
+		Public Shared Function parse(  text As CharSequence,   formatter As java.time.format.DateTimeFormatter) As Year
 			java.util.Objects.requireNonNull(formatter, "formatter")
 			Return formatter.parse(text, Year::from)
 		End Function
@@ -268,7 +268,7 @@ Namespace java.time
 		''' </summary>
 		''' <param name="year">  the year to check </param>
 		''' <returns> true if the year is leap, false otherwise </returns>
-		Public Shared Function isLeap(ByVal year_Renamed As Long) As Boolean
+		Public Shared Function isLeap(  year_Renamed As Long) As Boolean
 			Return ((year_Renamed And 3) = 0) AndAlso ((year Mod 100) <> 0 OrElse (year Mod 400) = 0)
 		End Function
 
@@ -277,7 +277,7 @@ Namespace java.time
 		''' Constructor.
 		''' </summary>
 		''' <param name="year">  the year to represent </param>
-		Private Sub New(ByVal year_Renamed As Integer)
+		Private Sub New(  year_Renamed As Integer)
 			Me.year_Renamed = year_Renamed
 		End Sub
 
@@ -319,7 +319,7 @@ Namespace java.time
 		''' </summary>
 		''' <param name="field">  the field to check, null returns false </param>
 		''' <returns> true if the field is supported on this year, false if not </returns>
-		Public Overrides Function isSupported(ByVal field As java.time.temporal.TemporalField) As Boolean
+		Public Overrides Function isSupported(  field As java.time.temporal.TemporalField) As Boolean
 			If TypeOf field Is java.time.temporal.ChronoField Then Return field = YEAR OrElse field = YEAR_OF_ERA OrElse field = ERA
 			Return field IsNot Nothing AndAlso field.isSupportedBy(Me)
 		End Function
@@ -349,7 +349,7 @@ Namespace java.time
 		''' </summary>
 		''' <param name="unit">  the unit to check, null returns false </param>
 		''' <returns> true if the unit can be added/subtracted, false if not </returns>
-		Public Overrides Function isSupported(ByVal unit As java.time.temporal.TemporalUnit) As Boolean
+		Public Overrides Function isSupported(  unit As java.time.temporal.TemporalUnit) As Boolean
 			If TypeOf unit Is java.time.temporal.ChronoUnit Then Return unit = YEARS OrElse unit = DECADES OrElse unit = CENTURIES OrElse unit = MILLENNIA OrElse unit = ERAS
 			Return unit IsNot Nothing AndAlso unit.isSupportedBy(Me)
 		End Function
@@ -377,7 +377,7 @@ Namespace java.time
 		''' <returns> the range of valid values for the field, not null </returns>
 		''' <exception cref="DateTimeException"> if the range for the field cannot be obtained </exception>
 		''' <exception cref="UnsupportedTemporalTypeException"> if the field is not supported </exception>
-		Public Overrides Function range(ByVal field As java.time.temporal.TemporalField) As java.time.temporal.ValueRange
+		Public Overrides Function range(  field As java.time.temporal.TemporalField) As java.time.temporal.ValueRange
 			If field = YEAR_OF_ERA Then Return (If(year_Renamed <= 0, java.time.temporal.ValueRange.of(1, MAX_VALUE + 1), java.time.temporal.ValueRange.of(1, MAX_VALUE)))
 			Return outerInstance.range(field)
 		End Function
@@ -407,7 +407,7 @@ Namespace java.time
 		''' <exception cref="UnsupportedTemporalTypeException"> if the field is not supported or
 		'''         the range of values exceeds an {@code int} </exception>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
-		Public Overrides Function [get](ByVal field As java.time.temporal.TemporalField) As Integer ' override for Javadoc
+		Public Overrides Function [get](  field As java.time.temporal.TemporalField) As Integer ' override for Javadoc
 			Return range(field).checkValidIntValue(getLong(field), field)
 		End Function
 
@@ -433,7 +433,7 @@ Namespace java.time
 		''' <exception cref="DateTimeException"> if a value for the field cannot be obtained </exception>
 		''' <exception cref="UnsupportedTemporalTypeException"> if the field is not supported </exception>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
-		Public Overrides Function getLong(ByVal field As java.time.temporal.TemporalField) As Long
+		Public Overrides Function getLong(  field As java.time.temporal.TemporalField) As Long
 			If TypeOf field Is java.time.temporal.ChronoField Then
 				Select Case CType(field, java.time.temporal.ChronoField)
 					Case YEAR_OF_ERA
@@ -480,7 +480,7 @@ Namespace java.time
 		''' </summary>
 		''' <param name="monthDay">  the month-day to validate, null returns false </param>
 		''' <returns> true if the month and day are valid for this year </returns>
-		Public Function isValidMonthDay(ByVal monthDay_Renamed As MonthDay) As Boolean
+		Public Function isValidMonthDay(  monthDay_Renamed As MonthDay) As Boolean
 			Return monthDay_Renamed IsNot Nothing AndAlso monthDay_Renamed.isValidYear(year_Renamed)
 		End Function
 
@@ -510,7 +510,7 @@ Namespace java.time
 		''' <returns> a {@code Year} based on {@code this} with the adjustment made, not null </returns>
 		''' <exception cref="DateTimeException"> if the adjustment cannot be made </exception>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
-		Public Overrides Function [with](ByVal adjuster As java.time.temporal.TemporalAdjuster) As Year
+		Public Overrides Function [with](  adjuster As java.time.temporal.TemporalAdjuster) As Year
 			Return CType(adjuster.adjustInto(Me), Year)
 		End Function
 
@@ -554,7 +554,7 @@ Namespace java.time
 		''' <exception cref="DateTimeException"> if the field cannot be set </exception>
 		''' <exception cref="UnsupportedTemporalTypeException"> if the field is not supported </exception>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
-		Public Overrides Function [with](ByVal field As java.time.temporal.TemporalField, ByVal newValue As Long) As Year
+		Public Overrides Function [with](  field As java.time.temporal.TemporalField,   newValue As Long) As Year
 			If TypeOf field Is java.time.temporal.ChronoField Then
 				Dim f As java.time.temporal.ChronoField = CType(field, java.time.temporal.ChronoField)
 				f.checkValidValue(newValue)
@@ -591,7 +591,7 @@ Namespace java.time
 		''' <returns> a {@code Year} based on this year with the addition made, not null </returns>
 		''' <exception cref="DateTimeException"> if the addition cannot be made </exception>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
-		Public Overrides Function plus(ByVal amountToAdd As java.time.temporal.TemporalAmount) As Year
+		Public Overrides Function plus(  amountToAdd As java.time.temporal.TemporalAmount) As Year
 			Return CType(amountToAdd.addTo(Me), Year)
 		End Function
 
@@ -642,7 +642,7 @@ Namespace java.time
 		''' <exception cref="DateTimeException"> if the addition cannot be made </exception>
 		''' <exception cref="UnsupportedTemporalTypeException"> if the unit is not supported </exception>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
-		Public Overrides Function plus(ByVal amountToAdd As Long, ByVal unit As java.time.temporal.TemporalUnit) As Year
+		Public Overrides Function plus(  amountToAdd As Long,   unit As java.time.temporal.TemporalUnit) As Year
 			If TypeOf unit Is java.time.temporal.ChronoUnit Then
 				Select Case CType(unit, java.time.temporal.ChronoUnit)
 					Case YEARS
@@ -669,7 +669,7 @@ Namespace java.time
 		''' <param name="yearsToAdd">  the years to add, may be negative </param>
 		''' <returns> a {@code Year} based on this year with the years added, not null </returns>
 		''' <exception cref="DateTimeException"> if the result exceeds the supported range </exception>
-		Public Function plusYears(ByVal yearsToAdd As Long) As Year
+		Public Function plusYears(  yearsToAdd As Long) As Year
 			If yearsToAdd = 0 Then Return Me
 			Return [of](YEAR.checkValidIntValue(year_Renamed + yearsToAdd)) ' overflow safe
 		End Function
@@ -694,7 +694,7 @@ Namespace java.time
 		''' <returns> a {@code Year} based on this year with the subtraction made, not null </returns>
 		''' <exception cref="DateTimeException"> if the subtraction cannot be made </exception>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
-		Public Overrides Function minus(ByVal amountToSubtract As java.time.temporal.TemporalAmount) As Year
+		Public Overrides Function minus(  amountToSubtract As java.time.temporal.TemporalAmount) As Year
 			Return CType(amountToSubtract.subtractFrom(Me), Year)
 		End Function
 
@@ -716,7 +716,7 @@ Namespace java.time
 		''' <exception cref="DateTimeException"> if the subtraction cannot be made </exception>
 		''' <exception cref="UnsupportedTemporalTypeException"> if the unit is not supported </exception>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
-		Public Overrides Function minus(ByVal amountToSubtract As Long, ByVal unit As java.time.temporal.TemporalUnit) As Year
+		Public Overrides Function minus(  amountToSubtract As Long,   unit As java.time.temporal.TemporalUnit) As Year
 			Return (If(amountToSubtract = java.lang.[Long].MIN_VALUE, plus(Long.Max_Value, unit).plus(1, unit), plus(-amountToSubtract, unit)))
 		End Function
 
@@ -728,7 +728,7 @@ Namespace java.time
 		''' <param name="yearsToSubtract">  the years to subtract, may be negative </param>
 		''' <returns> a {@code Year} based on this year with the year subtracted, not null </returns>
 		''' <exception cref="DateTimeException"> if the result exceeds the supported range </exception>
-		Public Function minusYears(ByVal yearsToSubtract As Long) As Year
+		Public Function minusYears(  yearsToSubtract As Long) As Year
 			Return (If(yearsToSubtract = java.lang.[Long].MIN_VALUE, plusYears(Long.Max_Value).plusYears(1), plusYears(-yearsToSubtract)))
 		End Function
 
@@ -751,7 +751,7 @@ Namespace java.time
 		''' <exception cref="DateTimeException"> if unable to query (defined by the query) </exception>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs (defined by the query) </exception>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Overrides Function query(Of R)(ByVal query_Renamed As java.time.temporal.TemporalQuery(Of R)) As R
+		Public Overrides Function query(Of R)(  query_Renamed As java.time.temporal.TemporalQuery(Of R)) As R
 			If query_Renamed Is java.time.temporal.TemporalQueries.chronology() Then
 				Return CType(java.time.chrono.IsoChronology.INSTANCE, R)
 			ElseIf query_Renamed Is java.time.temporal.TemporalQueries.precision() Then
@@ -785,7 +785,7 @@ Namespace java.time
 		''' <returns> the adjusted object, not null </returns>
 		''' <exception cref="DateTimeException"> if unable to make the adjustment </exception>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
-		Public Overrides Function adjustInto(ByVal temporal As java.time.temporal.Temporal) As java.time.temporal.Temporal
+		Public Overrides Function adjustInto(  temporal As java.time.temporal.Temporal) As java.time.temporal.Temporal
 			If java.time.chrono.Chronology.from(temporal).Equals(java.time.chrono.IsoChronology.INSTANCE) = False Then Throw New DateTimeException("Adjustment only supported on ISO date-time")
 			Return temporal.with(YEAR, year_Renamed)
 		End Function
@@ -836,7 +836,7 @@ Namespace java.time
 		'''  temporal cannot be converted to a {@code Year} </exception>
 		''' <exception cref="UnsupportedTemporalTypeException"> if the unit is not supported </exception>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
-		Public Overrides Function [until](ByVal endExclusive As java.time.temporal.Temporal, ByVal unit As java.time.temporal.TemporalUnit) As Long
+		Public Overrides Function [until](  endExclusive As java.time.temporal.Temporal,   unit As java.time.temporal.TemporalUnit) As Long
 			Dim [end] As Year = Year.from(endExclusive)
 			If TypeOf unit Is java.time.temporal.ChronoUnit Then
 				Dim yearsUntil As Long = (CLng(Fix([end].year_Renamed))) - year_Renamed ' no overflow
@@ -865,7 +865,7 @@ Namespace java.time
 		''' <param name="formatter">  the formatter to use, not null </param>
 		''' <returns> the formatted year string, not null </returns>
 		''' <exception cref="DateTimeException"> if an error occurs during printing </exception>
-		Public Function format(ByVal formatter As java.time.format.DateTimeFormatter) As String
+		Public Function format(  formatter As java.time.format.DateTimeFormatter) As String
 			java.util.Objects.requireNonNull(formatter, "formatter")
 			Return formatter.format(Me)
 		End Function
@@ -882,7 +882,7 @@ Namespace java.time
 		''' <returns> the local date formed from this year and the specified date of year, not null </returns>
 		''' <exception cref="DateTimeException"> if the day of year is zero or less, 366 or greater or equal
 		'''  to 366 and this is not a leap year </exception>
-		Public Function atDay(ByVal dayOfYear As Integer) As LocalDate
+		Public Function atDay(  dayOfYear As Integer) As LocalDate
 			Return LocalDate.ofYearDay(year_Renamed, dayOfYear)
 		End Function
 
@@ -899,7 +899,7 @@ Namespace java.time
 		''' </summary>
 		''' <param name="month">  the month-of-year to use, not null </param>
 		''' <returns> the year-month formed from this year and the specified month, not null </returns>
-		Public Function atMonth(ByVal month As Month) As YearMonth
+		Public Function atMonth(  month As Month) As YearMonth
 			Return YearMonth.of(year_Renamed, month)
 		End Function
 
@@ -917,7 +917,7 @@ Namespace java.time
 		''' <param name="month">  the month-of-year to use, from 1 (January) to 12 (December) </param>
 		''' <returns> the year-month formed from this year and the specified month, not null </returns>
 		''' <exception cref="DateTimeException"> if the month is invalid </exception>
-		Public Function atMonth(ByVal month As Integer) As YearMonth
+		Public Function atMonth(  month As Integer) As YearMonth
 			Return YearMonth.of(year_Renamed, month)
 		End Function
 
@@ -931,7 +931,7 @@ Namespace java.time
 		''' </summary>
 		''' <param name="monthDay">  the month-day to use, not null </param>
 		''' <returns> the local date formed from this year and the specified month-day, not null </returns>
-		Public Function atMonthDay(ByVal monthDay_Renamed As MonthDay) As LocalDate
+		Public Function atMonthDay(  monthDay_Renamed As MonthDay) As LocalDate
 			Return monthDay_Renamed.atYear(year_Renamed)
 		End Function
 
@@ -944,7 +944,7 @@ Namespace java.time
 		''' </summary>
 		''' <param name="other">  the other year to compare to, not null </param>
 		''' <returns> the comparator value, negative if less, positive if greater </returns>
-		Public Overrides Function compareTo(ByVal other As Year) As Integer Implements Comparable(Of Year).compareTo
+		Public Overrides Function compareTo(  other As Year) As Integer Implements Comparable(Of Year).compareTo
 			Return year_Renamed - other.year_Renamed
 		End Function
 
@@ -953,7 +953,7 @@ Namespace java.time
 		''' </summary>
 		''' <param name="other">  the other year to compare to, not null </param>
 		''' <returns> true if this is after the specified year </returns>
-		Public Function isAfter(ByVal other As Year) As Boolean
+		Public Function isAfter(  other As Year) As Boolean
 			Return year_Renamed > other.year_Renamed
 		End Function
 
@@ -962,7 +962,7 @@ Namespace java.time
 		''' </summary>
 		''' <param name="other">  the other year to compare to, not null </param>
 		''' <returns> true if this point is before the specified year </returns>
-		Public Function isBefore(ByVal other As Year) As Boolean
+		Public Function isBefore(  other As Year) As Boolean
 			Return year_Renamed < other.year_Renamed
 		End Function
 
@@ -974,7 +974,7 @@ Namespace java.time
 		''' </summary>
 		''' <param name="obj">  the object to check, null returns false </param>
 		''' <returns> true if this is equal to the other year </returns>
-		Public Overrides Function Equals(ByVal obj As Object) As Boolean
+		Public Overrides Function Equals(  obj As Object) As Boolean
 			If Me Is obj Then Return True
 			If TypeOf obj Is Year Then Return year_Renamed = CType(obj, Year).year_Renamed
 			Return False
@@ -1017,15 +1017,15 @@ Namespace java.time
 		''' </summary>
 		''' <param name="s"> the stream to read </param>
 		''' <exception cref="InvalidObjectException"> always </exception>
-		Private Sub readObject(ByVal s As java.io.ObjectInputStream)
+		Private Sub readObject(  s As java.io.ObjectInputStream)
 			Throw New java.io.InvalidObjectException("Deserialization via serialization delegate")
 		End Sub
 
-		Friend Sub writeExternal(ByVal out As java.io.DataOutput)
+		Friend Sub writeExternal(  out As java.io.DataOutput)
 			out.writeInt(year_Renamed)
 		End Sub
 
-		Shared Function readExternal(ByVal [in] As java.io.DataInput) As Year
+		Shared Function readExternal(  [in] As java.io.DataInput) As Year
 			Return Year.of([in].readInt())
 		End Function
 

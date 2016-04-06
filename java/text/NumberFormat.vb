@@ -214,7 +214,7 @@ Namespace java.text
 		''' <exception cref="ArithmeticException"> if rounding is needed with rounding
 		'''                   mode being set to RoundingMode.UNNECESSARY </exception>
 		''' <seealso cref=              java.text.FieldPosition </seealso>
-		Public Overrides Function format(ByVal number As Object, ByVal toAppendTo As StringBuffer, ByVal pos As FieldPosition) As StringBuffer
+		Public Overrides Function format(  number As Object,   toAppendTo As StringBuffer,   pos As FieldPosition) As StringBuffer
 			If TypeOf number Is Long? OrElse TypeOf number Is Integer? OrElse TypeOf number Is Short? OrElse TypeOf number Is Byte OrElse TypeOf number Is java.util.concurrent.atomic.AtomicInteger OrElse TypeOf number Is java.util.concurrent.atomic.AtomicLong OrElse (TypeOf number Is System.Numerics.BigInteger AndAlso CType(number, System.Numerics.BigInteger).bitLength() < 64) Then
 				Return format(CType(number, Number), toAppendTo, pos)
 			ElseIf TypeOf number Is Number Then
@@ -247,7 +247,7 @@ Namespace java.text
 		''' <returns> A <code>Number</code> parsed from the string. In case of
 		'''         error, returns null. </returns>
 		''' <exception cref="NullPointerException"> if <code>pos</code> is null. </exception>
-		Public NotOverridable Overrides Function parseObject(ByVal source As String, ByVal pos As ParsePosition) As Object
+		Public NotOverridable Overrides Function parseObject(  source As String,   pos As ParsePosition) As Object
 			Return parse(source, pos)
 		End Function
 
@@ -259,7 +259,7 @@ Namespace java.text
 	   ''' <exception cref="ArithmeticException"> if rounding is needed with rounding
 	   '''                   mode being set to RoundingMode.UNNECESSARY </exception>
 	   ''' <seealso cref= java.text.Format#format </seealso>
-		Public Function format(ByVal number As Double) As String
+		Public Function format(  number As Double) As String
 			' Use fast-path for double result if that works
 			Dim result As String = fastFormat(number)
 			If result IsNot Nothing Then Return result
@@ -271,7 +271,7 @@ Namespace java.text
 	'     * fastFormat() is supposed to be implemented in concrete subclasses only.
 	'     * Default implem always returns null.
 	'     
-		Friend Overridable Function fastFormat(ByVal number As Double) As String
+		Friend Overridable Function fastFormat(  number As Double) As String
 			Return Nothing
 		End Function
 
@@ -283,7 +283,7 @@ Namespace java.text
 	   ''' <exception cref="ArithmeticException"> if rounding is needed with rounding
 	   '''                   mode being set to RoundingMode.UNNECESSARY </exception>
 	   ''' <seealso cref= java.text.Format#format </seealso>
-		Public Function format(ByVal number As Long) As String
+		Public Function format(  number As Long) As String
 			Return format(number, New StringBuffer, DontCareFieldPosition.INSTANCE).ToString()
 		End Function
 
@@ -298,7 +298,7 @@ Namespace java.text
 	   ''' <exception cref="ArithmeticException"> if rounding is needed with rounding
 	   '''                   mode being set to RoundingMode.UNNECESSARY </exception>
 	   ''' <seealso cref= java.text.Format#format </seealso>
-		Public MustOverride Function format(ByVal number As Double, ByVal toAppendTo As StringBuffer, ByVal pos As FieldPosition) As StringBuffer
+		Public MustOverride Function format(  number As Double,   toAppendTo As StringBuffer,   pos As FieldPosition) As StringBuffer
 
 	   ''' <summary>
 	   ''' Specialization of format.
@@ -311,7 +311,7 @@ Namespace java.text
 	   ''' <exception cref="ArithmeticException"> if rounding is needed with rounding
 	   '''                   mode being set to RoundingMode.UNNECESSARY </exception>
 	   ''' <seealso cref= java.text.Format#format </seealso>
-		Public MustOverride Function format(ByVal number As Long, ByVal toAppendTo As StringBuffer, ByVal pos As FieldPosition) As StringBuffer
+		Public MustOverride Function format(  number As Long,   toAppendTo As StringBuffer,   pos As FieldPosition) As StringBuffer
 
 	   ''' <summary>
 	   ''' Returns a Long if possible (e.g., within the range [Long.MIN_VALUE,
@@ -327,7 +327,7 @@ Namespace java.text
 	   ''' <returns> the parsed value </returns>
 	   ''' <seealso cref= java.text.NumberFormat#isParseIntegerOnly </seealso>
 	   ''' <seealso cref= java.text.Format#parseObject </seealso>
-		Public MustOverride Function parse(ByVal source As String, ByVal parsePosition As ParsePosition) As Number
+		Public MustOverride Function parse(  source As String,   parsePosition As ParsePosition) As Number
 
 		''' <summary>
 		''' Parses text from the beginning of the given string to produce a number.
@@ -340,7 +340,7 @@ Namespace java.text
 		''' <returns> A <code>Number</code> parsed from the string. </returns>
 		''' <exception cref="ParseException"> if the beginning of the specified string
 		'''            cannot be parsed. </exception>
-		Public Overridable Function parse(ByVal source As String) As Number
+		Public Overridable Function parse(  source As String) As Number
 			Dim parsePosition As New ParsePosition(0)
 			Dim result As Number = parse(source, parsePosition)
 			If parsePosition.index = 0 Then Throw New ParseException("Unparseable number: """ & source & """", parsePosition.errorIndex)
@@ -361,7 +361,7 @@ Namespace java.text
 			Get
 				Return parseIntegerOnly
 			End Get
-			Set(ByVal value As Boolean)
+			Set(  value As Boolean)
 				parseIntegerOnly = value
 			End Set
 		End Property
@@ -391,7 +391,7 @@ Namespace java.text
 		''' <param name="inLocale"> the desired locale </param>
 		''' <returns> the {@code NumberFormat} instance for general-purpose number
 		''' formatting </returns>
-		Public Shared Function getInstance(ByVal inLocale As java.util.Locale) As NumberFormat
+		Public Shared Function getInstance(  inLocale As java.util.Locale) As NumberFormat
 			Return getInstance(inLocale, NUMBERSTYLE)
 		End Function
 
@@ -418,7 +418,7 @@ Namespace java.text
 		''' <param name="inLocale"> the desired locale </param>
 		''' <returns> the {@code NumberFormat} instance for general-purpose number
 		''' formatting </returns>
-		Public Shared Function getNumberInstance(ByVal inLocale As java.util.Locale) As NumberFormat
+		Public Shared Function getNumberInstance(  inLocale As java.util.Locale) As NumberFormat
 			Return getInstance(inLocale, NUMBERSTYLE)
 		End Function
 
@@ -457,7 +457,7 @@ Namespace java.text
 		''' <seealso cref= #getRoundingMode() </seealso>
 		''' <returns> a number format for integer values
 		''' @since 1.4 </returns>
-		Public Shared Function getIntegerInstance(ByVal inLocale As java.util.Locale) As NumberFormat
+		Public Shared Function getIntegerInstance(  inLocale As java.util.Locale) As NumberFormat
 			Return getInstance(inLocale, INTEGERSTYLE)
 		End Function
 
@@ -482,7 +482,7 @@ Namespace java.text
 		''' </summary>
 		''' <param name="inLocale"> the desired locale </param>
 		''' <returns> the {@code NumberFormat} instance for currency formatting </returns>
-		Public Shared Function getCurrencyInstance(ByVal inLocale As java.util.Locale) As NumberFormat
+		Public Shared Function getCurrencyInstance(  inLocale As java.util.Locale) As NumberFormat
 			Return getInstance(inLocale, CURRENCYSTYLE)
 		End Function
 
@@ -507,7 +507,7 @@ Namespace java.text
 		''' </summary>
 		''' <param name="inLocale"> the desired locale </param>
 		''' <returns> the {@code NumberFormat} instance for percentage formatting </returns>
-		Public Shared Function getPercentInstance(ByVal inLocale As java.util.Locale) As NumberFormat
+		Public Shared Function getPercentInstance(  inLocale As java.util.Locale) As NumberFormat
 			Return getInstance(inLocale, PERCENTSTYLE)
 		End Function
 
@@ -526,7 +526,7 @@ Namespace java.text
 		''' </summary>
 		''' <param name="inLocale"> the desired locale </param>
 		'public
-	 Shared Function getScientificInstance(ByVal inLocale As java.util.Locale) As NumberFormat
+	 Shared Function getScientificInstance(  inLocale As java.util.Locale) As NumberFormat
 			Return getInstance(inLocale, SCIENTIFICSTYLE)
 	 End Function
 
@@ -560,7 +560,7 @@ Namespace java.text
 		''' <summary>
 		''' Overrides equals.
 		''' </summary>
-		Public Overrides Function Equals(ByVal obj As Object) As Boolean
+		Public Overrides Function Equals(  obj As Object) As Boolean
 			If obj Is Nothing Then Return False
 			If Me Is obj Then Return True
 			If Me.GetType() IsNot obj.GetType() Then Return False
@@ -589,7 +589,7 @@ Namespace java.text
 			Get
 				Return groupingUsed
 			End Get
-			Set(ByVal newValue As Boolean)
+			Set(  newValue As Boolean)
 				groupingUsed = newValue
 			End Set
 		End Property
@@ -605,7 +605,7 @@ Namespace java.text
 			Get
 				Return maximumIntegerDigits
 			End Get
-			Set(ByVal newValue As Integer)
+			Set(  newValue As Integer)
 				maximumIntegerDigits = System.Math.Max(0,newValue)
 				If minimumIntegerDigits > maximumIntegerDigits Then minimumIntegerDigits = maximumIntegerDigits
 			End Set
@@ -622,7 +622,7 @@ Namespace java.text
 			Get
 				Return minimumIntegerDigits
 			End Get
-			Set(ByVal newValue As Integer)
+			Set(  newValue As Integer)
 				minimumIntegerDigits = System.Math.Max(0,newValue)
 				If minimumIntegerDigits > maximumIntegerDigits Then maximumIntegerDigits = minimumIntegerDigits
 			End Set
@@ -639,7 +639,7 @@ Namespace java.text
 			Get
 				Return maximumFractionDigits
 			End Get
-			Set(ByVal newValue As Integer)
+			Set(  newValue As Integer)
 				maximumFractionDigits = System.Math.Max(0,newValue)
 				If maximumFractionDigits < minimumFractionDigits Then minimumFractionDigits = maximumFractionDigits
 			End Set
@@ -656,7 +656,7 @@ Namespace java.text
 			Get
 				Return minimumFractionDigits
 			End Get
-			Set(ByVal newValue As Integer)
+			Set(  newValue As Integer)
 				minimumFractionDigits = System.Math.Max(0,newValue)
 				If maximumFractionDigits < minimumFractionDigits Then maximumFractionDigits = minimumFractionDigits
 			End Set
@@ -681,7 +681,7 @@ Namespace java.text
 			Get
 				Throw New UnsupportedOperationException
 			End Get
-			Set(ByVal currency As java.util.Currency)
+			Set(  currency As java.util.Currency)
 				Throw New UnsupportedOperationException
 			End Set
 		End Property
@@ -703,7 +703,7 @@ Namespace java.text
 			Get
 				Throw New UnsupportedOperationException
 			End Get
-			Set(ByVal roundingMode As java.math.RoundingMode)
+			Set(  roundingMode As java.math.RoundingMode)
 				Throw New UnsupportedOperationException
 			End Set
 		End Property
@@ -711,7 +711,7 @@ Namespace java.text
 
 		' =======================privates===============================
 
-		Private Shared Function getInstance(ByVal desiredLocale As java.util.Locale, ByVal choice As Integer) As NumberFormat
+		Private Shared Function getInstance(  desiredLocale As java.util.Locale,   choice As Integer) As NumberFormat
 			Dim adapter As sun.util.locale.provider.LocaleProviderAdapter
 			adapter = sun.util.locale.provider.LocaleProviderAdapter.getAdapter(GetType(java.text.spi.NumberFormatProvider), desiredLocale)
 			Dim numberFormat_Renamed As NumberFormat = getInstance(adapter, desiredLocale, choice)
@@ -719,7 +719,7 @@ Namespace java.text
 			Return numberFormat_Renamed
 		End Function
 
-		Private Shared Function getInstance(ByVal adapter As sun.util.locale.provider.LocaleProviderAdapter, ByVal locale As java.util.Locale, ByVal choice As Integer) As NumberFormat
+		Private Shared Function getInstance(  adapter As sun.util.locale.provider.LocaleProviderAdapter,   locale As java.util.Locale,   choice As Integer) As NumberFormat
 			Dim provider As java.text.spi.NumberFormatProvider = adapter.numberFormatProvider
 			Dim numberFormat_Renamed As NumberFormat = Nothing
 			Select Case choice
@@ -755,7 +755,7 @@ Namespace java.text
 		''' 
 		''' @since 1.2
 		''' </summary>
-		Private Sub readObject(ByVal stream As java.io.ObjectInputStream)
+		Private Sub readObject(  stream As java.io.ObjectInputStream)
 			stream.defaultReadObject()
 			If serialVersionOnStream < 1 Then
 				' Didn't have additional int fields, reassign to use them.
@@ -777,7 +777,7 @@ Namespace java.text
 		''' 
 		''' @since 1.2
 		''' </summary>
-		Private Sub writeObject(ByVal stream As java.io.ObjectOutputStream)
+		Private Sub writeObject(  stream As java.io.ObjectOutputStream)
 			maxIntegerDigits = If(maximumIntegerDigits > java.lang.[Byte].Max_Value, java.lang.[Byte].Max_Value, CByte(maximumIntegerDigits))
 			minIntegerDigits = If(minimumIntegerDigits > java.lang.[Byte].Max_Value, java.lang.[Byte].Max_Value, CByte(minimumIntegerDigits))
 			maxFractionDigits = If(maximumFractionDigits > java.lang.[Byte].Max_Value, java.lang.[Byte].Max_Value, CByte(maximumFractionDigits))
@@ -972,7 +972,7 @@ Namespace java.text
 			''' name.
 			''' </summary>
 			''' <param name="name"> Name of the attribute </param>
-			Protected Friend Sub New(ByVal name As String)
+			Protected Friend Sub New(  name As String)
 				MyBase.New(name)
 				If Me.GetType() Is GetType(NumberFormat.Field) Then instanceMap(name) = Me
 			End Sub

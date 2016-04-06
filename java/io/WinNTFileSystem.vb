@@ -47,15 +47,15 @@ Namespace java.io
 			altSlash = If(Me.slash = "\"c, "/"c, "\"c)
 		End Sub
 
-		Private Function isSlash(ByVal c As Char) As Boolean
+		Private Function isSlash(  c As Char) As Boolean
 			Return (c = "\"c) OrElse (c = "/"c)
 		End Function
 
-		Private Function isLetter(ByVal c As Char) As Boolean
+		Private Function isLetter(  c As Char) As Boolean
 			Return ((c >= "a"c) AndAlso (c <= "z"c)) OrElse ((c >= "A"c) AndAlso (c <= "Z"c))
 		End Function
 
-		Private Function slashify(ByVal p As String) As String
+		Private Function slashify(  p As String) As String
 			If (p.length() > 0) AndAlso (p.Chars(0) <> slash) Then
 				Return AscW(slash) + p
 			Else
@@ -80,7 +80,7 @@ Namespace java.io
 	'     Check that the given pathname is normal.  If not, invoke the real
 	'       normalizer on the part of the pathname that requires normalization.
 	'       This way we iterate through the whole pathname string only once. 
-		Public Overrides Function normalize(ByVal path As String) As String
+		Public Overrides Function normalize(  path As String) As String
 			Dim n As Integer = path.length()
 			Dim slash_Renamed As Char = Me.slash
 			Dim altSlash As Char = Me.altSlash
@@ -98,7 +98,7 @@ Namespace java.io
 
 	'     Normalize the given pathname, whose length is len, starting at the given
 	'       offset; everything before this offset is already normal. 
-		Private Function normalize(ByVal path As String, ByVal len As Integer, ByVal [off] As Integer) As String
+		Private Function normalize(  path As String,   len As Integer,   [off] As Integer) As String
 			If len = 0 Then Return path
 			If [off] < 3 Then ' Avoid fencepost cases with UNC pathnames [off] = 0
 			Dim src As Integer
@@ -174,7 +174,7 @@ Namespace java.io
 	'                else directory-relative (has form "z:foo")
 	'           3  absolute local pathname (begins with "z:\\")
 	'     
-		Private Function normalizePrefix(ByVal path As String, ByVal len As Integer, ByVal sb As StringBuffer) As Integer
+		Private Function normalizePrefix(  path As String,   len As Integer,   sb As StringBuffer) As Integer
 			Dim src As Integer = 0
 			Do While (src < len) AndAlso isSlash(path.Chars(src))
 				src += 1
@@ -204,7 +204,7 @@ Namespace java.io
 			Return src
 		End Function
 
-		Public Overrides Function prefixLength(ByVal path As String) As Integer
+		Public Overrides Function prefixLength(  path As String) As Integer
 			Dim slash_Renamed As Char = Me.slash
 			Dim n As Integer = path.length()
 			If n = 0 Then Return 0
@@ -221,7 +221,7 @@ Namespace java.io
 			Return 0 ' Completely relative
 		End Function
 
-		Public Overrides Function resolve(ByVal parent As String, ByVal child As String) As String
+		Public Overrides Function resolve(  parent As String,   child As String) As String
 			Dim pn As Integer = parent.length()
 			If pn = 0 Then Return child
 			Dim cn As Integer = child.length()
@@ -269,7 +269,7 @@ Namespace java.io
 			End Get
 		End Property
 
-		Public Overrides Function fromURIPath(ByVal path As String) As String
+		Public Overrides Function fromURIPath(  path As String) As String
 			Dim p As String = path
 			If (p.length() > 2) AndAlso (p.Chars(2) = ":"c) Then
 				' "/c:/foo" --> "c:/foo"
@@ -285,12 +285,12 @@ Namespace java.io
 
 		' -- Path operations -- 
 
-		Public Overrides Function isAbsolute(ByVal f As File) As Boolean
+		Public Overrides Function isAbsolute(  f As File) As Boolean
 			Dim pl As Integer = f.prefixLength
 			Return (((pl = 2) AndAlso (f.path.Chars(0) = slash)) OrElse (pl = 3))
 		End Function
 
-		Public Overrides Function resolve(ByVal f As File) As String
+		Public Overrides Function resolve(  f As File) As String
 			Dim path As String = f.path
 			Dim pl As Integer = f.prefixLength
 			If (pl = 2) AndAlso (path.Chars(0) = slash) Then Return path ' UNC
@@ -336,14 +336,14 @@ Namespace java.io
 			End Get
 		End Property
 
-		Private Function getDrive(ByVal path As String) As String
+		Private Function getDrive(  path As String) As String
 			Dim pl As Integer = prefixLength(path)
 			Return If(pl = 3, path.Substring(0, 2), Nothing)
 		End Function
 
 		Private Shared driveDirCache As String() = New String(25){}
 
-		Private Shared Function driveIndex(ByVal d As Char) As Integer
+		Private Shared Function driveIndex(  d As Char) As Integer
 			If (d >= "a"c) AndAlso (d <= "z"c) Then Return AscW(d) - AscW("a"c)
 			If (d >= "A"c) AndAlso (d <= "Z"c) Then Return AscW(d) - AscW("A"c)
 			Return -1
@@ -351,10 +351,10 @@ Namespace java.io
 
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Private Function getDriveDirectory(ByVal drive As Integer) As String
+		Private Function getDriveDirectory(  drive As Integer) As String
 		End Function
 
-		Private Function getDriveDirectory(ByVal drive As Char) As String
+		Private Function getDriveDirectory(  drive As Char) As String
 			Dim i As Integer = driveIndex(drive)
 			If i < 0 Then Return Nothing
 			Dim s As String = driveDirCache(i)
@@ -373,7 +373,7 @@ Namespace java.io
 		Private cache As New ExpiringCache
 		Private prefixCache As New ExpiringCache
 
-		Public Overrides Function canonicalize(ByVal path As String) As String
+		Public Overrides Function canonicalize(  path As String) As String
 			' If path is a drive letter only then skip canonicalization
 			Dim len As Integer = path.length()
 			If (len = 2) AndAlso (isLetter(path.Chars(0))) AndAlso (path.Chars(1) = ":"c) Then
@@ -427,10 +427,10 @@ Namespace java.io
 
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Private Function canonicalize0(ByVal path As String) As String
+		Private Function canonicalize0(  path As String) As String
 		End Function
 
-		Private Function canonicalizeWithPrefix(ByVal canonicalPrefix As String, ByVal filename As String) As String
+		Private Function canonicalizeWithPrefix(  canonicalPrefix As String,   filename As String) As String
 			Return canonicalizeWithPrefix0(canonicalPrefix, canonicalPrefix + System.IO.Path.DirectorySeparatorChar + filename)
 		End Function
 
@@ -439,7 +439,7 @@ Namespace java.io
 		' the canonical name of the last element of the path
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Private Function canonicalizeWithPrefix0(ByVal canonicalPrefix As String, ByVal pathWithCanonicalPrefix As String) As String
+		Private Function canonicalizeWithPrefix0(  canonicalPrefix As String,   pathWithCanonicalPrefix As String) As String
 		End Function
 
 		' Best-effort attempt to get parent of this path; used for
@@ -449,7 +449,7 @@ Namespace java.io
 		' of "." and "..". It may conservatively return null in other
 		' situations as well. Returning null will cause the underlying
 		' (expensive) canonicalization routine to be called.
-		Private Shared Function parentOrNull(ByVal path As String) As String
+		Private Shared Function parentOrNull(  path As String) As String
 			If path Is Nothing Then Return Nothing
 			Dim sep As Char = System.IO.Path.DirectorySeparatorChar
 			Dim altSep As Char = "/"c
@@ -487,57 +487,57 @@ Namespace java.io
 
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Public Overrides Function getBooleanAttributes(ByVal f As File) As Integer
+		Public Overrides Function getBooleanAttributes(  f As File) As Integer
 		End Function
 
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Public Overrides Function checkAccess(ByVal f As File, ByVal access As Integer) As Boolean
+		Public Overrides Function checkAccess(  f As File,   access As Integer) As Boolean
 		End Function
 
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Public Overrides Function getLastModifiedTime(ByVal f As File) As Long
+		Public Overrides Function getLastModifiedTime(  f As File) As Long
 		End Function
 
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Public Overrides Function getLength(ByVal f As File) As Long
+		Public Overrides Function getLength(  f As File) As Long
 		End Function
 
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Public Overrides Function setPermission(ByVal f As File, ByVal access As Integer, ByVal enable As Boolean, ByVal owneronly As Boolean) As Boolean
+		Public Overrides Function setPermission(  f As File,   access As Integer,   enable As Boolean,   owneronly As Boolean) As Boolean
 		End Function
 
 		' -- File operations -- 
 
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Public Overrides Function createFileExclusively(ByVal path As String) As Boolean
+		Public Overrides Function createFileExclusively(  path As String) As Boolean
 		End Function
 
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Public Overrides Function list(ByVal f As File) As String()
+		Public Overrides Function list(  f As File) As String()
 		End Function
 
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Public Overrides Function createDirectory(ByVal f As File) As Boolean
+		Public Overrides Function createDirectory(  f As File) As Boolean
 		End Function
 
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Public Overrides Function setLastModifiedTime(ByVal f As File, ByVal time As Long) As Boolean
+		Public Overrides Function setLastModifiedTime(  f As File,   time As Long) As Boolean
 		End Function
 
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Public Overrides Function setReadOnly(ByVal f As File) As Boolean
+		Public Overrides Function setReadOnly(  f As File) As Boolean
 		End Function
 
-		Public Overrides Function delete(ByVal f As File) As Boolean
+		Public Overrides Function delete(  f As File) As Boolean
 			' Keep canonicalization caches in sync after file deletion
 			' and renaming operations. Could be more clever than this
 			' (i.e., only remove/update affected entries) but probably
@@ -550,10 +550,10 @@ Namespace java.io
 
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Private Function delete0(ByVal f As File) As Boolean
+		Private Function delete0(  f As File) As Boolean
 		End Function
 
-		Public Overrides Function rename(ByVal f1 As File, ByVal f2 As File) As Boolean
+		Public Overrides Function rename(  f1 As File,   f2 As File) As Boolean
 			' Keep canonicalization caches in sync after file deletion
 			' and renaming operations. Could be more clever than this
 			' (i.e., only remove/update affected entries) but probably
@@ -566,7 +566,7 @@ Namespace java.io
 
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Private Function rename0(ByVal f1 As File, ByVal f2 As File) As Boolean
+		Private Function rename0(  f1 As File,   f2 As File) As Boolean
 		End Function
 
 		' -- Filesystem interface -- 
@@ -600,7 +600,7 @@ Namespace java.io
 		Private Shared Function listRoots0() As Integer
 		End Function
 
-		Private Function access(ByVal path As String) As Boolean
+		Private Function access(  path As String) As Boolean
 			Try
 				Dim security As SecurityManager = System.securityManager
 				If security IsNot Nothing Then security.checkRead(path)
@@ -612,23 +612,23 @@ Namespace java.io
 
 		' -- Disk usage -- 
 
-		Public Overrides Function getSpace(ByVal f As File, ByVal t As Integer) As Long
+		Public Overrides Function getSpace(  f As File,   t As Integer) As Long
 			If f.exists() Then Return getSpace0(f, t)
 			Return 0
 		End Function
 
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Private Function getSpace0(ByVal f As File, ByVal t As Integer) As Long
+		Private Function getSpace0(  f As File,   t As Integer) As Long
 		End Function
 
 		' -- Basic infrastructure -- 
 
-		Public Overrides Function compare(ByVal f1 As File, ByVal f2 As File) As Integer
+		Public Overrides Function compare(  f1 As File,   f2 As File) As Integer
 			Return f1.path.compareToIgnoreCase(f2.path)
 		End Function
 
-		Public Overrides Function GetHashCode(ByVal f As File) As Integer
+		Public Overrides Function GetHashCode(  f As File) As Integer
 			' Could make this more efficient: String.hashCodeIgnoreCase 
 			Return f.path.ToLower(java.util.Locale.ENGLISH).GetHashCode() Xor 1234321
 		End Function

@@ -81,7 +81,7 @@ Namespace java.awt.image
 		'''         less than any offset between bands </exception>
 		''' <exception cref="IllegalArgumentException"> if <code>dataType</code> is not
 		'''         one of the supported data types </exception>
-		Public Sub New(ByVal dataType As Integer, ByVal w As Integer, ByVal h As Integer, ByVal pixelStride As Integer, ByVal scanlineStride As Integer, ByVal bandOffsets As Integer())
+		Public Sub New(  dataType As Integer,   w As Integer,   h As Integer,   pixelStride As Integer,   scanlineStride As Integer,   bandOffsets As Integer())
 			MyBase.New(dataType, w, h, pixelStride, scanlineStride, bandOffsets)
 			Dim minBandOff As Integer=Me.bandOffsets(0)
 			Dim maxBandOff As Integer=Me.bandOffsets(0)
@@ -107,7 +107,7 @@ Namespace java.awt.image
 		'''         and height. </returns>
 		''' <exception cref="IllegalArgumentException"> if <code>w</code> or
 		'''         <code>h</code> is not greater than 0 </exception>
-		Public Overrides Function createCompatibleSampleModel(ByVal w As Integer, ByVal h As Integer) As SampleModel
+		Public Overrides Function createCompatibleSampleModel(  w As Integer,   h As Integer) As SampleModel
 			Dim minBandoff As Integer=bandOffsets(0)
 			Dim numBands_Renamed As Integer = bandOffsets.Length
 			For i As Integer = 1 To numBands_Renamed - 1
@@ -134,7 +134,7 @@ Namespace java.awt.image
 		''' an image with a subset of the bands of the original
 		''' PixelInterleavedSampleModel/DataBuffer combination.
 		''' </summary>
-		Public Overrides Function createSubsetSampleModel(ByVal bands As Integer()) As SampleModel
+		Public Overrides Function createSubsetSampleModel(  bands As Integer()) As SampleModel
 			Dim newBandOffsets As Integer() = New Integer(bands.Length - 1){}
 			For i As Integer = 0 To bands.Length - 1
 				newBandOffsets(i) = bandOffsets(bands(i))

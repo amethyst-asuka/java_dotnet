@@ -94,7 +94,7 @@ Namespace java.security.cert
 		''' from the input stream.
 		''' </returns>
 		''' <exception cref="CertificateException"> on parsing errors. </exception>
-		Public MustOverride Function engineGenerateCertificate(ByVal inStream As java.io.InputStream) As Certificate
+		Public MustOverride Function engineGenerateCertificate(  inStream As java.io.InputStream) As Certificate
 
 		''' <summary>
 		''' Generates a {@code CertPath} object and initializes it with
@@ -112,7 +112,7 @@ Namespace java.security.cert
 		''' <exception cref="CertificateException"> if an exception occurs while decoding </exception>
 		''' <exception cref="UnsupportedOperationException"> if the method is not supported
 		''' @since 1.4 </exception>
-		Public Overridable Function engineGenerateCertPath(ByVal inStream As java.io.InputStream) As CertPath
+		Public Overridable Function engineGenerateCertPath(  inStream As java.io.InputStream) As CertPath
 			Throw New UnsupportedOperationException
 		End Function
 
@@ -134,7 +134,7 @@ Namespace java.security.cert
 		'''   the encoding requested is not supported </exception>
 		''' <exception cref="UnsupportedOperationException"> if the method is not supported
 		''' @since 1.4 </exception>
-		Public Overridable Function engineGenerateCertPath(ByVal inStream As java.io.InputStream, ByVal encoding As String) As CertPath
+		Public Overridable Function engineGenerateCertPath(  inStream As java.io.InputStream,   encoding As String) As CertPath
 			Throw New UnsupportedOperationException
 		End Function
 
@@ -157,7 +157,7 @@ Namespace java.security.cert
 		''' <exception cref="CertificateException"> if an exception occurs </exception>
 		''' <exception cref="UnsupportedOperationException"> if the method is not supported
 		''' @since 1.4 </exception>
-		Public Overridable Function engineGenerateCertPath(Of T1 As Certificate)(ByVal certificates As IList(Of T1)) As CertPath
+		Public Overridable Function engineGenerateCertPath(Of T1 As Certificate)(  certificates As IList(Of T1)) As CertPath
 			Throw New UnsupportedOperationException
 		End Function
 
@@ -222,7 +222,7 @@ Namespace java.security.cert
 		''' </returns>
 		''' <exception cref="CertificateException"> on parsing errors. </exception>
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-		Public MustOverride Function engineGenerateCertificates(ByVal inStream As java.io.InputStream) As ICollection(Of ? As Certificate)
+		Public MustOverride Function engineGenerateCertificates(  inStream As java.io.InputStream) As ICollection(Of ? As Certificate)
 
 		''' <summary>
 		''' Generates a certificate revocation list (CRL) object and initializes it
@@ -252,7 +252,7 @@ Namespace java.security.cert
 		''' from the input stream.
 		''' </returns>
 		''' <exception cref="CRLException"> on parsing errors. </exception>
-		Public MustOverride Function engineGenerateCRL(ByVal inStream As java.io.InputStream) As CRL
+		Public MustOverride Function engineGenerateCRL(  inStream As java.io.InputStream) As CRL
 
 		''' <summary>
 		''' Returns a (possibly empty) collection view of the CRLs read
@@ -287,7 +287,7 @@ Namespace java.security.cert
 		''' </returns>
 		''' <exception cref="CRLException"> on parsing errors. </exception>
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-		Public MustOverride Function engineGenerateCRLs(ByVal inStream As java.io.InputStream) As ICollection(Of ? As CRL)
+		Public MustOverride Function engineGenerateCRLs(  inStream As java.io.InputStream) As ICollection(Of ? As CRL)
 	End Class
 
 End Namespace

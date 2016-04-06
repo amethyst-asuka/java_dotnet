@@ -44,7 +44,7 @@ Namespace java.awt.font
 			Public ReadOnly leading As Single
 			Public ReadOnly advance As Single
 
-			Public Sub New(ByVal ascent As Single, ByVal descent As Single, ByVal leading As Single, ByVal advance As Single)
+			Public Sub New(  ascent As Single,   descent As Single,   leading As Single,   advance As Single)
 				Me.ascent = ascent
 				Me.descent = descent
 				Me.leading = leading
@@ -70,7 +70,7 @@ Namespace java.awt.font
 
 		Private fMetrics As TextLineMetrics = Nothing ' built on demand in getMetrics
 
-		Public Sub New(ByVal frc As FontRenderContext, ByVal components As sun.font.TextLineComponent(), ByVal baselineOffsets As Single(), ByVal chars As Char(), ByVal charsStart As Integer, ByVal charsLimit As Integer, ByVal charLogicalOrder As Integer(), ByVal charLevels As SByte(), ByVal isDirectionLTR As Boolean)
+		Public Sub New(  frc As FontRenderContext,   components As sun.font.TextLineComponent(),   baselineOffsets As Single(),   chars As Char(),   charsStart As Integer,   charsLimit As Integer,   charLogicalOrder As Integer(),   charLevels As SByte(),   isDirectionLTR As Boolean)
 
 			Dim componentVisualOrder As Integer() = computeComponentOrder(components, charLogicalOrder)
 
@@ -285,7 +285,7 @@ Namespace java.awt.font
 			End If
 		End Sub
 
-		Public Function getPixelBounds(ByVal frc As FontRenderContext, ByVal x As Single, ByVal y As Single) As java.awt.Rectangle
+		Public Function getPixelBounds(  frc As FontRenderContext,   x As Single,   y As Single) As java.awt.Rectangle
 			Dim result As java.awt.Rectangle = Nothing
 
 			' if we have a matching frc, set it to null so we don't have to test it
@@ -353,7 +353,7 @@ Namespace java.awt.font
 			Return result
 		End Function
 
-		Friend Shared Function computePixelBounds(ByVal im As java.awt.image.BufferedImage) As java.awt.Rectangle
+		Friend Shared Function computePixelBounds(  im As java.awt.image.BufferedImage) As java.awt.Rectangle
 			Dim w As Integer = im.width
 			Dim h As Integer = im.height
 
@@ -412,7 +412,7 @@ Namespace java.awt.font
 
 		Private MustInherit Class [Function]
 
-			Friend MustOverride Function computeFunction(ByVal line As TextLine, ByVal componentIndex As Integer, ByVal indexInArray As Integer) As Single
+			Friend MustOverride Function computeFunction(  line As TextLine,   componentIndex As Integer,   indexInArray As Integer) As Single
 		End Class
 
 		Private Shared fgPosAdvF As [Function] = New FunctionAnonymousInnerClassHelper
@@ -420,7 +420,7 @@ Namespace java.awt.font
 		Private Class FunctionAnonymousInnerClassHelper
 			Inherits [Function]
 
-			Friend Overrides Function computeFunction(ByVal line As TextLine, ByVal componentIndex As Integer, ByVal indexInArray As Integer) As Single
+			Friend Overrides Function computeFunction(  line As TextLine,   componentIndex As Integer,   indexInArray As Integer) As Single
 
 				Dim tlc As sun.font.TextLineComponent = line.fComponents(componentIndex)
 					Dim vi As Integer = line.getComponentVisualIndex(componentIndex)
@@ -433,7 +433,7 @@ Namespace java.awt.font
 		Private Class FunctionAnonymousInnerClassHelper2
 			Inherits [Function]
 
-			Friend Overrides Function computeFunction(ByVal line As TextLine, ByVal componentIndex As Integer, ByVal indexInArray As Integer) As Single
+			Friend Overrides Function computeFunction(  line As TextLine,   componentIndex As Integer,   indexInArray As Integer) As Single
 
 				Dim tlc As sun.font.TextLineComponent = line.fComponents(componentIndex)
 				Return tlc.getCharAdvance(indexInArray)
@@ -445,7 +445,7 @@ Namespace java.awt.font
 		Private Class FunctionAnonymousInnerClassHelper3
 			Inherits [Function]
 
-			Friend Overrides Function computeFunction(ByVal line As TextLine, ByVal componentIndex As Integer, ByVal indexInArray As Integer) As Single
+			Friend Overrides Function computeFunction(  line As TextLine,   componentIndex As Integer,   indexInArray As Integer) As Single
 
 					Dim vi As Integer = line.getComponentVisualIndex(componentIndex)
 				Dim tlc As sun.font.TextLineComponent = line.fComponents(componentIndex)
@@ -458,7 +458,7 @@ Namespace java.awt.font
 		Private Class FunctionAnonymousInnerClassHelper4
 			Inherits [Function]
 
-			Friend Overrides Function computeFunction(ByVal line As TextLine, ByVal componentIndex As Integer, ByVal indexInArray As Integer) As Single
+			Friend Overrides Function computeFunction(  line As TextLine,   componentIndex As Integer,   indexInArray As Integer) As Single
 
 				Dim tlc As sun.font.TextLineComponent = line.fComponents(componentIndex)
 				Dim charPos As Single = tlc.getCharY(indexInArray)
@@ -488,7 +488,7 @@ Namespace java.awt.font
 			End Get
 		End Property
 
-		Public Function visualToLogical(ByVal visualIndex As Integer) As Integer
+		Public Function visualToLogical(  visualIndex As Integer) As Integer
 
 			If fCharLogicalOrder Is Nothing Then Return visualIndex
 
@@ -497,42 +497,42 @@ Namespace java.awt.font
 			Return fCharVisualOrder(visualIndex)
 		End Function
 
-		Public Function logicalToVisual(ByVal logicalIndex As Integer) As Integer
+		Public Function logicalToVisual(  logicalIndex As Integer) As Integer
 
 			Return If(fCharLogicalOrder Is Nothing, logicalIndex, fCharLogicalOrder(logicalIndex))
 		End Function
 
-		Public Function getCharLevel(ByVal logicalIndex As Integer) As SByte
+		Public Function getCharLevel(  logicalIndex As Integer) As SByte
 
 			Return If(fCharLevels Is Nothing, 0, fCharLevels(logicalIndex))
 		End Function
 
-		Public Function isCharLTR(ByVal logicalIndex As Integer) As Boolean
+		Public Function isCharLTR(  logicalIndex As Integer) As Boolean
 
 			Return (getCharLevel(logicalIndex) And &H1) = 0
 		End Function
 
-		Public Function getCharType(ByVal logicalIndex As Integer) As Integer
+		Public Function getCharType(  logicalIndex As Integer) As Integer
 
 			Return Character.getType(fChars(logicalIndex + fCharsStart))
 		End Function
 
-		Public Function isCharSpace(ByVal logicalIndex As Integer) As Boolean
+		Public Function isCharSpace(  logicalIndex As Integer) As Boolean
 
 			Return Character.isSpaceChar(fChars(logicalIndex + fCharsStart))
 		End Function
 
-		Public Function isCharWhitespace(ByVal logicalIndex As Integer) As Boolean
+		Public Function isCharWhitespace(  logicalIndex As Integer) As Boolean
 
 			Return Char.IsWhiteSpace(fChars(logicalIndex + fCharsStart))
 		End Function
 
-		Public Function getCharAngle(ByVal logicalIndex As Integer) As Single
+		Public Function getCharAngle(  logicalIndex As Integer) As Single
 
 			Return getCoreMetricsAt(logicalIndex).italicAngle
 		End Function
 
-		Public Function getCoreMetricsAt(ByVal logicalIndex As Integer) As sun.font.CoreMetrics
+		Public Function getCoreMetricsAt(  logicalIndex As Integer) As sun.font.CoreMetrics
 
 			If logicalIndex < 0 Then Throw New IllegalArgumentException("Negative logicalIndex.")
 
@@ -552,22 +552,22 @@ Namespace java.awt.font
 			Return fComponents(currentTlc).coreMetrics
 		End Function
 
-		Public Function getCharAscent(ByVal logicalIndex As Integer) As Single
+		Public Function getCharAscent(  logicalIndex As Integer) As Single
 
 			Return getCoreMetricsAt(logicalIndex).ascent
 		End Function
 
-		Public Function getCharDescent(ByVal logicalIndex As Integer) As Single
+		Public Function getCharDescent(  logicalIndex As Integer) As Single
 
 			Return getCoreMetricsAt(logicalIndex).descent
 		End Function
 
-		Public Function getCharShift(ByVal logicalIndex As Integer) As Single
+		Public Function getCharShift(  logicalIndex As Integer) As Single
 
 			Return getCoreMetricsAt(logicalIndex).ssOffset
 		End Function
 
-		Private Function applyFunctionAtIndex(ByVal logicalIndex As Integer, ByVal f As [Function]) As Single
+		Private Function applyFunctionAtIndex(  logicalIndex As Integer,   f As [Function]) As Single
 
 			If logicalIndex < 0 Then Throw New IllegalArgumentException("Negative logicalIndex.")
 
@@ -586,32 +586,32 @@ Namespace java.awt.font
 			Throw New IllegalArgumentException("logicalIndex too large.")
 		End Function
 
-		Public Function getCharAdvance(ByVal logicalIndex As Integer) As Single
+		Public Function getCharAdvance(  logicalIndex As Integer) As Single
 
 			Return applyFunctionAtIndex(logicalIndex, fgAdvanceF)
 		End Function
 
-		Public Function getCharXPosition(ByVal logicalIndex As Integer) As Single
+		Public Function getCharXPosition(  logicalIndex As Integer) As Single
 
 			Return applyFunctionAtIndex(logicalIndex, fgXPositionF)
 		End Function
 
-		Public Function getCharYPosition(ByVal logicalIndex As Integer) As Single
+		Public Function getCharYPosition(  logicalIndex As Integer) As Single
 
 			Return applyFunctionAtIndex(logicalIndex, fgYPositionF)
 		End Function
 
-		Public Function getCharLinePosition(ByVal logicalIndex As Integer) As Single
+		Public Function getCharLinePosition(  logicalIndex As Integer) As Single
 
 			Return getCharXPosition(logicalIndex)
 		End Function
 
-		Public Function getCharLinePosition(ByVal logicalIndex As Integer, ByVal leading As Boolean) As Single
+		Public Function getCharLinePosition(  logicalIndex As Integer,   leading As Boolean) As Single
 			Dim f As [Function] = If(isCharLTR(logicalIndex) = leading, fgXPositionF, fgPosAdvF)
 			Return applyFunctionAtIndex(logicalIndex, f)
 		End Function
 
-		Public Function caretAtOffsetIsValid(ByVal offset As Integer) As Boolean
+		Public Function caretAtOffsetIsValid(  offset As Integer) As Boolean
 
 			If offset < 0 Then Throw New IllegalArgumentException("Negative offset.")
 
@@ -633,7 +633,7 @@ Namespace java.awt.font
 		''' <summary>
 		''' map a component visual index to the logical index.
 		''' </summary>
-		Private Function getComponentLogicalIndex(ByVal vi As Integer) As Integer
+		Private Function getComponentLogicalIndex(  vi As Integer) As Integer
 			If fComponentVisualOrder Is Nothing Then Return vi
 			Return fComponentVisualOrder(vi)
 		End Function
@@ -641,7 +641,7 @@ Namespace java.awt.font
 		''' <summary>
 		''' map a component logical index to the visual index.
 		''' </summary>
-		Private Function getComponentVisualIndex(ByVal li As Integer) As Integer
+		Private Function getComponentVisualIndex(  li As Integer) As Integer
 			If fComponentVisualOrder Is Nothing Then Return li
 			For i As Integer = 0 To fComponentVisualOrder.Length - 1
 					If fComponentVisualOrder(i) = li Then Return i
@@ -649,7 +649,7 @@ Namespace java.awt.font
 			Throw New IndexOutOfBoundsException("bad component index: " & li)
 		End Function
 
-		Public Function getCharBounds(ByVal logicalIndex As Integer) As java.awt.geom.Rectangle2D
+		Public Function getCharBounds(  logicalIndex As Integer) As java.awt.geom.Rectangle2D
 
 			If logicalIndex < 0 Then Throw New IllegalArgumentException("Negative logicalIndex.")
 
@@ -675,12 +675,12 @@ Namespace java.awt.font
 			Throw New IllegalArgumentException("logicalIndex too large.")
 		End Function
 
-		Private Function getComponentShift(ByVal index As Integer) As Single
+		Private Function getComponentShift(  index As Integer) As Single
 			Dim cm As sun.font.CoreMetrics = fComponents(index).coreMetrics
 			Return cm.effectiveBaselineOffset(fBaselineOffsets)
 		End Function
 
-		Public Sub draw(ByVal g2 As java.awt.Graphics2D, ByVal x As Single, ByVal y As Single)
+		Public Sub draw(  g2 As java.awt.Graphics2D,   x As Single,   y As Single)
 			If lp Is Nothing Then
 				Dim i As Integer = 0
 				Dim n As Integer = 0
@@ -790,7 +790,7 @@ Namespace java.awt.font
 			End Get
 		End Property
 
-		Public Function getOutline(ByVal tx As java.awt.geom.AffineTransform) As java.awt.Shape
+		Public Function getOutline(  tx As java.awt.geom.AffineTransform) As java.awt.Shape
 
 			Dim dstShape As New java.awt.geom.GeneralPath(java.awt.geom.GeneralPath.WIND_NON_ZERO)
 
@@ -829,7 +829,7 @@ Namespace java.awt.font
 		''' attributes
 		''' </summary>
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-		Public Shared Function fastCreateTextLine(Of T1 As java.text.AttributedCharacterIterator.Attribute, ?)(ByVal frc As FontRenderContext, ByVal chars As Char(), ByVal font_Renamed As java.awt.Font, ByVal lm As sun.font.CoreMetrics, ByVal attributes As IDictionary(Of T1)) As TextLine
+		Public Shared Function fastCreateTextLine(Of T1 As java.text.AttributedCharacterIterator.Attribute, ?)(  frc As FontRenderContext,   chars As Char(),   font_Renamed As java.awt.Font,   lm As sun.font.CoreMetrics,   attributes As IDictionary(Of T1)) As TextLine
 
 			Dim isDirectionLTR As Boolean = True
 			Dim levels As SByte() = Nothing
@@ -896,7 +896,7 @@ Namespace java.awt.font
 			Return New TextLine(frc, components_Renamed, lm.baselineOffsets, chars, 0, chars.Length, charsLtoV, levels, isDirectionLTR)
 		End Function
 
-		Private Shared Function expandArray(ByVal orig As sun.font.TextLineComponent()) As sun.font.TextLineComponent()
+		Private Shared Function expandArray(  orig As sun.font.TextLineComponent()) As sun.font.TextLineComponent()
 
 			Dim newComponents As sun.font.TextLineComponent() = New sun.font.TextLineComponent(orig.Length + 8 - 1){}
 			Array.Copy(orig, 0, newComponents, 0, orig.Length)
@@ -908,7 +908,7 @@ Namespace java.awt.font
 		''' Returns an array in logical order of the TextLineComponents on
 		''' the text in the given range, with the given attributes.
 		''' </summary>
-		Public Shared Function createComponentsOnRun(ByVal runStart As Integer, ByVal runLimit As Integer, ByVal chars As Char(), ByVal charsLtoV As Integer(), ByVal levels As SByte(), ByVal factory As sun.font.TextLabelFactory, ByVal font_Renamed As java.awt.Font, ByVal cm As sun.font.CoreMetrics, ByVal frc As FontRenderContext, ByVal decorator As sun.font.Decoration, ByVal components As sun.font.TextLineComponent(), ByVal numComponents As Integer) As sun.font.TextLineComponent()
+		Public Shared Function createComponentsOnRun(  runStart As Integer,   runLimit As Integer,   chars As Char(),   charsLtoV As Integer(),   levels As SByte(),   factory As sun.font.TextLabelFactory,   font_Renamed As java.awt.Font,   cm As sun.font.CoreMetrics,   frc As FontRenderContext,   decorator As sun.font.Decoration,   components As sun.font.TextLineComponent(),   numComponents As Integer) As sun.font.TextLineComponent()
 
 			Dim pos As Integer = runStart
 			Do
@@ -945,7 +945,7 @@ Namespace java.awt.font
 		''' Returns an array (in logical order) of the TextLineComponents representing
 		''' the text.  The components are both logically and visually contiguous.
 		''' </summary>
-		Public Shared Function getComponents(ByVal styledParagraph_Renamed As StyledParagraph, ByVal chars As Char(), ByVal textStart As Integer, ByVal textLimit As Integer, ByVal charsLtoV As Integer(), ByVal levels As SByte(), ByVal factory As sun.font.TextLabelFactory) As sun.font.TextLineComponent()
+		Public Shared Function getComponents(  styledParagraph_Renamed As StyledParagraph,   chars As Char(),   textStart As Integer,   textLimit As Integer,   charsLtoV As Integer(),   levels As SByte(),   factory As sun.font.TextLabelFactory) As sun.font.TextLineComponent()
 
 			Dim frc As FontRenderContext = factory.fontRenderContext
 
@@ -1008,7 +1008,7 @@ Namespace java.awt.font
 		''' range.  The range is relative to both the StyledParagraph and the
 		''' character array.
 		''' </summary>
-		Public Shared Function createLineFromText(ByVal chars As Char(), ByVal styledParagraph_Renamed As StyledParagraph, ByVal factory As sun.font.TextLabelFactory, ByVal isDirectionLTR As Boolean, ByVal baselineOffsets As Single()) As TextLine
+		Public Shared Function createLineFromText(  chars As Char(),   styledParagraph_Renamed As StyledParagraph,   factory As sun.font.TextLabelFactory,   isDirectionLTR As Boolean,   baselineOffsets As Single()) As TextLine
 
 			factory.lineContextext(0, chars.Length)
 
@@ -1031,7 +1031,7 @@ Namespace java.awt.font
 		''' Compute the components order from the given components array and
 		''' logical-to-visual character mapping.  May return null if canonical.
 		''' </summary>
-		Private Shared Function computeComponentOrder(ByVal components As sun.font.TextLineComponent(), ByVal charsLtoV As Integer()) As Integer()
+		Private Shared Function computeComponentOrder(  components As sun.font.TextLineComponent(),   charsLtoV As Integer()) As Integer()
 
 	'        
 	'         * Create a visual ordering for the glyph sets.  The important thing
@@ -1061,7 +1061,7 @@ Namespace java.awt.font
 		''' <summary>
 		''' Create a TextLine from the text.  chars is just the text in the iterator.
 		''' </summary>
-		Public Shared Function standardCreateTextLine(ByVal frc As FontRenderContext, ByVal text As java.text.AttributedCharacterIterator, ByVal chars As Char(), ByVal baselineOffsets As Single()) As TextLine
+		Public Shared Function standardCreateTextLine(  frc As FontRenderContext,   text As java.text.AttributedCharacterIterator,   chars As Char(),   baselineOffsets As Single()) As TextLine
 
 			Dim styledParagraph_Renamed As New StyledParagraph(text, chars)
 			Dim bidi As New java.text.Bidi(text)
@@ -1114,7 +1114,7 @@ Namespace java.awt.font
 		''' first run which does NOT contain a GraphicAttribute.  If no such run exists
 		''' the ACI's position will be at the end, and this method will return false.
 		''' </summary>
-		Friend Shared Function advanceToFirstFont(ByVal aci As java.text.AttributedCharacterIterator) As Boolean
+		Friend Shared Function advanceToFirstFont(  aci As java.text.AttributedCharacterIterator) As Boolean
 
 			Dim ch As Char = aci.first()
 			Do While ch <> java.text.CharacterIterator.DONE
@@ -1126,7 +1126,7 @@ Namespace java.awt.font
 			Return False
 		End Function
 
-		Friend Shared Function getNormalizedOffsets(ByVal baselineOffsets As Single(), ByVal baseline As SByte) As Single()
+		Friend Shared Function getNormalizedOffsets(  baselineOffsets As Single(),   baseline As SByte) As Single()
 
 			If baselineOffsets(baseline) <> 0 Then
 				Dim base As Single = baselineOffsets(baseline)
@@ -1139,7 +1139,7 @@ Namespace java.awt.font
 			Return baselineOffsets
 		End Function
 
-		Friend Shared Function getFontAtCurrentPos(ByVal aci As java.text.AttributedCharacterIterator) As java.awt.Font
+		Friend Shared Function getFontAtCurrentPos(  aci As java.text.AttributedCharacterIterator) As java.awt.Font
 
 			Dim value As Object = aci.getAttribute(TextAttribute.FONT)
 			If value IsNot Nothing Then Return CType(value, java.awt.Font)

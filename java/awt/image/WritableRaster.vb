@@ -58,7 +58,7 @@ Namespace java.awt.image
 		'''          <code>origin.x + sampleModel.getWidth()</code> or
 		'''          <code>origin.y + sampleModel.getHeight()</code> results
 		'''          in integer overflow </exception>
-		Protected Friend Sub New(ByVal sampleModel_Renamed As SampleModel, ByVal origin As java.awt.Point)
+		Protected Friend Sub New(  sampleModel_Renamed As SampleModel,   origin As java.awt.Point)
 			Me.New(sampleModel_Renamed, sampleModel_Renamed.createDataBuffer(), New java.awt.Rectangle(origin.x, origin.y, sampleModel_Renamed.width, sampleModel_Renamed.height), origin, Nothing)
 		End Sub
 
@@ -74,7 +74,7 @@ Namespace java.awt.image
 		'''          <code>origin.x + sampleModel.getWidth()</code> or
 		'''          <code>origin.y + sampleModel.getHeight()</code> results
 		'''          in integer overflow </exception>
-		Protected Friend Sub New(ByVal sampleModel_Renamed As SampleModel, ByVal dataBuffer_Renamed As DataBuffer, ByVal origin As java.awt.Point)
+		Protected Friend Sub New(  sampleModel_Renamed As SampleModel,   dataBuffer_Renamed As DataBuffer,   origin As java.awt.Point)
 			Me.New(sampleModel_Renamed, dataBuffer_Renamed, New java.awt.Rectangle(origin.x, origin.y, sampleModel_Renamed.width, sampleModel_Renamed.height), origin, Nothing)
 		End Sub
 
@@ -100,7 +100,7 @@ Namespace java.awt.image
 		'''         <code>aRegion.x + aRegion.width</code> or
 		'''         <code>aRegion.y + aRegion.height</code> results in integer
 		'''         overflow </exception>
-		Protected Friend Sub New(ByVal sampleModel_Renamed As SampleModel, ByVal dataBuffer_Renamed As DataBuffer, ByVal aRegion As java.awt.Rectangle, ByVal sampleModelTranslate As java.awt.Point, ByVal parent As WritableRaster)
+		Protected Friend Sub New(  sampleModel_Renamed As SampleModel,   dataBuffer_Renamed As DataBuffer,   aRegion As java.awt.Rectangle,   sampleModelTranslate As java.awt.Point,   parent As WritableRaster)
 			MyBase.New(sampleModel_Renamed,dataBuffer_Renamed,aRegion,sampleModelTranslate,parent)
 		End Sub
 
@@ -129,7 +129,7 @@ Namespace java.awt.image
 		'''         <code>childMinX + this.getWidth()</code> or
 		'''         <code>childMinY + this.getHeight()</code> results in integer
 		'''         overflow </exception>
-		Public Overridable Function createWritableTranslatedChild(ByVal childMinX As Integer, ByVal childMinY As Integer) As WritableRaster
+		Public Overridable Function createWritableTranslatedChild(  childMinX As Integer,   childMinY As Integer) As WritableRaster
 			Return createWritableChild(minX,minY,width,height, childMinX,childMinY,Nothing)
 		End Function
 
@@ -187,7 +187,7 @@ Namespace java.awt.image
 		'''         <code>childMinX + w</code>, or
 		'''         <code>childMinY + h</code> results in integer
 		'''         overflow </exception>
-		Public Overridable Function createWritableChild(ByVal parentX As Integer, ByVal parentY As Integer, ByVal w As Integer, ByVal h As Integer, ByVal childMinX As Integer, ByVal childMinY As Integer, ByVal bandList As Integer()) As WritableRaster
+		Public Overridable Function createWritableChild(  parentX As Integer,   parentY As Integer,   w As Integer,   h As Integer,   childMinX As Integer,   childMinY As Integer,   bandList As Integer()) As WritableRaster
 			If parentX < Me.minX Then Throw New RasterFormatException("parentX lies outside raster")
 			If parentY < Me.minY Then Throw New RasterFormatException("parentY lies outside raster")
 			If (parentX+w < parentX) OrElse (parentX+w > Me.width + Me.minX) Then Throw New RasterFormatException("(parentX + width) is outside raster")
@@ -233,7 +233,7 @@ Namespace java.awt.image
 		''' </param>
 		''' <exception cref="ArrayIndexOutOfBoundsException"> if the coordinates are not
 		''' in bounds, or if inData is too small to hold the input. </exception>
-		Public Overridable Sub setDataElements(ByVal x As Integer, ByVal y As Integer, ByVal inData As Object)
+		Public Overridable Sub setDataElements(  x As Integer,   y As Integer,   inData As Object)
 			sampleModel.dataElementsnts(x-sampleModelTranslateX, y-sampleModelTranslateY, inData, dataBuffer_Renamed)
 		End Sub
 
@@ -254,7 +254,7 @@ Namespace java.awt.image
 		''' <exception cref="NullPointerException"> if inRaster is null. </exception>
 		''' <exception cref="ArrayIndexOutOfBoundsException"> if the coordinates are not
 		''' in bounds. </exception>
-		Public Overridable Sub setDataElements(ByVal x As Integer, ByVal y As Integer, ByVal inRaster As Raster)
+		Public Overridable Sub setDataElements(  x As Integer,   y As Integer,   inRaster As Raster)
 			Dim dstOffX As Integer = x+inRaster.minX
 			Dim dstOffY As Integer = y+inRaster.minY
 			Dim width_Renamed As Integer = inRaster.width
@@ -297,7 +297,7 @@ Namespace java.awt.image
 		''' <exception cref="NullPointerException"> if inData is null. </exception>
 		''' <exception cref="ArrayIndexOutOfBoundsException"> if the coordinates are not
 		''' in bounds, or if inData is too small to hold the input. </exception>
-		Public Overridable Sub setDataElements(ByVal x As Integer, ByVal y As Integer, ByVal w As Integer, ByVal h As Integer, ByVal inData As Object)
+		Public Overridable Sub setDataElements(  x As Integer,   y As Integer,   w As Integer,   h As Integer,   inData As Object)
 			sampleModel.dataElementsnts(x-sampleModelTranslateX, y-sampleModelTranslateY, w,h,inData,dataBuffer_Renamed)
 		End Sub
 
@@ -340,7 +340,7 @@ Namespace java.awt.image
 		''' </param>
 		''' <exception cref="NullPointerException"> if srcRaster is null. </exception>
 		Public Overridable Property rect As Raster
-			Set(ByVal srcRaster As Raster)
+			Set(  srcRaster As Raster)
 				rectect(0,0,srcRaster)
 			End Set
 		End Property
@@ -362,7 +362,7 @@ Namespace java.awt.image
 		''' <param name="srcRaster"> The Raster from which to copy pixels.
 		''' </param>
 		''' <exception cref="NullPointerException"> if srcRaster is null. </exception>
-		Public Overridable Sub setRect(ByVal dx As Integer, ByVal dy As Integer, ByVal srcRaster As Raster)
+		Public Overridable Sub setRect(  dx As Integer,   dy As Integer,   srcRaster As Raster)
 			Dim width_Renamed As Integer = srcRaster.width
 			Dim height_Renamed As Integer = srcRaster.height
 			Dim srcOffX As Integer = srcRaster.minX
@@ -426,7 +426,7 @@ Namespace java.awt.image
 		''' <exception cref="NullPointerException"> if iArray is null. </exception>
 		''' <exception cref="ArrayIndexOutOfBoundsException"> if the coordinates are not
 		''' in bounds, or if iArray is too small to hold the input. </exception>
-		Public Overridable Sub setPixel(ByVal x As Integer, ByVal y As Integer, ByVal iArray As Integer())
+		Public Overridable Sub setPixel(  x As Integer,   y As Integer,   iArray As Integer())
 			sampleModel.pixelxel(x-sampleModelTranslateX,y-sampleModelTranslateY, iArray,dataBuffer_Renamed)
 		End Sub
 
@@ -442,7 +442,7 @@ Namespace java.awt.image
 		''' <exception cref="NullPointerException"> if fArray is null. </exception>
 		''' <exception cref="ArrayIndexOutOfBoundsException"> if the coordinates are not
 		''' in bounds, or if fArray is too small to hold the input. </exception>
-		Public Overridable Sub setPixel(ByVal x As Integer, ByVal y As Integer, ByVal fArray As Single())
+		Public Overridable Sub setPixel(  x As Integer,   y As Integer,   fArray As Single())
 			sampleModel.pixelxel(x-sampleModelTranslateX,y-sampleModelTranslateY, fArray,dataBuffer_Renamed)
 		End Sub
 
@@ -458,7 +458,7 @@ Namespace java.awt.image
 		''' <exception cref="NullPointerException"> if dArray is null. </exception>
 		''' <exception cref="ArrayIndexOutOfBoundsException"> if the coordinates are not
 		''' in bounds, or if dArray is too small to hold the input. </exception>
-		Public Overridable Sub setPixel(ByVal x As Integer, ByVal y As Integer, ByVal dArray As Double())
+		Public Overridable Sub setPixel(  x As Integer,   y As Integer,   dArray As Double())
 			sampleModel.pixelxel(x-sampleModelTranslateX,y-sampleModelTranslateY, dArray,dataBuffer_Renamed)
 		End Sub
 
@@ -477,7 +477,7 @@ Namespace java.awt.image
 		''' <exception cref="NullPointerException"> if iArray is null. </exception>
 		''' <exception cref="ArrayIndexOutOfBoundsException"> if the coordinates are not
 		''' in bounds, or if iArray is too small to hold the input. </exception>
-		Public Overridable Sub setPixels(ByVal x As Integer, ByVal y As Integer, ByVal w As Integer, ByVal h As Integer, ByVal iArray As Integer())
+		Public Overridable Sub setPixels(  x As Integer,   y As Integer,   w As Integer,   h As Integer,   iArray As Integer())
 			sampleModel.pixelsels(x-sampleModelTranslateX,y-sampleModelTranslateY, w,h,iArray,dataBuffer_Renamed)
 		End Sub
 
@@ -496,7 +496,7 @@ Namespace java.awt.image
 		''' <exception cref="NullPointerException"> if fArray is null. </exception>
 		''' <exception cref="ArrayIndexOutOfBoundsException"> if the coordinates are not
 		''' in bounds, or if fArray is too small to hold the input. </exception>
-		Public Overridable Sub setPixels(ByVal x As Integer, ByVal y As Integer, ByVal w As Integer, ByVal h As Integer, ByVal fArray As Single())
+		Public Overridable Sub setPixels(  x As Integer,   y As Integer,   w As Integer,   h As Integer,   fArray As Single())
 			sampleModel.pixelsels(x-sampleModelTranslateX,y-sampleModelTranslateY, w,h,fArray,dataBuffer_Renamed)
 		End Sub
 
@@ -515,7 +515,7 @@ Namespace java.awt.image
 		''' <exception cref="NullPointerException"> if dArray is null. </exception>
 		''' <exception cref="ArrayIndexOutOfBoundsException"> if the coordinates are not
 		''' in bounds, or if dArray is too small to hold the input. </exception>
-		Public Overridable Sub setPixels(ByVal x As Integer, ByVal y As Integer, ByVal w As Integer, ByVal h As Integer, ByVal dArray As Double())
+		Public Overridable Sub setPixels(  x As Integer,   y As Integer,   w As Integer,   h As Integer,   dArray As Double())
 			sampleModel.pixelsels(x-sampleModelTranslateX,y-sampleModelTranslateY, w,h,dArray,dataBuffer_Renamed)
 		End Sub
 
@@ -532,7 +532,7 @@ Namespace java.awt.image
 		''' </param>
 		''' <exception cref="ArrayIndexOutOfBoundsException"> if the coordinates or
 		''' the band index are not in bounds. </exception>
-		Public Overridable Sub setSample(ByVal x As Integer, ByVal y As Integer, ByVal b As Integer, ByVal s As Integer)
+		Public Overridable Sub setSample(  x As Integer,   y As Integer,   b As Integer,   s As Integer)
 			sampleModel.sampleple(x-sampleModelTranslateX, y-sampleModelTranslateY, b, s, dataBuffer_Renamed)
 		End Sub
 
@@ -549,7 +549,7 @@ Namespace java.awt.image
 		''' </param>
 		''' <exception cref="ArrayIndexOutOfBoundsException"> if the coordinates or
 		''' the band index are not in bounds. </exception>
-		Public Overridable Sub setSample(ByVal x As Integer, ByVal y As Integer, ByVal b As Integer, ByVal s As Single)
+		Public Overridable Sub setSample(  x As Integer,   y As Integer,   b As Integer,   s As Single)
 			sampleModel.sampleple(x-sampleModelTranslateX,y-sampleModelTranslateY, b,s,dataBuffer_Renamed)
 		End Sub
 
@@ -566,7 +566,7 @@ Namespace java.awt.image
 		''' </param>
 		''' <exception cref="ArrayIndexOutOfBoundsException"> if the coordinates or
 		''' the band index are not in bounds. </exception>
-		Public Overridable Sub setSample(ByVal x As Integer, ByVal y As Integer, ByVal b As Integer, ByVal s As Double)
+		Public Overridable Sub setSample(  x As Integer,   y As Integer,   b As Integer,   s As Double)
 			sampleModel.sampleple(x-sampleModelTranslateX,y-sampleModelTranslateY, b,s,dataBuffer_Renamed)
 		End Sub
 
@@ -587,7 +587,7 @@ Namespace java.awt.image
 		''' <exception cref="ArrayIndexOutOfBoundsException"> if the coordinates or
 		''' the band index are not in bounds, or if iArray is too small to
 		''' hold the input. </exception>
-		Public Overridable Sub setSamples(ByVal x As Integer, ByVal y As Integer, ByVal w As Integer, ByVal h As Integer, ByVal b As Integer, ByVal iArray As Integer())
+		Public Overridable Sub setSamples(  x As Integer,   y As Integer,   w As Integer,   h As Integer,   b As Integer,   iArray As Integer())
 			sampleModel.samplesles(x-sampleModelTranslateX,y-sampleModelTranslateY, w,h,b,iArray,dataBuffer_Renamed)
 		End Sub
 
@@ -608,7 +608,7 @@ Namespace java.awt.image
 		''' <exception cref="ArrayIndexOutOfBoundsException"> if the coordinates or
 		''' the band index are not in bounds, or if fArray is too small to
 		''' hold the input. </exception>
-		Public Overridable Sub setSamples(ByVal x As Integer, ByVal y As Integer, ByVal w As Integer, ByVal h As Integer, ByVal b As Integer, ByVal fArray As Single())
+		Public Overridable Sub setSamples(  x As Integer,   y As Integer,   w As Integer,   h As Integer,   b As Integer,   fArray As Single())
 			sampleModel.samplesles(x-sampleModelTranslateX,y-sampleModelTranslateY, w,h,b,fArray,dataBuffer_Renamed)
 		End Sub
 
@@ -629,7 +629,7 @@ Namespace java.awt.image
 		''' <exception cref="ArrayIndexOutOfBoundsException"> if the coordinates or
 		''' the band index are not in bounds, or if dArray is too small to
 		''' hold the input. </exception>
-		Public Overridable Sub setSamples(ByVal x As Integer, ByVal y As Integer, ByVal w As Integer, ByVal h As Integer, ByVal b As Integer, ByVal dArray As Double())
+		Public Overridable Sub setSamples(  x As Integer,   y As Integer,   w As Integer,   h As Integer,   b As Integer,   dArray As Double())
 			sampleModel.samplesles(x-sampleModelTranslateX,y-sampleModelTranslateY, w,h,b,dArray,dataBuffer_Renamed)
 		End Sub
 

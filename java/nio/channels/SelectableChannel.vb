@@ -141,7 +141,7 @@ Namespace java.nio.channels
 		''' <returns>  The key returned when this channel was last registered with the
 		'''          given selector, or <tt>null</tt> if this channel is not
 		'''          currently registered with that selector </returns>
-		Public MustOverride Function keyFor(ByVal sel As Selector) As SelectionKey
+		Public MustOverride Function keyFor(  sel As Selector) As SelectionKey
 		'
 		' sync(keySet) { return findKey(sel); }
 
@@ -207,7 +207,7 @@ Namespace java.nio.channels
 		''' </exception>
 		''' <returns>  A key representing the registration of this channel with
 		'''          the given selector </returns>
-		Public MustOverride Function register(ByVal sel As Selector, ByVal ops As Integer, ByVal att As Object) As SelectionKey
+		Public MustOverride Function register(  sel As Selector,   ops As Integer,   att As Object) As SelectionKey
 		'
 		' sync(regLock) {
 		'   sync(keySet) { look for selector }
@@ -263,7 +263,7 @@ Namespace java.nio.channels
 		''' </exception>
 		''' <returns>  A key representing the registration of this channel with
 		'''          the given selector </returns>
-		Public Function register(ByVal sel As Selector, ByVal ops As Integer) As SelectionKey
+		Public Function register(  sel As Selector,   ops As Integer) As SelectionKey
 			Return register(sel, ops, Nothing)
 		End Function
 
@@ -298,7 +298,7 @@ Namespace java.nio.channels
 		''' </exception>
 		''' <exception cref="IOException">
 		'''         If an I/O error occurs </exception>
-		Public MustOverride Function configureBlocking(ByVal block As Boolean) As SelectableChannel
+		Public MustOverride Function configureBlocking(  block As Boolean) As SelectableChannel
 		'
 		' sync(regLock) {
 		'   sync(keySet) { throw IBME if block && isRegistered; }

@@ -94,7 +94,7 @@ Namespace java.awt
 	''' </summary>
 	Public NotInheritable Class SplashScreen
 
-		Friend Sub New(ByVal ptr As Long) ' non-public constructor
+		Friend Sub New(  ptr As Long) ' non-public constructor
 			splashPtr = ptr
 		End Sub
 
@@ -148,7 +148,7 @@ Namespace java.awt
 		''' <exception cref="IllegalStateException"> if the splash screen has already been
 		'''         closed </exception>
 		Public Property imageURL As java.net.URL
-			Set(ByVal imageURL As java.net.URL)
+			Set(  imageURL As java.net.URL)
 				checkVisible()
 				Dim connection As java.net.URLConnection = imageURL.openConnection()
 				connection.connect()
@@ -376,15 +376,15 @@ Namespace java.awt
 
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Private Shared Sub _update(ByVal splashPtr As Long, ByVal data As Integer(), ByVal x As Integer, ByVal y As Integer, ByVal width As Integer, ByVal height As Integer, ByVal scanlineStride As Integer)
+		Private Shared Sub _update(  splashPtr As Long,   data As Integer(),   x As Integer,   y As Integer,   width As Integer,   height As Integer,   scanlineStride As Integer)
 		End Sub
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Private Shared Function _isVisible(ByVal splashPtr As Long) As Boolean
+		Private Shared Function _isVisible(  splashPtr As Long) As Boolean
 		End Function
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Private Shared Function _getBounds(ByVal splashPtr As Long) As Rectangle
+		Private Shared Function _getBounds(  splashPtr As Long) As Rectangle
 		End Function
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
@@ -392,23 +392,23 @@ Namespace java.awt
 		End Function
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Private Shared Sub _close(ByVal splashPtr As Long)
+		Private Shared Sub _close(  splashPtr As Long)
 		End Sub
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Private Shared Function _getImageFileName(ByVal splashPtr As Long) As String
+		Private Shared Function _getImageFileName(  splashPtr As Long) As String
 		End Function
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Private Shared Function _getImageJarName(ByVal SplashPtr As Long) As String
+		Private Shared Function _getImageJarName(  SplashPtr As Long) As String
 		End Function
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Private Shared Function _setImageData(ByVal SplashPtr As Long, ByVal data As SByte()) As Boolean
+		Private Shared Function _setImageData(  SplashPtr As Long,   data As SByte()) As Boolean
 		End Function
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Private Shared Function _getScaleFactor(ByVal SplashPtr As Long) As Single
+		Private Shared Function _getScaleFactor(  SplashPtr As Long) As Single
 		End Function
 
 	End Class

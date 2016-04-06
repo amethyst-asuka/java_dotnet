@@ -57,7 +57,7 @@ Namespace java.util.spi
 		'''         if {@code locale} is {@code null}. </exception>
 		''' <seealso cref= java.util.Calendar#getFirstDayOfWeek() </seealso>
 		''' <seealso cref= <a href="../Calendar.html#first_week">First Week</a> </seealso>
-		Public MustOverride Function getFirstDayOfWeek(ByVal locale As java.util.Locale) As Integer
+		Public MustOverride Function getFirstDayOfWeek(  locale As java.util.Locale) As Integer
 
 		''' <summary>
 		''' Returns the minimal number of days required in the first week of a
@@ -73,7 +73,7 @@ Namespace java.util.spi
 		''' <exception cref="NullPointerException">
 		'''         if {@code locale} is {@code null}. </exception>
 		''' <seealso cref= java.util.Calendar#getMinimalDaysInFirstWeek() </seealso>
-		Public MustOverride Function getMinimalDaysInFirstWeek(ByVal locale As java.util.Locale) As Integer
+		Public MustOverride Function getMinimalDaysInFirstWeek(  locale As java.util.Locale) As Integer
 	End Class
 
 End Namespace

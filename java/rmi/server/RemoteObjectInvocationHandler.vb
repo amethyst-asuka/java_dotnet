@@ -86,7 +86,7 @@ Namespace java.rmi.server
 		''' </param>
 		''' <exception cref="NullPointerException"> if <code>ref</code> is <code>null</code>
 		'''  </exception>
-		Public Sub New(ByVal ref As RemoteRef)
+		Public Sub New(  ref As RemoteRef)
 			MyBase.New(ref)
 			If ref Is Nothing Then Throw New NullPointerException
 		End Sub
@@ -152,7 +152,7 @@ Namespace java.rmi.server
 		''' <exception cref="Throwable"> the exception to throw from the method invocation
 		''' on the proxy instance
 		'''  </exception>
-		Public Overridable Function invoke(ByVal proxy As Object, ByVal method As Method, ByVal args As Object()) As Object Implements InvocationHandler.invoke
+		Public Overridable Function invoke(  proxy As Object,   method As Method,   args As Object()) As Object Implements InvocationHandler.invoke
 			If Not Proxy.isProxyClass(proxy.GetType()) Then Throw New IllegalArgumentException("not a proxy")
 
 			If Proxy.getInvocationHandler(proxy) IsNot Me Then Throw New IllegalArgumentException("handler mismatch")
@@ -170,7 +170,7 @@ Namespace java.rmi.server
 		''' Handles java.lang.Object methods.
 		''' 
 		''' </summary>
-		Private Function invokeObjectMethod(ByVal proxy As Object, ByVal method As Method, ByVal args As Object()) As Object
+		Private Function invokeObjectMethod(  proxy As Object,   method As Method,   args As Object()) As Object
 			Dim name As String = method.name
 
 			If name.Equals("hashCode") Then
@@ -194,7 +194,7 @@ Namespace java.rmi.server
 		''' Handles remote methods.
 		''' 
 		''' </summary>
-		Private Function invokeRemoteMethod(ByVal proxy As Object, ByVal method As Method, ByVal args As Object()) As Object
+		Private Function invokeRemoteMethod(  proxy As Object,   method As Method,   args As Object()) As Object
 			Try
 				If Not(TypeOf proxy Is java.rmi.Remote) Then Throw New IllegalArgumentException("proxy not Remote instance")
 				Return ref.invoke(CType(proxy, java.rmi.Remote), method, args, getMethodHash(method))
@@ -221,7 +221,7 @@ Namespace java.rmi.server
 		''' handler.
 		''' 
 		''' </summary>
-		Private Function proxyToString(ByVal proxy As Object) As String
+		Private Function proxyToString(  proxy As Object) As String
 			Dim interfaces As  [Class]() = proxy.GetType().GetInterfaces()
 			If interfaces.Length = 0 Then Return "Proxy[" & Me & "]"
 			Dim iface As String = interfaces(0).name
@@ -246,7 +246,7 @@ Namespace java.rmi.server
 		''' </summary>
 		''' <param name="method"> the remote method </param>
 		''' <returns> the method hash for the specified method </returns>
-		Private Shared Function getMethodHash(ByVal method As Method) As Long
+		Private Shared Function getMethodHash(  method As Method) As Long
 			Return methodToHash_Maps.get(method.declaringClass).get(method)
 		End Function
 
@@ -261,7 +261,7 @@ Namespace java.rmi.server
 			Friend Sub New()
 			End Sub
 
-			Protected Friend Overridable Function computeValue(ByVal remoteClass As [Class]) As IDictionary(Of Method, Long?)
+			Protected Friend Overridable Function computeValue(  remoteClass As [Class]) As IDictionary(Of Method, Long?)
 				Return New WeakHashMapAnonymousInnerClassHelper(Of K, V)
 			End Function
 
@@ -269,7 +269,7 @@ Namespace java.rmi.server
 				Inherits java.util.WeakHashMap(Of K, V)
 
 				<MethodImpl(MethodImplOptions.Synchronized)> _
-				Public Overridable Function [get](ByVal key As Object) As Long?
+				Public Overridable Function [get](  key As Object) As Long?
 					Dim hash As Long? = MyBase.get(key)
 					If hash Is Nothing Then
 						Dim method As Method = CType(key, Method)

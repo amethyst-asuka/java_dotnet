@@ -227,7 +227,7 @@ Namespace java.io
 		''' <seealso cref=        java.io.InputStreamReader </seealso>
 		''' <seealso cref=        java.io.StreamTokenizer#StreamTokenizer(java.io.Reader) </seealso>
 		<Obsolete("As of JDK version 1.1, the preferred way to tokenize an")> _
-		Public Sub New(ByVal [is] As InputStream)
+		Public Sub New(  [is] As InputStream)
 			Me.New()
 			If [is] Is Nothing Then Throw New NullPointerException
 			input = [is]
@@ -238,7 +238,7 @@ Namespace java.io
 		''' </summary>
 		''' <param name="r">  a Reader object providing the input stream.
 		''' @since   JDK1.1 </param>
-		Public Sub New(ByVal r As Reader)
+		Public Sub New(  r As Reader)
 			Me.New()
 			If r Is Nothing Then Throw New NullPointerException
 			reader = r
@@ -266,7 +266,7 @@ Namespace java.io
 		''' </summary>
 		''' <param name="low">   the low end of the range. </param>
 		''' <param name="hi">    the high end of the range. </param>
-		Public Overridable Sub wordChars(ByVal low As Integer, ByVal hi As Integer)
+		Public Overridable Sub wordChars(  low As Integer,   hi As Integer)
 			If low < 0 Then low = 0
 			If hi >= [ctype].Length Then hi = [ctype].Length - 1
 			Do While low <= hi
@@ -286,7 +286,7 @@ Namespace java.io
 		''' </summary>
 		''' <param name="low">   the low end of the range. </param>
 		''' <param name="hi">    the high end of the range. </param>
-		Public Overridable Sub whitespaceChars(ByVal low As Integer, ByVal hi As Integer)
+		Public Overridable Sub whitespaceChars(  low As Integer,   hi As Integer)
 			If low < 0 Then low = 0
 			If hi >= [ctype].Length Then hi = [ctype].Length - 1
 			Do While low <= hi
@@ -305,7 +305,7 @@ Namespace java.io
 		''' <param name="low">   the low end of the range. </param>
 		''' <param name="hi">    the high end of the range. </param>
 		''' <seealso cref=     java.io.StreamTokenizer#ordinaryChar(int) </seealso>
-		Public Overridable Sub ordinaryChars(ByVal low As Integer, ByVal hi As Integer)
+		Public Overridable Sub ordinaryChars(  low As Integer,   hi As Integer)
 			If low < 0 Then low = 0
 			If hi >= [ctype].Length Then hi = [ctype].Length - 1
 			Do While low <= hi
@@ -330,7 +330,7 @@ Namespace java.io
 		''' </summary>
 		''' <param name="ch">   the character. </param>
 		''' <seealso cref=     java.io.StreamTokenizer#ttype </seealso>
-		Public Overridable Sub ordinaryChar(ByVal ch As Integer)
+		Public Overridable Sub ordinaryChar(  ch As Integer)
 			If ch >= 0 AndAlso ch < [ctype].Length Then [ctype](ch) = 0
 		End Sub
 
@@ -342,7 +342,7 @@ Namespace java.io
 		''' <p>Any other attribute settings for the specified character are cleared.
 		''' </summary>
 		''' <param name="ch">   the character. </param>
-		Public Overridable Sub commentChar(ByVal ch As Integer)
+		Public Overridable Sub commentChar(  ch As Integer)
 			If ch >= 0 AndAlso ch < [ctype].Length Then [ctype](ch) = CT_COMMENT
 		End Sub
 
@@ -369,7 +369,7 @@ Namespace java.io
 		''' <seealso cref=     java.io.StreamTokenizer#nextToken() </seealso>
 		''' <seealso cref=     java.io.StreamTokenizer#sval </seealso>
 		''' <seealso cref=     java.io.StreamTokenizer#ttype </seealso>
-		Public Overridable Sub quoteChar(ByVal ch As Integer)
+		Public Overridable Sub quoteChar(  ch As Integer)
 			If ch >= 0 AndAlso ch < [ctype].Length Then [ctype](ch) = CT_QUOTE
 		End Sub
 
@@ -422,7 +422,7 @@ Namespace java.io
 		''' <seealso cref=     java.io.StreamTokenizer#nextToken() </seealso>
 		''' <seealso cref=     java.io.StreamTokenizer#ttype </seealso>
 		''' <seealso cref=     java.io.StreamTokenizer#TT_EOL </seealso>
-		Public Overridable Sub eolIsSignificant(ByVal flag As Boolean)
+		Public Overridable Sub eolIsSignificant(  flag As Boolean)
 			eolIsSignificantP = flag
 		End Sub
 
@@ -437,7 +437,7 @@ Namespace java.io
 		''' </summary>
 		''' <param name="flag">   {@code true} indicates to recognize and ignore
 		'''                 C-style comments. </param>
-		Public Overridable Sub slashStarComments(ByVal flag As Boolean)
+		Public Overridable Sub slashStarComments(  flag As Boolean)
 			slashStarCommentsP = flag
 		End Sub
 
@@ -453,7 +453,7 @@ Namespace java.io
 		''' </summary>
 		''' <param name="flag">   {@code true} indicates to recognize and ignore
 		'''                 C++-style comments. </param>
-		Public Overridable Sub slashSlashComments(ByVal flag As Boolean)
+		Public Overridable Sub slashSlashComments(  flag As Boolean)
 			slashSlashCommentsP = flag
 		End Sub
 
@@ -473,7 +473,7 @@ Namespace java.io
 		''' <seealso cref=     java.io.StreamTokenizer#nextToken() </seealso>
 		''' <seealso cref=     java.io.StreamTokenizer#ttype </seealso>
 		''' <seealso cref=     java.io.StreamTokenizer#TT_WORD </seealso>
-		Public Overridable Sub lowerCaseMode(ByVal fl As Boolean)
+		Public Overridable Sub lowerCaseMode(  fl As Boolean)
 			forceLower = fl
 		End Sub
 

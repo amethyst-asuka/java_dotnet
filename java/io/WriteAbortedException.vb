@@ -66,7 +66,7 @@ Namespace java.io
 		''' the exception and the exception causing the abort. </summary>
 		''' <param name="s">   String describing the exception. </param>
 		''' <param name="ex">  Exception causing the abort. </param>
-		Public Sub New(ByVal s As String, ByVal ex As Exception)
+		Public Sub New(  s As String,   ex As Exception)
 			MyBase.New(s)
 			initCause(Nothing) ' Disallow subsequent initCause
 			detail = ex

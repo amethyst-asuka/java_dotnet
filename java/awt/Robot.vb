@@ -108,12 +108,12 @@ Namespace java.awt
 		''' <seealso cref=     GraphicsDevice </seealso>
 		''' <seealso cref=     SecurityManager#checkPermission </seealso>
 		''' <seealso cref=     AWTPermission </seealso>
-		Public Sub New(ByVal screen As GraphicsDevice)
+		Public Sub New(  screen As GraphicsDevice)
 			checkIsScreenDevice(screen)
 			init(screen)
 		End Sub
 
-		Private Sub init(ByVal screen As GraphicsDevice)
+		Private Sub init(  screen As GraphicsDevice)
 			checkRobotAllowed()
 			Dim toolkit_Renamed As Toolkit = Toolkit.defaultToolkit
 			If TypeOf toolkit_Renamed Is sun.awt.ComponentFactory Then
@@ -148,7 +148,7 @@ Namespace java.awt
 		End Sub
 
 		' check if the given device is a screen device 
-		Private Sub checkIsScreenDevice(ByVal device As GraphicsDevice)
+		Private Sub checkIsScreenDevice(  device As GraphicsDevice)
 			If device Is Nothing OrElse device.type <> GraphicsDevice.TYPE_RASTER_SCREEN Then Throw New IllegalArgumentException("not a valid screen device")
 		End Sub
 
@@ -159,7 +159,7 @@ Namespace java.awt
 			Implements sun.java2d.DisposerRecord
 
 			Private ReadOnly peer As java.awt.peer.RobotPeer
-			Public Sub New(ByVal peer As java.awt.peer.RobotPeer)
+			Public Sub New(  peer As java.awt.peer.RobotPeer)
 				Me.peer = peer
 			End Sub
 			Public Overridable Sub dispose()
@@ -175,7 +175,7 @@ Namespace java.awt
 		''' <param name="x">         X position </param>
 		''' <param name="y">         Y position </param>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Sub mouseMove(ByVal x As Integer, ByVal y As Integer)
+		Public Overridable Sub mouseMove(  x As Integer,   y As Integer)
 			peer.mouseMove(x, y)
 			afterEvent()
 		End Sub
@@ -232,7 +232,7 @@ Namespace java.awt
 		''' <seealso cref= java.awt.MouseInfo#getNumberOfButtons() </seealso>
 		''' <seealso cref= java.awt.event.MouseEvent </seealso>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Sub mousePress(ByVal buttons As Integer)
+		Public Overridable Sub mousePress(  buttons As Integer)
 			checkButtonsArgument(buttons)
 			peer.mousePress(buttons)
 			afterEvent()
@@ -289,13 +289,13 @@ Namespace java.awt
 		''' <seealso cref= java.awt.MouseInfo#getNumberOfButtons() </seealso>
 		''' <seealso cref= java.awt.event.MouseEvent </seealso>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Sub mouseRelease(ByVal buttons As Integer)
+		Public Overridable Sub mouseRelease(  buttons As Integer)
 			checkButtonsArgument(buttons)
 			peer.mouseRelease(buttons)
 			afterEvent()
 		End Sub
 
-		Private Sub checkButtonsArgument(ByVal buttons As Integer)
+		Private Sub checkButtonsArgument(  buttons As Integer)
 			If (buttons Or LEGAL_BUTTON_MASK) <> LEGAL_BUTTON_MASK Then Throw New IllegalArgumentException("Invalid combination of button flags")
 		End Sub
 
@@ -308,7 +308,7 @@ Namespace java.awt
 		''' 
 		''' @since 1.4 </param>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Sub mouseWheel(ByVal wheelAmt As Integer)
+		Public Overridable Sub mouseWheel(  wheelAmt As Integer)
 			peer.mouseWheel(wheelAmt)
 			afterEvent()
 		End Sub
@@ -327,7 +327,7 @@ Namespace java.awt
 		''' <seealso cref=     #keyRelease(int) </seealso>
 		''' <seealso cref=     java.awt.event.KeyEvent </seealso>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Sub keyPress(ByVal keycode As Integer)
+		Public Overridable Sub keyPress(  keycode As Integer)
 			checkKeycodeArgument(keycode)
 			peer.keyPress(keycode)
 			afterEvent()
@@ -346,13 +346,13 @@ Namespace java.awt
 		''' <seealso cref=  #keyPress(int) </seealso>
 		''' <seealso cref=     java.awt.event.KeyEvent </seealso>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Sub keyRelease(ByVal keycode As Integer)
+		Public Overridable Sub keyRelease(  keycode As Integer)
 			checkKeycodeArgument(keycode)
 			peer.keyRelease(keycode)
 			afterEvent()
 		End Sub
 
-		Private Sub checkKeycodeArgument(ByVal keycode As Integer)
+		Private Sub checkKeycodeArgument(  keycode As Integer)
 			' rather than build a big table or switch statement here, we'll
 			' just check that the key isn't VK_UNDEFINED and assume that the
 			' peer implementations will throw an exception for other bogus
@@ -366,7 +366,7 @@ Namespace java.awt
 		''' <param name="y">       Y position of pixel </param>
 		''' <returns>  Color of the pixel </returns>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Function getPixelColor(ByVal x As Integer, ByVal y As Integer) As Color
+		Public Overridable Function getPixelColor(  x As Integer,   y As Integer) As Color
 			Dim color_Renamed As New Color(peer.getRGBPixel(x, y))
 			Return color_Renamed
 		End Function
@@ -381,7 +381,7 @@ Namespace java.awt
 		''' <seealso cref=     SecurityManager#checkPermission </seealso>
 		''' <seealso cref=     AWTPermission </seealso>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Function createScreenCapture(ByVal screenRect As Rectangle) As java.awt.image.BufferedImage
+		Public Overridable Function createScreenCapture(  screenRect As Rectangle) As java.awt.image.BufferedImage
 			checkScreenCaptureAllowed()
 
 			checkValidRect(screenRect)
@@ -414,7 +414,7 @@ Namespace java.awt
 			Return image_Renamed
 		End Function
 
-		Private Shared Sub checkValidRect(ByVal rect As Rectangle)
+		Private Shared Sub checkValidRect(  rect As Rectangle)
 			If rect.width <= 0 OrElse rect.height <= 0 Then Throw New IllegalArgumentException("Rectangle width and height must be > 0")
 		End Sub
 
@@ -440,7 +440,7 @@ Namespace java.awt
 			Get
 				Return isAutoWaitForIdle_Renamed
 			End Get
-			Set(ByVal isOn As Boolean)
+			Set(  isOn As Boolean)
 				isAutoWaitForIdle_Renamed = isOn
 			End Set
 		End Property
@@ -461,7 +461,7 @@ Namespace java.awt
 			Get
 				Return autoDelay_Renamed
 			End Get
-			Set(ByVal ms As Integer)
+			Set(  ms As Integer)
 				checkDelayArgument(ms)
 				autoDelay_Renamed = ms
 			End Set
@@ -483,7 +483,7 @@ Namespace java.awt
 		''' <exception cref="IllegalArgumentException"> if <code>ms</code> is not between 0 and 60,000 milliseconds inclusive </exception>
 		''' <seealso cref=     java.lang.Thread#sleep </seealso>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Sub delay(ByVal ms As Integer)
+		Public Overridable Sub delay(  ms As Integer)
 			checkDelayArgument(ms)
 			Try
 				Thread.Sleep(ms)
@@ -493,7 +493,7 @@ Namespace java.awt
 			End Try
 		End Sub
 
-		Private Sub checkDelayArgument(ByVal ms As Integer)
+		Private Sub checkDelayArgument(  ms As Integer)
 			If ms < 0 OrElse ms > MAX_DELAY Then Throw New IllegalArgumentException("Delay must be to 0 to 60,000ms")
 		End Sub
 

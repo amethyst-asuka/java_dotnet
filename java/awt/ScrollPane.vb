@@ -189,7 +189,7 @@ Namespace java.awt
 		'''     returns true </exception>
 		''' <seealso cref= java.awt.GraphicsEnvironment#isHeadless </seealso>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Sub New(ByVal scrollbarDisplayPolicy As Integer)
+		Public Sub New(  scrollbarDisplayPolicy As Integer)
 			GraphicsEnvironment.checkHeadless()
 			Me.layoutMgr = Nothing
 			Me.width = 100
@@ -221,7 +221,7 @@ Namespace java.awt
 		' The scrollpane won't work with a windowless child... it assumes
 		' it is moving a child window around so the windowless child is
 		' wrapped with a window.
-		Private Sub addToPanel(ByVal comp As Component, ByVal constraints As Object, ByVal index As Integer)
+		Private Sub addToPanel(  comp As Component,   constraints As Object,   index As Integer)
 			Dim child As New Panel
 			child.layout = New BorderLayout
 			child.add(comp)
@@ -236,7 +236,7 @@ Namespace java.awt
 		''' <param name="comp"> the component to be added </param>
 		''' <param name="constraints">  not applicable </param>
 		''' <param name="index"> position of child component (must be &lt;= 0) </param>
-		Protected Friend NotOverridable Overrides Sub addImpl(ByVal comp As Component, ByVal constraints As Object, ByVal index As Integer)
+		Protected Friend NotOverridable Overrides Sub addImpl(  comp As Component,   constraints As Object,   index As Integer)
 			SyncLock treeLock
 				If componentCount > 0 Then remove(0)
 				If index > 0 Then Throw New IllegalArgumentException("position greater than 0")
@@ -338,7 +338,7 @@ Namespace java.awt
 		''' <param name="y"> the y position to scroll to </param>
 		''' <exception cref="NullPointerException"> if the scrollpane does not contain
 		'''     a child </exception>
-		Public Overridable Sub setScrollPosition(ByVal x As Integer, ByVal y As Integer)
+		Public Overridable Sub setScrollPosition(  x As Integer,   y As Integer)
 			SyncLock treeLock
 				If componentCount=0 Then Throw New NullPointerException("child is null")
 				hAdjustable.value = x
@@ -360,7 +360,7 @@ Namespace java.awt
 		''' <param name="p"> the Point representing the position to scroll to </param>
 		''' <exception cref="NullPointerException"> if {@code p} is {@code null} </exception>
 		Public Overridable Property scrollPosition As Point
-			Set(ByVal p As Point)
+			Set(  p As Point)
 				scrollPositionion(p.x, p.y)
 			End Set
 			Get
@@ -386,7 +386,7 @@ Namespace java.awt
 		''' overridden to prevent the layout mgr from being set. </summary>
 		''' <param name="mgr"> the specified layout manager </param>
 		Public NotOverridable Overrides Property layout As LayoutManager
-			Set(ByVal mgr As LayoutManager)
+			Set(  mgr As LayoutManager)
 				Throw New AWTError("ScrollPane controls layout")
 			End Set
 		End Property
@@ -483,7 +483,7 @@ Namespace java.awt
 		''' <param name="g"> the specified Graphics window </param>
 		''' <seealso cref= Component#print </seealso>
 		''' <seealso cref= Component#printAll </seealso>
-		Public Overrides Sub printComponents(ByVal g As Graphics)
+		Public Overrides Sub printComponents(  g As Graphics)
 			If componentCount=0 Then Return
 			Dim c As Component = getComponent(0)
 			Dim p As Point = c.location
@@ -557,7 +557,7 @@ Namespace java.awt
 			Return MyBase.paramString() & ",ScrollPosition=(" & p.x & "," & p.y & ")" & ",Insets=(" & i.top & "," & i.left & "," & i.bottom & "," & i.right & ")" & ",ScrollbarDisplayPolicy=" & sdpStr & ",wheelScrollingEnabled=" & wheelScrollingEnabled
 		End Function
 
-		Friend Overrides Sub autoProcessMouseWheel(ByVal e As MouseWheelEvent)
+		Friend Overrides Sub autoProcessMouseWheel(  e As MouseWheelEvent)
 			processMouseWheelEvent(e)
 		End Sub
 
@@ -570,7 +570,7 @@ Namespace java.awt
 		''' </summary>
 		''' <param name="e">  the mouse wheel event
 		''' @since 1.4 </param>
-		Protected Friend Overrides Sub processMouseWheelEvent(ByVal e As MouseWheelEvent)
+		Protected Friend Overrides Sub processMouseWheelEvent(  e As MouseWheelEvent)
 			If wheelScrollingEnabled Then
 				sun.awt.ScrollPaneWheelScroller.handleWheelScrolling(Me, e)
 				e.consume()
@@ -582,7 +582,7 @@ Namespace java.awt
 		''' If wheel scrolling is enabled, we return true for MouseWheelEvents
 		''' @since 1.4
 		''' </summary>
-		Protected Friend Overrides Function eventTypeEnabled(ByVal type As Integer) As Boolean
+		Protected Friend Overrides Function eventTypeEnabled(  type As Integer) As Boolean
 			If type = MouseEvent.MOUSE_WHEEL AndAlso wheelScrollingEnabled Then
 				Return True
 			Else
@@ -602,7 +602,7 @@ Namespace java.awt
 		''' <seealso cref= java.awt.event.MouseWheelListener
 		''' @since 1.4 </seealso>
 		Public Overridable Property wheelScrollingEnabled As Boolean
-			Set(ByVal handleWheel As Boolean)
+			Set(  handleWheel As Boolean)
 				wheelScrollingEnabled = handleWheel
 			End Set
 			Get
@@ -615,7 +615,7 @@ Namespace java.awt
 		''' <summary>
 		''' Writes default serializable fields to stream.
 		''' </summary>
-		Private Sub writeObject(ByVal s As java.io.ObjectOutputStream)
+		Private Sub writeObject(  s As java.io.ObjectOutputStream)
 			' 4352819: We only need this degenerate writeObject to make
 			' it safe for future versions of this class to write optional
 			' data to the stream.
@@ -628,7 +628,7 @@ Namespace java.awt
 		''' <code>GraphicsEnvironment.isHeadless()</code> returns
 		''' <code>true</code> </exception>
 		''' <seealso cref= java.awt.GraphicsEnvironment#isHeadless </seealso>
-		Private Sub readObject(ByVal s As java.io.ObjectInputStream)
+		Private Sub readObject(  s As java.io.ObjectInputStream)
 			GraphicsEnvironment.checkHeadless()
 			' 4352819: Gotcha!  Cannot use s.defaultReadObject here and
 			' then continue with reading optional data.  Use GetField instead.
@@ -664,7 +664,7 @@ Namespace java.awt
 
 			Private Const serialVersionUID As Long = 1043664721353696630L
 
-			Friend Sub New(ByVal outerInstance As ScrollPane, ByVal scroller As ScrollPane)
+			Friend Sub New(  outerInstance As ScrollPane,   scroller As ScrollPane)
 					Me.outerInstance = outerInstance
 				Me.scroller = scroller
 			End Sub
@@ -672,7 +672,7 @@ Namespace java.awt
 			''' <summary>
 			''' Invoked when the value of the adjustable has changed.
 			''' </summary>
-			Public Overridable Sub adjustmentValueChanged(ByVal e As AdjustmentEvent) Implements AdjustmentListener.adjustmentValueChanged
+			Public Overridable Sub adjustmentValueChanged(  e As AdjustmentEvent) Implements AdjustmentListener.adjustmentValueChanged
 				Dim adj As Adjustable = e.adjustable
 				Dim value As Integer = e.value
 				Dim peer As java.awt.peer.ScrollPanePeer = CType(scroller.peer, java.awt.peer.ScrollPanePeer)
@@ -725,7 +725,7 @@ Namespace java.awt
 
 			Private ReadOnly outerInstance As ScrollPane
 
-			Public Sub New(ByVal outerInstance As ScrollPane)
+			Public Sub New(  outerInstance As ScrollPane)
 				Me.outerInstance = outerInstance
 			End Sub
 
@@ -770,14 +770,14 @@ Namespace java.awt
 	'     
 		Private Const serialVersionUID As Long = 7051237413532574756L
 
-		Friend Sub New(ByVal scroller As ScrollPane)
+		Friend Sub New(  scroller As ScrollPane)
 			Me.scroller = scroller
 		End Sub
 
 		''' <summary>
 		''' Invoked when the value of the adjustable has changed.
 		''' </summary>
-		Public Overridable Sub adjustmentValueChanged(ByVal e As AdjustmentEvent) Implements AdjustmentListener.adjustmentValueChanged
+		Public Overridable Sub adjustmentValueChanged(  e As AdjustmentEvent) Implements AdjustmentListener.adjustmentValueChanged
 			Dim adj As Adjustable = e.adjustable
 			Dim value As Integer = e.value
 			Dim peer As java.awt.peer.ScrollPanePeer = CType(scroller.peer, java.awt.peer.ScrollPanePeer)

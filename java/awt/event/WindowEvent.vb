@@ -205,7 +205,7 @@ Namespace java.awt.event
 		''' <seealso cref= #getOldState() </seealso>
 		''' <seealso cref= #getNewState()
 		''' @since 1.4 </seealso>
-		Public Sub New(ByVal source As java.awt.Window, ByVal id As Integer, ByVal opposite As java.awt.Window, ByVal oldState As Integer, ByVal newState As Integer)
+		Public Sub New(  source As java.awt.Window,   id As Integer,   opposite As java.awt.Window,   oldState As Integer,   newState As Integer)
 			MyBase.New(source, id)
 			Me.opposite = opposite
 			Me.oldState = oldState
@@ -249,7 +249,7 @@ Namespace java.awt.event
 		''' <seealso cref= #getID() </seealso>
 		''' <seealso cref= #getOppositeWindow()
 		''' @since 1.4 </seealso>
-		Public Sub New(ByVal source As java.awt.Window, ByVal id As Integer, ByVal opposite As java.awt.Window)
+		Public Sub New(  source As java.awt.Window,   id As Integer,   opposite As java.awt.Window)
 			Me.New(source, id, opposite, 0, 0)
 		End Sub
 
@@ -281,7 +281,7 @@ Namespace java.awt.event
 		''' <seealso cref= #getOldState() </seealso>
 		''' <seealso cref= #getNewState()
 		''' @since 1.4 </seealso>
-		Public Sub New(ByVal source As java.awt.Window, ByVal id As Integer, ByVal oldState As Integer, ByVal newState As Integer)
+		Public Sub New(  source As java.awt.Window,   id As Integer,   oldState As Integer,   newState As Integer)
 			Me.New(source, id, Nothing, oldState, newState)
 		End Sub
 
@@ -298,7 +298,7 @@ Namespace java.awt.event
 		''' <exception cref="IllegalArgumentException"> if <code>source</code> is null </exception>
 		''' <seealso cref= #getWindow() </seealso>
 		''' <seealso cref= #getID() </seealso>
-		Public Sub New(ByVal source As java.awt.Window, ByVal id As Integer)
+		Public Sub New(  source As java.awt.Window,   id As Integer)
 			Me.New(source, id, Nothing, 0, 0)
 		End Sub
 

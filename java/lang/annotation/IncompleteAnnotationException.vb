@@ -52,7 +52,7 @@ Namespace java.lang.annotation
 		''' <param name="annotationType"> the Class object for the annotation type </param>
 		''' <param name="elementName"> the name of the missing element </param>
 		''' <exception cref="NullPointerException"> if either parameter is {@code null} </exception>
-		Public Sub New(ByVal annotationType As [Class], ByVal elementName As String)
+		Public Sub New(  annotationType As [Class],   elementName As String)
 			MyBase.New(annotationType.name & " missing element " & elementName.ToString())
 
 			Me.annotationType_Renamed = annotationType

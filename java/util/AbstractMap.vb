@@ -113,7 +113,7 @@ Namespace java.util
         ''' </summary>
         ''' <exception cref="ClassCastException">   {@inheritDoc} </exception>
         ''' <exception cref="NullPointerException"> {@inheritDoc} </exception>
-        Public Overridable Function containsValue(ByVal value As Object) As Boolean Implements Map(Of K, V).containsValue
+        Public Overridable Function containsValue(  value As Object) As Boolean Implements Map(Of K, V).containsValue
 			Dim i As [Iterator](Of KeyValuePair(Of K, V)) = entrySet().GetEnumerator()
 			If value Is Nothing Then
 				Do While i.MoveNext()
@@ -142,7 +142,7 @@ Namespace java.util
 		''' </summary>
 		''' <exception cref="ClassCastException">   {@inheritDoc} </exception>
 		''' <exception cref="NullPointerException"> {@inheritDoc} </exception>
-		Public Overridable Function containsKey(ByVal key As Object) As Boolean Implements Map(Of K, V).containsKey
+		Public Overridable Function containsKey(  key As Object) As Boolean Implements Map(Of K, V).containsKey
 			Dim i As [Iterator](Of KeyValuePair(Of K, V)) = entrySet().GetEnumerator()
 			If key Is Nothing Then
 				Do While i.MoveNext()
@@ -171,7 +171,7 @@ Namespace java.util
 		''' </summary>
 		''' <exception cref="ClassCastException">            {@inheritDoc} </exception>
 		''' <exception cref="NullPointerException">          {@inheritDoc} </exception>
-		Public Overridable Function [get](ByVal key As Object) As V Implements Map(Of K, V).get
+		Public Overridable Function [get](  key As Object) As V Implements Map(Of K, V).get
 			Dim i As [Iterator](Of KeyValuePair(Of K, V)) = entrySet().GetEnumerator()
 			If key Is Nothing Then
 				Do While i.MoveNext()
@@ -201,7 +201,7 @@ Namespace java.util
 		''' <exception cref="ClassCastException">            {@inheritDoc} </exception>
 		''' <exception cref="NullPointerException">          {@inheritDoc} </exception>
 		''' <exception cref="IllegalArgumentException">      {@inheritDoc} </exception>
-		Public Overridable Function put(ByVal key As K, ByVal value As V) As V Implements Map(Of K, V).put
+		Public Overridable Function put(  key As K,   value As V) As V Implements Map(Of K, V).put
 			Throw New UnsupportedOperationException
 		End Function
 
@@ -226,7 +226,7 @@ Namespace java.util
 		''' <exception cref="UnsupportedOperationException"> {@inheritDoc} </exception>
 		''' <exception cref="ClassCastException">            {@inheritDoc} </exception>
 		''' <exception cref="NullPointerException">          {@inheritDoc} </exception>
-		Public Overridable Function remove(ByVal key As Object) As V Implements Map(Of K, V).remove
+		Public Overridable Function remove(  key As Object) As V Implements Map(Of K, V).remove
 			Dim i As [Iterator](Of KeyValuePair(Of K, V)) = entrySet().GetEnumerator()
 			Dim correctEntry As KeyValuePair(Of K, V) = Nothing
 			If key Is Nothing Then
@@ -268,7 +268,7 @@ Namespace java.util
         ''' <exception cref="ClassCastException">            {@inheritDoc} </exception>
         ''' <exception cref="NullPointerException">          {@inheritDoc} </exception>
         ''' <exception cref="IllegalArgumentException">      {@inheritDoc} </exception>
-        Public Overridable Sub putAll(ByVal m As Map(Of K, V)) Implements Map(Of K, V).putAll
+        Public Overridable Sub putAll(  m As Map(Of K, V)) Implements Map(Of K, V).putAll
             For Each e As KeyValuePair(Of K, V) In m.entrySet()
                 put(e.Key, e.Value)
             Next e
@@ -362,7 +362,7 @@ Namespace java.util
 				outerInstance.clear()
 			End Sub
 
-			Public Overridable Function contains(ByVal k As Object) As Boolean
+			Public Overridable Function contains(  k As Object) As Boolean
 				Return outerInstance.containsKey(k)
 			End Function
 		End Class
@@ -427,7 +427,7 @@ Namespace java.util
 				outerInstance.clear()
 			End Sub
 
-			Public Overridable Function contains(ByVal v As Object) As Boolean
+			Public Overridable Function contains(  v As Object) As Boolean
 				Return outerInstance.containsValue(v)
 			End Function
 		End Class
@@ -458,7 +458,7 @@ Namespace java.util
 		''' </summary>
 		''' <param name="o"> object to be compared for equality with this map </param>
 		''' <returns> <tt>true</tt> if the specified object is equal to this map </returns>
-		Public Overrides Function Equals(ByVal o As Object) As Boolean
+		Public Overrides Function Equals(  o As Object) As Boolean
 			If o Is Me Then Return True
 
             If Not (TypeOf o Is Map(Of K, V)) Then Return False
@@ -560,7 +560,7 @@ Namespace java.util
 		''' 
 		''' NB: Do not replace with Object.equals until JDK-8015417 is resolved.
 		''' </summary>
-		Private Shared Function eq(ByVal o1 As Object, ByVal o2 As Object) As Boolean
+		Private Shared Function eq(  o1 As Object,   o2 As Object) As Boolean
 			Return If(o1 Is Nothing, o2 Is Nothing, o1.Equals(o2))
 		End Function
 
@@ -594,7 +594,7 @@ Namespace java.util
             ''' </summary>
             ''' <param name="key"> the key represented by this entry </param>
             ''' <param name="value"> the value represented by this entry </param>
-            Public Sub New(ByVal key As K, ByVal value As V)
+            Public Sub New(  key As K,   value As V)
 				Me.key = key
 				Me.value = value
 			End Sub
@@ -604,7 +604,7 @@ Namespace java.util
             ''' specified entry.
             ''' </summary>
             ''' <param name="entry"> the entry to copy </param>
-            Public Sub New(ByVal entry As KeyValuePair(Of K, V))
+            Public Sub New(  entry As KeyValuePair(Of K, V))
                 Me.key = entry.Key
                 Me.value = entry.Value
             End Sub
@@ -627,7 +627,7 @@ Namespace java.util
             ''' </summary>
             ''' <param name="value"> new value to be stored in this entry </param>
             ''' <returns> the old value corresponding to the entry </returns>
-            Public Overridable Function setValue(ByVal value As V) As V
+            Public Overridable Function setValue(  value As V) As V
 				Dim oldValue As V = Me.value
 				Me.value = value
 				Return oldValue
@@ -653,7 +653,7 @@ Namespace java.util
 			''' <returns> {@code true} if the specified object is equal to this map
 			'''         entry </returns>
 			''' <seealso cref=    #hashCode </seealso>
-			Public Overrides Function Equals(ByVal o As Object) As Boolean
+			Public Overrides Function Equals(  o As Object) As Boolean
 				If Not(TypeOf o Is DictionaryEntry) Then Return False
                 Dim e As KeyValuePair(Of K, V) = CType(o, KeyValuePair(Of K, V))
                 Return eq(key, e.Key) AndAlso eq(value, e.Value)
@@ -708,7 +708,7 @@ Namespace java.util
             ''' </summary>
             ''' <param name="key"> the key represented by this entry </param>
             ''' <param name="value"> the value represented by this entry </param>
-            Public Sub New(ByVal key As K, ByVal value As V)
+            Public Sub New(  key As K,   value As V)
 				Me.key = key
 				Me.value = value
 			End Sub
@@ -718,7 +718,7 @@ Namespace java.util
             ''' specified entry.
             ''' </summary>
             ''' <param name="entry"> the entry to copy </param>
-            Public Sub New(ByVal entry As KeyValuePair(Of T1))
+            Public Sub New(  entry As KeyValuePair(Of T1))
                 Me.key = entry.Key
                 Me.value = entry.Value
             End Sub
@@ -744,7 +744,7 @@ Namespace java.util
             ''' <param name="value"> new value to be stored in this entry </param>
             ''' <returns> (Does not return) </returns>
             ''' <exception cref="UnsupportedOperationException"> always </exception>
-            Public Overridable Function setValue(ByVal value As V) As V
+            Public Overridable Function setValue(  value As V) As V
 				Throw New UnsupportedOperationException
 			End Function
 
@@ -768,7 +768,7 @@ Namespace java.util
 			''' <returns> {@code true} if the specified object is equal to this map
 			'''         entry </returns>
 			''' <seealso cref=    #hashCode </seealso>
-			Public Overrides Function Equals(ByVal o As Object) As Boolean
+			Public Overrides Function Equals(  o As Object) As Boolean
 				If Not(TypeOf o Is DictionaryEntry) Then Return False
                 Dim e As KeyValuePair(Of K, V) = CType(o, KeyValuePair(Of K, V))
                 Return eq(key, e.Key) AndAlso eq(value, e.Value)

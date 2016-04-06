@@ -207,17 +207,17 @@ Namespace java.util.concurrent
 'JAVA TO VB CONVERTER TODO TASK: There is no VB equivalent to 'volatile':
 		Friend stack As Completion ' Top of Treiber stack of dependent actions
 
-		Friend Function internalComplete(ByVal r As Object) As Boolean ' CAS from null to r
+		Friend Function internalComplete(  r As Object) As Boolean ' CAS from null to r
 			Return UNSAFE.compareAndSwapObject(Me, RESULT, Nothing, r)
 		End Function
 
-		Friend Function casStack(ByVal cmp As Completion, ByVal val As Completion) As Boolean
+		Friend Function casStack(  cmp As Completion,   val As Completion) As Boolean
 			Return UNSAFE.compareAndSwapObject(Me, STACK, cmp, val)
 		End Function
 
 		''' <summary>
 		''' Returns true if successfully pushed c onto stack. </summary>
-		Friend Function tryPushStack(ByVal c As Completion) As Boolean
+		Friend Function tryPushStack(  c As Completion) As Boolean
 			Dim h As Completion = stack
 			lazySetNext(c, h)
 			Return UNSAFE.compareAndSwapObject(Me, STACK, h, c)
@@ -225,7 +225,7 @@ Namespace java.util.concurrent
 
 		''' <summary>
 		''' Unconditionally pushes c onto stack, retrying if necessary. </summary>
-		Friend Sub pushStack(ByVal c As Completion)
+		Friend Sub pushStack(  c As Completion)
 			Do
 			Loop While Not tryPushStack(c)
 		End Sub
@@ -234,7 +234,7 @@ Namespace java.util.concurrent
 
 		Friend NotInheritable Class AltResult ' See above
 			Friend ReadOnly ex As Throwable ' null only for NIL
-			Friend Sub New(ByVal x As Throwable)
+			Friend Sub New(  x As Throwable)
 				Me.ex = x
 			End Sub
 		End Class
@@ -251,13 +251,13 @@ Namespace java.util.concurrent
 
 		''' <summary>
 		''' Returns the encoding of the given non-exceptional value. </summary>
-		Friend Function encodeValue(ByVal t As T) As Object
+		Friend Function encodeValue(  t As T) As Object
 			Return If(t Is Nothing, NIL, t)
 		End Function
 
 		''' <summary>
 		''' Completes with a non-exceptional result, unless already completed. </summary>
-		Friend Function completeValue(ByVal t As T) As Boolean
+		Friend Function completeValue(  t As T) As Boolean
 			Return UNSAFE.compareAndSwapObject(Me, RESULT, Nothing,If(t Is Nothing, NIL, t))
 		End Function
 
@@ -265,13 +265,13 @@ Namespace java.util.concurrent
 		''' Returns the encoding of the given (non-null) exception as a
 		''' wrapped CompletionException unless it is one already.
 		''' </summary>
-		Friend Shared Function encodeThrowable(ByVal x As Throwable) As AltResult
+		Friend Shared Function encodeThrowable(  x As Throwable) As AltResult
 			Return New AltResult(If(TypeOf x Is java.util.concurrent.CompletionException, x, New java.util.concurrent.CompletionException(x)))
 		End Function
 
 		''' <summary>
 		''' Completes with an exceptional result, unless already completed. </summary>
-		Friend Function completeThrowable(ByVal x As Throwable) As Boolean
+		Friend Function completeThrowable(  x As Throwable) As Boolean
 			Return UNSAFE.compareAndSwapObject(Me, RESULT, Nothing, encodeThrowable(x))
 		End Function
 
@@ -282,7 +282,7 @@ Namespace java.util.concurrent
 		''' source future) if it is equivalent, i.e. if this is a simple
 		''' relay of an existing CompletionException.
 		''' </summary>
-		Friend Shared Function encodeThrowable(ByVal x As Throwable, ByVal r As Object) As Object
+		Friend Shared Function encodeThrowable(  x As Throwable,   r As Object) As Object
 			If Not(TypeOf x Is java.util.concurrent.CompletionException) Then
 				x = New java.util.concurrent.CompletionException(x)
 			ElseIf TypeOf r Is AltResult AndAlso x Is CType(r, AltResult).ex Then
@@ -299,7 +299,7 @@ Namespace java.util.concurrent
 		''' equivalent, i.e. if this is a simple propagation of an
 		''' existing CompletionException.
 		''' </summary>
-		Friend Function completeThrowable(ByVal x As Throwable, ByVal r As Object) As Boolean
+		Friend Function completeThrowable(  x As Throwable,   r As Object) As Boolean
 			Return UNSAFE.compareAndSwapObject(Me, RESULT, Nothing, encodeThrowable(x, r))
 		End Function
 
@@ -308,7 +308,7 @@ Namespace java.util.concurrent
 		''' is non-null, encodes as AltResult.  Otherwise uses the given
 		''' value, boxed as NIL if null.
 		''' </summary>
-		Friend Overridable Function encodeOutcome(ByVal t As T, ByVal x As Throwable) As Object
+		Friend Overridable Function encodeOutcome(  t As T,   x As Throwable) As Object
 			Return If(x Is Nothing, If(t Is Nothing, NIL, t), encodeThrowable(x))
 		End Function
 
@@ -316,7 +316,7 @@ Namespace java.util.concurrent
 		''' Returns the encoding of a copied outcome; if exceptional,
 		''' rewraps as a CompletionException, else returns argument.
 		''' </summary>
-		Friend Shared Function encodeRelay(ByVal r As Object) As Object
+		Friend Shared Function encodeRelay(  r As Object) As Object
 			Dim x As Throwable
 'JAVA TO VB CONVERTER TODO TASK: Assignments within expressions are not supported in VB
 			Return (If((TypeOf r Is AltResult) AndAlso (x = CType(r, AltResult).ex) IsNot Nothing AndAlso Not(TypeOf x Is java.util.concurrent.CompletionException), New AltResult(New java.util.concurrent.CompletionException(x)), r))
@@ -326,14 +326,14 @@ Namespace java.util.concurrent
 		''' Completes with r or a copy of r, unless already completed.
 		''' If exceptional, r is first coerced to a CompletionException.
 		''' </summary>
-		Friend Function completeRelay(ByVal r As Object) As Boolean
+		Friend Function completeRelay(  r As Object) As Boolean
 			Return UNSAFE.compareAndSwapObject(Me, RESULT, Nothing, encodeRelay(r))
 		End Function
 
 		''' <summary>
 		''' Reports result using Future.get conventions.
 		''' </summary>
-		Private Shared Function reportGet(Of T)(ByVal r As Object) As T
+		Private Shared Function reportGet(Of T)(  r As Object) As T
 			If r Is Nothing Then ' by convention below, null means interrupted Throw New InterruptedException
 			If TypeOf r Is AltResult Then
 				Dim x, cause As Throwable
@@ -352,7 +352,7 @@ Namespace java.util.concurrent
 		''' <summary>
 		''' Decodes outcome to return result or throw unchecked exception.
 		''' </summary>
-		Private Shared Function reportJoin(Of T)(ByVal r As Object) As T
+		Private Shared Function reportJoin(Of T)(  r As Object) As T
 			If TypeOf r Is AltResult Then
 				Dim x As Throwable
 				x = CType(r, AltResult).ex
@@ -391,7 +391,7 @@ Namespace java.util.concurrent
 		Friend NotInheritable Class ThreadPerTaskExecutor
 			Implements java.util.concurrent.Executor
 
-			Public Sub execute(ByVal r As Runnable)
+			Public Sub execute(  r As Runnable)
 				CType(New Thread(r), Thread).start()
 			End Sub
 		End Class
@@ -400,7 +400,7 @@ Namespace java.util.concurrent
 		''' Null-checks user executor argument, and translates uses of
 		''' commonPool to asyncPool in case parallelism disabled.
 		''' </summary>
-		Friend Shared Function screenExecutor(ByVal e As java.util.concurrent.Executor) As java.util.concurrent.Executor
+		Friend Shared Function screenExecutor(  e As java.util.concurrent.Executor) As java.util.concurrent.Executor
 			If (Not useCommonPool) AndAlso e Is java.util.concurrent.ForkJoinPool.commonPool() Then Return asyncPool
 			If e Is Nothing Then Throw New NullPointerException
 			Return e
@@ -427,7 +427,7 @@ Namespace java.util.concurrent
 			''' </summary>
 			''' <param name="mode"> SYNC, ASYNC, or NESTED </param>
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-			Friend MustOverride Function tryFire(ByVal mode As Integer) As CompletableFuture(Of ?)
+			Friend MustOverride Function tryFire(  mode As Integer) As CompletableFuture(Of ?)
 
 			''' <summary>
 			''' Returns true if possibly still triggerable. Used by cleanStack. </summary>
@@ -444,12 +444,12 @@ Namespace java.util.concurrent
 				Get
 					Return Nothing
 				End Get
-				Set(ByVal v As Void)
+				Set(  v As Void)
 				End Set
 			End Property
 		End Class
 
-		Friend Shared Sub lazySetNext(ByVal c As Completion, ByVal [next] As Completion)
+		Friend Shared Sub lazySetNext(  c As Completion,   [next] As Completion)
 			UNSAFE.putOrderedObject(c, CompletableFuture.NEXT, [next])
 		End Sub
 
@@ -529,7 +529,7 @@ Namespace java.util.concurrent
 			Friend dep As CompletableFuture(Of V) ' the dependent to complete
 			Friend src As CompletableFuture(Of T) ' source for action
 
-			Friend Sub New(ByVal executor As java.util.concurrent.Executor, ByVal dep As CompletableFuture(Of V), ByVal src As CompletableFuture(Of T))
+			Friend Sub New(  executor As java.util.concurrent.Executor,   dep As CompletableFuture(Of V),   src As CompletableFuture(Of T))
 				Me.executor = executor
 				Me.dep = dep
 				Me.src = src
@@ -560,7 +560,7 @@ Namespace java.util.concurrent
 
 		''' <summary>
 		''' Pushes the given completion (if it exists) unless done. </summary>
-		Friend Sub push(Of T1)(ByVal c As UniCompletion(Of T1))
+		Friend Sub push(Of T1)(  c As UniCompletion(Of T1))
 			If c IsNot Nothing Then
 				Do While result Is Nothing AndAlso Not tryPushStack(c)
 					lazySetNext(c, Nothing) ' clear on failure
@@ -573,7 +573,7 @@ Namespace java.util.concurrent
 		''' tryFire.  Tries to clean stack of source a, and then either runs
 		''' postComplete or returns this to caller, depending on mode.
 		''' </summary>
-		Friend Function postFire(Of T1)(ByVal a As CompletableFuture(Of T1), ByVal mode As Integer) As CompletableFuture(Of T)
+		Friend Function postFire(Of T1)(  a As CompletableFuture(Of T1),   mode As Integer) As CompletableFuture(Of T)
 			If a IsNot Nothing AndAlso a.stack IsNot Nothing Then
 				If mode < 0 OrElse a.result Is Nothing Then
 					a.cleanStack()
@@ -599,11 +599,11 @@ Namespace java.util.concurrent
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 			Friend fn As java.util.function.Function(Of ?, ? As V)
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Friend Sub New(Of T1 As V)(ByVal executor As java.util.concurrent.Executor, ByVal dep As CompletableFuture(Of V), ByVal src As CompletableFuture(Of T), ByVal fn As java.util.function.Function(Of T1))
+			Friend Sub New(Of T1 As V)(  executor As java.util.concurrent.Executor,   dep As CompletableFuture(Of V),   src As CompletableFuture(Of T),   fn As java.util.function.Function(Of T1))
 				MyBase.New(executor, dep, src)
 				Me.fn = fn
 			End Sub
-			Friend Function tryFire(ByVal mode As Integer) As CompletableFuture(Of V)
+			Friend Function tryFire(  mode As Integer) As CompletableFuture(Of V)
 				Dim d As CompletableFuture(Of V)
 				Dim a As CompletableFuture(Of T)
 				d = dep
@@ -617,7 +617,7 @@ Namespace java.util.concurrent
 		End Class
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Friend Function uniApply(Of S, T1 As T)(ByVal a As CompletableFuture(Of S), ByVal f As java.util.function.Function(Of T1), ByVal c As UniApply(Of S, T)) As Boolean
+		Friend Function uniApply(Of S, T1 As T)(  a As CompletableFuture(Of S),   f As java.util.function.Function(Of T1),   c As UniApply(Of S, T)) As Boolean
 			Dim r As Object
 			Dim x As Throwable
 			r = a.result
@@ -645,7 +645,7 @@ Namespace java.util.concurrent
 		End Function
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Private Function uniApplyStage(Of V, T1 As V)(ByVal e As java.util.concurrent.Executor, ByVal f As java.util.function.Function(Of T1)) As CompletableFuture(Of V)
+		Private Function uniApplyStage(Of V, T1 As V)(  e As java.util.concurrent.Executor,   f As java.util.function.Function(Of T1)) As CompletableFuture(Of V)
 			If f Is Nothing Then Throw New NullPointerException
 			Dim d As New CompletableFuture(Of V)
 			If e IsNot Nothing OrElse (Not d.uniApply(Me, f, Nothing)) Then
@@ -664,11 +664,11 @@ Namespace java.util.concurrent
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 			Friend fn As java.util.function.Consumer(Of ?)
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Friend Sub New(Of T1)(ByVal executor As java.util.concurrent.Executor, ByVal dep As CompletableFuture(Of Void), ByVal src As CompletableFuture(Of T), ByVal fn As java.util.function.Consumer(Of T1))
+			Friend Sub New(Of T1)(  executor As java.util.concurrent.Executor,   dep As CompletableFuture(Of Void),   src As CompletableFuture(Of T),   fn As java.util.function.Consumer(Of T1))
 				MyBase.New(executor, dep, src)
 				Me.fn = fn
 			End Sub
-			Friend Function tryFire(ByVal mode As Integer) As CompletableFuture(Of Void)
+			Friend Function tryFire(  mode As Integer) As CompletableFuture(Of Void)
 				Dim d As CompletableFuture(Of Void)
 				Dim a As CompletableFuture(Of T)
 				d = dep
@@ -682,7 +682,7 @@ Namespace java.util.concurrent
 		End Class
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Friend Function uniAccept(Of S, T1)(ByVal a As CompletableFuture(Of S), ByVal f As java.util.function.Consumer(Of T1), ByVal c As UniAccept(Of S)) As Boolean
+		Friend Function uniAccept(Of S, T1)(  a As CompletableFuture(Of S),   f As java.util.function.Consumer(Of T1),   c As UniAccept(Of S)) As Boolean
 			Dim r As Object
 			Dim x As Throwable
 			r = a.result
@@ -711,7 +711,7 @@ Namespace java.util.concurrent
 		End Function
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Private Function uniAcceptStage(Of T1)(ByVal e As java.util.concurrent.Executor, ByVal f As java.util.function.Consumer(Of T1)) As CompletableFuture(Of Void)
+		Private Function uniAcceptStage(Of T1)(  e As java.util.concurrent.Executor,   f As java.util.function.Consumer(Of T1)) As CompletableFuture(Of Void)
 			If f Is Nothing Then Throw New NullPointerException
 			Dim d As New CompletableFuture(Of Void)
 			If e IsNot Nothing OrElse (Not d.uniAccept(Me, f, Nothing)) Then
@@ -727,11 +727,11 @@ Namespace java.util.concurrent
 			Inherits UniCompletion(Of T, Void)
 
 			Friend fn As Runnable
-			Friend Sub New(ByVal executor As java.util.concurrent.Executor, ByVal dep As CompletableFuture(Of Void), ByVal src As CompletableFuture(Of T), ByVal fn As Runnable)
+			Friend Sub New(  executor As java.util.concurrent.Executor,   dep As CompletableFuture(Of Void),   src As CompletableFuture(Of T),   fn As Runnable)
 				MyBase.New(executor, dep, src)
 				Me.fn = fn
 			End Sub
-			Friend Function tryFire(ByVal mode As Integer) As CompletableFuture(Of Void)
+			Friend Function tryFire(  mode As Integer) As CompletableFuture(Of Void)
 				Dim d As CompletableFuture(Of Void)
 				Dim a As CompletableFuture(Of T)
 				d = dep
@@ -744,7 +744,7 @@ Namespace java.util.concurrent
 			End Function
 		End Class
 
-		Friend Function uniRun(Of T1, T2)(ByVal a As CompletableFuture(Of T1), ByVal f As Runnable, ByVal c As UniRun(Of T2)) As Boolean
+		Friend Function uniRun(Of T1, T2)(  a As CompletableFuture(Of T1),   f As Runnable,   c As UniRun(Of T2)) As Boolean
 			Dim r As Object
 			Dim x As Throwable
 			r = a.result
@@ -766,7 +766,7 @@ Namespace java.util.concurrent
 			Return True
 		End Function
 
-		Private Function uniRunStage(ByVal e As java.util.concurrent.Executor, ByVal f As Runnable) As CompletableFuture(Of Void)
+		Private Function uniRunStage(  e As java.util.concurrent.Executor,   f As Runnable) As CompletableFuture(Of Void)
 			If f Is Nothing Then Throw New NullPointerException
 			Dim d As New CompletableFuture(Of Void)
 			If e IsNot Nothing OrElse (Not d.uniRun(Me, f, Nothing)) Then
@@ -785,11 +785,11 @@ Namespace java.util.concurrent
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 			Friend fn As java.util.function.BiConsumer(Of ?, ?)
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Friend Sub New(Of T1)(ByVal executor As java.util.concurrent.Executor, ByVal dep As CompletableFuture(Of T), ByVal src As CompletableFuture(Of T), ByVal fn As java.util.function.BiConsumer(Of T1))
+			Friend Sub New(Of T1)(  executor As java.util.concurrent.Executor,   dep As CompletableFuture(Of T),   src As CompletableFuture(Of T),   fn As java.util.function.BiConsumer(Of T1))
 				MyBase.New(executor, dep, src)
 				Me.fn = fn
 			End Sub
-			Friend Function tryFire(ByVal mode As Integer) As CompletableFuture(Of T)
+			Friend Function tryFire(  mode As Integer) As CompletableFuture(Of T)
 				Dim d As CompletableFuture(Of T)
 				Dim a As CompletableFuture(Of T)
 				d = dep
@@ -803,7 +803,7 @@ Namespace java.util.concurrent
 		End Class
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Friend Function uniWhenComplete(Of T1)(ByVal a As CompletableFuture(Of T), ByVal f As java.util.function.BiConsumer(Of T1), ByVal c As UniWhenComplete(Of T)) As Boolean
+		Friend Function uniWhenComplete(Of T1)(  a As CompletableFuture(Of T),   f As java.util.function.BiConsumer(Of T1),   c As UniWhenComplete(Of T)) As Boolean
 			Dim r As Object
 			Dim t As T
 			Dim x As Throwable = Nothing
@@ -834,7 +834,7 @@ Namespace java.util.concurrent
 		End Function
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Private Function uniWhenCompleteStage(Of T1)(ByVal e As java.util.concurrent.Executor, ByVal f As java.util.function.BiConsumer(Of T1)) As CompletableFuture(Of T)
+		Private Function uniWhenCompleteStage(Of T1)(  e As java.util.concurrent.Executor,   f As java.util.function.BiConsumer(Of T1)) As CompletableFuture(Of T)
 			If f Is Nothing Then Throw New NullPointerException
 			Dim d As New CompletableFuture(Of T)
 			If e IsNot Nothing OrElse (Not d.uniWhenComplete(Me, f, Nothing)) Then
@@ -853,11 +853,11 @@ Namespace java.util.concurrent
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 			Friend fn As java.util.function.BiFunction(Of ?, Throwable, ? As V)
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Friend Sub New(Of T1 As V)(ByVal executor As java.util.concurrent.Executor, ByVal dep As CompletableFuture(Of V), ByVal src As CompletableFuture(Of T), ByVal fn As java.util.function.BiFunction(Of T1))
+			Friend Sub New(Of T1 As V)(  executor As java.util.concurrent.Executor,   dep As CompletableFuture(Of V),   src As CompletableFuture(Of T),   fn As java.util.function.BiFunction(Of T1))
 				MyBase.New(executor, dep, src)
 				Me.fn = fn
 			End Sub
-			Friend Function tryFire(ByVal mode As Integer) As CompletableFuture(Of V)
+			Friend Function tryFire(  mode As Integer) As CompletableFuture(Of V)
 				Dim d As CompletableFuture(Of V)
 				Dim a As CompletableFuture(Of T)
 				d = dep
@@ -871,7 +871,7 @@ Namespace java.util.concurrent
 		End Class
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Friend Function uniHandle(Of S, T1 As T)(ByVal a As CompletableFuture(Of S), ByVal f As java.util.function.BiFunction(Of T1), ByVal c As UniHandle(Of S, T)) As Boolean
+		Friend Function uniHandle(Of S, T1 As T)(  a As CompletableFuture(Of S),   f As java.util.function.BiFunction(Of T1),   c As UniHandle(Of S, T)) As Boolean
 			Dim r As Object
 			Dim s As S
 			Dim x As Throwable
@@ -898,7 +898,7 @@ Namespace java.util.concurrent
 		End Function
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Private Function uniHandleStage(Of V, T1 As V)(ByVal e As java.util.concurrent.Executor, ByVal f As java.util.function.BiFunction(Of T1)) As CompletableFuture(Of V)
+		Private Function uniHandleStage(Of V, T1 As V)(  e As java.util.concurrent.Executor,   f As java.util.function.BiFunction(Of T1)) As CompletableFuture(Of V)
 			If f Is Nothing Then Throw New NullPointerException
 			Dim d As New CompletableFuture(Of V)
 			If e IsNot Nothing OrElse (Not d.uniHandle(Me, f, Nothing)) Then
@@ -917,11 +917,11 @@ Namespace java.util.concurrent
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 			Friend fn As java.util.function.Function(Of ?, ? As T)
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Friend Sub New(Of T1 As T)(ByVal dep As CompletableFuture(Of T), ByVal src As CompletableFuture(Of T), ByVal fn As java.util.function.Function(Of T1))
+			Friend Sub New(Of T1 As T)(  dep As CompletableFuture(Of T),   src As CompletableFuture(Of T),   fn As java.util.function.Function(Of T1))
 				MyBase.New(Nothing, dep, src)
 				Me.fn = fn
 			End Sub
-			Friend Function tryFire(ByVal mode As Integer) As CompletableFuture(Of T) ' never ASYNC
+			Friend Function tryFire(  mode As Integer) As CompletableFuture(Of T) ' never ASYNC
 				' assert mode != ASYNC;
 				Dim d As CompletableFuture(Of T)
 				Dim a As CompletableFuture(Of T)
@@ -936,7 +936,7 @@ Namespace java.util.concurrent
 		End Class
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Friend Function uniExceptionally(Of T1 As T)(ByVal a As CompletableFuture(Of T), ByVal f As java.util.function.Function(Of T1), ByVal c As UniExceptionally(Of T)) As Boolean
+		Friend Function uniExceptionally(Of T1 As T)(  a As CompletableFuture(Of T),   f As java.util.function.Function(Of T1),   c As UniExceptionally(Of T)) As Boolean
 			Dim r As Object
 			Dim x As Throwable
 			r = a.result
@@ -957,7 +957,7 @@ Namespace java.util.concurrent
 			Return True
 		End Function
 
-		Private Function uniExceptionallyStage(Of T1 As T)(ByVal f As java.util.function.Function(Of T1)) As CompletableFuture(Of T)
+		Private Function uniExceptionallyStage(Of T1 As T)(  f As java.util.function.Function(Of T1)) As CompletableFuture(Of T)
 			If f Is Nothing Then Throw New NullPointerException
 			Dim d As New CompletableFuture(Of T)
 			If Not d.uniExceptionally(Me, f, Nothing) Then
@@ -972,10 +972,10 @@ Namespace java.util.concurrent
 		Friend NotInheritable Class UniRelay(Of T)
 			Inherits UniCompletion(Of T, T)
  ' for Compose
-			Friend Sub New(ByVal dep As CompletableFuture(Of T), ByVal src As CompletableFuture(Of T))
+			Friend Sub New(  dep As CompletableFuture(Of T),   src As CompletableFuture(Of T))
 				MyBase.New(Nothing, dep, src)
 			End Sub
-			Friend Function tryFire(ByVal mode As Integer) As CompletableFuture(Of T)
+			Friend Function tryFire(  mode As Integer) As CompletableFuture(Of T)
 				Dim d As CompletableFuture(Of T)
 				Dim a As CompletableFuture(Of T)
 				d = dep
@@ -987,7 +987,7 @@ Namespace java.util.concurrent
 			End Function
 		End Class
 
-		Friend Function uniRelay(ByVal a As CompletableFuture(Of T)) As Boolean
+		Friend Function uniRelay(  a As CompletableFuture(Of T)) As Boolean
 			Dim r As Object
 			r = a.result
 			If a Is Nothing OrElse r Is Nothing Then Return False
@@ -1003,11 +1003,11 @@ Namespace java.util.concurrent
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 			Friend fn As java.util.function.Function(Of ?, ? As java.util.concurrent.CompletionStage(Of V))
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Friend Sub New(Of T1 As java.util.concurrent.CompletionStage(Of V)(ByVal executor As java.util.concurrent.Executor, ByVal dep As CompletableFuture(Of V), ByVal src As CompletableFuture(Of T), ByVal fn As java.util.function.Function(Of T1))
+			Friend Sub New(Of T1 As java.util.concurrent.CompletionStage(Of V)(  executor As java.util.concurrent.Executor,   dep As CompletableFuture(Of V),   src As CompletableFuture(Of T),   fn As java.util.function.Function(Of T1))
 				MyBase.New(executor, dep, src)
 				Me.fn = fn
 			End Sub
-			Friend Function tryFire(ByVal mode As Integer) As CompletableFuture(Of V)
+			Friend Function tryFire(  mode As Integer) As CompletableFuture(Of V)
 				Dim d As CompletableFuture(Of V)
 				Dim a As CompletableFuture(Of T)
 				d = dep
@@ -1021,7 +1021,7 @@ Namespace java.util.concurrent
 		End Class
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Friend Function uniCompose(Of S, T1 As java.util.concurrent.CompletionStage(Of T)(ByVal a As CompletableFuture(Of S), ByVal f As java.util.function.Function(Of T1), ByVal c As UniCompose(Of S, T)) As Boolean
+		Friend Function uniCompose(Of S, T1 As java.util.concurrent.CompletionStage(Of T)(  a As CompletableFuture(Of S),   f As java.util.function.Function(Of T1),   c As UniCompose(Of S, T)) As Boolean
 			Dim r As Object
 			Dim x As Throwable
 			r = a.result
@@ -1055,7 +1055,7 @@ Namespace java.util.concurrent
 		End Function
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Private Function uniComposeStage(Of V, T1 As java.util.concurrent.CompletionStage(Of V)(ByVal e As java.util.concurrent.Executor, ByVal f As java.util.function.Function(Of T1)) As CompletableFuture(Of V)
+		Private Function uniComposeStage(Of V, T1 As java.util.concurrent.CompletionStage(Of V)(  e As java.util.concurrent.Executor,   f As java.util.function.Function(Of T1)) As CompletableFuture(Of V)
 			If f Is Nothing Then Throw New NullPointerException
 			Dim r As Object
 			Dim x As Throwable
@@ -1098,7 +1098,7 @@ Namespace java.util.concurrent
 			Inherits UniCompletion(Of T, V)
 
 			Friend snd As CompletableFuture(Of U) ' second source for action
-			Friend Sub New(ByVal executor As java.util.concurrent.Executor, ByVal dep As CompletableFuture(Of V), ByVal src As CompletableFuture(Of T), ByVal snd As CompletableFuture(Of U))
+			Friend Sub New(  executor As java.util.concurrent.Executor,   dep As CompletableFuture(Of V),   src As CompletableFuture(Of T),   snd As CompletableFuture(Of U))
 				MyBase.New(executor, dep, src)
 				Me.snd = snd
 			End Sub
@@ -1112,11 +1112,11 @@ Namespace java.util.concurrent
 
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 			Friend base As BiCompletion(Of ?, ?, ?)
-			Friend Sub New(Of T1)(ByVal base As BiCompletion(Of T1))
+			Friend Sub New(Of T1)(  base As BiCompletion(Of T1))
 				Me.base = base
 			End Sub
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-			Friend NotOverridable Overrides Function tryFire(ByVal mode As Integer) As CompletableFuture(Of ?)
+			Friend NotOverridable Overrides Function tryFire(  mode As Integer) As CompletableFuture(Of ?)
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 				Dim c As BiCompletion(Of ?, ?, ?)
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
@@ -1139,7 +1139,7 @@ Namespace java.util.concurrent
 
 		''' <summary>
 		''' Pushes completion to this and b unless both done. </summary>
-		Friend Sub bipush(Of T1, T2)(ByVal b As CompletableFuture(Of T1), ByVal c As BiCompletion(Of T2))
+		Friend Sub bipush(Of T1, T2)(  b As CompletableFuture(Of T1),   c As BiCompletion(Of T2))
 			If c IsNot Nothing Then
 				Dim r As Object
 				r = result
@@ -1158,7 +1158,7 @@ Namespace java.util.concurrent
 
 		''' <summary>
 		''' Post-processing after successful BiCompletion tryFire. </summary>
-		Friend Function postFire(Of T1, T2)(ByVal a As CompletableFuture(Of T1), ByVal b As CompletableFuture(Of T2), ByVal mode As Integer) As CompletableFuture(Of T)
+		Friend Function postFire(Of T1, T2)(  a As CompletableFuture(Of T1),   b As CompletableFuture(Of T2),   mode As Integer) As CompletableFuture(Of T)
 			If b IsNot Nothing AndAlso b.stack IsNot Nothing Then ' clean second source
 				If mode < 0 OrElse b.result Is Nothing Then
 					b.cleanStack()
@@ -1177,11 +1177,11 @@ Namespace java.util.concurrent
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 			Friend fn As java.util.function.BiFunction(Of ?, ?, ? As V)
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Friend Sub New(Of T1 As V)(ByVal executor As java.util.concurrent.Executor, ByVal dep As CompletableFuture(Of V), ByVal src As CompletableFuture(Of T), ByVal snd As CompletableFuture(Of U), ByVal fn As java.util.function.BiFunction(Of T1))
+			Friend Sub New(Of T1 As V)(  executor As java.util.concurrent.Executor,   dep As CompletableFuture(Of V),   src As CompletableFuture(Of T),   snd As CompletableFuture(Of U),   fn As java.util.function.BiFunction(Of T1))
 				MyBase.New(executor, dep, src, snd)
 				Me.fn = fn
 			End Sub
-			Friend Function tryFire(ByVal mode As Integer) As CompletableFuture(Of V)
+			Friend Function tryFire(  mode As Integer) As CompletableFuture(Of V)
 				Dim d As CompletableFuture(Of V)
 				Dim a As CompletableFuture(Of T)
 				Dim b As CompletableFuture(Of U)
@@ -1198,7 +1198,7 @@ Namespace java.util.concurrent
 		End Class
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Friend Function biApply(Of R, S, T1 As T)(ByVal a As CompletableFuture(Of R), ByVal b As CompletableFuture(Of S), ByVal f As java.util.function.BiFunction(Of T1), ByVal c As BiApply(Of R, S, T)) As Boolean
+		Friend Function biApply(Of R, S, T1 As T)(  a As CompletableFuture(Of R),   b As CompletableFuture(Of S),   f As java.util.function.BiFunction(Of T1),   c As BiApply(Of R, S, T)) As Boolean
 			Dim r, s As Object
 			Dim x As Throwable
 			r = a.result
@@ -1237,7 +1237,7 @@ Namespace java.util.concurrent
 		End Function
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Private Function biApplyStage(Of U, V, T1 As V)(ByVal e As java.util.concurrent.Executor, ByVal o As java.util.concurrent.CompletionStage(Of U), ByVal f As java.util.function.BiFunction(Of T1)) As CompletableFuture(Of V)
+		Private Function biApplyStage(Of U, V, T1 As V)(  e As java.util.concurrent.Executor,   o As java.util.concurrent.CompletionStage(Of U),   f As java.util.function.BiFunction(Of T1)) As CompletableFuture(Of V)
 			Dim b As CompletableFuture(Of U)
 			b = o.toCompletableFuture()
 			If f Is Nothing OrElse b Is Nothing Then Throw New NullPointerException
@@ -1258,11 +1258,11 @@ Namespace java.util.concurrent
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 			Friend fn As java.util.function.BiConsumer(Of ?, ?)
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Friend Sub New(Of T1)(ByVal executor As java.util.concurrent.Executor, ByVal dep As CompletableFuture(Of Void), ByVal src As CompletableFuture(Of T), ByVal snd As CompletableFuture(Of U), ByVal fn As java.util.function.BiConsumer(Of T1))
+			Friend Sub New(Of T1)(  executor As java.util.concurrent.Executor,   dep As CompletableFuture(Of Void),   src As CompletableFuture(Of T),   snd As CompletableFuture(Of U),   fn As java.util.function.BiConsumer(Of T1))
 				MyBase.New(executor, dep, src, snd)
 				Me.fn = fn
 			End Sub
-			Friend Function tryFire(ByVal mode As Integer) As CompletableFuture(Of Void)
+			Friend Function tryFire(  mode As Integer) As CompletableFuture(Of Void)
 				Dim d As CompletableFuture(Of Void)
 				Dim a As CompletableFuture(Of T)
 				Dim b As CompletableFuture(Of U)
@@ -1279,7 +1279,7 @@ Namespace java.util.concurrent
 		End Class
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Friend Function biAccept(Of R, S, T1)(ByVal a As CompletableFuture(Of R), ByVal b As CompletableFuture(Of S), ByVal f As java.util.function.BiConsumer(Of T1), ByVal c As BiAccept(Of R, S)) As Boolean
+		Friend Function biAccept(Of R, S, T1)(  a As CompletableFuture(Of R),   b As CompletableFuture(Of S),   f As java.util.function.BiConsumer(Of T1),   c As BiAccept(Of R, S)) As Boolean
 			Dim r, s As Object
 			Dim x As Throwable
 			r = a.result
@@ -1319,7 +1319,7 @@ Namespace java.util.concurrent
 		End Function
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Private Function biAcceptStage(Of U, T1)(ByVal e As java.util.concurrent.Executor, ByVal o As java.util.concurrent.CompletionStage(Of U), ByVal f As java.util.function.BiConsumer(Of T1)) As CompletableFuture(Of Void)
+		Private Function biAcceptStage(Of U, T1)(  e As java.util.concurrent.Executor,   o As java.util.concurrent.CompletionStage(Of U),   f As java.util.function.BiConsumer(Of T1)) As CompletableFuture(Of Void)
 			Dim b As CompletableFuture(Of U)
 			b = o.toCompletableFuture()
 			If f Is Nothing OrElse b Is Nothing Then Throw New NullPointerException
@@ -1337,11 +1337,11 @@ Namespace java.util.concurrent
 			Inherits BiCompletion(Of T, U, Void)
 
 			Friend fn As Runnable
-			Friend Sub New(ByVal executor As java.util.concurrent.Executor, ByVal dep As CompletableFuture(Of Void), ByVal src As CompletableFuture(Of T), ByVal snd As CompletableFuture(Of U), ByVal fn As Runnable)
+			Friend Sub New(  executor As java.util.concurrent.Executor,   dep As CompletableFuture(Of Void),   src As CompletableFuture(Of T),   snd As CompletableFuture(Of U),   fn As Runnable)
 				MyBase.New(executor, dep, src, snd)
 				Me.fn = fn
 			End Sub
-			Friend Function tryFire(ByVal mode As Integer) As CompletableFuture(Of Void)
+			Friend Function tryFire(  mode As Integer) As CompletableFuture(Of Void)
 				Dim d As CompletableFuture(Of Void)
 				Dim a As CompletableFuture(Of T)
 				Dim b As CompletableFuture(Of U)
@@ -1357,7 +1357,7 @@ Namespace java.util.concurrent
 			End Function
 		End Class
 
-		Friend Function biRun(Of T1, T2, T3)(ByVal a As CompletableFuture(Of T1), ByVal b As CompletableFuture(Of T2), ByVal f As Runnable, ByVal c As BiRun(Of T3)) As Boolean
+		Friend Function biRun(Of T1, T2, T3)(  a As CompletableFuture(Of T1),   b As CompletableFuture(Of T2),   f As Runnable,   c As BiRun(Of T3)) As Boolean
 			Dim r, s As Object
 			Dim x As Throwable
 			r = a.result
@@ -1385,7 +1385,7 @@ Namespace java.util.concurrent
 			Return True
 		End Function
 
-		Private Function biRunStage(Of T1)(ByVal e As java.util.concurrent.Executor, ByVal o As java.util.concurrent.CompletionStage(Of T1), ByVal f As Runnable) As CompletableFuture(Of Void)
+		Private Function biRunStage(Of T1)(  e As java.util.concurrent.Executor,   o As java.util.concurrent.CompletionStage(Of T1),   f As Runnable) As CompletableFuture(Of Void)
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 			Dim b As CompletableFuture(Of ?)
 			b = o.toCompletableFuture()
@@ -1404,10 +1404,10 @@ Namespace java.util.concurrent
 		Friend NotInheritable Class BiRelay(Of T, U)
 			Inherits BiCompletion(Of T, U, Void)
  ' for And
-			Friend Sub New(ByVal dep As CompletableFuture(Of Void), ByVal src As CompletableFuture(Of T), ByVal snd As CompletableFuture(Of U))
+			Friend Sub New(  dep As CompletableFuture(Of Void),   src As CompletableFuture(Of T),   snd As CompletableFuture(Of U))
 				MyBase.New(Nothing, dep, src, snd)
 			End Sub
-			Friend Function tryFire(ByVal mode As Integer) As CompletableFuture(Of Void)
+			Friend Function tryFire(  mode As Integer) As CompletableFuture(Of Void)
 				Dim d As CompletableFuture(Of Void)
 				Dim a As CompletableFuture(Of T)
 				Dim b As CompletableFuture(Of U)
@@ -1422,7 +1422,7 @@ Namespace java.util.concurrent
 			End Function
 		End Class
 
-		Friend Overridable Function biRelay(Of T1, T2)(ByVal a As CompletableFuture(Of T1), ByVal b As CompletableFuture(Of T2)) As Boolean
+		Friend Overridable Function biRelay(Of T1, T2)(  a As CompletableFuture(Of T1),   b As CompletableFuture(Of T2)) As Boolean
 			Dim r, s As Object
 			Dim x As Throwable
 			r = a.result
@@ -1446,7 +1446,7 @@ Namespace java.util.concurrent
 
 		''' <summary>
 		''' Recursively constructs a tree of completions. </summary>
-		Shared Function andTree(Of T1)(ByVal cfs As CompletableFuture(Of T1)(), ByVal lo As Integer, ByVal hi As Integer) As CompletableFuture(Of Void)
+		Shared Function andTree(Of T1)(  cfs As CompletableFuture(Of T1)(),   lo As Integer,   hi As Integer) As CompletableFuture(Of Void)
 			Dim d As New CompletableFuture(Of Void)
 			If lo > hi Then ' empty
 				d.result = NIL
@@ -1471,7 +1471,7 @@ Namespace java.util.concurrent
 
 		''' <summary>
 		''' Pushes completion to this and b unless either done. </summary>
-		Friend Sub orpush(Of T1, T2)(ByVal b As CompletableFuture(Of T1), ByVal c As BiCompletion(Of T2))
+		Friend Sub orpush(Of T1, T2)(  b As CompletableFuture(Of T1),   c As BiCompletion(Of T2))
 			If c IsNot Nothing Then
 				Do While (b Is Nothing OrElse b.result Is Nothing) AndAlso result Is Nothing
 					If tryPushStack(c) Then
@@ -1496,11 +1496,11 @@ Namespace java.util.concurrent
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 			Friend fn As java.util.function.Function(Of ?, ? As V)
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Friend Sub New(Of T1 As V)(ByVal executor As java.util.concurrent.Executor, ByVal dep As CompletableFuture(Of V), ByVal src As CompletableFuture(Of T), ByVal snd As CompletableFuture(Of U), ByVal fn As java.util.function.Function(Of T1))
+			Friend Sub New(Of T1 As V)(  executor As java.util.concurrent.Executor,   dep As CompletableFuture(Of V),   src As CompletableFuture(Of T),   snd As CompletableFuture(Of U),   fn As java.util.function.Function(Of T1))
 				MyBase.New(executor, dep, src, snd)
 				Me.fn = fn
 			End Sub
-			Friend Function tryFire(ByVal mode As Integer) As CompletableFuture(Of V)
+			Friend Function tryFire(  mode As Integer) As CompletableFuture(Of V)
 				Dim d As CompletableFuture(Of V)
 				Dim a As CompletableFuture(Of T)
 				Dim b As CompletableFuture(Of U)
@@ -1517,7 +1517,7 @@ Namespace java.util.concurrent
 		End Class
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Friend Function orApply(Of R, S As R, T1 As T)(ByVal a As CompletableFuture(Of R), ByVal b As CompletableFuture(Of S), ByVal f As java.util.function.Function(Of T1), ByVal c As OrApply(Of R, S, T)) As Boolean
+		Friend Function orApply(Of R, S As R, T1 As T)(  a As CompletableFuture(Of R),   b As CompletableFuture(Of S),   f As java.util.function.Function(Of T1),   c As OrApply(Of R, S, T)) As Boolean
 			Dim r As Object
 			Dim x As Throwable
 			r = a.result
@@ -1546,7 +1546,7 @@ Namespace java.util.concurrent
 		End Function
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Private Function orApplyStage(Of U As T, V, T1 As V)(ByVal e As java.util.concurrent.Executor, ByVal o As java.util.concurrent.CompletionStage(Of U), ByVal f As java.util.function.Function(Of T1)) As CompletableFuture(Of V)
+		Private Function orApplyStage(Of U As T, V, T1 As V)(  e As java.util.concurrent.Executor,   o As java.util.concurrent.CompletionStage(Of U),   f As java.util.function.Function(Of T1)) As CompletableFuture(Of V)
 			Dim b As CompletableFuture(Of U)
 			b = o.toCompletableFuture()
 			If f Is Nothing OrElse b Is Nothing Then Throw New NullPointerException
@@ -1567,11 +1567,11 @@ Namespace java.util.concurrent
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 			Friend fn As java.util.function.Consumer(Of ?)
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Friend Sub New(Of T1)(ByVal executor As java.util.concurrent.Executor, ByVal dep As CompletableFuture(Of Void), ByVal src As CompletableFuture(Of T), ByVal snd As CompletableFuture(Of U), ByVal fn As java.util.function.Consumer(Of T1))
+			Friend Sub New(Of T1)(  executor As java.util.concurrent.Executor,   dep As CompletableFuture(Of Void),   src As CompletableFuture(Of T),   snd As CompletableFuture(Of U),   fn As java.util.function.Consumer(Of T1))
 				MyBase.New(executor, dep, src, snd)
 				Me.fn = fn
 			End Sub
-			Friend Function tryFire(ByVal mode As Integer) As CompletableFuture(Of Void)
+			Friend Function tryFire(  mode As Integer) As CompletableFuture(Of Void)
 				Dim d As CompletableFuture(Of Void)
 				Dim a As CompletableFuture(Of T)
 				Dim b As CompletableFuture(Of U)
@@ -1588,7 +1588,7 @@ Namespace java.util.concurrent
 		End Class
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Friend Function orAccept(Of R, S As R, T1)(ByVal a As CompletableFuture(Of R), ByVal b As CompletableFuture(Of S), ByVal f As java.util.function.Consumer(Of T1), ByVal c As OrAccept(Of R, S)) As Boolean
+		Friend Function orAccept(Of R, S As R, T1)(  a As CompletableFuture(Of R),   b As CompletableFuture(Of S),   f As java.util.function.Consumer(Of T1),   c As OrAccept(Of R, S)) As Boolean
 			Dim r As Object
 			Dim x As Throwable
 			r = a.result
@@ -1618,7 +1618,7 @@ Namespace java.util.concurrent
 		End Function
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Private Function orAcceptStage(Of U As T, T1)(ByVal e As java.util.concurrent.Executor, ByVal o As java.util.concurrent.CompletionStage(Of U), ByVal f As java.util.function.Consumer(Of T1)) As CompletableFuture(Of Void)
+		Private Function orAcceptStage(Of U As T, T1)(  e As java.util.concurrent.Executor,   o As java.util.concurrent.CompletionStage(Of U),   f As java.util.function.Consumer(Of T1)) As CompletableFuture(Of Void)
 			Dim b As CompletableFuture(Of U)
 			b = o.toCompletableFuture()
 			If f Is Nothing OrElse b Is Nothing Then Throw New NullPointerException
@@ -1636,11 +1636,11 @@ Namespace java.util.concurrent
 			Inherits BiCompletion(Of T, U, Void)
 
 			Friend fn As Runnable
-			Friend Sub New(ByVal executor As java.util.concurrent.Executor, ByVal dep As CompletableFuture(Of Void), ByVal src As CompletableFuture(Of T), ByVal snd As CompletableFuture(Of U), ByVal fn As Runnable)
+			Friend Sub New(  executor As java.util.concurrent.Executor,   dep As CompletableFuture(Of Void),   src As CompletableFuture(Of T),   snd As CompletableFuture(Of U),   fn As Runnable)
 				MyBase.New(executor, dep, src, snd)
 				Me.fn = fn
 			End Sub
-			Friend Function tryFire(ByVal mode As Integer) As CompletableFuture(Of Void)
+			Friend Function tryFire(  mode As Integer) As CompletableFuture(Of Void)
 				Dim d As CompletableFuture(Of Void)
 				Dim a As CompletableFuture(Of T)
 				Dim b As CompletableFuture(Of U)
@@ -1656,7 +1656,7 @@ Namespace java.util.concurrent
 			End Function
 		End Class
 
-		Friend Function orRun(Of T1, T2, T3)(ByVal a As CompletableFuture(Of T1), ByVal b As CompletableFuture(Of T2), ByVal f As Runnable, ByVal c As OrRun(Of T3)) As Boolean
+		Friend Function orRun(Of T1, T2, T3)(  a As CompletableFuture(Of T1),   b As CompletableFuture(Of T2),   f As Runnable,   c As OrRun(Of T3)) As Boolean
 			Dim r As Object
 			Dim x As Throwable
 			r = a.result
@@ -1679,7 +1679,7 @@ Namespace java.util.concurrent
 			Return True
 		End Function
 
-		Private Function orRunStage(Of T1)(ByVal e As java.util.concurrent.Executor, ByVal o As java.util.concurrent.CompletionStage(Of T1), ByVal f As Runnable) As CompletableFuture(Of Void)
+		Private Function orRunStage(Of T1)(  e As java.util.concurrent.Executor,   o As java.util.concurrent.CompletionStage(Of T1),   f As Runnable) As CompletableFuture(Of Void)
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 			Dim b As CompletableFuture(Of ?)
 			b = o.toCompletableFuture()
@@ -1698,10 +1698,10 @@ Namespace java.util.concurrent
 		Friend NotInheritable Class OrRelay(Of T, U)
 			Inherits BiCompletion(Of T, U, Object)
  ' for Or
-			Friend Sub New(ByVal dep As CompletableFuture(Of Object), ByVal src As CompletableFuture(Of T), ByVal snd As CompletableFuture(Of U))
+			Friend Sub New(  dep As CompletableFuture(Of Object),   src As CompletableFuture(Of T),   snd As CompletableFuture(Of U))
 				MyBase.New(Nothing, dep, src, snd)
 			End Sub
-			Friend Function tryFire(ByVal mode As Integer) As CompletableFuture(Of Object)
+			Friend Function tryFire(  mode As Integer) As CompletableFuture(Of Object)
 				Dim d As CompletableFuture(Of Object)
 				Dim a As CompletableFuture(Of T)
 				Dim b As CompletableFuture(Of U)
@@ -1716,7 +1716,7 @@ Namespace java.util.concurrent
 			End Function
 		End Class
 
-		Friend Function orRelay(Of T1, T2)(ByVal a As CompletableFuture(Of T1), ByVal b As CompletableFuture(Of T2)) As Boolean
+		Friend Function orRelay(Of T1, T2)(  a As CompletableFuture(Of T1),   b As CompletableFuture(Of T2)) As Boolean
 			Dim r As Object
 			r = a.result
 			r = b.result
@@ -1727,7 +1727,7 @@ Namespace java.util.concurrent
 
 		''' <summary>
 		''' Recursively constructs a tree of completions. </summary>
-		Shared Function orTree(Of T1)(ByVal cfs As CompletableFuture(Of T1)(), ByVal lo As Integer, ByVal hi As Integer) As CompletableFuture(Of Object)
+		Shared Function orTree(Of T1)(  cfs As CompletableFuture(Of T1)(),   lo As Integer,   hi As Integer) As CompletableFuture(Of Object)
 			Dim d As New CompletableFuture(Of Object)
 			If lo <= hi Then
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
@@ -1755,7 +1755,7 @@ Namespace java.util.concurrent
 
 			Friend dep As CompletableFuture(Of T)
 			Friend fn As java.util.function.Supplier(Of T)
-			Friend Sub New(ByVal dep As CompletableFuture(Of T), ByVal fn As java.util.function.Supplier(Of T))
+			Friend Sub New(  dep As CompletableFuture(Of T),   fn As java.util.function.Supplier(Of T))
 				Me.dep = dep
 				Me.fn = fn
 			End Sub
@@ -1764,7 +1764,7 @@ Namespace java.util.concurrent
 				Get
 					Return Nothing
 				End Get
-				Set(ByVal v As Void)
+				Set(  v As Void)
 				End Set
 			End Property
 			Public Function exec() As Boolean
@@ -1792,7 +1792,7 @@ Namespace java.util.concurrent
 			End Sub
 		End Class
 
-		Shared Function asyncSupplyStage(Of U)(ByVal e As java.util.concurrent.Executor, ByVal f As java.util.function.Supplier(Of U)) As CompletableFuture(Of U)
+		Shared Function asyncSupplyStage(Of U)(  e As java.util.concurrent.Executor,   f As java.util.function.Supplier(Of U)) As CompletableFuture(Of U)
 			If f Is Nothing Then Throw New NullPointerException
 			Dim d As New CompletableFuture(Of U)
 			e.execute(New AsyncSupply(Of U)(d, f))
@@ -1806,7 +1806,7 @@ Namespace java.util.concurrent
 
 			Friend dep As CompletableFuture(Of Void)
 			Friend fn As Runnable
-			Friend Sub New(ByVal dep As CompletableFuture(Of Void), ByVal fn As Runnable)
+			Friend Sub New(  dep As CompletableFuture(Of Void),   fn As Runnable)
 				Me.dep = dep
 				Me.fn = fn
 			End Sub
@@ -1815,7 +1815,7 @@ Namespace java.util.concurrent
 				Get
 					Return Nothing
 				End Get
-				Set(ByVal v As Void)
+				Set(  v As Void)
 				End Set
 			End Property
 			Public Function exec() As Boolean
@@ -1844,7 +1844,7 @@ Namespace java.util.concurrent
 			End Sub
 		End Class
 
-		Shared Function asyncRunStage(ByVal e As java.util.concurrent.Executor, ByVal f As Runnable) As CompletableFuture(Of Void)
+		Shared Function asyncRunStage(  e As java.util.concurrent.Executor,   f As Runnable) As CompletableFuture(Of Void)
 			If f Is Nothing Then Throw New NullPointerException
 			Dim d As New CompletableFuture(Of Void)
 			e.execute(New AsyncRun(d, f))
@@ -1870,14 +1870,14 @@ Namespace java.util.concurrent
 'JAVA TO VB CONVERTER TODO TASK: There is no VB equivalent to 'volatile':
 			Friend thread_Renamed As Thread
 
-			Friend Sub New(ByVal interruptible As Boolean, ByVal nanos As Long, ByVal deadline As Long)
+			Friend Sub New(  interruptible As Boolean,   nanos As Long,   deadline As Long)
 				Me.thread_Renamed = Thread.CurrentThread
 				Me.interruptControl = If(interruptible, 1, 0)
 				Me.nanos = nanos
 				Me.deadline = deadline
 			End Sub
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-			Friend NotOverridable Overrides Function tryFire(ByVal ignore As Integer) As CompletableFuture(Of ?)
+			Friend NotOverridable Overrides Function tryFire(  ignore As Integer) As CompletableFuture(Of ?)
 				Dim w As Thread ' no need to atomically claim
 				w = thread_Renamed
 				If w IsNot Nothing Then
@@ -1923,7 +1923,7 @@ Namespace java.util.concurrent
 		''' Returns raw result after waiting, or null if interruptible and
 		''' interrupted.
 		''' </summary>
-		Private Function waitingGet(ByVal interruptible As Boolean) As Object
+		Private Function waitingGet(  interruptible As Boolean) As Object
 			Dim q As Signaller = Nothing
 			Dim queued As Boolean = False
 			Dim spins As Integer = -1
@@ -1969,7 +1969,7 @@ Namespace java.util.concurrent
 		''' Returns raw result after waiting, or null if interrupted, or
 		''' throws TimeoutException on timeout.
 		''' </summary>
-		Private Function timedGet(ByVal nanos As Long) As Object
+		Private Function timedGet(  nanos As Long) As Object
 			If Thread.interrupted() Then Return Nothing
 			If nanos <= 0L Then Throw New java.util.concurrent.TimeoutException
 			Dim d As Long = System.nanoTime() + nanos
@@ -2013,7 +2013,7 @@ Namespace java.util.concurrent
 		''' <summary>
 		''' Creates a new complete CompletableFuture with given encoded result.
 		''' </summary>
-		Private Sub New(ByVal r As Object)
+		Private Sub New(  r As Object)
 			Me.result = r
 		End Sub
 
@@ -2026,7 +2026,7 @@ Namespace java.util.concurrent
 		''' to complete the returned CompletableFuture </param>
 		''' @param <U> the function's return type </param>
 		''' <returns> the new CompletableFuture </returns>
-		Public Shared Function supplyAsync(Of U)(ByVal supplier As java.util.function.Supplier(Of U)) As CompletableFuture(Of U)
+		Public Shared Function supplyAsync(Of U)(  supplier As java.util.function.Supplier(Of U)) As CompletableFuture(Of U)
 			Return asyncSupplyStage(asyncPool, supplier)
 		End Function
 
@@ -2040,7 +2040,7 @@ Namespace java.util.concurrent
 		''' <param name="executor"> the executor to use for asynchronous execution </param>
 		''' @param <U> the function's return type </param>
 		''' <returns> the new CompletableFuture </returns>
-		Public Shared Function supplyAsync(Of U)(ByVal supplier As java.util.function.Supplier(Of U), ByVal executor As java.util.concurrent.Executor) As CompletableFuture(Of U)
+		Public Shared Function supplyAsync(Of U)(  supplier As java.util.function.Supplier(Of U),   executor As java.util.concurrent.Executor) As CompletableFuture(Of U)
 			Return asyncSupplyStage(screenExecutor(executor), supplier)
 		End Function
 
@@ -2052,7 +2052,7 @@ Namespace java.util.concurrent
 		''' <param name="runnable"> the action to run before completing the
 		''' returned CompletableFuture </param>
 		''' <returns> the new CompletableFuture </returns>
-		Public Shared Function runAsync(ByVal runnable As Runnable) As CompletableFuture(Of Void)
+		Public Shared Function runAsync(  runnable As Runnable) As CompletableFuture(Of Void)
 			Return asyncRunStage(asyncPool, runnable)
 		End Function
 
@@ -2065,7 +2065,7 @@ Namespace java.util.concurrent
 		''' returned CompletableFuture </param>
 		''' <param name="executor"> the executor to use for asynchronous execution </param>
 		''' <returns> the new CompletableFuture </returns>
-		Public Shared Function runAsync(ByVal runnable As Runnable, ByVal executor As java.util.concurrent.Executor) As CompletableFuture(Of Void)
+		Public Shared Function runAsync(  runnable As Runnable,   executor As java.util.concurrent.Executor) As CompletableFuture(Of Void)
 			Return asyncRunStage(screenExecutor(executor), runnable)
 		End Function
 
@@ -2076,7 +2076,7 @@ Namespace java.util.concurrent
 		''' <param name="value"> the value </param>
 		''' @param <U> the type of the value </param>
 		''' <returns> the completed CompletableFuture </returns>
-		Public Shared Function completedFuture(Of U)(ByVal value As U) As CompletableFuture(Of U)
+		Public Shared Function completedFuture(Of U)(  value As U) As CompletableFuture(Of U)
 			Return New CompletableFuture(Of U)(If(value Is Nothing, NIL, value))
 		End Function
 
@@ -2118,7 +2118,7 @@ Namespace java.util.concurrent
 		''' <exception cref="InterruptedException"> if the current thread was interrupted
 		''' while waiting </exception>
 		''' <exception cref="TimeoutException"> if the wait timed out </exception>
-		Public Overridable Function [get](ByVal timeout As Long, ByVal unit As java.util.concurrent.TimeUnit) As T
+		Public Overridable Function [get](  timeout As Long,   unit As java.util.concurrent.TimeUnit) As T
 			Dim r As Object
 			Dim nanos As Long = unit.toNanos(timeout)
 'JAVA TO VB CONVERTER TODO TASK: Assignments within expressions are not supported in VB
@@ -2153,7 +2153,7 @@ Namespace java.util.concurrent
 		''' <exception cref="CancellationException"> if the computation was cancelled </exception>
 		''' <exception cref="CompletionException"> if this future completed
 		''' exceptionally or a completion computation threw an exception </exception>
-		Public Overridable Function getNow(ByVal valueIfAbsent As T) As T
+		Public Overridable Function getNow(  valueIfAbsent As T) As T
 			Dim r As Object
 'JAVA TO VB CONVERTER TODO TASK: Assignments within expressions are not supported in VB
 			Return If((r = result) Is Nothing, valueIfAbsent, reportJoin(r))
@@ -2166,7 +2166,7 @@ Namespace java.util.concurrent
 		''' <param name="value"> the result value </param>
 		''' <returns> {@code true} if this invocation caused this CompletableFuture
 		''' to transition to a completed state, else {@code false} </returns>
-		Public Overridable Function complete(ByVal value As T) As Boolean
+		Public Overridable Function complete(  value As T) As Boolean
 			Dim triggered As Boolean = completeValue(value)
 			postComplete()
 			Return triggered
@@ -2179,7 +2179,7 @@ Namespace java.util.concurrent
 		''' <param name="ex"> the exception </param>
 		''' <returns> {@code true} if this invocation caused this CompletableFuture
 		''' to transition to a completed state, else {@code false} </returns>
-		Public Overridable Function completeExceptionally(ByVal ex As Throwable) As Boolean
+		Public Overridable Function completeExceptionally(  ex As Throwable) As Boolean
 			If ex Is Nothing Then Throw New NullPointerException
 			Dim triggered As Boolean = internalComplete(New AltResult(ex))
 			postComplete()
@@ -2187,173 +2187,173 @@ Namespace java.util.concurrent
 		End Function
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Overridable Function thenApply(Of U, T1 As U)(ByVal fn As java.util.function.Function(Of T1)) As CompletableFuture(Of U)
+		Public Overridable Function thenApply(Of U, T1 As U)(  fn As java.util.function.Function(Of T1)) As CompletableFuture(Of U)
 			Return uniApplyStage(Nothing, fn)
 		End Function
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Overridable Function thenApplyAsync(Of U, T1 As U)(ByVal fn As java.util.function.Function(Of T1)) As CompletableFuture(Of U)
+		Public Overridable Function thenApplyAsync(Of U, T1 As U)(  fn As java.util.function.Function(Of T1)) As CompletableFuture(Of U)
 			Return uniApplyStage(asyncPool, fn)
 		End Function
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Overridable Function thenApplyAsync(Of U, T1 As U)(ByVal fn As java.util.function.Function(Of T1), ByVal executor As java.util.concurrent.Executor) As CompletableFuture(Of U)
+		Public Overridable Function thenApplyAsync(Of U, T1 As U)(  fn As java.util.function.Function(Of T1),   executor As java.util.concurrent.Executor) As CompletableFuture(Of U)
 			Return uniApplyStage(screenExecutor(executor), fn)
 		End Function
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Overridable Function thenAccept(Of T1)(ByVal action As java.util.function.Consumer(Of T1)) As CompletableFuture(Of Void)
+		Public Overridable Function thenAccept(Of T1)(  action As java.util.function.Consumer(Of T1)) As CompletableFuture(Of Void)
 			Return uniAcceptStage(Nothing, action)
 		End Function
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Overridable Function thenAcceptAsync(Of T1)(ByVal action As java.util.function.Consumer(Of T1)) As CompletableFuture(Of Void)
+		Public Overridable Function thenAcceptAsync(Of T1)(  action As java.util.function.Consumer(Of T1)) As CompletableFuture(Of Void)
 			Return uniAcceptStage(asyncPool, action)
 		End Function
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Overridable Function thenAcceptAsync(Of T1)(ByVal action As java.util.function.Consumer(Of T1), ByVal executor As java.util.concurrent.Executor) As CompletableFuture(Of Void)
+		Public Overridable Function thenAcceptAsync(Of T1)(  action As java.util.function.Consumer(Of T1),   executor As java.util.concurrent.Executor) As CompletableFuture(Of Void)
 			Return uniAcceptStage(screenExecutor(executor), action)
 		End Function
 
-		Public Overridable Function thenRun(ByVal action As Runnable) As CompletableFuture(Of Void)
+		Public Overridable Function thenRun(  action As Runnable) As CompletableFuture(Of Void)
 			Return uniRunStage(Nothing, action)
 		End Function
 
-		Public Overridable Function thenRunAsync(ByVal action As Runnable) As CompletableFuture(Of Void)
+		Public Overridable Function thenRunAsync(  action As Runnable) As CompletableFuture(Of Void)
 			Return uniRunStage(asyncPool, action)
 		End Function
 
-		Public Overridable Function thenRunAsync(ByVal action As Runnable, ByVal executor As java.util.concurrent.Executor) As CompletableFuture(Of Void)
+		Public Overridable Function thenRunAsync(  action As Runnable,   executor As java.util.concurrent.Executor) As CompletableFuture(Of Void)
 			Return uniRunStage(screenExecutor(executor), action)
 		End Function
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Overridable Function thenCombine(Of U, V, T1 As U, T2 As V)(ByVal other As java.util.concurrent.CompletionStage(Of T1), ByVal fn As java.util.function.BiFunction(Of T2)) As CompletableFuture(Of V)
+		Public Overridable Function thenCombine(Of U, V, T1 As U, T2 As V)(  other As java.util.concurrent.CompletionStage(Of T1),   fn As java.util.function.BiFunction(Of T2)) As CompletableFuture(Of V)
 			Return biApplyStage(Nothing, other, fn)
 		End Function
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Overridable Function thenCombineAsync(Of U, V, T1 As U, T2 As V)(ByVal other As java.util.concurrent.CompletionStage(Of T1), ByVal fn As java.util.function.BiFunction(Of T2)) As CompletableFuture(Of V)
+		Public Overridable Function thenCombineAsync(Of U, V, T1 As U, T2 As V)(  other As java.util.concurrent.CompletionStage(Of T1),   fn As java.util.function.BiFunction(Of T2)) As CompletableFuture(Of V)
 			Return biApplyStage(asyncPool, other, fn)
 		End Function
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Overridable Function thenCombineAsync(Of U, V, T1 As U, T2 As V)(ByVal other As java.util.concurrent.CompletionStage(Of T1), ByVal fn As java.util.function.BiFunction(Of T2), ByVal executor As java.util.concurrent.Executor) As CompletableFuture(Of V)
+		Public Overridable Function thenCombineAsync(Of U, V, T1 As U, T2 As V)(  other As java.util.concurrent.CompletionStage(Of T1),   fn As java.util.function.BiFunction(Of T2),   executor As java.util.concurrent.Executor) As CompletableFuture(Of V)
 			Return biApplyStage(screenExecutor(executor), other, fn)
 		End Function
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Overridable Function thenAcceptBoth(Of U, T1 As U, T2)(ByVal other As java.util.concurrent.CompletionStage(Of T1), ByVal action As java.util.function.BiConsumer(Of T2)) As CompletableFuture(Of Void)
+		Public Overridable Function thenAcceptBoth(Of U, T1 As U, T2)(  other As java.util.concurrent.CompletionStage(Of T1),   action As java.util.function.BiConsumer(Of T2)) As CompletableFuture(Of Void)
 			Return biAcceptStage(Nothing, other, action)
 		End Function
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Overridable Function thenAcceptBothAsync(Of U, T1 As U, T2)(ByVal other As java.util.concurrent.CompletionStage(Of T1), ByVal action As java.util.function.BiConsumer(Of T2)) As CompletableFuture(Of Void)
+		Public Overridable Function thenAcceptBothAsync(Of U, T1 As U, T2)(  other As java.util.concurrent.CompletionStage(Of T1),   action As java.util.function.BiConsumer(Of T2)) As CompletableFuture(Of Void)
 			Return biAcceptStage(asyncPool, other, action)
 		End Function
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Overridable Function thenAcceptBothAsync(Of U, T1 As U, T2)(ByVal other As java.util.concurrent.CompletionStage(Of T1), ByVal action As java.util.function.BiConsumer(Of T2), ByVal executor As java.util.concurrent.Executor) As CompletableFuture(Of Void)
+		Public Overridable Function thenAcceptBothAsync(Of U, T1 As U, T2)(  other As java.util.concurrent.CompletionStage(Of T1),   action As java.util.function.BiConsumer(Of T2),   executor As java.util.concurrent.Executor) As CompletableFuture(Of Void)
 			Return biAcceptStage(screenExecutor(executor), other, action)
 		End Function
 
-		Public Overridable Function runAfterBoth(Of T1)(ByVal other As java.util.concurrent.CompletionStage(Of T1), ByVal action As Runnable) As CompletableFuture(Of Void)
+		Public Overridable Function runAfterBoth(Of T1)(  other As java.util.concurrent.CompletionStage(Of T1),   action As Runnable) As CompletableFuture(Of Void)
 			Return biRunStage(Nothing, other, action)
 		End Function
 
-		Public Overridable Function runAfterBothAsync(Of T1)(ByVal other As java.util.concurrent.CompletionStage(Of T1), ByVal action As Runnable) As CompletableFuture(Of Void)
+		Public Overridable Function runAfterBothAsync(Of T1)(  other As java.util.concurrent.CompletionStage(Of T1),   action As Runnable) As CompletableFuture(Of Void)
 			Return biRunStage(asyncPool, other, action)
 		End Function
 
-		Public Overridable Function runAfterBothAsync(Of T1)(ByVal other As java.util.concurrent.CompletionStage(Of T1), ByVal action As Runnable, ByVal executor As java.util.concurrent.Executor) As CompletableFuture(Of Void)
+		Public Overridable Function runAfterBothAsync(Of T1)(  other As java.util.concurrent.CompletionStage(Of T1),   action As Runnable,   executor As java.util.concurrent.Executor) As CompletableFuture(Of Void)
 			Return biRunStage(screenExecutor(executor), other, action)
 		End Function
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Overridable Function applyToEither(Of U, T1 As T, T2)(ByVal other As java.util.concurrent.CompletionStage(Of T1), ByVal fn As java.util.function.Function(Of T2)) As CompletableFuture(Of U)
+		Public Overridable Function applyToEither(Of U, T1 As T, T2)(  other As java.util.concurrent.CompletionStage(Of T1),   fn As java.util.function.Function(Of T2)) As CompletableFuture(Of U)
 			Return orApplyStage(Nothing, other, fn)
 		End Function
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Overridable Function applyToEitherAsync(Of U, T1 As T, T2)(ByVal other As java.util.concurrent.CompletionStage(Of T1), ByVal fn As java.util.function.Function(Of T2)) As CompletableFuture(Of U)
+		Public Overridable Function applyToEitherAsync(Of U, T1 As T, T2)(  other As java.util.concurrent.CompletionStage(Of T1),   fn As java.util.function.Function(Of T2)) As CompletableFuture(Of U)
 			Return orApplyStage(asyncPool, other, fn)
 		End Function
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Overridable Function applyToEitherAsync(Of U, T1 As T, T2)(ByVal other As java.util.concurrent.CompletionStage(Of T1), ByVal fn As java.util.function.Function(Of T2), ByVal executor As java.util.concurrent.Executor) As CompletableFuture(Of U)
+		Public Overridable Function applyToEitherAsync(Of U, T1 As T, T2)(  other As java.util.concurrent.CompletionStage(Of T1),   fn As java.util.function.Function(Of T2),   executor As java.util.concurrent.Executor) As CompletableFuture(Of U)
 			Return orApplyStage(screenExecutor(executor), other, fn)
 		End Function
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Overridable Function acceptEither(Of T1 As T, T2)(ByVal other As java.util.concurrent.CompletionStage(Of T1), ByVal action As java.util.function.Consumer(Of T2)) As CompletableFuture(Of Void)
+		Public Overridable Function acceptEither(Of T1 As T, T2)(  other As java.util.concurrent.CompletionStage(Of T1),   action As java.util.function.Consumer(Of T2)) As CompletableFuture(Of Void)
 			Return orAcceptStage(Nothing, other, action)
 		End Function
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Overridable Function acceptEitherAsync(Of T1 As T, T2)(ByVal other As java.util.concurrent.CompletionStage(Of T1), ByVal action As java.util.function.Consumer(Of T2)) As CompletableFuture(Of Void)
+		Public Overridable Function acceptEitherAsync(Of T1 As T, T2)(  other As java.util.concurrent.CompletionStage(Of T1),   action As java.util.function.Consumer(Of T2)) As CompletableFuture(Of Void)
 			Return orAcceptStage(asyncPool, other, action)
 		End Function
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Overridable Function acceptEitherAsync(Of T1 As T, T2)(ByVal other As java.util.concurrent.CompletionStage(Of T1), ByVal action As java.util.function.Consumer(Of T2), ByVal executor As java.util.concurrent.Executor) As CompletableFuture(Of Void)
+		Public Overridable Function acceptEitherAsync(Of T1 As T, T2)(  other As java.util.concurrent.CompletionStage(Of T1),   action As java.util.function.Consumer(Of T2),   executor As java.util.concurrent.Executor) As CompletableFuture(Of Void)
 			Return orAcceptStage(screenExecutor(executor), other, action)
 		End Function
 
-		Public Overridable Function runAfterEither(Of T1)(ByVal other As java.util.concurrent.CompletionStage(Of T1), ByVal action As Runnable) As CompletableFuture(Of Void)
+		Public Overridable Function runAfterEither(Of T1)(  other As java.util.concurrent.CompletionStage(Of T1),   action As Runnable) As CompletableFuture(Of Void)
 			Return orRunStage(Nothing, other, action)
 		End Function
 
-		Public Overridable Function runAfterEitherAsync(Of T1)(ByVal other As java.util.concurrent.CompletionStage(Of T1), ByVal action As Runnable) As CompletableFuture(Of Void)
+		Public Overridable Function runAfterEitherAsync(Of T1)(  other As java.util.concurrent.CompletionStage(Of T1),   action As Runnable) As CompletableFuture(Of Void)
 			Return orRunStage(asyncPool, other, action)
 		End Function
 
-		Public Overridable Function runAfterEitherAsync(Of T1)(ByVal other As java.util.concurrent.CompletionStage(Of T1), ByVal action As Runnable, ByVal executor As java.util.concurrent.Executor) As CompletableFuture(Of Void)
+		Public Overridable Function runAfterEitherAsync(Of T1)(  other As java.util.concurrent.CompletionStage(Of T1),   action As Runnable,   executor As java.util.concurrent.Executor) As CompletableFuture(Of Void)
 			Return orRunStage(screenExecutor(executor), other, action)
 		End Function
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Overridable Function thenCompose(Of U, T1 As java.util.concurrent.CompletionStage(Of U)(ByVal fn As java.util.function.Function(Of T1)) As CompletableFuture(Of U)
+		Public Overridable Function thenCompose(Of U, T1 As java.util.concurrent.CompletionStage(Of U)(  fn As java.util.function.Function(Of T1)) As CompletableFuture(Of U)
 			Return uniComposeStage(Nothing, fn)
 		End Function
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Overridable Function thenComposeAsync(Of U, T1 As java.util.concurrent.CompletionStage(Of U)(ByVal fn As java.util.function.Function(Of T1)) As CompletableFuture(Of U)
+		Public Overridable Function thenComposeAsync(Of U, T1 As java.util.concurrent.CompletionStage(Of U)(  fn As java.util.function.Function(Of T1)) As CompletableFuture(Of U)
 			Return uniComposeStage(asyncPool, fn)
 		End Function
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Overridable Function thenComposeAsync(Of U, T1 As java.util.concurrent.CompletionStage(Of U)(ByVal fn As java.util.function.Function(Of T1), ByVal executor As java.util.concurrent.Executor) As CompletableFuture(Of U)
+		Public Overridable Function thenComposeAsync(Of U, T1 As java.util.concurrent.CompletionStage(Of U)(  fn As java.util.function.Function(Of T1),   executor As java.util.concurrent.Executor) As CompletableFuture(Of U)
 			Return uniComposeStage(screenExecutor(executor), fn)
 		End Function
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Overridable Function whenComplete(Of T1)(ByVal action As java.util.function.BiConsumer(Of T1)) As CompletableFuture(Of T)
+		Public Overridable Function whenComplete(Of T1)(  action As java.util.function.BiConsumer(Of T1)) As CompletableFuture(Of T)
 			Return uniWhenCompleteStage(Nothing, action)
 		End Function
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Overridable Function whenCompleteAsync(Of T1)(ByVal action As java.util.function.BiConsumer(Of T1)) As CompletableFuture(Of T)
+		Public Overridable Function whenCompleteAsync(Of T1)(  action As java.util.function.BiConsumer(Of T1)) As CompletableFuture(Of T)
 			Return uniWhenCompleteStage(asyncPool, action)
 		End Function
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Overridable Function whenCompleteAsync(Of T1)(ByVal action As java.util.function.BiConsumer(Of T1), ByVal executor As java.util.concurrent.Executor) As CompletableFuture(Of T)
+		Public Overridable Function whenCompleteAsync(Of T1)(  action As java.util.function.BiConsumer(Of T1),   executor As java.util.concurrent.Executor) As CompletableFuture(Of T)
 			Return uniWhenCompleteStage(screenExecutor(executor), action)
 		End Function
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Overridable Function handle(Of U, T1 As U)(ByVal fn As java.util.function.BiFunction(Of T1)) As CompletableFuture(Of U)
+		Public Overridable Function handle(Of U, T1 As U)(  fn As java.util.function.BiFunction(Of T1)) As CompletableFuture(Of U)
 			Return uniHandleStage(Nothing, fn)
 		End Function
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Overridable Function handleAsync(Of U, T1 As U)(ByVal fn As java.util.function.BiFunction(Of T1)) As CompletableFuture(Of U)
+		Public Overridable Function handleAsync(Of U, T1 As U)(  fn As java.util.function.BiFunction(Of T1)) As CompletableFuture(Of U)
 			Return uniHandleStage(asyncPool, fn)
 		End Function
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Overridable Function handleAsync(Of U, T1 As U)(ByVal fn As java.util.function.BiFunction(Of T1), ByVal executor As java.util.concurrent.Executor) As CompletableFuture(Of U)
+		Public Overridable Function handleAsync(Of U, T1 As U)(  fn As java.util.function.BiFunction(Of T1),   executor As java.util.concurrent.Executor) As CompletableFuture(Of U)
 			Return uniHandleStage(screenExecutor(executor), fn)
 		End Function
 
@@ -2381,7 +2381,7 @@ Namespace java.util.concurrent
 		''' returned CompletableFuture if this CompletableFuture completed
 		''' exceptionally </param>
 		''' <returns> the new CompletableFuture </returns>
-		Public Overridable Function exceptionally(Of T1 As T)(ByVal fn As java.util.function.Function(Of T1)) As CompletableFuture(Of T)
+		Public Overridable Function exceptionally(Of T1 As T)(  fn As java.util.function.Function(Of T1)) As CompletableFuture(Of T)
 			Return uniExceptionallyStage(fn)
 		End Function
 
@@ -2409,7 +2409,7 @@ Namespace java.util.concurrent
 		''' given CompletableFutures complete </returns>
 		''' <exception cref="NullPointerException"> if the array or any of its elements are
 		''' {@code null} </exception>
-		Public Shared Function allOf(Of T1)(ParamArray ByVal cfs As CompletableFuture(Of T1)()) As CompletableFuture(Of Void)
+		Public Shared Function allOf(Of T1)(ParamArray   cfs As CompletableFuture(Of T1)()) As CompletableFuture(Of Void)
 			Return andTree(cfs, 0, cfs.Length - 1)
 		End Function
 
@@ -2427,7 +2427,7 @@ Namespace java.util.concurrent
 		''' one completes </returns>
 		''' <exception cref="NullPointerException"> if the array or any of its elements are
 		''' {@code null} </exception>
-		Public Shared Function anyOf(Of T1)(ParamArray ByVal cfs As CompletableFuture(Of T1)()) As CompletableFuture(Of Object)
+		Public Shared Function anyOf(Of T1)(ParamArray   cfs As CompletableFuture(Of T1)()) As CompletableFuture(Of Object)
 			Return orTree(cfs, 0, cfs.Length - 1)
 		End Function
 
@@ -2445,7 +2445,7 @@ Namespace java.util.concurrent
 		''' processing.
 		''' </param>
 		''' <returns> {@code true} if this task is now cancelled </returns>
-		Public Overridable Function cancel(ByVal mayInterruptIfRunning As Boolean) As Boolean
+		Public Overridable Function cancel(  mayInterruptIfRunning As Boolean) As Boolean
 			Dim cancelled_Renamed As Boolean = (result Is Nothing) AndAlso internalComplete(New AltResult(New java.util.concurrent.CancellationException))
 			postComplete()
 			Return cancelled_Renamed OrElse cancelled
@@ -2491,7 +2491,7 @@ Namespace java.util.concurrent
 		''' overwritten outcomes.
 		''' </summary>
 		''' <param name="value"> the completion value </param>
-		Public Overridable Sub obtrudeValue(ByVal value As T)
+		Public Overridable Sub obtrudeValue(  value As T)
 			result = If(value Is Nothing, NIL, value)
 			postComplete()
 		End Sub
@@ -2506,7 +2506,7 @@ Namespace java.util.concurrent
 		''' </summary>
 		''' <param name="ex"> the exception </param>
 		''' <exception cref="NullPointerException"> if the exception is null </exception>
-		Public Overridable Sub obtrudeException(ByVal ex As Throwable)
+		Public Overridable Sub obtrudeException(  ex As Throwable)
 			If ex Is Nothing Then Throw New NullPointerException
 			result = New AltResult(ex)
 			postComplete()

@@ -69,7 +69,7 @@ Namespace java.awt.image
 		''' <exception cref="IllegalArgumentException"> if the length of <code>data</code>
 		'''         is less than the product of <code>width</code> and
 		'''         <code>height</code> </exception>
-		Public Sub New(ByVal width As Integer, ByVal height As Integer, ByVal data As Single())
+		Public Sub New(  width As Integer,   height As Integer,   data As Single())
 			Me.width = width
 			Me.height = height
 			Me.xOrigin = (width-1)>>1
@@ -128,7 +128,7 @@ Namespace java.awt.image
 		'''         the kernel data in row major order </returns>
 		''' <exception cref="IllegalArgumentException"> if <code>data</code> is less
 		'''         than the size of this <code>Kernel</code> </exception>
-		Public Function getKernelData(ByVal data As Single()) As Single()
+		Public Function getKernelData(  data As Single()) As Single()
 			If data Is Nothing Then
 				data = New Single(Me.data.Length - 1){}
 			ElseIf data.Length < Me.data.Length Then

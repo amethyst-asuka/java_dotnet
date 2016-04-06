@@ -48,10 +48,10 @@ Namespace java.text
 		Public value As Integer
 		Public fwd As Boolean
 
-		Public Sub New(ByVal name As String, ByVal value As Integer)
+		Public Sub New(  name As String,   value As Integer)
 			Me.New(name, value, True)
 		End Sub
-		Public Sub New(ByVal name As String, ByVal value As Integer, ByVal fwd As Boolean)
+		Public Sub New(  name As String,   value As Integer,   fwd As Boolean)
 			Me.entryName = name
 			Me.value = value
 			Me.fwd = fwd

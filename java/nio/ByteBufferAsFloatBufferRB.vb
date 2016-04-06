@@ -38,7 +38,7 @@ Namespace java.nio
 
 
 
-		Friend Sub New(ByVal bb As ByteBuffer) ' package-private
+		Friend Sub New(  bb As ByteBuffer) ' package-private
 
 
 
@@ -55,7 +55,7 @@ Namespace java.nio
 
 		End Sub
 
-		Friend Sub New(ByVal bb As ByteBuffer, ByVal mark As Integer, ByVal pos As Integer, ByVal lim As Integer, ByVal cap As Integer, ByVal [off] As Integer)
+		Friend Sub New(  bb As ByteBuffer,   mark As Integer,   pos As Integer,   lim As Integer,   cap As Integer,   [off] As Integer)
 
 
 
@@ -114,7 +114,7 @@ Namespace java.nio
 
 
 
-		Public Overrides Function put(ByVal x As Single) As FloatBuffer
+		Public Overrides Function put(  x As Single) As FloatBuffer
 
 
 
@@ -123,7 +123,7 @@ Namespace java.nio
 
 		End Function
 
-		Public Overrides Function put(ByVal i As Integer, ByVal x As Single) As FloatBuffer
+		Public Overrides Function put(  i As Integer,   x As Single) As FloatBuffer
 
 
 

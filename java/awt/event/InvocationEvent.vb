@@ -166,7 +166,7 @@ Namespace java.awt.event
 		''' </exception>
 		''' <seealso cref= #getSource() </seealso>
 		''' <seealso cref= #InvocationEvent(Object, Runnable, Object, boolean) </seealso>
-		Public Sub New(ByVal source As Object, ByVal runnable As Runnable)
+		Public Sub New(  source As Object,   runnable As Runnable)
 			Me.New(source, INVOCATION_DEFAULT, runnable, Nothing, Nothing, False)
 		End Sub
 
@@ -203,7 +203,7 @@ Namespace java.awt.event
 		''' </exception>
 		''' <seealso cref= #getSource() </seealso>
 		''' <seealso cref=     #InvocationEvent(Object, int, Runnable, Object, boolean) </seealso>
-		Public Sub New(ByVal source As Object, ByVal runnable As Runnable, ByVal notifier As Object, ByVal catchThrowables As Boolean)
+		Public Sub New(  source As Object,   runnable As Runnable,   notifier As Object,   catchThrowables As Boolean)
 			Me.New(source, INVOCATION_DEFAULT, runnable, notifier, Nothing, catchThrowables)
 		End Sub
 
@@ -233,7 +233,7 @@ Namespace java.awt.event
 		'''                          Throwables to the EventDispatchThread's
 		'''                          dispatch loop </param>
 		''' <exception cref="IllegalArgumentException"> if <code>source</code> is null </exception>
-		Public Sub New(ByVal source As Object, ByVal runnable As Runnable, ByVal listener As Runnable, ByVal catchThrowables As Boolean)
+		Public Sub New(  source As Object,   runnable As Runnable,   listener As Runnable,   catchThrowables As Boolean)
 			Me.New(source, INVOCATION_DEFAULT, runnable, Nothing, listener, catchThrowables)
 		End Sub
 
@@ -268,11 +268,11 @@ Namespace java.awt.event
 		''' <exception cref="IllegalArgumentException"> if <code>source</code> is null </exception>
 		''' <seealso cref= #getSource() </seealso>
 		''' <seealso cref= #getID() </seealso>
-		Protected Friend Sub New(ByVal source As Object, ByVal id As Integer, ByVal runnable As Runnable, ByVal notifier As Object, ByVal catchThrowables As Boolean)
+		Protected Friend Sub New(  source As Object,   id As Integer,   runnable As Runnable,   notifier As Object,   catchThrowables As Boolean)
 			Me.New(source, id, runnable, notifier, Nothing, catchThrowables)
 		End Sub
 
-		Private Sub New(ByVal source As Object, ByVal id As Integer, ByVal runnable As Runnable, ByVal notifier As Object, ByVal listener As Runnable, ByVal catchThrowables As Boolean)
+		Private Sub New(  source As Object,   id As Integer,   runnable As Runnable,   notifier As Object,   listener As Runnable,   catchThrowables As Boolean)
 			MyBase.New(source, id)
 			Me.runnable = runnable
 			Me.notifier = notifier
@@ -379,7 +379,7 @@ Namespace java.awt.event
 		''' Called when the event was dispatched or disposed </summary>
 		''' <param name="dispatched"> true if the event was dispatched
 		'''                   false if the event was disposed </param>
-		Private Sub finishedDispatching(ByVal dispatched As Boolean)
+		Private Sub finishedDispatching(  dispatched As Boolean)
 			Me.dispatched = dispatched
 
 			If notifier IsNot Nothing Then

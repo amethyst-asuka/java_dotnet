@@ -182,7 +182,7 @@ Namespace java.nio
 
         ' For duplicates and slices
         '
-        Friend Sub New(ByVal db As sun.nio.ch.DirectBuffer, ByVal mark As Integer, ByVal pos As Integer, ByVal lim As Integer, ByVal cap As Integer, ByVal [off] As Integer) ' package-private
+        Friend Sub New(  db As sun.nio.ch.DirectBuffer,   mark As Integer,   pos As Integer,   lim As Integer,   cap As Integer,   [off] As Integer) ' package-private
 
             MyBase.New(mark, pos, lim, cap)
             address = db.address() + [off]
@@ -223,7 +223,7 @@ Namespace java.nio
             Return address
         End Function
 
-        Private Function ix(ByVal i As Integer) As Long
+        Private Function ix(  i As Integer) As Long
             Return address() + (CLng(i) << 1)
         End Function
 
@@ -231,17 +231,17 @@ Namespace java.nio
             Return (Bits.swap(unsafe.getChar(ix(nextGetIndex()))))
         End Function
 
-        Public Overrides Function [get](ByVal i As Integer) As Char
+        Public Overrides Function [get](  i As Integer) As Char
             Return (Bits.swap(unsafe.getChar(ix(checkIndex(i)))))
         End Function
 
 
-        Friend Overrides Function getUnchecked(ByVal i As Integer) As Char
+        Friend Overrides Function getUnchecked(  i As Integer) As Char
             Return (Bits.swap(unsafe.getChar(ix(i))))
         End Function
 
 
-        Public Overrides Function [get](ByVal dst As Char(), ByVal offset As Integer, ByVal length As Integer) As CharBuffer
+        Public Overrides Function [get](  dst As Char(),   offset As Integer,   length As Integer) As CharBuffer
 
             If (CLng(length) << 1) > Bits.JNI_COPY_TO_ARRAY_THRESHOLD Then
                 checkBounds(offset, length, dst.Length)
@@ -270,7 +270,7 @@ Namespace java.nio
 
 
 
-        Public Overrides Function put(ByVal x As Char) As CharBuffer
+        Public Overrides Function put(  x As Char) As CharBuffer
 
             unsafe.putChar(ix(nextPutIndex()), Bits.swap((x)))
             Return Me
@@ -279,7 +279,7 @@ Namespace java.nio
 
         End Function
 
-        Public Overrides Function put(ByVal i As Integer, ByVal x As Char) As CharBuffer
+        Public Overrides Function put(  i As Integer,   x As Char) As CharBuffer
 
             unsafe.putChar(ix(checkIndex(i)), Bits.swap((x)))
             Return Me
@@ -288,7 +288,7 @@ Namespace java.nio
 
         End Function
 
-        Public Overrides Function put(ByVal src As CharBuffer) As CharBuffer
+        Public Overrides Function put(  src As CharBuffer) As CharBuffer
 
             If TypeOf src Is DirectCharBufferS Then
                 If src Is Me Then Throw New IllegalArgumentException
@@ -327,7 +327,7 @@ Namespace java.nio
 
         End Function
 
-        Public Overrides Function put(ByVal src As Char(), ByVal offset As Integer, ByVal length As Integer) As CharBuffer
+        Public Overrides Function put(  src As Char(),   offset As Integer,   length As Integer) As CharBuffer
 
             If (CLng(length) << 1) > Bits.JNI_COPY_FROM_ARRAY_THRESHOLD Then
                 checkBounds(offset, length, src.Length)
@@ -386,7 +386,7 @@ Namespace java.nio
 
 
 
-        Public Overrides Function ToString(ByVal start As Integer, ByVal [end] As Integer) As String
+        Public Overrides Function ToString(  start As Integer,   [end] As Integer) As String
             If ([end] > limit()) OrElse (start > [end]) Then Throw New IndexOutOfBoundsException
             Try
                 Dim len As Integer = [end] - start
@@ -405,7 +405,7 @@ Namespace java.nio
 
         ' --- Methods to support CharSequence ---
 
-        Public Overrides Function subSequence(ByVal start As Integer, ByVal [end] As Integer) As CharBuffer
+        Public Overrides Function subSequence(  start As Integer,   [end] As Integer) As CharBuffer
             Dim pos As Integer = position()
             Dim lim As Integer = limit()
             Assert(pos <= lim)

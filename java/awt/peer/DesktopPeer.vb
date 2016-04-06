@@ -43,7 +43,7 @@ Namespace java.awt.peer
 		'''        current platform. </param>
 		''' <returns> {@code true} if the given action is supported on
 		'''         the current platform; {@code false} otherwise. </returns>
-		Function isSupported(ByVal action As java.awt.Desktop.Action) As Boolean
+		Function isSupported(  action As java.awt.Desktop.Action) As Boolean
 
 		''' <summary>
 		''' Launches the associated application to open the given file. The
@@ -53,7 +53,7 @@ Namespace java.awt.peer
 		''' <param name="file"> the given file. </param>
 		''' <exception cref="IOException"> If the given file has no associated application,
 		'''         or the associated application fails to be launched. </exception>
-		Sub open(ByVal file As java.io.File)
+		Sub open(  file As java.io.File)
 
 		''' <summary>
 		''' Launches the associated editor and opens the given file for editing. The
@@ -63,7 +63,7 @@ Namespace java.awt.peer
 		''' <param name="file"> the given file. </param>
 		''' <exception cref="IOException"> If the given file has no associated editor, or
 		'''         the associated application fails to be launched. </exception>
-		Sub edit(ByVal file As java.io.File)
+		Sub edit(  file As java.io.File)
 
 		''' <summary>
 		''' Prints the given file with the native desktop printing facility, using
@@ -72,7 +72,7 @@ Namespace java.awt.peer
 		''' <param name="file"> the given file. </param>
 		''' <exception cref="IOException"> If the given file has no associated application
 		'''         that can be used to print it. </exception>
-		Sub print(ByVal file As java.io.File)
+		Sub print(  file As java.io.File)
 
 		''' <summary>
 		''' Launches the mail composing window of the user default mail client,
@@ -85,7 +85,7 @@ Namespace java.awt.peer
 		'''        URL scheme</a> </param>
 		''' <exception cref="IOException"> If the user default mail client is not found,
 		'''         or it fails to be launched. </exception>
-		Sub mail(ByVal mailtoURL As java.net.URI)
+		Sub mail(  mailtoURL As java.net.URI)
 
 		''' <summary>
 		''' Launches the user default browser to display the given URI.
@@ -93,7 +93,7 @@ Namespace java.awt.peer
 		''' <param name="uri"> the given URI. </param>
 		''' <exception cref="IOException"> If the user default browser is not found,
 		'''         or it fails to be launched. </exception>
-		Sub browse(ByVal uri As java.net.URI)
+		Sub browse(  uri As java.net.URI)
 	End Interface
 
 End Namespace

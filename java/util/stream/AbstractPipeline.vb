@@ -157,7 +157,7 @@ Namespace java.util.stream
 		''' <seealso cref="StreamOpFlag"/> </param>
 		''' <param name="parallel"> True if the pipeline is parallel </param>
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-		Friend Sub New(Of T1 As java.util.Spliterator(Of ?)(ByVal source As java.util.function.Supplier(Of T1), ByVal sourceFlags As Integer, ByVal parallel As Boolean)
+		Friend Sub New(Of T1 As java.util.Spliterator(Of ?)(  source As java.util.function.Supplier(Of T1),   sourceFlags As Integer,   parallel As Boolean)
 			Me.previousStage = Nothing
 			Me.sourceSupplier = source
 			Me.sourceStage = Me
@@ -176,7 +176,7 @@ Namespace java.util.stream
 		''' <param name="sourceFlags"> the source flags for the stream source, described in
 		''' <seealso cref="StreamOpFlag"/> </param>
 		''' <param name="parallel"> {@code true} if the pipeline is parallel </param>
-		Friend Sub New(Of T1)(ByVal source As java.util.Spliterator(Of T1), ByVal sourceFlags As Integer, ByVal parallel As Boolean)
+		Friend Sub New(Of T1)(  source As java.util.Spliterator(Of T1),   sourceFlags As Integer,   parallel As Boolean)
 			Me.previousStage = Nothing
 			Me.sourceSpliterator_Renamed = source
 			Me.sourceStage = Me
@@ -195,7 +195,7 @@ Namespace java.util.stream
 		''' <param name="previousStage"> the upstream pipeline stage </param>
 		''' <param name="opFlags"> the operation flags for the new stage, described in
 		''' <seealso cref="StreamOpFlag"/> </param>
-		Friend Sub New(Of T1)(ByVal previousStage As AbstractPipeline(Of T1), ByVal opFlags As Integer)
+		Friend Sub New(Of T1)(  previousStage As AbstractPipeline(Of T1),   opFlags As Integer)
 			If previousStage.linkedOrConsumed Then Throw New IllegalStateException(MSG_STREAM_LINKED)
 			previousStage.linkedOrConsumed = True
 			previousStage.nextStage = Me
@@ -217,7 +217,7 @@ Namespace java.util.stream
 		''' @param <R> the type of result </param>
 		''' <param name="terminalOp"> the terminal operation to be applied to the pipeline. </param>
 		''' <returns> the result </returns>
-		Friend Function evaluate(Of R)(ByVal terminalOp As TerminalOp(Of E_OUT, R)) As R
+		Friend Function evaluate(Of R)(  terminalOp As TerminalOp(Of E_OUT, R)) As R
 			Debug.Assert(outputShape Is terminalOp.inputShape())
 			If linkedOrConsumed Then Throw New IllegalStateException(MSG_STREAM_LINKED)
 			linkedOrConsumed = True
@@ -231,7 +231,7 @@ Namespace java.util.stream
 		''' <param name="generator"> the array generator to be used to create array instances </param>
 		''' <returns> a flat array-backed Node that holds the collected output elements </returns>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Friend Function evaluateToArrayNode(ByVal generator As java.util.function.IntFunction(Of E_OUT())) As Node(Of E_OUT)
+		Friend Function evaluateToArrayNode(  generator As java.util.function.IntFunction(Of E_OUT())) As Node(Of E_OUT)
 			If linkedOrConsumed Then Throw New IllegalStateException(MSG_STREAM_LINKED)
 			linkedOrConsumed = True
 
@@ -305,7 +305,7 @@ Namespace java.util.stream
 		End Sub
 
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Overrides Function onClose(ByVal closeHandler As Runnable) As S Implements BaseStream(Of E_OUT, S).onClose
+		Public Overrides Function onClose(  closeHandler As Runnable) As S Implements BaseStream(Of E_OUT, S).onClose
 			Dim existingHandler As Runnable = sourceStage.sourceCloseAction
 			sourceStage.sourceCloseAction = If(existingHandler Is Nothing, closeHandler, Streams.composeWithExceptions(existingHandler, closeHandler))
 			Return CType(Me, S)
@@ -365,7 +365,7 @@ Namespace java.util.stream
 		''' </summary>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-		Private Function sourceSpliterator(ByVal terminalFlags As Integer) As java.util.Spliterator(Of ?)
+		Private Function sourceSpliterator(  terminalFlags As Integer) As java.util.Spliterator(Of ?)
 			' Get the source spliterator of the pipeline
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 			Dim spliterator As java.util.Spliterator(Of ?) = Nothing
@@ -428,16 +428,16 @@ Namespace java.util.stream
 			End Get
 		End Property
 
-		Friend Overrides Function exactOutputSizeIfKnown(Of P_IN)(ByVal spliterator As java.util.Spliterator(Of P_IN)) As Long
+		Friend Overrides Function exactOutputSizeIfKnown(Of P_IN)(  spliterator As java.util.Spliterator(Of P_IN)) As Long
 			Return If(StreamOpFlag.SIZED.isKnown(streamAndOpFlags), spliterator.exactSizeIfKnown, -1)
 		End Function
 
-		Friend Overrides Function wrapAndCopyInto(Of P_IN, S As Sink(Of E_OUT))(ByVal sink As S, ByVal spliterator As java.util.Spliterator(Of P_IN)) As S
+		Friend Overrides Function wrapAndCopyInto(Of P_IN, S As Sink(Of E_OUT))(  sink As S,   spliterator As java.util.Spliterator(Of P_IN)) As S
 			copyInto(wrapSink(java.util.Objects.requireNonNull(sink)), spliterator)
 			Return sink
 		End Function
 
-		Friend Overrides Sub copyInto(Of P_IN)(ByVal wrappedSink As Sink(Of P_IN), ByVal spliterator As java.util.Spliterator(Of P_IN))
+		Friend Overrides Sub copyInto(Of P_IN)(  wrappedSink As Sink(Of P_IN),   spliterator As java.util.Spliterator(Of P_IN))
 			java.util.Objects.requireNonNull(wrappedSink)
 
 			If Not StreamOpFlag.SHORT_CIRCUIT.isKnown(streamAndOpFlags) Then
@@ -450,7 +450,7 @@ Namespace java.util.stream
 		End Sub
 
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Friend Overrides Sub copyIntoWithCancel(Of P_IN)(ByVal wrappedSink As Sink(Of P_IN), ByVal spliterator As java.util.Spliterator(Of P_IN))
+		Friend Overrides Sub copyIntoWithCancel(Of P_IN)(  wrappedSink As Sink(Of P_IN),   spliterator As java.util.Spliterator(Of P_IN))
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
 			Dim p As AbstractPipeline = AbstractPipeline.this
 			Do While p.depth > 0
@@ -474,7 +474,7 @@ Namespace java.util.stream
 		End Property
 
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Friend Overrides Function wrapSink(Of P_IN)(ByVal sink As Sink(Of E_OUT)) As Sink(Of P_IN)
+		Friend Overrides Function wrapSink(Of P_IN)(  sink As Sink(Of E_OUT)) As Sink(Of P_IN)
 			java.util.Objects.requireNonNull(sink)
 
 			SuppressWarnings("rawtypes") AbstractPipeline p=AbstractPipeline.this
@@ -486,7 +486,7 @@ Namespace java.util.stream
 		End Function
 
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Friend Overrides Function wrapSpliterator(Of P_IN)(ByVal sourceSpliterator As java.util.Spliterator(Of P_IN)) As java.util.Spliterator(Of E_OUT)
+		Friend Overrides Function wrapSpliterator(Of P_IN)(  sourceSpliterator As java.util.Spliterator(Of P_IN)) As java.util.Spliterator(Of E_OUT)
 			If depth = 0 Then
 				Return CType(sourceSpliterator, java.util.Spliterator(Of E_OUT))
 			Else
@@ -495,7 +495,7 @@ Namespace java.util.stream
 		End Function
 
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Friend Overrides Function evaluate(Of P_IN)(ByVal spliterator As java.util.Spliterator(Of P_IN), ByVal flatten As Boolean, ByVal generator As java.util.function.IntFunction(Of E_OUT())) As Node(Of E_OUT)
+		Friend Overrides Function evaluate(Of P_IN)(  spliterator As java.util.Spliterator(Of P_IN),   flatten As Boolean,   generator As java.util.function.IntFunction(Of E_OUT())) As Node(Of E_OUT)
 			If parallel Then
 				' @@@ Optimize if op of this pipeline stage is a stateful op
 				Return evaluateToNode(Me, spliterator, flatten, generator)
@@ -526,7 +526,7 @@ Namespace java.util.stream
 		''' <param name="flattenTree"> true if the returned node should be flattened </param>
 		''' <param name="generator"> the array generator </param>
 		''' <returns> a Node holding the output of the pipeline </returns>
-		Friend MustOverride Function evaluateToNode(Of P_IN)(ByVal helper As PipelineHelper(Of E_OUT), ByVal spliterator As java.util.Spliterator(Of P_IN), ByVal flattenTree As Boolean, ByVal generator As java.util.function.IntFunction(Of E_OUT())) As Node(Of E_OUT)
+		Friend MustOverride Function evaluateToNode(Of P_IN)(  helper As PipelineHelper(Of E_OUT),   spliterator As java.util.Spliterator(Of P_IN),   flattenTree As Boolean,   generator As java.util.function.IntFunction(Of E_OUT())) As Node(Of E_OUT)
 
 		''' <summary>
 		''' Create a spliterator that wraps a source spliterator, compatible with
@@ -536,13 +536,13 @@ Namespace java.util.stream
 		''' <param name="ph"> the pipeline helper describing the pipeline stages </param>
 		''' <param name="supplier"> the supplier of a spliterator </param>
 		''' <returns> a wrapping spliterator compatible with this shape </returns>
-		Friend MustOverride Function wrap(Of P_IN)(ByVal ph As PipelineHelper(Of E_OUT), ByVal supplier As java.util.function.Supplier(Of java.util.Spliterator(Of P_IN)), ByVal isParallel As Boolean) As java.util.Spliterator(Of E_OUT)
+		Friend MustOverride Function wrap(Of P_IN)(  ph As PipelineHelper(Of E_OUT),   supplier As java.util.function.Supplier(Of java.util.Spliterator(Of P_IN)),   isParallel As Boolean) As java.util.Spliterator(Of E_OUT)
 
 		''' <summary>
 		''' Create a lazy spliterator that wraps and obtains the supplied the
 		''' spliterator when a method is invoked on the lazy spliterator. </summary>
 		''' <param name="supplier"> the supplier of a spliterator </param>
-		Friend MustOverride Function lazySpliterator(Of T1 As java.util.Spliterator(Of E_OUT)(ByVal supplier As java.util.function.Supplier(Of T1)) As java.util.Spliterator(Of E_OUT)
+		Friend MustOverride Function lazySpliterator(Of T1 As java.util.Spliterator(Of E_OUT)(  supplier As java.util.function.Supplier(Of T1)) As java.util.Spliterator(Of E_OUT)
 
 		''' <summary>
 		''' Traverse the elements of a spliterator compatible with this stream shape,
@@ -551,7 +551,7 @@ Namespace java.util.stream
 		''' </summary>
 		''' <param name="spliterator"> the spliterator to pull elements from </param>
 		''' <param name="sink"> the sink to push elements to </param>
-		Friend MustOverride Sub forEachWithCancel(ByVal spliterator As java.util.Spliterator(Of E_OUT), ByVal sink As Sink(Of E_OUT))
+		Friend MustOverride Sub forEachWithCancel(  spliterator As java.util.Spliterator(Of E_OUT),   sink As Sink(Of E_OUT))
 
 		''' <summary>
 		''' Make a node builder compatible with this stream shape.
@@ -567,7 +567,7 @@ Namespace java.util.stream
 		''' T[] array. For implementations supporting primitive nodes, this parameter
 		''' may be ignored. </param>
 		''' <returns> a node builder </returns>
-		Friend MustOverride Overrides Function makeNodeBuilder(ByVal exactSizeIfKnown As Long, ByVal generator As java.util.function.IntFunction(Of E_OUT())) As Node.Builder(Of E_OUT)
+		Friend MustOverride Overrides Function makeNodeBuilder(  exactSizeIfKnown As Long,   generator As java.util.function.IntFunction(Of E_OUT())) As Node.Builder(Of E_OUT)
 
 
 		' Op-specific abstract methods, implemented by the operation class
@@ -599,7 +599,7 @@ Namespace java.util.stream
 		''' <returns> a sink which accepts elements, perform the operation upon
 		'''         each element, and passes the results (if any) to the provided
 		'''         {@code Sink}. </returns>
-		Friend MustOverride Function opWrapSink(ByVal flags As Integer, ByVal sink As Sink(Of E_OUT)) As Sink(Of E_IN)
+		Friend MustOverride Function opWrapSink(  flags As Integer,   sink As Sink(Of E_OUT)) As Sink(Of E_IN)
 
 		''' <summary>
 		''' Performs a parallel evaluation of the operation using the specified
@@ -615,7 +615,7 @@ Namespace java.util.stream
 		''' <param name="spliterator"> the source {@code Spliterator} </param>
 		''' <param name="generator"> the array generator </param>
 		''' <returns> a {@code Node} describing the result of the evaluation </returns>
-		 Friend Overridable Function opEvaluateParallel(Of P_IN)(ByVal helper As PipelineHelper(Of E_OUT), ByVal spliterator As java.util.Spliterator(Of P_IN), ByVal generator As java.util.function.IntFunction(Of E_OUT())) As Node(Of E_OUT)
+		 Friend Overridable Function opEvaluateParallel(Of P_IN)(  helper As PipelineHelper(Of E_OUT),   spliterator As java.util.Spliterator(Of P_IN),   generator As java.util.function.IntFunction(Of E_OUT())) As Node(Of E_OUT)
 			Throw New UnsupportedOperationException("Parallel evaluation is not supported")
 		 End Function
 
@@ -639,7 +639,7 @@ Namespace java.util.stream
 		''' <param name="spliterator"> the source {@code Spliterator} </param>
 		''' <returns> a {@code Spliterator} describing the result of the evaluation </returns>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		 Friend Overridable Function opEvaluateParallelLazy(Of P_IN)(ByVal helper As PipelineHelper(Of E_OUT), ByVal spliterator As java.util.Spliterator(Of P_IN)) As java.util.Spliterator(Of E_OUT)
+		 Friend Overridable Function opEvaluateParallelLazy(Of P_IN)(  helper As PipelineHelper(Of E_OUT),   spliterator As java.util.Spliterator(Of P_IN)) As java.util.Spliterator(Of E_OUT)
 			Return opEvaluateParallel(helper, spliterator, i -> (E_OUT()) New Object(i - 1){}).spliterator()
 		 End Function
 	End Class

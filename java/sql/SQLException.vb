@@ -66,7 +66,7 @@ Namespace java.sql
 		''' <param name="reason"> a description of the exception </param>
 		''' <param name="SQLState"> an XOPEN or SQL:2003 code identifying the exception </param>
 		''' <param name="vendorCode"> a database vendor-specific exception code </param>
-		Public Sub New(ByVal reason As String, ByVal SQLState As String, ByVal vendorCode As Integer)
+		Public Sub New(  reason As String,   SQLState As String,   vendorCode As Integer)
 			MyBase.New(reason)
 			Me.SQLState = SQLState
 			Me.vendorCode = vendorCode
@@ -90,7 +90,7 @@ Namespace java.sql
 		''' <p> </summary>
 		''' <param name="reason"> a description of the exception </param>
 		''' <param name="SQLState"> an XOPEN or SQL:2003 code identifying the exception </param>
-		Public Sub New(ByVal reason As String, ByVal SQLState As String)
+		Public Sub New(  reason As String,   SQLState As String)
 			MyBase.New(reason)
 			Me.SQLState = SQLState
 			Me.vendorCode = 0
@@ -112,7 +112,7 @@ Namespace java.sql
 		''' <seealso cref="Throwable#initCause(java.lang.Throwable)"/> method.
 		''' <p> </summary>
 		''' <param name="reason"> a description of the exception </param>
-		Public Sub New(ByVal reason As String)
+		Public Sub New(  reason As String)
 			MyBase.New(reason)
 			Me.SQLState = Nothing
 			Me.vendorCode = 0
@@ -153,7 +153,7 @@ Namespace java.sql
 		''' (which is saved for later retrieval by the <code>getCause()</code> method);
 		''' may be null indicating the cause is non-existent or unknown.
 		''' @since 1.6 </param>
-		Public Sub New(ByVal cause As Throwable)
+		Public Sub New(  cause As Throwable)
 			MyBase.New(cause)
 
 			If Not(TypeOf Me Is SQLWarning) Then
@@ -172,7 +172,7 @@ Namespace java.sql
 		''' (which is saved for later retrieval by the <code>getCause()</code> method);
 		''' may be null indicating the cause is non-existent or unknown.
 		''' @since 1.6 </param>
-		Public Sub New(ByVal reason As String, ByVal cause As Throwable)
+		Public Sub New(  reason As String,   cause As Throwable)
 			MyBase.New(reason,cause)
 
 			If Not(TypeOf Me Is SQLWarning) Then
@@ -192,7 +192,7 @@ Namespace java.sql
 		''' <code>getCause()</code> method); may be null indicating
 		'''     the cause is non-existent or unknown.
 		''' @since 1.6 </param>
-		Public Sub New(ByVal reason As String, ByVal sqlState As String, ByVal cause As Throwable)
+		Public Sub New(  reason As String,   sqlState As String,   cause As Throwable)
 			MyBase.New(reason,cause)
 
 			Me.SQLState = sqlState
@@ -217,7 +217,7 @@ Namespace java.sql
 		''' (which is saved for later retrieval by the <code>getCause()</code> method);
 		''' may be null indicating the cause is non-existent or unknown.
 		''' @since 1.6 </param>
-		Public Sub New(ByVal reason As String, ByVal sqlState As String, ByVal vendorCode As Integer, ByVal cause As Throwable)
+		Public Sub New(  reason As String,   sqlState As String,   vendorCode As Integer,   cause As Throwable)
 			MyBase.New(reason,cause)
 
 			Me.SQLState = sqlState
@@ -262,7 +262,7 @@ Namespace java.sql
 			Get
 				Return ([next])
 			End Get
-			Set(ByVal ex As SQLException)
+			Set(  ex As SQLException)
     
 				Dim current As SQLException = Me
 				Do

@@ -65,7 +65,7 @@ Namespace java.math
 		''' Construct a new MutableBigInteger with a magnitude specified by
 		''' the int val.
 		''' </summary>
-		Friend Sub New(ByVal val As Integer)
+		Friend Sub New(  val As Integer)
 			MyBase.New(val)
 		End Sub
 
@@ -73,7 +73,7 @@ Namespace java.math
 		''' Construct a new MutableBigInteger with a magnitude equal to the
 		''' specified MutableBig java.lang.[Integer].
 		''' </summary>
-		Friend Sub New(ByVal val As MutableBigInteger)
+		Friend Sub New(  val As MutableBigInteger)
 			MyBase.New(val)
 		End Sub
 
@@ -82,7 +82,7 @@ Namespace java.math
 	   ''' <summary>
 	   ''' Signed addition built upon unsigned add and subtract.
 	   ''' </summary>
-		Friend Overridable Sub signedAdd(ByVal addend As SignedMutableBigInteger)
+		Friend Overridable Sub signedAdd(  addend As SignedMutableBigInteger)
 			If sign = addend.sign Then
 				add(addend)
 			Else
@@ -94,7 +94,7 @@ Namespace java.math
 	   ''' <summary>
 	   ''' Signed addition built upon unsigned add and subtract.
 	   ''' </summary>
-		Friend Overridable Sub signedAdd(ByVal addend As MutableBigInteger)
+		Friend Overridable Sub signedAdd(  addend As MutableBigInteger)
 			If sign = 1 Then
 				add(addend)
 			Else
@@ -106,7 +106,7 @@ Namespace java.math
 	   ''' <summary>
 	   ''' Signed subtraction built upon unsigned add and subtract.
 	   ''' </summary>
-		Friend Overridable Sub signedSubtract(ByVal addend As SignedMutableBigInteger)
+		Friend Overridable Sub signedSubtract(  addend As SignedMutableBigInteger)
 			If sign = addend.sign Then
 				sign = sign * subtract(addend)
 			Else
@@ -118,7 +118,7 @@ Namespace java.math
 	   ''' <summary>
 	   ''' Signed subtraction built upon unsigned add and subtract.
 	   ''' </summary>
-		Friend Overridable Sub signedSubtract(ByVal addend As MutableBigInteger)
+		Friend Overridable Sub signedSubtract(  addend As MutableBigInteger)
 			If sign = 1 Then
 				sign = sign * subtract(addend)
 			Else

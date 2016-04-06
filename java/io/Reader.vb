@@ -53,7 +53,7 @@ Namespace java.io
     Public MustInherit Class Reader : Inherits java.lang.Object
         Implements Readable, Closeable
 
-        ' Public MustOverride Overloads Function read(ByVal cb As java.nio.CharBuffer) As Integer Implements Readable.read
+        ' Public MustOverride Overloads Function read(  cb As java.nio.CharBuffer) As Integer Implements Readable.read
 
         ''' <summary>
         ''' The object used to synchronize operations on this stream.  For
@@ -77,7 +77,7 @@ Namespace java.io
         ''' synchronize on the given object.
         ''' </summary>
         ''' <param name="lock">  The Object to synchronize on. </param>
-        Protected Friend Sub New(ByVal lock As Object)
+        Protected Friend Sub New(  lock As Object)
             If lock Is Nothing Then Throw New NullPointerException
             Me.lock = lock
         End Sub
@@ -95,7 +95,7 @@ Namespace java.io
         ''' <exception cref="NullPointerException"> if target is null </exception>
         ''' <exception cref="java.nio.ReadOnlyBufferException"> if target is a read only buffer
         ''' @since 1.5 </exception>
-        Public Overridable Function read(ByVal target As java.nio.CharBuffer) As Integer Implements Readable.read
+        Public Overridable Function read(  target As java.nio.CharBuffer) As Integer Implements Readable.read
             Dim len As Integer = target.remaining()
             Dim cbuf As Char() = New Char(len - 1) {}
             Dim n As Integer = read(cbuf, 0, len)
@@ -135,7 +135,7 @@ Namespace java.io
         '''              has been reached
         ''' </returns>
         ''' <exception cref="IOException">  If an I/O error occurs </exception>
-        Public Overridable Function read(ByVal cbuf As Char()) As Integer
+        Public Overridable Function read(  cbuf As Char()) As Integer
             Return read(cbuf, 0, cbuf.Length)
         End Function
 
@@ -152,7 +152,7 @@ Namespace java.io
         '''             stream has been reached
         ''' </returns>
         ''' <exception cref="IOException">  If an I/O error occurs </exception>
-        Public MustOverride Function read(cbuf() As Char, ByVal [off] As Integer, ByVal len As Integer) As Integer
+        Public MustOverride Function read(cbuf() As Char,   [off] As Integer,   len As Integer) As Integer
 
         ''' <summary>
         ''' Maximum skip-buffer size </summary>
@@ -172,7 +172,7 @@ Namespace java.io
         ''' </returns>
         ''' <exception cref="IllegalArgumentException">  If <code>n</code> is negative. </exception>
         ''' <exception cref="IOException">  If an I/O error occurs </exception>
-        Public Overridable Function skip(ByVal n As Long) As Long
+        Public Overridable Function skip(  n As Long) As Long
             If n < 0L Then Throw New IllegalArgumentException("skip value is negative")
             Dim nn As Integer = CInt(Fix(System.Math.Min(n, maxSkipBufferSize)))
             SyncLock lock
@@ -221,7 +221,7 @@ Namespace java.io
         ''' </param>
         ''' <exception cref="IOException">  If the stream does not support mark(),
         '''                          or if some other I/O error occurs </exception>
-        Public Overridable Sub mark(ByVal readAheadLimit As Integer)
+        Public Overridable Sub mark(  readAheadLimit As Integer)
             Throw New IOException("mark() not supported")
         End Sub
 

@@ -63,7 +63,7 @@ Namespace java.beans
 		''' <param name="beanClass"> The Class object for the target bean. </param>
 		''' <exception cref="IntrospectionException"> if an exception occurs during
 		'''              introspection. </exception>
-		Public Sub New(ByVal propertyName As String, ByVal beanClass As [Class])
+		Public Sub New(  propertyName As String,   beanClass As [Class])
 			Me.New(propertyName, beanClass, Introspector.GET_PREFIX + NameGenerator.capitalize(propertyName), Introspector.SET_PREFIX + NameGenerator.capitalize(propertyName), Introspector.GET_PREFIX + NameGenerator.capitalize(propertyName), Introspector.SET_PREFIX + NameGenerator.capitalize(propertyName))
 		End Sub
 
@@ -88,7 +88,7 @@ Namespace java.beans
 		'''          May be null if the property is read-only. </param>
 		''' <exception cref="IntrospectionException"> if an exception occurs during
 		'''              introspection. </exception>
-		Public Sub New(ByVal propertyName As String, ByVal beanClass As [Class], ByVal readMethodName As String, ByVal writeMethodName As String, ByVal indexedReadMethodName As String, ByVal indexedWriteMethodName As String)
+		Public Sub New(  propertyName As String,   beanClass As [Class],   readMethodName As String,   writeMethodName As String,   indexedReadMethodName As String,   indexedWriteMethodName As String)
 			MyBase.New(propertyName, beanClass, readMethodName, writeMethodName)
 
 			Me.indexedReadMethodName = indexedReadMethodName
@@ -115,7 +115,7 @@ Namespace java.beans
 		'''          May be null if the property is read-only. </param>
 		''' <exception cref="IntrospectionException"> if an exception occurs during
 		'''              introspection. </exception>
-		Public Sub New(ByVal propertyName As String, ByVal readMethod As Method, ByVal writeMethod As Method, ByVal indexedReadMethod As Method, ByVal indexedWriteMethod As Method)
+		Public Sub New(  propertyName As String,   readMethod As Method,   writeMethod As Method,   indexedReadMethod As Method,   indexedWriteMethod As Method)
 			MyBase.New(propertyName, readMethod, writeMethod)
 
 			indexedReadMethod0 = indexedReadMethod
@@ -138,7 +138,7 @@ Namespace java.beans
 		''' <exception cref="IntrospectionException"> if an exception occurs during introspection
 		''' 
 		''' @since 1.7 </exception>
-		Friend Sub New(ByVal bean As [Class], ByVal base As String, ByVal read As Method, ByVal write As Method, ByVal readIndexed As Method, ByVal writeIndexed As Method)
+		Friend Sub New(  bean As [Class],   base As String,   read As Method,   write As Method,   readIndexed As Method,   writeIndexed As Method)
 			MyBase.New(bean, base, read, write)
 
 			indexedReadMethod0 = readIndexed
@@ -183,7 +183,7 @@ Namespace java.beans
 				End If
 				Return indexedReadMethod_Renamed
 			End Get
-			Set(ByVal readMethod As Method)
+			Set(  readMethod As Method)
     
 				' the indexed property type is set by the reader.
 				indexedPropertyType = findIndexedPropertyType(readMethod, Me.indexedWriteMethodRef.get())
@@ -193,7 +193,7 @@ Namespace java.beans
 
 
 		Private Property indexedReadMethod0 As Method
-			Set(ByVal readMethod As Method)
+			Set(  readMethod As Method)
 				Me.indexedReadMethodRef.set(readMethod)
 				If readMethod Is Nothing Then
 					indexedReadMethodName = Nothing
@@ -247,7 +247,7 @@ Namespace java.beans
 				End If
 				Return indexedWriteMethod_Renamed
 			End Get
-			Set(ByVal writeMethod As Method)
+			Set(  writeMethod As Method)
     
 				' If the indexed property type has not been set, then set it.
 				Dim type As  [Class] = findIndexedPropertyType(indexedReadMethod, writeMethod)
@@ -258,7 +258,7 @@ Namespace java.beans
 
 
 		Private Property indexedWriteMethod0 As Method
-			Set(ByVal writeMethod As Method)
+			Set(  writeMethod As Method)
 				Me.indexedWriteMethodRef.set(writeMethod)
 				If writeMethod Is Nothing Then
 					indexedWriteMethodName = Nothing
@@ -294,7 +294,7 @@ Namespace java.beans
 				End If
 				Return type
 			End Get
-			Set(ByVal type As [Class])
+			Set(  type As [Class])
 				Me.indexedPropertyTypeRef = getWeakReference(type)
 			End Set
 		End Property
@@ -308,7 +308,7 @@ Namespace java.beans
 			End Get
 		End Property
 
-		Private Function findIndexedPropertyType(ByVal indexedReadMethod As Method, ByVal indexedWriteMethod As Method) As  [Class]
+		Private Function findIndexedPropertyType(  indexedReadMethod As Method,   indexedWriteMethod As Method) As  [Class]
 			Dim indexedPropertyType_Renamed As  [Class] = Nothing
 
 			If indexedReadMethod IsNot Nothing Then
@@ -341,7 +341,7 @@ Namespace java.beans
 		''' 
 		''' @since 1.4
 		''' </summary>
-		Public Overrides Function Equals(ByVal obj As Object) As Boolean
+		Public Overrides Function Equals(  obj As Object) As Boolean
 			' Note: This would be identical to PropertyDescriptor but they don't
 			' share the same fields.
 			If Me Is obj Then Return True
@@ -369,7 +369,7 @@ Namespace java.beans
 		''' <param name="x">  The first (lower priority) PropertyDescriptor </param>
 		''' <param name="y">  The second (higher priority) PropertyDescriptor </param>
 
-		Friend Sub New(ByVal x As PropertyDescriptor, ByVal y As PropertyDescriptor)
+		Friend Sub New(  x As PropertyDescriptor,   y As PropertyDescriptor)
 			MyBase.New(x,y)
 			If TypeOf x Is IndexedPropertyDescriptor Then
 				Dim ix As IndexedPropertyDescriptor = CType(x, IndexedPropertyDescriptor)
@@ -403,7 +403,7 @@ Namespace java.beans
 	'     * Package-private dup constructor
 	'     * This must isolate the new object from any changes to the old object.
 	'     
-		Friend Sub New(ByVal old As IndexedPropertyDescriptor)
+		Friend Sub New(  old As IndexedPropertyDescriptor)
 			MyBase.New(old)
 			Me.indexedReadMethodRef.set(old.indexedReadMethodRef.get())
 			Me.indexedWriteMethodRef.set(old.indexedWriteMethodRef.get())
@@ -412,7 +412,7 @@ Namespace java.beans
 			indexedReadMethodName = old.indexedReadMethodName
 		End Sub
 
-		Friend Overrides Sub updateGenericsFor(ByVal type As [Class])
+		Friend Overrides Sub updateGenericsFor(  type As [Class])
 			MyBase.updateGenericsFor(type)
 			Try
 				indexedPropertyType = findIndexedPropertyType(Me.indexedReadMethodRef.get(), Me.indexedWriteMethodRef.get())
@@ -437,7 +437,7 @@ Namespace java.beans
 			Return result
 		End Function
 
-		Friend Overrides Sub appendTo(ByVal sb As StringBuilder)
+		Friend Overrides Sub appendTo(  sb As StringBuilder)
 			MyBase.appendTo(sb)
 			appendTo(sb, "indexedPropertyType", Me.indexedPropertyTypeRef)
 			appendTo(sb, "indexedReadMethod", Me.indexedReadMethodRef.get())

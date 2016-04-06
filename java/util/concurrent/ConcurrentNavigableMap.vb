@@ -53,32 +53,32 @@ Namespace java.util.concurrent
 		''' <exception cref="ClassCastException">       {@inheritDoc} </exception>
 		''' <exception cref="NullPointerException">     {@inheritDoc} </exception>
 		''' <exception cref="IllegalArgumentException"> {@inheritDoc} </exception>
-		Function subMap(ByVal fromKey As K, ByVal fromInclusive As Boolean, ByVal toKey As K, ByVal toInclusive As Boolean) As ConcurrentNavigableMap(Of K, V)
+		Function subMap(  fromKey As K,   fromInclusive As Boolean,   toKey As K,   toInclusive As Boolean) As ConcurrentNavigableMap(Of K, V)
 
 		''' <exception cref="ClassCastException">       {@inheritDoc} </exception>
 		''' <exception cref="NullPointerException">     {@inheritDoc} </exception>
 		''' <exception cref="IllegalArgumentException"> {@inheritDoc} </exception>
-		Function headMap(ByVal toKey As K, ByVal inclusive As Boolean) As ConcurrentNavigableMap(Of K, V)
+		Function headMap(  toKey As K,   inclusive As Boolean) As ConcurrentNavigableMap(Of K, V)
 
 		''' <exception cref="ClassCastException">       {@inheritDoc} </exception>
 		''' <exception cref="NullPointerException">     {@inheritDoc} </exception>
 		''' <exception cref="IllegalArgumentException"> {@inheritDoc} </exception>
-		Function tailMap(ByVal fromKey As K, ByVal inclusive As Boolean) As ConcurrentNavigableMap(Of K, V)
+		Function tailMap(  fromKey As K,   inclusive As Boolean) As ConcurrentNavigableMap(Of K, V)
 
 		''' <exception cref="ClassCastException">       {@inheritDoc} </exception>
 		''' <exception cref="NullPointerException">     {@inheritDoc} </exception>
 		''' <exception cref="IllegalArgumentException"> {@inheritDoc} </exception>
-		Function subMap(ByVal fromKey As K, ByVal toKey As K) As ConcurrentNavigableMap(Of K, V)
+		Function subMap(  fromKey As K,   toKey As K) As ConcurrentNavigableMap(Of K, V)
 
 		''' <exception cref="ClassCastException">       {@inheritDoc} </exception>
 		''' <exception cref="NullPointerException">     {@inheritDoc} </exception>
 		''' <exception cref="IllegalArgumentException"> {@inheritDoc} </exception>
-		Function headMap(ByVal toKey As K) As ConcurrentNavigableMap(Of K, V)
+		Function headMap(  toKey As K) As ConcurrentNavigableMap(Of K, V)
 
 		''' <exception cref="ClassCastException">       {@inheritDoc} </exception>
 		''' <exception cref="NullPointerException">     {@inheritDoc} </exception>
 		''' <exception cref="IllegalArgumentException"> {@inheritDoc} </exception>
-		Function tailMap(ByVal fromKey As K) As ConcurrentNavigableMap(Of K, V)
+		Function tailMap(  fromKey As K) As ConcurrentNavigableMap(Of K, V)
 
 		''' <summary>
 		''' Returns a reverse order view of the mappings contained in this map.

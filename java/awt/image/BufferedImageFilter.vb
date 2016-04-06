@@ -58,7 +58,7 @@ Namespace java.awt.image
 		''' <param name="op"> the specified <code>BufferedImageOp</code> to
 		'''           use to filter a <code>BufferedImage</code> </param>
 		''' <exception cref="NullPointerException"> if op is null </exception>
-		Public Sub New(ByVal op As BufferedImageOp)
+		Public Sub New(  op As BufferedImageOp)
 			MyBase.New()
 			If op Is Nothing Then Throw New NullPointerException("Operation cannot be null")
 			bufferedImageOp = op
@@ -86,7 +86,7 @@ Namespace java.awt.image
         ''' <param name="height"> the height to which to set the height of this
         '''        <code>BufferedImageFilter</code> </param>
         ''' <seealso cref= ImageConsumer#setDimensions </seealso>
-        Public Overrides Sub setDimensions(ByVal width As Integer, ByVal height As Integer)
+        Public Overrides Sub setDimensions(  width As Integer,   height As Integer)
 			If width <= 0 OrElse height <= 0 Then
 				imageComplete(STATICIMAGEDONE)
 				Return
@@ -115,7 +115,7 @@ Namespace java.awt.image
         '''        <code>ColorModel</code> of this <code>BufferedImageFilter</code> </param>
         ''' <seealso cref= ImageConsumer#setColorModel </seealso>
         Public Overrides WriteOnly Property colorModel As ColorModel
-            Set(ByVal model As ColorModel)
+            Set(  model As ColorModel)
                 Me.model = model
             End Set
         End Property

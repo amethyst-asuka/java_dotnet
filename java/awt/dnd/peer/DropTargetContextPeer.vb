@@ -72,7 +72,7 @@ Namespace java.awt.dnd.peer
 		''' accept the Drag
 		''' </summary>
 
-		Sub acceptDrag(ByVal dragAction As Integer)
+		Sub acceptDrag(  dragAction As Integer)
 
 		''' <summary>
 		''' reject the Drag
@@ -84,7 +84,7 @@ Namespace java.awt.dnd.peer
 		''' accept the Drop
 		''' </summary>
 
-		Sub acceptDrop(ByVal dropAction As Integer)
+		Sub acceptDrop(  dropAction As Integer)
 
 		''' <summary>
 		''' reject the Drop
@@ -96,7 +96,7 @@ Namespace java.awt.dnd.peer
 		''' signal complete
 		''' </summary>
 
-		Sub dropComplete(ByVal success As Boolean)
+		Sub dropComplete(  success As Boolean)
 
 	End Interface
 

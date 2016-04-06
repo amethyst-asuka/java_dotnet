@@ -114,7 +114,7 @@ Namespace java.util.logging
 		''' <p> </summary>
 		''' <param name="record">  description of the log event. A null record is
 		'''                 silently ignored and is not published </param>
-		Public Overrides Sub publish(ByVal record As LogRecord)
+		Public Overrides Sub publish(  record As LogRecord)
 			MyBase.publish(record)
 			flush()
 		End Sub

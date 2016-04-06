@@ -151,7 +151,7 @@ Namespace java.util
 		'''         greater than <tt>toElement</tt>; or if this set itself
 		'''         has a restricted range, and <tt>fromElement</tt> or
 		'''         <tt>toElement</tt> lies outside the bounds of the range </exception>
-		Function subSet(ByVal fromElement As E, ByVal toElement As E) As SortedSet(Of E)
+		Function subSet(  fromElement As E,   toElement As E) As SortedSet(Of E)
 
 		''' <summary>
 		''' Returns a view of the portion of this set whose elements are
@@ -177,7 +177,7 @@ Namespace java.util
 		''' <exception cref="IllegalArgumentException"> if this set itself has a
 		'''         restricted range, and <tt>toElement</tt> lies outside the
 		'''         bounds of the range </exception>
-		Function headSet(ByVal toElement As E) As SortedSet(Of E)
+		Function headSet(  toElement As E) As SortedSet(Of E)
 
 		''' <summary>
 		''' Returns a view of the portion of this set whose elements are
@@ -203,7 +203,7 @@ Namespace java.util
 		''' <exception cref="IllegalArgumentException"> if this set itself has a
 		'''         restricted range, and <tt>fromElement</tt> lies outside the
 		'''         bounds of the range </exception>
-		Function tailSet(ByVal fromElement As E) As SortedSet(Of E)
+		Function tailSet(  fromElement As E) As SortedSet(Of E)
 
 		''' <summary>
 		''' Returns the first (lowest) element currently in this set.

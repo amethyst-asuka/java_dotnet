@@ -108,7 +108,7 @@ Namespace java.awt.dnd
 		''' <seealso cref= java.awt.event.InputEvent </seealso>
 		''' <seealso cref= DragSourceEvent#getLocation </seealso>
 
-		Public Sub New(ByVal dsc As DragSourceContext, ByVal dropAction As Integer, ByVal action As Integer, ByVal modifiers As Integer)
+		Public Sub New(  dsc As DragSourceContext,   dropAction As Integer,   action As Integer,   modifiers As Integer)
 			MyBase.New(dsc)
 
 			targetActions = action
@@ -156,7 +156,7 @@ Namespace java.awt.dnd
 		''' </exception>
 		''' <seealso cref= java.awt.event.InputEvent
 		''' @since 1.4 </seealso>
-		Public Sub New(ByVal dsc As DragSourceContext, ByVal dropAction As Integer, ByVal action As Integer, ByVal modifiers As Integer, ByVal x As Integer, ByVal y As Integer)
+		Public Sub New(  dsc As DragSourceContext,   dropAction As Integer,   action As Integer,   modifiers As Integer,   x As Integer,   y As Integer)
 			MyBase.New(dsc, x, y)
 
 			targetActions = action

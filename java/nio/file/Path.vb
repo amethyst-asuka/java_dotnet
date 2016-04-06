@@ -175,7 +175,7 @@ Namespace java.nio.file
 		'''          if {@code index} is negative, {@code index} is greater than or
 		'''          equal to the number of elements, or this path has zero name
 		'''          elements </exception>
-		Function getName(ByVal index As Integer) As Path
+		Function getName(  index As Integer) As Path
 
 		''' <summary>
 		''' Returns a relative {@code Path} that is a subsequence of the name
@@ -201,7 +201,7 @@ Namespace java.nio.file
 		'''          if {@code beginIndex} is negative, or greater than or equal to
 		'''          the number of elements. If {@code endIndex} is less than or
 		'''          equal to {@code beginIndex}, or larger than the number of elements. </exception>
-		Function subpath(ByVal beginIndex As Integer, ByVal endIndex As Integer) As Path
+		Function subpath(  beginIndex As Integer,   endIndex As Integer) As Path
 
 		''' <summary>
 		''' Tests if this path starts with the given path.
@@ -225,7 +225,7 @@ Namespace java.nio.file
 		''' </param>
 		''' <returns>  {@code true} if this path starts with the given path; otherwise
 		'''          {@code false} </returns>
-		Function startsWith(ByVal other As Path) As Boolean
+		Function startsWith(  other As Path) As Boolean
 
 		''' <summary>
 		''' Tests if this path starts with a {@code Path}, constructed by converting
@@ -242,7 +242,7 @@ Namespace java.nio.file
 		''' </returns>
 		''' <exception cref="InvalidPathException">
 		'''          If the path string cannot be converted to a Path. </exception>
-		Function startsWith(ByVal other As String) As Boolean
+		Function startsWith(  other As String) As Boolean
 
 		''' <summary>
 		''' Tests if this path ends with the given path.
@@ -268,7 +268,7 @@ Namespace java.nio.file
 		''' </param>
 		''' <returns>  {@code true} if this path ends with the given path; otherwise
 		'''          {@code false} </returns>
-		Function endsWith(ByVal other As Path) As Boolean
+		Function endsWith(  other As Path) As Boolean
 
 		''' <summary>
 		''' Tests if this path ends with a {@code Path}, constructed by converting
@@ -288,7 +288,7 @@ Namespace java.nio.file
 		''' </returns>
 		''' <exception cref="InvalidPathException">
 		'''          If the path string cannot be converted to a Path. </exception>
-		Function endsWith(ByVal other As String) As Boolean
+		Function endsWith(  other As String) As Boolean
 
 		''' <summary>
 		''' Returns a path that is this path with redundant name elements eliminated.
@@ -338,7 +338,7 @@ Namespace java.nio.file
 		''' <returns>  the resulting path
 		''' </returns>
 		''' <seealso cref= #relativize </seealso>
-		Function resolve(ByVal other As Path) As Path
+		Function resolve(  other As Path) As Path
 
 		''' <summary>
 		''' Converts a given path string to a {@code Path} and resolves it against
@@ -357,7 +357,7 @@ Namespace java.nio.file
 		'''          if the path string cannot be converted to a Path.
 		''' </exception>
 		''' <seealso cref= FileSystem#getPath </seealso>
-		Function resolve(ByVal other As String) As Path
+		Function resolve(  other As String) As Path
 
 		''' <summary>
 		''' Resolves the given path against this path's <seealso cref="#getParent parent"/>
@@ -377,7 +377,7 @@ Namespace java.nio.file
 		''' <returns>  the resulting path
 		''' </returns>
 		''' <seealso cref= #resolve(Path) </seealso>
-		Function resolveSibling(ByVal other As Path) As Path
+		Function resolveSibling(  other As Path) As Path
 
 		''' <summary>
 		''' Converts a given path string to a {@code Path} and resolves it against
@@ -393,7 +393,7 @@ Namespace java.nio.file
 		'''          if the path string cannot be converted to a Path.
 		''' </exception>
 		''' <seealso cref= FileSystem#getPath </seealso>
-		Function resolveSibling(ByVal other As String) As Path
+		Function resolveSibling(  other As String) As Path
 
 		''' <summary>
 		''' Constructs a relative path between this path and a given path.
@@ -434,7 +434,7 @@ Namespace java.nio.file
 		''' <exception cref="IllegalArgumentException">
 		'''          if {@code other} is not a {@code Path} that can be relativized
 		'''          against this path </exception>
-		Function relativize(ByVal other As Path) As Path
+		Function relativize(  other As Path) As Path
 
 		''' <summary>
 		''' Returns a URI to represent this path.
@@ -553,7 +553,7 @@ Namespace java.nio.file
 		'''          this path is not absolute, its {@link SecurityManager#checkPropertyAccess(String)
 		'''          checkPropertyAccess} method is invoked to check access to the
 		'''          system property {@code user.dir} </exception>
-		Function toRealPath(ParamArray ByVal options As LinkOption()) As Path
+		Function toRealPath(ParamArray   options As LinkOption()) As Path
 
 		''' <summary>
 		''' Returns a <seealso cref="File"/> object representing this path. Where this {@code
@@ -631,7 +631,7 @@ Namespace java.nio.file
 		'''          In the case of the default provider, and a security manager is
 		'''          installed, the <seealso cref="SecurityManager#checkRead(String) checkRead"/>
 		'''          method is invoked to check read access to the file. </exception>
-		Overrides Function register(Of T1)(ByVal watcher As WatchService, ByVal events As WatchEvent.Kind(Of T1)(), ParamArray ByVal modifiers As WatchEvent.Modifier()) As WatchKey
+		Overrides Function register(Of T1)(  watcher As WatchService,   events As WatchEvent.Kind(Of T1)(), ParamArray   modifiers As WatchEvent.Modifier()) As WatchKey
 
 		''' <summary>
 		''' Registers the file located by this path with a watch service.
@@ -674,7 +674,7 @@ Namespace java.nio.file
 		'''          In the case of the default provider, and a security manager is
 		'''          installed, the <seealso cref="SecurityManager#checkRead(String) checkRead"/>
 		'''          method is invoked to check read access to the file. </exception>
-		Overrides Function register(Of T1)(ByVal watcher As WatchService, ParamArray ByVal events As WatchEvent.Kind(Of T1)()) As WatchKey
+		Overrides Function register(Of T1)(  watcher As WatchService, ParamArray   events As WatchEvent.Kind(Of T1)()) As WatchKey
 
 		' -- Iterable --
 
@@ -710,7 +710,7 @@ Namespace java.nio.file
 		''' </returns>
 		''' <exception cref="ClassCastException">
 		'''          if the paths are associated with different providers </exception>
-		Overrides Function compareTo(ByVal other As Path) As Integer
+		Overrides Function compareTo(  other As Path) As Integer
 
 		''' <summary>
 		''' Tests this path for equality with the given object.
@@ -733,7 +733,7 @@ Namespace java.nio.file
 		''' </param>
 		''' <returns>  {@code true} if, and only if, the given object is a {@code Path}
 		'''          that is identical to this {@code Path} </returns>
-		Function Equals(ByVal other As Object) As Boolean
+		Function Equals(  other As Object) As Boolean
 
 		''' <summary>
 		''' Computes a hash code for this path.

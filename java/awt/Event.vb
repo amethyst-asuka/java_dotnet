@@ -589,7 +589,7 @@ Namespace java.awt
         ''' <param name="key">        the key pressed in a keyboard event. </param>
         ''' <param name="modifiers">  the state of the modifier keys. </param>
         ''' <param name="arg">        the specified argument. </param>
-        Public Sub New(ByVal target As Object, ByVal [when] As Long, ByVal id As Integer, ByVal x As Integer, ByVal y As Integer, ByVal key As Integer, ByVal modifiers As Integer, ByVal arg As Object)
+        Public Sub New(  target As Object,   [when] As Long,   id As Integer,   x As Integer,   y As Integer,   key As Integer,   modifiers As Integer,   arg As Object)
             Me.target = target
             Me.when = [when]
             Me.id = id
@@ -623,7 +623,7 @@ Namespace java.awt
         ''' <param name="y">          the <i>y</i> coordinate. </param>
         ''' <param name="key">        the key pressed in a keyboard event. </param>
         ''' <param name="modifiers">  the state of the modifier keys. </param>
-        Public Sub New(ByVal target As Object, ByVal [when] As Long, ByVal id As Integer, ByVal x As Integer, ByVal y As Integer, ByVal key As Integer, ByVal modifiers As Integer)
+        Public Sub New(  target As Object,   [when] As Long,   id As Integer,   x As Integer,   y As Integer,   key As Integer,   modifiers As Integer)
             Me.New(target, [when], id, x, y, key, modifiers, Nothing)
         End Sub
 
@@ -637,7 +637,7 @@ Namespace java.awt
         ''' <param name="target">     the target component. </param>
         ''' <param name="id">         the event type. </param>
         ''' <param name="arg">        the specified argument. </param>
-        Public Sub New(ByVal target As Object, ByVal id As Integer, ByVal arg As Object)
+        Public Sub New(  target As Object,   id As Integer,   arg As Object)
             Me.New(target, 0, id, 0, 0, 0, 0, arg)
         End Sub
 
@@ -656,7 +656,7 @@ Namespace java.awt
         ''' translating a region in the case of an expose event. </summary>
         ''' <param name="dx">     the distance to translate the <i>x</i> coordinate. </param>
         ''' <param name="dy">     the distance to translate the <i>y</i> coordinate. </param>
-        Public Overridable Sub translate(ByVal dx As Integer, ByVal dy As Integer)
+        Public Overridable Sub translate(  dx As Integer,   dy As Integer)
             Me.x += dx
             Me.y += dy
         End Sub
@@ -740,7 +740,7 @@ Namespace java.awt
         '     * Returns the integer key-code associated with the key in this event,
         '     * as described in java.awt.Event.
         '
-        Friend Shared Function getOldEventKey(ByVal e As KeyEvent) As Integer
+        Friend Shared Function getOldEventKey(  e As KeyEvent) As Integer
             Dim keyCode As Integer = e.keyCode
             For i As Integer = 0 To actionKeyCodes.Length - 1
                 If actionKeyCodes(i)(0) = keyCode Then Return actionKeyCodes(i)(1)

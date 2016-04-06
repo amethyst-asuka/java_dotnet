@@ -90,7 +90,7 @@ Namespace java.lang.instrument
 		''' is true and the current configuration of the JVM does not allow
 		''' retransformation (<seealso cref="#isRetransformClassesSupported"/> is false)
 		''' @since 1.6 </exception>
-		Sub addTransformer(ByVal transformer As  [Class]FileTransformer, ByVal canRetransform As Boolean)
+		Sub addTransformer(  transformer As  [Class]FileTransformer,   canRetransform As Boolean)
 
 		''' <summary>
 		''' Registers the supplied transformer.
@@ -100,7 +100,7 @@ Namespace java.lang.instrument
 		''' <param name="transformer">          the transformer to register </param>
 		''' <exception cref="java.lang.NullPointerException"> if passed a <code>null</code> transformer </exception>
 		''' <seealso cref=    #addTransformer(ClassFileTransformer,boolean) </seealso>
-		Sub addTransformer(ByVal transformer As  [Class]FileTransformer)
+		Sub addTransformer(  transformer As  [Class]FileTransformer)
 
 		''' <summary>
 		''' Unregisters the supplied transformer. Future class definitions will
@@ -114,7 +114,7 @@ Namespace java.lang.instrument
 		''' <returns>  true if the transformer was found and removed, false if the
 		'''           transformer was not found </returns>
 		''' <exception cref="java.lang.NullPointerException"> if passed a <code>null</code> transformer </exception>
-		Function removeTransformer(ByVal transformer As  [Class]FileTransformer) As Boolean
+		Function removeTransformer(  transformer As  [Class]FileTransformer) As Boolean
 
 		''' <summary>
 		''' Returns whether or not the current JVM configuration supports retransformation
@@ -242,7 +242,7 @@ Namespace java.lang.instrument
 		''' <seealso cref= #addTransformer </seealso>
 		''' <seealso cref= java.lang.instrument.ClassFileTransformer
 		''' @since 1.6 </seealso>
-		Sub retransformClasses(ParamArray ByVal classes As  [Class]())
+		Sub retransformClasses(ParamArray   classes As  [Class]())
 
 		''' <summary>
 		''' Returns whether or not the current JVM configuration supports redefinition
@@ -325,7 +325,7 @@ Namespace java.lang.instrument
 		''' <seealso cref= #isRedefineClassesSupported </seealso>
 		''' <seealso cref= #addTransformer </seealso>
 		''' <seealso cref= java.lang.instrument.ClassFileTransformer </seealso>
-		Sub redefineClasses(ParamArray ByVal definitions As  [Class]Definition())
+		Sub redefineClasses(ParamArray   definitions As  [Class]Definition())
 
 
 		''' <summary>
@@ -354,7 +354,7 @@ Namespace java.lang.instrument
 		''' <seealso cref= #redefineClasses </seealso>
 		''' <seealso cref= #isRedefineClassesSupported
 		''' @since 1.6 </seealso>
-		Function isModifiableClass(ByVal theClass As [Class]) As Boolean
+		Function isModifiableClass(  theClass As [Class]) As Boolean
 
 		''' <summary>
 		''' Returns an array of all classes currently loaded by the JVM.
@@ -372,7 +372,7 @@ Namespace java.lang.instrument
 		''' <returns> an array containing all the classes for which loader is an initiating loader,
 		'''          zero-length if there are none </returns>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Function getInitiatedClasses(ByVal loader As  ClassLoader) As  [Class]()
+		Function getInitiatedClasses(  loader As  ClassLoader) As  [Class]()
 
 		''' <summary>
 		''' Returns an implementation-specific approximation of the amount of storage consumed by
@@ -384,7 +384,7 @@ Namespace java.lang.instrument
 		''' <param name="objectToSize">     the object to size </param>
 		''' <returns> an implementation-specific approximation of the amount of storage consumed by the specified object </returns>
 		''' <exception cref="java.lang.NullPointerException"> if the supplied Object is <code>null</code>. </exception>
-		Function getObjectSize(ByVal objectToSize As Object) As Long
+		Function getObjectSize(  objectToSize As Object) As Long
 
 
 		''' <summary>
@@ -434,7 +434,7 @@ Namespace java.lang.instrument
 		''' <seealso cref=     java.util.jar.JarFile
 		''' 
 		''' @since 1.6 </seealso>
-		Sub appendToBootstrapClassLoaderSearch(ByVal jarfile As java.util.jar.JarFile)
+		Sub appendToBootstrapClassLoaderSearch(  jarfile As java.util.jar.JarFile)
 
 		''' <summary>
 		''' Specifies a JAR file with instrumentation classes to be defined by the
@@ -492,7 +492,7 @@ Namespace java.lang.instrument
 		''' <seealso cref=     java.lang.ClassLoader#getSystemClassLoader </seealso>
 		''' <seealso cref=     java.util.jar.JarFile
 		''' @since 1.6 </seealso>
-		Sub appendToSystemClassLoaderSearch(ByVal jarfile As java.util.jar.JarFile)
+		Sub appendToSystemClassLoaderSearch(  jarfile As java.util.jar.JarFile)
 
 		''' <summary>
 		''' Returns whether the current JVM configuration supports
@@ -627,7 +627,7 @@ Namespace java.lang.instrument
 		'''           (see <seealso cref="#addTransformer(ClassFileTransformer,boolean) addTransformer"/>).
 		''' 
 		''' @since 1.6 </exception>
-		Sub setNativeMethodPrefix(ByVal transformer As  [Class]FileTransformer, ByVal prefix As String)
+		Sub setNativeMethodPrefix(  transformer As  [Class]FileTransformer,   prefix As String)
 	End Interface
 
 End Namespace

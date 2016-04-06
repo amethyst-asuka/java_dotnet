@@ -65,7 +65,7 @@ Namespace java.awt.print
 		''' <exception cref="IndexOutOfBoundsException"> if
 		'''          the <code>Pageable</code> does not contain the requested
 		'''          page. </exception>
-		Function getPageFormat(ByVal pageIndex As Integer) As PageFormat
+		Function getPageFormat(  pageIndex As Integer) As PageFormat
 
 		''' <summary>
 		''' Returns the <code>Printable</code> instance responsible for
@@ -76,7 +76,7 @@ Namespace java.awt.print
 		''' <exception cref="IndexOutOfBoundsException"> if
 		'''            the <code>Pageable</code> does not contain the requested
 		'''            page. </exception>
-		Function getPrintable(ByVal pageIndex As Integer) As Printable
+		Function getPrintable(  pageIndex As Integer) As Printable
 	End Interface
 
 End Namespace

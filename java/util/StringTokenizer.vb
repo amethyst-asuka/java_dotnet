@@ -194,7 +194,7 @@ Namespace java.util
 		''' <param name="returnDelims">   flag indicating whether to return the delimiters
 		'''                         as tokens. </param>
 		''' <exception cref="NullPointerException"> if str is <CODE>null</CODE> </exception>
-		Public Sub New(ByVal str As String, ByVal delim As String, ByVal returnDelims As Boolean)
+		Public Sub New(  str As String,   delim As String,   returnDelims As Boolean)
 			currentPosition = 0
 			newPosition = -1
 			delimsChanged = False
@@ -219,7 +219,7 @@ Namespace java.util
 		''' <param name="str">     a string to be parsed. </param>
 		''' <param name="delim">   the delimiters. </param>
 		''' <exception cref="NullPointerException"> if str is <CODE>null</CODE> </exception>
-		Public Sub New(ByVal str As String, ByVal delim As String)
+		Public Sub New(  str As String,   delim As String)
 			Me.New(str, delim, False)
 		End Sub
 
@@ -233,7 +233,7 @@ Namespace java.util
 		''' </summary>
 		''' <param name="str">   a string to be parsed. </param>
 		''' <exception cref="NullPointerException"> if str is <CODE>null</CODE> </exception>
-		Public Sub New(ByVal str As String)
+		Public Sub New(  str As String)
 			Me.New(str, " " & vbTab & vbLf & vbCr & vbFormFeed, False)
 		End Sub
 
@@ -242,7 +242,7 @@ Namespace java.util
 		''' is false, returns the index of the first non-delimiter character at or
 		''' after startPos. If retDelims is true, startPos is returned.
 		''' </summary>
-		Private Function skipDelimiters(ByVal startPos As Integer) As Integer
+		Private Function skipDelimiters(  startPos As Integer) As Integer
 			If delimiters Is Nothing Then Throw New NullPointerException
 
 			Dim position As Integer = startPos
@@ -264,7 +264,7 @@ Namespace java.util
 		''' Skips ahead from startPos and returns the index of the next delimiter
 		''' character encountered, or maxPosition if no such delimiter is found.
 		''' </summary>
-		Private Function scanToken(ByVal startPos As Integer) As Integer
+		Private Function scanToken(  startPos As Integer) As Integer
 			Dim position As Integer = startPos
 			Do While position < maxPosition
 				If Not hasSurrogates Then
@@ -289,7 +289,7 @@ Namespace java.util
 			Return position
 		End Function
 
-		Private Function isDelimiter(ByVal codePoint As Integer) As Boolean
+		Private Function isDelimiter(  codePoint As Integer) As Boolean
 			For i As Integer = 0 To delimiterCodePoints.Length - 1
 				If delimiterCodePoints(i) = codePoint Then Return True
 			Next i
@@ -353,7 +353,7 @@ Namespace java.util
 		''' <exception cref="NoSuchElementException">  if there are no more tokens in this
 		'''               tokenizer's string. </exception>
 		''' <exception cref="NullPointerException"> if delim is <CODE>null</CODE> </exception>
-		Public Overridable Function nextToken(ByVal delim As String) As String
+		Public Overridable Function nextToken(  delim As String) As String
 			delimiters = delim
 
 			' delimiter string specified, so set the appropriate flag. 

@@ -49,7 +49,7 @@ Namespace java.awt
 		''' <code>null</code> if page flipping is not used (implies blitting) </param>
 		''' <exception cref="IllegalArgumentException"> if frontCaps or backCaps are
 		''' <code>null</code> </exception>
-		Public Sub New(ByVal frontCaps As ImageCapabilities, ByVal backCaps As ImageCapabilities, ByVal flipContents_Renamed As FlipContents)
+		Public Sub New(  frontCaps As ImageCapabilities,   backCaps As ImageCapabilities,   flipContents_Renamed As FlipContents)
 			If frontCaps Is Nothing OrElse backCaps Is Nothing Then Throw New IllegalArgumentException("Image capabilities specified cannot be null")
 			Me.frontCaps = frontCaps
 			Me.backCaps = backCaps
@@ -193,7 +193,7 @@ Namespace java.awt
 			''' <seealso cref= #PRIOR </seealso>
 			Public Shared ReadOnly COPIED As New FlipContents(I_COPIED)
 
-			Private Sub New(ByVal type As Integer)
+			Private Sub New(  type As Integer)
 				MyBase.New(type, NAMES)
 			End Sub
 

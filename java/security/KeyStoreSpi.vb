@@ -63,7 +63,7 @@ Namespace java.security
 		''' key cannot be found </exception>
 		''' <exception cref="UnrecoverableKeyException"> if the key cannot be recovered
 		''' (e.g., the given password is wrong). </exception>
-		Public MustOverride Function engineGetKey(ByVal [alias] As String, ByVal password As Char()) As Key
+		Public MustOverride Function engineGetKey(  [alias] As String,   password As Char()) As Key
 
 		''' <summary>
 		''' Returns the certificate chain associated with the given alias.
@@ -77,7 +77,7 @@ Namespace java.security
 		''' <returns> the certificate chain (ordered with the user's certificate first
 		''' and the root certificate authority last), or null if the given alias
 		''' does not exist or does not contain a certificate chain </returns>
-		Public MustOverride Function engineGetCertificateChain(ByVal [alias] As String) As java.security.cert.Certificate()
+		Public MustOverride Function engineGetCertificateChain(  [alias] As String) As java.security.cert.Certificate()
 
 		''' <summary>
 		''' Returns the certificate associated with the given alias.
@@ -99,7 +99,7 @@ Namespace java.security
 		''' </param>
 		''' <returns> the certificate, or null if the given alias does not exist or
 		''' does not contain a certificate. </returns>
-		Public MustOverride Function engineGetCertificate(ByVal [alias] As String) As java.security.cert.Certificate
+		Public MustOverride Function engineGetCertificate(  [alias] As String) As java.security.cert.Certificate
 
 		''' <summary>
 		''' Returns the creation date of the entry identified by the given alias.
@@ -108,7 +108,7 @@ Namespace java.security
 		''' </param>
 		''' <returns> the creation date of this entry, or null if the given alias does
 		''' not exist </returns>
-		Public MustOverride Function engineGetCreationDate(ByVal [alias] As String) As Date
+		Public MustOverride Function engineGetCreationDate(  [alias] As String) As Date
 
 		''' <summary>
 		''' Assigns the given key to the given alias, protecting it with the given
@@ -131,7 +131,7 @@ Namespace java.security
 		''' </param>
 		''' <exception cref="KeyStoreException"> if the given key cannot be protected, or
 		''' this operation fails for some other reason </exception>
-		Public MustOverride Sub engineSetKeyEntry(ByVal [alias] As String, ByVal key As Key, ByVal password As Char(), ByVal chain As java.security.cert.Certificate())
+		Public MustOverride Sub engineSetKeyEntry(  [alias] As String,   key As Key,   password As Char(),   chain As java.security.cert.Certificate())
 
 		''' <summary>
 		''' Assigns the given key (that has already been protected) to the given
@@ -153,7 +153,7 @@ Namespace java.security
 		''' {@code java.security.PrivateKey}).
 		''' </param>
 		''' <exception cref="KeyStoreException"> if this operation fails. </exception>
-		Public MustOverride Sub engineSetKeyEntry(ByVal [alias] As String, ByVal key As SByte(), ByVal chain As java.security.cert.Certificate())
+		Public MustOverride Sub engineSetKeyEntry(  [alias] As String,   key As SByte(),   chain As java.security.cert.Certificate())
 
 		''' <summary>
 		''' Assigns the given certificate to the given alias.
@@ -171,7 +171,7 @@ Namespace java.security
 		''' <exception cref="KeyStoreException"> if the given alias already exists and does
 		''' not identify an entry containing a trusted certificate,
 		''' or this operation fails for some other reason. </exception>
-		Public MustOverride Sub engineSetCertificateEntry(ByVal [alias] As String, ByVal cert As java.security.cert.Certificate)
+		Public MustOverride Sub engineSetCertificateEntry(  [alias] As String,   cert As java.security.cert.Certificate)
 
 		''' <summary>
 		''' Deletes the entry identified by the given alias from this keystore.
@@ -179,7 +179,7 @@ Namespace java.security
 		''' <param name="alias"> the alias name
 		''' </param>
 		''' <exception cref="KeyStoreException"> if the entry cannot be removed. </exception>
-		Public MustOverride Sub engineDeleteEntry(ByVal [alias] As String)
+		Public MustOverride Sub engineDeleteEntry(  [alias] As String)
 
 		''' <summary>
 		''' Lists all the alias names of this keystore.
@@ -193,7 +193,7 @@ Namespace java.security
 		''' <param name="alias"> the alias name
 		''' </param>
 		''' <returns> true if the alias exists, false otherwise </returns>
-		Public MustOverride Function engineContainsAlias(ByVal [alias] As String) As Boolean
+		Public MustOverride Function engineContainsAlias(  [alias] As String) As Boolean
 
 		''' <summary>
 		''' Retrieves the number of entries in this keystore.
@@ -211,7 +211,7 @@ Namespace java.security
 		''' </param>
 		''' <returns> true if the entry identified by the given alias is a
 		''' key-related, false otherwise. </returns>
-		Public MustOverride Function engineIsKeyEntry(ByVal [alias] As String) As Boolean
+		Public MustOverride Function engineIsKeyEntry(  [alias] As String) As Boolean
 
 		''' <summary>
 		''' Returns true if the entry identified by the given alias
@@ -223,7 +223,7 @@ Namespace java.security
 		''' </param>
 		''' <returns> true if the entry identified by the given alias contains a
 		''' trusted certificate, false otherwise. </returns>
-		Public MustOverride Function engineIsCertificateEntry(ByVal [alias] As String) As Boolean
+		Public MustOverride Function engineIsCertificateEntry(  [alias] As String) As Boolean
 
 		''' <summary>
 		''' Returns the (alias) name of the first keystore entry whose certificate
@@ -247,7 +247,7 @@ Namespace java.security
 		''' </param>
 		''' <returns> the alias name of the first entry with matching certificate,
 		''' or null if no such entry exists in this keystore. </returns>
-		Public MustOverride Function engineGetCertificateAlias(ByVal cert As java.security.cert.Certificate) As String
+		Public MustOverride Function engineGetCertificateAlias(  cert As java.security.cert.Certificate) As String
 
 		''' <summary>
 		''' Stores this keystore to the given output stream, and protects its
@@ -261,7 +261,7 @@ Namespace java.security
 		''' algorithm could not be found </exception>
 		''' <exception cref="CertificateException"> if any of the certificates included in
 		''' the keystore data could not be stored </exception>
-		Public MustOverride Sub engineStore(ByVal stream As OutputStream, ByVal password As Char())
+		Public MustOverride Sub engineStore(  stream As OutputStream,   password As Char())
 
 		''' <summary>
 		''' Stores this keystore using the given
@@ -281,7 +281,7 @@ Namespace java.security
 		'''          the keystore data could not be stored
 		''' 
 		''' @since 1.5 </exception>
-		Public Overridable Sub engineStore(ByVal param As KeyStore.LoadStoreParameter)
+		Public Overridable Sub engineStore(  param As KeyStore.LoadStoreParameter)
 			Throw New UnsupportedOperationException
 		End Sub
 
@@ -310,7 +310,7 @@ Namespace java.security
 		''' the integrity of the keystore cannot be found </exception>
 		''' <exception cref="CertificateException"> if any of the certificates in the
 		''' keystore could not be loaded </exception>
-		Public MustOverride Sub engineLoad(ByVal stream As InputStream, ByVal password As Char())
+		Public MustOverride Sub engineLoad(  stream As InputStream,   password As Char())
 
 		''' <summary>
 		''' Loads the keystore using the given
@@ -338,7 +338,7 @@ Namespace java.security
 		'''          keystore could not be loaded
 		''' 
 		''' @since 1.5 </exception>
-		Public Overridable Sub engineLoad(ByVal param As KeyStore.LoadStoreParameter)
+		Public Overridable Sub engineLoad(  param As KeyStore.LoadStoreParameter)
 
 			If param Is Nothing Then
 				engineLoad(CType(Nothing, InputStream), CType(Nothing, Char()))
@@ -394,7 +394,7 @@ Namespace java.security
 		'''          the information needed to recover the key (e.g. wrong password)
 		''' 
 		''' @since 1.5 </exception>
-		Public Overridable Function engineGetEntry(ByVal [alias] As String, ByVal protParam As KeyStore.ProtectionParameter) As KeyStore.Entry
+		Public Overridable Function engineGetEntry(  [alias] As String,   protParam As KeyStore.ProtectionParameter) As KeyStore.Entry
 
 			If Not engineContainsAlias([alias]) Then Return Nothing
 
@@ -443,7 +443,7 @@ Namespace java.security
 		''' <exception cref="KeyStoreException"> if this operation fails
 		''' 
 		''' @since 1.5 </exception>
-		Public Overridable Sub engineSetEntry(ByVal [alias] As String, ByVal entry As KeyStore.Entry, ByVal protParam As KeyStore.ProtectionParameter)
+		Public Overridable Sub engineSetEntry(  [alias] As String,   entry As KeyStore.Entry,   protParam As KeyStore.ProtectionParameter)
 
 			' get password
 			If protParam IsNot Nothing AndAlso Not(TypeOf protParam Is KeyStore.PasswordProtection) Then Throw New KeyStoreException("unsupported protection parameter")
@@ -494,7 +494,7 @@ Namespace java.security
 		'''          specified {@code entryClass}, false otherwise
 		''' 
 		''' @since 1.5 </returns>
-		Public Overridable Function engineEntryInstanceOf(ByVal [alias] As String, ByVal entryClass As [Class]) As Boolean
+		Public Overridable Function engineEntryInstanceOf(  [alias] As String,   entryClass As [Class]) As Boolean
 			If entryClass Is GetType(KeyStore.TrustedCertificateEntry) Then Return engineIsCertificateEntry([alias])
 			If entryClass Is GetType(KeyStore.PrivateKeyEntry) Then Return engineIsKeyEntry([alias]) AndAlso engineGetCertificate([alias]) IsNot Nothing
 			If entryClass Is GetType(KeyStore.SecretKeyEntry) Then Return engineIsKeyEntry([alias]) AndAlso engineGetCertificate([alias]) Is Nothing

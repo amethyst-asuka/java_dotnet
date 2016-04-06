@@ -106,15 +106,15 @@ Namespace java.nio.channels
 		Inherits java.nio.channels.spi.AbstractSelectableChannel
 		Implements ByteChannel, ScatteringByteChannel, GatheringByteChannel, MulticastChannel
 
-			Public MustOverride Function join(ByVal group As java.net.InetAddress, ByVal interf As java.net.NetworkInterface, ByVal source As java.net.InetAddress) As MembershipKey Implements MulticastChannel.join
-			Public MustOverride Function join(ByVal group As java.net.InetAddress, ByVal interf As java.net.NetworkInterface) As MembershipKey Implements MulticastChannel.join
+			Public MustOverride Function join(  group As java.net.InetAddress,   interf As java.net.NetworkInterface,   source As java.net.InetAddress) As MembershipKey Implements MulticastChannel.join
+			Public MustOverride Function join(  group As java.net.InetAddress,   interf As java.net.NetworkInterface) As MembershipKey Implements MulticastChannel.join
 
 		''' <summary>
 		''' Initializes a new instance of this class.
 		''' </summary>
 		''' <param name="provider">
 		'''         The provider that created this channel </param>
-		Protected Friend Sub New(ByVal provider As java.nio.channels.spi.SelectorProvider)
+		Protected Friend Sub New(  provider As java.nio.channels.spi.SelectorProvider)
 			MyBase.New(provider)
 		End Sub
 
@@ -169,7 +169,7 @@ Namespace java.nio.channels
 		'''          If an I/O error occurs
 		''' 
 		''' @since   1.7 </exception>
-		Public Shared Function open(ByVal family As java.net.ProtocolFamily) As DatagramChannel
+		Public Shared Function open(  family As java.net.ProtocolFamily) As DatagramChannel
 			Return java.nio.channels.spi.SelectorProvider.provider().openDatagramChannel(family)
 		End Function
 
@@ -199,7 +199,7 @@ Namespace java.nio.channels
 		'''          operation
 		''' 
 		''' @since 1.7 </exception>
-		Public MustOverride Function bind(ByVal local As java.net.SocketAddress) As DatagramChannel
+		Public MustOverride Function bind(  local As java.net.SocketAddress) As DatagramChannel
 
 		''' <exception cref="UnsupportedOperationException">           {@inheritDoc} </exception>
 		''' <exception cref="IllegalArgumentException">                {@inheritDoc} </exception>
@@ -207,7 +207,7 @@ Namespace java.nio.channels
 		''' <exception cref="IOException">                             {@inheritDoc}
 		''' 
 		''' @since 1.7 </exception>
-		Public MustOverride Function setOption(Of T)(ByVal name As java.net.SocketOption(Of T), ByVal value As T) As DatagramChannel
+		Public MustOverride Function setOption(Of T)(  name As java.net.SocketOption(Of T),   value As T) As DatagramChannel
 
 		''' <summary>
 		''' Retrieves a datagram socket associated with this channel.
@@ -274,7 +274,7 @@ Namespace java.nio.channels
 		''' </exception>
 		''' <exception cref="IOException">
 		'''          If some other I/O error occurs </exception>
-		Public MustOverride Function connect(ByVal remote As java.net.SocketAddress) As DatagramChannel
+		Public MustOverride Function connect(  remote As java.net.SocketAddress) As DatagramChannel
 
 		''' <summary>
 		''' Disconnects this channel's socket.
@@ -371,7 +371,7 @@ Namespace java.nio.channels
 		''' </exception>
 		''' <exception cref="IOException">
 		'''          If some other I/O error occurs </exception>
-		Public MustOverride Function receive(ByVal dst As java.nio.ByteBuffer) As java.net.SocketAddress
+		Public MustOverride Function receive(  dst As java.nio.ByteBuffer) As java.net.SocketAddress
 
 		''' <summary>
 		''' Sends a datagram via this channel.
@@ -435,7 +435,7 @@ Namespace java.nio.channels
 		''' </exception>
 		''' <exception cref="IOException">
 		'''          If some other I/O error occurs </exception>
-		Public MustOverride Function send(ByVal src As java.nio.ByteBuffer, ByVal target As java.net.SocketAddress) As Integer
+		Public MustOverride Function send(  src As java.nio.ByteBuffer,   target As java.net.SocketAddress) As Integer
 
 
 		' -- ByteChannel operations --
@@ -452,7 +452,7 @@ Namespace java.nio.channels
 		''' </summary>
 		''' <exception cref="NotYetConnectedException">
 		'''          If this channel's socket is not connected </exception>
-		Public MustOverride Function read(ByVal dst As java.nio.ByteBuffer) As Integer Implements ByteChannel.read, ReadableByteChannel.read
+		Public MustOverride Function read(  dst As java.nio.ByteBuffer) As Integer Implements ByteChannel.read, ReadableByteChannel.read
 
 		''' <summary>
 		''' Reads a datagram from this channel.
@@ -466,7 +466,7 @@ Namespace java.nio.channels
 		''' </summary>
 		''' <exception cref="NotYetConnectedException">
 		'''          If this channel's socket is not connected </exception>
-		Public MustOverride Function read(ByVal dsts As java.nio.ByteBuffer(), ByVal offset As Integer, ByVal length As Integer) As Long Implements ScatteringByteChannel.read
+		Public MustOverride Function read(  dsts As java.nio.ByteBuffer(),   offset As Integer,   length As Integer) As Long Implements ScatteringByteChannel.read
 
 		''' <summary>
 		''' Reads a datagram from this channel.
@@ -480,7 +480,7 @@ Namespace java.nio.channels
 		''' </summary>
 		''' <exception cref="NotYetConnectedException">
 		'''          If this channel's socket is not connected </exception>
-		Public Function read(ByVal dsts As java.nio.ByteBuffer()) As Long Implements ScatteringByteChannel.read
+		Public Function read(  dsts As java.nio.ByteBuffer()) As Long Implements ScatteringByteChannel.read
 			Return read(dsts, 0, dsts.Length)
 		End Function
 
@@ -494,7 +494,7 @@ Namespace java.nio.channels
 		''' </summary>
 		''' <exception cref="NotYetConnectedException">
 		'''          If this channel's socket is not connected </exception>
-		Public MustOverride Function write(ByVal src As java.nio.ByteBuffer) As Integer Implements ByteChannel.write, WritableByteChannel.write
+		Public MustOverride Function write(  src As java.nio.ByteBuffer) As Integer Implements ByteChannel.write, WritableByteChannel.write
 
 		''' <summary>
 		''' Writes a datagram to this channel.
@@ -512,7 +512,7 @@ Namespace java.nio.channels
 		''' </returns>
 		''' <exception cref="NotYetConnectedException">
 		'''          If this channel's socket is not connected </exception>
-		Public MustOverride Function write(ByVal srcs As java.nio.ByteBuffer(), ByVal offset As Integer, ByVal length As Integer) As Long Implements GatheringByteChannel.write
+		Public MustOverride Function write(  srcs As java.nio.ByteBuffer(),   offset As Integer,   length As Integer) As Long Implements GatheringByteChannel.write
 
 		''' <summary>
 		''' Writes a datagram to this channel.
@@ -530,7 +530,7 @@ Namespace java.nio.channels
 		''' </returns>
 		''' <exception cref="NotYetConnectedException">
 		'''          If this channel's socket is not connected </exception>
-		Public Function write(ByVal srcs As java.nio.ByteBuffer()) As Long Implements GatheringByteChannel.write
+		Public Function write(  srcs As java.nio.ByteBuffer()) As Long Implements GatheringByteChannel.write
 			Return write(srcs, 0, srcs.Length)
 		End Function
 

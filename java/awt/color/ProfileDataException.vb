@@ -38,7 +38,7 @@ Namespace java.awt.Icolor
         ''' <summary>
         '''  Constructs a ProfileDataException with the specified detail message. </summary>
         '''  <param name="s"> the specified detail message </param>
-        Public Sub New(ByVal s As String)
+        Public Sub New(  s As String)
             MyBase.New(s)
         End Sub
     End Class

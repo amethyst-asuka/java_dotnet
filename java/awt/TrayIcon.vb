@@ -156,7 +156,7 @@ Namespace java.awt
 		''' <seealso cref= TrayIcon#TrayIcon(Image, String) </seealso>
 		''' <seealso cref= SecurityManager#checkPermission </seealso>
 		''' <seealso cref= AWTPermission </seealso>
-		Public Sub New(ByVal image_Renamed As Image)
+		Public Sub New(  image_Renamed As Image)
 			Me.New()
 			If image_Renamed Is Nothing Then Throw New IllegalArgumentException("creating TrayIcon with null Image")
 			image = image_Renamed
@@ -182,7 +182,7 @@ Namespace java.awt
 		''' <seealso cref= TrayIcon#TrayIcon(Image, String, PopupMenu) </seealso>
 		''' <seealso cref= SecurityManager#checkPermission </seealso>
 		''' <seealso cref= AWTPermission </seealso>
-		Public Sub New(ByVal image_Renamed As Image, ByVal tooltip As String)
+		Public Sub New(  image_Renamed As Image,   tooltip As String)
 			Me.New(image_Renamed)
 			toolTip = tooltip
 		End Sub
@@ -211,7 +211,7 @@ Namespace java.awt
 		''' <seealso cref= #addMouseListener(MouseListener) </seealso>
 		''' <seealso cref= SecurityManager#checkPermission </seealso>
 		''' <seealso cref= AWTPermission </seealso>
-		Public Sub New(ByVal image_Renamed As Image, ByVal tooltip As String, ByVal popup As PopupMenu)
+		Public Sub New(  image_Renamed As Image,   tooltip As String,   popup As PopupMenu)
 			Me.New(image_Renamed, tooltip)
 			popupMenu = popup
 		End Sub
@@ -238,7 +238,7 @@ Namespace java.awt
 		''' <seealso cref= SystemTray#add(TrayIcon) </seealso>
 		''' <seealso cref= TrayIcon#TrayIcon(Image, String) </seealso>
 		Public Overridable Property image As Image
-			Set(ByVal image_Renamed As Image)
+			Set(  image_Renamed As Image)
 				If image_Renamed Is Nothing Then Throw New NullPointerException("setting null Image")
 				Me.image_Renamed = image_Renamed
     
@@ -277,7 +277,7 @@ Namespace java.awt
 		''' remove any popup menu </param>
 		''' <seealso cref= #getPopupMenu </seealso>
 		Public Overridable Property popupMenu As PopupMenu
-			Set(ByVal popup As PopupMenu)
+			Set(  popup As PopupMenu)
 				If popup Is Me.popup Then Return
 				SyncLock GetType(TrayIcon)
 					If popup IsNot Nothing Then
@@ -307,7 +307,7 @@ Namespace java.awt
 		''' <code>null</code> no tooltip is shown </param>
 		''' <seealso cref= #getToolTip </seealso>
 		Public Overridable Property toolTip As String
-			Set(ByVal tooltip As String)
+			Set(  tooltip As String)
 				Me.tooltip = tooltip
     
 				Dim peer As java.awt.peer.TrayIconPeer = Me.peer
@@ -337,7 +337,7 @@ Namespace java.awt
 		''' <code>false</code> otherwise </param>
 		''' <seealso cref= #isImageAutoSize </seealso>
 		Public Overridable Property imageAutoSize As Boolean
-			Set(ByVal autosize As Boolean)
+			Set(  autosize As Boolean)
 				Me.autosize = autosize
     
 				Dim peer As java.awt.peer.TrayIconPeer = Me.peer
@@ -369,7 +369,7 @@ Namespace java.awt
 		''' <seealso cref=      #removeMouseListener(MouseListener) </seealso>
 		''' <seealso cref=      #getMouseListeners </seealso>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Sub addMouseListener(ByVal listener As MouseListener)
+		Public Overridable Sub addMouseListener(  listener As MouseListener)
 			If listener Is Nothing Then Return
 			mouseListener = AWTEventMulticaster.add(mouseListener, listener)
 		End Sub
@@ -386,7 +386,7 @@ Namespace java.awt
 		''' <seealso cref=      #addMouseListener(MouseListener) </seealso>
 		''' <seealso cref=      #getMouseListeners </seealso>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Sub removeMouseListener(ByVal listener As MouseListener)
+		Public Overridable Sub removeMouseListener(  listener As MouseListener)
 			If listener Is Nothing Then Return
 			mouseListener = AWTEventMulticaster.remove(mouseListener, listener)
 		End Sub
@@ -428,7 +428,7 @@ Namespace java.awt
 		''' <seealso cref=      #removeMouseMotionListener(MouseMotionListener) </seealso>
 		''' <seealso cref=      #getMouseMotionListeners </seealso>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Sub addMouseMotionListener(ByVal listener As MouseMotionListener)
+		Public Overridable Sub addMouseMotionListener(  listener As MouseMotionListener)
 			If listener Is Nothing Then Return
 			mouseMotionListener = AWTEventMulticaster.add(mouseMotionListener, listener)
 		End Sub
@@ -445,7 +445,7 @@ Namespace java.awt
 		''' <seealso cref=      #addMouseMotionListener(MouseMotionListener) </seealso>
 		''' <seealso cref=      #getMouseMotionListeners </seealso>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Sub removeMouseMotionListener(ByVal listener As MouseMotionListener)
+		Public Overridable Sub removeMouseMotionListener(  listener As MouseMotionListener)
 			If listener Is Nothing Then Return
 			mouseMotionListener = AWTEventMulticaster.remove(mouseMotionListener, listener)
 		End Sub
@@ -478,7 +478,7 @@ Namespace java.awt
 			Get
 				Return actionCommand
 			End Get
-			Set(ByVal command As String)
+			Set(  command As String)
 				actionCommand = command
 			End Set
 		End Property
@@ -502,7 +502,7 @@ Namespace java.awt
 		''' <seealso cref=           java.awt.event.ActionListener </seealso>
 		''' <seealso cref= #setActionCommand(String) </seealso>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Sub addActionListener(ByVal listener As ActionListener)
+		Public Overridable Sub addActionListener(  listener As ActionListener)
 			If listener Is Nothing Then Return
 			actionListener = AWTEventMulticaster.add(actionListener, listener)
 		End Sub
@@ -520,7 +520,7 @@ Namespace java.awt
 		''' <seealso cref=      #getActionListeners </seealso>
 		''' <seealso cref= #setActionCommand(String) </seealso>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Sub removeActionListener(ByVal listener As ActionListener)
+		Public Overridable Sub removeActionListener(  listener As ActionListener)
 			If listener Is Nothing Then Return
 			actionListener = AWTEventMulticaster.remove(actionListener, listener)
 		End Sub
@@ -589,7 +589,7 @@ Namespace java.awt
 		''' <param name="messageType"> an enum indicating the message type </param>
 		''' <exception cref="NullPointerException"> if both <code>caption</code>
 		''' and <code>text</code> are <code>null</code> </exception>
-		Public Overridable Sub displayMessage(ByVal caption As String, ByVal text As String, ByVal messageType As MessageType)
+		Public Overridable Sub displayMessage(  caption As String,   text As String,   messageType As MessageType)
 			If caption Is Nothing AndAlso text Is Nothing Then Throw New NullPointerException("displaying the message with both caption and text being null")
 
 			Dim peer As java.awt.peer.TrayIconPeer = Me.peer
@@ -639,7 +639,7 @@ Namespace java.awt
 		End Sub
 
 		Friend Overridable Property iD As Integer
-			Set(ByVal id As Integer)
+			Set(  id As Integer)
 				Me.id = id
 			End Set
 			Get
@@ -648,13 +648,13 @@ Namespace java.awt
 		End Property
 
 
-		Friend Overridable Sub dispatchEvent(ByVal e As AWTEvent)
+		Friend Overridable Sub dispatchEvent(  e As AWTEvent)
 			EventQueue.currentEventAndMostRecentTime = e
 			Toolkit.defaultToolkit.notifyAWTEventListeners(e)
 			processEvent(e)
 		End Sub
 
-		Friend Overridable Sub processEvent(ByVal e As AWTEvent)
+		Friend Overridable Sub processEvent(  e As AWTEvent)
 			If TypeOf e Is MouseEvent Then
 				Select Case e.iD
 				Case MouseEvent.MOUSE_PRESSED, MouseEvent.MOUSE_RELEASED, MouseEvent.MOUSE_CLICKED
@@ -669,7 +669,7 @@ Namespace java.awt
 			End If
 		End Sub
 
-		Friend Overridable Sub processMouseEvent(ByVal e As MouseEvent)
+		Friend Overridable Sub processMouseEvent(  e As MouseEvent)
 			Dim listener As MouseListener = mouseListener
 
 			If listener IsNot Nothing Then
@@ -687,12 +687,12 @@ Namespace java.awt
 			End If
 		End Sub
 
-		Friend Overridable Sub processMouseMotionEvent(ByVal e As MouseEvent)
+		Friend Overridable Sub processMouseMotionEvent(  e As MouseEvent)
 			Dim listener As MouseMotionListener = mouseMotionListener
 			If listener IsNot Nothing AndAlso e.iD = MouseEvent.MOUSE_MOVED Then listener.mouseMoved(e)
 		End Sub
 
-		Friend Overridable Sub processActionEvent(ByVal e As ActionEvent)
+		Friend Overridable Sub processActionEvent(  e As ActionEvent)
 			Dim listener As ActionListener = actionListener
 			If listener IsNot Nothing Then listener.actionPerformed(e)
 		End Sub

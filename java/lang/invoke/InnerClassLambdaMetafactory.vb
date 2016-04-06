@@ -123,7 +123,7 @@ Namespace java.lang.invoke
 		'''                          bridged to the implementation method </param>
 		''' <exception cref="LambdaConversionException"> If any of the meta-factory protocol
 		''' invariants are violated </exception>
-		Public Sub New(ByVal caller As MethodHandles.Lookup, ByVal invokedType As MethodType, ByVal samMethodName As String, ByVal samMethodType As MethodType, ByVal implMethod As MethodHandle, ByVal instantiatedMethodType As MethodType, ByVal isSerializable As Boolean, ByVal markerInterfaces As  [Class](), ByVal additionalBridges As MethodType())
+		Public Sub New(  caller As MethodHandles.Lookup,   invokedType As MethodType,   samMethodName As String,   samMethodType As MethodType,   implMethod As MethodHandle,   instantiatedMethodType As MethodType,   isSerializable As Boolean,   markerInterfaces As  [Class](),   additionalBridges As MethodType())
 			MyBase.New(caller, invokedType, samMethodName, samMethodType, implMethod, instantiatedMethodType, isSerializable, markerInterfaces, additionalBridges)
 			implMethodClassName = implDefiningClass.name.replace("."c, "/"c)
 			implMethodName = implInfo.name
@@ -399,12 +399,12 @@ Namespace java.lang.invoke
 			Private ReadOnly outerInstance As InnerClassLambdaMetafactory
 
 
-			Friend Sub New(ByVal outerInstance As InnerClassLambdaMetafactory, ByVal mv As MethodVisitor)
+			Friend Sub New(  outerInstance As InnerClassLambdaMetafactory,   mv As MethodVisitor)
 					Me.outerInstance = outerInstance
 				MyBase.New(mv)
 			End Sub
 
-			Friend Overridable Sub generate(ByVal methodType_Renamed As MethodType)
+			Friend Overridable Sub generate(  methodType_Renamed As MethodType)
 				visitCode()
 
 				If outerInstance.implKind = MethodHandleInfo.REF_newInvokeSpecial Then
@@ -432,7 +432,7 @@ Namespace java.lang.invoke
 				visitEnd()
 			End Sub
 
-			Private Sub convertArgumentTypes(ByVal samType As MethodType)
+			Private Sub convertArgumentTypes(  samType As MethodType)
 				Dim lvIndex As Integer = 0
 				Dim samIncludesReceiver As Boolean = outerInstance.implIsInstanceMethod AndAlso outerInstance.invokedType.parameterCount() = 0
 				Dim samReceiverLength As Integer = If(samIncludesReceiver, 1, 0)
@@ -471,7 +471,7 @@ Namespace java.lang.invoke
 			End Function
 		End Class
 
-		Friend Shared Function getParameterSize(ByVal c As [Class]) As Integer
+		Friend Shared Function getParameterSize(  c As [Class]) As Integer
 			If c Is Void.TYPE Then
 				Return 0
 			ElseIf c Is java.lang.[Long].TYPE OrElse c Is java.lang.[Double].TYPE Then
@@ -480,17 +480,17 @@ Namespace java.lang.invoke
 			Return 1
 		End Function
 
-		Friend Shared Function getLoadOpcode(ByVal c As [Class]) As Integer
+		Friend Shared Function getLoadOpcode(  c As [Class]) As Integer
 			If c Is Void.TYPE Then Throw New InternalError("Unexpected  Sub  type of load opcode")
 			Return ILOAD + getOpcodeOffset(c)
 		End Function
 
-		Friend Shared Function getReturnOpcode(ByVal c As [Class]) As Integer
+		Friend Shared Function getReturnOpcode(  c As [Class]) As Integer
 			If c Is Void.TYPE Then Return RETURN
 			Return IRETURN + getOpcodeOffset(c)
 		End Function
 
-		Private Shared Function getOpcodeOffset(ByVal c As [Class]) As Integer
+		Private Shared Function getOpcodeOffset(  c As [Class]) As Integer
 			If c.primitive Then
 				If c Is java.lang.[Long].TYPE Then
 					Return 1

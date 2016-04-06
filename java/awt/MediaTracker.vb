@@ -194,7 +194,7 @@ Namespace java.awt
 		''' Creates a media tracker to track images for a given component. </summary>
 		''' <param name="comp"> the component on which the images
 		'''                     will eventually be drawn </param>
-		Public Sub New(ByVal comp As java.awt.Component)
+		Public Sub New(  comp As java.awt.Component)
 			target = comp
 		End Sub
 
@@ -204,7 +204,7 @@ Namespace java.awt
 		''' (unscaled) size. </summary>
 		''' <param name="image">   the image to be tracked </param>
 		''' <param name="id">      an identifier used to track this image </param>
-		Public Overridable Sub addImage(ByVal image_Renamed As java.awt.Image, ByVal id As Integer)
+		Public Overridable Sub addImage(  image_Renamed As java.awt.Image,   id As Integer)
 			addImage(image_Renamed, id, -1, -1)
 		End Sub
 
@@ -218,13 +218,13 @@ Namespace java.awt
 		''' <param name="w">    the width at which the image is rendered </param>
 		''' <param name="h">    the height at which the image is rendered </param>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Sub addImage(ByVal image_Renamed As java.awt.Image, ByVal id As Integer, ByVal w As Integer, ByVal h As Integer)
+		Public Overridable Sub addImage(  image_Renamed As java.awt.Image,   id As Integer,   w As Integer,   h As Integer)
 			addImageImpl(image_Renamed, id, w, h)
 			Dim rvImage As java.awt.Image = getResolutionVariant(image_Renamed)
 			If rvImage IsNot Nothing Then addImageImpl(rvImage, id,If(w = -1, -1, 2 * w),If(h = -1, -1, 2 * h))
 		End Sub
 
-		Private Sub addImageImpl(ByVal image_Renamed As java.awt.Image, ByVal id As Integer, ByVal w As Integer, ByVal h As Integer)
+		Private Sub addImageImpl(  image_Renamed As java.awt.Image,   id As Integer,   w As Integer,   h As Integer)
 			head = MediaEntry.insert(head, New ImageMediaEntry(Me, image_Renamed, id, w, h))
 		End Sub
 		''' <summary>
@@ -298,12 +298,12 @@ Namespace java.awt
 		''' <seealso cref=         java.awt.MediaTracker#checkAll() </seealso>
 		''' <seealso cref=         java.awt.MediaTracker#isErrorAny() </seealso>
 		''' <seealso cref=         java.awt.MediaTracker#isErrorID(int) </seealso>
-		Public Overridable Function checkAll(ByVal load As Boolean) As Boolean
+		Public Overridable Function checkAll(  load As Boolean) As Boolean
 			Return checkAll(load, True)
 		End Function
 
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Private Function checkAll(ByVal load As Boolean, ByVal verify As Boolean) As Boolean
+		Private Function checkAll(  load As Boolean,   verify As Boolean) As Boolean
 			Dim cur As MediaEntry = head
 			Dim done_Renamed As Boolean = True
 			Do While cur IsNot Nothing
@@ -404,7 +404,7 @@ Namespace java.awt
 		''' <exception cref="InterruptedException">  if any thread has
 		'''                                     interrupted this thread. </exception>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Function waitForAll(ByVal ms As Long) As Boolean
+		Public Overridable Function waitForAll(  ms As Long) As Boolean
 			Dim [end] As Long = System.currentTimeMillis() + ms
 			Dim first As Boolean = True
 			Do
@@ -444,12 +444,12 @@ Namespace java.awt
 		''' <seealso cref=          java.awt.MediaTracker#ABORTED </seealso>
 		''' <seealso cref=          java.awt.MediaTracker#ERRORED </seealso>
 		''' <seealso cref=          java.awt.MediaTracker#COMPLETE </seealso>
-		Public Overridable Function statusAll(ByVal load As Boolean) As Integer
+		Public Overridable Function statusAll(  load As Boolean) As Integer
 			Return statusAll(load, True)
 		End Function
 
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Private Function statusAll(ByVal load As Boolean, ByVal verify As Boolean) As Integer
+		Private Function statusAll(  load As Boolean,   verify As Boolean) As Integer
 			Dim cur As MediaEntry = head
 			Dim status As Integer = 0
 			Do While cur IsNot Nothing
@@ -478,7 +478,7 @@ Namespace java.awt
 		''' <seealso cref=         java.awt.MediaTracker#checkAll() </seealso>
 		''' <seealso cref=         java.awt.MediaTracker#isErrorAny() </seealso>
 		''' <seealso cref=         java.awt.MediaTracker#isErrorID(int) </seealso>
-		Public Overridable Function checkID(ByVal id As Integer) As Boolean
+		Public Overridable Function checkID(  id As Integer) As Boolean
 			Return checkID(id, False, True)
 		End Function
 
@@ -504,12 +504,12 @@ Namespace java.awt
 		''' <seealso cref=         java.awt.MediaTracker#checkAll() </seealso>
 		''' <seealso cref=         java.awt.MediaTracker#isErrorAny() </seealso>
 		''' <seealso cref=         java.awt.MediaTracker#isErrorID(int) </seealso>
-		Public Overridable Function checkID(ByVal id As Integer, ByVal load As Boolean) As Boolean
+		Public Overridable Function checkID(  id As Integer,   load As Boolean) As Boolean
 			Return checkID(id, load, True)
 		End Function
 
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Private Function checkID(ByVal id As Integer, ByVal load As Boolean, ByVal verify As Boolean) As Boolean
+		Private Function checkID(  id As Integer,   load As Boolean,   verify As Boolean) As Boolean
 			Dim cur As MediaEntry = head
 			Dim done_Renamed As Boolean = True
 			Do While cur IsNot Nothing
@@ -529,7 +529,7 @@ Namespace java.awt
 		''' <seealso cref=          java.awt.MediaTracker#isErrorAny </seealso>
 		''' <seealso cref=          java.awt.MediaTracker#getErrorsID </seealso>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Function isErrorID(ByVal id As Integer) As Boolean
+		Public Overridable Function isErrorID(  id As Integer) As Boolean
 			Dim cur As MediaEntry = head
 			Do While cur IsNot Nothing
 				If cur.iD = id AndAlso (cur.getStatus(False, True) And ERRORED) <> 0 Then Return True
@@ -550,7 +550,7 @@ Namespace java.awt
 		''' <seealso cref=         java.awt.MediaTracker#isErrorAny </seealso>
 		''' <seealso cref=         java.awt.MediaTracker#getErrorsAny </seealso>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Function getErrorsID(ByVal id As Integer) As Object()
+		Public Overridable Function getErrorsID(  id As Integer) As Object()
 			Dim cur As MediaEntry = head
 			Dim numerrors As Integer = 0
 			Do While cur IsNot Nothing
@@ -586,7 +586,7 @@ Namespace java.awt
 		''' <seealso cref=           java.awt.MediaTracker#isErrorID(int) </seealso>
 		''' <exception cref="InterruptedException">  if any thread has
 		'''                          interrupted this thread. </exception>
-		Public Overridable Sub waitForID(ByVal id As Integer)
+		Public Overridable Sub waitForID(  id As Integer)
 			waitForID(id, 0)
 		End Sub
 
@@ -612,7 +612,7 @@ Namespace java.awt
 		''' <exception cref="InterruptedException">  if any thread has
 		'''                          interrupted this thread. </exception>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Function waitForID(ByVal id As Integer, ByVal ms As Long) As Boolean
+		Public Overridable Function waitForID(  id As Integer,   ms As Long) As Boolean
 			Dim [end] As Long = System.currentTimeMillis() + ms
 			Dim first As Boolean = True
 			Do
@@ -654,12 +654,12 @@ Namespace java.awt
 		''' <seealso cref=          java.awt.MediaTracker#ABORTED </seealso>
 		''' <seealso cref=          java.awt.MediaTracker#ERRORED </seealso>
 		''' <seealso cref=          java.awt.MediaTracker#COMPLETE </seealso>
-		Public Overridable Function statusID(ByVal id As Integer, ByVal load As Boolean) As Integer
+		Public Overridable Function statusID(  id As Integer,   load As Boolean) As Integer
 			Return statusID(id, load, True)
 		End Function
 
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Private Function statusID(ByVal id As Integer, ByVal load As Boolean, ByVal verify As Boolean) As Integer
+		Private Function statusID(  id As Integer,   load As Boolean,   verify As Boolean) As Integer
 			Dim cur As MediaEntry = head
 			Dim status As Integer = 0
 			Do While cur IsNot Nothing
@@ -678,14 +678,14 @@ Namespace java.awt
 		''' <seealso cref=     java.awt.MediaTracker#removeImage(java.awt.Image, int, int, int)
 		''' @since   JDK1.1 </seealso>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Sub removeImage(ByVal image_Renamed As java.awt.Image)
+		Public Overridable Sub removeImage(  image_Renamed As java.awt.Image)
 			removeImageImpl(image_Renamed)
 			Dim rvImage As java.awt.Image = getResolutionVariant(image_Renamed)
 			If rvImage IsNot Nothing Then removeImageImpl(rvImage)
 			notifyAll() ' Notify in case remaining images are "done".
 		End Sub
 
-		Private Sub removeImageImpl(ByVal image_Renamed As java.awt.Image)
+		Private Sub removeImageImpl(  image_Renamed As java.awt.Image)
 			Dim cur As MediaEntry = head
 			Dim prev As MediaEntry = Nothing
 			Do While cur IsNot Nothing
@@ -715,14 +715,14 @@ Namespace java.awt
 		''' <seealso cref=        java.awt.MediaTracker#removeImage(java.awt.Image, int, int, int)
 		''' @since      JDK1.1 </seealso>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Sub removeImage(ByVal image_Renamed As java.awt.Image, ByVal id As Integer)
+		Public Overridable Sub removeImage(  image_Renamed As java.awt.Image,   id As Integer)
 			removeImageImpl(image_Renamed, id)
 			Dim rvImage As java.awt.Image = getResolutionVariant(image_Renamed)
 			If rvImage IsNot Nothing Then removeImageImpl(rvImage, id)
 			notifyAll() ' Notify in case remaining images are "done".
 		End Sub
 
-		Private Sub removeImageImpl(ByVal image_Renamed As java.awt.Image, ByVal id As Integer)
+		Private Sub removeImageImpl(  image_Renamed As java.awt.Image,   id As Integer)
 			Dim cur As MediaEntry = head
 			Dim prev As MediaEntry = Nothing
 			Do While cur IsNot Nothing
@@ -753,14 +753,14 @@ Namespace java.awt
 		''' <seealso cref=     java.awt.MediaTracker#removeImage(java.awt.Image, int)
 		''' @since   JDK1.1 </seealso>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Sub removeImage(ByVal image_Renamed As java.awt.Image, ByVal id As Integer, ByVal width As Integer, ByVal height As Integer)
+		Public Overridable Sub removeImage(  image_Renamed As java.awt.Image,   id As Integer,   width As Integer,   height As Integer)
 			removeImageImpl(image_Renamed, id, width, height)
 			Dim rvImage As java.awt.Image = getResolutionVariant(image_Renamed)
 			If rvImage IsNot Nothing Then removeImageImpl(rvImage, id,If(width = -1, -1, 2 * width),If(height = -1, -1, 2 * height))
 			notifyAll() ' Notify in case remaining images are "done".
 		End Sub
 
-		Private Sub removeImageImpl(ByVal image_Renamed As java.awt.Image, ByVal id As Integer, ByVal width As Integer, ByVal height As Integer)
+		Private Sub removeImageImpl(  image_Renamed As java.awt.Image,   id As Integer,   width As Integer,   height As Integer)
 			Dim cur As MediaEntry = head
 			Dim prev As MediaEntry = Nothing
 			Do While cur IsNot Nothing
@@ -784,7 +784,7 @@ Namespace java.awt
 			notifyAll()
 		End Sub
 
-		Private Shared Function getResolutionVariant(ByVal image_Renamed As java.awt.Image) As java.awt.Image
+		Private Shared Function getResolutionVariant(  image_Renamed As java.awt.Image) As java.awt.Image
 			If TypeOf image_Renamed Is sun.awt.image.MultiResolutionToolkitImage Then Return CType(image_Renamed, sun.awt.image.MultiResolutionToolkitImage).resolutionVariant
 			Return Nothing
 		End Function
@@ -798,14 +798,14 @@ Namespace java.awt
 		Friend status As Integer
 		Friend cancelled As Boolean
 
-		Friend Sub New(ByVal mt As MediaTracker, ByVal id As Integer)
+		Friend Sub New(  mt As MediaTracker,   id As Integer)
 			tracker = mt
 			Me.ID = id
 		End Sub
 
 		Friend MustOverride ReadOnly Property media As Object
 
-		Shared Function insert(ByVal head As MediaEntry, ByVal [me] As MediaEntry) As MediaEntry
+		Shared Function insert(  head As MediaEntry,   [me] As MediaEntry) As MediaEntry
 			Dim cur As MediaEntry = head
 			Dim prev As MediaEntry = Nothing
 			Do While cur IsNot Nothing
@@ -843,7 +843,7 @@ Namespace java.awt
 		Friend Shared ReadOnly DONE As Integer = (ABORTED Or ERRORED Or COMPLETE)
 
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Friend Overridable Function getStatus(ByVal doLoad As Boolean, ByVal doVerify As Boolean) As Integer
+		Friend Overridable Function getStatus(  doLoad As Boolean,   doVerify As Boolean) As Integer
 			If doLoad AndAlso ((status And LOADSTARTED) = 0) Then
 				status = (status And (Not ABORTED)) Or LOADING
 				startLoad()
@@ -852,7 +852,7 @@ Namespace java.awt
 		End Function
 
 		Friend Overridable Property status As Integer
-			Set(ByVal flag As Integer)
+			Set(  flag As Integer)
 				SyncLock Me
 					status = flag
 				End SyncLock
@@ -875,14 +875,14 @@ Namespace java.awt
 	'     
 		Private Const serialVersionUID As Long = 4739377000350280650L
 
-		Friend Sub New(ByVal mt As MediaTracker, ByVal img As java.awt.Image, ByVal c As Integer, ByVal w As Integer, ByVal h As Integer)
+		Friend Sub New(  mt As MediaTracker,   img As java.awt.Image,   c As Integer,   w As Integer,   h As Integer)
 			MyBase.New(mt, c)
 			image_Renamed = img
 			width = w
 			height = h
 		End Sub
 
-		Friend Overridable Function matches(ByVal img As java.awt.Image, ByVal w As Integer, ByVal h As Integer) As Boolean
+		Friend Overridable Function matches(  img As java.awt.Image,   w As Integer,   h As Integer) As Boolean
 			Return (image_Renamed Is img AndAlso width = w AndAlso height = h)
 		End Function
 
@@ -893,7 +893,7 @@ Namespace java.awt
 		End Property
 
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Friend Overrides Function getStatus(ByVal doLoad As Boolean, ByVal doVerify As Boolean) As Integer
+		Friend Overrides Function getStatus(  doLoad As Boolean,   doVerify As Boolean) As Integer
 			If doVerify Then
 				Dim flags As Integer = tracker.target.checkImage(image_Renamed, width, height, Nothing)
 				Dim s As Integer = parseflags(flags)
@@ -910,7 +910,7 @@ Namespace java.awt
 			If tracker.target.prepareImage(image_Renamed, width, height, Me) Then status = COMPLETE
 		End Sub
 
-		Friend Overridable Function parseflags(ByVal infoflags As Integer) As Integer
+		Friend Overridable Function parseflags(  infoflags As Integer) As Integer
 			If (infoflags And ERROR) <> 0 Then
 				Return ERRORED
 			ElseIf (infoflags And ABORT) <> 0 Then
@@ -921,7 +921,7 @@ Namespace java.awt
 			Return 0
 		End Function
 
-		Public Overridable Function imageUpdate(ByVal img As java.awt.Image, ByVal infoflags As Integer, ByVal x As Integer, ByVal y As Integer, ByVal w As Integer, ByVal h As Integer) As Boolean
+		Public Overridable Function imageUpdate(  img As java.awt.Image,   infoflags As Integer,   x As Integer,   y As Integer,   w As Integer,   h As Integer) As Boolean
 			If cancelled Then Return False
 			Dim s As Integer = parseflags(infoflags)
 			If s <> 0 AndAlso s <> status Then status = s

@@ -55,7 +55,7 @@ Namespace java.text.spi
 		'''     {@link java.util.spi.LocaleServiceProvider#getAvailableLocales()
 		'''     getAvailableLocales()}. </exception>
 		''' <seealso cref= java.text.BreakIterator#getWordInstance(java.util.Locale) </seealso>
-		Public MustOverride Function getWordInstance(ByVal locale As java.util.Locale) As java.text.BreakIterator
+		Public MustOverride Function getWordInstance(  locale As java.util.Locale) As java.text.BreakIterator
 
 		''' <summary>
 		''' Returns a new <code>BreakIterator</code> instance
@@ -69,7 +69,7 @@ Namespace java.text.spi
 		'''     {@link java.util.spi.LocaleServiceProvider#getAvailableLocales()
 		'''     getAvailableLocales()}. </exception>
 		''' <seealso cref= java.text.BreakIterator#getLineInstance(java.util.Locale) </seealso>
-		Public MustOverride Function getLineInstance(ByVal locale As java.util.Locale) As java.text.BreakIterator
+		Public MustOverride Function getLineInstance(  locale As java.util.Locale) As java.text.BreakIterator
 
 		''' <summary>
 		''' Returns a new <code>BreakIterator</code> instance
@@ -83,7 +83,7 @@ Namespace java.text.spi
 		'''     {@link java.util.spi.LocaleServiceProvider#getAvailableLocales()
 		'''     getAvailableLocales()}. </exception>
 		''' <seealso cref= java.text.BreakIterator#getCharacterInstance(java.util.Locale) </seealso>
-		Public MustOverride Function getCharacterInstance(ByVal locale As java.util.Locale) As java.text.BreakIterator
+		Public MustOverride Function getCharacterInstance(  locale As java.util.Locale) As java.text.BreakIterator
 
 		''' <summary>
 		''' Returns a new <code>BreakIterator</code> instance
@@ -97,7 +97,7 @@ Namespace java.text.spi
 		'''     {@link java.util.spi.LocaleServiceProvider#getAvailableLocales()
 		'''     getAvailableLocales()}. </exception>
 		''' <seealso cref= java.text.BreakIterator#getSentenceInstance(java.util.Locale) </seealso>
-		Public MustOverride Function getSentenceInstance(ByVal locale As java.util.Locale) As java.text.BreakIterator
+		Public MustOverride Function getSentenceInstance(  locale As java.util.Locale) As java.text.BreakIterator
 	End Class
 
 End Namespace

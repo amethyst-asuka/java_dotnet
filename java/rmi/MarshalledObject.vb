@@ -95,7 +95,7 @@ Namespace java.rmi
 		''' <code>IOException</code> may occur if <code>obj</code> is not
 		''' serializable.
 		''' @since 1.2 </exception>
-		Public Sub New(ByVal obj As T)
+		Public Sub New(  obj As T)
 			If obj Is Nothing Then
 				hash = 13
 				Return
@@ -169,7 +169,7 @@ Namespace java.rmi
 		''' <returns> <code>true</code> if the argument contains an equivalent
 		''' serialized object; <code>false</code> otherwise
 		''' @since 1.2 </returns>
-		Public Overrides Function Equals(ByVal obj As Object) As Boolean
+		Public Overrides Function Equals(  obj As Object) As Boolean
 			If obj Is Me Then Return True
 
 			If obj IsNot Nothing AndAlso TypeOf obj Is MarshalledObject Then
@@ -222,7 +222,7 @@ Namespace java.rmi
 			''' location annotations (if any) will be written to
 			''' <code>locOut</code>.
 			''' </summary>
-			Friend Sub New(ByVal objOut As java.io.OutputStream, ByVal locOut As java.io.OutputStream)
+			Friend Sub New(  objOut As java.io.OutputStream,   locOut As java.io.OutputStream)
 				MyBase.New(objOut)
 				Me.useProtocolVersion(java.io.ObjectStreamConstants.PROTOCOL_VERSION_2)
 				Me.locOut = New java.io.ObjectOutputStream(locOut)
@@ -241,7 +241,7 @@ Namespace java.rmi
 			''' Overrides MarshalOutputStream.writeLocation implementation to write
 			''' annotations to the location stream.
 			''' </summary>
-			Protected Friend Overridable Sub writeLocation(ByVal loc As String)
+			Protected Friend Overridable Sub writeLocation(  loc As String)
 				hadAnnotations_Renamed = hadAnnotations_Renamed Or (loc IsNot Nothing)
 				locOut.writeObject(loc)
 			End Sub
@@ -273,7 +273,7 @@ Namespace java.rmi
 			''' <code>null</code>, then all annotations will be
 			''' <code>null</code>.
 			''' </summary>
-			Friend Sub New(ByVal objIn As java.io.InputStream, ByVal locIn As java.io.InputStream)
+			Friend Sub New(  objIn As java.io.InputStream,   locIn As java.io.InputStream)
 				MyBase.New(objIn)
 				Me.locIn = (If(locIn Is Nothing, Nothing, New java.io.ObjectInputStream(locIn)))
 			End Sub

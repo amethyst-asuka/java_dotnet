@@ -90,7 +90,7 @@ Namespace java.net
 				If sm IsNot Nothing Then sm.checkPermission(sun.security.util.SecurityConstants.GET_PROXYSELECTOR_PERMISSION)
 				Return theProxySelector
 			End Get
-			Set(ByVal ps As ProxySelector)
+			Set(  ps As ProxySelector)
 				Dim sm As SecurityManager = System.securityManager
 				If sm IsNot Nothing Then sm.checkPermission(sun.security.util.SecurityConstants.SET_PROXYSELECTOR_PERMISSION)
 				theProxySelector = ps
@@ -121,7 +121,7 @@ Namespace java.net
 		'''          <seealso cref="java.net.Proxy Proxy"/>
 		'''          that represents a direct connection. </returns>
 		''' <exception cref="IllegalArgumentException"> if the argument is null </exception>
-		Public MustOverride Function [select](ByVal uri As URI) As IList(Of Proxy)
+		Public MustOverride Function [select](  uri As URI) As IList(Of Proxy)
 
 		''' <summary>
 		''' Called to indicate that a connection could not be established
@@ -138,7 +138,7 @@ Namespace java.net
 		''' <param name="ioe">
 		'''          The I/O exception thrown when the connect failed. </param>
 		''' <exception cref="IllegalArgumentException"> if either argument is null </exception>
-		Public MustOverride Sub connectFailed(ByVal uri As URI, ByVal sa As SocketAddress, ByVal ioe As java.io.IOException)
+		Public MustOverride Sub connectFailed(  uri As URI,   sa As SocketAddress,   ioe As java.io.IOException)
 	End Class
 
 End Namespace

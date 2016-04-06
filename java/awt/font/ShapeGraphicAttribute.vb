@@ -80,7 +80,7 @@ Namespace java.awt.font
 		''' <param name="stroke"> <code>true</code> if the <code>Shape</code> should be
 		''' stroked; <code>false</code> if the <code>Shape</code> should be
 		''' filled. </param>
-		Public Sub New(ByVal shape As java.awt.Shape, ByVal alignment As Integer, ByVal stroke As Boolean)
+		Public Sub New(  shape As java.awt.Shape,   alignment As Integer,   stroke As Boolean)
 
 			MyBase.New(alignment)
 
@@ -131,7 +131,7 @@ Namespace java.awt.font
         ''' <summary>
         ''' {@inheritDoc}
         ''' </summary>
-        Public Overrides Sub draw(ByVal graphics As java.awt.Graphics2D, ByVal x As Single, ByVal y As Single)
+        Public Overrides Sub draw(  graphics As java.awt.Graphics2D,   x As Single,   y As Single)
 
 			' translating graphics to draw Shape !!!
 			graphics.translate(CInt(Fix(x)), CInt(Fix(y)))
@@ -182,7 +182,7 @@ Namespace java.awt.font
         ''' <returns> the <code>Shape</code> representing this graphic attribute,
         '''   suitable for stroking or filling.
         ''' @since 1.6 </returns>
-        Public Overrides Function getOutline(ByVal tx As java.awt.geom.AffineTransform) As java.awt.Shape
+        Public Overrides Function getOutline(  tx As java.awt.geom.AffineTransform) As java.awt.Shape
 			Return If(tx Is Nothing, fShape, tx.createTransformedShape(fShape))
 		End Function
 
@@ -202,7 +202,7 @@ Namespace java.awt.font
 		''' <returns> <code>true</code> if this
 		''' <code>ShapeGraphicAttribute</code> equals <code>rhs</code>;
 		''' <code>false</code> otherwise. </returns>
-		Public Overrides Function Equals(ByVal rhs As Object) As Boolean
+		Public Overrides Function Equals(  rhs As Object) As Boolean
 
             Try
                 Return Equals(CType(rhs, ShapeGraphicAttribute))
@@ -219,7 +219,7 @@ Namespace java.awt.font
 		''' <returns> <code>true</code> if this
 		''' <code>ShapeGraphicAttribute</code> equals <code>rhs</code>;
 		''' <code>false</code> otherwise. </returns>
-		Public Overrides Function Equals(ByVal rhs As ShapeGraphicAttribute) As Boolean
+		Public Overrides Function Equals(  rhs As ShapeGraphicAttribute) As Boolean
 
 			If rhs Is Nothing Then Return False
 

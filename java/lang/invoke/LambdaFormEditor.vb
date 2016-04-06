@@ -39,12 +39,12 @@ Namespace java.lang.invoke
 	Friend Class LambdaFormEditor
 		Friend ReadOnly lambdaForm_Renamed As LambdaForm
 
-		Private Sub New(ByVal lambdaForm_Renamed As LambdaForm)
+		Private Sub New(  lambdaForm_Renamed As LambdaForm)
 			Me.lambdaForm_Renamed = lambdaForm_Renamed
 		End Sub
 
 		' Factory method.
-		Shared Function lambdaFormEditor(ByVal lambdaForm_Renamed As LambdaForm) As LambdaFormEditor
+		Shared Function lambdaFormEditor(  lambdaForm_Renamed As LambdaForm) As LambdaFormEditor
 			' TO DO:  Consider placing intern logic here, to cut down on duplication.
 			' lambdaForm = findPreexistingEquivalent(lambdaForm)
 
@@ -86,7 +86,7 @@ Namespace java.lang.invoke
 			Private Const STRESS_TEST As Boolean = False ' turn on to disable most packing
 			Private Shared ReadOnly PACKED_BYTE_SIZE As Integer = (If(STRESS_TEST, 2, 4)), PACKED_BYTE_MASK As Integer = (1 << PACKED_BYTE_SIZE) - 1, PACKED_BYTE_MAX_LENGTH As Integer = (If(STRESS_TEST, 3, 64 \ PACKED_BYTE_SIZE))
 
-			Private Shared Function packedBytes(ByVal bytes As SByte()) As Long
+			Private Shared Function packedBytes(  bytes As SByte()) As Long
 				If bytes.Length > PACKED_BYTE_MAX_LENGTH Then Return 0
 				Dim pb As Long = 0
 				Dim bitset As Integer = 0
@@ -98,23 +98,23 @@ Namespace java.lang.invoke
 				If Not inRange(bitset) Then Return 0
 				Return pb
 			End Function
-			Private Shared Function packedBytes(ByVal b0 As Integer, ByVal b1 As Integer) As Long
+			Private Shared Function packedBytes(  b0 As Integer,   b1 As Integer) As Long
 				assert(inRange(b0 Or b1))
 				Return ((b0 << 0*PACKED_BYTE_SIZE) Or (b1 << 1*PACKED_BYTE_SIZE))
 			End Function
-			Private Shared Function packedBytes(ByVal b0 As Integer, ByVal b1 As Integer, ByVal b2 As Integer) As Long
+			Private Shared Function packedBytes(  b0 As Integer,   b1 As Integer,   b2 As Integer) As Long
 				assert(inRange(b0 Or b1 Or b2))
 				Return ((b0 << 0*PACKED_BYTE_SIZE) Or (b1 << 1*PACKED_BYTE_SIZE) Or (b2 << 2*PACKED_BYTE_SIZE))
 			End Function
-			Private Shared Function packedBytes(ByVal b0 As Integer, ByVal b1 As Integer, ByVal b2 As Integer, ByVal b3 As Integer) As Long
+			Private Shared Function packedBytes(  b0 As Integer,   b1 As Integer,   b2 As Integer,   b3 As Integer) As Long
 				assert(inRange(b0 Or b1 Or b2 Or b3))
 				Return ((b0 << 0*PACKED_BYTE_SIZE) Or (b1 << 1*PACKED_BYTE_SIZE) Or (b2 << 2*PACKED_BYTE_SIZE) Or (b3 << 3*PACKED_BYTE_SIZE))
 			End Function
-			Private Shared Function inRange(ByVal bitset As Integer) As Boolean
+			Private Shared Function inRange(  bitset As Integer) As Boolean
 				assert((bitset And &HFF) = bitset) ' incoming values must fit in *unsigned* byte
 				Return ((bitset And (Not PACKED_BYTE_MASK)) = 0)
 			End Function
-			Private Shared Function fullBytes(ParamArray ByVal byteValues As Integer()) As SByte()
+			Private Shared Function fullBytes(ParamArray   byteValues As Integer()) As SByte()
 				Dim bytes As SByte() = New SByte(byteValues.Length - 1){}
 				Dim i As Integer = 0
 				For Each bv As Integer In byteValues
@@ -125,7 +125,7 @@ Namespace java.lang.invoke
 				Return bytes
 			End Function
 
-			Private Function byteAt(ByVal i As Integer) As SByte
+			Private Function byteAt(  i As Integer) As SByte
 				Dim pb As Long = packedBytes_Renamed
 				If pb = 0 Then
 					If i >= fullBytes_Renamed.Length Then Return 0
@@ -141,27 +141,27 @@ Namespace java.lang.invoke
 				Return System.Enum.GetValues(GetType(Kind))(byteAt(0))
 			End Function
 
-			Private Sub New(ByVal packedBytes As Long, ByVal fullBytes As SByte(), ByVal result As LambdaForm)
+			Private Sub New(  packedBytes As Long,   fullBytes As SByte(),   result As LambdaForm)
 				MyBase.New(result)
 				Me.packedBytes_Renamed = packedBytes
 				Me.fullBytes_Renamed = fullBytes
 			End Sub
-			Private Sub New(ByVal packedBytes As Long)
+			Private Sub New(  packedBytes As Long)
 				Me.New(packedBytes, Nothing, Nothing)
 				assert(packedBytes <> 0)
 			End Sub
-			Private Sub New(ByVal fullBytes As SByte())
+			Private Sub New(  fullBytes As SByte())
 				Me.New(0, fullBytes, Nothing)
 			End Sub
 
-			Private Shared Function bval(ByVal b As Integer) As SByte
+			Private Shared Function bval(  b As Integer) As SByte
 				assert((b And &HFF) = b) ' incoming value must fit in *unsigned* byte
 				Return CByte(b)
 			End Function
-			Private Shared Function bval(ByVal k As Kind) As SByte
+			Private Shared Function bval(  k As Kind) As SByte
 				Return bval(k.ordinal())
 			End Function
-			Shared Function [of](ByVal k As Kind, ByVal b1 As Integer) As Transform
+			Shared Function [of](  k As Kind,   b1 As Integer) As Transform
 				Dim b0 As SByte = bval(k)
 				If inRange(b0 Or b1) Then
 					Return New Transform(packedBytes(b0, b1))
@@ -169,7 +169,7 @@ Namespace java.lang.invoke
 					Return New Transform(fullBytes(b0, b1))
 				End If
 			End Function
-			Shared Function [of](ByVal k As Kind, ByVal b1 As Integer, ByVal b2 As Integer) As Transform
+			Shared Function [of](  k As Kind,   b1 As Integer,   b2 As Integer) As Transform
 				Dim b0 As SByte = CByte(k.ordinal())
 				If inRange(b0 Or b1 Or b2) Then
 					Return New Transform(packedBytes(b0, b1, b2))
@@ -177,7 +177,7 @@ Namespace java.lang.invoke
 					Return New Transform(fullBytes(b0, b1, b2))
 				End If
 			End Function
-			Shared Function [of](ByVal k As Kind, ByVal b1 As Integer, ByVal b2 As Integer, ByVal b3 As Integer) As Transform
+			Shared Function [of](  k As Kind,   b1 As Integer,   b2 As Integer,   b3 As Integer) As Transform
 				Dim b0 As SByte = CByte(k.ordinal())
 				If inRange(b0 Or b1 Or b2 Or b3) Then
 					Return New Transform(packedBytes(b0, b1, b2, b3))
@@ -186,16 +186,16 @@ Namespace java.lang.invoke
 				End If
 			End Function
 			Private Shared ReadOnly NO_BYTES As SByte() = {}
-			Shared Function [of](ByVal k As Kind, ParamArray ByVal b123 As Integer()) As Transform
+			Shared Function [of](  k As Kind, ParamArray   b123 As Integer()) As Transform
 				Return ofBothArrays(k, b123, NO_BYTES)
 			End Function
-			Shared Function [of](ByVal k As Kind, ByVal b1 As Integer, ByVal b234 As SByte()) As Transform
+			Shared Function [of](  k As Kind,   b1 As Integer,   b234 As SByte()) As Transform
 				Return ofBothArrays(k, New Integer(){ b1 }, b234)
 			End Function
-			Shared Function [of](ByVal k As Kind, ByVal b1 As Integer, ByVal b2 As Integer, ByVal b345 As SByte()) As Transform
+			Shared Function [of](  k As Kind,   b1 As Integer,   b2 As Integer,   b345 As SByte()) As Transform
 				Return ofBothArrays(k, New Integer(){ b1, b2 }, b345)
 			End Function
-			Private Shared Function ofBothArrays(ByVal k As Kind, ByVal b123 As Integer(), ByVal b456 As SByte()) As Transform
+			Private Shared Function ofBothArrays(  k As Kind,   b123 As Integer(),   b456 As SByte()) As Transform
 				Dim fullBytes As SByte() = New SByte(1 + b123.Length + b456.Length - 1){}
 				Dim i As Integer = 0
 				fullBytes(i) = bval(k)
@@ -216,14 +216,14 @@ Namespace java.lang.invoke
 				End If
 			End Function
 
-			Friend Function withResult(ByVal result As LambdaForm) As Transform
+			Friend Function withResult(  result As LambdaForm) As Transform
 				Return New Transform(Me.packedBytes_Renamed, Me.fullBytes_Renamed, result)
 			End Function
 
-			Public Overrides Function Equals(ByVal obj As Object) As Boolean
+			Public Overrides Function Equals(  obj As Object) As Boolean
 				Return TypeOf obj Is Transform AndAlso Equals(CType(obj, Transform))
 			End Function
-			Public Overrides Function Equals(ByVal that As Transform) As Boolean
+			Public Overrides Function Equals(  that As Transform) As Boolean
 				Return Me.packedBytes_Renamed = that.packedBytes_Renamed AndAlso java.util.Arrays.Equals(Me.fullBytes_Renamed, that.fullBytes_Renamed)
 			End Function
 			Public Overrides Function GetHashCode() As Integer
@@ -260,7 +260,7 @@ Namespace java.lang.invoke
 
 		''' <summary>
 		''' Find a previously cached transform equivalent to the given one, and return its result. </summary>
-		Private Function getInCache(ByVal key As Transform) As LambdaForm
+		Private Function getInCache(  key As Transform) As LambdaForm
 			assert(key.get() Is Nothing)
 			' The transformCache is one of null, Transform, Transform[], or ConcurrentHashMap.
 			Dim c As Object = lambdaForm_Renamed.transformCache
@@ -298,7 +298,7 @@ Namespace java.lang.invoke
 		''' Cache a transform with its result, and return that result.
 		'''  But if an equivalent transform has already been cached, return its result instead.
 		''' </summary>
-		Private Function putInCache(ByVal key As Transform, ByVal form As LambdaForm) As LambdaForm
+		Private Function putInCache(  key As Transform,   form As LambdaForm) As LambdaForm
 			key = key.withResult(form)
 			Dim pass As Integer = 0
 			Do
@@ -405,18 +405,18 @@ Namespace java.lang.invoke
 		Private Function oldSpeciesData() As BoundMethodHandle.SpeciesData
 			Return BoundMethodHandle.speciesData(lambdaForm_Renamed)
 		End Function
-		Private Function newSpeciesData(ByVal type As BasicType) As BoundMethodHandle.SpeciesData
+		Private Function newSpeciesData(  type As BasicType) As BoundMethodHandle.SpeciesData
 			Return oldSpeciesData().extendWith(type)
 		End Function
 
-		Friend Overridable Function bindArgumentL(ByVal mh As BoundMethodHandle, ByVal pos As Integer, ByVal value As Object) As BoundMethodHandle
+		Friend Overridable Function bindArgumentL(  mh As BoundMethodHandle,   pos As Integer,   value As Object) As BoundMethodHandle
 			assert(mh.speciesData() Is oldSpeciesData())
 			Dim bt As BasicType = L_TYPE
 			Dim type2 As MethodType = bindArgumentType(mh, pos, bt)
 			Dim form2 As LambdaForm = bindArgumentForm(1+pos)
 			Return mh.copyWithExtendL(type2, form2, value)
 		End Function
-		Friend Overridable Function bindArgumentI(ByVal mh As BoundMethodHandle, ByVal pos As Integer, ByVal value As Integer) As BoundMethodHandle
+		Friend Overridable Function bindArgumentI(  mh As BoundMethodHandle,   pos As Integer,   value As Integer) As BoundMethodHandle
 			assert(mh.speciesData() Is oldSpeciesData())
 			Dim bt As BasicType = I_TYPE
 			Dim type2 As MethodType = bindArgumentType(mh, pos, bt)
@@ -424,7 +424,7 @@ Namespace java.lang.invoke
 			Return mh.copyWithExtendI(type2, form2, value)
 		End Function
 
-		Friend Overridable Function bindArgumentJ(ByVal mh As BoundMethodHandle, ByVal pos As Integer, ByVal value As Long) As BoundMethodHandle
+		Friend Overridable Function bindArgumentJ(  mh As BoundMethodHandle,   pos As Integer,   value As Long) As BoundMethodHandle
 			assert(mh.speciesData() Is oldSpeciesData())
 			Dim bt As BasicType = J_TYPE
 			Dim type2 As MethodType = bindArgumentType(mh, pos, bt)
@@ -432,7 +432,7 @@ Namespace java.lang.invoke
 			Return mh.copyWithExtendJ(type2, form2, value)
 		End Function
 
-		Friend Overridable Function bindArgumentF(ByVal mh As BoundMethodHandle, ByVal pos As Integer, ByVal value As Single) As BoundMethodHandle
+		Friend Overridable Function bindArgumentF(  mh As BoundMethodHandle,   pos As Integer,   value As Single) As BoundMethodHandle
 			assert(mh.speciesData() Is oldSpeciesData())
 			Dim bt As BasicType = F_TYPE
 			Dim type2 As MethodType = bindArgumentType(mh, pos, bt)
@@ -440,7 +440,7 @@ Namespace java.lang.invoke
 			Return mh.copyWithExtendF(type2, form2, value)
 		End Function
 
-		Friend Overridable Function bindArgumentD(ByVal mh As BoundMethodHandle, ByVal pos As Integer, ByVal value As Double) As BoundMethodHandle
+		Friend Overridable Function bindArgumentD(  mh As BoundMethodHandle,   pos As Integer,   value As Double) As BoundMethodHandle
 			assert(mh.speciesData() Is oldSpeciesData())
 			Dim bt As BasicType = D_TYPE
 			Dim type2 As MethodType = bindArgumentType(mh, pos, bt)
@@ -448,7 +448,7 @@ Namespace java.lang.invoke
 			Return mh.copyWithExtendD(type2, form2, value)
 		End Function
 
-		Private Function bindArgumentType(ByVal mh As BoundMethodHandle, ByVal pos As Integer, ByVal bt As BasicType) As MethodType
+		Private Function bindArgumentType(  mh As BoundMethodHandle,   pos As Integer,   bt As BasicType) As MethodType
 			assert(mh.form Is lambdaForm_Renamed)
 			assert(mh.form.names(1+pos).type_Renamed Is bt)
 			assert(BasicType.basicType(mh.type().parameterType(pos)) Is bt)
@@ -458,7 +458,7 @@ Namespace java.lang.invoke
 		'/ Editing methods for lambda forms.
 		' Each editing method can (potentially) cache the edited LF so that it can be reused later.
 
-		Friend Overridable Function bindArgumentForm(ByVal pos As Integer) As LambdaForm
+		Friend Overridable Function bindArgumentForm(  pos As Integer) As LambdaForm
 			Dim key As Transform = Transform.of(Transform.Kind.BIND_ARG, pos)
 			Dim form As LambdaForm = getInCache(key)
 			If form IsNot Nothing Then
@@ -493,7 +493,7 @@ Namespace java.lang.invoke
 			Return putInCache(key, form)
 		End Function
 
-		Friend Overridable Function addArgumentForm(ByVal pos As Integer, ByVal type As BasicType) As LambdaForm
+		Friend Overridable Function addArgumentForm(  pos As Integer,   type As BasicType) As LambdaForm
 			Dim key As Transform = Transform.of(Transform.Kind.ADD_ARG, pos, type.ordinal())
 			Dim form As LambdaForm = getInCache(key)
 			If form IsNot Nothing Then
@@ -510,7 +510,7 @@ Namespace java.lang.invoke
 			Return putInCache(key, form)
 		End Function
 
-		Friend Overridable Function dupArgumentForm(ByVal srcPos As Integer, ByVal dstPos As Integer) As LambdaForm
+		Friend Overridable Function dupArgumentForm(  srcPos As Integer,   dstPos As Integer) As LambdaForm
 			Dim key As Transform = Transform.of(Transform.Kind.DUP_ARG, srcPos, dstPos)
 			Dim form As LambdaForm = getInCache(key)
 			If form IsNot Nothing Then
@@ -528,7 +528,7 @@ Namespace java.lang.invoke
 			Return putInCache(key, form)
 		End Function
 
-		Friend Overridable Function spreadArgumentsForm(ByVal pos As Integer, ByVal arrayType As [Class], ByVal arrayLength As Integer) As LambdaForm
+		Friend Overridable Function spreadArgumentsForm(  pos As Integer,   arrayType As [Class],   arrayLength As Integer) As LambdaForm
 			Dim elementType As  [Class] = arrayType.componentType
 			Dim erasedArrayType As  [Class] = arrayType
 			If Not elementType.primitive Then erasedArrayType = GetType(Object())
@@ -570,7 +570,7 @@ Namespace java.lang.invoke
 			Return putInCache(key, form)
 		End Function
 
-		Friend Overridable Function collectArgumentsForm(ByVal pos As Integer, ByVal collectorType As MethodType) As LambdaForm
+		Friend Overridable Function collectArgumentsForm(  pos As Integer,   collectorType As MethodType) As LambdaForm
 			Dim collectorArity As Integer = collectorType.parameterCount()
 			Dim dropResult As Boolean = (collectorType.returnType() Is GetType(void))
 			If collectorArity = 1 AndAlso (Not dropResult) Then Return filterArgumentForm(pos, basicType(collectorType.parameterType(0)))
@@ -587,7 +587,7 @@ Namespace java.lang.invoke
 			Return putInCache(key, form)
 		End Function
 
-		Friend Overridable Function collectArgumentArrayForm(ByVal pos As Integer, ByVal arrayCollector As MethodHandle) As LambdaForm
+		Friend Overridable Function collectArgumentArrayForm(  pos As Integer,   arrayCollector As MethodHandle) As LambdaForm
 			Dim collectorType As MethodType = arrayCollector.type()
 			Dim collectorArity As Integer = collectorType.parameterCount()
 			assert(arrayCollector.intrinsicName() Is Intrinsic.NEW_ARRAY)
@@ -637,7 +637,7 @@ Namespace java.lang.invoke
 			Return putInCache(key, form)
 		End Function
 
-		Friend Overridable Function filterArgumentForm(ByVal pos As Integer, ByVal newType As BasicType) As LambdaForm
+		Friend Overridable Function filterArgumentForm(  pos As Integer,   newType As BasicType) As LambdaForm
 			Dim key As Transform = Transform.of(Transform.Kind.FILTER_ARG, pos, newType.ordinal())
 			Dim form As LambdaForm = getInCache(key)
 			If form IsNot Nothing Then
@@ -652,7 +652,7 @@ Namespace java.lang.invoke
 			Return putInCache(key, form)
 		End Function
 
-		Private Function makeArgumentCombinationForm(ByVal pos As Integer, ByVal combinerType As MethodType, ByVal keepArguments As Boolean, ByVal dropResult As Boolean) As LambdaForm
+		Private Function makeArgumentCombinationForm(  pos As Integer,   combinerType As MethodType,   keepArguments As Boolean,   dropResult As Boolean) As LambdaForm
 			Dim buf As LambdaFormBuffer = buffer()
 			buf.startEdit()
 			Dim combinerArity As Integer = combinerType.parameterCount()
@@ -708,7 +708,7 @@ Namespace java.lang.invoke
 			Return buf.endEdit()
 		End Function
 
-		Friend Overridable Function filterReturnForm(ByVal newType As BasicType, ByVal constantZero As Boolean) As LambdaForm
+		Friend Overridable Function filterReturnForm(  newType As BasicType,   constantZero As Boolean) As LambdaForm
 			Dim kind As Transform.Kind = (If(constantZero, Transform.Kind.FILTER_RETURN_TO_ZERO, Transform.Kind.FILTER_RETURN))
 			Dim key As Transform = Transform.of(kind, newType.ordinal())
 			Dim form As LambdaForm = getInCache(key)
@@ -763,7 +763,7 @@ Namespace java.lang.invoke
 			Return putInCache(key, form)
 		End Function
 
-		Friend Overridable Function foldArgumentsForm(ByVal foldPos As Integer, ByVal dropResult As Boolean, ByVal combinerType As MethodType) As LambdaForm
+		Friend Overridable Function foldArgumentsForm(  foldPos As Integer,   dropResult As Boolean,   combinerType As MethodType) As LambdaForm
 			Dim combinerArity As Integer = combinerType.parameterCount()
 			Dim kind As Transform.Kind = (If(dropResult, Transform.Kind.FOLD_ARGS_TO_VOID, Transform.Kind.FOLD_ARGS))
 			Dim key As Transform = Transform.of(kind, foldPos, combinerArity)
@@ -776,7 +776,7 @@ Namespace java.lang.invoke
 			Return putInCache(key, form)
 		End Function
 
-		Friend Overridable Function permuteArgumentsForm(ByVal skip As Integer, ByVal reorder As Integer()) As LambdaForm
+		Friend Overridable Function permuteArgumentsForm(  skip As Integer,   reorder As Integer()) As LambdaForm
 			assert(skip = 1) ' skip only the leading MH argument, names[0]
 			Dim length As Integer = lambdaForm_Renamed.names.Length
 			Dim outArgs As Integer = reorder.Length
@@ -852,7 +852,7 @@ Namespace java.lang.invoke
 			Return putInCache(key, form)
 		End Function
 
-		Friend Shared Function permutedTypesMatch(ByVal reorder As Integer(), ByVal types As BasicType(), ByVal names As Name(), ByVal skip As Integer) As Boolean
+		Friend Shared Function permutedTypesMatch(  reorder As Integer(),   types As BasicType(),   names As Name(),   skip As Integer) As Boolean
 			For i As Integer = 0 To reorder.Length - 1
 				assert(names(skip + i).param)
 				assert(names(skip + i).type Is types(reorder(i)))

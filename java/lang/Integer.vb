@@ -127,7 +127,7 @@ Namespace java.lang
         ''' <returns>  a string representation of the argument in the specified radix. </returns>
         ''' <seealso cref=     java.lang.Character#MAX_RADIX </seealso>
         ''' <seealso cref=     java.lang.Character#MIN_RADIX </seealso>
-        Public Overloads Shared Function ToString(ByVal i As Integer, ByVal radix As Integer) As String
+        Public Overloads Shared Function ToString(  i As Integer,   radix As Integer) As String
             If radix < Character.MIN_RADIX OrElse radix > Character.MAX_RADIX Then radix = 10
 
             ' Use the faster version 
@@ -179,7 +179,7 @@ Namespace java.lang
         ''' <returns>  an unsigned string representation of the argument in the specified radix. </returns>
         ''' <seealso cref=     #toString(int, int)
         ''' @since 1.8 </seealso>
-        Public Shared Function toUnsignedString(ByVal i As Integer, ByVal radix As Integer) As String
+        Public Shared Function toUnsignedString(  i As Integer,   radix As Integer) As String
             Return java.lang.[Long].toUnsignedString(toUnsignedLong(i), radix)
         End Function
 
@@ -224,7 +224,7 @@ Namespace java.lang
         ''' <seealso cref= #parseUnsignedInt(String, int) </seealso>
         ''' <seealso cref= #toUnsignedString(int, int)
         ''' @since   JDK1.0.2 </seealso>
-        Public Shared Function toHexString(ByVal i As Integer) As String
+        Public Shared Function toHexString(  i As Integer) As String
             Return toUnsignedString0(i, 4)
         End Function
 
@@ -261,7 +261,7 @@ Namespace java.lang
         ''' <seealso cref= #parseUnsignedInt(String, int) </seealso>
         ''' <seealso cref= #toUnsignedString(int, int)
         ''' @since   JDK1.0.2 </seealso>
-        Public Shared Function toOctalString(ByVal i As Integer) As String
+        Public Shared Function toOctalString(  i As Integer) As String
             Return toUnsignedString0(i, 3)
         End Function
 
@@ -292,14 +292,14 @@ Namespace java.lang
         ''' <seealso cref= #parseUnsignedInt(String, int) </seealso>
         ''' <seealso cref= #toUnsignedString(int, int)
         ''' @since   JDK1.0.2 </seealso>
-        Public Shared Function toBinaryString(ByVal i As Integer) As String
+        Public Shared Function toBinaryString(  i As Integer) As String
             Return toUnsignedString0(i, 1)
         End Function
 
         ''' <summary>
         ''' Convert the integer to an unsigned number.
         ''' </summary>
-        Private Shared Function toUnsignedString0(ByVal val As Integer, ByVal shift As Integer) As String
+        Private Shared Function toUnsignedString0(  val As Integer,   shift As Integer) As String
             ' assert shift > 0 && shift <=5 : "Illegal shift value";
             Dim mag As Integer = java.lang.[Integer].SIZE - java.lang.[Integer].numberOfLeadingZeros(val)
             Dim chars_Renamed As Integer = Global.System.Math.Max(((mag + (shift - 1)) \ shift), 1)
@@ -319,7 +319,7 @@ Namespace java.lang
         ''' <param name="offset"> the offset in the destination buffer to start at </param>
         ''' <param name="len"> the number of characters to write </param>
         ''' <returns> the lowest character  location used </returns>
-        Friend Shared Function formatUnsignedInt(ByVal val As Integer, ByVal shift As Integer, ByVal buf As Char(), ByVal offset As Integer, ByVal len As Integer) As Integer
+        Friend Shared Function formatUnsignedInt(  val As Integer,   shift As Integer,   buf As Char(),   offset As Integer,   len As Integer) As Integer
             Dim charPos As Integer = len
             Dim radix As Integer = 1 << shift
             Dim mask As Integer = radix - 1
@@ -364,7 +364,7 @@ Namespace java.lang
         ''' </summary>
         ''' <param name="i">   an integer to be converted. </param>
         ''' <returns>  a string representation of the argument in base&nbsp;10. </returns>
-        Public Overloads Shared Function ToString(ByVal i As Integer) As String
+        Public Overloads Shared Function ToString(  i As Integer) As String
             If i = java.lang.[Integer].MIN_VALUE Then Return "-2147483648"
             Dim size_Renamed As Integer = If(i < 0, stringSize(-i) + 1, stringSize(i))
             Dim buf As Char() = New Char(size_Renamed - 1) {}
@@ -385,7 +385,7 @@ Namespace java.lang
         ''' <returns>  an unsigned string representation of the argument. </returns>
         ''' <seealso cref=     #toUnsignedString(int, int)
         ''' @since 1.8 </seealso>
-        Public Shared Function toUnsignedString(ByVal i As Integer) As String
+        Public Shared Function toUnsignedString(  i As Integer) As String
             Return Convert.ToString(toUnsignedLong(i))
         End Function
 
@@ -398,7 +398,7 @@ Namespace java.lang
         ''' 
         ''' Will fail if i ==  java.lang.[Integer].MIN_VALUE
         ''' </summary>
-        Friend Shared Sub getChars(ByVal i As Integer, ByVal index As Integer, ByVal buf As Char())
+        Friend Shared Sub getChars(  i As Integer,   index As Integer,   buf As Char())
             Dim q, r As Integer
             Dim charPos As Integer = index
             Dim sign As Char = Chr(0)
@@ -439,7 +439,7 @@ Namespace java.lang
         Friend Shared ReadOnly sizeTable As Integer() = {9, 99, 999, 9999, 99999, 999999, 9999999, 99999999, 999999999, java.lang.[Integer].MAX_VALUE}
 
         ' Requires positive x
-        Friend Shared Function stringSize(ByVal x As Integer) As Integer
+        Friend Shared Function stringSize(  x As Integer) As Integer
             Dim i As Integer = 0
             Do
                 If x <= sizeTable(i) Then Return i + 1
@@ -501,7 +501,7 @@ Namespace java.lang
         '''             specified radix. </returns>
         ''' <exception cref="NumberFormatException"> if the {@code String}
         '''             does not contain a parsable {@code int}. </exception>
-        Public Shared Function parseInt(ByVal s As String, ByVal radix As Integer) As Integer
+        Public Shared Function parseInt(  s As String,   radix As Integer) As Integer
             '        
             '         * WARNING: This method may be invoked early during VM initialization
             '         * before IntegerCache is initialized. Care must be taken to not use
@@ -567,7 +567,7 @@ Namespace java.lang
         ''' <returns>     the integer value represented by the argument in decimal. </returns>
         ''' <exception cref="NumberFormatException">  if the string does not contain a
         '''               parsable  java.lang.[Integer]. </exception>
-        Public Shared Function parseInt(ByVal s As String) As Integer
+        Public Shared Function parseInt(  s As String) As Integer
             Return parseInt(s, 10)
         End Function
 
@@ -613,7 +613,7 @@ Namespace java.lang
         ''' <exception cref="NumberFormatException"> if the {@code String}
         '''             does not contain a parsable {@code int}.
         ''' @since 1.8 </exception>
-        Public Shared Function parseUnsignedInt(ByVal s As String, ByVal radix As Integer) As Integer
+        Public Shared Function parseUnsignedInt(  s As String,   radix As Integer) As Integer
             If s Is Nothing Then Throw New NumberFormatException("null")
 
             Dim len As Integer = s.Length()
@@ -653,7 +653,7 @@ Namespace java.lang
         ''' <exception cref="NumberFormatException">  if the string does not contain a
         '''            parsable unsigned  java.lang.[Integer].
         ''' @since 1.8 </exception>
-        Public Shared Function parseUnsignedInt(ByVal s As String) As Integer
+        Public Shared Function parseUnsignedInt(  s As String) As Integer
             Return parseUnsignedInt(s, 10)
         End Function
 
@@ -681,7 +681,7 @@ Namespace java.lang
         '''             radix. </returns>
         ''' <exception cref="NumberFormatException"> if the {@code String}
         '''            does not contain a parsable {@code int}. </exception>
-        Public Shared Function valueOf(ByVal s As String, ByVal radix As Integer) As Integer?
+        Public Shared Function valueOf(  s As String,   radix As Integer) As Integer?
             Return Convert.ToInt32(parseInt(s, radix))
         End Function
 
@@ -706,7 +706,7 @@ Namespace java.lang
         '''             represented by the string argument. </returns>
         ''' <exception cref="NumberFormatException">  if the string cannot be parsed
         '''             as an  java.lang.[Integer]. </exception>
-        Public Shared Function valueOf(ByVal s As String) As Integer?
+        Public Shared Function valueOf(  s As String) As Integer?
             Return Convert.ToInt32(parseInt(s, 10))
         End Function
 
@@ -771,7 +771,7 @@ Namespace java.lang
         ''' <param name="i"> an {@code int} value. </param>
         ''' <returns> an {@code Integer} instance representing {@code i}.
         ''' @since  1.5 </returns>
-        Public Shared Function valueOf(ByVal i As Integer) As [Integer]
+        Public Shared Function valueOf(  i As Integer) As [Integer]
             If i >= IntegerCache.low AndAlso i <= IntegerCache.high Then Return IntegerCache.cache(i + (-IntegerCache.low))
             Return New Integer?(i)
         End Function
@@ -789,7 +789,7 @@ Namespace java.lang
         ''' </summary>
         ''' <param name="value">   the value to be represented by the
         '''                  {@code Integer} object. </param>
-        Sub New(ByVal value As Integer)
+        Sub New(  value As Integer)
             Me.value = value
         End Sub
 
@@ -805,7 +805,7 @@ Namespace java.lang
         ''' <exception cref="NumberFormatException">  if the {@code String} does not
         '''               contain a parsable  java.lang.[Integer]. </exception>
         ''' <seealso cref=        java.lang.Integer#parseInt(java.lang.String, int) </seealso>
-        Sub New(ByVal s As String)
+        Sub New(  s As String)
             Me.value = parseInt(s, 10)
         End Sub
 
@@ -893,7 +893,7 @@ Namespace java.lang
         ''' @since 1.8
         ''' </param>
         ''' <returns> a hash code value for a {@code int} value. </returns>
-        Public Overloads Shared Function GetHashCode(ByVal value As Integer) As Integer
+        Public Overloads Shared Function GetHashCode(  value As Integer) As Integer
             Return value
         End Function
 
@@ -906,7 +906,7 @@ Namespace java.lang
         ''' <param name="obj">   the object to compare with. </param>
         ''' <returns>  {@code true} if the objects are the same;
         '''          {@code false} otherwise. </returns>
-        Public Overrides Function Equals(ByVal obj As Object) As Boolean
+        Public Overrides Function Equals(  obj As Object) As Boolean
             If TypeOf obj Is Integer? Then Return value = CInt(Fix(obj))
             Return False
         End Function
@@ -940,7 +940,7 @@ Namespace java.lang
         '''          <seealso cref="System#getProperty(String) System.getProperty"/> </exception>
         ''' <seealso cref=     java.lang.System#getProperty(java.lang.String) </seealso>
         ''' <seealso cref=     java.lang.System#getProperty(java.lang.String, java.lang.String) </seealso>
-        Public Shared Function getInteger(ByVal nm As String) As Integer?
+        Public Shared Function getInteger(  nm As String) As Integer?
             Return getInteger(nm, Nothing)
         End Function
 
@@ -985,7 +985,7 @@ Namespace java.lang
         '''          <seealso cref="System#getProperty(String) System.getProperty"/> </exception>
         ''' <seealso cref=     java.lang.System#getProperty(java.lang.String) </seealso>
         ''' <seealso cref=     java.lang.System#getProperty(java.lang.String, java.lang.String) </seealso>
-        Public Shared Function getInteger(ByVal nm As String, ByVal val As Integer) As Integer?
+        Public Shared Function getInteger(  nm As String,   val As Integer) As Integer?
             Dim result As Integer? = getInteger(nm, Nothing)
             Return If(result Is Nothing, Convert.ToInt32(val), result)
         End Function
@@ -1026,7 +1026,7 @@ Namespace java.lang
         '''          <seealso cref="System#getProperty(String) System.getProperty"/> </exception>
         ''' <seealso cref=     System#getProperty(java.lang.String) </seealso>
         ''' <seealso cref=     System#getProperty(java.lang.String, java.lang.String) </seealso>
-        Public Shared Function getInteger(ByVal nm As String, ByVal val As Integer?) As Integer?
+        Public Shared Function getInteger(  nm As String,   val As Integer?) As Integer?
             Dim v As String = Nothing
             Try
                 v = System.getProperty(nm)
@@ -1082,7 +1082,7 @@ Namespace java.lang
         ''' <exception cref="NumberFormatException">  if the {@code String} does not
         '''            contain a parsable  java.lang.[Integer]. </exception>
         ''' <seealso cref= java.lang.Integer#parseInt(java.lang.String, int) </seealso>
-        Public Shared Function decode(ByVal nm As String) As Integer?
+        Public Shared Function decode(  nm As String) As Integer?
             Dim radix As Integer = 10
             Dim index As Integer = 0
             Dim negative As Boolean = False
@@ -1137,7 +1137,7 @@ Namespace java.lang
         '''           greater than the argument {@code Integer} (signed
         '''           comparison).
         ''' @since   1.2 </returns>
-        Public Function compareTo(ByVal anotherInteger As [Integer]) As Integer Implements Comparable(Of [Integer])
+        Public Function compareTo(  anotherInteger As [Integer]) As Integer Implements Comparable(Of [Integer])
             Return compare(Me.value, another java.lang.[Integer].Value)
         End Function
 
@@ -1154,7 +1154,7 @@ Namespace java.lang
         '''         a value less than {@code 0} if {@code x < y}; and
         '''         a value greater than {@code 0} if {@code x > y}
         ''' @since 1.7 </returns>
-        Public Shared Function compare(ByVal x As [Integer], ByVal y As [Integer]) As Integer
+        Public Shared Function compare(  x As [Integer],   y As [Integer]) As Integer
             Return If(x < y, -1, (If(x = y, 0, 1)))
         End Function
 
@@ -1169,7 +1169,7 @@ Namespace java.lang
         '''         a value greater than {@code 0} if {@code x > y} as
         '''         unsigned values
         ''' @since 1.8 </returns>
-        Public Shared Function compareUnsigned(ByVal x As [Integer], ByVal y As [Integer]) As Integer
+        Public Shared Function compareUnsigned(  x As [Integer],   y As [Integer]) As Integer
             Return compare(x + MIN_VALUE, y + MIN_VALUE)
         End Function
 
@@ -1189,7 +1189,7 @@ Namespace java.lang
         ''' <returns> the argument converted to {@code long} by an unsigned
         '''         conversion
         ''' @since 1.8 </returns>
-        Public Shared Function toUnsignedLong(ByVal x As Integer) As Long
+        Public Shared Function toUnsignedLong(  x As Integer) As Long
             Return (CLng(x)) And &HFFFFFFFFL
         End Function
 
@@ -1210,7 +1210,7 @@ Namespace java.lang
         ''' the second argument </returns>
         ''' <seealso cref= #remainderUnsigned
         ''' @since 1.8 </seealso>
-        Public Shared Function divideUnsigned(ByVal dividend As Integer, ByVal divisor As Integer) As Integer
+        Public Shared Function divideUnsigned(  dividend As Integer,   divisor As Integer) As Integer
             ' In lieu of tricky code, for now just use long arithmetic.
             Return CInt(toUnsignedLong(dividend) \ toUnsignedLong(divisor))
         End Function
@@ -1226,7 +1226,7 @@ Namespace java.lang
         ''' the second argument </returns>
         ''' <seealso cref= #divideUnsigned
         ''' @since 1.8 </seealso>
-        Public Shared Function remainderUnsigned(ByVal dividend As Integer, ByVal divisor As Integer) As Integer
+        Public Shared Function remainderUnsigned(  dividend As Integer,   divisor As Integer) As Integer
             ' In lieu of tricky code, for now just use long arithmetic.
             Return CInt(Fix(toUnsignedLong(dividend) Mod toUnsignedLong(divisor)))
         End Function
@@ -1263,7 +1263,7 @@ Namespace java.lang
         '''     of the highest-order one-bit in the specified value, or zero if
         '''     the specified value is itself equal to zero.
         ''' @since 1.5 </returns>
-        Public Shared Function highestOneBit(ByVal i As Integer) As Integer
+        Public Shared Function highestOneBit(  i As Integer) As Integer
             ' HD, Figure 3-1
             i = i Or (i >> 1)
             i = i Or (i >> 2)
@@ -1285,7 +1285,7 @@ Namespace java.lang
         '''     of the lowest-order one-bit in the specified value, or zero if
         '''     the specified value is itself equal to zero.
         ''' @since 1.5 </returns>
-        Public Shared Function lowestOneBit(ByVal i As Integer) As Integer
+        Public Shared Function lowestOneBit(  i As Integer) As Integer
             ' HD, Section 2-1
             Return i And -i
         End Function
@@ -1310,7 +1310,7 @@ Namespace java.lang
         '''     of the specified {@code int} value, or 32 if the value
         '''     is equal to zero.
         ''' @since 1.5 </returns>
-        Public Shared Function numberOfLeadingZeros(ByVal i As Integer) As Integer
+        Public Shared Function numberOfLeadingZeros(  i As Integer) As Integer
             ' HD, Figure 5-6
             If i = 0 Then Return 32
             Dim n As Integer = 1
@@ -1347,7 +1347,7 @@ Namespace java.lang
         '''     specified {@code int} value, or 32 if the value is equal
         '''     to zero.
         ''' @since 1.5 </returns>
-        Public Shared Function numberOfTrailingZeros(ByVal i As Integer) As Integer
+        Public Shared Function numberOfTrailingZeros(  i As Integer) As Integer
             ' HD, Figure 5-14
             Dim y As Integer
             If i = 0 Then Return 32
@@ -1384,7 +1384,7 @@ Namespace java.lang
         ''' <returns> the number of one-bits in the two's complement binary
         '''     representation of the specified {@code int} value.
         ''' @since 1.5 </returns>
-        Public Shared Function bitCount(ByVal i As Integer) As Integer
+        Public Shared Function bitCount(  i As Integer) As Integer
             ' HD, Figure 5-2
             i = i - ((CInt(CUInt(i) >> 1)) And &H55555555)
             i = (i And &H33333333) + ((CInt(CUInt(i) >> 2)) And &H33333333)
@@ -1413,7 +1413,7 @@ Namespace java.lang
         '''     representation of the specified {@code int} value left by the
         '''     specified number of bits.
         ''' @since 1.5 </returns>
-        Public Shared Function rotateLeft(ByVal i As Integer, ByVal distance As Integer) As Integer
+        Public Shared Function rotateLeft(  i As Integer,   distance As Integer) As Integer
             Return (i << distance) Or (CInt(CUInt(i) >> -distance))
         End Function
 
@@ -1436,7 +1436,7 @@ Namespace java.lang
         '''     representation of the specified {@code int} value right by the
         '''     specified number of bits.
         ''' @since 1.5 </returns>
-        Public Shared Function rotateRight(ByVal i As Integer, ByVal distance As Integer) As Integer
+        Public Shared Function rotateRight(  i As Integer,   distance As Integer) As Integer
             Return (CInt(CUInt(i) >> distance)) Or (i << -distance)
         End Function
 
@@ -1449,7 +1449,7 @@ Namespace java.lang
         ''' <returns> the value obtained by reversing order of the bits in the
         '''     specified {@code int} value.
         ''' @since 1.5 </returns>
-        Public Shared Function reverse(ByVal i As Integer) As Integer
+        Public Shared Function reverse(  i As Integer) As Integer
             ' HD, Figure 7-1
             i = (i And &H55555555) << 1 Or (CInt(CUInt(i) >> 1)) And &H55555555
             i = (i And &H33333333) << 2 Or (CInt(CUInt(i) >> 2)) And &H33333333
@@ -1466,7 +1466,7 @@ Namespace java.lang
         ''' <param name="i"> the value whose signum is to be computed </param>
         ''' <returns> the signum function of the specified {@code int} value.
         ''' @since 1.5 </returns>
-        Public Shared Function signum(ByVal i As Integer) As Integer
+        Public Shared Function signum(  i As Integer) As Integer
             ' HD, Section 2-7
             Return (i >> 31) Or (-CInt(CUInt(i) >> 31))
         End Function
@@ -1479,7 +1479,7 @@ Namespace java.lang
         ''' <returns> the value obtained by reversing the bytes in the specified
         '''     {@code int} value.
         ''' @since 1.5 </returns>
-        Public Shared Function reverseBytes(ByVal i As Integer) As Integer
+        Public Shared Function reverseBytes(  i As Integer) As Integer
             Return ((CInt(CUInt(i) >> 24))) Or ((i >> 8) And &HFF00) Or ((i << 8) And &HFF0000) Or ((i << 24))
         End Function
 
@@ -1491,7 +1491,7 @@ Namespace java.lang
         ''' <returns> the sum of {@code a} and {@code b} </returns>
         ''' <seealso cref= java.util.function.BinaryOperator
         ''' @since 1.8 </seealso>
-        Public Shared Function sum(ByVal a As Integer, ByVal b As Integer) As Integer
+        Public Shared Function sum(  a As Integer,   b As Integer) As Integer
             Return a + b
         End Function
 
@@ -1504,7 +1504,7 @@ Namespace java.lang
         ''' <returns> the greater of {@code a} and {@code b} </returns>
         ''' <seealso cref= java.util.function.BinaryOperator
         ''' @since 1.8 </seealso>
-        Public Shared Function max(ByVal a As Integer, ByVal b As Integer) As Integer
+        Public Shared Function max(  a As Integer,   b As Integer) As Integer
             Return Global.System.Math.Max(a, b)
         End Function
 
@@ -1517,7 +1517,7 @@ Namespace java.lang
         ''' <returns> the smaller of {@code a} and {@code b} </returns>
         ''' <seealso cref= java.util.function.BinaryOperator
         ''' @since 1.8 </seealso>
-        Public Shared Function min(ByVal a As Integer, ByVal b As Integer) As Integer
+        Public Shared Function min(  a As Integer,   b As Integer) As Integer
             Return Global.System.Math.Min(a, b)
         End Function
 

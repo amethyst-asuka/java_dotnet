@@ -122,7 +122,7 @@ Namespace java.awt.image
 		''' <param name="transferType"> the type of array used to represent pixel values </param>
 		''' <exception cref="IllegalArgumentException"> if <code>bits</code> is less than
 		'''         1 or greater than 32 </exception>
-		Public Sub New(ByVal space As java.awt.color.ColorSpace, ByVal bits As Integer, ByVal colorMaskArray As Integer(), ByVal alphaMask As Integer, ByVal isAlphaPremultiplied As Boolean, ByVal trans As Integer, ByVal transferType As Integer)
+		Public Sub New(  space As java.awt.color.ColorSpace,   bits As Integer,   colorMaskArray As Integer(),   alphaMask As Integer,   isAlphaPremultiplied As Boolean,   trans As Integer,   transferType As Integer)
 			MyBase.New(bits, PackedColorModel.createBitsArray(colorMaskArray, alphaMask), space, (If(alphaMask = 0, False, True)), isAlphaPremultiplied, trans, transferType)
 			If bits < 1 OrElse bits > 32 Then Throw New IllegalArgumentException("Number of bits must be between" & " 1 and 32.")
 			maskArray = New Integer(numComponents - 1){}
@@ -178,7 +178,7 @@ Namespace java.awt.image
 		''' <exception cref="IllegalArgumentException"> if <code>space</code> is not a
 		'''         TYPE_RGB space </exception>
 		''' <seealso cref= ColorSpace </seealso>
-		Public Sub New(ByVal space As java.awt.color.ColorSpace, ByVal bits As Integer, ByVal rmask As Integer, ByVal gmask As Integer, ByVal bmask As Integer, ByVal amask As Integer, ByVal isAlphaPremultiplied As Boolean, ByVal trans As Integer, ByVal transferType As Integer)
+		Public Sub New(  space As java.awt.color.ColorSpace,   bits As Integer,   rmask As Integer,   gmask As Integer,   bmask As Integer,   amask As Integer,   isAlphaPremultiplied As Boolean,   trans As Integer,   transferType As Integer)
 			MyBase.New(bits, PackedColorModel.createBitsArray(rmask, gmask, bmask, amask), space, (If(amask = 0, False, True)), isAlphaPremultiplied, trans, transferType)
 
 			If space.type <> java.awt.color.ColorSpace.TYPE_RGB Then Throw New IllegalArgumentException("ColorSpace must be TYPE_RGB.")
@@ -217,7 +217,7 @@ Namespace java.awt.image
 		'''         greater than the number of components minus 1 in this
 		'''         <code>PackedColorModel</code> or if <code>index</code> is
 		'''         less than zero </exception>
-		Public Function getMask(ByVal index As Integer) As Integer
+		Public Function getMask(  index As Integer) As Integer
 			Return maskArray(index)
 		End Function
 
@@ -238,7 +238,7 @@ Namespace java.awt.image
 	'     * store these and the mask in instance arrays, and verify that
 	'     * the mask fits in the specified pixel size.
 	'     
-		Private Sub DecomposeMask(ByVal mask As Integer, ByVal idx As Integer, ByVal componentName As String)
+		Private Sub DecomposeMask(  mask As Integer,   idx As Integer,   componentName As String)
 			Dim [off] As Integer = 0
 			Dim count As Integer = nBits(idx)
 
@@ -278,7 +278,7 @@ Namespace java.awt.image
 		''' <exception cref="IllegalArgumentException"> if <code>w</code> or
 		'''         <code>h</code> is not greater than 0 </exception>
 		''' <seealso cref= SampleModel </seealso>
-		Public Overrides Function createCompatibleSampleModel(ByVal w As Integer, ByVal h As Integer) As SampleModel
+		Public Overrides Function createCompatibleSampleModel(  w As Integer,   h As Integer) As SampleModel
 			Return New SinglePixelPackedSampleModel(transferType, w, h, maskArray)
 		End Function
 
@@ -292,7 +292,7 @@ Namespace java.awt.image
 		'''         is compatible with this <code>ColorModel</code>;
 		'''         <code>false</code> otherwise. </returns>
 		''' <seealso cref= SampleModel </seealso>
-		Public Overrides Function isCompatibleSampleModel(ByVal sm As SampleModel) As Boolean
+		Public Overrides Function isCompatibleSampleModel(  sm As SampleModel) As Boolean
 			If Not(TypeOf sm Is SinglePixelPackedSampleModel) Then Return False
 
 			' Must have the same number of components
@@ -329,7 +329,7 @@ Namespace java.awt.image
 		''' <param name="raster"> a <code>WritableRaster</code> containing an image </param>
 		''' <returns> a <code>WritableRaster</code> that represents the alpha
 		'''         channel of the image contained in <code>raster</code>. </returns>
-		Public Overrides Function getAlphaRaster(ByVal raster_Renamed As WritableRaster) As WritableRaster
+		Public Overrides Function getAlphaRaster(  raster_Renamed As WritableRaster) As WritableRaster
 			If hasAlpha() = False Then Return Nothing
 
 			Dim x As Integer = raster_Renamed.minX
@@ -347,7 +347,7 @@ Namespace java.awt.image
 		''' <returns> <code>true</code> if the specified <code>Object</code>
 		''' is an instance of <code>PackedColorModel</code> and equals this
 		''' <code>PackedColorModel</code>; <code>false</code> otherwise. </returns>
-		Public Overrides Function Equals(ByVal obj As Object) As Boolean
+		Public Overrides Function Equals(  obj As Object) As Boolean
 			If Not(TypeOf obj Is PackedColorModel) Then Return False
 
 			If Not MyBase.Equals(obj) Then Return False
@@ -361,7 +361,7 @@ Namespace java.awt.image
 			Return True
 		End Function
 
-		Private Shared Function createBitsArray(ByVal colorMaskArray As Integer(), ByVal alphaMask As Integer) As Integer()
+		Private Shared Function createBitsArray(  colorMaskArray As Integer(),   alphaMask As Integer) As Integer()
 			Dim numColors As Integer = colorMaskArray.Length
 			Dim numAlpha As Integer = (If(alphaMask = 0, 0, 1))
 			Dim arr As Integer() = New Integer(numColors+numAlpha - 1){}
@@ -376,7 +376,7 @@ Namespace java.awt.image
 			Return arr
 		End Function
 
-		Private Shared Function createBitsArray(ByVal rmask As Integer, ByVal gmask As Integer, ByVal bmask As Integer, ByVal amask As Integer) As Integer()
+		Private Shared Function createBitsArray(  rmask As Integer,   gmask As Integer,   bmask As Integer,   amask As Integer) As Integer()
 			Dim arr As Integer() = New Integer(3 + (If(amask = 0, 0, 1)) - 1){}
 			arr(0) = countBits(rmask)
 			arr(1) = countBits(gmask)
@@ -395,7 +395,7 @@ Namespace java.awt.image
 			Return arr
 		End Function
 
-		Private Shared Function countBits(ByVal mask As Integer) As Integer
+		Private Shared Function countBits(  mask As Integer) As Integer
 			Dim count As Integer = 0
 			If mask <> 0 Then
 				Do While (mask And 1) = 0

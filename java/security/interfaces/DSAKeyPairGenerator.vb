@@ -80,7 +80,7 @@ Namespace java.security.interfaces
 		''' </param>
 		''' <exception cref="InvalidParameterException"> if the {@code params}
 		''' value is invalid, null, or unsupported. </exception>
-	   Sub initialize(ByVal params As DSAParams, ByVal random As SecureRandom)
+	   Sub initialize(  params As DSAParams,   random As SecureRandom)
 
 		''' <summary>
 		''' Initializes the key pair generator for a given modulus length
@@ -107,7 +107,7 @@ Namespace java.security.interfaces
 		''' <exception cref="InvalidParameterException"> if {@code modlen} is
 		''' invalid, or unsupported, or if {@code genParams} is false and there
 		''' are no precomputed parameters for the requested modulus length. </exception>
-		Sub initialize(ByVal modlen As Integer, ByVal genParams As Boolean, ByVal random As SecureRandom)
+		Sub initialize(  modlen As Integer,   genParams As Boolean,   random As SecureRandom)
 	End Interface
 
 End Namespace

@@ -35,12 +35,12 @@ Namespace java.lang.invoke
 	Friend NotInheritable Class SimpleMethodHandle
 		Inherits BoundMethodHandle
 
-		Private Sub New(ByVal type As MethodType, ByVal form As LambdaForm)
+		Private Sub New(  type As MethodType,   form As LambdaForm)
 			MyBase.New(type, form)
 		End Sub
 
 		'non-public
-	 Friend Shared Function make(ByVal type As MethodType, ByVal form As LambdaForm) As BoundMethodHandle
+	 Friend Shared Function make(  type As MethodType,   form As LambdaForm) As BoundMethodHandle
 			Return New SimpleMethodHandle(type, form)
 	 End Function
 
@@ -52,7 +52,7 @@ Namespace java.lang.invoke
 				Return SPECIES_DATA
 	 End Function
 
-		Friend Overrides Function copyWith(ByVal mt As MethodType, ByVal lf As LambdaForm) As BoundMethodHandle
+		Friend Overrides Function copyWith(  mt As MethodType,   lf As LambdaForm) As BoundMethodHandle
 		'non-public
 			Return make(mt, lf)
 		End Function
@@ -66,11 +66,11 @@ Namespace java.lang.invoke
 			Return 0
 		End Function
 
-		Friend NotOverridable Overrides Function copyWithExtendL(ByVal mt As MethodType, ByVal lf As LambdaForm, ByVal narg As Object) As BoundMethodHandle
+		Friend NotOverridable Overrides Function copyWithExtendL(  mt As MethodType,   lf As LambdaForm,   narg As Object) As BoundMethodHandle
 		'non-public
 			Return BoundMethodHandle.bindSingle(mt, lf, narg) ' Use known fast path.
 		End Function
-		Friend NotOverridable Overrides Function copyWithExtendI(ByVal mt As MethodType, ByVal lf As LambdaForm, ByVal narg As Integer) As BoundMethodHandle
+		Friend NotOverridable Overrides Function copyWithExtendI(  mt As MethodType,   lf As LambdaForm,   narg As Integer) As BoundMethodHandle
 		'non-public
 			Try
 				Return CType(SPECIES_DATA.extendWith(I_TYPE).constructor().invokeBasic(mt, lf, narg), BoundMethodHandle)
@@ -78,7 +78,7 @@ Namespace java.lang.invoke
 				Throw uncaughtException(ex)
 			End Try
 		End Function
-		Friend NotOverridable Overrides Function copyWithExtendJ(ByVal mt As MethodType, ByVal lf As LambdaForm, ByVal narg As Long) As BoundMethodHandle
+		Friend NotOverridable Overrides Function copyWithExtendJ(  mt As MethodType,   lf As LambdaForm,   narg As Long) As BoundMethodHandle
 		'non-public
 			Try
 				Return CType(SPECIES_DATA.extendWith(J_TYPE).constructor().invokeBasic(mt, lf, narg), BoundMethodHandle)
@@ -86,7 +86,7 @@ Namespace java.lang.invoke
 				Throw uncaughtException(ex)
 			End Try
 		End Function
-		Friend NotOverridable Overrides Function copyWithExtendF(ByVal mt As MethodType, ByVal lf As LambdaForm, ByVal narg As Single) As BoundMethodHandle
+		Friend NotOverridable Overrides Function copyWithExtendF(  mt As MethodType,   lf As LambdaForm,   narg As Single) As BoundMethodHandle
 		'non-public
 			Try
 				Return CType(SPECIES_DATA.extendWith(F_TYPE).constructor().invokeBasic(mt, lf, narg), BoundMethodHandle)
@@ -94,7 +94,7 @@ Namespace java.lang.invoke
 				Throw uncaughtException(ex)
 			End Try
 		End Function
-		Friend NotOverridable Overrides Function copyWithExtendD(ByVal mt As MethodType, ByVal lf As LambdaForm, ByVal narg As Double) As BoundMethodHandle
+		Friend NotOverridable Overrides Function copyWithExtendD(  mt As MethodType,   lf As LambdaForm,   narg As Double) As BoundMethodHandle
 		'non-public
 			Try
 				Return CType(SPECIES_DATA.extendWith(D_TYPE).constructor().invokeBasic(mt, lf, narg), BoundMethodHandle)

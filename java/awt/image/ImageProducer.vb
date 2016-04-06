@@ -47,7 +47,7 @@ Namespace java.awt.image
 		''' by a call to the <code>startProduction</code> method. </summary>
 		''' <param name="ic"> the specified <code>ImageConsumer</code> </param>
 		''' <seealso cref= #startProduction </seealso>
-		Sub addConsumer(ByVal ic As ImageConsumer)
+		Sub addConsumer(  ic As ImageConsumer)
 
 		''' <summary>
 		''' Determines if a specified <code>ImageConsumer</code>
@@ -58,7 +58,7 @@ Namespace java.awt.image
 		'''         <code>ImageConsumer</code> is registered with
 		'''         this <code>ImageProducer</code>;
 		'''         <code>false</code> otherwise. </returns>
-		Function isConsumer(ByVal ic As ImageConsumer) As Boolean
+		Function isConsumer(  ic As ImageConsumer) As Boolean
 
 		''' <summary>
 		''' Removes the specified <code>ImageConsumer</code> object
@@ -68,7 +68,7 @@ Namespace java.awt.image
 		''' The <code>ImageProducer</code> should stop sending data
 		''' to this consumer as soon as is feasible. </summary>
 		''' <param name="ic"> the specified <code>ImageConsumer</code> </param>
-		Sub removeConsumer(ByVal ic As ImageConsumer)
+		Sub removeConsumer(  ic As ImageConsumer)
 
 		''' <summary>
 		''' Registers the specified <code>ImageConsumer</code> object
@@ -80,7 +80,7 @@ Namespace java.awt.image
 		''' the image data should be triggered as soon as possible. </summary>
 		''' <param name="ic"> the specified <code>ImageConsumer</code> </param>
 		''' <seealso cref= #addConsumer </seealso>
-		Sub startProduction(ByVal ic As ImageConsumer)
+		Sub startProduction(  ic As ImageConsumer)
 
 		''' <summary>
 		''' Requests, on behalf of the <code>ImageConsumer</code>,
@@ -102,7 +102,7 @@ Namespace java.awt.image
 		''' }</pre> </summary>
 		''' <param name="ic"> the specified <code>ImageConsumer</code> </param>
 		''' <seealso cref= ImageConsumer#setHints </seealso>
-		Sub requestTopDownLeftRightResend(ByVal ic As ImageConsumer)
+		Sub requestTopDownLeftRightResend(  ic As ImageConsumer)
 	End Interface
 
 End Namespace

@@ -715,7 +715,7 @@ Namespace java.awt.Icolor
         ''' <summary>
         ''' Constructs an ICC_Profile object with a given ID.
         ''' </summary>
-        Friend Sub New(ByVal p As sun.java2d.cmm.Profile)
+        Friend Sub New(  p As sun.java2d.cmm.Profile)
             Me.cmmProfile = p
         End Sub
 
@@ -724,7 +724,7 @@ Namespace java.awt.Icolor
         ''' Constructs an ICC_Profile object whose loading will be deferred.
         ''' The ID will be 0 until the profile is loaded.
         ''' </summary>
-        Friend Sub New(ByVal pdi As sun.java2d.cmm.ProfileDeferralInfo)
+        Friend Sub New(  pdi As sun.java2d.cmm.ProfileDeferralInfo)
             Me.deferralInfo = pdi
             'JAVA TO VB CONVERTER TODO TASK: Anonymous inner classes are not converted to VB if the base type is not defined in the code being converted:
             '			Me.profileActivator = New sun.java2d.cmm.ProfileActivator()
@@ -757,7 +757,7 @@ Namespace java.awt.Icolor
         ''' <param name="data"> the specified ICC Profile data </param>
         ''' <returns> an <code>ICC_Profile</code> object corresponding to
         '''          the data in the specified <code>data</code> array. </returns>
-        Public Shared Function getInstance(ByVal data As SByte()) As ICC_Profile
+        Public Shared Function getInstance(  data As SByte()) As ICC_Profile
             Dim thisProfile As ICC_Profile
 
             Dim p As sun.java2d.cmm.Profile = Nothing
@@ -802,7 +802,7 @@ Namespace java.awt.Icolor
         '''          the specified <code>ColorSpace</code> type. </returns>
         ''' <exception cref="IllegalArgumentException"> If <CODE>cspace</CODE> is not
         ''' one of the predefined color space types. </exception>
-        Public Shared Function getInstance(ByVal cspace As Integer) As ICC_Profile
+        Public Shared Function getInstance(  cspace As Integer) As ICC_Profile
             Dim thisProfile As ICC_Profile = Nothing
             Dim fileName As String
 
@@ -876,7 +876,7 @@ Namespace java.awt.Icolor
         '     This asserts system privileges, so is used only for the
         '     * standard profiles.
         '     
-        Private Shared Function getStandardProfile(ByVal name As String) As ICC_Profile
+        Private Shared Function getStandardProfile(  name As String) As ICC_Profile
             Return java.security.AccessController.doPrivileged(New PrivilegedActionAnonymousInnerClassHelper(Of ICC_Profile)(name))
         End Function
 
@@ -925,7 +925,7 @@ Namespace java.awt.Icolor
         ''' </exception>
         ''' <exception cref="SecurityException"> If a security manager is installed
         ''' and it does not permit read access to the given file. </exception>
-        Public Shared Function getInstance(ByVal fileName As String) As ICC_Profile
+        Public Shared Function getInstance(  fileName As String) As ICC_Profile
             Dim thisProfile As ICC_Profile
             Dim fis As java.io.FileInputStream = Nothing
 
@@ -956,7 +956,7 @@ Namespace java.awt.Icolor
         ''' </exception>
         ''' <exception cref="IllegalArgumentException"> If the stream does not
         ''' contain valid ICC Profile data. </exception>
-        Public Shared Function getInstance(ByVal s As java.io.InputStream) As ICC_Profile
+        Public Shared Function getInstance(  s As java.io.InputStream) As ICC_Profile
             Dim profileData As SByte()
 
             If TypeOf s Is sun.java2d.cmm.ProfileDeferralInfo Then Return getDeferredInstance(CType(s, sun.java2d.cmm.ProfileDeferralInfo))
@@ -968,7 +968,7 @@ Namespace java.awt.Icolor
         End Function
 
 
-        Friend Shared Function getProfileDataFromStream(ByVal s As java.io.InputStream) As SByte()
+        Friend Shared Function getProfileDataFromStream(  s As java.io.InputStream) As SByte()
             Dim profileData As SByte()
             Dim profileSize As Integer
 
@@ -1011,7 +1011,7 @@ Namespace java.awt.Icolor
         ''' If deferring is enabled, then the deferred activation
         ''' code will take care of access privileges. </summary>
         ''' <seealso cref= activateDeferredProfile() </seealso>
-        Shared Function getDeferredInstance(ByVal pdi As sun.java2d.cmm.ProfileDeferralInfo) As ICC_Profile
+        Shared Function getDeferredInstance(  pdi As sun.java2d.cmm.ProfileDeferralInfo) As ICC_Profile
             If Not sun.java2d.cmm.ProfileDeferralMgr.deferring Then Return getStandardProfile(pdi.filename)
             If pdi.colorSpaceType = ColorSpace.TYPE_RGB Then
                 Return New ICC_ProfileRGB(pdi)
@@ -1157,7 +1157,7 @@ Namespace java.awt.Icolor
             End Get
         End Property
 
-        Friend Shared Function getColorSpaceType(ByVal p As sun.java2d.cmm.Profile) As Integer
+        Friend Shared Function getColorSpaceType(  p As sun.java2d.cmm.Profile) As Integer
             Dim theHeader As SByte()
             Dim theColorSpaceSig, theColorSpace As Integer
 
@@ -1186,7 +1186,7 @@ Namespace java.awt.Icolor
         End Property
 
 
-        Friend Shared Function getPCSType(ByVal p As sun.java2d.cmm.Profile) As Integer
+        Friend Shared Function getPCSType(  p As sun.java2d.cmm.Profile) As Integer
             Dim theHeader As SByte()
             Dim thePCSSig, thePCS As Integer
 
@@ -1204,7 +1204,7 @@ Namespace java.awt.Icolor
         ''' </param>
         ''' <exception cref="IOException"> If the file cannot be opened for writing
         ''' or an I/O error occurs while writing to the file. </exception>
-        Public Overridable Sub write(ByVal fileName As String)
+        Public Overridable Sub write(  fileName As String)
             Dim outputFile As java.io.FileOutputStream
             Dim profileData As SByte()
 
@@ -1223,7 +1223,7 @@ Namespace java.awt.Icolor
         ''' </param>
         ''' <exception cref="IOException"> If an I/O error occurs while writing to the
         ''' stream. </exception>
-        Public Overridable Sub write(ByVal s As java.io.OutputStream)
+        Public Overridable Sub write(  s As java.io.OutputStream)
             Dim profileData As SByte()
 
             profileData = data ' this will activate deferred
@@ -1272,7 +1272,7 @@ Namespace java.awt.Icolor
         ''' <returns> A byte array that contains the tagged data element. Returns
         ''' <code>null</code> if the specified tag doesn't exist. </returns>
         ''' <seealso cref= #setData(int, byte[]) </seealso>
-        Public Overridable Function getData(ByVal tagSignature As Integer) As SByte()
+        Public Overridable Function getData(  tagSignature As Integer) As SByte()
 
             If sun.java2d.cmm.ProfileDeferralMgr.deferring Then sun.java2d.cmm.ProfileDeferralMgr.activateProfiles()
 
@@ -1280,7 +1280,7 @@ Namespace java.awt.Icolor
         End Function
 
 
-        Friend Shared Function getData(ByVal p As sun.java2d.cmm.Profile, ByVal tagSignature As Integer) As SByte()
+        Friend Shared Function getData(  p As sun.java2d.cmm.Profile,   tagSignature As Integer) As SByte()
             Dim tagSize As Integer
             Dim tagData As SByte()
 
@@ -1317,7 +1317,7 @@ Namespace java.awt.Icolor
         '''         array can not be interpreted as valid tag data, corresponding
         '''         to the {@code tagSignature}. </exception>
         ''' <seealso cref= #getData </seealso>
-        Public Overridable Sub setData(ByVal tagSignature As Integer, ByVal tagData As SByte())
+        Public Overridable Sub setData(  tagSignature As Integer,   tagData As SByte())
 
             If sun.java2d.cmm.ProfileDeferralMgr.deferring Then sun.java2d.cmm.ProfileDeferralMgr.activateProfiles()
 
@@ -1330,7 +1330,7 @@ Namespace java.awt.Icolor
         ''' has multiple transforms.
         ''' </summary>
         Friend Overridable Property renderingIntent As Integer
-            Set(ByVal renderingIntent As Integer)
+            Set(  renderingIntent As Integer)
                 Dim theHeader As SByte() = getData(icSigHead) ' getData will activate deferred
                 '                                                 profiles if necessary 
                 intToBigEndian(renderingIntent, theHeader, icHdrRenderingIntent)
@@ -1449,7 +1449,7 @@ Namespace java.awt.Icolor
         ''' Returns a float array of length 3 containing the X, Y, and Z
         ''' components encoded in an XYZType tag.
         ''' </summary>
-        Friend Overridable Function getXYZTag(ByVal theTagSignature As Integer) As Single()
+        Friend Overridable Function getXYZTag(  theTagSignature As Integer) As Single()
             Dim theData As SByte()
             Dim theXYZNumber As Single()
             Dim i1, i2, theS15Fixed16 As Integer
@@ -1483,7 +1483,7 @@ Namespace java.awt.Icolor
         ''' <returns> the gamma value as a float. </returns>
         ''' <exception cref="ProfileDataException"> if the profile does not specify
         '''            the TRC as a single gamma value. </exception>
-        Public Overridable Function getGamma(ByVal theTagSignature As Integer) As Single
+        Public Overridable Function getGamma(  theTagSignature As Integer) As Single
             Dim theTRCData As SByte()
             Dim theGamma As Single
             Dim theU8Fixed8 As Integer
@@ -1522,7 +1522,7 @@ Namespace java.awt.Icolor
         ''' <returns> a short array representing the TRC. </returns>
         ''' <exception cref="ProfileDataException"> if the profile does not specify
         '''            the TRC as a table. </exception>
-        Public Overridable Function getTRC(ByVal theTagSignature As Integer) As Short()
+        Public Overridable Function getTRC(  theTagSignature As Integer) As Short()
             Dim theTRCData As SByte()
             Dim theTRC As Short()
             Dim i1, i2, nElements, theU8Fixed8 As Integer
@@ -1551,7 +1551,7 @@ Namespace java.awt.Icolor
 
 
         ' convert an ICC color space signature into a Java color space type 
-        Friend Shared Function iccCStoJCS(ByVal theColorSpaceSig As Integer) As Integer
+        Friend Shared Function iccCStoJCS(  theColorSpaceSig As Integer) As Integer
             Dim theColorSpace As Integer
 
             Select Case theColorSpaceSig
@@ -1638,12 +1638,12 @@ Namespace java.awt.Icolor
         End Function
 
 
-        Friend Shared Function intFromBigEndian(ByVal array As SByte(), ByVal index As Integer) As Integer
+        Friend Shared Function intFromBigEndian(  array As SByte(),   index As Integer) As Integer
             Return (((array(index) And &HFF) << 24) Or ((array(index + 1) And &HFF) << 16) Or ((array(index + 2) And &HFF) << 8) Or (array(index + 3) And &HFF))
         End Function
 
 
-        Friend Shared Sub intToBigEndian(ByVal value As Integer, ByVal array As SByte(), ByVal index As Integer)
+        Friend Shared Sub intToBigEndian(  value As Integer,   array As SByte(),   index As Integer)
             array(index) = CByte(value >> 24)
             array(index + 1) = CByte(value >> 16)
             array(index + 2) = CByte(value >> 8)
@@ -1651,12 +1651,12 @@ Namespace java.awt.Icolor
         End Sub
 
 
-        Friend Shared Function shortFromBigEndian(ByVal array As SByte(), ByVal index As Integer) As Short
+        Friend Shared Function shortFromBigEndian(  array As SByte(),   index As Integer) As Short
             Return CShort(Fix(((array(index) And &HFF) << 8) Or (array(index + 1) And &HFF)))
         End Function
 
 
-        Friend Shared Sub shortToBigEndian(ByVal value As Short, ByVal array As SByte(), ByVal index As Integer)
+        Friend Shared Sub shortToBigEndian(  value As Short,   array As SByte(),   index As Integer)
             array(index) = CByte(value >> 8)
             array(index + 1) = CByte(value)
         End Sub
@@ -1671,7 +1671,7 @@ Namespace java.awt.Icolor
         '     * available, such as a profile for sRGB.  Built-in profiles use .pf as
         '     * the file name extension for profiles, e.g. sRGB.pf.
         '     
-        Private Shared Function getProfileFile(ByVal fileName As String) As java.io.File
+        Private Shared Function getProfileFile(  fileName As String) As java.io.File
             Dim path, dir, fullPath As String
 
             Dim f As New File(fileName) ' try absolute file name
@@ -1710,7 +1710,7 @@ Namespace java.awt.Icolor
         ''' If there is no built-in profile with such name, then the method
         ''' returns null.
         ''' </summary>
-        Private Shared Function getStandardProfileFile(ByVal fileName As String) As java.io.File
+        Private Shared Function getStandardProfileFile(  fileName As String) As java.io.File
             Dim dir As String = System.getProperty("java.home") + System.IO.Path.DirectorySeparatorChar & "lib" & System.IO.Path.DirectorySeparatorChar & "cmm"
             Dim fullPath As String = dir + System.IO.Path.DirectorySeparatorChar + fileName
             Dim f As New File(fullPath)
@@ -1720,7 +1720,7 @@ Namespace java.awt.Icolor
         ''' <summary>
         ''' Checks whether given file resides inside give directory.
         ''' </summary>
-        Private Shared Function isChildOf(ByVal f As java.io.File, ByVal dirName As String) As Boolean
+        Private Shared Function isChildOf(  f As java.io.File,   dirName As String) As Boolean
             Try
                 Dim dir As New File(dirName)
                 Dim canonicalDirName As String = dir.canonicalPath
@@ -1738,7 +1738,7 @@ Namespace java.awt.Icolor
         ''' <summary>
         ''' Checks whether built-in profile specified by fileName exists.
         ''' </summary>
-        Private Shared Function standardProfileExists(ByVal fileName As String) As Boolean
+        Private Shared Function standardProfileExists(  fileName As String) As Boolean
             Return java.security.AccessController.doPrivileged(New PrivilegedActionAnonymousInnerClassHelper3(Of T)
         End Function
 
@@ -1812,7 +1812,7 @@ Namespace java.awt.Icolor
         '''     for new predefined color spaces not only the color space
         '''     name, but the profile data as well so that older versions
         '''     could still deserialize the object. </exception>
-        Private Sub writeObject(ByVal s As java.io.ObjectOutputStream)
+        Private Sub writeObject(  s As java.io.ObjectOutputStream)
             s.defaultWriteObject()
 
             Dim csName As String = Nothing
@@ -1875,7 +1875,7 @@ Namespace java.awt.Icolor
         ''' <seealso cref= #readResolve() </seealso>
         ''' <seealso cref= #getInstance(int) </seealso>
         ''' <seealso cref= #getInstance(byte[]) </seealso>
-        Private Sub readObject(ByVal s As java.io.ObjectInputStream)
+        Private Sub readObject(  s As java.io.ObjectInputStream)
             s.defaultReadObject()
 
             Dim csName As String = CStr(s.readObject())

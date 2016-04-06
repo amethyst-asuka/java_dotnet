@@ -129,21 +129,21 @@ Namespace java.awt.geom
 		'''                     store the path segment types
 		''' @since 1.6 </param>
 		' private protected 
-		Friend Sub New(ByVal rule As Integer, ByVal initialTypes As Integer)
+		Friend Sub New(  rule As Integer,   initialTypes As Integer)
 			windingRule = rule
 			Me.pointTypes = New SByte(initialTypes - 1){}
 		End Sub
 
-		Friend MustOverride Function cloneCoordsFloat(ByVal at As AffineTransform) As Single()
-		Friend MustOverride Function cloneCoordsDouble(ByVal at As AffineTransform) As Double()
-		Friend MustOverride Sub append(ByVal x As Single, ByVal y As Single)
-		Friend MustOverride Sub append(ByVal x As Double, ByVal y As Double)
-		Friend MustOverride Function getPoint(ByVal coordindex As Integer) As Point2D
-		Friend MustOverride Sub needRoom(ByVal needMove As Boolean, ByVal newCoords As Integer)
-		Friend MustOverride Function pointCrossings(ByVal px As Double, ByVal py As Double) As Integer
-		Friend MustOverride Function rectCrossings(ByVal rxmin As Double, ByVal rymin As Double, ByVal rxmax As Double, ByVal rymax As Double) As Integer
+		Friend MustOverride Function cloneCoordsFloat(  at As AffineTransform) As Single()
+		Friend MustOverride Function cloneCoordsDouble(  at As AffineTransform) As Double()
+		Friend MustOverride Sub append(  x As Single,   y As Single)
+		Friend MustOverride Sub append(  x As Double,   y As Double)
+		Friend MustOverride Function getPoint(  coordindex As Integer) As Point2D
+		Friend MustOverride Sub needRoom(  needMove As Boolean,   newCoords As Integer)
+		Friend MustOverride Function pointCrossings(  px As Double,   py As Double) As Integer
+		Friend MustOverride Function rectCrossings(  rxmin As Double,   rymin As Double,   rxmax As Double,   rymax As Double) As Integer
 
-		Friend Shared Function expandPointTypes(ByVal oldPointTypes As SByte(), ByVal needed As Integer) As SByte()
+		Friend Shared Function expandPointTypes(  oldPointTypes As SByte(),   needed As Integer) As SByte()
 			Dim oldSize As Integer = oldPointTypes.Length
 			Dim newSizeMin As Integer = oldSize + needed
 			If newSizeMin < oldSize Then Throw New ArrayIndexOutOfBoundsException("pointTypes exceeds maximum capacity !")
@@ -201,7 +201,7 @@ Namespace java.awt.geom
 			''' <seealso cref= #WIND_EVEN_ODD </seealso>
 			''' <seealso cref= #WIND_NON_ZERO
 			''' @since 1.6 </seealso>
-			Public Sub New(ByVal rule As Integer)
+			Public Sub New(  rule As Integer)
 				Me.New(rule, INIT_SIZE)
 			End Sub
 
@@ -219,7 +219,7 @@ Namespace java.awt.geom
 			''' <seealso cref= #WIND_EVEN_ODD </seealso>
 			''' <seealso cref= #WIND_NON_ZERO
 			''' @since 1.6 </seealso>
-			Public Sub New(ByVal rule As Integer, ByVal initialCapacity As Integer)
+			Public Sub New(  rule As Integer,   initialCapacity As Integer)
 				MyBase.New(rule, initialCapacity)
 				floatCoords = New Single(initialCapacity * 2 - 1){}
 			End Sub
@@ -232,7 +232,7 @@ Namespace java.awt.geom
 			''' </summary>
 			''' <param name="s"> the specified {@code Shape} object
 			''' @since 1.6 </param>
-			Public Sub New(ByVal s As java.awt.Shape)
+			Public Sub New(  s As java.awt.Shape)
 				Me.New(s, Nothing)
 			End Sub
 
@@ -247,7 +247,7 @@ Namespace java.awt.geom
 			''' <param name="s"> the specified {@code Shape} object </param>
 			''' <param name="at"> the specified {@code AffineTransform} object
 			''' @since 1.6 </param>
-			Public Sub New(ByVal s As java.awt.Shape, ByVal at As AffineTransform)
+			Public Sub New(  s As java.awt.Shape,   at As AffineTransform)
 				If TypeOf s Is Path2D Then
 					Dim p2d As Path2D = CType(s, Path2D)
 					windingRule = p2d.windingRule
@@ -265,7 +265,7 @@ Namespace java.awt.geom
 				End If
 			End Sub
 
-			Friend Overrides Function cloneCoordsFloat(ByVal at As AffineTransform) As Single()
+			Friend Overrides Function cloneCoordsFloat(  at As AffineTransform) As Single()
 				' trim arrays:
 				Dim ret As Single()
 				If at Is Nothing Then
@@ -277,7 +277,7 @@ Namespace java.awt.geom
 				Return ret
 			End Function
 
-			Friend Overrides Function cloneCoordsDouble(ByVal at As AffineTransform) As Double()
+			Friend Overrides Function cloneCoordsDouble(  at As AffineTransform) As Double()
 				' trim arrays:
 				Dim ret As Double() = New Double(numCoords - 1){}
 				If at Is Nothing Then
@@ -290,31 +290,31 @@ Namespace java.awt.geom
 				Return ret
 			End Function
 
-			Friend Overrides Sub append(ByVal x As Single, ByVal y As Single)
+			Friend Overrides Sub append(  x As Single,   y As Single)
 				floatCoords(numCoords) = x
 				numCoords += 1
 				floatCoords(numCoords) = y
 				numCoords += 1
 			End Sub
 
-			Friend Overrides Sub append(ByVal x As Double, ByVal y As Double)
+			Friend Overrides Sub append(  x As Double,   y As Double)
 				floatCoords(numCoords) = CSng(x)
 				numCoords += 1
 				floatCoords(numCoords) = CSng(y)
 				numCoords += 1
 			End Sub
 
-			Friend Overrides Function getPoint(ByVal coordindex As Integer) As Point2D
+			Friend Overrides Function getPoint(  coordindex As Integer) As Point2D
 				Return New Point2D.Float(floatCoords(coordindex), floatCoords(coordindex+1))
 			End Function
 
-			Friend Overrides Sub needRoom(ByVal needMove As Boolean, ByVal newCoords As Integer)
+			Friend Overrides Sub needRoom(  needMove As Boolean,   newCoords As Integer)
 				If (numTypes = 0) AndAlso needMove Then Throw New IllegalPathStateException("missing initial moveto " & "in path definition")
 				If numTypes >= pointTypes.Length Then pointTypes = expandPointTypes(pointTypes, 1)
 				If numCoords > (floatCoords.Length - newCoords) Then floatCoords = expandCoords(floatCoords, newCoords)
 			End Sub
 
-			Shared Function expandCoords(ByVal oldCoords As Single(), ByVal needed As Integer) As Single()
+			Shared Function expandCoords(  oldCoords As Single(),   needed As Integer) As Single()
 				Dim oldSize As Integer = oldCoords.Length
 				Dim newSizeMin As Integer = oldSize + needed
 				If newSizeMin < oldSize Then Throw New ArrayIndexOutOfBoundsException("coords exceeds maximum capacity !")
@@ -345,7 +345,7 @@ Namespace java.awt.geom
 			''' @since 1.6
 			''' </summary>
 			<MethodImpl(MethodImplOptions.Synchronized)> _
-			Public NotOverridable Overrides Sub moveTo(ByVal x As Double, ByVal y As Double)
+			Public NotOverridable Overrides Sub moveTo(  x As Double,   y As Double)
 				If numTypes > 0 AndAlso pointTypes(numTypes - 1) = SEG_MOVETO Then
 					floatCoords(numCoords-2) = CSng(x)
 					floatCoords(numCoords-1) = CSng(y)
@@ -373,7 +373,7 @@ Namespace java.awt.geom
 			''' <seealso cref= Path2D#moveTo
 			''' @since 1.6 </seealso>
 			<MethodImpl(MethodImplOptions.Synchronized)> _
-			Public Sub moveTo(ByVal x As Single, ByVal y As Single)
+			Public Sub moveTo(  x As Single,   y As Single)
 				If numTypes > 0 AndAlso pointTypes(numTypes - 1) = SEG_MOVETO Then
 					floatCoords(numCoords-2) = x
 					floatCoords(numCoords-1) = y
@@ -393,7 +393,7 @@ Namespace java.awt.geom
 			''' @since 1.6
 			''' </summary>
 			<MethodImpl(MethodImplOptions.Synchronized)> _
-			Public NotOverridable Overrides Sub lineTo(ByVal x As Double, ByVal y As Double)
+			Public NotOverridable Overrides Sub lineTo(  x As Double,   y As Double)
 				needRoom(True, 2)
 				pointTypes(numTypes) = SEG_LINETO
 				numTypes += 1
@@ -417,7 +417,7 @@ Namespace java.awt.geom
 			''' <seealso cref= Path2D#lineTo
 			''' @since 1.6 </seealso>
 			<MethodImpl(MethodImplOptions.Synchronized)> _
-			Public Sub lineTo(ByVal x As Single, ByVal y As Single)
+			Public Sub lineTo(  x As Single,   y As Single)
 				needRoom(True, 2)
 				pointTypes(numTypes) = SEG_LINETO
 				numTypes += 1
@@ -432,7 +432,7 @@ Namespace java.awt.geom
 			''' @since 1.6
 			''' </summary>
 			<MethodImpl(MethodImplOptions.Synchronized)> _
-			Public NotOverridable Overrides Sub quadTo(ByVal x1 As Double, ByVal y1 As Double, ByVal x2 As Double, ByVal y2 As Double)
+			Public NotOverridable Overrides Sub quadTo(  x1 As Double,   y1 As Double,   x2 As Double,   y2 As Double)
 				needRoom(True, 4)
 				pointTypes(numTypes) = SEG_QUADTO
 				numTypes += 1
@@ -465,7 +465,7 @@ Namespace java.awt.geom
 			''' <seealso cref= Path2D#quadTo
 			''' @since 1.6 </seealso>
 			<MethodImpl(MethodImplOptions.Synchronized)> _
-			Public Sub quadTo(ByVal x1 As Single, ByVal y1 As Single, ByVal x2 As Single, ByVal y2 As Single)
+			Public Sub quadTo(  x1 As Single,   y1 As Single,   x2 As Single,   y2 As Single)
 				needRoom(True, 4)
 				pointTypes(numTypes) = SEG_QUADTO
 				numTypes += 1
@@ -484,7 +484,7 @@ Namespace java.awt.geom
 			''' @since 1.6
 			''' </summary>
 			<MethodImpl(MethodImplOptions.Synchronized)> _
-			Public NotOverridable Overrides Sub curveTo(ByVal x1 As Double, ByVal y1 As Double, ByVal x2 As Double, ByVal y2 As Double, ByVal x3 As Double, ByVal y3 As Double)
+			Public NotOverridable Overrides Sub curveTo(  x1 As Double,   y1 As Double,   x2 As Double,   y2 As Double,   x3 As Double,   y3 As Double)
 				needRoom(True, 6)
 				pointTypes(numTypes) = SEG_CUBICTO
 				numTypes += 1
@@ -523,7 +523,7 @@ Namespace java.awt.geom
 			''' <seealso cref= Path2D#curveTo
 			''' @since 1.6 </seealso>
 			<MethodImpl(MethodImplOptions.Synchronized)> _
-			Public Sub curveTo(ByVal x1 As Single, ByVal y1 As Single, ByVal x2 As Single, ByVal y2 As Single, ByVal x3 As Single, ByVal y3 As Single)
+			Public Sub curveTo(  x1 As Single,   y1 As Single,   x2 As Single,   y2 As Single,   x3 As Single,   y3 As Single)
 				needRoom(True, 6)
 				pointTypes(numTypes) = SEG_CUBICTO
 				numTypes += 1
@@ -541,7 +541,7 @@ Namespace java.awt.geom
 				numCoords += 1
 			End Sub
 
-			Friend Overrides Function pointCrossings(ByVal px As Double, ByVal py As Double) As Integer
+			Friend Overrides Function pointCrossings(  px As Double,   py As Double) As Integer
 				If numTypes = 0 Then Return 0
 				Dim movx, movy, curx, cury, endx, endy As Double
 				Dim coords As Single() = floatCoords
@@ -586,7 +586,7 @@ Namespace java.awt.geom
 				Return crossings
 			End Function
 
-			Friend Overrides Function rectCrossings(ByVal rxmin As Double, ByVal rymin As Double, ByVal rxmax As Double, ByVal rymax As Double) As Integer
+			Friend Overrides Function rectCrossings(  rxmin As Double,   rymin As Double,   rxmax As Double,   rymax As Double) As Integer
 				If numTypes = 0 Then Return 0
 				Dim coords As Single() = floatCoords
 				Dim curx, cury, movx, movy, endx, endy As Double
@@ -643,7 +643,7 @@ Namespace java.awt.geom
 			''' {@inheritDoc}
 			''' @since 1.6
 			''' </summary>
-			Public NotOverridable Overrides Sub append(ByVal pi As PathIterator, ByVal connect As Boolean)
+			Public NotOverridable Overrides Sub append(  pi As PathIterator,   connect As Boolean)
 				Dim coords As Single() = New Single(5){}
 				Do While Not pi.done
 					Select Case pi.currentSegment(coords)
@@ -672,7 +672,7 @@ Namespace java.awt.geom
 			''' {@inheritDoc}
 			''' @since 1.6
 			''' </summary>
-			Public NotOverridable Overrides Sub transform(ByVal at As AffineTransform)
+			Public NotOverridable Overrides Sub transform(  at As AffineTransform)
 				at.transform(floatCoords, 0, floatCoords, 0, numCoords \ 2)
 			End Sub
 
@@ -723,7 +723,7 @@ Namespace java.awt.geom
 			''' 
 			''' @since 1.6
 			''' </summary>
-			Public Function getPathIterator(ByVal at As AffineTransform) As PathIterator
+			Public Function getPathIterator(  at As AffineTransform) As PathIterator
 				If at Is Nothing Then
 					Return New CopyIterator(Me)
 				Else
@@ -877,7 +877,7 @@ Namespace java.awt.geom
 			''' 
 			''' @since 1.6
 			''' </summary>
-			Private Sub writeObject(ByVal s As java.io.ObjectOutputStream)
+			Private Sub writeObject(  s As java.io.ObjectOutputStream)
 				MyBase.writeObject(s, False)
 			End Sub
 
@@ -894,7 +894,7 @@ Namespace java.awt.geom
 			''' 
 			''' @since 1.6
 			''' </summary>
-			Private Sub readObject(ByVal s As java.io.ObjectInputStream)
+			Private Sub readObject(  s As java.io.ObjectInputStream)
 				MyBase.readObject(s, False)
 			End Sub
 
@@ -903,19 +903,19 @@ Namespace java.awt.geom
 
 				Friend floatCoords As Single()
 
-				Friend Sub New(ByVal p2df As Path2D.Float)
+				Friend Sub New(  p2df As Path2D.Float)
 					MyBase.New(p2df)
 					Me.floatCoords = p2df.floatCoords
 				End Sub
 
-				Public Overridable Function currentSegment(ByVal coords As Single()) As Integer
+				Public Overridable Function currentSegment(  coords As Single()) As Integer
 					Dim type As Integer = path.pointTypes(typeIdx)
 					Dim numCoords As Integer = curvecoords(type)
 					If numCoords > 0 Then Array.Copy(floatCoords, pointIdx, coords, 0, numCoords)
 					Return type
 				End Function
 
-				Public Overridable Function currentSegment(ByVal coords As Double()) As Integer
+				Public Overridable Function currentSegment(  coords As Double()) As Integer
 					Dim type As Integer = path.pointTypes(typeIdx)
 					Dim numCoords As Integer = curvecoords(type)
 					If numCoords > 0 Then
@@ -933,20 +933,20 @@ Namespace java.awt.geom
 				Friend floatCoords As Single()
 				Friend affine As AffineTransform
 
-				Friend Sub New(ByVal p2df As Path2D.Float, ByVal at As AffineTransform)
+				Friend Sub New(  p2df As Path2D.Float,   at As AffineTransform)
 					MyBase.New(p2df)
 					Me.floatCoords = p2df.floatCoords
 					Me.affine = at
 				End Sub
 
-				Public Overridable Function currentSegment(ByVal coords As Single()) As Integer
+				Public Overridable Function currentSegment(  coords As Single()) As Integer
 					Dim type As Integer = path.pointTypes(typeIdx)
 					Dim numCoords As Integer = curvecoords(type)
 					If numCoords > 0 Then affine.transform(floatCoords, pointIdx, coords, 0, numCoords \ 2)
 					Return type
 				End Function
 
-				Public Overridable Function currentSegment(ByVal coords As Double()) As Integer
+				Public Overridable Function currentSegment(  coords As Double()) As Integer
 					Dim type As Integer = path.pointTypes(typeIdx)
 					Dim numCoords As Integer = curvecoords(type)
 					If numCoords > 0 Then affine.transform(floatCoords, pointIdx, coords, 0, numCoords \ 2)
@@ -988,7 +988,7 @@ Namespace java.awt.geom
 			''' <seealso cref= #WIND_EVEN_ODD </seealso>
 			''' <seealso cref= #WIND_NON_ZERO
 			''' @since 1.6 </seealso>
-			Function java.lang.Double(ByVal rule As Integer) As [Public] Overridable
+			Function java.lang.Double(  rule As Integer) As [Public] Overridable
 				Me(rule, INIT_SIZE)
 			End Function
 
@@ -1006,7 +1006,7 @@ Namespace java.awt.geom
 			''' <seealso cref= #WIND_EVEN_ODD </seealso>
 			''' <seealso cref= #WIND_NON_ZERO
 			''' @since 1.6 </seealso>
-			Function java.lang.Double(ByVal rule As Integer, ByVal initialCapacity As Integer) As [Public] Overridable
+			Function java.lang.Double(  rule As Integer,   initialCapacity As Integer) As [Public] Overridable
 				MyBase(rule, initialCapacity)
 				doubleCoords = New Double(initialCapacity * 2 - 1){}
 			End Function
@@ -1019,7 +1019,7 @@ Namespace java.awt.geom
 			''' </summary>
 			''' <param name="s"> the specified {@code Shape} object
 			''' @since 1.6 </param>
-			Function java.lang.Double(ByVal s As java.awt.Shape) As [Public] Overridable
+			Function java.lang.Double(  s As java.awt.Shape) As [Public] Overridable
 				Me(s, Nothing)
 			End Function
 
@@ -1034,7 +1034,7 @@ Namespace java.awt.geom
 			''' <param name="s"> the specified {@code Shape} object </param>
 			''' <param name="at"> the specified {@code AffineTransform} object
 			''' @since 1.6 </param>
-			Function java.lang.Double(ByVal s As java.awt.Shape, ByVal at As AffineTransform) As [Public] Overridable
+			Function java.lang.Double(  s As java.awt.Shape,   at As AffineTransform) As [Public] Overridable
 				If TypeOf s Is Path2D Then
 					Dim p2d As Path2D = CType(s, Path2D)
 					windingRule = p2d.windingRule
@@ -1052,7 +1052,7 @@ Namespace java.awt.geom
 				End If
 			End Function
 
-			Friend Overrides Function cloneCoordsFloat(ByVal at As AffineTransform) As Single()
+			Friend Overrides Function cloneCoordsFloat(  at As AffineTransform) As Single()
 				' trim arrays:
 				Dim ret As Single() = New Single(numCoords - 1){}
 				If at Is Nothing Then
@@ -1065,7 +1065,7 @@ Namespace java.awt.geom
 				Return ret
 			End Function
 
-			Friend Overrides Function cloneCoordsDouble(ByVal at As AffineTransform) As Double()
+			Friend Overrides Function cloneCoordsDouble(  at As AffineTransform) As Double()
 				' trim arrays:
 				Dim ret As Double()
 				If at Is Nothing Then
@@ -1077,31 +1077,31 @@ Namespace java.awt.geom
 				Return ret
 			End Function
 
-			Friend Overrides Sub append(ByVal x As Single, ByVal y As Single)
+			Friend Overrides Sub append(  x As Single,   y As Single)
 				doubleCoords(numCoords) = x
 				numCoords += 1
 				doubleCoords(numCoords) = y
 				numCoords += 1
 			End Sub
 
-			Friend Overrides Sub append(ByVal x As Double, ByVal y As Double)
+			Friend Overrides Sub append(  x As Double,   y As Double)
 				doubleCoords(numCoords) = x
 				numCoords += 1
 				doubleCoords(numCoords) = y
 				numCoords += 1
 			End Sub
 
-			Friend Overrides Function getPoint(ByVal coordindex As Integer) As Point2D
+			Friend Overrides Function getPoint(  coordindex As Integer) As Point2D
 				Return New Point2D.Double(doubleCoords(coordindex), doubleCoords(coordindex+1))
 			End Function
 
-			Friend Overrides Sub needRoom(ByVal needMove As Boolean, ByVal newCoords As Integer)
+			Friend Overrides Sub needRoom(  needMove As Boolean,   newCoords As Integer)
 				If (numTypes = 0) AndAlso needMove Then Throw New IllegalPathStateException("missing initial moveto " & "in path definition")
 				If numTypes >= pointTypes.Length Then pointTypes = expandPointTypes(pointTypes, 1)
 				If numCoords > (doubleCoords.Length - newCoords) Then doubleCoords = expandCoords(doubleCoords, newCoords)
 			End Sub
 
-			Friend Shared Function expandCoords(ByVal oldCoords As Double(), ByVal needed As Integer) As Double()
+			Friend Shared Function expandCoords(  oldCoords As Double(),   needed As Integer) As Double()
 				Dim oldSize As Integer = oldCoords.Length
 				Dim newSizeMin As Integer = oldSize + needed
 				If newSizeMin < oldSize Then Throw New ArrayIndexOutOfBoundsException("coords exceeds maximum capacity !")
@@ -1132,7 +1132,7 @@ Namespace java.awt.geom
 			''' @since 1.6
 			''' </summary>
 			<MethodImpl(MethodImplOptions.Synchronized)> _
-			Public NotOverridable Overrides Sub moveTo(ByVal x As Double, ByVal y As Double)
+			Public NotOverridable Overrides Sub moveTo(  x As Double,   y As Double)
 				If numTypes > 0 AndAlso pointTypes(numTypes - 1) = SEG_MOVETO Then
 					doubleCoords(numCoords-2) = x
 					doubleCoords(numCoords-1) = y
@@ -1152,7 +1152,7 @@ Namespace java.awt.geom
 			''' @since 1.6
 			''' </summary>
 			<MethodImpl(MethodImplOptions.Synchronized)> _
-			Public NotOverridable Overrides Sub lineTo(ByVal x As Double, ByVal y As Double)
+			Public NotOverridable Overrides Sub lineTo(  x As Double,   y As Double)
 				needRoom(True, 2)
 				pointTypes(numTypes) = SEG_LINETO
 				numTypes += 1
@@ -1167,7 +1167,7 @@ Namespace java.awt.geom
 			''' @since 1.6
 			''' </summary>
 			<MethodImpl(MethodImplOptions.Synchronized)> _
-			Public NotOverridable Overrides Sub quadTo(ByVal x1 As Double, ByVal y1 As Double, ByVal x2 As Double, ByVal y2 As Double)
+			Public NotOverridable Overrides Sub quadTo(  x1 As Double,   y1 As Double,   x2 As Double,   y2 As Double)
 				needRoom(True, 4)
 				pointTypes(numTypes) = SEG_QUADTO
 				numTypes += 1
@@ -1186,7 +1186,7 @@ Namespace java.awt.geom
 			''' @since 1.6
 			''' </summary>
 			<MethodImpl(MethodImplOptions.Synchronized)> _
-			Public NotOverridable Overrides Sub curveTo(ByVal x1 As Double, ByVal y1 As Double, ByVal x2 As Double, ByVal y2 As Double, ByVal x3 As Double, ByVal y3 As Double)
+			Public NotOverridable Overrides Sub curveTo(  x1 As Double,   y1 As Double,   x2 As Double,   y2 As Double,   x3 As Double,   y3 As Double)
 				needRoom(True, 6)
 				pointTypes(numTypes) = SEG_CUBICTO
 				numTypes += 1
@@ -1204,7 +1204,7 @@ Namespace java.awt.geom
 				numCoords += 1
 			End Sub
 
-			Friend Overrides Function pointCrossings(ByVal px As Double, ByVal py As Double) As Integer
+			Friend Overrides Function pointCrossings(  px As Double,   py As Double) As Integer
 				If numTypes = 0 Then Return 0
 				Dim movx, movy, curx, cury, endx, endy As Double
 				Dim coords As Double() = doubleCoords
@@ -1249,7 +1249,7 @@ Namespace java.awt.geom
 				Return crossings
 			End Function
 
-			Friend Overrides Function rectCrossings(ByVal rxmin As Double, ByVal rymin As Double, ByVal rxmax As Double, ByVal rymax As Double) As Integer
+			Friend Overrides Function rectCrossings(  rxmin As Double,   rymin As Double,   rxmax As Double,   rymax As Double) As Integer
 				If numTypes = 0 Then Return 0
 				Dim coords As Double() = doubleCoords
 				Dim curx, cury, movx, movy, endx, endy As Double
@@ -1309,7 +1309,7 @@ Namespace java.awt.geom
 			''' {@inheritDoc}
 			''' @since 1.6
 			''' </summary>
-			Public NotOverridable Overrides Sub append(ByVal pi As PathIterator, ByVal connect As Boolean)
+			Public NotOverridable Overrides Sub append(  pi As PathIterator,   connect As Boolean)
 				Dim coords As Double() = New Double(5){}
 				Do While Not pi.done
 					Select Case pi.currentSegment(coords)
@@ -1338,7 +1338,7 @@ Namespace java.awt.geom
 			''' {@inheritDoc}
 			''' @since 1.6
 			''' </summary>
-			Public NotOverridable Overrides Sub transform(ByVal at As AffineTransform)
+			Public NotOverridable Overrides Sub transform(  at As AffineTransform)
 				at.transform(doubleCoords, 0, doubleCoords, 0, numCoords \ 2)
 			End Sub
 
@@ -1392,7 +1392,7 @@ Namespace java.awt.geom
 			'''         of this {@code Shape} and provides access to the geometry
 			'''         of this {@code Shape}'s outline
 			''' @since 1.6 </returns>
-			Public Function getPathIterator(ByVal at As AffineTransform) As PathIterator
+			Public Function getPathIterator(  at As AffineTransform) As PathIterator
 				If at Is Nothing Then
 					Return New CopyIterator(Me)
 				Else
@@ -1542,7 +1542,7 @@ Namespace java.awt.geom
 			''' 
 			''' @since 1.6
 			''' </summary>
-			Private Sub writeObject(ByVal s As java.io.ObjectOutputStream)
+			Private Sub writeObject(  s As java.io.ObjectOutputStream)
 				MyBase.writeObject(s, True)
 			End Sub
 
@@ -1559,7 +1559,7 @@ Namespace java.awt.geom
 			''' 
 			''' @since 1.6
 			''' </summary>
-			Private Sub readObject(ByVal s As java.io.ObjectInputStream)
+			Private Sub readObject(  s As java.io.ObjectInputStream)
 				MyBase.readObject(s, True)
 			End Sub
 
@@ -1568,12 +1568,12 @@ Namespace java.awt.geom
 
 				Friend doubleCoords As Double()
 
-				Friend Sub New(ByVal p2dd As Path2D.Double)
+				Friend Sub New(  p2dd As Path2D.Double)
 					MyBase.New(p2dd)
 					Me.doubleCoords = p2dd.doubleCoords
 				End Sub
 
-				Public Overridable Function currentSegment(ByVal coords As Single()) As Integer
+				Public Overridable Function currentSegment(  coords As Single()) As Integer
 					Dim type As Integer = path.pointTypes(typeIdx)
 					Dim numCoords As Integer = curvecoords(type)
 					If numCoords > 0 Then
@@ -1584,7 +1584,7 @@ Namespace java.awt.geom
 					Return type
 				End Function
 
-				Public Overridable Function currentSegment(ByVal coords As Double()) As Integer
+				Public Overridable Function currentSegment(  coords As Double()) As Integer
 					Dim type As Integer = path.pointTypes(typeIdx)
 					Dim numCoords As Integer = curvecoords(type)
 					If numCoords > 0 Then Array.Copy(doubleCoords, pointIdx, coords, 0, numCoords)
@@ -1598,20 +1598,20 @@ Namespace java.awt.geom
 				Friend doubleCoords As Double()
 				Friend affine As AffineTransform
 
-				Friend Sub New(ByVal p2dd As Path2D.Double, ByVal at As AffineTransform)
+				Friend Sub New(  p2dd As Path2D.Double,   at As AffineTransform)
 					MyBase.New(p2dd)
 					Me.doubleCoords = p2dd.doubleCoords
 					Me.affine = at
 				End Sub
 
-				Public Overridable Function currentSegment(ByVal coords As Single()) As Integer
+				Public Overridable Function currentSegment(  coords As Single()) As Integer
 					Dim type As Integer = path.pointTypes(typeIdx)
 					Dim numCoords As Integer = curvecoords(type)
 					If numCoords > 0 Then affine.transform(doubleCoords, pointIdx, coords, 0, numCoords \ 2)
 					Return type
 				End Function
 
-				Public Overridable Function currentSegment(ByVal coords As Double()) As Integer
+				Public Overridable Function currentSegment(  coords As Double()) As Integer
 					Dim type As Integer = path.pointTypes(typeIdx)
 					Dim numCoords As Integer = curvecoords(type)
 					If numCoords > 0 Then affine.transform(doubleCoords, pointIdx, coords, 0, numCoords \ 2)
@@ -1627,7 +1627,7 @@ Namespace java.awt.geom
 		''' <param name="x"> the specified X coordinate </param>
 		''' <param name="y"> the specified Y coordinate
 		''' @since 1.6 </param>
-		Public MustOverride Sub moveTo(ByVal x As Double, ByVal y As Double)
+		Public MustOverride Sub moveTo(  x As Double,   y As Double)
 
 		''' <summary>
 		''' Adds a point to the path by drawing a straight line from the
@@ -1637,7 +1637,7 @@ Namespace java.awt.geom
 		''' <param name="x"> the specified X coordinate </param>
 		''' <param name="y"> the specified Y coordinate
 		''' @since 1.6 </param>
-		Public MustOverride Sub lineTo(ByVal x As Double, ByVal y As Double)
+		Public MustOverride Sub lineTo(  x As Double,   y As Double)
 
 		''' <summary>
 		''' Adds a curved segment, defined by two new points, to the path by
@@ -1652,7 +1652,7 @@ Namespace java.awt.geom
 		''' <param name="x2"> the X coordinate of the final end point </param>
 		''' <param name="y2"> the Y coordinate of the final end point
 		''' @since 1.6 </param>
-		Public MustOverride Sub quadTo(ByVal x1 As Double, ByVal y1 As Double, ByVal x2 As Double, ByVal y2 As Double)
+		Public MustOverride Sub quadTo(  x1 As Double,   y1 As Double,   x2 As Double,   y2 As Double)
 
 		''' <summary>
 		''' Adds a curved segment, defined by three new points, to the path by
@@ -1669,7 +1669,7 @@ Namespace java.awt.geom
 		''' <param name="x3"> the X coordinate of the final end point </param>
 		''' <param name="y3"> the Y coordinate of the final end point
 		''' @since 1.6 </param>
-		Public MustOverride Sub curveTo(ByVal x1 As Double, ByVal y1 As Double, ByVal x2 As Double, ByVal y2 As Double, ByVal x3 As Double, ByVal y3 As Double)
+		Public MustOverride Sub curveTo(  x1 As Double,   y1 As Double,   x2 As Double,   y2 As Double,   x3 As Double,   y3 As Double)
 
 		''' <summary>
 		''' Closes the current subpath by drawing a straight line back to
@@ -1708,7 +1708,7 @@ Namespace java.awt.geom
 		'''                {@code moveTo} segment into a {@code lineTo} segment
 		'''                to connect the new geometry to the existing path
 		''' @since 1.6 </param>
-		Public Sub append(ByVal s As java.awt.Shape, ByVal connect As Boolean)
+		Public Sub append(  s As java.awt.Shape,   connect As Boolean)
 			append(s.getPathIterator(Nothing), connect)
 		End Sub
 
@@ -1734,7 +1734,7 @@ Namespace java.awt.geom
 		'''                {@code moveTo} segment into a {@code lineTo} segment
 		'''                to connect the new geometry to the existing path
 		''' @since 1.6 </param>
-		Public MustOverride Sub append(ByVal pi As PathIterator, ByVal connect As Boolean)
+		Public MustOverride Sub append(  pi As PathIterator,   connect As Boolean)
 
 		''' <summary>
 		''' Returns the fill style winding rule.
@@ -1749,7 +1749,7 @@ Namespace java.awt.geom
 			Get
 				Return windingRule
 			End Get
-			Set(ByVal rule As Integer)
+			Set(  rule As Integer)
 				If rule <> WIND_EVEN_ODD AndAlso rule <> WIND_NON_ZERO Then Throw New IllegalArgumentException("winding rule must be " & "WIND_EVEN_ODD or " & "WIND_NON_ZERO")
 				windingRule = rule
 			End Set
@@ -1809,7 +1809,7 @@ Namespace java.awt.geom
 		''' </summary>
 		''' <param name="at"> the {@code AffineTransform} used to transform the area
 		''' @since 1.6 </param>
-		Public MustOverride Sub transform(ByVal at As AffineTransform)
+		Public MustOverride Sub transform(  at As AffineTransform)
 
 		''' <summary>
 		''' Returns a new {@code Shape} representing a transformed version
@@ -1832,7 +1832,7 @@ Namespace java.awt.geom
 		'''         {@code AffineTransform}.
 		''' @since 1.6 </returns>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Function createTransformedShape(ByVal at As AffineTransform) As java.awt.Shape
+		Public Function createTransformedShape(  at As AffineTransform) As java.awt.Shape
 			Dim p2d As Path2D = CType(clone(), Path2D)
 			If at IsNot Nothing Then p2d.transform(at)
 			Return p2d
@@ -1862,7 +1862,7 @@ Namespace java.awt.geom
 		''' <returns> {@code true} if the specified coordinates are inside the
 		'''         specified {@code PathIterator}; {@code false} otherwise
 		''' @since 1.6 </returns>
-		Public Shared Function contains(ByVal pi As PathIterator, ByVal x As Double, ByVal y As Double) As Boolean
+		Public Shared Function contains(  pi As PathIterator,   x As Double,   y As Double) As Boolean
 			If x * 0.0 + y * 0.0 = 0.0 Then
 	'             N * 0.0 is 0.0 only if N is finite.
 	'             * Here we know that both x and y are finite.
@@ -1893,7 +1893,7 @@ Namespace java.awt.geom
 		''' <returns> {@code true} if the specified coordinates are inside the
 		'''         specified {@code PathIterator}; {@code false} otherwise
 		''' @since 1.6 </returns>
-		Public Shared Function contains(ByVal pi As PathIterator, ByVal p As Point2D) As Boolean
+		Public Shared Function contains(  pi As PathIterator,   p As Point2D) As Boolean
 			Return contains(pi, p.x, p.y)
 		End Function
 
@@ -1901,7 +1901,7 @@ Namespace java.awt.geom
 		''' {@inheritDoc}
 		''' @since 1.6
 		''' </summary>
-		Public Function contains(ByVal x As Double, ByVal y As Double) As Boolean
+		Public Function contains(  x As Double,   y As Double) As Boolean
 			If x * 0.0 + y * 0.0 = 0.0 Then
 	'             N * 0.0 is 0.0 only if N is finite.
 	'             * Here we know that both x and y are finite.
@@ -1923,7 +1923,7 @@ Namespace java.awt.geom
 		''' {@inheritDoc}
 		''' @since 1.6
 		''' </summary>
-		Public Function contains(ByVal p As Point2D) As Boolean
+		Public Function contains(  p As Point2D) As Boolean
 			Return contains(p.x, p.y)
 		End Function
 
@@ -1957,7 +1957,7 @@ Namespace java.awt.geom
 		''' <returns> {@code true} if the specified {@code PathIterator} contains
 		'''         the specified rectangular area; {@code false} otherwise.
 		''' @since 1.6 </returns>
-		Public Shared Function contains(ByVal pi As PathIterator, ByVal x As Double, ByVal y As Double, ByVal w As Double, ByVal h As Double) As Boolean
+		Public Shared Function contains(  pi As PathIterator,   x As Double,   y As Double,   w As Double,   h As Double) As Boolean
 			If java.lang.[Double].IsNaN(x+w) OrElse java.lang.[Double].IsNaN(y+h) Then Return False
 			If w <= 0 OrElse h <= 0 Then Return False
 			Dim mask As Integer = (If(pi.windingRule = WIND_NON_ZERO, -1, 2))
@@ -1992,7 +1992,7 @@ Namespace java.awt.geom
 		''' <returns> {@code true} if the specified {@code PathIterator} contains
 		'''         the specified {@code Rectangle2D}; {@code false} otherwise.
 		''' @since 1.6 </returns>
-		Public Shared Function contains(ByVal pi As PathIterator, ByVal r As Rectangle2D) As Boolean
+		Public Shared Function contains(  pi As PathIterator,   r As Rectangle2D) As Boolean
 			Return contains(pi, r.x, r.y, r.width, r.height)
 		End Function
 
@@ -2015,7 +2015,7 @@ Namespace java.awt.geom
 		''' 
 		''' @since 1.6
 		''' </summary>
-		Public Function contains(ByVal x As Double, ByVal y As Double, ByVal w As Double, ByVal h As Double) As Boolean
+		Public Function contains(  x As Double,   y As Double,   w As Double,   h As Double) As Boolean
 			If java.lang.[Double].IsNaN(x+w) OrElse java.lang.[Double].IsNaN(y+h) Then Return False
 			If w <= 0 OrElse h <= 0 Then Return False
 			Dim mask As Integer = (If(windingRule = WIND_NON_ZERO, -1, 2))
@@ -2042,7 +2042,7 @@ Namespace java.awt.geom
 		''' 
 		''' @since 1.6
 		''' </summary>
-		Public Function contains(ByVal r As Rectangle2D) As Boolean
+		Public Function contains(  r As Rectangle2D) As Boolean
 			Return contains(r.x, r.y, r.width, r.height)
 		End Function
 
@@ -2077,7 +2077,7 @@ Namespace java.awt.geom
 		'''         the interior of the specified set of rectangular
 		'''         coordinates intersect each other; {@code false} otherwise.
 		''' @since 1.6 </returns>
-		Public Shared Function intersects(ByVal pi As PathIterator, ByVal x As Double, ByVal y As Double, ByVal w As Double, ByVal h As Double) As Boolean
+		Public Shared Function intersects(  pi As PathIterator,   x As Double,   y As Double,   w As Double,   h As Double) As Boolean
 			If java.lang.[Double].IsNaN(x+w) OrElse java.lang.[Double].IsNaN(y+h) Then Return False
 			If w <= 0 OrElse h <= 0 Then Return False
 			Dim mask As Integer = (If(pi.windingRule = WIND_NON_ZERO, -1, 2))
@@ -2112,7 +2112,7 @@ Namespace java.awt.geom
 		'''         the interior of the specified {@code Rectangle2D}
 		'''         intersect each other; {@code false} otherwise.
 		''' @since 1.6 </returns>
-		Public Shared Function intersects(ByVal pi As PathIterator, ByVal r As Rectangle2D) As Boolean
+		Public Shared Function intersects(  pi As PathIterator,   r As Rectangle2D) As Boolean
 			Return intersects(pi, r.x, r.y, r.width, r.height)
 		End Function
 
@@ -2134,7 +2134,7 @@ Namespace java.awt.geom
 		''' 
 		''' @since 1.6
 		''' </summary>
-		Public Function intersects(ByVal x As Double, ByVal y As Double, ByVal w As Double, ByVal h As Double) As Boolean
+		Public Function intersects(  x As Double,   y As Double,   w As Double,   h As Double) As Boolean
 			If java.lang.[Double].IsNaN(x+w) OrElse java.lang.[Double].IsNaN(y+h) Then Return False
 			If w <= 0 OrElse h <= 0 Then Return False
 			Dim mask As Integer = (If(windingRule = WIND_NON_ZERO, -1, 2))
@@ -2160,7 +2160,7 @@ Namespace java.awt.geom
 		''' 
 		''' @since 1.6
 		''' </summary>
-		Public Function intersects(ByVal r As Rectangle2D) As Boolean
+		Public Function intersects(  r As Rectangle2D) As Boolean
 			Return intersects(r.x, r.y, r.width, r.height)
 		End Function
 
@@ -2175,7 +2175,7 @@ Namespace java.awt.geom
 		''' 
 		''' @since 1.6
 		''' </summary>
-		Public Function getPathIterator(ByVal at As AffineTransform, ByVal flatness As Double) As PathIterator
+		Public Function getPathIterator(  at As AffineTransform,   flatness As Double) As PathIterator
 			Return New FlatteningPathIterator(getPathIterator(at), flatness)
 		End Function
 
@@ -2212,7 +2212,7 @@ Namespace java.awt.geom
 		Private Const SERIAL_SEG_CLOSE As SByte = &H60
 		Private Const SERIAL_PATH_END As SByte = &H61
 
-		Friend Sub writeObject(ByVal s As java.io.ObjectOutputStream, ByVal isdbl As Boolean)
+		Friend Sub writeObject(  s As java.io.ObjectOutputStream,   isdbl As Boolean)
 			s.defaultWriteObject()
 
 			Dim fCoords As Single()
@@ -2278,7 +2278,7 @@ Namespace java.awt.geom
 			s.writeByte(SERIAL_PATH_END)
 		End Sub
 
-		Friend Sub readObject(ByVal s As java.io.ObjectInputStream, ByVal storedbl As Boolean)
+		Friend Sub readObject(  s As java.io.ObjectInputStream,   storedbl As Boolean)
 			s.defaultReadObject()
 
 			' The subclass calls this method with the storage type that
@@ -2380,15 +2380,15 @@ Namespace java.awt.geom
 		Friend MustInherit Class [Iterator]
 			Implements PathIterator
 
-				Public MustOverride Function currentSegment(ByVal coords As Double()) As Integer Implements PathIterator.currentSegment
-				Public MustOverride Function currentSegment(ByVal coords As Single()) As Integer Implements PathIterator.currentSegment
+				Public MustOverride Function currentSegment(  coords As Double()) As Integer Implements PathIterator.currentSegment
+				Public MustOverride Function currentSegment(  coords As Single()) As Integer Implements PathIterator.currentSegment
 			Friend typeIdx As Integer
 			Friend pointIdx As Integer
 			Friend path As Path2D
 
 			Friend Shared ReadOnly curvecoords As Integer() = {2, 2, 4, 6, 0}
 
-			Friend Sub New(ByVal path As Path2D)
+			Friend Sub New(  path As Path2D)
 				Me.path = path
 			End Sub
 

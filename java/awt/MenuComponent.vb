@@ -177,7 +177,7 @@ Namespace java.awt
 				End If
 				Return name
 			End Get
-			Set(ByVal name As String)
+			Set(  name As String)
 				SyncLock Me
 					Me.name = name
 					nameExplicitlySet = True
@@ -228,7 +228,7 @@ Namespace java.awt
 				If parent_Renamed IsNot Nothing Then Return parent_Renamed.font
 				Return Nothing
 			End Get
-			Set(ByVal f As Font)
+			Set(  f As Font)
 				font_Renamed = f
 				'Fixed 6312943: NullPointerException in method MenuComponent.setFont(Font)
 				Dim peer_Renamed As java.awt.peer.MenuComponentPeer = Me.peer
@@ -289,7 +289,7 @@ Namespace java.awt
 		''' @deprecated As of JDK version 1.1, replaced by {@link
 		''' #dispatchEvent(AWTEvent) dispatchEvent}. 
 		<Obsolete("As of JDK version 1.1, replaced by {@link")> _
-		Public Overridable Function postEvent(ByVal evt As [Event]) As Boolean
+		Public Overridable Function postEvent(  evt As [Event]) As Boolean
 			Dim parent_Renamed As MenuContainer = Me.parent
 			If parent_Renamed IsNot Nothing Then parent_Renamed.postEvent(evt)
 			Return False
@@ -298,11 +298,11 @@ Namespace java.awt
 		''' <summary>
 		''' Delivers an event to this component or one of its sub components. </summary>
 		''' <param name="e"> the event </param>
-		Public Sub dispatchEvent(ByVal e As AWTEvent)
+		Public Sub dispatchEvent(  e As AWTEvent)
 			dispatchEventImpl(e)
 		End Sub
 
-		Friend Overridable Sub dispatchEventImpl(ByVal e As AWTEvent)
+		Friend Overridable Sub dispatchEventImpl(  e As AWTEvent)
 			EventQueue.currentEventAndMostRecentTime = e
 
 			Toolkit.defaultToolkit.notifyAWTEventListeners(e)
@@ -322,7 +322,7 @@ Namespace java.awt
 		End Sub
 
 		' REMIND: remove when filtering is done at lower level
-		Friend Overridable Function eventEnabled(ByVal e As AWTEvent) As Boolean
+		Friend Overridable Function eventEnabled(  e As AWTEvent) As Boolean
 			Return False
 		End Function
 		''' <summary>
@@ -333,7 +333,7 @@ Namespace java.awt
 		''' </summary>
 		''' <param name="e"> the event
 		''' @since JDK1.1 </param>
-		Protected Friend Overridable Sub processEvent(ByVal e As AWTEvent)
+		Protected Friend Overridable Sub processEvent(  e As AWTEvent)
 		End Sub
 
 		''' <summary>
@@ -376,7 +376,7 @@ Namespace java.awt
 		'''   <code>true</code>
 		''' @serial </exception>
 		''' <seealso cref= java.awt.GraphicsEnvironment#isHeadless </seealso>
-		Private Sub readObject(ByVal s As java.io.ObjectInputStream)
+		Private Sub readObject(  s As java.io.ObjectInputStream)
 			GraphicsEnvironment.checkHeadless()
 
 			acc = java.security.AccessController.context
@@ -448,7 +448,7 @@ Namespace java.awt
 			''' Although the class is abstract, this should be called by
 			''' all sub-classes.
 			''' </summary>
-			Protected Friend Sub New(ByVal outerInstance As MenuComponent)
+			Protected Friend Sub New(  outerInstance As MenuComponent)
 					Me.outerInstance = outerInstance
 			End Sub
 
@@ -579,7 +579,7 @@ Namespace java.awt
 			''' </summary>
 			''' <param name="i"> zero-based index of child </param>
 			''' <returns> the nth Accessible child of the object </returns>
-			Public Overridable Function getAccessibleChild(ByVal i As Integer) As Accessible
+			Public Overridable Function getAccessibleChild(  i As Integer) As Accessible
 				Return Nothing ' MenuComponents don't have children
 			End Function
 
@@ -621,7 +621,7 @@ Namespace java.awt
 				Get
 					Return Nothing ' Not supported for MenuComponents
 				End Get
-				Set(ByVal c As Color)
+				Set(  c As Color)
 					' Not supported for MenuComponents
 				End Set
 			End Property
@@ -636,7 +636,7 @@ Namespace java.awt
 				Get
 					Return Nothing ' Not supported for MenuComponents
 				End Get
-				Set(ByVal c As Color)
+				Set(  c As Color)
 					' Not supported for MenuComponents
 				End Set
 			End Property
@@ -651,7 +651,7 @@ Namespace java.awt
 				Get
 					Return Nothing ' Not supported for MenuComponents
 				End Get
-				Set(ByVal cursor_Renamed As Cursor)
+				Set(  cursor_Renamed As Cursor)
 					' Not supported for MenuComponents
 				End Set
 			End Property
@@ -666,7 +666,7 @@ Namespace java.awt
 				Get
 					Return outerInstance.font
 				End Get
-				Set(ByVal f As Font)
+				Set(  f As Font)
 					outerInstance.font = f
 				End Set
 			End Property
@@ -679,7 +679,7 @@ Namespace java.awt
 			''' <returns> the FontMetrics, if supported, the object;
 			'''              otherwise, <code>null</code> </returns>
 			''' <seealso cref= #getFont </seealso>
-			Public Overridable Function getFontMetrics(ByVal f As Font) As FontMetrics
+			Public Overridable Function getFontMetrics(  f As Font) As FontMetrics
 				Return Nothing ' Not supported for MenuComponents
 			End Function
 
@@ -691,7 +691,7 @@ Namespace java.awt
 				Get
 					Return True ' Not supported for MenuComponents
 				End Get
-				Set(ByVal b As Boolean)
+				Set(  b As Boolean)
 					' Not supported for MenuComponents
 				End Set
 			End Property
@@ -709,7 +709,7 @@ Namespace java.awt
 				Get
 					Return True ' Not supported for MenuComponents
 				End Get
-				Set(ByVal b As Boolean)
+				Set(  b As Boolean)
 					' Not supported for MenuComponents
 				End Set
 			End Property
@@ -737,7 +737,7 @@ Namespace java.awt
 			''' <param name="p"> the <code>Point</code> relative to the coordinate
 			'''     system of the object </param>
 			''' <returns> true if object contains <code>Point</code>; otherwise false </returns>
-			Public Overridable Function contains(ByVal p As Point) As Boolean
+			Public Overridable Function contains(  p As Point) As Boolean
 				Return False ' Not supported for MenuComponents
 			End Function
 
@@ -765,7 +765,7 @@ Namespace java.awt
 				Get
 					Return Nothing ' Not supported for MenuComponents
 				End Get
-				Set(ByVal p As Point)
+				Set(  p As Point)
 					' Not supported for MenuComponents
 				End Set
 			End Property
@@ -783,7 +783,7 @@ Namespace java.awt
 				Get
 					Return Nothing ' Not supported for MenuComponents
 				End Get
-				Set(ByVal r As Rectangle)
+				Set(  r As Rectangle)
 					' Not supported for MenuComponents
 				End Set
 			End Property
@@ -803,7 +803,7 @@ Namespace java.awt
 				Get
 					Return Nothing ' Not supported for MenuComponents
 				End Get
-				Set(ByVal d As Dimension)
+				Set(  d As Dimension)
 					' Not supported for MenuComponents
 				End Set
 			End Property
@@ -820,7 +820,7 @@ Namespace java.awt
 			'''    of the object's parent </param>
 			''' <returns> the <code>Accessible</code>, if it exists,
 			'''    at the specified location; else <code>null</code> </returns>
-			Public Overridable Function getAccessibleAt(ByVal p As Point) As Accessible
+			Public Overridable Function getAccessibleAt(  p As Point) As Accessible
 				Return Nothing ' MenuComponents don't have children
 			End Function
 
@@ -846,7 +846,7 @@ Namespace java.awt
 			''' component.
 			''' </summary>
 			''' <param name="l"> the focus listener </param>
-			Public Overridable Sub addFocusListener(ByVal l As java.awt.event.FocusListener)
+			Public Overridable Sub addFocusListener(  l As java.awt.event.FocusListener)
 				' Not supported for MenuComponents
 			End Sub
 
@@ -855,7 +855,7 @@ Namespace java.awt
 			''' events from this component.
 			''' </summary>
 			''' <param name="l"> the focus listener </param>
-			Public Overridable Sub removeFocusListener(ByVal l As java.awt.event.FocusListener)
+			Public Overridable Sub removeFocusListener(  l As java.awt.event.FocusListener)
 				' Not supported for MenuComponents
 			End Sub
 
@@ -884,7 +884,7 @@ Namespace java.awt
 			''' <param name="i"> the zero-based index of selected children </param>
 			''' <returns> the i-th selected child </returns>
 			''' <seealso cref= #getAccessibleSelectionCount </seealso>
-			 Public Overridable Function getAccessibleSelection(ByVal i As Integer) As Accessible
+			 Public Overridable Function getAccessibleSelection(  i As Integer) As Accessible
 				 Return Nothing '  To be fully implemented in a future release
 			 End Function
 
@@ -896,7 +896,7 @@ Namespace java.awt
 			''' <param name="i"> the zero-based index of the child in this
 			'''      <code>Accessible</code> object </param>
 			''' <seealso cref= AccessibleContext#getAccessibleChild </seealso>
-			 Public Overridable Function isAccessibleChildSelected(ByVal i As Integer) As Boolean
+			 Public Overridable Function isAccessibleChildSelected(  i As Integer) As Boolean
 				 Return False '  To be fully implemented in a future release
 			 End Function
 
@@ -909,7 +909,7 @@ Namespace java.awt
 			''' </summary>
 			''' <param name="i"> the zero-based index of the child </param>
 			''' <seealso cref= AccessibleContext#getAccessibleChild </seealso>
-			 Public Overridable Sub addAccessibleSelection(ByVal i As Integer)
+			 Public Overridable Sub addAccessibleSelection(  i As Integer)
 				   '  To be fully implemented in a future release
 			 End Sub
 
@@ -920,7 +920,7 @@ Namespace java.awt
 			''' </summary>
 			''' <param name="i"> the zero-based index of the child </param>
 			''' <seealso cref= AccessibleContext#getAccessibleChild </seealso>
-			 Public Overridable Sub removeAccessibleSelection(ByVal i As Integer)
+			 Public Overridable Sub removeAccessibleSelection(  i As Integer)
 				   '  To be fully implemented in a future release
 			 End Sub
 
@@ -962,7 +962,7 @@ Namespace java.awt
 		''' <param name="child"> MenuComponent whose index we are interested in. </param>
 		''' <returns> -1 if this object doesn't contain the child,
 		'''      otherwise, index of the child. </returns>
-		Friend Overridable Function getAccessibleChildIndex(ByVal child As MenuComponent) As Integer
+		Friend Overridable Function getAccessibleChildIndex(  child As MenuComponent) As Integer
 			Return -1 ' Overridden in subclasses.
 		End Function
 

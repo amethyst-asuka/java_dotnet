@@ -89,7 +89,7 @@ Namespace java.awt
 		''' <returns> a <code>GraphicsConfiguration</code> object that is
 		''' the best configuration possible. </returns>
 		''' <seealso cref= GraphicsConfiguration </seealso>
-		Public MustOverride Function getBestConfiguration(ByVal gc As GraphicsConfiguration()) As GraphicsConfiguration
+		Public MustOverride Function getBestConfiguration(  gc As GraphicsConfiguration()) As GraphicsConfiguration
 
 		''' <summary>
 		''' Returns a <code>boolean</code> indicating whether or
@@ -103,7 +103,7 @@ Namespace java.awt
 		''' <code>false</code> if the <code>GraphicsConfiguration</code> can
 		''' not be used to create a drawing surface usable by this Java(tm)
 		''' API. </returns>
-		Public MustOverride Function isGraphicsConfigSupported(ByVal gc As GraphicsConfiguration) As Boolean
+		Public MustOverride Function isGraphicsConfigSupported(  gc As GraphicsConfiguration) As Boolean
 
 	End Class
 

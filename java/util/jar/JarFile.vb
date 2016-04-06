@@ -102,7 +102,7 @@ Namespace java.util.jar
 		''' <exception cref="IOException"> if an I/O error has occurred </exception>
 		''' <exception cref="SecurityException"> if access to the file is denied
 		'''         by the SecurityManager </exception>
-		Public Sub New(ByVal name As String)
+		Public Sub New(  name As String)
 			Me.New(New File(name), True, ZipFile.OPEN_READ)
 		End Sub
 
@@ -115,7 +115,7 @@ Namespace java.util.jar
 		''' <exception cref="IOException"> if an I/O error has occurred </exception>
 		''' <exception cref="SecurityException"> if access to the file is denied
 		'''         by the SecurityManager </exception>
-		Public Sub New(ByVal name As String, ByVal verify As Boolean)
+		Public Sub New(  name As String,   verify As Boolean)
 			Me.New(New File(name), verify, ZipFile.OPEN_READ)
 		End Sub
 
@@ -127,7 +127,7 @@ Namespace java.util.jar
 		''' <exception cref="IOException"> if an I/O error has occurred </exception>
 		''' <exception cref="SecurityException"> if access to the file is denied
 		'''         by the SecurityManager </exception>
-		Public Sub New(ByVal file_Renamed As File)
+		Public Sub New(  file_Renamed As File)
 			Me.New(file_Renamed, True, ZipFile.OPEN_READ)
 		End Sub
 
@@ -141,7 +141,7 @@ Namespace java.util.jar
 		''' <exception cref="IOException"> if an I/O error has occurred </exception>
 		''' <exception cref="SecurityException"> if access to the file is denied
 		'''         by the SecurityManager. </exception>
-		Public Sub New(ByVal file_Renamed As File, ByVal verify As Boolean)
+		Public Sub New(  file_Renamed As File,   verify As Boolean)
 			Me.New(file_Renamed, verify, ZipFile.OPEN_READ)
 		End Sub
 
@@ -161,7 +161,7 @@ Namespace java.util.jar
 		''' <exception cref="SecurityException"> if access to the file is denied
 		'''         by the SecurityManager
 		''' @since 1.3 </exception>
-		Public Sub New(ByVal file_Renamed As File, ByVal verify As Boolean, ByVal mode As Integer)
+		Public Sub New(  file_Renamed As File,   verify As Boolean,   mode As Integer)
 			MyBase.New(file_Renamed, mode)
 			Me.verify = verify
 		End Sub
@@ -221,7 +221,7 @@ Namespace java.util.jar
 		'''         may be thrown if the jar file has been closed
 		''' </exception>
 		''' <seealso cref= java.util.jar.JarEntry </seealso>
-		Public Overridable Function getJarEntry(ByVal name As String) As JarEntry
+		Public Overridable Function getJarEntry(  name As String) As JarEntry
 			Return CType(getEntry(name), JarEntry)
 		End Function
 
@@ -237,7 +237,7 @@ Namespace java.util.jar
 		'''         may be thrown if the jar file has been closed
 		''' </exception>
 		''' <seealso cref= java.util.zip.ZipEntry </seealso>
-		Public Overrides Function getEntry(ByVal name As String) As ZipEntry
+		Public Overrides Function getEntry(  name As String) As ZipEntry
 			Dim ze As ZipEntry = MyBase.getEntry(name)
 			If ze IsNot Nothing Then Return New JarFileEntry(Me, ze)
 			Return Nothing
@@ -248,7 +248,7 @@ Namespace java.util.jar
 
 			Private ReadOnly outerInstance As JarFile
 
-			Public Sub New(ByVal outerInstance As JarFile)
+			Public Sub New(  outerInstance As JarFile)
 				Me.outerInstance = outerInstance
 			End Sub
 
@@ -289,7 +289,7 @@ Namespace java.util.jar
 
 			Private ReadOnly outerInstance As JarFile
 
-			Friend Sub New(ByVal outerInstance As JarFile, ByVal ze As ZipEntry)
+			Friend Sub New(  outerInstance As JarFile,   ze As ZipEntry)
 					Me.outerInstance = outerInstance
 				MyBase.New(ze)
 			End Sub
@@ -415,7 +415,7 @@ Namespace java.util.jar
 	'     * Reads all the bytes for a given entry. Used to process the
 	'     * META-INF files.
 	'     
-		Private Function getBytes(ByVal ze As ZipEntry) As SByte()
+		Private Function getBytes(  ze As ZipEntry) As SByte()
 			Using [is] As InputStream = MyBase.getInputStream(ze)
 				Return sun.misc.IOUtils.readFully([is], CInt(ze.size), True)
 			End Using
@@ -434,7 +434,7 @@ Namespace java.util.jar
 		''' <exception cref="IllegalStateException">
 		'''         may be thrown if the jar file has been closed </exception>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overrides Function getInputStream(ByVal ze As ZipEntry) As InputStream
+		Public Overrides Function getInputStream(  ze As ZipEntry) As InputStream
 			maybeInstantiateVerifier()
 			If jv Is Nothing Then Return MyBase.getInputStream(ze)
 			If Not jvInitialized Then
@@ -495,7 +495,7 @@ Namespace java.util.jar
 		''' The {@code lastOcc} and {@code optoSft} arrays are the precomputed
 		''' bad character and good suffix shifts.
 		''' </summary>
-		Private Function match(ByVal src As Char(), ByVal b As SByte(), ByVal lastOcc As Integer(), ByVal optoSft As Integer()) As Boolean
+		Private Function match(  src As Char(),   b As SByte(),   lastOcc As Integer(),   optoSft As Integer()) As Boolean
 			Dim len As Integer = src.Length
 			Dim last As Integer = b.Length - len
 			Dim i As Integer = 0
@@ -595,11 +595,11 @@ Namespace java.util.jar
 			End If
 		End Sub
 
-		Friend Overridable Function newEntry(ByVal ze As ZipEntry) As JarEntry
+		Friend Overridable Function newEntry(  ze As ZipEntry) As JarEntry
 			Return New JarFileEntry(Me, ze)
 		End Function
 
-		Friend Overridable Function entryNames(ByVal cs As java.security.CodeSource()) As Enumeration(Of String)
+		Friend Overridable Function entryNames(  cs As java.security.CodeSource()) As Enumeration(Of String)
 			ensureInitialization()
 			If jv IsNot Nothing Then Return jv.entryNames(Me, cs)
 
@@ -674,7 +674,7 @@ Namespace java.util.jar
 			End Function
 		End Class
 
-		Friend Overridable Function getCodeSources(ByVal url As java.net.URL) As java.security.CodeSource()
+		Friend Overridable Function getCodeSources(  url As java.net.URL) As java.security.CodeSource()
 			ensureInitialization()
 			If jv IsNot Nothing Then Return jv.getCodeSources(Me, url)
 
@@ -727,7 +727,7 @@ Namespace java.util.jar
 			End Function
 		End Class
 
-		Friend Overridable Function getCodeSource(ByVal url As java.net.URL, ByVal name As String) As java.security.CodeSource
+		Friend Overridable Function getCodeSource(  url As java.net.URL,   name As String) As java.security.CodeSource
 			ensureInitialization()
 			If jv IsNot Nothing Then
 				If jv.eagerValidation Then
@@ -748,7 +748,7 @@ Namespace java.util.jar
 		End Function
 
 		Friend Overridable Property eagerValidation As Boolean
-			Set(ByVal eager As Boolean)
+			Set(  eager As Boolean)
 				Try
 					maybeInstantiateVerifier()
 				Catch e As IOException

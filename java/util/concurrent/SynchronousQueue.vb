@@ -178,7 +178,7 @@ Namespace java.util.concurrent
 			'''         the operation failed due to timeout or interrupt --
 			'''         the caller can distinguish which of these occurred
 			'''         by checking Thread.interrupted. </returns>
-			Friend MustOverride Function transfer(ByVal e As E, ByVal timed As Boolean, ByVal nanos As Long) As E
+			Friend MustOverride Function transfer(  e As E,   timed As Boolean,   nanos As Long) As E
 		End Class
 
 		''' <summary>
@@ -233,7 +233,7 @@ Namespace java.util.concurrent
 
 			''' <summary>
 			''' Returns true if m has fulfilling bit set. </summary>
-			Friend Shared Function isFulfilling(ByVal m As Integer) As Boolean
+			Friend Shared Function isFulfilling(  m As Integer) As Boolean
 				Return (m And FULFILLING) <> 0
 			End Function
 
@@ -252,11 +252,11 @@ Namespace java.util.concurrent
 				' since they are always written before, and read after,
 				' other volatile/atomic operations.
 
-				Friend Sub New(ByVal item As Object)
+				Friend Sub New(  item As Object)
 					Me.item = item
 				End Sub
 
-				Friend Function casNext(ByVal cmp As SNode, ByVal val As SNode) As Boolean
+				Friend Function casNext(  cmp As SNode,   val As SNode) As Boolean
 					Return cmp Is [next] AndAlso UNSAFE.compareAndSwapObject(Me, nextOffset, cmp, val)
 				End Function
 
@@ -267,7 +267,7 @@ Namespace java.util.concurrent
 				''' </summary>
 				''' <param name="s"> the node to match </param>
 				''' <returns> true if successfully matched to s </returns>
-				Friend Function tryMatch(ByVal s As SNode) As Boolean
+				Friend Function tryMatch(  s As SNode) As Boolean
 					If match Is Nothing AndAlso UNSAFE.compareAndSwapObject(Me, matchOffset, Nothing, s) Then
 						Dim w As Thread = waiter
 						If w IsNot Nothing Then ' waiters need at most one unpark
@@ -314,7 +314,7 @@ Namespace java.util.concurrent
 'JAVA TO VB CONVERTER TODO TASK: There is no VB equivalent to 'volatile':
 			Friend head As SNode
 
-			Friend Function casHead(ByVal h As SNode, ByVal nh As SNode) As Boolean
+			Friend Function casHead(  h As SNode,   nh As SNode) As Boolean
 				Return h Is head AndAlso UNSAFE.compareAndSwapObject(Me, headOffset, h, nh)
 			End Function
 
@@ -325,7 +325,7 @@ Namespace java.util.concurrent
 			''' and CASes of head and to avoid surges of garbage when CASes
 			''' to push nodes fail due to contention.
 			''' </summary>
-			Friend Shared Function snode(ByVal s As SNode, ByVal e As Object, ByVal [next] As SNode, ByVal mode As Integer) As SNode
+			Friend Shared Function snode(  s As SNode,   e As Object,   [next] As SNode,   mode As Integer) As SNode
 				If s Is Nothing Then s = New SNode(e)
 				s.mode = mode
 				s.next = [next]
@@ -336,7 +336,7 @@ Namespace java.util.concurrent
 			''' Puts or takes an item.
 			''' </summary>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-			Friend Function transfer(ByVal e As E, ByVal timed As Boolean, ByVal nanos As Long) As E
+			Friend Function transfer(  e As E,   timed As Boolean,   nanos As Long) As E
 	'            
 	'             * Basic algorithm is to loop trying one of three actions:
 	'             *
@@ -425,7 +425,7 @@ Namespace java.util.concurrent
 			''' <param name="timed"> true if timed wait </param>
 			''' <param name="nanos"> timeout value </param>
 			''' <returns> matched node, or s if cancelled </returns>
-			Friend Function awaitFulfill(ByVal s As SNode, ByVal timed As Boolean, ByVal nanos As Long) As SNode
+			Friend Function awaitFulfill(  s As SNode,   timed As Boolean,   nanos As Long) As SNode
 	'            
 	'             * When a node/thread is about to block, it sets its waiter
 	'             * field and then rechecks state at least one more time
@@ -478,7 +478,7 @@ Namespace java.util.concurrent
 			''' Returns true if node s is at head or there is an active
 			''' fulfiller.
 			''' </summary>
-			Friend Function shouldSpin(ByVal s As SNode) As Boolean
+			Friend Function shouldSpin(  s As SNode) As Boolean
 				Dim h As SNode = head
 				Return (h Is s OrElse h Is Nothing OrElse isFulfilling(h.mode))
 			End Function
@@ -486,7 +486,7 @@ Namespace java.util.concurrent
 			''' <summary>
 			''' Unlinks s from the stack.
 			''' </summary>
-			Friend Sub clean(ByVal s As SNode)
+			Friend Sub clean(  s As SNode)
 				s.item = Nothing ' forget item
 				s.waiter = Nothing ' forget thread
 
@@ -562,23 +562,23 @@ Namespace java.util.concurrent
 				Friend waiter As Thread ' to control park/unpark
 				Friend ReadOnly isData As Boolean
 
-				Friend Sub New(ByVal item As Object, ByVal isData As Boolean)
+				Friend Sub New(  item As Object,   isData As Boolean)
 					Me.item = item
 					Me.isData = isData
 				End Sub
 
-				Friend Function casNext(ByVal cmp As QNode, ByVal val As QNode) As Boolean
+				Friend Function casNext(  cmp As QNode,   val As QNode) As Boolean
 					Return [next] Is cmp AndAlso UNSAFE.compareAndSwapObject(Me, nextOffset, cmp, val)
 				End Function
 
-				Friend Function casItem(ByVal cmp As Object, ByVal val As Object) As Boolean
+				Friend Function casItem(  cmp As Object,   val As Object) As Boolean
 					Return item Is cmp AndAlso UNSAFE.compareAndSwapObject(Me, itemOffset, cmp, val)
 				End Function
 
 				''' <summary>
 				''' Tries to cancel by CAS'ing ref to this as item.
 				''' </summary>
-				Friend Sub tryCancel(ByVal cmp As Object)
+				Friend Sub tryCancel(  cmp As Object)
 					UNSAFE.compareAndSwapObject(Me, itemOffset, cmp, Me)
 				End Sub
 
@@ -645,21 +645,21 @@ Namespace java.util.concurrent
 			''' Tries to cas nh as new head; if successful, unlink
 			''' old head's next node to avoid garbage retention.
 			''' </summary>
-			Friend Sub advanceHead(ByVal h As QNode, ByVal nh As QNode)
+			Friend Sub advanceHead(  h As QNode,   nh As QNode)
 				If h Is head AndAlso UNSAFE.compareAndSwapObject(Me, headOffset, h, nh) Then h.next = h ' forget old next
 			End Sub
 
 			''' <summary>
 			''' Tries to cas nt as new tail.
 			''' </summary>
-			Friend Sub advanceTail(ByVal t As QNode, ByVal nt As QNode)
+			Friend Sub advanceTail(  t As QNode,   nt As QNode)
 				If tail Is t Then UNSAFE.compareAndSwapObject(Me, tailOffset, t, nt)
 			End Sub
 
 			''' <summary>
 			''' Tries to CAS cleanMe slot.
 			''' </summary>
-			Friend Function casCleanMe(ByVal cmp As QNode, ByVal val As QNode) As Boolean
+			Friend Function casCleanMe(  cmp As QNode,   val As QNode) As Boolean
 				Return cleanMe Is cmp AndAlso UNSAFE.compareAndSwapObject(Me, cleanMeOffset, cmp, val)
 			End Function
 
@@ -667,7 +667,7 @@ Namespace java.util.concurrent
 			''' Puts or takes an item.
 			''' </summary>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-			Friend Function transfer(ByVal e As E, ByVal timed As Boolean, ByVal nanos As Long) As E
+			Friend Function transfer(  e As E,   timed As Boolean,   nanos As Long) As E
 	'             Basic algorithm is to loop trying to take either of
 	'             * two actions:
 	'             *
@@ -751,7 +751,7 @@ Namespace java.util.concurrent
 			''' <param name="timed"> true if timed wait </param>
 			''' <param name="nanos"> timeout value </param>
 			''' <returns> matched item, or s if cancelled </returns>
-			Friend Function awaitFulfill(ByVal s As QNode, ByVal e As E, ByVal timed As Boolean, ByVal nanos As Long) As Object
+			Friend Function awaitFulfill(  s As QNode,   e As E,   timed As Boolean,   nanos As Long) As Object
 				' Same idea as TransferStack.awaitFulfill 
 				Dim deadline As Long = If(timed, System.nanoTime() + nanos, 0L)
 				Dim w As Thread = Thread.CurrentThread
@@ -782,7 +782,7 @@ Namespace java.util.concurrent
 			''' <summary>
 			''' Gets rid of cancelled node s with original predecessor pred.
 			''' </summary>
-			Friend Sub clean(ByVal pred As QNode, ByVal s As QNode)
+			Friend Sub clean(  pred As QNode,   s As QNode)
 				s.waiter = Nothing ' forget thread
 	'            
 	'             * At any given time, exactly one node on list cannot be
@@ -864,7 +864,7 @@ Namespace java.util.concurrent
 		''' </summary>
 		''' <param name="fair"> if true, waiting threads contend in FIFO order for
 		'''        access; otherwise the order is unspecified. </param>
-		Public Sub New(ByVal fair As Boolean)
+		Public Sub New(  fair As Boolean)
 			transferer = If(fair, New TransferQueue(Of E), New TransferStack(Of E))
 		End Sub
 
@@ -874,7 +874,7 @@ Namespace java.util.concurrent
 		''' </summary>
 		''' <exception cref="InterruptedException"> {@inheritDoc} </exception>
 		''' <exception cref="NullPointerException"> {@inheritDoc} </exception>
-		Public Overridable Sub put(ByVal e As E)
+		Public Overridable Sub put(  e As E)
 			If e Is Nothing Then Throw New NullPointerException
 			If transferer.transfer(e, False, 0) Is Nothing Then
 				Thread.interrupted()
@@ -890,7 +890,7 @@ Namespace java.util.concurrent
 		'''         specified waiting time elapses before a consumer appears </returns>
 		''' <exception cref="InterruptedException"> {@inheritDoc} </exception>
 		''' <exception cref="NullPointerException"> {@inheritDoc} </exception>
-		Public Overridable Function offer(ByVal e As E, ByVal timeout As Long, ByVal unit As TimeUnit) As Boolean
+		Public Overridable Function offer(  e As E,   timeout As Long,   unit As TimeUnit) As Boolean
 			If e Is Nothing Then Throw New NullPointerException
 			If transferer.transfer(e, True, unit.toNanos(timeout)) IsNot Nothing Then Return True
 			If Not Thread.interrupted() Then Return False
@@ -905,7 +905,7 @@ Namespace java.util.concurrent
 		''' <returns> {@code true} if the element was added to this queue, else
 		'''         {@code false} </returns>
 		''' <exception cref="NullPointerException"> if the specified element is null </exception>
-		Public Overridable Function offer(ByVal e As E) As Boolean
+		Public Overridable Function offer(  e As E) As Boolean
 			If e Is Nothing Then Throw New NullPointerException
 			Return transferer.transfer(e, True, 0) IsNot Nothing
 		End Function
@@ -931,7 +931,7 @@ Namespace java.util.concurrent
 		''' <returns> the head of this queue, or {@code null} if the
 		'''         specified waiting time elapses before an element is present </returns>
 		''' <exception cref="InterruptedException"> {@inheritDoc} </exception>
-		Public Overridable Function poll(ByVal timeout As Long, ByVal unit As TimeUnit) As E Implements BlockingQueue(Of E).poll
+		Public Overridable Function poll(  timeout As Long,   unit As TimeUnit) As E Implements BlockingQueue(Of E).poll
 			Dim e As E = transferer.transfer(Nothing, True, unit.toNanos(timeout))
 			If e IsNot Nothing OrElse (Not Thread.interrupted()) Then Return e
 			Throw New InterruptedException
@@ -989,7 +989,7 @@ Namespace java.util.concurrent
 		''' </summary>
 		''' <param name="o"> the element </param>
 		''' <returns> {@code false} </returns>
-		Public Overridable Function contains(ByVal o As Object) As Boolean Implements BlockingQueue(Of E).contains
+		Public Overridable Function contains(  o As Object) As Boolean Implements BlockingQueue(Of E).contains
 			Return False
 		End Function
 
@@ -999,7 +999,7 @@ Namespace java.util.concurrent
 		''' </summary>
 		''' <param name="o"> the element to remove </param>
 		''' <returns> {@code false} </returns>
-		Public Overridable Function remove(ByVal o As Object) As Boolean Implements BlockingQueue(Of E).remove
+		Public Overridable Function remove(  o As Object) As Boolean Implements BlockingQueue(Of E).remove
 			Return False
 		End Function
 
@@ -1009,7 +1009,7 @@ Namespace java.util.concurrent
 		''' </summary>
 		''' <param name="c"> the collection </param>
 		''' <returns> {@code false} unless given collection is empty </returns>
-		Public Overridable Function containsAll(Of T1)(ByVal c As Collection(Of T1)) As Boolean
+		Public Overridable Function containsAll(Of T1)(  c As Collection(Of T1)) As Boolean
 			Return c.empty
 		End Function
 
@@ -1019,7 +1019,7 @@ Namespace java.util.concurrent
 		''' </summary>
 		''' <param name="c"> the collection </param>
 		''' <returns> {@code false} </returns>
-		Public Overridable Function removeAll(Of T1)(ByVal c As Collection(Of T1)) As Boolean
+		Public Overridable Function removeAll(Of T1)(  c As Collection(Of T1)) As Boolean
 			Return False
 		End Function
 
@@ -1029,7 +1029,7 @@ Namespace java.util.concurrent
 		''' </summary>
 		''' <param name="c"> the collection </param>
 		''' <returns> {@code false} </returns>
-		Public Overridable Function retainAll(Of T1)(ByVal c As Collection(Of T1)) As Boolean
+		Public Overridable Function retainAll(Of T1)(  c As Collection(Of T1)) As Boolean
 			Return False
 		End Function
 
@@ -1076,7 +1076,7 @@ Namespace java.util.concurrent
 		''' <param name="a"> the array </param>
 		''' <returns> the specified array </returns>
 		''' <exception cref="NullPointerException"> if the specified array is null </exception>
-		Public Overridable Function toArray(Of T)(ByVal a As T()) As T()
+		Public Overridable Function toArray(Of T)(  a As T()) As T()
 			If a.Length > 0 Then a(0) = Nothing
 			Return a
 		End Function
@@ -1086,7 +1086,7 @@ Namespace java.util.concurrent
 		''' <exception cref="NullPointerException">          {@inheritDoc} </exception>
 		''' <exception cref="IllegalArgumentException">      {@inheritDoc} </exception>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Overridable Function drainTo(Of T1)(ByVal c As Collection(Of T1)) As Integer
+		Public Overridable Function drainTo(Of T1)(  c As Collection(Of T1)) As Integer
 			If c Is Nothing Then Throw New NullPointerException
 			If c Is Me Then Throw New IllegalArgumentException
 			Dim n As Integer = 0
@@ -1104,7 +1104,7 @@ Namespace java.util.concurrent
 		''' <exception cref="NullPointerException">          {@inheritDoc} </exception>
 		''' <exception cref="IllegalArgumentException">      {@inheritDoc} </exception>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Overridable Function drainTo(Of T1)(ByVal c As Collection(Of T1), ByVal maxElements As Integer) As Integer
+		Public Overridable Function drainTo(Of T1)(  c As Collection(Of T1),   maxElements As Integer) As Integer
 			If c Is Nothing Then Throw New NullPointerException
 			If c Is Me Then Throw New IllegalArgumentException
 			Dim n As Integer = 0
@@ -1147,7 +1147,7 @@ Namespace java.util.concurrent
 		''' Saves this queue to a stream (that is, serializes it). </summary>
 		''' <param name="s"> the stream </param>
 		''' <exception cref="java.io.IOException"> if an I/O error occurs </exception>
-		Private Sub writeObject(ByVal s As java.io.ObjectOutputStream)
+		Private Sub writeObject(  s As java.io.ObjectOutputStream)
 			Dim fair As Boolean = TypeOf transferer Is TransferQueue
 			If fair Then
 				qlock = New java.util.concurrent.locks.ReentrantLock(True)
@@ -1167,7 +1167,7 @@ Namespace java.util.concurrent
 		''' <exception cref="ClassNotFoundException"> if the class of a serialized object
 		'''         could not be found </exception>
 		''' <exception cref="java.io.IOException"> if an I/O error occurs </exception>
-		Private Sub readObject(ByVal s As java.io.ObjectInputStream)
+		Private Sub readObject(  s As java.io.ObjectInputStream)
 			s.defaultReadObject()
 			If TypeOf waitingProducers Is FifoWaitQueue Then
 				transferer = New TransferQueue(Of E)
@@ -1177,7 +1177,7 @@ Namespace java.util.concurrent
 		End Sub
 
 		' Unsafe mechanics
-		Friend Shared Function objectFieldOffset(ByVal UNSAFE As sun.misc.Unsafe, ByVal field As String, ByVal klazz As [Class]) As Long
+		Friend Shared Function objectFieldOffset(  UNSAFE As sun.misc.Unsafe,   field As String,   klazz As [Class]) As Long
 			Try
 				Return UNSAFE.objectFieldOffset(klazz.getDeclaredField(field))
 			Catch e As NoSuchFieldException

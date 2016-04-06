@@ -46,7 +46,7 @@ Namespace java.beans
 		''' detailed message.
 		''' </summary>
 		''' <param name="mess"> Descriptive message </param>
-		Public Sub New(ByVal mess As String)
+		Public Sub New(  mess As String)
 			MyBase.New(mess)
 		End Sub
 	End Class

@@ -71,7 +71,7 @@ Namespace java.lang.reflect
 		''' </summary>
 		''' <param name="undeclaredThrowable"> the undeclared checked exception
 		'''          that was thrown </param>
-		Public Sub New(ByVal undeclaredThrowable As Throwable)
+		Public Sub New(  undeclaredThrowable As Throwable)
 			MyBase.New(CType(Nothing, Throwable)) ' Disallow initCause
 			Me.undeclaredThrowable = undeclaredThrowable
 		End Sub
@@ -83,7 +83,7 @@ Namespace java.lang.reflect
 		''' <param name="undeclaredThrowable"> the undeclared checked exception
 		'''          that was thrown </param>
 		''' <param name="s"> the detail message </param>
-		Public Sub New(ByVal undeclaredThrowable As Throwable, ByVal s As String)
+		Public Sub New(  undeclaredThrowable As Throwable,   s As String)
 			MyBase.New(s, Nothing) ' Disallow initCause
 			Me.undeclaredThrowable = undeclaredThrowable
 		End Sub

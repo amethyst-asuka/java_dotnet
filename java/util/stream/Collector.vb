@@ -242,7 +242,7 @@ Namespace java.util.stream
 		'''           for the new collector </param>
 		''' <exception cref="NullPointerException"> if any argument is null </exception>
 		''' <returns> the new {@code Collector} </returns>
-		Shared Function [of](Of T, R)(ByVal supplier As java.util.function.Supplier(Of R), ByVal accumulator As java.util.function.BiConsumer(Of R, T), ByVal combiner As java.util.function.BinaryOperator(Of R), ParamArray ByVal characteristics As Characteristics()) As Collector(Of T, R, R)
+		Shared Function [of](Of T, R)(  supplier As java.util.function.Supplier(Of R),   accumulator As java.util.function.BiConsumer(Of R, T),   combiner As java.util.function.BinaryOperator(Of R), ParamArray   characteristics As Characteristics()) As Collector(Of T, R, R)
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 			java.util.Objects.requireNonNull(supplier);
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
@@ -271,7 +271,7 @@ Namespace java.util.stream
 		''' @param <R> The final result type of the new collector </param>
 		''' <exception cref="NullPointerException"> if any argument is null </exception>
 		''' <returns> the new {@code Collector} </returns>
-		Shared Function [of](Of T, A, R)(ByVal supplier As java.util.function.Supplier(Of A), ByVal accumulator As java.util.function.BiConsumer(Of A, T), ByVal combiner As java.util.function.BinaryOperator(Of A), ByVal finisher As java.util.function.Function(Of A, R), ParamArray ByVal characteristics As Characteristics()) As Collector(Of T, A, R)
+		Shared Function [of](Of T, A, R)(  supplier As java.util.function.Supplier(Of A),   accumulator As java.util.function.BiConsumer(Of A, T),   combiner As java.util.function.BinaryOperator(Of A),   finisher As java.util.function.Function(Of A, R), ParamArray   characteristics As Characteristics()) As Collector(Of T, A, R)
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 			java.util.Objects.requireNonNull(supplier);
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:

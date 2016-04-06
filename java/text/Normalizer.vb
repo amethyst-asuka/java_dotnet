@@ -154,7 +154,7 @@ Namespace java.text
 		''' <returns> The normalized String </returns>
 		''' <exception cref="NullPointerException"> If <code>src</code> or <code>form</code>
 		''' is null. </exception>
-		Public Shared Function normalize(ByVal src As CharSequence, ByVal form As Form) As String
+		Public Shared Function normalize(  src As CharSequence,   form As Form) As String
 			Return sun.text.normalizer.NormalizerBase.normalize(src.ToString(), form)
 		End Function
 
@@ -170,7 +170,7 @@ Namespace java.text
 		''' false otherwise. </returns>
 		''' <exception cref="NullPointerException"> If <code>src</code> or <code>form</code>
 		''' is null. </exception>
-		Public Shared Function isNormalized(ByVal src As CharSequence, ByVal form As Form) As Boolean
+		Public Shared Function isNormalized(  src As CharSequence,   form As Form) As Boolean
 			Return sun.text.normalizer.NormalizerBase.isNormalized(src.ToString(), form)
 		End Function
 	End Class

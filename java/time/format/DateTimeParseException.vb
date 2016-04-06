@@ -95,7 +95,7 @@ Namespace java.time.format
 		''' <param name="message">  the message to use for this exception, may be null </param>
 		''' <param name="parsedData">  the parsed text, should not be null </param>
 		''' <param name="errorIndex">  the index in the parsed string that was invalid, should be a valid index </param>
-		Public Sub New(ByVal message As String, ByVal parsedData As CharSequence, ByVal errorIndex As Integer)
+		Public Sub New(  message As String,   parsedData As CharSequence,   errorIndex As Integer)
 			MyBase.New(message)
 			Me.parsedString = parsedData.ToString()
 			Me.errorIndex = errorIndex
@@ -108,7 +108,7 @@ Namespace java.time.format
 		''' <param name="parsedData">  the parsed text, should not be null </param>
 		''' <param name="errorIndex">  the index in the parsed string that was invalid, should be a valid index </param>
 		''' <param name="cause">  the cause exception, may be null </param>
-		Public Sub New(ByVal message As String, ByVal parsedData As CharSequence, ByVal errorIndex As Integer, ByVal cause As Throwable)
+		Public Sub New(  message As String,   parsedData As CharSequence,   errorIndex As Integer,   cause As Throwable)
 			MyBase.New(message, cause)
 			Me.parsedString = parsedData.ToString()
 			Me.errorIndex = errorIndex

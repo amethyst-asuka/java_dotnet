@@ -45,7 +45,7 @@ Namespace java.util.stream
 		''' <param name="sourceFlags"> the source flags for the stream source, described in
 		'''        <seealso cref="StreamOpFlag"/> </param>
 		''' <param name="parallel"> {@code true} if the pipeline is parallel </param>
-		Friend Sub New(Of T1 As java.util.Spliterator(Of Long?)(ByVal source As java.util.function.Supplier(Of T1), ByVal sourceFlags As Integer, ByVal parallel As Boolean)
+		Friend Sub New(Of T1 As java.util.Spliterator(Of Long?)(  source As java.util.function.Supplier(Of T1),   sourceFlags As Integer,   parallel As Boolean)
 			MyBase.New(source, sourceFlags, parallel)
 		End Sub
 
@@ -56,7 +56,7 @@ Namespace java.util.stream
 		''' <param name="sourceFlags"> the source flags for the stream source, described in
 		'''        <seealso cref="StreamOpFlag"/> </param>
 		''' <param name="parallel"> {@code true} if the pipeline is parallel </param>
-		Friend Sub New(ByVal source As java.util.Spliterator(Of Long?), ByVal sourceFlags As Integer, ByVal parallel As Boolean)
+		Friend Sub New(  source As java.util.Spliterator(Of Long?),   sourceFlags As Integer,   parallel As Boolean)
 			MyBase.New(source, sourceFlags, parallel)
 		End Sub
 
@@ -65,7 +65,7 @@ Namespace java.util.stream
 		''' </summary>
 		''' <param name="upstream"> the upstream element source. </param>
 		''' <param name="opFlags"> the operation flags </param>
-		Friend Sub New(Of T1)(ByVal upstream As AbstractPipeline(Of T1), ByVal opFlags As Integer)
+		Friend Sub New(Of T1)(  upstream As AbstractPipeline(Of T1),   opFlags As Integer)
 			MyBase.New(upstream, opFlags)
 		End Sub
 
@@ -73,7 +73,7 @@ Namespace java.util.stream
 		''' Adapt a {@code Sink<Long> to an {@code LongConsumer}, ideally simply
 		''' by casting.
 		''' </summary>
-		Private Shared Function adapt(ByVal sink As Sink(Of Long?)) As java.util.function.LongConsumer
+		Private Shared Function adapt(  sink As Sink(Of Long?)) As java.util.function.LongConsumer
 			If TypeOf sink Is java.util.function.LongConsumer Then
 				Return CType(sink, java.util.function.LongConsumer)
 			Else
@@ -89,7 +89,7 @@ Namespace java.util.stream
 		''' The implementation attempts to cast to a Spliterator.OfLong, and throws
 		''' an exception if this cast is not possible.
 		''' </summary>
-		Private Shared Function adapt(ByVal s As java.util.Spliterator(Of Long?)) As java.util.Spliterator.OfLong
+		Private Shared Function adapt(  s As java.util.Spliterator(Of Long?)) As java.util.Spliterator.OfLong
 			If TypeOf s Is java.util.Spliterator.OfLong Then
 				Return CType(s, java.util.Spliterator.OfLong)
 			Else
@@ -107,27 +107,27 @@ Namespace java.util.stream
 			End Get
 		End Property
 
-		Friend Overrides Function evaluateToNode(Of P_IN)(ByVal helper As PipelineHelper(Of Long?), ByVal spliterator As java.util.Spliterator(Of P_IN), ByVal flattenTree As Boolean, ByVal generator As java.util.function.IntFunction(Of Long?())) As Node(Of Long?)
+		Friend Overrides Function evaluateToNode(Of P_IN)(  helper As PipelineHelper(Of Long?),   spliterator As java.util.Spliterator(Of P_IN),   flattenTree As Boolean,   generator As java.util.function.IntFunction(Of Long?())) As Node(Of Long?)
 			Return Nodes.collectLong(helper, spliterator, flattenTree)
 		End Function
 
-		Friend Overrides Function wrap(Of P_IN)(ByVal ph As PipelineHelper(Of Long?), ByVal supplier As java.util.function.Supplier(Of java.util.Spliterator(Of P_IN)), ByVal isParallel As Boolean) As java.util.Spliterator(Of Long?)
+		Friend Overrides Function wrap(Of P_IN)(  ph As PipelineHelper(Of Long?),   supplier As java.util.function.Supplier(Of java.util.Spliterator(Of P_IN)),   isParallel As Boolean) As java.util.Spliterator(Of Long?)
 			Return New StreamSpliterators.LongWrappingSpliterator(Of )(ph, supplier, isParallel)
 		End Function
 
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Friend Overrides Function lazySpliterator(Of T1 As java.util.Spliterator(Of Long?)(ByVal supplier As java.util.function.Supplier(Of T1)) As java.util.Spliterator.OfLong
+		Friend Overrides Function lazySpliterator(Of T1 As java.util.Spliterator(Of Long?)(  supplier As java.util.function.Supplier(Of T1)) As java.util.Spliterator.OfLong
 			Return New StreamSpliterators.DelegatingSpliterator.OfLong(CType(supplier, java.util.function.Supplier(Of java.util.Spliterator.OfLong)))
 		End Function
 
-		Friend Overrides Sub forEachWithCancel(ByVal spliterator As java.util.Spliterator(Of Long?), ByVal sink As Sink(Of Long?))
+		Friend Overrides Sub forEachWithCancel(  spliterator As java.util.Spliterator(Of Long?),   sink As Sink(Of Long?))
 			Dim spl As java.util.Spliterator.OfLong = adapt(spliterator)
 			Dim adaptedSink As java.util.function.LongConsumer = adapt(sink)
 			Do
 			Loop While (Not sink.cancellationRequested()) AndAlso spl.tryAdvance(adaptedSink)
 		End Sub
 
-		Friend Overrides Function makeNodeBuilder(ByVal exactSizeIfKnown As Long, ByVal generator As java.util.function.IntFunction(Of Long?())) As Node.Builder(Of Long?)
+		Friend Overrides Function makeNodeBuilder(  exactSizeIfKnown As Long,   generator As java.util.function.IntFunction(Of Long?())) As Node.Builder(Of Long?)
 			Return Nodes.longBuilder(exactSizeIfKnown)
 		End Function
 
@@ -151,7 +151,7 @@ Namespace java.util.stream
 		Private Class StatelessOpAnonymousInnerClassHelper(Of E_IN)
 			Inherits StatelessOp(Of E_IN)
 
-			Friend Overrides Function opWrapSink(ByVal flags As Integer, ByVal sink As Sink(Of Double?)) As Sink(Of Long?)
+			Friend Overrides Function opWrapSink(  flags As Integer,   sink As Sink(Of Double?)) As Sink(Of Long?)
 'JAVA TO VB CONVERTER TODO TASK: Anonymous inner classes are not converted to VB if the base type is not defined in the code being converted:
 '				Return New Sink.ChainedLong<java.lang.Double>(sink)
 	'			{
@@ -167,7 +167,7 @@ Namespace java.util.stream
 			Return mapToObj(Long?::valueOf)
 		End Function
 
-		Public Overrides Function map(ByVal mapper As java.util.function.LongUnaryOperator) As LongStream Implements LongStream.map
+		Public Overrides Function map(  mapper As java.util.function.LongUnaryOperator) As LongStream Implements LongStream.map
 			java.util.Objects.requireNonNull(mapper)
 			Return New StatelessOpAnonymousInnerClassHelper(Of E_IN)
 		End Function
@@ -175,7 +175,7 @@ Namespace java.util.stream
 		Private Class StatelessOpAnonymousInnerClassHelper(Of E_IN)
 			Inherits StatelessOp(Of E_IN)
 
-			Friend Overrides Function opWrapSink(ByVal flags As Integer, ByVal sink As Sink(Of Long?)) As Sink(Of Long?)
+			Friend Overrides Function opWrapSink(  flags As Integer,   sink As Sink(Of Long?)) As Sink(Of Long?)
 'JAVA TO VB CONVERTER TODO TASK: Anonymous inner classes are not converted to VB if the base type is not defined in the code being converted:
 '				Return New Sink.ChainedLong<java.lang.Long>(sink)
 	'			{
@@ -187,7 +187,7 @@ Namespace java.util.stream
 			End Function
 		End Class
 
-		Public Overrides Function mapToObj(Of U, T1 As U)(ByVal mapper As java.util.function.LongFunction(Of T1)) As Stream(Of U) Implements LongStream.mapToObj
+		Public Overrides Function mapToObj(Of U, T1 As U)(  mapper As java.util.function.LongFunction(Of T1)) As Stream(Of U) Implements LongStream.mapToObj
 			java.util.Objects.requireNonNull(mapper)
 			Return New StatelessOpAnonymousInnerClassHelper(Of E_IN, E_OUT)
 		End Function
@@ -195,7 +195,7 @@ Namespace java.util.stream
 		Private Class StatelessOpAnonymousInnerClassHelper(Of E_IN, E_OUT)
 			Inherits StatelessOp(Of E_IN, E_OUT)
 
-			Friend Overrides Function opWrapSink(ByVal flags As Integer, ByVal sink As Sink(Of U)) As Sink(Of Long?)
+			Friend Overrides Function opWrapSink(  flags As Integer,   sink As Sink(Of U)) As Sink(Of Long?)
 'JAVA TO VB CONVERTER TODO TASK: Anonymous inner classes are not converted to VB if the base type is not defined in the code being converted:
 '				Return New Sink.ChainedLong<U>(sink)
 	'			{
@@ -207,7 +207,7 @@ Namespace java.util.stream
 			End Function
 		End Class
 
-		Public Overrides Function mapToInt(ByVal mapper As java.util.function.LongToIntFunction) As IntStream Implements LongStream.mapToInt
+		Public Overrides Function mapToInt(  mapper As java.util.function.LongToIntFunction) As IntStream Implements LongStream.mapToInt
 			java.util.Objects.requireNonNull(mapper)
 			Return New StatelessOpAnonymousInnerClassHelper(Of E_IN)
 		End Function
@@ -215,7 +215,7 @@ Namespace java.util.stream
 		Private Class StatelessOpAnonymousInnerClassHelper(Of E_IN)
 			Inherits StatelessOp(Of E_IN)
 
-			Friend Overrides Function opWrapSink(ByVal flags As Integer, ByVal sink As Sink(Of Integer?)) As Sink(Of Long?)
+			Friend Overrides Function opWrapSink(  flags As Integer,   sink As Sink(Of Integer?)) As Sink(Of Long?)
 'JAVA TO VB CONVERTER TODO TASK: Anonymous inner classes are not converted to VB if the base type is not defined in the code being converted:
 '				Return New Sink.ChainedLong<java.lang.Integer>(sink)
 	'			{
@@ -227,7 +227,7 @@ Namespace java.util.stream
 			End Function
 		End Class
 
-		Public Overrides Function mapToDouble(ByVal mapper As java.util.function.LongToDoubleFunction) As DoubleStream Implements LongStream.mapToDouble
+		Public Overrides Function mapToDouble(  mapper As java.util.function.LongToDoubleFunction) As DoubleStream Implements LongStream.mapToDouble
 			java.util.Objects.requireNonNull(mapper)
 			Return New StatelessOpAnonymousInnerClassHelper2(Of E_IN)
 		End Function
@@ -235,7 +235,7 @@ Namespace java.util.stream
 		Private Class StatelessOpAnonymousInnerClassHelper2(Of E_IN)
 			Inherits StatelessOp(Of E_IN)
 
-			Friend Overrides Function opWrapSink(ByVal flags As Integer, ByVal sink As Sink(Of Double?)) As Sink(Of Long?)
+			Friend Overrides Function opWrapSink(  flags As Integer,   sink As Sink(Of Double?)) As Sink(Of Long?)
 'JAVA TO VB CONVERTER TODO TASK: Anonymous inner classes are not converted to VB if the base type is not defined in the code being converted:
 '				Return New Sink.ChainedLong<java.lang.Double>(sink)
 	'			{
@@ -247,14 +247,14 @@ Namespace java.util.stream
 			End Function
 		End Class
 
-		Public Overrides Function flatMap(Of T1 As LongStream)(ByVal mapper As java.util.function.LongFunction(Of T1)) As LongStream Implements LongStream.flatMap
+		Public Overrides Function flatMap(Of T1 As LongStream)(  mapper As java.util.function.LongFunction(Of T1)) As LongStream Implements LongStream.flatMap
 			Return New StatelessOpAnonymousInnerClassHelper2(Of E_IN)
 		End Function
 
 		Private Class StatelessOpAnonymousInnerClassHelper2(Of E_IN)
 			Inherits StatelessOp(Of E_IN)
 
-			Friend Overrides Function opWrapSink(ByVal flags As Integer, ByVal sink As Sink(Of Long?)) As Sink(Of Long?)
+			Friend Overrides Function opWrapSink(  flags As Integer,   sink As Sink(Of Long?)) As Sink(Of Long?)
 'JAVA TO VB CONVERTER TODO TASK: Anonymous inner classes are not converted to VB if the base type is not defined in the code being converted:
 '				Return New Sink.ChainedLong<java.lang.Long>(sink)
 	'			{
@@ -284,12 +284,12 @@ Namespace java.util.stream
 		Private Class StatelessOpAnonymousInnerClassHelper3(Of E_IN)
 			Inherits StatelessOp(Of E_IN)
 
-			Friend Overrides Function opWrapSink(ByVal flags As Integer, ByVal sink As Sink(Of Long?)) As Sink(Of Long?)
+			Friend Overrides Function opWrapSink(  flags As Integer,   sink As Sink(Of Long?)) As Sink(Of Long?)
 				Return sink
 			End Function
 		End Class
 
-		Public Overrides Function filter(ByVal predicate As java.util.function.LongPredicate) As LongStream Implements LongStream.filter
+		Public Overrides Function filter(  predicate As java.util.function.LongPredicate) As LongStream Implements LongStream.filter
 			java.util.Objects.requireNonNull(predicate)
 			Return New StatelessOpAnonymousInnerClassHelper4(Of E_IN)
 		End Function
@@ -297,7 +297,7 @@ Namespace java.util.stream
 		Private Class StatelessOpAnonymousInnerClassHelper4(Of E_IN)
 			Inherits StatelessOp(Of E_IN)
 
-			Friend Overrides Function opWrapSink(ByVal flags As Integer, ByVal sink As Sink(Of Long?)) As Sink(Of Long?)
+			Friend Overrides Function opWrapSink(  flags As Integer,   sink As Sink(Of Long?)) As Sink(Of Long?)
 'JAVA TO VB CONVERTER TODO TASK: Anonymous inner classes are not converted to VB if the base type is not defined in the code being converted:
 '				Return New Sink.ChainedLong<java.lang.Long>(sink)
 	'			{
@@ -315,7 +315,7 @@ Namespace java.util.stream
 			End Function
 		End Class
 
-		Public Overrides Function peek(ByVal action As java.util.function.LongConsumer) As LongStream Implements LongStream.peek
+		Public Overrides Function peek(  action As java.util.function.LongConsumer) As LongStream Implements LongStream.peek
 			java.util.Objects.requireNonNull(action)
 			Return New StatelessOpAnonymousInnerClassHelper5(Of E_IN)
 		End Function
@@ -323,7 +323,7 @@ Namespace java.util.stream
 		Private Class StatelessOpAnonymousInnerClassHelper5(Of E_IN)
 			Inherits StatelessOp(Of E_IN)
 
-			Friend Overrides Function opWrapSink(ByVal flags As Integer, ByVal sink As Sink(Of Long?)) As Sink(Of Long?)
+			Friend Overrides Function opWrapSink(  flags As Integer,   sink As Sink(Of Long?)) As Sink(Of Long?)
 'JAVA TO VB CONVERTER TODO TASK: Anonymous inner classes are not converted to VB if the base type is not defined in the code being converted:
 '				Return New Sink.ChainedLong<java.lang.Long>(sink)
 	'			{
@@ -338,12 +338,12 @@ Namespace java.util.stream
 
 		' Stateful intermediate ops from LongStream
 
-		Public Overrides Function limit(ByVal maxSize As Long) As LongStream Implements LongStream.limit
+		Public Overrides Function limit(  maxSize As Long) As LongStream Implements LongStream.limit
 			If maxSize < 0 Then Throw New IllegalArgumentException(Convert.ToString(maxSize))
 			Return SliceOps.makeLong(Me, 0, maxSize)
 		End Function
 
-		Public Overrides Function skip(ByVal n As Long) As LongStream Implements LongStream.skip
+		Public Overrides Function skip(  n As Long) As LongStream Implements LongStream.skip
 			If n < 0 Then Throw New IllegalArgumentException(Convert.ToString(n))
 			If n = 0 Then
 				Return Me
@@ -364,11 +364,11 @@ Namespace java.util.stream
 
 		' Terminal ops from LongStream
 
-		Public Overrides Sub forEach(ByVal action As java.util.function.LongConsumer) Implements LongStream.forEach
+		Public Overrides Sub forEach(  action As java.util.function.LongConsumer) Implements LongStream.forEach
 			evaluate(ForEachOps.makeLong(action, False))
 		End Sub
 
-		Public Overrides Sub forEachOrdered(ByVal action As java.util.function.LongConsumer) Implements LongStream.forEachOrdered
+		Public Overrides Sub forEachOrdered(  action As java.util.function.LongConsumer) Implements LongStream.forEachOrdered
 			evaluate(ForEachOps.makeLong(action, True))
 		End Sub
 
@@ -400,30 +400,30 @@ Namespace java.util.stream
 			Return collect(java.util.LongSummaryStatistics::New, java.util.LongSummaryStatistics::accept, java.util.LongSummaryStatistics::combine)
 		End Function
 
-		Public Overrides Function reduce(ByVal identity As Long, ByVal op As java.util.function.LongBinaryOperator) As Long Implements LongStream.reduce
+		Public Overrides Function reduce(  identity As Long,   op As java.util.function.LongBinaryOperator) As Long Implements LongStream.reduce
 			Return evaluate(ReduceOps.makeLong(identity, op))
 		End Function
 
-		Public Overrides Function reduce(ByVal op As java.util.function.LongBinaryOperator) As java.util.OptionalLong Implements LongStream.reduce
+		Public Overrides Function reduce(  op As java.util.function.LongBinaryOperator) As java.util.OptionalLong Implements LongStream.reduce
 			Return evaluate(ReduceOps.makeLong(op))
 		End Function
 
-		Public Overrides Function collect(Of R)(ByVal supplier As java.util.function.Supplier(Of R), ByVal accumulator As java.util.function.ObjLongConsumer(Of R), ByVal combiner As java.util.function.BiConsumer(Of R, R)) As R Implements LongStream.collect
+		Public Overrides Function collect(Of R)(  supplier As java.util.function.Supplier(Of R),   accumulator As java.util.function.ObjLongConsumer(Of R),   combiner As java.util.function.BiConsumer(Of R, R)) As R Implements LongStream.collect
 			Dim [operator] As java.util.function.BinaryOperator(Of R) = (left, right) ->
 				combiner.accept(left, right)
 				Return left
 			Return evaluate(ReduceOps.makeLong(supplier, accumulator, [operator]))
 		End Function
 
-		Public Overrides Function anyMatch(ByVal predicate As java.util.function.LongPredicate) As Boolean Implements LongStream.anyMatch
+		Public Overrides Function anyMatch(  predicate As java.util.function.LongPredicate) As Boolean Implements LongStream.anyMatch
 			Return evaluate(MatchOps.makeLong(predicate, MatchOps.MatchKind.ANY))
 		End Function
 
-		Public Overrides Function allMatch(ByVal predicate As java.util.function.LongPredicate) As Boolean Implements LongStream.allMatch
+		Public Overrides Function allMatch(  predicate As java.util.function.LongPredicate) As Boolean Implements LongStream.allMatch
 			Return evaluate(MatchOps.makeLong(predicate, MatchOps.MatchKind.ALL))
 		End Function
 
-		Public Overrides Function noneMatch(ByVal predicate As java.util.function.LongPredicate) As Boolean Implements LongStream.noneMatch
+		Public Overrides Function noneMatch(  predicate As java.util.function.LongPredicate) As Boolean Implements LongStream.noneMatch
 			Return evaluate(MatchOps.makeLong(predicate, MatchOps.MatchKind.NONE))
 		End Function
 
@@ -458,7 +458,7 @@ Namespace java.util.stream
 			''' <param name="sourceFlags"> the source flags for the stream source, described
 			'''                    in <seealso cref="StreamOpFlag"/> </param>
 			''' <param name="parallel"> {@code true} if the pipeline is parallel </param>
-			Friend Sub New(Of T1 As java.util.Spliterator(Of Long?)(ByVal source As java.util.function.Supplier(Of T1), ByVal sourceFlags As Integer, ByVal parallel As Boolean)
+			Friend Sub New(Of T1 As java.util.Spliterator(Of Long?)(  source As java.util.function.Supplier(Of T1),   sourceFlags As Integer,   parallel As Boolean)
 				MyBase.New(source, sourceFlags, parallel)
 			End Sub
 
@@ -469,7 +469,7 @@ Namespace java.util.stream
 			''' <param name="sourceFlags"> the source flags for the stream source, described
 			'''                    in <seealso cref="StreamOpFlag"/> </param>
 			''' <param name="parallel"> {@code true} if the pipeline is parallel </param>
-			Friend Sub New(ByVal source As java.util.Spliterator(Of Long?), ByVal sourceFlags As Integer, ByVal parallel As Boolean)
+			Friend Sub New(  source As java.util.Spliterator(Of Long?),   sourceFlags As Integer,   parallel As Boolean)
 				MyBase.New(source, sourceFlags, parallel)
 			End Sub
 
@@ -477,13 +477,13 @@ Namespace java.util.stream
 				Throw New UnsupportedOperationException
 			End Function
 
-			Friend Overrides Function opWrapSink(ByVal flags As Integer, ByVal sink As Sink(Of Long?)) As Sink(Of E_IN)
+			Friend Overrides Function opWrapSink(  flags As Integer,   sink As Sink(Of Long?)) As Sink(Of E_IN)
 				Throw New UnsupportedOperationException
 			End Function
 
 			' Optimized sequential terminal operations for the head of the pipeline
 
-			Public Overrides Sub forEach(ByVal action As java.util.function.LongConsumer)
+			Public Overrides Sub forEach(  action As java.util.function.LongConsumer)
 				If Not parallel Then
 					adapt(sourceStageSpliterator()).forEachRemaining(action)
 				Else
@@ -491,7 +491,7 @@ Namespace java.util.stream
 				End If
 			End Sub
 
-			Public Overrides Sub forEachOrdered(ByVal action As java.util.function.LongConsumer)
+			Public Overrides Sub forEachOrdered(  action As java.util.function.LongConsumer)
 				If Not parallel Then
 					adapt(sourceStageSpliterator()).forEachRemaining(action)
 				Else
@@ -514,7 +514,7 @@ Namespace java.util.stream
 			''' <param name="upstream"> The upstream pipeline stage </param>
 			''' <param name="inputShape"> The stream shape for the upstream pipeline stage </param>
 			''' <param name="opFlags"> Operation flags for the new stage </param>
-			Friend Sub New(Of T1)(ByVal upstream As AbstractPipeline(Of T1), ByVal inputShape As StreamShape, ByVal opFlags As Integer)
+			Friend Sub New(Of T1)(  upstream As AbstractPipeline(Of T1),   inputShape As StreamShape,   opFlags As Integer)
 				MyBase.New(upstream, opFlags)
 				Debug.Assert(upstream.outputShape = inputShape)
 			End Sub
@@ -538,7 +538,7 @@ Namespace java.util.stream
 			''' <param name="upstream"> The upstream pipeline stage </param>
 			''' <param name="inputShape"> The stream shape for the upstream pipeline stage </param>
 			''' <param name="opFlags"> Operation flags for the new stage </param>
-			Friend Sub New(Of T1)(ByVal upstream As AbstractPipeline(Of T1), ByVal inputShape As StreamShape, ByVal opFlags As Integer)
+			Friend Sub New(Of T1)(  upstream As AbstractPipeline(Of T1),   inputShape As StreamShape,   opFlags As Integer)
 				MyBase.New(upstream, opFlags)
 				Debug.Assert(upstream.outputShape = inputShape)
 			End Sub
@@ -547,7 +547,7 @@ Namespace java.util.stream
 				Return True
 			End Function
 
-			Friend MustOverride Overrides Function opEvaluateParallel(Of P_IN)(ByVal helper As PipelineHelper(Of Long?), ByVal spliterator As java.util.Spliterator(Of P_IN), ByVal generator As java.util.function.IntFunction(Of Long?())) As Node(Of Long?)
+			Friend MustOverride Overrides Function opEvaluateParallel(Of P_IN)(  helper As PipelineHelper(Of Long?),   spliterator As java.util.Spliterator(Of P_IN),   generator As java.util.function.IntFunction(Of Long?())) As Node(Of Long?)
 		End Class
 	End Class
 

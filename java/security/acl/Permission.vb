@@ -41,7 +41,7 @@ Namespace java.security.acl
 		''' <param name="another"> the Permission object to compare with.
 		''' </param>
 		''' <returns> true if the Permission objects are equal, false otherwise </returns>
-		Function Equals(ByVal another As Object) As Boolean
+		Function Equals(  another As Object) As Boolean
 
 		''' <summary>
 		''' Prints a string representation of this permission.

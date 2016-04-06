@@ -327,7 +327,7 @@ Namespace java.util.concurrent.locks
 'JAVA TO VB CONVERTER TODO TASK: There is no VB equivalent to 'volatile':
 			Friend status As Integer ' 0, WAITING, or CANCELLED
 			Friend ReadOnly mode As Integer ' RMODE or WMODE
-			Friend Sub New(ByVal m As Integer, ByVal p As WNode)
+			Friend Sub New(  m As Integer,   p As WNode)
 				mode = m
 				prev = p
 			End Sub
@@ -403,7 +403,7 @@ Namespace java.util.concurrent.locks
 		''' or zero if the lock is not available </returns>
 		''' <exception cref="InterruptedException"> if the current thread is interrupted
 		''' before acquiring the lock </exception>
-		Public Overridable Function tryWriteLock(ByVal time As Long, ByVal unit As java.util.concurrent.TimeUnit) As Long
+		Public Overridable Function tryWriteLock(  time As Long,   unit As java.util.concurrent.TimeUnit) As Long
 			Dim nanos As Long = unit.toNanos(time)
 			If Not Thread.interrupted() Then
 				Dim [next], deadline As Long
@@ -479,7 +479,7 @@ Namespace java.util.concurrent.locks
 		''' or zero if the lock is not available </returns>
 		''' <exception cref="InterruptedException"> if the current thread is interrupted
 		''' before acquiring the lock </exception>
-		Public Overridable Function tryReadLock(ByVal time As Long, ByVal unit As java.util.concurrent.TimeUnit) As Long
+		Public Overridable Function tryReadLock(  time As Long,   unit As java.util.concurrent.TimeUnit) As Long
 			Dim s, m, [next], deadline As Long
 			Dim nanos As Long = unit.toNanos(time)
 			If Not Thread.interrupted() Then
@@ -541,7 +541,7 @@ Namespace java.util.concurrent.locks
 		''' <param name="stamp"> a stamp </param>
 		''' <returns> {@code true} if the lock has not been exclusively acquired
 		''' since issuance of the given stamp; else false </returns>
-		Public Overridable Function validate(ByVal stamp As Long) As Boolean
+		Public Overridable Function validate(  stamp As Long) As Boolean
 			U.loadFence()
 			Return (stamp And SBITS) = (state And SBITS)
 		End Function
@@ -553,7 +553,7 @@ Namespace java.util.concurrent.locks
 		''' <param name="stamp"> a stamp returned by a write-lock operation </param>
 		''' <exception cref="IllegalMonitorStateException"> if the stamp does
 		''' not match the current state of this lock </exception>
-		Public Overridable Sub unlockWrite(ByVal stamp As Long)
+		Public Overridable Sub unlockWrite(  stamp As Long)
 			Dim h As WNode
 			If state <> stamp OrElse (stamp And WBIT) = 0L Then Throw New IllegalMonitorStateException
 'JAVA TO VB CONVERTER TODO TASK: Assignments within expressions are not supported in VB
@@ -569,7 +569,7 @@ Namespace java.util.concurrent.locks
 		''' <param name="stamp"> a stamp returned by a read-lock operation </param>
 		''' <exception cref="IllegalMonitorStateException"> if the stamp does
 		''' not match the current state of this lock </exception>
-		Public Overridable Sub unlockRead(ByVal stamp As Long)
+		Public Overridable Sub unlockRead(  stamp As Long)
 			Dim s, m As Long
 			Dim h As WNode
 			Do
@@ -595,7 +595,7 @@ Namespace java.util.concurrent.locks
 		''' <param name="stamp"> a stamp returned by a lock operation </param>
 		''' <exception cref="IllegalMonitorStateException"> if the stamp does
 		''' not match the current state of this lock </exception>
-		Public Overridable Sub unlock(ByVal stamp As Long)
+		Public Overridable Sub unlock(  stamp As Long)
 			Dim a As Long = stamp And ABITS, m As Long, s As Long
 			Dim h As WNode
 			s = state
@@ -637,7 +637,7 @@ Namespace java.util.concurrent.locks
 		''' </summary>
 		''' <param name="stamp"> a stamp </param>
 		''' <returns> a valid write stamp, or zero on failure </returns>
-		Public Overridable Function tryConvertToWriteLock(ByVal stamp As Long) As Long
+		Public Overridable Function tryConvertToWriteLock(  stamp As Long) As Long
 			Dim a As Long = stamp And ABITS, m As Long, s As Long, [next] As Long
 			s = state
 			Do While (s And SBITS) = (stamp And SBITS)
@@ -670,7 +670,7 @@ Namespace java.util.concurrent.locks
 		''' </summary>
 		''' <param name="stamp"> a stamp </param>
 		''' <returns> a valid read stamp, or zero on failure </returns>
-		Public Overridable Function tryConvertToReadLock(ByVal stamp As Long) As Long
+		Public Overridable Function tryConvertToReadLock(  stamp As Long) As Long
 			Dim a As Long = stamp And ABITS, m As Long, s As Long, [next] As Long
 			Dim h As WNode
 			s = state
@@ -713,7 +713,7 @@ Namespace java.util.concurrent.locks
 		''' </summary>
 		''' <param name="stamp"> a stamp </param>
 		''' <returns> a valid optimistic read stamp, or zero on failure </returns>
-		Public Overridable Function tryConvertToOptimisticRead(ByVal stamp As Long) As Long
+		Public Overridable Function tryConvertToOptimisticRead(  stamp As Long) As Long
 			Dim a As Long = stamp And ABITS, m As Long, s As Long, [next] As Long
 			Dim h As WNode
 			U.loadFence()
@@ -802,7 +802,7 @@ Namespace java.util.concurrent.locks
 		''' Returns combined state-held and overflow read count for given
 		''' state s.
 		''' </summary>
-		Private Function getReadLockCount(ByVal s As Long) As Integer
+		Private Function getReadLockCount(  s As Long) As Integer
 			Dim readers As Long
 			readers = s And RBITS
 			If readers >= RFULL Then readers = RFULL + readerOverflow
@@ -920,7 +920,7 @@ Namespace java.util.concurrent.locks
 
 			Private ReadOnly outerInstance As StampedLock
 
-			Public Sub New(ByVal outerInstance As StampedLock)
+			Public Sub New(  outerInstance As StampedLock)
 				Me.outerInstance = outerInstance
 			End Sub
 
@@ -933,7 +933,7 @@ Namespace java.util.concurrent.locks
 			Public Function tryLock() As Boolean
 				Return outerInstance.tryReadLock() <> 0L
 			End Function
-			Public Function tryLock(ByVal time As Long, ByVal unit As java.util.concurrent.TimeUnit) As Boolean
+			Public Function tryLock(  time As Long,   unit As java.util.concurrent.TimeUnit) As Boolean
 				Return outerInstance.tryReadLock(time, unit) <> 0L
 			End Function
 			Public Sub unlock()
@@ -949,7 +949,7 @@ Namespace java.util.concurrent.locks
 
 			Private ReadOnly outerInstance As StampedLock
 
-			Public Sub New(ByVal outerInstance As StampedLock)
+			Public Sub New(  outerInstance As StampedLock)
 				Me.outerInstance = outerInstance
 			End Sub
 
@@ -962,7 +962,7 @@ Namespace java.util.concurrent.locks
 			Public Function tryLock() As Boolean
 				Return outerInstance.tryWriteLock() <> 0L
 			End Function
-			Public Function tryLock(ByVal time As Long, ByVal unit As java.util.concurrent.TimeUnit) As Boolean
+			Public Function tryLock(  time As Long,   unit As java.util.concurrent.TimeUnit) As Boolean
 				Return outerInstance.tryWriteLock(time, unit) <> 0L
 			End Function
 			Public Sub unlock()
@@ -978,7 +978,7 @@ Namespace java.util.concurrent.locks
 
 			Private ReadOnly outerInstance As StampedLock
 
-			Public Sub New(ByVal outerInstance As StampedLock)
+			Public Sub New(  outerInstance As StampedLock)
 				Me.outerInstance = outerInstance
 			End Sub
 
@@ -1024,7 +1024,7 @@ Namespace java.util.concurrent.locks
 			Loop
 		End Sub
 
-		Private Sub readObject(ByVal s As java.io.ObjectInputStream)
+		Private Sub readObject(  s As java.io.ObjectInputStream)
 			s.defaultReadObject()
 			state = ORIGIN ' reset to unlocked state
 		End Sub
@@ -1038,7 +1038,7 @@ Namespace java.util.concurrent.locks
 		''' </summary>
 		''' <param name="s"> a reader overflow stamp: (s & ABITS) >= RFULL </param>
 		''' <returns> new stamp on success, else zero </returns>
-		Private Function tryIncReaderOverflow(ByVal s As Long) As Long
+		Private Function tryIncReaderOverflow(  s As Long) As Long
 			' assert (s & ABITS) >= RFULL;
 			If (s And ABITS) = RFULL Then
 				If U.compareAndSwapLong(Me, STATE, s, s Or RBITS) Then
@@ -1057,7 +1057,7 @@ Namespace java.util.concurrent.locks
 		''' </summary>
 		''' <param name="s"> a reader overflow stamp: (s & ABITS) >= RFULL </param>
 		''' <returns> new stamp on success, else zero </returns>
-		Private Function tryDecReaderOverflow(ByVal s As Long) As Long
+		Private Function tryDecReaderOverflow(  s As Long) As Long
 			' assert (s & ABITS) >= RFULL;
 			If (s And ABITS) = RFULL Then
 				If U.compareAndSwapLong(Me, STATE, s, s Or RBITS) Then
@@ -1086,7 +1086,7 @@ Namespace java.util.concurrent.locks
 		''' thread when one or more have been cancelled, but the cancel
 		''' methods themselves provide extra safeguards to ensure liveness.
 		''' </summary>
-		Private Sub release(ByVal h As WNode)
+		Private Sub release(  h As WNode)
 			If h IsNot Nothing Then
 				Dim q As WNode
 				Dim w As Thread
@@ -1112,7 +1112,7 @@ Namespace java.util.concurrent.locks
 		''' <param name="deadline"> if nonzero, the System.nanoTime value to timeout
 		''' at (and return zero) </param>
 		''' <returns> next state, or INTERRUPTED </returns>
-		Private Function acquireWrite(ByVal interruptible As Boolean, ByVal deadline As Long) As Long
+		Private Function acquireWrite(  interruptible As Boolean,   deadline As Long) As Long
 			Dim node As WNode = Nothing, p As WNode
 			Dim spins_Renamed As Integer = -1
 			Do ' spin while enqueuing
@@ -1225,7 +1225,7 @@ Namespace java.util.concurrent.locks
 		''' <param name="deadline"> if nonzero, the System.nanoTime value to timeout
 		''' at (and return zero) </param>
 		''' <returns> next state, or INTERRUPTED </returns>
-		Private Function acquireRead(ByVal interruptible As Boolean, ByVal deadline As Long) As Long
+		Private Function acquireRead(  interruptible As Boolean,   deadline As Long) As Long
 			Dim node As WNode = Nothing, p As WNode
 			Dim spins_Renamed As Integer = -1
 			Do
@@ -1414,7 +1414,7 @@ Namespace java.util.concurrent.locks
 		''' <param name="group"> either node or the group node is cowaiting with </param>
 		''' <param name="interrupted"> if already interrupted </param>
 		''' <returns> INTERRUPTED if interrupted or Thread.interrupted, else zero </returns>
-		Private Function cancelWaiter(ByVal node As WNode, ByVal group As WNode, ByVal interrupted As Boolean) As Long
+		Private Function cancelWaiter(  node As WNode,   group As WNode,   interrupted As Boolean) As Long
 			If node IsNot Nothing AndAlso group IsNot Nothing Then
 				Dim w As Thread
 				node.status = CANCELLED

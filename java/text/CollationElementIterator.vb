@@ -118,7 +118,7 @@ Namespace java.text
 		''' NULLORDER will be returned on the calls to next(). </summary>
 		''' <param name="sourceText"> the source string. </param>
 		''' <param name="owner"> the collation object. </param>
-		Friend Sub New(ByVal sourceText As String, ByVal owner As RuleBasedCollator)
+		Friend Sub New(  sourceText As String,   owner As RuleBasedCollator)
 			Me.owner = owner
 			ordering = owner.tables
 			If sourceText.length() <> 0 Then
@@ -134,7 +134,7 @@ Namespace java.text
 		''' NULLORDER will be returned on the calls to next(). </summary>
 		''' <param name="sourceText"> the source string. </param>
 		''' <param name="owner"> the collation object. </param>
-		Friend Sub New(ByVal sourceText As CharacterIterator, ByVal owner As RuleBasedCollator)
+		Friend Sub New(  sourceText As CharacterIterator,   owner As RuleBasedCollator)
 			Me.owner = owner
 			ordering = owner.tables
 			Dim mode As sun.text.normalizer.NormalizerBase.Mode = sun.text.CollatorUtilities.toNormalizerMode(owner.decomposition)
@@ -335,7 +335,7 @@ Namespace java.text
 		''' Return the primary component of a collation element. </summary>
 		''' <param name="order"> the collation element </param>
 		''' <returns> the element's primary component </returns>
-		Public Shared Function primaryOrder(ByVal order As Integer) As Integer
+		Public Shared Function primaryOrder(  order As Integer) As Integer
 			order = order And RBCollationTables.PRIMARYORDERMASK
 			Return (CInt(CUInt(order) >> RBCollationTables.PRIMARYORDERSHIFT))
 		End Function
@@ -343,7 +343,7 @@ Namespace java.text
 		''' Return the secondary component of a collation element. </summary>
 		''' <param name="order"> the collation element </param>
 		''' <returns> the element's secondary component </returns>
-		Public Shared Function secondaryOrder(ByVal order As Integer) As Short
+		Public Shared Function secondaryOrder(  order As Integer) As Short
 			order = order And RBCollationTables.SECONDARYORDERMASK
 			Return (CShort(Fix(order >> RBCollationTables.SECONDARYORDERSHIFT)))
 		End Function
@@ -351,7 +351,7 @@ Namespace java.text
 		''' Return the tertiary component of a collation element. </summary>
 		''' <param name="order"> the collation element </param>
 		''' <returns> the element's tertiary component </returns>
-		Public Shared Function tertiaryOrder(ByVal order As Integer) As Short
+		Public Shared Function tertiaryOrder(  order As Integer) As Short
 'JAVA TO VB CONVERTER TODO TASK: Assignments within expressions are not supported in VB
 			Return (CShort(Fix(order = order And RBCollationTables.TERTIARYORDERMASK)))
 		End Function
@@ -360,7 +360,7 @@ Namespace java.text
 		'''  Get the comparison order in the desired strength.  Ignore the other
 		'''  differences. </summary>
 		'''  <param name="order"> The order value </param>
-		Friend Function strengthOrder(ByVal order As Integer) As Integer
+		Friend Function strengthOrder(  order As Integer) As Integer
 			Dim s As Integer = owner.strength
 			If s = Collator.PRIMARY Then
 				order = order And RBCollationTables.PRIMARYDIFFERENCEONLY
@@ -386,7 +386,7 @@ Namespace java.text
 		''' @since 1.2 </param>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
 		Public Property offset As Integer
-			Set(ByVal newOffset As Integer)
+			Set(  newOffset As Integer)
 				If text IsNot Nothing Then
 					If newOffset < text.beginIndex OrElse newOffset >= text.endIndex Then
 							text.indexOnly = newOffset
@@ -437,7 +437,7 @@ Namespace java.text
 		''' <returns> the maximum length of any expansion sequences ending
 		'''         with the specified order.
 		''' @since 1.2 </returns>
-		Public Function getMaxExpansion(ByVal order As Integer) As Integer
+		Public Function getMaxExpansion(  order As Integer) As Integer
 			Return ordering.getMaxExpansion(order)
 		End Function
 
@@ -447,7 +447,7 @@ Namespace java.text
 		''' <param name="source">  the new source text
 		''' @since 1.2 </param>
 		Public Property text As String
-			Set(ByVal source As String)
+			Set(  source As String)
 				buffer = Nothing
 				swapOrder = 0
 				expIndex = 0
@@ -467,7 +467,7 @@ Namespace java.text
 		''' <param name="source">  the new source text.
 		''' @since 1.2 </param>
 		Public Property text As CharacterIterator
-			Set(ByVal source As CharacterIterator)
+			Set(  source As CharacterIterator)
 				buffer = Nothing
 				swapOrder = 0
 				expIndex = 0
@@ -489,14 +489,14 @@ Namespace java.text
 		''' Determine if a character is a Thai vowel (which sorts after
 		''' its base consonant).
 		''' </summary>
-		Private Shared Function isThaiPreVowel(ByVal ch As Integer) As Boolean
+		Private Shared Function isThaiPreVowel(  ch As Integer) As Boolean
 			Return (ch >= &He40) AndAlso (ch <= &He44)
 		End Function
 
 		''' <summary>
 		''' Determine if a character is a Thai base consonant
 		''' </summary>
-		Private Shared Function isThaiBaseConsonant(ByVal ch As Integer) As Boolean
+		Private Shared Function isThaiBaseConsonant(  ch As Integer) As Boolean
 			Return (ch >= &He01) AndAlso (ch <= &He2e)
 		End Function
 
@@ -504,14 +504,14 @@ Namespace java.text
 		''' Determine if a character is a Lao vowel (which sorts after
 		''' its base consonant).
 		''' </summary>
-		Private Shared Function isLaoPreVowel(ByVal ch As Integer) As Boolean
+		Private Shared Function isLaoPreVowel(  ch As Integer) As Boolean
 			Return (ch >= &Hec0) AndAlso (ch <= &Hec4)
 		End Function
 
 		''' <summary>
 		''' Determine if a character is a Lao base consonant
 		''' </summary>
-		Private Shared Function isLaoBaseConsonant(ByVal ch As Integer) As Boolean
+		Private Shared Function isLaoBaseConsonant(  ch As Integer) As Boolean
 			Return (ch >= &He81) AndAlso (ch <= &Heae)
 		End Function
 
@@ -525,7 +525,7 @@ Namespace java.text
 		''' method as lastValue, and lastExpansion is null.  If it has an
 		''' expansion it is passed in lastExpansion, and colLastValue is ignored.
 		''' </summary>
-		Private Function makeReorderedBuffer(ByVal colFirst As Integer, ByVal lastValue As Integer, ByVal lastExpansion As Integer(), ByVal forward As Boolean) As Integer()
+		Private Function makeReorderedBuffer(  colFirst As Integer,   lastValue As Integer,   lastExpansion As Integer(),   forward As Boolean) As Integer()
 
 			Dim result As Integer()
 
@@ -572,7 +572,7 @@ Namespace java.text
 		''' <summary>
 		'''  Check if a comparison order is ignorable. </summary>
 		'''  <returns> true if a character is ignorable, false otherwise. </returns>
-		Friend Shared Function isIgnorable(ByVal order As Integer) As Boolean
+		Friend Shared Function isIgnorable(  order As Integer) As Boolean
 			Return (If(primaryOrder(order) = 0, True, False))
 		End Function
 
@@ -582,7 +582,7 @@ Namespace java.text
 		''' <param name="ch"> the starting character of a contracting character token </param>
 		''' <returns> the next contracting character's ordering.  Returns NULLORDER
 		''' if the end of string is reached. </returns>
-		Private Function nextContractChar(ByVal ch As Integer) As Integer
+		Private Function nextContractChar(  ch As Integer) As Integer
 			' First get the ordering of this single character,
 			' which is always the first element in the list
 			Dim list As List(Of EntryPair) = ordering.getContractValues(ch)
@@ -650,7 +650,7 @@ Namespace java.text
 		''' <param name="ch"> the starting character of a contracting character token </param>
 		''' <returns> the next contracting character's ordering.  Returns NULLORDER
 		''' if the end of string is reached. </returns>
-		Private Function prevContractChar(ByVal ch As Integer) As Integer
+		Private Function prevContractChar(  ch As Integer) As Integer
 			' This function is identical to nextContractChar(), except that we've
 			' switched things so that the next() and previous() calls on the Normalizer
 			' are switched and so that we skip entry pairs with the fwd flag turned on

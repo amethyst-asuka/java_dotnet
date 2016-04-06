@@ -56,7 +56,7 @@ Namespace java.net
 			' The port number of the Socket Address
 			Private port As Integer
 
-			Private Sub New(ByVal hostname As String, ByVal addr As InetAddress, ByVal port As Integer)
+			Private Sub New(  hostname As String,   addr As InetAddress,   port As Integer)
 				Me.hostname = hostname
 				Me.addr = addr
 				Me.port = port
@@ -110,7 +110,7 @@ Namespace java.net
 				End If
 			End Function
 
-			Public NotOverridable Overrides Function Equals(ByVal obj As Object) As Boolean
+			Public NotOverridable Overrides Function Equals(  obj As Object) As Boolean
 				If obj Is Nothing OrElse Not(TypeOf obj Is InetSocketAddressHolder) Then Return False
 				Dim that As InetSocketAddressHolder = CType(obj, InetSocketAddressHolder)
 				Dim sameIP As Boolean
@@ -136,12 +136,12 @@ Namespace java.net
 
 		Private Shadows Const serialVersionUID As Long = 5076001401234631237L
 
-		Private Shared Function checkPort(ByVal port As Integer) As Integer
+		Private Shared Function checkPort(  port As Integer) As Integer
 			If port < 0 OrElse port > &HFFFF Then Throw New IllegalArgumentException("port out of range:" & port)
 			Return port
 		End Function
 
-		Private Shared Function checkHost(ByVal hostname As String) As String
+		Private Shared Function checkHost(  hostname As String) As String
 			If hostname Is Nothing Then Throw New IllegalArgumentException("hostname can't be null")
 			Return hostname
 		End Function
@@ -157,7 +157,7 @@ Namespace java.net
 		''' <param name="port">    The port number </param>
 		''' <exception cref="IllegalArgumentException"> if the port parameter is outside the specified
 		''' range of valid port values. </exception>
-		Public Sub New(ByVal port As Integer)
+		Public Sub New(  port As Integer)
 			Me.New(InetAddress.anyLocalAddress(), port)
 		End Sub
 
@@ -175,7 +175,7 @@ Namespace java.net
 		''' <param name="port">    The port number </param>
 		''' <exception cref="IllegalArgumentException"> if the port parameter is outside the specified
 		''' range of valid port values. </exception>
-		Public Sub New(ByVal addr As InetAddress, ByVal port As Integer)
+		Public Sub New(  addr As InetAddress,   port As Integer)
 			holder = New InetSocketAddressHolder(Nothing,If(addr Is Nothing, InetAddress.anyLocalAddress(), addr), checkPort(port))
 		End Sub
 
@@ -202,7 +202,7 @@ Namespace java.net
 		'''                           permission to resolve the host name is
 		'''                           denied. </exception>
 		''' <seealso cref=     #isUnresolved() </seealso>
-		Public Sub New(ByVal hostname As String, ByVal port As Integer)
+		Public Sub New(  hostname As String,   port As Integer)
 			checkHost(hostname)
 			Dim addr As InetAddress = Nothing
 			Dim host As String = Nothing
@@ -215,7 +215,7 @@ Namespace java.net
 		End Sub
 
 		' private constructor for creating unresolved instances
-		Private Sub New(ByVal port As Integer, ByVal hostname As String)
+		Private Sub New(  port As Integer,   hostname As String)
 			holder = New InetSocketAddressHolder(hostname, Nothing, port)
 		End Sub
 
@@ -239,7 +239,7 @@ Namespace java.net
 		''' <returns>  a {@code InetSocketAddress} representing the unresolved
 		'''          socket address
 		''' @since 1.5 </returns>
-		Public Shared Function createUnresolved(ByVal host As String, ByVal port As Integer) As InetSocketAddress
+		Public Shared Function createUnresolved(  host As String,   port As Integer) As InetSocketAddress
 			Return New InetSocketAddress(checkPort(port), checkHost(host))
 		End Function
 
@@ -250,7 +250,7 @@ Namespace java.net
 		''' </summary>
 		Private Shared ReadOnly serialPersistentFields As java.io.ObjectStreamField() = { New java.io.ObjectStreamField("hostname", GetType(String)), New java.io.ObjectStreamField("addr", GetType(InetAddress)), New java.io.ObjectStreamField("port", GetType(Integer))}
 
-		Private Sub writeObject(ByVal out As java.io.ObjectOutputStream)
+		Private Sub writeObject(  out As java.io.ObjectOutputStream)
 			' Don't call defaultWriteObject()
 			 Dim pfields As java.io.ObjectOutputStream.PutField = out.putFields()
 			 pfields.put("hostname", holder.hostname)
@@ -259,7 +259,7 @@ Namespace java.net
 			 out.writeFields()
 		End Sub
 
-		Private Sub readObject(ByVal [in] As java.io.ObjectInputStream)
+		Private Sub readObject(  [in] As java.io.ObjectInputStream)
 			' Don't call defaultReadObject()
 			Dim oisFields As java.io.ObjectInputStream.GetField = [in].readFields()
 			Dim oisHostname As String = CStr(oisFields.get("hostname", Nothing))
@@ -377,7 +377,7 @@ Namespace java.net
 		''' <returns>  {@code true} if the objects are the same;
 		'''          {@code false} otherwise. </returns>
 		''' <seealso cref= java.net.InetAddress#equals(java.lang.Object) </seealso>
-		Public NotOverridable Overrides Function Equals(ByVal obj As Object) As Boolean
+		Public NotOverridable Overrides Function Equals(  obj As Object) As Boolean
 			If obj Is Nothing OrElse Not(TypeOf obj Is InetSocketAddress) Then Return False
 			Return holder.Equals(CType(obj, InetSocketAddress).holder)
 		End Function

@@ -57,7 +57,7 @@ Namespace java.awt.datatransfer
 		''' </summary>
 		''' <param name="rawdata"> text used to initialize the <code>MimeType</code> </param>
 		''' <exception cref="NullPointerException"> if <code>rawdata</code> is null </exception>
-		Public Sub New(ByVal rawdata As String)
+		Public Sub New(  rawdata As String)
 			parse(rawdata)
 		End Sub
 
@@ -69,7 +69,7 @@ Namespace java.awt.datatransfer
 		''' <param name="sub"> the subtype of this <code>MimeType</code> </param>
 		''' <exception cref="NullPointerException"> if either <code>primary</code> or
 		'''         <code>sub</code> is null </exception>
-		Public Sub New(ByVal primary As String, ByVal [sub] As String)
+		Public Sub New(  primary As String,   [sub] As String)
 			Me.New(primary, [sub], New MimeTypeParameterList)
 		End Sub
 
@@ -82,7 +82,7 @@ Namespace java.awt.datatransfer
 		''' <param name="mtpl"> the requested parameter list </param>
 		''' <exception cref="NullPointerException"> if either <code>primary</code>,
 		'''         <code>sub</code> or <code>mtpl</code> is null </exception>
-		Public Sub New(ByVal primary As String, ByVal [sub] As String, ByVal mtpl As MimeTypeParameterList)
+		Public Sub New(  primary As String,   [sub] As String,   mtpl As MimeTypeParameterList)
 			'    check to see if primary is valid
 			If isValidToken(primary) Then
 				primaryType = primary.ToLower(java.util.Locale.ENGLISH)
@@ -119,7 +119,7 @@ Namespace java.awt.datatransfer
 		'''    <code>MimeType</code> </param>
 		''' <returns> <code>true</code> if <code>thatObject</code> is
 		'''    a <code>MimeType</code>; otherwise returns <code>false</code> </returns>
-		Public Overrides Function Equals(ByVal thatObject As Object) As Boolean
+		Public Overrides Function Equals(  thatObject As Object) As Boolean
 			If Not(TypeOf thatObject Is MimeType) Then Return False
 			Dim that As MimeType = CType(thatObject, MimeType)
 			Dim isIt As Boolean = ((Me.primaryType.Equals(that.primaryType)) AndAlso (Me.subType.Equals(that.subType)) AndAlso (Me.parameters.Equals(that.parameters)))
@@ -130,7 +130,7 @@ Namespace java.awt.datatransfer
 		''' A routine for parsing the MIME type out of a String.
 		''' </summary>
 		''' <exception cref="NullPointerException"> if <code>rawdata</code> is null </exception>
-		Private Sub parse(ByVal rawdata As String)
+		Private Sub parse(  rawdata As String)
 			Dim slashIndex As Integer = rawdata.IndexOf("/"c)
 			Dim semIndex As Integer = rawdata.IndexOf(";"c)
 			If (slashIndex < 0) AndAlso (semIndex < 0) Then
@@ -197,7 +197,7 @@ Namespace java.awt.datatransfer
 		''' Retrieve the value associated with the given name, or null if there
 		''' is no current association.
 		''' </summary>
-		Public Overridable Function getParameter(ByVal name As String) As String
+		Public Overridable Function getParameter(  name As String) As String
 			Return parameters.get(name)
 		End Function
 
@@ -207,7 +207,7 @@ Namespace java.awt.datatransfer
 		''' 
 		''' @throw IllegalArgumentException if parameter or value is illegal
 		''' </summary>
-		Public Overridable Sub setParameter(ByVal name As String, ByVal value As String)
+		Public Overridable Sub setParameter(  name As String,   value As String)
 			parameters.set(name, value)
 		End Sub
 
@@ -216,7 +216,7 @@ Namespace java.awt.datatransfer
 		''' 
 		''' @throw IllegalArgumentExcpetion if parameter may not be deleted
 		''' </summary>
-		Public Overridable Sub removeParameter(ByVal name As String)
+		Public Overridable Sub removeParameter(  name As String)
 			parameters.remove(name)
 		End Sub
 
@@ -247,7 +247,7 @@ Namespace java.awt.datatransfer
 		'''    subtype of this object are the same as the
 		'''    specified <code>type</code>; otherwise returns
 		'''    <code>false</code> </returns>
-		Public Overridable Function match(ByVal type As MimeType) As Boolean
+		Public Overridable Function match(  type As MimeType) As Boolean
 			If type Is Nothing Then Return False
 			Return primaryType.Equals(type.primaryType) AndAlso (subType.Equals("*") OrElse type.subType.Equals("*") OrElse (subType.Equals(type.subType)))
 		End Function
@@ -264,7 +264,7 @@ Namespace java.awt.datatransfer
 		'''    described in <code>rawdata</code>; otherwise returns
 		'''    <code>false</code>; if <code>rawdata</code> is
 		'''    <code>null</code>, returns <code>false</code> </returns>
-		Public Overridable Function match(ByVal rawdata As String) As Boolean
+		Public Overridable Function match(  rawdata As String) As Boolean
 			If rawdata Is Nothing Then Return False
 			Return match(New MimeType(rawdata))
 		End Function
@@ -275,7 +275,7 @@ Namespace java.awt.datatransfer
 		''' calling the writeObject method of ObjectOutput for objects, strings
 		''' and arrays. </summary>
 		''' <exception cref="IOException"> Includes any I/O exceptions that may occur </exception>
-		Public Overridable Sub writeExternal(ByVal out As java.io.ObjectOutput)
+		Public Overridable Sub writeExternal(  out As java.io.ObjectOutput)
 			Dim s As String = ToString() ' contains ASCII chars only
 			' one-to-one correspondence between ASCII char and byte in UTF string
 			If s.length() <= 65535 Then ' 65535 is max length of UTF string
@@ -296,7 +296,7 @@ Namespace java.awt.datatransfer
 		''' and with the same types as were written by writeExternal. </summary>
 		''' <exception cref="ClassNotFoundException"> If the class for an object being
 		'''              restored cannot be found. </exception>
-		Public Overridable Sub readExternal(ByVal [in] As java.io.ObjectInput)
+		Public Overridable Sub readExternal(  [in] As java.io.ObjectInput)
 			Dim s As String = [in].readUTF()
 			If s Is Nothing OrElse s.length() = 0 Then ' long mime type
 				Dim ba As SByte() = New SByte([in].readInt() - 1){}
@@ -333,7 +333,7 @@ Namespace java.awt.datatransfer
 		''' <summary>
 		''' Determines whether or not a given character belongs to a legal token.
 		''' </summary>
-		Private Shared Function isTokenChar(ByVal c As Char) As Boolean
+		Private Shared Function isTokenChar(  c As Char) As Boolean
 			Return ((AscW(c) > &O40) AndAlso (AscW(c) < &O177)) AndAlso (TSPECIALS.IndexOf(c) < 0)
 		End Function
 
@@ -341,7 +341,7 @@ Namespace java.awt.datatransfer
 		''' Determines whether or not a given string is a legal token.
 		''' </summary>
 		''' <exception cref="NullPointerException"> if <code>s</code> is null </exception>
-		Private Function isValidToken(ByVal s As String) As Boolean
+		Private Function isValidToken(  s As String) As Boolean
 			Dim len As Integer = s.length()
 			If len > 0 Then
 				For i As Integer = 0 To len - 1

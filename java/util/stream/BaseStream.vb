@@ -133,7 +133,7 @@ Namespace java.util.stream
 		''' </summary>
 		''' <param name="closeHandler"> A task to execute when the stream is closed </param>
 		''' <returns> a stream with a handler that is run if the stream is closed </returns>
-		Function onClose(ByVal closeHandler As Runnable) As S
+		Function onClose(  closeHandler As Runnable) As S
 
 		''' <summary>
 		''' Closes this stream, causing all close handlers for this stream pipeline

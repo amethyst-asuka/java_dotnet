@@ -61,7 +61,7 @@ Namespace java.awt.font
 		''' Initialize the justifier with an array of infos corresponding to each
 		''' glyph. Start and limit indicate the range of the array to examine.
 		''' </summary>
-		Friend Sub New(ByVal info As GlyphJustificationInfo(), ByVal start As Integer, ByVal limit As Integer)
+		Friend Sub New(  info As GlyphJustificationInfo(),   start As Integer,   limit As Integer)
 			Me.info = info
 			Me.start = start
 			Me.limit = limit
@@ -84,7 +84,7 @@ Namespace java.awt.font
 		''' 
 		''' Delta should be positive to expand the line, and negative to compress it.
 		''' </summary>
-		Public Overridable Function justify(ByVal delta As Single) As Single()
+		Public Overridable Function justify(  delta As Single) As Single()
 			Dim deltas As Single() = New Single(info.Length * 2 - 1){}
 
 			Dim grow As Boolean = delta > 0

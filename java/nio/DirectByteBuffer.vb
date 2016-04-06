@@ -71,7 +71,7 @@ Namespace java.nio
 			Private size As Long
 			Private capacity As Integer
 
-			Private Sub New(ByVal address As Long, ByVal size As Long, ByVal capacity As Integer)
+			Private Sub New(  address As Long,   size As Long,   capacity As Integer)
 				assert(address <> 0)
 				Me.address = address
 				Me.size = size
@@ -105,7 +105,7 @@ Namespace java.nio
 
 		' Primary constructor
 		'
-		Friend Sub New(ByVal cap As Integer) ' package-private
+		Friend Sub New(  cap As Integer) ' package-private
 
 			MyBase.New(-1, 0, cap, cap)
 			Dim pa As Boolean = sun.misc.VM.directMemoryPageAligned
@@ -139,7 +139,7 @@ Namespace java.nio
 		' Invoked to construct a direct ByteBuffer referring to the block of
 		' memory. A given arbitrary object may also be attached to the buffer.
 		'
-		Friend Sub New(ByVal addr As Long, ByVal cap As Integer, ByVal ob As Object)
+		Friend Sub New(  addr As Long,   cap As Integer,   ob As Object)
 			MyBase.New(-1, 0, cap, cap)
 			address = addr
 			cleaner_Renamed = Nothing
@@ -149,7 +149,7 @@ Namespace java.nio
 
 		' Invoked only by JNI: NewDirectByteBuffer(void*, long)
 		'
-		Private Sub New(ByVal addr As Long, ByVal cap As Integer)
+		Private Sub New(  addr As Long,   cap As Integer)
 			MyBase.New(-1, 0, cap, cap)
 			address = addr
 			cleaner_Renamed = Nothing
@@ -160,7 +160,7 @@ Namespace java.nio
 
 		' For memory-mapped buffers -- invoked by FileChannelImpl via reflection
 		'
-		Protected Friend Sub New(ByVal cap As Integer, ByVal addr As Long, ByVal fd As java.io.FileDescriptor, ByVal unmapper As Runnable)
+		Protected Friend Sub New(  cap As Integer,   addr As Long,   fd As java.io.FileDescriptor,   unmapper As Runnable)
 
 			MyBase.New(-1, 0, cap, cap, fd)
 			address = addr
@@ -175,7 +175,7 @@ Namespace java.nio
 
 		' For duplicates and slices
 		'
-		Friend Sub New(ByVal db As sun.nio.ch.DirectBuffer, ByVal mark As Integer, ByVal pos As Integer, ByVal lim As Integer, ByVal cap As Integer, ByVal [off] As Integer) ' package-private
+		Friend Sub New(  db As sun.nio.ch.DirectBuffer,   mark As Integer,   pos As Integer,   lim As Integer,   cap As Integer,   [off] As Integer) ' package-private
 
 			MyBase.New(mark, pos, lim, cap)
 			address = db.address() + [off]
@@ -216,7 +216,7 @@ Namespace java.nio
 			Return address
 		End Function
 
-		Private Function ix(ByVal i As Integer) As Long
+		Private Function ix(  i As Integer) As Long
 			Return address + (CLng(i) << 0)
 		End Function
 
@@ -224,7 +224,7 @@ Namespace java.nio
 			Return ((unsafe.getByte(ix(nextGetIndex()))))
 		End Function
 
-		Public Overrides Function [get](ByVal i As Integer) As SByte
+		Public Overrides Function [get](  i As Integer) As SByte
 			Return ((unsafe.getByte(ix(checkIndex(i)))))
 		End Function
 
@@ -234,7 +234,7 @@ Namespace java.nio
 
 
 
-		Public Overrides Function [get](ByVal dst As SByte(), ByVal offset As Integer, ByVal length As Integer) As ByteBuffer
+		Public Overrides Function [get](  dst As SByte(),   offset As Integer,   length As Integer) As ByteBuffer
 
 			If (CLng(length) << 0) > Bits.JNI_COPY_TO_ARRAY_THRESHOLD Then
 				checkBounds(offset, length, dst.Length)
@@ -264,7 +264,7 @@ Namespace java.nio
 
 
 
-		Public Overrides Function put(ByVal x As SByte) As ByteBuffer
+		Public Overrides Function put(  x As SByte) As ByteBuffer
 
 			unsafe.putByte(ix(nextPutIndex()), ((x)))
 			Return Me
@@ -273,7 +273,7 @@ Namespace java.nio
 
 		End Function
 
-		Public Overrides Function put(ByVal i As Integer, ByVal x As SByte) As ByteBuffer
+		Public Overrides Function put(  i As Integer,   x As SByte) As ByteBuffer
 
 			unsafe.putByte(ix(checkIndex(i)), ((x)))
 			Return Me
@@ -282,7 +282,7 @@ Namespace java.nio
 
 		End Function
 
-		Public Overrides Function put(ByVal src As ByteBuffer) As ByteBuffer
+		Public Overrides Function put(  src As ByteBuffer) As ByteBuffer
 
 			If TypeOf src Is DirectByteBuffer Then
 				If src Is Me Then Throw New IllegalArgumentException
@@ -321,7 +321,7 @@ Namespace java.nio
 
 		End Function
 
-		Public Overrides Function put(ByVal src As SByte(), ByVal offset As Integer, ByVal length As Integer) As ByteBuffer
+		Public Overrides Function put(  src As SByte(),   offset As Integer,   length As Integer) As ByteBuffer
 
 			If (CLng(length) << 0) > Bits.JNI_COPY_FROM_ARRAY_THRESHOLD Then
 				checkBounds(offset, length, src.Length)
@@ -442,11 +442,11 @@ Namespace java.nio
 
 
 
-		Friend Overrides Function _get(ByVal i As Integer) As SByte ' package-private
+		Friend Overrides Function _get(  i As Integer) As SByte ' package-private
 			Return unsafe.getByte(address + i)
 		End Function
 
-		Friend Overrides Sub _put(ByVal i As Integer, ByVal b As SByte) ' package-private
+		Friend Overrides Sub _put(  i As Integer,   b As SByte) ' package-private
 
 			unsafe.putByte(address + i, b)
 
@@ -457,7 +457,7 @@ Namespace java.nio
 
 
 
-		Private Function getChar(ByVal a As Long) As Char
+		Private Function getChar(  a As Long) As Char
 			If unaligned Then
 				Dim x As Char = unsafe.getChar(a)
 				Return (If(nativeByteOrder, x, Bits.swap(x)))
@@ -471,13 +471,13 @@ Namespace java.nio
 			End Get
 		End Property
 
-		Public Overrides Function getChar(ByVal i As Integer) As Char
+		Public Overrides Function getChar(  i As Integer) As Char
 			Return getChar(ix(checkIndex(i, (1 << 1))))
 		End Function
 
 
 
-		Private Function putChar(ByVal a As Long, ByVal x As Char) As ByteBuffer
+		Private Function putChar(  a As Long,   x As Char) As ByteBuffer
 
 			If unaligned Then
 				Dim y As Char = (x)
@@ -491,7 +491,7 @@ Namespace java.nio
 
 		End Function
 
-		Public Overrides Function putChar(ByVal x As Char) As ByteBuffer
+		Public Overrides Function putChar(  x As Char) As ByteBuffer
 
 			putChar(ix(nextPutIndex((1 << 1))), x)
 			Return Me
@@ -500,7 +500,7 @@ Namespace java.nio
 
 		End Function
 
-		Public Overrides Function putChar(ByVal i As Integer, ByVal x As Char) As ByteBuffer
+		Public Overrides Function putChar(  i As Integer,   x As Char) As ByteBuffer
 
 			putChar(ix(checkIndex(i, (1 << 1))), x)
 			Return Me
@@ -526,7 +526,7 @@ Namespace java.nio
 
 
 
-		Private Function getShort(ByVal a As Long) As Short
+		Private Function getShort(  a As Long) As Short
 			If unaligned Then
 				Dim x As Short = unsafe.getShort(a)
 				Return (If(nativeByteOrder, x, Bits.swap(x)))
@@ -540,13 +540,13 @@ Namespace java.nio
 			End Get
 		End Property
 
-		Public Overrides Function getShort(ByVal i As Integer) As Short
+		Public Overrides Function getShort(  i As Integer) As Short
 			Return getShort(ix(checkIndex(i, (1 << 1))))
 		End Function
 
 
 
-		Private Function putShort(ByVal a As Long, ByVal x As Short) As ByteBuffer
+		Private Function putShort(  a As Long,   x As Short) As ByteBuffer
 
 			If unaligned Then
 				Dim y As Short = (x)
@@ -560,7 +560,7 @@ Namespace java.nio
 
 		End Function
 
-		Public Overrides Function putShort(ByVal x As Short) As ByteBuffer
+		Public Overrides Function putShort(  x As Short) As ByteBuffer
 
 			putShort(ix(nextPutIndex((1 << 1))), x)
 			Return Me
@@ -569,7 +569,7 @@ Namespace java.nio
 
 		End Function
 
-		Public Overrides Function putShort(ByVal i As Integer, ByVal x As Short) As ByteBuffer
+		Public Overrides Function putShort(  i As Integer,   x As Short) As ByteBuffer
 
 			putShort(ix(checkIndex(i, (1 << 1))), x)
 			Return Me
@@ -595,7 +595,7 @@ Namespace java.nio
 
 
 
-		Private Function getInt(ByVal a As Long) As Integer
+		Private Function getInt(  a As Long) As Integer
 			If unaligned Then
 				Dim x As Integer = unsafe.getInt(a)
 				Return (If(nativeByteOrder, x, Bits.swap(x)))
@@ -609,13 +609,13 @@ Namespace java.nio
 			End Get
 		End Property
 
-		Public Overrides Function getInt(ByVal i As Integer) As Integer
+		Public Overrides Function getInt(  i As Integer) As Integer
 			Return getInt(ix(checkIndex(i, (1 << 2))))
 		End Function
 
 
 
-		Private Function putInt(ByVal a As Long, ByVal x As Integer) As ByteBuffer
+		Private Function putInt(  a As Long,   x As Integer) As ByteBuffer
 
 			If unaligned Then
 				Dim y As Integer = (x)
@@ -629,7 +629,7 @@ Namespace java.nio
 
 		End Function
 
-		Public Overrides Function putInt(ByVal x As Integer) As ByteBuffer
+		Public Overrides Function putInt(  x As Integer) As ByteBuffer
 
 			putInt(ix(nextPutIndex((1 << 2))), x)
 			Return Me
@@ -638,7 +638,7 @@ Namespace java.nio
 
 		End Function
 
-		Public Overrides Function putInt(ByVal i As Integer, ByVal x As Integer) As ByteBuffer
+		Public Overrides Function putInt(  i As Integer,   x As Integer) As ByteBuffer
 
 			putInt(ix(checkIndex(i, (1 << 2))), x)
 			Return Me
@@ -664,7 +664,7 @@ Namespace java.nio
 
 
 
-		Private Function getLong(ByVal a As Long) As Long
+		Private Function getLong(  a As Long) As Long
 			If unaligned Then
 				Dim x As Long = unsafe.getLong(a)
 				Return (If(nativeByteOrder, x, Bits.swap(x)))
@@ -678,13 +678,13 @@ Namespace java.nio
 			End Get
 		End Property
 
-		Public Overrides Function getLong(ByVal i As Integer) As Long
+		Public Overrides Function getLong(  i As Integer) As Long
 			Return getLong(ix(checkIndex(i, (1 << 3))))
 		End Function
 
 
 
-		Private Function putLong(ByVal a As Long, ByVal x As Long) As ByteBuffer
+		Private Function putLong(  a As Long,   x As Long) As ByteBuffer
 
 			If unaligned Then
 				Dim y As Long = (x)
@@ -698,7 +698,7 @@ Namespace java.nio
 
 		End Function
 
-		Public Overrides Function putLong(ByVal x As Long) As ByteBuffer
+		Public Overrides Function putLong(  x As Long) As ByteBuffer
 
 			putLong(ix(nextPutIndex((1 << 3))), x)
 			Return Me
@@ -707,7 +707,7 @@ Namespace java.nio
 
 		End Function
 
-		Public Overrides Function putLong(ByVal i As Integer, ByVal x As Long) As ByteBuffer
+		Public Overrides Function putLong(  i As Integer,   x As Long) As ByteBuffer
 
 			putLong(ix(checkIndex(i, (1 << 3))), x)
 			Return Me
@@ -733,7 +733,7 @@ Namespace java.nio
 
 
 
-		Private Function getFloat(ByVal a As Long) As Single
+		Private Function getFloat(  a As Long) As Single
 			If unaligned Then
 				Dim x As Integer = unsafe.getInt(a)
 				Return Float.intBitsToFloat(If(nativeByteOrder, x, Bits.swap(x)))
@@ -747,13 +747,13 @@ Namespace java.nio
 			End Get
 		End Property
 
-		Public Overrides Function getFloat(ByVal i As Integer) As Single
+		Public Overrides Function getFloat(  i As Integer) As Single
 			Return getFloat(ix(checkIndex(i, (1 << 2))))
 		End Function
 
 
 
-		Private Function putFloat(ByVal a As Long, ByVal x As Single) As ByteBuffer
+		Private Function putFloat(  a As Long,   x As Single) As ByteBuffer
 
 			If unaligned Then
 				Dim y As Integer = Float.floatToRawIntBits(x)
@@ -767,7 +767,7 @@ Namespace java.nio
 
 		End Function
 
-		Public Overrides Function putFloat(ByVal x As Single) As ByteBuffer
+		Public Overrides Function putFloat(  x As Single) As ByteBuffer
 
 			putFloat(ix(nextPutIndex((1 << 2))), x)
 			Return Me
@@ -776,7 +776,7 @@ Namespace java.nio
 
 		End Function
 
-		Public Overrides Function putFloat(ByVal i As Integer, ByVal x As Single) As ByteBuffer
+		Public Overrides Function putFloat(  i As Integer,   x As Single) As ByteBuffer
 
 			putFloat(ix(checkIndex(i, (1 << 2))), x)
 			Return Me
@@ -802,7 +802,7 @@ Namespace java.nio
 
 
 
-		Private Function getDouble(ByVal a As Long) As Double
+		Private Function getDouble(  a As Long) As Double
 			If unaligned Then
 				Dim x As Long = unsafe.getLong(a)
 				Return java.lang.[Double].longBitsToDouble(If(nativeByteOrder, x, Bits.swap(x)))
@@ -816,13 +816,13 @@ Namespace java.nio
 			End Get
 		End Property
 
-		Public Overrides Function getDouble(ByVal i As Integer) As Double
+		Public Overrides Function getDouble(  i As Integer) As Double
 			Return getDouble(ix(checkIndex(i, (1 << 3))))
 		End Function
 
 
 
-		Private Function putDouble(ByVal a As Long, ByVal x As Double) As ByteBuffer
+		Private Function putDouble(  a As Long,   x As Double) As ByteBuffer
 
 			If unaligned Then
 				Dim y As Long = java.lang.[Double].doubleToRawLongBits(x)
@@ -836,7 +836,7 @@ Namespace java.nio
 
 		End Function
 
-		Public Overrides Function putDouble(ByVal x As Double) As ByteBuffer
+		Public Overrides Function putDouble(  x As Double) As ByteBuffer
 
 			putDouble(ix(nextPutIndex((1 << 3))), x)
 			Return Me
@@ -845,7 +845,7 @@ Namespace java.nio
 
 		End Function
 
-		Public Overrides Function putDouble(ByVal i As Integer, ByVal x As Double) As ByteBuffer
+		Public Overrides Function putDouble(  i As Integer,   x As Double) As ByteBuffer
 
 			putDouble(ix(checkIndex(i, (1 << 3))), x)
 			Return Me

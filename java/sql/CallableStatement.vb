@@ -97,7 +97,7 @@ Namespace java.sql
 		''' or  <code>STRUCT</code> data type and the JDBC driver does not support
 		''' this data type </exception>
 		''' <seealso cref= Types </seealso>
-		Sub registerOutParameter(ByVal parameterIndex As Integer, ByVal sqlType As Integer)
+		Sub registerOutParameter(  parameterIndex As Integer,   sqlType As Integer)
 
 		''' <summary>
 		''' Registers the parameter in ordinal position
@@ -129,7 +129,7 @@ Namespace java.sql
 		''' or  <code>STRUCT</code> data type and the JDBC driver does not support
 		''' this data type </exception>
 		''' <seealso cref= Types </seealso>
-		Sub registerOutParameter(ByVal parameterIndex As Integer, ByVal sqlType As Integer, ByVal scale As Integer)
+		Sub registerOutParameter(  parameterIndex As Integer,   sqlType As Integer,   scale As Integer)
 
 		''' <summary>
 		''' Retrieves whether the last OUT parameter read had the value of
@@ -163,7 +163,7 @@ Namespace java.sql
 		''' if a database access error occurs or
 		''' this method is called on a closed <code>CallableStatement</code> </exception>
 		''' <seealso cref= #setString </seealso>
-		Function getString(ByVal parameterIndex As Integer) As String
+		Function getString(  parameterIndex As Integer) As String
 
 		''' <summary>
 		''' Retrieves the value of the designated JDBC <code>BIT</code>
@@ -178,7 +178,7 @@ Namespace java.sql
 		''' if a database access error occurs or
 		''' this method is called on a closed <code>CallableStatement</code> </exception>
 		''' <seealso cref= #setBoolean </seealso>
-		Function getBoolean(ByVal parameterIndex As Integer) As Boolean
+		Function getBoolean(  parameterIndex As Integer) As Boolean
 
 		''' <summary>
 		''' Retrieves the value of the designated JDBC <code>TINYINT</code> parameter
@@ -192,7 +192,7 @@ Namespace java.sql
 		''' if a database access error occurs or
 		''' this method is called on a closed <code>CallableStatement</code> </exception>
 		''' <seealso cref= #setByte </seealso>
-		Function getByte(ByVal parameterIndex As Integer) As SByte
+		Function getByte(  parameterIndex As Integer) As SByte
 
 		''' <summary>
 		''' Retrieves the value of the designated JDBC <code>SMALLINT</code> parameter
@@ -206,7 +206,7 @@ Namespace java.sql
 		''' if a database access error occurs or
 		''' this method is called on a closed <code>CallableStatement</code> </exception>
 		''' <seealso cref= #setShort </seealso>
-		Function getShort(ByVal parameterIndex As Integer) As Short
+		Function getShort(  parameterIndex As Integer) As Short
 
 		''' <summary>
 		''' Retrieves the value of the designated JDBC <code>INTEGER</code> parameter
@@ -220,7 +220,7 @@ Namespace java.sql
 		''' if a database access error occurs or
 		''' this method is called on a closed <code>CallableStatement</code> </exception>
 		''' <seealso cref= #setInt </seealso>
-		Function getInt(ByVal parameterIndex As Integer) As Integer
+		Function getInt(  parameterIndex As Integer) As Integer
 
 		''' <summary>
 		''' Retrieves the value of the designated JDBC <code>BIGINT</code> parameter
@@ -234,7 +234,7 @@ Namespace java.sql
 		''' if a database access error occurs or
 		''' this method is called on a closed <code>CallableStatement</code> </exception>
 		''' <seealso cref= #setLong </seealso>
-		Function getLong(ByVal parameterIndex As Integer) As Long
+		Function getLong(  parameterIndex As Integer) As Long
 
 		''' <summary>
 		''' Retrieves the value of the designated JDBC <code>FLOAT</code> parameter
@@ -248,7 +248,7 @@ Namespace java.sql
 		''' if a database access error occurs or
 		''' this method is called on a closed <code>CallableStatement</code> </exception>
 		''' <seealso cref= #setFloat </seealso>
-		Function getFloat(ByVal parameterIndex As Integer) As Single
+		Function getFloat(  parameterIndex As Integer) As Single
 
 		''' <summary>
 		''' Retrieves the value of the designated JDBC <code>DOUBLE</code> parameter as a <code>double</code>
@@ -261,7 +261,7 @@ Namespace java.sql
 		''' if a database access error occurs or
 		''' this method is called on a closed <code>CallableStatement</code> </exception>
 		''' <seealso cref= #setDouble </seealso>
-		Function getDouble(ByVal parameterIndex As Integer) As Double
+		Function getDouble(  parameterIndex As Integer) As Double
 
 		''' <summary>
 		''' Retrieves the value of the designated JDBC <code>NUMERIC</code> parameter as a
@@ -281,7 +281,7 @@ Namespace java.sql
 		'''             or <code>getBigDecimal(String parameterName)</code> 
 		''' <seealso cref= #setBigDecimal </seealso>
 		<Obsolete("use <code>getBigDecimal(int parameterIndex)</code>")> _
-		Function getBigDecimal(ByVal parameterIndex As Integer, ByVal scale As Integer) As Decimal
+		Function getBigDecimal(  parameterIndex As Integer,   scale As Integer) As Decimal
 
 		''' <summary>
 		''' Retrieves the value of the designated JDBC <code>BINARY</code> or
@@ -295,7 +295,7 @@ Namespace java.sql
 		''' if a database access error occurs or
 		''' this method is called on a closed <code>CallableStatement</code> </exception>
 		''' <seealso cref= #setBytes </seealso>
-		Function getBytes(ByVal parameterIndex As Integer) As SByte()
+		Function getBytes(  parameterIndex As Integer) As SByte()
 
 		''' <summary>
 		''' Retrieves the value of the designated JDBC <code>DATE</code> parameter as a
@@ -308,7 +308,7 @@ Namespace java.sql
 		''' if a database access error occurs or
 		''' this method is called on a closed <code>CallableStatement</code> </exception>
 		''' <seealso cref= #setDate </seealso>
-		Function getDate(ByVal parameterIndex As Integer) As java.sql.Date
+		Function getDate(  parameterIndex As Integer) As java.sql.Date
 
 		''' <summary>
 		''' Retrieves the value of the designated JDBC <code>TIME</code> parameter as a
@@ -322,7 +322,7 @@ Namespace java.sql
 		''' if a database access error occurs or
 		''' this method is called on a closed <code>CallableStatement</code> </exception>
 		''' <seealso cref= #setTime </seealso>
-		Function getTime(ByVal parameterIndex As Integer) As java.sql.Time
+		Function getTime(  parameterIndex As Integer) As java.sql.Time
 
 		''' <summary>
 		''' Retrieves the value of the designated JDBC <code>TIMESTAMP</code> parameter as a
@@ -336,7 +336,7 @@ Namespace java.sql
 		''' if a database access error occurs or
 		''' this method is called on a closed <code>CallableStatement</code> </exception>
 		''' <seealso cref= #setTimestamp </seealso>
-		Function getTimestamp(ByVal parameterIndex As Integer) As java.sql.Timestamp
+		Function getTimestamp(  parameterIndex As Integer) As java.sql.Timestamp
 
 		'----------------------------------------------------------------------
 		' Advanced features:
@@ -361,7 +361,7 @@ Namespace java.sql
 		''' this method is called on a closed <code>CallableStatement</code> </exception>
 		''' <seealso cref= Types </seealso>
 		''' <seealso cref= #setObject </seealso>
-		Function getObject(ByVal parameterIndex As Integer) As Object
+		Function getObject(  parameterIndex As Integer) As Object
 
 
 		'--------------------------JDBC 2.0-----------------------------
@@ -379,7 +379,7 @@ Namespace java.sql
 		''' this method is called on a closed <code>CallableStatement</code> </exception>
 		''' <seealso cref= #setBigDecimal
 		''' @since 1.2 </seealso>
-		Function getBigDecimal(ByVal parameterIndex As Integer) As Decimal
+		Function getBigDecimal(  parameterIndex As Integer) As Decimal
 
 		''' <summary>
 		''' Returns an object representing the value of OUT parameter
@@ -401,7 +401,7 @@ Namespace java.sql
 		''' this method </exception>
 		''' <seealso cref= #setObject
 		''' @since 1.2 </seealso>
-		Function getObject(ByVal parameterIndex As Integer, ByVal map As IDictionary(Of String, [Class])) As Object
+		Function getObject(  parameterIndex As Integer,   map As IDictionary(Of String, [Class])) As Object
 
 		''' <summary>
 		''' Retrieves the value of the designated JDBC <code>REF(&lt;structured-type&gt;)</code>
@@ -417,7 +417,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.2 </exception>
-		Function getRef(ByVal parameterIndex As Integer) As Ref
+		Function getRef(  parameterIndex As Integer) As Ref
 
 		''' <summary>
 		''' Retrieves the value of the designated JDBC <code>BLOB</code> parameter as a
@@ -432,7 +432,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.2 </exception>
-		Function getBlob(ByVal parameterIndex As Integer) As Blob
+		Function getBlob(  parameterIndex As Integer) As Blob
 
 		''' <summary>
 		''' Retrieves the value of the designated JDBC <code>CLOB</code> parameter as a
@@ -448,7 +448,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.2 </exception>
-		Function getClob(ByVal parameterIndex As Integer) As Clob
+		Function getClob(  parameterIndex As Integer) As Clob
 
 		''' 
 		''' <summary>
@@ -465,7 +465,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.2 </exception>
-		Function getArray(ByVal parameterIndex As Integer) As Array
+		Function getArray(  parameterIndex As Integer) As Array
 
 		''' <summary>
 		''' Retrieves the value of the designated JDBC <code>DATE</code> parameter as a
@@ -488,7 +488,7 @@ Namespace java.sql
 		''' this method is called on a closed <code>CallableStatement</code> </exception>
 		''' <seealso cref= #setDate
 		''' @since 1.2 </seealso>
-		Function getDate(ByVal parameterIndex As Integer, ByVal cal As DateTime?) As java.sql.Date
+		Function getDate(  parameterIndex As Integer,   cal As DateTime?) As java.sql.Date
 
 		''' <summary>
 		''' Retrieves the value of the designated JDBC <code>TIME</code> parameter as a
@@ -511,7 +511,7 @@ Namespace java.sql
 		''' this method is called on a closed <code>CallableStatement</code> </exception>
 		''' <seealso cref= #setTime
 		''' @since 1.2 </seealso>
-		Function getTime(ByVal parameterIndex As Integer, ByVal cal As DateTime?) As java.sql.Time
+		Function getTime(  parameterIndex As Integer,   cal As DateTime?) As java.sql.Time
 
 		''' <summary>
 		''' Retrieves the value of the designated JDBC <code>TIMESTAMP</code> parameter as a
@@ -535,7 +535,7 @@ Namespace java.sql
 		''' this method is called on a closed <code>CallableStatement</code> </exception>
 		''' <seealso cref= #setTimestamp
 		''' @since 1.2 </seealso>
-		Function getTimestamp(ByVal parameterIndex As Integer, ByVal cal As DateTime?) As java.sql.Timestamp
+		Function getTimestamp(  parameterIndex As Integer,   cal As DateTime?) As java.sql.Timestamp
 
 
 		''' <summary>
@@ -580,7 +580,7 @@ Namespace java.sql
 		''' this data type </exception>
 		''' <seealso cref= Types
 		''' @since 1.2 </seealso>
-		Sub registerOutParameter(ByVal parameterIndex As Integer, ByVal sqlType As Integer, ByVal typeName As String)
+		Sub registerOutParameter(  parameterIndex As Integer,   sqlType As Integer,   typeName As String)
 
 	  '--------------------------JDBC 3.0-----------------------------
 
@@ -617,7 +617,7 @@ Namespace java.sql
 		''' this method
 		''' @since 1.4 </exception>
 		''' <seealso cref= Types </seealso>
-		Sub registerOutParameter(ByVal parameterName As String, ByVal sqlType As Integer)
+		Sub registerOutParameter(  parameterName As String,   sqlType As Integer)
 
 		''' <summary>
 		''' Registers the parameter named
@@ -650,7 +650,7 @@ Namespace java.sql
 		''' this method
 		''' @since 1.4 </exception>
 		''' <seealso cref= Types </seealso>
-		Sub registerOutParameter(ByVal parameterName As String, ByVal sqlType As Integer, ByVal scale As Integer)
+		Sub registerOutParameter(  parameterName As String,   sqlType As Integer,   scale As Integer)
 
 		''' <summary>
 		''' Registers the designated output parameter.  This version of
@@ -695,7 +695,7 @@ Namespace java.sql
 		''' this method </exception>
 		''' <seealso cref= Types
 		''' @since 1.4 </seealso>
-		Sub registerOutParameter(ByVal parameterName As String, ByVal sqlType As Integer, ByVal typeName As String)
+		Sub registerOutParameter(  parameterName As String,   sqlType As Integer,   typeName As String)
 
 		''' <summary>
 		''' Retrieves the value of the designated JDBC <code>DATALINK</code> parameter as a
@@ -714,7 +714,7 @@ Namespace java.sql
 		''' this method </exception>
 		''' <seealso cref= #setURL
 		''' @since 1.4 </seealso>
-		Function getURL(ByVal parameterIndex As Integer) As java.net.URL
+		Function getURL(  parameterIndex As Integer) As java.net.URL
 
 		''' <summary>
 		''' Sets the designated parameter to the given <code>java.net.URL</code> object.
@@ -731,7 +731,7 @@ Namespace java.sql
 		''' this method </exception>
 		''' <seealso cref= #getURL
 		''' @since 1.4 </seealso>
-		Sub setURL(ByVal parameterName As String, ByVal val As java.net.URL)
+		Sub setURL(  parameterName As String,   val As java.net.URL)
 
 		''' <summary>
 		''' Sets the designated parameter to SQL <code>NULL</code>.
@@ -746,7 +746,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.4 </exception>
-		Sub setNull(ByVal parameterName As String, ByVal sqlType As Integer)
+		Sub setNull(  parameterName As String,   sqlType As Integer)
 
 		''' <summary>
 		''' Sets the designated parameter to the given Java <code>boolean</code> value.
@@ -762,7 +762,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.4 </exception>
-		Sub setBoolean(ByVal parameterName As String, ByVal x As Boolean)
+		Sub setBoolean(  parameterName As String,   x As Boolean)
 
 		''' <summary>
 		''' Sets the designated parameter to the given Java <code>byte</code> value.
@@ -778,7 +778,7 @@ Namespace java.sql
 		''' this method </exception>
 		''' <seealso cref= #getByte
 		''' @since 1.4 </seealso>
-		Sub setByte(ByVal parameterName As String, ByVal x As SByte)
+		Sub setByte(  parameterName As String,   x As SByte)
 
 		''' <summary>
 		''' Sets the designated parameter to the given Java <code>short</code> value.
@@ -794,7 +794,7 @@ Namespace java.sql
 		''' this method </exception>
 		''' <seealso cref= #getShort
 		''' @since 1.4 </seealso>
-		Sub setShort(ByVal parameterName As String, ByVal x As Short)
+		Sub setShort(  parameterName As String,   x As Short)
 
 		''' <summary>
 		''' Sets the designated parameter to the given Java <code>int</code> value.
@@ -810,7 +810,7 @@ Namespace java.sql
 		''' this method </exception>
 		''' <seealso cref= #getInt
 		''' @since 1.4 </seealso>
-		Sub setInt(ByVal parameterName As String, ByVal x As Integer)
+		Sub setInt(  parameterName As String,   x As Integer)
 
 		''' <summary>
 		''' Sets the designated parameter to the given Java <code>long</code> value.
@@ -826,7 +826,7 @@ Namespace java.sql
 		''' this method </exception>
 		''' <seealso cref= #getLong
 		''' @since 1.4 </seealso>
-		Sub setLong(ByVal parameterName As String, ByVal x As Long)
+		Sub setLong(  parameterName As String,   x As Long)
 
 		''' <summary>
 		''' Sets the designated parameter to the given Java <code>float</code> value.
@@ -842,7 +842,7 @@ Namespace java.sql
 		''' this method </exception>
 		''' <seealso cref= #getFloat
 		''' @since 1.4 </seealso>
-		Sub setFloat(ByVal parameterName As String, ByVal x As Single)
+		Sub setFloat(  parameterName As String,   x As Single)
 
 		''' <summary>
 		''' Sets the designated parameter to the given Java <code>double</code> value.
@@ -858,7 +858,7 @@ Namespace java.sql
 		''' this method </exception>
 		''' <seealso cref= #getDouble
 		''' @since 1.4 </seealso>
-		Sub setDouble(ByVal parameterName As String, ByVal x As Double)
+		Sub setDouble(  parameterName As String,   x As Double)
 
 		''' <summary>
 		''' Sets the designated parameter to the given
@@ -875,7 +875,7 @@ Namespace java.sql
 		''' this method </exception>
 		''' <seealso cref= #getBigDecimal
 		''' @since 1.4 </seealso>
-		Sub setBigDecimal(ByVal parameterName As String, ByVal x As Decimal)
+		Sub setBigDecimal(  parameterName As String,   x As Decimal)
 
 		''' <summary>
 		''' Sets the designated parameter to the given Java <code>String</code> value.
@@ -894,7 +894,7 @@ Namespace java.sql
 		''' this method </exception>
 		''' <seealso cref= #getString
 		''' @since 1.4 </seealso>
-		Sub setString(ByVal parameterName As String, ByVal x As String)
+		Sub setString(  parameterName As String,   x As String)
 
 		''' <summary>
 		''' Sets the designated parameter to the given Java array of bytes.
@@ -912,7 +912,7 @@ Namespace java.sql
 		''' this method </exception>
 		''' <seealso cref= #getBytes
 		''' @since 1.4 </seealso>
-		Sub setBytes(ByVal parameterName As String, ByVal x As SByte())
+		Sub setBytes(  parameterName As String,   x As SByte())
 
 		''' <summary>
 		''' Sets the designated parameter to the given <code>java.sql.Date</code> value
@@ -930,7 +930,7 @@ Namespace java.sql
 		''' this method </exception>
 		''' <seealso cref= #getDate
 		''' @since 1.4 </seealso>
-		Sub setDate(ByVal parameterName As String, ByVal x As java.sql.Date)
+		Sub setDate(  parameterName As String,   x As java.sql.Date)
 
 		''' <summary>
 		''' Sets the designated parameter to the given <code>java.sql.Time</code> value.
@@ -946,7 +946,7 @@ Namespace java.sql
 		''' this method </exception>
 		''' <seealso cref= #getTime
 		''' @since 1.4 </seealso>
-		Sub setTime(ByVal parameterName As String, ByVal x As java.sql.Time)
+		Sub setTime(  parameterName As String,   x As java.sql.Time)
 
 		''' <summary>
 		''' Sets the designated parameter to the given <code>java.sql.Timestamp</code> value.
@@ -963,7 +963,7 @@ Namespace java.sql
 		''' this method </exception>
 		''' <seealso cref= #getTimestamp
 		''' @since 1.4 </seealso>
-		Sub setTimestamp(ByVal parameterName As String, ByVal x As java.sql.Timestamp)
+		Sub setTimestamp(  parameterName As String,   x As java.sql.Timestamp)
 
 		''' <summary>
 		''' Sets the designated parameter to the given input stream, which will have
@@ -987,7 +987,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.4 </exception>
-		Sub setAsciiStream(ByVal parameterName As String, ByVal x As java.io.InputStream, ByVal length As Integer)
+		Sub setAsciiStream(  parameterName As String,   x As java.io.InputStream,   length As Integer)
 
 		''' <summary>
 		''' Sets the designated parameter to the given input stream, which will have
@@ -1010,7 +1010,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.4 </exception>
-		Sub setBinaryStream(ByVal parameterName As String, ByVal x As java.io.InputStream, ByVal length As Integer)
+		Sub setBinaryStream(  parameterName As String,   x As java.io.InputStream,   length As Integer)
 
 		''' <summary>
 		''' Sets the value of the designated parameter with the given object.
@@ -1046,7 +1046,7 @@ Namespace java.sql
 		''' <seealso cref= Types </seealso>
 		''' <seealso cref= #getObject
 		''' @since 1.4 </seealso>
-		Sub setObject(ByVal parameterName As String, ByVal x As Object, ByVal targetSqlType As Integer, ByVal scale As Integer)
+		Sub setObject(  parameterName As String,   x As Object,   targetSqlType As Integer,   scale As Integer)
 
 		''' <summary>
 		''' Sets the value of the designated parameter with the given object.
@@ -1066,7 +1066,7 @@ Namespace java.sql
 		''' the JDBC driver does not support the specified targetSqlType </exception>
 		''' <seealso cref= #getObject
 		''' @since 1.4 </seealso>
-		Sub setObject(ByVal parameterName As String, ByVal x As Object, ByVal targetSqlType As Integer)
+		Sub setObject(  parameterName As String,   x As Object,   targetSqlType As Integer)
 
 		''' <summary>
 		''' Sets the value of the designated parameter with the given object.
@@ -1107,7 +1107,7 @@ Namespace java.sql
 		''' this method </exception>
 		''' <seealso cref= #getObject
 		''' @since 1.4 </seealso>
-		Sub setObject(ByVal parameterName As String, ByVal x As Object)
+		Sub setObject(  parameterName As String,   x As Object)
 
 
 		''' <summary>
@@ -1133,7 +1133,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.4 </exception>
-		Sub setCharacterStream(ByVal parameterName As String, ByVal reader As java.io.Reader, ByVal length As Integer)
+		Sub setCharacterStream(  parameterName As String,   reader As java.io.Reader,   length As Integer)
 
 		''' <summary>
 		''' Sets the designated parameter to the given <code>java.sql.Date</code> value,
@@ -1156,7 +1156,7 @@ Namespace java.sql
 		''' this method </exception>
 		''' <seealso cref= #getDate
 		''' @since 1.4 </seealso>
-		Sub setDate(ByVal parameterName As String, ByVal x As java.sql.Date, ByVal cal As DateTime?)
+		Sub setDate(  parameterName As String,   x As java.sql.Date,   cal As DateTime?)
 
 		''' <summary>
 		''' Sets the designated parameter to the given <code>java.sql.Time</code> value,
@@ -1179,7 +1179,7 @@ Namespace java.sql
 		''' this method </exception>
 		''' <seealso cref= #getTime
 		''' @since 1.4 </seealso>
-		Sub setTime(ByVal parameterName As String, ByVal x As java.sql.Time, ByVal cal As DateTime?)
+		Sub setTime(  parameterName As String,   x As java.sql.Time,   cal As DateTime?)
 
 		''' <summary>
 		''' Sets the designated parameter to the given <code>java.sql.Timestamp</code> value,
@@ -1202,7 +1202,7 @@ Namespace java.sql
 		''' this method </exception>
 		''' <seealso cref= #getTimestamp
 		''' @since 1.4 </seealso>
-		Sub setTimestamp(ByVal parameterName As String, ByVal x As java.sql.Timestamp, ByVal cal As DateTime?)
+		Sub setTimestamp(  parameterName As String,   x As java.sql.Timestamp,   cal As DateTime?)
 
 		''' <summary>
 		''' Sets the designated parameter to SQL <code>NULL</code>.
@@ -1234,7 +1234,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.4 </exception>
-		Sub setNull(ByVal parameterName As String, ByVal sqlType As Integer, ByVal typeName As String)
+		Sub setNull(  parameterName As String,   sqlType As Integer,   typeName As String)
 
 		''' <summary>
 		''' Retrieves the value of a JDBC <code>CHAR</code>, <code>VARCHAR</code>,
@@ -1256,7 +1256,7 @@ Namespace java.sql
 		''' this method </exception>
 		''' <seealso cref= #setString
 		''' @since 1.4 </seealso>
-		Function getString(ByVal parameterName As String) As String
+		Function getString(  parameterName As String) As String
 
 		''' <summary>
 		''' Retrieves the value of a JDBC <code>BIT</code> or <code>BOOLEAN</code>
@@ -1272,7 +1272,7 @@ Namespace java.sql
 		''' this method </exception>
 		''' <seealso cref= #setBoolean
 		''' @since 1.4 </seealso>
-		Function getBoolean(ByVal parameterName As String) As Boolean
+		Function getBoolean(  parameterName As String) As Boolean
 
 		''' <summary>
 		''' Retrieves the value of a JDBC <code>TINYINT</code> parameter as a <code>byte</code>
@@ -1287,7 +1287,7 @@ Namespace java.sql
 		''' this method </exception>
 		''' <seealso cref= #setByte
 		''' @since 1.4 </seealso>
-		Function getByte(ByVal parameterName As String) As SByte
+		Function getByte(  parameterName As String) As SByte
 
 		''' <summary>
 		''' Retrieves the value of a JDBC <code>SMALLINT</code> parameter as a <code>short</code>
@@ -1302,7 +1302,7 @@ Namespace java.sql
 		''' this method </exception>
 		''' <seealso cref= #setShort
 		''' @since 1.4 </seealso>
-		Function getShort(ByVal parameterName As String) As Short
+		Function getShort(  parameterName As String) As Short
 
 		''' <summary>
 		''' Retrieves the value of a JDBC <code>INTEGER</code> parameter as an <code>int</code>
@@ -1318,7 +1318,7 @@ Namespace java.sql
 		''' this method </exception>
 		''' <seealso cref= #setInt
 		''' @since 1.4 </seealso>
-		Function getInt(ByVal parameterName As String) As Integer
+		Function getInt(  parameterName As String) As Integer
 
 		''' <summary>
 		''' Retrieves the value of a JDBC <code>BIGINT</code> parameter as a <code>long</code>
@@ -1334,7 +1334,7 @@ Namespace java.sql
 		''' this method </exception>
 		''' <seealso cref= #setLong
 		''' @since 1.4 </seealso>
-		Function getLong(ByVal parameterName As String) As Long
+		Function getLong(  parameterName As String) As Long
 
 		''' <summary>
 		''' Retrieves the value of a JDBC <code>FLOAT</code> parameter as a <code>float</code>
@@ -1349,7 +1349,7 @@ Namespace java.sql
 		''' this method </exception>
 		''' <seealso cref= #setFloat
 		''' @since 1.4 </seealso>
-		Function getFloat(ByVal parameterName As String) As Single
+		Function getFloat(  parameterName As String) As Single
 
 		''' <summary>
 		''' Retrieves the value of a JDBC <code>DOUBLE</code> parameter as a <code>double</code>
@@ -1364,7 +1364,7 @@ Namespace java.sql
 		''' this method </exception>
 		''' <seealso cref= #setDouble
 		''' @since 1.4 </seealso>
-		Function getDouble(ByVal parameterName As String) As Double
+		Function getDouble(  parameterName As String) As Double
 
 		''' <summary>
 		''' Retrieves the value of a JDBC <code>BINARY</code> or <code>VARBINARY</code>
@@ -1380,7 +1380,7 @@ Namespace java.sql
 		''' this method </exception>
 		''' <seealso cref= #setBytes
 		''' @since 1.4 </seealso>
-		Function getBytes(ByVal parameterName As String) As SByte()
+		Function getBytes(  parameterName As String) As SByte()
 
 		''' <summary>
 		''' Retrieves the value of a JDBC <code>DATE</code> parameter as a
@@ -1395,7 +1395,7 @@ Namespace java.sql
 		''' this method </exception>
 		''' <seealso cref= #setDate
 		''' @since 1.4 </seealso>
-		Function getDate(ByVal parameterName As String) As java.sql.Date
+		Function getDate(  parameterName As String) As java.sql.Date
 
 		''' <summary>
 		''' Retrieves the value of a JDBC <code>TIME</code> parameter as a
@@ -1410,7 +1410,7 @@ Namespace java.sql
 		''' this method </exception>
 		''' <seealso cref= #setTime
 		''' @since 1.4 </seealso>
-		Function getTime(ByVal parameterName As String) As java.sql.Time
+		Function getTime(  parameterName As String) As java.sql.Time
 
 		''' <summary>
 		''' Retrieves the value of a JDBC <code>TIMESTAMP</code> parameter as a
@@ -1425,7 +1425,7 @@ Namespace java.sql
 		''' this method </exception>
 		''' <seealso cref= #setTimestamp
 		''' @since 1.4 </seealso>
-		Function getTimestamp(ByVal parameterName As String) As java.sql.Timestamp
+		Function getTimestamp(  parameterName As String) As java.sql.Timestamp
 
 		''' <summary>
 		''' Retrieves the value of a parameter as an <code>Object</code> in the Java
@@ -1447,7 +1447,7 @@ Namespace java.sql
 		''' <seealso cref= Types </seealso>
 		''' <seealso cref= #setObject
 		''' @since 1.4 </seealso>
-		Function getObject(ByVal parameterName As String) As Object
+		Function getObject(  parameterName As String) As Object
 
 		''' <summary>
 		''' Retrieves the value of a JDBC <code>NUMERIC</code> parameter as a
@@ -1463,7 +1463,7 @@ Namespace java.sql
 		''' this method </exception>
 		''' <seealso cref= #setBigDecimal
 		''' @since 1.4 </seealso>
-		Function getBigDecimal(ByVal parameterName As String) As Decimal
+		Function getBigDecimal(  parameterName As String) As Decimal
 
 		''' <summary>
 		''' Returns an object representing the value of OUT parameter
@@ -1485,7 +1485,7 @@ Namespace java.sql
 		''' this method </exception>
 		''' <seealso cref= #setObject
 		''' @since 1.4 </seealso>
-		Function getObject(ByVal parameterName As String, ByVal map As IDictionary(Of String, [Class])) As Object
+		Function getObject(  parameterName As String,   map As IDictionary(Of String, [Class])) As Object
 
 		''' <summary>
 		''' Retrieves the value of a JDBC <code>REF(&lt;structured-type&gt;)</code>
@@ -1501,7 +1501,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.4 </exception>
-		Function getRef(ByVal parameterName As String) As Ref
+		Function getRef(  parameterName As String) As Ref
 
 		''' <summary>
 		''' Retrieves the value of a JDBC <code>BLOB</code> parameter as a
@@ -1517,7 +1517,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.4 </exception>
-		Function getBlob(ByVal parameterName As String) As Blob
+		Function getBlob(  parameterName As String) As Blob
 
 		''' <summary>
 		''' Retrieves the value of a JDBC <code>CLOB</code> parameter as a
@@ -1532,7 +1532,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.4 </exception>
-		Function getClob(ByVal parameterName As String) As Clob
+		Function getClob(  parameterName As String) As Clob
 
 		''' <summary>
 		''' Retrieves the value of a JDBC <code>ARRAY</code> parameter as an
@@ -1548,7 +1548,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.4 </exception>
-		Function getArray(ByVal parameterName As String) As Array
+		Function getArray(  parameterName As String) As Array
 
 		''' <summary>
 		''' Retrieves the value of a JDBC <code>DATE</code> parameter as a
@@ -1572,7 +1572,7 @@ Namespace java.sql
 		''' this method </exception>
 		''' <seealso cref= #setDate
 		''' @since 1.4 </seealso>
-		Function getDate(ByVal parameterName As String, ByVal cal As DateTime?) As java.sql.Date
+		Function getDate(  parameterName As String,   cal As DateTime?) As java.sql.Date
 
 		''' <summary>
 		''' Retrieves the value of a JDBC <code>TIME</code> parameter as a
@@ -1596,7 +1596,7 @@ Namespace java.sql
 		''' this method </exception>
 		''' <seealso cref= #setTime
 		''' @since 1.4 </seealso>
-		Function getTime(ByVal parameterName As String, ByVal cal As DateTime?) As java.sql.Time
+		Function getTime(  parameterName As String,   cal As DateTime?) As java.sql.Time
 
 		''' <summary>
 		''' Retrieves the value of a JDBC <code>TIMESTAMP</code> parameter as a
@@ -1621,7 +1621,7 @@ Namespace java.sql
 		''' this method </exception>
 		''' <seealso cref= #setTimestamp
 		''' @since 1.4 </seealso>
-		Function getTimestamp(ByVal parameterName As String, ByVal cal As DateTime?) As java.sql.Timestamp
+		Function getTimestamp(  parameterName As String,   cal As DateTime?) As java.sql.Timestamp
 
 		''' <summary>
 		''' Retrieves the value of a JDBC <code>DATALINK</code> parameter as a
@@ -1639,7 +1639,7 @@ Namespace java.sql
 		''' this method </exception>
 		''' <seealso cref= #setURL
 		''' @since 1.4 </seealso>
-		Function getURL(ByVal parameterName As String) As java.net.URL
+		Function getURL(  parameterName As String) As java.net.URL
 
 		'------------------------- JDBC 4.0 -----------------------------------
 
@@ -1657,7 +1657,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.6 </exception>
-		Function getRowId(ByVal parameterIndex As Integer) As RowId
+		Function getRowId(  parameterIndex As Integer) As RowId
 
 		''' <summary>
 		''' Retrieves the value of the designated JDBC <code>ROWID</code> parameter as a
@@ -1673,7 +1673,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.6 </exception>
-		Function getRowId(ByVal parameterName As String) As RowId
+		Function getRowId(  parameterName As String) As RowId
 
 		 ''' <summary>
 		 ''' Sets the designated parameter to the given <code>java.sql.RowId</code> object. The
@@ -1688,7 +1688,7 @@ Namespace java.sql
 		 ''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		 ''' this method
 		 ''' @since 1.6 </exception>
-		Sub setRowId(ByVal parameterName As String, ByVal x As RowId)
+		Sub setRowId(  parameterName As String,   x As RowId)
 
 		''' <summary>
 		''' Sets the designated parameter to the given <code>String</code> object.
@@ -1704,7 +1704,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.6 </exception>
-		Sub setNString(ByVal parameterName As String, ByVal value As String)
+		Sub setNString(  parameterName As String,   value As String)
 
 		''' <summary>
 		''' Sets the designated parameter to a <code>Reader</code> object. The
@@ -1722,7 +1722,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.6 </exception>
-		Sub setNCharacterStream(ByVal parameterName As String, ByVal value As java.io.Reader, ByVal length As Long)
+		Sub setNCharacterStream(  parameterName As String,   value As java.io.Reader,   length As Long)
 
 		 ''' <summary>
 		 ''' Sets the designated parameter to a <code>java.sql.NClob</code> object. The object
@@ -1738,7 +1738,7 @@ Namespace java.sql
 		 ''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		 ''' this method
 		 ''' @since 1.6 </exception>
-		 Sub setNClob(ByVal parameterName As String, ByVal value As NClob)
+		 Sub setNClob(  parameterName As String,   value As NClob)
 
 		''' <summary>
 		''' Sets the designated parameter to a <code>Reader</code> object.  The <code>reader</code> must contain  the number
@@ -1760,7 +1760,7 @@ Namespace java.sql
 		''' this method
 		''' 
 		''' @since 1.6 </exception>
-		 Sub setClob(ByVal parameterName As String, ByVal reader As java.io.Reader, ByVal length As Long)
+		 Sub setClob(  parameterName As String,   reader As java.io.Reader,   length As Long)
 
 		''' <summary>
 		''' Sets the designated parameter to a <code>InputStream</code> object.  The <code>inputstream</code> must contain  the number
@@ -1787,7 +1787,7 @@ Namespace java.sql
 		''' this method
 		''' 
 		''' @since 1.6 </exception>
-		 Sub setBlob(ByVal parameterName As String, ByVal inputStream As java.io.InputStream, ByVal length As Long)
+		 Sub setBlob(  parameterName As String,   inputStream As java.io.InputStream,   length As Long)
 		''' <summary>
 		''' Sets the designated parameter to a <code>Reader</code> object.  The <code>reader</code> must contain  the number
 		''' of characters specified by length otherwise a <code>SQLException</code> will be
@@ -1810,7 +1810,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.6 </exception>
-		 Sub setNClob(ByVal parameterName As String, ByVal reader As java.io.Reader, ByVal length As Long)
+		 Sub setNClob(  parameterName As String,   reader As java.io.Reader,   length As Long)
 
 		''' <summary>
 		''' Retrieves the value of the designated JDBC <code>NCLOB</code> parameter as a
@@ -1829,7 +1829,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.6 </exception>
-		Function getNClob(ByVal parameterIndex As Integer) As NClob
+		Function getNClob(  parameterIndex As Integer) As NClob
 
 
 		''' <summary>
@@ -1847,7 +1847,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.6 </exception>
-		Function getNClob(ByVal parameterName As String) As NClob
+		Function getNClob(  parameterName As String) As NClob
 
 		''' <summary>
 		''' Sets the designated parameter to the given <code>java.sql.SQLXML</code> object. The driver converts this to an
@@ -1864,7 +1864,7 @@ Namespace java.sql
 		''' this method
 		''' 
 		''' @since 1.6 </exception>
-		Sub setSQLXML(ByVal parameterName As String, ByVal xmlObject As SQLXML)
+		Sub setSQLXML(  parameterName As String,   xmlObject As SQLXML)
 
 		''' <summary>
 		''' Retrieves the value of the designated <code>SQL XML</code> parameter as a
@@ -1877,7 +1877,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.6 </exception>
-		Function getSQLXML(ByVal parameterIndex As Integer) As SQLXML
+		Function getSQLXML(  parameterIndex As Integer) As SQLXML
 
 		''' <summary>
 		''' Retrieves the value of the designated <code>SQL XML</code> parameter as a
@@ -1890,7 +1890,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.6 </exception>
-		Function getSQLXML(ByVal parameterName As String) As SQLXML
+		Function getSQLXML(  parameterName As String) As SQLXML
 
 		''' <summary>
 		''' Retrieves the value of the designated <code>NCHAR</code>,
@@ -1914,7 +1914,7 @@ Namespace java.sql
 		''' this method
 		''' @since 1.6 </exception>
 		''' <seealso cref= #setNString </seealso>
-		Function getNString(ByVal parameterIndex As Integer) As String
+		Function getNString(  parameterIndex As Integer) As String
 
 
 		''' <summary>
@@ -1940,7 +1940,7 @@ Namespace java.sql
 		''' this method
 		''' @since 1.6 </exception>
 		''' <seealso cref= #setNString </seealso>
-		Function getNString(ByVal parameterName As String) As String
+		Function getNString(  parameterName As String) As String
 
 		''' <summary>
 		''' Retrieves the value of the designated parameter as a
@@ -1959,7 +1959,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.6 </exception>
-		Function getNCharacterStream(ByVal parameterIndex As Integer) As java.io.Reader
+		Function getNCharacterStream(  parameterIndex As Integer) As java.io.Reader
 
 		''' <summary>
 		''' Retrieves the value of the designated parameter as a
@@ -1978,7 +1978,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.6 </exception>
-		Function getNCharacterStream(ByVal parameterName As String) As java.io.Reader
+		Function getNCharacterStream(  parameterName As String) As java.io.Reader
 
 		''' <summary>
 		''' Retrieves the value of the designated parameter as a
@@ -1991,7 +1991,7 @@ Namespace java.sql
 		''' <exception cref="SQLException"> if the parameterIndex is not valid; if a database access error occurs or
 		''' this method is called on a closed <code>CallableStatement</code>
 		''' @since 1.6 </exception>
-		Function getCharacterStream(ByVal parameterIndex As Integer) As java.io.Reader
+		Function getCharacterStream(  parameterIndex As Integer) As java.io.Reader
 
 		''' <summary>
 		''' Retrieves the value of the designated parameter as a
@@ -2007,7 +2007,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.6 </exception>
-		Function getCharacterStream(ByVal parameterName As String) As java.io.Reader
+		Function getCharacterStream(  parameterName As String) As java.io.Reader
 
 		''' <summary>
 		''' Sets the designated parameter to the given <code>java.sql.Blob</code> object.
@@ -2022,7 +2022,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.6 </exception>
-		Sub setBlob(ByVal parameterName As String, ByVal x As Blob)
+		Sub setBlob(  parameterName As String,   x As Blob)
 
 		''' <summary>
 		''' Sets the designated parameter to the given <code>java.sql.Clob</code> object.
@@ -2037,7 +2037,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.6 </exception>
-		Sub setClob(ByVal parameterName As String, ByVal x As Clob)
+		Sub setClob(  parameterName As String,   x As Clob)
 		''' <summary>
 		''' Sets the designated parameter to the given input stream, which will have
 		''' the specified number of bytes.
@@ -2060,7 +2060,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.6 </exception>
-		Sub setAsciiStream(ByVal parameterName As String, ByVal x As java.io.InputStream, ByVal length As Long)
+		Sub setAsciiStream(  parameterName As String,   x As java.io.InputStream,   length As Long)
 
 		''' <summary>
 		''' Sets the designated parameter to the given input stream, which will have
@@ -2083,7 +2083,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.6 </exception>
-		Sub setBinaryStream(ByVal parameterName As String, ByVal x As java.io.InputStream, ByVal length As Long)
+		Sub setBinaryStream(  parameterName As String,   x As java.io.InputStream,   length As Long)
 			''' <summary>
 			''' Sets the designated parameter to the given <code>Reader</code>
 			''' object, which is the given number of characters java.lang.[Long].
@@ -2107,7 +2107,7 @@ Namespace java.sql
 			''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 			''' this method
 			''' @since 1.6 </exception>
-		Sub setCharacterStream(ByVal parameterName As String, ByVal reader As java.io.Reader, ByVal length As Long)
+		Sub setCharacterStream(  parameterName As String,   reader As java.io.Reader,   length As Long)
 		 '--
 		''' <summary>
 		''' Sets the designated parameter to the given input stream.
@@ -2131,7 +2131,7 @@ Namespace java.sql
 		''' this method is called on a closed <code>CallableStatement</code> </exception>
 		''' <exception cref="SQLFeatureNotSupportedException">  if the JDBC driver does not support this method
 		''' @since 1.6 </exception>
-		Sub setAsciiStream(ByVal parameterName As String, ByVal x As java.io.InputStream)
+		Sub setAsciiStream(  parameterName As String,   x As java.io.InputStream)
 		''' <summary>
 		''' Sets the designated parameter to the given input stream.
 		''' When a very large binary value is input to a <code>LONGVARBINARY</code>
@@ -2153,7 +2153,7 @@ Namespace java.sql
 		''' this method is called on a closed <code>CallableStatement</code> </exception>
 		''' <exception cref="SQLFeatureNotSupportedException">  if the JDBC driver does not support this method
 		''' @since 1.6 </exception>
-		Sub setBinaryStream(ByVal parameterName As String, ByVal x As java.io.InputStream)
+		Sub setBinaryStream(  parameterName As String,   x As java.io.InputStream)
 		''' <summary>
 		''' Sets the designated parameter to the given <code>Reader</code>
 		''' object.
@@ -2178,7 +2178,7 @@ Namespace java.sql
 		''' this method is called on a closed <code>CallableStatement</code> </exception>
 		''' <exception cref="SQLFeatureNotSupportedException">  if the JDBC driver does not support this method
 		''' @since 1.6 </exception>
-		Sub setCharacterStream(ByVal parameterName As String, ByVal reader As java.io.Reader)
+		Sub setCharacterStream(  parameterName As String,   reader As java.io.Reader)
 	  ''' <summary>
 	  ''' Sets the designated parameter to a <code>Reader</code> object. The
 	  ''' <code>Reader</code> reads the data till end-of-file is reached. The
@@ -2201,7 +2201,7 @@ Namespace java.sql
 	  ''' this method is called on a closed <code>CallableStatement</code> </exception>
 	  ''' <exception cref="SQLFeatureNotSupportedException">  if the JDBC driver does not support this method
 	  ''' @since 1.6 </exception>
-		 Sub setNCharacterStream(ByVal parameterName As String, ByVal value As java.io.Reader)
+		 Sub setNCharacterStream(  parameterName As String,   value As java.io.Reader)
 
 		''' <summary>
 		''' Sets the designated parameter to a <code>Reader</code> object.
@@ -2223,7 +2223,7 @@ Namespace java.sql
 		''' </exception>
 		''' <exception cref="SQLFeatureNotSupportedException">  if the JDBC driver does not support this method
 		''' @since 1.6 </exception>
-		 Sub setClob(ByVal parameterName As String, ByVal reader As java.io.Reader)
+		 Sub setClob(  parameterName As String,   reader As java.io.Reader)
 
 		''' <summary>
 		''' Sets the designated parameter to a <code>InputStream</code> object.
@@ -2246,7 +2246,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException">  if the JDBC driver does not support this method
 		''' 
 		''' @since 1.6 </exception>
-		 Sub setBlob(ByVal parameterName As String, ByVal inputStream As java.io.InputStream)
+		 Sub setBlob(  parameterName As String,   inputStream As java.io.InputStream)
 		''' <summary>
 		''' Sets the designated parameter to a <code>Reader</code> object.
 		''' This method differs from the <code>setCharacterStream (int, Reader)</code> method
@@ -2268,7 +2268,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException">  if the JDBC driver does not support this method
 		''' 
 		''' @since 1.6 </exception>
-		 Sub setNClob(ByVal parameterName As String, ByVal reader As java.io.Reader)
+		 Sub setNClob(  parameterName As String,   reader As java.io.Reader)
 
 		'------------------------- JDBC 4.1 -----------------------------------
 
@@ -2298,7 +2298,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.7 </exception>
-		  Function getObject(Of T)(ByVal parameterIndex As Integer, ByVal type As [Class]) As T
+		  Function getObject(Of T)(  parameterIndex As Integer,   type As [Class]) As T
 
 
 		''' <summary>
@@ -2327,7 +2327,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.7 </exception>
-		  Function getObject(Of T)(ByVal parameterName As String, ByVal type As [Class]) As T
+		  Function getObject(Of T)(  parameterName As String,   type As [Class]) As T
 
 		 '------------------------- JDBC 4.2 -----------------------------------
 
@@ -2383,8 +2383,8 @@ Namespace java.sql
 		 ''' <seealso cref= SQLType
 		 ''' 
 		 ''' @since 1.8 </seealso>
-		 default Sub setObject(ByVal parameterName As String, ByVal x As Object, ByVal targetSqlType As SQLType, ByVal scaleOrLength As Integer)
-			throw Function SQLFeatureNotSupportedException("setObject not implemented" ByVal  As ) As New
+		 default Sub setObject(  parameterName As String,   x As Object,   targetSqlType As SQLType,   scaleOrLength As Integer)
+			throw Function SQLFeatureNotSupportedException("setObject not implemented"    As ) As New
 		''' <summary>
 		''' Sets the value of the designated parameter with the given object.
 		''' 
@@ -2405,8 +2405,8 @@ Namespace java.sql
 		''' <seealso cref= JDBCType </seealso>
 		''' <seealso cref= SQLType
 		''' @since 1.8 </seealso>
-		 default Sub setObject(ByVal parameterName As String, ByVal x As Object, ByVal targetSqlType As SQLType)
-			throw Function SQLFeatureNotSupportedException("setObject not implemented" ByVal  As ) As New
+		 default Sub setObject(  parameterName As String,   x As Object,   targetSqlType As SQLType)
+			throw Function SQLFeatureNotSupportedException("setObject not implemented"    As ) As New
 
 		''' <summary>
 		''' Registers the OUT parameter in ordinal position
@@ -2443,8 +2443,8 @@ Namespace java.sql
 		''' <seealso cref= JDBCType </seealso>
 		''' <seealso cref= SQLType
 		''' @since 1.8 </seealso>
-		default Sub registerOutParameter(ByVal parameterIndex As Integer, ByVal sqlType As SQLType)
-			throw Function SQLFeatureNotSupportedException("registerOutParameter not implemented" ByVal  As ) As New
+		default Sub registerOutParameter(  parameterIndex As Integer,   sqlType As SQLType)
+			throw Function SQLFeatureNotSupportedException("registerOutParameter not implemented"    As ) As New
 
 		''' <summary>
 		''' Registers the parameter in ordinal position
@@ -2476,8 +2476,8 @@ Namespace java.sql
 		''' <seealso cref= JDBCType </seealso>
 		''' <seealso cref= SQLType
 		''' @since 1.8 </seealso>
-		default Sub registerOutParameter(ByVal parameterIndex As Integer, ByVal sqlType As SQLType, ByVal scale As Integer)
-			throw Function SQLFeatureNotSupportedException("registerOutParameter not implemented" ByVal  As ) As New
+		default Sub registerOutParameter(  parameterIndex As Integer,   sqlType As SQLType,   scale As Integer)
+			throw Function SQLFeatureNotSupportedException("registerOutParameter not implemented"    As ) As New
 		''' <summary>
 		''' Registers the designated output parameter.
 		''' This version of
@@ -2520,8 +2520,8 @@ Namespace java.sql
 		''' <seealso cref= JDBCType </seealso>
 		''' <seealso cref= SQLType
 		''' @since 1.8 </seealso>
-		default Sub registerOutParameter(ByVal parameterIndex As Integer, ByVal sqlType As SQLType, ByVal typeName As String)
-			throw Function SQLFeatureNotSupportedException("registerOutParameter not implemented" ByVal  As ) As New
+		default Sub registerOutParameter(  parameterIndex As Integer,   sqlType As SQLType,   typeName As String)
+			throw Function SQLFeatureNotSupportedException("registerOutParameter not implemented"    As ) As New
 
 		''' <summary>
 		''' Registers the OUT parameter named
@@ -2558,8 +2558,8 @@ Namespace java.sql
 		''' @since 1.8 </exception>
 		''' <seealso cref= JDBCType </seealso>
 		''' <seealso cref= SQLType </seealso>
-		default Sub registerOutParameter(ByVal parameterName As String, ByVal sqlType As SQLType)
-			throw Function SQLFeatureNotSupportedException("registerOutParameter not implemented" ByVal  As ) As New
+		default Sub registerOutParameter(  parameterName As String,   sqlType As SQLType)
+			throw Function SQLFeatureNotSupportedException("registerOutParameter not implemented"    As ) As New
 
 		''' <summary>
 		''' Registers the parameter named
@@ -2592,8 +2592,8 @@ Namespace java.sql
 		''' @since 1.8 </exception>
 		''' <seealso cref= JDBCType </seealso>
 		''' <seealso cref= SQLType </seealso>
-		default Sub registerOutParameter(ByVal parameterName As String, ByVal sqlType As SQLType, ByVal scale As Integer)
-			throw Function SQLFeatureNotSupportedException("registerOutParameter not implemented" ByVal  As ) As New
+		default Sub registerOutParameter(  parameterName As String,   sqlType As SQLType,   scale As Integer)
+			throw Function SQLFeatureNotSupportedException("registerOutParameter not implemented"    As ) As New
 
 		''' <summary>
 		''' Registers the designated output parameter.  This version of
@@ -2637,8 +2637,8 @@ Namespace java.sql
 		''' <seealso cref= JDBCType </seealso>
 		''' <seealso cref= SQLType
 		''' @since 1.8 </seealso>
-		default Sub registerOutParameter(ByVal parameterName As String, ByVal sqlType As SQLType, ByVal typeName As String)
-			throw Function SQLFeatureNotSupportedException("registerOutParameter not implemented" ByVal  As ) As New
+		default Sub registerOutParameter(  parameterName As String,   sqlType As SQLType,   typeName As String)
+			throw Function SQLFeatureNotSupportedException("registerOutParameter not implemented"    As ) As New
 	End Interface
 
 End Namespace

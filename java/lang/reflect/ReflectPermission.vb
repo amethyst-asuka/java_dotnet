@@ -82,7 +82,7 @@ Namespace java.lang.reflect
 		''' </param>
 		''' <exception cref="NullPointerException"> if {@code name} is {@code null}. </exception>
 		''' <exception cref="IllegalArgumentException"> if {@code name} is empty. </exception>
-		Public Sub New(ByVal name As String)
+		Public Sub New(  name As String)
 			MyBase.New(name)
 		End Sub
 
@@ -96,7 +96,7 @@ Namespace java.lang.reflect
 		''' </param>
 		''' <exception cref="NullPointerException"> if {@code name} is {@code null}. </exception>
 		''' <exception cref="IllegalArgumentException"> if {@code name} is empty. </exception>
-		Public Sub New(ByVal name As String, ByVal actions As String)
+		Public Sub New(  name As String,   actions As String)
 			MyBase.New(name, actions)
 		End Sub
 

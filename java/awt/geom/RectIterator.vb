@@ -39,7 +39,7 @@ Namespace java.awt.geom
 		Friend affine As AffineTransform
 		Friend index As Integer
 
-		Friend Sub New(ByVal r As Rectangle2D, ByVal at As AffineTransform)
+		Friend Sub New(  r As Rectangle2D,   at As AffineTransform)
 			Me.x = r.x
 			Me.y = r.y
 			Me.w = r.width
@@ -94,7 +94,7 @@ Namespace java.awt.geom
 		''' <seealso cref= #SEG_QUADTO </seealso>
 		''' <seealso cref= #SEG_CUBICTO </seealso>
 		''' <seealso cref= #SEG_CLOSE </seealso>
-		Public Overridable Function currentSegment(ByVal coords As Single()) As Integer Implements PathIterator.currentSegment
+		Public Overridable Function currentSegment(  coords As Single()) As Integer Implements PathIterator.currentSegment
 			If done Then Throw New NoSuchElementException("rect iterator out of bounds")
 			If index = 5 Then Return SEG_CLOSE
 			coords(0) = CSng(x)
@@ -122,7 +122,7 @@ Namespace java.awt.geom
 		''' <seealso cref= #SEG_QUADTO </seealso>
 		''' <seealso cref= #SEG_CUBICTO </seealso>
 		''' <seealso cref= #SEG_CLOSE </seealso>
-		Public Overridable Function currentSegment(ByVal coords As Double()) As Integer Implements PathIterator.currentSegment
+		Public Overridable Function currentSegment(  coords As Double()) As Integer Implements PathIterator.currentSegment
 			If done Then Throw New NoSuchElementException("rect iterator out of bounds")
 			If index = 5 Then Return SEG_CLOSE
 			coords(0) = x

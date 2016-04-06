@@ -67,7 +67,7 @@ Namespace java.beans
 		'''          delivered to its target listener interface. </param>
 		''' <exception cref="IntrospectionException"> if an exception occurs during
 		'''              introspection. </exception>
-		Public Sub New(ByVal sourceClass As [Class], ByVal eventSetName As String, ByVal listenerType As [Class], ByVal listenerMethodName As String)
+		Public Sub New(  sourceClass As [Class],   eventSetName As String,   listenerType As [Class],   listenerMethodName As String)
 			Me.New(sourceClass, eventSetName, listenerType, New String() { listenerMethodName }, Introspector.ADD_PREFIX + getListenerClassName(listenerType), Introspector.REMOVE_PREFIX + getListenerClassName(listenerType), Introspector.GET_PREFIX + getListenerClassName(listenerType) & "s")
 
 			Dim eventName As String = NameGenerator.capitalize(eventSetName) & "Event"
@@ -79,7 +79,7 @@ Namespace java.beans
 			End If
 		End Sub
 
-		Private Shared Function getListenerClassName(ByVal cls As [Class]) As String
+		Private Shared Function getListenerClassName(  cls As [Class]) As String
 			Dim className As String = cls.name
 			Return className.Substring(className.LastIndexOf("."c) + 1)
 		End Function

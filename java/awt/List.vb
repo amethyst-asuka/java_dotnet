@@ -193,7 +193,7 @@ Namespace java.awt
 		''' returns true. </exception>
 		''' <seealso cref= java.awt.GraphicsEnvironment#isHeadless
 		''' @since       JDK1.1 </seealso>
-		Public Sub New(ByVal rows As Integer)
+		Public Sub New(  rows As Integer)
 			Me.New(rows, False)
 		End Sub
 
@@ -220,7 +220,7 @@ Namespace java.awt
 		''' <exception cref="HeadlessException"> if GraphicsEnvironment.isHeadless()
 		''' returns true. </exception>
 		''' <seealso cref= java.awt.GraphicsEnvironment#isHeadless </seealso>
-		Public Sub New(ByVal rows As Integer, ByVal multipleMode As Boolean)
+		Public Sub New(  rows As Integer,   multipleMode As Boolean)
 			GraphicsEnvironment.checkHeadless()
 			Me.rows = If(rows <> 0, rows, DEFAULT_VISIBLE_ROWS)
 			Me.multipleMode = multipleMode
@@ -285,7 +285,7 @@ Namespace java.awt
 		'''                    the specified index </returns>
 		''' <param name="index"> the position of the item </param>
 		''' <seealso cref=          #getItemCount </seealso>
-		Public Overridable Function getItem(ByVal index As Integer) As String
+		Public Overridable Function getItem(  index As Integer) As String
 			Return getItemImpl(index)
 		End Function
 
@@ -293,7 +293,7 @@ Namespace java.awt
 		'       We implement this functionality in a package-private method
 		'       to insure that it cannot be overridden by client subclasses.
 		'       DO NOT INVOKE CLIENT CODE ON THIS THREAD!
-		Friend Function getItemImpl(ByVal index As Integer) As String
+		Friend Function getItemImpl(  index As Integer) As String
 			Return items(index)
 		End Function
 
@@ -317,13 +317,13 @@ Namespace java.awt
 		''' Adds the specified item to the end of scrolling list. </summary>
 		''' <param name="item"> the item to be added
 		''' @since JDK1.1 </param>
-		Public Overridable Sub add(ByVal item As String)
+		Public Overridable Sub add(  item As String)
 			addItem(item)
 		End Sub
 
 		''' @deprecated      replaced by <code>add(String)</code>. 
 		<Obsolete("     replaced by <code>add(String)</code>.")> _
-		Public Overridable Sub addItem(ByVal item As String)
+		Public Overridable Sub addItem(  item As String)
 			addItem(item, -1)
 		End Sub
 
@@ -339,13 +339,13 @@ Namespace java.awt
 		'''              treated as an empty string, <code>""</code> </param>
 		''' <param name="index">  the position at which to add the item
 		''' @since       JDK1.1 </param>
-		Public Overridable Sub add(ByVal item As String, ByVal index As Integer)
+		Public Overridable Sub add(  item As String,   index As Integer)
 			addItem(item, index)
 		End Sub
 
 		''' @deprecated      replaced by <code>add(String, int)</code>. 
 		<Obsolete("     replaced by <code>add(String, int)</code>."), MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Sub addItem(ByVal item As String, ByVal index As Integer)
+		Public Overridable Sub addItem(  item As String,   index As Integer)
 			If index < -1 OrElse index >= items.Count Then index = -1
 
 			If item Is Nothing Then item = ""
@@ -368,7 +368,7 @@ Namespace java.awt
 		''' <exception cref="ArrayIndexOutOfBoundsException"> if <code>index</code>
 		'''          is out of range </exception>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Sub replaceItem(ByVal newValue As String, ByVal index As Integer)
+		Public Overridable Sub replaceItem(  newValue As String,   index As Integer)
 			remove(index)
 			add(newValue, index)
 		End Sub
@@ -401,7 +401,7 @@ Namespace java.awt
 		'''                     if the item doesn't exist in the list
 		''' @since        JDK1.1 </exception>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Sub remove(ByVal item As String)
+		Public Overridable Sub remove(  item As String)
 			Dim index As Integer = items.IndexOf(item)
 			If index < 0 Then
 				Throw New IllegalArgumentException("item " & item & " not found in list")
@@ -421,14 +421,14 @@ Namespace java.awt
 		''' <exception cref="ArrayIndexOutOfBoundsException">
 		'''               if the <code>position</code> is less than 0 or
 		'''               greater than <code>getItemCount()-1</code> </exception>
-		Public Overridable Sub remove(ByVal position As Integer)
+		Public Overridable Sub remove(  position As Integer)
 			delItem(position)
 		End Sub
 
 		''' @deprecated     replaced by <code>remove(String)</code>
 		'''                         and <code>remove(int)</code>. 
 		<Obsolete("    replaced by <code>remove(String)</code>")> _
-		Public Overridable Sub delItem(ByVal position As Integer)
+		Public Overridable Sub delItem(  position As Integer)
 			delItems(position, position)
 		End Sub
 
@@ -532,7 +532,7 @@ Namespace java.awt
 		''' <seealso cref=          #getSelectedItem </seealso>
 		''' <seealso cref=          #deselect </seealso>
 		''' <seealso cref=          #isIndexSelected </seealso>
-		Public Overridable Sub [select](ByVal index As Integer)
+		Public Overridable Sub [select](  index As Integer)
 			' Bug #4059614: select can't be synchronized while calling the peer,
 			' because it is called from the Window Thread.  It is sufficient to
 			' synchronize the code that manipulates 'selected' except for the
@@ -585,7 +585,7 @@ Namespace java.awt
 		''' <seealso cref=          #getSelectedItem </seealso>
 		''' <seealso cref=          #isIndexSelected </seealso>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Sub deselect(ByVal index As Integer)
+		Public Overridable Sub deselect(  index As Integer)
 			Dim peer_Renamed As java.awt.peer.ListPeer = CType(Me.peer, java.awt.peer.ListPeer)
 			If peer_Renamed IsNot Nothing Then
 				If multipleMode OrElse (selectedIndex Is index) Then peer_Renamed.deselect(index)
@@ -611,14 +611,14 @@ Namespace java.awt
 		''' <seealso cref=        #select </seealso>
 		''' <seealso cref=        #deselect
 		''' @since      JDK1.1 </seealso>
-		Public Overridable Function isIndexSelected(ByVal index As Integer) As Boolean
+		Public Overridable Function isIndexSelected(  index As Integer) As Boolean
 			Return isSelected(index)
 		End Function
 
 		''' @deprecated As of JDK version 1.1,
 		''' replaced by <code>isIndexSelected(int)</code>. 
 		<Obsolete("As of JDK version 1.1,")> _
-		Public Overridable Function isSelected(ByVal index As Integer) As Boolean
+		Public Overridable Function isSelected(  index As Integer) As Boolean
 			Dim sel As Integer() = selectedIndexes
 			For i As Integer = 0 To sel.Length - 1
 				If sel(i) = index Then Return True
@@ -647,7 +647,7 @@ Namespace java.awt
 			Get
 				Return allowsMultipleSelections()
 			End Get
-			Set(ByVal b As Boolean)
+			Set(  b As Boolean)
 				multipleSelections = b
 			End Set
 		End Property
@@ -664,7 +664,7 @@ Namespace java.awt
 		''' replaced by <code>setMultipleMode(boolean)</code>. 
 		<Obsolete("As of JDK version 1.1,"), MethodImpl(MethodImplOptions.Synchronized)> _
 		Public Overridable Property multipleSelections As Boolean
-			Set(ByVal b As Boolean)
+			Set(  b As Boolean)
 				If b <> multipleMode Then
 					multipleMode = b
 					Dim peer_Renamed As java.awt.peer.ListPeer = CType(Me.peer, java.awt.peer.ListPeer)
@@ -689,7 +689,7 @@ Namespace java.awt
 		''' <param name="index">    the position of the item </param>
 		''' <seealso cref=         #getVisibleIndex </seealso>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Sub makeVisible(ByVal index As Integer)
+		Public Overridable Sub makeVisible(  index As Integer)
 			visibleIndex = index
 			Dim peer_Renamed As java.awt.peer.ListPeer = CType(Me.peer, java.awt.peer.ListPeer)
 			If peer_Renamed IsNot Nothing Then peer_Renamed.makeVisible(index)
@@ -703,14 +703,14 @@ Namespace java.awt
 		'''             given that the specified number of rows must be visible </returns>
 		''' <seealso cref=        java.awt.Component#getPreferredSize
 		''' @since      JDK1.1 </seealso>
-		Public Overridable Function getPreferredSize(ByVal rows As Integer) As Dimension
+		Public Overridable Function getPreferredSize(  rows As Integer) As Dimension
 			Return preferredSize(rows)
 		End Function
 
 		''' @deprecated As of JDK version 1.1,
 		''' replaced by <code>getPreferredSize(int)</code>. 
 		<Obsolete("As of JDK version 1.1,")> _
-		Public Overridable Function preferredSize(ByVal rows As Integer) As Dimension
+		Public Overridable Function preferredSize(  rows As Integer) As Dimension
 			SyncLock treeLock
 				Dim peer_Renamed As java.awt.peer.ListPeer = CType(Me.peer, java.awt.peer.ListPeer)
 				Return If(peer_Renamed IsNot Nothing, peer_Renamed.getPreferredSize(rows), MyBase.preferredSize())
@@ -745,14 +745,14 @@ Namespace java.awt
 		'''             given that the specified number of rows must be visible </returns>
 		''' <seealso cref=        java.awt.Component#getMinimumSize
 		''' @since      JDK1.1 </seealso>
-		Public Overridable Function getMinimumSize(ByVal rows As Integer) As Dimension
+		Public Overridable Function getMinimumSize(  rows As Integer) As Dimension
 			Return minimumSize(rows)
 		End Function
 
 		''' @deprecated As of JDK version 1.1,
 		''' replaced by <code>getMinimumSize(int)</code>. 
 		<Obsolete("As of JDK version 1.1,")> _
-		Public Overridable Function minimumSize(ByVal rows As Integer) As Dimension
+		Public Overridable Function minimumSize(  rows As Integer) As Dimension
 			SyncLock treeLock
 				Dim peer_Renamed As java.awt.peer.ListPeer = CType(Me.peer, java.awt.peer.ListPeer)
 				Return If(peer_Renamed IsNot Nothing, peer_Renamed.getMinimumSize(rows), MyBase.minimumSize())
@@ -798,7 +798,7 @@ Namespace java.awt
 		''' <seealso cref=           java.awt.event.ItemListener
 		''' @since         JDK1.1 </seealso>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Sub addItemListener(ByVal l As ItemListener) Implements ItemSelectable.addItemListener
+		Public Overridable Sub addItemListener(  l As ItemListener) Implements ItemSelectable.addItemListener
 			If l Is Nothing Then Return
 			itemListener = AWTEventMulticaster.add(itemListener, l)
 			newEventsOnly = True
@@ -819,7 +819,7 @@ Namespace java.awt
 		''' <seealso cref=             java.awt.event.ItemListener
 		''' @since           JDK1.1 </seealso>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Sub removeItemListener(ByVal l As ItemListener) Implements ItemSelectable.removeItemListener
+		Public Overridable Sub removeItemListener(  l As ItemListener) Implements ItemSelectable.removeItemListener
 			If l Is Nothing Then Return
 			itemListener = AWTEventMulticaster.remove(itemListener, l)
 		End Sub
@@ -862,7 +862,7 @@ Namespace java.awt
 		''' <seealso cref=           java.awt.event.ActionListener
 		''' @since         JDK1.1 </seealso>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Sub addActionListener(ByVal l As ActionListener)
+		Public Overridable Sub addActionListener(  l As ActionListener)
 			If l Is Nothing Then Return
 			actionListener = AWTEventMulticaster.add(actionListener, l)
 			newEventsOnly = True
@@ -884,7 +884,7 @@ Namespace java.awt
 		''' <seealso cref=             java.awt.event.ActionListener
 		''' @since           JDK1.1 </seealso>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Sub removeActionListener(ByVal l As ActionListener)
+		Public Overridable Sub removeActionListener(  l As ActionListener)
 			If l Is Nothing Then Return
 			actionListener = AWTEventMulticaster.remove(actionListener, l)
 		End Sub
@@ -941,7 +941,7 @@ Namespace java.awt
 		''' </exception>
 		''' <seealso cref= #getItemListeners
 		''' @since 1.3 </seealso>
-		Public Overrides Function getListeners(Of T As java.util.EventListener)(ByVal listenerType As [Class]) As T()
+		Public Overrides Function getListeners(Of T As java.util.EventListener)(  listenerType As [Class]) As T()
 			Dim l As java.util.EventListener = Nothing
 			If listenerType Is GetType(ActionListener) Then
 				l = actionListener
@@ -954,7 +954,7 @@ Namespace java.awt
 		End Function
 
 		' REMIND: remove when filtering is done at lower level
-		Friend Overrides Function eventEnabled(ByVal e As AWTEvent) As Boolean
+		Friend Overrides Function eventEnabled(  e As AWTEvent) As Boolean
 			Select Case e.id
 			  Case ActionEvent.ACTION_PERFORMED
 				If (eventMask And AWTEvent.ACTION_EVENT_MASK) <> 0 OrElse actionListener IsNot Nothing Then Return True
@@ -985,7 +985,7 @@ Namespace java.awt
 		''' <seealso cref=          #processActionEvent </seealso>
 		''' <seealso cref=          #processItemEvent
 		''' @since        JDK1.1 </seealso>
-		Protected Friend Overrides Sub processEvent(ByVal e As AWTEvent)
+		Protected Friend Overrides Sub processEvent(  e As AWTEvent)
 			If TypeOf e Is ItemEvent Then
 				processItemEvent(CType(e, ItemEvent))
 				Return
@@ -1019,7 +1019,7 @@ Namespace java.awt
 		''' <seealso cref=         #addItemListener </seealso>
 		''' <seealso cref=         java.awt.Component#enableEvents
 		''' @since       JDK1.1 </seealso>
-		Protected Friend Overridable Sub processItemEvent(ByVal e As ItemEvent)
+		Protected Friend Overridable Sub processItemEvent(  e As ItemEvent)
 			Dim listener As ItemListener = itemListener
 			If listener IsNot Nothing Then listener.itemStateChanged(e)
 		End Sub
@@ -1047,7 +1047,7 @@ Namespace java.awt
 		''' <seealso cref=         #addActionListener </seealso>
 		''' <seealso cref=         java.awt.Component#enableEvents
 		''' @since       JDK1.1 </seealso>
-		Protected Friend Overridable Sub processActionEvent(ByVal e As ActionEvent)
+		Protected Friend Overridable Sub processActionEvent(  e As ActionEvent)
 			Dim listener As ActionListener = actionListener
 			If listener IsNot Nothing Then listener.actionPerformed(e)
 		End Sub
@@ -1065,7 +1065,7 @@ Namespace java.awt
 		''' This method is expected to be retained only as a package
 		''' private method. 
 		<Obsolete("As of JDK version 1.1,"), MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Sub delItems(ByVal start As Integer, ByVal [end] As Integer)
+		Public Overridable Sub delItems(  start As Integer,   [end] As Integer)
 			For i As Integer = end To start Step -1
 				items.RemoveAt(i)
 			Next i
@@ -1109,7 +1109,7 @@ Namespace java.awt
 		''' <seealso cref= java.awt.Component#itemListenerK </seealso>
 		''' <seealso cref= java.awt.Component#actionListenerK </seealso>
 		''' <seealso cref= #readObject(ObjectInputStream) </seealso>
-		Private Sub writeObject(ByVal s As java.io.ObjectOutputStream)
+		Private Sub writeObject(  s As java.io.ObjectOutputStream)
 		  SyncLock Me
 			Dim peer_Renamed As java.awt.peer.ListPeer = CType(Me.peer, java.awt.peer.ListPeer)
 			If peer_Renamed IsNot Nothing Then selected = peer_Renamed.selectedIndexes
@@ -1137,7 +1137,7 @@ Namespace java.awt
 		''' <seealso cref= #addItemListener(ItemListener) </seealso>
 		''' <seealso cref= java.awt.GraphicsEnvironment#isHeadless </seealso>
 		''' <seealso cref= #writeObject(ObjectOutputStream) </seealso>
-		Private Sub readObject(ByVal s As java.io.ObjectInputStream)
+		Private Sub readObject(  s As java.io.ObjectInputStream)
 		  GraphicsEnvironment.checkHeadless()
 		  s.defaultReadObject()
 
@@ -1198,17 +1198,17 @@ Namespace java.awt
 	'         
 			Private Const serialVersionUID As Long = 7924617370136012829L
 
-			Public Sub New(ByVal outerInstance As List)
+			Public Sub New(  outerInstance As List)
 					Me.outerInstance = outerInstance
 				MyBase.New()
 				outerInstance.addActionListener(Me)
 				outerInstance.addItemListener(Me)
 			End Sub
 
-			Public Overridable Sub actionPerformed(ByVal [event] As ActionEvent) Implements ActionListener.actionPerformed
+			Public Overridable Sub actionPerformed(  [event] As ActionEvent) Implements ActionListener.actionPerformed
 			End Sub
 
-			Public Overridable Sub itemStateChanged(ByVal [event] As ItemEvent) Implements ItemListener.itemStateChanged
+			Public Overridable Sub itemStateChanged(  [event] As ItemEvent) Implements ItemListener.itemStateChanged
 			End Sub
 
 			''' <summary>
@@ -1242,7 +1242,7 @@ Namespace java.awt
 			''' Point, if one exists.
 			''' </summary>
 			''' <returns> the Accessible at the specified location, if it exists </returns>
-			Public Overridable Function getAccessibleAt(ByVal p As Point) As Accessible
+			Public Overridable Function getAccessibleAt(  p As Point) As Accessible
 				Return Nothing ' fredxFIXME Not implemented yet
 			End Function
 
@@ -1263,7 +1263,7 @@ Namespace java.awt
 			''' </summary>
 			''' <param name="i"> zero-based index of child </param>
 			''' <returns> the nth Accessible child of the object </returns>
-			Public Overridable Function getAccessibleChild(ByVal i As Integer) As Accessible
+			Public Overridable Function getAccessibleChild(  i As Integer) As Accessible
 				SyncLock List.this
 					If i >= outerInstance.itemCount Then
 						Return Nothing
@@ -1307,7 +1307,7 @@ Namespace java.awt
 			''' </summary>
 			''' <param name="i"> the zero-based index of selected items </param>
 			''' <returns> an Accessible containing the selected item </returns>
-			 Public Overridable Function getAccessibleSelection(ByVal i As Integer) As Accessible
+			 Public Overridable Function getAccessibleSelection(  i As Integer) As Accessible
 				 SyncLock List.this
 					 Dim len As Integer = accessibleSelectionCount
 					 If i < 0 OrElse i >= len Then
@@ -1324,7 +1324,7 @@ Namespace java.awt
 			''' <param name="i"> the zero-based index of the child in this Accessible
 			''' object. </param>
 			''' <seealso cref= AccessibleContext#getAccessibleChild </seealso>
-			Public Overridable Function isAccessibleChildSelected(ByVal i As Integer) As Boolean
+			Public Overridable Function isAccessibleChildSelected(  i As Integer) As Boolean
 				Return outerInstance.isIndexSelected(i)
 			End Function
 
@@ -1336,7 +1336,7 @@ Namespace java.awt
 			''' specified item is already selected, this method has no effect.
 			''' </summary>
 			''' <param name="i"> the zero-based index of selectable items </param>
-			 Public Overridable Sub addAccessibleSelection(ByVal i As Integer)
+			 Public Overridable Sub addAccessibleSelection(  i As Integer)
 				 outerInstance.select(i)
 			 End Sub
 
@@ -1346,7 +1346,7 @@ Namespace java.awt
 			''' method has no effect.
 			''' </summary>
 			''' <param name="i"> the zero-based index of selectable items </param>
-			 Public Overridable Sub removeAccessibleSelection(ByVal i As Integer)
+			 Public Overridable Sub removeAccessibleSelection(  i As Integer)
 				 outerInstance.deselect(i)
 			 End Sub
 
@@ -1399,7 +1399,7 @@ Namespace java.awt
 				Private parent As List
 				Private indexInParent As Integer
 
-				Public Sub New(ByVal outerInstance As List.AccessibleAWTList, ByVal parent As List, ByVal indexInParent As Integer)
+				Public Sub New(  outerInstance As List.AccessibleAWTList,   parent As List,   indexInParent As Integer)
 						Me.outerInstance = outerInstance
 					Me.parent = parent
 					Me.accessibleParent = parent
@@ -1508,7 +1508,7 @@ Namespace java.awt
 				''' <param name="i"> zero-based index of child </param>
 				''' <returns> the Accessible child of the object </returns>
 				''' <seealso cref= #getAccessibleChildrenCount </seealso>
-				Public Overridable Function getAccessibleChild(ByVal i As Integer) As Accessible
+				Public Overridable Function getAccessibleChild(  i As Integer) As Accessible
 					Return Nothing ' list elements can't have children
 				End Function
 
@@ -1527,7 +1527,7 @@ Namespace java.awt
 					Get
 						Return parent.background
 					End Get
-					Set(ByVal c As Color)
+					Set(  c As Color)
 						parent.background = c
 					End Set
 				End Property
@@ -1543,7 +1543,7 @@ Namespace java.awt
 					Get
 						Return parent.foreground
 					End Get
-					Set(ByVal c As Color)
+					Set(  c As Color)
 						parent.foreground = c
 					End Set
 				End Property
@@ -1558,7 +1558,7 @@ Namespace java.awt
 					Get
 						Return parent.cursor
 					End Get
-					Set(ByVal cursor_Renamed As Cursor)
+					Set(  cursor_Renamed As Cursor)
 						parent.cursor = cursor_Renamed
 					End Set
 				End Property
@@ -1573,7 +1573,7 @@ Namespace java.awt
 					Get
 						Return parent.font
 					End Get
-					Set(ByVal f As Font)
+					Set(  f As Font)
 						parent.font = f
 					End Set
 				End Property
@@ -1585,7 +1585,7 @@ Namespace java.awt
 				''' <param name="f"> the Font </param>
 				''' <returns> the FontMetrics, if supported, the object; otherwise, null </returns>
 				''' <seealso cref= #getFont </seealso>
-				Public Overridable Function getFontMetrics(ByVal f As Font) As FontMetrics
+				Public Overridable Function getFontMetrics(  f As Font) As FontMetrics
 					Return parent.getFontMetrics(f)
 				End Function
 
@@ -1603,7 +1603,7 @@ Namespace java.awt
 					Get
 						Return parent.enabled
 					End Get
-					Set(ByVal b As Boolean)
+					Set(  b As Boolean)
 						parent.enabled = b
 					End Set
 				End Property
@@ -1629,7 +1629,7 @@ Namespace java.awt
 						Return False
 						' return parent.isVisible();
 					End Get
-					Set(ByVal b As Boolean)
+					Set(  b As Boolean)
 						' [[[FIXME]]] should scroll to item to make it show!
 						parent.visible = b
 					End Set
@@ -1662,7 +1662,7 @@ Namespace java.awt
 				''' object </param>
 				''' <returns> true if object contains Point; otherwise false </returns>
 				''' <seealso cref= #getBounds </seealso>
-				Public Overridable Function contains(ByVal p As Point) As Boolean
+				Public Overridable Function contains(  p As Point) As Boolean
 					' [[[FIXME]]] - only if p is within the list element!!!
 					Return False
 					' return parent.contains(p);
@@ -1697,7 +1697,7 @@ Namespace java.awt
 						' [[[FIXME]]]
 						Return Nothing
 					End Get
-					Set(ByVal p As Point)
+					Set(  p As Point)
 						' [[[FIXME]]] maybe - can simply return as no-op
 					End Set
 				End Property
@@ -1716,7 +1716,7 @@ Namespace java.awt
 						' [[[FIXME]]]
 						Return Nothing
 					End Get
-					Set(ByVal r As Rectangle)
+					Set(  r As Rectangle)
 						' no-op; not supported
 					End Set
 				End Property
@@ -1736,7 +1736,7 @@ Namespace java.awt
 						' [[[FIXME]]]
 						Return Nothing
 					End Get
-					Set(ByVal d As Dimension)
+					Set(  d As Dimension)
 						' not supported; no-op
 					End Set
 				End Property
@@ -1750,7 +1750,7 @@ Namespace java.awt
 				'''     object </param>
 				''' <returns> the <code>Accessible</code>, if it exists,
 				'''     at the specified location; otherwise <code>null</code> </returns>
-				Public Overridable Function getAccessibleAt(ByVal p As Point) As Accessible
+				Public Overridable Function getAccessibleAt(  p As Point) As Accessible
 					Return Nothing ' object cannot have children!
 				End Function
 
@@ -1786,7 +1786,7 @@ Namespace java.awt
 				''' </summary>
 				''' <param name="l"> the focus listener </param>
 				''' <seealso cref= #removeFocusListener </seealso>
-				Public Overridable Sub addFocusListener(ByVal l As FocusListener)
+				Public Overridable Sub addFocusListener(  l As FocusListener)
 					' nothing to do; a no-op
 				End Sub
 
@@ -1796,7 +1796,7 @@ Namespace java.awt
 				''' </summary>
 				''' <param name="l"> the focus listener </param>
 				''' <seealso cref= #addFocusListener </seealso>
-				Public Overridable Sub removeFocusListener(ByVal l As FocusListener)
+				Public Overridable Sub removeFocusListener(  l As FocusListener)
 					' nothing to do; a no-op
 				End Sub
 

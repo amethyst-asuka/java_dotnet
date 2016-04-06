@@ -74,14 +74,14 @@ Namespace java.awt.Icolor
         ''' <summary>
         ''' Constructs a new ICC_ProfileGray from a CMM ID.
         ''' </summary>
-        Friend Sub New(ByVal p As sun.java2d.cmm.Profile)
+        Friend Sub New(  p As sun.java2d.cmm.Profile)
             MyBase.New(p)
         End Sub
 
         ''' <summary>
         ''' Constructs a new ICC_ProfileGray from a ProfileDeferralInfo object.
         ''' </summary>
-        Friend Sub New(ByVal pdi As sun.java2d.cmm.ProfileDeferralInfo)
+        Friend Sub New(  pdi As sun.java2d.cmm.ProfileDeferralInfo)
             MyBase.New(pdi)
         End Sub
 

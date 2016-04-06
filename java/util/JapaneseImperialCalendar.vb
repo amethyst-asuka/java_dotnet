@@ -238,7 +238,7 @@ Namespace java.util
 		''' </summary>
 		''' <param name="zone"> the given time zone. </param>
 		''' <param name="aLocale"> the given locale. </param>
-		Friend Sub New(ByVal zone As TimeZone, ByVal aLocale As Locale)
+		Friend Sub New(  zone As TimeZone,   aLocale As Locale)
 			MyBase.New(zone, aLocale)
 			jdate = jcal.newCalendarDate(zone)
 			timeInMillis = System.currentTimeMillis()
@@ -250,7 +250,7 @@ Namespace java.util
 		''' <param name="zone">    the given time zone </param>
 		''' <param name="aLocale"> the given locale </param>
 		''' <param name="flag">    the flag requesting an empty instance </param>
-		Friend Sub New(ByVal zone As TimeZone, ByVal aLocale As Locale, ByVal flag As Boolean)
+		Friend Sub New(  zone As TimeZone,   aLocale As Locale,   flag As Boolean)
 			MyBase.New(zone, aLocale)
 			jdate = jcal.newCalendarDate(zone)
 		End Sub
@@ -278,7 +278,7 @@ Namespace java.util
 		''' <returns> <code>true</code> if this object is equal to <code>obj</code>;
 		''' <code>false</code> otherwise. </returns>
 		''' <seealso cref= Calendar#compareTo(Calendar) </seealso>
-		Public Overrides Function Equals(ByVal obj As Object) As Boolean
+		Public Overrides Function Equals(  obj As Object) As Boolean
 			Return TypeOf obj Is JapaneseImperialCalendar AndAlso MyBase.Equals(obj)
 		End Function
 
@@ -317,7 +317,7 @@ Namespace java.util
 		''' <code>ZONE_OFFSET</code>, <code>DST_OFFSET</code>, or unknown,
 		''' or if any calendar fields have out-of-range values in
 		''' non-lenient mode. </exception>
-		Public Overrides Sub add(ByVal field As Integer, ByVal amount As Integer)
+		Public Overrides Sub add(  field As Integer,   amount As Integer)
 			' If amount == 0, do nothing even the given field is out of
 			' range. This is tested by JCK.
 			If amount = 0 Then Return ' Do nothing!
@@ -427,7 +427,7 @@ Namespace java.util
 			End If
 		End Sub
 
-		Public Overrides Sub roll(ByVal field As Integer, ByVal up As Boolean)
+		Public Overrides Sub roll(  field As Integer,   up As Boolean)
 			roll(field,If(up, +1, -1))
 		End Sub
 
@@ -450,7 +450,7 @@ Namespace java.util
 		''' <seealso cref= #roll(int,boolean) </seealso>
 		''' <seealso cref= #add(int,int) </seealso>
 		''' <seealso cref= #set(int,int) </seealso>
-		Public Overrides Sub roll(ByVal field As Integer, ByVal amount As Integer)
+		Public Overrides Sub roll(  field As Integer,   amount As Integer)
 			' If amount == 0, do nothing even the given field is out of
 			' range. This is tested by JCK.
 			If amount = 0 Then Return
@@ -804,7 +804,7 @@ Namespace java.util
 			[set](field, getRolledValue(internalGet(field), amount, min, max))
 		End Sub
 
-		Public Overrides Function getDisplayName(ByVal field As Integer, ByVal style As Integer, ByVal locale_Renamed As Locale) As String
+		Public Overrides Function getDisplayName(  field As Integer,   style As Integer,   locale_Renamed As Locale) As String
 			If Not checkDisplayNameParams(field, style, [SHORT], NARROW_FORMAT, locale_Renamed, ERA_MASK Or YEAR_MASK Or MONTH_MASK Or DAY_OF_WEEK_MASK Or AM_PM_MASK) Then Return Nothing
 
 			Dim fieldValue As Integer = [get](field)
@@ -822,7 +822,7 @@ Namespace java.util
 			Return name
 		End Function
 
-		Public Overrides Function getDisplayNames(ByVal field As Integer, ByVal style As Integer, ByVal locale_Renamed As Locale) As Map(Of String, Integer?)
+		Public Overrides Function getDisplayNames(  field As Integer,   style As Integer,   locale_Renamed As Locale) As Map(Of String, Integer?)
 			If Not checkDisplayNameParams(field, style, ALL_STYLES, NARROW_FORMAT, locale_Renamed, ERA_MASK Or YEAR_MASK Or MONTH_MASK Or DAY_OF_WEEK_MASK Or AM_PM_MASK) Then Return Nothing
 			Dim names As Map(Of String, Integer?)
 			names = sun.util.locale.provider.CalendarDataUtility.retrieveFieldValueNames(calendarType, field, style, locale_Renamed)
@@ -868,7 +868,7 @@ Namespace java.util
 		''' <seealso cref= #getLeastMaximum(int) </seealso>
 		''' <seealso cref= #getActualMinimum(int) </seealso>
 		''' <seealso cref= #getActualMaximum(int) </seealso>
-		Public Overrides Function getMinimum(ByVal field As Integer) As Integer
+		Public Overrides Function getMinimum(  field As Integer) As Integer
 			Return MIN_VALUES(field)
 		End Function
 
@@ -889,7 +889,7 @@ Namespace java.util
 		''' <seealso cref= #getLeastMaximum(int) </seealso>
 		''' <seealso cref= #getActualMinimum(int) </seealso>
 		''' <seealso cref= #getActualMaximum(int) </seealso>
-		Public Overrides Function getMaximum(ByVal field As Integer) As Integer
+		Public Overrides Function getMaximum(  field As Integer) As Integer
 			Select Case field
 			Case YEAR
 					' The value should depend on the time zone of this calendar.
@@ -916,7 +916,7 @@ Namespace java.util
 		''' <seealso cref= #getLeastMaximum(int) </seealso>
 		''' <seealso cref= #getActualMinimum(int) </seealso>
 		''' <seealso cref= #getActualMaximum(int) </seealso>
-		Public Overrides Function getGreatestMinimum(ByVal field As Integer) As Integer
+		Public Overrides Function getGreatestMinimum(  field As Integer) As Integer
 			Return If(field = YEAR, 1, MIN_VALUES(field))
 		End Function
 
@@ -937,7 +937,7 @@ Namespace java.util
 		''' <seealso cref= #getGreatestMinimum(int) </seealso>
 		''' <seealso cref= #getActualMinimum(int) </seealso>
 		''' <seealso cref= #getActualMaximum(int) </seealso>
-		Public Overrides Function getLeastMaximum(ByVal field As Integer) As Integer
+		Public Overrides Function getLeastMaximum(  field As Integer) As Integer
 			Select Case field
 			Case YEAR
 					Return System.Math.Min(LEAST_MAX_VALUES(YEAR), getMaximum(YEAR))
@@ -961,7 +961,7 @@ Namespace java.util
 		''' <seealso cref= #getGreatestMinimum(int) </seealso>
 		''' <seealso cref= #getLeastMaximum(int) </seealso>
 		''' <seealso cref= #getActualMaximum(int) </seealso>
-		Public Overrides Function getActualMinimum(ByVal field As Integer) As Integer
+		Public Overrides Function getActualMinimum(  field As Integer) As Integer
 			If Not isFieldSet(YEAR_MASK Or MONTH_MASK Or WEEK_OF_YEAR_MASK, field) Then Return getMinimum(field)
 
 			Dim value As Integer = 0
@@ -1045,7 +1045,7 @@ Namespace java.util
 		''' <seealso cref= #getGreatestMinimum(int) </seealso>
 		''' <seealso cref= #getLeastMaximum(int) </seealso>
 		''' <seealso cref= #getActualMinimum(int) </seealso>
-		Public Overrides Function getActualMaximum(ByVal field As Integer) As Integer
+		Public Overrides Function getActualMaximum(  field As Integer) As Integer
 			Dim fieldsForFixedMax As Integer = ERA_MASK Or DAY_OF_WEEK_MASK Or HOUR_MASK Or AM_PM_MASK Or HOUR_OF_DAY_MASK Or MINUTE_MASK Or SECOND_MASK Or MILLISECOND_MASK Or ZONE_OFFSET_MASK Or DST_OFFSET_MASK
 			If (fieldsForFixedMax And (1<<field)) <> 0 Then Return getMaximum(field)
 
@@ -1230,7 +1230,7 @@ Namespace java.util
 		''' beyond the limit. The given CalendarDate object must have been
 		''' normalized before calling this method.
 		''' </summary>
-		Private Function getYearOffsetInMillis(ByVal [date] As sun.util.calendar.CalendarDate) As Long
+		Private Function getYearOffsetInMillis(  [date] As sun.util.calendar.CalendarDate) As Long
 			Dim t As Long = (jcal.getDayOfYear(date_Renamed) - 1) * ONE_DAY
 			Return t + date_Renamed.timeOfDay - date_Renamed.zoneOffset
 		End Function
@@ -1251,7 +1251,7 @@ Namespace java.util
 				jdate.zone = zone_Renamed
 				Return zone_Renamed
 			End Get
-			Set(ByVal zone As TimeZone)
+			Set(  zone As TimeZone)
 				MyBase.timeZone = zone
 				' To share the zone by the CalendarDate
 				jdate.zone = zone
@@ -1306,7 +1306,7 @@ Namespace java.util
 		''' fields to be used for time calculations </param>
 		''' <returns> a new field mask that indicates what field values have
 		''' actually been set. </returns>
-		Private Function computeFields(ByVal fieldMask As Integer, ByVal tzMask As Integer) As Integer
+		Private Function computeFields(  fieldMask As Integer,   tzMask As Integer) As Integer
 			Dim zoneOffset As Integer = 0
 			Dim tz As TimeZone = zone
 			If zoneOffsets Is Nothing Then zoneOffsets = New Integer(1){}
@@ -1507,7 +1507,7 @@ Namespace java.util
 		''' <param name="fixedDay1"> the fixed date of the first day of the period </param>
 		''' <param name="fixedDate"> the fixed date of the last day of the period </param>
 		''' <returns> the number of weeks of the given period </returns>
-		Private Function getWeekNumber(ByVal fixedDay1 As Long, ByVal fixedDate As Long) As Integer
+		Private Function getWeekNumber(  fixedDay1 As Long,   fixedDate As Long) As Integer
 			' We can always use `jcal' since Julian and Gregorian are the
 			' same thing for this calculation.
 			Dim fixedDay1st As Long = sun.util.calendar.LocalGregorianCalendar.getDayOfWeekDateOnOrBefore(fixedDay1 + 6, firstDayOfWeek)
@@ -1654,7 +1654,7 @@ Namespace java.util
 		''' <param name="fieldMask"> the calendar fields to be used for the date calculation </param>
 		''' <returns> the fixed date </returns>
 		''' <seealso cref= Calendar#selectFields </seealso>
-		Private Function getFixedDate(ByVal era As Integer, ByVal year As Integer, ByVal fieldMask As Integer) As Long
+		Private Function getFixedDate(  era As Integer,   year As Integer,   fieldMask As Integer) As Long
 			Dim month_Renamed As Integer = JANUARY
 			Dim firstDayOfMonth As Integer = 1
 			If isFieldSet(fieldMask, MONTH) Then
@@ -1778,7 +1778,7 @@ Namespace java.util
 		''' <param name="date"> the date for which the first day of the year is
 		''' calculated. The date has to be in the cut-over year. </param>
 		''' <param name="fixedDate"> the fixed date representation of the date </param>
-		Private Function getFixedDateJan1(ByVal [date] As sun.util.calendar.LocalGregorianCalendar.Date, ByVal fixedDate As Long) As Long
+		Private Function getFixedDateJan1(  [date] As sun.util.calendar.LocalGregorianCalendar.Date,   fixedDate As Long) As Long
 			Dim era_Renamed As sun.util.calendar.Era = date_Renamed.era
 			If date_Renamed.era IsNot Nothing AndAlso date_Renamed.year = 1 Then
 				For eraIndex_Renamed As Integer = getEraIndex(date_Renamed) To 1 Step -1
@@ -1801,7 +1801,7 @@ Namespace java.util
 		''' <param name="date"> the date for which the first day of the month is
 		''' calculated. The date must be in the era transition year. </param>
 		''' <param name="fixedDate"> the fixed date representation of the date </param>
-		Private Function getFixedDateMonth1(ByVal [date] As sun.util.calendar.LocalGregorianCalendar.Date, ByVal fixedDate As Long) As Long
+		Private Function getFixedDateMonth1(  [date] As sun.util.calendar.LocalGregorianCalendar.Date,   fixedDate As Long) As Long
 			Dim eraIndex_Renamed As Integer = getTransitionEraIndex(date_Renamed)
 			If eraIndex_Renamed <> -1 Then
 				Dim transition As Long = sinceFixedDates(eraIndex_Renamed)
@@ -1818,7 +1818,7 @@ Namespace java.util
 		''' Returns a LocalGregorianCalendar.Date produced from the specified fixed date.
 		''' </summary>
 		''' <param name="fd"> the fixed date </param>
-		Private Shared Function getCalendarDate(ByVal fd As Long) As sun.util.calendar.LocalGregorianCalendar.Date
+		Private Shared Function getCalendarDate(  fd As Long) As sun.util.calendar.LocalGregorianCalendar.Date
 			Dim d As sun.util.calendar.LocalGregorianCalendar.Date = jcal.newCalendarDate(TimeZone.NO_TIMEZONE)
 			jcal.getCalendarDateFromFixedDate(d, fd)
 			Return d
@@ -1829,7 +1829,7 @@ Namespace java.util
 		''' Gregorian year. The year number must be normalized.
 		''' </summary>
 		''' <seealso cref= GregorianCalendar#isLeapYear(int) </seealso>
-		Private Function monthLength(ByVal month As Integer, ByVal gregorianYear As Integer) As Integer
+		Private Function monthLength(  month As Integer,   gregorianYear As Integer) As Integer
 			Return If(sun.util.calendar.CalendarUtils.isGregorianLeapYear(gregorianYear), GregorianCalendar.LEAP_MONTH_LENGTH(month), GregorianCalendar.MONTH_LENGTH(month))
 		End Function
 
@@ -1838,7 +1838,7 @@ Namespace java.util
 		''' by internalGet(YEAR).
 		''' </summary>
 		''' <seealso cref= GregorianCalendar#isLeapYear(int) </seealso>
-		Private Function monthLength(ByVal month As Integer) As Integer
+		Private Function monthLength(  month As Integer) As Integer
 			Debug.Assert(jdate.normalized)
 			Return If(jdate.leapYear, GregorianCalendar.LEAP_MONTH_LENGTH(month), GregorianCalendar.MONTH_LENGTH(month))
 		End Function
@@ -1866,7 +1866,7 @@ Namespace java.util
 		''' January 3, then the era index for Heisei is returned. If the
 		''' given date is not in any transition month, then -1 is returned.
 		''' </summary>
-		Private Shared Function getTransitionEraIndex(ByVal [date] As sun.util.calendar.LocalGregorianCalendar.Date) As Integer
+		Private Shared Function getTransitionEraIndex(  [date] As sun.util.calendar.LocalGregorianCalendar.Date) As Integer
 			Dim eraIndex_Renamed As Integer = getEraIndex(date_Renamed)
 			Dim transitionDate As sun.util.calendar.CalendarDate = eras(eraIndex_Renamed).sinceDate
 			If transitionDate.year = date_Renamed.normalizedYear AndAlso transitionDate.month = date_Renamed.month Then Return eraIndex_Renamed
@@ -1878,7 +1878,7 @@ Namespace java.util
 			Return -1
 		End Function
 
-		Private Function isTransitionYear(ByVal normalizedYear As Integer) As Boolean
+		Private Function isTransitionYear(  normalizedYear As Integer) As Boolean
 			For i As Integer = eras.Length - 1 To 1 Step -1
 				Dim transitionYear_Renamed As Integer = eras(i).sinceDate.year
 				If normalizedYear = transitionYear_Renamed Then Return True
@@ -1887,7 +1887,7 @@ Namespace java.util
 			Return False
 		End Function
 
-		Private Shared Function getEraIndex(ByVal [date] As sun.util.calendar.LocalGregorianCalendar.Date) As Integer
+		Private Shared Function getEraIndex(  [date] As sun.util.calendar.LocalGregorianCalendar.Date) As Integer
 			Dim era_Renamed As sun.util.calendar.Era = date_Renamed.era
 			For i As Integer = eras.Length - 1 To 1 Step -1
 				If eras(i) Is era_Renamed Then Return i
@@ -1921,7 +1921,7 @@ Namespace java.util
 		''' 3, we want it to go to Feb 28.  Adjustments which might run into this
 		''' problem call this method to retain the proper month.
 		''' </summary>
-		Private Sub pinDayOfMonth(ByVal [date] As sun.util.calendar.LocalGregorianCalendar.Date)
+		Private Sub pinDayOfMonth(  [date] As sun.util.calendar.LocalGregorianCalendar.Date)
 			Dim year_Renamed As Integer = date_Renamed.year
 			Dim dom As Integer = date_Renamed.dayOfMonth
 			If year_Renamed <> getMinimum(YEAR) Then
@@ -1963,7 +1963,7 @@ Namespace java.util
 		''' <summary>
 		''' Returns the new value after 'roll'ing the specified value and amount.
 		''' </summary>
-		Private Shared Function getRolledValue(ByVal value As Integer, ByVal amount As Integer, ByVal min As Integer, ByVal max As Integer) As Integer
+		Private Shared Function getRolledValue(  value As Integer,   amount As Integer,   min As Integer,   max As Integer) As Integer
 			Debug.Assert(value >= min AndAlso value <= max)
 			Dim range As Integer = max - min + 1
 			amount = amount Mod range
@@ -1988,7 +1988,7 @@ Namespace java.util
 		''' <summary>
 		''' Updates internal state.
 		''' </summary>
-		Private Sub readObject(ByVal stream As java.io.ObjectInputStream)
+		Private Sub readObject(  stream As java.io.ObjectInputStream)
 			stream.defaultReadObject()
 			If jdate Is Nothing Then
 				jdate = jcal.newCalendarDate(zone)

@@ -58,7 +58,7 @@ Namespace java.io
 		''' specified underlying output stream.
 		''' </summary>
 		''' <param name="out">   the underlying output stream. </param>
-		Public Sub New(ByVal out As OutputStream)
+		Public Sub New(  out As OutputStream)
 			Me.New(out, 8192)
 		End Sub
 
@@ -70,7 +70,7 @@ Namespace java.io
 		''' <param name="out">    the underlying output stream. </param>
 		''' <param name="size">   the buffer size. </param>
 		''' <exception cref="IllegalArgumentException"> if size &lt;= 0. </exception>
-		Public Sub New(ByVal out As OutputStream, ByVal size As Integer)
+		Public Sub New(  out As OutputStream,   size As Integer)
 			MyBase.New(out)
 			If size <= 0 Then Throw New IllegalArgumentException("Buffer size <= 0")
 			buf = New SByte(size - 1){}
@@ -91,7 +91,7 @@ Namespace java.io
 		''' <param name="b">   the byte to be written. </param>
 		''' <exception cref="IOException">  if an I/O error occurs. </exception>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overrides Sub write(ByVal b As Integer)
+		Public Overrides Sub write(  b As Integer)
 			If count >= buf.Length Then flushBuffer()
 			buf(count) = CByte(b)
 			count += 1

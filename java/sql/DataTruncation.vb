@@ -57,7 +57,7 @@ Namespace java.sql
 		''' <param name="read"> true if a read was truncated </param>
 		''' <param name="dataSize"> the original size of the data </param>
 		''' <param name="transferSize"> the size after truncation </param>
-		Public Sub New(ByVal index As Integer, ByVal parameter As Boolean, ByVal read As Boolean, ByVal dataSize As Integer, ByVal transferSize As Integer)
+		Public Sub New(  index As Integer,   parameter As Boolean,   read As Boolean,   dataSize As Integer,   transferSize As Integer)
 			MyBase.New("Data truncation",If(read = True, "01004", "22001"))
 			Me.index = index
 			Me.parameter = parameter
@@ -87,7 +87,7 @@ Namespace java.sql
 		''' may be null indicating the cause is non-existent or unknown.
 		''' 
 		''' @since 1.6 </param>
-		Public Sub New(ByVal index As Integer, ByVal parameter As Boolean, ByVal read As Boolean, ByVal dataSize As Integer, ByVal transferSize As Integer, ByVal cause As Throwable)
+		Public Sub New(  index As Integer,   parameter As Boolean,   read As Boolean,   dataSize As Integer,   transferSize As Integer,   cause As Throwable)
 			MyBase.New("Data truncation",If(read = True, "01004", "22001"),cause)
 			Me.index = index
 			Me.parameter = parameter

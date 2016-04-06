@@ -111,7 +111,7 @@ Namespace java.lang.reflect
 		''' instantiation of these objects in Java code from the java.lang
 		''' package via sun.reflect.LangReflectAccess.
 		''' </summary>
-		Friend Sub New(ByVal declaringClass As [Class], ByVal name As String, ByVal type As [Class], ByVal modifiers As Integer, ByVal slot As Integer, ByVal signature As String, ByVal annotations As SByte())
+		Friend Sub New(  declaringClass As [Class],   name As String,   type As [Class],   modifiers As Integer,   slot As Integer,   signature As String,   annotations As SByte())
 			Me.clazz = declaringClass
 			Me.name = name
 			Me.type = type
@@ -255,7 +255,7 @@ Namespace java.lang.reflect
 		''' they were declared by the same class and have the same name
 		''' and type.
 		''' </summary>
-		Public Overrides Function Equals(ByVal obj As Object) As Boolean
+		Public Overrides Function Equals(  obj As Object) As Boolean
 			If obj IsNot Nothing AndAlso TypeOf obj Is Field Then
 				Dim other As Field = CType(obj, Field)
 				Return (declaringClass Is other.declaringClass) AndAlso (name = other.name) AndAlso (type Is other.type)
@@ -369,7 +369,7 @@ Namespace java.lang.reflect
 		''' <exception cref="ExceptionInInitializerError"> if the initialization provoked
 		'''              by this method fails. </exception>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Function [get](ByVal obj As Object) As Object
+		Public Function [get](  obj As Object) As Object
 			If Not override Then
 				If Not sun.reflect.Reflection.quickCheckMemberAccess(clazz, modifiers) Then
 					Dim caller As  [Class] = sun.reflect.Reflection.callerClass
@@ -401,7 +401,7 @@ Namespace java.lang.reflect
 		'''              by this method fails. </exception>
 		''' <seealso cref=       Field#get </seealso>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Function getBoolean(ByVal obj As Object) As Boolean
+		Public Function getBoolean(  obj As Object) As Boolean
 			If Not override Then
 				If Not sun.reflect.Reflection.quickCheckMemberAccess(clazz, modifiers) Then
 					Dim caller As  [Class] = sun.reflect.Reflection.callerClass
@@ -433,7 +433,7 @@ Namespace java.lang.reflect
 		'''              by this method fails. </exception>
 		''' <seealso cref=       Field#get </seealso>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Function getByte(ByVal obj As Object) As SByte
+		Public Function getByte(  obj As Object) As SByte
 			If Not override Then
 				If Not sun.reflect.Reflection.quickCheckMemberAccess(clazz, modifiers) Then
 					Dim caller As  [Class] = sun.reflect.Reflection.callerClass
@@ -467,7 +467,7 @@ Namespace java.lang.reflect
 		'''              by this method fails. </exception>
 		''' <seealso cref= Field#get </seealso>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Function getChar(ByVal obj As Object) As Char
+		Public Function getChar(  obj As Object) As Char
 			If Not override Then
 				If Not sun.reflect.Reflection.quickCheckMemberAccess(clazz, modifiers) Then
 					Dim caller As  [Class] = sun.reflect.Reflection.callerClass
@@ -501,7 +501,7 @@ Namespace java.lang.reflect
 		'''              by this method fails. </exception>
 		''' <seealso cref=       Field#get </seealso>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Function getShort(ByVal obj As Object) As Short
+		Public Function getShort(  obj As Object) As Short
 			If Not override Then
 				If Not sun.reflect.Reflection.quickCheckMemberAccess(clazz, modifiers) Then
 					Dim caller As  [Class] = sun.reflect.Reflection.callerClass
@@ -535,7 +535,7 @@ Namespace java.lang.reflect
 		'''              by this method fails. </exception>
 		''' <seealso cref=       Field#get </seealso>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Function getInt(ByVal obj As Object) As Integer
+		Public Function getInt(  obj As Object) As Integer
 			If Not override Then
 				If Not sun.reflect.Reflection.quickCheckMemberAccess(clazz, modifiers) Then
 					Dim caller As  [Class] = sun.reflect.Reflection.callerClass
@@ -569,7 +569,7 @@ Namespace java.lang.reflect
 		'''              by this method fails. </exception>
 		''' <seealso cref=       Field#get </seealso>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Function getLong(ByVal obj As Object) As Long
+		Public Function getLong(  obj As Object) As Long
 			If Not override Then
 				If Not sun.reflect.Reflection.quickCheckMemberAccess(clazz, modifiers) Then
 					Dim caller As  [Class] = sun.reflect.Reflection.callerClass
@@ -603,7 +603,7 @@ Namespace java.lang.reflect
 		'''              by this method fails. </exception>
 		''' <seealso cref= Field#get </seealso>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Function getFloat(ByVal obj As Object) As Single
+		Public Function getFloat(  obj As Object) As Single
 			If Not override Then
 				If Not sun.reflect.Reflection.quickCheckMemberAccess(clazz, modifiers) Then
 					Dim caller As  [Class] = sun.reflect.Reflection.callerClass
@@ -637,7 +637,7 @@ Namespace java.lang.reflect
 		'''              by this method fails. </exception>
 		''' <seealso cref=       Field#get </seealso>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Function getDouble(ByVal obj As Object) As Double
+		Public Function getDouble(  obj As Object) As Double
 			If Not override Then
 				If Not sun.reflect.Reflection.quickCheckMemberAccess(clazz, modifiers) Then
 					Dim caller As  [Class] = sun.reflect.Reflection.callerClass
@@ -713,7 +713,7 @@ Namespace java.lang.reflect
 		''' <exception cref="ExceptionInInitializerError"> if the initialization provoked
 		'''              by this method fails. </exception>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Sub [set](ByVal obj As Object, ByVal value As Object)
+		Public Sub [set](  obj As Object,   value As Object)
 			If Not override Then
 				If Not sun.reflect.Reflection.quickCheckMemberAccess(clazz, modifiers) Then
 					Dim caller As  [Class] = sun.reflect.Reflection.callerClass
@@ -747,7 +747,7 @@ Namespace java.lang.reflect
 		'''              by this method fails. </exception>
 		''' <seealso cref=       Field#set </seealso>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Sub setBoolean(ByVal obj As Object, ByVal z As Boolean)
+		Public Sub setBoolean(  obj As Object,   z As Boolean)
 			If Not override Then
 				If Not sun.reflect.Reflection.quickCheckMemberAccess(clazz, modifiers) Then
 					Dim caller As  [Class] = sun.reflect.Reflection.callerClass
@@ -781,7 +781,7 @@ Namespace java.lang.reflect
 		'''              by this method fails. </exception>
 		''' <seealso cref=       Field#set </seealso>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Sub setByte(ByVal obj As Object, ByVal b As SByte)
+		Public Sub setByte(  obj As Object,   b As SByte)
 			If Not override Then
 				If Not sun.reflect.Reflection.quickCheckMemberAccess(clazz, modifiers) Then
 					Dim caller As  [Class] = sun.reflect.Reflection.callerClass
@@ -815,7 +815,7 @@ Namespace java.lang.reflect
 		'''              by this method fails. </exception>
 		''' <seealso cref=       Field#set </seealso>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Sub setChar(ByVal obj As Object, ByVal c As Char)
+		Public Sub setChar(  obj As Object,   c As Char)
 			If Not override Then
 				If Not sun.reflect.Reflection.quickCheckMemberAccess(clazz, modifiers) Then
 					Dim caller As  [Class] = sun.reflect.Reflection.callerClass
@@ -849,7 +849,7 @@ Namespace java.lang.reflect
 		'''              by this method fails. </exception>
 		''' <seealso cref=       Field#set </seealso>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Sub setShort(ByVal obj As Object, ByVal s As Short)
+		Public Sub setShort(  obj As Object,   s As Short)
 			If Not override Then
 				If Not sun.reflect.Reflection.quickCheckMemberAccess(clazz, modifiers) Then
 					Dim caller As  [Class] = sun.reflect.Reflection.callerClass
@@ -883,7 +883,7 @@ Namespace java.lang.reflect
 		'''              by this method fails. </exception>
 		''' <seealso cref=       Field#set </seealso>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Sub setInt(ByVal obj As Object, ByVal i As Integer)
+		Public Sub setInt(  obj As Object,   i As Integer)
 			If Not override Then
 				If Not sun.reflect.Reflection.quickCheckMemberAccess(clazz, modifiers) Then
 					Dim caller As  [Class] = sun.reflect.Reflection.callerClass
@@ -917,7 +917,7 @@ Namespace java.lang.reflect
 		'''              by this method fails. </exception>
 		''' <seealso cref=       Field#set </seealso>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Sub setLong(ByVal obj As Object, ByVal l As Long)
+		Public Sub setLong(  obj As Object,   l As Long)
 			If Not override Then
 				If Not sun.reflect.Reflection.quickCheckMemberAccess(clazz, modifiers) Then
 					Dim caller As  [Class] = sun.reflect.Reflection.callerClass
@@ -951,7 +951,7 @@ Namespace java.lang.reflect
 		'''              by this method fails. </exception>
 		''' <seealso cref=       Field#set </seealso>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Sub setFloat(ByVal obj As Object, ByVal f As Single)
+		Public Sub setFloat(  obj As Object,   f As Single)
 			If Not override Then
 				If Not sun.reflect.Reflection.quickCheckMemberAccess(clazz, modifiers) Then
 					Dim caller As  [Class] = sun.reflect.Reflection.callerClass
@@ -985,7 +985,7 @@ Namespace java.lang.reflect
 		'''              by this method fails. </exception>
 		''' <seealso cref=       Field#set </seealso>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Sub setDouble(ByVal obj As Object, ByVal d As Double)
+		Public Sub setDouble(  obj As Object,   d As Double)
 			If Not override Then
 				If Not sun.reflect.Reflection.quickCheckMemberAccess(clazz, modifiers) Then
 					Dim caller As  [Class] = sun.reflect.Reflection.callerClass
@@ -996,7 +996,7 @@ Namespace java.lang.reflect
 		End Sub
 
 		' security check is done before calling this method
-		Private Function getFieldAccessor(ByVal obj As Object) As sun.reflect.FieldAccessor
+		Private Function getFieldAccessor(  obj As Object) As sun.reflect.FieldAccessor
 			Dim ov As Boolean = override
 			Dim a As sun.reflect.FieldAccessor = If(ov, overrideFieldAccessor, fieldAccessor)
 			Return If(a IsNot Nothing, a, acquireFieldAccessor(ov))
@@ -1006,7 +1006,7 @@ Namespace java.lang.reflect
 		' (though not efficient) to generate more than one FieldAccessor
 		' for a given Field. However, avoiding synchronization will
 		' probably make the implementation more scalable.
-		Private Function acquireFieldAccessor(ByVal overrideFinalCheck As Boolean) As sun.reflect.FieldAccessor
+		Private Function acquireFieldAccessor(  overrideFinalCheck As Boolean) As sun.reflect.FieldAccessor
 			' First check to see if one has been created yet, and take it
 			' if so
 			Dim tmp As sun.reflect.FieldAccessor = Nothing
@@ -1028,13 +1028,13 @@ Namespace java.lang.reflect
 
 		' Returns FieldAccessor for this Field object, not looking up
 		' the chain to the root
-		Private Function getFieldAccessor(ByVal overrideFinalCheck As Boolean) As sun.reflect.FieldAccessor
+		Private Function getFieldAccessor(  overrideFinalCheck As Boolean) As sun.reflect.FieldAccessor
 			Return If(overrideFinalCheck, overrideFieldAccessor, fieldAccessor)
 		End Function
 
 		' Sets the FieldAccessor for this Field object and
 		' (recursively) its root
-		Private Sub setFieldAccessor(ByVal accessor As sun.reflect.FieldAccessor, ByVal overrideFinalCheck As Boolean)
+		Private Sub setFieldAccessor(  accessor As sun.reflect.FieldAccessor,   overrideFinalCheck As Boolean)
 			If overrideFinalCheck Then
 				overrideFieldAccessor = accessor
 			Else
@@ -1046,7 +1046,7 @@ Namespace java.lang.reflect
 
 		''' <exception cref="NullPointerException"> {@inheritDoc}
 		''' @since 1.5 </exception>
-		Public Overrides Function getAnnotation(Of T As Annotation)(ByVal annotationClass As [Class]) As T
+		Public Overrides Function getAnnotation(Of T As Annotation)(  annotationClass As [Class]) As T
 			java.util.Objects.requireNonNull(annotationClass)
 			Return annotationClass.cast(declaredAnnotations().get(annotationClass))
 		End Function
@@ -1055,7 +1055,7 @@ Namespace java.lang.reflect
 		''' {@inheritDoc} </summary>
 		''' <exception cref="NullPointerException"> {@inheritDoc}
 		''' @since 1.8 </exception>
-		Public Overrides Function getAnnotationsByType(Of T As Annotation)(ByVal annotationClass As [Class]) As T()
+		Public Overrides Function getAnnotationsByType(Of T As Annotation)(  annotationClass As [Class]) As T()
 			java.util.Objects.requireNonNull(annotationClass)
 
 			Return sun.reflect.annotation.AnnotationSupport.getDirectlyAndIndirectlyPresent(declaredAnnotations(), annotationClass)

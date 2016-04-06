@@ -95,7 +95,7 @@ Namespace java.text
 		''' </summary>
 		''' <param name="locale"> the desired locale </param>
 		''' <exception cref="NullPointerException"> if <code>locale</code> is null </exception>
-		Public Sub New(ByVal locale As java.util.Locale)
+		Public Sub New(  locale As java.util.Locale)
 			initialize(locale)
 		End Sub
 
@@ -159,7 +159,7 @@ Namespace java.text
 		''' <returns> a <code>DecimalFormatSymbols</code> instance. </returns>
 		''' <exception cref="NullPointerException"> if <code>locale</code> is null
 		''' @since 1.6 </exception>
-		Public Shared Function getInstance(ByVal locale As java.util.Locale) As DecimalFormatSymbols
+		Public Shared Function getInstance(  locale As java.util.Locale) As DecimalFormatSymbols
 			Dim adapter As sun.util.locale.provider.LocaleProviderAdapter
 			adapter = sun.util.locale.provider.LocaleProviderAdapter.getAdapter(GetType(java.text.spi.DecimalFormatSymbolsProvider), locale)
 			Dim provider As java.text.spi.DecimalFormatSymbolsProvider = adapter.decimalFormatSymbolsProvider
@@ -179,7 +179,7 @@ Namespace java.text
 			Get
 				Return zeroDigit
 			End Get
-			Set(ByVal zeroDigit As Char)
+			Set(  zeroDigit As Char)
 				Me.zeroDigit = zeroDigit
 			End Set
 		End Property
@@ -193,7 +193,7 @@ Namespace java.text
 			Get
 				Return groupingSeparator
 			End Get
-			Set(ByVal groupingSeparator As Char)
+			Set(  groupingSeparator As Char)
 				Me.groupingSeparator = groupingSeparator
 			End Set
 		End Property
@@ -207,7 +207,7 @@ Namespace java.text
 			Get
 				Return decimalSeparator
 			End Get
-			Set(ByVal decimalSeparator As Char)
+			Set(  decimalSeparator As Char)
 				Me.decimalSeparator = decimalSeparator
 			End Set
 		End Property
@@ -221,7 +221,7 @@ Namespace java.text
 			Get
 				Return perMill
 			End Get
-			Set(ByVal perMill As Char)
+			Set(  perMill As Char)
 				Me.perMill = perMill
 			End Set
 		End Property
@@ -235,7 +235,7 @@ Namespace java.text
 			Get
 				Return percent
 			End Get
-			Set(ByVal percent As Char)
+			Set(  percent As Char)
 				Me.percent = percent
 			End Set
 		End Property
@@ -249,7 +249,7 @@ Namespace java.text
 			Get
 				Return digit
 			End Get
-			Set(ByVal digit As Char)
+			Set(  digit As Char)
 				Me.digit = digit
 			End Set
 		End Property
@@ -264,7 +264,7 @@ Namespace java.text
 			Get
 				Return patternSeparator
 			End Get
-			Set(ByVal patternSeparator As Char)
+			Set(  patternSeparator As Char)
 				Me.patternSeparator = patternSeparator
 			End Set
 		End Property
@@ -279,7 +279,7 @@ Namespace java.text
 			Get
 				Return infinity
 			End Get
-			Set(ByVal infinity As String)
+			Set(  infinity As String)
 				Me.infinity = infinity
 			End Set
 		End Property
@@ -294,7 +294,7 @@ Namespace java.text
 			Get
 				Return NaN
 			End Get
-			Set(ByVal NaN As String)
+			Set(  NaN As String)
 				Me.NaN = NaN
 			End Set
 		End Property
@@ -310,7 +310,7 @@ Namespace java.text
 			Get
 				Return minusSign
 			End Get
-			Set(ByVal minusSign As Char)
+			Set(  minusSign As Char)
 				Me.minusSign = minusSign
 			End Set
 		End Property
@@ -326,7 +326,7 @@ Namespace java.text
 			Get
 				Return currencySymbol
 			End Get
-			Set(ByVal currency As String)
+			Set(  currency As String)
 				currencySymbol = currency
 			End Set
 		End Property
@@ -342,7 +342,7 @@ Namespace java.text
 			Get
 				Return intlCurrencySymbol
 			End Get
-			Set(ByVal currencyCode As String)
+			Set(  currencyCode As String)
 				intlCurrencySymbol = currencyCode
 				currency = Nothing
 				If currencyCode IsNot Nothing Then
@@ -367,7 +367,7 @@ Namespace java.text
 			Get
 				Return currency
 			End Get
-			Set(ByVal currency As java.util.Currency)
+			Set(  currency As java.util.Currency)
 				If currency Is Nothing Then Throw New NullPointerException
 				Me.currency = currency
 				intlCurrencySymbol = currency.currencyCode
@@ -386,7 +386,7 @@ Namespace java.text
 			Get
 				Return monetarySeparator
 			End Get
-			Set(ByVal sep As Char)
+			Set(  sep As Char)
 				monetarySeparator = sep
 			End Set
 		End Property
@@ -403,7 +403,7 @@ Namespace java.text
 			Get
 				Return exponential
 			End Get
-			Set(ByVal exp As Char)
+			Set(  exp As Char)
 				exponential = exp
 			End Set
 		End Property
@@ -418,7 +418,7 @@ Namespace java.text
 			Get
 				Return exponentialSeparator
 			End Get
-			Set(ByVal exp As String)
+			Set(  exp As String)
 				If exp Is Nothing Then Throw New NullPointerException
 				exponentialSeparator = exp
 			End Set
@@ -446,7 +446,7 @@ Namespace java.text
 		''' <summary>
 		''' Override equals.
 		''' </summary>
-		Public Overrides Function Equals(ByVal obj As Object) As Boolean
+		Public Overrides Function Equals(  obj As Object) As Boolean
 			If obj Is Nothing Then Return False
 			If Me Is obj Then Return True
 			If Me.GetType() IsNot obj.GetType() Then Return False
@@ -467,7 +467,7 @@ Namespace java.text
 		''' <summary>
 		''' Initializes the symbols from the FormatData resource bundle.
 		''' </summary>
-		Private Sub initialize(ByVal locale As java.util.Locale)
+		Private Sub initialize(  locale As java.util.Locale)
 			Me.locale = locale
 
 			' get resource bundle data
@@ -542,7 +542,7 @@ Namespace java.text
 		''' 
 		''' @since JDK 1.1.6
 		''' </summary>
-		Private Sub readObject(ByVal stream As java.io.ObjectInputStream)
+		Private Sub readObject(  stream As java.io.ObjectInputStream)
 			stream.defaultReadObject()
 			If serialVersionOnStream < 1 Then
 				' Didn't have monetarySeparator or exponential field;

@@ -84,7 +84,7 @@ Namespace java.net
 				If sm IsNot Nothing Then sm.checkPermission(sun.security.util.SecurityConstants.GET_RESPONSECACHE_PERMISSION)
 				Return theResponseCache
 			End Get
-			Set(ByVal responseCache_Renamed As ResponseCache)
+			Set(  responseCache_Renamed As ResponseCache)
 				Dim sm As SecurityManager = System.securityManager
 				If sm IsNot Nothing Then sm.checkPermission(sun.security.util.SecurityConstants.SET_RESPONSECACHE_PERMISSION)
 				theResponseCache = responseCache_Renamed
@@ -115,7 +115,7 @@ Namespace java.net
 		''' <seealso cref=     java.net.URLConnection#getUseCaches() </seealso>
 		''' <seealso cref=     java.net.URLConnection#setDefaultUseCaches(boolean) </seealso>
 		''' <seealso cref=     java.net.URLConnection#getDefaultUseCaches() </seealso>
-		Public MustOverride Function [get](ByVal uri As URI, ByVal rqstMethod As String, ByVal rqstHeaders As IDictionary(Of String, IList(Of String))) As CacheResponse
+		Public MustOverride Function [get](  uri As URI,   rqstMethod As String,   rqstHeaders As IDictionary(Of String, IList(Of String))) As CacheResponse
 
 		''' <summary>
 		''' The protocol handler calls this method after a resource has
@@ -136,7 +136,7 @@ Namespace java.net
 		''' <exception cref="IOException"> if an I/O error occurs </exception>
 		''' <exception cref="IllegalArgumentException"> if any one of the arguments is
 		'''            null </exception>
-		Public MustOverride Function put(ByVal uri As URI, ByVal conn As URLConnection) As CacheRequest
+		Public MustOverride Function put(  uri As URI,   conn As URLConnection) As CacheRequest
 	End Class
 
 End Namespace

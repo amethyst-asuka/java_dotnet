@@ -66,7 +66,7 @@ Namespace java.text
 		''' <summary>
 		''' Creates from a pattern </summary>
 		''' <exception cref="ParseException"> If the input pattern is incorrect. </exception>
-		Public Sub New(ByVal pattern As String)
+		Public Sub New(  pattern As String)
 			For i As Integer = 0 To statusArray.Length - 1
 				statusArray(i) = 0
 			Next i
@@ -80,7 +80,7 @@ Namespace java.text
 			Get
 				Return getPattern(True)
 			End Get
-			Set(ByVal pattern As String)
+			Set(  pattern As String)
 				patterns.Clear()
 				addPattern(pattern)
 			End Set
@@ -90,7 +90,7 @@ Namespace java.text
 		''' recovers current pattern. </summary>
 		''' <param name="withWhiteSpace"> puts spacing around the entries, and \n
 		''' before & and < </param>
-		Public Function getPattern(ByVal withWhiteSpace As Boolean) As String
+		Public Function getPattern(  withWhiteSpace As Boolean) As String
 			Dim result As New StringBuffer
 			Dim tmp As PatternEntry = Nothing
 			Dim extList As List(Of PatternEntry) = Nothing
@@ -123,7 +123,7 @@ Namespace java.text
 			Return result.ToString()
 		End Function
 
-		Private Function findLastWithNoExtension(ByVal i As Integer) As PatternEntry
+		Private Function findLastWithNoExtension(  i As Integer) As PatternEntry
 			For i = i - 1 To 0 Step -1
 				Dim entry As PatternEntry = patterns(i)
 				If entry.extension.length() = 0 Then Return entry
@@ -145,7 +145,7 @@ Namespace java.text
 		''' before & and < </param>
 		''' <returns> emits the string in the format understable to the collation
 		''' builder. </returns>
-		Public Function emitPattern(ByVal withWhiteSpace As Boolean) As String
+		Public Function emitPattern(  withWhiteSpace As Boolean) As String
 			Dim result As New StringBuffer
 			For i As Integer = 0 To patterns.Count - 1
 				Dim entry As PatternEntry = patterns(i)
@@ -158,7 +158,7 @@ Namespace java.text
 		''' <summary>
 		''' adds a pattern to the current one. </summary>
 		''' <param name="pattern"> the new pattern to be added </param>
-		Public Sub addPattern(ByVal pattern As String)
+		Public Sub addPattern(  pattern As String)
 			If pattern Is Nothing Then Return
 
 			Dim parser As New PatternEntry.Parser(pattern)
@@ -183,7 +183,7 @@ Namespace java.text
 		''' gets count of separate entries </summary>
 		''' <param name="index"> the offset of the desired pattern entry </param>
 		''' <returns> the requested pattern entry </returns>
-		Public Function getItemAt(ByVal index As Integer) As PatternEntry
+		Public Function getItemAt(  index As Integer) As PatternEntry
 			Return patterns(index)
 		End Function
 
@@ -222,7 +222,7 @@ Namespace java.text
 	'      If not, then remove the current entry, and add it after lastEntry
 	'      (which is usually at the end).
 	'      
-		Private Sub fixEntry(ByVal newEntry As PatternEntry)
+		Private Sub fixEntry(  newEntry As PatternEntry)
 			' check to see whether the new entry has the same characters as the previous
 			' entry did (this can happen when a pattern declaring a difference between two
 			' strings that are canonically equivalent is normalized).  If so, and the strength
@@ -280,7 +280,7 @@ Namespace java.text
 			If changeLastEntry Then lastEntry = newEntry
 		End Sub
 
-		Private Function findLastEntry(ByVal entry As PatternEntry, ByVal excessChars As StringBuffer) As Integer
+		Private Function findLastEntry(  entry As PatternEntry,   excessChars As StringBuffer) As Integer
 			If entry Is Nothing Then Return 0
 
 			If entry.strength <> PatternEntry.RESET Then

@@ -90,7 +90,7 @@ Namespace java.awt
 		'''        be tested </param>
 		''' <returns> <code>true</code> if aComponent meets the above requirements;
 		'''         <code>false</code> otherwise </returns>
-		Protected Friend Overrides Function accept(ByVal aComponent As Component) As Boolean
+		Protected Friend Overrides Function accept(  aComponent As Component) As Boolean
 			If Not(aComponent.visible AndAlso aComponent.displayable AndAlso aComponent.enabled) Then Return False
 
 			' Verify that the Component is recursively enabled. Disabling a

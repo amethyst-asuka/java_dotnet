@@ -51,7 +51,7 @@ Namespace java.awt.event
 		''' <summary>
 		''' Invoked when window state is changed.
 		''' </summary>
-		Sub windowStateChanged(ByVal e As WindowEvent)
+		Sub windowStateChanged(  e As WindowEvent)
 	End Interface
 
 End Namespace

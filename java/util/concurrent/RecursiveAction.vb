@@ -180,7 +180,7 @@ Namespace java.util.concurrent
 			Get
 				Return Nothing
 			End Get
-			Set(ByVal mustBeNull As Void)
+			Set(  mustBeNull As Void)
 			End Set
 		End Property
 

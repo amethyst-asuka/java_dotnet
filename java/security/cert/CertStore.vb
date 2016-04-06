@@ -104,7 +104,7 @@ Namespace java.security.cert
 		''' <param name="provider"> the provider </param>
 		''' <param name="type"> the type </param>
 		''' <param name="params"> the initialization parameters (may be {@code null}) </param>
-		Protected Friend Sub New(ByVal storeSpi As CertStoreSpi, ByVal provider_Renamed As java.security.Provider, ByVal type As String, ByVal params As CertStoreParameters)
+		Protected Friend Sub New(  storeSpi As CertStoreSpi,   provider_Renamed As java.security.Provider,   type As String,   params As CertStoreParameters)
 			Me.storeSpi = storeSpi
 			Me.provider_Renamed = provider_Renamed
 			Me.type = type
@@ -136,7 +136,7 @@ Namespace java.security.cert
 		'''         match the specified selector (never {@code null}) </returns>
 		''' <exception cref="CertStoreException"> if an exception occurs </exception>
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-		Public Function getCertificates(ByVal selector As CertSelector) As ICollection(Of ? As Certificate)
+		Public Function getCertificates(  selector As CertSelector) As ICollection(Of ? As Certificate)
 			Return storeSpi.engineGetCertificates(selector)
 		End Function
 
@@ -165,7 +165,7 @@ Namespace java.security.cert
 		'''         match the specified selector (never {@code null}) </returns>
 		''' <exception cref="CertStoreException"> if an exception occurs </exception>
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-		Public Function getCRLs(ByVal selector As CRLSelector) As ICollection(Of ? As CRL)
+		Public Function getCRLs(  selector As CRLSelector) As ICollection(Of ? As CRL)
 			Return storeSpi.engineGetCRLs(selector)
 		End Function
 
@@ -208,7 +208,7 @@ Namespace java.security.cert
 		'''          {@code CertStore}.
 		''' </exception>
 		''' <seealso cref= java.security.Provider </seealso>
-		Public Shared Function getInstance(ByVal type As String, ByVal params As CertStoreParameters) As CertStore
+		Public Shared Function getInstance(  type As String,   params As CertStoreParameters) As CertStore
 			Try
 				Dim instance_Renamed As sun.security.jca.GetInstance.Instance = GetInstance.getInstance("CertStore", GetType(CertStoreSpi), type, params)
 				Return New CertStore(CType(instance_Renamed.impl, CertStoreSpi), instance_Renamed.provider, type, params)
@@ -217,7 +217,7 @@ Namespace java.security.cert
 			End Try
 		End Function
 
-		Private Shared Function handleException(ByVal e As java.security.NoSuchAlgorithmException) As CertStore
+		Private Shared Function handleException(  e As java.security.NoSuchAlgorithmException) As CertStore
 			Dim cause As Throwable = e.InnerException
 			If TypeOf cause Is java.security.InvalidAlgorithmParameterException Then Throw CType(cause, java.security.InvalidAlgorithmParameterException)
 			Throw e
@@ -269,7 +269,7 @@ Namespace java.security.cert
 		'''          null or empty.
 		''' </exception>
 		''' <seealso cref= java.security.Provider </seealso>
-		Public Shared Function getInstance(ByVal type As String, ByVal params As CertStoreParameters, ByVal provider_Renamed As String) As CertStore
+		Public Shared Function getInstance(  type As String,   params As CertStoreParameters,   provider_Renamed As String) As CertStore
 			Try
 				Dim instance_Renamed As sun.security.jca.GetInstance.Instance = GetInstance.getInstance("CertStore", GetType(CertStoreSpi), type, params, provider_Renamed)
 				Return New CertStore(CType(instance_Renamed.impl, CertStoreSpi), instance_Renamed.provider, type, params)
@@ -318,7 +318,7 @@ Namespace java.security.cert
 		'''          null.
 		''' </exception>
 		''' <seealso cref= java.security.Provider </seealso>
-		Public Shared Function getInstance(ByVal type As String, ByVal params As CertStoreParameters, ByVal provider_Renamed As java.security.Provider) As CertStore
+		Public Shared Function getInstance(  type As String,   params As CertStoreParameters,   provider_Renamed As java.security.Provider) As CertStore
 			Try
 				Dim instance_Renamed As sun.security.jca.GetInstance.Instance = GetInstance.getInstance("CertStore", GetType(CertStoreSpi), type, params, provider_Renamed)
 				Return New CertStore(CType(instance_Renamed.impl, CertStoreSpi), instance_Renamed.provider, type, params)

@@ -48,7 +48,7 @@ Namespace java.lang.invoke
 		 Inherits MethodHandle
 
 		'non-public
-	 Friend Sub New(ByVal type As MethodType, ByVal form As LambdaForm)
+	 Friend Sub New(  type As MethodType,   form As LambdaForm)
 			MyBase.New(type, form)
 			assert(speciesData() Is speciesData(form))
 	 End Sub
@@ -57,7 +57,7 @@ Namespace java.lang.invoke
 		' BMH API and internals
 		'
 
-		Shared Function bindSingle(ByVal type As MethodType, ByVal form As LambdaForm, ByVal xtype As BasicType, ByVal x As Object) As BoundMethodHandle
+		Shared Function bindSingle(  type As MethodType,   form As LambdaForm,   xtype As BasicType,   x As Object) As BoundMethodHandle
 			' for some type signatures, there exist pre-defined concrete BMH classes
 			Try
 				Select Case xtype
@@ -84,28 +84,28 @@ Namespace java.lang.invoke
 			Return form.editor()
 		End Function
 
-		Shared Function bindSingle(ByVal type As MethodType, ByVal form As LambdaForm, ByVal x As Object) As BoundMethodHandle
+		Shared Function bindSingle(  type As MethodType,   form As LambdaForm,   x As Object) As BoundMethodHandle
 			Return Species_L.make(type, form, x)
 		End Function
 
-		Friend Overrides Function bindArgumentL(ByVal pos As Integer, ByVal value As Object) As BoundMethodHandle ' there is a default binder in the super [Class], for 'L' types only
+		Friend Overrides Function bindArgumentL(  pos As Integer,   value As Object) As BoundMethodHandle ' there is a default binder in the super [Class], for 'L' types only
 		'non-public
 			Return editor().bindArgumentL(Me, pos, value)
 		End Function
 		'non-public
-		Friend Overridable Function bindArgumentI(ByVal pos As Integer, ByVal value As Integer) As BoundMethodHandle
+		Friend Overridable Function bindArgumentI(  pos As Integer,   value As Integer) As BoundMethodHandle
 			Return editor().bindArgumentI(Me, pos, value)
 		End Function
 		'non-public
-		Friend Overridable Function bindArgumentJ(ByVal pos As Integer, ByVal value As Long) As BoundMethodHandle
+		Friend Overridable Function bindArgumentJ(  pos As Integer,   value As Long) As BoundMethodHandle
 			Return editor().bindArgumentJ(Me, pos, value)
 		End Function
 		'non-public
-		Friend Overridable Function bindArgumentF(ByVal pos As Integer, ByVal value As Single) As BoundMethodHandle
+		Friend Overridable Function bindArgumentF(  pos As Integer,   value As Single) As BoundMethodHandle
 			Return editor().bindArgumentF(Me, pos, value)
 		End Function
 		'non-public
-		Friend Overridable Function bindArgumentD(ByVal pos As Integer, ByVal value As Double) As BoundMethodHandle
+		Friend Overridable Function bindArgumentD(  pos As Integer,   value As Double) As BoundMethodHandle
 			Return editor().bindArgumentD(Me, pos, value)
 		End Function
 
@@ -124,7 +124,7 @@ Namespace java.lang.invoke
 		''' A reinvoker MH has this form:
 		''' {@code lambda (bmh, arg*) { thismh = bmh[0]; invokeBasic(thismh, arg*) }}
 		''' </summary>
-		Shared Function makeReinvoker(ByVal target As MethodHandle) As BoundMethodHandle
+		Shared Function makeReinvoker(  target As MethodHandle) As BoundMethodHandle
 			Dim form As LambdaForm = DelegatingMethodHandle.makeReinvokerForm(target, MethodTypeForm.LF_REBIND, Species_L.SPECIES_DATA, Species_L.SPECIES_DATA.getterFunction(0))
 			Return Species_L.make(target.type(), form, target)
 		End Function
@@ -137,7 +137,7 @@ Namespace java.lang.invoke
 	 Friend MustOverride Function speciesData() As SpeciesData
 
 		'non-public
-	 Friend Shared Function speciesData(ByVal form As LambdaForm) As SpeciesData
+	 Friend Shared Function speciesData(  form As LambdaForm) As SpeciesData
 			Dim c As Object = form.names(0).constraint
 			If TypeOf c Is SpeciesData Then Return CType(c, SpeciesData)
 			' if there is no BMH constraint, then use the null constraint
@@ -163,7 +163,7 @@ Namespace java.lang.invoke
 		End Function
 
 		'non-public
-	 Friend Function arg(ByVal i As Integer) As Object
+	 Friend Function arg(  i As Integer) As Object
 			Try
 				Select Case speciesData().fieldType(i)
 				Case L_TYPE
@@ -188,17 +188,17 @@ Namespace java.lang.invoke
 		'
 
 		'non-public
-	 Friend MustOverride Function copyWith(ByVal mt As MethodType, ByVal lf As LambdaForm) As BoundMethodHandle
+	 Friend MustOverride Function copyWith(  mt As MethodType,   lf As LambdaForm) As BoundMethodHandle
 		'non-public
-	 Friend MustOverride Function copyWithExtendL(ByVal mt As MethodType, ByVal lf As LambdaForm, ByVal narg As Object) As BoundMethodHandle
+	 Friend MustOverride Function copyWithExtendL(  mt As MethodType,   lf As LambdaForm,   narg As Object) As BoundMethodHandle
 		'non-public
-	 Friend MustOverride Function copyWithExtendI(ByVal mt As MethodType, ByVal lf As LambdaForm, ByVal narg As Integer) As BoundMethodHandle
+	 Friend MustOverride Function copyWithExtendI(  mt As MethodType,   lf As LambdaForm,   narg As Integer) As BoundMethodHandle
 		'non-public
-	 Friend MustOverride Function copyWithExtendJ(ByVal mt As MethodType, ByVal lf As LambdaForm, ByVal narg As Long) As BoundMethodHandle
+	 Friend MustOverride Function copyWithExtendJ(  mt As MethodType,   lf As LambdaForm,   narg As Long) As BoundMethodHandle
 		'non-public
-	 Friend MustOverride Function copyWithExtendF(ByVal mt As MethodType, ByVal lf As LambdaForm, ByVal narg As Single) As BoundMethodHandle
+	 Friend MustOverride Function copyWithExtendF(  mt As MethodType,   lf As LambdaForm,   narg As Single) As BoundMethodHandle
 		'non-public
-	 Friend MustOverride Function copyWithExtendD(ByVal mt As MethodType, ByVal lf As LambdaForm, ByVal narg As Double) As BoundMethodHandle
+	 Friend MustOverride Function copyWithExtendD(  mt As MethodType,   lf As LambdaForm,   narg As Double) As BoundMethodHandle
 
 		'
 		' concrete BMH classes required to close bootstrap loops
@@ -208,7 +208,7 @@ Namespace java.lang.invoke
 			Inherits BoundMethodHandle
  ' make it private to force users to access the enclosing class first
 			Friend ReadOnly argL0 As Object
-			Private Sub New(ByVal mt As MethodType, ByVal lf As LambdaForm, ByVal argL0 As Object)
+			Private Sub New(  mt As MethodType,   lf As LambdaForm,   argL0 As Object)
 				MyBase.New(mt, lf)
 				Me.argL0 = argL0
 			End Sub
@@ -223,14 +223,14 @@ Namespace java.lang.invoke
 			'non-public
 	 Friend Shadows Shared ReadOnly SPECIES_DATA As SpeciesData = SpeciesData.getForClass("L", GetType(Species_L))
 			'non-public
-	 Friend Shared Function make(ByVal mt As MethodType, ByVal lf As LambdaForm, ByVal argL0 As Object) As BoundMethodHandle
+	 Friend Shared Function make(  mt As MethodType,   lf As LambdaForm,   argL0 As Object) As BoundMethodHandle
 				Return New Species_L(mt, lf, argL0)
 	 End Function
-			Friend NotOverridable Overrides Function copyWith(ByVal mt As MethodType, ByVal lf As LambdaForm) As BoundMethodHandle
+			Friend NotOverridable Overrides Function copyWith(  mt As MethodType,   lf As LambdaForm) As BoundMethodHandle
 			'non-public
 				Return New Species_L(mt, lf, argL0)
 			End Function
-			Friend NotOverridable Overrides Function copyWithExtendL(ByVal mt As MethodType, ByVal lf As LambdaForm, ByVal narg As Object) As BoundMethodHandle
+			Friend NotOverridable Overrides Function copyWithExtendL(  mt As MethodType,   lf As LambdaForm,   narg As Object) As BoundMethodHandle
 			'non-public
 				Try
 					Return CType(SPECIES_DATA.extendWith(L_TYPE).constructor().invokeBasic(mt, lf, argL0, narg), BoundMethodHandle)
@@ -238,7 +238,7 @@ Namespace java.lang.invoke
 					Throw uncaughtException(ex)
 				End Try
 			End Function
-			Friend NotOverridable Overrides Function copyWithExtendI(ByVal mt As MethodType, ByVal lf As LambdaForm, ByVal narg As Integer) As BoundMethodHandle
+			Friend NotOverridable Overrides Function copyWithExtendI(  mt As MethodType,   lf As LambdaForm,   narg As Integer) As BoundMethodHandle
 			'non-public
 				Try
 					Return CType(SPECIES_DATA.extendWith(I_TYPE).constructor().invokeBasic(mt, lf, argL0, narg), BoundMethodHandle)
@@ -246,7 +246,7 @@ Namespace java.lang.invoke
 					Throw uncaughtException(ex)
 				End Try
 			End Function
-			Friend NotOverridable Overrides Function copyWithExtendJ(ByVal mt As MethodType, ByVal lf As LambdaForm, ByVal narg As Long) As BoundMethodHandle
+			Friend NotOverridable Overrides Function copyWithExtendJ(  mt As MethodType,   lf As LambdaForm,   narg As Long) As BoundMethodHandle
 			'non-public
 				Try
 					Return CType(SPECIES_DATA.extendWith(J_TYPE).constructor().invokeBasic(mt, lf, argL0, narg), BoundMethodHandle)
@@ -254,7 +254,7 @@ Namespace java.lang.invoke
 					Throw uncaughtException(ex)
 				End Try
 			End Function
-			Friend NotOverridable Overrides Function copyWithExtendF(ByVal mt As MethodType, ByVal lf As LambdaForm, ByVal narg As Single) As BoundMethodHandle
+			Friend NotOverridable Overrides Function copyWithExtendF(  mt As MethodType,   lf As LambdaForm,   narg As Single) As BoundMethodHandle
 			'non-public
 				Try
 					Return CType(SPECIES_DATA.extendWith(F_TYPE).constructor().invokeBasic(mt, lf, argL0, narg), BoundMethodHandle)
@@ -262,7 +262,7 @@ Namespace java.lang.invoke
 					Throw uncaughtException(ex)
 				End Try
 			End Function
-			Friend NotOverridable Overrides Function copyWithExtendD(ByVal mt As MethodType, ByVal lf As LambdaForm, ByVal narg As Double) As BoundMethodHandle
+			Friend NotOverridable Overrides Function copyWithExtendD(  mt As MethodType,   lf As LambdaForm,   narg As Double) As BoundMethodHandle
 			'non-public
 				Try
 					Return CType(SPECIES_DATA.extendWith(D_TYPE).constructor().invokeBasic(mt, lf, argL0, narg), BoundMethodHandle)
@@ -306,11 +306,11 @@ Namespace java.lang.invoke
 				Return typeCodes.Length
 	 End Function
 			'non-public
-	 Friend Overridable Function fieldType(ByVal i As Integer) As BasicType
+	 Friend Overridable Function fieldType(  i As Integer) As BasicType
 				Return typeCodes(i)
 	 End Function
 			'non-public
-	 Friend Overridable Function fieldTypeChar(ByVal i As Integer) As Char
+	 Friend Overridable Function fieldTypeChar(  i As Integer) As Char
 				Return typeChars.Chars(i)
 	 End Function
 			Friend Overridable Function fieldSignature() As Object
@@ -328,7 +328,7 @@ Namespace java.lang.invoke
 			''' represents a MH bound to a generic invoker, which in turn forwards to the corresponding
 			''' getter.
 			''' </summary>
-			Friend Overridable Function getterFunction(ByVal i As Integer) As NamedFunction
+			Friend Overridable Function getterFunction(  i As Integer) As NamedFunction
 				Dim nf As NamedFunction = nominalGetters(i)
 				assert(nf.memberDeclaringClassOrNull() Is fieldHolder())
 				assert(nf.returnType() Is fieldType(i))
@@ -349,7 +349,7 @@ Namespace java.lang.invoke
 
 			Friend Shared ReadOnly EMPTY As New SpeciesData("", GetType(BoundMethodHandle))
 
-			Private Sub New(ByVal types As String, ByVal clazz As [Class])
+			Private Sub New(  types As String,   clazz As [Class])
 				Me.typeChars = types
 				Me.typeCodes = basicTypes(types)
 				Me.clazz = clazz
@@ -375,7 +375,7 @@ Namespace java.lang.invoke
 				End If
 			End Sub
 
-			Private Sub New(ByVal typeChars As String)
+			Private Sub New(  typeChars As String)
 				' Placeholder only.
 				Me.typeChars = typeChars
 				Me.typeCodes = basicTypes(typeChars)
@@ -419,11 +419,11 @@ Namespace java.lang.invoke
 			End Sub
 			Private Shared ReadOnly INIT_DONE As Boolean ' set after <clinit> finishes...
 
-			Friend Overridable Function extendWith(ByVal type As SByte) As SpeciesData
+			Friend Overridable Function extendWith(  type As SByte) As SpeciesData
 				Return extendWith(BasicType.basicType(type))
 			End Function
 
-			Friend Overridable Function extendWith(ByVal type As BasicType) As SpeciesData
+			Friend Overridable Function extendWith(  type As BasicType) As SpeciesData
 				Dim ord As Integer = type.ordinal()
 				Dim d As SpeciesData = extensions(ord)
 				If d IsNot Nothing Then Return d
@@ -432,7 +432,7 @@ Namespace java.lang.invoke
 				Return d
 			End Function
 
-			Private Shared Function [get](ByVal types As String) As SpeciesData
+			Private Shared Function [get](  types As String) As SpeciesData
 				' Acquire cache lock for query.
 				Dim d As SpeciesData = lookupCache(types)
 				If Not d.placeholder Then Return d
@@ -447,12 +447,12 @@ Namespace java.lang.invoke
 				assert(d IsNot Nothing AndAlso (Not d.placeholder))
 				Return d
 			End Function
-			Shared Function getForClass(ByVal types As String, ByVal clazz As [Class]) As SpeciesData
+			Shared Function getForClass(  types As String,   clazz As [Class]) As SpeciesData
 				' clazz is a new class which is initializing its SPECIES_DATA field
 				Return updateCache(types, New SpeciesData(types, clazz))
 			End Function
 			<MethodImpl(MethodImplOptions.Synchronized)> _
-			Private Shared Function lookupCache(ByVal types As String) As SpeciesData
+			Private Shared Function lookupCache(  types As String) As SpeciesData
 				Dim d As SpeciesData = CACHE(types)
 				If d IsNot Nothing Then Return d
 				d = New SpeciesData(types)
@@ -461,7 +461,7 @@ Namespace java.lang.invoke
 				Return d
 			End Function
 			<MethodImpl(MethodImplOptions.Synchronized)> _
-			Private Shared Function updateCache(ByVal types As String, ByVal d As SpeciesData) As SpeciesData
+			Private Shared Function updateCache(  types As String,   d As SpeciesData) As SpeciesData
 				Dim d2 As SpeciesData
 'JAVA TO VB CONVERTER TODO TASK: Assignments within expressions are not supported in VB
 				assert((d2 = CACHE(types)) Is Nothing OrElse d2.placeholder)
@@ -472,7 +472,7 @@ Namespace java.lang.invoke
 
 		End Class
 
-		Friend Shared Function getSpeciesData(ByVal types As String) As SpeciesData
+		Friend Shared Function getSpeciesData(  types As String) As SpeciesData
 			Return SpeciesData.get(types)
 		End Function
 
@@ -576,7 +576,7 @@ Namespace java.lang.invoke
 			''' </summary>
 			''' <param name="types"> the type signature, wherein reference types are erased to 'L' </param>
 			''' <returns> the generated concrete BMH class </returns>
-			Friend Shared Function generateConcreteBMHClass(ByVal types As String) As  [Class]
+			Friend Shared Function generateConcreteBMHClass(  types As String) As  [Class]
 				Dim cw As New jdk.internal.org.objectweb.asm.ClassWriter(jdk.internal.org.objectweb.asm.ClassWriter.COMPUTE_MAXS + jdk.internal.org.objectweb.asm.ClassWriter.COMPUTE_FRAMES)
 
 				Dim shortTypes As String = LambdaForm.shortenSignature(types)
@@ -740,7 +740,7 @@ Namespace java.lang.invoke
 				Return bmhClass
 			End Function
 
-			Private Shared Function typeLoadOp(ByVal t As Char) As Integer
+			Private Shared Function typeLoadOp(  t As Char) As Integer
 				Select Case t
 				Case "L"c
 					Return ALOAD
@@ -757,7 +757,7 @@ Namespace java.lang.invoke
 				End Select
 			End Function
 
-			Private Shared Sub emitPushFields(ByVal types As String, ByVal className As String, ByVal mv As jdk.internal.org.objectweb.asm.MethodVisitor)
+			Private Shared Sub emitPushFields(  types As String,   className As String,   mv As jdk.internal.org.objectweb.asm.MethodVisitor)
 				For i As Integer = 0 To types.length() - 1
 					Dim tc As Char = types.Chars(i)
 					mv.visitVarInsn(ALOAD, 0)
@@ -765,7 +765,7 @@ Namespace java.lang.invoke
 				Next i
 			End Sub
 
-			Friend Shared Function typeSig(ByVal t As Char) As String
+			Friend Shared Function typeSig(  t As Char) As String
 				Return If(t = "L"c, JLO_SIG, Convert.ToString(t))
 			End Function
 
@@ -773,7 +773,7 @@ Namespace java.lang.invoke
 			' Getter MH generation.
 			'
 
-			Private Shared Function makeGetter(ByVal cbmhClass As [Class], ByVal types As String, ByVal index As Integer) As MethodHandle
+			Private Shared Function makeGetter(  cbmhClass As [Class],   types As String,   index As Integer) As MethodHandle
 				Dim fieldName As String = makeFieldName(types, index)
 				Dim fieldType As  [Class] = sun.invoke.util.Wrapper.forBasicType(types.Chars(index)).primitiveType()
 				Try
@@ -784,7 +784,7 @@ Namespace java.lang.invoke
 				End Try
 			End Function
 
-			Friend Shared Function makeGetters(ByVal cbmhClass As [Class], ByVal types As String, ByVal mhs As MethodHandle()) As MethodHandle()
+			Friend Shared Function makeGetters(  cbmhClass As [Class],   types As String,   mhs As MethodHandle()) As MethodHandle()
 				If mhs Is Nothing Then mhs = New MethodHandle(types.length() - 1){}
 				For i As Integer = 0 To mhs.Length - 1
 					mhs(i) = makeGetter(cbmhClass, types, i)
@@ -793,14 +793,14 @@ Namespace java.lang.invoke
 				Return mhs
 			End Function
 
-			Friend Shared Function makeCtors(ByVal cbmh As [Class], ByVal types As String, ByVal mhs As MethodHandle()) As MethodHandle()
+			Friend Shared Function makeCtors(  cbmh As [Class],   types As String,   mhs As MethodHandle()) As MethodHandle()
 				If mhs Is Nothing Then mhs = New MethodHandle(0){}
 				If types.Equals("") Then ' hack for empty BMH species Return mhs
 				mhs(0) = makeCbmhCtor(cbmh, types)
 				Return mhs
 			End Function
 
-			Friend Shared Function makeNominalGetters(ByVal types As String, ByVal nfs As NamedFunction(), ByVal getters As MethodHandle()) As NamedFunction()
+			Friend Shared Function makeNominalGetters(  types As String,   nfs As NamedFunction(),   getters As MethodHandle()) As NamedFunction()
 				If nfs Is Nothing Then nfs = New NamedFunction(types.length() - 1){}
 				For i As Integer = 0 To nfs.Length - 1
 					nfs(i) = New NamedFunction(getters(i))
@@ -812,7 +812,7 @@ Namespace java.lang.invoke
 			' Auxiliary methods.
 			'
 
-			Friend Shared Function speciesDataFromConcreteBMHClass(ByVal cbmh As [Class]) As SpeciesData
+			Friend Shared Function speciesDataFromConcreteBMHClass(  cbmh As [Class]) As SpeciesData
 				Try
 					Dim F_SPECIES_DATA As Field = cbmh.getDeclaredField("SPECIES_DATA")
 					Return CType(F_SPECIES_DATA.get(Nothing), SpeciesData)
@@ -826,12 +826,12 @@ Namespace java.lang.invoke
 			''' arg + type + index
 			''' where type is a single character (L, I, J, F, D).
 			''' </summary>
-			Private Shared Function makeFieldName(ByVal types As String, ByVal index As Integer) As String
+			Private Shared Function makeFieldName(  types As String,   index As Integer) As String
 				Debug.Assert(index >= 0 AndAlso index < types.length())
 				Return "arg" & AscW(types.Chars(index)) + index
 			End Function
 
-			Private Shared Function makeSignature(ByVal types As String, ByVal ctor As Boolean) As String
+			Private Shared Function makeSignature(  types As String,   ctor As Boolean) As String
 				Dim buf As New StringBuilder(SIG_INCIPIT)
 				For Each c As Char In types.ToCharArray()
 					buf.append(typeSig(c))
@@ -839,7 +839,7 @@ Namespace java.lang.invoke
 				Return buf.append(")"c).append(If(ctor, "V", BMH_SIG)).ToString()
 			End Function
 
-			Friend Shared Function makeCbmhCtor(ByVal cbmh As [Class], ByVal types As String) As MethodHandle
+			Friend Shared Function makeCbmhCtor(  cbmh As [Class],   types As String) As MethodHandle
 				Try
 					Return LOOKUP.findStatic(cbmh, "make", MethodType.fromMethodDescriptorString(makeSignature(types, False), Nothing))
 'JAVA TO VB CONVERTER TODO TASK: There is no equivalent in VB to Java 'multi-catch' syntax:
@@ -857,7 +857,7 @@ Namespace java.lang.invoke
 		Friend Shared ReadOnly SPECIES_DATA As SpeciesData = SpeciesData.EMPTY
 
 		Private Shared ReadOnly SPECIES_DATA_CACHE As SpeciesData() = New SpeciesData(4){}
-		Private Shared Function checkCache(ByVal size As Integer, ByVal types As String) As SpeciesData
+		Private Shared Function checkCache(  size As Integer,   types As String) As SpeciesData
 			Dim idx As Integer = size - 1
 			Dim data As SpeciesData = SPECIES_DATA_CACHE(idx)
 			If data IsNot Nothing Then Return data

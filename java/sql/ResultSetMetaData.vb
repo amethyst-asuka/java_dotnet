@@ -58,7 +58,7 @@ Namespace java.sql
 		''' <param name="column"> the first column is 1, the second is 2, ... </param>
 		''' <returns> <code>true</code> if so; <code>false</code> otherwise </returns>
 		''' <exception cref="SQLException"> if a database access error occurs </exception>
-		Function isAutoIncrement(ByVal column As Integer) As Boolean
+		Function isAutoIncrement(  column As Integer) As Boolean
 
 		''' <summary>
 		''' Indicates whether a column's case matters.
@@ -66,7 +66,7 @@ Namespace java.sql
 		''' <param name="column"> the first column is 1, the second is 2, ... </param>
 		''' <returns> <code>true</code> if so; <code>false</code> otherwise </returns>
 		''' <exception cref="SQLException"> if a database access error occurs </exception>
-		Function isCaseSensitive(ByVal column As Integer) As Boolean
+		Function isCaseSensitive(  column As Integer) As Boolean
 
 		''' <summary>
 		''' Indicates whether the designated column can be used in a where clause.
@@ -74,7 +74,7 @@ Namespace java.sql
 		''' <param name="column"> the first column is 1, the second is 2, ... </param>
 		''' <returns> <code>true</code> if so; <code>false</code> otherwise </returns>
 		''' <exception cref="SQLException"> if a database access error occurs </exception>
-		Function isSearchable(ByVal column As Integer) As Boolean
+		Function isSearchable(  column As Integer) As Boolean
 
 		''' <summary>
 		''' Indicates whether the designated column is a cash value.
@@ -82,7 +82,7 @@ Namespace java.sql
 		''' <param name="column"> the first column is 1, the second is 2, ... </param>
 		''' <returns> <code>true</code> if so; <code>false</code> otherwise </returns>
 		''' <exception cref="SQLException"> if a database access error occurs </exception>
-		Function isCurrency(ByVal column As Integer) As Boolean
+		Function isCurrency(  column As Integer) As Boolean
 
 		''' <summary>
 		''' Indicates the nullability of values in the designated column.
@@ -91,7 +91,7 @@ Namespace java.sql
 		''' <returns> the nullability status of the given column; one of <code>columnNoNulls</code>,
 		'''          <code>columnNullable</code> or <code>columnNullableUnknown</code> </returns>
 		''' <exception cref="SQLException"> if a database access error occurs </exception>
-		Function isNullable(ByVal column As Integer) As Integer
+		Function isNullable(  column As Integer) As Integer
 
 		''' <summary>
 		''' The constant indicating that a
@@ -120,7 +120,7 @@ Namespace java.sql
 		''' <param name="column"> the first column is 1, the second is 2, ... </param>
 		''' <returns> <code>true</code> if so; <code>false</code> otherwise </returns>
 		''' <exception cref="SQLException"> if a database access error occurs </exception>
-		Function isSigned(ByVal column As Integer) As Boolean
+		Function isSigned(  column As Integer) As Boolean
 
 		''' <summary>
 		''' Indicates the designated column's normal maximum width in characters.
@@ -129,7 +129,7 @@ Namespace java.sql
 		''' <returns> the normal maximum number of characters allowed as the width
 		'''          of the designated column </returns>
 		''' <exception cref="SQLException"> if a database access error occurs </exception>
-		Function getColumnDisplaySize(ByVal column As Integer) As Integer
+		Function getColumnDisplaySize(  column As Integer) As Integer
 
 		''' <summary>
 		''' Gets the designated column's suggested title for use in printouts and
@@ -141,7 +141,7 @@ Namespace java.sql
 		''' <param name="column"> the first column is 1, the second is 2, ... </param>
 		''' <returns> the suggested column title </returns>
 		''' <exception cref="SQLException"> if a database access error occurs </exception>
-		Function getColumnLabel(ByVal column As Integer) As String
+		Function getColumnLabel(  column As Integer) As String
 
 		''' <summary>
 		''' Get the designated column's name.
@@ -149,7 +149,7 @@ Namespace java.sql
 		''' <param name="column"> the first column is 1, the second is 2, ... </param>
 		''' <returns> column name </returns>
 		''' <exception cref="SQLException"> if a database access error occurs </exception>
-		Function getColumnName(ByVal column As Integer) As String
+		Function getColumnName(  column As Integer) As String
 
 		''' <summary>
 		''' Get the designated column's table's schema.
@@ -157,7 +157,7 @@ Namespace java.sql
 		''' <param name="column"> the first column is 1, the second is 2, ... </param>
 		''' <returns> schema name or "" if not applicable </returns>
 		''' <exception cref="SQLException"> if a database access error occurs </exception>
-		Function getSchemaName(ByVal column As Integer) As String
+		Function getSchemaName(  column As Integer) As String
 
 		''' <summary>
 		''' Get the designated column's specified column size.
@@ -170,7 +170,7 @@ Namespace java.sql
 		''' <param name="column"> the first column is 1, the second is 2, ... </param>
 		''' <returns> precision </returns>
 		''' <exception cref="SQLException"> if a database access error occurs </exception>
-		Function getPrecision(ByVal column As Integer) As Integer
+		Function getPrecision(  column As Integer) As Integer
 
 		''' <summary>
 		''' Gets the designated column's number of digits to right of the decimal point.
@@ -179,7 +179,7 @@ Namespace java.sql
 		''' <param name="column"> the first column is 1, the second is 2, ... </param>
 		''' <returns> scale </returns>
 		''' <exception cref="SQLException"> if a database access error occurs </exception>
-		Function getScale(ByVal column As Integer) As Integer
+		Function getScale(  column As Integer) As Integer
 
 		''' <summary>
 		''' Gets the designated column's table name.
@@ -187,7 +187,7 @@ Namespace java.sql
 		''' <param name="column"> the first column is 1, the second is 2, ... </param>
 		''' <returns> table name or "" if not applicable </returns>
 		''' <exception cref="SQLException"> if a database access error occurs </exception>
-		Function getTableName(ByVal column As Integer) As String
+		Function getTableName(  column As Integer) As String
 
 		''' <summary>
 		''' Gets the designated column's table's catalog name.
@@ -196,7 +196,7 @@ Namespace java.sql
 		''' <returns> the name of the catalog for the table in which the given column
 		'''          appears or "" if not applicable </returns>
 		''' <exception cref="SQLException"> if a database access error occurs </exception>
-		Function getCatalogName(ByVal column As Integer) As String
+		Function getCatalogName(  column As Integer) As String
 
 		''' <summary>
 		''' Retrieves the designated column's SQL type.
@@ -205,7 +205,7 @@ Namespace java.sql
 		''' <returns> SQL type from java.sql.Types </returns>
 		''' <exception cref="SQLException"> if a database access error occurs </exception>
 		''' <seealso cref= Types </seealso>
-		Function getColumnType(ByVal column As Integer) As Integer
+		Function getColumnType(  column As Integer) As Integer
 
 		''' <summary>
 		''' Retrieves the designated column's database-specific type name.
@@ -214,7 +214,7 @@ Namespace java.sql
 		''' <returns> type name used by the database. If the column type is
 		''' a user-defined type, then a fully-qualified type name is returned. </returns>
 		''' <exception cref="SQLException"> if a database access error occurs </exception>
-		Function getColumnTypeName(ByVal column As Integer) As String
+		Function getColumnTypeName(  column As Integer) As String
 
 		''' <summary>
 		''' Indicates whether the designated column is definitely not writable.
@@ -222,7 +222,7 @@ Namespace java.sql
 		''' <param name="column"> the first column is 1, the second is 2, ... </param>
 		''' <returns> <code>true</code> if so; <code>false</code> otherwise </returns>
 		''' <exception cref="SQLException"> if a database access error occurs </exception>
-		Function isReadOnly(ByVal column As Integer) As Boolean
+		Function isReadOnly(  column As Integer) As Boolean
 
 		''' <summary>
 		''' Indicates whether it is possible for a write on the designated column to succeed.
@@ -230,7 +230,7 @@ Namespace java.sql
 		''' <param name="column"> the first column is 1, the second is 2, ... </param>
 		''' <returns> <code>true</code> if so; <code>false</code> otherwise </returns>
 		''' <exception cref="SQLException"> if a database access error occurs </exception>
-		Function isWritable(ByVal column As Integer) As Boolean
+		Function isWritable(  column As Integer) As Boolean
 
 		''' <summary>
 		''' Indicates whether a write on the designated column will definitely succeed.
@@ -238,7 +238,7 @@ Namespace java.sql
 		''' <param name="column"> the first column is 1, the second is 2, ... </param>
 		''' <returns> <code>true</code> if so; <code>false</code> otherwise </returns>
 		''' <exception cref="SQLException"> if a database access error occurs </exception>
-		Function isDefinitelyWritable(ByVal column As Integer) As Boolean
+		Function isDefinitelyWritable(  column As Integer) As Boolean
 
 		'--------------------------JDBC 2.0-----------------------------------
 
@@ -256,7 +256,7 @@ Namespace java.sql
 		''' column. This is the class name used for custom mapping. </returns>
 		''' <exception cref="SQLException"> if a database access error occurs
 		''' @since 1.2 </exception>
-		Function getColumnClassName(ByVal column As Integer) As String
+		Function getColumnClassName(  column As Integer) As String
 	End Interface
 
 End Namespace

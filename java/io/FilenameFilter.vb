@@ -47,7 +47,7 @@ Namespace java.io
 		''' <param name="name">   the name of the file. </param>
 		''' <returns>  <code>true</code> if and only if the name should be
 		''' included in the file list; <code>false</code> otherwise. </returns>
-		Function accept(ByVal dir As File, ByVal name As String) As Boolean
+		Function accept(  dir As File,   name As String) As Boolean
 	End Interface
 
 End Namespace

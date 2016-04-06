@@ -78,7 +78,7 @@ Namespace java.nio.file
 		'''          if the path string cannot be converted to a {@code Path}
 		''' </exception>
 		''' <seealso cref= FileSystem#getPath </seealso>
-		Public Shared Function [get](ByVal first As String, ParamArray ByVal more As String()) As Path
+		Public Shared Function [get](  first As String, ParamArray   more As String()) As Path
 			Return FileSystems.default.getPath(first, more)
 		End Function
 
@@ -125,7 +125,7 @@ Namespace java.nio.file
 		''' <exception cref="SecurityException">
 		'''          if a security manager is installed and it denies an unspecified
 		'''          permission to access the file system </exception>
-		Public Shared Function [get](ByVal uri As java.net.URI) As Path
+		Public Shared Function [get](  uri As java.net.URI) As Path
 			Dim scheme As String = uri.scheme
 			If scheme Is Nothing Then Throw New IllegalArgumentException("Missing scheme")
 

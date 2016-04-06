@@ -55,7 +55,7 @@ Namespace java.sql
 		''' <param name="day"> 1 to 31 </param>
 		''' @deprecated instead use the constructor <code>Date(long date)</code> 
 		<Obsolete("instead use the constructor <code>Date(long date)</code>")> _
-		Public Sub New(ByVal year As Integer, ByVal month As Integer, ByVal day As Integer)
+		Public Sub New(  year As Integer,   month As Integer,   day As Integer)
 			MyBase.New(year, month, day)
 		End Sub
 
@@ -70,7 +70,7 @@ Namespace java.sql
 		'''        to exceed the milliseconds representation for the year 8099.
 		'''        A negative number indicates the number of milliseconds
 		'''        before January 1, 1970, 00:00:00 GMT. </param>
-		Public Sub New(ByVal [date] As Long)
+		Public Sub New(  [date] As Long)
 			' If the millisecond date value contains time info, mask it out.
 			MyBase.New(date_Renamed)
 
@@ -89,7 +89,7 @@ Namespace java.sql
 		'''        A negative number indicates the number of milliseconds
 		'''        before January 1, 1970, 00:00:00 GMT. </param>
 		Public Overrides Property time As Long
-			Set(ByVal [date] As Long)
+			Set(  [date] As Long)
 				' If the millisecond date value contains time info, mask it out.
 				MyBase.time = date_Renamed
 			End Set
@@ -106,7 +106,7 @@ Namespace java.sql
 		'''         given date </returns>
 		''' <exception cref="IllegalArgumentException"> if the date given is not in the
 		'''         JDBC date escape format (yyyy-[m]m-[d]d) </exception>
-		Public Shared Function valueOf(ByVal s As String) As Date
+		Public Shared Function valueOf(  s As String) As Date
 			Const YEAR_LENGTH As Integer = 4
 			Const MONTH_LENGTH As Integer = 2
 			Const DAY_LENGTH As Integer = 2
@@ -176,7 +176,7 @@ Namespace java.sql
 			Get
 				Throw New System.ArgumentException
 			End Get
-			Set(ByVal i As Integer)
+			Set(  i As Integer)
 				Throw New System.ArgumentException
 			End Set
 		End Property
@@ -193,7 +193,7 @@ Namespace java.sql
 			Get
 				Throw New System.ArgumentException
 			End Get
-			Set(ByVal i As Integer)
+			Set(  i As Integer)
 				Throw New System.ArgumentException
 			End Set
 		End Property
@@ -210,7 +210,7 @@ Namespace java.sql
 			Get
 				Throw New System.ArgumentException
 			End Get
-			Set(ByVal i As Integer)
+			Set(  i As Integer)
 				Throw New System.ArgumentException
 			End Set
 		End Property
@@ -237,7 +237,7 @@ Namespace java.sql
 		''' <exception cref="NullPointerException"> if {@code date} is null
 		''' @since 1.8 </exception>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Shared Function valueOf(ByVal [date] As java.time.LocalDate) As Date
+		Public Shared Function valueOf(  [date] As java.time.LocalDate) As Date
 			Return New Date(date_Renamed.year - 1900, date_Renamed.monthValue -1, date_Renamed.dayOfMonth)
 		End Function
 

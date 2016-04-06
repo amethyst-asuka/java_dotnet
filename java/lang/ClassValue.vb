@@ -65,7 +65,7 @@ Namespace java.lang
 		''' <returns> the newly computed value associated with this {@code ClassValue}, for the given class or interface </returns>
 		''' <seealso cref= #get </seealso>
 		''' <seealso cref= #remove </seealso>
-		Protected Friend MustOverride Function computeValue(ByVal type As [Class]) As T
+		Protected Friend MustOverride Function computeValue(  type As [Class]) As T
 
 		''' <summary>
 		''' Returns the value for the given class.
@@ -92,7 +92,7 @@ Namespace java.lang
 		''' <exception cref="NullPointerException"> if the argument is null </exception>
 		''' <seealso cref= #remove </seealso>
 		''' <seealso cref= #computeValue </seealso>
-		Public Overridable Function [get](ByVal type As [Class]) As T
+		Public Overridable Function [get](  type As [Class]) As T
 			' non-racing this.hashCodeForCache : final int
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 			Dim cache As Entry(Of ?)()
@@ -161,14 +161,14 @@ Namespace java.lang
 		''' </summary>
 		''' <param name="type"> the type whose class value must be removed </param>
 		''' <exception cref="NullPointerException"> if the argument is null </exception>
-		Public Overridable Sub remove(ByVal type As [Class])
+		Public Overridable Sub remove(  type As [Class])
 			Dim map_Renamed As  [Class]ValueMap = getMap(type)
 			map_Renamed.removeEntry(Me)
 		End Sub
 
 		' Possible functionality for JSR 292 MR 1
 		'public
-	 Friend Overridable Sub put(ByVal type As [Class], ByVal value As T)
+	 Friend Overridable Sub put(  type As [Class],   value As T)
 			Dim map_Renamed As  [Class]ValueMap = getMap(type)
 			map_Renamed.changeEntry(Me, value)
 	 End Sub
@@ -180,7 +180,7 @@ Namespace java.lang
 		''' <summary>
 		''' Return the cache, if it exists, else a dummy empty cache. </summary>
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-		Private Shared Function getCacheCarefully(ByVal type As [Class]) As Entry(Of ?)()
+		Private Shared Function getCacheCarefully(  type As [Class]) As Entry(Of ?)()
 			' racing type.classValueMap{.cacheArray} : null => new Entry[X] <=> new Entry[Y]
 			Dim map_Renamed As  [Class]ValueMap = type.classValueMap
 			If map_Renamed Is Nothing Then Return EMPTY_CACHE
@@ -201,7 +201,7 @@ Namespace java.lang
 		''' Called only if the first probe was empty or a collision.
 		''' This is a separate method, so compilers can process it independently.
 		''' </summary>
-		Private Function getFromBackup(Of T1)(ByVal cache As Entry(Of T1)(), ByVal type As [Class]) As T
+		Private Function getFromBackup(Of T1)(  cache As Entry(Of T1)(),   type As [Class]) As T
 			Dim e As Entry(Of T) = probeBackupLocations(cache, Me)
 			If e IsNot Nothing Then Return e.value()
 			Return getFromHashMap(type)
@@ -209,14 +209,14 @@ Namespace java.lang
 
 		' Hack to suppress warnings on the (T) cast, which is a no-op.
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Friend Overridable Function castEntry(Of T1)(ByVal e As Entry(Of T1)) As Entry(Of T)
+		Friend Overridable Function castEntry(Of T1)(  e As Entry(Of T1)) As Entry(Of T)
 			Return CType(e, Entry(Of T))
 		End Function
 
 		''' <summary>
 		''' Called when the fast path of get fails, and cache reprobe also fails.
 		''' </summary>
-		Private Function getFromHashMap(ByVal type As [Class]) As T
+		Private Function getFromHashMap(  type As [Class]) As T
 			' The fail-safe recovery is to fall back to the underlying classValueMap.
 			Dim map_Renamed As  [Class]ValueMap = getMap(type)
 			Do
@@ -237,7 +237,7 @@ Namespace java.lang
 
 		''' <summary>
 		''' Check that e is non-null, matches this ClassValue, and is live. </summary>
-		Friend Overridable Function match(Of T1)(ByVal e As Entry(Of T1)) As Boolean
+		Friend Overridable Function match(Of T1)(  e As Entry(Of T1)) As Boolean
 			' racing e.version : null (blank) => unique Version token => null (GC-ed version)
 			' non-racing this.version : v1 => v2 => ... (updates are read faithfully from volatile)
 			Return (e IsNot Nothing AndAlso e.get() Is Me.version_Renamed)
@@ -312,7 +312,7 @@ Namespace java.lang
 		Friend Class Version(Of T)
 			Private ReadOnly classValue_Renamed As  [Class]Value(Of T)
 			Private ReadOnly promise_Renamed As New Entry(Of T)(Me)
-			Friend Sub New(ByVal classValue_Renamed As  [Class]Value(Of T))
+			Friend Sub New(  classValue_Renamed As  [Class]Value(Of T))
 				Me.classValue_Renamed = classValue_Renamed
 			End Sub
 			Friend Overridable Function classValue() As  [Class]Value(Of T)
@@ -344,7 +344,7 @@ Namespace java.lang
 			Inherits WeakReference(Of Version(Of T))
 
 			Friend ReadOnly value_Renamed As Object ' usually of type T, but sometimes (Entry)this
-			Friend Sub New(ByVal version As Version(Of T), ByVal value As T)
+			Friend Sub New(  version As Version(Of T),   value As T)
 				MyBase.New(version)
 				Me.value_Renamed = value ' for a regular entry, value is of type T
 			End Sub
@@ -353,7 +353,7 @@ Namespace java.lang
 			End Sub
 			''' <summary>
 			''' For creating a promise. </summary>
-			Friend Sub New(ByVal version As Version(Of T))
+			Friend Sub New(  version As Version(Of T))
 				MyBase.New(version)
 				Me.value_Renamed = Me ' for a promise, value is not of type T, but Entry!
 			End Sub
@@ -385,7 +385,7 @@ Namespace java.lang
 					Return False
 				End Get
 			End Property
-			Friend Overridable Function refreshVersion(ByVal v2 As Version(Of T)) As Entry(Of T)
+			Friend Overridable Function refreshVersion(  v2 As Version(Of T)) As Entry(Of T)
 				assertNotPromise()
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
 				Dim e2 As New Entry(Of T)(v2, CType(value_Renamed, T)) ' if !isPromise, type is T
@@ -399,7 +399,7 @@ Namespace java.lang
 
         ''' <summary>
         ''' Return the backing map associated with this type. </summary>
-        Private Shared Function getMap(ByVal type As [Class]) As  [Class]ValueMap
+        Private Shared Function getMap(  type As [Class]) As  [Class]ValueMap
             ' racing type.classValueMap : null (blank) => unique ClassValueMap
             ' if a null is observed, a map is created (lazily, synchronously, uniquely)
             ' all further access to that map is synchronized
@@ -409,7 +409,7 @@ Namespace java.lang
         End Function
 
         Private Shared ReadOnly CRITICAL_SECTION As New Object
-        Private Shared Function initializeMap(ByVal type As [Class]) As  [Class]ValueMap
+        Private Shared Function initializeMap(  type As [Class]) As  [Class]ValueMap
             Dim map_Renamed As  [Class]ValueMap
             SyncLock CRITICAL_SECTION ' private object to avoid deadlocks
                 ' happens about once per type
@@ -422,7 +422,7 @@ Namespace java.lang
             Return map_Renamed
         End Function
 
-        Friend Shared Function makeEntry(Of T)(ByVal explicitVersion As Version(Of T), ByVal value As T) As Entry(Of T)
+        Friend Shared Function makeEntry(Of T)(  explicitVersion As Version(Of T),   value As T) As Entry(Of T)
 			' Note that explicitVersion might be different from this.version.
 			Return New Entry(Of )(explicitVersion, value)
 
@@ -464,7 +464,7 @@ Namespace java.lang
             ''' Build a backing map for ClassValues, relative the given type.
             '''  Also, create an empty cache array and install it on the class.
             ''' </summary>
-            Friend Sub New(ByVal type As [Class])
+            Friend Sub New(  type As [Class])
                 Me.type = type
                 sizeCache(INITIAL_ENTRIES)
             End Sub
@@ -479,7 +479,7 @@ Namespace java.lang
 			''' <summary>
 			''' Initiate a query.  Store a promise (placeholder) if there is no value yet. </summary>
 			 <MethodImpl(MethodImplOptions.Synchronized)> _
-			 Friend Overridable Function startEntry(Of T)(ByVal classValue_Renamed As  [Class]Value(Of T)) As Entry(Of T)
+			 Friend Overridable Function startEntry(Of T)(  classValue_Renamed As  [Class]Value(Of T)) As Entry(Of T)
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
 				Dim e As Entry(Of T) = CType([get](classValue_Renamed.identity), Entry(Of T)) ' one map has entries for all value types <T>
 				Dim v As Version(Of T) = classValue_Renamed.version()
@@ -516,7 +516,7 @@ Namespace java.lang
 			''' <summary>
 			''' Finish a query.  Overwrite a matching placeholder.  Drop stale incoming values. </summary>
 			 <MethodImpl(MethodImplOptions.Synchronized)> _
-			 Friend Overridable Function finishEntry(Of T)(ByVal classValue_Renamed As  [Class]Value(Of T), ByVal e As Entry(Of T)) As Entry(Of T)
+			 Friend Overridable Function finishEntry(Of T)(  classValue_Renamed As  [Class]Value(Of T),   e As Entry(Of T)) As Entry(Of T)
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
 				Dim e0 As Entry(Of T) = CType([get](classValue_Renamed.identity), Entry(Of T)) ' one map has entries for all value types <T>
 				If e Is e0 Then
@@ -543,7 +543,7 @@ Namespace java.lang
 			''' <summary>
 			''' Remove an entry. </summary>
 			<MethodImpl(MethodImplOptions.Synchronized)> _
-			Friend Overridable Sub removeEntry(Of T1)(ByVal classValue_Renamed As  [Class]Value(Of T1))
+			Friend Overridable Sub removeEntry(Of T1)(  classValue_Renamed As  [Class]Value(Of T1))
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 				Dim e As Entry(Of ?) = remove(classValue_Renamed.identity)
 				If e Is Nothing Then
@@ -564,7 +564,7 @@ Namespace java.lang
 			''' <summary>
 			''' Change the value for an entry. </summary>
 			 <MethodImpl(MethodImplOptions.Synchronized)> _
-			 Friend Overridable Sub changeEntry(Of T)(ByVal classValue_Renamed As  [Class]Value(Of T), ByVal value As T)
+			 Friend Overridable Sub changeEntry(Of T)(  classValue_Renamed As  [Class]Value(Of T),   value As T)
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
 				Dim e0 As Entry(Of T) = CType([get](classValue_Renamed.identity), Entry(Of T)) ' one map has entries for all value types <T>
 				Dim version As Version(Of T) = classValue_Renamed.version()
@@ -589,7 +589,7 @@ Namespace java.lang
 			''' <summary>
 			''' Load the cache entry at the given (hashed) location. </summary>
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-			Friend Shared Function loadFromCache(Of T1)(ByVal cache As Entry(Of T1)(), ByVal i As Integer) As Entry(Of ?)
+			Friend Shared Function loadFromCache(Of T1)(  cache As Entry(Of T1)(),   i As Integer) As Entry(Of ?)
 				' non-racing cache.length : constant
 				' racing cache[i & (mask)] : null <=> Entry
 				Return cache(i And (cache.Length-1))
@@ -598,13 +598,13 @@ Namespace java.lang
 
 			''' <summary>
 			''' Look in the cache, at the home location for the given ClassValue. </summary>
-			Friend Shared Function probeHomeLocation(Of T, T1)(ByVal cache As Entry(Of T1)(), ByVal classValue_Renamed As  [Class]Value(Of T)) As Entry(Of T)
+			Friend Shared Function probeHomeLocation(Of T, T1)(  cache As Entry(Of T1)(),   classValue_Renamed As  [Class]Value(Of T)) As Entry(Of T)
 				Return classValue_Renamed.castEntry(loadFromCache(cache, classValue_Renamed.hashCodeForCache))
 			End Function
 
 			''' <summary>
 			''' Given that first probe was a collision, retry at nearby locations. </summary>
-			Friend Shared Function probeBackupLocations(Of T, T1)(ByVal cache As Entry(Of T1)(), ByVal classValue_Renamed As  [Class]Value(Of T)) As Entry(Of T)
+			Friend Shared Function probeBackupLocations(Of T, T1)(  cache As Entry(Of T1)(),   classValue_Renamed As  [Class]Value(Of T)) As Entry(Of T)
 				If PROBE_LIMIT <= 0 Then Return Nothing
 				' Probe the cache carefully, in a range of slots.
 				Dim mask As Integer = (cache.Length-1)
@@ -637,7 +637,7 @@ Namespace java.lang
 
 			''' <summary>
 			''' How far out of place is e? </summary>
-			Private Shared Function entryDislocation(Of T1, T2)(ByVal cache As Entry(Of T1)(), ByVal pos As Integer, ByVal e As Entry(Of T2)) As Integer
+			Private Shared Function entryDislocation(Of T1, T2)(  cache As Entry(Of T1)(),   pos As Integer,   e As Entry(Of T2)) As Integer
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 				Dim cv As  [Class]Value(Of ?) = e.classValueOrNull()
 				If cv Is Nothing Then ' entry is not live! Return 0
@@ -649,7 +649,7 @@ Namespace java.lang
 			'/ Below this line all functions are private, and assume synchronized access.
 			'/ --------
 
-			Private Sub sizeCache(ByVal length As Integer)
+			Private Sub sizeCache(  length As Integer)
 				assert((length And (length-1)) = 0) ' must be power of 2
 				cacheLoad = 0
 				cacheLoadLimit = CInt(Fix(CDbl(length) * CACHE_LOAD_LIMIT \ 100))
@@ -679,7 +679,7 @@ Namespace java.lang
 			''' Remove stale entries in the given range.
 			'''  Should be executed under a Map lock.
 			''' </summary>
-			Private Sub removeStaleEntries(Of T1)(ByVal cache As Entry(Of T1)(), ByVal begin As Integer, ByVal count As Integer)
+			Private Sub removeStaleEntries(Of T1)(  cache As Entry(Of T1)(),   begin As Integer,   count As Integer)
 				If PROBE_LIMIT <= 0 Then Return
 				Dim mask As Integer = (cache.Length-1)
 				Dim removed As Integer = 0
@@ -703,7 +703,7 @@ Namespace java.lang
 			'''  to plug into the hole, or return null if none is needed.
 			''' </summary>
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-			Private Function findReplacement(Of T1)(ByVal cache As Entry(Of T1)(), ByVal home1 As Integer) As Entry(Of ?)
+			Private Function findReplacement(Of T1)(  cache As Entry(Of T1)(),   home1 As Integer) As Entry(Of ?)
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 				Dim replacement As Entry(Of ?) = Nothing
 				Dim haveReplacement As Integer = -1, replacementPos As Integer = 0
@@ -746,7 +746,7 @@ Namespace java.lang
 
 			''' <summary>
 			''' Remove stale entries in the range near classValue. </summary>
-			Private Sub removeStaleEntries(Of T1)(ByVal classValue_Renamed As  [Class]Value(Of T1))
+			Private Sub removeStaleEntries(Of T1)(  classValue_Renamed As  [Class]Value(Of T1))
 				removeStaleEntries(cache, classValue_Renamed.hashCodeForCache, PROBE_LIMIT)
 			End Sub
 
@@ -760,14 +760,14 @@ Namespace java.lang
 
 			''' <summary>
 			''' Add the given entry to the cache, in its home location, unless it is out of date. </summary>
-			Private Sub addToCache(Of T)(ByVal e As Entry(Of T))
+			Private Sub addToCache(Of T)(  e As Entry(Of T))
 				Dim classValue_Renamed As  [Class]Value(Of T) = e.classValueOrNull()
 				If classValue_Renamed IsNot Nothing Then addToCache(classValue_Renamed, e)
 			End Sub
 
 			''' <summary>
 			''' Add the given entry to the cache, in its home location. </summary>
-			Private Sub addToCache(Of T)(ByVal classValue_Renamed As  [Class]Value(Of T), ByVal e As Entry(Of T))
+			Private Sub addToCache(Of T)(  classValue_Renamed As  [Class]Value(Of T),   e As Entry(Of T))
 				If PROBE_LIMIT <= 0 Then ' do not fill cache Return
 				' Add e to the cache.
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
@@ -793,7 +793,7 @@ Namespace java.lang
 			'''  'Gently' means return self rather than dislocating a live victim.
 			''' </summary>
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-			Private Function placeInCache(Of T1, T2)(ByVal cache As Entry(Of T1)(), ByVal pos As Integer, ByVal e As Entry(Of T2), ByVal gently As Boolean) As Entry(Of ?)
+			Private Function placeInCache(Of T1, T2)(  cache As Entry(Of T1)(),   pos As Integer,   e As Entry(Of T2),   gently As Boolean) As Entry(Of ?)
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 				Dim e2 As Entry(Of ?) = overwrittenEntry(cache(pos))
 				If gently AndAlso e2 IsNot Nothing Then
@@ -812,7 +812,7 @@ Namespace java.lang
 			'''  because the caller is going to store something
 			'''  in its place.
 			''' </summary>
-			Private Function overwrittenEntry(Of T)(ByVal e2 As Entry(Of T)) As Entry(Of T)
+			Private Function overwrittenEntry(Of T)(  e2 As Entry(Of T)) As Entry(Of T)
 				If e2 Is Nothing Then
 					cacheLoad += 1
 				ElseIf e2.live Then

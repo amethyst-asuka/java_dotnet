@@ -64,7 +64,7 @@ Namespace java.util.stream
 		'''                  predicate to apply to each element to determine if it
 		'''                  should be included </param>
 		''' <returns> the new stream </returns>
-		Function filter(ByVal predicate As java.util.function.IntPredicate) As IntStream
+		Function filter(  predicate As java.util.function.IntPredicate) As IntStream
 
 		''' <summary>
 		''' Returns a stream consisting of the results of applying the given
@@ -77,7 +77,7 @@ Namespace java.util.stream
 		'''               <a href="package-summary.html#Statelessness">stateless</a>
 		'''               function to apply to each element </param>
 		''' <returns> the new stream </returns>
-		Function map(ByVal mapper As java.util.function.IntUnaryOperator) As IntStream
+		Function map(  mapper As java.util.function.IntUnaryOperator) As IntStream
 
 		''' <summary>
 		''' Returns an object-valued {@code Stream} consisting of the results of
@@ -91,7 +91,7 @@ Namespace java.util.stream
 		'''               <a href="package-summary.html#Statelessness">stateless</a>
 		'''               function to apply to each element </param>
 		''' <returns> the new stream </returns>
-		 Function mapToObj(Of U, T1 As U)(ByVal mapper As java.util.function.IntFunction(Of T1)) As Stream(Of U)
+		 Function mapToObj(Of U, T1 As U)(  mapper As java.util.function.IntFunction(Of T1)) As Stream(Of U)
 
 		''' <summary>
 		''' Returns a {@code LongStream} consisting of the results of applying the
@@ -104,7 +104,7 @@ Namespace java.util.stream
 		'''               <a href="package-summary.html#Statelessness">stateless</a>
 		'''               function to apply to each element </param>
 		''' <returns> the new stream </returns>
-		Function mapToLong(ByVal mapper As java.util.function.IntToLongFunction) As LongStream
+		Function mapToLong(  mapper As java.util.function.IntToLongFunction) As LongStream
 
 		''' <summary>
 		''' Returns a {@code DoubleStream} consisting of the results of applying the
@@ -117,7 +117,7 @@ Namespace java.util.stream
 		'''               <a href="package-summary.html#Statelessness">stateless</a>
 		'''               function to apply to each element </param>
 		''' <returns> the new stream </returns>
-		Function mapToDouble(ByVal mapper As java.util.function.IntToDoubleFunction) As DoubleStream
+		Function mapToDouble(  mapper As java.util.function.IntToDoubleFunction) As DoubleStream
 
 		''' <summary>
 		''' Returns a stream consisting of the results of replacing each element of
@@ -136,7 +136,7 @@ Namespace java.util.stream
 		'''               {@code IntStream} of new values </param>
 		''' <returns> the new stream </returns>
 		''' <seealso cref= Stream#flatMap(Function) </seealso>
-		Function flatMap(Of T1 As IntStream)(ByVal mapper As java.util.function.IntFunction(Of T1)) As IntStream
+		Function flatMap(Of T1 As IntStream)(  mapper As java.util.function.IntFunction(Of T1)) As IntStream
 
 		''' <summary>
 		''' Returns a stream consisting of the distinct elements of this stream.
@@ -185,7 +185,7 @@ Namespace java.util.stream
 		'''               non-interfering</a> action to perform on the elements as
 		'''               they are consumed from the stream </param>
 		''' <returns> the new stream </returns>
-		Function peek(ByVal action As java.util.function.IntConsumer) As IntStream
+		Function peek(  action As java.util.function.IntConsumer) As IntStream
 
 		''' <summary>
 		''' Returns a stream consisting of the elements of this stream, truncated
@@ -211,7 +211,7 @@ Namespace java.util.stream
 		''' <param name="maxSize"> the number of elements the stream should be limited to </param>
 		''' <returns> the new stream </returns>
 		''' <exception cref="IllegalArgumentException"> if {@code maxSize} is negative </exception>
-		Function limit(ByVal maxSize As Long) As IntStream
+		Function limit(  maxSize As Long) As IntStream
 
 		''' <summary>
 		''' Returns a stream consisting of the remaining elements of this stream
@@ -239,7 +239,7 @@ Namespace java.util.stream
 		''' <param name="n"> the number of leading elements to skip </param>
 		''' <returns> the new stream </returns>
 		''' <exception cref="IllegalArgumentException"> if {@code n} is negative </exception>
-		Function skip(ByVal n As Long) As IntStream
+		Function skip(  n As Long) As IntStream
 
 		''' <summary>
 		''' Performs an action for each element of this stream.
@@ -256,7 +256,7 @@ Namespace java.util.stream
 		''' </summary>
 		''' <param name="action"> a <a href="package-summary.html#NonInterference">
 		'''               non-interfering</a> action to perform on the elements </param>
-		Sub forEach(ByVal action As java.util.function.IntConsumer)
+		Sub forEach(  action As java.util.function.IntConsumer)
 
 		''' <summary>
 		''' Performs an action for each element of this stream, guaranteeing that
@@ -269,7 +269,7 @@ Namespace java.util.stream
 		''' <param name="action"> a <a href="package-summary.html#NonInterference">
 		'''               non-interfering</a> action to perform on the elements </param>
 		''' <seealso cref= #forEach(IntConsumer) </seealso>
-		Sub forEachOrdered(ByVal action As java.util.function.IntConsumer)
+		Sub forEachOrdered(  action As java.util.function.IntConsumer)
 
 		''' <summary>
 		''' Returns an array containing the elements of this stream.
@@ -332,7 +332,7 @@ Namespace java.util.stream
 		''' <seealso cref= #min() </seealso>
 		''' <seealso cref= #max() </seealso>
 		''' <seealso cref= #average() </seealso>
-		Function reduce(ByVal identity As Integer, ByVal op As java.util.function.IntBinaryOperator) As Integer
+		Function reduce(  identity As Integer,   op As java.util.function.IntBinaryOperator) As Integer
 
 		''' <summary>
 		''' Performs a <a href="package-summary.html#Reduction">reduction</a> on the
@@ -368,7 +368,7 @@ Namespace java.util.stream
 		'''           function for combining two values </param>
 		''' <returns> the result of the reduction </returns>
 		''' <seealso cref= #reduce(int, IntBinaryOperator) </seealso>
-		Function reduce(ByVal op As java.util.function.IntBinaryOperator) As java.util.OptionalInt
+		Function reduce(  op As java.util.function.IntBinaryOperator) As java.util.OptionalInt
 
 		''' <summary>
 		''' Performs a <a href="package-summary.html#MutableReduction">mutable
@@ -405,7 +405,7 @@ Namespace java.util.stream
 		'''                    compatible with the accumulator function </param>
 		''' <returns> the result of the reduction </returns>
 		''' <seealso cref= Stream#collect(Supplier, BiConsumer, BiConsumer) </seealso>
-		 Function collect(Of R)(ByVal supplier As java.util.function.Supplier(Of R), ByVal accumulator As java.util.function.ObjIntConsumer(Of R), ByVal combiner As java.util.function.BiConsumer(Of R, R)) As R
+		 Function collect(Of R)(  supplier As java.util.function.Supplier(Of R),   accumulator As java.util.function.ObjIntConsumer(Of R),   combiner As java.util.function.BiConsumer(Of R, R)) As R
 
 		''' <summary>
 		''' Returns the sum of elements in this stream.  This is a special case
@@ -508,7 +508,7 @@ Namespace java.util.stream
 		'''                  predicate to apply to elements of this stream </param>
 		''' <returns> {@code true} if any elements of the stream match the provided
 		''' predicate, otherwise {@code false} </returns>
-		Function anyMatch(ByVal predicate As java.util.function.IntPredicate) As Boolean
+		Function anyMatch(  predicate As java.util.function.IntPredicate) As Boolean
 
 		''' <summary>
 		''' Returns whether all elements of this stream match the provided predicate.
@@ -530,7 +530,7 @@ Namespace java.util.stream
 		'''                  predicate to apply to elements of this stream </param>
 		''' <returns> {@code true} if either all elements of the stream match the
 		''' provided predicate or the stream is empty, otherwise {@code false} </returns>
-		Function allMatch(ByVal predicate As java.util.function.IntPredicate) As Boolean
+		Function allMatch(  predicate As java.util.function.IntPredicate) As Boolean
 
 		''' <summary>
 		''' Returns whether no elements of this stream match the provided predicate.
@@ -552,7 +552,7 @@ Namespace java.util.stream
 		'''                  predicate to apply to elements of this stream </param>
 		''' <returns> {@code true} if either no elements of the stream match the
 		''' provided predicate or the stream is empty, otherwise {@code false} </returns>
-		Function noneMatch(ByVal predicate As java.util.function.IntPredicate) As Boolean
+		Function noneMatch(  predicate As java.util.function.IntPredicate) As Boolean
 
 		''' <summary>
 		''' Returns an <seealso cref="OptionalInt"/> describing the first element of this
@@ -647,7 +647,7 @@ Namespace java.util.stream
 		''' </summary>
 		''' <param name="t"> the single element </param>
 		''' <returns> a singleton sequential stream </returns>
-		Shared Function [of](ByVal t As Integer) As IntStream
+		Shared Function [of](  t As Integer) As IntStream
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 			Return StreamSupport.intStream(New Streams.IntStreamBuilderImpl(t), False);
 
@@ -656,7 +656,7 @@ Namespace java.util.stream
 		''' </summary>
 		''' <param name="values"> the elements of the new stream </param>
 		''' <returns> the new stream </returns>
-		Shared Function [of](ParamArray ByVal values As Integer()) As IntStream
+		Shared Function [of](ParamArray   values As Integer()) As IntStream
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 			Return java.util.Arrays.stream(values);
 
@@ -675,7 +675,7 @@ Namespace java.util.stream
 		''' <param name="f"> a function to be applied to to the previous element to produce
 		'''          a new element </param>
 		''' <returns> A new sequential {@code IntStream} </returns>
-		Shared Function iterate(ByVal seed As Integer, ByVal f As java.util.function.IntUnaryOperator) As IntStream
+		Shared Function iterate(  seed As Integer,   f As java.util.function.IntUnaryOperator) As IntStream
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 			java.util.Objects.requireNonNull(f);
 'JAVA TO VB CONVERTER TODO TASK: Anonymous inner classes are not converted to VB if the base type is not defined in the code being converted:
@@ -705,7 +705,7 @@ Namespace java.util.stream
 		''' </summary>
 		''' <param name="s"> the {@code IntSupplier} for generated elements </param>
 		''' <returns> a new infinite sequential unordered {@code IntStream} </returns>
-		Shared Function generate(ByVal s As java.util.function.IntSupplier) As IntStream
+		Shared Function generate(  s As java.util.function.IntSupplier) As IntStream
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 			java.util.Objects.requireNonNull(s);
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
@@ -727,8 +727,8 @@ Namespace java.util.stream
 		''' <param name="endExclusive"> the exclusive upper bound </param>
 		''' <returns> a sequential {@code IntStream} for the range of {@code int}
 		'''         elements </returns>
-		Shared Function range(ByVal startInclusive As Integer, ByVal endExclusive As Integer) As IntStream
-			Sub [New](startInclusive >= ByVal endExclusive As )
+		Shared Function range(  startInclusive As Integer,   endExclusive As Integer) As IntStream
+			Sub [New](startInclusive >=   endExclusive As )
 				Function empty() As [Return]
 			Else
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
@@ -751,7 +751,7 @@ Namespace java.util.stream
 		''' <param name="endInclusive"> the inclusive upper bound </param>
 		''' <returns> a sequential {@code IntStream} for the range of {@code int}
 		'''         elements </returns>
-		Shared Function rangeClosed(ByVal startInclusive As Integer, ByVal endInclusive As Integer) As IntStream
+		Shared Function rangeClosed(  startInclusive As Integer,   endInclusive As Integer) As IntStream
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 			if (startInclusive > endInclusive)
 				Function empty() As [Return]
@@ -776,7 +776,7 @@ Namespace java.util.stream
 		''' <param name="a"> the first stream </param>
 		''' <param name="b"> the second stream </param>
 		''' <returns> the concatenation of the two input streams </returns>
-		Shared Function concat(ByVal a As IntStream, ByVal b As IntStream) As IntStream
+		Shared Function concat(  a As IntStream,   b As IntStream) As IntStream
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 			java.util.Objects.requireNonNull(a);
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
@@ -786,7 +786,7 @@ Namespace java.util.stream
 '			java.util.Spliterator.OfInt split = New Streams.ConcatSpliterator.OfInt(a.spliterator(), b.spliterator());
 'JAVA TO VB CONVERTER TODO TASK: Interfaces cannot contain fields in .NET:
 '			IntStream stream = StreamSupport.intStream(split, a.isParallel() || b.isParallel());
-			Function stream.onClose(Streams.composedClose(a, b) ByVal  As ) As [Return]
+			Function stream.onClose(Streams.composedClose(a, b)    As ) As [Return]
 
 		''' <summary>
 		''' A mutable builder for an {@code IntStream}.

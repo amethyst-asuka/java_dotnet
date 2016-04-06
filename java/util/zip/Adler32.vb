@@ -54,7 +54,7 @@ Namespace java.util.zip
 		''' bits of the argument b).
 		''' </summary>
 		''' <param name="b"> the byte to update the checksum with </param>
-		Public Overridable Sub update(ByVal b As Integer) Implements Checksum.update
+		Public Overridable Sub update(  b As Integer) Implements Checksum.update
 			adler = update(adler, b)
 		End Sub
 
@@ -65,7 +65,7 @@ Namespace java.util.zip
 		'''          if {@code off} is negative, or {@code len} is negative,
 		'''          or {@code off+len} is greater than the length of the
 		'''          array {@code b} </exception>
-		Public Overridable Sub update(ByVal b As SByte(), ByVal [off] As Integer, ByVal len As Integer) Implements Checksum.update
+		Public Overridable Sub update(  b As SByte(),   [off] As Integer,   len As Integer) Implements Checksum.update
 			If b Is Nothing Then Throw New NullPointerException
 			If [off] < 0 OrElse len < 0 OrElse [off] > b.Length - len Then Throw New ArrayIndexOutOfBoundsException
 			adler = updateBytes(adler, b, [off], len)
@@ -75,7 +75,7 @@ Namespace java.util.zip
 		''' Updates the checksum with the specified array of bytes.
 		''' </summary>
 		''' <param name="b"> the byte array to update the checksum with </param>
-		Public Overridable Sub update(ByVal b As SByte())
+		Public Overridable Sub update(  b As SByte())
 			adler = updateBytes(adler, b, 0, b.Length)
 		End Sub
 
@@ -92,7 +92,7 @@ Namespace java.util.zip
 		''' </summary>
 		''' <param name="buffer"> the ByteBuffer to update the checksum with
 		''' @since 1.8 </param>
-		Public Overridable Sub update(ByVal buffer As java.nio.ByteBuffer)
+		Public Overridable Sub update(  buffer As java.nio.ByteBuffer)
 			Dim pos As Integer = buffer.position()
 			Dim limit As Integer = buffer.limit()
 			assert(pos <= limit)
@@ -128,15 +128,15 @@ Namespace java.util.zip
 
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Private Shared Function update(ByVal adler As Integer, ByVal b As Integer) As Integer
+		Private Shared Function update(  adler As Integer,   b As Integer) As Integer
 		End Function
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Private Shared Function updateBytes(ByVal adler As Integer, ByVal b As SByte(), ByVal [off] As Integer, ByVal len As Integer) As Integer
+		Private Shared Function updateBytes(  adler As Integer,   b As SByte(),   [off] As Integer,   len As Integer) As Integer
 		End Function
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Private Shared Function updateByteBuffer(ByVal adler As Integer, ByVal addr As Long, ByVal [off] As Integer, ByVal len As Integer) As Integer
+		Private Shared Function updateByteBuffer(  adler As Integer,   addr As Long,   [off] As Integer,   len As Integer) As Integer
 		End Function
 	End Class
 

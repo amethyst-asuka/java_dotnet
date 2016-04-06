@@ -75,7 +75,7 @@ Namespace java.awt
 		''' <param name="color2"> <code>Color</code> at the second specified
 		''' <code>Point</code> </param>
 		''' <exception cref="NullPointerException"> if either one of colors is null </exception>
-		Public Sub New(ByVal x1 As Single, ByVal y1 As Single, ByVal color1 As Color, ByVal x2 As Single, ByVal y2 As Single, ByVal color2 As Color)
+		Public Sub New(  x1 As Single,   y1 As Single,   color1 As Color,   x2 As Single,   y2 As Single,   color2 As Color)
 			If (color1 Is Nothing) OrElse (color2 Is Nothing) Then Throw New NullPointerException("Colors cannot be null")
 
 			p1 = New java.awt.geom.Point2D.Float(x1, y1)
@@ -94,7 +94,7 @@ Namespace java.awt
 		''' <code>Point</code> </param>
 		''' <exception cref="NullPointerException"> if either one of colors or points
 		''' is null </exception>
-		Public Sub New(ByVal pt1 As java.awt.geom.Point2D, ByVal color1 As Color, ByVal pt2 As java.awt.geom.Point2D, ByVal color2 As Color)
+		Public Sub New(  pt1 As java.awt.geom.Point2D,   color1 As Color,   pt2 As java.awt.geom.Point2D,   color2 As Color)
 			If (color1 Is Nothing) OrElse (color2 Is Nothing) OrElse (pt1 Is Nothing) OrElse (pt2 Is Nothing) Then Throw New NullPointerException("Colors and points should be non-null")
 
 			p1 = New java.awt.geom.Point2D.Float(CSng(pt1.x), CSng(pt1.y))
@@ -120,7 +120,7 @@ Namespace java.awt
 		''' <code>Point</code> </param>
 		''' <param name="cyclic"> <code>true</code> if the gradient pattern should cycle
 		''' repeatedly between the two colors; <code>false</code> otherwise </param>
-		Public Sub New(ByVal x1 As Single, ByVal y1 As Single, ByVal color1 As Color, ByVal x2 As Single, ByVal y2 As Single, ByVal color2 As Color, ByVal cyclic As Boolean)
+		Public Sub New(  x1 As Single,   y1 As Single,   color1 As Color,   x2 As Single,   y2 As Single,   color2 As Color,   cyclic As Boolean)
 			Me.New(x1, y1, color1, x2, y2, color2)
 			Me.cyclic = cyclic
 		End Sub
@@ -141,7 +141,7 @@ Namespace java.awt
 		''' <exception cref="NullPointerException"> if either one of colors or points
 		''' is null </exception>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Sub New(ByVal pt1 As java.awt.geom.Point2D, ByVal color1 As Color, ByVal pt2 As java.awt.geom.Point2D, ByVal color2 As Color, ByVal cyclic As Boolean)
+		Public Sub New(  pt1 As java.awt.geom.Point2D,   color1 As Color,   pt2 As java.awt.geom.Point2D,   color2 As Color,   cyclic As Boolean)
 			Me.New(pt1, color1, pt2, color2)
 			Me.cyclic = cyclic
 		End Sub
@@ -226,7 +226,7 @@ Namespace java.awt
 		''' <seealso cref= Rectangle2D </seealso>
 		''' <seealso cref= AffineTransform </seealso>
 		''' <seealso cref= RenderingHints </seealso>
-		Public Overridable Function createContext(ByVal cm As java.awt.image.ColorModel, ByVal deviceBounds As Rectangle, ByVal userBounds As java.awt.geom.Rectangle2D, ByVal xform As java.awt.geom.AffineTransform, ByVal hints As RenderingHints) As PaintContext Implements Paint.createContext
+		Public Overridable Function createContext(  cm As java.awt.image.ColorModel,   deviceBounds As Rectangle,   userBounds As java.awt.geom.Rectangle2D,   xform As java.awt.geom.AffineTransform,   hints As RenderingHints) As PaintContext Implements Paint.createContext
 
 			Return New GradientPaintContext(cm, p1, p2, xform, color1, color2, cyclic)
 		End Function

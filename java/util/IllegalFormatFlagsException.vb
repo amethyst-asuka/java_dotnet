@@ -46,7 +46,7 @@ Namespace java.util
 		''' </summary>
 		''' <param name="f">
 		'''         The set of format flags which contain an illegal combination </param>
-		Public Sub New(ByVal f As String)
+		Public Sub New(  f As String)
 			If f Is Nothing Then Throw New NullPointerException
 			Me.flags = f
 		End Sub

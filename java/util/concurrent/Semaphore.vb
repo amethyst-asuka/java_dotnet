@@ -171,7 +171,7 @@ Namespace java.util.concurrent
 
 			Private Const serialVersionUID As Long = 1192457210091910933L
 
-			Friend Sub New(ByVal permits As Integer)
+			Friend Sub New(  permits As Integer)
 				state = permits
 			End Sub
 
@@ -181,7 +181,7 @@ Namespace java.util.concurrent
 				End Get
 			End Property
 
-			Friend Function nonfairTryAcquireShared(ByVal acquires As Integer) As Integer
+			Friend Function nonfairTryAcquireShared(  acquires As Integer) As Integer
 				Do
 					Dim available As Integer = state
 					Dim remaining As Integer = available - acquires
@@ -189,7 +189,7 @@ Namespace java.util.concurrent
 				Loop
 			End Function
 
-			Protected Friend NotOverridable Overrides Function tryReleaseShared(ByVal releases As Integer) As Boolean
+			Protected Friend NotOverridable Overrides Function tryReleaseShared(  releases As Integer) As Boolean
 				Do
 					Dim current As Integer = state
 					Dim [next] As Integer = current + releases
@@ -198,7 +198,7 @@ Namespace java.util.concurrent
 				Loop
 			End Function
 
-			Friend Sub reducePermits(ByVal reductions As Integer)
+			Friend Sub reducePermits(  reductions As Integer)
 				Do
 					Dim current As Integer = state
 					Dim [next] As Integer = current - reductions
@@ -223,11 +223,11 @@ Namespace java.util.concurrent
 
 			Private Const serialVersionUID As Long = -2694183684443567898L
 
-			Friend Sub New(ByVal permits As Integer)
+			Friend Sub New(  permits As Integer)
 				MyBase.New(permits)
 			End Sub
 
-			Protected Friend Overrides Function tryAcquireShared(ByVal acquires As Integer) As Integer
+			Protected Friend Overrides Function tryAcquireShared(  acquires As Integer) As Integer
 				Return nonfairTryAcquireShared(acquires)
 			End Function
 		End Class
@@ -240,11 +240,11 @@ Namespace java.util.concurrent
 
 			Private Const serialVersionUID As Long = 2014338818796000944L
 
-			Friend Sub New(ByVal permits As Integer)
+			Friend Sub New(  permits As Integer)
 				MyBase.New(permits)
 			End Sub
 
-			Protected Friend Overrides Function tryAcquireShared(ByVal acquires As Integer) As Integer
+			Protected Friend Overrides Function tryAcquireShared(  acquires As Integer) As Integer
 				Do
 					If hasQueuedPredecessors() Then Return -1
 					Dim available As Integer = state
@@ -261,7 +261,7 @@ Namespace java.util.concurrent
 		''' <param name="permits"> the initial number of permits available.
 		'''        This value may be negative, in which case releases
 		'''        must occur before any acquires will be granted. </param>
-		Public Sub New(ByVal permits As Integer)
+		Public Sub New(  permits As Integer)
 			sync = New NonfairSync(permits)
 		End Sub
 
@@ -275,7 +275,7 @@ Namespace java.util.concurrent
 		''' <param name="fair"> {@code true} if this semaphore will guarantee
 		'''        first-in first-out granting of permits under contention,
 		'''        else {@code false} </param>
-		Public Sub New(ByVal permits As Integer, ByVal fair As Boolean)
+		Public Sub New(  permits As Integer,   fair As Boolean)
 			sync = If(fair, New FairSync(permits), New NonfairSync(permits))
 		End Sub
 
@@ -400,7 +400,7 @@ Namespace java.util.concurrent
 		''' <returns> {@code true} if a permit was acquired and {@code false}
 		'''         if the waiting time elapsed before a permit was acquired </returns>
 		''' <exception cref="InterruptedException"> if the current thread is interrupted </exception>
-		Public Overridable Function tryAcquire(ByVal timeout As Long, ByVal unit As TimeUnit) As Boolean
+		Public Overridable Function tryAcquire(  timeout As Long,   unit As TimeUnit) As Boolean
 			Return sync.tryAcquireSharedNanos(1, unit.toNanos(timeout))
 		End Function
 
@@ -456,7 +456,7 @@ Namespace java.util.concurrent
 		''' <param name="permits"> the number of permits to acquire </param>
 		''' <exception cref="InterruptedException"> if the current thread is interrupted </exception>
 		''' <exception cref="IllegalArgumentException"> if {@code permits} is negative </exception>
-		Public Overridable Sub acquire(ByVal permits As Integer)
+		Public Overridable Sub acquire(  permits As Integer)
 			If permits < 0 Then Throw New IllegalArgumentException
 			sync.acquireSharedInterruptibly(permits)
 		End Sub
@@ -482,7 +482,7 @@ Namespace java.util.concurrent
 		''' </summary>
 		''' <param name="permits"> the number of permits to acquire </param>
 		''' <exception cref="IllegalArgumentException"> if {@code permits} is negative </exception>
-		Public Overridable Sub acquireUninterruptibly(ByVal permits As Integer)
+		Public Overridable Sub acquireUninterruptibly(  permits As Integer)
 			If permits < 0 Then Throw New IllegalArgumentException
 			sync.acquireShared(permits)
 		End Sub
@@ -513,7 +513,7 @@ Namespace java.util.concurrent
 		''' <returns> {@code true} if the permits were acquired and
 		'''         {@code false} otherwise </returns>
 		''' <exception cref="IllegalArgumentException"> if {@code permits} is negative </exception>
-		Public Overridable Function tryAcquire(ByVal permits As Integer) As Boolean
+		Public Overridable Function tryAcquire(  permits As Integer) As Boolean
 			If permits < 0 Then Throw New IllegalArgumentException
 			Return sync.nonfairTryAcquireShared(permits) >= 0
 		End Function
@@ -567,7 +567,7 @@ Namespace java.util.concurrent
 		'''         if the waiting time elapsed before all permits were acquired </returns>
 		''' <exception cref="InterruptedException"> if the current thread is interrupted </exception>
 		''' <exception cref="IllegalArgumentException"> if {@code permits} is negative </exception>
-		Public Overridable Function tryAcquire(ByVal permits As Integer, ByVal timeout As Long, ByVal unit As TimeUnit) As Boolean
+		Public Overridable Function tryAcquire(  permits As Integer,   timeout As Long,   unit As TimeUnit) As Boolean
 			If permits < 0 Then Throw New IllegalArgumentException
 			Return sync.tryAcquireSharedNanos(permits, unit.toNanos(timeout))
 		End Function
@@ -593,7 +593,7 @@ Namespace java.util.concurrent
 		''' </summary>
 		''' <param name="permits"> the number of permits to release </param>
 		''' <exception cref="IllegalArgumentException"> if {@code permits} is negative </exception>
-		Public Overridable Sub release(ByVal permits As Integer)
+		Public Overridable Sub release(  permits As Integer)
 			If permits < 0 Then Throw New IllegalArgumentException
 			sync.releaseShared(permits)
 		End Sub
@@ -625,7 +625,7 @@ Namespace java.util.concurrent
 		''' </summary>
 		''' <param name="reduction"> the number of permits to remove </param>
 		''' <exception cref="IllegalArgumentException"> if {@code reduction} is negative </exception>
-		Protected Friend Overridable Sub reducePermits(ByVal reduction As Integer)
+		Protected Friend Overridable Sub reducePermits(  reduction As Integer)
 			If reduction < 0 Then Throw New IllegalArgumentException
 			sync.reducePermits(reduction)
 		End Sub

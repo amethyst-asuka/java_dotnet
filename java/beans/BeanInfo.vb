@@ -143,7 +143,7 @@ Namespace java.beans
 		''' <seealso cref= #ICON_COLOR_32x32 </seealso>
 		''' <seealso cref= #ICON_MONO_16x16 </seealso>
 		''' <seealso cref= #ICON_MONO_32x32 </seealso>
-		Function getIcon(ByVal iconKind As Integer) As java.awt.Image
+		Function getIcon(  iconKind As Integer) As java.awt.Image
 
 		''' <summary>
 		''' Constant to indicate a 16 x 16 color icon.

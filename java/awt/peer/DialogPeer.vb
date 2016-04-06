@@ -65,7 +65,7 @@ Namespace java.awt.peer
 		''' </param>
 		''' <seealso cref= Dialog#modalShow() </seealso>
 		''' <seealso cref= Dialog#blockWindows() </seealso>
-		Sub blockWindows(ByVal windows As IList(Of Window))
+		Sub blockWindows(  windows As IList(Of Window))
 	End Interface
 
 End Namespace

@@ -186,7 +186,7 @@ Namespace java.security
 		Private Sub New()
 		End Sub
 
-		Private Shared Function securityPropFile(ByVal filename As String) As File
+		Private Shared Function securityPropFile(  filename As String) As File
 			' maybe check for a system property which will specify where to
 			' look. Someday.
 			Dim sep As String = File.separator
@@ -200,7 +200,7 @@ Namespace java.security
 		''' provider-preference order, as specificed in the security
 		''' properties file.
 		''' </summary>
-		Private Shared Function getProviderProperty(ByVal key As String) As ProviderProperty
+		Private Shared Function getProviderProperty(  key As String) As ProviderProperty
 			Dim entry As ProviderProperty = Nothing
 
 			Dim providers_Renamed As List(Of Provider) = Providers.providerList.providers()
@@ -237,7 +237,7 @@ Namespace java.security
 		''' <summary>
 		''' Returns the property (if any) mapping the key for the given provider.
 		''' </summary>
-		Private Shared Function getProviderProperty(ByVal key As String, ByVal provider_Renamed As Provider) As String
+		Private Shared Function getProviderProperty(  key As String,   provider_Renamed As Provider) As String
 			Dim prop As String = provider_Renamed.getProperty(key)
 			If prop Is Nothing Then
 				' Is there a match if we do a case-insensitive property name
@@ -278,7 +278,7 @@ Namespace java.security
 		''' {@code AlgorithmParameters} and {@code KeyFactory} engine
 		''' classes (introduced in the J2SE version 1.2 platform) instead. 
 		<Obsolete("This method used to return the value of a proprietary")> _
-		Public Shared Function getAlgorithmProperty(ByVal algName As String, ByVal propName As String) As String
+		Public Shared Function getAlgorithmProperty(  algName As String,   propName As String) As String
 			Dim entry As ProviderProperty = getProviderProperty("Alg." & propName & "." & algName)
 			If entry IsNot Nothing Then
 				Return entry.className
@@ -327,7 +327,7 @@ Namespace java.security
 		''' <seealso cref= #removeProvider </seealso>
 		''' <seealso cref= java.security.SecurityPermission </seealso>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Shared Function insertProviderAt(ByVal provider_Renamed As Provider, ByVal position As Integer) As Integer
+		Public Shared Function insertProviderAt(  provider_Renamed As Provider,   position As Integer) As Integer
 			Dim providerName As String = provider_Renamed.name
 			checkInsertProvider(providerName)
 			Dim list As ProviderList = Providers.fullProviderList
@@ -363,7 +363,7 @@ Namespace java.security
 		''' <seealso cref= #getProvider </seealso>
 		''' <seealso cref= #removeProvider </seealso>
 		''' <seealso cref= java.security.SecurityPermission </seealso>
-		Public Shared Function addProvider(ByVal provider_Renamed As Provider) As Integer
+		Public Shared Function addProvider(  provider_Renamed As Provider) As Integer
 	'        
 	'         * We can't assign a position here because the statically
 	'         * registered providers may not have been installed yet.
@@ -405,7 +405,7 @@ Namespace java.security
 		''' <seealso cref= #getProvider </seealso>
 		''' <seealso cref= #addProvider </seealso>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Shared Sub removeProvider(ByVal name As String)
+		Public Shared Sub removeProvider(  name As String)
 			check("removeProvider." & name)
 			Dim list As ProviderList = Providers.fullProviderList
 			Dim newList As ProviderList = ProviderList.remove(list, name)
@@ -434,7 +434,7 @@ Namespace java.security
 		''' </returns>
 		''' <seealso cref= #removeProvider </seealso>
 		''' <seealso cref= #addProvider </seealso>
-		Public Shared Function getProvider(ByVal name As String) As Provider
+		Public Shared Function getProvider(  name As String) As Provider
 			Return Providers.providerList.getProvider(name)
 		End Function
 
@@ -497,7 +497,7 @@ Namespace java.security
 		''' </exception>
 		''' <seealso cref= #getProviders(java.util.Map)
 		''' @since 1.3 </seealso>
-		Public Shared Function getProviders(ByVal filter As String) As Provider()
+		Public Shared Function getProviders(  filter As String) As Provider()
 			Dim key As String = Nothing
 			Dim value As String = Nothing
 			Dim index As Integer = filter.IndexOf(":"c)
@@ -567,7 +567,7 @@ Namespace java.security
 		''' </exception>
 		''' <seealso cref= #getProviders(java.lang.String)
 		''' @since 1.3 </seealso>
-		Public Shared Function getProviders(ByVal filter As Map(Of String, String)) As Provider()
+		Public Shared Function getProviders(  filter As Map(Of String, String)) As Provider()
 			' Get all installed providers first.
 			' Then only return those providers who satisfy the selection criteria.
 			Dim allProviders As Provider() = Security.providers
@@ -628,7 +628,7 @@ Namespace java.security
 		''' (e.g. "MessageDigest"). Works for Spis in the java.security package
 		''' only.
 		''' </summary>
-		Private Shared Function getSpiClass(ByVal type As String) As  [Class]
+		Private Shared Function getSpiClass(  type As String) As  [Class]
 			Dim clazz As  [Class] = spiMap.get(type)
 			If clazz IsNot Nothing Then Return clazz
 			Try
@@ -648,7 +648,7 @@ Namespace java.security
 	'     * The {@code provider} argument can be null, in which case all
 	'     * configured providers will be searched in order of preference.
 	'     
-		Friend Shared Function getImpl(ByVal algorithm As String, ByVal type As String, ByVal provider_Renamed As String) As Object()
+		Friend Shared Function getImpl(  algorithm As String,   type As String,   provider_Renamed As String) As Object()
 			If provider_Renamed Is Nothing Then
 				Return GetInstance.getInstance(type, getSpiClass(type), algorithm).ToArray()
 			Else
@@ -656,7 +656,7 @@ Namespace java.security
 			End If
 		End Function
 
-		Friend Shared Function getImpl(ByVal algorithm As String, ByVal type As String, ByVal provider_Renamed As String, ByVal params As Object) As Object()
+		Friend Shared Function getImpl(  algorithm As String,   type As String,   provider_Renamed As String,   params As Object) As Object()
 			If provider_Renamed Is Nothing Then
 				Return GetInstance.getInstance(type, getSpiClass(type), algorithm, params).ToArray()
 			Else
@@ -671,11 +671,11 @@ Namespace java.security
 	'     * of that implementation.
 	'     * The {@code provider} argument cannot be null.
 	'     
-		Friend Shared Function getImpl(ByVal algorithm As String, ByVal type As String, ByVal provider_Renamed As Provider) As Object()
+		Friend Shared Function getImpl(  algorithm As String,   type As String,   provider_Renamed As Provider) As Object()
 			Return GetInstance.getInstance(type, getSpiClass(type), algorithm, provider_Renamed).ToArray()
 		End Function
 
-		Friend Shared Function getImpl(ByVal algorithm As String, ByVal type As String, ByVal provider_Renamed As Provider, ByVal params As Object) As Object()
+		Friend Shared Function getImpl(  algorithm As String,   type As String,   provider_Renamed As Provider,   params As Object) As Object()
 			Return GetInstance.getInstance(type, getSpiClass(type), algorithm, params, provider_Renamed).ToArray()
 		End Function
 
@@ -701,7 +701,7 @@ Namespace java.security
 		''' </exception>
 		''' <seealso cref= #setProperty </seealso>
 		''' <seealso cref= java.security.SecurityPermission </seealso>
-		Public Shared Function getProperty(ByVal key As String) As String
+		Public Shared Function getProperty(  key As String) As String
 			Dim sm As SecurityManager = System.securityManager
 			If sm IsNot Nothing Then sm.checkPermission(New SecurityPermission("getProperty." & key))
 			Dim name As String = props.getProperty(key)
@@ -730,7 +730,7 @@ Namespace java.security
 		''' </exception>
 		''' <seealso cref= #getProperty </seealso>
 		''' <seealso cref= java.security.SecurityPermission </seealso>
-		Public Shared Sub setProperty(ByVal key As String, ByVal datum As String)
+		Public Shared Sub setProperty(  key As String,   datum As String)
 			check("setProperty." & key)
 			props(key) = datum
 			invalidateSMCache(key) ' See below.
@@ -746,7 +746,7 @@ Namespace java.security
 	'     * Rather than create a new API entry for this function,
 	'     * we use reflection to set a private variable.
 	'     
-		Private Shared Sub invalidateSMCache(ByVal key As String)
+		Private Shared Sub invalidateSMCache(  key As String)
 
 			Dim pa As Boolean = key.Equals("package.access")
 			Dim pd As Boolean = key.Equals("package.definition")
@@ -792,12 +792,12 @@ Namespace java.security
 			End Function ' run
 		End Class
 
-		Private Shared Sub check(ByVal directive As String)
+		Private Shared Sub check(  directive As String)
 			Dim security_Renamed As SecurityManager = System.securityManager
 			If security_Renamed IsNot Nothing Then security_Renamed.checkSecurityAccess(directive)
 		End Sub
 
-		Private Shared Sub checkInsertProvider(ByVal name As String)
+		Private Shared Sub checkInsertProvider(  name As String)
 			Dim security_Renamed As SecurityManager = System.securityManager
 			If security_Renamed IsNot Nothing Then
 				Try
@@ -818,7 +818,7 @@ Namespace java.security
 	'    * Returns all providers who satisfy the specified
 	'    * criterion.
 	'    
-		Private Shared Function getAllQualifyingCandidates(ByVal filterKey As String, ByVal filterValue As String, ByVal allProviders As Provider()) As LinkedHashSet(Of Provider)
+		Private Shared Function getAllQualifyingCandidates(  filterKey As String,   filterValue As String,   allProviders As Provider()) As LinkedHashSet(Of Provider)
 			Dim filterComponents_Renamed As String() = getFilterComponents(filterKey, filterValue)
 
 			' The first component is the service name.
@@ -831,7 +831,7 @@ Namespace java.security
 			Return getProvidersNotUsingCache(serviceName, algName, attrName, filterValue, allProviders)
 		End Function
 
-		Private Shared Function getProvidersNotUsingCache(ByVal serviceName As String, ByVal algName As String, ByVal attrName As String, ByVal filterValue As String, ByVal allProviders As Provider()) As LinkedHashSet(Of Provider)
+		Private Shared Function getProvidersNotUsingCache(  serviceName As String,   algName As String,   attrName As String,   filterValue As String,   allProviders As Provider()) As LinkedHashSet(Of Provider)
 			Dim candidates As New LinkedHashSet(Of Provider)(5)
 			For i As Integer = 0 To allProviders.Length - 1
 				If isCriterionSatisfied(allProviders(i), serviceName, algName, attrName, filterValue) Then candidates.Add(allProviders(i))
@@ -843,7 +843,7 @@ Namespace java.security
 	'     * Returns true if the given provider satisfies
 	'     * the selection criterion key:value.
 	'     
-		Private Shared Function isCriterionSatisfied(ByVal prov As Provider, ByVal serviceName As String, ByVal algName As String, ByVal attrName As String, ByVal filterValue As String) As Boolean
+		Private Shared Function isCriterionSatisfied(  prov As Provider,   serviceName As String,   algName As String,   attrName As String,   filterValue As String) As Boolean
 			Dim key As String = serviceName + AscW("."c) + algName
 
 			If attrName IsNot Nothing Then key += AscW(" "c) + attrName
@@ -885,7 +885,7 @@ Namespace java.security
 	'     * Returns true if the attribute is a standard attribute;
 	'     * otherwise, returns false.
 	'     
-		Private Shared Function isStandardAttr(ByVal attribute As String) As Boolean
+		Private Shared Function isStandardAttr(  attribute As String) As Boolean
 			' For now, we just have two standard attributes:
 			' KeySize and ImplementedIn.
 			If attribute.equalsIgnoreCase("KeySize") Then Return True
@@ -899,7 +899,7 @@ Namespace java.security
 	'     * Returns true if the requested attribute value is supported;
 	'     * otherwise, returns false.
 	'     
-		Private Shared Function isConstraintSatisfied(ByVal attribute As String, ByVal value As String, ByVal prop As String) As Boolean
+		Private Shared Function isConstraintSatisfied(  attribute As String,   value As String,   prop As String) As Boolean
 			' For KeySize, prop is the max key size the
 			' provider supports for a specific <crypto_service>.<algorithm>.
 			If attribute.equalsIgnoreCase("KeySize") Then
@@ -919,7 +919,7 @@ Namespace java.security
 			Return False
 		End Function
 
-		Friend Shared Function getFilterComponents(ByVal filterKey As String, ByVal filterValue As String) As String()
+		Friend Shared Function getFilterComponents(  filterKey As String,   filterValue As String) As String()
 			Dim algIndex As Integer = filterKey.IndexOf("."c)
 
 			If algIndex < 0 Then Throw New InvalidParameterException("Invalid filter")
@@ -984,7 +984,7 @@ Namespace java.security
 		''' 
 		''' @since 1.4
 		'''  </returns>
-		Public Shared Function getAlgorithms(ByVal serviceName As String) As [Set](Of String)
+		Public Shared Function getAlgorithms(  serviceName As String) As [Set](Of String)
 
 			If (serviceName Is Nothing) OrElse (serviceName.length() = 0) OrElse (serviceName.EndsWith(".")) Then Return Collections.emptySet()
 

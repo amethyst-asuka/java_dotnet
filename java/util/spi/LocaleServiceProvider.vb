@@ -186,7 +186,7 @@ Namespace java.util.spi
 		''' <seealso cref= Locale#hasExtensions() </seealso>
 		''' <seealso cref= Locale#stripExtensions()
 		''' @since 1.8 </seealso>
-		Public Overridable Function isSupportedLocale(ByVal locale_Renamed As java.util.Locale) As Boolean
+		Public Overridable Function isSupportedLocale(  locale_Renamed As java.util.Locale) As Boolean
 			locale_Renamed = locale_Renamed.stripExtensions() ' throws NPE if locale == null
 			For Each available As java.util.Locale In availableLocales
 				If locale_Renamed.Equals(available.stripExtensions()) Then Return True

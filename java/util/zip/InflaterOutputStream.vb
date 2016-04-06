@@ -73,7 +73,7 @@ Namespace java.util.zip
 		''' </summary>
 		''' <param name="out"> output stream to write the uncompressed data to </param>
 		''' <exception cref="NullPointerException"> if {@code out} is null </exception>
-		Public Sub New(ByVal out As java.io.OutputStream)
+		Public Sub New(  out As java.io.OutputStream)
 			Me.New(out, New Inflater)
 			usesDefaultInflater = True
 		End Sub
@@ -85,7 +85,7 @@ Namespace java.util.zip
 		''' <param name="out"> output stream to write the uncompressed data to </param>
 		''' <param name="infl"> decompressor ("inflater") for this stream </param>
 		''' <exception cref="NullPointerException"> if {@code out} or {@code infl} is null </exception>
-		Public Sub New(ByVal out As java.io.OutputStream, ByVal infl As Inflater)
+		Public Sub New(  out As java.io.OutputStream,   infl As Inflater)
 			Me.New(out, infl, 512)
 		End Sub
 
@@ -98,7 +98,7 @@ Namespace java.util.zip
 		''' <param name="bufLen"> decompression buffer size </param>
 		''' <exception cref="IllegalArgumentException"> if {@code bufLen <= 0} </exception>
 		''' <exception cref="NullPointerException"> if {@code out} or {@code infl} is null </exception>
-		Public Sub New(ByVal out As java.io.OutputStream, ByVal infl As Inflater, ByVal bufLen As Integer)
+		Public Sub New(  out As java.io.OutputStream,   infl As Inflater,   bufLen As Integer)
 			MyBase.New(out)
 
 			' Sanity checks
@@ -183,7 +183,7 @@ Namespace java.util.zip
 		''' <exception cref="IOException"> if an I/O error occurs or this stream is already
 		''' closed </exception>
 		''' <exception cref="ZipException"> if a compression (ZIP) format error occurs </exception>
-		Public Overrides Sub write(ByVal b As Integer)
+		Public Overrides Sub write(  b As Integer)
 			' Write a single byte of data
 			wbuf(0) = CByte(b)
 			write(wbuf, 0, 1)
@@ -202,7 +202,7 @@ Namespace java.util.zip
 		''' closed </exception>
 		''' <exception cref="NullPointerException"> if {@code b} is null </exception>
 		''' <exception cref="ZipException"> if a compression (ZIP) format error occurs </exception>
-		Public Overrides Sub write(ByVal b As SByte(), ByVal [off] As Integer, ByVal len As Integer)
+		Public Overrides Sub write(  b As SByte(),   [off] As Integer,   len As Integer)
 			' Sanity checks
 			ensureOpen()
 			If b Is Nothing Then

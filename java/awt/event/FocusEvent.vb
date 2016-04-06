@@ -141,7 +141,7 @@ Namespace java.awt.event
 		''' <seealso cref= #isTemporary() </seealso>
 		''' <seealso cref= #getOppositeComponent()
 		''' @since 1.4 </seealso>
-		Public Sub New(ByVal source As java.awt.Component, ByVal id As Integer, ByVal temporary As Boolean, ByVal opposite As java.awt.Component)
+		Public Sub New(  source As java.awt.Component,   id As Integer,   temporary As Boolean,   opposite As java.awt.Component)
 			MyBase.New(source, id)
 			Me.temporary = temporary
 			Me.opposite = opposite
@@ -164,7 +164,7 @@ Namespace java.awt.event
 		''' <seealso cref= #getSource() </seealso>
 		''' <seealso cref= #getID() </seealso>
 		''' <seealso cref= #isTemporary() </seealso>
-		Public Sub New(ByVal source As java.awt.Component, ByVal id As Integer, ByVal temporary As Boolean)
+		Public Sub New(  source As java.awt.Component,   id As Integer,   temporary As Boolean)
 			Me.New(source, id, temporary, Nothing)
 		End Sub
 
@@ -182,7 +182,7 @@ Namespace java.awt.event
 		''' <exception cref="IllegalArgumentException"> if <code>source</code> equals {@code null} </exception>
 		''' <seealso cref= #getSource() </seealso>
 		''' <seealso cref= #getID() </seealso>
-		Public Sub New(ByVal source As java.awt.Component, ByVal id As Integer)
+		Public Sub New(  source As java.awt.Component,   id As Integer)
 			Me.New(source, id, False)
 		End Sub
 

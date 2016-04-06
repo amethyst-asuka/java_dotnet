@@ -96,7 +96,7 @@ Namespace java.lang.invoke
 		''' via a call to <seealso cref="CallSite#setTarget(MethodHandle) setTarget"/>. </summary>
 		''' <param name="type"> the method type that this call site will have </param>
 		''' <exception cref="NullPointerException"> if the proposed type is null </exception>
-		Public Sub New(ByVal type As MethodType)
+		Public Sub New(  type As MethodType)
 			MyBase.New(type)
 		End Sub
 
@@ -105,7 +105,7 @@ Namespace java.lang.invoke
 		''' The type of the call site is permanently set to the initial target's type. </summary>
 		''' <param name="target"> the method handle that will be the initial target of the call site </param>
 		''' <exception cref="NullPointerException"> if the proposed target is null </exception>
-		Public Sub New(ByVal target As MethodHandle)
+		Public Sub New(  target As MethodHandle)
 			MyBase.New(target)
 		End Sub
 
@@ -127,7 +127,7 @@ Namespace java.lang.invoke
 			Get
 				Return target
 			End Get
-			Set(ByVal newTarget As MethodHandle)
+			Set(  newTarget As MethodHandle)
 				checkTargetChange(Me.target, newTarget)
 				targetNormal = newTarget
 			End Set
@@ -249,7 +249,7 @@ Namespace java.lang.invoke
 		''' <param name="sites"> an array of call sites to be synchronized </param>
 		''' <exception cref="NullPointerException"> if the {@code sites} array reference is null
 		'''                              or the array contains a null </exception>
-		Public Shared Sub syncAll(ByVal sites As MutableCallSite())
+		Public Shared Sub syncAll(  sites As MutableCallSite())
 			If sites.Length = 0 Then Return
 			STORE_BARRIER.lazySet(0)
 			For i As Integer = 0 To sites.Length - 1

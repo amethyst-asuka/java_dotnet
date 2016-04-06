@@ -130,81 +130,81 @@ Namespace java.time.chrono
 	Friend MustInherit Class ChronoLocalDateImpl(Of D As ChronoLocalDate)
 		Implements ChronoLocalDate, java.time.temporal.Temporal, java.time.temporal.TemporalAdjuster
 
-			Public MustOverride Function adjustInto(ByVal temporal As java.time.temporal.Temporal) As java.time.temporal.Temporal Implements ChronoLocalDate.adjustInto
-			Public MustOverride Function [until](ByVal endExclusive As java.time.temporal.Temporal, ByVal unit As java.time.temporal.TemporalUnit) As Long Implements ChronoLocalDate.until
-			Public Function [Return](amountToSubtract = java.lang.[Long].MIN_VALUE ? plus(Long.MAX_VALUE, unit).plus(1, unit) : plus(-amountToSubtract, unit) ByVal As ) As [MustOverride]
-			Public MustOverride Function minus(ByVal amountToSubtract As Long, ByVal unit As java.time.temporal.TemporalUnit) As default
-			Public MustOverride Function minus(ByVal amount As java.time.temporal.TemporalAmount) As default
-			Public MustOverride Function plus(ByVal amountToAdd As Long, ByVal unit As java.time.temporal.TemporalUnit) As java.time.temporal.Temporal
-			Public MustOverride Function plus(ByVal amount As java.time.temporal.TemporalAmount) As default
-			Public MustOverride Function [with](ByVal field As java.time.temporal.TemporalField, ByVal newValue As Long) As java.time.temporal.Temporal
+			Public MustOverride Function adjustInto(  temporal As java.time.temporal.Temporal) As java.time.temporal.Temporal Implements ChronoLocalDate.adjustInto
+			Public MustOverride Function [until](  endExclusive As java.time.temporal.Temporal,   unit As java.time.temporal.TemporalUnit) As Long Implements ChronoLocalDate.until
+			Public Function [Return](amountToSubtract = java.lang.[Long].MIN_VALUE ? plus(Long.MAX_VALUE, unit).plus(1, unit) : plus(-amountToSubtract, unit)   As ) As [MustOverride]
+			Public MustOverride Function minus(  amountToSubtract As Long,   unit As java.time.temporal.TemporalUnit) As default
+			Public MustOverride Function minus(  amount As java.time.temporal.TemporalAmount) As default
+			Public MustOverride Function plus(  amountToAdd As Long,   unit As java.time.temporal.TemporalUnit) As java.time.temporal.Temporal
+			Public MustOverride Function plus(  amount As java.time.temporal.TemporalAmount) As default
+			Public MustOverride Function [with](  field As java.time.temporal.TemporalField,   newValue As Long) As java.time.temporal.Temporal
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 			Public MustOverride Return adjustInto(Me);
-			Public MustOverride Function [with](ByVal adjuster As java.time.temporal.TemporalAdjuster) As default
-			Public MustOverride Function isSupported(ByVal unit As java.time.temporal.TemporalUnit) As Boolean Implements ChronoLocalDate.isSupported
+			Public MustOverride Function [with](  adjuster As java.time.temporal.TemporalAdjuster) As default
+			Public MustOverride Function isSupported(  unit As java.time.temporal.TemporalUnit) As Boolean Implements ChronoLocalDate.isSupported
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 			Public MustOverride Return subtractFrom(Me);
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 			Public MustOverride Return addTo(Me);
-			Public MustOverride Function isEqual(ByVal other As ChronoLocalDate) As default
-			Public MustOverride Function isBefore(ByVal other As ChronoLocalDate) As default
-			Public MustOverride Function isAfter(ByVal other As ChronoLocalDate) As default
-			Public Function [if](cmp = ByVal 0 As ) As [MustOverride]
-			Public MustOverride Function compareTo(ByVal other As ChronoLocalDate) As default
+			Public MustOverride Function isEqual(  other As ChronoLocalDate) As default
+			Public MustOverride Function isBefore(  other As ChronoLocalDate) As default
+			Public MustOverride Function isAfter(  other As ChronoLocalDate) As default
+			Public Function [if](cmp =   0 As ) As [MustOverride]
+			Public MustOverride Function compareTo(  other As ChronoLocalDate) As default
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 			Public MustOverride Return getLong(EPOCH_DAY);
 			Public MustOverride Function toEpochDay() As default
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 			Public MustOverride Return of(Me, localTime);
-			Public MustOverride Function atTime(ByVal localTime As java.time.LocalTime) As default
+			Public MustOverride Function atTime(  localTime As java.time.LocalTime) As default
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 			Public MustOverride Return format(Me);
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 			Public MustOverride  requireNonNull(formatter, "formatter");
-			Public MustOverride Function format(ByVal formatter As java.time.format.DateTimeFormatter) As default
-			Public MustOverride Function [until](ByVal endDateExclusive As ChronoLocalDate) As ChronoPeriod Implements ChronoLocalDate.until
+			Public MustOverride Function format(  formatter As java.time.format.DateTimeFormatter) As default
+			Public MustOverride Function [until](  endDateExclusive As ChronoLocalDate) As ChronoPeriod Implements ChronoLocalDate.until
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 			Public MustOverride Return with(EPOCH_DAY, toEpochDay());
-			Public MustOverride Function adjustInto(ByVal temporal As java.time.temporal.Temporal) As default
+			Public MustOverride Function adjustInto(  temporal As java.time.temporal.Temporal) As default
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 			Public MustOverride Return queryFrom(Me);
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 			Public MustOverride  Return(R);
 			Public Function [Return]() As [MustOverride]
-			Public Function [if](query = java.time.temporal.TemporalQueries.zoneId() OrElse query = java.time.temporal.TemporalQueries.zone() OrElse query = java.time.temporal.TemporalQueries.offset() ByVal As ) As [MustOverride]
-			Public MustOverride Function query(ByVal query As java.time.temporal.TemporalQuery(Of R)) As default(Of R)
-			Public MustOverride Function ensureValid(getChronology() ByVal As , outerInstance.minus(amountToSubtract, unit) ByVal As ) As [Return]
-			Public MustOverride Function ensureValid(getChronology() ByVal As , outerInstance.minus(amount) ByVal As ) As [Return]
-			Public MustOverride Function ensureValid(getChronology() ByVal As , unit.addTo(Me, amountToAdd) ByVal As ) As [Return]
-			Public MustOverride Function java.time.temporal.UnsupportedTemporalTypeException("Unsupported unit: " & ByVal unit As ) As throw
-			Public MustOverride Function ensureValid(getChronology() ByVal As , outerInstance.plus(amount) ByVal As ) As [Return]
-			Public MustOverride Function ensureValid(getChronology() ByVal As , field.adjustInto(Me, newValue) ByVal As ) As [Return]
-			Public MustOverride Function java.time.temporal.UnsupportedTemporalTypeException("Unsupported field: " & ByVal field As ) As throw
-			Public MustOverride Function [with](ByVal field As java.time.temporal.TemporalField, ByVal newValue As Long) As default
-			Public MustOverride Function ensureValid(getChronology() ByVal As , outerInstance.with(adjuster) ByVal As ) As [Return]
-			Public Function [if](unit ByVal java.time.temporal.ChronoUnit As instanceof) As [MustOverride]
-			Public MustOverride Function isSupported(ByVal unit As java.time.temporal.TemporalUnit) As default
+			Public Function [if](query = java.time.temporal.TemporalQueries.zoneId() OrElse query = java.time.temporal.TemporalQueries.zone() OrElse query = java.time.temporal.TemporalQueries.offset()   As ) As [MustOverride]
+			Public MustOverride Function query(  query As java.time.temporal.TemporalQuery(Of R)) As default(Of R)
+			Public MustOverride Function ensureValid(getChronology()   As , outerInstance.minus(amountToSubtract, unit)   As ) As [Return]
+			Public MustOverride Function ensureValid(getChronology()   As , outerInstance.minus(amount)   As ) As [Return]
+			Public MustOverride Function ensureValid(getChronology()   As , unit.addTo(Me, amountToAdd)   As ) As [Return]
+			Public MustOverride Function java.time.temporal.UnsupportedTemporalTypeException("Unsupported unit: " &   unit As ) As throw
+			Public MustOverride Function ensureValid(getChronology()   As , outerInstance.plus(amount)   As ) As [Return]
+			Public MustOverride Function ensureValid(getChronology()   As , field.adjustInto(Me, newValue)   As ) As [Return]
+			Public MustOverride Function java.time.temporal.UnsupportedTemporalTypeException("Unsupported field: " &   field As ) As throw
+			Public MustOverride Function [with](  field As java.time.temporal.TemporalField,   newValue As Long) As default
+			Public MustOverride Function ensureValid(getChronology()   As , outerInstance.with(adjuster)   As ) As [Return]
+			Public Function [if](unit   java.time.temporal.ChronoUnit As instanceof) As [MustOverride]
+			Public MustOverride Function isSupported(  unit As java.time.temporal.TemporalUnit) As default
 			Public MustOverride ReadOnly Property dateBased As [Return]
-			Public Function [if](field ByVal java.time.temporal.ChronoField As instanceof) As [MustOverride]
-			Public MustOverride Function isSupported(ByVal field As java.time.temporal.TemporalField) As default
-			Public Function [Return](isLeapYear() ? 366 : ByVal 365 As ) As [MustOverride]
+			Public Function [if](field   java.time.temporal.ChronoField As instanceof) As [MustOverride]
+			Public MustOverride Function isSupported(  field As java.time.temporal.TemporalField) As default
+			Public Function [Return](isLeapYear() ? 366 :   365 As ) As [MustOverride]
 			Public MustOverride Function lengthOfYear() As default
 			Public MustOverride Function lengthOfMonth() As Integer Implements ChronoLocalDate.lengthOfMonth
-			Public MustOverride Function getChronology(getLong(YEAR) ByVal As ) As [Return]
+			Public MustOverride Function getChronology(getLong(YEAR)   As ) As [Return]
 			Public MustOverride ReadOnly Property leapYear As default
-			Public MustOverride Function getChronology(get(ERA) ByVal As ) As [Return]
+			Public MustOverride Function getChronology(get(ERA)   As ) As [Return]
 			Public MustOverride ReadOnly Property era As default
 			Public MustOverride ReadOnly Property chronology As Chronology Implements ChronoLocalDate.getChronology
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 			Public MustOverride Return date(temporal);
-			Public MustOverride Function java.time.DateTimeException("Unable to obtain ChronoLocalDate from TemporalAccessor: " & temporal.GetType() ByVal As ) As throw
-			Public Function [if](chrono = ByVal [Nothing] As ) As [MustOverride]
+			Public MustOverride Function java.time.DateTimeException("Unable to obtain ChronoLocalDate from TemporalAccessor: " & temporal.GetType()   As ) As throw
+			Public Function [if](chrono =   [Nothing] As ) As [MustOverride]
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 			Public MustOverride  requireNonNull(temporal, "temporal");
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 			Public MustOverride  Return(ChronoLocalDate);
-			Public Function [if](temporal ByVal ChronoLocalDate As instanceof) As [MustOverride]
-			Public MustOverride Function [from](ByVal temporal As java.time.temporal.TemporalAccessor) As ChronoLocalDate Implements ChronoLocalDate.from
+			Public Function [if](temporal   ChronoLocalDate As instanceof) As [MustOverride]
+			Public MustOverride Function [from](  temporal As java.time.temporal.TemporalAccessor) As ChronoLocalDate Implements ChronoLocalDate.from
 			Public MustOverride Function timeLineOrder() As IComparer(Of ChronoLocalDate) Implements ChronoLocalDate.timeLineOrder
 
 		''' <summary>
@@ -220,7 +220,7 @@ Namespace java.time.chrono
 		''' <returns> the date-time checked and cast to {@code ChronoLocalDate}, not null </returns>
 		''' <exception cref="ClassCastException"> if the date-time cannot be cast to ChronoLocalDate
 		'''  or the chronology is not equal this Chronology </exception>
-		Friend Shared Function ensureValid(Of D As ChronoLocalDate)(ByVal chrono As Chronology, ByVal temporal As java.time.temporal.Temporal) As D
+		Friend Shared Function ensureValid(Of D As ChronoLocalDate)(  chrono As Chronology,   temporal As java.time.temporal.Temporal) As D
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
 			Dim other As D = CType(temporal, D)
 			If chrono.Equals(other.chronology) = False Then Throw New ClassCastException("Chronology mismatch, expected: " & chrono.id & ", actual: " & other.chronology.id)
@@ -235,24 +235,24 @@ Namespace java.time.chrono
 		End Sub
 
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Overrides Function [with](ByVal adjuster As java.time.temporal.TemporalAdjuster) As D
+		Public Overrides Function [with](  adjuster As java.time.temporal.TemporalAdjuster) As D
 			Return CType(ChronoLocalDate.this.with(adjuster), D)
 		End Function
 
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Overrides Function [with](ByVal field As java.time.temporal.TemporalField, ByVal value As Long) As D
+		Public Overrides Function [with](  field As java.time.temporal.TemporalField,   value As Long) As D
 			Return CType(ChronoLocalDate.this.with(field, value), D)
 		End Function
 
 		'-----------------------------------------------------------------------
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Overrides Function plus(ByVal amount As java.time.temporal.TemporalAmount) As D
+		Public Overrides Function plus(  amount As java.time.temporal.TemporalAmount) As D
 			Return CType(ChronoLocalDate.this.plus(amount), D)
 		End Function
 
 		'-----------------------------------------------------------------------
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Overrides Function plus(ByVal amountToAdd As Long, ByVal unit As java.time.temporal.TemporalUnit) As D
+		Public Overrides Function plus(  amountToAdd As Long,   unit As java.time.temporal.TemporalUnit) As D
 			If TypeOf unit Is java.time.temporal.ChronoUnit Then
 				Dim f As java.time.temporal.ChronoUnit = CType(unit, java.time.temporal.ChronoUnit)
 				Select Case f
@@ -279,12 +279,12 @@ Namespace java.time.chrono
 		End Function
 
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Overrides Function minus(ByVal amount As java.time.temporal.TemporalAmount) As D
+		Public Overrides Function minus(  amount As java.time.temporal.TemporalAmount) As D
 			Return CType(ChronoLocalDate.this.minus(amount), D)
 		End Function
 
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Overrides Function minus(ByVal amountToSubtract As Long, ByVal unit As java.time.temporal.TemporalUnit) As D
+		Public Overrides Function minus(  amountToSubtract As Long,   unit As java.time.temporal.TemporalUnit) As D
 			Return CType(ChronoLocalDate.this.minus(amountToSubtract, unit), D)
 		End Function
 
@@ -302,7 +302,7 @@ Namespace java.time.chrono
 		''' <param name="yearsToAdd">  the years to add, may be negative </param>
 		''' <returns> a date based on this one with the years added, not null </returns>
 		''' <exception cref="DateTimeException"> if the result exceeds the supported date range </exception>
-		Friend MustOverride Function plusYears(ByVal yearsToAdd As Long) As D
+		Friend MustOverride Function plusYears(  yearsToAdd As Long) As D
 
 		''' <summary>
 		''' Returns a copy of this date with the specified number of months added.
@@ -317,7 +317,7 @@ Namespace java.time.chrono
 		''' <param name="monthsToAdd">  the months to add, may be negative </param>
 		''' <returns> a date based on this one with the months added, not null </returns>
 		''' <exception cref="DateTimeException"> if the result exceeds the supported date range </exception>
-		Friend MustOverride Function plusMonths(ByVal monthsToAdd As Long) As D
+		Friend MustOverride Function plusMonths(  monthsToAdd As Long) As D
 
 		''' <summary>
 		''' Returns a copy of this date with the specified number of weeks added.
@@ -333,7 +333,7 @@ Namespace java.time.chrono
 		''' <param name="weeksToAdd">  the weeks to add, may be negative </param>
 		''' <returns> a date based on this one with the weeks added, not null </returns>
 		''' <exception cref="DateTimeException"> if the result exceeds the supported date range </exception>
-		Friend Overridable Function plusWeeks(ByVal weeksToAdd As Long) As D
+		Friend Overridable Function plusWeeks(  weeksToAdd As Long) As D
 			Return plusDays (System.Math.multiplyExact(weeksToAdd, 7))
 		End Function
 
@@ -347,7 +347,7 @@ Namespace java.time.chrono
 		''' <param name="daysToAdd">  the days to add, may be negative </param>
 		''' <returns> a date based on this one with the days added, not null </returns>
 		''' <exception cref="DateTimeException"> if the result exceeds the supported date range </exception>
-		Friend MustOverride Function plusDays(ByVal daysToAdd As Long) As D
+		Friend MustOverride Function plusDays(  daysToAdd As Long) As D
 
 		'-----------------------------------------------------------------------
 		''' <summary>
@@ -366,7 +366,7 @@ Namespace java.time.chrono
 		''' <returns> a date based on this one with the years subtracted, not null </returns>
 		''' <exception cref="DateTimeException"> if the result exceeds the supported date range </exception>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Friend Overridable Function minusYears(ByVal yearsToSubtract As Long) As D
+		Friend Overridable Function minusYears(  yearsToSubtract As Long) As D
 			[Return] (If(yearsToSubtract = java.lang.[Long].MIN_VALUE, CType(plusYears(Long.Max_Value), ChronoLocalDateImpl(Of D)).plusYears(1), plusYears(-yearsToSubtract)))
 		End Function
 
@@ -386,7 +386,7 @@ Namespace java.time.chrono
 		''' <returns> a date based on this one with the months subtracted, not null </returns>
 		''' <exception cref="DateTimeException"> if the result exceeds the supported date range </exception>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Friend Overridable Function minusMonths(ByVal monthsToSubtract As Long) As D
+		Friend Overridable Function minusMonths(  monthsToSubtract As Long) As D
 			[Return] (If(monthsToSubtract = java.lang.[Long].MIN_VALUE, CType(plusMonths(Long.Max_Value), ChronoLocalDateImpl(Of D)).plusMonths(1), plusMonths(-monthsToSubtract)))
 		End Function
 
@@ -405,7 +405,7 @@ Namespace java.time.chrono
 		''' <returns> a date based on this one with the weeks subtracted, not null </returns>
 		''' <exception cref="DateTimeException"> if the result exceeds the supported date range </exception>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Friend Overridable Function minusWeeks(ByVal weeksToSubtract As Long) As D
+		Friend Overridable Function minusWeeks(  weeksToSubtract As Long) As D
 			[Return] (If(weeksToSubtract = java.lang.[Long].MIN_VALUE, CType(plusWeeks(Long.Max_Value), ChronoLocalDateImpl(Of D)).plusWeeks(1), plusWeeks(-weeksToSubtract)))
 		End Function
 
@@ -422,12 +422,12 @@ Namespace java.time.chrono
 		''' <returns> a date based on this one with the days subtracted, not null </returns>
 		''' <exception cref="DateTimeException"> if the result exceeds the supported date range </exception>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Friend Overridable Function minusDays(ByVal daysToSubtract As Long) As D
+		Friend Overridable Function minusDays(  daysToSubtract As Long) As D
 			[Return] (If(daysToSubtract = java.lang.[Long].MIN_VALUE, CType(plusDays(Long.Max_Value), ChronoLocalDateImpl(Of D)).plusDays(1), plusDays(-daysToSubtract)))
 		End Function
 
 		'-----------------------------------------------------------------------
-		Public Overrides Function [until](ByVal endExclusive As java.time.temporal.Temporal, ByVal unit As java.time.temporal.TemporalUnit) As Long Implements ChronoLocalDate.until
+		Public Overrides Function [until](  endExclusive As java.time.temporal.Temporal,   unit As java.time.temporal.TemporalUnit) As Long Implements ChronoLocalDate.until
 			java.util.Objects.requireNonNull(endExclusive, "endExclusive")
 			Dim [end] As ChronoLocalDate = chronology.date(endExclusive)
 			If TypeOf unit Is java.time.temporal.ChronoUnit Then
@@ -455,11 +455,11 @@ Namespace java.time.chrono
 			Return unit.between(Me, [end])
 		End Function
 
-		Private Function daysUntil(ByVal [end] As ChronoLocalDate) As Long
+		Private Function daysUntil(  [end] As ChronoLocalDate) As Long
 			Return [end].toEpochDay() - toEpochDay() ' no overflow
 		End Function
 
-		Private Function monthsUntil(ByVal [end] As ChronoLocalDate) As Long
+		Private Function monthsUntil(  [end] As ChronoLocalDate) As Long
 			Dim range As java.time.temporal.ValueRange = chronology.range(MONTH_OF_YEAR)
 			If range.maximum <> 12 Then Throw New IllegalStateException("ChronoLocalDateImpl only supports Chronologies with 12 months per year")
 			Dim packed1 As Long = getLong(PROLEPTIC_MONTH) * 32L + get(DAY_OF_MONTH) ' no overflow
@@ -467,7 +467,7 @@ Namespace java.time.chrono
 			[Return] (packed2 - packed1) / 32
 		End Function
 
-		Public Overrides Function Equals(ByVal obj As Object) As Boolean
+		Public Overrides Function Equals(  obj As Object) As Boolean
 			If Me Is obj Then Return True
 			If TypeOf obj Is ChronoLocalDate Then Return compareTo(CType(obj, ChronoLocalDate)) = 0
 			Return False

@@ -156,7 +156,7 @@ Namespace java.time.zone
 		''' <param name="transitionList">  the list of transitions, not null </param>
 		''' <param name="lastRules">  the recurring last rules, size 16 or less, not null </param>
 		''' <returns> the zone rules, not null </returns>
-		Public Shared Function [of](ByVal baseStandardOffset As java.time.ZoneOffset, ByVal baseWallOffset As java.time.ZoneOffset, ByVal standardOffsetTransitionList As IList(Of ZoneOffsetTransition), ByVal transitionList As IList(Of ZoneOffsetTransition), ByVal lastRules As IList(Of ZoneOffsetTransitionRule)) As ZoneRules
+		Public Shared Function [of](  baseStandardOffset As java.time.ZoneOffset,   baseWallOffset As java.time.ZoneOffset,   standardOffsetTransitionList As IList(Of ZoneOffsetTransition),   transitionList As IList(Of ZoneOffsetTransition),   lastRules As IList(Of ZoneOffsetTransitionRule)) As ZoneRules
 			java.util.Objects.requireNonNull(baseStandardOffset, "baseStandardOffset")
 			java.util.Objects.requireNonNull(baseWallOffset, "baseWallOffset")
 			java.util.Objects.requireNonNull(standardOffsetTransitionList, "standardOffsetTransitionList")
@@ -171,7 +171,7 @@ Namespace java.time.zone
 		''' <param name="offset">  the offset this fixed zone rules is based on, not null </param>
 		''' <returns> the zone rules, not null </returns>
 		''' <seealso cref= #isFixedOffset() </seealso>
-		Public Shared Function [of](ByVal offset As java.time.ZoneOffset) As ZoneRules
+		Public Shared Function [of](  offset As java.time.ZoneOffset) As ZoneRules
 			java.util.Objects.requireNonNull(offset, "offset")
 			Return New ZoneRules(offset)
 		End Function
@@ -184,7 +184,7 @@ Namespace java.time.zone
 		''' <param name="standardOffsetTransitionList">  the list of changes to the standard offset, not null </param>
 		''' <param name="transitionList">  the list of transitions, not null </param>
 		''' <param name="lastRules">  the recurring last rules, size 16 or less, not null </param>
-		Friend Sub New(ByVal baseStandardOffset As java.time.ZoneOffset, ByVal baseWallOffset As java.time.ZoneOffset, ByVal standardOffsetTransitionList As IList(Of ZoneOffsetTransition), ByVal transitionList As IList(Of ZoneOffsetTransition), ByVal lastRules As IList(Of ZoneOffsetTransitionRule))
+		Friend Sub New(  baseStandardOffset As java.time.ZoneOffset,   baseWallOffset As java.time.ZoneOffset,   standardOffsetTransitionList As IList(Of ZoneOffsetTransition),   transitionList As IList(Of ZoneOffsetTransition),   lastRules As IList(Of ZoneOffsetTransitionRule))
 			MyBase.New()
 
 			' convert standard transitions
@@ -234,7 +234,7 @@ Namespace java.time.zone
 		''' <param name="savingsInstantTransitions">  the standard transitions, not null </param>
 		''' <param name="wallOffsets">  the wall offsets, not null </param>
 		''' <param name="lastRules">  the recurring last rules, size 15 or less, not null </param>
-		Private Sub New(ByVal standardTransitions As Long(), ByVal standardOffsets As java.time.ZoneOffset(), ByVal savingsInstantTransitions As Long(), ByVal wallOffsets As java.time.ZoneOffset(), ByVal lastRules As ZoneOffsetTransitionRule())
+		Private Sub New(  standardTransitions As Long(),   standardOffsets As java.time.ZoneOffset(),   savingsInstantTransitions As Long(),   wallOffsets As java.time.ZoneOffset(),   lastRules As ZoneOffsetTransitionRule())
 			MyBase.New()
 
 			Me.standardTransitions = standardTransitions
@@ -270,7 +270,7 @@ Namespace java.time.zone
 		''' <param name="offset">  the offset this fixed zone rules is based on, not null </param>
 		''' <returns> the zone rules, not null </returns>
 		''' <seealso cref= #isFixedOffset() </seealso>
-		Private Sub New(ByVal offset As java.time.ZoneOffset)
+		Private Sub New(  offset As java.time.ZoneOffset)
 			Me.standardOffsets = New java.time.ZoneOffset(0){}
 			Me.standardOffsets(0) = offset
 			Me.standardTransitions = EMPTY_LONG_ARRAY
@@ -285,7 +285,7 @@ Namespace java.time.zone
 		''' </summary>
 		''' <param name="s"> the stream to read </param>
 		''' <exception cref="InvalidObjectException"> always </exception>
-		Private Sub readObject(ByVal s As java.io.ObjectInputStream)
+		Private Sub readObject(  s As java.io.ObjectInputStream)
 			Throw New java.io.InvalidObjectException("Deserialization via serialization delegate")
 		End Sub
 
@@ -359,7 +359,7 @@ Namespace java.time.zone
 		''' </summary>
 		''' <param name="out">  the output stream, not null </param>
 		''' <exception cref="IOException"> if an error occurs </exception>
-		Friend Sub writeExternal(ByVal out As java.io.DataOutput)
+		Friend Sub writeExternal(  out As java.io.DataOutput)
 			out.writeInt(standardTransitions.Length)
 			For Each trans As Long In standardTransitions
 				Ser.writeEpochSec(trans, out)
@@ -386,7 +386,7 @@ Namespace java.time.zone
 		''' <param name="in">  the input stream, not null </param>
 		''' <returns> the created object, not null </returns>
 		''' <exception cref="IOException"> if an error occurs </exception>
-		Shared Function readExternal(ByVal [in] As java.io.DataInput) As ZoneRules
+		Shared Function readExternal(  [in] As java.io.DataInput) As ZoneRules
 			Dim stdSize As Integer = [in].readInt()
 			Dim stdTrans As Long() = If(stdSize = 0, EMPTY_LONG_ARRAY, New Long(stdSize - 1){})
 			For i As Integer = 0 To stdSize - 1
@@ -433,7 +433,7 @@ Namespace java.time.zone
 		''' <param name="instant">  the instant to find the offset for, not null, but null
 		'''  may be ignored if the rules have a single offset for all instants </param>
 		''' <returns> the offset, not null </returns>
-		Public Function getOffset(ByVal instant_Renamed As java.time.Instant) As java.time.ZoneOffset
+		Public Function getOffset(  instant_Renamed As java.time.Instant) As java.time.ZoneOffset
 			If savingsInstantTransitions.Length = 0 Then Return standardOffsets(0)
 			Dim epochSec As Long = instant_Renamed.epochSecond
 			' check if using last rules
@@ -481,7 +481,7 @@ Namespace java.time.zone
 		''' <param name="localDateTime">  the local date-time to query, not null, but null
 		'''  may be ignored if the rules have a single offset for all instants </param>
 		''' <returns> the best available offset for the local date-time, not null </returns>
-		Public Function getOffset(ByVal localDateTime_Renamed As java.time.LocalDateTime) As java.time.ZoneOffset
+		Public Function getOffset(  localDateTime_Renamed As java.time.LocalDateTime) As java.time.ZoneOffset
 			Dim info As Object = getOffsetInfo(localDateTime_Renamed)
 			If TypeOf info Is ZoneOffsetTransition Then Return CType(info, ZoneOffsetTransition).offsetBefore
 			Return CType(info, java.time.ZoneOffset)
@@ -528,7 +528,7 @@ Namespace java.time.zone
 		''' <param name="localDateTime">  the local date-time to query for valid offsets, not null, but null
 		'''  may be ignored if the rules have a single offset for all instants </param>
 		''' <returns> the list of valid offsets, may be immutable, not null </returns>
-		Public Function getValidOffsets(ByVal localDateTime_Renamed As java.time.LocalDateTime) As IList(Of java.time.ZoneOffset)
+		Public Function getValidOffsets(  localDateTime_Renamed As java.time.LocalDateTime) As IList(Of java.time.ZoneOffset)
 			' should probably be optimized
 			Dim info As Object = getOffsetInfo(localDateTime_Renamed)
 			If TypeOf info Is ZoneOffsetTransition Then Return CType(info, ZoneOffsetTransition).validOffsets
@@ -568,12 +568,12 @@ Namespace java.time.zone
 		''' <param name="localDateTime">  the local date-time to query for offset transition, not null, but null
 		'''  may be ignored if the rules have a single offset for all instants </param>
 		''' <returns> the offset transition, null if the local date-time is not in transition </returns>
-		Public Function getTransition(ByVal localDateTime_Renamed As java.time.LocalDateTime) As ZoneOffsetTransition
+		Public Function getTransition(  localDateTime_Renamed As java.time.LocalDateTime) As ZoneOffsetTransition
 			Dim info As Object = getOffsetInfo(localDateTime_Renamed)
 			Return (If(TypeOf info Is ZoneOffsetTransition, CType(info, ZoneOffsetTransition), Nothing))
 		End Function
 
-		Private Function getOffsetInfo(ByVal dt As java.time.LocalDateTime) As Object
+		Private Function getOffsetInfo(  dt As java.time.LocalDateTime) As Object
 			If savingsInstantTransitions.Length = 0 Then Return standardOffsets(0)
 			' check if using last rules
 			If lastRules.Length > 0 AndAlso dt.isAfter(savingsLocalTransitions(savingsLocalTransitions.Length - 1)) Then
@@ -621,7 +621,7 @@ Namespace java.time.zone
 		''' <param name="dt">  the date-time, not null </param>
 		''' <param name="trans">  the transition, not null </param>
 		''' <returns> the offset info, not null </returns>
-		Private Function findOffsetInfo(ByVal dt As java.time.LocalDateTime, ByVal trans As ZoneOffsetTransition) As Object
+		Private Function findOffsetInfo(  dt As java.time.LocalDateTime,   trans As ZoneOffsetTransition) As Object
 			Dim localTransition As java.time.LocalDateTime = trans.dateTimeBefore
 			If trans.gap Then
 				If dt.isBefore(localTransition) Then Return trans.offsetBefore
@@ -645,7 +645,7 @@ Namespace java.time.zone
 		''' </summary>
 		''' <param name="year">  the year, not null </param>
 		''' <returns> the transition array, not null </returns>
-		Private Function findTransitionArray(ByVal year_Renamed As Integer) As ZoneOffsetTransition()
+		Private Function findTransitionArray(  year_Renamed As Integer) As ZoneOffsetTransition()
 			Dim yearObj As Integer? = year_Renamed ' should use Year [Class], but this saves a class load
 			Dim transArray As ZoneOffsetTransition() = lastRulesCache.get(yearObj)
 			If transArray IsNot Nothing Then Return transArray
@@ -669,7 +669,7 @@ Namespace java.time.zone
 		''' <param name="instant">  the instant to find the offset information for, not null, but null
 		'''  may be ignored if the rules have a single offset for all instants </param>
 		''' <returns> the standard offset, not null </returns>
-		Public Function getStandardOffset(ByVal instant_Renamed As java.time.Instant) As java.time.ZoneOffset
+		Public Function getStandardOffset(  instant_Renamed As java.time.Instant) As java.time.ZoneOffset
 			If savingsInstantTransitions.Length = 0 Then Return standardOffsets(0)
 			Dim epochSec As Long = instant_Renamed.epochSecond
 			Dim index As Integer = java.util.Arrays.binarySearch(standardTransitions, epochSec)
@@ -693,7 +693,7 @@ Namespace java.time.zone
 		''' <param name="instant">  the instant to find the daylight savings for, not null, but null
 		'''  may be ignored if the rules have a single offset for all instants </param>
 		''' <returns> the difference between the standard and actual offset, not null </returns>
-		Public Function getDaylightSavings(ByVal instant_Renamed As java.time.Instant) As java.time.Duration
+		Public Function getDaylightSavings(  instant_Renamed As java.time.Instant) As java.time.Duration
 			If savingsInstantTransitions.Length = 0 Then Return java.time.Duration.ZERO
 			Dim standardOffset_Renamed As java.time.ZoneOffset = getStandardOffset(instant_Renamed)
 			Dim actualOffset As java.time.ZoneOffset = getOffset(instant_Renamed)
@@ -713,7 +713,7 @@ Namespace java.time.zone
 		''' <param name="instant">  the instant to find the offset information for, not null, but null
 		'''  may be ignored if the rules have a single offset for all instants </param>
 		''' <returns> the standard offset, not null </returns>
-		Public Function isDaylightSavings(ByVal instant_Renamed As java.time.Instant) As Boolean
+		Public Function isDaylightSavings(  instant_Renamed As java.time.Instant) As Boolean
 			Return (getStandardOffset(instant_Renamed).Equals(getOffset(instant_Renamed)) = False)
 		End Function
 
@@ -730,7 +730,7 @@ Namespace java.time.zone
 		'''  may be ignored if the rules have a single offset for all instants </param>
 		''' <param name="offset">  the offset to check, null returns false </param>
 		''' <returns> true if the offset date-time is valid for these rules </returns>
-		Public Function isValidOffset(ByVal localDateTime_Renamed As java.time.LocalDateTime, ByVal offset As java.time.ZoneOffset) As Boolean
+		Public Function isValidOffset(  localDateTime_Renamed As java.time.LocalDateTime,   offset As java.time.ZoneOffset) As Boolean
 			Return getValidOffsets(localDateTime_Renamed).Contains(offset)
 		End Function
 
@@ -744,7 +744,7 @@ Namespace java.time.zone
 		''' <param name="instant">  the instant to get the next transition after, not null, but null
 		'''  may be ignored if the rules have a single offset for all instants </param>
 		''' <returns> the next transition after the specified instant, null if this is after the last transition </returns>
-		Public Function nextTransition(ByVal instant_Renamed As java.time.Instant) As ZoneOffsetTransition
+		Public Function nextTransition(  instant_Renamed As java.time.Instant) As ZoneOffsetTransition
 			If savingsInstantTransitions.Length = 0 Then Return Nothing
 			Dim epochSec As Long = instant_Renamed.epochSecond
 			' check if using last rules
@@ -784,7 +784,7 @@ Namespace java.time.zone
 		''' <param name="instant">  the instant to get the previous transition after, not null, but null
 		'''  may be ignored if the rules have a single offset for all instants </param>
 		''' <returns> the previous transition after the specified instant, null if this is before the first transition </returns>
-		Public Function previousTransition(ByVal instant_Renamed As java.time.Instant) As ZoneOffsetTransition
+		Public Function previousTransition(  instant_Renamed As java.time.Instant) As ZoneOffsetTransition
 			If savingsInstantTransitions.Length = 0 Then Return Nothing
 			Dim epochSec As Long = instant_Renamed.epochSecond
 			If instant_Renamed.nano > 0 AndAlso epochSec < java.lang.[Long].Max_Value Then epochSec += 1 ' allow rest of method to only use seconds
@@ -816,7 +816,7 @@ Namespace java.time.zone
 			Return New ZoneOffsetTransition(savingsInstantTransitions(index - 1), wallOffsets(index - 1), wallOffsets(index))
 		End Function
 
-		Private Function findYear(ByVal epochSecond As Long, ByVal offset As java.time.ZoneOffset) As Integer
+		Private Function findYear(  epochSecond As Long,   offset As java.time.ZoneOffset) As Integer
 			' inline for performance
 			Dim localSecond As Long = epochSecond + offset.totalSeconds
 			Dim localEpochDay As Long = System.Math.floorDiv(localSecond, 86400)
@@ -881,7 +881,7 @@ Namespace java.time.zone
 		''' </summary>
 		''' <param name="otherRules">  the other rules, null returns false </param>
 		''' <returns> true if this rules is the same as that specified </returns>
-		Public Overrides Function Equals(ByVal otherRules As Object) As Boolean
+		Public Overrides Function Equals(  otherRules As Object) As Boolean
 			If Me Is otherRules Then Return True
 			If TypeOf otherRules Is ZoneRules Then
 				Dim other As ZoneRules = CType(otherRules, ZoneRules)

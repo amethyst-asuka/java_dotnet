@@ -62,7 +62,7 @@ Namespace java.awt.image
 		'''        <code>LookupTable</code> </param>
 		''' <exception cref="IllegalArgumentException"> if <code>offset</code> is less than 0
 		'''         or if <code>numComponents</code> is less than 1 </exception>
-		Protected Friend Sub New(ByVal offset As Integer, ByVal numComponents As Integer)
+		Protected Friend Sub New(  offset As Integer,   numComponents As Integer)
 			If offset < 0 Then Throw New IllegalArgumentException("Offset must be greater than 0")
 			If numComponents < 1 Then Throw New IllegalArgumentException("Number of components must " & " be at least 1")
 			Me.numComponents = numComponents
@@ -98,7 +98,7 @@ Namespace java.awt.image
 		'''        translated with this <code>LookupTable</code> </param>
 		''' <returns> an <code>int</code> array of components for one
 		'''         pixel. </returns>
-		Public MustOverride Function lookupPixel(ByVal src As Integer(), ByVal dest As Integer()) As Integer()
+		Public MustOverride Function lookupPixel(  src As Integer(),   dest As Integer()) As Integer()
 
 	End Class
 

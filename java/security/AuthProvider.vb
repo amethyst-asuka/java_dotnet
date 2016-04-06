@@ -48,7 +48,7 @@ Namespace java.security
 		''' <param name="name"> the provider name. </param>
 		''' <param name="version"> the provider version number. </param>
 		''' <param name="info"> a description of the provider and its services. </param>
-		Protected Friend Sub New(ByVal name As String, ByVal version As Double, ByVal info As String)
+		Protected Friend Sub New(  name As String,   version As Double,   info As String)
 			MyBase.New(name, version, info)
 		End Sub
 
@@ -82,7 +82,7 @@ Namespace java.security
 		'''  {@code SecurityPermission("authProvider.name")},
 		'''  where {@code name} is the value returned by
 		'''  this provider's {@code getName} method </exception>
-		Public MustOverride Sub login(ByVal subject As javax.security.auth.Subject, ByVal handler As javax.security.auth.callback.CallbackHandler)
+		Public MustOverride Sub login(  subject As javax.security.auth.Subject,   handler As javax.security.auth.callback.CallbackHandler)
 
 		''' <summary>
 		''' Log out from this provider.

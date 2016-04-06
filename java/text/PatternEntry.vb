@@ -53,14 +53,14 @@ Namespace java.text
 		''' <summary>
 		''' Gets the current extension, quoted
 		''' </summary>
-		Public Overridable Sub appendQuotedExtension(ByVal toAddTo As StringBuffer)
+		Public Overridable Sub appendQuotedExtension(  toAddTo As StringBuffer)
 			appendQuoted(extension,toAddTo)
 		End Sub
 
 		''' <summary>
 		''' Gets the current chars, quoted
 		''' </summary>
-		Public Overridable Sub appendQuotedChars(ByVal toAddTo As StringBuffer)
+		Public Overridable Sub appendQuotedChars(  toAddTo As StringBuffer)
 			appendQuoted(chars,toAddTo)
 		End Sub
 
@@ -69,7 +69,7 @@ Namespace java.text
 		''' Because Vector.indexOf doesn't take a comparator,
 		''' this method is ill-defined and ignores strength.
 		''' </summary>
-		Public Overrides Function Equals(ByVal obj As Object) As Boolean
+		Public Overrides Function Equals(  obj As Object) As Boolean
 			If obj Is Nothing Then Return False
 			Dim other As PatternEntry = CType(obj, PatternEntry)
 			Dim result As Boolean = chars.Equals(other.chars)
@@ -118,7 +118,7 @@ Namespace java.text
 
 		' ===== privates =====
 
-		Friend Overridable Sub addToBuffer(ByVal toAddTo As StringBuffer, ByVal showExtension As Boolean, ByVal showWhiteSpace As Boolean, ByVal lastEntry As PatternEntry)
+		Friend Overridable Sub addToBuffer(  toAddTo As StringBuffer,   showExtension As Boolean,   showWhiteSpace As Boolean,   lastEntry As PatternEntry)
 			If showWhiteSpace AndAlso toAddTo.length() > 0 Then
 				If strength = Collator.PRIMARY OrElse lastEntry IsNot Nothing Then
 					toAddTo.append(ControlChars.Lf)
@@ -155,7 +155,7 @@ Namespace java.text
 			End If
 		End Sub
 
-		Friend Shared Sub appendQuoted(ByVal chars As String, ByVal toAddTo As StringBuffer)
+		Friend Shared Sub appendQuoted(  chars As String,   toAddTo As StringBuffer)
 			Dim inQuote As Boolean = False
 			Dim ch As Char = chars.Chars(0)
 			If Character.isSpaceChar(ch) Then
@@ -189,7 +189,7 @@ Namespace java.text
 		' Parsing a pattern into a list of PatternEntries....
 		'========================================================================
 
-		Friend Sub New(ByVal strength As Integer, ByVal chars As StringBuffer, ByVal extension As StringBuffer)
+		Friend Sub New(  strength As Integer,   chars As StringBuffer,   extension As StringBuffer)
 			Me.strength = strength
 			Me.chars = chars.ToString()
 			Me.extension = If(extension.length() > 0, extension.ToString(), "")
@@ -199,7 +199,7 @@ Namespace java.text
 			Private pattern As String
 			Private i As Integer
 
-			Public Sub New(ByVal pattern As String)
+			Public Sub New(  pattern As String)
 				Me.pattern = pattern
 				Me.i = 0
 			End Sub
@@ -282,7 +282,7 @@ Namespace java.text
 
 		End Class
 
-		Friend Shared Function isSpecialChar(ByVal ch As Char) As Boolean
+		Friend Shared Function isSpecialChar(  ch As Char) As Boolean
 			Return ((ch = ChrW(&H0020)) OrElse ((ch <= ChrW(&H002F)) AndAlso (ch >= ChrW(&H0022))) OrElse ((ch <= ChrW(&H003F)) AndAlso (ch >= ChrW(&H003A))) OrElse ((ch <= ChrW(&H0060)) AndAlso (ch >= ChrW(&H005B))) OrElse ((ch <= ChrW(&H007E)) AndAlso (ch >= ChrW(&H007B))))
 		End Function
 

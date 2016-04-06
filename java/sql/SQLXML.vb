@@ -342,7 +342,7 @@ Namespace java.sql
 	  ''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 	  ''' this method
 	  ''' @since 1.6 </exception>
-	   Function getSource(Of T As javax.xml.transform.Source)(ByVal sourceClass As [Class]) As T
+	   Function getSource(Of T As javax.xml.transform.Source)(  sourceClass As [Class]) As T
 
 	  ''' <summary>
 	  ''' Returns a Result for setting the XML value designated by this SQLXML instance.
@@ -383,7 +383,7 @@ Namespace java.sql
 	  ''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 	  ''' this method
 	  ''' @since 1.6 </exception>
-	   Function setResult(Of T As javax.xml.transform.Result)(ByVal resultClass As [Class]) As T
+	   Function setResult(Of T As javax.xml.transform.Result)(  resultClass As [Class]) As T
 
 	End Interface
 

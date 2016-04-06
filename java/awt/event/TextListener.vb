@@ -49,7 +49,7 @@ Namespace java.awt.event
 		''' The code written for this method performs the operations
 		''' that need to occur when text changes.
 		''' </summary>
-		Sub textValueChanged(ByVal e As TextEvent)
+		Sub textValueChanged(  e As TextEvent)
 
 	End Interface
 

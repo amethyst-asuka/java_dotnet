@@ -117,7 +117,7 @@ Namespace java.util.stream
 			Private ReadOnly finisher_Renamed As java.util.function.Function(Of A, R)
 			Private ReadOnly characteristics_Renamed As java.util.Set(Of Characteristics)
 
-			Friend Sub New(ByVal supplier As java.util.function.Supplier(Of A), ByVal accumulator As java.util.function.BiConsumer(Of A, T), ByVal combiner As java.util.function.BinaryOperator(Of A), ByVal finisher As java.util.function.Function(Of A, R), ByVal characteristics As java.util.Set(Of Characteristics))
+			Friend Sub New(  supplier As java.util.function.Supplier(Of A),   accumulator As java.util.function.BiConsumer(Of A, T),   combiner As java.util.function.BinaryOperator(Of A),   finisher As java.util.function.Function(Of A, R),   characteristics As java.util.Set(Of Characteristics))
 				Me.supplier_Renamed = supplier
 				Me.accumulator_Renamed = accumulator
 				Me.combiner_Renamed = combiner
@@ -125,7 +125,7 @@ Namespace java.util.stream
 				Me.characteristics_Renamed = characteristics
 			End Sub
 
-			Friend Sub New(ByVal supplier As java.util.function.Supplier(Of A), ByVal accumulator As java.util.function.BiConsumer(Of A, T), ByVal combiner As java.util.function.BinaryOperator(Of A), ByVal characteristics As java.util.Set(Of Characteristics))
+			Friend Sub New(  supplier As java.util.function.Supplier(Of A),   accumulator As java.util.function.BiConsumer(Of A, T),   combiner As java.util.function.BinaryOperator(Of A),   characteristics As java.util.Set(Of Characteristics))
 				Me.New(supplier, accumulator, combiner, castingIdentity(), characteristics)
 			End Sub
 
@@ -162,7 +162,7 @@ Namespace java.util.stream
 		''' <returns> a {@code Collector} which collects all the input elements into a
 		''' {@code Collection}, in encounter order </returns>
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-		Public Shared Function toCollection(Of T, C As ICollection(Of T))(ByVal collectionFactory As java.util.function.Supplier(Of C)) As Collector(Of T, ?, C)
+		Public Shared Function toCollection(Of T, C As ICollection(Of T))(  collectionFactory As java.util.function.Supplier(Of C)) As Collector(Of T, ?, C)
 			Return New CollectorImpl(Of )(collectionFactory, ICollection(Of T)::add, (r1, r2) -> { r1.addAll(r2); Return r1; }, CH_ID)
 		End Function
 
@@ -217,7 +217,7 @@ Namespace java.util.stream
 		''' <returns> A {@code Collector} which concatenates CharSequence elements,
 		''' separated by the specified delimiter, in encounter order </returns>
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-		Public Shared Function joining(ByVal delimiter As CharSequence) As Collector(Of CharSequence, ?, String)
+		Public Shared Function joining(  delimiter As CharSequence) As Collector(Of CharSequence, ?, String)
 			Return joining(delimiter, "", "")
 		End Function
 
@@ -234,7 +234,7 @@ Namespace java.util.stream
 		''' <returns> A {@code Collector} which concatenates CharSequence elements,
 		''' separated by the specified delimiter, in encounter order </returns>
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-		Public Shared Function joining(ByVal delimiter As CharSequence, ByVal prefix As CharSequence, ByVal suffix As CharSequence) As Collector(Of CharSequence, ?, String)
+		Public Shared Function joining(  delimiter As CharSequence,   prefix As CharSequence,   suffix As CharSequence) As Collector(Of CharSequence, ?, String)
 			Return New CollectorImpl(Of )(() -> New java.util.StringJoiner(delimiter, prefix, suffix), java.util.StringJoiner::add, java.util.StringJoiner::merge, java.util.StringJoiner::toString, CH_NOID)
 		End Function
 
@@ -249,7 +249,7 @@ Namespace java.util.stream
 		''' <param name="mergeFunction"> A merge function suitable for
 		''' <seealso cref="Map#merge(Object, Object, BiFunction) Map.merge()"/> </param>
 		''' <returns> a merge function for two maps </returns>
-		Private Shared Function mapMerger(Of K, V, M As IDictionary(Of K, V))(ByVal mergeFunction As java.util.function.BinaryOperator(Of V)) As java.util.function.BinaryOperator(Of M)
+		Private Shared Function mapMerger(Of K, V, M As IDictionary(Of K, V))(  mergeFunction As java.util.function.BinaryOperator(Of V)) As java.util.function.BinaryOperator(Of M)
 			Return (m1, m2) ->
 				For Each e As KeyValuePair(Of K, V) In m2.entrySet()
 					m1.merge(e.Key, e.Value, mergeFunction)
@@ -283,7 +283,7 @@ Namespace java.util.stream
 		''' elements and provides the mapped results to the downstream collector </returns>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-		Public Shared Function mapping(Of T, U, A, R, T1 As U, T2)(ByVal mapper As java.util.function.Function(Of T1), ByVal downstream As Collector(Of T2)) As Collector(Of T, ?, R)
+		Public Shared Function mapping(Of T, U, A, R, T1 As U, T2)(  mapper As java.util.function.Function(Of T1),   downstream As Collector(Of T2)) As Collector(Of T, ?, R)
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 			Dim downstreamAccumulator As java.util.function.BiConsumer(Of A, ?) = downstream.accumulator()
@@ -307,7 +307,7 @@ Namespace java.util.stream
 		''' <param name="finisher"> a function to be applied to the final result of the downstream collector </param>
 		''' <returns> a collector which performs the action of the downstream collector,
 		''' followed by an additional finishing step </returns>
-		Public Shared Function collectingAndThen(Of T, A, R, RR)(ByVal downstream As Collector(Of T, A, R), ByVal finisher As java.util.function.Function(Of R, RR)) As Collector(Of T, A, RR)
+		Public Shared Function collectingAndThen(Of T, A, R, RR)(  downstream As Collector(Of T, A, R),   finisher As java.util.function.Function(Of R, RR)) As Collector(Of T, A, RR)
 			Dim characteristics As java.util.Set(Of Collector.Characteristics) = downstream.characteristics()
 			If characteristics.contains(Collector.Characteristics.IDENTITY_FINISH) Then
 				If characteristics.size() = 1 Then
@@ -354,7 +354,7 @@ Namespace java.util.stream
 		''' <returns> a {@code Collector} that produces the minimal value </returns>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-		Public Shared Function minBy(Of T, T1)(ByVal comparator As IComparer(Of T1)) As Collector(Of T, ?, java.util.Optional(Of T))
+		Public Shared Function minBy(Of T, T1)(  comparator As IComparer(Of T1)) As Collector(Of T, ?, java.util.Optional(Of T))
 			Return reducing(java.util.function.BinaryOperator.minBy(comparator))
 		End Function
 
@@ -373,7 +373,7 @@ Namespace java.util.stream
 		''' <returns> a {@code Collector} that produces the maximal value </returns>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-		Public Shared Function maxBy(Of T, T1)(ByVal comparator As IComparer(Of T1)) As Collector(Of T, ?, java.util.Optional(Of T))
+		Public Shared Function maxBy(Of T, T1)(  comparator As IComparer(Of T1)) As Collector(Of T, ?, java.util.Optional(Of T))
 			Return reducing(java.util.function.BinaryOperator.maxBy(comparator))
 		End Function
 
@@ -387,7 +387,7 @@ Namespace java.util.stream
 		''' <returns> a {@code Collector} that produces the sum of a derived property </returns>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-		Public Shared Function summingInt(Of T, T1)(ByVal mapper As java.util.function.ToIntFunction(Of T1)) As Collector(Of T, ?, Integer?)
+		Public Shared Function summingInt(Of T, T1)(  mapper As java.util.function.ToIntFunction(Of T1)) As Collector(Of T, ?, Integer?)
 'JAVA TO VB CONVERTER TODO TASK: Assignments within expressions are not supported in VB
 			Return New CollectorImpl(Of )(() -> New Integer(0){}, (a, t) -> { a(0) += mapper.applyAsInt(t); }, (a, b) -> { a(0) += b(0); Return a; }, a -> a(0), CH_NOID)
 		End Function
@@ -402,7 +402,7 @@ Namespace java.util.stream
 		''' <returns> a {@code Collector} that produces the sum of a derived property </returns>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-		Public Shared Function summingLong(Of T, T1)(ByVal mapper As java.util.function.ToLongFunction(Of T1)) As Collector(Of T, ?, Long?)
+		Public Shared Function summingLong(Of T, T1)(  mapper As java.util.function.ToLongFunction(Of T1)) As Collector(Of T, ?, Long?)
 'JAVA TO VB CONVERTER TODO TASK: Assignments within expressions are not supported in VB
 			Return New CollectorImpl(Of )(() -> New Long(0){}, (a, t) -> { a(0) += mapper.applyAsLong(t); }, (a, b) -> { a(0) += b(0); Return a; }, a -> a(0), CH_NOID)
 		End Function
@@ -424,7 +424,7 @@ Namespace java.util.stream
 		''' <returns> a {@code Collector} that produces the sum of a derived property </returns>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-		Public Shared Function summingDouble(Of T, T1)(ByVal mapper As java.util.function.ToDoubleFunction(Of T1)) As Collector(Of T, ?, Double?)
+		Public Shared Function summingDouble(Of T, T1)(  mapper As java.util.function.ToDoubleFunction(Of T1)) As Collector(Of T, ?, Double?)
 	'        
 	'         * In the arrays allocated for the collect operation, index 0
 	'         * holds the high-order bits of the running sum, index 1 holds
@@ -447,7 +447,7 @@ Namespace java.util.stream
 		''' </summary>
 		''' <param name="intermediateSum"> the high-order and low-order words of the intermediate sum </param>
 		''' <param name="value"> the name value to be included in the running sum </param>
-		Friend Shared Function sumWithCompensation(ByVal intermediateSum As Double(), ByVal value As Double) As Double()
+		Friend Shared Function sumWithCompensation(  intermediateSum As Double(),   value As Double) As Double()
 			Dim tmp As Double = value - intermediateSum(1)
 			Dim sum As Double = intermediateSum(0)
 			Dim velvel As Double = sum + tmp ' Little wolf of rounding error
@@ -461,7 +461,7 @@ Namespace java.util.stream
 		''' or more same-signed infinite values, return the
 		''' correctly-signed infinity stored in the simple sum.
 		''' </summary>
-		Friend Shared Function computeFinalSum(ByVal summands As Double()) As Double
+		Friend Shared Function computeFinalSum(  summands As Double()) As Double
 			' Better error bounds to add both terms as the final sum
 			Dim tmp As Double = summands(0) + summands(1)
 			Dim simpleSum As Double = summands(summands.Length - 1)
@@ -482,7 +482,7 @@ Namespace java.util.stream
 		''' <returns> a {@code Collector} that produces the sum of a derived property </returns>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-		Public Shared Function averagingInt(Of T, T1)(ByVal mapper As java.util.function.ToIntFunction(Of T1)) As Collector(Of T, ?, Double?)
+		Public Shared Function averagingInt(Of T, T1)(  mapper As java.util.function.ToIntFunction(Of T1)) As Collector(Of T, ?, Double?)
 			Return New CollectorImpl(Of )(() -> New Long(1){}, (a, t) -> { a(0) += mapper.applyAsInt(t); a(1)++; }, (a, b) -> { a(0) += b(0); a(1) += b(1); Return a; },If(a -> (a(1) == 0), 0.0R, CDbl(a(0)) / a(1)), CH_NOID)
 		End Function
 
@@ -496,7 +496,7 @@ Namespace java.util.stream
 		''' <returns> a {@code Collector} that produces the sum of a derived property </returns>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-		Public Shared Function averagingLong(Of T, T1)(ByVal mapper As java.util.function.ToLongFunction(Of T1)) As Collector(Of T, ?, Double?)
+		Public Shared Function averagingLong(Of T, T1)(  mapper As java.util.function.ToLongFunction(Of T1)) As Collector(Of T, ?, Double?)
 			Return New CollectorImpl(Of )(() -> New Long(1){}, (a, t) -> { a(0) += mapper.applyAsLong(t); a(1)++; }, (a, b) -> { a(0) += b(0); a(1) += b(1); Return a; },If(a -> (a(1) == 0), 0.0R, CDbl(a(0)) / a(1)), CH_NOID)
 		End Function
 
@@ -523,7 +523,7 @@ Namespace java.util.stream
 		''' <returns> a {@code Collector} that produces the sum of a derived property </returns>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-		Public Shared Function averagingDouble(Of T, T1)(ByVal mapper As java.util.function.ToDoubleFunction(Of T1)) As Collector(Of T, ?, Double?)
+		Public Shared Function averagingDouble(Of T, T1)(  mapper As java.util.function.ToDoubleFunction(Of T1)) As Collector(Of T, ?, Double?)
 	'        
 	'         * In the arrays allocated for the collect operation, index 0
 	'         * holds the high-order bits of the running sum, index 1 holds
@@ -553,13 +553,13 @@ Namespace java.util.stream
 		''' <seealso cref= #reducing(BinaryOperator) </seealso>
 		''' <seealso cref= #reducing(Object, Function, BinaryOperator) </seealso>
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-		Public Shared Function reducing(Of T)(ByVal identity As T, ByVal op As java.util.function.BinaryOperator(Of T)) As Collector(Of T, ?, T)
+		Public Shared Function reducing(Of T)(  identity As T,   op As java.util.function.BinaryOperator(Of T)) As Collector(Of T, ?, T)
 'JAVA TO VB CONVERTER TODO TASK: Assignments within expressions are not supported in VB
 			Return New CollectorImpl(Of )(boxSupplier(identity), (a, t) -> { a(0) = op.apply(a(0), t); }, (a, b) -> { a(0) = op.apply(a(0), b(0)); Return a; }, a -> a(0), CH_NOID)
 		End Function
 
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Private Shared Function boxSupplier(Of T)(ByVal identity As T) As java.util.function.Supplier(Of T())
+		Private Shared Function boxSupplier(Of T)(  identity As T) As java.util.function.Supplier(Of T())
 			Return () -> (T()) New Object() { identity }
 		End Function
 
@@ -589,7 +589,7 @@ Namespace java.util.stream
 		''' <seealso cref= #reducing(Object, BinaryOperator) </seealso>
 		''' <seealso cref= #reducing(Object, Function, BinaryOperator) </seealso>
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-		Public Shared Function reducing(Of T)(ByVal op As java.util.function.BinaryOperator(Of T)) As Collector(Of T, ?, java.util.Optional(Of T))
+		Public Shared Function reducing(Of T)(  op As java.util.function.BinaryOperator(Of T)) As Collector(Of T, ?, java.util.Optional(Of T))
 'JAVA TO VB CONVERTER TODO TASK: Local classes are not converted by Java to VB Converter:
 '			class OptionalBox implements java.util.function.Consumer(Of T)
 	'		{
@@ -648,7 +648,7 @@ Namespace java.util.stream
 		''' <seealso cref= #reducing(BinaryOperator) </seealso>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-		Public Shared Function reducing(Of T, U, T1 As U)(ByVal identity As U, ByVal mapper As java.util.function.Function(Of T1), ByVal op As java.util.function.BinaryOperator(Of U)) As Collector(Of T, ?, U)
+		Public Shared Function reducing(Of T, U, T1 As U)(  identity As U,   mapper As java.util.function.Function(Of T1),   op As java.util.function.BinaryOperator(Of U)) As Collector(Of T, ?, U)
 'JAVA TO VB CONVERTER TODO TASK: Assignments within expressions are not supported in VB
 			Return New CollectorImpl(Of )(boxSupplier(identity), (a, t) -> { a(0) = op.apply(a(0), mapper.apply(t)); }, (a, b) -> { a(0) = op.apply(a(0), b(0)); Return a; }, a -> a(0), CH_NOID)
 		End Function
@@ -691,7 +691,7 @@ Namespace java.util.stream
 		''' <seealso cref= #groupingByConcurrent(Function) </seealso>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-		Public Shared Function groupingBy(Of T, K, T1 As K)(ByVal classifier As java.util.function.Function(Of T1)) As Collector(Of T, ?, IDictionary(Of K, IList(Of T)))
+		Public Shared Function groupingBy(Of T, K, T1 As K)(  classifier As java.util.function.Function(Of T1)) As Collector(Of T, ?, IDictionary(Of K, IList(Of T)))
 			Return groupingBy(classifier, toList())
 		End Function
 
@@ -738,7 +738,7 @@ Namespace java.util.stream
 		''' <seealso cref= #groupingByConcurrent(Function, Collector) </seealso>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-		Public Shared Function groupingBy(Of T, K, A, D, T1 As K, T2)(ByVal classifier As java.util.function.Function(Of T1), ByVal downstream As Collector(Of T2)) As Collector(Of T, ?, IDictionary(Of K, D))
+		Public Shared Function groupingBy(Of T, K, A, D, T1 As K, T2)(  classifier As java.util.function.Function(Of T1),   downstream As Collector(Of T2)) As Collector(Of T, ?, IDictionary(Of K, D))
 			Return groupingBy(classifier, Hashtable::New, downstream)
 		End Function
 
@@ -787,7 +787,7 @@ Namespace java.util.stream
 		''' <seealso cref= #groupingByConcurrent(Function, Supplier, Collector) </seealso>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-		Public Shared Function groupingBy(Of T, K, D, A, M As IDictionary(Of K, D), T1 As K, T2)(ByVal classifier As java.util.function.Function(Of T1), ByVal mapFactory As java.util.function.Supplier(Of M), ByVal downstream As Collector(Of T2)) As Collector(Of T, ?, M)
+		Public Shared Function groupingBy(Of T, K, D, A, M As IDictionary(Of K, D), T1 As K, T2)(  classifier As java.util.function.Function(Of T1),   mapFactory As java.util.function.Supplier(Of M),   downstream As Collector(Of T2)) As Collector(Of T, ?, M)
 			Dim downstreamSupplier As java.util.function.Supplier(Of A) = downstream.supplier()
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
@@ -848,7 +848,7 @@ Namespace java.util.stream
 		''' <seealso cref= #groupingByConcurrent(Function, Supplier, Collector) </seealso>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-		Public Shared Function groupingByConcurrent(Of T, K, T1 As K)(ByVal classifier As java.util.function.Function(Of T1)) As Collector(Of T, ?, java.util.concurrent.ConcurrentMap(Of K, IList(Of T)))
+		Public Shared Function groupingByConcurrent(Of T, K, T1 As K)(  classifier As java.util.function.Function(Of T1)) As Collector(Of T, ?, java.util.concurrent.ConcurrentMap(Of K, IList(Of T)))
 			Return groupingByConcurrent(classifier, ConcurrentDictionary::New, toList())
 		End Function
 
@@ -888,7 +888,7 @@ Namespace java.util.stream
 		''' <seealso cref= #groupingByConcurrent(Function, Supplier, Collector) </seealso>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-		Public Shared Function groupingByConcurrent(Of T, K, A, D, T1 As K, T2)(ByVal classifier As java.util.function.Function(Of T1), ByVal downstream As Collector(Of T2)) As Collector(Of T, ?, java.util.concurrent.ConcurrentMap(Of K, D))
+		Public Shared Function groupingByConcurrent(Of T, K, A, D, T1 As K, T2)(  classifier As java.util.function.Function(Of T1),   downstream As Collector(Of T2)) As Collector(Of T, ?, java.util.concurrent.ConcurrentMap(Of K, D))
 			Return groupingByConcurrent(classifier, ConcurrentDictionary::New, downstream)
 		End Function
 
@@ -933,7 +933,7 @@ Namespace java.util.stream
 		''' <seealso cref= #groupingBy(Function, Supplier, Collector) </seealso>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-		Public Shared Function groupingByConcurrent(Of T, K, A, D, M As java.util.concurrent.ConcurrentMap(Of K, D), T1 As K, T2)(ByVal classifier As java.util.function.Function(Of T1), ByVal mapFactory As java.util.function.Supplier(Of M), ByVal downstream As Collector(Of T2)) As Collector(Of T, ?, M)
+		Public Shared Function groupingByConcurrent(Of T, K, A, D, M As java.util.concurrent.ConcurrentMap(Of K, D), T1 As K, T2)(  classifier As java.util.function.Function(Of T1),   mapFactory As java.util.function.Supplier(Of M),   downstream As Collector(Of T2)) As Collector(Of T, ?, M)
 			Dim downstreamSupplier As java.util.function.Supplier(Of A) = downstream.supplier()
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
@@ -985,7 +985,7 @@ Namespace java.util.stream
 		''' <seealso cref= #partitioningBy(Predicate, Collector) </seealso>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-		Public Shared Function partitioningBy(Of T, T1)(ByVal predicate As java.util.function.Predicate(Of T1)) As Collector(Of T, ?, IDictionary(Of Boolean?, IList(Of T)))
+		Public Shared Function partitioningBy(Of T, T1)(  predicate As java.util.function.Predicate(Of T1)) As Collector(Of T, ?, IDictionary(Of Boolean?, IList(Of T)))
 			Return partitioningBy(predicate, toList())
 		End Function
 
@@ -1011,7 +1011,7 @@ Namespace java.util.stream
 		''' <seealso cref= #partitioningBy(Predicate) </seealso>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-		Public Shared Function partitioningBy(Of T, D, A, T1, T2)(ByVal predicate As java.util.function.Predicate(Of T1), ByVal downstream As Collector(Of T2)) As Collector(Of T, ?, IDictionary(Of Boolean?, D))
+		Public Shared Function partitioningBy(Of T, D, A, T1, T2)(  predicate As java.util.function.Predicate(Of T1),   downstream As Collector(Of T2)) As Collector(Of T, ?, IDictionary(Of Boolean?, D))
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 			Dim downstreamAccumulator As java.util.function.BiConsumer(Of A, ?) = downstream.accumulator()
@@ -1079,7 +1079,7 @@ Namespace java.util.stream
 		''' <seealso cref= #toConcurrentMap(Function, Function) </seealso>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-		Public Shared Function toMap(Of T, K, U, T1 As K, T2 As U)(ByVal keyMapper As java.util.function.Function(Of T1), ByVal valueMapper As java.util.function.Function(Of T2)) As Collector(Of T, ?, IDictionary(Of K, U))
+		Public Shared Function toMap(Of T, K, U, T1 As K, T2 As U)(  keyMapper As java.util.function.Function(Of T1),   valueMapper As java.util.function.Function(Of T2)) As Collector(Of T, ?, IDictionary(Of K, U))
 			Return toMap(keyMapper, valueMapper, throwingMerger(), Hashtable::New)
 		End Function
 
@@ -1136,7 +1136,7 @@ Namespace java.util.stream
 		''' <seealso cref= #toConcurrentMap(Function, Function, BinaryOperator) </seealso>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-		Public Shared Function toMap(Of T, K, U, T1 As K, T2 As U)(ByVal keyMapper As java.util.function.Function(Of T1), ByVal valueMapper As java.util.function.Function(Of T2), ByVal mergeFunction As java.util.function.BinaryOperator(Of U)) As Collector(Of T, ?, IDictionary(Of K, U))
+		Public Shared Function toMap(Of T, K, U, T1 As K, T2 As U)(  keyMapper As java.util.function.Function(Of T1),   valueMapper As java.util.function.Function(Of T2),   mergeFunction As java.util.function.BinaryOperator(Of U)) As Collector(Of T, ?, IDictionary(Of K, U))
 			Return toMap(keyMapper, valueMapper, mergeFunction, Hashtable::New)
 		End Function
 
@@ -1181,7 +1181,7 @@ Namespace java.util.stream
 		''' <seealso cref= #toConcurrentMap(Function, Function, BinaryOperator, Supplier) </seealso>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-		Public Shared Function toMap(Of T, K, U, M As IDictionary(Of K, U), T1 As K, T2 As U)(ByVal keyMapper As java.util.function.Function(Of T1), ByVal valueMapper As java.util.function.Function(Of T2), ByVal mergeFunction As java.util.function.BinaryOperator(Of U), ByVal mapSupplier As java.util.function.Supplier(Of M)) As Collector(Of T, ?, M)
+		Public Shared Function toMap(Of T, K, U, M As IDictionary(Of K, U), T1 As K, T2 As U)(  keyMapper As java.util.function.Function(Of T1),   valueMapper As java.util.function.Function(Of T2),   mergeFunction As java.util.function.BinaryOperator(Of U),   mapSupplier As java.util.function.Supplier(Of M)) As Collector(Of T, ?, M)
 			Dim accumulator As java.util.function.BiConsumer(Of M, T) = (map, element) -> map.merge(keyMapper.apply(element), valueMapper.apply(element), mergeFunction)
 			Return New CollectorImpl(Of )(mapSupplier, accumulator, mapMerger(mergeFunction), CH_ID)
 		End Function
@@ -1234,7 +1234,7 @@ Namespace java.util.stream
 		''' <seealso cref= #toConcurrentMap(Function, Function, BinaryOperator, Supplier) </seealso>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-		Public Shared Function toConcurrentMap(Of T, K, U, T1 As K, T2 As U)(ByVal keyMapper As java.util.function.Function(Of T1), ByVal valueMapper As java.util.function.Function(Of T2)) As Collector(Of T, ?, java.util.concurrent.ConcurrentMap(Of K, U))
+		Public Shared Function toConcurrentMap(Of T, K, U, T1 As K, T2 As U)(  keyMapper As java.util.function.Function(Of T1),   valueMapper As java.util.function.Function(Of T2)) As Collector(Of T, ?, java.util.concurrent.ConcurrentMap(Of K, U))
 			Return toConcurrentMap(keyMapper, valueMapper, throwingMerger(), ConcurrentDictionary::New)
 		End Function
 
@@ -1285,7 +1285,7 @@ Namespace java.util.stream
 		''' <seealso cref= #toMap(Function, Function, BinaryOperator) </seealso>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-		Public Shared Function toConcurrentMap(Of T, K, U, T1 As K, T2 As U)(ByVal keyMapper As java.util.function.Function(Of T1), ByVal valueMapper As java.util.function.Function(Of T2), ByVal mergeFunction As java.util.function.BinaryOperator(Of U)) As Collector(Of T, ?, java.util.concurrent.ConcurrentMap(Of K, U))
+		Public Shared Function toConcurrentMap(Of T, K, U, T1 As K, T2 As U)(  keyMapper As java.util.function.Function(Of T1),   valueMapper As java.util.function.Function(Of T2),   mergeFunction As java.util.function.BinaryOperator(Of U)) As Collector(Of T, ?, java.util.concurrent.ConcurrentMap(Of K, U))
 			Return toConcurrentMap(keyMapper, valueMapper, mergeFunction, ConcurrentDictionary::New)
 		End Function
 
@@ -1324,7 +1324,7 @@ Namespace java.util.stream
 		''' <seealso cref= #toMap(Function, Function, BinaryOperator, Supplier) </seealso>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-		Public Shared Function toConcurrentMap(Of T, K, U, M As java.util.concurrent.ConcurrentMap(Of K, U), T1 As K, T2 As U)(ByVal keyMapper As java.util.function.Function(Of T1), ByVal valueMapper As java.util.function.Function(Of T2), ByVal mergeFunction As java.util.function.BinaryOperator(Of U), ByVal mapSupplier As java.util.function.Supplier(Of M)) As Collector(Of T, ?, M)
+		Public Shared Function toConcurrentMap(Of T, K, U, M As java.util.concurrent.ConcurrentMap(Of K, U), T1 As K, T2 As U)(  keyMapper As java.util.function.Function(Of T1),   valueMapper As java.util.function.Function(Of T2),   mergeFunction As java.util.function.BinaryOperator(Of U),   mapSupplier As java.util.function.Supplier(Of M)) As Collector(Of T, ?, M)
 			Dim accumulator As java.util.function.BiConsumer(Of M, T) = (map, element) -> map.merge(keyMapper.apply(element), valueMapper.apply(element), mergeFunction)
 			Return New CollectorImpl(Of )(mapSupplier, accumulator, mapMerger(mergeFunction), CH_CONCURRENT_ID)
 		End Function
@@ -1342,7 +1342,7 @@ Namespace java.util.stream
 		''' <seealso cref= #summarizingLong(ToLongFunction) </seealso>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-		Public Shared Function summarizingInt(Of T, T1)(ByVal mapper As java.util.function.ToIntFunction(Of T1)) As Collector(Of T, ?, java.util.IntSummaryStatistics)
+		Public Shared Function summarizingInt(Of T, T1)(  mapper As java.util.function.ToIntFunction(Of T1)) As Collector(Of T, ?, java.util.IntSummaryStatistics)
 			Return New CollectorImpl(Of T, java.util.IntSummaryStatistics, java.util.IntSummaryStatistics)(java.util.IntSummaryStatistics::New, (r, t) -> r.accept(mapper.applyAsInt(t)), (l, r) -> { l.combine(r); Return l; }, CH_ID)
 		End Function
 
@@ -1359,7 +1359,7 @@ Namespace java.util.stream
 		''' <seealso cref= #summarizingInt(ToIntFunction) </seealso>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-		Public Shared Function summarizingLong(Of T, T1)(ByVal mapper As java.util.function.ToLongFunction(Of T1)) As Collector(Of T, ?, java.util.LongSummaryStatistics)
+		Public Shared Function summarizingLong(Of T, T1)(  mapper As java.util.function.ToLongFunction(Of T1)) As Collector(Of T, ?, java.util.LongSummaryStatistics)
 			Return New CollectorImpl(Of T, java.util.LongSummaryStatistics, java.util.LongSummaryStatistics)(java.util.LongSummaryStatistics::New, (r, t) -> r.accept(mapper.applyAsLong(t)), (l, r) -> { l.combine(r); Return l; }, CH_ID)
 		End Function
 
@@ -1376,7 +1376,7 @@ Namespace java.util.stream
 		''' <seealso cref= #summarizingInt(ToIntFunction) </seealso>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-		Public Shared Function summarizingDouble(Of T, T1)(ByVal mapper As java.util.function.ToDoubleFunction(Of T1)) As Collector(Of T, ?, java.util.DoubleSummaryStatistics)
+		Public Shared Function summarizingDouble(Of T, T1)(  mapper As java.util.function.ToDoubleFunction(Of T1)) As Collector(Of T, ?, java.util.DoubleSummaryStatistics)
 			Return New CollectorImpl(Of T, java.util.DoubleSummaryStatistics, java.util.DoubleSummaryStatistics)(java.util.DoubleSummaryStatistics::New, (r, t) -> r.accept(mapper.applyAsDouble(t)), (l, r) -> { l.combine(r); Return l; }, CH_ID)
 		End Function
 
@@ -1390,7 +1390,7 @@ Namespace java.util.stream
 			Friend ReadOnly forTrue As T
 			Friend ReadOnly forFalse As T
 
-			Friend Sub New(ByVal forTrue As T, ByVal forFalse As T)
+			Friend Sub New(  forTrue As T,   forFalse As T)
 				Me.forTrue = forTrue
 				Me.forFalse = forFalse
 			End Sub

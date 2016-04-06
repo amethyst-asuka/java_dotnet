@@ -111,7 +111,7 @@ Namespace java.rmi.activation
         ''' <exception cref="UnsupportedOperationException"> if and only if activation is
         ''' not supported by this implementation
         ''' @since 1.2 </exception>
-        Public Sub New(Of T1)(ByVal className As String, ByVal location As String, ByVal data As java.rmi.MarshalledObject(Of T1))
+        Public Sub New(Of T1)(  className As String,   location As String,   data As java.rmi.MarshalledObject(Of T1))
             Me.New(ActivationGroup.internalCurrentGroupID(), className, location, data, False)
         End Sub
 
@@ -144,7 +144,7 @@ Namespace java.rmi.activation
         ''' <exception cref="UnsupportedOperationException"> if and only if activation is
         ''' not supported by this implementation
         ''' @since 1.2 </exception>
-        Public Sub New(Of T1)(ByVal className As String, ByVal location As String, ByVal data As java.rmi.MarshalledObject(Of T1), ByVal restart As Boolean)
+        Public Sub New(Of T1)(  className As String,   location As String,   data As java.rmi.MarshalledObject(Of T1),   restart As Boolean)
             Me.New(ActivationGroup.internalCurrentGroupID(), className, location, data, restart)
         End Sub
 
@@ -173,7 +173,7 @@ Namespace java.rmi.activation
         ''' <exception cref="UnsupportedOperationException"> if and only if activation is
         ''' not supported by this implementation
         ''' @since 1.2 </exception>
-        Public Sub New(Of T1)(ByVal groupID As ActivationGroupID, ByVal className As String, ByVal location As String, ByVal data As java.rmi.MarshalledObject(Of T1))
+        Public Sub New(Of T1)(  groupID As ActivationGroupID,   className As String,   location As String,   data As java.rmi.MarshalledObject(Of T1))
             Me.New(groupID, className, location, data, False)
         End Sub
 
@@ -202,7 +202,7 @@ Namespace java.rmi.activation
         ''' <exception cref="UnsupportedOperationException"> if and only if activation is
         ''' not supported by this implementation
         ''' @since 1.2 </exception>
-        Public Sub New(Of T1)(ByVal groupID As ActivationGroupID, ByVal className As String, ByVal location As String, ByVal data As java.rmi.MarshalledObject(Of T1), ByVal restart As Boolean)
+        Public Sub New(Of T1)(  groupID As ActivationGroupID,   className As String,   location As String,   data As java.rmi.MarshalledObject(Of T1),   restart As Boolean)
             If groupID Is Nothing Then Throw New IllegalArgumentException("groupID can't be null")
             Me.groupID = groupID
             Me.className = className
@@ -285,7 +285,7 @@ Namespace java.rmi.activation
         ''' <returns>  true if these Objects are equal; false otherwise. </returns>
         ''' <seealso cref=             java.util.Hashtable
         ''' @since 1.2 </seealso>
-        Public Overrides Function Equals(ByVal obj As Object) As Boolean
+        Public Overrides Function Equals(  obj As Object) As Boolean
 
             If TypeOf obj Is ActivationDesc Then
                 Dim desc As ActivationDesc = CType(obj, ActivationDesc)

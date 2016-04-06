@@ -55,7 +55,7 @@ Namespace java.io
 		''' <param name="message">
 		'''        The detail message (which is saved for later retrieval
 		'''        by the <seealso cref="#getMessage()"/> method) </param>
-		Public Sub New(ByVal message As String)
+		Public Sub New(  message As String)
 			MyBase.New(message)
 		End Sub
 
@@ -77,7 +77,7 @@ Namespace java.io
 		'''        and indicates that the cause is nonexistent or unknown.)
 		''' 
 		''' @since 1.6 </param>
-		Public Sub New(ByVal message As String, ByVal cause As Throwable)
+		Public Sub New(  message As String,   cause As Throwable)
 			MyBase.New(message, cause)
 		End Sub
 
@@ -94,7 +94,7 @@ Namespace java.io
 		'''        and indicates that the cause is nonexistent or unknown.)
 		''' 
 		''' @since 1.6 </param>
-		Public Sub New(ByVal cause As Throwable)
+		Public Sub New(  cause As Throwable)
 			MyBase.New(cause)
 		End Sub
 	End Class

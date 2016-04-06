@@ -154,7 +154,7 @@ Namespace java.time.zone
 		''' <returns> the rule, not null </returns>
 		''' <exception cref="IllegalArgumentException"> if the day of month indicator is invalid </exception>
 		''' <exception cref="IllegalArgumentException"> if the end of day flag is true when the time is not midnight </exception>
-		Public Shared Function [of](ByVal month As java.time.Month, ByVal dayOfMonthIndicator As Integer, ByVal dayOfWeek As java.time.DayOfWeek, ByVal time As java.time.LocalTime, ByVal timeEndOfDay As Boolean, ByVal timeDefnition As TimeDefinition, ByVal standardOffset As java.time.ZoneOffset, ByVal offsetBefore As java.time.ZoneOffset, ByVal offsetAfter As java.time.ZoneOffset) As ZoneOffsetTransitionRule
+		Public Shared Function [of](  month As java.time.Month,   dayOfMonthIndicator As Integer,   dayOfWeek As java.time.DayOfWeek,   time As java.time.LocalTime,   timeEndOfDay As Boolean,   timeDefnition As TimeDefinition,   standardOffset As java.time.ZoneOffset,   offsetBefore As java.time.ZoneOffset,   offsetAfter As java.time.ZoneOffset) As ZoneOffsetTransitionRule
 			java.util.Objects.requireNonNull(month, "month")
 			java.util.Objects.requireNonNull(time, "time")
 			java.util.Objects.requireNonNull(timeDefnition, "timeDefnition")
@@ -182,7 +182,7 @@ Namespace java.time.zone
 		''' <param name="offsetAfter">  the offset after the cutover, not null </param>
 		''' <exception cref="IllegalArgumentException"> if the day of month indicator is invalid </exception>
 		''' <exception cref="IllegalArgumentException"> if the end of day flag is true when the time is not midnight </exception>
-		Friend Sub New(ByVal month As java.time.Month, ByVal dayOfMonthIndicator As Integer, ByVal dayOfWeek As java.time.DayOfWeek, ByVal time As java.time.LocalTime, ByVal timeEndOfDay As Boolean, ByVal timeDefnition As TimeDefinition, ByVal standardOffset As java.time.ZoneOffset, ByVal offsetBefore As java.time.ZoneOffset, ByVal offsetAfter As java.time.ZoneOffset)
+		Friend Sub New(  month As java.time.Month,   dayOfMonthIndicator As Integer,   dayOfWeek As java.time.DayOfWeek,   time As java.time.LocalTime,   timeEndOfDay As Boolean,   timeDefnition As TimeDefinition,   standardOffset As java.time.ZoneOffset,   offsetBefore As java.time.ZoneOffset,   offsetAfter As java.time.ZoneOffset)
 			Me.month = month
 			Me.dom = CByte(dayOfMonthIndicator)
 			Me.dow = dayOfWeek
@@ -200,7 +200,7 @@ Namespace java.time.zone
 		''' </summary>
 		''' <param name="s"> the stream to read </param>
 		''' <exception cref="InvalidObjectException"> always </exception>
-		Private Sub readObject(ByVal s As java.io.ObjectInputStream)
+		Private Sub readObject(  s As java.io.ObjectInputStream)
 			Throw New java.io.InvalidObjectException("Deserialization via serialization delegate")
 		End Sub
 
@@ -257,7 +257,7 @@ Namespace java.time.zone
 		''' </summary>
 		''' <param name="out">  the output stream, not null </param>
 		''' <exception cref="IOException"> if an error occurs </exception>
-		Friend Sub writeExternal(ByVal out As java.io.DataOutput)
+		Friend Sub writeExternal(  out As java.io.DataOutput)
 			Dim timeSecs As Integer = (If(timeEndOfDay, 86400, time.toSecondOfDay()))
 			Dim stdOffset As Integer = standardOffset.totalSeconds
 			Dim beforeDiff As Integer = offsetBefore.totalSeconds - stdOffset
@@ -281,7 +281,7 @@ Namespace java.time.zone
 		''' <param name="in">  the input stream, not null </param>
 		''' <returns> the created object, not null </returns>
 		''' <exception cref="IOException"> if an error occurs </exception>
-		Shared Function readExternal(ByVal [in] As java.io.DataInput) As ZoneOffsetTransitionRule
+		Shared Function readExternal(  [in] As java.io.DataInput) As ZoneOffsetTransitionRule
 			Dim data As Integer = [in].readInt()
 			Dim month_Renamed As java.time.Month = java.time.Month.of(CInt(CUInt(data) >> 28))
 			Dim dom As Integer = (CInt(CUInt((data And (63 << 22))) >> 22)) - 32
@@ -431,7 +431,7 @@ Namespace java.time.zone
 		''' </summary>
 		''' <param name="year">  the year to create a transition for, not null </param>
 		''' <returns> the transition instance, not null </returns>
-		Public Function createTransition(ByVal year_Renamed As Integer) As ZoneOffsetTransition
+		Public Function createTransition(  year_Renamed As Integer) As ZoneOffsetTransition
 			Dim date_Renamed As java.time.LocalDate
 			If dom < 0 Then
 				date_Renamed = java.time.LocalDate.of(year_Renamed, month, month.length(java.time.chrono.IsoChronology.INSTANCE.isLeapYear(year_Renamed)) + 1 + dom)
@@ -454,7 +454,7 @@ Namespace java.time.zone
 		''' </summary>
 		''' <param name="otherRule">  the other object to compare to, null returns false </param>
 		''' <returns> true if equal </returns>
-		Public Overrides Function Equals(ByVal otherRule As Object) As Boolean
+		Public Overrides Function Equals(  otherRule As Object) As Boolean
 			If otherRule Is Me Then Return True
 			If TypeOf otherRule Is ZoneOffsetTransitionRule Then
 				Dim other As ZoneOffsetTransitionRule = CType(otherRule, ZoneOffsetTransitionRule)

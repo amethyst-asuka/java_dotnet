@@ -92,7 +92,7 @@ Namespace java.awt.font
 		''' <param name="charIndex"> the index of the character hit </param>
 		''' <param name="isLeadingEdge"> <code>true</code> if the leading edge of the
 		''' character was hit </param>
-		Private Sub New(ByVal charIndex As Integer, ByVal isLeadingEdge As Boolean)
+		Private Sub New(  charIndex As Integer,   isLeadingEdge As Boolean)
 			Me.charIndex = charIndex
 			Me.isLeadingEdge_Renamed = isLeadingEdge
 		End Sub
@@ -142,7 +142,7 @@ Namespace java.awt.font
 		''' <param name="obj"> the <code>Object</code> to test for equality </param>
 		''' <returns> <code>true</code> if the specified <code>Object</code>
 		''' equals this <code>TextHitInfo</code>; <code>false</code> otherwise. </returns>
-		Public Overrides Function Equals(ByVal obj As Object) As Boolean
+		Public Overrides Function Equals(  obj As Object) As Boolean
 			Return (TypeOf obj Is TextHitInfo) AndAlso Equals(CType(obj, TextHitInfo))
 		End Function
 
@@ -155,7 +155,7 @@ Namespace java.awt.font
 		''' <returns> <code>true</code> if the specified <code>TextHitInfo</code>
 		''' has the same <code>charIndex</code> and <code>isLeadingEdge</code>
 		''' as this <code>TextHitInfo</code>. </returns>
-		Public Overrides Function Equals(ByVal hitInfo As TextHitInfo) As Boolean
+		Public Overrides Function Equals(  hitInfo As TextHitInfo) As Boolean
 			Return hitInfo IsNot Nothing AndAlso charIndex = hitInfo.charIndex AndAlso isLeadingEdge_Renamed = hitInfo.isLeadingEdge_Renamed
 		End Function
 
@@ -174,7 +174,7 @@ Namespace java.awt.font
 		''' <param name="charIndex"> the index of the character hit </param>
 		''' <returns> a <code>TextHitInfo</code> on the leading edge of the
 		''' character at the specified <code>charIndex</code>. </returns>
-		Public Shared Function leading(ByVal charIndex As Integer) As TextHitInfo
+		Public Shared Function leading(  charIndex As Integer) As TextHitInfo
 			Return New TextHitInfo(charIndex, True)
 		End Function
 
@@ -184,7 +184,7 @@ Namespace java.awt.font
 		''' <param name="charIndex"> the index of the character hit </param>
 		''' <returns> a <code>TextHitInfo</code> on the trailing edge of the
 		''' character at the specified <code>charIndex</code>. </returns>
-		Public Shared Function trailing(ByVal charIndex As Integer) As TextHitInfo
+		Public Shared Function trailing(  charIndex As Integer) As TextHitInfo
 			Return New TextHitInfo(charIndex, False)
 		End Function
 
@@ -194,7 +194,7 @@ Namespace java.awt.font
 		''' <param name="offset"> an offset associated with the character before
 		''' the offset </param>
 		''' <returns> a <code>TextHitInfo</code> at the specified offset. </returns>
-		Public Shared Function beforeOffset(ByVal offset As Integer) As TextHitInfo
+		Public Shared Function beforeOffset(  offset As Integer) As TextHitInfo
 			Return New TextHitInfo(offset-1, False)
 		End Function
 
@@ -204,7 +204,7 @@ Namespace java.awt.font
 		''' <param name="offset"> an offset associated with the character after
 		''' the offset </param>
 		''' <returns> a <code>TextHitInfo</code> at the specified offset. </returns>
-		Public Shared Function afterOffset(ByVal offset As Integer) As TextHitInfo
+		Public Shared Function afterOffset(  offset As Integer) As TextHitInfo
 			Return New TextHitInfo(offset, True)
 		End Function
 
@@ -232,7 +232,7 @@ Namespace java.awt.font
 		''' <returns> a <code>TextHitInfo</code> whose <code>charIndex</code> is
 		''' offset by <code>delta</code> from the <code>charIndex</code> of
 		''' this <code>TextHitInfo</code>. </returns>
-		Public Function getOffsetHit(ByVal delta As Integer) As TextHitInfo
+		Public Function getOffsetHit(  delta As Integer) As TextHitInfo
 			Return New TextHitInfo(charIndex + delta, isLeadingEdge_Renamed)
 		End Function
 	End Class

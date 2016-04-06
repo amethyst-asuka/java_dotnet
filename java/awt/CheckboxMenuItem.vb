@@ -114,7 +114,7 @@ Namespace java.awt
 		''' <exception cref="HeadlessException"> if GraphicsEnvironment.isHeadless()
 		''' returns true </exception>
 		''' <seealso cref= java.awt.GraphicsEnvironment#isHeadless </seealso>
-		Public Sub New(ByVal label_Renamed As String)
+		Public Sub New(  label_Renamed As String)
 			Me.New(label_Renamed, False)
 		End Sub
 
@@ -129,7 +129,7 @@ Namespace java.awt
 		''' returns true </exception>
 		''' <seealso cref= java.awt.GraphicsEnvironment#isHeadless
 		''' @since      JDK1.1 </seealso>
-		Public Sub New(ByVal label_Renamed As String, ByVal state As Boolean)
+		Public Sub New(  label_Renamed As String,   state As Boolean)
 			MyBase.New(label_Renamed)
 			Me.state = state
 		End Sub
@@ -172,7 +172,7 @@ Namespace java.awt
 			Get
 				Return state
 			End Get
-			Set(ByVal b As Boolean)
+			Set(  b As Boolean)
 				state = b
 				Dim peer_Renamed As java.awt.peer.CheckboxMenuItemPeer = CType(Me.peer, java.awt.peer.CheckboxMenuItemPeer)
 				If peer_Renamed IsNot Nothing Then peer_Renamed.state = b
@@ -212,7 +212,7 @@ Namespace java.awt
 		''' <seealso cref=           java.awt.event.ItemListener
 		''' @since         JDK1.1 </seealso>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Sub addItemListener(ByVal l As ItemListener) Implements ItemSelectable.addItemListener
+		Public Overridable Sub addItemListener(  l As ItemListener) Implements ItemSelectable.addItemListener
 			If l Is Nothing Then Return
 			itemListener = AWTEventMulticaster.add(itemListener, l)
 			newEventsOnly = True
@@ -232,7 +232,7 @@ Namespace java.awt
 		''' <seealso cref=           java.awt.event.ItemListener
 		''' @since         JDK1.1 </seealso>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Sub removeItemListener(ByVal l As ItemListener) Implements ItemSelectable.removeItemListener
+		Public Overridable Sub removeItemListener(  l As ItemListener) Implements ItemSelectable.removeItemListener
 			If l Is Nothing Then Return
 			itemListener = AWTEventMulticaster.remove(itemListener, l)
 		End Sub
@@ -289,7 +289,7 @@ Namespace java.awt
         ''' </exception>
         ''' <seealso cref= #getItemListeners
         ''' @since 1.3 </seealso>
-        Public Overrides Function getListeners(Of T As java.util.EventListener)(ByVal listenerType As [Class]) As T()
+        Public Overrides Function getListeners(Of T As java.util.EventListener)(  listenerType As [Class]) As T()
             Dim l As java.util.EventListener = Nothing
             If listenerType Is GetType(ItemListener) Then
                 l = itemListener
@@ -300,7 +300,7 @@ Namespace java.awt
         End Function
 
         ' REMIND: remove when filtering is done at lower level
-        Friend Overrides Function eventEnabled(ByVal e As AWTEvent) As Boolean
+        Friend Overrides Function eventEnabled(  e As AWTEvent) As Boolean
 			If e.id = ItemEvent.ITEM_STATE_CHANGED Then
 				If (eventMask And AWTEvent.ITEM_EVENT_MASK) <> 0 OrElse itemListener IsNot Nothing Then Return True
 				Return False
@@ -324,7 +324,7 @@ Namespace java.awt
 		''' <seealso cref=          java.awt.event.ItemEvent </seealso>
 		''' <seealso cref=          #processItemEvent
 		''' @since        JDK1.1 </seealso>
-		Protected Friend Overrides Sub processEvent(ByVal e As AWTEvent)
+		Protected Friend Overrides Sub processEvent(  e As AWTEvent)
 			If TypeOf e Is ItemEvent Then
 				processItemEvent(CType(e, ItemEvent))
 				Return
@@ -354,7 +354,7 @@ Namespace java.awt
 		''' <seealso cref=         #addItemListener </seealso>
 		''' <seealso cref=         java.awt.MenuItem#enableEvents
 		''' @since       JDK1.1 </seealso>
-		Protected Friend Overridable Sub processItemEvent(ByVal e As ItemEvent)
+		Protected Friend Overridable Sub processItemEvent(  e As ItemEvent)
 			Dim listener As ItemListener = itemListener
 			If listener IsNot Nothing Then listener.itemStateChanged(e)
 		End Sub
@@ -362,7 +362,7 @@ Namespace java.awt
 	'    
 	'     * Post an ItemEvent and toggle state.
 	'     
-		Friend Overrides Sub doMenuEvent(ByVal [when] As Long, ByVal modifiers As Integer)
+		Friend Overrides Sub doMenuEvent(  [when] As Long,   modifiers As Integer)
 			state = (Not state)
 			Toolkit.eventQueue.postEvent(New ItemEvent(Me, ItemEvent.ITEM_STATE_CHANGED, label,If(state, ItemEvent.SELECTED, ItemEvent.DESELECTED)))
 		End Sub
@@ -407,7 +407,7 @@ Namespace java.awt
 		''' <seealso cref= AWTEventMulticaster#save(ObjectOutputStream, String, EventListener) </seealso>
 		''' <seealso cref= java.awt.Component#itemListenerK </seealso>
 		''' <seealso cref= #readObject(ObjectInputStream) </seealso>
-		Private Sub writeObject(ByVal s As java.io.ObjectOutputStream)
+		Private Sub writeObject(  s As java.io.ObjectOutputStream)
 		  s.defaultWriteObject()
 
 		  AWTEventMulticaster.save(s, itemListenerK, itemListener)
@@ -426,7 +426,7 @@ Namespace java.awt
 	'     * @see addActionListener()
 	'     * @see #writeObject
 	'     
-		Private Sub readObject(ByVal s As java.io.ObjectInputStream)
+		Private Sub readObject(  s As java.io.ObjectInputStream)
 		  s.defaultReadObject()
 
 		  Dim keyOrNull As Object
@@ -491,7 +491,7 @@ Namespace java.awt
 
 			Private ReadOnly outerInstance As CheckboxMenuItem
 
-			Public Sub New(ByVal outerInstance As CheckboxMenuItem)
+			Public Sub New(  outerInstance As CheckboxMenuItem)
 				Me.outerInstance = outerInstance
 			End Sub
 
@@ -542,7 +542,7 @@ Namespace java.awt
 			''' Return a description of the specified action of the object.
 			''' </summary>
 			''' <param name="i"> zero-based index of the actions </param>
-			Public Overridable Function getAccessibleActionDescription(ByVal i As Integer) As String
+			Public Overridable Function getAccessibleActionDescription(  i As Integer) As String
 				Return Nothing '  To be fully implemented in a future release
 			End Function
 
@@ -551,7 +551,7 @@ Namespace java.awt
 			''' </summary>
 			''' <param name="i"> zero-based index of actions </param>
 			''' <returns> true if the action was performed; otherwise false. </returns>
-			Public Overridable Function doAccessibleAction(ByVal i As Integer) As Boolean
+			Public Overridable Function doAccessibleAction(  i As Integer) As Boolean
 				Return False '  To be fully implemented in a future release
 			End Function
 
@@ -572,7 +572,7 @@ Namespace java.awt
 			''' </summary>
 			''' <returns> true if the value was set; otherwise false </returns>
 			''' <seealso cref= #getCurrentAccessibleValue </seealso>
-			Public Overridable Function setCurrentAccessibleValue(ByVal n As Number) As Boolean
+			Public Overridable Function setCurrentAccessibleValue(  n As Number) As Boolean
 				Return False '  To be fully implemented in a future release
 			End Function
 

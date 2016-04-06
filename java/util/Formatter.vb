@@ -1839,7 +1839,7 @@ Namespace java.util
 		''' Returns a charset object for the given charset name. </summary>
 		''' <exception cref="NullPointerException">          is csn is null </exception>
 		''' <exception cref="UnsupportedEncodingException">  if the charset is not supported </exception>
-		Private Shared Function toCharset(ByVal csn As String) As java.nio.charset.Charset
+		Private Shared Function toCharset(  csn As String) As java.nio.charset.Charset
 			Objects.requireNonNull(csn, "charsetName")
 			Try
 				Return java.nio.charset.Charset.forName(csn)
@@ -1850,20 +1850,20 @@ Namespace java.util
 			End Try
 		End Function
 
-		Private Shared Function nonNullAppendable(ByVal a As Appendable) As Appendable
+		Private Shared Function nonNullAppendable(  a As Appendable) As Appendable
 			If a Is Nothing Then Return New StringBuilder
 
 			Return a
 		End Function
 
 		' Private constructors 
-		Private Sub New(ByVal l As Locale, ByVal a As Appendable)
+		Private Sub New(  l As Locale,   a As Appendable)
 			Me.a = a
 			Me.l = l
 			Me.zero = getZero(l)
 		End Sub
 
-		Private Sub New(ByVal charset As java.nio.charset.Charset, ByVal l As Locale, ByVal file As java.io.File)
+		Private Sub New(  charset As java.nio.charset.Charset,   l As Locale,   file As java.io.File)
 			Me.New(l, New java.io.BufferedWriter(New java.io.OutputStreamWriter(New java.io.FileOutputStream(file), charset)))
 		End Sub
 
@@ -1893,7 +1893,7 @@ Namespace java.util
 		''' <param name="a">
 		'''         Destination for the formatted output.  If {@code a} is
 		'''         {@code null} then a <seealso cref="StringBuilder"/> will be created. </param>
-		Public Sub New(ByVal a As Appendable)
+		Public Sub New(  a As Appendable)
 			Me.New(Locale.getDefault(Locale.Category.FORMAT), nonNullAppendable(a))
 		End Sub
 
@@ -1909,7 +1909,7 @@ Namespace java.util
 		'''         The <seealso cref="java.util.Locale locale"/> to apply during
 		'''         formatting.  If {@code l} is {@code null} then no localization
 		'''         is applied. </param>
-		Public Sub New(ByVal l As Locale)
+		Public Sub New(  l As Locale)
 			Me.New(l, New StringBuilder)
 		End Sub
 
@@ -1924,7 +1924,7 @@ Namespace java.util
 		'''         The <seealso cref="java.util.Locale locale"/> to apply during
 		'''         formatting.  If {@code l} is {@code null} then no localization
 		'''         is applied. </param>
-		Public Sub New(ByVal a As Appendable, ByVal l As Locale)
+		Public Sub New(  a As Appendable,   l As Locale)
 			Me.New(l, nonNullAppendable(a))
 		End Sub
 
@@ -1956,7 +1956,7 @@ Namespace java.util
 		'''          regular file and a new regular file of that name cannot be
 		'''          created, or if some other error occurs while opening or
 		'''          creating the file </exception>
-		Public Sub New(ByVal fileName As String)
+		Public Sub New(  fileName As String)
 			Me.New(Locale.getDefault(Locale.Category.FORMAT), New java.io.BufferedWriter(New java.io.OutputStreamWriter(New java.io.FileOutputStream(fileName))))
 		End Sub
 
@@ -1991,7 +1991,7 @@ Namespace java.util
 		''' </exception>
 		''' <exception cref="UnsupportedEncodingException">
 		'''          If the named charset is not supported </exception>
-		Public Sub New(ByVal fileName As String, ByVal csn As String)
+		Public Sub New(  fileName As String,   csn As String)
 			Me.New(fileName, csn, Locale.getDefault(Locale.Category.FORMAT))
 		End Sub
 
@@ -2027,7 +2027,7 @@ Namespace java.util
 		''' </exception>
 		''' <exception cref="UnsupportedEncodingException">
 		'''          If the named charset is not supported </exception>
-		Public Sub New(ByVal fileName As String, ByVal csn As String, ByVal l As Locale)
+		Public Sub New(  fileName As String,   csn As String,   l As Locale)
 			Me.New(toCharset(csn), l, New File(fileName))
 		End Sub
 
@@ -2059,7 +2059,7 @@ Namespace java.util
 		'''          regular file and a new regular file of that name cannot be
 		'''          created, or if some other error occurs while opening or
 		'''          creating the file </exception>
-		Public Sub New(ByVal file As java.io.File)
+		Public Sub New(  file As java.io.File)
 			Me.New(Locale.getDefault(Locale.Category.FORMAT), New java.io.BufferedWriter(New java.io.OutputStreamWriter(New java.io.FileOutputStream(file))))
 		End Sub
 
@@ -2094,7 +2094,7 @@ Namespace java.util
 		''' </exception>
 		''' <exception cref="UnsupportedEncodingException">
 		'''          If the named charset is not supported </exception>
-		Public Sub New(ByVal file As java.io.File, ByVal csn As String)
+		Public Sub New(  file As java.io.File,   csn As String)
 			Me.New(file, csn, Locale.getDefault(Locale.Category.FORMAT))
 		End Sub
 
@@ -2130,7 +2130,7 @@ Namespace java.util
 		''' </exception>
 		''' <exception cref="UnsupportedEncodingException">
 		'''          If the named charset is not supported </exception>
-		Public Sub New(ByVal file As java.io.File, ByVal csn As String, ByVal l As Locale)
+		Public Sub New(  file As java.io.File,   csn As String,   l As Locale)
 			Me.New(toCharset(csn), l, file)
 		End Sub
 
@@ -2148,7 +2148,7 @@ Namespace java.util
 		''' </summary>
 		''' <param name="ps">
 		'''         The stream to use as the destination of this formatter. </param>
-		Public Sub New(ByVal ps As java.io.PrintStream)
+		Public Sub New(  ps As java.io.PrintStream)
 			Me.New(Locale.getDefault(Locale.Category.FORMAT), CType(Objects.requireNonNull(ps), Appendable))
 		End Sub
 
@@ -2167,7 +2167,7 @@ Namespace java.util
 		''' <param name="os">
 		'''         The output stream to use as the destination of this formatter.
 		'''         The output will be buffered. </param>
-		Public Sub New(ByVal os As java.io.OutputStream)
+		Public Sub New(  os As java.io.OutputStream)
 			Me.New(Locale.getDefault(Locale.Category.FORMAT), New java.io.BufferedWriter(New java.io.OutputStreamWriter(os)))
 		End Sub
 
@@ -2190,7 +2190,7 @@ Namespace java.util
 		''' </param>
 		''' <exception cref="UnsupportedEncodingException">
 		'''          If the named charset is not supported </exception>
-		Public Sub New(ByVal os As java.io.OutputStream, ByVal csn As String)
+		Public Sub New(  os As java.io.OutputStream,   csn As String)
 			Me.New(os, csn, Locale.getDefault(Locale.Category.FORMAT))
 		End Sub
 
@@ -2213,11 +2213,11 @@ Namespace java.util
 		''' </param>
 		''' <exception cref="UnsupportedEncodingException">
 		'''          If the named charset is not supported </exception>
-		Public Sub New(ByVal os As java.io.OutputStream, ByVal csn As String, ByVal l As Locale)
+		Public Sub New(  os As java.io.OutputStream,   csn As String,   l As Locale)
 			Me.New(l, New java.io.BufferedWriter(New java.io.OutputStreamWriter(os, csn)))
 		End Sub
 
-		Private Shared Function getZero(ByVal l As Locale) As Char
+		Private Shared Function getZero(  l As Locale) As Char
 			If (l IsNot Nothing) AndAlso (Not l.Equals(Locale.US)) Then
 				Dim dfs As java.text.DecimalFormatSymbols = java.text.DecimalFormatSymbols.getInstance(l)
 				Return dfs.zeroDigit
@@ -2381,7 +2381,7 @@ Namespace java.util
 		'''          #close()} method
 		''' </exception>
 		''' <returns>  This formatter </returns>
-		Public Function format(ByVal format_Renamed As String, ParamArray ByVal args As Object()) As Formatter
+		Public Function format(  format_Renamed As String, ParamArray   args As Object()) As Formatter
 			Return format(l, format_Renamed, args)
 		End Function
 
@@ -2419,7 +2419,7 @@ Namespace java.util
 		'''          #close()} method
 		''' </exception>
 		''' <returns>  This formatter </returns>
-		Public Function format(ByVal l As Locale, ByVal format_Renamed As String, ParamArray ByVal args As Object()) As Formatter
+		Public Function format(  l As Locale,   format_Renamed As String, ParamArray   args As Object()) As Formatter
 			ensureOpen()
 
 			' index of last argument referenced
@@ -2463,7 +2463,7 @@ Namespace java.util
 		''' <summary>
 		''' Finds format specifiers in the format string.
 		''' </summary>
-		Private Function parse(ByVal s As String) As FormatString()
+		Private Function parse(  s As String) As FormatString()
 			Dim al As New List(Of FormatString)
 			Dim m As java.util.regex.Matcher = fsPattern.matcher(s)
 			Dim i As Integer = 0
@@ -2494,7 +2494,7 @@ Namespace java.util
 			Return al.ToArray(New FormatString(al.size() - 1){})
 		End Function
 
-		Private Shared Sub checkText(ByVal s As String, ByVal start As Integer, ByVal [end] As Integer)
+		Private Shared Sub checkText(  s As String,   start As Integer,   [end] As Integer)
 			For i As Integer = start To [end] - 1
 				' Any '%' found in the region starts an invalid format specifier.
 				If s.Chars(i) = "%"c Then
@@ -2506,7 +2506,7 @@ Namespace java.util
 
 		Private Interface FormatString
 			Function index() As Integer
-			Sub print(ByVal arg As Object, ByVal l As Locale)
+			Sub print(  arg As Object,   l As Locale)
 			Function ToString() As String
 		End Interface
 
@@ -2516,14 +2516,14 @@ Namespace java.util
 			Private ReadOnly outerInstance As Formatter
 
 			Private s As String
-			Friend Sub New(ByVal outerInstance As Formatter, ByVal s As String)
+			Friend Sub New(  outerInstance As Formatter,   s As String)
 					Me.outerInstance = outerInstance
 				Me.s = s
 			End Sub
 			Public Overridable Function index() As Integer
 				Return -2
 			End Function
-			Public Overridable Sub print(ByVal arg As Object, ByVal l As Locale)
+			Public Overridable Sub print(  arg As Object,   l As Locale)
 				outerInstance.a.append(s)
 			End Sub
 			Public Overrides Function ToString() As String
@@ -2558,7 +2558,7 @@ Namespace java.util
 			Private dt As Boolean = False
 			Private c As Char
 
-			Private Function index(ByVal s As String) As Integer
+			Private Function index(  s As String) As Integer
 				If s IsNot Nothing Then
 					Try
 						index_Renamed = Convert.ToInt32(s.Substring(0, s.length() - 1))
@@ -2575,7 +2575,7 @@ Namespace java.util
 				Return index_Renamed
 			End Function
 
-			Private Function flags(ByVal s As String) As Flags
+			Private Function flags(  s As String) As Flags
 				f = Flags.parse(s)
 				If f.contains(Flags.PREVIOUS) Then index_Renamed = -1
 				Return f
@@ -2585,7 +2585,7 @@ Namespace java.util
 				Return f
 			End Function
 
-			Private Function width(ByVal s As String) As Integer
+			Private Function width(  s As String) As Integer
 				width_Renamed = -1
 				If s IsNot Nothing Then
 					Try
@@ -2602,7 +2602,7 @@ Namespace java.util
 				Return width_Renamed
 			End Function
 
-			Private Function precision(ByVal s As String) As Integer
+			Private Function precision(  s As String) As Integer
 				precision_Renamed = -1
 				If s IsNot Nothing Then
 					Try
@@ -2620,7 +2620,7 @@ Namespace java.util
 				Return precision_Renamed
 			End Function
 
-			Private Function conversion(ByVal s As String) As Char
+			Private Function conversion(  s As String) As Char
 				c = s.Chars(0)
 				If Not dt Then
 					If Not Conversion.isValid(c) Then Throw New UnknownFormatConversionException(Convert.ToString(c))
@@ -2635,7 +2635,7 @@ Namespace java.util
 				Return c
 			End Function
 
-			Friend Sub New(ByVal outerInstance As Formatter, ByVal m As java.util.regex.Matcher)
+			Friend Sub New(  outerInstance As Formatter,   m As java.util.regex.Matcher)
 					Me.outerInstance = outerInstance
 				Dim idx As Integer = 1
 
@@ -2674,7 +2674,7 @@ Namespace java.util
 				End If
 			End Sub
 
-			Public Overridable Sub print(ByVal arg As Object, ByVal l As Locale)
+			Public Overridable Sub print(  arg As Object,   l As Locale)
 				If dt Then
 					printDateTime(arg, l)
 					Return
@@ -2701,7 +2701,7 @@ Namespace java.util
 				End Select
 			End Sub
 
-			Private Sub printInteger(ByVal arg As Object, ByVal l As Locale)
+			Private Sub printInteger(  arg As Object,   l As Locale)
 				If arg Is Nothing Then
 					print("null")
 				ElseIf TypeOf arg Is Byte Then
@@ -2719,7 +2719,7 @@ Namespace java.util
 				End If
 			End Sub
 
-			Private Sub printFloat(ByVal arg As Object, ByVal l As Locale)
+			Private Sub printFloat(  arg As Object,   l As Locale)
 				If arg Is Nothing Then
 					print("null")
 				ElseIf TypeOf arg Is Float Then
@@ -2733,7 +2733,7 @@ Namespace java.util
 				End If
 			End Sub
 
-			Private Sub printDateTime(ByVal arg As Object, ByVal l As Locale)
+			Private Sub printDateTime(  arg As Object,   l As Locale)
 				If arg Is Nothing Then
 					print("null")
 					Return
@@ -2766,7 +2766,7 @@ Namespace java.util
 				print(cal, c, l)
 			End Sub
 
-			Private Sub printCharacter(ByVal arg As Object)
+			Private Sub printCharacter(  arg As Object)
 				If arg Is Nothing Then
 					print("null")
 					Return
@@ -2801,7 +2801,7 @@ Namespace java.util
 				print(s)
 			End Sub
 
-			Private Sub printString(ByVal arg As Object, ByVal l As Locale)
+			Private Sub printString(  arg As Object,   l As Locale)
 				If TypeOf arg Is Formattable Then
 					Dim fmt As Formatter = Formatter.this
 					If fmt.locale() IsNot l Then fmt = New Formatter(fmt.out(), l)
@@ -2816,7 +2816,7 @@ Namespace java.util
 				End If
 			End Sub
 
-			Private Sub printBoolean(ByVal arg As Object)
+			Private Sub printBoolean(  arg As Object)
 				Dim s As String
 				If arg IsNot Nothing Then
 					s = (If(TypeOf arg Is Boolean?, CBool(arg).ToString(), Convert.ToString(True)))
@@ -2826,18 +2826,18 @@ Namespace java.util
 				print(s)
 			End Sub
 
-			Private Sub printHashCode(ByVal arg As Object)
+			Private Sub printHashCode(  arg As Object)
 				Dim s As String = (If(arg Is Nothing, "null",  java.lang.[Integer].toHexString(arg.GetHashCode())))
 				print(s)
 			End Sub
 
-			Private Sub print(ByVal s As String)
+			Private Sub print(  s As String)
 				If precision_Renamed <> -1 AndAlso precision_Renamed < s.length() Then s = s.Substring(0, precision_Renamed)
 				If f.contains(Flags.UPPERCASE) Then s = s.ToUpper()
 				outerInstance.a.append(justify(s))
 			End Sub
 
-			Private Function justify(ByVal s As String) As String
+			Private Function justify(  s As String) As String
 				If width_Renamed = -1 Then Return s
 				Dim sb As New StringBuilder
 				Dim pad As Boolean = f.contains(Flags.LEFT_JUSTIFY)
@@ -2904,7 +2904,7 @@ Namespace java.util
 				End If
 			End Sub
 
-			Private Sub checkBadFlags(ParamArray ByVal badFlags As Flags())
+			Private Sub checkBadFlags(ParamArray   badFlags As Flags())
 				For i As Integer = 0 To badFlags.Length - 1
 					If f.contains(badFlags(i)) Then failMismatch(badFlags(i), c)
 				Next i
@@ -2949,7 +2949,7 @@ Namespace java.util
 				End Select
 			End Sub
 
-			Private Sub print(ByVal value As SByte, ByVal l As Locale)
+			Private Sub print(  value As SByte,   l As Locale)
 				Dim v As Long = value
 				If value < 0 AndAlso (c = Conversion.OCTAL_INTEGER OrElse c = Conversion.HEXADECIMAL_INTEGER) Then
 					v += (1L << 8)
@@ -2958,7 +2958,7 @@ Namespace java.util
 				print(v, l)
 			End Sub
 
-			Private Sub print(ByVal value As Short, ByVal l As Locale)
+			Private Sub print(  value As Short,   l As Locale)
 				Dim v As Long = value
 				If value < 0 AndAlso (c = Conversion.OCTAL_INTEGER OrElse c = Conversion.HEXADECIMAL_INTEGER) Then
 					v += (1L << 16)
@@ -2967,7 +2967,7 @@ Namespace java.util
 				print(v, l)
 			End Sub
 
-			Private Sub print(ByVal value As Integer, ByVal l As Locale)
+			Private Sub print(  value As Integer,   l As Locale)
 				Dim v As Long = value
 				If value < 0 AndAlso (c = Conversion.OCTAL_INTEGER OrElse c = Conversion.HEXADECIMAL_INTEGER) Then
 					v += (1L << 32)
@@ -2976,7 +2976,7 @@ Namespace java.util
 				print(v, l)
 			End Sub
 
-			Private Sub print(ByVal value As Long, ByVal l As Locale)
+			Private Sub print(  value As Long,   l As Locale)
 
 				Dim sb As New StringBuilder
 
@@ -3031,7 +3031,7 @@ Namespace java.util
 			End Sub
 
 			' neg := val < 0
-			Private Function leadingSign(ByVal sb As StringBuilder, ByVal neg As Boolean) As StringBuilder
+			Private Function leadingSign(  sb As StringBuilder,   neg As Boolean) As StringBuilder
 				If Not neg Then
 					If f.contains(Flags.PLUS) Then
 						sb.append("+"c)
@@ -3049,12 +3049,12 @@ Namespace java.util
 			End Function
 
 			' neg := val < 0
-			Private Function trailingSign(ByVal sb As StringBuilder, ByVal neg As Boolean) As StringBuilder
+			Private Function trailingSign(  sb As StringBuilder,   neg As Boolean) As StringBuilder
 				If neg AndAlso f.contains(Flags.PARENTHESES) Then sb.append(")"c)
 				Return sb
 			End Function
 
-			Private Sub print(ByVal value As System.Numerics.BigInteger, ByVal l As Locale)
+			Private Sub print(  value As System.Numerics.BigInteger,   l As Locale)
 				Dim sb As New StringBuilder
 				Dim neg As Boolean = value.signum() = -1
 				Dim v As System.Numerics.BigInteger = value.abs()
@@ -3110,11 +3110,11 @@ Namespace java.util
 				outerInstance.a.append(justify(sb.ToString()))
 			End Sub
 
-			Private Sub print(ByVal value As Single, ByVal l As Locale)
+			Private Sub print(  value As Single,   l As Locale)
 				print(CDbl(value), l)
 			End Sub
 
-			Private Sub print(ByVal value As Double, ByVal l As Locale)
+			Private Sub print(  value As Double,   l As Locale)
 				Dim sb As New StringBuilder
 				Dim neg As Boolean = java.lang.[Double].Compare(value, 0.0) = -1
 
@@ -3142,7 +3142,7 @@ Namespace java.util
 			End Sub
 
 			' !Double.isInfinite(value) && !Double.isNaN(value)
-			Private Sub print(ByVal sb As StringBuilder, ByVal value As Double, ByVal l As Locale, ByVal f As Flags, ByVal c As Char, ByVal precision As Integer, ByVal neg As Boolean)
+			Private Sub print(  sb As StringBuilder,   value As Double,   l As Locale,   f As Flags,   c As Char,   precision As Integer,   neg As Boolean)
 				If c = Conversion.SCIENTIFIC Then
 					' Create a new FormattedFloatingDecimal with the desired
 					' precision.
@@ -3279,7 +3279,7 @@ Namespace java.util
 			End Sub
 
 			' Add zeros to the requested precision.
-			Private Function addZeros(ByVal v As Char(), ByVal prec As Integer) As Char()
+			Private Function addZeros(  v As Char(),   prec As Integer) As Char()
 				' Look for the dot.  If we don't find one, the we'll need to add
 				' it before we add the zeros.
 				Dim i As Integer
@@ -3314,7 +3314,7 @@ Namespace java.util
 			End Function
 
 			' Method assumes that d > 0.
-			Private Function hexDouble(ByVal d As Double, ByVal prec As Integer) As String
+			Private Function hexDouble(  d As Double,   prec As Integer) As String
 				' Let java.lang.[Double].toHexString handle simple cases
 				If (Not java.lang.[Double].isFinite(d)) OrElse d = 0.0 OrElse prec = 0 OrElse prec >= 13 Then
 					' remove "0x"
@@ -3385,7 +3385,7 @@ Namespace java.util
 				End If
 			End Function
 
-			Private Sub print(ByVal value As Decimal, ByVal l As Locale)
+			Private Sub print(  value As Decimal,   l As Locale)
 				If c = Conversion.HEXADECIMAL_FLOAT Then failConversion(c, value)
 				Dim sb As New StringBuilder
 				Dim neg As Boolean = value.signum() = -1
@@ -3404,7 +3404,7 @@ Namespace java.util
 			End Sub
 
 			' value > 0
-			Private Sub print(ByVal sb As StringBuilder, ByVal value As Decimal, ByVal l As Locale, ByVal f As Flags, ByVal c As Char, ByVal precision As Integer, ByVal neg As Boolean)
+			Private Sub print(  sb As StringBuilder,   value As Decimal,   l As Locale,   f As Flags,   c As Char,   precision As Integer,   neg As Boolean)
 				If c = Conversion.SCIENTIFIC Then
 					' Create a new BigDecimal with the desired precision.
 					Dim prec As Integer = (If(precision = -1, 6, precision))
@@ -3531,7 +3531,7 @@ Namespace java.util
 				Private dot As Boolean = False
 				Private scale_Renamed As Integer
 
-				Public Sub New(ByVal outerInstance As Formatter.FormatSpecifier, ByVal intVal As System.Numerics.BigInteger, ByVal scale As Integer, ByVal form As BigDecimalLayoutForm)
+				Public Sub New(  outerInstance As Formatter.FormatSpecifier,   intVal As System.Numerics.BigInteger,   scale As Integer,   form As BigDecimalLayoutForm)
 						Me.outerInstance = outerInstance
 					layout(intVal, scale, form)
 				End Sub
@@ -3564,14 +3564,14 @@ Namespace java.util
 					Return ToCharArray(exp)
 				End Function
 
-				Private Function toCharArray(ByVal sb As StringBuilder) As Char()
+				Private Function toCharArray(  sb As StringBuilder) As Char()
 					If sb Is Nothing Then Return Nothing
 					Dim result As Char() = New Char(sb.length() - 1){}
 					sb.getChars(0, result.Length, result, 0)
 					Return result
 				End Function
 
-				Private Sub layout(ByVal intVal As System.Numerics.BigInteger, ByVal scale As Integer, ByVal form As BigDecimalLayoutForm)
+				Private Sub layout(  intVal As System.Numerics.BigInteger,   scale As Integer,   form As BigDecimalLayoutForm)
 					Dim coeff As Char() = intVal.ToString().ToCharArray()
 					Me.scale_Renamed = scale
 
@@ -3656,14 +3656,14 @@ Namespace java.util
 				End Sub
 			End Class
 
-			Private Function adjustWidth(ByVal width As Integer, ByVal f As Flags, ByVal neg As Boolean) As Integer
+			Private Function adjustWidth(  width As Integer,   f As Flags,   neg As Boolean) As Integer
 				Dim newW As Integer = width
 				If newW <> -1 AndAlso neg AndAlso f.contains(Flags.PARENTHESES) Then newW -= 1
 				Return newW
 			End Function
 
 			' Add a '.' to th mantissa if required
-			Private Function addDot(ByVal mant As Char()) As Char()
+			Private Function addDot(  mant As Char()) As Char()
 				Dim tmp As Char() = mant
 				tmp = New Char(mant.Length){}
 				Array.Copy(mant, 0, tmp, 0, mant.Length)
@@ -3673,7 +3673,7 @@ Namespace java.util
 
 			' Add trailing zeros in the case precision is greater than the number
 			' of available digits after the decimal separator.
-			Private Function trailingZeros(ByVal mant As Char(), ByVal nzeros As Integer) As Char()
+			Private Function trailingZeros(  mant As Char(),   nzeros As Integer) As Char()
 				Dim tmp As Char() = mant
 				If nzeros > 0 Then
 					tmp = New Char(mant.Length + nzeros - 1){}
@@ -3685,7 +3685,7 @@ Namespace java.util
 				Return tmp
 			End Function
 
-			Private Sub print(ByVal t As Calendar, ByVal c As Char, ByVal l As Locale)
+			Private Sub print(  t As Calendar,   c As Char,   l As Locale)
 				Dim sb As New StringBuilder
 				print(sb, t, c, l)
 
@@ -3696,7 +3696,7 @@ Namespace java.util
 				outerInstance.a.append(s)
 			End Sub
 
-			Private Function print(ByVal sb As StringBuilder, ByVal t As Calendar, ByVal c As Char, ByVal l As Locale) As Appendable
+			Private Function print(  sb As StringBuilder,   t As Calendar,   c As Char,   l As Locale) As Appendable
 				If sb Is Nothing Then sb = New StringBuilder
 				Select Case c
 				Case DateTime.HOUR_OF_DAY_0, DateTime.HOUR_0, DateTime.HOUR_OF_DAY, DateTime.HOUR ' 'H' (00 - 23)
@@ -3860,7 +3860,7 @@ Namespace java.util
 				Return sb
 			End Function
 
-			Private Sub print(ByVal t As java.time.temporal.TemporalAccessor, ByVal c As Char, ByVal l As Locale)
+			Private Sub print(  t As java.time.temporal.TemporalAccessor,   c As Char,   l As Locale)
 				Dim sb As New StringBuilder
 				print(sb, t, c, l)
 				' justify based on width
@@ -3869,7 +3869,7 @@ Namespace java.util
 				outerInstance.a.append(s)
 			End Sub
 
-			Private Function print(ByVal sb As StringBuilder, ByVal t As java.time.temporal.TemporalAccessor, ByVal c As Char, ByVal l As Locale) As Appendable
+			Private Function print(  sb As StringBuilder,   t As java.time.temporal.TemporalAccessor,   c As Char,   l As Locale) As Appendable
 				If sb Is Nothing Then sb = New StringBuilder
 				Try
 					Select Case c
@@ -4053,16 +4053,16 @@ Namespace java.util
 
 			' -- Methods to support throwing exceptions --
 
-			Private Sub failMismatch(ByVal f As Flags, ByVal c As Char)
+			Private Sub failMismatch(  f As Flags,   c As Char)
 				Dim fs As String = f.ToString()
 				Throw New FormatFlagsConversionMismatchException(fs, c)
 			End Sub
 
-			Private Sub failConversion(ByVal c As Char, ByVal arg As Object)
+			Private Sub failConversion(  c As Char,   arg As Object)
 				Throw New IllegalFormatConversionException(c, arg.GetType())
 			End Sub
 
-			Private Function getZero(ByVal l As Locale) As Char
+			Private Function getZero(  l As Locale) As Char
 				If (l IsNot Nothing) AndAlso (Not l.Equals(outerInstance.locale())) Then
 					Dim dfs As java.text.DecimalFormatSymbols = java.text.DecimalFormatSymbols.getInstance(l)
 					Return dfs.zeroDigit
@@ -4070,12 +4070,12 @@ Namespace java.util
 				Return outerInstance.zero
 			End Function
 
-			Private Function localizedMagnitude(ByVal sb As StringBuilder, ByVal value As Long, ByVal f As Flags, ByVal width As Integer, ByVal l As Locale) As StringBuilder
+			Private Function localizedMagnitude(  sb As StringBuilder,   value As Long,   f As Flags,   width As Integer,   l As Locale) As StringBuilder
 				Dim va As Char() = Convert.ToString(value, 10).ToCharArray()
 				Return localizedMagnitude(sb, va, f, width, l)
 			End Function
 
-			Private Function localizedMagnitude(ByVal sb As StringBuilder, ByVal value As Char(), ByVal f As Flags, ByVal width As Integer, ByVal l As Locale) As StringBuilder
+			Private Function localizedMagnitude(  sb As StringBuilder,   value As Char(),   f As Flags,   width As Integer,   l As Locale) As StringBuilder
 				If sb Is Nothing Then sb = New StringBuilder
 				Dim begin As Integer = sb.length()
 
@@ -4162,7 +4162,7 @@ Namespace java.util
 			' indexing
 			Friend Shared ReadOnly PREVIOUS As New Flags(1<<8) ' '<'
 
-			Private Sub New(ByVal f As Integer)
+			Private Sub New(  f As Integer)
 				flags_Renamed = f
 			End Sub
 
@@ -4170,7 +4170,7 @@ Namespace java.util
 				Return flags_Renamed
 			End Function
 
-			Public Overridable Function contains(ByVal f As Flags) As Boolean
+			Public Overridable Function contains(  f As Flags) As Boolean
 				Return (flags_Renamed And f.valueOf()) = f.valueOf()
 			End Function
 
@@ -4178,17 +4178,17 @@ Namespace java.util
 				Return New Flags(flags_Renamed)
 			End Function
 
-			Private Function add(ByVal f As Flags) As Flags
+			Private Function add(  f As Flags) As Flags
 				flags_Renamed = flags_Renamed Or f.valueOf()
 				Return Me
 			End Function
 
-			Public Overridable Function remove(ByVal f As Flags) As Flags
+			Public Overridable Function remove(  f As Flags) As Flags
 				flags_Renamed = flags_Renamed And Not f.valueOf()
 				Return Me
 			End Function
 
-			Public Shared Function parse(ByVal s As String) As Flags
+			Public Shared Function parse(  s As String) As Flags
 				Dim ca As Char() = s.ToCharArray()
 				Dim f As New Flags(0)
 				For i As Integer = 0 To ca.Length - 1
@@ -4200,7 +4200,7 @@ Namespace java.util
 			End Function
 
 			' parse those flags which may be provided by users
-			Private Shared Function parse(ByVal c As Char) As Flags
+			Private Shared Function parse(  c As Char) As Flags
 				Select Case c
 				Case "-"c
 					Return LEFT_JUSTIFY
@@ -4224,7 +4224,7 @@ Namespace java.util
 			End Function
 
 			' Returns a string representation of the current {@code Flags}.
-			Public Shared Function ToString(ByVal f As Flags) As String
+			Public Shared Function ToString(  f As Flags) As String
 				Return f.ToString()
 			End Function
 
@@ -4285,12 +4285,12 @@ Namespace java.util
 			Friend Const LINE_SEPARATOR As Char = "n"c
 			Friend Const PERCENT_SIGN As Char = "%"c
 
-			Friend Shared Function isValid(ByVal c As Char) As Boolean
+			Friend Shared Function isValid(  c As Char) As Boolean
 				Return (isGeneral(c) OrElse isInteger(c) OrElse isFloat(c) OrElse isText(c) OrElse c = "t"c OrElse isCharacter(c))
 			End Function
 
 			' Returns true iff the Conversion is applicable to all objects.
-			Friend Shared Function isGeneral(ByVal c As Char) As Boolean
+			Friend Shared Function isGeneral(  c As Char) As Boolean
 				Select Case c
 				Case [BOOLEAN], BOOLEAN_UPPER, [STRING], STRING_UPPER, HASHCODE, HASHCODE_UPPER
 					Return True
@@ -4300,7 +4300,7 @@ Namespace java.util
 			End Function
 
 			' Returns true iff the Conversion is applicable to character.
-			Friend Shared Function isCharacter(ByVal c As Char) As Boolean
+			Friend Shared Function isCharacter(  c As Char) As Boolean
 				Select Case c
 				Case CHARACTER, CHARACTER_UPPER
 					Return True
@@ -4310,7 +4310,7 @@ Namespace java.util
 			End Function
 
 			' Returns true iff the Conversion is an integer type.
-			Friend Shared Function isInteger(ByVal c As Char) As Boolean
+			Friend Shared Function isInteger(  c As Char) As Boolean
 				Select Case c
 				Case DECIMAL_INTEGER, OCTAL_INTEGER, HEXADECIMAL_INTEGER, HEXADECIMAL_INTEGER_UPPER
 					Return True
@@ -4320,7 +4320,7 @@ Namespace java.util
 			End Function
 
 			' Returns true iff the Conversion is a floating-point type.
-			Friend Shared Function isFloat(ByVal c As Char) As Boolean
+			Friend Shared Function isFloat(  c As Char) As Boolean
 				Select Case c
 				Case SCIENTIFIC, SCIENTIFIC_UPPER, GENERAL, GENERAL_UPPER, DECIMAL_FLOAT, HEXADECIMAL_FLOAT, HEXADECIMAL_FLOAT_UPPER
 					Return True
@@ -4330,7 +4330,7 @@ Namespace java.util
 			End Function
 
 			' Returns true iff the Conversion does not require an argument
-			Friend Shared Function isText(ByVal c As Char) As Boolean
+			Friend Shared Function isText(  c As Char) As Boolean
 				Select Case c
 				Case LINE_SEPARATOR, PERCENT_SIGN
 					Return True
@@ -4387,7 +4387,7 @@ Namespace java.util
 			Friend Const ISO_STANDARD_DATE As Char = "F"c ' (%Y-%m-%d)
 	' *    static final char LOCALE_DATE           = 'x'; // (mm/dd/yy)
 
-			Friend Shared Function isValid(ByVal c As Char) As Boolean
+			Friend Shared Function isValid(  c As Char) As Boolean
 				Select Case c
 				Case HOUR_OF_DAY_0, HOUR_0, HOUR_OF_DAY, HOUR, MINUTE, NANOSECOND, MILLISECOND, MILLISECOND_SINCE_EPOCH, AM_PM, SECONDS_SINCE_EPOCH, SECOND, TIME, ZONE_NUMERIC, ZONE, NAME_OF_DAY_ABBREV, NAME_OF_DAY, NAME_OF_MONTH_ABBREV, NAME_OF_MONTH, CENTURY, DAY_OF_MONTH_0, DAY_OF_MONTH, NAME_OF_MONTH_ABBREV_X, DAY_OF_YEAR, MONTH, YEAR_2, YEAR_4, TIME_12_HOUR, TIME_24_HOUR, DATE_TIME, [DATE], ISO_STANDARD_DATE
 

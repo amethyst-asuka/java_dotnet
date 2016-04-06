@@ -82,7 +82,7 @@ Namespace java.awt
 		''' <exception cref="IllegalArgumentException"> if aContainer is not a focus cycle
 		'''         root of aComponent or a focus traversal policy provider, or if
 		'''         either aContainer or aComponent is null </exception>
-		Public MustOverride Function getComponentAfter(ByVal aContainer As Container, ByVal aComponent As Component) As Component
+		Public MustOverride Function getComponentAfter(  aContainer As Container,   aComponent As Component) As Component
 
 		''' <summary>
 		''' Returns the Component that should receive the focus before aComponent.
@@ -98,7 +98,7 @@ Namespace java.awt
 		''' <exception cref="IllegalArgumentException"> if aContainer is not a focus cycle
 		'''         root of aComponent or a focus traversal policy provider, or if
 		'''         either aContainer or aComponent is null </exception>
-		Public MustOverride Function getComponentBefore(ByVal aContainer As Container, ByVal aComponent As Component) As Component
+		Public MustOverride Function getComponentBefore(  aContainer As Container,   aComponent As Component) As Component
 
 		''' <summary>
 		''' Returns the first Component in the traversal cycle. This method is used
@@ -110,7 +110,7 @@ Namespace java.awt
 		''' <returns> the first Component in the traversal cycle of aContainer,
 		'''         or null if no suitable Component can be found </returns>
 		''' <exception cref="IllegalArgumentException"> if aContainer is null </exception>
-		Public MustOverride Function getFirstComponent(ByVal aContainer As Container) As Component
+		Public MustOverride Function getFirstComponent(  aContainer As Container) As Component
 
 		''' <summary>
 		''' Returns the last Component in the traversal cycle. This method is used
@@ -122,7 +122,7 @@ Namespace java.awt
 		''' <returns> the last Component in the traversal cycle of aContainer,
 		'''         or null if no suitable Component can be found </returns>
 		''' <exception cref="IllegalArgumentException"> if aContainer is null </exception>
-		Public MustOverride Function getLastComponent(ByVal aContainer As Container) As Component
+		Public MustOverride Function getLastComponent(  aContainer As Container) As Component
 
 		''' <summary>
 		''' Returns the default Component to focus. This Component will be the first
@@ -134,7 +134,7 @@ Namespace java.awt
 		''' <returns> the default Component in the traversal cycle of aContainer,
 		'''         or null if no suitable Component can be found </returns>
 		''' <exception cref="IllegalArgumentException"> if aContainer is null </exception>
-		Public MustOverride Function getDefaultComponent(ByVal aContainer As Container) As Component
+		Public MustOverride Function getDefaultComponent(  aContainer As Container) As Component
 
 		''' <summary>
 		''' Returns the Component that should receive the focus when a Window is
@@ -153,7 +153,7 @@ Namespace java.awt
 		''' <seealso cref= #getDefaultComponent </seealso>
 		''' <seealso cref= Window#getMostRecentFocusOwner </seealso>
 		''' <exception cref="IllegalArgumentException"> if window is null </exception>
-		Public Overridable Function getInitialComponent(ByVal window_Renamed As Window) As Component
+		Public Overridable Function getInitialComponent(  window_Renamed As Window) As Component
 			If window_Renamed Is Nothing Then Throw New IllegalArgumentException("window cannot be equal to null.")
 			Dim def As Component = getDefaultComponent(window_Renamed)
 			If def Is Nothing AndAlso window_Renamed.focusableWindow Then def = window_Renamed

@@ -68,7 +68,7 @@ Namespace java.security.spec
 	   ''' <param name="primeExponentQ"> this is d mod (q-1) </param>
 	   ''' <param name="crtCoefficient"> the Chinese Remainder Theorem
 	   ''' coefficient q-1 mod p </param>
-		Public Sub New(ByVal modulus As System.Numerics.BigInteger, ByVal publicExponent As System.Numerics.BigInteger, ByVal privateExponent As System.Numerics.BigInteger, ByVal primeP As System.Numerics.BigInteger, ByVal primeQ As System.Numerics.BigInteger, ByVal primeExponentP As System.Numerics.BigInteger, ByVal primeExponentQ As System.Numerics.BigInteger, ByVal crtCoefficient As System.Numerics.BigInteger)
+		Public Sub New(  modulus As System.Numerics.BigInteger,   publicExponent As System.Numerics.BigInteger,   privateExponent As System.Numerics.BigInteger,   primeP As System.Numerics.BigInteger,   primeQ As System.Numerics.BigInteger,   primeExponentP As System.Numerics.BigInteger,   primeExponentQ As System.Numerics.BigInteger,   crtCoefficient As System.Numerics.BigInteger)
 			MyBase.New(modulus, privateExponent)
 			Me.publicExponent = publicExponent
 			Me.primeP = primeP

@@ -48,12 +48,12 @@ Namespace java.awt
 		''' </summary>
 		''' <param name="name"> the string to be associated with the component </param>
 		''' <param name="comp"> the component to be added </param>
-		Sub addLayoutComponent(ByVal name As String, ByVal comp As Component)
+		Sub addLayoutComponent(  name As String,   comp As Component)
 
 		''' <summary>
 		''' Removes the specified component from the layout. </summary>
 		''' <param name="comp"> the component to be removed </param>
-		Sub removeLayoutComponent(ByVal comp As Component)
+		Sub removeLayoutComponent(  comp As Component)
 
 		''' <summary>
 		''' Calculates the preferred size dimensions for the specified
@@ -61,19 +61,19 @@ Namespace java.awt
 		''' <param name="parent"> the container to be laid out
 		''' </param>
 		''' <seealso cref= #minimumLayoutSize </seealso>
-		Function preferredLayoutSize(ByVal parent As Container) As Dimension
+		Function preferredLayoutSize(  parent As Container) As Dimension
 
 		''' <summary>
 		''' Calculates the minimum size dimensions for the specified
 		''' container, given the components it contains. </summary>
 		''' <param name="parent"> the component to be laid out </param>
 		''' <seealso cref= #preferredLayoutSize </seealso>
-		Function minimumLayoutSize(ByVal parent As Container) As Dimension
+		Function minimumLayoutSize(  parent As Container) As Dimension
 
 		''' <summary>
 		''' Lays out the specified container. </summary>
 		''' <param name="parent"> the container to be laid out </param>
-		Sub layoutContainer(ByVal parent As Container)
+		Sub layoutContainer(  parent As Container)
 	End Interface
 
 End Namespace

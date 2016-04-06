@@ -88,7 +88,7 @@ Namespace java.io
 		'''               <code>checkRead</code> method denies read access
 		'''               to the file. </exception>
 		''' <seealso cref=        java.lang.SecurityManager#checkRead(java.lang.String) </seealso>
-		Public Sub New(ByVal name As String)
+		Public Sub New(  name As String)
 			Me.New(If(name IsNot Nothing, New File(name), Nothing))
 		End Sub
 
@@ -118,7 +118,7 @@ Namespace java.io
 		'''               <code>checkRead</code> method denies read access to the file. </exception>
 		''' <seealso cref=        java.io.File#getPath() </seealso>
 		''' <seealso cref=        java.lang.SecurityManager#checkRead(java.lang.String) </seealso>
-		Public Sub New(ByVal file_Renamed As File)
+		Public Sub New(  file_Renamed As File)
 			Dim name As String = (If(file_Renamed IsNot Nothing, file_Renamed.path, Nothing))
 			Dim security As SecurityManager = System.securityManager
 			If security IsNot Nothing Then security.checkRead(name)
@@ -153,7 +153,7 @@ Namespace java.io
 		'''                 <code>checkRead</code> method denies read access to the
 		'''                 file descriptor. </exception>
 		''' <seealso cref=        SecurityManager#checkRead(java.io.FileDescriptor) </seealso>
-		Public Sub New(ByVal fdObj As FileDescriptor)
+		Public Sub New(  fdObj As FileDescriptor)
 			Dim security As SecurityManager = System.securityManager
 			If fdObj Is Nothing Then Throw New NullPointerException
 			If security IsNot Nothing Then security.checkRead(fdObj)
@@ -172,14 +172,14 @@ Namespace java.io
 		''' <param name="name"> the name of the file </param>
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Private Sub open0(ByVal name As String)
+		Private Sub open0(  name As String)
 		End Sub
 
 		' wrap native call to allow instrumentation
 		''' <summary>
 		''' Opens the specified file for reading. </summary>
 		''' <param name="name"> the name of the file </param>
-		Private Sub open(ByVal name As String)
+		Private Sub open(  name As String)
 			open0(name)
 		End Sub
 
@@ -207,7 +207,7 @@ Namespace java.io
 		''' <exception cref="IOException"> If an I/O error has occurred. </exception>
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Private Function readBytes(byte ByVal  As b(), ByVal [off] As Integer, ByVal len As Integer) As Integer
+		Private Function readBytes(byte    As b(),   [off] As Integer,   len As Integer) As Integer
 		End Function
 
 		''' <summary>
@@ -220,7 +220,7 @@ Namespace java.io
 		'''             <code>-1</code> if there is no more data because the end of
 		'''             the file has been reached. </returns>
 		''' <exception cref="IOException">  if an I/O error occurs. </exception>
-		Public Overrides Function read(ByVal b As SByte()) As Integer
+		Public Overrides Function read(  b As SByte()) As Integer
 			Return readBytes(b, 0, b.Length)
 		End Function
 

@@ -59,27 +59,27 @@ Namespace java.awt.event
 		''' Invoked when the mouse button has been clicked (pressed
 		''' and released) on a component.
 		''' </summary>
-		Sub mouseClicked(ByVal e As MouseEvent)
+		Sub mouseClicked(  e As MouseEvent)
 
 		''' <summary>
 		''' Invoked when a mouse button has been pressed on a component.
 		''' </summary>
-		Sub mousePressed(ByVal e As MouseEvent)
+		Sub mousePressed(  e As MouseEvent)
 
 		''' <summary>
 		''' Invoked when a mouse button has been released on a component.
 		''' </summary>
-		Sub mouseReleased(ByVal e As MouseEvent)
+		Sub mouseReleased(  e As MouseEvent)
 
 		''' <summary>
 		''' Invoked when the mouse enters a component.
 		''' </summary>
-		Sub mouseEntered(ByVal e As MouseEvent)
+		Sub mouseEntered(  e As MouseEvent)
 
 		''' <summary>
 		''' Invoked when the mouse exits a component.
 		''' </summary>
-		Sub mouseExited(ByVal e As MouseEvent)
+		Sub mouseExited(  e As MouseEvent)
 	End Interface
 
 End Namespace

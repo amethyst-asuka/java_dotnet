@@ -90,7 +90,7 @@ Namespace java.util.concurrent.atomic
 		''' and identity element. </summary>
 		''' <param name="accumulatorFunction"> a side-effect-free function of two arguments </param>
 		''' <param name="identity"> identity (initial value) for the accumulator function </param>
-		Public Sub New(ByVal accumulatorFunction As java.util.function.DoubleBinaryOperator, ByVal identity As Double)
+		Public Sub New(  accumulatorFunction As java.util.function.DoubleBinaryOperator,   identity As Double)
 			Me.function = accumulatorFunction
 				Me.identity = java.lang.[Double].doubleToRawLongBits(identity)
 				base = Me.identity
@@ -100,7 +100,7 @@ Namespace java.util.concurrent.atomic
 		''' Updates with the given value.
 		''' </summary>
 		''' <param name="x"> the value </param>
-		Public Overridable Sub accumulate(ByVal x As Double)
+		Public Overridable Sub accumulate(  x As Double)
 			Dim [as] As Cell()
 			Dim b, v, r As Long
 			Dim m As Integer
@@ -252,7 +252,7 @@ Namespace java.util.concurrent.atomic
 			''' </summary>
 			Private ReadOnly identity As Long
 
-			Friend Sub New(ByVal a As DoubleAccumulator)
+			Friend Sub New(  a As DoubleAccumulator)
 				[function] = a.function
 				identity = a.identity
 				value = a.get()
@@ -286,7 +286,7 @@ Namespace java.util.concurrent.atomic
 
 		''' <param name="s"> the stream </param>
 		''' <exception cref="java.io.InvalidObjectException"> always </exception>
-		Private Sub readObject(ByVal s As java.io.ObjectInputStream)
+		Private Sub readObject(  s As java.io.ObjectInputStream)
 			Throw New java.io.InvalidObjectException("Proxy required")
 		End Sub
 

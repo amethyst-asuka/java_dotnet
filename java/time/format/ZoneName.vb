@@ -36,7 +36,7 @@ Namespace java.time.format
 	''' </summary>
 	Friend Class ZoneName
 
-		Public Shared Function toZid(ByVal zid As String, ByVal locale As java.util.Locale) As String
+		Public Shared Function toZid(  zid As String,   locale As java.util.Locale) As String
 			Dim mzone As String = zidToMzone(zid)
 			If mzone Is Nothing AndAlso aliases.ContainsKey(zid) Then
 				zid = aliases(zid)
@@ -53,7 +53,7 @@ Namespace java.time.format
 			Return toZid(zid)
 		End Function
 
-		Public Shared Function toZid(ByVal zid As String) As String
+		Public Shared Function toZid(  zid As String) As String
 			If aliases.ContainsKey(zid) Then Return aliases(zid)
 			Return zid
 		End Function

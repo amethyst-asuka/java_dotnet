@@ -46,7 +46,7 @@ Namespace java.security.spec
 		''' <exception cref="NullPointerException"> if {@code p} is null. </exception>
 		''' <exception cref="IllegalArgumentException"> if {@code p}
 		''' is not positive. </exception>
-		Public Sub New(ByVal p As System.Numerics.BigInteger)
+		Public Sub New(  p As System.Numerics.BigInteger)
 			If p.signum() <> 1 Then Throw New IllegalArgumentException("p is not positive")
 			Me.p = p
 		End Sub
@@ -76,7 +76,7 @@ Namespace java.security.spec
 		''' <param name="obj"> the object to be compared. </param>
 		''' <returns> true if {@code obj} is an instance
 		''' of ECFieldFp and the prime value match, false otherwise. </returns>
-		Public Overrides Function Equals(ByVal obj As Object) As Boolean
+		Public Overrides Function Equals(  obj As Object) As Boolean
 			If Me Is obj Then Return True
 			If TypeOf obj Is ECFieldFp Then Return (p.Equals(CType(obj, ECFieldFp).p))
 			Return False

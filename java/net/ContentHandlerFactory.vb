@@ -48,7 +48,7 @@ Namespace java.net
 		'''          {@code URLStreamHandler}. </returns>
 		''' <seealso cref=     java.net.ContentHandler </seealso>
 		''' <seealso cref=     java.net.URLStreamHandler </seealso>
-		Function createContentHandler(ByVal mimetype As String) As ContentHandler
+		Function createContentHandler(  mimetype As String) As ContentHandler
 	End Interface
 
 End Namespace

@@ -76,10 +76,10 @@ Namespace java.util.stream
 		''' <param name="helper"> the pipeline helper </param>
 		''' <param name="spliterator"> the source spliterator </param>
 		''' <returns> the result of the evaluation </returns>
-		default Function evaluateParallel(ByVal helper As PipelineHelper(Of E_IN), ByVal spliterator As java.util.Spliterator(Of P_IN)) As R(Of P_IN)
+		default Function evaluateParallel(  helper As PipelineHelper(Of E_IN),   spliterator As java.util.Spliterator(Of P_IN)) As R(Of P_IN)
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 			if (Tripwire.ENABLED)
-				Sub [New](getClass() ByVal  As , "{0} triggering TerminalOp.evaluateParallel serial default" ByVal  As )
+				Sub [New](getClass()    As , "{0} triggering TerminalOp.evaluateParallel serial default"    As )
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 			Return evaluateSequential(helper, spliterator);
 
@@ -91,7 +91,7 @@ Namespace java.util.stream
 		''' <param name="helper"> the pipeline helper </param>
 		''' <param name="spliterator"> the source spliterator </param>
 		''' <returns> the result of the evaluation </returns>
-		 Function evaluateSequential(Of P_IN)(ByVal helper As PipelineHelper(Of E_IN), ByVal spliterator As java.util.Spliterator(Of P_IN)) As R
+		 Function evaluateSequential(Of P_IN)(  helper As PipelineHelper(Of E_IN),   spliterator As java.util.Spliterator(Of P_IN)) As R
 	End Interface
 
 End Namespace

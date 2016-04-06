@@ -49,7 +49,7 @@ Namespace java.awt
 		''' </summary>
 		''' <param name="l"> the listener to receive events </param>
 		''' <seealso cref= ItemEvent </seealso>
-		Sub addItemListener(ByVal l As ItemListener)
+		Sub addItemListener(  l As ItemListener)
 
 		''' <summary>
 		''' Removes an item listener.
@@ -58,7 +58,7 @@ Namespace java.awt
 		''' </summary>
 		''' <param name="l"> the listener being removed </param>
 		''' <seealso cref= ItemEvent </seealso>
-		Sub removeItemListener(ByVal l As ItemListener)
+		Sub removeItemListener(  l As ItemListener)
 	End Interface
 
 End Namespace

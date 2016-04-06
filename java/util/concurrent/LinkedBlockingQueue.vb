@@ -125,7 +125,7 @@ Namespace java.util.concurrent
 			''' </summary>
 			Friend [next] As Node(Of E)
 
-			Friend Sub New(ByVal x As E)
+			Friend Sub New(  x As E)
 				item = x
 			End Sub
 		End Class
@@ -199,7 +199,7 @@ Namespace java.util.concurrent
 		''' Links node at end of queue.
 		''' </summary>
 		''' <param name="node"> the node </param>
-		Private Sub enqueue(ByVal node As Node(Of E))
+		Private Sub enqueue(  node As Node(Of E))
 			' assert putLock.isHeldByCurrentThread();
 			' assert last.next == null;
 				last.next = node
@@ -260,7 +260,7 @@ Namespace java.util.concurrent
 		''' <param name="capacity"> the capacity of this queue </param>
 		''' <exception cref="IllegalArgumentException"> if {@code capacity} is not greater
 		'''         than zero </exception>
-		Public Sub New(ByVal capacity As Integer)
+		Public Sub New(  capacity As Integer)
 			If capacity <= 0 Then Throw New IllegalArgumentException
 			Me.capacity = capacity
 				head = New Node(Of E)(Nothing)
@@ -276,7 +276,7 @@ Namespace java.util.concurrent
 		''' <param name="c"> the collection of elements to initially contain </param>
 		''' <exception cref="NullPointerException"> if the specified collection or any
 		'''         of its elements are null </exception>
-		Public Sub New(Of T1 As E)(ByVal c As ICollection(Of T1))
+		Public Sub New(Of T1 As E)(  c As ICollection(Of T1))
 			Me.New( java.lang.[Integer].Max_Value)
 			Dim putLock As java.util.concurrent.locks.ReentrantLock = Me.putLock
 			putLock.lock() ' Never contended, but necessary for visibility
@@ -327,7 +327,7 @@ Namespace java.util.concurrent
 		''' </summary>
 		''' <exception cref="InterruptedException"> {@inheritDoc} </exception>
 		''' <exception cref="NullPointerException"> {@inheritDoc} </exception>
-		Public Overridable Sub put(ByVal e As E)
+		Public Overridable Sub put(  e As E)
 			If e Is Nothing Then Throw New NullPointerException
 			' Note: convention in all put/take/etc is to preset local var
 			' holding count negative to indicate failure unless set.
@@ -365,7 +365,7 @@ Namespace java.util.concurrent
 		'''         the specified waiting time elapses before space is available </returns>
 		''' <exception cref="InterruptedException"> {@inheritDoc} </exception>
 		''' <exception cref="NullPointerException"> {@inheritDoc} </exception>
-		Public Overridable Function offer(ByVal e As E, ByVal timeout As Long, ByVal unit As TimeUnit) As Boolean
+		Public Overridable Function offer(  e As E,   timeout As Long,   unit As TimeUnit) As Boolean
 
 			If e Is Nothing Then Throw New NullPointerException
 			Dim nanos As Long = unit.toNanos(timeout)
@@ -398,7 +398,7 @@ Namespace java.util.concurrent
 		''' insert an element only by throwing an exception.
 		''' </summary>
 		''' <exception cref="NullPointerException"> if the specified element is null </exception>
-		Public Overridable Function offer(ByVal e As E) As Boolean
+		Public Overridable Function offer(  e As E) As Boolean
 			If e Is Nothing Then Throw New NullPointerException
 			Dim count As java.util.concurrent.atomic.AtomicInteger = Me.count
 			If count.get() = capacity Then Return False
@@ -439,7 +439,7 @@ Namespace java.util.concurrent
 			Return x
 		End Function
 
-		Public Overridable Function poll(ByVal timeout As Long, ByVal unit As TimeUnit) As E Implements BlockingQueue(Of E).poll
+		Public Overridable Function poll(  timeout As Long,   unit As TimeUnit) As E Implements BlockingQueue(Of E).poll
 			Dim x As E = Nothing
 			Dim c As Integer = -1
 			Dim nanos As Long = unit.toNanos(timeout)
@@ -500,7 +500,7 @@ Namespace java.util.concurrent
 		''' <summary>
 		''' Unlinks interior Node p with predecessor trail.
 		''' </summary>
-		Friend Overridable Sub unlink(ByVal p As Node(Of E), ByVal trail As Node(Of E))
+		Friend Overridable Sub unlink(  p As Node(Of E),   trail As Node(Of E))
 			' assert isFullyLocked();
 			' p.next is not changed, to allow iterators that are
 			' traversing p to maintain their weak-consistency guarantee.
@@ -520,7 +520,7 @@ Namespace java.util.concurrent
 		''' </summary>
 		''' <param name="o"> element to be removed from this queue, if present </param>
 		''' <returns> {@code true} if this queue changed as a result of the call </returns>
-		Public Overridable Function remove(ByVal o As Object) As Boolean Implements BlockingQueue(Of E).remove
+		Public Overridable Function remove(  o As Object) As Boolean Implements BlockingQueue(Of E).remove
 			If o Is Nothing Then Return False
 			fullyLock()
 			Try
@@ -547,7 +547,7 @@ Namespace java.util.concurrent
 		''' </summary>
 		''' <param name="o"> object to be checked for containment in this queue </param>
 		''' <returns> {@code true} if this queue contains the specified element </returns>
-		Public Overridable Function contains(ByVal o As Object) As Boolean Implements BlockingQueue(Of E).contains
+		Public Overridable Function contains(  o As Object) As Boolean Implements BlockingQueue(Of E).contains
 			If o Is Nothing Then Return False
 			fullyLock()
 			Try
@@ -627,7 +627,7 @@ Namespace java.util.concurrent
 		'''         this queue </exception>
 		''' <exception cref="NullPointerException"> if the specified array is null </exception>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Overridable Function toArray(Of T)(ByVal a As T()) As T()
+		Public Overridable Function toArray(Of T)(  a As T()) As T()
 			fullyLock()
 			Try
 				Dim size As Integer = count.get()
@@ -695,7 +695,7 @@ Namespace java.util.concurrent
 		''' <exception cref="NullPointerException">          {@inheritDoc} </exception>
 		''' <exception cref="IllegalArgumentException">      {@inheritDoc} </exception>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Overridable Function drainTo(Of T1)(ByVal c As ICollection(Of T1)) As Integer Implements BlockingQueue(Of E).drainTo
+		Public Overridable Function drainTo(Of T1)(  c As ICollection(Of T1)) As Integer Implements BlockingQueue(Of E).drainTo
 			Return drainTo(c,  java.lang.[Integer].Max_Value)
 		End Function
 
@@ -704,7 +704,7 @@ Namespace java.util.concurrent
 		''' <exception cref="NullPointerException">          {@inheritDoc} </exception>
 		''' <exception cref="IllegalArgumentException">      {@inheritDoc} </exception>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Overridable Function drainTo(Of T1)(ByVal c As ICollection(Of T1), ByVal maxElements As Integer) As Integer Implements BlockingQueue(Of E).drainTo
+		Public Overridable Function drainTo(Of T1)(  c As ICollection(Of T1),   maxElements As Integer) As Integer Implements BlockingQueue(Of E).drainTo
 			If c Is Nothing Then Throw New NullPointerException
 			If c Is Me Then Throw New IllegalArgumentException
 			If maxElements <= 0 Then Return 0
@@ -767,7 +767,7 @@ Namespace java.util.concurrent
 			Private lastRet As Node(Of E)
 			Private currentElement As E
 
-			Friend Sub New(ByVal outerInstance As LinkedBlockingQueue)
+			Friend Sub New(  outerInstance As LinkedBlockingQueue)
 					Me.outerInstance = outerInstance
 				outerInstance.fullyLock()
 				Try
@@ -789,7 +789,7 @@ Namespace java.util.concurrent
 			''' - dequeued nodes (p.next == p)
 			''' - (possibly multiple) interior removed nodes (p.item == null)
 			''' </summary>
-			Private Function nextNode(ByVal p As Node(Of E)) As Node(Of E)
+			Private Function nextNode(  p As Node(Of E)) As Node(Of E)
 				Do
 					Dim s As Node(Of E) = p.next
 					If s Is p Then Return outerInstance.head.next
@@ -845,7 +845,7 @@ Namespace java.util.concurrent
 			Friend batch As Integer ' batch size for splits
 			Friend exhausted As Boolean ' true when no more nodes
 			Friend est As Long ' size estimate
-			Friend Sub New(ByVal queue As LinkedBlockingQueue(Of E))
+			Friend Sub New(  queue As LinkedBlockingQueue(Of E))
 				Me.queue = queue
 				Me.est = queue.size()
 			End Sub
@@ -895,7 +895,7 @@ Namespace java.util.concurrent
 			End Function
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Sub forEachRemaining(Of T1)(ByVal action As java.util.function.Consumer(Of T1))
+			Public Sub forEachRemaining(Of T1)(  action As java.util.function.Consumer(Of T1))
 				If action Is Nothing Then Throw New NullPointerException
 				Dim q As LinkedBlockingQueue(Of E) = Me.queue
 				If Not exhausted Then
@@ -920,7 +920,7 @@ Namespace java.util.concurrent
 			End Sub
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Function tryAdvance(Of T1)(ByVal action As java.util.function.Consumer(Of T1)) As Boolean
+			Public Function tryAdvance(Of T1)(  action As java.util.function.Consumer(Of T1)) As Boolean
 				If action Is Nothing Then Throw New NullPointerException
 				Dim q As LinkedBlockingQueue(Of E) = Me.queue
 				If Not exhausted Then
@@ -977,7 +977,7 @@ Namespace java.util.concurrent
 		''' @serialData The capacity is emitted (int), followed by all of
 		''' its elements (each an {@code Object}) in the proper order,
 		''' followed by a null </exception>
-		Private Sub writeObject(ByVal s As java.io.ObjectOutputStream)
+		Private Sub writeObject(  s As java.io.ObjectOutputStream)
 
 			fullyLock()
 			Try
@@ -1004,7 +1004,7 @@ Namespace java.util.concurrent
 		''' <exception cref="ClassNotFoundException"> if the class of a serialized object
 		'''         could not be found </exception>
 		''' <exception cref="java.io.IOException"> if an I/O error occurs </exception>
-		Private Sub readObject(ByVal s As java.io.ObjectInputStream)
+		Private Sub readObject(  s As java.io.ObjectInputStream)
 			' Read in capacity, and any hidden stuff
 			s.defaultReadObject()
 

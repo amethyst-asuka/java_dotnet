@@ -83,7 +83,7 @@ Namespace java.util
 		''' specified detail message.
 		''' </summary>
 		''' <param name="message"> the detail message pertaining to this exception. </param>
-		Public Sub New(ByVal message As String)
+		Public Sub New(  message As String)
 			MyBase.New(message)
 		End Sub
 
@@ -97,7 +97,7 @@ Namespace java.util
 		'''         permitted, and indicates that the cause is nonexistent or
 		'''         unknown.)
 		''' @since  1.7 </param>
-		Public Sub New(ByVal cause As Throwable)
+		Public Sub New(  cause As Throwable)
 			MyBase.New(cause)
 		End Sub
 
@@ -116,7 +116,7 @@ Namespace java.util
 		'''         is permitted, and indicates that the cause is nonexistent or
 		'''         unknown.)
 		''' @since 1.7 </param>
-		Public Sub New(ByVal message As String, ByVal cause As Throwable)
+		Public Sub New(  message As String,   cause As Throwable)
 			MyBase.New(message, cause)
 		End Sub
 	End Class

@@ -83,7 +83,7 @@ Namespace java.util
         ''' the element using <tt>ListIterator.next</tt> and returns it.
         ''' </summary>
         ''' <exception cref="IndexOutOfBoundsException"> {@inheritDoc} </exception>
-        Public Overrides Function [get](ByVal index As Integer) As E
+        Public Overrides Function [get](  index As Integer) As E
             Try
                 Return listIterator(index).next()
             Catch exc As NoSuchElementException
@@ -109,7 +109,7 @@ Namespace java.util
         ''' <exception cref="NullPointerException">          {@inheritDoc} </exception>
         ''' <exception cref="IllegalArgumentException">      {@inheritDoc} </exception>
         ''' <exception cref="IndexOutOfBoundsException">     {@inheritDoc} </exception>
-        Public Overridable Function [set](ByVal index As Integer, ByVal element As E) As E
+        Public Overridable Function [set](  index As Integer,   element As E) As E
 			Try
 				Dim e As ListIterator(Of E) = listIterator(index)
 				Dim oldVal As E = e.next()
@@ -139,7 +139,7 @@ Namespace java.util
 		''' <exception cref="NullPointerException">          {@inheritDoc} </exception>
 		''' <exception cref="IllegalArgumentException">      {@inheritDoc} </exception>
 		''' <exception cref="IndexOutOfBoundsException">     {@inheritDoc} </exception>
-		Public Overridable Sub add(ByVal index As Integer, ByVal element As E)
+		Public Overridable Sub add(  index As Integer,   element As E)
 			Try
 				listIterator(index).add(element)
 			Catch exc As NoSuchElementException
@@ -163,7 +163,7 @@ Namespace java.util
 		''' </summary>
 		''' <exception cref="UnsupportedOperationException"> {@inheritDoc} </exception>
 		''' <exception cref="IndexOutOfBoundsException">     {@inheritDoc} </exception>
-		Public Overridable Function remove(ByVal index As Integer) As E
+		Public Overridable Function remove(  index As Integer) As E
 			Try
 				Dim e As ListIterator(Of E) = listIterator(index)
 				Dim outCast As E = e.next()
@@ -205,7 +205,7 @@ Namespace java.util
 		''' <exception cref="NullPointerException">          {@inheritDoc} </exception>
 		''' <exception cref="IllegalArgumentException">      {@inheritDoc} </exception>
 		''' <exception cref="IndexOutOfBoundsException">     {@inheritDoc} </exception>
-		Public Overridable Function addAll(Of T1 As E)(ByVal index As Integer, ByVal c As Collection(Of T1)) As Boolean
+		Public Overridable Function addAll(Of T1 As E)(  index As Integer,   c As Collection(Of T1)) As Boolean
 			Try
 				Dim modified As Boolean = False
 				Dim e1 As ListIterator(Of E) = listIterator(index)
@@ -244,7 +244,7 @@ Namespace java.util
 		''' <returns> a list iterator over the elements in this list (in proper
 		'''         sequence) </returns>
 		''' <exception cref="IndexOutOfBoundsException"> {@inheritDoc} </exception>
-		Public MustOverride Function listIterator(ByVal index As Integer) As ListIterator(Of E)
+		Public MustOverride Function listIterator(  index As Integer) As ListIterator(Of E)
 	End Class
 
 End Namespace

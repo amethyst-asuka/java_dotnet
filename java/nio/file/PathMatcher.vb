@@ -43,7 +43,7 @@ Namespace java.nio.file
 		''' </param>
 		''' <returns>  {@code true} if, and only if, the path matches this
 		'''          matcher's pattern </returns>
-		Function matches(ByVal path As Path) As Boolean
+		Function matches(  path As Path) As Boolean
 	End Interface
 
 End Namespace

@@ -108,7 +108,7 @@ Namespace java.awt.image.renderable
         ''' Constructs a <code>ParameterBlock</code> with a given Vector
         ''' of sources. </summary>
         ''' <param name="sources"> a <code>Vector</code> of source images </param>
-        Public Sub New(ByVal sources As ArrayList)
+        Public Sub New(  sources As ArrayList)
             sources = sources
         End Sub
 
@@ -118,7 +118,7 @@ Namespace java.awt.image.renderable
         ''' <param name="sources"> a <code>Vector</code> of source images </param>
         ''' <param name="parameters"> a <code>Vector</code> of parameters to be used in the
         '''        rendering operation </param>
-        Public Sub New(ByVal sources As ArrayList, ByVal parameters As ArrayList)
+        Public Sub New(  sources As ArrayList,   parameters As ArrayList)
             sources = sources
             parameters = parameters
         End Sub
@@ -170,7 +170,7 @@ Namespace java.awt.image.renderable
         ''' <param name="source"> an image object to be stored in the source list. </param>
         ''' <returns> a new <code>ParameterBlock</code> containing the specified
         '''         <code>source</code>. </returns>
-        Public Overridable Function addSource(ByVal source As Object) As ParameterBlock
+        Public Overridable Function addSource(  source As Object) As ParameterBlock
             sources.Add(source)
             Return Me
         End Function
@@ -184,7 +184,7 @@ Namespace java.awt.image.renderable
         '''         at the specified index in the <code>sources</code>
         '''         <code>Vector</code>. </returns>
         ''' <seealso cref= #setSource(Object, int) </seealso>
-        Public Overridable Function getSource(ByVal index As Integer) As Object
+        Public Overridable Function getSource(  index As Integer) As Object
             Return sources(index)
         End Function
 
@@ -200,7 +200,7 @@ Namespace java.awt.image.renderable
         '''         specified <code>source</code> at the specified
         '''         <code>index</code>. </returns>
         ''' <seealso cref= #getSource(int) </seealso>
-        Public Overridable Function setSource(ByVal source As Object, ByVal index As Integer) As ParameterBlock
+        Public Overridable Function setSource(  source As Object,   index As Integer) As ParameterBlock
             Dim oldSize As Integer = sources.Count
             Dim newSize As Integer = index + 1
             If oldSize < newSize Then sources.Capacity = newSize
@@ -217,7 +217,7 @@ Namespace java.awt.image.renderable
         ''' <returns> a <code>RenderedImage</code> that represents the source
         '''         image that is at the specified index in the
         '''         <code>sources</code> <code>Vector</code>. </returns>
-        Public Overridable Function getRenderedSource(ByVal index As Integer) As java.awt.image.RenderedImage
+        Public Overridable Function getRenderedSource(  index As Integer) As java.awt.image.RenderedImage
             Return CType(sources(index), java.awt.image.RenderedImage)
         End Function
 
@@ -230,7 +230,7 @@ Namespace java.awt.image.renderable
         ''' <returns> a <code>RenderableImage</code> that represents the source
         '''         image that is at the specified index in the
         '''         <code>sources</code> <code>Vector</code>. </returns>
-        Public Overridable Function getRenderableSource(ByVal index As Integer) As RenderableImage
+        Public Overridable Function getRenderableSource(  index As Integer) As RenderableImage
             Return CType(sources(index), RenderableImage)
         End Function
 
@@ -284,7 +284,7 @@ Namespace java.awt.image.renderable
 		'''            <code>parameters</code> <code>Vector</code> </param>
 		''' <returns> a new <code>ParameterBlock</code> containing
 		'''         the specified parameter. </returns>
-		Public Overridable Function add(ByVal obj As Object) As ParameterBlock
+		Public Overridable Function add(  obj As Object) As ParameterBlock
 			parameters.Add(obj)
 			Return Me
 		End Function
@@ -295,7 +295,7 @@ Namespace java.awt.image.renderable
 		'''            <code>parameters</code> <code>Vector</code> </param>
 		''' <returns> a new <code>ParameterBlock</code> containing
 		'''         the specified parameter. </returns>
-		Public Overridable Function add(ByVal b As SByte) As ParameterBlock
+		Public Overridable Function add(  b As SByte) As ParameterBlock
 			Return add(New Byte(b))
 		End Function
 
@@ -305,7 +305,7 @@ Namespace java.awt.image.renderable
 		'''            <code>parameters</code> <code>Vector</code> </param>
 		''' <returns> a new <code>ParameterBlock</code> containing
 		'''         the specified parameter. </returns>
-		Public Overridable Function add(ByVal c As Char) As ParameterBlock
+		Public Overridable Function add(  c As Char) As ParameterBlock
 			Return add(New Character(c))
 		End Function
 
@@ -315,7 +315,7 @@ Namespace java.awt.image.renderable
 		'''            <code>parameters</code> <code>Vector</code> </param>
 		''' <returns> a new <code>ParameterBlock</code> containing
 		'''         the specified parameter. </returns>
-		Public Overridable Function add(ByVal s As Short) As ParameterBlock
+		Public Overridable Function add(  s As Short) As ParameterBlock
 			Return add(New Short?(s))
 		End Function
 
@@ -325,7 +325,7 @@ Namespace java.awt.image.renderable
 		'''            <code>parameters</code> <code>Vector</code> </param>
 		''' <returns> a new <code>ParameterBlock</code> containing
 		'''         the specified parameter. </returns>
-		Public Overridable Function add(ByVal i As Integer) As ParameterBlock
+		Public Overridable Function add(  i As Integer) As ParameterBlock
 			Return add(New Integer?(i))
 		End Function
 
@@ -335,7 +335,7 @@ Namespace java.awt.image.renderable
 		'''            <code>parameters</code> <code>Vector</code> </param>
 		''' <returns> a new <code>ParameterBlock</code> containing
 		'''         the specified parameter. </returns>
-		Public Overridable Function add(ByVal l As Long) As ParameterBlock
+		Public Overridable Function add(  l As Long) As ParameterBlock
 			Return add(New Long?(l))
 		End Function
 
@@ -345,7 +345,7 @@ Namespace java.awt.image.renderable
 		'''            <code>parameters</code> <code>Vector</code> </param>
 		''' <returns> a new <code>ParameterBlock</code> containing
 		'''         the specified parameter. </returns>
-		Public Overridable Function add(ByVal f As Single) As ParameterBlock
+		Public Overridable Function add(  f As Single) As ParameterBlock
 			Return add(New Float(f))
 		End Function
 
@@ -355,7 +355,7 @@ Namespace java.awt.image.renderable
 		'''            <code>parameters</code> <code>Vector</code> </param>
 		''' <returns> a new <code>ParameterBlock</code> containing
 		'''         the specified parameter. </returns>
-		Public Overridable Function add(ByVal d As Double) As ParameterBlock
+		Public Overridable Function add(  d As Double) As ParameterBlock
 			Return add(New Double?(d))
 		End Function
 
@@ -370,7 +370,7 @@ Namespace java.awt.image.renderable
 		'''        replaced with the specified parameter </param>
 		''' <returns> a new <code>ParameterBlock</code> containing
 		'''        the specified parameter. </returns>
-		Public Overridable Function [set](ByVal obj As Object, ByVal index As Integer) As ParameterBlock
+		Public Overridable Function [set](  obj As Object,   index As Integer) As ParameterBlock
 			Dim oldSize As Integer = parameters.Count
 			Dim newSize As Integer = index + 1
 			If oldSize < newSize Then parameters.Capacity = newSize
@@ -389,7 +389,7 @@ Namespace java.awt.image.renderable
 		'''        replaced with the specified parameter </param>
 		''' <returns> a new <code>ParameterBlock</code> containing
 		'''        the specified parameter. </returns>
-		Public Overridable Function [set](ByVal b As SByte, ByVal index As Integer) As ParameterBlock
+		Public Overridable Function [set](  b As SByte,   index As Integer) As ParameterBlock
 			Return [set](New Byte(b), index)
 		End Function
 
@@ -404,7 +404,7 @@ Namespace java.awt.image.renderable
 		'''        replaced with the specified parameter </param>
 		''' <returns> a new <code>ParameterBlock</code> containing
 		'''        the specified parameter. </returns>
-		Public Overridable Function [set](ByVal c As Char, ByVal index As Integer) As ParameterBlock
+		Public Overridable Function [set](  c As Char,   index As Integer) As ParameterBlock
 			Return [set](New Character(c), index)
 		End Function
 
@@ -419,7 +419,7 @@ Namespace java.awt.image.renderable
 		'''        replaced with the specified parameter </param>
 		''' <returns> a new <code>ParameterBlock</code> containing
 		'''        the specified parameter. </returns>
-		Public Overridable Function [set](ByVal s As Short, ByVal index As Integer) As ParameterBlock
+		Public Overridable Function [set](  s As Short,   index As Integer) As ParameterBlock
 			Return [set](New Short?(s), index)
 		End Function
 
@@ -434,7 +434,7 @@ Namespace java.awt.image.renderable
 		'''        replaced with the specified parameter </param>
 		''' <returns> a new <code>ParameterBlock</code> containing
 		'''        the specified parameter. </returns>
-		Public Overridable Function [set](ByVal i As Integer, ByVal index As Integer) As ParameterBlock
+		Public Overridable Function [set](  i As Integer,   index As Integer) As ParameterBlock
 			Return [set](New Integer?(i), index)
 		End Function
 
@@ -449,7 +449,7 @@ Namespace java.awt.image.renderable
 		'''        replaced with the specified parameter </param>
 		''' <returns> a new <code>ParameterBlock</code> containing
 		'''        the specified parameter. </returns>
-		Public Overridable Function [set](ByVal l As Long, ByVal index As Integer) As ParameterBlock
+		Public Overridable Function [set](  l As Long,   index As Integer) As ParameterBlock
 			Return [set](New Long?(l), index)
 		End Function
 
@@ -464,7 +464,7 @@ Namespace java.awt.image.renderable
 		'''        replaced with the specified parameter </param>
 		''' <returns> a new <code>ParameterBlock</code> containing
 		'''        the specified parameter. </returns>
-		Public Overridable Function [set](ByVal f As Single, ByVal index As Integer) As ParameterBlock
+		Public Overridable Function [set](  f As Single,   index As Integer) As ParameterBlock
 			Return [set](New Float(f), index)
 		End Function
 
@@ -479,7 +479,7 @@ Namespace java.awt.image.renderable
 		'''        replaced with the specified parameter </param>
 		''' <returns> a new <code>ParameterBlock</code> containing
 		'''        the specified parameter. </returns>
-		Public Overridable Function [set](ByVal d As Double, ByVal index As Integer) As ParameterBlock
+		Public Overridable Function [set](  d As Double,   index As Integer) As ParameterBlock
 			Return [set](New Double?(d), index)
 		End Function
 
@@ -490,7 +490,7 @@ Namespace java.awt.image.renderable
 		'''         the parameter at the specified index
 		'''         into the <code>parameters</code>
 		'''         <code>Vector</code>. </returns>
-		Public Overridable Function getObjectParameter(ByVal index As Integer) As Object
+		Public Overridable Function getObjectParameter(  index As Integer) As Object
 			Return parameters(index)
 		End Function
 
@@ -509,7 +509,7 @@ Namespace java.awt.image.renderable
 		''' <exception cref="ArrayIndexOutOfBoundsException"> if <code>index</code>
 		'''         is negative or not less than the current size of this
 		'''         <code>ParameterBlock</code> object </exception>
-		Public Overridable Function getByteParameter(ByVal index As Integer) As SByte
+		Public Overridable Function getByteParameter(  index As Integer) As SByte
 			Return CByte(parameters(index))
 		End Function
 
@@ -528,7 +528,7 @@ Namespace java.awt.image.renderable
 		''' <exception cref="ArrayIndexOutOfBoundsException"> if <code>index</code>
 		'''         is negative or not less than the current size of this
 		'''         <code>ParameterBlock</code> object </exception>
-		Public Overridable Function getCharParameter(ByVal index As Integer) As Char
+		Public Overridable Function getCharParameter(  index As Integer) As Char
 			Return CChar(parameters(index))
 		End Function
 
@@ -547,7 +547,7 @@ Namespace java.awt.image.renderable
 		''' <exception cref="ArrayIndexOutOfBoundsException"> if <code>index</code>
 		'''         is negative or not less than the current size of this
 		'''         <code>ParameterBlock</code> object </exception>
-		Public Overridable Function getShortParameter(ByVal index As Integer) As Short
+		Public Overridable Function getShortParameter(  index As Integer) As Short
 			Return CShort(Fix(parameters(index)))
 		End Function
 
@@ -566,7 +566,7 @@ Namespace java.awt.image.renderable
 		''' <exception cref="ArrayIndexOutOfBoundsException"> if <code>index</code>
 		'''         is negative or not less than the current size of this
 		'''         <code>ParameterBlock</code> object </exception>
-		Public Overridable Function getIntParameter(ByVal index As Integer) As Integer
+		Public Overridable Function getIntParameter(  index As Integer) As Integer
 			Return CInt(Fix(parameters(index)))
 		End Function
 
@@ -585,7 +585,7 @@ Namespace java.awt.image.renderable
 		''' <exception cref="ArrayIndexOutOfBoundsException"> if <code>index</code>
 		'''         is negative or not less than the current size of this
 		'''         <code>ParameterBlock</code> object </exception>
-		Public Overridable Function getLongParameter(ByVal index As Integer) As Long
+		Public Overridable Function getLongParameter(  index As Integer) As Long
 			Return CLng(Fix(parameters(index)))
 		End Function
 
@@ -604,7 +604,7 @@ Namespace java.awt.image.renderable
 		''' <exception cref="ArrayIndexOutOfBoundsException"> if <code>index</code>
 		'''         is negative or not less than the current size of this
 		'''         <code>ParameterBlock</code> object </exception>
-		Public Overridable Function getFloatParameter(ByVal index As Integer) As Single
+		Public Overridable Function getFloatParameter(  index As Integer) As Single
 			Return CSng(parameters(index))
 		End Function
 
@@ -623,7 +623,7 @@ Namespace java.awt.image.renderable
 		''' <exception cref="ArrayIndexOutOfBoundsException"> if <code>index</code>
 		'''         is negative or not less than the current size of this
 		'''         <code>ParameterBlock</code> object </exception>
-		Public Overridable Function getDoubleParameter(ByVal index As Integer) As Double
+		Public Overridable Function getDoubleParameter(  index As Integer) As Double
 			Return CDbl(parameters(index))
 		End Function
 

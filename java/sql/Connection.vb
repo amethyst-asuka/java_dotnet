@@ -134,7 +134,7 @@ Namespace java.sql
 		''' pre-compiled SQL statement </returns>
 		''' <exception cref="SQLException"> if a database access error occurs
 		''' or this method is called on a closed connection </exception>
-		Function prepareStatement(ByVal sql As String) As PreparedStatement
+		Function prepareStatement(  sql As String) As PreparedStatement
 
 		''' <summary>
 		''' Creates a <code>CallableStatement</code> object for calling
@@ -165,7 +165,7 @@ Namespace java.sql
 		''' pre-compiled SQL statement </returns>
 		''' <exception cref="SQLException"> if a database access error occurs
 		''' or this method is called on a closed connection </exception>
-		Function prepareCall(ByVal sql As String) As CallableStatement
+		Function prepareCall(  sql As String) As CallableStatement
 
 		''' <summary>
 		''' Converts the given SQL statement into the system's native SQL grammar.
@@ -178,7 +178,7 @@ Namespace java.sql
 		''' <returns> the native form of this statement </returns>
 		''' <exception cref="SQLException"> if a database access error occurs
 		''' or this method is called on a closed connection </exception>
-		Function nativeSQL(ByVal sql As String) As String
+		Function nativeSQL(  sql As String) As String
 
 		''' <summary>
 		''' Sets this connection's auto-commit mode to the given state.
@@ -472,7 +472,7 @@ Namespace java.sql
 		''' this method or this method is not supported for the specified result
 		''' set type and result set concurrency.
 		''' @since 1.2 </exception>
-		Function createStatement(ByVal resultSetType As Integer, ByVal resultSetConcurrency As Integer) As Statement
+		Function createStatement(  resultSetType As Integer,   resultSetConcurrency As Integer) As Statement
 
 		''' 
 		''' <summary>
@@ -505,7 +505,7 @@ Namespace java.sql
 		''' this method or this method is not supported for the specified result
 		''' set type and result set concurrency.
 		''' @since 1.2 </exception>
-		Function prepareStatement(ByVal sql As String, ByVal resultSetType As Integer, ByVal resultSetConcurrency As Integer) As PreparedStatement
+		Function prepareStatement(  sql As String,   resultSetType As Integer,   resultSetConcurrency As Integer) As PreparedStatement
 
 		''' <summary>
 		''' Creates a <code>CallableStatement</code> object that will generate
@@ -536,7 +536,7 @@ Namespace java.sql
 		''' this method or this method is not supported for the specified result
 		''' set type and result set concurrency.
 		''' @since 1.2 </exception>
-		Function prepareCall(ByVal sql As String, ByVal resultSetType As Integer, ByVal resultSetConcurrency As Integer) As CallableStatement
+		Function prepareCall(  sql As String,   resultSetType As Integer,   resultSetConcurrency As Integer) As CallableStatement
 
 		''' <summary>
 		''' Retrieves the <code>Map</code> object associated with this
@@ -626,7 +626,7 @@ Namespace java.sql
 		''' this method </exception>
 		''' <seealso cref= Savepoint
 		''' @since 1.4 </seealso>
-		Function setSavepoint(ByVal name As String) As Savepoint
+		Function setSavepoint(  name As String) As Savepoint
 
 		''' <summary>
 		''' Undoes all changes made after the given <code>Savepoint</code> object
@@ -646,7 +646,7 @@ Namespace java.sql
 		''' <seealso cref= Savepoint </seealso>
 		''' <seealso cref= #rollback
 		''' @since 1.4 </seealso>
-		Sub rollback(ByVal savepoint As Savepoint)
+		Sub rollback(  savepoint As Savepoint)
 
 		''' <summary>
 		''' Removes the specified <code>Savepoint</code>  and subsequent <code>Savepoint</code> objects from the current
@@ -661,7 +661,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.4 </exception>
-		Sub releaseSavepoint(ByVal savepoint As Savepoint)
+		Sub releaseSavepoint(  savepoint As Savepoint)
 
 		''' <summary>
 		''' Creates a <code>Statement</code> object that will generate
@@ -696,7 +696,7 @@ Namespace java.sql
 		''' set type, result set holdability and result set concurrency. </exception>
 		''' <seealso cref= ResultSet
 		''' @since 1.4 </seealso>
-		Function createStatement(ByVal resultSetType As Integer, ByVal resultSetConcurrency As Integer, ByVal resultSetHoldability As Integer) As Statement
+		Function createStatement(  resultSetType As Integer,   resultSetConcurrency As Integer,   resultSetHoldability As Integer) As Statement
 
 		''' <summary>
 		''' Creates a <code>PreparedStatement</code> object that will generate
@@ -736,7 +736,7 @@ Namespace java.sql
 		''' set type, result set holdability and result set concurrency. </exception>
 		''' <seealso cref= ResultSet
 		''' @since 1.4 </seealso>
-		Function prepareStatement(ByVal sql As String, ByVal resultSetType As Integer, ByVal resultSetConcurrency As Integer, ByVal resultSetHoldability As Integer) As PreparedStatement
+		Function prepareStatement(  sql As String,   resultSetType As Integer,   resultSetConcurrency As Integer,   resultSetHoldability As Integer) As PreparedStatement
 
 		''' <summary>
 		''' Creates a <code>CallableStatement</code> object that will generate
@@ -773,7 +773,7 @@ Namespace java.sql
 		''' set type, result set holdability and result set concurrency. </exception>
 		''' <seealso cref= ResultSet
 		''' @since 1.4 </seealso>
-		Function prepareCall(ByVal sql As String, ByVal resultSetType As Integer, ByVal resultSetConcurrency As Integer, ByVal resultSetHoldability As Integer) As CallableStatement
+		Function prepareCall(  sql As String,   resultSetType As Integer,   resultSetConcurrency As Integer,   resultSetHoldability As Integer) As CallableStatement
 
 
 		''' <summary>
@@ -817,7 +817,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method with a constant of Statement.RETURN_GENERATED_KEYS
 		''' @since 1.4 </exception>
-		Function prepareStatement(ByVal sql As String, ByVal autoGeneratedKeys As Integer) As PreparedStatement
+		Function prepareStatement(  sql As String,   autoGeneratedKeys As Integer) As PreparedStatement
 
 		''' <summary>
 		''' Creates a default <code>PreparedStatement</code> object capable
@@ -863,7 +863,7 @@ Namespace java.sql
 		''' this method
 		''' 
 		''' @since 1.4 </exception>
-		Function prepareStatement(ByVal sql As String, ByVal columnIndexes As Integer()) As PreparedStatement
+		Function prepareStatement(  sql As String,   columnIndexes As Integer()) As PreparedStatement
 
 		''' <summary>
 		''' Creates a default <code>PreparedStatement</code> object capable
@@ -909,7 +909,7 @@ Namespace java.sql
 		''' this method
 		''' 
 		''' @since 1.4 </exception>
-		Function prepareStatement(ByVal sql As String, ByVal columnNames As String()) As PreparedStatement
+		Function prepareStatement(  sql As String,   columnNames As String()) As PreparedStatement
 
 		''' <summary>
 		''' Constructs an object that implements the <code>Clob</code> interface. The object
@@ -992,7 +992,7 @@ Namespace java.sql
 			''' @since 1.6
 			''' </exception>
 			''' <seealso cref= java.sql.DatabaseMetaData#getClientInfoProperties </seealso>
-			 Function isValid(ByVal timeout As Integer) As Boolean
+			 Function isValid(  timeout As Integer) As Boolean
 
 			''' <summary>
 			''' Sets the value of the client info property specified by name to the
@@ -1046,7 +1046,7 @@ Namespace java.sql
 			''' is called on a closed connection
 			''' <p>
 			''' @since 1.6 </exception>
-			 Sub setClientInfo(ByVal name As String, ByVal value As String)
+			 Sub setClientInfo(  name As String,   value As String)
 
 			''' <summary>
 			''' Sets the value of the connection's client info properties.  The
@@ -1100,7 +1100,7 @@ Namespace java.sql
 			''' @since 1.6
 			''' </exception>
 			''' <seealso cref= java.sql.DatabaseMetaData#getClientInfoProperties </seealso>
-			 Function getClientInfo(ByVal name As String) As String
+			 Function getClientInfo(  name As String) As String
 
 
 	''' <summary>
@@ -1128,7 +1128,7 @@ Namespace java.sql
 	'''  appropriate for the typeName and the conversion is not supported, the typeName is null or this method is called on a closed connection </exception>
 	''' <exception cref="SQLFeatureNotSupportedException">  if the JDBC driver does not support this data type
 	''' @since 1.6 </exception>
-	 Function createArrayOf(ByVal typeName As String, ByVal elements As Object()) As Array
+	 Function createArrayOf(  typeName As String,   elements As Object()) As Array
 
 	''' <summary>
 	''' Factory method for creating Struct objects.
@@ -1143,7 +1143,7 @@ Namespace java.sql
 	''' <exception cref="SQLException"> if a database error occurs, the typeName is null or this method is called on a closed connection </exception>
 	''' <exception cref="SQLFeatureNotSupportedException">  if the JDBC driver does not support this data type
 	''' @since 1.6 </exception>
-	 Function createStruct(ByVal typeName As String, ByVal attributes As Object()) As Struct
+	 Function createStruct(  typeName As String,   attributes As Object()) As Struct
 
 	   '--------------------------JDBC 4.1 -----------------------------
 
@@ -1203,7 +1203,7 @@ Namespace java.sql
 		''' <seealso cref= SecurityManager#checkPermission </seealso>
 		''' <seealso cref= Executor
 		''' @since 1.7 </seealso>
-		Sub abort(ByVal executor As java.util.concurrent.Executor)
+		Sub abort(  executor As java.util.concurrent.Executor)
 
 		''' 
 		''' <summary>
@@ -1294,7 +1294,7 @@ Namespace java.sql
 		''' <seealso cref= #abort </seealso>
 		''' <seealso cref= Executor
 		''' @since 1.7 </seealso>
-		Sub setNetworkTimeout(ByVal executor As java.util.concurrent.Executor, ByVal milliseconds As Integer)
+		Sub setNetworkTimeout(  executor As java.util.concurrent.Executor,   milliseconds As Integer)
 
 
 		''' <summary>

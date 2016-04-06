@@ -59,7 +59,7 @@ Namespace java.beans.beancontext
 		''' <param name="serviceProvider">  the <code>BeanContextServiceProvider</code>
 		''' associated with the service </param>
 		''' <returns> true if the service was successful added, false otherwise </returns>
-		Function addService(ByVal serviceClass As [Class], ByVal serviceProvider As java.beans.beancontext.BeanContextServiceProvider) As Boolean
+		Function addService(  serviceClass As [Class],   serviceProvider As java.beans.beancontext.BeanContextServiceProvider) As Boolean
 
 		''' <summary>
 		''' BeanContextServiceProviders wishing to remove
@@ -79,14 +79,14 @@ Namespace java.beans.beancontext
 		''' <code>BeanContextServices</code> wishes to immediately
 		''' terminate service to all currently outstanding references
 		''' to the specified service. </param>
-		Sub revokeService(ByVal serviceClass As [Class], ByVal serviceProvider As java.beans.beancontext.BeanContextServiceProvider, ByVal revokeCurrentServicesNow As Boolean)
+		Sub revokeService(  serviceClass As [Class],   serviceProvider As java.beans.beancontext.BeanContextServiceProvider,   revokeCurrentServicesNow As Boolean)
 
 		''' <summary>
 		''' Reports whether or not a given service is
 		''' currently available from this context. </summary>
 		''' <param name="serviceClass"> the service in question </param>
 		''' <returns> true if the service is available </returns>
-		Function hasService(ByVal serviceClass As [Class]) As Boolean
+		Function hasService(  serviceClass As [Class]) As Boolean
 
 		''' <summary>
 		''' A <code>BeanContextChild</code>, or any arbitrary object
@@ -107,7 +107,7 @@ Namespace java.beans.beancontext
 		''' <exception cref="TooManyListenersException"> if there are too many listeners </exception>
 		''' <returns> a reference to this context's named
 		''' Service as requested or <code>null</code> </returns>
-		Function getService(ByVal child As BeanContextChild, ByVal requestor As Object, ByVal serviceClass As [Class], ByVal serviceSelector As Object, ByVal bcsrl As BeanContextServiceRevokedListener) As Object
+		Function getService(  child As BeanContextChild,   requestor As Object,   serviceClass As [Class],   serviceSelector As Object,   bcsrl As BeanContextServiceRevokedListener) As Object
 
 		''' <summary>
 		''' Releases a <code>BeanContextChild</code>'s
@@ -117,7 +117,7 @@ Namespace java.beans.beancontext
 		''' <param name="child"> the <code>BeanContextChild</code> </param>
 		''' <param name="requestor"> the requestor </param>
 		''' <param name="service"> the service </param>
-		Sub releaseService(ByVal child As BeanContextChild, ByVal requestor As Object, ByVal service As Object)
+		Sub releaseService(  child As BeanContextChild,   requestor As Object,   service As Object)
 
 		''' <summary>
 		''' Gets the currently available services for this context. </summary>
@@ -133,19 +133,19 @@ Namespace java.beans.beancontext
 		''' <param name="serviceClass"> the specified service </param>
 		''' <returns> the currently available service selectors
 		''' for the named serviceClass </returns>
-		Function getCurrentServiceSelectors(ByVal serviceClass As [Class]) As IEnumerator
+		Function getCurrentServiceSelectors(  serviceClass As [Class]) As IEnumerator
 
 		''' <summary>
 		''' Adds a <code>BeanContextServicesListener</code> to this BeanContext </summary>
 		''' <param name="bcsl"> the <code>BeanContextServicesListener</code> to add </param>
-		Sub addBeanContextServicesListener(ByVal bcsl As java.beans.beancontext.BeanContextServicesListener)
+		Sub addBeanContextServicesListener(  bcsl As java.beans.beancontext.BeanContextServicesListener)
 
 		''' <summary>
 		''' Removes a <code>BeanContextServicesListener</code>
 		''' from this <code>BeanContext</code> </summary>
 		''' <param name="bcsl"> the <code>BeanContextServicesListener</code>
 		''' to remove from this context </param>
-		Sub removeBeanContextServicesListener(ByVal bcsl As java.beans.beancontext.BeanContextServicesListener)
+		Sub removeBeanContextServicesListener(  bcsl As java.beans.beancontext.BeanContextServicesListener)
 	End Interface
 
 End Namespace

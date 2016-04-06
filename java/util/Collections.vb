@@ -129,7 +129,7 @@ Namespace java.util
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-		Public Shared Sub sort(Of T As Comparable(Of ?))(ByVal list As List(Of T))
+		Public Shared Sub sort(Of T As Comparable(Of ?))(  list As List(Of T))
 			list.sort(Nothing)
 		End Sub
 
@@ -163,7 +163,7 @@ Namespace java.util
 		''' <seealso cref= List#sort(Comparator) </seealso>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Shared Sub sort(Of T, T1)(ByVal list As List(Of T), ByVal c As Comparator(Of T1))
+		Public Shared Sub sort(Of T, T1)(  list As List(Of T),   c As Comparator(Of T1))
 			list.sort(c)
 		End Sub
 
@@ -200,7 +200,7 @@ Namespace java.util
 		'''         with the elements of the list. </exception>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-		Public Shared Function binarySearch(Of T, T1 As Comparable(Of ?)(ByVal list As List(Of T1), ByVal key As T) As Integer
+		Public Shared Function binarySearch(Of T, T1 As Comparable(Of ?)(  list As List(Of T1),   key As T) As Integer
 			If TypeOf list Is RandomAccess OrElse list.size()<BINARYSEARCH_THRESHOLD Then
 				Return Collections.indexedBinarySearch(list, key)
 			Else
@@ -210,7 +210,7 @@ Namespace java.util
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-		Private Shared Function indexedBinarySearch(Of T, T1 As Comparable(Of ?)(ByVal list As List(Of T1), ByVal key As T) As Integer
+		Private Shared Function indexedBinarySearch(Of T, T1 As Comparable(Of ?)(  list As List(Of T1),   key As T) As Integer
 			Dim low As Integer = 0
 			Dim high As Integer = list.size()-1
 
@@ -234,7 +234,7 @@ Namespace java.util
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-		Private Shared Function iteratorBinarySearch(Of T, T1 As Comparable(Of ?)(ByVal list As List(Of T1), ByVal key As T) As Integer
+		Private Shared Function iteratorBinarySearch(Of T, T1 As Comparable(Of ?)(  list As List(Of T1),   key As T) As Integer
 			Dim low As Integer = 0
 			Dim high As Integer = list.size()-1
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
@@ -263,7 +263,7 @@ Namespace java.util
 		''' Gets the ith element from the given list by repositioning the specified
 		''' list listIterator.
 		''' </summary>
-		Private Shared Function [get](Of T, T1 As T)(ByVal i As ListIterator(Of T1), ByVal index As Integer) As T
+		Private Shared Function [get](Of T, T1 As T)(  i As ListIterator(Of T1),   index As Integer) As T
 			Dim obj As T = Nothing
 			Dim pos As Integer = i.nextIndex()
 			If pos <= index Then
@@ -318,7 +318,7 @@ Namespace java.util
 		'''         elements of the list using this comparator. </exception>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Shared Function binarySearch(Of T, T1 As T, T2)(ByVal list As List(Of T1), ByVal key As T, ByVal c As Comparator(Of T2)) As Integer
+		Public Shared Function binarySearch(Of T, T1 As T, T2)(  list As List(Of T1),   key As T,   c As Comparator(Of T2)) As Integer
 			If c Is Nothing Then Return binarySearch(CType(list, List(Of ? As Comparable(Of ?))), key)
 
 			If TypeOf list Is RandomAccess OrElse list.size()<BINARYSEARCH_THRESHOLD Then
@@ -329,7 +329,7 @@ Namespace java.util
 		End Function
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Private Shared Function indexedBinarySearch(Of T, T1 As T, T2)(ByVal l As List(Of T1), ByVal key As T, ByVal c As Comparator(Of T2)) As Integer
+		Private Shared Function indexedBinarySearch(Of T, T1 As T, T2)(  l As List(Of T1),   key As T,   c As Comparator(Of T2)) As Integer
 			Dim low As Integer = 0
 			Dim high As Integer = l.size()-1
 
@@ -350,7 +350,7 @@ Namespace java.util
 		End Function
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Private Shared Function iteratorBinarySearch(Of T, T1 As T, T2)(ByVal l As List(Of T1), ByVal key As T, ByVal c As Comparator(Of T2)) As Integer
+		Private Shared Function iteratorBinarySearch(Of T, T1 As T, T2)(  l As List(Of T1),   key As T,   c As Comparator(Of T2)) As Integer
 			Dim low As Integer = 0
 			Dim high As Integer = l.size()-1
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
@@ -381,7 +381,7 @@ Namespace java.util
 		''' <exception cref="UnsupportedOperationException"> if the specified list or
 		'''         its list-iterator does not support the <tt>set</tt> operation. </exception>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Shared Sub reverse(Of T1)(ByVal list As List(Of T1))
+		Public Shared Sub reverse(Of T1)(  list As List(Of T1))
 			Dim size As Integer = list.size()
 			If size < REVERSE_THRESHOLD OrElse TypeOf list Is RandomAccess Then
 				Dim i As Integer=0
@@ -436,7 +436,7 @@ Namespace java.util
 		''' <param name="list"> the list to be shuffled. </param>
 		''' <exception cref="UnsupportedOperationException"> if the specified list or
 		'''         its list-iterator does not support the <tt>set</tt> operation. </exception>
-		Public Shared Sub shuffle(Of T1)(ByVal list As List(Of T1))
+		Public Shared Sub shuffle(Of T1)(  list As List(Of T1))
 			Dim rnd As Random = r
 			If rnd Is Nothing Then
 					rnd = New Random
@@ -470,7 +470,7 @@ Namespace java.util
 		''' <exception cref="UnsupportedOperationException"> if the specified list or its
 		'''         list-iterator does not support the <tt>set</tt> operation. </exception>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Shared Sub shuffle(Of T1)(ByVal list As List(Of T1), ByVal rnd As Random)
+		Public Shared Sub shuffle(Of T1)(  list As List(Of T1),   rnd As Random)
 			Dim size As Integer = list.size()
 			If size < SHUFFLE_THRESHOLD OrElse TypeOf list Is RandomAccess Then
 				For i As Integer = size To 2 Step -1
@@ -509,7 +509,7 @@ Namespace java.util
 		'''         || j &lt; 0 || j &gt;= list.size()).
 		''' @since 1.4 </exception>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Shared Sub swap(Of T1)(ByVal list As List(Of T1), ByVal i As Integer, ByVal j As Integer)
+		Public Shared Sub swap(Of T1)(  list As List(Of T1),   i As Integer,   j As Integer)
 			' instead of using a raw type here, it's possible to capture
 			' the wildcard but it will require a call to a supplementary
 			' private method
@@ -520,7 +520,7 @@ Namespace java.util
 		''' <summary>
 		''' Swaps the two specified elements in the specified array.
 		''' </summary>
-		Private Shared Sub swap(ByVal arr As Object(), ByVal i As Integer, ByVal j As Integer)
+		Private Shared Sub swap(  arr As Object(),   i As Integer,   j As Integer)
 			Dim tmp As Object = arr(i)
 			arr(i) = arr(j)
 			arr(j) = tmp
@@ -538,7 +538,7 @@ Namespace java.util
 		''' <exception cref="UnsupportedOperationException"> if the specified list or its
 		'''         list-iterator does not support the <tt>set</tt> operation. </exception>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Shared Sub fill(Of T, T1)(ByVal list As List(Of T1), ByVal obj As T)
+		Public Shared Sub fill(Of T, T1)(  list As List(Of T1),   obj As T)
 			Dim size As Integer = list.size()
 
 			If size < FILL_THRESHOLD OrElse TypeOf list Is RandomAccess Then
@@ -573,7 +573,7 @@ Namespace java.util
 		''' <exception cref="UnsupportedOperationException"> if the destination list's
 		'''         list-iterator does not support the <tt>set</tt> operation. </exception>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Shared Sub copy(Of T, T1, T2 As T)(ByVal dest As List(Of T1), ByVal src As List(Of T2))
+		Public Shared Sub copy(Of T, T1, T2 As T)(  dest As List(Of T1),   src As List(Of T2))
 			Dim srcSize As Integer = src.size()
 			If srcSize > dest.size() Then Throw New IndexOutOfBoundsException("Source does not fit in dest")
 
@@ -617,7 +617,7 @@ Namespace java.util
 		''' <seealso cref= Comparable </seealso>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-		Public Shared Function min(Of T As {Object, Comparable(Of ?)}, T1 As T)(ByVal coll As Collection(Of T1)) As T
+		Public Shared Function min(Of T As {Object, Comparable(Of ?)}, T1 As T)(  coll As Collection(Of T1)) As T
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 			Dim i As [Iterator](Of ? As T) = coll.GetEnumerator()
 			Dim candidate As T = i.next()
@@ -653,7 +653,7 @@ Namespace java.util
 		''' <seealso cref= Comparable </seealso>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Shared Function min(Of T, T1 As T, T2)(ByVal coll As Collection(Of T1), ByVal comp As Comparator(Of T2)) As T
+		Public Shared Function min(Of T, T1 As T, T2)(  coll As Collection(Of T1),   comp As Comparator(Of T2)) As T
 			If comp Is Nothing Then Return CType(min(CType(coll, Collection)), T)
 
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
@@ -690,7 +690,7 @@ Namespace java.util
 		''' <seealso cref= Comparable </seealso>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-		Public Shared Function max(Of T As {Object, Comparable(Of ?)}, T1 As T)(ByVal coll As Collection(Of T1)) As T
+		Public Shared Function max(Of T As {Object, Comparable(Of ?)}, T1 As T)(  coll As Collection(Of T1)) As T
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 			Dim i As [Iterator](Of ? As T) = coll.GetEnumerator()
 			Dim candidate As T = i.next()
@@ -726,7 +726,7 @@ Namespace java.util
 		''' <seealso cref= Comparable </seealso>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Shared Function max(Of T, T1 As T, T2)(ByVal coll As Collection(Of T1), ByVal comp As Comparator(Of T2)) As T
+		Public Shared Function max(Of T, T1 As T, T2)(  coll As Collection(Of T1),   comp As Comparator(Of T2)) As T
 			If comp Is Nothing Then Return CType(max(CType(coll, Collection)), T)
 
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
@@ -794,7 +794,7 @@ Namespace java.util
 		''' <exception cref="UnsupportedOperationException"> if the specified list or
 		'''         its list-iterator does not support the <tt>set</tt> operation.
 		''' @since 1.4 </exception>
-		Public Shared Sub rotate(Of T1)(ByVal list As List(Of T1), ByVal distance As Integer)
+		Public Shared Sub rotate(Of T1)(  list As List(Of T1),   distance As Integer)
 			If TypeOf list Is RandomAccess OrElse list.size() < ROTATE_THRESHOLD Then
 				rotate1(list, distance)
 			Else
@@ -802,7 +802,7 @@ Namespace java.util
 			End If
 		End Sub
 
-		Private Shared Sub rotate1(Of T)(ByVal list As List(Of T), ByVal distance As Integer)
+		Private Shared Sub rotate1(Of T)(  list As List(Of T),   distance As Integer)
 			Dim size As Integer = list.size()
 			If size = 0 Then Return
 			distance = distance Mod size
@@ -824,7 +824,7 @@ Namespace java.util
 			Loop
 		End Sub
 
-		Private Shared Sub rotate2(Of T1)(ByVal list As List(Of T1), ByVal distance As Integer)
+		Private Shared Sub rotate2(Of T1)(  list As List(Of T1),   distance As Integer)
 			Dim size As Integer = list.size()
 			If size = 0 Then Return
 			Dim mid As Integer = -distance Mod size
@@ -854,7 +854,7 @@ Namespace java.util
 		''' <exception cref="UnsupportedOperationException"> if the specified list or
 		'''         its list-iterator does not support the <tt>set</tt> operation.
 		''' @since  1.4 </exception>
-		Public Shared Function replaceAll(Of T)(ByVal list As List(Of T), ByVal oldVal As T, ByVal newVal As T) As Boolean
+		Public Shared Function replaceAll(Of T)(  list As List(Of T),   oldVal As T,   newVal As T) As Boolean
 			Dim result As Boolean = False
 			Dim size As Integer = list.size()
 			If size < REPLACEALL_THRESHOLD OrElse TypeOf list Is RandomAccess Then
@@ -913,7 +913,7 @@ Namespace java.util
 		'''         target list within the specified source list, or -1 if there
 		'''         is no such occurrence.
 		''' @since  1.4 </returns>
-		Public Shared Function indexOfSubList(Of T1, T2)(ByVal source As List(Of T1), ByVal target As List(Of T2)) As Integer
+		Public Shared Function indexOfSubList(Of T1, T2)(  source As List(Of T1),   target As List(Of T2)) As Integer
 			Dim sourceSize As Integer = source.size()
 			Dim targetSize As Integer = target.size()
 			Dim maxCandidate As Integer = sourceSize - targetSize
@@ -971,7 +971,7 @@ Namespace java.util
 		'''         target list within the specified source list, or -1 if there
 		'''         is no such occurrence.
 		''' @since  1.4 </returns>
-		Public Shared Function lastIndexOfSubList(Of T1, T2)(ByVal source As List(Of T1), ByVal target As List(Of T2)) As Integer
+		Public Shared Function lastIndexOfSubList(Of T1, T2)(  source As List(Of T1),   target As List(Of T2)) As Integer
 			Dim sourceSize As Integer = source.size()
 			Dim targetSize As Integer = target.size()
 			Dim maxCandidate As Integer = sourceSize - targetSize
@@ -1037,7 +1037,7 @@ Namespace java.util
 		''' <param name="c"> the collection for which an unmodifiable view is to be
 		'''         returned. </param>
 		''' <returns> an unmodifiable view of the specified collection. </returns>
-		Public Shared Function unmodifiableCollection(Of T, T1 As T)(ByVal c As Collection(Of T1)) As Collection(Of T)
+		Public Shared Function unmodifiableCollection(Of T, T1 As T)(  c As Collection(Of T1)) As Collection(Of T)
 			Return New UnmodifiableCollection(Of )(c)
 		End Function
 
@@ -1053,7 +1053,7 @@ Namespace java.util
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 			Friend ReadOnly c As Collection(Of ? As E)
 
-			Friend Sub New(Of T1 As E)(ByVal c As Collection(Of T1))
+			Friend Sub New(Of T1 As E)(  c As Collection(Of T1))
 				If c Is Nothing Then Throw New NullPointerException
 				Me.c = c
 			End Sub
@@ -1066,13 +1066,13 @@ Namespace java.util
 					Return c.empty
 				End Get
 			End Property
-			Public Overridable Function contains(ByVal o As Object) As Boolean Implements Collection(Of E).contains
+			Public Overridable Function contains(  o As Object) As Boolean Implements Collection(Of E).contains
 				Return c.contains(o)
 			End Function
 			Public Overridable Function toArray() As Object() Implements Collection(Of E).toArray
 				Return c.ToArray()
 			End Function
-			Public Overridable Function toArray(Of T)(ByVal a As T()) As T() Implements Collection(Of E).toArray
+			Public Overridable Function toArray(Of T)(  a As T()) As T() Implements Collection(Of E).toArray
 				Return c.ToArray(a)
 			End Function
 			Public Overrides Function ToString() As String
@@ -1099,29 +1099,29 @@ Namespace java.util
 					Throw New UnsupportedOperationException
 				End Sub
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-				Public Overrides Sub forEachRemaining(Of T1)(ByVal action As java.util.function.Consumer(Of T1)) Implements Iterator(Of E).forEachRemaining
+				Public Overrides Sub forEachRemaining(Of T1)(  action As java.util.function.Consumer(Of T1)) Implements Iterator(Of E).forEachRemaining
 					' Use backing collection version
 					i.forEachRemaining(action)
 				End Sub
 			End Class
 
-			Public Overridable Function add(ByVal e As E) As Boolean
+			Public Overridable Function add(  e As E) As Boolean
 				Throw New UnsupportedOperationException
 			End Function
-			Public Overridable Function remove(ByVal o As Object) As Boolean Implements Collection(Of E).remove
+			Public Overridable Function remove(  o As Object) As Boolean Implements Collection(Of E).remove
 				Throw New UnsupportedOperationException
 			End Function
 
-			Public Overridable Function containsAll(Of T1)(ByVal coll As Collection(Of T1)) As Boolean Implements Collection(Of E).containsAll
+			Public Overridable Function containsAll(Of T1)(  coll As Collection(Of T1)) As Boolean Implements Collection(Of E).containsAll
 				Return c.containsAll(coll)
 			End Function
-			Public Overridable Function addAll(Of T1 As E)(ByVal coll As Collection(Of T1)) As Boolean Implements Collection(Of E).addAll
+			Public Overridable Function addAll(Of T1 As E)(  coll As Collection(Of T1)) As Boolean Implements Collection(Of E).addAll
 				Throw New UnsupportedOperationException
 			End Function
-			Public Overridable Function removeAll(Of T1)(ByVal coll As Collection(Of T1)) As Boolean Implements Collection(Of E).removeAll
+			Public Overridable Function removeAll(Of T1)(  coll As Collection(Of T1)) As Boolean Implements Collection(Of E).removeAll
 				Throw New UnsupportedOperationException
 			End Function
-			Public Overridable Function retainAll(Of T1)(ByVal coll As Collection(Of T1)) As Boolean Implements Collection(Of E).retainAll
+			Public Overridable Function retainAll(Of T1)(  coll As Collection(Of T1)) As Boolean Implements Collection(Of E).retainAll
 				Throw New UnsupportedOperationException
 			End Function
 			Public Overridable Sub clear() Implements Collection(Of E).clear
@@ -1130,11 +1130,11 @@ Namespace java.util
 
 			' Override default methods in Collection
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Overrides Sub forEach(Of T1)(ByVal action As java.util.function.Consumer(Of T1))
+			Public Overrides Sub forEach(Of T1)(  action As java.util.function.Consumer(Of T1))
 				c.forEach(action)
 			End Sub
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Overrides Function removeIf(Of T1)(ByVal filter As java.util.function.Predicate(Of T1)) As Boolean Implements Collection(Of E).removeIf
+			Public Overrides Function removeIf(Of T1)(  filter As java.util.function.Predicate(Of T1)) As Boolean Implements Collection(Of E).removeIf
 				Throw New UnsupportedOperationException
 			End Function
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
@@ -1164,7 +1164,7 @@ Namespace java.util
 		''' @param  <T> the class of the objects in the set </param>
 		''' <param name="s"> the set for which an unmodifiable view is to be returned. </param>
 		''' <returns> an unmodifiable view of the specified set. </returns>
-		Public Shared Function unmodifiableSet(Of T, T1 As T)(ByVal s As [Set](Of T1)) As [Set](Of T)
+		Public Shared Function unmodifiableSet(Of T, T1 As T)(  s As [Set](Of T1)) As [Set](Of T)
 			Return New UnmodifiableSet(Of )(s)
 		End Function
 
@@ -1178,10 +1178,10 @@ Namespace java.util
 
 			Private Const serialVersionUID As Long = -9215047833775013803L
 
-			Friend Sub New(Of T1 As E)(ByVal s As [Set](Of T1))
+			Friend Sub New(Of T1 As E)(  s As [Set](Of T1))
 				MyBase.New(s)
 			End Sub
-			Public Overrides Function Equals(ByVal o As Object) As Boolean
+			Public Overrides Function Equals(  o As Object) As Boolean
 				Return o Is Me OrElse c.Equals(o)
 			End Function
 			Public Overrides Function GetHashCode() As Integer
@@ -1205,7 +1205,7 @@ Namespace java.util
 		''' <param name="s"> the sorted set for which an unmodifiable view is to be
 		'''        returned. </param>
 		''' <returns> an unmodifiable view of the specified sorted set. </returns>
-		Public Shared Function unmodifiableSortedSet(Of T)(ByVal s As SortedSet(Of T)) As SortedSet(Of T)
+		Public Shared Function unmodifiableSortedSet(Of T)(  s As SortedSet(Of T)) As SortedSet(Of T)
 			Return New UnmodifiableSortedSet(Of )(s)
 		End Function
 
@@ -1220,7 +1220,7 @@ Namespace java.util
 			Private Const serialVersionUID As Long = -4929149591599911165L
 			Private ReadOnly ss As SortedSet(Of E)
 
-			Friend Sub New(ByVal s As SortedSet(Of E))
+			Friend Sub New(  s As SortedSet(Of E))
 				MyBase.New(s)
 				ss = s
 			End Sub
@@ -1231,13 +1231,13 @@ Namespace java.util
 				Return ss.comparator()
 			End Function
 
-			Public Overridable Function subSet(ByVal fromElement As E, ByVal toElement As E) As SortedSet(Of E)
+			Public Overridable Function subSet(  fromElement As E,   toElement As E) As SortedSet(Of E)
 				Return New UnmodifiableSortedSet(Of )(ss.subSet(fromElement,toElement))
 			End Function
-			Public Overridable Function headSet(ByVal toElement As E) As SortedSet(Of E)
+			Public Overridable Function headSet(  toElement As E) As SortedSet(Of E)
 				Return New UnmodifiableSortedSet(Of )(ss.headSet(toElement))
 			End Function
-			Public Overridable Function tailSet(ByVal fromElement As E) As SortedSet(Of E)
+			Public Overridable Function tailSet(  fromElement As E) As SortedSet(Of E)
 				Return New UnmodifiableSortedSet(Of )(ss.tailSet(fromElement))
 			End Function
 
@@ -1266,7 +1266,7 @@ Namespace java.util
 		'''        returned </param>
 		''' <returns> an unmodifiable view of the specified navigable set
 		''' @since 1.8 </returns>
-		Public Shared Function unmodifiableNavigableSet(Of T)(ByVal s As NavigableSet(Of T)) As NavigableSet(Of T)
+		Public Shared Function unmodifiableNavigableSet(Of T)(  s As NavigableSet(Of T)) As NavigableSet(Of T)
 			Return New UnmodifiableNavigableSet(Of )(s)
 		End Function
 
@@ -1311,21 +1311,21 @@ Namespace java.util
 			''' </summary>
 			Private ReadOnly ns As NavigableSet(Of E)
 
-			Friend Sub New(ByVal s As NavigableSet(Of E))
+			Friend Sub New(  s As NavigableSet(Of E))
 				MyBase.New(s)
 				ns = s
 			End Sub
 
-			Public Overridable Function lower(ByVal e As E) As E
+			Public Overridable Function lower(  e As E) As E
 				Return ns.lower(e)
 			End Function
-			Public Overridable Function floor(ByVal e As E) As E
+			Public Overridable Function floor(  e As E) As E
 				Return ns.floor(e)
 			End Function
-			Public Overridable Function ceiling(ByVal e As E) As E
+			Public Overridable Function ceiling(  e As E) As E
 				Return ns.ceiling(e)
 			End Function
-			Public Overridable Function higher(ByVal e As E) As E
+			Public Overridable Function higher(  e As E) As E
 				Return ns.higher(e)
 			End Function
 			Public Overridable Function pollFirst() As E Implements NavigableSet(Of E).pollFirst
@@ -1341,15 +1341,15 @@ Namespace java.util
 												 Return descendingSet().GetEnumerator()
 			End Function
 
-			Public Overridable Function subSet(ByVal fromElement As E, ByVal fromInclusive As Boolean, ByVal toElement As E, ByVal toInclusive As Boolean) As NavigableSet(Of E)
+			Public Overridable Function subSet(  fromElement As E,   fromInclusive As Boolean,   toElement As E,   toInclusive As Boolean) As NavigableSet(Of E)
 				Return New UnmodifiableNavigableSet(Of )(ns.subSet(fromElement, fromInclusive, toElement, toInclusive))
 			End Function
 
-			Public Overridable Function headSet(ByVal toElement As E, ByVal inclusive As Boolean) As NavigableSet(Of E)
+			Public Overridable Function headSet(  toElement As E,   inclusive As Boolean) As NavigableSet(Of E)
 				Return New UnmodifiableNavigableSet(Of )(ns.headSet(toElement, inclusive))
 			End Function
 
-			Public Overridable Function tailSet(ByVal fromElement As E, ByVal inclusive As Boolean) As NavigableSet(Of E)
+			Public Overridable Function tailSet(  fromElement As E,   inclusive As Boolean) As NavigableSet(Of E)
 				Return New UnmodifiableNavigableSet(Of )(ns.tailSet(fromElement, inclusive))
 			End Function
 		End Class
@@ -1369,7 +1369,7 @@ Namespace java.util
 		''' @param  <T> the class of the objects in the list </param>
 		''' <param name="list"> the list for which an unmodifiable view is to be returned. </param>
 		''' <returns> an unmodifiable view of the specified list. </returns>
-		Public Shared Function unmodifiableList(Of T, T1 As T)(ByVal list As List(Of T1)) As List(Of T)
+		Public Shared Function unmodifiableList(Of T, T1 As T)(  list As List(Of T1)) As List(Of T)
 			Return (If(TypeOf list Is RandomAccess, New UnmodifiableRandomAccessList(Of )(list), New UnmodifiableList(Of )(list)))
 		End Function
 
@@ -1385,45 +1385,45 @@ Namespace java.util
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 			Friend ReadOnly list As List(Of ? As E)
 
-			Friend Sub New(Of T1 As E)(ByVal list As List(Of T1))
+			Friend Sub New(Of T1 As E)(  list As List(Of T1))
 				MyBase.New(list)
 				Me.list = list
 			End Sub
 
-			Public Overrides Function Equals(ByVal o As Object) As Boolean
+			Public Overrides Function Equals(  o As Object) As Boolean
 				Return o Is Me OrElse list.Equals(o)
 			End Function
 			Public Overrides Function GetHashCode() As Integer
 				Return list.GetHashCode()
 			End Function
 
-			Public Overridable Function [get](ByVal index As Integer) As E Implements List(Of E).get
+			Public Overridable Function [get](  index As Integer) As E Implements List(Of E).get
 				Return list.get(index)
 			End Function
-			Public Overridable Function [set](ByVal index As Integer, ByVal element As E) As E
+			Public Overridable Function [set](  index As Integer,   element As E) As E
 				Throw New UnsupportedOperationException
 			End Function
-			Public Overridable Sub add(ByVal index As Integer, ByVal element As E)
+			Public Overridable Sub add(  index As Integer,   element As E)
 				Throw New UnsupportedOperationException
 			End Sub
-			Public Overridable Function remove(ByVal index As Integer) As E Implements List(Of E).remove
+			Public Overridable Function remove(  index As Integer) As E Implements List(Of E).remove
 				Throw New UnsupportedOperationException
 			End Function
-			Public Overridable Function indexOf(ByVal o As Object) As Integer Implements List(Of E).indexOf
+			Public Overridable Function indexOf(  o As Object) As Integer Implements List(Of E).indexOf
 				Return list.IndexOf(o)
 			End Function
-			Public Overridable Function lastIndexOf(ByVal o As Object) As Integer Implements List(Of E).lastIndexOf
+			Public Overridable Function lastIndexOf(  o As Object) As Integer Implements List(Of E).lastIndexOf
 				Return list.LastIndexOf(o)
 			End Function
-			Public Overridable Function addAll(Of T1 As E)(ByVal index As Integer, ByVal c As Collection(Of T1)) As Boolean Implements List(Of E).addAll
+			Public Overridable Function addAll(Of T1 As E)(  index As Integer,   c As Collection(Of T1)) As Boolean Implements List(Of E).addAll
 				Throw New UnsupportedOperationException
 			End Function
 
-			Public Overrides Sub replaceAll(ByVal [operator] As java.util.function.UnaryOperator(Of E)) Implements List(Of E).replaceAll
+			Public Overrides Sub replaceAll(  [operator] As java.util.function.UnaryOperator(Of E)) Implements List(Of E).replaceAll
 				Throw New UnsupportedOperationException
 			End Sub
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Overrides Sub sort(Of T1)(ByVal c As Comparator(Of T1)) Implements List(Of E).sort
+			Public Overrides Sub sort(Of T1)(  c As Comparator(Of T1)) Implements List(Of E).sort
 				Throw New UnsupportedOperationException
 			End Sub
 
@@ -1431,7 +1431,7 @@ Namespace java.util
 				Return listIterator(0)
 			End Function
 
-			Public Overridable Function listIterator(ByVal index As Integer) As ListIterator(Of E) Implements List(Of E).listIterator
+			Public Overridable Function listIterator(  index As Integer) As ListIterator(Of E) Implements List(Of E).listIterator
 				Return New ListIteratorAnonymousInnerClassHelper(Of E)
 			End Function
 
@@ -1463,20 +1463,20 @@ Namespace java.util
 				Public Overridable Sub remove() Implements ListIterator(Of E).remove
 					Throw New UnsupportedOperationException
 				End Sub
-				Public Overridable Sub [set](ByVal e As E)
+				Public Overridable Sub [set](  e As E)
 					Throw New UnsupportedOperationException
 				End Sub
-				Public Overridable Sub add(ByVal e As E)
+				Public Overridable Sub add(  e As E)
 					Throw New UnsupportedOperationException
 				End Sub
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-				Public Overrides Sub forEachRemaining(Of T1)(ByVal action As java.util.function.Consumer(Of T1))
+				Public Overrides Sub forEachRemaining(Of T1)(  action As java.util.function.Consumer(Of T1))
 					i.forEachRemaining(action)
 				End Sub
 			End Class
 
-			Public Overridable Function subList(ByVal fromIndex As Integer, ByVal toIndex As Integer) As List(Of E) Implements List(Of E).subList
+			Public Overridable Function subList(  fromIndex As Integer,   toIndex As Integer) As List(Of E) Implements List(Of E).subList
 				Return New UnmodifiableList(Of )(list.subList(fromIndex, toIndex))
 			End Function
 
@@ -1505,11 +1505,11 @@ Namespace java.util
 			Inherits UnmodifiableList(Of E)
 			Implements RandomAccess
 
-			Friend Sub New(Of T1 As E)(ByVal list As List(Of T1))
+			Friend Sub New(Of T1 As E)(  list As List(Of T1))
 				MyBase.New(list)
 			End Sub
 
-			Public Overridable Function subList(ByVal fromIndex As Integer, ByVal toIndex As Integer) As List(Of E)
+			Public Overridable Function subList(  fromIndex As Integer,   toIndex As Integer) As List(Of E)
 				Return New UnmodifiableRandomAccessList(Of )(list.subList(fromIndex, toIndex))
 			End Function
 
@@ -1542,7 +1542,7 @@ Namespace java.util
 		''' <param name="m"> the map for which an unmodifiable view is to be returned. </param>
 		''' <returns> an unmodifiable view of the specified map. </returns>
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-		Public Shared Function unmodifiableMap(Of K, V, T1 As K, ? As V)(ByVal m As Map(Of T1)) As Map(Of K, V)
+		Public Shared Function unmodifiableMap(Of K, V, T1 As K, ? As V)(  m As Map(Of T1)) As Map(Of K, V)
 			Return New UnmodifiableMap(Of )(m)
 		End Function
 
@@ -1559,7 +1559,7 @@ Namespace java.util
 			Private ReadOnly m As Map(Of ? As K, ? As V)
 
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-			Friend Sub New(Of T1 As K, ? As V)(ByVal m As Map(Of T1))
+			Friend Sub New(Of T1 As K, ? As V)(  m As Map(Of T1))
 				If m Is Nothing Then Throw New NullPointerException
 				Me.m = m
 			End Sub
@@ -1572,24 +1572,24 @@ Namespace java.util
 					Return m.empty
 				End Get
 			End Property
-			Public Overridable Function containsKey(ByVal key As Object) As Boolean Implements Map(Of K, V).containsKey
+			Public Overridable Function containsKey(  key As Object) As Boolean Implements Map(Of K, V).containsKey
 				Return m.containsKey(key)
 			End Function
-			Public Overridable Function containsValue(ByVal val As Object) As Boolean Implements Map(Of K, V).containsValue
+			Public Overridable Function containsValue(  val As Object) As Boolean Implements Map(Of K, V).containsValue
 				Return m.containsValue(val)
 			End Function
-			Public Overridable Function [get](ByVal key As Object) As V Implements Map(Of K, V).get
+			Public Overridable Function [get](  key As Object) As V Implements Map(Of K, V).get
 				Return m.get(key)
 			End Function
 
-			Public Overridable Function put(ByVal key As K, ByVal value As V) As V Implements Map(Of K, V).put
+			Public Overridable Function put(  key As K,   value As V) As V Implements Map(Of K, V).put
 				Throw New UnsupportedOperationException
 			End Function
-			Public Overridable Function remove(ByVal key As Object) As V Implements Map(Of K, V).remove
+			Public Overridable Function remove(  key As Object) As V Implements Map(Of K, V).remove
 				Throw New UnsupportedOperationException
 			End Function
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-			Public Overridable Sub putAll(Of T1 As K, ? As V)(ByVal m As Map(Of T1)) Implements Map(Of K, V).putAll
+			Public Overridable Sub putAll(Of T1 As K, ? As V)(  m As Map(Of T1)) Implements Map(Of K, V).putAll
 				Throw New UnsupportedOperationException
 			End Sub
 			Public Overridable Sub clear() Implements Map(Of K, V).clear
@@ -1618,7 +1618,7 @@ Namespace java.util
 				Return values_Renamed
 			End Function
 
-			Public Overrides Function Equals(ByVal o As Object) As Boolean
+			Public Overrides Function Equals(  o As Object) As Boolean
 				Return o Is Me OrElse m.Equals(o)
 			End Function
 			Public Overrides Function GetHashCode() As Integer
@@ -1630,54 +1630,54 @@ Namespace java.util
 
 			' Override default methods in Map
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-			Public Overrides Function getOrDefault(ByVal k As Object, ByVal defaultValue As V) As V Implements Map(Of K, V).getOrDefault
+			Public Overrides Function getOrDefault(  k As Object,   defaultValue As V) As V Implements Map(Of K, V).getOrDefault
 				' Safe cast as we don't change the value
 				Return CType(m, Map(Of K, V)).getOrDefault(k, defaultValue)
 			End Function
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Overrides Sub forEach(Of T1)(ByVal action As java.util.function.BiConsumer(Of T1)) Implements Map(Of K, V).forEach
+			Public Overrides Sub forEach(Of T1)(  action As java.util.function.BiConsumer(Of T1)) Implements Map(Of K, V).forEach
 				m.forEach(action)
 			End Sub
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Overrides Sub replaceAll(Of T1 As V)(ByVal [function] As java.util.function.BiFunction(Of T1)) Implements Map(Of K, V).replaceAll
+			Public Overrides Sub replaceAll(Of T1 As V)(  [function] As java.util.function.BiFunction(Of T1)) Implements Map(Of K, V).replaceAll
 				Throw New UnsupportedOperationException
 			End Sub
 
-			Public Overrides Function putIfAbsent(ByVal key As K, ByVal value As V) As V Implements Map(Of K, V).putIfAbsent
+			Public Overrides Function putIfAbsent(  key As K,   value As V) As V Implements Map(Of K, V).putIfAbsent
 				Throw New UnsupportedOperationException
 			End Function
 
-			Public Overrides Function remove(ByVal key As Object, ByVal value As Object) As Boolean Implements Map(Of K, V).remove
+			Public Overrides Function remove(  key As Object,   value As Object) As Boolean Implements Map(Of K, V).remove
 				Throw New UnsupportedOperationException
 			End Function
 
-			Public Overrides Function replace(ByVal key As K, ByVal oldValue As V, ByVal newValue As V) As Boolean Implements Map(Of K, V).replace
+			Public Overrides Function replace(  key As K,   oldValue As V,   newValue As V) As Boolean Implements Map(Of K, V).replace
 				Throw New UnsupportedOperationException
 			End Function
 
-			Public Overrides Function replace(ByVal key As K, ByVal value As V) As V Implements Map(Of K, V).replace
-				Throw New UnsupportedOperationException
-			End Function
-
-'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Overrides Function computeIfAbsent(Of T1 As V)(ByVal key As K, ByVal mappingFunction As java.util.function.Function(Of T1)) As V Implements Map(Of K, V).computeIfAbsent
+			Public Overrides Function replace(  key As K,   value As V) As V Implements Map(Of K, V).replace
 				Throw New UnsupportedOperationException
 			End Function
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Overrides Function computeIfPresent(Of T1 As V)(ByVal key As K, ByVal remappingFunction As java.util.function.BiFunction(Of T1)) As V Implements Map(Of K, V).computeIfPresent
+			Public Overrides Function computeIfAbsent(Of T1 As V)(  key As K,   mappingFunction As java.util.function.Function(Of T1)) As V Implements Map(Of K, V).computeIfAbsent
 				Throw New UnsupportedOperationException
 			End Function
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Overrides Function compute(Of T1 As V)(ByVal key As K, ByVal remappingFunction As java.util.function.BiFunction(Of T1)) As V Implements Map(Of K, V).compute
+			Public Overrides Function computeIfPresent(Of T1 As V)(  key As K,   remappingFunction As java.util.function.BiFunction(Of T1)) As V Implements Map(Of K, V).computeIfPresent
 				Throw New UnsupportedOperationException
 			End Function
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Overrides Function merge(Of T1 As V)(ByVal key As K, ByVal value As V, ByVal remappingFunction As java.util.function.BiFunction(Of T1)) As V Implements Map(Of K, V).merge
+			Public Overrides Function compute(Of T1 As V)(  key As K,   remappingFunction As java.util.function.BiFunction(Of T1)) As V Implements Map(Of K, V).compute
+				Throw New UnsupportedOperationException
+			End Function
+
+'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
+			Public Overrides Function merge(Of T1 As V)(  key As K,   value As V,   remappingFunction As java.util.function.BiFunction(Of T1)) As V Implements Map(Of K, V).merge
 				Throw New UnsupportedOperationException
 			End Function
 
@@ -1696,18 +1696,18 @@ Namespace java.util
 
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-				Friend Sub New(Of T1 As KeyValuePair(Of ? As K, ? As V)(ByVal s As [Set](Of T1))
+				Friend Sub New(Of T1 As KeyValuePair(Of ? As K, ? As V)(  s As [Set](Of T1))
 					' Need to cast to raw in order to work around a limitation in the type system
 					MyBase.New(CType(s, [Set]))
 				End Sub
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-				Friend Shared Function entryConsumer(Of K, V, T1)(ByVal action As java.util.function.Consumer(Of T1)) As java.util.function.Consumer(Of KeyValuePair(Of K, V))
+				Friend Shared Function entryConsumer(Of K, V, T1)(  action As java.util.function.Consumer(Of T1)) As java.util.function.Consumer(Of KeyValuePair(Of K, V))
 					Return e -> action.accept(New UnmodifiableEntry(Of )(e))
 				End Function
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-				Public Overridable Sub forEach(Of T1)(ByVal action As java.util.function.Consumer(Of T1))
+				Public Overridable Sub forEach(Of T1)(  action As java.util.function.Consumer(Of T1))
 					Objects.requireNonNull(action)
 					c.forEach(entryConsumer(action))
 				End Sub
@@ -1717,18 +1717,18 @@ Namespace java.util
 
 					Friend ReadOnly s As Spliterator(Of KeyValuePair(Of K, V))
 
-					Friend Sub New(ByVal s As Spliterator(Of Entry(Of K, V)))
+					Friend Sub New(  s As Spliterator(Of Entry(Of K, V)))
 						Me.s = s
 					End Sub
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-					Public Overrides Function tryAdvance(Of T1)(ByVal action As java.util.function.Consumer(Of T1)) As Boolean Implements Spliterator(Of Entry(Of K, V)).tryAdvance
+					Public Overrides Function tryAdvance(Of T1)(  action As java.util.function.Consumer(Of T1)) As Boolean Implements Spliterator(Of Entry(Of K, V)).tryAdvance
 						Objects.requireNonNull(action)
 						Return s.tryAdvance(entryConsumer(action))
 					End Function
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-					Public Overrides Sub forEachRemaining(Of T1)(ByVal action As java.util.function.Consumer(Of T1)) Implements Spliterator(Of Entry(Of K, V)).forEachRemaining
+					Public Overrides Sub forEachRemaining(Of T1)(  action As java.util.function.Consumer(Of T1)) Implements Spliterator(Of Entry(Of K, V)).forEachRemaining
 						Objects.requireNonNull(action)
 						s.forEachRemaining(entryConsumer(action))
 					End Sub
@@ -1752,7 +1752,7 @@ Namespace java.util
 						Return s.characteristics()
 					End Function
 
-					Public Overrides Function hasCharacteristics(ByVal characteristics As Integer) As Boolean Implements Spliterator(Of Entry(Of K, V)).hasCharacteristics
+					Public Overrides Function hasCharacteristics(  characteristics As Integer) As Boolean Implements Spliterator(Of Entry(Of K, V)).hasCharacteristics
 						Return s.hasCharacteristics(characteristics)
 					End Function
 
@@ -1808,7 +1808,7 @@ Namespace java.util
 				End Function
 
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-				Public Overridable Function toArray(Of T)(ByVal a As T()) As T()
+				Public Overridable Function toArray(Of T)(  a As T()) As T()
 					' We don't pass a to c.toArray, to avoid window of
 					' vulnerability wherein an unscrupulous multithreaded client
 					' could get his hands on raw (unwrapped) Entries from c.
@@ -1832,7 +1832,7 @@ Namespace java.util
 				''' that the equality-candidate is Map.Entry and calls its
 				''' setValue method.
 				''' </summary>
-				Public Overridable Function contains(ByVal o As Object) As Boolean
+				Public Overridable Function contains(  o As Object) As Boolean
 					If Not(TypeOf o Is DictionaryEntry) Then Return False
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 					Return c.contains(New UnmodifiableEntry(Of )(CType(o, KeyValuePair(Of ?, ?))))
@@ -1843,13 +1843,13 @@ Namespace java.util
 				''' an unscrupulous List whose contains(Object o) method senses
 				''' when o is a Map.Entry, and calls o.setValue.
 				''' </summary>
-				Public Overridable Function containsAll(Of T1)(ByVal coll As Collection(Of T1)) As Boolean
+				Public Overridable Function containsAll(Of T1)(  coll As Collection(Of T1)) As Boolean
 					For Each e As Object In coll
 						If Not contains(e) Then ' Invokes safe contains() above Return False
 					Next e
 					Return True
 				End Function
-				Public Overrides Function Equals(ByVal o As Object) As Boolean
+				Public Overrides Function Equals(  o As Object) As Boolean
 					If o Is Me Then Return True
 
 					If Not(TypeOf o Is Set) Then Return False
@@ -1873,7 +1873,7 @@ Namespace java.util
 					Private e As KeyValuePair(Of ? As K, ? As V)
 
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-					Friend Sub New(Of T1 As K, ? As V)(ByVal e As KeyValuePair(Of T1))
+					Friend Sub New(Of T1 As K, ? As V)(  e As KeyValuePair(Of T1))
 								Me.e = Objects.requireNonNull(e)
 					End Sub
 
@@ -1887,13 +1887,13 @@ Namespace java.util
 							Return e.Value
 						End Get
 					End Property
-					Public Overridable Function setValue(ByVal value As V) As V
+					Public Overridable Function setValue(  value As V) As V
 						Throw New UnsupportedOperationException
 					End Function
 					Public Overrides Function GetHashCode() As Integer
 						Return e.GetHashCode()
 					End Function
-					Public Overrides Function Equals(ByVal o As Object) As Boolean
+					Public Overrides Function Equals(  o As Object) As Boolean
 						If Me Is o Then Return True
 						If Not(TypeOf o Is DictionaryEntry) Then Return False
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
@@ -1924,7 +1924,7 @@ Namespace java.util
 		''' <param name="m"> the sorted map for which an unmodifiable view is to be
 		'''        returned. </param>
 		''' <returns> an unmodifiable view of the specified sorted map. </returns>
-		Public Shared Function unmodifiableSortedMap(Of K, V, T1 As V)(ByVal m As SortedMap(Of T1)) As SortedMap(Of K, V)
+		Public Shared Function unmodifiableSortedMap(Of K, V, T1 As V)(  m As SortedMap(Of T1)) As SortedMap(Of K, V)
 			Return New UnmodifiableSortedMap(Of )(m)
 		End Function
 
@@ -1941,7 +1941,7 @@ Namespace java.util
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 			Private ReadOnly sm As SortedMap(Of K, ? As V)
 
-			Friend Sub New(Of T1 As V)(ByVal m As SortedMap(Of T1))
+			Friend Sub New(Of T1 As V)(  m As SortedMap(Of T1))
 				MyBase.New(m)
 				sm = m
 			End Sub
@@ -1950,13 +1950,13 @@ Namespace java.util
 			Public Overridable Function comparator() As Comparator(Of ?) Implements SortedMap(Of K, V).comparator
 				Return sm.comparator()
 			End Function
-			Public Overridable Function subMap(ByVal fromKey As K, ByVal toKey As K) As SortedMap(Of K, V) Implements SortedMap(Of K, V).subMap
+			Public Overridable Function subMap(  fromKey As K,   toKey As K) As SortedMap(Of K, V) Implements SortedMap(Of K, V).subMap
 					 Return New UnmodifiableSortedMap(Of )(sm.subMap(fromKey, toKey))
 			End Function
-			Public Overridable Function headMap(ByVal toKey As K) As SortedMap(Of K, V) Implements SortedMap(Of K, V).headMap
+			Public Overridable Function headMap(  toKey As K) As SortedMap(Of K, V) Implements SortedMap(Of K, V).headMap
 							 Return New UnmodifiableSortedMap(Of )(sm.headMap(toKey))
 			End Function
-			Public Overridable Function tailMap(ByVal fromKey As K) As SortedMap(Of K, V) Implements SortedMap(Of K, V).tailMap
+			Public Overridable Function tailMap(  fromKey As K) As SortedMap(Of K, V) Implements SortedMap(Of K, V).tailMap
 						   Return New UnmodifiableSortedMap(Of )(sm.tailMap(fromKey))
 			End Function
 			Public Overridable Function firstKey() As K Implements SortedMap(Of K, V).firstKey
@@ -1985,7 +1985,7 @@ Namespace java.util
 		'''        returned </param>
 		''' <returns> an unmodifiable view of the specified navigable map
 		''' @since 1.8 </returns>
-		Public Shared Function unmodifiableNavigableMap(Of K, V, T1 As V)(ByVal m As NavigableMap(Of T1)) As NavigableMap(Of K, V)
+		Public Shared Function unmodifiableNavigableMap(Of K, V, T1 As V)(  m As NavigableMap(Of T1)) As NavigableMap(Of K, V)
 			Return New UnmodifiableNavigableMap(Of )(m)
 		End Function
 
@@ -2036,45 +2036,45 @@ Namespace java.util
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 			Private ReadOnly nm As NavigableMap(Of K, ? As V)
 
-			Friend Sub New(Of T1 As V)(ByVal m As NavigableMap(Of T1))
+			Friend Sub New(Of T1 As V)(  m As NavigableMap(Of T1))
 																	MyBase.New(m)
 																	nm = m
 			End Sub
 
-			Public Overridable Function lowerKey(ByVal key As K) As K Implements NavigableMap(Of K, V).lowerKey
+			Public Overridable Function lowerKey(  key As K) As K Implements NavigableMap(Of K, V).lowerKey
 				Return nm.lowerKey(key)
 			End Function
-			Public Overridable Function floorKey(ByVal key As K) As K Implements NavigableMap(Of K, V).floorKey
+			Public Overridable Function floorKey(  key As K) As K Implements NavigableMap(Of K, V).floorKey
 				Return nm.floorKey(key)
 			End Function
-			Public Overridable Function ceilingKey(ByVal key As K) As K Implements NavigableMap(Of K, V).ceilingKey
+			Public Overridable Function ceilingKey(  key As K) As K Implements NavigableMap(Of K, V).ceilingKey
 				Return nm.ceilingKey(key)
 			End Function
-			Public Overridable Function higherKey(ByVal key As K) As K Implements NavigableMap(Of K, V).higherKey
+			Public Overridable Function higherKey(  key As K) As K Implements NavigableMap(Of K, V).higherKey
 				Return nm.higherKey(key)
 			End Function
 
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-			Public Overridable Function lowerEntry(ByVal key As K) As Entry(Of K, V)
+			Public Overridable Function lowerEntry(  key As K) As Entry(Of K, V)
 				Dim lower As Entry(Of K, V) = CType(nm.lowerEntry(key), Entry(Of K, V))
 				Return If(Nothing IsNot lower, New UnmodifiableEntrySet.UnmodifiableEntry(Of )(lower), Nothing)
 			End Function
 
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-			Public Overridable Function floorEntry(ByVal key As K) As Entry(Of K, V)
+			Public Overridable Function floorEntry(  key As K) As Entry(Of K, V)
 				Dim floor As Entry(Of K, V) = CType(nm.floorEntry(key), Entry(Of K, V))
 				Return If(Nothing IsNot floor, New UnmodifiableEntrySet.UnmodifiableEntry(Of )(floor), Nothing)
 			End Function
 
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-			Public Overridable Function ceilingEntry(ByVal key As K) As Entry(Of K, V)
+			Public Overridable Function ceilingEntry(  key As K) As Entry(Of K, V)
 				Dim ceiling As Entry(Of K, V) = CType(nm.ceilingEntry(key), Entry(Of K, V))
 				Return If(Nothing IsNot ceiling, New UnmodifiableEntrySet.UnmodifiableEntry(Of )(ceiling), Nothing)
 			End Function
 
 
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-			Public Overridable Function higherEntry(ByVal key As K) As Entry(Of K, V)
+			Public Overridable Function higherEntry(  key As K) As Entry(Of K, V)
 				Dim higher As Entry(Of K, V) = CType(nm.higherEntry(key), Entry(Of K, V))
 				Return If(Nothing IsNot higher, New UnmodifiableEntrySet.UnmodifiableEntry(Of )(higher), Nothing)
 			End Function
@@ -2107,14 +2107,14 @@ Namespace java.util
 							Return unmodifiableNavigableSet(nm.descendingKeySet())
 			End Function
 
-			Public Overridable Function subMap(ByVal fromKey As K, ByVal fromInclusive As Boolean, ByVal toKey As K, ByVal toInclusive As Boolean) As NavigableMap(Of K, V) Implements NavigableMap(Of K, V).subMap
+			Public Overridable Function subMap(  fromKey As K,   fromInclusive As Boolean,   toKey As K,   toInclusive As Boolean) As NavigableMap(Of K, V) Implements NavigableMap(Of K, V).subMap
 				Return unmodifiableNavigableMap(nm.subMap(fromKey, fromInclusive, toKey, toInclusive))
 			End Function
 
-			Public Overridable Function headMap(ByVal toKey As K, ByVal inclusive As Boolean) As NavigableMap(Of K, V) Implements NavigableMap(Of K, V).headMap
+			Public Overridable Function headMap(  toKey As K,   inclusive As Boolean) As NavigableMap(Of K, V) Implements NavigableMap(Of K, V).headMap
 					 Return unmodifiableNavigableMap(nm.headMap(toKey, inclusive))
 			End Function
-			Public Overridable Function tailMap(ByVal fromKey As K, ByVal inclusive As Boolean) As NavigableMap(Of K, V) Implements NavigableMap(Of K, V).tailMap
+			Public Overridable Function tailMap(  fromKey As K,   inclusive As Boolean) As NavigableMap(Of K, V) Implements NavigableMap(Of K, V).tailMap
 				   Return unmodifiableNavigableMap(nm.tailMap(fromKey, inclusive))
 			End Function
 		End Class
@@ -2153,11 +2153,11 @@ Namespace java.util
 		''' @param  <T> the class of the objects in the collection </param>
 		''' <param name="c"> the collection to be "wrapped" in a synchronized collection. </param>
 		''' <returns> a synchronized view of the specified collection. </returns>
-		Public Shared Function synchronizedCollection(Of T)(ByVal c As Collection(Of T)) As Collection(Of T)
+		Public Shared Function synchronizedCollection(Of T)(  c As Collection(Of T)) As Collection(Of T)
 			Return New SynchronizedCollection(Of )(c)
 		End Function
 
-		Friend Shared Function synchronizedCollection(Of T)(ByVal c As Collection(Of T), ByVal mutex As Object) As Collection(Of T)
+		Friend Shared Function synchronizedCollection(Of T)(  c As Collection(Of T),   mutex As Object) As Collection(Of T)
 			Return New SynchronizedCollection(Of )(c, mutex)
 		End Function
 
@@ -2173,12 +2173,12 @@ Namespace java.util
 			Friend ReadOnly c As Collection(Of E) ' Backing Collection
 			Friend ReadOnly mutex As Object ' Object on which to synchronize
 
-			Friend Sub New(ByVal c As Collection(Of E))
+			Friend Sub New(  c As Collection(Of E))
 				Me.c = Objects.requireNonNull(c)
 				mutex = Me
 			End Sub
 
-			Friend Sub New(ByVal c As Collection(Of E), ByVal mutex As Object)
+			Friend Sub New(  c As Collection(Of E),   mutex As Object)
 				Me.c = Objects.requireNonNull(c)
 				Me.mutex = Objects.requireNonNull(mutex)
 			End Sub
@@ -2195,7 +2195,7 @@ Namespace java.util
 					End SyncLock
 				End Get
 			End Property
-			Public Overridable Function contains(ByVal o As Object) As Boolean Implements Collection(Of E).contains
+			Public Overridable Function contains(  o As Object) As Boolean Implements Collection(Of E).contains
 				SyncLock mutex
 					Return c.contains(o)
 				End SyncLock
@@ -2205,7 +2205,7 @@ Namespace java.util
 					Return c.ToArray()
 				End SyncLock
 			End Function
-			Public Overridable Function toArray(Of T)(ByVal a As T()) As T() Implements Collection(Of E).toArray
+			Public Overridable Function toArray(Of T)(  a As T()) As T() Implements Collection(Of E).toArray
 				SyncLock mutex
 					Return c.ToArray(a)
 				End SyncLock
@@ -2215,33 +2215,33 @@ Namespace java.util
 				Return c.GetEnumerator() ' Must be manually synched by user!
 			End Function
 
-			Public Overridable Function add(ByVal e As E) As Boolean
+			Public Overridable Function add(  e As E) As Boolean
 				SyncLock mutex
 					Return c.add(e)
 				End SyncLock
 			End Function
-			Public Overridable Function remove(ByVal o As Object) As Boolean Implements Collection(Of E).remove
+			Public Overridable Function remove(  o As Object) As Boolean Implements Collection(Of E).remove
 				SyncLock mutex
 					Return c.remove(o)
 				End SyncLock
 			End Function
 
-			Public Overridable Function containsAll(Of T1)(ByVal coll As Collection(Of T1)) As Boolean Implements Collection(Of E).containsAll
+			Public Overridable Function containsAll(Of T1)(  coll As Collection(Of T1)) As Boolean Implements Collection(Of E).containsAll
 				SyncLock mutex
 					Return c.containsAll(coll)
 				End SyncLock
 			End Function
-			Public Overridable Function addAll(Of T1 As E)(ByVal coll As Collection(Of T1)) As Boolean Implements Collection(Of E).addAll
+			Public Overridable Function addAll(Of T1 As E)(  coll As Collection(Of T1)) As Boolean Implements Collection(Of E).addAll
 				SyncLock mutex
 					Return c.addAll(coll)
 				End SyncLock
 			End Function
-			Public Overridable Function removeAll(Of T1)(ByVal coll As Collection(Of T1)) As Boolean Implements Collection(Of E).removeAll
+			Public Overridable Function removeAll(Of T1)(  coll As Collection(Of T1)) As Boolean Implements Collection(Of E).removeAll
 				SyncLock mutex
 					Return c.removeAll(coll)
 				End SyncLock
 			End Function
-			Public Overridable Function retainAll(Of T1)(ByVal coll As Collection(Of T1)) As Boolean Implements Collection(Of E).retainAll
+			Public Overridable Function retainAll(Of T1)(  coll As Collection(Of T1)) As Boolean Implements Collection(Of E).retainAll
 				SyncLock mutex
 					Return c.retainAll(coll)
 				End SyncLock
@@ -2258,13 +2258,13 @@ Namespace java.util
 			End Function
 			' Override default methods in Collection
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Overrides Sub forEach(Of T1)(ByVal consumer As java.util.function.Consumer(Of T1))
+			Public Overrides Sub forEach(Of T1)(  consumer As java.util.function.Consumer(Of T1))
 				SyncLock mutex
 					c.forEach(consumer)
 				End SyncLock
 			End Sub
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Overrides Function removeIf(Of T1)(ByVal filter As java.util.function.Predicate(Of T1)) As Boolean Implements Collection(Of E).removeIf
+			Public Overrides Function removeIf(Of T1)(  filter As java.util.function.Predicate(Of T1)) As Boolean Implements Collection(Of E).removeIf
 				SyncLock mutex
 					Return c.removeIf(filter)
 				End SyncLock
@@ -2278,7 +2278,7 @@ Namespace java.util
 			Public Overrides Function parallelStream() As java.util.stream.Stream(Of E) Implements Collection(Of E).parallelStream
 				Return c.parallelStream() ' Must be manually synched by user!
 			End Function
-			Private Sub writeObject(ByVal s As java.io.ObjectOutputStream)
+			Private Sub writeObject(  s As java.io.ObjectOutputStream)
 				SyncLock mutex
 					s.defaultWriteObject()
 				End SyncLock
@@ -2310,11 +2310,11 @@ Namespace java.util
 		''' @param  <T> the class of the objects in the set </param>
 		''' <param name="s"> the set to be "wrapped" in a synchronized set. </param>
 		''' <returns> a synchronized view of the specified set. </returns>
-		Public Shared Function synchronizedSet(Of T)(ByVal s As [Set](Of T)) As [Set](Of T)
+		Public Shared Function synchronizedSet(Of T)(  s As [Set](Of T)) As [Set](Of T)
 			Return New SynchronizedSet(Of )(s)
 		End Function
 
-		Friend Shared Function synchronizedSet(Of T)(ByVal s As [Set](Of T), ByVal mutex As Object) As [Set](Of T)
+		Friend Shared Function synchronizedSet(Of T)(  s As [Set](Of T),   mutex As Object) As [Set](Of T)
 			Return New SynchronizedSet(Of )(s, mutex)
 		End Function
 
@@ -2327,14 +2327,14 @@ Namespace java.util
 
 			Private Const serialVersionUID As Long = 487447009682186044L
 
-			Friend Sub New(ByVal s As [Set](Of E))
+			Friend Sub New(  s As [Set](Of E))
 				MyBase.New(s)
 			End Sub
-			Friend Sub New(ByVal s As [Set](Of E), ByVal mutex As Object)
+			Friend Sub New(  s As [Set](Of E),   mutex As Object)
 				MyBase.New(s, mutex)
 			End Sub
 
-			Public Overrides Function Equals(ByVal o As Object) As Boolean
+			Public Overrides Function Equals(  o As Object) As Boolean
 				If Me Is o Then Return True
 				SyncLock mutex
 					Return c.Equals(o)
@@ -2384,7 +2384,7 @@ Namespace java.util
 		''' @param  <T> the class of the objects in the set </param>
 		''' <param name="s"> the sorted set to be "wrapped" in a synchronized sorted set. </param>
 		''' <returns> a synchronized view of the specified sorted set. </returns>
-		Public Shared Function synchronizedSortedSet(Of T)(ByVal s As SortedSet(Of T)) As SortedSet(Of T)
+		Public Shared Function synchronizedSortedSet(Of T)(  s As SortedSet(Of T)) As SortedSet(Of T)
 			Return New SynchronizedSortedSet(Of )(s)
 		End Function
 
@@ -2399,11 +2399,11 @@ Namespace java.util
 
 			Private ReadOnly ss As SortedSet(Of E)
 
-			Friend Sub New(ByVal s As SortedSet(Of E))
+			Friend Sub New(  s As SortedSet(Of E))
 				MyBase.New(s)
 				ss = s
 			End Sub
-			Friend Sub New(ByVal s As SortedSet(Of E), ByVal mutex As Object)
+			Friend Sub New(  s As SortedSet(Of E),   mutex As Object)
 				MyBase.New(s, mutex)
 				ss = s
 			End Sub
@@ -2416,17 +2416,17 @@ Namespace java.util
 				End SyncLock
 			End Function
 
-			Public Overridable Function subSet(ByVal fromElement As E, ByVal toElement As E) As SortedSet(Of E)
+			Public Overridable Function subSet(  fromElement As E,   toElement As E) As SortedSet(Of E)
 				SyncLock mutex
 					Return New SynchronizedSortedSet(Of )(ss.subSet(fromElement, toElement), mutex)
 				End SyncLock
 			End Function
-			Public Overridable Function headSet(ByVal toElement As E) As SortedSet(Of E)
+			Public Overridable Function headSet(  toElement As E) As SortedSet(Of E)
 				SyncLock mutex
 					Return New SynchronizedSortedSet(Of )(ss.headSet(toElement), mutex)
 				End SyncLock
 			End Function
-			Public Overridable Function tailSet(ByVal fromElement As E) As SortedSet(Of E)
+			Public Overridable Function tailSet(  fromElement As E) As SortedSet(Of E)
 				SyncLock mutex
 				   Return New SynchronizedSortedSet(Of )(ss.tailSet(fromElement),mutex)
 				End SyncLock
@@ -2483,7 +2483,7 @@ Namespace java.util
 		''' set </param>
 		''' <returns> a synchronized view of the specified navigable set
 		''' @since 1.8 </returns>
-		Public Shared Function synchronizedNavigableSet(Of T)(ByVal s As NavigableSet(Of T)) As NavigableSet(Of T)
+		Public Shared Function synchronizedNavigableSet(Of T)(  s As NavigableSet(Of T)) As NavigableSet(Of T)
 			Return New SynchronizedNavigableSet(Of )(s)
 		End Function
 
@@ -2498,31 +2498,31 @@ Namespace java.util
 
 			Private ReadOnly ns As NavigableSet(Of E)
 
-			Friend Sub New(ByVal s As NavigableSet(Of E))
+			Friend Sub New(  s As NavigableSet(Of E))
 				MyBase.New(s)
 				ns = s
 			End Sub
 
-			Friend Sub New(ByVal s As NavigableSet(Of E), ByVal mutex As Object)
+			Friend Sub New(  s As NavigableSet(Of E),   mutex As Object)
 				MyBase.New(s, mutex)
 				ns = s
 			End Sub
-			Public Overridable Function lower(ByVal e As E) As E
+			Public Overridable Function lower(  e As E) As E
 				SyncLock mutex
 					Return ns.lower(e)
 				End SyncLock
 			End Function
-			Public Overridable Function floor(ByVal e As E) As E
+			Public Overridable Function floor(  e As E) As E
 				SyncLock mutex
 					Return ns.floor(e)
 				End SyncLock
 			End Function
-			Public Overridable Function ceiling(ByVal e As E) As E
+			Public Overridable Function ceiling(  e As E) As E
 				SyncLock mutex
 					Return ns.ceiling(e)
 				End SyncLock
 			End Function
-			Public Overridable Function higher(ByVal e As E) As E
+			Public Overridable Function higher(  e As E) As E
 				SyncLock mutex
 					Return ns.higher(e)
 				End SyncLock
@@ -2550,35 +2550,35 @@ Namespace java.util
 						 End SyncLock
 			End Function
 
-			Public Overridable Function subSet(ByVal fromElement As E, ByVal toElement As E) As NavigableSet(Of E)
+			Public Overridable Function subSet(  fromElement As E,   toElement As E) As NavigableSet(Of E)
 				SyncLock mutex
 					Return New SynchronizedNavigableSet(Of )(ns.subSet(fromElement, True, toElement, False), mutex)
 				End SyncLock
 			End Function
-			Public Overridable Function headSet(ByVal toElement As E) As NavigableSet(Of E)
+			Public Overridable Function headSet(  toElement As E) As NavigableSet(Of E)
 				SyncLock mutex
 					Return New SynchronizedNavigableSet(Of )(ns.headSet(toElement, False), mutex)
 				End SyncLock
 			End Function
-			Public Overridable Function tailSet(ByVal fromElement As E) As NavigableSet(Of E)
+			Public Overridable Function tailSet(  fromElement As E) As NavigableSet(Of E)
 				SyncLock mutex
 					Return New SynchronizedNavigableSet(Of )(ns.tailSet(fromElement, True), mutex)
 				End SyncLock
 			End Function
 
-			Public Overridable Function subSet(ByVal fromElement As E, ByVal fromInclusive As Boolean, ByVal toElement As E, ByVal toInclusive As Boolean) As NavigableSet(Of E)
+			Public Overridable Function subSet(  fromElement As E,   fromInclusive As Boolean,   toElement As E,   toInclusive As Boolean) As NavigableSet(Of E)
 				SyncLock mutex
 					Return New SynchronizedNavigableSet(Of )(ns.subSet(fromElement, fromInclusive, toElement, toInclusive), mutex)
 				End SyncLock
 			End Function
 
-			Public Overridable Function headSet(ByVal toElement As E, ByVal inclusive As Boolean) As NavigableSet(Of E)
+			Public Overridable Function headSet(  toElement As E,   inclusive As Boolean) As NavigableSet(Of E)
 				SyncLock mutex
 					Return New SynchronizedNavigableSet(Of )(ns.headSet(toElement, inclusive), mutex)
 				End SyncLock
 			End Function
 
-			Public Overridable Function tailSet(ByVal fromElement As E, ByVal inclusive As Boolean) As NavigableSet(Of E)
+			Public Overridable Function tailSet(  fromElement As E,   inclusive As Boolean) As NavigableSet(Of E)
 				SyncLock mutex
 					Return New SynchronizedNavigableSet(Of )(ns.tailSet(fromElement, inclusive), mutex)
 				End SyncLock
@@ -2610,11 +2610,11 @@ Namespace java.util
 		''' @param  <T> the class of the objects in the list </param>
 		''' <param name="list"> the list to be "wrapped" in a synchronized list. </param>
 		''' <returns> a synchronized view of the specified list. </returns>
-		Public Shared Function synchronizedList(Of T)(ByVal list As List(Of T)) As List(Of T)
+		Public Shared Function synchronizedList(Of T)(  list As List(Of T)) As List(Of T)
 			Return (If(TypeOf list Is RandomAccess, New SynchronizedRandomAccessList(Of )(list), New SynchronizedList(Of )(list)))
 		End Function
 
-		Friend Shared Function synchronizedList(Of T)(ByVal list As List(Of T), ByVal mutex As Object) As List(Of T)
+		Friend Shared Function synchronizedList(Of T)(  list As List(Of T),   mutex As Object) As List(Of T)
 			Return (If(TypeOf list Is RandomAccess, New SynchronizedRandomAccessList(Of )(list, mutex), New SynchronizedList(Of )(list, mutex)))
 		End Function
 
@@ -2629,16 +2629,16 @@ Namespace java.util
 
 			Friend ReadOnly list As List(Of E)
 
-			Friend Sub New(ByVal list As List(Of E))
+			Friend Sub New(  list As List(Of E))
 				MyBase.New(list)
 				Me.list = list
 			End Sub
-			Friend Sub New(ByVal list As List(Of E), ByVal mutex As Object)
+			Friend Sub New(  list As List(Of E),   mutex As Object)
 				MyBase.New(list, mutex)
 				Me.list = list
 			End Sub
 
-			Public Overrides Function Equals(ByVal o As Object) As Boolean
+			Public Overrides Function Equals(  o As Object) As Boolean
 				If Me Is o Then Return True
 				SyncLock mutex
 					Return list.Equals(o)
@@ -2650,39 +2650,39 @@ Namespace java.util
 				End SyncLock
 			End Function
 
-			Public Overridable Function [get](ByVal index As Integer) As E Implements List(Of E).get
+			Public Overridable Function [get](  index As Integer) As E Implements List(Of E).get
 				SyncLock mutex
 					Return list.get(index)
 				End SyncLock
 			End Function
-			Public Overridable Function [set](ByVal index As Integer, ByVal element As E) As E
+			Public Overridable Function [set](  index As Integer,   element As E) As E
 				SyncLock mutex
 					Return list.set(index, element)
 				End SyncLock
 			End Function
-			Public Overridable Sub add(ByVal index As Integer, ByVal element As E)
+			Public Overridable Sub add(  index As Integer,   element As E)
 				SyncLock mutex
 					list.add(index, element)
 				End SyncLock
 			End Sub
-			Public Overridable Function remove(ByVal index As Integer) As E Implements List(Of E).remove
+			Public Overridable Function remove(  index As Integer) As E Implements List(Of E).remove
 				SyncLock mutex
 					Return list.remove(index)
 				End SyncLock
 			End Function
 
-			Public Overridable Function indexOf(ByVal o As Object) As Integer Implements List(Of E).indexOf
+			Public Overridable Function indexOf(  o As Object) As Integer Implements List(Of E).indexOf
 				SyncLock mutex
 					Return list.IndexOf(o)
 				End SyncLock
 			End Function
-			Public Overridable Function lastIndexOf(ByVal o As Object) As Integer Implements List(Of E).lastIndexOf
+			Public Overridable Function lastIndexOf(  o As Object) As Integer Implements List(Of E).lastIndexOf
 				SyncLock mutex
 					Return list.LastIndexOf(o)
 				End SyncLock
 			End Function
 
-			Public Overridable Function addAll(Of T1 As E)(ByVal index As Integer, ByVal c As Collection(Of T1)) As Boolean Implements List(Of E).addAll
+			Public Overridable Function addAll(Of T1 As E)(  index As Integer,   c As Collection(Of T1)) As Boolean Implements List(Of E).addAll
 				SyncLock mutex
 					Return list.addAll(index, c)
 				End SyncLock
@@ -2692,23 +2692,23 @@ Namespace java.util
 				Return list.GetEnumerator() ' Must be manually synched by user
 			End Function
 
-			Public Overridable Function listIterator(ByVal index As Integer) As ListIterator(Of E) Implements List(Of E).listIterator
+			Public Overridable Function listIterator(  index As Integer) As ListIterator(Of E) Implements List(Of E).listIterator
 				Return list.listIterator(index) ' Must be manually synched by user
 			End Function
 
-			Public Overridable Function subList(ByVal fromIndex As Integer, ByVal toIndex As Integer) As List(Of E) Implements List(Of E).subList
+			Public Overridable Function subList(  fromIndex As Integer,   toIndex As Integer) As List(Of E) Implements List(Of E).subList
 				SyncLock mutex
 					Return New SynchronizedList(Of )(list.subList(fromIndex, toIndex), mutex)
 				End SyncLock
 			End Function
 
-			Public Overrides Sub replaceAll(ByVal [operator] As java.util.function.UnaryOperator(Of E)) Implements List(Of E).replaceAll
+			Public Overrides Sub replaceAll(  [operator] As java.util.function.UnaryOperator(Of E)) Implements List(Of E).replaceAll
 				SyncLock mutex
 					list.replaceAll([operator])
 				End SyncLock
 			End Sub
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Overrides Sub sort(Of T1)(ByVal c As Comparator(Of T1)) Implements List(Of E).sort
+			Public Overrides Sub sort(Of T1)(  c As Comparator(Of T1)) Implements List(Of E).sort
 				SyncLock mutex
 					list.sort(c)
 				End SyncLock
@@ -2739,15 +2739,15 @@ Namespace java.util
 			Inherits SynchronizedList(Of E)
 			Implements RandomAccess
 
-			Friend Sub New(ByVal list As List(Of E))
+			Friend Sub New(  list As List(Of E))
 				MyBase.New(list)
 			End Sub
 
-			Friend Sub New(ByVal list As List(Of E), ByVal mutex As Object)
+			Friend Sub New(  list As List(Of E),   mutex As Object)
 				MyBase.New(list, mutex)
 			End Sub
 
-			Public Overridable Function subList(ByVal fromIndex As Integer, ByVal toIndex As Integer) As List(Of E)
+			Public Overridable Function subList(  fromIndex As Integer,   toIndex As Integer) As List(Of E)
 				SyncLock mutex
 					Return New SynchronizedRandomAccessList(Of )(list.subList(fromIndex, toIndex), mutex)
 				End SyncLock
@@ -2794,7 +2794,7 @@ Namespace java.util
 		''' @param <V> the class of the map values </param>
 		''' <param name="m"> the map to be "wrapped" in a synchronized map. </param>
 		''' <returns> a synchronized view of the specified map. </returns>
-		Public Shared Function synchronizedMap(Of K, V)(ByVal m As Map(Of K, V)) As Map(Of K, V)
+		Public Shared Function synchronizedMap(Of K, V)(  m As Map(Of K, V)) As Map(Of K, V)
 			Return New SynchronizedMap(Of )(m)
 		End Function
 
@@ -2810,12 +2810,12 @@ Namespace java.util
 			Private ReadOnly m As Map(Of K, V) ' Backing Map
 			Friend ReadOnly mutex As Object ' Object on which to synchronize
 
-			Friend Sub New(ByVal m As Map(Of K, V))
+			Friend Sub New(  m As Map(Of K, V))
 				Me.m = Objects.requireNonNull(m)
 				mutex = Me
 			End Sub
 
-			Friend Sub New(ByVal m As Map(Of K, V), ByVal mutex As Object)
+			Friend Sub New(  m As Map(Of K, V),   mutex As Object)
 				Me.m = m
 				Me.mutex = mutex
 			End Sub
@@ -2832,34 +2832,34 @@ Namespace java.util
 					End SyncLock
 				End Get
 			End Property
-			Public Overridable Function containsKey(ByVal key As Object) As Boolean Implements Map(Of K, V).containsKey
+			Public Overridable Function containsKey(  key As Object) As Boolean Implements Map(Of K, V).containsKey
 				SyncLock mutex
 					Return m.containsKey(key)
 				End SyncLock
 			End Function
-			Public Overridable Function containsValue(ByVal value As Object) As Boolean Implements Map(Of K, V).containsValue
+			Public Overridable Function containsValue(  value As Object) As Boolean Implements Map(Of K, V).containsValue
 				SyncLock mutex
 					Return m.containsValue(value)
 				End SyncLock
 			End Function
-			Public Overridable Function [get](ByVal key As Object) As V Implements Map(Of K, V).get
+			Public Overridable Function [get](  key As Object) As V Implements Map(Of K, V).get
 				SyncLock mutex
 					Return m.get(key)
 				End SyncLock
 			End Function
 
-			Public Overridable Function put(ByVal key As K, ByVal value As V) As V Implements Map(Of K, V).put
+			Public Overridable Function put(  key As K,   value As V) As V Implements Map(Of K, V).put
 				SyncLock mutex
 					Return m.put(key, value)
 				End SyncLock
 			End Function
-			Public Overridable Function remove(ByVal key As Object) As V Implements Map(Of K, V).remove
+			Public Overridable Function remove(  key As Object) As V Implements Map(Of K, V).remove
 				SyncLock mutex
 					Return m.remove(key)
 				End SyncLock
 			End Function
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-			Public Overridable Sub putAll(Of T1 As K, ? As V)(ByVal map As Map(Of T1)) Implements Map(Of K, V).putAll
+			Public Overridable Sub putAll(Of T1 As K, ? As V)(  map As Map(Of T1)) Implements Map(Of K, V).putAll
 				SyncLock mutex
 					m.putAll(map)
 				End SyncLock
@@ -2898,7 +2898,7 @@ Namespace java.util
 				End SyncLock
 			End Function
 
-			Public Overrides Function Equals(ByVal o As Object) As Boolean
+			Public Overrides Function Equals(  o As Object) As Boolean
 				If Me Is o Then Return True
 				SyncLock mutex
 					Return m.Equals(o)
@@ -2916,69 +2916,69 @@ Namespace java.util
 			End Function
 
 			' Override default methods in Map
-			Public Overrides Function getOrDefault(ByVal k As Object, ByVal defaultValue As V) As V Implements Map(Of K, V).getOrDefault
+			Public Overrides Function getOrDefault(  k As Object,   defaultValue As V) As V Implements Map(Of K, V).getOrDefault
 				SyncLock mutex
 					Return m.getOrDefault(k, defaultValue)
 				End SyncLock
 			End Function
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Overrides Sub forEach(Of T1)(ByVal action As java.util.function.BiConsumer(Of T1)) Implements Map(Of K, V).forEach
+			Public Overrides Sub forEach(Of T1)(  action As java.util.function.BiConsumer(Of T1)) Implements Map(Of K, V).forEach
 				SyncLock mutex
 					m.forEach(action)
 				End SyncLock
 			End Sub
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Overrides Sub replaceAll(Of T1 As V)(ByVal [function] As java.util.function.BiFunction(Of T1)) Implements Map(Of K, V).replaceAll
+			Public Overrides Sub replaceAll(Of T1 As V)(  [function] As java.util.function.BiFunction(Of T1)) Implements Map(Of K, V).replaceAll
 				SyncLock mutex
 					m.replaceAll([function])
 				End SyncLock
 			End Sub
-			Public Overrides Function putIfAbsent(ByVal key As K, ByVal value As V) As V Implements Map(Of K, V).putIfAbsent
+			Public Overrides Function putIfAbsent(  key As K,   value As V) As V Implements Map(Of K, V).putIfAbsent
 				SyncLock mutex
 					Return m.putIfAbsent(key, value)
 				End SyncLock
 			End Function
-			Public Overrides Function remove(ByVal key As Object, ByVal value As Object) As Boolean Implements Map(Of K, V).remove
+			Public Overrides Function remove(  key As Object,   value As Object) As Boolean Implements Map(Of K, V).remove
 				SyncLock mutex
 					Return m.remove(key, value)
 				End SyncLock
 			End Function
-			Public Overrides Function replace(ByVal key As K, ByVal oldValue As V, ByVal newValue As V) As Boolean Implements Map(Of K, V).replace
+			Public Overrides Function replace(  key As K,   oldValue As V,   newValue As V) As Boolean Implements Map(Of K, V).replace
 				SyncLock mutex
 					Return m.replace(key, oldValue, newValue)
 				End SyncLock
 			End Function
-			Public Overrides Function replace(ByVal key As K, ByVal value As V) As V Implements Map(Of K, V).replace
+			Public Overrides Function replace(  key As K,   value As V) As V Implements Map(Of K, V).replace
 				SyncLock mutex
 					Return m.replace(key, value)
 				End SyncLock
 			End Function
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Overrides Function computeIfAbsent(Of T1 As V)(ByVal key As K, ByVal mappingFunction As java.util.function.Function(Of T1)) As V Implements Map(Of K, V).computeIfAbsent
+			Public Overrides Function computeIfAbsent(Of T1 As V)(  key As K,   mappingFunction As java.util.function.Function(Of T1)) As V Implements Map(Of K, V).computeIfAbsent
 				SyncLock mutex
 					Return m.computeIfAbsent(key, mappingFunction)
 				End SyncLock
 			End Function
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Overrides Function computeIfPresent(Of T1 As V)(ByVal key As K, ByVal remappingFunction As java.util.function.BiFunction(Of T1)) As V Implements Map(Of K, V).computeIfPresent
+			Public Overrides Function computeIfPresent(Of T1 As V)(  key As K,   remappingFunction As java.util.function.BiFunction(Of T1)) As V Implements Map(Of K, V).computeIfPresent
 				SyncLock mutex
 					Return m.computeIfPresent(key, remappingFunction)
 				End SyncLock
 			End Function
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Overrides Function compute(Of T1 As V)(ByVal key As K, ByVal remappingFunction As java.util.function.BiFunction(Of T1)) As V Implements Map(Of K, V).compute
+			Public Overrides Function compute(Of T1 As V)(  key As K,   remappingFunction As java.util.function.BiFunction(Of T1)) As V Implements Map(Of K, V).compute
 				SyncLock mutex
 					Return m.compute(key, remappingFunction)
 				End SyncLock
 			End Function
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Overrides Function merge(Of T1 As V)(ByVal key As K, ByVal value As V, ByVal remappingFunction As java.util.function.BiFunction(Of T1)) As V Implements Map(Of K, V).merge
+			Public Overrides Function merge(Of T1 As V)(  key As K,   value As V,   remappingFunction As java.util.function.BiFunction(Of T1)) As V Implements Map(Of K, V).merge
 				SyncLock mutex
 					Return m.merge(key, value, remappingFunction)
 				End SyncLock
 			End Function
 
-			Private Sub writeObject(ByVal s As java.io.ObjectOutputStream)
+			Private Sub writeObject(  s As java.io.ObjectOutputStream)
 				SyncLock mutex
 					s.defaultWriteObject()
 				End SyncLock
@@ -3028,7 +3028,7 @@ Namespace java.util
 		''' @param <V> the class of the map values </param>
 		''' <param name="m"> the sorted map to be "wrapped" in a synchronized sorted map. </param>
 		''' <returns> a synchronized view of the specified sorted map. </returns>
-		Public Shared Function synchronizedSortedMap(Of K, V)(ByVal m As SortedMap(Of K, V)) As SortedMap(Of K, V)
+		Public Shared Function synchronizedSortedMap(Of K, V)(  m As SortedMap(Of K, V)) As SortedMap(Of K, V)
 			Return New SynchronizedSortedMap(Of )(m)
 		End Function
 
@@ -3043,11 +3043,11 @@ Namespace java.util
 
 			Private ReadOnly sm As SortedMap(Of K, V)
 
-			Friend Sub New(ByVal m As SortedMap(Of K, V))
+			Friend Sub New(  m As SortedMap(Of K, V))
 				MyBase.New(m)
 				sm = m
 			End Sub
-			Friend Sub New(ByVal m As SortedMap(Of K, V), ByVal mutex As Object)
+			Friend Sub New(  m As SortedMap(Of K, V),   mutex As Object)
 				MyBase.New(m, mutex)
 				sm = m
 			End Sub
@@ -3060,17 +3060,17 @@ Namespace java.util
 				End SyncLock
 			End Function
 
-			Public Overridable Function subMap(ByVal fromKey As K, ByVal toKey As K) As SortedMap(Of K, V) Implements SortedMap(Of K, V).subMap
+			Public Overridable Function subMap(  fromKey As K,   toKey As K) As SortedMap(Of K, V) Implements SortedMap(Of K, V).subMap
 				SyncLock mutex
 					Return New SynchronizedSortedMap(Of )(sm.subMap(fromKey, toKey), mutex)
 				End SyncLock
 			End Function
-			Public Overridable Function headMap(ByVal toKey As K) As SortedMap(Of K, V) Implements SortedMap(Of K, V).headMap
+			Public Overridable Function headMap(  toKey As K) As SortedMap(Of K, V) Implements SortedMap(Of K, V).headMap
 				SyncLock mutex
 					Return New SynchronizedSortedMap(Of )(sm.headMap(toKey), mutex)
 				End SyncLock
 			End Function
-			Public Overridable Function tailMap(ByVal fromKey As K) As SortedMap(Of K, V) Implements SortedMap(Of K, V).tailMap
+			Public Overridable Function tailMap(  fromKey As K) As SortedMap(Of K, V) Implements SortedMap(Of K, V).tailMap
 				SyncLock mutex
 				   Return New SynchronizedSortedMap(Of )(sm.tailMap(fromKey),mutex)
 				End SyncLock
@@ -3133,7 +3133,7 @@ Namespace java.util
 		'''              map </param>
 		''' <returns> a synchronized view of the specified navigable map.
 		''' @since 1.8 </returns>
-		Public Shared Function synchronizedNavigableMap(Of K, V)(ByVal m As NavigableMap(Of K, V)) As NavigableMap(Of K, V)
+		Public Shared Function synchronizedNavigableMap(Of K, V)(  m As NavigableMap(Of K, V)) As NavigableMap(Of K, V)
 			Return New SynchronizedNavigableMap(Of )(m)
 		End Function
 
@@ -3150,51 +3150,51 @@ Namespace java.util
 
 			Private ReadOnly nm As NavigableMap(Of K, V)
 
-			Friend Sub New(ByVal m As NavigableMap(Of K, V))
+			Friend Sub New(  m As NavigableMap(Of K, V))
 				MyBase.New(m)
 				nm = m
 			End Sub
-			Friend Sub New(ByVal m As NavigableMap(Of K, V), ByVal mutex As Object)
+			Friend Sub New(  m As NavigableMap(Of K, V),   mutex As Object)
 				MyBase.New(m, mutex)
 				nm = m
 			End Sub
 
-			Public Overridable Function lowerEntry(ByVal key As K) As Entry(Of K, V)
+			Public Overridable Function lowerEntry(  key As K) As Entry(Of K, V)
 								SyncLock mutex
 									Return nm.lowerEntry(key)
 								End SyncLock
 			End Function
-			Public Overridable Function lowerKey(ByVal key As K) As K Implements NavigableMap(Of K, V).lowerKey
+			Public Overridable Function lowerKey(  key As K) As K Implements NavigableMap(Of K, V).lowerKey
 								  SyncLock mutex
 									  Return nm.lowerKey(key)
 								  End SyncLock
 			End Function
-			Public Overridable Function floorEntry(ByVal key As K) As Entry(Of K, V)
+			Public Overridable Function floorEntry(  key As K) As Entry(Of K, V)
 								SyncLock mutex
 									Return nm.floorEntry(key)
 								End SyncLock
 			End Function
-			Public Overridable Function floorKey(ByVal key As K) As K Implements NavigableMap(Of K, V).floorKey
+			Public Overridable Function floorKey(  key As K) As K Implements NavigableMap(Of K, V).floorKey
 								  SyncLock mutex
 									  Return nm.floorKey(key)
 								  End SyncLock
 			End Function
-			Public Overridable Function ceilingEntry(ByVal key As K) As Entry(Of K, V)
+			Public Overridable Function ceilingEntry(  key As K) As Entry(Of K, V)
 							  SyncLock mutex
 								  Return nm.ceilingEntry(key)
 							  End SyncLock
 			End Function
-			Public Overridable Function ceilingKey(ByVal key As K) As K Implements NavigableMap(Of K, V).ceilingKey
+			Public Overridable Function ceilingKey(  key As K) As K Implements NavigableMap(Of K, V).ceilingKey
 								SyncLock mutex
 									Return nm.ceilingKey(key)
 								End SyncLock
 			End Function
-			Public Overridable Function higherEntry(ByVal key As K) As Entry(Of K, V)
+			Public Overridable Function higherEntry(  key As K) As Entry(Of K, V)
 							   SyncLock mutex
 								   Return nm.higherEntry(key)
 							   End SyncLock
 			End Function
-			Public Overridable Function higherKey(ByVal key As K) As K Implements NavigableMap(Of K, V).higherKey
+			Public Overridable Function higherKey(  key As K) As K Implements NavigableMap(Of K, V).higherKey
 								 SyncLock mutex
 									 Return nm.higherKey(key)
 								 End SyncLock
@@ -3243,35 +3243,35 @@ Namespace java.util
 			End Function
 
 
-			Public Overridable Function subMap(ByVal fromKey As K, ByVal toKey As K) As SortedMap(Of K, V) Implements NavigableMap(Of K, V).subMap
+			Public Overridable Function subMap(  fromKey As K,   toKey As K) As SortedMap(Of K, V) Implements NavigableMap(Of K, V).subMap
 				SyncLock mutex
 					Return New SynchronizedNavigableMap(Of )(nm.subMap(fromKey, True, toKey, False), mutex)
 				End SyncLock
 			End Function
-			Public Overridable Function headMap(ByVal toKey As K) As SortedMap(Of K, V) Implements NavigableMap(Of K, V).headMap
+			Public Overridable Function headMap(  toKey As K) As SortedMap(Of K, V) Implements NavigableMap(Of K, V).headMap
 				SyncLock mutex
 					Return New SynchronizedNavigableMap(Of )(nm.headMap(toKey, False), mutex)
 				End SyncLock
 			End Function
-			Public Overridable Function tailMap(ByVal fromKey As K) As SortedMap(Of K, V) Implements NavigableMap(Of K, V).tailMap
+			Public Overridable Function tailMap(  fromKey As K) As SortedMap(Of K, V) Implements NavigableMap(Of K, V).tailMap
 				SyncLock mutex
 			Return New SynchronizedNavigableMap(Of )(nm.tailMap(fromKey, True),mutex)
 				End SyncLock
 			End Function
 
-			Public Overridable Function subMap(ByVal fromKey As K, ByVal fromInclusive As Boolean, ByVal toKey As K, ByVal toInclusive As Boolean) As NavigableMap(Of K, V) Implements NavigableMap(Of K, V).subMap
+			Public Overridable Function subMap(  fromKey As K,   fromInclusive As Boolean,   toKey As K,   toInclusive As Boolean) As NavigableMap(Of K, V) Implements NavigableMap(Of K, V).subMap
 				SyncLock mutex
 					Return New SynchronizedNavigableMap(Of )(nm.subMap(fromKey, fromInclusive, toKey, toInclusive), mutex)
 				End SyncLock
 			End Function
 
-			Public Overridable Function headMap(ByVal toKey As K, ByVal inclusive As Boolean) As NavigableMap(Of K, V) Implements NavigableMap(Of K, V).headMap
+			Public Overridable Function headMap(  toKey As K,   inclusive As Boolean) As NavigableMap(Of K, V) Implements NavigableMap(Of K, V).headMap
 				SyncLock mutex
 					Return New SynchronizedNavigableMap(Of )(nm.headMap(toKey, inclusive), mutex)
 				End SyncLock
 			End Function
 
-			Public Overridable Function tailMap(ByVal fromKey As K, ByVal inclusive As Boolean) As NavigableMap(Of K, V) Implements NavigableMap(Of K, V).tailMap
+			Public Overridable Function tailMap(  fromKey As K,   inclusive As Boolean) As NavigableMap(Of K, V) Implements NavigableMap(Of K, V).tailMap
 				SyncLock mutex
 					Return New SynchronizedNavigableMap(Of )(nm.tailMap(fromKey, inclusive), mutex)
 				End SyncLock
@@ -3340,12 +3340,12 @@ Namespace java.util
 		''' <param name="type"> the type of element that {@code c} is permitted to hold </param>
 		''' <returns> a dynamically typesafe view of the specified collection
 		''' @since 1.5 </returns>
-		Public Shared Function checkedCollection(Of E)(ByVal c As Collection(Of E), ByVal type As [Class]) As Collection(Of E)
+		Public Shared Function checkedCollection(Of E)(  c As Collection(Of E),   type As [Class]) As Collection(Of E)
 			Return New CheckedCollection(Of )(c, type)
 		End Function
 
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Friend Shared Function zeroLengthArray(Of T)(ByVal type As [Class]) As T()
+		Friend Shared Function zeroLengthArray(Of T)(  type As [Class]) As T()
 			Return CType(Array.newInstance(type, 0), T())
 		End Function
 
@@ -3362,16 +3362,16 @@ Namespace java.util
 			Friend ReadOnly type As  [Class]
 
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-			Friend Overridable Function typeCheck(ByVal o As Object) As E
+			Friend Overridable Function typeCheck(  o As Object) As E
 				If o IsNot Nothing AndAlso (Not type.isInstance(o)) Then Throw New ClassCastException(badElementMsg(o))
 				Return CType(o, E)
 			End Function
 
-			Private Function badElementMsg(ByVal o As Object) As String
+			Private Function badElementMsg(  o As Object) As String
 				Return "Attempt to insert " & o.GetType() & " element into collection with element type " & type
 			End Function
 
-			Friend Sub New(ByVal c As Collection(Of E), ByVal type As [Class])
+			Friend Sub New(  c As Collection(Of E),   type As [Class])
 				Me.c = Objects.requireNonNull(c, "c")
 				Me.type = Objects.requireNonNull(type, "type")
 			End Sub
@@ -3384,32 +3384,32 @@ Namespace java.util
 					Return c.empty
 				End Get
 			End Property
-			Public Overridable Function contains(ByVal o As Object) As Boolean Implements Collection(Of E).contains
+			Public Overridable Function contains(  o As Object) As Boolean Implements Collection(Of E).contains
 				Return c.contains(o)
 			End Function
 			Public Overridable Function toArray() As Object() Implements Collection(Of E).toArray
 				Return c.ToArray()
 			End Function
-			Public Overridable Function toArray(Of T)(ByVal a As T()) As T() Implements Collection(Of E).toArray
+			Public Overridable Function toArray(Of T)(  a As T()) As T() Implements Collection(Of E).toArray
 				Return c.ToArray(a)
 			End Function
 			Public Overrides Function ToString() As String
 				Return c.ToString()
 			End Function
-			Public Overridable Function remove(ByVal o As Object) As Boolean Implements Collection(Of E).remove
+			Public Overridable Function remove(  o As Object) As Boolean Implements Collection(Of E).remove
 				Return c.remove(o)
 			End Function
 			Public Overridable Sub clear() Implements Collection(Of E).clear
 				c.clear()
 			End Sub
 
-			Public Overridable Function containsAll(Of T1)(ByVal coll As Collection(Of T1)) As Boolean Implements Collection(Of E).containsAll
+			Public Overridable Function containsAll(Of T1)(  coll As Collection(Of T1)) As Boolean Implements Collection(Of E).containsAll
 				Return c.containsAll(coll)
 			End Function
-			Public Overridable Function removeAll(Of T1)(ByVal coll As Collection(Of T1)) As Boolean Implements Collection(Of E).removeAll
+			Public Overridable Function removeAll(Of T1)(  coll As Collection(Of T1)) As Boolean Implements Collection(Of E).removeAll
 				Return c.removeAll(coll)
 			End Function
-			Public Overridable Function retainAll(Of T1)(ByVal coll As Collection(Of T1)) As Boolean Implements Collection(Of E).retainAll
+			Public Overridable Function retainAll(Of T1)(  coll As Collection(Of T1)) As Boolean Implements Collection(Of E).retainAll
 				Return c.retainAll(coll)
 			End Function
 
@@ -3434,7 +3434,7 @@ Namespace java.util
 				End Sub
 			End Class
 
-			Public Overridable Function add(ByVal e As E) As Boolean
+			Public Overridable Function add(  e As E) As Boolean
 				Return c.add(typeCheck(e))
 			End Function
 
@@ -3450,7 +3450,7 @@ Namespace java.util
 			End Function
 
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-			Friend Overridable Function checkedCopyOf(Of T1 As E)(ByVal coll As Collection(Of T1)) As Collection(Of E)
+			Friend Overridable Function checkedCopyOf(Of T1 As E)(  coll As Collection(Of T1)) As Collection(Of E)
 				Dim a As Object()
 				Try
 					Dim z As E() = zeroLengthElementArray()
@@ -3472,7 +3472,7 @@ Namespace java.util
 				Return CType(a, Collection(Of E))
 			End Function
 
-			Public Overridable Function addAll(Of T1 As E)(ByVal coll As Collection(Of T1)) As Boolean Implements Collection(Of E).addAll
+			Public Overridable Function addAll(Of T1 As E)(  coll As Collection(Of T1)) As Boolean Implements Collection(Of E).addAll
 				' Doing things this way insulates us from concurrent changes
 				' in the contents of coll and provides all-or-nothing
 				' semantics (which we wouldn't get if we type-checked each
@@ -3482,11 +3482,11 @@ Namespace java.util
 
 			' Override default methods in Collection
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Overrides Sub forEach(Of T1)(ByVal action As java.util.function.Consumer(Of T1))
+			Public Overrides Sub forEach(Of T1)(  action As java.util.function.Consumer(Of T1))
 				c.forEach(action)
 			End Sub
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Overrides Function removeIf(Of T1)(ByVal filter As java.util.function.Predicate(Of T1)) As Boolean Implements Collection(Of E).removeIf
+			Public Overrides Function removeIf(Of T1)(  filter As java.util.function.Predicate(Of T1)) As Boolean Implements Collection(Of E).removeIf
 				Return c.removeIf(filter)
 			End Function
 			Public Overrides Function spliterator() As Spliterator(Of E) Implements Collection(Of E).spliterator
@@ -3526,7 +3526,7 @@ Namespace java.util
 		''' <param name="type"> the type of element that {@code queue} is permitted to hold </param>
 		''' <returns> a dynamically typesafe view of the specified queue
 		''' @since 1.8 </returns>
-		Public Shared Function checkedQueue(Of E)(ByVal queue As Queue(Of E), ByVal type As [Class]) As Queue(Of E)
+		Public Shared Function checkedQueue(Of E)(  queue As Queue(Of E),   type As [Class]) As Queue(Of E)
 			Return New CheckedQueue(Of )(queue, type)
 		End Function
 
@@ -3541,7 +3541,7 @@ Namespace java.util
 			Private Const serialVersionUID As Long = 1433151992604707767L
 			Friend ReadOnly queue As Queue(Of E)
 
-			Friend Sub New(ByVal queue As Queue(Of E), ByVal elementType As [Class])
+			Friend Sub New(  queue As Queue(Of E),   elementType As [Class])
 				MyBase.New(queue, elementType)
 				Me.queue = queue
 			End Sub
@@ -3549,7 +3549,7 @@ Namespace java.util
 			Public Overridable Function element() As E Implements Queue(Of E).element
 				Return queue.element()
 			End Function
-			Public Overrides Function Equals(ByVal o As Object) As Boolean
+			Public Overrides Function Equals(  o As Object) As Boolean
 				Return o Is Me OrElse c.Equals(o)
 			End Function
 			Public Overrides Function GetHashCode() As Integer
@@ -3564,7 +3564,7 @@ Namespace java.util
 			Public Overridable Function remove() As E Implements Queue(Of E).remove
 				Return queue.remove()
 			End Function
-			Public Overridable Function offer(ByVal e As E) As Boolean
+			Public Overridable Function offer(  e As E) As Boolean
 				Return queue.offer(typeCheck(e))
 			End Function
 		End Class
@@ -3595,7 +3595,7 @@ Namespace java.util
 		''' <param name="type"> the type of element that {@code s} is permitted to hold </param>
 		''' <returns> a dynamically typesafe view of the specified set
 		''' @since 1.5 </returns>
-		Public Shared Function checkedSet(Of E)(ByVal s As [Set](Of E), ByVal type As [Class]) As [Set](Of E)
+		Public Shared Function checkedSet(Of E)(  s As [Set](Of E),   type As [Class]) As [Set](Of E)
 			Return New CheckedSet(Of )(s, type)
 		End Function
 
@@ -3609,11 +3609,11 @@ Namespace java.util
 
 			Private Const serialVersionUID As Long = 4694047833775013803L
 
-			Friend Sub New(ByVal s As [Set](Of E), ByVal elementType As [Class])
+			Friend Sub New(  s As [Set](Of E),   elementType As [Class])
 				MyBase.New(s, elementType)
 			End Sub
 
-			Public Overrides Function Equals(ByVal o As Object) As Boolean
+			Public Overrides Function Equals(  o As Object) As Boolean
 				Return o Is Me OrElse c.Equals(o)
 			End Function
 			Public Overrides Function GetHashCode() As Integer
@@ -3648,7 +3648,7 @@ Namespace java.util
 		''' <param name="type"> the type of element that {@code s} is permitted to hold </param>
 		''' <returns> a dynamically typesafe view of the specified sorted set
 		''' @since 1.5 </returns>
-		Public Shared Function checkedSortedSet(Of E)(ByVal s As SortedSet(Of E), ByVal type As [Class]) As SortedSet(Of E)
+		Public Shared Function checkedSortedSet(Of E)(  s As SortedSet(Of E),   type As [Class]) As SortedSet(Of E)
 			Return New CheckedSortedSet(Of )(s, type)
 		End Function
 
@@ -3664,7 +3664,7 @@ Namespace java.util
 
 			Private ReadOnly ss As SortedSet(Of E)
 
-			Friend Sub New(ByVal s As SortedSet(Of E), ByVal type As [Class])
+			Friend Sub New(  s As SortedSet(Of E),   type As [Class])
 				MyBase.New(s, type)
 				ss = s
 			End Sub
@@ -3681,13 +3681,13 @@ Namespace java.util
 				Return ss.last()
 			End Function
 
-			Public Overridable Function subSet(ByVal fromElement As E, ByVal toElement As E) As SortedSet(Of E)
+			Public Overridable Function subSet(  fromElement As E,   toElement As E) As SortedSet(Of E)
 				Return checkedSortedSet(ss.subSet(fromElement,toElement), type)
 			End Function
-			Public Overridable Function headSet(ByVal toElement As E) As SortedSet(Of E)
+			Public Overridable Function headSet(  toElement As E) As SortedSet(Of E)
 				Return checkedSortedSet(ss.headSet(toElement), type)
 			End Function
-			Public Overridable Function tailSet(ByVal fromElement As E) As SortedSet(Of E)
+			Public Overridable Function tailSet(  fromElement As E) As SortedSet(Of E)
 				Return checkedSortedSet(ss.tailSet(fromElement), type)
 			End Function
 		End Class
@@ -3719,7 +3719,7 @@ Namespace java.util
 	''' <param name="type"> the type of element that {@code s} is permitted to hold </param>
 	''' <returns> a dynamically typesafe view of the specified navigable set
 	''' @since 1.8 </returns>
-		Public Shared Function checkedNavigableSet(Of E)(ByVal s As NavigableSet(Of E), ByVal type As [Class]) As NavigableSet(Of E)
+		Public Shared Function checkedNavigableSet(Of E)(  s As NavigableSet(Of E),   type As [Class]) As NavigableSet(Of E)
 			Return New CheckedNavigableSet(Of )(s, type)
 		End Function
 
@@ -3735,21 +3735,21 @@ Namespace java.util
 
 			Private ReadOnly ns As NavigableSet(Of E)
 
-			Friend Sub New(ByVal s As NavigableSet(Of E), ByVal type As [Class])
+			Friend Sub New(  s As NavigableSet(Of E),   type As [Class])
 				MyBase.New(s, type)
 				ns = s
 			End Sub
 
-			Public Overridable Function lower(ByVal e As E) As E
+			Public Overridable Function lower(  e As E) As E
 				Return ns.lower(e)
 			End Function
-			Public Overridable Function floor(ByVal e As E) As E
+			Public Overridable Function floor(  e As E) As E
 				Return ns.floor(e)
 			End Function
-			Public Overridable Function ceiling(ByVal e As E) As E
+			Public Overridable Function ceiling(  e As E) As E
 				Return ns.ceiling(e)
 			End Function
-			Public Overridable Function higher(ByVal e As E) As E
+			Public Overridable Function higher(  e As E) As E
 				Return ns.higher(e)
 			End Function
 			Public Overridable Function pollFirst() As E Implements NavigableSet(Of E).pollFirst
@@ -3765,25 +3765,25 @@ Namespace java.util
 					Return checkedNavigableSet(ns.descendingSet(), type).GetEnumerator()
 			End Function
 
-			Public Overridable Function subSet(ByVal fromElement As E, ByVal toElement As E) As NavigableSet(Of E)
+			Public Overridable Function subSet(  fromElement As E,   toElement As E) As NavigableSet(Of E)
 				Return checkedNavigableSet(ns.subSet(fromElement, True, toElement, False), type)
 			End Function
-			Public Overridable Function headSet(ByVal toElement As E) As NavigableSet(Of E)
+			Public Overridable Function headSet(  toElement As E) As NavigableSet(Of E)
 				Return checkedNavigableSet(ns.headSet(toElement, False), type)
 			End Function
-			Public Overridable Function tailSet(ByVal fromElement As E) As NavigableSet(Of E)
+			Public Overridable Function tailSet(  fromElement As E) As NavigableSet(Of E)
 				Return checkedNavigableSet(ns.tailSet(fromElement, True), type)
 			End Function
 
-			Public Overridable Function subSet(ByVal fromElement As E, ByVal fromInclusive As Boolean, ByVal toElement As E, ByVal toInclusive As Boolean) As NavigableSet(Of E)
+			Public Overridable Function subSet(  fromElement As E,   fromInclusive As Boolean,   toElement As E,   toInclusive As Boolean) As NavigableSet(Of E)
 				Return checkedNavigableSet(ns.subSet(fromElement, fromInclusive, toElement, toInclusive), type)
 			End Function
 
-			Public Overridable Function headSet(ByVal toElement As E, ByVal inclusive As Boolean) As NavigableSet(Of E)
+			Public Overridable Function headSet(  toElement As E,   inclusive As Boolean) As NavigableSet(Of E)
 				Return checkedNavigableSet(ns.headSet(toElement, inclusive), type)
 			End Function
 
-			Public Overridable Function tailSet(ByVal fromElement As E, ByVal inclusive As Boolean) As NavigableSet(Of E)
+			Public Overridable Function tailSet(  fromElement As E,   inclusive As Boolean) As NavigableSet(Of E)
 				Return checkedNavigableSet(ns.tailSet(fromElement, inclusive), type)
 			End Function
 		End Class
@@ -3814,7 +3814,7 @@ Namespace java.util
 		''' <param name="type"> the type of element that {@code list} is permitted to hold </param>
 		''' <returns> a dynamically typesafe view of the specified list
 		''' @since 1.5 </returns>
-		Public Shared Function checkedList(Of E)(ByVal list As List(Of E), ByVal type As [Class]) As List(Of E)
+		Public Shared Function checkedList(Of E)(  list As List(Of E),   type As [Class]) As List(Of E)
 			Return (If(TypeOf list Is RandomAccess, New CheckedRandomAccessList(Of )(list, type), New CheckedList(Of )(list, type)))
 		End Function
 
@@ -3828,46 +3828,46 @@ Namespace java.util
 			Private Const serialVersionUID As Long = 65247728283967356L
 			Friend ReadOnly list As List(Of E)
 
-			Friend Sub New(ByVal list As List(Of E), ByVal type As [Class])
+			Friend Sub New(  list As List(Of E),   type As [Class])
 				MyBase.New(list, type)
 				Me.list = list
 			End Sub
 
-			Public Overrides Function Equals(ByVal o As Object) As Boolean
+			Public Overrides Function Equals(  o As Object) As Boolean
 				Return o Is Me OrElse list.Equals(o)
 			End Function
 			Public Overrides Function GetHashCode() As Integer
 				Return list.GetHashCode()
 			End Function
-			Public Overridable Function [get](ByVal index As Integer) As E Implements List(Of E).get
+			Public Overridable Function [get](  index As Integer) As E Implements List(Of E).get
 				Return list.get(index)
 			End Function
-			Public Overridable Function remove(ByVal index As Integer) As E Implements List(Of E).remove
+			Public Overridable Function remove(  index As Integer) As E Implements List(Of E).remove
 				Return list.remove(index)
 			End Function
-			Public Overridable Function indexOf(ByVal o As Object) As Integer Implements List(Of E).indexOf
+			Public Overridable Function indexOf(  o As Object) As Integer Implements List(Of E).indexOf
 				Return list.IndexOf(o)
 			End Function
-			Public Overridable Function lastIndexOf(ByVal o As Object) As Integer Implements List(Of E).lastIndexOf
+			Public Overridable Function lastIndexOf(  o As Object) As Integer Implements List(Of E).lastIndexOf
 				Return list.LastIndexOf(o)
 			End Function
 
-			Public Overridable Function [set](ByVal index As Integer, ByVal element As E) As E
+			Public Overridable Function [set](  index As Integer,   element As E) As E
 				Return list.set(index, typeCheck(element))
 			End Function
 
-			Public Overridable Sub add(ByVal index As Integer, ByVal element As E)
+			Public Overridable Sub add(  index As Integer,   element As E)
 				list.add(index, typeCheck(element))
 			End Sub
 
-			Public Overridable Function addAll(Of T1 As E)(ByVal index As Integer, ByVal c As Collection(Of T1)) As Boolean Implements List(Of E).addAll
+			Public Overridable Function addAll(Of T1 As E)(  index As Integer,   c As Collection(Of T1)) As Boolean Implements List(Of E).addAll
 				Return list.addAll(index, checkedCopyOf(c))
 			End Function
 			Public Overridable Function listIterator() As ListIterator(Of E) Implements List(Of E).listIterator
 				Return listIterator(0)
 			End Function
 
-			Public Overridable Function listIterator(ByVal index As Integer) As ListIterator(Of E) Implements List(Of E).listIterator
+			Public Overridable Function listIterator(  index As Integer) As ListIterator(Of E) Implements List(Of E).listIterator
 				Dim i As ListIterator(Of E) = list.listIterator(index)
 
 				Return New ListIteratorAnonymousInnerClassHelper(Of E)
@@ -3898,21 +3898,21 @@ Namespace java.util
 					i.remove()
 				End Sub
 
-				Public Overridable Sub [set](ByVal e As E)
+				Public Overridable Sub [set](  e As E)
 					i.set(outerInstance.typeCheck(e))
 				End Sub
 
-				Public Overridable Sub add(ByVal e As E)
+				Public Overridable Sub add(  e As E)
 					i.add(outerInstance.typeCheck(e))
 				End Sub
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-				Public Overrides Sub forEachRemaining(Of T1)(ByVal action As java.util.function.Consumer(Of T1))
+				Public Overrides Sub forEachRemaining(Of T1)(  action As java.util.function.Consumer(Of T1))
 					i.forEachRemaining(action)
 				End Sub
 			End Class
 
-			Public Overridable Function subList(ByVal fromIndex As Integer, ByVal toIndex As Integer) As List(Of E) Implements List(Of E).subList
+			Public Overridable Function subList(  fromIndex As Integer,   toIndex As Integer) As List(Of E) Implements List(Of E).subList
 				Return New CheckedList(Of )(list.subList(fromIndex, toIndex), type)
 			End Function
 
@@ -3923,13 +3923,13 @@ Namespace java.util
 			'''         operator prevents it from being added to this collection. The
 			'''         exception may be thrown after some elements of the list have
 			'''         already been replaced. </exception>
-			Public Overrides Sub replaceAll(ByVal [operator] As java.util.function.UnaryOperator(Of E)) Implements List(Of E).replaceAll
+			Public Overrides Sub replaceAll(  [operator] As java.util.function.UnaryOperator(Of E)) Implements List(Of E).replaceAll
 				Objects.requireNonNull([operator])
 				list.replaceAll(e -> typeCheck([operator].apply(e)))
 			End Sub
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Overrides Sub sort(Of T1)(ByVal c As Comparator(Of T1)) Implements List(Of E).sort
+			Public Overrides Sub sort(Of T1)(  c As Comparator(Of T1)) Implements List(Of E).sort
 				list.sort(c)
 			End Sub
 		End Class
@@ -3943,11 +3943,11 @@ Namespace java.util
 
 			Private Const serialVersionUID As Long = 1638200125423088369L
 
-			Friend Sub New(ByVal list As List(Of E), ByVal type As [Class])
+			Friend Sub New(  list As List(Of E),   type As [Class])
 				MyBase.New(list, type)
 			End Sub
 
-			Public Overridable Function subList(ByVal fromIndex As Integer, ByVal toIndex As Integer) As List(Of E)
+			Public Overridable Function subList(  fromIndex As Integer,   toIndex As Integer) As List(Of E)
 				Return New CheckedRandomAccessList(Of )(list.subList(fromIndex, toIndex), type)
 			End Function
 		End Class
@@ -3987,7 +3987,7 @@ Namespace java.util
 		''' <param name="valueType"> the type of value that {@code m} is permitted to hold </param>
 		''' <returns> a dynamically typesafe view of the specified map
 		''' @since 1.5 </returns>
-		Public Shared Function checkedMap(Of K, V)(ByVal m As Map(Of K, V), ByVal keyType As [Class], ByVal valueType As [Class]) As Map(Of K, V)
+		Public Shared Function checkedMap(Of K, V)(  m As Map(Of K, V),   keyType As [Class],   valueType As [Class]) As Map(Of K, V)
 			Return New CheckedMap(Of )(m, keyType, valueType)
 		End Function
 
@@ -4005,7 +4005,7 @@ Namespace java.util
 			Friend ReadOnly keyType As  [Class]
 			Friend ReadOnly valueType As  [Class]
 
-			Private Sub typeCheck(ByVal key As Object, ByVal value As Object)
+			Private Sub typeCheck(  key As Object,   value As Object)
 				If key IsNot Nothing AndAlso (Not keyType.isInstance(key)) Then Throw New ClassCastException(badKeyMsg(key))
 
 				If value IsNot Nothing AndAlso (Not valueType.isInstance(value)) Then Throw New ClassCastException(badValueMsg(value))
@@ -4013,7 +4013,7 @@ Namespace java.util
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-			Private Function typeCheck(Of T1 As V)(ByVal func As java.util.function.BiFunction(Of T1)) As java.util.function.BiFunction(Of ?, ?, ? As V)
+			Private Function typeCheck(Of T1 As V)(  func As java.util.function.BiFunction(Of T1)) As java.util.function.BiFunction(Of ?, ?, ? As V)
 				Objects.requireNonNull(func)
 				Return (k, v) ->
 					Dim newValue As V = func.apply(k, v)
@@ -4021,15 +4021,15 @@ Namespace java.util
 					Return newValue
 			End Function
 
-			Private Function badKeyMsg(ByVal key As Object) As String
+			Private Function badKeyMsg(  key As Object) As String
 				Return "Attempt to insert " & key.GetType() & " key into map with key type " & keyType
 			End Function
 
-			Private Function badValueMsg(ByVal value As Object) As String
+			Private Function badValueMsg(  value As Object) As String
 				Return "Attempt to insert " & value.GetType() & " value into map with value type " & valueType
 			End Function
 
-			Friend Sub New(ByVal m As Map(Of K, V), ByVal keyType As [Class], ByVal valueType As [Class])
+			Friend Sub New(  m As Map(Of K, V),   keyType As [Class],   valueType As [Class])
 				Me.m = Objects.requireNonNull(m)
 				Me.keyType = Objects.requireNonNull(keyType)
 				Me.valueType = Objects.requireNonNull(valueType)
@@ -4043,16 +4043,16 @@ Namespace java.util
 					Return m.empty
 				End Get
 			End Property
-			Public Overridable Function containsKey(ByVal key As Object) As Boolean Implements Map(Of K, V).containsKey
+			Public Overridable Function containsKey(  key As Object) As Boolean Implements Map(Of K, V).containsKey
 				Return m.containsKey(key)
 			End Function
-			Public Overridable Function containsValue(ByVal v As Object) As Boolean Implements Map(Of K, V).containsValue
+			Public Overridable Function containsValue(  v As Object) As Boolean Implements Map(Of K, V).containsValue
 				Return m.containsValue(v)
 			End Function
-			Public Overridable Function [get](ByVal key As Object) As V Implements Map(Of K, V).get
+			Public Overridable Function [get](  key As Object) As V Implements Map(Of K, V).get
 				Return m.get(key)
 			End Function
-			Public Overridable Function remove(ByVal key As Object) As V Implements Map(Of K, V).remove
+			Public Overridable Function remove(  key As Object) As V Implements Map(Of K, V).remove
 				Return m.remove(key)
 			End Function
 			Public Overridable Sub clear() Implements Map(Of K, V).clear
@@ -4064,7 +4064,7 @@ Namespace java.util
 			Public Overridable Function values() As Collection(Of V) Implements Map(Of K, V).values
 				Return m.values()
 			End Function
-			Public Overrides Function Equals(ByVal o As Object) As Boolean
+			Public Overrides Function Equals(  o As Object) As Boolean
 				Return o Is Me OrElse m.Equals(o)
 			End Function
 			Public Overrides Function GetHashCode() As Integer
@@ -4074,14 +4074,14 @@ Namespace java.util
 				Return m.ToString()
 			End Function
 
-			Public Overridable Function put(ByVal key As K, ByVal value As V) As V Implements Map(Of K, V).put
+			Public Overridable Function put(  key As K,   value As V) As V Implements Map(Of K, V).put
 				typeCheck(key, value)
 				Return m.put(key, value)
 			End Function
 
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-			Public Overridable Sub putAll(Of T1 As K, ? As V)(ByVal t As Map(Of T1)) Implements Map(Of K, V).putAll
+			Public Overridable Sub putAll(Of T1 As K, ? As V)(  t As Map(Of T1)) Implements Map(Of K, V).putAll
 				' Satisfy the following goals:
 				' - good diagnostics in case of type mismatch
 				' - all-or-nothing semantics
@@ -4112,53 +4112,53 @@ Namespace java.util
 
 			' Override default methods in Map
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Overrides Sub forEach(Of T1)(ByVal action As java.util.function.BiConsumer(Of T1)) Implements Map(Of K, V).forEach
+			Public Overrides Sub forEach(Of T1)(  action As java.util.function.BiConsumer(Of T1)) Implements Map(Of K, V).forEach
 				m.forEach(action)
 			End Sub
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Overrides Sub replaceAll(Of T1 As V)(ByVal [function] As java.util.function.BiFunction(Of T1)) Implements Map(Of K, V).replaceAll
+			Public Overrides Sub replaceAll(Of T1 As V)(  [function] As java.util.function.BiFunction(Of T1)) Implements Map(Of K, V).replaceAll
 				m.replaceAll(typeCheck([function]))
 			End Sub
 
-			Public Overrides Function putIfAbsent(ByVal key As K, ByVal value As V) As V Implements Map(Of K, V).putIfAbsent
+			Public Overrides Function putIfAbsent(  key As K,   value As V) As V Implements Map(Of K, V).putIfAbsent
 				typeCheck(key, value)
 				Return m.putIfAbsent(key, value)
 			End Function
 
-			Public Overrides Function remove(ByVal key As Object, ByVal value As Object) As Boolean Implements Map(Of K, V).remove
+			Public Overrides Function remove(  key As Object,   value As Object) As Boolean Implements Map(Of K, V).remove
 				Return m.remove(key, value)
 			End Function
 
-			Public Overrides Function replace(ByVal key As K, ByVal oldValue As V, ByVal newValue As V) As Boolean Implements Map(Of K, V).replace
+			Public Overrides Function replace(  key As K,   oldValue As V,   newValue As V) As Boolean Implements Map(Of K, V).replace
 				typeCheck(key, newValue)
 				Return m.replace(key, oldValue, newValue)
 			End Function
 
-			Public Overrides Function replace(ByVal key As K, ByVal value As V) As V Implements Map(Of K, V).replace
+			Public Overrides Function replace(  key As K,   value As V) As V Implements Map(Of K, V).replace
 				typeCheck(key, value)
 				Return m.replace(key, value)
 			End Function
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Overrides Function computeIfAbsent(Of T1 As V)(ByVal key As K, ByVal mappingFunction As java.util.function.Function(Of T1)) As V Implements Map(Of K, V).computeIfAbsent
+			Public Overrides Function computeIfAbsent(Of T1 As V)(  key As K,   mappingFunction As java.util.function.Function(Of T1)) As V Implements Map(Of K, V).computeIfAbsent
 				Objects.requireNonNull(mappingFunction)
 'JAVA TO VB CONVERTER TODO TASK: Assignments within expressions are not supported in VB
 				Return m.computeIfAbsent(key, k -> { V value = mappingFunction.apply(k); typeCheck(k, value); Return value; })
 			End Function
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Overrides Function computeIfPresent(Of T1 As V)(ByVal key As K, ByVal remappingFunction As java.util.function.BiFunction(Of T1)) As V Implements Map(Of K, V).computeIfPresent
+			Public Overrides Function computeIfPresent(Of T1 As V)(  key As K,   remappingFunction As java.util.function.BiFunction(Of T1)) As V Implements Map(Of K, V).computeIfPresent
 				Return m.computeIfPresent(key, typeCheck(remappingFunction))
 			End Function
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Overrides Function compute(Of T1 As V)(ByVal key As K, ByVal remappingFunction As java.util.function.BiFunction(Of T1)) As V Implements Map(Of K, V).compute
+			Public Overrides Function compute(Of T1 As V)(  key As K,   remappingFunction As java.util.function.BiFunction(Of T1)) As V Implements Map(Of K, V).compute
 				Return m.compute(key, typeCheck(remappingFunction))
 			End Function
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Overrides Function merge(Of T1 As V)(ByVal key As K, ByVal value As V, ByVal remappingFunction As java.util.function.BiFunction(Of T1)) As V Implements Map(Of K, V).merge
+			Public Overrides Function merge(Of T1 As V)(  key As K,   value As V,   remappingFunction As java.util.function.BiFunction(Of T1)) As V Implements Map(Of K, V).merge
 				Objects.requireNonNull(remappingFunction)
 'JAVA TO VB CONVERTER TODO TASK: Assignments within expressions are not supported in VB
 				Return m.merge(key, value, (v1, v2) -> { V newValue = remappingFunction.apply(v1, v2); typeCheck(Nothing, newValue); Return newValue; })
@@ -4178,7 +4178,7 @@ Namespace java.util
 				Private ReadOnly s As [Set](Of KeyValuePair(Of K, V))
 				Private ReadOnly valueType As  [Class]
 
-				Friend Sub New(ByVal s As [Set](Of KeyValuePair(Of K, V)), ByVal valueType As [Class])
+				Friend Sub New(  s As [Set](Of KeyValuePair(Of K, V)),   valueType As [Class])
 					Me.s = s
 					Me.valueType = valueType
 				End Sub
@@ -4201,10 +4201,10 @@ Namespace java.util
 					s.clear()
 				End Sub
 
-				Public Overridable Function add(ByVal e As KeyValuePair(Of K, V)) As Boolean
+				Public Overridable Function add(  e As KeyValuePair(Of K, V)) As Boolean
 					Throw New UnsupportedOperationException
 				End Function
-				Public Overridable Function addAll(Of T1 As KeyValuePair(Of K, V)(ByVal coll As Collection(Of T1)) As Boolean Implements Set(Of KeyValuePair(Of K, V)).addAll
+				Public Overridable Function addAll(Of T1 As KeyValuePair(Of K, V)(  coll As Collection(Of T1)) As Boolean Implements Set(Of KeyValuePair(Of K, V)).addAll
 					Throw New UnsupportedOperationException
 				End Function
 
@@ -4247,7 +4247,7 @@ Namespace java.util
 				End Function
 
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-				Public Overridable Function toArray(Of T)(ByVal a As T()) As T() Implements Set(Of KeyValuePair(Of K, V)).toArray
+				Public Overridable Function toArray(Of T)(  a As T()) As T() Implements Set(Of KeyValuePair(Of K, V)).toArray
 					' We don't pass a to s.toArray, to avoid window of
 					' vulnerability wherein an unscrupulous multithreaded client
 					' could get his hands on raw (unwrapped) Entries from s.
@@ -4269,7 +4269,7 @@ Namespace java.util
 				''' that the equality-candidate is Map.Entry and calls its
 				''' setValue method.
 				''' </summary>
-				Public Overridable Function contains(ByVal o As Object) As Boolean Implements Set(Of KeyValuePair(Of K, V)).contains
+				Public Overridable Function contains(  o As Object) As Boolean Implements Set(Of KeyValuePair(Of K, V)).contains
 					If Not(TypeOf o Is DictionaryEntry) Then Return False
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 					Dim e As KeyValuePair(Of ?, ?) = CType(o, KeyValuePair(Of ?, ?))
@@ -4281,26 +4281,26 @@ Namespace java.util
 				''' against an unscrupulous collection whose contains(Object o)
 				''' method senses when o is a Map.Entry, and calls o.setValue.
 				''' </summary>
-				Public Overridable Function containsAll(Of T1)(ByVal c As Collection(Of T1)) As Boolean Implements Set(Of KeyValuePair(Of K, V)).containsAll
+				Public Overridable Function containsAll(Of T1)(  c As Collection(Of T1)) As Boolean Implements Set(Of KeyValuePair(Of K, V)).containsAll
 					For Each o As Object In c
 						If Not contains(o) Then ' Invokes safe contains() above Return False
 					Next o
 					Return True
 				End Function
 
-				Public Overridable Function remove(ByVal o As Object) As Boolean Implements Set(Of KeyValuePair(Of K, V)).remove
+				Public Overridable Function remove(  o As Object) As Boolean Implements Set(Of KeyValuePair(Of K, V)).remove
 					If Not(TypeOf o Is DictionaryEntry) Then Return False
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 					Return s.remove(New AbstractMap.SimpleImmutableEntry (Of )(CType(o, KeyValuePair(Of ?, ?))))
 				End Function
 
-				Public Overridable Function removeAll(Of T1)(ByVal c As Collection(Of T1)) As Boolean Implements Set(Of KeyValuePair(Of K, V)).removeAll
+				Public Overridable Function removeAll(Of T1)(  c As Collection(Of T1)) As Boolean Implements Set(Of KeyValuePair(Of K, V)).removeAll
 					Return batchRemove(c, False)
 				End Function
-				Public Overridable Function retainAll(Of T1)(ByVal c As Collection(Of T1)) As Boolean Implements Set(Of KeyValuePair(Of K, V)).retainAll
+				Public Overridable Function retainAll(Of T1)(  c As Collection(Of T1)) As Boolean Implements Set(Of KeyValuePair(Of K, V)).retainAll
 					Return batchRemove(c, True)
 				End Function
-				Private Function batchRemove(Of T1)(ByVal c As Collection(Of T1), ByVal complement As Boolean) As Boolean
+				Private Function batchRemove(Of T1)(  c As Collection(Of T1),   complement As Boolean) As Boolean
 					Objects.requireNonNull(c)
 					Dim modified As Boolean = False
 					Dim it As [Iterator](Of KeyValuePair(Of K, V)) = [iterator]()
@@ -4313,7 +4313,7 @@ Namespace java.util
 					Return modified
 				End Function
 
-				Public Overrides Function Equals(ByVal o As Object) As Boolean
+				Public Overrides Function Equals(  o As Object) As Boolean
 					If o Is Me Then Return True
 					If Not(TypeOf o Is Set) Then Return False
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
@@ -4321,7 +4321,7 @@ Namespace java.util
 					Return that.size() = s.size() AndAlso containsAll(that) ' Invokes safe containsAll() above
 				End Function
 
-				Friend Shared Function checkedEntry(Of K, V, T)(ByVal e As KeyValuePair(Of K, V), ByVal valueType As [Class]) As CheckedEntry(Of K, V, T)
+				Friend Shared Function checkedEntry(Of K, V, T)(  e As KeyValuePair(Of K, V),   valueType As [Class]) As CheckedEntry(Of K, V, T)
 					Return New CheckedEntry(Of )(e, valueType)
 				End Function
 
@@ -4338,7 +4338,7 @@ Namespace java.util
 					Private ReadOnly e As KeyValuePair(Of K, V)
 					Private ReadOnly valueType As  [Class]
 
-					Friend Sub New(ByVal e As KeyValuePair(Of K, V), ByVal valueType As [Class])
+					Friend Sub New(  e As KeyValuePair(Of K, V),   valueType As [Class])
 						Me.e = Objects.requireNonNull(e)
 						Me.valueType = Objects.requireNonNull(valueType)
 					End Sub
@@ -4360,16 +4360,16 @@ Namespace java.util
 						Return e.ToString()
 					End Function
 
-					Public Overridable Function setValue(ByVal value As V) As V
+					Public Overridable Function setValue(  value As V) As V
 						If value IsNot Nothing AndAlso (Not valueType.isInstance(value)) Then Throw New ClassCastException(badValueMsg(value))
 						Return e.valuelue(value)
 					End Function
 
-					Private Function badValueMsg(ByVal value As Object) As String
+					Private Function badValueMsg(  value As Object) As String
 						Return "Attempt to insert " & value.GetType() & " value into map with value type " & valueType
 					End Function
 
-					Public Overrides Function Equals(ByVal o As Object) As Boolean
+					Public Overrides Function Equals(  o As Object) As Boolean
 						If o Is Me Then Return True
 						If Not(TypeOf o Is DictionaryEntry) Then Return False
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
@@ -4414,7 +4414,7 @@ Namespace java.util
 		''' <param name="valueType"> the type of value that {@code m} is permitted to hold </param>
 		''' <returns> a dynamically typesafe view of the specified map
 		''' @since 1.5 </returns>
-		Public Shared Function checkedSortedMap(Of K, V)(ByVal m As SortedMap(Of K, V), ByVal keyType As [Class], ByVal valueType As [Class]) As SortedMap(Of K, V)
+		Public Shared Function checkedSortedMap(Of K, V)(  m As SortedMap(Of K, V),   keyType As [Class],   valueType As [Class]) As SortedMap(Of K, V)
 			Return New CheckedSortedMap(Of )(m, keyType, valueType)
 		End Function
 
@@ -4430,7 +4430,7 @@ Namespace java.util
 
 			Private ReadOnly sm As SortedMap(Of K, V)
 
-			Friend Sub New(ByVal m As SortedMap(Of K, V), ByVal keyType As [Class], ByVal valueType As [Class])
+			Friend Sub New(  m As SortedMap(Of K, V),   keyType As [Class],   valueType As [Class])
 				MyBase.New(m, keyType, valueType)
 				sm = m
 			End Sub
@@ -4447,13 +4447,13 @@ Namespace java.util
 				Return sm.lastKey()
 			End Function
 
-			Public Overridable Function subMap(ByVal fromKey As K, ByVal toKey As K) As SortedMap(Of K, V) Implements SortedMap(Of K, V).subMap
+			Public Overridable Function subMap(  fromKey As K,   toKey As K) As SortedMap(Of K, V) Implements SortedMap(Of K, V).subMap
 				Return checkedSortedMap(sm.subMap(fromKey, toKey), keyType, valueType)
 			End Function
-			Public Overridable Function headMap(ByVal toKey As K) As SortedMap(Of K, V) Implements SortedMap(Of K, V).headMap
+			Public Overridable Function headMap(  toKey As K) As SortedMap(Of K, V) Implements SortedMap(Of K, V).headMap
 				Return checkedSortedMap(sm.headMap(toKey), keyType, valueType)
 			End Function
-			Public Overridable Function tailMap(ByVal fromKey As K) As SortedMap(Of K, V) Implements SortedMap(Of K, V).tailMap
+			Public Overridable Function tailMap(  fromKey As K) As SortedMap(Of K, V) Implements SortedMap(Of K, V).tailMap
 				Return checkedSortedMap(sm.tailMap(fromKey), keyType, valueType)
 			End Function
 		End Class
@@ -4493,7 +4493,7 @@ Namespace java.util
 		''' <param name="valueType"> the type of value that {@code m} is permitted to hold </param>
 		''' <returns> a dynamically typesafe view of the specified map
 		''' @since 1.8 </returns>
-		Public Shared Function checkedNavigableMap(Of K, V)(ByVal m As NavigableMap(Of K, V), ByVal keyType As [Class], ByVal valueType As [Class]) As NavigableMap(Of K, V)
+		Public Shared Function checkedNavigableMap(Of K, V)(  m As NavigableMap(Of K, V),   keyType As [Class],   valueType As [Class]) As NavigableMap(Of K, V)
 			Return New CheckedNavigableMap(Of )(m, keyType, valueType)
 		End Function
 
@@ -4509,7 +4509,7 @@ Namespace java.util
 
 			Private ReadOnly nm As NavigableMap(Of K, V)
 
-			Friend Sub New(ByVal m As NavigableMap(Of K, V), ByVal keyType As [Class], ByVal valueType As [Class])
+			Friend Sub New(  m As NavigableMap(Of K, V),   keyType As [Class],   valueType As [Class])
 				MyBase.New(m, keyType, valueType)
 				nm = m
 			End Sub
@@ -4526,39 +4526,39 @@ Namespace java.util
 				Return nm.lastKey()
 			End Function
 
-			Public Overridable Function lowerEntry(ByVal key As K) As Entry(Of K, V)
+			Public Overridable Function lowerEntry(  key As K) As Entry(Of K, V)
 				Dim lower As Entry(Of K, V) = nm.lowerEntry(key)
 				Return If(Nothing IsNot lower, New CheckedMap.CheckedEntrySet.CheckedEntry(Of )(lower, valueType), Nothing)
 			End Function
 
-			Public Overridable Function lowerKey(ByVal key As K) As K Implements NavigableMap(Of K, V).lowerKey
+			Public Overridable Function lowerKey(  key As K) As K Implements NavigableMap(Of K, V).lowerKey
 				Return nm.lowerKey(key)
 			End Function
 
-			Public Overridable Function floorEntry(ByVal key As K) As Entry(Of K, V)
+			Public Overridable Function floorEntry(  key As K) As Entry(Of K, V)
 				Dim floor As Entry(Of K, V) = nm.floorEntry(key)
 				Return If(Nothing IsNot floor, New CheckedMap.CheckedEntrySet.CheckedEntry(Of )(floor, valueType), Nothing)
 			End Function
 
-			Public Overridable Function floorKey(ByVal key As K) As K Implements NavigableMap(Of K, V).floorKey
+			Public Overridable Function floorKey(  key As K) As K Implements NavigableMap(Of K, V).floorKey
 				Return nm.floorKey(key)
 			End Function
 
-			Public Overridable Function ceilingEntry(ByVal key As K) As Entry(Of K, V)
+			Public Overridable Function ceilingEntry(  key As K) As Entry(Of K, V)
 				Dim ceiling As Entry(Of K, V) = nm.ceilingEntry(key)
 				Return If(Nothing IsNot ceiling, New CheckedMap.CheckedEntrySet.CheckedEntry(Of )(ceiling, valueType), Nothing)
 			End Function
 
-			Public Overridable Function ceilingKey(ByVal key As K) As K Implements NavigableMap(Of K, V).ceilingKey
+			Public Overridable Function ceilingKey(  key As K) As K Implements NavigableMap(Of K, V).ceilingKey
 				Return nm.ceilingKey(key)
 			End Function
 
-			Public Overridable Function higherEntry(ByVal key As K) As Entry(Of K, V)
+			Public Overridable Function higherEntry(  key As K) As Entry(Of K, V)
 				Dim higher As Entry(Of K, V) = nm.higherEntry(key)
 				Return If(Nothing IsNot higher, New CheckedMap.CheckedEntrySet.CheckedEntry(Of )(higher, valueType), Nothing)
 			End Function
 
-			Public Overridable Function higherKey(ByVal key As K) As K Implements NavigableMap(Of K, V).higherKey
+			Public Overridable Function higherKey(  key As K) As K Implements NavigableMap(Of K, V).higherKey
 				Return nm.higherKey(key)
 			End Function
 
@@ -4598,27 +4598,27 @@ Namespace java.util
 				Return checkedNavigableSet(nm.descendingKeySet(), keyType)
 			End Function
 
-			Public Overrides Function subMap(ByVal fromKey As K, ByVal toKey As K) As NavigableMap(Of K, V)
+			Public Overrides Function subMap(  fromKey As K,   toKey As K) As NavigableMap(Of K, V)
 				Return checkedNavigableMap(nm.subMap(fromKey, True, toKey, False), keyType, valueType)
 			End Function
 
-			Public Overrides Function headMap(ByVal toKey As K) As NavigableMap(Of K, V)
+			Public Overrides Function headMap(  toKey As K) As NavigableMap(Of K, V)
 				Return checkedNavigableMap(nm.headMap(toKey, False), keyType, valueType)
 			End Function
 
-			Public Overrides Function tailMap(ByVal fromKey As K) As NavigableMap(Of K, V)
+			Public Overrides Function tailMap(  fromKey As K) As NavigableMap(Of K, V)
 				Return checkedNavigableMap(nm.tailMap(fromKey, True), keyType, valueType)
 			End Function
 
-			Public Overridable Function subMap(ByVal fromKey As K, ByVal fromInclusive As Boolean, ByVal toKey As K, ByVal toInclusive As Boolean) As NavigableMap(Of K, V) Implements NavigableMap(Of K, V).subMap
+			Public Overridable Function subMap(  fromKey As K,   fromInclusive As Boolean,   toKey As K,   toInclusive As Boolean) As NavigableMap(Of K, V) Implements NavigableMap(Of K, V).subMap
 				Return checkedNavigableMap(nm.subMap(fromKey, fromInclusive, toKey, toInclusive), keyType, valueType)
 			End Function
 
-			Public Overridable Function headMap(ByVal toKey As K, ByVal inclusive As Boolean) As NavigableMap(Of K, V) Implements NavigableMap(Of K, V).headMap
+			Public Overridable Function headMap(  toKey As K,   inclusive As Boolean) As NavigableMap(Of K, V) Implements NavigableMap(Of K, V).headMap
 				Return checkedNavigableMap(nm.headMap(toKey, inclusive), keyType, valueType)
 			End Function
 
-			Public Overridable Function tailMap(ByVal fromKey As K, ByVal inclusive As Boolean) As NavigableMap(Of K, V) Implements NavigableMap(Of K, V).tailMap
+			Public Overridable Function tailMap(  fromKey As K,   inclusive As Boolean) As NavigableMap(Of K, V) Implements NavigableMap(Of K, V).tailMap
 				Return checkedNavigableMap(nm.tailMap(fromKey, inclusive), keyType, valueType)
 			End Function
 		End Class
@@ -4663,7 +4663,7 @@ Namespace java.util
 				Throw New IllegalStateException
 			End Sub
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Overrides Sub forEachRemaining(Of T1)(ByVal action As java.util.function.Consumer(Of T1)) Implements Iterator(Of E).forEachRemaining
+			Public Overrides Sub forEachRemaining(Of T1)(  action As java.util.function.Consumer(Of T1)) Implements Iterator(Of E).forEachRemaining
 				Objects.requireNonNull(action)
 			End Sub
 		End Class
@@ -4716,10 +4716,10 @@ Namespace java.util
 			Public Overridable Function previousIndex() As Integer Implements ListIterator(Of E).previousIndex
 				Return -1
 			End Function
-			Public Overridable Sub [set](ByVal e As E)
+			Public Overridable Sub [set](  e As E)
 				Throw New IllegalStateException
 			End Sub
-			Public Overridable Sub add(ByVal e As E)
+			Public Overridable Sub add(  e As E)
 				Throw New UnsupportedOperationException
 			End Sub
 		End Class
@@ -4810,10 +4810,10 @@ Namespace java.util
 				End Get
 			End Property
 
-			Public Overridable Function contains(ByVal obj As Object) As Boolean
+			Public Overridable Function contains(  obj As Object) As Boolean
 				Return False
 			End Function
-			Public Overridable Function containsAll(Of T1)(ByVal c As Collection(Of T1)) As Boolean
+			Public Overridable Function containsAll(Of T1)(  c As Collection(Of T1)) As Boolean
 				Return c.empty
 			End Function
 
@@ -4821,18 +4821,18 @@ Namespace java.util
 				Return New Object(){}
 			End Function
 
-			Public Overridable Function toArray(Of T)(ByVal a As T()) As T()
+			Public Overridable Function toArray(Of T)(  a As T()) As T()
 				If a.Length > 0 Then a(0) = Nothing
 				Return a
 			End Function
 
 			' Override default methods in Collection
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Overrides Sub forEach(Of T1)(ByVal action As java.util.function.Consumer(Of T1))
+			Public Overrides Sub forEach(Of T1)(  action As java.util.function.Consumer(Of T1))
 				Objects.requireNonNull(action)
 			End Sub
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Overrides Function removeIf(Of T1)(ByVal filter As java.util.function.Predicate(Of T1)) As Boolean
+			Public Overrides Function removeIf(Of T1)(  filter As java.util.function.Predicate(Of T1)) As Boolean
 				Objects.requireNonNull(filter)
 				Return False
 			End Function
@@ -4943,10 +4943,10 @@ Namespace java.util
 				End Get
 			End Property
 
-			Public Overridable Function contains(ByVal obj As Object) As Boolean
+			Public Overridable Function contains(  obj As Object) As Boolean
 				Return False
 			End Function
-			Public Overridable Function containsAll(Of T1)(ByVal c As Collection(Of T1)) As Boolean
+			Public Overridable Function containsAll(Of T1)(  c As Collection(Of T1)) As Boolean
 				Return c.empty
 			End Function
 
@@ -4954,16 +4954,16 @@ Namespace java.util
 				Return New Object(){}
 			End Function
 
-			Public Overridable Function toArray(Of T)(ByVal a As T()) As T()
+			Public Overridable Function toArray(Of T)(  a As T()) As T()
 				If a.Length > 0 Then a(0) = Nothing
 				Return a
 			End Function
 
-			Public Overridable Function [get](ByVal index As Integer) As E
+			Public Overridable Function [get](  index As Integer) As E
 				Throw New IndexOutOfBoundsException("Index: " & index)
 			End Function
 
-			Public Overrides Function Equals(ByVal o As Object) As Boolean
+			Public Overrides Function Equals(  o As Object) As Boolean
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 				Return (TypeOf o Is List) AndAlso CType(o, List(Of ?)).empty
 			End Function
@@ -4973,20 +4973,20 @@ Namespace java.util
 			End Function
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Overrides Function removeIf(Of T1)(ByVal filter As java.util.function.Predicate(Of T1)) As Boolean
+			Public Overrides Function removeIf(Of T1)(  filter As java.util.function.Predicate(Of T1)) As Boolean
 				Objects.requireNonNull(filter)
 				Return False
 			End Function
-			Public Overrides Sub replaceAll(ByVal [operator] As java.util.function.UnaryOperator(Of E))
+			Public Overrides Sub replaceAll(  [operator] As java.util.function.UnaryOperator(Of E))
 				Objects.requireNonNull([operator])
 			End Sub
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Overrides Sub sort(Of T1)(ByVal c As Comparator(Of T1))
+			Public Overrides Sub sort(Of T1)(  c As Comparator(Of T1))
 			End Sub
 
 			' Override default methods in Collection
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Overrides Sub forEach(Of T1)(ByVal action As java.util.function.Consumer(Of T1))
+			Public Overrides Sub forEach(Of T1)(  action As java.util.function.Consumer(Of T1))
 				Objects.requireNonNull(action)
 			End Sub
 
@@ -5087,13 +5087,13 @@ Namespace java.util
 					Return True
 				End Get
 			End Property
-			Public Overridable Function containsKey(ByVal key As Object) As Boolean
+			Public Overridable Function containsKey(  key As Object) As Boolean
 				Return False
 			End Function
-			Public Overridable Function containsValue(ByVal value As Object) As Boolean
+			Public Overridable Function containsValue(  value As Object) As Boolean
 				Return False
 			End Function
-			Public Overridable Function [get](ByVal key As Object) As V
+			Public Overridable Function [get](  key As Object) As V
 				Return Nothing
 			End Function
 			Public Overridable Function keySet() As [Set](Of K)
@@ -5106,7 +5106,7 @@ Namespace java.util
 				Return emptySet()
 			End Function
 
-			Public Overrides Function Equals(ByVal o As Object) As Boolean
+			Public Overrides Function Equals(  o As Object) As Boolean
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 				Return (TypeOf o Is Map) AndAlso CType(o, Map(Of ?, ?)).empty
 			End Function
@@ -5117,53 +5117,53 @@ Namespace java.util
 
 			' Override default methods in Map
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-			Public Overrides Function getOrDefault(ByVal k As Object, ByVal defaultValue As V) As V
+			Public Overrides Function getOrDefault(  k As Object,   defaultValue As V) As V
 				Return defaultValue
 			End Function
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Overrides Sub forEach(Of T1)(ByVal action As java.util.function.BiConsumer(Of T1))
+			Public Overrides Sub forEach(Of T1)(  action As java.util.function.BiConsumer(Of T1))
 				Objects.requireNonNull(action)
 			End Sub
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Overrides Sub replaceAll(Of T1 As V)(ByVal [function] As java.util.function.BiFunction(Of T1))
+			Public Overrides Sub replaceAll(Of T1 As V)(  [function] As java.util.function.BiFunction(Of T1))
 				Objects.requireNonNull([function])
 			End Sub
 
-			Public Overrides Function putIfAbsent(ByVal key As K, ByVal value As V) As V
+			Public Overrides Function putIfAbsent(  key As K,   value As V) As V
 				Throw New UnsupportedOperationException
 			End Function
 
-			Public Overrides Function remove(ByVal key As Object, ByVal value As Object) As Boolean
+			Public Overrides Function remove(  key As Object,   value As Object) As Boolean
 				Throw New UnsupportedOperationException
 			End Function
 
-			Public Overrides Function replace(ByVal key As K, ByVal oldValue As V, ByVal newValue As V) As Boolean
+			Public Overrides Function replace(  key As K,   oldValue As V,   newValue As V) As Boolean
 				Throw New UnsupportedOperationException
 			End Function
 
-			Public Overrides Function replace(ByVal key As K, ByVal value As V) As V
-				Throw New UnsupportedOperationException
-			End Function
-
-'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Overrides Function computeIfAbsent(Of T1 As V)(ByVal key As K, ByVal mappingFunction As java.util.function.Function(Of T1)) As V
+			Public Overrides Function replace(  key As K,   value As V) As V
 				Throw New UnsupportedOperationException
 			End Function
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Overrides Function computeIfPresent(Of T1 As V)(ByVal key As K, ByVal remappingFunction As java.util.function.BiFunction(Of T1)) As V
+			Public Overrides Function computeIfAbsent(Of T1 As V)(  key As K,   mappingFunction As java.util.function.Function(Of T1)) As V
 				Throw New UnsupportedOperationException
 			End Function
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Overrides Function compute(Of T1 As V)(ByVal key As K, ByVal remappingFunction As java.util.function.BiFunction(Of T1)) As V
+			Public Overrides Function computeIfPresent(Of T1 As V)(  key As K,   remappingFunction As java.util.function.BiFunction(Of T1)) As V
 				Throw New UnsupportedOperationException
 			End Function
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Overrides Function merge(Of T1 As V)(ByVal key As K, ByVal value As V, ByVal remappingFunction As java.util.function.BiFunction(Of T1)) As V
+			Public Overrides Function compute(Of T1 As V)(  key As K,   remappingFunction As java.util.function.BiFunction(Of T1)) As V
+				Throw New UnsupportedOperationException
+			End Function
+
+'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
+			Public Overrides Function merge(Of T1 As V)(  key As K,   value As V,   remappingFunction As java.util.function.BiFunction(Of T1)) As V
 				Throw New UnsupportedOperationException
 			End Function
 
@@ -5182,11 +5182,11 @@ Namespace java.util
 		''' @param  <T> the class of the objects in the set </param>
 		''' <param name="o"> the sole object to be stored in the returned set. </param>
 		''' <returns> an immutable set containing only the specified object. </returns>
-		Public Shared Function singleton(Of T)(ByVal o As T) As [Set](Of T)
+		Public Shared Function singleton(Of T)(  o As T) As [Set](Of T)
 			Return New SingletonSet(Of )(o)
 		End Function
 
-		Friend Shared Function singletonIterator(Of E)(ByVal e As E) As [Iterator](Of E)
+		Friend Shared Function singletonIterator(Of E)(  e As E) As [Iterator](Of E)
 			Return New IteratorAnonymousInnerClassHelper(Of E)
 		End Function
 
@@ -5208,7 +5208,7 @@ Namespace java.util
 				Throw New UnsupportedOperationException
 			End Sub
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Overrides Sub forEachRemaining(Of T1)(ByVal action As java.util.function.Consumer(Of T1)) Implements Iterator(Of E).forEachRemaining
+			Public Overrides Sub forEachRemaining(Of T1)(  action As java.util.function.Consumer(Of T1)) Implements Iterator(Of E).forEachRemaining
 				Objects.requireNonNull(action)
 				If hasNext Then
 					action.accept(e)
@@ -5222,7 +5222,7 @@ Namespace java.util
 		''' </summary>
 		''' @param <T> Type of elements </param>
 		''' <returns> A singleton {@code Spliterator} </returns>
-		Friend Shared Function singletonSpliterator(Of T)(ByVal element As T) As Spliterator(Of T)
+		Friend Shared Function singletonSpliterator(Of T)(  element As T) As Spliterator(Of T)
 			Return New SpliteratorAnonymousInnerClassHelper(Of T)
 		End Function
 
@@ -5236,7 +5236,7 @@ Namespace java.util
 			End Function
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Overrides Function tryAdvance(Of T1)(ByVal consumer As java.util.function.Consumer(Of T1)) As Boolean Implements Spliterator(Of T).tryAdvance
+			Public Overrides Function tryAdvance(Of T1)(  consumer As java.util.function.Consumer(Of T1)) As Boolean Implements Spliterator(Of T).tryAdvance
 				Objects.requireNonNull(consumer)
 				If est > 0 Then
 					est -= 1
@@ -5247,7 +5247,7 @@ Namespace java.util
 			End Function
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Overrides Sub forEachRemaining(Of T1)(ByVal consumer As java.util.function.Consumer(Of T1)) Implements Spliterator(Of T).forEachRemaining
+			Public Overrides Sub forEachRemaining(Of T1)(  consumer As java.util.function.Consumer(Of T1)) Implements Spliterator(Of T).forEachRemaining
 				tryAdvance(consumer)
 			End Sub
 
@@ -5273,7 +5273,7 @@ Namespace java.util
 
 			Private ReadOnly element As E
 
-			Friend Sub New(ByVal e As E)
+			Friend Sub New(  e As E)
 				element = e
 			End Sub
 
@@ -5285,20 +5285,20 @@ Namespace java.util
 				Return 1
 			End Function
 
-			Public Overridable Function contains(ByVal o As Object) As Boolean
+			Public Overridable Function contains(  o As Object) As Boolean
 				Return eq(o, element)
 			End Function
 
 			' Override default methods for Collection
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Overrides Sub forEach(Of T1)(ByVal action As java.util.function.Consumer(Of T1))
+			Public Overrides Sub forEach(Of T1)(  action As java.util.function.Consumer(Of T1))
 				action.accept(element)
 			End Sub
 			Public Overrides Function spliterator() As Spliterator(Of E)
 				Return singletonSpliterator(element)
 			End Function
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Overrides Function removeIf(Of T1)(ByVal filter As java.util.function.Predicate(Of T1)) As Boolean
+			Public Overrides Function removeIf(Of T1)(  filter As java.util.function.Predicate(Of T1)) As Boolean
 				Throw New UnsupportedOperationException
 			End Function
 		End Class
@@ -5311,7 +5311,7 @@ Namespace java.util
 		''' <param name="o"> the sole object to be stored in the returned list. </param>
 		''' <returns> an immutable list containing only the specified object.
 		''' @since 1.3 </returns>
-		Public Shared Function singletonList(Of T)(ByVal o As T) As List(Of T)
+		Public Shared Function singletonList(Of T)(  o As T) As List(Of T)
 			Return New SingletonList(Of )(o)
 		End Function
 
@@ -5327,7 +5327,7 @@ Namespace java.util
 
 			Private ReadOnly element As E
 
-			Friend Sub New(ByVal obj As E)
+			Friend Sub New(  obj As E)
 				element = obj
 			End Sub
 
@@ -5339,29 +5339,29 @@ Namespace java.util
 				Return 1
 			End Function
 
-			Public Overridable Function contains(ByVal obj As Object) As Boolean
+			Public Overridable Function contains(  obj As Object) As Boolean
 				Return eq(obj, element)
 			End Function
 
-			Public Overridable Function [get](ByVal index As Integer) As E
+			Public Overridable Function [get](  index As Integer) As E
 				If index <> 0 Then Throw New IndexOutOfBoundsException("Index: " & index & ", Size: 1")
 				Return element
 			End Function
 
 			' Override default methods for Collection
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Overrides Sub forEach(Of T1)(ByVal action As java.util.function.Consumer(Of T1))
+			Public Overrides Sub forEach(Of T1)(  action As java.util.function.Consumer(Of T1))
 				action.accept(element)
 			End Sub
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Overrides Function removeIf(Of T1)(ByVal filter As java.util.function.Predicate(Of T1)) As Boolean
+			Public Overrides Function removeIf(Of T1)(  filter As java.util.function.Predicate(Of T1)) As Boolean
 				Throw New UnsupportedOperationException
 			End Function
-			Public Overrides Sub replaceAll(ByVal [operator] As java.util.function.UnaryOperator(Of E))
+			Public Overrides Sub replaceAll(  [operator] As java.util.function.UnaryOperator(Of E))
 				Throw New UnsupportedOperationException
 			End Sub
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Overrides Sub sort(Of T1)(ByVal c As Comparator(Of T1))
+			Public Overrides Sub sort(Of T1)(  c As Comparator(Of T1))
 			End Sub
 			Public Overrides Function spliterator() As Spliterator(Of E)
 				Return singletonSpliterator(element)
@@ -5379,7 +5379,7 @@ Namespace java.util
 		''' <returns> an immutable map containing only the specified key-value
 		'''         mapping.
 		''' @since 1.3 </returns>
-		Public Shared Function singletonMap(Of K, V)(ByVal key As K, ByVal value As V) As Map(Of K, V)
+		Public Shared Function singletonMap(Of K, V)(  key As K,   value As V) As Map(Of K, V)
 			Return New SingletonMap(Of )(key, value)
 		End Function
 
@@ -5395,7 +5395,7 @@ Namespace java.util
 			Private ReadOnly k As K
 			Private ReadOnly v As V
 
-			Friend Sub New(ByVal key As K, ByVal value As V)
+			Friend Sub New(  key As K,   value As V)
 				k = key
 				v = value
 			End Sub
@@ -5408,13 +5408,13 @@ Namespace java.util
 					Return False
 				End Get
 			End Property
-			Public Overridable Function containsKey(ByVal key As Object) As Boolean
+			Public Overridable Function containsKey(  key As Object) As Boolean
 				Return eq(key, k)
 			End Function
-			Public Overridable Function containsValue(ByVal value As Object) As Boolean
+			Public Overridable Function containsValue(  value As Object) As Boolean
 				Return eq(value, v)
 			End Function
-			Public Overridable Function [get](ByVal key As Object) As V
+			Public Overridable Function [get](  key As Object) As V
 				Return (If(eq(key, k), v, Nothing))
 			End Function
 
@@ -5441,53 +5441,53 @@ Namespace java.util
 			End Function
 
 			' Override default methods in Map
-			Public Overrides Function getOrDefault(ByVal key As Object, ByVal defaultValue As V) As V
+			Public Overrides Function getOrDefault(  key As Object,   defaultValue As V) As V
 				Return If(eq(key, k), v, defaultValue)
 			End Function
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Overrides Sub forEach(Of T1)(ByVal action As java.util.function.BiConsumer(Of T1))
+			Public Overrides Sub forEach(Of T1)(  action As java.util.function.BiConsumer(Of T1))
 				action.accept(k, v)
 			End Sub
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Overrides Sub replaceAll(Of T1 As V)(ByVal [function] As java.util.function.BiFunction(Of T1))
+			Public Overrides Sub replaceAll(Of T1 As V)(  [function] As java.util.function.BiFunction(Of T1))
 				Throw New UnsupportedOperationException
 			End Sub
 
-			Public Overrides Function putIfAbsent(ByVal key As K, ByVal value As V) As V
+			Public Overrides Function putIfAbsent(  key As K,   value As V) As V
 				Throw New UnsupportedOperationException
 			End Function
 
-			Public Overrides Function remove(ByVal key As Object, ByVal value As Object) As Boolean
+			Public Overrides Function remove(  key As Object,   value As Object) As Boolean
 				Throw New UnsupportedOperationException
 			End Function
 
-			Public Overrides Function replace(ByVal key As K, ByVal oldValue As V, ByVal newValue As V) As Boolean
+			Public Overrides Function replace(  key As K,   oldValue As V,   newValue As V) As Boolean
 				Throw New UnsupportedOperationException
 			End Function
 
-			Public Overrides Function replace(ByVal key As K, ByVal value As V) As V
-				Throw New UnsupportedOperationException
-			End Function
-
-'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Overrides Function computeIfAbsent(Of T1 As V)(ByVal key As K, ByVal mappingFunction As java.util.function.Function(Of T1)) As V
+			Public Overrides Function replace(  key As K,   value As V) As V
 				Throw New UnsupportedOperationException
 			End Function
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Overrides Function computeIfPresent(Of T1 As V)(ByVal key As K, ByVal remappingFunction As java.util.function.BiFunction(Of T1)) As V
+			Public Overrides Function computeIfAbsent(Of T1 As V)(  key As K,   mappingFunction As java.util.function.Function(Of T1)) As V
 				Throw New UnsupportedOperationException
 			End Function
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Overrides Function compute(Of T1 As V)(ByVal key As K, ByVal remappingFunction As java.util.function.BiFunction(Of T1)) As V
+			Public Overrides Function computeIfPresent(Of T1 As V)(  key As K,   remappingFunction As java.util.function.BiFunction(Of T1)) As V
 				Throw New UnsupportedOperationException
 			End Function
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Overrides Function merge(Of T1 As V)(ByVal key As K, ByVal value As V, ByVal remappingFunction As java.util.function.BiFunction(Of T1)) As V
+			Public Overrides Function compute(Of T1 As V)(  key As K,   remappingFunction As java.util.function.BiFunction(Of T1)) As V
+				Throw New UnsupportedOperationException
+			End Function
+
+'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
+			Public Overrides Function merge(Of T1 As V)(  key As K,   value As V,   remappingFunction As java.util.function.BiFunction(Of T1)) As V
 				Throw New UnsupportedOperationException
 			End Function
 		End Class
@@ -5510,7 +5510,7 @@ Namespace java.util
 		''' <exception cref="IllegalArgumentException"> if {@code n < 0} </exception>
 		''' <seealso cref=    List#addAll(Collection) </seealso>
 		''' <seealso cref=    List#addAll(int, Collection) </seealso>
-		Public Shared Function nCopies(Of T)(ByVal n As Integer, ByVal o As T) As List(Of T)
+		Public Shared Function nCopies(Of T)(  n As Integer,   o As T) As List(Of T)
 			If n < 0 Then Throw New IllegalArgumentException("List length = " & n)
 			Return New CopiesList(Of )(n, o)
 		End Function
@@ -5528,7 +5528,7 @@ Namespace java.util
 			Friend ReadOnly n As Integer
 			Friend ReadOnly element As E
 
-			Friend Sub New(ByVal n As Integer, ByVal e As E)
+			Friend Sub New(  n As Integer,   e As E)
 				Debug.Assert(n >= 0)
 				Me.n = n
 				element = e
@@ -5538,19 +5538,19 @@ Namespace java.util
 				Return n
 			End Function
 
-			Public Overridable Function contains(ByVal obj As Object) As Boolean
+			Public Overridable Function contains(  obj As Object) As Boolean
 				Return n <> 0 AndAlso eq(obj, element)
 			End Function
 
-			Public Overridable Function indexOf(ByVal o As Object) As Integer
+			Public Overridable Function indexOf(  o As Object) As Integer
 				Return If(contains(o), 0, -1)
 			End Function
 
-			Public Overridable Function lastIndexOf(ByVal o As Object) As Integer
+			Public Overridable Function lastIndexOf(  o As Object) As Integer
 				Return If(contains(o), n - 1, -1)
 			End Function
 
-			Public Overridable Function [get](ByVal index As Integer) As E
+			Public Overridable Function [get](  index As Integer) As E
 				If index < 0 OrElse index >= n Then Throw New IndexOutOfBoundsException("Index: " & index & ", Size: " & n)
 				Return element
 			End Function
@@ -5562,7 +5562,7 @@ Namespace java.util
 			End Function
 
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-			Public Overridable Function toArray(Of T)(ByVal a As T()) As T()
+			Public Overridable Function toArray(Of T)(  a As T()) As T()
 				Dim n As Integer = Me.n
 				If a.Length < n Then
 					a = CType(java.lang.reflect.Array.newInstance(a.GetType().GetElementType(), n), T())
@@ -5574,7 +5574,7 @@ Namespace java.util
 				Return a
 			End Function
 
-			Public Overridable Function subList(ByVal fromIndex As Integer, ByVal toIndex As Integer) As List(Of E)
+			Public Overridable Function subList(  fromIndex As Integer,   toIndex As Integer) As List(Of E)
 				If fromIndex < 0 Then Throw New IndexOutOfBoundsException("fromIndex = " & fromIndex)
 				If toIndex > n Then Throw New IndexOutOfBoundsException("toIndex = " & toIndex)
 				If fromIndex > toIndex Then Throw New IllegalArgumentException("fromIndex(" & fromIndex & ") > toIndex(" & toIndex & ")")
@@ -5630,7 +5630,7 @@ Namespace java.util
 
 			Friend Shared ReadOnly REVERSE_ORDER As New ReverseComparator
 
-			Public Overridable Function compare(ByVal c1 As Comparable(Of Object), ByVal c2 As Comparable(Of Object)) As Integer
+			Public Overridable Function compare(  c1 As Comparable(Of Object),   c2 As Comparable(Of Object)) As Integer
 				Return c2.CompareTo(c1)
 			End Function
 
@@ -5659,7 +5659,7 @@ Namespace java.util
 		''' <returns> A comparator that imposes the reverse ordering of the
 		'''         specified comparator.
 		''' @since 1.5 </returns>
-		Public Shared Function reverseOrder(Of T)(ByVal cmp As Comparator(Of T)) As Comparator(Of T)
+		Public Shared Function reverseOrder(Of T)(  cmp As Comparator(Of T)) As Comparator(Of T)
 			If cmp Is Nothing Then Return reverseOrder()
 
 			If TypeOf cmp Is ReverseComparator2 Then Return CType(cmp, ReverseComparator2(Of T)).cmp
@@ -5685,16 +5685,16 @@ Namespace java.util
 			''' </summary>
 			Friend ReadOnly cmp As Comparator(Of T)
 
-			Friend Sub New(ByVal cmp As Comparator(Of T))
+			Friend Sub New(  cmp As Comparator(Of T))
 				Debug.Assert(cmp IsNot Nothing)
 				Me.cmp = cmp
 			End Sub
 
-			Public Overridable Function compare(ByVal t1 As T, ByVal t2 As T) As Integer Implements Comparator(Of T).compare
+			Public Overridable Function compare(  t1 As T,   t2 As T) As Integer Implements Comparator(Of T).compare
 				Return cmp.Compare(t2, t1)
 			End Function
 
-			Public Overrides Function Equals(ByVal o As Object) As Boolean
+			Public Overrides Function Equals(  o As Object) As Boolean
 				Return (o Is Me) OrElse (TypeOf o Is ReverseComparator2 AndAlso cmp.Equals(CType(o, ReverseComparator2).cmp))
 			End Function
 
@@ -5716,7 +5716,7 @@ Namespace java.util
 		''' <param name="c"> the collection for which an enumeration is to be returned. </param>
 		''' <returns> an enumeration over the specified collection. </returns>
 		''' <seealso cref= Enumeration </seealso>
-		Public Shared Function enumeration(Of T)(ByVal c As Collection(Of T)) As Enumeration(Of T)
+		Public Shared Function enumeration(Of T)(  c As Collection(Of T)) As Enumeration(Of T)
 			Return New EnumerationAnonymousInnerClassHelper(Of E)
 		End Function
 
@@ -5749,7 +5749,7 @@ Namespace java.util
 		''' @since 1.4 </returns>
 		''' <seealso cref= Enumeration </seealso>
 		''' <seealso cref= ArrayList </seealso>
-		Public Shared Function list(Of T)(ByVal e As Enumeration(Of T)) As List(Of T)
+		Public Shared Function list(Of T)(  e As Enumeration(Of T)) As List(Of T)
 			Dim l As New List(Of T)
 			Do While e.hasMoreElements()
 				l.add(e.nextElement())
@@ -5762,7 +5762,7 @@ Namespace java.util
 		''' 
 		''' NB: Do not replace with Object.equals until JDK-8015417 is resolved.
 		''' </summary>
-		Friend Shared Function eq(ByVal o1 As Object, ByVal o2 As Object) As Boolean
+		Friend Shared Function eq(  o1 As Object,   o2 As Object) As Boolean
 			Return If(o1 Is Nothing, o2 Is Nothing, o1.Equals(o2))
 		End Function
 
@@ -5778,7 +5778,7 @@ Namespace java.util
 		''' <returns> the number of elements in {@code c} equal to {@code o} </returns>
 		''' <exception cref="NullPointerException"> if <tt>c</tt> is null
 		''' @since 1.5 </exception>
-		Public Shared Function frequency(Of T1)(ByVal c As Collection(Of T1), ByVal o As Object) As Integer
+		Public Shared Function frequency(Of T1)(  c As Collection(Of T1),   o As Object) As Integer
 			Dim result As Integer = 0
 			If o Is Nothing Then
 				For Each e As Object In c
@@ -5829,7 +5829,7 @@ Namespace java.util
 		''' of a type which is ineligible for the other collection.
 		''' (<a href="Collection.html#optional-restrictions">optional</a>)
 		''' @since 1.5 </exception>
-		Public Shared Function disjoint(Of T1, T2)(ByVal c1 As Collection(Of T1), ByVal c2 As Collection(Of T2)) As Boolean
+		Public Shared Function disjoint(Of T1, T2)(  c1 As Collection(Of T1),   c2 As Collection(Of T2)) As Boolean
 			' The collection to be used for contains(). Preference is given to
 			' the collection who's contains() has lower O() complexity.
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
@@ -5905,7 +5905,7 @@ Namespace java.util
 		''' @since 1.5 </seealso>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Shared Function addAll(Of T, T1)(ByVal c As Collection(Of T1), ParamArray ByVal elements As T()) As Boolean
+		Public Shared Function addAll(Of T, T1)(  c As Collection(Of T1), ParamArray   elements As T()) As Boolean
 			Dim result As Boolean = False
 			For Each element As T In elements
 				result = result Or c.add(element)
@@ -5943,7 +5943,7 @@ Namespace java.util
 		''' <returns> the set backed by the map </returns>
 		''' <exception cref="IllegalArgumentException"> if <tt>map</tt> is not empty
 		''' @since 1.6 </exception>
-		Public Shared Function newSetFromMap(Of E)(ByVal map As Map(Of E, Boolean?)) As [Set](Of E)
+		Public Shared Function newSetFromMap(Of E)(  map As Map(Of E, Boolean?)) As [Set](Of E)
 			Return New SetFromMap(Of )(map)
 		End Function
 
@@ -5959,7 +5959,7 @@ Namespace java.util
 			<NonSerialized> _
 			Private s As [Set](Of E) ' Its keySet
 
-			Friend Sub New(ByVal map As Map(Of E, Boolean?))
+			Friend Sub New(  map As Map(Of E, Boolean?))
 				If Not map.empty Then Throw New IllegalArgumentException("Map is non-empty")
 				m = map
 				s = map.Keys
@@ -5976,13 +5976,13 @@ Namespace java.util
 					Return m.empty
 				End Get
 			End Property
-			Public Overridable Function contains(ByVal o As Object) As Boolean Implements Set(Of E).contains
+			Public Overridable Function contains(  o As Object) As Boolean Implements Set(Of E).contains
 				Return m.containsKey(o)
 			End Function
-			Public Overridable Function remove(ByVal o As Object) As Boolean Implements Set(Of E).remove
+			Public Overridable Function remove(  o As Object) As Boolean Implements Set(Of E).remove
 				Return m.remove(o) IsNot Nothing
 			End Function
-			Public Overridable Function add(ByVal e As E) As Boolean
+			Public Overridable Function add(  e As E) As Boolean
 				Return m.put(e,  java.lang.[Boolean].TRUE) Is Nothing
 			End Function
 			Public Overridable Function [iterator]() As [Iterator](Of E) Implements Set(Of E).iterator
@@ -5991,7 +5991,7 @@ Namespace java.util
 			Public Overridable Function toArray() As Object() Implements Set(Of E).toArray
 				Return s.ToArray()
 			End Function
-			Public Overridable Function toArray(Of T)(ByVal a As T()) As T() Implements Set(Of E).toArray
+			Public Overridable Function toArray(Of T)(  a As T()) As T() Implements Set(Of E).toArray
 				Return s.ToArray(a)
 			End Function
 			Public Overrides Function ToString() As String
@@ -6000,27 +6000,27 @@ Namespace java.util
 			Public Overrides Function GetHashCode() As Integer
 				Return s.GetHashCode()
 			End Function
-			Public Overrides Function Equals(ByVal o As Object) As Boolean
+			Public Overrides Function Equals(  o As Object) As Boolean
 				Return o Is Me OrElse s.Equals(o)
 			End Function
-			Public Overridable Function containsAll(Of T1)(ByVal c As Collection(Of T1)) As Boolean Implements Set(Of E).containsAll
+			Public Overridable Function containsAll(Of T1)(  c As Collection(Of T1)) As Boolean Implements Set(Of E).containsAll
 				Return s.containsAll(c)
 			End Function
-			Public Overridable Function removeAll(Of T1)(ByVal c As Collection(Of T1)) As Boolean Implements Set(Of E).removeAll
+			Public Overridable Function removeAll(Of T1)(  c As Collection(Of T1)) As Boolean Implements Set(Of E).removeAll
 				Return s.removeAll(c)
 			End Function
-			Public Overridable Function retainAll(Of T1)(ByVal c As Collection(Of T1)) As Boolean Implements Set(Of E).retainAll
+			Public Overridable Function retainAll(Of T1)(  c As Collection(Of T1)) As Boolean Implements Set(Of E).retainAll
 				Return s.retainAll(c)
 			End Function
 			' addAll is the only inherited implementation
 
 			' Override default methods in Collection
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Overrides Sub forEach(Of T1)(ByVal action As java.util.function.Consumer(Of T1))
+			Public Overrides Sub forEach(Of T1)(  action As java.util.function.Consumer(Of T1))
 				s.forEach(action)
 			End Sub
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Overrides Function removeIf(Of T1)(ByVal filter As java.util.function.Predicate(Of T1)) As Boolean
+			Public Overrides Function removeIf(Of T1)(  filter As java.util.function.Predicate(Of T1)) As Boolean
 				Return s.removeIf(filter)
 			End Function
 
@@ -6036,7 +6036,7 @@ Namespace java.util
 
 			Private Const serialVersionUID As Long = 2454657854757543876L
 
-			Private Sub readObject(ByVal stream As java.io.ObjectInputStream)
+			Private Sub readObject(  stream As java.io.ObjectInputStream)
 				stream.defaultReadObject()
 				s = m.Keys
 			End Sub
@@ -6059,7 +6059,7 @@ Namespace java.util
 		''' <param name="deque"> the deque </param>
 		''' <returns> the queue
 		''' @since  1.6 </returns>
-		Public Shared Function asLifoQueue(Of T)(ByVal deque As Deque(Of T)) As Queue(Of T)
+		Public Shared Function asLifoQueue(Of T)(  deque As Deque(Of T)) As Queue(Of T)
 			Return New AsLIFOQueue(Of )(deque)
 		End Function
 
@@ -6073,14 +6073,14 @@ Namespace java.util
 
 			Private Const serialVersionUID As Long = 1802017725587941708L
 			Private ReadOnly q As Deque(Of E)
-			Friend Sub New(ByVal q As Deque(Of E))
+			Friend Sub New(  q As Deque(Of E))
 				Me.q = q
 			End Sub
-			Public Overridable Function add(ByVal e As E) As Boolean
+			Public Overridable Function add(  e As E) As Boolean
 				q.addFirst(e)
 				Return True
 			End Function
-			Public Overridable Function offer(ByVal e As E) As Boolean
+			Public Overridable Function offer(  e As E) As Boolean
 				Return q.offerFirst(e)
 			End Function
 			Public Overridable Function poll() As E Implements Queue(Of E).poll
@@ -6106,10 +6106,10 @@ Namespace java.util
 					Return q.empty
 				End Get
 			End Property
-			Public Overridable Function contains(ByVal o As Object) As Boolean
+			Public Overridable Function contains(  o As Object) As Boolean
 				Return q.contains(o)
 			End Function
-			Public Overridable Function remove(ByVal o As Object) As Boolean
+			Public Overridable Function remove(  o As Object) As Boolean
 				Return q.remove(o)
 			End Function
 			Public Overridable Function [iterator]() As [Iterator](Of E)
@@ -6118,30 +6118,30 @@ Namespace java.util
 			Public Overridable Function toArray() As Object()
 				Return q.ToArray()
 			End Function
-			Public Overridable Function toArray(Of T)(ByVal a As T()) As T()
+			Public Overridable Function toArray(Of T)(  a As T()) As T()
 				Return q.ToArray(a)
 			End Function
 			Public Overrides Function ToString() As String
 				Return q.ToString()
 			End Function
-			Public Overridable Function containsAll(Of T1)(ByVal c As Collection(Of T1)) As Boolean
+			Public Overridable Function containsAll(Of T1)(  c As Collection(Of T1)) As Boolean
 				Return q.containsAll(c)
 			End Function
-			Public Overridable Function removeAll(Of T1)(ByVal c As Collection(Of T1)) As Boolean
+			Public Overridable Function removeAll(Of T1)(  c As Collection(Of T1)) As Boolean
 				Return q.removeAll(c)
 			End Function
-			Public Overridable Function retainAll(Of T1)(ByVal c As Collection(Of T1)) As Boolean
+			Public Overridable Function retainAll(Of T1)(  c As Collection(Of T1)) As Boolean
 				Return q.retainAll(c)
 			End Function
 			' We use inherited addAll; forwarding addAll would be wrong
 
 			' Override default methods in Collection
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Overrides Sub forEach(Of T1)(ByVal action As java.util.function.Consumer(Of T1))
+			Public Overrides Sub forEach(Of T1)(  action As java.util.function.Consumer(Of T1))
 				q.forEach(action)
 			End Sub
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Overrides Function removeIf(Of T1)(ByVal filter As java.util.function.Predicate(Of T1)) As Boolean
+			Public Overrides Function removeIf(Of T1)(  filter As java.util.function.Predicate(Of T1)) As Boolean
 				Return q.removeIf(filter)
 			End Function
 			Public Overrides Function spliterator() As Spliterator(Of E)

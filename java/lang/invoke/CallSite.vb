@@ -112,7 +112,7 @@ Namespace java.lang.invoke
 		''' via a call to <seealso cref="CallSite#setTarget(MethodHandle) setTarget"/>. </summary>
 		''' <exception cref="NullPointerException"> if the proposed type is null </exception>
 		'package-private
-		Friend Sub New(ByVal type As MethodType)
+		Friend Sub New(  type As MethodType)
 			target = makeUninitializedCallSite(type)
 		End Sub
 
@@ -121,7 +121,7 @@ Namespace java.lang.invoke
 		''' <param name="target"> the method handle which will be the initial target of the call site </param>
 		''' <exception cref="NullPointerException"> if the proposed target is null </exception>
 		'package-private
-		Friend Sub New(ByVal target As MethodHandle)
+		Friend Sub New(  target As MethodHandle)
 			target.type() ' null check
 			Me.target = target
 		End Sub
@@ -136,7 +136,7 @@ Namespace java.lang.invoke
 		''' <exception cref="ClassCastException"> if the hook returns something other than a {@code MethodHandle} </exception>
 		''' <exception cref="Throwable"> anything else thrown by the hook function </exception>
 		'package-private
-		Friend Sub New(ByVal targetType As MethodType, ByVal createTargetHook As MethodHandle)
+		Friend Sub New(  targetType As MethodType,   createTargetHook As MethodHandle)
 			Me.New(targetType)
 			Dim selfCCS As ConstantCallSite = CType(Me, ConstantCallSite)
 			Dim boundTarget As MethodHandle = CType(createTargetHook.invokeWithArguments(selfCCS), MethodHandle)
@@ -171,13 +171,13 @@ Namespace java.lang.invoke
 		Public MustOverride Property target As MethodHandle
 
 
-		Friend Overridable Sub checkTargetChange(ByVal oldTarget As MethodHandle, ByVal newTarget As MethodHandle)
+		Friend Overridable Sub checkTargetChange(  oldTarget As MethodHandle,   newTarget As MethodHandle)
 			Dim oldType As MethodType = oldTarget.type()
 			Dim newType As MethodType = newTarget.type() ' null check!
 			If Not newType.Equals(oldType) Then Throw wrongTargetType(newTarget, oldType)
 		End Sub
 
-		Private Shared Function wrongTargetType(ByVal target As MethodHandle, ByVal type As MethodType) As WrongMethodTypeException
+		Private Shared Function wrongTargetType(  target As MethodHandle,   type As MethodType) As WrongMethodTypeException
 			Return New WrongMethodTypeException(Convert.ToString(target) & " should be of type " & type)
 		End Function
 
@@ -208,11 +208,11 @@ Namespace java.lang.invoke
 
 		''' <summary>
 		''' This guy is rolled into the default target if a MethodType is supplied to the constructor. </summary>
-		Private Shared Function uninitializedCallSite(ParamArray ByVal ignore As Object()) As Object
+		Private Shared Function uninitializedCallSite(ParamArray   ignore As Object()) As Object
 			Throw New IllegalStateException("uninitialized call site")
 		End Function
 
-		Private Function makeUninitializedCallSite(ByVal targetType As MethodType) As MethodHandle
+		Private Function makeUninitializedCallSite(  targetType As MethodType) As MethodHandle
 			Dim basicType As MethodType = targetType.basicType()
 			Dim invoker As MethodHandle = basicType.form().cachedMethodHandle(MethodTypeForm.MH_UNINIT_CS)
 			If invoker Is Nothing Then
@@ -228,7 +228,7 @@ Namespace java.lang.invoke
 
 		'package-private
 		Friend Overridable Property targetNormal As MethodHandle
-			Set(ByVal newTarget As MethodHandle)
+			Set(  newTarget As MethodHandle)
 				MethodHandleNatives.callSiteTargetNormalmal(Me, newTarget)
 			End Set
 		End Property
@@ -237,14 +237,14 @@ Namespace java.lang.invoke
 			Get
 				Return CType(UNSAFE.getObjectVolatile(Me, TARGET_OFFSET), MethodHandle)
 			End Get
-			Set(ByVal newTarget As MethodHandle)
+			Set(  newTarget As MethodHandle)
 				MethodHandleNatives.callSiteTargetVolatileile(Me, newTarget)
 			End Set
 		End Property
 		'package-private
 
 		' this implements the upcall from the JVM, MethodHandleNatives.makeDynamicCallSite:
-		Shared Function makeSite(ByVal bootstrapMethod As MethodHandle, ByVal name As String, ByVal type As MethodType, ByVal info As Object, ByVal callerClass As [Class]) As CallSite
+		Shared Function makeSite(  bootstrapMethod As MethodHandle,   name As String,   type As MethodType,   info As Object,   callerClass As [Class]) As CallSite
 								 ' Callee information:
 								 ' Extra arguments for BSM, if any:
 								 ' Caller information:
@@ -304,14 +304,14 @@ Namespace java.lang.invoke
 			Return site
 		End Function
 
-		Private Shared Function maybeReBox(ByVal x As Object) As Object
+		Private Shared Function maybeReBox(  x As Object) As Object
 			If TypeOf x Is Integer? Then
 				Dim xi As Integer = CInt(Fix(x))
 				If xi = CByte(xi) Then x = xi ' must rebox; see JLS 5.1.7
 			End If
 			Return x
 		End Function
-		Private Shared Sub maybeReBoxElements(ByVal xa As Object())
+		Private Shared Sub maybeReBoxElements(  xa As Object())
 			For i As Integer = 0 To xa.Length - 1
 				xa(i) = maybeReBox(xa(i))
 			Next i

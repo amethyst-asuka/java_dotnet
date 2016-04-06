@@ -183,7 +183,7 @@ Namespace java.awt
 			Get
 				Return getCurrentKeyboardFocusManager(sun.awt.AppContext.appContext)
 			End Get
-			Set(ByVal newManager As KeyboardFocusManager)
+			Set(  newManager As KeyboardFocusManager)
 				checkReplaceKFMPermission()
     
 				Dim oldManager As KeyboardFocusManager = Nothing
@@ -207,7 +207,7 @@ Namespace java.awt
 		End Property
 
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Shared Function getCurrentKeyboardFocusManager(ByVal appcontext As sun.awt.AppContext) As KeyboardFocusManager
+		Shared Function getCurrentKeyboardFocusManager(  appcontext As sun.awt.AppContext) As KeyboardFocusManager
 			Dim manager As KeyboardFocusManager = CType(appcontext.get(GetType(KeyboardFocusManager)), KeyboardFocusManager)
 			If manager Is Nothing Then
 				manager = New DefaultKeyboardFocusManager
@@ -326,7 +326,7 @@ Namespace java.awt
 		Friend currentSequencedEvent As SequencedEvent = Nothing
 
 		Friend Property currentSequencedEvent As SequencedEvent
-			Set(ByVal current As SequencedEvent)
+			Set(  current As SequencedEvent)
 				SyncLock GetType(SequencedEvent)
 					assert(current Is Nothing OrElse currentSequencedEvent Is Nothing)
 					currentSequencedEvent = current
@@ -340,7 +340,7 @@ Namespace java.awt
 		End Property
 
 
-		Friend Shared Function initFocusTraversalKeysSet(ByVal value As String, ByVal targetSet As java.util.Set(Of AWTKeyStroke)) As java.util.Set(Of AWTKeyStroke)
+		Friend Shared Function initFocusTraversalKeysSet(  value As String,   targetSet As java.util.Set(Of AWTKeyStroke)) As java.util.Set(Of AWTKeyStroke)
 			Dim tokens As New java.util.StringTokenizer(value, ",")
 			Do While tokens.hasMoreTokens()
 				targetSet.add(AWTKeyStroke.getAWTKeyStroke(tokens.nextToken()))
@@ -418,7 +418,7 @@ Namespace java.awt
 					Return focusOwner
 				End SyncLock
 			End Get
-			Set(ByVal focusOwner As Component)
+			Set(  focusOwner As Component)
 				Dim oldFocusOwner As Component = Nothing
 				Dim shouldFire As Boolean = False
     
@@ -526,7 +526,7 @@ Namespace java.awt
 			Get
 				Return peer.currentFocusOwner
 			End Get
-			Set(ByVal comp As Component)
+			Set(  comp As Component)
 				If focusLog.isLoggable(sun.util.logging.PlatformLogger.Level.FINEST) Then focusLog.finest("Calling peer {0} setCurrentFocusOwner for {1}", Convert.ToString(peer), Convert.ToString(comp))
 				peer.currentFocusOwner = comp
 			End Set
@@ -585,7 +585,7 @@ Namespace java.awt
 					Return permanentFocusOwner
 				End SyncLock
 			End Get
-			Set(ByVal permanentFocusOwner As Component)
+			Set(  permanentFocusOwner As Component)
 				Dim oldPermanentFocusOwner As Component = Nothing
 				Dim shouldFire As Boolean = False
     
@@ -653,7 +653,7 @@ Namespace java.awt
 					Return focusedWindow
 				End SyncLock
 			End Get
-			Set(ByVal focusedWindow As Window)
+			Set(  focusedWindow As Window)
 				Dim oldFocusedWindow As Window = Nothing
 				Dim shouldFire As Boolean = False
     
@@ -724,7 +724,7 @@ Namespace java.awt
 					Return activeWindow
 				End SyncLock
 			End Get
-			Set(ByVal activeWindow As Window)
+			Set(  activeWindow As Window)
 				Dim oldActiveWindow As Window
 				SyncLock GetType(KeyboardFocusManager)
 					checkKFMSecurity()
@@ -761,7 +761,7 @@ Namespace java.awt
 			Get
 				Return defaultPolicy
 			End Get
-			Set(ByVal defaultPolicy As FocusTraversalPolicy)
+			Set(  defaultPolicy As FocusTraversalPolicy)
 				If defaultPolicy Is Nothing Then Throw New IllegalArgumentException("default focus traversal policy cannot be null")
     
 				Dim oldPolicy As FocusTraversalPolicy
@@ -863,7 +863,7 @@ Namespace java.awt
 		'''         to another default focus traversal operation
 		''' @beaninfo
 		'''       bound: true </exception>
-		Public Overridable Sub setDefaultFocusTraversalKeys(Of T1 As AWTKeyStroke)(ByVal id As Integer, ByVal keystrokes As java.util.Set(Of T1))
+		Public Overridable Sub setDefaultFocusTraversalKeys(Of T1 As AWTKeyStroke)(  id As Integer,   keystrokes As java.util.Set(Of T1))
 			If id < 0 OrElse id >= TRAVERSAL_KEY_LENGTH Then Throw New IllegalArgumentException("invalid focus traversal key identifier")
 			If keystrokes Is Nothing Then Throw New IllegalArgumentException("cannot set null Set of default focus traversal keys")
 
@@ -917,7 +917,7 @@ Namespace java.awt
 		'''         KeyboardFocusManager.BACKWARD_TRAVERSAL_KEYS,
 		'''         KeyboardFocusManager.UP_CYCLE_TRAVERSAL_KEYS, or
 		'''         KeyboardFocusManager.DOWN_CYCLE_TRAVERSAL_KEYS </exception>
-		Public Overridable Function getDefaultFocusTraversalKeys(ByVal id As Integer) As java.util.Set(Of AWTKeyStroke)
+		Public Overridable Function getDefaultFocusTraversalKeys(  id As Integer) As java.util.Set(Of AWTKeyStroke)
 			If id < 0 OrElse id >= TRAVERSAL_KEY_LENGTH Then Throw New IllegalArgumentException("invalid focus traversal key identifier")
 
 			' Okay to return Set directly because it is an unmodifiable view
@@ -972,7 +972,7 @@ Namespace java.awt
 					Return currentFocusCycleRoot
 				End SyncLock
 			End Get
-			Set(ByVal newFocusCycleRoot As Container)
+			Set(  newFocusCycleRoot As Container)
 				checkReplaceKFMPermission()
     
 				Dim oldFocusCycleRoot As Container
@@ -988,7 +988,7 @@ Namespace java.awt
 
 
 		Friend Overridable Property globalCurrentFocusCycleRootPriv As Container
-			Set(ByVal newFocusCycleRoot As Container)
+			Set(  newFocusCycleRoot As Container)
 				java.security.AccessController.doPrivileged(New PrivilegedActionAnonymousInnerClassHelper2(Of T)
 			End Set
 		End Property
@@ -1032,7 +1032,7 @@ Namespace java.awt
 		''' <seealso cref= #removePropertyChangeListener </seealso>
 		''' <seealso cref= #getPropertyChangeListeners </seealso>
 		''' <seealso cref= #addPropertyChangeListener(java.lang.String,java.beans.PropertyChangeListener) </seealso>
-		Public Overridable Sub addPropertyChangeListener(ByVal listener As java.beans.PropertyChangeListener)
+		Public Overridable Sub addPropertyChangeListener(  listener As java.beans.PropertyChangeListener)
 			If listener IsNot Nothing Then
 				SyncLock Me
 					If changeSupport Is Nothing Then changeSupport = New java.beans.PropertyChangeSupport(Me)
@@ -1052,7 +1052,7 @@ Namespace java.awt
 		''' <seealso cref= #addPropertyChangeListener </seealso>
 		''' <seealso cref= #getPropertyChangeListeners </seealso>
 		''' <seealso cref= #removePropertyChangeListener(java.lang.String,java.beans.PropertyChangeListener) </seealso>
-		Public Overridable Sub removePropertyChangeListener(ByVal listener As java.beans.PropertyChangeListener)
+		Public Overridable Sub removePropertyChangeListener(  listener As java.beans.PropertyChangeListener)
 			If listener IsNot Nothing Then
 				SyncLock Me
 					If changeSupport IsNot Nothing Then changeSupport.removePropertyChangeListener(listener)
@@ -1112,7 +1112,7 @@ Namespace java.awt
 		''' <seealso cref= #addPropertyChangeListener(java.beans.PropertyChangeListener) </seealso>
 		''' <seealso cref= #removePropertyChangeListener(java.lang.String,java.beans.PropertyChangeListener) </seealso>
 		''' <seealso cref= #getPropertyChangeListeners(java.lang.String) </seealso>
-		Public Overridable Sub addPropertyChangeListener(ByVal propertyName As String, ByVal listener As java.beans.PropertyChangeListener)
+		Public Overridable Sub addPropertyChangeListener(  propertyName As String,   listener As java.beans.PropertyChangeListener)
 			If listener IsNot Nothing Then
 				SyncLock Me
 					If changeSupport Is Nothing Then changeSupport = New java.beans.PropertyChangeSupport(Me)
@@ -1133,7 +1133,7 @@ Namespace java.awt
 		''' <seealso cref= #addPropertyChangeListener(java.lang.String,java.beans.PropertyChangeListener) </seealso>
 		''' <seealso cref= #getPropertyChangeListeners(java.lang.String) </seealso>
 		''' <seealso cref= #removePropertyChangeListener(java.beans.PropertyChangeListener) </seealso>
-		Public Overridable Sub removePropertyChangeListener(ByVal propertyName As String, ByVal listener As java.beans.PropertyChangeListener)
+		Public Overridable Sub removePropertyChangeListener(  propertyName As String,   listener As java.beans.PropertyChangeListener)
 			If listener IsNot Nothing Then
 				SyncLock Me
 					If changeSupport IsNot Nothing Then changeSupport.removePropertyChangeListener(propertyName, listener)
@@ -1153,7 +1153,7 @@ Namespace java.awt
 		''' <seealso cref= #removePropertyChangeListener(java.lang.String,java.beans.PropertyChangeListener)
 		''' @since 1.4 </seealso>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Function getPropertyChangeListeners(ByVal propertyName As String) As java.beans.PropertyChangeListener()
+		Public Overridable Function getPropertyChangeListeners(  propertyName As String) As java.beans.PropertyChangeListener()
 			If changeSupport Is Nothing Then changeSupport = New java.beans.PropertyChangeSupport(Me)
 			Return changeSupport.getPropertyChangeListeners(propertyName)
 		End Function
@@ -1166,7 +1166,7 @@ Namespace java.awt
 		''' <param name="propertyName"> the name of the property that has changed </param>
 		''' <param name="oldValue"> the property's previous value </param>
 		''' <param name="newValue"> the property's new value </param>
-		Protected Friend Overridable Sub firePropertyChange(ByVal propertyName As String, ByVal oldValue As Object, ByVal newValue As Object)
+		Protected Friend Overridable Sub firePropertyChange(  propertyName As String,   oldValue As Object,   newValue As Object)
 			If oldValue Is newValue Then Return
 			Dim changeSupport As java.beans.PropertyChangeSupport = Me.changeSupport
 			If changeSupport IsNot Nothing Then changeSupport.firePropertyChange(propertyName, oldValue, newValue)
@@ -1188,7 +1188,7 @@ Namespace java.awt
 		''' <seealso cref= #removeVetoableChangeListener </seealso>
 		''' <seealso cref= #getVetoableChangeListeners </seealso>
 		''' <seealso cref= #addVetoableChangeListener(java.lang.String,java.beans.VetoableChangeListener) </seealso>
-		Public Overridable Sub addVetoableChangeListener(ByVal listener As java.beans.VetoableChangeListener)
+		Public Overridable Sub addVetoableChangeListener(  listener As java.beans.VetoableChangeListener)
 			If listener IsNot Nothing Then
 				SyncLock Me
 					If vetoableSupport Is Nothing Then vetoableSupport = New java.beans.VetoableChangeSupport(Me)
@@ -1208,7 +1208,7 @@ Namespace java.awt
 		''' <seealso cref= #addVetoableChangeListener </seealso>
 		''' <seealso cref= #getVetoableChangeListeners </seealso>
 		''' <seealso cref= #removeVetoableChangeListener(java.lang.String,java.beans.VetoableChangeListener) </seealso>
-		Public Overridable Sub removeVetoableChangeListener(ByVal listener As java.beans.VetoableChangeListener)
+		Public Overridable Sub removeVetoableChangeListener(  listener As java.beans.VetoableChangeListener)
 			If listener IsNot Nothing Then
 				SyncLock Me
 					If vetoableSupport IsNot Nothing Then vetoableSupport.removeVetoableChangeListener(listener)
@@ -1254,7 +1254,7 @@ Namespace java.awt
 		''' <seealso cref= #addVetoableChangeListener(java.beans.VetoableChangeListener) </seealso>
 		''' <seealso cref= #removeVetoableChangeListener </seealso>
 		''' <seealso cref= #getVetoableChangeListeners </seealso>
-		Public Overridable Sub addVetoableChangeListener(ByVal propertyName As String, ByVal listener As java.beans.VetoableChangeListener)
+		Public Overridable Sub addVetoableChangeListener(  propertyName As String,   listener As java.beans.VetoableChangeListener)
 			If listener IsNot Nothing Then
 				SyncLock Me
 					If vetoableSupport Is Nothing Then vetoableSupport = New java.beans.VetoableChangeSupport(Me)
@@ -1275,7 +1275,7 @@ Namespace java.awt
 		''' <seealso cref= #addVetoableChangeListener </seealso>
 		''' <seealso cref= #getVetoableChangeListeners </seealso>
 		''' <seealso cref= #removeVetoableChangeListener(java.beans.VetoableChangeListener) </seealso>
-		Public Overridable Sub removeVetoableChangeListener(ByVal propertyName As String, ByVal listener As java.beans.VetoableChangeListener)
+		Public Overridable Sub removeVetoableChangeListener(  propertyName As String,   listener As java.beans.VetoableChangeListener)
 			If listener IsNot Nothing Then
 				SyncLock Me
 					If vetoableSupport IsNot Nothing Then vetoableSupport.removeVetoableChangeListener(propertyName, listener)
@@ -1296,7 +1296,7 @@ Namespace java.awt
 		''' <seealso cref= #getVetoableChangeListeners
 		''' @since 1.4 </seealso>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Function getVetoableChangeListeners(ByVal propertyName As String) As java.beans.VetoableChangeListener()
+		Public Overridable Function getVetoableChangeListeners(  propertyName As String) As java.beans.VetoableChangeListener()
 			If vetoableSupport Is Nothing Then vetoableSupport = New java.beans.VetoableChangeSupport(Me)
 			Return vetoableSupport.getVetoableChangeListeners(propertyName)
 		End Function
@@ -1316,7 +1316,7 @@ Namespace java.awt
 		''' <exception cref="java.beans.PropertyVetoException"> if a
 		'''         <code>VetoableChangeListener</code> threw
 		'''         <code>PropertyVetoException</code> </exception>
-		Protected Friend Overridable Sub fireVetoableChange(ByVal propertyName As String, ByVal oldValue As Object, ByVal newValue As Object)
+		Protected Friend Overridable Sub fireVetoableChange(  propertyName As String,   oldValue As Object,   newValue As Object)
 			If oldValue Is newValue Then Return
 			Dim vetoableSupport As java.beans.VetoableChangeSupport = Me.vetoableSupport
 			If vetoableSupport IsNot Nothing Then vetoableSupport.fireVetoableChange(propertyName, oldValue, newValue)
@@ -1343,7 +1343,7 @@ Namespace java.awt
 		''' </summary>
 		''' <param name="dispatcher"> the KeyEventDispatcher to add to the dispatcher chain </param>
 		''' <seealso cref= #removeKeyEventDispatcher </seealso>
-		Public Overridable Sub addKeyEventDispatcher(ByVal dispatcher As KeyEventDispatcher)
+		Public Overridable Sub addKeyEventDispatcher(  dispatcher As KeyEventDispatcher)
 			If dispatcher IsNot Nothing Then
 				SyncLock Me
 					If keyEventDispatchers Is Nothing Then keyEventDispatchers = New LinkedList(Of )
@@ -1371,7 +1371,7 @@ Namespace java.awt
 		''' <param name="dispatcher"> the KeyEventDispatcher to remove from the dispatcher
 		'''        chain </param>
 		''' <seealso cref= #addKeyEventDispatcher </seealso>
-		Public Overridable Sub removeKeyEventDispatcher(ByVal dispatcher As KeyEventDispatcher)
+		Public Overridable Sub removeKeyEventDispatcher(  dispatcher As KeyEventDispatcher)
 			If dispatcher IsNot Nothing Then
 				SyncLock Me
 					If keyEventDispatchers IsNot Nothing Then keyEventDispatchers.remove(dispatcher)
@@ -1423,7 +1423,7 @@ Namespace java.awt
 		''' <param name="processor"> the KeyEventPostProcessor to add to the post-processor
 		'''        chain </param>
 		''' <seealso cref= #removeKeyEventPostProcessor </seealso>
-		Public Overridable Sub addKeyEventPostProcessor(ByVal processor As KeyEventPostProcessor)
+		Public Overridable Sub addKeyEventPostProcessor(  processor As KeyEventPostProcessor)
 			If processor IsNot Nothing Then
 				SyncLock Me
 					If keyEventPostProcessors Is Nothing Then keyEventPostProcessors = New LinkedList(Of )
@@ -1453,7 +1453,7 @@ Namespace java.awt
 		''' <param name="processor"> the KeyEventPostProcessor to remove from the post-
 		'''        processor chain </param>
 		''' <seealso cref= #addKeyEventPostProcessor </seealso>
-		Public Overridable Sub removeKeyEventPostProcessor(ByVal processor As KeyEventPostProcessor)
+		Public Overridable Sub removeKeyEventPostProcessor(  processor As KeyEventPostProcessor)
 			If processor IsNot Nothing Then
 				SyncLock Me
 					If keyEventPostProcessors IsNot Nothing Then keyEventPostProcessors.remove(processor)
@@ -1483,7 +1483,7 @@ Namespace java.awt
 
 
 		Friend Shared Property mostRecentFocusOwner As Component
-			Set(ByVal component_Renamed As Component)
+			Set(  component_Renamed As Component)
 				Dim window_Renamed As Component = component_Renamed
 				Do While window_Renamed IsNot Nothing AndAlso Not(TypeOf window_Renamed Is Window)
 					window_Renamed = window_Renamed.parent
@@ -1492,7 +1492,7 @@ Namespace java.awt
 			End Set
 		End Property
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Friend Shared Sub setMostRecentFocusOwner(ByVal window_Renamed As Window, ByVal component_Renamed As Component)
+		Friend Shared Sub setMostRecentFocusOwner(  window_Renamed As Window,   component_Renamed As Component)
 			' ATTN: component has a strong reference to window via chain
 			' of Component.parent fields.  Since WeakHasMap refers to its
 			' values strongly, we need to break the strong link from the
@@ -1501,7 +1501,7 @@ Namespace java.awt
 			If component_Renamed IsNot Nothing Then weakValue = New WeakReference(Of )(component_Renamed)
 			mostRecentFocusOwners(window_Renamed) = weakValue
 		End Sub
-		Friend Shared Sub clearMostRecentFocusOwner(ByVal comp As Component)
+		Friend Shared Sub clearMostRecentFocusOwner(  comp As Component)
 			Dim window_Renamed As Container
 
 			If comp Is Nothing Then Return
@@ -1528,7 +1528,7 @@ Namespace java.awt
 	'     * javax.swing.JComponent.runInputVerifier() using reflection.
 	'     
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Friend Shared Function getMostRecentFocusOwner(ByVal window_Renamed As Window) As Component
+		Friend Shared Function getMostRecentFocusOwner(  window_Renamed As Window) As Component
 			Dim weakValue As WeakReference(Of Component) = CType(mostRecentFocusOwners(window_Renamed), WeakReference)
 			Return If(weakValue Is Nothing, Nothing, CType(weakValue.get(), Component))
 		End Function
@@ -1551,7 +1551,7 @@ Namespace java.awt
 		'''         <code>false</code> otherwise </returns>
 		''' <seealso cref= #redispatchEvent </seealso>
 		''' <seealso cref= #dispatchKeyEvent </seealso>
-		Public MustOverride Function dispatchEvent(ByVal e As AWTEvent) As Boolean
+		Public MustOverride Function dispatchEvent(  e As AWTEvent) As Boolean
 
 		''' <summary>
 		''' Redispatches an AWTEvent in such a way that the AWT event dispatcher
@@ -1568,7 +1568,7 @@ Namespace java.awt
 		''' <param name="e"> the event to dispatch </param>
 		''' <seealso cref= #dispatchEvent </seealso>
 		''' <seealso cref= KeyEventDispatcher </seealso>
-		Public Sub redispatchEvent(ByVal target As Component, ByVal e As AWTEvent)
+		Public Sub redispatchEvent(  target As Component,   e As AWTEvent)
 			e.focusManagerIsDispatching = True
 			target.dispatchEvent(e)
 			e.focusManagerIsDispatching = False
@@ -1588,7 +1588,7 @@ Namespace java.awt
 		''' <returns> <code>true</code> if the KeyEvent was dispatched;
 		'''         <code>false</code> otherwise </returns>
 		''' <seealso cref= #dispatchEvent </seealso>
-		Public MustOverride Function dispatchKeyEvent(ByVal e As java.awt.event.KeyEvent) As Boolean Implements KeyEventDispatcher.dispatchKeyEvent
+		Public MustOverride Function dispatchKeyEvent(  e As java.awt.event.KeyEvent) As Boolean Implements KeyEventDispatcher.dispatchKeyEvent
 
 		''' <summary>
 		''' This method will be called by <code>dispatchKeyEvent</code>.
@@ -1601,7 +1601,7 @@ Namespace java.awt
 		'''         KeyEventPostProcessor will be notified of the KeyEvent. </returns>
 		''' <seealso cref= #dispatchKeyEvent </seealso>
 		''' <seealso cref= MenuShortcut </seealso>
-		Public MustOverride Function postProcessKeyEvent(ByVal e As java.awt.event.KeyEvent) As Boolean Implements KeyEventPostProcessor.postProcessKeyEvent
+		Public MustOverride Function postProcessKeyEvent(  e As java.awt.event.KeyEvent) As Boolean Implements KeyEventPostProcessor.postProcessKeyEvent
 
 		''' <summary>
 		''' This method initiates a focus traversal operation if and only if the
@@ -1615,7 +1615,7 @@ Namespace java.awt
 		'''        traversal operation if the specified event represents a focus
 		'''        traversal key for the Component </param>
 		''' <param name="e"> the event that may represent a focus traversal key </param>
-		Public MustOverride Sub processKeyEvent(ByVal focusedComponent As Component, ByVal e As java.awt.event.KeyEvent)
+		Public MustOverride Sub processKeyEvent(  focusedComponent As Component,   e As java.awt.event.KeyEvent)
 
 		''' <summary>
 		''' Called by the AWT to notify the KeyboardFocusManager that it should
@@ -1636,7 +1636,7 @@ Namespace java.awt
 		'''        before any pending KeyEvents </param>
 		''' <seealso cref= #dequeueKeyEvents </seealso>
 		''' <seealso cref= #discardKeyEvents </seealso>
-		Protected Friend MustOverride Sub enqueueKeyEvents(ByVal after As Long, ByVal untilFocused As Component)
+		Protected Friend MustOverride Sub enqueueKeyEvents(  after As Long,   untilFocused As Component)
 
 		''' <summary>
 		''' Called by the AWT to notify the KeyboardFocusManager that it should
@@ -1653,7 +1653,7 @@ Namespace java.awt
 		'''        <code>enqueueKeyEvents</code> </param>
 		''' <seealso cref= #enqueueKeyEvents </seealso>
 		''' <seealso cref= #discardKeyEvents </seealso>
-		Protected Friend MustOverride Sub dequeueKeyEvents(ByVal after As Long, ByVal untilFocused As Component)
+		Protected Friend MustOverride Sub dequeueKeyEvents(  after As Long,   untilFocused As Component)
 
 		''' <summary>
 		''' Called by the AWT to notify the KeyboardFocusManager that it should
@@ -1665,7 +1665,7 @@ Namespace java.awt
 		'''        <code>enqueueKeyEvents</code> </param>
 		''' <seealso cref= #enqueueKeyEvents </seealso>
 		''' <seealso cref= #dequeueKeyEvents </seealso>
-		Protected Friend MustOverride Sub discardKeyEvents(ByVal comp As Component)
+		Protected Friend MustOverride Sub discardKeyEvents(  comp As Component)
 
 		''' <summary>
 		''' Focuses the Component after aComponent, typically based on a
@@ -1674,7 +1674,7 @@ Namespace java.awt
 		''' <param name="aComponent"> the Component that is the basis for the focus
 		'''        traversal operation </param>
 		''' <seealso cref= FocusTraversalPolicy </seealso>
-		Public MustOverride Sub focusNextComponent(ByVal aComponent As Component)
+		Public MustOverride Sub focusNextComponent(  aComponent As Component)
 
 		''' <summary>
 		''' Focuses the Component before aComponent, typically based on a
@@ -1683,7 +1683,7 @@ Namespace java.awt
 		''' <param name="aComponent"> the Component that is the basis for the focus
 		'''        traversal operation </param>
 		''' <seealso cref= FocusTraversalPolicy </seealso>
-		Public MustOverride Sub focusPreviousComponent(ByVal aComponent As Component)
+		Public MustOverride Sub focusPreviousComponent(  aComponent As Component)
 
 		''' <summary>
 		''' Moves the focus up one focus traversal cycle. Typically, the focus owner
@@ -1695,7 +1695,7 @@ Namespace java.awt
 		''' </summary>
 		''' <param name="aComponent"> the Component that is the basis for the focus
 		'''        traversal operation </param>
-		Public MustOverride Sub upFocusCycle(ByVal aComponent As Component)
+		Public MustOverride Sub upFocusCycle(  aComponent As Component)
 
 		''' <summary>
 		''' Moves the focus down one focus traversal cycle. Typically, if
@@ -1706,7 +1706,7 @@ Namespace java.awt
 		''' </summary>
 		''' <param name="aContainer"> the Container that is the basis for the focus
 		'''        traversal operation </param>
-		Public MustOverride Sub downFocusCycle(ByVal aContainer As Container)
+		Public MustOverride Sub downFocusCycle(  aContainer As Container)
 
 		''' <summary>
 		''' Focuses the Component after the current focus owner.
@@ -1770,7 +1770,7 @@ Namespace java.awt
 			Friend ReadOnly temporary As Boolean
 			Friend ReadOnly cause As sun.awt.CausedFocusEvent.Cause
 
-			Friend Sub New(ByVal component_Renamed As Component, ByVal temporary As Boolean, ByVal cause As sun.awt.CausedFocusEvent.Cause)
+			Friend Sub New(  component_Renamed As Component,   temporary As Boolean,   cause As sun.awt.CausedFocusEvent.Cause)
 				Me.component_Renamed = component_Renamed
 				Me.temporary = temporary
 				Me.cause = cause
@@ -1791,7 +1791,7 @@ Namespace java.awt
 				lightweightRequests = Nothing
 			End Sub
 
-			Friend Sub New(ByVal heavyweight As Component, ByVal descendant As Component, ByVal temporary As Boolean, ByVal cause As sun.awt.CausedFocusEvent.Cause)
+			Friend Sub New(  heavyweight As Component,   descendant As Component,   temporary As Boolean,   cause As sun.awt.CausedFocusEvent.Cause)
 				If log.isLoggable(sun.util.logging.PlatformLogger.Level.FINE) Then
 					If heavyweight Is Nothing Then log.fine("Assertion (heavyweight != null) failed")
 				End If
@@ -1800,7 +1800,7 @@ Namespace java.awt
 				Me.lightweightRequests = New LinkedList(Of LightweightFocusRequest)
 				addLightweightRequest(descendant, temporary, cause)
 			End Sub
-			Friend Function addLightweightRequest(ByVal descendant As Component, ByVal temporary As Boolean, ByVal cause As sun.awt.CausedFocusEvent.Cause) As Boolean
+			Friend Function addLightweightRequest(  descendant As Component,   temporary As Boolean,   cause As sun.awt.CausedFocusEvent.Cause) As Boolean
 				If log.isLoggable(sun.util.logging.PlatformLogger.Level.FINE) Then
 					If Me Is HeavyweightFocusRequest.CLEAR_GLOBAL_FOCUS_OWNER Then log.fine("Assertion (this != HeavyweightFocusRequest.CLEAR_GLOBAL_FOCUS_OWNER) failed")
 					If descendant Is Nothing Then log.fine("Assertion (descendant != null) failed")
@@ -1863,7 +1863,7 @@ Namespace java.awt
 		Friend Const SNFH_SUCCESS_HANDLED As Integer = 1
 		Friend Const SNFH_SUCCESS_PROCEED As Integer = 2
 
-		Friend Shared Function processSynchronousLightweightTransfer(ByVal heavyweight As Component, ByVal descendant As Component, ByVal temporary As Boolean, ByVal focusedWindowChangeAllowed As Boolean, ByVal time As Long) As Boolean
+		Friend Shared Function processSynchronousLightweightTransfer(  heavyweight As Component,   descendant As Component,   temporary As Boolean,   focusedWindowChangeAllowed As Boolean,   time As Long) As Boolean
 			Dim parentWindow As Window = sun.awt.SunToolkit.getContainingWindow(heavyweight)
 			If parentWindow Is Nothing OrElse (Not parentWindow.syncLWRequests) Then Return False
 			If descendant Is Nothing Then descendant = heavyweight
@@ -1942,7 +1942,7 @@ Namespace java.awt
 		''' this function from the native event pumping thread, or by holding a
 		''' global, native lock during invocation.
 		''' </summary>
-		Friend Shared Function shouldNativelyFocusHeavyweight(ByVal heavyweight As Component, ByVal descendant As Component, ByVal temporary As Boolean, ByVal focusedWindowChangeAllowed As Boolean, ByVal time As Long, ByVal cause As sun.awt.CausedFocusEvent.Cause) As Integer
+		Friend Shared Function shouldNativelyFocusHeavyweight(  heavyweight As Component,   descendant As Component,   temporary As Boolean,   focusedWindowChangeAllowed As Boolean,   time As Long,   cause As sun.awt.CausedFocusEvent.Cause) As Integer
 			If log.isLoggable(sun.util.logging.PlatformLogger.Level.FINE) Then
 				If heavyweight Is Nothing Then log.fine("Assertion (heavyweight != null) failed")
 				If time = 0 Then log.fine("Assertion (time != 0) failed")
@@ -2053,7 +2053,7 @@ Namespace java.awt
 				Return CType(activeWindow_Renamed, Window)
 			End SyncLock
 		End Function
-		Friend Overridable Function getCurrentWaitingRequest(ByVal parent As Component) As Component
+		Friend Overridable Function getCurrentWaitingRequest(  parent As Component) As Component
 			SyncLock heavyweightRequests
 				Dim hwFocusRequest As HeavyweightFocusRequest = firstHWRequest
 				If hwFocusRequest IsNot Nothing Then
@@ -2074,7 +2074,7 @@ Namespace java.awt
 			End Get
 		End Property
 
-		Friend Shared Function isAutoFocusTransferEnabledFor(ByVal comp As Component) As Boolean
+		Friend Shared Function isAutoFocusTransferEnabledFor(  comp As Component) As Boolean
 			Return autoFocusTransferEnabled AndAlso comp.autoFocusTransferOnDisposal
 		End Function
 
@@ -2084,7 +2084,7 @@ Namespace java.awt
 	'     * @param comp the component to dispatch the event to
 	'     * @param event the event to dispatch to the component
 	'     
-		Private Shared Function dispatchAndCatchException(ByVal ex As Throwable, ByVal comp As Component, ByVal [event] As java.awt.event.FocusEvent) As Throwable
+		Private Shared Function dispatchAndCatchException(  ex As Throwable,   comp As Component,   [event] As java.awt.event.FocusEvent) As Throwable
 			Dim retEx As Throwable = Nothing
 			Try
 				comp.dispatchEvent(event_Renamed)
@@ -2100,7 +2100,7 @@ Namespace java.awt
 			Return ex
 		End Function
 
-		Private Shared Sub handleException(ByVal ex As Throwable)
+		Private Shared Sub handleException(  ex As Throwable)
 			ex.printStackTrace()
 		End Sub
 
@@ -2181,7 +2181,7 @@ Namespace java.awt
 			End If
 		End Sub
 
-		Friend Shared Function retargetUnexpectedFocusEvent(ByVal fe As java.awt.event.FocusEvent) As java.awt.event.FocusEvent
+		Friend Shared Function retargetUnexpectedFocusEvent(  fe As java.awt.event.FocusEvent) As java.awt.event.FocusEvent
 			SyncLock heavyweightRequests
 				' Any other case represents a failure condition which we did
 				' not expect. We need to clearFocusRequestList() and patch up
@@ -2197,7 +2197,7 @@ Namespace java.awt
 			End SyncLock
 		End Function
 
-		Friend Shared Function retargetFocusGained(ByVal fe As java.awt.event.FocusEvent) As java.awt.event.FocusEvent
+		Friend Shared Function retargetFocusGained(  fe As java.awt.event.FocusEvent) As java.awt.event.FocusEvent
 			assert(fe.iD = java.awt.event.FocusEvent.FOCUS_GAINED)
 
 			Dim currentFocusOwner As Component = currentKeyboardFocusManager.globalFocusOwner
@@ -2256,7 +2256,7 @@ Namespace java.awt
 			End Sub
 		End Class
 
-		Friend Shared Function retargetFocusLost(ByVal fe As java.awt.event.FocusEvent) As java.awt.event.FocusEvent
+		Friend Shared Function retargetFocusLost(  fe As java.awt.event.FocusEvent) As java.awt.event.FocusEvent
 			assert(fe.iD = java.awt.event.FocusEvent.FOCUS_LOST)
 
 			Dim currentFocusOwner As Component = currentKeyboardFocusManager.globalFocusOwner
@@ -2307,7 +2307,7 @@ Namespace java.awt
 			End SyncLock ' end synchronized(heavyweightRequests)
 		End Function
 
-		Friend Shared Function retargetFocusEvent(ByVal [event] As AWTEvent) As AWTEvent
+		Friend Shared Function retargetFocusEvent(  [event] As AWTEvent) As AWTEvent
 			If clearingCurrentLightweightRequests Then Return event_Renamed
 
 			Dim manager As KeyboardFocusManager = currentKeyboardFocusManager
@@ -2385,7 +2385,7 @@ Namespace java.awt
 				Return (heavyweightRequests.Count > 0)
 			End SyncLock
 		End Function
-		Friend Shared Sub removeLastFocusRequest(ByVal heavyweight As Component)
+		Friend Shared Sub removeLastFocusRequest(  heavyweight As Component)
 			If log.isLoggable(sun.util.logging.PlatformLogger.Level.FINE) Then
 				If heavyweight Is Nothing Then log.fine("Assertion (heavyweight != null) failed")
 			End If
@@ -2400,7 +2400,7 @@ Namespace java.awt
 			End SyncLock
 		End Sub
 
-		Private Shared Function focusedWindowChanged(ByVal [to] As Component, ByVal [from] As Component) As Boolean
+		Private Shared Function focusedWindowChanged(  [to] As Component,   [from] As Component) As Boolean
 			Dim wto As Window = sun.awt.SunToolkit.getContainingWindow([to])
 			Dim wfrom As Window = sun.awt.SunToolkit.getContainingWindow([from])
 			If wto Is Nothing AndAlso wfrom Is Nothing Then Return True
@@ -2409,7 +2409,7 @@ Namespace java.awt
 			Return (wto IsNot wfrom)
 		End Function
 
-		Private Shared Function isTemporary(ByVal [to] As Component, ByVal [from] As Component) As Boolean
+		Private Shared Function isTemporary(  [to] As Component,   [from] As Component) As Boolean
 			Dim wto As Window = sun.awt.SunToolkit.getContainingWindow([to])
 			Dim wfrom As Window = sun.awt.SunToolkit.getContainingWindow([from])
 			If wto Is Nothing AndAlso wfrom Is Nothing Then Return False
@@ -2418,7 +2418,7 @@ Namespace java.awt
 			Return (wto IsNot wfrom)
 		End Function
 
-		Friend Shared Function getHeavyweight(ByVal comp As Component) As Component
+		Friend Shared Function getHeavyweight(  comp As Component) As Component
 			If comp Is Nothing OrElse comp.peer Is Nothing Then
 				Return Nothing
 			ElseIf TypeOf comp.peer Is java.awt.peer.LightweightPeer Then
@@ -2430,7 +2430,7 @@ Namespace java.awt
 
 		Friend Shared proxyActive As Field
 		' Accessor to private field isProxyActive of KeyEvent
-		Private Shared Function isProxyActiveImpl(ByVal e As java.awt.event.KeyEvent) As Boolean
+		Private Shared Function isProxyActiveImpl(  e As java.awt.event.KeyEvent) As Boolean
 			If proxyActive Is Nothing Then proxyActive = java.security.AccessController.doPrivileged(New PrivilegedActionAnonymousInnerClassHelper(Of T)
 
 			Try
@@ -2457,7 +2457,7 @@ Namespace java.awt
 		End Class
 
 		' Returns the value of this KeyEvent's field isProxyActive
-		Friend Shared Function isProxyActive(ByVal e As java.awt.event.KeyEvent) As Boolean
+		Friend Shared Function isProxyActive(  e As java.awt.event.KeyEvent) As Boolean
 			If Not GraphicsEnvironment.headless Then
 				Return isProxyActiveImpl(e)
 			Else

@@ -50,7 +50,7 @@ Namespace java.io
 		''' underlying InputStream.
 		''' </summary>
 		''' <param name="in">   the specified input stream </param>
-		Public Sub New(ByVal [in] As InputStream)
+		Public Sub New(  [in] As InputStream)
 			MyBase.New([in])
 		End Sub
 
@@ -97,7 +97,7 @@ Namespace java.io
 		''' error occurs. </exception>
 		''' <seealso cref=        java.io.FilterInputStream#in </seealso>
 		''' <seealso cref=        java.io.InputStream#read(byte[], int, int) </seealso>
-		Public NotOverridable Overrides Function read(ByVal b As SByte()) As Integer
+		Public NotOverridable Overrides Function read(  b As SByte()) As Integer
 			Return [in].read(b, 0, b.Length)
 		End Function
 

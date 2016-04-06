@@ -46,21 +46,21 @@ Namespace java.util.stream
 		''' @param <T> the type of both input and output elements </param>
 		''' <param name="upstream"> a reference stream with element type T </param>
 		''' <returns> the new stream </returns>
-		Friend Shared Function makeRef(Of T, T1)(ByVal upstream As AbstractPipeline(Of T1)) As ReferencePipeline(Of T, T)
+		Friend Shared Function makeRef(Of T, T1)(  upstream As AbstractPipeline(Of T1)) As ReferencePipeline(Of T, T)
 			Return New StatefulOpAnonymousInnerClassHelper(Of E_IN, E_OUT)
 		End Function
 
 		Private Class StatefulOpAnonymousInnerClassHelper(Of E_IN, E_OUT)
 			Inherits StatefulOp(Of E_IN, E_OUT)
 
-			 Friend Overridable Function reduce(Of P_IN)(ByVal helper As PipelineHelper(Of T), ByVal spliterator As java.util.Spliterator(Of P_IN)) As Node(Of T)
+			 Friend Overridable Function reduce(Of P_IN)(  helper As PipelineHelper(Of T),   spliterator As java.util.Spliterator(Of P_IN)) As Node(Of T)
 				' If the stream is SORTED then it should also be ORDERED so the following will also
 				' preserve the sort order
 				Dim reduceOp As TerminalOp(Of T, java.util.LinkedHashSet(Of T)) = ReduceOps.makeRef(Of T, java.util.LinkedHashSet(Of T))(java.util.LinkedHashSet::New, java.util.LinkedHashSet::add, java.util.LinkedHashSet::addAll)
 				Return Nodes.node(reduceOp.evaluateParallel(helper, spliterator))
 			 End Function
 
-			 Friend Overrides Function opEvaluateParallel(Of P_IN)(ByVal helper As PipelineHelper(Of T), ByVal spliterator As java.util.Spliterator(Of P_IN), ByVal generator As java.util.function.IntFunction(Of T())) As Node(Of T)
+			 Friend Overrides Function opEvaluateParallel(Of P_IN)(  helper As PipelineHelper(Of T),   spliterator As java.util.Spliterator(Of P_IN),   generator As java.util.function.IntFunction(Of T())) As Node(Of T)
 				If StreamOpFlag.DISTINCT.isKnown(helper.streamAndOpFlags) Then
 					' No-op
 					Return helper.evaluate(spliterator, False, generator)
@@ -85,7 +85,7 @@ Namespace java.util.stream
 				End If
 			 End Function
 
-			 Friend Overrides Function opEvaluateParallelLazy(Of P_IN)(ByVal helper As PipelineHelper(Of T), ByVal spliterator As java.util.Spliterator(Of P_IN)) As java.util.Spliterator(Of T)
+			 Friend Overrides Function opEvaluateParallelLazy(Of P_IN)(  helper As PipelineHelper(Of T),   spliterator As java.util.Spliterator(Of P_IN)) As java.util.Spliterator(Of T)
 				If StreamOpFlag.DISTINCT.isKnown(helper.streamAndOpFlags) Then
 					' No-op
 					Return helper.wrapSpliterator(spliterator)
@@ -98,7 +98,7 @@ Namespace java.util.stream
 				End If
 			 End Function
 
-			Friend Overrides Function opWrapSink(ByVal flags As Integer, ByVal sink As Sink(Of T)) As Sink(Of T)
+			Friend Overrides Function opWrapSink(  flags As Integer,   sink As Sink(Of T)) As Sink(Of T)
 				java.util.Objects.requireNonNull(sink)
 
 				If StreamOpFlag.DISTINCT.isKnown(flags) Then

@@ -83,7 +83,7 @@ Namespace java.nio.file
 		'''          if a security manager is installed and it denies an unspecified
 		'''          permission required to monitor this object. Implementations of
 		'''          this interface should specify the permission checks. </exception>
-		Function register(Of T1)(ByVal watcher As WatchService, ByVal events As WatchEvent.Kind(Of T1)(), ParamArray ByVal modifiers As WatchEvent.Modifier()) As WatchKey
+		Function register(Of T1)(  watcher As WatchService,   events As WatchEvent.Kind(Of T1)(), ParamArray   modifiers As WatchEvent.Modifier()) As WatchKey
 
 
 		''' <summary>
@@ -115,7 +115,7 @@ Namespace java.nio.file
 		'''          if a security manager is installed and it denies an unspecified
 		'''          permission required to monitor this object. Implementations of
 		'''          this interface should specify the permission checks. </exception>
-		Function register(Of T1)(ByVal watcher As WatchService, ParamArray ByVal events As WatchEvent.Kind(Of T1)()) As WatchKey
+		Function register(Of T1)(  watcher As WatchService, ParamArray   events As WatchEvent.Kind(Of T1)()) As WatchKey
 	End Interface
 
 End Namespace

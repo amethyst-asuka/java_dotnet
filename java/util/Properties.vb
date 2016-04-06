@@ -137,7 +137,7 @@ Namespace java.util
 		''' Creates an empty property list with the specified defaults.
 		''' </summary>
 		''' <param name="defaults">   the defaults. </param>
-		Public Sub New(ByVal defaults As Properties)
+		Public Sub New(  defaults As Properties)
 			Me.defaults = defaults
 		End Sub
 
@@ -154,7 +154,7 @@ Namespace java.util
 		''' <seealso cref= #getProperty
 		''' @since    1.2 </seealso>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Function setProperty(ByVal key As String, ByVal value As String) As Object
+		Public Overridable Function setProperty(  key As String,   value As String) As Object
 			Return put(key, value)
 		End Function
 
@@ -305,7 +305,7 @@ Namespace java.util
 		'''          appears in the input.
 		''' @since   1.6 </exception>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Sub load(ByVal reader As java.io.Reader)
+		Public Overridable Sub load(  reader As java.io.Reader)
 			load0(New LineReader(Me, reader))
 		End Sub
 
@@ -329,11 +329,11 @@ Namespace java.util
 		'''             malformed Unicode escape sequence.
 		''' @since 1.2 </exception>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Sub load(ByVal inStream As java.io.InputStream)
+		Public Overridable Sub load(  inStream As java.io.InputStream)
 			load0(New LineReader(Me, inStream))
 		End Sub
 
-		Private Sub load0(ByVal lr As LineReader)
+		Private Sub load0(  lr As LineReader)
 			Dim convtBuf As Char() = New Char(1023){}
 			Dim limit As Integer
 			Dim keyLen As Integer
@@ -396,13 +396,13 @@ Namespace java.util
 		Friend Class LineReader
 			Private ReadOnly outerInstance As Properties
 
-			Public Sub New(ByVal outerInstance As Properties, ByVal inStream As java.io.InputStream)
+			Public Sub New(  outerInstance As Properties,   inStream As java.io.InputStream)
 					Me.outerInstance = outerInstance
 				Me.inStream = inStream
 				inByteBuf = New SByte(8191){}
 			End Sub
 
-			Public Sub New(ByVal outerInstance As Properties, ByVal reader As java.io.Reader)
+			Public Sub New(  outerInstance As Properties,   reader As java.io.Reader)
 					Me.outerInstance = outerInstance
 				Me.reader = reader
 				inCharBuf = New Char(8191){}
@@ -516,7 +516,7 @@ Namespace java.util
 	'     * Converts encoded &#92;uxxxx to unicode chars
 	'     * and changes special saved chars to their original forms
 	'     
-		Private Function loadConvert(ByVal [in] As Char(), ByVal [off] As Integer, ByVal len As Integer, ByVal convtBuf As Char()) As String
+		Private Function loadConvert(  [in] As Char(),   [off] As Integer,   len As Integer,   convtBuf As Char()) As String
 			If convtBuf.Length < len Then
 				Dim newLen As Integer = len * 2
 				If newLen < 0 Then newLen =  java.lang.[Integer].Max_Value
@@ -577,7 +577,7 @@ Namespace java.util
 	'     * Converts unicodes to encoded &#92;uxxxx and escapes
 	'     * special characters with a preceding slash
 	'     
-		Private Function saveConvert(ByVal theString As String, ByVal escapeSpace As Boolean, ByVal escapeUnicode As Boolean) As String
+		Private Function saveConvert(  theString As String,   escapeSpace As Boolean,   escapeUnicode As Boolean) As String
 			Dim len As Integer = theString.length()
 			Dim bufLen As Integer = len * 2
 			If bufLen < 0 Then bufLen =  java.lang.[Integer].Max_Value
@@ -631,7 +631,7 @@ Namespace java.util
 			Return outBuffer.ToString()
 		End Function
 
-		Private Shared Sub writeComments(ByVal bw As java.io.BufferedWriter, ByVal comments As String)
+		Private Shared Sub writeComments(  bw As java.io.BufferedWriter,   comments As String)
 			bw.write("#")
 			Dim len As Integer = comments.length()
 			Dim current As Integer = 0
@@ -678,7 +678,7 @@ Namespace java.util
 		'''             contains any keys or values that are not
 		'''             {@code Strings}. </exception>
 		<Obsolete("This method does not throw an IOException if an I/O error")> _
-		Public Overridable Sub save(ByVal out As java.io.OutputStream, ByVal comments As String)
+		Public Overridable Sub save(  out As java.io.OutputStream,   comments As String)
 			Try
 				store(out, comments)
 			Catch e As java.io.IOException
@@ -732,7 +732,7 @@ Namespace java.util
 		'''             contains any keys or values that are not {@code Strings}. </exception>
 		''' <exception cref="NullPointerException">  if {@code writer} is null.
 		''' @since 1.6 </exception>
-		Public Overridable Sub store(ByVal writer As java.io.Writer, ByVal comments As String)
+		Public Overridable Sub store(  writer As java.io.Writer,   comments As String)
 			store0(If(TypeOf writer Is java.io.BufferedWriter, CType(writer, java.io.BufferedWriter), New java.io.BufferedWriter(writer)), comments, False)
 		End Sub
 
@@ -773,11 +773,11 @@ Namespace java.util
 		'''             contains any keys or values that are not {@code Strings}. </exception>
 		''' <exception cref="NullPointerException">  if {@code out} is null.
 		''' @since 1.2 </exception>
-		Public Overridable Sub store(ByVal out As java.io.OutputStream, ByVal comments As String)
+		Public Overridable Sub store(  out As java.io.OutputStream,   comments As String)
 			store0(New java.io.BufferedWriter(New java.io.OutputStreamWriter(out, "8859_1")), comments, True)
 		End Sub
 
-		Private Sub store0(ByVal bw As java.io.BufferedWriter, ByVal comments As String, ByVal escUnicode As Boolean)
+		Private Sub store0(  bw As java.io.BufferedWriter,   comments As String,   escUnicode As Boolean)
 			If comments IsNot Nothing Then writeComments(bw, comments)
 			bw.write("#" & DateTime.Now.ToString())
 			bw.newLine()
@@ -830,7 +830,7 @@ Namespace java.util
 		'''         Encoding in Entities</a>
 		''' @since 1.5 </seealso>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Sub loadFromXML(ByVal [in] As java.io.InputStream)
+		Public Overridable Sub loadFromXML(  [in] As java.io.InputStream)
 			XmlSupport.load(Me, Objects.requireNonNull([in]))
 			[in].close()
 		End Sub
@@ -854,7 +854,7 @@ Namespace java.util
 		'''         {@code Strings}. </exception>
 		''' <seealso cref=    #loadFromXML(InputStream)
 		''' @since 1.5 </seealso>
-		Public Overridable Sub storeToXML(ByVal os As java.io.OutputStream, ByVal comment As String)
+		Public Overridable Sub storeToXML(  os As java.io.OutputStream,   comment As String)
 			storeToXML(os, comment, "UTF-8")
 		End Sub
 
@@ -896,7 +896,7 @@ Namespace java.util
 		''' <seealso cref=    <a href="http://www.w3.org/TR/REC-xml/#charencoding">Character
 		'''         Encoding in Entities</a>
 		''' @since 1.5 </seealso>
-		Public Overridable Sub storeToXML(ByVal os As java.io.OutputStream, ByVal comment As String, ByVal encoding As String)
+		Public Overridable Sub storeToXML(  os As java.io.OutputStream,   comment As String,   encoding As String)
 			XmlSupport.save(Me, Objects.requireNonNull(os), comment, Objects.requireNonNull(encoding))
 		End Sub
 
@@ -910,7 +910,7 @@ Namespace java.util
 		''' <returns>  the value in this property list with the specified key value. </returns>
 		''' <seealso cref=     #setProperty </seealso>
 		''' <seealso cref=     #defaults </seealso>
-		Public Overridable Function getProperty(ByVal key As String) As String
+		Public Overridable Function getProperty(  key As String) As String
 			Dim oval As Object = MyBase.get(key)
 			Dim sval As String = If(TypeOf oval Is String, CStr(oval), Nothing)
 			Return If((sval Is Nothing) AndAlso (defaults IsNot Nothing), defaults.getProperty(key), sval)
@@ -928,7 +928,7 @@ Namespace java.util
 		''' <returns>  the value in this property list with the specified key value. </returns>
 		''' <seealso cref=     #setProperty </seealso>
 		''' <seealso cref=     #defaults </seealso>
-		Public Overridable Function getProperty(ByVal key As String, ByVal defaultValue As String) As String
+		Public Overridable Function getProperty(  key As String,   defaultValue As String) As String
 			Dim val As String = getProperty(key)
 			Return If(val Is Nothing, defaultValue, val)
 		End Function
@@ -982,7 +982,7 @@ Namespace java.util
 		''' <param name="out">   an output stream. </param>
 		''' <exception cref="ClassCastException"> if any key in this property list
 		'''          is not a string. </exception>
-		Public Overridable Sub list(ByVal out As java.io.PrintStream)
+		Public Overridable Sub list(  out As java.io.PrintStream)
 			out.println("-- listing properties --")
 			Dim h As New Dictionary(Of String, Object)
 			enumerate(h)
@@ -1008,7 +1008,7 @@ Namespace java.util
 	'     * method is duplicated in order to ensure that a non-1.1 compiler can
 	'     * compile this file.
 	'     
-		Public Overridable Sub list(ByVal out As java.io.PrintWriter)
+		Public Overridable Sub list(  out As java.io.PrintWriter)
 			out.println("-- listing properties --")
 			Dim h As New Dictionary(Of String, Object)
 			enumerate(h)
@@ -1027,7 +1027,7 @@ Namespace java.util
 		''' <exception cref="ClassCastException"> if any of the property keys
 		'''         is not of String type. </exception>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Private Sub enumerate(ByVal h As Dictionary(Of String, Object))
+		Private Sub enumerate(  h As Dictionary(Of String, Object))
 			If defaults IsNot Nothing Then defaults.enumerate(h)
             Dim e As Enumeration(Of String) = keys()
             Do While e.hasMoreElements()
@@ -1041,7 +1041,7 @@ Namespace java.util
 		''' and omits the property if the key or value is not a string. </summary>
 		''' <param name="h"> the hashtable </param>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Private Sub enumerateStringProperties(ByVal h As Dictionary(Of String, String))
+		Private Sub enumerateStringProperties(  h As Dictionary(Of String, String))
 			If defaults IsNot Nothing Then defaults.enumerateStringProperties(h)
             Dim e As Enumeration(Of String) = keys()
             Do While e.hasMoreElements()
@@ -1054,7 +1054,7 @@ Namespace java.util
 		''' <summary>
 		''' Convert a nibble to a hex character </summary>
 		''' <param name="nibble">  the nibble to convert. </param>
-		Private Shared Function toHex(ByVal nibble As Integer) As Char
+		Private Shared Function toHex(  nibble As Integer) As Char
 			Return hexDigit((nibble And &HF))
 		End Function
 
@@ -1090,7 +1090,7 @@ Namespace java.util
 		''' </summary>
 		Private Class XmlSupport
 
-			Private Shared Function loadProviderFromProperty(ByVal cl As  ClassLoader) As sun.util.spi.XmlPropertiesProvider
+			Private Shared Function loadProviderFromProperty(  cl As  ClassLoader) As sun.util.spi.XmlPropertiesProvider
                 Dim cn As String = java.lang.System.getProperty("sun.util.spi.XmlPropertiesProvider")
                 If cn Is Nothing Then Return Nothing
                 Try
@@ -1105,7 +1105,7 @@ Namespace java.util
                 End Try
 			End Function
 
-			Private Shared Function loadProviderAsService(ByVal cl As  ClassLoader) As sun.util.spi.XmlPropertiesProvider
+			Private Shared Function loadProviderAsService(  cl As  ClassLoader) As sun.util.spi.XmlPropertiesProvider
 				Dim [iterator] As [Iterator](Of sun.util.spi.XmlPropertiesProvider) = ServiceLoader.load(GetType(sun.util.spi.XmlPropertiesProvider), cl).GetEnumerator()
 				Return If([iterator].hasNext(), [iterator].next(), Nothing)
 			End Function
@@ -1129,11 +1129,11 @@ Namespace java.util
 
 			Private Shared ReadOnly PROVIDER As sun.util.spi.XmlPropertiesProvider = loadProvider()
 
-			Friend Shared Sub load(ByVal props As Properties, ByVal [in] As java.io.InputStream)
+			Friend Shared Sub load(  props As Properties,   [in] As java.io.InputStream)
 				PROVIDER.load(props, [in])
 			End Sub
 
-			Friend Shared Sub save(ByVal props As Properties, ByVal os As java.io.OutputStream, ByVal comment As String, ByVal encoding As String)
+			Friend Shared Sub save(  props As Properties,   os As java.io.OutputStream,   comment As String,   encoding As String)
 				PROVIDER.store(props, os, comment, encoding)
 			End Sub
 		End Class

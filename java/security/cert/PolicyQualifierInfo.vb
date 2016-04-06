@@ -96,7 +96,7 @@ Namespace java.security.cert
 		''' <param name="encoded"> a byte array containing the qualifier in DER encoding </param>
 		''' <exception cref="IOException"> thrown if the byte array does not represent a
 		''' valid and parsable policy qualifier </exception>
-		Public Sub New(ByVal encoded As SByte())
+		Public Sub New(  encoded As SByte())
 			mEncoded = encoded.clone()
 
 			Dim val As New sun.security.util.DerValue(mEncoded)

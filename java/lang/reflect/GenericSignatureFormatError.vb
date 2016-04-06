@@ -51,7 +51,7 @@ Namespace java.lang.reflect
 		''' specified message.
 		''' </summary>
 		''' <param name="message"> the detail message, may be {@code null} </param>
-		Public Sub New(ByVal message As String)
+		Public Sub New(  message As String)
 			MyBase.New(message)
 		End Sub
 	End Class

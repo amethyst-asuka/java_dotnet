@@ -45,21 +45,21 @@ Namespace java.io
 		''' </summary>
 		''' <param name="obj"> the object to be written </param>
 		''' <exception cref="IOException"> Any of the usual Input/Output related exceptions. </exception>
-		Sub writeObject(ByVal obj As Object)
+		Sub writeObject(  obj As Object)
 
 		''' <summary>
 		''' Writes a java.lang.[Byte]. This method will block until the byte is actually
 		''' written. </summary>
 		''' <param name="b"> the byte </param>
 		''' <exception cref="IOException"> If an I/O error has occurred. </exception>
-		Sub write(ByVal b As Integer)
+		Sub write(  b As Integer)
 
 		''' <summary>
 		''' Writes an array of bytes. This method will block until the bytes
 		''' are actually written. </summary>
 		''' <param name="b"> the data to be written </param>
 		''' <exception cref="IOException"> If an I/O error has occurred. </exception>
-		Sub write(ByVal b As SByte())
+		Sub write(  b As SByte())
 
 		''' <summary>
 		''' Writes a sub array of bytes. </summary>
@@ -67,7 +67,7 @@ Namespace java.io
 		''' <param name="off">       the start offset in the data </param>
 		''' <param name="len">       the number of bytes that are written </param>
 		''' <exception cref="IOException"> If an I/O error has occurred. </exception>
-		Sub write(SByte ByVal  As b(), ByVal [off] As Integer, ByVal len As Integer)
+		Sub write(SByte    As b(),   [off] As Integer,   len As Integer)
 
 		''' <summary>
 		''' Flushes the stream. This will write any buffered

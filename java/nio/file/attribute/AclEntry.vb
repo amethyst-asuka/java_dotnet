@@ -75,7 +75,7 @@ Namespace java.nio.file.attribute
 		Private hash_Renamed As Integer
 
 		' private constructor
-		Private Sub New(ByVal type As AclEntryType, ByVal who As UserPrincipal, ByVal perms As [Set](Of AclEntryPermission), ByVal flags As [Set](Of AclEntryFlag))
+		Private Sub New(  type As AclEntryType,   who As UserPrincipal,   perms As [Set](Of AclEntryPermission),   flags As [Set](Of AclEntryFlag))
 			Me.type_Renamed = type
 			Me.who = who
 			Me.perms = perms
@@ -100,7 +100,7 @@ Namespace java.nio.file.attribute
 			Private perms As [Set](Of AclEntryPermission)
 			Private flags As [Set](Of AclEntryFlag)
 
-			Private Sub New(ByVal type As AclEntryType, ByVal who As UserPrincipal, ByVal perms As [Set](Of AclEntryPermission), ByVal flags As [Set](Of AclEntryFlag))
+			Private Sub New(  type As AclEntryType,   who As UserPrincipal,   perms As [Set](Of AclEntryPermission),   flags As [Set](Of AclEntryFlag))
 				Debug.Assert(perms IsNot Nothing AndAlso flags IsNot Nothing)
 				Me.type = type
 				Me.who = who
@@ -128,7 +128,7 @@ Namespace java.nio.file.attribute
 			''' </summary>
 			''' <param name="type">  the component type </param>
 			''' <returns>  this builder </returns>
-			Public Function setType(ByVal type As AclEntryType) As Builder
+			Public Function setType(  type As AclEntryType) As Builder
 				If type Is Nothing Then Throw New NullPointerException
 				Me.type = type
 				Return Me
@@ -139,14 +139,14 @@ Namespace java.nio.file.attribute
 			''' </summary>
 			''' <param name="who">  the principal component </param>
 			''' <returns>  this builder </returns>
-			Public Function setPrincipal(ByVal who As UserPrincipal) As Builder
+			Public Function setPrincipal(  who As UserPrincipal) As Builder
 				If who Is Nothing Then Throw New NullPointerException
 				Me.who = who
 				Return Me
 			End Function
 
 			' check set only contains elements of the given type
-			Private Shared Sub checkSet(Of T1)(ByVal [set] As [Set](Of T1), ByVal type As [Class])
+			Private Shared Sub checkSet(Of T1)(  [set] As [Set](Of T1),   type As [Class])
 				For Each e As Object In [set]
 					If e Is Nothing Then Throw New NullPointerException
 					type.cast(e)
@@ -163,7 +163,7 @@ Namespace java.nio.file.attribute
 			''' <exception cref="ClassCastException">
 			'''          if the set contains elements that are not of type {@code
 			'''          AclEntryPermission} </exception>
-			Public Function setPermissions(ByVal perms As [Set](Of AclEntryPermission)) As Builder
+			Public Function setPermissions(  perms As [Set](Of AclEntryPermission)) As Builder
 				If perms.empty Then
 					' EnumSet.copyOf does not allow empty set
 					perms = Collections.emptySet()
@@ -184,7 +184,7 @@ Namespace java.nio.file.attribute
 			''' </summary>
 			''' <param name="perms">  the permissions component </param>
 			''' <returns>  this builder </returns>
-			Public Function setPermissions(ParamArray ByVal perms As AclEntryPermission()) As Builder
+			Public Function setPermissions(ParamArray   perms As AclEntryPermission()) As Builder
 				Dim [set] As [Set](Of AclEntryPermission) = EnumSet.noneOf(GetType(AclEntryPermission))
 				' copy and check for null elements
 				For Each p As AclEntryPermission In perms
@@ -205,7 +205,7 @@ Namespace java.nio.file.attribute
 			''' <exception cref="ClassCastException">
 			'''          if the set contains elements that are not of type {@code
 			'''          AclEntryFlag} </exception>
-			Public Function setFlags(ByVal flags As [Set](Of AclEntryFlag)) As Builder
+			Public Function setFlags(  flags As [Set](Of AclEntryFlag)) As Builder
 				If flags.empty Then
 					' EnumSet.copyOf does not allow empty set
 					flags = Collections.emptySet()
@@ -226,7 +226,7 @@ Namespace java.nio.file.attribute
 			''' </summary>
 			''' <param name="flags">  the flags component </param>
 			''' <returns>  this builder </returns>
-			Public Function setFlags(ParamArray ByVal flags As AclEntryFlag()) As Builder
+			Public Function setFlags(ParamArray   flags As AclEntryFlag()) As Builder
 				Dim [set] As [Set](Of AclEntryFlag) = EnumSet.noneOf(GetType(AclEntryFlag))
 				' copy and check for null elements
 				For Each f As AclEntryFlag In flags
@@ -255,7 +255,7 @@ Namespace java.nio.file.attribute
 		''' </summary>
 		''' <param name="entry">  an ACL entry </param>
 		''' <returns>  a new builder </returns>
-		Public Shared Function newBuilder(ByVal entry As AclEntry) As Builder
+		Public Shared Function newBuilder(  entry As AclEntry) As Builder
 			Return New Builder(entry.type_Renamed, entry.who, entry.perms, entry.flags_Renamed)
 		End Function
 
@@ -312,7 +312,7 @@ Namespace java.nio.file.attribute
 		''' </param>
 		''' <returns>  {@code true} if, and only if, the given object is an AclEntry that
 		'''          is identical to this AclEntry </returns>
-		Public Overrides Function Equals(ByVal ob As Object) As Boolean
+		Public Overrides Function Equals(  ob As Object) As Boolean
 			If ob Is Me Then Return True
 			If ob Is Nothing OrElse Not(TypeOf ob Is AclEntry) Then Return False
 			Dim other As AclEntry = CType(ob, AclEntry)
@@ -323,7 +323,7 @@ Namespace java.nio.file.attribute
 			Return True
 		End Function
 
-		Private Shared Function hash(ByVal h As Integer, ByVal o As Object) As Integer
+		Private Shared Function hash(  h As Integer,   o As Object) As Integer
 			Return h * 127 + o.GetHashCode()
 		End Function
 

@@ -75,7 +75,7 @@ Namespace java.text
 		' Noted by Helena Shih on 6/23/97
 		'============================================================================================
 
-		Public Sub New(ByVal rules As String, ByVal decmp As Integer)
+		Public Sub New(  rules As String,   decmp As Integer)
 			Me.rules = rules
 
 			Dim builder As New RBTableBuilder(New BuildAPI(Me))
@@ -90,7 +90,7 @@ Namespace java.text
 			''' Private constructor.  Prevents anyone else besides RBTableBuilder
 			''' from gaining direct access to the internals of this class.
 			''' </summary>
-			Private Sub New(ByVal outerInstance As RBCollationTables)
+			Private Sub New(  outerInstance As RBCollationTables)
 					Me.outerInstance = outerInstance
 			End Sub
 
@@ -110,7 +110,7 @@ Namespace java.text
 			'''              character sequences (the value for contractFlags) </param>
 			''' <param name="mso"> The value for maxSecOrder </param>
 			''' <param name="mto"> The value for maxTerOrder </param>
-			Friend Sub fillInTables(ByVal f2ary As Boolean, ByVal swap As Boolean, ByVal map As sun.text.UCompactIntArray, ByVal cTbl As List(Of List(Of EntryPair)), ByVal eTbl As List(Of Integer()), ByVal cFlgs As sun.text.IntHashtable, ByVal mso As Short, ByVal mto As Short)
+			Friend Sub fillInTables(  f2ary As Boolean,   swap As Boolean,   map As sun.text.UCompactIntArray,   cTbl As List(Of List(Of EntryPair)),   eTbl As List(Of Integer()),   cFlgs As sun.text.IntHashtable,   mso As Short,   mto As Short)
 				outerInstance.frenchSec = f2ary
 				outerInstance.seAsianSwapping = swap
 				outerInstance.mapping = map
@@ -152,13 +152,13 @@ Namespace java.text
 		'''  Get the entry of hash table of the contracting string in the collation
 		'''  table. </summary>
 		'''  <param name="ch"> the starting character of the contracting string </param>
-		Friend Function getContractValues(ByVal ch As Integer) As List(Of EntryPair)
+		Friend Function getContractValues(  ch As Integer) As List(Of EntryPair)
 			Dim index As Integer = mapping.elementAt(ch)
 			Return getContractValuesImpl(index - CONTRACTCHARINDEX)
 		End Function
 
 		'get contract values from contractTable by index
-		Private Function getContractValuesImpl(ByVal index As Integer) As List(Of EntryPair)
+		Private Function getContractValuesImpl(  index As Integer) As List(Of EntryPair)
 			If index >= 0 Then
 				Return contractTable(index)
 			Else ' not found
@@ -170,7 +170,7 @@ Namespace java.text
 		''' Returns true if this character appears anywhere in a contracting
 		''' character sequence.  (Used by CollationElementIterator.setOffset().)
 		''' </summary>
-		Friend Function usedInContractSeq(ByVal c As Integer) As Boolean
+		Friend Function usedInContractSeq(  c As Integer) As Boolean
 			Return contractFlags.get(c) = 1
 		End Function
 
@@ -183,7 +183,7 @@ Namespace java.text
 		'''         with the specified order.
 		''' </returns>
 		''' <seealso cref= CollationElementIterator#getMaxExpansion </seealso>
-		Friend Function getMaxExpansion(ByVal order As Integer) As Integer
+		Friend Function getMaxExpansion(  order As Integer) As Integer
 			Dim result As Integer = 1
 
 			If expandTable IsNot Nothing Then
@@ -206,14 +206,14 @@ Namespace java.text
 		''' Get the entry of hash table of the expanding string in the collation
 		''' table. </summary>
 		''' <param name="idx"> the index of the expanding string value list </param>
-		Friend Function getExpandValueList(ByVal idx As Integer) As Integer()
+		Friend Function getExpandValueList(  idx As Integer) As Integer()
 			Return expandTable(idx - EXPANDCHARINDEX)
 		End Function
 
 		''' <summary>
 		''' Get the comarison order of a character from the collation table. </summary>
 		''' <returns> the comparison order of a character. </returns>
-		Friend Function getUnicodeOrder(ByVal ch As Integer) As Integer
+		Friend Function getUnicodeOrder(  ch As Integer) As Integer
 			Return mapping.elementAt(ch)
 		End Function
 
@@ -234,7 +234,7 @@ Namespace java.text
 		''' </summary>
 		'shemran/Note: this is used for secondary order value reverse, no
 		'              need to consider supplementary pair.
-		Friend Shared Sub reverse(ByVal result As StringBuffer, ByVal [from] As Integer, ByVal [to] As Integer)
+		Friend Shared Sub reverse(  result As StringBuffer,   [from] As Integer,   [to] As Integer)
 			Dim i As Integer = [from]
 			Dim swap As Char
 
@@ -248,7 +248,7 @@ Namespace java.text
 			Loop
 		End Sub
 
-		Friend Shared Function getEntry(ByVal list As List(Of EntryPair), ByVal name As String, ByVal fwd As Boolean) As Integer
+		Friend Shared Function getEntry(  list As List(Of EntryPair),   name As String,   fwd As Boolean) As Integer
 			For i As Integer = 0 To list.Count - 1
 				Dim pair As EntryPair = list(i)
 				If pair.fwd = fwd AndAlso pair.entryName.Equals(name) Then Return i

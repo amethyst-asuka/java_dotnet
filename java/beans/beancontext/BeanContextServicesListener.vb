@@ -39,7 +39,7 @@ Namespace java.beans.beancontext
 		''' The service named has been registered. getService requests for
 		''' this service may now be made. </summary>
 		''' <param name="bcsae"> the <code>BeanContextServiceAvailableEvent</code> </param>
-		Sub serviceAvailable(ByVal bcsae As java.beans.beancontext.BeanContextServiceAvailableEvent)
+		Sub serviceAvailable(  bcsae As java.beans.beancontext.BeanContextServiceAvailableEvent)
 	End Interface
 
 End Namespace

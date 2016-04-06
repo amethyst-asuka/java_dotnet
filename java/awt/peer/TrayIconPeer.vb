@@ -62,14 +62,14 @@ Namespace java.awt.peer
 		''' <param name="messageType"> the message type
 		''' </param>
 		''' <seealso cref= TrayIcon#displayMessage(String, String, java.awt.TrayIcon.MessageType) </seealso>
-		Sub displayMessage(ByVal caption As String, ByVal text As String, ByVal messageType As String)
+		Sub displayMessage(  caption As String,   text As String,   messageType As String)
 
 		''' <summary>
 		''' Shows the popup menu of this tray icon at the specified position.
 		''' </summary>
 		''' <param name="x"> the X location for the popup menu </param>
 		''' <param name="y"> the Y location for the popup menu </param>
-		Sub showPopupMenu(ByVal x As Integer, ByVal y As Integer)
+		Sub showPopupMenu(  x As Integer,   y As Integer)
 	End Interface
 
 End Namespace

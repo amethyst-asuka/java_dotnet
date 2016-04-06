@@ -311,20 +311,20 @@ Namespace java.util.concurrent
 
 		' The following unpacking methods are usually manually inlined
 
-		Private Shared Function unarrivedOf(ByVal s As Long) As Integer
+		Private Shared Function unarrivedOf(  s As Long) As Integer
 			Dim counts As Integer = CInt(s)
 			Return If(counts = EMPTY, 0, (counts And UNARRIVED_MASK))
 		End Function
 
-		Private Shared Function partiesOf(ByVal s As Long) As Integer
+		Private Shared Function partiesOf(  s As Long) As Integer
 			CInt(CUInt(Return CInt(s)) >> PARTIES_SHIFT)
 		End Function
 
-		Private Shared Function phaseOf(ByVal s As Long) As Integer
+		Private Shared Function phaseOf(  s As Long) As Integer
 			Return CInt(CLng(CULng(s) >> PHASE_SHIFT))
 		End Function
 
-		Private Shared Function arrivedOf(ByVal s As Long) As Integer
+		Private Shared Function arrivedOf(  s As Long) As Integer
 			Dim counts As Integer = CInt(s)
 			Return If(counts = EMPTY, 0, (CInt(CUInt(counts) >> PARTIES_SHIFT)) - (counts And UNARRIVED_MASK))
 		End Function
@@ -348,21 +348,21 @@ Namespace java.util.concurrent
 		Private ReadOnly evenQ As java.util.concurrent.atomic.AtomicReference(Of QNode)
 		Private ReadOnly oddQ As java.util.concurrent.atomic.AtomicReference(Of QNode)
 
-		Private Function queueFor(ByVal phase As Integer) As java.util.concurrent.atomic.AtomicReference(Of QNode)
+		Private Function queueFor(  phase As Integer) As java.util.concurrent.atomic.AtomicReference(Of QNode)
 			Return If((phase And 1) = 0, evenQ, oddQ)
 		End Function
 
 		''' <summary>
 		''' Returns message string for bounds exceptions on arrival.
 		''' </summary>
-		Private Function badArrive(ByVal s As Long) As String
+		Private Function badArrive(  s As Long) As String
 			Return "Attempted arrival of unregistered party for " & stateToString(s)
 		End Function
 
 		''' <summary>
 		''' Returns message string for bounds exceptions on registration.
 		''' </summary>
-		Private Function badRegister(ByVal s As Long) As String
+		Private Function badRegister(  s As Long) As String
 			Return "Attempt to register more than " & MAX_PARTIES & " parties for " & stateToString(s)
 		End Function
 
@@ -374,7 +374,7 @@ Namespace java.util.concurrent
 		''' <param name="adjust"> value to subtract from state;
 		'''               ONE_ARRIVAL for arrive,
 		'''               ONE_DEREGISTER for arriveAndDeregister </param>
-		Private Function doArrive(ByVal adjust As Integer) As Integer
+		Private Function doArrive(  adjust As Integer) As Integer
 			Dim root_Renamed As Phaser = Me.root
 			Do
 				Dim s As Long = If(root_Renamed Is Me, state, reconcileState())
@@ -417,7 +417,7 @@ Namespace java.util.concurrent
 		''' </summary>
 		''' <param name="registrations"> number to add to both parties and
 		''' unarrived fields. Must be greater than zero. </param>
-		Private Function doRegister(ByVal registrations As Integer) As Integer
+		Private Function doRegister(  registrations As Integer) As Integer
 			' adjustment to state
 			Dim adjust As Long = (CLng(registrations) << PARTIES_SHIFT) Or registrations
 			Dim parent_Renamed As Phaser = Me.parent
@@ -505,7 +505,7 @@ Namespace java.util.concurrent
 		''' next phase </param>
 		''' <exception cref="IllegalArgumentException"> if parties less than zero
 		''' or greater than the maximum number of parties supported </exception>
-		Public Sub New(ByVal parties As Integer)
+		Public Sub New(  parties As Integer)
 			Me.New(Nothing, parties)
 		End Sub
 
@@ -513,7 +513,7 @@ Namespace java.util.concurrent
 		''' Equivalent to <seealso cref="#Phaser(Phaser, int) Phaser(parent, 0)"/>.
 		''' </summary>
 		''' <param name="parent"> the parent phaser </param>
-		Public Sub New(ByVal parent As Phaser)
+		Public Sub New(  parent As Phaser)
 			Me.New(parent, 0)
 		End Sub
 
@@ -528,7 +528,7 @@ Namespace java.util.concurrent
 		''' next phase </param>
 		''' <exception cref="IllegalArgumentException"> if parties less than zero
 		''' or greater than the maximum number of parties supported </exception>
-		Public Sub New(ByVal parent As Phaser, ByVal parties As Integer)
+		Public Sub New(  parent As Phaser,   parties As Integer)
 			If CInt(CUInt(parties) >> PARTIES_SHIFT <> 0) Then Throw New IllegalArgumentException("Illegal number of parties")
 			Dim phase_Renamed As Integer = 0
 			Me.parent = parent
@@ -582,7 +582,7 @@ Namespace java.util.concurrent
 		''' <exception cref="IllegalStateException"> if attempting to register more
 		''' than the maximum supported number of parties </exception>
 		''' <exception cref="IllegalArgumentException"> if {@code parties < 0} </exception>
-		Public Overridable Function bulkRegister(ByVal parties As Integer) As Integer
+		Public Overridable Function bulkRegister(  parties As Integer) As Integer
 			If parties < 0 Then Throw New IllegalArgumentException
 			If parties = 0 Then Return phase
 			Return doRegister(parties)
@@ -682,7 +682,7 @@ Namespace java.util.concurrent
 		''' <returns> the next arrival phase number, or the argument if it is
 		''' negative, or the (negative) <seealso cref="#getPhase() current phase"/>
 		''' if terminated </returns>
-		Public Overridable Function awaitAdvance(ByVal phase As Integer) As Integer
+		Public Overridable Function awaitAdvance(  phase As Integer) As Integer
 			Dim root_Renamed As Phaser = Me.root
 			Dim s As Long = If(root_Renamed Is Me, state, reconcileState())
 			Dim p As Integer = CInt(CLng(CULng(s) >> PHASE_SHIFT))
@@ -705,7 +705,7 @@ Namespace java.util.concurrent
 		''' negative, or the (negative) <seealso cref="#getPhase() current phase"/>
 		''' if terminated </returns>
 		''' <exception cref="InterruptedException"> if thread interrupted while waiting </exception>
-		Public Overridable Function awaitAdvanceInterruptibly(ByVal phase As Integer) As Integer
+		Public Overridable Function awaitAdvanceInterruptibly(  phase As Integer) As Integer
 			Dim root_Renamed As Phaser = Me.root
 			Dim s As Long = If(root_Renamed Is Me, state, reconcileState())
 			Dim p As Integer = CInt(CLng(CULng(s) >> PHASE_SHIFT))
@@ -737,7 +737,7 @@ Namespace java.util.concurrent
 		''' if terminated </returns>
 		''' <exception cref="InterruptedException"> if thread interrupted while waiting </exception>
 		''' <exception cref="TimeoutException"> if timed out while waiting </exception>
-		Public Overridable Function awaitAdvanceInterruptibly(ByVal phase As Integer, ByVal timeout As Long, ByVal unit As java.util.concurrent.TimeUnit) As Integer
+		Public Overridable Function awaitAdvanceInterruptibly(  phase As Integer,   timeout As Long,   unit As java.util.concurrent.TimeUnit) As Integer
 			Dim nanos As Long = unit.toNanos(timeout)
 			Dim root_Renamed As Phaser = Me.root
 			Dim s As Long = If(root_Renamed Is Me, state, reconcileState())
@@ -898,7 +898,7 @@ Namespace java.util.concurrent
 		''' before this phaser is advanced </param>
 		''' <param name="registeredParties"> the current number of registered parties </param>
 		''' <returns> {@code true} if this phaser should terminate </returns>
-		Protected Friend Overridable Function onAdvance(ByVal phase As Integer, ByVal registeredParties As Integer) As Boolean
+		Protected Friend Overridable Function onAdvance(  phase As Integer,   registeredParties As Integer) As Boolean
 			Return registeredParties = 0
 		End Function
 
@@ -917,7 +917,7 @@ Namespace java.util.concurrent
 		''' <summary>
 		''' Implementation of toString and string-based error messages
 		''' </summary>
-		Private Function stateToString(ByVal s As Long) As String
+		Private Function stateToString(  s As Long) As String
 			Return MyBase.ToString() & "[phase = " & phaseOf(s) & " parties = " & partiesOf(s) & " arrived = " & arrivedOf(s) & "]"
 		End Function
 
@@ -926,7 +926,7 @@ Namespace java.util.concurrent
 		''' <summary>
 		''' Removes and signals threads from queue for phase.
 		''' </summary>
-		Private Sub releaseWaiters(ByVal phase As Integer)
+		Private Sub releaseWaiters(  phase As Integer)
 			Dim q As QNode ' first element of queue
 			Dim t As Thread ' its thread
 			Dim head As java.util.concurrent.atomic.AtomicReference(Of QNode) = If((phase And 1) = 0, evenQ, oddQ)
@@ -949,7 +949,7 @@ Namespace java.util.concurrent
 		''' most usages.
 		''' </summary>
 		''' <returns> current phase on exit </returns>
-		Private Function abortWait(ByVal phase As Integer) As Integer
+		Private Function abortWait(  phase As Integer) As Integer
 			Dim head As java.util.concurrent.atomic.AtomicReference(Of QNode) = If((phase And 1) = 0, evenQ, oddQ)
 			Do
 				Dim t As Thread
@@ -989,7 +989,7 @@ Namespace java.util.concurrent
 		''' <param name="node"> if non-null, the wait node to track interrupt and timeout;
 		''' if null, denotes noninterruptible wait </param>
 		''' <returns> current phase </returns>
-		Private Function internalAwaitAdvance(ByVal phase As Integer, ByVal node As QNode) As Integer
+		Private Function internalAwaitAdvance(  phase As Integer,   node As QNode) As Integer
 			' assert root == this;
 			releaseWaiters(phase-1) ' ensure old queue clean
 			Dim queued As Boolean = False ' true when node is enqueued
@@ -1054,7 +1054,7 @@ Namespace java.util.concurrent
 			Friend thread_Renamed As Thread ' nulled to cancel wait
 			Friend [next] As QNode
 
-			Friend Sub New(ByVal phaser_Renamed As Phaser, ByVal phase As Integer, ByVal interruptible As Boolean, ByVal timed As Boolean, ByVal nanos As Long)
+			Friend Sub New(  phaser_Renamed As Phaser,   phase As Integer,   interruptible As Boolean,   timed As Boolean,   nanos As Long)
 				Me.phaser_Renamed = phaser_Renamed
 				Me.phase = phase
 				Me.interruptible = interruptible

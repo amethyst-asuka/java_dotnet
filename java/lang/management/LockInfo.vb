@@ -60,7 +60,7 @@ Namespace java.lang.management
 		''' <param name="className"> the fully qualified name of the class of the lock object. </param>
 		''' <param name="identityHashCode"> the {@link System#identityHashCode
 		'''                         identity hash code} of the lock object. </param>
-		Public Sub New(ByVal className As String, ByVal identityHashCode As Integer)
+		Public Sub New(  className As String,   identityHashCode As Integer)
 			If className Is Nothing Then Throw New NullPointerException("Parameter className cannot be null")
 			Me.className = className
 			Me.identityHashCode = identityHashCode
@@ -69,7 +69,7 @@ Namespace java.lang.management
 		''' <summary>
 		''' package-private constructors
 		''' </summary>
-		Friend Sub New(ByVal lock As Object)
+		Friend Sub New(  lock As Object)
 			Me.className = lock.GetType().name
 			Me.identityHashCode = System.identityHashCode(lock)
 		End Sub
@@ -126,7 +126,7 @@ Namespace java.lang.management
 		'''         {@code null} otherwise.
 		''' 
 		''' @since 1.8 </returns>
-		Public Shared Function [from](ByVal cd As javax.management.openmbean.CompositeData) As LockInfo
+		Public Shared Function [from](  cd As javax.management.openmbean.CompositeData) As LockInfo
 			If cd Is Nothing Then Return Nothing
 
 			If TypeOf cd Is sun.management.LockInfoCompositeData Then

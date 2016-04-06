@@ -399,7 +399,7 @@ Namespace java.lang
 		'''  
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Protected Friend Function classDepth(ByVal name As String) As Integer
+		Protected Friend Function classDepth(  name As String) As Integer
 		End Function
 
 		''' <summary>
@@ -465,7 +465,7 @@ Namespace java.lang
 		'''  It is recommended that the <code>checkPermission</code>
 		'''  call be used instead. 
 		<Obsolete("This type of security checking is not recommended.")> _
-		Protected Friend Overridable Function inClass(ByVal name As String) As Boolean
+		Protected Friend Overridable Function inClass(  name As String) As Boolean
 			Return classDepth(name) >= 0
 		End Function
 
@@ -526,7 +526,7 @@ Namespace java.lang
 		''' <exception cref="NullPointerException"> if the permission argument is
 		'''            <code>null</code>.
 		''' @since     1.2 </exception>
-		Public Overridable Sub checkPermission(ByVal perm As Permission)
+		Public Overridable Sub checkPermission(  perm As Permission)
 			java.security.AccessController.checkPermission(perm)
 		End Sub
 
@@ -560,7 +560,7 @@ Namespace java.lang
 		''' <seealso cref=        java.lang.SecurityManager#getSecurityContext() </seealso>
 		''' <seealso cref= java.security.AccessControlContext#checkPermission(java.security.Permission)
 		''' @since      1.2 </seealso>
-		Public Overridable Sub checkPermission(ByVal perm As Permission, ByVal context As Object)
+		Public Overridable Sub checkPermission(  perm As Permission,   context As Object)
 			If TypeOf context Is AccessControlContext Then
 				CType(context, AccessControlContext).checkPermission(perm)
 			Else
@@ -648,7 +648,7 @@ Namespace java.lang
 		''' <seealso cref=        java.lang.Thread#stop() stop </seealso>
 		''' <seealso cref=        java.lang.Thread#suspend() suspend </seealso>
 		''' <seealso cref=        #checkPermission(java.security.Permission) checkPermission </seealso>
-		Public Overridable Sub checkAccess(ByVal t As Thread)
+		Public Overridable Sub checkAccess(  t As Thread)
 			If t Is Nothing Then Throw New NullPointerException("thread can't be null")
 			If t.threadGroup Is rootGroup Then
 				checkPermission(sun.security.util.SecurityConstants.MODIFY_THREAD_PERMISSION)
@@ -698,7 +698,7 @@ Namespace java.lang
 		''' <seealso cref=        java.lang.ThreadGroup#stop() stop </seealso>
 		''' <seealso cref=        java.lang.ThreadGroup#suspend() suspend </seealso>
 		''' <seealso cref=        #checkPermission(java.security.Permission) checkPermission </seealso>
-		Public Overridable Sub checkAccess(ByVal g As ThreadGroup)
+		Public Overridable Sub checkAccess(  g As ThreadGroup)
 			If g Is Nothing Then Throw New NullPointerException("thread group can't be null")
 			If g Is rootGroup Then
 				checkPermission(sun.security.util.SecurityConstants.MODIFY_THREADGROUP_PERMISSION)
@@ -731,7 +731,7 @@ Namespace java.lang
 		'''              the specified status. </exception>
 		''' <seealso cref=        java.lang.Runtime#exit(int) exit </seealso>
 		''' <seealso cref=        #checkPermission(java.security.Permission) checkPermission </seealso>
-		Public Overridable Sub checkExit(ByVal status As Integer)
+		Public Overridable Sub checkExit(  status As Integer)
 			checkPermission(New RuntimePermission("exitVM." & status))
 		End Sub
 
@@ -763,7 +763,7 @@ Namespace java.lang
 		''' <seealso cref=     java.lang.Runtime#exec(java.lang.String[]) </seealso>
 		''' <seealso cref=     java.lang.Runtime#exec(java.lang.String[], java.lang.String[]) </seealso>
 		''' <seealso cref=     #checkPermission(java.security.Permission) checkPermission </seealso>
-		Public Overridable Sub checkExec(ByVal cmd As String)
+		Public Overridable Sub checkExec(  cmd As String)
 			Dim f As New File(cmd)
 			If f.absolute Then
 				checkPermission(New java.io.FilePermission(cmd, sun.security.util.SecurityConstants.FILE_EXECUTE_ACTION))
@@ -798,7 +798,7 @@ Namespace java.lang
 		''' <seealso cref=        java.lang.Runtime#load(java.lang.String) </seealso>
 		''' <seealso cref=        java.lang.Runtime#loadLibrary(java.lang.String) </seealso>
 		''' <seealso cref=        #checkPermission(java.security.Permission) checkPermission </seealso>
-		Public Overridable Sub checkLink(ByVal [lib] As String)
+		Public Overridable Sub checkLink(  [lib] As String)
 			If [lib] Is Nothing Then Throw New NullPointerException("library can't be null")
 			checkPermission(New RuntimePermission("loadLibrary." & [lib]))
 		End Sub
@@ -824,7 +824,7 @@ Namespace java.lang
 		'''             <code>null</code>. </exception>
 		''' <seealso cref=        java.io.FileDescriptor </seealso>
 		''' <seealso cref=        #checkPermission(java.security.Permission) checkPermission </seealso>
-		Public Overridable Sub checkRead(ByVal fd As java.io.FileDescriptor)
+		Public Overridable Sub checkRead(  fd As java.io.FileDescriptor)
 			If fd Is Nothing Then Throw New NullPointerException("file descriptor can't be null")
 			checkPermission(New RuntimePermission("readFileDescriptor"))
 		End Sub
@@ -848,7 +848,7 @@ Namespace java.lang
 		''' <exception cref="NullPointerException"> if the <code>file</code> argument is
 		'''             <code>null</code>. </exception>
 		''' <seealso cref=        #checkPermission(java.security.Permission) checkPermission </seealso>
-		Public Overridable Sub checkRead(ByVal file As String)
+		Public Overridable Sub checkRead(  file As String)
 			checkPermission(New java.io.FilePermission(file, sun.security.util.SecurityConstants.FILE_READ_ACTION))
 		End Sub
 
@@ -881,7 +881,7 @@ Namespace java.lang
 		'''             <code>null</code>. </exception>
 		''' <seealso cref=        java.lang.SecurityManager#getSecurityContext() </seealso>
 		''' <seealso cref=        java.security.AccessControlContext#checkPermission(java.security.Permission) </seealso>
-		Public Overridable Sub checkRead(ByVal file As String, ByVal context As Object)
+		Public Overridable Sub checkRead(  file As String,   context As Object)
 			checkPermission(New java.io.FilePermission(file, sun.security.util.SecurityConstants.FILE_READ_ACTION), context)
 		End Sub
 
@@ -906,7 +906,7 @@ Namespace java.lang
 		'''             <code>null</code>. </exception>
 		''' <seealso cref=        java.io.FileDescriptor </seealso>
 		''' <seealso cref=        #checkPermission(java.security.Permission) checkPermission </seealso>
-		Public Overridable Sub checkWrite(ByVal fd As java.io.FileDescriptor)
+		Public Overridable Sub checkWrite(  fd As java.io.FileDescriptor)
 			If fd Is Nothing Then Throw New NullPointerException("file descriptor can't be null")
 			checkPermission(New RuntimePermission("writeFileDescriptor"))
 
@@ -931,7 +931,7 @@ Namespace java.lang
 		''' <exception cref="NullPointerException"> if the <code>file</code> argument is
 		'''             <code>null</code>. </exception>
 		''' <seealso cref=        #checkPermission(java.security.Permission) checkPermission </seealso>
-		Public Overridable Sub checkWrite(ByVal file As String)
+		Public Overridable Sub checkWrite(  file As String)
 			checkPermission(New java.io.FilePermission(file, sun.security.util.SecurityConstants.FILE_WRITE_ACTION))
 		End Sub
 
@@ -957,7 +957,7 @@ Namespace java.lang
 		'''             <code>null</code>. </exception>
 		''' <seealso cref=        java.io.File#delete() </seealso>
 		''' <seealso cref=        #checkPermission(java.security.Permission) checkPermission </seealso>
-		Public Overridable Sub checkDelete(ByVal file As String)
+		Public Overridable Sub checkDelete(  file As String)
 			checkPermission(New java.io.FilePermission(file, sun.security.util.SecurityConstants.FILE_DELETE_ACTION))
 		End Sub
 
@@ -989,7 +989,7 @@ Namespace java.lang
 		''' <exception cref="NullPointerException"> if the <code>host</code> argument is
 		'''             <code>null</code>. </exception>
 		''' <seealso cref=        #checkPermission(java.security.Permission) checkPermission </seealso>
-		Public Overridable Sub checkConnect(ByVal host As String, ByVal port As Integer)
+		Public Overridable Sub checkConnect(  host As String,   port As Integer)
 			If host Is Nothing Then Throw New NullPointerException("host can't be null")
 			If (Not host.StartsWith("[")) AndAlso host.IndexOf(":"c) <> -1 Then host = "[" & host & "]"
 			If port = -1 Then
@@ -1037,7 +1037,7 @@ Namespace java.lang
 		'''             <code>null</code>. </exception>
 		''' <seealso cref=        java.lang.SecurityManager#getSecurityContext() </seealso>
 		''' <seealso cref=        java.security.AccessControlContext#checkPermission(java.security.Permission) </seealso>
-		Public Overridable Sub checkConnect(ByVal host As String, ByVal port As Integer, ByVal context As Object)
+		Public Overridable Sub checkConnect(  host As String,   port As Integer,   context As Object)
 			If host Is Nothing Then Throw New NullPointerException("host can't be null")
 			If (Not host.StartsWith("[")) AndAlso host.IndexOf(":"c) <> -1 Then host = "[" & host & "]"
 			If port = -1 Then
@@ -1064,7 +1064,7 @@ Namespace java.lang
 		''' <exception cref="SecurityException">  if the calling thread does not have
 		'''             permission to listen on the specified port. </exception>
 		''' <seealso cref=        #checkPermission(java.security.Permission) checkPermission </seealso>
-		Public Overridable Sub checkListen(ByVal port As Integer)
+		Public Overridable Sub checkListen(  port As Integer)
 			checkPermission(New java.net.SocketPermission("localhost:" & port, sun.security.util.SecurityConstants.SOCKET_LISTEN_ACTION))
 		End Sub
 
@@ -1092,7 +1092,7 @@ Namespace java.lang
 		'''             <code>null</code>. </exception>
 		''' <seealso cref=        java.net.ServerSocket#accept() </seealso>
 		''' <seealso cref=        #checkPermission(java.security.Permission) checkPermission </seealso>
-		Public Overridable Sub checkAccept(ByVal host As String, ByVal port As Integer)
+		Public Overridable Sub checkAccept(  host As String,   port As Integer)
 			If host Is Nothing Then Throw New NullPointerException("host can't be null")
 			If (Not host.StartsWith("[")) AndAlso host.IndexOf(":"c) <> -1 Then host = "[" & host & "]"
 			checkPermission(New java.net.SocketPermission(host & ":" & port, sun.security.util.SecurityConstants.SOCKET_ACCEPT_ACTION))
@@ -1119,7 +1119,7 @@ Namespace java.lang
 		'''             <code>null</code>.
 		''' @since      JDK1.1 </exception>
 		''' <seealso cref=        #checkPermission(java.security.Permission) checkPermission </seealso>
-		Public Overridable Sub checkMulticast(ByVal maddr As java.net.InetAddress)
+		Public Overridable Sub checkMulticast(  maddr As java.net.InetAddress)
 			Dim host As String = maddr.hostAddress
 			If (Not host.StartsWith("[")) AndAlso host.IndexOf(":"c) <> -1 Then host = "[" & host & "]"
 			checkPermission(New java.net.SocketPermission(host, sun.security.util.SecurityConstants.SOCKET_CONNECT_ACCEPT_ACTION))
@@ -1151,7 +1151,7 @@ Namespace java.lang
 		''' @deprecated Use #checkPermission(java.security.Permission) instead 
 		''' <seealso cref=        #checkPermission(java.security.Permission) checkPermission </seealso>
 		<Obsolete("Use #checkPermission(java.security.Permission) instead")> _
-		Public Overridable Sub checkMulticast(ByVal maddr As java.net.InetAddress, ByVal ttl As SByte)
+		Public Overridable Sub checkMulticast(  maddr As java.net.InetAddress,   ttl As SByte)
 			Dim host As String = maddr.hostAddress
 			If (Not host.StartsWith("[")) AndAlso host.IndexOf(":"c) <> -1 Then host = "[" & host & "]"
 			checkPermission(New java.net.SocketPermission(host, sun.security.util.SecurityConstants.SOCKET_CONNECT_ACCEPT_ACTION))
@@ -1209,7 +1209,7 @@ Namespace java.lang
 		''' </exception>
 		''' <seealso cref=        java.lang.System#getProperty(java.lang.String) </seealso>
 		''' <seealso cref=        #checkPermission(java.security.Permission) checkPermission </seealso>
-		Public Overridable Sub checkPropertyAccess(ByVal key As String)
+		Public Overridable Sub checkPropertyAccess(  key As String)
 			checkPermission(New java.util.PropertyPermission(key, sun.security.util.SecurityConstants.PROPERTY_READ_ACTION))
 		End Sub
 
@@ -1255,7 +1255,7 @@ Namespace java.lang
 		''' <seealso cref=        java.awt.Window </seealso>
 		''' <seealso cref=        #checkPermission(java.security.Permission) checkPermission </seealso>
 		<Obsolete("The dependency on {@code AWTPermission} creates an")> _
-		Public Overridable Function checkTopLevelWindow(ByVal window As Object) As Boolean
+		Public Overridable Function checkTopLevelWindow(  window As Object) As Boolean
 			If window Is Nothing Then Throw New NullPointerException("window can't be null")
 			Dim perm As Permission = sun.security.util.SecurityConstants.AWT.TOPLEVEL_WINDOW_PERMISSION
 			If perm Is Nothing Then perm = sun.security.util.SecurityConstants.ALL_PERMISSION
@@ -1380,7 +1380,7 @@ Namespace java.lang
 		Private Shared packageDefinition As String()
 		Private Shared ReadOnly packageDefinitionLock As New Object
 
-		Private Shared Function getPackages(ByVal p As String) As String()
+		Private Shared Function getPackages(  p As String) As String()
 			Dim packages_Renamed As String() = Nothing
 			If p IsNot Nothing AndAlso (Not p.Equals("")) Then
 				Dim tok As New java.util.StringTokenizer(p, ",")
@@ -1431,7 +1431,7 @@ Namespace java.lang
 		'''  loadClass </seealso>
 		''' <seealso cref=        java.security.Security#getProperty getProperty </seealso>
 		''' <seealso cref=        #checkPermission(java.security.Permission) checkPermission </seealso>
-		Public Overridable Sub checkPackageAccess(ByVal pkg As String)
+		Public Overridable Sub checkPackageAccess(  pkg As String)
 			If pkg Is Nothing Then Throw New NullPointerException("package name can't be null")
 
 			Dim pkgs As String()
@@ -1497,7 +1497,7 @@ Namespace java.lang
 		''' <seealso cref=        java.lang.ClassLoader#loadClass(java.lang.String, boolean) </seealso>
 		''' <seealso cref=        java.security.Security#getProperty getProperty </seealso>
 		''' <seealso cref=        #checkPermission(java.security.Permission) checkPermission </seealso>
-		Public Overridable Sub checkPackageDefinition(ByVal pkg As String)
+		Public Overridable Sub checkPackageDefinition(  pkg As String)
 			If pkg Is Nothing Then Throw New NullPointerException("package name can't be null")
 
 			Dim pkgs As String()
@@ -1598,7 +1598,7 @@ Namespace java.lang
 		''' <seealso cref=        #checkPermission(java.security.Permission) checkPermission </seealso>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
 		<Obsolete("This method relies on the caller being at a stack depth")> _
-		Public Overridable Sub checkMemberAccess(ByVal clazz As [Class], ByVal which As Integer)
+		Public Overridable Sub checkMemberAccess(  clazz As [Class],   which As Integer)
 			If clazz Is Nothing Then Throw New NullPointerException("class can't be null")
 			If which <> Member.PUBLIC Then
 				Dim stack As  [Class]() = classContext
@@ -1646,7 +1646,7 @@ Namespace java.lang
 		''' 
 		''' @since   JDK1.1 </exception>
 		''' <seealso cref=        #checkPermission(java.security.Permission) checkPermission </seealso>
-		Public Overridable Sub checkSecurityAccess(ByVal target As String)
+		Public Overridable Sub checkSecurityAccess(  target As String)
 			checkPermission(New SecurityPermission(target))
 		End Sub
 

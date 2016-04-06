@@ -56,7 +56,7 @@ Namespace java.net
 		''' by a Socket. This method needs to hang on to the owner Socket so
 		''' that the fd will not be closed. </summary>
 		''' <param name="impl"> the implemented socket input stream </param>
-		Friend Sub New(ByVal impl As AbstractPlainSocketImpl)
+		Friend Sub New(  impl As AbstractPlainSocketImpl)
 			MyBase.New(impl.fileDescriptor)
 			Me.impl = impl
 			socket_Renamed = impl.socket
@@ -92,7 +92,7 @@ Namespace java.net
 		''' <exception cref="IOException"> If an I/O error has occurred. </exception>
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Private Function socketRead0(ByVal fd As java.io.FileDescriptor, byte ByVal  As b(), ByVal [off] As Integer, ByVal len As Integer, ByVal timeout As Integer) As Integer
+		Private Function socketRead0(  fd As java.io.FileDescriptor, byte    As b(),   [off] As Integer,   len As Integer,   timeout As Integer) As Integer
 		End Function
 
 		' wrap native call to allow instrumentation

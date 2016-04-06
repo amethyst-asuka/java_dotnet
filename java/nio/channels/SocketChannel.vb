@@ -114,14 +114,14 @@ Namespace java.nio.channels
 
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 			Public MustOverride Function supportedOptions() As java.util.Set(Of java.net.SocketOption(Of ?)) Implements NetworkChannel.supportedOptions
-			Public MustOverride Function getOption(ByVal name As java.net.SocketOption(Of T)) As T Implements NetworkChannel.getOption
+			Public MustOverride Function getOption(  name As java.net.SocketOption(Of T)) As T Implements NetworkChannel.getOption
 
 		''' <summary>
 		''' Initializes a new instance of this class.
 		''' </summary>
 		''' <param name="provider">
 		'''         The provider that created this channel </param>
-		Protected Friend Sub New(ByVal provider As java.nio.channels.spi.SelectorProvider)
+		Protected Friend Sub New(  provider As java.nio.channels.spi.SelectorProvider)
 			MyBase.New(provider)
 		End Sub
 
@@ -176,7 +176,7 @@ Namespace java.nio.channels
 		''' </exception>
 		''' <exception cref="IOException">
 		'''          If some other I/O error occurs </exception>
-		Public Shared Function open(ByVal remote As java.net.SocketAddress) As SocketChannel
+		Public Shared Function open(  remote As java.net.SocketAddress) As SocketChannel
 			Dim sc As SocketChannel = open()
 			Try
 				sc.connect(remote)
@@ -222,7 +222,7 @@ Namespace java.nio.channels
 		'''          the operation
 		''' 
 		''' @since 1.7 </exception>
-		Public MustOverride Overrides Function bind(ByVal local As java.net.SocketAddress) As SocketChannel
+		Public MustOverride Overrides Function bind(  local As java.net.SocketAddress) As SocketChannel
 
 		''' <exception cref="UnsupportedOperationException">           {@inheritDoc} </exception>
 		''' <exception cref="IllegalArgumentException">                {@inheritDoc} </exception>
@@ -230,7 +230,7 @@ Namespace java.nio.channels
 		''' <exception cref="IOException">                             {@inheritDoc}
 		''' 
 		''' @since 1.7 </exception>
-		Public MustOverride Overrides Function setOption(Of T)(ByVal name As java.net.SocketOption(Of T), ByVal value As T) As SocketChannel
+		Public MustOverride Overrides Function setOption(Of T)(  name As java.net.SocketOption(Of T),   value As T) As SocketChannel
 
 		''' <summary>
 		''' Shutdown the connection for reading without closing the channel.
@@ -362,7 +362,7 @@ Namespace java.nio.channels
 		''' </exception>
 		''' <exception cref="IOException">
 		'''          If some other I/O error occurs </exception>
-		Public MustOverride Function connect(ByVal remote As java.net.SocketAddress) As Boolean
+		Public MustOverride Function connect(  remote As java.net.SocketAddress) As Boolean
 
 		''' <summary>
 		''' Finishes the process of connecting a socket channel.
@@ -436,29 +436,29 @@ Namespace java.nio.channels
 
 		''' <exception cref="NotYetConnectedException">
 		'''          If this channel is not yet connected </exception>
-		Public MustOverride Function read(ByVal dst As java.nio.ByteBuffer) As Integer Implements ByteChannel.read, ReadableByteChannel.read
+		Public MustOverride Function read(  dst As java.nio.ByteBuffer) As Integer Implements ByteChannel.read, ReadableByteChannel.read
 
 		''' <exception cref="NotYetConnectedException">
 		'''          If this channel is not yet connected </exception>
-		Public MustOverride Function read(ByVal dsts As java.nio.ByteBuffer(), ByVal offset As Integer, ByVal length As Integer) As Long Implements ScatteringByteChannel.read
+		Public MustOverride Function read(  dsts As java.nio.ByteBuffer(),   offset As Integer,   length As Integer) As Long Implements ScatteringByteChannel.read
 
 		''' <exception cref="NotYetConnectedException">
 		'''          If this channel is not yet connected </exception>
-		Public Function read(ByVal dsts As java.nio.ByteBuffer()) As Long Implements ScatteringByteChannel.read
+		Public Function read(  dsts As java.nio.ByteBuffer()) As Long Implements ScatteringByteChannel.read
 			Return read(dsts, 0, dsts.Length)
 		End Function
 
 		''' <exception cref="NotYetConnectedException">
 		'''          If this channel is not yet connected </exception>
-		Public MustOverride Function write(ByVal src As java.nio.ByteBuffer) As Integer Implements ByteChannel.write, WritableByteChannel.write
+		Public MustOverride Function write(  src As java.nio.ByteBuffer) As Integer Implements ByteChannel.write, WritableByteChannel.write
 
 		''' <exception cref="NotYetConnectedException">
 		'''          If this channel is not yet connected </exception>
-		Public MustOverride Function write(ByVal srcs As java.nio.ByteBuffer(), ByVal offset As Integer, ByVal length As Integer) As Long Implements GatheringByteChannel.write
+		Public MustOverride Function write(  srcs As java.nio.ByteBuffer(),   offset As Integer,   length As Integer) As Long Implements GatheringByteChannel.write
 
 		''' <exception cref="NotYetConnectedException">
 		'''          If this channel is not yet connected </exception>
-		Public Function write(ByVal srcs As java.nio.ByteBuffer()) As Long Implements GatheringByteChannel.write
+		Public Function write(  srcs As java.nio.ByteBuffer()) As Long Implements GatheringByteChannel.write
 			Return write(srcs, 0, srcs.Length)
 		End Function
 

@@ -44,7 +44,7 @@ Namespace java.util.function
 		''' <param name="left"> the first operand </param>
 		''' <param name="right"> the second operand </param>
 		''' <returns> the operator result </returns>
-		Function applyAsInt(ByVal left As Integer, ByVal right As Integer) As Integer
+		Function applyAsInt(  left As Integer,   right As Integer) As Integer
 	End Interface
 
 End Namespace

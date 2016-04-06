@@ -100,7 +100,7 @@ Namespace java.io
 		''' <code>buf</code>.
 		''' </summary>
 		''' <param name="buf">   the input buffer. </param>
-		Public Sub New(ByVal buf As SByte())
+		Public Sub New(  buf As SByte())
 			Me.buf = buf
 			Me.pos = 0
 			Me.count = buf.Length

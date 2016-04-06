@@ -111,7 +111,7 @@ Namespace java.security.cert
 		''' {@code PKIXCertPathChecker} is unable to check certificates in
 		''' the specified order; it should never be thrown if the forward flag
 		''' is false since reverse checking must be supported </exception>
-		Public MustOverride Overrides Sub init(ByVal forward As Boolean) Implements CertPathChecker.init
+		Public MustOverride Overrides Sub init(  forward As Boolean) Implements CertPathChecker.init
 
 		''' <summary>
 		''' Indicates if forward checking is supported. Forward checking refers
@@ -154,7 +154,7 @@ Namespace java.security.cert
 		''' representing the current set of unresolved critical extensions </param>
 		''' <exception cref="CertPathValidatorException"> if the specified certificate does
 		''' not pass the check </exception>
-		Public MustOverride Sub check(ByVal cert As Certificate, ByVal unresolvedCritExts As ICollection(Of String))
+		Public MustOverride Sub check(  cert As Certificate,   unresolvedCritExts As ICollection(Of String))
 
 		''' <summary>
 		''' {@inheritDoc}
@@ -162,7 +162,7 @@ Namespace java.security.cert
 		''' <p>This implementation calls
 		''' {@code check(cert, java.util.Collections.<String>emptySet())}.
 		''' </summary>
-		Public Overrides Sub check(ByVal cert As Certificate) Implements CertPathChecker.check
+		Public Overrides Sub check(  cert As Certificate) Implements CertPathChecker.check
 			check(cert, java.util.Collections.emptySet(Of String)())
 		End Sub
 

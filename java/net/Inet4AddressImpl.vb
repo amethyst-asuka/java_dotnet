@@ -42,15 +42,15 @@ Namespace java.net
 		End Function
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Public Function lookupAllHostAddr(ByVal hostname As String) As InetAddress()
+		Public Function lookupAllHostAddr(  hostname As String) As InetAddress()
 		End Function
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Public Function getHostByAddr(ByVal addr As SByte()) As String
+		Public Function getHostByAddr(  addr As SByte()) As String
 		End Function
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Private Function isReachable0(ByVal addr As SByte(), ByVal timeout As Integer, ByVal ifaddr As SByte(), ByVal ttl As Integer) As Boolean
+		Private Function isReachable0(  addr As SByte(),   timeout As Integer,   ifaddr As SByte(),   ttl As Integer) As Boolean
 		End Function
 
 		<MethodImpl(MethodImplOptions.Synchronized)> _
@@ -71,7 +71,7 @@ Namespace java.net
 			Return loopbackAddress_Renamed
 		End Function
 
-	  Public Overridable Function isReachable(ByVal addr As InetAddress, ByVal timeout As Integer, ByVal netif As NetworkInterface, ByVal ttl As Integer) As Boolean Implements InetAddressImpl.isReachable
+	  Public Overridable Function isReachable(  addr As InetAddress,   timeout As Integer,   netif As NetworkInterface,   ttl As Integer) As Boolean Implements InetAddressImpl.isReachable
 		  Dim ifaddr As SByte() = Nothing
 		  If netif IsNot Nothing Then
 	'          

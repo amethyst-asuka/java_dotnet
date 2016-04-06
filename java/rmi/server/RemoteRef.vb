@@ -74,7 +74,7 @@ Namespace java.rmi.server
 		''' <exception cref="Exception"> if any exception occurs during remote method
 		''' invocation
 		''' @since 1.2 </exception>
-		Function invoke(ByVal obj As Remote, ByVal method As System.Reflection.MethodInfo, ByVal params As Object(), ByVal opnum As Long) As Object
+		Function invoke(  obj As Remote,   method As System.Reflection.MethodInfo,   params As Object(),   opnum As Long) As Object
 
 		''' <summary>
 		''' Creates an appropriate call object for a new remote method
@@ -100,7 +100,7 @@ Namespace java.rmi.server
 		''' <exception cref="RemoteException"> if failed to initiate new remote call </exception>
 		''' <seealso cref= #invoke(Remote,java.lang.reflect.Method,Object[],long) </seealso>
 		<Obsolete("1.2 style stubs no longer use this method. Instead of")> _
-		Function newCall(ByVal obj As RemoteObject, ByVal op As Operation(), ByVal opnum As Integer, ByVal hash As Long) As RemoteCall
+		Function newCall(  obj As RemoteObject,   op As Operation(),   opnum As Integer,   hash As Long) As RemoteCall
 
 		''' <summary>
 		''' Executes the remote call.
@@ -124,7 +124,7 @@ Namespace java.rmi.server
 		''' <exception cref="Exception"> if any exception occurs during remote method </exception>
 		''' <seealso cref= #invoke(Remote,java.lang.reflect.Method,Object[],long) </seealso>
 		<Obsolete("1.2 style stubs no longer use this method. Instead of")> _
-		Sub invoke(ByVal [call] As RemoteCall)
+		Sub invoke(  [call] As RemoteCall)
 
 		''' <summary>
 		''' Allows the remote reference to clean up (or reuse) the connection.
@@ -144,7 +144,7 @@ Namespace java.rmi.server
 		''' <exception cref="RemoteException"> if remote error occurs during call cleanup </exception>
 		''' <seealso cref= #invoke(Remote,java.lang.reflect.Method,Object[],long) </seealso>
 		<Obsolete("1.2 style stubs no longer use this method. Instead of")> _
-		Sub done(ByVal [call] As RemoteCall)
+		Sub done(  [call] As RemoteCall)
 
 		''' <summary>
 		''' Returns the class name of the ref type to be serialized onto
@@ -153,7 +153,7 @@ Namespace java.rmi.server
 		''' <returns> the class name (without package qualification) of the reference
 		''' type
 		''' @since JDK1.1 </returns>
-		Function getRefClass(ByVal out As java.io.ObjectOutput) As String
+		Function getRefClass(  out As java.io.ObjectOutput) As String
 
 		''' <summary>
 		''' Returns a hashcode for a remote object.  Two remote object stubs
@@ -174,7 +174,7 @@ Namespace java.rmi.server
 		''' <returns>  true if these Objects are equal; false otherwise. </returns>
 		''' <seealso cref=             java.util.Hashtable
 		''' @since JDK1.1 </seealso>
-		Function remoteEquals(ByVal obj As RemoteRef) As Boolean
+		Function remoteEquals(  obj As RemoteRef) As Boolean
 
 		''' <summary>
 		''' Returns a String that represents the reference of this remote

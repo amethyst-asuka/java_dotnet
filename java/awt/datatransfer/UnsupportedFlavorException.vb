@@ -45,7 +45,7 @@ Namespace java.awt.datatransfer
 		''' </summary>
 		''' <param name="flavor"> the flavor object which caused the exception. May
 		'''        be <code>null</code>. </param>
-		Public Sub New(ByVal flavor As DataFlavor)
+		Public Sub New(  flavor As DataFlavor)
 			MyBase.New(If(flavor IsNot Nothing, flavor.humanPresentableName, Nothing))
 		End Sub
 	End Class

@@ -102,7 +102,7 @@ Namespace java.awt.geom
 			''' <param name="w"> the width of the framing rectangle </param>
 			''' <param name="h"> the height of the framing rectangle
 			''' @since 1.2 </param>
-			Public Sub New(ByVal x As Single, ByVal y As Single, ByVal w As Single, ByVal h As Single)
+			Public Sub New(  x As Single,   y As Single,   w As Single,   h As Single)
 				frameame(x, y, w, h)
 			End Sub
 
@@ -167,7 +167,7 @@ Namespace java.awt.geom
 			''' <param name="w"> the width of the specified rectangular shape </param>
 			''' <param name="h"> the height of the specified rectangular shape
 			''' @since 1.2 </param>
-			Public Overridable Sub setFrame(ByVal x As Single, ByVal y As Single, ByVal w As Single, ByVal h As Single)
+			Public Overridable Sub setFrame(  x As Single,   y As Single,   w As Single,   h As Single)
 				Me.x = x
 				Me.y = y
 				Me.width = w
@@ -178,7 +178,7 @@ Namespace java.awt.geom
 			''' {@inheritDoc}
 			''' @since 1.2
 			''' </summary>
-			Public Overrides Sub setFrame(ByVal x As Double, ByVal y As Double, ByVal w As Double, ByVal h As Double)
+			Public Overrides Sub setFrame(  x As Double,   y As Double,   w As Double,   h As Double)
 				Me.x = CSng(x)
 				Me.y = CSng(y)
 				Me.width = CSng(w)
@@ -259,7 +259,7 @@ Namespace java.awt.geom
             ''' <param name="w"> the width of the framing rectangle </param>
             ''' <param name="h"> the height of the framing rectangle
             ''' @since 1.2 </param>
-            Sub New(ByVal x As Double, ByVal y As Double, ByVal w As Double, ByVal h As Double)
+            Sub New(  x As Double,   y As Double,   w As Double,   h As Double)
                 frameame(x, y, w, h)
             End Sub
 
@@ -317,7 +317,7 @@ Namespace java.awt.geom
 			''' {@inheritDoc}
 			''' @since 1.2
 			''' </summary>
-			Public Overrides Sub setFrame(ByVal x As Double, ByVal y As Double, ByVal w As Double, ByVal h As Double)
+			Public Overrides Sub setFrame(  x As Double,   y As Double,   w As Double,   h As Double)
 				Me.x = x
 				Me.y = y
 				Me.width = w
@@ -357,7 +357,7 @@ Namespace java.awt.geom
 		''' {@inheritDoc}
 		''' @since 1.2
 		''' </summary>
-		Public Overrides Function contains(ByVal x As Double, ByVal y As Double) As Boolean
+		Public Overrides Function contains(  x As Double,   y As Double) As Boolean
 			' Normalize the coordinates compared to the ellipse
 			' having a center at 0,0 and a radius of 0.5.
 			Dim ellw As Double = width
@@ -373,7 +373,7 @@ Namespace java.awt.geom
 		''' {@inheritDoc}
 		''' @since 1.2
 		''' </summary>
-		Public Overrides Function intersects(ByVal x As Double, ByVal y As Double, ByVal w As Double, ByVal h As Double) As Boolean
+		Public Overrides Function intersects(  x As Double,   y As Double,   w As Double,   h As Double) As Boolean
 			If w <= 0.0 OrElse h <= 0.0 Then Return False
 			' Normalize the rectangular coordinates compared to the ellipse
 			' having a center at 0,0 and a radius of 0.5.
@@ -414,7 +414,7 @@ Namespace java.awt.geom
 		''' {@inheritDoc}
 		''' @since 1.2
 		''' </summary>
-		Public Overrides Function contains(ByVal x As Double, ByVal y As Double, ByVal w As Double, ByVal h As Double) As Boolean
+		Public Overrides Function contains(  x As Double,   y As Double,   w As Double,   h As Double) As Boolean
 			Return (contains(x, y) AndAlso contains(x + w, y) AndAlso contains(x, y + h) AndAlso contains(x + w, y + h))
 		End Function
 
@@ -433,7 +433,7 @@ Namespace java.awt.geom
 		'''          geometry of the outline of this <code>Ellipse2D</code>,
 		'''          one segment at a time.
 		''' @since 1.2 </returns>
-		Public Overridable Function getPathIterator(ByVal at As AffineTransform) As PathIterator
+		Public Overridable Function getPathIterator(  at As AffineTransform) As PathIterator
 			Return New EllipseIterator(Me, at)
 		End Function
 
@@ -461,7 +461,7 @@ Namespace java.awt.geom
 		'''          of <code>Ellipse2D</code> and has the same values;
 		'''          <code>false</code> otherwise.
 		''' @since 1.6 </returns>
-		Public Overrides Function Equals(ByVal obj As Object) As Boolean
+		Public Overrides Function Equals(  obj As Object) As Boolean
 			If obj Is Me Then Return True
 			If TypeOf obj Is Ellipse2D Then
 				Dim e2R As Ellipse2D = CType(obj, Ellipse2D)

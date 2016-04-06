@@ -148,7 +148,7 @@ Namespace java.awt.geom
             ''' <param name="y2"> the Y coordinate for the end point
             '''           of the resulting {@code CubicCurve2D}
             ''' @since 1.2 </param>
-            Public Sub New(ByVal x1 As Single, ByVal y1 As Single, ByVal ctrlx1 As Single, ByVal ctrly1 As Single, ByVal ctrlx2 As Single, ByVal ctrly2 As Single, ByVal x2 As Single, ByVal y2 As Single)
+            Public Sub New(  x1 As Single,   y1 As Single,   ctrlx1 As Single,   ctrly1 As Single,   ctrlx2 As Single,   ctrly2 As Single,   x2 As Single,   y2 As Single)
                 '  curverve(x1, y1, ctrlx1, ctrly1, ctrlx2, ctrly2, x2, y2)
             End Sub
 
@@ -276,7 +276,7 @@ Namespace java.awt.geom
             ''' {@inheritDoc}
             ''' @since 1.2
             ''' </summary>
-            Public Overrides Sub setCurve(ByVal x1 As Double, ByVal y1 As Double, ByVal ctrlx1 As Double, ByVal ctrly1 As Double, ByVal ctrlx2 As Double, ByVal ctrly2 As Double, ByVal x2 As Double, ByVal y2 As Double)
+            Public Overrides Sub setCurve(  x1 As Double,   y1 As Double,   ctrlx1 As Double,   ctrly1 As Double,   ctrlx2 As Double,   ctrly2 As Double,   x2 As Double,   y2 As Double)
                 Me.x1 = CSng(x1)
                 Me.y1 = CSng(y1)
                 Me.ctrlx1 = CSng(ctrlx1)
@@ -308,7 +308,7 @@ Namespace java.awt.geom
             ''' <param name="y2"> the Y coordinate used to set the end point
             '''           of this {@code CubicCurve2D}
             ''' @since 1.2 </param>
-            Public Overridable Sub setCurve(ByVal x1 As Single, ByVal y1 As Single, ByVal ctrlx1 As Single, ByVal ctrly1 As Single, ByVal ctrlx2 As Single, ByVal ctrly2 As Single, ByVal x2 As Single, ByVal y2 As Single)
+            Public Overridable Sub setCurve(  x1 As Single,   y1 As Single,   ctrlx1 As Single,   ctrly1 As Single,   ctrlx2 As Single,   ctrly2 As Single,   x2 As Single,   y2 As Single)
                 Me.x1 = x1
                 Me.y1 = y1
                 Me.ctrlx1 = ctrlx1
@@ -441,7 +441,7 @@ Namespace java.awt.geom
             ''' <param name="y2"> the Y coordinate for the end point
             '''           of the resulting {@code CubicCurve2D}
             ''' @since 1.2 </param>
-            Function java.lang.Double(ByVal x1 As Double, ByVal y1 As Double, ByVal ctrlx1 As Double, ByVal ctrly1 As Double, ByVal ctrlx2 As Double, ByVal ctrly2 As Double, ByVal x2 As Double, ByVal y2 As Double) As [Public] Overridable
+            Function java.lang.Double(  x1 As Double,   y1 As Double,   ctrlx1 As Double,   ctrly1 As Double,   ctrlx2 As Double,   ctrly2 As Double,   x2 As Double,   y2 As Double) As [Public] Overridable
 				curverve(x1, y1, ctrlx1, ctrly1, ctrlx2, ctrly2, x2, y2)
             End Function
 
@@ -569,7 +569,7 @@ Namespace java.awt.geom
             ''' {@inheritDoc}
             ''' @since 1.2
             ''' </summary>
-            Public Overrides Sub setCurve(ByVal x1 As Double, ByVal y1 As Double, ByVal ctrlx1 As Double, ByVal ctrly1 As Double, ByVal ctrlx2 As Double, ByVal ctrly2 As Double, ByVal x2 As Double, ByVal y2 As Double)
+            Public Overrides Sub setCurve(  x1 As Double,   y1 As Double,   ctrlx1 As Double,   ctrly1 As Double,   ctrlx2 As Double,   ctrly2 As Double,   x2 As Double,   y2 As Double)
                 Me.x1 = x1
                 Me.y1 = y1
                 Me.ctrlx1 = ctrlx1
@@ -720,7 +720,7 @@ Namespace java.awt.geom
         ''' <param name="y2"> the Y coordinate used to set the end point
         '''           of this {@code CubicCurve2D}
         ''' @since 1.2 </param>
-        Public MustOverride Sub setCurve(ByVal x1 As Double, ByVal y1 As Double, ByVal ctrlx1 As Double, ByVal ctrly1 As Double, ByVal ctrlx2 As Double, ByVal ctrly2 As Double, ByVal x2 As Double, ByVal y2 As Double)
+        Public MustOverride Sub setCurve(  x1 As Double,   y1 As Double,   ctrlx1 As Double,   ctrly1 As Double,   ctrlx2 As Double,   ctrly2 As Double,   x2 As Double,   y2 As Double)
 
         ''' <summary>
         ''' Sets the location of the end points and control points of this curve
@@ -731,7 +731,7 @@ Namespace java.awt.geom
         '''          setting the end points and control points of this curve
         '''          to the coordinates contained in <code>coords</code>
         ''' @since 1.2 </param>
-        Public Overridable Sub setCurve(ByVal coords As Double(), ByVal offset As Integer)
+        Public Overridable Sub setCurve(  coords As Double(),   offset As Integer)
             curverve(coords(offset + 0), coords(offset + 1), coords(offset + 2), coords(offset + 3), coords(offset + 4), coords(offset + 5), coords(offset + 6), coords(offset + 7))
         End Sub
 
@@ -747,7 +747,7 @@ Namespace java.awt.geom
         ''' <param name="p2"> the fourth specified <code>Point2D</code> used to set the
         '''          end point of this curve
         ''' @since 1.2 </param>
-        Public Overridable Sub setCurve(ByVal p1 As Point2D, ByVal cp1 As Point2D, ByVal cp2 As Point2D, ByVal p2 As Point2D)
+        Public Overridable Sub setCurve(  p1 As Point2D,   cp1 As Point2D,   cp2 As Point2D,   p2 As Point2D)
             curverve(p1.x, p1.y, cp1.x, cp1.y, cp2.x, cp2.y, p2.x, p2.y)
         End Sub
 
@@ -760,7 +760,7 @@ Namespace java.awt.geom
         '''          the end points and control points of this curve to the
         '''          points contained in <code>pts</code>
         ''' @since 1.2 </param>
-        Public Overridable Sub setCurve(ByVal pts As Point2D(), ByVal offset As Integer)
+        Public Overridable Sub setCurve(  pts As Point2D(),   offset As Integer)
             curverve(pts(offset + 0).x, pts(offset + 0).y, pts(offset + 1).x, pts(offset + 1).y, pts(offset + 2).x, pts(offset + 2).y, pts(offset + 3).x, pts(offset + 3).y)
         End Sub
 
@@ -770,7 +770,7 @@ Namespace java.awt.geom
         ''' <param name="c"> the specified <code>CubicCurve2D</code>
         ''' @since 1.2 </param>
         Public Overridable Property curve As CubicCurve2D
-            Set(ByVal c As CubicCurve2D)
+            Set(  c As CubicCurve2D)
                 curverve(c.x1, c.y1, c.ctrlX1, c.ctrlY1, c.ctrlX2, c.ctrlY2, c.x2, c.y2)
             End Set
         End Property
@@ -799,7 +799,7 @@ Namespace java.awt.geom
         ''' <returns> the square of the flatness of the {@code CubicCurve2D}
         '''          represented by the specified coordinates.
         ''' @since 1.2 </returns>
-        Public Shared Function getFlatnessSq(ByVal x1 As Double, ByVal y1 As Double, ByVal ctrlx1 As Double, ByVal ctrly1 As Double, ByVal ctrlx2 As Double, ByVal ctrly2 As Double, ByVal x2 As Double, ByVal y2 As Double) As Double
+        Public Shared Function getFlatnessSq(  x1 As Double,   y1 As Double,   ctrlx1 As Double,   ctrly1 As Double,   ctrlx2 As Double,   ctrly2 As Double,   x2 As Double,   y2 As Double) As Double
             Return System.Math.Max(Line2D.ptSegDistSq(x1, y1, x2, y2, ctrlx1, ctrly1), Line2D.ptSegDistSq(x1, y1, x2, y2, ctrlx2, ctrly2))
 
         End Function
@@ -828,7 +828,7 @@ Namespace java.awt.geom
         ''' <returns> the flatness of the {@code CubicCurve2D}
         '''          represented by the specified coordinates.
         ''' @since 1.2 </returns>
-        Public Shared Function getFlatness(ByVal x1 As Double, ByVal y1 As Double, ByVal ctrlx1 As Double, ByVal ctrly1 As Double, ByVal ctrlx2 As Double, ByVal ctrly2 As Double, ByVal x2 As Double, ByVal y2 As Double) As Double
+        Public Shared Function getFlatness(  x1 As Double,   y1 As Double,   ctrlx1 As Double,   ctrly1 As Double,   ctrlx2 As Double,   ctrly2 As Double,   x2 As Double,   y2 As Double) As Double
             Return System.Math.Sqrt(getFlatnessSq(x1, y1, ctrlx1, ctrly1, ctrlx2, ctrly2, x2, y2))
         End Function
 

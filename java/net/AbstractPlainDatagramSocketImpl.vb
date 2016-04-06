@@ -96,17 +96,17 @@ Namespace java.net
 		''' Binds a datagram socket to a local port.
 		''' </summary>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Protected Friend Overrides Sub bind(ByVal lport As Integer, ByVal laddr As InetAddress)
+		Protected Friend Overrides Sub bind(  lport As Integer,   laddr As InetAddress)
 			bind0(lport, laddr)
 		End Sub
 
-		Protected Friend MustOverride Sub bind0(ByVal lport As Integer, ByVal laddr As InetAddress)
+		Protected Friend MustOverride Sub bind0(  lport As Integer,   laddr As InetAddress)
 
 		''' <summary>
 		''' Sends a datagram packet. The packet contains the data and the
 		''' destination address to send the packet to. </summary>
 		''' <param name="p"> the packet to be sent. </param>
-		Protected Friend MustOverride Sub send(ByVal p As DatagramPacket)
+		Protected Friend MustOverride Sub send(  p As DatagramPacket)
 
 		''' <summary>
 		''' Connects a datagram socket to a remote destination. This associates the remote
@@ -114,7 +114,7 @@ Namespace java.net
 		''' and received from this destination. </summary>
 		''' <param name="address"> the remote InetAddress to connect to </param>
 		''' <param name="port"> the remote port number </param>
-		Protected Friend Overrides Sub connect(ByVal address As InetAddress, ByVal port As Integer)
+		Protected Friend Overrides Sub connect(  address As InetAddress,   port As Integer)
 			connect0(address, port)
 			connectedAddress = address
 			connectedPort = port
@@ -135,17 +135,17 @@ Namespace java.net
 		''' <summary>
 		''' Peek at the packet to see who it is from. </summary>
 		''' <param name="i"> the address to populate with the sender address </param>
-		Protected Friend MustOverride Function peek(ByVal i As InetAddress) As Integer
-		Protected Friend MustOverride Function peekData(ByVal p As DatagramPacket) As Integer
+		Protected Friend MustOverride Function peek(  i As InetAddress) As Integer
+		Protected Friend MustOverride Function peekData(  p As DatagramPacket) As Integer
 		''' <summary>
 		''' Receive the datagram packet. </summary>
 		''' <param name="p"> the packet to receive into </param>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Protected Friend Overrides Sub receive(ByVal p As DatagramPacket)
+		Protected Friend Overrides Sub receive(  p As DatagramPacket)
 			receive0(p)
 		End Sub
 
-		Protected Friend MustOverride Sub receive0(ByVal p As DatagramPacket)
+		Protected Friend MustOverride Sub receive0(  p As DatagramPacket)
 
 		''' <summary>
 		''' Set the TTL (time-to-live) option. </summary>
@@ -163,14 +163,14 @@ Namespace java.net
 		''' <summary>
 		''' Join the multicast group. </summary>
 		''' <param name="inetaddr"> multicast address to join. </param>
-		Protected Friend Overrides Sub join(ByVal inetaddr As InetAddress)
+		Protected Friend Overrides Sub join(  inetaddr As InetAddress)
 			join(inetaddr, Nothing)
 		End Sub
 
 		''' <summary>
 		''' Leave the multicast group. </summary>
 		''' <param name="inetaddr"> multicast address to leave. </param>
-		Protected Friend Overrides Sub leave(ByVal inetaddr As InetAddress)
+		Protected Friend Overrides Sub leave(  inetaddr As InetAddress)
 			leave(inetaddr, Nothing)
 		End Sub
 		''' <summary>
@@ -182,12 +182,12 @@ Namespace java.net
 		'''          SocketAddress subclass not supported by this socket
 		''' @since 1.4 </exception>
 
-		Protected Friend Overrides Sub joinGroup(ByVal mcastaddr As SocketAddress, ByVal netIf As NetworkInterface)
+		Protected Friend Overrides Sub joinGroup(  mcastaddr As SocketAddress,   netIf As NetworkInterface)
 			If mcastaddr Is Nothing OrElse Not(TypeOf mcastaddr Is InetSocketAddress) Then Throw New IllegalArgumentException("Unsupported address type")
 			join(CType(mcastaddr, InetSocketAddress).address, netIf)
 		End Sub
 
-		Protected Friend MustOverride Sub join(ByVal inetaddr As InetAddress, ByVal netIf As NetworkInterface)
+		Protected Friend MustOverride Sub join(  inetaddr As InetAddress,   netIf As NetworkInterface)
 
 		''' <summary>
 		''' Leave the multicast group. </summary>
@@ -196,12 +196,12 @@ Namespace java.net
 		''' <exception cref="IllegalArgumentException"> if mcastaddr is null or is a
 		'''          SocketAddress subclass not supported by this socket
 		''' @since 1.4 </exception>
-		Protected Friend Overrides Sub leaveGroup(ByVal mcastaddr As SocketAddress, ByVal netIf As NetworkInterface)
+		Protected Friend Overrides Sub leaveGroup(  mcastaddr As SocketAddress,   netIf As NetworkInterface)
 			If mcastaddr Is Nothing OrElse Not(TypeOf mcastaddr Is InetSocketAddress) Then Throw New IllegalArgumentException("Unsupported address type")
 			leave(CType(mcastaddr, InetSocketAddress).address, netIf)
 		End Sub
 
-		Protected Friend MustOverride Sub leave(ByVal inetaddr As InetAddress, ByVal netIf As NetworkInterface)
+		Protected Friend MustOverride Sub leave(  inetaddr As InetAddress,   netIf As NetworkInterface)
 
 		''' <summary>
 		''' Close the socket.
@@ -229,7 +229,7 @@ Namespace java.net
 		''' here, o must be a Boolean
 		''' </summary>
 
-		 Public Overrides Sub setOption(ByVal optID As Integer, ByVal o As Object)
+		 Public Overrides Sub setOption(  optID As Integer,   o As Object)
 			 If closed Then Throw New SocketException("Socket Closed")
 			 Select Case optID
 	'             check type safety b4 going native.  These should never
@@ -269,7 +269,7 @@ Namespace java.net
 	'     * get option's state - set or not
 	'     
 
-		Public Overrides Function getOption(ByVal optID As Integer) As Object
+		Public Overrides Function getOption(  optID As Integer) As Object
 			If closed Then Throw New SocketException("Socket Closed")
 
 			Dim result As Object
@@ -294,11 +294,11 @@ Namespace java.net
 
 		Protected Friend MustOverride Sub datagramSocketCreate()
 		Protected Friend MustOverride Sub datagramSocketClose()
-		Protected Friend MustOverride Sub socketSetOption(ByVal opt As Integer, ByVal val As Object)
-		Protected Friend MustOverride Function socketGetOption(ByVal opt As Integer) As Object
+		Protected Friend MustOverride Sub socketSetOption(  opt As Integer,   val As Object)
+		Protected Friend MustOverride Function socketGetOption(  opt As Integer) As Object
 
-		Protected Friend MustOverride Sub connect0(ByVal address As InetAddress, ByVal port As Integer)
-		Protected Friend MustOverride Sub disconnect0(ByVal family As Integer)
+		Protected Friend MustOverride Sub connect0(  address As InetAddress,   port As Integer)
+		Protected Friend MustOverride Sub disconnect0(  family As Integer)
 
 		Protected Friend Overridable Function nativeConnectDisabled() As Boolean
 			Return connectDisabled

@@ -58,13 +58,13 @@ Namespace java.beans
 
             ' Note this will be called by all classes when they reach the
             ' top of their superclass chain.
-            Protected Friend Overrides Sub initialize(ByVal type As [Class], ByVal oldInstance As Object, ByVal newInstance As Object, ByVal out As Encoder)
+            Protected Friend Overrides Sub initialize(  type As [Class],   oldInstance As Object,   newInstance As Object,   out As Encoder)
             End Sub
-            Protected Friend Overrides Function instantiate(ByVal oldInstance As Object, ByVal out As Encoder) As Expression
+            Protected Friend Overrides Function instantiate(  oldInstance As Object,   out As Encoder) As Expression
                 Return Nothing
             End Function
 
-            Public Overrides Sub writeObject(ByVal oldInstance As Object, ByVal out As Encoder)
+            Public Overrides Sub writeObject(  oldInstance As Object,   out As Encoder)
                 ' System.out.println("NullPersistenceDelegate:writeObject " + oldInstance);
             End Sub
         End Class
@@ -77,11 +77,11 @@ Namespace java.beans
         Friend NotInheritable Class EnumPersistenceDelegate
             Inherits PersistenceDelegate
 
-            Protected Friend Overrides Function mutatesTo(ByVal oldInstance As Object, ByVal newInstance As Object) As Boolean
+            Protected Friend Overrides Function mutatesTo(  oldInstance As Object,   newInstance As Object) As Boolean
                 Return oldInstance Is newInstance
             End Function
 
-            Protected Friend Overrides Function instantiate(ByVal oldInstance As Object, ByVal out As Encoder) As Expression
+            Protected Friend Overrides Function instantiate(  oldInstance As Object,   out As Encoder) As Expression
                 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
                 Dim e As System.Enum(Of ?) = CType(oldInstance, Enum(Of ?))
 			Return New Expression(e, GetType(System.Enum), "valueOf", New Object() {e.declaringClass, e.name()})
@@ -91,11 +91,11 @@ Namespace java.beans
         Friend NotInheritable Class PrimitivePersistenceDelegate
             Inherits PersistenceDelegate
 
-            Protected Friend Overrides Function mutatesTo(ByVal oldInstance As Object, ByVal newInstance As Object) As Boolean
+            Protected Friend Overrides Function mutatesTo(  oldInstance As Object,   newInstance As Object) As Boolean
                 Return oldInstance.Equals(newInstance)
             End Function
 
-            Protected Friend Overrides Function instantiate(ByVal oldInstance As Object, ByVal out As Encoder) As Expression
+            Protected Friend Overrides Function instantiate(  oldInstance As Object,   out As Encoder) As Expression
                 Return New Expression(oldInstance, oldInstance.GetType(), "new", New Object() {oldInstance.ToString()})
             End Function
         End Class
@@ -103,17 +103,17 @@ Namespace java.beans
         Friend NotInheritable Class ArrayPersistenceDelegate
             Inherits PersistenceDelegate
 
-            Protected Friend Overrides Function mutatesTo(ByVal oldInstance As Object, ByVal newInstance As Object) As Boolean
+            Protected Friend Overrides Function mutatesTo(  oldInstance As Object,   newInstance As Object) As Boolean
                 Return (newInstance IsNot Nothing AndAlso oldInstance.GetType() Is newInstance.GetType() AndAlso Array.GetLength(oldInstance) = Array.GetLength(newInstance)) ' Also ensures the subtype is correct.
             End Function
 
-            Protected Friend Overrides Function instantiate(ByVal oldInstance As Object, ByVal out As Encoder) As Expression
+            Protected Friend Overrides Function instantiate(  oldInstance As Object,   out As Encoder) As Expression
                 ' System.out.println("instantiate: " + type + " " + oldInstance);
                 Dim oldClass As [Class] = oldInstance.GetType()
                 Return New Expression(oldInstance, GetType(Array), "newInstance", New Object() {oldClass.componentType, New Integer?(Array.GetLength(oldInstance))})
             End Function
 
-            Protected Friend Overrides Sub initialize(ByVal type As [Class], ByVal oldInstance As Object, ByVal newInstance As Object, ByVal out As Encoder)
+            Protected Friend Overrides Sub initialize(  type As [Class],   oldInstance As Object,   newInstance As Object,   out As Encoder)
                 Dim n As Integer = Array.GetLength(oldInstance)
                 For i As Integer = 0 To n - 1
                     Dim index As Object = New Integer?(i)
@@ -137,7 +137,7 @@ Namespace java.beans
         Friend NotInheritable Class ProxyPersistenceDelegate
             Inherits PersistenceDelegate
 
-            Protected Friend Overrides Function instantiate(ByVal oldInstance As Object, ByVal out As Encoder) As Expression
+            Protected Friend Overrides Function instantiate(  oldInstance As Object,   out As Encoder) As Expression
                 Dim type As [Class] = oldInstance.GetType()
                 Dim p As java.lang.reflect.Proxy = CType(oldInstance, java.lang.reflect.Proxy)
                 ' This unappealing hack is not required but makes the
@@ -164,11 +164,11 @@ Namespace java.beans
         Friend NotInheritable Class java_lang_String_PersistenceDelegate
             Inherits PersistenceDelegate
 
-            Protected Friend Overrides Function instantiate(ByVal oldInstance As Object, ByVal out As Encoder) As Expression
+            Protected Friend Overrides Function instantiate(  oldInstance As Object,   out As Encoder) As Expression
                 Return Nothing
             End Function
 
-            Public Overrides Sub writeObject(ByVal oldInstance As Object, ByVal out As Encoder)
+            Public Overrides Sub writeObject(  oldInstance As Object,   out As Encoder)
                 ' System.out.println("NullPersistenceDelegate:writeObject " + oldInstance);
             End Sub
         End Class
@@ -177,11 +177,11 @@ Namespace java.beans
         Friend NotInheritable Class java_lang_Class_PersistenceDelegate
             Inherits PersistenceDelegate
 
-            Protected Friend Overrides Function mutatesTo(ByVal oldInstance As Object, ByVal newInstance As Object) As Boolean
+            Protected Friend Overrides Function mutatesTo(  oldInstance As Object,   newInstance As Object) As Boolean
                 Return oldInstance.Equals(newInstance)
             End Function
 
-            Protected Friend Overrides Function instantiate(ByVal oldInstance As Object, ByVal out As Encoder) As Expression
+            Protected Friend Overrides Function instantiate(  oldInstance As Object,   out As Encoder) As Expression
                 Dim c As [Class] = CType(oldInstance, [Class])
                 ' As of 1.3 it is not possible to call Class.forName("int"),
                 ' so we have to generate different code for primitive types.
@@ -210,11 +210,11 @@ Namespace java.beans
         Friend NotInheritable Class java_lang_reflect_Field_PersistenceDelegate
             Inherits PersistenceDelegate
 
-            Protected Friend Overrides Function mutatesTo(ByVal oldInstance As Object, ByVal newInstance As Object) As Boolean
+            Protected Friend Overrides Function mutatesTo(  oldInstance As Object,   newInstance As Object) As Boolean
                 Return oldInstance.Equals(newInstance)
             End Function
 
-            Protected Friend Overrides Function instantiate(ByVal oldInstance As Object, ByVal out As Encoder) As Expression
+            Protected Friend Overrides Function instantiate(  oldInstance As Object,   out As Encoder) As Expression
                 Dim f As Field = CType(oldInstance, Field)
                 Return New Expression(oldInstance, f.declaringClass, "getField", New Object() {f.name})
             End Function
@@ -224,11 +224,11 @@ Namespace java.beans
         Friend NotInheritable Class java_lang_reflect_Method_PersistenceDelegate
             Inherits PersistenceDelegate
 
-            Protected Friend Overrides Function mutatesTo(ByVal oldInstance As Object, ByVal newInstance As Object) As Boolean
+            Protected Friend Overrides Function mutatesTo(  oldInstance As Object,   newInstance As Object) As Boolean
                 Return oldInstance.Equals(newInstance)
             End Function
 
-            Protected Friend Overrides Function instantiate(ByVal oldInstance As Object, ByVal out As Encoder) As Expression
+            Protected Friend Overrides Function instantiate(  oldInstance As Object,   out As Encoder) As Expression
                 Dim m As Method = CType(oldInstance, Method)
                 Return New Expression(oldInstance, m.declaringClass, "getMethod", New Object() {m.name, m.parameterTypes})
             End Function
@@ -247,7 +247,7 @@ Namespace java.beans
         Friend Class java_util_Date_PersistenceDelegate
             Inherits PersistenceDelegate
 
-            Protected Friend Overrides Function mutatesTo(ByVal oldInstance As Object, ByVal newInstance As Object) As Boolean
+            Protected Friend Overrides Function mutatesTo(  oldInstance As Object,   newInstance As Object) As Boolean
                 If Not MyBase.mutatesTo(oldInstance, newInstance) Then Return False
                 Dim oldDate As Date = CDate(oldInstance)
                 Dim newDate As Date = CDate(newInstance)
@@ -255,7 +255,7 @@ Namespace java.beans
                 Return oldDate.time = newDate.time
             End Function
 
-            Protected Friend Overrides Function instantiate(ByVal oldInstance As Object, ByVal out As Encoder) As Expression
+            Protected Friend Overrides Function instantiate(  oldInstance As Object,   out As Encoder) As Expression
                 Dim date_Renamed As Date = CDate(oldInstance)
                 Return New Expression(date_Renamed, date_Renamed.GetType(), "new", New Object() {date_Renamed.time})
             End Function
@@ -288,7 +288,7 @@ Namespace java.beans
             ''' <summary>
             ''' Invoke Timstamp getNanos.
             ''' </summary>
-            Private Shared Function getNanos(ByVal obj As Object) As Integer
+            Private Shared Function getNanos(  obj As Object) As Integer
                 If getNanosMethod_Renamed Is Nothing Then Throw New AssertionError("Should not get here")
                 Try
                     Return CInt(Fix(getNanosMethod_Renamed.invoke(obj)))
@@ -302,7 +302,7 @@ Namespace java.beans
                 End Try
             End Function
 
-            Protected Friend Overrides Sub initialize(ByVal type As [Class], ByVal oldInstance As Object, ByVal newInstance As Object, ByVal out As Encoder)
+            Protected Friend Overrides Sub initialize(  type As [Class],   oldInstance As Object,   newInstance As Object,   out As Encoder)
                 ' assumes oldInstance and newInstance are Timestamps
                 Dim nanos_Renamed As Integer = getNanos(oldInstance)
                 If nanos_Renamed <> getNanos(newInstance) Then out.writeStatement(New Statement(oldInstance, "setNanos", New Object() {nanos_Renamed}))
@@ -333,7 +333,7 @@ Namespace java.beans
         Private MustInherit Class java_util_Collections
             Inherits PersistenceDelegate
 
-            Protected Friend Overrides Function mutatesTo(ByVal oldInstance As Object, ByVal newInstance As Object) As Boolean
+            Protected Friend Overrides Function mutatesTo(  oldInstance As Object,   newInstance As Object) As Boolean
                 If Not MyBase.mutatesTo(oldInstance, newInstance) Then Return False
                 If (TypeOf oldInstance Is List) OrElse (TypeOf oldInstance Is [Set]) OrElse (TypeOf oldInstance Is Map) Then Return oldInstance.Equals(newInstance)
                 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
@@ -343,14 +343,14 @@ Namespace java.beans
                 Return (oldC.size() = newC.size()) AndAlso oldC.containsAll(newC)
             End Function
 
-            Protected Friend Overrides Sub initialize(ByVal type As [Class], ByVal oldInstance As Object, ByVal newInstance As Object, ByVal out As Encoder)
+            Protected Friend Overrides Sub initialize(  type As [Class],   oldInstance As Object,   newInstance As Object,   out As Encoder)
                 ' do not initialize these custom collections in default way
             End Sub
 
             Friend NotInheritable Class EmptyList_PersistenceDelegate
                 Inherits java_util_Collections
 
-                Protected Friend Overrides Function instantiate(ByVal oldInstance As Object, ByVal out As Encoder) As Expression
+                Protected Friend Overrides Function instantiate(  oldInstance As Object,   out As Encoder) As Expression
                     Return New Expression(oldInstance, GetType(Collections), "emptyList", Nothing)
                 End Function
             End Class
@@ -358,7 +358,7 @@ Namespace java.beans
             Friend NotInheritable Class EmptySet_PersistenceDelegate
                 Inherits java_util_Collections
 
-                Protected Friend Overrides Function instantiate(ByVal oldInstance As Object, ByVal out As Encoder) As Expression
+                Protected Friend Overrides Function instantiate(  oldInstance As Object,   out As Encoder) As Expression
                     Return New Expression(oldInstance, GetType(Collections), "emptySet", Nothing)
                 End Function
             End Class
@@ -366,7 +366,7 @@ Namespace java.beans
             Friend NotInheritable Class EmptyMap_PersistenceDelegate
                 Inherits java_util_Collections
 
-                Protected Friend Overrides Function instantiate(ByVal oldInstance As Object, ByVal out As Encoder) As Expression
+                Protected Friend Overrides Function instantiate(  oldInstance As Object,   out As Encoder) As Expression
                     Return New Expression(oldInstance, GetType(Collections), "emptyMap", Nothing)
                 End Function
             End Class
@@ -374,7 +374,7 @@ Namespace java.beans
             Friend NotInheritable Class SingletonList_PersistenceDelegate
                 Inherits java_util_Collections
 
-                Protected Friend Overrides Function instantiate(ByVal oldInstance As Object, ByVal out As Encoder) As Expression
+                Protected Friend Overrides Function instantiate(  oldInstance As Object,   out As Encoder) As Expression
                     'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
                     Dim list As List(Of ?) = CType(oldInstance, List(Of ?))
                     Return New Expression(oldInstance, GetType(Collections), "singletonList", New Object() {list.get(0)})
@@ -384,7 +384,7 @@ Namespace java.beans
             Friend NotInheritable Class SingletonSet_PersistenceDelegate
                 Inherits java_util_Collections
 
-                Protected Friend Overrides Function instantiate(ByVal oldInstance As Object, ByVal out As Encoder) As Expression
+                Protected Friend Overrides Function instantiate(  oldInstance As Object,   out As Encoder) As Expression
                     'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
                     Dim [set] As [Set](Of ?) = CType(oldInstance, Set(Of ?))
 				Return New Expression(oldInstance, GetType(Collections), "singleton", New Object() {[set].GetEnumerator().next()})
@@ -394,7 +394,7 @@ Namespace java.beans
             Friend NotInheritable Class SingletonMap_PersistenceDelegate
                 Inherits java_util_Collections
 
-                Protected Friend Overrides Function instantiate(ByVal oldInstance As Object, ByVal out As Encoder) As Expression
+                Protected Friend Overrides Function instantiate(  oldInstance As Object,   out As Encoder) As Expression
                     'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
                     Dim map As Map(Of ?, ?) = CType(oldInstance, Map(Of ?, ?))
                     Dim key As Object = map.Keys.GetEnumerator().next()
@@ -405,7 +405,7 @@ Namespace java.beans
             Friend NotInheritable Class UnmodifiableCollection_PersistenceDelegate
                 Inherits java_util_Collections
 
-                Protected Friend Overrides Function instantiate(ByVal oldInstance As Object, ByVal out As Encoder) As Expression
+                Protected Friend Overrides Function instantiate(  oldInstance As Object,   out As Encoder) As Expression
                     'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
                     Dim list As List(Of ?) = New List(Of ?)(CType(oldInstance, Collection(Of ?)))
                     Return New Expression(oldInstance, GetType(Collections), "unmodifiableCollection", New Object() {list})
@@ -415,7 +415,7 @@ Namespace java.beans
             Friend NotInheritable Class UnmodifiableList_PersistenceDelegate
                 Inherits java_util_Collections
 
-                Protected Friend Overrides Function instantiate(ByVal oldInstance As Object, ByVal out As Encoder) As Expression
+                Protected Friend Overrides Function instantiate(  oldInstance As Object,   out As Encoder) As Expression
                     'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
                     Dim list As List(Of ?) = New LinkedList(Of ?)(CType(oldInstance, Collection(Of ?)))
                     Return New Expression(oldInstance, GetType(Collections), "unmodifiableList", New Object() {list})
@@ -425,7 +425,7 @@ Namespace java.beans
             Friend NotInheritable Class UnmodifiableRandomAccessList_PersistenceDelegate
                 Inherits java_util_Collections
 
-                Protected Friend Overrides Function instantiate(ByVal oldInstance As Object, ByVal out As Encoder) As Expression
+                Protected Friend Overrides Function instantiate(  oldInstance As Object,   out As Encoder) As Expression
                     'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
                     Dim list As List(Of ?) = New List(Of ?)(CType(oldInstance, Collection(Of ?)))
                     Return New Expression(oldInstance, GetType(Collections), "unmodifiableList", New Object() {list})
@@ -435,7 +435,7 @@ Namespace java.beans
             Friend NotInheritable Class UnmodifiableSet_PersistenceDelegate
                 Inherits java_util_Collections
 
-                Protected Friend Overrides Function instantiate(ByVal oldInstance As Object, ByVal out As Encoder) As Expression
+                Protected Friend Overrides Function instantiate(  oldInstance As Object,   out As Encoder) As Expression
                     'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
                     Dim [set] As [Set](Of ?) = New HashSet(Of ?)(CType(oldInstance, Set(Of ?)))
 				Return New Expression(oldInstance, GetType(Collections), "unmodifiableSet", New Object() {[set]})
@@ -445,7 +445,7 @@ Namespace java.beans
             Friend NotInheritable Class UnmodifiableSortedSet_PersistenceDelegate
                 Inherits java_util_Collections
 
-                Protected Friend Overrides Function instantiate(ByVal oldInstance As Object, ByVal out As Encoder) As Expression
+                Protected Friend Overrides Function instantiate(  oldInstance As Object,   out As Encoder) As Expression
                     'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
                     Dim [set] As SortedSet(Of ?) = New TreeSet(Of ?)(CType(oldInstance, SortedSet(Of ?)))
                     Return New Expression(oldInstance, GetType(Collections), "unmodifiableSortedSet", New Object() {[set]})
@@ -455,7 +455,7 @@ Namespace java.beans
             Friend NotInheritable Class UnmodifiableMap_PersistenceDelegate
                 Inherits java_util_Collections
 
-                Protected Friend Overrides Function instantiate(ByVal oldInstance As Object, ByVal out As Encoder) As Expression
+                Protected Friend Overrides Function instantiate(  oldInstance As Object,   out As Encoder) As Expression
                     'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
                     Dim map As Map(Of ?, ?) = New HashMap(Of ?, ?)(CType(oldInstance, Map(Of ?, ?)))
                     Return New Expression(oldInstance, GetType(Collections), "unmodifiableMap", New Object() {map})
@@ -465,7 +465,7 @@ Namespace java.beans
             Friend NotInheritable Class UnmodifiableSortedMap_PersistenceDelegate
                 Inherits java_util_Collections
 
-                Protected Friend Overrides Function instantiate(ByVal oldInstance As Object, ByVal out As Encoder) As Expression
+                Protected Friend Overrides Function instantiate(  oldInstance As Object,   out As Encoder) As Expression
                     'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
                     Dim map As SortedMap(Of ?, ?) = New TreeMap(Of ?, ?)(CType(oldInstance, SortedMap(Of ?, ?)))
                     Return New Expression(oldInstance, GetType(Collections), "unmodifiableSortedMap", New Object() {map})
@@ -475,7 +475,7 @@ Namespace java.beans
             Friend NotInheritable Class SynchronizedCollection_PersistenceDelegate
                 Inherits java_util_Collections
 
-                Protected Friend Overrides Function instantiate(ByVal oldInstance As Object, ByVal out As Encoder) As Expression
+                Protected Friend Overrides Function instantiate(  oldInstance As Object,   out As Encoder) As Expression
                     'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
                     Dim list As List(Of ?) = New List(Of ?)(CType(oldInstance, Collection(Of ?)))
                     Return New Expression(oldInstance, GetType(Collections), "synchronizedCollection", New Object() {list})
@@ -485,7 +485,7 @@ Namespace java.beans
             Friend NotInheritable Class SynchronizedList_PersistenceDelegate
                 Inherits java_util_Collections
 
-                Protected Friend Overrides Function instantiate(ByVal oldInstance As Object, ByVal out As Encoder) As Expression
+                Protected Friend Overrides Function instantiate(  oldInstance As Object,   out As Encoder) As Expression
                     'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
                     Dim list As List(Of ?) = New LinkedList(Of ?)(CType(oldInstance, Collection(Of ?)))
                     Return New Expression(oldInstance, GetType(Collections), "synchronizedList", New Object() {list})
@@ -495,7 +495,7 @@ Namespace java.beans
             Friend NotInheritable Class SynchronizedRandomAccessList_PersistenceDelegate
                 Inherits java_util_Collections
 
-                Protected Friend Overrides Function instantiate(ByVal oldInstance As Object, ByVal out As Encoder) As Expression
+                Protected Friend Overrides Function instantiate(  oldInstance As Object,   out As Encoder) As Expression
                     'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
                     Dim list As List(Of ?) = New List(Of ?)(CType(oldInstance, Collection(Of ?)))
                     Return New Expression(oldInstance, GetType(Collections), "synchronizedList", New Object() {list})
@@ -505,7 +505,7 @@ Namespace java.beans
             Friend NotInheritable Class SynchronizedSet_PersistenceDelegate
                 Inherits java_util_Collections
 
-                Protected Friend Overrides Function instantiate(ByVal oldInstance As Object, ByVal out As Encoder) As Expression
+                Protected Friend Overrides Function instantiate(  oldInstance As Object,   out As Encoder) As Expression
                     'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
                     Dim [set] As [Set](Of ?) = New HashSet(Of ?)(CType(oldInstance, Set(Of ?)))
 				Return New Expression(oldInstance, GetType(Collections), "synchronizedSet", New Object() {[set]})
@@ -515,7 +515,7 @@ Namespace java.beans
             Friend NotInheritable Class SynchronizedSortedSet_PersistenceDelegate
                 Inherits java_util_Collections
 
-                Protected Friend Overrides Function instantiate(ByVal oldInstance As Object, ByVal out As Encoder) As Expression
+                Protected Friend Overrides Function instantiate(  oldInstance As Object,   out As Encoder) As Expression
                     'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
                     Dim [set] As SortedSet(Of ?) = New TreeSet(Of ?)(CType(oldInstance, SortedSet(Of ?)))
                     Return New Expression(oldInstance, GetType(Collections), "synchronizedSortedSet", New Object() {[set]})
@@ -525,7 +525,7 @@ Namespace java.beans
             Friend NotInheritable Class SynchronizedMap_PersistenceDelegate
                 Inherits java_util_Collections
 
-                Protected Friend Overrides Function instantiate(ByVal oldInstance As Object, ByVal out As Encoder) As Expression
+                Protected Friend Overrides Function instantiate(  oldInstance As Object,   out As Encoder) As Expression
                     'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
                     Dim map As Map(Of ?, ?) = New HashMap(Of ?, ?)(CType(oldInstance, Map(Of ?, ?)))
                     Return New Expression(oldInstance, GetType(Collections), "synchronizedMap", New Object() {map})
@@ -535,7 +535,7 @@ Namespace java.beans
             Friend NotInheritable Class SynchronizedSortedMap_PersistenceDelegate
                 Inherits java_util_Collections
 
-                Protected Friend Overrides Function instantiate(ByVal oldInstance As Object, ByVal out As Encoder) As Expression
+                Protected Friend Overrides Function instantiate(  oldInstance As Object,   out As Encoder) As Expression
                     'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
                     Dim map As SortedMap(Of ?, ?) = New TreeMap(Of ?, ?)(CType(oldInstance, SortedMap(Of ?, ?)))
                     Return New Expression(oldInstance, GetType(Collections), "synchronizedSortedMap", New Object() {map})
@@ -545,7 +545,7 @@ Namespace java.beans
             Friend NotInheritable Class CheckedCollection_PersistenceDelegate
                 Inherits java_util_Collections
 
-                Protected Friend Overrides Function instantiate(ByVal oldInstance As Object, ByVal out As Encoder) As Expression
+                Protected Friend Overrides Function instantiate(  oldInstance As Object,   out As Encoder) As Expression
                     Dim type As Object = MetaData.getPrivateFieldValue(oldInstance, "java.util.Collections$CheckedCollection.type")
                     'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
                     Dim list As List(Of ?) = New List(Of ?)(CType(oldInstance, Collection(Of ?)))
@@ -556,7 +556,7 @@ Namespace java.beans
             Friend NotInheritable Class CheckedList_PersistenceDelegate
                 Inherits java_util_Collections
 
-                Protected Friend Overrides Function instantiate(ByVal oldInstance As Object, ByVal out As Encoder) As Expression
+                Protected Friend Overrides Function instantiate(  oldInstance As Object,   out As Encoder) As Expression
                     Dim type As Object = MetaData.getPrivateFieldValue(oldInstance, "java.util.Collections$CheckedCollection.type")
                     'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
                     Dim list As List(Of ?) = New LinkedList(Of ?)(CType(oldInstance, Collection(Of ?)))
@@ -567,7 +567,7 @@ Namespace java.beans
             Friend NotInheritable Class CheckedRandomAccessList_PersistenceDelegate
                 Inherits java_util_Collections
 
-                Protected Friend Overrides Function instantiate(ByVal oldInstance As Object, ByVal out As Encoder) As Expression
+                Protected Friend Overrides Function instantiate(  oldInstance As Object,   out As Encoder) As Expression
                     Dim type As Object = MetaData.getPrivateFieldValue(oldInstance, "java.util.Collections$CheckedCollection.type")
                     'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
                     Dim list As List(Of ?) = New List(Of ?)(CType(oldInstance, Collection(Of ?)))
@@ -578,7 +578,7 @@ Namespace java.beans
             Friend NotInheritable Class CheckedSet_PersistenceDelegate
                 Inherits java_util_Collections
 
-                Protected Friend Overrides Function instantiate(ByVal oldInstance As Object, ByVal out As Encoder) As Expression
+                Protected Friend Overrides Function instantiate(  oldInstance As Object,   out As Encoder) As Expression
                     Dim type As Object = MetaData.getPrivateFieldValue(oldInstance, "java.util.Collections$CheckedCollection.type")
                     'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
                     Dim [set] As [Set](Of ?) = New HashSet(Of ?)(CType(oldInstance, Set(Of ?)))
@@ -589,7 +589,7 @@ Namespace java.beans
             Friend NotInheritable Class CheckedSortedSet_PersistenceDelegate
                 Inherits java_util_Collections
 
-                Protected Friend Overrides Function instantiate(ByVal oldInstance As Object, ByVal out As Encoder) As Expression
+                Protected Friend Overrides Function instantiate(  oldInstance As Object,   out As Encoder) As Expression
                     Dim type As Object = MetaData.getPrivateFieldValue(oldInstance, "java.util.Collections$CheckedCollection.type")
                     'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
                     Dim [set] As SortedSet(Of ?) = New TreeSet(Of ?)(CType(oldInstance, SortedSet(Of ?)))
@@ -600,7 +600,7 @@ Namespace java.beans
             Friend NotInheritable Class CheckedMap_PersistenceDelegate
                 Inherits java_util_Collections
 
-                Protected Friend Overrides Function instantiate(ByVal oldInstance As Object, ByVal out As Encoder) As Expression
+                Protected Friend Overrides Function instantiate(  oldInstance As Object,   out As Encoder) As Expression
                     Dim keyType As Object = MetaData.getPrivateFieldValue(oldInstance, "java.util.Collections$CheckedMap.keyType")
                     Dim valueType As Object = MetaData.getPrivateFieldValue(oldInstance, "java.util.Collections$CheckedMap.valueType")
                     'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
@@ -612,7 +612,7 @@ Namespace java.beans
             Friend NotInheritable Class CheckedSortedMap_PersistenceDelegate
                 Inherits java_util_Collections
 
-                Protected Friend Overrides Function instantiate(ByVal oldInstance As Object, ByVal out As Encoder) As Expression
+                Protected Friend Overrides Function instantiate(  oldInstance As Object,   out As Encoder) As Expression
                     Dim keyType As Object = MetaData.getPrivateFieldValue(oldInstance, "java.util.Collections$CheckedMap.keyType")
                     Dim valueType As Object = MetaData.getPrivateFieldValue(oldInstance, "java.util.Collections$CheckedMap.valueType")
                     'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
@@ -630,15 +630,15 @@ Namespace java.beans
         Friend NotInheritable Class java_util_EnumMap_PersistenceDelegate
             Inherits PersistenceDelegate
 
-            Protected Friend Overrides Function mutatesTo(ByVal oldInstance As Object, ByVal newInstance As Object) As Boolean
+            Protected Friend Overrides Function mutatesTo(  oldInstance As Object,   newInstance As Object) As Boolean
                 Return MyBase.mutatesTo(oldInstance, newInstance) AndAlso ([getType](oldInstance) Is [getType](newInstance))
             End Function
 
-            Protected Friend Overrides Function instantiate(ByVal oldInstance As Object, ByVal out As Encoder) As Expression
+            Protected Friend Overrides Function instantiate(  oldInstance As Object,   out As Encoder) As Expression
                 Return New Expression(oldInstance, GetType(EnumMap), "new", New Object() {[getType](oldInstance)})
             End Function
 
-            Private Shared Function [getType](ByVal instance As Object) As Object
+            Private Shared Function [getType](  instance As Object) As Object
                 Return MetaData.getPrivateFieldValue(instance, "java.util.EnumMap.keyType")
             End Function
         End Class
@@ -651,15 +651,15 @@ Namespace java.beans
         Friend NotInheritable Class java_util_EnumSet_PersistenceDelegate
             Inherits PersistenceDelegate
 
-            Protected Friend Overrides Function mutatesTo(ByVal oldInstance As Object, ByVal newInstance As Object) As Boolean
+            Protected Friend Overrides Function mutatesTo(  oldInstance As Object,   newInstance As Object) As Boolean
                 Return MyBase.mutatesTo(oldInstance, newInstance) AndAlso ([getType](oldInstance) Is [getType](newInstance))
             End Function
 
-            Protected Friend Overrides Function instantiate(ByVal oldInstance As Object, ByVal out As Encoder) As Expression
+            Protected Friend Overrides Function instantiate(  oldInstance As Object,   out As Encoder) As Expression
                 Return New Expression(oldInstance, GetType(EnumSet), "noneOf", New Object() {[getType](oldInstance)})
             End Function
 
-            Private Shared Function [getType](ByVal instance As Object) As Object
+            Private Shared Function [getType](  instance As Object) As Object
                 Return MetaData.getPrivateFieldValue(instance, "java.util.EnumSet.elementType")
             End Function
         End Class
@@ -668,7 +668,7 @@ Namespace java.beans
         Friend Class java_util_Collection_PersistenceDelegate
             Inherits DefaultPersistenceDelegate
 
-            Protected Friend Overrides Sub initialize(ByVal type As [Class], ByVal oldInstance As Object, ByVal newInstance As Object, ByVal out As Encoder)
+            Protected Friend Overrides Sub initialize(  type As [Class],   oldInstance As Object,   newInstance As Object,   out As Encoder)
                 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
                 Dim oldO As ICollection(Of ?) = CType(oldInstance, ICollection)
                 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
@@ -687,7 +687,7 @@ Namespace java.beans
         Friend Class java_util_List_PersistenceDelegate
             Inherits DefaultPersistenceDelegate
 
-            Protected Friend Overrides Sub initialize(ByVal type As [Class], ByVal oldInstance As Object, ByVal newInstance As Object, ByVal out As Encoder)
+            Protected Friend Overrides Sub initialize(  type As [Class],   oldInstance As Object,   newInstance As Object,   out As Encoder)
                 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
                 Dim oldO As IList(Of ?) = CType(oldInstance, IList(Of ?))
                 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
@@ -723,7 +723,7 @@ Namespace java.beans
         Friend Class java_util_Map_PersistenceDelegate
             Inherits DefaultPersistenceDelegate
 
-            Protected Friend Overrides Sub initialize(ByVal type As [Class], ByVal oldInstance As Object, ByVal newInstance As Object, ByVal out As Encoder)
+            Protected Friend Overrides Sub initialize(  type As [Class],   oldInstance As Object,   newInstance As Object,   out As Encoder)
                 ' System.out.println("Initializing: " + newInstance);
                 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
                 Dim oldMap As IDictionary(Of ?, ?) = CType(oldInstance, IDictionary)
@@ -795,11 +795,11 @@ Namespace java.beans
         Friend NotInheritable Class java_awt_Insets_PersistenceDelegate
             Inherits PersistenceDelegate
 
-            Protected Friend Overrides Function mutatesTo(ByVal oldInstance As Object, ByVal newInstance As Object) As Boolean
+            Protected Friend Overrides Function mutatesTo(  oldInstance As Object,   newInstance As Object) As Boolean
                 Return oldInstance.Equals(newInstance)
             End Function
 
-            Protected Friend Overrides Function instantiate(ByVal oldInstance As Object, ByVal out As Encoder) As Expression
+            Protected Friend Overrides Function instantiate(  oldInstance As Object,   out As Encoder) As Expression
                 Dim insets As java.awt.Insets = CType(oldInstance, java.awt.Insets)
                 Dim args As Object() = {insets.top, insets.left, insets.bottom, insets.right}
                 Return New Expression(insets, insets.GetType(), "new", args)
@@ -816,11 +816,11 @@ Namespace java.beans
         Friend NotInheritable Class java_awt_Font_PersistenceDelegate
             Inherits PersistenceDelegate
 
-            Protected Friend Overrides Function mutatesTo(ByVal oldInstance As Object, ByVal newInstance As Object) As Boolean
+            Protected Friend Overrides Function mutatesTo(  oldInstance As Object,   newInstance As Object) As Boolean
                 Return oldInstance.Equals(newInstance)
             End Function
 
-            Protected Friend Overrides Function instantiate(ByVal oldInstance As Object, ByVal out As Encoder) As Expression
+            Protected Friend Overrides Function instantiate(  oldInstance As Object,   out As Encoder) As Expression
                 Dim font As java.awt.font = CType(oldInstance, java.awt.font)
 
                 Dim count As Integer = 0
@@ -878,11 +878,11 @@ Namespace java.beans
         Friend NotInheritable Class java_awt_AWTKeyStroke_PersistenceDelegate
             Inherits PersistenceDelegate
 
-            Protected Friend Overrides Function mutatesTo(ByVal oldInstance As Object, ByVal newInstance As Object) As Boolean
+            Protected Friend Overrides Function mutatesTo(  oldInstance As Object,   newInstance As Object) As Boolean
                 Return oldInstance.Equals(newInstance)
             End Function
 
-            Protected Friend Overrides Function instantiate(ByVal oldInstance As Object, ByVal out As Encoder) As Expression
+            Protected Friend Overrides Function instantiate(  oldInstance As Object,   out As Encoder) As Expression
                 Dim key As java.awt.AWTKeyStroke = CType(oldInstance, java.awt.AWTKeyStroke)
 
                 Dim ch As Char = key.keyChar
@@ -913,7 +913,7 @@ Namespace java.beans
         Friend Class StaticFieldsPersistenceDelegate
             Inherits PersistenceDelegate
 
-            Protected Friend Overridable Sub installFields(ByVal out As Encoder, ByVal cls As [Class])
+            Protected Friend Overridable Sub installFields(  out As Encoder,   cls As [Class])
                 If Modifier.isPublic(cls.modifiers) AndAlso isPackageAccessible(cls) Then
                     Dim fields As Field() = cls.fields
                     For i As Integer = 0 To fields.Length - 1
@@ -925,11 +925,11 @@ Namespace java.beans
                 End If
             End Sub
 
-            Protected Friend Overrides Function instantiate(ByVal oldInstance As Object, ByVal out As Encoder) As Expression
+            Protected Friend Overrides Function instantiate(  oldInstance As Object,   out As Encoder) As Expression
                 Throw New RuntimeException("Unrecognized instance: " & oldInstance)
             End Function
 
-            Public Overrides Sub writeObject(ByVal oldInstance As Object, ByVal out As Encoder)
+            Public Overrides Sub writeObject(  oldInstance As Object,   out As Encoder)
                 If out.getAttribute(Me) Is Nothing Then
                     out.attributeute(Me,  java.lang.[Boolean].TRUE)
                     installFields(out, oldInstance.GetType())
@@ -954,11 +954,11 @@ Namespace java.beans
         Friend NotInheritable Class java_awt_MenuShortcut_PersistenceDelegate
             Inherits PersistenceDelegate
 
-            Protected Friend Overrides Function mutatesTo(ByVal oldInstance As Object, ByVal newInstance As Object) As Boolean
+            Protected Friend Overrides Function mutatesTo(  oldInstance As Object,   newInstance As Object) As Boolean
                 Return oldInstance.Equals(newInstance)
             End Function
 
-            Protected Friend Overrides Function instantiate(ByVal oldInstance As Object, ByVal out As Encoder) As Expression
+            Protected Friend Overrides Function instantiate(  oldInstance As Object,   out As Encoder) As Expression
                 Dim m As java.awt.MenuShortcut = CType(oldInstance, java.awt.MenuShortcut)
                 Return New Expression(oldInstance, m.GetType(), "new", New Object() {New Integer?(m.key), Convert.ToBoolean(m.usesShiftModifier())})
             End Function
@@ -968,7 +968,7 @@ Namespace java.beans
         Friend NotInheritable Class java_awt_Component_PersistenceDelegate
             Inherits DefaultPersistenceDelegate
 
-            Protected Friend Overrides Sub initialize(ByVal type As [Class], ByVal oldInstance As Object, ByVal newInstance As Object, ByVal out As Encoder)
+            Protected Friend Overrides Sub initialize(  type As [Class],   oldInstance As Object,   newInstance As Object,   out As Encoder)
                 MyBase.initialize(type, oldInstance, newInstance, out)
                 Dim c As java.awt.Component = CType(oldInstance, java.awt.Component)
                 Dim c2 As java.awt.Component = CType(newInstance, java.awt.Component)
@@ -1009,7 +1009,7 @@ Namespace java.beans
         Friend NotInheritable Class java_awt_Container_PersistenceDelegate
             Inherits DefaultPersistenceDelegate
 
-            Protected Friend Overrides Sub initialize(ByVal type As [Class], ByVal oldInstance As Object, ByVal newInstance As Object, ByVal out As Encoder)
+            Protected Friend Overrides Sub initialize(  type As [Class],   oldInstance As Object,   newInstance As Object,   out As Encoder)
                 MyBase.initialize(type, oldInstance, newInstance, out)
                 ' Ignore the children of a JScrollPane.
                 ' Pending(milne) find a better way to do this.
@@ -1036,7 +1036,7 @@ Namespace java.beans
         Friend NotInheritable Class java_awt_Choice_PersistenceDelegate
             Inherits DefaultPersistenceDelegate
 
-            Protected Friend Overrides Sub initialize(ByVal type As [Class], ByVal oldInstance As Object, ByVal newInstance As Object, ByVal out As Encoder)
+            Protected Friend Overrides Sub initialize(  type As [Class],   oldInstance As Object,   newInstance As Object,   out As Encoder)
                 MyBase.initialize(type, oldInstance, newInstance, out)
                 Dim m As java.awt.Choice = CType(oldInstance, java.awt.Choice)
                 Dim n As java.awt.Choice = CType(newInstance, java.awt.Choice)
@@ -1050,7 +1050,7 @@ Namespace java.beans
         Friend NotInheritable Class java_awt_Menu_PersistenceDelegate
             Inherits DefaultPersistenceDelegate
 
-            Protected Friend Overrides Sub initialize(ByVal type As [Class], ByVal oldInstance As Object, ByVal newInstance As Object, ByVal out As Encoder)
+            Protected Friend Overrides Sub initialize(  type As [Class],   oldInstance As Object,   newInstance As Object,   out As Encoder)
                 MyBase.initialize(type, oldInstance, newInstance, out)
                 Dim m As java.awt.Menu = CType(oldInstance, java.awt.Menu)
                 Dim n As java.awt.Menu = CType(newInstance, java.awt.Menu)
@@ -1064,7 +1064,7 @@ Namespace java.beans
         Friend NotInheritable Class java_awt_MenuBar_PersistenceDelegate
             Inherits DefaultPersistenceDelegate
 
-            Protected Friend Overrides Sub initialize(ByVal type As [Class], ByVal oldInstance As Object, ByVal newInstance As Object, ByVal out As Encoder)
+            Protected Friend Overrides Sub initialize(  type As [Class],   oldInstance As Object,   newInstance As Object,   out As Encoder)
                 MyBase.initialize(type, oldInstance, newInstance, out)
                 Dim m As java.awt.MenuBar = CType(oldInstance, java.awt.MenuBar)
                 Dim n As java.awt.MenuBar = CType(newInstance, java.awt.MenuBar)
@@ -1078,7 +1078,7 @@ Namespace java.beans
         Friend NotInheritable Class java_awt_List_PersistenceDelegate
             Inherits DefaultPersistenceDelegate
 
-            Protected Friend Overrides Sub initialize(ByVal type As [Class], ByVal oldInstance As Object, ByVal newInstance As Object, ByVal out As Encoder)
+            Protected Friend Overrides Sub initialize(  type As [Class],   oldInstance As Object,   newInstance As Object,   out As Encoder)
                 MyBase.initialize(type, oldInstance, newInstance, out)
                 Dim m As java.awt.List = CType(oldInstance, java.awt.List)
                 Dim n As java.awt.List = CType(newInstance, java.awt.List)
@@ -1096,7 +1096,7 @@ Namespace java.beans
             Inherits DefaultPersistenceDelegate
 
             Private Shared ReadOnly CONSTRAINTS As String() = {java.awt.BorderLayout.north, java.awt.BorderLayout.south, java.awt.BorderLayout.east, java.awt.BorderLayout.west, java.awt.BorderLayout.center, java.awt.BorderLayout.PAGE_START, java.awt.BorderLayout.PAGE_END, java.awt.BorderLayout.LINE_START, java.awt.BorderLayout.LINE_END}
-            Protected Friend Overrides Sub initialize(ByVal type As [Class], ByVal oldInstance As Object, ByVal newInstance As Object, ByVal out As Encoder)
+            Protected Friend Overrides Sub initialize(  type As [Class],   oldInstance As Object,   newInstance As Object,   out As Encoder)
                 MyBase.initialize(type, oldInstance, newInstance, out)
                 Dim oldLayout As java.awt.BorderLayout = CType(oldInstance, java.awt.BorderLayout)
                 Dim newLayout As java.awt.BorderLayout = CType(newInstance, java.awt.BorderLayout)
@@ -1113,7 +1113,7 @@ Namespace java.beans
         Friend NotInheritable Class java_awt_CardLayout_PersistenceDelegate
             Inherits DefaultPersistenceDelegate
 
-            Protected Friend Overrides Sub initialize(ByVal type As [Class], ByVal oldInstance As Object, ByVal newInstance As Object, ByVal out As Encoder)
+            Protected Friend Overrides Sub initialize(  type As [Class],   oldInstance As Object,   newInstance As Object,   out As Encoder)
                 MyBase.initialize(type, oldInstance, newInstance, out)
                 If getVector(newInstance).empty Then
                     For Each card As Object In getVector(oldInstance)
@@ -1122,11 +1122,11 @@ Namespace java.beans
                     Next card
                 End If
             End Sub
-            Protected Friend Overrides Function mutatesTo(ByVal oldInstance As Object, ByVal newInstance As Object) As Boolean
+            Protected Friend Overrides Function mutatesTo(  oldInstance As Object,   newInstance As Object) As Boolean
                 Return MyBase.mutatesTo(oldInstance, newInstance) AndAlso getVector(newInstance).empty
             End Function
             'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-            Private Shared Function getVector(ByVal instance As Object) As Vector(Of ?)
+            Private Shared Function getVector(  instance As Object) As Vector(Of ?)
                 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
                 Return CType(MetaData.getPrivateFieldValue(instance, "java.awt.CardLayout.vector"), Vector(Of ?))
             End Function
@@ -1136,7 +1136,7 @@ Namespace java.beans
         Friend NotInheritable Class java_awt_GridBagLayout_PersistenceDelegate
             Inherits DefaultPersistenceDelegate
 
-            Protected Friend Overrides Sub initialize(ByVal type As [Class], ByVal oldInstance As Object, ByVal newInstance As Object, ByVal out As Encoder)
+            Protected Friend Overrides Sub initialize(  type As [Class],   oldInstance As Object,   newInstance As Object,   out As Encoder)
                 MyBase.initialize(type, oldInstance, newInstance, out)
                 If getHashtable(newInstance).empty Then
                     'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
@@ -1146,11 +1146,11 @@ Namespace java.beans
                     Next entry
                 End If
             End Sub
-            Protected Friend Overrides Function mutatesTo(ByVal oldInstance As Object, ByVal newInstance As Object) As Boolean
+            Protected Friend Overrides Function mutatesTo(  oldInstance As Object,   newInstance As Object) As Boolean
                 Return MyBase.mutatesTo(oldInstance, newInstance) AndAlso getHashtable(newInstance).empty
             End Function
             'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-            Private Shared Function getHashtable(ByVal instance As Object) As Dictionary(Of ?, ?)
+            Private Shared Function getHashtable(  instance As Object) As Dictionary(Of ?, ?)
                 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
                 Return CType(MetaData.getPrivateFieldValue(instance, "java.awt.GridBagLayout.comptable"), Dictionary(Of ?, ?))
             End Function
@@ -1164,7 +1164,7 @@ Namespace java.beans
         Friend NotInheritable Class javax_swing_JFrame_PersistenceDelegate
             Inherits DefaultPersistenceDelegate
 
-            Protected Friend Overrides Sub initialize(ByVal type As [Class], ByVal oldInstance As Object, ByVal newInstance As Object, ByVal out As Encoder)
+            Protected Friend Overrides Sub initialize(  type As [Class],   oldInstance As Object,   newInstance As Object,   out As Encoder)
                 MyBase.initialize(type, oldInstance, newInstance, out)
                 Dim oldC As java.awt.Window = CType(oldInstance, java.awt.Window)
                 Dim newC As java.awt.Window = CType(newInstance, java.awt.Window)
@@ -1186,7 +1186,7 @@ Namespace java.beans
         Friend NotInheritable Class javax_swing_DefaultListModel_PersistenceDelegate
             Inherits DefaultPersistenceDelegate
 
-            Protected Friend Overrides Sub initialize(ByVal type As [Class], ByVal oldInstance As Object, ByVal newInstance As Object, ByVal out As Encoder)
+            Protected Friend Overrides Sub initialize(  type As [Class],   oldInstance As Object,   newInstance As Object,   out As Encoder)
                 ' Note, the "size" property will be set here.
                 MyBase.initialize(type, oldInstance, newInstance, out)
                 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
@@ -1203,7 +1203,7 @@ Namespace java.beans
         Friend NotInheritable Class javax_swing_DefaultComboBoxModel_PersistenceDelegate
             Inherits DefaultPersistenceDelegate
 
-            Protected Friend Overrides Sub initialize(ByVal type As [Class], ByVal oldInstance As Object, ByVal newInstance As Object, ByVal out As Encoder)
+            Protected Friend Overrides Sub initialize(  type As [Class],   oldInstance As Object,   newInstance As Object,   out As Encoder)
                 MyBase.initialize(type, oldInstance, newInstance, out)
                 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
                 Dim m As javax.swing.DefaultComboBoxModel(Of ?) = CType(oldInstance, javax.swing.DefaultComboBoxModel(Of ?))
@@ -1218,7 +1218,7 @@ Namespace java.beans
         Friend NotInheritable Class javax_swing_tree_DefaultMutableTreeNode_PersistenceDelegate
             Inherits DefaultPersistenceDelegate
 
-            Protected Friend Overrides Sub initialize(ByVal type As [Class], ByVal oldInstance As Object, ByVal newInstance As Object, ByVal out As Encoder)
+            Protected Friend Overrides Sub initialize(  type As [Class],   oldInstance As Object,   newInstance As Object,   out As Encoder)
                 MyBase.initialize(type, oldInstance, newInstance, out)
                 Dim m As javax.swing.tree.DefaultMutableTreeNode = CType(oldInstance, javax.swing.tree.DefaultMutableTreeNode)
                 Dim n As javax.swing.tree.DefaultMutableTreeNode = CType(newInstance, javax.swing.tree.DefaultMutableTreeNode)
@@ -1232,7 +1232,7 @@ Namespace java.beans
         Friend NotInheritable Class javax_swing_ToolTipManager_PersistenceDelegate
             Inherits PersistenceDelegate
 
-            Protected Friend Overrides Function instantiate(ByVal oldInstance As Object, ByVal out As Encoder) As Expression
+            Protected Friend Overrides Function instantiate(  oldInstance As Object,   out As Encoder) As Expression
                 Return New Expression(oldInstance, GetType(javax.swing.ToolTipManager), "sharedInstance", New Object() {})
             End Function
         End Class
@@ -1241,7 +1241,7 @@ Namespace java.beans
         Friend NotInheritable Class javax_swing_JTabbedPane_PersistenceDelegate
             Inherits DefaultPersistenceDelegate
 
-            Protected Friend Overrides Sub initialize(ByVal type As [Class], ByVal oldInstance As Object, ByVal newInstance As Object, ByVal out As Encoder)
+            Protected Friend Overrides Sub initialize(  type As [Class],   oldInstance As Object,   newInstance As Object,   out As Encoder)
                 MyBase.initialize(type, oldInstance, newInstance, out)
                 Dim p As javax.swing.JTabbedPane = CType(oldInstance, javax.swing.JTabbedPane)
                 For i As Integer = 0 To p.tabCount - 1
@@ -1254,15 +1254,15 @@ Namespace java.beans
         Friend NotInheritable Class javax_swing_Box_PersistenceDelegate
             Inherits DefaultPersistenceDelegate
 
-            Protected Friend Overrides Function mutatesTo(ByVal oldInstance As Object, ByVal newInstance As Object) As Boolean
+            Protected Friend Overrides Function mutatesTo(  oldInstance As Object,   newInstance As Object) As Boolean
                 Return MyBase.mutatesTo(oldInstance, newInstance) AndAlso getAxis(oldInstance).Equals(getAxis(newInstance))
             End Function
 
-            Protected Friend Overrides Function instantiate(ByVal oldInstance As Object, ByVal out As Encoder) As Expression
+            Protected Friend Overrides Function instantiate(  oldInstance As Object,   out As Encoder) As Expression
                 Return New Expression(oldInstance, oldInstance.GetType(), "new", New Object() {getAxis(oldInstance)})
             End Function
 
-            Private Function getAxis(ByVal [object] As Object) As Integer?
+            Private Function getAxis(  [object] As Object) As Integer?
                 Dim box As javax.swing.Box = CType(object_Renamed, javax.swing.Box)
                 Return CInt(Fix(MetaData.getPrivateFieldValue(box.layout, "javax.swing.BoxLayout.axis")))
             End Function
@@ -1277,7 +1277,7 @@ Namespace java.beans
         Friend NotInheritable Class javax_swing_JMenu_PersistenceDelegate
             Inherits DefaultPersistenceDelegate
 
-            Protected Friend Overrides Sub initialize(ByVal type As [Class], ByVal oldInstance As Object, ByVal newInstance As Object, ByVal out As Encoder)
+            Protected Friend Overrides Sub initialize(  type As [Class],   oldInstance As Object,   newInstance As Object,   out As Encoder)
                 MyBase.initialize(type, oldInstance, newInstance, out)
                 Dim m As javax.swing.JMenu = CType(oldInstance, javax.swing.JMenu)
                 Dim c As java.awt.Component() = m.menuComponents
@@ -1297,7 +1297,7 @@ Namespace java.beans
         Friend NotInheritable Class javax_swing_border_MatteBorder_PersistenceDelegate
             Inherits PersistenceDelegate
 
-            Protected Friend Overrides Function instantiate(ByVal oldInstance As Object, ByVal out As Encoder) As Expression
+            Protected Friend Overrides Function instantiate(  oldInstance As Object,   out As Encoder) As Expression
                 Dim border As javax.swing.border.MatteBorder = CType(oldInstance, javax.swing.border.MatteBorder)
                 Dim insets As java.awt.Insets = border.borderInsets
                 Dim object_Renamed As Object = border.tileIcon
@@ -1332,11 +1332,11 @@ Namespace java.beans
         Friend NotInheritable Class sun_swing_PrintColorUIResource_PersistenceDelegate
             Inherits PersistenceDelegate
 
-            Protected Friend Overrides Function mutatesTo(ByVal oldInstance As Object, ByVal newInstance As Object) As Boolean
+            Protected Friend Overrides Function mutatesTo(  oldInstance As Object,   newInstance As Object) As Boolean
                 Return oldInstance.Equals(newInstance)
             End Function
 
-            Protected Friend Overrides Function instantiate(ByVal oldInstance As Object, ByVal out As Encoder) As Expression
+            Protected Friend Overrides Function instantiate(  oldInstance As Object,   out As Encoder) As Expression
                 Dim color As java.awt.color = CType(oldInstance, java.awt.color)
                 Dim args As Object() = {color.rGB}
                 Return New Expression(color, GetType(javax.swing.plaf.ColorUIResource), "new", args)
@@ -1375,7 +1375,7 @@ Namespace java.beans
 
         'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
         <MethodImpl(MethodImplOptions.Synchronized)>
-        Public Shared Function getPersistenceDelegate(ByVal type As [Class]) As PersistenceDelegate
+        Public Shared Function getPersistenceDelegate(  type As [Class]) As PersistenceDelegate
             If type Is Nothing Then Return nullPersistenceDelegate
             If type.IsSubclassOf(GetType(System.Enum)) Then Return enumPersistenceDelegate
             If Nothing IsNot XMLEncoder.primitiveTypeFor(type) Then Return primitivePersistenceDelegate
@@ -1421,7 +1421,7 @@ Namespace java.beans
             Return If(pd IsNot Nothing, pd, defaultPersistenceDelegate_Renamed)
         End Function
 
-        Private Shared Function getConstructorProperties(ByVal type As [Class]) As String()
+        Private Shared Function getConstructorProperties(  type As [Class]) As String()
             Dim names As String() = Nothing
             Dim length As Integer = 0
             'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
@@ -1435,12 +1435,12 @@ Namespace java.beans
             Return names
         End Function
 
-        Private Shared Function getAnnotationValue(Of T1)(ByVal constructor As Constructor(Of T1)) As String()
+        Private Shared Function getAnnotationValue(Of T1)(  constructor As Constructor(Of T1)) As String()
             Dim annotation As ConstructorProperties = constructor.getAnnotation(GetType(ConstructorProperties))
             Return If(annotation IsNot Nothing, annotation.value(), Nothing)
         End Function
 
-        Private Shared Function isValid(Of T1)(ByVal constructor As Constructor(Of T1), ByVal names As String()) As Boolean
+        Private Shared Function isValid(Of T1)(  constructor As Constructor(Of T1),   names As String()) As Boolean
             Dim parameters As [Class]() = constructor.parameterTypes
             If names.Length <> parameters.Length Then Return False
             For Each name As String In names
@@ -1449,7 +1449,7 @@ Namespace java.beans
             Return True
         End Function
 
-        Private Shared Function getBeanAttribute(ByVal type As [Class], ByVal attribute As String) As Object
+        Private Shared Function getBeanAttribute(  type As [Class],   attribute As String) As Object
             Try
                 Return Introspector.getBeanInfo(type).beanDescriptor.getValue(attribute)
             Catch exception_Renamed As IntrospectionException
@@ -1457,7 +1457,7 @@ Namespace java.beans
             End Try
         End Function
 
-        Friend Shared Function getPrivateFieldValue(ByVal instance As Object, ByVal name As String) As Object
+        Friend Shared Function getPrivateFieldValue(  instance As Object,   name As String) As Object
             Dim field As Field = fields.get(name)
             If field Is Nothing Then
                 Dim index As Integer = name.LastIndexOf("."c)

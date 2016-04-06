@@ -597,7 +597,7 @@ Namespace java.lang
             ''' </summary>
             ''' <param name="name">  The name of this subset </param>
             ''' <exception cref="NullPointerException"> if name is {@code null} </exception>
-            Protected Friend Sub New(ByVal name As String)
+            Protected Friend Sub New(  name As String)
                 If name Is Nothing Then Throw New NullPointerException("name")
                 Me.name = name
             End Sub
@@ -609,7 +609,7 @@ Namespace java.lang
             ''' object; since this method is {@code final}, this
             ''' guarantee holds for all subclasses.
             ''' </summary>
-            Public NotOverridable Overrides Function Equals(ByVal obj As Object) As Boolean
+            Public NotOverridable Overrides Function Equals(  obj As Object) As Boolean
                 Return (Me Is obj)
             End Function
 
@@ -652,7 +652,7 @@ Namespace java.lang
             ''' Creates a UnicodeBlock with the given identifier name.
             ''' This name must be the same as the block identifier.
             ''' </summary>
-            Private Sub New(ByVal idName As String)
+            Private Sub New(  idName As String)
                 MyBase.New(idName)
                 map(idName) = Me
             End Sub
@@ -661,7 +661,7 @@ Namespace java.lang
             ''' Creates a UnicodeBlock with the given identifier name and
             ''' alias name.
             ''' </summary>
-            Private Sub New(ByVal idName As String, ByVal [alias] As String)
+            Private Sub New(  idName As String,   [alias] As String)
                 Me.New(idName)
                 map([alias]) = Me
             End Sub
@@ -670,7 +670,7 @@ Namespace java.lang
             ''' Creates a UnicodeBlock with the given identifier name and
             ''' alias names.
             ''' </summary>
-            Private Sub New(ByVal idName As String, ParamArray ByVal aliases As String())
+            Private Sub New(  idName As String, ParamArray   aliases As String())
                 Me.New(idName)
                 For Each [alias] As String In aliases
                     map([alias]) = Me
@@ -2066,7 +2066,7 @@ Namespace java.lang
             '''          Unicode block of which this character is a member, or
             '''          {@code null} if the character is not a member of any
             '''          Unicode block </returns>
-            Public Shared Function [of](ByVal c As Char) As UnicodeBlock
+            Public Shared Function [of](  c As Char) As UnicodeBlock
                 Return [of](AscW(c))
             End Function
 
@@ -2085,7 +2085,7 @@ Namespace java.lang
             ''' {@code codePoint} is an invalid Unicode code point. </exception>
             ''' <seealso cref= Character#isValidCodePoint(int)
             ''' @since   1.5 </seealso>
-            Public Shared Function [of](ByVal codePoint As Integer) As UnicodeBlock
+            Public Shared Function [of](  codePoint As Integer) As UnicodeBlock
                 If Not isValidCodePoint(codePoint) Then Throw New IllegalArgumentException
 
                 Dim top, bottom, current As Integer
@@ -2140,7 +2140,7 @@ Namespace java.lang
             '''         invalid name </exception>
             ''' <exception cref="NullPointerException"> if {@code blockName} is null
             ''' @since 1.5 </exception>
-            Public Shared Function forName(ByVal blockName As String) As UnicodeBlock
+            Public Shared Function forName(  blockName As String) As UnicodeBlock
                 Dim block As UnicodeBlock = map(blockName.ToUpper(java.util.Locale.US))
                 If block Is Nothing Then Throw New IllegalArgumentException
                 Return block
@@ -2826,7 +2826,7 @@ Namespace java.lang
         ''' {@code codePoint} is an invalid Unicode code point. </exception>
         ''' <seealso cref= Character#isValidCodePoint(int)
         '''  </seealso>
-        Public Shared Function [of](ByVal codePoint As Integer) As UnicodeScript
+        Public Shared Function [of](  codePoint As Integer) As UnicodeScript
             If Not isValidCodePoint(codePoint) Then Throw New IllegalArgumentException
             Dim type_Renamed As Integer = GetType(codePoint)
             ' leave SURROGATE and PRIVATE_USE for table lookup
@@ -2856,7 +2856,7 @@ Namespace java.lang
         ''' <exception cref="IllegalArgumentException"> if {@code scriptName} is an
         '''         invalid name </exception>
         ''' <exception cref="NullPointerException"> if {@code scriptName} is null </exception>
-        Public Shared Function forName(ByVal scriptName As String) As UnicodeScript
+        Public Shared Function forName(  scriptName As String) As UnicodeScript
             scriptName = scriptName.ToUpper(java.util.Locale.ENGLISH)
             '.replace(' ', '_'));
             Dim sc As UnicodeScript = aliases(scriptName)

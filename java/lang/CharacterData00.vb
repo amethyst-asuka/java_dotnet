@@ -70,69 +70,69 @@ Namespace java.lang
 	'        The encoding of character properties is subject to change at any time.
 	'     
 
-		Friend Overrides Function getProperties(ByVal ch As Integer) As Integer
+		Friend Overrides Function getProperties(  ch As Integer) As Integer
 			Dim offset As Char = ChrW(ch)
 			Dim props As Integer = A(AscW(Y(AscW(X(AscW(offset)>>5)) Or ((AscW(offset)>>1) And &HF))) Or (AscW(offset) And &H1))
 			Return props
 		End Function
 
-		Friend Overridable Function getPropertiesEx(ByVal ch As Integer) As Integer
+		Friend Overridable Function getPropertiesEx(  ch As Integer) As Integer
 			Dim offset As Char = ChrW(ch)
 			Dim props As Integer = AscW(B(AscW(Y(AscW(X(AscW(offset)>>5)) Or ((AscW(offset)>>1) And &HF))) Or (AscW(offset) And &H1)))
 			Return props
 		End Function
 
-		Friend Overrides Function [getType](ByVal ch As Integer) As Integer
+		Friend Overrides Function [getType](  ch As Integer) As Integer
 			Dim props As Integer = getProperties(ch)
 			Return (props And &H1F)
 		End Function
 
-		Friend Overrides Function isOtherLowercase(ByVal ch As Integer) As Boolean
+		Friend Overrides Function isOtherLowercase(  ch As Integer) As Boolean
 			Dim props As Integer = getPropertiesEx(ch)
 			Return (props And &H1) <> 0
 		End Function
 
-		Friend Overrides Function isOtherUppercase(ByVal ch As Integer) As Boolean
+		Friend Overrides Function isOtherUppercase(  ch As Integer) As Boolean
 			Dim props As Integer = getPropertiesEx(ch)
 			Return (props And &H2) <> 0
 		End Function
 
-		Friend Overrides Function isOtherAlphabetic(ByVal ch As Integer) As Boolean
+		Friend Overrides Function isOtherAlphabetic(  ch As Integer) As Boolean
 			Dim props As Integer = getPropertiesEx(ch)
 			Return (props And &H4) <> 0
 		End Function
 
-		Friend Overrides Function isIdeographic(ByVal ch As Integer) As Boolean
+		Friend Overrides Function isIdeographic(  ch As Integer) As Boolean
 			Dim props As Integer = getPropertiesEx(ch)
 			Return (props And &H10) <> 0
 		End Function
 
-		Friend Overrides Function isJavaIdentifierStart(ByVal ch As Integer) As Boolean
+		Friend Overrides Function isJavaIdentifierStart(  ch As Integer) As Boolean
 			Dim props As Integer = getProperties(ch)
 			Return ((props And &H7000) >= &H5000)
 		End Function
 
-		Friend Overrides Function isJavaIdentifierPart(ByVal ch As Integer) As Boolean
+		Friend Overrides Function isJavaIdentifierPart(  ch As Integer) As Boolean
 			Dim props As Integer = getProperties(ch)
 			Return ((props And &H3000) <> 0)
 		End Function
 
-		Friend Overrides Function isUnicodeIdentifierStart(ByVal ch As Integer) As Boolean
+		Friend Overrides Function isUnicodeIdentifierStart(  ch As Integer) As Boolean
 			Dim props As Integer = getProperties(ch)
 			Return ((props And &H7000) = &H7000)
 		End Function
 
-		Friend Overrides Function isUnicodeIdentifierPart(ByVal ch As Integer) As Boolean
+		Friend Overrides Function isUnicodeIdentifierPart(  ch As Integer) As Boolean
 			Dim props As Integer = getProperties(ch)
 			Return ((props And &H1000) <> 0)
 		End Function
 
-		Friend Overrides Function isIdentifierIgnorable(ByVal ch As Integer) As Boolean
+		Friend Overrides Function isIdentifierIgnorable(  ch As Integer) As Boolean
 			Dim props As Integer = getProperties(ch)
 			Return ((props And &H7000) = &H1000)
 		End Function
 
-		Friend Overrides Function toLowerCase(ByVal ch As Integer) As Integer
+		Friend Overrides Function toLowerCase(  ch As Integer) As Integer
 			Dim mapChar As Integer = ch
 			Dim val As Integer = getProperties(ch)
 
@@ -327,7 +327,7 @@ Namespace java.lang
 			Return mapChar
 		End Function
 
-		Friend Overrides Function toUpperCase(ByVal ch As Integer) As Integer
+		Friend Overrides Function toUpperCase(  ch As Integer) As Integer
 			Dim mapChar As Integer = ch
 			Dim val As Integer = getProperties(ch)
 
@@ -519,7 +519,7 @@ Namespace java.lang
 			Return mapChar
 		End Function
 
-		Friend Overrides Function toTitleCase(ByVal ch As Integer) As Integer
+		Friend Overrides Function toTitleCase(  ch As Integer) As Integer
 			Dim mapChar As Integer = ch
 			Dim val As Integer = getProperties(ch)
 
@@ -547,7 +547,7 @@ Namespace java.lang
 			Return mapChar
 		End Function
 
-		Friend Overrides Function digit(ByVal ch As Integer, ByVal radix As Integer) As Integer
+		Friend Overrides Function digit(  ch As Integer,   radix As Integer) As Integer
 			Dim value As Integer = -1
 			If radix >= Character.MIN_RADIX AndAlso radix <= Character.MAX_RADIX Then
 				Dim val As Integer = getProperties(ch)
@@ -562,7 +562,7 @@ Namespace java.lang
 			Return If(value < radix, value, -1)
 		End Function
 
-		Friend Overrides Function getNumericValue(ByVal ch As Integer) As Integer
+		Friend Overrides Function getNumericValue(  ch As Integer) As Integer
 			Dim val As Integer = getProperties(ch)
 			Dim retval As Integer = -1
 
@@ -690,12 +690,12 @@ Namespace java.lang
 			Return retval
 		End Function
 
-		Friend Overrides Function isWhitespace(ByVal ch As Integer) As Boolean
+		Friend Overrides Function isWhitespace(  ch As Integer) As Boolean
 			Dim props As Integer = getProperties(ch)
 			Return ((props And &H7000) = &H4000)
 		End Function
 
-		Friend Overrides Function getDirectionality(ByVal ch As Integer) As SByte
+		Friend Overrides Function getDirectionality(  ch As Integer) As SByte
 			Dim val As Integer = getProperties(ch)
 			Dim directionality_Renamed As SByte = CByte((val And &H78000000) >> 27)
 			If directionality_Renamed = &HF Then
@@ -722,12 +722,12 @@ Namespace java.lang
 			Return directionality_Renamed
 		End Function
 
-		Friend Overrides Function isMirrored(ByVal ch As Integer) As Boolean
+		Friend Overrides Function isMirrored(  ch As Integer) As Boolean
 			Dim props As Integer = getProperties(ch)
 			Return ((props And &H80000000L) <> 0)
 		End Function
 
-		Friend Overrides Function toUpperCaseEx(ByVal ch As Integer) As Integer
+		Friend Overrides Function toUpperCaseEx(  ch As Integer) As Integer
 			Dim mapChar As Integer = ch
 			Dim val As Integer = getProperties(ch)
 
@@ -861,7 +861,7 @@ Namespace java.lang
 			Return mapChar
 		End Function
 
-		Friend Overrides Function toUpperCaseCharArray(ByVal ch As Integer) As Char()
+		Friend Overrides Function toUpperCaseCharArray(  ch As Integer) As Char()
 			Dim upperMap As Char() = {ChrW(ch)}
 			Dim location As Integer = findInCharMap(ch)
 			If location <> -1 Then upperMap = charMap(location)(1)
@@ -875,7 +875,7 @@ Namespace java.lang
 		''' <param name="ch"> the <code>char</code> to search </param>
 		''' <returns> the index location ch in the table or -1 if not found
 		''' @since 1.4 </returns>
-		 Friend Overridable Function findInCharMap(ByVal ch As Integer) As Integer
+		 Friend Overridable Function findInCharMap(  ch As Integer) As Integer
 			If charMap Is Nothing OrElse charMap.Length = 0 Then Return -1
 			Dim top, bottom, current As Integer
 			bottom = 0

@@ -91,7 +91,7 @@ Namespace java.util
 			Inherits java.util.concurrent.CountedCompleter(Of Void)
 
 			Friend Const serialVersionUID As Long = 2446542900576103244L
-			Friend Sub New(Of T1)(ByVal p As java.util.concurrent.CountedCompleter(Of T1))
+			Friend Sub New(Of T1)(  p As java.util.concurrent.CountedCompleter(Of T1))
 				MyBase.New(p)
 			End Sub
 			Public Sub compute()
@@ -107,13 +107,13 @@ Namespace java.util
 			Friend Const serialVersionUID As Long = 2446542900576103244L
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 			Friend ReadOnly task As java.util.concurrent.CountedCompleter(Of ?)
-			Friend Sub New(Of T1)(ByVal task As java.util.concurrent.CountedCompleter(Of T1))
+			Friend Sub New(Of T1)(  task As java.util.concurrent.CountedCompleter(Of T1))
 				MyBase.New(Nothing, 1)
 				Me.task = task
 			End Sub
 			Public Sub compute()
 			End Sub
-			Public Sub onCompletion(Of T1)(ByVal t As java.util.concurrent.CountedCompleter(Of T1))
+			Public Sub onCompletion(Of T1)(  t As java.util.concurrent.CountedCompleter(Of T1))
 				task.compute()
 			End Sub
 		End Class
@@ -131,7 +131,7 @@ Namespace java.util
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 				Friend comparator As Comparator(Of ?)
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-				Friend Sub New(Of T1, T2)(ByVal par As java.util.concurrent.CountedCompleter(Of T1), ByVal a As T(), ByVal w As T(), ByVal base As Integer, ByVal size As Integer, ByVal wbase As Integer, ByVal gran As Integer, ByVal comparator As Comparator(Of T2))
+				Friend Sub New(Of T1, T2)(  par As java.util.concurrent.CountedCompleter(Of T1),   a As T(),   w As T(),   base As Integer,   size As Integer,   wbase As Integer,   gran As Integer,   comparator As Comparator(Of T2))
 					MyBase.New(par)
 					Me.a = a
 					Me.w = w
@@ -175,7 +175,7 @@ Namespace java.util
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 				Friend comparator As Comparator(Of ?)
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-				Friend Sub New(Of T1, T2)(ByVal par As java.util.concurrent.CountedCompleter(Of T1), ByVal a As T(), ByVal w As T(), ByVal lbase As Integer, ByVal lsize As Integer, ByVal rbase As Integer, ByVal rsize As Integer, ByVal wbase As Integer, ByVal gran As Integer, ByVal comparator As Comparator(Of T2))
+				Friend Sub New(Of T1, T2)(  par As java.util.concurrent.CountedCompleter(Of T1),   a As T(),   w As T(),   lbase As Integer,   lsize As Integer,   rbase As Integer,   rsize As Integer,   wbase As Integer,   gran As Integer,   comparator As Comparator(Of T2))
 					MyBase.New(par)
 					Me.a = a
 					Me.w = w
@@ -270,7 +270,7 @@ Namespace java.util
 				Friend Const serialVersionUID As Long = 2446542900576103244L
 				Friend ReadOnly a, w As SByte()
 				Friend ReadOnly base, size, wbase, gran As Integer
-				Friend Sub New(Of T1)(ByVal par As java.util.concurrent.CountedCompleter(Of T1), ByVal a As SByte(), ByVal w As SByte(), ByVal base As Integer, ByVal size As Integer, ByVal wbase As Integer, ByVal gran As Integer)
+				Friend Sub New(Of T1)(  par As java.util.concurrent.CountedCompleter(Of T1),   a As SByte(),   w As SByte(),   base As Integer,   size As Integer,   wbase As Integer,   gran As Integer)
 					MyBase.New(par)
 					Me.a = a
 					Me.w = w
@@ -306,7 +306,7 @@ Namespace java.util
 				Friend Const serialVersionUID As Long = 2446542900576103244L
 				Friend ReadOnly a, w As SByte() ' main and workspace arrays
 				Friend ReadOnly lbase, lsize, rbase, rsize, wbase, gran As Integer
-				Friend Sub New(Of T1)(ByVal par As java.util.concurrent.CountedCompleter(Of T1), ByVal a As SByte(), ByVal w As SByte(), ByVal lbase As Integer, ByVal lsize As Integer, ByVal rbase As Integer, ByVal rsize As Integer, ByVal wbase As Integer, ByVal gran As Integer)
+				Friend Sub New(Of T1)(  par As java.util.concurrent.CountedCompleter(Of T1),   a As SByte(),   w As SByte(),   lbase As Integer,   lsize As Integer,   rbase As Integer,   rsize As Integer,   wbase As Integer,   gran As Integer)
 					MyBase.New(par)
 					Me.a = a
 					Me.w = w
@@ -395,7 +395,7 @@ Namespace java.util
 				Friend Const serialVersionUID As Long = 2446542900576103244L
 				Friend ReadOnly a, w As Char()
 				Friend ReadOnly base, size, wbase, gran As Integer
-				Friend Sub New(Of T1)(ByVal par As java.util.concurrent.CountedCompleter(Of T1), ByVal a As Char(), ByVal w As Char(), ByVal base As Integer, ByVal size As Integer, ByVal wbase As Integer, ByVal gran As Integer)
+				Friend Sub New(Of T1)(  par As java.util.concurrent.CountedCompleter(Of T1),   a As Char(),   w As Char(),   base As Integer,   size As Integer,   wbase As Integer,   gran As Integer)
 					MyBase.New(par)
 					Me.a = a
 					Me.w = w
@@ -431,7 +431,7 @@ Namespace java.util
 				Friend Const serialVersionUID As Long = 2446542900576103244L
 				Friend ReadOnly a, w As Char() ' main and workspace arrays
 				Friend ReadOnly lbase, lsize, rbase, rsize, wbase, gran As Integer
-				Friend Sub New(Of T1)(ByVal par As java.util.concurrent.CountedCompleter(Of T1), ByVal a As Char(), ByVal w As Char(), ByVal lbase As Integer, ByVal lsize As Integer, ByVal rbase As Integer, ByVal rsize As Integer, ByVal wbase As Integer, ByVal gran As Integer)
+				Friend Sub New(Of T1)(  par As java.util.concurrent.CountedCompleter(Of T1),   a As Char(),   w As Char(),   lbase As Integer,   lsize As Integer,   rbase As Integer,   rsize As Integer,   wbase As Integer,   gran As Integer)
 					MyBase.New(par)
 					Me.a = a
 					Me.w = w
@@ -520,7 +520,7 @@ Namespace java.util
 				Friend Const serialVersionUID As Long = 2446542900576103244L
 				Friend ReadOnly a, w As Short()
 				Friend ReadOnly base, size, wbase, gran As Integer
-				Friend Sub New(Of T1)(ByVal par As java.util.concurrent.CountedCompleter(Of T1), ByVal a As Short(), ByVal w As Short(), ByVal base As Integer, ByVal size As Integer, ByVal wbase As Integer, ByVal gran As Integer)
+				Friend Sub New(Of T1)(  par As java.util.concurrent.CountedCompleter(Of T1),   a As Short(),   w As Short(),   base As Integer,   size As Integer,   wbase As Integer,   gran As Integer)
 					MyBase.New(par)
 					Me.a = a
 					Me.w = w
@@ -556,7 +556,7 @@ Namespace java.util
 				Friend Const serialVersionUID As Long = 2446542900576103244L
 				Friend ReadOnly a, w As Short() ' main and workspace arrays
 				Friend ReadOnly lbase, lsize, rbase, rsize, wbase, gran As Integer
-				Friend Sub New(Of T1)(ByVal par As java.util.concurrent.CountedCompleter(Of T1), ByVal a As Short(), ByVal w As Short(), ByVal lbase As Integer, ByVal lsize As Integer, ByVal rbase As Integer, ByVal rsize As Integer, ByVal wbase As Integer, ByVal gran As Integer)
+				Friend Sub New(Of T1)(  par As java.util.concurrent.CountedCompleter(Of T1),   a As Short(),   w As Short(),   lbase As Integer,   lsize As Integer,   rbase As Integer,   rsize As Integer,   wbase As Integer,   gran As Integer)
 					MyBase.New(par)
 					Me.a = a
 					Me.w = w
@@ -645,7 +645,7 @@ Namespace java.util
 				Friend Const serialVersionUID As Long = 2446542900576103244L
 				Friend ReadOnly a, w As Integer()
 				Friend ReadOnly base, size, wbase, gran As Integer
-				Friend Sub New(Of T1)(ByVal par As java.util.concurrent.CountedCompleter(Of T1), ByVal a As Integer(), ByVal w As Integer(), ByVal base As Integer, ByVal size As Integer, ByVal wbase As Integer, ByVal gran As Integer)
+				Friend Sub New(Of T1)(  par As java.util.concurrent.CountedCompleter(Of T1),   a As Integer(),   w As Integer(),   base As Integer,   size As Integer,   wbase As Integer,   gran As Integer)
 					MyBase.New(par)
 					Me.a = a
 					Me.w = w
@@ -681,7 +681,7 @@ Namespace java.util
 				Friend Const serialVersionUID As Long = 2446542900576103244L
 				Friend ReadOnly a, w As Integer() ' main and workspace arrays
 				Friend ReadOnly lbase, lsize, rbase, rsize, wbase, gran As Integer
-				Friend Sub New(Of T1)(ByVal par As java.util.concurrent.CountedCompleter(Of T1), ByVal a As Integer(), ByVal w As Integer(), ByVal lbase As Integer, ByVal lsize As Integer, ByVal rbase As Integer, ByVal rsize As Integer, ByVal wbase As Integer, ByVal gran As Integer)
+				Friend Sub New(Of T1)(  par As java.util.concurrent.CountedCompleter(Of T1),   a As Integer(),   w As Integer(),   lbase As Integer,   lsize As Integer,   rbase As Integer,   rsize As Integer,   wbase As Integer,   gran As Integer)
 					MyBase.New(par)
 					Me.a = a
 					Me.w = w
@@ -770,7 +770,7 @@ Namespace java.util
 				Friend Const serialVersionUID As Long = 2446542900576103244L
 				Friend ReadOnly a, w As Long()
 				Friend ReadOnly base, size, wbase, gran As Integer
-				Friend Sub New(Of T1)(ByVal par As java.util.concurrent.CountedCompleter(Of T1), ByVal a As Long(), ByVal w As Long(), ByVal base As Integer, ByVal size As Integer, ByVal wbase As Integer, ByVal gran As Integer)
+				Friend Sub New(Of T1)(  par As java.util.concurrent.CountedCompleter(Of T1),   a As Long(),   w As Long(),   base As Integer,   size As Integer,   wbase As Integer,   gran As Integer)
 					MyBase.New(par)
 					Me.a = a
 					Me.w = w
@@ -806,7 +806,7 @@ Namespace java.util
 				Friend Const serialVersionUID As Long = 2446542900576103244L
 				Friend ReadOnly a, w As Long() ' main and workspace arrays
 				Friend ReadOnly lbase, lsize, rbase, rsize, wbase, gran As Integer
-				Friend Sub New(Of T1)(ByVal par As java.util.concurrent.CountedCompleter(Of T1), ByVal a As Long(), ByVal w As Long(), ByVal lbase As Integer, ByVal lsize As Integer, ByVal rbase As Integer, ByVal rsize As Integer, ByVal wbase As Integer, ByVal gran As Integer)
+				Friend Sub New(Of T1)(  par As java.util.concurrent.CountedCompleter(Of T1),   a As Long(),   w As Long(),   lbase As Integer,   lsize As Integer,   rbase As Integer,   rsize As Integer,   wbase As Integer,   gran As Integer)
 					MyBase.New(par)
 					Me.a = a
 					Me.w = w
@@ -895,7 +895,7 @@ Namespace java.util
 				Friend Const serialVersionUID As Long = 2446542900576103244L
 				Friend ReadOnly a, w As Single()
 				Friend ReadOnly base, size, wbase, gran As Integer
-				Friend Sub New(Of T1)(ByVal par As java.util.concurrent.CountedCompleter(Of T1), ByVal a As Single(), ByVal w As Single(), ByVal base As Integer, ByVal size As Integer, ByVal wbase As Integer, ByVal gran As Integer)
+				Friend Sub New(Of T1)(  par As java.util.concurrent.CountedCompleter(Of T1),   a As Single(),   w As Single(),   base As Integer,   size As Integer,   wbase As Integer,   gran As Integer)
 					MyBase.New(par)
 					Me.a = a
 					Me.w = w
@@ -931,7 +931,7 @@ Namespace java.util
 				Friend Const serialVersionUID As Long = 2446542900576103244L
 				Friend ReadOnly a, w As Single() ' main and workspace arrays
 				Friend ReadOnly lbase, lsize, rbase, rsize, wbase, gran As Integer
-				Friend Sub New(Of T1)(ByVal par As java.util.concurrent.CountedCompleter(Of T1), ByVal a As Single(), ByVal w As Single(), ByVal lbase As Integer, ByVal lsize As Integer, ByVal rbase As Integer, ByVal rsize As Integer, ByVal wbase As Integer, ByVal gran As Integer)
+				Friend Sub New(Of T1)(  par As java.util.concurrent.CountedCompleter(Of T1),   a As Single(),   w As Single(),   lbase As Integer,   lsize As Integer,   rbase As Integer,   rsize As Integer,   wbase As Integer,   gran As Integer)
 					MyBase.New(par)
 					Me.a = a
 					Me.w = w
@@ -1020,7 +1020,7 @@ Namespace java.util
 				Friend Const serialVersionUID As Long = 2446542900576103244L
 				Friend ReadOnly a, w As Double()
 				Friend ReadOnly base, size, wbase, gran As Integer
-				Friend Sub New(Of T1)(ByVal par As java.util.concurrent.CountedCompleter(Of T1), ByVal a As Double(), ByVal w As Double(), ByVal base As Integer, ByVal size As Integer, ByVal wbase As Integer, ByVal gran As Integer)
+				Friend Sub New(Of T1)(  par As java.util.concurrent.CountedCompleter(Of T1),   a As Double(),   w As Double(),   base As Integer,   size As Integer,   wbase As Integer,   gran As Integer)
 					MyBase.New(par)
 					Me.a = a
 					Me.w = w
@@ -1056,7 +1056,7 @@ Namespace java.util
 				Friend Const serialVersionUID As Long = 2446542900576103244L
 				Friend ReadOnly a, w As Double() ' main and workspace arrays
 				Friend ReadOnly lbase, lsize, rbase, rsize, wbase, gran As Integer
-				Friend Sub New(Of T1)(ByVal par As java.util.concurrent.CountedCompleter(Of T1), ByVal a As Double(), ByVal w As Double(), ByVal lbase As Integer, ByVal lsize As Integer, ByVal rbase As Integer, ByVal rsize As Integer, ByVal wbase As Integer, ByVal gran As Integer)
+				Friend Sub New(Of T1)(  par As java.util.concurrent.CountedCompleter(Of T1),   a As Double(),   w As Double(),   lbase As Integer,   lsize As Integer,   rbase As Integer,   rsize As Integer,   wbase As Integer,   gran As Integer)
 					MyBase.New(par)
 					Me.a = a
 					Me.w = w

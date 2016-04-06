@@ -298,7 +298,7 @@ Namespace java.awt.Icolor
         ''' and the number of components. </summary>
         ''' <param name="type"> one of the <CODE>ColorSpace</CODE> type constants </param>
         ''' <param name="numcomponents"> the number of components in the color space </param>
-        Protected Friend Sub New(ByVal type As Integer, ByVal numcomponents As Integer)
+        Protected Friend Sub New(  type As Integer,   numcomponents As Integer)
             Me.type = type
             Me.numComponents = numcomponents
         End Sub
@@ -313,7 +313,7 @@ Namespace java.awt.Icolor
         ''' <returns> the requested <CODE>ColorSpace</CODE> object </returns>
         ' NOTE: This method may be called by privileged threads.
         '       DO NOT INVOKE CLIENT CODE ON THIS THREAD!
-        Public Shared Function getInstance(ByVal colorspace As Integer) As ColorSpace
+        Public Shared Function getInstance(  colorspace As Integer) As ColorSpace
             Dim theColorSpace As ColorSpace
 
             Select Case colorspace
@@ -413,7 +413,7 @@ Namespace java.awt.Icolor
         ''' <returns> a float array of length 3 </returns>
         ''' <exception cref="ArrayIndexOutOfBoundsException"> if array length is not
         '''         at least the number of components in this ColorSpace </exception>
-        Public MustOverride Function toRGB(ByVal colorvalue As Single()) As Single()
+        Public MustOverride Function toRGB(  colorvalue As Single()) As Single()
 
 
         ''' <summary>
@@ -436,7 +436,7 @@ Namespace java.awt.Icolor
         '''         components in this ColorSpace </returns>
         ''' <exception cref="ArrayIndexOutOfBoundsException"> if array length is not
         '''         at least 3 </exception>
-        Public MustOverride Function fromRGB(ByVal rgbvalue As Single()) As Single()
+        Public MustOverride Function fromRGB(  rgbvalue As Single()) As Single()
 
 
         ''' <summary>
@@ -462,7 +462,7 @@ Namespace java.awt.Icolor
         ''' <returns> a float array of length 3 </returns>
         ''' <exception cref="ArrayIndexOutOfBoundsException"> if array length is not
         '''         at least the number of components in this ColorSpace. </exception>
-        Public MustOverride Function toCIEXYZ(ByVal colorvalue As Single()) As Single()
+        Public MustOverride Function toCIEXYZ(  colorvalue As Single()) As Single()
 
 
         ''' <summary>
@@ -489,7 +489,7 @@ Namespace java.awt.Icolor
         '''         components in this ColorSpace </returns>
         ''' <exception cref="ArrayIndexOutOfBoundsException"> if array length is not
         '''         at least 3 </exception>
-        Public MustOverride Function fromCIEXYZ(ByVal colorvalue As Single()) As Single()
+        Public MustOverride Function fromCIEXYZ(  colorvalue As Single()) As Single()
 
         ''' <summary>
         ''' Returns the color space type of this ColorSpace (for example
@@ -516,7 +516,7 @@ Namespace java.awt.Icolor
         ''' <returns> the name of the component at the specified index </returns>
         ''' <exception cref="IllegalArgumentException"> if <code>idx</code> is
         '''         less than 0 or greater than numComponents - 1 </exception>
-        Public Overridable Function getName(ByVal idx As Integer) As String
+        Public Overridable Function getName(  idx As Integer) As String
             ' REMIND - handle common cases here 
             If (idx < 0) OrElse (idx > numComponents - 1) Then Throw New IllegalArgumentException("Component index out of range: " & idx)
 
@@ -566,7 +566,7 @@ Namespace java.awt.Icolor
         ''' <exception cref="IllegalArgumentException"> if component is less than 0 or
         '''         greater than numComponents - 1
         ''' @since 1.4 </exception>
-        Public Overridable Function getMinValue(ByVal component_Renamed As Integer) As Single
+        Public Overridable Function getMinValue(  component_Renamed As Integer) As Single
             If (component_Renamed < 0) OrElse (component_Renamed > numComponents - 1) Then Throw New IllegalArgumentException("Component index out of range: " & component_Renamed)
             Return 0.0F
         End Function
@@ -582,14 +582,14 @@ Namespace java.awt.Icolor
         ''' <exception cref="IllegalArgumentException"> if component is less than 0 or
         '''         greater than numComponents - 1
         ''' @since 1.4 </exception>
-        Public Overridable Function getMaxValue(ByVal component_Renamed As Integer) As Single
+        Public Overridable Function getMaxValue(  component_Renamed As Integer) As Single
             If (component_Renamed < 0) OrElse (component_Renamed > numComponents - 1) Then Throw New IllegalArgumentException("Component index out of range: " & component_Renamed)
             Return 1.0F
         End Function
 
         '     Returns true if cspace is the XYZspace.
         '     
-        Shared Function isCS_CIEXYZ(ByVal cspace As ColorSpace) As Boolean
+        Shared Function isCS_CIEXYZ(  cspace As ColorSpace) As Boolean
             Return (cspace Is XYZspace)
         End Function
     End Class

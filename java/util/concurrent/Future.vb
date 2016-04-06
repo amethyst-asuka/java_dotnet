@@ -114,7 +114,7 @@ Namespace java.util.concurrent
 		''' <returns> {@code false} if the task could not be cancelled,
 		''' typically because it has already completed normally;
 		''' {@code true} otherwise </returns>
-		Function cancel(ByVal mayInterruptIfRunning As Boolean) As Boolean
+		Function cancel(  mayInterruptIfRunning As Boolean) As Boolean
 
 		''' <summary>
 		''' Returns {@code true} if this task was cancelled before it completed
@@ -158,7 +158,7 @@ Namespace java.util.concurrent
 		''' <exception cref="InterruptedException"> if the current thread was interrupted
 		''' while waiting </exception>
 		''' <exception cref="TimeoutException"> if the wait timed out </exception>
-		Function [get](ByVal timeout As Long, ByVal unit As TimeUnit) As V
+		Function [get](  timeout As Long,   unit As TimeUnit) As V
 	End Interface
 
 End Namespace

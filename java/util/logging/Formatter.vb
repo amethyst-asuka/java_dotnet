@@ -61,7 +61,7 @@ Namespace java.util.logging
 		''' </summary>
 		''' <param name="record"> the log record to be formatted. </param>
 		''' <returns> the formatted log record </returns>
-		Public MustOverride Function format(ByVal record As LogRecord) As String
+		Public MustOverride Function format(  record As LogRecord) As String
 
 
 		''' <summary>
@@ -72,7 +72,7 @@ Namespace java.util.logging
 		''' </summary>
 		''' <param name="h">  The target handler (can be null) </param>
 		''' <returns>  header string </returns>
-		Public Overridable Function getHead(ByVal h As Handler) As String
+		Public Overridable Function getHead(  h As Handler) As String
 			Return ""
 		End Function
 
@@ -84,7 +84,7 @@ Namespace java.util.logging
 		''' </summary>
 		''' <param name="h">  The target handler (can be null) </param>
 		''' <returns>  tail string </returns>
-		Public Overridable Function getTail(ByVal h As Handler) As String
+		Public Overridable Function getTail(  h As Handler) As String
 			Return ""
 		End Function
 
@@ -110,7 +110,7 @@ Namespace java.util.logging
 		''' <param name="record">  the log record containing the raw message </param>
 		''' <returns>   a localized and formatted message </returns>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Function formatMessage(ByVal record As LogRecord) As String
+		Public Overridable Function formatMessage(  record As LogRecord) As String
 			Dim format As String = record.message
 			Dim catalog As java.util.ResourceBundle = record.resourceBundle
 			If catalog IsNot Nothing Then

@@ -154,7 +154,7 @@ Namespace java.text
 		''' <returns>       Formatted string. </returns>
 		''' <exception cref="IllegalArgumentException"> if the Format cannot format the given
 		'''            object </exception>
-		Public Function format(ByVal obj As Object) As String
+		Public Function format(  obj As Object) As String
 			Return format(obj, New StringBuffer, New FieldPosition(0)).ToString()
 		End Function
 
@@ -175,7 +175,7 @@ Namespace java.text
 		'''            <code>pos</code> is null </exception>
 		''' <exception cref="IllegalArgumentException"> if the Format cannot format the given
 		'''            object </exception>
-		Public MustOverride Function format(ByVal obj As Object, ByVal toAppendTo As StringBuffer, ByVal pos As FieldPosition) As StringBuffer
+		Public MustOverride Function format(  obj As Object,   toAppendTo As StringBuffer,   pos As FieldPosition) As StringBuffer
 
 		''' <summary>
 		''' Formats an Object producing an <code>AttributedCharacterIterator</code>.
@@ -199,7 +199,7 @@ Namespace java.text
 		''' <param name="obj"> The object to format </param>
 		''' <returns> AttributedCharacterIterator describing the formatted value.
 		''' @since 1.4 </returns>
-		Public Overridable Function formatToCharacterIterator(ByVal obj As Object) As AttributedCharacterIterator
+		Public Overridable Function formatToCharacterIterator(  obj As Object) As AttributedCharacterIterator
 			Return createAttributedCharacterIterator(format(obj))
 		End Function
 
@@ -223,7 +223,7 @@ Namespace java.text
 		''' <returns> An <code>Object</code> parsed from the string. In case of
 		'''         error, returns null. </returns>
 		''' <exception cref="NullPointerException"> if <code>pos</code> is null. </exception>
-		Public MustOverride Function parseObject(ByVal source As String, ByVal pos As ParsePosition) As Object
+		Public MustOverride Function parseObject(  source As String,   pos As ParsePosition) As Object
 
 		''' <summary>
 		''' Parses text from the beginning of the given string to produce an object.
@@ -233,7 +233,7 @@ Namespace java.text
 		''' <returns> An <code>Object</code> parsed from the string. </returns>
 		''' <exception cref="ParseException"> if the beginning of the specified string
 		'''            cannot be parsed. </exception>
-		Public Overridable Function parseObject(ByVal source As String) As Object
+		Public Overridable Function parseObject(  source As String) As Object
 			Dim pos As New ParsePosition(0)
 			Dim result As Object = parseObject(source, pos)
 			If pos.index = 0 Then Throw New ParseException("Format.parseObject(String) failed", pos.errorIndex)
@@ -264,7 +264,7 @@ Namespace java.text
 		''' </summary>
 		''' <param name="s"> String to create AttributedCharacterIterator from </param>
 		''' <returns> AttributedCharacterIterator wrapping s </returns>
-		Friend Overridable Function createAttributedCharacterIterator(ByVal s As String) As AttributedCharacterIterator
+		Friend Overridable Function createAttributedCharacterIterator(  s As String) As AttributedCharacterIterator
 			Dim [as] As New AttributedString(s)
 
 			Return [as].iterator
@@ -279,7 +279,7 @@ Namespace java.text
 		'''                  AttributedCharacterIterators </param>
 		''' <returns> AttributedCharacterIterator wrapping passed in
 		'''         AttributedCharacterIterators </returns>
-		Friend Overridable Function createAttributedCharacterIterator(ByVal iterators As AttributedCharacterIterator()) As AttributedCharacterIterator
+		Friend Overridable Function createAttributedCharacterIterator(  iterators As AttributedCharacterIterator()) As AttributedCharacterIterator
 			Dim [as] As New AttributedString(iterators)
 
 			Return [as].iterator
@@ -294,7 +294,7 @@ Namespace java.text
 		''' <param name="key"> Key for AttributedCharacterIterator </param>
 		''' <param name="value"> Value associated with key in AttributedCharacterIterator </param>
 		''' <returns> AttributedCharacterIterator wrapping args </returns>
-		Friend Overridable Function createAttributedCharacterIterator(ByVal [string] As String, ByVal key As AttributedCharacterIterator.Attribute, ByVal value As Object) As AttributedCharacterIterator
+		Friend Overridable Function createAttributedCharacterIterator(  [string] As String,   key As AttributedCharacterIterator.Attribute,   value As Object) As AttributedCharacterIterator
 			Dim [as] As New AttributedString(string_Renamed)
 
 			[as].addAttribute(key, value)
@@ -310,7 +310,7 @@ Namespace java.text
 		''' <param name="key"> Key for AttributedCharacterIterator </param>
 		''' <param name="value"> Value associated with key in AttributedCharacterIterator </param>
 		''' <returns> AttributedCharacterIterator wrapping args </returns>
-		Friend Overridable Function createAttributedCharacterIterator(ByVal [iterator] As AttributedCharacterIterator, ByVal key As AttributedCharacterIterator.Attribute, ByVal value As Object) As AttributedCharacterIterator
+		Friend Overridable Function createAttributedCharacterIterator(  [iterator] As AttributedCharacterIterator,   key As AttributedCharacterIterator.Attribute,   value As Object) As AttributedCharacterIterator
 			Dim [as] As New AttributedString([iterator])
 
 			[as].addAttribute(key, value)
@@ -336,7 +336,7 @@ Namespace java.text
 			''' Creates a Field with the specified name.
 			''' </summary>
 			''' <param name="name"> Name of the attribute </param>
-			Protected Friend Sub New(ByVal name As String)
+			Protected Friend Sub New(  name As String)
 				MyBase.New(name)
 			End Sub
 		End Class
@@ -366,7 +366,7 @@ Namespace java.text
 			''' <param name="end"> End of the field, will be >= start and <= buffer.length() </param>
 			''' <param name="buffer"> Contains current formatted value, receiver should
 			'''        NOT modify it. </param>
-			Sub formatted(ByVal attr As Format.Field, ByVal value As Object, ByVal start As Integer, ByVal [end] As Integer, ByVal buffer As StringBuffer)
+			Sub formatted(  attr As Format.Field,   value As Object,   start As Integer,   [end] As Integer,   buffer As StringBuffer)
 
 			''' <summary>
 			''' Notified when a particular region of the String is formatted.
@@ -378,7 +378,7 @@ Namespace java.text
 			''' <param name="end"> End of the field, will be >= start and <= buffer.length() </param>
 			''' <param name="buffer"> Contains current formatted value, receiver should
 			'''        NOT modify it. </param>
-			Sub formatted(ByVal fieldID As Integer, ByVal attr As Format.Field, ByVal value As Object, ByVal start As Integer, ByVal [end] As Integer, ByVal buffer As StringBuffer)
+			Sub formatted(  fieldID As Integer,   attr As Format.Field,   value As Object,   start As Integer,   [end] As Integer,   buffer As StringBuffer)
 		End Interface
 	End Class
 

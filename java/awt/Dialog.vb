@@ -316,7 +316,7 @@ Namespace java.awt
 		''' <seealso cref= java.awt.GraphicsEnvironment#isHeadless </seealso>
 		''' <seealso cref= Component#setSize </seealso>
 		''' <seealso cref= Component#setVisible </seealso>
-		 Public Sub New(ByVal owner As Frame)
+		 Public Sub New(  owner As Frame)
 			 Me.New(owner, "", False)
 		 End Sub
 
@@ -341,7 +341,7 @@ Namespace java.awt
 		''' <seealso cref= java.awt.Dialog#setModal </seealso>
 		''' <seealso cref= java.awt.Dialog#setModalityType </seealso>
 		''' <seealso cref= java.awt.GraphicsEnvironment#isHeadless </seealso>
-		 Public Sub New(ByVal owner As Frame, ByVal modal As Boolean)
+		 Public Sub New(  owner As Frame,   modal As Boolean)
 			 Me.New(owner, "", modal)
 		 End Sub
 
@@ -361,7 +361,7 @@ Namespace java.awt
 		''' <seealso cref= java.awt.GraphicsEnvironment#isHeadless </seealso>
 		''' <seealso cref= Component#setSize </seealso>
 		''' <seealso cref= Component#setVisible </seealso>
-		 Public Sub New(ByVal owner As Frame, ByVal title As String)
+		 Public Sub New(  owner As Frame,   title As String)
 			 Me.New(owner, title, False)
 		 End Sub
 
@@ -390,7 +390,7 @@ Namespace java.awt
 		''' <seealso cref= java.awt.GraphicsEnvironment#isHeadless </seealso>
 		''' <seealso cref= Component#setSize </seealso>
 		''' <seealso cref= Component#setVisible </seealso>
-		 Public Sub New(ByVal owner As Frame, ByVal title As String, ByVal modal As Boolean)
+		 Public Sub New(  owner As Frame,   title As String,   modal As Boolean)
 			 Me.New(owner, title,If(modal, DEFAULT_MODALITY_TYPE, ModalityType.MODELESS))
 		 End Sub
 
@@ -422,7 +422,7 @@ Namespace java.awt
 		''' <seealso cref= Component#setSize </seealso>
 		''' <seealso cref= Component#setVisible
 		''' @since 1.4 </seealso>
-		 Public Sub New(ByVal owner As Frame, ByVal title As String, ByVal modal As Boolean, ByVal gc As GraphicsConfiguration)
+		 Public Sub New(  owner As Frame,   title As String,   modal As Boolean,   gc As GraphicsConfiguration)
 			 Me.New(owner, title,If(modal, DEFAULT_MODALITY_TYPE, ModalityType.MODELESS), gc)
 		 End Sub
 
@@ -438,7 +438,7 @@ Namespace java.awt
 		'''     <code>GraphicsEnvironment.isHeadless()</code> returns <code>true</code> </exception>
 		''' <seealso cref= java.awt.GraphicsEnvironment#isHeadless
 		''' @since 1.2 </seealso>
-		 Public Sub New(ByVal owner As Dialog)
+		 Public Sub New(  owner As Dialog)
 			 Me.New(owner, "", False)
 		 End Sub
 
@@ -457,7 +457,7 @@ Namespace java.awt
 		''' </exception>
 		''' <seealso cref= java.awt.GraphicsEnvironment#isHeadless
 		''' @since 1.2 </seealso>
-		 Public Sub New(ByVal owner As Dialog, ByVal title As String)
+		 Public Sub New(  owner As Dialog,   title As String)
 			 Me.New(owner, title, False)
 		 End Sub
 
@@ -486,7 +486,7 @@ Namespace java.awt
 		''' <seealso cref= java.awt.GraphicsEnvironment#isHeadless
 		''' 
 		''' @since 1.2 </seealso>
-		 Public Sub New(ByVal owner As Dialog, ByVal title As String, ByVal modal As Boolean)
+		 Public Sub New(  owner As Dialog,   title As String,   modal As Boolean)
 			 Me.New(owner, title,If(modal, DEFAULT_MODALITY_TYPE, ModalityType.MODELESS))
 		 End Sub
 
@@ -521,7 +521,7 @@ Namespace java.awt
 		''' <seealso cref= Component#setVisible
 		''' 
 		''' @since 1.4 </seealso>
-		 Public Sub New(ByVal owner As Dialog, ByVal title As String, ByVal modal As Boolean, ByVal gc As GraphicsConfiguration)
+		 Public Sub New(  owner As Dialog,   title As String,   modal As Boolean,   gc As GraphicsConfiguration)
 			 Me.New(owner, title,If(modal, DEFAULT_MODALITY_TYPE, ModalityType.MODELESS), gc)
 		 End Sub
 
@@ -544,7 +544,7 @@ Namespace java.awt
 		''' <seealso cref= java.awt.GraphicsEnvironment#isHeadless
 		''' 
 		''' @since 1.6 </seealso>
-		Public Sub New(ByVal owner As Window)
+		Public Sub New(  owner As Window)
 			Me.New(owner, "", ModalityType.MODELESS)
 		End Sub
 
@@ -569,7 +569,7 @@ Namespace java.awt
 		''' <seealso cref= java.awt.GraphicsEnvironment#isHeadless
 		''' 
 		''' @since 1.6 </seealso>
-		Public Sub New(ByVal owner As Window, ByVal title As String)
+		Public Sub New(  owner As Window,   title As String)
 			Me.New(owner, title, ModalityType.MODELESS)
 		End Sub
 
@@ -601,7 +601,7 @@ Namespace java.awt
 		''' <seealso cref= java.awt.Toolkit#isModalityTypeSupported
 		''' 
 		''' @since 1.6 </seealso>
-		Public Sub New(ByVal owner As Window, ByVal modalityType As ModalityType)
+		Public Sub New(  owner As Window,   modalityType As ModalityType)
 			Me.New(owner, "", modalityType)
 		End Sub
 
@@ -635,7 +635,7 @@ Namespace java.awt
 		''' <seealso cref= java.awt.Toolkit#isModalityTypeSupported
 		''' 
 		''' @since 1.6 </seealso>
-		Public Sub New(ByVal owner As Window, ByVal title As String, ByVal modalityType As ModalityType)
+		Public Sub New(  owner As Window,   title As String,   modalityType As ModalityType)
 			MyBase.New(owner)
 
 			If (owner IsNot Nothing) AndAlso Not(TypeOf owner Is Frame) AndAlso Not(TypeOf owner Is Dialog) Then Throw New IllegalArgumentException("Wrong parent window")
@@ -680,7 +680,7 @@ Namespace java.awt
 		''' <seealso cref= java.awt.Toolkit#isModalityTypeSupported
 		''' 
 		''' @since 1.6 </seealso>
-		Public Sub New(ByVal owner As Window, ByVal title As String, ByVal modalityType As ModalityType, ByVal gc As GraphicsConfiguration)
+		Public Sub New(  owner As Window,   title As String,   modalityType As ModalityType,   gc As GraphicsConfiguration)
 			MyBase.New(owner, gc)
 
 			If (owner IsNot Nothing) AndAlso Not(TypeOf owner Is Frame) AndAlso Not(TypeOf owner Is Dialog) Then Throw New IllegalArgumentException("wrong owner window")
@@ -738,7 +738,7 @@ Namespace java.awt
 			Get
 				Return modal_NoClientCode
 			End Get
-			Set(ByVal modal As Boolean)
+			Set(  modal As Boolean)
 				Me.modal = modal
 				modalityType = If(modal, DEFAULT_MODALITY_TYPE, ModalityType.MODELESS)
 			End Set
@@ -762,7 +762,7 @@ Namespace java.awt
 			Get
 				Return modalityType
 			End Get
-			Set(ByVal type As ModalityType)
+			Set(  type As ModalityType)
 				If type Is Nothing Then type = Dialog.ModalityType.MODELESS
 				If Not Toolkit.defaultToolkit.isModalityTypeSupported(type) Then type = Dialog.ModalityType.MODELESS
 				If modalityType = type Then Return
@@ -785,7 +785,7 @@ Namespace java.awt
 			Get
 				Return title
 			End Get
-			Set(ByVal title As String)
+			Set(  title As String)
 				Dim oldTitle As String = Me.title
     
 				SyncLock Me
@@ -799,7 +799,7 @@ Namespace java.awt
 
 
 		''' <returns> true if we actually showed, false if we just called toFront() </returns>
-		Private Function conditionalShow(ByVal toFocus As Component, ByVal time As java.util.concurrent.atomic.AtomicLong) As Boolean
+		Private Function conditionalShow(  toFocus As Component,   time As java.util.concurrent.atomic.AtomicLong) As Boolean
 			Dim retval As Boolean
 
 			closeSplashScreen()
@@ -893,7 +893,7 @@ Namespace java.awt
 		''' <seealso cref= java.awt.Component#validate </seealso>
 		''' <seealso cref= java.awt.Dialog#isModal </seealso>
 		Public Overrides Property visible As Boolean
-			Set(ByVal b As Boolean)
+			Set(  b As Boolean)
 				MyBase.visible = b
 			End Set
 		End Property
@@ -1114,7 +1114,7 @@ Namespace java.awt
 			Get
 				Return resizable
 			End Get
-			Set(ByVal resizable As Boolean)
+			Set(  resizable As Boolean)
 				Dim testvalid As Boolean = False
     
 				SyncLock Me
@@ -1165,7 +1165,7 @@ Namespace java.awt
 		''' 
 		''' @since 1.4 </seealso>
 		Public Overridable Property undecorated As Boolean
-			Set(ByVal undecorated As Boolean)
+			Set(  undecorated As Boolean)
 				' Make sure we don't run in the middle of peer creation.
 				SyncLock treeLock
 					If displayable Then Throw New IllegalComponentStateException("The dialog is displayable.")
@@ -1188,7 +1188,7 @@ Namespace java.awt
 		''' {@inheritDoc}
 		''' </summary>
 		Public Overrides Property opacity As Single
-			Set(ByVal opacity As Single)
+			Set(  opacity As Single)
 				SyncLock treeLock
 					If (opacity < 1.0f) AndAlso (Not undecorated) Then Throw New IllegalComponentStateException("The dialog is decorated")
 					MyBase.opacity = opacity
@@ -1200,7 +1200,7 @@ Namespace java.awt
 		''' {@inheritDoc}
 		''' </summary>
 		Public Overrides Property shape As Shape
-			Set(ByVal shape As Shape)
+			Set(  shape As Shape)
 				SyncLock treeLock
 					If (shape IsNot Nothing) AndAlso (Not undecorated) Then Throw New IllegalComponentStateException("The dialog is decorated")
 					MyBase.shape = shape
@@ -1212,7 +1212,7 @@ Namespace java.awt
 		''' {@inheritDoc}
 		''' </summary>
 		Public Overrides Property background As Color
-			Set(ByVal bgColor As Color)
+			Set(  bgColor As Color)
 				SyncLock treeLock
 					If (bgColor IsNot Nothing) AndAlso (bgColor.alpha < 255) AndAlso (Not undecorated) Then Throw New IllegalComponentStateException("The dialog is decorated")
 					MyBase.background = bgColor
@@ -1347,7 +1347,7 @@ Namespace java.awt
 	'     *
 	'     * This method should be called on the getTreeLock() lock.
 	'     
-		Friend Overridable Function shouldBlock(ByVal w As Window) As Boolean
+		Friend Overridable Function shouldBlock(  w As Window) As Boolean
 			If (Not visible_NoClientCode) OrElse ((Not w.visible_NoClientCode) AndAlso (Not w.isInShow)) OrElse isInHide OrElse (w Is Me) OrElse (Not modal_NoClientCode) Then Return False
 			If (TypeOf w Is Dialog) AndAlso CType(w, Dialog).isInHide Then Return False
 			' check if w is from children hierarchy
@@ -1392,14 +1392,14 @@ Namespace java.awt
 	'     * If the window is already blocked by some modal dialog,
 	'     * does nothing.
 	'     
-		Friend Overridable Sub blockWindow(ByVal w As Window)
+		Friend Overridable Sub blockWindow(  w As Window)
 			If Not w.modalBlocked Then
 				w.modalBlockedked(Me, True, True)
 				blockedWindows.add(w)
 			End If
 		End Sub
 
-		Friend Overridable Sub blockWindows(ByVal toBlock As IList(Of Window))
+		Friend Overridable Sub blockWindows(  toBlock As IList(Of Window))
 			Dim dpeer As java.awt.peer.DialogPeer = CType(peer, java.awt.peer.DialogPeer)
 			If dpeer Is Nothing Then Return
 			Dim it As IEnumerator(Of Window) = toBlock.GetEnumerator()
@@ -1420,7 +1420,7 @@ Namespace java.awt
 	'     * windows for this dialog and marks it as unblocked. If the
 	'     * window is not modal blocked, does nothing.
 	'     
-		Friend Overridable Sub unblockWindow(ByVal w As Window)
+		Friend Overridable Sub unblockWindow(  w As Window)
 			If w.modalBlocked AndAlso blockedWindows.contains(w) Then
 				blockedWindows.remove(w)
 				w.modalBlockedked(Me, False, True)
@@ -1431,7 +1431,7 @@ Namespace java.awt
 	'     * Checks if any other modal dialog D blocks the given window.
 	'     * If such D exists, mark the window as blocked by D.
 	'     
-		Friend Shared Sub checkShouldBeBlocked(ByVal w As Window)
+		Friend Shared Sub checkShouldBeBlocked(  w As Window)
 			SyncLock w.treeLock
 				For i As Integer = 0 To modalDialogs.size() - 1
 					Dim modalDialog As Dialog = modalDialogs.get(i)
@@ -1443,14 +1443,14 @@ Namespace java.awt
 			End SyncLock
 		End Sub
 
-		Private Sub checkModalityPermission(ByVal mt As ModalityType)
+		Private Sub checkModalityPermission(  mt As ModalityType)
 			If mt = ModalityType.TOOLKIT_MODAL Then
 				Dim sm As SecurityManager = System.securityManager
 				If sm IsNot Nothing Then sm.checkPermission(sun.security.util.SecurityConstants.AWT.TOOLKIT_MODALITY_PERMISSION)
 			End If
 		End Sub
 
-		Private Sub readObject(ByVal s As java.io.ObjectInputStream)
+		Private Sub readObject(  s As java.io.ObjectInputStream)
 			GraphicsEnvironment.checkHeadless()
 
 			Dim fields As java.io.ObjectInputStream.GetField = s.readFields()
@@ -1515,7 +1515,7 @@ Namespace java.awt
 
 			Private ReadOnly outerInstance As Dialog
 
-			Public Sub New(ByVal outerInstance As Dialog)
+			Public Sub New(  outerInstance As Dialog)
 				Me.outerInstance = outerInstance
 			End Sub
 

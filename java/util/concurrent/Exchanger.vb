@@ -368,7 +368,7 @@ Namespace java.util.concurrent
 		''' <param name="ns"> if timed, the maximum wait time, else 0L </param>
 		''' <returns> the other thread's item; or null if interrupted; or
 		''' TIMED_OUT if timed and timed out </returns>
-		Private Function arenaExchange(ByVal item As Object, ByVal timed As Boolean, ByVal ns As Long) As Object
+		Private Function arenaExchange(  item As Object,   timed As Boolean,   ns As Long) As Object
 			Dim a As Node() = arena
 			Dim p As Node = participant.get()
 			Dim i As Integer = p.index
@@ -463,7 +463,7 @@ Namespace java.util.concurrent
 		''' <returns> the other thread's item; or null if either the arena
 		''' was enabled or the thread was interrupted before completion; or
 		''' TIMED_OUT if timed and timed out </returns>
-		Private Function slotExchange(ByVal item As Object, ByVal timed As Boolean, ByVal ns As Long) As Object
+		Private Function slotExchange(  item As Object,   timed As Boolean,   ns As Long) As Object
 			Dim p As Node = participant.get()
 			Dim t As Thread = Thread.CurrentThread
 			If t.interrupted Then ' preserve interrupt status so caller can recheck Return Nothing
@@ -570,7 +570,7 @@ Namespace java.util.concurrent
 		''' <exception cref="InterruptedException"> if the current thread was
 		'''         interrupted while waiting </exception>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Overridable Function exchange(ByVal x As V) As V
+		Public Overridable Function exchange(  x As V) As V
 			Dim v As Object
 			Dim item As Object = If(x Is Nothing, NULL_ITEM, x) ' translate null args
 			v = slotExchange(item, False, 0L)
@@ -621,7 +621,7 @@ Namespace java.util.concurrent
 		''' <exception cref="TimeoutException"> if the specified waiting time elapses
 		'''         before another thread enters the exchange </exception>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Overridable Function exchange(ByVal x As V, ByVal timeout As Long, ByVal unit As TimeUnit) As V
+		Public Overridable Function exchange(  x As V,   timeout As Long,   unit As TimeUnit) As V
 			Dim v As Object
 			Dim item As Object = If(x Is Nothing, NULL_ITEM, x)
 			Dim ns As Long = unit.toNanos(timeout)

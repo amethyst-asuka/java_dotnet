@@ -171,7 +171,7 @@ Namespace java.awt
 			Get
 				Return helpMenu
 			End Get
-			Set(ByVal m As Menu)
+			Set(  m As Menu)
 				SyncLock treeLock
 					If helpMenu Is m Then Return
 					If helpMenu IsNot Nothing Then remove(helpMenu)
@@ -200,7 +200,7 @@ Namespace java.awt
 		''' <returns>       the menu added </returns>
 		''' <seealso cref=          java.awt.MenuBar#remove(int) </seealso>
 		''' <seealso cref=          java.awt.MenuBar#remove(java.awt.MenuComponent) </seealso>
-		Public Overridable Function add(ByVal m As Menu) As Menu
+		Public Overridable Function add(  m As Menu) As Menu
 			SyncLock treeLock
 				If m.parent IsNot Nothing Then m.parent.remove(m)
 				menus.Add(m)
@@ -220,7 +220,7 @@ Namespace java.awt
 		''' index from this menu bar. </summary>
 		''' <param name="index">   the position of the menu to be removed. </param>
 		''' <seealso cref=          java.awt.MenuBar#add(java.awt.Menu) </seealso>
-		Public Overridable Sub remove(ByVal index As Integer)
+		Public Overridable Sub remove(  index As Integer)
 			SyncLock treeLock
 				Dim m As Menu = getMenu(index)
 				menus.RemoveAt(index)
@@ -241,7 +241,7 @@ Namespace java.awt
 		''' Removes the specified menu component from this menu bar. </summary>
 		''' <param name="m"> the menu component to be removed. </param>
 		''' <seealso cref=          java.awt.MenuBar#add(java.awt.Menu) </seealso>
-		Public Overridable Sub remove(ByVal m As MenuComponent) Implements MenuContainer.remove
+		Public Overridable Sub remove(  m As MenuComponent) Implements MenuContainer.remove
 			SyncLock treeLock
 				Dim index As Integer = menus.IndexOf(m)
 				If index >= 0 Then remove(index)
@@ -279,7 +279,7 @@ Namespace java.awt
 		''' Gets the specified menu. </summary>
 		''' <param name="i"> the index position of the menu to be returned. </param>
 		''' <returns>     the menu at the specified index of this menu bar. </returns>
-		Public Overridable Function getMenu(ByVal i As Integer) As Menu
+		Public Overridable Function getMenu(  i As Integer) As Menu
 			Return getMenuImpl(i)
 		End Function
 
@@ -287,7 +287,7 @@ Namespace java.awt
 	'     * This is called by the native code, so client code can't
 	'     * be called on the toolkit thread.
 	'     
-		Friend Function getMenuImpl(ByVal i As Integer) As Menu
+		Friend Function getMenuImpl(  i As Integer) As Menu
 			Return menus(i)
 		End Function
 
@@ -323,7 +323,7 @@ Namespace java.awt
 		''' <seealso cref=          java.awt.MenuItem </seealso>
 		''' <seealso cref=          java.awt.MenuShortcut
 		''' @since        JDK1.1 </seealso>
-		 Public Overridable Function getShortcutMenuItem(ByVal s As MenuShortcut) As MenuItem
+		 Public Overridable Function getShortcutMenuItem(  s As MenuShortcut) As MenuItem
 			Dim nmenus As Integer = menuCount
 			For i As Integer = 0 To nmenus - 1
 				Dim mi As MenuItem = getMenu(i).getShortcutMenuItem(s)
@@ -338,7 +338,7 @@ Namespace java.awt
 	'     * keydown).  Returns true if there is an associated
 	'     * keyboard event.
 	'     
-		Friend Overridable Function handleShortcut(ByVal e As java.awt.event.KeyEvent) As Boolean
+		Friend Overridable Function handleShortcut(  e As java.awt.event.KeyEvent) As Boolean
 			' Is it a key event?
 			Dim id As Integer = e.iD
 			If id <> java.awt.event.KeyEvent.KEY_PRESSED AndAlso id <> java.awt.event.KeyEvent.KEY_RELEASED Then Return False
@@ -360,7 +360,7 @@ Namespace java.awt
 		''' Deletes the specified menu shortcut. </summary>
 		''' <param name="s"> the menu shortcut to delete.
 		''' @since     JDK1.1 </param>
-		Public Overridable Sub deleteShortcut(ByVal s As MenuShortcut)
+		Public Overridable Sub deleteShortcut(  s As MenuShortcut)
 			Dim nmenus As Integer = menuCount
 			For i As Integer = 0 To nmenus - 1
 				getMenu(i).deleteShortcut(s)
@@ -384,7 +384,7 @@ Namespace java.awt
 		''' <param name="s"> the <code>ObjectOutputStream</code> to write </param>
 		''' <seealso cref= AWTEventMulticaster#save(ObjectOutputStream, String, EventListener) </seealso>
 		''' <seealso cref= #readObject(java.io.ObjectInputStream) </seealso>
-		Private Sub writeObject(ByVal s As java.io.ObjectOutputStream)
+		Private Sub writeObject(  s As java.io.ObjectOutputStream)
 		  s.defaultWriteObject()
 		End Sub
 
@@ -398,7 +398,7 @@ Namespace java.awt
 		'''   <code>true</code> </exception>
 		''' <seealso cref= java.awt.GraphicsEnvironment#isHeadless </seealso>
 		''' <seealso cref= #writeObject(java.io.ObjectOutputStream) </seealso>
-		Private Sub readObject(ByVal s As java.io.ObjectInputStream)
+		Private Sub readObject(  s As java.io.ObjectInputStream)
 		  ' HeadlessException will be thrown from MenuComponent's readObject
 		  s.defaultReadObject()
 		  For i As Integer = 0 To menus.Count - 1
@@ -439,7 +439,7 @@ Namespace java.awt
 		''' <summary>
 		''' Defined in MenuComponent. Overridden here.
 		''' </summary>
-		Friend Overrides Function getAccessibleChildIndex(ByVal child As MenuComponent) As Integer
+		Friend Overrides Function getAccessibleChildIndex(  child As MenuComponent) As Integer
 			Return menus.IndexOf(child)
 		End Function
 
@@ -459,7 +459,7 @@ Namespace java.awt
 
 			Private ReadOnly outerInstance As MenuBar
 
-			Public Sub New(ByVal outerInstance As MenuBar)
+			Public Sub New(  outerInstance As MenuBar)
 				Me.outerInstance = outerInstance
 			End Sub
 

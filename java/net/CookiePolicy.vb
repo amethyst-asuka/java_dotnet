@@ -62,7 +62,7 @@ Namespace java.net
 		''' <param name="cookie">    the HttpCookie object in question </param>
 		''' <returns>          {@code true} if this cookie should be accepted;
 		'''                  otherwise, {@code false} </returns>
-		Function shouldAccept(ByVal uri As URI, ByVal cookie As HttpCookie) As Boolean
+		Function shouldAccept(  uri As URI,   cookie As HttpCookie) As Boolean
 	End Interface
 
 End Namespace

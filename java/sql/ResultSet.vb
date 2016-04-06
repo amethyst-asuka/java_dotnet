@@ -229,7 +229,7 @@ Namespace java.sql
 		''' <exception cref="SQLException"> if the columnIndex is not valid;
 		''' if a database access error occurs or this method is
 		'''            called on a closed result set </exception>
-		Function getString(ByVal columnIndex As Integer) As String
+		Function getString(  columnIndex As Integer) As String
 
 		''' <summary>
 		''' Retrieves the value of the designated column in the current row
@@ -249,7 +249,7 @@ Namespace java.sql
 		''' <exception cref="SQLException"> if the columnIndex is not valid;
 		''' if a database access error occurs or this method is
 		'''            called on a closed result set </exception>
-		Function getBoolean(ByVal columnIndex As Integer) As Boolean
+		Function getBoolean(  columnIndex As Integer) As Boolean
 
 		''' <summary>
 		''' Retrieves the value of the designated column in the current row
@@ -262,7 +262,7 @@ Namespace java.sql
 		''' <exception cref="SQLException"> if the columnIndex is not valid;
 		''' if a database access error occurs or this method is
 		'''            called on a closed result set </exception>
-		Function getByte(ByVal columnIndex As Integer) As SByte
+		Function getByte(  columnIndex As Integer) As SByte
 
 		''' <summary>
 		''' Retrieves the value of the designated column in the current row
@@ -275,7 +275,7 @@ Namespace java.sql
 		''' <exception cref="SQLException"> if the columnIndex is not valid;
 		''' if a database access error occurs or this method is
 		'''            called on a closed result set </exception>
-		Function getShort(ByVal columnIndex As Integer) As Short
+		Function getShort(  columnIndex As Integer) As Short
 
 		''' <summary>
 		''' Retrieves the value of the designated column in the current row
@@ -288,7 +288,7 @@ Namespace java.sql
 		''' <exception cref="SQLException"> if the columnIndex is not valid;
 		''' if a database access error occurs or this method is
 		'''            called on a closed result set </exception>
-		Function getInt(ByVal columnIndex As Integer) As Integer
+		Function getInt(  columnIndex As Integer) As Integer
 
 		''' <summary>
 		''' Retrieves the value of the designated column in the current row
@@ -301,7 +301,7 @@ Namespace java.sql
 		''' <exception cref="SQLException"> if the columnIndex is not valid;
 		''' if a database access error occurs or this method is
 		'''            called on a closed result set </exception>
-		Function getLong(ByVal columnIndex As Integer) As Long
+		Function getLong(  columnIndex As Integer) As Long
 
 		''' <summary>
 		''' Retrieves the value of the designated column in the current row
@@ -314,7 +314,7 @@ Namespace java.sql
 		''' <exception cref="SQLException"> if the columnIndex is not valid;
 		''' if a database access error occurs or this method is
 		'''            called on a closed result set </exception>
-		Function getFloat(ByVal columnIndex As Integer) As Single
+		Function getFloat(  columnIndex As Integer) As Single
 
 		''' <summary>
 		''' Retrieves the value of the designated column in the current row
@@ -327,7 +327,7 @@ Namespace java.sql
 		''' <exception cref="SQLException"> if the columnIndex is not valid;
 		''' if a database access error occurs or this method is
 		'''            called on a closed result set </exception>
-		Function getDouble(ByVal columnIndex As Integer) As Double
+		Function getDouble(  columnIndex As Integer) As Double
 
 		''' <summary>
 		''' Retrieves the value of the designated column in the current row
@@ -346,7 +346,7 @@ Namespace java.sql
 		''' @deprecated Use {@code getBigDecimal(int columnIndex)}
 		'''             or {@code getBigDecimal(String columnLabel)} 
 		<Obsolete("Use {@code getBigDecimal(int columnIndex)}")> _
-		Function getBigDecimal(ByVal columnIndex As Integer, ByVal scale As Integer) As Decimal
+		Function getBigDecimal(  columnIndex As Integer,   scale As Integer) As Decimal
 
 		''' <summary>
 		''' Retrieves the value of the designated column in the current row
@@ -360,7 +360,7 @@ Namespace java.sql
 		''' <exception cref="SQLException"> if the columnIndex is not valid;
 		''' if a database access error occurs or this method is
 		'''            called on a closed result set </exception>
-		Function getBytes(ByVal columnIndex As Integer) As SByte()
+		Function getBytes(  columnIndex As Integer) As SByte()
 
 		''' <summary>
 		''' Retrieves the value of the designated column in the current row
@@ -373,7 +373,7 @@ Namespace java.sql
 		''' <exception cref="SQLException"> if the columnIndex is not valid;
 		''' if a database access error occurs or this method is
 		'''            called on a closed result set </exception>
-		Function getDate(ByVal columnIndex As Integer) As java.sql.Date
+		Function getDate(  columnIndex As Integer) As java.sql.Date
 
 		''' <summary>
 		''' Retrieves the value of the designated column in the current row
@@ -386,7 +386,7 @@ Namespace java.sql
 		''' <exception cref="SQLException"> if the columnIndex is not valid;
 		''' if a database access error occurs or this method is
 		'''            called on a closed result set </exception>
-		Function getTime(ByVal columnIndex As Integer) As java.sql.Time
+		Function getTime(  columnIndex As Integer) As java.sql.Time
 
 		''' <summary>
 		''' Retrieves the value of the designated column in the current row
@@ -399,7 +399,7 @@ Namespace java.sql
 		''' <exception cref="SQLException"> if the columnIndex is not valid;
 		''' if a database access error occurs or this method is
 		'''            called on a closed result set </exception>
-		Function getTimestamp(ByVal columnIndex As Integer) As java.sql.Timestamp
+		Function getTimestamp(  columnIndex As Integer) As java.sql.Timestamp
 
 		''' <summary>
 		''' Retrieves the value of the designated column in the current row
@@ -425,7 +425,7 @@ Namespace java.sql
 		''' <exception cref="SQLException"> if the columnIndex is not valid;
 		''' if a database access error occurs or this method is
 		'''            called on a closed result set </exception>
-		Function getAsciiStream(ByVal columnIndex As Integer) As java.io.InputStream
+		Function getAsciiStream(  columnIndex As Integer) As java.io.InputStream
 
 		''' <summary>
 		''' Retrieves the value of the designated column in the current row
@@ -460,7 +460,7 @@ Namespace java.sql
 		''' @deprecated use <code>getCharacterStream</code> in place of
 		'''              <code>getUnicodeStream</code> 
 		<Obsolete("use <code>getCharacterStream</code> in place of")> _
-		Function getUnicodeStream(ByVal columnIndex As Integer) As java.io.InputStream
+		Function getUnicodeStream(  columnIndex As Integer) As java.io.InputStream
 
 		''' <summary>
 		''' Retrieves the value of the designated column in the current row
@@ -484,7 +484,7 @@ Namespace java.sql
 		''' <exception cref="SQLException"> if the columnIndex is not valid;
 		''' if a database access error occurs or this method is
 		'''            called on a closed result set </exception>
-		Function getBinaryStream(ByVal columnIndex As Integer) As java.io.InputStream
+		Function getBinaryStream(  columnIndex As Integer) As java.io.InputStream
 
 
 		' Methods for accessing results by column label
@@ -500,7 +500,7 @@ Namespace java.sql
 		''' <exception cref="SQLException"> if the columnLabel is not valid;
 		''' if a database access error occurs or this method is
 		'''            called on a closed result set </exception>
-		Function getString(ByVal columnLabel As String) As String
+		Function getString(  columnLabel As String) As String
 
 		''' <summary>
 		''' Retrieves the value of the designated column in the current row
@@ -520,7 +520,7 @@ Namespace java.sql
 		''' <exception cref="SQLException"> if the columnLabel is not valid;
 		''' if a database access error occurs or this method is
 		'''            called on a closed result set </exception>
-		Function getBoolean(ByVal columnLabel As String) As Boolean
+		Function getBoolean(  columnLabel As String) As Boolean
 
 		''' <summary>
 		''' Retrieves the value of the designated column in the current row
@@ -533,7 +533,7 @@ Namespace java.sql
 		''' <exception cref="SQLException"> if the columnLabel is not valid;
 		''' if a database access error occurs or this method is
 		'''            called on a closed result set </exception>
-		Function getByte(ByVal columnLabel As String) As SByte
+		Function getByte(  columnLabel As String) As SByte
 
 		''' <summary>
 		''' Retrieves the value of the designated column in the current row
@@ -546,7 +546,7 @@ Namespace java.sql
 		''' <exception cref="SQLException"> if the columnLabel is not valid;
 		''' if a database access error occurs or this method is
 		'''            called on a closed result set </exception>
-		Function getShort(ByVal columnLabel As String) As Short
+		Function getShort(  columnLabel As String) As Short
 
 		''' <summary>
 		''' Retrieves the value of the designated column in the current row
@@ -559,7 +559,7 @@ Namespace java.sql
 		''' <exception cref="SQLException"> if the columnLabel is not valid;
 		''' if a database access error occurs or this method is
 		'''            called on a closed result set </exception>
-		Function getInt(ByVal columnLabel As String) As Integer
+		Function getInt(  columnLabel As String) As Integer
 
 		''' <summary>
 		''' Retrieves the value of the designated column in the current row
@@ -572,7 +572,7 @@ Namespace java.sql
 		''' <exception cref="SQLException"> if the columnLabel is not valid;
 		''' if a database access error occurs or this method is
 		'''            called on a closed result set </exception>
-		Function getLong(ByVal columnLabel As String) As Long
+		Function getLong(  columnLabel As String) As Long
 
 		''' <summary>
 		''' Retrieves the value of the designated column in the current row
@@ -585,7 +585,7 @@ Namespace java.sql
 		''' <exception cref="SQLException"> if the columnLabel is not valid;
 		''' if a database access error occurs or this method is
 		'''            called on a closed result set </exception>
-		Function getFloat(ByVal columnLabel As String) As Single
+		Function getFloat(  columnLabel As String) As Single
 
 		''' <summary>
 		''' Retrieves the value of the designated column in the current row
@@ -598,7 +598,7 @@ Namespace java.sql
 		''' <exception cref="SQLException"> if the columnLabel is not valid;
 		''' if a database access error occurs or this method is
 		'''            called on a closed result set </exception>
-		Function getDouble(ByVal columnLabel As String) As Double
+		Function getDouble(  columnLabel As String) As Double
 
 		''' <summary>
 		''' Retrieves the value of the designated column in the current row
@@ -617,7 +617,7 @@ Namespace java.sql
 		''' @deprecated Use {@code getBigDecimal(int columnIndex)}
 		'''             or {@code getBigDecimal(String columnLabel)} 
 		<Obsolete("Use {@code getBigDecimal(int columnIndex)}")> _
-		Function getBigDecimal(ByVal columnLabel As String, ByVal scale As Integer) As Decimal
+		Function getBigDecimal(  columnLabel As String,   scale As Integer) As Decimal
 
 		''' <summary>
 		''' Retrieves the value of the designated column in the current row
@@ -631,7 +631,7 @@ Namespace java.sql
 		''' <exception cref="SQLException"> if the columnLabel is not valid;
 		''' if a database access error occurs or this method is
 		'''            called on a closed result set </exception>
-		Function getBytes(ByVal columnLabel As String) As SByte()
+		Function getBytes(  columnLabel As String) As SByte()
 
 		''' <summary>
 		''' Retrieves the value of the designated column in the current row
@@ -644,7 +644,7 @@ Namespace java.sql
 		''' <exception cref="SQLException"> if the columnLabel is not valid;
 		''' if a database access error occurs or this method is
 		'''            called on a closed result set </exception>
-		Function getDate(ByVal columnLabel As String) As java.sql.Date
+		Function getDate(  columnLabel As String) As java.sql.Date
 
 		''' <summary>
 		''' Retrieves the value of the designated column in the current row
@@ -658,7 +658,7 @@ Namespace java.sql
 		''' <exception cref="SQLException"> if the columnLabel is not valid;
 		''' if a database access error occurs or this method is
 		'''            called on a closed result set </exception>
-		Function getTime(ByVal columnLabel As String) As java.sql.Time
+		Function getTime(  columnLabel As String) As java.sql.Time
 
 		''' <summary>
 		''' Retrieves the value of the designated column in the current row
@@ -671,7 +671,7 @@ Namespace java.sql
 		''' <exception cref="SQLException"> if the columnLabel is not valid;
 		''' if a database access error occurs or this method is
 		'''            called on a closed result set </exception>
-		Function getTimestamp(ByVal columnLabel As String) As java.sql.Timestamp
+		Function getTimestamp(  columnLabel As String) As java.sql.Timestamp
 
 		''' <summary>
 		''' Retrieves the value of the designated column in the current row
@@ -696,7 +696,7 @@ Namespace java.sql
 		''' <exception cref="SQLException"> if the columnLabel is not valid;
 		''' if a database access error occurs or this method is
 		'''            called on a closed result set </exception>
-		Function getAsciiStream(ByVal columnLabel As String) As java.io.InputStream
+		Function getAsciiStream(  columnLabel As String) As java.io.InputStream
 
 		''' <summary>
 		''' Retrieves the value of the designated column in the current row
@@ -729,7 +729,7 @@ Namespace java.sql
 		''' this method </exception>
 		''' @deprecated use <code>getCharacterStream</code> instead 
 		<Obsolete("use <code>getCharacterStream</code> instead")> _
-		Function getUnicodeStream(ByVal columnLabel As String) As java.io.InputStream
+		Function getUnicodeStream(  columnLabel As String) As java.io.InputStream
 
 		''' <summary>
 		''' Retrieves the value of the designated column in the current row
@@ -753,7 +753,7 @@ Namespace java.sql
 		''' <exception cref="SQLException"> if the columnLabel is not valid;
 		''' if a database access error occurs or this method is
 		'''            called on a closed result set </exception>
-		Function getBinaryStream(ByVal columnLabel As String) As java.io.InputStream
+		Function getBinaryStream(  columnLabel As String) As java.io.InputStream
 
 
 		' Advanced features:
@@ -861,7 +861,7 @@ Namespace java.sql
 		''' <exception cref="SQLException"> if the columnIndex is not valid;
 		''' if a database access error occurs or this method is
 		'''            called on a closed result set </exception>
-		Function getObject(ByVal columnIndex As Integer) As Object
+		Function getObject(  columnIndex As Integer) As Object
 
 		''' <summary>
 		''' <p>Gets the value of the designated column in the current row
@@ -890,7 +890,7 @@ Namespace java.sql
 		''' <exception cref="SQLException"> if the columnLabel is not valid;
 		''' if a database access error occurs or this method is
 		'''            called on a closed result set </exception>
-		Function getObject(ByVal columnLabel As String) As Object
+		Function getObject(  columnLabel As String) As Object
 
 		'----------------------------------------------------------------
 
@@ -903,7 +903,7 @@ Namespace java.sql
 		''' <exception cref="SQLException"> if the <code>ResultSet</code> object
 		''' does not contain a column labeled <code>columnLabel</code>, a database access error occurs
 		'''  or this method is called on a closed result set </exception>
-		Function findColumn(ByVal columnLabel As String) As Integer
+		Function findColumn(  columnLabel As String) As Integer
 
 
 		'--------------------------JDBC 2.0-----------------------------------
@@ -924,7 +924,7 @@ Namespace java.sql
 		''' if a database access error occurs or this method is
 		'''            called on a closed result set
 		''' @since 1.2 </exception>
-		Function getCharacterStream(ByVal columnIndex As Integer) As java.io.Reader
+		Function getCharacterStream(  columnIndex As Integer) As java.io.Reader
 
 		''' <summary>
 		''' Retrieves the value of the designated column in the current row
@@ -939,7 +939,7 @@ Namespace java.sql
 		''' if a database access error occurs or this method is
 		'''            called on a closed result set
 		''' @since 1.2 </exception>
-		Function getCharacterStream(ByVal columnLabel As String) As java.io.Reader
+		Function getCharacterStream(  columnLabel As String) As java.io.Reader
 
 		''' <summary>
 		''' Retrieves the value of the designated column in the current row
@@ -954,7 +954,7 @@ Namespace java.sql
 		''' if a database access error occurs or this method is
 		'''            called on a closed result set
 		''' @since 1.2 </exception>
-		Function getBigDecimal(ByVal columnIndex As Integer) As Decimal
+		Function getBigDecimal(  columnIndex As Integer) As Decimal
 
 		''' <summary>
 		''' Retrieves the value of the designated column in the current row
@@ -970,7 +970,7 @@ Namespace java.sql
 		'''            called on a closed result set
 		''' @since 1.2
 		'''  </exception>
-		Function getBigDecimal(ByVal columnLabel As String) As Decimal
+		Function getBigDecimal(  columnLabel As String) As Decimal
 
 		'---------------------------------------------------------------------
 		' Traversal/Positioning
@@ -1160,7 +1160,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.2 </exception>
-		Function absolute(ByVal row As Integer) As Boolean
+		Function absolute(  row As Integer) As Boolean
 
 		''' <summary>
 		''' Moves the cursor a relative number of rows, either positive or negative.
@@ -1185,7 +1185,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.2 </exception>
-		Function relative(ByVal rows As Integer) As Boolean
+		Function relative(  rows As Integer) As Boolean
 
 		''' <summary>
 		''' Moves the cursor to the previous row in this
@@ -1426,7 +1426,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.2 </exception>
-		Sub updateNull(ByVal columnIndex As Integer)
+		Sub updateNull(  columnIndex As Integer)
 
 		''' <summary>
 		''' Updates the designated column with a <code>boolean</code> value.
@@ -1444,7 +1444,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.2 </exception>
-		Sub updateBoolean(ByVal columnIndex As Integer, ByVal x As Boolean)
+		Sub updateBoolean(  columnIndex As Integer,   x As Boolean)
 
 		''' <summary>
 		''' Updates the designated column with a <code>byte</code> value.
@@ -1463,7 +1463,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.2 </exception>
-		Sub updateByte(ByVal columnIndex As Integer, ByVal x As SByte)
+		Sub updateByte(  columnIndex As Integer,   x As SByte)
 
 		''' <summary>
 		''' Updates the designated column with a <code>short</code> value.
@@ -1481,7 +1481,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.2 </exception>
-		Sub updateShort(ByVal columnIndex As Integer, ByVal x As Short)
+		Sub updateShort(  columnIndex As Integer,   x As Short)
 
 		''' <summary>
 		''' Updates the designated column with an <code>int</code> value.
@@ -1499,7 +1499,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.2 </exception>
-		Sub updateInt(ByVal columnIndex As Integer, ByVal x As Integer)
+		Sub updateInt(  columnIndex As Integer,   x As Integer)
 
 		''' <summary>
 		''' Updates the designated column with a <code>long</code> value.
@@ -1517,7 +1517,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.2 </exception>
-		Sub updateLong(ByVal columnIndex As Integer, ByVal x As Long)
+		Sub updateLong(  columnIndex As Integer,   x As Long)
 
 		''' <summary>
 		''' Updates the designated column with a <code>float</code> value.
@@ -1535,7 +1535,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.2 </exception>
-		Sub updateFloat(ByVal columnIndex As Integer, ByVal x As Single)
+		Sub updateFloat(  columnIndex As Integer,   x As Single)
 
 		''' <summary>
 		''' Updates the designated column with a <code>double</code> value.
@@ -1553,7 +1553,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.2 </exception>
-		Sub updateDouble(ByVal columnIndex As Integer, ByVal x As Double)
+		Sub updateDouble(  columnIndex As Integer,   x As Double)
 
 		''' <summary>
 		''' Updates the designated column with a <code>java.math.BigDecimal</code>
@@ -1572,7 +1572,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.2 </exception>
-		Sub updateBigDecimal(ByVal columnIndex As Integer, ByVal x As Decimal)
+		Sub updateBigDecimal(  columnIndex As Integer,   x As Decimal)
 
 		''' <summary>
 		''' Updates the designated column with a <code>String</code> value.
@@ -1590,7 +1590,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.2 </exception>
-		Sub updateString(ByVal columnIndex As Integer, ByVal x As String)
+		Sub updateString(  columnIndex As Integer,   x As String)
 
 		''' <summary>
 		''' Updates the designated column with a <code>byte</code> array value.
@@ -1608,7 +1608,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.2 </exception>
-		Sub updateBytes(ByVal columnIndex As Integer, ByVal x As SByte())
+		Sub updateBytes(  columnIndex As Integer,   x As SByte())
 
 		''' <summary>
 		''' Updates the designated column with a <code>java.sql.Date</code> value.
@@ -1626,7 +1626,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.2 </exception>
-		Sub updateDate(ByVal columnIndex As Integer, ByVal x As java.sql.Date)
+		Sub updateDate(  columnIndex As Integer,   x As java.sql.Date)
 
 		''' <summary>
 		''' Updates the designated column with a <code>java.sql.Time</code> value.
@@ -1644,7 +1644,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.2 </exception>
-		Sub updateTime(ByVal columnIndex As Integer, ByVal x As java.sql.Time)
+		Sub updateTime(  columnIndex As Integer,   x As java.sql.Time)
 
 		''' <summary>
 		''' Updates the designated column with a <code>java.sql.Timestamp</code>
@@ -1663,7 +1663,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.2 </exception>
-		Sub updateTimestamp(ByVal columnIndex As Integer, ByVal x As java.sql.Timestamp)
+		Sub updateTimestamp(  columnIndex As Integer,   x As java.sql.Timestamp)
 
 		''' <summary>
 		''' Updates the designated column with an ascii stream value, which will have
@@ -1683,7 +1683,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.2 </exception>
-		Sub updateAsciiStream(ByVal columnIndex As Integer, ByVal x As java.io.InputStream, ByVal length As Integer)
+		Sub updateAsciiStream(  columnIndex As Integer,   x As java.io.InputStream,   length As Integer)
 
 		''' <summary>
 		''' Updates the designated column with a binary stream value, which will have
@@ -1703,7 +1703,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.2 </exception>
-		Sub updateBinaryStream(ByVal columnIndex As Integer, ByVal x As java.io.InputStream, ByVal length As Integer)
+		Sub updateBinaryStream(  columnIndex As Integer,   x As java.io.InputStream,   length As Integer)
 
 		''' <summary>
 		''' Updates the designated column with a character stream value, which will have
@@ -1723,7 +1723,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.2 </exception>
-		Sub updateCharacterStream(ByVal columnIndex As Integer, ByVal x As java.io.Reader, ByVal length As Integer)
+		Sub updateCharacterStream(  columnIndex As Integer,   x As java.io.Reader,   length As Integer)
 
 		''' <summary>
 		''' Updates the designated column with an <code>Object</code> value.
@@ -1754,7 +1754,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.2 </exception>
-		Sub updateObject(ByVal columnIndex As Integer, ByVal x As Object, ByVal scaleOrLength As Integer)
+		Sub updateObject(  columnIndex As Integer,   x As Object,   scaleOrLength As Integer)
 
 		''' <summary>
 		''' Updates the designated column with an <code>Object</code> value.
@@ -1773,7 +1773,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.2 </exception>
-		Sub updateObject(ByVal columnIndex As Integer, ByVal x As Object)
+		Sub updateObject(  columnIndex As Integer,   x As Object)
 
 		''' <summary>
 		''' Updates the designated column with a <code>null</code> value.
@@ -1790,7 +1790,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.2 </exception>
-		Sub updateNull(ByVal columnLabel As String)
+		Sub updateNull(  columnLabel As String)
 
 		''' <summary>
 		''' Updates the designated column with a <code>boolean</code> value.
@@ -1808,7 +1808,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.2 </exception>
-		Sub updateBoolean(ByVal columnLabel As String, ByVal x As Boolean)
+		Sub updateBoolean(  columnLabel As String,   x As Boolean)
 
 		''' <summary>
 		''' Updates the designated column with a <code>byte</code> value.
@@ -1826,7 +1826,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.2 </exception>
-		Sub updateByte(ByVal columnLabel As String, ByVal x As SByte)
+		Sub updateByte(  columnLabel As String,   x As SByte)
 
 		''' <summary>
 		''' Updates the designated column with a <code>short</code> value.
@@ -1844,7 +1844,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.2 </exception>
-		Sub updateShort(ByVal columnLabel As String, ByVal x As Short)
+		Sub updateShort(  columnLabel As String,   x As Short)
 
 		''' <summary>
 		''' Updates the designated column with an <code>int</code> value.
@@ -1862,7 +1862,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.2 </exception>
-		Sub updateInt(ByVal columnLabel As String, ByVal x As Integer)
+		Sub updateInt(  columnLabel As String,   x As Integer)
 
 		''' <summary>
 		''' Updates the designated column with a <code>long</code> value.
@@ -1880,7 +1880,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.2 </exception>
-		Sub updateLong(ByVal columnLabel As String, ByVal x As Long)
+		Sub updateLong(  columnLabel As String,   x As Long)
 
 		''' <summary>
 		''' Updates the designated column with a <code>float </code> value.
@@ -1898,7 +1898,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.2 </exception>
-		Sub updateFloat(ByVal columnLabel As String, ByVal x As Single)
+		Sub updateFloat(  columnLabel As String,   x As Single)
 
 		''' <summary>
 		''' Updates the designated column with a <code>double</code> value.
@@ -1916,7 +1916,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.2 </exception>
-		Sub updateDouble(ByVal columnLabel As String, ByVal x As Double)
+		Sub updateDouble(  columnLabel As String,   x As Double)
 
 		''' <summary>
 		''' Updates the designated column with a <code>java.sql.BigDecimal</code>
@@ -1935,7 +1935,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.2 </exception>
-		Sub updateBigDecimal(ByVal columnLabel As String, ByVal x As Decimal)
+		Sub updateBigDecimal(  columnLabel As String,   x As Decimal)
 
 		''' <summary>
 		''' Updates the designated column with a <code>String</code> value.
@@ -1953,7 +1953,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.2 </exception>
-		Sub updateString(ByVal columnLabel As String, ByVal x As String)
+		Sub updateString(  columnLabel As String,   x As String)
 
 		''' <summary>
 		''' Updates the designated column with a byte array value.
@@ -1972,7 +1972,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.2 </exception>
-		Sub updateBytes(ByVal columnLabel As String, ByVal x As SByte())
+		Sub updateBytes(  columnLabel As String,   x As SByte())
 
 		''' <summary>
 		''' Updates the designated column with a <code>java.sql.Date</code> value.
@@ -1990,7 +1990,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.2 </exception>
-		Sub updateDate(ByVal columnLabel As String, ByVal x As java.sql.Date)
+		Sub updateDate(  columnLabel As String,   x As java.sql.Date)
 
 		''' <summary>
 		''' Updates the designated column with a <code>java.sql.Time</code> value.
@@ -2008,7 +2008,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.2 </exception>
-		Sub updateTime(ByVal columnLabel As String, ByVal x As java.sql.Time)
+		Sub updateTime(  columnLabel As String,   x As java.sql.Time)
 
 		''' <summary>
 		''' Updates the designated column with a <code>java.sql.Timestamp</code>
@@ -2027,7 +2027,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.2 </exception>
-		Sub updateTimestamp(ByVal columnLabel As String, ByVal x As java.sql.Timestamp)
+		Sub updateTimestamp(  columnLabel As String,   x As java.sql.Timestamp)
 
 		''' <summary>
 		''' Updates the designated column with an ascii stream value, which will have
@@ -2047,7 +2047,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.2 </exception>
-		Sub updateAsciiStream(ByVal columnLabel As String, ByVal x As java.io.InputStream, ByVal length As Integer)
+		Sub updateAsciiStream(  columnLabel As String,   x As java.io.InputStream,   length As Integer)
 
 		''' <summary>
 		''' Updates the designated column with a binary stream value, which will have
@@ -2067,7 +2067,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.2 </exception>
-		Sub updateBinaryStream(ByVal columnLabel As String, ByVal x As java.io.InputStream, ByVal length As Integer)
+		Sub updateBinaryStream(  columnLabel As String,   x As java.io.InputStream,   length As Integer)
 
 		''' <summary>
 		''' Updates the designated column with a character stream value, which will have
@@ -2088,7 +2088,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.2 </exception>
-		Sub updateCharacterStream(ByVal columnLabel As String, ByVal reader As java.io.Reader, ByVal length As Integer)
+		Sub updateCharacterStream(  columnLabel As String,   reader As java.io.Reader,   length As Integer)
 
 		''' <summary>
 		''' Updates the designated column with an <code>Object</code> value.
@@ -2119,7 +2119,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.2 </exception>
-		Sub updateObject(ByVal columnLabel As String, ByVal x As Object, ByVal scaleOrLength As Integer)
+		Sub updateObject(  columnLabel As String,   x As Object,   scaleOrLength As Integer)
 
 		''' <summary>
 		''' Updates the designated column with an <code>Object</code> value.
@@ -2138,7 +2138,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.2 </exception>
-		Sub updateObject(ByVal columnLabel As String, ByVal x As Object)
+		Sub updateObject(  columnLabel As String,   x As Object)
 
 		''' <summary>
 		''' Inserts the contents of the insert row into this
@@ -2309,7 +2309,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.2 </exception>
-		Function getObject(ByVal columnIndex As Integer, ByVal map As IDictionary(Of String, [Class])) As Object
+		Function getObject(  columnIndex As Integer,   map As IDictionary(Of String, [Class])) As Object
 
 		''' <summary>
 		''' Retrieves the value of the designated column in the current row
@@ -2325,7 +2325,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.2 </exception>
-		Function getRef(ByVal columnIndex As Integer) As Ref
+		Function getRef(  columnIndex As Integer) As Ref
 
 		''' <summary>
 		''' Retrieves the value of the designated column in the current row
@@ -2341,7 +2341,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.2 </exception>
-		Function getBlob(ByVal columnIndex As Integer) As Blob
+		Function getBlob(  columnIndex As Integer) As Blob
 
 		''' <summary>
 		''' Retrieves the value of the designated column in the current row
@@ -2357,7 +2357,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.2 </exception>
-		Function getClob(ByVal columnIndex As Integer) As Clob
+		Function getClob(  columnIndex As Integer) As Clob
 
 		''' <summary>
 		''' Retrieves the value of the designated column in the current row
@@ -2373,7 +2373,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.2 </exception>
-		Function getArray(ByVal columnIndex As Integer) As Array
+		Function getArray(  columnIndex As Integer) As Array
 
 		''' <summary>
 		''' Retrieves the value of the designated column in the current row
@@ -2395,7 +2395,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.2 </exception>
-		Function getObject(ByVal columnLabel As String, ByVal map As IDictionary(Of String, [Class])) As Object
+		Function getObject(  columnLabel As String,   map As IDictionary(Of String, [Class])) As Object
 
 		''' <summary>
 		''' Retrieves the value of the designated column in the current row
@@ -2411,7 +2411,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.2 </exception>
-		Function getRef(ByVal columnLabel As String) As Ref
+		Function getRef(  columnLabel As String) As Ref
 
 		''' <summary>
 		''' Retrieves the value of the designated column in the current row
@@ -2427,7 +2427,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.2 </exception>
-		Function getBlob(ByVal columnLabel As String) As Blob
+		Function getBlob(  columnLabel As String) As Blob
 
 		''' <summary>
 		''' Retrieves the value of the designated column in the current row
@@ -2443,7 +2443,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.2 </exception>
-		Function getClob(ByVal columnLabel As String) As Clob
+		Function getClob(  columnLabel As String) As Clob
 
 		''' <summary>
 		''' Retrieves the value of the designated column in the current row
@@ -2459,7 +2459,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.2 </exception>
-		Function getArray(ByVal columnLabel As String) As Array
+		Function getArray(  columnLabel As String) As Array
 
 		''' <summary>
 		''' Retrieves the value of the designated column in the current row
@@ -2479,7 +2479,7 @@ Namespace java.sql
 		''' if a database access error occurs
 		''' or this method is called on a closed result set
 		''' @since 1.2 </exception>
-		Function getDate(ByVal columnIndex As Integer, ByVal cal As DateTime?) As java.sql.Date
+		Function getDate(  columnIndex As Integer,   cal As DateTime?) As java.sql.Date
 
 		''' <summary>
 		''' Retrieves the value of the designated column in the current row
@@ -2499,7 +2499,7 @@ Namespace java.sql
 		''' if a database access error occurs
 		''' or this method is called on a closed result set
 		''' @since 1.2 </exception>
-		Function getDate(ByVal columnLabel As String, ByVal cal As DateTime?) As java.sql.Date
+		Function getDate(  columnLabel As String,   cal As DateTime?) As java.sql.Date
 
 		''' <summary>
 		''' Retrieves the value of the designated column in the current row
@@ -2519,7 +2519,7 @@ Namespace java.sql
 		''' if a database access error occurs
 		''' or this method is called on a closed result set
 		''' @since 1.2 </exception>
-		Function getTime(ByVal columnIndex As Integer, ByVal cal As DateTime?) As java.sql.Time
+		Function getTime(  columnIndex As Integer,   cal As DateTime?) As java.sql.Time
 
 		''' <summary>
 		''' Retrieves the value of the designated column in the current row
@@ -2539,7 +2539,7 @@ Namespace java.sql
 		''' if a database access error occurs
 		''' or this method is called on a closed result set
 		''' @since 1.2 </exception>
-		Function getTime(ByVal columnLabel As String, ByVal cal As DateTime?) As java.sql.Time
+		Function getTime(  columnLabel As String,   cal As DateTime?) As java.sql.Time
 
 		''' <summary>
 		''' Retrieves the value of the designated column in the current row
@@ -2559,7 +2559,7 @@ Namespace java.sql
 		''' if a database access error occurs
 		''' or this method is called on a closed result set
 		''' @since 1.2 </exception>
-		Function getTimestamp(ByVal columnIndex As Integer, ByVal cal As DateTime?) As java.sql.Timestamp
+		Function getTimestamp(  columnIndex As Integer,   cal As DateTime?) As java.sql.Timestamp
 
 		''' <summary>
 		''' Retrieves the value of the designated column in the current row
@@ -2579,7 +2579,7 @@ Namespace java.sql
 		''' if a database access error occurs
 		''' or this method is called on a closed result set
 		''' @since 1.2 </exception>
-		Function getTimestamp(ByVal columnLabel As String, ByVal cal As DateTime?) As java.sql.Timestamp
+		Function getTimestamp(  columnLabel As String,   cal As DateTime?) As java.sql.Timestamp
 
 		'-------------------------- JDBC 3.0 ----------------------------------------
 
@@ -2616,7 +2616,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.4 </exception>
-		Function getURL(ByVal columnIndex As Integer) As java.net.URL
+		Function getURL(  columnIndex As Integer) As java.net.URL
 
 		''' <summary>
 		''' Retrieves the value of the designated column in the current row
@@ -2633,7 +2633,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.4 </exception>
-		Function getURL(ByVal columnLabel As String) As java.net.URL
+		Function getURL(  columnLabel As String) As java.net.URL
 
 		''' <summary>
 		''' Updates the designated column with a <code>java.sql.Ref</code> value.
@@ -2651,7 +2651,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.4 </exception>
-		Sub updateRef(ByVal columnIndex As Integer, ByVal x As java.sql.Ref)
+		Sub updateRef(  columnIndex As Integer,   x As java.sql.Ref)
 
 		''' <summary>
 		''' Updates the designated column with a <code>java.sql.Ref</code> value.
@@ -2669,7 +2669,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.4 </exception>
-		Sub updateRef(ByVal columnLabel As String, ByVal x As java.sql.Ref)
+		Sub updateRef(  columnLabel As String,   x As java.sql.Ref)
 
 		''' <summary>
 		''' Updates the designated column with a <code>java.sql.Blob</code> value.
@@ -2687,7 +2687,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.4 </exception>
-		Sub updateBlob(ByVal columnIndex As Integer, ByVal x As java.sql.Blob)
+		Sub updateBlob(  columnIndex As Integer,   x As java.sql.Blob)
 
 		''' <summary>
 		''' Updates the designated column with a <code>java.sql.Blob</code> value.
@@ -2705,7 +2705,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.4 </exception>
-		Sub updateBlob(ByVal columnLabel As String, ByVal x As java.sql.Blob)
+		Sub updateBlob(  columnLabel As String,   x As java.sql.Blob)
 
 		''' <summary>
 		''' Updates the designated column with a <code>java.sql.Clob</code> value.
@@ -2723,7 +2723,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.4 </exception>
-		Sub updateClob(ByVal columnIndex As Integer, ByVal x As java.sql.Clob)
+		Sub updateClob(  columnIndex As Integer,   x As java.sql.Clob)
 
 		''' <summary>
 		''' Updates the designated column with a <code>java.sql.Clob</code> value.
@@ -2741,7 +2741,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.4 </exception>
-		Sub updateClob(ByVal columnLabel As String, ByVal x As java.sql.Clob)
+		Sub updateClob(  columnLabel As String,   x As java.sql.Clob)
 
 		''' <summary>
 		''' Updates the designated column with a <code>java.sql.Array</code> value.
@@ -2759,7 +2759,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.4 </exception>
-		Sub updateArray(ByVal columnIndex As Integer, ByVal x As java.sql.Array)
+		Sub updateArray(  columnIndex As Integer,   x As java.sql.Array)
 
 		''' <summary>
 		''' Updates the designated column with a <code>java.sql.Array</code> value.
@@ -2777,7 +2777,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.4 </exception>
-		Sub updateArray(ByVal columnLabel As String, ByVal x As java.sql.Array)
+		Sub updateArray(  columnLabel As String,   x As java.sql.Array)
 
 		'------------------------- JDBC 4.0 -----------------------------------
 
@@ -2795,7 +2795,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.6 </exception>
-		Function getRowId(ByVal columnIndex As Integer) As RowId
+		Function getRowId(  columnIndex As Integer) As RowId
 
 		''' <summary>
 		''' Retrieves the value of the designated column in the current row of this
@@ -2811,7 +2811,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.6 </exception>
-		Function getRowId(ByVal columnLabel As String) As RowId
+		Function getRowId(  columnLabel As String) As RowId
 
 		''' <summary>
 		''' Updates the designated column with a <code>RowId</code> value. The updater
@@ -2829,7 +2829,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.6 </exception>
-		Sub updateRowId(ByVal columnIndex As Integer, ByVal x As RowId)
+		Sub updateRowId(  columnIndex As Integer,   x As RowId)
 
 		''' <summary>
 		''' Updates the designated column with a <code>RowId</code> value. The updater
@@ -2847,7 +2847,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.6 </exception>
-		Sub updateRowId(ByVal columnLabel As String, ByVal x As RowId)
+		Sub updateRowId(  columnLabel As String,   x As RowId)
 
 		''' <summary>
 		''' Retrieves the holdability of this <code>ResultSet</code> object </summary>
@@ -2886,7 +2886,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.6 </exception>
-		Sub updateNString(ByVal columnIndex As Integer, ByVal nString As String)
+		Sub updateNString(  columnIndex As Integer,   nString As String)
 
 		''' <summary>
 		''' Updates the designated column with a <code>String</code> value.
@@ -2908,7 +2908,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.6 </exception>
-		Sub updateNString(ByVal columnLabel As String, ByVal nString As String)
+		Sub updateNString(  columnLabel As String,   nString As String)
 
 		''' <summary>
 		''' Updates the designated column with a <code>java.sql.NClob</code> value.
@@ -2928,7 +2928,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.6 </exception>
-		Sub updateNClob(ByVal columnIndex As Integer, ByVal nClob As NClob)
+		Sub updateNClob(  columnIndex As Integer,   nClob As NClob)
 
 		''' <summary>
 		''' Updates the designated column with a <code>java.sql.NClob</code> value.
@@ -2948,7 +2948,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.6 </exception>
-		Sub updateNClob(ByVal columnLabel As String, ByVal nClob As NClob)
+		Sub updateNClob(  columnLabel As String,   nClob As NClob)
 
 		''' <summary>
 		''' Retrieves the value of the designated column in the current row
@@ -2966,7 +2966,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.6 </exception>
-		Function getNClob(ByVal columnIndex As Integer) As NClob
+		Function getNClob(  columnIndex As Integer) As NClob
 
 	  ''' <summary>
 	  ''' Retrieves the value of the designated column in the current row
@@ -2984,7 +2984,7 @@ Namespace java.sql
 	  ''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 	  ''' this method
 	  ''' @since 1.6 </exception>
-		Function getNClob(ByVal columnLabel As String) As NClob
+		Function getNClob(  columnLabel As String) As NClob
 
 		''' <summary>
 		''' Retrieves the value of the designated column in  the current row of
@@ -2998,7 +2998,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.6 </exception>
-		Function getSQLXML(ByVal columnIndex As Integer) As SQLXML
+		Function getSQLXML(  columnIndex As Integer) As SQLXML
 
 		''' <summary>
 		''' Retrieves the value of the designated column in  the current row of
@@ -3012,7 +3012,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.6 </exception>
-		Function getSQLXML(ByVal columnLabel As String) As SQLXML
+		Function getSQLXML(  columnLabel As String) As SQLXML
 		''' <summary>
 		''' Updates the designated column with a <code>java.sql.SQLXML</code> value.
 		''' The updater
@@ -3037,7 +3037,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.6 </exception>
-		Sub updateSQLXML(ByVal columnIndex As Integer, ByVal xmlObject As SQLXML)
+		Sub updateSQLXML(  columnIndex As Integer,   xmlObject As SQLXML)
 		''' <summary>
 		''' Updates the designated column with a <code>java.sql.SQLXML</code> value.
 		''' The updater
@@ -3062,7 +3062,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.6 </exception>
-		Sub updateSQLXML(ByVal columnLabel As String, ByVal xmlObject As SQLXML)
+		Sub updateSQLXML(  columnLabel As String,   xmlObject As SQLXML)
 
 		''' <summary>
 		''' Retrieves the value of the designated column in the current row
@@ -3081,7 +3081,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.6 </exception>
-		Function getNString(ByVal columnIndex As Integer) As String
+		Function getNString(  columnIndex As Integer) As String
 
 
 		''' <summary>
@@ -3101,7 +3101,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.6 </exception>
-		Function getNString(ByVal columnLabel As String) As String
+		Function getNString(  columnLabel As String) As String
 
 
 		''' <summary>
@@ -3122,7 +3122,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.6 </exception>
-		Function getNCharacterStream(ByVal columnIndex As Integer) As java.io.Reader
+		Function getNCharacterStream(  columnIndex As Integer) As java.io.Reader
 
 		''' <summary>
 		''' Retrieves the value of the designated column in the current row
@@ -3142,7 +3142,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.6 </exception>
-		Function getNCharacterStream(ByVal columnLabel As String) As java.io.Reader
+		Function getNCharacterStream(  columnLabel As String) As java.io.Reader
 
 		''' <summary>
 		''' Updates the designated column with a character stream value, which will have
@@ -3167,7 +3167,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.6 </exception>
-		Sub updateNCharacterStream(ByVal columnIndex As Integer, ByVal x As java.io.Reader, ByVal length As Long)
+		Sub updateNCharacterStream(  columnIndex As Integer,   x As java.io.Reader,   length As Long)
 
 		''' <summary>
 		''' Updates the designated column with a character stream value, which will have
@@ -3193,7 +3193,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.6 </exception>
-		Sub updateNCharacterStream(ByVal columnLabel As String, ByVal reader As java.io.Reader, ByVal length As Long)
+		Sub updateNCharacterStream(  columnLabel As String,   reader As java.io.Reader,   length As Long)
 		''' <summary>
 		''' Updates the designated column with an ascii stream value, which will have
 		''' the specified number of bytes.
@@ -3213,7 +3213,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.6 </exception>
-		Sub updateAsciiStream(ByVal columnIndex As Integer, ByVal x As java.io.InputStream, ByVal length As Long)
+		Sub updateAsciiStream(  columnIndex As Integer,   x As java.io.InputStream,   length As Long)
 
 		''' <summary>
 		''' Updates the designated column with a binary stream value, which will have
@@ -3234,7 +3234,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.6 </exception>
-		Sub updateBinaryStream(ByVal columnIndex As Integer, ByVal x As java.io.InputStream, ByVal length As Long)
+		Sub updateBinaryStream(  columnIndex As Integer,   x As java.io.InputStream,   length As Long)
 
 		''' <summary>
 		''' Updates the designated column with a character stream value, which will have
@@ -3255,7 +3255,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.6 </exception>
-		Sub updateCharacterStream(ByVal columnIndex As Integer, ByVal x As java.io.Reader, ByVal length As Long)
+		Sub updateCharacterStream(  columnIndex As Integer,   x As java.io.Reader,   length As Long)
 		''' <summary>
 		''' Updates the designated column with an ascii stream value, which will have
 		''' the specified number of bytes.
@@ -3275,7 +3275,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.6 </exception>
-		Sub updateAsciiStream(ByVal columnLabel As String, ByVal x As java.io.InputStream, ByVal length As Long)
+		Sub updateAsciiStream(  columnLabel As String,   x As java.io.InputStream,   length As Long)
 
 		''' <summary>
 		''' Updates the designated column with a binary stream value, which will have
@@ -3296,7 +3296,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.6 </exception>
-		Sub updateBinaryStream(ByVal columnLabel As String, ByVal x As java.io.InputStream, ByVal length As Long)
+		Sub updateBinaryStream(  columnLabel As String,   x As java.io.InputStream,   length As Long)
 
 		''' <summary>
 		''' Updates the designated column with a character stream value, which will have
@@ -3318,7 +3318,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.6 </exception>
-		Sub updateCharacterStream(ByVal columnLabel As String, ByVal reader As java.io.Reader, ByVal length As Long)
+		Sub updateCharacterStream(  columnLabel As String,   reader As java.io.Reader,   length As Long)
 		''' <summary>
 		''' Updates the designated column using the given input stream, which
 		''' will have the specified number of bytes.
@@ -3340,7 +3340,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.6 </exception>
-		Sub updateBlob(ByVal columnIndex As Integer, ByVal inputStream As java.io.InputStream, ByVal length As Long)
+		Sub updateBlob(  columnIndex As Integer,   inputStream As java.io.InputStream,   length As Long)
 
 		''' <summary>
 		''' Updates the designated column using the given input stream, which
@@ -3363,7 +3363,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.6 </exception>
-		Sub updateBlob(ByVal columnLabel As String, ByVal inputStream As java.io.InputStream, ByVal length As Long)
+		Sub updateBlob(  columnLabel As String,   inputStream As java.io.InputStream,   length As Long)
 
 		''' <summary>
 		''' Updates the designated column using the given <code>Reader</code>
@@ -3389,7 +3389,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.6 </exception>
-		Sub updateClob(ByVal columnIndex As Integer, ByVal reader As java.io.Reader, ByVal length As Long)
+		Sub updateClob(  columnIndex As Integer,   reader As java.io.Reader,   length As Long)
 
 		''' <summary>
 		''' Updates the designated column using the given <code>Reader</code>
@@ -3415,7 +3415,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.6 </exception>
-		Sub updateClob(ByVal columnLabel As String, ByVal reader As java.io.Reader, ByVal length As Long)
+		Sub updateClob(  columnLabel As String,   reader As java.io.Reader,   length As Long)
 	   ''' <summary>
 	   ''' Updates the designated column using the given <code>Reader</code>
 	   ''' object, which is the given number of characters java.lang.[Long].
@@ -3442,7 +3442,7 @@ Namespace java.sql
 	   ''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 	   ''' this method
 	   ''' @since 1.6 </exception>
-		Sub updateNClob(ByVal columnIndex As Integer, ByVal reader As java.io.Reader, ByVal length As Long)
+		Sub updateNClob(  columnIndex As Integer,   reader As java.io.Reader,   length As Long)
 
 		''' <summary>
 		''' Updates the designated column using the given <code>Reader</code>
@@ -3470,7 +3470,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.6 </exception>
-		Sub updateNClob(ByVal columnLabel As String, ByVal reader As java.io.Reader, ByVal length As Long)
+		Sub updateNClob(  columnLabel As String,   reader As java.io.Reader,   length As Long)
 
 		'---
 
@@ -3501,7 +3501,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.6 </exception>
-		Sub updateNCharacterStream(ByVal columnIndex As Integer, ByVal x As java.io.Reader)
+		Sub updateNCharacterStream(  columnIndex As Integer,   x As java.io.Reader)
 
 		''' <summary>
 		''' Updates the designated column with a character stream value.
@@ -3531,7 +3531,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.6 </exception>
-		Sub updateNCharacterStream(ByVal columnLabel As String, ByVal reader As java.io.Reader)
+		Sub updateNCharacterStream(  columnLabel As String,   reader As java.io.Reader)
 		''' <summary>
 		''' Updates the designated column with an ascii stream value.
 		''' The data will be read from the stream
@@ -3555,7 +3555,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.6 </exception>
-		Sub updateAsciiStream(ByVal columnIndex As Integer, ByVal x As java.io.InputStream)
+		Sub updateAsciiStream(  columnIndex As Integer,   x As java.io.InputStream)
 
 		''' <summary>
 		''' Updates the designated column with a binary stream value.
@@ -3580,7 +3580,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.6 </exception>
-		Sub updateBinaryStream(ByVal columnIndex As Integer, ByVal x As java.io.InputStream)
+		Sub updateBinaryStream(  columnIndex As Integer,   x As java.io.InputStream)
 
 		''' <summary>
 		''' Updates the designated column with a character stream value.
@@ -3605,7 +3605,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.6 </exception>
-		Sub updateCharacterStream(ByVal columnIndex As Integer, ByVal x As java.io.Reader)
+		Sub updateCharacterStream(  columnIndex As Integer,   x As java.io.Reader)
 		''' <summary>
 		''' Updates the designated column with an ascii stream value.
 		''' The data will be read from the stream
@@ -3629,7 +3629,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.6 </exception>
-		Sub updateAsciiStream(ByVal columnLabel As String, ByVal x As java.io.InputStream)
+		Sub updateAsciiStream(  columnLabel As String,   x As java.io.InputStream)
 
 		''' <summary>
 		''' Updates the designated column with a binary stream value.
@@ -3654,7 +3654,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.6 </exception>
-		Sub updateBinaryStream(ByVal columnLabel As String, ByVal x As java.io.InputStream)
+		Sub updateBinaryStream(  columnLabel As String,   x As java.io.InputStream)
 
 		''' <summary>
 		''' Updates the designated column with a character stream value.
@@ -3679,7 +3679,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.6 </exception>
-		Sub updateCharacterStream(ByVal columnLabel As String, ByVal reader As java.io.Reader)
+		Sub updateCharacterStream(  columnLabel As String,   reader As java.io.Reader)
 		''' <summary>
 		''' Updates the designated column using the given input stream. The data will be read from the stream
 		''' as needed until end-of-stream is reached.
@@ -3702,7 +3702,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.6 </exception>
-		Sub updateBlob(ByVal columnIndex As Integer, ByVal inputStream As java.io.InputStream)
+		Sub updateBlob(  columnIndex As Integer,   inputStream As java.io.InputStream)
 
 		''' <summary>
 		''' Updates the designated column using the given input stream. The data will be read from the stream
@@ -3726,7 +3726,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.6 </exception>
-		Sub updateBlob(ByVal columnLabel As String, ByVal inputStream As java.io.InputStream)
+		Sub updateBlob(  columnLabel As String,   inputStream As java.io.InputStream)
 
 		''' <summary>
 		''' Updates the designated column using the given <code>Reader</code>
@@ -3754,7 +3754,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.6 </exception>
-		Sub updateClob(ByVal columnIndex As Integer, ByVal reader As java.io.Reader)
+		Sub updateClob(  columnIndex As Integer,   reader As java.io.Reader)
 
 		''' <summary>
 		''' Updates the designated column using the given <code>Reader</code>
@@ -3781,7 +3781,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.6 </exception>
-		Sub updateClob(ByVal columnLabel As String, ByVal reader As java.io.Reader)
+		Sub updateClob(  columnLabel As String,   reader As java.io.Reader)
 	   ''' <summary>
 	   ''' Updates the designated column using the given <code>Reader</code>
 	   '''  
@@ -3810,7 +3810,7 @@ Namespace java.sql
 	   ''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 	   ''' this method
 	   ''' @since 1.6 </exception>
-		Sub updateNClob(ByVal columnIndex As Integer, ByVal reader As java.io.Reader)
+		Sub updateNClob(  columnIndex As Integer,   reader As java.io.Reader)
 
 		''' <summary>
 		''' Updates the designated column using the given <code>Reader</code>
@@ -3839,7 +3839,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.6 </exception>
-		Sub updateNClob(ByVal columnLabel As String, ByVal reader As java.io.Reader)
+		Sub updateNClob(  columnLabel As String,   reader As java.io.Reader)
 
 		'------------------------- JDBC 4.1 -----------------------------------
 
@@ -3868,7 +3868,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.7 </exception>
-		  Function getObject(Of T)(ByVal columnIndex As Integer, ByVal type As [Class]) As T
+		  Function getObject(Of T)(  columnIndex As Integer,   type As [Class]) As T
 
 
 		''' <summary>
@@ -3898,7 +3898,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.7 </exception>
-		  Function getObject(Of T)(ByVal columnLabel As String, ByVal type As [Class]) As T
+		  Function getObject(Of T)(  columnLabel As String,   type As [Class]) As T
 
 		'------------------------- JDBC 4.2 -----------------------------------
 
@@ -3936,8 +3936,8 @@ Namespace java.sql
 		''' <seealso cref= JDBCType </seealso>
 		''' <seealso cref= SQLType
 		''' @since 1.8 </seealso>
-		 default Sub updateObject(ByVal columnIndex As Integer, ByVal x As Object, ByVal targetSqlType As SQLType, ByVal scaleOrLength As Integer)
-			throw Function SQLFeatureNotSupportedException("updateObject not implemented" ByVal  As ) As New
+		 default Sub updateObject(  columnIndex As Integer,   x As Object,   targetSqlType As SQLType,   scaleOrLength As Integer)
+			throw Function SQLFeatureNotSupportedException("updateObject not implemented"    As ) As New
 
 		''' <summary>
 		''' Updates the designated column with an {@code Object} value.
@@ -3976,8 +3976,8 @@ Namespace java.sql
 		''' <seealso cref= JDBCType </seealso>
 		''' <seealso cref= SQLType
 		''' @since 1.8 </seealso>
-		default Sub updateObject(ByVal columnLabel As String, ByVal x As Object, ByVal targetSqlType As SQLType, ByVal scaleOrLength As Integer)
-			throw Function SQLFeatureNotSupportedException("updateObject not implemented" ByVal  As ) As New
+		default Sub updateObject(  columnLabel As String,   x As Object,   targetSqlType As SQLType,   scaleOrLength As Integer)
+			throw Function SQLFeatureNotSupportedException("updateObject not implemented"    As ) As New
 
 		''' <summary>
 		''' Updates the designated column with an {@code Object} value.
@@ -4001,8 +4001,8 @@ Namespace java.sql
 		''' <seealso cref= JDBCType </seealso>
 		''' <seealso cref= SQLType
 		''' @since 1.8 </seealso>
-		default Sub updateObject(ByVal columnIndex As Integer, ByVal x As Object, ByVal targetSqlType As SQLType)
-			throw Function SQLFeatureNotSupportedException("updateObject not implemented" ByVal  As ) As New
+		default Sub updateObject(  columnIndex As Integer,   x As Object,   targetSqlType As SQLType)
+			throw Function SQLFeatureNotSupportedException("updateObject not implemented"    As ) As New
 
 		''' <summary>
 		''' Updates the designated column with an {@code Object} value.
@@ -4028,8 +4028,8 @@ Namespace java.sql
 		''' <seealso cref= JDBCType </seealso>
 		''' <seealso cref= SQLType
 		''' @since 1.8 </seealso>
-		default Sub updateObject(ByVal columnLabel As String, ByVal x As Object, ByVal targetSqlType As SQLType)
-			throw Function SQLFeatureNotSupportedException("updateObject not implemented" ByVal  As ) As New
+		default Sub updateObject(  columnLabel As String,   x As Object,   targetSqlType As SQLType)
+			throw Function SQLFeatureNotSupportedException("updateObject not implemented"    As ) As New
 	End Interface
 
 End Namespace

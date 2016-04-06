@@ -83,14 +83,14 @@ Namespace java.lang.invoke
 			Return True
 		End Function
 
-		Public Function cachedMethodHandle(ByVal which As Integer) As MethodHandle
+		Public Function cachedMethodHandle(  which As Integer) As MethodHandle
 			assert(assertIsBasicType())
 			Dim entry As SoftReference(Of MethodHandle) = methodHandles_Renamed(which)
 			Return If(entry IsNot Nothing, entry.get(), Nothing)
 		End Function
 
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Function setCachedMethodHandle(ByVal which As Integer, ByVal mh As MethodHandle) As MethodHandle
+		Public Function setCachedMethodHandle(  which As Integer,   mh As MethodHandle) As MethodHandle
 			' Simulate a CAS, to avoid racy duplication of results.
 			Dim entry As SoftReference(Of MethodHandle) = methodHandles_Renamed(which)
 			If entry IsNot Nothing Then
@@ -101,14 +101,14 @@ Namespace java.lang.invoke
 			Return mh
 		End Function
 
-		Public Function cachedLambdaForm(ByVal which As Integer) As LambdaForm
+		Public Function cachedLambdaForm(  which As Integer) As LambdaForm
 			assert(assertIsBasicType())
 			Dim entry As SoftReference(Of LambdaForm) = lambdaForms(which)
 			Return If(entry IsNot Nothing, entry.get(), Nothing)
 		End Function
 
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Function setCachedLambdaForm(ByVal which As Integer, ByVal form As LambdaForm) As LambdaForm
+		Public Function setCachedLambdaForm(  which As Integer,   form As LambdaForm) As LambdaForm
 			' Simulate a CAS, to avoid racy duplication of results.
 			Dim entry As SoftReference(Of LambdaForm) = lambdaForms(which)
 			If entry IsNot Nothing Then
@@ -125,7 +125,7 @@ Namespace java.lang.invoke
 		''' Eagerly compute some basic properties of the type, common to all variations.
 		''' </summary>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Protected Friend Sub New(ByVal erasedType As MethodType)
+		Protected Friend Sub New(  erasedType As MethodType)
 			Me.erasedType_Renamed = erasedType
 
 			Dim ptypes As  [Class]() = erasedType.ptypes()
@@ -228,12 +228,12 @@ Namespace java.lang.invoke
 			Me.methodHandles_Renamed = New SoftReference(MH_LIMIT - 1){}
 		End Sub
 
-		Private Shared Function pack(ByVal a As Integer, ByVal b As Integer, ByVal c As Integer, ByVal d As Integer) As Long
+		Private Shared Function pack(  a As Integer,   b As Integer,   c As Integer,   d As Integer) As Long
 			assert(((a Or b Or c Or d) And (Not &HFFFF)) = 0)
 			Dim hw As Long = ((a << 16) Or b), lw As Long = ((c << 16) Or d)
 			Return (hw << 32) Or lw
 		End Function
-		Private Shared Function unpack(ByVal packed As Long, ByVal word As Integer) As Char ' word==0 => return a, ==3 => return d
+		Private Shared Function unpack(  packed As Long,   word As Integer) As Char ' word==0 => return a, ==3 => return d
 			assert(word <= 3)
 			Return CChar(packed >> ((3-word) * 16))
 		End Function
@@ -273,17 +273,17 @@ Namespace java.lang.invoke
 		Public Function hasLongPrimitives() As Boolean
 			Return (longPrimitiveParameterCount() Or longPrimitiveReturnCount()) <> 0
 		End Function
-		Public Function parameterToArgSlot(ByVal i As Integer) As Integer
+		Public Function parameterToArgSlot(  i As Integer) As Integer
 			Return argToSlotTable(1+i)
 		End Function
-		Public Function argSlotToParameter(ByVal argSlot As Integer) As Integer
+		Public Function argSlotToParameter(  argSlot As Integer) As Integer
 			' Note:  Empty slots are represented by zero in this table.
 			' Valid arguments slots contain incremented entries, so as to be non-zero.
 			' We return -1 the caller to mean an empty slot.
 			Return slotToArgTable(argSlot) - 1
 		End Function
 
-		Shared Function findForm(ByVal mt As MethodType) As MethodTypeForm
+		Shared Function findForm(  mt As MethodType) As MethodTypeForm
 			Dim erased As MethodType = canonicalize(mt, [ERASE], [ERASE])
 			If erased Is Nothing Then
 				' It is already erased.  Make a new MethodTypeForm.
@@ -312,7 +312,7 @@ Namespace java.lang.invoke
 		''' If any types change, intern the new type, and return it.
 		''' Otherwise return null.
 		''' </summary>
-		Public Shared Function canonicalize(ByVal mt As MethodType, ByVal howRet As Integer, ByVal howArgs As Integer) As MethodType
+		Public Shared Function canonicalize(  mt As MethodType,   howRet As Integer,   howArgs As Integer) As MethodType
 			Dim ptypes As  [Class]() = mt.ptypes()
 			Dim ptc As  [Class]() = MethodTypeForm.canonicalizeAll(ptypes, howArgs)
 			Dim rtype As  [Class] = mt.returnType()
@@ -328,7 +328,7 @@ Namespace java.lang.invoke
 		''' Canonicalize the given return or param type.
 		'''  Return null if the type is already canonicalized.
 		''' </summary>
-		Friend Shared Function canonicalize(ByVal t As [Class], ByVal how As Integer) As  [Class]
+		Friend Shared Function canonicalize(  t As [Class],   how As Integer) As  [Class]
 			Dim ct As  [Class]
 			If t Is GetType(Object) Then
 				' no change, ever
@@ -374,7 +374,7 @@ Namespace java.lang.invoke
 		''' Canonicalize each param type in the given array.
 		'''  Return null if all types are already canonicalized.
 		''' </summary>
-		Friend Shared Function canonicalizeAll(ByVal ts As  [Class](), ByVal how As Integer) As  [Class]()
+		Friend Shared Function canonicalizeAll(  ts As  [Class](),   how As Integer) As  [Class]()
 			Dim cs As  [Class]() = Nothing
 			Dim imax As Integer = ts.Length
 			Dim i As Integer = 0

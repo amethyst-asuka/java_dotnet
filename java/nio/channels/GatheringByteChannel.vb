@@ -120,7 +120,7 @@ Namespace java.nio.channels
 		''' </exception>
 		''' <exception cref="IOException">
 		'''          If some other I/O error occurs </exception>
-		Function write(ByVal srcs As java.nio.ByteBuffer(), ByVal offset As Integer, ByVal length As Integer) As Long
+		Function write(  srcs As java.nio.ByteBuffer(),   offset As Integer,   length As Integer) As Long
 
 
 		''' <summary>
@@ -155,7 +155,7 @@ Namespace java.nio.channels
 		''' </exception>
 		''' <exception cref="IOException">
 		'''          If some other I/O error occurs </exception>
-		Function write(ByVal srcs As java.nio.ByteBuffer()) As Long
+		Function write(  srcs As java.nio.ByteBuffer()) As Long
 
 	End Interface
 

@@ -57,7 +57,7 @@ Namespace java.security
         '''                  for the signature. </param>
         ''' <exception cref="NullPointerException"> if {@code signerCertPath} is
         '''                              {@code null}. </exception>
-        Public Sub New(ByVal signerCertPath As java.security.cert.CertPath, ByVal timestamp As Timestamp)
+        Public Sub New(  signerCertPath As java.security.cert.CertPath,   timestamp As Timestamp)
             If signerCertPath Is Nothing Then Throw New NullPointerException
             Me.signerCertPath = signerCertPath
             Me.timestamp = timestamp
@@ -101,7 +101,7 @@ Namespace java.security
         ''' <param name="obj"> the object to test for equality with this object.
         ''' </param>
         ''' <returns> true if the objects are considered equal, false otherwise. </returns>
-        Public Overrides Function Equals(ByVal obj As Object) As Boolean
+        Public Overrides Function Equals(  obj As Object) As Boolean
             If obj Is Nothing OrElse (Not (TypeOf obj Is CodeSigner)) Then Return False
             Dim that As CodeSigner = CType(obj, CodeSigner)
 
@@ -130,7 +130,7 @@ Namespace java.security
         End Function
 
         ' Explicitly reset hash code value to -1
-        Private Sub readObject(ByVal ois As ObjectInputStream)
+        Private Sub readObject(  ois As ObjectInputStream)
             ois.defaultReadObject()
             myhash = -1
         End Sub

@@ -77,7 +77,7 @@ Namespace java.awt.print
 		'''          orientation of the page. </returns>
 		''' <exception cref="IndexOutOfBoundsException"> if the <code>Pageable</code>
 		'''          does not contain the requested page </exception>
-		Public Overridable Function getPageFormat(ByVal pageIndex As Integer) As PageFormat Implements Pageable.getPageFormat
+		Public Overridable Function getPageFormat(  pageIndex As Integer) As PageFormat Implements Pageable.getPageFormat
 			Return getPage(pageIndex).pageFormat
 		End Function
 
@@ -89,7 +89,7 @@ Namespace java.awt.print
 		''' <returns> the <code>Printable</code> that renders the page. </returns>
 		''' <exception cref="IndexOutOfBoundsException"> if the <code>Pageable</code>
 		'''            does not contain the requested page </exception>
-		Public Overridable Function getPrintable(ByVal pageIndex As Integer) As Printable Implements Pageable.getPrintable
+		Public Overridable Function getPrintable(  pageIndex As Integer) As Printable Implements Pageable.getPrintable
 			Return getPage(pageIndex).printable
 		End Function
 
@@ -105,7 +105,7 @@ Namespace java.awt.print
 		'''          page is not already in this <code>Book</code> </exception>
 		''' <exception cref="NullPointerException"> if the <code>painter</code> or
 		'''          <code>page</code> argument is <code>null</code> </exception>
-		Public Overridable Sub setPage(ByVal pageIndex As Integer, ByVal painter As Printable, ByVal page As PageFormat)
+		Public Overridable Sub setPage(  pageIndex As Integer,   painter As Printable,   page As PageFormat)
 			If painter Is Nothing Then Throw New NullPointerException("painter is null")
 
 			If page Is Nothing Then Throw New NullPointerException("page is null")
@@ -121,7 +121,7 @@ Namespace java.awt.print
 		''' <exception cref="NullPointerException">
 		'''          If the <code>painter</code> or <code>page</code>
 		'''          argument is <code>null</code> </exception>
-		Public Overridable Sub append(ByVal painter As Printable, ByVal page As PageFormat)
+		Public Overridable Sub append(  painter As Printable,   page As PageFormat)
 			mPages.Add(New BookPage(Me, painter, page))
 		End Sub
 
@@ -137,7 +137,7 @@ Namespace java.awt.print
 		''' <exception cref="NullPointerException">
 		'''          If the <code>painter</code> or <code>page</code>
 		'''          argument is <code>null</code> </exception>
-		Public Overridable Sub append(ByVal painter As Printable, ByVal page As PageFormat, ByVal numPages As Integer)
+		Public Overridable Sub append(  painter As Printable,   page As PageFormat,   numPages As Integer)
 			Dim bookPage As New BookPage(Me, painter, page)
 			Dim pageIndex As Integer = mPages.Count
 			Dim newSize As Integer = pageIndex + numPages
@@ -151,7 +151,7 @@ Namespace java.awt.print
 		''' <summary>
 		''' Return the BookPage for the page specified by 'pageIndex'.
 		''' </summary>
-		Private Function getPage(ByVal pageIndex As Integer) As BookPage
+		Private Function getPage(  pageIndex As Integer) As BookPage
 			Return CType(mPages(pageIndex), BookPage)
 		End Function
 
@@ -179,7 +179,7 @@ Namespace java.awt.print
 			''' <exception cref="NullPointerException">
 			'''          If the <code>painter</code> or <code>format</code>
 			'''          argument is <code>null</code> </exception>
-			Friend Sub New(ByVal outerInstance As Book, ByVal painter As Printable, ByVal format As PageFormat)
+			Friend Sub New(  outerInstance As Book,   painter As Printable,   format As PageFormat)
 					Me.outerInstance = outerInstance
 
 				If painter Is Nothing OrElse format Is Nothing Then Throw New NullPointerException

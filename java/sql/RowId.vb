@@ -79,7 +79,7 @@ Namespace java.sql
 		'''     against. </param>
 		''' <returns> true if the <code>RowId</code>s are equal; false otherwise
 		''' @since 1.6 </returns>
-		Function Equals(ByVal obj As Object) As Boolean
+		Function Equals(  obj As Object) As Boolean
 
 		''' <summary>
 		''' Returns an array of bytes representing the value of the SQL <code>ROWID</code>

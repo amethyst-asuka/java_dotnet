@@ -165,12 +165,12 @@ Namespace java.net
 		''' <param name="actions"> the actions string
 		''' </param>
 		''' <exception cref="IllegalArgumentException"> if url is invalid or if actions contains white-space. </exception>
-		Public Sub New(ByVal url As String, ByVal actions As String)
+		Public Sub New(  url As String,   actions As String)
 			MyBase.New(url)
 			init(actions)
 		End Sub
 
-		Private Sub init(ByVal actions As String)
+		Private Sub init(  actions As String)
 			parseURI(name)
 			Dim colon As Integer = actions.IndexOf(":"c)
 			If actions.LastIndexOf(":"c) <> colon Then Throw New IllegalArgumentException("invalid actions string")
@@ -203,7 +203,7 @@ Namespace java.net
 		''' <param name="url"> the url string
 		''' </param>
 		''' <exception cref="IllegalArgumentException"> if url does not result in a valid <seealso cref="URI"/> </exception>
-		Public Sub New(ByVal url As String)
+		Public Sub New(  url As String)
 			Me.New(url, "*:*")
 		End Sub
 
@@ -260,7 +260,7 @@ Namespace java.net
 		''' <tr><td>/a/b/*</td><td>/a/b/c/-</td><td>no</td></tr>
 		''' </table>
 		''' </summary>
-		Public Function implies(ByVal p As java.security.Permission) As Boolean
+		Public Function implies(  p As java.security.Permission) As Boolean
 			If Not(TypeOf p Is URLPermission) Then Return False
 
 			Dim that As URLPermission = CType(p, URLPermission)
@@ -302,7 +302,7 @@ Namespace java.net
 		''' Returns true if, this.getActions().equals(p.getActions())
 		''' and p's url equals this's url.  Returns false otherwise.
 		''' </summary>
-		Public Overrides Function Equals(ByVal p As Object) As Boolean
+		Public Overrides Function Equals(  p As Object) As Boolean
 			If Not(TypeOf p Is URLPermission) Then Return False
 			Dim that As URLPermission = CType(p, URLPermission)
 			If Not Me.scheme.Equals(that.scheme) Then Return False
@@ -324,7 +324,7 @@ Namespace java.net
 		End Function
 
 
-		Private Function normalizeMethods(ByVal methods As String) As IList(Of String)
+		Private Function normalizeMethods(  methods As String) As IList(Of String)
 			Dim l As IList(Of String) = New List(Of String)
 			Dim b As New StringBuilder
 			For i As Integer = 0 To methods.length() - 1
@@ -345,7 +345,7 @@ Namespace java.net
 			Return l
 		End Function
 
-		Private Function normalizeHeaders(ByVal headers As String) As IList(Of String)
+		Private Function normalizeHeaders(  headers As String) As IList(Of String)
 			Dim l As IList(Of String) = New List(Of String)
 			Dim b As New StringBuilder
 			Dim capitalizeNext As Boolean = True
@@ -377,7 +377,7 @@ Namespace java.net
 			Return l
 		End Function
 
-		Private Sub parseURI(ByVal url As String)
+		Private Sub parseURI(  url As String)
 			Dim len As Integer = url.length()
 			Dim delim As Integer = url.IndexOf(":"c)
 			If delim = -1 OrElse delim + 1 = len Then Throw New IllegalArgumentException("invalid URL string")
@@ -418,7 +418,7 @@ Namespace java.net
 		''' <summary>
 		''' restore the state of this object from stream
 		''' </summary>
-		Private Sub readObject(ByVal s As java.io.ObjectInputStream)
+		Private Sub readObject(  s As java.io.ObjectInputStream)
 			Dim fields As java.io.ObjectInputStream.GetField = s.readFields()
 			Dim actions_Renamed As String = CStr(fields.get("actions", Nothing))
 
@@ -428,7 +428,7 @@ Namespace java.net
 		Friend Class Authority
 			Friend p As HostPortrange
 
-			Friend Sub New(ByVal scheme As String, ByVal authority As String)
+			Friend Sub New(  scheme As String,   authority As String)
 				Dim at As Integer = authority.IndexOf("@"c)
 				If at = -1 Then
 						p = New HostPortrange(scheme, authority)
@@ -437,11 +437,11 @@ Namespace java.net
 				End If
 			End Sub
 
-			Friend Overridable Function implies(ByVal other As Authority) As Boolean
+			Friend Overridable Function implies(  other As Authority) As Boolean
 				Return impliesHostrange(other) AndAlso impliesPortrange(other)
 			End Function
 
-			Private Function impliesHostrange(ByVal that As Authority) As Boolean
+			Private Function impliesHostrange(  that As Authority) As Boolean
 				Dim thishost As String = Me.p.hostname()
 				Dim thathost As String = that.p.hostname()
 
@@ -452,14 +452,14 @@ Namespace java.net
 				Return False
 			End Function
 
-			Private Function impliesPortrange(ByVal that As Authority) As Boolean
+			Private Function impliesPortrange(  that As Authority) As Boolean
 				Dim thisrange As Integer() = Me.p.portrange()
 				Dim thatrange As Integer() = that.p.portrange()
 				If thisrange(0) = -1 Then Return True
 				Return thisrange(0) <= thatrange(0) AndAlso thisrange(1) >= thatrange(1)
 			End Function
 
-			Friend Overrides Function Equals(ByVal that As Authority) As Boolean
+			Friend Overrides Function Equals(  that As Authority) As Boolean
 				Return Me.p.Equals(that.p)
 			End Function
 

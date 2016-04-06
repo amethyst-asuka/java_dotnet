@@ -158,7 +158,7 @@ Namespace java.awt
 		''' <exception cref="HeadlessException"> if GraphicsEnvironment.isHeadless()
 		''' returns true. </exception>
 		''' <seealso cref= java.awt.GraphicsEnvironment#isHeadless </seealso>
-		Public Sub New(ByVal text As String)
+		Public Sub New(  text As String)
 			Me.New(text,If(text IsNot Nothing, text.length(), 0))
 		End Sub
 
@@ -172,7 +172,7 @@ Namespace java.awt
 		''' <exception cref="HeadlessException"> if GraphicsEnvironment.isHeadless()
 		''' returns true. </exception>
 		''' <seealso cref= java.awt.GraphicsEnvironment#isHeadless </seealso>
-		Public Sub New(ByVal columns As Integer)
+		Public Sub New(  columns As Integer)
 			Me.New("", columns)
 		End Sub
 
@@ -190,7 +190,7 @@ Namespace java.awt
 		''' <exception cref="HeadlessException"> if GraphicsEnvironment.isHeadless()
 		''' returns true. </exception>
 		''' <seealso cref= java.awt.GraphicsEnvironment#isHeadless </seealso>
-		Public Sub New(ByVal text As String, ByVal columns As Integer)
+		Public Sub New(  text As String,   columns As Integer)
 			MyBase.New(text)
 			Me.columns = If(columns >= 0, columns, 0)
 		End Sub
@@ -239,7 +239,7 @@ Namespace java.awt
 			Get
 				Return echoChar
 			End Get
-			Set(ByVal c As Char)
+			Set(  c As Char)
 				echoCharacter = c
 			End Set
 		End Property
@@ -249,7 +249,7 @@ Namespace java.awt
 		''' replaced by <code>setEchoChar(char)</code>. 
 		<Obsolete("As of JDK version 1.1,"), MethodImpl(MethodImplOptions.Synchronized)> _
 		Public Overridable Property echoCharacter As Char
-			Set(ByVal c As Char)
+			Set(  c As Char)
 				If echoChar <> c Then
 					echoChar = c
 					Dim peer_Renamed As java.awt.peer.TextFieldPeer = CType(Me.peer, java.awt.peer.TextFieldPeer)
@@ -264,7 +264,7 @@ Namespace java.awt
 		''' <param name="t">   the new text. </param>
 		''' <seealso cref=         java.awt.TextComponent#getText </seealso>
 		Public Overrides Property text As String
-			Set(ByVal t As String)
+			Set(  t As String)
 				MyBase.text = t
     
 				' This could change the preferred size of the Component.
@@ -298,7 +298,7 @@ Namespace java.awt
 			Get
 				Return columns
 			End Get
-			Set(ByVal columns As Integer)
+			Set(  columns As Integer)
 				Dim oldVal As Integer
 				SyncLock Me
 					oldVal = Me.columns
@@ -319,14 +319,14 @@ Namespace java.awt
 		''' <returns>    the preferred dimensions for
 		'''                 displaying this text field.
 		''' @since     JDK1.1 </returns>
-		Public Overridable Function getPreferredSize(ByVal columns As Integer) As Dimension
+		Public Overridable Function getPreferredSize(  columns As Integer) As Dimension
 			Return preferredSize(columns)
 		End Function
 
 		''' @deprecated As of JDK version 1.1,
 		''' replaced by <code>getPreferredSize(int)</code>. 
 		<Obsolete("As of JDK version 1.1,")> _
-		Public Overridable Function preferredSize(ByVal columns As Integer) As Dimension
+		Public Overridable Function preferredSize(  columns As Integer) As Dimension
 			SyncLock treeLock
 				Dim peer_Renamed As java.awt.peer.TextFieldPeer = CType(Me.peer, java.awt.peer.TextFieldPeer)
 				Return If(peer_Renamed IsNot Nothing, peer_Renamed.getPreferredSize(columns), MyBase.preferredSize())
@@ -359,14 +359,14 @@ Namespace java.awt
 		''' <param name="columns">   the number of columns in
 		'''                          this text field.
 		''' @since    JDK1.1 </param>
-		Public Overridable Function getMinimumSize(ByVal columns As Integer) As Dimension
+		Public Overridable Function getMinimumSize(  columns As Integer) As Dimension
 			Return minimumSize(columns)
 		End Function
 
 		''' @deprecated As of JDK version 1.1,
 		''' replaced by <code>getMinimumSize(int)</code>. 
 		<Obsolete("As of JDK version 1.1,")> _
-		Public Overridable Function minimumSize(ByVal columns As Integer) As Dimension
+		Public Overridable Function minimumSize(  columns As Integer) As Dimension
 			SyncLock treeLock
 				Dim peer_Renamed As java.awt.peer.TextFieldPeer = CType(Me.peer, java.awt.peer.TextFieldPeer)
 				Return If(peer_Renamed IsNot Nothing, peer_Renamed.getMinimumSize(columns), MyBase.minimumSize())
@@ -406,7 +406,7 @@ Namespace java.awt
 		''' <seealso cref=        java.awt.event.ActionListener
 		''' @since      JDK1.1 </seealso>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Sub addActionListener(ByVal l As ActionListener)
+		Public Overridable Sub addActionListener(  l As ActionListener)
 			If l Is Nothing Then Return
 			actionListener = AWTEventMulticaster.add(actionListener, l)
 			newEventsOnly = True
@@ -425,7 +425,7 @@ Namespace java.awt
 		''' <seealso cref=             java.awt.event.ActionListener
 		''' @since           JDK1.1 </seealso>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Sub removeActionListener(ByVal l As ActionListener)
+		Public Overridable Sub removeActionListener(  l As ActionListener)
 			If l Is Nothing Then Return
 			actionListener = AWTEventMulticaster.remove(actionListener, l)
 		End Sub
@@ -481,7 +481,7 @@ Namespace java.awt
 		''' </exception>
 		''' <seealso cref= #getActionListeners
 		''' @since 1.3 </seealso>
-		Public Overrides Function getListeners(Of T As java.util.EventListener)(ByVal listenerType As [Class]) As T()
+		Public Overrides Function getListeners(Of T As java.util.EventListener)(  listenerType As [Class]) As T()
 			Dim l As java.util.EventListener = Nothing
 			If listenerType Is GetType(ActionListener) Then
 				l = actionListener
@@ -492,7 +492,7 @@ Namespace java.awt
 		End Function
 
 		' REMIND: remove when filtering is done at lower level
-		Friend Overrides Function eventEnabled(ByVal e As AWTEvent) As Boolean
+		Friend Overrides Function eventEnabled(  e As AWTEvent) As Boolean
 			If e.id = ActionEvent.ACTION_PERFORMED Then
 				If (eventMask And AWTEvent.ACTION_EVENT_MASK) <> 0 OrElse actionListener IsNot Nothing Then Return True
 				Return False
@@ -514,7 +514,7 @@ Namespace java.awt
 		''' <seealso cref=        java.awt.event.ActionEvent </seealso>
 		''' <seealso cref=        java.awt.TextField#processActionEvent
 		''' @since      JDK1.1 </seealso>
-		Protected Friend Overrides Sub processEvent(ByVal e As AWTEvent)
+		Protected Friend Overrides Sub processEvent(  e As AWTEvent)
 			If TypeOf e Is ActionEvent Then
 				processActionEvent(CType(e, ActionEvent))
 				Return
@@ -544,7 +544,7 @@ Namespace java.awt
 		''' <seealso cref=         java.awt.TextField#addActionListener </seealso>
 		''' <seealso cref=         java.awt.Component#enableEvents
 		''' @since       JDK1.1 </seealso>
-		Protected Friend Overridable Sub processActionEvent(ByVal e As ActionEvent)
+		Protected Friend Overridable Sub processActionEvent(  e As ActionEvent)
 			Dim listener As ActionListener = actionListener
 			If listener IsNot Nothing Then listener.actionPerformed(e)
 		End Sub
@@ -588,7 +588,7 @@ Namespace java.awt
 		''' </summary>
 		''' <seealso cref= AWTEventMulticaster#save(ObjectOutputStream, String, EventListener) </seealso>
 		''' <seealso cref= java.awt.Component#actionListenerK </seealso>
-		Private Sub writeObject(ByVal s As java.io.ObjectOutputStream)
+		Private Sub writeObject(  s As java.io.ObjectOutputStream)
 			s.defaultWriteObject()
 
 			AWTEventMulticaster.save(s, actionListenerK, actionListener)
@@ -607,7 +607,7 @@ Namespace java.awt
 		''' <seealso cref= #removeActionListener(ActionListener) </seealso>
 		''' <seealso cref= #addActionListener(ActionListener) </seealso>
 		''' <seealso cref= java.awt.GraphicsEnvironment#isHeadless </seealso>
-		Private Sub readObject(ByVal s As java.io.ObjectInputStream)
+		Private Sub readObject(  s As java.io.ObjectInputStream)
 			' HeadlessException will be thrown by TextComponent's readObject
 			s.defaultReadObject()
 
@@ -663,7 +663,7 @@ Namespace java.awt
 
 			Private ReadOnly outerInstance As TextField
 
-			Public Sub New(ByVal outerInstance As TextField)
+			Public Sub New(  outerInstance As TextField)
 				Me.outerInstance = outerInstance
 			End Sub
 

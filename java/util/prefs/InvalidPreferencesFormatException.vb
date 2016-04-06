@@ -46,7 +46,7 @@ Namespace java.util.prefs
 		''' </summary>
 		''' <param name="cause"> the cause (which is saved for later retrieval by the
 		'''         <seealso cref="Throwable#getCause()"/> method). </param>
-		Public Sub New(ByVal cause As Throwable)
+		Public Sub New(  cause As Throwable)
 			MyBase.New(cause)
 		End Sub
 
@@ -56,7 +56,7 @@ Namespace java.util.prefs
 	   ''' </summary>
 	   ''' <param name="message">   the detail message. The detail message is saved for
 	   '''          later retrieval by the <seealso cref="Throwable#getMessage()"/> method. </param>
-		Public Sub New(ByVal message As String)
+		Public Sub New(  message As String)
 			MyBase.New(message)
 		End Sub
 
@@ -68,7 +68,7 @@ Namespace java.util.prefs
 		'''         later retrieval by the <seealso cref="Throwable#getMessage()"/> method. </param>
 		''' <param name="cause"> the cause (which is saved for later retrieval by the
 		'''         <seealso cref="Throwable#getCause()"/> method). </param>
-		Public Sub New(ByVal message As String, ByVal cause As Throwable)
+		Public Sub New(  message As String,   cause As Throwable)
 			MyBase.New(message, cause)
 		End Sub
 

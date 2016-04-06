@@ -153,7 +153,7 @@ Namespace java.time
 		''' </summary>
 		''' <param name="years">  the number of years, positive or negative </param>
 		''' <returns> the period of years, not null </returns>
-		Public Shared Function ofYears(ByVal years As Integer) As Period
+		Public Shared Function ofYears(  years As Integer) As Period
 			Return create(years, 0, 0)
 		End Function
 
@@ -165,7 +165,7 @@ Namespace java.time
 		''' </summary>
 		''' <param name="months">  the number of months, positive or negative </param>
 		''' <returns> the period of months, not null </returns>
-		Public Shared Function ofMonths(ByVal months As Integer) As Period
+		Public Shared Function ofMonths(  months As Integer) As Period
 			Return create(0, months, 0)
 		End Function
 
@@ -178,7 +178,7 @@ Namespace java.time
 		''' </summary>
 		''' <param name="weeks">  the number of weeks, positive or negative </param>
 		''' <returns> the period, with the input weeks converted to days, not null </returns>
-		Public Shared Function ofWeeks(ByVal weeks As Integer) As Period
+		Public Shared Function ofWeeks(  weeks As Integer) As Period
 			Return create(0, 0, System.Math.multiplyExact(weeks, 7))
 		End Function
 
@@ -190,7 +190,7 @@ Namespace java.time
 		''' </summary>
 		''' <param name="days">  the number of days, positive or negative </param>
 		''' <returns> the period of days, not null </returns>
-		Public Shared Function ofDays(ByVal days As Integer) As Period
+		Public Shared Function ofDays(  days As Integer) As Period
 			Return create(0, 0, days)
 		End Function
 
@@ -204,7 +204,7 @@ Namespace java.time
 		''' <param name="months">  the amount of months, may be negative </param>
 		''' <param name="days">  the amount of days, may be negative </param>
 		''' <returns> the period of years, months and days, not null </returns>
-		Public Shared Function [of](ByVal years As Integer, ByVal months As Integer, ByVal days As Integer) As Period
+		Public Shared Function [of](  years As Integer,   months As Integer,   days As Integer) As Period
 			Return create(years, months, days)
 		End Function
 
@@ -227,7 +227,7 @@ Namespace java.time
 		''' <returns> the equivalent period, not null </returns>
 		''' <exception cref="DateTimeException"> if unable to convert to a {@code Period} </exception>
 		''' <exception cref="ArithmeticException"> if the amount of years, months or days exceeds an int </exception>
-		Public Shared Function [from](ByVal amount As java.time.temporal.TemporalAmount) As Period
+		Public Shared Function [from](  amount As java.time.temporal.TemporalAmount) As Period
 			If TypeOf amount Is Period Then Return CType(amount, Period)
 			If TypeOf amount Is java.time.chrono.ChronoPeriod Then
 				If java.time.chrono.IsoChronology.INSTANCE.Equals(CType(amount, java.time.chrono.ChronoPeriod).chronology) = False Then Throw New DateTimeException("Period requires ISO chronology: " & amount)
@@ -290,7 +290,7 @@ Namespace java.time
 		''' <param name="text">  the text to parse, not null </param>
 		''' <returns> the parsed period, not null </returns>
 		''' <exception cref="DateTimeParseException"> if the text cannot be parsed to a period </exception>
-		Public Shared Function parse(ByVal text As CharSequence) As Period
+		Public Shared Function parse(  text As CharSequence) As Period
 			java.util.Objects.requireNonNull(text, "text")
 			Dim matcher As java.util.regex.Matcher = PATTERN.matcher(text)
 			If matcher.matches() Then
@@ -315,7 +315,7 @@ Namespace java.time
 			Throw New java.time.format.DateTimeParseException("Text cannot be parsed to a Period", text, 0)
 		End Function
 
-		Private Shared Function parseNumber(ByVal text As CharSequence, ByVal str As String, ByVal negate As Integer) As Integer
+		Private Shared Function parseNumber(  text As CharSequence,   str As String,   negate As Integer) As Integer
 			If str Is Nothing Then Return 0
 			Dim val As Integer = Convert.ToInt32(str)
 			Try
@@ -344,7 +344,7 @@ Namespace java.time
 		''' <param name="endDateExclusive">  the end date, exclusive, not null </param>
 		''' <returns> the period between this date and the end date, not null </returns>
 		''' <seealso cref= ChronoLocalDate#until(ChronoLocalDate) </seealso>
-		Public Shared Function between(ByVal startDateInclusive As LocalDate, ByVal endDateExclusive As LocalDate) As Period
+		Public Shared Function between(  startDateInclusive As LocalDate,   endDateExclusive As LocalDate) As Period
 			Return startDateInclusive.until(endDateExclusive)
 		End Function
 
@@ -355,7 +355,7 @@ Namespace java.time
 		''' <param name="years">  the amount </param>
 		''' <param name="months">  the amount </param>
 		''' <param name="days">  the amount </param>
-		Private Shared Function create(ByVal years As Integer, ByVal months As Integer, ByVal days As Integer) As Period
+		Private Shared Function create(  years As Integer,   months As Integer,   days As Integer) As Period
 			If (years Or months Or days) = 0 Then Return ZERO
 			Return New Period(years, months, days)
 		End Function
@@ -366,7 +366,7 @@ Namespace java.time
 		''' <param name="years">  the amount </param>
 		''' <param name="months">  the amount </param>
 		''' <param name="days">  the amount </param>
-		Private Sub New(ByVal years As Integer, ByVal months As Integer, ByVal days As Integer)
+		Private Sub New(  years As Integer,   months As Integer,   days As Integer)
 			Me.years = years
 			Me.months = months
 			Me.days = days
@@ -385,7 +385,7 @@ Namespace java.time
 		''' <returns> the long value of the unit </returns>
 		''' <exception cref="DateTimeException"> if the unit is not supported </exception>
 		''' <exception cref="UnsupportedTemporalTypeException"> if the unit is not supported </exception>
-		Public Overrides Function [get](ByVal unit As java.time.temporal.TemporalUnit) As Long
+		Public Overrides Function [get](  unit As java.time.temporal.TemporalUnit) As Long
 			If unit = java.time.temporal.ChronoUnit.YEARS Then
 				Return years
 			ElseIf unit = java.time.temporal.ChronoUnit.MONTHS Then
@@ -514,7 +514,7 @@ Namespace java.time
 		''' </summary>
 		''' <param name="years">  the years to represent, may be negative </param>
 		''' <returns> a {@code Period} based on this period with the requested years, not null </returns>
-		Public Function withYears(ByVal years As Integer) As Period
+		Public Function withYears(  years As Integer) As Period
 			If years = Me.years Then Return Me
 			Return create(years, months, days)
 		End Function
@@ -533,7 +533,7 @@ Namespace java.time
 		''' </summary>
 		''' <param name="months">  the months to represent, may be negative </param>
 		''' <returns> a {@code Period} based on this period with the requested months, not null </returns>
-		Public Function withMonths(ByVal months As Integer) As Period
+		Public Function withMonths(  months As Integer) As Period
 			If months = Me.months Then Return Me
 			Return create(years, months, days)
 		End Function
@@ -548,7 +548,7 @@ Namespace java.time
 		''' </summary>
 		''' <param name="days">  the days to represent, may be negative </param>
 		''' <returns> a {@code Period} based on this period with the requested days, not null </returns>
-		Public Function withDays(ByVal days As Integer) As Period
+		Public Function withDays(  days As Integer) As Period
 			If days = Me.days Then Return Me
 			Return create(years, months, days)
 		End Function
@@ -573,7 +573,7 @@ Namespace java.time
 		''' <exception cref="DateTimeException"> if the specified amount has a non-ISO chronology or
 		'''  contains an invalid unit </exception>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
-		Public Function plus(ByVal amountToAdd As java.time.temporal.TemporalAmount) As Period
+		Public Function plus(  amountToAdd As java.time.temporal.TemporalAmount) As Period
 			Dim isoAmount As Period = Period.from(amountToAdd)
 			Return create (System.Math.addExact(years, isoAmount.years), System.Math.addExact(months, isoAmount.months), System.Math.addExact(days, isoAmount.days))
 		End Function
@@ -590,7 +590,7 @@ Namespace java.time
 		''' <param name="yearsToAdd">  the years to add, positive or negative </param>
 		''' <returns> a {@code Period} based on this period with the specified years added, not null </returns>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
-		Public Function plusYears(ByVal yearsToAdd As Long) As Period
+		Public Function plusYears(  yearsToAdd As Long) As Period
 			If yearsToAdd = 0 Then Return Me
 			Return create (System.Math.toIntExact (System.Math.addExact(years, yearsToAdd)), months, days)
 		End Function
@@ -607,7 +607,7 @@ Namespace java.time
 		''' <param name="monthsToAdd">  the months to add, positive or negative </param>
 		''' <returns> a {@code Period} based on this period with the specified months added, not null </returns>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
-		Public Function plusMonths(ByVal monthsToAdd As Long) As Period
+		Public Function plusMonths(  monthsToAdd As Long) As Period
 			If monthsToAdd = 0 Then Return Me
 			Return create(years, System.Math.toIntExact (System.Math.addExact(months, monthsToAdd)), days)
 		End Function
@@ -624,7 +624,7 @@ Namespace java.time
 		''' <param name="daysToAdd">  the days to add, positive or negative </param>
 		''' <returns> a {@code Period} based on this period with the specified days added, not null </returns>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
-		Public Function plusDays(ByVal daysToAdd As Long) As Period
+		Public Function plusDays(  daysToAdd As Long) As Period
 			If daysToAdd = 0 Then Return Me
 			Return create(years, months, System.Math.toIntExact (System.Math.addExact(days, daysToAdd)))
 		End Function
@@ -649,7 +649,7 @@ Namespace java.time
 		''' <exception cref="DateTimeException"> if the specified amount has a non-ISO chronology or
 		'''  contains an invalid unit </exception>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
-		Public Function minus(ByVal amountToSubtract As java.time.temporal.TemporalAmount) As Period
+		Public Function minus(  amountToSubtract As java.time.temporal.TemporalAmount) As Period
 			Dim isoAmount As Period = Period.from(amountToSubtract)
 			Return create (System.Math.subtractExact(years, isoAmount.years), System.Math.subtractExact(months, isoAmount.months), System.Math.subtractExact(days, isoAmount.days))
 		End Function
@@ -666,7 +666,7 @@ Namespace java.time
 		''' <param name="yearsToSubtract">  the years to subtract, positive or negative </param>
 		''' <returns> a {@code Period} based on this period with the specified years subtracted, not null </returns>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
-		Public Function minusYears(ByVal yearsToSubtract As Long) As Period
+		Public Function minusYears(  yearsToSubtract As Long) As Period
 			Return (If(yearsToSubtract = java.lang.[Long].MIN_VALUE, plusYears(Long.Max_Value).plusYears(1), plusYears(-yearsToSubtract)))
 		End Function
 
@@ -682,7 +682,7 @@ Namespace java.time
 		''' <param name="monthsToSubtract">  the years to subtract, positive or negative </param>
 		''' <returns> a {@code Period} based on this period with the specified months subtracted, not null </returns>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
-		Public Function minusMonths(ByVal monthsToSubtract As Long) As Period
+		Public Function minusMonths(  monthsToSubtract As Long) As Period
 			Return (If(monthsToSubtract = java.lang.[Long].MIN_VALUE, plusMonths(Long.Max_Value).plusMonths(1), plusMonths(-monthsToSubtract)))
 		End Function
 
@@ -698,7 +698,7 @@ Namespace java.time
 		''' <param name="daysToSubtract">  the months to subtract, positive or negative </param>
 		''' <returns> a {@code Period} based on this period with the specified days subtracted, not null </returns>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
-		Public Function minusDays(ByVal daysToSubtract As Long) As Period
+		Public Function minusDays(  daysToSubtract As Long) As Period
 			Return (If(daysToSubtract = java.lang.[Long].MIN_VALUE, plusDays(Long.Max_Value).plusDays(1), plusDays(-daysToSubtract)))
 		End Function
 
@@ -716,7 +716,7 @@ Namespace java.time
 		''' <param name="scalar">  the scalar to multiply by, not null </param>
 		''' <returns> a {@code Period} based on this period with the amounts multiplied by the scalar, not null </returns>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
-		Public Function multipliedBy(ByVal scalar As Integer) As Period
+		Public Function multipliedBy(  scalar As Integer) As Period
 			If Me Is ZERO OrElse scalar = 1 Then Return Me
 			Return create (System.Math.multiplyExact(years, scalar), System.Math.multiplyExact(months, scalar), System.Math.multiplyExact(days, scalar))
 		End Function
@@ -809,7 +809,7 @@ Namespace java.time
 		''' <returns> an object of the same type with the adjustment made, not null </returns>
 		''' <exception cref="DateTimeException"> if unable to add </exception>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
-		Public Overrides Function addTo(ByVal temporal As java.time.temporal.Temporal) As java.time.temporal.Temporal
+		Public Overrides Function addTo(  temporal As java.time.temporal.Temporal) As java.time.temporal.Temporal
 			validateChrono(temporal)
 			If months = 0 Then
 				If years <> 0 Then temporal = temporal.plus(years, YEARS)
@@ -854,7 +854,7 @@ Namespace java.time
 		''' <returns> an object of the same type with the adjustment made, not null </returns>
 		''' <exception cref="DateTimeException"> if unable to subtract </exception>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
-		Public Overrides Function subtractFrom(ByVal temporal As java.time.temporal.Temporal) As java.time.temporal.Temporal
+		Public Overrides Function subtractFrom(  temporal As java.time.temporal.Temporal) As java.time.temporal.Temporal
 			validateChrono(temporal)
 			If months = 0 Then
 				If years <> 0 Then temporal = temporal.minus(years, YEARS)
@@ -869,7 +869,7 @@ Namespace java.time
 		''' <summary>
 		''' Validates that the temporal has the correct chronology.
 		''' </summary>
-		Private Sub validateChrono(ByVal temporal As java.time.temporal.TemporalAccessor)
+		Private Sub validateChrono(  temporal As java.time.temporal.TemporalAccessor)
 			java.util.Objects.requireNonNull(temporal, "temporal")
 			Dim temporalChrono As java.time.chrono.Chronology = temporal.query(java.time.temporal.TemporalQueries.chronology())
 			If temporalChrono IsNot Nothing AndAlso java.time.chrono.IsoChronology.INSTANCE.Equals(temporalChrono) = False Then Throw New DateTimeException("Chronology mismatch, expected: ISO, actual: " & temporalChrono.id)
@@ -886,7 +886,7 @@ Namespace java.time
 		''' </summary>
 		''' <param name="obj">  the object to check, null returns false </param>
 		''' <returns> true if this is equal to the other period </returns>
-		Public Overrides Function Equals(ByVal obj As Object) As Boolean
+		Public Overrides Function Equals(  obj As Object) As Boolean
 			If Me Is obj Then Return True
 			If TypeOf obj Is Period Then
 				Dim other As Period = CType(obj, Period)
@@ -946,17 +946,17 @@ Namespace java.time
 		''' </summary>
 		''' <param name="s"> the stream to read </param>
 		''' <exception cref="java.io.InvalidObjectException"> always </exception>
-		Private Sub readObject(ByVal s As java.io.ObjectInputStream)
+		Private Sub readObject(  s As java.io.ObjectInputStream)
 			Throw New java.io.InvalidObjectException("Deserialization via serialization delegate")
 		End Sub
 
-		Friend Sub writeExternal(ByVal out As java.io.DataOutput)
+		Friend Sub writeExternal(  out As java.io.DataOutput)
 			out.writeInt(years)
 			out.writeInt(months)
 			out.writeInt(days)
 		End Sub
 
-		Shared Function readExternal(ByVal [in] As java.io.DataInput) As Period
+		Shared Function readExternal(  [in] As java.io.DataInput) As Period
 			Dim years_Renamed As Integer = [in].readInt()
 			Dim months_Renamed As Integer = [in].readInt()
 			Dim days_Renamed As Integer = [in].readInt()

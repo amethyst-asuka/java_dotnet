@@ -67,7 +67,7 @@ Namespace java.beans
 		'''          example sun.beans.OurButton.class. </param>
 		''' <exception cref="IntrospectionException"> if an exception occurs during
 		'''              introspection. </exception>
-		Public Sub New(ByVal propertyName As String, ByVal beanClass As [Class])
+		Public Sub New(  propertyName As String,   beanClass As [Class])
 			Me.New(propertyName, beanClass, Introspector.IS_PREFIX + NameGenerator.capitalize(propertyName), Introspector.SET_PREFIX + NameGenerator.capitalize(propertyName))
 		End Sub
 
@@ -84,7 +84,7 @@ Namespace java.beans
 		'''           value.  May be null if the property is read-only. </param>
 		''' <exception cref="IntrospectionException"> if an exception occurs during
 		'''              introspection. </exception>
-		Public Sub New(ByVal propertyName As String, ByVal beanClass As [Class], ByVal readMethodName As String, ByVal writeMethodName As String)
+		Public Sub New(  propertyName As String,   beanClass As [Class],   readMethodName As String,   writeMethodName As String)
 			If beanClass Is Nothing Then Throw New IntrospectionException("Target Bean class is null")
 			If propertyName Is Nothing OrElse propertyName.length() = 0 Then Throw New IntrospectionException("bad property name")
 			If "".Equals(readMethodName) OrElse "".Equals(writeMethodName) Then Throw New IntrospectionException("read or write method name should not be the empty string")
@@ -113,7 +113,7 @@ Namespace java.beans
 		'''          May be null if the property is read-only. </param>
 		''' <exception cref="IntrospectionException"> if an exception occurs during
 		'''              introspection. </exception>
-		Public Sub New(ByVal propertyName As String, ByVal readMethod As Method, ByVal writeMethod As Method)
+		Public Sub New(  propertyName As String,   readMethod As Method,   writeMethod As Method)
 			If propertyName Is Nothing OrElse propertyName.length() = 0 Then Throw New IntrospectionException("bad property name")
 			name = propertyName
 			readMethod = readMethod
@@ -131,7 +131,7 @@ Namespace java.beans
 		''' <exception cref="IntrospectionException"> if an exception occurs during introspection
 		''' 
 		''' @since 1.7 </exception>
-		Friend Sub New(ByVal bean As [Class], ByVal base As String, ByVal read As Method, ByVal write As Method)
+		Friend Sub New(  bean As [Class],   base As String,   read As Method,   write As Method)
 			If bean Is Nothing Then Throw New IntrospectionException("Target Bean class is null")
 			class0 = bean
 			name = Introspector.decapitalize(base)
@@ -165,7 +165,7 @@ Namespace java.beans
 				End If
 				Return type
 			End Get
-			Set(ByVal type As [Class])
+			Set(  type As [Class])
 				Me.propertyTypeRef = getWeakReference(type)
 			End Set
 		End Property
@@ -217,7 +217,7 @@ Namespace java.beans
 				End If
 				Return readMethod_Renamed
 			End Get
-			Set(ByVal readMethod As Method)
+			Set(  readMethod As Method)
 				Me.readMethodRef.set(readMethod)
 				If readMethod Is Nothing Then
 					readMethodName = Nothing
@@ -275,7 +275,7 @@ Namespace java.beans
 				End If
 				Return writeMethod_Renamed
 			End Get
-			Set(ByVal writeMethod As Method)
+			Set(  writeMethod As Method)
 				Me.writeMethodRef.set(writeMethod)
 				If writeMethod Is Nothing Then
 					writeMethodName = Nothing
@@ -295,7 +295,7 @@ Namespace java.beans
 		''' Overridden to ensure that a super class doesn't take precedent
 		''' </summary>
 		Friend Overrides Property class0 As  [Class]
-			Set(ByVal clz As [Class])
+			Set(  clz As [Class])
 				If class0 IsNot Nothing AndAlso class0.IsSubclassOf(clz) Then Return
 				MyBase.class0 = clz
 			End Set
@@ -310,7 +310,7 @@ Namespace java.beans
 			Get
 				Return bound
 			End Get
-			Set(ByVal bound As Boolean)
+			Set(  bound As Boolean)
 				Me.bound = bound
 			End Set
 		End Property
@@ -325,7 +325,7 @@ Namespace java.beans
 			Get
 				Return constrained
 			End Get
-			Set(ByVal constrained As Boolean)
+			Set(  constrained As Boolean)
 				Me.constrained = constrained
 			End Set
 		End Property
@@ -340,7 +340,7 @@ Namespace java.beans
 		''' </summary>
 		''' <param name="propertyEditorClass">  The Class for the desired PropertyEditor. </param>
 		Public Overridable Property propertyEditorClass As  [Class]
-			Set(ByVal propertyEditorClass As [Class])
+			Set(  propertyEditorClass As [Class])
 				Me.propertyEditorClassRef = getWeakReference(propertyEditorClass)
 			End Set
 			Get
@@ -361,7 +361,7 @@ Namespace java.beans
 		''' <returns> a property editor instance or null if a property editor has
 		'''         not been defined or cannot be created
 		''' @since 1.5 </returns>
-		Public Overridable Function createPropertyEditor(ByVal bean As Object) As PropertyEditor
+		Public Overridable Function createPropertyEditor(  bean As Object) As PropertyEditor
 			Dim editor As Object = Nothing
 
 			Dim cls As  [Class] = propertyEditorClass
@@ -397,7 +397,7 @@ Namespace java.beans
 		''' 
 		''' @since 1.4
 		''' </summary>
-		Public Overrides Function Equals(ByVal obj As Object) As Boolean
+		Public Overrides Function Equals(  obj As Object) As Boolean
 			If Me Is obj Then Return True
 			If obj IsNot Nothing AndAlso TypeOf obj Is PropertyDescriptor Then
 				Dim other As PropertyDescriptor = CType(obj, PropertyDescriptor)
@@ -419,7 +419,7 @@ Namespace java.beans
 		''' <param name="a"> first method to compare </param>
 		''' <param name="b"> second method to compare </param>
 		''' <returns> boolean to indicate that the methods are equivalent </returns>
-		Friend Overridable Function compareMethods(ByVal a As Method, ByVal b As Method) As Boolean
+		Friend Overridable Function compareMethods(  a As Method,   b As Method) As Boolean
 			' Note: perhaps this should be a protected method in FeatureDescriptor
 			If (a Is Nothing) <> (b Is Nothing) Then Return False
 
@@ -436,7 +436,7 @@ Namespace java.beans
 		''' </summary>
 		''' <param name="x">  The first (lower priority) PropertyDescriptor </param>
 		''' <param name="y">  The second (higher priority) PropertyDescriptor </param>
-		Friend Sub New(ByVal x As PropertyDescriptor, ByVal y As PropertyDescriptor)
+		Friend Sub New(  x As PropertyDescriptor,   y As PropertyDescriptor)
 			MyBase.New(x,y)
 
 			If y.baseName IsNot Nothing Then
@@ -516,7 +516,7 @@ Namespace java.beans
 	'     * Package-private dup constructor.
 	'     * This must isolate the new object from any changes to the old object.
 	'     
-		Friend Sub New(ByVal old As PropertyDescriptor)
+		Friend Sub New(  old As PropertyDescriptor)
 			MyBase.New(old)
 			propertyTypeRef = old.propertyTypeRef
 			Me.readMethodRef.set(old.readMethodRef.get())
@@ -531,7 +531,7 @@ Namespace java.beans
 			constrained = old.constrained
 		End Sub
 
-		Friend Overridable Sub updateGenericsFor(ByVal type As [Class])
+		Friend Overridable Sub updateGenericsFor(  type As [Class])
 			class0 = type
 			Try
 				propertyType = findPropertyType(Me.readMethodRef.get(), Me.writeMethodRef.get())
@@ -547,7 +547,7 @@ Namespace java.beans
 		''' <returns> the type of the property descriptor or null if both
 		'''         read and write methods are null. </returns>
 		''' <exception cref="IntrospectionException"> if the read or write method is invalid </exception>
-		Private Function findPropertyType(ByVal readMethod As Method, ByVal writeMethod As Method) As  [Class]
+		Private Function findPropertyType(  readMethod As Method,   writeMethod As Method) As  [Class]
 			Dim propertyType_Renamed As  [Class] = Nothing
 			Try
 				If readMethod IsNot Nothing Then
@@ -599,7 +599,7 @@ Namespace java.beans
 			End Get
 		End Property
 
-		Friend Overrides Sub appendTo(ByVal sb As StringBuilder)
+		Friend Overrides Sub appendTo(  sb As StringBuilder)
 			appendTo(sb, "bound", Me.bound)
 			appendTo(sb, "constrained", Me.constrained)
 			appendTo(sb, "propertyEditorClass", Me.propertyEditorClassRef)
@@ -608,7 +608,7 @@ Namespace java.beans
 			appendTo(sb, "writeMethod", Me.writeMethodRef.get())
 		End Sub
 
-		Private Function isAssignable(ByVal m1 As Method, ByVal m2 As Method) As Boolean
+		Private Function isAssignable(  m1 As Method,   m2 As Method) As Boolean
 			If m1 Is Nothing Then Return True ' choose second method
 			If m2 Is Nothing Then Return False ' choose first method
 			If Not m1.name.Equals(m2.name) Then Return True ' choose second method by default

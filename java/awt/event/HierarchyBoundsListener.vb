@@ -53,12 +53,12 @@ Namespace java.awt.event
 		''' <summary>
 		''' Called when an ancestor of the source is moved.
 		''' </summary>
-		Sub ancestorMoved(ByVal e As HierarchyEvent)
+		Sub ancestorMoved(  e As HierarchyEvent)
 
 		''' <summary>
 		''' Called when an ancestor of the source is resized.
 		''' </summary>
-		Sub ancestorResized(ByVal e As HierarchyEvent)
+		Sub ancestorResized(  e As HierarchyEvent)
 	End Interface
 
 End Namespace

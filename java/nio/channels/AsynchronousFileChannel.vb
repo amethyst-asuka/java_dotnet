@@ -231,7 +231,7 @@ Namespace java.nio.channels
 		'''          read access if the file is opened for reading. The {@link
 		'''          SecurityManager#checkWrite(String)} method is invoked to check
 		'''          write access if the file is opened for writing </exception>
-		Public Shared Function open(Of T1 As OpenOption, T2)(ByVal file As Path, ByVal options As java.util.Set(Of T1), ByVal executor As java.util.concurrent.ExecutorService, ParamArray ByVal attrs As java.nio.file.attribute.FileAttribute(Of T2)()) As AsynchronousFileChannel
+		Public Shared Function open(Of T1 As OpenOption, T2)(  file As Path,   options As java.util.Set(Of T1),   executor As java.util.concurrent.ExecutorService, ParamArray   attrs As java.nio.file.attribute.FileAttribute(Of T2)()) As AsynchronousFileChannel
 			Dim provider As FileSystemProvider = file.fileSystem.provider()
 			Return provider.newAsynchronousFileChannel(file, options, executor, attrs)
 		End Function
@@ -281,7 +281,7 @@ Namespace java.nio.channels
 		'''          read access if the file is opened for reading. The {@link
 		'''          SecurityManager#checkWrite(String)} method is invoked to check
 		'''          write access if the file is opened for writing </exception>
-		Public Shared Function open(ByVal file As Path, ParamArray ByVal options As OpenOption()) As AsynchronousFileChannel
+		Public Shared Function open(  file As Path, ParamArray   options As OpenOption()) As AsynchronousFileChannel
 			Dim [set] As java.util.Set(Of OpenOption) = New HashSet(Of OpenOption)(options.Length)
 			java.util.Collections.addAll([set], options)
 			Return open(file, [set], Nothing, NO_ATTRIBUTES)
@@ -322,7 +322,7 @@ Namespace java.nio.channels
 		''' </exception>
 		''' <exception cref="IOException">
 		'''          If some other I/O error occurs </exception>
-		Public MustOverride Function truncate(ByVal size As Long) As AsynchronousFileChannel
+		Public MustOverride Function truncate(  size As Long) As AsynchronousFileChannel
 
 		''' <summary>
 		''' Forces any updates to this channel's file to be written to the storage
@@ -366,7 +366,7 @@ Namespace java.nio.channels
 		''' </exception>
 		''' <exception cref="IOException">
 		'''          If some other I/O error occurs </exception>
-		Public MustOverride Sub force(ByVal metaData As Boolean)
+		Public MustOverride Sub force(  metaData As Boolean)
 
 		''' <summary>
 		''' Acquires a lock on the given region of this channel's file.
@@ -437,7 +437,7 @@ Namespace java.nio.channels
 		''' <exception cref="NonWritableChannelException">
 		'''          If {@code shared} is false but this channel was not opened for writing </exception>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public MustOverride Sub lock(Of A, T1)(ByVal position As Long, ByVal size As Long, ByVal [shared] As Boolean, ByVal attachment As A, ByVal handler As CompletionHandler(Of T1))
+		Public MustOverride Sub lock(Of A, T1)(  position As Long,   size As Long,   [shared] As Boolean,   attachment As A,   handler As CompletionHandler(Of T1))
 
 		''' <summary>
 		''' Acquires an exclusive lock on this channel's file.
@@ -467,7 +467,7 @@ Namespace java.nio.channels
 		''' <exception cref="NonWritableChannelException">
 		'''          If this channel was not opened for writing </exception>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Sub lock(Of A, T1)(ByVal attachment As A, ByVal handler As CompletionHandler(Of T1))
+		Public Sub lock(Of A, T1)(  attachment As A,   handler As CompletionHandler(Of T1))
 			lock(0L, java.lang.[Long].Max_Value, False, attachment, handler)
 		End Sub
 
@@ -505,7 +505,7 @@ Namespace java.nio.channels
 		'''          If {@code shared} is true but this channel was not opened for reading </exception>
 		''' <exception cref="NonWritableChannelException">
 		'''          If {@code shared} is false but this channel was not opened for writing </exception>
-		Public MustOverride Function lock(ByVal position As Long, ByVal size As Long, ByVal [shared] As Boolean) As java.util.concurrent.Future(Of FileLock)
+		Public MustOverride Function lock(  position As Long,   size As Long,   [shared] As Boolean) As java.util.concurrent.Future(Of FileLock)
 
 		''' <summary>
 		''' Acquires an exclusive lock on this channel's file.
@@ -577,7 +577,7 @@ Namespace java.nio.channels
 		''' <seealso cref=     #lock(Object,CompletionHandler) </seealso>
 		''' <seealso cref=     #lock(long,long,boolean,Object,CompletionHandler) </seealso>
 		''' <seealso cref=     #tryLock() </seealso>
-		Public MustOverride Function tryLock(ByVal position As Long, ByVal size As Long, ByVal [shared] As Boolean) As FileLock
+		Public MustOverride Function tryLock(  position As Long,   size As Long,   [shared] As Boolean) As FileLock
 
 		''' <summary>
 		''' Attempts to acquire an exclusive lock on this channel's file.
@@ -645,7 +645,7 @@ Namespace java.nio.channels
 		''' <exception cref="NonReadableChannelException">
 		'''          If this channel was not opened for reading </exception>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public MustOverride Sub read(Of A, T1)(ByVal dst As java.nio.ByteBuffer, ByVal position As Long, ByVal attachment As A, ByVal handler As CompletionHandler(Of T1))
+		Public MustOverride Sub read(Of A, T1)(  dst As java.nio.ByteBuffer,   position As Long,   attachment As A,   handler As CompletionHandler(Of T1))
 
 		''' <summary>
 		''' Reads a sequence of bytes from this channel into the given buffer,
@@ -676,7 +676,7 @@ Namespace java.nio.channels
 		'''          If the position is negative or the buffer is read-only </exception>
 		''' <exception cref="NonReadableChannelException">
 		'''          If this channel was not opened for reading </exception>
-		Public MustOverride Function read(ByVal dst As java.nio.ByteBuffer, ByVal position As Long) As java.util.concurrent.Future(Of Integer?)
+		Public MustOverride Function read(  dst As java.nio.ByteBuffer,   position As Long) As java.util.concurrent.Future(Of Integer?)
 
 		''' <summary>
 		''' Writes a sequence of bytes to this channel from the given buffer, starting
@@ -707,7 +707,7 @@ Namespace java.nio.channels
 		''' <exception cref="NonWritableChannelException">
 		'''          If this channel was not opened for writing </exception>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public MustOverride Sub write(Of A, T1)(ByVal src As java.nio.ByteBuffer, ByVal position As Long, ByVal attachment As A, ByVal handler As CompletionHandler(Of T1))
+		Public MustOverride Sub write(Of A, T1)(  src As java.nio.ByteBuffer,   position As Long,   attachment As A,   handler As CompletionHandler(Of T1))
 
 		''' <summary>
 		''' Writes a sequence of bytes to this channel from the given buffer, starting
@@ -739,7 +739,7 @@ Namespace java.nio.channels
 		'''          If the position is negative </exception>
 		''' <exception cref="NonWritableChannelException">
 		'''          If this channel was not opened for writing </exception>
-		Public MustOverride Function write(ByVal src As java.nio.ByteBuffer, ByVal position As Long) As java.util.concurrent.Future(Of Integer?)
+		Public MustOverride Function write(  src As java.nio.ByteBuffer,   position As Long) As java.util.concurrent.Future(Of Integer?)
 	End Class
 
 End Namespace

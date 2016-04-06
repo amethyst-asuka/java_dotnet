@@ -63,7 +63,7 @@ Namespace java.awt
 
 		Private eventFilters As New List(Of EventFilter)
 
-		Friend Sub New(ByVal group As ThreadGroup, ByVal name As String, ByVal queue As EventQueue)
+		Friend Sub New(  group As ThreadGroup,   name As String,   queue As EventQueue)
 			MyBase.New(group, name)
 			eventQueue = queue
 		End Sub
@@ -91,27 +91,27 @@ Namespace java.awt
 			End Function
 		End Class
 
-		Friend Overridable Sub pumpEvents(ByVal cond As Conditional)
+		Friend Overridable Sub pumpEvents(  cond As Conditional)
 			pumpEvents(ANY_EVENT, cond)
 		End Sub
 
-		Friend Overridable Sub pumpEventsForHierarchy(ByVal cond As Conditional, ByVal modalComponent As Component)
+		Friend Overridable Sub pumpEventsForHierarchy(  cond As Conditional,   modalComponent As Component)
 			pumpEventsForHierarchy(ANY_EVENT, cond, modalComponent)
 		End Sub
 
-		Friend Overridable Sub pumpEvents(ByVal id As Integer, ByVal cond As Conditional)
+		Friend Overridable Sub pumpEvents(  id As Integer,   cond As Conditional)
 			pumpEventsForHierarchy(id, cond, Nothing)
 		End Sub
 
-		Friend Overridable Sub pumpEventsForHierarchy(ByVal id As Integer, ByVal cond As Conditional, ByVal modalComponent As Component)
+		Friend Overridable Sub pumpEventsForHierarchy(  id As Integer,   cond As Conditional,   modalComponent As Component)
 			pumpEventsForFilter(id, cond, New HierarchyEventFilter(modalComponent))
 		End Sub
 
-		Friend Overridable Sub pumpEventsForFilter(ByVal cond As Conditional, ByVal filter As EventFilter)
+		Friend Overridable Sub pumpEventsForFilter(  cond As Conditional,   filter As EventFilter)
 			pumpEventsForFilter(ANY_EVENT, cond, filter)
 		End Sub
 
-		Friend Overridable Sub pumpEventsForFilter(ByVal id As Integer, ByVal cond As Conditional, ByVal filter As EventFilter)
+		Friend Overridable Sub pumpEventsForFilter(  id As Integer,   cond As Conditional,   filter As EventFilter)
 			addEventFilter(filter)
 			doDispatch = True
 			Do While doDispatch AndAlso (Not interrupted) AndAlso cond.evaluate()
@@ -120,7 +120,7 @@ Namespace java.awt
 			removeEventFilter(filter)
 		End Sub
 
-		Friend Overridable Sub addEventFilter(ByVal filter As EventFilter)
+		Friend Overridable Sub addEventFilter(  filter As EventFilter)
 			If eventLog.isLoggable(sun.util.logging.PlatformLogger.Level.FINEST) Then eventLog.finest("adding the event filter: " & filter)
 			SyncLock eventFilters
 				If Not eventFilters.Contains(filter) Then
@@ -142,14 +142,14 @@ Namespace java.awt
 			End SyncLock
 		End Sub
 
-		Friend Overridable Sub removeEventFilter(ByVal filter As EventFilter)
+		Friend Overridable Sub removeEventFilter(  filter As EventFilter)
 			If eventLog.isLoggable(sun.util.logging.PlatformLogger.Level.FINEST) Then eventLog.finest("removing the event filter: " & filter)
 			SyncLock eventFilters
 				eventFilters.Remove(filter)
 			End SyncLock
 		End Sub
 
-		Friend Overridable Sub pumpOneEventForFilters(ByVal id As Integer)
+		Friend Overridable Sub pumpOneEventForFilters(  id As Integer)
 			Dim event_Renamed As AWTEvent = Nothing
 			Dim eventOK As Boolean = False
 			Try
@@ -200,7 +200,7 @@ Namespace java.awt
 			End Try
 		End Sub
 
-		Private Sub processException(ByVal e As Throwable)
+		Private Sub processException(  e As Throwable)
 			If eventLog.isLoggable(sun.util.logging.PlatformLogger.Level.FINE) Then eventLog.fine("Processing exception: " & e)
 			uncaughtExceptionHandler.uncaughtException(Me, e)
 		End Sub
@@ -210,7 +210,7 @@ Namespace java.awt
 			Get
 				Return theQueue
 			End Get
-			Set(ByVal eq As EventQueue)
+			Set(  eq As EventQueue)
 				theQueue = eq
 			End Set
 		End Property
@@ -219,10 +219,10 @@ Namespace java.awt
 			Implements EventFilter
 
 			Private modalComponent As Component
-			Public Sub New(ByVal modalComponent As Component)
+			Public Sub New(  modalComponent As Component)
 				Me.modalComponent = modalComponent
 			End Sub
-			Public Overridable Function acceptEvent(ByVal [event] As AWTEvent) As FilterAction Implements EventFilter.acceptEvent
+			Public Overridable Function acceptEvent(  [event] As AWTEvent) As FilterAction Implements EventFilter.acceptEvent
 				If modalComponent IsNot Nothing Then
 					Dim eventID As Integer = event_Renamed.iD
 					Dim mouseEvent As Boolean = (eventID >= java.awt.event.MouseEvent.MOUSE_FIRST) AndAlso (eventID <= java.awt.event.MouseEvent.MOUSE_LAST)

@@ -131,7 +131,7 @@ Namespace java.awt.geom
 			''' <param name="h"> the height of the newly constructed
 			'''          <code>Rectangle2D</code>
 			''' @since 1.2 </param>
-			Public Sub New(ByVal x As Single, ByVal y As Single, ByVal w As Single, ByVal h As Single)
+			Public Sub New(  x As Single,   y As Single,   w As Single,   h As Single)
 				rectect(x, y, w, h)
 			End Sub
 
@@ -196,7 +196,7 @@ Namespace java.awt.geom
 			''' <param name="w"> the width of this <code>Rectangle2D</code> </param>
 			''' <param name="h"> the height of this <code>Rectangle2D</code>
 			''' @since 1.2 </param>
-			Public Overridable Sub setRect(ByVal x As Single, ByVal y As Single, ByVal w As Single, ByVal h As Single)
+			Public Overridable Sub setRect(  x As Single,   y As Single,   w As Single,   h As Single)
 				Me.x = x
 				Me.y = y
 				Me.width = w
@@ -207,7 +207,7 @@ Namespace java.awt.geom
 			''' {@inheritDoc}
 			''' @since 1.2
 			''' </summary>
-			Public Overrides Sub setRect(ByVal x As Double, ByVal y As Double, ByVal w As Double, ByVal h As Double)
+			Public Overrides Sub setRect(  x As Double,   y As Double,   w As Double,   h As Double)
 				Me.x = CSng(x)
 				Me.y = CSng(y)
 				Me.width = CSng(w)
@@ -219,7 +219,7 @@ Namespace java.awt.geom
 			''' @since 1.2
 			''' </summary>
 			Public Overrides Property rect As Rectangle2D
-				Set(ByVal r As Rectangle2D)
+				Set(  r As Rectangle2D)
 					Me.x = CSng(r.x)
 					Me.y = CSng(r.y)
 					Me.width = CSng(r.width)
@@ -231,7 +231,7 @@ Namespace java.awt.geom
 			''' {@inheritDoc}
 			''' @since 1.2
 			''' </summary>
-			Public Overrides Function outcode(ByVal x As Double, ByVal y As Double) As Integer
+			Public Overrides Function outcode(  x As Double,   y As Double) As Integer
 	'            
 	'             * Note on casts to double below.  If the arithmetic of
 	'             * x+w or y+h is done in float, then some bits may be
@@ -274,7 +274,7 @@ Namespace java.awt.geom
 			''' {@inheritDoc}
 			''' @since 1.2
 			''' </summary>
-			Public Overrides Function createIntersection(ByVal r As Rectangle2D) As Rectangle2D
+			Public Overrides Function createIntersection(  r As Rectangle2D) As Rectangle2D
 				Dim dest As Rectangle2D
 				If TypeOf r Is Float Then
 					dest = New Rectangle2D.Float
@@ -289,7 +289,7 @@ Namespace java.awt.geom
 			''' {@inheritDoc}
 			''' @since 1.2
 			''' </summary>
-			Public Overrides Function createUnion(ByVal r As Rectangle2D) As Rectangle2D
+			Public Overrides Function createUnion(  r As Rectangle2D) As Rectangle2D
 				Dim dest As Rectangle2D
 				If TypeOf r Is Float Then
 					dest = New Rectangle2D.Float
@@ -374,7 +374,7 @@ Namespace java.awt.geom
 			''' <param name="h"> the height of the newly constructed
 			'''          <code>Rectangle2D</code>
 			''' @since 1.2 </param>
-			Function java.lang.Double(ByVal x As Double, ByVal y As Double, ByVal w As Double, ByVal h As Double) As [Public] Overridable
+			Function java.lang.Double(  x As Double,   y As Double,   w As Double,   h As Double) As [Public] Overridable
 				rectect(x, y, w, h)
 			End Function
 
@@ -432,7 +432,7 @@ Namespace java.awt.geom
 			''' {@inheritDoc}
 			''' @since 1.2
 			''' </summary>
-			Public Overrides Sub setRect(ByVal x As Double, ByVal y As Double, ByVal w As Double, ByVal h As Double)
+			Public Overrides Sub setRect(  x As Double,   y As Double,   w As Double,   h As Double)
 				Me.x = x
 				Me.y = y
 				Me.width = w
@@ -444,7 +444,7 @@ Namespace java.awt.geom
 			''' @since 1.2
 			''' </summary>
 			Public Overrides Property rect As Rectangle2D
-				Set(ByVal r As Rectangle2D)
+				Set(  r As Rectangle2D)
 					Me.x = r.x
 					Me.y = r.y
 					Me.width = r.width
@@ -456,7 +456,7 @@ Namespace java.awt.geom
 			''' {@inheritDoc}
 			''' @since 1.2
 			''' </summary>
-			Public Overrides Function outcode(ByVal x As Double, ByVal y As Double) As Integer
+			Public Overrides Function outcode(  x As Double,   y As Double) As Integer
 				Dim out As Integer = 0
 				If Me.width <= 0 Then
 					out = out Or OUT_LEFT Or OUT_RIGHT
@@ -489,7 +489,7 @@ Namespace java.awt.geom
 			''' {@inheritDoc}
 			''' @since 1.2
 			''' </summary>
-			Public Overrides Function createIntersection(ByVal r As Rectangle2D) As Rectangle2D
+			Public Overrides Function createIntersection(  r As Rectangle2D) As Rectangle2D
 				Dim dest As Rectangle2D = New Rectangle2D.Double
 				Rectangle2D.intersect(Me, r, dest)
 				Return dest
@@ -499,7 +499,7 @@ Namespace java.awt.geom
 			''' {@inheritDoc}
 			''' @since 1.2
 			''' </summary>
-			Public Overrides Function createUnion(ByVal r As Rectangle2D) As Rectangle2D
+			Public Overrides Function createUnion(  r As Rectangle2D) As Rectangle2D
 				Dim dest As Rectangle2D = New Rectangle2D.Double
 				Rectangle2D.union(Me, r, dest)
 				Return dest
@@ -546,7 +546,7 @@ Namespace java.awt.geom
 		''' <param name="w"> the width of this <code>Rectangle2D</code> </param>
 		''' <param name="h"> the height of this <code>Rectangle2D</code>
 		''' @since 1.2 </param>
-		Public MustOverride Sub setRect(ByVal x As Double, ByVal y As Double, ByVal w As Double, ByVal h As Double)
+		Public MustOverride Sub setRect(  x As Double,   y As Double,   w As Double,   h As Double)
 
 		''' <summary>
 		''' Sets this <code>Rectangle2D</code> to be the same as the specified
@@ -554,7 +554,7 @@ Namespace java.awt.geom
 		''' <param name="r"> the specified <code>Rectangle2D</code>
 		''' @since 1.2 </param>
 		Public Overridable Property rect As Rectangle2D
-			Set(ByVal r As Rectangle2D)
+			Set(  r As Rectangle2D)
 				rectect(r.x, r.y, r.width, r.height)
 			End Set
 		End Property
@@ -575,7 +575,7 @@ Namespace java.awt.geom
 		''' the interior of this <code>Rectangle2D</code>; <code>false</code>
 		''' otherwise.
 		''' @since 1.2 </returns>
-		Public Overridable Function intersectsLine(ByVal x1 As Double, ByVal y1 As Double, ByVal x2 As Double, ByVal y2 As Double) As Boolean
+		Public Overridable Function intersectsLine(  x1 As Double,   y1 As Double,   x2 As Double,   y2 As Double) As Boolean
 			Dim out1, out2 As Integer
 			out2 = outcode(x2, y2)
 			If out2 = 0 Then Return True
@@ -607,7 +607,7 @@ Namespace java.awt.geom
 		''' intersects the interior of this <code>Rectangle2D</code>;
 		''' <code>false</code> otherwise.
 		''' @since 1.2 </returns>
-		Public Overridable Function intersectsLine(ByVal l As Line2D) As Boolean
+		Public Overridable Function intersectsLine(  l As Line2D) As Boolean
 			Return intersectsLine(l.x1, l.y1, l.x2, l.y2)
 		End Function
 
@@ -626,7 +626,7 @@ Namespace java.awt.geom
 		''' <seealso cref= #OUT_RIGHT </seealso>
 		''' <seealso cref= #OUT_BOTTOM
 		''' @since 1.2 </seealso>
-		Public MustOverride Function outcode(ByVal x As Double, ByVal y As Double) As Integer
+		Public MustOverride Function outcode(  x As Double,   y As Double) As Integer
 
 		''' <summary>
 		''' Determines where the specified <seealso cref="Point2D"/> lies with
@@ -642,7 +642,7 @@ Namespace java.awt.geom
 		''' <seealso cref= #OUT_RIGHT </seealso>
 		''' <seealso cref= #OUT_BOTTOM
 		''' @since 1.2 </seealso>
-		Public Overridable Function outcode(ByVal p As Point2D) As Integer
+		Public Overridable Function outcode(  p As Point2D) As Integer
 			Return outcode(p.x, p.y)
 		End Function
 
@@ -657,7 +657,7 @@ Namespace java.awt.geom
 		''' <param name="w"> the width of this <code>Rectangle2D</code> </param>
 		''' <param name="h"> the height of this <code>Rectangle2D</code>
 		''' @since 1.2 </param>
-		Public Overrides Sub setFrame(ByVal x As Double, ByVal y As Double, ByVal w As Double, ByVal h As Double)
+		Public Overrides Sub setFrame(  x As Double,   y As Double,   w As Double,   h As Double)
 			rectect(x, y, w, h)
 		End Sub
 
@@ -675,7 +675,7 @@ Namespace java.awt.geom
 		''' {@inheritDoc}
 		''' @since 1.2
 		''' </summary>
-		Public Overrides Function contains(ByVal x As Double, ByVal y As Double) As Boolean
+		Public Overrides Function contains(  x As Double,   y As Double) As Boolean
 			Dim x0 As Double = x
 			Dim y0 As Double = y
 			Return (x >= x0 AndAlso y >= y0 AndAlso x < x0 + width AndAlso y < y0 + height)
@@ -685,7 +685,7 @@ Namespace java.awt.geom
 		''' {@inheritDoc}
 		''' @since 1.2
 		''' </summary>
-		Public Overrides Function intersects(ByVal x As Double, ByVal y As Double, ByVal w As Double, ByVal h As Double) As Boolean
+		Public Overrides Function intersects(  x As Double,   y As Double,   w As Double,   h As Double) As Boolean
 			If empty OrElse w <= 0 OrElse h <= 0 Then Return False
 			Dim x0 As Double = x
 			Dim y0 As Double = y
@@ -696,7 +696,7 @@ Namespace java.awt.geom
 		''' {@inheritDoc}
 		''' @since 1.2
 		''' </summary>
-		Public Overrides Function contains(ByVal x As Double, ByVal y As Double, ByVal w As Double, ByVal h As Double) As Boolean
+		Public Overrides Function contains(  x As Double,   y As Double,   w As Double,   h As Double) As Boolean
 			If empty OrElse w <= 0 OrElse h <= 0 Then Return False
 			Dim x0 As Double = x
 			Dim y0 As Double = y
@@ -713,7 +713,7 @@ Namespace java.awt.geom
 		'''          the specified <code>Rectangle2D</code> and in this
 		'''          <code>Rectangle2D</code>.
 		''' @since 1.2 </returns>
-		Public MustOverride Function createIntersection(ByVal r As Rectangle2D) As Rectangle2D
+		Public MustOverride Function createIntersection(  r As Rectangle2D) As Rectangle2D
 
 		''' <summary>
 		''' Intersects the pair of specified source <code>Rectangle2D</code>
@@ -730,7 +730,7 @@ Namespace java.awt.geom
 		''' results of the intersection of <code>src1</code> and
 		''' <code>src2</code>
 		''' @since 1.2 </param>
-		Public Shared Sub intersect(ByVal src1 As Rectangle2D, ByVal src2 As Rectangle2D, ByVal dest As Rectangle2D)
+		Public Shared Sub intersect(  src1 As Rectangle2D,   src2 As Rectangle2D,   dest As Rectangle2D)
 			Dim x1 As Double = System.Math.Max(src1.minX, src2.minX)
 			Dim y1 As Double = System.Math.Max(src1.minY, src2.minY)
 			Dim x2 As Double = System.Math.Min(src1.maxX, src2.maxX)
@@ -748,7 +748,7 @@ Namespace java.awt.geom
 		''' the specified <code>Rectangle2D</code> and this
 		''' <code>Rectangle2D</code>.
 		''' @since 1.2 </returns>
-		Public MustOverride Function createUnion(ByVal r As Rectangle2D) As Rectangle2D
+		Public MustOverride Function createUnion(  r As Rectangle2D) As Rectangle2D
 
 		''' <summary>
 		''' Unions the pair of source <code>Rectangle2D</code> objects
@@ -765,7 +765,7 @@ Namespace java.awt.geom
 		''' results of the union of <code>src1</code> and
 		''' <code>src2</code>
 		''' @since 1.2 </param>
-		Public Shared Sub union(ByVal src1 As Rectangle2D, ByVal src2 As Rectangle2D, ByVal dest As Rectangle2D)
+		Public Shared Sub union(  src1 As Rectangle2D,   src2 As Rectangle2D,   dest As Rectangle2D)
 			Dim x1 As Double = System.Math.Min(src1.minX, src2.minX)
 			Dim y1 As Double = System.Math.Min(src1.minY, src2.minY)
 			Dim x2 As Double = System.Math.Max(src1.maxX, src2.maxX)
@@ -791,7 +791,7 @@ Namespace java.awt.geom
 		''' <param name="newx"> the X coordinate of the new point </param>
 		''' <param name="newy"> the Y coordinate of the new point
 		''' @since 1.2 </param>
-		Public Overridable Sub add(ByVal newx As Double, ByVal newy As Double)
+		Public Overridable Sub add(  newx As Double,   newy As Double)
 			Dim x1 As Double = System.Math.Min(minX, newx)
 			Dim x2 As Double = System.Math.Max(maxX, newx)
 			Dim y1 As Double = System.Math.Min(minY, newy)
@@ -816,7 +816,7 @@ Namespace java.awt.geom
 		''' <param name="pt"> the new <code>Point2D</code> to add to this
 		''' <code>Rectangle2D</code>.
 		''' @since 1.2 </param>
-		Public Overridable Sub add(ByVal pt As Point2D)
+		Public Overridable Sub add(  pt As Point2D)
 			add(pt.x, pt.y)
 		End Sub
 
@@ -827,7 +827,7 @@ Namespace java.awt.geom
 		''' <param name="r"> the <code>Rectangle2D</code> to add to this
 		''' <code>Rectangle2D</code>.
 		''' @since 1.2 </param>
-		Public Overridable Sub add(ByVal r As Rectangle2D)
+		Public Overridable Sub add(  r As Rectangle2D)
 			Dim x1 As Double = System.Math.Min(minX, r.minX)
 			Dim x2 As Double = System.Math.Max(maxX, r.maxX)
 			Dim y1 As Double = System.Math.Min(minY, r.minY)
@@ -850,7 +850,7 @@ Namespace java.awt.geom
 		'''          geometry of the outline of this
 		'''          <code>Rectangle2D</code>, one segment at a time.
 		''' @since 1.2 </returns>
-		Public Overridable Function getPathIterator(ByVal at As AffineTransform) As PathIterator
+		Public Overridable Function getPathIterator(  at As AffineTransform) As PathIterator
 			Return New RectIterator(Me, at)
 		End Function
 
@@ -874,7 +874,7 @@ Namespace java.awt.geom
 		'''          geometry of the outline of this
 		'''          <code>Rectangle2D</code>, one segment at a time.
 		''' @since 1.2 </returns>
-		Public Overrides Function getPathIterator(ByVal at As AffineTransform, ByVal flatness As Double) As PathIterator
+		Public Overrides Function getPathIterator(  at As AffineTransform,   flatness As Double) As PathIterator
 			Return New RectIterator(Me, at)
 		End Function
 
@@ -902,7 +902,7 @@ Namespace java.awt.geom
 		'''                     of <code>Rectangle2D</code> and has
 		'''                     the same values; <code>false</code> otherwise.
 		''' @since 1.2 </returns>
-		Public Overrides Function Equals(ByVal obj As Object) As Boolean
+		Public Overrides Function Equals(  obj As Object) As Boolean
 			If obj Is Me Then Return True
 			If TypeOf obj Is Rectangle2D Then
 				Dim r2d As Rectangle2D = CType(obj, Rectangle2D)

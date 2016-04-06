@@ -499,7 +499,7 @@ Namespace java.time.format
 		''' <returns> the formatter based on the pattern, not null </returns>
 		''' <exception cref="IllegalArgumentException"> if the pattern is invalid </exception>
 		''' <seealso cref= DateTimeFormatterBuilder#appendPattern(String) </seealso>
-		Public Shared Function ofPattern(ByVal pattern As String) As DateTimeFormatter
+		Public Shared Function ofPattern(  pattern As String) As DateTimeFormatter
 			Return (New DateTimeFormatterBuilder).appendPattern(pattern).toFormatter()
 		End Function
 
@@ -522,7 +522,7 @@ Namespace java.time.format
 		''' <returns> the formatter based on the pattern, not null </returns>
 		''' <exception cref="IllegalArgumentException"> if the pattern is invalid </exception>
 		''' <seealso cref= DateTimeFormatterBuilder#appendPattern(String) </seealso>
-		Public Shared Function ofPattern(ByVal pattern As String, ByVal locale As java.util.Locale) As DateTimeFormatter
+		Public Shared Function ofPattern(  pattern As String,   locale As java.util.Locale) As DateTimeFormatter
 			Return (New DateTimeFormatterBuilder).appendPattern(pattern).toFormatter(locale)
 		End Function
 
@@ -548,7 +548,7 @@ Namespace java.time.format
 		''' </summary>
 		''' <param name="dateStyle">  the formatter style to obtain, not null </param>
 		''' <returns> the date formatter, not null </returns>
-		Public Shared Function ofLocalizedDate(ByVal dateStyle As FormatStyle) As DateTimeFormatter
+		Public Shared Function ofLocalizedDate(  dateStyle As FormatStyle) As DateTimeFormatter
 			java.util.Objects.requireNonNull(dateStyle, "dateStyle")
 			Return (New DateTimeFormatterBuilder).appendLocalized(dateStyle, Nothing).toFormatter(ResolverStyle.SMART, java.time.chrono.IsoChronology.INSTANCE)
 		End Function
@@ -574,7 +574,7 @@ Namespace java.time.format
 		''' </summary>
 		''' <param name="timeStyle">  the formatter style to obtain, not null </param>
 		''' <returns> the time formatter, not null </returns>
-		Public Shared Function ofLocalizedTime(ByVal timeStyle As FormatStyle) As DateTimeFormatter
+		Public Shared Function ofLocalizedTime(  timeStyle As FormatStyle) As DateTimeFormatter
 			java.util.Objects.requireNonNull(timeStyle, "timeStyle")
 			Return (New DateTimeFormatterBuilder).appendLocalized(Nothing, timeStyle).toFormatter(ResolverStyle.SMART, java.time.chrono.IsoChronology.INSTANCE)
 		End Function
@@ -600,7 +600,7 @@ Namespace java.time.format
 		''' </summary>
 		''' <param name="dateTimeStyle">  the formatter style to obtain, not null </param>
 		''' <returns> the date-time formatter, not null </returns>
-		Public Shared Function ofLocalizedDateTime(ByVal dateTimeStyle As FormatStyle) As DateTimeFormatter
+		Public Shared Function ofLocalizedDateTime(  dateTimeStyle As FormatStyle) As DateTimeFormatter
 			java.util.Objects.requireNonNull(dateTimeStyle, "dateTimeStyle")
 			Return (New DateTimeFormatterBuilder).appendLocalized(dateTimeStyle, dateTimeStyle).toFormatter(ResolverStyle.SMART, java.time.chrono.IsoChronology.INSTANCE)
 		End Function
@@ -627,7 +627,7 @@ Namespace java.time.format
 		''' <param name="dateStyle">  the date formatter style to obtain, not null </param>
 		''' <param name="timeStyle">  the time formatter style to obtain, not null </param>
 		''' <returns> the date, time or date-time formatter, not null </returns>
-		Public Shared Function ofLocalizedDateTime(ByVal dateStyle As FormatStyle, ByVal timeStyle As FormatStyle) As DateTimeFormatter
+		Public Shared Function ofLocalizedDateTime(  dateStyle As FormatStyle,   timeStyle As FormatStyle) As DateTimeFormatter
 			java.util.Objects.requireNonNull(dateStyle, "dateStyle")
 			java.util.Objects.requireNonNull(timeStyle, "timeStyle")
 			Return (New DateTimeFormatterBuilder).appendLocalized(dateStyle, timeStyle).toFormatter(ResolverStyle.SMART, java.time.chrono.IsoChronology.INSTANCE)

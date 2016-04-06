@@ -88,7 +88,7 @@ Namespace java.lang.reflect
 		''' method invocation on the proxy instance.
 		''' </exception>
 		''' <seealso cref=     UndeclaredThrowableException </seealso>
-		Function invoke(ByVal proxy As Object, ByVal method As Method, ByVal args As Object()) As Object
+		Function invoke(  proxy As Object,   method As Method,   args As Object()) As Object
 	End Interface
 
 End Namespace

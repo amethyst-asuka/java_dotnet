@@ -127,7 +127,7 @@ Namespace java.awt.event
 		''' <seealso cref= #getItemSelectable() </seealso>
 		''' <seealso cref= #getID() </seealso>
 		''' <seealso cref= #getStateChange() </seealso>
-		Public Sub New(ByVal source As java.awt.ItemSelectable, ByVal id As Integer, ByVal item As Object, ByVal stateChange As Integer)
+		Public Sub New(  source As java.awt.ItemSelectable,   id As Integer,   item As Object,   stateChange As Integer)
 			MyBase.New(source, id)
 			Me.item = item
 			Me.stateChange = stateChange

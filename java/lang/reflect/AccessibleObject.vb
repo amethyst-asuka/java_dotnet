@@ -83,7 +83,7 @@ Namespace java.lang.reflect
 		''' <exception cref="SecurityException"> if the request is denied. </exception>
 		''' <seealso cref= SecurityManager#checkPermission </seealso>
 		''' <seealso cref= java.lang.RuntimePermission </seealso>
-		Public Shared Sub setAccessible(ByVal array_Renamed As AccessibleObject(), ByVal flag As Boolean)
+		Public Shared Sub setAccessible(  array_Renamed As AccessibleObject(),   flag As Boolean)
 			Dim sm As SecurityManager = System.securityManager
 			If sm IsNot Nothing Then sm.checkPermission(ACCESS_PERMISSION)
 			For i As Integer = 0 To array_Renamed.Length - 1
@@ -116,7 +116,7 @@ Namespace java.lang.reflect
 		''' <seealso cref= SecurityManager#checkPermission </seealso>
 		''' <seealso cref= java.lang.RuntimePermission </seealso>
 		Public Overridable Property accessible As Boolean
-			Set(ByVal flag As Boolean)
+			Set(  flag As Boolean)
 				Dim sm As SecurityManager = System.securityManager
 				If sm IsNot Nothing Then sm.checkPermission(ACCESS_PERMISSION)
 				accessible0le0(Me, flag)
@@ -128,7 +128,7 @@ Namespace java.lang.reflect
 
 	'     Check that you aren't exposing java.lang.Class.<init> or sensitive
 	'       fields in java.lang.Class. 
-		Private Shared Sub setAccessible0(ByVal obj As AccessibleObject, ByVal flag As Boolean)
+		Private Shared Sub setAccessible0(  obj As AccessibleObject,   flag As Boolean)
 			If TypeOf obj Is Constructor AndAlso flag = True Then
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 				Dim c As Constructor(Of ?) = CType(obj, Constructor(Of ?))
@@ -159,7 +159,7 @@ Namespace java.lang.reflect
 
 		''' <exception cref="NullPointerException"> {@inheritDoc}
 		''' @since 1.5 </exception>
-		Public Overridable Function getAnnotation(Of T As Annotation)(ByVal annotationClass As [Class]) As T Implements AnnotatedElement.getAnnotation
+		Public Overridable Function getAnnotation(Of T As Annotation)(  annotationClass As [Class]) As T Implements AnnotatedElement.getAnnotation
 			Throw New AssertionError("All subclasses should override this method")
 		End Function
 
@@ -167,13 +167,13 @@ Namespace java.lang.reflect
 		''' {@inheritDoc} </summary>
 		''' <exception cref="NullPointerException"> {@inheritDoc}
 		''' @since 1.5 </exception>
-		Public Overrides Function isAnnotationPresent(ByVal annotationClass As [Class]) As Boolean Implements AnnotatedElement.isAnnotationPresent
+		Public Overrides Function isAnnotationPresent(  annotationClass As [Class]) As Boolean Implements AnnotatedElement.isAnnotationPresent
 			Return outerInstance.isAnnotationPresent(annotationClass)
 		End Function
 
 	   ''' <exception cref="NullPointerException"> {@inheritDoc}
 	   ''' @since 1.8 </exception>
-		Public Overrides Function getAnnotationsByType(Of T As Annotation)(ByVal annotationClass As [Class]) As T() Implements AnnotatedElement.getAnnotationsByType
+		Public Overrides Function getAnnotationsByType(Of T As Annotation)(  annotationClass As [Class]) As T() Implements AnnotatedElement.getAnnotationsByType
 			Throw New AssertionError("All subclasses should override this method")
 		End Function
 
@@ -188,7 +188,7 @@ Namespace java.lang.reflect
 
 		''' <exception cref="NullPointerException"> {@inheritDoc}
 		''' @since 1.8 </exception>
-		Public Overrides Function getDeclaredAnnotation(Of T As Annotation)(ByVal annotationClass As [Class]) As T Implements AnnotatedElement.getDeclaredAnnotation
+		Public Overrides Function getDeclaredAnnotation(Of T As Annotation)(  annotationClass As [Class]) As T Implements AnnotatedElement.getDeclaredAnnotation
 			' Only annotations on classes are inherited, for all other
 			' objects getDeclaredAnnotation is the same as
 			' getAnnotation.
@@ -197,7 +197,7 @@ Namespace java.lang.reflect
 
 		''' <exception cref="NullPointerException"> {@inheritDoc}
 		''' @since 1.8 </exception>
-		Public Overrides Function getDeclaredAnnotationsByType(Of T As Annotation)(ByVal annotationClass As [Class]) As T() Implements AnnotatedElement.getDeclaredAnnotationsByType
+		Public Overrides Function getDeclaredAnnotationsByType(Of T As Annotation)(  annotationClass As [Class]) As T() Implements AnnotatedElement.getDeclaredAnnotationsByType
 			' Only annotations on classes are inherited, for all other
 			' objects getDeclaredAnnotationsByType is the same as
 			' getAnnotationsByType.
@@ -234,7 +234,7 @@ Namespace java.lang.reflect
 'JAVA TO VB CONVERTER TODO TASK: There is no VB equivalent to 'volatile':
 		Friend securityCheckCache As Object
 
-		Friend Overridable Sub checkAccess(ByVal caller As [Class], ByVal clazz As [Class], ByVal obj As Object, ByVal modifiers As Integer)
+		Friend Overridable Sub checkAccess(  caller As [Class],   clazz As [Class],   obj As Object,   modifiers As Integer)
 			If caller Is clazz Then ' quick check Return ' ACCESS IS OK
 			Dim cache As Object = securityCheckCache ' read volatile
 			Dim targetClass As  [Class] = clazz
@@ -257,7 +257,7 @@ Namespace java.lang.reflect
 		End Sub
 
 		' Keep all this slow stuff out of line:
-		Friend Overridable Sub slowCheckMemberAccess(ByVal caller As [Class], ByVal clazz As [Class], ByVal obj As Object, ByVal modifiers As Integer, ByVal targetClass As [Class])
+		Friend Overridable Sub slowCheckMemberAccess(  caller As [Class],   clazz As [Class],   obj As Object,   modifiers As Integer,   targetClass As [Class])
 			sun.reflect.Reflection.ensureMemberAccess(caller, clazz, obj, modifiers)
 
 			' Success: Update the cache.

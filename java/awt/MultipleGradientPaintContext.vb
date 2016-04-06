@@ -146,7 +146,7 @@ Namespace java.awt
 		''' <summary>
 		''' Constructor for MultipleGradientPaintContext superclass.
 		''' </summary>
-		Protected Friend Sub New(ByVal mgp As MultipleGradientPaint, ByVal cm As java.awt.image.ColorModel, ByVal deviceBounds As Rectangle, ByVal userBounds As java.awt.geom.Rectangle2D, ByVal t As java.awt.geom.AffineTransform, ByVal hints As RenderingHints, ByVal fractions As Single(), ByVal colors As Color(), ByVal cycleMethod As java.awt.MultipleGradientPaint.CycleMethod, ByVal colorSpace As java.awt.MultipleGradientPaint.ColorSpaceType)
+		Protected Friend Sub New(  mgp As MultipleGradientPaint,   cm As java.awt.image.ColorModel,   deviceBounds As Rectangle,   userBounds As java.awt.geom.Rectangle2D,   t As java.awt.geom.AffineTransform,   hints As RenderingHints,   fractions As Single(),   colors As Color(),   cycleMethod As java.awt.MultipleGradientPaint.CycleMethod,   colorSpace As java.awt.MultipleGradientPaint.ColorSpaceType)
 			If deviceBounds Is Nothing Then Throw New NullPointerException("Device bounds cannot be null")
 
 			If userBounds Is Nothing Then Throw New NullPointerException("User bounds cannot be null")
@@ -223,7 +223,7 @@ Namespace java.awt
 		''' gradient colors based on an array of fractions and color values at
 		''' those fractions.
 		''' </summary>
-		Private Sub calculateLookupData(ByVal colors As Color())
+		Private Sub calculateLookupData(  colors As Color())
 			Dim normalizedColors As Color()
 			If colorSpace = java.awt.MultipleGradientPaint.ColorSpaceType.LINEAR_RGB Then
 				' create a new colors array
@@ -312,7 +312,7 @@ Namespace java.awt
 		''' redundant.  We thus need to use the space conserving scheme below.
 		''' </summary>
 		''' <param name="Imin"> the size of the smallest interval </param>
-		Private Sub calculateSingleArrayGradient(ByVal colors As Color(), ByVal Imin As Single)
+		Private Sub calculateSingleArrayGradient(  colors As Color(),   Imin As Single)
 			' set the flag so we know later it is a simple (fast) lookup
 			isSimpleLookup = True
 
@@ -381,7 +381,7 @@ Namespace java.awt
 		''' For those of you who are interested, this is a classic example of the
 		''' time-space tradeoff.
 		''' </summary>
-		Private Sub calculateMultipleArrayGradient(ByVal colors As Color())
+		Private Sub calculateMultipleArrayGradient(  colors As Color())
 			' set the flag so we know later it is a non-simple lookup
 			isSimpleLookup = False
 
@@ -425,7 +425,7 @@ Namespace java.awt
 		''' <param name="rgb1"> the start color </param>
 		''' <param name="rgb2"> the end color </param>
 		''' <param name="output"> the output array of colors; must not be null </param>
-		Private Sub interpolate(ByVal rgb1 As Integer, ByVal rgb2 As Integer, ByVal output As Integer())
+		Private Sub interpolate(  rgb1 As Integer,   rgb2 As Integer,   output As Integer())
 			' color components
 			Dim a1, r1, g1, b1, da, dr, dg, db As Integer
 
@@ -457,7 +457,7 @@ Namespace java.awt
 		''' of an integer RGB triple, converts them from LinearRGB to SRGB, then
 		''' recompacts them into an int.
 		''' </summary>
-		Private Function convertEntireColorLinearRGBtoSRGB(ByVal rgb As Integer) As Integer
+		Private Function convertEntireColorLinearRGBtoSRGB(  rgb As Integer) As Integer
 			' color components
 			Dim a1, r1, g1, b1 As Integer
 
@@ -485,7 +485,7 @@ Namespace java.awt
 		''' <param name="position"> the unmanipulated position, which will be mapped
 		'''                 into the range 0 to 1
 		''' @returns integer color to display </param>
-		Protected Friend Function indexIntoGradientsArrays(ByVal position As Single) As Integer
+		Protected Friend Function indexIntoGradientsArrays(  position As Single) As Integer
 			' first, manipulate position value depending on the cycle method
 			If cycleMethod = java.awt.MultipleGradientPaint.CycleMethod.NO_CYCLE Then
 				If position > 1 Then
@@ -546,7 +546,7 @@ Namespace java.awt
 		''' Helper function to convert a color component in sRGB space to linear
 		''' RGB space.  Used to build a static lookup table.
 		''' </summary>
-		Private Shared Function convertSRGBtoLinearRGB(ByVal color_Renamed As Integer) As Integer
+		Private Shared Function convertSRGBtoLinearRGB(  color_Renamed As Integer) As Integer
 			Dim input, output As Single
 
 			input = color_Renamed / 255.0f
@@ -563,7 +563,7 @@ Namespace java.awt
 		''' Helper function to convert a color component in linear RGB space to
 		''' SRGB space.  Used to build a static lookup table.
 		''' </summary>
-		Private Shared Function convertLinearRGBtoSRGB(ByVal color_Renamed As Integer) As Integer
+		Private Shared Function convertLinearRGBtoSRGB(  color_Renamed As Integer) As Integer
 			Dim input, output As Single
 
 			input = color_Renamed/255.0f
@@ -579,7 +579,7 @@ Namespace java.awt
 		''' <summary>
 		''' {@inheritDoc}
 		''' </summary>
-		Public Function getRaster(ByVal x As Integer, ByVal y As Integer, ByVal w As Integer, ByVal h As Integer) As java.awt.image.Raster Implements PaintContext.getRaster
+		Public Function getRaster(  x As Integer,   y As Integer,   w As Integer,   h As Integer) As java.awt.image.Raster Implements PaintContext.getRaster
 			' If working raster is big enough, reuse it. Otherwise,
 			' build a large enough new one.
 			Dim raster_Renamed As java.awt.image.Raster = saved
@@ -606,7 +606,7 @@ Namespace java.awt
 			Return raster_Renamed
 		End Function
 
-		Protected Friend MustOverride Sub fillRaster(Integer ByVal As pixels(), ByVal [off] As Integer, ByVal adjust As Integer, ByVal x As Integer, ByVal y As Integer, ByVal w As Integer, ByVal h As Integer)
+		Protected Friend MustOverride Sub fillRaster(Integer   As pixels(),   [off] As Integer,   adjust As Integer,   x As Integer,   y As Integer,   w As Integer,   h As Integer)
 
 
 		''' <summary>
@@ -615,7 +615,7 @@ Namespace java.awt
 		''' large.
 		''' </summary>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Private Shared Function getCachedRaster(ByVal cm As java.awt.image.ColorModel, ByVal w As Integer, ByVal h As Integer) As java.awt.image.Raster
+		Private Shared Function getCachedRaster(  cm As java.awt.image.ColorModel,   w As Integer,   h As Integer) As java.awt.image.Raster
 			If cm Is cachedModel Then
 				If cached IsNot Nothing Then
 					Dim ras As java.awt.image.Raster = CType(cached.get(), java.awt.image.Raster)
@@ -634,7 +634,7 @@ Namespace java.awt
 		''' large.
 		''' </summary>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Private Shared Sub putCachedRaster(ByVal cm As java.awt.image.ColorModel, ByVal ras As java.awt.image.Raster)
+		Private Shared Sub putCachedRaster(  cm As java.awt.image.ColorModel,   ras As java.awt.image.Raster)
 			If cached IsNot Nothing Then
 				Dim cras As java.awt.image.Raster = CType(cached.get(), java.awt.image.Raster)
 				If cras IsNot Nothing Then

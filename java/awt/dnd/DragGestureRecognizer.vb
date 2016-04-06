@@ -112,7 +112,7 @@ Namespace java.awt.dnd
 		''' <exception cref="IllegalArgumentException">
 		''' if ds is <code>null</code>. </exception>
 
-		Protected Friend Sub New(ByVal ds As DragSource, ByVal c As java.awt.Component, ByVal sa As Integer, ByVal dgl As DragGestureListener)
+		Protected Friend Sub New(  ds As DragSource,   c As java.awt.Component,   sa As Integer,   dgl As DragGestureListener)
 			MyBase.New()
 
 			If ds Is Nothing Then Throw New IllegalArgumentException("null DragSource")
@@ -154,7 +154,7 @@ Namespace java.awt.dnd
 		''' <exception cref="IllegalArgumentException">
 		''' if ds is <code>null</code>. </exception>
 
-		Protected Friend Sub New(ByVal ds As DragSource, ByVal c As java.awt.Component, ByVal sa As Integer)
+		Protected Friend Sub New(  ds As DragSource,   c As java.awt.Component,   sa As Integer)
 			Me.New(ds, c, sa, Nothing)
 		End Sub
 
@@ -181,7 +181,7 @@ Namespace java.awt.dnd
 		''' <exception cref="IllegalArgumentException">
 		''' if ds is <code>null</code>. </exception>
 
-		Protected Friend Sub New(ByVal ds As DragSource, ByVal c As java.awt.Component)
+		Protected Friend Sub New(  ds As DragSource,   c As java.awt.Component)
 			Me.New(ds, c, DnDConstants.ACTION_NONE)
 		End Sub
 
@@ -197,7 +197,7 @@ Namespace java.awt.dnd
 		''' <exception cref="IllegalArgumentException">
 		''' if ds is <code>null</code>. </exception>
 
-		Protected Friend Sub New(ByVal ds As DragSource)
+		Protected Friend Sub New(  ds As DragSource)
 			Me.New(ds, Nothing)
 		End Sub
 
@@ -245,7 +245,7 @@ Namespace java.awt.dnd
 			Get
 				Return component_Renamed
 			End Get
-			Set(ByVal c As java.awt.Component)
+			Set(  c As java.awt.Component)
 				If component_Renamed IsNot Nothing AndAlso dragGestureListener IsNot Nothing Then unregisterListeners()
     
 				component_Renamed = c
@@ -268,7 +268,7 @@ Namespace java.awt.dnd
 			Get
 				Return sourceActions
 			End Get
-			Set(ByVal actions As Integer)
+			Set(  actions As Integer)
 				sourceActions = actions And (DnDConstants.ACTION_COPY_OR_MOVE Or DnDConstants.ACTION_LINK)
 			End Set
 		End Property
@@ -307,7 +307,7 @@ Namespace java.awt.dnd
 		''' <code>DragGestureListener</code> has already been added. </exception>
 
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Sub addDragGestureListener(ByVal dgl As DragGestureListener)
+		Public Overridable Sub addDragGestureListener(  dgl As DragGestureListener)
 			If dragGestureListener IsNot Nothing Then
 				Throw New java.util.TooManyListenersException
 			Else
@@ -327,7 +327,7 @@ Namespace java.awt.dnd
 		''' dgl is not (equal to) the currently registered <code>DragGestureListener</code>. </exception>
 
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Sub removeDragGestureListener(ByVal dgl As DragGestureListener)
+		Public Overridable Sub removeDragGestureListener(  dgl As DragGestureListener)
 			If dragGestureListener Is Nothing OrElse (Not dragGestureListener.Equals(dgl)) Then
 				Throw New IllegalArgumentException
 			Else
@@ -344,7 +344,7 @@ Namespace java.awt.dnd
 		''' <param name="dragAction"> The action initially selected by the users gesture </param>
 		''' <param name="p">          The point (in Component coords) where the gesture originated </param>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Protected Friend Overridable Sub fireDragGestureRecognized(ByVal dragAction As Integer, ByVal p As java.awt.Point)
+		Protected Friend Overridable Sub fireDragGestureRecognized(  dragAction As Integer,   p As java.awt.Point)
 			Try
 				If dragGestureListener IsNot Nothing Then dragGestureListener.dragGestureRecognized(New DragGestureEvent(Me, dragAction, p, events))
 			Finally
@@ -370,7 +370,7 @@ Namespace java.awt.dnd
 		''' is not a valid value, and will be ignored. </param>
 
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Protected Friend Overridable Sub appendEvent(ByVal awtie As java.awt.event.InputEvent)
+		Protected Friend Overridable Sub appendEvent(  awtie As java.awt.event.InputEvent)
 			events.Add(awtie)
 		End Sub
 
@@ -385,7 +385,7 @@ Namespace java.awt.dnd
 		'''             <code>null</code>.
 		''' @since 1.4
 		''' </summary>
-		Private Sub writeObject(ByVal s As java.io.ObjectOutputStream)
+		Private Sub writeObject(  s As java.io.ObjectOutputStream)
 			s.defaultWriteObject()
 
 			s.writeObject(If(SerializationTester.test(dragGestureListener), dragGestureListener, Nothing))
@@ -400,7 +400,7 @@ Namespace java.awt.dnd
 		''' @since 1.4
 		''' </summary>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Private Sub readObject(ByVal s As java.io.ObjectInputStream)
+		Private Sub readObject(  s As java.io.ObjectInputStream)
 			Dim f As java.io.ObjectInputStream.GetField = s.readFields()
 
 			Dim newDragSource As DragSource = CType(f.get("dragSource", Nothing), DragSource)

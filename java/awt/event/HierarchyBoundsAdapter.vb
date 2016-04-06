@@ -52,13 +52,13 @@ Namespace java.awt.event
 		''' <summary>
 		''' Called when an ancestor of the source is moved.
 		''' </summary>
-		Public Overridable Sub ancestorMoved(ByVal e As HierarchyEvent) Implements HierarchyBoundsListener.ancestorMoved
+		Public Overridable Sub ancestorMoved(  e As HierarchyEvent) Implements HierarchyBoundsListener.ancestorMoved
 		End Sub
 
 		''' <summary>
 		''' Called when an ancestor of the source is resized.
 		''' </summary>
-		Public Overridable Sub ancestorResized(ByVal e As HierarchyEvent) Implements HierarchyBoundsListener.ancestorResized
+		Public Overridable Sub ancestorResized(  e As HierarchyEvent) Implements HierarchyBoundsListener.ancestorResized
 		End Sub
 	End Class
 

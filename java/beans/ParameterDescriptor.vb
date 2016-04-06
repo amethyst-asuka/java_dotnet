@@ -47,7 +47,7 @@ Namespace java.beans
 		''' Package private dup constructor.
 		''' This must isolate the new object from any changes to the old object.
 		''' </summary>
-		Friend Sub New(ByVal old As ParameterDescriptor)
+		Friend Sub New(  old As ParameterDescriptor)
 			MyBase.New(old)
 		End Sub
 

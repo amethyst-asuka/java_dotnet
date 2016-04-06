@@ -173,7 +173,7 @@ Namespace java.nio.charset
         ''' </param>
         ''' <exception cref="IllegalArgumentException">
         '''          If the preconditions on the parameters do not hold </exception>
-        Private Sub New(ByVal cs As Charset, ByVal averageCharsPerByte As Single, ByVal maxCharsPerByte As Single, ByVal replacement As String)
+        Private Sub New(  cs As Charset,   averageCharsPerByte As Single,   maxCharsPerByte As Single,   replacement As String)
             Me.charset_Renamed = cs
             If averageCharsPerByte <= 0.0F Then Throw New IllegalArgumentException("Non-positive " & "averageCharsPerByte")
             If maxCharsPerByte <= 0.0F Then Throw New IllegalArgumentException("Non-positive " & "maxCharsPerByte")
@@ -204,7 +204,7 @@ Namespace java.nio.charset
         ''' </param>
         ''' <exception cref="IllegalArgumentException">
         '''          If the preconditions on the parameters do not hold </exception>
-        Protected Friend Sub New(ByVal cs As Charset, ByVal averageCharsPerByte As Single, ByVal maxCharsPerByte As Single)
+        Protected Friend Sub New(  cs As Charset,   averageCharsPerByte As Single,   maxCharsPerByte As Single)
             Me.New(cs, averageCharsPerByte, maxCharsPerByte, ChrW(&HFFFD).ToString())
         End Sub
 
@@ -254,7 +254,7 @@ Namespace java.nio.charset
         ''' </returns>
         ''' <exception cref="IllegalArgumentException">
         '''          If the preconditions on the parameter do not hold </exception>
-        Public Function replaceWith(ByVal newReplacement As String) As CharsetDecoder
+        Public Function replaceWith(  newReplacement As String) As CharsetDecoder
             If newReplacement Is Nothing Then Throw New IllegalArgumentException("Null replacement")
             Dim len As Integer = newReplacement.Length()
             If len = 0 Then Throw New IllegalArgumentException("Empty replacement")
@@ -279,7 +279,7 @@ Namespace java.nio.charset
         ''' the replacement.  </p>
         ''' </summary>
         ''' <param name="newReplacement">    The replacement value </param>
-        Protected Friend Overridable Sub implReplaceWith(ByVal newReplacement As String)
+        Protected Friend Overridable Sub implReplaceWith(  newReplacement As String)
         End Sub
 
 
@@ -342,7 +342,7 @@ Namespace java.nio.charset
         ''' </returns>
         ''' <exception cref="IllegalArgumentException">
         '''         If the precondition on the parameter does not hold </exception>
-        Public Function onMalformedInput(ByVal newAction As CodingErrorAction) As CharsetDecoder
+        Public Function onMalformedInput(  newAction As CodingErrorAction) As CharsetDecoder
             If newAction Is Nothing Then Throw New IllegalArgumentException("Null action")
             malformedInputAction_Renamed = newAction
             implOnMalformedInput(newAction)
@@ -357,7 +357,7 @@ Namespace java.nio.charset
         ''' the malformed-input action.  </p>
         ''' </summary>
         ''' <param name="newAction">  The new action </param>
-        Protected Friend Overridable Sub implOnMalformedInput(ByVal newAction As CodingErrorAction)
+        Protected Friend Overridable Sub implOnMalformedInput(  newAction As CodingErrorAction)
         End Sub
 
         ''' <summary>
@@ -381,7 +381,7 @@ Namespace java.nio.charset
         ''' </returns>
         ''' <exception cref="IllegalArgumentException">
         '''         If the precondition on the parameter does not hold </exception>
-        Public Function onUnmappableCharacter(ByVal newAction As CodingErrorAction) As CharsetDecoder
+        Public Function onUnmappableCharacter(  newAction As CodingErrorAction) As CharsetDecoder
             If newAction Is Nothing Then Throw New IllegalArgumentException("Null action")
             unmappableCharacterAction_Renamed = newAction
             implOnUnmappableCharacter(newAction)
@@ -396,7 +396,7 @@ Namespace java.nio.charset
         ''' the unmappable-character action.  </p>
         ''' </summary>
         ''' <param name="newAction">  The new action </param>
-        Protected Friend Overridable Sub implOnUnmappableCharacter(ByVal newAction As CodingErrorAction)
+        Protected Friend Overridable Sub implOnUnmappableCharacter(  newAction As CodingErrorAction)
         End Sub
 
         ''' <summary>
@@ -518,7 +518,7 @@ Namespace java.nio.charset
         ''' <exception cref="CoderMalfunctionError">
         '''          If an invocation of the decodeLoop method threw
         '''          an unexpected exception </exception>
-        Public Function decode(ByVal [in] As java.nio.ByteBuffer, ByVal out As java.nio.CharBuffer, ByVal endOfInput As Boolean) As CoderResult
+        Public Function decode(  [in] As java.nio.ByteBuffer,   out As java.nio.CharBuffer,   endOfInput As Boolean) As CoderResult
             Dim newState As Integer = If(endOfInput, ST_END, ST_CODING)
             If (state <> ST_RESET) AndAlso (state <> ST_CODING) AndAlso Not (endOfInput AndAlso (state = ST_END)) Then throwIllegalStateException(state, newState)
             state = newState
@@ -610,7 +610,7 @@ Namespace java.nio.charset
         '''          #decode(ByteBuffer,CharBuffer,boolean) decode} method
         '''          with a value of <tt>true</tt> for the <tt>endOfInput</tt>
         '''          parameter </exception>
-        Public Function flush(ByVal out As java.nio.CharBuffer) As CoderResult
+        Public Function flush(  out As java.nio.CharBuffer) As CoderResult
             If state = ST_END Then
                 Dim cr As CoderResult = implFlush(out)
                 If cr.underflow Then state = ST_FLUSHED
@@ -635,7 +635,7 @@ Namespace java.nio.charset
         ''' </param>
         ''' <returns>  A coder-result object, either <seealso cref="CoderResult#UNDERFLOW"/> or
         '''          <seealso cref="CoderResult#OVERFLOW"/> </returns>
-        Protected Friend Overridable Function implFlush(ByVal out As java.nio.CharBuffer) As CoderResult
+        Protected Friend Overridable Function implFlush(  out As java.nio.CharBuffer) As CoderResult
             Return CoderResult.underflow
         End Function
 
@@ -697,7 +697,7 @@ Namespace java.nio.charset
         '''         The output character buffer
         ''' </param>
         ''' <returns>  A coder-result object describing the reason for termination </returns>
-        Protected Friend MustOverride Function decodeLoop(ByVal [in] As java.nio.ByteBuffer, ByVal out As java.nio.CharBuffer) As CoderResult
+        Protected Friend MustOverride Function decodeLoop(  [in] As java.nio.ByteBuffer,   out As java.nio.CharBuffer) As CoderResult
 
         ''' <summary>
         ''' Convenience method that decodes the remaining content of a single input
@@ -729,7 +729,7 @@ Namespace java.nio.charset
         '''          position cannot be mapped to an equivalent character sequence and
         '''          the current unmappable-character action is {@link
         '''          CodingErrorAction#REPORT} </exception>
-        Public Function decode(ByVal [in] As java.nio.ByteBuffer) As java.nio.CharBuffer
+        Public Function decode(  [in] As java.nio.ByteBuffer) As java.nio.CharBuffer
             Dim n As Integer = CInt(Fix([in].remaining() * averageCharsPerByte()))
             Dim out As java.nio.CharBuffer = java.nio.CharBuffer.allocate(n)
 
@@ -924,7 +924,7 @@ Namespace java.nio.charset
 
 
 
-        Private Sub throwIllegalStateException(ByVal [from] As Integer, ByVal [to] As Integer)
+        Private Sub throwIllegalStateException(  [from] As Integer,   [to] As Integer)
             Throw New IllegalStateException("Current state = " & stateNames([from]) & ", new state = " & stateNames([to]))
         End Sub
 

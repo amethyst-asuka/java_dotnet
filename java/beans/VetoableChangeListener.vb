@@ -40,7 +40,7 @@ Namespace java.beans
 		'''                event source and the property that has changed. </param>
 		''' <exception cref="PropertyVetoException"> if the recipient wishes the property
 		'''              change to be rolled back. </exception>
-		Sub vetoableChange(ByVal evt As PropertyChangeEvent)
+		Sub vetoableChange(  evt As PropertyChangeEvent)
 	End Interface
 
 End Namespace

@@ -54,7 +54,7 @@ Namespace java.awt.peer
 		''' <returns> the preferred size of the text field
 		''' </returns>
 		''' <seealso cref= TextField#getPreferredSize(int) </seealso>
-		Function getPreferredSize(ByVal columns As Integer) As java.awt.Dimension
+		Function getPreferredSize(  columns As Integer) As java.awt.Dimension
 
 		''' <summary>
 		''' Returns the minimum size of the text field with the specified number
@@ -65,7 +65,7 @@ Namespace java.awt.peer
 		''' <returns> the minimum size of the text field
 		''' </returns>
 		''' <seealso cref= TextField#getMinimumSize(int) </seealso>
-		Function getMinimumSize(ByVal columns As Integer) As java.awt.Dimension
+		Function getMinimumSize(  columns As Integer) As java.awt.Dimension
 
 	End Interface
 

@@ -84,7 +84,7 @@ Namespace java.util
 		''' Construct an instance with the value present.
 		''' </summary>
 		''' <param name="value"> the long value to be present </param>
-		Private Sub New(ByVal value As Long)
+		Private Sub New(  value As Long)
 			Me.isPresent_Renamed = True
 			Me.value = value
 		End Sub
@@ -94,7 +94,7 @@ Namespace java.util
 		''' </summary>
 		''' <param name="value"> the value to be present </param>
 		''' <returns> an {@code OptionalLong} with the value present </returns>
-		Public Shared Function [of](ByVal value As Long) As OptionalLong
+		Public Shared Function [of](  value As Long) As OptionalLong
 			Return New OptionalLong(value)
 		End Function
 
@@ -130,7 +130,7 @@ Namespace java.util
 		''' <param name="consumer"> block to be executed if a value is present </param>
 		''' <exception cref="NullPointerException"> if value is present and {@code consumer} is
 		''' null </exception>
-		Public Sub ifPresent(ByVal consumer As java.util.function.LongConsumer)
+		Public Sub ifPresent(  consumer As java.util.function.LongConsumer)
 			If isPresent_Renamed Then consumer.accept(value)
 		End Sub
 
@@ -139,7 +139,7 @@ Namespace java.util
 		''' </summary>
 		''' <param name="other"> the value to be returned if there is no value present </param>
 		''' <returns> the value, if present, otherwise {@code other} </returns>
-		Public Function [orElse](ByVal other As Long) As Long
+		Public Function [orElse](  other As Long) As Long
 			Return If(isPresent_Renamed, value, other)
 		End Function
 
@@ -152,7 +152,7 @@ Namespace java.util
 		''' <returns> the value if present otherwise the result of {@code other.getAsLong()} </returns>
 		''' <exception cref="NullPointerException"> if value is not present and {@code other} is
 		''' null </exception>
-		Public Function orElseGet(ByVal other As java.util.function.LongSupplier) As Long
+		Public Function orElseGet(  other As java.util.function.LongSupplier) As Long
 			Return If(isPresent_Renamed, value, other.asLong)
 		End Function
 
@@ -171,7 +171,7 @@ Namespace java.util
 		''' <exception cref="X"> if there is no value present </exception>
 		''' <exception cref="NullPointerException"> if no value is present and
 		''' {@code exceptionSupplier} is null </exception>
-		Public Function orElseThrow(Of X As Throwable)(ByVal exceptionSupplier As java.util.function.Supplier(Of X)) As Long
+		Public Function orElseThrow(Of X As Throwable)(  exceptionSupplier As java.util.function.Supplier(Of X)) As Long
 			If isPresent_Renamed Then
 				Return value
 			Else
@@ -191,7 +191,7 @@ Namespace java.util
 		''' <param name="obj"> an object to be tested for equality </param>
 		''' <returns> {code true} if the other object is "equal to" this object
 		''' otherwise {@code false} </returns>
-		Public Overrides Function Equals(ByVal obj As Object) As Boolean
+		Public Overrides Function Equals(  obj As Object) As Boolean
 			If Me Is obj Then Return True
 
 			If Not(TypeOf obj Is OptionalLong) Then Return False

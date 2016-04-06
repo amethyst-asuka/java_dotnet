@@ -126,7 +126,7 @@ Namespace java.util
 		End Sub
 
 		' Implements java.util.ResourceBundle.handleGetObject; inherits javadoc specification.
-		Public NotOverridable Overrides Function handleGetObject(ByVal key As String) As Object
+		Public NotOverridable Overrides Function handleGetObject(  key As String) As Object
 			' lazily load the lookup hashtable.
 			If lookup Is Nothing Then loadLookup()
 			If key Is Nothing Then Throw New NullPointerException

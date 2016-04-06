@@ -147,7 +147,7 @@ Namespace java.lang
         '''          argument; {@code false} otherwise. </returns>
         ''' <seealso cref=     #hashCode() </seealso>
         ''' <seealso cref=     java.util.HashMap </seealso>
-        Public Overrides Function Equals(ByVal obj As Object) As Boolean
+        Public Overrides Function Equals(  obj As Object) As Boolean
             Return (Me Is obj)
         End Function
 
@@ -380,7 +380,7 @@ Namespace java.lang
         '''             this exception is thrown. </exception>
         ''' <seealso cref=        java.lang.Object#notify() </seealso>
         ''' <seealso cref=        java.lang.Object#notifyAll() </seealso>
-        Public Sub wait(ByVal timeout As Long)
+        Public Sub wait(  timeout As Long)
         End Sub
 
         ''' <summary>
@@ -444,7 +444,7 @@ Namespace java.lang
         '''             was waiting for a notification.  The <i>interrupted
         '''             status</i> of the current thread is cleared when
         '''             this exception is thrown. </exception>
-        Public Sub wait(ByVal timeout As Long, ByVal nanos As Integer)
+        Public Sub wait(  timeout As Long,   nanos As Integer)
             If timeout < 0 Then Throw New IllegalArgumentException("timeout value is negative")
             If nanos < 0 OrElse nanos > 999999 Then Throw New IllegalArgumentException("nanosecond timeout value out of range")
             If nanos > 0 Then timeout += 1

@@ -81,7 +81,7 @@ Namespace java.nio.file.spi
 			If sm IsNot Nothing Then sm.checkPermission(New RuntimePermission("fileSystemProvider"))
 			Return Nothing
 		End Function
-		Private Sub New(ByVal ignore As Void)
+		Private Sub New(  ignore As Void)
 		End Sub
 
 		''' <summary>
@@ -210,7 +210,7 @@ Namespace java.nio.file.spi
 		'''          permission required by the file system provider implementation </exception>
 		''' <exception cref="FileSystemAlreadyExistsException">
 		'''          If the file system has already been created </exception>
-		Public MustOverride Function newFileSystem(Of T1)(ByVal uri As java.net.URI, ByVal env As Map(Of T1)) As FileSystem
+		Public MustOverride Function newFileSystem(Of T1)(  uri As java.net.URI,   env As Map(Of T1)) As FileSystem
 
 		''' <summary>
 		''' Returns an existing {@code FileSystem} created by this provider.
@@ -250,7 +250,7 @@ Namespace java.nio.file.spi
 		''' <exception cref="SecurityException">
 		'''          If a security manager is installed and it denies an unspecified
 		'''          permission. </exception>
-		Public MustOverride Function getFileSystem(ByVal uri As java.net.URI) As FileSystem
+		Public MustOverride Function getFileSystem(  uri As java.net.URI) As FileSystem
 
 		''' <summary>
 		''' Return a {@code Path} object by converting the given <seealso cref="URI"/>. The
@@ -282,7 +282,7 @@ Namespace java.nio.file.spi
 		''' <exception cref="SecurityException">
 		'''          If a security manager is installed and it denies an unspecified
 		'''          permission. </exception>
-		Public MustOverride Function getPath(ByVal uri As java.net.URI) As Path
+		Public MustOverride Function getPath(  uri As java.net.URI) As Path
 
 		''' <summary>
 		''' Constructs a new {@code FileSystem} to access the contents of a file as a
@@ -318,7 +318,7 @@ Namespace java.nio.file.spi
 		''' <exception cref="SecurityException">
 		'''          If a security manager is installed and it denies an unspecified
 		'''          permission. </exception>
-		Public Overridable Function newFileSystem(Of T1)(ByVal path As Path, ByVal env As Map(Of T1)) As FileSystem
+		Public Overridable Function newFileSystem(Of T1)(  path As Path,   env As Map(Of T1)) As FileSystem
 			Throw New UnsupportedOperationException
 		End Function
 
@@ -349,7 +349,7 @@ Namespace java.nio.file.spi
 		'''          In the case of the default provider, and a security manager is
 		'''          installed, the <seealso cref="SecurityManager#checkRead(String) checkRead"/>
 		'''          method is invoked to check read access to the file. </exception>
-		Public Overridable Function newInputStream(ByVal path As Path, ParamArray ByVal options As OpenOption()) As java.io.InputStream
+		Public Overridable Function newInputStream(  path As Path, ParamArray   options As OpenOption()) As java.io.InputStream
 			If options.Length > 0 Then
 				For Each opt As OpenOption In options
 					' All OpenOption values except for APPEND and WRITE are allowed
@@ -389,7 +389,7 @@ Namespace java.nio.file.spi
 		'''          SecurityManager#checkDelete(String) checkDelete} method is
 		'''          invoked to check delete access if the file is opened with the
 		'''          {@code DELETE_ON_CLOSE} option. </exception>
-		Public Overridable Function newOutputStream(ByVal path As Path, ParamArray ByVal options As OpenOption()) As java.io.OutputStream
+		Public Overridable Function newOutputStream(  path As Path, ParamArray   options As OpenOption()) As java.io.OutputStream
 			Dim len As Integer = options.Length
 			Dim opts As [Set](Of OpenOption) = New HashSet(Of OpenOption)(len + 3)
 			If len = 0 Then
@@ -438,7 +438,7 @@ Namespace java.nio.file.spi
 		'''          read access if the file is opened for reading. The {@link
 		'''          SecurityManager#checkWrite(String)} method is invoked to check
 		'''          write access if the file is opened for writing </exception>
-		Public Overridable Function newFileChannel(Of T1 As OpenOption, T2)(ByVal path As Path, ByVal options As [Set](Of T1), ParamArray ByVal attrs As FileAttribute(Of T2)()) As FileChannel
+		Public Overridable Function newFileChannel(Of T1 As OpenOption, T2)(  path As Path,   options As [Set](Of T1), ParamArray   attrs As FileAttribute(Of T2)()) As FileChannel
 			Throw New UnsupportedOperationException
 		End Function
 
@@ -481,7 +481,7 @@ Namespace java.nio.file.spi
 		'''          read access if the file is opened for reading. The {@link
 		'''          SecurityManager#checkWrite(String)} method is invoked to check
 		'''          write access if the file is opened for writing </exception>
-		Public Overridable Function newAsynchronousFileChannel(Of T1 As OpenOption, T2)(ByVal path As Path, ByVal options As [Set](Of T1), ByVal executor As java.util.concurrent.ExecutorService, ParamArray ByVal attrs As FileAttribute(Of T2)()) As AsynchronousFileChannel
+		Public Overridable Function newAsynchronousFileChannel(Of T1 As OpenOption, T2)(  path As Path,   options As [Set](Of T1),   executor As java.util.concurrent.ExecutorService, ParamArray   attrs As FileAttribute(Of T2)()) As AsynchronousFileChannel
 			Throw New UnsupportedOperationException
 		End Function
 
@@ -521,7 +521,7 @@ Namespace java.nio.file.spi
 		'''          SecurityManager#checkDelete(String) checkDelete} method is
 		'''          invoked to check delete access if the file is opened with the
 		'''          {@code DELETE_ON_CLOSE} option. </exception>
-		Public MustOverride Function newByteChannel(Of T1 As OpenOption, T2)(ByVal path As Path, ByVal options As [Set](Of T1), ParamArray ByVal attrs As FileAttribute(Of T2)()) As SeekableByteChannel
+		Public MustOverride Function newByteChannel(Of T1 As OpenOption, T2)(  path As Path,   options As [Set](Of T1), ParamArray   attrs As FileAttribute(Of T2)()) As SeekableByteChannel
 
 		''' <summary>
 		''' Opens a directory, returning a {@code DirectoryStream} to iterate over
@@ -547,7 +547,7 @@ Namespace java.nio.file.spi
 		'''          installed, the <seealso cref="SecurityManager#checkRead(String) checkRead"/>
 		'''          method is invoked to check read access to the directory. </exception>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public MustOverride Function newDirectoryStream(Of T1)(ByVal dir As Path, ByVal filter As DirectoryStream.Filter(Of T1)) As DirectoryStream(Of Path)
+		Public MustOverride Function newDirectoryStream(Of T1)(  dir As Path,   filter As DirectoryStream.Filter(Of T1)) As DirectoryStream(Of Path)
 
 		''' <summary>
 		''' Creates a new directory. This method works in exactly the manner
@@ -571,7 +571,7 @@ Namespace java.nio.file.spi
 		'''          In the case of the default provider, and a security manager is
 		'''          installed, the <seealso cref="SecurityManager#checkWrite(String) checkWrite"/>
 		'''          method is invoked to check write access to the new directory. </exception>
-		Public MustOverride Sub createDirectory(Of T1)(ByVal dir As Path, ParamArray ByVal attrs As FileAttribute(Of T1)())
+		Public MustOverride Sub createDirectory(Of T1)(  dir As Path, ParamArray   attrs As FileAttribute(Of T1)())
 
 		''' <summary>
 		''' Creates a symbolic link to a target. This method works in exactly the
@@ -602,7 +602,7 @@ Namespace java.nio.file.spi
 		'''          is installed, it denies <seealso cref="LinkPermission"/><tt>("symbolic")</tt>
 		'''          or its <seealso cref="SecurityManager#checkWrite(String) checkWrite"/>
 		'''          method denies write access to the path of the symbolic link. </exception>
-		Public Overridable Sub createSymbolicLink(Of T1)(ByVal link As Path, ByVal target As Path, ParamArray ByVal attrs As FileAttribute(Of T1)())
+		Public Overridable Sub createSymbolicLink(Of T1)(  link As Path,   target As Path, ParamArray   attrs As FileAttribute(Of T1)())
 			Throw New UnsupportedOperationException
 		End Sub
 
@@ -633,7 +633,7 @@ Namespace java.nio.file.spi
 		'''          or its <seealso cref="SecurityManager#checkWrite(String) checkWrite"/>
 		'''          method denies write access to either the  link or the
 		'''          existing file. </exception>
-		Public Overridable Sub createLink(ByVal link As Path, ByVal existing As Path)
+		Public Overridable Sub createLink(  link As Path,   existing As Path)
 			Throw New UnsupportedOperationException
 		End Sub
 
@@ -656,7 +656,7 @@ Namespace java.nio.file.spi
 		'''          In the case of the default provider, and a security manager is
 		'''          installed, the <seealso cref="SecurityManager#checkDelete(String)"/> method
 		'''          is invoked to check delete access to the file </exception>
-		Public MustOverride Sub delete(ByVal path As Path)
+		Public MustOverride Sub delete(  path As Path)
 
 		''' <summary>
 		''' Deletes a file if it exists. This method works in exactly the manner
@@ -683,7 +683,7 @@ Namespace java.nio.file.spi
 		'''          In the case of the default provider, and a security manager is
 		'''          installed, the <seealso cref="SecurityManager#checkDelete(String)"/> method
 		'''          is invoked to check delete access to the file </exception>
-		Public Overridable Function deleteIfExists(ByVal path As Path) As Boolean
+		Public Overridable Function deleteIfExists(  path As Path) As Boolean
 			Try
 				delete(path)
 				Return True
@@ -715,7 +715,7 @@ Namespace java.nio.file.spi
 		'''          In the case of the default provider, and a security manager
 		'''          is installed, it checks that {@code FilePermission} has been
 		'''          granted with the "{@code readlink}" action to read the link. </exception>
-		Public Overridable Function readSymbolicLink(ByVal link As Path) As Path
+		Public Overridable Function readSymbolicLink(  link As Path) As Path
 			Throw New UnsupportedOperationException
 		End Function
 
@@ -752,7 +752,7 @@ Namespace java.nio.file.spi
 		'''          to check write access to the target file. If a symbolic link is
 		'''          copied the security manager is invoked to check {@link
 		'''          LinkPermission}{@code ("symbolic")}. </exception>
-		Public MustOverride Sub copy(ByVal source As Path, ByVal target As Path, ParamArray ByVal options As CopyOption())
+		Public MustOverride Sub copy(  source As Path,   target As Path, ParamArray   options As CopyOption())
 
 		''' <summary>
 		''' Move or rename a file to a target file. This method works in exactly the
@@ -786,7 +786,7 @@ Namespace java.nio.file.spi
 		'''          installed, the <seealso cref="SecurityManager#checkWrite(String) checkWrite"/>
 		'''          method is invoked to check write access to both the source and
 		'''          target file. </exception>
-		Public MustOverride Sub move(ByVal source As Path, ByVal target As Path, ParamArray ByVal options As CopyOption())
+		Public MustOverride Sub move(  source As Path,   target As Path, ParamArray   options As CopyOption())
 
 		''' <summary>
 		''' Tests if two paths locate the same file. This method works in exactly the
@@ -805,7 +805,7 @@ Namespace java.nio.file.spi
 		'''          In the case of the default provider, and a security manager is
 		'''          installed, the <seealso cref="SecurityManager#checkRead(String) checkRead"/>
 		'''          method is invoked to check read access to both files. </exception>
-		Public MustOverride Function isSameFile(ByVal path As Path, ByVal path2 As Path) As Boolean
+		Public MustOverride Function isSameFile(  path As Path,   path2 As Path) As Boolean
 
 		''' <summary>
 		''' Tells whether or not a file is considered <em>hidden</em>. This method
@@ -825,7 +825,7 @@ Namespace java.nio.file.spi
 		'''          In the case of the default provider, and a security manager is
 		'''          installed, the <seealso cref="SecurityManager#checkRead(String) checkRead"/>
 		'''          method is invoked to check read access to the file. </exception>
-		Public MustOverride Function isHidden(ByVal path As Path) As Boolean
+		Public MustOverride Function isHidden(  path As Path) As Boolean
 
 		''' <summary>
 		''' Returns the <seealso cref="FileStore"/> representing the file store where a file
@@ -845,7 +845,7 @@ Namespace java.nio.file.spi
 		'''          method is invoked to check read access to the file, and in
 		'''          addition it checks <seealso cref="RuntimePermission"/><tt>
 		'''          ("getFileStoreAttributes")</tt> </exception>
-		Public MustOverride Function getFileStore(ByVal path As Path) As FileStore
+		Public MustOverride Function getFileStore(  path As Path) As FileStore
 
 		''' <summary>
 		''' Checks the existence, and optionally the accessibility, of a file.
@@ -919,7 +919,7 @@ Namespace java.nio.file.spi
 		'''          checkWrite} is invoked when checking write access to the file,
 		'''          and <seealso cref="SecurityManager#checkExec(String) checkExec"/> is invoked
 		'''          when checking execute access. </exception>
-		Public MustOverride Sub checkAccess(ByVal path As Path, ParamArray ByVal modes As AccessMode())
+		Public MustOverride Sub checkAccess(  path As Path, ParamArray   modes As AccessMode())
 
 		''' <summary>
 		''' Returns a file attribute view of a given type. This method works in
@@ -937,7 +937,7 @@ Namespace java.nio.file.spi
 		''' </param>
 		''' <returns>  a file attribute view of the specified type, or {@code null} if
 		'''          the attribute view type is not available </returns>
-		Public MustOverride Function getFileAttributeView(Of V As FileAttributeView)(ByVal path As Path, ByVal type As [Class], ParamArray ByVal options As LinkOption()) As V
+		Public MustOverride Function getFileAttributeView(Of V As FileAttributeView)(  path As Path,   type As [Class], ParamArray   options As LinkOption()) As V
 
 		''' <summary>
 		''' Reads a file's attributes as a bulk operation. This method works in
@@ -964,7 +964,7 @@ Namespace java.nio.file.spi
 		'''          In the case of the default provider, a security manager is
 		'''          installed, its <seealso cref="SecurityManager#checkRead(String) checkRead"/>
 		'''          method is invoked to check read access to the file </exception>
-		Public MustOverride Function readAttributes(Of A As BasicFileAttributes)(ByVal path As Path, ByVal type As [Class], ParamArray ByVal options As LinkOption()) As A
+		Public MustOverride Function readAttributes(Of A As BasicFileAttributes)(  path As Path,   type As [Class], ParamArray   options As LinkOption()) As A
 
 		''' <summary>
 		''' Reads a set of file attributes as a bulk operation. This method works in
@@ -994,7 +994,7 @@ Namespace java.nio.file.spi
 		'''          method denies read access to the file. If this method is invoked
 		'''          to read security sensitive attributes then the security manager
 		'''          may be invoke to check for additional permissions. </exception>
-		Public MustOverride Function readAttributes(ByVal path As Path, ByVal attributes As String, ParamArray ByVal options As LinkOption()) As Map(Of String, Object)
+		Public MustOverride Function readAttributes(  path As Path,   attributes As String, ParamArray   options As LinkOption()) As Map(Of String, Object)
 
 		''' <summary>
 		''' Sets the value of a file attribute. This method works in exactly the
@@ -1027,7 +1027,7 @@ Namespace java.nio.file.spi
 		'''          method denies write access to the file. If this method is invoked
 		'''          to set security sensitive attributes then the security manager
 		'''          may be invoked to check for additional permissions. </exception>
-		Public MustOverride Sub setAttribute(ByVal path As Path, ByVal attribute As String, ByVal value As Object, ParamArray ByVal options As LinkOption())
+		Public MustOverride Sub setAttribute(  path As Path,   attribute As String,   value As Object, ParamArray   options As LinkOption())
 	End Class
 
 End Namespace

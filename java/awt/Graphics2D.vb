@@ -430,7 +430,7 @@ Namespace java.awt
 		'''                      appears to be raised above the surface
 		'''                      or sunk into the surface. </param>
 		''' <seealso cref=         java.awt.Graphics#fill3DRect </seealso>
-		Public Overrides Sub draw3DRect(ByVal x As Integer, ByVal y As Integer, ByVal width As Integer, ByVal height As Integer, ByVal raised As Boolean)
+		Public Overrides Sub draw3DRect(  x As Integer,   y As Integer,   width As Integer,   height As Integer,   raised As Boolean)
 			Dim p As Paint = paint
 			Dim c As Color = color
 			Dim brighter As Color = c.brighter()
@@ -465,7 +465,7 @@ Namespace java.awt
 		'''                      rectangle appears to be raised above the surface
 		'''                      or etched into the surface. </param>
 		''' <seealso cref=         java.awt.Graphics#draw3DRect </seealso>
-		Public Overrides Sub fill3DRect(ByVal x As Integer, ByVal y As Integer, ByVal width As Integer, ByVal height As Integer, ByVal raised As Boolean)
+		Public Overrides Sub fill3DRect(  x As Integer,   y As Integer,   width As Integer,   height As Integer,   raised As Boolean)
 			Dim p As Paint = paint
 			Dim c As Color = color
 			Dim brighter As Color = c.brighter()
@@ -505,7 +505,7 @@ Namespace java.awt
 		''' <seealso cref= #clip </seealso>
 		''' <seealso cref= #setClip </seealso>
 		''' <seealso cref= #setComposite </seealso>
-		Public MustOverride Sub draw(ByVal s As Shape)
+		Public MustOverride Sub draw(  s As Shape)
 
 		''' <summary>
 		''' Renders an image, applying a transform from image space into user space
@@ -532,7 +532,7 @@ Namespace java.awt
 		''' <seealso cref= #setComposite </seealso>
 		''' <seealso cref= #clip </seealso>
 		''' <seealso cref= #setClip </seealso>
-		Public MustOverride Function drawImage(ByVal img As Image, ByVal xform As java.awt.geom.AffineTransform, ByVal obs As java.awt.image.ImageObserver) As Boolean
+		Public MustOverride Function drawImage(  img As Image,   xform As java.awt.geom.AffineTransform,   obs As java.awt.image.ImageObserver) As Boolean
 
 		''' <summary>
 		''' Renders a <code>BufferedImage</code> that is
@@ -558,7 +558,7 @@ Namespace java.awt
 		''' <seealso cref= #setComposite </seealso>
 		''' <seealso cref= #clip </seealso>
 		''' <seealso cref= #setClip </seealso>
-		Public MustOverride Sub drawImage(ByVal img As java.awt.image.BufferedImage, ByVal op As java.awt.image.BufferedImageOp, ByVal x As Integer, ByVal y As Integer)
+		Public MustOverride Sub drawImage(  img As java.awt.image.BufferedImage,   op As java.awt.image.BufferedImageOp,   x As Integer,   y As Integer)
 
 		''' <summary>
 		''' Renders a <seealso cref="RenderedImage"/>,
@@ -580,7 +580,7 @@ Namespace java.awt
 		''' <seealso cref= #setComposite </seealso>
 		''' <seealso cref= #clip </seealso>
 		''' <seealso cref= #setClip </seealso>
-		Public MustOverride Sub drawRenderedImage(ByVal img As java.awt.image.RenderedImage, ByVal xform As java.awt.geom.AffineTransform)
+		Public MustOverride Sub drawRenderedImage(  img As java.awt.image.RenderedImage,   xform As java.awt.geom.AffineTransform)
 
 		''' <summary>
 		''' Renders a
@@ -612,7 +612,7 @@ Namespace java.awt
 		''' <seealso cref= #clip </seealso>
 		''' <seealso cref= #setClip </seealso>
 		''' <seealso cref= #drawRenderedImage </seealso>
-		Public MustOverride Sub drawRenderableImage(ByVal img As java.awt.image.renderable.RenderableImage, ByVal xform As java.awt.geom.AffineTransform)
+		Public MustOverride Sub drawRenderableImage(  img As java.awt.image.renderable.RenderableImage,   xform As java.awt.geom.AffineTransform)
 
 		''' <summary>
 		''' Renders the text of the specified <code>String</code>, using the
@@ -636,7 +636,7 @@ Namespace java.awt
 		''' <seealso cref=         java.awt.Graphics#drawBytes </seealso>
 		''' <seealso cref=         java.awt.Graphics#drawChars
 		''' @since       JDK1.0 </seealso>
-		Public MustOverride Sub drawString(ByVal str As String, ByVal x As Integer, ByVal y As Integer)
+		Public MustOverride Sub drawString(  str As String,   x As Integer,   y As Integer)
 
 		''' <summary>
 		''' Renders the text specified by the specified <code>String</code>,
@@ -662,7 +662,7 @@ Namespace java.awt
 		''' <seealso cref= #setTransform </seealso>
 		''' <seealso cref= #setComposite </seealso>
 		''' <seealso cref= #setClip </seealso>
-		Public MustOverride Sub drawString(ByVal str As String, ByVal x As Single, ByVal y As Single)
+		Public MustOverride Sub drawString(  str As String,   x As Single,   y As Single)
 
 		''' <summary>
 		''' Renders the text of the specified iterator applying its attributes
@@ -686,7 +686,7 @@ Namespace java.awt
 		''' <seealso cref= #setTransform </seealso>
 		''' <seealso cref= #setComposite </seealso>
 		''' <seealso cref= #setClip </seealso>
-		Public MustOverride Sub drawString(ByVal [iterator] As java.text.AttributedCharacterIterator, ByVal x As Integer, ByVal y As Integer)
+		Public MustOverride Sub drawString(  [iterator] As java.text.AttributedCharacterIterator,   x As Integer,   y As Integer)
 
 		''' <summary>
 		''' Renders the text of the specified iterator applying its attributes
@@ -710,7 +710,7 @@ Namespace java.awt
 		''' <seealso cref= #setTransform </seealso>
 		''' <seealso cref= #setComposite </seealso>
 		''' <seealso cref= #setClip </seealso>
-		Public MustOverride Sub drawString(ByVal [iterator] As java.text.AttributedCharacterIterator, ByVal x As Single, ByVal y As Single)
+		Public MustOverride Sub drawString(  [iterator] As java.text.AttributedCharacterIterator,   x As Single,   y As Single)
 
 		''' <summary>
 		''' Renders the text of the specified
@@ -737,7 +737,7 @@ Namespace java.awt
 		''' <seealso cref= #setTransform </seealso>
 		''' <seealso cref= #setComposite </seealso>
 		''' <seealso cref= #setClip </seealso>
-		Public MustOverride Sub drawGlyphVector(ByVal g As java.awt.font.GlyphVector, ByVal x As Single, ByVal y As Single)
+		Public MustOverride Sub drawGlyphVector(  g As java.awt.font.GlyphVector,   x As Single,   y As Single)
 
 		''' <summary>
 		''' Fills the interior of a <code>Shape</code> using the settings of the
@@ -752,7 +752,7 @@ Namespace java.awt
 		''' <seealso cref= #setComposite </seealso>
 		''' <seealso cref= #clip </seealso>
 		''' <seealso cref= #setClip </seealso>
-		Public MustOverride Sub fill(ByVal s As Shape)
+		Public MustOverride Sub fill(  s As Shape)
 
 		''' <summary>
 		''' Checks whether or not the specified <code>Shape</code> intersects
@@ -782,7 +782,7 @@ Namespace java.awt
 		''' <seealso cref= #setTransform </seealso>
 		''' <seealso cref= #clip </seealso>
 		''' <seealso cref= #setClip </seealso>
-		Public MustOverride Function hit(ByVal rect As Rectangle, ByVal s As Shape, ByVal onStroke As Boolean) As Boolean
+		Public MustOverride Function hit(  rect As Rectangle,   s As Shape,   onStroke As Boolean) As Boolean
 
 		''' <summary>
 		''' Returns the device configuration associated with this
@@ -851,7 +851,7 @@ Namespace java.awt
 		''' hint category. </param>
 		''' <seealso cref= #getRenderingHint(RenderingHints.Key) </seealso>
 		''' <seealso cref= RenderingHints </seealso>
-		Public MustOverride Sub setRenderingHint(ByVal hintKey As java.awt.RenderingHints.Key, ByVal hintValue As Object)
+		Public MustOverride Sub setRenderingHint(  hintKey As java.awt.RenderingHints.Key,   hintValue As Object)
 
 		''' <summary>
 		''' Returns the value of a single preference for the rendering algorithms.
@@ -865,7 +865,7 @@ Namespace java.awt
 		''' <code>RenderingHints</code> class. </returns>
 		''' <seealso cref= RenderingHints </seealso>
 		''' <seealso cref= #setRenderingHint(RenderingHints.Key, Object) </seealso>
-		Public MustOverride Function getRenderingHint(ByVal hintKey As java.awt.RenderingHints.Key) As Object
+		Public MustOverride Function getRenderingHint(  hintKey As java.awt.RenderingHints.Key) As Object
 
 		''' <summary>
 		''' Replaces the values of all preferences for the rendering
@@ -895,7 +895,7 @@ Namespace java.awt
 		''' some common keys and values. </summary>
 		''' <param name="hints"> the rendering hints to be set </param>
 		''' <seealso cref= RenderingHints </seealso>
-		Public MustOverride Sub addRenderingHints(Of T1)(ByVal hints As IDictionary(Of T1))
+		Public MustOverride Sub addRenderingHints(Of T1)(  hints As IDictionary(Of T1))
 
 
 		''' <summary>
@@ -909,7 +909,7 @@ Namespace java.awt
 		''' <param name="x"> the specified x coordinate </param>
 		''' <param name="y"> the specified y coordinate
 		''' @since   JDK1.0 </param>
-		Public MustOverride Sub translate(ByVal x As Integer, ByVal y As Integer)
+		Public MustOverride Sub translate(  x As Integer,   y As Integer)
 
 		''' <summary>
 		''' Concatenates the current
@@ -926,7 +926,7 @@ Namespace java.awt
 		''' </pre> </summary>
 		''' <param name="tx"> the distance to translate along the x-axis </param>
 		''' <param name="ty"> the distance to translate along the y-axis </param>
-		Public MustOverride Sub translate(ByVal tx As Double, ByVal ty As Double)
+		Public MustOverride Sub translate(  tx As Double,   ty As Double)
 
 		''' <summary>
 		''' Concatenates the current <code>Graphics2D</code>
@@ -943,7 +943,7 @@ Namespace java.awt
 		''' Rotating with a positive angle theta rotates points on the positive
 		''' x axis toward the positive y axis. </summary>
 		''' <param name="theta"> the angle of rotation in radians </param>
-		Public MustOverride Sub rotate(ByVal theta As Double)
+		Public MustOverride Sub rotate(  theta As Double)
 
 		''' <summary>
 		''' Concatenates the current <code>Graphics2D</code>
@@ -963,7 +963,7 @@ Namespace java.awt
 		''' <param name="theta"> the angle of rotation in radians </param>
 		''' <param name="x"> the x coordinate of the origin of the rotation </param>
 		''' <param name="y"> the y coordinate of the origin of the rotation </param>
-		Public MustOverride Sub rotate(ByVal theta As Double, ByVal x As Double, ByVal y As Double)
+		Public MustOverride Sub rotate(  theta As Double,   x As Double,   y As Double)
 
 		''' <summary>
 		''' Concatenates the current <code>Graphics2D</code>
@@ -983,7 +983,7 @@ Namespace java.awt
 		''' <param name="sy"> the amount by which Y coordinates in subsequent
 		''' rendering operations are multiplied relative to previous
 		''' rendering operations. </param>
-		Public MustOverride Sub scale(ByVal sx As Double, ByVal sy As Double)
+		Public MustOverride Sub scale(  sx As Double,   sy As Double)
 
 		''' <summary>
 		''' Concatenates the current <code>Graphics2D</code>
@@ -1002,7 +1002,7 @@ Namespace java.awt
 		''' the positive X axis direction as a function of their Y coordinate </param>
 		''' <param name="shy"> the multiplier by which coordinates are shifted in
 		''' the positive Y axis direction as a function of their X coordinate </param>
-		Public MustOverride Sub shear(ByVal shx As Double, ByVal shy As Double)
+		Public MustOverride Sub shear(  shx As Double,   shy As Double)
 
 		''' <summary>
 		''' Composes an <code>AffineTransform</code> object with the
@@ -1020,7 +1020,7 @@ Namespace java.awt
 		''' the current <code>Transform</code> </param>
 		''' <seealso cref= #setTransform </seealso>
 		''' <seealso cref= AffineTransform </seealso>
-		Public MustOverride Sub transform(ByVal Tx As java.awt.geom.AffineTransform)
+		Public MustOverride Sub transform(  Tx As java.awt.geom.AffineTransform)
 
 		''' <summary>
 		''' Overwrites the Transform in the <code>Graphics2D</code> context.
@@ -1094,7 +1094,7 @@ Namespace java.awt
 		''' <param name="s"> the <code>Shape</code> to be intersected with the current
 		'''          <code>Clip</code>.  If <code>s</code> is <code>null</code>,
 		'''          this method clears the current <code>Clip</code>. </param>
-		 Public MustOverride Sub clip(ByVal s As Shape)
+		 Public MustOverride Sub clip(  s As Shape)
 
 		 ''' <summary>
 		 ''' Get the rendering context of the <code>Font</code> within this

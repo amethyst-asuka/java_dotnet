@@ -106,7 +106,7 @@ Namespace java.beans
 		''' <param name="out"> The stream to which this expression will be written.
 		''' </param>
 		''' <exception cref="NullPointerException"> if {@code out} is {@code null} </exception>
-		Public Overridable Sub writeObject(ByVal oldInstance As Object, ByVal out As Encoder)
+		Public Overridable Sub writeObject(  oldInstance As Object,   out As Encoder)
 			Dim newInstance As Object = out.get(oldInstance)
 			If Not mutatesTo(oldInstance, newInstance) Then
 				out.remove(oldInstance)
@@ -134,7 +134,7 @@ Namespace java.beans
 		''' <param name="newInstance"> The instance that is to be modified. </param>
 		''' <returns> True if an equivalent copy of <code>newInstance</code> may be
 		'''         created by applying a series of mutations to <code>oldInstance</code>. </returns>
-		Protected Friend Overridable Function mutatesTo(ByVal oldInstance As Object, ByVal newInstance As Object) As Boolean
+		Protected Friend Overridable Function mutatesTo(  oldInstance As Object,   newInstance As Object) As Boolean
 			Return (newInstance IsNot Nothing AndAlso oldInstance IsNot Nothing AndAlso oldInstance.GetType() Is newInstance.GetType())
 		End Function
 
@@ -158,7 +158,7 @@ Namespace java.beans
 		''' </returns>
 		''' <exception cref="NullPointerException"> if {@code out} is {@code null}
 		'''                              and this value is used in the method </exception>
-		Protected Friend MustOverride Function instantiate(ByVal oldInstance As Object, ByVal out As Encoder) As Expression
+		Protected Friend MustOverride Function instantiate(  oldInstance As Object,   out As Encoder) As Expression
 
 		''' <summary>
 		''' Produce a series of statements with side effects on <code>newInstance</code>
@@ -198,7 +198,7 @@ Namespace java.beans
 		''' <param name="out"> The stream to which any initialization statements should be written.
 		''' </param>
 		''' <exception cref="NullPointerException"> if {@code out} is {@code null} </exception>
-		Protected Friend Overridable Sub initialize(ByVal type As [Class], ByVal oldInstance As Object, ByVal newInstance As Object, ByVal out As Encoder)
+		Protected Friend Overridable Sub initialize(  type As [Class],   oldInstance As Object,   newInstance As Object,   out As Encoder)
 			Dim superType As  [Class] = type.BaseType
 			Dim info As PersistenceDelegate = out.getPersistenceDelegate(superType)
 			info.initialize(superType, oldInstance, newInstance, out)

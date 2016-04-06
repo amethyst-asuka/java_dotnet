@@ -57,7 +57,7 @@ Namespace java.util.regex
 		''' <param name="index">
 		'''         The approximate index in the pattern of the error,
 		'''         or <tt>-1</tt> if the index is not known </param>
-		Public Sub New(ByVal desc As String, ByVal regex As String, ByVal index As Integer)
+		Public Sub New(  desc As String,   regex As String,   index As Integer)
 			Me.desc = desc
 			Me.pattern_Renamed = regex
 			Me.index = index

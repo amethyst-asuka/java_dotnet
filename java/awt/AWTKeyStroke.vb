@@ -141,7 +141,7 @@ Namespace java.awt
 		'''        <code>AWTKeyStroke</code> corresponds
 		'''        to a key release; <code>false</code> otherwise </param>
 		''' <seealso cref= #getAWTKeyStroke </seealso>
-		Protected Friend Sub New(ByVal keyChar As Char, ByVal keyCode As Integer, ByVal modifiers As Integer, ByVal onKeyRelease As Boolean)
+		Protected Friend Sub New(  keyChar As Char,   keyCode As Integer,   modifiers As Integer,   onKeyRelease As Boolean)
 			Me.keyChar = keyChar
 			Me.keyCode = keyCode
 			Me.modifiers = modifiers
@@ -166,7 +166,7 @@ Namespace java.awt
 		''' <exception cref="ClassCastException"> if subclass is not
 		'''         <code>AWTKeyStroke</code>, or a class derived from
 		'''         <code>AWTKeyStroke</code> </exception>
-		Protected Friend Shared Sub registerSubclass(ByVal subclass As [Class])
+		Protected Friend Shared Sub registerSubclass(  subclass As [Class])
 			If subclass Is Nothing Then Throw New IllegalArgumentException("subclass cannot be null")
 			SyncLock GetType(AWTKeyStroke)
 				Dim keyStrokeClass As  [Class] = CType(sun.awt.AppContext.appContext.get(GetType(AWTKeyStroke)), [Class])
@@ -205,7 +205,7 @@ Namespace java.awt
 	'       threat as accessible flag is set only for this Constructor object,
 	'       not for Class constructor.
 	'     
-		Private Shared Function getCtor(ByVal clazz As [Class]) As Constructor
+		Private Shared Function getCtor(  clazz As [Class]) As Constructor
 			Dim ctor_Renamed As Constructor = java.security.AccessController.doPrivileged(New PrivilegedActionAnonymousInnerClassHelper(Of T)
 			Return CType(ctor_Renamed, Constructor)
 		End Function
@@ -226,7 +226,7 @@ Namespace java.awt
 		End Class
 
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Private Shared Function getCachedStroke(ByVal keyChar As Char, ByVal keyCode As Integer, ByVal modifiers As Integer, ByVal onKeyRelease As Boolean) As AWTKeyStroke
+		Private Shared Function getCachedStroke(  keyChar As Char,   keyCode As Integer,   modifiers As Integer,   onKeyRelease As Boolean) As AWTKeyStroke
 			Dim cache As IDictionary(Of AWTKeyStroke, AWTKeyStroke) = CType(sun.awt.AppContext.appContext.get(APP_CONTEXT_CACHE_KEY), IDictionary)
 			Dim cacheKey As AWTKeyStroke = CType(sun.awt.AppContext.appContext.get(APP_CONTEXT_KEYSTROKE_KEY), AWTKeyStroke)
 
@@ -269,7 +269,7 @@ Namespace java.awt
 		''' </summary>
 		''' <param name="keyChar"> the character value for a keyboard key </param>
 		''' <returns> an <code>AWTKeyStroke</code> object for that key </returns>
-		Public Shared Function getAWTKeyStroke(ByVal keyChar As Char) As AWTKeyStroke
+		Public Shared Function getAWTKeyStroke(  keyChar As Char) As AWTKeyStroke
 			Return getCachedStroke(keyChar, java.awt.event.KeyEvent.VK_UNDEFINED, 0, False)
 		End Function
 
@@ -309,7 +309,7 @@ Namespace java.awt
 		'''       <code>null</code>
 		''' </exception>
 		''' <seealso cref= java.awt.event.InputEvent </seealso>
-		Public Shared Function getAWTKeyStroke(ByVal keyChar As Character, ByVal modifiers As Integer) As AWTKeyStroke
+		Public Shared Function getAWTKeyStroke(  keyChar As Character,   modifiers As Integer) As AWTKeyStroke
 			If keyChar Is Nothing Then Throw New IllegalArgumentException("keyChar cannot be null")
 			Return getCachedStroke(keyChar, java.awt.event.KeyEvent.VK_UNDEFINED, modifiers, False)
 		End Function
@@ -357,7 +357,7 @@ Namespace java.awt
 		''' </returns>
 		''' <seealso cref= java.awt.event.KeyEvent </seealso>
 		''' <seealso cref= java.awt.event.InputEvent </seealso>
-		Public Shared Function getAWTKeyStroke(ByVal keyCode As Integer, ByVal modifiers As Integer, ByVal onKeyRelease As Boolean) As AWTKeyStroke
+		Public Shared Function getAWTKeyStroke(  keyCode As Integer,   modifiers As Integer,   onKeyRelease As Boolean) As AWTKeyStroke
 			Return getCachedStroke(java.awt.event.KeyEvent.CHAR_UNDEFINED, keyCode, modifiers, onKeyRelease)
 		End Function
 
@@ -399,7 +399,7 @@ Namespace java.awt
 		''' </returns>
 		''' <seealso cref= java.awt.event.KeyEvent </seealso>
 		''' <seealso cref= java.awt.event.InputEvent </seealso>
-		Public Shared Function getAWTKeyStroke(ByVal keyCode As Integer, ByVal modifiers As Integer) As AWTKeyStroke
+		Public Shared Function getAWTKeyStroke(  keyCode As Integer,   modifiers As Integer) As AWTKeyStroke
 			Return getCachedStroke(java.awt.event.KeyEvent.CHAR_UNDEFINED, keyCode, modifiers, False)
 		End Function
 
@@ -416,7 +416,7 @@ Namespace java.awt
 		'''      obtain the <code>AWTKeyStroke</code> </param>
 		''' <exception cref="NullPointerException"> if <code>anEvent</code> is null </exception>
 		''' <returns> the <code>AWTKeyStroke</code> that precipitated the event </returns>
-		Public Shared Function getAWTKeyStrokeForEvent(ByVal anEvent As java.awt.event.KeyEvent) As AWTKeyStroke
+		Public Shared Function getAWTKeyStrokeForEvent(  anEvent As java.awt.event.KeyEvent) As AWTKeyStroke
 			Dim id As Integer = anEvent.iD
 			Select Case id
 			  Case java.awt.event.KeyEvent.KEY_PRESSED, KeyEvent.KEY_RELEASED
@@ -455,7 +455,7 @@ Namespace java.awt
 		''' <returns> an <code>AWTKeyStroke</code> object for that String </returns>
 		''' <exception cref="IllegalArgumentException"> if <code>s</code> is <code>null</code>,
 		'''        or is formatted incorrectly </exception>
-		Public Shared Function getAWTKeyStroke(ByVal s As String) As AWTKeyStroke
+		Public Shared Function getAWTKeyStroke(  s As String) As AWTKeyStroke
 			If s Is Nothing Then Throw New IllegalArgumentException("String cannot be null")
 
 			Const errmsg As String = "String formatted incorrectly"
@@ -538,7 +538,7 @@ Namespace java.awt
 		''' <code>IllegalArgumentException</code> if <code>key</code> is
 		''' not a valid constant.
 		''' </summary>
-		Private Shared Function getVKValue(ByVal key As String) As Integer
+		Private Shared Function getVKValue(  key As String) As Integer
 			Dim vkCollect As VKCollection = vKCollection
 
 			Dim value As Integer? = vkCollect.findCode(key)
@@ -639,7 +639,7 @@ Namespace java.awt
 		''' </summary>
 		''' <param name="anObject"> the Object to compare this object to </param>
 		''' <returns> true if the objects are identical </returns>
-		Public NotOverridable Overrides Function Equals(ByVal anObject As Object) As Boolean
+		Public NotOverridable Overrides Function Equals(  anObject As Object) As Boolean
 			If TypeOf anObject Is AWTKeyStroke Then
 				Dim ks As AWTKeyStroke = CType(anObject, AWTKeyStroke)
 				Return (ks.keyChar = keyChar AndAlso ks.keyCode = keyCode AndAlso ks.onKeyRelease = onKeyRelease AndAlso ks.modifiers = modifiers)
@@ -663,7 +663,7 @@ Namespace java.awt
 			End If
 		End Function
 
-		Friend Shared Function getModifiersText(ByVal modifiers As Integer) As String
+		Friend Shared Function getModifiersText(  modifiers As Integer) As String
 			Dim buf As New StringBuilder
 
 			If (modifiers And java.awt.event.InputEvent.SHIFT_DOWN_MASK) <> 0 Then buf.append("shift ")
@@ -678,7 +678,7 @@ Namespace java.awt
 			Return buf.ToString()
 		End Function
 
-		Friend Shared Function getVKText(ByVal keyCode As Integer) As String
+		Friend Shared Function getVKText(  keyCode As Integer) As String
 			Dim vkCollect As VKCollection = vKCollection
 			Dim key As Integer? = Convert.ToInt32(keyCode)
 			Dim name As String = vkCollect.findName(key)
@@ -712,7 +712,7 @@ Namespace java.awt
 			Return Me
 		End Function
 
-		Private Shared Function mapOldModifiers(ByVal modifiers As Integer) As Integer
+		Private Shared Function mapOldModifiers(  modifiers As Integer) As Integer
 			If (modifiers And java.awt.event.InputEvent.SHIFT_MASK) <> 0 Then modifiers = modifiers Or java.awt.event.InputEvent.SHIFT_DOWN_MASK
 			If (modifiers And java.awt.event.InputEvent.ALT_MASK) <> 0 Then modifiers = modifiers Or java.awt.event.InputEvent.ALT_DOWN_MASK
 			If (modifiers And java.awt.event.InputEvent.ALT_GRAPH_MASK) <> 0 Then modifiers = modifiers Or java.awt.event.InputEvent.ALT_GRAPH_DOWN_MASK
@@ -724,7 +724,7 @@ Namespace java.awt
 			Return modifiers
 		End Function
 
-		Private Shared Function mapNewModifiers(ByVal modifiers As Integer) As Integer
+		Private Shared Function mapNewModifiers(  modifiers As Integer) As Integer
 			If (modifiers And java.awt.event.InputEvent.SHIFT_DOWN_MASK) <> 0 Then modifiers = modifiers Or java.awt.event.InputEvent.SHIFT_MASK
 			If (modifiers And java.awt.event.InputEvent.ALT_DOWN_MASK) <> 0 Then modifiers = modifiers Or java.awt.event.InputEvent.ALT_MASK
 			If (modifiers And java.awt.event.InputEvent.ALT_GRAPH_DOWN_MASK) <> 0 Then modifiers = modifiers Or java.awt.event.InputEvent.ALT_GRAPH_MASK
@@ -746,7 +746,7 @@ Namespace java.awt
 		End Sub
 
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Sub put(ByVal name As String, ByVal code As Integer?)
+		Public Overridable Sub put(  name As String,   code As Integer?)
 			assert((name IsNot Nothing) AndAlso (code IsNot Nothing))
 			assert(findName(code) Is Nothing)
 			assert(findCode(name) Is Nothing)
@@ -755,13 +755,13 @@ Namespace java.awt
 		End Sub
 
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Function findCode(ByVal name As String) As Integer?
+		Public Overridable Function findCode(  name As String) As Integer?
 			assert(name IsNot Nothing)
 			Return CInt(Fix(name2code(name)))
 		End Function
 
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Function findName(ByVal code As Integer?) As String
+		Public Overridable Function findName(  code As Integer?) As String
 			assert(code IsNot Nothing)
 			Return CStr(code2name(code))
 		End Function

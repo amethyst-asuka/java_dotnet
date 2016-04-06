@@ -99,7 +99,7 @@ Namespace java.util.concurrent
 			Get
 				Return array
 			End Get
-			Set(ByVal a As Object())
+			Set(  a As Object())
 				array = a
 			End Set
 		End Property
@@ -119,7 +119,7 @@ Namespace java.util.concurrent
 		''' </summary>
 		''' <param name="c"> the collection of initially held elements </param>
 		''' <exception cref="NullPointerException"> if the specified collection is null </exception>
-		Public Sub New(Of T1 As E)(ByVal c As ICollection(Of T1))
+		Public Sub New(Of T1 As E)(  c As ICollection(Of T1))
 			Dim elements As Object()
 			If c.GetType() Is GetType(CopyOnWriteArrayList) Then
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
@@ -138,7 +138,7 @@ Namespace java.util.concurrent
 		''' <param name="toCopyIn"> the array (a copy of this array is used as the
 		'''        internal array) </param>
 		''' <exception cref="NullPointerException"> if the specified array is null </exception>
-		Public Sub New(ByVal toCopyIn As E())
+		Public Sub New(  toCopyIn As E())
 			array = java.util.Arrays.copyOf(toCopyIn, toCopyIn.Length, GetType(Object()))
 		End Sub
 
@@ -163,7 +163,7 @@ Namespace java.util.concurrent
 		''' <summary>
 		''' Tests for equality, coping with nulls.
 		''' </summary>
-		Private Shared Function eq(ByVal o1 As Object, ByVal o2 As Object) As Boolean
+		Private Shared Function eq(  o1 As Object,   o2 As Object) As Boolean
 			Return If(o1 Is Nothing, o2 Is Nothing, o1.Equals(o2))
 		End Function
 
@@ -175,7 +175,7 @@ Namespace java.util.concurrent
 		''' <param name="index"> first index to search </param>
 		''' <param name="fence"> one past last index to search </param>
 		''' <returns> index of element, or -1 if absent </returns>
-		Private Shared Function indexOf(ByVal o As Object, ByVal elements As Object(), ByVal index As Integer, ByVal fence As Integer) As Integer
+		Private Shared Function indexOf(  o As Object,   elements As Object(),   index As Integer,   fence As Integer) As Integer
 			If o Is Nothing Then
 				For i As Integer = index To fence - 1
 					If elements(i) Is Nothing Then Return i
@@ -194,7 +194,7 @@ Namespace java.util.concurrent
 		''' <param name="elements"> the array </param>
 		''' <param name="index"> first index to search </param>
 		''' <returns> index of element, or -1 if absent </returns>
-		Private Shared Function lastIndexOf(ByVal o As Object, ByVal elements As Object(), ByVal index As Integer) As Integer
+		Private Shared Function lastIndexOf(  o As Object,   elements As Object(),   index As Integer) As Integer
 			If o Is Nothing Then
 				For i As Integer = index To 0 Step -1
 					If elements(i) Is Nothing Then Return i
@@ -215,7 +215,7 @@ Namespace java.util.concurrent
 		''' </summary>
 		''' <param name="o"> element whose presence in this list is to be tested </param>
 		''' <returns> {@code true} if this list contains the specified element </returns>
-		Public Overridable Function contains(ByVal o As Object) As Boolean
+		Public Overridable Function contains(  o As Object) As Boolean
 			Dim elements As Object() = array
 			Return IndexOf(o, elements, 0, elements.Length) >= 0
 		End Function
@@ -223,7 +223,7 @@ Namespace java.util.concurrent
 		''' <summary>
 		''' {@inheritDoc}
 		''' </summary>
-		Public Overridable Function indexOf(ByVal o As Object) As Integer
+		Public Overridable Function indexOf(  o As Object) As Integer
 			Dim elements As Object() = array
 			Return IndexOf(o, elements, 0, elements.Length)
 		End Function
@@ -242,7 +242,7 @@ Namespace java.util.concurrent
 		'''         this list at position {@code index} or later in the list;
 		'''         {@code -1} if the element is not found. </returns>
 		''' <exception cref="IndexOutOfBoundsException"> if the specified index is negative </exception>
-		Public Overridable Function indexOf(ByVal e As E, ByVal index As Integer) As Integer
+		Public Overridable Function indexOf(  e As E,   index As Integer) As Integer
 			Dim elements As Object() = array
 			Return IndexOf(e, elements, index, elements.Length)
 		End Function
@@ -250,7 +250,7 @@ Namespace java.util.concurrent
 		''' <summary>
 		''' {@inheritDoc}
 		''' </summary>
-		Public Overridable Function lastIndexOf(ByVal o As Object) As Integer
+		Public Overridable Function lastIndexOf(  o As Object) As Integer
 			Dim elements As Object() = array
 			Return LastIndexOf(o, elements, elements.Length - 1)
 		End Function
@@ -270,7 +270,7 @@ Namespace java.util.concurrent
 		'''         -1 if the element is not found. </returns>
 		''' <exception cref="IndexOutOfBoundsException"> if the specified index is greater
 		'''         than or equal to the current size of this list </exception>
-		Public Overridable Function lastIndexOf(ByVal e As E, ByVal index As Integer) As Integer
+		Public Overridable Function lastIndexOf(  e As E,   index As Integer) As Integer
 			Dim elements As Object() = array
 			Return LastIndexOf(e, elements, index)
 		End Function
@@ -347,7 +347,7 @@ Namespace java.util.concurrent
 		'''         this list </exception>
 		''' <exception cref="NullPointerException"> if the specified array is null </exception>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Overridable Function toArray(Of T)(ByVal a As T()) As T()
+		Public Overridable Function toArray(Of T)(  a As T()) As T()
 			Dim elements As Object() = array
 			Dim len As Integer = elements.Length
 			If a.Length < len Then
@@ -362,7 +362,7 @@ Namespace java.util.concurrent
 		' Positional Access Operations
 
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Private Function [get](ByVal a As Object(), ByVal index As Integer) As E
+		Private Function [get](  a As Object(),   index As Integer) As E
 			Return CType(a(index), E)
 		End Function
 
@@ -370,7 +370,7 @@ Namespace java.util.concurrent
 		''' {@inheritDoc}
 		''' </summary>
 		''' <exception cref="IndexOutOfBoundsException"> {@inheritDoc} </exception>
-		Public Overridable Function [get](ByVal index As Integer) As E
+		Public Overridable Function [get](  index As Integer) As E
 			Return [get](array, index)
 		End Function
 
@@ -379,7 +379,7 @@ Namespace java.util.concurrent
 		''' specified element.
 		''' </summary>
 		''' <exception cref="IndexOutOfBoundsException"> {@inheritDoc} </exception>
-		Public Overridable Function [set](ByVal index As Integer, ByVal element As E) As E
+		Public Overridable Function [set](  index As Integer,   element As E) As E
 			Dim lock As java.util.concurrent.locks.ReentrantLock = Me.lock
 			lock.lock()
 			Try
@@ -406,7 +406,7 @@ Namespace java.util.concurrent
 		''' </summary>
 		''' <param name="e"> element to be appended to this list </param>
 		''' <returns> {@code true} (as specified by <seealso cref="Collection#add"/>) </returns>
-		Public Overridable Function add(ByVal e As E) As Boolean
+		Public Overridable Function add(  e As E) As Boolean
 			Dim lock As java.util.concurrent.locks.ReentrantLock = Me.lock
 			lock.lock()
 			Try
@@ -427,7 +427,7 @@ Namespace java.util.concurrent
 		''' any subsequent elements to the right (adds one to their indices).
 		''' </summary>
 		''' <exception cref="IndexOutOfBoundsException"> {@inheritDoc} </exception>
-		Public Overridable Sub add(ByVal index As Integer, ByVal element As E)
+		Public Overridable Sub add(  index As Integer,   element As E)
 			Dim lock As java.util.concurrent.locks.ReentrantLock = Me.lock
 			lock.lock()
 			Try
@@ -456,7 +456,7 @@ Namespace java.util.concurrent
 		''' indices).  Returns the element that was removed from the list.
 		''' </summary>
 		''' <exception cref="IndexOutOfBoundsException"> {@inheritDoc} </exception>
-		Public Overridable Function remove(ByVal index As Integer) As E
+		Public Overridable Function remove(  index As Integer) As E
 			Dim lock As java.util.concurrent.locks.ReentrantLock = Me.lock
 			lock.lock()
 			Try
@@ -490,7 +490,7 @@ Namespace java.util.concurrent
 		''' </summary>
 		''' <param name="o"> element to be removed from this list, if present </param>
 		''' <returns> {@code true} if this list contained the specified element </returns>
-		Public Overridable Function remove(ByVal o As Object) As Boolean
+		Public Overridable Function remove(  o As Object) As Boolean
 			Dim snapshot As Object() = array
 			Dim index As Integer = IndexOf(o, snapshot, 0, snapshot.Length)
 			Return If(index < 0, False, remove(o, snapshot, index))
@@ -500,7 +500,7 @@ Namespace java.util.concurrent
 		''' A version of remove(Object) using the strong hint that given
 		''' recent snapshot contains o at the given index.
 		''' </summary>
-		Private Function remove(ByVal o As Object, ByVal snapshot As Object(), ByVal index As Integer) As Boolean
+		Private Function remove(  o As Object,   snapshot As Object(),   index As Integer) As Boolean
 			Dim lock As java.util.concurrent.locks.ReentrantLock = Me.lock
 			lock.lock()
 			Try
@@ -541,7 +541,7 @@ Namespace java.util.concurrent
 		''' <param name="toIndex"> index after last element to be removed </param>
 		''' <exception cref="IndexOutOfBoundsException"> if fromIndex or toIndex out of range
 		'''         ({@code fromIndex < 0 || toIndex > size() || toIndex < fromIndex}) </exception>
-		Friend Overridable Sub removeRange(ByVal fromIndex As Integer, ByVal toIndex As Integer)
+		Friend Overridable Sub removeRange(  fromIndex As Integer,   toIndex As Integer)
 			Dim lock As java.util.concurrent.locks.ReentrantLock = Me.lock
 			lock.lock()
 			Try
@@ -569,7 +569,7 @@ Namespace java.util.concurrent
 		''' </summary>
 		''' <param name="e"> element to be added to this list, if absent </param>
 		''' <returns> {@code true} if the element was added </returns>
-		Public Overridable Function addIfAbsent(ByVal e As E) As Boolean
+		Public Overridable Function addIfAbsent(  e As E) As Boolean
 			Dim snapshot As Object() = array
 			Return If(IndexOf(e, snapshot, 0, snapshot.Length) >= 0, False, addIfAbsent(e, snapshot))
 		End Function
@@ -578,7 +578,7 @@ Namespace java.util.concurrent
 		''' A version of addIfAbsent using the strong hint that given
 		''' recent snapshot does not contain e.
 		''' </summary>
-		Private Function addIfAbsent(ByVal e As E, ByVal snapshot As Object()) As Boolean
+		Private Function addIfAbsent(  e As E,   snapshot As Object()) As Boolean
 			Dim lock As java.util.concurrent.locks.ReentrantLock = Me.lock
 			lock.lock()
 			Try
@@ -610,7 +610,7 @@ Namespace java.util.concurrent
 		'''         specified collection </returns>
 		''' <exception cref="NullPointerException"> if the specified collection is null </exception>
 		''' <seealso cref= #contains(Object) </seealso>
-		Public Overridable Function containsAll(Of T1)(ByVal c As ICollection(Of T1)) As Boolean
+		Public Overridable Function containsAll(Of T1)(  c As ICollection(Of T1)) As Boolean
 			Dim elements As Object() = array
 			Dim len As Integer = elements.Length
 			For Each e As Object In c
@@ -634,7 +634,7 @@ Namespace java.util.concurrent
 		'''         (<a href="../Collection.html#optional-restrictions">optional</a>),
 		'''         or if the specified collection is null </exception>
 		''' <seealso cref= #remove(Object) </seealso>
-		Public Overridable Function removeAll(Of T1)(ByVal c As ICollection(Of T1)) As Boolean
+		Public Overridable Function removeAll(Of T1)(  c As ICollection(Of T1)) As Boolean
 			If c Is Nothing Then Throw New NullPointerException
 			Dim lock As java.util.concurrent.locks.ReentrantLock = Me.lock
 			lock.lock()
@@ -678,7 +678,7 @@ Namespace java.util.concurrent
 		'''         (<a href="../Collection.html#optional-restrictions">optional</a>),
 		'''         or if the specified collection is null </exception>
 		''' <seealso cref= #remove(Object) </seealso>
-		Public Overridable Function retainAll(Of T1)(ByVal c As ICollection(Of T1)) As Boolean
+		Public Overridable Function retainAll(Of T1)(  c As ICollection(Of T1)) As Boolean
 			If c Is Nothing Then Throw New NullPointerException
 			Dim lock As java.util.concurrent.locks.ReentrantLock = Me.lock
 			lock.lock()
@@ -717,7 +717,7 @@ Namespace java.util.concurrent
 		''' <returns> the number of elements added </returns>
 		''' <exception cref="NullPointerException"> if the specified collection is null </exception>
 		''' <seealso cref= #addIfAbsent(Object) </seealso>
-		Public Overridable Function addAllAbsent(Of T1 As E)(ByVal c As ICollection(Of T1)) As Integer
+		Public Overridable Function addAllAbsent(Of T1 As E)(  c As ICollection(Of T1)) As Integer
 			Dim cs As Object() = c.ToArray()
 			If cs.Length = 0 Then Return 0
 			Dim lock As java.util.concurrent.locks.ReentrantLock = Me.lock
@@ -766,7 +766,7 @@ Namespace java.util.concurrent
 		''' <returns> {@code true} if this list changed as a result of the call </returns>
 		''' <exception cref="NullPointerException"> if the specified collection is null </exception>
 		''' <seealso cref= #add(Object) </seealso>
-		Public Overridable Function addAll(Of T1 As E)(ByVal c As ICollection(Of T1)) As Boolean
+		Public Overridable Function addAll(Of T1 As E)(  c As ICollection(Of T1)) As Boolean
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 			Dim cs As Object() = If(c.GetType() Is GetType(CopyOnWriteArrayList), CType(c, CopyOnWriteArrayList(Of ?)).array, c.ToArray())
 			If cs.Length = 0 Then Return False
@@ -803,7 +803,7 @@ Namespace java.util.concurrent
 		''' <exception cref="IndexOutOfBoundsException"> {@inheritDoc} </exception>
 		''' <exception cref="NullPointerException"> if the specified collection is null </exception>
 		''' <seealso cref= #add(int,Object) </seealso>
-		Public Overridable Function addAll(Of T1 As E)(ByVal index As Integer, ByVal c As ICollection(Of T1)) As Boolean
+		Public Overridable Function addAll(Of T1 As E)(  index As Integer,   c As ICollection(Of T1)) As Boolean
 			Dim cs As Object() = c.ToArray()
 			Dim lock As java.util.concurrent.locks.ReentrantLock = Me.lock
 			lock.lock()
@@ -830,7 +830,7 @@ Namespace java.util.concurrent
 		End Function
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Overridable Sub forEach(Of T1)(ByVal action As java.util.function.Consumer(Of T1))
+		Public Overridable Sub forEach(Of T1)(  action As java.util.function.Consumer(Of T1))
 			If action Is Nothing Then Throw New NullPointerException
 			Dim elements As Object() = array
 			Dim len As Integer = elements.Length
@@ -842,7 +842,7 @@ Namespace java.util.concurrent
 		End Sub
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Overridable Function removeIf(Of T1)(ByVal filter As java.util.function.Predicate(Of T1)) As Boolean
+		Public Overridable Function removeIf(Of T1)(  filter As java.util.function.Predicate(Of T1)) As Boolean
 			If filter Is Nothing Then Throw New NullPointerException
 			Dim lock As java.util.concurrent.locks.ReentrantLock = Me.lock
 			lock.lock()
@@ -871,7 +871,7 @@ Namespace java.util.concurrent
 			End Try
 		End Function
 
-		Public Overridable Sub replaceAll(ByVal [operator] As java.util.function.UnaryOperator(Of E))
+		Public Overridable Sub replaceAll(  [operator] As java.util.function.UnaryOperator(Of E))
 			If [operator] Is Nothing Then Throw New NullPointerException
 			Dim lock As java.util.concurrent.locks.ReentrantLock = Me.lock
 			lock.lock()
@@ -891,7 +891,7 @@ Namespace java.util.concurrent
 		End Sub
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Overridable Sub sort(Of T1)(ByVal c As IComparer(Of T1))
+		Public Overridable Sub sort(Of T1)(  c As IComparer(Of T1))
 			Dim lock As java.util.concurrent.locks.ReentrantLock = Me.lock
 			lock.lock()
 			Try
@@ -914,7 +914,7 @@ Namespace java.util.concurrent
 		''' @serialData The length of the array backing the list is emitted
 		'''               (int), followed by all of its elements (each an Object)
 		'''               in the proper order. </exception>
-		Private Sub writeObject(ByVal s As java.io.ObjectOutputStream)
+		Private Sub writeObject(  s As java.io.ObjectOutputStream)
 
 			s.defaultWriteObject()
 
@@ -934,7 +934,7 @@ Namespace java.util.concurrent
 		''' <exception cref="ClassNotFoundException"> if the class of a serialized object
 		'''         could not be found </exception>
 		''' <exception cref="java.io.IOException"> if an I/O error occurs </exception>
-		Private Sub readObject(ByVal s As java.io.ObjectInputStream)
+		Private Sub readObject(  s As java.io.ObjectInputStream)
 
 			s.defaultReadObject()
 
@@ -979,7 +979,7 @@ Namespace java.util.concurrent
 		''' </summary>
 		''' <param name="o"> the object to be compared for equality with this list </param>
 		''' <returns> {@code true} if the specified object is equal to this list </returns>
-		Public Overrides Function Equals(ByVal o As Object) As Boolean
+		Public Overrides Function Equals(  o As Object) As Boolean
 			If o Is Me Then Return True
 			If Not(TypeOf o Is IList) Then Return False
 
@@ -1049,7 +1049,7 @@ Namespace java.util.concurrent
 		''' {@code remove}, {@code set} or {@code add} methods.
 		''' </summary>
 		''' <exception cref="IndexOutOfBoundsException"> {@inheritDoc} </exception>
-		Public Overridable Function listIterator(ByVal index As Integer) As IEnumerator(Of E)
+		Public Overridable Function listIterator(  index As Integer) As IEnumerator(Of E)
 			Dim elements As Object() = array
 			Dim len As Integer = elements.Length
 			If index < 0 OrElse index > len Then Throw New IndexOutOfBoundsException("Index: " & index)
@@ -1084,7 +1084,7 @@ Namespace java.util.concurrent
 			''' Index of element to be returned by subsequent call to next. </summary>
 			Private cursor As Integer
 
-			Private Sub New(ByVal elements As Object(), ByVal initialCursor As Integer)
+			Private Sub New(  elements As Object(),   initialCursor As Integer)
 				cursor = initialCursor
 				snapshot = elements
 			End Sub
@@ -1132,7 +1132,7 @@ Namespace java.util.concurrent
 			''' Not supported. Always throws UnsupportedOperationException. </summary>
 			''' <exception cref="UnsupportedOperationException"> always; {@code set}
 			'''         is not supported by this iterator. </exception>
-			Public Sub [set](ByVal e As E)
+			Public Sub [set](  e As E)
 				Throw New UnsupportedOperationException
 			End Sub
 
@@ -1140,12 +1140,12 @@ Namespace java.util.concurrent
 			''' Not supported. Always throws UnsupportedOperationException. </summary>
 			''' <exception cref="UnsupportedOperationException"> always; {@code add}
 			'''         is not supported by this iterator. </exception>
-			Public Sub add(ByVal e As E)
+			Public Sub add(  e As E)
 				Throw New UnsupportedOperationException
 			End Sub
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Overrides Sub forEachRemaining(Of T1)(ByVal action As java.util.function.Consumer(Of T1))
+			Public Overrides Sub forEachRemaining(Of T1)(  action As java.util.function.Consumer(Of T1))
 				java.util.Objects.requireNonNull(action)
 				Dim elements As Object() = snapshot
 				Dim size As Integer = elements.Length
@@ -1172,7 +1172,7 @@ Namespace java.util.concurrent
 		''' <param name="toIndex"> high endpoint (exclusive) of the subList </param>
 		''' <returns> a view of the specified range within this list </returns>
 		''' <exception cref="IndexOutOfBoundsException"> {@inheritDoc} </exception>
-		Public Overridable Function subList(ByVal fromIndex As Integer, ByVal toIndex As Integer) As IList(Of E)
+		Public Overridable Function subList(  fromIndex As Integer,   toIndex As Integer) As IList(Of E)
 			Dim lock As java.util.concurrent.locks.ReentrantLock = Me.lock
 			lock.lock()
 			Try
@@ -1210,7 +1210,7 @@ Namespace java.util.concurrent
 			Private expectedArray As Object()
 
 			' only call this holding l's lock
-			Friend Sub New(ByVal list As CopyOnWriteArrayList(Of E), ByVal fromIndex As Integer, ByVal toIndex As Integer)
+			Friend Sub New(  list As CopyOnWriteArrayList(Of E),   fromIndex As Integer,   toIndex As Integer)
 				l = list
 				expectedArray = l.array
 				offset = fromIndex
@@ -1223,11 +1223,11 @@ Namespace java.util.concurrent
 			End Sub
 
 			' only call this holding l's lock
-			Private Sub rangeCheck(ByVal index As Integer)
+			Private Sub rangeCheck(  index As Integer)
 				If index < 0 OrElse index >= size_Renamed Then Throw New IndexOutOfBoundsException("Index: " & index & ",Size: " & size_Renamed)
 			End Sub
 
-			Public Overridable Function [set](ByVal index As Integer, ByVal element As E) As E
+			Public Overridable Function [set](  index As Integer,   element As E) As E
 				Dim lock As java.util.concurrent.locks.ReentrantLock = l.lock
 				lock.lock()
 				Try
@@ -1241,7 +1241,7 @@ Namespace java.util.concurrent
 				End Try
 			End Function
 
-			Public Overridable Function [get](ByVal index As Integer) As E
+			Public Overridable Function [get](  index As Integer) As E
 				Dim lock As java.util.concurrent.locks.ReentrantLock = l.lock
 				lock.lock()
 				Try
@@ -1264,7 +1264,7 @@ Namespace java.util.concurrent
 				End Try
 			End Function
 
-			Public Overridable Sub add(ByVal index As Integer, ByVal element As E)
+			Public Overridable Sub add(  index As Integer,   element As E)
 				Dim lock As java.util.concurrent.locks.ReentrantLock = l.lock
 				lock.lock()
 				Try
@@ -1291,7 +1291,7 @@ Namespace java.util.concurrent
 				End Try
 			End Sub
 
-			Public Overridable Function remove(ByVal index As Integer) As E
+			Public Overridable Function remove(  index As Integer) As E
 				Dim lock As java.util.concurrent.locks.ReentrantLock = l.lock
 				lock.lock()
 				Try
@@ -1306,7 +1306,7 @@ Namespace java.util.concurrent
 				End Try
 			End Function
 
-			Public Overridable Function remove(ByVal o As Object) As Boolean
+			Public Overridable Function remove(  o As Object) As Boolean
 				Dim index As Integer = IndexOf(o)
 				If index = -1 Then Return False
 				remove(index)
@@ -1324,7 +1324,7 @@ Namespace java.util.concurrent
 				End Try
 			End Function
 
-			Public Overridable Function listIterator(ByVal index As Integer) As IEnumerator(Of E)
+			Public Overridable Function listIterator(  index As Integer) As IEnumerator(Of E)
 				Dim lock As java.util.concurrent.locks.ReentrantLock = l.lock
 				lock.lock()
 				Try
@@ -1336,7 +1336,7 @@ Namespace java.util.concurrent
 				End Try
 			End Function
 
-			Public Overridable Function subList(ByVal fromIndex As Integer, ByVal toIndex As Integer) As IList(Of E)
+			Public Overridable Function subList(  fromIndex As Integer,   toIndex As Integer) As IList(Of E)
 				Dim lock As java.util.concurrent.locks.ReentrantLock = l.lock
 				lock.lock()
 				Try
@@ -1349,7 +1349,7 @@ Namespace java.util.concurrent
 			End Function
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Overridable Sub forEach(Of T1)(ByVal action As java.util.function.Consumer(Of T1))
+			Public Overridable Sub forEach(Of T1)(  action As java.util.function.Consumer(Of T1))
 				If action Is Nothing Then Throw New NullPointerException
 				Dim lo As Integer = offset
 				Dim hi As Integer = offset + size_Renamed
@@ -1363,7 +1363,7 @@ Namespace java.util.concurrent
 				Next i
 			End Sub
 
-			Public Overridable Sub replaceAll(ByVal [operator] As java.util.function.UnaryOperator(Of E))
+			Public Overridable Sub replaceAll(  [operator] As java.util.function.UnaryOperator(Of E))
 				If [operator] Is Nothing Then Throw New NullPointerException
 				Dim lock As java.util.concurrent.locks.ReentrantLock = l.lock
 				lock.lock()
@@ -1388,7 +1388,7 @@ Namespace java.util.concurrent
 			End Sub
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Overridable Sub sort(Of T1)(ByVal c As IComparer(Of T1))
+			Public Overridable Sub sort(Of T1)(  c As IComparer(Of T1))
 				Dim lock As java.util.concurrent.locks.ReentrantLock = l.lock
 				lock.lock()
 				Try
@@ -1409,7 +1409,7 @@ Namespace java.util.concurrent
 				End Try
 			End Sub
 
-			Public Overridable Function removeAll(Of T1)(ByVal c As ICollection(Of T1)) As Boolean
+			Public Overridable Function removeAll(Of T1)(  c As ICollection(Of T1)) As Boolean
 				If c Is Nothing Then Throw New NullPointerException
 				Dim removed As Boolean = False
 				Dim lock As java.util.concurrent.locks.ReentrantLock = l.lock
@@ -1449,7 +1449,7 @@ Namespace java.util.concurrent
 				Return removed
 			End Function
 
-			Public Overridable Function retainAll(Of T1)(ByVal c As ICollection(Of T1)) As Boolean
+			Public Overridable Function retainAll(Of T1)(  c As ICollection(Of T1)) As Boolean
 				If c Is Nothing Then Throw New NullPointerException
 				Dim removed As Boolean = False
 				Dim lock As java.util.concurrent.locks.ReentrantLock = l.lock
@@ -1490,7 +1490,7 @@ Namespace java.util.concurrent
 			End Function
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Overridable Function removeIf(Of T1)(ByVal filter As java.util.function.Predicate(Of T1)) As Boolean
+			Public Overridable Function removeIf(Of T1)(  filter As java.util.function.Predicate(Of T1)) As Boolean
 				If filter Is Nothing Then Throw New NullPointerException
 				Dim removed As Boolean = False
 				Dim lock As java.util.concurrent.locks.ReentrantLock = l.lock
@@ -1549,7 +1549,7 @@ Namespace java.util.concurrent
 			Private ReadOnly offset As Integer
 			Private ReadOnly size As Integer
 
-			Friend Sub New(ByVal l As IList(Of E), ByVal index As Integer, ByVal offset As Integer, ByVal size As Integer)
+			Friend Sub New(  l As IList(Of E),   index As Integer,   offset As Integer,   size As Integer)
 				Me.offset = offset
 				Me.size = size
 				it = l.listIterator(index+offset)
@@ -1592,16 +1592,16 @@ Namespace java.util.concurrent
 				Throw New UnsupportedOperationException
 			End Sub
 
-			Public Overridable Sub [set](ByVal e As E)
+			Public Overridable Sub [set](  e As E)
 				Throw New UnsupportedOperationException
 			End Sub
 
-			Public Overridable Sub add(ByVal e As E)
+			Public Overridable Sub add(  e As E)
 				Throw New UnsupportedOperationException
 			End Sub
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Overrides Sub forEachRemaining(Of T1)(ByVal action As java.util.function.Consumer(Of T1))
+			Public Overrides Sub forEachRemaining(Of T1)(  action As java.util.function.Consumer(Of T1))
 				java.util.Objects.requireNonNull(action)
 				Dim s As Integer = size
 				Dim i As IEnumerator(Of E) = it

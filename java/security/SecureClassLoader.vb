@@ -70,7 +70,7 @@ Namespace java.security
 		'''             {@code checkCreateClassLoader} method doesn't allow
 		'''             creation of a class loader. </exception>
 		''' <seealso cref= SecurityManager#checkCreateClassLoader </seealso>
-		Protected Friend Sub New(ByVal parent As  ClassLoader)
+		Protected Friend Sub New(  parent As  ClassLoader)
 			MyBase.New(parent)
 			' this is to make the stack depth consistent with 1.1
 			Dim security_Renamed As SecurityManager = System.securityManager
@@ -127,7 +127,7 @@ Namespace java.security
 		'''             to a package that contains classes that were signed by
 		'''             a different set of certificates than this [Class], or if
 		'''             the class name begins with "java.". </exception>
-		Protected Friend Function defineClass(ByVal name As String, ByVal b As SByte(), ByVal [off] As Integer, ByVal len As Integer, ByVal cs As CodeSource) As  [Class]
+		Protected Friend Function defineClass(  name As String,   b As SByte(),   [off] As Integer,   len As Integer,   cs As CodeSource) As  [Class]
 			Return defineClass(name, b, [off], len, getProtectionDomain(cs))
 		End Function
 
@@ -156,7 +156,7 @@ Namespace java.security
 		'''             the class name begins with "java.".
 		''' 
 		''' @since  1.5 </exception>
-		Protected Friend Function defineClass(ByVal name As String, ByVal b As java.nio.ByteBuffer, ByVal cs As CodeSource) As  [Class]
+		Protected Friend Function defineClass(  name As String,   b As java.nio.ByteBuffer,   cs As CodeSource) As  [Class]
 			Return defineClass(name, b, getProtectionDomain(cs))
 		End Function
 
@@ -171,7 +171,7 @@ Namespace java.security
 		''' </param>
 		''' <returns> the permissions granted to the codesource.
 		'''  </returns>
-		Protected Friend Overridable Function getPermissions(ByVal codesource As CodeSource) As PermissionCollection
+		Protected Friend Overridable Function getPermissions(  codesource As CodeSource) As PermissionCollection
 			check()
 			Return New Permissions ' ProtectionDomain defers the binding
 		End Function
@@ -179,7 +179,7 @@ Namespace java.security
 	'    
 	'     * Returned cached ProtectionDomain for the specified CodeSource.
 	'     
-		Private Function getProtectionDomain(ByVal cs As CodeSource) As ProtectionDomain
+		Private Function getProtectionDomain(  cs As CodeSource) As ProtectionDomain
 			If cs Is Nothing Then Return Nothing
 
 			Dim pd As ProtectionDomain = Nothing

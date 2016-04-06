@@ -54,7 +54,7 @@ Namespace java.io
 		''' </summary>
 		''' <param name="b">   the byte to be written. </param>
 		''' <exception cref="IOException">  if an I/O error occurs. </exception>
-		Sub write(ByVal b As Integer)
+		Sub write(  b As Integer)
 
 		''' <summary>
 		''' Writes to the output stream all the bytes in array <code>b</code>.
@@ -68,7 +68,7 @@ Namespace java.io
 		''' </summary>
 		''' <param name="b">   the data. </param>
 		''' <exception cref="IOException">  if an I/O error occurs. </exception>
-		Sub write(ByVal b As SByte())
+		Sub write(  b As SByte())
 
 		''' <summary>
 		''' Writes <code>len</code> bytes from array
@@ -89,7 +89,7 @@ Namespace java.io
 		''' <param name="off">   the start offset in the data. </param>
 		''' <param name="len">   the number of bytes to write. </param>
 		''' <exception cref="IOException">  if an I/O error occurs. </exception>
-		Sub write(SByte ByVal  As b(), ByVal [off] As Integer, ByVal len As Integer)
+		Sub write(SByte    As b(),   [off] As Integer,   len As Integer)
 
 		''' <summary>
 		''' Writes a <code>boolean</code> value to this output stream.
@@ -105,7 +105,7 @@ Namespace java.io
 		''' </summary>
 		''' <param name="v">   the boolean to be written. </param>
 		''' <exception cref="IOException">  if an I/O error occurs. </exception>
-		Sub writeBoolean(ByVal v As Boolean)
+		Sub writeBoolean(  v As Boolean)
 
 		''' <summary>
 		''' Writes to the output stream the eight low-
@@ -121,7 +121,7 @@ Namespace java.io
 		''' </summary>
 		''' <param name="v">   the byte value to be written. </param>
 		''' <exception cref="IOException">  if an I/O error occurs. </exception>
-		Sub writeByte(ByVal v As Integer)
+		Sub writeByte(  v As Integer)
 
 		''' <summary>
 		''' Writes two bytes to the output
@@ -140,7 +140,7 @@ Namespace java.io
 		''' </summary>
 		''' <param name="v">   the <code>short</code> value to be written. </param>
 		''' <exception cref="IOException">  if an I/O error occurs. </exception>
-		Sub writeShort(ByVal v As Integer)
+		Sub writeShort(  v As Integer)
 
 		''' <summary>
 		''' Writes a <code>char</code> value, which
@@ -160,7 +160,7 @@ Namespace java.io
 		''' </summary>
 		''' <param name="v">   the <code>char</code> value to be written. </param>
 		''' <exception cref="IOException">  if an I/O error occurs. </exception>
-		Sub writeChar(ByVal v As Integer)
+		Sub writeChar(  v As Integer)
 
 		''' <summary>
 		''' Writes an <code>int</code> value, which is
@@ -180,7 +180,7 @@ Namespace java.io
 		''' </summary>
 		''' <param name="v">   the <code>int</code> value to be written. </param>
 		''' <exception cref="IOException">  if an I/O error occurs. </exception>
-		Sub writeInt(ByVal v As Integer)
+		Sub writeInt(  v As Integer)
 
 		''' <summary>
 		''' Writes a <code>long</code> value, which is
@@ -205,7 +205,7 @@ Namespace java.io
 		''' </summary>
 		''' <param name="v">   the <code>long</code> value to be written. </param>
 		''' <exception cref="IOException">  if an I/O error occurs. </exception>
-		Sub writeLong(ByVal v As Long)
+		Sub writeLong(  v As Long)
 
 		''' <summary>
 		''' Writes a <code>float</code> value,
@@ -223,7 +223,7 @@ Namespace java.io
 		''' </summary>
 		''' <param name="v">   the <code>float</code> value to be written. </param>
 		''' <exception cref="IOException">  if an I/O error occurs. </exception>
-		Sub writeFloat(ByVal v As Single)
+		Sub writeFloat(  v As Single)
 
 		''' <summary>
 		''' Writes a <code>double</code> value,
@@ -241,7 +241,7 @@ Namespace java.io
 		''' </summary>
 		''' <param name="v">   the <code>double</code> value to be written. </param>
 		''' <exception cref="IOException">  if an I/O error occurs. </exception>
-		Sub writeDouble(ByVal v As Double)
+		Sub writeDouble(  v As Double)
 
 		''' <summary>
 		''' Writes a string to the output stream.
@@ -262,7 +262,7 @@ Namespace java.io
 		''' </summary>
 		''' <param name="s">   the string of bytes to be written. </param>
 		''' <exception cref="IOException">  if an I/O error occurs. </exception>
-		Sub writeBytes(ByVal s As String)
+		Sub writeBytes(  s As String)
 
 		''' <summary>
 		''' Writes every character in the string <code>s</code>,
@@ -281,7 +281,7 @@ Namespace java.io
 		''' </summary>
 		''' <param name="s">   the string value to be written. </param>
 		''' <exception cref="IOException">  if an I/O error occurs. </exception>
-		Sub writeChars(ByVal s As String)
+		Sub writeChars(  s As String)
 
 		''' <summary>
 		''' Writes two bytes of length information
@@ -334,7 +334,7 @@ Namespace java.io
 		''' </summary>
 		''' <param name="s">   the string value to be written. </param>
 		''' <exception cref="IOException">  if an I/O error occurs. </exception>
-		Sub writeUTF(ByVal s As String)
+		Sub writeUTF(  s As String)
 	End Interface
 
 End Namespace

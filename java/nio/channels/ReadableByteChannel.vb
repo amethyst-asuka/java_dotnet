@@ -101,7 +101,7 @@ Namespace java.nio.channels
 		''' </exception>
 		''' <exception cref="IOException">
 		'''          If some other I/O error occurs </exception>
-		Function read(ByVal dst As java.nio.ByteBuffer) As Integer
+		Function read(  dst As java.nio.ByteBuffer) As Integer
 
 	End Interface
 

@@ -74,7 +74,7 @@ Namespace java.security
 		''' <param name="stream"> the input stream.
 		''' </param>
 		''' <param name="digest"> the message digest to associate with this stream. </param>
-		Public Sub New(ByVal stream As java.io.InputStream, ByVal digest As MessageDigest)
+		Public Sub New(  stream As java.io.InputStream,   digest As MessageDigest)
 			MyBase.New(stream)
 			messageDigest = digest
 		End Sub
@@ -88,7 +88,7 @@ Namespace java.security
 			Get
 				Return digest
 			End Get
-			Set(ByVal digest As MessageDigest)
+			Set(  digest As MessageDigest)
 				Me.digest = digest
 			End Set
 		End Property
@@ -141,7 +141,7 @@ Namespace java.security
 		''' <exception cref="IOException"> if an I/O error occurs.
 		''' </exception>
 		''' <seealso cref= MessageDigest#update(byte[], int, int) </seealso>
-		Public Overrides Function read(ByVal b As SByte(), ByVal [off] As Integer, ByVal len As Integer) As Integer
+		Public Overrides Function read(  b As SByte(),   [off] As Integer,   len As Integer) As Integer
 			Dim result As Integer = [in].read(b, [off], len)
 			If on_Renamed AndAlso result <> -1 Then digest.update(b, [off], result)
 			Return result
@@ -155,7 +155,7 @@ Namespace java.security
 		''' </summary>
 		''' <param name="on"> true to turn the digest function on, false to turn
 		''' it off. </param>
-		Public Overridable Sub [on](ByVal [on] As Boolean)
+		Public Overridable Sub [on](  [on] As Boolean)
 			Me.on_Renamed = [on]
 		End Sub
 

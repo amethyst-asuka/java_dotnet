@@ -135,7 +135,7 @@ Namespace java.awt.im
 		''' <returns> true if the input method or keyboard layout that's active after
 		'''         this call supports the desired locale. </returns>
 		''' <exception cref="NullPointerException"> if <code>locale</code> is null </exception>
-		Public Overridable Function selectInputMethod(ByVal locale As java.util.Locale) As Boolean
+		Public Overridable Function selectInputMethod(  locale As java.util.Locale) As Boolean
 			' real implementation is in sun.awt.im.InputContext
 			Return False
 		End Function
@@ -177,7 +177,7 @@ Namespace java.awt.im
 		''' </summary>
 		''' <param name="subsets"> The subsets of the Unicode character set from which characters may be input </param>
 		Public Overridable Property characterSubsets As Character.Subset()
-			Set(ByVal subsets As Character.Subset())
+			Set(  subsets As Character.Subset())
 				' real implementation is in sun.awt.im.InputContext
 			End Set
 		End Property
@@ -208,7 +208,7 @@ Namespace java.awt.im
 		''' <seealso cref= #isCompositionEnabled
 		''' @since 1.3 </seealso>
 		Public Overridable Property compositionEnabled As Boolean
-			Set(ByVal enable As Boolean)
+			Set(  enable As Boolean)
 				' real implementation is in sun.awt.im.InputContext
 			End Set
 			Get
@@ -260,7 +260,7 @@ Namespace java.awt.im
 		''' </summary>
 		''' <param name="event"> The event </param>
 		''' <exception cref="NullPointerException"> if <code>event</code> is null </exception>
-		Public Overridable Sub dispatchEvent(ByVal [event] As java.awt.AWTEvent)
+		Public Overridable Sub dispatchEvent(  [event] As java.awt.AWTEvent)
 			' real implementation is in sun.awt.im.InputContext
 		End Sub
 
@@ -276,7 +276,7 @@ Namespace java.awt.im
 		''' </summary>
 		''' <param name="client"> Client component </param>
 		''' <exception cref="NullPointerException"> if <code>client</code> is null </exception>
-		Public Overridable Sub removeNotify(ByVal client As java.awt.Component)
+		Public Overridable Sub removeNotify(  client As java.awt.Component)
 			' real implementation is in sun.awt.im.InputContext
 		End Sub
 

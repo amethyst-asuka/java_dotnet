@@ -43,7 +43,7 @@ Namespace java.sql
 		''' </summary>
 		''' <param name="name"> the name of the property </param>
 		''' <param name="value"> the current value, which may be null </param>
-		Public Sub New(ByVal name As String, ByVal value As String)
+		Public Sub New(  name As String,   value As String)
 			Me.name = name
 			Me.value = value
 		End Sub

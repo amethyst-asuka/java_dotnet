@@ -104,7 +104,7 @@ Namespace java.util
 		'''          this dictionary. </param>
 		''' <exception cref="NullPointerException"> if the <tt>key</tt> is <tt>null</tt>. </exception>
 		''' <seealso cref=     java.util.Dictionary#put(java.lang.Object, java.lang.Object) </seealso>
-		Public MustOverride Function [get](ByVal key As Object) As V
+		Public MustOverride Function [get](  key As Object) As V
 
 		''' <summary>
 		''' Maps the specified <code>key</code> to the specified
@@ -132,7 +132,7 @@ Namespace java.util
 		'''               <code>value</code> is <code>null</code>. </exception>
 		''' <seealso cref=        java.lang.Object#equals(java.lang.Object) </seealso>
 		''' <seealso cref=        java.util.Dictionary#get(java.lang.Object) </seealso>
-		Public MustOverride Function put(ByVal key As K, ByVal value As V) As V
+		Public MustOverride Function put(  key As K,   value As V) As V
 
         ''' <summary>
         ''' Removes the <code>key</code> (and its corresponding
@@ -144,7 +144,7 @@ Namespace java.util
         '''          dictionary, or <code>null</code> if the key did not have a
         '''          mapping. </returns>
         ''' <exception cref="NullPointerException"> if <tt>key</tt> is <tt>null</tt>. </exception>
-        Public MustOverride Overloads Function remove(ByVal key As Object) As V
+        Public MustOverride Overloads Function remove(  key As Object) As V
     End Class
 
 End Namespace

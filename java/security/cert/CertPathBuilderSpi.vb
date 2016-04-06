@@ -69,7 +69,7 @@ Namespace java.security.cert
 		''' a certification path that satisfies the specified parameters </exception>
 		''' <exception cref="InvalidAlgorithmParameterException"> if the specified parameters
 		''' are inappropriate for this {@code CertPathBuilder} </exception>
-		Public MustOverride Function engineBuild(ByVal params As CertPathParameters) As CertPathBuilderResult
+		Public MustOverride Function engineBuild(  params As CertPathParameters) As CertPathBuilderResult
 
 		''' <summary>
 		''' Returns a {@code CertPathChecker} that this implementation uses to

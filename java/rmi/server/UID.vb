@@ -151,7 +151,7 @@ Namespace java.rmi.server
 		''' constructor.
 		''' </summary>
 		''' <param name="num"> number for well-known <code>UID</code> </param>
-		Public Sub New(ByVal num As Short)
+		Public Sub New(  num As Short)
 			unique = 0
 			time = 0
 			count = num
@@ -160,7 +160,7 @@ Namespace java.rmi.server
 		''' <summary>
 		''' Constructs a <code>UID</code> given data read from a stream.
 		''' </summary>
-		Private Sub New(ByVal unique As Integer, ByVal time As Long, ByVal count As Short)
+		Private Sub New(  unique As Integer,   time As Long,   count As Short)
 			Me.unique = unique
 			Me.time = time
 			Me.count = count
@@ -187,7 +187,7 @@ Namespace java.rmi.server
 		''' </param>
 		''' <returns>  <code>true</code> if the given object is equivalent to
 		''' this one, and <code>false</code> otherwise </returns>
-		Public Overrides Function Equals(ByVal obj As Object) As Boolean
+		Public Overrides Function Equals(  obj As Object) As Boolean
 			If TypeOf obj Is UID Then
 				Dim uid As UID = CType(obj, UID)
 				Return (unique = uid.unique AndAlso count = uid.count AndAlso time = uid.time)
@@ -221,7 +221,7 @@ Namespace java.rmi.server
 		''' </param>
 		''' <exception cref="IOException"> if an I/O error occurs while performing
 		''' this operation </exception>
-		Public Sub write(ByVal out As java.io.DataOutput)
+		Public Sub write(  out As java.io.DataOutput)
 			out.writeInt(unique)
 			out.writeLong(time)
 			out.writeShort(count)
@@ -249,7 +249,7 @@ Namespace java.rmi.server
 		''' </returns>
 		''' <exception cref="IOException"> if an I/O error occurs while performing
 		''' this operation </exception>
-		Public Shared Function read(ByVal [in] As java.io.DataInput) As UID
+		Public Shared Function read(  [in] As java.io.DataInput) As UID
 			Dim unique As Integer = [in].readInt()
 			Dim time As Long = [in].readLong()
 			Dim count As Short = [in].readShort()

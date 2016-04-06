@@ -73,7 +73,7 @@ Namespace java.awt.dnd
 		''' </summary>
 		''' <param name="dtde"> the <code>DropTargetDragEvent</code> </param>
 
-		Sub dragEnter(ByVal dtde As java.awt.dnd.DropTargetDragEvent)
+		Sub dragEnter(  dtde As java.awt.dnd.DropTargetDragEvent)
 
 		''' <summary>
 		''' Called when a drag operation is ongoing, while the mouse pointer is still
@@ -82,7 +82,7 @@ Namespace java.awt.dnd
 		''' </summary>
 		''' <param name="dtde"> the <code>DropTargetDragEvent</code> </param>
 
-		Sub dragOver(ByVal dtde As java.awt.dnd.DropTargetDragEvent)
+		Sub dragOver(  dtde As java.awt.dnd.DropTargetDragEvent)
 
 		''' <summary>
 		''' Called if the user has modified
@@ -90,7 +90,7 @@ Namespace java.awt.dnd
 		''' <P> </summary>
 		''' <param name="dtde"> the <code>DropTargetDragEvent</code> </param>
 
-		Sub dropActionChanged(ByVal dtde As java.awt.dnd.DropTargetDragEvent)
+		Sub dropActionChanged(  dtde As java.awt.dnd.DropTargetDragEvent)
 
 		''' <summary>
 		''' Called while a drag operation is ongoing, when the mouse pointer has
@@ -99,7 +99,7 @@ Namespace java.awt.dnd
 		''' </summary>
 		''' <param name="dte"> the <code>DropTargetEvent</code> </param>
 
-		Sub dragExit(ByVal dte As DropTargetEvent)
+		Sub dragExit(  dte As DropTargetEvent)
 
 		''' <summary>
 		''' Called when the drag operation has terminated with a drop on
@@ -141,7 +141,7 @@ Namespace java.awt.dnd
 		''' <P> </summary>
 		''' <param name="dtde"> the <code>DropTargetDropEvent</code> </param>
 
-		Sub drop(ByVal dtde As java.awt.dnd.DropTargetDropEvent)
+		Sub drop(  dtde As java.awt.dnd.DropTargetDropEvent)
 	End Interface
 
 End Namespace

@@ -51,12 +51,12 @@ Namespace java.awt.event
 		''' <summary>
 		''' Invoked when a component gains the keyboard focus.
 		''' </summary>
-		Sub focusGained(ByVal e As FocusEvent)
+		Sub focusGained(  e As FocusEvent)
 
 		''' <summary>
 		''' Invoked when a component loses the keyboard focus.
 		''' </summary>
-		Sub focusLost(ByVal e As FocusEvent)
+		Sub focusLost(  e As FocusEvent)
 	End Interface
 
 End Namespace

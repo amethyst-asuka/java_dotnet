@@ -45,7 +45,7 @@ Namespace java.util
 		''' </summary>
 		''' <param name="w">
 		'''         The width </param>
-		Public Sub New(ByVal w As Integer)
+		Public Sub New(  w As Integer)
 			Me.w = w
 		End Sub
 

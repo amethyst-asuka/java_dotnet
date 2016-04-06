@@ -92,7 +92,7 @@ Namespace java.text
 		''' algorithm understands the flags DIRECTION_LEFT_TO_RIGHT, DIRECTION_RIGHT_TO_LEFT,
 		''' DIRECTION_DEFAULT_LEFT_TO_RIGHT, and DIRECTION_DEFAULT_RIGHT_TO_LEFT.
 		''' Other values are reserved. </param>
-		Public Sub New(ByVal paragraph As String, ByVal flags As Integer)
+		Public Sub New(  paragraph As String,   flags As Integer)
 			If paragraph Is Nothing Then Throw New IllegalArgumentException("paragraph is null")
 
 			bidiBase = New sun.text.bidi.BidiBase(paragraph.ToCharArray(), 0, Nothing, 0, paragraph.length(), flags)
@@ -122,7 +122,7 @@ Namespace java.text
 		''' <seealso cref= java.awt.font.TextAttribute#BIDI_EMBEDDING </seealso>
 		''' <seealso cref= java.awt.font.TextAttribute#NUMERIC_SHAPING </seealso>
 		''' <seealso cref= java.awt.font.TextAttribute#RUN_DIRECTION </seealso>
-		Public Sub New(ByVal paragraph As AttributedCharacterIterator)
+		Public Sub New(  paragraph As AttributedCharacterIterator)
 			If paragraph Is Nothing Then Throw New IllegalArgumentException("paragraph is null")
 
 			bidiBase = New sun.text.bidi.BidiBase(0, 0)
@@ -145,7 +145,7 @@ Namespace java.text
 		''' algorithm understands the flags DIRECTION_LEFT_TO_RIGHT, DIRECTION_RIGHT_TO_LEFT,
 		''' DIRECTION_DEFAULT_LEFT_TO_RIGHT, and DIRECTION_DEFAULT_RIGHT_TO_LEFT.
 		''' Other values are reserved. </param>
-		Public Sub New(ByVal text As Char(), ByVal textStart As Integer, ByVal embeddings As SByte(), ByVal embStart As Integer, ByVal paragraphLength As Integer, ByVal flags As Integer)
+		Public Sub New(  text As Char(),   textStart As Integer,   embeddings As SByte(),   embStart As Integer,   paragraphLength As Integer,   flags As Integer)
 			If text Is Nothing Then Throw New IllegalArgumentException("text is null")
 			If paragraphLength < 0 Then Throw New IllegalArgumentException("bad length: " & paragraphLength)
 			If textStart < 0 OrElse paragraphLength > text.Length - textStart Then Throw New IllegalArgumentException("bad range: " & textStart & " length: " & paragraphLength & " for text of length: " & text.Length)
@@ -162,7 +162,7 @@ Namespace java.text
 		''' <param name="lineStart"> the offset from the start of the paragraph to the start of the line. </param>
 		''' <param name="lineLimit"> the offset from the start of the paragraph to the limit of the line. </param>
 		''' <returns> a {@code Bidi} object </returns>
-		Public Function createLineBidi(ByVal lineStart As Integer, ByVal lineLimit As Integer) As Bidi
+		Public Function createLineBidi(  lineStart As Integer,   lineLimit As Integer) As Bidi
 			Dim astr As New AttributedString("")
 			Dim newBidi As New Bidi(astr.iterator)
 
@@ -231,7 +231,7 @@ Namespace java.text
 		''' </summary>
 		''' <param name="offset"> the index of the character for which to return the level </param>
 		''' <returns> the resolved level of the character at offset </returns>
-		Public Function getLevelAt(ByVal offset As Integer) As Integer
+		Public Function getLevelAt(  offset As Integer) As Integer
 			Return bidiBase.getLevelAt(offset)
 		End Function
 
@@ -248,7 +248,7 @@ Namespace java.text
 		''' Return the level of the nth logical run in this line. </summary>
 		''' <param name="run"> the index of the run, between 0 and <code>getRunCount()</code> </param>
 		''' <returns> the level of the run </returns>
-		Public Function getRunLevel(ByVal run As Integer) As Integer
+		Public Function getRunLevel(  run As Integer) As Integer
 			Return bidiBase.getRunLevel(run)
 		End Function
 
@@ -257,7 +257,7 @@ Namespace java.text
 		''' an offset from the start of the line. </summary>
 		''' <param name="run"> the index of the run, between 0 and <code>getRunCount()</code> </param>
 		''' <returns> the start of the run </returns>
-		Public Function getRunStart(ByVal run As Integer) As Integer
+		Public Function getRunStart(  run As Integer) As Integer
 			Return bidiBase.getRunStart(run)
 		End Function
 
@@ -267,7 +267,7 @@ Namespace java.text
 		''' of the line for the last run on the line. </summary>
 		''' <param name="run"> the index of the run, between 0 and <code>getRunCount()</code> </param>
 		''' <returns> limit the limit of the run </returns>
-		Public Function getRunLimit(ByVal run As Integer) As Integer
+		Public Function getRunLimit(  run As Integer) As Integer
 			Return bidiBase.getRunLimit(run)
 		End Function
 
@@ -281,7 +281,7 @@ Namespace java.text
 		''' <param name="start"> the start of the range of characters to test </param>
 		''' <param name="limit"> the limit of the range of characters to test </param>
 		''' <returns> true if the range of characters requires bidi analysis </returns>
-		Public Shared Function requiresBidi(ByVal text As Char(), ByVal start As Integer, ByVal limit As Integer) As Boolean
+		Public Shared Function requiresBidi(  text As Char(),   start As Integer,   limit As Integer) As Boolean
 			Return sun.text.bidi.BidiBase.requiresBidi(text, start, limit)
 		End Function
 
@@ -300,7 +300,7 @@ Namespace java.text
 		''' <param name="objects"> the array of objects to be reordered into visual order </param>
 		''' <param name="objectStart"> the start position in the objects array </param>
 		''' <param name="count"> the number of objects to reorder </param>
-		Public Shared Sub reorderVisually(ByVal levels As SByte(), ByVal levelStart As Integer, ByVal objects As Object(), ByVal objectStart As Integer, ByVal count As Integer)
+		Public Shared Sub reorderVisually(  levels As SByte(),   levelStart As Integer,   objects As Object(),   objectStart As Integer,   count As Integer)
 			sun.text.bidi.BidiBase.reorderVisually(levels, levelStart, objects, objectStart, count)
 		End Sub
 

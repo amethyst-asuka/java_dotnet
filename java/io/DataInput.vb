@@ -184,7 +184,7 @@ Namespace java.io
 		''' <exception cref="EOFException">  if this stream reaches the end before reading
 		'''               all the bytes. </exception>
 		''' <exception cref="IOException">   if an I/O error occurs. </exception>
-		Sub readFully(ByVal b As SByte())
+		Sub readFully(  b As SByte())
 
 		''' 
 		''' <summary>
@@ -229,7 +229,7 @@ Namespace java.io
 		''' <exception cref="EOFException">  if this stream reaches the end before reading
 		'''               all the bytes. </exception>
 		''' <exception cref="IOException">   if an I/O error occurs. </exception>
-		Sub readFully(SByte ByVal  As b(), ByVal [off] As Integer, ByVal len As Integer)
+		Sub readFully(SByte    As b(),   [off] As Integer,   len As Integer)
 
 		''' <summary>
 		''' Makes an attempt to skip over
@@ -251,7 +251,7 @@ Namespace java.io
 		''' <param name="n">   the number of bytes to be skipped. </param>
 		''' <returns>     the number of bytes actually skipped. </returns>
 		''' <exception cref="IOException">   if an I/O error occurs. </exception>
-		Function skipBytes(ByVal n As Integer) As Integer
+		Function skipBytes(  n As Integer) As Integer
 
 		''' <summary>
 		''' Reads one input byte and returns

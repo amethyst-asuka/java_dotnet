@@ -33,63 +33,63 @@ Namespace java.lang
 	Friend Class CharacterDataPrivateUse
 		Inherits CharacterData
 
-		Friend Overrides Function getProperties(ByVal ch As Integer) As Integer
+		Friend Overrides Function getProperties(  ch As Integer) As Integer
 			Return 0
 		End Function
 
-		Friend Overrides Function [getType](ByVal ch As Integer) As Integer
+		Friend Overrides Function [getType](  ch As Integer) As Integer
 		Return If((ch And &HFFFE) = &HFFFE, Character.UNASSIGNED, Character.PRIVATE_USE)
 		End Function
 
-		Friend Overrides Function isJavaIdentifierStart(ByVal ch As Integer) As Boolean
+		Friend Overrides Function isJavaIdentifierStart(  ch As Integer) As Boolean
 			Return False
 		End Function
 
-		Friend Overrides Function isJavaIdentifierPart(ByVal ch As Integer) As Boolean
+		Friend Overrides Function isJavaIdentifierPart(  ch As Integer) As Boolean
 			Return False
 		End Function
 
-		Friend Overrides Function isUnicodeIdentifierStart(ByVal ch As Integer) As Boolean
+		Friend Overrides Function isUnicodeIdentifierStart(  ch As Integer) As Boolean
 			Return False
 		End Function
 
-		Friend Overrides Function isUnicodeIdentifierPart(ByVal ch As Integer) As Boolean
+		Friend Overrides Function isUnicodeIdentifierPart(  ch As Integer) As Boolean
 			Return False
 		End Function
 
-		Friend Overrides Function isIdentifierIgnorable(ByVal ch As Integer) As Boolean
+		Friend Overrides Function isIdentifierIgnorable(  ch As Integer) As Boolean
 			Return False
 		End Function
 
-		Friend Overrides Function toLowerCase(ByVal ch As Integer) As Integer
+		Friend Overrides Function toLowerCase(  ch As Integer) As Integer
 			Return ch
 		End Function
 
-		Friend Overrides Function toUpperCase(ByVal ch As Integer) As Integer
+		Friend Overrides Function toUpperCase(  ch As Integer) As Integer
 			Return ch
 		End Function
 
-		Friend Overrides Function toTitleCase(ByVal ch As Integer) As Integer
+		Friend Overrides Function toTitleCase(  ch As Integer) As Integer
 			Return ch
 		End Function
 
-		Friend Overrides Function digit(ByVal ch As Integer, ByVal radix As Integer) As Integer
+		Friend Overrides Function digit(  ch As Integer,   radix As Integer) As Integer
 			Return -1
 		End Function
 
-		Friend Overrides Function getNumericValue(ByVal ch As Integer) As Integer
+		Friend Overrides Function getNumericValue(  ch As Integer) As Integer
 			Return -1
 		End Function
 
-		Friend Overrides Function isWhitespace(ByVal ch As Integer) As Boolean
+		Friend Overrides Function isWhitespace(  ch As Integer) As Boolean
 			Return False
 		End Function
 
-		Friend Overrides Function getDirectionality(ByVal ch As Integer) As SByte
+		Friend Overrides Function getDirectionality(  ch As Integer) As SByte
 		Return If((ch And &HFFFE) = &HFFFE, Character.DIRECTIONALITY_UNDEFINED, Character.DIRECTIONALITY_LEFT_TO_RIGHT)
 		End Function
 
-		Friend Overrides Function isMirrored(ByVal ch As Integer) As Boolean
+		Friend Overrides Function isMirrored(  ch As Integer) As Boolean
 			Return False
 		End Function
 

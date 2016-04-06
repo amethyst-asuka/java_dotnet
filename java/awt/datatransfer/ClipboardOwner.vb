@@ -49,7 +49,7 @@ Namespace java.awt.datatransfer
 		''' </summary>
 		''' <param name="clipboard"> the clipboard that is no longer owned </param>
 		''' <param name="contents"> the contents which this owner had placed on the clipboard </param>
-		Sub lostOwnership(ByVal clipboard As Clipboard, ByVal contents As Transferable)
+		Sub lostOwnership(  clipboard As Clipboard,   contents As Transferable)
 
 	End Interface
 

@@ -70,7 +70,7 @@ Namespace java.beans
 		''' <param name="bCtxt">          The BeanContext intended for this Applet, or
 		'''                       null. </param>
 
-		Sub initialize(ByVal newAppletBean As java.applet.Applet, ByVal bCtxt As java.beans.beancontext.BeanContext)
+		Sub initialize(  newAppletBean As java.applet.Applet,   bCtxt As java.beans.beancontext.BeanContext)
 
 		''' <summary>
 		''' <p>
@@ -81,7 +81,7 @@ Namespace java.beans
 		''' </summary>
 		''' <param name="newApplet">  The newly instantiated JavaBean </param>
 
-		Sub activate(ByVal newApplet As java.applet.Applet)
+		Sub activate(  newApplet As java.applet.Applet)
 	End Interface
 
 End Namespace

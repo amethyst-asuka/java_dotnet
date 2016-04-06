@@ -62,14 +62,14 @@ Namespace java.awt.event
 		''' released (regardless of whether the mouse position is within the
 		''' bounds of the component).
 		''' </summary>
-		Public Overridable Sub mouseDragged(ByVal e As MouseEvent) Implements MouseMotionListener.mouseDragged
+		Public Overridable Sub mouseDragged(  e As MouseEvent) Implements MouseMotionListener.mouseDragged
 		End Sub
 
 		''' <summary>
 		''' Invoked when the mouse button has been moved on a component
 		''' (with no buttons no down).
 		''' </summary>
-		Public Overridable Sub mouseMoved(ByVal e As MouseEvent) Implements MouseMotionListener.mouseMoved
+		Public Overridable Sub mouseMoved(  e As MouseEvent) Implements MouseMotionListener.mouseMoved
 		End Sub
 	End Class
 

@@ -181,7 +181,7 @@ Namespace java.util
 		''' </returns>
 		''' <seealso cref= Calendar#ZONE_OFFSET </seealso>
 		''' <seealso cref= Calendar#DST_OFFSET </seealso>
-		Public MustOverride Function getOffset(ByVal era As Integer, ByVal year As Integer, ByVal month As Integer, ByVal day As Integer, ByVal dayOfWeek As Integer, ByVal milliseconds As Integer) As Integer
+		Public MustOverride Function getOffset(  era As Integer,   year As Integer,   month As Integer,   day As Integer,   dayOfWeek As Integer,   milliseconds As Integer) As Integer
 
 		''' <summary>
 		''' Returns the offset of this time zone from UTC at the specified
@@ -199,7 +199,7 @@ Namespace java.util
 		''' <seealso cref= Calendar#ZONE_OFFSET </seealso>
 		''' <seealso cref= Calendar#DST_OFFSET
 		''' @since 1.4 </seealso>
-		Public Overridable Function getOffset(ByVal [date] As Long) As Integer
+		Public Overridable Function getOffset(  [date] As Long) As Integer
 			If inDaylightTime(New Date(date_Renamed)) Then Return rawOffset + dSTSavings
 			Return rawOffset
 		End Function
@@ -219,7 +219,7 @@ Namespace java.util
 		''' </returns>
 		''' <seealso cref= Calendar#ZONE_OFFSET </seealso>
 		''' <seealso cref= Calendar#DST_OFFSET </seealso>
-		Friend Overridable Function getOffsets(ByVal [date] As Long, ByVal offsets As Integer()) As Integer
+		Friend Overridable Function getOffsets(  [date] As Long,   offsets As Integer()) As Integer
 			Dim rawoffset_Renamed As Integer = rawOffset
 			Dim dstoffset As Integer = 0
 			If inDaylightTime(New Date(date_Renamed)) Then dstoffset = dSTSavings
@@ -251,7 +251,7 @@ Namespace java.util
 			Get
 				Return ID
 			End Get
-			Set(ByVal ID As String)
+			Set(  ID As String)
 				If ID Is Nothing Then Throw New NullPointerException
 				Me.ID = ID
 			End Set
@@ -293,7 +293,7 @@ Namespace java.util
 		''' <exception cref="NullPointerException"> if {@code locale} is {@code null}.
 		''' @since 1.2 </exception>
 		''' <seealso cref= #getDisplayName(boolean, int, Locale) </seealso>
-		Public Function getDisplayName(ByVal locale_Renamed As Locale) As String
+		Public Function getDisplayName(  locale_Renamed As Locale) As String
 			Return getDisplayName(False, [LONG], locale_Renamed)
 		End Function
 
@@ -320,7 +320,7 @@ Namespace java.util
 		''' <seealso cref= Locale#getDefault(Locale.Category) </seealso>
 		''' <seealso cref= Locale.Category </seealso>
 		''' <seealso cref= java.text.DateFormatSymbols#getZoneStrings() </seealso>
-		Public Function getDisplayName(ByVal daylight As Boolean, ByVal style As Integer) As String
+		Public Function getDisplayName(  daylight As Boolean,   style As Integer) As String
 			Return getDisplayName(daylight, style, Locale.getDefault(Locale.Category.DISPLAY))
 		End Function
 
@@ -351,7 +351,7 @@ Namespace java.util
 		''' <exception cref="NullPointerException"> if {@code locale} is {@code null}.
 		''' @since 1.2 </exception>
 		''' <seealso cref= java.text.DateFormatSymbols#getZoneStrings() </seealso>
-		Public Overridable Function getDisplayName(ByVal daylight As Boolean, ByVal style As Integer, ByVal locale_Renamed As Locale) As String
+		Public Overridable Function getDisplayName(  daylight As Boolean,   style As Integer,   locale_Renamed As Locale) As String
 			If style <> [SHORT] AndAlso style <> [LONG] Then Throw New IllegalArgumentException("Illegal style: " & style)
 			Dim id_Renamed As String = iD
 			Dim name As String = sun.util.locale.provider.TimeZoneNameUtility.retrieveDisplayName(id_Renamed, daylight, style, locale_Renamed)
@@ -366,7 +366,7 @@ Namespace java.util
 			Return sun.util.calendar.ZoneInfoFile.toCustomID(offset_Renamed)
 		End Function
 
-		Private Shared Function getDisplayNames(ByVal id As String, ByVal locale_Renamed As Locale) As String()
+		Private Shared Function getDisplayNames(  id As String,   locale_Renamed As Locale) As String()
 			Return sun.util.locale.provider.TimeZoneNameUtility.retrieveDisplayNames(id, locale_Renamed)
 		End Function
 
@@ -446,7 +446,7 @@ Namespace java.util
 		''' <param name="date"> the given Date. </param>
 		''' <returns> {@code true} if the given date is in Daylight Saving Time,
 		'''         {@code false}, otherwise. </returns>
-		Public MustOverride Function inDaylightTime(ByVal [date] As Date) As Boolean
+		Public MustOverride Function inDaylightTime(  [date] As Date) As Boolean
 
 		''' <summary>
 		''' Gets the <code>TimeZone</code> for the given ID.
@@ -459,7 +459,7 @@ Namespace java.util
 		''' <returns> the specified <code>TimeZone</code>, or the GMT zone if the given ID
 		''' cannot be understood. </returns>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Shared Function getTimeZone(ByVal ID As String) As TimeZone
+		Public Shared Function getTimeZone(  ID As String) As TimeZone
 			Return getTimeZone(ID, True)
 		End Function
 
@@ -471,7 +471,7 @@ Namespace java.util
 		'''         cannot be understood. </returns>
 		''' <exception cref="NullPointerException"> if {@code zoneId} is {@code null}
 		''' @since 1.8 </exception>
-		Public Shared Function getTimeZone(ByVal zoneId As java.time.ZoneId) As TimeZone
+		Public Shared Function getTimeZone(  zoneId As java.time.ZoneId) As TimeZone
 			Dim tzid As String = zoneId.id ' throws an NPE if null
 			Dim c As Char = tzid.Chars(0)
 			If c = "+"c OrElse c = "-"c Then
@@ -498,7 +498,7 @@ Namespace java.util
 			Return java.time.ZoneId.of(id_Renamed, java.time.ZoneId.SHORT_IDS)
 		End Function
 
-		Private Shared Function getTimeZone(ByVal ID As String, ByVal fallback As Boolean) As TimeZone
+		Private Shared Function getTimeZone(  ID As String,   fallback As Boolean) As TimeZone
 			Dim tz As TimeZone = sun.util.calendar.ZoneInfo.getTimeZone(ID)
 			If tz Is Nothing Then
 				tz = parseCustomTimeZone(ID)
@@ -516,7 +516,7 @@ Namespace java.util
 		''' both have GMT-07:00, but differ in daylight saving behavior. </returns>
 		''' <seealso cref= #getRawOffset() </seealso>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Shared Function getAvailableIDs(ByVal rawOffset As Integer) As String()
+		Public Shared Function getAvailableIDs(  rawOffset As Integer) As String()
 			Return sun.util.calendar.ZoneInfo.getAvailableIDs(rawOffset)
 		End Function
 
@@ -536,7 +536,7 @@ Namespace java.util
 		''' </summary>
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Private Shared Function getSystemTimeZoneID(ByVal javaHome As String) As String
+		Private Shared Function getSystemTimeZoneID(  javaHome As String) As String
 		End Function
 
 		''' <summary>
@@ -653,7 +653,7 @@ Namespace java.util
 		''' <seealso cref= #getDefault </seealso>
 		''' <seealso cref= PropertyPermission </seealso>
 		Public Shared Property [default] As TimeZone
-			Set(ByVal zone As TimeZone)
+			Set(  zone As TimeZone)
 				Dim sm As SecurityManager = System.securityManager
 				If sm IsNot Nothing Then sm.checkPermission(New PropertyPermission("user.timezone", "write"))
 				defaultTimeZone = zone
@@ -668,7 +668,7 @@ Namespace java.util
 		''' <returns> true if the other zone is not null and is the same as this one,
 		''' with the possible exception of the ID
 		''' @since 1.2 </returns>
-		Public Overridable Function hasSameRules(ByVal other As TimeZone) As Boolean
+		Public Overridable Function hasSameRules(  other As TimeZone) As Boolean
 			Return other IsNot Nothing AndAlso rawOffset = other.rawOffset AndAlso useDaylightTime() = other.useDaylightTime()
 		End Function
 
@@ -719,7 +719,7 @@ Namespace java.util
 		''' <param name="id"> a string of the <a href="#CustomID">custom ID form</a>. </param>
 		''' <returns> a newly created TimeZone with the given offset and
 		''' no daylight saving time, or null if the id cannot be parsed. </returns>
-		Private Shared Function parseCustomTimeZone(ByVal id As String) As TimeZone
+		Private Shared Function parseCustomTimeZone(  id As String) As TimeZone
 			Dim length As Integer
 
 			' Error if the length of id isn't long enough or id doesn't

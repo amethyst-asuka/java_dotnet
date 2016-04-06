@@ -49,7 +49,7 @@ Namespace java.util.stream
 		''' <param name="limit"> the number of elements to limit, assumed to be >= 0, with
 		'''        a value of {@code java.lang.[Long].MAX_VALUE} if there is no limit </param>
 		''' <returns> the sliced size </returns>
-		Private Shared Function calcSize(ByVal size As Long, ByVal skip As Long, ByVal limit As Long) As Long
+		Private Shared Function calcSize(  size As Long,   skip As Long,   limit As Long) As Long
 			Return If(size >= 0, System.Math.Max(-1, System.Math.Min(size - skip, limit)), -1)
 		End Function
 
@@ -60,7 +60,7 @@ Namespace java.util.stream
 		''' <param name="limit"> the number of elements to limit, assumed to be >= 0, with
 		'''        a value of {@code java.lang.[Long].MAX_VALUE} if there is no limit </param>
 		''' <returns> the slice fence. </returns>
-		Private Shared Function calcSliceFence(ByVal skip As Long, ByVal limit As Long) As Long
+		Private Shared Function calcSliceFence(  skip As Long,   limit As Long) As Long
 			Dim sliceFence As Long = If(limit >= 0, skip + limit, java.lang.[Long].Max_Value)
 			' Check for overflow
 			Return If(sliceFence >= 0, sliceFence, java.lang.[Long].Max_Value)
@@ -72,7 +72,7 @@ Namespace java.util.stream
 		''' be SUBSIZED.
 		''' </summary>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Private Shared Function sliceSpliterator(Of P_IN)(ByVal shape As StreamShape, ByVal s As java.util.Spliterator(Of P_IN), ByVal skip As Long, ByVal limit As Long) As java.util.Spliterator(Of P_IN)
+		Private Shared Function sliceSpliterator(Of P_IN)(  shape As StreamShape,   s As java.util.Spliterator(Of P_IN),   skip As Long,   limit As Long) As java.util.Spliterator(Of P_IN)
 			Debug.Assert(s.hasCharacteristics(java.util.Spliterator.SUBSIZED))
 			Dim sliceFence As Long = calcSliceFence(skip, limit)
 			Select Case shape
@@ -103,7 +103,7 @@ Namespace java.util.stream
 		''' <param name="skip"> the number of elements to skip.  Must be >= 0. </param>
 		''' <param name="limit"> the maximum size of the resulting stream, or -1 if no limit
 		'''        is to be imposed </param>
-		Public Shared Function makeRef(Of T, T1)(ByVal upstream As AbstractPipeline(Of T1), ByVal skip As Long, ByVal limit As Long) As Stream(Of T)
+		Public Shared Function makeRef(Of T, T1)(  upstream As AbstractPipeline(Of T1),   skip As Long,   limit As Long) As Stream(Of T)
 			If skip < 0 Then Throw New IllegalArgumentException("Skip must be non-negative: " & skip)
 
 			Return New StatefulOpAnonymousInnerClassHelper(Of E_IN, E_OUT)
@@ -112,7 +112,7 @@ Namespace java.util.stream
 		Private Class StatefulOpAnonymousInnerClassHelper(Of E_IN, E_OUT)
 			Inherits StatefulOp(Of E_IN, E_OUT)
 
-			Friend Overridable Function unorderedSkipLimitSpliterator(ByVal s As java.util.Spliterator(Of T), ByVal skip As Long, ByVal limit As Long, ByVal sizeIfKnown As Long) As java.util.Spliterator(Of T)
+			Friend Overridable Function unorderedSkipLimitSpliterator(  s As java.util.Spliterator(Of T),   skip As Long,   limit As Long,   sizeIfKnown As Long) As java.util.Spliterator(Of T)
 				If skip <= sizeIfKnown Then
 					' Use just the limit if the number of elements
 					' to skip is <= the known pipeline size
@@ -122,7 +122,7 @@ Namespace java.util.stream
 				Return New StreamSpliterators.UnorderedSliceSpliterator.OfRef(Of )(s, skip, limit)
 			End Function
 
-			 Friend Overrides Function opEvaluateParallelLazy(Of P_IN)(ByVal helper As PipelineHelper(Of T), ByVal spliterator As java.util.Spliterator(Of P_IN)) As java.util.Spliterator(Of T)
+			 Friend Overrides Function opEvaluateParallelLazy(Of P_IN)(  helper As PipelineHelper(Of T),   spliterator As java.util.Spliterator(Of P_IN)) As java.util.Spliterator(Of T)
 				Dim size As Long = helper.exactOutputSizeIfKnown(spliterator)
 				If size > 0 AndAlso spliterator.hasCharacteristics(java.util.Spliterator.SUBSIZED) Then
 					Return New StreamSpliterators.SliceSpliterator.OfRef(Of )(helper.wrapSpliterator(spliterator), skip, calcSliceFence(skip, limit))
@@ -141,7 +141,7 @@ Namespace java.util.stream
 				End If
 			 End Function
 
-			 Friend Overrides Function opEvaluateParallel(Of P_IN)(ByVal helper As PipelineHelper(Of T), ByVal spliterator As java.util.Spliterator(Of P_IN), ByVal generator As java.util.function.IntFunction(Of T())) As Node(Of T)
+			 Friend Overrides Function opEvaluateParallel(Of P_IN)(  helper As PipelineHelper(Of T),   spliterator As java.util.Spliterator(Of P_IN),   generator As java.util.function.IntFunction(Of T())) As Node(Of T)
 				Dim size As Long = helper.exactOutputSizeIfKnown(spliterator)
 				If size > 0 AndAlso spliterator.hasCharacteristics(java.util.Spliterator.SUBSIZED) Then
 					' Because the pipeline is SIZED the slice spliterator
@@ -163,7 +163,7 @@ Namespace java.util.stream
 				End If
 			 End Function
 
-			Friend Overrides Function opWrapSink(ByVal flags As Integer, ByVal sink As Sink(Of T)) As Sink(Of T)
+			Friend Overrides Function opWrapSink(  flags As Integer,   sink As Sink(Of T)) As Sink(Of T)
 'JAVA TO VB CONVERTER TODO TASK: Anonymous inner classes are not converted to VB if the base type is not defined in the code being converted:
 '				Return New Sink.ChainedReference<T, T>(sink)
 	'			{
@@ -207,7 +207,7 @@ Namespace java.util.stream
 		''' <param name="skip"> The number of elements to skip.  Must be >= 0. </param>
 		''' <param name="limit"> The maximum size of the resulting stream, or -1 if no limit
 		'''        is to be imposed </param>
-		Public Shared Function makeInt(Of T1)(ByVal upstream As AbstractPipeline(Of T1), ByVal skip As Long, ByVal limit As Long) As IntStream
+		Public Shared Function makeInt(Of T1)(  upstream As AbstractPipeline(Of T1),   skip As Long,   limit As Long) As IntStream
 			If skip < 0 Then Throw New IllegalArgumentException("Skip must be non-negative: " & skip)
 
 			Return New StatefulOpAnonymousInnerClassHelper(Of E_IN)
@@ -216,7 +216,7 @@ Namespace java.util.stream
 		Private Class StatefulOpAnonymousInnerClassHelper(Of E_IN)
 			Inherits StatefulOp(Of E_IN)
 
-			Friend Overridable Function unorderedSkipLimitSpliterator(ByVal s As java.util.Spliterator.OfInt, ByVal skip As Long, ByVal limit As Long, ByVal sizeIfKnown As Long) As java.util.Spliterator.OfInt
+			Friend Overridable Function unorderedSkipLimitSpliterator(  s As java.util.Spliterator.OfInt,   skip As Long,   limit As Long,   sizeIfKnown As Long) As java.util.Spliterator.OfInt
 				If skip <= sizeIfKnown Then
 					' Use just the limit if the number of elements
 					' to skip is <= the known pipeline size
@@ -226,7 +226,7 @@ Namespace java.util.stream
 				Return New StreamSpliterators.UnorderedSliceSpliterator.OfInt(s, skip, limit)
 			End Function
 
-			 Friend Overrides Function opEvaluateParallelLazy(Of P_IN)(ByVal helper As PipelineHelper(Of Integer?), ByVal spliterator As java.util.Spliterator(Of P_IN)) As java.util.Spliterator(Of Integer?)
+			 Friend Overrides Function opEvaluateParallelLazy(Of P_IN)(  helper As PipelineHelper(Of Integer?),   spliterator As java.util.Spliterator(Of P_IN)) As java.util.Spliterator(Of Integer?)
 				Dim size As Long = helper.exactOutputSizeIfKnown(spliterator)
 				If size > 0 AndAlso spliterator.hasCharacteristics(java.util.Spliterator.SUBSIZED) Then
 					Return New StreamSpliterators.SliceSpliterator.OfInt(CType(helper.wrapSpliterator(spliterator), java.util.Spliterator.OfInt), skip, calcSliceFence(skip, limit))
@@ -237,7 +237,7 @@ Namespace java.util.stream
 				End If
 			 End Function
 
-			 Friend Overrides Function opEvaluateParallel(Of P_IN)(ByVal helper As PipelineHelper(Of Integer?), ByVal spliterator As java.util.Spliterator(Of P_IN), ByVal generator As java.util.function.IntFunction(Of Integer?())) As Node(Of Integer?)
+			 Friend Overrides Function opEvaluateParallel(Of P_IN)(  helper As PipelineHelper(Of Integer?),   spliterator As java.util.Spliterator(Of P_IN),   generator As java.util.function.IntFunction(Of Integer?())) As Node(Of Integer?)
 				Dim size As Long = helper.exactOutputSizeIfKnown(spliterator)
 				If size > 0 AndAlso spliterator.hasCharacteristics(java.util.Spliterator.SUBSIZED) Then
 					' Because the pipeline is SIZED the slice spliterator
@@ -259,7 +259,7 @@ Namespace java.util.stream
 				End If
 			 End Function
 
-			Friend Overrides Function opWrapSink(ByVal flags As Integer, ByVal sink As Sink(Of Integer?)) As Sink(Of Integer?)
+			Friend Overrides Function opWrapSink(  flags As Integer,   sink As Sink(Of Integer?)) As Sink(Of Integer?)
 'JAVA TO VB CONVERTER TODO TASK: Anonymous inner classes are not converted to VB if the base type is not defined in the code being converted:
 '				Return New Sink.ChainedInt<java.lang.Integer>(sink)
 	'			{
@@ -303,7 +303,7 @@ Namespace java.util.stream
 		''' <param name="skip"> The number of elements to skip.  Must be >= 0. </param>
 		''' <param name="limit"> The maximum size of the resulting stream, or -1 if no limit
 		'''        is to be imposed </param>
-		Public Shared Function makeLong(Of T1)(ByVal upstream As AbstractPipeline(Of T1), ByVal skip As Long, ByVal limit As Long) As LongStream
+		Public Shared Function makeLong(Of T1)(  upstream As AbstractPipeline(Of T1),   skip As Long,   limit As Long) As LongStream
 			If skip < 0 Then Throw New IllegalArgumentException("Skip must be non-negative: " & skip)
 
 			Return New StatefulOpAnonymousInnerClassHelper(Of E_IN)
@@ -312,7 +312,7 @@ Namespace java.util.stream
 		Private Class StatefulOpAnonymousInnerClassHelper(Of E_IN)
 			Inherits StatefulOp(Of E_IN)
 
-			Friend Overridable Function unorderedSkipLimitSpliterator(ByVal s As java.util.Spliterator.OfLong, ByVal skip As Long, ByVal limit As Long, ByVal sizeIfKnown As Long) As java.util.Spliterator.OfLong
+			Friend Overridable Function unorderedSkipLimitSpliterator(  s As java.util.Spliterator.OfLong,   skip As Long,   limit As Long,   sizeIfKnown As Long) As java.util.Spliterator.OfLong
 				If skip <= sizeIfKnown Then
 					' Use just the limit if the number of elements
 					' to skip is <= the known pipeline size
@@ -322,7 +322,7 @@ Namespace java.util.stream
 				Return New StreamSpliterators.UnorderedSliceSpliterator.OfLong(s, skip, limit)
 			End Function
 
-			 Friend Overrides Function opEvaluateParallelLazy(Of P_IN)(ByVal helper As PipelineHelper(Of Long?), ByVal spliterator As java.util.Spliterator(Of P_IN)) As java.util.Spliterator(Of Long?)
+			 Friend Overrides Function opEvaluateParallelLazy(Of P_IN)(  helper As PipelineHelper(Of Long?),   spliterator As java.util.Spliterator(Of P_IN)) As java.util.Spliterator(Of Long?)
 				Dim size As Long = helper.exactOutputSizeIfKnown(spliterator)
 				If size > 0 AndAlso spliterator.hasCharacteristics(java.util.Spliterator.SUBSIZED) Then
 					Return New StreamSpliterators.SliceSpliterator.OfLong(CType(helper.wrapSpliterator(spliterator), java.util.Spliterator.OfLong), skip, calcSliceFence(skip, limit))
@@ -333,7 +333,7 @@ Namespace java.util.stream
 				End If
 			 End Function
 
-			 Friend Overrides Function opEvaluateParallel(Of P_IN)(ByVal helper As PipelineHelper(Of Long?), ByVal spliterator As java.util.Spliterator(Of P_IN), ByVal generator As java.util.function.IntFunction(Of Long?())) As Node(Of Long?)
+			 Friend Overrides Function opEvaluateParallel(Of P_IN)(  helper As PipelineHelper(Of Long?),   spliterator As java.util.Spliterator(Of P_IN),   generator As java.util.function.IntFunction(Of Long?())) As Node(Of Long?)
 				Dim size As Long = helper.exactOutputSizeIfKnown(spliterator)
 				If size > 0 AndAlso spliterator.hasCharacteristics(java.util.Spliterator.SUBSIZED) Then
 					' Because the pipeline is SIZED the slice spliterator
@@ -355,7 +355,7 @@ Namespace java.util.stream
 				End If
 			 End Function
 
-			Friend Overrides Function opWrapSink(ByVal flags As Integer, ByVal sink As Sink(Of Long?)) As Sink(Of Long?)
+			Friend Overrides Function opWrapSink(  flags As Integer,   sink As Sink(Of Long?)) As Sink(Of Long?)
 'JAVA TO VB CONVERTER TODO TASK: Anonymous inner classes are not converted to VB if the base type is not defined in the code being converted:
 '				Return New Sink.ChainedLong<java.lang.Long>(sink)
 	'			{
@@ -399,7 +399,7 @@ Namespace java.util.stream
 		''' <param name="skip"> The number of elements to skip.  Must be >= 0. </param>
 		''' <param name="limit"> The maximum size of the resulting stream, or -1 if no limit
 		'''        is to be imposed </param>
-		Public Shared Function makeDouble(Of T1)(ByVal upstream As AbstractPipeline(Of T1), ByVal skip As Long, ByVal limit As Long) As DoubleStream
+		Public Shared Function makeDouble(Of T1)(  upstream As AbstractPipeline(Of T1),   skip As Long,   limit As Long) As DoubleStream
 			If skip < 0 Then Throw New IllegalArgumentException("Skip must be non-negative: " & skip)
 
 			Return New StatefulOpAnonymousInnerClassHelper(Of E_IN)
@@ -408,7 +408,7 @@ Namespace java.util.stream
 		Private Class StatefulOpAnonymousInnerClassHelper(Of E_IN)
 			Inherits StatefulOp(Of E_IN)
 
-			Friend Overridable Function unorderedSkipLimitSpliterator(ByVal s As java.util.Spliterator.OfDouble, ByVal skip As Long, ByVal limit As Long, ByVal sizeIfKnown As Long) As java.util.Spliterator.OfDouble
+			Friend Overridable Function unorderedSkipLimitSpliterator(  s As java.util.Spliterator.OfDouble,   skip As Long,   limit As Long,   sizeIfKnown As Long) As java.util.Spliterator.OfDouble
 				If skip <= sizeIfKnown Then
 					' Use just the limit if the number of elements
 					' to skip is <= the known pipeline size
@@ -418,7 +418,7 @@ Namespace java.util.stream
 				Return New StreamSpliterators.UnorderedSliceSpliterator.OfDouble(s, skip, limit)
 			End Function
 
-			 Friend Overrides Function opEvaluateParallelLazy(Of P_IN)(ByVal helper As PipelineHelper(Of Double?), ByVal spliterator As java.util.Spliterator(Of P_IN)) As java.util.Spliterator(Of Double?)
+			 Friend Overrides Function opEvaluateParallelLazy(Of P_IN)(  helper As PipelineHelper(Of Double?),   spliterator As java.util.Spliterator(Of P_IN)) As java.util.Spliterator(Of Double?)
 				Dim size As Long = helper.exactOutputSizeIfKnown(spliterator)
 				If size > 0 AndAlso spliterator.hasCharacteristics(java.util.Spliterator.SUBSIZED) Then
 					Return New StreamSpliterators.SliceSpliterator.OfDouble(CType(helper.wrapSpliterator(spliterator), java.util.Spliterator.OfDouble), skip, calcSliceFence(skip, limit))
@@ -429,7 +429,7 @@ Namespace java.util.stream
 				End If
 			 End Function
 
-			 Friend Overrides Function opEvaluateParallel(Of P_IN)(ByVal helper As PipelineHelper(Of Double?), ByVal spliterator As java.util.Spliterator(Of P_IN), ByVal generator As java.util.function.IntFunction(Of Double?())) As Node(Of Double?)
+			 Friend Overrides Function opEvaluateParallel(Of P_IN)(  helper As PipelineHelper(Of Double?),   spliterator As java.util.Spliterator(Of P_IN),   generator As java.util.function.IntFunction(Of Double?())) As Node(Of Double?)
 				Dim size As Long = helper.exactOutputSizeIfKnown(spliterator)
 				If size > 0 AndAlso spliterator.hasCharacteristics(java.util.Spliterator.SUBSIZED) Then
 					' Because the pipeline is SIZED the slice spliterator
@@ -451,7 +451,7 @@ Namespace java.util.stream
 				End If
 			 End Function
 
-			Friend Overrides Function opWrapSink(ByVal flags As Integer, ByVal sink As Sink(Of Double?)) As Sink(Of Double?)
+			Friend Overrides Function opWrapSink(  flags As Integer,   sink As Sink(Of Double?)) As Sink(Of Double?)
 'JAVA TO VB CONVERTER TODO TASK: Anonymous inner classes are not converted to VB if the base type is not defined in the code being converted:
 '				Return New Sink.ChainedDouble<java.lang.Double>(sink)
 	'			{
@@ -487,7 +487,7 @@ Namespace java.util.stream
 			End Function
 		End Class
 
-		Private Shared Function flags(ByVal limit As Long) As Integer
+		Private Shared Function flags(  limit As Long) As Integer
 			Return StreamOpFlag.NOT_SIZED Or (If(limit <> -1, StreamOpFlag.IS_SHORT_CIRCUIT, 0))
 		End Function
 
@@ -509,7 +509,7 @@ Namespace java.util.stream
 'JAVA TO VB CONVERTER TODO TASK: There is no VB equivalent to 'volatile':
 			Private completed As Boolean
 
-			Friend Sub New(Of T1)(ByVal op As AbstractPipeline(Of T1), ByVal helper As PipelineHelper(Of P_OUT), ByVal spliterator As java.util.Spliterator(Of P_IN), ByVal generator As java.util.function.IntFunction(Of P_OUT()), ByVal offset As Long, ByVal size As Long)
+			Friend Sub New(Of T1)(  op As AbstractPipeline(Of T1),   helper As PipelineHelper(Of P_OUT),   spliterator As java.util.Spliterator(Of P_IN),   generator As java.util.function.IntFunction(Of P_OUT()),   offset As Long,   size As Long)
 				MyBase.New(helper, spliterator)
 				Me.op = op
 				Me.generator = generator
@@ -517,7 +517,7 @@ Namespace java.util.stream
 				Me.targetSize = size
 			End Sub
 
-			Friend Sub New(ByVal parent As SliceTask(Of P_IN, P_OUT), ByVal spliterator As java.util.Spliterator(Of P_IN))
+			Friend Sub New(  parent As SliceTask(Of P_IN, P_OUT),   spliterator As java.util.Spliterator(Of P_IN))
 				MyBase.New(parent, spliterator)
 				Me.op = parent.op
 				Me.generator = parent.generator
@@ -525,7 +525,7 @@ Namespace java.util.stream
 				Me.targetSize = parent.targetSize
 			End Sub
 
-			Protected Friend Overrides Function makeChild(ByVal spliterator As java.util.Spliterator(Of P_IN)) As SliceTask(Of P_IN, P_OUT)
+			Protected Friend Overrides Function makeChild(  spliterator As java.util.Spliterator(Of P_IN)) As SliceTask(Of P_IN, P_OUT)
 				Return New SliceTask(Of )(Me, spliterator)
 			End Function
 
@@ -553,7 +553,7 @@ Namespace java.util.stream
 				End If
 			End Function
 
-			Public Overrides Sub onCompletion(Of T1)(ByVal caller As java.util.concurrent.CountedCompleter(Of T1))
+			Public Overrides Sub onCompletion(Of T1)(  caller As java.util.concurrent.CountedCompleter(Of T1))
 				If Not leaf Then
 					Dim result As Node(Of P_OUT)
 					thisNodeSize = leftChild.thisNodeSize + rightChild.thisNodeSize
@@ -580,7 +580,7 @@ Namespace java.util.stream
 				If completed Then localResult = emptyResult
 			End Sub
 
-			Private Function doTruncate(ByVal input As Node(Of P_OUT)) As Node(Of P_OUT)
+			Private Function doTruncate(  input As Node(Of P_OUT)) As Node(Of P_OUT)
 				Dim [to] As Long = If(targetSize >= 0, System.Math.Min(input.count(), targetOffset + targetSize), thisNodeSize)
 				Return input.truncate(targetOffset, [to], generator)
 			End Function
@@ -592,7 +592,7 @@ Namespace java.util.stream
 			''' <param name="target"> the target size </param>
 			''' <returns> true if the number of elements is greater than or equal to
 			'''         the target size, otherwise false. </returns>
-			Private Function isLeftCompleted(ByVal target As Long) As Boolean
+			Private Function isLeftCompleted(  target As Long) As Boolean
 				Dim size As Long = If(completed, thisNodeSize, completedSize(target))
 				If size >= target Then Return True
 				Dim parent As SliceTask(Of P_IN, P_OUT) = parent
@@ -620,7 +620,7 @@ Namespace java.util.stream
 			''' </summary>
 			''' <param name="target"> the target size </param>
 			''' <returns> return the number of completed elements </returns>
-			Private Function completedSize(ByVal target As Long) As Long
+			Private Function completedSize(  target As Long) As Long
 				If completed Then
 					Return thisNodeSize
 				Else

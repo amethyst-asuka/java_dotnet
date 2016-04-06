@@ -183,19 +183,19 @@ Namespace java.util.concurrent
 			''' Constructs a new node.  Uses relaxed write because item can
 			''' only be seen after publication via casNext.
 			''' </summary>
-			Friend Sub New(ByVal item As E)
+			Friend Sub New(  item As E)
 				UNSAFE.putObject(Me, itemOffset, item)
 			End Sub
 
-			Friend Overridable Function casItem(ByVal cmp As E, ByVal val As E) As Boolean
+			Friend Overridable Function casItem(  cmp As E,   val As E) As Boolean
 				Return UNSAFE.compareAndSwapObject(Me, itemOffset, cmp, val)
 			End Function
 
-			Friend Overridable Sub lazySetNext(ByVal val As Node(Of E))
+			Friend Overridable Sub lazySetNext(  val As Node(Of E))
 				UNSAFE.putOrderedObject(Me, nextOffset, val)
 			End Sub
 
-			Friend Overridable Function casNext(ByVal cmp As Node(Of E), ByVal val As Node(Of E)) As Boolean
+			Friend Overridable Function casNext(  cmp As Node(Of E),   val As Node(Of E)) As Boolean
 				Return UNSAFE.compareAndSwapObject(Me, nextOffset, cmp, val)
 			End Function
 
@@ -265,7 +265,7 @@ Namespace java.util.concurrent
 		''' <param name="c"> the collection of elements to initially contain </param>
 		''' <exception cref="NullPointerException"> if the specified collection or any
 		'''         of its elements are null </exception>
-		Public Sub New(Of T1 As E)(ByVal c As ICollection(Of T1))
+		Public Sub New(Of T1 As E)(  c As ICollection(Of T1))
 			Dim h As Node(Of E) = Nothing, t As Node(Of E) = Nothing
 			For Each e As E In c
 				checkNotNull(e)
@@ -295,7 +295,7 @@ Namespace java.util.concurrent
 		''' </summary>
 		''' <returns> {@code true} (as specified by <seealso cref="Collection#add"/>) </returns>
 		''' <exception cref="NullPointerException"> if the specified element is null </exception>
-		Public Overridable Function add(ByVal e As E) As Boolean
+		Public Overridable Function add(  e As E) As Boolean
 			Return offer(e)
 		End Function
 
@@ -303,7 +303,7 @@ Namespace java.util.concurrent
 		''' Tries to CAS head to p. If successful, repoint old head to itself
 		''' as sentinel for succ(), below.
 		''' </summary>
-		Friend Sub updateHead(ByVal h As Node(Of E), ByVal p As Node(Of E))
+		Friend Sub updateHead(  h As Node(Of E),   p As Node(Of E))
 			If h IsNot p AndAlso casHead(h, p) Then h.lazySetNext(h)
 		End Sub
 
@@ -312,7 +312,7 @@ Namespace java.util.concurrent
 		''' linked to self, which will only be true if traversing with a
 		''' stale pointer that is now off the list.
 		''' </summary>
-		Friend Function succ(ByVal p As Node(Of E)) As Node(Of E)
+		Friend Function succ(  p As Node(Of E)) As Node(Of E)
 			Dim [next] As Node(Of E) = p.next
 			Return If(p Is [next], head, [next])
 		End Function
@@ -323,7 +323,7 @@ Namespace java.util.concurrent
 		''' </summary>
 		''' <returns> {@code true} (as specified by <seealso cref="Queue#offer"/>) </returns>
 		''' <exception cref="NullPointerException"> if the specified element is null </exception>
-		Public Overridable Function offer(ByVal e As E) As Boolean
+		Public Overridable Function offer(  e As E) As Boolean
 			checkNotNull(e)
 			Dim newNode As New Node(Of E)(e)
 
@@ -472,7 +472,7 @@ Namespace java.util.concurrent
 		''' </summary>
 		''' <param name="o"> object to be checked for containment in this queue </param>
 		''' <returns> {@code true} if this queue contains the specified element </returns>
-		Public Overridable Function contains(ByVal o As Object) As Boolean
+		Public Overridable Function contains(  o As Object) As Boolean
 			If o Is Nothing Then Return False
 			Dim p As Node(Of E) = first()
 			Do While p IsNot Nothing
@@ -493,7 +493,7 @@ Namespace java.util.concurrent
 		''' </summary>
 		''' <param name="o"> element to be removed from this queue, if present </param>
 		''' <returns> {@code true} if this queue changed as a result of the call </returns>
-		Public Overridable Function remove(ByVal o As Object) As Boolean
+		Public Overridable Function remove(  o As Object) As Boolean
 			If o Is Nothing Then Return False
 			Dim pred As Node(Of E) = Nothing
 			Dim p As Node(Of E) = first()
@@ -521,7 +521,7 @@ Namespace java.util.concurrent
 		''' <exception cref="NullPointerException"> if the specified collection or any
 		'''         of its elements are null </exception>
 		''' <exception cref="IllegalArgumentException"> if the collection is this queue </exception>
-		Public Overridable Function addAll(Of T1 As E)(ByVal c As ICollection(Of T1)) As Boolean
+		Public Overridable Function addAll(Of T1 As E)(  c As ICollection(Of T1)) As Boolean
 			If c Is Me Then Throw New IllegalArgumentException
 
 			' Copy c into a private chain of Nodes
@@ -632,7 +632,7 @@ Namespace java.util.concurrent
 		'''         this queue </exception>
 		''' <exception cref="NullPointerException"> if the specified array is null </exception>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Overridable Function toArray(Of T)(ByVal a As T()) As T()
+		Public Overridable Function toArray(Of T)(  a As T()) As T()
 			' try to use sent-in array
 			Dim k As Integer = 0
 			Dim p As Node(Of E)
@@ -696,7 +696,7 @@ Namespace java.util.concurrent
 			''' </summary>
 			Private lastRet As Node(Of E)
 
-			Friend Sub New(ByVal outerInstance As ConcurrentLinkedQueue)
+			Friend Sub New(  outerInstance As ConcurrentLinkedQueue)
 					Me.outerInstance = outerInstance
 				advance()
 			End Sub
@@ -763,7 +763,7 @@ Namespace java.util.concurrent
 		''' <exception cref="java.io.IOException"> if an I/O error occurs
 		''' @serialData All of the elements (each an {@code E}) in
 		''' the proper order, followed by a null </exception>
-		Private Sub writeObject(ByVal s As java.io.ObjectOutputStream)
+		Private Sub writeObject(  s As java.io.ObjectOutputStream)
 
 			' Write out any hidden stuff
 			s.defaultWriteObject()
@@ -786,7 +786,7 @@ Namespace java.util.concurrent
 		''' <exception cref="ClassNotFoundException"> if the class of a serialized object
 		'''         could not be found </exception>
 		''' <exception cref="java.io.IOException"> if an I/O error occurs </exception>
-		Private Sub readObject(ByVal s As java.io.ObjectInputStream)
+		Private Sub readObject(  s As java.io.ObjectInputStream)
 			s.defaultReadObject()
 
 			' Read in elements until trailing null sentinel found
@@ -823,7 +823,7 @@ Namespace java.util.concurrent
 			Friend current As Node(Of E) ' current node; null until initialized
 			Friend batch As Integer ' batch size for splits
 			Friend exhausted As Boolean ' true when no more nodes
-			Friend Sub New(ByVal queue As ConcurrentLinkedQueue(Of E))
+			Friend Sub New(  queue As ConcurrentLinkedQueue(Of E))
 				Me.queue = queue
 			End Sub
 
@@ -854,7 +854,7 @@ Namespace java.util.concurrent
 			End Function
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Sub forEachRemaining(Of T1)(ByVal action As java.util.function.Consumer(Of T1))
+			Public Sub forEachRemaining(Of T1)(  action As java.util.function.Consumer(Of T1))
 				Dim p As Node(Of E)
 				If action Is Nothing Then Throw New NullPointerException
 				Dim q As ConcurrentLinkedQueue(Of E) = Me.queue
@@ -872,7 +872,7 @@ Namespace java.util.concurrent
 			End Sub
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Function tryAdvance(Of T1)(ByVal action As java.util.function.Consumer(Of T1)) As Boolean
+			Public Function tryAdvance(Of T1)(  action As java.util.function.Consumer(Of T1)) As Boolean
 				Dim p As Node(Of E)
 				If action Is Nothing Then Throw New NullPointerException
 				Dim q As ConcurrentLinkedQueue(Of E) = Me.queue
@@ -927,15 +927,15 @@ Namespace java.util.concurrent
 		''' Throws NullPointerException if argument is null.
 		''' </summary>
 		''' <param name="v"> the element </param>
-		Private Shared Sub checkNotNull(ByVal v As Object)
+		Private Shared Sub checkNotNull(  v As Object)
 			If v Is Nothing Then Throw New NullPointerException
 		End Sub
 
-		Private Function casTail(ByVal cmp As Node(Of E), ByVal val As Node(Of E)) As Boolean
+		Private Function casTail(  cmp As Node(Of E),   val As Node(Of E)) As Boolean
 			Return UNSAFE.compareAndSwapObject(Me, tailOffset, cmp, val)
 		End Function
 
-		Private Function casHead(ByVal cmp As Node(Of E), ByVal val As Node(Of E)) As Boolean
+		Private Function casHead(  cmp As Node(Of E),   val As Node(Of E)) As Boolean
 			Return UNSAFE.compareAndSwapObject(Me, headOffset, cmp, val)
 		End Function
 

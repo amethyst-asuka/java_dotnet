@@ -66,7 +66,7 @@ Namespace java.util.stream
 		''' <param name="shape"> the shape of the node to be created </param>
 		''' <returns> an empty node. </returns>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Friend Shared Function emptyNode(Of T)(ByVal shape As StreamShape) As Node(Of T)
+		Friend Shared Function emptyNode(Of T)(  shape As StreamShape) As Node(Of T)
 			Select Case shape
 				Case StreamShape.REFERENCE
 					Return CType(EMPTY_NODE, Node(Of T))
@@ -100,7 +100,7 @@ Namespace java.util.stream
 		''' <exception cref="IllegalStateException"> if all <seealso cref="Node"/> elements of the list
 		''' are an not instance of type supported by this factory. </exception>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Friend Shared Function conc(Of T)(ByVal shape As StreamShape, ByVal left As Node(Of T), ByVal right As Node(Of T)) As Node(Of T)
+		Friend Shared Function conc(Of T)(  shape As StreamShape,   left As Node(Of T),   right As Node(Of T)) As Node(Of T)
 			Select Case shape
 				Case StreamShape.REFERENCE
 					Return New ConcNode(Of )(left, right)
@@ -125,7 +125,7 @@ Namespace java.util.stream
 		''' @param <T> the type of elements held by the node </param>
 		''' <param name="array"> the array </param>
 		''' <returns> a node holding an array </returns>
-		Friend Shared Function node(Of T)(ByVal array As T()) As Node(Of T)
+		Friend Shared Function node(Of T)(  array As T()) As Node(Of T)
 			Return New ArrayNode(Of )(array)
 		End Function
 
@@ -137,7 +137,7 @@ Namespace java.util.stream
 		''' @param <T> the type of elements held by the node </param>
 		''' <param name="c"> the collection </param>
 		''' <returns> a node holding a collection </returns>
-		Friend Shared Function node(Of T)(ByVal c As ICollection(Of T)) As Node(Of T)
+		Friend Shared Function node(Of T)(  c As ICollection(Of T)) As Node(Of T)
 			Return New CollectionNode(Of )(c)
 		End Function
 
@@ -150,7 +150,7 @@ Namespace java.util.stream
 		''' <param name="generator"> the array factory </param>
 		''' @param <T> the type of elements of the node builder </param>
 		''' <returns> a {@code Node.Builder} </returns>
-		Friend Shared Function builder(Of T)(ByVal exactSizeIfKnown As Long, ByVal generator As java.util.function.IntFunction(Of T())) As Node.Builder(Of T)
+		Friend Shared Function builder(Of T)(  exactSizeIfKnown As Long,   generator As java.util.function.IntFunction(Of T())) As Node.Builder(Of T)
 			Return If(exactSizeIfKnown >= 0 AndAlso exactSizeIfKnown < MAX_ARRAY_SIZE, New FixedNodeBuilder(Of )(exactSizeIfKnown, generator), builder())
 		End Function
 
@@ -172,7 +172,7 @@ Namespace java.util.stream
 		''' </summary>
 		''' <param name="array"> the array </param>
 		''' <returns> a node holding an array </returns>
-		Friend Shared Function node(ByVal array As Integer()) As Node.OfInt
+		Friend Shared Function node(  array As Integer()) As Node.OfInt
 			Return New IntArrayNode(array)
 		End Function
 
@@ -183,7 +183,7 @@ Namespace java.util.stream
 		''' otherwise the exact capacity desired.  A fixed capacity builder will
 		''' fail if the wrong number of elements are added to the builder. </param>
 		''' <returns> a {@code Node.Builder.OfInt} </returns>
-		Friend Shared Function intBuilder(ByVal exactSizeIfKnown As Long) As Node.Builder.OfInt
+		Friend Shared Function intBuilder(  exactSizeIfKnown As Long) As Node.Builder.OfInt
 			Return If(exactSizeIfKnown >= 0 AndAlso exactSizeIfKnown < MAX_ARRAY_SIZE, New IntFixedNodeBuilder(exactSizeIfKnown), intBuilder())
 		End Function
 
@@ -204,7 +204,7 @@ Namespace java.util.stream
 		''' </summary>
 		''' <param name="array"> the array </param>
 		''' <returns> a node holding an array </returns>
-		Friend Shared Function node(ByVal array As Long()) As Node.OfLong
+		Friend Shared Function node(  array As Long()) As Node.OfLong
 			Return New LongArrayNode(array)
 		End Function
 
@@ -215,7 +215,7 @@ Namespace java.util.stream
 		''' otherwise the exact capacity desired.  A fixed capacity builder will
 		''' fail if the wrong number of elements are added to the builder. </param>
 		''' <returns> a {@code Node.Builder.OfLong} </returns>
-		Friend Shared Function longBuilder(ByVal exactSizeIfKnown As Long) As Node.Builder.OfLong
+		Friend Shared Function longBuilder(  exactSizeIfKnown As Long) As Node.Builder.OfLong
 			Return If(exactSizeIfKnown >= 0 AndAlso exactSizeIfKnown < MAX_ARRAY_SIZE, New LongFixedNodeBuilder(exactSizeIfKnown), longBuilder())
 		End Function
 
@@ -236,7 +236,7 @@ Namespace java.util.stream
 		''' </summary>
 		''' <param name="array"> the array </param>
 		''' <returns> a node holding an array </returns>
-		Friend Shared Function node(ByVal array As Double()) As Node.OfDouble
+		Friend Shared Function node(  array As Double()) As Node.OfDouble
 			Return New DoubleArrayNode(array)
 		End Function
 
@@ -247,7 +247,7 @@ Namespace java.util.stream
 		''' otherwise the exact capacity desired.  A fixed capacity builder will
 		''' fail if the wrong number of elements are added to the builder. </param>
 		''' <returns> a {@code Node.Builder.OfDouble} </returns>
-		Friend Shared Function doubleBuilder(ByVal exactSizeIfKnown As Long) As Node.Builder.OfDouble
+		Friend Shared Function doubleBuilder(  exactSizeIfKnown As Long) As Node.Builder.OfDouble
 			Return If(exactSizeIfKnown >= 0 AndAlso exactSizeIfKnown < MAX_ARRAY_SIZE, New DoubleFixedNodeBuilder(exactSizeIfKnown), doubleBuilder())
 		End Function
 
@@ -281,7 +281,7 @@ Namespace java.util.stream
 		'''                    describing an array before returning </param>
 		''' <param name="generator"> the array generator </param>
 		''' <returns> a <seealso cref="Node"/> describing the output elements </returns>
-		Public Shared Function collect(Of P_IN, P_OUT)(ByVal helper As PipelineHelper(Of P_OUT), ByVal spliterator As java.util.Spliterator(Of P_IN), ByVal flattenTree As Boolean, ByVal generator As java.util.function.IntFunction(Of P_OUT())) As Node(Of P_OUT)
+		Public Shared Function collect(Of P_IN, P_OUT)(  helper As PipelineHelper(Of P_OUT),   spliterator As java.util.Spliterator(Of P_IN),   flattenTree As Boolean,   generator As java.util.function.IntFunction(Of P_OUT())) As Node(Of P_OUT)
 			Dim size As Long = helper.exactOutputSizeIfKnown(spliterator)
 			If size >= 0 AndAlso spliterator.hasCharacteristics(java.util.Spliterator.SUBSIZED) Then
 				If size >= MAX_ARRAY_SIZE Then Throw New IllegalArgumentException(BAD_SIZE)
@@ -314,7 +314,7 @@ Namespace java.util.stream
 		''' <param name="flattenTree"> whether a conc node should be flattened into a node
 		'''                    describing an array before returning </param>
 		''' <returns> a <seealso cref="Node.OfInt"/> describing the output elements </returns>
-		Public Shared Function collectInt(Of P_IN)(ByVal helper As PipelineHelper(Of Integer?), ByVal spliterator As java.util.Spliterator(Of P_IN), ByVal flattenTree As Boolean) As Node.OfInt
+		Public Shared Function collectInt(Of P_IN)(  helper As PipelineHelper(Of Integer?),   spliterator As java.util.Spliterator(Of P_IN),   flattenTree As Boolean) As Node.OfInt
 			Dim size As Long = helper.exactOutputSizeIfKnown(spliterator)
 			If size >= 0 AndAlso spliterator.hasCharacteristics(java.util.Spliterator.SUBSIZED) Then
 				If size >= MAX_ARRAY_SIZE Then Throw New IllegalArgumentException(BAD_SIZE)
@@ -347,7 +347,7 @@ Namespace java.util.stream
 		''' <param name="flattenTree"> whether a conc node should be flattened into a node
 		'''                    describing an array before returning </param>
 		''' <returns> a <seealso cref="Node.OfLong"/> describing the output elements </returns>
-		Public Shared Function collectLong(Of P_IN)(ByVal helper As PipelineHelper(Of Long?), ByVal spliterator As java.util.Spliterator(Of P_IN), ByVal flattenTree As Boolean) As Node.OfLong
+		Public Shared Function collectLong(Of P_IN)(  helper As PipelineHelper(Of Long?),   spliterator As java.util.Spliterator(Of P_IN),   flattenTree As Boolean) As Node.OfLong
 			Dim size As Long = helper.exactOutputSizeIfKnown(spliterator)
 			If size >= 0 AndAlso spliterator.hasCharacteristics(java.util.Spliterator.SUBSIZED) Then
 				If size >= MAX_ARRAY_SIZE Then Throw New IllegalArgumentException(BAD_SIZE)
@@ -380,7 +380,7 @@ Namespace java.util.stream
 		''' <param name="flattenTree"> whether a conc node should be flattened into a node
 		'''                    describing an array before returning </param>
 		''' <returns> a <seealso cref="Node.OfDouble"/> describing the output elements </returns>
-		Public Shared Function collectDouble(Of P_IN)(ByVal helper As PipelineHelper(Of Double?), ByVal spliterator As java.util.Spliterator(Of P_IN), ByVal flattenTree As Boolean) As Node.OfDouble
+		Public Shared Function collectDouble(Of P_IN)(  helper As PipelineHelper(Of Double?),   spliterator As java.util.Spliterator(Of P_IN),   flattenTree As Boolean) As Node.OfDouble
 			Dim size As Long = helper.exactOutputSizeIfKnown(spliterator)
 			If size >= 0 AndAlso spliterator.hasCharacteristics(java.util.Spliterator.SUBSIZED) Then
 				If size >= MAX_ARRAY_SIZE Then Throw New IllegalArgumentException(BAD_SIZE)
@@ -409,7 +409,7 @@ Namespace java.util.stream
 		''' <param name="node"> the node to flatten </param>
 		''' <param name="generator"> the array factory used to create array instances </param>
 		''' <returns> a flat {@code Node} </returns>
-		Public Shared Function flatten(Of T)(ByVal node As Node(Of T), ByVal generator As java.util.function.IntFunction(Of T())) As Node(Of T)
+		Public Shared Function flatten(Of T)(  node As Node(Of T),   generator As java.util.function.IntFunction(Of T())) As Node(Of T)
 			If node.childCount > 0 Then
 				Dim size As Long = node.count()
 				If size >= MAX_ARRAY_SIZE Then Throw New IllegalArgumentException(BAD_SIZE)
@@ -433,7 +433,7 @@ Namespace java.util.stream
 		''' </summary>
 		''' <param name="node"> the node to flatten </param>
 		''' <returns> a flat {@code Node.OfInt} </returns>
-		Public Shared Function flattenInt(ByVal node As Node.OfInt) As Node.OfInt
+		Public Shared Function flattenInt(  node As Node.OfInt) As Node.OfInt
 			If node.childCount > 0 Then
 				Dim size As Long = node.count()
 				If size >= MAX_ARRAY_SIZE Then Throw New IllegalArgumentException(BAD_SIZE)
@@ -457,7 +457,7 @@ Namespace java.util.stream
 		''' </summary>
 		''' <param name="node"> the node to flatten </param>
 		''' <returns> a flat {@code Node.OfLong} </returns>
-		Public Shared Function flattenLong(ByVal node As Node.OfLong) As Node.OfLong
+		Public Shared Function flattenLong(  node As Node.OfLong) As Node.OfLong
 			If node.childCount > 0 Then
 				Dim size As Long = node.count()
 				If size >= MAX_ARRAY_SIZE Then Throw New IllegalArgumentException(BAD_SIZE)
@@ -481,7 +481,7 @@ Namespace java.util.stream
 		''' </summary>
 		''' <param name="node"> the node to flatten </param>
 		''' <returns> a flat {@code Node.OfDouble} </returns>
-		Public Shared Function flattenDouble(ByVal node As Node.OfDouble) As Node.OfDouble
+		Public Shared Function flattenDouble(  node As Node.OfDouble) As Node.OfDouble
 			If node.childCount > 0 Then
 				Dim size As Long = node.count()
 				If size >= MAX_ARRAY_SIZE Then Throw New IllegalArgumentException(BAD_SIZE)
@@ -501,18 +501,18 @@ Namespace java.util.stream
 			Friend Sub New()
 			End Sub
 
-			Public Overrides Function asArray(ByVal generator As java.util.function.IntFunction(Of T())) As T() Implements Node(Of T).asArray
+			Public Overrides Function asArray(  generator As java.util.function.IntFunction(Of T())) As T() Implements Node(Of T).asArray
 				Return generator.apply(0)
 			End Function
 
-			Public Overridable Sub copyInto(ByVal array As T_ARR, ByVal offset As Integer) Implements Node(Of T).copyInto
+			Public Overridable Sub copyInto(  array As T_ARR,   offset As Integer) Implements Node(Of T).copyInto
 			End Sub
 
 			Public Overrides Function count() As Long Implements Node(Of T).count
 				Return 0
 			End Function
 
-			Public Overridable Sub forEach(ByVal consumer As T_CONS) Implements Node(Of T).forEach
+			Public Overridable Sub forEach(  consumer As T_CONS) Implements Node(Of T).forEach
 			End Sub
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
@@ -586,13 +586,13 @@ Namespace java.util.stream
 			Friend curSize As Integer
 
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-			Friend Sub New(ByVal size As Long, ByVal generator As java.util.function.IntFunction(Of T()))
+			Friend Sub New(  size As Long,   generator As java.util.function.IntFunction(Of T()))
 				If size >= MAX_ARRAY_SIZE Then Throw New IllegalArgumentException(BAD_SIZE)
 				Me.array = generator.apply(CInt(size))
 				Me.curSize = 0
 			End Sub
 
-			Friend Sub New(ByVal array As T())
+			Friend Sub New(  array As T())
 				Me.array = array
 				Me.curSize = array.Length
 			End Sub
@@ -603,11 +603,11 @@ Namespace java.util.stream
 				Return java.util.Arrays.spliterator(array, 0, curSize)
 			End Function
 
-			Public Overrides Sub copyInto(ByVal dest As T(), ByVal destOffset As Integer) Implements Node(Of T).copyInto
+			Public Overrides Sub copyInto(  dest As T(),   destOffset As Integer) Implements Node(Of T).copyInto
 				Array.Copy(array, 0, dest, destOffset, curSize)
 			End Sub
 
-			Public Overrides Function asArray(ByVal generator As java.util.function.IntFunction(Of T())) As T() Implements Node(Of T).asArray
+			Public Overrides Function asArray(  generator As java.util.function.IntFunction(Of T())) As T() Implements Node(Of T).asArray
 				If array.Length = curSize Then
 					Return array
 				Else
@@ -620,7 +620,7 @@ Namespace java.util.stream
 			End Function
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Overrides Sub forEach(Of T1)(ByVal consumer As java.util.function.Consumer(Of T1)) Implements Node(Of T).forEach
+			Public Overrides Sub forEach(Of T1)(  consumer As java.util.function.Consumer(Of T1)) Implements Node(Of T).forEach
 				For i As Integer = 0 To curSize - 1
 					consumer.accept(array(i))
 				Next i
@@ -640,7 +640,7 @@ Namespace java.util.stream
 
 			Private ReadOnly c As ICollection(Of T)
 
-			Friend Sub New(ByVal c As ICollection(Of T))
+			Friend Sub New(  c As ICollection(Of T))
 				Me.c = c
 			End Sub
 
@@ -650,7 +650,7 @@ Namespace java.util.stream
 				Return c.stream().spliterator()
 			End Function
 
-			Public Overrides Sub copyInto(ByVal array As T(), ByVal offset As Integer) Implements Node(Of T).copyInto
+			Public Overrides Sub copyInto(  array As T(),   offset As Integer) Implements Node(Of T).copyInto
 				For Each t As T In c
 					array(offset) = t
 					offset += 1
@@ -658,7 +658,7 @@ Namespace java.util.stream
 			End Sub
 
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-			Public Overrides Function asArray(ByVal generator As java.util.function.IntFunction(Of T())) As T() Implements Node(Of T).asArray
+			Public Overrides Function asArray(  generator As java.util.function.IntFunction(Of T())) As T() Implements Node(Of T).asArray
 				Return c.ToArray(generator.apply(c.Count))
 			End Function
 
@@ -667,7 +667,7 @@ Namespace java.util.stream
 			End Function
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Overrides Sub forEach(Of T1)(ByVal consumer As java.util.function.Consumer(Of T1)) Implements Node(Of T).forEach
+			Public Overrides Sub forEach(Of T1)(  consumer As java.util.function.Consumer(Of T1)) Implements Node(Of T).forEach
 				c.forEach(consumer)
 			End Sub
 
@@ -688,7 +688,7 @@ Namespace java.util.stream
 			Protected Friend ReadOnly right As T_NODE
 			Private ReadOnly size As Long
 
-			Friend Sub New(ByVal left As T_NODE, ByVal right As T_NODE)
+			Friend Sub New(  left As T_NODE,   right As T_NODE)
 				Me.left = left
 				Me.right = right
 				' The Node count will be required when the Node spliterator is
@@ -704,7 +704,7 @@ Namespace java.util.stream
 				End Get
 			End Property
 
-			Public Overrides Function getChild(ByVal i As Integer) As T_NODE Implements Node(Of T).getChild
+			Public Overrides Function getChild(  i As Integer) As T_NODE Implements Node(Of T).getChild
 				If i = 0 Then Return left
 				If i = 1 Then Return right
 				Throw New IndexOutOfBoundsException
@@ -719,7 +719,7 @@ Namespace java.util.stream
 			Inherits AbstractConcNode(Of T, Node(Of T))
 			Implements Node(Of T)
 
-			Friend Sub New(ByVal left As Node(Of T), ByVal right As Node(Of T))
+			Friend Sub New(  left As Node(Of T),   right As Node(Of T))
 				MyBase.New(left, right)
 			End Sub
 
@@ -727,7 +727,7 @@ Namespace java.util.stream
 				Return New Nodes.InternalNodeSpliterator.OfRef(Of )(Me)
 			End Function
 
-			Public Overrides Sub copyInto(ByVal array As T(), ByVal offset As Integer) Implements Node(Of T).copyInto
+			Public Overrides Sub copyInto(  array As T(),   offset As Integer) Implements Node(Of T).copyInto
 				java.util.Objects.requireNonNull(array)
 				left.copyInto(array, offset)
 				' Cast to int is safe since it is the callers responsibility to
@@ -735,7 +735,7 @@ Namespace java.util.stream
 				right.copyInto(array, offset + CInt(left.count()))
 			End Sub
 
-			Public Overrides Function asArray(ByVal generator As java.util.function.IntFunction(Of T())) As T() Implements Node(Of T).asArray
+			Public Overrides Function asArray(  generator As java.util.function.IntFunction(Of T())) As T() Implements Node(Of T).asArray
 				Dim size As Long = count()
 				If size >= MAX_ARRAY_SIZE Then Throw New IllegalArgumentException(BAD_SIZE)
 				Dim array As T() = generator.apply(CInt(size))
@@ -744,12 +744,12 @@ Namespace java.util.stream
 			End Function
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Overrides Sub forEach(Of T1)(ByVal consumer As java.util.function.Consumer(Of T1)) Implements Node(Of T).forEach
+			Public Overrides Sub forEach(Of T1)(  consumer As java.util.function.Consumer(Of T1)) Implements Node(Of T).forEach
 				left.forEach(consumer)
 				right.forEach(consumer)
 			End Sub
 
-			Public Overrides Function truncate(ByVal [from] As Long, ByVal [to] As Long, ByVal generator As java.util.function.IntFunction(Of T())) As Node(Of T) Implements Node(Of T).truncate
+			Public Overrides Function truncate(  [from] As Long,   [to] As Long,   generator As java.util.function.IntFunction(Of T())) As Node(Of T) Implements Node(Of T).truncate
 				If [from] = 0 AndAlso [to] = count() Then Return Me
 				Dim leftCount As Long = left.count()
 				If [from] >= leftCount Then
@@ -773,16 +773,16 @@ Namespace java.util.stream
 				Inherits AbstractConcNode(Of E, T_NODE)
 				Implements Node.OfPrimitive(Of E, T_CONS, T_ARR, T_SPLITR, T_NODE)
 
-				Friend Sub New(ByVal left As T_NODE, ByVal right As T_NODE)
+				Friend Sub New(  left As T_NODE,   right As T_NODE)
 					MyBase.New(left, right)
 				End Sub
 
-				Public Overrides Sub forEach(ByVal consumer As T_CONS)
+				Public Overrides Sub forEach(  consumer As T_CONS)
 					outerInstance.left.forEach(consumer)
 					outerInstance.right.forEach(consumer)
 				End Sub
 
-				Public Overrides Sub copyInto(ByVal array As T_ARR, ByVal offset As Integer)
+				Public Overrides Sub copyInto(  array As T_ARR,   offset As Integer)
 					outerInstance.left.copyInto(array, offset)
 					' Cast to int is safe since it is the callers responsibility to
 					' ensure that there is sufficient room in the array
@@ -810,7 +810,7 @@ Namespace java.util.stream
 				Inherits ConcNode.OfPrimitive(Of Integer?, java.util.function.IntConsumer, int(), java.util.Spliterator.OfInt, Node.OfInt)
 				Implements Node.OfInt
 
-				Friend Sub New(ByVal left As Node.OfInt, ByVal right As Node.OfInt)
+				Friend Sub New(  left As Node.OfInt,   right As Node.OfInt)
 					MyBase.New(left, right)
 				End Sub
 
@@ -823,7 +823,7 @@ Namespace java.util.stream
 				Inherits ConcNode.OfPrimitive(Of Long?, java.util.function.LongConsumer, long(), java.util.Spliterator.OfLong, Node.OfLong)
 				Implements Node.OfLong
 
-				Friend Sub New(ByVal left As Node.OfLong, ByVal right As Node.OfLong)
+				Friend Sub New(  left As Node.OfLong,   right As Node.OfLong)
 					MyBase.New(left, right)
 				End Sub
 
@@ -836,7 +836,7 @@ Namespace java.util.stream
 				Inherits ConcNode.OfPrimitive(Of Double?, java.util.function.DoubleConsumer, double(), java.util.Spliterator.OfDouble, Node.OfDouble)
 				Implements Node.OfDouble
 
-				Friend Sub New(ByVal left As Node.OfDouble, ByVal right As Node.OfDouble)
+				Friend Sub New(  left As Node.OfDouble,   right As Node.OfDouble)
 					MyBase.New(left, right)
 				End Sub
 
@@ -871,7 +871,7 @@ Namespace java.util.stream
 			' null if no partial traversal has occurred
 			Friend tryAdvanceStack As java.util.Deque(Of N)
 
-			Friend Sub New(ByVal curNode As N)
+			Friend Sub New(  curNode As N)
 				Me.curNode = curNode
 			End Sub
 
@@ -895,7 +895,7 @@ Namespace java.util.stream
 			''' an explicit stack, to find the next non-empty leaf node.
 			''' </summary>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-			Protected Friend Function findNextLeafNode(ByVal stack As java.util.Deque(Of N)) As N
+			Protected Friend Function findNextLeafNode(  stack As java.util.Deque(Of N)) As N
 				Dim n As N = Nothing
 				n = stack.pollFirst()
 				Do While n IsNot Nothing
@@ -984,12 +984,12 @@ Namespace java.util.stream
 			Private NotInheritable Class OfRef(Of T)
 				Inherits InternalNodeSpliterator(Of T, java.util.Spliterator(Of T), Node(Of T))
 
-				Friend Sub New(ByVal curNode As Node(Of T))
+				Friend Sub New(  curNode As Node(Of T))
 					MyBase.New(curNode)
 				End Sub
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-				Public Overrides Function tryAdvance(Of T1)(ByVal consumer As java.util.function.Consumer(Of T1)) As Boolean
+				Public Overrides Function tryAdvance(Of T1)(  consumer As java.util.function.Consumer(Of T1)) As Boolean
 					If Not initTryAdvance() Then Return False
 
 					Dim hasNext As Boolean = tryAdvanceSpliterator.tryAdvance(consumer)
@@ -1010,7 +1010,7 @@ Namespace java.util.stream
 				End Function
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-				Public Overrides Sub forEachRemaining(Of T1)(ByVal consumer As java.util.function.Consumer(Of T1))
+				Public Overrides Sub forEachRemaining(Of T1)(  consumer As java.util.function.Consumer(Of T1))
 					If curNode Is Nothing Then Return
 
 					If tryAdvanceSpliterator Is Nothing Then
@@ -1037,11 +1037,11 @@ Namespace java.util.stream
 				Inherits InternalNodeSpliterator(Of T, T_SPLITR, N)
 				Implements java.util.Spliterator.OfPrimitive(Of T, T_CONS, T_SPLITR)
 
-				Friend Sub New(ByVal cur As N)
+				Friend Sub New(  cur As N)
 					MyBase.New(cur)
 				End Sub
 
-				Public Overrides Function tryAdvance(ByVal consumer As T_CONS) As Boolean
+				Public Overrides Function tryAdvance(  consumer As T_CONS) As Boolean
 					If Not outerInstance.initTryAdvance() Then Return False
 
 					Dim hasNext As Boolean = outerInstance.tryAdvanceSpliterator.tryAdvance(consumer)
@@ -1061,7 +1061,7 @@ Namespace java.util.stream
 					Return hasNext
 				End Function
 
-				Public Overrides Sub forEachRemaining(ByVal consumer As T_CONS)
+				Public Overrides Sub forEachRemaining(  consumer As T_CONS)
 					If outerInstance.curNode Is Nothing Then Return
 
 					If outerInstance.tryAdvanceSpliterator Is Nothing Then
@@ -1088,7 +1088,7 @@ Namespace java.util.stream
 				Inherits OfPrimitive(Of Integer?, java.util.function.IntConsumer, int(), java.util.Spliterator.OfInt, Node.OfInt)
 				Implements java.util.Spliterator.OfInt
 
-				Friend Sub New(ByVal cur As Node.OfInt)
+				Friend Sub New(  cur As Node.OfInt)
 					MyBase.New(cur)
 				End Sub
 			End Class
@@ -1097,7 +1097,7 @@ Namespace java.util.stream
 				Inherits OfPrimitive(Of Long?, java.util.function.LongConsumer, long(), java.util.Spliterator.OfLong, Node.OfLong)
 				Implements java.util.Spliterator.OfLong
 
-				Friend Sub New(ByVal cur As Node.OfLong)
+				Friend Sub New(  cur As Node.OfLong)
 					MyBase.New(cur)
 				End Sub
 			End Class
@@ -1106,7 +1106,7 @@ Namespace java.util.stream
 				Inherits OfPrimitive(Of Double?, java.util.function.DoubleConsumer, double(), java.util.Spliterator.OfDouble, Node.OfDouble)
 				Implements java.util.Spliterator.OfDouble
 
-				Friend Sub New(ByVal cur As Node.OfDouble)
+				Friend Sub New(  cur As Node.OfDouble)
 					MyBase.New(cur)
 				End Sub
 			End Class
@@ -1119,7 +1119,7 @@ Namespace java.util.stream
 			Inherits ArrayNode(Of T)
 			Implements Node.Builder(Of T)
 
-			Friend Sub New(ByVal size As Long, ByVal generator As java.util.function.IntFunction(Of T()))
+			Friend Sub New(  size As Long,   generator As java.util.function.IntFunction(Of T()))
 				MyBase.New(size, generator)
 				Debug.Assert(size < MAX_ARRAY_SIZE)
 			End Sub
@@ -1129,12 +1129,12 @@ Namespace java.util.stream
 				Return Me
 			End Function
 
-			Public Overrides Sub begin(ByVal size As Long)
+			Public Overrides Sub begin(  size As Long)
 				If size <> array.length Then Throw New IllegalStateException(String.Format("Begin size {0:D} is not equal to fixed size {1:D}", size, array.length))
 				curSize = 0
 			End Sub
 
-			Public Overrides Sub accept(ByVal t As T)
+			Public Overrides Sub accept(  t As T)
 				If curSize < array.length Then
 					array(curSize) = t
 					curSize += 1
@@ -1170,20 +1170,20 @@ Namespace java.util.stream
 			End Function
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Overrides Sub forEach(Of T1)(ByVal consumer As java.util.function.Consumer(Of T1)) Implements Node(Of T).forEach
+			Public Overrides Sub forEach(Of T1)(  consumer As java.util.function.Consumer(Of T1)) Implements Node(Of T).forEach
 				Debug.Assert((Not building), "during building")
 				MyBase.forEach(consumer)
 			End Sub
 
 			'
-			Public Overrides Sub begin(ByVal size As Long)
+			Public Overrides Sub begin(  size As Long)
 				Debug.Assert((Not building), "was already building")
 				building = True
 				clear()
 				ensureCapacity(size)
 			End Sub
 
-			Public Overrides Sub accept(ByVal t As T)
+			Public Overrides Sub accept(  t As T)
 				Debug.Assert(building, "not building")
 				MyBase.accept(t)
 			End Sub
@@ -1194,12 +1194,12 @@ Namespace java.util.stream
 				' @@@ check begin(size) and size
 			End Sub
 
-			Public Overrides Sub copyInto(ByVal array As T(), ByVal offset As Integer) Implements Node(Of T).copyInto
+			Public Overrides Sub copyInto(  array As T(),   offset As Integer) Implements Node(Of T).copyInto
 				Debug.Assert((Not building), "during building")
 				MyBase.copyInto(array, offset)
 			End Sub
 
-			Public Overrides Function asArray(ByVal arrayFactory As java.util.function.IntFunction(Of T())) As T() Implements Node(Of T).asArray
+			Public Overrides Function asArray(  arrayFactory As java.util.function.IntFunction(Of T())) As T() Implements Node(Of T).asArray
 				Debug.Assert((Not building), "during building")
 				Return MyBase.asArray(arrayFactory)
 			End Function
@@ -1222,13 +1222,13 @@ Namespace java.util.stream
 			Friend ReadOnly array As Integer()
 			Friend curSize As Integer
 
-			Friend Sub New(ByVal size As Long)
+			Friend Sub New(  size As Long)
 				If size >= MAX_ARRAY_SIZE Then Throw New IllegalArgumentException(BAD_SIZE)
 				Me.array = New Integer(CInt(size) - 1){}
 				Me.curSize = 0
 			End Sub
 
-			Friend Sub New(ByVal array As Integer())
+			Friend Sub New(  array As Integer())
 				Me.array = array
 				Me.curSize = array.Length
 			End Sub
@@ -1247,7 +1247,7 @@ Namespace java.util.stream
 				End If
 			End Function
 
-			Public Overrides Sub copyInto(ByVal dest As Integer(), ByVal destOffset As Integer)
+			Public Overrides Sub copyInto(  dest As Integer(),   destOffset As Integer)
 				Array.Copy(array, 0, dest, destOffset, curSize)
 			End Sub
 
@@ -1255,7 +1255,7 @@ Namespace java.util.stream
 				Return curSize
 			End Function
 
-			Public Overrides Sub forEach(ByVal consumer As java.util.function.IntConsumer)
+			Public Overrides Sub forEach(  consumer As java.util.function.IntConsumer)
 				For i As Integer = 0 To curSize - 1
 					consumer.accept(array(i))
 				Next i
@@ -1272,13 +1272,13 @@ Namespace java.util.stream
 			Friend ReadOnly array As Long()
 			Friend curSize As Integer
 
-			Friend Sub New(ByVal size As Long)
+			Friend Sub New(  size As Long)
 				If size >= MAX_ARRAY_SIZE Then Throw New IllegalArgumentException(BAD_SIZE)
 				Me.array = New Long(CInt(size) - 1){}
 				Me.curSize = 0
 			End Sub
 
-			Friend Sub New(ByVal array As Long())
+			Friend Sub New(  array As Long())
 				Me.array = array
 				Me.curSize = array.Length
 			End Sub
@@ -1295,7 +1295,7 @@ Namespace java.util.stream
 				End If
 			End Function
 
-			Public Overrides Sub copyInto(ByVal dest As Long(), ByVal destOffset As Integer)
+			Public Overrides Sub copyInto(  dest As Long(),   destOffset As Integer)
 				Array.Copy(array, 0, dest, destOffset, curSize)
 			End Sub
 
@@ -1303,7 +1303,7 @@ Namespace java.util.stream
 				Return curSize
 			End Function
 
-			Public Overrides Sub forEach(ByVal consumer As java.util.function.LongConsumer)
+			Public Overrides Sub forEach(  consumer As java.util.function.LongConsumer)
 				For i As Integer = 0 To curSize - 1
 					consumer.accept(array(i))
 				Next i
@@ -1320,13 +1320,13 @@ Namespace java.util.stream
 			Friend ReadOnly array As Double()
 			Friend curSize As Integer
 
-			Friend Sub New(ByVal size As Long)
+			Friend Sub New(  size As Long)
 				If size >= MAX_ARRAY_SIZE Then Throw New IllegalArgumentException(BAD_SIZE)
 				Me.array = New Double(CInt(size) - 1){}
 				Me.curSize = 0
 			End Sub
 
-			Friend Sub New(ByVal array As Double())
+			Friend Sub New(  array As Double())
 				Me.array = array
 				Me.curSize = array.Length
 			End Sub
@@ -1343,7 +1343,7 @@ Namespace java.util.stream
 				End If
 			End Function
 
-			Public Overrides Sub copyInto(ByVal dest As Double(), ByVal destOffset As Integer)
+			Public Overrides Sub copyInto(  dest As Double(),   destOffset As Integer)
 				Array.Copy(array, 0, dest, destOffset, curSize)
 			End Sub
 
@@ -1351,7 +1351,7 @@ Namespace java.util.stream
 				Return curSize
 			End Function
 
-			Public Overrides Sub forEach(ByVal consumer As java.util.function.DoubleConsumer)
+			Public Overrides Sub forEach(  consumer As java.util.function.DoubleConsumer)
 				For i As Integer = 0 To curSize - 1
 					consumer.accept(array(i))
 				Next i
@@ -1366,7 +1366,7 @@ Namespace java.util.stream
 			Inherits IntArrayNode
 			Implements Node.Builder.OfInt
 
-			Friend Sub New(ByVal size As Long)
+			Friend Sub New(  size As Long)
 				MyBase.New(size)
 				Debug.Assert(size < MAX_ARRAY_SIZE)
 			End Sub
@@ -1377,13 +1377,13 @@ Namespace java.util.stream
 				Return Me
 			End Function
 
-			Public Overrides Sub begin(ByVal size As Long)
+			Public Overrides Sub begin(  size As Long)
 				If size <> array.Length Then Throw New IllegalStateException(String.Format("Begin size {0:D} is not equal to fixed size {1:D}", size, array.Length))
 
 				curSize = 0
 			End Sub
 
-			Public Overrides Sub accept(ByVal i As Integer)
+			Public Overrides Sub accept(  i As Integer)
 				If curSize < array.Length Then
 					array(curSize) = i
 					curSize += 1
@@ -1405,7 +1405,7 @@ Namespace java.util.stream
 			Inherits LongArrayNode
 			Implements Node.Builder.OfLong
 
-			Friend Sub New(ByVal size As Long)
+			Friend Sub New(  size As Long)
 				MyBase.New(size)
 				Debug.Assert(size < MAX_ARRAY_SIZE)
 			End Sub
@@ -1416,13 +1416,13 @@ Namespace java.util.stream
 				Return Me
 			End Function
 
-			Public Overrides Sub begin(ByVal size As Long)
+			Public Overrides Sub begin(  size As Long)
 				If size <> array.Length Then Throw New IllegalStateException(String.Format("Begin size {0:D} is not equal to fixed size {1:D}", size, array.Length))
 
 				curSize = 0
 			End Sub
 
-			Public Overrides Sub accept(ByVal i As Long)
+			Public Overrides Sub accept(  i As Long)
 				If curSize < array.Length Then
 					array(curSize) = i
 					curSize += 1
@@ -1444,7 +1444,7 @@ Namespace java.util.stream
 			Inherits DoubleArrayNode
 			Implements Node.Builder.OfDouble
 
-			Friend Sub New(ByVal size As Long)
+			Friend Sub New(  size As Long)
 				MyBase.New(size)
 				Debug.Assert(size < MAX_ARRAY_SIZE)
 			End Sub
@@ -1455,13 +1455,13 @@ Namespace java.util.stream
 				Return Me
 			End Function
 
-			Public Overrides Sub begin(ByVal size As Long)
+			Public Overrides Sub begin(  size As Long)
 				If size <> array.Length Then Throw New IllegalStateException(String.Format("Begin size {0:D} is not equal to fixed size {1:D}", size, array.Length))
 
 				curSize = 0
 			End Sub
 
-			Public Overrides Sub accept(ByVal i As Double)
+			Public Overrides Sub accept(  i As Double)
 				If curSize < array.Length Then
 					array(curSize) = i
 					curSize += 1
@@ -1493,20 +1493,20 @@ Namespace java.util.stream
 				Return MyBase.spliterator()
 			End Function
 
-			Public Overrides Sub forEach(ByVal consumer As java.util.function.IntConsumer)
+			Public Overrides Sub forEach(  consumer As java.util.function.IntConsumer)
 				Debug.Assert((Not building), "during building")
 				MyBase.forEach(consumer)
 			End Sub
 
 			'
-			Public Overrides Sub begin(ByVal size As Long)
+			Public Overrides Sub begin(  size As Long)
 				Debug.Assert((Not building), "was already building")
 				building = True
 				clear()
 				ensureCapacity(size)
 			End Sub
 
-			Public Overrides Sub accept(ByVal i As Integer)
+			Public Overrides Sub accept(  i As Integer)
 				Debug.Assert(building, "not building")
 				MyBase.accept(i)
 			End Sub
@@ -1517,7 +1517,7 @@ Namespace java.util.stream
 				' @@@ check begin(size) and size
 			End Sub
 
-			Public Overrides Sub copyInto(ByVal array As Integer(), ByVal offset As Integer)
+			Public Overrides Sub copyInto(  array As Integer(),   offset As Integer)
 				Debug.Assert((Not building), "during building")
 				MyBase.copyInto(array, offset)
 			End Sub
@@ -1547,20 +1547,20 @@ Namespace java.util.stream
 				Return MyBase.spliterator()
 			End Function
 
-			Public Overrides Sub forEach(ByVal consumer As java.util.function.LongConsumer)
+			Public Overrides Sub forEach(  consumer As java.util.function.LongConsumer)
 				Debug.Assert((Not building), "during building")
 				MyBase.forEach(consumer)
 			End Sub
 
 			'
-			Public Overrides Sub begin(ByVal size As Long)
+			Public Overrides Sub begin(  size As Long)
 				Debug.Assert((Not building), "was already building")
 				building = True
 				clear()
 				ensureCapacity(size)
 			End Sub
 
-			Public Overrides Sub accept(ByVal i As Long)
+			Public Overrides Sub accept(  i As Long)
 				Debug.Assert(building, "not building")
 				MyBase.accept(i)
 			End Sub
@@ -1571,7 +1571,7 @@ Namespace java.util.stream
 				' @@@ check begin(size) and size
 			End Sub
 
-			Public Overrides Sub copyInto(ByVal array As Long(), ByVal offset As Integer)
+			Public Overrides Sub copyInto(  array As Long(),   offset As Integer)
 				Debug.Assert((Not building), "during building")
 				MyBase.copyInto(array, offset)
 			End Sub
@@ -1601,20 +1601,20 @@ Namespace java.util.stream
 				Return MyBase.spliterator()
 			End Function
 
-			Public Overrides Sub forEach(ByVal consumer As java.util.function.DoubleConsumer)
+			Public Overrides Sub forEach(  consumer As java.util.function.DoubleConsumer)
 				Debug.Assert((Not building), "during building")
 				MyBase.forEach(consumer)
 			End Sub
 
 			'
-			Public Overrides Sub begin(ByVal size As Long)
+			Public Overrides Sub begin(  size As Long)
 				Debug.Assert((Not building), "was already building")
 				building = True
 				clear()
 				ensureCapacity(size)
 			End Sub
 
-			Public Overrides Sub accept(ByVal i As Double)
+			Public Overrides Sub accept(  i As Double)
 				Debug.Assert(building, "not building")
 				MyBase.accept(i)
 			End Sub
@@ -1625,7 +1625,7 @@ Namespace java.util.stream
 				' @@@ check begin(size) and size
 			End Sub
 
-			Public Overrides Sub copyInto(ByVal array As Double(), ByVal offset As Integer)
+			Public Overrides Sub copyInto(  array As Double(),   offset As Integer)
 				Debug.Assert((Not building), "during building")
 				MyBase.copyInto(array, offset)
 			End Sub
@@ -1657,7 +1657,7 @@ Namespace java.util.stream
 			' For Sink implementation
 			Protected Friend index, fence As Integer
 
-			Friend Sub New(ByVal spliterator As java.util.Spliterator(Of P_IN), ByVal helper As PipelineHelper(Of P_OUT), ByVal arrayLength As Integer)
+			Friend Sub New(  spliterator As java.util.Spliterator(Of P_IN),   helper As PipelineHelper(Of P_OUT),   arrayLength As Integer)
 				Debug.Assert(spliterator.hasCharacteristics(java.util.Spliterator.SUBSIZED))
 				Me.spliterator = spliterator
 				Me.helper = helper
@@ -1666,7 +1666,7 @@ Namespace java.util.stream
 				Me.length = arrayLength
 			End Sub
 
-			Friend Sub New(ByVal parent As K, ByVal spliterator As java.util.Spliterator(Of P_IN), ByVal offset As Long, ByVal length As Long, ByVal arrayLength As Integer)
+			Friend Sub New(  parent As K,   spliterator As java.util.Spliterator(Of P_IN),   offset As Long,   length As Long,   arrayLength As Integer)
 				MyBase.New(parent)
 				Debug.Assert(spliterator.hasCharacteristics(java.util.Spliterator.SUBSIZED))
 				Me.spliterator = spliterator
@@ -1697,9 +1697,9 @@ Namespace java.util.stream
 				task.propagateCompletion()
 			End Sub
 
-			Friend MustOverride Function makeChild(ByVal spliterator As java.util.Spliterator(Of P_IN), ByVal offset As Long, ByVal size As Long) As K
+			Friend MustOverride Function makeChild(  spliterator As java.util.Spliterator(Of P_IN),   offset As Long,   size As Long) As K
 
-			Public Overrides Sub begin(ByVal size As Long) Implements Sink(Of P_OUT).begin
+			Public Overrides Sub begin(  size As Long) Implements Sink(Of P_OUT).begin
 				If size > length Then Throw New IllegalStateException("size passed to Sink.begin exceeds array length")
 				' Casts to int are safe since absolute size is verified to be within
 				' bounds when the root concrete SizedCollectorTask is constructed
@@ -1715,21 +1715,21 @@ Namespace java.util.stream
 
 				Private ReadOnly array As P_OUT()
 
-				Friend Sub New(ByVal spliterator As java.util.Spliterator(Of P_IN), ByVal helper As PipelineHelper(Of P_OUT), ByVal array As P_OUT())
+				Friend Sub New(  spliterator As java.util.Spliterator(Of P_IN),   helper As PipelineHelper(Of P_OUT),   array As P_OUT())
 					MyBase.New(spliterator, helper, array.Length)
 					Me.array = array
 				End Sub
 
-				Friend Sub New(ByVal parent As OfRef(Of P_IN, P_OUT), ByVal spliterator As java.util.Spliterator(Of P_IN), ByVal offset As Long, ByVal length As Long)
+				Friend Sub New(  parent As OfRef(Of P_IN, P_OUT),   spliterator As java.util.Spliterator(Of P_IN),   offset As Long,   length As Long)
 					MyBase.New(parent, spliterator, offset, length, parent.array.length)
 					Me.array = parent.array
 				End Sub
 
-				Friend Overrides Function makeChild(ByVal spliterator As java.util.Spliterator(Of P_IN), ByVal offset As Long, ByVal size As Long) As OfRef(Of P_IN, P_OUT)
+				Friend Overrides Function makeChild(  spliterator As java.util.Spliterator(Of P_IN),   offset As Long,   size As Long) As OfRef(Of P_IN, P_OUT)
 					Return New OfRef(Of )(Me, spliterator, offset, size)
 				End Function
 
-				Public Overrides Sub accept(ByVal value As P_OUT)
+				Public Overrides Sub accept(  value As P_OUT)
 					If index >= fence Then Throw New IndexOutOfBoundsException(Convert.ToString(index))
 					array(index) = value
 					index += 1
@@ -1743,21 +1743,21 @@ Namespace java.util.stream
 
 				Private ReadOnly array As Integer()
 
-				Friend Sub New(ByVal spliterator As java.util.Spliterator(Of P_IN), ByVal helper As PipelineHelper(Of Integer?), ByVal array As Integer())
+				Friend Sub New(  spliterator As java.util.Spliterator(Of P_IN),   helper As PipelineHelper(Of Integer?),   array As Integer())
 					MyBase.New(spliterator, helper, array.Length)
 					Me.array = array
 				End Sub
 
-				Friend Sub New(ByVal parent As SizedCollectorTask.OfInt(Of P_IN), ByVal spliterator As java.util.Spliterator(Of P_IN), ByVal offset As Long, ByVal length As Long)
+				Friend Sub New(  parent As SizedCollectorTask.OfInt(Of P_IN),   spliterator As java.util.Spliterator(Of P_IN),   offset As Long,   length As Long)
 					MyBase.New(parent, spliterator, offset, length, parent.array.length)
 					Me.array = parent.array
 				End Sub
 
-				Friend Overrides Function makeChild(ByVal spliterator As java.util.Spliterator(Of P_IN), ByVal offset As Long, ByVal size As Long) As SizedCollectorTask.OfInt(Of P_IN)
+				Friend Overrides Function makeChild(  spliterator As java.util.Spliterator(Of P_IN),   offset As Long,   size As Long) As SizedCollectorTask.OfInt(Of P_IN)
 					Return New SizedCollectorTask.OfInt(Of )(Me, spliterator, offset, size)
 				End Function
 
-				Public Overrides Sub accept(ByVal value As Integer)
+				Public Overrides Sub accept(  value As Integer)
 					If index >= fence Then Throw New IndexOutOfBoundsException(Convert.ToString(index))
 					array(index) = value
 					index += 1
@@ -1771,21 +1771,21 @@ Namespace java.util.stream
 
 				Private ReadOnly array As Long()
 
-				Friend Sub New(ByVal spliterator As java.util.Spliterator(Of P_IN), ByVal helper As PipelineHelper(Of Long?), ByVal array As Long())
+				Friend Sub New(  spliterator As java.util.Spliterator(Of P_IN),   helper As PipelineHelper(Of Long?),   array As Long())
 					MyBase.New(spliterator, helper, array.Length)
 					Me.array = array
 				End Sub
 
-				Friend Sub New(ByVal parent As SizedCollectorTask.OfLong(Of P_IN), ByVal spliterator As java.util.Spliterator(Of P_IN), ByVal offset As Long, ByVal length As Long)
+				Friend Sub New(  parent As SizedCollectorTask.OfLong(Of P_IN),   spliterator As java.util.Spliterator(Of P_IN),   offset As Long,   length As Long)
 					MyBase.New(parent, spliterator, offset, length, parent.array.length)
 					Me.array = parent.array
 				End Sub
 
-				Friend Overrides Function makeChild(ByVal spliterator As java.util.Spliterator(Of P_IN), ByVal offset As Long, ByVal size As Long) As SizedCollectorTask.OfLong(Of P_IN)
+				Friend Overrides Function makeChild(  spliterator As java.util.Spliterator(Of P_IN),   offset As Long,   size As Long) As SizedCollectorTask.OfLong(Of P_IN)
 					Return New SizedCollectorTask.OfLong(Of )(Me, spliterator, offset, size)
 				End Function
 
-				Public Overrides Sub accept(ByVal value As Long)
+				Public Overrides Sub accept(  value As Long)
 					If index >= fence Then Throw New IndexOutOfBoundsException(Convert.ToString(index))
 					array(index) = value
 					index += 1
@@ -1799,21 +1799,21 @@ Namespace java.util.stream
 
 				Private ReadOnly array As Double()
 
-				Friend Sub New(ByVal spliterator As java.util.Spliterator(Of P_IN), ByVal helper As PipelineHelper(Of Double?), ByVal array As Double())
+				Friend Sub New(  spliterator As java.util.Spliterator(Of P_IN),   helper As PipelineHelper(Of Double?),   array As Double())
 					MyBase.New(spliterator, helper, array.Length)
 					Me.array = array
 				End Sub
 
-				Friend Sub New(ByVal parent As SizedCollectorTask.OfDouble(Of P_IN), ByVal spliterator As java.util.Spliterator(Of P_IN), ByVal offset As Long, ByVal length As Long)
+				Friend Sub New(  parent As SizedCollectorTask.OfDouble(Of P_IN),   spliterator As java.util.Spliterator(Of P_IN),   offset As Long,   length As Long)
 					MyBase.New(parent, spliterator, offset, length, parent.array.length)
 					Me.array = parent.array
 				End Sub
 
-				Friend Overrides Function makeChild(ByVal spliterator As java.util.Spliterator(Of P_IN), ByVal offset As Long, ByVal size As Long) As SizedCollectorTask.OfDouble(Of P_IN)
+				Friend Overrides Function makeChild(  spliterator As java.util.Spliterator(Of P_IN),   offset As Long,   size As Long) As SizedCollectorTask.OfDouble(Of P_IN)
 					Return New SizedCollectorTask.OfDouble(Of )(Me, spliterator, offset, size)
 				End Function
 
-				Public Overrides Sub accept(ByVal value As Double)
+				Public Overrides Sub accept(  value As Double)
 					If index >= fence Then Throw New IndexOutOfBoundsException(Convert.ToString(index))
 					array(index) = value
 					index += 1
@@ -1828,12 +1828,12 @@ Namespace java.util.stream
 			Protected Friend ReadOnly node As T_NODE
 			Protected Friend ReadOnly offset As Integer
 
-			Friend Sub New(ByVal node As T_NODE, ByVal offset As Integer)
+			Friend Sub New(  node As T_NODE,   offset As Integer)
 				Me.node = node
 				Me.offset = offset
 			End Sub
 
-			Friend Sub New(ByVal parent As K, ByVal node As T_NODE, ByVal offset As Integer)
+			Friend Sub New(  parent As K,   node As T_NODE,   offset As Integer)
 				MyBase.New(parent)
 				Me.node = node
 				Me.offset = offset
@@ -1841,7 +1841,7 @@ Namespace java.util.stream
 
 			Friend MustOverride Sub copyNodeToArray()
 
-			Friend MustOverride Function makeChild(ByVal childIndex As Integer, ByVal offset As Integer) As K
+			Friend MustOverride Function makeChild(  childIndex As Integer,   offset As Integer) As K
 
 			Public Overrides Sub compute()
 				Dim task As ToArrayTask(Of T, T_NODE, K) = Me
@@ -1872,17 +1872,17 @@ Namespace java.util.stream
 
 				Private ReadOnly array As T()
 
-				Private Sub New(ByVal node As Node(Of T), ByVal array As T(), ByVal offset As Integer)
+				Private Sub New(  node As Node(Of T),   array As T(),   offset As Integer)
 					MyBase.New(node, offset)
 					Me.array = array
 				End Sub
 
-				Private Sub New(ByVal parent As OfRef(Of T), ByVal node As Node(Of T), ByVal offset As Integer)
+				Private Sub New(  parent As OfRef(Of T),   node As Node(Of T),   offset As Integer)
 					MyBase.New(parent, node, offset)
 					Me.array = parent.array
 				End Sub
 
-				Friend Overrides Function makeChild(ByVal childIndex As Integer, ByVal offset As Integer) As OfRef(Of T)
+				Friend Overrides Function makeChild(  childIndex As Integer,   offset As Integer) As OfRef(Of T)
 					Return New OfRef(Of )(Me, node.getChild(childIndex), offset)
 				End Function
 
@@ -1897,17 +1897,17 @@ Namespace java.util.stream
 
 				Private ReadOnly array As T_ARR
 
-				Private Sub New(ByVal node As T_NODE, ByVal array As T_ARR, ByVal offset As Integer)
+				Private Sub New(  node As T_NODE,   array As T_ARR,   offset As Integer)
 					MyBase.New(node, offset)
 					Me.array = array
 				End Sub
 
-				Private Sub New(ByVal parent As OfPrimitive(Of T, T_CONS, T_ARR, T_SPLITR, T_NODE), ByVal node As T_NODE, ByVal offset As Integer)
+				Private Sub New(  parent As OfPrimitive(Of T, T_CONS, T_ARR, T_SPLITR, T_NODE),   node As T_NODE,   offset As Integer)
 					MyBase.New(parent, node, offset)
 					Me.array = parent.array
 				End Sub
 
-				Friend Overrides Function makeChild(ByVal childIndex As Integer, ByVal offset As Integer) As OfPrimitive(Of T, T_CONS, T_ARR, T_SPLITR, T_NODE)
+				Friend Overrides Function makeChild(  childIndex As Integer,   offset As Integer) As OfPrimitive(Of T, T_CONS, T_ARR, T_SPLITR, T_NODE)
 					Return New OfPrimitive(Of )(Me, outerInstance.node.getChild(childIndex), offset)
 				End Function
 
@@ -1920,7 +1920,7 @@ Namespace java.util.stream
 			Private NotInheritable Class OfInt
 				Inherits OfPrimitive(Of Integer?, java.util.function.IntConsumer, int(), java.util.Spliterator.OfInt, Node.OfInt)
 
-				Private Sub New(ByVal node As Node.OfInt, ByVal array As Integer(), ByVal offset As Integer)
+				Private Sub New(  node As Node.OfInt,   array As Integer(),   offset As Integer)
 					MyBase.New(node, array, offset)
 				End Sub
 			End Class
@@ -1929,7 +1929,7 @@ Namespace java.util.stream
 			Private NotInheritable Class OfLong
 				Inherits OfPrimitive(Of Long?, java.util.function.LongConsumer, long(), java.util.Spliterator.OfLong, Node.OfLong)
 
-				Private Sub New(ByVal node As Node.OfLong, ByVal array As Long(), ByVal offset As Integer)
+				Private Sub New(  node As Node.OfLong,   array As Long(),   offset As Integer)
 					MyBase.New(node, array, offset)
 				End Sub
 			End Class
@@ -1938,7 +1938,7 @@ Namespace java.util.stream
 			Private NotInheritable Class OfDouble
 				Inherits OfPrimitive(Of Double?, java.util.function.DoubleConsumer, double(), java.util.Spliterator.OfDouble, Node.OfDouble)
 
-				Private Sub New(ByVal node As Node.OfDouble, ByVal array As Double(), ByVal offset As Integer)
+				Private Sub New(  node As Node.OfDouble,   array As Double(),   offset As Integer)
 					MyBase.New(node, array, offset)
 				End Sub
 			End Class
@@ -1952,21 +1952,21 @@ Namespace java.util.stream
 			Protected Friend ReadOnly builderFactory As java.util.function.LongFunction(Of T_BUILDER)
 			Protected Friend ReadOnly concFactory As java.util.function.BinaryOperator(Of T_NODE)
 
-			Friend Sub New(ByVal helper As PipelineHelper(Of P_OUT), ByVal spliterator As java.util.Spliterator(Of P_IN), ByVal builderFactory As java.util.function.LongFunction(Of T_BUILDER), ByVal concFactory As java.util.function.BinaryOperator(Of T_NODE))
+			Friend Sub New(  helper As PipelineHelper(Of P_OUT),   spliterator As java.util.Spliterator(Of P_IN),   builderFactory As java.util.function.LongFunction(Of T_BUILDER),   concFactory As java.util.function.BinaryOperator(Of T_NODE))
 				MyBase.New(helper, spliterator)
 				Me.helper = helper
 				Me.builderFactory = builderFactory
 				Me.concFactory = concFactory
 			End Sub
 
-			Friend Sub New(ByVal parent As CollectorTask(Of P_IN, P_OUT, T_NODE, T_BUILDER), ByVal spliterator As java.util.Spliterator(Of P_IN))
+			Friend Sub New(  parent As CollectorTask(Of P_IN, P_OUT, T_NODE, T_BUILDER),   spliterator As java.util.Spliterator(Of P_IN))
 				MyBase.New(parent, spliterator)
 				helper = parent.helper
 				builderFactory = parent.builderFactory
 				concFactory = parent.concFactory
 			End Sub
 
-			Protected Friend Overrides Function makeChild(ByVal spliterator As java.util.Spliterator(Of P_IN)) As CollectorTask(Of P_IN, P_OUT, T_NODE, T_BUILDER)
+			Protected Friend Overrides Function makeChild(  spliterator As java.util.Spliterator(Of P_IN)) As CollectorTask(Of P_IN, P_OUT, T_NODE, T_BUILDER)
 				Return New CollectorTask(Of )(Me, spliterator)
 			End Function
 
@@ -1976,7 +1976,7 @@ Namespace java.util.stream
 				Return CType(helper.wrapAndCopyInto(builder, spliterator).build(), T_NODE)
 			End Function
 
-			Public Overrides Sub onCompletion(Of T1)(ByVal caller As java.util.concurrent.CountedCompleter(Of T1))
+			Public Overrides Sub onCompletion(Of T1)(  caller As java.util.concurrent.CountedCompleter(Of T1))
 				If Not leaf Then localResult = concFactory.apply(leftChild.localResult, rightChild.localResult)
 				MyBase.onCompletion(caller)
 			End Sub
@@ -1985,7 +1985,7 @@ Namespace java.util.stream
 			Private NotInheritable Class OfRef(Of P_IN, P_OUT)
 				Inherits CollectorTask(Of P_IN, P_OUT, Node(Of P_OUT), Node.Builder(Of P_OUT))
 
-				Friend Sub New(ByVal helper As PipelineHelper(Of P_OUT), ByVal generator As java.util.function.IntFunction(Of P_OUT()), ByVal spliterator As java.util.Spliterator(Of P_IN))
+				Friend Sub New(  helper As PipelineHelper(Of P_OUT),   generator As java.util.function.IntFunction(Of P_OUT()),   spliterator As java.util.Spliterator(Of P_IN))
 					MyBase.New(helper, spliterator, s -> builder(s, generator), ConcNode::New)
 				End Sub
 			End Class
@@ -1994,7 +1994,7 @@ Namespace java.util.stream
 			Private NotInheritable Class OfInt(Of P_IN)
 				Inherits CollectorTask(Of P_IN, Integer?, Node.OfInt, Node.Builder.OfInt)
 
-				Friend Sub New(ByVal helper As PipelineHelper(Of Integer?), ByVal spliterator As java.util.Spliterator(Of P_IN))
+				Friend Sub New(  helper As PipelineHelper(Of Integer?),   spliterator As java.util.Spliterator(Of P_IN))
 					MyBase.New(helper, spliterator, Nodes::intBuilder, ConcNode.OfInt::New)
 				End Sub
 			End Class
@@ -2003,7 +2003,7 @@ Namespace java.util.stream
 			Private NotInheritable Class OfLong(Of P_IN)
 				Inherits CollectorTask(Of P_IN, Long?, Node.OfLong, Node.Builder.OfLong)
 
-				Friend Sub New(ByVal helper As PipelineHelper(Of Long?), ByVal spliterator As java.util.Spliterator(Of P_IN))
+				Friend Sub New(  helper As PipelineHelper(Of Long?),   spliterator As java.util.Spliterator(Of P_IN))
 					MyBase.New(helper, spliterator, Nodes::longBuilder, ConcNode.OfLong::New)
 				End Sub
 			End Class
@@ -2012,7 +2012,7 @@ Namespace java.util.stream
 			Private NotInheritable Class OfDouble(Of P_IN)
 				Inherits CollectorTask(Of P_IN, Double?, Node.OfDouble, Node.Builder.OfDouble)
 
-				Friend Sub New(ByVal helper As PipelineHelper(Of Double?), ByVal spliterator As java.util.Spliterator(Of P_IN))
+				Friend Sub New(  helper As PipelineHelper(Of Double?),   spliterator As java.util.Spliterator(Of P_IN))
 					MyBase.New(helper, spliterator, Nodes::doubleBuilder, ConcNode.OfDouble::New)
 				End Sub
 			End Class

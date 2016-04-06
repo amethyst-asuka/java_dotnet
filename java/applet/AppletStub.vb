@@ -86,7 +86,7 @@ Namespace java.applet
 		''' <param name="name">   a parameter name. </param>
 		''' <returns>  the value of the named parameter,
 		''' or <tt>null</tt> if not set. </returns>
-		Function getParameter(ByVal name As String) As String
+		Function getParameter(  name As String) As String
 
 		''' <summary>
 		''' Returns the applet's context.
@@ -99,7 +99,7 @@ Namespace java.applet
 		''' </summary>
 		''' <param name="width">    the new requested width for the applet. </param>
 		''' <param name="height">   the new requested height for the applet. </param>
-		Sub appletResize(ByVal width As Integer, ByVal height As Integer)
+		Sub appletResize(  width As Integer,   height As Integer)
 	End Interface
 
 End Namespace

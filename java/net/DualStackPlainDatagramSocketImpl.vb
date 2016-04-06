@@ -60,7 +60,7 @@ Namespace java.net
 		' emulates SO_REUSEADDR when exclusiveBind is true and socket is bound
 		Private isReuseAddress As Boolean
 
-		Friend Sub New(ByVal exclBind As Boolean)
+		Friend Sub New(  exclBind As Boolean)
 			exclusiveBind = exclBind
 		End Sub
 
@@ -73,7 +73,7 @@ Namespace java.net
 		End Sub
 
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Protected Friend Overrides Sub bind0(ByVal lport As Integer, ByVal laddr As InetAddress)
+		Protected Friend Overrides Sub bind0(  lport As Integer,   laddr As InetAddress)
 			Dim nativefd As Integer = checkAndReturnNativeFD()
 
 			If laddr Is Nothing Then Throw New NullPointerException("argument address")
@@ -87,7 +87,7 @@ Namespace java.net
 		End Sub
 
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Protected Friend Overrides Function peek(ByVal address As InetAddress) As Integer
+		Protected Friend Overrides Function peek(  address As InetAddress) As Integer
 			Dim nativefd As Integer = checkAndReturnNativeFD()
 
 			If address Is Nothing Then Throw New NullPointerException("Null address in peek()")
@@ -100,7 +100,7 @@ Namespace java.net
 		End Function
 
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Protected Friend Overrides Function peekData(ByVal p As DatagramPacket) As Integer
+		Protected Friend Overrides Function peekData(  p As DatagramPacket) As Integer
 			Dim nativefd As Integer = checkAndReturnNativeFD()
 
 			If p Is Nothing Then Throw New NullPointerException("packet")
@@ -110,7 +110,7 @@ Namespace java.net
 		End Function
 
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Protected Friend Overrides Sub receive0(ByVal p As DatagramPacket)
+		Protected Friend Overrides Sub receive0(  p As DatagramPacket)
 			Dim nativefd As Integer = checkAndReturnNativeFD()
 
 			If p Is Nothing Then Throw New NullPointerException("packet")
@@ -119,7 +119,7 @@ Namespace java.net
 			socketReceiveOrPeekData(nativefd, p, timeout, connected, False) 'receive
 		End Sub
 
-		Protected Friend Overrides Sub send(ByVal p As DatagramPacket)
+		Protected Friend Overrides Sub send(  p As DatagramPacket)
 			Dim nativefd As Integer = checkAndReturnNativeFD()
 
 			If p Is Nothing Then Throw New NullPointerException("null packet")
@@ -129,7 +129,7 @@ Namespace java.net
 			socketSend(nativefd, p.data, p.offset, p.length, p.address, p.port, connected)
 		End Sub
 
-		Protected Friend Overrides Sub connect0(ByVal address As InetAddress, ByVal port As Integer)
+		Protected Friend Overrides Sub connect0(  address As InetAddress,   port As Integer)
 			Dim nativefd As Integer = checkAndReturnNativeFD()
 
 			If address Is Nothing Then Throw New NullPointerException("address")
@@ -137,7 +137,7 @@ Namespace java.net
 			socketConnect(nativefd, address, port)
 		End Sub
 
-		Protected Friend Overrides Sub disconnect0(ByVal family As Integer) 'unused
+		Protected Friend Overrides Sub disconnect0(  family As Integer) 'unused
 			If fd Is Nothing OrElse (Not fd.valid()) Then Return ' disconnect doesn't throw any exceptions
 
 			socketDisconnect(fdAccess.get(fd))
@@ -151,7 +151,7 @@ Namespace java.net
 		End Sub
 
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Protected Friend Overrides Sub socketSetOption(ByVal opt As Integer, ByVal val As Object)
+		Protected Friend Overrides Sub socketSetOption(  opt As Integer,   val As Object)
 			Dim nativefd As Integer = checkAndReturnNativeFD()
 
 			Dim optionValue As Integer = 0
@@ -176,7 +176,7 @@ Namespace java.net
 			socketSetIntOption(nativefd, opt, optionValue)
 		End Sub
 
-		Protected Friend Overrides Function socketGetOption(ByVal opt As Integer) As Object
+		Protected Friend Overrides Function socketGetOption(  opt As Integer) As Object
 			Dim nativefd As Integer = checkAndReturnNativeFD()
 
 			 ' SO_BINDADDR is not a socket option.
@@ -203,16 +203,16 @@ Namespace java.net
 	'     * TwoStacksPlainDatagramSocketImpl. This is to overcome the lack
 	'     * of behavior defined for multicasting over a dual layer socket by the RFC.
 	'     
-		Protected Friend Overrides Sub join(ByVal inetaddr As InetAddress, ByVal netIf As NetworkInterface)
+		Protected Friend Overrides Sub join(  inetaddr As InetAddress,   netIf As NetworkInterface)
 			Throw New java.io.IOException("Method not implemented!")
 		End Sub
 
-		Protected Friend Overrides Sub leave(ByVal inetaddr As InetAddress, ByVal netIf As NetworkInterface)
+		Protected Friend Overrides Sub leave(  inetaddr As InetAddress,   netIf As NetworkInterface)
 			Throw New java.io.IOException("Method not implemented!")
 		End Sub
 
 		Protected Friend Overrides Property timeToLive As Integer
-			Set(ByVal ttl As Integer)
+			Set(  ttl As Integer)
 				Throw New java.io.IOException("Method not implemented!")
 			End Set
 			Get
@@ -223,7 +223,7 @@ Namespace java.net
 
 		<Obsolete> _
 		Protected Friend Overrides Property tTL As SByte
-			Set(ByVal ttl As SByte)
+			Set(  ttl As SByte)
 				Throw New java.io.IOException("Method not implemented!")
 			End Set
 			Get
@@ -248,57 +248,57 @@ Namespace java.net
 
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Private Shared Function socketCreate(ByVal v6Only As Boolean) As Integer
+		Private Shared Function socketCreate(  v6Only As Boolean) As Integer
 		End Function
 
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Private Shared Sub socketBind(ByVal fd As Integer, ByVal localAddress As InetAddress, ByVal localport As Integer, ByVal exclBind As Boolean)
+		Private Shared Sub socketBind(  fd As Integer,   localAddress As InetAddress,   localport As Integer,   exclBind As Boolean)
 		End Sub
 
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Private Shared Sub socketConnect(ByVal fd As Integer, ByVal address As InetAddress, ByVal port As Integer)
+		Private Shared Sub socketConnect(  fd As Integer,   address As InetAddress,   port As Integer)
 		End Sub
 
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Private Shared Sub socketDisconnect(ByVal fd As Integer)
+		Private Shared Sub socketDisconnect(  fd As Integer)
 		End Sub
 
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Private Shared Sub socketClose(ByVal fd As Integer)
+		Private Shared Sub socketClose(  fd As Integer)
 		End Sub
 
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Private Shared Function socketLocalPort(ByVal fd As Integer) As Integer
+		Private Shared Function socketLocalPort(  fd As Integer) As Integer
 		End Function
 
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Private Shared Function socketLocalAddress(ByVal fd As Integer) As Object
+		Private Shared Function socketLocalAddress(  fd As Integer) As Object
 		End Function
 
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Private Shared Function socketReceiveOrPeekData(ByVal fd As Integer, ByVal packet As DatagramPacket, ByVal timeout As Integer, ByVal connected As Boolean, ByVal peek As Boolean) As Integer
+		Private Shared Function socketReceiveOrPeekData(  fd As Integer,   packet As DatagramPacket,   timeout As Integer,   connected As Boolean,   peek As Boolean) As Integer
 		End Function
 
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Private Shared Sub socketSend(ByVal fd As Integer, ByVal data As SByte(), ByVal offset As Integer, ByVal length As Integer, ByVal address As InetAddress, ByVal port As Integer, ByVal connected As Boolean)
+		Private Shared Sub socketSend(  fd As Integer,   data As SByte(),   offset As Integer,   length As Integer,   address As InetAddress,   port As Integer,   connected As Boolean)
 		End Sub
 
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Private Shared Sub socketSetIntOption(ByVal fd As Integer, ByVal cmd As Integer, ByVal optionValue As Integer)
+		Private Shared Sub socketSetIntOption(  fd As Integer,   cmd As Integer,   optionValue As Integer)
 		End Sub
 
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Private Shared Function socketGetIntOption(ByVal fd As Integer, ByVal cmd As Integer) As Integer
+		Private Shared Function socketGetIntOption(  fd As Integer,   cmd As Integer) As Integer
 		End Function
 	End Class
 

@@ -141,7 +141,7 @@ Namespace java.beans
 		'''              introspection. </exception>
 		''' <seealso cref= #flushCaches </seealso>
 		''' <seealso cref= #flushFromCaches </seealso>
-		Public Shared Function getBeanInfo(ByVal beanClass As [Class]) As BeanInfo
+		Public Shared Function getBeanInfo(  beanClass As [Class]) As BeanInfo
 			If Not sun.reflect.misc.ReflectUtil.isPackageAccessible(beanClass) Then Return (New Introspector(beanClass, Nothing, USE_ALL_BEANINFO)).beanInfo
 			Dim context As ThreadGroupContext = ThreadGroupContext.context
 			Dim beanInfo_Renamed As BeanInfo
@@ -177,7 +177,7 @@ Namespace java.beans
 		''' <returns>  A BeanInfo object describing the target bean. </returns>
 		''' <exception cref="IntrospectionException"> if an exception occurs during
 		'''              introspection. </exception>
-		Public Shared Function getBeanInfo(ByVal beanClass As [Class], ByVal flags As Integer) As BeanInfo
+		Public Shared Function getBeanInfo(  beanClass As [Class],   flags As Integer) As BeanInfo
 			Return getBeanInfo(beanClass, Nothing, flags)
 		End Function
 
@@ -195,7 +195,7 @@ Namespace java.beans
 		'''    will be ignored in the analysis. </param>
 		''' <exception cref="IntrospectionException"> if an exception occurs during
 		'''              introspection. </exception>
-		Public Shared Function getBeanInfo(ByVal beanClass As [Class], ByVal stopClass As [Class]) As BeanInfo
+		Public Shared Function getBeanInfo(  beanClass As [Class],   stopClass As [Class]) As BeanInfo
 			Return getBeanInfo(beanClass, stopClass, USE_ALL_BEANINFO)
 		End Function
 
@@ -226,7 +226,7 @@ Namespace java.beans
 		''' <exception cref="IntrospectionException"> if an exception occurs during introspection
 		''' 
 		''' @since 1.7 </exception>
-		Public Shared Function getBeanInfo(ByVal beanClass As [Class], ByVal stopClass As [Class], ByVal flags As Integer) As BeanInfo
+		Public Shared Function getBeanInfo(  beanClass As [Class],   stopClass As [Class],   flags As Integer) As BeanInfo
 			Dim bi As BeanInfo
 			If stopClass Is Nothing AndAlso flags = USE_ALL_BEANINFO Then
 				' Same parameters to take advantage of caching.
@@ -253,7 +253,7 @@ Namespace java.beans
 		''' </summary>
 		''' <param name="name"> The string to be decapitalized. </param>
 		''' <returns>  The decapitalized version of the string. </returns>
-		Public Shared Function decapitalize(ByVal name As String) As String
+		Public Shared Function decapitalize(  name As String) As String
 			If name Is Nothing OrElse name.length() = 0 Then Return name
 			If name.length() > 1 AndAlso Char.IsUpper(name.Chars(1)) AndAlso Char.IsUpper(name.Chars(0)) Then Return name
 			Dim chars As Char() = name.ToCharArray()
@@ -274,7 +274,7 @@ Namespace java.beans
 			Get
 				Return ThreadGroupContext.context.beanInfoFinder.packages
 			End Get
-			Set(ByVal path As String())
+			Set(  path As String())
 				Dim sm As SecurityManager = System.securityManager
 				If sm IsNot Nothing Then sm.checkPropertiesAccess()
 				ThreadGroupContext.context.beanInfoFinder.packages = path
@@ -312,7 +312,7 @@ Namespace java.beans
 		''' </summary>
 		''' <param name="clz">  Class object to be flushed. </param>
 		''' <exception cref="NullPointerException"> If the Class object is null. </exception>
-		Public Shared Sub flushFromCaches(ByVal clz As [Class])
+		Public Shared Sub flushFromCaches(  clz As [Class])
 			If clz Is Nothing Then Throw New NullPointerException
 			SyncLock declaredMethodCache
 				ThreadGroupContext.context.removeBeanInfo(clz)
@@ -324,7 +324,7 @@ Namespace java.beans
 		'                  Private implementation methods
 		'======================================================================
 
-		Private Sub New(ByVal beanClass As [Class], ByVal stopClass As [Class], ByVal flags As Integer)
+		Private Sub New(  beanClass As [Class],   stopClass As [Class],   flags As Integer)
 			Me.beanClass = beanClass
 
 			' Check stopClass is a superClass of startClass.
@@ -380,7 +380,7 @@ Namespace java.beans
 		''' </summary>
 		''' <param name="beanClass">  the class type of the bean </param>
 		''' <returns> Instance of an explicit BeanInfo class or null if one isn't found. </returns>
-		Private Shared Function findExplicitBeanInfo(ByVal beanClass As [Class]) As BeanInfo
+		Private Shared Function findExplicitBeanInfo(  beanClass As [Class]) As BeanInfo
 			Return ThreadGroupContext.context.beanInfoFinder.find(beanClass)
 		End Function
 
@@ -488,7 +488,7 @@ Namespace java.beans
 		''' <summary>
 		''' Adds the property descriptor to the list store.
 		''' </summary>
-		Private Sub addPropertyDescriptor(ByVal pd As PropertyDescriptor)
+		Private Sub addPropertyDescriptor(  pd As PropertyDescriptor)
 			Dim propName As String = pd.name
 			Dim list As IList(Of PropertyDescriptor) = pdStore(propName)
 			If list Is Nothing Then
@@ -522,7 +522,7 @@ Namespace java.beans
 			list.Add(pd)
 		End Sub
 
-		Private Sub addPropertyDescriptors(ByVal descriptors As PropertyDescriptor())
+		Private Sub addPropertyDescriptors(  descriptors As PropertyDescriptor())
 			If descriptors IsNot Nothing Then
 				For Each descriptor As PropertyDescriptor In descriptors
 					addPropertyDescriptor(descriptor)
@@ -530,7 +530,7 @@ Namespace java.beans
 			End If
 		End Sub
 
-		Private Function getPropertyDescriptors(ByVal info As BeanInfo) As PropertyDescriptor()
+		Private Function getPropertyDescriptors(  info As BeanInfo) As PropertyDescriptor()
 			Dim descriptors As PropertyDescriptor() = info.propertyDescriptors
 			Dim index As Integer = info.defaultPropertyIndex
 			If (0 <= index) AndAlso (index < descriptors.Length) Then Me.defaultPropertyName = descriptors(index).name
@@ -722,11 +722,11 @@ Namespace java.beans
 			Loop
 		End Sub
 
-		Private Shared Function isAssignable(ByVal current As [Class], ByVal candidate As [Class]) As Boolean
+		Private Shared Function isAssignable(  current As [Class],   candidate As [Class]) As Boolean
 			Return If((current Is Nothing) OrElse (candidate Is Nothing), current Is candidate, candidate.IsSubclassOf(current))
 		End Function
 
-		Private Function mergePropertyWithIndexedProperty(ByVal pd As PropertyDescriptor, ByVal ipd As IndexedPropertyDescriptor) As PropertyDescriptor
+		Private Function mergePropertyWithIndexedProperty(  pd As PropertyDescriptor,   ipd As IndexedPropertyDescriptor) As PropertyDescriptor
 			Dim type As  [Class] = pd.propertyType
 			If type.array AndAlso (type.componentType Is ipd.indexedPropertyType) Then Return If(ipd.class0.IsSubclassOf(pd.class0), New IndexedPropertyDescriptor(pd, ipd), New IndexedPropertyDescriptor(ipd, pd))
 			Return pd
@@ -738,7 +738,7 @@ Namespace java.beans
 		''' 
 		''' The most specific property descriptor will take precedence.
 		''' </summary>
-		Private Function mergePropertyDescriptor(ByVal ipd As IndexedPropertyDescriptor, ByVal pd As PropertyDescriptor) As PropertyDescriptor
+		Private Function mergePropertyDescriptor(  ipd As IndexedPropertyDescriptor,   pd As PropertyDescriptor) As PropertyDescriptor
 			Dim result As PropertyDescriptor = Nothing
 
 			Dim propType As  [Class] = pd.propertyType
@@ -794,7 +794,7 @@ Namespace java.beans
 		End Function
 
 		' Handle regular pd merge
-		Private Function mergePropertyDescriptor(ByVal pd1 As PropertyDescriptor, ByVal pd2 As PropertyDescriptor) As PropertyDescriptor
+		Private Function mergePropertyDescriptor(  pd1 As PropertyDescriptor,   pd2 As PropertyDescriptor) As PropertyDescriptor
 			If pd2.class0.IsSubclassOf(pd1.class0) Then
 				Return New PropertyDescriptor(pd1, pd2)
 			Else
@@ -803,7 +803,7 @@ Namespace java.beans
 		End Function
 
 		' Handle regular ipd merge
-		Private Function mergePropertyDescriptor(ByVal ipd1 As IndexedPropertyDescriptor, ByVal ipd2 As IndexedPropertyDescriptor) As IndexedPropertyDescriptor
+		Private Function mergePropertyDescriptor(  ipd1 As IndexedPropertyDescriptor,   ipd2 As IndexedPropertyDescriptor) As IndexedPropertyDescriptor
 			If ipd2.class0.IsSubclassOf(ipd1.class0) Then
 				Return New IndexedPropertyDescriptor(ipd1, ipd2)
 			Else
@@ -977,7 +977,7 @@ Namespace java.beans
 			End Get
 		End Property
 
-		Private Sub addEvent(ByVal esd As EventSetDescriptor)
+		Private Sub addEvent(  esd As EventSetDescriptor)
 			Dim key As String = esd.name
 			If esd.name.Equals("propertyChange") Then propertyChangeSource = True
 			Dim old As EventSetDescriptor = events(key)
@@ -1047,7 +1047,7 @@ Namespace java.beans
 			End Get
 		End Property
 
-		Private Sub addMethod(ByVal md As MethodDescriptor)
+		Private Sub addMethod(  md As MethodDescriptor)
 			' We have to be careful here to distinguish method by both name
 			' and argument lists.
 			' This method gets called a *lot, so we try to be efficient.
@@ -1098,7 +1098,7 @@ Namespace java.beans
 		''' <summary>
 		''' Creates a key for a method in a method cache.
 		''' </summary>
-		Private Shared Function makeQualifiedMethodName(ByVal name As String, ByVal params As String()) As String
+		Private Shared Function makeQualifiedMethodName(  name As String,   params As String()) As String
 			Dim sb As New StringBuffer(name)
 			sb.append("="c)
 			For i As Integer = 0 To params.Length - 1
@@ -1132,7 +1132,7 @@ Namespace java.beans
 			End Get
 		End Property
 
-		Private Shared Function findCustomizerClass(ByVal type As [Class]) As  [Class]
+		Private Shared Function findCustomizerClass(  type As [Class]) As  [Class]
 			Dim name As String = type.name & "Customizer"
 			Try
 				type = com.sun.beans.finder.ClassFinder.findClass(name, type.classLoader)
@@ -1145,7 +1145,7 @@ Namespace java.beans
 			Return Nothing
 		End Function
 
-		Private Function isEventHandler(ByVal m As Method) As Boolean
+		Private Function isEventHandler(  m As Method) As Boolean
 			' We assume that a method is an event handler if it has a single
 			' argument, whose type inherit from java.util.Event.
 			Dim argTypes As Type() = m.genericParameterTypes
@@ -1156,7 +1156,7 @@ Namespace java.beans
 	'    
 	'     * Internal method to return *public* methods within a class.
 	'     
-		Private Shared Function getPublicDeclaredMethods(ByVal clz As [Class]) As Method()
+		Private Shared Function getPublicDeclaredMethods(  clz As [Class]) As Method()
 			' Looking up Class.getDeclaredMethods is relatively expensive,
 			' so we cache the results.
 			If Not sun.reflect.misc.ReflectUtil.isPackageAccessible(clz) Then Return New Method(){}
@@ -1193,7 +1193,7 @@ Namespace java.beans
 		''' Internal support for finding a target methodName with a given
 		''' parameter list on a given class.
 		''' </summary>
-		Private Shared Function internalFindMethod(ByVal start As [Class], ByVal methodName As String, ByVal argCount As Integer, ByVal args As  [Class]()) As Method
+		Private Shared Function internalFindMethod(  start As [Class],   methodName As String,   argCount As Integer,   args As  [Class]()) As Method
 			' For overriden methods we need to find the most derived version.
 			' So we start with the given class and walk up the superclass chain.
 
@@ -1247,7 +1247,7 @@ Namespace java.beans
 		''' <summary>
 		''' Find a target methodName on a given class.
 		''' </summary>
-		Friend Shared Function findMethod(ByVal cls As [Class], ByVal methodName As String, ByVal argCount As Integer) As Method
+		Friend Shared Function findMethod(  cls As [Class],   methodName As String,   argCount As Integer) As Method
 			Return findMethod(cls, methodName, argCount, Nothing)
 		End Function
 
@@ -1262,7 +1262,7 @@ Namespace java.beans
 		''' <param name="argCount"> Number of arguments for the desired method. </param>
 		''' <param name="args"> Array of argument types for the method. </param>
 		''' <returns> the method or null if not found </returns>
-		Friend Shared Function findMethod(ByVal cls As [Class], ByVal methodName As String, ByVal argCount As Integer, ByVal args As  [Class]()) As Method
+		Friend Shared Function findMethod(  cls As [Class],   methodName As String,   argCount As Integer,   args As  [Class]()) As Method
 			If methodName Is Nothing Then Return Nothing
 			Return internalFindMethod(cls, methodName, argCount, args)
 		End Function
@@ -1273,7 +1273,7 @@ Namespace java.beans
 		''' or "implements" b.
 		''' Note tht either or both "Class" objects may represent interfaces.
 		''' </summary>
-		Friend Shared Function isSubclass(ByVal a As [Class], ByVal b As [Class]) As Boolean
+		Friend Shared Function isSubclass(  a As [Class],   b As [Class]) As Boolean
 			' We rely on the fact that for any given java class or
 			' primtitive type there is a unqiue Class object, so
 			' we can use object equivalence in the comparisons.
@@ -1296,7 +1296,7 @@ Namespace java.beans
 		''' <summary>
 		''' Return true iff the given method throws the given exception.
 		''' </summary>
-		Private Function throwsException(ByVal method As Method, ByVal exception_Renamed As [Class]) As Boolean
+		Private Function throwsException(  method As Method,   exception_Renamed As [Class]) As Boolean
 			Dim exs As  [Class]() = method.exceptionTypes
 			For i As Integer = 0 To exs.Length - 1
 				If exs(i) Is exception_Renamed Then Return True
@@ -1309,7 +1309,7 @@ Namespace java.beans
 		''' First try the classloader of "sibling", then try the system
 		''' classloader then the class loader of the current Thread.
 		''' </summary>
-		Friend Shared Function instantiate(ByVal sibling As [Class], ByVal className As String) As Object
+		Friend Shared Function instantiate(  sibling As [Class],   className As String) As Object
 			' First check with sibling's classloader (if any).
 			Dim cl As  ClassLoader = sibling.classLoader
 			Dim cls As  [Class] = com.sun.beans.finder.ClassFinder.findClass(className, cl)
@@ -1338,7 +1338,7 @@ Namespace java.beans
 		Private methods As MethodDescriptor()
 		Private targetBeanInfoRef As Reference(Of BeanInfo)
 
-		Public Sub New(ByVal beanDescriptor As BeanDescriptor, ByVal events As EventSetDescriptor(), ByVal defaultEvent As Integer, ByVal properties As PropertyDescriptor(), ByVal defaultProperty As Integer, ByVal methods As MethodDescriptor(), ByVal targetBeanInfo As BeanInfo)
+		Public Sub New(  beanDescriptor As BeanDescriptor,   events As EventSetDescriptor(),   defaultEvent As Integer,   properties As PropertyDescriptor(),   defaultProperty As Integer,   methods As MethodDescriptor(),   targetBeanInfo As BeanInfo)
 			Me.beanDescriptor = beanDescriptor
 			Me.events = events
 			Me.defaultEvent = defaultEvent
@@ -1352,7 +1352,7 @@ Namespace java.beans
 		''' Package-private dup constructor
 		''' This must isolate the new object from any changes to the old object.
 		''' </summary>
-		Friend Sub New(ByVal old As GenericBeanInfo)
+		Friend Sub New(  old As GenericBeanInfo)
 
 			beanDescriptor = New BeanDescriptor(old.beanDescriptor)
 			If old.events IsNot Nothing Then
@@ -1422,7 +1422,7 @@ Namespace java.beans
 			End Get
 		End Property
 
-		Public Overrides Function getIcon(ByVal iconKind As Integer) As java.awt.Image
+		Public Overrides Function getIcon(  iconKind As Integer) As java.awt.Image
 			Dim targetBeanInfo_Renamed As BeanInfo = targetBeanInfo
 			If targetBeanInfo_Renamed IsNot Nothing Then Return targetBeanInfo_Renamed.getIcon(iconKind)
 			Return MyBase.getIcon(iconKind)

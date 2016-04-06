@@ -59,7 +59,7 @@ Namespace java.awt.image
 		'''        before indexing into the arrays </param>
 		''' <param name="data"> an array of short arrays representing a lookup
 		'''        table for each band </param>
-		Public Sub New(ByVal offset As Integer, ByVal data As Short()())
+		Public Sub New(  offset As Integer,   data As Short()())
 			MyBase.New(offset,data.Length)
 			numComponents = data.Length
 			numEntries = data(0).Length
@@ -79,7 +79,7 @@ Namespace java.awt.image
 		''' <param name="offset"> the value subtracted from the input values
 		'''        before indexing into the arrays </param>
 		''' <param name="data"> an array of shorts </param>
-		Public Sub New(ByVal offset As Integer, ByVal data As Short())
+		Public Sub New(  offset As Integer,   data As Short())
 			MyBase.New(offset,data.Length)
 			numComponents = 1
 			numEntries = data.Length
@@ -116,7 +116,7 @@ Namespace java.awt.image
 		'''            {@code (src[i]&0xffff)-offset} is either less than
 		'''            zero or greater than or equal to the length of the
 		'''            lookup table for any band. </exception>
-		Public Overrides Function lookupPixel(ByVal src As Integer(), ByVal dst As Integer()) As Integer()
+		Public Overrides Function lookupPixel(  src As Integer(),   dst As Integer()) As Integer()
 			If dst Is Nothing Then dst = New Integer(src.Length - 1){}
 
 			If numComponents = 1 Then
@@ -154,7 +154,7 @@ Namespace java.awt.image
 		'''            {@code (src[i]&0xffff)-offset} is either less than
 		'''            zero or greater than or equal to the length of the
 		'''            lookup table for any band. </exception>
-		Public Overridable Function lookupPixel(ByVal src As Short(), ByVal dst As Short()) As Short()
+		Public Overridable Function lookupPixel(  src As Short(),   dst As Short()) As Short()
 			If dst Is Nothing Then dst = New Short(src.Length - 1){}
 
 			If numComponents = 1 Then

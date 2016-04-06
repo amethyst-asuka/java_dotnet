@@ -108,7 +108,7 @@ Namespace java.util
 		'''         with the keys currently in the map </exception>
 		''' <exception cref="NullPointerException"> if the specified key is null
 		'''         and this map does not permit null keys </exception>
-		Function lowerEntry(ByVal key As K) As KeyValuePair(Of K, V)
+		Function lowerEntry(  key As K) As KeyValuePair(Of K, V)
 
 		''' <summary>
 		''' Returns the greatest key strictly less than the given key, or
@@ -121,7 +121,7 @@ Namespace java.util
 		'''         with the keys currently in the map </exception>
 		''' <exception cref="NullPointerException"> if the specified key is null
 		'''         and this map does not permit null keys </exception>
-		Function lowerKey(ByVal key As K) As K
+		Function lowerKey(  key As K) As K
 
 		''' <summary>
 		''' Returns a key-value mapping associated with the greatest key
@@ -135,7 +135,7 @@ Namespace java.util
 		'''         with the keys currently in the map </exception>
 		''' <exception cref="NullPointerException"> if the specified key is null
 		'''         and this map does not permit null keys </exception>
-		Function floorEntry(ByVal key As K) As KeyValuePair(Of K, V)
+		Function floorEntry(  key As K) As KeyValuePair(Of K, V)
 
 		''' <summary>
 		''' Returns the greatest key less than or equal to the given key,
@@ -148,7 +148,7 @@ Namespace java.util
 		'''         with the keys currently in the map </exception>
 		''' <exception cref="NullPointerException"> if the specified key is null
 		'''         and this map does not permit null keys </exception>
-		Function floorKey(ByVal key As K) As K
+		Function floorKey(  key As K) As K
 
 		''' <summary>
 		''' Returns a key-value mapping associated with the least key
@@ -162,7 +162,7 @@ Namespace java.util
 		'''         with the keys currently in the map </exception>
 		''' <exception cref="NullPointerException"> if the specified key is null
 		'''         and this map does not permit null keys </exception>
-		Function ceilingEntry(ByVal key As K) As KeyValuePair(Of K, V)
+		Function ceilingEntry(  key As K) As KeyValuePair(Of K, V)
 
 		''' <summary>
 		''' Returns the least key greater than or equal to the given key,
@@ -175,7 +175,7 @@ Namespace java.util
 		'''         with the keys currently in the map </exception>
 		''' <exception cref="NullPointerException"> if the specified key is null
 		'''         and this map does not permit null keys </exception>
-		Function ceilingKey(ByVal key As K) As K
+		Function ceilingKey(  key As K) As K
 
 		''' <summary>
 		''' Returns a key-value mapping associated with the least key
@@ -189,7 +189,7 @@ Namespace java.util
 		'''         with the keys currently in the map </exception>
 		''' <exception cref="NullPointerException"> if the specified key is null
 		'''         and this map does not permit null keys </exception>
-		Function higherEntry(ByVal key As K) As KeyValuePair(Of K, V)
+		Function higherEntry(  key As K) As KeyValuePair(Of K, V)
 
 		''' <summary>
 		''' Returns the least key strictly greater than the given key, or
@@ -202,7 +202,7 @@ Namespace java.util
 		'''         with the keys currently in the map </exception>
 		''' <exception cref="NullPointerException"> if the specified key is null
 		'''         and this map does not permit null keys </exception>
-		Function higherKey(ByVal key As K) As K
+		Function higherKey(  key As K) As K
 
 		''' <summary>
 		''' Returns a key-value mapping associated with the least
@@ -315,7 +315,7 @@ Namespace java.util
 		'''         {@code toKey}; or if this map itself has a restricted
 		'''         range, and {@code fromKey} or {@code toKey} lies
 		'''         outside the bounds of the range </exception>
-		Function subMap(ByVal fromKey As K, ByVal fromInclusive As Boolean, ByVal toKey As K, ByVal toInclusive As Boolean) As NavigableMap(Of K, V)
+		Function subMap(  fromKey As K,   fromInclusive As Boolean,   toKey As K,   toInclusive As Boolean) As NavigableMap(Of K, V)
 
 		''' <summary>
 		''' Returns a view of the portion of this map whose keys are less than (or
@@ -343,7 +343,7 @@ Namespace java.util
 		''' <exception cref="IllegalArgumentException"> if this map itself has a
 		'''         restricted range, and {@code toKey} lies outside the
 		'''         bounds of the range </exception>
-		Function headMap(ByVal toKey As K, ByVal inclusive As Boolean) As NavigableMap(Of K, V)
+		Function headMap(  toKey As K,   inclusive As Boolean) As NavigableMap(Of K, V)
 
 		''' <summary>
 		''' Returns a view of the portion of this map whose keys are greater than (or
@@ -371,7 +371,7 @@ Namespace java.util
 		''' <exception cref="IllegalArgumentException"> if this map itself has a
 		'''         restricted range, and {@code fromKey} lies outside the
 		'''         bounds of the range </exception>
-		Function tailMap(ByVal fromKey As K, ByVal inclusive As Boolean) As NavigableMap(Of K, V)
+		Function tailMap(  fromKey As K,   inclusive As Boolean) As NavigableMap(Of K, V)
 
 		''' <summary>
 		''' {@inheritDoc}
@@ -381,7 +381,7 @@ Namespace java.util
 		''' <exception cref="ClassCastException">       {@inheritDoc} </exception>
 		''' <exception cref="NullPointerException">     {@inheritDoc} </exception>
 		''' <exception cref="IllegalArgumentException"> {@inheritDoc} </exception>
-		Function subMap(ByVal fromKey As K, ByVal toKey As K) As SortedMap(Of K, V)
+		Function subMap(  fromKey As K,   toKey As K) As SortedMap(Of K, V)
 
 		''' <summary>
 		''' {@inheritDoc}
@@ -391,7 +391,7 @@ Namespace java.util
 		''' <exception cref="ClassCastException">       {@inheritDoc} </exception>
 		''' <exception cref="NullPointerException">     {@inheritDoc} </exception>
 		''' <exception cref="IllegalArgumentException"> {@inheritDoc} </exception>
-		Function headMap(ByVal toKey As K) As SortedMap(Of K, V)
+		Function headMap(  toKey As K) As SortedMap(Of K, V)
 
 		''' <summary>
 		''' {@inheritDoc}
@@ -401,7 +401,7 @@ Namespace java.util
 		''' <exception cref="ClassCastException">       {@inheritDoc} </exception>
 		''' <exception cref="NullPointerException">     {@inheritDoc} </exception>
 		''' <exception cref="IllegalArgumentException"> {@inheritDoc} </exception>
-		Function tailMap(ByVal fromKey As K) As SortedMap(Of K, V)
+		Function tailMap(  fromKey As K) As SortedMap(Of K, V)
 	End Interface
 
 End Namespace

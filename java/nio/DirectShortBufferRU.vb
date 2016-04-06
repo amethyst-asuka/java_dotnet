@@ -177,7 +177,7 @@ Namespace java.nio
 
 		' For duplicates and slices
 		'
-		Friend Sub New(ByVal db As sun.nio.ch.DirectBuffer, ByVal mark As Integer, ByVal pos As Integer, ByVal lim As Integer, ByVal cap As Integer, ByVal [off] As Integer) ' package-private
+		Friend Sub New(  db As sun.nio.ch.DirectBuffer,   mark As Integer,   pos As Integer,   lim As Integer,   cap As Integer,   [off] As Integer) ' package-private
 
 
 
@@ -274,7 +274,7 @@ Namespace java.nio
 
 
 
-		Public Overrides Function put(ByVal x As Short) As ShortBuffer
+		Public Overrides Function put(  x As Short) As ShortBuffer
 
 
 
@@ -283,7 +283,7 @@ Namespace java.nio
 
 		End Function
 
-		Public Overrides Function put(ByVal i As Integer, ByVal x As Short) As ShortBuffer
+		Public Overrides Function put(  i As Integer,   x As Short) As ShortBuffer
 
 
 
@@ -292,7 +292,7 @@ Namespace java.nio
 
 		End Function
 
-		Public Overrides Function put(ByVal src As ShortBuffer) As ShortBuffer
+		Public Overrides Function put(  src As ShortBuffer) As ShortBuffer
 
 
 
@@ -333,7 +333,7 @@ Namespace java.nio
 
 		End Function
 
-		Public Overrides Function put(ByVal src As Short(), ByVal offset As Integer, ByVal length As Integer) As ShortBuffer
+		Public Overrides Function put(  src As Short(),   offset As Integer,   length As Integer) As ShortBuffer
 
 
 

@@ -56,12 +56,12 @@ Namespace java.awt.event
 		''' <summary>
 		''' Invoked when a component has been added to the container.
 		''' </summary>
-		Sub componentAdded(ByVal e As ContainerEvent)
+		Sub componentAdded(  e As ContainerEvent)
 
 		''' <summary>
 		''' Invoked when a component has been removed from the container.
 		''' </summary>
-		Sub componentRemoved(ByVal e As ContainerEvent)
+		Sub componentRemoved(  e As ContainerEvent)
 
 	End Interface
 

@@ -71,14 +71,14 @@ Namespace java.nio.channels
 
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 			Public MustOverride Function supportedOptions() As java.util.Set(Of java.net.SocketOption(Of ?)) Implements NetworkChannel.supportedOptions
-			Public MustOverride Function getOption(ByVal name As java.net.SocketOption(Of T)) As T Implements NetworkChannel.getOption
+			Public MustOverride Function getOption(  name As java.net.SocketOption(Of T)) As T Implements NetworkChannel.getOption
 
 		''' <summary>
 		''' Initializes a new instance of this class.
 		''' </summary>
 		''' <param name="provider">
 		'''         The provider that created this channel </param>
-		Protected Friend Sub New(ByVal provider As java.nio.channels.spi.SelectorProvider)
+		Protected Friend Sub New(  provider As java.nio.channels.spi.SelectorProvider)
 			MyBase.New(provider)
 		End Sub
 
@@ -144,7 +144,7 @@ Namespace java.nio.channels
 		'''          operation
 		''' 
 		''' @since 1.7 </exception>
-		Public Function bind(ByVal local As java.net.SocketAddress) As ServerSocketChannel
+		Public Function bind(  local As java.net.SocketAddress) As ServerSocketChannel
 			Return bind(local, 0)
 		End Function
 
@@ -185,7 +185,7 @@ Namespace java.nio.channels
 		'''          operation
 		''' 
 		''' @since 1.7 </exception>
-		Public MustOverride Function bind(ByVal local As java.net.SocketAddress, ByVal backlog As Integer) As ServerSocketChannel
+		Public MustOverride Function bind(  local As java.net.SocketAddress,   backlog As Integer) As ServerSocketChannel
 
 		''' <exception cref="UnsupportedOperationException">           {@inheritDoc} </exception>
 		''' <exception cref="IllegalArgumentException">                {@inheritDoc} </exception>
@@ -193,7 +193,7 @@ Namespace java.nio.channels
 		''' <exception cref="IOException">                             {@inheritDoc}
 		''' 
 		''' @since 1.7 </exception>
-		Public MustOverride Function setOption(Of T)(ByVal name As java.net.SocketOption(Of T), ByVal value As T) As ServerSocketChannel
+		Public MustOverride Function setOption(Of T)(  name As java.net.SocketOption(Of T),   value As T) As ServerSocketChannel
 
 		''' <summary>
 		''' Retrieves a server socket associated with this channel.

@@ -42,7 +42,7 @@ Namespace java.nio.file
 		''' <param name="file">
 		'''          a string identifying the file causing the cycle or {@code null} if
 		'''          not known </param>
-		Public Sub New(ByVal file As String)
+		Public Sub New(  file As String)
 			MyBase.New(file)
 		End Sub
 	End Class

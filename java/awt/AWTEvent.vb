@@ -325,7 +325,7 @@ Namespace java.awt
         ''' <summary>
         ''' Constructs an AWTEvent object from the parameters of a 1.0-style event. </summary>
         ''' <param name="event"> the old-style event </param>
-        Public Sub New(ByVal [event] As [event])
+        Public Sub New(  [event] As [event])
             Me.New(event_Renamed.target, event_Renamed.id)
         End Sub
 
@@ -334,7 +334,7 @@ Namespace java.awt
         ''' </summary>
         ''' <param name="source"> the object where the event originated </param>
         ''' <param name="id"> the event type </param>
-        Public Sub New(ByVal source As Object, ByVal id As Integer)
+        Public Sub New(  source As Object,   id As Integer)
             MyBase.New(source)
             Me.id = id
             Select Case id
@@ -356,7 +356,7 @@ Namespace java.awt
         ''' <param name="newSource"> the new Object to which the event should be dispatched
         ''' @since 1.4 </param>
         Public Overridable Property source As Object
-            Set(ByVal newSource As Object)
+            Set(  newSource As Object)
                 If source Is newSource Then Return
 
                 Dim comp As Component = Nothing
@@ -379,7 +379,7 @@ Namespace java.awt
 
         'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
         <DllImport("unknown")>
-        Private Sub nativeSetSource(ByVal peer As java.awt.peer.ComponentPeer)
+        Private Sub nativeSetSource(  peer As java.awt.peer.ComponentPeer)
         End Sub
 
         ''' <summary>
@@ -544,7 +544,7 @@ Namespace java.awt
         ''' freed when the that is finalized. Upon completion,
         ''' this event is not changed.
         ''' </summary>
-        Friend Overridable Sub copyPrivateDataInto(ByVal that As AWTEvent)
+        Friend Overridable Sub copyPrivateDataInto(  that As AWTEvent)
             that.bdata = Me.bdata
             ' Copy canAccessSystemClipboard value from this into that.
             If TypeOf Me Is InputEvent AndAlso TypeOf that Is InputEvent Then

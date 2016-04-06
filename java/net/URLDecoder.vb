@@ -92,7 +92,7 @@ Namespace java.net
 		'''          to specify the encoding. 
 		''' <returns> the newly decoded {@code String} </returns>
 		<Obsolete("The resulting string may vary depending on the platform's")> _
-		Public Shared Function decode(ByVal s As String) As String
+		Public Shared Function decode(  s As String) As String
 
 			Dim str As String = Nothing
 
@@ -128,7 +128,7 @@ Namespace java.net
 		'''             named character encoding is not supported </exception>
 		''' <seealso cref= URLEncoder#encode(java.lang.String, java.lang.String)
 		''' @since 1.4 </seealso>
-		Public Shared Function decode(ByVal s As String, ByVal enc As String) As String
+		Public Shared Function decode(  s As String,   enc As String) As String
 
 			Dim needToChange As Boolean = False
 			Dim numChars As Integer = s.length()

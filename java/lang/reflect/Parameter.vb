@@ -58,7 +58,7 @@ Namespace java.lang.reflect
 		''' <param name="modifiers"> The modifier flags for the parameter. </param>
 		''' <param name="executable"> The executable which defines this parameter. </param>
 		''' <param name="index"> The index of the parameter. </param>
-		Friend Sub New(ByVal name As String, ByVal modifiers As Integer, ByVal executable As Executable, ByVal index As Integer)
+		Friend Sub New(  name As String,   modifiers As Integer,   executable As Executable,   index As Integer)
 			Me.name = name
 			Me.modifiers = modifiers
 			Me.executable = executable
@@ -70,7 +70,7 @@ Namespace java.lang.reflect
 		''' </summary>
 		''' <param name="obj"> The object to compare. </param>
 		''' <returns> Whether or not this is equal to the argument. </returns>
-		Public Overrides Function Equals(ByVal obj As Object) As Boolean
+		Public Overrides Function Equals(  obj As Object) As Boolean
 			If TypeOf obj Is Parameter Then
 				Dim other As Parameter = CType(obj, Parameter)
 				Return (other.executable.Equals(executable) AndAlso other.index = index)
@@ -289,7 +289,7 @@ Namespace java.lang.reflect
 		''' <summary>
 		''' {@inheritDoc} </summary>
 		''' <exception cref="NullPointerException"> {@inheritDoc} </exception>
-		Public Function getAnnotation(Of T As Annotation)(ByVal annotationClass As [Class]) As T Implements AnnotatedElement.getAnnotation
+		Public Function getAnnotation(Of T As Annotation)(  annotationClass As [Class]) As T Implements AnnotatedElement.getAnnotation
 			java.util.Objects.requireNonNull(annotationClass)
 			Return annotationClass.cast(declaredAnnotations().get(annotationClass))
 		End Function
@@ -297,7 +297,7 @@ Namespace java.lang.reflect
 		''' <summary>
 		''' {@inheritDoc} </summary>
 		''' <exception cref="NullPointerException"> {@inheritDoc} </exception>
-		Public Overrides Function getAnnotationsByType(Of T As Annotation)(ByVal annotationClass As [Class]) As T() Implements AnnotatedElement.getAnnotationsByType
+		Public Overrides Function getAnnotationsByType(Of T As Annotation)(  annotationClass As [Class]) As T() Implements AnnotatedElement.getAnnotationsByType
 			java.util.Objects.requireNonNull(annotationClass)
 
 			Return sun.reflect.annotation.AnnotationSupport.getDirectlyAndIndirectlyPresent(declaredAnnotations(), annotationClass)
@@ -313,7 +313,7 @@ Namespace java.lang.reflect
 		End Property
 
 		''' <exception cref="NullPointerException"> {@inheritDoc} </exception>
-		Public Function getDeclaredAnnotation(Of T As Annotation)(ByVal annotationClass As [Class]) As T Implements AnnotatedElement.getDeclaredAnnotation
+		Public Function getDeclaredAnnotation(Of T As Annotation)(  annotationClass As [Class]) As T Implements AnnotatedElement.getDeclaredAnnotation
 			' Only annotations on classes are inherited, for all other
 			' objects getDeclaredAnnotation is the same as
 			' getAnnotation.
@@ -321,7 +321,7 @@ Namespace java.lang.reflect
 		End Function
 
 		''' <exception cref="NullPointerException"> {@inheritDoc} </exception>
-		Public Overrides Function getDeclaredAnnotationsByType(Of T As Annotation)(ByVal annotationClass As [Class]) As T() Implements AnnotatedElement.getDeclaredAnnotationsByType
+		Public Overrides Function getDeclaredAnnotationsByType(Of T As Annotation)(  annotationClass As [Class]) As T() Implements AnnotatedElement.getDeclaredAnnotationsByType
 			' Only annotations on classes are inherited, for all other
 			' objects getDeclaredAnnotations is the same as
 			' getAnnotations.

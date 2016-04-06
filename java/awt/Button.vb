@@ -144,7 +144,7 @@ Namespace java.awt
 		''' <exception cref="HeadlessException"> if GraphicsEnvironment.isHeadless()
 		''' returns true </exception>
 		''' <seealso cref= java.awt.GraphicsEnvironment#isHeadless </seealso>
-		Public Sub New(ByVal label_Renamed As String)
+		Public Sub New(  label_Renamed As String)
 			GraphicsEnvironment.checkHeadless()
 			Me.label = label_Renamed
 		End Sub
@@ -185,7 +185,7 @@ Namespace java.awt
 			Get
 				Return label
 			End Get
-			Set(ByVal label_Renamed As String)
+			Set(  label_Renamed As String)
 				Dim testvalid As Boolean = False
     
 				SyncLock Me
@@ -215,7 +215,7 @@ Namespace java.awt
 		''' <seealso cref=       java.awt.event.ActionEvent
 		''' @since     JDK1.1 </seealso>
 		Public Overridable Property actionCommand As String
-			Set(ByVal command As String)
+			Set(  command As String)
 				actionCommand = command
 			End Set
 			Get
@@ -238,7 +238,7 @@ Namespace java.awt
 		''' <seealso cref=           java.awt.event.ActionListener
 		''' @since         JDK1.1 </seealso>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Sub addActionListener(ByVal l As ActionListener)
+		Public Overridable Sub addActionListener(  l As ActionListener)
 			If l Is Nothing Then Return
 			actionListener = AWTEventMulticaster.add(actionListener, l)
 			newEventsOnly = True
@@ -258,7 +258,7 @@ Namespace java.awt
 		''' <seealso cref=             java.awt.event.ActionListener
 		''' @since           JDK1.1 </seealso>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Sub removeActionListener(ByVal l As ActionListener)
+		Public Overridable Sub removeActionListener(  l As ActionListener)
 			If l Is Nothing Then Return
 			actionListener = AWTEventMulticaster.remove(actionListener, l)
 		End Sub
@@ -314,7 +314,7 @@ Namespace java.awt
 		''' </exception>
 		''' <seealso cref= #getActionListeners
 		''' @since 1.3 </seealso>
-		Public Overrides Function getListeners(Of T As java.util.EventListener)(ByVal listenerType As [Class]) As T()
+		Public Overrides Function getListeners(Of T As java.util.EventListener)(  listenerType As [Class]) As T()
 			Dim l As java.util.EventListener = Nothing
 			If listenerType Is GetType(ActionListener) Then
 				l = actionListener
@@ -325,7 +325,7 @@ Namespace java.awt
 		End Function
 
 		' REMIND: remove when filtering is done at lower level
-		Friend Overrides Function eventEnabled(ByVal e As AWTEvent) As Boolean
+		Friend Overrides Function eventEnabled(  e As AWTEvent) As Boolean
 			If e.id = ActionEvent.ACTION_PERFORMED Then
 				If (eventMask And AWTEvent.ACTION_EVENT_MASK) <> 0 OrElse actionListener IsNot Nothing Then Return True
 				Return False
@@ -346,7 +346,7 @@ Namespace java.awt
 		''' <seealso cref=          java.awt.event.ActionEvent </seealso>
 		''' <seealso cref=          java.awt.Button#processActionEvent
 		''' @since        JDK1.1 </seealso>
-		Protected Friend Overrides Sub processEvent(ByVal e As AWTEvent)
+		Protected Friend Overrides Sub processEvent(  e As AWTEvent)
 			If TypeOf e Is ActionEvent Then
 				processActionEvent(CType(e, ActionEvent))
 				Return
@@ -376,7 +376,7 @@ Namespace java.awt
 		''' <seealso cref=         java.awt.Button#addActionListener </seealso>
 		''' <seealso cref=         java.awt.Component#enableEvents
 		''' @since       JDK1.1 </seealso>
-		Protected Friend Overridable Sub processActionEvent(ByVal e As ActionEvent)
+		Protected Friend Overridable Sub processActionEvent(  e As ActionEvent)
 			Dim listener As ActionListener = actionListener
 			If listener IsNot Nothing Then listener.actionPerformed(e)
 		End Sub
@@ -421,7 +421,7 @@ Namespace java.awt
 		''' <seealso cref= AWTEventMulticaster#save(ObjectOutputStream, String, EventListener) </seealso>
 		''' <seealso cref= java.awt.Component#actionListenerK </seealso>
 		''' <seealso cref= #readObject(ObjectInputStream) </seealso>
-		Private Sub writeObject(ByVal s As java.io.ObjectOutputStream)
+		Private Sub writeObject(  s As java.io.ObjectOutputStream)
 		  s.defaultWriteObject()
 
 		  AWTEventMulticaster.save(s, actionListenerK, actionListener)
@@ -443,7 +443,7 @@ Namespace java.awt
 		''' <seealso cref= #addActionListener(ActionListener) </seealso>
 		''' <seealso cref= java.awt.GraphicsEnvironment#isHeadless </seealso>
 		''' <seealso cref= #writeObject(ObjectOutputStream) </seealso>
-		Private Sub readObject(ByVal s As java.io.ObjectInputStream)
+		Private Sub readObject(  s As java.io.ObjectInputStream)
 		  GraphicsEnvironment.checkHeadless()
 		  s.defaultReadObject()
 
@@ -500,7 +500,7 @@ Namespace java.awt
 
 			Private ReadOnly outerInstance As Button
 
-			Public Sub New(ByVal outerInstance As Button)
+			Public Sub New(  outerInstance As Button)
 				Me.outerInstance = outerInstance
 			End Sub
 
@@ -570,7 +570,7 @@ Namespace java.awt
 			''' Return a description of the specified action of the object.
 			''' </summary>
 			''' <param name="i"> zero-based index of the actions </param>
-			Public Overridable Function getAccessibleActionDescription(ByVal i As Integer) As String
+			Public Overridable Function getAccessibleActionDescription(  i As Integer) As String
 				If i = 0 Then
 					' [[[PENDING:  WDW -- need to provide a localized string]]]
 					Return "click"
@@ -584,7 +584,7 @@ Namespace java.awt
 			''' </summary>
 			''' <param name="i"> zero-based index of actions </param>
 			''' <returns> true if the the action was performed; else false. </returns>
-			Public Overridable Function doAccessibleAction(ByVal i As Integer) As Boolean
+			Public Overridable Function doAccessibleAction(  i As Integer) As Boolean
 				If i = 0 Then
 					' Simulate a button click
 					Toolkit.eventQueue.postEvent(New ActionEvent(Button.this, ActionEvent.ACTION_PERFORMED, outerInstance.actionCommand))
@@ -610,7 +610,7 @@ Namespace java.awt
 			''' Set the value of this object as a Number.
 			''' </summary>
 			''' <returns> True if the value was set. </returns>
-			Public Overridable Function setCurrentAccessibleValue(ByVal n As Number) As Boolean
+			Public Overridable Function setCurrentAccessibleValue(  n As Number) As Boolean
 				Return False
 			End Function
 

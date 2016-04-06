@@ -102,7 +102,7 @@ Namespace java.nio.channels
 		'''          If the channel is associated with a {@link AsynchronousChannelGroup
 		'''          group} that has terminated </exception>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		 Sub read(Of A, T1)(ByVal dst As java.nio.ByteBuffer, ByVal attachment As A, ByVal handler As CompletionHandler(Of T1))
+		 Sub read(Of A, T1)(  dst As java.nio.ByteBuffer,   attachment As A,   handler As CompletionHandler(Of T1))
 
 		''' <summary>
 		''' Reads a sequence of bytes from this channel into the given buffer.
@@ -127,7 +127,7 @@ Namespace java.nio.channels
 		''' <exception cref="ReadPendingException">
 		'''          If the channel does not allow more than one read to be outstanding
 		'''          and a previous read has not completed </exception>
-		Function read(ByVal dst As java.nio.ByteBuffer) As java.util.concurrent.Future(Of Integer?)
+		Function read(  dst As java.nio.ByteBuffer) As java.util.concurrent.Future(Of Integer?)
 
 		''' <summary>
 		''' Writes a sequence of bytes to this channel from the given buffer.
@@ -178,7 +178,7 @@ Namespace java.nio.channels
 		'''          If the channel is associated with a {@link AsynchronousChannelGroup
 		'''          group} that has terminated </exception>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		 Sub write(Of A, T1)(ByVal src As java.nio.ByteBuffer, ByVal attachment As A, ByVal handler As CompletionHandler(Of T1))
+		 Sub write(Of A, T1)(  src As java.nio.ByteBuffer,   attachment As A,   handler As CompletionHandler(Of T1))
 
 		''' <summary>
 		''' Writes a sequence of bytes to this channel from the given buffer.
@@ -200,7 +200,7 @@ Namespace java.nio.channels
 		''' <exception cref="WritePendingException">
 		'''          If the channel does not allow more than one write to be outstanding
 		'''          and a previous write has not completed </exception>
-		Function write(ByVal src As java.nio.ByteBuffer) As java.util.concurrent.Future(Of Integer?)
+		Function write(  src As java.nio.ByteBuffer) As java.util.concurrent.Future(Of Integer?)
 	End Interface
 
 End Namespace

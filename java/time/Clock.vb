@@ -188,7 +188,7 @@ Namespace java.time
 		''' </summary>
 		''' <param name="zone">  the time-zone to use to convert the instant to date-time, not null </param>
 		''' <returns> a clock that uses the best available system clock in the specified zone, not null </returns>
-		Public Shared Function system(ByVal zone As ZoneId) As Clock
+		Public Shared Function system(  zone As ZoneId) As Clock
 			java.util.Objects.requireNonNull(zone, "zone")
 			Return New SystemClock(zone)
 		End Function
@@ -212,7 +212,7 @@ Namespace java.time
 		''' </summary>
 		''' <param name="zone">  the time-zone to use to convert the instant to date-time, not null </param>
 		''' <returns> a clock that ticks in whole seconds using the specified zone, not null </returns>
-		Public Shared Function tickSeconds(ByVal zone As ZoneId) As Clock
+		Public Shared Function tickSeconds(  zone As ZoneId) As Clock
 			Return New TickClock(system(zone), NANOS_PER_SECOND)
 		End Function
 
@@ -234,7 +234,7 @@ Namespace java.time
 		''' </summary>
 		''' <param name="zone">  the time-zone to use to convert the instant to date-time, not null </param>
 		''' <returns> a clock that ticks in whole minutes using the specified zone, not null </returns>
-		Public Shared Function tickMinutes(ByVal zone As ZoneId) As Clock
+		Public Shared Function tickMinutes(  zone As ZoneId) As Clock
 			Return New TickClock(system(zone), NANOS_PER_MINUTE)
 		End Function
 
@@ -268,7 +268,7 @@ Namespace java.time
 		'''  part smaller than a whole millisecond such that the whole duration is not
 		'''  divisible into one second </exception>
 		''' <exception cref="ArithmeticException"> if the duration is too large to be represented as nanos </exception>
-		Public Shared Function tick(ByVal baseClock As Clock, ByVal tickDuration As Duration) As Clock
+		Public Shared Function tick(  baseClock As Clock,   tickDuration As Duration) As Clock
 			java.util.Objects.requireNonNull(baseClock, "baseClock")
 			java.util.Objects.requireNonNull(tickDuration, "tickDuration")
 			If tickDuration.negative Then Throw New IllegalArgumentException("Tick duration must not be negative")
@@ -298,7 +298,7 @@ Namespace java.time
 		''' <param name="fixedInstant">  the instant to use as the clock, not null </param>
 		''' <param name="zone">  the time-zone to use to convert the instant to date-time, not null </param>
 		''' <returns> a clock that always returns the same instant, not null </returns>
-		Public Shared Function fixed(ByVal fixedInstant As Instant, ByVal zone As ZoneId) As Clock
+		Public Shared Function fixed(  fixedInstant As Instant,   zone As ZoneId) As Clock
 			java.util.Objects.requireNonNull(fixedInstant, "fixedInstant")
 			java.util.Objects.requireNonNull(zone, "zone")
 			Return New FixedClock(fixedInstant, zone)
@@ -323,7 +323,7 @@ Namespace java.time
 		''' <param name="baseClock">  the base clock to add the duration to, not null </param>
 		''' <param name="offsetDuration">  the duration to add, not null </param>
 		''' <returns> a clock based on the base clock with the duration added, not null </returns>
-		Public Shared Function offset(ByVal baseClock As Clock, ByVal offsetDuration As Duration) As Clock
+		Public Shared Function offset(  baseClock As Clock,   offsetDuration As Duration) As Clock
 			java.util.Objects.requireNonNull(baseClock, "baseClock")
 			java.util.Objects.requireNonNull(offsetDuration, "offsetDuration")
 			If offsetDuration.Equals(Duration.ZERO) Then Return baseClock
@@ -356,7 +356,7 @@ Namespace java.time
 		''' </summary>
 		''' <param name="zone">  the time-zone to change to, not null </param>
 		''' <returns> a clock based on this clock with the specified time-zone, not null </returns>
-		Public MustOverride Function withZone(ByVal zone As ZoneId) As Clock
+		Public MustOverride Function withZone(  zone As ZoneId) As Clock
 
 		'-------------------------------------------------------------------------
 		''' <summary>
@@ -399,7 +399,7 @@ Namespace java.time
 		''' </summary>
 		''' <param name="obj">  the object to check, null returns false </param>
 		''' <returns> true if this is equal to the other clock </returns>
-		Public Overrides Function Equals(ByVal obj As Object) As Boolean
+		Public Overrides Function Equals(  obj As Object) As Boolean
 			Return MyBase.Equals(obj)
 		End Function
 
@@ -427,7 +427,7 @@ Namespace java.time
 			Private Const serialVersionUID As Long = 6740630888130243051L
 			Private ReadOnly zone As ZoneId
 
-			Friend Sub New(ByVal zone As ZoneId)
+			Friend Sub New(  zone As ZoneId)
 				Me.zone = zone
 			End Sub
 			Public  Overrides ReadOnly Property  zone As ZoneId
@@ -435,7 +435,7 @@ Namespace java.time
 					Return zone
 				End Get
 			End Property
-			Public Overrides Function withZone(ByVal zone As ZoneId) As Clock
+			Public Overrides Function withZone(  zone As ZoneId) As Clock
 				If zone.Equals(Me.zone) Then ' intentional NPE Return Me
 				Return New SystemClock(zone)
 			End Function
@@ -445,7 +445,7 @@ Namespace java.time
 			Public Overrides Function instant() As Instant
 				Return Instant.ofEpochMilli(millis())
 			End Function
-			Public Overrides Function Equals(ByVal obj As Object) As Boolean
+			Public Overrides Function Equals(  obj As Object) As Boolean
 				If TypeOf obj Is SystemClock Then Return zone.Equals(CType(obj, SystemClock).zone)
 				Return False
 			End Function
@@ -470,7 +470,7 @@ Namespace java.time
 			Private ReadOnly instant_Renamed As Instant
 			Private ReadOnly zone As ZoneId
 
-			Friend Sub New(ByVal fixedInstant As Instant, ByVal zone As ZoneId)
+			Friend Sub New(  fixedInstant As Instant,   zone As ZoneId)
 				Me.instant_Renamed = fixedInstant
 				Me.zone = zone
 			End Sub
@@ -479,7 +479,7 @@ Namespace java.time
 					Return zone
 				End Get
 			End Property
-			Public Overrides Function withZone(ByVal zone As ZoneId) As Clock
+			Public Overrides Function withZone(  zone As ZoneId) As Clock
 				If zone.Equals(Me.zone) Then ' intentional NPE Return Me
 				Return New FixedClock(instant_Renamed, zone)
 			End Function
@@ -489,7 +489,7 @@ Namespace java.time
 			Public Overrides Function instant() As Instant
 				Return instant_Renamed
 			End Function
-			Public Overrides Function Equals(ByVal obj As Object) As Boolean
+			Public Overrides Function Equals(  obj As Object) As Boolean
 				If TypeOf obj Is FixedClock Then
 					Dim other As FixedClock = CType(obj, FixedClock)
 					Return instant_Renamed.Equals(other.instant) AndAlso zone.Equals(other.zone)
@@ -516,7 +516,7 @@ Namespace java.time
 			Private ReadOnly baseClock As Clock
 			Private ReadOnly offset As Duration
 
-			Friend Sub New(ByVal baseClock As Clock, ByVal offset As Duration)
+			Friend Sub New(  baseClock As Clock,   offset As Duration)
 				Me.baseClock = baseClock
 				Me.offset = offset
 			End Sub
@@ -525,7 +525,7 @@ Namespace java.time
 					Return baseClock.zone
 				End Get
 			End Property
-			Public Overrides Function withZone(ByVal zone As ZoneId) As Clock
+			Public Overrides Function withZone(  zone As ZoneId) As Clock
 				If zone.Equals(baseClock.zone) Then ' intentional NPE Return Me
 				Return New OffsetClock(baseClock.withZone(zone), offset)
 			End Function
@@ -535,7 +535,7 @@ Namespace java.time
 			Public Overrides Function instant() As Instant
 				Return baseClock.instant().plus(offset)
 			End Function
-			Public Overrides Function Equals(ByVal obj As Object) As Boolean
+			Public Overrides Function Equals(  obj As Object) As Boolean
 				If TypeOf obj Is OffsetClock Then
 					Dim other As OffsetClock = CType(obj, OffsetClock)
 					Return baseClock.Equals(other.baseClock) AndAlso offset.Equals(other.offset)
@@ -562,7 +562,7 @@ Namespace java.time
 			Private ReadOnly baseClock As Clock
 			Private ReadOnly tickNanos As Long
 
-			Friend Sub New(ByVal baseClock As Clock, ByVal tickNanos As Long)
+			Friend Sub New(  baseClock As Clock,   tickNanos As Long)
 				Me.baseClock = baseClock
 				Me.tickNanos = tickNanos
 			End Sub
@@ -571,7 +571,7 @@ Namespace java.time
 					Return baseClock.zone
 				End Get
 			End Property
-			Public Overrides Function withZone(ByVal zone As ZoneId) As Clock
+			Public Overrides Function withZone(  zone As ZoneId) As Clock
 				If zone.Equals(baseClock.zone) Then ' intentional NPE Return Me
 				Return New TickClock(baseClock.withZone(zone), tickNanos)
 			End Function
@@ -589,7 +589,7 @@ Namespace java.time
 				Dim adjust As Long = System.Math.floorMod(nanos, tickNanos)
 				Return instant_Renamed.minusNanos(adjust)
 			End Function
-			Public Overrides Function Equals(ByVal obj As Object) As Boolean
+			Public Overrides Function Equals(  obj As Object) As Boolean
 				If TypeOf obj Is TickClock Then
 					Dim other As TickClock = CType(obj, TickClock)
 					Return baseClock.Equals(other.baseClock) AndAlso tickNanos = other.tickNanos

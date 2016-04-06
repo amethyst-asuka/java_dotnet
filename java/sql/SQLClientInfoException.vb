@@ -89,7 +89,7 @@ Namespace java.sql
 			'''                                  defined in <code>ClientInfoStatus</code>
 			''' <p>
 			''' @since 1.6 </param>
-			Public Sub New(ByVal failedProperties As IDictionary(Of String, ClientInfoStatus))
+			Public Sub New(  failedProperties As IDictionary(Of String, ClientInfoStatus))
 
 					Me.failedProperties = failedProperties
 			End Sub
@@ -114,7 +114,7 @@ Namespace java.sql
 			'''     the cause is non-existent or unknown.
 			''' <p>
 			''' @since 1.6 </param>
-			Public Sub New(ByVal failedProperties As IDictionary(Of String, ClientInfoStatus), ByVal cause As Throwable)
+			Public Sub New(  failedProperties As IDictionary(Of String, ClientInfoStatus),   cause As Throwable)
 
 					MyBase.New(If(cause IsNot Nothing, cause.ToString(), Nothing))
 					initCause(cause)
@@ -141,7 +141,7 @@ Namespace java.sql
 			'''                                  defined in <code>ClientInfoStatus</code>
 			''' <p>
 			''' @since 1.6 </param>
-			Public Sub New(ByVal reason As String, ByVal failedProperties As IDictionary(Of String, ClientInfoStatus))
+			Public Sub New(  reason As String,   failedProperties As IDictionary(Of String, ClientInfoStatus))
 
 					MyBase.New(reason)
 					Me.failedProperties = failedProperties
@@ -166,7 +166,7 @@ Namespace java.sql
 			'''     the cause is non-existent or unknown.
 			''' <p>
 			''' @since 1.6 </param>
-			Public Sub New(ByVal reason As String, ByVal failedProperties As IDictionary(Of String, ClientInfoStatus), ByVal cause As Throwable)
+			Public Sub New(  reason As String,   failedProperties As IDictionary(Of String, ClientInfoStatus),   cause As Throwable)
 
 					MyBase.New(reason)
 					initCause(cause)
@@ -193,7 +193,7 @@ Namespace java.sql
 			'''                                  defined in <code>ClientInfoStatus</code>
 			''' <p>
 			''' @since 1.6 </param>
-			Public Sub New(ByVal reason As String, ByVal SQLState As String, ByVal failedProperties As IDictionary(Of String, ClientInfoStatus))
+			Public Sub New(  reason As String,   SQLState As String,   failedProperties As IDictionary(Of String, ClientInfoStatus))
 
 					MyBase.New(reason, SQLState)
 					Me.failedProperties = failedProperties
@@ -217,7 +217,7 @@ Namespace java.sql
 			'''     the cause is non-existent or unknown.
 			''' <p>
 			''' @since 1.6 </param>
-			Public Sub New(ByVal reason As String, ByVal SQLState As String, ByVal failedProperties As IDictionary(Of String, ClientInfoStatus), ByVal cause As Throwable)
+			Public Sub New(  reason As String,   SQLState As String,   failedProperties As IDictionary(Of String, ClientInfoStatus),   cause As Throwable)
 
 					MyBase.New(reason, SQLState)
 					initCause(cause)
@@ -244,7 +244,7 @@ Namespace java.sql
 			'''                                  defined in <code>ClientInfoStatus</code>
 			''' <p>
 			''' @since 1.6 </param>
-			Public Sub New(ByVal reason As String, ByVal SQLState As String, ByVal vendorCode As Integer, ByVal failedProperties As IDictionary(Of String, ClientInfoStatus))
+			Public Sub New(  reason As String,   SQLState As String,   vendorCode As Integer,   failedProperties As IDictionary(Of String, ClientInfoStatus))
 
 					MyBase.New(reason, SQLState, vendorCode)
 					Me.failedProperties = failedProperties
@@ -270,7 +270,7 @@ Namespace java.sql
 			'''     the cause is non-existent or unknown.
 			''' <p>
 			''' @since 1.6 </param>
-			Public Sub New(ByVal reason As String, ByVal SQLState As String, ByVal vendorCode As Integer, ByVal failedProperties As IDictionary(Of String, ClientInfoStatus), ByVal cause As Throwable)
+			Public Sub New(  reason As String,   SQLState As String,   vendorCode As Integer,   failedProperties As IDictionary(Of String, ClientInfoStatus),   cause As Throwable)
 
 					MyBase.New(reason, SQLState, vendorCode)
 					initCause(cause)

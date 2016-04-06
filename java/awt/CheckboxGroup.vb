@@ -91,7 +91,7 @@ Namespace java.awt
 			Get
 				Return current
 			End Get
-			Set(ByVal box As Checkbox)
+			Set(  box As Checkbox)
 				current = box
 			End Set
 		End Property
@@ -103,7 +103,7 @@ Namespace java.awt
 			Get
 				Return selectedCheckbox
 			End Get
-			Set(ByVal box As Checkbox)
+			Set(  box As Checkbox)
 				If box IsNot Nothing AndAlso box.group IsNot Me Then Return
 				Dim oldChoice As Checkbox = Me.selectedCheckbox
 				Me.selectedCheckbox = box

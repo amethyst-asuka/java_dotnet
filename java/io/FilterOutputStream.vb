@@ -57,7 +57,7 @@ Namespace java.io
         '''                the field <tt>this.out</tt> for later use, or
         '''                <code>null</code> if this instance is to be
         '''                created without an underlying stream. </param>
-        Public Sub New(ByVal out As OutputStream)
+        Public Sub New(  out As OutputStream)
             Me.out = out
         End Sub
 
@@ -72,7 +72,7 @@ Namespace java.io
         ''' </summary>
         ''' <param name="b">   the <code>byte</code>. </param>
         ''' <exception cref="IOException">  if an I/O error occurs. </exception>
-        Public Overrides Sub write(ByVal b As Integer)
+        Public Overrides Sub write(  b As Integer)
             out.write(b)
         End Sub
 
@@ -91,7 +91,7 @@ Namespace java.io
         ''' <param name="b">   the data to be written. </param>
         ''' <exception cref="IOException">  if an I/O error occurs. </exception>
         ''' <seealso cref=        java.io.FilterOutputStream#write(byte[], int, int) </seealso>
-        Public Overrides Sub write(ByVal b As Byte())
+        Public Overrides Sub write(  b As Byte())
             write(b, 0, b.Length)
         End Sub
 

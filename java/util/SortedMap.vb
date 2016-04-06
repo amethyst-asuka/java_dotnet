@@ -154,7 +154,7 @@ Namespace java.util
 		'''         {@code toKey}; or if this map itself has a restricted
 		'''         range, and {@code fromKey} or {@code toKey} lies
 		'''         outside the bounds of the range </exception>
-		Function subMap(ByVal fromKey As K, ByVal toKey As K) As SortedMap(Of K, V)
+		Function subMap(  fromKey As K,   toKey As K) As SortedMap(Of K, V)
 
 		''' <summary>
 		''' Returns a view of the portion of this map whose keys are
@@ -180,7 +180,7 @@ Namespace java.util
 		''' <exception cref="IllegalArgumentException"> if this map itself has a
 		'''         restricted range, and {@code toKey} lies outside the
 		'''         bounds of the range </exception>
-		Function headMap(ByVal toKey As K) As SortedMap(Of K, V)
+		Function headMap(  toKey As K) As SortedMap(Of K, V)
 
 		''' <summary>
 		''' Returns a view of the portion of this map whose keys are
@@ -206,7 +206,7 @@ Namespace java.util
 		''' <exception cref="IllegalArgumentException"> if this map itself has a
 		'''         restricted range, and {@code fromKey} lies outside the
 		'''         bounds of the range </exception>
-		Function tailMap(ByVal fromKey As K) As SortedMap(Of K, V)
+		Function tailMap(  fromKey As K) As SortedMap(Of K, V)
 
 		''' <summary>
 		''' Returns the first (lowest) key currently in this map.

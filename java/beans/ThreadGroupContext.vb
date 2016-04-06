@@ -46,7 +46,7 @@ Namespace java.beans
 		Private Class WeakIdentityMapAnonymousInnerClassHelper(Of T)
 			Inherits WeakIdentityMap(Of T)
 
-			Protected Friend Overridable Function create(ByVal key As Object) As ThreadGroupContext
+			Protected Friend Overridable Function create(  key As Object) As ThreadGroupContext
 				Return New ThreadGroupContext
 			End Function
 		End Class
@@ -78,7 +78,7 @@ Namespace java.beans
 			Get
 				Return Me.isDesignTime_Renamed
 			End Get
-			Set(ByVal isDesignTime As Boolean)
+			Set(  isDesignTime As Boolean)
 				Me.isDesignTime_Renamed = isDesignTime
 			End Set
 		End Property
@@ -90,24 +90,24 @@ Namespace java.beans
 				Dim isGuiAvailable_Renamed As Boolean? = Me.isGuiAvailable_Renamed
 				Return If(isGuiAvailable_Renamed IsNot Nothing, isGuiAvailable_Renamed, (Not java.awt.GraphicsEnvironment.headless))
 			End Get
-			Set(ByVal isGuiAvailable As Boolean)
+			Set(  isGuiAvailable As Boolean)
 				Me.isGuiAvailable_Renamed = Convert.ToBoolean(isGuiAvailable)
 			End Set
 		End Property
 
 
 
-		Friend Function getBeanInfo(ByVal type As [Class]) As BeanInfo
+		Friend Function getBeanInfo(  type As [Class]) As BeanInfo
 			Return If(Me.beanInfoCache IsNot Nothing, Me.beanInfoCache(type), Nothing)
 		End Function
 
-		Friend Function putBeanInfo(ByVal type As [Class], ByVal info As BeanInfo) As BeanInfo
+		Friend Function putBeanInfo(  type As [Class],   info As BeanInfo) As BeanInfo
 			If Me.beanInfoCache Is Nothing Then Me.beanInfoCache = New java.util.WeakHashMap(Of )
 				Me.beanInfoCache(type) = info
 				Return Me.beanInfoCache(type)
 		End Function
 
-		Friend Sub removeBeanInfo(ByVal type As [Class])
+		Friend Sub removeBeanInfo(  type As [Class])
 			If Me.beanInfoCache IsNot Nothing Then Me.beanInfoCache.Remove(type)
 		End Sub
 

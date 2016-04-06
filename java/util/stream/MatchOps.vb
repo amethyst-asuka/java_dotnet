@@ -78,7 +78,7 @@ Namespace java.util.stream
 		''' <returns> a {@code TerminalOp} implementing the desired quantified match
 		'''         criteria </returns>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Shared Function makeRef(Of T, T1)(ByVal predicate As java.util.function.Predicate(Of T1), ByVal matchKind As MatchKind) As TerminalOp(Of T, Boolean?)
+		Public Shared Function makeRef(Of T, T1)(  predicate As java.util.function.Predicate(Of T1),   matchKind As MatchKind) As TerminalOp(Of T, Boolean?)
 			java.util.Objects.requireNonNull(predicate)
 			java.util.Objects.requireNonNull(matchKind)
 'JAVA TO VB CONVERTER TODO TASK: Local classes are not converted by Java to VB Converter:
@@ -109,7 +109,7 @@ Namespace java.util.stream
 		''' <param name="matchKind"> the kind of quantified match (all, any, none) </param>
 		''' <returns> a {@code TerminalOp} implementing the desired quantified match
 		'''         criteria </returns>
-		Public Shared Function makeInt(ByVal predicate As java.util.function.IntPredicate, ByVal matchKind As MatchKind) As TerminalOp(Of Integer?, Boolean?)
+		Public Shared Function makeInt(  predicate As java.util.function.IntPredicate,   matchKind As MatchKind) As TerminalOp(Of Integer?, Boolean?)
 			java.util.Objects.requireNonNull(predicate)
 			java.util.Objects.requireNonNull(matchKind)
 'JAVA TO VB CONVERTER TODO TASK: Local classes are not converted by Java to VB Converter:
@@ -140,7 +140,7 @@ Namespace java.util.stream
 		''' <param name="matchKind"> the kind of quantified match (all, any, none) </param>
 		''' <returns> a {@code TerminalOp} implementing the desired quantified match
 		'''         criteria </returns>
-		Public Shared Function makeLong(ByVal predicate As java.util.function.LongPredicate, ByVal matchKind As MatchKind) As TerminalOp(Of Long?, Boolean?)
+		Public Shared Function makeLong(  predicate As java.util.function.LongPredicate,   matchKind As MatchKind) As TerminalOp(Of Long?, Boolean?)
 			java.util.Objects.requireNonNull(predicate)
 			java.util.Objects.requireNonNull(matchKind)
 'JAVA TO VB CONVERTER TODO TASK: Local classes are not converted by Java to VB Converter:
@@ -172,7 +172,7 @@ Namespace java.util.stream
 		''' <param name="matchKind"> the kind of quantified match (all, any, none) </param>
 		''' <returns> a {@code TerminalOp} implementing the desired quantified match
 		'''         criteria </returns>
-		Public Shared Function makeDouble(ByVal predicate As java.util.function.DoublePredicate, ByVal matchKind As MatchKind) As TerminalOp(Of Double?, Boolean?)
+		Public Shared Function makeDouble(  predicate As java.util.function.DoublePredicate,   matchKind As MatchKind) As TerminalOp(Of Double?, Boolean?)
 			java.util.Objects.requireNonNull(predicate)
 			java.util.Objects.requireNonNull(matchKind)
 'JAVA TO VB CONVERTER TODO TASK: Local classes are not converted by Java to VB Converter:
@@ -217,7 +217,7 @@ Namespace java.util.stream
 			''' <param name="matchKind"> the kind of quantified match (all, any, none) </param>
 			''' <param name="sinkSupplier"> {@code Supplier} for a {@code Sink} of the
 			'''        appropriate shape which implements the matching operation </param>
-			Friend Sub New(ByVal shape As StreamShape, ByVal matchKind As MatchKind, ByVal sinkSupplier As java.util.function.Supplier(Of BooleanTerminalSink(Of T)))
+			Friend Sub New(  shape As StreamShape,   matchKind As MatchKind,   sinkSupplier As java.util.function.Supplier(Of BooleanTerminalSink(Of T)))
 				Me.inputShape_Renamed = shape
 				Me.matchKind = matchKind
 				Me.sinkSupplier = sinkSupplier
@@ -233,11 +233,11 @@ Namespace java.util.stream
 				Return inputShape_Renamed
 			End Function
 
-			Public Overrides Function evaluateSequential(Of S)(ByVal helper As PipelineHelper(Of T), ByVal spliterator As java.util.Spliterator(Of S)) As Boolean?
+			Public Overrides Function evaluateSequential(Of S)(  helper As PipelineHelper(Of T),   spliterator As java.util.Spliterator(Of S)) As Boolean?
 				Return helper.wrapAndCopyInto(sinkSupplier.get(), spliterator).andClearState
 			End Function
 
-			Public Overrides Function evaluateParallel(Of S)(ByVal helper As PipelineHelper(Of T), ByVal spliterator As java.util.Spliterator(Of S)) As Boolean?
+			Public Overrides Function evaluateParallel(Of S)(  helper As PipelineHelper(Of T),   spliterator As java.util.Spliterator(Of S)) As Boolean?
 				' Approach for parallel implementation:
 				' - Decompose as per usual
 				' - run match on leaf chunks, call result "b"
@@ -259,7 +259,7 @@ Namespace java.util.stream
 			Friend [stop] As Boolean
 			Friend value As Boolean
 
-			Friend Sub New(ByVal matchKind As MatchKind)
+			Friend Sub New(  matchKind As MatchKind)
 				value = Not matchKind.shortCircuitResult
 			End Sub
 
@@ -289,7 +289,7 @@ Namespace java.util.stream
 			''' <summary>
 			''' Constructor for root node
 			''' </summary>
-			Friend Sub New(ByVal op As MatchOp(Of P_OUT), ByVal helper As PipelineHelper(Of P_OUT), ByVal spliterator As java.util.Spliterator(Of P_IN))
+			Friend Sub New(  op As MatchOp(Of P_OUT),   helper As PipelineHelper(Of P_OUT),   spliterator As java.util.Spliterator(Of P_IN))
 				MyBase.New(helper, spliterator)
 				Me.op = op
 			End Sub
@@ -297,12 +297,12 @@ Namespace java.util.stream
 			''' <summary>
 			''' Constructor for non-root node
 			''' </summary>
-			Friend Sub New(ByVal parent As MatchTask(Of P_IN, P_OUT), ByVal spliterator As java.util.Spliterator(Of P_IN))
+			Friend Sub New(  parent As MatchTask(Of P_IN, P_OUT),   spliterator As java.util.Spliterator(Of P_IN))
 				MyBase.New(parent, spliterator)
 				Me.op = parent.op
 			End Sub
 
-			Protected Friend Overrides Function makeChild(ByVal spliterator As java.util.Spliterator(Of P_IN)) As MatchTask(Of P_IN, P_OUT)
+			Protected Friend Overrides Function makeChild(  spliterator As java.util.Spliterator(Of P_IN)) As MatchTask(Of P_IN, P_OUT)
 				Return New MatchTask(Of )(Me, spliterator)
 			End Function
 

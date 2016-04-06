@@ -145,7 +145,7 @@ Namespace java.net
 		''' could be found in a specification string or the
 		''' string could not be parsed. </exception>
 
-		Protected Friend Sub New(ByVal url As URL)
+		Protected Friend Sub New(  url As URL)
 			MyBase.New(url)
 			parseSpecs(url)
 		End Sub
@@ -153,7 +153,7 @@ Namespace java.net
 	'     get the specs for a given url out of the cache, and compute and
 	'     * cache them if they're not there.
 	'     
-		Private Sub parseSpecs(ByVal url As URL)
+		Private Sub parseSpecs(  url As URL)
 			Dim spec As String = url.file
 
 			Dim separator As Integer = spec.IndexOf("!/")

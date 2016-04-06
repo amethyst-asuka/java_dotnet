@@ -124,7 +124,7 @@ Namespace java.time.temporal
 		''' </summary>
 		''' <param name="dateBasedAdjuster">  the date-based adjuster, not null </param>
 		''' <returns> the temporal adjuster wrapping on the date adjuster, not null </returns>
-		Public Shared Function ofDateAdjuster(ByVal dateBasedAdjuster As java.util.function.UnaryOperator(Of java.time.LocalDate)) As TemporalAdjuster
+		Public Shared Function ofDateAdjuster(  dateBasedAdjuster As java.util.function.UnaryOperator(Of java.time.LocalDate)) As TemporalAdjuster
 			java.util.Objects.requireNonNull(dateBasedAdjuster, "dateBasedAdjuster")
 			Return (temporal) ->
 				Dim input As java.time.LocalDate = java.time.LocalDate.from(temporal)
@@ -267,7 +267,7 @@ Namespace java.time.temporal
 		''' </summary>
 		''' <param name="dayOfWeek">  the day-of-week, not null </param>
 		''' <returns> the first in month adjuster, not null </returns>
-		Public Shared Function firstInMonth(ByVal dayOfWeek As java.time.DayOfWeek) As TemporalAdjuster
+		Public Shared Function firstInMonth(  dayOfWeek As java.time.DayOfWeek) As TemporalAdjuster
 			Return TemporalAdjusters.dayOfWeekInMonth(1, dayOfWeek)
 		End Function
 
@@ -286,7 +286,7 @@ Namespace java.time.temporal
 		''' </summary>
 		''' <param name="dayOfWeek">  the day-of-week, not null </param>
 		''' <returns> the first in month adjuster, not null </returns>
-		Public Shared Function lastInMonth(ByVal dayOfWeek As java.time.DayOfWeek) As TemporalAdjuster
+		Public Shared Function lastInMonth(  dayOfWeek As java.time.DayOfWeek) As TemporalAdjuster
 			Return TemporalAdjusters.dayOfWeekInMonth(-1, dayOfWeek)
 		End Function
 
@@ -321,7 +321,7 @@ Namespace java.time.temporal
 		''' <param name="ordinal">  the week within the month, unbounded but typically from -5 to 5 </param>
 		''' <param name="dayOfWeek">  the day-of-week, not null </param>
 		''' <returns> the day-of-week in month adjuster, not null </returns>
-		Public Shared Function dayOfWeekInMonth(ByVal ordinal As Integer, ByVal dayOfWeek As java.time.DayOfWeek) As TemporalAdjuster
+		Public Shared Function dayOfWeekInMonth(  ordinal As Integer,   dayOfWeek As java.time.DayOfWeek) As TemporalAdjuster
 			java.util.Objects.requireNonNull(dayOfWeek, "dayOfWeek")
 			Dim dowValue As Integer = dayOfWeek.value
 			If ordinal >= 0 Then
@@ -358,7 +358,7 @@ Namespace java.time.temporal
 		''' </summary>
 		''' <param name="dayOfWeek">  the day-of-week to move the date to, not null </param>
 		''' <returns> the next day-of-week adjuster, not null </returns>
-		Public Shared Function [next](ByVal dayOfWeek As java.time.DayOfWeek) As TemporalAdjuster
+		Public Shared Function [next](  dayOfWeek As java.time.DayOfWeek) As TemporalAdjuster
 			Dim dowValue As Integer = dayOfWeek.value
 			Return (temporal) ->
 				Dim calDow As Integer = temporal.get(DAY_OF_WEEK)
@@ -382,7 +382,7 @@ Namespace java.time.temporal
 		''' </summary>
 		''' <param name="dayOfWeek">  the day-of-week to check for or move the date to, not null </param>
 		''' <returns> the next-or-same day-of-week adjuster, not null </returns>
-		Public Shared Function nextOrSame(ByVal dayOfWeek As java.time.DayOfWeek) As TemporalAdjuster
+		Public Shared Function nextOrSame(  dayOfWeek As java.time.DayOfWeek) As TemporalAdjuster
 			Dim dowValue As Integer = dayOfWeek.value
 			Return (temporal) ->
 				Dim calDow As Integer = temporal.get(DAY_OF_WEEK)
@@ -406,7 +406,7 @@ Namespace java.time.temporal
 		''' </summary>
 		''' <param name="dayOfWeek">  the day-of-week to move the date to, not null </param>
 		''' <returns> the previous day-of-week adjuster, not null </returns>
-		Public Shared Function previous(ByVal dayOfWeek As java.time.DayOfWeek) As TemporalAdjuster
+		Public Shared Function previous(  dayOfWeek As java.time.DayOfWeek) As TemporalAdjuster
 			Dim dowValue As Integer = dayOfWeek.value
 			Return (temporal) ->
 				Dim calDow As Integer = temporal.get(DAY_OF_WEEK)
@@ -430,7 +430,7 @@ Namespace java.time.temporal
 		''' </summary>
 		''' <param name="dayOfWeek">  the day-of-week to check for or move the date to, not null </param>
 		''' <returns> the previous-or-same day-of-week adjuster, not null </returns>
-		Public Shared Function previousOrSame(ByVal dayOfWeek As java.time.DayOfWeek) As TemporalAdjuster
+		Public Shared Function previousOrSame(  dayOfWeek As java.time.DayOfWeek) As TemporalAdjuster
 			Dim dowValue As Integer = dayOfWeek.value
 			Return (temporal) ->
 				Dim calDow As Integer = temporal.get(DAY_OF_WEEK)

@@ -56,7 +56,7 @@ Namespace java.lang
 		''' <param name="typeName"> the fully qualified name of the unavailable type </param>
 		''' <param name="cause"> the exception that was thrown when the system attempted to
 		'''    load the named type, or <tt>null</tt> if unavailable or inapplicable </param>
-		Public Sub New(ByVal typeName As String, ByVal cause As Throwable)
+		Public Sub New(  typeName As String,   cause As Throwable)
 			MyBase.New("Type " & typeName & " not present", cause)
 			Me.typeName_Renamed = typeName
 		End Sub

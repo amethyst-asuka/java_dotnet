@@ -97,7 +97,7 @@ Namespace java.awt.event
 		''' <seealso cref= #getSource() </seealso>
 		''' <seealso cref= #getID() </seealso>
 		''' <seealso cref= #getUpdateRect() </seealso>
-		Public Sub New(ByVal source As java.awt.Component, ByVal id As Integer, ByVal updateRect As java.awt.Rectangle)
+		Public Sub New(  source As java.awt.Component,   id As Integer,   updateRect As java.awt.Rectangle)
 			MyBase.New(source, id)
 			Me.updateRect = updateRect
 		End Sub
@@ -110,7 +110,7 @@ Namespace java.awt.event
 			Get
 				Return updateRect
 			End Get
-			Set(ByVal updateRect As java.awt.Rectangle)
+			Set(  updateRect As java.awt.Rectangle)
 				Me.updateRect = updateRect
 			End Set
 		End Property

@@ -46,7 +46,7 @@ Namespace java.util
 		''' </summary>
 		''' <param name="p">
 		'''         The precision </param>
-		Public Sub New(ByVal p As Integer)
+		Public Sub New(  p As Integer)
 			Me.p = p
 		End Sub
 

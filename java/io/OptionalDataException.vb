@@ -53,7 +53,7 @@ Namespace java.io
 	'    
 	'     * Create an <code>OptionalDataException</code> with a length.
 	'     
-		Friend Sub New(ByVal len As Integer)
+		Friend Sub New(  len As Integer)
 			eof = False
 			length = len
 		End Sub
@@ -62,7 +62,7 @@ Namespace java.io
 	'     * Create an <code>OptionalDataException</code> signifying no
 	'     * more primitive data is available.
 	'     
-		Friend Sub New(ByVal [end] As Boolean)
+		Friend Sub New(  [end] As Boolean)
 			length = 0
 			eof = [end]
 		End Sub

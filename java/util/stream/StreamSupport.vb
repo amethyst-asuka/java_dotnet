@@ -61,7 +61,7 @@ Namespace java.util.stream
 		'''        stream; if {@code false} the returned stream is a sequential
 		'''        stream. </param>
 		''' <returns> a new sequential or parallel {@code Stream} </returns>
-		Public Shared Function stream(Of T)(ByVal spliterator As java.util.Spliterator(Of T), ByVal parallel As Boolean) As Stream(Of T)
+		Public Shared Function stream(Of T)(  spliterator As java.util.Spliterator(Of T),   parallel As Boolean) As Stream(Of T)
 			java.util.Objects.requireNonNull(spliterator)
 			Return New ReferencePipeline.Head(Of )(spliterator, StreamOpFlag.fromCharacteristics(spliterator), parallel)
 		End Function
@@ -98,7 +98,7 @@ Namespace java.util.stream
 		'''        stream. </param>
 		''' <returns> a new sequential or parallel {@code Stream} </returns>
 		''' <seealso cref= #stream(java.util.Spliterator, boolean) </seealso>
-		Public Shared Function stream(Of T, T1 As java.util.Spliterator(Of T)(ByVal supplier As java.util.function.Supplier(Of T1), ByVal characteristics As Integer, ByVal parallel As Boolean) As Stream(Of T)
+		Public Shared Function stream(Of T, T1 As java.util.Spliterator(Of T)(  supplier As java.util.function.Supplier(Of T1),   characteristics As Integer,   parallel As Boolean) As Stream(Of T)
 			java.util.Objects.requireNonNull(supplier)
 			Return New ReferencePipeline.Head(Of )(supplier, StreamOpFlag.fromCharacteristics(characteristics), parallel)
 		End Function
@@ -123,7 +123,7 @@ Namespace java.util.stream
 		'''        stream; if {@code false} the returned stream is a sequential
 		'''        stream. </param>
 		''' <returns> a new sequential or parallel {@code IntStream} </returns>
-		Public Shared Function intStream(ByVal spliterator As java.util.Spliterator.OfInt, ByVal parallel As Boolean) As IntStream
+		Public Shared Function intStream(  spliterator As java.util.Spliterator.OfInt,   parallel As Boolean) As IntStream
 			Return New IntPipeline.Head(Of )(spliterator, StreamOpFlag.fromCharacteristics(spliterator), parallel)
 		End Function
 
@@ -158,7 +158,7 @@ Namespace java.util.stream
 		'''        stream. </param>
 		''' <returns> a new sequential or parallel {@code IntStream} </returns>
 		''' <seealso cref= #intStream(java.util.Spliterator.OfInt, boolean) </seealso>
-		Public Shared Function intStream(Of T1 As java.util.Spliterator.OfInt)(ByVal supplier As java.util.function.Supplier(Of T1), ByVal characteristics As Integer, ByVal parallel As Boolean) As IntStream
+		Public Shared Function intStream(Of T1 As java.util.Spliterator.OfInt)(  supplier As java.util.function.Supplier(Of T1),   characteristics As Integer,   parallel As Boolean) As IntStream
 			Return New IntPipeline.Head(Of )(supplier, StreamOpFlag.fromCharacteristics(characteristics), parallel)
 		End Function
 
@@ -182,7 +182,7 @@ Namespace java.util.stream
 		'''        stream; if {@code false} the returned stream is a sequential
 		'''        stream. </param>
 		''' <returns> a new sequential or parallel {@code LongStream} </returns>
-		Public Shared Function longStream(ByVal spliterator As java.util.Spliterator.OfLong, ByVal parallel As Boolean) As LongStream
+		Public Shared Function longStream(  spliterator As java.util.Spliterator.OfLong,   parallel As Boolean) As LongStream
 			Return New LongPipeline.Head(Of )(spliterator, StreamOpFlag.fromCharacteristics(spliterator), parallel)
 		End Function
 
@@ -217,7 +217,7 @@ Namespace java.util.stream
 		'''        stream. </param>
 		''' <returns> a new sequential or parallel {@code LongStream} </returns>
 		''' <seealso cref= #longStream(java.util.Spliterator.OfLong, boolean) </seealso>
-		Public Shared Function longStream(Of T1 As java.util.Spliterator.OfLong)(ByVal supplier As java.util.function.Supplier(Of T1), ByVal characteristics As Integer, ByVal parallel As Boolean) As LongStream
+		Public Shared Function longStream(Of T1 As java.util.Spliterator.OfLong)(  supplier As java.util.function.Supplier(Of T1),   characteristics As Integer,   parallel As Boolean) As LongStream
 			Return New LongPipeline.Head(Of )(supplier, StreamOpFlag.fromCharacteristics(characteristics), parallel)
 		End Function
 
@@ -241,7 +241,7 @@ Namespace java.util.stream
 		'''        stream; if {@code false} the returned stream is a sequential
 		'''        stream. </param>
 		''' <returns> a new sequential or parallel {@code DoubleStream} </returns>
-		Public Shared Function doubleStream(ByVal spliterator As java.util.Spliterator.OfDouble, ByVal parallel As Boolean) As DoubleStream
+		Public Shared Function doubleStream(  spliterator As java.util.Spliterator.OfDouble,   parallel As Boolean) As DoubleStream
 			Return New DoublePipeline.Head(Of )(spliterator, StreamOpFlag.fromCharacteristics(spliterator), parallel)
 		End Function
 
@@ -276,7 +276,7 @@ Namespace java.util.stream
 		'''        stream. </param>
 		''' <returns> a new sequential or parallel {@code DoubleStream} </returns>
 		''' <seealso cref= #doubleStream(java.util.Spliterator.OfDouble, boolean) </seealso>
-		Public Shared Function doubleStream(Of T1 As java.util.Spliterator.OfDouble)(ByVal supplier As java.util.function.Supplier(Of T1), ByVal characteristics As Integer, ByVal parallel As Boolean) As DoubleStream
+		Public Shared Function doubleStream(Of T1 As java.util.Spliterator.OfDouble)(  supplier As java.util.function.Supplier(Of T1),   characteristics As Integer,   parallel As Boolean) As DoubleStream
 			Return New DoublePipeline.Head(Of )(supplier, StreamOpFlag.fromCharacteristics(characteristics), parallel)
 		End Function
 	End Class

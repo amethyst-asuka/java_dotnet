@@ -220,7 +220,7 @@ Namespace java.text
 		''' <returns> the Collator for the desired locale. </returns>
 		''' <seealso cref= java.util.Locale </seealso>
 		''' <seealso cref= java.util.ResourceBundle </seealso>
-		Public Shared Function getInstance(ByVal desiredLocale As java.util.Locale) As Collator
+		Public Shared Function getInstance(  desiredLocale As java.util.Locale) As Collator
 			Dim ref As SoftReference(Of Collator) = cache.get(desiredLocale)
 			Dim result As Collator = If(ref IsNot Nothing, ref.get(), Nothing)
 			If result Is Nothing Then
@@ -261,7 +261,7 @@ Namespace java.text
 		''' if source is greater than target. </returns>
 		''' <seealso cref= java.text.CollationKey </seealso>
 		''' <seealso cref= java.text.Collator#getCollationKey </seealso>
-		Public MustOverride Function compare(ByVal source As String, ByVal target As String) As Integer
+		Public MustOverride Function compare(  source As String,   target As String) As Integer
 
 		''' <summary>
 		''' Compares its two arguments for order.  Returns a negative integer,
@@ -277,7 +277,7 @@ Namespace java.text
 		''' <exception cref="ClassCastException"> the arguments cannot be cast to Strings. </exception>
 		''' <seealso cref= java.util.Comparator
 		''' @since   1.2 </seealso>
-		Public Overrides Function compare(ByVal o1 As Object, ByVal o2 As Object) As Integer
+		Public Overrides Function compare(  o1 As Object,   o2 As Object) As Integer
 		Return compare(CStr(o1), CStr(o2))
 		End Function
 
@@ -291,7 +291,7 @@ Namespace java.text
 		''' rules. If the source String is null, a null CollationKey is returned. </returns>
 		''' <seealso cref= java.text.CollationKey </seealso>
 		''' <seealso cref= java.text.Collator#compare </seealso>
-		Public MustOverride Function getCollationKey(ByVal source As String) As CollationKey
+		Public MustOverride Function getCollationKey(  source As String) As CollationKey
 
 		''' <summary>
 		''' Convenience method for comparing the equality of two strings based on
@@ -301,7 +301,7 @@ Namespace java.text
 		''' <returns> true if the strings are equal according to the collation
 		''' rules.  false, otherwise. </returns>
 		''' <seealso cref= java.text.Collator#compare </seealso>
-		Public Overrides Function Equals(ByVal source As String, ByVal target As String) As Boolean
+		Public Overrides Function Equals(  source As String,   target As String) As Boolean
 			Return (compare(source, target) = Collator.EQUAL)
 		End Function
 
@@ -320,7 +320,7 @@ Namespace java.text
 			Get
 				Return strength
 			End Get
-			Set(ByVal newStrength As Integer)
+			Set(  newStrength As Integer)
 				If (newStrength <> PRIMARY) AndAlso (newStrength <> SECONDARY) AndAlso (newStrength <> TERTIARY) AndAlso (newStrength <> IDENTICAL) Then Throw New IllegalArgumentException("Incorrect comparison level.")
 				strength = newStrength
 			End Set
@@ -350,7 +350,7 @@ Namespace java.text
 			Get
 				Return decmp
 			End Get
-			Set(ByVal decompositionMode As Integer)
+			Set(  decompositionMode As Integer)
 				If (decompositionMode <> NO_DECOMPOSITION) AndAlso (decompositionMode <> CANONICAL_DECOMPOSITION) AndAlso (decompositionMode <> FULL_DECOMPOSITION) Then Throw New IllegalArgumentException("Wrong decomposition mode.")
 				decmp = decompositionMode
 			End Set
@@ -392,7 +392,7 @@ Namespace java.text
 		''' <param name="that"> the Collator to be compared with this. </param>
 		''' <returns> true if this Collator is the same as that Collator;
 		''' false otherwise. </returns>
-		Public Overrides Function Equals(ByVal that As Object) As Boolean
+		Public Overrides Function Equals(  that As Object) As Boolean
 			If Me Is that Then Return True
 			If that Is Nothing Then Return False
 			If Me.GetType() IsNot that.GetType() Then Return False

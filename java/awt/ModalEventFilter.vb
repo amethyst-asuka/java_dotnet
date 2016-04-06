@@ -32,7 +32,7 @@ Namespace java.awt
 		Protected Friend modalDialog As Dialog
 		Protected Friend disabled As Boolean
 
-		Protected Friend Sub New(ByVal modalDialog As Dialog)
+		Protected Friend Sub New(  modalDialog As Dialog)
 			Me.modalDialog = modalDialog
 			disabled = False
 		End Sub
@@ -43,7 +43,7 @@ Namespace java.awt
 			End Get
 		End Property
 
-		Public Overridable Function acceptEvent(ByVal [event] As AWTEvent) As FilterAction Implements EventFilter.acceptEvent
+		Public Overridable Function acceptEvent(  [event] As AWTEvent) As FilterAction Implements EventFilter.acceptEvent
 			If disabled OrElse (Not modalDialog.visible) Then Return FilterAction.ACCEPT
 			Dim eventID As Integer = event_Renamed.iD
 			If (eventID >= MouseEvent.MOUSE_FIRST AndAlso eventID <= MouseEvent.MOUSE_LAST) OrElse (eventID >= ActionEvent.ACTION_FIRST AndAlso eventID <= ActionEvent.ACTION_LAST) OrElse eventID = WindowEvent.WINDOW_CLOSING Then
@@ -62,7 +62,7 @@ Namespace java.awt
 			Return FilterAction.ACCEPT
 		End Function
 
-		Protected Friend MustOverride Function acceptWindow(ByVal w As Window) As FilterAction
+		Protected Friend MustOverride Function acceptWindow(  w As Window) As FilterAction
 
 		' When a modal dialog is hidden its modal filter may not be deleted from
 		' EventDispatchThread event filters immediately, so we need to mark the filter
@@ -73,7 +73,7 @@ Namespace java.awt
 			disabled = True
 		End Sub
 
-		Friend Overridable Function compareTo(ByVal another As ModalEventFilter) As Integer
+		Friend Overridable Function compareTo(  another As ModalEventFilter) As Integer
 			Dim anotherDialog As Dialog = another.modalDialog
 			' check if modalDialog is from anotherDialog's hierarchy
 			'   or vice versa
@@ -102,7 +102,7 @@ Namespace java.awt
 			Return modalDialog.modalityType.CompareTo(anotherDialog.modalityType)
 		End Function
 
-		Shared Function createFilterForDialog(ByVal modalDialog As Dialog) As ModalEventFilter
+		Shared Function createFilterForDialog(  modalDialog As Dialog) As ModalEventFilter
 			Select Case modalDialog.modalityType
 				Case DOCUMENT_MODAL
 					Return New DocumentModalEventFilter(modalDialog)
@@ -119,12 +119,12 @@ Namespace java.awt
 
 			Private appContext As sun.awt.AppContext
 
-			Friend Sub New(ByVal modalDialog As Dialog)
+			Friend Sub New(  modalDialog As Dialog)
 				MyBase.New(modalDialog)
 				appContext = modalDialog.appContext
 			End Sub
 
-			Protected Friend Overrides Function acceptWindow(ByVal w As Window) As FilterAction
+			Protected Friend Overrides Function acceptWindow(  w As Window) As FilterAction
 				If w.isModalExcluded(Dialog.ModalExclusionType.TOOLKIT_EXCLUDE) Then Return FilterAction.ACCEPT
 				If w.appContext IsNot appContext Then Return FilterAction.REJECT
 				Do While w IsNot Nothing
@@ -140,12 +140,12 @@ Namespace java.awt
 
 			Private appContext As sun.awt.AppContext
 
-			Friend Sub New(ByVal modalDialog As Dialog)
+			Friend Sub New(  modalDialog As Dialog)
 				MyBase.New(modalDialog)
 				appContext = modalDialog.appContext
 			End Sub
 
-			Protected Friend Overrides Function acceptWindow(ByVal w As Window) As FilterAction
+			Protected Friend Overrides Function acceptWindow(  w As Window) As FilterAction
 				If w.isModalExcluded(Dialog.ModalExclusionType.APPLICATION_EXCLUDE) Then Return FilterAction.ACCEPT
 				If w.appContext Is appContext Then
 					Do While w IsNot Nothing
@@ -163,12 +163,12 @@ Namespace java.awt
 
 			Private documentRoot As Window
 
-			Friend Sub New(ByVal modalDialog As Dialog)
+			Friend Sub New(  modalDialog As Dialog)
 				MyBase.New(modalDialog)
 				documentRoot = modalDialog.documentRoot
 			End Sub
 
-			Protected Friend Overrides Function acceptWindow(ByVal w As Window) As FilterAction
+			Protected Friend Overrides Function acceptWindow(  w As Window) As FilterAction
 				' application- and toolkit-excluded windows are blocked by
 				' document-modal dialogs from their child hierarchy
 				If w.isModalExcluded(Dialog.ModalExclusionType.APPLICATION_EXCLUDE) Then

@@ -99,7 +99,7 @@ Namespace java.net
 		''' <returns>  {@code true} if the objects are the same;
 		'''          {@code false} otherwise. </returns>
 		''' <seealso cref=     java.net.InterfaceAddress#hashCode() </seealso>
-		Public Overrides Function Equals(ByVal obj As Object) As Boolean
+		Public Overrides Function Equals(  obj As Object) As Boolean
 			If Not(TypeOf obj Is InterfaceAddress) Then Return False
 			Dim cmp As InterfaceAddress = CType(obj, InterfaceAddress)
 			If Not(If(address Is Nothing, cmp.address Is Nothing, address.Equals(cmp.address))) Then Return False

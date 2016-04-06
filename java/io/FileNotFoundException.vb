@@ -61,7 +61,7 @@ Namespace java.io
 		''' method of class <code>java.lang.Throwable</code>.
 		''' </summary>
 		''' <param name="s">   the detail message. </param>
-		Public Sub New(ByVal s As String)
+		Public Sub New(  s As String)
 			MyBase.New(s)
 		End Sub
 
@@ -74,7 +74,7 @@ Namespace java.io
 		''' 
 		''' @since 1.2
 		''' </summary>
-		Private Sub New(ByVal path As String, ByVal reason As String)
+		Private Sub New(  path As String,   reason As String)
 			MyBase.New(path + (If(reason Is Nothing, "", " (" & reason & ")")))
 		End Sub
 

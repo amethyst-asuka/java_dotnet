@@ -705,7 +705,7 @@ Namespace java.util.concurrent
 			''' <param name="pool"> the pool this thread works in </param>
 			''' <returns> the new worker thread </returns>
 			''' <exception cref="NullPointerException"> if the pool is null </exception>
-			Function newThread(ByVal pool As ForkJoinPool) As ForkJoinWorkerThread
+			Function newThread(  pool As ForkJoinPool) As ForkJoinWorkerThread
 		End Interface
 
 		''' <summary>
@@ -715,7 +715,7 @@ Namespace java.util.concurrent
 		Friend NotInheritable Class DefaultForkJoinWorkerThreadFactory
 			Implements ForkJoinWorkerThreadFactory
 
-			Public Function newThread(ByVal pool As ForkJoinPool) As ForkJoinWorkerThread
+			Public Function newThread(  pool As ForkJoinPool) As ForkJoinWorkerThread
 				Return New ForkJoinWorkerThread(pool)
 			End Function
 		End Class
@@ -737,7 +737,7 @@ Namespace java.util.concurrent
 				Get
 					Return Nothing
 				End Get
-				Set(ByVal x As Void)
+				Set(  x As Void)
 				End Set
 			End Property
 			Public Function exec() As Boolean
@@ -821,7 +821,7 @@ Namespace java.util.concurrent
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 			Friend currentSteal As ForkJoinTask(Of ?) ' mainly used by helpStealer
 
-			Friend Sub New(ByVal pool As ForkJoinPool, ByVal owner As ForkJoinWorkerThread)
+			Friend Sub New(  pool As ForkJoinPool,   owner As ForkJoinWorkerThread)
 				Me.pool = pool
 				Me.owner = owner
 				' Place indices in the center of array (that is not yet allocated)
@@ -867,7 +867,7 @@ Namespace java.util.concurrent
 			''' </summary>
 			''' <param name="task"> the task. Caller must ensure non-null. </param>
 			''' <exception cref="RejectedExecutionException"> if array cannot be resized </exception>
-			Friend Sub push(Of T1)(ByVal task As ForkJoinTask(Of T1))
+			Friend Sub push(Of T1)(  task As ForkJoinTask(Of T1))
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 				Dim a As ForkJoinTask(Of ?)()
 				Dim p As ForkJoinPool
@@ -958,7 +958,7 @@ Namespace java.util.concurrent
 			''' appear in ForkJoinPool methods scan and helpStealer.
 			''' </summary>
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-			Friend Function pollAt(ByVal b As Integer) As ForkJoinTask(Of ?)
+			Friend Function pollAt(  b As Integer) As ForkJoinTask(Of ?)
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 				Dim t As ForkJoinTask(Of ?)
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
@@ -1036,7 +1036,7 @@ Namespace java.util.concurrent
 			''' Pops the given task only if it is at the current top.
 			''' (A shared version is available only via FJP.tryExternalUnpush)
 			''' </summary>
-			Friend Function tryUnpush(Of T1)(ByVal t As ForkJoinTask(Of T1)) As Boolean
+			Friend Function tryUnpush(Of T1)(  t As ForkJoinTask(Of T1)) As Boolean
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 				Dim a As ForkJoinTask(Of ?)()
 				Dim s As Integer
@@ -1120,7 +1120,7 @@ Namespace java.util.concurrent
 			''' <summary>
 			''' Executes the given task and any remaining local tasks.
 			''' </summary>
-			Friend Sub runTask(Of T1)(ByVal task As ForkJoinTask(Of T1))
+			Friend Sub runTask(Of T1)(  task As ForkJoinTask(Of T1))
 				If task IsNot Nothing Then
 					scanState = scanState And Not SCANNING ' mark as busy
 						currentSteal = task
@@ -1138,7 +1138,7 @@ Namespace java.util.concurrent
 			''' <summary>
 			''' Adds steal count to pool stealCounter if it exists, and resets.
 			''' </summary>
-			Friend Sub transferStealCount(ByVal p As ForkJoinPool)
+			Friend Sub transferStealCount(  p As ForkJoinPool)
 				Dim sc As java.util.concurrent.atomic.AtomicLong
 				sc = p.stealCounter
 				If p IsNot Nothing AndAlso sc IsNot Nothing Then
@@ -1153,7 +1153,7 @@ Namespace java.util.concurrent
 			''' or any other cancelled task. Used only by awaitJoin.
 			''' </summary>
 			''' <returns> true if queue empty and task not known to be done </returns>
-			Friend Function tryRemoveAndExec(Of T1)(ByVal task As ForkJoinTask(Of T1)) As Boolean
+			Friend Function tryRemoveAndExec(Of T1)(  task As ForkJoinTask(Of T1)) As Boolean
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 				Dim a As ForkJoinTask(Of ?)()
 				Dim m, s, b, n As Integer
@@ -1203,7 +1203,7 @@ Namespace java.util.concurrent
 			''' in either shared or owned mode. Used only by helpComplete.
 			''' </summary>
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-			Friend Function popCC(Of T1)(ByVal task As CountedCompleter(Of T1), ByVal mode As Integer) As CountedCompleter(Of ?)
+			Friend Function popCC(Of T1)(  task As CountedCompleter(Of T1),   mode As Integer) As CountedCompleter(Of ?)
 				Dim s As Integer
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 				Dim a As ForkJoinTask(Of ?)()
@@ -1253,7 +1253,7 @@ Namespace java.util.concurrent
 			''' <returns> 1 if successful, 2 if retryable (lost to another
 			''' stealer), -1 if non-empty but no matching task found, else
 			''' the base index, forced negative. </returns>
-			Friend Function pollAndExecCC(Of T1)(ByVal task As CountedCompleter(Of T1)) As Integer
+			Friend Function pollAndExecCC(Of T1)(  task As CountedCompleter(Of T1)) As Integer
 				Dim b, h As Integer
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 				Dim a As ForkJoinTask(Of ?)()
@@ -1553,7 +1553,7 @@ Namespace java.util.concurrent
 		''' </summary>
 		''' <param name="oldRunState"> a value returned from lockRunState </param>
 		''' <param name="newRunState"> the next value (must have lock bit clear). </param>
-		Private Sub unlockRunState(ByVal oldRunState As Integer, ByVal newRunState As Integer)
+		Private Sub unlockRunState(  oldRunState As Integer,   newRunState As Integer)
 			If Not U.compareAndSwapInt(Me, RUNSTATE, oldRunState, newRunState) Then
 				Dim lock As Object = stealCounter
 				runState = newRunState ' clears RSIGNAL bit
@@ -1597,7 +1597,7 @@ Namespace java.util.concurrent
 		''' <param name="c"> incoming ctl value, with total count negative and no
 		''' idle workers.  On CAS failure, c is refreshed and retried if
 		''' this holds (otherwise, a new worker is not needed). </param>
-		Private Sub tryAddWorker(ByVal c As Long)
+		Private Sub tryAddWorker(  c As Long)
 			Dim add As Boolean = False
 			Do
 				Dim nc As Long = ((AC_MASK And (c + AC_UNIT)) Or (TC_MASK And (c + TC_UNIT)))
@@ -1623,7 +1623,7 @@ Namespace java.util.concurrent
 		''' </summary>
 		''' <param name="wt"> the worker thread </param>
 		''' <returns> the worker's queue </returns>
-		Friend Function registerWorker(ByVal wt As ForkJoinWorkerThread) As WorkQueue
+		Friend Function registerWorker(  wt As ForkJoinWorkerThread) As WorkQueue
 			Dim handler As Thread.UncaughtExceptionHandler
 			wt.daemon = True ' configure thread
 			handler = ueh
@@ -1676,7 +1676,7 @@ Namespace java.util.concurrent
 		''' </summary>
 		''' <param name="wt"> the worker thread, or null if construction failed </param>
 		''' <param name="ex"> the exception causing failure, or null if none </param>
-		Friend Sub deregisterWorker(ByVal wt As ForkJoinWorkerThread, ByVal ex As Throwable)
+		Friend Sub deregisterWorker(  wt As ForkJoinWorkerThread,   ex As Throwable)
 			Dim w As WorkQueue = Nothing
 			w = wt.workQueue
 			If wt IsNot Nothing AndAlso w IsNot Nothing Then
@@ -1727,7 +1727,7 @@ Namespace java.util.concurrent
 		''' </summary>
 		''' <param name="ws"> the worker array to use to find signallees </param>
 		''' <param name="q"> a WorkQueue --if non-null, don't retry if now empty </param>
-		Friend Sub signalWork(ByVal ws As WorkQueue(), ByVal q As WorkQueue)
+		Friend Sub signalWork(  ws As WorkQueue(),   q As WorkQueue)
 			Dim c As Long
 			Dim sp, i As Integer
 			Dim v As WorkQueue
@@ -1767,7 +1767,7 @@ Namespace java.util.concurrent
 		''' <param name="v"> if non-null, a worker </param>
 		''' <param name="inc"> the increment to active count (zero when compensating) </param>
 		''' <returns> true if successful </returns>
-		Private Function tryRelease(ByVal c As Long, ByVal v As WorkQueue, ByVal inc As Long) As Boolean
+		Private Function tryRelease(  c As Long,   v As WorkQueue,   inc As Long) As Boolean
 			Dim sp As Integer = CInt(c), vs As Integer = (sp + SS_SEQ) And Not INACTIVE
 			Dim p As Thread
 			If v IsNot Nothing AndAlso v.scanState = sp Then ' v is at top of stack
@@ -1787,7 +1787,7 @@ Namespace java.util.concurrent
 		''' <summary>
 		''' Top-level runloop for workers, called by ForkJoinWorkerThread.run.
 		''' </summary>
-		Friend Sub runWorker(ByVal w As WorkQueue)
+		Friend Sub runWorker(  w As WorkQueue)
 			w.growArray() ' allocate queue
 			Dim seed As Integer = w.hint ' initially holds randomization hint
 			Dim r As Integer = If(seed = 0, 1, seed) ' avoid 0 for xorShift
@@ -1822,7 +1822,7 @@ Namespace java.util.concurrent
 		''' <param name="r"> a random seed </param>
 		''' <returns> a task, or null if none found </returns>
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-		Private Function scan(ByVal w As WorkQueue, ByVal r As Integer) As ForkJoinTask(Of ?)
+		Private Function scan(  w As WorkQueue,   r As Integer) As ForkJoinTask(Of ?)
 			Dim ws As WorkQueue()
 			Dim m As Integer
 			ws = workQueues
@@ -1910,7 +1910,7 @@ Namespace java.util.concurrent
 		''' <param name="w"> the calling worker </param>
 		''' <param name="r"> a random seed (for spins) </param>
 		''' <returns> false if the worker should terminate </returns>
-		Private Function awaitWork(ByVal w As WorkQueue, ByVal r As Integer) As Boolean
+		Private Function awaitWork(  w As WorkQueue,   r As Integer) As Boolean
 			If w Is Nothing OrElse w.qlock < 0 Then ' w is terminating Return False
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 			for (int pred = w.stackPred, spins = SPINS, ss;;)
@@ -1979,7 +1979,7 @@ Namespace java.util.concurrent
 		''' <param name="w"> caller </param>
 		''' <param name="maxTasks"> if non-zero, the maximum number of other tasks to run </param>
 		''' <returns> task status on exit </returns>
-		Friend Function helpComplete(Of T1)(ByVal w As WorkQueue, ByVal task As CountedCompleter(Of T1), ByVal maxTasks As Integer) As Integer
+		Friend Function helpComplete(Of T1)(  w As WorkQueue,   task As CountedCompleter(Of T1),   maxTasks As Integer) As Integer
 			Dim ws As WorkQueue()
 			Dim s As Integer = 0, m As Integer
 			ws = workQueues
@@ -2050,7 +2050,7 @@ Namespace java.util.concurrent
 		''' </summary>
 		''' <param name="w"> caller </param>
 		''' <param name="task"> the task to join </param>
-		Private Sub helpStealer(Of T1)(ByVal w As WorkQueue, ByVal task As ForkJoinTask(Of T1))
+		Private Sub helpStealer(Of T1)(  w As WorkQueue,   task As ForkJoinTask(Of T1))
 			Dim ws As WorkQueue() = workQueues
 			Dim oldSum As Integer = 0, checkSum As Integer, m As Integer
 			m = ws.Length - 1
@@ -2124,7 +2124,7 @@ Namespace java.util.concurrent
 		''' contention, detected staleness, instability, or termination.
 		''' </summary>
 		''' <param name="w"> caller </param>
-		Private Function tryCompensate(ByVal w As WorkQueue) As Boolean
+		Private Function tryCompensate(  w As WorkQueue) As Boolean
 			Dim canBlock As Boolean
 			Dim ws As WorkQueue()
 			Dim c As Long
@@ -2179,7 +2179,7 @@ Namespace java.util.concurrent
 		''' <param name="task"> the task </param>
 		''' <param name="deadline"> for timed waits, if nonzero </param>
 		''' <returns> task status on exit </returns>
-		Friend Function awaitJoin(Of T1)(ByVal w As WorkQueue, ByVal task As ForkJoinTask(Of T1), ByVal deadline As Long) As Integer
+		Friend Function awaitJoin(Of T1)(  w As WorkQueue,   task As ForkJoinTask(Of T1),   deadline As Long) As Integer
 			Dim s As Integer = 0
 			If task IsNot Nothing AndAlso w IsNot Nothing Then
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
@@ -2263,7 +2263,7 @@ Namespace java.util.concurrent
 		''' when tasks cannot be found, we rescan until all others cannot
 		''' find tasks either.
 		''' </summary>
-		Friend Sub helpQuiescePool(ByVal w As WorkQueue)
+		Friend Sub helpQuiescePool(  w As WorkQueue)
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 			Dim ps As ForkJoinTask(Of ?) = w.currentSteal ' save context
 			Dim active As Boolean = True
@@ -2306,7 +2306,7 @@ Namespace java.util.concurrent
 		''' </summary>
 		''' <returns> a task, if available </returns>
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-		Friend Function nextTaskFor(ByVal w As WorkQueue) As ForkJoinTask(Of ?)
+		Friend Function nextTaskFor(  w As WorkQueue) As ForkJoinTask(Of ?)
 			Dim t As ForkJoinTask(Of ?)
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 			Do
@@ -2392,7 +2392,7 @@ Namespace java.util.concurrent
 		''' if no work and no active workers </param>
 		''' <param name="enable"> if true, enable shutdown when next possible </param>
 		''' <returns> true if now terminating or terminated </returns>
-		Private Function tryTerminate(ByVal now As Boolean, ByVal enable As Boolean) As Boolean
+		Private Function tryTerminate(  now As Boolean,   enable As Boolean) As Boolean
 			Dim rs As Integer
 			If Me Is common Then ' cannot shut down Return False
 			rs = runState
@@ -2512,7 +2512,7 @@ Namespace java.util.concurrent
 		''' queue if the one at index if empty or contended.
 		''' </summary>
 		''' <param name="task"> the task. Caller must ensure non-null. </param>
-		Private Sub externalSubmit(Of T1)(ByVal task As ForkJoinTask(Of T1))
+		Private Sub externalSubmit(Of T1)(  task As ForkJoinTask(Of T1))
 			Dim r As Integer ' initialize caller's probe
 			r = java.util.concurrent.ThreadLocalRandom.probe
 			If r = 0 Then
@@ -2606,7 +2606,7 @@ Namespace java.util.concurrent
 		''' for externalSubmit.
 		''' </summary>
 		''' <param name="task"> the task. Caller must ensure non-null. </param>
-		Friend Sub externalPush(Of T1)(ByVal task As ForkJoinTask(Of T1))
+		Friend Sub externalPush(Of T1)(  task As ForkJoinTask(Of T1))
 			Dim ws As WorkQueue()
 			Dim q As WorkQueue
 			Dim m As Integer
@@ -2653,7 +2653,7 @@ Namespace java.util.concurrent
 		''' locks if apparently non-empty, validates upon locking, and
 		''' adjusts top. Each check can fail but rarely does.
 		''' </summary>
-		Friend Function tryExternalUnpush(Of T1)(ByVal task As ForkJoinTask(Of T1)) As Boolean
+		Friend Function tryExternalUnpush(Of T1)(  task As ForkJoinTask(Of T1)) As Boolean
 			Dim ws As WorkQueue()
 			Dim w As WorkQueue
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
@@ -2682,7 +2682,7 @@ Namespace java.util.concurrent
 		''' <summary>
 		''' Performs helpComplete for an external submitter.
 		''' </summary>
-		Friend Function externalHelpComplete(Of T1)(ByVal task As CountedCompleter(Of T1), ByVal maxTasks As Integer) As Integer
+		Friend Function externalHelpComplete(Of T1)(  task As CountedCompleter(Of T1),   maxTasks As Integer) As Integer
 			Dim ws As WorkQueue()
 			Dim n As Integer
 			Dim r As Integer = java.util.concurrent.ThreadLocalRandom.probe
@@ -2721,7 +2721,7 @@ Namespace java.util.concurrent
 		'''         the caller is not permitted to modify threads
 		'''         because it does not hold {@link
 		'''         java.lang.RuntimePermission}{@code ("modifyThread")} </exception>
-		Public Sub New(ByVal parallelism As Integer)
+		Public Sub New(  parallelism As Integer)
 			Me.New(parallelism, defaultForkJoinWorkerThreadFactory, Nothing, False)
 		End Sub
 
@@ -2748,17 +2748,17 @@ Namespace java.util.concurrent
 		'''         the caller is not permitted to modify threads
 		'''         because it does not hold {@link
 		'''         java.lang.RuntimePermission}{@code ("modifyThread")} </exception>
-		Public Sub New(ByVal parallelism As Integer, ByVal factory As ForkJoinWorkerThreadFactory, ByVal handler As Thread.UncaughtExceptionHandler, ByVal asyncMode As Boolean)
+		Public Sub New(  parallelism As Integer,   factory As ForkJoinWorkerThreadFactory,   handler As Thread.UncaughtExceptionHandler,   asyncMode As Boolean)
 			Me.New(checkParallelism(parallelism), checkFactory(factory), handler,If(asyncMode, FIFO_QUEUE, LIFO_QUEUE), "ForkJoinPool-" & nextPoolId() & "-worker-")
 			checkPermission()
 		End Sub
 
-		Private Shared Function checkParallelism(ByVal parallelism As Integer) As Integer
+		Private Shared Function checkParallelism(  parallelism As Integer) As Integer
 			If parallelism <= 0 OrElse parallelism > MAX_CAP Then Throw New IllegalArgumentException
 			Return parallelism
 		End Function
 
-		Private Shared Function checkFactory(ByVal factory As ForkJoinWorkerThreadFactory) As ForkJoinWorkerThreadFactory
+		Private Shared Function checkFactory(  factory As ForkJoinWorkerThreadFactory) As ForkJoinWorkerThreadFactory
 			If factory Is Nothing Then Throw New NullPointerException
 			Return factory
 		End Function
@@ -2768,7 +2768,7 @@ Namespace java.util.concurrent
 		''' any security checks or parameter validation.  Invoked directly by
 		''' makeCommonPool.
 		''' </summary>
-		Private Sub New(ByVal parallelism As Integer, ByVal factory As ForkJoinWorkerThreadFactory, ByVal handler As Thread.UncaughtExceptionHandler, ByVal mode As Integer, ByVal workerNamePrefix As String)
+		Private Sub New(  parallelism As Integer,   factory As ForkJoinWorkerThreadFactory,   handler As Thread.UncaughtExceptionHandler,   mode As Integer,   workerNamePrefix As String)
 			Me.workerNamePrefix = workerNamePrefix
 			Me.factory = factory
 			Me.ueh = handler
@@ -2812,7 +2812,7 @@ Namespace java.util.concurrent
 		''' <exception cref="NullPointerException"> if the task is null </exception>
 		''' <exception cref="RejectedExecutionException"> if the task cannot be
 		'''         scheduled for execution </exception>
-		Public Overridable Function invoke(Of T)(ByVal task As ForkJoinTask(Of T)) As T
+		Public Overridable Function invoke(Of T)(  task As ForkJoinTask(Of T)) As T
 			If task Is Nothing Then Throw New NullPointerException
 			externalPush(task)
 			Return task.join()
@@ -2825,7 +2825,7 @@ Namespace java.util.concurrent
 		''' <exception cref="NullPointerException"> if the task is null </exception>
 		''' <exception cref="RejectedExecutionException"> if the task cannot be
 		'''         scheduled for execution </exception>
-		Public Overridable Sub execute(Of T1)(ByVal task As ForkJoinTask(Of T1))
+		Public Overridable Sub execute(Of T1)(  task As ForkJoinTask(Of T1))
 			If task Is Nothing Then Throw New NullPointerException
 			externalPush(task)
 		End Sub
@@ -2835,7 +2835,7 @@ Namespace java.util.concurrent
 		''' <exception cref="NullPointerException"> if the task is null </exception>
 		''' <exception cref="RejectedExecutionException"> if the task cannot be
 		'''         scheduled for execution </exception>
-		Public Overridable Sub execute(ByVal task As Runnable)
+		Public Overridable Sub execute(  task As Runnable)
 			If task Is Nothing Then Throw New NullPointerException
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 			Dim job As ForkJoinTask(Of ?)
@@ -2858,7 +2858,7 @@ Namespace java.util.concurrent
 		''' <exception cref="NullPointerException"> if the task is null </exception>
 		''' <exception cref="RejectedExecutionException"> if the task cannot be
 		'''         scheduled for execution </exception>
-		Public Overridable Function submit(Of T)(ByVal task As ForkJoinTask(Of T)) As ForkJoinTask(Of T)
+		Public Overridable Function submit(Of T)(  task As ForkJoinTask(Of T)) As ForkJoinTask(Of T)
 			If task Is Nothing Then Throw New NullPointerException
 			externalPush(task)
 			Return task
@@ -2867,7 +2867,7 @@ Namespace java.util.concurrent
 		''' <exception cref="NullPointerException"> if the task is null </exception>
 		''' <exception cref="RejectedExecutionException"> if the task cannot be
 		'''         scheduled for execution </exception>
-		Public Overridable Function submit(Of T)(ByVal task As java.util.concurrent.Callable(Of T)) As ForkJoinTask(Of T)
+		Public Overridable Function submit(Of T)(  task As java.util.concurrent.Callable(Of T)) As ForkJoinTask(Of T)
 			Dim job As ForkJoinTask(Of T) = New ForkJoinTask.AdaptedCallable(Of T)(task)
 			externalPush(job)
 			Return job
@@ -2876,7 +2876,7 @@ Namespace java.util.concurrent
 		''' <exception cref="NullPointerException"> if the task is null </exception>
 		''' <exception cref="RejectedExecutionException"> if the task cannot be
 		'''         scheduled for execution </exception>
-		Public Overrides Function submit(Of T)(ByVal task As Runnable, ByVal result As T) As ForkJoinTask(Of T)
+		Public Overrides Function submit(Of T)(  task As Runnable,   result As T) As ForkJoinTask(Of T)
 			Dim job As ForkJoinTask(Of T) = New ForkJoinTask.AdaptedRunnable(Of T)(task, result)
 			externalPush(job)
 			Return job
@@ -2886,7 +2886,7 @@ Namespace java.util.concurrent
 		''' <exception cref="RejectedExecutionException"> if the task cannot be
 		'''         scheduled for execution </exception>
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-		Public Overrides Function submit(ByVal task As Runnable) As ForkJoinTask(Of ?)
+		Public Overrides Function submit(  task As Runnable) As ForkJoinTask(Of ?)
 			If task Is Nothing Then Throw New NullPointerException
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 			Dim job As ForkJoinTask(Of ?)
@@ -2903,7 +2903,7 @@ Namespace java.util.concurrent
 
 		''' <exception cref="NullPointerException">       {@inheritDoc} </exception>
 		''' <exception cref="RejectedExecutionException"> {@inheritDoc} </exception>
-		Public Overrides Function invokeAll(Of T, T1 As java.util.concurrent.Callable(Of T)(ByVal tasks As ICollection(Of T1)) As IList(Of java.util.concurrent.Future(Of T))
+		Public Overrides Function invokeAll(Of T, T1 As java.util.concurrent.Callable(Of T)(  tasks As ICollection(Of T1)) As IList(Of java.util.concurrent.Future(Of T))
 			' In previous versions of this [Class], this method constructed
 			' a task to run ForkJoinTask.invokeAll, but now external
 			' invocation of multiple tasks is at least as efficient.
@@ -3189,7 +3189,7 @@ Namespace java.util.concurrent
 		''' <param name="c"> the collection to transfer elements into </param>
 		''' <returns> the number of elements transferred </returns>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Protected Friend Overridable Function drainTasksTo(Of T1)(ByVal c As ICollection(Of T1)) As Integer
+		Protected Friend Overridable Function drainTasksTo(Of T1)(  c As ICollection(Of T1)) As Integer
 			Dim count As Integer = 0
 			Dim ws As WorkQueue()
 			Dim w As WorkQueue
@@ -3345,7 +3345,7 @@ Namespace java.util.concurrent
 		''' <returns> {@code true} if this executor terminated and
 		'''         {@code false} if the timeout elapsed before termination </returns>
 		''' <exception cref="InterruptedException"> if interrupted while waiting </exception>
-		Public Overridable Function awaitTermination(ByVal timeout As Long, ByVal unit As java.util.concurrent.TimeUnit) As Boolean
+		Public Overridable Function awaitTermination(  timeout As Long,   unit As java.util.concurrent.TimeUnit) As Boolean
 			If Thread.interrupted() Then Throw New InterruptedException
 			If Me Is common Then
 				awaitQuiescence(timeout, unit)
@@ -3376,7 +3376,7 @@ Namespace java.util.concurrent
 		''' <param name="unit"> the time unit of the timeout argument </param>
 		''' <returns> {@code true} if quiescent; {@code false} if the
 		''' timeout elapsed. </returns>
-		Public Overridable Function awaitQuiescence(ByVal timeout As Long, ByVal unit As java.util.concurrent.TimeUnit) As Boolean
+		Public Overridable Function awaitQuiescence(  timeout As Long,   unit As java.util.concurrent.TimeUnit) As Boolean
 			Dim nanos As Long = unit.toNanos(timeout)
 			Dim wt As ForkJoinWorkerThread
 			Dim thread_Renamed As Thread = Thread.CurrentThread
@@ -3523,7 +3523,7 @@ Namespace java.util.concurrent
 		''' </summary>
 		''' <param name="blocker"> the blocker task </param>
 		''' <exception cref="InterruptedException"> if {@code blocker.block()} did so </exception>
-		Public Shared Sub managedBlock(ByVal blocker As ManagedBlocker)
+		Public Shared Sub managedBlock(  blocker As ManagedBlocker)
 			Dim p As ForkJoinPool
 			Dim wt As ForkJoinWorkerThread
 			Dim t As Thread = Thread.CurrentThread
@@ -3552,11 +3552,11 @@ Namespace java.util.concurrent
 		' fact that ForkJoinTask.adapt returns ForkJoinTasks that also
 		' implement RunnableFuture.
 
-		Protected Friend Overrides Function newTaskFor(Of T)(ByVal runnable As Runnable, ByVal value As T) As java.util.concurrent.RunnableFuture(Of T)
+		Protected Friend Overrides Function newTaskFor(Of T)(  runnable As Runnable,   value As T) As java.util.concurrent.RunnableFuture(Of T)
 			Return New ForkJoinTask.AdaptedRunnable(Of T)(runnable, value)
 		End Function
 
-		Protected Friend Overridable Function newTaskFor(Of T)(ByVal callable As java.util.concurrent.Callable(Of T)) As java.util.concurrent.RunnableFuture(Of T)
+		Protected Friend Overridable Function newTaskFor(Of T)(  callable As java.util.concurrent.Callable(Of T)) As java.util.concurrent.RunnableFuture(Of T)
 			Return New ForkJoinTask.AdaptedCallable(Of T)(callable)
 		End Function
 
@@ -3666,7 +3666,7 @@ Namespace java.util.concurrent
 			Private Shared ReadOnly innocuousAcc As java.security.AccessControlContext
 		End Class
 
-			Public Function newThread(ByVal pool As ForkJoinPool) As ForkJoinWorkerThread
+			Public Function newThread(  pool As ForkJoinPool) As ForkJoinWorkerThread
 				Return (ForkJoinWorkerThread.InnocuousForkJoinWorkerThread) java.security.AccessController.doPrivileged(New PrivilegedActionAnonymousInnerClassHelper(Of T)
 			End Function
 

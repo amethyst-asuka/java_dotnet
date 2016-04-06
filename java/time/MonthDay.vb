@@ -151,7 +151,7 @@ Namespace java.time
 		''' </summary>
 		''' <param name="zone">  the zone ID to use, not null </param>
 		''' <returns> the current month-day using the system clock, not null </returns>
-		Public Shared Function now(ByVal zone As ZoneId) As MonthDay
+		Public Shared Function now(  zone As ZoneId) As MonthDay
 			Return now(Clock.system(zone))
 		End Function
 
@@ -164,7 +164,7 @@ Namespace java.time
 		''' </summary>
 		''' <param name="clock">  the clock to use, not null </param>
 		''' <returns> the current month-day, not null </returns>
-		Public Shared Function now(ByVal clock_Renamed As Clock) As MonthDay
+		Public Shared Function now(  clock_Renamed As Clock) As MonthDay
 			Dim now_Renamed As LocalDate = LocalDate.now(clock_Renamed) ' called once
 			Return MonthDay.of(now_Renamed.month, now_Renamed.dayOfMonth)
 		End Function
@@ -185,7 +185,7 @@ Namespace java.time
 		''' <returns> the month-day, not null </returns>
 		''' <exception cref="DateTimeException"> if the value of any field is out of range,
 		'''  or if the day-of-month is invalid for the month </exception>
-		Public Shared Function [of](ByVal month As Month, ByVal dayOfMonth As Integer) As MonthDay
+		Public Shared Function [of](  month As Month,   dayOfMonth As Integer) As MonthDay
 			java.util.Objects.requireNonNull(month, "month")
 			DAY_OF_MONTH.checkValidValue(dayOfMonth)
 			If dayOfMonth > month.maxLength() Then Throw New DateTimeException("Illegal value for DayOfMonth field, value " & dayOfMonth & " is not valid for month " & month.name())
@@ -207,7 +207,7 @@ Namespace java.time
 		''' <returns> the month-day, not null </returns>
 		''' <exception cref="DateTimeException"> if the value of any field is out of range,
 		'''  or if the day-of-month is invalid for the month </exception>
-		Public Shared Function [of](ByVal month As Integer, ByVal dayOfMonth As Integer) As MonthDay
+		Public Shared Function [of](  month As Integer,   dayOfMonth As Integer) As MonthDay
 			Return [of](Month.of(month), dayOfMonth)
 		End Function
 
@@ -230,7 +230,7 @@ Namespace java.time
 		''' <param name="temporal">  the temporal object to convert, not null </param>
 		''' <returns> the month-day, not null </returns>
 		''' <exception cref="DateTimeException"> if unable to convert to a {@code MonthDay} </exception>
-		Public Shared Function [from](ByVal temporal As java.time.temporal.TemporalAccessor) As MonthDay
+		Public Shared Function [from](  temporal As java.time.temporal.TemporalAccessor) As MonthDay
 			If TypeOf temporal Is MonthDay Then Return CType(temporal, MonthDay)
 			Try
 				If java.time.chrono.IsoChronology.INSTANCE.Equals(java.time.chrono.Chronology.from(temporal)) = False Then temporal = LocalDate.from(temporal)
@@ -250,7 +250,7 @@ Namespace java.time
 		''' <param name="text">  the text to parse such as "--12-03", not null </param>
 		''' <returns> the parsed month-day, not null </returns>
 		''' <exception cref="DateTimeParseException"> if the text cannot be parsed </exception>
-		Public Shared Function parse(ByVal text As CharSequence) As MonthDay
+		Public Shared Function parse(  text As CharSequence) As MonthDay
 			Return parse(text, PARSER)
 		End Function
 
@@ -263,7 +263,7 @@ Namespace java.time
 		''' <param name="formatter">  the formatter to use, not null </param>
 		''' <returns> the parsed month-day, not null </returns>
 		''' <exception cref="DateTimeParseException"> if the text cannot be parsed </exception>
-		Public Shared Function parse(ByVal text As CharSequence, ByVal formatter As java.time.format.DateTimeFormatter) As MonthDay
+		Public Shared Function parse(  text As CharSequence,   formatter As java.time.format.DateTimeFormatter) As MonthDay
 			java.util.Objects.requireNonNull(formatter, "formatter")
 			Return formatter.parse(text, MonthDay::from)
 		End Function
@@ -274,7 +274,7 @@ Namespace java.time
 		''' </summary>
 		''' <param name="month">  the month-of-year to represent, validated from 1 to 12 </param>
 		''' <param name="dayOfMonth">  the day-of-month to represent, validated from 1 to 29-31 </param>
-		Private Sub New(ByVal month As Integer, ByVal dayOfMonth As Integer)
+		Private Sub New(  month As Integer,   dayOfMonth As Integer)
 			Me.month = month
 			Me.day = dayOfMonth
 		End Sub
@@ -302,7 +302,7 @@ Namespace java.time
 		''' </summary>
 		''' <param name="field">  the field to check, null returns false </param>
 		''' <returns> true if the field is supported on this month-day, false if not </returns>
-		Public Overrides Function isSupported(ByVal field As java.time.temporal.TemporalField) As Boolean
+		Public Overrides Function isSupported(  field As java.time.temporal.TemporalField) As Boolean
 			If TypeOf field Is java.time.temporal.ChronoField Then Return field = MONTH_OF_YEAR OrElse field = DAY_OF_MONTH
 			Return field IsNot Nothing AndAlso field.isSupportedBy(Me)
 		End Function
@@ -329,7 +329,7 @@ Namespace java.time
 		''' <returns> the range of valid values for the field, not null </returns>
 		''' <exception cref="DateTimeException"> if the range for the field cannot be obtained </exception>
 		''' <exception cref="UnsupportedTemporalTypeException"> if the field is not supported </exception>
-		Public Overrides Function range(ByVal field As java.time.temporal.TemporalField) As java.time.temporal.ValueRange
+		Public Overrides Function range(  field As java.time.temporal.TemporalField) As java.time.temporal.ValueRange
 			If field = MONTH_OF_YEAR Then
 				Return field.range()
 			ElseIf field = DAY_OF_MONTH Then
@@ -363,7 +363,7 @@ Namespace java.time
 		''' <exception cref="UnsupportedTemporalTypeException"> if the field is not supported or
 		'''         the range of values exceeds an {@code int} </exception>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
-		Public Overrides Function [get](ByVal field As java.time.temporal.TemporalField) As Integer ' override for Javadoc
+		Public Overrides Function [get](  field As java.time.temporal.TemporalField) As Integer ' override for Javadoc
 			Return range(field).checkValidIntValue(getLong(field), field)
 		End Function
 
@@ -389,7 +389,7 @@ Namespace java.time
 		''' <exception cref="DateTimeException"> if a value for the field cannot be obtained </exception>
 		''' <exception cref="UnsupportedTemporalTypeException"> if the field is not supported </exception>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
-		Public Overrides Function getLong(ByVal field As java.time.temporal.TemporalField) As Long
+		Public Overrides Function getLong(  field As java.time.temporal.TemporalField) As Long
 			If TypeOf field Is java.time.temporal.ChronoField Then
 				Select Case CType(field, java.time.temporal.ChronoField)
 					' alignedDOW and alignedWOM not supported because they cannot be set in with()
@@ -457,7 +457,7 @@ Namespace java.time
 		''' <param name="year">  the year to validate </param>
 		''' <returns> true if the year is valid for this month-day </returns>
 		''' <seealso cref= Year#isValidMonthDay(MonthDay) </seealso>
-		Public Function isValidYear(ByVal year_Renamed As Integer) As Boolean
+		Public Function isValidYear(  year_Renamed As Integer) As Boolean
 			Return (day = 29 AndAlso month = 2 AndAlso Year.isLeap(year_Renamed) = False) = False
 		End Function
 
@@ -474,7 +474,7 @@ Namespace java.time
 		''' <param name="month">  the month-of-year to set in the returned month-day, from 1 (January) to 12 (December) </param>
 		''' <returns> a {@code MonthDay} based on this month-day with the requested month, not null </returns>
 		''' <exception cref="DateTimeException"> if the month-of-year value is invalid </exception>
-		Public Function withMonth(ByVal month As Integer) As MonthDay
+		Public Function withMonth(  month As Integer) As MonthDay
 			Return [with](Month.of(month))
 		End Function
 
@@ -489,7 +489,7 @@ Namespace java.time
 		''' </summary>
 		''' <param name="month">  the month-of-year to set in the returned month-day, not null </param>
 		''' <returns> a {@code MonthDay} based on this month-day with the requested month, not null </returns>
-		Public Function [with](ByVal month As Month) As MonthDay
+		Public Function [with](  month As Month) As MonthDay
 			java.util.Objects.requireNonNull(month, "month")
 			If month.value = Me.month Then Return Me
 			Dim day As Integer = System.Math.Min(Me.day, month.maxLength())
@@ -508,7 +508,7 @@ Namespace java.time
 		''' <returns> a {@code MonthDay} based on this month-day with the requested day, not null </returns>
 		''' <exception cref="DateTimeException"> if the day-of-month value is invalid,
 		'''  or if the day-of-month is invalid for the month </exception>
-		Public Function withDayOfMonth(ByVal dayOfMonth As Integer) As MonthDay
+		Public Function withDayOfMonth(  dayOfMonth As Integer) As MonthDay
 			If dayOfMonth = Me.day Then Return Me
 			Return [of](month, dayOfMonth)
 		End Function
@@ -532,7 +532,7 @@ Namespace java.time
 		''' <exception cref="DateTimeException"> if unable to query (defined by the query) </exception>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs (defined by the query) </exception>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Overrides Function query(Of R)(ByVal query_Renamed As java.time.temporal.TemporalQuery(Of R)) As R
+		Public Overrides Function query(Of R)(  query_Renamed As java.time.temporal.TemporalQuery(Of R)) As R
 			If query_Renamed Is java.time.temporal.TemporalQueries.chronology() Then Return CType(java.time.chrono.IsoChronology.INSTANCE, R)
 			Return outerInstance.query(query_Renamed)
 		End Function
@@ -563,7 +563,7 @@ Namespace java.time
 		''' <returns> the adjusted object, not null </returns>
 		''' <exception cref="DateTimeException"> if unable to make the adjustment </exception>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
-		Public Overrides Function adjustInto(ByVal temporal As java.time.temporal.Temporal) As java.time.temporal.Temporal
+		Public Overrides Function adjustInto(  temporal As java.time.temporal.Temporal) As java.time.temporal.Temporal
 			If java.time.chrono.Chronology.from(temporal).Equals(java.time.chrono.IsoChronology.INSTANCE) = False Then Throw New DateTimeException("Adjustment only supported on ISO date-time")
 			temporal = temporal.with(MONTH_OF_YEAR, month)
 			Return temporal.with(DAY_OF_MONTH, System.Math.Min(temporal.range(DAY_OF_MONTH).maximum, day))
@@ -577,7 +577,7 @@ Namespace java.time
 		''' <param name="formatter">  the formatter to use, not null </param>
 		''' <returns> the formatted month-day string, not null </returns>
 		''' <exception cref="DateTimeException"> if an error occurs during printing </exception>
-		Public Function format(ByVal formatter As java.time.format.DateTimeFormatter) As String
+		Public Function format(  formatter As java.time.format.DateTimeFormatter) As String
 			java.util.Objects.requireNonNull(formatter, "formatter")
 			Return formatter.format(Me)
 		End Function
@@ -596,7 +596,7 @@ Namespace java.time
 		''' <param name="year">  the year to use, from MIN_YEAR to MAX_YEAR </param>
 		''' <returns> the local date formed from this month-day and the specified year, not null </returns>
 		''' <exception cref="DateTimeException"> if the year is outside the valid range of years </exception>
-		Public Function atYear(ByVal year_Renamed As Integer) As LocalDate
+		Public Function atYear(  year_Renamed As Integer) As LocalDate
 			Return LocalDate.of(year_Renamed, month,If(isValidYear(year_Renamed), day, 28))
 		End Function
 
@@ -609,7 +609,7 @@ Namespace java.time
 		''' </summary>
 		''' <param name="other">  the other month-day to compare to, not null </param>
 		''' <returns> the comparator value, negative if less, positive if greater </returns>
-		Public Overrides Function compareTo(ByVal other As MonthDay) As Integer Implements Comparable(Of MonthDay).compareTo
+		Public Overrides Function compareTo(  other As MonthDay) As Integer Implements Comparable(Of MonthDay).compareTo
 			Dim cmp As Integer = (month - other.month)
 			If cmp = 0 Then cmp = (day - other.day)
 			Return cmp
@@ -620,7 +620,7 @@ Namespace java.time
 		''' </summary>
 		''' <param name="other">  the other month-day to compare to, not null </param>
 		''' <returns> true if this is after the specified month-day </returns>
-		Public Function isAfter(ByVal other As MonthDay) As Boolean
+		Public Function isAfter(  other As MonthDay) As Boolean
 			Return compareTo(other) > 0
 		End Function
 
@@ -629,7 +629,7 @@ Namespace java.time
 		''' </summary>
 		''' <param name="other">  the other month-day to compare to, not null </param>
 		''' <returns> true if this point is before the specified month-day </returns>
-		Public Function isBefore(ByVal other As MonthDay) As Boolean
+		Public Function isBefore(  other As MonthDay) As Boolean
 			Return compareTo(other) < 0
 		End Function
 
@@ -641,7 +641,7 @@ Namespace java.time
 		''' </summary>
 		''' <param name="obj">  the object to check, null returns false </param>
 		''' <returns> true if this is equal to the other month-day </returns>
-		Public Overrides Function Equals(ByVal obj As Object) As Boolean
+		Public Overrides Function Equals(  obj As Object) As Boolean
 			If Me Is obj Then Return True
 			If TypeOf obj Is MonthDay Then
 				Dim other As MonthDay = CType(obj, MonthDay)
@@ -690,16 +690,16 @@ Namespace java.time
 		''' </summary>
 		''' <param name="s"> the stream to read </param>
 		''' <exception cref="InvalidObjectException"> always </exception>
-		Private Sub readObject(ByVal s As java.io.ObjectInputStream)
+		Private Sub readObject(  s As java.io.ObjectInputStream)
 			Throw New java.io.InvalidObjectException("Deserialization via serialization delegate")
 		End Sub
 
-		Friend Sub writeExternal(ByVal out As java.io.DataOutput)
+		Friend Sub writeExternal(  out As java.io.DataOutput)
 			out.writeByte(month)
 			out.writeByte(day)
 		End Sub
 
-		Shared Function readExternal(ByVal [in] As java.io.DataInput) As MonthDay
+		Shared Function readExternal(  [in] As java.io.DataInput) As MonthDay
 			Dim month_Renamed As SByte = [in].readByte()
 			Dim day As SByte = [in].readByte()
 			Return MonthDay.of(month_Renamed, day)

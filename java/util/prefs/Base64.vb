@@ -39,7 +39,7 @@ Namespace java.util.prefs
 		''' Translates the specified byte array into a Base64 string as per
 		''' Preferences.put(byte[]).
 		''' </summary>
-		Friend Shared Function byteArrayToBase64(ByVal a As SByte()) As String
+		Friend Shared Function byteArrayToBase64(  a As SByte()) As String
 			Return byteArrayToBase64(a, False)
 		End Function
 
@@ -49,11 +49,11 @@ Namespace java.util.prefs
 		''' not contain the uppercase alphabetic characters, which makes it
 		''' suitable for use in situations where case-folding occurs.
 		''' </summary>
-		Friend Shared Function byteArrayToAltBase64(ByVal a As SByte()) As String
+		Friend Shared Function byteArrayToAltBase64(  a As SByte()) As String
 			Return byteArrayToBase64(a, True)
 		End Function
 
-		Private Shared Function byteArrayToBase64(ByVal a As SByte(), ByVal alternate As Boolean) As String
+		Private Shared Function byteArrayToBase64(  a As SByte(),   alternate As Boolean) As String
 			Dim aLen As Integer = a.Length
 			Dim numFullGroups As Integer = aLen\3
 			Dim numBytesInPartialGroup As Integer = aLen - 3*numFullGroups
@@ -121,7 +121,7 @@ Namespace java.util.prefs
 		''' @throw IllegalArgumentException if <tt>s</tt> is not a valid Base64
 		'''        string.
 		''' </summary>
-		Friend Shared Function base64ToByteArray(ByVal s As String) As SByte()
+		Friend Shared Function base64ToByteArray(  s As String) As SByte()
 			Return base64ToByteArray(s, False)
 		End Function
 
@@ -133,11 +133,11 @@ Namespace java.util.prefs
 		'''        if <tt>s</tt> is not a valid alternate representation
 		'''        Base64 string.
 		''' </summary>
-		Friend Shared Function altBase64ToByteArray(ByVal s As String) As SByte()
+		Friend Shared Function altBase64ToByteArray(  s As String) As SByte()
 			Return base64ToByteArray(s, True)
 		End Function
 
-		Private Shared Function base64ToByteArray(ByVal s As String, ByVal alternate As Boolean) As SByte()
+		Private Shared Function base64ToByteArray(  s As String,   alternate As Boolean) As SByte()
 			Dim alphaToInt As SByte() = (If(alternate, altBase64ToInt, base64ToInt_Renamed))
 			Dim sLen As Integer = s.length()
 			Dim numGroups As Integer = sLen\4
@@ -200,7 +200,7 @@ Namespace java.util.prefs
 		''' @throw IllegalArgumentException or ArrayOutOfBoundsException if
 		'''        c is not in the Base64 Alphabet.
 		''' </summary>
-		Private Shared Function base64toInt(ByVal c As Char, ByVal alphaToInt As SByte()) As Integer
+		Private Shared Function base64toInt(  c As Char,   alphaToInt As SByte()) As Integer
 			Dim result As Integer = alphaToInt(AscW(c))
 			If result < 0 Then Throw New IllegalArgumentException("Illegal character " & AscW(c))
 			Return result
@@ -221,7 +221,7 @@ Namespace java.util.prefs
 		''' </summary>
 		Private Shared ReadOnly altBase64ToInt As SByte() = { -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, -1, 62, 9, 10, 11, -1, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 12, 13, 14, -1, 15, 63, 16, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 17, -1, 18, 19, 21, 20, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 22, 23, 24, 25 }
 
-		Public Shared Sub Main(ByVal args As String())
+		Public Shared Sub Main(  args As String())
 			Dim numRuns As Integer = Convert.ToInt32(args(0))
 			Dim numBytes As Integer = Convert.ToInt32(args(1))
 			Dim rnd As New Random

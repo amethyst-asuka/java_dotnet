@@ -85,7 +85,7 @@ Namespace java.applet
         ''' @serial </exception>
         ''' <seealso cref= java.awt.GraphicsEnvironment#isHeadless
         ''' @since 1.4 </seealso>
-        Private Sub readObject(ByVal s As java.io.ObjectInputStream)
+        Private Sub readObject(  s As java.io.ObjectInputStream)
             If GraphicsEnvironment.headless Then Throw New HeadlessException
             s.defaultReadObject()
         End Sub
@@ -99,7 +99,7 @@ Namespace java.applet
         ''' <param name="stub">   the new stub. </param>
         ''' <exception cref="SecurityException"> if the caller cannot set the stub </exception>
         Public Property stub As AppletStub
-            Set(ByVal stub As AppletStub)
+            Set(  stub As AppletStub)
                 If Me.stub IsNot Nothing Then
                     Dim s As SecurityManager = System.securityManager
                     If s IsNot Nothing Then s.checkPermission(New AWTPermission("setAppletStub"))
@@ -177,7 +177,7 @@ Namespace java.applet
         ''' <param name="name">   a parameter name. </param>
         ''' <returns>  the value of the named parameter,
         '''          or <code>null</code> if not set. </returns>
-        Public Overridable Function getParameter(ByVal name As String) As String
+        Public Overridable Function getParameter(  name As String) As String
             Return stub.getParameter(name)
         End Function
 
@@ -201,7 +201,7 @@ Namespace java.applet
         ''' <param name="width">    the new requested width for the applet. </param>
         ''' <param name="height">   the new requested height for the applet. </param>
         'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-        Public Overrides Sub resize(ByVal width As Integer, ByVal height As Integer)
+        Public Overrides Sub resize(  width As Integer,   height As Integer)
             Dim d As Dimension = size()
             If (d.width <> width) OrElse (d.height <> height) Then
                 MyBase.resize(width, height)
@@ -214,7 +214,7 @@ Namespace java.applet
         ''' </summary>
         ''' <param name="d">   an object giving the new width and height. </param>
         'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-        Public Overrides Sub resize(ByVal d As Dimension)
+        Public Overrides Sub resize(  d As Dimension)
             resize(d.width, d.height)
         End Sub
 
@@ -240,7 +240,7 @@ Namespace java.applet
         ''' its current state.
         ''' </summary>
         ''' <param name="msg">   a string to display in the status window. </param>
-        Public Overridable Sub showStatus(ByVal msg As String)
+        Public Overridable Sub showStatus(  msg As String)
             appletContext.showStatus(msg)
         End Sub
 
@@ -257,7 +257,7 @@ Namespace java.applet
         ''' <param name="url">   an absolute URL giving the location of the image. </param>
         ''' <returns>  the image at the specified URL. </returns>
         ''' <seealso cref=     java.awt.Image </seealso>
-        Public Overridable Function getImage(ByVal url As java.net.URL) As image
+        Public Overridable Function getImage(  url As java.net.URL) As image
             Return appletContext.getImage(url)
         End Function
 
@@ -277,7 +277,7 @@ Namespace java.applet
         '''                 <code>url</code> argument. </param>
         ''' <returns>  the image at the specified URL. </returns>
         ''' <seealso cref=     java.awt.Image </seealso>
-        Public Overridable Function getImage(ByVal url As java.net.URL, ByVal name As String) As image
+        Public Overridable Function getImage(  url As java.net.URL,   name As String) As image
             Try
                 Return getImage(New java.net.URL(url, name))
             Catch e As java.net.MalformedURLException
@@ -292,7 +292,7 @@ Namespace java.applet
         ''' <returns> the audio clip at the specified URL.
         ''' 
         ''' @since       1.2 </returns>
-        Public Shared Function newAudioClip(ByVal url As java.net.URL) As AudioClip
+        Public Shared Function newAudioClip(  url As java.net.URL) As AudioClip
             Return New sun.applet.AppletAudioClip(url)
         End Function
 
@@ -307,7 +307,7 @@ Namespace java.applet
         ''' <param name="url">  an absolute URL giving the location of the audio clip. </param>
         ''' <returns>  the audio clip at the specified URL. </returns>
         ''' <seealso cref=     java.applet.AudioClip </seealso>
-        Public Overridable Function getAudioClip(ByVal url As java.net.URL) As AudioClip
+        Public Overridable Function getAudioClip(  url As java.net.URL) As AudioClip
             Return appletContext.getAudioClip(url)
         End Function
 
@@ -325,7 +325,7 @@ Namespace java.applet
         '''                 <code>url</code> argument. </param>
         ''' <returns>  the audio clip at the specified URL. </returns>
         ''' <seealso cref=     java.applet.AudioClip </seealso>
-        Public Overridable Function getAudioClip(ByVal url As java.net.URL, ByVal name As String) As AudioClip
+        Public Overridable Function getAudioClip(  url As java.net.URL,   name As String) As AudioClip
             Try
                 Return getAudioClip(New java.net.URL(url, name))
             Catch e As java.net.MalformedURLException
@@ -396,7 +396,7 @@ Namespace java.applet
         ''' happens if the audio clip cannot be found.
         ''' </summary>
         ''' <param name="url">   an absolute URL giving the location of the audio clip. </param>
-        Public Overridable Sub play(ByVal url As java.net.URL)
+        Public Overridable Sub play(  url As java.net.URL)
             Dim clip As AudioClip = getAudioClip(url)
             If clip IsNot Nothing Then clip.play()
         End Sub
@@ -409,7 +409,7 @@ Namespace java.applet
         '''                 audio clip. </param>
         ''' <param name="name">   the location of the audio clip, relative to the
         '''                 <code>url</code> argument. </param>
-        Public Overridable Sub play(ByVal url As java.net.URL, ByVal name As String)
+        Public Overridable Sub play(  url As java.net.URL,   name As String)
             Dim clip As AudioClip = getAudioClip(url, name)
             If clip IsNot Nothing Then clip.play()
         End Sub
@@ -540,7 +540,7 @@ Namespace java.applet
 
             Private ReadOnly outerInstance As Applet
 
-            Public Sub New(ByVal outerInstance As Applet)
+            Public Sub New(  outerInstance As Applet)
                 Me.outerInstance = outerInstance
             End Sub
 

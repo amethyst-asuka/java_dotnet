@@ -58,7 +58,7 @@ Namespace java.text
 	''' </summary>
 	Friend NotInheritable Class RBTableBuilder
 
-		Public Sub New(ByVal tables As RBCollationTables.BuildAPI)
+		Public Sub New(  tables As RBCollationTables.BuildAPI)
 			Me.tables = tables
 		End Sub
 
@@ -70,7 +70,7 @@ Namespace java.text
 		''' <seealso cref= RuleBasedCollator#RuleBasedCollator </seealso>
 		''' <exception cref="ParseException"> If the rules format is incorrect. </exception>
 
-		Public Sub build(ByVal pattern As String, ByVal decmp As Integer)
+		Public Sub build(  pattern As String,   decmp As Integer)
 			Dim isSource As Boolean = True
 			Dim i As Integer = 0
 			Dim expChars As String
@@ -275,7 +275,7 @@ Namespace java.text
 		''' <summary>
 		'''  Increment of the last order based on the comparison level.
 		''' </summary>
-		Private Function increment(ByVal aStrength As Integer, ByVal lastValue As Integer) As Integer
+		Private Function increment(  aStrength As Integer,   lastValue As Integer) As Integer
 			Select Case aStrength
 			Case Collator.PRIMARY
 				' increment priamry order  and mask off secondary and tertiary difference
@@ -300,7 +300,7 @@ Namespace java.text
 		''' <summary>
 		'''  Adds a character and its designated order into the collation table.
 		''' </summary>
-		Private Sub addOrder(ByVal ch As Integer, ByVal anOrder As Integer)
+		Private Sub addOrder(  ch As Integer,   anOrder As Integer)
 			' See if the char already has an order in the mapping table
 			Dim order As Integer = mapping.elementAt(ch)
 
@@ -322,14 +322,14 @@ Namespace java.text
 			End If
 		End Sub
 
-		Private Sub addContractOrder(ByVal groupChars As String, ByVal anOrder As Integer)
+		Private Sub addContractOrder(  groupChars As String,   anOrder As Integer)
 			addContractOrder(groupChars, anOrder, True)
 		End Sub
 
 		''' <summary>
 		'''  Adds the contracting string into the collation table.
 		''' </summary>
-		Private Sub addContractOrder(ByVal groupChars As String, ByVal anOrder As Integer, ByVal fwd As Boolean)
+		Private Sub addContractOrder(  groupChars As String,   anOrder As Integer,   fwd As Boolean)
 			If contractTable Is Nothing Then contractTable = New List(Of )(INITIALTABLESIZE)
 
 			'initial character
@@ -389,7 +389,7 @@ Namespace java.text
 		''' in this collation table, return its ordering.
 		''' Otherwise return UNMAPPED.
 		''' </summary>
-		Private Function getContractOrder(ByVal groupChars As String) As Integer
+		Private Function getContractOrder(  groupChars As String) As Integer
 			Dim result As Integer = RBCollationTables.UNMAPPED
 			If contractTable IsNot Nothing Then
 				Dim ch As Integer = groupChars.codePointAt(0)
@@ -410,7 +410,7 @@ Namespace java.text
 			Return result
 		End Function
 
-		Private Function getCharOrder(ByVal ch As Integer) As Integer
+		Private Function getCharOrder(  ch As Integer) As Integer
 			Dim order As Integer = mapping.elementAt(ch)
 
 			If order >= RBCollationTables.CONTRACTCHARINDEX Then
@@ -425,12 +425,12 @@ Namespace java.text
 		'''  Get the entry of hash table of the contracting string in the collation
 		'''  table. </summary>
 		'''  <param name="ch"> the starting character of the contracting string </param>
-		Private Function getContractValues(ByVal ch As Integer) As List(Of EntryPair)
+		Private Function getContractValues(  ch As Integer) As List(Of EntryPair)
 			Dim index As Integer = mapping.elementAt(ch)
 			Return getContractValuesImpl(index - RBCollationTables.CONTRACTCHARINDEX)
 		End Function
 
-		Private Function getContractValuesImpl(ByVal index As Integer) As List(Of EntryPair)
+		Private Function getContractValuesImpl(  index As Integer) As List(Of EntryPair)
 			If index >= 0 Then
 				Return contractTable(index)
 			Else ' not found
@@ -441,7 +441,7 @@ Namespace java.text
 		''' <summary>
 		'''  Adds the expanding string into the collation table.
 		''' </summary>
-		Private Sub addExpandOrder(ByVal contractChars As String, ByVal expandChars As String, ByVal anOrder As Integer)
+		Private Sub addExpandOrder(  contractChars As String,   expandChars As String,   anOrder As Integer)
 			' Create an expansion table entry
 			Dim tableIndex As Integer = addExpansion(anOrder, expandChars)
 
@@ -459,7 +459,7 @@ Namespace java.text
 			End If
 		End Sub
 
-		Private Sub addExpandOrder(ByVal ch As Integer, ByVal expandChars As String, ByVal anOrder As Integer)
+		Private Sub addExpandOrder(  ch As Integer,   expandChars As String,   anOrder As Integer)
 			Dim tableIndex As Integer = addExpansion(anOrder, expandChars)
 			addOrder(ch, tableIndex)
 		End Sub
@@ -469,7 +469,7 @@ Namespace java.text
 		''' for the given characers.  If anOrder is valid, it is added to the
 		''' beginning of the expanded list of orders.
 		''' </summary>
-		Private Function addExpansion(ByVal anOrder As Integer, ByVal expandChars As String) As Integer
+		Private Function addExpansion(  anOrder As Integer,   expandChars As String) As Integer
 			If expandTable Is Nothing Then expandTable = New List(Of )(INITIALTABLESIZE)
 
 			' If anOrder is valid, we want to add it at the beginning of the list
@@ -522,7 +522,7 @@ Namespace java.text
 			Return tableIndex
 		End Function
 
-		Private Sub addContractFlags(ByVal chars As String)
+		Private Sub addContractFlags(  chars As String)
 			Dim c0 As Char
 			Dim c As Integer
 			Dim len As Integer = chars.length()

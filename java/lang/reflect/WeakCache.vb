@@ -69,7 +69,7 @@ Namespace java.lang.reflect
 		'''                      {@code (key, parameter) -> value} </param>
 		''' <exception cref="NullPointerException"> if {@code subKeyFactory} or
 		'''                              {@code valueFactory} is null. </exception>
-		Public Sub New(Of T1)(ByVal subKeyFactory As java.util.function.BiFunction(Of T1), ByVal valueFactory As java.util.function.BiFunction(Of K, P, V))
+		Public Sub New(Of T1)(  subKeyFactory As java.util.function.BiFunction(Of T1),   valueFactory As java.util.function.BiFunction(Of K, P, V))
 			Me.subKeyFactory = java.util.Objects.requireNonNull(subKeyFactory)
 			Me.valueFactory = java.util.Objects.requireNonNull(valueFactory)
 		End Sub
@@ -88,7 +88,7 @@ Namespace java.lang.reflect
 		'''                              {@code sub-key} calculated by
 		'''                              {@code subKeyFactory} or {@code value}
 		'''                              calculated by {@code valueFactory} is null. </exception>
-		Public Function [get](ByVal key As K, ByVal parameter As P) As V
+		Public Function [get](  key As K,   parameter As P) As V
 			java.util.Objects.requireNonNull(parameter)
 
 			expungeStaleEntries()
@@ -148,7 +148,7 @@ Namespace java.lang.reflect
 		''' <param name="value"> the non-null value to check </param>
 		''' <returns> true if given {@code value} is already cached </returns>
 		''' <exception cref="NullPointerException"> if value is null </exception>
-		Public Function containsValue(ByVal value As V) As Boolean
+		Public Function containsValue(  value As V) As Boolean
 			java.util.Objects.requireNonNull(value)
 
 			expungeStaleEntries()
@@ -188,7 +188,7 @@ Namespace java.lang.reflect
 			Private ReadOnly subKey As Object
 			Private ReadOnly valuesMap As java.util.concurrent.ConcurrentMap(Of Object, java.util.function.Supplier(Of V))
 
-			Friend Sub New(ByVal outerInstance As WeakCache, ByVal key As K, ByVal parameter As P, ByVal subKey As Object, ByVal valuesMap As java.util.concurrent.ConcurrentMap(Of Object, java.util.function.Supplier(Of V)))
+			Friend Sub New(  outerInstance As WeakCache,   key As K,   parameter As P,   subKey As Object,   valuesMap As java.util.concurrent.ConcurrentMap(Of Object, java.util.function.Supplier(Of V)))
 					Me.outerInstance = outerInstance
 				Me.key = key
 				Me.parameter = parameter
@@ -250,7 +250,7 @@ Namespace java.lang.reflect
 
 			Private ReadOnly value As V
 
-			Friend Sub New(ByVal value As V)
+			Friend Sub New(  value As V)
 				Me.value = value
 			End Sub
 
@@ -262,7 +262,7 @@ Namespace java.lang.reflect
 				Return System.identityHashCode(value) ' compare by identity
 			End Function
 
-			Public Overrides Function Equals(ByVal obj As Object) As Boolean
+			Public Overrides Function Equals(  obj As Object) As Boolean
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 				Return obj Is Me OrElse TypeOf obj Is Value AndAlso Me.value Is CType(obj, Value(Of ?)).get() ' compare by identity
 			End Function
@@ -277,7 +277,7 @@ Namespace java.lang.reflect
 
 			Private ReadOnly hash As Integer
 
-			Friend Sub New(ByVal value As V)
+			Friend Sub New(  value As V)
 				MyBase.New(value)
 				Me.hash = System.identityHashCode(value) ' compare by identity
 			End Sub
@@ -286,7 +286,7 @@ Namespace java.lang.reflect
 				Return hash
 			End Function
 
-			Public Overrides Function Equals(ByVal obj As Object) As Boolean
+			Public Overrides Function Equals(  obj As Object) As Boolean
 				Dim value As V
 'JAVA TO VB CONVERTER TODO TASK: Assignments within expressions are not supported in VB
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
@@ -306,7 +306,7 @@ Namespace java.lang.reflect
 			' a replacement for null keys
 			Private Shared ReadOnly NULL_KEY As New Object
 
-			Friend Shared Function valueOf(Of K)(ByVal key As K, ByVal refQueue As ReferenceQueue(Of K)) As Object
+			Friend Shared Function valueOf(Of K)(  key As K,   refQueue As ReferenceQueue(Of K)) As Object
 				Return If(key Is Nothing, NULL_KEY, New CacheKey(Of )(key, refQueue))
 					   ' null key means we can't weakly reference it,
 					   ' so we use a NULL_KEY singleton as cache key
@@ -315,7 +315,7 @@ Namespace java.lang.reflect
 
 			Private ReadOnly hash As Integer
 
-			Private Sub New(ByVal key As K, ByVal refQueue As ReferenceQueue(Of K))
+			Private Sub New(  key As K,   refQueue As ReferenceQueue(Of K))
 				MyBase.New(key, refQueue)
 				Me.hash = System.identityHashCode(key) ' compare by identity
 			End Sub
@@ -324,7 +324,7 @@ Namespace java.lang.reflect
 				Return hash
 			End Function
 
-			Public Overrides Function Equals(ByVal obj As Object) As Boolean
+			Public Overrides Function Equals(  obj As Object) As Boolean
 				Dim key As K
 'JAVA TO VB CONVERTER TODO TASK: Assignments within expressions are not supported in VB
 				Return obj Is Me OrElse obj IsNot Nothing AndAlso obj.GetType() Is Me.GetType() AndAlso (key = Me.get()) IsNot Nothing AndAlso key Is CType(obj, CacheKey(Of K)).get()
@@ -333,7 +333,7 @@ Namespace java.lang.reflect
 			End Function
 
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-			Friend Sub expungeFrom(Of T1 As java.util.concurrent.ConcurrentMap(Of ?, ?, T2)(ByVal map As java.util.concurrent.ConcurrentMap(Of T1), ByVal reverseMap As java.util.concurrent.ConcurrentMap(Of T2))
+			Friend Sub expungeFrom(Of T1 As java.util.concurrent.ConcurrentMap(Of ?, ?, T2)(  map As java.util.concurrent.ConcurrentMap(Of T1),   reverseMap As java.util.concurrent.ConcurrentMap(Of T2))
 				' removing just by key is always safe here because after a CacheKey
 				' is cleared and enqueue-ed it is only equal to itself
 				' (see equals method)...

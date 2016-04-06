@@ -148,7 +148,7 @@ Namespace java.lang
 		''' </summary>
 		''' <param name="original">
 		'''         A {@code String} </param>
-		Public Sub New(ByVal original As String)
+		Public Sub New(  original As String)
 			Me.value = original.value
             Me.hash = original.GetHashCode
         End Sub
@@ -161,7 +161,7 @@ Namespace java.lang
 		''' </summary>
 		''' <param name="value">
 		'''         The initial value of the string </param>
-		Public Sub New(ByVal value As Char())
+		Public Sub New(  value As Char())
 			Me.value = java.util.Arrays.copyOf(value, value.Length)
 		End Sub
 

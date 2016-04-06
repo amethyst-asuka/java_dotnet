@@ -46,7 +46,7 @@ Namespace java.util.function
 		''' </summary>
 		''' <param name="t"> the first input argument </param>
 		''' <param name="value"> the second input argument </param>
-		Sub accept(ByVal t As T, ByVal value As Integer)
+		Sub accept(  t As T,   value As Integer)
 	End Interface
 
 End Namespace

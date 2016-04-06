@@ -71,7 +71,7 @@ Namespace java.io
 		''' </summary>
 		''' <param name="size">   the initial size. </param>
 		''' <exception cref="IllegalArgumentException"> if size is negative. </exception>
-		Public Sub New(ByVal size As Integer)
+		Public Sub New(  size As Integer)
 			If size < 0 Then Throw New IllegalArgumentException("Negative initial size: " & size)
 			buf = New SByte(size - 1){}
 		End Sub
@@ -85,7 +85,7 @@ Namespace java.io
 		''' <exception cref="OutOfMemoryError"> if {@code minCapacity < 0}.  This is
 		''' interpreted as a request for the unsatisfiably large capacity
 		''' {@code (long)  java.lang.[Integer].MAX_VALUE + (minCapacity -  java.lang.[Integer].MAX_VALUE)}. </exception>
-		Private Sub ensureCapacity(ByVal minCapacity As Integer)
+		Private Sub ensureCapacity(  minCapacity As Integer)
 			' overflow-conscious code
 			If minCapacity - buf.Length > 0 Then grow(minCapacity)
 		End Sub
@@ -103,7 +103,7 @@ Namespace java.io
 		''' number of elements specified by the minimum capacity argument.
 		''' </summary>
 		''' <param name="minCapacity"> the desired minimum capacity </param>
-		Private Sub grow(ByVal minCapacity As Integer)
+		Private Sub grow(  minCapacity As Integer)
 			' overflow-conscious code
 			Dim oldCapacity As Integer = buf.Length
 			Dim newCapacity As Integer = oldCapacity << 1
@@ -112,7 +112,7 @@ Namespace java.io
 			buf = java.util.Arrays.copyOf(buf, newCapacity)
 		End Sub
 
-		Private Shared Function hugeCapacity(ByVal minCapacity As Integer) As Integer
+		Private Shared Function hugeCapacity(  minCapacity As Integer) As Integer
 			If minCapacity < 0 Then ' overflow Throw New OutOfMemoryError
 			Return If(minCapacity > MAX_ARRAY_SIZE,  java.lang.[Integer].Max_Value, MAX_ARRAY_SIZE)
 		End Function
@@ -122,7 +122,7 @@ Namespace java.io
 		''' </summary>
 		''' <param name="b">   the byte to be written. </param>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overrides Sub write(ByVal b As Integer)
+		Public Overrides Sub write(  b As Integer)
 			ensureCapacity(count + 1)
 			buf(count) = CByte(b)
 			count += 1

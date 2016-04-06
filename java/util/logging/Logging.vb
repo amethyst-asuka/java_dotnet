@@ -69,7 +69,7 @@ Namespace java.util.logging
 		End Property
 
 		Private Shared EMPTY_STRING As String = ""
-		Public Overridable Function getLoggerLevel(ByVal loggerName As String) As String Implements LoggingMXBean.getLoggerLevel
+		Public Overridable Function getLoggerLevel(  loggerName As String) As String Implements LoggingMXBean.getLoggerLevel
 			Dim l As Logger = logManager.getLogger(loggerName)
 			If l Is Nothing Then Return Nothing
 
@@ -81,7 +81,7 @@ Namespace java.util.logging
 			End If
 		End Function
 
-		Public Overridable Sub setLoggerLevel(ByVal loggerName As String, ByVal levelName As String) Implements LoggingMXBean.setLoggerLevel
+		Public Overridable Sub setLoggerLevel(  loggerName As String,   levelName As String) Implements LoggingMXBean.setLoggerLevel
 			If loggerName Is Nothing Then Throw New NullPointerException("loggerName is null")
 
 			Dim logger_Renamed As Logger = logManager.getLogger(loggerName)
@@ -97,7 +97,7 @@ Namespace java.util.logging
 			logger_Renamed.level = level_Renamed
 		End Sub
 
-		Public Overridable Function getParentLoggerName(ByVal loggerName As String) As String Implements LoggingMXBean.getParentLoggerName
+		Public Overridable Function getParentLoggerName(  loggerName As String) As String Implements LoggingMXBean.getParentLoggerName
 			Dim l As Logger = logManager.getLogger(loggerName)
 			If l Is Nothing Then Return Nothing
 

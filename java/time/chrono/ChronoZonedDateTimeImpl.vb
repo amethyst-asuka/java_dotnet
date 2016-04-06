@@ -116,7 +116,7 @@ Namespace java.time.chrono
 		''' <param name="zone">  the zone identifier, not null </param>
 		''' <param name="preferredOffset">  the zone offset, null if no preference </param>
 		''' <returns> the zoned date-time, not null </returns>
-		Friend Shared Function ofBest(Of R As ChronoLocalDate)(ByVal localDateTime_Renamed As ChronoLocalDateTimeImpl(Of R), ByVal zone As java.time.ZoneId, ByVal preferredOffset As java.time.ZoneOffset) As ChronoZonedDateTime(Of R)
+		Friend Shared Function ofBest(Of R As ChronoLocalDate)(  localDateTime_Renamed As ChronoLocalDateTimeImpl(Of R),   zone As java.time.ZoneId,   preferredOffset As java.time.ZoneOffset) As ChronoZonedDateTime(Of R)
 			java.util.Objects.requireNonNull(localDateTime_Renamed, "localDateTime")
 			java.util.Objects.requireNonNull(zone, "zone")
 			If TypeOf zone Is java.time.ZoneOffset Then Return New ChronoZonedDateTimeImpl(Of )(localDateTime_Renamed, CType(zone, java.time.ZoneOffset), zone)
@@ -149,7 +149,7 @@ Namespace java.time.chrono
 		''' <param name="zone">  the zone identifier, not null </param>
 		''' <returns> the zoned date-time, not null </returns>
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-		Shared Function ofInstant(ByVal chrono As Chronology, ByVal instant_Renamed As java.time.Instant, ByVal zone As java.time.ZoneId) As ChronoZonedDateTimeImpl(Of ?)
+		Shared Function ofInstant(  chrono As Chronology,   instant_Renamed As java.time.Instant,   zone As java.time.ZoneId) As ChronoZonedDateTimeImpl(Of ?)
 			Dim rules As java.time.zone.ZoneRules = zone.rules
 			Dim offset_Renamed As java.time.ZoneOffset = rules.getOffset(instant_Renamed)
 			java.util.Objects.requireNonNull(offset_Renamed, "offset") ' protect against bad ZoneRules
@@ -166,7 +166,7 @@ Namespace java.time.chrono
 		''' <param name="zone">  the time-zone to use, validated not null </param>
 		''' <returns> the zoned date-time, validated not null </returns>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Private Function create(ByVal instant_Renamed As java.time.Instant, ByVal zone As java.time.ZoneId) As ChronoZonedDateTimeImpl(Of D)
+		Private Function create(  instant_Renamed As java.time.Instant,   zone As java.time.ZoneId) As ChronoZonedDateTimeImpl(Of D)
 			Return CType(ofInstant(chronology, instant_Renamed, zone), ChronoZonedDateTimeImpl(Of D))
 		End Function
 
@@ -178,7 +178,7 @@ Namespace java.time.chrono
 		''' <returns> the date-time checked and cast to {@code ChronoZonedDateTimeImpl}, not null </returns>
 		''' <exception cref="ClassCastException"> if the date-time cannot be cast to ChronoZonedDateTimeImpl
 		'''  or the chronology is not equal this Chronology </exception>
-		Shared Function ensureValid(Of R As ChronoLocalDate)(ByVal chrono As Chronology, ByVal temporal As java.time.temporal.Temporal) As ChronoZonedDateTimeImpl(Of R)
+		Shared Function ensureValid(Of R As ChronoLocalDate)(  chrono As Chronology,   temporal As java.time.temporal.Temporal) As ChronoZonedDateTimeImpl(Of R)
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
 			Dim other As ChronoZonedDateTimeImpl(Of R) = CType(temporal, ChronoZonedDateTimeImpl(Of R))
 			If chrono.Equals(other.chronology) = False Then Throw New ClassCastException("Chronology mismatch, required: " & chrono.id & ", actual: " & other.chronology.id)
@@ -192,7 +192,7 @@ Namespace java.time.chrono
 		''' <param name="dateTime">  the date-time, not null </param>
 		''' <param name="offset">  the zone offset, not null </param>
 		''' <param name="zone">  the zone ID, not null </param>
-		Private Sub New(ByVal dateTime As ChronoLocalDateTimeImpl(Of D), ByVal offset As java.time.ZoneOffset, ByVal zone As java.time.ZoneId)
+		Private Sub New(  dateTime As ChronoLocalDateTimeImpl(Of D),   offset As java.time.ZoneOffset,   zone As java.time.ZoneId)
 			Me.dateTime = java.util.Objects.requireNonNull(dateTime, "dateTime")
 			Me.offset = java.util.Objects.requireNonNull(offset, "offset")
 			Me.zone = java.util.Objects.requireNonNull(zone, "zone")
@@ -234,22 +234,22 @@ Namespace java.time.chrono
 			End Get
 		End Property
 
-		Public Overrides Function withZoneSameLocal(ByVal zone As java.time.ZoneId) As ChronoZonedDateTime(Of D) Implements ChronoZonedDateTime(Of D).withZoneSameLocal
+		Public Overrides Function withZoneSameLocal(  zone As java.time.ZoneId) As ChronoZonedDateTime(Of D) Implements ChronoZonedDateTime(Of D).withZoneSameLocal
 			Return ofBest(dateTime, zone, offset)
 		End Function
 
-		Public Overrides Function withZoneSameInstant(ByVal zone As java.time.ZoneId) As ChronoZonedDateTime(Of D) Implements ChronoZonedDateTime(Of D).withZoneSameInstant
+		Public Overrides Function withZoneSameInstant(  zone As java.time.ZoneId) As ChronoZonedDateTime(Of D) Implements ChronoZonedDateTime(Of D).withZoneSameInstant
 			java.util.Objects.requireNonNull(zone, "zone")
 			Return If(Me.zone.Equals(zone), Me, create(dateTime.toInstant(offset), zone))
 		End Function
 
 		'-----------------------------------------------------------------------
-		Public Overrides Function isSupported(ByVal field As java.time.temporal.TemporalField) As Boolean Implements ChronoZonedDateTime(Of D).isSupported
+		Public Overrides Function isSupported(  field As java.time.temporal.TemporalField) As Boolean Implements ChronoZonedDateTime(Of D).isSupported
 			Return TypeOf field Is java.time.temporal.ChronoField OrElse (field IsNot Nothing AndAlso field.isSupportedBy(Me))
 		End Function
 
 		'-----------------------------------------------------------------------
-		Public Overrides Function [with](ByVal field As java.time.temporal.TemporalField, ByVal newValue As Long) As ChronoZonedDateTime(Of D) Implements ChronoZonedDateTime(Of D).with
+		Public Overrides Function [with](  field As java.time.temporal.TemporalField,   newValue As Long) As ChronoZonedDateTime(Of D) Implements ChronoZonedDateTime(Of D).with
 			If TypeOf field Is java.time.temporal.ChronoField Then
 				Dim f As java.time.temporal.ChronoField = CType(field, java.time.temporal.ChronoField)
 				Select Case f
@@ -265,13 +265,13 @@ Namespace java.time.chrono
 		End Function
 
 		'-----------------------------------------------------------------------
-		Public Overrides Function plus(ByVal amountToAdd As Long, ByVal unit As java.time.temporal.TemporalUnit) As ChronoZonedDateTime(Of D) Implements ChronoZonedDateTime(Of D).plus
+		Public Overrides Function plus(  amountToAdd As Long,   unit As java.time.temporal.TemporalUnit) As ChronoZonedDateTime(Of D) Implements ChronoZonedDateTime(Of D).plus
 			If TypeOf unit Is java.time.temporal.ChronoUnit Then Return with(dateTime.plus(amountToAdd, unit))
 			Return ChronoZonedDateTimeImpl.ensureValid(chronology, unit.addTo(Me, amountToAdd)) '/ TODO: Generics replacement Risk!
 		End Function
 
 		'-----------------------------------------------------------------------
-		Public Overrides Function [until](ByVal endExclusive As java.time.temporal.Temporal, ByVal unit As java.time.temporal.TemporalUnit) As Long
+		Public Overrides Function [until](  endExclusive As java.time.temporal.Temporal,   unit As java.time.temporal.TemporalUnit) As Long
 			java.util.Objects.requireNonNull(endExclusive, "endExclusive")
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
 			Dim [end] As ChronoZonedDateTime(Of D) = CType(chronology.zonedDateTime(endExclusive), ChronoZonedDateTime(Of D))
@@ -305,18 +305,18 @@ Namespace java.time.chrono
 		''' </summary>
 		''' <param name="s"> the stream to read </param>
 		''' <exception cref="InvalidObjectException"> always </exception>
-		Private Sub readObject(ByVal s As java.io.ObjectInputStream)
+		Private Sub readObject(  s As java.io.ObjectInputStream)
 			Throw New java.io.InvalidObjectException("Deserialization via serialization delegate")
 		End Sub
 
-		Friend Sub writeExternal(ByVal out As java.io.ObjectOutput)
+		Friend Sub writeExternal(  out As java.io.ObjectOutput)
 			out.writeObject(dateTime)
 			out.writeObject(offset)
 			out.writeObject(zone)
 		End Sub
 
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-		Friend Shared Function readExternal(ByVal [in] As java.io.ObjectInput) As ChronoZonedDateTime(Of ?)
+		Friend Shared Function readExternal(  [in] As java.io.ObjectInput) As ChronoZonedDateTime(Of ?)
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 			Dim dateTime As ChronoLocalDateTime(Of ?) = CType([in].readObject(), ChronoLocalDateTime(Of ?))
 			Dim offset_Renamed As java.time.ZoneOffset = CType([in].readObject(), java.time.ZoneOffset)
@@ -326,7 +326,7 @@ Namespace java.time.chrono
 		End Function
 
 		'-------------------------------------------------------------------------
-		Public Overrides Function Equals(ByVal obj As Object) As Boolean
+		Public Overrides Function Equals(  obj As Object) As Boolean
 			If Me Is obj Then Return True
 			If TypeOf obj Is ChronoZonedDateTime Then Return compareTo(CType(obj, ChronoZonedDateTime(Of ?))) = 0
 			Return False

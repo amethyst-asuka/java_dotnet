@@ -250,7 +250,7 @@ Namespace java.security
 			''' in the new {@code PasswordProtection} object.
 			''' </summary>
 			''' <param name="password"> the password, which may be {@code null} </param>
-			Public Sub New(ByVal password As Char())
+			Public Sub New(  password As Char())
 				Me.password = If(password Is Nothing, Nothing, password.clone())
 				Me.protectionAlgorithm = Nothing
 				Me.protectionParameters = Nothing
@@ -277,7 +277,7 @@ Namespace java.security
 			'''     {@code null}
 			''' 
 			''' @since 1.8 </exception>
-			Public Sub New(ByVal password As Char(), ByVal protectionAlgorithm As String, ByVal protectionParameters As java.security.spec.AlgorithmParameterSpec)
+			Public Sub New(  password As Char(),   protectionAlgorithm As String,   protectionParameters As java.security.spec.AlgorithmParameterSpec)
 				If protectionAlgorithm Is Nothing Then Throw New NullPointerException("invalid null input")
 				Me.password = If(password Is Nothing, Nothing, password.clone())
 				Me.protectionAlgorithm = protectionAlgorithm
@@ -377,7 +377,7 @@ Namespace java.security
 			''' </summary>
 			''' <param name="handler"> the CallbackHandler </param>
 			''' <exception cref="NullPointerException"> if handler is null </exception>
-			Public Sub New(ByVal handler As CallbackHandler)
+			Public Sub New(  handler As CallbackHandler)
 				If handler Is Nothing Then Throw New NullPointerException("handler must not be null")
 				Me.handler = handler
 			End Sub
@@ -472,7 +472,7 @@ Namespace java.security
 			'''      or if the {@code PrivateKey} algorithm
 			'''      does not match the algorithm of the {@code PublicKey}
 			'''      in the end entity {@code Certificate} (at index 0) </exception>
-			Public Sub New(ByVal privateKey As PrivateKey, ByVal chain As java.security.cert.Certificate())
+			Public Sub New(  privateKey As PrivateKey,   chain As java.security.cert.Certificate())
 				Me.New(privateKey, chain, Collections.emptySet(Of Attribute)())
 			End Sub
 
@@ -501,7 +501,7 @@ Namespace java.security
 			'''      in the end entity {@code Certificate} (at index 0)
 			''' 
 			''' @since 1.8 </exception>
-			Public Sub New(ByVal privateKey As PrivateKey, ByVal chain As java.security.cert.Certificate(), ByVal attributes As [Set](Of Attribute))
+			Public Sub New(  privateKey As PrivateKey,   chain As java.security.cert.Certificate(),   attributes As [Set](Of Attribute))
 
 				If privateKey Is Nothing OrElse chain Is Nothing OrElse attributes Is Nothing Then Throw New NullPointerException("invalid null input")
 				If chain.Length = 0 Then Throw New IllegalArgumentException("invalid zero-length input chain")
@@ -613,7 +613,7 @@ Namespace java.security
 			''' </param>
 			''' <exception cref="NullPointerException"> if {@code secretKey}
 			'''      is {@code null} </exception>
-			Public Sub New(ByVal secretKey As javax.crypto.SecretKey)
+			Public Sub New(  secretKey As javax.crypto.SecretKey)
 				If secretKey Is Nothing Then Throw New NullPointerException("invalid null input")
 				Me.sKey = secretKey
 				Me.attributes = Collections.emptySet(Of Attribute)()
@@ -633,7 +633,7 @@ Namespace java.security
 			'''     {@code attributes} is {@code null}
 			''' 
 			''' @since 1.8 </exception>
-			Public Sub New(ByVal secretKey As javax.crypto.SecretKey, ByVal attributes As [Set](Of Attribute))
+			Public Sub New(  secretKey As javax.crypto.SecretKey,   attributes As [Set](Of Attribute))
 
 				If secretKey Is Nothing OrElse attributes Is Nothing Then Throw New NullPointerException("invalid null input")
 				Me.sKey = secretKey
@@ -691,7 +691,7 @@ Namespace java.security
 			''' </param>
 			''' <exception cref="NullPointerException"> if
 			'''      {@code trustedCert} is {@code null} </exception>
-			Public Sub New(ByVal trustedCert As java.security.cert.Certificate)
+			Public Sub New(  trustedCert As java.security.cert.Certificate)
 				If trustedCert Is Nothing Then Throw New NullPointerException("invalid null input")
 				Me.cert = trustedCert
 				Me.attributes = Collections.emptySet(Of Attribute)()
@@ -711,7 +711,7 @@ Namespace java.security
 			'''     {@code attributes} is {@code null}
 			''' 
 			''' @since 1.8 </exception>
-			Public Sub New(ByVal trustedCert As java.security.cert.Certificate, ByVal attributes As [Set](Of Attribute))
+			Public Sub New(  trustedCert As java.security.cert.Certificate,   attributes As [Set](Of Attribute))
 				If trustedCert Is Nothing OrElse attributes Is Nothing Then Throw New NullPointerException("invalid null input")
 				Me.cert = trustedCert
 				Me.attributes = Collections.unmodifiableSet(New HashSet(Of )(attributes))
@@ -755,7 +755,7 @@ Namespace java.security
 		''' <param name="keyStoreSpi"> the provider implementation. </param>
 		''' <param name="provider"> the provider. </param>
 		''' <param name="type"> the keystore type. </param>
-		Protected Friend Sub New(ByVal keyStoreSpi As KeyStoreSpi, ByVal provider_Renamed As Provider, ByVal type As String)
+		Protected Friend Sub New(  keyStoreSpi As KeyStoreSpi,   provider_Renamed As Provider,   type As String)
 			Me.keyStoreSpi = keyStoreSpi
 			Me.provider = provider_Renamed
 			Me.type = type
@@ -788,7 +788,7 @@ Namespace java.security
 		'''          specified type.
 		''' </exception>
 		''' <seealso cref= Provider </seealso>
-		Public Shared Function getInstance(ByVal type As String) As KeyStore
+		Public Shared Function getInstance(  type As String) As KeyStore
 			Try
 				Dim objs As Object() = Security.getImpl(type, "KeyStore", CStr(Nothing))
 				Return New KeyStore(CType(objs(0), KeyStoreSpi), CType(objs(1), Provider), type)
@@ -831,7 +831,7 @@ Namespace java.security
 		'''          or empty.
 		''' </exception>
 		''' <seealso cref= Provider </seealso>
-		Public Shared Function getInstance(ByVal type As String, ByVal provider_Renamed As String) As KeyStore
+		Public Shared Function getInstance(  type As String,   provider_Renamed As String) As KeyStore
 			If provider_Renamed Is Nothing OrElse provider_Renamed.length() = 0 Then Throw New IllegalArgumentException("missing provider")
 			Try
 				Dim objs As Object() = Security.getImpl(type, "KeyStore", provider_Renamed)
@@ -868,7 +868,7 @@ Namespace java.security
 		''' <seealso cref= Provider
 		''' 
 		''' @since 1.4 </seealso>
-		Public Shared Function getInstance(ByVal type As String, ByVal provider_Renamed As Provider) As KeyStore
+		Public Shared Function getInstance(  type As String,   provider_Renamed As Provider) As KeyStore
 			If provider_Renamed Is Nothing Then Throw New IllegalArgumentException("missing provider")
 			Try
 				Dim objs As Object() = Security.getImpl(type, "KeyStore", provider_Renamed)
@@ -952,7 +952,7 @@ Namespace java.security
 		''' key cannot be found </exception>
 		''' <exception cref="UnrecoverableKeyException"> if the key cannot be recovered
 		''' (e.g., the given password is wrong). </exception>
-		Public Function getKey(ByVal [alias] As String, ByVal password As Char()) As Key
+		Public Function getKey(  [alias] As String,   password As Char()) As Key
 			If Not initialized Then Throw New KeyStoreException("Uninitialized keystore")
 			Return keyStoreSpi.engineGetKey([alias], password)
 		End Function
@@ -972,7 +972,7 @@ Namespace java.security
 		''' </returns>
 		''' <exception cref="KeyStoreException"> if the keystore has not been initialized
 		''' (loaded). </exception>
-		Public Function getCertificateChain(ByVal [alias] As String) As java.security.cert.Certificate()
+		Public Function getCertificateChain(  [alias] As String) As java.security.cert.Certificate()
 			If Not initialized Then Throw New KeyStoreException("Uninitialized keystore")
 			Return keyStoreSpi.engineGetCertificateChain([alias])
 		End Function
@@ -1000,7 +1000,7 @@ Namespace java.security
 		''' </returns>
 		''' <exception cref="KeyStoreException"> if the keystore has not been initialized
 		''' (loaded). </exception>
-		Public Function getCertificate(ByVal [alias] As String) As java.security.cert.Certificate
+		Public Function getCertificate(  [alias] As String) As java.security.cert.Certificate
 			If Not initialized Then Throw New KeyStoreException("Uninitialized keystore")
 			Return keyStoreSpi.engineGetCertificate([alias])
 		End Function
@@ -1015,7 +1015,7 @@ Namespace java.security
 		''' </returns>
 		''' <exception cref="KeyStoreException"> if the keystore has not been initialized
 		''' (loaded). </exception>
-		Public Function getCreationDate(ByVal [alias] As String) As Date
+		Public Function getCreationDate(  [alias] As String) As Date
 			If Not initialized Then Throw New KeyStoreException("Uninitialized keystore")
 			Return keyStoreSpi.engineGetCreationDate([alias])
 		End Function
@@ -1042,7 +1042,7 @@ Namespace java.security
 		''' <exception cref="KeyStoreException"> if the keystore has not been initialized
 		''' (loaded), the given key cannot be protected, or this operation fails
 		''' for some other reason </exception>
-		Public Sub setKeyEntry(ByVal [alias] As String, ByVal key As Key, ByVal password As Char(), ByVal chain As java.security.cert.Certificate())
+		Public Sub setKeyEntry(  [alias] As String,   key As Key,   password As Char(),   chain As java.security.cert.Certificate())
 			If Not initialized Then Throw New KeyStoreException("Uninitialized keystore")
 			If (TypeOf key Is PrivateKey) AndAlso (chain Is Nothing OrElse chain.Length = 0) Then Throw New IllegalArgumentException("Private key must be " & "accompanied by certificate " & "chain")
 			keyStoreSpi.engineSetKeyEntry([alias], key, password, chain)
@@ -1071,7 +1071,7 @@ Namespace java.security
 		''' </param>
 		''' <exception cref="KeyStoreException"> if the keystore has not been initialized
 		''' (loaded), or if this operation fails for some other reason. </exception>
-		Public Sub setKeyEntry(ByVal [alias] As String, ByVal key As SByte(), ByVal chain As java.security.cert.Certificate())
+		Public Sub setKeyEntry(  [alias] As String,   key As SByte(),   chain As java.security.cert.Certificate())
 			If Not initialized Then Throw New KeyStoreException("Uninitialized keystore")
 			keyStoreSpi.engineSetKeyEntry([alias], key, chain)
 		End Sub
@@ -1093,7 +1093,7 @@ Namespace java.security
 		''' or the given alias already exists and does not identify an
 		''' entry containing a trusted certificate,
 		''' or this operation fails for some other reason. </exception>
-		Public Sub setCertificateEntry(ByVal [alias] As String, ByVal cert As java.security.cert.Certificate)
+		Public Sub setCertificateEntry(  [alias] As String,   cert As java.security.cert.Certificate)
 			If Not initialized Then Throw New KeyStoreException("Uninitialized keystore")
 			keyStoreSpi.engineSetCertificateEntry([alias], cert)
 		End Sub
@@ -1105,7 +1105,7 @@ Namespace java.security
 		''' </param>
 		''' <exception cref="KeyStoreException"> if the keystore has not been initialized,
 		''' or if the entry cannot be removed. </exception>
-		Public Sub deleteEntry(ByVal [alias] As String)
+		Public Sub deleteEntry(  [alias] As String)
 			If Not initialized Then Throw New KeyStoreException("Uninitialized keystore")
 			keyStoreSpi.engineDeleteEntry([alias])
 		End Sub
@@ -1131,7 +1131,7 @@ Namespace java.security
 		''' </returns>
 		''' <exception cref="KeyStoreException"> if the keystore has not been initialized
 		''' (loaded). </exception>
-		Public Function containsAlias(ByVal [alias] As String) As Boolean
+		Public Function containsAlias(  [alias] As String) As Boolean
 			If Not initialized Then Throw New KeyStoreException("Uninitialized keystore")
 			Return keyStoreSpi.engineContainsAlias([alias])
 		End Function
@@ -1161,7 +1161,7 @@ Namespace java.security
 		''' </returns>
 		''' <exception cref="KeyStoreException"> if the keystore has not been initialized
 		''' (loaded). </exception>
-		Public Function isKeyEntry(ByVal [alias] As String) As Boolean
+		Public Function isKeyEntry(  [alias] As String) As Boolean
 			If Not initialized Then Throw New KeyStoreException("Uninitialized keystore")
 			Return keyStoreSpi.engineIsKeyEntry([alias])
 		End Function
@@ -1179,7 +1179,7 @@ Namespace java.security
 		''' </returns>
 		''' <exception cref="KeyStoreException"> if the keystore has not been initialized
 		''' (loaded). </exception>
-		Public Function isCertificateEntry(ByVal [alias] As String) As Boolean
+		Public Function isCertificateEntry(  [alias] As String) As Boolean
 			If Not initialized Then Throw New KeyStoreException("Uninitialized keystore")
 			Return keyStoreSpi.engineIsCertificateEntry([alias])
 		End Function
@@ -1209,7 +1209,7 @@ Namespace java.security
 		''' </returns>
 		''' <exception cref="KeyStoreException"> if the keystore has not been initialized
 		''' (loaded). </exception>
-		Public Function getCertificateAlias(ByVal cert As java.security.cert.Certificate) As String
+		Public Function getCertificateAlias(  cert As java.security.cert.Certificate) As String
 			If Not initialized Then Throw New KeyStoreException("Uninitialized keystore")
 			Return keyStoreSpi.engineGetCertificateAlias(cert)
 		End Function
@@ -1228,7 +1228,7 @@ Namespace java.security
 		''' algorithm could not be found </exception>
 		''' <exception cref="CertificateException"> if any of the certificates included in
 		''' the keystore data could not be stored </exception>
-		Public Sub store(ByVal stream As OutputStream, ByVal password As Char())
+		Public Sub store(  stream As OutputStream,   password As Char())
 			If Not initialized Then Throw New KeyStoreException("Uninitialized keystore")
 			keyStoreSpi.engineStore(stream, password)
 		End Sub
@@ -1252,7 +1252,7 @@ Namespace java.security
 		'''          the keystore data could not be stored
 		''' 
 		''' @since 1.5 </exception>
-		Public Sub store(ByVal param As LoadStoreParameter)
+		Public Sub store(  param As LoadStoreParameter)
 			If Not initialized Then Throw New KeyStoreException("Uninitialized keystore")
 			keyStoreSpi.engineStore(param)
 		End Sub
@@ -1289,7 +1289,7 @@ Namespace java.security
 		''' the integrity of the keystore cannot be found </exception>
 		''' <exception cref="CertificateException"> if any of the certificates in the
 		''' keystore could not be loaded </exception>
-		Public Sub load(ByVal stream As InputStream, ByVal password As Char())
+		Public Sub load(  stream As InputStream,   password As Char())
 			keyStoreSpi.engineLoad(stream, password)
 			initialized = True
 		End Sub
@@ -1319,7 +1319,7 @@ Namespace java.security
 		'''          keystore could not be loaded
 		''' 
 		''' @since 1.5 </exception>
-		Public Sub load(ByVal param As LoadStoreParameter)
+		Public Sub load(  param As LoadStoreParameter)
 
 			keyStoreSpi.engineLoad(param)
 			initialized = True
@@ -1352,7 +1352,7 @@ Namespace java.security
 		''' <seealso cref= #setEntry(String, KeyStore.Entry, KeyStore.ProtectionParameter)
 		''' 
 		''' @since 1.5 </seealso>
-		Public Function getEntry(ByVal [alias] As String, ByVal protParam As ProtectionParameter) As Entry
+		Public Function getEntry(  [alias] As String,   protParam As ProtectionParameter) As Entry
 
 			If [alias] Is Nothing Then Throw New NullPointerException("invalid null input")
 			If Not initialized Then Throw New KeyStoreException("Uninitialized keystore")
@@ -1382,7 +1382,7 @@ Namespace java.security
 		''' <seealso cref= #getEntry(String, KeyStore.ProtectionParameter)
 		''' 
 		''' @since 1.5 </seealso>
-		Public Sub setEntry(ByVal [alias] As String, ByVal entry As Entry, ByVal protParam As ProtectionParameter)
+		Public Sub setEntry(  [alias] As String,   entry As Entry,   protParam As ProtectionParameter)
 			If [alias] Is Nothing OrElse entry Is Nothing Then Throw New NullPointerException("invalid null input")
 			If Not initialized Then Throw New KeyStoreException("Uninitialized keystore")
 			keyStoreSpi.engineSetEntry([alias], entry, protParam)
@@ -1407,7 +1407,7 @@ Namespace java.security
 		'''          initialized (loaded)
 		''' 
 		''' @since 1.5 </exception>
-		Public Function entryInstanceOf(ByVal [alias] As String, ByVal entryClass As [Class]) As Boolean
+		Public Function entryInstanceOf(  [alias] As String,   entryClass As [Class]) As Boolean
 
 			If [alias] Is Nothing OrElse entryClass Is Nothing Then Throw New NullPointerException("invalid null input")
 			If Not initialized Then Throw New KeyStoreException("Uninitialized keystore")
@@ -1463,7 +1463,7 @@ Namespace java.security
 			'''   operation </exception>
 			''' <exception cref="IllegalStateException"> if the getKeyStore method has
 			'''   not been invoked prior to calling this method </exception>
-			Public MustOverride Function getProtectionParameter(ByVal [alias] As String) As ProtectionParameter
+			Public MustOverride Function getProtectionParameter(  [alias] As String) As ProtectionParameter
 
 			''' <summary>
 			''' Returns a new Builder that encapsulates the given KeyStore.
@@ -1483,7 +1483,7 @@ Namespace java.security
 			'''   protectionParameters is null </exception>
 			''' <exception cref="IllegalArgumentException"> if the keyStore has not been
 			'''   initialized </exception>
-			Public Shared Function newInstance(ByVal keyStore_Renamed As KeyStore, ByVal protectionParameter As ProtectionParameter) As Builder
+			Public Shared Function newInstance(  keyStore_Renamed As KeyStore,   protectionParameter As ProtectionParameter) As Builder
 				If (keyStore_Renamed Is Nothing) OrElse (protectionParameter Is Nothing) Then Throw New NullPointerException
 				If keyStore_Renamed.initialized = False Then Throw New IllegalArgumentException("KeyStore not initialized")
 				Return New BuilderAnonymousInnerClassHelper
@@ -1502,7 +1502,7 @@ Namespace java.security
 					End Get
 				End Property
 
-				Public Overrides Function getProtectionParameter(ByVal [alias] As String) As ProtectionParameter
+				Public Overrides Function getProtectionParameter(  [alias] As String) As ProtectionParameter
 					If [alias] Is Nothing Then Throw New NullPointerException
 					If getCalled = False Then Throw New IllegalStateException("getKeyStore() must be called first")
 					Return protectionParameter
@@ -1551,7 +1551,7 @@ Namespace java.security
 			''' <exception cref="IllegalArgumentException"> if protection is not an instance
 			'''   of either PasswordProtection or CallbackHandlerProtection; or
 			'''   if file does not exist or does not refer to a normal file </exception>
-			Public Shared Function newInstance(ByVal type As String, ByVal provider_Renamed As Provider, ByVal file_Renamed As File, ByVal protection As ProtectionParameter) As Builder
+			Public Shared Function newInstance(  type As String,   provider_Renamed As Provider,   file_Renamed As File,   protection As ProtectionParameter) As Builder
 				If (type Is Nothing) OrElse (file_Renamed Is Nothing) OrElse (protection Is Nothing) Then Throw New NullPointerException
 				If (TypeOf protection Is PasswordProtection = False) AndAlso (TypeOf protection Is CallbackHandlerProtection = False) Then Throw New IllegalArgumentException("Protection must be PasswordProtection or " & "CallbackHandlerProtection")
 				If file_Renamed.file = False Then Throw New IllegalArgumentException("File does not exist or it does not refer " & "to a normal file: " & file_Renamed)
@@ -1572,7 +1572,7 @@ Namespace java.security
 
 				Private oldException As Throwable
 
-				Friend Sub New(ByVal type As String, ByVal provider_Renamed As Provider, ByVal file_Renamed As File, ByVal protection As ProtectionParameter, ByVal context As AccessControlContext)
+				Friend Sub New(  type As String,   provider_Renamed As Provider,   file_Renamed As File,   protection As ProtectionParameter,   context As AccessControlContext)
 					Me.type = type
 					Me.provider = provider_Renamed
 					Me.file_Renamed = file_Renamed
@@ -1646,7 +1646,7 @@ Namespace java.security
 				End Class
 
 				<MethodImpl(MethodImplOptions.Synchronized)> _
-				Public Overrides Function getProtectionParameter(ByVal [alias] As String) As ProtectionParameter
+				Public Overrides Function getProtectionParameter(  [alias] As String) As ProtectionParameter
 					If [alias] Is Nothing Then Throw New NullPointerException
 					If keyStore_Renamed Is Nothing Then Throw New IllegalStateException("getKeyStore() must be called first")
 					Return keyProtection
@@ -1679,7 +1679,7 @@ Namespace java.security
 			'''   be instantiated (or null) </param>
 			''' <param name="protection"> the ProtectionParameter securing the Keystore </param>
 			''' <exception cref="NullPointerException"> if type or protection is null </exception>
-			Public Shared Function newInstance(ByVal type As String, ByVal provider_Renamed As Provider, ByVal protection As ProtectionParameter) As Builder
+			Public Shared Function newInstance(  type As String,   provider_Renamed As Provider,   protection As ProtectionParameter) As Builder
 				If (type Is Nothing) OrElse (protection Is Nothing) Then Throw New NullPointerException
 				Dim context As AccessControlContext = AccessController.context
 				Return New BuilderAnonymousInnerClassHelper
@@ -1746,7 +1746,7 @@ Namespace java.security
 					End Get
 				End Property
 
-				Public Overrides Function getProtectionParameter(ByVal [alias] As String) As ProtectionParameter
+				Public Overrides Function getProtectionParameter(  [alias] As String) As ProtectionParameter
 					If [alias] Is Nothing Then Throw New NullPointerException
 					If getCalled = False Then Throw New IllegalStateException("getKeyStore() must be called first")
 					Return protection
@@ -1760,7 +1760,7 @@ Namespace java.security
 
 			Private ReadOnly protection As ProtectionParameter
 
-			Friend Sub New(ByVal protection As ProtectionParameter)
+			Friend Sub New(  protection As ProtectionParameter)
 				Me.protection = protection
 			End Sub
 

@@ -39,7 +39,7 @@ Namespace java.awt.geom
 		Friend affine As AffineTransform
 		Friend index As Integer
 
-		Friend Sub New(ByVal l As Line2D, ByVal at As AffineTransform)
+		Friend Sub New(  l As Line2D,   at As AffineTransform)
 			Me.line = l
 			Me.affine = at
 		End Sub
@@ -90,7 +90,7 @@ Namespace java.awt.geom
 		''' <seealso cref= #SEG_QUADTO </seealso>
 		''' <seealso cref= #SEG_CUBICTO </seealso>
 		''' <seealso cref= #SEG_CLOSE </seealso>
-		Public Overridable Function currentSegment(ByVal coords As Single()) As Integer Implements PathIterator.currentSegment
+		Public Overridable Function currentSegment(  coords As Single()) As Integer Implements PathIterator.currentSegment
 			If done Then Throw New NoSuchElementException("line iterator out of bounds")
 			Dim type As Integer
 			If index = 0 Then
@@ -123,7 +123,7 @@ Namespace java.awt.geom
 		''' <seealso cref= #SEG_QUADTO </seealso>
 		''' <seealso cref= #SEG_CUBICTO </seealso>
 		''' <seealso cref= #SEG_CLOSE </seealso>
-		Public Overridable Function currentSegment(ByVal coords As Double()) As Integer Implements PathIterator.currentSegment
+		Public Overridable Function currentSegment(  coords As Double()) As Integer Implements PathIterator.currentSegment
 			If done Then Throw New NoSuchElementException("line iterator out of bounds")
 			Dim type As Integer
 			If index = 0 Then

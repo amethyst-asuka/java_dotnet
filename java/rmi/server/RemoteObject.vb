@@ -63,7 +63,7 @@ Namespace java.rmi.server
 		''' Creates a remote object, initialized with the specified remote
 		''' reference. </summary>
 		''' <param name="newref"> remote reference </param>
-		Protected Friend Sub New(ByVal newref As RemoteRef)
+		Protected Friend Sub New(  newref As RemoteRef)
 			ref = newref
 		End Sub
 
@@ -96,7 +96,7 @@ Namespace java.rmi.server
 		''' <exception cref="NoSuchObjectException"> if the stub for the
 		''' remote object could not be found.
 		''' @since 1.2 </exception>
-		Public Shared Function toStub(ByVal obj As java.rmi.Remote) As java.rmi.Remote
+		Public Shared Function toStub(  obj As java.rmi.Remote) As java.rmi.Remote
 			If TypeOf obj Is RemoteStub OrElse (obj IsNot Nothing AndAlso Proxy.isProxyClass(obj.GetType()) AndAlso TypeOf Proxy.getInvocationHandler(obj) Is RemoteObjectInvocationHandler) Then
 				Return obj
 			Else
@@ -126,7 +126,7 @@ Namespace java.rmi.server
 		''' <param name="obj">     the Object to compare with </param>
 		''' <returns>  true if these Objects are equal; false otherwise. </returns>
 		''' <seealso cref=             java.util.Hashtable </seealso>
-		Public Overrides Function Equals(ByVal obj As Object) As Boolean
+		Public Overrides Function Equals(  obj As Object) As Boolean
 			If TypeOf obj Is RemoteObject Then
 				If ref Is Nothing Then
 					Return obj Is Me
@@ -351,7 +351,7 @@ Namespace java.rmi.server
 		''' <code>writeExternal</code> method or read by the
 		''' <code>readExternal</code> method.
 		''' </summary>
-		Private Sub writeObject(ByVal out As java.io.ObjectOutputStream)
+		Private Sub writeObject(  out As java.io.ObjectOutputStream)
 			If ref Is Nothing Then
 				Throw New java.rmi.MarshalException("Invalid remote object")
 			Else
@@ -410,7 +410,7 @@ Namespace java.rmi.server
 		''' case this object's <code>ref</code> field will be set to an
 		''' instance of that implementation-specific class.
 		''' </summary>
-		Private Sub readObject(ByVal [in] As java.io.ObjectInputStream)
+		Private Sub readObject(  [in] As java.io.ObjectInputStream)
 			Dim refClassName As String = [in].readUTF()
 			If refClassName Is Nothing OrElse refClassName.length() = 0 Then
 	'            

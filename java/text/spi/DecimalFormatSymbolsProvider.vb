@@ -64,7 +64,7 @@ Namespace java.text.spi
 		'''     getAvailableLocales()}. </exception>
 		''' <returns> a <code>DecimalFormatSymbols</code> instance. </returns>
 		''' <seealso cref= java.text.DecimalFormatSymbols#getInstance(java.util.Locale) </seealso>
-		Public MustOverride Function getInstance(ByVal locale As java.util.Locale) As java.text.DecimalFormatSymbols
+		Public MustOverride Function getInstance(  locale As java.util.Locale) As java.text.DecimalFormatSymbols
 	End Class
 
 End Namespace

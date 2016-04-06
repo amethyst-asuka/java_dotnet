@@ -122,11 +122,11 @@ Namespace java.net
 		''' </exception>
 		''' <seealso cref= #setValue </seealso>
 		''' <seealso cref= #setVersion </seealso>
-		Public Sub New(ByVal name As String, ByVal value As String)
+		Public Sub New(  name As String,   value As String)
 			Me.New(name, value, Nothing) 'header
 		End Sub
 
-		Private Sub New(ByVal name As String, ByVal value As String, ByVal header As String)
+		Private Sub New(  name As String,   value As String,   header As String)
 			name = name.Trim()
 			If name.length() = 0 OrElse (Not isToken(name)) OrElse name.Chars(0) = "$"c Then Throw New IllegalArgumentException("Illegal cookie name")
 
@@ -158,7 +158,7 @@ Namespace java.net
 		'''          the cookie name contains illegal characters. </exception>
 		''' <exception cref="NullPointerException">
 		'''          if the header string is {@code null} </exception>
-		Public Shared Function parse(ByVal header As String) As IList(Of HttpCookie)
+		Public Shared Function parse(  header As String) As IList(Of HttpCookie)
 			Return parse(header, False)
 		End Function
 
@@ -166,7 +166,7 @@ Namespace java.net
 		' create the cookie, in the cookie itself. This can be useful for filtering
 		' Set-Cookie[2] headers, using the internal parsing logic defined in this
 		' class.
-		Private Shared Function parse(ByVal header As String, ByVal retainHeader As Boolean) As IList(Of HttpCookie)
+		Private Shared Function parse(  header As String,   retainHeader As Boolean) As IList(Of HttpCookie)
 
 			Dim version_Renamed As Integer = guessCookieVersion(header)
 
@@ -234,7 +234,7 @@ Namespace java.net
 		''' </param>
 		''' <seealso cref=  #getComment </seealso>
 		Public Property comment As String
-			Set(ByVal purpose As String)
+			Set(  purpose As String)
 				comment = purpose
 			End Set
 			Get
@@ -253,7 +253,7 @@ Namespace java.net
 		''' </param>
 		''' <seealso cref=  #getCommentURL </seealso>
 		Public Property commentURL As String
-			Set(ByVal purpose As String)
+			Set(  purpose As String)
 				commentURL = purpose
 			End Set
 			Get
@@ -271,7 +271,7 @@ Namespace java.net
 		''' </param>
 		''' <seealso cref=  #getDiscard </seealso>
 		Public Property discard As Boolean
-			Set(ByVal discard As Boolean)
+			Set(  discard As Boolean)
 				toDiscard = discard
 			End Set
 			Get
@@ -290,7 +290,7 @@ Namespace java.net
 		''' </param>
 		''' <seealso cref=  #getPortlist </seealso>
 		Public Property portlist As String
-			Set(ByVal ports As String)
+			Set(  ports As String)
 				portlist = ports
 			End Set
 			Get
@@ -315,7 +315,7 @@ Namespace java.net
 		''' </param>
 		''' <seealso cref=  #getDomain </seealso>
 		Public Property domain As String
-			Set(ByVal pattern As String)
+			Set(  pattern As String)
 				If pattern IsNot Nothing Then
 					domain = pattern.ToLower()
 				Else
@@ -347,7 +347,7 @@ Namespace java.net
 		''' </param>
 		''' <seealso cref=  #getMaxAge </seealso>
 		Public Property maxAge As Long
-			Set(ByVal expiry As Long)
+			Set(  expiry As Long)
 				maxAge = expiry
 			End Set
 			Get
@@ -374,7 +374,7 @@ Namespace java.net
 		''' </param>
 		''' <seealso cref=  #getPath </seealso>
 		Public Property path As String
-			Set(ByVal uri As String)
+			Set(  uri As String)
 				path = uri
 			End Set
 			Get
@@ -396,7 +396,7 @@ Namespace java.net
 		''' </param>
 		''' <seealso cref=  #getSecure </seealso>
 		Public Property secure As Boolean
-			Set(ByVal flag As Boolean)
+			Set(  flag As Boolean)
 				secure = flag
 			End Set
 			Get
@@ -430,7 +430,7 @@ Namespace java.net
 		''' </param>
 		''' <seealso cref=  #getValue </seealso>
 		Public Property value As String
-			Set(ByVal newValue As String)
+			Set(  newValue As String)
 				value = newValue
 			End Set
 			Get
@@ -453,7 +453,7 @@ Namespace java.net
 			Get
 				Return version
 			End Get
-			Set(ByVal v As Integer)
+			Set(  v As Integer)
 				If v <> 0 AndAlso v <> 1 Then Throw New IllegalArgumentException("cookie version should be 0 or 1")
     
 				version = v
@@ -473,7 +473,7 @@ Namespace java.net
 			Get
 				Return httpOnly
 			End Get
-			Set(ByVal httpOnly As Boolean)
+			Set(  httpOnly As Boolean)
 				Me.httpOnly = httpOnly
 			End Set
 		End Property
@@ -528,7 +528,7 @@ Namespace java.net
 		'''         the host name in question
 		''' </param>
 		''' <returns>  {@code true} if they domain-matches; {@code false} if not </returns>
-		Public Shared Function domainMatches(ByVal domain As String, ByVal host As String) As Boolean
+		Public Shared Function domainMatches(  domain As String,   host As String) As Boolean
 			If domain Is Nothing OrElse host Is Nothing Then Return False
 
 			' if there's no embedded dot in domain and domain is not .local
@@ -584,7 +584,7 @@ Namespace java.net
 		''' </summary>
 		''' <returns>  {@code true} if two HTTP cookies equal to each other;
 		'''          otherwise, {@code false} </returns>
-		Public Overrides Function Equals(ByVal obj As Object) As Boolean
+		Public Overrides Function Equals(  obj As Object) As Boolean
 			If obj Is Me Then Return True
 			If Not(TypeOf obj Is HttpCookie) Then Return False
 			Dim other As HttpCookie = CType(obj, HttpCookie)
@@ -644,7 +644,7 @@ Namespace java.net
 	'     * @return  {@code true} if the {@code String} is a token;
 	'     *          {@code false} if it is not
 	'     
-		Private Shared Function isToken(ByVal value As String) As Boolean
+		Private Shared Function isToken(  value As String) As Boolean
 			Dim len As Integer = value.length()
 
 			For i As Integer = 0 To len - 1
@@ -666,7 +666,7 @@ Namespace java.net
 	'     * @throws  IllegalArgumentException
 	'     *          if header string violates the cookie specification
 	'     
-		Private Shared Function parseInternal(ByVal header As String, ByVal retainHeader As Boolean) As HttpCookie
+		Private Shared Function parseInternal(  header As String,   retainHeader As Boolean) As HttpCookie
 			Dim cookie As HttpCookie = Nothing
 			Dim namevaluePair As String = Nothing
 
@@ -718,7 +718,7 @@ Namespace java.net
 	'     * use a map to simulate method dispatch
 	'     
 		Friend Interface CookieAttributeAssignor
-				Sub assign(ByVal cookie As HttpCookie, ByVal attrName As String, ByVal attrValue As String)
+				Sub assign(  cookie As HttpCookie,   attrName As String,   attrValue As String)
 		End Interface
 		Friend Shared ReadOnly assignors As IDictionary(Of String, CookieAttributeAssignor) = New Dictionary(Of String, CookieAttributeAssignor)
 		Shared Sub New()
@@ -752,7 +752,7 @@ Namespace java.net
 		Private Class CookieAttributeAssignorAnonymousInnerClassHelper
 			Implements CookieAttributeAssignor
 
-			Public Overridable Sub assign(ByVal cookie As HttpCookie, ByVal attrName As String, ByVal attrValue As String)
+			Public Overridable Sub assign(  cookie As HttpCookie,   attrName As String,   attrValue As String)
 				If cookie.comment Is Nothing Then cookie.comment = attrValue
 			End Sub
 		End Class
@@ -760,7 +760,7 @@ Namespace java.net
 		Private Class CookieAttributeAssignorAnonymousInnerClassHelper2
 			Implements CookieAttributeAssignor
 
-			Public Overridable Sub assign(ByVal cookie As HttpCookie, ByVal attrName As String, ByVal attrValue As String)
+			Public Overridable Sub assign(  cookie As HttpCookie,   attrName As String,   attrValue As String)
 				If cookie.commentURL Is Nothing Then cookie.commentURL = attrValue
 			End Sub
 		End Class
@@ -768,7 +768,7 @@ Namespace java.net
 		Private Class CookieAttributeAssignorAnonymousInnerClassHelper3
 			Implements CookieAttributeAssignor
 
-			Public Overridable Sub assign(ByVal cookie As HttpCookie, ByVal attrName As String, ByVal attrValue As String)
+			Public Overridable Sub assign(  cookie As HttpCookie,   attrName As String,   attrValue As String)
 				cookie.discard = True
 			End Sub
 		End Class
@@ -776,7 +776,7 @@ Namespace java.net
 		Private Class CookieAttributeAssignorAnonymousInnerClassHelper4
 			Implements CookieAttributeAssignor
 
-			Public Overridable Sub assign(ByVal cookie As HttpCookie, ByVal attrName As String, ByVal attrValue As String)
+			Public Overridable Sub assign(  cookie As HttpCookie,   attrName As String,   attrValue As String)
 				If cookie.domain Is Nothing Then cookie.domain = attrValue
 			End Sub
 		End Class
@@ -784,7 +784,7 @@ Namespace java.net
 		Private Class CookieAttributeAssignorAnonymousInnerClassHelper5
 			Implements CookieAttributeAssignor
 
-			Public Overridable Sub assign(ByVal cookie As HttpCookie, ByVal attrName As String, ByVal attrValue As String)
+			Public Overridable Sub assign(  cookie As HttpCookie,   attrName As String,   attrValue As String)
 				Try
 					Dim maxage As Long = Convert.ToInt64(attrValue)
 					If cookie.maxAge = MAX_AGE_UNSPECIFIED Then cookie.maxAge = maxage
@@ -797,7 +797,7 @@ Namespace java.net
 		Private Class CookieAttributeAssignorAnonymousInnerClassHelper6
 			Implements CookieAttributeAssignor
 
-			Public Overridable Sub assign(ByVal cookie As HttpCookie, ByVal attrName As String, ByVal attrValue As String)
+			Public Overridable Sub assign(  cookie As HttpCookie,   attrName As String,   attrValue As String)
 				If cookie.path Is Nothing Then cookie.path = attrValue
 			End Sub
 		End Class
@@ -805,7 +805,7 @@ Namespace java.net
 		Private Class CookieAttributeAssignorAnonymousInnerClassHelper7
 			Implements CookieAttributeAssignor
 
-			Public Overridable Sub assign(ByVal cookie As HttpCookie, ByVal attrName As String, ByVal attrValue As String)
+			Public Overridable Sub assign(  cookie As HttpCookie,   attrName As String,   attrValue As String)
 				If cookie.portlist Is Nothing Then cookie.portlist = If(attrValue Is Nothing, "", attrValue)
 			End Sub
 		End Class
@@ -813,7 +813,7 @@ Namespace java.net
 		Private Class CookieAttributeAssignorAnonymousInnerClassHelper8
 			Implements CookieAttributeAssignor
 
-			Public Overridable Sub assign(ByVal cookie As HttpCookie, ByVal attrName As String, ByVal attrValue As String)
+			Public Overridable Sub assign(  cookie As HttpCookie,   attrName As String,   attrValue As String)
 				cookie.secure = True
 			End Sub
 		End Class
@@ -821,7 +821,7 @@ Namespace java.net
 		Private Class CookieAttributeAssignorAnonymousInnerClassHelper9
 			Implements CookieAttributeAssignor
 
-			Public Overridable Sub assign(ByVal cookie As HttpCookie, ByVal attrName As String, ByVal attrValue As String)
+			Public Overridable Sub assign(  cookie As HttpCookie,   attrName As String,   attrValue As String)
 				cookie.httpOnly = True
 			End Sub
 		End Class
@@ -829,7 +829,7 @@ Namespace java.net
 		Private Class CookieAttributeAssignorAnonymousInnerClassHelper10
 			Implements CookieAttributeAssignor
 
-			Public Overridable Sub assign(ByVal cookie As HttpCookie, ByVal attrName As String, ByVal attrValue As String)
+			Public Overridable Sub assign(  cookie As HttpCookie,   attrName As String,   attrValue As String)
 				Try
 					Dim version As Integer = Convert.ToInt32(attrValue)
 					cookie.version = version
@@ -842,11 +842,11 @@ Namespace java.net
 		Private Class CookieAttributeAssignorAnonymousInnerClassHelper11
 			Implements CookieAttributeAssignor
 
-			Public Overridable Sub assign(ByVal cookie As HttpCookie, ByVal attrName As String, ByVal attrValue As String)
+			Public Overridable Sub assign(  cookie As HttpCookie,   attrName As String,   attrValue As String)
 				If cookie.maxAge = MAX_AGE_UNSPECIFIED Then cookie.maxAge = cookie.expiryDate2DeltaSeconds(attrValue)
 			End Sub
 		End Class
-		Private Shared Sub assignAttribute(ByVal cookie As HttpCookie, ByVal attrName As String, ByVal attrValue As String)
+		Private Shared Sub assignAttribute(  cookie As HttpCookie,   attrName As String,   attrValue As String)
 			' strip off the surrounding "-sign if there's any
 			attrValue = stripOffSurroundingQuote(attrValue)
 
@@ -899,7 +899,7 @@ Namespace java.net
 	'     * @return  delta seconds between this cookie's creation time and the time
 	'     *          specified by dateString
 	'     
-		Private Function expiryDate2DeltaSeconds(ByVal dateString As String) As Long
+		Private Function expiryDate2DeltaSeconds(  dateString As String) As Long
 			Dim cal As DateTime? = New java.util.GregorianCalendar(GMT)
 			For i As Integer = 0 To COOKIE_DATE_FORMATS.Length - 1
 				Dim df As New java.text.SimpleDateFormat(COOKIE_DATE_FORMATS(i), java.util.Locale.US)
@@ -932,7 +932,7 @@ Namespace java.net
 	'    
 	'     * try to guess the cookie version through set-cookie header string
 	'     
-		Private Shared Function guessCookieVersion(ByVal header As String) As Integer
+		Private Shared Function guessCookieVersion(  header As String) As Integer
 			Dim version_Renamed As Integer = 0
 
 			header = header.ToLower()
@@ -953,19 +953,19 @@ Namespace java.net
 			Return version_Renamed
 		End Function
 
-		Private Shared Function stripOffSurroundingQuote(ByVal str As String) As String
+		Private Shared Function stripOffSurroundingQuote(  str As String) As String
 			If str IsNot Nothing AndAlso str.length() > 2 AndAlso str.Chars(0) = """"c AndAlso str.Chars(str.length() - 1) = """"c Then Return str.Substring(1, str.length() - 1 - 1)
 			If str IsNot Nothing AndAlso str.length() > 2 AndAlso str.Chars(0) = "'"c AndAlso str.Chars(str.length() - 1) = "'"c Then Return str.Substring(1, str.length() - 1 - 1)
 			Return str
 		End Function
 
-		Private Shared Function equalsIgnoreCase(ByVal s As String, ByVal t As String) As Boolean
+		Private Shared Function equalsIgnoreCase(  s As String,   t As String) As Boolean
 			If s = t Then Return True
 			If (s IsNot Nothing) AndAlso (t IsNot Nothing) Then Return s.equalsIgnoreCase(t)
 			Return False
 		End Function
 
-		Private Shared Function startsWithIgnoreCase(ByVal s As String, ByVal start As String) As Boolean
+		Private Shared Function startsWithIgnoreCase(  s As String,   start As String) As Boolean
 			If s Is Nothing OrElse start Is Nothing Then Return False
 
 			If s.length() >= start.length() AndAlso start.equalsIgnoreCase(s.Substring(0, start.length())) Then Return True
@@ -984,7 +984,7 @@ Namespace java.net
 	'     *
 	'     * @return  list of strings; never null
 	'     
-		Private Shared Function splitMultiCookies(ByVal header As String) As IList(Of String)
+		Private Shared Function splitMultiCookies(  header As String) As IList(Of String)
 			Dim cookies As IList(Of String) = New List(Of String)
 			Dim quoteCount As Integer = 0
 			Dim p, q As Integer

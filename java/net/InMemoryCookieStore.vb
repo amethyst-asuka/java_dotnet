@@ -65,7 +65,7 @@ Namespace java.net
 		''' <summary>
 		''' Add one cookie into cookie store.
 		''' </summary>
-		Public Overridable Sub add(ByVal uri As java.net.URI, ByVal cookie As java.net.HttpCookie)
+		Public Overridable Sub add(  uri As java.net.URI,   cookie As java.net.HttpCookie)
 			' pre-condition : argument can't be null
 			If cookie Is Nothing Then Throw New NullPointerException("cookie is null")
 
@@ -95,7 +95,7 @@ Namespace java.net
 		'''  3) not expired.
 		''' See RFC 2965 sec. 3.3.4 for more detail.
 		''' </summary>
-		Public Overridable Function [get](ByVal uri As java.net.URI) As IList(Of java.net.HttpCookie)
+		Public Overridable Function [get](  uri As java.net.URI) As IList(Of java.net.HttpCookie)
 			' argument can't be null
 			If uri Is Nothing Then Throw New NullPointerException("uri is null")
 
@@ -165,7 +165,7 @@ Namespace java.net
 		''' <summary>
 		''' Remove a cookie from store
 		''' </summary>
-		Public Overridable Function remove(ByVal uri As java.net.URI, ByVal ck As java.net.HttpCookie) As Boolean
+		Public Overridable Function remove(  uri As java.net.URI,   ck As java.net.HttpCookie) As Boolean
 			' argument can't be null
 			If ck Is Nothing Then Throw New NullPointerException("cookie is null")
 
@@ -213,7 +213,7 @@ Namespace java.net
 	'     * passed along.
 	'     * And should be used for 'old' style cookies (aka Netscape type of cookies)
 	'     
-		Private Function netscapeDomainMatches(ByVal domain As String, ByVal host As String) As Boolean
+		Private Function netscapeDomainMatches(  domain As String,   host As String) As Boolean
 			If domain Is Nothing OrElse host Is Nothing Then Return False
 
 			' if there's no embedded dot in domain and domain is not .local
@@ -245,7 +245,7 @@ Namespace java.net
 			Return False
 		End Function
 
-		Private Sub getInternal1(ByVal cookies As IList(Of java.net.HttpCookie), ByVal cookieIndex As IDictionary(Of String, IList(Of java.net.HttpCookie)), ByVal host As String, ByVal secureLink As Boolean)
+		Private Sub getInternal1(  cookies As IList(Of java.net.HttpCookie),   cookieIndex As IDictionary(Of String, IList(Of java.net.HttpCookie)),   host As String,   secureLink As Boolean)
 			' Use a separate list to handle cookies that need to be removed so
 			' that there is no conflict with iterators.
 			Dim toRemove As New List(Of java.net.HttpCookie)
@@ -284,7 +284,7 @@ Namespace java.net
 		' @param cookieIndex       the index
 		' @param comparator        the prediction to decide whether or not
 		'                          a cookie in index should be returned
-		Private Sub getInternal2(Of T)(ByVal cookies As IList(Of java.net.HttpCookie), ByVal cookieIndex As IDictionary(Of T, IList(Of java.net.HttpCookie)), ByVal comparator As Comparable(Of T), ByVal secureLink As Boolean)
+		Private Sub getInternal2(Of T)(  cookies As IList(Of java.net.HttpCookie),   cookieIndex As IDictionary(Of T, IList(Of java.net.HttpCookie)),   comparator As Comparable(Of T),   secureLink As Boolean)
 			For Each index As T In cookieIndex.Keys
 				If comparator.CompareTo(index) = 0 Then
 					Dim indexedCookies As IList(Of java.net.HttpCookie) = cookieIndex(index)
@@ -314,7 +314,7 @@ Namespace java.net
 		End Sub
 
 		' add 'cookie' indexed by 'index' into 'indexStore'
-		Private Sub addIndex(Of T)(ByVal indexStore As IDictionary(Of T, IList(Of java.net.HttpCookie)), ByVal index As T, ByVal cookie As java.net.HttpCookie)
+		Private Sub addIndex(Of T)(  indexStore As IDictionary(Of T, IList(Of java.net.HttpCookie)),   index As T,   cookie As java.net.HttpCookie)
 			If index IsNot Nothing Then
 				Dim cookies_Renamed As IList(Of java.net.HttpCookie) = indexStore(index)
 				If cookies_Renamed IsNot Nothing Then
@@ -335,7 +335,7 @@ Namespace java.net
 		' for cookie purpose, the effective uri should only be http://host
 		' the path will be taken into account when path-match algorithm applied
 		'
-		Private Function getEffectiveURI(ByVal uri As java.net.URI) As java.net.URI
+		Private Function getEffectiveURI(  uri As java.net.URI) As java.net.URI
 			Dim effectiveURI_Renamed As java.net.URI = Nothing
 			Try
 				effectiveURI_Renamed = New java.net.URI("http", uri.host, Nothing, Nothing, Nothing) ' fragment component -  query component -  path component

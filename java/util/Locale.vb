@@ -617,7 +617,7 @@ Namespace java.util
 		''' <summary>
 		''' Private constructor used by getInstance method
 		''' </summary>
-		Private Sub New(ByVal baseLocale As sun.util.locale.BaseLocale, ByVal extensions As sun.util.locale.LocaleExtensions)
+		Private Sub New(  baseLocale As sun.util.locale.BaseLocale,   extensions As sun.util.locale.LocaleExtensions)
 			Me.baseLocale = baseLocale
 			Me.localeExtensions = extensions
 		End Sub
@@ -647,7 +647,7 @@ Namespace java.util
 		''' <param name="variant"> Any arbitrary value used to indicate a variation of a <code>Locale</code>.
 		''' See the <code>Locale</code> class description for the details. </param>
 		''' <exception cref="NullPointerException"> thrown if any argument is null. </exception>
-		Public Sub New(ByVal language As String, ByVal country As String, ByVal [variant] As String)
+		Public Sub New(  language As String,   country As String,   [variant] As String)
 			If language Is Nothing OrElse country Is Nothing OrElse [variant] Is Nothing Then Throw New NullPointerException
 			baseLocale = sun.util.locale.BaseLocale.getInstance(convertOldISOCodes(language), "", country, [variant])
 			localeExtensions = getCompatibilityExtensions(language, "", country, [variant])
@@ -674,7 +674,7 @@ Namespace java.util
 		''' <param name="country"> An ISO 3166 alpha-2 country code or a UN M.49 numeric-3 area code.
 		''' See the <code>Locale</code> class description about valid country values. </param>
 		''' <exception cref="NullPointerException"> thrown if either argument is null. </exception>
-		Public Sub New(ByVal language As String, ByVal country As String)
+		Public Sub New(  language As String,   country As String)
 			Me.New(language, country, "")
 		End Sub
 
@@ -697,7 +697,7 @@ Namespace java.util
 		''' valid language values. </param>
 		''' <exception cref="NullPointerException"> thrown if argument is null.
 		''' @since 1.4 </exception>
-		Public Sub New(ByVal language As String)
+		Public Sub New(  language As String)
 			Me.New(language, "", "")
 		End Sub
 
@@ -705,7 +705,7 @@ Namespace java.util
 		''' This method must be called only for creating the Locale.*
 		''' constants due to making shortcuts.
 		''' </summary>
-		Private Shared Function createConstant(ByVal lang As String, ByVal country As String) As Locale
+		Private Shared Function createConstant(  lang As String,   country As String) As Locale
 			Dim base As sun.util.locale.BaseLocale = sun.util.locale.BaseLocale.createInstance(lang, country)
 			Return getInstance(base, Nothing)
 		End Function
@@ -723,11 +723,11 @@ Namespace java.util
 		''' <param name="variant"> vendor and browser specific code. See class description. </param>
 		''' <returns> the <code>Locale</code> instance requested </returns>
 		''' <exception cref="NullPointerException"> if any argument is null. </exception>
-		Shared Function getInstance(ByVal language As String, ByVal country As String, ByVal [variant] As String) As Locale
+		Shared Function getInstance(  language As String,   country As String,   [variant] As String) As Locale
 			Return getInstance(language, "", country, [variant], Nothing)
 		End Function
 
-		Shared Function getInstance(ByVal language As String, ByVal script As String, ByVal country As String, ByVal [variant] As String, ByVal extensions As sun.util.locale.LocaleExtensions) As Locale
+		Shared Function getInstance(  language As String,   script As String,   country As String,   [variant] As String,   extensions As sun.util.locale.LocaleExtensions) As Locale
 			If language Is Nothing OrElse script Is Nothing OrElse country Is Nothing OrElse [variant] Is Nothing Then Throw New NullPointerException
 
 			If extensions Is Nothing Then extensions = getCompatibilityExtensions(language, script, country, [variant])
@@ -736,7 +736,7 @@ Namespace java.util
 			Return getInstance(baseloc, extensions)
 		End Function
 
-		Shared Function getInstance(ByVal baseloc As sun.util.locale.BaseLocale, ByVal extensions As sun.util.locale.LocaleExtensions) As Locale
+		Shared Function getInstance(  baseloc As sun.util.locale.BaseLocale,   extensions As sun.util.locale.LocaleExtensions) As Locale
 			Dim key As New LocaleKey(baseloc, extensions)
 			Return LOCALECACHE.get(key)
 		End Function
@@ -747,7 +747,7 @@ Namespace java.util
 			Private Sub New()
 			End Sub
 
-			Protected Friend Overrides Function createObject(ByVal key As LocaleKey) As Locale
+			Protected Friend Overrides Function createObject(  key As LocaleKey) As Locale
 				Return New Locale(key.base, key.exts)
 			End Function
 		End Class
@@ -757,7 +757,7 @@ Namespace java.util
 			Private ReadOnly exts As sun.util.locale.LocaleExtensions
 			Private ReadOnly hash As Integer
 
-			Private Sub New(ByVal baseLocale As sun.util.locale.BaseLocale, ByVal extensions As sun.util.locale.LocaleExtensions)
+			Private Sub New(  baseLocale As sun.util.locale.BaseLocale,   extensions As sun.util.locale.LocaleExtensions)
 				base = baseLocale
 				exts = extensions
 
@@ -767,7 +767,7 @@ Namespace java.util
 				hash = h
 			End Sub
 
-			Public Overrides Function Equals(ByVal obj As Object) As Boolean
+			Public Overrides Function Equals(  obj As Object) As Boolean
 				If Me Is obj Then Return True
 				If Not(TypeOf obj Is LocaleKey) Then Return False
 				Dim other As LocaleKey = CType(obj, LocaleKey)
@@ -797,7 +797,7 @@ Namespace java.util
                 ' do not synchronize this method - see 4071298
                 Return defaultLocale
             End Get
-            Set(ByVal newLocale As Locale)
+            Set(  newLocale As Locale)
                 defaultult(Category.DISPLAY, newLocale)
                 defaultult(Category.FORMAT, newLocale)
                 defaultLocale = newLocale
@@ -819,7 +819,7 @@ Namespace java.util
         '''     of the Java Virtual Machine </returns>
         ''' <seealso cref= #setDefault(Locale.Category, Locale)
         ''' @since 1.7 </seealso>
-        Public Shared Function getDefault(ByVal category As Locale.Category) As Locale
+        Public Shared Function getDefault(  category As Locale.Category) As Locale
 			' do not synchronize this method - see 4071298
 			Select Case category
 			Case Locale.Category.DISPLAY
@@ -867,7 +867,7 @@ Namespace java.util
 			Return getInstance(language_Renamed, script_Renamed, country_Renamed, variant_Renamed, Nothing)
 		End Function
 
-		Private Shared Function initDefault(ByVal category As Locale.Category) As Locale
+		Private Shared Function initDefault(  category As Locale.Category) As Locale
 			Return getInstance(java.security.AccessController.doPrivileged(New sun.security.action.GetPropertyAction(category.languageKey, defaultLocale.language)), java.security.AccessController.doPrivileged(New sun.security.action.GetPropertyAction(category.scriptKey, defaultLocale.script)), java.security.AccessController.doPrivileged(New sun.security.action.GetPropertyAction(category.countryKey, defaultLocale.country)), java.security.AccessController.doPrivileged(New sun.security.action.GetPropertyAction(category.variantKey, defaultLocale.variant)), Nothing)
 		End Function
 
@@ -900,7 +900,7 @@ Namespace java.util
 		''' <seealso cref= #getDefault(Locale.Category)
 		''' @since 1.7 </seealso>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Shared Sub setDefault(ByVal category As Locale.Category, ByVal newLocale As Locale)
+		Public Shared Sub setDefault(  category As Locale.Category,   newLocale As Locale)
 			If category Is Nothing Then Throw New NullPointerException("Category cannot be NULL")
 			If newLocale Is Nothing Then Throw New NullPointerException("Can't set default locale to NULL")
 
@@ -974,7 +974,7 @@ Namespace java.util
             End Get
         End Property
 
-        Private Shared Function getISO2Table(ByVal table As String) As String()
+        Private Shared Function getISO2Table(  table As String) As String()
 			Dim len As Integer = table.length() \ 5
 			Dim isoTable As String() = New String(len - 1){}
 			Dim i As Integer = 0
@@ -1086,7 +1086,7 @@ Namespace java.util
 		''' <seealso cref= #PRIVATE_USE_EXTENSION </seealso>
 		''' <seealso cref= #UNICODE_LOCALE_EXTENSION
 		''' @since 1.7 </seealso>
-		Public Function getExtension(ByVal key As Char) As String
+		Public Function getExtension(  key As Char) As String
 			If Not sun.util.locale.LocaleExtensions.isValidKey(key) Then Throw New IllegalArgumentException("Ill-formed extension key: " & AscW(key))
 			Return If(hasExtensions(), localeExtensions.getExtensionValue(key), Nothing)
 		End Function
@@ -1133,7 +1133,7 @@ Namespace java.util
         ''' <exception cref="IllegalArgumentException"> if the key is not well-formed </exception>
         ''' <exception cref="NullPointerException"> if <code>key</code> is null
         ''' @since 1.7 </exception>
-        Public Function getUnicodeLocaleType(ByVal key As String) As String
+        Public Function getUnicodeLocaleType(  key As String) As String
 			If Not isUnicodeExtensionKey(key) Then Throw New IllegalArgumentException("Ill-formed Unicode locale key: " & key)
 			Return If(hasExtensions(), localeExtensions.getUnicodeLocaleType(key), Nothing)
 		End Function
@@ -1470,7 +1470,7 @@ Namespace java.util
 		''' <seealso cref= #toLanguageTag() </seealso>
 		''' <seealso cref= java.util.Locale.Builder#setLanguageTag(String)
 		''' @since 1.7 </seealso>
-		Public Shared Function forLanguageTag(ByVal languageTag As String) As Locale
+		Public Shared Function forLanguageTag(  languageTag As String) As Locale
 			Dim tag As sun.util.locale.LanguageTag = sun.util.locale.LanguageTag.parse(languageTag, Nothing)
 			Dim bldr As New sun.util.locale.InternalLocaleBuilder
 			bldr.languageTag = tag
@@ -1524,7 +1524,7 @@ Namespace java.util
             End Get
         End Property
 
-        Private Shared Function getISO3Code(ByVal iso2Code As String, ByVal table As String) As String
+        Private Shared Function getISO3Code(  iso2Code As String,   table As String) As String
 			Dim codeLength As Integer = iso2Code.length()
 			If codeLength = 0 Then Return ""
 
@@ -1579,7 +1579,7 @@ Namespace java.util
         ''' <param name="inLocale"> The locale for which to retrieve the display language. </param>
         ''' <returns> The name of the display language appropriate to the given locale. </returns>
         ''' <exception cref="NullPointerException"> if <code>inLocale</code> is <code>null</code> </exception>
-        Public Function getDisplayLanguage(ByVal inLocale As Locale) As String
+        Public Function getDisplayLanguage(  inLocale As Locale) As String
 			Return getDisplayString(baseLocale.language, inLocale, DISPLAY_LANGUAGE)
 		End Function
 
@@ -1609,7 +1609,7 @@ Namespace java.util
         ''' <seealso cref="Locale.Category#DISPLAY DISPLAY"/> locale </returns>
         ''' <exception cref="NullPointerException"> if <code>inLocale</code> is <code>null</code>
         ''' @since 1.7 </exception>
-        Public Function getDisplayScript(ByVal inLocale As Locale) As String
+        Public Function getDisplayScript(  inLocale As Locale) As String
 			Return getDisplayString(baseLocale.script, inLocale, DISPLAY_SCRIPT)
 		End Function
 
@@ -1652,11 +1652,11 @@ Namespace java.util
         ''' <param name="inLocale"> The locale for which to retrieve the display country. </param>
         ''' <returns> The name of the country appropriate to the given locale. </returns>
         ''' <exception cref="NullPointerException"> if <code>inLocale</code> is <code>null</code> </exception>
-        Public Function getDisplayCountry(ByVal inLocale As Locale) As String
+        Public Function getDisplayCountry(  inLocale As Locale) As String
 			Return getDisplayString(baseLocale.region, inLocale, DISPLAY_COUNTRY)
 		End Function
 
-		Private Function getDisplayString(ByVal code As String, ByVal inLocale As Locale, ByVal type As Integer) As String
+		Private Function getDisplayString(  code As String,   inLocale As Locale,   type As Integer) As String
 			If code.length() = 0 Then Return ""
 
 			If inLocale Is Nothing Then Throw New NullPointerException
@@ -1690,7 +1690,7 @@ Namespace java.util
         ''' <param name="inLocale"> The locale for which to retrieve the display variant code. </param>
         ''' <returns> The name of the display variant code appropriate to the given locale. </returns>
         ''' <exception cref="NullPointerException"> if <code>inLocale</code> is <code>null</code> </exception>
-        Public Function getDisplayVariant(ByVal inLocale As Locale) As String
+        Public Function getDisplayVariant(  inLocale As Locale) As String
 			If baseLocale.variant.length() = 0 Then Return ""
 
 			Dim lr As sun.util.locale.provider.LocaleResources = sun.util.locale.provider.LocaleProviderAdapter.forJRE().getLocaleResources(inLocale)
@@ -1747,7 +1747,7 @@ Namespace java.util
         ''' <param name="inLocale"> The locale for which to retrieve the display name. </param>
         ''' <returns> The name of the locale appropriate to display. </returns>
         ''' <exception cref="NullPointerException"> if <code>inLocale</code> is <code>null</code> </exception>
-        Public Function getDisplayName(ByVal inLocale As Locale) As String
+        Public Function getDisplayName(  inLocale As Locale) As String
 			Dim lr As sun.util.locale.provider.LocaleResources = sun.util.locale.provider.LocaleProviderAdapter.forJRE().getLocaleResources(inLocale)
 
 			Dim languageName As String = getDisplayLanguage(inLocale)
@@ -1849,7 +1849,7 @@ Namespace java.util
 		''' variant and extensions, and unequal to all other objects.
 		''' </summary>
 		''' <returns> true if this Locale is equal to the specified object. </returns>
-		Public Overrides Function Equals(ByVal obj As Object) As Boolean
+		Public Overrides Function Equals(  obj As Object) As Boolean
 			If Me Is obj Then ' quick check Return True
 			If Not(TypeOf obj Is Locale) Then Return False
 			Dim otherBase As sun.util.locale.BaseLocale = CType(obj, Locale).baseLocale
@@ -1887,7 +1887,7 @@ Namespace java.util
 		''' Return an array of the display names of the variant. </summary>
 		''' <param name="bundle"> the ResourceBundle to use to get the display names </param>
 		''' <returns> an array of display names, possible of zero length. </returns>
-		Private Function getDisplayVariantArray(ByVal inLocale As Locale) As String()
+		Private Function getDisplayVariantArray(  inLocale As Locale) As String()
 			' Split the variant name into tokens separated by '_'.
 			Dim tokenizer As New StringTokenizer(baseLocale.variant, "_")
 			Dim names As String() = New String(tokenizer.countTokens() - 1){}
@@ -1911,7 +1911,7 @@ Namespace java.util
 		''' <param name="listCompositionPattern"> should take 2 arguments
 		''' and is used by composeList. </param>
 		''' <returns> a string representing the list. </returns>
-		Private Shared Function formatList(ByVal stringList As String(), ByVal listPattern As String, ByVal listCompositionPattern As String) As String
+		Private Shared Function formatList(  stringList As String(),   listPattern As String,   listCompositionPattern As String) As String
 			' If we have no list patterns, compose the list in a simple,
 			' non-localized way.
 			If listPattern Is Nothing OrElse listCompositionPattern Is Nothing Then
@@ -1947,7 +1947,7 @@ Namespace java.util
 		''' <param name="list"> a list of strings </param>
 		''' <returns> if the list is three elements or shorter, the same list;
 		''' otherwise, a new list of three elements. </returns>
-		Private Shared Function composeList(ByVal format As java.text.MessageFormat, ByVal list As String()) As String()
+		Private Shared Function composeList(  format As java.text.MessageFormat,   list As String()) As String()
 			If list.Length <= 3 Then Return list
 
 			' Use the given format to compose the first two elements into one
@@ -1965,7 +1965,7 @@ Namespace java.util
 
 		' Duplicate of sun.util.locale.UnicodeLocaleExtension.isKey in order to
 		' avoid its class loading.
-		Private Shared Function isUnicodeExtensionKey(ByVal s As String) As Boolean
+		Private Shared Function isUnicodeExtensionKey(  s As String) As Boolean
 			' 2alphanum
 			Return (s.length() = 2) AndAlso sun.util.locale.LocaleUtils.isAlphaNumericString(s)
 		End Function
@@ -1996,7 +1996,7 @@ Namespace java.util
 		''' <param name="out"> the <code>ObjectOutputStream</code> to write </param>
 		''' <exception cref="IOException">
 		''' @since 1.7 </exception>
-		Private Sub writeObject(ByVal out As java.io.ObjectOutputStream)
+		Private Sub writeObject(  out As java.io.ObjectOutputStream)
 			Dim fields As java.io.ObjectOutputStream.PutField = out.putFields()
 			fields.put("language", baseLocale.language)
 			fields.put("script", baseLocale.script)
@@ -2014,7 +2014,7 @@ Namespace java.util
 		''' <exception cref="ClassNotFoundException"> </exception>
 		''' <exception cref="IllformedLocaleException">
 		''' @since 1.7 </exception>
-		Private Sub readObject(ByVal [in] As java.io.ObjectInputStream)
+		Private Sub readObject(  [in] As java.io.ObjectInputStream)
 			Dim fields As java.io.ObjectInputStream.GetField = [in].readFields()
 			Dim language_Renamed As String = CStr(fields.get("language", ""))
 			Dim script_Renamed As String = CStr(fields.get("script", ""))
@@ -2058,7 +2058,7 @@ Namespace java.util
 'JAVA TO VB CONVERTER TODO TASK: There is no VB equivalent to 'volatile':
 		Private Shared isoCountries As String() = Nothing
 
-		Private Shared Function convertOldISOCodes(ByVal language As String) As String
+		Private Shared Function convertOldISOCodes(  language As String) As String
 			' we accept both the old and the new ISO codes for the languages whose ISO
 			' codes have changed, but we always store the OLD code, for backward compatibility
 			language = sun.util.locale.LocaleUtils.toLowerString(language).intern()
@@ -2073,7 +2073,7 @@ Namespace java.util
 			End If
 		End Function
 
-		Private Shared Function getCompatibilityExtensions(ByVal language As String, ByVal script As String, ByVal country As String, ByVal [variant] As String) As sun.util.locale.LocaleExtensions
+		Private Shared Function getCompatibilityExtensions(  language As String,   script As String,   country As String,   [variant] As String) As sun.util.locale.LocaleExtensions
 			Dim extensions As sun.util.locale.LocaleExtensions = Nothing
 			' Special cases for backward compatibility support
 			If sun.util.locale.LocaleUtils.caseIgnoreMatch(language, "ja") AndAlso script.length() = 0 AndAlso sun.util.locale.LocaleUtils.caseIgnoreMatch(country, "jp") AndAlso "JP".Equals([variant]) Then
@@ -2095,7 +2095,7 @@ Namespace java.util
 
 			Private Shared ReadOnly INSTANCE As New LocaleNameGetter
 
-			Public Overrides Function getObject(ByVal localeNameProvider As java.util.spi.LocaleNameProvider, ByVal locale_Renamed As Locale, ByVal key As String, ParamArray ByVal params As Object()) As String
+			Public Overrides Function getObject(  localeNameProvider As java.util.spi.LocaleNameProvider,   locale_Renamed As Locale,   key As String, ParamArray   params As Object()) As String
 				Debug.Assert(params.Length = 2)
 				Dim type As Integer = CInt(Fix(params(0)))
 				Dim code As String = CStr(params(1))
@@ -2233,7 +2233,7 @@ Namespace java.util
 			''' <exception cref="IllformedLocaleException"> if <code>locale</code> has
 			''' any ill-formed fields. </exception>
 			''' <exception cref="NullPointerException"> if <code>locale</code> is null. </exception>
-			Public Function setLocale(ByVal locale_Renamed As Locale) As Builder
+			Public Function setLocale(  locale_Renamed As Locale) As Builder
 				Try
 					localeBuilder.localeale(locale_Renamed.baseLocale, locale_Renamed.localeExtensions)
 				Catch e As sun.util.locale.LocaleSyntaxException
@@ -2258,7 +2258,7 @@ Namespace java.util
 			''' <returns> This builder. </returns>
 			''' <exception cref="IllformedLocaleException"> if <code>languageTag</code> is ill-formed </exception>
 			''' <seealso cref= Locale#forLanguageTag(String) </seealso>
-			Public Function setLanguageTag(ByVal languageTag As String) As Builder
+			Public Function setLanguageTag(  languageTag As String) As Builder
 				Dim sts As New sun.util.locale.ParseStatus
 				Dim tag As sun.util.locale.LanguageTag = sun.util.locale.LanguageTag.parse(languageTag, sts)
 				If sts.error Then Throw New IllformedLocaleException(sts.errorMessage, sts.errorIndex)
@@ -2278,7 +2278,7 @@ Namespace java.util
 			''' <param name="language"> the language </param>
 			''' <returns> This builder. </returns>
 			''' <exception cref="IllformedLocaleException"> if <code>language</code> is ill-formed </exception>
-			Public Function setLanguage(ByVal language As String) As Builder
+			Public Function setLanguage(  language As String) As Builder
 				Try
 					localeBuilder.language = language
 				Catch e As sun.util.locale.LocaleSyntaxException
@@ -2298,7 +2298,7 @@ Namespace java.util
 			''' <param name="script"> the script </param>
 			''' <returns> This builder. </returns>
 			''' <exception cref="IllformedLocaleException"> if <code>script</code> is ill-formed </exception>
-			Public Function setScript(ByVal script As String) As Builder
+			Public Function setScript(  script As String) As Builder
 				Try
 					localeBuilder.script = script
 				Catch e As sun.util.locale.LocaleSyntaxException
@@ -2322,7 +2322,7 @@ Namespace java.util
 			''' <param name="region"> the region </param>
 			''' <returns> This builder. </returns>
 			''' <exception cref="IllformedLocaleException"> if <code>region</code> is ill-formed </exception>
-			Public Function setRegion(ByVal region As String) As Builder
+			Public Function setRegion(  region As String) As Builder
 				Try
 					localeBuilder.region = region
 				Catch e As sun.util.locale.LocaleSyntaxException
@@ -2348,7 +2348,7 @@ Namespace java.util
 			''' <param name="variant"> the variant </param>
 			''' <returns> This builder. </returns>
 			''' <exception cref="IllformedLocaleException"> if <code>variant</code> is ill-formed </exception>
-			Public Function setVariant(ByVal [variant] As String) As Builder
+			Public Function setVariant(  [variant] As String) As Builder
 				Try
 					localeBuilder.variant = [variant]
 				Catch e As sun.util.locale.LocaleSyntaxException
@@ -2379,7 +2379,7 @@ Namespace java.util
 			''' <exception cref="IllformedLocaleException"> if <code>key</code> is illegal
 			''' or <code>value</code> is ill-formed </exception>
 			''' <seealso cref= #setUnicodeLocaleKeyword(String, String) </seealso>
-			Public Function setExtension(ByVal key As Char, ByVal value As String) As Builder
+			Public Function setExtension(  key As Char,   value As String) As Builder
 				Try
 					localeBuilder.extensionion(key, value)
 				Catch e As sun.util.locale.LocaleSyntaxException
@@ -2408,7 +2408,7 @@ Namespace java.util
 			''' is ill-formed </exception>
 			''' <exception cref="NullPointerException"> if <code>key</code> is null </exception>
 			''' <seealso cref= #setExtension(char, String) </seealso>
-			Public Function setUnicodeLocaleKeyword(ByVal key As String, ByVal type As String) As Builder
+			Public Function setUnicodeLocaleKeyword(  key As String,   type As String) As Builder
 				Try
 					localeBuilder.unicodeLocaleKeywordord(key, type)
 				Catch e As sun.util.locale.LocaleSyntaxException
@@ -2428,7 +2428,7 @@ Namespace java.util
 			''' <exception cref="NullPointerException"> if <code>attribute</code> is null </exception>
 			''' <exception cref="IllformedLocaleException"> if <code>attribute</code> is ill-formed </exception>
 			''' <seealso cref= #setExtension(char, String) </seealso>
-			Public Function addUnicodeLocaleAttribute(ByVal attribute As String) As Builder
+			Public Function addUnicodeLocaleAttribute(  attribute As String) As Builder
 				Try
 					localeBuilder.addUnicodeLocaleAttribute(attribute)
 				Catch e As sun.util.locale.LocaleSyntaxException
@@ -2450,7 +2450,7 @@ Namespace java.util
 			''' <exception cref="NullPointerException"> if <code>attribute</code> is null </exception>
 			''' <exception cref="IllformedLocaleException"> if <code>attribute</code> is ill-formed </exception>
 			''' <seealso cref= #setExtension(char, String) </seealso>
-			Public Function removeUnicodeLocaleAttribute(ByVal attribute As String) As Builder
+			Public Function removeUnicodeLocaleAttribute(  attribute As String) As Builder
 				Try
 					localeBuilder.removeUnicodeLocaleAttribute(attribute)
 				Catch e As sun.util.locale.LocaleSyntaxException
@@ -2689,7 +2689,7 @@ Namespace java.util
 			''' <param name="range"> a language range </param>
 			''' <exception cref="NullPointerException"> if the given {@code range} is
 			'''     {@code null} </exception>
-			Public Sub New(ByVal range As String)
+			Public Sub New(  range As String)
 				Me.New(range, MAX_WEIGHT)
 			End Sub
 
@@ -2705,7 +2705,7 @@ Namespace java.util
 			'''     {@code null} </exception>
 			''' <exception cref="IllegalArgumentException"> if the given {@code weight} is less
 			'''     than {@code MIN_WEIGHT} or greater than {@code MAX_WEIGHT} </exception>
-			Public Sub New(ByVal range As String, ByVal weight As Double)
+			Public Sub New(  range As String,   weight As Double)
 				If range Is Nothing Then Throw New NullPointerException
 				If weight < MIN_WEIGHT OrElse weight > MAX_WEIGHT Then Throw New IllegalArgumentException("weight=" & weight)
 
@@ -2730,7 +2730,7 @@ Namespace java.util
 				Me.weight = weight
 			End Sub
 
-			Private Shared Function isSubtagIllFormed(ByVal subtag As String, ByVal isFirstSubtag As Boolean) As Boolean
+			Private Shared Function isSubtagIllFormed(  subtag As String,   isFirstSubtag As Boolean) As Boolean
 				If subtag.Equals("") OrElse subtag.length() > 8 Then
 					Return True
 				ElseIf subtag.Equals("*") Then
@@ -2833,7 +2833,7 @@ Namespace java.util
 			''' <exception cref="NullPointerException"> if {@code ranges} is null </exception>
 			''' <exception cref="IllegalArgumentException"> if a language range or a weight
 			'''     found in the given {@code ranges} is ill-formed </exception>
-			Public Shared Function parse(ByVal ranges As String) As List(Of LanguageRange)
+			Public Shared Function parse(  ranges As String) As List(Of LanguageRange)
 				Return sun.util.locale.LocaleMatcher.parse(ranges)
 			End Function
 
@@ -2855,7 +2855,7 @@ Namespace java.util
 			'''     found in the given {@code ranges} is ill-formed </exception>
 			''' <seealso cref= #parse(String) </seealso>
 			''' <seealso cref= #mapEquivalents </seealso>
-			Public Shared Function parse(ByVal ranges As String, ByVal map As Map(Of String, List(Of String))) As List(Of LanguageRange)
+			Public Shared Function parse(  ranges As String,   map As Map(Of String, List(Of String))) As List(Of LanguageRange)
 				Return mapEquivalents(parse(ranges), map)
 			End Function
 
@@ -2905,7 +2905,7 @@ Namespace java.util
 			'''     modifiable. </returns>
 			''' <exception cref="NullPointerException"> if {@code priorityList} is {@code null} </exception>
 			''' <seealso cref= #parse(String, Map) </seealso>
-			Public Shared Function mapEquivalents(ByVal priorityList As List(Of LanguageRange), ByVal map As Map(Of String, List(Of String))) As List(Of LanguageRange)
+			Public Shared Function mapEquivalents(  priorityList As List(Of LanguageRange),   map As Map(Of String, List(Of String))) As List(Of LanguageRange)
 				Return sun.util.locale.LocaleMatcher.mapEquivalents(priorityList, map)
 			End Function
 
@@ -2934,7 +2934,7 @@ Namespace java.util
 			''' <returns>  {@code true} if this object's {@code range} and
 			'''     {@code weight} are the same as the {@code obj}'s; {@code false}
 			'''     otherwise. </returns>
-			Public Overrides Function Equals(ByVal obj As Object) As Boolean
+			Public Overrides Function Equals(  obj As Object) As Boolean
 				If Me Is obj Then Return True
 				If Not(TypeOf obj Is LanguageRange) Then Return False
 				Dim other As LanguageRange = CType(obj, LanguageRange)
@@ -2960,7 +2960,7 @@ Namespace java.util
 		'''     <seealso cref="FilteringMode#REJECT_EXTENDED_RANGES"/> is specified
 		''' 
 		''' @since 1.8 </exception>
-		Public Shared Function filter(ByVal priorityList As List(Of LanguageRange), ByVal locales As Collection(Of Locale), ByVal mode As FilteringMode) As List(Of Locale)
+		Public Shared Function filter(  priorityList As List(Of LanguageRange),   locales As Collection(Of Locale),   mode As FilteringMode) As List(Of Locale)
 			Return sun.util.locale.LocaleMatcher.filter(priorityList, locales, mode)
 		End Function
 
@@ -2980,7 +2980,7 @@ Namespace java.util
 		'''     is {@code null}
 		''' 
 		''' @since 1.8 </exception>
-		Public Shared Function filter(ByVal priorityList As List(Of LanguageRange), ByVal locales As Collection(Of Locale)) As List(Of Locale)
+		Public Shared Function filter(  priorityList As List(Of LanguageRange),   locales As Collection(Of Locale)) As List(Of Locale)
 			Return filter(priorityList, locales, FilteringMode.AUTOSELECT_FILTERING)
 		End Function
 
@@ -3002,7 +3002,7 @@ Namespace java.util
 		'''     <seealso cref="FilteringMode#REJECT_EXTENDED_RANGES"/> is specified
 		''' 
 		''' @since 1.8 </exception>
-		Public Shared Function filterTags(ByVal priorityList As List(Of LanguageRange), ByVal tags As Collection(Of String), ByVal mode As FilteringMode) As List(Of String)
+		Public Shared Function filterTags(  priorityList As List(Of LanguageRange),   tags As Collection(Of String),   mode As FilteringMode) As List(Of String)
 			Return sun.util.locale.LocaleMatcher.filterTags(priorityList, tags, mode)
 		End Function
 
@@ -3022,7 +3022,7 @@ Namespace java.util
 		'''     {@code null}
 		''' 
 		''' @since 1.8 </exception>
-		Public Shared Function filterTags(ByVal priorityList As List(Of LanguageRange), ByVal tags As Collection(Of String)) As List(Of String)
+		Public Shared Function filterTags(  priorityList As List(Of LanguageRange),   tags As Collection(Of String)) As List(Of String)
 			Return filterTags(priorityList, tags, FilteringMode.AUTOSELECT_FILTERING)
 		End Function
 
@@ -3039,7 +3039,7 @@ Namespace java.util
 		'''     {@code null}
 		''' 
 		''' @since 1.8 </exception>
-		Public Shared Function lookup(ByVal priorityList As List(Of LanguageRange), ByVal locales As Collection(Of Locale)) As Locale
+		Public Shared Function lookup(  priorityList As List(Of LanguageRange),   locales As Collection(Of Locale)) As Locale
 			Return sun.util.locale.LocaleMatcher.lookup(priorityList, locales)
 		End Function
 
@@ -3056,7 +3056,7 @@ Namespace java.util
 		'''     {@code null}
 		''' 
 		''' @since 1.8 </exception>
-		Public Shared Function lookupTag(ByVal priorityList As List(Of LanguageRange), ByVal tags As Collection(Of String)) As String
+		Public Shared Function lookupTag(  priorityList As List(Of LanguageRange),   tags As Collection(Of String)) As String
 			Return sun.util.locale.LocaleMatcher.lookupTag(priorityList, tags)
 		End Function
 

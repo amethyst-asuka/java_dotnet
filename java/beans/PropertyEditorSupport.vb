@@ -52,7 +52,7 @@ Namespace java.beans
 		''' </summary>
 		''' <param name="source"> the source used for event firing
 		''' @since 1.5 </param>
-		Public Sub New(ByVal source As Object)
+		Public Sub New(  source As Object)
 			If source Is Nothing Then Throw New NullPointerException
 			source = source
 		End Sub
@@ -69,7 +69,7 @@ Namespace java.beans
 			Get
 				Return source
 			End Get
-			Set(ByVal source As Object)
+			Set(  source As Object)
 				Me.source = source
 			End Set
 		End Property
@@ -83,7 +83,7 @@ Namespace java.beans
 		'''     the PropertyEditor should create a new object to hold any
 		'''     modified value. </param>
 		Public Overridable Property value Implements PropertyEditor.setValue As Object
-			Set(ByVal value As Object)
+			Set(  value As Object)
 				Me.value = value
 				firePropertyChange()
 			End Set
@@ -116,7 +116,7 @@ Namespace java.beans
 		''' </summary>
 		''' <param name="gfx">  Graphics object to paint into. </param>
 		''' <param name="box">  Rectangle within graphics object into which we should paint. </param>
-		Public Overridable Sub paintValue(ByVal gfx As java.awt.Graphics, ByVal box As java.awt.Rectangle) Implements PropertyEditor.paintValue
+		Public Overridable Sub paintValue(  gfx As java.awt.Graphics,   box As java.awt.Rectangle) Implements PropertyEditor.paintValue
 		End Sub
 
 		'----------------------------------------------------------------------
@@ -152,7 +152,7 @@ Namespace java.beans
 			Get
 				Return If(Me.value IsNot Nothing, Me.value.ToString(), Nothing)
 			End Get
-			Set(ByVal text As String)
+			Set(  text As String)
 				If TypeOf value Is String Then
 					value = text
 					Return
@@ -228,7 +228,7 @@ Namespace java.beans
 		''' </summary>
 		''' <param name="listener">  the <seealso cref="PropertyChangeListener"/> to add </param>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Sub addPropertyChangeListener(ByVal listener As PropertyChangeListener) Implements PropertyEditor.addPropertyChangeListener
+		Public Overridable Sub addPropertyChangeListener(  listener As PropertyChangeListener) Implements PropertyEditor.addPropertyChangeListener
 			If listeners Is Nothing Then listeners = New List(Of )
 			listeners.Add(listener)
 		End Sub
@@ -243,7 +243,7 @@ Namespace java.beans
 		''' </summary>
 		''' <param name="listener">  the <seealso cref="PropertyChangeListener"/> to remove </param>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Sub removePropertyChangeListener(ByVal listener As PropertyChangeListener) Implements PropertyEditor.removePropertyChangeListener
+		Public Overridable Sub removePropertyChangeListener(  listener As PropertyChangeListener) Implements PropertyEditor.removePropertyChangeListener
 			If listeners Is Nothing Then Return
 			listeners.Remove(listener)
 		End Sub
@@ -267,7 +267,7 @@ Namespace java.beans
 		End Sub
 
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Private Function unsafeClone(Of T)(ByVal v As List(Of T)) As List(Of T)
+		Private Function unsafeClone(Of T)(  v As List(Of T)) As List(Of T)
 			Return CType(v.clone(), List(Of T))
 		End Function
 

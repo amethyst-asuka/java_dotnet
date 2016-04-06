@@ -56,7 +56,7 @@ Namespace java.awt
 		''' <param name="dstOut"> the <code>WritableRaster</code> into which the
 		''' result of the operation is stored </param>
 		''' <seealso cref= Composite </seealso>
-		Sub compose(ByVal src As java.awt.image.Raster, ByVal dstIn As java.awt.image.Raster, ByVal dstOut As java.awt.image.WritableRaster)
+		Sub compose(  src As java.awt.image.Raster,   dstIn As java.awt.image.Raster,   dstOut As java.awt.image.WritableRaster)
 
 
 	End Interface

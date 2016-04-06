@@ -111,7 +111,7 @@ Namespace java.security
 		''' <exception cref="IllegalArgumentException"> - if this PermissionCollection
 		'''                object is a homogeneous collection and the permission
 		'''                is not of the correct type. </exception>
-		Public MustOverride Sub add(ByVal permission As Permission)
+		Public MustOverride Sub add(  permission As Permission)
 
 		''' <summary>
 		''' Checks to see if the specified permission is implied by
@@ -121,7 +121,7 @@ Namespace java.security
 		''' </param>
 		''' <returns> true if "permission" is implied by the  permissions in
 		''' the collection, false if not. </returns>
-		Public MustOverride Function implies(ByVal permission As Permission) As Boolean
+		Public MustOverride Function implies(  permission As Permission) As Boolean
 
 		''' <summary>
 		''' Returns an enumeration of all the Permission objects in the collection.

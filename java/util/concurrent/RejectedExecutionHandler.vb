@@ -57,7 +57,7 @@ Namespace java.util.concurrent
 		''' <param name="r"> the runnable task requested to be executed </param>
 		''' <param name="executor"> the executor attempting to execute this task </param>
 		''' <exception cref="RejectedExecutionException"> if there is no remedy </exception>
-		Sub rejectedExecution(ByVal r As Runnable, ByVal executor As ThreadPoolExecutor)
+		Sub rejectedExecution(  r As Runnable,   executor As ThreadPoolExecutor)
 	End Interface
 
 End Namespace

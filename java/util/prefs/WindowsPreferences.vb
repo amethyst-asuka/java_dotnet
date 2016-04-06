@@ -136,12 +136,12 @@ Namespace java.util.prefs
 		''' </summary>
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Private Shared Function WindowsRegOpenKey(ByVal hKey As Integer, ByVal subKey As SByte(), ByVal securityMask As Integer) As Integer()
+		Private Shared Function WindowsRegOpenKey(  hKey As Integer,   subKey As SByte(),   securityMask As Integer) As Integer()
 		End Function
 		''' <summary>
 		''' Retries RegOpenKey() MAX_ATTEMPTS times before giving up.
 		''' </summary>
-		Private Shared Function WindowsRegOpenKey1(ByVal hKey As Integer, ByVal subKey As SByte(), ByVal securityMask As Integer) As Integer()
+		Private Shared Function WindowsRegOpenKey1(  hKey As Integer,   subKey As SByte(),   securityMask As Integer) As Integer()
 			Dim result As Integer() = WindowsRegOpenKey(hKey, subKey, securityMask)
 			If result(ERROR_CODE) = ERROR_SUCCESS Then
 				Return result
@@ -172,7 +172,7 @@ Namespace java.util.prefs
 		 ''' </summary>
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Private Shared Function WindowsRegCloseKey(ByVal hKey As Integer) As Integer
+		Private Shared Function WindowsRegCloseKey(  hKey As Integer) As Integer
 		End Function
 
 		''' <summary>
@@ -180,13 +180,13 @@ Namespace java.util.prefs
 		''' </summary>
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Private Shared Function WindowsRegCreateKeyEx(ByVal hKey As Integer, ByVal subKey As SByte()) As Integer()
+		Private Shared Function WindowsRegCreateKeyEx(  hKey As Integer,   subKey As SByte()) As Integer()
 		End Function
 
 		''' <summary>
 		''' Retries RegCreateKeyEx() MAX_ATTEMPTS times before giving up.
 		''' </summary>
-		Private Shared Function WindowsRegCreateKeyEx1(ByVal hKey As Integer, ByVal subKey As SByte()) As Integer()
+		Private Shared Function WindowsRegCreateKeyEx1(  hKey As Integer,   subKey As SByte()) As Integer()
 			Dim result As Integer() = WindowsRegCreateKeyEx(hKey, subKey)
 			If result(ERROR_CODE) = ERROR_SUCCESS Then
 				Return result
@@ -210,7 +210,7 @@ Namespace java.util.prefs
 		''' </summary>
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Private Shared Function WindowsRegDeleteKey(ByVal hKey As Integer, ByVal subKey As SByte()) As Integer
+		Private Shared Function WindowsRegDeleteKey(  hKey As Integer,   subKey As SByte()) As Integer
 		End Function
 
 		''' <summary>
@@ -218,13 +218,13 @@ Namespace java.util.prefs
 		''' </summary>
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Private Shared Function WindowsRegFlushKey(ByVal hKey As Integer) As Integer
+		Private Shared Function WindowsRegFlushKey(  hKey As Integer) As Integer
 		End Function
 
 		''' <summary>
 		''' Retries RegFlushKey() MAX_ATTEMPTS times before giving up.
 		''' </summary>
-		Private Shared Function WindowsRegFlushKey1(ByVal hKey As Integer) As Integer
+		Private Shared Function WindowsRegFlushKey1(  hKey As Integer) As Integer
 			Dim result As Integer = WindowsRegFlushKey(hKey)
 			If result = ERROR_SUCCESS Then
 				Return result
@@ -249,19 +249,19 @@ Namespace java.util.prefs
 		''' </summary>
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Private Shared Function WindowsRegQueryValueEx(ByVal hKey As Integer, ByVal valueName As SByte()) As SByte()
+		Private Shared Function WindowsRegQueryValueEx(  hKey As Integer,   valueName As SByte()) As SByte()
 		End Function
 		''' <summary>
 		''' Java wrapper for Windows registry API RegSetValueEx()
 		''' </summary>
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Private Shared Function WindowsRegSetValueEx(ByVal hKey As Integer, ByVal valueName As SByte(), ByVal value As SByte()) As Integer
+		Private Shared Function WindowsRegSetValueEx(  hKey As Integer,   valueName As SByte(),   value As SByte()) As Integer
 		End Function
 		''' <summary>
 		''' Retries RegSetValueEx() MAX_ATTEMPTS times before giving up.
 		''' </summary>
-		Private Shared Function WindowsRegSetValueEx1(ByVal hKey As Integer, ByVal valueName As SByte(), ByVal value As SByte()) As Integer
+		Private Shared Function WindowsRegSetValueEx1(  hKey As Integer,   valueName As SByte(),   value As SByte()) As Integer
 			Dim result As Integer = WindowsRegSetValueEx(hKey, valueName, value)
 			If result = ERROR_SUCCESS Then
 				Return result
@@ -286,7 +286,7 @@ Namespace java.util.prefs
 		''' </summary>
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Private Shared Function WindowsRegDeleteValue(ByVal hKey As Integer, ByVal valueName As SByte()) As Integer
+		Private Shared Function WindowsRegDeleteValue(  hKey As Integer,   valueName As SByte()) As Integer
 		End Function
 
 		''' <summary>
@@ -294,13 +294,13 @@ Namespace java.util.prefs
 		''' </summary>
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Private Shared Function WindowsRegQueryInfoKey(ByVal hKey As Integer) As Integer()
+		Private Shared Function WindowsRegQueryInfoKey(  hKey As Integer) As Integer()
 		End Function
 
 		''' <summary>
 		''' Retries RegQueryInfoKey() MAX_ATTEMPTS times before giving up.
 		''' </summary>
-		Private Shared Function WindowsRegQueryInfoKey1(ByVal hKey As Integer) As Integer()
+		Private Shared Function WindowsRegQueryInfoKey1(  hKey As Integer) As Integer()
 			Dim result As Integer() = WindowsRegQueryInfoKey(hKey)
 			If result(ERROR_CODE) = ERROR_SUCCESS Then
 				Return result
@@ -325,13 +325,13 @@ Namespace java.util.prefs
 		''' </summary>
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Private Shared Function WindowsRegEnumKeyEx(ByVal hKey As Integer, ByVal subKeyIndex As Integer, ByVal maxKeyLength As Integer) As SByte()
+		Private Shared Function WindowsRegEnumKeyEx(  hKey As Integer,   subKeyIndex As Integer,   maxKeyLength As Integer) As SByte()
 		End Function
 
 		''' <summary>
 		''' Retries RegEnumKeyEx() MAX_ATTEMPTS times before giving up.
 		''' </summary>
-		Private Shared Function WindowsRegEnumKeyEx1(ByVal hKey As Integer, ByVal subKeyIndex As Integer, ByVal maxKeyLength As Integer) As SByte()
+		Private Shared Function WindowsRegEnumKeyEx1(  hKey As Integer,   subKeyIndex As Integer,   maxKeyLength As Integer) As SByte()
 			Dim result As SByte() = WindowsRegEnumKeyEx(hKey, subKeyIndex, maxKeyLength)
 			If result IsNot Nothing Then
 				Return result
@@ -356,12 +356,12 @@ Namespace java.util.prefs
 		''' </summary>
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Private Shared Function WindowsRegEnumValue(ByVal hKey As Integer, ByVal valueIndex As Integer, ByVal maxValueNameLength As Integer) As SByte()
+		Private Shared Function WindowsRegEnumValue(  hKey As Integer,   valueIndex As Integer,   maxValueNameLength As Integer) As SByte()
 		End Function
 		''' <summary>
 		''' Retries RegEnumValueEx() MAX_ATTEMPTS times before giving up.
 		''' </summary>
-		Private Shared Function WindowsRegEnumValue1(ByVal hKey As Integer, ByVal valueIndex As Integer, ByVal maxValueNameLength As Integer) As SByte()
+		Private Shared Function WindowsRegEnumValue1(  hKey As Integer,   valueIndex As Integer,   maxValueNameLength As Integer) As SByte()
 			Dim result As SByte() = WindowsRegEnumValue(hKey, valueIndex, maxValueNameLength)
 			If result IsNot Nothing Then
 				Return result
@@ -387,7 +387,7 @@ Namespace java.util.prefs
 		''' created.
 		''' Logs a warning message, if Windows Registry is unavailable.
 		''' </summary>
-		Private Sub New(ByVal parent As WindowsPreferences, ByVal name As String)
+		Private Sub New(  parent As WindowsPreferences,   name As String)
 			MyBase.New(parent, name)
 			Dim parentNativeHandle As Integer = parent.openKey(KEY_CREATE_SUB_KEY, KEY_READ)
 			If parentNativeHandle = NULL_NATIVE_HANDLE Then
@@ -413,7 +413,7 @@ Namespace java.util.prefs
 		''' Logs a warning message, if Windows Registry is unavailable. </summary>
 		''' <param name="rootNativeHandle"> Native handle to one of Windows top level keys. </param>
 		''' <param name="rootDirectory"> Path to root directory, as a byte-encoded string. </param>
-		Private Sub New(ByVal rootNativeHandle As Integer, ByVal rootDirectory As SByte())
+		Private Sub New(  rootNativeHandle As Integer,   rootDirectory As SByte())
 			MyBase.New(Nothing, "")
 			Dim result As Integer() = WindowsRegCreateKeyEx1(rootNativeHandle, rootDirectory)
 			If result(ERROR_CODE) <> ERROR_SUCCESS Then
@@ -452,7 +452,7 @@ Namespace java.util.prefs
 		''' <seealso cref= #openKey(byte[], int) </seealso>
 		''' <seealso cref= #openKey(int, byte[], int) </seealso>
 		''' <seealso cref= #closeKey(int) </seealso>
-		Private Function openKey(ByVal securityMask As Integer) As Integer
+		Private Function openKey(  securityMask As Integer) As Integer
 			Return openKey(securityMask, securityMask)
 		End Function
 
@@ -465,7 +465,7 @@ Namespace java.util.prefs
 		''' <seealso cref= #openKey(byte[], int) </seealso>
 		''' <seealso cref= #openKey(int, byte[], int) </seealso>
 		''' <seealso cref= #closeKey(int) </seealso>
-		Private Function openKey(ByVal mask1 As Integer, ByVal mask2 As Integer) As Integer
+		Private Function openKey(  mask1 As Integer,   mask2 As Integer) As Integer
 			Return openKey(windowsAbsolutePath(), mask1, mask2)
 		End Function
 
@@ -480,7 +480,7 @@ Namespace java.util.prefs
 		 ''' <seealso cref= #openKey(int) </seealso>
 		 ''' <seealso cref= #openKey(int, byte[],int) </seealso>
 		 ''' <seealso cref= #closeKey(int) </seealso>
-		Private Function openKey(ByVal windowsAbsolutePath As SByte(), ByVal mask1 As Integer, ByVal mask2 As Integer) As Integer
+		Private Function openKey(  windowsAbsolutePath As SByte(),   mask1 As Integer,   mask2 As Integer) As Integer
 	'          Check if key's path is short enough be opened at once
 	'            otherwise use a path-splitting procedure 
 			If windowsAbsolutePath.Length <= MAX_WINDOWS_PATH_LENGTH + 1 Then
@@ -510,7 +510,7 @@ Namespace java.util.prefs
 		 ''' <seealso cref= #openKey(int) </seealso>
 		 ''' <seealso cref= #openKey(byte[],int) </seealso>
 		 ''' <seealso cref= #closeKey(int) </seealso>
-		Private Function openKey(ByVal nativeHandle As Integer, ByVal windowsRelativePath As SByte(), ByVal mask1 As Integer, ByVal mask2 As Integer) As Integer
+		Private Function openKey(  nativeHandle As Integer,   windowsRelativePath As SByte(),   mask1 As Integer,   mask2 As Integer) As Integer
 		' If the path is short enough open at once. Otherwise split the path 
 			If windowsRelativePath.Length <= MAX_WINDOWS_PATH_LENGTH + 1 Then
 				Dim result As Integer() = WindowsRegOpenKey1(nativeHandle, windowsRelativePath, mask1)
@@ -551,7 +551,7 @@ Namespace java.util.prefs
 		 ''' <seealso cref= #openKey(int) </seealso>
 		 ''' <seealso cref= #openKey(byte[],int) </seealso>
 		 ''' <seealso cref= #openKey(int, byte[],int) </seealso>
-		Private Sub closeKey(ByVal nativeHandle As Integer)
+		Private Sub closeKey(  nativeHandle As Integer)
 			Dim result As Integer = WindowsRegCloseKey(nativeHandle)
 			If result <> ERROR_SUCCESS Then logger().warning("Could not close windows registry node " & byteArrayToString(windowsAbsolutePath()) & " at root 0x" &  java.lang.[Integer].toHexString(rootNativeHandle()) & ". Windows RegCloseKey(...) returned error code " & result & ".")
 		End Sub
@@ -561,7 +561,7 @@ Namespace java.util.prefs
 		 ''' Puts name-value pair into the underlying Windows registry node.
 		 ''' Logs a warning, if Windows registry is unavailable. </summary>
 		 ''' <seealso cref= #getSpi(String) </seealso>
-		Protected Friend Overrides Sub putSpi(ByVal javaName As String, ByVal value As String)
+		Protected Friend Overrides Sub putSpi(  javaName As String,   value As String)
 			Dim nativeHandle As Integer = openKey(KEY_SET_VALUE)
 			If nativeHandle = NULL_NATIVE_HANDLE Then
 				isBackingStoreAvailable = False
@@ -580,7 +580,7 @@ Namespace java.util.prefs
 		''' Gets a string value from the underlying Windows registry node.
 		''' Logs a warning, if Windows registry is unavailable. </summary>
 		''' <seealso cref= #putSpi(String, String) </seealso>
-		Protected Friend Overrides Function getSpi(ByVal javaName As String) As String
+		Protected Friend Overrides Function getSpi(  javaName As String) As String
 		Dim nativeHandle As Integer = openKey(KEY_QUERY_VALUE)
 		If nativeHandle = NULL_NATIVE_HANDLE Then Return Nothing
 		Dim resultObject As Object = WindowsRegQueryValueEx(nativeHandle, toWindowsName(javaName))
@@ -599,7 +599,7 @@ Namespace java.util.prefs
 		''' Logs a warning, if Windows registry is unavailable or key has already
 		''' been deleted.
 		''' </summary>
-		Protected Friend Overrides Sub removeSpi(ByVal key As String)
+		Protected Friend Overrides Sub removeSpi(  key As String)
 			Dim nativeHandle As Integer = openKey(KEY_SET_VALUE)
 			If nativeHandle = NULL_NATIVE_HANDLE Then Return
 			Dim result As Integer = WindowsRegDeleteValue(nativeHandle, toWindowsName(key))
@@ -728,7 +728,7 @@ Namespace java.util.prefs
 		''' if it does not exist.
 		''' Logs a warning message, if Windows Registry is unavailable.
 		''' </summary>
-		Protected Friend Overrides Function childSpi(ByVal name As String) As AbstractPreferences
+		Protected Friend Overrides Function childSpi(  name As String) As AbstractPreferences
 			Return New WindowsPreferences(Me, name)
 		End Function
 
@@ -756,7 +756,7 @@ Namespace java.util.prefs
 		''' <seealso cref="#toWindowsName(String) toWindowsName()"/> for a detailed
 		''' description of encoding conventions. </summary>
 		''' <param name="windowsNameArray"> Null-terminated byte array. </param>
-		Private Shared Function toJavaName(ByVal windowsNameArray As SByte()) As String
+		Private Shared Function toJavaName(  windowsNameArray As SByte()) As String
 			Dim windowsName As String = byteArrayToString(windowsNameArray)
 			' check if Alt64
 			If (windowsName.length() > 1) AndAlso (windowsName.Substring(0, 2).Equals("/!")) Then Return toJavaAlt64Name(windowsName)
@@ -790,7 +790,7 @@ Namespace java.util.prefs
 		''' description of encoding conventions.
 		''' </summary>
 
-		Private Shared Function toJavaAlt64Name(ByVal windowsName As String) As String
+		Private Shared Function toJavaAlt64Name(  windowsName As String) As String
 			Dim byteBuffer As SByte() = Base64.altBase64ToByteArray(windowsName.Substring(2))
 			Dim result As New StringBuilder
 			For i As Integer = 0 To byteBuffer.Length - 1
@@ -822,7 +822,7 @@ Namespace java.util.prefs
 		''' byteArrayToAltBase64() method from
 		''' Base64 class.
 		''' </summary>
-		Private Shared Function toWindowsName(ByVal javaName As String) As SByte()
+		Private Shared Function toWindowsName(  javaName As String) As SByte()
 			Dim windowsName As New StringBuilder
 			For i As Integer = 0 To javaName.length() - 1
 				Dim ch As Char = javaName.Chars(i)
@@ -846,7 +846,7 @@ Namespace java.util.prefs
 		''' <seealso cref="#toWindowsName(String) toWindowsName()"/> for a detailed
 		''' description of encoding conventions.
 		''' </summary>
-		Private Shared Function toWindowsAlt64Name(ByVal javaName As String) As SByte()
+		Private Shared Function toWindowsAlt64Name(  javaName As String) As SByte()
 			Dim javaNameArray As SByte() = New SByte(2*javaName.length() - 1){}
 			' Convert to byte pairs
 			Dim counter As Integer = 0
@@ -867,7 +867,7 @@ Namespace java.util.prefs
 		''' <seealso cref="#toWindowsValueString(String) toWindowsValueString()"/> for the
 		''' description of the encoding algorithm.
 		''' </summary>
-		 Private Shared Function toJavaValueString(ByVal windowsNameArray As SByte()) As String
+		 Private Shared Function toJavaValueString(  windowsNameArray As SByte()) As String
 			' Use modified native2ascii algorithm
 			Dim windowsName As String = byteArrayToString(windowsNameArray)
 			Dim javaName As New StringBuilder
@@ -911,7 +911,7 @@ Namespace java.util.prefs
 		''' Then encoding scheme similar to jdk's native2ascii converter is used
 		''' to convert java string to a byte array of ASCII characters.
 		''' </summary>
-		Private Shared Function toWindowsValueString(ByVal javaName As String) As SByte()
+		Private Shared Function toWindowsValueString(  javaName As String) As SByte()
 			Dim windowsName As New StringBuilder
 			For i As Integer = 0 To javaName.length() - 1
 				Dim ch As Char = javaName.Chars(i)
@@ -951,7 +951,7 @@ Namespace java.util.prefs
 		''' <summary>
 		''' Returns this java string as a null-terminated byte array
 		''' </summary>
-		Private Shared Function stringToByteArray(ByVal str As String) As SByte()
+		Private Shared Function stringToByteArray(  str As String) As SByte()
 			Dim result As SByte() = New SByte(str.length()){}
 			For i As Integer = 0 To str.length() - 1
 				result(i) = AscW(str.Chars(i))
@@ -963,7 +963,7 @@ Namespace java.util.prefs
 		''' <summary>
 		''' Converts a null-terminated byte array to java string
 		''' </summary>
-		Private Shared Function byteArrayToString(ByVal array As SByte()) As String
+		Private Shared Function byteArrayToString(  array As SByte()) As String
 			Dim result As New StringBuilder
 			For i As Integer = 0 To array.Length - 2
 				result.append(ChrW(array(i)))

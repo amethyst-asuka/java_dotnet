@@ -67,7 +67,7 @@ Namespace java.util.prefs
 		'''         backing store. </exception>
 		''' <exception cref="IllegalStateException"> if this node (or an ancestor) has been
 		'''         removed with the <seealso cref="Preferences#removeNode()"/> method. </exception>
-		Friend Shared Sub export(ByVal os As OutputStream, ByVal p As Preferences, ByVal subTree As Boolean)
+		Friend Shared Sub export(  os As OutputStream,   p As Preferences,   subTree As Boolean)
 			If CType(p, AbstractPreferences).removed Then Throw New IllegalStateException("Node has been removed")
 			Dim doc As Document = createPrefsDoc("preferences")
 			Dim preferences_Renamed As Element = doc.documentElement
@@ -107,7 +107,7 @@ Namespace java.util.prefs
 		''' <exception cref="BackingStoreException"> if it is not possible to read
 		'''         the preferences or children out of the specified
 		'''         preferences node. </exception>
-		Private Shared Sub putPreferencesInXml(ByVal elt As Element, ByVal doc As Document, ByVal prefs As Preferences, ByVal subTree As Boolean)
+		Private Shared Sub putPreferencesInXml(  elt As Element,   doc As Document,   prefs As Preferences,   subTree As Boolean)
 			Dim kidsCopy As Preferences() = Nothing
 			Dim kidNames As String() = Nothing
 
@@ -160,7 +160,7 @@ Namespace java.util.prefs
 		'''         results in an <tt>IOException</tt>. </exception>
 		''' <exception cref="InvalidPreferencesFormatException"> Data on input stream does not
 		'''         constitute a valid XML document with the mandated document type. </exception>
-		Friend Shared Sub importPreferences(ByVal [is] As InputStream)
+		Friend Shared Sub importPreferences(  [is] As InputStream)
 			Try
 				Dim doc As Document = loadPrefsDoc([is])
 				Dim xmlVersion As String = doc.documentElement.getAttribute("EXTERNAL_XML_VERSION")
@@ -177,7 +177,7 @@ Namespace java.util.prefs
 		''' <summary>
 		''' Create a new prefs XML document.
 		''' </summary>
-		Private Shared Function createPrefsDoc(ByVal qname As String) As Document
+		Private Shared Function createPrefsDoc(  qname As String) As Document
 			Try
 				Dim di As DOMImplementation = DocumentBuilderFactory.newInstance().newDocumentBuilder().dOMImplementation
 				Dim dt As DocumentType = di.createDocumentType(qname, Nothing, PREFS_DTD_URI)
@@ -191,7 +191,7 @@ Namespace java.util.prefs
 		''' Load an XML document from specified input stream, which must
 		''' have the requisite DTD URI.
 		''' </summary>
-		Private Shared Function loadPrefsDoc(ByVal [in] As InputStream) As Document
+		Private Shared Function loadPrefsDoc(  [in] As InputStream) As Document
 			Dim dbf As DocumentBuilderFactory = DocumentBuilderFactory.newInstance()
 			dbf.ignoringElementContentWhitespace = True
 			dbf.validating = True
@@ -210,7 +210,7 @@ Namespace java.util.prefs
 		''' <summary>
 		''' Write XML document to the specified output stream.
 		''' </summary>
-		Private Shared Sub writeDoc(ByVal doc As Document, ByVal out As OutputStream)
+		Private Shared Sub writeDoc(  doc As Document,   out As OutputStream)
 			Try
 				Dim tf As TransformerFactory = TransformerFactory.newInstance()
 				Try
@@ -236,7 +236,7 @@ Namespace java.util.prefs
 		''' the described preferences into the system or current user
 		''' preferences tree, as appropriate.
 		''' </summary>
-		Private Shared Sub ImportSubtree(ByVal prefsNode As Preferences, ByVal xmlNode As Element)
+		Private Shared Sub ImportSubtree(  prefsNode As Preferences,   xmlNode As Element)
 			Dim xmlKids As NodeList = xmlNode.childNodes
 			Dim numXmlKids As Integer = xmlKids.length
 	'        
@@ -273,7 +273,7 @@ Namespace java.util.prefs
 		''' (a map from a preferences document) into the specified
 		''' preferences node.
 		''' </summary>
-		Private Shared Sub ImportPrefs(ByVal prefsNode As Preferences, ByVal map As Element)
+		Private Shared Sub ImportPrefs(  prefsNode As Preferences,   map As Element)
 			Dim entries As NodeList = map.childNodes
 			Dim i As Integer=0
 			Dim numEntries As Integer = entries.length
@@ -291,7 +291,7 @@ Namespace java.util.prefs
 		''' </summary>
 		''' <exception cref="IOException"> if writing to the specified output stream
 		'''         results in an <tt>IOException</tt>. </exception>
-		Friend Shared Sub exportMap(ByVal os As OutputStream, ByVal map As Map(Of String, String))
+		Friend Shared Sub exportMap(  os As OutputStream,   map As Map(Of String, String))
 			Dim doc As Document = createPrefsDoc("map")
 			Dim xmlMap As Element = doc.documentElement
 			xmlMap.attributeute("MAP_XML_VERSION", MAP_XML_VERSION)
@@ -319,7 +319,7 @@ Namespace java.util.prefs
 		'''         results in an <tt>IOException</tt>. </exception>
 		''' <exception cref="InvalidPreferencesFormatException"> Data on input stream does not
 		'''         constitute a valid XML document with the mandated document type. </exception>
-		Friend Shared Sub importMap(ByVal [is] As InputStream, ByVal m As Map(Of String, String))
+		Friend Shared Sub importMap(  [is] As InputStream,   m As Map(Of String, String))
 			Try
 				Dim doc As Document = loadPrefsDoc([is])
 				Dim xmlMap As Element = doc.documentElement
@@ -343,7 +343,7 @@ Namespace java.util.prefs
 		Private Class Resolver
 			Implements EntityResolver
 
-			Public Overridable Function resolveEntity(ByVal pid As String, ByVal sid As String) As InputSource
+			Public Overridable Function resolveEntity(  pid As String,   sid As String) As InputSource
 				If sid.Equals(PREFS_DTD_URI) Then
 					Dim [is] As InputSource
 					[is] = New InputSource(New StringReader(PREFS_DTD))
@@ -357,13 +357,13 @@ Namespace java.util.prefs
 		Private Class EH
 			Implements ErrorHandler
 
-			Public Overridable Sub [error](ByVal x As SAXParseException)
+			Public Overridable Sub [error](  x As SAXParseException)
 				Throw x
 			End Sub
-			Public Overridable Sub fatalError(ByVal x As SAXParseException)
+			Public Overridable Sub fatalError(  x As SAXParseException)
 				Throw x
 			End Sub
-			Public Overridable Sub warning(ByVal x As SAXParseException)
+			Public Overridable Sub warning(  x As SAXParseException)
 				Throw x
 			End Sub
 		End Class

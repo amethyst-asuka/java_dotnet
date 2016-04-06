@@ -169,7 +169,7 @@ Namespace java.nio.channels
 		'''          If a security manager is set, and its
 		'''          <seealso cref="SecurityManager#checkMulticast(InetAddress) checkMulticast"/>
 		'''          method denies access to the multiast group </exception>
-		Function join(ByVal group As java.net.InetAddress, ByVal interf As java.net.NetworkInterface) As MembershipKey
+		Function join(  group As java.net.InetAddress,   interf As java.net.NetworkInterface) As MembershipKey
 
 		''' <summary>
 		''' Joins a multicast group to begin receiving datagrams sent to the group
@@ -215,7 +215,7 @@ Namespace java.nio.channels
 		'''          If a security manager is set, and its
 		'''          <seealso cref="SecurityManager#checkMulticast(InetAddress) checkMulticast"/>
 		'''          method denies access to the multiast group </exception>
-		Function join(ByVal group As java.net.InetAddress, ByVal interf As java.net.NetworkInterface, ByVal source As java.net.InetAddress) As MembershipKey
+		Function join(  group As java.net.InetAddress,   interf As java.net.NetworkInterface,   source As java.net.InetAddress) As MembershipKey
 	End Interface
 
 End Namespace

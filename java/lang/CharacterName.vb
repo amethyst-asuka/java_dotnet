@@ -91,7 +91,7 @@ Namespace java.lang
 			End Function
 		End Class
 
-		Public Shared Function [get](ByVal cp As Integer) As String
+		Public Shared Function [get](  cp As Integer) As String
 			Dim strPool As SByte() = Nothing
 			strPool = refStrPool.get()
 			If refStrPool Is Nothing OrElse strPool Is Nothing Then strPool = initNamePool()

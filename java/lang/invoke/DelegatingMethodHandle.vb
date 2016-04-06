@@ -37,15 +37,15 @@ Namespace java.lang.invoke
 	Friend MustInherit Class DelegatingMethodHandle
 		Inherits MethodHandle
 
-		Protected Friend Sub New(ByVal target As MethodHandle)
+		Protected Friend Sub New(  target As MethodHandle)
 			Me.New(target.type(), target)
 		End Sub
 
-		Protected Friend Sub New(ByVal type As MethodType, ByVal target As MethodHandle)
+		Protected Friend Sub New(  type As MethodType,   target As MethodHandle)
 			MyBase.New(type, chooseDelegatingForm(target))
 		End Sub
 
-		Protected Friend Sub New(ByVal type As MethodType, ByVal form As LambdaForm)
+		Protected Friend Sub New(  type As MethodType,   form As LambdaForm)
 			MyBase.New(type, form)
 		End Sub
 
@@ -53,7 +53,7 @@ Namespace java.lang.invoke
 		''' Define this to extract the delegated target which supplies the invocation behavior. </summary>
 		Protected Friend MustOverride ReadOnly Property target As MethodHandle
 
-		Friend MustOverride Overrides Function asTypeUncached(ByVal newType As MethodType) As MethodHandle
+		Friend MustOverride Overrides Function asTypeUncached(  newType As MethodType) As MethodHandle
 
 		Friend Overrides Function internalMemberName() As MemberName
 			Return target.internalMemberName()
@@ -69,7 +69,7 @@ Namespace java.lang.invoke
 			Return target.internalCallerClass()
 		End Function
 
-		Friend Overrides Function copyWith(ByVal mt As MethodType, ByVal lf As LambdaForm) As MethodHandle
+		Friend Overrides Function copyWith(  mt As MethodType,   lf As LambdaForm) As MethodHandle
 			' FIXME: rethink 'copyWith' protocol; it is too low-level for use on all MHs
 			Throw newIllegalArgumentException("do not use this")
 		End Function
@@ -82,12 +82,12 @@ Namespace java.lang.invoke
 			Return target.rebind()
 		End Function
 
-		Private Shared Function chooseDelegatingForm(ByVal target As MethodHandle) As LambdaForm
+		Private Shared Function chooseDelegatingForm(  target As MethodHandle) As LambdaForm
 			If TypeOf target Is SimpleMethodHandle Then Return target.internalForm() ' no need for an indirection
 			Return makeReinvokerForm(target, MethodTypeForm.LF_DELEGATE, GetType(DelegatingMethodHandle), NF_getTarget)
 		End Function
 
-		Friend Shared Function makeReinvokerForm(ByVal target As MethodHandle, ByVal whichCache As Integer, ByVal constraint As Object, ByVal getTargetFn As NamedFunction) As LambdaForm
+		Friend Shared Function makeReinvokerForm(  target As MethodHandle,   whichCache As Integer,   constraint As Object,   getTargetFn As NamedFunction) As LambdaForm
 			Dim debugString As String
 			Select Case whichCache
 				Case MethodTypeForm.LF_REBIND
@@ -102,7 +102,7 @@ Namespace java.lang.invoke
 		End Function
 		''' <summary>
 		''' Create a LF which simply reinvokes a target of the given basic type. </summary>
-		Friend Shared Function makeReinvokerForm(ByVal target As MethodHandle, ByVal whichCache As Integer, ByVal constraint As Object, ByVal debugString As String, ByVal forceInline As Boolean, ByVal getTargetFn As NamedFunction, ByVal preActionFn As NamedFunction) As LambdaForm
+		Friend Shared Function makeReinvokerForm(  target As MethodHandle,   whichCache As Integer,   constraint As Object,   debugString As String,   forceInline As Boolean,   getTargetFn As NamedFunction,   preActionFn As NamedFunction) As LambdaForm
 			Dim mtype As MethodType = target.type().basicType()
 			Dim customized As Boolean = (whichCache < 0 OrElse mtype.parameterSlotCount() > MethodType.MAX_MH_INVOKER_ARITY)
 			Dim hasPreAction As Boolean = (preActionFn IsNot Nothing)

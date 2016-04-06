@@ -73,7 +73,7 @@ Namespace java.io
 		''' dependency on java.util.Objects.requireNonNull. PrintStream is loaded
 		''' early during system initialization.
 		''' </summary>
-		Private Shared Function requireNonNull(Of T)(ByVal obj As T, ByVal message As String) As T
+		Private Shared Function requireNonNull(Of T)(  obj As T,   message As String) As T
 			If obj Is Nothing Then Throw New NullPointerException(message)
 			Return obj
 		End Function
@@ -82,7 +82,7 @@ Namespace java.io
 		''' Returns a charset object for the given charset name. </summary>
 		''' <exception cref="NullPointerException">          is csn is null </exception>
 		''' <exception cref="UnsupportedEncodingException">  if the charset is not supported </exception>
-		Private Shared Function toCharset(ByVal csn As String) As java.nio.charset.Charset
+		Private Shared Function toCharset(  csn As String) As java.nio.charset.Charset
 			requireNonNull(csn, "charsetName")
             Try
                 Return java.nio.charset.Charset.forName(csn)
@@ -96,14 +96,14 @@ Namespace java.io
 		End Function
 
 		' Private constructors 
-		Private Sub New(ByVal autoFlush As Boolean, ByVal out As OutputStream)
+		Private Sub New(  autoFlush As Boolean,   out As OutputStream)
 			MyBase.New(out)
 			Me.autoFlush = autoFlush
 			Me.charOut = New OutputStreamWriter(Me)
 			Me.textOut = New BufferedWriter(charOut)
 		End Sub
 
-		Private Sub New(ByVal autoFlush As Boolean, ByVal out As OutputStream, ByVal charset As java.nio.charset.Charset)
+		Private Sub New(  autoFlush As Boolean,   out As OutputStream,   charset As java.nio.charset.Charset)
 			MyBase.New(out)
 			Me.autoFlush = autoFlush
 			Me.charOut = New OutputStreamWriter(Me, charset)
@@ -115,7 +115,7 @@ Namespace java.io
 	'     * by constructors creating a FileOutputStream that also take a
 	'     * charset name.
 	'     
-		Private Sub New(ByVal autoFlush As Boolean, ByVal charset As java.nio.charset.Charset, ByVal out As OutputStream)
+		Private Sub New(  autoFlush As Boolean,   charset As java.nio.charset.Charset,   out As OutputStream)
 			Me.New(autoFlush, out, charset)
 		End Sub
 
@@ -126,7 +126,7 @@ Namespace java.io
 		'''                    printed
 		''' </param>
 		''' <seealso cref= java.io.PrintWriter#PrintWriter(java.io.OutputStream) </seealso>
-		Public Sub New(ByVal out As OutputStream)
+		Public Sub New(  out As OutputStream)
 			Me.New(out, False)
 		End Sub
 
@@ -141,7 +141,7 @@ Namespace java.io
 		'''                    character or byte (<code>'\n'</code>) is written
 		''' </param>
 		''' <seealso cref= java.io.PrintWriter#PrintWriter(java.io.OutputStream, boolean) </seealso>
-		Public Sub New(ByVal out As OutputStream, ByVal autoFlush As Boolean)
+		Public Sub New(  out As OutputStream,   autoFlush As Boolean)
 			Me.New(autoFlush, requireNonNull(out, "Null output stream"))
 		End Sub
 
@@ -162,7 +162,7 @@ Namespace java.io
 		'''          If the named encoding is not supported
 		''' 
 		''' @since  1.4 </exception>
-		Public Sub New(ByVal out As OutputStream, ByVal autoFlush As Boolean, ByVal encoding As String)
+		Public Sub New(  out As OutputStream,   autoFlush As Boolean,   encoding As String)
 			Me.New(autoFlush, requireNonNull(out, "Null output stream"), toCharset(encoding))
 		End Sub
 
@@ -192,7 +192,7 @@ Namespace java.io
 		'''          access to the file
 		''' 
 		''' @since  1.5 </exception>
-		Public Sub New(ByVal fileName As String)
+		Public Sub New(  fileName As String)
 			Me.New(False, New FileOutputStream(fileName))
 		End Sub
 
@@ -228,7 +228,7 @@ Namespace java.io
 		'''          If the named charset is not supported
 		''' 
 		''' @since  1.5 </exception>
-		Public Sub New(ByVal fileName As String, ByVal csn As String)
+		Public Sub New(  fileName As String,   csn As String)
 			' ensure charset is checked before the file is opened
 			Me.New(False, toCharset(csn), New FileOutputStream(fileName))
 		End Sub
@@ -259,7 +259,7 @@ Namespace java.io
 		'''          denies write access to the file
 		''' 
 		''' @since  1.5 </exception>
-		Public Sub New(ByVal file_Renamed As File)
+		Public Sub New(  file_Renamed As File)
 			Me.New(False, New FileOutputStream(file_Renamed))
 		End Sub
 
@@ -295,7 +295,7 @@ Namespace java.io
 		'''          If the named charset is not supported
 		''' 
 		''' @since  1.5 </exception>
-		Public Sub New(ByVal file_Renamed As File, ByVal csn As String)
+		Public Sub New(  file_Renamed As File,   csn As String)
 			' ensure charset is checked before the file is opened
 			Me.New(False, toCharset(csn), New FileOutputStream(file_Renamed))
 		End Sub
@@ -416,7 +416,7 @@ Namespace java.io
 		''' <param name="b">  The byte to be written </param>
 		''' <seealso cref= #print(char) </seealso>
 		''' <seealso cref= #println(char) </seealso>
-		Public Overrides Sub write(ByVal b As Integer)
+		Public Overrides Sub write(  b As Integer)
 			Try
 				SyncLock Me
 					ensureOpen()

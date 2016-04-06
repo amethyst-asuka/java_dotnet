@@ -143,7 +143,7 @@ Namespace java.nio.channels
 		''' </param>
 		''' <exception cref="IllegalArgumentException">
 		'''         If the preconditions on the parameters do not hold </exception>
-		Protected Friend Sub New(ByVal channel As FileChannel, ByVal position As Long, ByVal size As Long, ByVal [shared] As Boolean)
+		Protected Friend Sub New(  channel As FileChannel,   position As Long,   size As Long,   [shared] As Boolean)
 			If position < 0 Then Throw New IllegalArgumentException("Negative position")
 			If size < 0 Then Throw New IllegalArgumentException("Negative size")
 			If position + size < 0 Then Throw New IllegalArgumentException("Negative position + size")
@@ -175,7 +175,7 @@ Namespace java.nio.channels
 		'''         If the preconditions on the parameters do not hold
 		''' 
 		''' @since 1.7 </exception>
-		Protected Friend Sub New(ByVal channel As AsynchronousFileChannel, ByVal position As Long, ByVal size As Long, ByVal [shared] As Boolean)
+		Protected Friend Sub New(  channel As AsynchronousFileChannel,   position As Long,   size As Long,   [shared] As Boolean)
 			If position < 0 Then Throw New IllegalArgumentException("Negative position")
 			If size < 0 Then Throw New IllegalArgumentException("Negative size")
 			If position + size < 0 Then Throw New IllegalArgumentException("Negative position + size")
@@ -253,7 +253,7 @@ Namespace java.nio.channels
 		''' </param>
 		''' <returns>  <tt>true</tt> if, and only if, this lock and the given lock
 		'''          range overlap by at least one byte </returns>
-		Public Function overlaps(ByVal position As Long, ByVal size As Long) As Boolean
+		Public Function overlaps(  position As Long,   size As Long) As Boolean
 			If position + size <= Me.position_Renamed Then Return False ' That is below this
 			If Me.position_Renamed + Me.size_Renamed <= position Then Return False ' This is below that
 			Return True

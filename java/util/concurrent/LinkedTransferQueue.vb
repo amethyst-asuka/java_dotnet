@@ -454,11 +454,11 @@ Namespace java.util.concurrent
 			Friend waiter As Thread ' null until waiting
 
 			' CAS methods for fields
-			Friend Function casNext(ByVal cmp As Node, ByVal val As Node) As Boolean
+			Friend Function casNext(  cmp As Node,   val As Node) As Boolean
 				Return UNSAFE.compareAndSwapObject(Me, nextOffset, cmp, val)
 			End Function
 
-			Friend Function casItem(ByVal cmp As Object, ByVal val As Object) As Boolean
+			Friend Function casItem(  cmp As Object,   val As Object) As Boolean
 				' assert cmp == null || cmp.getClass() != Node.class;
 				Return UNSAFE.compareAndSwapObject(Me, itemOffset, cmp, val)
 			End Function
@@ -467,7 +467,7 @@ Namespace java.util.concurrent
 			''' Constructs a new node.  Uses relaxed write because item can
 			''' only be seen after publication via casNext.
 			''' </summary>
-			Friend Sub New(ByVal item As Object, ByVal isData As Boolean)
+			Friend Sub New(  item As Object,   isData As Boolean)
 				UNSAFE.putObject(Me, itemOffset, item) ' relaxed write
 				Me.isData = isData
 			End Sub
@@ -519,7 +519,7 @@ Namespace java.util.concurrent
 			''' appended to this node because this node is unmatched and
 			''' has opposite data mode.
 			''' </summary>
-			Friend Function cannotPrecede(ByVal haveData As Boolean) As Boolean
+			Friend Function cannotPrecede(  haveData As Boolean) As Boolean
 				Dim d As Boolean = isData
 				Dim x As Object
 'JAVA TO VB CONVERTER TODO TASK: Assignments within expressions are not supported in VB
@@ -578,15 +578,15 @@ Namespace java.util.concurrent
 		Private sweepVotes As Integer
 
 		' CAS methods for fields
-		Private Function casTail(ByVal cmp As Node, ByVal val As Node) As Boolean
+		Private Function casTail(  cmp As Node,   val As Node) As Boolean
 			Return UNSAFE.compareAndSwapObject(Me, tailOffset, cmp, val)
 		End Function
 
-		Private Function casHead(ByVal cmp As Node, ByVal val As Node) As Boolean
+		Private Function casHead(  cmp As Node,   val As Node) As Boolean
 			Return UNSAFE.compareAndSwapObject(Me, headOffset, cmp, val)
 		End Function
 
-		Private Function casSweepVotes(ByVal cmp As Integer, ByVal val As Integer) As Boolean
+		Private Function casSweepVotes(  cmp As Integer,   val As Integer) As Boolean
 			Return UNSAFE.compareAndSwapInt(Me, sweepVotesOffset, cmp, val)
 		End Function
 
@@ -599,7 +599,7 @@ Namespace java.util.concurrent
 		Private Const TIMED As Integer = 3 ' for timed poll, tryTransfer
 
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Friend Shared Function cast(Of E)(ByVal item As Object) As E
+		Friend Shared Function cast(Of E)(  item As Object) As E
 			' assert item == null || item.getClass() != Node.class;
 			Return CType(item, E)
 		End Function
@@ -613,7 +613,7 @@ Namespace java.util.concurrent
 		''' <param name="nanos"> timeout in nanosecs, used only if mode is TIMED </param>
 		''' <returns> an item if matched, else e </returns>
 		''' <exception cref="NullPointerException"> if haveData mode but e is null </exception>
-		Private Function xfer(ByVal e As E, ByVal haveData As Boolean, ByVal how As Integer, ByVal nanos As Long) As E
+		Private Function xfer(  e As E,   haveData As Boolean,   how As Integer,   nanos As Long) As E
 			If haveData AndAlso (e Is Nothing) Then Throw New NullPointerException
 			Dim s As Node = Nothing ' the node to append, if needed
 
@@ -670,7 +670,7 @@ Namespace java.util.concurrent
 		''' <returns> null on failure due to losing race with append in
 		''' different mode, else s's predecessor, or s itself if no
 		''' predecessor </returns>
-		Private Function tryAppend(ByVal s As Node, ByVal haveData As Boolean) As Node
+		Private Function tryAppend(  s As Node,   haveData As Boolean) As Node
 			Dim t As Node = tail
 			Dim p As Node = t
 			Do ' move p to last node and append
@@ -721,7 +721,7 @@ Namespace java.util.concurrent
 		''' <param name="timed"> if true, wait only until timeout elapses </param>
 		''' <param name="nanos"> timeout in nanosecs, used only if timed is true </param>
 		''' <returns> matched item, or e if unmatched on interrupt or timeout </returns>
-		Private Function awaitMatch(ByVal s As Node, ByVal pred As Node, ByVal e As E, ByVal timed As Boolean, ByVal nanos As Long) As E
+		Private Function awaitMatch(  s As Node,   pred As Node,   e As E,   timed As Boolean,   nanos As Long) As E
 			Dim deadline As Long = If(timed, System.nanoTime() + nanos, 0L)
 			Dim w As Thread = Thread.CurrentThread
 			Dim spins As Integer = -1 ' initialized after first item and cancel checks
@@ -760,7 +760,7 @@ Namespace java.util.concurrent
 		''' Returns spin/yield value for a node with given predecessor and
 		''' data mode. See above for explanation.
 		''' </summary>
-		Private Shared Function spinsFor(ByVal pred As Node, ByVal haveData As Boolean) As Integer
+		Private Shared Function spinsFor(  pred As Node,   haveData As Boolean) As Integer
 			If MP AndAlso pred IsNot Nothing Then
 				If pred.isData <> haveData Then ' phase change Return FRONT_SPINS + CHAINED_SPINS
 				If pred.matched Then ' probably at front Return FRONT_SPINS
@@ -776,7 +776,7 @@ Namespace java.util.concurrent
 		''' linked to self, which will only be true if traversing with a
 		''' stale pointer that is now off the list.
 		''' </summary>
-		Friend Function succ(ByVal p As Node) As Node
+		Friend Function succ(  p As Node) As Node
 			Dim [next] As Node = p.next
 			Return If(p Is [next], head, [next])
 		End Function
@@ -785,7 +785,7 @@ Namespace java.util.concurrent
 		''' Returns the first unmatched node of the given mode, or null if
 		''' none.  Used by methods isEmpty, hasWaitingConsumer.
 		''' </summary>
-		Private Function firstOfMode(ByVal isData As Boolean) As Node
+		Private Function firstOfMode(  isData As Boolean) As Node
 			Dim p As Node = head
 			Do While p IsNot Nothing
 				If Not p.matched Then Return If(p.isData = isData, p, Nothing)
@@ -836,7 +836,7 @@ Namespace java.util.concurrent
 		''' Traverses and counts unmatched nodes of the given mode.
 		''' Used by methods size and getWaitingConsumerCount.
 		''' </summary>
-		Private Function countOfMode(ByVal data As Boolean) As Integer
+		Private Function countOfMode(  data As Boolean) As Integer
 			Dim count As Integer = 0
 			Dim p As Node = head
 			Do While p IsNot Nothing
@@ -869,7 +869,7 @@ Namespace java.util.concurrent
 			''' <summary>
 			''' Moves to next node after prev, or first node if prev null.
 			''' </summary>
-			Private Sub advance(ByVal prev As Node)
+			Private Sub advance(  prev As Node)
 	'            
 	'             * To track and avoid buildup of deleted nodes in the face
 	'             * of calls to both Queue.remove and Itr.remove, we must
@@ -938,7 +938,7 @@ Namespace java.util.concurrent
 				nextItem = Nothing
 			End Sub
 
-			Friend Sub New(ByVal outerInstance As LinkedTransferQueue)
+			Friend Sub New(  outerInstance As LinkedTransferQueue)
 					Me.outerInstance = outerInstance
 				advance(Nothing)
 			End Sub
@@ -973,7 +973,7 @@ Namespace java.util.concurrent
 			Friend current As Node ' current node; null until initialized
 			Friend batch As Integer ' batch size for splits
 			Friend exhausted As Boolean ' true when no more nodes
-			Friend Sub New(ByVal queue As LinkedTransferQueue(Of E))
+			Friend Sub New(  queue As LinkedTransferQueue(Of E))
 				Me.queue = queue
 			End Sub
 
@@ -1006,7 +1006,7 @@ Namespace java.util.concurrent
 
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Sub forEachRemaining(Of T1)(ByVal action As java.util.function.Consumer(Of T1))
+			Public Sub forEachRemaining(Of T1)(  action As java.util.function.Consumer(Of T1))
 				Dim p As Node
 				If action Is Nothing Then Throw New NullPointerException
 				Dim q As LinkedTransferQueue(Of E) = Me.queue
@@ -1025,7 +1025,7 @@ Namespace java.util.concurrent
 
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Function tryAdvance(Of T1)(ByVal action As java.util.function.Consumer(Of T1)) As Boolean
+			Public Function tryAdvance(Of T1)(  action As java.util.function.Consumer(Of T1)) As Boolean
 				Dim p As Node
 				If action Is Nothing Then Throw New NullPointerException
 				Dim q As LinkedTransferQueue(Of E) = Me.queue
@@ -1086,7 +1086,7 @@ Namespace java.util.concurrent
 		''' <param name="pred"> a node that was at one time known to be the
 		''' predecessor of s, or null or s itself if s is/was at head </param>
 		''' <param name="s"> the node to be unspliced </param>
-		Friend Sub unsplice(ByVal pred As Node, ByVal s As Node)
+		Friend Sub unsplice(  pred As Node,   s As Node)
 			s.forgetContents() ' forget unneeded fields
 	'        
 	'         * See above for rationale. Briefly: if pred still points to
@@ -1147,7 +1147,7 @@ Namespace java.util.concurrent
 		''' <summary>
 		''' Main implementation of remove(Object)
 		''' </summary>
-		Private Function findAndRemove(ByVal e As Object) As Boolean
+		Private Function findAndRemove(  e As Object) As Boolean
 			If e IsNot Nothing Then
 				Dim pred As Node = Nothing
 				Dim p As Node = head
@@ -1186,7 +1186,7 @@ Namespace java.util.concurrent
 		''' <param name="c"> the collection of elements to initially contain </param>
 		''' <exception cref="NullPointerException"> if the specified collection or any
 		'''         of its elements are null </exception>
-		Public Sub New(Of T1 As E)(ByVal c As ICollection(Of T1))
+		Public Sub New(Of T1 As E)(  c As ICollection(Of T1))
 			Me.New()
 			addAll(c)
 		End Sub
@@ -1196,7 +1196,7 @@ Namespace java.util.concurrent
 		''' As the queue is unbounded, this method will never block.
 		''' </summary>
 		''' <exception cref="NullPointerException"> if the specified element is null </exception>
-		Public Overridable Sub put(ByVal e As E)
+		Public Overridable Sub put(  e As E)
 			xfer(e, True, [ASYNC], 0)
 		End Sub
 
@@ -1209,7 +1209,7 @@ Namespace java.util.concurrent
 		'''  {@link java.util.concurrent.BlockingQueue#offer(Object,long,TimeUnit)
 		'''  BlockingQueue.offer}) </returns>
 		''' <exception cref="NullPointerException"> if the specified element is null </exception>
-		Public Overridable Function offer(ByVal e As E, ByVal timeout As Long, ByVal unit As java.util.concurrent.TimeUnit) As Boolean
+		Public Overridable Function offer(  e As E,   timeout As Long,   unit As java.util.concurrent.TimeUnit) As Boolean
 			xfer(e, True, [ASYNC], 0)
 			Return True
 		End Function
@@ -1220,7 +1220,7 @@ Namespace java.util.concurrent
 		''' </summary>
 		''' <returns> {@code true} (as specified by <seealso cref="Queue#offer"/>) </returns>
 		''' <exception cref="NullPointerException"> if the specified element is null </exception>
-		Public Overridable Function offer(ByVal e As E) As Boolean
+		Public Overridable Function offer(  e As E) As Boolean
 			xfer(e, True, [ASYNC], 0)
 			Return True
 		End Function
@@ -1232,7 +1232,7 @@ Namespace java.util.concurrent
 		''' </summary>
 		''' <returns> {@code true} (as specified by <seealso cref="Collection#add"/>) </returns>
 		''' <exception cref="NullPointerException"> if the specified element is null </exception>
-		Public Overridable Function add(ByVal e As E) As Boolean
+		Public Overridable Function add(  e As E) As Boolean
 			xfer(e, True, [ASYNC], 0)
 			Return True
 		End Function
@@ -1246,7 +1246,7 @@ Namespace java.util.concurrent
 		''' otherwise returning {@code false} without enqueuing the element.
 		''' </summary>
 		''' <exception cref="NullPointerException"> if the specified element is null </exception>
-		Public Overridable Function tryTransfer(ByVal e As E) As Boolean
+		Public Overridable Function tryTransfer(  e As E) As Boolean
 			Return xfer(e, True, NOW, 0) Is Nothing
 		End Function
 
@@ -1260,7 +1260,7 @@ Namespace java.util.concurrent
 		''' and waits until the element is received by a consumer.
 		''' </summary>
 		''' <exception cref="NullPointerException"> if the specified element is null </exception>
-		Public Overridable Sub transfer(ByVal e As E)
+		Public Overridable Sub transfer(  e As E)
 			If xfer(e, True, SYNC, 0) IsNot Nothing Then
 				Thread.interrupted() ' failure possible only due to interrupt
 				Throw New InterruptedException
@@ -1280,7 +1280,7 @@ Namespace java.util.concurrent
 		''' before the element can be transferred.
 		''' </summary>
 		''' <exception cref="NullPointerException"> if the specified element is null </exception>
-		Public Overridable Function tryTransfer(ByVal e As E, ByVal timeout As Long, ByVal unit As java.util.concurrent.TimeUnit) As Boolean
+		Public Overridable Function tryTransfer(  e As E,   timeout As Long,   unit As java.util.concurrent.TimeUnit) As Boolean
 			If xfer(e, True, TIMED, unit.toNanos(timeout)) Is Nothing Then Return True
 			If Not Thread.interrupted() Then Return False
 			Throw New InterruptedException
@@ -1293,7 +1293,7 @@ Namespace java.util.concurrent
 			Throw New InterruptedException
 		End Function
 
-		Public Overridable Function poll(ByVal timeout As Long, ByVal unit As java.util.concurrent.TimeUnit) As E
+		Public Overridable Function poll(  timeout As Long,   unit As java.util.concurrent.TimeUnit) As E
 			Dim e As E = xfer(Nothing, False, TIMED, unit.toNanos(timeout))
 			If e IsNot Nothing OrElse (Not Thread.interrupted()) Then Return e
 			Throw New InterruptedException
@@ -1306,7 +1306,7 @@ Namespace java.util.concurrent
 		''' <exception cref="NullPointerException">     {@inheritDoc} </exception>
 		''' <exception cref="IllegalArgumentException"> {@inheritDoc} </exception>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Overridable Function drainTo(Of T1)(ByVal c As ICollection(Of T1)) As Integer
+		Public Overridable Function drainTo(Of T1)(  c As ICollection(Of T1)) As Integer
 			If c Is Nothing Then Throw New NullPointerException
 			If c Is Me Then Throw New IllegalArgumentException
 			Dim n As Integer = 0
@@ -1322,7 +1322,7 @@ Namespace java.util.concurrent
 		''' <exception cref="NullPointerException">     {@inheritDoc} </exception>
 		''' <exception cref="IllegalArgumentException"> {@inheritDoc} </exception>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Overridable Function drainTo(Of T1)(ByVal c As ICollection(Of T1), ByVal maxElements As Integer) As Integer
+		Public Overridable Function drainTo(Of T1)(  c As ICollection(Of T1),   maxElements As Integer) As Integer
 			If c Is Nothing Then Throw New NullPointerException
 			If c Is Me Then Throw New IllegalArgumentException
 			Dim n As Integer = 0
@@ -1401,7 +1401,7 @@ Namespace java.util.concurrent
 		''' </summary>
 		''' <param name="o"> element to be removed from this queue, if present </param>
 		''' <returns> {@code true} if this queue changed as a result of the call </returns>
-		Public Overridable Function remove(ByVal o As Object) As Boolean
+		Public Overridable Function remove(  o As Object) As Boolean
 			Return findAndRemove(o)
 		End Function
 
@@ -1412,7 +1412,7 @@ Namespace java.util.concurrent
 		''' </summary>
 		''' <param name="o"> object to be checked for containment in this queue </param>
 		''' <returns> {@code true} if this queue contains the specified element </returns>
-		Public Overridable Function contains(ByVal o As Object) As Boolean
+		Public Overridable Function contains(  o As Object) As Boolean
 			If o Is Nothing Then Return False
 			Dim p As Node = head
 			Do While p IsNot Nothing
@@ -1445,7 +1445,7 @@ Namespace java.util.concurrent
 		''' <exception cref="java.io.IOException"> if an I/O error occurs
 		''' @serialData All of the elements (each an {@code E}) in
 		''' the proper order, followed by a null </exception>
-		Private Sub writeObject(ByVal s As java.io.ObjectOutputStream)
+		Private Sub writeObject(  s As java.io.ObjectOutputStream)
 			s.defaultWriteObject()
 			For Each e As E In Me
 				s.writeObject(e)
@@ -1460,7 +1460,7 @@ Namespace java.util.concurrent
 		''' <exception cref="ClassNotFoundException"> if the class of a serialized object
 		'''         could not be found </exception>
 		''' <exception cref="java.io.IOException"> if an I/O error occurs </exception>
-		Private Sub readObject(ByVal s As java.io.ObjectInputStream)
+		Private Sub readObject(  s As java.io.ObjectInputStream)
 			s.defaultReadObject()
 			Do
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:

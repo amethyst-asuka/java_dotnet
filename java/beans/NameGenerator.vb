@@ -62,7 +62,7 @@ Namespace java.beans
 		''' Returns the root name of the class.
 		''' </summary>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Shared Function unqualifiedClassName(ByVal type As [Class]) As String
+		Public Shared Function unqualifiedClassName(  type As [Class]) As String
 			If type.array Then Return unqualifiedClassName(type.componentType) & "Array"
 			Dim name As String = type.name
 			Return name.Substring(name.LastIndexOf("."c)+1)
@@ -71,7 +71,7 @@ Namespace java.beans
 		''' <summary>
 		''' Returns a String which capitalizes the first letter of the string.
 		''' </summary>
-		Public Shared Function capitalize(ByVal name As String) As String
+		Public Shared Function capitalize(  name As String) As String
 			If name Is Nothing OrElse name.length() = 0 Then Return name
 			Return name.Substring(0, 1).ToUpper(ENGLISH) + name.Substring(1)
 		End Function
@@ -83,7 +83,7 @@ Namespace java.beans
 		''' </summary>
 		''' <param name="instance"> object used to generate string </param>
 		''' <returns> a unique string representing the object </returns>
-		Public Overridable Function instanceName(ByVal instance As Object) As String
+		Public Overridable Function instanceName(  instance As Object) As String
 			If instance Is Nothing Then Return "null"
 			If TypeOf instance Is Class Then
 				Return unqualifiedClassName(CType(instance, [Class]))

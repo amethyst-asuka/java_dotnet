@@ -117,7 +117,7 @@ Namespace java.beans
 		''' Claim there are no icons available.  You can override
 		''' this if you want to provide icons for your bean.
 		''' </summary>
-		Public Overridable Function getIcon(ByVal iconKind As Integer) As java.awt.Image Implements BeanInfo.getIcon
+		Public Overridable Function getIcon(  iconKind As Integer) As java.awt.Image Implements BeanInfo.getIcon
 			Return Nothing
 		End Function
 
@@ -131,7 +131,7 @@ Namespace java.beans
 		'''          holding the class file of the current class.  For example,
 		'''          "wombat.gif". </param>
 		''' <returns>  an image object.  May be null if the load failed. </returns>
-		Public Overridable Function loadImage(ByVal resourceName As String) As java.awt.Image
+		Public Overridable Function loadImage(  resourceName As String) As java.awt.Image
 			Try
 				Dim url As java.net.URL = Me.GetType().getResource(resourceName)
 				If url IsNot Nothing Then

@@ -52,7 +52,7 @@ Namespace java.rmi.dgc
 		''' vmid may be null. </summary>
 		''' <param name="id"> VMID associated with this lease </param>
 		''' <param name="duration"> lease duration </param>
-		Public Sub New(ByVal id As VMID, ByVal duration As Long)
+		Public Sub New(  id As VMID,   duration As Long)
 			vmid = id
 			value = duration
 		End Sub

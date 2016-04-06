@@ -79,7 +79,7 @@ Namespace java.net
 		' emulates SO_REUSEADDR when exclusiveBind is true and socket is bound
 		Private isReuseAddress As Boolean
 
-		Friend Sub New(ByVal exclBind As Boolean)
+		Friend Sub New(  exclBind As Boolean)
 			exclusiveBind = exclBind
 		End Sub
 
@@ -95,19 +95,19 @@ Namespace java.net
 		End Sub
 
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Protected Friend Overrides Sub bind(ByVal lport As Integer, ByVal laddr As InetAddress)
+		Protected Friend Overrides Sub bind(  lport As Integer,   laddr As InetAddress)
 			MyBase.bind(lport, laddr)
 			If laddr.anyLocalAddress Then anyLocalBoundAddr = laddr
 		End Sub
 
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Protected Friend Overrides Sub bind0(ByVal lport As Integer, ByVal laddr As InetAddress)
+		Protected Friend Overrides Sub bind0(  lport As Integer,   laddr As InetAddress)
 			bind0(lport, laddr, exclusiveBind)
 
 		End Sub
 
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Protected Friend Overrides Sub receive(ByVal p As DatagramPacket)
+		Protected Friend Overrides Sub receive(  p As DatagramPacket)
 			Try
 				receive0(p)
 			Finally
@@ -115,7 +115,7 @@ Namespace java.net
 			End Try
 		End Sub
 
-		Public Overrides Function getOption(ByVal optID As Integer) As Object
+		Public Overrides Function getOption(  optID As Integer) As Object
 			If closed Then Throw New SocketException("Socket Closed")
 
 			If optID = SO_BINDADDR Then
@@ -129,7 +129,7 @@ Namespace java.net
 			End If
 		End Function
 
-		Protected Friend Overrides Sub socketSetOption(ByVal opt As Integer, ByVal val As Object)
+		Protected Friend Overrides Sub socketSetOption(  opt As Integer,   val As Object)
 			If opt = SO_REUSEADDR AndAlso exclusiveBind AndAlso localPort <> 0 Then
 				' socket already bound, emulate
 				reuseAddressEmulated = True
@@ -159,32 +159,32 @@ Namespace java.net
 
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Protected Friend Sub bind0(ByVal lport As Integer, ByVal laddr As InetAddress, ByVal exclBind As Boolean)
+		Protected Friend Sub bind0(  lport As Integer,   laddr As InetAddress,   exclBind As Boolean)
 		End Sub
 
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Protected Friend Sub send(ByVal p As DatagramPacket)
+		Protected Friend Sub send(  p As DatagramPacket)
 		End Sub
 
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Protected Friend Function peek(ByVal i As InetAddress) As Integer
+		Protected Friend Function peek(  i As InetAddress) As Integer
 		End Function
 
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Protected Friend Function peekData(ByVal p As DatagramPacket) As Integer
+		Protected Friend Function peekData(  p As DatagramPacket) As Integer
 		End Function
 
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Protected Friend Sub receive0(ByVal p As DatagramPacket)
+		Protected Friend Sub receive0(  p As DatagramPacket)
 		End Sub
 
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Protected Friend Sub setTimeToLive(ByVal ttl As Integer)
+		Protected Friend Sub setTimeToLive(  ttl As Integer)
 		End Sub
 
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
@@ -194,7 +194,7 @@ Namespace java.net
 
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Protected Friend Sub setTTL(ByVal ttl As SByte)
+		Protected Friend Sub setTTL(  ttl As SByte)
 		End Sub
 
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
@@ -204,12 +204,12 @@ Namespace java.net
 
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Protected Friend Sub join(ByVal inetaddr As InetAddress, ByVal netIf As NetworkInterface)
+		Protected Friend Sub join(  inetaddr As InetAddress,   netIf As NetworkInterface)
 		End Sub
 
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Protected Friend Sub leave(ByVal inetaddr As InetAddress, ByVal netIf As NetworkInterface)
+		Protected Friend Sub leave(  inetaddr As InetAddress,   netIf As NetworkInterface)
 		End Sub
 
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
@@ -224,27 +224,27 @@ Namespace java.net
 
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Protected Friend Sub socketNativeSetOption(ByVal opt As Integer, ByVal val As Object)
+		Protected Friend Sub socketNativeSetOption(  opt As Integer,   val As Object)
 		End Sub
 
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Protected Friend Function socketGetOption(ByVal opt As Integer) As Object
+		Protected Friend Function socketGetOption(  opt As Integer) As Object
 		End Function
 
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Protected Friend Sub connect0(ByVal address As InetAddress, ByVal port As Integer)
+		Protected Friend Sub connect0(  address As InetAddress,   port As Integer)
 		End Sub
 
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Protected Friend Function socketLocalAddress(ByVal family As Integer) As Object
+		Protected Friend Function socketLocalAddress(  family As Integer) As Object
 		End Function
 
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Protected Friend Sub disconnect0(ByVal family As Integer)
+		Protected Friend Sub disconnect0(  family As Integer)
 		End Sub
 
 		''' <summary>

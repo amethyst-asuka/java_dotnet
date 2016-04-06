@@ -51,7 +51,7 @@ Namespace java.security.spec
 		''' array are copied to protect against subsequent modification. </param>
 		''' <exception cref="NullPointerException"> if {@code encodedKey}
 		''' is null. </exception>
-		Public Sub New(ByVal encodedKey As SByte())
+		Public Sub New(  encodedKey As SByte())
 			Me.encodedKey = encodedKey.clone()
 		End Sub
 

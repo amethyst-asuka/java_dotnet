@@ -143,7 +143,7 @@ Namespace java.security
 		''' <exception cref="IOException"> if an error occurs during serialization </exception>
 		''' <exception cref="InvalidKeyException"> if the key is invalid. </exception>
 		''' <exception cref="SignatureException"> if signing fails. </exception>
-		Public Sub New(ByVal [object] As Serializable, ByVal signingKey As PrivateKey, ByVal signingEngine As Signature)
+		Public Sub New(  [object] As Serializable,   signingKey As PrivateKey,   signingEngine As Signature)
 				' creating a stream pipe-line, from a to b
 				Dim b As New ByteArrayOutputStream
 				Dim a As ObjectOutput = New ObjectOutputStream(b)
@@ -215,7 +215,7 @@ Namespace java.security
 		''' </exception>
 		''' <returns> {@code true} if the signature
 		''' is valid, {@code false} otherwise </returns>
-		Public Function verify(ByVal verificationKey As PublicKey, ByVal verificationEngine As Signature) As Boolean
+		Public Function verify(  verificationKey As PublicKey,   verificationEngine As Signature) As Boolean
 				 verificationEngine.initVerify(verificationKey)
 				 verificationEngine.update(Me.content.clone())
 				 Return verificationEngine.verify(Me.signature_Renamed.clone())
@@ -231,7 +231,7 @@ Namespace java.security
 	'     * @exception InvalidKeyException if the key is invalid.
 	'     * @exception SignatureException if signing fails.
 	'     
-		Private Sub sign(ByVal signingKey As PrivateKey, ByVal signingEngine As Signature)
+		Private Sub sign(  signingKey As PrivateKey,   signingEngine As Signature)
 				' initialize the signing engine
 				signingEngine.initSign(signingKey)
 				signingEngine.update(Me.content.clone())
@@ -243,7 +243,7 @@ Namespace java.security
 		''' readObject is called to restore the state of the SignedObject from
 		''' a stream.
 		''' </summary>
-		Private Sub readObject(ByVal s As java.io.ObjectInputStream)
+		Private Sub readObject(  s As java.io.ObjectInputStream)
 				Dim fields As java.io.ObjectInputStream.GetField = s.readFields()
 				content = CType(fields.get("content", Nothing), SByte()).clone()
 				signature_Renamed = CType(fields.get("signature", Nothing), SByte()).clone()

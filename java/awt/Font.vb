@@ -198,21 +198,21 @@ Namespace java.awt
         Private Class FontAccessImpl
             Inherits sun.font.FontAccess
 
-            Public Overridable Function getFont2D(ByVal font_Renamed As font) As sun.font.Font2D
+            Public Overridable Function getFont2D(  font_Renamed As font) As sun.font.Font2D
                 Return font_Renamed.font2D
             End Function
 
-            Public Overridable Sub setFont2D(ByVal font_Renamed As font, ByVal handle As sun.font.Font2DHandle)
+            Public Overridable Sub setFont2D(  font_Renamed As font,   handle As sun.font.Font2DHandle)
                 font_Renamed.font2DHandle = handle
             End Sub
 
             Public Overridable Property createdFont As font
-                Set(ByVal font_Renamed As font)
+                Set(  font_Renamed As font)
                     font_Renamed.createdFont = True
                 End Set
             End Property
 
-            Public Overridable Function isCreatedFont(ByVal font_Renamed As font) As Boolean
+            Public Overridable Function isCreatedFont(  font_Renamed As font) As Boolean
                 Return font_Renamed.createdFont
             End Function
         End Class
@@ -538,14 +538,14 @@ Namespace java.awt
         ''' <seealso cref= GraphicsEnvironment#getAllFonts </seealso>
         ''' <seealso cref= GraphicsEnvironment#getAvailableFontFamilyNames
         ''' @since JDK1.0 </seealso>
-        Public Sub New(ByVal name As String, ByVal style As Integer, ByVal size As Integer)
+        Public Sub New(  name As String,   style As Integer,   size As Integer)
             Me.name = If(name IsNot Nothing, name, "Default")
             Me.style = If((style And (Not &H3)) = 0, style, 0)
             Me.size = size
             Me.pointSize = size
         End Sub
 
-        Private Sub New(ByVal name As String, ByVal style As Integer, ByVal sizePts As Single)
+        Private Sub New(  name As String,   style As Integer,   sizePts As Single)
             Me.name = If(name IsNot Nothing, name, "Default")
             Me.style = If((style And (Not &H3)) = 0, style, 0)
             Me.size = CInt(Fix(sizePts + 0.5))
@@ -553,7 +553,7 @@ Namespace java.awt
         End Sub
 
         ' This constructor is used by deriveFont when attributes is null
-        Private Sub New(ByVal name As String, ByVal style As Integer, ByVal sizePts As Single, ByVal created As Boolean, ByVal handle As sun.font.Font2DHandle)
+        Private Sub New(  name As String,   style As Integer,   sizePts As Single,   created As Boolean,   handle As sun.font.Font2DHandle)
             Me.New(name, style, sizePts)
             Me.createdFont = created
             '         Fonts created from a stream will use the same font2D instance
@@ -576,7 +576,7 @@ Namespace java.awt
         End Sub
 
         ' used to implement Font.createFont
-        Private Sub New(ByVal fontFile As File, ByVal fontFormat As Integer, ByVal isCopy As Boolean, ByVal tracker As sun.font.CreatedFontTracker)
+        Private Sub New(  fontFile As File,   fontFormat As Integer,   isCopy As Boolean,   tracker As sun.font.CreatedFontTracker)
             Me.createdFont = True
             '         Font2D instances created by this method track their font file
             '         * so that when the Font2D is GC'd it can also remove the file.
@@ -612,7 +612,7 @@ Namespace java.awt
         '     * oldStyle = -1 will be interpreted as the style is unchanged.
         '     * In these cases there is no need to interrogate "values".
         '
-        Private Sub New(ByVal values As sun.font.AttributeValues, ByVal oldName As String, ByVal oldStyle As Integer, ByVal created As Boolean, ByVal handle As sun.font.Font2DHandle)
+        Private Sub New(  values As sun.font.AttributeValues,   oldName As String,   oldStyle As Integer,   created As Boolean,   handle As sun.font.Font2DHandle)
 
             Me.createdFont = created
             If created Then
@@ -658,7 +658,7 @@ Namespace java.awt
         ''' <param name="attributes"> the attributes to assign to the new
         '''          <code>Font</code>, or <code>null</code> </param>
         'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-        Public Sub New(Of T1 As java.text.AttributedCharacterIterator.Attribute, ?)(ByVal attributes As IDictionary(Of T1))
+        Public Sub New(Of T1 As java.text.AttributedCharacterIterator.Attribute, ?)(  attributes As IDictionary(Of T1))
 			initFromValues(sun.font.AttributeValues.fromMap(attributes, RECOGNIZED_MASK))
         End Sub
 
@@ -668,7 +668,7 @@ Namespace java.awt
         ''' <param name="font"> from which to create this <code>Font</code>. </param>
         ''' <exception cref="NullPointerException"> if <code>font</code> is null
         ''' @since 1.6 </exception>
-        Protected Friend Sub New(ByVal font_Renamed As font)
+        Protected Friend Sub New(  font_Renamed As font)
             If font_Renamed.values IsNot Nothing Then
                 initFromValues(font_Renamed.attributeValues.clone())
             Else
@@ -706,7 +706,7 @@ Namespace java.awt
         ''' <summary>
         ''' Initialize the standard Font fields from the values object.
         ''' </summary>
-        Private Sub initFromValues(ByVal values As sun.font.AttributeValues)
+        Private Sub initFromValues(  values As sun.font.AttributeValues)
             Me.values = values
             values.defineAll(PRIMARY_MASK) ' for 1.5 streaming compatibility
 
@@ -736,7 +736,7 @@ Namespace java.awt
         ''' @since 1.2 </exception>
         ''' <seealso cref= java.awt.font.TextAttribute </seealso>
         'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-        Public Shared Function getFont(Of T1 As java.text.AttributedCharacterIterator.Attribute, ?)(ByVal attributes As IDictionary(Of T1)) As Font
+        Public Shared Function getFont(Of T1 As java.text.AttributedCharacterIterator.Attribute, ?)(  attributes As IDictionary(Of T1)) As Font
 			' optimize for two cases:
 			' 1) FONT attribute, and nothing else
 			' 2) attributes, but no FONT
@@ -817,7 +817,7 @@ Namespace java.awt
         '''     cannot be completely read. </exception>
         ''' <seealso cref= GraphicsEnvironment#registerFont(Font)
         ''' @since 1.3 </seealso>
-        Public Shared Function createFont(ByVal fontFormat As Integer, ByVal fontStream As InputStream) As font
+        Public Shared Function createFont(  fontFormat As Integer,   fontStream As InputStream) As font
 
             If hasTempPermission() Then Return createFont0(fontFormat, fontStream, Nothing)
 
@@ -836,7 +836,7 @@ Namespace java.awt
             End Try
         End Function
 
-        Private Shared Function createFont0(ByVal fontFormat As Integer, ByVal fontStream As InputStream, ByVal tracker As sun.font.CreatedFontTracker) As font
+        Private Shared Function createFont0(  fontFormat As Integer,   fontStream As InputStream,   tracker As sun.font.CreatedFontTracker) As font
 
             If fontFormat <> font.TRUETYPE_FONT AndAlso fontFormat <> font.TYPE1_FONT Then Throw New IllegalArgumentException("font format not recognized")
             Dim copiedFontData As Boolean = False
@@ -955,7 +955,7 @@ Namespace java.awt
         ''' permission to read from the file. </exception>
         ''' <seealso cref= GraphicsEnvironment#registerFont(Font)
         ''' @since 1.5 </seealso>
-        Public Shared Function createFont(ByVal fontFormat As Integer, ByVal fontFile As File) As font
+        Public Shared Function createFont(  fontFormat As Integer,   fontFile As File) As font
 
             fontFile = New File(fontFile.path)
 
@@ -1116,7 +1116,7 @@ Namespace java.awt
         ''' <seealso cref= #getFontName </seealso>
         ''' <seealso cref= java.util.Locale
         ''' @since 1.2 </seealso>
-        Public Overridable Function getFamily(ByVal l As java.util.Locale) As String
+        Public Overridable Function getFamily(  l As java.util.Locale) As String
             If l Is Nothing Then Throw New NullPointerException("null locale doesn't mean default")
             Return font2D.getFamilyName(l)
         End Function
@@ -1175,7 +1175,7 @@ Namespace java.awt
         '''          localized for the specified locale. </returns>
         ''' <seealso cref= #getFamily </seealso>
         ''' <seealso cref= java.util.Locale </seealso>
-        Public Overridable Function getFontName(ByVal l As java.util.Locale) As String
+        Public Overridable Function getFontName(  l As java.util.Locale) As String
             If l Is Nothing Then Throw New NullPointerException("null locale doesn't mean default")
             Return font2D.getFontName(l)
         End Function
@@ -1315,7 +1315,7 @@ Namespace java.awt
         ''' <exception cref="NullPointerException"> if nm is null.
         ''' @since 1.2 </exception>
         ''' <seealso cref= #decode(String) </seealso>
-        Public Shared Function getFont(ByVal nm As String) As font
+        Public Shared Function getFont(  nm As String) As font
             Return getFont(nm, Nothing)
         End Function
 
@@ -1391,7 +1391,7 @@ Namespace java.awt
         '''          <code>str</code> is <code>null</code>. </returns>
         ''' <seealso cref= #getFamily
         ''' @since JDK1.1 </seealso>
-        Public Shared Function decode(ByVal str As String) As font
+        Public Shared Function decode(  str As String) As font
             Dim fontName_Renamed As String = str
             Dim styleName As String = ""
             Dim fontSize As Integer = 12
@@ -1472,7 +1472,7 @@ Namespace java.awt
         ''' <returns>    the <code>Font</code> value of the property. </returns>
         ''' <exception cref="NullPointerException"> if nm is null. </exception>
         ''' <seealso cref= #decode(String) </seealso>
-        Public Shared Function getFont(ByVal nm As String, ByVal font_Renamed As font) As font
+        Public Shared Function getFont(  nm As String,   font_Renamed As font) As font
             Dim str As String = Nothing
             Try
                 str = System.getProperty(nm)
@@ -1511,7 +1511,7 @@ Namespace java.awt
         '''          describing the same font as this object;
         '''          <code>false</code> otherwise.
         ''' @since JDK1.0 </returns>
-        Public Overrides Function Equals(ByVal obj As Object) As Boolean
+        Public Overrides Function Equals(  obj As Object) As Boolean
             If obj Is Me Then Return True
 
             If obj IsNot Nothing Then
@@ -1585,7 +1585,7 @@ Namespace java.awt
         ''' <param name="s"> the <code>ObjectOutputStream</code> to write </param>
         ''' <seealso cref= AWTEventMulticaster#save(ObjectOutputStream, String, EventListener) </seealso>
         ''' <seealso cref= #readObject(java.io.ObjectInputStream) </seealso>
-        Private Sub writeObject(ByVal s As java.io.ObjectOutputStream)
+        Private Sub writeObject(  s As java.io.ObjectOutputStream)
             If values IsNot Nothing Then
                 SyncLock values
                     ' transient
@@ -1605,7 +1605,7 @@ Namespace java.awt
         ''' <param name="s"> the <code>ObjectInputStream</code> to read
         ''' @serial </param>
         ''' <seealso cref= #writeObject(java.io.ObjectOutputStream) </seealso>
-        Private Sub readObject(ByVal s As java.io.ObjectInputStream)
+        Private Sub readObject(  s As java.io.ObjectInputStream)
             s.defaultReadObject()
             If pointSize = 0 Then pointSize = CSng(size)
 
@@ -1667,7 +1667,7 @@ Namespace java.awt
         ''' <seealso cref= #CENTER_BASELINE </seealso>
         ''' <seealso cref= #HANGING_BASELINE
         ''' @since 1.2 </seealso>
-        Public Overridable Function getBaselineFor(ByVal c As Char) As SByte
+        Public Overridable Function getBaselineFor(  c As Char) As SByte
             Return font2D.getBaselineFor(c)
         End Function
 
@@ -1707,7 +1707,7 @@ Namespace java.awt
         ''' <param name="size"> the size for the new <code>Font</code> </param>
         ''' <returns> a new <code>Font</code> object.
         ''' @since 1.2 </returns>
-        Public Overridable Function deriveFont(ByVal style As Integer, ByVal size As Single) As font
+        Public Overridable Function deriveFont(  style As Integer,   size As Single) As font
             If values Is Nothing Then Return New font(name, style, size, createdFont, font2DHandle)
             Dim newValues As sun.font.AttributeValues = attributeValues.clone()
             Dim oldStyle As Integer = If(Me.style <> style, Me.style, -1)
@@ -1726,7 +1726,7 @@ Namespace java.awt
         ''' <exception cref="IllegalArgumentException"> if <code>trans</code> is
         '''         <code>null</code>
         ''' @since 1.2 </exception>
-        Public Overridable Function deriveFont(ByVal style As Integer, ByVal trans As java.awt.geom.AffineTransform) As font
+        Public Overridable Function deriveFont(  style As Integer,   trans As java.awt.geom.AffineTransform) As font
             Dim newValues As sun.font.AttributeValues = attributeValues.clone()
             Dim oldStyle As Integer = If(Me.style <> style, Me.style, -1)
             applyStyle(style, newValues)
@@ -1740,7 +1740,7 @@ Namespace java.awt
         ''' <param name="size"> the size for the new <code>Font</code>. </param>
         ''' <returns> a new <code>Font</code> object.
         ''' @since 1.2 </returns>
-        Public Overridable Function deriveFont(ByVal size As Single) As font
+        Public Overridable Function deriveFont(  size As Single) As font
             If values Is Nothing Then Return New font(name, style, size, createdFont, font2DHandle)
             Dim newValues As sun.font.AttributeValues = attributeValues.clone()
             newValues.size = size
@@ -1756,7 +1756,7 @@ Namespace java.awt
         ''' <exception cref="IllegalArgumentException"> if <code>trans</code> is
         '''         <code>null</code>
         ''' @since 1.2 </exception>
-        Public Overridable Function deriveFont(ByVal trans As java.awt.geom.AffineTransform) As font
+        Public Overridable Function deriveFont(  trans As java.awt.geom.AffineTransform) As font
             Dim newValues As sun.font.AttributeValues = attributeValues.clone()
             applyTransform(trans, newValues)
             Return New font(newValues, Nothing, -1, createdFont, font2DHandle)
@@ -1768,7 +1768,7 @@ Namespace java.awt
         ''' <param name="style"> the style for the new <code>Font</code> </param>
         ''' <returns> a new <code>Font</code> object.
         ''' @since 1.2 </returns>
-        Public Overridable Function deriveFont(ByVal style As Integer) As font
+        Public Overridable Function deriveFont(  style As Integer) As font
             If values Is Nothing Then Return New font(name, style, size, createdFont, font2DHandle)
             Dim newValues As sun.font.AttributeValues = attributeValues.clone()
             Dim oldStyle As Integer = If(Me.style <> style, Me.style, -1)
@@ -1786,7 +1786,7 @@ Namespace java.awt
         ''' <returns> a new <code>Font</code> object.
         ''' @since 1.2 </returns>
         'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-        Public Overridable Function deriveFont(Of T1 As java.text.AttributedCharacterIterator.Attribute, ?)(ByVal attributes As IDictionary(Of T1)) As Font
+        Public Overridable Function deriveFont(Of T1 As java.text.AttributedCharacterIterator.Attribute, ?)(  attributes As IDictionary(Of T1)) As Font
 			If attributes Is Nothing Then Return Me
             Dim newValues As sun.font.AttributeValues = attributeValues.clone()
             newValues.merge(attributes, RECOGNIZED_MASK)
@@ -1808,7 +1808,7 @@ Namespace java.awt
         ''' <returns> <code>true</code> if this <code>Font</code> has a glyph for this
         '''          character; <code>false</code> otherwise.
         ''' @since 1.2 </returns>
-        Public Overridable Function canDisplay(ByVal c As Char) As Boolean
+        Public Overridable Function canDisplay(  c As Char) As Boolean
             Return font2D.canDisplay(c)
         End Function
 
@@ -1824,7 +1824,7 @@ Namespace java.awt
         '''          code point. </exception>
         ''' <seealso cref= Character#isValidCodePoint(int)
         ''' @since 1.5 </seealso>
-        Public Overridable Function canDisplay(ByVal codePoint As Integer) As Boolean
+        Public Overridable Function canDisplay(  codePoint As Integer) As Boolean
             If Not Character.isValidCodePoint(codePoint) Then Throw New IllegalArgumentException("invalid code point: " & java.lang.[Integer].toHexString(codePoint))
             Return font2D.canDisplay(codePoint)
         End Function
@@ -1845,7 +1845,7 @@ Namespace java.awt
         '''          this <code>Font</code> can display all characters in
         '''          <code>str</code>.
         ''' @since 1.2 </returns>
-        Public Overridable Function canDisplayUpTo(ByVal str As String) As Integer
+        Public Overridable Function canDisplayUpTo(  str As String) As Integer
             Dim font2d_Renamed As sun.font.Font2D = font2D
             Dim len As Integer = str.Length()
             For i As Integer = 0 To len - 1
@@ -1876,7 +1876,7 @@ Namespace java.awt
         '''          this <code>Font</code> can display all characters in
         '''          <code>text</code>.
         ''' @since 1.2 </returns>
-        Public Overridable Function canDisplayUpTo(ByVal text As Char(), ByVal start As Integer, ByVal limit As Integer) As Integer
+        Public Overridable Function canDisplayUpTo(  text As Char(),   start As Integer,   limit As Integer) As Integer
             Dim font2d_Renamed As sun.font.Font2D = font2D
             For i As Integer = start To limit - 1
                 Dim c As Char = text(i)
@@ -1904,7 +1904,7 @@ Namespace java.awt
         '''          this <code>Font</code> can display all characters in
         '''          <code>iter</code>.
         ''' @since 1.2 </returns>
-        Public Overridable Function canDisplayUpTo(ByVal iter As java.text.CharacterIterator, ByVal start As Integer, ByVal limit As Integer) As Integer
+        Public Overridable Function canDisplayUpTo(  iter As java.text.CharacterIterator,   start As Integer,   limit As Integer) As Integer
             Dim font2d_Renamed As sun.font.Font2D = font2D
             Dim c As Char = iter.indexdex(start)
             Dim i As Integer = start
@@ -1946,7 +1946,7 @@ Namespace java.awt
         '     * device transform. Finally, this is private but the only caller of this
         '     * in the JDK - and the only likely caller - is in this same class.
         '
-        Private Function getItalicAngle(ByVal frc As java.awt.font.FontRenderContext) As Single
+        Private Function getItalicAngle(  frc As java.awt.font.FontRenderContext) As Single
             Dim aa, fm As Object
             If frc Is Nothing Then
                 aa = RenderingHints.VALUE_TEXT_ANTIALIAS_OFF
@@ -1974,7 +1974,7 @@ Namespace java.awt
 
         <NonSerialized>
         Private flmref As SoftReference(Of sun.font.FontLineMetrics)
-        Private Function defaultLineMetrics(ByVal frc As java.awt.font.FontRenderContext) As sun.font.FontLineMetrics
+        Private Function defaultLineMetrics(  frc As java.awt.font.FontRenderContext) As sun.font.FontLineMetrics
             Dim flm As sun.font.FontLineMetrics = Nothing
             flm = flmref.get()
             If flmref Is Nothing OrElse flm Is Nothing OrElse (Not flm.frc.Equals(frc)) Then
@@ -2046,7 +2046,7 @@ Namespace java.awt
         ''' <param name="frc"> the specified <code>FontRenderContext</code> </param>
         ''' <returns> a <code>LineMetrics</code> object created with the
         ''' specified <code>String</code> and <seealso cref="FontRenderContext"/>. </returns>
-        Public Overridable Function getLineMetrics(ByVal str As String, ByVal frc As java.awt.font.FontRenderContext) As java.awt.font.LineMetrics
+        Public Overridable Function getLineMetrics(  str As String,   frc As java.awt.font.FontRenderContext) As java.awt.font.LineMetrics
             Dim flm As sun.font.FontLineMetrics = defaultLineMetrics(frc)
             flm.numchars = str.Length()
             Return flm
@@ -2061,7 +2061,7 @@ Namespace java.awt
         ''' <param name="frc"> the specified <code>FontRenderContext</code> </param>
         ''' <returns> a <code>LineMetrics</code> object created with the
         ''' specified arguments. </returns>
-        Public Overridable Function getLineMetrics(ByVal str As String, ByVal beginIndex As Integer, ByVal limit As Integer, ByVal frc As java.awt.font.FontRenderContext) As java.awt.font.LineMetrics
+        Public Overridable Function getLineMetrics(  str As String,   beginIndex As Integer,   limit As Integer,   frc As java.awt.font.FontRenderContext) As java.awt.font.LineMetrics
             Dim flm As sun.font.FontLineMetrics = defaultLineMetrics(frc)
             Dim numChars As Integer = limit - beginIndex
             flm.numchars = If(numChars < 0, 0, numChars)
@@ -2077,7 +2077,7 @@ Namespace java.awt
         ''' <param name="frc"> the specified <code>FontRenderContext</code> </param>
         ''' <returns> a <code>LineMetrics</code> object created with the
         ''' specified arguments. </returns>
-        Public Overridable Function getLineMetrics(ByVal chars As Char(), ByVal beginIndex As Integer, ByVal limit As Integer, ByVal frc As java.awt.font.FontRenderContext) As java.awt.font.LineMetrics
+        Public Overridable Function getLineMetrics(  chars As Char(),   beginIndex As Integer,   limit As Integer,   frc As java.awt.font.FontRenderContext) As java.awt.font.LineMetrics
             Dim flm As sun.font.FontLineMetrics = defaultLineMetrics(frc)
             Dim numChars As Integer = limit - beginIndex
             flm.numchars = If(numChars < 0, 0, numChars)
@@ -2093,7 +2093,7 @@ Namespace java.awt
         ''' <param name="frc"> the specified <code>FontRenderContext</code> </param>
         ''' <returns> a <code>LineMetrics</code> object created with the
         ''' specified arguments. </returns>
-        Public Overridable Function getLineMetrics(ByVal ci As java.text.CharacterIterator, ByVal beginIndex As Integer, ByVal limit As Integer, ByVal frc As java.awt.font.FontRenderContext) As java.awt.font.LineMetrics
+        Public Overridable Function getLineMetrics(  ci As java.text.CharacterIterator,   beginIndex As Integer,   limit As Integer,   frc As java.awt.font.FontRenderContext) As java.awt.font.LineMetrics
             Dim flm As sun.font.FontLineMetrics = defaultLineMetrics(frc)
             Dim numChars As Integer = limit - beginIndex
             flm.numchars = If(numChars < 0, 0, numChars)
@@ -2120,7 +2120,7 @@ Namespace java.awt
         ''' <seealso cref= FontRenderContext </seealso>
         ''' <seealso cref= Font#createGlyphVector
         ''' @since 1.2 </seealso>
-        Public Overridable Function getStringBounds(ByVal str As String, ByVal frc As java.awt.font.FontRenderContext) As java.awt.geom.Rectangle2D
+        Public Overridable Function getStringBounds(  str As String,   frc As java.awt.font.FontRenderContext) As java.awt.geom.Rectangle2D
             Dim array As Char() = str.ToCharArray()
             Return getStringBounds(array, 0, array.Length, frc)
         End Function
@@ -2151,7 +2151,7 @@ Namespace java.awt
         ''' <seealso cref= FontRenderContext </seealso>
         ''' <seealso cref= Font#createGlyphVector
         ''' @since 1.2 </seealso>
-        Public Overridable Function getStringBounds(ByVal str As String, ByVal beginIndex As Integer, ByVal limit As Integer, ByVal frc As java.awt.font.FontRenderContext) As java.awt.geom.Rectangle2D
+        Public Overridable Function getStringBounds(  str As String,   beginIndex As Integer,   limit As Integer,   frc As java.awt.font.FontRenderContext) As java.awt.geom.Rectangle2D
             Dim substr As String = str.Substring(beginIndex, limit - beginIndex)
             Return getStringBounds(substr, frc)
         End Function
@@ -2183,7 +2183,7 @@ Namespace java.awt
         ''' <seealso cref= FontRenderContext </seealso>
         ''' <seealso cref= Font#createGlyphVector
         ''' @since 1.2 </seealso>
-        Public Overridable Function getStringBounds(ByVal chars As Char(), ByVal beginIndex As Integer, ByVal limit As Integer, ByVal frc As java.awt.font.FontRenderContext) As java.awt.geom.Rectangle2D
+        Public Overridable Function getStringBounds(  chars As Char(),   beginIndex As Integer,   limit As Integer,   frc As java.awt.font.FontRenderContext) As java.awt.geom.Rectangle2D
             If beginIndex < 0 Then Throw New IndexOutOfBoundsException("beginIndex: " & beginIndex)
             If limit > chars.Length Then Throw New IndexOutOfBoundsException("limit: " & limit)
             If beginIndex > limit Then Throw New IndexOutOfBoundsException("range length: " & (limit - beginIndex))
@@ -2233,7 +2233,7 @@ Namespace java.awt
         '''         <code>limit</code> is greater than the end index of
         '''         <code>ci</code>, or <code>beginIndex</code> is greater
         '''         than <code>limit</code> </exception>
-        Public Overridable Function getStringBounds(ByVal ci As java.text.CharacterIterator, ByVal beginIndex As Integer, ByVal limit As Integer, ByVal frc As java.awt.font.FontRenderContext) As java.awt.geom.Rectangle2D
+        Public Overridable Function getStringBounds(  ci As java.text.CharacterIterator,   beginIndex As Integer,   limit As Integer,   frc As java.awt.font.FontRenderContext) As java.awt.geom.Rectangle2D
             Dim start As Integer = ci.beginIndex
             Dim [end] As Integer = ci.endIndex
 
@@ -2260,7 +2260,7 @@ Namespace java.awt
         ''' <param name="frc"> the specified <code>FontRenderContext</code> </param>
         ''' <returns> a <code>Rectangle2D</code> that is the bounding box
         ''' for the character with the maximum bounds. </returns>
-        Public Overridable Function getMaxCharBounds(ByVal frc As java.awt.font.FontRenderContext) As java.awt.geom.Rectangle2D
+        Public Overridable Function getMaxCharBounds(  frc As java.awt.font.FontRenderContext) As java.awt.geom.Rectangle2D
             Dim metrics As Single() = New Single(3) {}
 
             font2D.getFontMetrics(Me, frc, metrics)
@@ -2281,7 +2281,7 @@ Namespace java.awt
         ''' <returns> a new <code>GlyphVector</code> created with the
         ''' specified <code>String</code> and the specified
         ''' <code>FontRenderContext</code>. </returns>
-        Public Overridable Function createGlyphVector(ByVal frc As java.awt.font.FontRenderContext, ByVal str As String) As java.awt.font.GlyphVector
+        Public Overridable Function createGlyphVector(  frc As java.awt.font.FontRenderContext,   str As String) As java.awt.font.GlyphVector
             Return CType(New sun.font.StandardGlyphVector(Me, str, frc), java.awt.font.GlyphVector)
         End Function
 
@@ -2298,7 +2298,7 @@ Namespace java.awt
         ''' <returns> a new <code>GlyphVector</code> created with the
         ''' specified array of characters and the specified
         ''' <code>FontRenderContext</code>. </returns>
-        Public Overridable Function createGlyphVector(ByVal frc As java.awt.font.FontRenderContext, ByVal chars As Char()) As java.awt.font.GlyphVector
+        Public Overridable Function createGlyphVector(  frc As java.awt.font.FontRenderContext,   chars As Char()) As java.awt.font.GlyphVector
             Return CType(New sun.font.StandardGlyphVector(Me, chars, frc), java.awt.font.GlyphVector)
         End Function
 
@@ -2315,7 +2315,7 @@ Namespace java.awt
         ''' <returns> a new <code>GlyphVector</code> created with the
         ''' specified <code>CharacterIterator</code> and the specified
         ''' <code>FontRenderContext</code>. </returns>
-        Public Overridable Function createGlyphVector(ByVal frc As java.awt.font.FontRenderContext, ByVal ci As java.text.CharacterIterator) As java.awt.font.GlyphVector
+        Public Overridable Function createGlyphVector(  frc As java.awt.font.FontRenderContext,   ci As java.text.CharacterIterator) As java.awt.font.GlyphVector
             Return CType(New sun.font.StandardGlyphVector(Me, ci, frc), java.awt.font.GlyphVector)
         End Function
 
@@ -2332,7 +2332,7 @@ Namespace java.awt
         ''' <returns> a new <code>GlyphVector</code> created with the
         ''' specified integer array and the specified
         ''' <code>FontRenderContext</code>. </returns>
-        Public Overridable Function createGlyphVector(ByVal frc As java.awt.font.FontRenderContext, ByVal glyphCodes As Integer()) As java.awt.font.GlyphVector
+        Public Overridable Function createGlyphVector(  frc As java.awt.font.FontRenderContext,   glyphCodes As Integer()) As java.awt.font.GlyphVector
             Return CType(New sun.font.StandardGlyphVector(Me, glyphCodes, frc), java.awt.font.GlyphVector)
         End Function
 
@@ -2377,7 +2377,7 @@ Namespace java.awt
         ''' <seealso cref= #LAYOUT_NO_START_CONTEXT </seealso>
         ''' <seealso cref= #LAYOUT_NO_LIMIT_CONTEXT
         ''' @since 1.4 </seealso>
-        Public Overridable Function layoutGlyphVector(ByVal frc As java.awt.font.FontRenderContext, ByVal text As Char(), ByVal start As Integer, ByVal limit As Integer, ByVal flags As Integer) As java.awt.font.GlyphVector
+        Public Overridable Function layoutGlyphVector(  frc As java.awt.font.FontRenderContext,   text As Char(),   start As Integer,   limit As Integer,   flags As Integer) As java.awt.font.GlyphVector
 
             Dim gl As sun.font.GlyphLayout = sun.font.GlyphLayout.get(Nothing) ' !!! no custom layout engines
             Dim gv As sun.font.StandardGlyphVector = gl.layout(Me, frc, text, start, limit - start, flags, Nothing)
@@ -2410,12 +2410,12 @@ Namespace java.awt
         Public Const LAYOUT_NO_LIMIT_CONTEXT As Integer = 4
 
 
-        Private Shared Sub applyTransform(ByVal trans As java.awt.geom.AffineTransform, ByVal values As sun.font.AttributeValues)
+        Private Shared Sub applyTransform(  trans As java.awt.geom.AffineTransform,   values As sun.font.AttributeValues)
             If trans Is Nothing Then Throw New IllegalArgumentException("transform must not be null")
             values.transform = trans
         End Sub
 
-        Private Shared Sub applyStyle(ByVal style As Integer, ByVal values As sun.font.AttributeValues)
+        Private Shared Sub applyStyle(  style As Integer,   values As sun.font.AttributeValues)
             ' WEIGHT_BOLD, WEIGHT_REGULAR
             values.weight = If((style And BOLD) <> 0, 2.0F, 1.0F)
             ' POSTURE_OBLIQUE, POSTURE_REGULAR

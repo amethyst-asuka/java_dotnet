@@ -36,12 +36,12 @@ Namespace java.net
 	Friend Interface InetAddressImpl
 
 		ReadOnly Property localHostName As String
-		Function lookupAllHostAddr(ByVal hostname As String) As InetAddress()
-		Function getHostByAddr(ByVal addr As SByte()) As String
+		Function lookupAllHostAddr(  hostname As String) As InetAddress()
+		Function getHostByAddr(  addr As SByte()) As String
 
 		Function anyLocalAddress() As InetAddress
 		Function loopbackAddress() As InetAddress
-		Function isReachable(ByVal addr As InetAddress, ByVal timeout As Integer, ByVal netif As NetworkInterface, ByVal ttl As Integer) As Boolean
+		Function isReachable(  addr As InetAddress,   timeout As Integer,   netif As NetworkInterface,   ttl As Integer) As Boolean
 	End Interface
 
 End Namespace

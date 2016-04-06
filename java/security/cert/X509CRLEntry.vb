@@ -64,7 +64,7 @@ Namespace java.security.cert
 	Public MustInherit Class X509CRLEntry
 		Implements X509Extension
 
-			Public MustOverride Function getExtensionValue(ByVal oid As String) As SByte() Implements X509Extension.getExtensionValue
+			Public MustOverride Function getExtensionValue(  oid As String) As SByte() Implements X509Extension.getExtensionValue
 			Public MustOverride ReadOnly Property nonCriticalExtensionOIDs As java.util.Set(Of String) Implements X509Extension.getNonCriticalExtensionOIDs
 			Public MustOverride ReadOnly Property criticalExtensionOIDs As java.util.Set(Of String) Implements X509Extension.getCriticalExtensionOIDs
 			Public MustOverride Function hasUnsupportedCriticalExtension() As Boolean Implements X509Extension.hasUnsupportedCriticalExtension
@@ -79,7 +79,7 @@ Namespace java.security.cert
 		''' <param name="other"> the object to test for equality with this CRL entry. </param>
 		''' <returns> true iff the encoded forms of the two CRL entries
 		''' match, false otherwise. </returns>
-		Public Overrides Function Equals(ByVal other As Object) As Boolean
+		Public Overrides Function Equals(  other As Object) As Boolean
 			If Me Is other Then Return True
 			If Not(TypeOf other Is X509CRLEntry) Then Return False
 			Try

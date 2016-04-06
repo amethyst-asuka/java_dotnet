@@ -46,7 +46,7 @@ Namespace java.nio.file
 		'''          a string identifying the target file or {@code null} if not known </param>
 		''' <param name="reason">
 		'''          a reason message with additional information </param>
-		Public Sub New(ByVal source As String, ByVal target As String, ByVal reason As String)
+		Public Sub New(  source As String,   target As String,   reason As String)
 			MyBase.New(source, target, reason)
 		End Sub
 	End Class

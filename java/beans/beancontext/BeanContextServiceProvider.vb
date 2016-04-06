@@ -70,7 +70,7 @@ Namespace java.beans.beancontext
 	   ''' for a particular service, or <code>null</code> if not applicable.
 	   ''' </param>
 	   ''' <returns> a reference to the requested service </returns>
-		Function getService(ByVal bcs As BeanContextServices, ByVal requestor As Object, ByVal serviceClass As [Class], ByVal serviceSelector As Object) As Object
+		Function getService(  bcs As BeanContextServices,   requestor As Object,   serviceClass As [Class],   serviceSelector As Object) As Object
 
 		''' <summary>
 		''' Invoked by <code>BeanContextServices</code>,
@@ -84,7 +84,7 @@ Namespace java.beans.beancontext
 		''' <param name="requestor"> the object requesting the service to be released
 		''' </param>
 		''' <param name="service"> the service that is to be released </param>
-		Sub releaseService(ByVal bcs As BeanContextServices, ByVal requestor As Object, ByVal service As Object)
+		Sub releaseService(  bcs As BeanContextServices,   requestor As Object,   service As Object)
 
 		''' <summary>
 		''' Invoked by <code>BeanContextServices</code>, this method
@@ -98,7 +98,7 @@ Namespace java.beans.beancontext
 		''' <param name="bcs">           the <code>BeanContextServices</code> for this request </param>
 		''' <param name="serviceClass">  the specified service </param>
 		''' <returns>   the current service selectors for the specified serviceClass </returns>
-		Function getCurrentServiceSelectors(ByVal bcs As BeanContextServices, ByVal serviceClass As [Class]) As IEnumerator
+		Function getCurrentServiceSelectors(  bcs As BeanContextServices,   serviceClass As [Class]) As IEnumerator
 	End Interface
 
 End Namespace

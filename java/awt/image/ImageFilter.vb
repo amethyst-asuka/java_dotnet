@@ -69,7 +69,7 @@ Namespace java.awt.image
 		''' <param name="ic"> the specified <code>ImageConsumer</code> </param>
 		''' <returns> an <code>ImageFilter</code> used to perform the
 		'''         filtering for the specified <code>ImageConsumer</code>. </returns>
-		Public Overridable Function getFilterInstance(ByVal ic As ImageConsumer) As ImageFilter
+		Public Overridable Function getFilterInstance(  ic As ImageConsumer) As ImageFilter
 			Dim instance As ImageFilter = CType(clone(), ImageFilter)
 			instance.consumer = ic
 			Return instance
@@ -85,7 +85,7 @@ Namespace java.awt.image
 		''' this method directly since that operation could interfere
 		''' with the filtering operation. </summary>
 		''' <seealso cref= ImageConsumer#setDimensions </seealso>
-		Public Overridable Sub setDimensions(ByVal width As Integer, ByVal height As Integer) Implements ImageConsumer.setDimensions
+		Public Overridable Sub setDimensions(  width As Integer,   height As Integer) Implements ImageConsumer.setDimensions
 			consumer.dimensionsons(width, height)
 		End Sub
 
@@ -102,7 +102,7 @@ Namespace java.awt.image
         ''' <param name="props"> the properties from the source object </param>
         ''' <exception cref="NullPointerException"> if <code>props</code> is null </exception>
         Public Overridable WriteOnly Property properties(Of T1) Implements ImageConsumer.setProperties As Dictionary(Of T1)
-			Set(ByVal props As Dictionary(Of T1))
+			Set(  props As Dictionary(Of T1))
                 Dim p As Dictionary(Of Object, Object) = CType(props.clone(), Dictionary(Of Object, Object))
                 Dim o As Object = p("filters")
                 If o Is Nothing Then
@@ -125,7 +125,7 @@ Namespace java.awt.image
         ''' with the filtering operation. </summary>
         ''' <seealso cref= ImageConsumer#setColorModel </seealso>
         Public Overridable Property colorModel Implements ImageConsumer.setColorModel As ColorModel
-			Set(ByVal model As ColorModel)
+			Set(  model As ColorModel)
 				consumer.colorModel = model
 			End Set
 		End Property
@@ -141,7 +141,7 @@ Namespace java.awt.image
 		''' with the filtering operation. </summary>
 		''' <seealso cref= ImageConsumer#setHints </seealso>
 		Public Overridable Property hints Implements ImageConsumer.setHints As Integer
-			Set(ByVal hints As Integer)
+			Set(  hints As Integer)
 				consumer.hints = hints
 			End Set
 		End Property

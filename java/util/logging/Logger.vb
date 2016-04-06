@@ -219,7 +219,7 @@ Namespace java.util.logging
 		Private NotInheritable Class LoggerBundle
 			Friend ReadOnly resourceBundleName As String ' Base name of the bundle.
 			Friend ReadOnly userBundle As java.util.ResourceBundle ' Bundle set through setResourceBundle.
-			Private Sub New(ByVal resourceBundleName As String, ByVal bundle As java.util.ResourceBundle)
+			Private Sub New(  resourceBundleName As String,   bundle As java.util.ResourceBundle)
 				Me.resourceBundleName = resourceBundleName
 				Me.userBundle = bundle
 			End Sub
@@ -228,7 +228,7 @@ Namespace java.util.logging
 					Return SYSTEM_LOGGER_RB_NAME.Equals(resourceBundleName)
 				End Get
 			End Property
-			Shared Function [get](ByVal name As String, ByVal bundle As java.util.ResourceBundle) As LoggerBundle
+			Shared Function [get](  name As String,   bundle As java.util.ResourceBundle) As LoggerBundle
 				If name Is Nothing AndAlso bundle Is Nothing Then
 					Return NO_RESOURCE_BUNDLE
 				ElseIf SYSTEM_LOGGER_RB_NAME.Equals(name) AndAlso bundle Is Nothing Then
@@ -369,11 +369,11 @@ Namespace java.util.logging
 		'''                          of the messages require localization. </param>
 		''' <exception cref="MissingResourceException"> if the resourceBundleName is non-null and
 		'''             no corresponding resource can be found. </exception>
-		Protected Friend Sub New(ByVal name As String, ByVal resourceBundleName As String)
+		Protected Friend Sub New(  name As String,   resourceBundleName As String)
 			Me.New(name, resourceBundleName, Nothing, LogManager.logManager, False)
 		End Sub
 
-		Friend Sub New(ByVal name As String, ByVal resourceBundleName As String, ByVal caller As [Class], ByVal manager As LogManager, ByVal isSystemLogger As Boolean)
+		Friend Sub New(  name As String,   resourceBundleName As String,   caller As [Class],   manager As LogManager,   isSystemLogger As Boolean)
 			Me.manager = manager
 			Me.isSystemLogger = isSystemLogger
 			setupResourceInfo(resourceBundleName, caller)
@@ -382,7 +382,7 @@ Namespace java.util.logging
 		End Sub
 
 		Private Property callersClassLoaderRef As  [Class]
-			Set(ByVal caller As [Class])
+			Set(  caller As [Class])
 				Dim callersClassLoader_Renamed As  ClassLoader = (If(caller IsNot Nothing, caller.classLoader, Nothing))
 				If callersClassLoader_Renamed IsNot Nothing Then Me.callersClassLoaderRef = New WeakReference(Of )(callersClassLoader_Renamed)
 			End Set
@@ -397,7 +397,7 @@ Namespace java.util.logging
 		' This constructor is used only to create the global Logger.
 		' It is needed to break a cyclic dependence between the LogManager
 		' and Logger static initializers causing deadlocks.
-		Private Sub New(ByVal name As String)
+		Private Sub New(  name As String)
 			' The manager field is not initialized here.
 			Me.name = name
 			Me.isSystemLogger = True
@@ -407,7 +407,7 @@ Namespace java.util.logging
 		' It is called from LoggerContext.addLocalLogger() when the logger
 		' is actually added to a LogManager.
 		Friend Overridable Property logManager As LogManager
-			Set(ByVal manager As LogManager)
+			Set(  manager As LogManager)
 				Me.manager = manager
 			End Set
 		End Property
@@ -429,7 +429,7 @@ Namespace java.util.logging
 		' resource bundle name (rather than the default system resource bundle).
 		Private Class SystemLoggerHelper
 			Friend Shared disableCallerCheck As Boolean = getBooleanProperty("sun.util.logging.disableCallerCheck")
-			Private Shared Function getBooleanProperty(ByVal key As String) As Boolean
+			Private Shared Function getBooleanProperty(  key As String) As Boolean
 				Dim s As String = java.security.AccessController.doPrivileged(New PrivilegedActionAnonymousInnerClassHelper(Of T)
 				Return Convert.ToBoolean(s)
 			End Function
@@ -443,7 +443,7 @@ Namespace java.util.logging
 			End Class
 		End Class
 
-		Private Shared Function demandLogger(ByVal name As String, ByVal resourceBundleName As String, ByVal caller As [Class]) As Logger
+		Private Shared Function demandLogger(  name As String,   resourceBundleName As String,   caller As [Class]) As Logger
 			Dim manager As LogManager = LogManager.logManager
 			Dim sm As SecurityManager = System.securityManager
 			If sm IsNot Nothing AndAlso (Not SystemLoggerHelper.disableCallerCheck) Then
@@ -484,7 +484,7 @@ Namespace java.util.logging
 		' Synchronization is not required here. All synchronization for
 		' adding a new Logger object is handled by LogManager.addLogger().
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Shared Function getLogger(ByVal name As String) As Logger
+		Public Shared Function getLogger(  name As String) As Logger
 			' This method is intentionally not a wrapper around a call
 			' to getLogger(name, resourceBundleName). If it were then
 			' this sequence:
@@ -543,7 +543,7 @@ Namespace java.util.logging
 		' Synchronization is not required here. All synchronization for
 		' adding a new Logger object is handled by LogManager.addLogger().
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Shared Function getLogger(ByVal name As String, ByVal resourceBundleName As String) As Logger
+		Public Shared Function getLogger(  name As String,   resourceBundleName As String) As Logger
 			Dim callerClass As  [Class] = sun.reflect.Reflection.callerClass
 			Dim result As Logger = demandLogger(name, resourceBundleName, callerClass)
 
@@ -563,7 +563,7 @@ Namespace java.util.logging
 		' package-private
 		' Add a platform logger to the system context.
 		' i.e. caller of sun.util.logging.PlatformLogger.getLogger
-		Shared Function getPlatformLogger(ByVal name As String) As Logger
+		Shared Function getPlatformLogger(  name As String) As Logger
 			Dim manager As LogManager = LogManager.logManager
 
 			' all loggers in the system context will default to
@@ -628,7 +628,7 @@ Namespace java.util.logging
 		' Synchronization is not required here. All synchronization for
 		' adding a new anonymous Logger object is handled by doSetParent().
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Shared Function getAnonymousLogger(ByVal resourceBundleName As String) As Logger
+		Public Shared Function getAnonymousLogger(  resourceBundleName As String) As Logger
 			Dim manager As LogManager = LogManager.logManager
 			' cleanup some Loggers that have been GC'ed
 			manager.drainLoggerRefQueueBounded()
@@ -689,7 +689,7 @@ Namespace java.util.logging
 		'''          this logger is not anonymous, and the caller
 		'''          does not have LoggingPermission("control"). </exception>
 		Public Overridable Property filter As Filter
-			Set(ByVal newFilter As Filter)
+			Set(  newFilter As Filter)
 				checkPermission()
 				filter = newFilter
 			End Set
@@ -707,7 +707,7 @@ Namespace java.util.logging
 		''' override this single method to capture all log activity.
 		''' </summary>
 		''' <param name="record"> the LogRecord to be published </param>
-		Public Overridable Sub log(ByVal record As LogRecord)
+		Public Overridable Sub log(  record As LogRecord)
 			If Not isLoggable(record.level) Then Return
 			Dim theFilter As Filter = filter
 			If theFilter IsNot Nothing AndAlso (Not theFilter.isLoggable(record)) Then Return
@@ -734,7 +734,7 @@ Namespace java.util.logging
 		' private support method for logging.
 		' We fill in the logger name, resource bundle name, and
 		' resource bundle and then call "void log(LogRecord)".
-		Private Sub doLog(ByVal lr As LogRecord)
+		Private Sub doLog(  lr As LogRecord)
 			lr.loggerName = name
 			Dim lb As LoggerBundle = effectiveLoggerBundle
 			Dim bundle As java.util.ResourceBundle = lb.userBundle
@@ -760,7 +760,7 @@ Namespace java.util.logging
 		''' <p> </summary>
 		''' <param name="level">   One of the message level identifiers, e.g., SEVERE </param>
 		''' <param name="msg">     The string message (or a key in the message catalog) </param>
-		Public Overridable Sub log(ByVal level_Renamed As Level, ByVal msg As String)
+		Public Overridable Sub log(  level_Renamed As Level,   msg As String)
 			If Not isLoggable(level_Renamed) Then Return
 			Dim lr As New LogRecord(level_Renamed, msg)
 			doLog(lr)
@@ -778,7 +778,7 @@ Namespace java.util.logging
 		''' <param name="level">   One of the message level identifiers, e.g., SEVERE </param>
 		''' <param name="msgSupplier">   A function, which when called, produces the
 		'''                        desired log message </param>
-		Public Overridable Sub log(ByVal level_Renamed As Level, ByVal msgSupplier As java.util.function.Supplier(Of String))
+		Public Overridable Sub log(  level_Renamed As Level,   msgSupplier As java.util.function.Supplier(Of String))
 			If Not isLoggable(level_Renamed) Then Return
 			Dim lr As New LogRecord(level_Renamed, msgSupplier.get())
 			doLog(lr)
@@ -794,7 +794,7 @@ Namespace java.util.logging
 		''' <param name="level">   One of the message level identifiers, e.g., SEVERE </param>
 		''' <param name="msg">     The string message (or a key in the message catalog) </param>
 		''' <param name="param1">  parameter to the message </param>
-		Public Overridable Sub log(ByVal level_Renamed As Level, ByVal msg As String, ByVal param1 As Object)
+		Public Overridable Sub log(  level_Renamed As Level,   msg As String,   param1 As Object)
 			If Not isLoggable(level_Renamed) Then Return
 			Dim lr As New LogRecord(level_Renamed, msg)
 			Dim params As Object() = { param1 }
@@ -812,7 +812,7 @@ Namespace java.util.logging
 		''' <param name="level">   One of the message level identifiers, e.g., SEVERE </param>
 		''' <param name="msg">     The string message (or a key in the message catalog) </param>
 		''' <param name="params">  array of parameters to the message </param>
-		Public Overridable Sub log(ByVal level_Renamed As Level, ByVal msg As String, ByVal params As Object())
+		Public Overridable Sub log(  level_Renamed As Level,   msg As String,   params As Object())
 			If Not isLoggable(level_Renamed) Then Return
 			Dim lr As New LogRecord(level_Renamed, msg)
 			lr.parameters = params
@@ -834,7 +834,7 @@ Namespace java.util.logging
 		''' <param name="level">   One of the message level identifiers, e.g., SEVERE </param>
 		''' <param name="msg">     The string message (or a key in the message catalog) </param>
 		''' <param name="thrown">  Throwable associated with log message. </param>
-		Public Overridable Sub log(ByVal level_Renamed As Level, ByVal msg As String, ByVal thrown As Throwable)
+		Public Overridable Sub log(  level_Renamed As Level,   msg As String,   thrown As Throwable)
 			If Not isLoggable(level_Renamed) Then Return
 			Dim lr As New LogRecord(level_Renamed, msg)
 			lr.thrown = thrown
@@ -859,7 +859,7 @@ Namespace java.util.logging
 		''' <param name="msgSupplier">   A function, which when called, produces the
 		'''                        desired log message
 		''' @since   1.8 </param>
-		Public Overridable Sub log(ByVal level_Renamed As Level, ByVal thrown As Throwable, ByVal msgSupplier As java.util.function.Supplier(Of String))
+		Public Overridable Sub log(  level_Renamed As Level,   thrown As Throwable,   msgSupplier As java.util.function.Supplier(Of String))
 			If Not isLoggable(level_Renamed) Then Return
 			Dim lr As New LogRecord(level_Renamed, msgSupplier.get())
 			lr.thrown = thrown
@@ -882,7 +882,7 @@ Namespace java.util.logging
 		''' <param name="sourceClass">    name of class that issued the logging request </param>
 		''' <param name="sourceMethod">   name of method that issued the logging request </param>
 		''' <param name="msg">     The string message (or a key in the message catalog) </param>
-		Public Overridable Sub logp(ByVal level_Renamed As Level, ByVal sourceClass As String, ByVal sourceMethod As String, ByVal msg As String)
+		Public Overridable Sub logp(  level_Renamed As Level,   sourceClass As String,   sourceMethod As String,   msg As String)
 			If Not isLoggable(level_Renamed) Then Return
 			Dim lr As New LogRecord(level_Renamed, msg)
 			lr.sourceClassName = sourceClass
@@ -905,7 +905,7 @@ Namespace java.util.logging
 		''' <param name="msgSupplier">   A function, which when called, produces the
 		'''                        desired log message
 		''' @since   1.8 </param>
-		Public Overridable Sub logp(ByVal level_Renamed As Level, ByVal sourceClass As String, ByVal sourceMethod As String, ByVal msgSupplier As java.util.function.Supplier(Of String))
+		Public Overridable Sub logp(  level_Renamed As Level,   sourceClass As String,   sourceMethod As String,   msgSupplier As java.util.function.Supplier(Of String))
 			If Not isLoggable(level_Renamed) Then Return
 			Dim lr As New LogRecord(level_Renamed, msgSupplier.get())
 			lr.sourceClassName = sourceClass
@@ -926,7 +926,7 @@ Namespace java.util.logging
 		''' <param name="sourceMethod">   name of method that issued the logging request </param>
 		''' <param name="msg">      The string message (or a key in the message catalog) </param>
 		''' <param name="param1">    Parameter to the log message. </param>
-		Public Overridable Sub logp(ByVal level_Renamed As Level, ByVal sourceClass As String, ByVal sourceMethod As String, ByVal msg As String, ByVal param1 As Object)
+		Public Overridable Sub logp(  level_Renamed As Level,   sourceClass As String,   sourceMethod As String,   msg As String,   param1 As Object)
 			If Not isLoggable(level_Renamed) Then Return
 			Dim lr As New LogRecord(level_Renamed, msg)
 			lr.sourceClassName = sourceClass
@@ -949,7 +949,7 @@ Namespace java.util.logging
 		''' <param name="sourceMethod">   name of method that issued the logging request </param>
 		''' <param name="msg">     The string message (or a key in the message catalog) </param>
 		''' <param name="params">  Array of parameters to the message </param>
-		Public Overridable Sub logp(ByVal level_Renamed As Level, ByVal sourceClass As String, ByVal sourceMethod As String, ByVal msg As String, ByVal params As Object())
+		Public Overridable Sub logp(  level_Renamed As Level,   sourceClass As String,   sourceMethod As String,   msg As String,   params As Object())
 			If Not isLoggable(level_Renamed) Then Return
 			Dim lr As New LogRecord(level_Renamed, msg)
 			lr.sourceClassName = sourceClass
@@ -976,7 +976,7 @@ Namespace java.util.logging
 		''' <param name="sourceMethod">   name of method that issued the logging request </param>
 		''' <param name="msg">     The string message (or a key in the message catalog) </param>
 		''' <param name="thrown">  Throwable associated with log message. </param>
-		Public Overridable Sub logp(ByVal level_Renamed As Level, ByVal sourceClass As String, ByVal sourceMethod As String, ByVal msg As String, ByVal thrown As Throwable)
+		Public Overridable Sub logp(  level_Renamed As Level,   sourceClass As String,   sourceMethod As String,   msg As String,   thrown As Throwable)
 			If Not isLoggable(level_Renamed) Then Return
 			Dim lr As New LogRecord(level_Renamed, msg)
 			lr.sourceClassName = sourceClass
@@ -1006,7 +1006,7 @@ Namespace java.util.logging
 		''' <param name="msgSupplier">   A function, which when called, produces the
 		'''                        desired log message
 		''' @since   1.8 </param>
-		Public Overridable Sub logp(ByVal level_Renamed As Level, ByVal sourceClass As String, ByVal sourceMethod As String, ByVal thrown As Throwable, ByVal msgSupplier As java.util.function.Supplier(Of String))
+		Public Overridable Sub logp(  level_Renamed As Level,   sourceClass As String,   sourceMethod As String,   thrown As Throwable,   msgSupplier As java.util.function.Supplier(Of String))
 			If Not isLoggable(level_Renamed) Then Return
 			Dim lr As New LogRecord(level_Renamed, msgSupplier.get())
 			lr.sourceClassName = sourceClass
@@ -1023,7 +1023,7 @@ Namespace java.util.logging
 		' Private support method for logging for "logrb" methods.
 		' We fill in the logger name, resource bundle name, and
 		' resource bundle and then call "void log(LogRecord)".
-		Private Sub doLog(ByVal lr As LogRecord, ByVal rbname As String)
+		Private Sub doLog(  lr As LogRecord,   rbname As String)
 			lr.loggerName = name
 			If rbname IsNot Nothing Then
 				lr.resourceBundleName = rbname
@@ -1033,7 +1033,7 @@ Namespace java.util.logging
 		End Sub
 
 		' Private support method for logging for "logrb" methods.
-		Private Sub doLog(ByVal lr As LogRecord, ByVal rb As java.util.ResourceBundle)
+		Private Sub doLog(  lr As LogRecord,   rb As java.util.ResourceBundle)
 			lr.loggerName = name
 			If rb IsNot Nothing Then
 				lr.resourceBundleName = rb.baseBundleName
@@ -1064,7 +1064,7 @@ Namespace java.util.logging
 		''' java.lang.String, java.util.ResourceBundle, java.lang.String,
 		''' java.lang.Object...)} instead. 
 		<Obsolete("Use {@link #logrb(java.util.logging.Level, java.lang.String,")> _
-		Public Overridable Sub logrb(ByVal level_Renamed As Level, ByVal sourceClass As String, ByVal sourceMethod As String, ByVal bundleName As String, ByVal msg As String)
+		Public Overridable Sub logrb(  level_Renamed As Level,   sourceClass As String,   sourceMethod As String,   bundleName As String,   msg As String)
 			If Not isLoggable(level_Renamed) Then Return
 			Dim lr As New LogRecord(level_Renamed, msg)
 			lr.sourceClassName = sourceClass
@@ -1095,7 +1095,7 @@ Namespace java.util.logging
 		'''   java.lang.String, java.util.ResourceBundle, java.lang.String,
 		'''   java.lang.Object...)} instead 
 		<Obsolete("Use {@link #logrb(java.util.logging.Level, java.lang.String,")> _
-		Public Overridable Sub logrb(ByVal level_Renamed As Level, ByVal sourceClass As String, ByVal sourceMethod As String, ByVal bundleName As String, ByVal msg As String, ByVal param1 As Object)
+		Public Overridable Sub logrb(  level_Renamed As Level,   sourceClass As String,   sourceMethod As String,   bundleName As String,   msg As String,   param1 As Object)
 			If Not isLoggable(level_Renamed) Then Return
 			Dim lr As New LogRecord(level_Renamed, msg)
 			lr.sourceClassName = sourceClass
@@ -1128,7 +1128,7 @@ Namespace java.util.logging
 		'''      java.lang.String, java.util.ResourceBundle, java.lang.String,
 		'''      java.lang.Object...)} instead. 
 		<Obsolete("Use {@link #logrb(java.util.logging.Level, java.lang.String,")> _
-		Public Overridable Sub logrb(ByVal level_Renamed As Level, ByVal sourceClass As String, ByVal sourceMethod As String, ByVal bundleName As String, ByVal msg As String, ByVal params As Object())
+		Public Overridable Sub logrb(  level_Renamed As Level,   sourceClass As String,   sourceMethod As String,   bundleName As String,   msg As String,   params As Object())
 			If Not isLoggable(level_Renamed) Then Return
 			Dim lr As New LogRecord(level_Renamed, msg)
 			lr.sourceClassName = sourceClass
@@ -1157,7 +1157,7 @@ Namespace java.util.logging
 		''' <param name="msg">     The string message (or a key in the message catalog) </param>
 		''' <param name="params">  Parameters to the message (optional, may be none).
 		''' @since 1.8 </param>
-		Public Overridable Sub logrb(ByVal level_Renamed As Level, ByVal sourceClass As String, ByVal sourceMethod As String, ByVal bundle As java.util.ResourceBundle, ByVal msg As String, ParamArray ByVal params As Object())
+		Public Overridable Sub logrb(  level_Renamed As Level,   sourceClass As String,   sourceMethod As String,   bundle As java.util.ResourceBundle,   msg As String, ParamArray   params As Object())
 			If Not isLoggable(level_Renamed) Then Return
 			Dim lr As New LogRecord(level_Renamed, msg)
 			lr.sourceClassName = sourceClass
@@ -1194,7 +1194,7 @@ Namespace java.util.logging
 		'''     java.lang.String, java.util.ResourceBundle, java.lang.String,
 		'''     java.lang.Throwable)} instead. 
 		<Obsolete("Use {@link #logrb(java.util.logging.Level, java.lang.String,")> _
-		Public Overridable Sub logrb(ByVal level_Renamed As Level, ByVal sourceClass As String, ByVal sourceMethod As String, ByVal bundleName As String, ByVal msg As String, ByVal thrown As Throwable)
+		Public Overridable Sub logrb(  level_Renamed As Level,   sourceClass As String,   sourceMethod As String,   bundleName As String,   msg As String,   thrown As Throwable)
 			If Not isLoggable(level_Renamed) Then Return
 			Dim lr As New LogRecord(level_Renamed, msg)
 			lr.sourceClassName = sourceClass
@@ -1228,7 +1228,7 @@ Namespace java.util.logging
 		''' <param name="msg">     The string message (or a key in the message catalog) </param>
 		''' <param name="thrown">  Throwable associated with the log message.
 		''' @since 1.8 </param>
-		Public Overridable Sub logrb(ByVal level_Renamed As Level, ByVal sourceClass As String, ByVal sourceMethod As String, ByVal bundle As java.util.ResourceBundle, ByVal msg As String, ByVal thrown As Throwable)
+		Public Overridable Sub logrb(  level_Renamed As Level,   sourceClass As String,   sourceMethod As String,   bundle As java.util.ResourceBundle,   msg As String,   thrown As Throwable)
 			If Not isLoggable(level_Renamed) Then Return
 			Dim lr As New LogRecord(level_Renamed, msg)
 			lr.sourceClassName = sourceClass
@@ -1250,7 +1250,7 @@ Namespace java.util.logging
 		''' <p> </summary>
 		''' <param name="sourceClass">    name of class that issued the logging request </param>
 		''' <param name="sourceMethod">   name of method that is being entered </param>
-		Public Overridable Sub entering(ByVal sourceClass As String, ByVal sourceMethod As String)
+		Public Overridable Sub entering(  sourceClass As String,   sourceMethod As String)
 			logp(Level.FINER, sourceClass, sourceMethod, "ENTRY")
 		End Sub
 
@@ -1265,7 +1265,7 @@ Namespace java.util.logging
 		''' <param name="sourceClass">    name of class that issued the logging request </param>
 		''' <param name="sourceMethod">   name of method that is being entered </param>
 		''' <param name="param1">         parameter to the method being entered </param>
-		Public Overridable Sub entering(ByVal sourceClass As String, ByVal sourceMethod As String, ByVal param1 As Object)
+		Public Overridable Sub entering(  sourceClass As String,   sourceMethod As String,   param1 As Object)
 			logp(Level.FINER, sourceClass, sourceMethod, "ENTRY {0}", param1)
 		End Sub
 
@@ -1281,7 +1281,7 @@ Namespace java.util.logging
 		''' <param name="sourceClass">    name of class that issued the logging request </param>
 		''' <param name="sourceMethod">   name of method that is being entered </param>
 		''' <param name="params">         array of parameters to the method being entered </param>
-		Public Overridable Sub entering(ByVal sourceClass As String, ByVal sourceMethod As String, ByVal params As Object())
+		Public Overridable Sub entering(  sourceClass As String,   sourceMethod As String,   params As Object())
 			Dim msg As String = "ENTRY"
 			If params Is Nothing Then
 			   logp(Level.FINER, sourceClass, sourceMethod, msg)
@@ -1303,7 +1303,7 @@ Namespace java.util.logging
 		''' <p> </summary>
 		''' <param name="sourceClass">    name of class that issued the logging request </param>
 		''' <param name="sourceMethod">   name of the method </param>
-		Public Overridable Sub exiting(ByVal sourceClass As String, ByVal sourceMethod As String)
+		Public Overridable Sub exiting(  sourceClass As String,   sourceMethod As String)
 			logp(Level.FINER, sourceClass, sourceMethod, "RETURN")
 		End Sub
 
@@ -1319,7 +1319,7 @@ Namespace java.util.logging
 		''' <param name="sourceClass">    name of class that issued the logging request </param>
 		''' <param name="sourceMethod">   name of the method </param>
 		''' <param name="result">  Object that is being returned </param>
-		Public Overridable Sub exiting(ByVal sourceClass As String, ByVal sourceMethod As String, ByVal result As Object)
+		Public Overridable Sub exiting(  sourceClass As String,   sourceMethod As String,   result As Object)
 			logp(Level.FINER, sourceClass, sourceMethod, "RETURN {0}", result)
 		End Sub
 
@@ -1343,7 +1343,7 @@ Namespace java.util.logging
 		''' <param name="sourceClass">    name of class that issued the logging request </param>
 		''' <param name="sourceMethod">  name of the method. </param>
 		''' <param name="thrown">  The Throwable that is being thrown. </param>
-		Public Overridable Sub throwing(ByVal sourceClass As String, ByVal sourceMethod As String, ByVal thrown As Throwable)
+		Public Overridable Sub throwing(  sourceClass As String,   sourceMethod As String,   thrown As Throwable)
 			If Not isLoggable(Level.FINER) Then Return
 			Dim lr As New LogRecord(Level.FINER, "THROW")
 			lr.sourceClassName = sourceClass
@@ -1364,7 +1364,7 @@ Namespace java.util.logging
 		''' registered output Handler objects.
 		''' <p> </summary>
 		''' <param name="msg">     The string message (or a key in the message catalog) </param>
-		Public Overridable Sub severe(ByVal msg As String)
+		Public Overridable Sub severe(  msg As String)
 			log(Level.SEVERE, msg)
 		End Sub
 
@@ -1376,7 +1376,7 @@ Namespace java.util.logging
 		''' registered output Handler objects.
 		''' <p> </summary>
 		''' <param name="msg">     The string message (or a key in the message catalog) </param>
-		Public Overridable Sub warning(ByVal msg As String)
+		Public Overridable Sub warning(  msg As String)
 			log(Level.WARNING, msg)
 		End Sub
 
@@ -1388,7 +1388,7 @@ Namespace java.util.logging
 		''' registered output Handler objects.
 		''' <p> </summary>
 		''' <param name="msg">     The string message (or a key in the message catalog) </param>
-		Public Overridable Sub info(ByVal msg As String)
+		Public Overridable Sub info(  msg As String)
 			log(Level.INFO, msg)
 		End Sub
 
@@ -1400,7 +1400,7 @@ Namespace java.util.logging
 		''' registered output Handler objects.
 		''' <p> </summary>
 		''' <param name="msg">     The string message (or a key in the message catalog) </param>
-		Public Overridable Sub config(ByVal msg As String)
+		Public Overridable Sub config(  msg As String)
 			log(Level.CONFIG, msg)
 		End Sub
 
@@ -1412,7 +1412,7 @@ Namespace java.util.logging
 		''' registered output Handler objects.
 		''' <p> </summary>
 		''' <param name="msg">     The string message (or a key in the message catalog) </param>
-		Public Overridable Sub fine(ByVal msg As String)
+		Public Overridable Sub fine(  msg As String)
 			log(Level.FINE, msg)
 		End Sub
 
@@ -1424,7 +1424,7 @@ Namespace java.util.logging
 		''' registered output Handler objects.
 		''' <p> </summary>
 		''' <param name="msg">     The string message (or a key in the message catalog) </param>
-		Public Overridable Sub finer(ByVal msg As String)
+		Public Overridable Sub finer(  msg As String)
 			log(Level.FINER, msg)
 		End Sub
 
@@ -1436,7 +1436,7 @@ Namespace java.util.logging
 		''' registered output Handler objects.
 		''' <p> </summary>
 		''' <param name="msg">     The string message (or a key in the message catalog) </param>
-		Public Overridable Sub finest(ByVal msg As String)
+		Public Overridable Sub finest(  msg As String)
 			log(Level.FINEST, msg)
 		End Sub
 
@@ -1457,7 +1457,7 @@ Namespace java.util.logging
 		''' <param name="msgSupplier">   A function, which when called, produces the
 		'''                        desired log message
 		''' @since   1.8 </param>
-		Public Overridable Sub severe(ByVal msgSupplier As java.util.function.Supplier(Of String))
+		Public Overridable Sub severe(  msgSupplier As java.util.function.Supplier(Of String))
 			log(Level.SEVERE, msgSupplier)
 		End Sub
 
@@ -1473,7 +1473,7 @@ Namespace java.util.logging
 		''' <param name="msgSupplier">   A function, which when called, produces the
 		'''                        desired log message
 		''' @since   1.8 </param>
-		Public Overridable Sub warning(ByVal msgSupplier As java.util.function.Supplier(Of String))
+		Public Overridable Sub warning(  msgSupplier As java.util.function.Supplier(Of String))
 			log(Level.WARNING, msgSupplier)
 		End Sub
 
@@ -1489,7 +1489,7 @@ Namespace java.util.logging
 		''' <param name="msgSupplier">   A function, which when called, produces the
 		'''                        desired log message
 		''' @since   1.8 </param>
-		Public Overridable Sub info(ByVal msgSupplier As java.util.function.Supplier(Of String))
+		Public Overridable Sub info(  msgSupplier As java.util.function.Supplier(Of String))
 			log(Level.INFO, msgSupplier)
 		End Sub
 
@@ -1505,7 +1505,7 @@ Namespace java.util.logging
 		''' <param name="msgSupplier">   A function, which when called, produces the
 		'''                        desired log message
 		''' @since   1.8 </param>
-		Public Overridable Sub config(ByVal msgSupplier As java.util.function.Supplier(Of String))
+		Public Overridable Sub config(  msgSupplier As java.util.function.Supplier(Of String))
 			log(Level.CONFIG, msgSupplier)
 		End Sub
 
@@ -1521,7 +1521,7 @@ Namespace java.util.logging
 		''' <param name="msgSupplier">   A function, which when called, produces the
 		'''                        desired log message
 		''' @since   1.8 </param>
-		Public Overridable Sub fine(ByVal msgSupplier As java.util.function.Supplier(Of String))
+		Public Overridable Sub fine(  msgSupplier As java.util.function.Supplier(Of String))
 			log(Level.FINE, msgSupplier)
 		End Sub
 
@@ -1537,7 +1537,7 @@ Namespace java.util.logging
 		''' <param name="msgSupplier">   A function, which when called, produces the
 		'''                        desired log message
 		''' @since   1.8 </param>
-		Public Overridable Sub finer(ByVal msgSupplier As java.util.function.Supplier(Of String))
+		Public Overridable Sub finer(  msgSupplier As java.util.function.Supplier(Of String))
 			log(Level.FINER, msgSupplier)
 		End Sub
 
@@ -1553,7 +1553,7 @@ Namespace java.util.logging
 		''' <param name="msgSupplier">   A function, which when called, produces the
 		'''                        desired log message
 		''' @since   1.8 </param>
-		Public Overridable Sub finest(ByVal msgSupplier As java.util.function.Supplier(Of String))
+		Public Overridable Sub finest(  msgSupplier As java.util.function.Supplier(Of String))
 			log(Level.FINEST, msgSupplier)
 		End Sub
 
@@ -1576,9 +1576,9 @@ Namespace java.util.logging
 		'''          this logger is not anonymous, and the caller
 		'''          does not have LoggingPermission("control"). </exception>
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
-        Public Overridable Sub setLevel(ByVal newLevel As Level) 'JavaToDotNetTempPropertySetlevel
+        Public Overridable Sub setLevel(  newLevel As Level) 'JavaToDotNetTempPropertySetlevel
 		Public Overridable Property level As Level
-			Set(ByVal newLevel As Level)
+			Set(  newLevel As Level)
 				checkPermission()
 				SyncLock treeLock
 					levelObject = newLevel
@@ -1604,7 +1604,7 @@ Namespace java.util.logging
 		''' </summary>
 		''' <param name="level">   a message logging level </param>
 		''' <returns>  true if the given message level is currently being logged. </returns>
-		Public Overridable Function isLoggable(ByVal level_Renamed As Level) As Boolean
+		Public Overridable Function isLoggable(  level_Renamed As Level) As Boolean
 			If level_Renamed < levelValue OrElse levelValue = offValue Then Return False
 			Return True
 		End Function
@@ -1629,7 +1629,7 @@ Namespace java.util.logging
 		''' <exception cref="SecurityException"> if a security manager exists,
 		'''          this logger is not anonymous, and the caller
 		'''          does not have LoggingPermission("control"). </exception>
-		Public Overridable Sub [addHandler](ByVal handler As Handler)
+		Public Overridable Sub [addHandler](  handler As Handler)
 			' Check for null handler
 			handler.GetType()
 			checkPermission()
@@ -1645,7 +1645,7 @@ Namespace java.util.logging
 		''' <exception cref="SecurityException"> if a security manager exists,
 		'''          this logger is not anonymous, and the caller
 		'''          does not have LoggingPermission("control"). </exception>
-		Public Overridable Sub [removeHandler](ByVal handler As Handler)
+		Public Overridable Sub [removeHandler](  handler As Handler)
 			checkPermission()
 			If handler Is Nothing Then Return
 			handlers.remove(handler)
@@ -1679,7 +1679,7 @@ Namespace java.util.logging
 		'''          this logger is not anonymous, and the caller
 		'''          does not have LoggingPermission("control"). </exception>
 		Public Overridable Property useParentHandlers As Boolean
-			Set(ByVal useParentHandlers As Boolean)
+			Set(  useParentHandlers As Boolean)
 				checkPermission()
 				Me.useParentHandlers = useParentHandlers
 			End Set
@@ -1689,7 +1689,7 @@ Namespace java.util.logging
 		End Property
 
 
-		Private Shared Function findSystemResourceBundle(ByVal locale_Renamed As java.util.Locale) As java.util.ResourceBundle
+		Private Shared Function findSystemResourceBundle(  locale_Renamed As java.util.Locale) As java.util.ResourceBundle
 			' the resource bundle is in a restricted package
 			Return java.security.AccessController.doPrivileged(New PrivilegedActionAnonymousInnerClassHelper(Of T)
 		End Function
@@ -1717,7 +1717,7 @@ Namespace java.util.logging
 		''' <param name="userCallersClassLoader"> if true search using the caller's ClassLoader </param>
 		''' <returns> ResourceBundle specified by name or null if not found </returns>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Private Function findResourceBundle(ByVal name As String, ByVal useCallersClassLoader As Boolean) As java.util.ResourceBundle
+		Private Function findResourceBundle(  name As String,   useCallersClassLoader As Boolean) As java.util.ResourceBundle
 			' For all lookups, we first check the thread context class loader
 			' if it is set.  If not, we use the system classloader.  If we
 			' still haven't found it we use the callersClassLoaderRef if it
@@ -1785,7 +1785,7 @@ Namespace java.util.logging
 		' resourceBundleName field.
 		' Synchronized to prevent races in setting the fields.
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Private Sub setupResourceInfo(ByVal name As String, ByVal callersClass As [Class])
+		Private Sub setupResourceInfo(  name As String,   callersClass As [Class])
 			Dim lb As LoggerBundle = loggerBundle_Renamed
 			If lb.resourceBundleName IsNot Nothing Then
 				' this Logger already has a ResourceBundle
@@ -1828,7 +1828,7 @@ Namespace java.util.logging
 		'''         does not have LoggingPermission("control").
 		''' @since 1.8 </exception>
 		Public Overridable Property resourceBundle As java.util.ResourceBundle
-			Set(ByVal bundle As java.util.ResourceBundle)
+			Set(  bundle As java.util.ResourceBundle)
 				checkPermission()
     
 				' Will throw NPE if bundle is null.
@@ -1870,7 +1870,7 @@ Namespace java.util.logging
 				' instead.
 				Return parent
 			End Get
-			Set(ByVal parent As Logger)
+			Set(  parent As Logger)
 				If parent Is Nothing Then Throw New NullPointerException
     
 				' check permission for all loggers, including anonymous loggers
@@ -1884,7 +1884,7 @@ Namespace java.util.logging
 
 		' Private method to do the work for parenting a child
 		' Logger onto a parent logger.
-		Private Sub doSetParent(ByVal newParent As Logger)
+		Private Sub doSetParent(  newParent As Logger)
 
 			' System.err.println("doSetParent \"" + getName() + "\" \""
 			'                              + newParent.getName() + "\"");
@@ -1927,7 +1927,7 @@ Namespace java.util.logging
 		' Package-level method.
 		' Remove the weak reference for the specified child Logger from the
 		' kid list. We should only be called from LoggerWeakRef.dispose().
-		Friend Sub removeChildLogger(ByVal child As LogManager.LoggerWeakRef)
+		Friend Sub removeChildLogger(  child As LogManager.LoggerWeakRef)
 			SyncLock treeLock
 				Dim iter As IEnumerator(Of LogManager.LoggerWeakRef) = kids.GetEnumerator()
 				Do While iter.MoveNext()

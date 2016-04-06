@@ -497,7 +497,7 @@ Namespace java.awt
 		''' Sets the constraints for the specified component in this layout. </summary>
 		''' <param name="comp"> the component to be modified </param>
 		''' <param name="constraints"> the constraints to be applied </param>
-		Public Overridable Sub setConstraints(ByVal comp As Component, ByVal constraints As GridBagConstraints)
+		Public Overridable Sub setConstraints(  comp As Component,   constraints As GridBagConstraints)
 			comptable(comp) = CType(constraints.clone(), GridBagConstraints)
 		End Sub
 
@@ -508,7 +508,7 @@ Namespace java.awt
 		''' <returns>      the constraint for the specified component in this
 		'''                  grid bag layout; a copy of the actual constraint
 		'''                  object is returned </returns>
-		Public Overridable Function getConstraints(ByVal comp As Component) As GridBagConstraints
+		Public Overridable Function getConstraints(  comp As Component) As GridBagConstraints
 			Dim constraints_Renamed As GridBagConstraints = comptable(comp)
 			If constraints_Renamed Is Nothing Then
 				constraintsnts(comp, defaultConstraints)
@@ -529,7 +529,7 @@ Namespace java.awt
 		''' </summary>
 		''' <param name="comp"> the component to be queried </param>
 		''' <returns>      the constraints for the specified component </returns>
-		Protected Friend Overridable Function lookupConstraints(ByVal comp As Component) As GridBagConstraints
+		Protected Friend Overridable Function lookupConstraints(  comp As Component) As GridBagConstraints
 			Dim constraints_Renamed As GridBagConstraints = comptable(comp)
 			If constraints_Renamed Is Nothing Then
 				constraintsnts(comp, defaultConstraints)
@@ -541,7 +541,7 @@ Namespace java.awt
 		''' <summary>
 		''' Removes the constraints for the specified component in this layout </summary>
 		''' <param name="comp"> the component to be modified </param>
-		Private Sub removeConstraints(ByVal comp As Component)
+		Private Sub removeConstraints(  comp As Component)
 			comptable.Remove(comp)
 		End Sub
 
@@ -642,7 +642,7 @@ Namespace java.awt
 		'''             (<i>x</i>,&nbsp;<i>y</i>). </returns>
 		''' <seealso cref=        java.awt.ComponentOrientation
 		''' @since      JDK1.1 </seealso>
-		Public Overridable Function location(ByVal x As Integer, ByVal y As Integer) As Point
+		Public Overridable Function location(  x As Integer,   y As Integer) As Point
 			Dim loc As New Point(0,0)
 			Dim i, d As Integer
 
@@ -676,7 +676,7 @@ Namespace java.awt
 		''' <summary>
 		''' Has no effect, since this layout manager does not use a per-component string.
 		''' </summary>
-		Public Overridable Sub addLayoutComponent(ByVal name As String, ByVal comp As Component) Implements LayoutManager.addLayoutComponent
+		Public Overridable Sub addLayoutComponent(  name As String,   comp As Component) Implements LayoutManager.addLayoutComponent
 		End Sub
 
 		''' <summary>
@@ -689,7 +689,7 @@ Namespace java.awt
 		'''                          the component is added to the layout </param>
 		''' <exception cref="IllegalArgumentException"> if <code>constraints</code>
 		'''            is not a <code>GridBagConstraint</code> </exception>
-		Public Overridable Sub addLayoutComponent(ByVal comp As Component, ByVal constraints As Object) Implements LayoutManager2.addLayoutComponent
+		Public Overridable Sub addLayoutComponent(  comp As Component,   constraints As Object) Implements LayoutManager2.addLayoutComponent
 			If TypeOf constraints Is GridBagConstraints Then
 				constraintsnts(comp, CType(constraints, GridBagConstraints))
 			ElseIf constraints IsNot Nothing Then
@@ -704,7 +704,7 @@ Namespace java.awt
 		''' <param name="comp">   the component to be removed. </param>
 		''' <seealso cref=      java.awt.Container#remove(java.awt.Component) </seealso>
 		''' <seealso cref=      java.awt.Container#removeAll() </seealso>
-		Public Overridable Sub removeLayoutComponent(ByVal comp As Component) Implements LayoutManager.removeLayoutComponent
+		Public Overridable Sub removeLayoutComponent(  comp As Component) Implements LayoutManager.removeLayoutComponent
 			removeConstraints(comp)
 		End Sub
 
@@ -718,7 +718,7 @@ Namespace java.awt
 		''' <seealso cref=       java.awt.Container#getPreferredSize </seealso>
 		''' <returns> the preferred size of the <code>parent</code>
 		'''  container </returns>
-		Public Overridable Function preferredLayoutSize(ByVal parent As Container) As Dimension Implements LayoutManager.preferredLayoutSize
+		Public Overridable Function preferredLayoutSize(  parent As Container) As Dimension Implements LayoutManager.preferredLayoutSize
 			Dim info As GridBagLayoutInfo = getLayoutInfo(parent, PREFERREDSIZE)
 			Return getMinSize(parent, info)
 		End Function
@@ -731,7 +731,7 @@ Namespace java.awt
 		''' <param name="parent">   the container in which to do the layout </param>
 		''' <seealso cref=       java.awt.Container#doLayout </seealso>
 		''' <returns> the minimum size of the <code>parent</code> container </returns>
-		Public Overridable Function minimumLayoutSize(ByVal parent As Container) As Dimension Implements LayoutManager.minimumLayoutSize
+		Public Overridable Function minimumLayoutSize(  parent As Container) As Dimension Implements LayoutManager.minimumLayoutSize
 			Dim info As GridBagLayoutInfo = getLayoutInfo(parent, MINSIZE)
 			Return getMinSize(parent, info)
 		End Function
@@ -744,7 +744,7 @@ Namespace java.awt
 		''' <seealso cref= #minimumLayoutSize(Container) </seealso>
 		''' <seealso cref= #preferredLayoutSize(Container) </seealso>
 		''' <returns> the maximum dimensions for this layout </returns>
-		Public Overridable Function maximumLayoutSize(ByVal target As Container) As Dimension Implements LayoutManager2.maximumLayoutSize
+		Public Overridable Function maximumLayoutSize(  target As Container) As Dimension Implements LayoutManager2.maximumLayoutSize
 			Return New Dimension( java.lang.[Integer].Max_Value,  java.lang.[Integer].Max_Value)
 		End Function
 
@@ -756,7 +756,7 @@ Namespace java.awt
 		''' the furthest away from the origin, 0.5 is centered, etc.
 		''' <p> </summary>
 		''' <returns> the value <code>0.5f</code> to indicate centered </returns>
-		Public Overridable Function getLayoutAlignmentX(ByVal parent As Container) As Single Implements LayoutManager2.getLayoutAlignmentX
+		Public Overridable Function getLayoutAlignmentX(  parent As Container) As Single Implements LayoutManager2.getLayoutAlignmentX
 			Return 0.5f
 		End Function
 
@@ -768,7 +768,7 @@ Namespace java.awt
 		''' the furthest away from the origin, 0.5 is centered, etc.
 		''' <p> </summary>
 		''' <returns> the value <code>0.5f</code> to indicate centered </returns>
-		Public Overridable Function getLayoutAlignmentY(ByVal parent As Container) As Single Implements LayoutManager2.getLayoutAlignmentY
+		Public Overridable Function getLayoutAlignmentY(  parent As Container) As Single Implements LayoutManager2.getLayoutAlignmentY
 			Return 0.5f
 		End Function
 
@@ -776,7 +776,7 @@ Namespace java.awt
 		''' Invalidates the layout, indicating that if the layout manager
 		''' has cached information it should be discarded.
 		''' </summary>
-		Public Overridable Sub invalidateLayout(ByVal target As Container) Implements LayoutManager2.invalidateLayout
+		Public Overridable Sub invalidateLayout(  target As Container) Implements LayoutManager2.invalidateLayout
 		End Sub
 
 		''' <summary>
@@ -789,7 +789,7 @@ Namespace java.awt
 		''' <param name="parent"> the container in which to do the layout </param>
 		''' <seealso cref= java.awt.Container </seealso>
 		''' <seealso cref= java.awt.Container#doLayout </seealso>
-		Public Overridable Sub layoutContainer(ByVal parent As Container) Implements LayoutManager.layoutContainer
+		Public Overridable Sub layoutContainer(  parent As Container) Implements LayoutManager.layoutContainer
 			arrangeGrid(parent)
 		End Sub
 
@@ -891,7 +891,7 @@ Namespace java.awt
 		'''   <code>MINSIZE</code> </param>
 		''' <returns> the <code>GridBagLayoutInfo</code> for the set of children
 		''' @since 1.4 </returns>
-		Protected Friend Overridable Function getLayoutInfo(ByVal parent As Container, ByVal sizeflag As Integer) As GridBagLayoutInfo
+		Protected Friend Overridable Function getLayoutInfo(  parent As Container,   sizeflag As Integer) As GridBagLayoutInfo
 			Return GetLayoutInfo(parent, sizeflag)
 		End Function
 
@@ -901,7 +901,7 @@ Namespace java.awt
 	'     * maximumArrayXIndex and maximumArrayYIndex.
 	'     
 
-		Private Function preInitMaximumArraySizes(ByVal parent As Container) As Long()
+		Private Function preInitMaximumArraySizes(  parent As Container) As Long()
 			Dim components As Component() = parent.components
 			Dim comp As Component
 			Dim constraints_Renamed As GridBagConstraints
@@ -960,7 +960,7 @@ Namespace java.awt
 		''' refer to <code>getLayoutInfo</code> for details on parameters
 		''' and return value.
 		''' </summary>
-		Protected Friend Overridable Function GetLayoutInfo(ByVal parent As Container, ByVal sizeflag As Integer) As GridBagLayoutInfo
+		Protected Friend Overridable Function GetLayoutInfo(  parent As Container,   sizeflag As Integer) As GridBagLayoutInfo
 			SyncLock parent.treeLock
 				Dim r As GridBagLayoutInfo
 				Dim comp As Component
@@ -1461,7 +1461,7 @@ Namespace java.awt
 		''' baseline resize behavior are set from the component; and true is
 		''' returned. Otherwise false is returned.
 		''' </summary>
-		Private Function calculateBaseline(ByVal c As Component, ByVal constraints As GridBagConstraints, ByVal size As Dimension) As Boolean
+		Private Function calculateBaseline(  c As Component,   constraints As GridBagConstraints,   size As Dimension) As Boolean
 			Dim anchor As Integer = constraints.anchor
 			If anchor = GridBagConstraints.BASELINE OrElse anchor = GridBagConstraints.BASELINE_LEADING OrElse anchor = GridBagConstraints.BASELINE_TRAILING Then
 				' Apply the padding to the component, then ask for the baseline.
@@ -1508,7 +1508,7 @@ Namespace java.awt
 		''' <param name="constraints"> the constraints to be applied </param>
 		''' <param name="r"> the <code>Rectangle</code> to be adjusted
 		''' @since 1.4 </param>
-		Protected Friend Overridable Sub adjustForGravity(ByVal constraints As GridBagConstraints, ByVal r As Rectangle)
+		Protected Friend Overridable Sub adjustForGravity(  constraints As GridBagConstraints,   r As Rectangle)
 			AdjustForGravity(constraints, r)
 		End Sub
 
@@ -1521,7 +1521,7 @@ Namespace java.awt
 		''' refer to <code>adjustForGravity</code> for details
 		''' on parameters.
 		''' </summary>
-		Protected Friend Overridable Sub AdjustForGravity(ByVal constraints As GridBagConstraints, ByVal r As Rectangle)
+		Protected Friend Overridable Sub AdjustForGravity(  constraints As GridBagConstraints,   r As Rectangle)
 			Dim diffx, diffy As Integer
 			Dim cellY As Integer = r.y
 			Dim cellHeight As Integer = r.height
@@ -1625,7 +1625,7 @@ Namespace java.awt
 		'''        insets </param>
 		''' <param name="r"> available bounds for the component, is padded by insets and
 		'''        ipady </param>
-		Private Sub alignOnBaseline(ByVal cons As GridBagConstraints, ByVal r As Rectangle, ByVal cellY As Integer, ByVal cellHeight As Integer)
+		Private Sub alignOnBaseline(  cons As GridBagConstraints,   r As Rectangle,   cellY As Integer,   cellHeight As Integer)
 			If cons.ascent >= 0 Then
 				If cons.baselineResizeBehavior = Component.BaselineResizeBehavior.CONSTANT_DESCENT Then
 					' Anchor to the bottom.
@@ -1725,7 +1725,7 @@ Namespace java.awt
 		''' the bottom edge of the component will be aligned along the baseline.
 		''' If the row does not have a baseline, this centers the component.
 		''' </summary>
-		Private Sub alignAboveBaseline(ByVal cons As GridBagConstraints, ByVal r As Rectangle, ByVal cellY As Integer, ByVal cellHeight As Integer)
+		Private Sub alignAboveBaseline(  cons As GridBagConstraints,   r As Rectangle,   cellY As Integer,   cellHeight As Integer)
 			If layoutInfo.hasBaseline(cons.tempY) Then
 				Dim maxY As Integer ' Baseline for the row
 				If layoutInfo.hasConstantDescent(cons.tempY) Then
@@ -1753,7 +1753,7 @@ Namespace java.awt
 		''' <summary>
 		''' Positions below the baseline.
 		''' </summary>
-		Private Sub alignBelowBaseline(ByVal cons As GridBagConstraints, ByVal r As Rectangle, ByVal cellY As Integer, ByVal cellHeight As Integer)
+		Private Sub alignBelowBaseline(  cons As GridBagConstraints,   r As Rectangle,   cellY As Integer,   cellHeight As Integer)
 			If layoutInfo.hasBaseline(cons.tempY) Then
 				If layoutInfo.hasConstantDescent(cons.tempY) Then
 					' Prefer descent
@@ -1768,7 +1768,7 @@ Namespace java.awt
 			End If
 		End Sub
 
-		Private Sub centerVertically(ByVal cons As GridBagConstraints, ByVal r As Rectangle, ByVal cellHeight As Integer)
+		Private Sub centerVertically(  cons As GridBagConstraints,   r As Rectangle,   cellHeight As Integer)
 			If Not cons.verticallyResizable Then r.y += System.Math.Max(0, (cellHeight - cons.insets.top - cons.insets.bottom - cons.minHeight - cons.ipady) \ 2)
 		End Sub
 
@@ -1783,7 +1783,7 @@ Namespace java.awt
 		''' <returns> a <code>Dimension</code> object containing the
 		'''   minimum size
 		''' @since 1.4 </returns>
-		Protected Friend Overridable Function getMinSize(ByVal parent As Container, ByVal info As GridBagLayoutInfo) As Dimension
+		Protected Friend Overridable Function getMinSize(  parent As Container,   info As GridBagLayoutInfo) As Dimension
 			Return GetMinSize(parent, info)
 		End Function
 
@@ -1795,7 +1795,7 @@ Namespace java.awt
 		''' refer to <code>getMinSize</code> for details on parameters
 		''' and return value.
 		''' </summary>
-		Protected Friend Overridable Function GetMinSize(ByVal parent As Container, ByVal info As GridBagLayoutInfo) As Dimension
+		Protected Friend Overridable Function GetMinSize(  parent As Container,   info As GridBagLayoutInfo) As Dimension
 			Dim d As New Dimension
 			Dim i, t As Integer
 			Dim insets_Renamed As Insets = parent.insets
@@ -1825,7 +1825,7 @@ Namespace java.awt
 		''' </summary>
 		''' <param name="parent"> the layout container
 		''' @since 1.4 </param>
-		Protected Friend Overridable Sub arrangeGrid(ByVal parent As Container)
+		Protected Friend Overridable Sub arrangeGrid(  parent As Container)
 			ArrangeGrid(parent)
 		End Sub
 
@@ -1837,7 +1837,7 @@ Namespace java.awt
 		''' refer to <code>arrangeGrid</code> for details on the
 		''' parameter.
 		''' </summary>
-		Protected Friend Overridable Sub ArrangeGrid(ByVal parent As Container)
+		Protected Friend Overridable Sub ArrangeGrid(  parent As Container)
 			Dim comp As Component
 			Dim compindex As Integer
 			Dim constraints_Renamed As GridBagConstraints

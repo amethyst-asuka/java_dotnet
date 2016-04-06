@@ -144,7 +144,7 @@ Namespace java.security
 		''' first and the (root) certificate authority last). The signer
 		''' certificates are copied from the array. Subsequent changes to
 		''' the array will not affect this UnsolvedPermission. </param>
-		Public Sub New(ByVal type As String, ByVal name As String, ByVal actions As String, ByVal certs As java.security.cert.Certificate())
+		Public Sub New(  type As String,   name As String,   actions As String,   certs As java.security.cert.Certificate())
 			MyBase.New(type)
 
 			If type Is Nothing Then Throw New NullPointerException("type can't be null")
@@ -204,7 +204,7 @@ Namespace java.security
 		''' try and resolve this permission using the class loader of the permission
 		''' that was passed in.
 		''' </summary>
-		Friend Function resolve(ByVal p As Permission, ByVal certs As java.security.cert.Certificate()) As Permission
+		Friend Function resolve(  p As Permission,   certs As java.security.cert.Certificate()) As Permission
 			If Me.certs IsNot Nothing Then
 				' if p wasn't signed, we don't have a match
 				If certs Is Nothing Then Return Nothing
@@ -282,7 +282,7 @@ Namespace java.security
 		''' <param name="p"> the permission to check against.
 		''' </param>
 		''' <returns> false. </returns>
-		Public Overrides Function implies(ByVal p As Permission) As Boolean
+		Public Overrides Function implies(  p As Permission) As Boolean
 			Return False
 		End Function
 
@@ -301,7 +301,7 @@ Namespace java.security
 		''' <returns> true if obj is an UnresolvedPermission, and has the same
 		''' type (class) name, permission name, actions, and
 		''' certificates as this object. </returns>
-		Public Overrides Function Equals(ByVal obj As Object) As Boolean
+		Public Overrides Function Equals(  obj As Object) As Boolean
 			If obj Is Me Then Return True
 
 			If Not(TypeOf obj Is UnresolvedPermission) Then Return False
@@ -481,7 +481,7 @@ Namespace java.security
 		''' followed by the certificate encoding itself which is written out as an
 		''' array of bytes.
 		''' </summary>
-		Private Sub writeObject(ByVal oos As java.io.ObjectOutputStream)
+		Private Sub writeObject(  oos As java.io.ObjectOutputStream)
 			oos.defaultWriteObject()
 
 			If certs Is Nothing OrElse certs.Length=0 Then
@@ -507,7 +507,7 @@ Namespace java.security
 		''' <summary>
 		''' Restores this object from a stream (i.e., deserializes it).
 		''' </summary>
-		Private Sub readObject(ByVal ois As java.io.ObjectInputStream)
+		Private Sub readObject(  ois As java.io.ObjectInputStream)
 			Dim cf As CertificateFactory
 			Dim cfs As Dictionary(Of String, CertificateFactory) = Nothing
 

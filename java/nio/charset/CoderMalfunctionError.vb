@@ -47,7 +47,7 @@ Namespace java.nio.charset
 		''' </summary>
 		''' <param name="cause">
 		'''         The unexpected exception that was thrown </param>
-		Public Sub New(ByVal cause As Exception)
+		Public Sub New(  cause As Exception)
 			MyBase.New(cause)
 		End Sub
 

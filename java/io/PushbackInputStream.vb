@@ -90,7 +90,7 @@ Namespace java.io
 		''' <param name="size">  the size of the pushback buffer. </param>
 		''' <exception cref="IllegalArgumentException"> if {@code size <= 0}
 		''' @since  JDK1.1 </exception>
-		Public Sub New(ByVal [in] As InputStream, ByVal size As Integer)
+		Public Sub New(  [in] As InputStream,   size As Integer)
 			MyBase.New([in])
 			If size <= 0 Then Throw New IllegalArgumentException("size <= 0")
 			Me.buf = New SByte(size - 1){}
@@ -106,7 +106,7 @@ Namespace java.io
 		''' <code>-1</code>).
 		''' </summary>
 		''' <param name="in">   the input stream from which bytes will be read. </param>
-		Public Sub New(ByVal [in] As InputStream)
+		Public Sub New(  [in] As InputStream)
 			Me.New([in], 1)
 		End Sub
 
@@ -161,7 +161,7 @@ Namespace java.io
 		'''             invoking its <seealso cref="#close()"/> method,
 		'''             or an I/O error occurs. </exception>
 		''' <seealso cref=        java.io.InputStream#read(byte[], int, int) </seealso>
-		Public Overrides Function read(ByVal b As SByte(), ByVal [off] As Integer, ByVal len As Integer) As Integer
+		Public Overrides Function read(  b As SByte(),   [off] As Integer,   len As Integer) As Integer
 			ensureOpen()
 			If b Is Nothing Then
 				Throw New NullPointerException
@@ -197,7 +197,7 @@ Namespace java.io
 		''' <exception cref="IOException"> If there is not enough room in the pushback
 		'''            buffer for the byte, or this input stream has been closed by
 		'''            invoking its <seealso cref="#close()"/> method. </exception>
-		Public Overridable Sub unread(ByVal b As Integer)
+		Public Overridable Sub unread(  b As Integer)
 			ensureOpen()
 			If pos = 0 Then Throw New IOException("Push back buffer is full")
 			pos -= 1
@@ -218,7 +218,7 @@ Namespace java.io
 		'''            or this input stream has been closed by
 		'''            invoking its <seealso cref="#close()"/> method.
 		''' @since     JDK1.1 </exception>
-		Public Overridable Sub unread(ByVal b As SByte(), ByVal [off] As Integer, ByVal len As Integer)
+		Public Overridable Sub unread(  b As SByte(),   [off] As Integer,   len As Integer)
 			ensureOpen()
 			If len > pos Then Throw New IOException("Push back buffer is full")
 			pos -= len
@@ -237,7 +237,7 @@ Namespace java.io
 		'''            or this input stream has been closed by
 		'''            invoking its <seealso cref="#close()"/> method.
 		''' @since     JDK1.1 </exception>
-		Public Overridable Sub unread(ByVal b As SByte())
+		Public Overridable Sub unread(  b As SByte())
 			unread(b, 0, b.Length)
 		End Sub
 
@@ -287,7 +287,7 @@ Namespace java.io
 		''' <seealso cref=        java.io.FilterInputStream#in </seealso>
 		''' <seealso cref=        java.io.InputStream#skip(long n)
 		''' @since      1.2 </seealso>
-		Public Overrides Function skip(ByVal n As Long) As Long
+		Public Overrides Function skip(  n As Long) As Long
 			ensureOpen()
 			If n <= 0 Then Return 0
 
@@ -323,7 +323,7 @@ Namespace java.io
 		'''                      the mark position becomes invalid. </param>
 		''' <seealso cref=     java.io.InputStream#reset() </seealso>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overrides Sub mark(ByVal readlimit As Integer)
+		Public Overrides Sub mark(  readlimit As Integer)
 		End Sub
 
 		''' <summary>

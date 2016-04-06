@@ -73,11 +73,11 @@ Namespace java.util.concurrent
 	Public MustInherit Class AbstractExecutorService
 		Implements ExecutorService
 
-			Public MustOverride Function invokeAny(Of T1 As Callable(Of T)(ByVal tasks As ICollection(Of T1), ByVal timeout As Long, ByVal unit As TimeUnit) As T Implements ExecutorService.invokeAny
-			Public MustOverride Function invokeAny(Of T1 As Callable(Of T)(ByVal tasks As ICollection(Of T1)) As T Implements ExecutorService.invokeAny
-			Public MustOverride Function invokeAll(Of T1 As Callable(Of T)(ByVal tasks As ICollection(Of T1), ByVal timeout As Long, ByVal unit As TimeUnit) As IList(Of Future(Of T)) Implements ExecutorService.invokeAll
-			Public MustOverride Function invokeAll(Of T1 As Callable(Of T)(ByVal tasks As ICollection(Of T1)) As IList(Of Future(Of T)) Implements ExecutorService.invokeAll
-			Public MustOverride Function awaitTermination(ByVal timeout As Long, ByVal unit As TimeUnit) As Boolean Implements ExecutorService.awaitTermination
+			Public MustOverride Function invokeAny(Of T1 As Callable(Of T)(  tasks As ICollection(Of T1),   timeout As Long,   unit As TimeUnit) As T Implements ExecutorService.invokeAny
+			Public MustOverride Function invokeAny(Of T1 As Callable(Of T)(  tasks As ICollection(Of T1)) As T Implements ExecutorService.invokeAny
+			Public MustOverride Function invokeAll(Of T1 As Callable(Of T)(  tasks As ICollection(Of T1),   timeout As Long,   unit As TimeUnit) As IList(Of Future(Of T)) Implements ExecutorService.invokeAll
+			Public MustOverride Function invokeAll(Of T1 As Callable(Of T)(  tasks As ICollection(Of T1)) As IList(Of Future(Of T)) Implements ExecutorService.invokeAll
+			Public MustOverride Function awaitTermination(  timeout As Long,   unit As TimeUnit) As Boolean Implements ExecutorService.awaitTermination
 			Public MustOverride ReadOnly Property terminated As Boolean Implements ExecutorService.isTerminated
 			Public MustOverride ReadOnly Property shutdown As Boolean Implements ExecutorService.isShutdown
 			Public MustOverride Function shutdownNow() As IList(Of Runnable) Implements ExecutorService.shutdownNow
@@ -95,7 +95,7 @@ Namespace java.util.concurrent
 		''' the given value as its result and provide for cancellation of
 		''' the underlying task
 		''' @since 1.6 </returns>
-		Protected Friend Overridable Function newTaskFor(Of T)(ByVal runnable As Runnable, ByVal value As T) As RunnableFuture(Of T)
+		Protected Friend Overridable Function newTaskFor(Of T)(  runnable As Runnable,   value As T) As RunnableFuture(Of T)
 			Return New FutureTask(Of T)(runnable, value)
 		End Function
 
@@ -109,14 +109,14 @@ Namespace java.util.concurrent
 		''' the callable's result as its result and provide for
 		''' cancellation of the underlying task
 		''' @since 1.6 </returns>
-		Protected Friend Overridable Function newTaskFor(Of T)(ByVal callable As Callable(Of T)) As RunnableFuture(Of T)
+		Protected Friend Overridable Function newTaskFor(Of T)(  callable As Callable(Of T)) As RunnableFuture(Of T)
 			Return New FutureTask(Of T)(callable)
 		End Function
 
 		''' <exception cref="RejectedExecutionException"> {@inheritDoc} </exception>
 		''' <exception cref="NullPointerException">       {@inheritDoc} </exception>
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-		Public Overridable Function submit(ByVal task As Runnable) As Future(Of ?) Implements ExecutorService.submit
+		Public Overridable Function submit(  task As Runnable) As Future(Of ?) Implements ExecutorService.submit
 			If task Is Nothing Then Throw New NullPointerException
 			Dim ftask As RunnableFuture(Of Void) = newTaskFor(task, Nothing)
 			execute(ftask)
@@ -125,7 +125,7 @@ Namespace java.util.concurrent
 
 		''' <exception cref="RejectedExecutionException"> {@inheritDoc} </exception>
 		''' <exception cref="NullPointerException">       {@inheritDoc} </exception>
-		Public Overridable Function submit(Of T)(ByVal task As Runnable, ByVal result As T) As Future(Of T) Implements ExecutorService.submit
+		Public Overridable Function submit(Of T)(  task As Runnable,   result As T) As Future(Of T) Implements ExecutorService.submit
 			If task Is Nothing Then Throw New NullPointerException
 			Dim ftask As RunnableFuture(Of T) = newTaskFor(task, result)
 			execute(ftask)
@@ -134,7 +134,7 @@ Namespace java.util.concurrent
 
 		''' <exception cref="RejectedExecutionException"> {@inheritDoc} </exception>
 		''' <exception cref="NullPointerException">       {@inheritDoc} </exception>
-		Public Overridable Function submit(Of T)(ByVal task As Callable(Of T)) As Future(Of T) Implements ExecutorService.submit
+		Public Overridable Function submit(Of T)(  task As Callable(Of T)) As Future(Of T) Implements ExecutorService.submit
 			If task Is Nothing Then Throw New NullPointerException
 			Dim ftask As RunnableFuture(Of T) = newTaskFor(task)
 			execute(ftask)
@@ -144,7 +144,7 @@ Namespace java.util.concurrent
 		''' <summary>
 		''' the main mechanics of invokeAny.
 		''' </summary>
-		Private Function doInvokeAny(Of T, T1 As Callable(Of T)(ByVal tasks As Collection(Of T1), ByVal timed As Boolean, ByVal nanos As Long) As T
+		Private Function doInvokeAny(Of T, T1 As Callable(Of T)(  tasks As Collection(Of T1),   timed As Boolean,   nanos As Long) As T
 			If tasks Is Nothing Then Throw New NullPointerException
 			Dim ntasks As Integer = tasks.size()
 			If ntasks = 0 Then Throw New IllegalArgumentException
@@ -212,7 +212,7 @@ Namespace java.util.concurrent
 			End Try
 		End Function
 
-		Public Overridable Function invokeAny(Of T, T1 As Callable(Of T)(ByVal tasks As Collection(Of T1)) As T
+		Public Overridable Function invokeAny(Of T, T1 As Callable(Of T)(  tasks As Collection(Of T1)) As T
 			Try
 				Return doInvokeAny(tasks, False, 0)
 			Catch cannotHappen As TimeoutException
@@ -221,11 +221,11 @@ Namespace java.util.concurrent
 			End Try
 		End Function
 
-		Public Overridable Function invokeAny(Of T, T1 As Callable(Of T)(ByVal tasks As Collection(Of T1), ByVal timeout As Long, ByVal unit As TimeUnit) As T
+		Public Overridable Function invokeAny(Of T, T1 As Callable(Of T)(  tasks As Collection(Of T1),   timeout As Long,   unit As TimeUnit) As T
 			Return doInvokeAny(tasks, True, unit.toNanos(timeout))
 		End Function
 
-		Public Overridable Function invokeAll(Of T, T1 As Callable(Of T)(ByVal tasks As Collection(Of T1)) As List(Of Future(Of T))
+		Public Overridable Function invokeAll(Of T, T1 As Callable(Of T)(  tasks As Collection(Of T1)) As List(Of Future(Of T))
 			If tasks Is Nothing Then Throw New NullPointerException
 			Dim futures As New List(Of Future(Of T))(tasks.size())
 			Dim done As Boolean = False
@@ -262,7 +262,7 @@ Namespace java.util.concurrent
 			End Try
 		End Function
 
-		Public Overridable Function invokeAll(Of T, T1 As Callable(Of T)(ByVal tasks As Collection(Of T1), ByVal timeout As Long, ByVal unit As TimeUnit) As List(Of Future(Of T))
+		Public Overridable Function invokeAll(Of T, T1 As Callable(Of T)(  tasks As Collection(Of T1),   timeout As Long,   unit As TimeUnit) As List(Of Future(Of T))
 			If tasks Is Nothing Then Throw New NullPointerException
 			Dim nanos As Long = unit.toNanos(timeout)
 			Dim futures As New List(Of Future(Of T))(tasks.size())

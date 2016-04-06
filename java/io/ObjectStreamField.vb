@@ -62,7 +62,7 @@ Namespace java.io
 		''' </summary>
 		''' <param name="name"> the name of the serializable field </param>
 		''' <param name="type"> the <code>Class</code> object of the serializable field </param>
-		Public Sub New(ByVal name As String, ByVal type As [Class])
+		Public Sub New(  name As String,   type As [Class])
 			Me.New(name, type, False)
 		End Sub
 
@@ -82,7 +82,7 @@ Namespace java.io
 		'''          as writeObject/readObject; if true, write/read in the same
 		'''          manner as writeUnshared/readUnshared
 		''' @since   1.4 </param>
-		Public Sub New(ByVal name As String, ByVal type As [Class], ByVal unshared As Boolean)
+		Public Sub New(  name As String,   type As [Class],   unshared As Boolean)
 			If name Is Nothing Then Throw New NullPointerException
 			Me.name = name
 			Me.type = type
@@ -95,7 +95,7 @@ Namespace java.io
 		''' Creates an ObjectStreamField representing a field with the given name,
 		''' signature and unshared setting.
 		''' </summary>
-		Friend Sub New(ByVal name As String, ByVal signature As String, ByVal unshared As Boolean)
+		Friend Sub New(  name As String,   signature As String,   unshared As Boolean)
 			If name Is Nothing Then Throw New NullPointerException
 			Me.name = name
 			Me.signature = signature.intern()
@@ -134,7 +134,7 @@ Namespace java.io
         ''' ObjectStreamField (if non-primitive) will return Object.class (as
         ''' opposed to a more specific reference type).
         ''' </summary>
-        Friend Sub New(ByVal field As Field, ByVal unshared As Boolean, ByVal showType As Boolean)
+        Friend Sub New(  field As Field,   unshared As Boolean,   showType As Boolean)
             Me.field = field
             Me.unshared = unshared
             name = field.name
@@ -218,7 +218,7 @@ Namespace java.io
             Get
                 Return offset
             End Get
-            Set(ByVal offset As Integer)
+            Set(  offset As Integer)
                 Me.offset = offset
             End Set
         End Property
@@ -262,7 +262,7 @@ Namespace java.io
         ''' are compared.
         ''' </summary>
         ' REMIND: deprecate?
-        Public Overridable Function compareTo(ByVal obj As Object) As Integer Implements Comparable(Of Object).compareTo
+        Public Overridable Function compareTo(  obj As Object) As Integer Implements Comparable(Of Object).compareTo
             Dim other As ObjectStreamField = CType(obj, ObjectStreamField)
             Dim isPrim As Boolean = primitive
             If isPrim <> other.primitive Then Return If(isPrim, -1, 1)
@@ -299,7 +299,7 @@ Namespace java.io
         ''' <summary>
         ''' Returns JVM type signature for given class.
         ''' </summary>
-        Private Shared Function getClassSignature(ByVal cl As [Class]) As String
+        Private Shared Function getClassSignature(  cl As [Class]) As String
             Dim sbuf As New StringBuilder
             Do While cl.array
                 sbuf.append("["c)

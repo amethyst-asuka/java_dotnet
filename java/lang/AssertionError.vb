@@ -58,7 +58,7 @@ Namespace java.lang
 		''' even if it is a null reference.  The public constructors will
 		''' never call this constructor with a null argument.
 		''' </summary>
-		Private Sub New(ByVal detailMessage As String)
+		Private Sub New(  detailMessage As String)
 			MyBase.New(detailMessage)
 		End Sub
 
@@ -73,7 +73,7 @@ Namespace java.lang
 		''' </summary>
 		''' <param name="detailMessage"> value to be used in constructing detail message </param>
 		''' <seealso cref=   Throwable#getCause() </seealso>
-		Public Sub New(ByVal detailMessage As Object)
+		Public Sub New(  detailMessage As Object)
 			Me.New(Convert.ToString(detailMessage))
 			If TypeOf detailMessage Is Throwable Then initCause(CType(detailMessage, Throwable))
 		End Sub
@@ -85,7 +85,7 @@ Namespace java.lang
 		''' <cite>The Java&trade; Language Specification</cite>.
 		''' </summary>
 		''' <param name="detailMessage"> value to be used in constructing detail message </param>
-		Public Sub New(ByVal detailMessage As Boolean)
+		Public Sub New(  detailMessage As Boolean)
 			Me.New(Convert.ToString(detailMessage))
 		End Sub
 
@@ -96,7 +96,7 @@ Namespace java.lang
 		''' <cite>The Java&trade; Language Specification</cite>.
 		''' </summary>
 		''' <param name="detailMessage"> value to be used in constructing detail message </param>
-		Public Sub New(ByVal detailMessage As Char)
+		Public Sub New(  detailMessage As Char)
 			Me.New(Convert.ToString(detailMessage))
 		End Sub
 
@@ -107,7 +107,7 @@ Namespace java.lang
 		''' <cite>The Java&trade; Language Specification</cite>.
 		''' </summary>
 		''' <param name="detailMessage"> value to be used in constructing detail message </param>
-		Public Sub New(ByVal detailMessage As Integer)
+		Public Sub New(  detailMessage As Integer)
 			Me.New(Convert.ToString(detailMessage))
 		End Sub
 
@@ -118,7 +118,7 @@ Namespace java.lang
 		''' <cite>The Java&trade; Language Specification</cite>.
 		''' </summary>
 		''' <param name="detailMessage"> value to be used in constructing detail message </param>
-		Public Sub New(ByVal detailMessage As Long)
+		Public Sub New(  detailMessage As Long)
 			Me.New(Convert.ToString(detailMessage))
 		End Sub
 
@@ -129,7 +129,7 @@ Namespace java.lang
 		''' <cite>The Java&trade; Language Specification</cite>.
 		''' </summary>
 		''' <param name="detailMessage"> value to be used in constructing detail message </param>
-		Public Sub New(ByVal detailMessage As Single)
+		Public Sub New(  detailMessage As Single)
 			Me.New(Convert.ToString(detailMessage))
 		End Sub
 
@@ -140,7 +140,7 @@ Namespace java.lang
 		''' <cite>The Java&trade; Language Specification</cite>.
 		''' </summary>
 		''' <param name="detailMessage"> value to be used in constructing detail message </param>
-		Public Sub New(ByVal detailMessage As Double)
+		Public Sub New(  detailMessage As Double)
 			Me.New(Convert.ToString(detailMessage))
 		End Sub
 
@@ -156,7 +156,7 @@ Namespace java.lang
 		''' <param name="cause"> the cause, may be {@code null}
 		''' 
 		''' @since 1.7 </param>
-		Public Sub New(ByVal message As String, ByVal cause As Throwable)
+		Public Sub New(  message As String,   cause As Throwable)
 			MyBase.New(message, cause)
 		End Sub
 	End Class

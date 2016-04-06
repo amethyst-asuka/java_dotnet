@@ -62,7 +62,7 @@ Namespace java.io
 		''' </param>
 		''' <exception cref="IllegalArgumentException">
 		'''         If <tt>initialSize</tt> is negative </exception>
-		Public Sub New(ByVal initialSize As Integer)
+		Public Sub New(  initialSize As Integer)
 			If initialSize < 0 Then Throw New IllegalArgumentException("Negative buffer size")
 			buf = New StringBuffer(initialSize)
 			lock = buf
@@ -71,7 +71,7 @@ Namespace java.io
 		''' <summary>
 		''' Write a single character.
 		''' </summary>
-		Public Overrides Sub write(ByVal c As Integer)
+		Public Overrides Sub write(  c As Integer)
 			buf.append(ChrW(c))
 		End Sub
 

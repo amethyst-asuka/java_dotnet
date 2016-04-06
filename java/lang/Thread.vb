@@ -239,7 +239,7 @@ Namespace java.lang
 
 	'     Set the blocker field; invoked via sun.misc.SharedSecrets from java.nio code
 	'     
-		Friend Overridable Sub blockedOn(ByVal b As sun.nio.ch.Interruptible)
+		Friend Overridable Sub blockedOn(  b As sun.nio.ch.Interruptible)
 			SyncLock blockerLock
 				blocker = b
 			End SyncLock
@@ -308,7 +308,7 @@ Namespace java.lang
 		'''          cleared when this exception is thrown. </exception>
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Public Shared Sub sleep(ByVal millis As Long)
+		Public Shared Sub sleep(  millis As Long)
 		End Sub
 
 		''' <summary>
@@ -332,7 +332,7 @@ Namespace java.lang
 		'''          if any thread has interrupted the current thread. The
 		'''          <i>interrupted status</i> of the current thread is
 		'''          cleared when this exception is thrown. </exception>
-		Public Shared Sub sleep(ByVal millis As Long, ByVal nanos As Integer)
+		Public Shared Sub sleep(  millis As Long,   nanos As Integer)
 			If millis < 0 Then Throw New IllegalArgumentException("timeout value is negative")
 
 			If nanos < 0 OrElse nanos > 999999 Then Throw New IllegalArgumentException("nanosecond timeout value out of range")
@@ -345,7 +345,7 @@ Namespace java.lang
 		''' <summary>
 		''' Initializes a Thread with the current AccessControlContext. </summary>
 		''' <seealso cref= #init(ThreadGroup,Runnable,String,long,AccessControlContext) </seealso>
-		Private Sub init(ByVal g As ThreadGroup, ByVal target As Runnable, ByVal name As String, ByVal stackSize As Long)
+		Private Sub init(  g As ThreadGroup,   target As Runnable,   name As String,   stackSize As Long)
 			init(g, target, name, stackSize, Nothing)
 		End Sub
 
@@ -359,7 +359,7 @@ Namespace java.lang
 		'''        zero to indicate that this parameter is to be ignored. </param>
 		''' <param name="acc"> the AccessControlContext to inherit, or
 		'''            AccessController.getContext() if null </param>
-		Private Sub init(ByVal g As ThreadGroup, ByVal target As Runnable, ByVal name As String, ByVal stackSize As Long, ByVal acc As java.security.AccessControlContext)
+		Private Sub init(  g As ThreadGroup,   target As Runnable,   name As String,   stackSize As Long,   acc As java.security.AccessControlContext)
 			If name Is Nothing Then Throw New NullPointerException("name cannot be null")
 
 			Me.name = name.ToCharArray()
@@ -442,7 +442,7 @@ Namespace java.lang
 		'''         the object whose {@code run} method is invoked when this thread
 		'''         is started. If {@code null}, this classes {@code run} method does
 		'''         nothing. </param>
-		Public Sub New(ByVal target As Runnable)
+		Public Sub New(  target As Runnable)
 			init(Nothing, target, "Thread-" & nextThreadNum(), 0)
 		End Sub
 
@@ -450,7 +450,7 @@ Namespace java.lang
 		''' Creates a new Thread that inherits the given AccessControlContext.
 		''' This is not a public constructor.
 		''' </summary>
-		Friend Sub New(ByVal target As Runnable, ByVal acc As java.security.AccessControlContext)
+		Friend Sub New(  target As Runnable,   acc As java.security.AccessControlContext)
 			init(Nothing, target, "Thread-" & nextThreadNum(), 0, acc)
 		End Sub
 
@@ -476,7 +476,7 @@ Namespace java.lang
 		''' <exception cref="SecurityException">
 		'''          if the current thread cannot create a thread in the specified
 		'''          thread group </exception>
-		Public Sub New(ByVal group As ThreadGroup, ByVal target As Runnable)
+		Public Sub New(  group As ThreadGroup,   target As Runnable)
 			init(group, target, "Thread-" & nextThreadNum(), 0)
 		End Sub
 
@@ -487,7 +487,7 @@ Namespace java.lang
 		''' </summary>
 		''' <param name="name">
 		'''          the name of the new thread </param>
-		Public Sub New(ByVal name As String)
+		Public Sub New(  name As String)
 			init(Nothing, Nothing, name, 0)
 		End Sub
 
@@ -510,7 +510,7 @@ Namespace java.lang
 		''' <exception cref="SecurityException">
 		'''          if the current thread cannot create a thread in the specified
 		'''          thread group </exception>
-		Public Sub New(ByVal group As ThreadGroup, ByVal name As String)
+		Public Sub New(  group As ThreadGroup,   name As String)
 			init(group, Nothing, name, 0)
 		End Sub
 
@@ -525,7 +525,7 @@ Namespace java.lang
 		''' </param>
 		''' <param name="name">
 		'''         the name of the new thread </param>
-		Public Sub New(ByVal target As Runnable, ByVal name As String)
+		Public Sub New(  target As Runnable,   name As String)
 			init(Nothing, target, name, 0)
 		End Sub
 
@@ -572,7 +572,7 @@ Namespace java.lang
 		''' <exception cref="SecurityException">
 		'''          if the current thread cannot create a thread in the specified
 		'''          thread group or cannot override the context class loader methods. </exception>
-		Public Sub New(ByVal group As ThreadGroup, ByVal target As Runnable, ByVal name As String)
+		Public Sub New(  group As ThreadGroup,   target As Runnable,   name As String)
 			init(group, target, name, 0)
 		End Sub
 
@@ -649,7 +649,7 @@ Namespace java.lang
 		'''          thread group
 		''' 
 		''' @since 1.4 </exception>
-		Public Sub New(ByVal group As ThreadGroup, ByVal target As Runnable, ByVal name As String, ByVal stackSize As Long)
+		Public Sub New(  group As ThreadGroup,   target As Runnable,   name As String,   stackSize As Long)
 			init(group, target, name, stackSize)
 		End Sub
 
@@ -833,7 +833,7 @@ Namespace java.lang
 		'''        <a href="{@docRoot}/../technotes/guides/concurrency/threadPrimitiveDeprecation.html">Why
 		'''        are Thread.stop, Thread.suspend and Thread.resume Deprecated?</a>. 
 		<Obsolete("This method was originally designed to force a thread to stop"), MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Sub [stop](ByVal obj As Throwable)
+		Public Sub [stop](  obj As Throwable)
 			Throw New UnsupportedOperationException
 		End Sub
 
@@ -934,7 +934,7 @@ Namespace java.lang
 		''' </summary>
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Private Function isInterrupted(ByVal ClearInterrupted As Boolean) As Boolean
+		Private Function isInterrupted(  ClearInterrupted As Boolean) As Boolean
 		End Function
 
 		''' <summary>
@@ -1047,7 +1047,7 @@ Namespace java.lang
 		''' <seealso cref=        #MIN_PRIORITY </seealso>
 		''' <seealso cref=        ThreadGroup#getMaxPriority() </seealso>
 		Public Property priority As Integer
-			Set(ByVal newPriority As Integer)
+			Set(  newPriority As Integer)
 				Dim g As ThreadGroup
 				checkAccess()
 				If newPriority > MAX_PRIORITY OrElse newPriority < MIN_PRIORITY Then Throw New IllegalArgumentException
@@ -1079,7 +1079,7 @@ Namespace java.lang
 		''' <seealso cref=        #checkAccess() </seealso>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
 		Public Property name As String
-			Set(ByVal name As String)
+			Set(  name As String)
 				checkAccess()
 				Me.name = name.ToCharArray()
 				If threadStatus <> 0 Then nativeName = name
@@ -1146,7 +1146,7 @@ Namespace java.lang
 		''' <exception cref="SecurityException">
 		'''          if <seealso cref="java.lang.ThreadGroup#checkAccess"/> determines that
 		'''          the current thread cannot access its thread group </exception>
-		Public Shared Function enumerate(ByVal tarray As Thread()) As Integer
+		Public Shared Function enumerate(  tarray As Thread()) As Integer
 			Return currentThread().threadGroup.enumerate(tarray)
 		End Function
 
@@ -1186,7 +1186,7 @@ Namespace java.lang
 		'''          <i>interrupted status</i> of the current thread is
 		'''          cleared when this exception is thrown. </exception>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Sub join(ByVal millis As Long)
+		Public Sub join(  millis As Long)
 			Dim base As Long = System.currentTimeMillis()
 			Dim now As Long = 0
 
@@ -1231,7 +1231,7 @@ Namespace java.lang
 		'''          <i>interrupted status</i> of the current thread is
 		'''          cleared when this exception is thrown. </exception>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Sub join(ByVal millis As Long, ByVal nanos As Integer)
+		Public Sub join(  millis As Long,   nanos As Integer)
 
 			If millis < 0 Then Throw New IllegalArgumentException("timeout value is negative")
 
@@ -1286,7 +1286,7 @@ Namespace java.lang
 		'''          if <seealso cref="#checkAccess"/> determines that the current
 		'''          thread cannot modify this thread </exception>
 		Public Property daemon As Boolean
-			Set(ByVal [on] As Boolean)
+			Set(  [on] As Boolean)
 				checkAccess()
 				If alive Then Throw New IllegalThreadStateException
 				daemon = [on]
@@ -1360,7 +1360,7 @@ Namespace java.lang
 				If sm IsNot Nothing Then ClassLoader.checkClassLoaderPermission(contextClassLoader, sun.reflect.Reflection.callerClass)
 				Return contextClassLoader
 			End Get
-			Set(ByVal cl As  ClassLoader)
+			Set(  cl As  ClassLoader)
 				Dim sm As SecurityManager = System.securityManager
 				If sm IsNot Nothing Then sm.checkPermission(New RuntimePermission("setContextClassLoader"))
 				contextClassLoader = cl
@@ -1385,7 +1385,7 @@ Namespace java.lang
 		''' @since 1.4 </returns>
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Public Shared Function holdsLock(ByVal obj As Object) As Boolean
+		Public Shared Function holdsLock(  obj As Object) As Boolean
 		End Function
 
 		Private Shared ReadOnly EMPTY_STACK_TRACE As StackTraceElement() = New StackTraceElement(){}
@@ -1526,7 +1526,7 @@ Namespace java.lang
 		''' security-sensitive non-final methods, or else the
 		''' "enableContextClassLoaderOverride" RuntimePermission is checked.
 		''' </summary>
-		Private Shared Function isCCLOverridden(ByVal cl As [Class]) As Boolean
+		Private Shared Function isCCLOverridden(  cl As [Class]) As Boolean
 			If cl Is GetType(Thread) Then Return False
 
 			processQueue(Caches.subclassAuditsQueue, Caches.subclassAudits)
@@ -1545,7 +1545,7 @@ Namespace java.lang
 		''' override security-sensitive non-final methods.  Returns true if the
 		''' subclass overrides any of the methods, false otherwise.
 		''' </summary>
-		Private Shared Function auditSubclass(ByVal subcl As [Class]) As Boolean
+		Private Shared Function auditSubclass(  subcl As [Class]) As Boolean
 			Dim result As Boolean? = java.security.AccessController.doPrivileged(New PrivilegedActionAnonymousInnerClassHelper(Of T)
 		   )
 			Return result
@@ -1576,7 +1576,7 @@ Namespace java.lang
 
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Private Shared Function dumpThreads(ByVal threads As Thread()) As StackTraceElement()()
+		Private Shared Function dumpThreads(  threads As Thread()) As StackTraceElement()()
 		End Function
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
@@ -1741,7 +1741,7 @@ Namespace java.lang
 			''' Java Virtual Machine. </summary>
 			''' <param name="t"> the thread </param>
 			''' <param name="e"> the exception </param>
-			Sub uncaughtException(ByVal t As Thread, ByVal e As Throwable)
+			Sub uncaughtException(  t As Thread,   e As Throwable)
 		End Interface
 
 		' null unless explicitly set
@@ -1786,7 +1786,7 @@ Namespace java.lang
 		''' <seealso cref= ThreadGroup#uncaughtException
 		''' @since 1.5 </seealso>
 		Public Shared Property defaultUncaughtExceptionHandler As UncaughtExceptionHandler
-			Set(ByVal eh As UncaughtExceptionHandler)
+			Set(  eh As UncaughtExceptionHandler)
 				Dim sm As SecurityManager = System.securityManager
 				If sm IsNot Nothing Then
 					sm.checkPermission(New RuntimePermission("setDefaultUncaughtExceptionHandler")
@@ -1813,7 +1813,7 @@ Namespace java.lang
 			Get
 				Return If(uncaughtExceptionHandler IsNot Nothing, uncaughtExceptionHandler, group)
 			End Get
-			Set(ByVal eh As UncaughtExceptionHandler)
+			Set(  eh As UncaughtExceptionHandler)
 				checkAccess()
 				uncaughtExceptionHandler = eh
 			End Set
@@ -1824,7 +1824,7 @@ Namespace java.lang
 		''' Dispatch an uncaught exception to the handler. This method is
 		''' intended to be called only by the JVM.
 		''' </summary>
-		Private Sub dispatchUncaughtException(ByVal e As Throwable)
+		Private Sub dispatchUncaughtException(  e As Throwable)
 			uncaughtExceptionHandler.uncaughtException(Me, e)
 		End Sub
 
@@ -1833,7 +1833,7 @@ Namespace java.lang
 		''' on the specified reference queue.
 		''' </summary>
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-		Friend Shared Sub processQueue(Of T1 As WeakReference(Of [Class]), ?)(ByVal queue As ReferenceQueue(Of [Class]), ByVal map As java.util.concurrent.ConcurrentMap(Of T1))
+		Friend Shared Sub processQueue(Of T1 As WeakReference(Of [Class]), ?)(  queue As ReferenceQueue(Of [Class]),   map As java.util.concurrent.ConcurrentMap(Of T1))
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 			Dim ref As Reference(Of ? As [Class])
 			ref = queue.poll()
@@ -1860,7 +1860,7 @@ Namespace java.lang
 			''' Create a new WeakClassKey to the given object, registered
 			''' with a queue.
 			''' </summary>
-			Friend Sub New(ByVal cl As [Class], ByVal refQueue As ReferenceQueue(Of [Class]))
+			Friend Sub New(  cl As [Class],   refQueue As ReferenceQueue(Of [Class]))
 				MyBase.New(cl, refQueue)
 				hash = System.identityHashCode(cl)
 			End Sub
@@ -1878,7 +1878,7 @@ Namespace java.lang
 			''' been cleared, if the given object is another WeakClassKey
 			''' instance with the identical non-null referent as this one.
 			''' </summary>
-			Public Overrides Function Equals(ByVal obj As Object) As Boolean
+			Public Overrides Function Equals(  obj As Object) As Boolean
 				If obj Is Me Then Return True
 
 				If TypeOf obj Is WeakClassKey Then
@@ -1915,11 +1915,11 @@ Namespace java.lang
 		' Some private helper methods 
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Private Sub setPriority0(ByVal newPriority As Integer)
+		Private Sub setPriority0(  newPriority As Integer)
 		End Sub
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Private Sub stop0(ByVal o As Object)
+		Private Sub stop0(  o As Object)
 		End Sub
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
@@ -1935,7 +1935,7 @@ Namespace java.lang
 		End Sub
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Private Sub setNativeName(ByVal name As String)
+		Private Sub setNativeName(  name As String)
 		End Sub
 	End Class
 

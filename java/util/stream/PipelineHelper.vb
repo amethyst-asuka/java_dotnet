@@ -82,7 +82,7 @@ Namespace java.util.stream
 		''' <param name="spliterator"> the spliterator describing the relevant portion of the
 		'''        source data </param>
 		''' <returns> the exact size if known, or -1 if infinite or unknown </returns>
-		Friend MustOverride Function exactOutputSizeIfKnown(Of P_IN)(ByVal spliterator As java.util.Spliterator(Of P_IN)) As Long
+		Friend MustOverride Function exactOutputSizeIfKnown(Of P_IN)(  spliterator As java.util.Spliterator(Of P_IN)) As Long
 
 		''' <summary>
 		''' Applies the pipeline stages described by this {@code PipelineHelper} to
@@ -97,7 +97,7 @@ Namespace java.util.stream
 		''' </summary>
 		''' <param name="sink"> the {@code Sink} to receive the results </param>
 		''' <param name="spliterator"> the spliterator describing the source input to process </param>
-		Friend MustOverride Function wrapAndCopyInto(Of P_IN, S As Sink(Of P_OUT))(ByVal sink As S, ByVal spliterator As java.util.Spliterator(Of P_IN)) As S
+		Friend MustOverride Function wrapAndCopyInto(Of P_IN, S As Sink(Of P_OUT))(  sink As S,   spliterator As java.util.Spliterator(Of P_IN)) As S
 
 		''' <summary>
 		''' Pushes elements obtained from the {@code Spliterator} into the provided
@@ -113,7 +113,7 @@ Namespace java.util.stream
 		''' </summary>
 		''' <param name="wrappedSink"> the destination {@code Sink} </param>
 		''' <param name="spliterator"> the source {@code Spliterator} </param>
-		Friend MustOverride Sub copyInto(Of P_IN)(ByVal wrappedSink As Sink(Of P_IN), ByVal spliterator As java.util.Spliterator(Of P_IN))
+		Friend MustOverride Sub copyInto(Of P_IN)(  wrappedSink As Sink(Of P_IN),   spliterator As java.util.Spliterator(Of P_IN))
 
 		''' <summary>
 		''' Pushes elements obtained from the {@code Spliterator} into the provided
@@ -128,7 +128,7 @@ Namespace java.util.stream
 		''' </summary>
 		''' <param name="wrappedSink"> the destination {@code Sink} </param>
 		''' <param name="spliterator"> the source {@code Spliterator} </param>
-		Friend MustOverride Sub copyIntoWithCancel(Of P_IN)(ByVal wrappedSink As Sink(Of P_IN), ByVal spliterator As java.util.Spliterator(Of P_IN))
+		Friend MustOverride Sub copyIntoWithCancel(Of P_IN)(  wrappedSink As Sink(Of P_IN),   spliterator As java.util.Spliterator(Of P_IN))
 
 		''' <summary>
 		''' Takes a {@code Sink} that accepts elements of the output type of the
@@ -140,13 +140,13 @@ Namespace java.util.stream
 		''' <param name="sink"> the {@code Sink} to receive the results </param>
 		''' <returns> a {@code Sink} that implements the pipeline stages and sends
 		'''         results to the provided {@code Sink} </returns>
-		Friend MustOverride Function wrapSink(Of P_IN)(ByVal sink As Sink(Of P_OUT)) As Sink(Of P_IN)
+		Friend MustOverride Function wrapSink(Of P_IN)(  sink As Sink(Of P_OUT)) As Sink(Of P_IN)
 
 		''' 
 		''' <param name="spliterator"> </param>
 		''' @param <P_IN>
 		''' @return </param>
-		Friend MustOverride Function wrapSpliterator(Of P_IN)(ByVal spliterator As java.util.Spliterator(Of P_IN)) As java.util.Spliterator(Of P_OUT)
+		Friend MustOverride Function wrapSpliterator(Of P_IN)(  spliterator As java.util.Spliterator(Of P_IN)) As java.util.Spliterator(Of P_OUT)
 
 		''' <summary>
 		''' Constructs a @{link Node.Builder} compatible with the output shape of
@@ -159,7 +159,7 @@ Namespace java.util.stream
 		''' <param name="generator"> a factory function for array instances </param>
 		''' <returns> a {@code Node.Builder} compatible with the output shape of this
 		'''         {@code PipelineHelper} </returns>
-		Friend MustOverride Function makeNodeBuilder(ByVal exactSizeIfKnown As Long, ByVal generator As java.util.function.IntFunction(Of P_OUT())) As Node.Builder(Of P_OUT)
+		Friend MustOverride Function makeNodeBuilder(  exactSizeIfKnown As Long,   generator As java.util.function.IntFunction(Of P_OUT())) As Node.Builder(Of P_OUT)
 
 		''' <summary>
 		''' Collects all output elements resulting from applying the pipeline stages
@@ -182,7 +182,7 @@ Namespace java.util.stream
 		'''        shape of the computation tree. </param>
 		''' <param name="generator"> a factory function for array instances </param>
 		''' <returns> the {@code Node} containing all output elements </returns>
-		Friend MustOverride Function evaluate(Of P_IN)(ByVal spliterator As java.util.Spliterator(Of P_IN), ByVal flatten As Boolean, ByVal generator As java.util.function.IntFunction(Of P_OUT())) As Node(Of P_OUT)
+		Friend MustOverride Function evaluate(Of P_IN)(  spliterator As java.util.Spliterator(Of P_IN),   flatten As Boolean,   generator As java.util.function.IntFunction(Of P_OUT())) As Node(Of P_OUT)
 	End Class
 
 End Namespace

@@ -77,7 +77,7 @@ Namespace java.io
 		''' </summary>
 		''' <param name="out"> the stream to write the object to </param>
 		''' <exception cref="IOException"> Includes any I/O exceptions that may occur </exception>
-		Sub writeExternal(ByVal out As java.io.ObjectOutput)
+		Sub writeExternal(  out As java.io.ObjectOutput)
 
 		''' <summary>
 		''' The object implements the readExternal method to restore its
@@ -90,7 +90,7 @@ Namespace java.io
 		''' <exception cref="IOException"> if I/O errors occur </exception>
 		''' <exception cref="ClassNotFoundException"> If the class for an object being
 		'''              restored cannot be found. </exception>
-		Sub readExternal(ByVal [in] As java.io.ObjectInput)
+		Sub readExternal(  [in] As java.io.ObjectInput)
 	End Interface
 
 End Namespace

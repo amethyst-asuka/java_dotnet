@@ -47,7 +47,7 @@ Namespace java.io
 		''' Creates a new string reader.
 		''' </summary>
 		''' <param name="s">  String providing the character stream. </param>
-		Public Sub New(ByVal s As String)
+		Public Sub New(  s As String)
 			Me.str = s
 			Me.length = s.length()
 		End Sub

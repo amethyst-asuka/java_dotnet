@@ -93,7 +93,7 @@ Namespace java.awt.dnd
 		'''         a bitwise mask of <code>DnDConstants</code>. </exception>
 		''' <exception cref="IllegalArgumentException"> if dtc is <code>null</code>. </exception>
 
-		Public Sub New(ByVal dtc As DropTargetContext, ByVal cursorLocn As java.awt.Point, ByVal dropAction As Integer, ByVal srcActions As Integer)
+		Public Sub New(  dtc As DropTargetContext,   cursorLocn As java.awt.Point,   dropAction As Integer,   srcActions As Integer)
 			MyBase.New(dtc)
 
 			If cursorLocn Is Nothing Then Throw New NullPointerException("cursorLocn")
@@ -155,7 +155,7 @@ Namespace java.awt.dnd
 		''' <P> </param>
 		''' <returns> if a particular DataFlavor is supported </returns>
 
-		Public Overridable Function isDataFlavorSupported(ByVal df As java.awt.datatransfer.DataFlavor) As Boolean
+		Public Overridable Function isDataFlavorSupported(  df As java.awt.datatransfer.DataFlavor) As Boolean
 			Return dropTargetContext.isDataFlavorSupported(df)
 		End Function
 
@@ -205,7 +205,7 @@ Namespace java.awt.dnd
 		''' the user as represented by the <code>dropAction</code>.
 		''' </summary>
 		''' <param name="dragOperation"> the operation accepted by the target </param>
-		Public Overridable Sub acceptDrag(ByVal dragOperation As Integer)
+		Public Overridable Sub acceptDrag(  dragOperation As Integer)
 			dropTargetContext.acceptDrag(dragOperation)
 		End Sub
 

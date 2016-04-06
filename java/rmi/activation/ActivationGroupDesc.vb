@@ -104,7 +104,7 @@ Namespace java.rmi.activation
 		''' <param name="cmd"> the controlling options for executing the VM in
 		''' another process (or <code>null</code>).
 		''' @since 1.2 </param>
-		Public Sub New(ByVal [overrides] As java.util.Properties, ByVal cmd As CommandEnvironment)
+		Public Sub New(  [overrides] As java.util.Properties,   cmd As CommandEnvironment)
 			Me.New(Nothing, Nothing, Nothing, [overrides], cmd)
 		End Sub
 
@@ -125,7 +125,7 @@ Namespace java.rmi.activation
 		''' <param name="cmd"> the controlling options for executing the VM in
 		''' another process (or <code>null</code>).
 		''' @since 1.2 </param>
-		Public Sub New(Of T1)(ByVal className As String, ByVal location As String, ByVal data As java.rmi.MarshalledObject(Of T1), ByVal [overrides] As java.util.Properties, ByVal cmd As CommandEnvironment)
+		Public Sub New(Of T1)(  className As String,   location As String,   data As java.rmi.MarshalledObject(Of T1),   [overrides] As java.util.Properties,   cmd As CommandEnvironment)
 			Me.props = [overrides]
 			Me.env = cmd
 			Me.data = data
@@ -222,7 +222,7 @@ Namespace java.rmi.activation
 			''' ActivationGroup.  Null has the same effect as an empty
 			''' list.
 			''' @since 1.2 </param>
-			Public Sub New(ByVal cmdpath As String, ByVal argv As String())
+			Public Sub New(  cmdpath As String,   argv As String())
 				Me.command = cmdpath ' might be null
 
 				' Hold a safe copy of argv in this.options
@@ -268,7 +268,7 @@ Namespace java.rmi.activation
 			''' <returns>      true if these Objects are equal; false otherwise. </returns>
 			''' <seealso cref=         java.util.Hashtable
 			''' @since 1.2 </seealso>
-			Public Overrides Function Equals(ByVal obj As Object) As Boolean
+			Public Overrides Function Equals(  obj As Object) As Boolean
 
 				If TypeOf obj Is CommandEnvironment Then
 					Dim env As CommandEnvironment = CType(obj, CommandEnvironment)
@@ -299,7 +299,7 @@ Namespace java.rmi.activation
 			''' is <code>null</code>, then <code>options</code> is set to a
 			''' zero-length array of <code>String</code>.
 			''' </summary>
-			Private Sub readObject(ByVal [in] As java.io.ObjectInputStream)
+			Private Sub readObject(  [in] As java.io.ObjectInputStream)
 				[in].defaultReadObject()
 				If options Is Nothing Then options = New String(){}
 			End Sub
@@ -312,7 +312,7 @@ Namespace java.rmi.activation
 		''' <returns>  true if these Objects are equal; false otherwise. </returns>
 		''' <seealso cref=             java.util.Hashtable
 		''' @since 1.2 </seealso>
-		Public Overrides Function Equals(ByVal obj As Object) As Boolean
+		Public Overrides Function Equals(  obj As Object) As Boolean
 
 			If TypeOf obj Is ActivationGroupDesc Then
 				Dim desc As ActivationGroupDesc = CType(obj, ActivationGroupDesc)

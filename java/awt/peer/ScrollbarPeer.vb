@@ -46,7 +46,7 @@ Namespace java.awt.peer
 		''' <param name="maximum"> the maximum value
 		''' </param>
 		''' <seealso cref= Scrollbar#setValues(int, int, int, int) </seealso>
-		Sub setValues(ByVal value As Integer, ByVal visible As Integer, ByVal minimum As Integer, ByVal maximum As Integer)
+		Sub setValues(  value As Integer,   visible As Integer,   minimum As Integer,   maximum As Integer)
 
 		''' <summary>
 		''' Sets the line increment of the scrollbar.

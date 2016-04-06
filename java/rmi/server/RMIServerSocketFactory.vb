@@ -65,7 +65,7 @@ Namespace java.rmi.server
 		''' <exception cref="IOException"> if an I/O error occurs during server socket
 		''' creation
 		''' @since 1.2 </exception>
-		Function createServerSocket(ByVal port As Integer) As ServerSocket
+		Function createServerSocket(  port As Integer) As ServerSocket
 	End Interface
 
 End Namespace

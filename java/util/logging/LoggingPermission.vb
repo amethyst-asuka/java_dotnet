@@ -64,7 +64,7 @@ Namespace java.util.logging
 		''' <exception cref="NullPointerException"> if <code>name</code> is <code>null</code>. </exception>
 		''' <exception cref="IllegalArgumentException"> if <code>name</code> is empty or if
 		''' arguments are invalid. </exception>
-		Public Sub New(ByVal name As String, ByVal actions As String)
+		Public Sub New(  name As String,   actions As String)
 			MyBase.New(name)
 			If Not name.Equals("control") Then Throw New IllegalArgumentException("name: " & name)
 			If actions IsNot Nothing AndAlso actions.length() > 0 Then Throw New IllegalArgumentException("actions: " & actions)

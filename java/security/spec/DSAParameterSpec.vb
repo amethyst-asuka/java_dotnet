@@ -51,7 +51,7 @@ Namespace java.security.spec
 		''' <param name="q"> the sub-prime.
 		''' </param>
 		''' <param name="g"> the base. </param>
-		Public Sub New(ByVal p As System.Numerics.BigInteger, ByVal q As System.Numerics.BigInteger, ByVal g As System.Numerics.BigInteger)
+		Public Sub New(  p As System.Numerics.BigInteger,   q As System.Numerics.BigInteger,   g As System.Numerics.BigInteger)
 			Me.p = p
 			Me.q = q
 			Me.g = g

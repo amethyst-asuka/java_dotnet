@@ -135,7 +135,7 @@ Namespace java.awt.print
 		''' object's width </param>
 		''' <param name="height"> the value to which to set this <code>Paper</code>
 		''' object's height </param>
-		Public Overridable Sub setSize(ByVal width As Double, ByVal height As Double)
+		Public Overridable Sub setSize(  width As Double,   height As Double)
 			mWidth = width
 			mHeight = height
 		End Sub
@@ -163,7 +163,7 @@ Namespace java.awt.print
 		''' imageable area of this <code>Paper</code> </param>
 		''' <param name="height"> the value to which to set the height of the
 		''' imageable area of this <code>Paper</code> </param>
-		Public Overridable Sub setImageableArea(ByVal x As Double, ByVal y As Double, ByVal width As Double, ByVal height As Double)
+		Public Overridable Sub setImageableArea(  x As Double,   y As Double,   width As Double,   height As Double)
 			mImageableArea = New java.awt.geom.Rectangle2D.Double(x, y, width,height)
 		End Sub
 

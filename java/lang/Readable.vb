@@ -47,7 +47,7 @@ Namespace java.lang
 		''' <exception cref="IOException"> if an I/O error occurs </exception>
 		''' <exception cref="NullPointerException"> if cb is null </exception>
 		''' <exception cref="java.nio.ReadOnlyBufferException"> if cb is a read only buffer </exception>
-		Function read(ByVal cb As java.nio.CharBuffer) As Integer
+		Function read(  cb As java.nio.CharBuffer) As Integer
 	End Interface
 
 End Namespace

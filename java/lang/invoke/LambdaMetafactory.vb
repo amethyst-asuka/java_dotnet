@@ -290,7 +290,7 @@ Namespace java.lang.invoke
 		''' <exception cref="LambdaConversionException"> If any of the linkage invariants
 		'''                                   described <seealso cref="LambdaMetafactory above"/>
 		'''                                   are violated </exception>
-		Public Shared Function metafactory(ByVal caller As MethodHandles.Lookup, ByVal invokedName As String, ByVal invokedType As MethodType, ByVal samMethodType As MethodType, ByVal implMethod As MethodHandle, ByVal instantiatedMethodType As MethodType) As CallSite
+		Public Shared Function metafactory(  caller As MethodHandles.Lookup,   invokedName As String,   invokedType As MethodType,   samMethodType As MethodType,   implMethod As MethodHandle,   instantiatedMethodType As MethodType) As CallSite
 			Dim mf As AbstractValidatingLambdaMetafactory
 			mf = New InnerClassLambdaMetafactory(caller, invokedType, invokedName, samMethodType, implMethod, instantiatedMethodType, False, EMPTY_CLASS_ARRAY, EMPTY_MT_ARRAY)
 			mf.validateMetafactoryArgs()
@@ -415,7 +415,7 @@ Namespace java.lang.invoke
 		''' <exception cref="LambdaConversionException"> If any of the linkage invariants
 		'''                                   described <seealso cref="LambdaMetafactory above"/>
 		'''                                   are violated </exception>
-		Public Shared Function altMetafactory(ByVal caller As MethodHandles.Lookup, ByVal invokedName As String, ByVal invokedType As MethodType, ParamArray ByVal args As Object()) As CallSite
+		Public Shared Function altMetafactory(  caller As MethodHandles.Lookup,   invokedName As String,   invokedType As MethodType, ParamArray   args As Object()) As CallSite
 			Dim samMethodType As MethodType = CType(args(0), MethodType)
 			Dim implMethod As MethodHandle = CType(args(1), MethodHandle)
 			Dim instantiatedMethodType As MethodType = CType(args(2), MethodType)

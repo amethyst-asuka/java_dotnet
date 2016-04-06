@@ -116,7 +116,7 @@ Namespace java.security.cert
 		''' decoded </exception>
 		''' <exception cref="NullPointerException"> if the specified
 		''' {@code X509Certificate} is {@code null} </exception>
-		Public Sub New(ByVal trustedCert As X509Certificate, ByVal nameConstraints As SByte())
+		Public Sub New(  trustedCert As X509Certificate,   nameConstraints As SByte())
 			If trustedCert Is Nothing Then Throw New NullPointerException("the trustedCert parameter must " & "be non-null")
 			Me.trustedCert = trustedCert
 			Me.pubKey = Nothing
@@ -151,7 +151,7 @@ Namespace java.security.cert
 		''' <exception cref="NullPointerException"> if the specified {@code caPrincipal} or
 		''' {@code pubKey} parameter is {@code null}
 		''' @since 1.5 </exception>
-		Public Sub New(ByVal caPrincipal As javax.security.auth.x500.X500Principal, ByVal pubKey As java.security.PublicKey, ByVal nameConstraints As SByte())
+		Public Sub New(  caPrincipal As javax.security.auth.x500.X500Principal,   pubKey As java.security.PublicKey,   nameConstraints As SByte())
 			If (caPrincipal Is Nothing) OrElse (pubKey Is Nothing) Then Throw New NullPointerException
 			Me.trustedCert = Nothing
 			Me.caPrincipal = caPrincipal
@@ -190,7 +190,7 @@ Namespace java.security.cert
 		''' or incorrectly formatted or the name constraints cannot be decoded </exception>
 		''' <exception cref="NullPointerException"> if the specified {@code caName} or
 		''' {@code pubKey} parameter is {@code null} </exception>
-		Public Sub New(ByVal caName As String, ByVal pubKey As java.security.PublicKey, ByVal nameConstraints As SByte())
+		Public Sub New(  caName As String,   pubKey As java.security.PublicKey,   nameConstraints As SByte())
 			If pubKey Is Nothing Then Throw New NullPointerException("the pubKey parameter must be " & "non-null")
 			If caName Is Nothing Then Throw New NullPointerException("the caName parameter must be " & "non-null")
 			If caName.length() = 0 Then Throw New IllegalArgumentException("the caName " & "parameter must be a non-empty String")
@@ -255,7 +255,7 @@ Namespace java.security.cert
 		''' Decode the name constraints and clone them if not null.
 		''' </summary>
 		Private Property nameConstraints As SByte()
-			Set(ByVal bytes As SByte())
+			Set(  bytes As SByte())
 				If bytes Is Nothing Then
 					ncBytes = Nothing
 					nc = Nothing

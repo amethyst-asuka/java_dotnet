@@ -131,7 +131,7 @@ Namespace java.util
 		''' <param name="loadFactor">      the load factor of the linked hash set </param>
 		''' <exception cref="IllegalArgumentException">  if the initial capacity is less
 		'''               than zero, or if the load factor is nonpositive </exception>
-		Public Sub New(ByVal initialCapacity As Integer, ByVal loadFactor As Single)
+		Public Sub New(  initialCapacity As Integer,   loadFactor As Single)
 			MyBase.New(initialCapacity, loadFactor, True)
 		End Sub
 
@@ -142,7 +142,7 @@ Namespace java.util
 		''' <param name="initialCapacity">   the initial capacity of the LinkedHashSet </param>
 		''' <exception cref="IllegalArgumentException"> if the initial capacity is less
 		'''              than zero </exception>
-		Public Sub New(ByVal initialCapacity As Integer)
+		Public Sub New(  initialCapacity As Integer)
 			MyBase.New(initialCapacity,.75f, True)
 		End Sub
 
@@ -163,7 +163,7 @@ Namespace java.util
 		''' <param name="c">  the collection whose elements are to be placed into
 		'''           this set </param>
 		''' <exception cref="NullPointerException"> if the specified collection is null </exception>
-		Public Sub New(Of T1 As E)(ByVal c As Collection(Of T1))
+		Public Sub New(Of T1 As E)(  c As Collection(Of T1))
 			MyBase.New (System.Math.Max(2*c.size(), 11),.75f, True)
 			addAll(c)
 		End Sub

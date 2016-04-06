@@ -52,7 +52,7 @@ Namespace java.awt.dnd
 		''' <seealso cref= #getSource() </seealso>
 		''' <seealso cref= #getDropTargetContext() </seealso>
 
-		Public Sub New(ByVal dtc As java.awt.dnd.DropTargetContext)
+		Public Sub New(  dtc As java.awt.dnd.DropTargetContext)
 			MyBase.New(dtc.dropTarget)
 
 			context = dtc

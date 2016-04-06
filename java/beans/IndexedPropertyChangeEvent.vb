@@ -56,7 +56,7 @@ Namespace java.beans
 		''' <param name="oldValue">      The old value of the property. </param>
 		''' <param name="newValue">      The new value of the property. </param>
 		''' <param name="index"> index of the property element that was changed. </param>
-		Public Sub New(ByVal source As Object, ByVal propertyName As String, ByVal oldValue As Object, ByVal newValue As Object, ByVal index As Integer)
+		Public Sub New(  source As Object,   propertyName As String,   oldValue As Object,   newValue As Object,   index As Integer)
 			MyBase.New(source, propertyName, oldValue, newValue)
 			Me.index = index
 		End Sub
@@ -72,7 +72,7 @@ Namespace java.beans
 			End Get
 		End Property
 
-		Friend Overrides Sub appendTo(ByVal sb As StringBuilder)
+		Friend Overrides Sub appendTo(  sb As StringBuilder)
 			sb.append("; index=").append(index)
 		End Sub
 	End Class

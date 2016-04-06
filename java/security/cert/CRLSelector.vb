@@ -53,7 +53,7 @@ Namespace java.security.cert
 		''' <param name="crl">     the {@code CRL} to be checked </param>
 		''' <returns>  {@code true} if the {@code CRL} should be selected,
 		''' {@code false} otherwise </returns>
-		Function match(ByVal crl As CRL) As Boolean
+		Function match(  crl As CRL) As Boolean
 
 		''' <summary>
 		''' Makes a copy of this {@code CRLSelector}. Changes to the

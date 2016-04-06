@@ -62,7 +62,7 @@ Namespace java.io
 		''' from the specified input stream.
 		''' </summary>
 		''' <param name="in">   the underlying input stream. </param>
-		Public Sub New(ByVal [in] As InputStream)
+		Public Sub New(  [in] As InputStream)
 			MyBase.New([in])
 		End Sub
 

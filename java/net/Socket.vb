@@ -108,7 +108,7 @@ Namespace java.net
 		''' <seealso cref= java.net.Proxy
 		''' 
 		''' @since   1.5 </seealso>
-		Public Sub New(ByVal proxy_Renamed As Proxy)
+		Public Sub New(  proxy_Renamed As Proxy)
 			' Create a copy of Proxy as a security measure
 			If proxy_Renamed Is Nothing Then Throw New IllegalArgumentException("Invalid Proxy")
 			Dim p As Proxy = If(proxy_Renamed Is Proxy.NO_PROXY, Proxy.NO_PROXY, sun.net.ApplicationProxy.create(proxy_Renamed))
@@ -151,7 +151,7 @@ Namespace java.net
 		''' <exception cref="SocketException"> if there is an error in the underlying protocol,
 		''' such as a TCP error.
 		''' @since   JDK1.1 </exception>
-		Protected Friend Sub New(ByVal impl As SocketImpl)
+		Protected Friend Sub New(  impl As SocketImpl)
 			Me.impl = impl
 			If impl IsNot Nothing Then
 				checkOldImpl()
@@ -194,7 +194,7 @@ Namespace java.net
 		''' <seealso cref=        java.net.SocketImpl </seealso>
 		''' <seealso cref=        java.net.SocketImplFactory#createSocketImpl() </seealso>
 		''' <seealso cref=        SecurityManager#checkConnect </seealso>
-		Public Sub New(ByVal host As String, ByVal port As Integer)
+		Public Sub New(  host As String,   port As Integer)
 			Me.New(If(host IsNot Nothing, New InetSocketAddress(host, port), New InetSocketAddress(InetAddress.getByName(Nothing), port)), CType(Nothing, SocketAddress), True)
 		End Sub
 
@@ -224,7 +224,7 @@ Namespace java.net
 		''' <seealso cref=        java.net.SocketImpl </seealso>
 		''' <seealso cref=        java.net.SocketImplFactory#createSocketImpl() </seealso>
 		''' <seealso cref=        SecurityManager#checkConnect </seealso>
-		Public Sub New(ByVal address As InetAddress, ByVal port As Integer)
+		Public Sub New(  address As InetAddress,   port As Integer)
 			Me.New(If(address IsNot Nothing, New InetSocketAddress(address, port), Nothing), CType(Nothing, SocketAddress), True)
 		End Sub
 
@@ -263,7 +263,7 @@ Namespace java.net
 		'''             which is between 0 and 65535, inclusive. </exception>
 		''' <seealso cref=        SecurityManager#checkConnect
 		''' @since   JDK1.1 </seealso>
-		Public Sub New(ByVal host As String, ByVal port As Integer, ByVal localAddr As InetAddress, ByVal localPort As Integer)
+		Public Sub New(  host As String,   port As Integer,   localAddr As InetAddress,   localPort As Integer)
 			Me.New(If(host IsNot Nothing, New InetSocketAddress(host, port), New InetSocketAddress(InetAddress.getByName(Nothing), port)), New InetSocketAddress(localAddr, localPort), True)
 		End Sub
 
@@ -301,7 +301,7 @@ Namespace java.net
 		''' <exception cref="NullPointerException"> if {@code address} is null. </exception>
 		''' <seealso cref=        SecurityManager#checkConnect
 		''' @since   JDK1.1 </seealso>
-		Public Sub New(ByVal address As InetAddress, ByVal port As Integer, ByVal localAddr As InetAddress, ByVal localPort As Integer)
+		Public Sub New(  address As InetAddress,   port As Integer,   localAddr As InetAddress,   localPort As Integer)
 			Me.New(If(address IsNot Nothing, New InetSocketAddress(address, port), Nothing), New InetSocketAddress(localAddr, localPort), True)
 		End Sub
 
@@ -346,7 +346,7 @@ Namespace java.net
 		''' <seealso cref=        SecurityManager#checkConnect </seealso>
 		''' @deprecated Use DatagramSocket instead for UDP transport. 
 		<Obsolete("Use DatagramSocket instead for UDP transport.")> _
-		Public Sub New(ByVal host As String, ByVal port As Integer, ByVal stream As Boolean)
+		Public Sub New(  host As String,   port As Integer,   stream As Boolean)
 			Me.New(If(host IsNot Nothing, New InetSocketAddress(host, port), New InetSocketAddress(InetAddress.getByName(Nothing), port)), CType(Nothing, SocketAddress), stream)
 		End Sub
 
@@ -386,11 +386,11 @@ Namespace java.net
 		''' <seealso cref=        SecurityManager#checkConnect </seealso>
 		''' @deprecated Use DatagramSocket instead for UDP transport. 
 		<Obsolete("Use DatagramSocket instead for UDP transport.")> _
-		Public Sub New(ByVal host As InetAddress, ByVal port As Integer, ByVal stream As Boolean)
+		Public Sub New(  host As InetAddress,   port As Integer,   stream As Boolean)
 			Me.New(If(host IsNot Nothing, New InetSocketAddress(host, port), Nothing), New InetSocketAddress(0), stream)
 		End Sub
 
-		Private Sub New(ByVal address As SocketAddress, ByVal localAddr As SocketAddress, ByVal stream As Boolean)
+		Private Sub New(  address As SocketAddress,   localAddr As SocketAddress,   stream As Boolean)
 			implmpl()
 
 			' backward compatibility
@@ -418,7 +418,7 @@ Namespace java.net
 		'''               {@code false} for UDP. </param>
 		''' <exception cref="IOException"> if creation fails
 		''' @since 1.4 </exception>
-		 Friend Overridable Sub createImpl(ByVal stream As Boolean)
+		 Friend Overridable Sub createImpl(  stream As Boolean)
 			If impl Is Nothing Then implmpl()
 			Try
 				impl.create(stream)
@@ -499,7 +499,7 @@ Namespace java.net
 		'''          SocketAddress subclass not supported by this socket
 		''' @since 1.4
 		''' @spec JSR-51 </exception>
-		Public Overridable Sub connect(ByVal endpoint As SocketAddress)
+		Public Overridable Sub connect(  endpoint As SocketAddress)
 			connect(endpoint, 0)
 		End Sub
 
@@ -519,7 +519,7 @@ Namespace java.net
 		'''          SocketAddress subclass not supported by this socket
 		''' @since 1.4
 		''' @spec JSR-51 </exception>
-		Public Overridable Sub connect(ByVal endpoint As SocketAddress, ByVal timeout As Integer)
+		Public Overridable Sub connect(  endpoint As SocketAddress,   timeout As Integer)
 			If endpoint Is Nothing Then Throw New IllegalArgumentException("connect: The address can't be null")
 
 			If timeout < 0 Then Throw New IllegalArgumentException("connect: timeout can't be negative")
@@ -580,7 +580,7 @@ Namespace java.net
 		''' 
 		''' @since   1.4 </exception>
 		''' <seealso cref= #isBound </seealso>
-		Public Overridable Sub bind(ByVal bindpoint As SocketAddress)
+		Public Overridable Sub bind(  bindpoint As SocketAddress)
 			If closed Then Throw New SocketException("Socket is closed")
 			If (Not oldImpl) AndAlso bound Then Throw New SocketException("Already bound")
 
@@ -597,7 +597,7 @@ Namespace java.net
 			bound = True
 		End Sub
 
-		Private Sub checkAddress(ByVal addr As InetAddress, ByVal op As String)
+		Private Sub checkAddress(  addr As InetAddress,   op As String)
 			If addr Is Nothing Then Return
 			If Not(TypeOf addr Is Inet4Address OrElse TypeOf addr Is Inet6Address) Then Throw New IllegalArgumentException(op & ": invalid address type")
 		End Sub
@@ -922,7 +922,7 @@ Namespace java.net
 		''' </exception>
 		''' <seealso cref= #getTcpNoDelay() </seealso>
 		Public Overridable Property tcpNoDelay As Boolean
-			Set(ByVal [on] As Boolean)
+			Set(  [on] As Boolean)
 				If closed Then Throw New SocketException("Socket is closed")
 				impl.optionion(SocketOptions.TCP_NODELAY, Convert.ToBoolean([on]))
 			End Set
@@ -947,7 +947,7 @@ Namespace java.net
 		''' <exception cref="IllegalArgumentException"> if the linger value is negative.
 		''' @since JDK1.1 </exception>
 		''' <seealso cref= #getSoLinger() </seealso>
-		Public Overridable Sub setSoLinger(ByVal [on] As Boolean, ByVal linger As Integer)
+		Public Overridable Sub setSoLinger(  [on] As Boolean,   linger As Integer)
 			If closed Then Throw New SocketException("Socket is closed")
 			If Not [on] Then
 				impl.optionion(SocketOptions.SO_LINGER, New Boolean?([on]))
@@ -991,7 +991,7 @@ Namespace java.net
 		''' <exception cref="IOException"> if there is an error
 		'''  sending the data.
 		''' @since 1.4 </exception>
-		Public Overridable Sub sendUrgentData(ByVal data As Integer)
+		Public Overridable Sub sendUrgentData(  data As Integer)
 			If Not impl.supportsUrgentData() Then Throw New SocketException("Urgent data not supported")
 			impl.sendUrgentData(data)
 		End Sub
@@ -1021,7 +1021,7 @@ Namespace java.net
 		''' </exception>
 		''' <seealso cref= #getOOBInline() </seealso>
 		Public Overridable Property oOBInline As Boolean
-			Set(ByVal [on] As Boolean)
+			Set(  [on] As Boolean)
 				If closed Then Throw New SocketException("Socket is closed")
 				impl.optionion(SocketOptions.SO_OOBINLINE, Convert.ToBoolean([on]))
 			End Set
@@ -1050,7 +1050,7 @@ Namespace java.net
 		''' <seealso cref= #getSoTimeout() </seealso>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
 		Public Overridable Property soTimeout As Integer
-			Set(ByVal timeout As Integer)
+			Set(  timeout As Integer)
 				If closed Then Throw New SocketException("Socket is closed")
 				If timeout < 0 Then Throw New IllegalArgumentException("timeout can't be negative")
     
@@ -1093,7 +1093,7 @@ Namespace java.net
 		''' @since 1.2 </seealso>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
 		Public Overridable Property sendBufferSize As Integer
-			Set(ByVal size As Integer)
+			Set(  size As Integer)
 				If Not(size > 0) Then Throw New IllegalArgumentException("negative send size")
 				If closed Then Throw New SocketException("Socket is closed")
 				impl.optionion(SocketOptions.SO_SNDBUF, New Integer?(size))
@@ -1149,7 +1149,7 @@ Namespace java.net
 		''' @since 1.2 </seealso>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
 		Public Overridable Property receiveBufferSize As Integer
-			Set(ByVal size As Integer)
+			Set(  size As Integer)
 				If size <= 0 Then Throw New IllegalArgumentException("invalid receive size")
 				If closed Then Throw New SocketException("Socket is closed")
 				impl.optionion(SocketOptions.SO_RCVBUF, New Integer?(size))
@@ -1173,7 +1173,7 @@ Namespace java.net
 		''' @since 1.3 </exception>
 		''' <seealso cref= #getKeepAlive() </seealso>
 		Public Overridable Property keepAlive As Boolean
-			Set(ByVal [on] As Boolean)
+			Set(  [on] As Boolean)
 				If closed Then Throw New SocketException("Socket is closed")
 				impl.optionion(SocketOptions.SO_KEEPALIVE, Convert.ToBoolean([on]))
 			End Set
@@ -1230,7 +1230,7 @@ Namespace java.net
 		''' <seealso cref= #getTrafficClass </seealso>
 		''' <seealso cref= SocketOptions#IP_TOS </seealso>
 		Public Overridable Property trafficClass As Integer
-			Set(ByVal tc As Integer)
+			Set(  tc As Integer)
 				If tc < 0 OrElse tc > 255 Then Throw New IllegalArgumentException("tc is not in range 0 -- 255")
     
 				If closed Then Throw New SocketException("Socket is closed")
@@ -1283,7 +1283,7 @@ Namespace java.net
 		''' <seealso cref= #isClosed() </seealso>
 		''' <seealso cref= #isBound() </seealso>
 		Public Overridable Property reuseAddress As Boolean
-			Set(ByVal [on] As Boolean)
+			Set(  [on] As Boolean)
 				If closed Then Throw New SocketException("Socket is closed")
 				impl.optionion(SocketOptions.SO_REUSEADDR, Convert.ToBoolean([on]))
 			End Set
@@ -1489,7 +1489,7 @@ Namespace java.net
 		''' <seealso cref=        SecurityManager#checkSetFactory </seealso>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
 		Public Shared Property socketImplFactory As SocketImplFactory
-			Set(ByVal fac As SocketImplFactory)
+			Set(  fac As SocketImplFactory)
 				If factory IsNot Nothing Then Throw New SocketException("factory already defined")
 				Dim security As SecurityManager = System.securityManager
 				If security IsNot Nothing Then security.checkSetFactory()
@@ -1534,7 +1534,7 @@ Namespace java.net
 		'''         bandwidth
 		''' 
 		''' @since 1.5 </param>
-		Public Overridable Sub setPerformancePreferences(ByVal connectionTime As Integer, ByVal latency As Integer, ByVal bandwidth As Integer)
+		Public Overridable Sub setPerformancePreferences(  connectionTime As Integer,   latency As Integer,   bandwidth As Integer)
 			' Not implemented yet 
 		End Sub
 	End Class

@@ -31,7 +31,7 @@ Namespace java.lang.ref
     Friend Class FinalReference(Of T)
         Inherits Reference(Of T)
 
-        Public Sub New(ByVal referent As T, ByVal q As ReferenceQueue(Of T))
+        Public Sub New(  referent As T,   q As ReferenceQueue(Of T))
             MyBase.New(referent, q)
         End Sub
     End Class

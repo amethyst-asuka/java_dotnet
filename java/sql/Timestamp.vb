@@ -86,7 +86,7 @@ Namespace java.sql
 		''' @deprecated instead use the constructor <code>Timestamp(long millis)</code> 
 		''' <exception cref="IllegalArgumentException"> if the nano argument is out of bounds </exception>
 		<Obsolete("instead use the constructor <code>Timestamp(long millis)</code>")> _
-		Public Sub New(ByVal year As Integer, ByVal month As Integer, ByVal [date] As Integer, ByVal hour As Integer, ByVal minute As Integer, ByVal second As Integer, ByVal nano As Integer)
+		Public Sub New(  year As Integer,   month As Integer,   [date] As Integer,   hour As Integer,   minute As Integer,   second As Integer,   nano As Integer)
 			MyBase.New(year, month, date_Renamed, hour, minute, second)
 			If nano > 999999999 OrElse nano < 0 Then Throw New IllegalArgumentException("nanos > 999999999 or < 0")
 			nanos = nano
@@ -103,7 +103,7 @@ Namespace java.sql
 		'''        A negative number is the number of milliseconds before
 		'''         January 1, 1970, 00:00:00 GMT. </param>
 		''' <seealso cref= java.util.Calendar </seealso>
-		Public Sub New(ByVal time_Renamed As Long)
+		Public Sub New(  time_Renamed As Long)
 			MyBase.New((time_Renamed\1000)*1000)
 			nanos = CInt(Fix((time Mod 1000) * 1000000))
 			If nanos < 0 Then
@@ -121,7 +121,7 @@ Namespace java.sql
 		''' <seealso cref= #Timestamp(long time) </seealso>
 		''' <seealso cref= java.util.Calendar </seealso>
 		Public Overrides Property time As Long
-			Set(ByVal time_Renamed As Long)
+			Set(  time_Renamed As Long)
 				MyBase.time = (time_Renamed\1000)*1000
 				nanos = CInt(Fix((time Mod 1000) * 1000000))
 				If nanos < 0 Then
@@ -153,7 +153,7 @@ Namespace java.sql
 		''' <returns> corresponding <code>Timestamp</code> value </returns>
 		''' <exception cref="java.lang.IllegalArgumentException"> if the given argument
 		''' does not have the format <code>yyyy-[m]m-[d]d hh:mm:ss[.f...]</code> </exception>
-		Public Shared Function valueOf(ByVal s As String) As Timestamp
+		Public Shared Function valueOf(  s As String) As Timestamp
 			Const YEAR_LENGTH As Integer = 4
 			Const MONTH_LENGTH As Integer = 2
 			Const DAY_LENGTH As Integer = 2
@@ -347,7 +347,7 @@ Namespace java.sql
 			Get
 				Return nanos
 			End Get
-			Set(ByVal n As Integer)
+			Set(  n As Integer)
 				If n > 999999999 OrElse n < 0 Then Throw New IllegalArgumentException("nanos > 999999999 or < 0")
 				nanos = n
 			End Set
@@ -362,7 +362,7 @@ Namespace java.sql
 		''' <returns> <code>true</code> if the given <code>Timestamp</code>
 		'''         object is equal to this <code>Timestamp</code> object;
 		'''         <code>false</code> otherwise </returns>
-		Public Overrides Function Equals(ByVal ts As Timestamp) As Boolean
+		Public Overrides Function Equals(  ts As Timestamp) As Boolean
 			If MyBase.Equals(ts) Then
 				If nanos = ts.nanos Then
 					Return True
@@ -391,7 +391,7 @@ Namespace java.sql
 		'''         of a <code>Timestamp</code> that
 		'''         is equal to this <code>Timestamp</code> object;
 		'''         <code>false</code> otherwise </returns>
-		Public Overrides Function Equals(ByVal ts As Object) As Boolean
+		Public Overrides Function Equals(  ts As Object) As Boolean
 		  If TypeOf ts Is Timestamp Then
 			Return Me.Equals(CType(ts, Timestamp))
 		  Else
@@ -406,7 +406,7 @@ Namespace java.sql
 		''' <param name="ts"> the <code>Timestamp</code> value to compare with </param>
 		''' <returns> <code>true</code> if this <code>Timestamp</code> object is earlier;
 		'''        <code>false</code> otherwise </returns>
-		Public Overridable Function before(ByVal ts As Timestamp) As Boolean
+		Public Overridable Function before(  ts As Timestamp) As Boolean
 			Return compareTo(ts) < 0
 		End Function
 
@@ -417,7 +417,7 @@ Namespace java.sql
 		''' <param name="ts"> the <code>Timestamp</code> value to compare with </param>
 		''' <returns> <code>true</code> if this <code>Timestamp</code> object is later;
 		'''        <code>false</code> otherwise </returns>
-		Public Overridable Function after(ByVal ts As Timestamp) As Boolean
+		Public Overridable Function after(  ts As Timestamp) As Boolean
 			Return compareTo(ts) > 0
 		End Function
 
@@ -433,7 +433,7 @@ Namespace java.sql
 		'''          and a value greater than <code>0</code> if this
 		'''          <code>Timestamp</code> object is after the given argument.
 		''' @since   1.4 </returns>
-		Public Overridable Function compareTo(ByVal ts As Timestamp) As Integer
+		Public Overridable Function compareTo(  ts As Timestamp) As Integer
 			Dim thisTime As Long = Me.time
 			Dim anotherTime As Long = ts.time
 			Dim i As Integer = (If(thisTime<anotherTime, -1, (If(thisTime=anotherTime, 0, 1))))
@@ -460,7 +460,7 @@ Namespace java.sql
 		'''          <code>Timestamp</code> object is after the given argument.
 		''' 
 		''' @since   1.5 </returns>
-		Public Overridable Function compareTo(ByVal o As DateTime?) As Integer
+		Public Overridable Function compareTo(  o As DateTime?) As Integer
 		   If TypeOf o Is Timestamp Then
 				' When Timestamp instance compare it with a Timestamp
 				' Hence it is basically calling this.compareTo((Timestamp))o);
@@ -502,7 +502,7 @@ Namespace java.sql
 		''' <exception cref="NullPointerException"> if {@code dateTime} is null.
 		''' @since 1.8 </exception>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Shared Function valueOf(ByVal dateTime As java.time.LocalDateTime) As Timestamp
+		Public Shared Function valueOf(  dateTime As java.time.LocalDateTime) As Timestamp
 			Return New Timestamp(dateTime.year - 1900, dateTime.monthValue - 1, dateTime.dayOfMonth, dateTime.hour, dateTime.minute, dateTime.second, dateTime.nano)
 		End Function
 
@@ -534,7 +534,7 @@ Namespace java.sql
 		''' <exception cref="IllegalArgumentException"> if the instant is too large to
 		'''  represent as a {@code Timesamp}
 		''' @since 1.8 </exception>
-		Public Shared Function [from](ByVal instant As java.time.Instant) As Timestamp
+		Public Shared Function [from](  instant As java.time.Instant) As Timestamp
 			Try
 				Dim stamp As New Timestamp(instant.epochSecond * MILLIS_PER_SECOND)
 				stamp.nanos = instant.nano

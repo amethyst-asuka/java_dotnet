@@ -506,7 +506,7 @@ Namespace java.util
 		''' </summary>
 		''' <param name="source"> A character source implementing the Readable interface </param>
 		''' <param name="pattern"> A delimiting pattern </param>
-		Private Sub New(ByVal source As Readable, ByVal pattern_Renamed As Pattern)
+		Private Sub New(  source As Readable,   pattern_Renamed As Pattern)
 			Debug.Assert(source IsNot Nothing, "source should not be null")
 			Debug.Assert(pattern_Renamed IsNot Nothing, "pattern should not be null")
 			Me.source = source
@@ -525,7 +525,7 @@ Namespace java.util
 		''' </summary>
 		''' <param name="source"> A character source implementing the <seealso cref="Readable"/>
 		'''         interface </param>
-		Public Sub New(ByVal source As Readable)
+		Public Sub New(  source As Readable)
 			Me.New(Objects.requireNonNull(source, "source"), WHITESPACE_PATTERN)
 		End Sub
 
@@ -536,7 +536,7 @@ Namespace java.util
 		''' <seealso cref="java.nio.charset.Charset#defaultCharset() default charset"/>.
 		''' </summary>
 		''' <param name="source"> An input stream to be scanned </param>
-		Public Sub New(ByVal source As InputStream)
+		Public Sub New(  source As InputStream)
 			Me.New(New InputStreamReader(source), WHITESPACE_PATTERN)
 		End Sub
 
@@ -550,7 +550,7 @@ Namespace java.util
 		'''        stream into characters to be scanned </param>
 		''' <exception cref="IllegalArgumentException"> if the specified character set
 		'''         does not exist </exception>
-		Public Sub New(ByVal source As InputStream, ByVal charsetName As String)
+		Public Sub New(  source As InputStream,   charsetName As String)
 			Me.New(makeReadable(Objects.requireNonNull(source, "source"), toCharset(charsetName)), WHITESPACE_PATTERN)
 		End Sub
 
@@ -558,7 +558,7 @@ Namespace java.util
 		''' Returns a charset object for the given charset name. </summary>
 		''' <exception cref="NullPointerException">          is csn is null </exception>
 		''' <exception cref="IllegalArgumentException">      if the charset is not supported </exception>
-		Private Shared Function toCharset(ByVal csn As String) As Charset
+		Private Shared Function toCharset(  csn As String) As Charset
 			Objects.requireNonNull(csn, "charsetName")
 			Try
 				Return Charset.forName(csn)
@@ -569,7 +569,7 @@ Namespace java.util
 			End Try
 		End Function
 
-		Private Shared Function makeReadable(ByVal source As InputStream, ByVal charset_Renamed As Charset) As Readable
+		Private Shared Function makeReadable(  source As InputStream,   charset_Renamed As Charset) As Readable
 			Return New InputStreamReader(source, charset_Renamed)
 		End Function
 
@@ -581,7 +581,7 @@ Namespace java.util
 		''' </summary>
 		''' <param name="source"> A file to be scanned </param>
 		''' <exception cref="FileNotFoundException"> if source is not found </exception>
-		Public Sub New(ByVal source As File)
+		Public Sub New(  source As File)
 			Me.New(CType((New FileInputStream(source)).channel, ReadableByteChannel))
 		End Sub
 
@@ -596,15 +596,15 @@ Namespace java.util
 		''' <exception cref="FileNotFoundException"> if source is not found </exception>
 		''' <exception cref="IllegalArgumentException"> if the specified encoding is
 		'''         not found </exception>
-		Public Sub New(ByVal source As File, ByVal charsetName As String)
+		Public Sub New(  source As File,   charsetName As String)
 			Me.New(Objects.requireNonNull(source), toDecoder(charsetName))
 		End Sub
 
-		Private Sub New(ByVal source As File, ByVal dec As CharsetDecoder)
+		Private Sub New(  source As File,   dec As CharsetDecoder)
 			Me.New(makeReadable(CType((New FileInputStream(source)).channel, ReadableByteChannel), dec))
 		End Sub
 
-		Private Shared Function toDecoder(ByVal charsetName As String) As CharsetDecoder
+		Private Shared Function toDecoder(  charsetName As String) As CharsetDecoder
 			Objects.requireNonNull(charsetName, "charsetName")
 			Try
 				Return Charset.forName(charsetName).newDecoder()
@@ -614,7 +614,7 @@ Namespace java.util
 			End Try
 		End Function
 
-		Private Shared Function makeReadable(ByVal source As ReadableByteChannel, ByVal dec As CharsetDecoder) As Readable
+		Private Shared Function makeReadable(  source As ReadableByteChannel,   dec As CharsetDecoder) As Readable
 			Return Channels.newReader(source, dec, -1)
 		End Function
 
@@ -630,7 +630,7 @@ Namespace java.util
 		'''          if an I/O error occurs opening source
 		''' 
 		''' @since   1.7 </exception>
-		Public Sub New(ByVal source As java.nio.file.Path)
+		Public Sub New(  source As java.nio.file.Path)
 			Me.New(java.nio.file.Files.newInputStream(source))
 		End Sub
 
@@ -649,11 +649,11 @@ Namespace java.util
 		''' <exception cref="IllegalArgumentException">
 		'''          if the specified encoding is not found
 		''' @since   1.7 </exception>
-		Public Sub New(ByVal source As java.nio.file.Path, ByVal charsetName As String)
+		Public Sub New(  source As java.nio.file.Path,   charsetName As String)
 			Me.New(Objects.requireNonNull(source), toCharset(charsetName))
 		End Sub
 
-		Private Sub New(ByVal source As java.nio.file.Path, ByVal charset_Renamed As Charset)
+		Private Sub New(  source As java.nio.file.Path,   charset_Renamed As Charset)
 			Me.New(makeReadable(java.nio.file.Files.newInputStream(source), charset_Renamed))
 		End Sub
 
@@ -662,7 +662,7 @@ Namespace java.util
 		''' from the specified string.
 		''' </summary>
 		''' <param name="source"> A string to scan </param>
-		Public Sub New(ByVal source As String)
+		Public Sub New(  source As String)
 			Me.New(New StringReader(source), WHITESPACE_PATTERN)
 		End Sub
 
@@ -673,11 +673,11 @@ Namespace java.util
 		''' <seealso cref="java.nio.charset.Charset#defaultCharset() default charset"/>.
 		''' </summary>
 		''' <param name="source"> A channel to scan </param>
-		Public Sub New(ByVal source As ReadableByteChannel)
+		Public Sub New(  source As ReadableByteChannel)
 			Me.New(makeReadable(Objects.requireNonNull(source, "source")), WHITESPACE_PATTERN)
 		End Sub
 
-		Private Shared Function makeReadable(ByVal source As ReadableByteChannel) As Readable
+		Private Shared Function makeReadable(  source As ReadableByteChannel) As Readable
 			Return makeReadable(source, Charset.defaultCharset().newDecoder())
 		End Function
 
@@ -691,7 +691,7 @@ Namespace java.util
 		'''        channel into characters to be scanned </param>
 		''' <exception cref="IllegalArgumentException"> if the specified character set
 		'''         does not exist </exception>
-		Public Sub New(ByVal source As ReadableByteChannel, ByVal charsetName As String)
+		Public Sub New(  source As ReadableByteChannel,   charsetName As String)
 			Me.New(makeReadable(Objects.requireNonNull(source, "source"), toDecoder(charsetName)), WHITESPACE_PATTERN)
 		End Sub
 
@@ -707,7 +707,7 @@ Namespace java.util
 			skipped = False
 		End Sub
 
-		Private Function revertState(ByVal b As Boolean) As Boolean
+		Private Function revertState(  b As Boolean) As Boolean
 			Me.position = savedScannerPosition
 			savedScannerPosition = -1
 			skipped = False
@@ -720,7 +720,7 @@ Namespace java.util
 			hasNextPattern = matcher.pattern()
 		End Sub
 
-		Private Sub cacheResult(ByVal result As String)
+		Private Sub cacheResult(  result As String)
 			hasNextResult = result
 			hasNextPosition = matcher.end()
 			hasNextPattern = matcher.pattern()
@@ -807,7 +807,7 @@ Namespace java.util
 
 		' When a buffer compaction/reallocation occurs the saved indexes must
 		' be modified appropriately
-		Private Sub translateSavedIndexes(ByVal offset As Integer)
+		Private Sub translateSavedIndexes(  offset As Integer)
 			If savedScannerPosition <> -1 Then savedScannerPosition -= offset
 		End Sub
 
@@ -854,7 +854,7 @@ Namespace java.util
 	'     * 2. null with needInput=false means we won't ever find it
 	'     * 3. null with needInput=true means try again after readInput
 	'     
-		Private Function getCompleteTokenInBuffer(ByVal pattern_Renamed As Pattern) As String
+		Private Function getCompleteTokenInBuffer(  pattern_Renamed As Pattern) As String
 			matchValid = False
 
 			' Skip delims first
@@ -940,7 +940,7 @@ Namespace java.util
 
 		' Finds the specified pattern in the buffer up to horizon.
 		' Returns a match for the specified input pattern.
-		Private Function findPatternInBuffer(ByVal pattern_Renamed As Pattern, ByVal horizon As Integer) As String
+		Private Function findPatternInBuffer(  pattern_Renamed As Pattern,   horizon As Integer) As String
 			matchValid = False
 			matcher.usePattern(pattern_Renamed)
 			Dim bufferLimit As Integer = buf.limit()
@@ -983,7 +983,7 @@ Namespace java.util
 
 		' Returns a match for the specified input pattern anchored at
 		' the current position
-		Private Function matchPatternInBuffer(ByVal pattern_Renamed As Pattern) As String
+		Private Function matchPatternInBuffer(  pattern_Renamed As Pattern) As String
 			matchValid = False
 			matcher.usePattern(pattern_Renamed)
 			matcher.region(position, buf.limit())
@@ -1062,7 +1062,7 @@ Namespace java.util
 		''' </summary>
 		''' <param name="pattern"> A delimiting pattern </param>
 		''' <returns> this scanner </returns>
-		Public Function useDelimiter(ByVal pattern_Renamed As Pattern) As Scanner
+		Public Function useDelimiter(  pattern_Renamed As Pattern) As Scanner
 			delimPattern = pattern_Renamed
 			Return Me
 		End Function
@@ -1080,7 +1080,7 @@ Namespace java.util
 		''' </summary>
 		''' <param name="pattern"> A string specifying a delimiting pattern </param>
 		''' <returns> this scanner </returns>
-		Public Function useDelimiter(ByVal pattern_Renamed As String) As Scanner
+		Public Function useDelimiter(  pattern_Renamed As String) As Scanner
 			delimPattern = patternCache.forName(pattern_Renamed)
 			Return Me
 		End Function
@@ -1109,7 +1109,7 @@ Namespace java.util
 		''' </summary>
 		''' <param name="locale"> A string specifying the locale to use </param>
 		''' <returns> this scanner </returns>
-		Public Function useLocale(ByVal locale_Renamed As java.util.Locale) As Scanner
+		Public Function useLocale(  locale_Renamed As java.util.Locale) As Scanner
 			If locale_Renamed.Equals(Me.locale_Renamed) Then Return Me
 
 			Me.locale_Renamed = locale_Renamed
@@ -1171,7 +1171,7 @@ Namespace java.util
 		''' <param name="radix"> The radix to use when scanning numbers </param>
 		''' <returns> this scanner </returns>
 		''' <exception cref="IllegalArgumentException"> if radix is out of range </exception>
-		Public Function useRadix(ByVal radix As Integer) As Scanner
+		Public Function useRadix(  radix As Integer) As Scanner
 			If (radix < Character.MIN_RADIX) OrElse (radix > Character.MAX_RADIX) Then Throw New IllegalArgumentException("radix:" & radix)
 
 			If Me.defaultRadix = radix Then Return Me
@@ -1184,7 +1184,7 @@ Namespace java.util
 		' The next operation should occur in the specified radix but
 		' the default is left untouched.
 		Private Property radix As Integer
-			Set(ByVal radix As Integer)
+			Set(  radix As Integer)
 				If Me.radix_Renamed <> radix Then
 					' Force rebuilding and recompilation of radix dependent patterns
 					integerPattern_Renamed = Nothing
@@ -1313,7 +1313,7 @@ Namespace java.util
 		''' <returns> true if and only if this scanner has another token matching
 		'''         the specified pattern </returns>
 		''' <exception cref="IllegalStateException"> if this scanner is closed </exception>
-		Public Function hasNext(ByVal pattern_Renamed As String) As Boolean
+		Public Function hasNext(  pattern_Renamed As String) As Boolean
 			Return hasNext(patternCache.forName(pattern_Renamed))
 		End Function
 
@@ -1330,7 +1330,7 @@ Namespace java.util
 		''' <returns> the next token </returns>
 		''' <exception cref="NoSuchElementException"> if no such tokens are available </exception>
 		''' <exception cref="IllegalStateException"> if this scanner is closed </exception>
-		Public Function [next](ByVal pattern_Renamed As String) As String
+		Public Function [next](  pattern_Renamed As String) As String
 			Return [next](patternCache.forName(pattern_Renamed))
 		End Function
 
@@ -1344,7 +1344,7 @@ Namespace java.util
 		''' <returns> true if and only if this scanner has another token matching
 		'''         the specified pattern </returns>
 		''' <exception cref="IllegalStateException"> if this scanner is closed </exception>
-		Public Function hasNext(ByVal pattern_Renamed As Pattern) As Boolean
+		Public Function hasNext(  pattern_Renamed As Pattern) As Boolean
 			ensureOpen()
 			If pattern_Renamed Is Nothing Then Throw New NullPointerException
 			hasNextPattern = Nothing
@@ -1375,7 +1375,7 @@ Namespace java.util
 		''' <returns> the next token </returns>
 		''' <exception cref="NoSuchElementException"> if no more tokens are available </exception>
 		''' <exception cref="IllegalStateException"> if this scanner is closed </exception>
-		Public Function [next](ByVal pattern_Renamed As Pattern) As String
+		Public Function [next](  pattern_Renamed As Pattern) As String
 			ensureOpen()
 			If pattern_Renamed Is Nothing Then Throw New NullPointerException
 
@@ -1469,7 +1469,7 @@ Namespace java.util
 		''' <param name="pattern"> a string specifying the pattern to search for </param>
 		''' <returns> the text that matched the specified pattern </returns>
 		''' <exception cref="IllegalStateException"> if this scanner is closed </exception>
-		Public Function findInLine(ByVal pattern_Renamed As String) As String
+		Public Function findInLine(  pattern_Renamed As String) As String
 			Return findInLine(patternCache.forName(pattern_Renamed))
 		End Function
 
@@ -1490,7 +1490,7 @@ Namespace java.util
 		''' <param name="pattern"> the pattern to scan for </param>
 		''' <returns> the text that matched the specified pattern </returns>
 		''' <exception cref="IllegalStateException"> if this scanner is closed </exception>
-		Public Function findInLine(ByVal pattern_Renamed As Pattern) As String
+		Public Function findInLine(  pattern_Renamed As Pattern) As String
 			ensureOpen()
 			If pattern_Renamed Is Nothing Then Throw New NullPointerException
 			clearCaches()
@@ -1534,7 +1534,7 @@ Namespace java.util
 		''' <returns> the text that matched the specified pattern </returns>
 		''' <exception cref="IllegalStateException"> if this scanner is closed </exception>
 		''' <exception cref="IllegalArgumentException"> if horizon is negative </exception>
-		Public Function findWithinHorizon(ByVal pattern_Renamed As String, ByVal horizon As Integer) As String
+		Public Function findWithinHorizon(  pattern_Renamed As String,   horizon As Integer) As String
 			Return findWithinHorizon(patternCache.forName(pattern_Renamed), horizon)
 		End Function
 
@@ -1568,7 +1568,7 @@ Namespace java.util
 		''' <returns> the text that matched the specified pattern </returns>
 		''' <exception cref="IllegalStateException"> if this scanner is closed </exception>
 		''' <exception cref="IllegalArgumentException"> if horizon is negative </exception>
-		Public Function findWithinHorizon(ByVal pattern_Renamed As Pattern, ByVal horizon As Integer) As String
+		Public Function findWithinHorizon(  pattern_Renamed As Pattern,   horizon As Integer) As String
 			ensureOpen()
 			If pattern_Renamed Is Nothing Then Throw New NullPointerException
 			If horizon < 0 Then Throw New IllegalArgumentException("horizon < 0")
@@ -1612,7 +1612,7 @@ Namespace java.util
 		''' <returns> this scanner </returns>
 		''' <exception cref="NoSuchElementException"> if the specified pattern is not found </exception>
 		''' <exception cref="IllegalStateException"> if this scanner is closed </exception>
-		Public Function skip(ByVal pattern_Renamed As Pattern) As Scanner
+		Public Function skip(  pattern_Renamed As Pattern) As Scanner
 			ensureOpen()
 			If pattern_Renamed Is Nothing Then Throw New NullPointerException
 			clearCaches()
@@ -1644,7 +1644,7 @@ Namespace java.util
 		''' <param name="pattern"> a string specifying the pattern to skip over </param>
 		''' <returns> this scanner </returns>
 		''' <exception cref="IllegalStateException"> if this scanner is closed </exception>
-		Public Function skip(ByVal pattern_Renamed As String) As Scanner
+		Public Function skip(  pattern_Renamed As String) As Scanner
 			Return skip(patternCache.forName(pattern_Renamed))
 		End Function
 
@@ -1700,7 +1700,7 @@ Namespace java.util
 		''' <returns> true if and only if this scanner's next token is a valid
 		'''         byte value </returns>
 		''' <exception cref="IllegalStateException"> if this scanner is closed </exception>
-		Public Function hasNextByte(ByVal radix As Integer) As Boolean
+		Public Function hasNextByte(  radix As Integer) As Boolean
 			radix = radix
 			Dim result As Boolean = hasNext(integerPattern())
 			If result Then ' Cache it
@@ -1757,7 +1757,7 @@ Namespace java.util
 		'''         regular expression, or is out of range </exception>
 		''' <exception cref="NoSuchElementException"> if input is exhausted </exception>
 		''' <exception cref="IllegalStateException"> if this scanner is closed </exception>
-		Public Function nextByte(ByVal radix As Integer) As SByte
+		Public Function nextByte(  radix As Integer) As SByte
 			' Check cached result
 			If (typeCache IsNot Nothing) AndAlso (TypeOf typeCache Is Byte) AndAlso Me.radix_Renamed = radix Then
 				Dim val As SByte = CByte(typeCache)
@@ -1798,7 +1798,7 @@ Namespace java.util
 		''' <returns> true if and only if this scanner's next token is a valid
 		'''         short value in the specified radix </returns>
 		''' <exception cref="IllegalStateException"> if this scanner is closed </exception>
-		Public Function hasNextShort(ByVal radix As Integer) As Boolean
+		Public Function hasNextShort(  radix As Integer) As Boolean
 			radix = radix
 			Dim result As Boolean = hasNext(integerPattern())
 			If result Then ' Cache it
@@ -1855,7 +1855,7 @@ Namespace java.util
 		'''         regular expression, or is out of range </exception>
 		''' <exception cref="NoSuchElementException"> if input is exhausted </exception>
 		''' <exception cref="IllegalStateException"> if this scanner is closed </exception>
-		Public Function nextShort(ByVal radix As Integer) As Short
+		Public Function nextShort(  radix As Integer) As Short
 			' Check cached result
 			If (typeCache IsNot Nothing) AndAlso (TypeOf typeCache Is Short?) AndAlso Me.radix_Renamed = radix Then
 				Dim val As Short = CShort(Fix(typeCache))
@@ -1896,7 +1896,7 @@ Namespace java.util
 		''' <returns> true if and only if this scanner's next token is a valid
 		'''         int value </returns>
 		''' <exception cref="IllegalStateException"> if this scanner is closed </exception>
-		Public Function hasNextInt(ByVal radix As Integer) As Boolean
+		Public Function hasNextInt(  radix As Integer) As Boolean
 			radix = radix
 			Dim result As Boolean = hasNext(integerPattern())
 			If result Then ' Cache it
@@ -1915,7 +1915,7 @@ Namespace java.util
 		''' and suffixes, non ascii digits must be converted into ascii digits
 		''' before parse will accept it.
 		''' </summary>
-		Private Function processIntegerToken(ByVal token As String) As String
+		Private Function processIntegerToken(  token As String) As String
 			Dim result As String = token.replaceAll("" & groupSeparator, "")
 			Dim isNegative As Boolean = False
 			Dim preLen As Integer = negativePrefix.length()
@@ -1975,7 +1975,7 @@ Namespace java.util
 		'''         regular expression, or is out of range </exception>
 		''' <exception cref="NoSuchElementException"> if input is exhausted </exception>
 		''' <exception cref="IllegalStateException"> if this scanner is closed </exception>
-		Public Function nextInt(ByVal radix As Integer) As Integer
+		Public Function nextInt(  radix As Integer) As Integer
 			' Check cached result
 			If (typeCache IsNot Nothing) AndAlso (TypeOf typeCache Is Integer?) AndAlso Me.radix_Renamed = radix Then
 				Dim val As Integer = CInt(Fix(typeCache))
@@ -2016,7 +2016,7 @@ Namespace java.util
 		''' <returns> true if and only if this scanner's next token is a valid
 		'''         long value </returns>
 		''' <exception cref="IllegalStateException"> if this scanner is closed </exception>
-		Public Function hasNextLong(ByVal radix As Integer) As Boolean
+		Public Function hasNextLong(  radix As Integer) As Boolean
 			radix = radix
 			Dim result As Boolean = hasNext(integerPattern())
 			If result Then ' Cache it
@@ -2073,7 +2073,7 @@ Namespace java.util
 		'''         regular expression, or is out of range </exception>
 		''' <exception cref="NoSuchElementException"> if input is exhausted </exception>
 		''' <exception cref="IllegalStateException"> if this scanner is closed </exception>
-		Public Function nextLong(ByVal radix As Integer) As Long
+		Public Function nextLong(  radix As Integer) As Long
 			' Check cached result
 			If (typeCache IsNot Nothing) AndAlso (TypeOf typeCache Is Long?) AndAlso Me.radix_Renamed = radix Then
 				Dim val As Long = CLng(Fix(typeCache))
@@ -2100,7 +2100,7 @@ Namespace java.util
 		''' If there are non-ascii digits in the token these digits must
 		''' be processed before the token is passed to parseFloat.
 		''' </summary>
-		Private Function processFloatToken(ByVal token As String) As String
+		Private Function processFloatToken(  token As String) As String
 			Dim result As String = token.replaceAll(groupSeparator, "")
 			If Not decimalSeparator.Equals("\.") Then result = result.replaceAll(decimalSeparator, ".")
 			Dim isNegative As Boolean = False
@@ -2297,7 +2297,7 @@ Namespace java.util
 		''' <returns> true if and only if this scanner's next token is a valid
 		'''         <code>BigInteger</code> </returns>
 		''' <exception cref="IllegalStateException"> if this scanner is closed </exception>
-		Public Function hasNextBigInteger(ByVal radix As Integer) As Boolean
+		Public Function hasNextBigInteger(  radix As Integer) As Boolean
 			radix = radix
 			Dim result As Boolean = hasNext(integerPattern())
 			If result Then ' Cache it
@@ -2350,7 +2350,7 @@ Namespace java.util
 		'''         regular expression, or is out of range </exception>
 		''' <exception cref="NoSuchElementException"> if the input is exhausted </exception>
 		''' <exception cref="IllegalStateException"> if this scanner is closed </exception>
-		Public Function nextBigInteger(ByVal radix As Integer) As BigInteger
+		Public Function nextBigInteger(  radix As Integer) As BigInteger
 			' Check cached result
 			If (typeCache IsNot Nothing) AndAlso (TypeOf typeCache Is BigInteger) AndAlso Me.radix_Renamed = radix Then
 				Dim val As BigInteger = CType(typeCache, BigInteger)

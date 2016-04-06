@@ -132,7 +132,7 @@ Namespace java.util.concurrent
 		''' @param <U> the function's return type </param>
 		''' <returns> the new CompletionStage </returns>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		 Function thenApply(Of U, T1 As U)(ByVal fn As java.util.function.Function(Of T1)) As CompletionStage(Of U)
+		 Function thenApply(Of U, T1 As U)(  fn As java.util.function.Function(Of T1)) As CompletionStage(Of U)
 
 		''' <summary>
 		''' Returns a new CompletionStage that, when this stage completes
@@ -148,7 +148,7 @@ Namespace java.util.concurrent
 		''' @param <U> the function's return type </param>
 		''' <returns> the new CompletionStage </returns>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		 Function thenApplyAsync(Of U, T1 As U)(ByVal fn As java.util.function.Function(Of T1)) As CompletionStage(Of U)
+		 Function thenApplyAsync(Of U, T1 As U)(  fn As java.util.function.Function(Of T1)) As CompletionStage(Of U)
 
 		''' <summary>
 		''' Returns a new CompletionStage that, when this stage completes
@@ -164,7 +164,7 @@ Namespace java.util.concurrent
 		''' @param <U> the function's return type </param>
 		''' <returns> the new CompletionStage </returns>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		 Function thenApplyAsync(Of U, T1 As U)(ByVal fn As java.util.function.Function(Of T1), ByVal executor As java.util.concurrent.Executor) As CompletionStage(Of U)
+		 Function thenApplyAsync(Of U, T1 As U)(  fn As java.util.function.Function(Of T1),   executor As java.util.concurrent.Executor) As CompletionStage(Of U)
 
 		''' <summary>
 		''' Returns a new CompletionStage that, when this stage completes
@@ -178,7 +178,7 @@ Namespace java.util.concurrent
 		''' returned CompletionStage </param>
 		''' <returns> the new CompletionStage </returns>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Function thenAccept(Of T1)(ByVal action As java.util.function.Consumer(Of T1)) As CompletionStage(Of Void)
+		Function thenAccept(Of T1)(  action As java.util.function.Consumer(Of T1)) As CompletionStage(Of Void)
 
 		''' <summary>
 		''' Returns a new CompletionStage that, when this stage completes
@@ -193,7 +193,7 @@ Namespace java.util.concurrent
 		''' returned CompletionStage </param>
 		''' <returns> the new CompletionStage </returns>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Function thenAcceptAsync(Of T1)(ByVal action As java.util.function.Consumer(Of T1)) As CompletionStage(Of Void)
+		Function thenAcceptAsync(Of T1)(  action As java.util.function.Consumer(Of T1)) As CompletionStage(Of Void)
 
 		''' <summary>
 		''' Returns a new CompletionStage that, when this stage completes
@@ -208,7 +208,7 @@ Namespace java.util.concurrent
 		''' <param name="executor"> the executor to use for asynchronous execution </param>
 		''' <returns> the new CompletionStage </returns>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Function thenAcceptAsync(Of T1)(ByVal action As java.util.function.Consumer(Of T1), ByVal executor As java.util.concurrent.Executor) As CompletionStage(Of Void)
+		Function thenAcceptAsync(Of T1)(  action As java.util.function.Consumer(Of T1),   executor As java.util.concurrent.Executor) As CompletionStage(Of Void)
 		''' <summary>
 		''' Returns a new CompletionStage that, when this stage completes
 		''' normally, executes the given action.
@@ -219,7 +219,7 @@ Namespace java.util.concurrent
 		''' <param name="action"> the action to perform before completing the
 		''' returned CompletionStage </param>
 		''' <returns> the new CompletionStage </returns>
-		Function thenRun(ByVal action As Runnable) As CompletionStage(Of Void)
+		Function thenRun(  action As Runnable) As CompletionStage(Of Void)
 
 		''' <summary>
 		''' Returns a new CompletionStage that, when this stage completes
@@ -232,7 +232,7 @@ Namespace java.util.concurrent
 		''' <param name="action"> the action to perform before completing the
 		''' returned CompletionStage </param>
 		''' <returns> the new CompletionStage </returns>
-		Function thenRunAsync(ByVal action As Runnable) As CompletionStage(Of Void)
+		Function thenRunAsync(  action As Runnable) As CompletionStage(Of Void)
 
 		''' <summary>
 		''' Returns a new CompletionStage that, when this stage completes
@@ -245,7 +245,7 @@ Namespace java.util.concurrent
 		''' returned CompletionStage </param>
 		''' <param name="executor"> the executor to use for asynchronous execution </param>
 		''' <returns> the new CompletionStage </returns>
-		Function thenRunAsync(ByVal action As Runnable, ByVal executor As java.util.concurrent.Executor) As CompletionStage(Of Void)
+		Function thenRunAsync(  action As Runnable,   executor As java.util.concurrent.Executor) As CompletionStage(Of Void)
 
 		''' <summary>
 		''' Returns a new CompletionStage that, when this and the other
@@ -262,7 +262,7 @@ Namespace java.util.concurrent
 		''' @param <V> the function's return type </param>
 		''' <returns> the new CompletionStage </returns>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		 Function thenCombine(Of U, V, T1 As U, T2 As V)(ByVal other As CompletionStage(Of T1), ByVal fn As java.util.function.BiFunction(Of T2)) As CompletionStage(Of V)
+		 Function thenCombine(Of U, V, T1 As U, T2 As V)(  other As CompletionStage(Of T1),   fn As java.util.function.BiFunction(Of T2)) As CompletionStage(Of V)
 
 		''' <summary>
 		''' Returns a new CompletionStage that, when this and the other
@@ -280,7 +280,7 @@ Namespace java.util.concurrent
 		''' @param <V> the function's return type </param>
 		''' <returns> the new CompletionStage </returns>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		 Function thenCombineAsync(Of U, V, T1 As U, T2 As V)(ByVal other As CompletionStage(Of T1), ByVal fn As java.util.function.BiFunction(Of T2)) As CompletionStage(Of V)
+		 Function thenCombineAsync(Of U, V, T1 As U, T2 As V)(  other As CompletionStage(Of T1),   fn As java.util.function.BiFunction(Of T2)) As CompletionStage(Of V)
 
 		''' <summary>
 		''' Returns a new CompletionStage that, when this and the other
@@ -299,7 +299,7 @@ Namespace java.util.concurrent
 		''' @param <V> the function's return type </param>
 		''' <returns> the new CompletionStage </returns>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		 Function thenCombineAsync(Of U, V, T1 As U, T2 As V)(ByVal other As CompletionStage(Of T1), ByVal fn As java.util.function.BiFunction(Of T2), ByVal executor As java.util.concurrent.Executor) As CompletionStage(Of V)
+		 Function thenCombineAsync(Of U, V, T1 As U, T2 As V)(  other As CompletionStage(Of T1),   fn As java.util.function.BiFunction(Of T2),   executor As java.util.concurrent.Executor) As CompletionStage(Of V)
 
 		''' <summary>
 		''' Returns a new CompletionStage that, when this and the other
@@ -315,7 +315,7 @@ Namespace java.util.concurrent
 		''' @param <U> the type of the other CompletionStage's result </param>
 		''' <returns> the new CompletionStage </returns>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		 Function thenAcceptBoth(Of U, T1 As U, T2)(ByVal other As CompletionStage(Of T1), ByVal action As java.util.function.BiConsumer(Of T2)) As CompletionStage(Of Void)
+		 Function thenAcceptBoth(Of U, T1 As U, T2)(  other As CompletionStage(Of T1),   action As java.util.function.BiConsumer(Of T2)) As CompletionStage(Of Void)
 
 		''' <summary>
 		''' Returns a new CompletionStage that, when this and the other
@@ -329,7 +329,7 @@ Namespace java.util.concurrent
 		''' @param <U> the type of the other CompletionStage's result </param>
 		''' <returns> the new CompletionStage </returns>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		 Function thenAcceptBothAsync(Of U, T1 As U, T2)(ByVal other As CompletionStage(Of T1), ByVal action As java.util.function.BiConsumer(Of T2)) As CompletionStage(Of Void)
+		 Function thenAcceptBothAsync(Of U, T1 As U, T2)(  other As CompletionStage(Of T1),   action As java.util.function.BiConsumer(Of T2)) As CompletionStage(Of Void)
 
 		''' <summary>
 		''' Returns a new CompletionStage that, when this and the other
@@ -344,7 +344,7 @@ Namespace java.util.concurrent
 		''' @param <U> the type of the other CompletionStage's result </param>
 		''' <returns> the new CompletionStage </returns>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		 Function thenAcceptBothAsync(Of U, T1 As U, T2)(ByVal other As CompletionStage(Of T1), ByVal action As java.util.function.BiConsumer(Of T2), ByVal executor As java.util.concurrent.Executor) As CompletionStage(Of Void)
+		 Function thenAcceptBothAsync(Of U, T1 As U, T2)(  other As CompletionStage(Of T1),   action As java.util.function.BiConsumer(Of T2),   executor As java.util.concurrent.Executor) As CompletionStage(Of Void)
 
 		''' <summary>
 		''' Returns a new CompletionStage that, when this and the other
@@ -357,7 +357,7 @@ Namespace java.util.concurrent
 		''' <param name="action"> the action to perform before completing the
 		''' returned CompletionStage </param>
 		''' <returns> the new CompletionStage </returns>
-		Function runAfterBoth(Of T1)(ByVal other As CompletionStage(Of T1), ByVal action As Runnable) As CompletionStage(Of Void)
+		Function runAfterBoth(Of T1)(  other As CompletionStage(Of T1),   action As Runnable) As CompletionStage(Of Void)
 		''' <summary>
 		''' Returns a new CompletionStage that, when this and the other
 		''' given stage complete normally, executes the given action using
@@ -370,7 +370,7 @@ Namespace java.util.concurrent
 		''' <param name="action"> the action to perform before completing the
 		''' returned CompletionStage </param>
 		''' <returns> the new CompletionStage </returns>
-		Function runAfterBothAsync(Of T1)(ByVal other As CompletionStage(Of T1), ByVal action As Runnable) As CompletionStage(Of Void)
+		Function runAfterBothAsync(Of T1)(  other As CompletionStage(Of T1),   action As Runnable) As CompletionStage(Of Void)
 
 		''' <summary>
 		''' Returns a new CompletionStage that, when this and the other
@@ -385,7 +385,7 @@ Namespace java.util.concurrent
 		''' returned CompletionStage </param>
 		''' <param name="executor"> the executor to use for asynchronous execution </param>
 		''' <returns> the new CompletionStage </returns>
-		Function runAfterBothAsync(Of T1)(ByVal other As CompletionStage(Of T1), ByVal action As Runnable, ByVal executor As java.util.concurrent.Executor) As CompletionStage(Of Void)
+		Function runAfterBothAsync(Of T1)(  other As CompletionStage(Of T1),   action As Runnable,   executor As java.util.concurrent.Executor) As CompletionStage(Of Void)
 		''' <summary>
 		''' Returns a new CompletionStage that, when either this or the
 		''' other given stage complete normally, is executed with the
@@ -400,7 +400,7 @@ Namespace java.util.concurrent
 		''' @param <U> the function's return type </param>
 		''' <returns> the new CompletionStage </returns>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		 Function applyToEither(Of U, T1 As T, T2)(ByVal other As CompletionStage(Of T1), ByVal fn As java.util.function.Function(Of T2)) As CompletionStage(Of U)
+		 Function applyToEither(Of U, T1 As T, T2)(  other As CompletionStage(Of T1),   fn As java.util.function.Function(Of T2)) As CompletionStage(Of U)
 
 		''' <summary>
 		''' Returns a new CompletionStage that, when either this or the
@@ -417,7 +417,7 @@ Namespace java.util.concurrent
 		''' @param <U> the function's return type </param>
 		''' <returns> the new CompletionStage </returns>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		 Function applyToEitherAsync(Of U, T1 As T, T2)(ByVal other As CompletionStage(Of T1), ByVal fn As java.util.function.Function(Of T2)) As CompletionStage(Of U)
+		 Function applyToEitherAsync(Of U, T1 As T, T2)(  other As CompletionStage(Of T1),   fn As java.util.function.Function(Of T2)) As CompletionStage(Of U)
 
 		''' <summary>
 		''' Returns a new CompletionStage that, when either this or the
@@ -435,7 +435,7 @@ Namespace java.util.concurrent
 		''' @param <U> the function's return type </param>
 		''' <returns> the new CompletionStage </returns>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		 Function applyToEitherAsync(Of U, T1 As T, T2)(ByVal other As CompletionStage(Of T1), ByVal fn As java.util.function.Function(Of T2), ByVal executor As java.util.concurrent.Executor) As CompletionStage(Of U)
+		 Function applyToEitherAsync(Of U, T1 As T, T2)(  other As CompletionStage(Of T1),   fn As java.util.function.Function(Of T2),   executor As java.util.concurrent.Executor) As CompletionStage(Of U)
 
 		''' <summary>
 		''' Returns a new CompletionStage that, when either this or the
@@ -450,7 +450,7 @@ Namespace java.util.concurrent
 		''' returned CompletionStage </param>
 		''' <returns> the new CompletionStage </returns>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Function acceptEither(Of T1 As T, T2)(ByVal other As CompletionStage(Of T1), ByVal action As java.util.function.Consumer(Of T2)) As CompletionStage(Of Void)
+		Function acceptEither(Of T1 As T, T2)(  other As CompletionStage(Of T1),   action As java.util.function.Consumer(Of T2)) As CompletionStage(Of Void)
 
 		''' <summary>
 		''' Returns a new CompletionStage that, when either this or the
@@ -466,7 +466,7 @@ Namespace java.util.concurrent
 		''' returned CompletionStage </param>
 		''' <returns> the new CompletionStage </returns>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Function acceptEitherAsync(Of T1 As T, T2)(ByVal other As CompletionStage(Of T1), ByVal action As java.util.function.Consumer(Of T2)) As CompletionStage(Of Void)
+		Function acceptEitherAsync(Of T1 As T, T2)(  other As CompletionStage(Of T1),   action As java.util.function.Consumer(Of T2)) As CompletionStage(Of Void)
 
 		''' <summary>
 		''' Returns a new CompletionStage that, when either this or the
@@ -483,7 +483,7 @@ Namespace java.util.concurrent
 		''' <param name="executor"> the executor to use for asynchronous execution </param>
 		''' <returns> the new CompletionStage </returns>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Function acceptEitherAsync(Of T1 As T, T2)(ByVal other As CompletionStage(Of T1), ByVal action As java.util.function.Consumer(Of T2), ByVal executor As java.util.concurrent.Executor) As CompletionStage(Of Void)
+		Function acceptEitherAsync(Of T1 As T, T2)(  other As CompletionStage(Of T1),   action As java.util.function.Consumer(Of T2),   executor As java.util.concurrent.Executor) As CompletionStage(Of Void)
 
 		''' <summary>
 		''' Returns a new CompletionStage that, when either this or the
@@ -496,7 +496,7 @@ Namespace java.util.concurrent
 		''' <param name="action"> the action to perform before completing the
 		''' returned CompletionStage </param>
 		''' <returns> the new CompletionStage </returns>
-		Function runAfterEither(Of T1)(ByVal other As CompletionStage(Of T1), ByVal action As Runnable) As CompletionStage(Of Void)
+		Function runAfterEither(Of T1)(  other As CompletionStage(Of T1),   action As Runnable) As CompletionStage(Of Void)
 
 		''' <summary>
 		''' Returns a new CompletionStage that, when either this or the
@@ -510,7 +510,7 @@ Namespace java.util.concurrent
 		''' <param name="action"> the action to perform before completing the
 		''' returned CompletionStage </param>
 		''' <returns> the new CompletionStage </returns>
-		Function runAfterEitherAsync(Of T1)(ByVal other As CompletionStage(Of T1), ByVal action As Runnable) As CompletionStage(Of Void)
+		Function runAfterEitherAsync(Of T1)(  other As CompletionStage(Of T1),   action As Runnable) As CompletionStage(Of Void)
 
 		''' <summary>
 		''' Returns a new CompletionStage that, when either this or the
@@ -525,7 +525,7 @@ Namespace java.util.concurrent
 		''' returned CompletionStage </param>
 		''' <param name="executor"> the executor to use for asynchronous execution </param>
 		''' <returns> the new CompletionStage </returns>
-		Function runAfterEitherAsync(Of T1)(ByVal other As CompletionStage(Of T1), ByVal action As Runnable, ByVal executor As java.util.concurrent.Executor) As CompletionStage(Of Void)
+		Function runAfterEitherAsync(Of T1)(  other As CompletionStage(Of T1),   action As Runnable,   executor As java.util.concurrent.Executor) As CompletionStage(Of Void)
 
 		''' <summary>
 		''' Returns a new CompletionStage that, when this stage completes
@@ -539,7 +539,7 @@ Namespace java.util.concurrent
 		''' @param <U> the type of the returned CompletionStage's result </param>
 		''' <returns> the CompletionStage </returns>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		 Function thenCompose(Of U, T1 As CompletionStage(Of U)(ByVal fn As java.util.function.Function(Of T1)) As CompletionStage(Of U)
+		 Function thenCompose(Of U, T1 As CompletionStage(Of U)(  fn As java.util.function.Function(Of T1)) As CompletionStage(Of U)
 
 		''' <summary>
 		''' Returns a new CompletionStage that, when this stage completes
@@ -554,7 +554,7 @@ Namespace java.util.concurrent
 		''' @param <U> the type of the returned CompletionStage's result </param>
 		''' <returns> the CompletionStage </returns>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		 Function thenComposeAsync(Of U, T1 As CompletionStage(Of U)(ByVal fn As java.util.function.Function(Of T1)) As CompletionStage(Of U)
+		 Function thenComposeAsync(Of U, T1 As CompletionStage(Of U)(  fn As java.util.function.Function(Of T1)) As CompletionStage(Of U)
 
 		''' <summary>
 		''' Returns a new CompletionStage that, when this stage completes
@@ -569,7 +569,7 @@ Namespace java.util.concurrent
 		''' @param <U> the type of the returned CompletionStage's result </param>
 		''' <returns> the CompletionStage </returns>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		 Function thenComposeAsync(Of U, T1 As CompletionStage(Of U)(ByVal fn As java.util.function.Function(Of T1), ByVal executor As java.util.concurrent.Executor) As CompletionStage(Of U)
+		 Function thenComposeAsync(Of U, T1 As CompletionStage(Of U)(  fn As java.util.function.Function(Of T1),   executor As java.util.concurrent.Executor) As CompletionStage(Of U)
 
 		''' <summary>
 		''' Returns a new CompletionStage that, when this stage completes
@@ -582,7 +582,7 @@ Namespace java.util.concurrent
 		''' returned CompletionStage if this CompletionStage completed
 		''' exceptionally </param>
 		''' <returns> the new CompletionStage </returns>
-		Function exceptionally(Of T1 As T)(ByVal fn As java.util.function.Function(Of T1)) As CompletionStage(Of T)
+		Function exceptionally(Of T1 As T)(  fn As java.util.function.Function(Of T1)) As CompletionStage(Of T)
 
 		''' <summary>
 		''' Returns a new CompletionStage with the same result or exception as
@@ -598,7 +598,7 @@ Namespace java.util.concurrent
 		''' <param name="action"> the action to perform </param>
 		''' <returns> the new CompletionStage </returns>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Function whenComplete(Of T1)(ByVal action As java.util.function.BiConsumer(Of T1)) As CompletionStage(Of T)
+		Function whenComplete(Of T1)(  action As java.util.function.BiConsumer(Of T1)) As CompletionStage(Of T)
 
 		''' <summary>
 		''' Returns a new CompletionStage with the same result or exception as
@@ -615,7 +615,7 @@ Namespace java.util.concurrent
 		''' <param name="action"> the action to perform </param>
 		''' <returns> the new CompletionStage </returns>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Function whenCompleteAsync(Of T1)(ByVal action As java.util.function.BiConsumer(Of T1)) As CompletionStage(Of T)
+		Function whenCompleteAsync(Of T1)(  action As java.util.function.BiConsumer(Of T1)) As CompletionStage(Of T)
 
 		''' <summary>
 		''' Returns a new CompletionStage with the same result or exception as
@@ -633,7 +633,7 @@ Namespace java.util.concurrent
 		''' <param name="executor"> the executor to use for asynchronous execution </param>
 		''' <returns> the new CompletionStage </returns>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Function whenCompleteAsync(Of T1)(ByVal action As java.util.function.BiConsumer(Of T1), ByVal executor As java.util.concurrent.Executor) As CompletionStage(Of T)
+		Function whenCompleteAsync(Of T1)(  action As java.util.function.BiConsumer(Of T1),   executor As java.util.concurrent.Executor) As CompletionStage(Of T)
 
 		''' <summary>
 		''' Returns a new CompletionStage that, when this stage completes
@@ -650,7 +650,7 @@ Namespace java.util.concurrent
 		''' @param <U> the function's return type </param>
 		''' <returns> the new CompletionStage </returns>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		 Function handle(Of U, T1 As U)(ByVal fn As java.util.function.BiFunction(Of T1)) As CompletionStage(Of U)
+		 Function handle(Of U, T1 As U)(  fn As java.util.function.BiFunction(Of T1)) As CompletionStage(Of U)
 
 		''' <summary>
 		''' Returns a new CompletionStage that, when this stage completes
@@ -668,7 +668,7 @@ Namespace java.util.concurrent
 		''' @param <U> the function's return type </param>
 		''' <returns> the new CompletionStage </returns>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		 Function handleAsync(Of U, T1 As U)(ByVal fn As java.util.function.BiFunction(Of T1)) As CompletionStage(Of U)
+		 Function handleAsync(Of U, T1 As U)(  fn As java.util.function.BiFunction(Of T1)) As CompletionStage(Of U)
 
 		''' <summary>
 		''' Returns a new CompletionStage that, when this stage completes
@@ -687,7 +687,7 @@ Namespace java.util.concurrent
 		''' @param <U> the function's return type </param>
 		''' <returns> the new CompletionStage </returns>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		 Function handleAsync(Of U, T1 As U)(ByVal fn As java.util.function.BiFunction(Of T1), ByVal executor As java.util.concurrent.Executor) As CompletionStage(Of U)
+		 Function handleAsync(Of U, T1 As U)(  fn As java.util.function.BiFunction(Of T1),   executor As java.util.concurrent.Executor) As CompletionStage(Of U)
 
 		''' <summary>
 		''' Returns a <seealso cref="CompletableFuture"/> maintaining the same

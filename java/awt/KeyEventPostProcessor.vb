@@ -87,7 +87,7 @@ Namespace java.awt
 		''' <returns> <code>true</code> if the AWT should take no further action with
 		'''         regard to the KeyEvent; <code>false</code> otherwise </returns>
 		''' <seealso cref= KeyboardFocusManager#redispatchEvent </seealso>
-		Function postProcessKeyEvent(ByVal e As java.awt.event.KeyEvent) As Boolean
+		Function postProcessKeyEvent(  e As java.awt.event.KeyEvent) As Boolean
 	End Interface
 
 End Namespace

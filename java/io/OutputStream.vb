@@ -59,7 +59,7 @@ Namespace java.io
 		''' <exception cref="IOException">  if an I/O error occurs. In particular,
 		'''             an <code>IOException</code> may be thrown if the
 		'''             output stream has been closed. </exception>
-		Public MustOverride Sub write(ByVal b As Integer)
+		Public MustOverride Sub write(  b As Integer)
 
         ''' <summary>
         ''' Writes <code>b.length</code> bytes from the specified byte array
@@ -70,7 +70,7 @@ Namespace java.io
         ''' <param name="b">   the data. </param>
         ''' <exception cref="IOException">  if an I/O error occurs. </exception>
         ''' <seealso cref=        java.io.OutputStream#write(byte[], int, int) </seealso>
-        Public Overridable Sub write(ByVal b As Byte())
+        Public Overridable Sub write(  b As Byte())
             write(b, 0, b.Length)
         End Sub
 

@@ -219,7 +219,7 @@ Namespace java.awt.event
         ''' <seealso cref= Toolkit#areExtraMouseButtonsEnabled() </seealso>
         ''' <seealso cref= MouseEvent#getModifiers() </seealso>
         ''' <seealso cref= MouseEvent#getModifiersEx() </seealso>
-        Public Shared Function getMaskForButton(ByVal button_Renamed As Integer) As Integer
+        Public Shared Function getMaskForButton(  button_Renamed As Integer) As Integer
             If button_Renamed <= 0 OrElse button_Renamed > BUTTON_DOWN_MASK.Length Then Throw New IllegalArgumentException("button doesn't exist " & button_Renamed)
             Return BUTTON_DOWN_MASK(button_Renamed - 1)
         End Function
@@ -313,7 +313,7 @@ Namespace java.awt.event
         ''' <seealso cref= #getID() </seealso>
         ''' <seealso cref= #getWhen() </seealso>
         ''' <seealso cref= #getModifiers() </seealso>
-        Friend Sub New(ByVal source As java.awt.Component, ByVal id As Integer, ByVal [when] As Long, ByVal modifiers As Integer)
+        Friend Sub New(  source As java.awt.Component,   id As Integer,   [when] As Long,   modifiers As Integer)
             MyBase.New(source, id)
             Me.when = [when]
             Me.modifiers = modifiers
@@ -480,7 +480,7 @@ Namespace java.awt.event
         '''         modifier keys and mouse buttons that were held down
         '''         during the event.
         ''' @since 1.4 </returns>
-        Public Shared Function getModifiersExText(ByVal modifiers As Integer) As String
+        Public Shared Function getModifiersExText(  modifiers As Integer) As String
             Dim buf As New StringBuilder
             If (modifiers And InputEvent.META_DOWN_MASK) <> 0 Then
                 buf.append(java.awt.Toolkit.getProperty("AWT.meta", "Meta"))

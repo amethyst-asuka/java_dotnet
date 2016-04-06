@@ -81,7 +81,7 @@ Namespace java.awt
 			''' </summary>
 			Public Shared ReadOnly MONOCHROME As New ColorType(I_MONOCHROME)
 
-			Private Sub New(ByVal type As Integer)
+			Private Sub New(  type As Integer)
 				MyBase.New(type, NAMES)
 			End Sub
 		End Class
@@ -766,7 +766,7 @@ Namespace java.awt
 			''' </summary>
 			Public Shared ReadOnly PERSONAL As MediaType = PERSONAL_ENVELOPE
 
-			Private Sub New(ByVal type As Integer)
+			Private Sub New(  type As Integer)
 				MyBase.New(type, NAMES)
 			End Sub
 		End Class
@@ -795,7 +795,7 @@ Namespace java.awt
 			''' </summary>
 			Public Shared ReadOnly LANDSCAPE As New OrientationRequestedType(I_LANDSCAPE)
 
-			Private Sub New(ByVal type As Integer)
+			Private Sub New(  type As Integer)
 				MyBase.New(type, NAMES)
 			End Sub
 		End Class
@@ -821,7 +821,7 @@ Namespace java.awt
 			''' </summary>
 			Public Shared ReadOnly PRINTABLE As New OriginType(I_PRINTABLE)
 
-			Private Sub New(ByVal type As Integer)
+			Private Sub New(  type As Integer)
 				MyBase.New(type, NAMES)
 			End Sub
 		End Class
@@ -856,7 +856,7 @@ Namespace java.awt
 			''' </summary>
 			Public Shared ReadOnly DRAFT As New PrintQualityType(I_DRAFT)
 
-			Private Sub New(ByVal type As Integer)
+			Private Sub New(  type As Integer)
 				MyBase.New(type, NAMES)
 			End Sub
 		End Class
@@ -886,7 +886,7 @@ Namespace java.awt
 		''' PageAttributes.
 		''' </summary>
 		''' <param name="obj"> the PageAttributes to copy. </param>
-		Public Sub New(ByVal obj As PageAttributes)
+		Public Sub New(  obj As PageAttributes)
 			[set](obj)
 		End Sub
 
@@ -907,7 +907,7 @@ Namespace java.awt
 		'''          <code>3</code> or <code>4</code>. </param>
 		''' <exception cref="IllegalArgumentException"> if one or more of the above
 		'''          conditions is violated. </exception>
-		Public Sub New(ByVal color_Renamed As ColorType, ByVal media As MediaType, ByVal orientationRequested As OrientationRequestedType, ByVal origin As OriginType, ByVal printQuality As PrintQualityType, ByVal printerResolution As Integer())
+		Public Sub New(  color_Renamed As ColorType,   media As MediaType,   orientationRequested As OrientationRequestedType,   origin As OriginType,   printQuality As PrintQualityType,   printerResolution As Integer())
 			color = color_Renamed
 			media = media
 			orientationRequested = orientationRequested
@@ -935,7 +935,7 @@ Namespace java.awt
 		''' the attributes of obj.
 		''' </summary>
 		''' <param name="obj"> the PageAttributes to copy. </param>
-		Public Sub [set](ByVal obj As PageAttributes)
+		Public Sub [set](  obj As PageAttributes)
 			color_Renamed = obj.color_Renamed
 			media = obj.media
 			orientationRequested = obj.orientationRequested
@@ -955,7 +955,7 @@ Namespace java.awt
 			Get
 				Return color_Renamed
 			End Get
-			Set(ByVal color_Renamed As ColorType)
+			Set(  color_Renamed As ColorType)
 				If color_Renamed Is Nothing Then Throw New IllegalArgumentException("Invalid value for attribute " & "color")
 				Me.color_Renamed = color_Renamed
 			End Set
@@ -971,7 +971,7 @@ Namespace java.awt
 			Get
 				Return media
 			End Get
-			Set(ByVal media As MediaType)
+			Set(  media As MediaType)
 				If media Is Nothing Then Throw New IllegalArgumentException("Invalid value for attribute " & "media")
 				Me.media = media
 			End Set
@@ -1003,7 +1003,7 @@ Namespace java.awt
 			Get
 				Return orientationRequested
 			End Get
-			Set(ByVal orientationRequested As OrientationRequestedType)
+			Set(  orientationRequested As OrientationRequestedType)
 				If orientationRequested Is Nothing Then Throw New IllegalArgumentException("Invalid value for attribute " & "orientationRequested")
 				Me.orientationRequested = orientationRequested
 			End Set
@@ -1021,7 +1021,7 @@ Namespace java.awt
 		''' <exception cref="IllegalArgumentException"> if orientationRequested is not
 		'''          <code>3</code> or <code>4</code> </exception>
 		Public Property orientationRequested As Integer
-			Set(ByVal orientationRequested As Integer)
+			Set(  orientationRequested As Integer)
 				Select Case orientationRequested
 				  Case 3
 					orientationRequested = OrientationRequestedType.PORTRAIT
@@ -1055,7 +1055,7 @@ Namespace java.awt
 			Get
 				Return origin
 			End Get
-			Set(ByVal origin As OriginType)
+			Set(  origin As OriginType)
 				If origin Is Nothing Then Throw New IllegalArgumentException("Invalid value for attribute " & "origin")
 				Me.origin = origin
 			End Set
@@ -1072,7 +1072,7 @@ Namespace java.awt
 			Get
 				Return printQuality
 			End Get
-			Set(ByVal printQuality As PrintQualityType)
+			Set(  printQuality As PrintQualityType)
 				If printQuality Is Nothing Then Throw New IllegalArgumentException("Invalid value for attribute " & "printQuality")
 				Me.printQuality = printQuality
 			End Set
@@ -1091,7 +1091,7 @@ Namespace java.awt
 		''' <exception cref="IllegalArgumentException"> if printQuality is not <code>3
 		'''          </code>, <code>4</code>, or <code>5</code> </exception>
 		Public Property printQuality As Integer
-			Set(ByVal printQuality As Integer)
+			Set(  printQuality As Integer)
 				Select Case printQuality
 				  Case 3
 					printQuality = PrintQualityType.DRAFT
@@ -1138,7 +1138,7 @@ Namespace java.awt
 				copy(2) = printerResolution(2)
 				Return copy
 			End Get
-			Set(ByVal printerResolution As Integer())
+			Set(  printerResolution As Integer())
 				If printerResolution Is Nothing OrElse printerResolution.Length <> 3 OrElse printerResolution(0) <= 0 OrElse printerResolution(1) <= 0 OrElse (printerResolution(2) <> 3 AndAlso printerResolution(2) <> 4) Then Throw New IllegalArgumentException("Invalid value for attribute " & "printerResolution")
 				' Store a copy because otherwise client code could circumvent the
 				' the checks made above by holding a reference to the array and
@@ -1163,7 +1163,7 @@ Namespace java.awt
 		''' <exception cref="IllegalArgumentException"> if printerResolution is less than or
 		'''          equal to 0. </exception>
 		Public Property printerResolution As Integer
-			Set(ByVal printerResolution As Integer)
+			Set(  printerResolution As Integer)
 				printerResolution = New Integer() { printerResolution, printerResolution, 3 }
 			End Set
 		End Property
@@ -1190,7 +1190,7 @@ Namespace java.awt
 		''' <param name="obj"> the object whose equality will be checked. </param>
 		''' <returns>  whether obj is equal to this PageAttribute according to the
 		'''          above criteria. </returns>
-		Public Overrides Function Equals(ByVal obj As Object) As Boolean
+		Public Overrides Function Equals(  obj As Object) As Boolean
 			If Not(TypeOf obj Is PageAttributes) Then Return False
 
 			Dim rhs As PageAttributes = CType(obj, PageAttributes)

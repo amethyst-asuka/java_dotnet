@@ -79,7 +79,7 @@ Namespace java.awt
 			Friend after As Long
 			Friend untilFocused As Component
 
-			Friend Sub New(ByVal after As Long, ByVal untilFocused As Component)
+			Friend Sub New(  after As Long,   untilFocused As Component)
 				Me.after = after
 				Me.untilFocused = untilFocused
 			End Sub
@@ -91,7 +91,7 @@ Namespace java.awt
 			End Function
 		End Class
 
-		Private Function getOwningFrameDialog(ByVal window_Renamed As Window) As Window
+		Private Function getOwningFrameDialog(  window_Renamed As Window) As Window
 			Do While window_Renamed IsNot Nothing AndAlso Not(TypeOf window_Renamed Is Frame OrElse TypeOf window_Renamed Is Dialog)
 				window_Renamed = CType(window_Renamed.parent, Window)
 			Loop
@@ -103,7 +103,7 @@ Namespace java.awt
 	'     * rejected focus or activation change. Rejections typically occur when
 	'     * the user attempts to focus a non-focusable Component or Window.
 	'     
-		Private Sub restoreFocus(ByVal fe As java.awt.event.FocusEvent, ByVal newFocusedWindow As Window)
+		Private Sub restoreFocus(  fe As java.awt.event.FocusEvent,   newFocusedWindow As Window)
 			Dim realOppositeComponent As Component = Me.realOppositeComponentWR.get()
 			Dim vetoedComponent As Component = fe.component
 
@@ -114,7 +114,7 @@ Namespace java.awt
 				clearGlobalFocusOwnerPriv()
 			End If
 		End Sub
-		Private Sub restoreFocus(ByVal we As java.awt.event.WindowEvent)
+		Private Sub restoreFocus(  we As java.awt.event.WindowEvent)
 			Dim realOppositeWindow As Window = Me.realOppositeWindowWR.get()
 			If realOppositeWindow IsNot Nothing AndAlso restoreFocus(realOppositeWindow, Nothing, False) Then
 				' do nothing, everything is done in restoreFocus()
@@ -124,7 +124,7 @@ Namespace java.awt
 				clearGlobalFocusOwnerPriv()
 			End If
 		End Sub
-		Private Function restoreFocus(ByVal aWindow As Window, ByVal vetoedComponent As Component, ByVal clearOnFailure As Boolean) As Boolean
+		Private Function restoreFocus(  aWindow As Window,   vetoedComponent As Component,   clearOnFailure As Boolean) As Boolean
 			Dim toFocus As Component = KeyboardFocusManager.getMostRecentFocusOwner(aWindow)
 
 			If toFocus IsNot Nothing AndAlso toFocus IsNot vetoedComponent AndAlso doRestoreFocus(toFocus, vetoedComponent, False) Then
@@ -136,10 +136,10 @@ Namespace java.awt
 				Return False
 			End If
 		End Function
-		Private Function restoreFocus(ByVal toFocus As Component, ByVal clearOnFailure As Boolean) As Boolean
+		Private Function restoreFocus(  toFocus As Component,   clearOnFailure As Boolean) As Boolean
 			Return doRestoreFocus(toFocus, Nothing, clearOnFailure)
 		End Function
-		Private Function doRestoreFocus(ByVal toFocus As Component, ByVal vetoedComponent As Component, ByVal clearOnFailure As Boolean) As Boolean
+		Private Function doRestoreFocus(  toFocus As Component,   vetoedComponent As Component,   clearOnFailure As Boolean) As Boolean
 			If toFocus IsNot vetoedComponent AndAlso toFocus.showing AndAlso toFocus.canBeFocusOwner() AndAlso toFocus.requestFocus(False, sun.awt.CausedFocusEvent.Cause.ROLLBACK) Then
 				Return True
 			Else
@@ -168,7 +168,7 @@ Namespace java.awt
 	'         
 			Private Const serialVersionUID As Long = -2924743257508701758L
 
-			Public Sub New(ByVal nested As AWTEvent, ByVal toNotify As sun.awt.AppContext)
+			Public Sub New(  nested As AWTEvent,   toNotify As sun.awt.AppContext)
 				MyBase.New(nested, toNotify)
 			End Sub
 			Public NotOverridable Overrides Sub dispatch()
@@ -200,7 +200,7 @@ Namespace java.awt
 		''' Returns true if successfuly dispatched event, false if failed
 		''' to dispatch.
 		''' </summary>
-		Friend Shared Function sendMessage(ByVal target As Component, ByVal e As AWTEvent) As Boolean
+		Friend Shared Function sendMessage(  target As Component,   e As AWTEvent) As Boolean
 			e.isPosted = True
 			Dim myAppContext As sun.awt.AppContext = sun.awt.AppContext.appContext
 			Dim targetAppContext As sun.awt.AppContext = target.appContext
@@ -245,7 +245,7 @@ Namespace java.awt
 	'     * get handled. This may lead to wrong focus behavior and in order to avoid it,
 	'     * the focus window events are reposted to the end of the event queue. See 6981400.
 	'     
-		Private Function repostIfFollowsKeyEvents(ByVal e As java.awt.event.WindowEvent) As Boolean
+		Private Function repostIfFollowsKeyEvents(  e As java.awt.event.WindowEvent) As Boolean
 			If Not(TypeOf e Is sun.awt.TimedWindowEvent) Then Return False
 			Dim we As sun.awt.TimedWindowEvent = CType(e, sun.awt.TimedWindowEvent)
 			Dim time As Long = we.when
@@ -280,7 +280,7 @@ Namespace java.awt
 		''' <param name="e"> the AWTEvent to be dispatched </param>
 		''' <returns> <code>true</code> if this method dispatched the event;
 		'''         <code>false</code> otherwise </returns>
-		Public Overrides Function dispatchEvent(ByVal e As AWTEvent) As Boolean
+		Public Overrides Function dispatchEvent(  e As AWTEvent) As Boolean
 			If focusLog.isLoggable(sun.util.logging.PlatformLogger.Level.FINE) AndAlso (TypeOf e Is java.awt.event.WindowEvent OrElse TypeOf e Is java.awt.event.FocusEvent) Then focusLog.fine("" & e)
 			Select Case e.iD
 				Case java.awt.event.WindowEvent.WINDOW_GAINED_FOCUS
@@ -630,7 +630,7 @@ Namespace java.awt
 		''' <param name="e"> the KeyEvent to be dispatched </param>
 		''' <returns> <code>true</code> </returns>
 		''' <seealso cref= Component#dispatchEvent </seealso>
-		Public Overrides Function dispatchKeyEvent(ByVal e As java.awt.event.KeyEvent) As Boolean
+		Public Overrides Function dispatchKeyEvent(  e As java.awt.event.KeyEvent) As Boolean
 			Dim focusOwner_Renamed As Component = If(CType(e, AWTEvent).isPosted, focusOwner, e.component)
 
 			If focusOwner_Renamed IsNot Nothing AndAlso focusOwner_Renamed.showing AndAlso focusOwner_Renamed.canBeFocusOwner() Then
@@ -674,7 +674,7 @@ Namespace java.awt
 		''' <returns> <code>true</code> </returns>
 		''' <seealso cref= #dispatchKeyEvent </seealso>
 		''' <seealso cref= MenuShortcut </seealso>
-		Public Overrides Function postProcessKeyEvent(ByVal e As java.awt.event.KeyEvent) As Boolean
+		Public Overrides Function postProcessKeyEvent(  e As java.awt.event.KeyEvent) As Boolean
 			If Not e.consumed Then
 				Dim target As Component = e.component
 				Dim p As Container = CType(If(TypeOf target Is Container, target, target.parent), Container)
@@ -726,7 +726,7 @@ Namespace java.awt
 			End If
 		End Sub
 
-		Private Function typeAheadAssertions(ByVal target As Component, ByVal e As AWTEvent) As Boolean
+		Private Function typeAheadAssertions(  target As Component,   e As AWTEvent) As Boolean
 
 			' Clear any pending events here as well as in the FOCUS_GAINED
 			' handler. We need this call here in case a marker was removed in
@@ -806,7 +806,7 @@ Namespace java.awt
 		''' in a markers' queue
 		''' @since 1.5
 		''' </summary>
-		Private Function hasMarker(ByVal comp As Component) As Boolean
+		Private Function hasMarker(  comp As Component) As Boolean
 			Dim iter As IEnumerator(Of TypeAheadMarker) = typeAheadMarkers.GetEnumerator()
 			Do While iter.MoveNext()
 				If iter.Current.untilFocused Is comp Then Return True
@@ -824,7 +824,7 @@ Namespace java.awt
 			End SyncLock
 		End Sub
 
-		Private Function preDispatchKeyEvent(ByVal ke As java.awt.event.KeyEvent) As Boolean
+		Private Function preDispatchKeyEvent(  ke As java.awt.event.KeyEvent) As Boolean
 			If CType(ke, AWTEvent).isPosted Then
 				Dim focusOwner_Renamed As Component = focusOwner
 				ke.source = (If(focusOwner_Renamed IsNot Nothing, focusOwner_Renamed, focusedWindow))
@@ -874,11 +874,11 @@ Namespace java.awt
 	'     * @param e is a KEY_PRESSED event that can be used
 	'     *          to track the next KEY_TYPED related.
 	'     
-		Private Sub consumeNextKeyTyped(ByVal e As java.awt.event.KeyEvent)
+		Private Sub consumeNextKeyTyped(  e As java.awt.event.KeyEvent)
 			consumeNextKeyTyped_Renamed = True
 		End Sub
 
-		Private Sub consumeTraversalKey(ByVal e As java.awt.event.KeyEvent)
+		Private Sub consumeTraversalKey(  e As java.awt.event.KeyEvent)
 			e.consume()
 			consumeNextKeyTyped_Renamed = (e.iD = java.awt.event.KeyEvent.KEY_PRESSED) AndAlso Not e.actionKey
 		End Sub
@@ -886,7 +886,7 @@ Namespace java.awt
 	'    
 	'     * return true if event was consumed
 	'     
-		Private Function consumeProcessedKeyEvent(ByVal e As java.awt.event.KeyEvent) As Boolean
+		Private Function consumeProcessedKeyEvent(  e As java.awt.event.KeyEvent) As Boolean
 			If (e.iD = java.awt.event.KeyEvent.KEY_TYPED) AndAlso consumeNextKeyTyped_Renamed Then
 				e.consume()
 				consumeNextKeyTyped_Renamed = False
@@ -907,7 +907,7 @@ Namespace java.awt
 		'''        traversal operation if the specified event represents a focus
 		'''        traversal key for the Component </param>
 		''' <param name="e"> the event that may represent a focus traversal key </param>
-		Public Overrides Sub processKeyEvent(ByVal focusedComponent As Component, ByVal e As java.awt.event.KeyEvent)
+		Public Overrides Sub processKeyEvent(  focusedComponent As Component,   e As java.awt.event.KeyEvent)
 			' consume processed event if needed
 			If consumeProcessedKeyEvent(e) Then Return
 
@@ -980,7 +980,7 @@ Namespace java.awt
 		''' <seealso cref= #dequeueKeyEvents </seealso>
 		''' <seealso cref= #discardKeyEvents </seealso>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Protected Friend Overrides Sub enqueueKeyEvents(ByVal after As Long, ByVal untilFocused As Component)
+		Protected Friend Overrides Sub enqueueKeyEvents(  after As Long,   untilFocused As Component)
 			If untilFocused Is Nothing Then Return
 
 			If focusLog.isLoggable(sun.util.logging.PlatformLogger.Level.FINER) Then focusLog.finer("Enqueue at {0} for {1}", after, untilFocused)
@@ -1016,7 +1016,7 @@ Namespace java.awt
 		''' <seealso cref= #enqueueKeyEvents </seealso>
 		''' <seealso cref= #discardKeyEvents </seealso>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Protected Friend Overrides Sub dequeueKeyEvents(ByVal after As Long, ByVal untilFocused As Component)
+		Protected Friend Overrides Sub dequeueKeyEvents(  after As Long,   untilFocused As Component)
 			If untilFocused Is Nothing Then Return
 
 			If focusLog.isLoggable(sun.util.logging.PlatformLogger.Level.FINER) Then focusLog.finer("Dequeue at {0} for {1}", after, untilFocused)
@@ -1053,7 +1053,7 @@ Namespace java.awt
 		''' <seealso cref= #enqueueKeyEvents </seealso>
 		''' <seealso cref= #dequeueKeyEvents </seealso>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Protected Friend Overrides Sub discardKeyEvents(ByVal comp As Component)
+		Protected Friend Overrides Sub discardKeyEvents(  comp As Component)
 			If comp Is Nothing Then Return
 
 			Dim start As Long = -1
@@ -1084,7 +1084,7 @@ Namespace java.awt
 		'   * if 'start' is < 0, then this function does nothing
 		'   * if 'end' is < 0, then all KeyEvents from 'start' to the end of the
 		'     queue will be removed
-		Private Sub purgeStampedEvents(ByVal start As Long, ByVal [end] As Long)
+		Private Sub purgeStampedEvents(  start As Long,   [end] As Long)
 			If start < 0 Then Return
 
 			Dim iter As IEnumerator(Of java.awt.event.KeyEvent) = enqueuedKeyEvents.GetEnumerator()
@@ -1106,7 +1106,7 @@ Namespace java.awt
 		'''        traversal operation </param>
 		''' <seealso cref= FocusTraversalPolicy </seealso>
 		''' <seealso cref= Component#transferFocusBackward </seealso>
-		Public Overrides Sub focusPreviousComponent(ByVal aComponent As Component)
+		Public Overrides Sub focusPreviousComponent(  aComponent As Component)
 			If aComponent IsNot Nothing Then aComponent.transferFocusBackward()
 		End Sub
 
@@ -1118,7 +1118,7 @@ Namespace java.awt
 		'''        traversal operation </param>
 		''' <seealso cref= FocusTraversalPolicy </seealso>
 		''' <seealso cref= Component#transferFocus </seealso>
-		Public Overrides Sub focusNextComponent(ByVal aComponent As Component)
+		Public Overrides Sub focusNextComponent(  aComponent As Component)
 			If aComponent IsNot Nothing Then aComponent.transferFocus()
 		End Sub
 
@@ -1133,7 +1133,7 @@ Namespace java.awt
 		''' <param name="aComponent"> the Component that is the basis for the focus
 		'''        traversal operation </param>
 		''' <seealso cref= Component#transferFocusUpCycle </seealso>
-		Public Overrides Sub upFocusCycle(ByVal aComponent As Component)
+		Public Overrides Sub upFocusCycle(  aComponent As Component)
 			If aComponent IsNot Nothing Then aComponent.transferFocusUpCycle()
 		End Sub
 
@@ -1147,7 +1147,7 @@ Namespace java.awt
 		''' <param name="aContainer"> the Container that is the basis for the focus
 		'''        traversal operation </param>
 		''' <seealso cref= Container#transferFocusDownCycle </seealso>
-		Public Overrides Sub downFocusCycle(ByVal aContainer As Container)
+		Public Overrides Sub downFocusCycle(  aContainer As Container)
 			If aContainer IsNot Nothing AndAlso aContainer.focusCycleRoot Then aContainer.transferFocusDownCycle()
 		End Sub
 	End Class

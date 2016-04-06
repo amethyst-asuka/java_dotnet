@@ -61,7 +61,7 @@ Namespace java.util.stream
 		''' @param <T> the type of the stream elements </param>
 		''' <returns> the {@code TerminalOp} instance </returns>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Shared Function makeRef(Of T, T1)(ByVal action As java.util.function.Consumer(Of T1), ByVal ordered As Boolean) As TerminalOp(Of T, Void)
+		Public Shared Function makeRef(Of T, T1)(  action As java.util.function.Consumer(Of T1),   ordered As Boolean) As TerminalOp(Of T, Void)
 			java.util.Objects.requireNonNull(action)
 			Return New ForEachOp.OfRef(Of )(action, ordered)
 		End Function
@@ -74,7 +74,7 @@ Namespace java.util.stream
 		'''        stream </param>
 		''' <param name="ordered"> whether an ordered traversal is requested </param>
 		''' <returns> the {@code TerminalOp} instance </returns>
-		Public Shared Function makeInt(ByVal action As java.util.function.IntConsumer, ByVal ordered As Boolean) As TerminalOp(Of Integer?, Void)
+		Public Shared Function makeInt(  action As java.util.function.IntConsumer,   ordered As Boolean) As TerminalOp(Of Integer?, Void)
 			java.util.Objects.requireNonNull(action)
 			Return New ForEachOp.OfInt(action, ordered)
 		End Function
@@ -87,7 +87,7 @@ Namespace java.util.stream
 		'''        stream </param>
 		''' <param name="ordered"> whether an ordered traversal is requested </param>
 		''' <returns> the {@code TerminalOp} instance </returns>
-		Public Shared Function makeLong(ByVal action As java.util.function.LongConsumer, ByVal ordered As Boolean) As TerminalOp(Of Long?, Void)
+		Public Shared Function makeLong(  action As java.util.function.LongConsumer,   ordered As Boolean) As TerminalOp(Of Long?, Void)
 			java.util.Objects.requireNonNull(action)
 			Return New ForEachOp.OfLong(action, ordered)
 		End Function
@@ -100,7 +100,7 @@ Namespace java.util.stream
 		'''        a stream </param>
 		''' <param name="ordered"> whether an ordered traversal is requested </param>
 		''' <returns> the {@code TerminalOp} instance </returns>
-		Public Shared Function makeDouble(ByVal action As java.util.function.DoubleConsumer, ByVal ordered As Boolean) As TerminalOp(Of Double?, Void)
+		Public Shared Function makeDouble(  action As java.util.function.DoubleConsumer,   ordered As Boolean) As TerminalOp(Of Double?, Void)
 			java.util.Objects.requireNonNull(action)
 			Return New ForEachOp.OfDouble(action, ordered)
 		End Function
@@ -121,7 +121,7 @@ Namespace java.util.stream
 
 			Private ReadOnly ordered As Boolean
 
-			Protected Friend Sub New(ByVal ordered As Boolean)
+			Protected Friend Sub New(  ordered As Boolean)
 				Me.ordered = ordered
 			End Sub
 
@@ -133,11 +133,11 @@ Namespace java.util.stream
 				End Get
 			End Property
 
-			Public Overrides Function evaluateSequential(Of S)(ByVal helper As PipelineHelper(Of T), ByVal spliterator As java.util.Spliterator(Of S)) As Void
+			Public Overrides Function evaluateSequential(Of S)(  helper As PipelineHelper(Of T),   spliterator As java.util.Spliterator(Of S)) As Void
 				Return helper.wrapAndCopyInto(Me, spliterator).get()
 			End Function
 
-			Public Overrides Function evaluateParallel(Of S)(ByVal helper As PipelineHelper(Of T), ByVal spliterator As java.util.Spliterator(Of S)) As Void
+			Public Overrides Function evaluateParallel(Of S)(  helper As PipelineHelper(Of T),   spliterator As java.util.Spliterator(Of S)) As Void
 				If ordered Then
 					CType(New ForEachOrderedTask(Of )(helper, spliterator, Me), ForEachOrderedTask(Of )).invoke()
 				Else
@@ -164,12 +164,12 @@ Namespace java.util.stream
 				Friend ReadOnly consumer As java.util.function.Consumer(Of ?)
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-				Friend Sub New(Of T1)(ByVal consumer As java.util.function.Consumer(Of T1), ByVal ordered As Boolean)
+				Friend Sub New(Of T1)(  consumer As java.util.function.Consumer(Of T1),   ordered As Boolean)
 					MyBase.New(ordered)
 					Me.consumer = consumer
 				End Sub
 
-				Public Overrides Sub accept(ByVal t As T)
+				Public Overrides Sub accept(  t As T)
 					consumer.accept(t)
 				End Sub
 			End Class
@@ -182,7 +182,7 @@ Namespace java.util.stream
 
 				Friend ReadOnly consumer As java.util.function.IntConsumer
 
-				Friend Sub New(ByVal consumer As java.util.function.IntConsumer, ByVal ordered As Boolean)
+				Friend Sub New(  consumer As java.util.function.IntConsumer,   ordered As Boolean)
 					MyBase.New(ordered)
 					Me.consumer = consumer
 				End Sub
@@ -191,7 +191,7 @@ Namespace java.util.stream
 					Return StreamShape.INT_VALUE
 				End Function
 
-				Public Overrides Sub accept(ByVal t As Integer)
+				Public Overrides Sub accept(  t As Integer)
 					consumer.accept(t)
 				End Sub
 			End Class
@@ -204,7 +204,7 @@ Namespace java.util.stream
 
 				Friend ReadOnly consumer As java.util.function.LongConsumer
 
-				Friend Sub New(ByVal consumer As java.util.function.LongConsumer, ByVal ordered As Boolean)
+				Friend Sub New(  consumer As java.util.function.LongConsumer,   ordered As Boolean)
 					MyBase.New(ordered)
 					Me.consumer = consumer
 				End Sub
@@ -213,7 +213,7 @@ Namespace java.util.stream
 					Return StreamShape.LONG_VALUE
 				End Function
 
-				Public Overrides Sub accept(ByVal t As Long)
+				Public Overrides Sub accept(  t As Long)
 					consumer.accept(t)
 				End Sub
 			End Class
@@ -226,7 +226,7 @@ Namespace java.util.stream
 
 				Friend ReadOnly consumer As java.util.function.DoubleConsumer
 
-				Friend Sub New(ByVal consumer As java.util.function.DoubleConsumer, ByVal ordered As Boolean)
+				Friend Sub New(  consumer As java.util.function.DoubleConsumer,   ordered As Boolean)
 					MyBase.New(ordered)
 					Me.consumer = consumer
 				End Sub
@@ -235,7 +235,7 @@ Namespace java.util.stream
 					Return StreamShape.DOUBLE_VALUE
 				End Function
 
-				Public Overrides Sub accept(ByVal t As Double)
+				Public Overrides Sub accept(  t As Double)
 					consumer.accept(t)
 				End Sub
 			End Class
@@ -252,7 +252,7 @@ Namespace java.util.stream
 			Private ReadOnly helper As PipelineHelper(Of T)
 			Private targetSize As Long
 
-			Friend Sub New(ByVal helper As PipelineHelper(Of T), ByVal spliterator As java.util.Spliterator(Of S), ByVal sink As Sink(Of S))
+			Friend Sub New(  helper As PipelineHelper(Of T),   spliterator As java.util.Spliterator(Of S),   sink As Sink(Of S))
 				MyBase.New(Nothing)
 				Me.sink = sink
 				Me.helper = helper
@@ -260,7 +260,7 @@ Namespace java.util.stream
 				Me.targetSize = 0L
 			End Sub
 
-			Friend Sub New(ByVal parent As ForEachTask(Of S, T), ByVal spliterator As java.util.Spliterator(Of S))
+			Friend Sub New(  parent As ForEachTask(Of S, T),   spliterator As java.util.Spliterator(Of S))
 				MyBase.New(parent)
 				Me.spliterator = spliterator
 				Me.sink = parent.sink
@@ -367,7 +367,7 @@ Namespace java.util.stream
 			Private ReadOnly leftPredecessor As ForEachOrderedTask(Of S, T)
 			Private node As Node(Of T)
 
-			Protected Friend Sub New(ByVal helper As PipelineHelper(Of T), ByVal spliterator As java.util.Spliterator(Of S), ByVal action As Sink(Of T))
+			Protected Friend Sub New(  helper As PipelineHelper(Of T),   spliterator As java.util.Spliterator(Of S),   action As Sink(Of T))
 				MyBase.New(Nothing)
 				Me.helper = helper
 				Me.spliterator = spliterator
@@ -378,7 +378,7 @@ Namespace java.util.stream
 				Me.leftPredecessor = Nothing
 			End Sub
 
-			Friend Sub New(ByVal parent As ForEachOrderedTask(Of S, T), ByVal spliterator As java.util.Spliterator(Of S), ByVal leftPredecessor As ForEachOrderedTask(Of S, T))
+			Friend Sub New(  parent As ForEachOrderedTask(Of S, T),   spliterator As java.util.Spliterator(Of S),   leftPredecessor As ForEachOrderedTask(Of S, T))
 				MyBase.New(parent)
 				Me.helper = parent.helper
 				Me.spliterator = spliterator
@@ -392,7 +392,7 @@ Namespace java.util.stream
 				doCompute(Me)
 			End Sub
 
-			Private Shared Sub doCompute(Of S, T)(ByVal task As ForEachOrderedTask(Of S, T))
+			Private Shared Sub doCompute(Of S, T)(  task As ForEachOrderedTask(Of S, T))
 				Dim rightSplit As java.util.Spliterator(Of S) = task.spliterator, leftSplit As java.util.Spliterator(Of S)
 				Dim sizeThreshold As Long = task.targetSize
 				Dim forkRight As Boolean = False
@@ -471,7 +471,7 @@ Namespace java.util.stream
 				task.tryComplete()
 			End Sub
 
-			Public Overrides Sub onCompletion(Of T1)(ByVal caller As java.util.concurrent.CountedCompleter(Of T1))
+			Public Overrides Sub onCompletion(Of T1)(  caller As java.util.concurrent.CountedCompleter(Of T1))
 				If node IsNot Nothing Then
 					' Dump buffered elements from this leaf into the sink
 					node.forEach(action)

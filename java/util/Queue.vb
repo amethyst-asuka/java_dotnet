@@ -161,7 +161,7 @@ Namespace java.util
 		'''         this queue does not permit null elements </exception>
 		''' <exception cref="IllegalArgumentException"> if some property of this element
 		'''         prevents it from being added to this queue </exception>
-		Function add(ByVal e As E) As Boolean
+		Function add(  e As E) As Boolean
 
 		''' <summary>
 		''' Inserts the specified element into this queue if it is possible to do
@@ -179,7 +179,7 @@ Namespace java.util
 		'''         this queue does not permit null elements </exception>
 		''' <exception cref="IllegalArgumentException"> if some property of this element
 		'''         prevents it from being added to this queue </exception>
-		Function offer(ByVal e As E) As Boolean
+		Function offer(  e As E) As Boolean
 
 		''' <summary>
 		''' Retrieves and removes the head of this queue.  This method differs

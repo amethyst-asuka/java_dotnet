@@ -111,7 +111,7 @@ Namespace java.awt.Icolor
         ''' <param name="profile"> the specified ICC_Profile object </param>
         ''' <exception cref="IllegalArgumentException"> if profile is inappropriate for
         '''            representing a ColorSpace. </exception>
-        Public Sub New(ByVal profile As ICC_Profile)
+        Public Sub New(  profile As ICC_Profile)
             MyBase.New(profile.colorSpaceType, profile.numComponents)
 
             Dim profileClass As Integer = profile.profileClass
@@ -152,7 +152,7 @@ Namespace java.awt.Icolor
         ''' <returns> a float array of length 3. </returns>
         ''' <exception cref="ArrayIndexOutOfBoundsException"> if array length is not
         ''' at least the number of components in this ColorSpace. </exception>
-        Public Overrides Function toRGB(ByVal colorvalue As Single()) As Single()
+        Public Overrides Function toRGB(  colorvalue As Single()) As Single()
 
             If this2srgb Is Nothing Then
                 Dim transformList As sun.java2d.cmm.ColorTransform() = New sun.java2d.cmm.ColorTransform(1) {}
@@ -197,7 +197,7 @@ Namespace java.awt.Icolor
         '''       components in this ColorSpace. </returns>
         ''' <exception cref="ArrayIndexOutOfBoundsException"> if array length is not
         ''' at least 3. </exception>
-        Public Overrides Function fromRGB(ByVal rgbvalue As Single()) As Single()
+        Public Overrides Function fromRGB(  rgbvalue As Single()) As Single()
 
             If srgb2this Is Nothing Then
                 Dim transformList As sun.java2d.cmm.ColorTransform() = New sun.java2d.cmm.ColorTransform(1) {}
@@ -325,7 +325,7 @@ Namespace java.awt.Icolor
         ''' <returns> a float array of length 3. </returns>
         ''' <exception cref="ArrayIndexOutOfBoundsException"> if array length is not
         ''' at least the number of components in this ColorSpace. </exception>
-        Public Overrides Function toCIEXYZ(ByVal colorvalue As Single()) As Single()
+        Public Overrides Function toCIEXYZ(  colorvalue As Single()) As Single()
 
             If this2xyz Is Nothing Then
                 Dim transformList As sun.java2d.cmm.ColorTransform() = New sun.java2d.cmm.ColorTransform(1) {}
@@ -460,7 +460,7 @@ Namespace java.awt.Icolor
         '''         components in this ColorSpace. </returns>
         ''' <exception cref="ArrayIndexOutOfBoundsException"> if array length is not
         ''' at least 3. </exception>
-        Public Overrides Function fromCIEXYZ(ByVal colorvalue As Single()) As Single()
+        Public Overrides Function fromCIEXYZ(  colorvalue As Single()) As Single()
 
             If xyz2this Is Nothing Then
                 Dim transformList As sun.java2d.cmm.ColorTransform() = New sun.java2d.cmm.ColorTransform(1) {}
@@ -507,7 +507,7 @@ Namespace java.awt.Icolor
         ''' <exception cref="IllegalArgumentException"> if component is less than 0 or
         '''         greater than numComponents - 1.
         ''' @since 1.4 </exception>
-        Public Overrides Function getMinValue(ByVal component_Renamed As Integer) As Single
+        Public Overrides Function getMinValue(  component_Renamed As Integer) As Single
             If (component_Renamed < 0) OrElse (component_Renamed > Me.numComponents - 1) Then Throw New IllegalArgumentException("Component index out of range: + component")
             Return minVal(component_Renamed)
         End Function
@@ -528,7 +528,7 @@ Namespace java.awt.Icolor
         ''' <exception cref="IllegalArgumentException"> if component is less than 0 or
         '''         greater than numComponents - 1.
         ''' @since 1.4 </exception>
-        Public Overrides Function getMaxValue(ByVal component_Renamed As Integer) As Single
+        Public Overrides Function getMaxValue(  component_Renamed As Integer) As Single
             If (component_Renamed < 0) OrElse (component_Renamed > Me.numComponents - 1) Then Throw New IllegalArgumentException("Component index out of range: + component")
             Return maxVal(component_Renamed)
         End Function

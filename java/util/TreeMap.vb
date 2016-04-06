@@ -167,7 +167,7 @@ Namespace java.util
 		'''        If {@code null}, the {@link Comparable natural
 		'''        ordering} of the keys will be used. </param>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Sub New(Of T1)(ByVal comparator As Comparator(Of T1))
+		Public Sub New(Of T1)(  comparator As Comparator(Of T1))
 			Me.comparator_Renamed = comparator
 		End Sub
 
@@ -185,7 +185,7 @@ Namespace java.util
 		'''         or are not mutually comparable </exception>
 		''' <exception cref="NullPointerException"> if the specified map is null </exception>
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-		Public Sub New(Of T1 As K, ? As V)(ByVal m As Map(Of T1))
+		Public Sub New(Of T1 As K, ? As V)(  m As Map(Of T1))
 			comparator_Renamed = Nothing
 			putAll(m)
 		End Sub
@@ -198,7 +198,7 @@ Namespace java.util
 		''' <param name="m"> the sorted map whose mappings are to be placed in this map,
 		'''         and whose comparator is to be used to sort this map </param>
 		''' <exception cref="NullPointerException"> if the specified map is null </exception>
-		Public Sub New(Of T1 As V)(ByVal m As SortedMap(Of T1))
+		Public Sub New(Of T1 As V)(  m As SortedMap(Of T1))
 			comparator_Renamed = m.comparator()
 			Try
 				buildFromSorted(m.size(), m.entrySet().GetEnumerator(), Nothing, Nothing)
@@ -230,7 +230,7 @@ Namespace java.util
 		''' <exception cref="NullPointerException"> if the specified key is null
 		'''         and this map uses natural ordering, or its comparator
 		'''         does not permit null keys </exception>
-		Public Overridable Function containsKey(ByVal key As Object) As Boolean
+		Public Overridable Function containsKey(  key As Object) As Boolean
 			Return getEntry(key) IsNot Nothing
 		End Function
 
@@ -246,7 +246,7 @@ Namespace java.util
 		''' <returns> {@code true} if a mapping to {@code value} exists;
 		'''         {@code false} otherwise
 		''' @since 1.2 </returns>
-		Public Overridable Function containsValue(ByVal value As Object) As Boolean
+		Public Overridable Function containsValue(  value As Object) As Boolean
 			Dim e As Entry(Of K, V) = firstEntry
 			Do While e IsNot Nothing
 				If valEquals(value, e.value) Then Return True
@@ -276,7 +276,7 @@ Namespace java.util
 		''' <exception cref="NullPointerException"> if the specified key is null
 		'''         and this map uses natural ordering, or its comparator
 		'''         does not permit null keys </exception>
-		Public Overridable Function [get](ByVal key As Object) As V
+		Public Overridable Function [get](  key As Object) As V
 			Dim p As Entry(Of K, V) = getEntry(key)
 			Return (If(p Is Nothing, Nothing, p.value))
 		End Function
@@ -309,7 +309,7 @@ Namespace java.util
 		'''         the specified map contains a null key and this map does not
 		'''         permit null keys </exception>
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-		Public Overridable Sub putAll(Of T1 As K, ? As V)(ByVal map As Map(Of T1))
+		Public Overridable Sub putAll(Of T1 As K, ? As V)(  map As Map(Of T1))
 			Dim mapSize As Integer = map.size()
 			If size_Renamed=0 AndAlso mapSize<>0 AndAlso TypeOf map Is SortedMap Then
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
@@ -338,7 +338,7 @@ Namespace java.util
 		''' <exception cref="NullPointerException"> if the specified key is null
 		'''         and this map uses natural ordering, or its comparator
 		'''         does not permit null keys </exception>
-		Friend Function getEntry(ByVal key As Object) As Entry(Of K, V)
+		Friend Function getEntry(  key As Object) As Entry(Of K, V)
 			' Offload comparator-based version for sake of performance
 			If comparator_Renamed IsNot Nothing Then Return getEntryUsingComparator(key)
 			If key Is Nothing Then Throw New NullPointerException
@@ -366,7 +366,7 @@ Namespace java.util
 		''' that are less dependent on comparator performance, but is
 		''' worthwhile here.)
 		''' </summary>
-		Friend Function getEntryUsingComparator(ByVal key As Object) As Entry(Of K, V)
+		Friend Function getEntryUsingComparator(  key As Object) As Entry(Of K, V)
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
 			Dim k As K = CType(key, K)
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
@@ -394,7 +394,7 @@ Namespace java.util
 		''' key; if no such entry exists (i.e., the greatest key in the Tree is less
 		''' than the specified key), returns {@code null}.
 		''' </summary>
-		Friend Function getCeilingEntry(ByVal key As K) As Entry(Of K, V)
+		Friend Function getCeilingEntry(  key As K) As Entry(Of K, V)
 			Dim p As Entry(Of K, V) = root
 			Do While p IsNot Nothing
 				Dim cmp As Integer = compare(key, p.key)
@@ -428,7 +428,7 @@ Namespace java.util
 		''' exists, returns the entry for the greatest key less than the specified
 		''' key; if no such entry exists, returns {@code null}.
 		''' </summary>
-		Friend Function getFloorEntry(ByVal key As K) As Entry(Of K, V)
+		Friend Function getFloorEntry(  key As K) As Entry(Of K, V)
 			Dim p As Entry(Of K, V) = root
 			Do While p IsNot Nothing
 				Dim cmp As Integer = compare(key, p.key)
@@ -464,7 +464,7 @@ Namespace java.util
 		''' key greater than the specified key; if no such entry exists
 		''' returns {@code null}.
 		''' </summary>
-		Friend Function getHigherEntry(ByVal key As K) As Entry(Of K, V)
+		Friend Function getHigherEntry(  key As K) As Entry(Of K, V)
 			Dim p As Entry(Of K, V) = root
 			Do While p IsNot Nothing
 				Dim cmp As Integer = compare(key, p.key)
@@ -496,7 +496,7 @@ Namespace java.util
 		''' no such entry exists (i.e., the least key in the Tree is greater than
 		''' the specified key), returns {@code null}.
 		''' </summary>
-		Friend Function getLowerEntry(ByVal key As K) As Entry(Of K, V)
+		Friend Function getLowerEntry(  key As K) As Entry(Of K, V)
 			Dim p As Entry(Of K, V) = root
 			Do While p IsNot Nothing
 				Dim cmp As Integer = compare(key, p.key)
@@ -540,7 +540,7 @@ Namespace java.util
 		''' <exception cref="NullPointerException"> if the specified key is null
 		'''         and this map uses natural ordering, or its comparator
 		'''         does not permit null keys </exception>
-		Public Overridable Function put(ByVal key As K, ByVal value As V) As V
+		Public Overridable Function put(  key As K,   value As V) As V
 			Dim t As Entry(Of K, V) = root
 			If t Is Nothing Then
 				compare(key, key) ' type (and possibly null) check
@@ -611,7 +611,7 @@ Namespace java.util
 		''' <exception cref="NullPointerException"> if the specified key is null
 		'''         and this map uses natural ordering, or its comparator
 		'''         does not permit null keys </exception>
-		Public Overridable Function remove(ByVal key As Object) As V
+		Public Overridable Function remove(  key As Object) As V
 			Dim p As Entry(Of K, V) = getEntry(key)
 			If p Is Nothing Then Return Nothing
 
@@ -704,7 +704,7 @@ Namespace java.util
 		'''         and this map uses natural ordering, or its comparator
 		'''         does not permit null keys
 		''' @since 1.6 </exception>
-		Public Overridable Function lowerEntry(ByVal key As K) As KeyValuePair(Of K, V) Implements NavigableMap(Of K, V).lowerEntry
+		Public Overridable Function lowerEntry(  key As K) As KeyValuePair(Of K, V) Implements NavigableMap(Of K, V).lowerEntry
 			Return exportEntry(getLowerEntry(key))
 		End Function
 
@@ -713,7 +713,7 @@ Namespace java.util
 		'''         and this map uses natural ordering, or its comparator
 		'''         does not permit null keys
 		''' @since 1.6 </exception>
-		Public Overridable Function lowerKey(ByVal key As K) As K Implements NavigableMap(Of K, V).lowerKey
+		Public Overridable Function lowerKey(  key As K) As K Implements NavigableMap(Of K, V).lowerKey
 			Return keyOrNull(getLowerEntry(key))
 		End Function
 
@@ -722,7 +722,7 @@ Namespace java.util
 		'''         and this map uses natural ordering, or its comparator
 		'''         does not permit null keys
 		''' @since 1.6 </exception>
-		Public Overridable Function floorEntry(ByVal key As K) As KeyValuePair(Of K, V) Implements NavigableMap(Of K, V).floorEntry
+		Public Overridable Function floorEntry(  key As K) As KeyValuePair(Of K, V) Implements NavigableMap(Of K, V).floorEntry
 			Return exportEntry(getFloorEntry(key))
 		End Function
 
@@ -731,7 +731,7 @@ Namespace java.util
 		'''         and this map uses natural ordering, or its comparator
 		'''         does not permit null keys
 		''' @since 1.6 </exception>
-		Public Overridable Function floorKey(ByVal key As K) As K Implements NavigableMap(Of K, V).floorKey
+		Public Overridable Function floorKey(  key As K) As K Implements NavigableMap(Of K, V).floorKey
 			Return keyOrNull(getFloorEntry(key))
 		End Function
 
@@ -740,7 +740,7 @@ Namespace java.util
 		'''         and this map uses natural ordering, or its comparator
 		'''         does not permit null keys
 		''' @since 1.6 </exception>
-		Public Overridable Function ceilingEntry(ByVal key As K) As KeyValuePair(Of K, V) Implements NavigableMap(Of K, V).ceilingEntry
+		Public Overridable Function ceilingEntry(  key As K) As KeyValuePair(Of K, V) Implements NavigableMap(Of K, V).ceilingEntry
 			Return exportEntry(getCeilingEntry(key))
 		End Function
 
@@ -749,7 +749,7 @@ Namespace java.util
 		'''         and this map uses natural ordering, or its comparator
 		'''         does not permit null keys
 		''' @since 1.6 </exception>
-		Public Overridable Function ceilingKey(ByVal key As K) As K Implements NavigableMap(Of K, V).ceilingKey
+		Public Overridable Function ceilingKey(  key As K) As K Implements NavigableMap(Of K, V).ceilingKey
 			Return keyOrNull(getCeilingEntry(key))
 		End Function
 
@@ -758,7 +758,7 @@ Namespace java.util
 		'''         and this map uses natural ordering, or its comparator
 		'''         does not permit null keys
 		''' @since 1.6 </exception>
-		Public Overridable Function higherEntry(ByVal key As K) As KeyValuePair(Of K, V) Implements NavigableMap(Of K, V).higherEntry
+		Public Overridable Function higherEntry(  key As K) As KeyValuePair(Of K, V) Implements NavigableMap(Of K, V).higherEntry
 			Return exportEntry(getHigherEntry(key))
 		End Function
 
@@ -767,7 +767,7 @@ Namespace java.util
 		'''         and this map uses natural ordering, or its comparator
 		'''         does not permit null keys
 		''' @since 1.6 </exception>
-		Public Overridable Function higherKey(ByVal key As K) As K Implements NavigableMap(Of K, V).higherKey
+		Public Overridable Function higherKey(  key As K) As K Implements NavigableMap(Of K, V).higherKey
 			Return keyOrNull(getHigherEntry(key))
 		End Function
 
@@ -916,7 +916,7 @@ Namespace java.util
 		'''         does not permit null keys </exception>
 		''' <exception cref="IllegalArgumentException"> {@inheritDoc}
 		''' @since 1.6 </exception>
-		Public Overridable Function subMap(ByVal fromKey As K, ByVal fromInclusive As Boolean, ByVal toKey As K, ByVal toInclusive As Boolean) As NavigableMap(Of K, V) Implements NavigableMap(Of K, V).subMap
+		Public Overridable Function subMap(  fromKey As K,   fromInclusive As Boolean,   toKey As K,   toInclusive As Boolean) As NavigableMap(Of K, V) Implements NavigableMap(Of K, V).subMap
 			Return New AscendingSubMap(Of )(Me, False, fromKey, fromInclusive, False, toKey, toInclusive)
 		End Function
 
@@ -926,7 +926,7 @@ Namespace java.util
 		'''         does not permit null keys </exception>
 		''' <exception cref="IllegalArgumentException"> {@inheritDoc}
 		''' @since 1.6 </exception>
-		Public Overridable Function headMap(ByVal toKey As K, ByVal inclusive As Boolean) As NavigableMap(Of K, V) Implements NavigableMap(Of K, V).headMap
+		Public Overridable Function headMap(  toKey As K,   inclusive As Boolean) As NavigableMap(Of K, V) Implements NavigableMap(Of K, V).headMap
 			Return New AscendingSubMap(Of )(Me, True, Nothing, True, False, toKey, inclusive)
 		End Function
 
@@ -936,7 +936,7 @@ Namespace java.util
 		'''         does not permit null keys </exception>
 		''' <exception cref="IllegalArgumentException"> {@inheritDoc}
 		''' @since 1.6 </exception>
-		Public Overridable Function tailMap(ByVal fromKey As K, ByVal inclusive As Boolean) As NavigableMap(Of K, V) Implements NavigableMap(Of K, V).tailMap
+		Public Overridable Function tailMap(  fromKey As K,   inclusive As Boolean) As NavigableMap(Of K, V) Implements NavigableMap(Of K, V).tailMap
 			Return New AscendingSubMap(Of )(Me, False, fromKey, inclusive, True, Nothing, True)
 		End Function
 
@@ -945,7 +945,7 @@ Namespace java.util
 		'''         null and this map uses natural ordering, or its comparator
 		'''         does not permit null keys </exception>
 		''' <exception cref="IllegalArgumentException"> {@inheritDoc} </exception>
-		Public Overridable Function subMap(ByVal fromKey As K, ByVal toKey As K) As SortedMap(Of K, V) Implements NavigableMap(Of K, V).subMap
+		Public Overridable Function subMap(  fromKey As K,   toKey As K) As SortedMap(Of K, V) Implements NavigableMap(Of K, V).subMap
 			Return subMap(fromKey, True, toKey, False)
 		End Function
 
@@ -954,7 +954,7 @@ Namespace java.util
 		'''         and this map uses natural ordering, or its comparator
 		'''         does not permit null keys </exception>
 		''' <exception cref="IllegalArgumentException"> {@inheritDoc} </exception>
-		Public Overridable Function headMap(ByVal toKey As K) As SortedMap(Of K, V) Implements NavigableMap(Of K, V).headMap
+		Public Overridable Function headMap(  toKey As K) As SortedMap(Of K, V) Implements NavigableMap(Of K, V).headMap
 			Return headMap(toKey, False)
 		End Function
 
@@ -963,11 +963,11 @@ Namespace java.util
 		'''         and this map uses natural ordering, or its comparator
 		'''         does not permit null keys </exception>
 		''' <exception cref="IllegalArgumentException"> {@inheritDoc} </exception>
-		Public Overridable Function tailMap(ByVal fromKey As K) As SortedMap(Of K, V) Implements NavigableMap(Of K, V).tailMap
+		Public Overridable Function tailMap(  fromKey As K) As SortedMap(Of K, V) Implements NavigableMap(Of K, V).tailMap
 			Return tailMap(fromKey, True)
 		End Function
 
-		Public Overrides Function replace(ByVal key As K, ByVal oldValue As V, ByVal newValue As V) As Boolean
+		Public Overrides Function replace(  key As K,   oldValue As V,   newValue As V) As Boolean
 			Dim p As Entry(Of K, V) = getEntry(key)
 			If p IsNot Nothing AndAlso Objects.Equals(oldValue, p.value) Then
 				p.value = newValue
@@ -976,7 +976,7 @@ Namespace java.util
 			Return False
 		End Function
 
-		Public Overrides Function replace(ByVal key As K, ByVal value As V) As V
+		Public Overrides Function replace(  key As K,   value As V) As V
 			Dim p As Entry(Of K, V) = getEntry(key)
 			If p IsNot Nothing Then
 				Dim oldValue As V = p.value
@@ -987,7 +987,7 @@ Namespace java.util
 		End Function
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Overrides Sub forEach(Of T1)(ByVal action As java.util.function.BiConsumer(Of T1))
+		Public Overrides Sub forEach(Of T1)(  action As java.util.function.BiConsumer(Of T1))
 			Objects.requireNonNull(action)
 			Dim expectedModCount As Integer = modCount
 			Dim e As Entry(Of K, V) = firstEntry
@@ -1000,7 +1000,7 @@ Namespace java.util
 		End Sub
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Overrides Sub replaceAll(Of T1 As V)(ByVal [function] As java.util.function.BiFunction(Of T1))
+		Public Overrides Sub replaceAll(Of T1 As V)(  [function] As java.util.function.BiFunction(Of T1))
 			Objects.requireNonNull([function])
 			Dim expectedModCount As Integer = modCount
 
@@ -1020,7 +1020,7 @@ Namespace java.util
 
 			Private ReadOnly outerInstance As TreeMap
 
-			Public Sub New(ByVal outerInstance As TreeMap)
+			Public Sub New(  outerInstance As TreeMap)
 				Me.outerInstance = outerInstance
 			End Sub
 
@@ -1032,11 +1032,11 @@ Namespace java.util
 				Return outerInstance.size()
 			End Function
 
-			Public Overridable Function contains(ByVal o As Object) As Boolean
+			Public Overridable Function contains(  o As Object) As Boolean
 				Return outerInstance.containsValue(o)
 			End Function
 
-			Public Overridable Function remove(ByVal o As Object) As Boolean
+			Public Overridable Function remove(  o As Object) As Boolean
 				Dim e As Entry(Of K, V) = outerInstance.firstEntry
 				Do While e IsNot Nothing
 					If valEquals(e.value, o) Then
@@ -1062,7 +1062,7 @@ Namespace java.util
 
 			Private ReadOnly outerInstance As TreeMap
 
-			Public Sub New(ByVal outerInstance As TreeMap)
+			Public Sub New(  outerInstance As TreeMap)
 				Me.outerInstance = outerInstance
 			End Sub
 
@@ -1070,7 +1070,7 @@ Namespace java.util
 				Return New EntryIterator(outerInstance.firstEntry)
 			End Function
 
-			Public Overridable Function contains(ByVal o As Object) As Boolean
+			Public Overridable Function contains(  o As Object) As Boolean
 				If Not(TypeOf o Is DictionaryEntry) Then Return False
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 				Dim entry As KeyValuePair(Of ?, ?) = CType(o, KeyValuePair(Of ?, ?))
@@ -1079,7 +1079,7 @@ Namespace java.util
 				Return p IsNot Nothing AndAlso valEquals(p.value, value)
 			End Function
 
-			Public Overridable Function remove(ByVal o As Object) As Boolean
+			Public Overridable Function remove(  o As Object) As Boolean
 				If Not(TypeOf o Is DictionaryEntry) Then Return False
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 				Dim entry As KeyValuePair(Of ?, ?) = CType(o, KeyValuePair(Of ?, ?))
@@ -1127,7 +1127,7 @@ Namespace java.util
 
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 			Private ReadOnly m As NavigableMap(Of E, ?)
-			Friend Sub New(Of T1)(ByVal map As NavigableMap(Of T1))
+			Friend Sub New(Of T1)(  map As NavigableMap(Of T1))
 				m = map
 			End Sub
 
@@ -1159,22 +1159,22 @@ Namespace java.util
 					Return m.empty
 				End Get
 			End Property
-			Public Function contains(ByVal o As Object) As Boolean
+			Public Function contains(  o As Object) As Boolean
 				Return m.containsKey(o)
 			End Function
 			Public Sub clear()
 				m.clear()
 			End Sub
-			Public Function lower(ByVal e As E) As E
+			Public Function lower(  e As E) As E
 				Return m.lowerKey(e)
 			End Function
-			Public Function floor(ByVal e As E) As E
+			Public Function floor(  e As E) As E
 				Return m.floorKey(e)
 			End Function
-			Public Function ceiling(ByVal e As E) As E
+			Public Function ceiling(  e As E) As E
 				Return m.ceilingKey(e)
 			End Function
-			Public Function higher(ByVal e As E) As E
+			Public Function higher(  e As E) As E
 				Return m.higherKey(e)
 			End Function
 			Public Function first() As E
@@ -1198,27 +1198,27 @@ Namespace java.util
 				Dim e As KeyValuePair(Of E, ?) = m.pollLastEntry()
 				Return If(e Is Nothing, Nothing, e.Key)
 			End Function
-			Public Function remove(ByVal o As Object) As Boolean
+			Public Function remove(  o As Object) As Boolean
 				Dim oldSize As Integer = size()
 				m.remove(o)
 				Return size() <> oldSize
 			End Function
-			Public Function subSet(ByVal fromElement As E, ByVal fromInclusive As Boolean, ByVal toElement As E, ByVal toInclusive As Boolean) As NavigableSet(Of E)
+			Public Function subSet(  fromElement As E,   fromInclusive As Boolean,   toElement As E,   toInclusive As Boolean) As NavigableSet(Of E)
 				Return New KeySet(Of )(m.subMap(fromElement, fromInclusive, toElement, toInclusive))
 			End Function
-			Public Function headSet(ByVal toElement As E, ByVal inclusive As Boolean) As NavigableSet(Of E)
+			Public Function headSet(  toElement As E,   inclusive As Boolean) As NavigableSet(Of E)
 				Return New KeySet(Of )(m.headMap(toElement, inclusive))
 			End Function
-			Public Function tailSet(ByVal fromElement As E, ByVal inclusive As Boolean) As NavigableSet(Of E)
+			Public Function tailSet(  fromElement As E,   inclusive As Boolean) As NavigableSet(Of E)
 				Return New KeySet(Of )(m.tailMap(fromElement, inclusive))
 			End Function
-			Public Function subSet(ByVal fromElement As E, ByVal toElement As E) As SortedSet(Of E)
+			Public Function subSet(  fromElement As E,   toElement As E) As SortedSet(Of E)
 				Return subSet(fromElement, True, toElement, False)
 			End Function
-			Public Function headSet(ByVal toElement As E) As SortedSet(Of E)
+			Public Function headSet(  toElement As E) As SortedSet(Of E)
 				Return headSet(toElement, False)
 			End Function
-			Public Function tailSet(ByVal fromElement As E) As SortedSet(Of E)
+			Public Function tailSet(  fromElement As E) As SortedSet(Of E)
 				Return tailSet(fromElement, True)
 			End Function
 			Public Function descendingSet() As NavigableSet(Of E) Implements NavigableSet(Of E).descendingSet
@@ -1242,7 +1242,7 @@ Namespace java.util
 			Friend lastReturned As Entry(Of K, V)
 			Friend expectedModCount As Integer
 
-			Friend Sub New(ByVal outerInstance As TreeMap, ByVal first As Entry(Of K, V))
+			Friend Sub New(  outerInstance As TreeMap,   first As Entry(Of K, V))
 					Me.outerInstance = outerInstance
 				expectedModCount = outerInstance.modCount
 				lastReturned = Nothing
@@ -1287,7 +1287,7 @@ Namespace java.util
 
 			Private ReadOnly outerInstance As TreeMap
 
-			Friend Sub New(ByVal outerInstance As TreeMap, ByVal first As Entry(Of K, V))
+			Friend Sub New(  outerInstance As TreeMap,   first As Entry(Of K, V))
 					Me.outerInstance = outerInstance
 				MyBase.New(first)
 			End Sub
@@ -1301,7 +1301,7 @@ Namespace java.util
 
 			Private ReadOnly outerInstance As TreeMap
 
-			Friend Sub New(ByVal outerInstance As TreeMap, ByVal first As Entry(Of K, V))
+			Friend Sub New(  outerInstance As TreeMap,   first As Entry(Of K, V))
 					Me.outerInstance = outerInstance
 				MyBase.New(first)
 			End Sub
@@ -1315,7 +1315,7 @@ Namespace java.util
 
 			Private ReadOnly outerInstance As TreeMap
 
-			Friend Sub New(ByVal outerInstance As TreeMap, ByVal first As Entry(Of K, V))
+			Friend Sub New(  outerInstance As TreeMap,   first As Entry(Of K, V))
 					Me.outerInstance = outerInstance
 				MyBase.New(first)
 			End Sub
@@ -1329,7 +1329,7 @@ Namespace java.util
 
 			Private ReadOnly outerInstance As TreeMap
 
-			Friend Sub New(ByVal outerInstance As TreeMap, ByVal first As Entry(Of K, V))
+			Friend Sub New(  outerInstance As TreeMap,   first As Entry(Of K, V))
 					Me.outerInstance = outerInstance
 				MyBase.New(first)
 			End Sub
@@ -1351,7 +1351,7 @@ Namespace java.util
 		''' Compares two keys using the correct comparison method for this TreeMap.
 		''' </summary>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Friend Function compare(ByVal k1 As Object, ByVal k2 As Object) As Integer
+		Friend Function compare(  k1 As Object,   k2 As Object) As Integer
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 			Return If(comparator_Renamed Is Nothing, CType(k1, Comparable(Of ?)).CompareTo(CType(k2, K)), comparator_Renamed.Compare(CType(k1, K), CType(k2, K)))
@@ -1361,28 +1361,28 @@ Namespace java.util
 		''' Test two values for equality.  Differs from o1.equals(o2) only in
 		''' that it copes with {@code null} o1 properly.
 		''' </summary>
-		Friend Shared Function valEquals(ByVal o1 As Object, ByVal o2 As Object) As Boolean
+		Friend Shared Function valEquals(  o1 As Object,   o2 As Object) As Boolean
 			Return (If(o1 Is Nothing, o2 Is Nothing, o1.Equals(o2)))
 		End Function
 
 		''' <summary>
 		''' Return SimpleImmutableEntry for entry, or null if null
 		''' </summary>
-		Shared Function exportEntry(Of K, V)(ByVal e As TreeMap.Entry(Of K, V)) As KeyValuePair(Of K, V)
+		Shared Function exportEntry(Of K, V)(  e As TreeMap.Entry(Of K, V)) As KeyValuePair(Of K, V)
 			Return If(e Is Nothing, Nothing, New AbstractMap.SimpleImmutableEntry(Of )(e))
 		End Function
 
 		''' <summary>
 		''' Return key for entry, or null if null
 		''' </summary>
-		Shared Function keyOrNull(Of K, V)(ByVal e As TreeMap.Entry(Of K, V)) As K
+		Shared Function keyOrNull(Of K, V)(  e As TreeMap.Entry(Of K, V)) As K
 			Return If(e Is Nothing, Nothing, e.key)
 		End Function
 
 		''' <summary>
 		''' Returns the key corresponding to the specified Entry. </summary>
 		''' <exception cref="NoSuchElementException"> if the Entry is null </exception>
-		Friend Shared Function key(Of K, T1)(ByVal e As Entry(Of T1)) As K
+		Friend Shared Function key(Of K, T1)(  e As Entry(Of T1)) As K
 			If e Is Nothing Then Throw New NoSuchElementException
 			Return e.key
 		End Function
@@ -1422,7 +1422,7 @@ Namespace java.util
 			Friend ReadOnly fromStart, toEnd As Boolean
 			Friend ReadOnly loInclusive, hiInclusive As Boolean
 
-			Friend Sub New(ByVal m As TreeMap(Of K, V), ByVal fromStart As Boolean, ByVal lo As K, ByVal loInclusive As Boolean, ByVal toEnd As Boolean, ByVal hi As K, ByVal hiInclusive As Boolean)
+			Friend Sub New(  m As TreeMap(Of K, V),   fromStart As Boolean,   lo As K,   loInclusive As Boolean,   toEnd As Boolean,   hi As K,   hiInclusive As Boolean)
 				If (Not fromStart) AndAlso (Not toEnd) Then
 					If m.Compare(lo, hi) > 0 Then Throw New IllegalArgumentException("fromKey > toKey")
 				Else
@@ -1441,7 +1441,7 @@ Namespace java.util
 
 			' internal utilities
 
-			Friend Function tooLow(ByVal key As Object) As Boolean
+			Friend Function tooLow(  key As Object) As Boolean
 				If Not fromStart Then
 					Dim c As Integer = m.Compare(key, lo)
 					If c < 0 OrElse (c = 0 AndAlso (Not loInclusive)) Then Return True
@@ -1449,7 +1449,7 @@ Namespace java.util
 				Return False
 			End Function
 
-			Friend Function tooHigh(ByVal key As Object) As Boolean
+			Friend Function tooHigh(  key As Object) As Boolean
 				If Not toEnd Then
 					Dim c As Integer = m.Compare(key, hi)
 					If c > 0 OrElse (c = 0 AndAlso (Not hiInclusive)) Then Return True
@@ -1457,15 +1457,15 @@ Namespace java.util
 				Return False
 			End Function
 
-			Friend Function inRange(ByVal key As Object) As Boolean
+			Friend Function inRange(  key As Object) As Boolean
 				Return (Not tooLow(key)) AndAlso Not tooHigh(key)
 			End Function
 
-			Friend Function inClosedRange(ByVal key As Object) As Boolean
+			Friend Function inClosedRange(  key As Object) As Boolean
 				Return (fromStart OrElse m.Compare(key, lo) >= 0) AndAlso (toEnd OrElse m.Compare(hi, key) >= 0)
 			End Function
 
-			Friend Function inRange(ByVal key As Object, ByVal inclusive As Boolean) As Boolean
+			Friend Function inRange(  key As Object,   inclusive As Boolean) As Boolean
 				Return If(inclusive, inRange(key), inClosedRange(key))
 			End Function
 
@@ -1485,25 +1485,25 @@ Namespace java.util
 				Return If(e Is Nothing OrElse tooLow(e.key), Nothing, e)
 			End Function
 
-			Friend Function absCeiling(ByVal key As K) As TreeMap.Entry(Of K, V)
+			Friend Function absCeiling(  key As K) As TreeMap.Entry(Of K, V)
 				If tooLow(key) Then Return absLowest()
 				Dim e As TreeMap.Entry(Of K, V) = m.getCeilingEntry(key)
 				Return If(e Is Nothing OrElse tooHigh(e.key), Nothing, e)
 			End Function
 
-			Friend Function absHigher(ByVal key As K) As TreeMap.Entry(Of K, V)
+			Friend Function absHigher(  key As K) As TreeMap.Entry(Of K, V)
 				If tooLow(key) Then Return absLowest()
 				Dim e As TreeMap.Entry(Of K, V) = m.getHigherEntry(key)
 				Return If(e Is Nothing OrElse tooHigh(e.key), Nothing, e)
 			End Function
 
-			Friend Function absFloor(ByVal key As K) As TreeMap.Entry(Of K, V)
+			Friend Function absFloor(  key As K) As TreeMap.Entry(Of K, V)
 				If tooHigh(key) Then Return absHighest()
 				Dim e As TreeMap.Entry(Of K, V) = m.getFloorEntry(key)
 				Return If(e Is Nothing OrElse tooLow(e.key), Nothing, e)
 			End Function
 
-			Friend Function absLower(ByVal key As K) As TreeMap.Entry(Of K, V)
+			Friend Function absLower(  key As K) As TreeMap.Entry(Of K, V)
 				If tooHigh(key) Then Return absHighest()
 				Dim e As TreeMap.Entry(Of K, V) = m.getLowerEntry(key)
 				Return If(e Is Nothing OrElse tooLow(e.key), Nothing, e)
@@ -1526,10 +1526,10 @@ Namespace java.util
 
 			Friend MustOverride Function subLowest() As TreeMap.Entry(Of K, V)
 			Friend MustOverride Function subHighest() As TreeMap.Entry(Of K, V)
-			Friend MustOverride Function subCeiling(ByVal key As K) As TreeMap.Entry(Of K, V)
-			Friend MustOverride Function subHigher(ByVal key As K) As TreeMap.Entry(Of K, V)
-			Friend MustOverride Function subFloor(ByVal key As K) As TreeMap.Entry(Of K, V)
-			Friend MustOverride Function subLower(ByVal key As K) As TreeMap.Entry(Of K, V)
+			Friend MustOverride Function subCeiling(  key As K) As TreeMap.Entry(Of K, V)
+			Friend MustOverride Function subHigher(  key As K) As TreeMap.Entry(Of K, V)
+			Friend MustOverride Function subFloor(  key As K) As TreeMap.Entry(Of K, V)
+			Friend MustOverride Function subLower(  key As K) As TreeMap.Entry(Of K, V)
 
 			''' <summary>
 			''' Returns ascending iterator from the perspective of this submap </summary>
@@ -1553,52 +1553,52 @@ Namespace java.util
 				Return If(fromStart AndAlso toEnd, m.size(), entrySet().size())
 			End Function
 
-			Public Function containsKey(ByVal key As Object) As Boolean
+			Public Function containsKey(  key As Object) As Boolean
 				Return inRange(key) AndAlso m.containsKey(key)
 			End Function
 
-			Public Function put(ByVal key As K, ByVal value As V) As V
+			Public Function put(  key As K,   value As V) As V
 				If Not inRange(key) Then Throw New IllegalArgumentException("key out of range")
 				Return m.put(key, value)
 			End Function
 
-			Public Function [get](ByVal key As Object) As V
+			Public Function [get](  key As Object) As V
 				Return If((Not inRange(key)), Nothing, m.get(key))
 			End Function
 
-			Public Function remove(ByVal key As Object) As V
+			Public Function remove(  key As Object) As V
 				Return If((Not inRange(key)), Nothing, m.remove(key))
 			End Function
 
-			Public Function ceilingEntry(ByVal key As K) As KeyValuePair(Of K, V) Implements NavigableMap(Of K, V).ceilingEntry
+			Public Function ceilingEntry(  key As K) As KeyValuePair(Of K, V) Implements NavigableMap(Of K, V).ceilingEntry
 				Return exportEntry(subCeiling(key))
 			End Function
 
-			Public Function ceilingKey(ByVal key As K) As K Implements NavigableMap(Of K, V).ceilingKey
+			Public Function ceilingKey(  key As K) As K Implements NavigableMap(Of K, V).ceilingKey
 				Return keyOrNull(subCeiling(key))
 			End Function
 
-			Public Function higherEntry(ByVal key As K) As KeyValuePair(Of K, V) Implements NavigableMap(Of K, V).higherEntry
+			Public Function higherEntry(  key As K) As KeyValuePair(Of K, V) Implements NavigableMap(Of K, V).higherEntry
 				Return exportEntry(subHigher(key))
 			End Function
 
-			Public Function higherKey(ByVal key As K) As K Implements NavigableMap(Of K, V).higherKey
+			Public Function higherKey(  key As K) As K Implements NavigableMap(Of K, V).higherKey
 				Return keyOrNull(subHigher(key))
 			End Function
 
-			Public Function floorEntry(ByVal key As K) As KeyValuePair(Of K, V) Implements NavigableMap(Of K, V).floorEntry
+			Public Function floorEntry(  key As K) As KeyValuePair(Of K, V) Implements NavigableMap(Of K, V).floorEntry
 				Return exportEntry(subFloor(key))
 			End Function
 
-			Public Function floorKey(ByVal key As K) As K Implements NavigableMap(Of K, V).floorKey
+			Public Function floorKey(  key As K) As K Implements NavigableMap(Of K, V).floorKey
 				Return keyOrNull(subFloor(key))
 			End Function
 
-			Public Function lowerEntry(ByVal key As K) As KeyValuePair(Of K, V) Implements NavigableMap(Of K, V).lowerEntry
+			Public Function lowerEntry(  key As K) As KeyValuePair(Of K, V) Implements NavigableMap(Of K, V).lowerEntry
 				Return exportEntry(subLower(key))
 			End Function
 
-			Public Function lowerKey(ByVal key As K) As K Implements NavigableMap(Of K, V).lowerKey
+			Public Function lowerKey(  key As K) As K Implements NavigableMap(Of K, V).lowerKey
 				Return keyOrNull(subLower(key))
 			End Function
 
@@ -1658,15 +1658,15 @@ Namespace java.util
 				Return outerInstance.descendingMap().navigableKeySet()
 			End Function
 
-			Public Function subMap(ByVal fromKey As K, ByVal toKey As K) As SortedMap(Of K, V) Implements NavigableMap(Of K, V).subMap
+			Public Function subMap(  fromKey As K,   toKey As K) As SortedMap(Of K, V) Implements NavigableMap(Of K, V).subMap
 				Return subMap(fromKey, True, toKey, False)
 			End Function
 
-			Public Function headMap(ByVal toKey As K) As SortedMap(Of K, V) Implements NavigableMap(Of K, V).headMap
+			Public Function headMap(  toKey As K) As SortedMap(Of K, V) Implements NavigableMap(Of K, V).headMap
 				Return headMap(toKey, False)
 			End Function
 
-			Public Function tailMap(ByVal fromKey As K) As SortedMap(Of K, V) Implements NavigableMap(Of K, V).tailMap
+			Public Function tailMap(  fromKey As K) As SortedMap(Of K, V) Implements NavigableMap(Of K, V).tailMap
 				Return tailMap(fromKey, True)
 			End Function
 
@@ -1677,7 +1677,7 @@ Namespace java.util
 
 				Private ReadOnly outerInstance As TreeMap.NavigableSubMap
 
-				Public Sub New(ByVal outerInstance As TreeMap.NavigableSubMap)
+				Public Sub New(  outerInstance As TreeMap.NavigableSubMap)
 					Me.outerInstance = outerInstance
 				End Sub
 
@@ -1706,7 +1706,7 @@ Namespace java.util
 					End Get
 				End Property
 
-				Public Overridable Function contains(ByVal o As Object) As Boolean
+				Public Overridable Function contains(  o As Object) As Boolean
 					If Not(TypeOf o Is DictionaryEntry) Then Return False
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 					Dim entry As KeyValuePair(Of ?, ?) = CType(o, KeyValuePair(Of ?, ?))
@@ -1717,7 +1717,7 @@ Namespace java.util
 					Return node IsNot Nothing AndAlso valEquals(node.value, entry.Value)
 				End Function
 
-				Public Overridable Function remove(ByVal o As Object) As Boolean
+				Public Overridable Function remove(  o As Object) As Boolean
 					If Not(TypeOf o Is DictionaryEntry) Then Return False
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 					Dim entry As KeyValuePair(Of ?, ?) = CType(o, KeyValuePair(Of ?, ?))
@@ -1745,7 +1745,7 @@ Namespace java.util
 				Friend ReadOnly fenceKey As Object
 				Friend expectedModCount As Integer
 
-				Friend Sub New(ByVal outerInstance As TreeMap.NavigableSubMap, ByVal first As TreeMap.Entry(Of K, V), ByVal fence As TreeMap.Entry(Of K, V))
+				Friend Sub New(  outerInstance As TreeMap.NavigableSubMap,   first As TreeMap.Entry(Of K, V),   fence As TreeMap.Entry(Of K, V))
 						Me.outerInstance = outerInstance
 					expectedModCount = outerInstance.m.modCount
 					lastReturned = Nothing
@@ -1800,7 +1800,7 @@ Namespace java.util
 
 				Private ReadOnly outerInstance As TreeMap.NavigableSubMap
 
-				Friend Sub New(ByVal outerInstance As TreeMap.NavigableSubMap, ByVal first As TreeMap.Entry(Of K, V), ByVal fence As TreeMap.Entry(Of K, V))
+				Friend Sub New(  outerInstance As TreeMap.NavigableSubMap,   first As TreeMap.Entry(Of K, V),   fence As TreeMap.Entry(Of K, V))
 						Me.outerInstance = outerInstance
 					MyBase.New(first, fence)
 				End Sub
@@ -1817,7 +1817,7 @@ Namespace java.util
 
 				Private ReadOnly outerInstance As TreeMap.NavigableSubMap
 
-				Friend Sub New(ByVal outerInstance As TreeMap.NavigableSubMap, ByVal last As TreeMap.Entry(Of K, V), ByVal fence As TreeMap.Entry(Of K, V))
+				Friend Sub New(  outerInstance As TreeMap.NavigableSubMap,   last As TreeMap.Entry(Of K, V),   fence As TreeMap.Entry(Of K, V))
 						Me.outerInstance = outerInstance
 					MyBase.New(last, fence)
 				End Sub
@@ -1837,7 +1837,7 @@ Namespace java.util
 
 				Private ReadOnly outerInstance As TreeMap.NavigableSubMap
 
-				Friend Sub New(ByVal outerInstance As TreeMap.NavigableSubMap, ByVal first As TreeMap.Entry(Of K, V), ByVal fence As TreeMap.Entry(Of K, V))
+				Friend Sub New(  outerInstance As TreeMap.NavigableSubMap,   first As TreeMap.Entry(Of K, V),   fence As TreeMap.Entry(Of K, V))
 						Me.outerInstance = outerInstance
 					MyBase.New(first, fence)
 				End Sub
@@ -1851,13 +1851,13 @@ Namespace java.util
 					Return Nothing
 				End Function
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-				Public Sub forEachRemaining(Of T1)(ByVal action As java.util.function.Consumer(Of T1)) Implements Spliterator(Of K).forEachRemaining
+				Public Sub forEachRemaining(Of T1)(  action As java.util.function.Consumer(Of T1)) Implements Spliterator(Of K).forEachRemaining
 					Do While hasNext()
 						action.accept([next]())
 					Loop
 				End Sub
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-				Public Function tryAdvance(Of T1)(ByVal action As java.util.function.Consumer(Of T1)) As Boolean Implements Spliterator(Of K).tryAdvance
+				Public Function tryAdvance(Of T1)(  action As java.util.function.Consumer(Of T1)) As Boolean Implements Spliterator(Of K).tryAdvance
 					If hasNext() Then
 						action.accept([next]())
 						Return True
@@ -1883,7 +1883,7 @@ Namespace java.util
 
 				Private ReadOnly outerInstance As TreeMap.NavigableSubMap
 
-				Friend Sub New(ByVal outerInstance As TreeMap.NavigableSubMap, ByVal last As TreeMap.Entry(Of K, V), ByVal fence As TreeMap.Entry(Of K, V))
+				Friend Sub New(  outerInstance As TreeMap.NavigableSubMap,   last As TreeMap.Entry(Of K, V),   fence As TreeMap.Entry(Of K, V))
 						Me.outerInstance = outerInstance
 					MyBase.New(last, fence)
 				End Sub
@@ -1897,13 +1897,13 @@ Namespace java.util
 					Return Nothing
 				End Function
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-				Public Sub forEachRemaining(Of T1)(ByVal action As java.util.function.Consumer(Of T1)) Implements Spliterator(Of K).forEachRemaining
+				Public Sub forEachRemaining(Of T1)(  action As java.util.function.Consumer(Of T1)) Implements Spliterator(Of K).forEachRemaining
 					Do While hasNext()
 						action.accept([next]())
 					Loop
 				End Sub
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-				Public Function tryAdvance(Of T1)(ByVal action As java.util.function.Consumer(Of T1)) As Boolean Implements Spliterator(Of K).tryAdvance
+				Public Function tryAdvance(Of T1)(  action As java.util.function.Consumer(Of T1)) As Boolean Implements Spliterator(Of K).tryAdvance
 					If hasNext() Then
 						action.accept([next]())
 						Return True
@@ -1927,7 +1927,7 @@ Namespace java.util
 
 			Private Const serialVersionUID As Long = 912986545866124060L
 
-			Friend Sub New(ByVal m As TreeMap(Of K, V), ByVal fromStart As Boolean, ByVal lo As K, ByVal loInclusive As Boolean, ByVal toEnd As Boolean, ByVal hi As K, ByVal hiInclusive As Boolean)
+			Friend Sub New(  m As TreeMap(Of K, V),   fromStart As Boolean,   lo As K,   loInclusive As Boolean,   toEnd As Boolean,   hi As K,   hiInclusive As Boolean)
 				MyBase.New(m, fromStart, lo, loInclusive, toEnd, hi, hiInclusive)
 			End Sub
 
@@ -1937,18 +1937,18 @@ Namespace java.util
 				Return m.comparator()
 			End Function
 
-			Public Function subMap(ByVal fromKey As K, ByVal fromInclusive As Boolean, ByVal toKey As K, ByVal toInclusive As Boolean) As NavigableMap(Of K, V)
+			Public Function subMap(  fromKey As K,   fromInclusive As Boolean,   toKey As K,   toInclusive As Boolean) As NavigableMap(Of K, V)
 				If Not inRange(fromKey, fromInclusive) Then Throw New IllegalArgumentException("fromKey out of range")
 				If Not inRange(toKey, toInclusive) Then Throw New IllegalArgumentException("toKey out of range")
 				Return New AscendingSubMap(Of )(m, False, fromKey, fromInclusive, False, toKey, toInclusive)
 			End Function
 
-			Public Function headMap(ByVal toKey As K, ByVal inclusive As Boolean) As NavigableMap(Of K, V)
+			Public Function headMap(  toKey As K,   inclusive As Boolean) As NavigableMap(Of K, V)
 				If Not inRange(toKey, inclusive) Then Throw New IllegalArgumentException("toKey out of range")
 				Return New AscendingSubMap(Of )(m, fromStart, lo, loInclusive, False, toKey, inclusive)
 			End Function
 
-			Public Function tailMap(ByVal fromKey As K, ByVal inclusive As Boolean) As NavigableMap(Of K, V)
+			Public Function tailMap(  fromKey As K,   inclusive As Boolean) As NavigableMap(Of K, V)
 				If Not inRange(fromKey, inclusive) Then Throw New IllegalArgumentException("fromKey out of range")
 				Return New AscendingSubMap(Of )(m, False, fromKey, inclusive, toEnd, hi, hiInclusive)
 			End Function
@@ -1980,7 +1980,7 @@ Namespace java.util
 
 				Private ReadOnly outerInstance As TreeMap.AscendingSubMap
 
-				Public Sub New(ByVal outerInstance As TreeMap.AscendingSubMap)
+				Public Sub New(  outerInstance As TreeMap.AscendingSubMap)
 					Me.outerInstance = outerInstance
 				End Sub
 
@@ -2005,16 +2005,16 @@ Namespace java.util
 			Friend Function subHighest() As TreeMap.Entry(Of K, V)
 				Return absHighest()
 			End Function
-			Friend Function subCeiling(ByVal key As K) As TreeMap.Entry(Of K, V)
+			Friend Function subCeiling(  key As K) As TreeMap.Entry(Of K, V)
 				Return absCeiling(key)
 			End Function
-			Friend Function subHigher(ByVal key As K) As TreeMap.Entry(Of K, V)
+			Friend Function subHigher(  key As K) As TreeMap.Entry(Of K, V)
 				Return absHigher(key)
 			End Function
-			Friend Function subFloor(ByVal key As K) As TreeMap.Entry(Of K, V)
+			Friend Function subFloor(  key As K) As TreeMap.Entry(Of K, V)
 				Return absFloor(key)
 			End Function
-			Friend Function subLower(ByVal key As K) As TreeMap.Entry(Of K, V)
+			Friend Function subLower(  key As K) As TreeMap.Entry(Of K, V)
 				Return absLower(key)
 			End Function
 		End Class
@@ -2026,7 +2026,7 @@ Namespace java.util
 			Inherits NavigableSubMap(Of K, V)
 
 			Private Const serialVersionUID As Long = 912986545866120460L
-			Friend Sub New(ByVal m As TreeMap(Of K, V), ByVal fromStart As Boolean, ByVal lo As K, ByVal loInclusive As Boolean, ByVal toEnd As Boolean, ByVal hi As K, ByVal hiInclusive As Boolean)
+			Friend Sub New(  m As TreeMap(Of K, V),   fromStart As Boolean,   lo As K,   loInclusive As Boolean,   toEnd As Boolean,   hi As K,   hiInclusive As Boolean)
 				MyBase.New(m, fromStart, lo, loInclusive, toEnd, hi, hiInclusive)
 			End Sub
 
@@ -2040,18 +2040,18 @@ Namespace java.util
 				Return reverseComparator
 			End Function
 
-			Public Function subMap(ByVal fromKey As K, ByVal fromInclusive As Boolean, ByVal toKey As K, ByVal toInclusive As Boolean) As NavigableMap(Of K, V)
+			Public Function subMap(  fromKey As K,   fromInclusive As Boolean,   toKey As K,   toInclusive As Boolean) As NavigableMap(Of K, V)
 				If Not inRange(fromKey, fromInclusive) Then Throw New IllegalArgumentException("fromKey out of range")
 				If Not inRange(toKey, toInclusive) Then Throw New IllegalArgumentException("toKey out of range")
 				Return New DescendingSubMap(Of )(m, False, toKey, toInclusive, False, fromKey, fromInclusive)
 			End Function
 
-			Public Function headMap(ByVal toKey As K, ByVal inclusive As Boolean) As NavigableMap(Of K, V)
+			Public Function headMap(  toKey As K,   inclusive As Boolean) As NavigableMap(Of K, V)
 				If Not inRange(toKey, inclusive) Then Throw New IllegalArgumentException("toKey out of range")
 				Return New DescendingSubMap(Of )(m, False, toKey, inclusive, toEnd, hi, hiInclusive)
 			End Function
 
-			Public Function tailMap(ByVal fromKey As K, ByVal inclusive As Boolean) As NavigableMap(Of K, V)
+			Public Function tailMap(  fromKey As K,   inclusive As Boolean) As NavigableMap(Of K, V)
 				If Not inRange(fromKey, inclusive) Then Throw New IllegalArgumentException("fromKey out of range")
 				Return New DescendingSubMap(Of )(m, fromStart, lo, loInclusive, False, fromKey, inclusive)
 			End Function
@@ -2083,7 +2083,7 @@ Namespace java.util
 
 				Private ReadOnly outerInstance As TreeMap.DescendingSubMap
 
-				Public Sub New(ByVal outerInstance As TreeMap.DescendingSubMap)
+				Public Sub New(  outerInstance As TreeMap.DescendingSubMap)
 					Me.outerInstance = outerInstance
 				End Sub
 
@@ -2108,16 +2108,16 @@ Namespace java.util
 			Friend Function subHighest() As TreeMap.Entry(Of K, V)
 				Return absLowest()
 			End Function
-			Friend Function subCeiling(ByVal key As K) As TreeMap.Entry(Of K, V)
+			Friend Function subCeiling(  key As K) As TreeMap.Entry(Of K, V)
 				Return absFloor(key)
 			End Function
-			Friend Function subHigher(ByVal key As K) As TreeMap.Entry(Of K, V)
+			Friend Function subHigher(  key As K) As TreeMap.Entry(Of K, V)
 				Return absLower(key)
 			End Function
-			Friend Function subFloor(ByVal key As K) As TreeMap.Entry(Of K, V)
+			Friend Function subFloor(  key As K) As TreeMap.Entry(Of K, V)
 				Return absCeiling(key)
 			End Function
-			Friend Function subLower(ByVal key As K) As TreeMap.Entry(Of K, V)
+			Friend Function subLower(  key As K) As TreeMap.Entry(Of K, V)
 				Return absHigher(key)
 			End Function
 		End Class
@@ -2138,7 +2138,7 @@ Namespace java.util
 
 			Private ReadOnly outerInstance As TreeMap
 
-			Public Sub New(ByVal outerInstance As TreeMap)
+			Public Sub New(  outerInstance As TreeMap)
 				Me.outerInstance = outerInstance
 			End Sub
 
@@ -2157,13 +2157,13 @@ Namespace java.util
 			Public Overridable Function firstKey() As K Implements SortedMap(Of K, V).firstKey
 				Throw New InternalError
 			End Function
-			Public Overridable Function subMap(ByVal fromKey As K, ByVal toKey As K) As SortedMap(Of K, V) Implements SortedMap(Of K, V).subMap
+			Public Overridable Function subMap(  fromKey As K,   toKey As K) As SortedMap(Of K, V) Implements SortedMap(Of K, V).subMap
 				Throw New InternalError
 			End Function
-			Public Overridable Function headMap(ByVal toKey As K) As SortedMap(Of K, V) Implements SortedMap(Of K, V).headMap
+			Public Overridable Function headMap(  toKey As K) As SortedMap(Of K, V) Implements SortedMap(Of K, V).headMap
 				Throw New InternalError
 			End Function
-			Public Overridable Function tailMap(ByVal fromKey As K) As SortedMap(Of K, V) Implements SortedMap(Of K, V).tailMap
+			Public Overridable Function tailMap(  fromKey As K) As SortedMap(Of K, V) Implements SortedMap(Of K, V).tailMap
 				Throw New InternalError
 			End Function
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
@@ -2198,7 +2198,7 @@ Namespace java.util
 			''' Make a new cell with given key, value, and parent, and with
 			''' {@code null} child links, and BLACK color.
 			''' </summary>
-			Friend Sub New(ByVal key As K, ByVal value As V, ByVal parent As Entry(Of K, V))
+			Friend Sub New(  key As K,   value As V,   parent As Entry(Of K, V))
 				Me.key = key
 				Me.value = value
 				Me.parent = parent
@@ -2230,13 +2230,13 @@ Namespace java.util
 			''' </summary>
 			''' <returns> the value associated with the key before this method was
 			'''         called </returns>
-			Public Function setValue(ByVal value As V) As V
+			Public Function setValue(  value As V) As V
 				Dim oldValue As V = Me.value
 				Me.value = value
 				Return oldValue
 			End Function
 
-			Public Overrides Function Equals(ByVal o As Object) As Boolean
+			Public Overrides Function Equals(  o As Object) As Boolean
 				If Not(TypeOf o Is DictionaryEntry) Then Return False
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 				Dim e As KeyValuePair(Of ?, ?) = CType(o, KeyValuePair(Of ?, ?))
@@ -2290,7 +2290,7 @@ Namespace java.util
 		''' <summary>
 		''' Returns the successor of the specified Entry, or null if no such.
 		''' </summary>
-		Shared Function successor(Of K, V)(ByVal t As Entry(Of K, V)) As TreeMap.Entry(Of K, V)
+		Shared Function successor(Of K, V)(  t As Entry(Of K, V)) As TreeMap.Entry(Of K, V)
 			If t Is Nothing Then
 				Return Nothing
 			ElseIf t.right IsNot Nothing Then
@@ -2313,7 +2313,7 @@ Namespace java.util
 		''' <summary>
 		''' Returns the predecessor of the specified Entry, or null if no such.
 		''' </summary>
-		Friend Shared Function predecessor(Of K, V)(ByVal t As Entry(Of K, V)) As Entry(Of K, V)
+		Friend Shared Function predecessor(Of K, V)(  t As Entry(Of K, V)) As Entry(Of K, V)
 			If t Is Nothing Then
 				Return Nothing
 			ElseIf t.left IsNot Nothing Then
@@ -2343,29 +2343,29 @@ Namespace java.util
 		''' algorithms.
 		''' </summary>
 
-		Private Shared Function colorOf(Of K, V)(ByVal p As Entry(Of K, V)) As Boolean
+		Private Shared Function colorOf(Of K, V)(  p As Entry(Of K, V)) As Boolean
 			Return (If(p Is Nothing, BLACK, p.color))
 		End Function
 
-		Private Shared Function parentOf(Of K, V)(ByVal p As Entry(Of K, V)) As Entry(Of K, V)
+		Private Shared Function parentOf(Of K, V)(  p As Entry(Of K, V)) As Entry(Of K, V)
 			Return (If(p Is Nothing, Nothing, p.parent))
 		End Function
 
-		Private Shared Sub setColor(Of K, V)(ByVal p As Entry(Of K, V), ByVal c As Boolean)
+		Private Shared Sub setColor(Of K, V)(  p As Entry(Of K, V),   c As Boolean)
 			If p IsNot Nothing Then p.color = c
 		End Sub
 
-		Private Shared Function leftOf(Of K, V)(ByVal p As Entry(Of K, V)) As Entry(Of K, V)
+		Private Shared Function leftOf(Of K, V)(  p As Entry(Of K, V)) As Entry(Of K, V)
 			Return If(p Is Nothing, Nothing, p.left)
 		End Function
 
-		Private Shared Function rightOf(Of K, V)(ByVal p As Entry(Of K, V)) As Entry(Of K, V)
+		Private Shared Function rightOf(Of K, V)(  p As Entry(Of K, V)) As Entry(Of K, V)
 			Return If(p Is Nothing, Nothing, p.right)
 		End Function
 
 		''' <summary>
 		''' From CLR </summary>
-		Private Sub rotateLeft(ByVal p As Entry(Of K, V))
+		Private Sub rotateLeft(  p As Entry(Of K, V))
 			If p IsNot Nothing Then
 				Dim r As Entry(Of K, V) = p.right
 				p.right = r.left
@@ -2385,7 +2385,7 @@ Namespace java.util
 
 		''' <summary>
 		''' From CLR </summary>
-		Private Sub rotateRight(ByVal p As Entry(Of K, V))
+		Private Sub rotateRight(  p As Entry(Of K, V))
 			If p IsNot Nothing Then
 				Dim l As Entry(Of K, V) = p.left
 				p.left = l.right
@@ -2405,7 +2405,7 @@ Namespace java.util
 
 		''' <summary>
 		''' From CLR </summary>
-		Private Sub fixAfterInsertion(ByVal x As Entry(Of K, V))
+		Private Sub fixAfterInsertion(  x As Entry(Of K, V))
 			x.color = RED
 
 			Do While x IsNot Nothing AndAlso x IsNot root AndAlso x.parent.color = RED
@@ -2449,7 +2449,7 @@ Namespace java.util
 		''' <summary>
 		''' Delete node p, and then rebalance the tree.
 		''' </summary>
-		Private Sub deleteEntry(ByVal p As Entry(Of K, V))
+		Private Sub deleteEntry(  p As Entry(Of K, V))
 			modCount += 1
 			size_Renamed -= 1
 
@@ -2503,7 +2503,7 @@ Namespace java.util
 
 		''' <summary>
 		''' From CLR </summary>
-		Private Sub fixAfterDeletion(ByVal x As Entry(Of K, V))
+		Private Sub fixAfterDeletion(  x As Entry(Of K, V))
 			Do While x IsNot root AndAlso colorOf(x) = BLACK
 				If x Is leftOf(parentOf(x)) Then
 					Dim sib As Entry(Of K, V) = rightOf(parentOf(x))
@@ -2577,7 +2577,7 @@ Namespace java.util
 		'''             or by the keys' natural ordering if the TreeMap has no
 		'''             Comparator).
 		''' </summary>
-		Private Sub writeObject(ByVal s As java.io.ObjectOutputStream)
+		Private Sub writeObject(  s As java.io.ObjectOutputStream)
 			' Write out the Comparator and any hidden stuff
 			s.defaultWriteObject()
 
@@ -2597,7 +2597,7 @@ Namespace java.util
 		''' Reconstitute the {@code TreeMap} instance from a stream (i.e.,
 		''' deserialize it).
 		''' </summary>
-		Private Sub readObject(ByVal s As java.io.ObjectInputStream)
+		Private Sub readObject(  s As java.io.ObjectInputStream)
 			' Read in the Comparator and any hidden stuff
 			s.defaultReadObject()
 
@@ -2609,13 +2609,13 @@ Namespace java.util
 
 		''' <summary>
 		''' Intended to be called only from TreeSet.readObject </summary>
-		Friend Overridable Sub readTreeSet(ByVal size As Integer, ByVal s As java.io.ObjectInputStream, ByVal defaultVal As V)
+		Friend Overridable Sub readTreeSet(  size As Integer,   s As java.io.ObjectInputStream,   defaultVal As V)
 			buildFromSorted(size, Nothing, s, defaultVal)
 		End Sub
 
 		''' <summary>
 		''' Intended to be called only from TreeSet.addAll </summary>
-		Friend Overridable Sub addAllForTreeSet(Of T1 As K)(ByVal [set] As SortedSet(Of T1), ByVal defaultVal As V)
+		Friend Overridable Sub addAllForTreeSet(Of T1 As K)(  [set] As SortedSet(Of T1),   defaultVal As V)
 			Try
 				buildFromSorted([set].size(), [set].GetEnumerator(), Nothing, defaultVal)
 			Catch cannotHappen As java.io.IOException
@@ -2653,7 +2653,7 @@ Namespace java.util
 		'''         occur if str is null. </exception>
 		''' <exception cref="ClassNotFoundException"> propagated from readObject.
 		'''         This cannot occur if str is null. </exception>
-		Private Sub buildFromSorted(Of T1)(ByVal size As Integer, ByVal it As [Iterator](Of T1), ByVal str As java.io.ObjectInputStream, ByVal defaultVal As V)
+		Private Sub buildFromSorted(Of T1)(  size As Integer,   it As [Iterator](Of T1),   str As java.io.ObjectInputStream,   defaultVal As V)
 			Me.size_Renamed = size
 			root = buildFromSorted(0, 0, size-1, computeRedLevel(size), it, str, defaultVal)
 		End Sub
@@ -2672,7 +2672,7 @@ Namespace java.util
 		''' <param name="redLevel"> the level at which nodes should be red.
 		'''        Must be equal to computeRedLevel for tree of this size. </param>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Private Function buildFromSorted(Of T1)(ByVal level As Integer, ByVal lo As Integer, ByVal hi As Integer, ByVal redLevel As Integer, ByVal it As [Iterator](Of T1), ByVal str As java.io.ObjectInputStream, ByVal defaultVal As V) As Entry(Of K, V)
+		Private Function buildFromSorted(Of T1)(  level As Integer,   lo As Integer,   hi As Integer,   redLevel As Integer,   it As [Iterator](Of T1),   str As java.io.ObjectInputStream,   defaultVal As V) As Entry(Of K, V)
 	'        
 	'         * Strategy: The root is the middlemost element. To get to it, we
 	'         * have to first recursively construct the entire left subtree,
@@ -2738,7 +2738,7 @@ Namespace java.util
 		''' node.  (The answer is ~lg(N), but in any case must be computed by same
 		''' quick O(lg(N)) loop.)
 		''' </summary>
-		Private Shared Function computeRedLevel(ByVal sz As Integer) As Integer
+		Private Shared Function computeRedLevel(  sz As Integer) As Integer
 			Dim level As Integer = 0
 			Dim m As Integer = sz - 1
 			Do While m >= 0
@@ -2757,7 +2757,7 @@ Namespace java.util
 		''' structures. Callers must use plain default spliterators if this
 		''' returns null.
 		''' </summary>
-		Friend Shared Function keySpliteratorFor(Of K, T1)(ByVal m As NavigableMap(Of T1)) As Spliterator(Of K)
+		Friend Shared Function keySpliteratorFor(Of K, T1)(  m As NavigableMap(Of T1)) As Spliterator(Of K)
 			If TypeOf m Is TreeMap Then
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
 				Dim t As TreeMap(Of K, Object) = CType(m, TreeMap(Of K, Object))
@@ -2822,7 +2822,7 @@ Namespace java.util
 			Friend est As Integer ' size estimate (exact only for top-level)
 			Friend expectedModCount As Integer ' for CME checks
 
-			Friend Sub New(ByVal tree As TreeMap(Of K, V), ByVal origin As TreeMap.Entry(Of K, V), ByVal fence As TreeMap.Entry(Of K, V), ByVal side As Integer, ByVal est As Integer, ByVal expectedModCount As Integer)
+			Friend Sub New(  tree As TreeMap(Of K, V),   origin As TreeMap.Entry(Of K, V),   fence As TreeMap.Entry(Of K, V),   side As Integer,   est As Integer,   expectedModCount As Integer)
 				Me.tree = tree
 				Me.current = origin
 				Me.fence = fence
@@ -2861,7 +2861,7 @@ Namespace java.util
 			Inherits TreeMapSpliterator(Of K, V)
 			Implements Spliterator(Of K)
 
-			Friend Sub New(ByVal tree As TreeMap(Of K, V), ByVal origin As TreeMap.Entry(Of K, V), ByVal fence As TreeMap.Entry(Of K, V), ByVal side As Integer, ByVal est As Integer, ByVal expectedModCount As Integer)
+			Friend Sub New(  tree As TreeMap(Of K, V),   origin As TreeMap.Entry(Of K, V),   fence As TreeMap.Entry(Of K, V),   side As Integer,   est As Integer,   expectedModCount As Integer)
 				MyBase.New(tree, origin, fence, side, est, expectedModCount)
 			End Sub
 
@@ -2878,7 +2878,7 @@ Namespace java.util
 			End Function
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Sub forEachRemaining(Of T1)(ByVal action As java.util.function.Consumer(Of T1)) Implements Spliterator(Of K).forEachRemaining
+			Public Sub forEachRemaining(Of T1)(  action As java.util.function.Consumer(Of T1)) Implements Spliterator(Of K).forEachRemaining
 				If action Is Nothing Then Throw New NullPointerException
 				If est < 0 Then estimate ' force initialization
 				Dim f As TreeMap.Entry(Of K, V) = fence, e As TreeMap.Entry(Of K, V), p As TreeMap.Entry(Of K, V), pl As TreeMap.Entry(Of K, V)
@@ -2908,7 +2908,7 @@ Namespace java.util
 			End Sub
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Function tryAdvance(Of T1)(ByVal action As java.util.function.Consumer(Of T1)) As Boolean Implements Spliterator(Of K).tryAdvance
+			Public Function tryAdvance(Of T1)(  action As java.util.function.Consumer(Of T1)) As Boolean Implements Spliterator(Of K).tryAdvance
 				Dim e As TreeMap.Entry(Of K, V)
 				If action Is Nothing Then Throw New NullPointerException
 				If est < 0 Then estimate ' force initialization
@@ -2936,7 +2936,7 @@ Namespace java.util
 			Inherits TreeMapSpliterator(Of K, V)
 			Implements Spliterator(Of K)
 
-			Friend Sub New(ByVal tree As TreeMap(Of K, V), ByVal origin As TreeMap.Entry(Of K, V), ByVal fence As TreeMap.Entry(Of K, V), ByVal side As Integer, ByVal est As Integer, ByVal expectedModCount As Integer)
+			Friend Sub New(  tree As TreeMap(Of K, V),   origin As TreeMap.Entry(Of K, V),   fence As TreeMap.Entry(Of K, V),   side As Integer,   est As Integer,   expectedModCount As Integer)
 				MyBase.New(tree, origin, fence, side, est, expectedModCount)
 			End Sub
 
@@ -2953,7 +2953,7 @@ Namespace java.util
 			End Function
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Sub forEachRemaining(Of T1)(ByVal action As java.util.function.Consumer(Of T1)) Implements Spliterator(Of K).forEachRemaining
+			Public Sub forEachRemaining(Of T1)(  action As java.util.function.Consumer(Of T1)) Implements Spliterator(Of K).forEachRemaining
 				If action Is Nothing Then Throw New NullPointerException
 				If est < 0 Then estimate ' force initialization
 				Dim f As TreeMap.Entry(Of K, V) = fence, e As TreeMap.Entry(Of K, V), p As TreeMap.Entry(Of K, V), pr As TreeMap.Entry(Of K, V)
@@ -2983,7 +2983,7 @@ Namespace java.util
 			End Sub
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Function tryAdvance(Of T1)(ByVal action As java.util.function.Consumer(Of T1)) As Boolean Implements Spliterator(Of K).tryAdvance
+			Public Function tryAdvance(Of T1)(  action As java.util.function.Consumer(Of T1)) As Boolean Implements Spliterator(Of K).tryAdvance
 				Dim e As TreeMap.Entry(Of K, V)
 				If action Is Nothing Then Throw New NullPointerException
 				If est < 0 Then estimate ' force initialization
@@ -3004,7 +3004,7 @@ Namespace java.util
 			Inherits TreeMapSpliterator(Of K, V)
 			Implements Spliterator(Of V)
 
-			Friend Sub New(ByVal tree As TreeMap(Of K, V), ByVal origin As TreeMap.Entry(Of K, V), ByVal fence As TreeMap.Entry(Of K, V), ByVal side As Integer, ByVal est As Integer, ByVal expectedModCount As Integer)
+			Friend Sub New(  tree As TreeMap(Of K, V),   origin As TreeMap.Entry(Of K, V),   fence As TreeMap.Entry(Of K, V),   side As Integer,   est As Integer,   expectedModCount As Integer)
 				MyBase.New(tree, origin, fence, side, est, expectedModCount)
 			End Sub
 
@@ -3021,7 +3021,7 @@ Namespace java.util
 			End Function
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Sub forEachRemaining(Of T1)(ByVal action As java.util.function.Consumer(Of T1)) Implements Spliterator(Of V).forEachRemaining
+			Public Sub forEachRemaining(Of T1)(  action As java.util.function.Consumer(Of T1)) Implements Spliterator(Of V).forEachRemaining
 				If action Is Nothing Then Throw New NullPointerException
 				If est < 0 Then estimate ' force initialization
 				Dim f As TreeMap.Entry(Of K, V) = fence, e As TreeMap.Entry(Of K, V), p As TreeMap.Entry(Of K, V), pl As TreeMap.Entry(Of K, V)
@@ -3051,7 +3051,7 @@ Namespace java.util
 			End Sub
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Function tryAdvance(Of T1)(ByVal action As java.util.function.Consumer(Of T1)) As Boolean Implements Spliterator(Of V).tryAdvance
+			Public Function tryAdvance(Of T1)(  action As java.util.function.Consumer(Of T1)) As Boolean Implements Spliterator(Of V).tryAdvance
 				Dim e As TreeMap.Entry(Of K, V)
 				If action Is Nothing Then Throw New NullPointerException
 				If est < 0 Then estimate ' force initialization
@@ -3072,7 +3072,7 @@ Namespace java.util
 			Inherits TreeMapSpliterator(Of K, V)
 			Implements Spliterator(Of KeyValuePair(Of K, V))
 
-			Friend Sub New(ByVal tree As TreeMap(Of K, V), ByVal origin As TreeMap.Entry(Of K, V), ByVal fence As TreeMap.Entry(Of K, V), ByVal side As Integer, ByVal est As Integer, ByVal expectedModCount As Integer)
+			Friend Sub New(  tree As TreeMap(Of K, V),   origin As TreeMap.Entry(Of K, V),   fence As TreeMap.Entry(Of K, V),   side As Integer,   est As Integer,   expectedModCount As Integer)
 				MyBase.New(tree, origin, fence, side, est, expectedModCount)
 			End Sub
 
@@ -3089,7 +3089,7 @@ Namespace java.util
 			End Function
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Sub forEachRemaining(Of T1)(ByVal action As java.util.function.Consumer(Of T1)) Implements Spliterator(Of KeyValuePair(Of K, V)).forEachRemaining
+			Public Sub forEachRemaining(Of T1)(  action As java.util.function.Consumer(Of T1)) Implements Spliterator(Of KeyValuePair(Of K, V)).forEachRemaining
 				If action Is Nothing Then Throw New NullPointerException
 				If est < 0 Then estimate ' force initialization
 				Dim f As TreeMap.Entry(Of K, V) = fence, e As TreeMap.Entry(Of K, V), p As TreeMap.Entry(Of K, V), pl As TreeMap.Entry(Of K, V)
@@ -3119,7 +3119,7 @@ Namespace java.util
 			End Sub
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Function tryAdvance(Of T1)(ByVal action As java.util.function.Consumer(Of T1)) As Boolean Implements Spliterator(Of KeyValuePair(Of K, V)).tryAdvance
+			Public Function tryAdvance(Of T1)(  action As java.util.function.Consumer(Of T1)) As Boolean Implements Spliterator(Of KeyValuePair(Of K, V)).tryAdvance
 				Dim e As TreeMap.Entry(Of K, V)
 				If action Is Nothing Then Throw New NullPointerException
 				If est < 0 Then estimate ' force initialization

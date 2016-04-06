@@ -44,7 +44,7 @@ Namespace java.awt.image
 		''' setDimensions method call. </summary>
 		''' <param name="width"> the width of the source image </param>
 		''' <param name="height"> the height of the source image </param>
-		Sub setDimensions(ByVal width As Integer, ByVal height As Integer)
+		Sub setDimensions(  width As Integer,   height As Integer)
 
 		''' <summary>
 		''' Sets the extensible list of properties associated with this image. </summary>
@@ -152,7 +152,7 @@ Namespace java.awt.image
 		''' <param name="scansize"> the distance from one row of pixels to the next in
 		''' the <code>pixels</code> array </param>
 		''' <seealso cref= ColorModel </seealso>
-		Sub setPixels(ByVal x As Integer, ByVal y As Integer, ByVal w As Integer, ByVal h As Integer, ByVal model As ColorModel, SByte ByVal  As pixels(), ByVal [off] As Integer, ByVal scansize As Integer)
+		Sub setPixels(  x As Integer,   y As Integer,   w As Integer,   h As Integer,   model As ColorModel, SByte    As pixels(),   [off] As Integer,   scansize As Integer)
 
 		''' <summary>
 		''' The pixels of the image are delivered using one or more calls
@@ -176,7 +176,7 @@ Namespace java.awt.image
 		''' <param name="scansize"> the distance from one row of pixels to the next in
 		''' the <code>pixels</code> array </param>
 		''' <seealso cref= ColorModel </seealso>
-		Sub setPixels(ByVal x As Integer, ByVal y As Integer, ByVal w As Integer, ByVal h As Integer, ByVal model As ColorModel, Integer ByVal  As pixels(), ByVal [off] As Integer, ByVal scansize As Integer)
+		Sub setPixels(  x As Integer,   y As Integer,   w As Integer,   h As Integer,   model As ColorModel, Integer    As pixels(),   [off] As Integer,   scansize As Integer)
 
 		''' <summary>
 		''' The imageComplete method is called when the ImageProducer is
@@ -188,7 +188,7 @@ Namespace java.awt.image
 		''' unless it is interested in successive frames. </summary>
 		''' <param name="status"> the status of image loading </param>
 		''' <seealso cref= ImageProducer#removeConsumer </seealso>
-		Sub imageComplete(ByVal status As Integer)
+		Sub imageComplete(  status As Integer)
 
 		''' <summary>
 		''' An error was encountered while producing the image. </summary>

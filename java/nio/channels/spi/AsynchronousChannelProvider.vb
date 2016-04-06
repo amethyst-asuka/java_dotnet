@@ -51,7 +51,7 @@ Namespace java.nio.channels.spi
 			If sm IsNot Nothing Then sm.checkPermission(New RuntimePermission("asynchronousChannelProvider"))
 			Return Nothing
 		End Function
-		Private Sub New(ByVal ignore As Void)
+		Private Sub New(  ignore As Void)
 		End Sub
 
 		''' <summary>
@@ -171,7 +171,7 @@ Namespace java.nio.channels.spi
 		'''          If an I/O error occurs
 		''' </exception>
 		''' <seealso cref= AsynchronousChannelGroup#withFixedThreadPool </seealso>
-		Public MustOverride Function openAsynchronousChannelGroup(ByVal nThreads As Integer, ByVal threadFactory As ThreadFactory) As AsynchronousChannelGroup
+		Public MustOverride Function openAsynchronousChannelGroup(  nThreads As Integer,   threadFactory As ThreadFactory) As AsynchronousChannelGroup
 
 		''' <summary>
 		''' Constructs a new asynchronous channel group with the given thread pool.
@@ -188,7 +188,7 @@ Namespace java.nio.channels.spi
 		'''          If an I/O error occurs
 		''' </exception>
 		''' <seealso cref= AsynchronousChannelGroup#withCachedThreadPool </seealso>
-		Public MustOverride Function openAsynchronousChannelGroup(ByVal executor As ExecutorService, ByVal initialSize As Integer) As AsynchronousChannelGroup
+		Public MustOverride Function openAsynchronousChannelGroup(  executor As ExecutorService,   initialSize As Integer) As AsynchronousChannelGroup
 
 		''' <summary>
 		''' Opens an asynchronous server-socket channel.
@@ -205,7 +205,7 @@ Namespace java.nio.channels.spi
 		'''          The group is shutdown </exception>
 		''' <exception cref="IOException">
 		'''          If an I/O error occurs </exception>
-		Public MustOverride Function openAsynchronousServerSocketChannel(ByVal group As AsynchronousChannelGroup) As AsynchronousServerSocketChannel
+		Public MustOverride Function openAsynchronousServerSocketChannel(  group As AsynchronousChannelGroup) As AsynchronousServerSocketChannel
 
 		''' <summary>
 		''' Opens an asynchronous socket channel.
@@ -222,7 +222,7 @@ Namespace java.nio.channels.spi
 		'''          The group is shutdown </exception>
 		''' <exception cref="IOException">
 		'''          If an I/O error occurs </exception>
-		Public MustOverride Function openAsynchronousSocketChannel(ByVal group As AsynchronousChannelGroup) As AsynchronousSocketChannel
+		Public MustOverride Function openAsynchronousSocketChannel(  group As AsynchronousChannelGroup) As AsynchronousSocketChannel
 	End Class
 
 End Namespace

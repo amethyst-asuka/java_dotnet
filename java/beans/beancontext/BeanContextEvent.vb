@@ -55,7 +55,7 @@ Namespace java.beans.beancontext
 		''' Contruct a BeanContextEvent
 		''' </summary>
 		''' <param name="bc">        The BeanContext source </param>
-		Protected Friend Sub New(ByVal bc As java.beans.beancontext.BeanContext)
+		Protected Friend Sub New(  bc As java.beans.beancontext.BeanContext)
 			MyBase.New(bc)
 		End Sub
 
@@ -74,7 +74,7 @@ Namespace java.beans.beancontext
 		''' was propagated </param>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
 		Public Overridable Property propagatedFrom As java.beans.beancontext.BeanContext
-			Set(ByVal bc As java.beans.beancontext.BeanContext)
+			Set(  bc As java.beans.beancontext.BeanContext)
 				propagatedFrom = bc
 			End Set
 			Get

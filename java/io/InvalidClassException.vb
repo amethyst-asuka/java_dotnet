@@ -54,7 +54,7 @@ Namespace java.io
 		''' Report an InvalidClassException for the reason specified.
 		''' </summary>
 		''' <param name="reason">  String describing the reason for the exception. </param>
-		Public Sub New(ByVal reason As String)
+		Public Sub New(  reason As String)
 			MyBase.New(reason)
 		End Sub
 
@@ -63,7 +63,7 @@ Namespace java.io
 		''' </summary>
 		''' <param name="cname">   a String naming the invalid class. </param>
 		''' <param name="reason">  a String describing the reason for the exception. </param>
-		Public Sub New(ByVal cname As String, ByVal reason As String)
+		Public Sub New(  cname As String,   reason As String)
 			MyBase.New(reason)
 			classname = cname
 		End Sub

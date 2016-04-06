@@ -72,7 +72,7 @@ Namespace java.util
 		''' <param name="action"> The action to be performed for each element </param>
 		''' <exception cref="NullPointerException"> if the specified action is null </exception>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Sub forEachRemaining(ByVal action As T_CONS)
+		Sub forEachRemaining(  action As T_CONS)
 
 		''' <summary>
 		''' An Iterator specialized for {@code int} values.

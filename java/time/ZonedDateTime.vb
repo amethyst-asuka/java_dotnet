@@ -186,7 +186,7 @@ Namespace java.time
 		''' </summary>
 		''' <param name="zone">  the zone ID to use, not null </param>
 		''' <returns> the current date-time using the system clock, not null </returns>
-		Public Shared Function now(ByVal zone As ZoneId) As ZonedDateTime
+		Public Shared Function now(  zone As ZoneId) As ZonedDateTime
 			Return now(Clock.system(zone))
 		End Function
 
@@ -201,7 +201,7 @@ Namespace java.time
 		''' </summary>
 		''' <param name="clock">  the clock to use, not null </param>
 		''' <returns> the current date-time, not null </returns>
-		Public Shared Function now(ByVal clock_Renamed As Clock) As ZonedDateTime
+		Public Shared Function now(  clock_Renamed As Clock) As ZonedDateTime
 			java.util.Objects.requireNonNull(clock_Renamed, "clock")
 			Dim now_Renamed As Instant = clock_Renamed.instant() ' called once
 			Return ofInstant(now_Renamed, clock_Renamed.zone)
@@ -233,7 +233,7 @@ Namespace java.time
 		''' <param name="time">  the local time, not null </param>
 		''' <param name="zone">  the time-zone, not null </param>
 		''' <returns> the offset date-time, not null </returns>
-		Public Shared Function [of](ByVal [date] As LocalDate, ByVal time As LocalTime, ByVal zone As ZoneId) As ZonedDateTime
+		Public Shared Function [of](  [date] As LocalDate,   time As LocalTime,   zone As ZoneId) As ZonedDateTime
 			Return [of](LocalDateTime.of(date_Renamed, time), zone)
 		End Function
 
@@ -260,7 +260,7 @@ Namespace java.time
 		''' <param name="localDateTime">  the local date-time, not null </param>
 		''' <param name="zone">  the time-zone, not null </param>
 		''' <returns> the zoned date-time, not null </returns>
-		Public Shared Function [of](ByVal localDateTime_Renamed As LocalDateTime, ByVal zone As ZoneId) As ZonedDateTime
+		Public Shared Function [of](  localDateTime_Renamed As LocalDateTime,   zone As ZoneId) As ZonedDateTime
 			Return ofLocal(localDateTime_Renamed, zone, Nothing)
 		End Function
 
@@ -303,7 +303,7 @@ Namespace java.time
 		''' <returns> the offset date-time, not null </returns>
 		''' <exception cref="DateTimeException"> if the value of any field is out of range, or
 		'''  if the day-of-month is invalid for the month-year </exception>
-		Public Shared Function [of](ByVal year_Renamed As Integer, ByVal month As Integer, ByVal dayOfMonth As Integer, ByVal hour As Integer, ByVal minute As Integer, ByVal second As Integer, ByVal nanoOfSecond As Integer, ByVal zone As ZoneId) As ZonedDateTime
+		Public Shared Function [of](  year_Renamed As Integer,   month As Integer,   dayOfMonth As Integer,   hour As Integer,   minute As Integer,   second As Integer,   nanoOfSecond As Integer,   zone As ZoneId) As ZonedDateTime
 			Dim dt As LocalDateTime = LocalDateTime.of(year_Renamed, month, dayOfMonth, hour, minute, second, nanoOfSecond)
 			Return ofLocal(dt, zone, Nothing)
 		End Function
@@ -330,7 +330,7 @@ Namespace java.time
 		''' <param name="zone">  the time-zone, not null </param>
 		''' <param name="preferredOffset">  the zone offset, null if no preference </param>
 		''' <returns> the zoned date-time, not null </returns>
-		Public Shared Function ofLocal(ByVal localDateTime_Renamed As LocalDateTime, ByVal zone As ZoneId, ByVal preferredOffset As ZoneOffset) As ZonedDateTime
+		Public Shared Function ofLocal(  localDateTime_Renamed As LocalDateTime,   zone As ZoneId,   preferredOffset As ZoneOffset) As ZonedDateTime
 			java.util.Objects.requireNonNull(localDateTime_Renamed, "localDateTime")
 			java.util.Objects.requireNonNull(zone, "zone")
 			If TypeOf zone Is ZoneOffset Then Return New ZonedDateTime(localDateTime_Renamed, CType(zone, ZoneOffset), zone)
@@ -367,7 +367,7 @@ Namespace java.time
 		''' <param name="zone">  the time-zone, not null </param>
 		''' <returns> the zoned date-time, not null </returns>
 		''' <exception cref="DateTimeException"> if the result exceeds the supported range </exception>
-		Public Shared Function ofInstant(ByVal instant_Renamed As Instant, ByVal zone As ZoneId) As ZonedDateTime
+		Public Shared Function ofInstant(  instant_Renamed As Instant,   zone As ZoneId) As ZonedDateTime
 			java.util.Objects.requireNonNull(instant_Renamed, "instant")
 			java.util.Objects.requireNonNull(zone, "zone")
 			Return create(instant_Renamed.epochSecond, instant_Renamed.nano, zone)
@@ -392,7 +392,7 @@ Namespace java.time
 		''' <param name="offset">  the zone offset, not null </param>
 		''' <param name="zone">  the time-zone, not null </param>
 		''' <returns> the zoned date-time, not null </returns>
-		Public Shared Function ofInstant(ByVal localDateTime_Renamed As LocalDateTime, ByVal offset As ZoneOffset, ByVal zone As ZoneId) As ZonedDateTime
+		Public Shared Function ofInstant(  localDateTime_Renamed As LocalDateTime,   offset As ZoneOffset,   zone As ZoneId) As ZonedDateTime
 			java.util.Objects.requireNonNull(localDateTime_Renamed, "localDateTime")
 			java.util.Objects.requireNonNull(offset, "offset")
 			java.util.Objects.requireNonNull(zone, "zone")
@@ -409,7 +409,7 @@ Namespace java.time
 		''' <param name="zone">  the time-zone, not null </param>
 		''' <returns> the zoned date-time, not null </returns>
 		''' <exception cref="DateTimeException"> if the result exceeds the supported range </exception>
-		Private Shared Function create(ByVal epochSecond As Long, ByVal nanoOfSecond As Integer, ByVal zone As ZoneId) As ZonedDateTime
+		Private Shared Function create(  epochSecond As Long,   nanoOfSecond As Integer,   zone As ZoneId) As ZonedDateTime
 			Dim rules As java.time.zone.ZoneRules = zone.rules
 			Dim instant_Renamed As Instant = Instant.ofEpochSecond(epochSecond, nanoOfSecond) ' TODO: rules should be queryable by epochSeconds
 			Dim offset_Renamed As ZoneOffset = rules.getOffset(instant_Renamed)
@@ -430,7 +430,7 @@ Namespace java.time
 		''' <param name="offset">  the zone offset, not null </param>
 		''' <param name="zone">  the time-zone, not null </param>
 		''' <returns> the zoned date-time, not null </returns>
-		Public Shared Function ofStrict(ByVal localDateTime_Renamed As LocalDateTime, ByVal offset As ZoneOffset, ByVal zone As ZoneId) As ZonedDateTime
+		Public Shared Function ofStrict(  localDateTime_Renamed As LocalDateTime,   offset As ZoneOffset,   zone As ZoneId) As ZonedDateTime
 			java.util.Objects.requireNonNull(localDateTime_Renamed, "localDateTime")
 			java.util.Objects.requireNonNull(offset, "offset")
 			java.util.Objects.requireNonNull(zone, "zone")
@@ -463,7 +463,7 @@ Namespace java.time
 		''' <param name="offset">  the zone offset, not null </param>
 		''' <param name="zone">  the time-zone, not null </param>
 		''' <returns> the zoned date-time, not null </returns>
-		Private Shared Function ofLenient(ByVal localDateTime_Renamed As LocalDateTime, ByVal offset As ZoneOffset, ByVal zone As ZoneId) As ZonedDateTime
+		Private Shared Function ofLenient(  localDateTime_Renamed As LocalDateTime,   offset As ZoneOffset,   zone As ZoneId) As ZonedDateTime
 			java.util.Objects.requireNonNull(localDateTime_Renamed, "localDateTime")
 			java.util.Objects.requireNonNull(offset, "offset")
 			java.util.Objects.requireNonNull(zone, "zone")
@@ -493,7 +493,7 @@ Namespace java.time
 		''' <param name="temporal">  the temporal object to convert, not null </param>
 		''' <returns> the zoned date-time, not null </returns>
 		''' <exception cref="DateTimeException"> if unable to convert to an {@code ZonedDateTime} </exception>
-		Public Shared Function [from](ByVal temporal As java.time.temporal.TemporalAccessor) As ZonedDateTime
+		Public Shared Function [from](  temporal As java.time.temporal.TemporalAccessor) As ZonedDateTime
 			If TypeOf temporal Is ZonedDateTime Then Return CType(temporal, ZonedDateTime)
 			Try
 				Dim zone_Renamed As ZoneId = ZoneId.from(temporal)
@@ -522,7 +522,7 @@ Namespace java.time
 		''' <param name="text">  the text to parse such as "2007-12-03T10:15:30+01:00[Europe/Paris]", not null </param>
 		''' <returns> the parsed zoned date-time, not null </returns>
 		''' <exception cref="DateTimeParseException"> if the text cannot be parsed </exception>
-		Public Shared Function parse(ByVal text As CharSequence) As ZonedDateTime
+		Public Shared Function parse(  text As CharSequence) As ZonedDateTime
 			Return parse(text, java.time.format.DateTimeFormatter.ISO_ZONED_DATE_TIME)
 		End Function
 
@@ -535,7 +535,7 @@ Namespace java.time
 		''' <param name="formatter">  the formatter to use, not null </param>
 		''' <returns> the parsed zoned date-time, not null </returns>
 		''' <exception cref="DateTimeParseException"> if the text cannot be parsed </exception>
-		Public Shared Function parse(ByVal text As CharSequence, ByVal formatter As java.time.format.DateTimeFormatter) As ZonedDateTime
+		Public Shared Function parse(  text As CharSequence,   formatter As java.time.format.DateTimeFormatter) As ZonedDateTime
 			java.util.Objects.requireNonNull(formatter, "formatter")
 			Return formatter.parse(text, ZonedDateTime::from)
 		End Function
@@ -547,7 +547,7 @@ Namespace java.time
 		''' <param name="dateTime">  the date-time, validated as not null </param>
 		''' <param name="offset">  the zone offset, validated as not null </param>
 		''' <param name="zone">  the time-zone, validated as not null </param>
-		Private Sub New(ByVal dateTime As LocalDateTime, ByVal offset As ZoneOffset, ByVal zone As ZoneId)
+		Private Sub New(  dateTime As LocalDateTime,   offset As ZoneOffset,   zone As ZoneId)
 			Me.dateTime = dateTime
 			Me.offset = offset
 			Me.zone = zone
@@ -558,7 +558,7 @@ Namespace java.time
 		''' </summary>
 		''' <param name="newDateTime">  the new local date-time, not null </param>
 		''' <returns> the zoned date-time, not null </returns>
-		Private Function resolveLocal(ByVal newDateTime As LocalDateTime) As ZonedDateTime
+		Private Function resolveLocal(  newDateTime As LocalDateTime) As ZonedDateTime
 			Return ofLocal(newDateTime, zone, offset)
 		End Function
 
@@ -567,7 +567,7 @@ Namespace java.time
 		''' </summary>
 		''' <param name="newDateTime">  the new local date-time, not null </param>
 		''' <returns> the zoned date-time, not null </returns>
-		Private Function resolveInstant(ByVal newDateTime As LocalDateTime) As ZonedDateTime
+		Private Function resolveInstant(  newDateTime As LocalDateTime) As ZonedDateTime
 			Return ofInstant(newDateTime, offset, zone)
 		End Function
 
@@ -578,7 +578,7 @@ Namespace java.time
 		''' </summary>
 		''' <param name="offset">  the offset, not null </param>
 		''' <returns> the zoned date-time, not null </returns>
-		Private Function resolveOffset(ByVal offset As ZoneOffset) As ZonedDateTime
+		Private Function resolveOffset(  offset As ZoneOffset) As ZonedDateTime
 			If offset.Equals(Me.offset) = False AndAlso zone.rules.isValidOffset(dateTime, offset) Then Return New ZonedDateTime(dateTime, offset, zone)
 			Return Me
 		End Function
@@ -635,7 +635,7 @@ Namespace java.time
 		''' </summary>
 		''' <param name="field">  the field to check, null returns false </param>
 		''' <returns> true if the field is supported on this date-time, false if not </returns>
-		Public Overrides Function isSupported(ByVal field As java.time.temporal.TemporalField) As Boolean
+		Public Overrides Function isSupported(  field As java.time.temporal.TemporalField) As Boolean
 			Return TypeOf field Is java.time.temporal.ChronoField OrElse (field IsNot Nothing AndAlso field.isSupportedBy(Me))
 		End Function
 
@@ -674,7 +674,7 @@ Namespace java.time
 		''' </summary>
 		''' <param name="unit">  the unit to check, null returns false </param>
 		''' <returns> true if the unit can be added/subtracted, false if not </returns>
-		Public Overrides Function isSupported(ByVal unit As java.time.temporal.TemporalUnit) As Boolean ' override for Javadoc
+		Public Overrides Function isSupported(  unit As java.time.temporal.TemporalUnit) As Boolean ' override for Javadoc
 			Return outerInstance.isSupported(unit)
 		End Function
 
@@ -701,7 +701,7 @@ Namespace java.time
 		''' <returns> the range of valid values for the field, not null </returns>
 		''' <exception cref="DateTimeException"> if the range for the field cannot be obtained </exception>
 		''' <exception cref="UnsupportedTemporalTypeException"> if the field is not supported </exception>
-		Public Overrides Function range(ByVal field As java.time.temporal.TemporalField) As java.time.temporal.ValueRange
+		Public Overrides Function range(  field As java.time.temporal.TemporalField) As java.time.temporal.ValueRange
 			If TypeOf field Is java.time.temporal.ChronoField Then
 				If field = INSTANT_SECONDS OrElse field = OFFSET_SECONDS Then Return field.range()
 				Return dateTime.range(field)
@@ -736,7 +736,7 @@ Namespace java.time
 		''' <exception cref="UnsupportedTemporalTypeException"> if the field is not supported or
 		'''         the range of values exceeds an {@code int} </exception>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
-		Public Overrides Function [get](ByVal field As java.time.temporal.TemporalField) As Integer ' override for Javadoc and performance
+		Public Overrides Function [get](  field As java.time.temporal.TemporalField) As Integer ' override for Javadoc and performance
 			If TypeOf field Is java.time.temporal.ChronoField Then
 				Select Case CType(field, java.time.temporal.ChronoField)
 					Case INSTANT_SECONDS
@@ -771,7 +771,7 @@ Namespace java.time
 		''' <exception cref="DateTimeException"> if a value for the field cannot be obtained </exception>
 		''' <exception cref="UnsupportedTemporalTypeException"> if the field is not supported </exception>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
-		Public Overrides Function getLong(ByVal field As java.time.temporal.TemporalField) As Long
+		Public Overrides Function getLong(  field As java.time.temporal.TemporalField) As Long
 			If TypeOf field Is java.time.temporal.ChronoField Then
 				Select Case CType(field, java.time.temporal.ChronoField)
 					Case INSTANT_SECONDS
@@ -880,7 +880,7 @@ Namespace java.time
 		''' </summary>
 		''' <param name="zone">  the time-zone to change to, not null </param>
 		''' <returns> a {@code ZonedDateTime} based on this date-time with the requested zone, not null </returns>
-		Public Overrides Function withZoneSameLocal(ByVal zone As ZoneId) As ZonedDateTime
+		Public Overrides Function withZoneSameLocal(  zone As ZoneId) As ZonedDateTime
 			java.util.Objects.requireNonNull(zone, "zone")
 			Return If(Me.zone.Equals(zone), Me, ofLocal(dateTime, zone, offset))
 		End Function
@@ -901,7 +901,7 @@ Namespace java.time
 		''' <param name="zone">  the time-zone to change to, not null </param>
 		''' <returns> a {@code ZonedDateTime} based on this date-time with the requested zone, not null </returns>
 		''' <exception cref="DateTimeException"> if the result exceeds the supported date range </exception>
-		Public Overrides Function withZoneSameInstant(ByVal zone As ZoneId) As ZonedDateTime
+		Public Overrides Function withZoneSameInstant(  zone As ZoneId) As ZonedDateTime
 			java.util.Objects.requireNonNull(zone, "zone")
 			Return If(Me.zone.Equals(zone), Me, create(dateTime.toEpochSecond(offset), dateTime.nano, zone))
 		End Function
@@ -1140,7 +1140,7 @@ Namespace java.time
 		''' <returns> a {@code ZonedDateTime} based on {@code this} with the adjustment made, not null </returns>
 		''' <exception cref="DateTimeException"> if the adjustment cannot be made </exception>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
-		Public Overrides Function [with](ByVal adjuster As java.time.temporal.TemporalAdjuster) As ZonedDateTime
+		Public Overrides Function [with](  adjuster As java.time.temporal.TemporalAdjuster) As ZonedDateTime
 			' optimizations
 			If TypeOf adjuster Is LocalDate Then
 				Return resolveLocal(LocalDateTime.of(CType(adjuster, LocalDate), dateTime.toLocalTime()))
@@ -1211,7 +1211,7 @@ Namespace java.time
 		''' <exception cref="DateTimeException"> if the field cannot be set </exception>
 		''' <exception cref="UnsupportedTemporalTypeException"> if the field is not supported </exception>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
-		Public Overrides Function [with](ByVal field As java.time.temporal.TemporalField, ByVal newValue As Long) As ZonedDateTime
+		Public Overrides Function [with](  field As java.time.temporal.TemporalField,   newValue As Long) As ZonedDateTime
 			If TypeOf field Is java.time.temporal.ChronoField Then
 				Dim f As java.time.temporal.ChronoField = CType(field, java.time.temporal.ChronoField)
 				Select Case f
@@ -1244,7 +1244,7 @@ Namespace java.time
 		''' <param name="year">  the year to set in the result, from MIN_YEAR to MAX_YEAR </param>
 		''' <returns> a {@code ZonedDateTime} based on this date-time with the requested year, not null </returns>
 		''' <exception cref="DateTimeException"> if the year value is invalid </exception>
-		Public Function withYear(ByVal year_Renamed As Integer) As ZonedDateTime
+		Public Function withYear(  year_Renamed As Integer) As ZonedDateTime
 			Return resolveLocal(dateTime.withYear(year_Renamed))
 		End Function
 
@@ -1265,7 +1265,7 @@ Namespace java.time
 		''' <param name="month">  the month-of-year to set in the result, from 1 (January) to 12 (December) </param>
 		''' <returns> a {@code ZonedDateTime} based on this date-time with the requested month, not null </returns>
 		''' <exception cref="DateTimeException"> if the month-of-year value is invalid </exception>
-		Public Function withMonth(ByVal month As Integer) As ZonedDateTime
+		Public Function withMonth(  month As Integer) As ZonedDateTime
 			Return resolveLocal(dateTime.withMonth(month))
 		End Function
 
@@ -1287,7 +1287,7 @@ Namespace java.time
 		''' <returns> a {@code ZonedDateTime} based on this date-time with the requested day, not null </returns>
 		''' <exception cref="DateTimeException"> if the day-of-month value is invalid,
 		'''  or if the day-of-month is invalid for the month-year </exception>
-		Public Function withDayOfMonth(ByVal dayOfMonth As Integer) As ZonedDateTime
+		Public Function withDayOfMonth(  dayOfMonth As Integer) As ZonedDateTime
 			Return resolveLocal(dateTime.withDayOfMonth(dayOfMonth))
 		End Function
 
@@ -1309,7 +1309,7 @@ Namespace java.time
 		''' <returns> a {@code ZonedDateTime} based on this date with the requested day, not null </returns>
 		''' <exception cref="DateTimeException"> if the day-of-year value is invalid,
 		'''  or if the day-of-year is invalid for the year </exception>
-		Public Function withDayOfYear(ByVal dayOfYear As Integer) As ZonedDateTime
+		Public Function withDayOfYear(  dayOfYear As Integer) As ZonedDateTime
 			Return resolveLocal(dateTime.withDayOfYear(dayOfYear))
 		End Function
 
@@ -1331,7 +1331,7 @@ Namespace java.time
 		''' <param name="hour">  the hour-of-day to set in the result, from 0 to 23 </param>
 		''' <returns> a {@code ZonedDateTime} based on this date-time with the requested hour, not null </returns>
 		''' <exception cref="DateTimeException"> if the hour value is invalid </exception>
-		Public Function withHour(ByVal hour As Integer) As ZonedDateTime
+		Public Function withHour(  hour As Integer) As ZonedDateTime
 			Return resolveLocal(dateTime.withHour(hour))
 		End Function
 
@@ -1352,7 +1352,7 @@ Namespace java.time
 		''' <param name="minute">  the minute-of-hour to set in the result, from 0 to 59 </param>
 		''' <returns> a {@code ZonedDateTime} based on this date-time with the requested minute, not null </returns>
 		''' <exception cref="DateTimeException"> if the minute value is invalid </exception>
-		Public Function withMinute(ByVal minute As Integer) As ZonedDateTime
+		Public Function withMinute(  minute As Integer) As ZonedDateTime
 			Return resolveLocal(dateTime.withMinute(minute))
 		End Function
 
@@ -1373,7 +1373,7 @@ Namespace java.time
 		''' <param name="second">  the second-of-minute to set in the result, from 0 to 59 </param>
 		''' <returns> a {@code ZonedDateTime} based on this date-time with the requested second, not null </returns>
 		''' <exception cref="DateTimeException"> if the second value is invalid </exception>
-		Public Function withSecond(ByVal second As Integer) As ZonedDateTime
+		Public Function withSecond(  second As Integer) As ZonedDateTime
 			Return resolveLocal(dateTime.withSecond(second))
 		End Function
 
@@ -1394,7 +1394,7 @@ Namespace java.time
 		''' <param name="nanoOfSecond">  the nano-of-second to set in the result, from 0 to 999,999,999 </param>
 		''' <returns> a {@code ZonedDateTime} based on this date-time with the requested nanosecond, not null </returns>
 		''' <exception cref="DateTimeException"> if the nano value is invalid </exception>
-		Public Function withNano(ByVal nanoOfSecond As Integer) As ZonedDateTime
+		Public Function withNano(  nanoOfSecond As Integer) As ZonedDateTime
 			Return resolveLocal(dateTime.withNano(nanoOfSecond))
 		End Function
 
@@ -1427,7 +1427,7 @@ Namespace java.time
 		''' <returns> a {@code ZonedDateTime} based on this date-time with the time truncated, not null </returns>
 		''' <exception cref="DateTimeException"> if unable to truncate </exception>
 		''' <exception cref="UnsupportedTemporalTypeException"> if the unit is not supported </exception>
-		Public Function truncatedTo(ByVal unit As java.time.temporal.TemporalUnit) As ZonedDateTime
+		Public Function truncatedTo(  unit As java.time.temporal.TemporalUnit) As ZonedDateTime
 			Return resolveLocal(dateTime.truncatedTo(unit))
 		End Function
 
@@ -1451,7 +1451,7 @@ Namespace java.time
 		''' <returns> a {@code ZonedDateTime} based on this date-time with the addition made, not null </returns>
 		''' <exception cref="DateTimeException"> if the addition cannot be made </exception>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
-		Public Overrides Function plus(ByVal amountToAdd As java.time.temporal.TemporalAmount) As ZonedDateTime
+		Public Overrides Function plus(  amountToAdd As java.time.temporal.TemporalAmount) As ZonedDateTime
 			If TypeOf amountToAdd Is Period Then
 				Dim periodToAdd As Period = CType(amountToAdd, Period)
 				Return resolveLocal(dateTime.plus(periodToAdd))
@@ -1496,7 +1496,7 @@ Namespace java.time
 		''' <exception cref="DateTimeException"> if the addition cannot be made </exception>
 		''' <exception cref="UnsupportedTemporalTypeException"> if the unit is not supported </exception>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
-		Public Overrides Function plus(ByVal amountToAdd As Long, ByVal unit As java.time.temporal.TemporalUnit) As ZonedDateTime
+		Public Overrides Function plus(  amountToAdd As Long,   unit As java.time.temporal.TemporalUnit) As ZonedDateTime
 			If TypeOf unit Is java.time.temporal.ChronoUnit Then
 				If unit.dateBased Then
 					Return resolveLocal(dateTime.plus(amountToAdd, unit))
@@ -1525,7 +1525,7 @@ Namespace java.time
 		''' <param name="years">  the years to add, may be negative </param>
 		''' <returns> a {@code ZonedDateTime} based on this date-time with the years added, not null </returns>
 		''' <exception cref="DateTimeException"> if the result exceeds the supported date range </exception>
-		Public Function plusYears(ByVal years As Long) As ZonedDateTime
+		Public Function plusYears(  years As Long) As ZonedDateTime
 			Return resolveLocal(dateTime.plusYears(years))
 		End Function
 
@@ -1546,7 +1546,7 @@ Namespace java.time
 		''' <param name="months">  the months to add, may be negative </param>
 		''' <returns> a {@code ZonedDateTime} based on this date-time with the months added, not null </returns>
 		''' <exception cref="DateTimeException"> if the result exceeds the supported date range </exception>
-		Public Function plusMonths(ByVal months As Long) As ZonedDateTime
+		Public Function plusMonths(  months As Long) As ZonedDateTime
 			Return resolveLocal(dateTime.plusMonths(months))
 		End Function
 
@@ -1567,7 +1567,7 @@ Namespace java.time
 		''' <param name="weeks">  the weeks to add, may be negative </param>
 		''' <returns> a {@code ZonedDateTime} based on this date-time with the weeks added, not null </returns>
 		''' <exception cref="DateTimeException"> if the result exceeds the supported date range </exception>
-		Public Function plusWeeks(ByVal weeks As Long) As ZonedDateTime
+		Public Function plusWeeks(  weeks As Long) As ZonedDateTime
 			Return resolveLocal(dateTime.plusWeeks(weeks))
 		End Function
 
@@ -1588,7 +1588,7 @@ Namespace java.time
 		''' <param name="days">  the days to add, may be negative </param>
 		''' <returns> a {@code ZonedDateTime} based on this date-time with the days added, not null </returns>
 		''' <exception cref="DateTimeException"> if the result exceeds the supported date range </exception>
-		Public Function plusDays(ByVal days As Long) As ZonedDateTime
+		Public Function plusDays(  days As Long) As ZonedDateTime
 			Return resolveLocal(dateTime.plusDays(days))
 		End Function
 
@@ -1616,7 +1616,7 @@ Namespace java.time
 		''' <param name="hours">  the hours to add, may be negative </param>
 		''' <returns> a {@code ZonedDateTime} based on this date-time with the hours added, not null </returns>
 		''' <exception cref="DateTimeException"> if the result exceeds the supported date range </exception>
-		Public Function plusHours(ByVal hours As Long) As ZonedDateTime
+		Public Function plusHours(  hours As Long) As ZonedDateTime
 			Return resolveInstant(dateTime.plusHours(hours))
 		End Function
 
@@ -1633,7 +1633,7 @@ Namespace java.time
 		''' <param name="minutes">  the minutes to add, may be negative </param>
 		''' <returns> a {@code ZonedDateTime} based on this date-time with the minutes added, not null </returns>
 		''' <exception cref="DateTimeException"> if the result exceeds the supported date range </exception>
-		Public Function plusMinutes(ByVal minutes As Long) As ZonedDateTime
+		Public Function plusMinutes(  minutes As Long) As ZonedDateTime
 			Return resolveInstant(dateTime.plusMinutes(minutes))
 		End Function
 
@@ -1650,7 +1650,7 @@ Namespace java.time
 		''' <param name="seconds">  the seconds to add, may be negative </param>
 		''' <returns> a {@code ZonedDateTime} based on this date-time with the seconds added, not null </returns>
 		''' <exception cref="DateTimeException"> if the result exceeds the supported date range </exception>
-		Public Function plusSeconds(ByVal seconds As Long) As ZonedDateTime
+		Public Function plusSeconds(  seconds As Long) As ZonedDateTime
 			Return resolveInstant(dateTime.plusSeconds(seconds))
 		End Function
 
@@ -1667,7 +1667,7 @@ Namespace java.time
 		''' <param name="nanos">  the nanos to add, may be negative </param>
 		''' <returns> a {@code ZonedDateTime} based on this date-time with the nanoseconds added, not null </returns>
 		''' <exception cref="DateTimeException"> if the result exceeds the supported date range </exception>
-		Public Function plusNanos(ByVal nanos As Long) As ZonedDateTime
+		Public Function plusNanos(  nanos As Long) As ZonedDateTime
 			Return resolveInstant(dateTime.plusNanos(nanos))
 		End Function
 
@@ -1691,7 +1691,7 @@ Namespace java.time
 		''' <returns> a {@code ZonedDateTime} based on this date-time with the subtraction made, not null </returns>
 		''' <exception cref="DateTimeException"> if the subtraction cannot be made </exception>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
-		Public Overrides Function minus(ByVal amountToSubtract As java.time.temporal.TemporalAmount) As ZonedDateTime
+		Public Overrides Function minus(  amountToSubtract As java.time.temporal.TemporalAmount) As ZonedDateTime
 			If TypeOf amountToSubtract Is Period Then
 				Dim periodToSubtract As Period = CType(amountToSubtract, Period)
 				Return resolveLocal(dateTime.minus(periodToSubtract))
@@ -1732,7 +1732,7 @@ Namespace java.time
 		''' <exception cref="DateTimeException"> if the subtraction cannot be made </exception>
 		''' <exception cref="UnsupportedTemporalTypeException"> if the unit is not supported </exception>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
-		Public Overrides Function minus(ByVal amountToSubtract As Long, ByVal unit As java.time.temporal.TemporalUnit) As ZonedDateTime
+		Public Overrides Function minus(  amountToSubtract As Long,   unit As java.time.temporal.TemporalUnit) As ZonedDateTime
 			Return (If(amountToSubtract = java.lang.[Long].MIN_VALUE, plus(Long.Max_Value, unit).plus(1, unit), plus(-amountToSubtract, unit)))
 		End Function
 
@@ -1754,7 +1754,7 @@ Namespace java.time
 		''' <param name="years">  the years to subtract, may be negative </param>
 		''' <returns> a {@code ZonedDateTime} based on this date-time with the years subtracted, not null </returns>
 		''' <exception cref="DateTimeException"> if the result exceeds the supported date range </exception>
-		Public Function minusYears(ByVal years As Long) As ZonedDateTime
+		Public Function minusYears(  years As Long) As ZonedDateTime
 			Return (If(years = java.lang.[Long].MIN_VALUE, plusYears(Long.Max_Value).plusYears(1), plusYears(-years)))
 		End Function
 
@@ -1775,7 +1775,7 @@ Namespace java.time
 		''' <param name="months">  the months to subtract, may be negative </param>
 		''' <returns> a {@code ZonedDateTime} based on this date-time with the months subtracted, not null </returns>
 		''' <exception cref="DateTimeException"> if the result exceeds the supported date range </exception>
-		Public Function minusMonths(ByVal months As Long) As ZonedDateTime
+		Public Function minusMonths(  months As Long) As ZonedDateTime
 			Return (If(months = java.lang.[Long].MIN_VALUE, plusMonths(Long.Max_Value).plusMonths(1), plusMonths(-months)))
 		End Function
 
@@ -1796,7 +1796,7 @@ Namespace java.time
 		''' <param name="weeks">  the weeks to subtract, may be negative </param>
 		''' <returns> a {@code ZonedDateTime} based on this date-time with the weeks subtracted, not null </returns>
 		''' <exception cref="DateTimeException"> if the result exceeds the supported date range </exception>
-		Public Function minusWeeks(ByVal weeks As Long) As ZonedDateTime
+		Public Function minusWeeks(  weeks As Long) As ZonedDateTime
 			Return (If(weeks = java.lang.[Long].MIN_VALUE, plusWeeks(Long.Max_Value).plusWeeks(1), plusWeeks(-weeks)))
 		End Function
 
@@ -1817,7 +1817,7 @@ Namespace java.time
 		''' <param name="days">  the days to subtract, may be negative </param>
 		''' <returns> a {@code ZonedDateTime} based on this date-time with the days subtracted, not null </returns>
 		''' <exception cref="DateTimeException"> if the result exceeds the supported date range </exception>
-		Public Function minusDays(ByVal days As Long) As ZonedDateTime
+		Public Function minusDays(  days As Long) As ZonedDateTime
 			Return (If(days = java.lang.[Long].MIN_VALUE, plusDays(Long.Max_Value).plusDays(1), plusDays(-days)))
 		End Function
 
@@ -1845,7 +1845,7 @@ Namespace java.time
 		''' <param name="hours">  the hours to subtract, may be negative </param>
 		''' <returns> a {@code ZonedDateTime} based on this date-time with the hours subtracted, not null </returns>
 		''' <exception cref="DateTimeException"> if the result exceeds the supported date range </exception>
-		Public Function minusHours(ByVal hours As Long) As ZonedDateTime
+		Public Function minusHours(  hours As Long) As ZonedDateTime
 			Return (If(hours = java.lang.[Long].MIN_VALUE, plusHours(Long.Max_Value).plusHours(1), plusHours(-hours)))
 		End Function
 
@@ -1862,7 +1862,7 @@ Namespace java.time
 		''' <param name="minutes">  the minutes to subtract, may be negative </param>
 		''' <returns> a {@code ZonedDateTime} based on this date-time with the minutes subtracted, not null </returns>
 		''' <exception cref="DateTimeException"> if the result exceeds the supported date range </exception>
-		Public Function minusMinutes(ByVal minutes As Long) As ZonedDateTime
+		Public Function minusMinutes(  minutes As Long) As ZonedDateTime
 			Return (If(minutes = java.lang.[Long].MIN_VALUE, plusMinutes(Long.Max_Value).plusMinutes(1), plusMinutes(-minutes)))
 		End Function
 
@@ -1879,7 +1879,7 @@ Namespace java.time
 		''' <param name="seconds">  the seconds to subtract, may be negative </param>
 		''' <returns> a {@code ZonedDateTime} based on this date-time with the seconds subtracted, not null </returns>
 		''' <exception cref="DateTimeException"> if the result exceeds the supported date range </exception>
-		Public Function minusSeconds(ByVal seconds As Long) As ZonedDateTime
+		Public Function minusSeconds(  seconds As Long) As ZonedDateTime
 			Return (If(seconds = java.lang.[Long].MIN_VALUE, plusSeconds(Long.Max_Value).plusSeconds(1), plusSeconds(-seconds)))
 		End Function
 
@@ -1896,7 +1896,7 @@ Namespace java.time
 		''' <param name="nanos">  the nanos to subtract, may be negative </param>
 		''' <returns> a {@code ZonedDateTime} based on this date-time with the nanoseconds subtracted, not null </returns>
 		''' <exception cref="DateTimeException"> if the result exceeds the supported date range </exception>
-		Public Function minusNanos(ByVal nanos As Long) As ZonedDateTime
+		Public Function minusNanos(  nanos As Long) As ZonedDateTime
 			Return (If(nanos = java.lang.[Long].MIN_VALUE, plusNanos(Long.Max_Value).plusNanos(1), plusNanos(-nanos)))
 		End Function
 
@@ -1919,7 +1919,7 @@ Namespace java.time
 		''' <exception cref="DateTimeException"> if unable to query (defined by the query) </exception>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs (defined by the query) </exception>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Overrides Function query(Of R)(ByVal query_Renamed As java.time.temporal.TemporalQuery(Of R)) As R ' override for Javadoc
+		Public Overrides Function query(Of R)(  query_Renamed As java.time.temporal.TemporalQuery(Of R)) As R ' override for Javadoc
 			If query_Renamed Is java.time.temporal.TemporalQueries.localDate() Then Return CType(toLocalDate(), R)
 			Return outerInstance.query(query_Renamed)
 		End Function
@@ -1989,7 +1989,7 @@ Namespace java.time
 		'''  temporal cannot be converted to a {@code ZonedDateTime} </exception>
 		''' <exception cref="UnsupportedTemporalTypeException"> if the unit is not supported </exception>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
-		Public Overrides Function [until](ByVal endExclusive As java.time.temporal.Temporal, ByVal unit As java.time.temporal.TemporalUnit) As Long
+		Public Overrides Function [until](  endExclusive As java.time.temporal.Temporal,   unit As java.time.temporal.TemporalUnit) As Long
 			Dim [end] As ZonedDateTime = ZonedDateTime.from(endExclusive)
 			If TypeOf unit Is java.time.temporal.ChronoUnit Then
 				[end] = [end].withZoneSameInstant(zone)
@@ -2010,7 +2010,7 @@ Namespace java.time
 		''' <param name="formatter">  the formatter to use, not null </param>
 		''' <returns> the formatted date-time string, not null </returns>
 		''' <exception cref="DateTimeException"> if an error occurs during printing </exception>
-		Public Overrides Function format(ByVal formatter As java.time.format.DateTimeFormatter) As String ' override for Javadoc and performance
+		Public Overrides Function format(  formatter As java.time.format.DateTimeFormatter) As String ' override for Javadoc and performance
 			java.util.Objects.requireNonNull(formatter, "formatter")
 			Return formatter.format(Me)
 		End Function
@@ -2036,7 +2036,7 @@ Namespace java.time
 		''' </summary>
 		''' <param name="obj">  the object to check, null returns false </param>
 		''' <returns> true if this is equal to the other date-time </returns>
-		Public Overrides Function Equals(ByVal obj As Object) As Boolean
+		Public Overrides Function Equals(  obj As Object) As Boolean
 			If Me Is obj Then Return True
 			If TypeOf obj Is ZonedDateTime Then
 				Dim other As ZonedDateTime = CType(obj, ZonedDateTime)
@@ -2091,17 +2091,17 @@ Namespace java.time
 		''' </summary>
 		''' <param name="s"> the stream to read </param>
 		''' <exception cref="InvalidObjectException"> always </exception>
-		Private Sub readObject(ByVal s As java.io.ObjectInputStream)
+		Private Sub readObject(  s As java.io.ObjectInputStream)
 			Throw New java.io.InvalidObjectException("Deserialization via serialization delegate")
 		End Sub
 
-		Friend Sub writeExternal(ByVal out As java.io.DataOutput)
+		Friend Sub writeExternal(  out As java.io.DataOutput)
 			dateTime.writeExternal(out)
 			offset.writeExternal(out)
 			zone.write(out)
 		End Sub
 
-		Shared Function readExternal(ByVal [in] As java.io.ObjectInput) As ZonedDateTime
+		Shared Function readExternal(  [in] As java.io.ObjectInput) As ZonedDateTime
 			Dim dateTime As LocalDateTime = LocalDateTime.readExternal([in])
 			Dim offset_Renamed As ZoneOffset = ZoneOffset.readExternal([in])
 			Dim zone_Renamed As ZoneId = CType(Ser.read([in]), ZoneId)

@@ -104,7 +104,7 @@ Namespace java.awt
         ''' <seealso cref=       java.awt.Desktop </seealso>
         ''' <seealso cref=       java.awt.peer.DesktopPeer
         ''' @since 1.6 </seealso>
-        Protected Friend MustOverride Function createDesktopPeer(ByVal target As Desktop) As DesktopPeer
+        Protected Friend MustOverride Function createDesktopPeer(  target As Desktop) As DesktopPeer
 
 
         ''' <summary>
@@ -117,7 +117,7 @@ Namespace java.awt
         ''' <seealso cref=       java.awt.GraphicsEnvironment#isHeadless </seealso>
         ''' <seealso cref=       java.awt.Button </seealso>
         ''' <seealso cref=       java.awt.peer.ButtonPeer </seealso>
-        Protected Friend MustOverride Function createButton(ByVal target As Button) As ButtonPeer
+        Protected Friend MustOverride Function createButton(  target As Button) As ButtonPeer
 
         ''' <summary>
         ''' Creates this toolkit's implementation of <code>TextField</code> using
@@ -129,7 +129,7 @@ Namespace java.awt
         ''' <seealso cref=       java.awt.GraphicsEnvironment#isHeadless </seealso>
         ''' <seealso cref=       java.awt.TextField </seealso>
         ''' <seealso cref=       java.awt.peer.TextFieldPeer </seealso>
-        Protected Friend MustOverride Function createTextField(ByVal target As TextField) As TextFieldPeer
+        Protected Friend MustOverride Function createTextField(  target As TextField) As TextFieldPeer
 
         ''' <summary>
         ''' Creates this toolkit's implementation of <code>Label</code> using
@@ -141,7 +141,7 @@ Namespace java.awt
         ''' <seealso cref=       java.awt.GraphicsEnvironment#isHeadless </seealso>
         ''' <seealso cref=       java.awt.Label </seealso>
         ''' <seealso cref=       java.awt.peer.LabelPeer </seealso>
-        Protected Friend MustOverride Function createLabel(ByVal target As Label) As LabelPeer
+        Protected Friend MustOverride Function createLabel(  target As Label) As LabelPeer
 
         ''' <summary>
         ''' Creates this toolkit's implementation of <code>List</code> using
@@ -153,7 +153,7 @@ Namespace java.awt
         ''' <seealso cref=       java.awt.GraphicsEnvironment#isHeadless </seealso>
         ''' <seealso cref=       java.awt.List </seealso>
         ''' <seealso cref=       java.awt.peer.ListPeer </seealso>
-        Protected Friend MustOverride Function createList(ByVal target As java.awt.List) As ListPeer
+        Protected Friend MustOverride Function createList(  target As java.awt.List) As ListPeer
 
         ''' <summary>
         ''' Creates this toolkit's implementation of <code>Checkbox</code> using
@@ -165,7 +165,7 @@ Namespace java.awt
         ''' <seealso cref=       java.awt.GraphicsEnvironment#isHeadless </seealso>
         ''' <seealso cref=       java.awt.Checkbox </seealso>
         ''' <seealso cref=       java.awt.peer.CheckboxPeer </seealso>
-        Protected Friend MustOverride Function createCheckbox(ByVal target As Checkbox) As CheckboxPeer
+        Protected Friend MustOverride Function createCheckbox(  target As Checkbox) As CheckboxPeer
 
         ''' <summary>
         ''' Creates this toolkit's implementation of <code>Scrollbar</code> using
@@ -177,7 +177,7 @@ Namespace java.awt
         ''' <seealso cref=       java.awt.GraphicsEnvironment#isHeadless </seealso>
         ''' <seealso cref=       java.awt.Scrollbar </seealso>
         ''' <seealso cref=       java.awt.peer.ScrollbarPeer </seealso>
-        Protected Friend MustOverride Function createScrollbar(ByVal target As Scrollbar) As ScrollbarPeer
+        Protected Friend MustOverride Function createScrollbar(  target As Scrollbar) As ScrollbarPeer
 
         ''' <summary>
         ''' Creates this toolkit's implementation of <code>ScrollPane</code> using
@@ -190,7 +190,7 @@ Namespace java.awt
         ''' <seealso cref=       java.awt.ScrollPane </seealso>
         ''' <seealso cref=       java.awt.peer.ScrollPanePeer
         ''' @since     JDK1.1 </seealso>
-        Protected Friend MustOverride Function createScrollPane(ByVal target As ScrollPane) As ScrollPanePeer
+        Protected Friend MustOverride Function createScrollPane(  target As ScrollPane) As ScrollPanePeer
 
         ''' <summary>
         ''' Creates this toolkit's implementation of <code>TextArea</code> using
@@ -202,7 +202,7 @@ Namespace java.awt
         ''' <seealso cref=       java.awt.GraphicsEnvironment#isHeadless </seealso>
         ''' <seealso cref=       java.awt.TextArea </seealso>
         ''' <seealso cref=       java.awt.peer.TextAreaPeer </seealso>
-        Protected Friend MustOverride Function createTextArea(ByVal target As TextArea) As TextAreaPeer
+        Protected Friend MustOverride Function createTextArea(  target As TextArea) As TextAreaPeer
 
         ''' <summary>
         ''' Creates this toolkit's implementation of <code>Choice</code> using
@@ -214,7 +214,7 @@ Namespace java.awt
         ''' <seealso cref=       java.awt.GraphicsEnvironment#isHeadless </seealso>
         ''' <seealso cref=       java.awt.Choice </seealso>
         ''' <seealso cref=       java.awt.peer.ChoicePeer </seealso>
-        Protected Friend MustOverride Function createChoice(ByVal target As Choice) As ChoicePeer
+        Protected Friend MustOverride Function createChoice(  target As Choice) As ChoicePeer
 
         ''' <summary>
         ''' Creates this toolkit's implementation of <code>Frame</code> using
@@ -226,7 +226,7 @@ Namespace java.awt
         ''' <seealso cref=       java.awt.GraphicsEnvironment#isHeadless </seealso>
         ''' <seealso cref=       java.awt.Frame </seealso>
         ''' <seealso cref=       java.awt.peer.FramePeer </seealso>
-        Protected Friend MustOverride Function createFrame(ByVal target As Frame) As FramePeer
+        Protected Friend MustOverride Function createFrame(  target As Frame) As FramePeer
 
         ''' <summary>
         ''' Creates this toolkit's implementation of <code>Canvas</code> using
@@ -235,7 +235,7 @@ Namespace java.awt
         ''' <returns>    this toolkit's implementation of <code>Canvas</code>. </returns>
         ''' <seealso cref=       java.awt.Canvas </seealso>
         ''' <seealso cref=       java.awt.peer.CanvasPeer </seealso>
-        Protected Friend MustOverride Function createCanvas(ByVal target As Canvas) As CanvasPeer
+        Protected Friend MustOverride Function createCanvas(  target As Canvas) As CanvasPeer
 
         ''' <summary>
         ''' Creates this toolkit's implementation of <code>Panel</code> using
@@ -244,7 +244,7 @@ Namespace java.awt
         ''' <returns>    this toolkit's implementation of <code>Panel</code>. </returns>
         ''' <seealso cref=       java.awt.Panel </seealso>
         ''' <seealso cref=       java.awt.peer.PanelPeer </seealso>
-        Protected Friend MustOverride Function createPanel(ByVal target As Panel) As PanelPeer
+        Protected Friend MustOverride Function createPanel(  target As Panel) As PanelPeer
 
         ''' <summary>
         ''' Creates this toolkit's implementation of <code>Window</code> using
@@ -256,7 +256,7 @@ Namespace java.awt
         ''' <seealso cref=       java.awt.GraphicsEnvironment#isHeadless </seealso>
         ''' <seealso cref=       java.awt.Window </seealso>
         ''' <seealso cref=       java.awt.peer.WindowPeer </seealso>
-        Protected Friend MustOverride Function createWindow(ByVal target As Window) As WindowPeer
+        Protected Friend MustOverride Function createWindow(  target As Window) As WindowPeer
 
         ''' <summary>
         ''' Creates this toolkit's implementation of <code>Dialog</code> using
@@ -268,7 +268,7 @@ Namespace java.awt
         ''' <seealso cref=       java.awt.GraphicsEnvironment#isHeadless </seealso>
         ''' <seealso cref=       java.awt.Dialog </seealso>
         ''' <seealso cref=       java.awt.peer.DialogPeer </seealso>
-        Protected Friend MustOverride Function createDialog(ByVal target As Dialog) As DialogPeer
+        Protected Friend MustOverride Function createDialog(  target As Dialog) As DialogPeer
 
         ''' <summary>
         ''' Creates this toolkit's implementation of <code>MenuBar</code> using
@@ -280,7 +280,7 @@ Namespace java.awt
         ''' <seealso cref=       java.awt.GraphicsEnvironment#isHeadless </seealso>
         ''' <seealso cref=       java.awt.MenuBar </seealso>
         ''' <seealso cref=       java.awt.peer.MenuBarPeer </seealso>
-        Protected Friend MustOverride Function createMenuBar(ByVal target As MenuBar) As MenuBarPeer
+        Protected Friend MustOverride Function createMenuBar(  target As MenuBar) As MenuBarPeer
 
         ''' <summary>
         ''' Creates this toolkit's implementation of <code>Menu</code> using
@@ -292,7 +292,7 @@ Namespace java.awt
         ''' <seealso cref=       java.awt.GraphicsEnvironment#isHeadless </seealso>
         ''' <seealso cref=       java.awt.Menu </seealso>
         ''' <seealso cref=       java.awt.peer.MenuPeer </seealso>
-        Protected Friend MustOverride Function createMenu(ByVal target As Menu) As MenuPeer
+        Protected Friend MustOverride Function createMenu(  target As Menu) As MenuPeer
 
         ''' <summary>
         ''' Creates this toolkit's implementation of <code>PopupMenu</code> using
@@ -305,7 +305,7 @@ Namespace java.awt
         ''' <seealso cref=       java.awt.PopupMenu </seealso>
         ''' <seealso cref=       java.awt.peer.PopupMenuPeer
         ''' @since     JDK1.1 </seealso>
-        Protected Friend MustOverride Function createPopupMenu(ByVal target As PopupMenu) As PopupMenuPeer
+        Protected Friend MustOverride Function createPopupMenu(  target As PopupMenu) As PopupMenuPeer
 
         ''' <summary>
         ''' Creates this toolkit's implementation of <code>MenuItem</code> using
@@ -317,7 +317,7 @@ Namespace java.awt
         ''' <seealso cref=       java.awt.GraphicsEnvironment#isHeadless </seealso>
         ''' <seealso cref=       java.awt.MenuItem </seealso>
         ''' <seealso cref=       java.awt.peer.MenuItemPeer </seealso>
-        Protected Friend MustOverride Function createMenuItem(ByVal target As MenuItem) As MenuItemPeer
+        Protected Friend MustOverride Function createMenuItem(  target As MenuItem) As MenuItemPeer
 
         ''' <summary>
         ''' Creates this toolkit's implementation of <code>FileDialog</code> using
@@ -329,7 +329,7 @@ Namespace java.awt
         ''' <seealso cref=       java.awt.GraphicsEnvironment#isHeadless </seealso>
         ''' <seealso cref=       java.awt.FileDialog </seealso>
         ''' <seealso cref=       java.awt.peer.FileDialogPeer </seealso>
-        Protected Friend MustOverride Function createFileDialog(ByVal target As FileDialog) As FileDialogPeer
+        Protected Friend MustOverride Function createFileDialog(  target As FileDialog) As FileDialogPeer
 
         ''' <summary>
         ''' Creates this toolkit's implementation of <code>CheckboxMenuItem</code> using
@@ -341,7 +341,7 @@ Namespace java.awt
         ''' <seealso cref=       java.awt.GraphicsEnvironment#isHeadless </seealso>
         ''' <seealso cref=       java.awt.CheckboxMenuItem </seealso>
         ''' <seealso cref=       java.awt.peer.CheckboxMenuItemPeer </seealso>
-        Protected Friend MustOverride Function createCheckboxMenuItem(ByVal target As CheckboxMenuItem) As CheckboxMenuItemPeer
+        Protected Friend MustOverride Function createCheckboxMenuItem(  target As CheckboxMenuItem) As CheckboxMenuItemPeer
 
         ''' <summary>
         ''' Obtains this toolkit's implementation of helper class for
@@ -365,7 +365,7 @@ Namespace java.awt
         ''' to create windowless components that are defined entirely in java.
         ''' </summary>
         ''' <param name="target"> The Component to be created. </param>
-        Protected Friend Overridable Function createComponent(ByVal target As Component) As LightweightPeer
+        Protected Friend Overridable Function createComponent(  target As Component) As LightweightPeer
             If lightweightMarker Is Nothing Then lightweightMarker = New sun.awt.NullComponentPeer
             Return lightweightMarker
         End Function
@@ -382,7 +382,7 @@ Namespace java.awt
         ''' <seealso cref=       java.awt.GraphicsEnvironment#getAllFonts </seealso>
         ''' @deprecated  see java.awt.GraphicsEnvironment#getAllFonts 
         <Obsolete(" see java.awt.GraphicsEnvironment#getAllFonts")>
-        Protected Friend MustOverride Function getFontPeer(ByVal name As String, ByVal style As Integer) As FontPeer
+        Protected Friend MustOverride Function getFontPeer(  name As String,   style As Integer) As FontPeer
 
         ' The following method is called by the private method
         ' <code>updateSystemColors</code> in <code>SystemColor</code>.
@@ -396,7 +396,7 @@ Namespace java.awt
         ''' returns true </exception>
         ''' <seealso cref=       java.awt.GraphicsEnvironment#isHeadless
         ''' @since     JDK1.1 </seealso>
-        Protected Friend Overridable Sub loadSystemColors(ByVal systemColors As Integer())
+        Protected Friend Overridable Sub loadSystemColors(  systemColors As Integer())
             GraphicsEnvironment.checkHeadless()
         End Sub
 
@@ -430,7 +430,7 @@ Namespace java.awt
         ''' <seealso cref=       java.awt.GraphicsEnvironment#isHeadless
         ''' @since     1.4 </seealso>
         Public Overridable Property dynamicLayout As Boolean
-            Set(ByVal dynamic As Boolean)
+            Set(  dynamic As Boolean)
                 GraphicsEnvironment.checkHeadless()
                 If Me IsNot defaultToolkit Then defaultToolkit.dynamicLayout = dynamic
             End Set
@@ -532,7 +532,7 @@ Namespace java.awt
         ''' returns true </exception>
         ''' <seealso cref=       java.awt.GraphicsEnvironment#isHeadless
         ''' @since     1.4 </seealso>
-        Public Overridable Function getScreenInsets(ByVal gc As GraphicsConfiguration) As Insets
+        Public Overridable Function getScreenInsets(  gc As GraphicsConfiguration) As Insets
             GraphicsEnvironment.checkHeadless()
             If Me IsNot Toolkit.defaultToolkit Then
                 Return Toolkit.defaultToolkit.getScreenInsets(gc)
@@ -588,7 +588,7 @@ Namespace java.awt
 		''' <seealso cref= java.awt.Font#getLineMetrics </seealso>
 		''' <seealso cref= java.awt.GraphicsEnvironment#getScreenDevices </seealso>
 		<Obsolete(" As of JDK version 1.2, replaced by the <code>Font</code>")>
-        Public MustOverride Function getFontMetrics(ByVal font As font) As FontMetrics
+        Public MustOverride Function getFontMetrics(  font As font) As FontMetrics
 
         ''' <summary>
         ''' Synchronizes this toolkit's graphics state. Some window systems
@@ -835,7 +835,7 @@ Namespace java.awt
         ''' <exception cref="SecurityException">  if a security manager exists and its
         '''                            checkRead method doesn't allow the operation. </exception>
         ''' <seealso cref= #createImage(java.lang.String) </seealso>
-        Public MustOverride Function getImage(ByVal filename As String) As image
+        Public MustOverride Function getImage(  filename As String) As image
 
         ''' <summary>
         ''' Returns an image which gets pixel data from the specified URL.
@@ -875,7 +875,7 @@ Namespace java.awt
         '''                            checkPermission method doesn't allow
         '''                            the operation. </exception>
         ''' <seealso cref= #createImage(java.net.URL) </seealso>
-        Public MustOverride Function getImage(ByVal url As java.net.URL) As image
+        Public MustOverride Function getImage(  url As java.net.URL) As image
 
         ''' <summary>
         ''' Returns an image which gets pixel data from the specified file.
@@ -893,7 +893,7 @@ Namespace java.awt
         ''' <exception cref="SecurityException">  if a security manager exists and its
         '''                            checkRead method doesn't allow the operation. </exception>
         ''' <seealso cref= #getImage(java.lang.String) </seealso>
-        Public MustOverride Function createImage(ByVal filename As String) As image
+        Public MustOverride Function createImage(  filename As String) As image
 
         ''' <summary>
         ''' Returns an image which gets pixel data from the specified URL.
@@ -917,7 +917,7 @@ Namespace java.awt
         '''                            checkPermission method doesn't allow
         '''                            the operation. </exception>
         ''' <seealso cref= #getImage(java.net.URL) </seealso>
-        Public MustOverride Function createImage(ByVal url As java.net.URL) As image
+        Public MustOverride Function createImage(  url As java.net.URL) As image
 
         ''' <summary>
         ''' Prepares an image for rendering.
@@ -953,7 +953,7 @@ Namespace java.awt
         ''' <seealso cref=       java.awt.Component#prepareImage(java.awt.Image,
         '''                 int, int, java.awt.image.ImageObserver) </seealso>
         ''' <seealso cref=       java.awt.image.ImageObserver </seealso>
-        Public MustOverride Function prepareImage(ByVal image As image, ByVal width As Integer, ByVal height As Integer, ByVal observer As java.awt.image.ImageObserver) As Boolean
+        Public MustOverride Function prepareImage(  image As image,   width As Integer,   height As Integer,   observer As java.awt.image.ImageObserver) As Boolean
 
         ''' <summary>
         ''' Indicates the construction status of a specified image that is
@@ -992,7 +992,7 @@ Namespace java.awt
         ''' <seealso cref=       java.awt.Component#checkImage(java.awt.Image,
         '''                 int, int, java.awt.image.ImageObserver) </seealso>
         ''' <seealso cref=       java.awt.image.ImageObserver </seealso>
-        Public MustOverride Function checkImage(ByVal image As image, ByVal width As Integer, ByVal height As Integer, ByVal observer As java.awt.image.ImageObserver) As Integer
+        Public MustOverride Function checkImage(  image As image,   width As Integer,   height As Integer,   observer As java.awt.image.ImageObserver) As Integer
 
         ''' <summary>
         ''' Creates an image with the specified image producer. </summary>
@@ -1001,7 +1001,7 @@ Namespace java.awt
         ''' <seealso cref=       java.awt.Image </seealso>
         ''' <seealso cref=       java.awt.image.ImageProducer </seealso>
         ''' <seealso cref=       java.awt.Component#createImage(java.awt.image.ImageProducer) </seealso>
-        Public MustOverride Function createImage(ByVal producer As java.awt.image.ImageProducer) As image
+        Public MustOverride Function createImage(  producer As java.awt.image.ImageProducer) As image
 
         ''' <summary>
         ''' Creates an image which decodes the image stored in the specified
@@ -1013,7 +1013,7 @@ Namespace java.awt
         '''                         image data in a supported image format. </param>
         ''' <returns>    an image.
         ''' @since     JDK1.1 </returns>
-        Public Overridable Function createImage(ByVal imagedata As SByte()) As image
+        Public Overridable Function createImage(  imagedata As SByte()) As image
             Return createImage(imagedata, 0, imagedata.Length)
         End Function
 
@@ -1029,7 +1029,7 @@ Namespace java.awt
         ''' <param name="imagelength">  the length of the data in the array. </param>
         ''' <returns>    an image.
         ''' @since     JDK1.1 </returns>
-        Public MustOverride Function createImage(ByVal imagedata As SByte(), ByVal imageoffset As Integer, ByVal imagelength As Integer) As image
+        Public MustOverride Function createImage(  imagedata As SByte(),   imageoffset As Integer,   imagelength As Integer) As image
 
         ''' <summary>
         ''' Gets a <code>PrintJob</code> object which is the result of initiating
@@ -1063,7 +1063,7 @@ Namespace java.awt
         ''' <seealso cref=     java.awt.PrintJob </seealso>
         ''' <seealso cref=     java.lang.RuntimePermission
         ''' @since   JDK1.1 </seealso>
-        Public MustOverride Function getPrintJob(ByVal frame As Frame, ByVal jobtitle As String, ByVal props As Properties) As PrintJob
+        Public MustOverride Function getPrintJob(  frame As Frame,   jobtitle As String,   props As Properties) As PrintJob
 
         ''' <summary>
         ''' Gets a <code>PrintJob</code> object which is the result of initiating
@@ -1113,7 +1113,7 @@ Namespace java.awt
         ''' <seealso cref=     java.awt.JobAttributes </seealso>
         ''' <seealso cref=     java.awt.PageAttributes
         ''' @since   1.3 </seealso>
-        Public Overridable Function getPrintJob(ByVal frame_Renamed As Frame, ByVal jobtitle As String, ByVal jobAttributes As JobAttributes, ByVal pageAttributes As PageAttributes) As PrintJob
+        Public Overridable Function getPrintJob(  frame_Renamed As Frame,   jobtitle As String,   jobAttributes As JobAttributes,   pageAttributes As PageAttributes) As PrintJob
             ' Override to add printing support with new job/page control classes
 
             If Me IsNot Toolkit.defaultToolkit Then
@@ -1275,7 +1275,7 @@ Namespace java.awt
         ''' returns true </exception>
         ''' <seealso cref=       java.awt.GraphicsEnvironment#isHeadless
         ''' @since 1.3 </seealso>
-        Public Overridable Function getLockingKeyState(ByVal keyCode As Integer) As Boolean
+        Public Overridable Function getLockingKeyState(  keyCode As Integer) As Boolean
             GraphicsEnvironment.checkHeadless()
 
             If Not (keyCode = KeyEvent.VK_CAPS_LOCK OrElse keyCode = KeyEvent.VK_NUM_LOCK OrElse keyCode = KeyEvent.VK_SCROLL_LOCK OrElse keyCode = KeyEvent.VK_KANA_LOCK) Then Throw New IllegalArgumentException("invalid key for Toolkit.getLockingKeyState")
@@ -1303,7 +1303,7 @@ Namespace java.awt
         ''' returns true </exception>
         ''' <seealso cref=       java.awt.GraphicsEnvironment#isHeadless
         ''' @since 1.3 </seealso>
-        Public Overridable Sub setLockingKeyState(ByVal keyCode As Integer, ByVal [on] As Boolean)
+        Public Overridable Sub setLockingKeyState(  keyCode As Integer,   [on] As Boolean)
             GraphicsEnvironment.checkHeadless()
 
             If Not (keyCode = KeyEvent.VK_CAPS_LOCK OrElse keyCode = KeyEvent.VK_NUM_LOCK OrElse keyCode = KeyEvent.VK_SCROLL_LOCK OrElse keyCode = KeyEvent.VK_KANA_LOCK) Then Throw New IllegalArgumentException("invalid key for Toolkit.setLockingKeyState")
@@ -1314,7 +1314,7 @@ Namespace java.awt
         ''' Give native peers the ability to query the native container
         ''' given a native component (eg the direct parent may be lightweight).
         ''' </summary>
-        Protected Friend Shared Function getNativeContainer(ByVal c As Component) As Container
+        Protected Friend Shared Function getNativeContainer(  c As Component) As Container
             Return c.nativeContainer
         End Function
 
@@ -1337,7 +1337,7 @@ Namespace java.awt
         ''' returns true </exception>
         ''' <seealso cref=       java.awt.GraphicsEnvironment#isHeadless
         ''' @since     1.2 </seealso>
-        Public Overridable Function createCustomCursor(ByVal cursor_Renamed As image, ByVal hotSpot As Point, ByVal name As String) As Cursor
+        Public Overridable Function createCustomCursor(  cursor_Renamed As image,   hotSpot As Point,   name As String) As Cursor
             ' Override to implement custom cursor support.
             If Me IsNot Toolkit.defaultToolkit Then
                 Return Toolkit.defaultToolkit.createCustomCursor(cursor_Renamed, hotSpot, name)
@@ -1369,7 +1369,7 @@ Namespace java.awt
         ''' returns true </exception>
         ''' <seealso cref=       java.awt.GraphicsEnvironment#isHeadless
         ''' @since     1.2 </seealso>
-        Public Overridable Function getBestCursorSize(ByVal preferredWidth As Integer, ByVal preferredHeight As Integer) As Dimension
+        Public Overridable Function getBestCursorSize(  preferredWidth As Integer,   preferredHeight As Integer) As Dimension
             GraphicsEnvironment.checkHeadless()
 
             ' Override to implement custom cursor support.
@@ -1446,7 +1446,7 @@ Namespace java.awt
         '''     returns <code>true</code>. </exception>
         ''' <seealso cref= java.awt.Window#addWindowStateListener
         ''' @since   1.4 </seealso>
-        Public Overridable Function isFrameStateSupported(ByVal state As Integer) As Boolean
+        Public Overridable Function isFrameStateSupported(  state As Integer) As Boolean
             GraphicsEnvironment.checkHeadless()
 
             If Me IsNot Toolkit.defaultToolkit Then
@@ -1466,7 +1466,7 @@ Namespace java.awt
 
         ' called by platform toolkit
         Private Shared Property platformResources As ResourceBundle
-            Set(ByVal bundle As ResourceBundle)
+            Set(  bundle As ResourceBundle)
                 platformResources = bundle
             End Set
         End Property
@@ -1559,7 +1559,7 @@ Namespace java.awt
         ''' Gets a property with the specified key and default.
         ''' This method returns defaultValue if the property is not found.
         ''' </summary>
-        Public Shared Function getProperty(ByVal key As String, ByVal defaultValue As String) As String
+        Public Shared Function getProperty(  key As String,   defaultValue As String) As String
             ' first try platform specific bundle
             If platformResources IsNot Nothing Then
                 Try
@@ -1622,7 +1622,7 @@ Namespace java.awt
         ''' Always throws InvalidDndOperationException if
         ''' GraphicsEnvironment.isHeadless() returns true. </summary>
         ''' <seealso cref= java.awt.GraphicsEnvironment#isHeadless </seealso>
-        Public MustOverride Function createDragSourceContextPeer(ByVal dge As java.awt.dnd.DragGestureEvent) As java.awt.dnd.peer.DragSourceContextPeer
+        Public MustOverride Function createDragSourceContextPeer(  dge As java.awt.dnd.DragGestureEvent) As java.awt.dnd.peer.DragSourceContextPeer
 
         ''' <summary>
         ''' Creates a concrete, platform dependent, subclass of the abstract
@@ -1640,7 +1640,7 @@ Namespace java.awt
         ''' <returns> the new object or null.  Always returns null if
         ''' GraphicsEnvironment.isHeadless() returns true. </returns>
         ''' <seealso cref= java.awt.GraphicsEnvironment#isHeadless </seealso>
-        Public Overridable Function createDragGestureRecognizer(Of T As java.awt.dnd.DragGestureRecognizer)(ByVal abstractRecognizerClass As [Class], ByVal ds As java.awt.dnd.DragSource, ByVal c As Component, ByVal srcActions As Integer, ByVal dgl As java.awt.dnd.DragGestureListener) As T
+        Public Overridable Function createDragGestureRecognizer(Of T As java.awt.dnd.DragGestureRecognizer)(  abstractRecognizerClass As [Class],   ds As java.awt.dnd.DragSource,   c As Component,   srcActions As Integer,   dgl As java.awt.dnd.DragGestureListener) As T
             Return Nothing
         End Function
 
@@ -1654,7 +1654,7 @@ Namespace java.awt
         ''' <a href="doc-files/DesktopProperties.html">AWT Desktop Properties</a>.
         ''' </summary>
         <MethodImpl(MethodImplOptions.Synchronized)>
-        Public Function getDesktopProperty(ByVal propertyName As String) As Object
+        Public Function getDesktopProperty(  propertyName As String) As Object
             ' This is a workaround for headless toolkits.  It would be
             ' better to override this method but it is declared final.
             ' "this instanceof" syntax defeats polymorphism.
@@ -1686,7 +1686,7 @@ Namespace java.awt
         ''' Sets the named desktop property to the specified value and fires a
         ''' property change event to notify any listeners that the value has changed.
         ''' </summary>
-        Protected Friend Sub setDesktopProperty(ByVal name As String, ByVal newValue As Object)
+        Protected Friend Sub setDesktopProperty(  name As String,   newValue As Object)
             ' This is a workaround for headless toolkits.  It would be
             ' better to override this method but it is declared final.
             ' "this instanceof" syntax defeats polymorphism.
@@ -1710,7 +1710,7 @@ Namespace java.awt
         ''' <summary>
         ''' an opportunity to lazily evaluate desktop property values.
         ''' </summary>
-        Protected Friend Overridable Function lazilyLoadDesktopProperty(ByVal name As String) As Object
+        Protected Friend Overridable Function lazilyLoadDesktopProperty(  name As String) As Object
             Return Nothing
         End Function
 
@@ -1732,7 +1732,7 @@ Namespace java.awt
         ''' <seealso cref= PropertyChangeSupport#addPropertyChangeListener(String,
         '''            PropertyChangeListener)
         ''' @since   1.2 </seealso>
-        Public Overridable Sub addPropertyChangeListener(ByVal name As String, ByVal pcl As java.beans.PropertyChangeListener)
+        Public Overridable Sub addPropertyChangeListener(  name As String,   pcl As java.beans.PropertyChangeListener)
             desktopPropsSupport.addPropertyChangeListener(name, pcl)
         End Sub
 
@@ -1749,7 +1749,7 @@ Namespace java.awt
         ''' <seealso cref= PropertyChangeSupport#removePropertyChangeListener(String,
         '''            PropertyChangeListener)
         ''' @since   1.2 </seealso>
-        Public Overridable Sub removePropertyChangeListener(ByVal name As String, ByVal pcl As java.beans.PropertyChangeListener)
+        Public Overridable Sub removePropertyChangeListener(  name As String,   pcl As java.beans.PropertyChangeListener)
             desktopPropsSupport.removePropertyChangeListener(name, pcl)
         End Sub
 
@@ -1782,7 +1782,7 @@ Namespace java.awt
         ''' </returns>
         ''' <seealso cref= PropertyChangeSupport#getPropertyChangeListeners(String)
         ''' @since 1.4 </seealso>
-        Public Overridable Function getPropertyChangeListeners(ByVal propertyName As String) As java.beans.PropertyChangeListener()
+        Public Overridable Function getPropertyChangeListeners(  propertyName As String) As java.beans.PropertyChangeListener()
             Return desktopPropsSupport.getPropertyChangeListeners(propertyName)
         End Function
 
@@ -1819,7 +1819,7 @@ Namespace java.awt
         ''' <seealso cref= java.awt.Dialog#setModalityType
         ''' 
         ''' @since 1.6 </seealso>
-        Public MustOverride Function isModalityTypeSupported(ByVal modalityType As Dialog.ModalityType) As Boolean
+        Public MustOverride Function isModalityTypeSupported(  modalityType As Dialog.ModalityType) As Boolean
 
         ''' <summary>
         ''' Returns whether the given modal exclusion type is supported by this
@@ -1836,7 +1836,7 @@ Namespace java.awt
         ''' <seealso cref= java.awt.Window#setModalExclusionType
         ''' 
         ''' @since 1.6 </seealso>
-        Public MustOverride Function isModalExclusionTypeSupported(ByVal modalExclusionType As Dialog.ModalExclusionType) As Boolean
+        Public MustOverride Function isModalExclusionTypeSupported(  modalExclusionType As Dialog.ModalExclusionType) As Boolean
 
         ' 8014718: logging has been removed from SunToolkit
 
@@ -1851,7 +1851,7 @@ Namespace java.awt
         '     * Extracts a "pure" AWTEventListener from a AWTEventListenerProxy,
         '     * if the listener is proxied.
         '     
-        Private Shared Function deProxyAWTEventListener(ByVal l As AWTEventListener) As AWTEventListener
+        Private Shared Function deProxyAWTEventListener(  l As AWTEventListener) As AWTEventListener
             Dim localL As AWTEventListener = l
 
             If localL Is Nothing Then Return Nothing
@@ -1894,7 +1894,7 @@ Namespace java.awt
         ''' <seealso cref=      java.awt.event.AWTEventListener </seealso>
         ''' <seealso cref=      java.awt.event.AWTEventListenerProxy
         ''' @since    1.2 </seealso>
-        Public Overridable Sub addAWTEventListener(ByVal listener As AWTEventListener, ByVal eventMask As Long)
+        Public Overridable Sub addAWTEventListener(  listener As AWTEventListener,   eventMask As Long)
             Dim localL As AWTEventListener = deProxyAWTEventListener(listener)
 
             If localL Is Nothing Then Return
@@ -1951,7 +1951,7 @@ Namespace java.awt
         ''' <seealso cref=      java.awt.event.AWTEventListener </seealso>
         ''' <seealso cref=      java.awt.event.AWTEventListenerProxy
         ''' @since    1.2 </seealso>
-        Public Overridable Sub removeAWTEventListener(ByVal listener As AWTEventListener)
+        Public Overridable Sub removeAWTEventListener(  listener As AWTEventListener)
             Dim localL As AWTEventListener = deProxyAWTEventListener(listener)
 
             If listener Is Nothing Then Return
@@ -1975,12 +1975,12 @@ Namespace java.awt
             End SyncLock
         End Sub
 
-        Friend Shared Function enabledOnToolkit(ByVal eventMask As Long) As Boolean
+        Friend Shared Function enabledOnToolkit(  eventMask As Long) As Boolean
             Return (enabledOnToolkitMask And eventMask) <> 0
         End Function
 
         <MethodImpl(MethodImplOptions.Synchronized)>
-        Friend Overridable Function countAWTEventListeners(ByVal eventMask As Long) As Integer
+        Friend Overridable Function countAWTEventListeners(  eventMask As Long) As Integer
             Dim ci As Integer = 0
             Do While eventMask <> 0
                 eventMask >>>= 1
@@ -2066,7 +2066,7 @@ Namespace java.awt
         ''' <seealso cref=      java.awt.event.AWTEventListener </seealso>
         ''' <seealso cref=      java.awt.event.AWTEventListenerProxy
         ''' @since 1.4 </seealso>
-        Public Overridable Function getAWTEventListeners(ByVal eventMask As Long) As AWTEventListener()
+        Public Overridable Function getAWTEventListeners(  eventMask As Long) As AWTEventListener()
             Dim security As SecurityManager = System.securityManager
             If security IsNot Nothing Then security.checkPermission(sun.security.util.SecurityConstants.AWT.ALL_AWT_EVENTS_PERMISSION)
             SyncLock Me
@@ -2088,7 +2088,7 @@ Namespace java.awt
         '     *
         '     * @param theEvent the event which will be dispatched.
         '     
-        Friend Overridable Sub notifyAWTEventListeners(ByVal theEvent As AWTEvent)
+        Friend Overridable Sub notifyAWTEventListeners(  theEvent As AWTEvent)
             ' This is a workaround for headless toolkits.  It would be
             ' better to override this method but it is declared package private.
             ' "this instanceof" syntax defeats polymorphism.
@@ -2108,17 +2108,17 @@ Namespace java.awt
 
             ' Implementation cloned from AWTEventMulticaster.
 
-            Friend Sub New(ByVal a As AWTEventListener, ByVal b As AWTEventListener)
+            Friend Sub New(  a As AWTEventListener,   b As AWTEventListener)
                 MyBase.New(a, b)
             End Sub
 
-            Friend Shared Function add(ByVal a As AWTEventListener, ByVal b As AWTEventListener) As AWTEventListener
+            Friend Shared Function add(  a As AWTEventListener,   b As AWTEventListener) As AWTEventListener
                 If a Is Nothing Then Return b
                 If b Is Nothing Then Return a
                 Return New ToolkitEventMulticaster(a, b)
             End Function
 
-            Friend Shared Function remove(ByVal l As AWTEventListener, ByVal oldl As AWTEventListener) As AWTEventListener
+            Friend Shared Function remove(  l As AWTEventListener,   oldl As AWTEventListener) As AWTEventListener
                 Return CType(removeInternal(l, oldl), AWTEventListener)
             End Function
 
@@ -2127,7 +2127,7 @@ Namespace java.awt
             ' ToolkitEventMulticaster instead of an AWTEventMulticaster.
             ' Note: this method is called by AWTEventListener.removeInternal(),
             ' so its method signature must match AWTEventListener.remove().
-            Protected Friend Overridable Function remove(ByVal oldl As EventListener) As EventListener
+            Protected Friend Overridable Function remove(  oldl As EventListener) As EventListener
                 If oldl Is a Then Return b
                 If oldl Is b Then Return a
                 Dim a2 As AWTEventListener = CType(removeInternal(a, oldl), AWTEventListener)
@@ -2136,7 +2136,7 @@ Namespace java.awt
                 Return add(a2, b2)
             End Function
 
-            Public Overridable Sub eventDispatched(ByVal [event] As AWTEvent)
+            Public Overridable Sub eventDispatched(  [event] As AWTEvent)
                 CType(a, AWTEventListener).eventDispatched(event_Renamed)
                 CType(b, AWTEventListener).eventDispatched(event_Renamed)
             End Sub
@@ -2169,7 +2169,7 @@ Namespace java.awt
                 End Get
             End Property
 
-            Public Overridable Sub orEventMasks(ByVal mask As Long)
+            Public Overridable Sub orEventMasks(  mask As Long)
                 eventMask = eventMask Or mask
                 ' For each event bit set in mask, increment its call count.
                 For i As Integer = 0 To Toolkit.LONG_BITS - 1
@@ -2180,13 +2180,13 @@ Namespace java.awt
                 Next i
             End Sub
 
-            Friend Sub New(ByVal outerInstance As Toolkit, ByVal l As AWTEventListener, ByVal mask As Long)
+            Friend Sub New(  outerInstance As Toolkit,   l As AWTEventListener,   mask As Long)
                 Me.outerInstance = outerInstance
                 listener = l
                 eventMask = mask
             End Sub
 
-            Public Overridable Sub eventDispatched(ByVal [event] As AWTEvent)
+            Public Overridable Sub eventDispatched(  [event] As AWTEvent)
                 Dim eventBit As Long = 0 ' Used to save the bit of the event type.
                 eventBit = eventMask And AWTEvent.COMPONENT_EVENT_MASK
                 eventBit = eventMask And AWTEvent.CONTAINER_EVENT_MASK
@@ -2242,9 +2242,9 @@ Namespace java.awt
         ''' <seealso cref=       java.awt.GraphicsEnvironment#isHeadless
         ''' @since 1.3 </seealso>
         'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-        Public MustOverride Function mapInputMethodHighlight(ByVal highlight As java.awt.im.InputMethodHighlight) As Map(Of java.awt.font.TextAttribute, ?)
+        Public MustOverride Function mapInputMethodHighlight(  highlight As java.awt.im.InputMethodHighlight) As Map(Of java.awt.font.TextAttribute, ?)
 
-        Private Shared Function createPropertyChangeSupport(ByVal toolkit_Renamed As Toolkit) As java.beans.PropertyChangeSupport
+        Private Shared Function createPropertyChangeSupport(  toolkit_Renamed As Toolkit) As java.beans.PropertyChangeSupport
             If TypeOf toolkit_Renamed Is sun.awt.SunToolkit OrElse TypeOf toolkit_Renamed Is sun.awt.HeadlessToolkit Then
                 Return New DesktopPropertyChangeSupport(toolkit_Renamed)
             Else
@@ -2259,13 +2259,13 @@ Namespace java.awt
             Private Shared ReadOnly PROP_CHANGE_SUPPORT_KEY As New StringBuilder("desktop property change support key")
             Private ReadOnly source As Object
 
-            Public Sub New(ByVal sourceBean As Object)
+            Public Sub New(  sourceBean As Object)
                 MyBase.New(sourceBean)
                 source = sourceBean
             End Sub
 
             <MethodImpl(MethodImplOptions.Synchronized)>
-            Public Overrides Sub addPropertyChangeListener(ByVal propertyName As String, ByVal listener As java.beans.PropertyChangeListener)
+            Public Overrides Sub addPropertyChangeListener(  propertyName As String,   listener As java.beans.PropertyChangeListener)
                 Dim pcs As java.beans.PropertyChangeSupport = CType(sun.awt.AppContext.appContext.get(PROP_CHANGE_SUPPORT_KEY), java.beans.PropertyChangeSupport)
                 If Nothing Is pcs Then
                     pcs = New java.beans.PropertyChangeSupport(source)
@@ -2275,7 +2275,7 @@ Namespace java.awt
             End Sub
 
             <MethodImpl(MethodImplOptions.Synchronized)>
-            Public Overrides Sub removePropertyChangeListener(ByVal propertyName As String, ByVal listener As java.beans.PropertyChangeListener)
+            Public Overrides Sub removePropertyChangeListener(  propertyName As String,   listener As java.beans.PropertyChangeListener)
                 Dim pcs As java.beans.PropertyChangeSupport = CType(sun.awt.AppContext.appContext.get(PROP_CHANGE_SUPPORT_KEY), java.beans.PropertyChangeSupport)
                 If Nothing IsNot pcs Then pcs.removePropertyChangeListener(propertyName, listener)
             End Sub
@@ -2293,7 +2293,7 @@ Namespace java.awt
             End Property
 
             <MethodImpl(MethodImplOptions.Synchronized)>
-            Public Overrides Function getPropertyChangeListeners(ByVal propertyName As String) As java.beans.PropertyChangeListener()
+            Public Overrides Function getPropertyChangeListeners(  propertyName As String) As java.beans.PropertyChangeListener()
                 Dim pcs As java.beans.PropertyChangeSupport = CType(sun.awt.AppContext.appContext.get(PROP_CHANGE_SUPPORT_KEY), java.beans.PropertyChangeSupport)
                 If Nothing IsNot pcs Then
                     Return pcs.getPropertyChangeListeners(propertyName)
@@ -2303,7 +2303,7 @@ Namespace java.awt
             End Function
 
             <MethodImpl(MethodImplOptions.Synchronized)>
-            Public Overrides Sub addPropertyChangeListener(ByVal listener As java.beans.PropertyChangeListener)
+            Public Overrides Sub addPropertyChangeListener(  listener As java.beans.PropertyChangeListener)
                 Dim pcs As java.beans.PropertyChangeSupport = CType(sun.awt.AppContext.appContext.get(PROP_CHANGE_SUPPORT_KEY), java.beans.PropertyChangeSupport)
                 If Nothing Is pcs Then
                     pcs = New java.beans.PropertyChangeSupport(source)
@@ -2313,7 +2313,7 @@ Namespace java.awt
             End Sub
 
             <MethodImpl(MethodImplOptions.Synchronized)>
-            Public Overrides Sub removePropertyChangeListener(ByVal listener As java.beans.PropertyChangeListener)
+            Public Overrides Sub removePropertyChangeListener(  listener As java.beans.PropertyChangeListener)
                 Dim pcs As java.beans.PropertyChangeSupport = CType(sun.awt.AppContext.appContext.get(PROP_CHANGE_SUPPORT_KEY), java.beans.PropertyChangeSupport)
                 If Nothing IsNot pcs Then pcs.removePropertyChangeListener(listener)
             End Sub
@@ -2322,7 +2322,7 @@ Namespace java.awt
             '         * we do expect that all other fireXXX() methods of java.beans.PropertyChangeSupport
             '         * use this method.  If this will be changed we will need to change this class.
             '         
-            Public Overrides Sub firePropertyChange(ByVal evt As java.beans.PropertyChangeEvent)
+            Public Overrides Sub firePropertyChange(  evt As java.beans.PropertyChangeEvent)
                 Dim oldValue As Object = evt.oldValue
                 Dim newValue As Object = evt.newValue
                 Dim propertyName As String = evt.propertyName

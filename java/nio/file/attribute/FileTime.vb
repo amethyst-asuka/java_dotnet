@@ -70,7 +70,7 @@ Namespace java.nio.file.attribute
 		''' <summary>
 		''' Initializes a new instance of this class.
 		''' </summary>
-		Private Sub New(ByVal value As Long, ByVal unit As java.util.concurrent.TimeUnit, ByVal instant As java.time.Instant)
+		Private Sub New(  value As Long,   unit As java.util.concurrent.TimeUnit,   instant As java.time.Instant)
 			Me.value = value
 			Me.unit = unit
 			Me.instant = instant
@@ -87,7 +87,7 @@ Namespace java.nio.file.attribute
 		'''          the unit of granularity to interpret the value
 		''' </param>
 		''' <returns>  a {@code FileTime} representing the given value </returns>
-		Public Shared Function [from](ByVal value As Long, ByVal unit As java.util.concurrent.TimeUnit) As FileTime
+		Public Shared Function [from](  value As Long,   unit As java.util.concurrent.TimeUnit) As FileTime
 			java.util.Objects.requireNonNull(unit, "unit")
 			Return New FileTime(value, unit, Nothing)
 		End Function
@@ -100,7 +100,7 @@ Namespace java.nio.file.attribute
 		'''          (1970-01-01T00:00:00Z); can be negative
 		''' </param>
 		''' <returns>  a {@code FileTime} representing the given value </returns>
-		Public Shared Function fromMillis(ByVal value As Long) As FileTime
+		Public Shared Function fromMillis(  value As Long) As FileTime
 			Return New FileTime(value, java.util.concurrent.TimeUnit.MILLISECONDS, Nothing)
 		End Function
 
@@ -113,7 +113,7 @@ Namespace java.nio.file.attribute
 		''' <returns>  a {@code FileTime} representing the same point on the time-line
 		'''          as the provided instant
 		''' @since 1.8 </returns>
-		Public Shared Function [from](ByVal instant As java.time.Instant) As FileTime
+		Public Shared Function [from](  instant As java.time.Instant) As FileTime
 			java.util.Objects.requireNonNull(instant, "instant")
 			Return New FileTime(0, Nothing, instant)
 		End Function
@@ -130,7 +130,7 @@ Namespace java.nio.file.attribute
 		''' </param>
 		''' <returns>  value in the given unit of granularity, since the epoch
 		'''          since the epoch (1970-01-01T00:00:00Z); can be negative </returns>
-		Public Function [to](ByVal unit As java.util.concurrent.TimeUnit) As Long
+		Public Function [to](  unit As java.util.concurrent.TimeUnit) As Long
 			java.util.Objects.requireNonNull(unit, "unit")
 			If Me.unit IsNot Nothing Then
 				Return unit.convert(Me.value, Me.unit)
@@ -190,7 +190,7 @@ Namespace java.nio.file.attribute
 	'    
 	'     * Scale d by m, checking for overflow.
 	'     
-		Private Shared Function scale(ByVal d As Long, ByVal m As Long, ByVal over As Long) As Long
+		Private Shared Function scale(  d As Long,   m As Long,   over As Long) As Long
 			If d > over Then Return java.lang.[Long].Max_Value
 			If d < -over Then Return java.lang.[Long].MIN_VALUE
 			Return d * m
@@ -259,7 +259,7 @@ Namespace java.nio.file.attribute
 		''' </param>
 		''' <returns>  {@code true} if, and only if, the given object is a {@code
 		'''          FileTime} that represents the same time </returns>
-		Public Overrides Function Equals(ByVal obj As Object) As Boolean
+		Public Overrides Function Equals(  obj As Object) As Boolean
 			Return If(TypeOf obj Is FileTime, compareTo(CType(obj, FileTime)) = 0, False)
 		End Function
 
@@ -283,7 +283,7 @@ Namespace java.nio.file.attribute
 			End If
 		End Function
 
-		Private Function toExcessNanos(ByVal days As Long) As Long
+		Private Function toExcessNanos(  days As Long) As Long
 			If unit IsNot Nothing Then
 				Return unit.toNanos(value - unit.convert(days, java.util.concurrent.TimeUnit.DAYS))
 			Else
@@ -301,7 +301,7 @@ Namespace java.nio.file.attribute
 		'''          value less than 0 if this {@code FileTime} represents a time
 		'''          that is before {@code other}, and a value greater than 0 if this
 		'''          {@code FileTime} represents a time that is after {@code other} </returns>
-		Public Overrides Function compareTo(ByVal other As FileTime) As Integer Implements Comparable(Of FileTime).compareTo
+		Public Overrides Function compareTo(  other As FileTime) As Integer Implements Comparable(Of FileTime).compareTo
 			' same granularity
 			If unit IsNot Nothing AndAlso unit = other.unit Then
 				Return java.lang.[Long].Compare(value, other.value)
@@ -332,7 +332,7 @@ Namespace java.nio.file.attribute
 		Private Shared ReadOnly SECONDS_0000_TO_1970 As Long = ((146097L * 5L) - (30L * 365L + 7L)) * 86400L
 
 		' append year/month/day/hour/minute/second/nano with width and 0 padding
-		Private Function append(ByVal sb As StringBuilder, ByVal w As Integer, ByVal d As Integer) As StringBuilder
+		Private Function append(  sb As StringBuilder,   w As Integer,   d As Integer) As StringBuilder
 			Do While w > 0
 				sb.append(ChrW(d\w + AscW("0"c)))
 				d = d Mod w

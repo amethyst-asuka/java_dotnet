@@ -107,7 +107,7 @@ Namespace java.awt.image
 		'''         either <code>DataBuffer.TYPE_BYTE</code>,
 		'''         <code>DataBuffer.TYPE_USHORT</code>, or
 		'''         <code>DataBuffer.TYPE_INT</code> </exception>
-		Public Sub New(ByVal dataType As Integer, ByVal w As Integer, ByVal h As Integer, ByVal numberOfBits As Integer)
+		Public Sub New(  dataType As Integer,   w As Integer,   h As Integer,   numberOfBits As Integer)
 			Me.New(dataType,w,h, numberOfBits, (w*numberOfBits+DataBuffer.getDataTypeSize(dataType)-1)\ DataBuffer.getDataTypeSize(dataType), 0)
 			If dataType <> DataBuffer.TYPE_BYTE AndAlso dataType <> DataBuffer.TYPE_USHORT AndAlso dataType <> DataBuffer.TYPE_INT Then Throw New IllegalArgumentException("Unsupported data type " & dataType)
 		End Sub
@@ -134,7 +134,7 @@ Namespace java.awt.image
 		'''         either <code>DataBuffer.TYPE_BYTE</code>,
 		'''         <code>DataBuffer.TYPE_USHORT</code>, or
 		'''         <code>DataBuffer.TYPE_INT</code> </exception>
-		Public Sub New(ByVal dataType As Integer, ByVal w As Integer, ByVal h As Integer, ByVal numberOfBits As Integer, ByVal scanlineStride As Integer, ByVal dataBitOffset As Integer)
+		Public Sub New(  dataType As Integer,   w As Integer,   h As Integer,   numberOfBits As Integer,   scanlineStride As Integer,   dataBitOffset As Integer)
 			MyBase.New(dataType, w, h, 1)
 			If dataType <> DataBuffer.TYPE_BYTE AndAlso dataType <> DataBuffer.TYPE_USHORT AndAlso dataType <> DataBuffer.TYPE_INT Then Throw New IllegalArgumentException("Unsupported data type " & dataType)
 			Me.dataType = dataType
@@ -161,7 +161,7 @@ Namespace java.awt.image
 		''' as this <code>MultiPixelPackedSampleModel</code>. </returns>
 		''' <exception cref="IllegalArgumentException"> if <code>w</code> or
 		'''         <code>h</code> is not greater than 0 </exception>
-		Public Overrides Function createCompatibleSampleModel(ByVal w As Integer, ByVal h As Integer) As SampleModel
+		Public Overrides Function createCompatibleSampleModel(  w As Integer,   h As Integer) As SampleModel
 		  Dim sampleModel_Renamed As SampleModel = New MultiPixelPackedSampleModel(dataType, w, h, pixelBitStride)
 		  Return sampleModel_Renamed
 		End Function
@@ -215,7 +215,7 @@ Namespace java.awt.image
 		''' Returns the number of bits per sample for the specified band. </summary>
 		''' <param name="band"> the specified band </param>
 		''' <returns> the number of bits per sample for the specified band. </returns>
-		Public Overrides Function getSampleSize(ByVal band As Integer) As Integer
+		Public Overrides Function getSampleSize(  band As Integer) As Integer
 			Return pixelBitStride
 		End Function
 
@@ -224,7 +224,7 @@ Namespace java.awt.image
 		''' <param name="x"> the X coordinate of the specified pixel </param>
 		''' <param name="y"> the Y coordinate of the specified pixel </param>
 		''' <returns> the offset of the specified pixel. </returns>
-		Public Overridable Function getOffset(ByVal x As Integer, ByVal y As Integer) As Integer
+		Public Overridable Function getOffset(  x As Integer,   y As Integer) As Integer
 			Dim offset_Renamed As Integer = y * scanlineStride
 			offset_Renamed += (x*pixelBitStride+dataBitOffset)\dataElementSize
 			Return offset_Renamed
@@ -236,7 +236,7 @@ Namespace java.awt.image
 		'''  This offset is the same for all scanlines. </summary>
 		'''  <param name="x"> the specified pixel </param>
 		'''  <returns> the bit offset of the specified pixel. </returns>
-		Public Overridable Function getBitOffset(ByVal x As Integer) As Integer
+		Public Overridable Function getBitOffset(  x As Integer) As Integer
 		   Return (x*pixelBitStride+dataBitOffset) Mod dataElementSize
 		End Function
 
@@ -305,7 +305,7 @@ Namespace java.awt.image
 		''' is not one. </exception>
 		''' <exception cref="IllegalArgumentException"> if <code>w</code> or
 		'''         <code>h</code> is not greater than 0 </exception>
-		Public Overrides Function createSubsetSampleModel(ByVal bands As Integer()) As SampleModel
+		Public Overrides Function createSubsetSampleModel(  bands As Integer()) As SampleModel
 			If bands IsNot Nothing Then
 			   If bands.Length <> 1 Then Throw New RasterFormatException("MultiPixelPackedSampleModel has " & "only one band.")
 			End If
@@ -328,7 +328,7 @@ Namespace java.awt.image
 		''' <exception cref="ArrayIndexOutOfBoundsException"> if the specified
 		'''          coordinates are not in bounds. </exception>
 		''' <seealso cref= #setSample(int, int, int, int, DataBuffer) </seealso>
-		Public Overrides Function getSample(ByVal x As Integer, ByVal y As Integer, ByVal b As Integer, ByVal data As DataBuffer) As Integer
+		Public Overrides Function getSample(  x As Integer,   y As Integer,   b As Integer,   data As DataBuffer) As Integer
 			' 'b' must be 0
 			If (x < 0) OrElse (y < 0) OrElse (x >= width) OrElse (y >= height) OrElse (b <> 0) Then Throw New ArrayIndexOutOfBoundsException("Coordinate out of bounds!")
 			Dim bitnum As Integer = dataBitOffset + x*pixelBitStride
@@ -351,7 +351,7 @@ Namespace java.awt.image
 		''' <exception cref="ArrayIndexOutOfBoundsException"> if the coordinates are
 		''' not in bounds. </exception>
 		''' <seealso cref= #getSample(int, int, int, DataBuffer) </seealso>
-		Public Overrides Sub setSample(ByVal x As Integer, ByVal y As Integer, ByVal b As Integer, ByVal s As Integer, ByVal data As DataBuffer)
+		Public Overrides Sub setSample(  x As Integer,   y As Integer,   b As Integer,   s As Integer,   data As DataBuffer)
 			' 'b' must be 0
 			If (x < 0) OrElse (y < 0) OrElse (x >= width) OrElse (y >= height) OrElse (b <> 0) Then Throw New ArrayIndexOutOfBoundsException("Coordinate out of bounds!")
 			Dim bitnum As Integer = dataBitOffset + x * pixelBitStride
@@ -412,7 +412,7 @@ Namespace java.awt.image
 		''' not in bounds, or if <code>obj</code> is not <code>null</code> or
 		''' not large enough to hold the pixel data </exception>
 		''' <seealso cref= #setDataElements(int, int, Object, DataBuffer) </seealso>
-		Public Overrides Function getDataElements(ByVal x As Integer, ByVal y As Integer, ByVal obj As Object, ByVal data As DataBuffer) As Object
+		Public Overrides Function getDataElements(  x As Integer,   y As Integer,   obj As Object,   data As DataBuffer) As Object
 			If (x < 0) OrElse (y < 0) OrElse (x >= width) OrElse (y >= height) Then Throw New ArrayIndexOutOfBoundsException("Coordinate out of bounds!")
 
 			Dim type As Integer = transferType
@@ -485,7 +485,7 @@ Namespace java.awt.image
 		''' <exception cref="ArrayIndexOutOfBoundsException"> if the coordinates
 		'''  are not in bounds </exception>
 		''' <seealso cref= #setPixel(int, int, int[], DataBuffer) </seealso>
-		Public Overrides Function getPixel(ByVal x As Integer, ByVal y As Integer, ByVal iArray As Integer(), ByVal data As DataBuffer) As Integer()
+		Public Overrides Function getPixel(  x As Integer,   y As Integer,   iArray As Integer(),   data As DataBuffer) As Integer()
 			If (x < 0) OrElse (y < 0) OrElse (x >= width) OrElse (y >= height) Then Throw New ArrayIndexOutOfBoundsException("Coordinate out of bounds!")
 			Dim pixels_Renamed As Integer()
 			If iArray IsNot Nothing Then
@@ -539,7 +539,7 @@ Namespace java.awt.image
 		''' <param name="obj"> a primitive array containing pixel data </param>
 		''' <param name="data"> the <code>DataBuffer</code> containing the image data </param>
 		''' <seealso cref= #getDataElements(int, int, Object, DataBuffer) </seealso>
-		Public Overrides Sub setDataElements(ByVal x As Integer, ByVal y As Integer, ByVal obj As Object, ByVal data As DataBuffer)
+		Public Overrides Sub setDataElements(  x As Integer,   y As Integer,   obj As Object,   data As DataBuffer)
 			If (x < 0) OrElse (y < 0) OrElse (x >= width) OrElse (y >= height) Then Throw New ArrayIndexOutOfBoundsException("Coordinate out of bounds!")
 
 			Dim type As Integer = transferType
@@ -581,7 +581,7 @@ Namespace java.awt.image
 		''' <param name="iArray"> the input pixel in an <code>int</code> array </param>
 		''' <param name="data"> the <code>DataBuffer</code> containing the image data </param>
 		''' <seealso cref= #getPixel(int, int, int[], DataBuffer) </seealso>
-		Public Overrides Sub setPixel(ByVal x As Integer, ByVal y As Integer, ByVal iArray As Integer(), ByVal data As DataBuffer)
+		Public Overrides Sub setPixel(  x As Integer,   y As Integer,   iArray As Integer(),   data As DataBuffer)
 			If (x < 0) OrElse (y < 0) OrElse (x >= width) OrElse (y >= height) Then Throw New ArrayIndexOutOfBoundsException("Coordinate out of bounds!")
 			Dim bitnum As Integer = dataBitOffset + x * pixelBitStride
 			Dim index As Integer = y * scanlineStride + (bitnum \ dataElementSize)
@@ -592,7 +592,7 @@ Namespace java.awt.image
 			data.elemlem(index,element)
 		End Sub
 
-		Public Overrides Function Equals(ByVal o As Object) As Boolean
+		Public Overrides Function Equals(  o As Object) As Boolean
 			If (o Is Nothing) OrElse Not(TypeOf o Is MultiPixelPackedSampleModel) Then Return False
 
 			Dim that As MultiPixelPackedSampleModel = CType(o, MultiPixelPackedSampleModel)

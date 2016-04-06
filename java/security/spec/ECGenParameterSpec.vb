@@ -49,7 +49,7 @@ Namespace java.security.spec
 		''' domain parameters. </param>
 		''' <exception cref="NullPointerException"> if {@code stdName}
 		''' is null. </exception>
-		Public Sub New(ByVal stdName As String)
+		Public Sub New(  stdName As String)
 			If stdName Is Nothing Then Throw New NullPointerException("stdName is null")
 			Me.name = stdName
 		End Sub

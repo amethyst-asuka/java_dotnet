@@ -305,10 +305,10 @@ Namespace java.lang.invoke
 	'		}
 		End Enum
 
-        Friend Sub New(ByVal debugName As String, ByVal arity As Integer, ByVal names As Name(), ByVal result As Integer)
+        Friend Sub New(  debugName As String,   arity As Integer,   names As Name(),   result As Integer)
             Me.New(debugName, arity, names, result, True, Nothing) 'customized= - forceInline=
         End Sub
-        Friend Sub New(ByVal debugName As String, ByVal arity As Integer, ByVal names As Name(), ByVal result As Integer, ByVal forceInline As Boolean, ByVal customized As MethodHandle)
+        Friend Sub New(  debugName As String,   arity As Integer,   names As Name(),   result As Integer,   forceInline As Boolean,   customized As MethodHandle)
             Assert(namesOK(arity, names))
             Me.arity_Renamed = arity
             Me.result = fixResult(result, names)
@@ -323,20 +323,20 @@ Namespace java.lang.invoke
                 compileToBytecode()
             End If
         End Sub
-        Friend Sub New(ByVal debugName As String, ByVal arity As Integer, ByVal names As Name())
+        Friend Sub New(  debugName As String,   arity As Integer,   names As Name())
             Me.New(debugName, arity, names, LAST_RESULT, True, Nothing) 'customized= - forceInline=
         End Sub
-        Friend Sub New(ByVal debugName As String, ByVal arity As Integer, ByVal names As Name(), ByVal forceInline As Boolean)
+        Friend Sub New(  debugName As String,   arity As Integer,   names As Name(),   forceInline As Boolean)
             Me.New(debugName, arity, names, LAST_RESULT, forceInline, Nothing) 'customized=
         End Sub
-        Friend Sub New(ByVal debugName As String, ByVal formals As Name(), ByVal temps As Name(), ByVal result As Name)
+        Friend Sub New(  debugName As String,   formals As Name(),   temps As Name(),   result As Name)
             Me.New(debugName, formals.Length, buildNames(formals, temps, result), LAST_RESULT, True, Nothing) 'customized= - forceInline=
         End Sub
-        Friend Sub New(ByVal debugName As String, ByVal formals As Name(), ByVal temps As Name(), ByVal result As Name, ByVal forceInline As Boolean)
+        Friend Sub New(  debugName As String,   formals As Name(),   temps As Name(),   result As Name,   forceInline As Boolean)
             Me.New(debugName, formals.Length, buildNames(formals, temps, result), LAST_RESULT, forceInline, Nothing) 'customized=
         End Sub
 
-        Private Shared Function buildNames(ByVal formals As Name(), ByVal temps As Name(), ByVal result As Name) As Name()
+        Private Shared Function buildNames(  formals As Name(),   temps As Name(),   result As Name) As Name()
             Dim arity As Integer = formals.Length
             Dim length As Integer = arity + temps.Length + (If(result Is Nothing, 0, 1))
             Dim names As Name() = java.util.Arrays.copyOf(formals, length)
@@ -345,7 +345,7 @@ Namespace java.lang.invoke
             Return names
         End Function
 
-        Private Sub New(ByVal sig As String)
+        Private Sub New(  sig As String)
             ' Make a blank lambda form, which returns a constant zero or null.
             ' It is used as a template for managing the invocation of similar forms that are non-empty.
             ' Called only from getPreparedForm.
@@ -361,7 +361,7 @@ Namespace java.lang.invoke
             Assert(sig.Equals(basicTypeSignature())) : sig & " != " & basicTypeSignature()
         End Sub
 
-        Private Shared Function buildEmptyNames(ByVal arity As Integer, ByVal basicTypeSignature As String) As Name()
+        Private Shared Function buildEmptyNames(  arity As Integer,   basicTypeSignature As String) As Name()
             Assert(isValidSignature(basicTypeSignature))
             Dim resultPos As Integer = arity + 1 ' skip '_'
             If arity < 0 OrElse basicTypeSignature.Length() <> resultPos + 1 Then Throw New IllegalArgumentException("bad arity for " & basicTypeSignature)
@@ -374,13 +374,13 @@ Namespace java.lang.invoke
             Return names
         End Function
 
-        Private Shared Function fixResult(ByVal result As Integer, ByVal names As Name()) As Integer
+        Private Shared Function fixResult(  result As Integer,   names As Name()) As Integer
             If result = LAST_RESULT Then result = names.Length - 1 ' might still be void
             If result >= 0 AndAlso names(result).type_Renamed = V_TYPE Then result = VOID_RESULT
             Return result
         End Function
 
-        Private Shared Function fixDebugName(ByVal debugName As String) As String
+        Private Shared Function fixDebugName(  debugName As String) As String
             If DEBUG_NAME_COUNTERS IsNot Nothing Then
                 Dim under As Integer = debugName.IndexOf("_"c)
                 Dim length As Integer = debugName.Length()
@@ -412,7 +412,7 @@ Namespace java.lang.invoke
             Return debugName
         End Function
 
-        Private Shared Function namesOK(ByVal arity As Integer, ByVal names As Name()) As Boolean
+        Private Shared Function namesOK(  arity As Integer,   names As Name()) As Boolean
             For i As Integer = 0 To names.Length - 1
                 Dim n As Name = names(i)
                 Assert(n IsNot Nothing) :     "n is null"
@@ -427,7 +427,7 @@ Namespace java.lang.invoke
 
         ''' <summary>
         ''' Customize LambdaForm for a particular MethodHandle </summary>
-        Friend Overridable Function customize(ByVal mh As MethodHandle) As LambdaForm
+        Friend Overridable Function customize(  mh As MethodHandle) As LambdaForm
             Dim customForm As New LambdaForm(debugName, arity_Renamed, names, result, forceInline, mh)
             If COMPILE_THRESHOLD > 0 AndAlso isCompiled Then customForm.compileToBytecode()
             customForm.transformCache = Me ' LambdaFormEditor should always use uncustomized form.
@@ -541,13 +541,13 @@ Namespace java.lang.invoke
 
         ''' <summary>
         ''' Report the N-th argument type. </summary>
-        Friend Overridable Function parameterType(ByVal n As Integer) As BasicType
+        Friend Overridable Function parameterType(  n As Integer) As BasicType
             Return parameter(n).type_Renamed
         End Function
 
         ''' <summary>
         ''' Report the N-th argument name. </summary>
-        Friend Overridable Function parameter(ByVal n As Integer) As Name
+        Friend Overridable Function parameter(  n As Integer) As Name
             Assert(n < arity_Renamed)
             Dim param As Name = names(n)
             Assert(param.param)
@@ -556,7 +556,7 @@ Namespace java.lang.invoke
 
         ''' <summary>
         ''' Report the N-th argument type constraint. </summary>
-        Friend Overridable Function parameterConstraint(ByVal n As Integer) As Object
+        Friend Overridable Function parameterConstraint(  n As Integer) As Object
             Return parameter(n).constraint
         End Function
 
@@ -589,14 +589,14 @@ Namespace java.lang.invoke
             Loop
             Return buf.append("_"c).append(returnType().basicTypeChar()).ToString()
         End Function
-        Friend Shared Function signatureArity(ByVal sig As String) As Integer
+        Friend Shared Function signatureArity(  sig As String) As Integer
             Assert(isValidSignature(sig))
             Return sig.IndexOf("_"c)
         End Function
-        Friend Shared Function signatureReturn(ByVal sig As String) As BasicType
+        Friend Shared Function signatureReturn(  sig As String) As BasicType
             Return BasicType(sig.Chars(signatureArity(sig) + 1))
         End Function
-        Friend Shared Function isValidSignature(ByVal sig As String) As Boolean
+        Friend Shared Function isValidSignature(  sig As String) As Boolean
             Dim arity As Integer = sig.IndexOf("_"c)
             If arity < 0 Then ' must be of the form *_* Return False
                 Dim siglen As Integer = sig.Length()
@@ -609,7 +609,7 @@ Namespace java.lang.invoke
             Next i
                     Return True ' [LIJFD]*_[LIJFDV]
         End Function
-        Friend Shared Function signatureType(ByVal sig As String) As MethodType
+        Friend Shared Function signatureType(  sig As String) As MethodType
             Dim ptypes As [Class]() = New [Class](signatureArity(sig) - 1) {}
             For i As Integer = 0 To ptypes.Length - 1
                 ptypes(i) = BasicType(sig.Chars(i)).btClass
@@ -730,7 +730,7 @@ Namespace java.lang.invoke
 
         ' The following are predefined exact invokers.  The system must build
         ' a separate invoker for each distinct signature.
-        Friend Shared Function interpret_L(ByVal mh As MethodHandle) As Object
+        Friend Shared Function interpret_L(  mh As MethodHandle) As Object
             Dim av As Object() = {mh}
             Dim sig As String = Nothing
             'JAVA TO VB CONVERTER TODO TASK: Assignments within expressions are not supported in VB
@@ -739,7 +739,7 @@ Namespace java.lang.invoke
             Assert(returnTypesMatch(sig, av, res))
             Return res
         End Function
-        Friend Shared Function interpret_L(ByVal mh As MethodHandle, ByVal x1 As Object) As Object
+        Friend Shared Function interpret_L(  mh As MethodHandle,   x1 As Object) As Object
             Dim av As Object() = {mh, x1}
             Dim sig As String = Nothing
             'JAVA TO VB CONVERTER TODO TASK: Assignments within expressions are not supported in VB
@@ -748,7 +748,7 @@ Namespace java.lang.invoke
             Assert(returnTypesMatch(sig, av, res))
             Return res
         End Function
-        Friend Shared Function interpret_L(ByVal mh As MethodHandle, ByVal x1 As Object, ByVal x2 As Object) As Object
+        Friend Shared Function interpret_L(  mh As MethodHandle,   x1 As Object,   x2 As Object) As Object
             Dim av As Object() = {mh, x1, x2}
             Dim sig As String = Nothing
             'JAVA TO VB CONVERTER TODO TASK: Assignments within expressions are not supported in VB
@@ -757,7 +757,7 @@ Namespace java.lang.invoke
             Assert(returnTypesMatch(sig, av, res))
             Return res
         End Function
-        Private Shared Function getPreparedForm(ByVal sig As String) As LambdaForm
+        Private Shared Function getPreparedForm(  sig As String) As LambdaForm
             Dim mtype As MethodType = signatureType(sig)
             Dim prep As LambdaForm = mtype.form().cachedLambdaForm(MethodTypeForm.LF_INTERPRET)
             If prep IsNot Nothing Then Return prep
@@ -769,7 +769,7 @@ Namespace java.lang.invoke
 
         ' The next few routines are called only from assert expressions
         ' They verify that the built-in invokers process the correct raw data types.
-        Private Shared Function argumentTypesMatch(ByVal sig As String, ByVal av As Object()) As Boolean
+        Private Shared Function argumentTypesMatch(  sig As String,   av As Object()) As Boolean
             Dim arity As Integer = signatureArity(sig)
             Assert(av.Length = arity) :     "av.length == arity: av.length=" & av.Length & ", arity=" & arity
 			Assert(TypeOf av(0) Is MethodHandle) :     "av[0] not instace of MethodHandle: " & av(0)
@@ -782,7 +782,7 @@ Namespace java.lang.invoke
             Next i
             Return True
         End Function
-        Private Shared Function valueMatches(ByVal tc As BasicType, ByVal type As [Class], ByVal x As Object) As Boolean
+        Private Shared Function valueMatches(  tc As BasicType,   type As [Class],   x As Object) As Boolean
             ' The following line is needed because (...)void method handles can use non-void invokers
             If type Is GetType(Void) Then ' can drop any kind of value tc = V_TYPE
                 Debug.Assert(tc = BasicType(type), tc & " == basicType(" & type & ")=" & BasicType(type))
@@ -803,11 +803,11 @@ Namespace java.lang.invoke
                 End Select
                 Return True
         End Function
-        Private Shared Function returnTypesMatch(ByVal sig As String, ByVal av As Object(), ByVal res As Object) As Boolean
+        Private Shared Function returnTypesMatch(  sig As String,   av As Object(),   res As Object) As Boolean
             Dim mh As MethodHandle = CType(av(0), MethodHandle)
             Return valueMatches(signatureReturn(sig), mh.type().returnType(), res)
         End Function
-        Private Shared Function checkInt(ByVal type As [Class], ByVal x As Object) As Boolean
+        Private Shared Function checkInt(  type As [Class],   x As Object) As Boolean
             Assert(TypeOf x Is Integer?)
             If type Is GetType(Integer) Then Return True
             Dim w As sun.invoke.util.Wrapper = sun.invoke.util.Wrapper.forBasicType(type)
@@ -815,7 +815,7 @@ Namespace java.lang.invoke
             Dim x1 As Object = sun.invoke.util.Wrapper.INT.wrap(w.wrap(x))
             Return x.Equals(x1)
         End Function
-        Private Shared Function checkRef(ByVal type As [Class], ByVal x As Object) As Boolean
+        Private Shared Function checkRef(  type As [Class],   x As Object) As Boolean
             Assert((Not type.primitive))
             If x Is Nothing Then Return True
             If type.interface Then Return True
@@ -845,7 +845,7 @@ Namespace java.lang.invoke
         Private invocationCounter As Integer = 0
 
         'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-        Friend Overridable Function interpretWithArguments(ParamArray ByVal argumentValues As Object()) As Object
+        Friend Overridable Function interpretWithArguments(ParamArray   argumentValues As Object()) As Object
             ''' <summary>
             ''' Interpretively invoke this form on the given arguments. </summary>
             If TRACE_INTERPRETER Then Return interpretWithArgumentsTracing(argumentValues)
@@ -861,7 +861,7 @@ Namespace java.lang.invoke
         End Function
 
         'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-        Friend Overridable Function interpretName(ByVal name_Renamed As Name, ByVal values As Object()) As Object
+        Friend Overridable Function interpretName(  name_Renamed As Name,   values As Object()) As Object
             ''' <summary>
             ''' Evaluate a single Name within this form, applying its function to its arguments. </summary>
             If TRACE_INTERPRETER Then traceInterpreter("| interpretName", name_Renamed.debugString(), CType(Nothing, Object()))
@@ -884,7 +884,7 @@ Namespace java.lang.invoke
                 If invocationCounter >= COMPILE_THRESHOLD Then compileToBytecode()
             End If
         End Sub
-        Friend Overridable Function interpretWithArgumentsTracing(ParamArray ByVal argumentValues As Object()) As Object
+        Friend Overridable Function interpretWithArgumentsTracing(ParamArray   argumentValues As Object()) As Object
             traceInterpreter("[ interpretWithArguments", Me, argumentValues)
             If invocationCounter < COMPILE_THRESHOLD Then
                 Dim ctr As Integer = invocationCounter
@@ -908,13 +908,13 @@ Namespace java.lang.invoke
             Return rval
         End Function
 
-        Friend Shared Sub traceInterpreter(ByVal [event] As String, ByVal obj As Object, ParamArray ByVal args As Object())
+        Friend Shared Sub traceInterpreter(  [event] As String,   obj As Object, ParamArray   args As Object())
             If TRACE_INTERPRETER Then Console.WriteLine("LFI: " & [event] & " " & (If(obj IsNot Nothing, obj, "")) + (If(args IsNot Nothing AndAlso args.Length <> 0, java.util.Arrays.asList(args), "")))
         End Sub
-        Friend Shared Sub traceInterpreter(ByVal [event] As String, ByVal obj As Object)
+        Friend Shared Sub traceInterpreter(  [event] As String,   obj As Object)
             traceInterpreter([event], obj, CType(Nothing, Object()))
         End Sub
-        Private Function arityCheck(ByVal argumentValues As Object()) As Boolean
+        Private Function arityCheck(  argumentValues As Object()) As Boolean
             Assert(argumentValues.Length = arity_Renamed) : arity_Renamed & "!=" & java.util.Arrays.asList(argumentValues) & ".length"
             ' also check that the leading (receiver) argument is somehow bound to this LF:
             Assert(TypeOf argumentValues(0) Is MethodHandle) :     "not MH: " & argumentValues(0)
@@ -924,7 +924,7 @@ Namespace java.lang.invoke
             argumentTypesMatch(basicTypeSignature(), argumentValues)
             Return True
         End Function
-        Private Function resultCheck(ByVal argumentValues As Object(), ByVal result As Object) As Boolean
+        Private Function resultCheck(  argumentValues As Object(),   result As Object) As Boolean
             Dim mh As MethodHandle = CType(argumentValues(0), MethodHandle)
             Dim mt As MethodType = mh.type()
             Assert(valueMatches(returnType(), mt.returnType(), result))
@@ -967,10 +967,10 @@ Namespace java.lang.invoke
             Return buf.ToString()
         End Function
 
-        Public Overrides Function Equals(ByVal obj As Object) As Boolean
+        Public Overrides Function Equals(  obj As Object) As Boolean
             Return TypeOf obj Is LambdaForm AndAlso Equals(CType(obj, LambdaForm))
         End Function
-        Public Overrides Function Equals(ByVal that As LambdaForm) As Boolean
+        Public Overrides Function Equals(  that As LambdaForm) As Boolean
             If Me.result <> that.result Then Return False
             Return java.util.Arrays.Equals(Me.names, that.names)
         End Function
@@ -981,7 +981,7 @@ Namespace java.lang.invoke
             Return LambdaFormEditor.lambdaFormEditor(Me)
         End Function
 
-        Friend Overridable Function contains(ByVal name_Renamed As Name) As Boolean
+        Friend Overridable Function contains(  name_Renamed As Name) As Boolean
             Dim pos As Integer = name_Renamed.index()
             If pos >= 0 Then Return pos < names.Length AndAlso name_Renamed.Equals(names(pos))
             For i As Integer = arity() To names.Length - 1
@@ -990,7 +990,7 @@ Namespace java.lang.invoke
             Return False
         End Function
 
-        Friend Overridable Function addArguments(ByVal pos As Integer, ParamArray ByVal types As BasicType()) As LambdaForm
+        Friend Overridable Function addArguments(  pos As Integer, ParamArray   types As BasicType()) As LambdaForm
             ' names array has MH in slot 0; skip it.
             Dim argpos As Integer = pos + 1
             Assert(argpos <= arity_Renamed)
@@ -1009,11 +1009,11 @@ Namespace java.lang.invoke
             Return New LambdaForm(debugName, arity2, names2, result2)
         End Function
 
-        Friend Overridable Function addArguments(ByVal pos As Integer, ByVal types As IList(Of [Class])) As LambdaForm
+        Friend Overridable Function addArguments(  pos As Integer,   types As IList(Of [Class])) As LambdaForm
             Return addArguments(pos, basicTypes(types))
         End Function
 
-        Friend Overridable Function permuteArguments(ByVal skip As Integer, ByVal reorder As Integer(), ByVal types As BasicType()) As LambdaForm
+        Friend Overridable Function permuteArguments(  skip As Integer,   reorder As Integer(),   types As BasicType()) As LambdaForm
             ' Note:  When inArg = reorder[outArg], outArg is fed by a copy of inArg.
             ' The types are the types of the new (incoming) arguments.
             Dim length As Integer = names.Length
@@ -1075,7 +1075,7 @@ Namespace java.lang.invoke
             Return New LambdaForm(debugName, arity2, names2, result2)
         End Function
 
-        Friend Shared Function permutedTypesMatch(ByVal reorder As Integer(), ByVal types As BasicType(), ByVal names As Name(), ByVal skip As Integer) As Boolean
+        Friend Shared Function permutedTypesMatch(  reorder As Integer(),   types As BasicType(),   names As Name(),   skip As Integer) As Boolean
             Dim inTypes As Integer = types.Length
             Dim outArgs As Integer = reorder.Length
             For i As Integer = 0 To outArgs - 1
@@ -1092,16 +1092,16 @@ Namespace java.lang.invoke
             'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
             Friend invoker_Renamed As MethodHandle
 
-            Friend Sub New(ByVal resolvedHandle As MethodHandle)
+            Friend Sub New(  resolvedHandle As MethodHandle)
                 Me.New(resolvedHandle.internalMemberName(), resolvedHandle)
             End Sub
-            Friend Sub New(ByVal member As MemberName, ByVal resolvedHandle As MethodHandle)
+            Friend Sub New(  member As MemberName,   resolvedHandle As MethodHandle)
                 Me.member_Renamed = member
                 Me.resolvedHandle_Renamed = resolvedHandle
                 ' The following assert is almost always correct, but will fail for corner cases, such as PrivateInvokeTest.
                 'assert(!isInvokeBasic());
             End Sub
-            Friend Sub New(ByVal basicInvokerType As MethodTypeForm)
+            Friend Sub New(  basicInvokerType As MethodTypeForm)
                 Assert(basicInvokerType Is basicInvokerType.basicType()) : basicInvokerType
                 If basicInvokerType.parameterSlotCount() < methodType.MAX_MH_INVOKER_ARITY Then
                     Me.resolvedHandle_Renamed = basicInvokerType.invokers().basicInvoker()
@@ -1123,13 +1123,13 @@ Namespace java.lang.invoke
             ' Any LambdaForm containing such a member is not interpretable.
             ' This is OK, since all such LFs are prepared with special primitive vmentry points.
             ' And even without the resolvedHandle, the name can still be compiled and optimized.
-            Friend Sub New(ByVal method As Method)
+            Friend Sub New(  method As Method)
                 Me.New(New MemberName(method))
             End Sub
-            Friend Sub New(ByVal field As Field)
+            Friend Sub New(  field As Field)
                 Me.New(New MemberName(field))
             End Sub
-            Friend Sub New(ByVal member As MemberName)
+            Friend Sub New(  member As MemberName)
                 Me.member_Renamed = member
                 Me.resolvedHandle_Renamed = Nothing
             End Sub
@@ -1143,7 +1143,7 @@ Namespace java.lang.invoke
                 resolvedHandle_Renamed = DirectMethodHandle.make(member_Renamed)
             End Sub
 
-            Public Overrides Function Equals(ByVal other As Object) As Boolean
+            Public Overrides Function Equals(  other As Object) As Boolean
                 If Me Is other Then Return True
                 If other Is Nothing Then Return False
                 If Not (TypeOf other Is NamedFunction) Then Return False
@@ -1177,37 +1177,37 @@ Namespace java.lang.invoke
             ''' <summary>
             '''  Sub  return type invokers. </summary>
             'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-            Friend Shared Function invoke__V(ByVal mh As MethodHandle, ByVal a As Object()) As Object
+            Friend Shared Function invoke__V(  mh As MethodHandle,   a As Object()) As Object
                 Assert(arityCheck(0, GetType(Void), mh, a))
                 mh.invokeBasic()
                 Return Nothing
             End Function
             'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-            Friend Shared Function invoke_L_V(ByVal mh As MethodHandle, ByVal a As Object()) As Object
+            Friend Shared Function invoke_L_V(  mh As MethodHandle,   a As Object()) As Object
                 Assert(arityCheck(1, GetType(Void), mh, a))
                 mh.invokeBasic(a(0))
                 Return Nothing
             End Function
             'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-            Friend Shared Function invoke_LL_V(ByVal mh As MethodHandle, ByVal a As Object()) As Object
+            Friend Shared Function invoke_LL_V(  mh As MethodHandle,   a As Object()) As Object
                 Assert(arityCheck(2, GetType(Void), mh, a))
                 mh.invokeBasic(a(0), a(1))
                 Return Nothing
             End Function
             'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-            Friend Shared Function invoke_LLL_V(ByVal mh As MethodHandle, ByVal a As Object()) As Object
+            Friend Shared Function invoke_LLL_V(  mh As MethodHandle,   a As Object()) As Object
                 Assert(arityCheck(3, GetType(Void), mh, a))
                 mh.invokeBasic(a(0), a(1), a(2))
                 Return Nothing
             End Function
             'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-            Friend Shared Function invoke_LLLL_V(ByVal mh As MethodHandle, ByVal a As Object()) As Object
+            Friend Shared Function invoke_LLLL_V(  mh As MethodHandle,   a As Object()) As Object
                 Assert(arityCheck(4, GetType(Void), mh, a))
                 mh.invokeBasic(a(0), a(1), a(2), a(3))
                 Return Nothing
             End Function
             'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-            Friend Shared Function invoke_LLLLL_V(ByVal mh As MethodHandle, ByVal a As Object()) As Object
+            Friend Shared Function invoke_LLLLL_V(  mh As MethodHandle,   a As Object()) As Object
                 Assert(arityCheck(5, GetType(Void), mh, a))
                 mh.invokeBasic(a(0), a(1), a(2), a(3), a(4))
                 Return Nothing
@@ -1215,39 +1215,39 @@ Namespace java.lang.invoke
             ''' <summary>
             ''' Object return type invokers. </summary>
             'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-            Friend Shared Function invoke__L(ByVal mh As MethodHandle, ByVal a As Object()) As Object
+            Friend Shared Function invoke__L(  mh As MethodHandle,   a As Object()) As Object
                 Assert(arityCheck(0, mh, a))
                 Return mh.invokeBasic()
             End Function
             'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-            Friend Shared Function invoke_L_L(ByVal mh As MethodHandle, ByVal a As Object()) As Object
+            Friend Shared Function invoke_L_L(  mh As MethodHandle,   a As Object()) As Object
                 Assert(arityCheck(1, mh, a))
                 Return mh.invokeBasic(a(0))
             End Function
             'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-            Friend Shared Function invoke_LL_L(ByVal mh As MethodHandle, ByVal a As Object()) As Object
+            Friend Shared Function invoke_LL_L(  mh As MethodHandle,   a As Object()) As Object
                 Assert(arityCheck(2, mh, a))
                 Return mh.invokeBasic(a(0), a(1))
             End Function
             'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-            Friend Shared Function invoke_LLL_L(ByVal mh As MethodHandle, ByVal a As Object()) As Object
+            Friend Shared Function invoke_LLL_L(  mh As MethodHandle,   a As Object()) As Object
                 Assert(arityCheck(3, mh, a))
                 Return mh.invokeBasic(a(0), a(1), a(2))
             End Function
             'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-            Friend Shared Function invoke_LLLL_L(ByVal mh As MethodHandle, ByVal a As Object()) As Object
+            Friend Shared Function invoke_LLLL_L(  mh As MethodHandle,   a As Object()) As Object
                 Assert(arityCheck(4, mh, a))
                 Return mh.invokeBasic(a(0), a(1), a(2), a(3))
             End Function
             'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-            Friend Shared Function invoke_LLLLL_L(ByVal mh As MethodHandle, ByVal a As Object()) As Object
+            Friend Shared Function invoke_LLLLL_L(  mh As MethodHandle,   a As Object()) As Object
                 Assert(arityCheck(5, mh, a))
                 Return mh.invokeBasic(a(0), a(1), a(2), a(3), a(4))
             End Function
-            Private Shared Function arityCheck(ByVal arity As Integer, ByVal mh As MethodHandle, ByVal a As Object()) As Boolean
+            Private Shared Function arityCheck(  arity As Integer,   mh As MethodHandle,   a As Object()) As Boolean
                 Return arityCheck(arity, GetType(Object), mh, a)
             End Function
-            Private Shared Function arityCheck(ByVal arity As Integer, ByVal rtype As [Class], ByVal mh As MethodHandle, ByVal a As Object()) As Boolean
+            Private Shared Function arityCheck(  arity As Integer,   rtype As [Class],   mh As MethodHandle,   a As Object()) As Boolean
                 Assert(a.Length = arity) : java.util.Arrays.asList(a.Length, arity)
                 Assert(mh.type().basicType() Is methodType.genericMethodType(arity).changeReturnType(rtype)) : java.util.Arrays.asList(mh, rtype, arity)
                 Dim member As MemberName = mh.internalMemberName()
@@ -1262,7 +1262,7 @@ Namespace java.lang.invoke
 
             Friend Shared ReadOnly INVOKER_METHOD_TYPE As MethodType = methodType.methodType(GetType(Object), GetType(MethodHandle), GetType(Object()))
 
-            Private Shared Function computeInvoker(ByVal typeForm As MethodTypeForm) As MethodHandle
+            Private Shared Function computeInvoker(  typeForm As MethodTypeForm) As MethodHandle
                 typeForm = typeForm.basicType().form() ' normalize to basic type
                 Dim mh As MethodHandle = typeForm.cachedMethodHandle(MethodTypeForm.MH_NF_INV)
                 If mh IsNot Nothing Then Return mh
@@ -1275,7 +1275,7 @@ Namespace java.lang.invoke
             End Function
 
             'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-            Friend Overridable Function invokeWithArguments(ParamArray ByVal arguments As Object()) As Object
+            Friend Overridable Function invokeWithArguments(ParamArray   arguments As Object()) As Object
                 ' If we have a cached invoker, call it right away.
                 ' NOTE: The invoker always returns a reference value.
                 If TRACE_INTERPRETER Then Return invokeWithArgumentsTracing(arguments)
@@ -1284,7 +1284,7 @@ Namespace java.lang.invoke
             End Function
 
             'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-            Friend Overridable Function invokeWithArgumentsTracing(ByVal arguments As Object()) As Object
+            Friend Overridable Function invokeWithArgumentsTracing(  arguments As Object()) As Object
                 Dim rval As Object
                 Try
                     traceInterpreter("[ call", Me, arguments)
@@ -1313,7 +1313,7 @@ Namespace java.lang.invoke
                 Return invoker_Renamed
             End Function
 
-            Private Shared Function checkArgumentTypes(ByVal arguments As Object(), ByVal methodType_Renamed As MethodType) As Boolean
+            Private Shared Function checkArgumentTypes(  arguments As Object(),   methodType_Renamed As MethodType) As Boolean
                 If True Then ' FIXME Return True
                     Dim dstType As MethodType = methodType_Renamed.form().erasedType()
                     Dim srcType As MethodType = dstType.basicType().wrap()
@@ -1361,7 +1361,7 @@ Namespace java.lang.invoke
                 Return BasicType(methodType().returnType())
             End Function
 
-            Friend Overridable Function parameterType(ByVal n As Integer) As BasicType
+            Friend Overridable Function parameterType(  n As Integer) As BasicType
                 Return BasicType(methodType().parameterType(n))
             End Function
 
@@ -1391,7 +1391,7 @@ Namespace java.lang.invoke
             End Function
         End Class
 
-        Public Shared Function basicTypeSignature(ByVal type As MethodType) As String
+        Public Shared Function basicTypeSignature(  type As MethodType) As String
             Dim sig As Char() = New Char(type.parameterCount() + 2 - 1) {}
             Dim sigp As Integer = 0
             For Each pt As [Class] In type.parameterList()
@@ -1405,7 +1405,7 @@ Namespace java.lang.invoke
             Assert(sigp = sig.Length)
             Return Convert.ToString(sig)
         End Function
-        Public Shared Function shortenSignature(ByVal signature As String) As String
+        Public Shared Function shortenSignature(  signature As String) As String
             ' Hack to make signatures more readable when they show up in method names.
             Const NO_CHAR As Integer = -1, MIN_RUN As Integer = 3
             Dim c0 As Integer, c1 As Integer = NO_CHAR, c1reps As Integer = 0
@@ -1449,7 +1449,7 @@ Namespace java.lang.invoke
             'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
             Friend ReadOnly arguments As Object()
 
-            Private Sub New(ByVal index As Integer, ByVal type As BasicType, ByVal [function] As NamedFunction, ByVal arguments As Object())
+            Private Sub New(  index As Integer,   type As BasicType,   [function] As NamedFunction,   arguments As Object())
                 Me.index_Renamed = CShort(index)
                 Me.type_Renamed = type
                 Me.function = [function]
@@ -1457,7 +1457,7 @@ Namespace java.lang.invoke
                 Me.constraint = Nothing
                 Assert(Me.index_Renamed = index)
             End Sub
-            Private Sub New(ByVal that As Name, ByVal constraint As Object)
+            Private Sub New(  that As Name,   constraint As Object)
                 Me.index_Renamed = that.index
                 Me.type_Renamed = that.type_Renamed
                 Me.function = that.function
@@ -1466,17 +1466,17 @@ Namespace java.lang.invoke
                 Assert(constraint Is Nothing OrElse param) ' only params have constraints
                 Assert(constraint Is Nothing OrElse TypeOf constraint Is BoundMethodHandle.SpeciesData OrElse TypeOf constraint Is [Class])
             End Sub
-            Friend Sub New(ByVal [function] As MethodHandle, ParamArray ByVal arguments As Object())
+            Friend Sub New(  [function] As MethodHandle, ParamArray   arguments As Object())
                 Me.New(New NamedFunction([function]), arguments)
             End Sub
-            Friend Sub New(ByVal functionType As MethodType, ParamArray ByVal arguments As Object())
+            Friend Sub New(  functionType As MethodType, ParamArray   arguments As Object())
                 Me.New(New NamedFunction(functionType), arguments)
                 Assert(TypeOf arguments(0) Is Name AndAlso CType(arguments(0), Name).type_Renamed = L_TYPE)
             End Sub
-            Friend Sub New(ByVal [function] As MemberName, ParamArray ByVal arguments As Object())
+            Friend Sub New(  [function] As MemberName, ParamArray   arguments As Object())
                 Me.New(New NamedFunction([function]), arguments)
             End Sub
-            Friend Sub New(ByVal [function] As NamedFunction, ParamArray ByVal arguments As Object())
+            Friend Sub New(  [function] As NamedFunction, ParamArray   arguments As Object())
                 'JAVA TO VB CONVERTER TODO TASK: Assignments within expressions are not supported in VB
                 Me.New(-1, [function].returnType(), [function], arguments = java.util.Arrays.copyOf(arguments, arguments.Length, GetType(Object())))
                 Assert(arguments.Length = [function].arity()) :     "arity mismatch: arguments.length=" & arguments.Length & " == function.arity()=" & [function].arity() & " in " & debugString()
@@ -1486,12 +1486,12 @@ Namespace java.lang.invoke
             End Sub
             ''' <summary>
             ''' Create a raw parameter of the given type, with an expected index. </summary>
-            Friend Sub New(ByVal index As Integer, ByVal type As BasicType)
+            Friend Sub New(  index As Integer,   type As BasicType)
                 Me.New(index, type, Nothing, Nothing)
             End Sub
             ''' <summary>
             ''' Create a raw parameter of the given type. </summary>
-            Friend Sub New(ByVal type As BasicType)
+            Friend Sub New(  type As BasicType)
                 Me.New(-1, type)
             End Sub
 
@@ -1501,7 +1501,7 @@ Namespace java.lang.invoke
             Friend Function index() As Integer
                 Return index_Renamed
             End Function
-            Friend Function initIndex(ByVal i As Integer) As Boolean
+            Friend Function initIndex(  i As Integer) As Boolean
                 If index_Renamed <> i Then
                     If index_Renamed <> -1 Then Return False
                     index_Renamed = CShort(i)
@@ -1516,19 +1516,19 @@ Namespace java.lang.invoke
                 If [function] IsNot Nothing Then [function].resolve()
             End Sub
 
-            Friend Function newIndex(ByVal i As Integer) As Name
+            Friend Function newIndex(  i As Integer) As Name
                 If initIndex(i) Then Return Me
                 Return cloneWithIndex(i)
             End Function
-            Friend Function cloneWithIndex(ByVal i As Integer) As Name
+            Friend Function cloneWithIndex(  i As Integer) As Name
                 Dim newArguments As Object() = If(arguments Is Nothing, Nothing, arguments.Clone())
                 Return (New Name(i, type_Renamed, [function], newArguments)).withConstraint(constraint)
             End Function
-            Friend Function withConstraint(ByVal constraint As Object) As Name
+            Friend Function withConstraint(  constraint As Object) As Name
                 If constraint Is Me.constraint Then Return Me
                 Return New Name(Me, constraint)
             End Function
-            Friend Function replaceName(ByVal oldName As Name, ByVal newName As Name) As Name ' FIXME: use replaceNames uniformly
+            Friend Function replaceName(  oldName As Name,   newName As Name) As Name ' FIXME: use replaceNames uniformly
                 If oldName Is newName Then Return Me
                 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
                 Dim arguments As Object() = Me.arguments
@@ -1550,7 +1550,7 @@ Namespace java.lang.invoke
             ''' In the arguments of this Name, replace oldNames[i] pairwise by newNames[i].
             '''  Limit such replacements to {@code start<=i<end}.  Return possibly changed self.
             ''' </summary>
-            Friend Function replaceNames(ByVal oldNames As Name(), ByVal newNames As Name(), ByVal start As Integer, ByVal [end] As Integer) As Name
+            Friend Function replaceNames(  oldNames As Name(),   newNames As Name(),   start As Integer,   [end] As Integer) As Name
                 If start >= [end] Then Return Me
                 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
                 Dim arguments As Object() = Me.arguments
@@ -1632,7 +1632,7 @@ eachArg:
                 Return buf.ToString()
             End Function
 
-            Friend Shared Function typesMatch(ByVal parameterType As BasicType, ByVal [object] As Object) As Boolean
+            Friend Shared Function typesMatch(  parameterType As BasicType,   [object] As Object) As Boolean
                 If TypeOf object_Renamed Is Name Then Return CType(object_Renamed, Name).type_Renamed = parameterType
                 Select Case parameterType
                     Case BasicType.I_TYPE
@@ -1652,7 +1652,7 @@ eachArg:
             ''' Return the index of the last occurrence of n in the argument array.
             '''  Return -1 if the name is not used.
             ''' </summary>
-            Friend Function lastUseIndex(ByVal n As Name) As Integer
+            Friend Function lastUseIndex(  n As Name) As Integer
                 If arguments Is Nothing Then Return -1
                 Dim i As Integer = arguments.Length
                 'JAVA TO VB CONVERTER TODO TASK: Assignments within expressions are not supported in VB
@@ -1666,7 +1666,7 @@ eachArg:
             ''' Return the number of occurrences of n in the argument array.
             '''  Return 0 if the name is not used.
             ''' </summary>
-            Friend Function useCount(ByVal n As Name) As Integer
+            Friend Function useCount(  n As Name) As Integer
                 If arguments Is Nothing Then Return 0
                 Dim count As Integer = 0
                 Dim i As Integer = arguments.Length
@@ -1677,17 +1677,17 @@ eachArg:
                 Return count
             End Function
 
-            Friend Function contains(ByVal n As Name) As Boolean
+            Friend Function contains(  n As Name) As Boolean
                 Return Me Is n OrElse lastUseIndex(n) >= 0
             End Function
 
-            Public Overrides Function Equals(ByVal that As Name) As Boolean
+            Public Overrides Function Equals(  that As Name) As Boolean
                 If Me Is that Then Return True
                 If param Then Return False ' this != that
                 Return Me.type_Renamed = that.type_Renamed AndAlso Me.function.Equals(that.function) AndAlso java.util.Arrays.Equals(Me.arguments, that.arguments)
                 'this.index == that.index &&
             End Function
-            Public Overrides Function Equals(ByVal x As Object) As Boolean
+            Public Overrides Function Equals(  x As Object) As Boolean
                 Return TypeOf x Is Name AndAlso Equals(CType(x, Name))
             End Function
             Public Overrides Function GetHashCode() As Integer
@@ -1700,7 +1700,7 @@ eachArg:
         ''' Return the index of the last name which contains n as an argument.
         '''  Return -1 if the name is not used.  Return names.length if it is the return value.
         ''' </summary>
-        Friend Overridable Function lastUseIndex(ByVal n As Name) As Integer
+        Friend Overridable Function lastUseIndex(  n As Name) As Integer
             Dim ni As Integer = n.index, nmax As Integer = names.Length
             Assert(names(ni) Is n)
             If result = ni Then ' live all the way beyond the end Return nmax
@@ -1714,7 +1714,7 @@ eachArg:
 
         ''' <summary>
         ''' Return the number of times n is used as an argument or return value. </summary>
-        Friend Overridable Function useCount(ByVal n As Name) As Integer
+        Friend Overridable Function useCount(  n As Name) As Integer
             Dim ni As Integer = n.index, nmax As Integer = names.Length
             Dim [end] As Integer = lastUseIndex(n)
             If [end] < 0 Then Return 0
@@ -1731,20 +1731,20 @@ eachArg:
             Return count
         End Function
 
-        Friend Shared Function argument(ByVal which As Integer, ByVal type As Char) As Name
+        Friend Shared Function argument(  which As Integer,   type As Char) As Name
             Return argument(which, BasicType(type))
         End Function
-        Friend Shared Function argument(ByVal which As Integer, ByVal type As BasicType) As Name
+        Friend Shared Function argument(  which As Integer,   type As BasicType) As Name
             If which >= INTERNED_ARGUMENT_LIMIT Then Return New Name(which, type)
             Return INTERNED_ARGUMENTS(type.ordinal())(which)
         End Function
-        Friend Shared Function internArgument(ByVal n As Name) As Name
+        Friend Shared Function internArgument(  n As Name) As Name
             Assert(n.param) :     "not param: " & n
 			Assert(n.index < INTERNED_ARGUMENT_LIMIT)
             If n.constraint IsNot Nothing Then Return n
             Return argument(n.index, n.type_Renamed)
         End Function
-        Friend Shared Function arguments(ByVal extra As Integer, ByVal types As String) As Name()
+        Friend Shared Function arguments(  extra As Integer,   types As String) As Name()
             Dim length As Integer = types.Length()
             Dim names As Name() = New Name(length + extra - 1) {}
             For i As Integer = 0 To length - 1
@@ -1752,7 +1752,7 @@ eachArg:
             Next i
             Return names
         End Function
-        Friend Shared Function arguments(ByVal extra As Integer, ParamArray ByVal types As Char()) As Name()
+        Friend Shared Function arguments(  extra As Integer, ParamArray   types As Char()) As Name()
             Dim length As Integer = types.Length
             Dim names As Name() = New Name(length + extra - 1) {}
             For i As Integer = 0 To length - 1
@@ -1760,7 +1760,7 @@ eachArg:
             Next i
             Return names
         End Function
-        Friend Shared Function arguments(ByVal extra As Integer, ByVal types As IList(Of [Class])) As Name()
+        Friend Shared Function arguments(  extra As Integer,   types As IList(Of [Class])) As Name()
             Dim length As Integer = types.Count
             Dim names As Name() = New Name(length + extra - 1) {}
             For i As Integer = 0 To length - 1
@@ -1768,7 +1768,7 @@ eachArg:
             Next i
             Return names
         End Function
-        Friend Shared Function arguments(ByVal extra As Integer, ParamArray ByVal types As [Class]()) As Name()
+        Friend Shared Function arguments(  extra As Integer, ParamArray   types As [Class]()) As Name()
             Dim length As Integer = types.Length
             Dim names As Name() = New Name(length + extra - 1) {}
             For i As Integer = 0 To length - 1
@@ -1776,7 +1776,7 @@ eachArg:
             Next i
             Return names
         End Function
-        Friend Shared Function arguments(ByVal extra As Integer, ByVal types As MethodType) As Name()
+        Friend Shared Function arguments(  extra As Integer,   types As MethodType) As Name()
             Dim length As Integer = types.parameterCount()
             Dim names As Name() = New Name(length + extra - 1) {}
             For i As Integer = 0 To length - 1
@@ -1789,16 +1789,16 @@ eachArg:
 
         Private Shared ReadOnly IMPL_NAMES As MemberName.Factory = MemberName.Factory
 
-        Shared Function identityForm(ByVal type As BasicType) As LambdaForm
+        Shared Function identityForm(  type As BasicType) As LambdaForm
             Return LF_identityForm(type.ordinal())
         End Function
-        Shared Function zeroForm(ByVal type As BasicType) As LambdaForm
+        Shared Function zeroForm(  type As BasicType) As LambdaForm
             Return LF_zeroForm(type.ordinal())
         End Function
-        Friend Shared Function identity(ByVal type As BasicType) As NamedFunction
+        Friend Shared Function identity(  type As BasicType) As NamedFunction
             Return NF_identity(type.ordinal())
         End Function
-        Friend Shared Function constantZero(ByVal type As BasicType) As NamedFunction
+        Friend Shared Function constantZero(  type As BasicType) As NamedFunction
             Return NF_zero(type.ordinal())
         End Function
         Private Shared ReadOnly LF_identityForm As LambdaForm() = New LambdaForm(TYPE_LIMIT - 1) {}
@@ -1876,19 +1876,19 @@ eachArg:
         End Sub
 
         ' Avoid appealing to ValueConversions at bootstrap time:
-        Private Shared Function identity_I(ByVal x As Integer) As Integer
+        Private Shared Function identity_I(  x As Integer) As Integer
             Return x
         End Function
-        Private Shared Function identity_J(ByVal x As Long) As Long
+        Private Shared Function identity_J(  x As Long) As Long
             Return x
         End Function
-        Private Shared Function identity_F(ByVal x As Single) As Single
+        Private Shared Function identity_F(  x As Single) As Single
             Return x
         End Function
-        Private Shared Function identity_D(ByVal x As Double) As Double
+        Private Shared Function identity_D(  x As Double) As Double
             Return x
         End Function
-        Private Shared Function identity_L(ByVal x As Object) As Object
+        Private Shared Function identity_L(  x As Object) As Object
             Return x
         End Function
         Private Shared Sub identity_V() ' same as zeroV, but that's OK
@@ -1923,7 +1923,7 @@ eachArg:
 
         Private ReadOnly outerInstance As LambdaForm
 
-        Public Sub New(ByVal outerInstance As LambdaForm)
+        Public Sub New(  outerInstance As LambdaForm)
             Me.outerInstance = outerInstance
         End Sub
 
@@ -1939,7 +1939,7 @@ eachArg:
 
     Private ReadOnly outerInstance As LambdaForm
 
-    Public Sub New(ByVal outerInstance As LambdaForm)
+    Public Sub New(  outerInstance As LambdaForm)
         Me.outerInstance = outerInstance
     End Sub
 
@@ -1968,7 +1968,7 @@ End Namespace
 '	arrays with inner arrays of the same length.
 '----------------------------------------------------------------------------------------
 Partial Friend Class RectangularArrays
-    Friend Shared Function ReturnRectangularNameArray(ByVal Size1 As Integer, ByVal Size2 As Integer) As Name()()
+    Friend Shared Function ReturnRectangularNameArray(  Size1 As Integer,   Size2 As Integer) As Name()()
         Dim Array As Name()() = New Name(Size1 - 1)() {}
         For Array1 As Integer = 0 To Size1 - 1
             Array(Array1) = New Name(Size2 - 1) {}

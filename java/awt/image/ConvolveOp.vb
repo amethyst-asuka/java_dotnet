@@ -93,7 +93,7 @@ Namespace java.awt.image
 		''' <seealso cref= #EDGE_NO_OP </seealso>
 		''' <seealso cref= #EDGE_ZERO_FILL </seealso>
 		''' <seealso cref= java.awt.RenderingHints </seealso>
-		Public Sub New(ByVal kernel_Renamed As Kernel, ByVal edgeCondition As Integer, ByVal hints As java.awt.RenderingHints)
+		Public Sub New(  kernel_Renamed As Kernel,   edgeCondition As Integer,   hints As java.awt.RenderingHints)
 			Me.kernel = kernel_Renamed
 			Me.edgeHint = edgeCondition
 			Me.hints = hints
@@ -105,7 +105,7 @@ Namespace java.awt.image
 		''' <param name="kernel"> the specified <code>Kernel</code> </param>
 		''' <seealso cref= Kernel </seealso>
 		''' <seealso cref= #EDGE_ZERO_FILL </seealso>
-		Public Sub New(ByVal kernel_Renamed As Kernel)
+		Public Sub New(  kernel_Renamed As Kernel)
 			Me.kernel = kernel_Renamed
 			Me.edgeHint = EDGE_ZERO_FILL
 		End Sub
@@ -148,7 +148,7 @@ Namespace java.awt.image
 		''' <exception cref="IllegalArgumentException"> if <code>src</code> equals
 		'''         <code>dst</code> </exception>
 		''' <exception cref="ImagingOpException"> if <code>src</code> cannot be filtered </exception>
-		Public Function filter(ByVal src As BufferedImage, ByVal dst As BufferedImage) As BufferedImage Implements BufferedImageOp.filter
+		Public Function filter(  src As BufferedImage,   dst As BufferedImage) As BufferedImage Implements BufferedImageOp.filter
 			If src Is Nothing Then Throw New NullPointerException("src image is null")
 			If src Is dst Then Throw New IllegalArgumentException("src image cannot be the " & "same as the dst image")
 
@@ -214,7 +214,7 @@ Namespace java.awt.image
 		''' <exception cref="ImagingOpException"> if <code>src</code> cannot be filtered </exception>
 		''' <exception cref="IllegalArgumentException"> if <code>src</code> equals
 		'''         <code>dst</code> </exception>
-		Public Function filter(ByVal src As Raster, ByVal dst As WritableRaster) As WritableRaster Implements RasterOp.filter
+		Public Function filter(  src As Raster,   dst As WritableRaster) As WritableRaster Implements RasterOp.filter
 			If dst Is Nothing Then
 				dst = createCompatibleDestRaster(src)
 			ElseIf src Is dst Then
@@ -235,7 +235,7 @@ Namespace java.awt.image
 		''' <param name="destCM">    ColorModel of the destination.  Can be null. </param>
 		''' <returns> a destination <code>BufferedImage</code> with the correct
 		'''         size and number of bands. </returns>
-		Public Overridable Function createCompatibleDestImage(ByVal src As BufferedImage, ByVal destCM As ColorModel) As BufferedImage Implements BufferedImageOp.createCompatibleDestImage
+		Public Overridable Function createCompatibleDestImage(  src As BufferedImage,   destCM As ColorModel) As BufferedImage Implements BufferedImageOp.createCompatibleDestImage
 			Dim image_Renamed As BufferedImage
 
 			Dim w As Integer = src.width
@@ -267,7 +267,7 @@ Namespace java.awt.image
 		''' Creates a zeroed destination Raster with the correct size and number
 		''' of bands, given this source.
 		''' </summary>
-		Public Overridable Function createCompatibleDestRaster(ByVal src As Raster) As WritableRaster Implements RasterOp.createCompatibleDestRaster
+		Public Overridable Function createCompatibleDestRaster(  src As Raster) As WritableRaster Implements RasterOp.createCompatibleDestRaster
 			Return src.createCompatibleWritableRaster()
 		End Function
 
@@ -276,7 +276,7 @@ Namespace java.awt.image
 		''' this is not a geometric operation, the bounding box does not
 		''' change.
 		''' </summary>
-		Public Function getBounds2D(ByVal src As BufferedImage) As java.awt.geom.Rectangle2D Implements BufferedImageOp.getBounds2D
+		Public Function getBounds2D(  src As BufferedImage) As java.awt.geom.Rectangle2D Implements BufferedImageOp.getBounds2D
 			Return getBounds2D(src.raster)
 		End Function
 
@@ -285,7 +285,7 @@ Namespace java.awt.image
 		''' this is not a geometric operation, the bounding box does not
 		''' change.
 		''' </summary>
-		Public Function getBounds2D(ByVal src As Raster) As java.awt.geom.Rectangle2D Implements RasterOp.getBounds2D
+		Public Function getBounds2D(  src As Raster) As java.awt.geom.Rectangle2D Implements RasterOp.getBounds2D
 			Return src.bounds
 		End Function
 
@@ -295,7 +295,7 @@ Namespace java.awt.image
 		''' be used to hold the return value.  Since this is not a geometric
 		''' operation, the srcPt will equal the dstPt.
 		''' </summary>
-		Public Function getPoint2D(ByVal srcPt As java.awt.geom.Point2D, ByVal dstPt As java.awt.geom.Point2D) As java.awt.geom.Point2D Implements BufferedImageOp.getPoint2D, RasterOp.getPoint2D
+		Public Function getPoint2D(  srcPt As java.awt.geom.Point2D,   dstPt As java.awt.geom.Point2D) As java.awt.geom.Point2D Implements BufferedImageOp.getPoint2D, RasterOp.getPoint2D
 			If dstPt Is Nothing Then dstPt = New java.awt.geom.Point2D.Float
 			dstPt.locationion(srcPt.x, srcPt.y)
 

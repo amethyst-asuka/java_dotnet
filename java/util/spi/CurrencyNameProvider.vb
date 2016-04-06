@@ -67,7 +67,7 @@ Namespace java.util.spi
 		'''     {@link java.util.spi.LocaleServiceProvider#getAvailableLocales()
 		'''     getAvailableLocales()}. </exception>
 		''' <seealso cref= java.util.Currency#getSymbol(java.util.Locale) </seealso>
-		Public MustOverride Function getSymbol(ByVal currencyCode As String, ByVal locale As java.util.Locale) As String
+		Public MustOverride Function getSymbol(  currencyCode As String,   locale As java.util.Locale) As String
 
 		''' <summary>
 		''' Returns a name for the currency that is appropriate for display to the
@@ -87,7 +87,7 @@ Namespace java.util.spi
 		''' <exception cref="NullPointerException"> if <code>currencyCode</code> or
 		'''     <code>locale</code> is <code>null</code>
 		''' @since 1.7 </exception>
-		Public Overridable Function getDisplayName(ByVal currencyCode As String, ByVal locale_Renamed As java.util.Locale) As String
+		Public Overridable Function getDisplayName(  currencyCode As String,   locale_Renamed As java.util.Locale) As String
 			If currencyCode Is Nothing OrElse locale_Renamed Is Nothing Then Throw New NullPointerException
 
 			' Check whether the currencyCode is valid

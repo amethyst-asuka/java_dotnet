@@ -57,7 +57,7 @@ Namespace java.lang
         ''' </summary>
         ''' <param name="enumType"> the type of the missing enum constant </param>
         ''' <param name="constantName"> the name of the missing enum constant </param>
-        Public Sub New(ByVal enumType As [Class], ByVal constantName As String)
+        Public Sub New(  enumType As [Class],   constantName As String)
             MyBase.New(enumType.name & "." & constantName)
             Me.enumType_Renamed = enumType
             Me.constantName_Renamed = constantName

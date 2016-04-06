@@ -45,7 +45,7 @@ Namespace java.nio.file
 
 		' file name generation, same as java.io.File for now
 		Private Shared ReadOnly random As New java.security.SecureRandom
-		Private Shared Function generatePath(ByVal prefix As String, ByVal suffix As String, ByVal dir As Path) As Path
+		Private Shared Function generatePath(  prefix As String,   suffix As String,   dir As Path) As Path
 			Dim n As Long = random.nextLong()
 			n = If(n = java.lang.[Long].MIN_VALUE, 0, System.Math.Abs(n))
 			Dim name As Path = dir.fileSystem.getPath(prefix + Convert.ToString(n) + suffix)
@@ -64,7 +64,7 @@ Namespace java.nio.file
 		''' Creates a file or directory in in the given given directory (or in the
 		''' temporary directory if dir is {@code null}).
 		''' </summary>
-		Private Shared Function create(Of T1)(ByVal dir As Path, ByVal prefix As String, ByVal suffix As String, ByVal createDirectory As Boolean, ByVal attrs As java.nio.file.attribute.FileAttribute(Of T1)()) As Path
+		Private Shared Function create(Of T1)(  dir As Path,   prefix As String,   suffix As String,   createDirectory As Boolean,   attrs As java.nio.file.attribute.FileAttribute(Of T1)()) As Path
 			If prefix Is Nothing Then prefix = ""
 			If suffix Is Nothing Then suffix = If(createDirectory, "", ".tmp")
 			If dir Is Nothing Then dir = tmpdir
@@ -127,7 +127,7 @@ Namespace java.nio.file
 		''' Creates a temporary file in the given directory, or in in the
 		''' temporary directory if dir is {@code null}.
 		''' </summary>
-		Friend Shared Function createTempFile(Of T1)(ByVal dir As Path, ByVal prefix As String, ByVal suffix As String, ByVal attrs As java.nio.file.attribute.FileAttribute(Of T1)()) As Path
+		Friend Shared Function createTempFile(Of T1)(  dir As Path,   prefix As String,   suffix As String,   attrs As java.nio.file.attribute.FileAttribute(Of T1)()) As Path
 			Return create(dir, prefix, suffix, False, attrs)
 		End Function
 
@@ -135,7 +135,7 @@ Namespace java.nio.file
 		''' Creates a temporary directory in the given directory, or in in the
 		''' temporary directory if dir is {@code null}.
 		''' </summary>
-		Friend Shared Function createTempDirectory(Of T1)(ByVal dir As Path, ByVal prefix As String, ByVal attrs As java.nio.file.attribute.FileAttribute(Of T1)()) As Path
+		Friend Shared Function createTempDirectory(Of T1)(  dir As Path,   prefix As String,   attrs As java.nio.file.attribute.FileAttribute(Of T1)()) As Path
 			Return create(dir, prefix, Nothing, True, attrs)
 		End Function
 	End Class

@@ -56,7 +56,7 @@ Namespace java.rmi.server
 		''' <code>ServerSocket</code> creation </returns>
 		''' <seealso cref= java.rmi.server.RMISocketFactory#setFailureHandler(RMIFailureHandler)
 		''' @since JDK1.1 </seealso>
-		Function failure(ByVal ex As Exception) As Boolean
+		Function failure(  ex As Exception) As Boolean
 
 	End Interface
 

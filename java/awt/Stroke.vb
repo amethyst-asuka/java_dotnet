@@ -62,7 +62,7 @@ Namespace java.awt
 		''' object implementing the <code>Stroke</code> interface. </summary>
 		''' <param name="p"> a <code>Shape</code> to be stroked </param>
 		''' <returns> the stroked outline <code>Shape</code>. </returns>
-		Function createStrokedShape(ByVal p As Shape) As Shape
+		Function createStrokedShape(  p As Shape) As Shape
 	End Interface
 
 End Namespace

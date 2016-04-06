@@ -553,7 +553,7 @@ Namespace java.awt.font
 		Private Shared ctCacheLimit As Integer = contexts.length - 2
 
 		' warning, synchronize access to this as it modifies state
-		Private Shared Function getContextKey(ByVal c As Char) As Integer
+		Private Shared Function getContextKey(  c As Char) As Integer
 			If c < contexts(ctCache) Then
 				Do While ctCache > 0 AndAlso c < contexts(ctCache)
 					ctCache -= 1
@@ -573,7 +573,7 @@ Namespace java.awt.font
 		<NonSerialized> _
 		Private currentRange As Range = Range.EUROPEAN
 
-		Private Function rangeForCodePoint(ByVal codepoint As Integer) As Range
+		Private Function rangeForCodePoint(  codepoint As Integer) As Range
 			If currentRange.inRange(codepoint) Then Return currentRange
 
 			Dim ranges As Range() = rangeArray
@@ -615,7 +615,7 @@ Namespace java.awt.font
 		<NonSerialized> _
 		Private stCache As Integer = 0
 
-		Private Function isStrongDirectional(ByVal c As Char) As Boolean
+		Private Function isStrongDirectional(  c As Char) As Boolean
 			Dim cachedIndex As Integer = stCache
 			If c < strongTable(cachedIndex) Then
 				cachedIndex = search(c, strongTable, 0, cachedIndex)
@@ -627,7 +627,7 @@ Namespace java.awt.font
 			Return val
 		End Function
 
-		Private Shared Function getKeyFromMask(ByVal mask As Integer) As Integer
+		Private Shared Function getKeyFromMask(  mask As Integer) As Integer
 			Dim key As Integer = 0
 			Do While key < NUM_KEYS AndAlso ((mask And (1<<key)) = 0)
 				key += 1
@@ -643,7 +643,7 @@ Namespace java.awt.font
 		''' <param name="singleRange"> the specified Unicode range </param>
 		''' <returns> a non-contextual numeric shaper </returns>
 		''' <exception cref="IllegalArgumentException"> if the range is not a single range </exception>
-		Public Shared Function getShaper(ByVal singleRange As Integer) As NumericShaper
+		Public Shared Function getShaper(  singleRange As Integer) As NumericShaper
 			Dim key As Integer = getKeyFromMask(singleRange)
 			Return New NumericShaper(key, singleRange)
 		End Function
@@ -658,7 +658,7 @@ Namespace java.awt.font
 		''' <returns> a non-contextual {@code NumericShaper}. </returns>
 		''' <exception cref="NullPointerException"> if {@code singleRange} is {@code null}
 		''' @since 1.7 </exception>
-		Public Shared Function getShaper(ByVal singleRange As Range) As NumericShaper
+		Public Shared Function getShaper(  singleRange As Range) As NumericShaper
 			Return New NumericShaper(singleRange, java.util.EnumSet.of(singleRange))
 		End Function
 
@@ -675,7 +675,7 @@ Namespace java.awt.font
 		''' so the digits will not shape. </summary>
 		''' <param name="ranges"> the specified Unicode ranges </param>
 		''' <returns> a shaper for the specified ranges </returns>
-		Public Shared Function getContextualShaper(ByVal ranges As Integer) As NumericShaper
+		Public Shared Function getContextualShaper(  ranges As Integer) As NumericShaper
 			ranges = ranges Or CONTEXTUAL_MASK
 			Return New NumericShaper(EUROPEAN_KEY, ranges)
 		End Function
@@ -695,7 +695,7 @@ Namespace java.awt.font
 		''' <returns> a contextual shaper for the specified ranges </returns>
 		''' <exception cref="NullPointerException"> if {@code ranges} is {@code null}.
 		''' @since 1.7 </exception>
-		Public Shared Function getContextualShaper(ByVal ranges As java.util.Set(Of Range)) As NumericShaper
+		Public Shared Function getContextualShaper(  ranges As java.util.Set(Of Range)) As NumericShaper
 			Dim shaper As New NumericShaper(Range.EUROPEAN, ranges)
 			shaper.mask = CONTEXTUAL_MASK
 			Return shaper
@@ -715,7 +715,7 @@ Namespace java.awt.font
 		''' <returns> a shaper for the specified Unicode ranges. </returns>
 		''' <exception cref="IllegalArgumentException"> if the specified
 		''' <code>defaultContext</code> is not a single valid range. </exception>
-		Public Shared Function getContextualShaper(ByVal ranges As Integer, ByVal defaultContext As Integer) As NumericShaper
+		Public Shared Function getContextualShaper(  ranges As Integer,   defaultContext As Integer) As NumericShaper
 			Dim key As Integer = getKeyFromMask(defaultContext)
 			ranges = ranges Or CONTEXTUAL_MASK
 			Return New NumericShaper(key, ranges)
@@ -735,7 +735,7 @@ Namespace java.awt.font
 		''' <exception cref="NullPointerException">
 		'''         if {@code ranges} or {@code defaultContext} is {@code null}
 		''' @since 1.7 </exception>
-		Public Shared Function getContextualShaper(ByVal ranges As java.util.Set(Of Range), ByVal defaultContext As Range) As NumericShaper
+		Public Shared Function getContextualShaper(  ranges As java.util.Set(Of Range),   defaultContext As Range) As NumericShaper
 			If defaultContext Is Nothing Then Throw New NullPointerException
 			Dim shaper As New NumericShaper(defaultContext, ranges)
 			shaper.mask = CONTEXTUAL_MASK
@@ -745,12 +745,12 @@ Namespace java.awt.font
 		''' <summary>
 		''' Private constructor.
 		''' </summary>
-		Private Sub New(ByVal key As Integer, ByVal mask As Integer)
+		Private Sub New(  key As Integer,   mask As Integer)
 			Me.key = key
 			Me.mask = mask
 		End Sub
 
-		Private Sub New(ByVal defaultContext As Range, ByVal ranges As java.util.Set(Of Range))
+		Private Sub New(  defaultContext As Range,   ranges As java.util.Set(Of Range))
 			shapingRange = defaultContext
 			rangeSet = java.util.EnumSet.copyOf(ranges) ' throws NPE if ranges is null.
 
@@ -769,7 +769,7 @@ Namespace java.awt.font
 		Private Class ComparatorAnonymousInnerClassHelper(Of T)
 			Implements IComparer(Of T)
 
-			Public Overridable Function compare(ByVal s1 As Range, ByVal s2 As Range) As Integer
+			Public Overridable Function compare(  s1 As Range,   s2 As Range) As Integer
 				Return If(s1.base > s2.base, 1, If(s1.base = s2.base, 0, -1))
 			End Function
 		End Class
@@ -785,7 +785,7 @@ Namespace java.awt.font
 		''' <exception cref="IndexOutOfBoundsException"> if start or start + count is
 		'''        out of bounds </exception>
 		''' <exception cref="NullPointerException"> if text is null </exception>
-		Public Sub shape(ByVal text As Char(), ByVal start As Integer, ByVal count As Integer)
+		Public Sub shape(  text As Char(),   start As Integer,   count As Integer)
 			checkParams(text, start, count)
 			If contextual Then
 				If rangeSet Is Nothing Then
@@ -815,7 +815,7 @@ Namespace java.awt.font
 		''' <exception cref="IllegalArgumentException"> if this is a contextual shaper
 		''' and the specified <code>context</code> is not a single valid
 		''' range. </exception>
-		Public Sub shape(ByVal text As Char(), ByVal start As Integer, ByVal count As Integer, ByVal context As Integer)
+		Public Sub shape(  text As Char(),   start As Integer,   count As Integer,   context As Integer)
 			checkParams(text, start, count)
 			If contextual Then
 				Dim ctxKey As Integer = getKeyFromMask(context)
@@ -846,7 +846,7 @@ Namespace java.awt.font
 		''' <exception cref="NullPointerException">
 		'''         if {@code text} or {@code context} is null
 		''' @since 1.7 </exception>
-		Public Sub shape(ByVal text As Char(), ByVal start As Integer, ByVal count As Integer, ByVal context As Range)
+		Public Sub shape(  text As Char(),   start As Integer,   count As Integer,   context As Range)
 			checkParams(text, start, count)
 			If context Is Nothing Then Throw New NullPointerException("context is null")
 
@@ -866,7 +866,7 @@ Namespace java.awt.font
 			End If
 		End Sub
 
-		Private Sub checkParams(ByVal text As Char(), ByVal start As Integer, ByVal count As Integer)
+		Private Sub checkParams(  text As Char(),   start As Integer,   count As Integer)
 			If text Is Nothing Then Throw New NullPointerException("text is null")
 			If (start < 0) OrElse (start > text.Length) OrElse ((start + count) < 0) OrElse ((start + count) > text.Length) Then Throw New IndexOutOfBoundsException("bad start or count for text of length " & text.Length)
 		End Sub
@@ -918,7 +918,7 @@ Namespace java.awt.font
 		''' <summary>
 		''' Perform non-contextual shaping.
 		''' </summary>
-		Private Sub shapeNonContextually(ByVal text As Char(), ByVal start As Integer, ByVal count As Integer)
+		Private Sub shapeNonContextually(  text As Char(),   start As Integer,   count As Integer)
 			Dim base As Integer
 			Dim minDigit As Char = "0"c
 			If shapingRange IsNot Nothing Then
@@ -942,7 +942,7 @@ Namespace java.awt.font
 		''' Synchronized to protect caches used in getContextKey.
 		''' </summary>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Private Sub shapeContextually(ByVal text As Char(), ByVal start As Integer, ByVal count As Integer, ByVal ctxKey As Integer)
+		Private Sub shapeContextually(  text As Char(),   start As Integer,   count As Integer,   ctxKey As Integer)
 
 			' if we don't support this context, then don't shape
 			If (mask And (1<<ctxKey)) = 0 Then ctxKey = EUROPEAN_KEY
@@ -982,7 +982,7 @@ Namespace java.awt.font
 			End SyncLock
 		End Sub
 
-		Private Sub shapeContextually(ByVal text As Char(), ByVal start As Integer, ByVal count As Integer, ByVal ctxKey As Range)
+		Private Sub shapeContextually(  text As Char(),   start As Integer,   count As Integer,   ctxKey As Range)
 			' if we don't support the specified context, then don't shape.
 			If ctxKey Is Nothing OrElse (Not rangeSet.contains(ctxKey)) Then ctxKey = Range.EUROPEAN
 
@@ -1040,7 +1040,7 @@ Namespace java.awt.font
 		'''         of <code>NumericShaper</code> and shapes in the same way;
 		'''         <code>false</code> otherwise. </returns>
 		''' <seealso cref= java.lang.Object#equals(java.lang.Object) </seealso>
-		Public Overrides Function Equals(ByVal o As Object) As Boolean
+		Public Overrides Function Equals(  o As Object) As Boolean
 			If o IsNot Nothing Then
 				Try
 					Dim rhs As NumericShaper = CType(o, NumericShaper)
@@ -1099,7 +1099,7 @@ Namespace java.awt.font
 		''' Returns the index of the high bit in value (assuming le, actually
 		''' power of 2 >= value). value must be positive.
 		''' </summary>
-		Private Shared Function getHighBit(ByVal value As Integer) As Integer
+		Private Shared Function getHighBit(  value As Integer) As Integer
 			If value <= 0 Then Return -32
 
 			Dim bit As Integer = 0
@@ -1132,7 +1132,7 @@ Namespace java.awt.font
 		''' <summary>
 		''' fast binary search over subrange of array.
 		''' </summary>
-		Private Shared Function search(ByVal value As Integer, ByVal array As Integer(), ByVal start As Integer, ByVal length As Integer) As Integer
+		Private Shared Function search(  value As Integer,   array As Integer(),   start As Integer,   length As Integer) As Integer
 			Dim power As Integer = 1 << getHighBit(length)
 			Dim extra As Integer = length - power
 			Dim probe As Integer = power
@@ -1158,7 +1158,7 @@ Namespace java.awt.font
 		''' <param name="stream"> the output stream to write to </param>
 		''' <exception cref="IOException"> if an I/O error occurs while writing to {@code stream}
 		''' @since 1.7 </exception>
-		Private Sub writeObject(ByVal stream As java.io.ObjectOutputStream)
+		Private Sub writeObject(  stream As java.io.ObjectOutputStream)
 			If shapingRange IsNot Nothing Then
 				Dim index As Integer = Range.toRangeIndex(shapingRange)
 				If index >= 0 Then key = index

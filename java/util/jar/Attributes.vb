@@ -62,7 +62,7 @@ Namespace java.util.jar
 		''' initial size.
 		''' </summary>
 		''' <param name="size"> the initial number of attributes </param>
-		Public Sub New(ByVal size As Integer)
+		Public Sub New(  size As Integer)
 			map = New Dictionary(Of )(size)
 		End Sub
 
@@ -71,7 +71,7 @@ Namespace java.util.jar
 		''' mappings as in the specified Attributes.
 		''' </summary>
 		''' <param name="attr"> the specified Attributes </param>
-		Public Sub New(ByVal attr As Attributes)
+		Public Sub New(  attr As Attributes)
 			map = New Dictionary(Of )(attr)
 		End Sub
 
@@ -83,7 +83,7 @@ Namespace java.util.jar
 		''' <param name="name"> the attribute name </param>
 		''' <returns> the value of the specified attribute name, or null if
 		'''         not found. </returns>
-		Public Overridable Function [get](ByVal name_Renamed As Object) As Object
+		Public Overridable Function [get](  name_Renamed As Object) As Object
 			Return map(name_Renamed)
 		End Function
 
@@ -101,7 +101,7 @@ Namespace java.util.jar
 		''' <returns> the String value of the specified attribute name, or null if
 		'''         not found. </returns>
 		''' <exception cref="IllegalArgumentException"> if the attribute name is invalid </exception>
-		Public Overridable Function getValue(ByVal name_Renamed As String) As String
+		Public Overridable Function getValue(  name_Renamed As String) As String
 			Return CStr([get](New Attributes.Name(name_Renamed)))
 		End Function
 
@@ -117,7 +117,7 @@ Namespace java.util.jar
 		''' <param name="name"> the Attributes.Name object </param>
 		''' <returns> the String value of the specified Attribute.Name, or null if
 		'''         not found. </returns>
-		Public Overridable Function getValue(ByVal name_Renamed As Name) As String
+		Public Overridable Function getValue(  name_Renamed As Name) As String
 			Return CStr([get](name_Renamed))
 		End Function
 
@@ -131,7 +131,7 @@ Namespace java.util.jar
 		''' <returns> the previous value of the attribute, or null if none </returns>
 		''' <exception cref="ClassCastException"> if the name is not a Attributes.Name
 		'''            or the value is not a String </exception>
-		Public Overridable Function put(ByVal name_Renamed As Object, ByVal value As Object) As Object
+		Public Overridable Function put(  name_Renamed As Object,   value As Object) As Object
 				map(CType(name_Renamed, Attributes.Name)) = CStr(value)
 				Return map(CType(name_Renamed, Attributes.Name))
 		End Function
@@ -151,7 +151,7 @@ Namespace java.util.jar
 		''' <param name="value"> the attribute value </param>
 		''' <returns> the previous value of the attribute, or null if none </returns>
 		''' <exception cref="IllegalArgumentException"> if the attribute name is invalid </exception>
-		Public Overridable Function putValue(ByVal name_Renamed As String, ByVal value As String) As String
+		Public Overridable Function putValue(  name_Renamed As String,   value As String) As String
 			Return CStr(put(New Name(name_Renamed), value))
 		End Function
 
@@ -161,7 +161,7 @@ Namespace java.util.jar
 		''' </summary>
 		''' <param name="name"> attribute name </param>
 		''' <returns> the previous value of the attribute, or null if none </returns>
-		Public Overridable Function remove(ByVal name_Renamed As Object) As Object
+		Public Overridable Function remove(  name_Renamed As Object) As Object
 			Return map.Remove(name_Renamed)
 		End Function
 
@@ -172,7 +172,7 @@ Namespace java.util.jar
 		''' <param name="value"> the attribute value </param>
 		''' <returns> true if this Map maps one or more attribute names to
 		'''         the specified value </returns>
-		Public Overridable Function containsValue(ByVal value As Object) As Boolean
+		Public Overridable Function containsValue(  value As Object) As Boolean
 			Return map.ContainsValue(value)
 		End Function
 
@@ -181,7 +181,7 @@ Namespace java.util.jar
 		''' </summary>
 		''' <param name="name"> the attribute name </param>
 		''' <returns> true if this Map contains the specified attribute name </returns>
-		Public Overridable Function containsKey(ByVal name_Renamed As Object) As Boolean
+		Public Overridable Function containsKey(  name_Renamed As Object) As Boolean
 			Return map.ContainsKey(name_Renamed)
 		End Function
 
@@ -191,7 +191,7 @@ Namespace java.util.jar
 		''' </summary>
 		''' <param name="attr"> the Attributes to be stored in this map </param>
 		''' <exception cref="ClassCastException"> if attr is not an Attributes </exception>
-		Public Overridable Sub putAll(Of T1)(ByVal attr As IDictionary(Of T1))
+		Public Overridable Sub putAll(Of T1)(  attr As IDictionary(Of T1))
 			' ## javac bug?
 			If Not GetType(Attributes).isInstance(attr) Then Throw New ClassCastException
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
@@ -253,7 +253,7 @@ Namespace java.util.jar
 		''' </summary>
 		''' <param name="o"> the Object to be compared </param>
 		''' <returns> true if the specified Object is equal to this Map </returns>
-		Public Overrides Function Equals(ByVal o As Object) As Boolean
+		Public Overrides Function Equals(  o As Object) As Boolean
 			Return map.Equals(o)
 		End Function
 
@@ -281,7 +281,7 @@ Namespace java.util.jar
 	'     * Writes the current attributes to the specified data output stream.
 	'     * XXX Need to handle UTF8 values and break up lines longer than 72 bytes
 	'     
-		 Friend Overridable Sub write(ByVal os As java.io.DataOutputStream)
+		 Friend Overridable Sub write(  os As java.io.DataOutputStream)
 			Dim it As IEnumerator(Of KeyValuePair(Of Object, Object)) = entrySet().GetEnumerator()
 			Do While it.MoveNext()
 				Dim e As KeyValuePair(Of Object, Object) = it.Current
@@ -309,7 +309,7 @@ Namespace java.util.jar
 	'     *
 	'     * XXX Need to handle UTF8 values and break up lines longer than 72 bytes
 	'     
-		Friend Overridable Sub writeMain(ByVal out As java.io.DataOutputStream)
+		Friend Overridable Sub writeMain(  out As java.io.DataOutputStream)
 			' write out the *-Version header first, if it exists
 			Dim vername As String = Name.MANIFEST_VERSION.ToString()
 			Dim version As String = getValue(vername)
@@ -350,7 +350,7 @@ Namespace java.util.jar
 	'     * Reads attributes from the specified input stream.
 	'     * XXX Need to handle UTF8 values.
 	'     
-		Friend Overridable Sub read(ByVal [is] As Manifest.FastInputStream, ByVal lbuf As SByte())
+		Friend Overridable Sub read(  [is] As Manifest.FastInputStream,   lbuf As SByte())
 			Dim name_Renamed As String = Nothing, value_Renamed As String = Nothing
 			Dim lastline As SByte() = Nothing
 
@@ -426,13 +426,13 @@ Namespace java.util.jar
 			''' <exception cref="IllegalArgumentException"> if the attribute name was
 			'''            invalid </exception>
 			''' <exception cref="NullPointerException"> if the attribute name was null </exception>
-			Public Sub New(ByVal name_Renamed As String)
+			Public Sub New(  name_Renamed As String)
 				If name_Renamed Is Nothing Then Throw New NullPointerException("name")
 				If Not isValid(name_Renamed) Then Throw New IllegalArgumentException(name_Renamed)
 				Me.name_Renamed = name_Renamed.intern()
 			End Sub
 
-			Private Shared Function isValid(ByVal name_Renamed As String) As Boolean
+			Private Shared Function isValid(  name_Renamed As String) As Boolean
 				Dim len As Integer = name_Renamed.length()
 				If len > 70 OrElse len = 0 Then Return False
 				For i As Integer = 0 To len - 1
@@ -441,15 +441,15 @@ Namespace java.util.jar
 				Return True
 			End Function
 
-			Private Shared Function isValid(ByVal c As Char) As Boolean
+			Private Shared Function isValid(  c As Char) As Boolean
 				Return isAlpha(c) OrElse isDigit(c) OrElse c = "_"c OrElse c = "-"c
 			End Function
 
-			Private Shared Function isAlpha(ByVal c As Char) As Boolean
+			Private Shared Function isAlpha(  c As Char) As Boolean
 				Return (c >= "a"c AndAlso c <= "z"c) OrElse (c >= "A"c AndAlso c <= "Z"c)
 			End Function
 
-			Private Shared Function isDigit(ByVal c As Char) As Boolean
+			Private Shared Function isDigit(  c As Char) As Boolean
 				Return c >= "0"c AndAlso c <= "9"c
 			End Function
 
@@ -458,7 +458,7 @@ Namespace java.util.jar
 			''' <param name="o"> the object to compare </param>
 			''' <returns> true if this attribute name is equal to the
 			'''         specified attribute object </returns>
-			Public Overrides Function Equals(ByVal o As Object) As Boolean
+			Public Overrides Function Equals(  o As Object) As Boolean
 				If TypeOf o Is Name Then
 					Dim c As IComparer(Of String) = sun.misc.ASCIICaseInsensitiveComparator.CASE_INSENSITIVE_ORDER
 					Return c.Compare(name_Renamed, CType(o, Name).name_Renamed) = 0

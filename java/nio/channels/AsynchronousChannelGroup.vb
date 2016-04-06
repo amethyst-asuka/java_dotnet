@@ -132,7 +132,7 @@ Namespace java.nio.channels
 		''' </summary>
 		''' <param name="provider">
 		'''          The asynchronous channel provider for this group </param>
-		Protected Friend Sub New(ByVal provider As java.nio.channels.spi.AsynchronousChannelProvider)
+		Protected Friend Sub New(  provider As java.nio.channels.spi.AsynchronousChannelProvider)
 			Me.provider_Renamed = provider
 		End Sub
 
@@ -169,7 +169,7 @@ Namespace java.nio.channels
 		'''          If {@code nThreads <= 0} </exception>
 		''' <exception cref="IOException">
 		'''          If an I/O error occurs </exception>
-		Public Shared Function withFixedThreadPool(ByVal nThreads As Integer, ByVal threadFactory As java.util.concurrent.ThreadFactory) As AsynchronousChannelGroup
+		Public Shared Function withFixedThreadPool(  nThreads As Integer,   threadFactory As java.util.concurrent.ThreadFactory) As AsynchronousChannelGroup
 			Return java.nio.channels.spi.AsynchronousChannelProvider.provider().openAsynchronousChannelGroup(nThreads, threadFactory)
 		End Function
 
@@ -211,7 +211,7 @@ Namespace java.nio.channels
 		'''          If an I/O error occurs
 		''' </exception>
 		''' <seealso cref= java.util.concurrent.Executors#newCachedThreadPool </seealso>
-		Public Shared Function withCachedThreadPool(ByVal executor As java.util.concurrent.ExecutorService, ByVal initialSize As Integer) As AsynchronousChannelGroup
+		Public Shared Function withCachedThreadPool(  executor As java.util.concurrent.ExecutorService,   initialSize As Integer) As AsynchronousChannelGroup
 			Return java.nio.channels.spi.AsynchronousChannelProvider.provider().openAsynchronousChannelGroup(executor, initialSize)
 		End Function
 
@@ -247,7 +247,7 @@ Namespace java.nio.channels
 		''' </returns>
 		''' <exception cref="IOException">
 		'''          If an I/O error occurs </exception>
-		Public Shared Function withThreadPool(ByVal executor As java.util.concurrent.ExecutorService) As AsynchronousChannelGroup
+		Public Shared Function withThreadPool(  executor As java.util.concurrent.ExecutorService) As AsynchronousChannelGroup
 			Return java.nio.channels.spi.AsynchronousChannelProvider.provider().openAsynchronousChannelGroup(executor, 0)
 		End Function
 
@@ -312,7 +312,7 @@ Namespace java.nio.channels
 		''' </returns>
 		''' <exception cref="InterruptedException">
 		'''          If interrupted while waiting </exception>
-		Public MustOverride Function awaitTermination(ByVal timeout As Long, ByVal unit As java.util.concurrent.TimeUnit) As Boolean
+		Public MustOverride Function awaitTermination(  timeout As Long,   unit As java.util.concurrent.TimeUnit) As Boolean
 	End Class
 
 End Namespace

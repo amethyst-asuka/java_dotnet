@@ -439,7 +439,7 @@ Namespace java.awt.geom
 		<NonSerialized> _
 		Private type As Integer
 
-		Private Sub New(ByVal m00 As Double, ByVal m10 As Double, ByVal m01 As Double, ByVal m11 As Double, ByVal m02 As Double, ByVal m12 As Double, ByVal state As Integer)
+		Private Sub New(  m00 As Double,   m10 As Double,   m01 As Double,   m11 As Double,   m02 As Double,   m12 As Double,   state As Integer)
 			Me.m00 = m00
 			Me.m10 = m10
 			Me.m01 = m01
@@ -468,7 +468,7 @@ Namespace java.awt.geom
 		''' the specified <code>AffineTransform</code> object. </summary>
 		''' <param name="Tx"> the <code>AffineTransform</code> object to copy
 		''' @since 1.2 </param>
-		Public Sub New(ByVal Tx As AffineTransform)
+		Public Sub New(  Tx As AffineTransform)
 			Me.m00 = Tx.m00
 			Me.m10 = Tx.m10
 			Me.m01 = Tx.m01
@@ -492,7 +492,7 @@ Namespace java.awt.geom
 		''' <param name="m12"> the Y coordinate translation element of the 3x3 matrix
 		''' @since 1.2 </param>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Sub New(ByVal m00 As Single, ByVal m10 As Single, ByVal m01 As Single, ByVal m11 As Single, ByVal m02 As Single, ByVal m12 As Single)
+		Public Sub New(  m00 As Single,   m10 As Single,   m01 As Single,   m11 As Single,   m02 As Single,   m12 As Single)
 			Me.m00 = m00
 			Me.m10 = m10
 			Me.m01 = m01
@@ -514,7 +514,7 @@ Namespace java.awt.geom
 		''' less than 6, only the first 4 values are taken. If the length of
 		''' the array is greater than 6, the first 6 values are taken.
 		''' @since 1.2 </param>
-		Public Sub New(ByVal flatmatrix As Single())
+		Public Sub New(  flatmatrix As Single())
 			m00 = flatmatrix(0)
 			m10 = flatmatrix(1)
 			m01 = flatmatrix(2)
@@ -538,7 +538,7 @@ Namespace java.awt.geom
 		''' <param name="m02"> the X coordinate translation element of the 3x3 matrix </param>
 		''' <param name="m12"> the Y coordinate translation element of the 3x3 matrix
 		''' @since 1.2 </param>
-		Public Sub New(ByVal m00 As Double, ByVal m10 As Double, ByVal m01 As Double, ByVal m11 As Double, ByVal m02 As Double, ByVal m12 As Double)
+		Public Sub New(  m00 As Double,   m10 As Double,   m01 As Double,   m11 As Double,   m02 As Double,   m12 As Double)
 			Me.m00 = m00
 			Me.m10 = m10
 			Me.m01 = m01
@@ -560,7 +560,7 @@ Namespace java.awt.geom
 		''' less than 6, only the first 4 values are taken. If the length of
 		''' the array is greater than 6, the first 6 values are taken.
 		''' @since 1.2 </param>
-		Public Sub New(ByVal flatmatrix As Double())
+		Public Sub New(  flatmatrix As Double())
 			m00 = flatmatrix(0)
 			m10 = flatmatrix(1)
 			m01 = flatmatrix(2)
@@ -587,7 +587,7 @@ Namespace java.awt.geom
 		''' <returns> an <code>AffineTransform</code> object that represents a
 		'''  translation transformation, created with the specified vector.
 		''' @since 1.2 </returns>
-		Public Shared Function getTranslateInstance(ByVal tx As Double, ByVal ty As Double) As AffineTransform
+		Public Shared Function getTranslateInstance(  tx As Double,   ty As Double) As AffineTransform
 			Dim Tx_Renamed As New AffineTransform
 			Tx_Renamed.toTranslationion(tx, ty)
 			Return Tx_Renamed
@@ -610,7 +610,7 @@ Namespace java.awt.geom
 		''' <returns> an <code>AffineTransform</code> object that is a rotation
 		'''  transformation, created with the specified angle of rotation.
 		''' @since 1.2 </returns>
-		Public Shared Function getRotateInstance(ByVal theta As Double) As AffineTransform
+		Public Shared Function getRotateInstance(  theta As Double) As AffineTransform
 			Dim Tx As New AffineTransform
 			Tx.toRotation = theta
 			Return Tx
@@ -650,7 +650,7 @@ Namespace java.awt.geom
 		'''  coordinates around the specified point by the specified angle of
 		'''  rotation.
 		''' @since 1.2 </returns>
-		Public Shared Function getRotateInstance(ByVal theta As Double, ByVal anchorx As Double, ByVal anchory As Double) As AffineTransform
+		Public Shared Function getRotateInstance(  theta As Double,   anchorx As Double,   anchory As Double) As AffineTransform
 			Dim Tx As New AffineTransform
 			Tx.toRotationion(theta, anchorx, anchory)
 			Return Tx
@@ -675,7 +675,7 @@ Namespace java.awt.geom
 		''' <returns> an <code>AffineTransform</code> object that rotates
 		'''  coordinates according to the specified rotation vector.
 		''' @since 1.6 </returns>
-		Public Shared Function getRotateInstance(ByVal vecx As Double, ByVal vecy As Double) As AffineTransform
+		Public Shared Function getRotateInstance(  vecx As Double,   vecy As Double) As AffineTransform
 			Dim Tx As New AffineTransform
 			Tx.toRotationion(vecx, vecy)
 			Return Tx
@@ -705,7 +705,7 @@ Namespace java.awt.geom
 		'''  coordinates around the specified point according to the
 		'''  specified rotation vector.
 		''' @since 1.6 </returns>
-		Public Shared Function getRotateInstance(ByVal vecx As Double, ByVal vecy As Double, ByVal anchorx As Double, ByVal anchory As Double) As AffineTransform
+		Public Shared Function getRotateInstance(  vecx As Double,   vecy As Double,   anchorx As Double,   anchory As Double) As AffineTransform
 			Dim Tx As New AffineTransform
 			Tx.toRotationion(vecx, vecy, anchorx, anchory)
 			Return Tx
@@ -724,7 +724,7 @@ Namespace java.awt.geom
 		''' <returns> an <code>AffineTransform</code> object that rotates
 		'''  coordinates by the specified number of quadrants.
 		''' @since 1.6 </returns>
-		Public Shared Function getQuadrantRotateInstance(ByVal numquadrants As Integer) As AffineTransform
+		Public Shared Function getQuadrantRotateInstance(  numquadrants As Integer) As AffineTransform
 			Dim Tx As New AffineTransform
 			Tx.toQuadrantRotation = numquadrants
 			Return Tx
@@ -748,7 +748,7 @@ Namespace java.awt.geom
 		'''  coordinates by the specified number of quadrants around the
 		'''  specified anchor point.
 		''' @since 1.6 </returns>
-		Public Shared Function getQuadrantRotateInstance(ByVal numquadrants As Integer, ByVal anchorx As Double, ByVal anchory As Double) As AffineTransform
+		Public Shared Function getQuadrantRotateInstance(  numquadrants As Integer,   anchorx As Double,   anchory As Double) As AffineTransform
 			Dim Tx As New AffineTransform
 			Tx.toQuadrantRotationion(numquadrants, anchorx, anchory)
 			Return Tx
@@ -769,7 +769,7 @@ Namespace java.awt.geom
 		''' <returns> an <code>AffineTransform</code> object that scales
 		'''  coordinates by the specified factors.
 		''' @since 1.2 </returns>
-		Public Shared Function getScaleInstance(ByVal sx As Double, ByVal sy As Double) As AffineTransform
+		Public Shared Function getScaleInstance(  sx As Double,   sy As Double) As AffineTransform
 			Dim Tx As New AffineTransform
 			Tx.toScaleale(sx, sy)
 			Return Tx
@@ -790,7 +790,7 @@ Namespace java.awt.geom
 		''' <returns> an <code>AffineTransform</code> object that shears
 		'''  coordinates by the specified multipliers.
 		''' @since 1.2 </returns>
-		Public Shared Function getShearInstance(ByVal shx As Double, ByVal shy As Double) As AffineTransform
+		Public Shared Function getShearInstance(  shx As Double,   shy As Double) As AffineTransform
 			Dim Tx As New AffineTransform
 			Tx.toShearear(shx, shy)
 			Return Tx
@@ -1099,7 +1099,7 @@ Namespace java.awt.geom
 		''' <seealso cref= #getTranslateX </seealso>
 		''' <seealso cref= #getTranslateY
 		''' @since 1.2 </seealso>
-		Public Overridable Sub getMatrix(ByVal flatmatrix As Double())
+		Public Overridable Sub getMatrix(  flatmatrix As Double())
 			flatmatrix(0) = m00
 			flatmatrix(1) = m10
 			flatmatrix(2) = m01
@@ -1202,7 +1202,7 @@ Namespace java.awt.geom
 		''' <param name="ty"> the distance by which coordinates are translated in the
 		''' Y axis direction
 		''' @since 1.2 </param>
-		Public Overridable Sub translate(ByVal tx As Double, ByVal ty As Double)
+		Public Overridable Sub translate(  tx As Double,   ty As Double)
 			Select Case state
 			Case Else
 				stateError()
@@ -1340,7 +1340,7 @@ Namespace java.awt.geom
 		''' above. </summary>
 		''' <param name="theta"> the angle of rotation measured in radians
 		''' @since 1.2 </param>
-		Public Overridable Sub rotate(ByVal theta As Double)
+		Public Overridable Sub rotate(  theta As Double)
 			Dim sin As Double = System.Math.Sin(theta)
 			If sin = 1.0 Then
 				rotate90()
@@ -1390,7 +1390,7 @@ Namespace java.awt.geom
 		''' <param name="anchorx"> the X coordinate of the rotation anchor point </param>
 		''' <param name="anchory"> the Y coordinate of the rotation anchor point
 		''' @since 1.2 </param>
-		Public Overridable Sub rotate(ByVal theta As Double, ByVal anchorx As Double, ByVal anchory As Double)
+		Public Overridable Sub rotate(  theta As Double,   anchorx As Double,   anchory As Double)
 			' REMIND: Simple for now - optimize later
 			translate(anchorx, anchory)
 			rotate(theta)
@@ -1414,7 +1414,7 @@ Namespace java.awt.geom
 		''' <param name="vecx"> the X coordinate of the rotation vector </param>
 		''' <param name="vecy"> the Y coordinate of the rotation vector
 		''' @since 1.6 </param>
-		Public Overridable Sub rotate(ByVal vecx As Double, ByVal vecy As Double)
+		Public Overridable Sub rotate(  vecx As Double,   vecy As Double)
 			If vecy = 0.0 Then
 				If vecx < 0.0 Then rotate180()
 				' If vecx > 0.0 - no rotation
@@ -1463,7 +1463,7 @@ Namespace java.awt.geom
 		''' <param name="anchorx"> the X coordinate of the rotation anchor point </param>
 		''' <param name="anchory"> the Y coordinate of the rotation anchor point
 		''' @since 1.6 </param>
-		Public Overridable Sub rotate(ByVal vecx As Double, ByVal vecy As Double, ByVal anchorx As Double, ByVal anchory As Double)
+		Public Overridable Sub rotate(  vecx As Double,   vecy As Double,   anchorx As Double,   anchory As Double)
 			' REMIND: Simple for now - optimize later
 			translate(anchorx, anchory)
 			rotate(vecx, vecy)
@@ -1481,7 +1481,7 @@ Namespace java.awt.geom
 		''' the positive X axis toward the positive Y axis. </summary>
 		''' <param name="numquadrants"> the number of 90 degree arcs to rotate by
 		''' @since 1.6 </param>
-		Public Overridable Sub quadrantRotate(ByVal numquadrants As Integer)
+		Public Overridable Sub quadrantRotate(  numquadrants As Integer)
 			Select Case numquadrants And 3
 			Case 0
 			Case 1
@@ -1508,7 +1508,7 @@ Namespace java.awt.geom
 		''' <param name="anchorx"> the X coordinate of the rotation anchor point </param>
 		''' <param name="anchory"> the Y coordinate of the rotation anchor point
 		''' @since 1.6 </param>
-		Public Overridable Sub quadrantRotate(ByVal numquadrants As Integer, ByVal anchorx As Double, ByVal anchory As Double)
+		Public Overridable Sub quadrantRotate(  numquadrants As Integer,   anchorx As Double,   anchory As Double)
 			Select Case numquadrants And 3
 			Case 0
 				Return
@@ -1547,7 +1547,7 @@ Namespace java.awt.geom
 		''' Y axis direction
 		''' @since 1.2 </param>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Overridable Sub scale(ByVal sx As Double, ByVal sy As Double)
+		Public Overridable Sub scale(  sx As Double,   sy As Double)
 			Dim state As Integer = Me.state
 			Select Case state
 			Case Else
@@ -1609,7 +1609,7 @@ Namespace java.awt.geom
 		''' <param name="shy"> the multiplier by which coordinates are shifted in the
 		''' direction of the positive Y axis as a factor of their X coordinate
 		''' @since 1.2 </param>
-		Public Overridable Sub shear(ByVal shx As Double, ByVal shy As Double)
+		Public Overridable Sub shear(  shx As Double,   shy As Double)
 			Dim state As Integer = Me.state
 			Select Case state
 			Case Else
@@ -1680,7 +1680,7 @@ Namespace java.awt.geom
 		''' <param name="ty"> the distance by which coordinates are translated in the
 		''' Y axis direction
 		''' @since 1.2 </param>
-		Public Overridable Sub setToTranslation(ByVal tx As Double, ByVal ty As Double)
+		Public Overridable Sub setToTranslation(  tx As Double,   ty As Double)
 			m00 = 1.0
 			m10 = 0.0
 			m01 = 0.0
@@ -1712,7 +1712,7 @@ Namespace java.awt.geom
 		''' <param name="theta"> the angle of rotation measured in radians
 		''' @since 1.2 </param>
 		Public Overridable Property toRotation As Double
-			Set(ByVal theta As Double)
+			Set(  theta As Double)
 				Dim sin As Double = System.Math.Sin(theta)
 				Dim cos As Double
 				If sin = 1.0 OrElse sin = -1.0 Then
@@ -1773,7 +1773,7 @@ Namespace java.awt.geom
 		''' <param name="anchorx"> the X coordinate of the rotation anchor point </param>
 		''' <param name="anchory"> the Y coordinate of the rotation anchor point
 		''' @since 1.2 </param>
-		Public Overridable Sub setToRotation(ByVal theta As Double, ByVal anchorx As Double, ByVal anchory As Double)
+		Public Overridable Sub setToRotation(  theta As Double,   anchorx As Double,   anchory As Double)
 			toRotation = theta
 			Dim sin As Double = m10
 			Dim oneMinusCos As Double = 1.0 - m00
@@ -1802,7 +1802,7 @@ Namespace java.awt.geom
 		''' <param name="vecx"> the X coordinate of the rotation vector </param>
 		''' <param name="vecy"> the Y coordinate of the rotation vector
 		''' @since 1.6 </param>
-		Public Overridable Sub setToRotation(ByVal vecx As Double, ByVal vecy As Double)
+		Public Overridable Sub setToRotation(  vecx As Double,   vecy As Double)
 			Dim sin, cos As Double
 			If vecy = 0 Then
 				sin = 0.0
@@ -1856,7 +1856,7 @@ Namespace java.awt.geom
 		''' <param name="anchorx"> the X coordinate of the rotation anchor point </param>
 		''' <param name="anchory"> the Y coordinate of the rotation anchor point
 		''' @since 1.6 </param>
-		Public Overridable Sub setToRotation(ByVal vecx As Double, ByVal vecy As Double, ByVal anchorx As Double, ByVal anchory As Double)
+		Public Overridable Sub setToRotation(  vecx As Double,   vecy As Double,   anchorx As Double,   anchory As Double)
 			toRotationion(vecx, vecy)
 			Dim sin As Double = m10
 			Dim oneMinusCos As Double = 1.0 - m00
@@ -1880,7 +1880,7 @@ Namespace java.awt.geom
 		''' <param name="numquadrants"> the number of 90 degree arcs to rotate by
 		''' @since 1.6 </param>
 		Public Overridable Property toQuadrantRotation As Integer
-			Set(ByVal numquadrants As Integer)
+			Set(  numquadrants As Integer)
 				Select Case numquadrants And 3
 				Case 0
 					m00 = 1.0
@@ -1937,7 +1937,7 @@ Namespace java.awt.geom
 		''' <param name="anchorx"> the X coordinate of the rotation anchor point </param>
 		''' <param name="anchory"> the Y coordinate of the rotation anchor point
 		''' @since 1.6 </param>
-		Public Overridable Sub setToQuadrantRotation(ByVal numquadrants As Integer, ByVal anchorx As Double, ByVal anchory As Double)
+		Public Overridable Sub setToQuadrantRotation(  numquadrants As Integer,   anchorx As Double,   anchory As Double)
 			Select Case numquadrants And 3
 			Case 0
 				m00 = 1.0
@@ -2006,7 +2006,7 @@ Namespace java.awt.geom
 		''' <param name="sy"> the factor by which coordinates are scaled along the
 		''' Y axis direction
 		''' @since 1.2 </param>
-		Public Overridable Sub setToScale(ByVal sx As Double, ByVal sy As Double)
+		Public Overridable Sub setToScale(  sx As Double,   sy As Double)
 			m00 = sx
 			m10 = 0.0
 			m01 = 0.0
@@ -2035,7 +2035,7 @@ Namespace java.awt.geom
 		''' <param name="shy"> the multiplier by which coordinates are shifted in the
 		''' direction of the positive Y axis as a factor of their X coordinate
 		''' @since 1.2 </param>
-		Public Overridable Sub setToShear(ByVal shx As Double, ByVal shy As Double)
+		Public Overridable Sub setToShear(  shx As Double,   shy As Double)
 			m00 = 1.0
 			m01 = shx
 			m10 = shy
@@ -2058,7 +2058,7 @@ Namespace java.awt.geom
         ''' copy the transform
         ''' @since 1.2 </param>
         Public Overridable WriteOnly Property transform As AffineTransform
-            Set(ByVal Tx As AffineTransform)
+            Set(  Tx As AffineTransform)
                 Me.m00 = Tx.m00
                 Me.m10 = Tx.m10
                 Me.m01 = Tx.m01
@@ -2081,7 +2081,7 @@ Namespace java.awt.geom
         ''' <param name="m02"> the X coordinate translation element of the 3x3 matrix </param>
         ''' <param name="m12"> the Y coordinate translation element of the 3x3 matrix
         ''' @since 1.2 </param>
-        Public Overridable Sub setTransform(ByVal m00 As Double, ByVal m10 As Double, ByVal m01 As Double, ByVal m11 As Double, ByVal m02 As Double, ByVal m12 As Double)
+        Public Overridable Sub setTransform(  m00 As Double,   m10 As Double,   m01 As Double,   m11 As Double,   m02 As Double,   m12 As Double)
 			Me.m00 = m00
 			Me.m10 = m10
 			Me.m01 = m01
@@ -2112,7 +2112,7 @@ Namespace java.awt.geom
 		''' <seealso cref= #preConcatenate
 		''' @since 1.2 </seealso>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Overridable Sub concatenate(ByVal Tx As AffineTransform)
+		Public Overridable Sub concatenate(  Tx As AffineTransform)
 			Dim M0, M1 As Double
 			Dim T00, T01, T10, T11 As Double
 			Dim T02, T12 As Double
@@ -2306,7 +2306,7 @@ Namespace java.awt.geom
 		''' <seealso cref= #concatenate
 		''' @since 1.2 </seealso>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Overridable Sub preConcatenate(ByVal Tx As AffineTransform)
+		Public Overridable Sub preConcatenate(  Tx As AffineTransform)
 			Dim M0, M1 As Double
 			Dim T00, T01, T10, T11 As Double
 			Dim T02, T12 As Double
@@ -2674,7 +2674,7 @@ Namespace java.awt.geom
 		''' <returns> the <code>ptDst</code> after transforming
 		''' <code>ptSrc</code> and storing the result in <code>ptDst</code>.
 		''' @since 1.2 </returns>
-		Public Overridable Function transform(ByVal ptSrc As Point2D, ByVal ptDst As Point2D) As Point2D
+		Public Overridable Function transform(  ptSrc As Point2D,   ptDst As Point2D) As Point2D
 			If ptDst Is Nothing Then
 				If TypeOf ptSrc Is Point2D.Double Then
 					ptDst = New Point2D.Double
@@ -2749,7 +2749,7 @@ Namespace java.awt.geom
 		''' transformed point object that is stored in the destination array </param>
 		''' <param name="numPts"> the number of point objects to be transformed
 		''' @since 1.2 </param>
-		Public Overridable Sub transform(ByVal ptSrc As Point2D(), ByVal srcOff As Integer, ByVal ptDst As Point2D(), ByVal dstOff As Integer, ByVal numPts As Integer)
+		Public Overridable Sub transform(  ptSrc As Point2D(),   srcOff As Integer,   ptDst As Point2D(),   dstOff As Integer,   numPts As Integer)
 			Dim state As Integer = Me.state
 			numPts -= 1
 			Do While numPts >= 0
@@ -2816,7 +2816,7 @@ Namespace java.awt.geom
 		''' transformed point that is stored in the destination array </param>
 		''' <param name="numPts"> the number of points to be transformed
 		''' @since 1.2 </param>
-		Public Overridable Sub transform(ByVal srcPts As Single(), ByVal srcOff As Integer, ByVal dstPts As Single(), ByVal dstOff As Integer, ByVal numPts As Integer)
+		Public Overridable Sub transform(  srcPts As Single(),   srcOff As Integer,   dstPts As Single(),   dstOff As Integer,   numPts As Integer)
 			Dim M00_Renamed, M01_Renamed, M02_Renamed, M10_Renamed, M11_Renamed, M12_Renamed As Double ' For caching
 			If dstPts = srcPts AndAlso dstOff > srcOff AndAlso dstOff < srcOff + numPts * 2 Then
 				' If the arrays overlap partially with the destination higher
@@ -2978,7 +2978,7 @@ Namespace java.awt.geom
 		''' transformed point that is stored in the destination array </param>
 		''' <param name="numPts"> the number of point objects to be transformed
 		''' @since 1.2 </param>
-		Public Overridable Sub transform(ByVal srcPts As Double(), ByVal srcOff As Integer, ByVal dstPts As Double(), ByVal dstOff As Integer, ByVal numPts As Integer)
+		Public Overridable Sub transform(  srcPts As Double(),   srcOff As Integer,   dstPts As Double(),   dstOff As Integer,   numPts As Integer)
 			Dim M00_Renamed, M01_Renamed, M02_Renamed, M10_Renamed, M11_Renamed, M12_Renamed As Double ' For caching
 			If dstPts = srcPts AndAlso dstOff > srcOff AndAlso dstOff < srcOff + numPts * 2 Then
 				' If the arrays overlap partially with the destination higher
@@ -3136,7 +3136,7 @@ Namespace java.awt.geom
 		''' transformed point that is stored in the destination array </param>
 		''' <param name="numPts"> the number of points to be transformed
 		''' @since 1.2 </param>
-		Public Overridable Sub transform(ByVal srcPts As Single(), ByVal srcOff As Integer, ByVal dstPts As Double(), ByVal dstOff As Integer, ByVal numPts As Integer)
+		Public Overridable Sub transform(  srcPts As Single(),   srcOff As Integer,   dstPts As Double(),   dstOff As Integer,   numPts As Integer)
 			Dim M00_Renamed, M01_Renamed, M02_Renamed, M10_Renamed, M11_Renamed, M12_Renamed As Double ' For caching
 			Select Case state
 			Case Else
@@ -3290,7 +3290,7 @@ Namespace java.awt.geom
 		''' transformed point that is stored in the destination array </param>
 		''' <param name="numPts"> the number of point objects to be transformed
 		''' @since 1.2 </param>
-		Public Overridable Sub transform(ByVal srcPts As Double(), ByVal srcOff As Integer, ByVal dstPts As Single(), ByVal dstOff As Integer, ByVal numPts As Integer)
+		Public Overridable Sub transform(  srcPts As Double(),   srcOff As Integer,   dstPts As Single(),   dstOff As Integer,   numPts As Integer)
 			Dim M00_Renamed, M01_Renamed, M02_Renamed, M10_Renamed, M11_Renamed, M12_Renamed As Double ' For caching
 			Select Case state
 			Case Else
@@ -3447,7 +3447,7 @@ Namespace java.awt.geom
 		'''                                         inverted.
 		''' @since 1.2 </exception>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Overridable Function inverseTransform(ByVal ptSrc As Point2D, ByVal ptDst As Point2D) As Point2D
+		Public Overridable Function inverseTransform(  ptSrc As Point2D,   ptDst As Point2D) As Point2D
 			If ptDst Is Nothing Then
 				If TypeOf ptSrc Is Point2D.Double Then
 					ptDst = New Point2D.Double
@@ -3525,7 +3525,7 @@ Namespace java.awt.geom
 		''' <exception cref="NoninvertibleTransformException">  if the matrix cannot be
 		'''                                         inverted.
 		''' @since 1.2 </exception>
-		Public Overridable Sub inverseTransform(ByVal srcPts As Double(), ByVal srcOff As Integer, ByVal dstPts As Double(), ByVal dstOff As Integer, ByVal numPts As Integer)
+		Public Overridable Sub inverseTransform(  srcPts As Double(),   srcOff As Integer,   dstPts As Double(),   dstOff As Integer,   numPts As Integer)
 			Dim M00_Renamed, M01_Renamed, M02_Renamed, M10_Renamed, M11_Renamed, M12_Renamed As Double ' For caching
 			Dim det As Double
 			If dstPts = srcPts AndAlso dstOff > srcOff AndAlso dstOff < srcOff + numPts * 2 Then
@@ -3700,7 +3700,7 @@ Namespace java.awt.geom
 		''' <returns> <code>ptDst</code>, which contains the result of the
 		''' transformation.
 		''' @since 1.2 </returns>
-		Public Overridable Function deltaTransform(ByVal ptSrc As Point2D, ByVal ptDst As Point2D) As Point2D
+		Public Overridable Function deltaTransform(  ptSrc As Point2D,   ptDst As Point2D) As Point2D
 			If ptDst Is Nothing Then
 				If TypeOf ptSrc Is Point2D.Double Then
 					ptDst = New Point2D.Double
@@ -3763,7 +3763,7 @@ Namespace java.awt.geom
 		''' <param name="numPts"> the number of vector coordinate pairs to be
 		''' transformed
 		''' @since 1.2 </param>
-		Public Overridable Sub deltaTransform(ByVal srcPts As Double(), ByVal srcOff As Integer, ByVal dstPts As Double(), ByVal dstOff As Integer, ByVal numPts As Integer)
+		Public Overridable Sub deltaTransform(  srcPts As Double(),   srcOff As Integer,   dstPts As Double(),   dstOff As Integer,   numPts As Integer)
 			Dim M00_Renamed, M01_Renamed, M10_Renamed, M11_Renamed As Double ' For caching
 			If dstPts = srcPts AndAlso dstOff > srcOff AndAlso dstOff < srcOff + numPts * 2 Then
 				' If the arrays overlap partially with the destination higher
@@ -3847,14 +3847,14 @@ Namespace java.awt.geom
 		''' <returns> a new <code>Shape</code> object that defines the geometry
 		''' of the transformed <code>Shape</code>, or null if {@code pSrc} is null.
 		''' @since 1.2 </returns>
-		Public Overridable Function createTransformedShape(ByVal pSrc As java.awt.Shape) As java.awt.Shape
+		Public Overridable Function createTransformedShape(  pSrc As java.awt.Shape) As java.awt.Shape
 			If pSrc Is Nothing Then Return Nothing
 			Return New Path2D.Double(pSrc, Me)
 		End Function
 
 		' Round values to sane precision for printing
 		' Note that System.Math.sin (System.Math.PI) has an error of about 10^-16
-		Private Shared Function _matround(ByVal matval As Double) As Double
+		Private Shared Function _matround(  matval As Double) As Double
 			Return System.Math.rint(matval * 1E15) / 1E15
 		End Function
 
@@ -3917,7 +3917,7 @@ Namespace java.awt.geom
 		''' <returns> <code>true</code> if <code>obj</code> equals this
 		''' <code>AffineTransform</code> object; <code>false</code> otherwise.
 		''' @since 1.2 </returns>
-		Public Overrides Function Equals(ByVal obj As Object) As Boolean
+		Public Overrides Function Equals(  obj As Object) As Boolean
 			If Not(TypeOf obj Is AffineTransform) Then Return False
 
 			Dim a As AffineTransform = CType(obj, AffineTransform)
@@ -3937,11 +3937,11 @@ Namespace java.awt.geom
 	'     
 		Private Const serialVersionUID As Long = 1330973210523860834L
 
-		Private Sub writeObject(ByVal s As java.io.ObjectOutputStream)
+		Private Sub writeObject(  s As java.io.ObjectOutputStream)
 			s.defaultWriteObject()
 		End Sub
 
-		Private Sub readObject(ByVal s As java.io.ObjectInputStream)
+		Private Sub readObject(  s As java.io.ObjectInputStream)
 			s.defaultReadObject()
 			updateState()
 		End Sub

@@ -58,7 +58,7 @@ Namespace java.awt.datatransfer
 		''' <returns> a <code>java.util.List</code> of <code>java.lang.String</code>
 		'''         objects which are platform-specific representations of platform-
 		'''         specific data formats </returns>
-		Function getNativesForFlavor(ByVal flav As DataFlavor) As IList(Of String)
+		Function getNativesForFlavor(  flav As DataFlavor) As IList(Of String)
 
 		''' <summary>
 		''' Returns a <code>List</code> of <code>DataFlavor</code>s to which the
@@ -78,7 +78,7 @@ Namespace java.awt.datatransfer
 		''' <returns> a <code>java.util.List</code> of <code>DataFlavor</code>
 		'''         objects into which platform-specific data in the specified,
 		'''         platform-specific native can be translated </returns>
-		Function getFlavorsForNative(ByVal nat As String) As IList(Of DataFlavor)
+		Function getFlavorsForNative(  nat As String) As IList(Of DataFlavor)
 	End Interface
 
 End Namespace

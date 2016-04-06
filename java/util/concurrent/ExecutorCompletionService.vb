@@ -119,7 +119,7 @@ Namespace java.util.concurrent
 
 			Private ReadOnly outerInstance As ExecutorCompletionService
 
-			Friend Sub New(ByVal outerInstance As ExecutorCompletionService, ByVal task As RunnableFuture(Of V))
+			Friend Sub New(  outerInstance As ExecutorCompletionService,   task As RunnableFuture(Of V))
 					Me.outerInstance = outerInstance
 				MyBase.New(task, Nothing)
 				Me.task = task
@@ -130,7 +130,7 @@ Namespace java.util.concurrent
 			Private ReadOnly task As Future(Of V)
 		End Class
 
-		Private Function newTaskFor(ByVal task As Callable(Of V)) As RunnableFuture(Of V)
+		Private Function newTaskFor(  task As Callable(Of V)) As RunnableFuture(Of V)
 			If aes Is Nothing Then
 				Return New FutureTask(Of V)(task)
 			Else
@@ -138,7 +138,7 @@ Namespace java.util.concurrent
 			End If
 		End Function
 
-		Private Function newTaskFor(ByVal task As Runnable, ByVal result As V) As RunnableFuture(Of V)
+		Private Function newTaskFor(  task As Runnable,   result As V) As RunnableFuture(Of V)
 			If aes Is Nothing Then
 				Return New FutureTask(Of V)(task, result)
 			Else
@@ -153,7 +153,7 @@ Namespace java.util.concurrent
 		''' </summary>
 		''' <param name="executor"> the executor to use </param>
 		''' <exception cref="NullPointerException"> if executor is {@code null} </exception>
-		Public Sub New(ByVal executor As Executor)
+		Public Sub New(  executor As Executor)
 			If executor Is Nothing Then Throw New NullPointerException
 			Me.executor = executor
 			Me.aes = If(TypeOf executor Is AbstractExecutorService, CType(executor, AbstractExecutorService), Nothing)
@@ -172,21 +172,21 @@ Namespace java.util.concurrent
 		'''        {@code Queue.add} operations for completed tasks cause
 		'''        them not to be retrievable. </param>
 		''' <exception cref="NullPointerException"> if executor or completionQueue are {@code null} </exception>
-		Public Sub New(ByVal executor As Executor, ByVal completionQueue As BlockingQueue(Of Future(Of V)))
+		Public Sub New(  executor As Executor,   completionQueue As BlockingQueue(Of Future(Of V)))
 			If executor Is Nothing OrElse completionQueue Is Nothing Then Throw New NullPointerException
 			Me.executor = executor
 			Me.aes = If(TypeOf executor Is AbstractExecutorService, CType(executor, AbstractExecutorService), Nothing)
 			Me.completionQueue = completionQueue
 		End Sub
 
-		Public Overridable Function submit(ByVal task As Callable(Of V)) As Future(Of V) Implements CompletionService(Of V).submit
+		Public Overridable Function submit(  task As Callable(Of V)) As Future(Of V) Implements CompletionService(Of V).submit
 			If task Is Nothing Then Throw New NullPointerException
 			Dim f As RunnableFuture(Of V) = newTaskFor(task)
 			executor.execute(New QueueingFuture(Me, f))
 			Return f
 		End Function
 
-		Public Overridable Function submit(ByVal task As Runnable, ByVal result As V) As Future(Of V)
+		Public Overridable Function submit(  task As Runnable,   result As V) As Future(Of V)
 			If task Is Nothing Then Throw New NullPointerException
 			Dim f As RunnableFuture(Of V) = newTaskFor(task, result)
 			executor.execute(New QueueingFuture(Me, f))
@@ -201,7 +201,7 @@ Namespace java.util.concurrent
 			Return completionQueue.poll()
 		End Function
 
-		Public Overridable Function poll(ByVal timeout As Long, ByVal unit As TimeUnit) As Future(Of V) Implements CompletionService(Of V).poll
+		Public Overridable Function poll(  timeout As Long,   unit As TimeUnit) As Future(Of V) Implements CompletionService(Of V).poll
 			Return completionQueue.poll(timeout, unit)
 		End Function
 

@@ -103,7 +103,7 @@ Namespace java.net
 		''' <returns>          the translated {@code String}
 		''' </returns>
 		''' <exception cref="IllegalArgumentException">   if the input string doesn't conform to RFC 3490 specification </exception>
-		Public Shared Function toASCII(ByVal input As String, ByVal flag As Integer) As String
+		Public Shared Function toASCII(  input As String,   flag As Integer) As String
 			Dim p As Integer = 0, q As Integer = 0
 			Dim out As New StringBuffer
 
@@ -135,7 +135,7 @@ Namespace java.net
 		''' <returns>          the translated {@code String}
 		''' </returns>
 		''' <exception cref="IllegalArgumentException">   if the input string doesn't conform to RFC 3490 specification </exception>
-		Public Shared Function toASCII(ByVal input As String) As String
+		Public Shared Function toASCII(  input As String) As String
 			Return toASCII(input, 0)
 		End Function
 
@@ -157,7 +157,7 @@ Namespace java.net
 		''' <param name="flag">      process flag; can be 0 or any logical OR of possible flags
 		''' </param>
 		''' <returns>          the translated {@code String} </returns>
-		Public Shared Function toUnicode(ByVal input As String, ByVal flag As Integer) As String
+		Public Shared Function toUnicode(  input As String,   flag As Integer) As String
 			Dim p As Integer = 0, q As Integer = 0
 			Dim out As New StringBuffer
 
@@ -187,7 +187,7 @@ Namespace java.net
 		''' <param name="input">     the string to be processed
 		''' </param>
 		''' <returns>          the translated {@code String} </returns>
-		Public Shared Function toUnicode(ByVal input As String) As String
+		Public Shared Function toUnicode(  input As String) As String
 			Return toUnicode(input, 0)
 		End Function
 
@@ -243,7 +243,7 @@ Namespace java.net
 		'
 		' toASCII operation; should only apply to a single label
 		'
-		Private Shared Function toASCIIInternal(ByVal label As String, ByVal flag As Integer) As String
+		Private Shared Function toASCIIInternal(  label As String,   flag As Integer) As String
 			' step 1
 			' Check if the string contains code points outside the ASCII range 0..0x7c.
 			Dim isASCII As Boolean = isAllASCII(label)
@@ -318,7 +318,7 @@ Namespace java.net
 		'
 		' toUnicode operation; should only apply to a single label
 		'
-		Private Shared Function toUnicodeInternal(ByVal label As String, ByVal flag As Integer) As String
+		Private Shared Function toUnicodeInternal(  label As String,   flag As Integer) As String
 			Dim caseFlags As Boolean() = Nothing
 			Dim dest As StringBuffer
 
@@ -379,7 +379,7 @@ Namespace java.net
 		'
 		' non-LDH = 0..0x2C, 0x2E..0x2F, 0x3A..0x40, 0x5B..0x60, 0x7B..0x7F
 		'
-		Private Shared Function isNonLDHAsciiCodePoint(ByVal ch As Integer) As Boolean
+		Private Shared Function isNonLDHAsciiCodePoint(  ch As Integer) As Boolean
 			Return (&H0 <= ch AndAlso ch <= &H2C) OrElse (&H2E <= ch AndAlso ch <= &H2F) OrElse (&H3A <= ch AndAlso ch <= &H40) OrElse (&H5B <= ch AndAlso ch <= &H60) OrElse (&H7B <= ch AndAlso ch <= &H7F)
 		End Function
 
@@ -389,7 +389,7 @@ Namespace java.net
 		' dots might be: \u002E (full stop), \u3002 (ideographic full stop), \uFF0E (fullwidth full stop),
 		' and \uFF61 (halfwidth ideographic full stop).
 		'
-		Private Shared Function searchDots(ByVal s As String, ByVal start As Integer) As Integer
+		Private Shared Function searchDots(  s As String,   start As Integer) As Integer
 			Dim i As Integer
 			For i = start To s.length() - 1
 				If isLabelSeparator(s.Chars(i)) Then Exit For
@@ -401,21 +401,21 @@ Namespace java.net
 		'
 		' to check if a string is a root label, ".".
 		'
-		Private Shared Function isRootLabel(ByVal s As String) As Boolean
+		Private Shared Function isRootLabel(  s As String) As Boolean
 			Return (s.length() = 1 AndAlso isLabelSeparator(s.Chars(0)))
 		End Function
 
 		'
 		' to check if a character is a label separator, i.e. a dot character.
 		'
-		Private Shared Function isLabelSeparator(ByVal c As Char) As Boolean
+		Private Shared Function isLabelSeparator(  c As Char) As Boolean
 			Return (c = "."c OrElse c = ChrW(&H3002) OrElse c = ChrW(&HFF0E) OrElse c = ChrW(&HFF61))
 		End Function
 
 		'
 		' to check if a string only contains US-ASCII code point
 		'
-		Private Shared Function isAllASCII(ByVal input As String) As Boolean
+		Private Shared Function isAllASCII(  input As String) As Boolean
 			Dim isASCII As Boolean = True
 			For i As Integer = 0 To input.length() - 1
 				Dim c As Integer = AscW(input.Chars(i))
@@ -430,7 +430,7 @@ Namespace java.net
 		'
 		' to check if a string starts with ACE-prefix
 		'
-		Private Shared Function startsWithACEPrefix(ByVal input As StringBuffer) As Boolean
+		Private Shared Function startsWithACEPrefix(  input As StringBuffer) As Boolean
 			Dim startsWithPrefix As Boolean = True
 
 			If input.length() < ACE_PREFIX_LENGTH Then Return False
@@ -440,12 +440,12 @@ Namespace java.net
 			Return startsWithPrefix
 		End Function
 
-		Private Shared Function toASCIILower(ByVal ch As Char) As Char
+		Private Shared Function toASCIILower(  ch As Char) As Char
 			If "A"c <= ch AndAlso ch <= "Z"c Then Return ChrW(AscW(ch) + AscW("a"c) - AscW("A"c))
 			Return ch
 		End Function
 
-		Private Shared Function toASCIILower(ByVal input As StringBuffer) As StringBuffer
+		Private Shared Function toASCIILower(  input As StringBuffer) As StringBuffer
 			Dim dest As New StringBuffer
 			For i As Integer = 0 To input.length() - 1
 				dest.append(toASCIILower(input.Chars(i)))

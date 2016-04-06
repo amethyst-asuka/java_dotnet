@@ -100,7 +100,7 @@ Namespace java.sql
 	  ''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 	  ''' this method
 	  ''' @since 1.2 </exception>
-	  Function getAttributes(ByVal map As IDictionary(Of String, [Class])) As Object()
+	  Function getAttributes(  map As IDictionary(Of String, [Class])) As Object()
 	End Interface
 
 End Namespace

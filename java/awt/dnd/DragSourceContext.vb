@@ -167,7 +167,7 @@ Namespace java.awt.dnd
 		'''         event are equal to <code>DnDConstants.ACTION_NONE</code>. </exception>
 		''' <exception cref="NullPointerException"> if dscp, trigger, or t are null, or
 		'''         if dragImage is non-null and offset is null </exception>
-		Public Sub New(ByVal dscp As java.awt.dnd.peer.DragSourceContextPeer, ByVal trigger As DragGestureEvent, ByVal dragCursor As java.awt.Cursor, ByVal dragImage As java.awt.Image, ByVal offset As java.awt.Point, ByVal t As java.awt.datatransfer.Transferable, ByVal dsl As DragSourceListener)
+		Public Sub New(  dscp As java.awt.dnd.peer.DragSourceContextPeer,   trigger As DragGestureEvent,   dragCursor As java.awt.Cursor,   dragImage As java.awt.Image,   offset As java.awt.Point,   t As java.awt.datatransfer.Transferable,   dsl As DragSourceListener)
 			If dscp Is Nothing Then Throw New NullPointerException("DragSourceContextPeer")
 
 			If trigger Is Nothing Then Throw New NullPointerException("Trigger")
@@ -260,7 +260,7 @@ Namespace java.awt.dnd
 
 		<MethodImpl(MethodImplOptions.Synchronized)> _
 		Public Overridable Property cursor As java.awt.Cursor
-			Set(ByVal c As java.awt.Cursor)
+			Set(  c As java.awt.Cursor)
 				useCustomCursor = (c IsNot Nothing)
 				cursorImpl = c
 			End Set
@@ -285,7 +285,7 @@ Namespace java.awt.dnd
 		''' a <code>DragSourceListener</code> has already been added </exception>
 
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Sub addDragSourceListener(ByVal dsl As DragSourceListener)
+		Public Overridable Sub addDragSourceListener(  dsl As DragSourceListener)
 			If dsl Is Nothing Then Return
 
 			If Equals(dsl) Then Throw New IllegalArgumentException("DragSourceContext may not be its own listener")
@@ -306,7 +306,7 @@ Namespace java.awt.dnd
 		'''     it is not acceptable as a parameter </param>
 
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Sub removeDragSourceListener(ByVal dsl As DragSourceListener)
+		Public Overridable Sub removeDragSourceListener(  dsl As DragSourceListener)
 			If listener IsNot Nothing AndAlso listener.Equals(dsl) Then
 				listener = Nothing
 			Else
@@ -331,7 +331,7 @@ Namespace java.awt.dnd
 		''' <code>DragSourceDragEvent</code>.
 		''' </summary>
 		''' <param name="dsde"> the <code>DragSourceDragEvent</code> </param>
-		Public Overridable Sub dragEnter(ByVal dsde As DragSourceDragEvent) Implements DragSourceListener.dragEnter
+		Public Overridable Sub dragEnter(  dsde As DragSourceDragEvent) Implements DragSourceListener.dragEnter
 			Dim dsl As DragSourceListener = listener
 			If dsl IsNot Nothing Then dsl.dragEnter(dsde)
 			dragSource.processDragEnter(dsde)
@@ -347,7 +347,7 @@ Namespace java.awt.dnd
 		''' <code>DragSourceDragEvent</code>.
 		''' </summary>
 		''' <param name="dsde"> the <code>DragSourceDragEvent</code> </param>
-		Public Overridable Sub dragOver(ByVal dsde As DragSourceDragEvent) Implements DragSourceListener.dragOver
+		Public Overridable Sub dragOver(  dsde As DragSourceDragEvent) Implements DragSourceListener.dragOver
 			Dim dsl As DragSourceListener = listener
 			If dsl IsNot Nothing Then dsl.dragOver(dsde)
 			dragSource.processDragOver(dsde)
@@ -363,7 +363,7 @@ Namespace java.awt.dnd
 		''' <code>DragSourceEvent</code>.
 		''' </summary>
 		''' <param name="dse"> the <code>DragSourceEvent</code> </param>
-		Public Overridable Sub dragExit(ByVal dse As DragSourceEvent) Implements DragSourceListener.dragExit
+		Public Overridable Sub dragExit(  dse As DragSourceEvent) Implements DragSourceListener.dragExit
 			Dim dsl As DragSourceListener = listener
 			If dsl IsNot Nothing Then dsl.dragExit(dse)
 			dragSource.processDragExit(dse)
@@ -379,7 +379,7 @@ Namespace java.awt.dnd
 		''' <code>DragSourceDragEvent</code>.
 		''' </summary>
 		''' <param name="dsde"> the <code>DragSourceDragEvent</code> </param>
-		Public Overridable Sub dropActionChanged(ByVal dsde As DragSourceDragEvent) Implements DragSourceListener.dropActionChanged
+		Public Overridable Sub dropActionChanged(  dsde As DragSourceDragEvent) Implements DragSourceListener.dropActionChanged
 			Dim dsl As DragSourceListener = listener
 			If dsl IsNot Nothing Then dsl.dropActionChanged(dsde)
 			dragSource.processDropActionChanged(dsde)
@@ -395,7 +395,7 @@ Namespace java.awt.dnd
 		''' <code>DragSourceDropEvent</code>.
 		''' </summary>
 		''' <param name="dsde"> the <code>DragSourceDropEvent</code> </param>
-		Public Overridable Sub dragDropEnd(ByVal dsde As DragSourceDropEvent) Implements DragSourceListener.dragDropEnd
+		Public Overridable Sub dragDropEnd(  dsde As DragSourceDropEvent) Implements DragSourceListener.dragDropEnd
 			Dim dsl As DragSourceListener = listener
 			If dsl IsNot Nothing Then dsl.dragDropEnd(dsde)
 			dragSource.processDragDropEnd(dsde)
@@ -410,7 +410,7 @@ Namespace java.awt.dnd
 		''' </summary>
 		''' <param name="dsde"> the <code>DragSourceDragEvent</code>
 		''' @since 1.4 </param>
-		Public Overridable Sub dragMouseMoved(ByVal dsde As DragSourceDragEvent) Implements DragSourceMotionListener.dragMouseMoved
+		Public Overridable Sub dragMouseMoved(  dsde As DragSourceDragEvent) Implements DragSourceMotionListener.dragMouseMoved
 			dragSource.processDragMouseMoved(dsde)
 		End Sub
 
@@ -438,7 +438,7 @@ Namespace java.awt.dnd
 		'''               <code>CHANGED</code> </param>
 
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Protected Friend Overridable Sub updateCurrentCursor(ByVal sourceAct As Integer, ByVal targetAct As Integer, ByVal status As Integer)
+		Protected Friend Overridable Sub updateCurrentCursor(  sourceAct As Integer,   targetAct As Integer,   status As Integer)
 
 			' if the cursor has been previously set then don't do any defaults
 			' processing.
@@ -479,7 +479,7 @@ Namespace java.awt.dnd
 		End Sub
 
 		Private Property cursorImpl As java.awt.Cursor
-			Set(ByVal c As java.awt.Cursor)
+			Set(  c As java.awt.Cursor)
 				If cursor_Renamed Is Nothing OrElse (Not cursor_Renamed.Equals(c)) Then
 					cursor_Renamed = c
 					If peer IsNot Nothing Then peer.cursor = cursor_Renamed
@@ -505,7 +505,7 @@ Namespace java.awt.dnd
 		'''             <code>null</code>.
 		''' @since 1.4
 		''' </summary>
-		Private Sub writeObject(ByVal s As java.io.ObjectOutputStream)
+		Private Sub writeObject(  s As java.io.ObjectOutputStream)
 			s.defaultWriteObject()
 
 			s.writeObject(If(SerializationTester.test(transferable), transferable, Nothing))
@@ -524,7 +524,7 @@ Namespace java.awt.dnd
 		''' 
 		''' @since 1.4
 		''' </summary>
-		Private Sub readObject(ByVal s As java.io.ObjectInputStream)
+		Private Sub readObject(  s As java.io.ObjectInputStream)
 			Dim f As java.io.ObjectInputStream.GetField = s.readFields()
 
 			Dim newTrigger As DragGestureEvent = CType(f.get("trigger", Nothing), DragGestureEvent)
@@ -560,10 +560,10 @@ Namespace java.awt.dnd
 					Return New java.awt.datatransfer.DataFlavor(){}
 				End Get
 			End Property
-			Public Overridable Function isDataFlavorSupported(ByVal flavor As java.awt.datatransfer.DataFlavor) As Boolean
+			Public Overridable Function isDataFlavorSupported(  flavor As java.awt.datatransfer.DataFlavor) As Boolean
 				Return False
 			End Function
-			Public Overridable Function getTransferData(ByVal flavor As java.awt.datatransfer.DataFlavor) As Object
+			Public Overridable Function getTransferData(  flavor As java.awt.datatransfer.DataFlavor) As Object
 				Throw New java.awt.datatransfer.UnsupportedFlavorException(flavor)
 			End Function
 		End Class

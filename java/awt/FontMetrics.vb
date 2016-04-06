@@ -115,7 +115,7 @@ Namespace java.awt
         ''' and specific character glyphs in that <code>Font</code>. </summary>
         ''' <param name="font"> the <code>Font</code> </param>
         ''' <seealso cref=       java.awt.Font </seealso>
-        Protected Friend Sub New(ByVal font As font)
+        Protected Friend Sub New(  font As font)
             Me.font = font
         End Sub
 
@@ -283,7 +283,7 @@ Namespace java.awt
         '''            <code>FontMetrics</code> object. </returns>
         ''' <seealso cref=   #charsWidth(char[], int, int) </seealso>
         ''' <seealso cref=   #stringWidth(String) </seealso>
-        Public Overridable Function charWidth(ByVal codePoint As Integer) As Integer
+        Public Overridable Function charWidth(  codePoint As Integer) As Integer
 			If Not Character.isValidCodePoint(codePoint) Then codePoint = &Hffff ' substitute missing glyph width
 
 			If codePoint < 256 Then
@@ -314,7 +314,7 @@ Namespace java.awt
 		'''                  <code>FontMetrics</code> object. </returns>
 		''' <seealso cref=        #charsWidth(char[], int, int) </seealso>
 		''' <seealso cref=        #stringWidth(String) </seealso>
-		Public Overridable Function charWidth(ByVal ch As Char) As Integer
+		Public Overridable Function charWidth(  ch As Char) As Integer
 			If AscW(ch) < 256 Then Return widths(AscW(ch))
 			Dim data As Char() = {ch}
 			Return charsWidth(data, 0, 1)
@@ -336,7 +336,7 @@ Namespace java.awt
 		''' <seealso cref=       #bytesWidth(byte[], int, int) </seealso>
 		''' <seealso cref=       #charsWidth(char[], int, int) </seealso>
 		''' <seealso cref=       #getStringBounds(String, Graphics) </seealso>
-		Public Overridable Function stringWidth(ByVal str As String) As Integer
+		Public Overridable Function stringWidth(  str As String) As Integer
 			Dim len As Integer = str.length()
 			Dim data As Char() = New Char(len - 1){}
 			str.getChars(0, len, data, 0)

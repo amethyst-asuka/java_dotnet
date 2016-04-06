@@ -72,7 +72,7 @@ Namespace java.security.cert
 		''' "{@docRoot}/../technotes/guides/security/StandardNames.html#CertificateFactory">
 		''' Java Cryptography Architecture Standard Algorithm Name Documentation</a>
 		''' for information about standard certificate types. </param>
-		Protected Friend Sub New(ByVal type As String)
+		Protected Friend Sub New(  type As String)
 			Me.type = type
 		End Sub
 
@@ -96,7 +96,7 @@ Namespace java.security.cert
 		''' <param name="other"> the object to test for equality with this certificate. </param>
 		''' <returns> true iff the encoded forms of the two certificates
 		''' match, false otherwise. </returns>
-		Public Overrides Function Equals(ByVal other As Object) As Boolean
+		Public Overrides Function Equals(  other As Object) As Boolean
 			If Me Is other Then Return True
 			If Not(TypeOf other Is Certificate) Then Return False
 			Try
@@ -150,7 +150,7 @@ Namespace java.security.cert
 		''' <exception cref="NoSuchProviderException"> if there's no default provider. </exception>
 		''' <exception cref="SignatureException"> on signature errors. </exception>
 		''' <exception cref="CertificateException"> on encoding errors. </exception>
-		Public MustOverride Sub verify(ByVal key As java.security.PublicKey)
+		Public MustOverride Sub verify(  key As java.security.PublicKey)
 
 		''' <summary>
 		''' Verifies that this certificate was signed using the
@@ -167,7 +167,7 @@ Namespace java.security.cert
 		''' <exception cref="NoSuchProviderException"> on incorrect provider. </exception>
 		''' <exception cref="SignatureException"> on signature errors. </exception>
 		''' <exception cref="CertificateException"> on encoding errors. </exception>
-		Public MustOverride Sub verify(ByVal key As java.security.PublicKey, ByVal sigProvider As String)
+		Public MustOverride Sub verify(  key As java.security.PublicKey,   sigProvider As String)
 
 		''' <summary>
 		''' Verifies that this certificate was signed using the
@@ -191,7 +191,7 @@ Namespace java.security.cert
 		''' <exception cref="CertificateException"> on encoding errors. </exception>
 		''' <exception cref="UnsupportedOperationException"> if the method is not supported
 		''' @since 1.8 </exception>
-		Public Overridable Sub verify(ByVal key As java.security.PublicKey, ByVal sigProvider As java.security.Provider)
+		Public Overridable Sub verify(  key As java.security.PublicKey,   sigProvider As java.security.Provider)
 			Throw New UnsupportedOperationException
 		End Sub
 
@@ -228,7 +228,7 @@ Namespace java.security.cert
 			''' <param name="type"> the standard name of the Certificate type. <p>
 			''' </param>
 			''' <param name="data"> the Certificate data. </param>
-			Protected Friend Sub New(ByVal type As String, ByVal data As SByte())
+			Protected Friend Sub New(  type As String,   data As SByte())
 				Me.type = type
 				Me.data = data
 			End Sub

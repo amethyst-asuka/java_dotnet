@@ -65,7 +65,7 @@ Namespace java.awt.font
 		''' This object keeps a reference to <code>image</code>. </param>
 		''' <param name="alignment"> one of the alignments from this
 		''' <code>ImageGraphicAttribute</code> </param>
-		Public Sub New(ByVal image_Renamed As java.awt.Image, ByVal alignment As Integer)
+		Public Sub New(  image_Renamed As java.awt.Image,   alignment As Integer)
 
 			Me.New(image_Renamed, alignment, 0, 0)
 		End Sub
@@ -87,7 +87,7 @@ Namespace java.awt.font
 		''' <param name="originY"> the Y coordinate of the point within
 		''' the <code>Image</code> that appears at the origin of the
 		''' <code>ImageGraphicAttribute</code> in the text line. </param>
-		Public Sub New(ByVal image_Renamed As java.awt.Image, ByVal alignment As Integer, ByVal originX As Single, ByVal originY As Single)
+		Public Sub New(  image_Renamed As java.awt.Image,   alignment As Integer,   originX As Single,   originY As Single)
 
 			MyBase.New(alignment)
 
@@ -157,7 +157,7 @@ Namespace java.awt.font
 		''' <summary>
 		''' {@inheritDoc}
 		''' </summary>
-		Public Overrides Sub draw(ByVal graphics As java.awt.Graphics2D, ByVal x As Single, ByVal y As Single)
+		Public Overrides Sub draw(  graphics As java.awt.Graphics2D,   x As Single,   y As Single)
 
 			graphics.drawImage(fImage, CInt(Fix(x-fOriginX)), CInt(Fix(y-fOriginY)), Nothing)
 		End Sub
@@ -177,7 +177,7 @@ Namespace java.awt.font
 		''' <returns> <code>true</code> if this
 		''' <code>ImageGraphicAttribute</code> equals <code>rhs</code>;
 		''' <code>false</code> otherwise. </returns>
-		Public Overrides Function Equals(ByVal rhs As Object) As Boolean
+		Public Overrides Function Equals(  rhs As Object) As Boolean
 
 			Try
 				Return Equals(CType(rhs, ImageGraphicAttribute))
@@ -194,7 +194,7 @@ Namespace java.awt.font
 		''' <returns> <code>true</code> if this
 		''' <code>ImageGraphicAttribute</code> equals <code>rhs</code>;
 		''' <code>false</code> otherwise. </returns>
-		Public Overrides Function Equals(ByVal rhs As ImageGraphicAttribute) As Boolean
+		Public Overrides Function Equals(  rhs As ImageGraphicAttribute) As Boolean
 
 			If rhs Is Nothing Then Return False
 

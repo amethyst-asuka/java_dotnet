@@ -99,7 +99,7 @@ Namespace java.awt.dnd
 		''' </exception>
 		''' <seealso cref= #getLocation </seealso>
 
-		Public Sub New(ByVal dsc As DragSourceContext)
+		Public Sub New(  dsc As DragSourceContext)
 			MyBase.New(dsc)
 			locationSpecified = False
 			Me.x = 0
@@ -118,7 +118,7 @@ Namespace java.awt.dnd
 		''' <exception cref="IllegalArgumentException"> if <code>dsc</code> is <code>null</code>.
 		''' 
 		''' @since 1.4 </exception>
-		Public Sub New(ByVal dsc As DragSourceContext, ByVal x As Integer, ByVal y As Integer)
+		Public Sub New(  dsc As DragSourceContext,   x As Integer,   y As Integer)
 			MyBase.New(dsc)
 			locationSpecified = True
 			Me.x = x

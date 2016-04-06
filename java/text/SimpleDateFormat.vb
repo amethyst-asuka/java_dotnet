@@ -568,7 +568,7 @@ Namespace java.text
         ''' <param name="pattern"> the pattern describing the date and time format </param>
         ''' <exception cref="NullPointerException"> if the given pattern is null </exception>
         ''' <exception cref="IllegalArgumentException"> if the given pattern is invalid </exception>
-        Public Sub New(ByVal pattern As String)
+        Public Sub New(  pattern As String)
             Me.New(pattern, java.util.Locale.getDefault(java.util.Locale.Category.FORMAT))
         End Sub
 
@@ -583,7 +583,7 @@ Namespace java.text
         ''' <param name="locale"> the locale whose date format symbols should be used </param>
         ''' <exception cref="NullPointerException"> if the given pattern or locale is null </exception>
         ''' <exception cref="IllegalArgumentException"> if the given pattern is invalid </exception>
-        Public Sub New(ByVal pattern As String, ByVal locale As java.util.Locale)
+        Public Sub New(  pattern As String,   locale As java.util.Locale)
             If pattern Is Nothing OrElse locale Is Nothing Then Throw New NullPointerException
 
             initializeCalendar(locale)
@@ -601,7 +601,7 @@ Namespace java.text
         ''' <param name="formatSymbols"> the date format symbols to be used for formatting </param>
         ''' <exception cref="NullPointerException"> if the given pattern or formatSymbols is null </exception>
         ''' <exception cref="IllegalArgumentException"> if the given pattern is invalid </exception>
-        Public Sub New(ByVal pattern As String, ByVal formatSymbols As DateFormatSymbols)
+        Public Sub New(  pattern As String,   formatSymbols As DateFormatSymbols)
             If pattern Is Nothing OrElse formatSymbols Is Nothing Then Throw New NullPointerException
 
             Me.pattern = pattern
@@ -613,7 +613,7 @@ Namespace java.text
         End Sub
 
         ' Initialize compiledPattern and numberFormat fields 
-        Private Sub initialize(ByVal loc As java.util.Locale)
+        Private Sub initialize(  loc As java.util.Locale)
             ' Verify and compile the given pattern.
             compiledPattern = compile(pattern)
 
@@ -631,7 +631,7 @@ Namespace java.text
             initializeDefaultCentury()
         End Sub
 
-        Private Sub initializeCalendar(ByVal loc As java.util.Locale)
+        Private Sub initializeCalendar(  loc As java.util.Locale)
             If calendar Is Nothing Then
                 Debug.Assert(loc IsNot Nothing)
                 ' The format object must be constructed using the symbols for this zone.
@@ -705,7 +705,7 @@ Namespace java.text
         ''' </summary>
         ''' <exception cref="NullPointerException"> if the given pattern is null </exception>
         ''' <exception cref="IllegalArgumentException"> if the given pattern is invalid </exception>
-        Private Function compile(ByVal pattern As String) As Char()
+        Private Function compile(  pattern As String) As Char()
             Dim length As Integer = pattern.Length()
             Dim inQuote As Boolean = False
             Dim compiledCode As New StringBuilder(length * 2)
@@ -838,7 +838,7 @@ Namespace java.text
         ''' <summary>
         ''' Encodes the given tag and length and puts encoded char(s) into buffer.
         ''' </summary>
-        Private Shared Sub encode(ByVal tag As Integer, ByVal length As Integer, ByVal buffer As StringBuilder)
+        Private Shared Sub encode(  tag As Integer,   length As Integer,   buffer As StringBuilder)
             If tag = PATTERN_ISO_ZONE AndAlso length >= 4 Then Throw New IllegalArgumentException("invalid ISO 8601 format: length=" & length)
             If length < 255 Then
                 buffer.append(CChar(tag << 8 Or length))
@@ -861,7 +861,7 @@ Namespace java.text
         '     Define one-century window into which to disambiguate dates using
         '     * two-digit years.
         '     
-        Private Sub parseAmbiguousDatesAsAfter(ByVal startDate As DateTime?)
+        Private Sub parseAmbiguousDatesAsAfter(  startDate As DateTime?)
             defaultCenturyStart = startDate
             calendar.Value.time = startDate
             defaultCenturyStartYear = calendar.Value.get(DateTime.Year)
@@ -875,7 +875,7 @@ Namespace java.text
         ''' <code>startDate</code> to <code>startDate + 100 years</code>. </param>
         ''' <seealso cref= #get2DigitYearStart
         ''' @since 1.2 </seealso>
-        Public Overridable Sub set2DigitYearStart(ByVal startDate As DateTime?)
+        Public Overridable Sub set2DigitYearStart(  startDate As DateTime?)
             parseAmbiguousDatesAsAfter(New DateTime?(startDate.Value.time))
         End Sub
 
@@ -901,14 +901,14 @@ Namespace java.text
         ''' if desired. On output: the offsets of the alignment field. </param>
         ''' <returns> the formatted date-time string. </returns>
         ''' <exception cref="NullPointerException"> if the given {@code date} is {@code null}. </exception>
-        Public Overrides Function format(ByVal [date] As DateTime?, ByVal toAppendTo As StringBuffer, ByVal pos As FieldPosition) As StringBuffer
+        Public Overrides Function format(  [date] As DateTime?,   toAppendTo As StringBuffer,   pos As FieldPosition) As StringBuffer
             pos.endIndex = 0
             pos.beginIndex = pos.endIndex
             Return format(date_Renamed, toAppendTo, pos.fieldDelegate)
         End Function
 
         ' Called from Format after creating a FieldDelegate
-        Private Function format(ByVal [date] As DateTime?, ByVal toAppendTo As StringBuffer, ByVal [delegate] As FieldDelegate) As StringBuffer
+        Private Function format(  [date] As DateTime?,   toAppendTo As StringBuffer,   [delegate] As FieldDelegate) As StringBuffer
             ' Convert input date to time field list
             calendar.Value.time = date_Renamed
 
@@ -957,7 +957,7 @@ Namespace java.text
         ''' <param name="obj"> The object to format </param>
         ''' <returns> AttributedCharacterIterator describing the formatted value.
         ''' @since 1.4 </returns>
-        Public Overrides Function formatToCharacterIterator(ByVal obj As Object) As AttributedCharacterIterator
+        Public Overrides Function formatToCharacterIterator(  obj As Object) As AttributedCharacterIterator
             Dim sb As New StringBuffer
             Dim [delegate] As New CharacterIteratorFieldDelegate
 
@@ -985,7 +985,7 @@ Namespace java.text
         ''' <summary>
         ''' Private member function that does the real date/time formatting.
         ''' </summary>
-        Private Sub subFormat(ByVal patternCharIndex As Integer, ByVal count As Integer, ByVal [delegate] As FieldDelegate, ByVal buffer As StringBuffer, ByVal useDateFormatSymbols As Boolean)
+        Private Sub subFormat(  patternCharIndex As Integer,   count As Integer,   [delegate] As FieldDelegate,   buffer As StringBuffer,   useDateFormatSymbols As Boolean)
             Dim maxIntCount As Integer =  java.lang.[Integer].Max_Value
             Dim current As String = Nothing
             Dim beginOffset As Integer = buffer.length()
@@ -1188,7 +1188,7 @@ Namespace java.text
         ''' <summary>
         ''' Formats a number with the specified minimum and maximum number of digits.
         ''' </summary>
-        Private Sub zeroPaddingNumber(ByVal value As Integer, ByVal minDigits As Integer, ByVal maxDigits As Integer, ByVal buffer As StringBuffer)
+        Private Sub zeroPaddingNumber(  value As Integer,   minDigits As Integer,   maxDigits As Integer,   buffer As StringBuffer)
             ' Optimization for 1, 2 and 4 digit numbers. This should
             ' cover most cases of formatting date/time related items.
             ' Note: This optimization code assumes that maxDigits is
@@ -1264,7 +1264,7 @@ Namespace java.text
         ''' <returns> A <code>Date</code> parsed from the string. In case of
         '''         error, returns null. </returns>
         ''' <exception cref="NullPointerException"> if <code>text</code> or <code>pos</code> is null. </exception>
-        Public Overrides Function parse(ByVal text As String, ByVal pos As ParsePosition) As DateTime?
+        Public Overrides Function parse(  text As String,   pos As ParsePosition) As DateTime?
             checkNegativeNumberExpression()
 
             Dim start As Integer = pos.index
@@ -1386,7 +1386,7 @@ Namespace java.text
         ''' <param name="data"> the string array to parsed. </param>
         ''' <returns> the new start position if matching succeeded; a negative number
         ''' indicating matching failure, otherwise. </returns>
-        Private Function matchString(ByVal text As String, ByVal start As Integer, ByVal field_Renamed As Integer, ByVal data As String(), ByVal calb As CalendarBuilder) As Integer
+        Private Function matchString(  text As String,   start As Integer,   field_Renamed As Integer,   data As String(),   calb As CalendarBuilder) As Integer
             Dim i As Integer = 0
             Dim count As Integer = data.Length
 
@@ -1419,7 +1419,7 @@ Namespace java.text
         ''' String[]). This method takes a Map<String, Integer> instead of
         ''' String[].
         ''' </summary>
-        Private Function matchString(ByVal text As String, ByVal start As Integer, ByVal field_Renamed As Integer, ByVal data As IDictionary(Of String, Integer?), ByVal calb As CalendarBuilder) As Integer
+        Private Function matchString(  text As String,   start As Integer,   field_Renamed As Integer,   data As IDictionary(Of String, Integer?),   calb As CalendarBuilder) As Integer
             If data IsNot Nothing Then
                 ' TODO: make this default when it's in the spec.
                 If TypeOf data Is java.util.SortedMap Then
@@ -1449,7 +1449,7 @@ Namespace java.text
             Return -start
         End Function
 
-        Private Function matchZoneString(ByVal text As String, ByVal start As Integer, ByVal zoneNames As String()) As Integer
+        Private Function matchZoneString(  text As String,   start As Integer,   zoneNames As String()) As Integer
             For i As Integer = 1 To 4
                 ' Checking long and short zones [1 & 2],
                 ' and long and short daylight [3 & 4].
@@ -1459,7 +1459,7 @@ Namespace java.text
             Return -1
         End Function
 
-        Private Function matchDSTString(ByVal text As String, ByVal start As Integer, ByVal zoneIndex As Integer, ByVal standardIndex As Integer, ByVal zoneStrings As String()()) As Boolean
+        Private Function matchDSTString(  text As String,   start As Integer,   zoneIndex As Integer,   standardIndex As Integer,   zoneStrings As String()()) As Boolean
             Dim index As Integer = standardIndex + 2
             Dim zoneName As String = zoneStrings(zoneIndex)(index)
             If text.regionMatches(True, start, zoneName, 0, zoneName.Length()) Then Return True
@@ -1470,7 +1470,7 @@ Namespace java.text
         ''' find time zone 'text' matched zoneStrings and set to internal
         ''' calendar.
         ''' </summary>
-        Private Function subParseZoneString(ByVal text As String, ByVal start As Integer, ByVal calb As CalendarBuilder) As Integer
+        Private Function subParseZoneString(  text As String,   start As Integer,   calb As CalendarBuilder) As Integer
             Dim useSameName As Boolean = False ' true if standard and daylight time use the same abbreviation.
             Dim currentTimeZone As java.util.TimeZone = timeZone
 
@@ -1540,7 +1540,7 @@ Namespace java.text
         ''' <param name="colon"> true - colon required between hh and mm; false - no colon required </param>
         ''' <param name="calb">  a CalendarBuilder in which the parsed value is stored </param>
         ''' <returns> updated parsed position, or its negative value to indicate a parsing error </returns>
-        Private Function subParseNumericZone(ByVal text As String, ByVal start As Integer, ByVal sign As Integer, ByVal count As Integer, ByVal colon As Boolean, ByVal calb As CalendarBuilder) As Integer
+        Private Function subParseNumericZone(  text As String,   start As Integer,   sign As Integer,   count As Integer,   colon As Boolean,   calb As CalendarBuilder) As Integer
             Dim index As Integer = start
 
 parse:
@@ -1588,7 +1588,7 @@ parse:
             Return 1 - index ' -(index - 1)
         End Function
 
-        Private Function isDigit(ByVal c As Char) As Boolean
+        Private Function isDigit(  c As Char) As Boolean
             Return c >= "0"c AndAlso c <= "9"c
         End Function
 
@@ -1608,7 +1608,7 @@ parse:
         ''' <returns> the new start position if matching succeeded; -1 indicating
         ''' matching failure, otherwise. In case matching failure occurred,
         ''' an error index is set to origPos.errorIndex. </returns>
-        Private Function subParse(ByVal text As String, ByVal start As Integer, ByVal patternCharIndex As Integer, ByVal count As Integer, ByVal obeyCount As Boolean, ByVal ambiguousYear As Boolean(), ByVal origPos As ParsePosition, ByVal useFollowingMinusSignAsDelimiter As Boolean, ByVal calb As CalendarBuilder) As Integer
+        Private Function subParse(  text As String,   start As Integer,   patternCharIndex As Integer,   count As Integer,   obeyCount As Boolean,   ambiguousYear As Boolean(),   origPos As ParsePosition,   useFollowingMinusSignAsDelimiter As Boolean,   calb As CalendarBuilder) As Integer
             Dim number As Number
             Dim value As Integer = 0
             Dim pos As New ParsePosition(0)
@@ -1913,7 +1913,7 @@ parsing:
         ''' corresponding character in the to string.
         ''' </summary>
         ''' <exception cref="IllegalArgumentException"> if the given pattern is invalid </exception>
-        Private Function translatePattern(ByVal pattern As String, ByVal [from] As String, ByVal [to] As String) As String
+        Private Function translatePattern(  pattern As String,   [from] As String,   [to] As String) As String
             Dim result As New StringBuilder
             Dim inQuote As Boolean = False
             For i As Integer = 0 To pattern.Length() - 1
@@ -1963,11 +1963,11 @@ parsing:
         ''' <param name="pattern"> the new date and time pattern for this date format </param>
         ''' <exception cref="NullPointerException"> if the given pattern is null </exception>
         ''' <exception cref="IllegalArgumentException"> if the given pattern is invalid </exception>
-        Public Overridable Sub applyPattern(ByVal pattern As String)
+        Public Overridable Sub applyPattern(  pattern As String)
             applyPatternImpl(pattern)
         End Sub
 
-        Private Sub applyPatternImpl(ByVal pattern As String)
+        Private Sub applyPatternImpl(  pattern As String)
             compiledPattern = compile(pattern)
             Me.pattern = pattern
         End Sub
@@ -1979,7 +1979,7 @@ parsing:
         '''        pattern for this format </param>
         ''' <exception cref="NullPointerException"> if the given pattern is null </exception>
         ''' <exception cref="IllegalArgumentException"> if the given pattern is invalid </exception>
-        Public Overridable Sub applyLocalizedPattern(ByVal pattern As String)
+        Public Overridable Sub applyLocalizedPattern(  pattern As String)
             Dim p As String = translatePattern(pattern, formatData.localPatternChars, DateFormatSymbols.patternChars)
             compiledPattern = compile(p)
             Me.pattern = p
@@ -1994,7 +1994,7 @@ parsing:
             Get
                 Return CType(formatData.clone(), DateFormatSymbols)
             End Get
-            Set(ByVal newFormatSymbols As DateFormatSymbols)
+            Set(  newFormatSymbols As DateFormatSymbols)
                 Me.formatData = CType(newFormatSymbols.clone(), DateFormatSymbols)
                 useDateFormatSymbols_Renamed = True
             End Set
@@ -2027,14 +2027,14 @@ parsing:
         ''' </summary>
         ''' <returns> true if the given object is equal to this
         ''' <code>SimpleDateFormat</code> </returns>
-        Public Overrides Function Equals(ByVal obj As Object) As Boolean
+        Public Overrides Function Equals(  obj As Object) As Boolean
             If Not MyBase.Equals(obj) Then Return False ' super does class check
             Dim that As SimpleDateFormat = CType(obj, SimpleDateFormat)
             Return (pattern.Equals(that.pattern) AndAlso formatData.Equals(that.formatData))
         End Function
 
         Private Shared ReadOnly REST_OF_STYLES As Integer() = {DateTime.SHORT_STANDALONE, DateTime.LONG_FORMAT, DateTime.LONG_STANDALONE}
-        Private Function getDisplayNamesMap(ByVal field_Renamed As Integer, ByVal locale As java.util.Locale) As IDictionary(Of String, Integer?)
+        Private Function getDisplayNamesMap(  field_Renamed As Integer,   locale As java.util.Locale) As IDictionary(Of String, Integer?)
             Dim map As IDictionary(Of String, Integer?) = calendar.Value.getDisplayNames(field_Renamed, DateTime.SHORT_FORMAT, locale)
             ' Get all SHORT and LONG styles (avoid NARROW styles).
             For Each style As Integer In REST_OF_STYLES
@@ -2049,7 +2049,7 @@ parsing:
         ''' pattern in the object is verified.
         ''' <p> </summary>
         ''' <exception cref="InvalidObjectException"> if the pattern is invalid </exception>
-        Private Sub readObject(ByVal stream As java.io.ObjectInputStream)
+        Private Sub readObject(  stream As java.io.ObjectInputStream)
             stream.defaultReadObject()
 
             Try

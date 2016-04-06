@@ -64,7 +64,7 @@ Namespace java.io
 		''' <returns>  the actual number of bytes read, -1 is
 		'''          returned when the end of the stream is reached. </returns>
 		''' <exception cref="IOException"> If an I/O error has occurred. </exception>
-		Function read(ByVal b As SByte()) As Integer
+		Function read(  b As SByte()) As Integer
 
 		''' <summary>
 		''' Reads into an array of bytes.  This method will
@@ -75,14 +75,14 @@ Namespace java.io
 		''' <returns>  the actual number of bytes read, -1 is
 		'''          returned when the end of the stream is reached. </returns>
 		''' <exception cref="IOException"> If an I/O error has occurred. </exception>
-		Function read(SByte ByVal  As b(), ByVal [off] As Integer, ByVal len As Integer) As Integer
+		Function read(SByte    As b(),   [off] As Integer,   len As Integer) As Integer
 
 		''' <summary>
 		''' Skips n bytes of input. </summary>
 		''' <param name="n"> the number of bytes to be skipped </param>
 		''' <returns>  the actual number of bytes skipped. </returns>
 		''' <exception cref="IOException"> If an I/O error has occurred. </exception>
-		Function skip(ByVal n As Long) As Long
+		Function skip(  n As Long) As Long
 
 		''' <summary>
 		''' Returns the number of bytes that can be read

@@ -76,7 +76,7 @@ Namespace java.lang.ref
         ''' <param name="q"> the queue with which the reference is to be registered,
         '''          or <tt>null</tt> if registration is not required </param>
         'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-        Public Sub New(ByVal referent As T, ByVal q As ReferenceQueue(Of T))
+        Public Sub New(  referent As T,   q As ReferenceQueue(Of T))
             MyBase.New(referent, q)
         End Sub
 

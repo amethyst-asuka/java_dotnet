@@ -89,7 +89,7 @@ Namespace java.util
 			Implements Comparator(Of Object)
 
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-			Public Function compare(ByVal first As Object, ByVal second As Object) As Integer Implements Comparator(Of Object).compare
+			Public Function compare(  first As Object,   second As Object) As Integer Implements Comparator(Of Object).compare
 				Return CType(first, Comparable(Of Object)).CompareTo(second)
 			End Function
 			Friend Shared ReadOnly INSTANCE As New NaturalOrder
@@ -99,7 +99,7 @@ Namespace java.util
 		''' Checks that {@code fromIndex} and {@code toIndex} are in
 		''' the range and throws an exception if they aren't.
 		''' </summary>
-		Private Shared Sub rangeCheck(ByVal arrayLength As Integer, ByVal fromIndex As Integer, ByVal toIndex As Integer)
+		Private Shared Sub rangeCheck(  arrayLength As Integer,   fromIndex As Integer,   toIndex As Integer)
 			If fromIndex > toIndex Then Throw New IllegalArgumentException("fromIndex(" & fromIndex & ") > toIndex(" & toIndex & ")")
 			If fromIndex < 0 Then Throw New ArrayIndexOutOfBoundsException(fromIndex)
 			If toIndex > arrayLength Then Throw New ArrayIndexOutOfBoundsException(toIndex)
@@ -123,7 +123,7 @@ Namespace java.util
 		''' faster than traditional (one-pivot) Quicksort implementations.
 		''' </summary>
 		''' <param name="a"> the array to be sorted </param>
-		Public Shared Sub sort(ByVal a As Integer())
+		Public Shared Sub sort(  a As Integer())
 			DualPivotQuicksort.sort(a, 0, a.Length - 1, Nothing, 0, 0)
 		End Sub
 
@@ -146,7 +146,7 @@ Namespace java.util
 		''' <exception cref="IllegalArgumentException"> if {@code fromIndex > toIndex} </exception>
 		''' <exception cref="ArrayIndexOutOfBoundsException">
 		'''     if {@code fromIndex < 0} or {@code toIndex > a.length} </exception>
-		Public Shared Sub sort(ByVal a As Integer(), ByVal fromIndex As Integer, ByVal toIndex As Integer)
+		Public Shared Sub sort(  a As Integer(),   fromIndex As Integer,   toIndex As Integer)
 			rangeCheck(a.Length, fromIndex, toIndex)
 			DualPivotQuicksort.sort(a, fromIndex, toIndex - 1, Nothing, 0, 0)
 		End Sub
@@ -161,7 +161,7 @@ Namespace java.util
 		''' faster than traditional (one-pivot) Quicksort implementations.
 		''' </summary>
 		''' <param name="a"> the array to be sorted </param>
-		Public Shared Sub sort(ByVal a As Long())
+		Public Shared Sub sort(  a As Long())
 			DualPivotQuicksort.sort(a, 0, a.Length - 1, Nothing, 0, 0)
 		End Sub
 
@@ -184,7 +184,7 @@ Namespace java.util
 		''' <exception cref="IllegalArgumentException"> if {@code fromIndex > toIndex} </exception>
 		''' <exception cref="ArrayIndexOutOfBoundsException">
 		'''     if {@code fromIndex < 0} or {@code toIndex > a.length} </exception>
-		Public Shared Sub sort(ByVal a As Long(), ByVal fromIndex As Integer, ByVal toIndex As Integer)
+		Public Shared Sub sort(  a As Long(),   fromIndex As Integer,   toIndex As Integer)
 			rangeCheck(a.Length, fromIndex, toIndex)
 			DualPivotQuicksort.sort(a, fromIndex, toIndex - 1, Nothing, 0, 0)
 		End Sub
@@ -199,7 +199,7 @@ Namespace java.util
 		''' faster than traditional (one-pivot) Quicksort implementations.
 		''' </summary>
 		''' <param name="a"> the array to be sorted </param>
-		Public Shared Sub sort(ByVal a As Short())
+		Public Shared Sub sort(  a As Short())
 			DualPivotQuicksort.sort(a, 0, a.Length - 1, Nothing, 0, 0)
 		End Sub
 
@@ -222,7 +222,7 @@ Namespace java.util
 		''' <exception cref="IllegalArgumentException"> if {@code fromIndex > toIndex} </exception>
 		''' <exception cref="ArrayIndexOutOfBoundsException">
 		'''     if {@code fromIndex < 0} or {@code toIndex > a.length} </exception>
-		Public Shared Sub sort(ByVal a As Short(), ByVal fromIndex As Integer, ByVal toIndex As Integer)
+		Public Shared Sub sort(  a As Short(),   fromIndex As Integer,   toIndex As Integer)
 			rangeCheck(a.Length, fromIndex, toIndex)
 			DualPivotQuicksort.sort(a, fromIndex, toIndex - 1, Nothing, 0, 0)
 		End Sub
@@ -237,7 +237,7 @@ Namespace java.util
 		''' faster than traditional (one-pivot) Quicksort implementations.
 		''' </summary>
 		''' <param name="a"> the array to be sorted </param>
-		Public Shared Sub sort(ByVal a As Char())
+		Public Shared Sub sort(  a As Char())
 			DualPivotQuicksort.sort(a, 0, a.Length - 1, Nothing, 0, 0)
 		End Sub
 
@@ -260,7 +260,7 @@ Namespace java.util
 		''' <exception cref="IllegalArgumentException"> if {@code fromIndex > toIndex} </exception>
 		''' <exception cref="ArrayIndexOutOfBoundsException">
 		'''     if {@code fromIndex < 0} or {@code toIndex > a.length} </exception>
-		Public Shared Sub sort(ByVal a As Char(), ByVal fromIndex As Integer, ByVal toIndex As Integer)
+		Public Shared Sub sort(  a As Char(),   fromIndex As Integer,   toIndex As Integer)
 			rangeCheck(a.Length, fromIndex, toIndex)
 			DualPivotQuicksort.sort(a, fromIndex, toIndex - 1, Nothing, 0, 0)
 		End Sub
@@ -275,7 +275,7 @@ Namespace java.util
 		''' faster than traditional (one-pivot) Quicksort implementations.
 		''' </summary>
 		''' <param name="a"> the array to be sorted </param>
-		Public Shared Sub sort(ByVal a As SByte())
+		Public Shared Sub sort(  a As SByte())
 			DualPivotQuicksort.sort(a, 0, a.Length - 1)
 		End Sub
 
@@ -298,7 +298,7 @@ Namespace java.util
 		''' <exception cref="IllegalArgumentException"> if {@code fromIndex > toIndex} </exception>
 		''' <exception cref="ArrayIndexOutOfBoundsException">
 		'''     if {@code fromIndex < 0} or {@code toIndex > a.length} </exception>
-		Public Shared Sub sort(ByVal a As SByte(), ByVal fromIndex As Integer, ByVal toIndex As Integer)
+		Public Shared Sub sort(  a As SByte(),   fromIndex As Integer,   toIndex As Integer)
 			rangeCheck(a.Length, fromIndex, toIndex)
 			DualPivotQuicksort.sort(a, fromIndex, toIndex - 1)
 		End Sub
@@ -321,7 +321,7 @@ Namespace java.util
 		''' faster than traditional (one-pivot) Quicksort implementations.
 		''' </summary>
 		''' <param name="a"> the array to be sorted </param>
-		Public Shared Sub sort(ByVal a As Single())
+		Public Shared Sub sort(  a As Single())
 			DualPivotQuicksort.sort(a, 0, a.Length - 1, Nothing, 0, 0)
 		End Sub
 
@@ -352,7 +352,7 @@ Namespace java.util
 		''' <exception cref="IllegalArgumentException"> if {@code fromIndex > toIndex} </exception>
 		''' <exception cref="ArrayIndexOutOfBoundsException">
 		'''     if {@code fromIndex < 0} or {@code toIndex > a.length} </exception>
-		Public Shared Sub sort(ByVal a As Single(), ByVal fromIndex As Integer, ByVal toIndex As Integer)
+		Public Shared Sub sort(  a As Single(),   fromIndex As Integer,   toIndex As Integer)
 			rangeCheck(a.Length, fromIndex, toIndex)
 			DualPivotQuicksort.sort(a, fromIndex, toIndex - 1, Nothing, 0, 0)
 		End Sub
@@ -375,7 +375,7 @@ Namespace java.util
 		''' faster than traditional (one-pivot) Quicksort implementations.
 		''' </summary>
 		''' <param name="a"> the array to be sorted </param>
-		Public Shared Sub sort(ByVal a As Double())
+		Public Shared Sub sort(  a As Double())
 			DualPivotQuicksort.sort(a, 0, a.Length - 1, Nothing, 0, 0)
 		End Sub
 
@@ -406,7 +406,7 @@ Namespace java.util
 		''' <exception cref="IllegalArgumentException"> if {@code fromIndex > toIndex} </exception>
 		''' <exception cref="ArrayIndexOutOfBoundsException">
 		'''     if {@code fromIndex < 0} or {@code toIndex > a.length} </exception>
-		Public Shared Sub sort(ByVal a As Double(), ByVal fromIndex As Integer, ByVal toIndex As Integer)
+		Public Shared Sub sort(  a As Double(),   fromIndex As Integer,   toIndex As Integer)
 			rangeCheck(a.Length, fromIndex, toIndex)
 			DualPivotQuicksort.sort(a, fromIndex, toIndex - 1, Nothing, 0, 0)
 		End Sub
@@ -428,7 +428,7 @@ Namespace java.util
 		''' <param name="a"> the array to be sorted
 		''' 
 		''' @since 1.8 </param>
-		Public Shared Sub parallelSort(ByVal a As SByte())
+		Public Shared Sub parallelSort(  a As SByte())
 			Dim n As Integer = a.Length, p As Integer, g As Integer
 			p = java.util.concurrent.ForkJoinPool.commonPoolParallelism
 			If n <= MIN_ARRAY_SORT_GRAN OrElse p = 1 Then
@@ -465,7 +465,7 @@ Namespace java.util
 		'''     if {@code fromIndex < 0} or {@code toIndex > a.length}
 		''' 
 		''' @since 1.8 </exception>
-		Public Shared Sub parallelSort(ByVal a As SByte(), ByVal fromIndex As Integer, ByVal toIndex As Integer)
+		Public Shared Sub parallelSort(  a As SByte(),   fromIndex As Integer,   toIndex As Integer)
 			rangeCheck(a.Length, fromIndex, toIndex)
 			Dim n As Integer = toIndex - fromIndex, p As Integer, g As Integer
 			p = java.util.concurrent.ForkJoinPool.commonPoolParallelism
@@ -494,7 +494,7 @@ Namespace java.util
 		''' <param name="a"> the array to be sorted
 		''' 
 		''' @since 1.8 </param>
-		Public Shared Sub parallelSort(ByVal a As Char())
+		Public Shared Sub parallelSort(  a As Char())
 			Dim n As Integer = a.Length, p As Integer, g As Integer
 			p = java.util.concurrent.ForkJoinPool.commonPoolParallelism
 			If n <= MIN_ARRAY_SORT_GRAN OrElse p = 1 Then
@@ -531,7 +531,7 @@ Namespace java.util
 		'''     if {@code fromIndex < 0} or {@code toIndex > a.length}
 		''' 
 		''' @since 1.8 </exception>
-		Public Shared Sub parallelSort(ByVal a As Char(), ByVal fromIndex As Integer, ByVal toIndex As Integer)
+		Public Shared Sub parallelSort(  a As Char(),   fromIndex As Integer,   toIndex As Integer)
 			rangeCheck(a.Length, fromIndex, toIndex)
 			Dim n As Integer = toIndex - fromIndex, p As Integer, g As Integer
 			p = java.util.concurrent.ForkJoinPool.commonPoolParallelism
@@ -560,7 +560,7 @@ Namespace java.util
 		''' <param name="a"> the array to be sorted
 		''' 
 		''' @since 1.8 </param>
-		Public Shared Sub parallelSort(ByVal a As Short())
+		Public Shared Sub parallelSort(  a As Short())
 			Dim n As Integer = a.Length, p As Integer, g As Integer
 			p = java.util.concurrent.ForkJoinPool.commonPoolParallelism
 			If n <= MIN_ARRAY_SORT_GRAN OrElse p = 1 Then
@@ -597,7 +597,7 @@ Namespace java.util
 		'''     if {@code fromIndex < 0} or {@code toIndex > a.length}
 		''' 
 		''' @since 1.8 </exception>
-		Public Shared Sub parallelSort(ByVal a As Short(), ByVal fromIndex As Integer, ByVal toIndex As Integer)
+		Public Shared Sub parallelSort(  a As Short(),   fromIndex As Integer,   toIndex As Integer)
 			rangeCheck(a.Length, fromIndex, toIndex)
 			Dim n As Integer = toIndex - fromIndex, p As Integer, g As Integer
 			p = java.util.concurrent.ForkJoinPool.commonPoolParallelism
@@ -626,7 +626,7 @@ Namespace java.util
 		''' <param name="a"> the array to be sorted
 		''' 
 		''' @since 1.8 </param>
-		Public Shared Sub parallelSort(ByVal a As Integer())
+		Public Shared Sub parallelSort(  a As Integer())
 			Dim n As Integer = a.Length, p As Integer, g As Integer
 			p = java.util.concurrent.ForkJoinPool.commonPoolParallelism
 			If n <= MIN_ARRAY_SORT_GRAN OrElse p = 1 Then
@@ -663,7 +663,7 @@ Namespace java.util
 		'''     if {@code fromIndex < 0} or {@code toIndex > a.length}
 		''' 
 		''' @since 1.8 </exception>
-		Public Shared Sub parallelSort(ByVal a As Integer(), ByVal fromIndex As Integer, ByVal toIndex As Integer)
+		Public Shared Sub parallelSort(  a As Integer(),   fromIndex As Integer,   toIndex As Integer)
 			rangeCheck(a.Length, fromIndex, toIndex)
 			Dim n As Integer = toIndex - fromIndex, p As Integer, g As Integer
 			p = java.util.concurrent.ForkJoinPool.commonPoolParallelism
@@ -692,7 +692,7 @@ Namespace java.util
 		''' <param name="a"> the array to be sorted
 		''' 
 		''' @since 1.8 </param>
-		Public Shared Sub parallelSort(ByVal a As Long())
+		Public Shared Sub parallelSort(  a As Long())
 			Dim n As Integer = a.Length, p As Integer, g As Integer
 			p = java.util.concurrent.ForkJoinPool.commonPoolParallelism
 			If n <= MIN_ARRAY_SORT_GRAN OrElse p = 1 Then
@@ -729,7 +729,7 @@ Namespace java.util
 		'''     if {@code fromIndex < 0} or {@code toIndex > a.length}
 		''' 
 		''' @since 1.8 </exception>
-		Public Shared Sub parallelSort(ByVal a As Long(), ByVal fromIndex As Integer, ByVal toIndex As Integer)
+		Public Shared Sub parallelSort(  a As Long(),   fromIndex As Integer,   toIndex As Integer)
 			rangeCheck(a.Length, fromIndex, toIndex)
 			Dim n As Integer = toIndex - fromIndex, p As Integer, g As Integer
 			p = java.util.concurrent.ForkJoinPool.commonPoolParallelism
@@ -766,7 +766,7 @@ Namespace java.util
 		''' <param name="a"> the array to be sorted
 		''' 
 		''' @since 1.8 </param>
-		Public Shared Sub parallelSort(ByVal a As Single())
+		Public Shared Sub parallelSort(  a As Single())
 			Dim n As Integer = a.Length, p As Integer, g As Integer
 			p = java.util.concurrent.ForkJoinPool.commonPoolParallelism
 			If n <= MIN_ARRAY_SORT_GRAN OrElse p = 1 Then
@@ -811,7 +811,7 @@ Namespace java.util
 		'''     if {@code fromIndex < 0} or {@code toIndex > a.length}
 		''' 
 		''' @since 1.8 </exception>
-		Public Shared Sub parallelSort(ByVal a As Single(), ByVal fromIndex As Integer, ByVal toIndex As Integer)
+		Public Shared Sub parallelSort(  a As Single(),   fromIndex As Integer,   toIndex As Integer)
 			rangeCheck(a.Length, fromIndex, toIndex)
 			Dim n As Integer = toIndex - fromIndex, p As Integer, g As Integer
 			p = java.util.concurrent.ForkJoinPool.commonPoolParallelism
@@ -848,7 +848,7 @@ Namespace java.util
 		''' <param name="a"> the array to be sorted
 		''' 
 		''' @since 1.8 </param>
-		Public Shared Sub parallelSort(ByVal a As Double())
+		Public Shared Sub parallelSort(  a As Double())
 			Dim n As Integer = a.Length, p As Integer, g As Integer
 			p = java.util.concurrent.ForkJoinPool.commonPoolParallelism
 			If n <= MIN_ARRAY_SORT_GRAN OrElse p = 1 Then
@@ -893,7 +893,7 @@ Namespace java.util
 		'''     if {@code fromIndex < 0} or {@code toIndex > a.length}
 		''' 
 		''' @since 1.8 </exception>
-		Public Shared Sub parallelSort(ByVal a As Double(), ByVal fromIndex As Integer, ByVal toIndex As Integer)
+		Public Shared Sub parallelSort(  a As Double(),   fromIndex As Integer,   toIndex As Integer)
 			rangeCheck(a.Length, fromIndex, toIndex)
 			Dim n As Integer = toIndex - fromIndex, p As Integer, g As Integer
 			p = java.util.concurrent.ForkJoinPool.commonPoolParallelism
@@ -941,7 +941,7 @@ Namespace java.util
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-		Public Shared Sub parallelSort(Of T As Comparable(Of ?))(ByVal a As T())
+		Public Shared Sub parallelSort(Of T As Comparable(Of ?))(  a As T())
 			Dim n As Integer = a.Length, p As Integer, g As Integer
 			p = java.util.concurrent.ForkJoinPool.commonPoolParallelism
 			If n <= MIN_ARRAY_SORT_GRAN OrElse p = 1 Then
@@ -997,7 +997,7 @@ Namespace java.util
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-		Public Shared Sub parallelSort(Of T As Comparable(Of ?))(ByVal a As T(), ByVal fromIndex As Integer, ByVal toIndex As Integer)
+		Public Shared Sub parallelSort(Of T As Comparable(Of ?))(  a As T(),   fromIndex As Integer,   toIndex As Integer)
 			rangeCheck(a.Length, fromIndex, toIndex)
 			Dim n As Integer = toIndex - fromIndex, p As Integer, g As Integer
 			p = java.util.concurrent.ForkJoinPool.commonPoolParallelism
@@ -1043,7 +1043,7 @@ Namespace java.util
 		''' @since 1.8 </exception>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Shared Sub parallelSort(Of T, T1)(ByVal a As T(), ByVal cmp As Comparator(Of T1))
+		Public Shared Sub parallelSort(Of T, T1)(  a As T(),   cmp As Comparator(Of T1))
 			If cmp Is Nothing Then cmp = NaturalOrder.INSTANCE
 			Dim n As Integer = a.Length, p As Integer, g As Integer
 			p = java.util.concurrent.ForkJoinPool.commonPoolParallelism
@@ -1099,7 +1099,7 @@ Namespace java.util
 		''' @since 1.8 </exception>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Shared Sub parallelSort(Of T, T1)(ByVal a As T(), ByVal fromIndex As Integer, ByVal toIndex As Integer, ByVal cmp As Comparator(Of T1))
+		Public Shared Sub parallelSort(Of T, T1)(  a As T(),   fromIndex As Integer,   toIndex As Integer,   cmp As Comparator(Of T1))
 			rangeCheck(a.Length, fromIndex, toIndex)
 			If cmp Is Nothing Then cmp = NaturalOrder.INSTANCE
 			Dim n As Integer = toIndex - fromIndex, p As Integer, g As Integer
@@ -1167,7 +1167,7 @@ Namespace java.util
 		''' <exception cref="IllegalArgumentException"> (optional) if the natural
 		'''         ordering of the array elements is found to violate the
 		'''         <seealso cref="Comparable"/> contract </exception>
-		Public Shared Sub sort(ByVal a As Object())
+		Public Shared Sub sort(  a As Object())
 			If LegacyMergeSort.userRequested Then
 				legacyMergeSort(a)
 			Else
@@ -1177,7 +1177,7 @@ Namespace java.util
 
 		''' <summary>
 		''' To be removed in a future release. </summary>
-		Private Shared Sub legacyMergeSort(ByVal a As Object())
+		Private Shared Sub legacyMergeSort(  a As Object())
 			Dim aux As Object() = a.clone()
 			mergeSort(aux, a, 0, a.Length, 0)
 		End Sub
@@ -1233,7 +1233,7 @@ Namespace java.util
 		''' <exception cref="ClassCastException"> if the array contains elements that are
 		'''         not <i>mutually comparable</i> (for example, strings and
 		'''         integers). </exception>
-		Public Shared Sub sort(ByVal a As Object(), ByVal fromIndex As Integer, ByVal toIndex As Integer)
+		Public Shared Sub sort(  a As Object(),   fromIndex As Integer,   toIndex As Integer)
 			rangeCheck(a.Length, fromIndex, toIndex)
 			If LegacyMergeSort.userRequested Then
 				legacyMergeSort(a, fromIndex, toIndex)
@@ -1244,7 +1244,7 @@ Namespace java.util
 
 		''' <summary>
 		''' To be removed in a future release. </summary>
-		Private Shared Sub legacyMergeSort(ByVal a As Object(), ByVal fromIndex As Integer, ByVal toIndex As Integer)
+		Private Shared Sub legacyMergeSort(  a As Object(),   fromIndex As Integer,   toIndex As Integer)
 			Dim aux As Object() = copyOfRange(a, fromIndex, toIndex)
 			mergeSort(aux, a, fromIndex, toIndex, -fromIndex)
 		End Sub
@@ -1265,7 +1265,7 @@ Namespace java.util
 		''' To be removed in a future release.
 		''' </summary>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Private Shared Sub mergeSort(ByVal src As Object(), ByVal dest As Object(), ByVal low As Integer, ByVal high As Integer, ByVal [off] As Integer)
+		Private Shared Sub mergeSort(  src As Object(),   dest As Object(),   low As Integer,   high As Integer,   [off] As Integer)
 			Dim length As Integer = high - low
 
 			' Insertion sort on smallest arrays
@@ -1315,7 +1315,7 @@ Namespace java.util
 		''' <summary>
 		''' Swaps x[a] with x[b].
 		''' </summary>
-		Private Shared Sub swap(ByVal x As Object(), ByVal a As Integer, ByVal b As Integer)
+		Private Shared Sub swap(  x As Object(),   a As Integer,   b As Integer)
 			Dim t As Object = x(a)
 			x(a) = x(b)
 			x(b) = t
@@ -1364,7 +1364,7 @@ Namespace java.util
 		''' <exception cref="IllegalArgumentException"> (optional) if the comparator is
 		'''         found to violate the <seealso cref="Comparator"/> contract </exception>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Shared Sub sort(Of T, T1)(ByVal a As T(), ByVal c As Comparator(Of T1))
+		Public Shared Sub sort(Of T, T1)(  a As T(),   c As Comparator(Of T1))
 			If c Is Nothing Then
 				sort(a)
 			Else
@@ -1379,7 +1379,7 @@ Namespace java.util
 		''' <summary>
 		''' To be removed in a future release. </summary>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Private Shared Sub legacyMergeSort(Of T, T1)(ByVal a As T(), ByVal c As Comparator(Of T1))
+		Private Shared Sub legacyMergeSort(Of T, T1)(  a As T(),   c As Comparator(Of T1))
 			Dim aux As T() = a.clone()
 			If c Is Nothing Then
 				mergeSort(aux, a, 0, a.Length, 0)
@@ -1440,7 +1440,7 @@ Namespace java.util
 		''' <exception cref="ArrayIndexOutOfBoundsException"> if {@code fromIndex < 0} or
 		'''         {@code toIndex > a.length} </exception>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Shared Sub sort(Of T, T1)(ByVal a As T(), ByVal fromIndex As Integer, ByVal toIndex As Integer, ByVal c As Comparator(Of T1))
+		Public Shared Sub sort(Of T, T1)(  a As T(),   fromIndex As Integer,   toIndex As Integer,   c As Comparator(Of T1))
 			If c Is Nothing Then
 				sort(a, fromIndex, toIndex)
 			Else
@@ -1456,7 +1456,7 @@ Namespace java.util
 		''' <summary>
 		''' To be removed in a future release. </summary>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Private Shared Sub legacyMergeSort(Of T, T1)(ByVal a As T(), ByVal fromIndex As Integer, ByVal toIndex As Integer, ByVal c As Comparator(Of T1))
+		Private Shared Sub legacyMergeSort(Of T, T1)(  a As T(),   fromIndex As Integer,   toIndex As Integer,   c As Comparator(Of T1))
 			Dim aux As T() = copyOfRange(a, fromIndex, toIndex)
 			If c Is Nothing Then
 				mergeSort(aux, a, fromIndex, toIndex, -fromIndex)
@@ -1474,7 +1474,7 @@ Namespace java.util
 		''' To be removed in a future release.
 		''' </summary>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Private Shared Sub mergeSort(ByVal src As Object(), ByVal dest As Object(), ByVal low As Integer, ByVal high As Integer, ByVal [off] As Integer, ByVal c As Comparator)
+		Private Shared Sub mergeSort(  src As Object(),   dest As Object(),   low As Integer,   high As Integer,   [off] As Integer,   c As Comparator)
 			Dim length As Integer = high - low
 
 			' Insertion sort on smallest arrays
@@ -1537,7 +1537,7 @@ Namespace java.util
 		''' cumulation </param>
 		''' <exception cref="NullPointerException"> if the specified array or function is null
 		''' @since 1.8 </exception>
-		Public Shared Sub parallelPrefix(Of T)(ByVal array As T(), ByVal op As java.util.function.BinaryOperator(Of T))
+		Public Shared Sub parallelPrefix(Of T)(  array As T(),   op As java.util.function.BinaryOperator(Of T))
 			Objects.requireNonNull(op)
 			If array.Length > 0 Then CType(New ArrayPrefixHelpers.CumulateTask(Of ) (Nothing, op, array, 0, array.Length), ArrayPrefixHelpers.CumulateTask(Of )).invoke()
 		End Sub
@@ -1557,7 +1557,7 @@ Namespace java.util
 		'''     if {@code fromIndex < 0} or {@code toIndex > array.length} </exception>
 		''' <exception cref="NullPointerException"> if the specified array or function is null
 		''' @since 1.8 </exception>
-		Public Shared Sub parallelPrefix(Of T)(ByVal array As T(), ByVal fromIndex As Integer, ByVal toIndex As Integer, ByVal op As java.util.function.BinaryOperator(Of T))
+		Public Shared Sub parallelPrefix(Of T)(  array As T(),   fromIndex As Integer,   toIndex As Integer,   op As java.util.function.BinaryOperator(Of T))
 			Objects.requireNonNull(op)
 			rangeCheck(array.Length, fromIndex, toIndex)
 			If fromIndex < toIndex Then CType(New ArrayPrefixHelpers.CumulateTask(Of ) (Nothing, op, array, fromIndex, toIndex), ArrayPrefixHelpers.CumulateTask(Of )).invoke()
@@ -1576,7 +1576,7 @@ Namespace java.util
 		''' cumulation </param>
 		''' <exception cref="NullPointerException"> if the specified array or function is null
 		''' @since 1.8 </exception>
-		Public Shared Sub parallelPrefix(ByVal array As Long(), ByVal op As java.util.function.LongBinaryOperator)
+		Public Shared Sub parallelPrefix(  array As Long(),   op As java.util.function.LongBinaryOperator)
 			Objects.requireNonNull(op)
 			If array.Length > 0 Then CType(New ArrayPrefixHelpers.LongCumulateTask(Nothing, op, array, 0, array.Length), ArrayPrefixHelpers.LongCumulateTask).invoke()
 		End Sub
@@ -1595,7 +1595,7 @@ Namespace java.util
 		'''     if {@code fromIndex < 0} or {@code toIndex > array.length} </exception>
 		''' <exception cref="NullPointerException"> if the specified array or function is null
 		''' @since 1.8 </exception>
-		Public Shared Sub parallelPrefix(ByVal array As Long(), ByVal fromIndex As Integer, ByVal toIndex As Integer, ByVal op As java.util.function.LongBinaryOperator)
+		Public Shared Sub parallelPrefix(  array As Long(),   fromIndex As Integer,   toIndex As Integer,   op As java.util.function.LongBinaryOperator)
 			Objects.requireNonNull(op)
 			rangeCheck(array.Length, fromIndex, toIndex)
 			If fromIndex < toIndex Then CType(New ArrayPrefixHelpers.LongCumulateTask(Nothing, op, array, fromIndex, toIndex), ArrayPrefixHelpers.LongCumulateTask).invoke()
@@ -1617,7 +1617,7 @@ Namespace java.util
 		''' <param name="op"> a side-effect-free function to perform the cumulation </param>
 		''' <exception cref="NullPointerException"> if the specified array or function is null
 		''' @since 1.8 </exception>
-		Public Shared Sub parallelPrefix(ByVal array As Double(), ByVal op As java.util.function.DoubleBinaryOperator)
+		Public Shared Sub parallelPrefix(  array As Double(),   op As java.util.function.DoubleBinaryOperator)
 			Objects.requireNonNull(op)
 			If array.Length > 0 Then CType(New ArrayPrefixHelpers.DoubleCumulateTask(Nothing, op, array, 0, array.Length), ArrayPrefixHelpers.DoubleCumulateTask).invoke()
 		End Sub
@@ -1636,7 +1636,7 @@ Namespace java.util
 		'''     if {@code fromIndex < 0} or {@code toIndex > array.length} </exception>
 		''' <exception cref="NullPointerException"> if the specified array or function is null
 		''' @since 1.8 </exception>
-		Public Shared Sub parallelPrefix(ByVal array As Double(), ByVal fromIndex As Integer, ByVal toIndex As Integer, ByVal op As java.util.function.DoubleBinaryOperator)
+		Public Shared Sub parallelPrefix(  array As Double(),   fromIndex As Integer,   toIndex As Integer,   op As java.util.function.DoubleBinaryOperator)
 			Objects.requireNonNull(op)
 			rangeCheck(array.Length, fromIndex, toIndex)
 			If fromIndex < toIndex Then CType(New ArrayPrefixHelpers.DoubleCumulateTask(Nothing, op, array, fromIndex, toIndex), ArrayPrefixHelpers.DoubleCumulateTask).invoke()
@@ -1655,7 +1655,7 @@ Namespace java.util
 		''' cumulation </param>
 		''' <exception cref="NullPointerException"> if the specified array or function is null
 		''' @since 1.8 </exception>
-		Public Shared Sub parallelPrefix(ByVal array As Integer(), ByVal op As java.util.function.IntBinaryOperator)
+		Public Shared Sub parallelPrefix(  array As Integer(),   op As java.util.function.IntBinaryOperator)
 			Objects.requireNonNull(op)
 			If array.Length > 0 Then CType(New ArrayPrefixHelpers.IntCumulateTask(Nothing, op, array, 0, array.Length), ArrayPrefixHelpers.IntCumulateTask).invoke()
 		End Sub
@@ -1674,7 +1674,7 @@ Namespace java.util
 		'''     if {@code fromIndex < 0} or {@code toIndex > array.length} </exception>
 		''' <exception cref="NullPointerException"> if the specified array or function is null
 		''' @since 1.8 </exception>
-		Public Shared Sub parallelPrefix(ByVal array As Integer(), ByVal fromIndex As Integer, ByVal toIndex As Integer, ByVal op As java.util.function.IntBinaryOperator)
+		Public Shared Sub parallelPrefix(  array As Integer(),   fromIndex As Integer,   toIndex As Integer,   op As java.util.function.IntBinaryOperator)
 			Objects.requireNonNull(op)
 			rangeCheck(array.Length, fromIndex, toIndex)
 			If fromIndex < toIndex Then CType(New ArrayPrefixHelpers.IntCumulateTask(Nothing, op, array, fromIndex, toIndex), ArrayPrefixHelpers.IntCumulateTask).invoke()
@@ -1700,7 +1700,7 @@ Namespace java.util
 		'''         elements in the array are less than the specified key.  Note
 		'''         that this guarantees that the return value will be &gt;= 0 if
 		'''         and only if the key is found. </returns>
-		Public Shared Function binarySearch(ByVal a As Long(), ByVal key As Long) As Integer
+		Public Shared Function binarySearch(  a As Long(),   key As Long) As Integer
 			Return binarySearch0(a, 0, a.Length, key)
 		End Function
 
@@ -1735,13 +1735,13 @@ Namespace java.util
 		''' <exception cref="ArrayIndexOutOfBoundsException">
 		'''         if {@code fromIndex < 0 or toIndex > a.length}
 		''' @since 1.6 </exception>
-		Public Shared Function binarySearch(ByVal a As Long(), ByVal fromIndex As Integer, ByVal toIndex As Integer, ByVal key As Long) As Integer
+		Public Shared Function binarySearch(  a As Long(),   fromIndex As Integer,   toIndex As Integer,   key As Long) As Integer
 			rangeCheck(a.Length, fromIndex, toIndex)
 			Return binarySearch0(a, fromIndex, toIndex, key)
 		End Function
 
 		' Like public version, but without range checks.
-		Private Shared Function binarySearch0(ByVal a As Long(), ByVal fromIndex As Integer, ByVal toIndex As Integer, ByVal key As Long) As Integer
+		Private Shared Function binarySearch0(  a As Long(),   fromIndex As Integer,   toIndex As Integer,   key As Long) As Integer
 			Dim low As Integer = fromIndex
 			Dim high As Integer = toIndex - 1
 
@@ -1778,7 +1778,7 @@ Namespace java.util
 		'''         elements in the array are less than the specified key.  Note
 		'''         that this guarantees that the return value will be &gt;= 0 if
 		'''         and only if the key is found. </returns>
-		Public Shared Function binarySearch(ByVal a As Integer(), ByVal key As Integer) As Integer
+		Public Shared Function binarySearch(  a As Integer(),   key As Integer) As Integer
 			Return binarySearch0(a, 0, a.Length, key)
 		End Function
 
@@ -1813,13 +1813,13 @@ Namespace java.util
 		''' <exception cref="ArrayIndexOutOfBoundsException">
 		'''         if {@code fromIndex < 0 or toIndex > a.length}
 		''' @since 1.6 </exception>
-		Public Shared Function binarySearch(ByVal a As Integer(), ByVal fromIndex As Integer, ByVal toIndex As Integer, ByVal key As Integer) As Integer
+		Public Shared Function binarySearch(  a As Integer(),   fromIndex As Integer,   toIndex As Integer,   key As Integer) As Integer
 			rangeCheck(a.Length, fromIndex, toIndex)
 			Return binarySearch0(a, fromIndex, toIndex, key)
 		End Function
 
 		' Like public version, but without range checks.
-		Private Shared Function binarySearch0(ByVal a As Integer(), ByVal fromIndex As Integer, ByVal toIndex As Integer, ByVal key As Integer) As Integer
+		Private Shared Function binarySearch0(  a As Integer(),   fromIndex As Integer,   toIndex As Integer,   key As Integer) As Integer
 			Dim low As Integer = fromIndex
 			Dim high As Integer = toIndex - 1
 
@@ -1856,7 +1856,7 @@ Namespace java.util
 		'''         elements in the array are less than the specified key.  Note
 		'''         that this guarantees that the return value will be &gt;= 0 if
 		'''         and only if the key is found. </returns>
-		Public Shared Function binarySearch(ByVal a As Short(), ByVal key As Short) As Integer
+		Public Shared Function binarySearch(  a As Short(),   key As Short) As Integer
 			Return binarySearch0(a, 0, a.Length, key)
 		End Function
 
@@ -1891,13 +1891,13 @@ Namespace java.util
 		''' <exception cref="ArrayIndexOutOfBoundsException">
 		'''         if {@code fromIndex < 0 or toIndex > a.length}
 		''' @since 1.6 </exception>
-		Public Shared Function binarySearch(ByVal a As Short(), ByVal fromIndex As Integer, ByVal toIndex As Integer, ByVal key As Short) As Integer
+		Public Shared Function binarySearch(  a As Short(),   fromIndex As Integer,   toIndex As Integer,   key As Short) As Integer
 			rangeCheck(a.Length, fromIndex, toIndex)
 			Return binarySearch0(a, fromIndex, toIndex, key)
 		End Function
 
 		' Like public version, but without range checks.
-		Private Shared Function binarySearch0(ByVal a As Short(), ByVal fromIndex As Integer, ByVal toIndex As Integer, ByVal key As Short) As Integer
+		Private Shared Function binarySearch0(  a As Short(),   fromIndex As Integer,   toIndex As Integer,   key As Short) As Integer
 			Dim low As Integer = fromIndex
 			Dim high As Integer = toIndex - 1
 
@@ -1934,7 +1934,7 @@ Namespace java.util
 		'''         elements in the array are less than the specified key.  Note
 		'''         that this guarantees that the return value will be &gt;= 0 if
 		'''         and only if the key is found. </returns>
-		Public Shared Function binarySearch(ByVal a As Char(), ByVal key As Char) As Integer
+		Public Shared Function binarySearch(  a As Char(),   key As Char) As Integer
 			Return binarySearch0(a, 0, a.Length, key)
 		End Function
 
@@ -1969,13 +1969,13 @@ Namespace java.util
 		''' <exception cref="ArrayIndexOutOfBoundsException">
 		'''         if {@code fromIndex < 0 or toIndex > a.length}
 		''' @since 1.6 </exception>
-		Public Shared Function binarySearch(ByVal a As Char(), ByVal fromIndex As Integer, ByVal toIndex As Integer, ByVal key As Char) As Integer
+		Public Shared Function binarySearch(  a As Char(),   fromIndex As Integer,   toIndex As Integer,   key As Char) As Integer
 			rangeCheck(a.Length, fromIndex, toIndex)
 			Return binarySearch0(a, fromIndex, toIndex, key)
 		End Function
 
 		' Like public version, but without range checks.
-		Private Shared Function binarySearch0(ByVal a As Char(), ByVal fromIndex As Integer, ByVal toIndex As Integer, ByVal key As Char) As Integer
+		Private Shared Function binarySearch0(  a As Char(),   fromIndex As Integer,   toIndex As Integer,   key As Char) As Integer
 			Dim low As Integer = fromIndex
 			Dim high As Integer = toIndex - 1
 
@@ -2012,7 +2012,7 @@ Namespace java.util
 		'''         elements in the array are less than the specified key.  Note
 		'''         that this guarantees that the return value will be &gt;= 0 if
 		'''         and only if the key is found. </returns>
-		Public Shared Function binarySearch(ByVal a As SByte(), ByVal key As SByte) As Integer
+		Public Shared Function binarySearch(  a As SByte(),   key As SByte) As Integer
 			Return binarySearch0(a, 0, a.Length, key)
 		End Function
 
@@ -2047,13 +2047,13 @@ Namespace java.util
 		''' <exception cref="ArrayIndexOutOfBoundsException">
 		'''         if {@code fromIndex < 0 or toIndex > a.length}
 		''' @since 1.6 </exception>
-		Public Shared Function binarySearch(ByVal a As SByte(), ByVal fromIndex As Integer, ByVal toIndex As Integer, ByVal key As SByte) As Integer
+		Public Shared Function binarySearch(  a As SByte(),   fromIndex As Integer,   toIndex As Integer,   key As SByte) As Integer
 			rangeCheck(a.Length, fromIndex, toIndex)
 			Return binarySearch0(a, fromIndex, toIndex, key)
 		End Function
 
 		' Like public version, but without range checks.
-		Private Shared Function binarySearch0(ByVal a As SByte(), ByVal fromIndex As Integer, ByVal toIndex As Integer, ByVal key As SByte) As Integer
+		Private Shared Function binarySearch0(  a As SByte(),   fromIndex As Integer,   toIndex As Integer,   key As SByte) As Integer
 			Dim low As Integer = fromIndex
 			Dim high As Integer = toIndex - 1
 
@@ -2091,7 +2091,7 @@ Namespace java.util
 		'''         elements in the array are less than the specified key.  Note
 		'''         that this guarantees that the return value will be &gt;= 0 if
 		'''         and only if the key is found. </returns>
-		Public Shared Function binarySearch(ByVal a As Double(), ByVal key As Double) As Integer
+		Public Shared Function binarySearch(  a As Double(),   key As Double) As Integer
 			Return binarySearch0(a, 0, a.Length, key)
 		End Function
 
@@ -2127,13 +2127,13 @@ Namespace java.util
 		''' <exception cref="ArrayIndexOutOfBoundsException">
 		'''         if {@code fromIndex < 0 or toIndex > a.length}
 		''' @since 1.6 </exception>
-		Public Shared Function binarySearch(ByVal a As Double(), ByVal fromIndex As Integer, ByVal toIndex As Integer, ByVal key As Double) As Integer
+		Public Shared Function binarySearch(  a As Double(),   fromIndex As Integer,   toIndex As Integer,   key As Double) As Integer
 			rangeCheck(a.Length, fromIndex, toIndex)
 			Return binarySearch0(a, fromIndex, toIndex, key)
 		End Function
 
 		' Like public version, but without range checks.
-		Private Shared Function binarySearch0(ByVal a As Double(), ByVal fromIndex As Integer, ByVal toIndex As Integer, ByVal key As Double) As Integer
+		Private Shared Function binarySearch0(  a As Double(),   fromIndex As Integer,   toIndex As Integer,   key As Double) As Integer
 			Dim low As Integer = fromIndex
 			Dim high As Integer = toIndex - 1
 
@@ -2179,7 +2179,7 @@ Namespace java.util
 		'''         elements in the array are less than the specified key. Note
 		'''         that this guarantees that the return value will be &gt;= 0 if
 		'''         and only if the key is found. </returns>
-		Public Shared Function binarySearch(ByVal a As Single(), ByVal key As Single) As Integer
+		Public Shared Function binarySearch(  a As Single(),   key As Single) As Integer
 			Return binarySearch0(a, 0, a.Length, key)
 		End Function
 
@@ -2215,13 +2215,13 @@ Namespace java.util
 		''' <exception cref="ArrayIndexOutOfBoundsException">
 		'''         if {@code fromIndex < 0 or toIndex > a.length}
 		''' @since 1.6 </exception>
-		Public Shared Function binarySearch(ByVal a As Single(), ByVal fromIndex As Integer, ByVal toIndex As Integer, ByVal key As Single) As Integer
+		Public Shared Function binarySearch(  a As Single(),   fromIndex As Integer,   toIndex As Integer,   key As Single) As Integer
 			rangeCheck(a.Length, fromIndex, toIndex)
 			Return binarySearch0(a, fromIndex, toIndex, key)
 		End Function
 
 		' Like public version, but without range checks.
-		Private Shared Function binarySearch0(ByVal a As Single(), ByVal fromIndex As Integer, ByVal toIndex As Integer, ByVal key As Single) As Integer
+		Private Shared Function binarySearch0(  a As Single(),   fromIndex As Integer,   toIndex As Integer,   key As Single) As Integer
 			Dim low As Integer = fromIndex
 			Dim high As Integer = toIndex - 1
 
@@ -2275,7 +2275,7 @@ Namespace java.util
 		'''         and only if the key is found. </returns>
 		''' <exception cref="ClassCastException"> if the search key is not comparable to the
 		'''         elements of the array. </exception>
-		Public Shared Function binarySearch(ByVal a As Object(), ByVal key As Object) As Integer
+		Public Shared Function binarySearch(  a As Object(),   key As Object) As Integer
 			Return binarySearch0(a, 0, a.Length, key)
 		End Function
 
@@ -2318,13 +2318,13 @@ Namespace java.util
 		''' <exception cref="ArrayIndexOutOfBoundsException">
 		'''         if {@code fromIndex < 0 or toIndex > a.length}
 		''' @since 1.6 </exception>
-		Public Shared Function binarySearch(ByVal a As Object(), ByVal fromIndex As Integer, ByVal toIndex As Integer, ByVal key As Object) As Integer
+		Public Shared Function binarySearch(  a As Object(),   fromIndex As Integer,   toIndex As Integer,   key As Object) As Integer
 			rangeCheck(a.Length, fromIndex, toIndex)
 			Return binarySearch0(a, fromIndex, toIndex, key)
 		End Function
 
 		' Like public version, but without range checks.
-		Private Shared Function binarySearch0(ByVal a As Object(), ByVal fromIndex As Integer, ByVal toIndex As Integer, ByVal key As Object) As Integer
+		Private Shared Function binarySearch0(  a As Object(),   fromIndex As Integer,   toIndex As Integer,   key As Object) As Integer
 			Dim low As Integer = fromIndex
 			Dim high As Integer = toIndex - 1
 
@@ -2376,7 +2376,7 @@ Namespace java.util
 		'''         or the search key is not comparable to the
 		'''         elements of the array using this comparator. </exception>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Shared Function binarySearch(Of T, T1)(ByVal a As T(), ByVal key As T, ByVal c As Comparator(Of T1)) As Integer
+		Public Shared Function binarySearch(Of T, T1)(  a As T(),   key As T,   c As Comparator(Of T1)) As Integer
 			Return binarySearch0(a, 0, a.Length, key, c)
 		End Function
 
@@ -2422,14 +2422,14 @@ Namespace java.util
 		'''         if {@code fromIndex < 0 or toIndex > a.length}
 		''' @since 1.6 </exception>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Shared Function binarySearch(Of T, T1)(ByVal a As T(), ByVal fromIndex As Integer, ByVal toIndex As Integer, ByVal key As T, ByVal c As Comparator(Of T1)) As Integer
+		Public Shared Function binarySearch(Of T, T1)(  a As T(),   fromIndex As Integer,   toIndex As Integer,   key As T,   c As Comparator(Of T1)) As Integer
 			rangeCheck(a.Length, fromIndex, toIndex)
 			Return binarySearch0(a, fromIndex, toIndex, key, c)
 		End Function
 
 		' Like public version, but without range checks.
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Private Shared Function binarySearch0(Of T, T1)(ByVal a As T(), ByVal fromIndex As Integer, ByVal toIndex As Integer, ByVal key As T, ByVal c As Comparator(Of T1)) As Integer
+		Private Shared Function binarySearch0(Of T, T1)(  a As T(),   fromIndex As Integer,   toIndex As Integer,   key As T,   c As Comparator(Of T1)) As Integer
 			If c Is Nothing Then Return binarySearch0(a, fromIndex, toIndex, key)
 			Dim low As Integer = fromIndex
 			Dim high As Integer = toIndex - 1
@@ -2462,7 +2462,7 @@ Namespace java.util
 		''' <param name="a"> one array to be tested for equality </param>
 		''' <param name="a2"> the other array to be tested for equality </param>
 		''' <returns> <tt>true</tt> if the two arrays are equal </returns>
-		Public Shared Function Equals(ByVal a As Long(), ByVal a2 As Long()) As Boolean
+		Public Shared Function Equals(  a As Long(),   a2 As Long()) As Boolean
 			If a=a2 Then Return True
 			If a Is Nothing OrElse a2 Is Nothing Then Return False
 
@@ -2487,7 +2487,7 @@ Namespace java.util
 		''' <param name="a"> one array to be tested for equality </param>
 		''' <param name="a2"> the other array to be tested for equality </param>
 		''' <returns> <tt>true</tt> if the two arrays are equal </returns>
-		Public Shared Function Equals(ByVal a As Integer(), ByVal a2 As Integer()) As Boolean
+		Public Shared Function Equals(  a As Integer(),   a2 As Integer()) As Boolean
 			If a=a2 Then Return True
 			If a Is Nothing OrElse a2 Is Nothing Then Return False
 
@@ -2512,7 +2512,7 @@ Namespace java.util
 		''' <param name="a"> one array to be tested for equality </param>
 		''' <param name="a2"> the other array to be tested for equality </param>
 		''' <returns> <tt>true</tt> if the two arrays are equal </returns>
-		Public Shared Function Equals(ByVal a As Short(), ByVal a2 As Short()) As Boolean
+		Public Shared Function Equals(  a As Short(),   a2 As Short()) As Boolean
 			If a=a2 Then Return True
 			If a Is Nothing OrElse a2 Is Nothing Then Return False
 
@@ -2537,7 +2537,7 @@ Namespace java.util
 		''' <param name="a"> one array to be tested for equality </param>
 		''' <param name="a2"> the other array to be tested for equality </param>
 		''' <returns> <tt>true</tt> if the two arrays are equal </returns>
-		Public Shared Function Equals(ByVal a As Char(), ByVal a2 As Char()) As Boolean
+		Public Shared Function Equals(  a As Char(),   a2 As Char()) As Boolean
 			If a=a2 Then Return True
 			If a Is Nothing OrElse a2 Is Nothing Then Return False
 
@@ -2562,7 +2562,7 @@ Namespace java.util
 		''' <param name="a"> one array to be tested for equality </param>
 		''' <param name="a2"> the other array to be tested for equality </param>
 		''' <returns> <tt>true</tt> if the two arrays are equal </returns>
-		Public Shared Function Equals(ByVal a As SByte(), ByVal a2 As SByte()) As Boolean
+		Public Shared Function Equals(  a As SByte(),   a2 As SByte()) As Boolean
 			If a=a2 Then Return True
 			If a Is Nothing OrElse a2 Is Nothing Then Return False
 
@@ -2587,7 +2587,7 @@ Namespace java.util
 		''' <param name="a"> one array to be tested for equality </param>
 		''' <param name="a2"> the other array to be tested for equality </param>
 		''' <returns> <tt>true</tt> if the two arrays are equal </returns>
-		Public Shared Function Equals(ByVal a As Boolean(), ByVal a2 As Boolean()) As Boolean
+		Public Shared Function Equals(  a As Boolean(),   a2 As Boolean()) As Boolean
 			If a=a2 Then Return True
 			If a Is Nothing OrElse a2 Is Nothing Then Return False
 
@@ -2618,7 +2618,7 @@ Namespace java.util
 		''' <param name="a2"> the other array to be tested for equality </param>
 		''' <returns> <tt>true</tt> if the two arrays are equal </returns>
 		''' <seealso cref= Double#equals(Object) </seealso>
-		Public Shared Function Equals(ByVal a As Double(), ByVal a2 As Double()) As Boolean
+		Public Shared Function Equals(  a As Double(),   a2 As Double()) As Boolean
 			If a=a2 Then Return True
 			If a Is Nothing OrElse a2 Is Nothing Then Return False
 
@@ -2649,7 +2649,7 @@ Namespace java.util
 		''' <param name="a2"> the other array to be tested for equality </param>
 		''' <returns> <tt>true</tt> if the two arrays are equal </returns>
 		''' <seealso cref= Float#equals(Object) </seealso>
-		Public Shared Function Equals(ByVal a As Single(), ByVal a2 As Single()) As Boolean
+		Public Shared Function Equals(  a As Single(),   a2 As Single()) As Boolean
 			If a=a2 Then Return True
 			If a Is Nothing OrElse a2 Is Nothing Then Return False
 
@@ -2676,7 +2676,7 @@ Namespace java.util
 		''' <param name="a"> one array to be tested for equality </param>
 		''' <param name="a2"> the other array to be tested for equality </param>
 		''' <returns> <tt>true</tt> if the two arrays are equal </returns>
-		Public Shared Function Equals(ByVal a As Object(), ByVal a2 As Object()) As Boolean
+		Public Shared Function Equals(  a As Object(),   a2 As Object()) As Boolean
 			If a=a2 Then Return True
 			If a Is Nothing OrElse a2 Is Nothing Then Return False
 
@@ -2700,7 +2700,7 @@ Namespace java.util
 		''' </summary>
 		''' <param name="a"> the array to be filled </param>
 		''' <param name="val"> the value to be stored in all elements of the array </param>
-		Public Shared Sub fill(ByVal a As Long(), ByVal val As Long)
+		Public Shared Sub fill(  a As Long(),   val As Long)
 			Dim i As Integer = 0
 			Dim len As Integer = a.Length
 			Do While i < len
@@ -2725,7 +2725,7 @@ Namespace java.util
 		''' <exception cref="IllegalArgumentException"> if <tt>fromIndex &gt; toIndex</tt> </exception>
 		''' <exception cref="ArrayIndexOutOfBoundsException"> if <tt>fromIndex &lt; 0</tt> or
 		'''         <tt>toIndex &gt; a.length</tt> </exception>
-		Public Shared Sub fill(ByVal a As Long(), ByVal fromIndex As Integer, ByVal toIndex As Integer, ByVal val As Long)
+		Public Shared Sub fill(  a As Long(),   fromIndex As Integer,   toIndex As Integer,   val As Long)
 			rangeCheck(a.Length, fromIndex, toIndex)
 			For i As Integer = fromIndex To toIndex - 1
 				a(i) = val
@@ -2738,7 +2738,7 @@ Namespace java.util
 		''' </summary>
 		''' <param name="a"> the array to be filled </param>
 		''' <param name="val"> the value to be stored in all elements of the array </param>
-		Public Shared Sub fill(ByVal a As Integer(), ByVal val As Integer)
+		Public Shared Sub fill(  a As Integer(),   val As Integer)
 			Dim i As Integer = 0
 			Dim len As Integer = a.Length
 			Do While i < len
@@ -2763,7 +2763,7 @@ Namespace java.util
 		''' <exception cref="IllegalArgumentException"> if <tt>fromIndex &gt; toIndex</tt> </exception>
 		''' <exception cref="ArrayIndexOutOfBoundsException"> if <tt>fromIndex &lt; 0</tt> or
 		'''         <tt>toIndex &gt; a.length</tt> </exception>
-		Public Shared Sub fill(ByVal a As Integer(), ByVal fromIndex As Integer, ByVal toIndex As Integer, ByVal val As Integer)
+		Public Shared Sub fill(  a As Integer(),   fromIndex As Integer,   toIndex As Integer,   val As Integer)
 			rangeCheck(a.Length, fromIndex, toIndex)
 			For i As Integer = fromIndex To toIndex - 1
 				a(i) = val
@@ -2776,7 +2776,7 @@ Namespace java.util
 		''' </summary>
 		''' <param name="a"> the array to be filled </param>
 		''' <param name="val"> the value to be stored in all elements of the array </param>
-		Public Shared Sub fill(ByVal a As Short(), ByVal val As Short)
+		Public Shared Sub fill(  a As Short(),   val As Short)
 			Dim i As Integer = 0
 			Dim len As Integer = a.Length
 			Do While i < len
@@ -2801,7 +2801,7 @@ Namespace java.util
 		''' <exception cref="IllegalArgumentException"> if <tt>fromIndex &gt; toIndex</tt> </exception>
 		''' <exception cref="ArrayIndexOutOfBoundsException"> if <tt>fromIndex &lt; 0</tt> or
 		'''         <tt>toIndex &gt; a.length</tt> </exception>
-		Public Shared Sub fill(ByVal a As Short(), ByVal fromIndex As Integer, ByVal toIndex As Integer, ByVal val As Short)
+		Public Shared Sub fill(  a As Short(),   fromIndex As Integer,   toIndex As Integer,   val As Short)
 			rangeCheck(a.Length, fromIndex, toIndex)
 			For i As Integer = fromIndex To toIndex - 1
 				a(i) = val
@@ -2814,7 +2814,7 @@ Namespace java.util
 		''' </summary>
 		''' <param name="a"> the array to be filled </param>
 		''' <param name="val"> the value to be stored in all elements of the array </param>
-		Public Shared Sub fill(ByVal a As Char(), ByVal val As Char)
+		Public Shared Sub fill(  a As Char(),   val As Char)
 			Dim i As Integer = 0
 			Dim len As Integer = a.Length
 			Do While i < len
@@ -2839,7 +2839,7 @@ Namespace java.util
 		''' <exception cref="IllegalArgumentException"> if <tt>fromIndex &gt; toIndex</tt> </exception>
 		''' <exception cref="ArrayIndexOutOfBoundsException"> if <tt>fromIndex &lt; 0</tt> or
 		'''         <tt>toIndex &gt; a.length</tt> </exception>
-		Public Shared Sub fill(ByVal a As Char(), ByVal fromIndex As Integer, ByVal toIndex As Integer, ByVal val As Char)
+		Public Shared Sub fill(  a As Char(),   fromIndex As Integer,   toIndex As Integer,   val As Char)
 			rangeCheck(a.Length, fromIndex, toIndex)
 			For i As Integer = fromIndex To toIndex - 1
 				a(i) = val
@@ -2852,7 +2852,7 @@ Namespace java.util
 		''' </summary>
 		''' <param name="a"> the array to be filled </param>
 		''' <param name="val"> the value to be stored in all elements of the array </param>
-		Public Shared Sub fill(ByVal a As SByte(), ByVal val As SByte)
+		Public Shared Sub fill(  a As SByte(),   val As SByte)
 			Dim i As Integer = 0
 			Dim len As Integer = a.Length
 			Do While i < len
@@ -2877,7 +2877,7 @@ Namespace java.util
 		''' <exception cref="IllegalArgumentException"> if <tt>fromIndex &gt; toIndex</tt> </exception>
 		''' <exception cref="ArrayIndexOutOfBoundsException"> if <tt>fromIndex &lt; 0</tt> or
 		'''         <tt>toIndex &gt; a.length</tt> </exception>
-		Public Shared Sub fill(ByVal a As SByte(), ByVal fromIndex As Integer, ByVal toIndex As Integer, ByVal val As SByte)
+		Public Shared Sub fill(  a As SByte(),   fromIndex As Integer,   toIndex As Integer,   val As SByte)
 			rangeCheck(a.Length, fromIndex, toIndex)
 			For i As Integer = fromIndex To toIndex - 1
 				a(i) = val
@@ -2890,7 +2890,7 @@ Namespace java.util
 		''' </summary>
 		''' <param name="a"> the array to be filled </param>
 		''' <param name="val"> the value to be stored in all elements of the array </param>
-		Public Shared Sub fill(ByVal a As Boolean(), ByVal val As Boolean)
+		Public Shared Sub fill(  a As Boolean(),   val As Boolean)
 			Dim i As Integer = 0
 			Dim len As Integer = a.Length
 			Do While i < len
@@ -2915,7 +2915,7 @@ Namespace java.util
 		''' <exception cref="IllegalArgumentException"> if <tt>fromIndex &gt; toIndex</tt> </exception>
 		''' <exception cref="ArrayIndexOutOfBoundsException"> if <tt>fromIndex &lt; 0</tt> or
 		'''         <tt>toIndex &gt; a.length</tt> </exception>
-		Public Shared Sub fill(ByVal a As Boolean(), ByVal fromIndex As Integer, ByVal toIndex As Integer, ByVal val As Boolean)
+		Public Shared Sub fill(  a As Boolean(),   fromIndex As Integer,   toIndex As Integer,   val As Boolean)
 			rangeCheck(a.Length, fromIndex, toIndex)
 			For i As Integer = fromIndex To toIndex - 1
 				a(i) = val
@@ -2928,7 +2928,7 @@ Namespace java.util
 		''' </summary>
 		''' <param name="a"> the array to be filled </param>
 		''' <param name="val"> the value to be stored in all elements of the array </param>
-		Public Shared Sub fill(ByVal a As Double(), ByVal val As Double)
+		Public Shared Sub fill(  a As Double(),   val As Double)
 			Dim i As Integer = 0
 			Dim len As Integer = a.Length
 			Do While i < len
@@ -2953,7 +2953,7 @@ Namespace java.util
 		''' <exception cref="IllegalArgumentException"> if <tt>fromIndex &gt; toIndex</tt> </exception>
 		''' <exception cref="ArrayIndexOutOfBoundsException"> if <tt>fromIndex &lt; 0</tt> or
 		'''         <tt>toIndex &gt; a.length</tt> </exception>
-		Public Shared Sub fill(ByVal a As Double(), ByVal fromIndex As Integer, ByVal toIndex As Integer, ByVal val As Double)
+		Public Shared Sub fill(  a As Double(),   fromIndex As Integer,   toIndex As Integer,   val As Double)
 			rangeCheck(a.Length, fromIndex, toIndex)
 			For i As Integer = fromIndex To toIndex - 1
 				a(i) = val
@@ -2966,7 +2966,7 @@ Namespace java.util
 		''' </summary>
 		''' <param name="a"> the array to be filled </param>
 		''' <param name="val"> the value to be stored in all elements of the array </param>
-		Public Shared Sub fill(ByVal a As Single(), ByVal val As Single)
+		Public Shared Sub fill(  a As Single(),   val As Single)
 			Dim i As Integer = 0
 			Dim len As Integer = a.Length
 			Do While i < len
@@ -2991,7 +2991,7 @@ Namespace java.util
 		''' <exception cref="IllegalArgumentException"> if <tt>fromIndex &gt; toIndex</tt> </exception>
 		''' <exception cref="ArrayIndexOutOfBoundsException"> if <tt>fromIndex &lt; 0</tt> or
 		'''         <tt>toIndex &gt; a.length</tt> </exception>
-		Public Shared Sub fill(ByVal a As Single(), ByVal fromIndex As Integer, ByVal toIndex As Integer, ByVal val As Single)
+		Public Shared Sub fill(  a As Single(),   fromIndex As Integer,   toIndex As Integer,   val As Single)
 			rangeCheck(a.Length, fromIndex, toIndex)
 			For i As Integer = fromIndex To toIndex - 1
 				a(i) = val
@@ -3006,7 +3006,7 @@ Namespace java.util
 		''' <param name="val"> the value to be stored in all elements of the array </param>
 		''' <exception cref="ArrayStoreException"> if the specified value is not of a
 		'''         runtime type that can be stored in the specified array </exception>
-		Public Shared Sub fill(ByVal a As Object(), ByVal val As Object)
+		Public Shared Sub fill(  a As Object(),   val As Object)
 			Dim i As Integer = 0
 			Dim len As Integer = a.Length
 			Do While i < len
@@ -3033,7 +3033,7 @@ Namespace java.util
 		'''         <tt>toIndex &gt; a.length</tt> </exception>
 		''' <exception cref="ArrayStoreException"> if the specified value is not of a
 		'''         runtime type that can be stored in the specified array </exception>
-		Public Shared Sub fill(ByVal a As Object(), ByVal fromIndex As Integer, ByVal toIndex As Integer, ByVal val As Object)
+		Public Shared Sub fill(  a As Object(),   fromIndex As Integer,   toIndex As Integer,   val As Object)
 			rangeCheck(a.Length, fromIndex, toIndex)
 			For i As Integer = fromIndex To toIndex - 1
 				a(i) = val
@@ -3061,7 +3061,7 @@ Namespace java.util
 		''' <exception cref="NullPointerException"> if <tt>original</tt> is null
 		''' @since 1.6 </exception>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Shared Function copyOf(Of T)(ByVal original As T(), ByVal newLength As Integer) As T()
+		Public Shared Function copyOf(Of T)(  original As T(),   newLength As Integer) As T()
 			Return CType(copyOf(original, newLength, original.GetType()), T())
 		End Function
 
@@ -3088,7 +3088,7 @@ Namespace java.util
 		'''     <tt>original</tt> is not of a runtime type that can be stored in
 		'''     an array of class <tt>newType</tt>
 		''' @since 1.6 </exception>
-		Public Shared Function copyOf(Of T, U)(ByVal original As U(), ByVal newLength As Integer, ByVal newType As [Class]) As T()
+		Public Shared Function copyOf(Of T, U)(  original As U(),   newLength As Integer,   newType As [Class]) As T()
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
 			Dim copy As T() = If(CObj(newType) Is GetType(CObj(Object())), CType(New Object(newLength - 1){}, T()), CType(Array.newInstance(newType.componentType, newLength), T()))
 			Array.Copy(original, 0, copy, 0, System.Math.Min(original.Length, newLength))
@@ -3111,7 +3111,7 @@ Namespace java.util
 		''' <exception cref="NegativeArraySizeException"> if <tt>newLength</tt> is negative </exception>
 		''' <exception cref="NullPointerException"> if <tt>original</tt> is null
 		''' @since 1.6 </exception>
-		Public Shared Function copyOf(ByVal original As SByte(), ByVal newLength As Integer) As SByte()
+		Public Shared Function copyOf(  original As SByte(),   newLength As Integer) As SByte()
 			Dim copy As SByte() = New SByte(newLength - 1){}
 			Array.Copy(original, 0, copy, 0, System.Math.Min(original.Length, newLength))
 			Return copy
@@ -3133,7 +3133,7 @@ Namespace java.util
 		''' <exception cref="NegativeArraySizeException"> if <tt>newLength</tt> is negative </exception>
 		''' <exception cref="NullPointerException"> if <tt>original</tt> is null
 		''' @since 1.6 </exception>
-		Public Shared Function copyOf(ByVal original As Short(), ByVal newLength As Integer) As Short()
+		Public Shared Function copyOf(  original As Short(),   newLength As Integer) As Short()
 			Dim copy As Short() = New Short(newLength - 1){}
 			Array.Copy(original, 0, copy, 0, System.Math.Min(original.Length, newLength))
 			Return copy
@@ -3155,7 +3155,7 @@ Namespace java.util
 		''' <exception cref="NegativeArraySizeException"> if <tt>newLength</tt> is negative </exception>
 		''' <exception cref="NullPointerException"> if <tt>original</tt> is null
 		''' @since 1.6 </exception>
-		Public Shared Function copyOf(ByVal original As Integer(), ByVal newLength As Integer) As Integer()
+		Public Shared Function copyOf(  original As Integer(),   newLength As Integer) As Integer()
 			Dim copy As Integer() = New Integer(newLength - 1){}
 			Array.Copy(original, 0, copy, 0, System.Math.Min(original.Length, newLength))
 			Return copy
@@ -3177,7 +3177,7 @@ Namespace java.util
 		''' <exception cref="NegativeArraySizeException"> if <tt>newLength</tt> is negative </exception>
 		''' <exception cref="NullPointerException"> if <tt>original</tt> is null
 		''' @since 1.6 </exception>
-		Public Shared Function copyOf(ByVal original As Long(), ByVal newLength As Integer) As Long()
+		Public Shared Function copyOf(  original As Long(),   newLength As Integer) As Long()
 			Dim copy As Long() = New Long(newLength - 1){}
 			Array.Copy(original, 0, copy, 0, System.Math.Min(original.Length, newLength))
 			Return copy
@@ -3199,7 +3199,7 @@ Namespace java.util
 		''' <exception cref="NegativeArraySizeException"> if <tt>newLength</tt> is negative </exception>
 		''' <exception cref="NullPointerException"> if <tt>original</tt> is null
 		''' @since 1.6 </exception>
-		Public Shared Function copyOf(ByVal original As Char(), ByVal newLength As Integer) As Char()
+		Public Shared Function copyOf(  original As Char(),   newLength As Integer) As Char()
 			Dim copy As Char() = New Char(newLength - 1){}
 			Array.Copy(original, 0, copy, 0, System.Math.Min(original.Length, newLength))
 			Return copy
@@ -3221,7 +3221,7 @@ Namespace java.util
 		''' <exception cref="NegativeArraySizeException"> if <tt>newLength</tt> is negative </exception>
 		''' <exception cref="NullPointerException"> if <tt>original</tt> is null
 		''' @since 1.6 </exception>
-		Public Shared Function copyOf(ByVal original As Single(), ByVal newLength As Integer) As Single()
+		Public Shared Function copyOf(  original As Single(),   newLength As Integer) As Single()
 			Dim copy As Single() = New Single(newLength - 1){}
 			Array.Copy(original, 0, copy, 0, System.Math.Min(original.Length, newLength))
 			Return copy
@@ -3243,7 +3243,7 @@ Namespace java.util
 		''' <exception cref="NegativeArraySizeException"> if <tt>newLength</tt> is negative </exception>
 		''' <exception cref="NullPointerException"> if <tt>original</tt> is null
 		''' @since 1.6 </exception>
-		Public Shared Function copyOf(ByVal original As Double(), ByVal newLength As Integer) As Double()
+		Public Shared Function copyOf(  original As Double(),   newLength As Integer) As Double()
 			Dim copy As Double() = New Double(newLength - 1){}
 			Array.Copy(original, 0, copy, 0, System.Math.Min(original.Length, newLength))
 			Return copy
@@ -3265,7 +3265,7 @@ Namespace java.util
 		''' <exception cref="NegativeArraySizeException"> if <tt>newLength</tt> is negative </exception>
 		''' <exception cref="NullPointerException"> if <tt>original</tt> is null
 		''' @since 1.6 </exception>
-		Public Shared Function copyOf(ByVal original As Boolean(), ByVal newLength As Integer) As Boolean()
+		Public Shared Function copyOf(  original As Boolean(),   newLength As Integer) As Boolean()
 			Dim copy As Boolean() = New Boolean(newLength - 1){}
 			Array.Copy(original, 0, copy, 0, System.Math.Min(original.Length, newLength))
 			Return copy
@@ -3300,7 +3300,7 @@ Namespace java.util
 		''' <exception cref="NullPointerException"> if <tt>original</tt> is null
 		''' @since 1.6 </exception>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Shared Function copyOfRange(Of T)(ByVal original As T(), ByVal [from] As Integer, ByVal [to] As Integer) As T()
+		Public Shared Function copyOfRange(Of T)(  original As T(),   [from] As Integer,   [to] As Integer) As T()
 			Return copyOfRange(original, [from], [to], CType(original.GetType(), [Class]))
 		End Function
 
@@ -3336,7 +3336,7 @@ Namespace java.util
 		'''     <tt>original</tt> is not of a runtime type that can be stored in
 		'''     an array of class <tt>newType</tt>.
 		''' @since 1.6 </exception>
-		Public Shared Function copyOfRange(Of T, U)(ByVal original As U(), ByVal [from] As Integer, ByVal [to] As Integer, ByVal newType As [Class]) As T()
+		Public Shared Function copyOfRange(Of T, U)(  original As U(),   [from] As Integer,   [to] As Integer,   newType As [Class]) As T()
 			Dim newLength As Integer = [to] - [from]
 			If newLength < 0 Then Throw New IllegalArgumentException([from] & " > " & [to])
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
@@ -3370,7 +3370,7 @@ Namespace java.util
 		''' <exception cref="IllegalArgumentException"> if <tt>from &gt; to</tt> </exception>
 		''' <exception cref="NullPointerException"> if <tt>original</tt> is null
 		''' @since 1.6 </exception>
-		Public Shared Function copyOfRange(ByVal original As SByte(), ByVal [from] As Integer, ByVal [to] As Integer) As SByte()
+		Public Shared Function copyOfRange(  original As SByte(),   [from] As Integer,   [to] As Integer) As SByte()
 			Dim newLength As Integer = [to] - [from]
 			If newLength < 0 Then Throw New IllegalArgumentException([from] & " > " & [to])
 			Dim copy As SByte() = New SByte(newLength - 1){}
@@ -3403,7 +3403,7 @@ Namespace java.util
 		''' <exception cref="IllegalArgumentException"> if <tt>from &gt; to</tt> </exception>
 		''' <exception cref="NullPointerException"> if <tt>original</tt> is null
 		''' @since 1.6 </exception>
-		Public Shared Function copyOfRange(ByVal original As Short(), ByVal [from] As Integer, ByVal [to] As Integer) As Short()
+		Public Shared Function copyOfRange(  original As Short(),   [from] As Integer,   [to] As Integer) As Short()
 			Dim newLength As Integer = [to] - [from]
 			If newLength < 0 Then Throw New IllegalArgumentException([from] & " > " & [to])
 			Dim copy As Short() = New Short(newLength - 1){}
@@ -3436,7 +3436,7 @@ Namespace java.util
 		''' <exception cref="IllegalArgumentException"> if <tt>from &gt; to</tt> </exception>
 		''' <exception cref="NullPointerException"> if <tt>original</tt> is null
 		''' @since 1.6 </exception>
-		Public Shared Function copyOfRange(ByVal original As Integer(), ByVal [from] As Integer, ByVal [to] As Integer) As Integer()
+		Public Shared Function copyOfRange(  original As Integer(),   [from] As Integer,   [to] As Integer) As Integer()
 			Dim newLength As Integer = [to] - [from]
 			If newLength < 0 Then Throw New IllegalArgumentException([from] & " > " & [to])
 			Dim copy As Integer() = New Integer(newLength - 1){}
@@ -3469,7 +3469,7 @@ Namespace java.util
 		''' <exception cref="IllegalArgumentException"> if <tt>from &gt; to</tt> </exception>
 		''' <exception cref="NullPointerException"> if <tt>original</tt> is null
 		''' @since 1.6 </exception>
-		Public Shared Function copyOfRange(ByVal original As Long(), ByVal [from] As Integer, ByVal [to] As Integer) As Long()
+		Public Shared Function copyOfRange(  original As Long(),   [from] As Integer,   [to] As Integer) As Long()
 			Dim newLength As Integer = [to] - [from]
 			If newLength < 0 Then Throw New IllegalArgumentException([from] & " > " & [to])
 			Dim copy As Long() = New Long(newLength - 1){}
@@ -3502,7 +3502,7 @@ Namespace java.util
 		''' <exception cref="IllegalArgumentException"> if <tt>from &gt; to</tt> </exception>
 		''' <exception cref="NullPointerException"> if <tt>original</tt> is null
 		''' @since 1.6 </exception>
-		Public Shared Function copyOfRange(ByVal original As Char(), ByVal [from] As Integer, ByVal [to] As Integer) As Char()
+		Public Shared Function copyOfRange(  original As Char(),   [from] As Integer,   [to] As Integer) As Char()
 			Dim newLength As Integer = [to] - [from]
 			If newLength < 0 Then Throw New IllegalArgumentException([from] & " > " & [to])
 			Dim copy As Char() = New Char(newLength - 1){}
@@ -3535,7 +3535,7 @@ Namespace java.util
 		''' <exception cref="IllegalArgumentException"> if <tt>from &gt; to</tt> </exception>
 		''' <exception cref="NullPointerException"> if <tt>original</tt> is null
 		''' @since 1.6 </exception>
-		Public Shared Function copyOfRange(ByVal original As Single(), ByVal [from] As Integer, ByVal [to] As Integer) As Single()
+		Public Shared Function copyOfRange(  original As Single(),   [from] As Integer,   [to] As Integer) As Single()
 			Dim newLength As Integer = [to] - [from]
 			If newLength < 0 Then Throw New IllegalArgumentException([from] & " > " & [to])
 			Dim copy As Single() = New Single(newLength - 1){}
@@ -3568,7 +3568,7 @@ Namespace java.util
 		''' <exception cref="IllegalArgumentException"> if <tt>from &gt; to</tt> </exception>
 		''' <exception cref="NullPointerException"> if <tt>original</tt> is null
 		''' @since 1.6 </exception>
-		Public Shared Function copyOfRange(ByVal original As Double(), ByVal [from] As Integer, ByVal [to] As Integer) As Double()
+		Public Shared Function copyOfRange(  original As Double(),   [from] As Integer,   [to] As Integer) As Double()
 			Dim newLength As Integer = [to] - [from]
 			If newLength < 0 Then Throw New IllegalArgumentException([from] & " > " & [to])
 			Dim copy As Double() = New Double(newLength - 1){}
@@ -3601,7 +3601,7 @@ Namespace java.util
 		''' <exception cref="IllegalArgumentException"> if <tt>from &gt; to</tt> </exception>
 		''' <exception cref="NullPointerException"> if <tt>original</tt> is null
 		''' @since 1.6 </exception>
-		Public Shared Function copyOfRange(ByVal original As Boolean(), ByVal [from] As Integer, ByVal [to] As Integer) As Boolean()
+		Public Shared Function copyOfRange(  original As Boolean(),   [from] As Integer,   [to] As Integer) As Boolean()
 			Dim newLength As Integer = [to] - [from]
 			If newLength < 0 Then Throw New IllegalArgumentException([from] & " > " & [to])
 			Dim copy As Boolean() = New Boolean(newLength - 1){}
@@ -3628,7 +3628,7 @@ Namespace java.util
 		''' <param name="a"> the array by which the list will be backed </param>
 		''' <returns> a list view of the specified array </returns>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Shared Function asList(Of T)(ParamArray ByVal a As T()) As List(Of T)
+		Public Shared Function asList(Of T)(ParamArray   a As T()) As List(Of T)
 			Return New List(Of )(a)
 		End Function
 
@@ -3643,7 +3643,7 @@ Namespace java.util
 			Private Const serialVersionUID As Long = -2764017481108945198L
 			Private ReadOnly a As E()
 
-			Friend Sub New(ByVal array As E())
+			Friend Sub New(  array As E())
 				a = Objects.requireNonNull(array)
 			End Sub
 
@@ -3656,7 +3656,7 @@ Namespace java.util
 			End Function
 
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-			Public Overrides Function toArray(Of T)(ByVal a As T()) As T()
+			Public Overrides Function toArray(Of T)(  a As T()) As T()
 				Dim size As Integer = size()
 				If a.Length < size Then Return Arrays.copyOf(Me.a, size, CType(a.GetType(), [Class]))
 				Array.Copy(Me.a, 0, a, 0, size)
@@ -3664,17 +3664,17 @@ Namespace java.util
 				Return a
 			End Function
 
-			Public Overrides Function [get](ByVal index As Integer) As E
+			Public Overrides Function [get](  index As Integer) As E
 				Return a(index)
 			End Function
 
-			Public Overrides Function [set](ByVal index As Integer, ByVal element As E) As E
+			Public Overrides Function [set](  index As Integer,   element As E) As E
 				Dim oldValue As E = a(index)
 				a(index) = element
 				Return oldValue
 			End Function
 
-			Public Overrides Function indexOf(ByVal o As Object) As Integer
+			Public Overrides Function indexOf(  o As Object) As Integer
 				Dim a As E() = Me.a
 				If o Is Nothing Then
 					For i As Integer = 0 To a.Length - 1
@@ -3688,7 +3688,7 @@ Namespace java.util
 				Return -1
 			End Function
 
-			Public Overrides Function contains(ByVal o As Object) As Boolean
+			Public Overrides Function contains(  o As Object) As Boolean
 				Return IndexOf(o) <> -1
 			End Function
 
@@ -3697,14 +3697,14 @@ Namespace java.util
 			End Function
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Overrides Sub forEach(Of T1)(ByVal action As java.util.function.Consumer(Of T1))
+			Public Overrides Sub forEach(Of T1)(  action As java.util.function.Consumer(Of T1))
 				Objects.requireNonNull(action)
 				For Each e As E In a
 					action.accept(e)
 				Next e
 			End Sub
 
-			Public Overrides Sub replaceAll(ByVal [operator] As java.util.function.UnaryOperator(Of E))
+			Public Overrides Sub replaceAll(  [operator] As java.util.function.UnaryOperator(Of E))
 				Objects.requireNonNull([operator])
 				Dim a As E() = Me.a
 				For i As Integer = 0 To a.Length - 1
@@ -3713,7 +3713,7 @@ Namespace java.util
 			End Sub
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Overrides Sub sort(Of T1)(ByVal c As Comparator(Of T1))
+			Public Overrides Sub sort(Of T1)(  c As Comparator(Of T1))
 				Array.Sort(a, c)
 			End Sub
 		End Class
@@ -3733,7 +3733,7 @@ Namespace java.util
 		''' <param name="a"> the array whose hash value to compute </param>
 		''' <returns> a content-based hash code for <tt>a</tt>
 		''' @since 1.5 </returns>
-		Public Shared Function GetHashCode(ByVal a As Long()) As Integer
+		Public Shared Function GetHashCode(  a As Long()) As Integer
 			If a Is Nothing Then Return 0
 
 			Dim result As Integer = 1
@@ -3760,7 +3760,7 @@ Namespace java.util
 		''' <param name="a"> the array whose hash value to compute </param>
 		''' <returns> a content-based hash code for <tt>a</tt>
 		''' @since 1.5 </returns>
-		Public Shared Function GetHashCode(ByVal a As Integer()) As Integer
+		Public Shared Function GetHashCode(  a As Integer()) As Integer
 			If a Is Nothing Then Return 0
 
 			Dim result As Integer = 1
@@ -3786,7 +3786,7 @@ Namespace java.util
 		''' <param name="a"> the array whose hash value to compute </param>
 		''' <returns> a content-based hash code for <tt>a</tt>
 		''' @since 1.5 </returns>
-		Public Shared Function GetHashCode(ByVal a As Short()) As Integer
+		Public Shared Function GetHashCode(  a As Short()) As Integer
 			If a Is Nothing Then Return 0
 
 			Dim result As Integer = 1
@@ -3812,7 +3812,7 @@ Namespace java.util
 		''' <param name="a"> the array whose hash value to compute </param>
 		''' <returns> a content-based hash code for <tt>a</tt>
 		''' @since 1.5 </returns>
-		Public Shared Function GetHashCode(ByVal a As Char()) As Integer
+		Public Shared Function GetHashCode(  a As Char()) As Integer
 			If a Is Nothing Then Return 0
 
 			Dim result As Integer = 1
@@ -3838,7 +3838,7 @@ Namespace java.util
 		''' <param name="a"> the array whose hash value to compute </param>
 		''' <returns> a content-based hash code for <tt>a</tt>
 		''' @since 1.5 </returns>
-		Public Shared Function GetHashCode(ByVal a As SByte()) As Integer
+		Public Shared Function GetHashCode(  a As SByte()) As Integer
 			If a Is Nothing Then Return 0
 
 			Dim result As Integer = 1
@@ -3864,7 +3864,7 @@ Namespace java.util
 		''' <param name="a"> the array whose hash value to compute </param>
 		''' <returns> a content-based hash code for <tt>a</tt>
 		''' @since 1.5 </returns>
-		Public Shared Function GetHashCode(ByVal a As Boolean()) As Integer
+		Public Shared Function GetHashCode(  a As Boolean()) As Integer
 			If a Is Nothing Then Return 0
 
 			Dim result As Integer = 1
@@ -3890,7 +3890,7 @@ Namespace java.util
 		''' <param name="a"> the array whose hash value to compute </param>
 		''' <returns> a content-based hash code for <tt>a</tt>
 		''' @since 1.5 </returns>
-		Public Shared Function GetHashCode(ByVal a As Single()) As Integer
+		Public Shared Function GetHashCode(  a As Single()) As Integer
 			If a Is Nothing Then Return 0
 
 			Dim result As Integer = 1
@@ -3916,7 +3916,7 @@ Namespace java.util
 		''' <param name="a"> the array whose hash value to compute </param>
 		''' <returns> a content-based hash code for <tt>a</tt>
 		''' @since 1.5 </returns>
-		Public Shared Function GetHashCode(ByVal a As Double()) As Integer
+		Public Shared Function GetHashCode(  a As Double()) As Integer
 			If a Is Nothing Then Return 0
 
 			Dim result As Integer = 1
@@ -3947,7 +3947,7 @@ Namespace java.util
 		''' <returns> a content-based hash code for <tt>a</tt> </returns>
 		''' <seealso cref= #deepHashCode(Object[])
 		''' @since 1.5 </seealso>
-		Public Shared Function GetHashCode(ByVal a As Object()) As Integer
+		Public Shared Function GetHashCode(  a As Object()) As Integer
 			If a Is Nothing Then Return 0
 
 			Dim result As Integer = 1
@@ -3987,7 +3987,7 @@ Namespace java.util
 		''' <returns> a deep-content-based hash code for <tt>a</tt> </returns>
 		''' <seealso cref= #hashCode(Object[])
 		''' @since 1.5 </seealso>
-		Public Shared Function deepHashCode(ByVal a As Object()) As Integer
+		Public Shared Function deepHashCode(  a As Object()) As Integer
 			If a Is Nothing Then Return 0
 
 			Dim result As Integer = 1
@@ -4056,7 +4056,7 @@ Namespace java.util
 		''' <seealso cref= #equals(Object[],Object[]) </seealso>
 		''' <seealso cref= Objects#deepEquals(Object, Object)
 		''' @since 1.5 </seealso>
-		Public Shared Function deepEquals(ByVal a1 As Object(), ByVal a2 As Object()) As Boolean
+		Public Shared Function deepEquals(  a1 As Object(),   a2 As Object()) As Boolean
 			If a1 = a2 Then Return True
 			If a1 Is Nothing OrElse a2 Is Nothing Then Return False
 			Dim length As Integer = a1.Length
@@ -4077,7 +4077,7 @@ Namespace java.util
 			Return True
 		End Function
 
-		Friend Shared Function deepEquals0(ByVal e1 As Object, ByVal e2 As Object) As Boolean
+		Friend Shared Function deepEquals0(  e1 As Object,   e2 As Object) As Boolean
 			Debug.Assert(e1 IsNot Nothing)
 			Dim eq As Boolean
 			If TypeOf e1 Is Object() AndAlso TypeOf e2 Is Object() Then
@@ -4116,7 +4116,7 @@ Namespace java.util
 		''' <param name="a"> the array whose string representation to return </param>
 		''' <returns> a string representation of <tt>a</tt>
 		''' @since 1.5 </returns>
-		Public Shared Function ToString(ByVal a As Long()) As String
+		Public Shared Function ToString(  a As Long()) As String
 			If a Is Nothing Then Return "null"
 			Dim iMax As Integer = a.Length - 1
 			If iMax = -1 Then Return "[]"
@@ -4144,7 +4144,7 @@ Namespace java.util
 		''' <param name="a"> the array whose string representation to return </param>
 		''' <returns> a string representation of <tt>a</tt>
 		''' @since 1.5 </returns>
-		Public Shared Function ToString(ByVal a As Integer()) As String
+		Public Shared Function ToString(  a As Integer()) As String
 			If a Is Nothing Then Return "null"
 			Dim iMax As Integer = a.Length - 1
 			If iMax = -1 Then Return "[]"
@@ -4172,7 +4172,7 @@ Namespace java.util
 		''' <param name="a"> the array whose string representation to return </param>
 		''' <returns> a string representation of <tt>a</tt>
 		''' @since 1.5 </returns>
-		Public Shared Function ToString(ByVal a As Short()) As String
+		Public Shared Function ToString(  a As Short()) As String
 			If a Is Nothing Then Return "null"
 			Dim iMax As Integer = a.Length - 1
 			If iMax = -1 Then Return "[]"
@@ -4200,7 +4200,7 @@ Namespace java.util
 		''' <param name="a"> the array whose string representation to return </param>
 		''' <returns> a string representation of <tt>a</tt>
 		''' @since 1.5 </returns>
-		Public Shared Function ToString(ByVal a As Char()) As String
+		Public Shared Function ToString(  a As Char()) As String
 			If a Is Nothing Then Return "null"
 			Dim iMax As Integer = a.Length - 1
 			If iMax = -1 Then Return "[]"
@@ -4228,7 +4228,7 @@ Namespace java.util
 		''' <param name="a"> the array whose string representation to return </param>
 		''' <returns> a string representation of <tt>a</tt>
 		''' @since 1.5 </returns>
-		Public Shared Function ToString(ByVal a As SByte()) As String
+		Public Shared Function ToString(  a As SByte()) As String
 			If a Is Nothing Then Return "null"
 			Dim iMax As Integer = a.Length - 1
 			If iMax = -1 Then Return "[]"
@@ -4256,7 +4256,7 @@ Namespace java.util
 		''' <param name="a"> the array whose string representation to return </param>
 		''' <returns> a string representation of <tt>a</tt>
 		''' @since 1.5 </returns>
-		Public Shared Function ToString(ByVal a As Boolean()) As String
+		Public Shared Function ToString(  a As Boolean()) As String
 			If a Is Nothing Then Return "null"
 			Dim iMax As Integer = a.Length - 1
 			If iMax = -1 Then Return "[]"
@@ -4284,7 +4284,7 @@ Namespace java.util
 		''' <param name="a"> the array whose string representation to return </param>
 		''' <returns> a string representation of <tt>a</tt>
 		''' @since 1.5 </returns>
-		Public Shared Function ToString(ByVal a As Single()) As String
+		Public Shared Function ToString(  a As Single()) As String
 			If a Is Nothing Then Return "null"
 
 			Dim iMax As Integer = a.Length - 1
@@ -4313,7 +4313,7 @@ Namespace java.util
 		''' <param name="a"> the array whose string representation to return </param>
 		''' <returns> a string representation of <tt>a</tt>
 		''' @since 1.5 </returns>
-		Public Shared Function ToString(ByVal a As Double()) As String
+		Public Shared Function ToString(  a As Double()) As String
 			If a Is Nothing Then Return "null"
 			Dim iMax As Integer = a.Length - 1
 			If iMax = -1 Then Return "[]"
@@ -4344,7 +4344,7 @@ Namespace java.util
 		''' <returns> a string representation of <tt>a</tt> </returns>
 		''' <seealso cref= #deepToString(Object[])
 		''' @since 1.5 </seealso>
-		Public Shared Function ToString(ByVal a As Object()) As String
+		Public Shared Function ToString(  a As Object()) As String
 			If a Is Nothing Then Return "null"
 
 			Dim iMax As Integer = a.Length - 1
@@ -4393,7 +4393,7 @@ Namespace java.util
 		''' <returns> a string representation of <tt>a</tt> </returns>
 		''' <seealso cref= #toString(Object[])
 		''' @since 1.5 </seealso>
-		Public Shared Function deepToString(ByVal a As Object()) As String
+		Public Shared Function deepToString(  a As Object()) As String
 			If a Is Nothing Then Return "null"
 
 			Dim bufLen As Integer = 20 * a.Length
@@ -4403,7 +4403,7 @@ Namespace java.util
 			Return buf.ToString()
 		End Function
 
-		Private Shared Sub deepToString(ByVal a As Object(), ByVal buf As StringBuilder, ByVal dejaVu As [Set](Of Object()))
+		Private Shared Sub deepToString(  a As Object(),   buf As StringBuilder,   dejaVu As [Set](Of Object()))
 			If a Is Nothing Then
 				buf.append("null")
 				Return
@@ -4475,7 +4475,7 @@ Namespace java.util
 		'''        value for that position </param>
 		''' <exception cref="NullPointerException"> if the generator is null
 		''' @since 1.8 </exception>
-		Public Shared Sub setAll(Of T, T1 As T)(ByVal array As T(), ByVal generator As java.util.function.IntFunction(Of T1))
+		Public Shared Sub setAll(Of T, T1 As T)(  array As T(),   generator As java.util.function.IntFunction(Of T1))
 			Objects.requireNonNull(generator)
 			For i As Integer = 0 To array.Length - 1
 				array(i) = generator.apply(i)
@@ -4496,7 +4496,7 @@ Namespace java.util
 		'''        value for that position </param>
 		''' <exception cref="NullPointerException"> if the generator is null
 		''' @since 1.8 </exception>
-		Public Shared Sub parallelSetAll(Of T, T1 As T)(ByVal array As T(), ByVal generator As java.util.function.IntFunction(Of T1))
+		Public Shared Sub parallelSetAll(Of T, T1 As T)(  array As T(),   generator As java.util.function.IntFunction(Of T1))
 			Objects.requireNonNull(generator)
 'JAVA TO VB CONVERTER TODO TASK: Assignments within expressions are not supported in VB
 			java.util.stream.IntStream.range(0, array.Length).parallel().forEach(i -> { array(i) = generator.apply(i); })
@@ -4514,7 +4514,7 @@ Namespace java.util
 		'''        value for that position </param>
 		''' <exception cref="NullPointerException"> if the generator is null
 		''' @since 1.8 </exception>
-		Public Shared Sub setAll(ByVal array As Integer(), ByVal generator As java.util.function.IntUnaryOperator)
+		Public Shared Sub setAll(  array As Integer(),   generator As java.util.function.IntUnaryOperator)
 			Objects.requireNonNull(generator)
 			For i As Integer = 0 To array.Length - 1
 				array(i) = generator.applyAsInt(i)
@@ -4534,7 +4534,7 @@ Namespace java.util
 		''' value for that position </param>
 		''' <exception cref="NullPointerException"> if the generator is null
 		''' @since 1.8 </exception>
-		Public Shared Sub parallelSetAll(ByVal array As Integer(), ByVal generator As java.util.function.IntUnaryOperator)
+		Public Shared Sub parallelSetAll(  array As Integer(),   generator As java.util.function.IntUnaryOperator)
 			Objects.requireNonNull(generator)
 'JAVA TO VB CONVERTER TODO TASK: Assignments within expressions are not supported in VB
 			java.util.stream.IntStream.range(0, array.Length).parallel().forEach(i -> { array(i) = generator.applyAsInt(i); })
@@ -4552,7 +4552,7 @@ Namespace java.util
 		'''        value for that position </param>
 		''' <exception cref="NullPointerException"> if the generator is null
 		''' @since 1.8 </exception>
-		Public Shared Sub setAll(ByVal array As Long(), ByVal generator As java.util.function.IntToLongFunction)
+		Public Shared Sub setAll(  array As Long(),   generator As java.util.function.IntToLongFunction)
 			Objects.requireNonNull(generator)
 			For i As Integer = 0 To array.Length - 1
 				array(i) = generator.applyAsLong(i)
@@ -4572,7 +4572,7 @@ Namespace java.util
 		'''        value for that position </param>
 		''' <exception cref="NullPointerException"> if the generator is null
 		''' @since 1.8 </exception>
-		Public Shared Sub parallelSetAll(ByVal array As Long(), ByVal generator As java.util.function.IntToLongFunction)
+		Public Shared Sub parallelSetAll(  array As Long(),   generator As java.util.function.IntToLongFunction)
 			Objects.requireNonNull(generator)
 'JAVA TO VB CONVERTER TODO TASK: Assignments within expressions are not supported in VB
 			java.util.stream.IntStream.range(0, array.Length).parallel().forEach(i -> { array(i) = generator.applyAsLong(i); })
@@ -4590,7 +4590,7 @@ Namespace java.util
 		'''        value for that position </param>
 		''' <exception cref="NullPointerException"> if the generator is null
 		''' @since 1.8 </exception>
-		Public Shared Sub setAll(ByVal array As Double(), ByVal generator As java.util.function.IntToDoubleFunction)
+		Public Shared Sub setAll(  array As Double(),   generator As java.util.function.IntToDoubleFunction)
 			Objects.requireNonNull(generator)
 			For i As Integer = 0 To array.Length - 1
 				array(i) = generator.applyAsDouble(i)
@@ -4610,7 +4610,7 @@ Namespace java.util
 		'''        value for that position </param>
 		''' <exception cref="NullPointerException"> if the generator is null
 		''' @since 1.8 </exception>
-		Public Shared Sub parallelSetAll(ByVal array As Double(), ByVal generator As java.util.function.IntToDoubleFunction)
+		Public Shared Sub parallelSetAll(  array As Double(),   generator As java.util.function.IntToDoubleFunction)
 			Objects.requireNonNull(generator)
 'JAVA TO VB CONVERTER TODO TASK: Assignments within expressions are not supported in VB
 			java.util.stream.IntStream.range(0, array.Length).parallel().forEach(i -> { array(i) = generator.applyAsDouble(i); })
@@ -4627,7 +4627,7 @@ Namespace java.util
 		''' <param name="array"> the array, assumed to be unmodified during use </param>
 		''' <returns> a spliterator for the array elements
 		''' @since 1.8 </returns>
-		Public Shared Function spliterator(Of T)(ByVal array As T()) As Spliterator(Of T)
+		Public Shared Function spliterator(Of T)(  array As T()) As Spliterator(Of T)
 			Return Spliterators.spliterator(array, Spliterator.ORDERED Or Spliterator.IMMUTABLE)
 		End Function
 
@@ -4649,7 +4649,7 @@ Namespace java.util
 		'''         {@code startInclusive}, or {@code endExclusive} is greater than
 		'''         the array size
 		''' @since 1.8 </exception>
-		Public Shared Function spliterator(Of T)(ByVal array As T(), ByVal startInclusive As Integer, ByVal endExclusive As Integer) As Spliterator(Of T)
+		Public Shared Function spliterator(Of T)(  array As T(),   startInclusive As Integer,   endExclusive As Integer) As Spliterator(Of T)
 			Return Spliterators.spliterator(array, startInclusive, endExclusive, Spliterator.ORDERED Or Spliterator.IMMUTABLE)
 		End Function
 
@@ -4663,7 +4663,7 @@ Namespace java.util
 		''' <param name="array"> the array, assumed to be unmodified during use </param>
 		''' <returns> a spliterator for the array elements
 		''' @since 1.8 </returns>
-		Public Shared Function spliterator(ByVal array As Integer()) As Spliterator.OfInt
+		Public Shared Function spliterator(  array As Integer()) As Spliterator.OfInt
 			Return Spliterators.spliterator(array, Spliterator.ORDERED Or Spliterator.IMMUTABLE)
 		End Function
 
@@ -4684,7 +4684,7 @@ Namespace java.util
 		'''         {@code startInclusive}, or {@code endExclusive} is greater than
 		'''         the array size
 		''' @since 1.8 </exception>
-		Public Shared Function spliterator(ByVal array As Integer(), ByVal startInclusive As Integer, ByVal endExclusive As Integer) As Spliterator.OfInt
+		Public Shared Function spliterator(  array As Integer(),   startInclusive As Integer,   endExclusive As Integer) As Spliterator.OfInt
 			Return Spliterators.spliterator(array, startInclusive, endExclusive, Spliterator.ORDERED Or Spliterator.IMMUTABLE)
 		End Function
 
@@ -4698,7 +4698,7 @@ Namespace java.util
 		''' <param name="array"> the array, assumed to be unmodified during use </param>
 		''' <returns> the spliterator for the array elements
 		''' @since 1.8 </returns>
-		Public Shared Function spliterator(ByVal array As Long()) As Spliterator.OfLong
+		Public Shared Function spliterator(  array As Long()) As Spliterator.OfLong
 			Return Spliterators.spliterator(array, Spliterator.ORDERED Or Spliterator.IMMUTABLE)
 		End Function
 
@@ -4719,7 +4719,7 @@ Namespace java.util
 		'''         {@code startInclusive}, or {@code endExclusive} is greater than
 		'''         the array size
 		''' @since 1.8 </exception>
-		Public Shared Function spliterator(ByVal array As Long(), ByVal startInclusive As Integer, ByVal endExclusive As Integer) As Spliterator.OfLong
+		Public Shared Function spliterator(  array As Long(),   startInclusive As Integer,   endExclusive As Integer) As Spliterator.OfLong
 			Return Spliterators.spliterator(array, startInclusive, endExclusive, Spliterator.ORDERED Or Spliterator.IMMUTABLE)
 		End Function
 
@@ -4734,7 +4734,7 @@ Namespace java.util
 		''' <param name="array"> the array, assumed to be unmodified during use </param>
 		''' <returns> a spliterator for the array elements
 		''' @since 1.8 </returns>
-		Public Shared Function spliterator(ByVal array As Double()) As Spliterator.OfDouble
+		Public Shared Function spliterator(  array As Double()) As Spliterator.OfDouble
 			Return Spliterators.spliterator(array, Spliterator.ORDERED Or Spliterator.IMMUTABLE)
 		End Function
 
@@ -4755,7 +4755,7 @@ Namespace java.util
 		'''         {@code startInclusive}, or {@code endExclusive} is greater than
 		'''         the array size
 		''' @since 1.8 </exception>
-		Public Shared Function spliterator(ByVal array As Double(), ByVal startInclusive As Integer, ByVal endExclusive As Integer) As Spliterator.OfDouble
+		Public Shared Function spliterator(  array As Double(),   startInclusive As Integer,   endExclusive As Integer) As Spliterator.OfDouble
 			Return Spliterators.spliterator(array, startInclusive, endExclusive, Spliterator.ORDERED Or Spliterator.IMMUTABLE)
 		End Function
 
@@ -4767,7 +4767,7 @@ Namespace java.util
 		''' <param name="array"> The array, assumed to be unmodified during use </param>
 		''' <returns> a {@code Stream} for the array
 		''' @since 1.8 </returns>
-		Public Shared Function stream(Of T)(ByVal array As T()) As java.util.stream.Stream(Of T)
+		Public Shared Function stream(Of T)(  array As T()) As java.util.stream.Stream(Of T)
 			Return stream(array, 0, array.Length)
 		End Function
 
@@ -4785,7 +4785,7 @@ Namespace java.util
 		'''         {@code startInclusive}, or {@code endExclusive} is greater than
 		'''         the array size
 		''' @since 1.8 </exception>
-		Public Shared Function stream(Of T)(ByVal array As T(), ByVal startInclusive As Integer, ByVal endExclusive As Integer) As java.util.stream.Stream(Of T)
+		Public Shared Function stream(Of T)(  array As T(),   startInclusive As Integer,   endExclusive As Integer) As java.util.stream.Stream(Of T)
 			Return java.util.stream.StreamSupport.stream(spliterator(array, startInclusive, endExclusive), False)
 		End Function
 
@@ -4796,7 +4796,7 @@ Namespace java.util
 		''' <param name="array"> the array, assumed to be unmodified during use </param>
 		''' <returns> an {@code IntStream} for the array
 		''' @since 1.8 </returns>
-		Public Shared Function stream(ByVal array As Integer()) As java.util.stream.IntStream
+		Public Shared Function stream(  array As Integer()) As java.util.stream.IntStream
 			Return stream(array, 0, array.Length)
 		End Function
 
@@ -4813,7 +4813,7 @@ Namespace java.util
 		'''         {@code startInclusive}, or {@code endExclusive} is greater than
 		'''         the array size
 		''' @since 1.8 </exception>
-		Public Shared Function stream(ByVal array As Integer(), ByVal startInclusive As Integer, ByVal endExclusive As Integer) As java.util.stream.IntStream
+		Public Shared Function stream(  array As Integer(),   startInclusive As Integer,   endExclusive As Integer) As java.util.stream.IntStream
 			Return java.util.stream.StreamSupport.intStream(spliterator(array, startInclusive, endExclusive), False)
 		End Function
 
@@ -4824,7 +4824,7 @@ Namespace java.util
 		''' <param name="array"> the array, assumed to be unmodified during use </param>
 		''' <returns> a {@code LongStream} for the array
 		''' @since 1.8 </returns>
-		Public Shared Function stream(ByVal array As Long()) As java.util.stream.LongStream
+		Public Shared Function stream(  array As Long()) As java.util.stream.LongStream
 			Return stream(array, 0, array.Length)
 		End Function
 
@@ -4841,7 +4841,7 @@ Namespace java.util
 		'''         {@code startInclusive}, or {@code endExclusive} is greater than
 		'''         the array size
 		''' @since 1.8 </exception>
-		Public Shared Function stream(ByVal array As Long(), ByVal startInclusive As Integer, ByVal endExclusive As Integer) As java.util.stream.LongStream
+		Public Shared Function stream(  array As Long(),   startInclusive As Integer,   endExclusive As Integer) As java.util.stream.LongStream
 			Return java.util.stream.StreamSupport.longStream(spliterator(array, startInclusive, endExclusive), False)
 		End Function
 
@@ -4852,7 +4852,7 @@ Namespace java.util
 		''' <param name="array"> the array, assumed to be unmodified during use </param>
 		''' <returns> a {@code DoubleStream} for the array
 		''' @since 1.8 </returns>
-		Public Shared Function stream(ByVal array As Double()) As java.util.stream.DoubleStream
+		Public Shared Function stream(  array As Double()) As java.util.stream.DoubleStream
 			Return stream(array, 0, array.Length)
 		End Function
 
@@ -4869,7 +4869,7 @@ Namespace java.util
 		'''         {@code startInclusive}, or {@code endExclusive} is greater than
 		'''         the array size
 		''' @since 1.8 </exception>
-		Public Shared Function stream(ByVal array As Double(), ByVal startInclusive As Integer, ByVal endExclusive As Integer) As java.util.stream.DoubleStream
+		Public Shared Function stream(  array As Double(),   startInclusive As Integer,   endExclusive As Integer) As java.util.stream.DoubleStream
 			Return java.util.stream.StreamSupport.doubleStream(spliterator(array, startInclusive, endExclusive), False)
 		End Function
 	End Class

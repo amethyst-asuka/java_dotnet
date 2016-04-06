@@ -112,7 +112,7 @@ Namespace java.awt.image
 		''' <param name="off"> the offset into the array of where to store the first pixel </param>
 		''' <param name="scansize"> the distance from one row of pixels to the next in
 		''' the array </param>
-		Public Sub New(ByVal img As java.awt.Image, ByVal x As Integer, ByVal y As Integer, ByVal w As Integer, ByVal h As Integer, ByVal pix As Integer(), ByVal [off] As Integer, ByVal scansize As Integer)
+		Public Sub New(  img As java.awt.Image,   x As Integer,   y As Integer,   w As Integer,   h As Integer,   pix As Integer(),   [off] As Integer,   scansize As Integer)
 			Me.New(img.source, x, y, w, h, pix, [off], scansize)
 		End Sub
 
@@ -139,7 +139,7 @@ Namespace java.awt.image
 		''' <param name="scansize"> the distance from one row of pixels to the next in
 		''' the array </param>
 		''' <seealso cref= ColorModel#getRGBdefault </seealso>
-		Public Sub New(ByVal ip As java.awt.image.ImageProducer, ByVal x As Integer, ByVal y As Integer, ByVal w As Integer, ByVal h As Integer, ByVal pix As Integer(), ByVal [off] As Integer, ByVal scansize As Integer)
+		Public Sub New(  ip As java.awt.image.ImageProducer,   x As Integer,   y As Integer,   w As Integer,   h As Integer,   pix As Integer(),   [off] As Integer,   scansize As Integer)
 			producer = ip
 			dstX = x
 			dstY = y
@@ -172,7 +172,7 @@ Namespace java.awt.image
 		''' <param name="h"> the height of the rectangle of pixels to retrieve </param>
 		''' <param name="forceRGB"> true if the pixels should always be converted to
 		''' the default RGB ColorModel </param>
-		Public Sub New(ByVal img As java.awt.Image, ByVal x As Integer, ByVal y As Integer, ByVal w As Integer, ByVal h As Integer, ByVal forceRGB As Boolean)
+		Public Sub New(  img As java.awt.Image,   x As Integer,   y As Integer,   w As Integer,   h As Integer,   forceRGB As Boolean)
 			producer = img.source
 			dstX = x
 			dstY = y
@@ -234,7 +234,7 @@ Namespace java.awt.image
 		''' <exception cref="InterruptedException">
 		'''            Another thread has interrupted this thread. </exception>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Function grabPixels(ByVal ms As Long) As Boolean
+		Public Overridable Function grabPixels(  ms As Long) As Boolean
 			If (flags And DONEBITS) <> 0 Then Return (flags And GRABBEDBITS) <> 0
 			Dim [end] As Long = ms + System.currentTimeMillis()
 			If Not grabbing Then
@@ -341,7 +341,7 @@ Namespace java.awt.image
 			Get
 				Return imageModel
 			End Get
-			Set(ByVal model As java.awt.image.ColorModel)
+			Set(  model As java.awt.image.ColorModel)
 		End Property
 
 		''' <summary>
@@ -355,7 +355,7 @@ Namespace java.awt.image
 		''' with retrieving the requested pixels. </summary>
 		''' <param name="width"> the width of the dimension </param>
 		''' <param name="height"> the height of the dimension </param>
-		Public Overridable Sub setDimensions(ByVal width As Integer, ByVal height As Integer)
+		Public Overridable Sub setDimensions(  width As Integer,   height As Integer)
 			If dstW < 0 Then dstW = width - dstX
 			If dstH < 0 Then dstH = height - dstY
 			If dstW <= 0 OrElse dstH <= 0 Then
@@ -379,7 +379,7 @@ Namespace java.awt.image
 		''' with retrieving the requested pixels. </summary>
 		''' <param name="hints"> a set of hints used to process the pixels </param>
 		Public Overridable Property hints As Integer
-			Set(ByVal hints As Integer)
+			Set(  hints As Integer)
 				Return
 			End Set
 		End Property
@@ -395,7 +395,7 @@ Namespace java.awt.image
 		''' with retrieving the requested pixels. </summary>
 		''' <param name="props"> the list of properties </param>
 		Public Overridable Property properties(Of T1) As Dictionary(Of T1)
-			Set(ByVal props As Dictionary(Of T1))
+			Set(  props As Dictionary(Of T1))
 				Return
 			End Set
 		End Property

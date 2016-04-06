@@ -992,7 +992,7 @@ Namespace java.awt.event
 		''' </summary>
 		Private originalSource As java.awt.Component
 
-		Private Sub New(ByVal source As java.awt.Component, ByVal id As Integer, ByVal [when] As Long, ByVal modifiers As Integer, ByVal keyCode As Integer, ByVal keyChar As Char, ByVal keyLocation As Integer, ByVal isProxyActive As Boolean)
+		Private Sub New(  source As java.awt.Component,   id As Integer,   [when] As Long,   modifiers As Integer,   keyCode As Integer,   keyChar As Char,   keyLocation As Integer,   isProxyActive As Boolean)
 			Me.New(source, id, [when], modifiers, keyCode, keyChar, keyLocation)
 			Me.isProxyActive = isProxyActive
 		End Sub
@@ -1046,7 +1046,7 @@ Namespace java.awt.event
 		''' <seealso cref= #getKeyChar() </seealso>
 		''' <seealso cref= #getKeyLocation()
 		''' @since 1.4 </seealso>
-		Public Sub New(ByVal source As java.awt.Component, ByVal id As Integer, ByVal [when] As Long, ByVal modifiers As Integer, ByVal keyCode As Integer, ByVal keyChar As Char, ByVal keyLocation As Integer)
+		Public Sub New(  source As java.awt.Component,   id As Integer,   [when] As Long,   modifiers As Integer,   keyCode As Integer,   keyChar As Char,   keyLocation As Integer)
 			MyBase.New(source, id, [when], modifiers)
 			If id = KEY_TYPED Then
 				If keyChar = CHAR_UNDEFINED Then Throw New IllegalArgumentException("invalid keyChar")
@@ -1106,13 +1106,13 @@ Namespace java.awt.event
 		''' <seealso cref= #getModifiers() </seealso>
 		''' <seealso cref= #getKeyCode() </seealso>
 		''' <seealso cref= #getKeyChar() </seealso>
-		Public Sub New(ByVal source As java.awt.Component, ByVal id As Integer, ByVal [when] As Long, ByVal modifiers As Integer, ByVal keyCode As Integer, ByVal keyChar As Char)
+		Public Sub New(  source As java.awt.Component,   id As Integer,   [when] As Long,   modifiers As Integer,   keyCode As Integer,   keyChar As Char)
 			Me.New(source, id, [when], modifiers, keyCode, keyChar, KEY_LOCATION_UNKNOWN)
 		End Sub
 
 		''' @deprecated as of JDK1.1 
 		<Obsolete("as of JDK1.1")> _
-		Public Sub New(ByVal source As java.awt.Component, ByVal id As Integer, ByVal [when] As Long, ByVal modifiers As Integer, ByVal keyCode As Integer)
+		Public Sub New(  source As java.awt.Component,   id As Integer,   [when] As Long,   modifiers As Integer,   keyCode As Integer)
 			Me.New(source, id, [when], modifiers, keyCode, ChrW(keyCode))
 		End Sub
 
@@ -1126,7 +1126,7 @@ Namespace java.awt.event
 			Get
 				Return keyCode
 			End Get
-			Set(ByVal keyCode As Integer)
+			Set(  keyCode As Integer)
 				Me.keyCode = keyCode
 			End Set
 		End Property
@@ -1149,7 +1149,7 @@ Namespace java.awt.event
 			Get
 				Return keyChar
 			End Get
-			Set(ByVal keyChar As Char)
+			Set(  keyChar As Char)
 				Me.keyChar = keyChar
 			End Set
 		End Property
@@ -1169,7 +1169,7 @@ Namespace java.awt.event
 		''' @deprecated as of JDK1.1.4 
 		<Obsolete("as of JDK1.1.4")> _
 		Public Overridable Property modifiers As Integer
-			Set(ByVal modifiers As Integer)
+			Set(  modifiers As Integer)
 				Me.modifiers = modifiers
 				If (modifiers <> 0) AndAlso (modifiersEx = 0) Then
 					newModifiersers()
@@ -1202,7 +1202,7 @@ Namespace java.awt.event
 		''' </summary>
 		''' <returns> a string containing a text description for a physical key,
 		'''         identified by its keyCode </returns>
-		Public Shared Function getKeyText(ByVal keyCode As Integer) As String
+		Public Shared Function getKeyText(  keyCode As Integer) As String
 			If keyCode >= VK_0 AndAlso keyCode <= VK_9 OrElse keyCode >= VK_A AndAlso keyCode <= VK_Z Then Return Convert.ToString(ChrW(keyCode))
 
 			Select Case keyCode
@@ -1530,7 +1530,7 @@ Namespace java.awt.event
 		''' <returns> string a text description of the combination of modifier
 		'''                keys that were held down during the event </returns>
 		''' <seealso cref= InputEvent#getModifiersExText(int) </seealso>
-		Public Shared Function getKeyModifiersText(ByVal modifiers As Integer) As String
+		Public Shared Function getKeyModifiersText(  modifiers As Integer) As String
 			Dim buf As New StringBuilder
 			If (modifiers And InputEvent.META_MASK) <> 0 Then
 				buf.append(java.awt.Toolkit.getProperty("AWT.meta", "Meta"))
@@ -1683,7 +1683,7 @@ Namespace java.awt.event
 		''' 
 		''' @since 1.7
 		'''  </returns>
-		Public Shared Function getExtendedKeyCodeForChar(ByVal c As Integer) As Integer
+		Public Shared Function getExtendedKeyCodeForChar(  c As Integer) As Integer
 			' Return a keycode (if any) associated with a character.
 			Return sun.awt.ExtendedKeyCodes.getExtendedKeyCodeForChar(c)
 		End Function
@@ -1718,7 +1718,7 @@ Namespace java.awt.event
 		''' override overlaping mouse modifiers.
 		''' @serial
 		''' </summary>
-		Private Sub readObject(ByVal s As java.io.ObjectInputStream)
+		Private Sub readObject(  s As java.io.ObjectInputStream)
 			s.defaultReadObject()
 			If modifiers <> 0 AndAlso modifiersEx = 0 Then newModifiersers()
 		End Sub

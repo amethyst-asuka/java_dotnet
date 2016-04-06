@@ -53,7 +53,7 @@ Namespace java.lang.ref
         ''' reference is not registered with any queue.
         ''' </summary>
         ''' <param name="referent"> object the new weak reference will refer to </param>
-        Public Sub New(ByVal referent As T)
+        Public Sub New(  referent As T)
             MyBase.New(referent)
         End Sub
 
@@ -64,7 +64,7 @@ Namespace java.lang.ref
         ''' <param name="referent"> object the new weak reference will refer to </param>
         ''' <param name="q"> the queue with which the reference is to be registered,
         '''          or <tt>null</tt> if registration is not required </param>
-        Public Sub New(ByVal referent As T, ByVal q As ReferenceQueue(Of T))
+        Public Sub New(  referent As T,   q As ReferenceQueue(Of T))
             MyBase.New(referent, q)
         End Sub
 

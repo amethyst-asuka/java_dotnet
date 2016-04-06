@@ -126,12 +126,12 @@ Namespace java.util
 			End Function
 		End Class
 
-		Private Function maskNull(ByVal value As Object) As Object
+		Private Function maskNull(  value As Object) As Object
 			Return (If(value Is Nothing, NULL, value))
 		End Function
 
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Private Function unmaskNull(ByVal value As Object) As V
+		Private Function unmaskNull(  value As Object) As V
 			Return CType(If(value Is NULL, Nothing, value), V)
 		End Function
 
@@ -143,7 +143,7 @@ Namespace java.util
 		''' </summary>
 		''' <param name="keyType"> the class object of the key type for this enum map </param>
 		''' <exception cref="NullPointerException"> if <tt>keyType</tt> is null </exception>
-		Public Sub New(ByVal keyType As [Class])
+		Public Sub New(  keyType As [Class])
 			Me.keyType = keyType
 			keyUniverse = getKeyUniverse(keyType)
 			vals = New Object(keyUniverse.Length - 1){}
@@ -155,7 +155,7 @@ Namespace java.util
 		''' </summary>
 		''' <param name="m"> the enum map from which to initialize this enum map </param>
 		''' <exception cref="NullPointerException"> if <tt>m</tt> is null </exception>
-		Public Sub New(Of T1 As V)(ByVal m As EnumMap(Of T1))
+		Public Sub New(Of T1 As V)(  m As EnumMap(Of T1))
 			keyType = m.keyType
 			keyUniverse = m.keyUniverse
 			vals = m.vals.clone()
@@ -173,7 +173,7 @@ Namespace java.util
 		''' <exception cref="IllegalArgumentException"> if <tt>m</tt> is not an
 		'''     <tt>EnumMap</tt> instance and contains no mappings </exception>
 		''' <exception cref="NullPointerException"> if <tt>m</tt> is null </exception>
-		Public Sub New(Of T1 As V)(ByVal m As Map(Of T1))
+		Public Sub New(Of T1 As V)(  m As Map(Of T1))
 			If TypeOf m Is EnumMap Then
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 				Dim em As EnumMap(Of K, ? As V) = CType(m, EnumMap(Of K, ? As V))
@@ -206,7 +206,7 @@ Namespace java.util
 		''' </summary>
 		''' <param name="value"> the value whose presence in this map is to be tested </param>
 		''' <returns> <tt>true</tt> if this map maps one or more keys to this value </returns>
-		Public Overridable Function containsValue(ByVal value As Object) As Boolean
+		Public Overridable Function containsValue(  value As Object) As Boolean
 			value = maskNull(value)
 
 			For Each val As Object In vals
@@ -223,12 +223,12 @@ Namespace java.util
 		''' <param name="key"> the key whose presence in this map is to be tested </param>
 		''' <returns> <tt>true</tt> if this map contains a mapping for the specified
 		'''            key </returns>
-		Public Overridable Function containsKey(ByVal key As Object) As Boolean
+		Public Overridable Function containsKey(  key As Object) As Boolean
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 			Return isValidKey(key) AndAlso vals(CType(key, Enum(Of ?)).ordinal()) IsNot Nothing
 		End Function
 
-		Private Function containsMapping(ByVal key As Object, ByVal value As Object) As Boolean
+		Private Function containsMapping(  key As Object,   value As Object) As Boolean
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 			Return isValidKey(key) AndAlso maskNull(value).Equals(vals(CType(key, Enum(Of ?)).ordinal()))
 		End Function
@@ -248,7 +248,7 @@ Namespace java.util
 		''' The <seealso cref="#containsKey containsKey"/> operation may be used to
 		''' distinguish these two cases.
 		''' </summary>
-		Public Overridable Function [get](ByVal key As Object) As V
+		Public Overridable Function [get](  key As Object) As V
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 			Return (If(isValidKey(key), unmaskNull(vals(CType(key, Enum(Of ?)).ordinal())), Nothing))
 		End Function
@@ -268,7 +268,7 @@ Namespace java.util
 		'''     return can also indicate that the map previously associated
 		'''     <tt>null</tt> with the specified key.) </returns>
 		''' <exception cref="NullPointerException"> if the specified key is null </exception>
-		Public Overridable Function put(ByVal key As K, ByVal value As V) As V
+		Public Overridable Function put(  key As K,   value As V) As V
 			typeCheck(key)
 
 			Dim index As Integer = key.ordinal()
@@ -286,7 +286,7 @@ Namespace java.util
 		'''     <tt>null</tt> if there was no entry for key.  (A <tt>null</tt>
 		'''     return can also indicate that the map previously associated
 		'''     <tt>null</tt> with the specified key.) </returns>
-		Public Overridable Function remove(ByVal key As Object) As V
+		Public Overridable Function remove(  key As Object) As V
 			If Not isValidKey(key) Then Return Nothing
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 			Dim index As Integer = CType(key, Enum(Of ?)).ordinal()
@@ -296,7 +296,7 @@ Namespace java.util
 			Return unmaskNull(oldValue)
 		End Function
 
-		Private Function removeMapping(ByVal key As Object, ByVal value As Object) As Boolean
+		Private Function removeMapping(  key As Object,   value As Object) As Boolean
 			If Not isValidKey(key) Then Return False
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 			Dim index As Integer = CType(key, Enum(Of ?)).ordinal()
@@ -312,7 +312,7 @@ Namespace java.util
 		''' Returns true if key is of the proper type to be a key in this
 		''' enum map.
 		''' </summary>
-		Private Function isValidKey(ByVal key As Object) As Boolean
+		Private Function isValidKey(  key As Object) As Boolean
 			If key Is Nothing Then Return False
 
 			' Cheaper than instanceof Enum followed by getDeclaringClass
@@ -331,7 +331,7 @@ Namespace java.util
 		''' <exception cref="NullPointerException"> the specified map is null, or if
 		'''     one or more keys in the specified map are null </exception>
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-		Public Overridable Sub putAll(Of T1 As K, ? As V)(ByVal m As Map(Of T1))
+		Public Overridable Sub putAll(Of T1 As K, ? As V)(  m As Map(Of T1))
 			If TypeOf m Is EnumMap Then
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 				Dim em As EnumMap(Of ?, ?) = CType(m, EnumMap(Of ?, ?))
@@ -393,7 +393,7 @@ Namespace java.util
 
 			Private ReadOnly outerInstance As EnumMap
 
-			Public Sub New(ByVal outerInstance As EnumMap)
+			Public Sub New(  outerInstance As EnumMap)
 				Me.outerInstance = outerInstance
 			End Sub
 
@@ -403,10 +403,10 @@ Namespace java.util
 			Public Overridable Function size() As Integer
 				Return outerInstance.size_Renamed
 			End Function
-			Public Overridable Function contains(ByVal o As Object) As Boolean
+			Public Overridable Function contains(  o As Object) As Boolean
 				Return outerInstance.containsKey(o)
 			End Function
-			Public Overridable Function remove(ByVal o As Object) As Boolean
+			Public Overridable Function remove(  o As Object) As Boolean
 				Dim oldSize As Integer = outerInstance.size_Renamed
 				outerInstance.remove(o)
 				Return outerInstance.size_Renamed <> oldSize
@@ -440,7 +440,7 @@ Namespace java.util
 
 			Private ReadOnly outerInstance As EnumMap
 
-			Public Sub New(ByVal outerInstance As EnumMap)
+			Public Sub New(  outerInstance As EnumMap)
 				Me.outerInstance = outerInstance
 			End Sub
 
@@ -450,10 +450,10 @@ Namespace java.util
 			Public Overridable Function size() As Integer
 				Return outerInstance.size_Renamed
 			End Function
-			Public Overridable Function contains(ByVal o As Object) As Boolean
+			Public Overridable Function contains(  o As Object) As Boolean
 				Return outerInstance.containsValue(o)
 			End Function
-			Public Overridable Function remove(ByVal o As Object) As Boolean
+			Public Overridable Function remove(  o As Object) As Boolean
 				o = outerInstance.maskNull(o)
 
 				For i As Integer = 0 To outerInstance.vals.Length - 1
@@ -493,7 +493,7 @@ Namespace java.util
 
 			Private ReadOnly outerInstance As EnumMap
 
-			Public Sub New(ByVal outerInstance As EnumMap)
+			Public Sub New(  outerInstance As EnumMap)
 				Me.outerInstance = outerInstance
 			End Sub
 
@@ -501,13 +501,13 @@ Namespace java.util
 				Return New EntryIterator
 			End Function
 
-			Public Overridable Function contains(ByVal o As Object) As Boolean
+			Public Overridable Function contains(  o As Object) As Boolean
 				If Not(TypeOf o Is DictionaryEntry) Then Return False
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 				Dim entry As KeyValuePair(Of ?, ?) = CType(o, KeyValuePair(Of ?, ?))
 				Return outerInstance.containsMapping(entry.Key, entry.Value)
 			End Function
-			Public Overridable Function remove(ByVal o As Object) As Boolean
+			Public Overridable Function remove(  o As Object) As Boolean
 				If Not(TypeOf o Is DictionaryEntry) Then Return False
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 				Dim entry As KeyValuePair(Of ?, ?) = CType(o, KeyValuePair(Of ?, ?))
@@ -523,13 +523,13 @@ Namespace java.util
 				Return fillEntryArray(New Object(outerInstance.size_Renamed - 1){})
 			End Function
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-			Public Overridable Function toArray(Of T)(ByVal a As T()) As T()
+			Public Overridable Function toArray(Of T)(  a As T()) As T()
 				Dim size As Integer = size()
 				If a.Length < size Then a = CType(java.lang.reflect.Array.newInstance(a.GetType().GetElementType(), size), T())
 				If a.Length > size Then a(size) = Nothing
 				Return CType(fillEntryArray(a), T())
 			End Function
-			Private Function fillEntryArray(ByVal a As Object()) As Object()
+			Private Function fillEntryArray(  a As Object()) As Object()
 				Dim j As Integer = 0
 				For i As Integer = 0 To outerInstance.vals.Length - 1
 					If outerInstance.vals(i) IsNot Nothing Then a(j) = New AbstractMap.SimpleEntry(Of )(outerInstance.keyUniverse(i), outerInstance.unmaskNull(outerInstance.vals(i)))
@@ -544,7 +544,7 @@ Namespace java.util
 
 			Private ReadOnly outerInstance As EnumMap
 
-			Public Sub New(ByVal outerInstance As EnumMap)
+			Public Sub New(  outerInstance As EnumMap)
 				Me.outerInstance = outerInstance
 			End Sub
 
@@ -581,7 +581,7 @@ Namespace java.util
 
 			Private ReadOnly outerInstance As EnumMap
 
-			Public Sub New(ByVal outerInstance As EnumMap)
+			Public Sub New(  outerInstance As EnumMap)
 				Me.outerInstance = outerInstance
 			End Sub
 
@@ -598,7 +598,7 @@ Namespace java.util
 
 			Private ReadOnly outerInstance As EnumMap
 
-			Public Sub New(ByVal outerInstance As EnumMap)
+			Public Sub New(  outerInstance As EnumMap)
 				Me.outerInstance = outerInstance
 			End Sub
 
@@ -615,7 +615,7 @@ Namespace java.util
 
 			Private ReadOnly outerInstance As EnumMap
 
-			Public Sub New(ByVal outerInstance As EnumMap)
+			Public Sub New(  outerInstance As EnumMap)
 				Me.outerInstance = outerInstance
 			End Sub
 
@@ -642,7 +642,7 @@ Namespace java.util
 
 				Private index As Integer
 
-				Function IDictionary.Entry(ByVal index As Integer) As [Private]
+				Function IDictionary.Entry(  index As Integer) As [Private]
 					Me.index = index
 				End Function
 
@@ -660,14 +660,14 @@ Namespace java.util
 					End Get
 				End Property
 
-				Public Overridable Function setValue(ByVal value As V) As V
+				Public Overridable Function setValue(  value As V) As V
 					checkIndexForEntryUse()
 					Dim oldValue As V = unmaskNull(vals(index))
 					vals(index) = maskNull(value)
 					Return oldValue
 				End Function
 
-				Public Overrides Function Equals(ByVal o As Object) As Boolean
+				Public Overrides Function Equals(  o As Object) As Boolean
 					If index < 0 Then Return o Is Me
 
 					If Not(TypeOf o Is DictionaryEntry) Then Return False
@@ -707,7 +707,7 @@ Namespace java.util
 		''' </summary>
 		''' <param name="o"> the object to be compared for equality with this map </param>
 		''' <returns> <tt>true</tt> if the specified object is equal to this map </returns>
-		Public Overrides Function Equals(ByVal o As Object) As Boolean
+		Public Overrides Function Equals(  o As Object) As Boolean
 			If Me Is o Then Return True
 			If TypeOf o Is EnumMap Then Return Equals(CType(o, EnumMap(Of ?, ?)))
 			If Not(TypeOf o Is Map) Then Return False
@@ -731,7 +731,7 @@ Namespace java.util
 			Return True
 		End Function
 
-		Private Overrides Function Equals(Of T1)(ByVal em As EnumMap(Of T1)) As Boolean
+		Private Overrides Function Equals(Of T1)(  em As EnumMap(Of T1)) As Boolean
 			If em.keyType IsNot keyType Then Return size_Renamed = 0 AndAlso em.size_Renamed = 0
 
 			' Key types match, compare each value
@@ -757,7 +757,7 @@ Namespace java.util
 			Return h
 		End Function
 
-		Private Function entryHashCode(ByVal index As Integer) As Integer
+		Private Function entryHashCode(  index As Integer) As Integer
 			Return (keyUniverse(index).GetHashCode() Xor vals(index).GetHashCode())
 		End Function
 
@@ -782,7 +782,7 @@ Namespace java.util
 		''' <summary>
 		''' Throws an exception if e is not of the correct type for this enum set.
 		''' </summary>
-		Private Sub typeCheck(ByVal key As K)
+		Private Sub typeCheck(  key As K)
 			Dim keyClass As  [Class] = key.GetType()
 			If keyClass IsNot keyType AndAlso keyClass.BaseType IsNot keyType Then Throw New ClassCastException(keyClass & " != " & keyType)
 		End Sub
@@ -791,7 +791,7 @@ Namespace java.util
 		''' Returns all of the values comprising K.
 		''' The result is uncloned, cached, and shared by all callers.
 		''' </summary>
-		Private Shared Function getKeyUniverse(Of K As System.Enum(Of K))(ByVal keyType As [Class]) As K()
+		Private Shared Function getKeyUniverse(Of K As System.Enum(Of K))(  keyType As [Class]) As K()
 			Return sun.misc.SharedSecrets.javaLangAccess.getEnumConstantsShared(keyType)
 		End Function
 
@@ -806,7 +806,7 @@ Namespace java.util
 		'''             and value (Object) for each key-value mapping represented
 		'''             by the enum map.
 		''' </summary>
-		Private Sub writeObject(ByVal s As java.io.ObjectOutputStream)
+		Private Sub writeObject(  s As java.io.ObjectOutputStream)
 			' Write out the key type and any hidden stuff
 			s.defaultWriteObject()
 
@@ -831,7 +831,7 @@ Namespace java.util
 		''' deserialize it).
 		''' </summary>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Private Sub readObject(ByVal s As java.io.ObjectInputStream)
+		Private Sub readObject(  s As java.io.ObjectInputStream)
 			' Read in the key type and any hidden stuff
 			s.defaultReadObject()
 

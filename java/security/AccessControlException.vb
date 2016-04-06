@@ -53,7 +53,7 @@ Namespace java.security
 		''' specified, detailed message.
 		''' </summary>
 		''' <param name="s">   the detail message. </param>
-		Public Sub New(ByVal s As String)
+		Public Sub New(  s As String)
 			MyBase.New(s)
 		End Sub
 
@@ -64,7 +64,7 @@ Namespace java.security
 		''' </summary>
 		''' <param name="s">   the detail message. </param>
 		''' <param name="p">   the permission that caused the exception. </param>
-		Public Sub New(ByVal s As String, ByVal p As Permission)
+		Public Sub New(  s As String,   p As Permission)
 			MyBase.New(s)
 			perm = p
 		End Sub

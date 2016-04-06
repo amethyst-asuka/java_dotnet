@@ -103,7 +103,7 @@ Namespace java.lang
 		''' <seealso cref= #removeShutdownHook </seealso>
 		''' <seealso cref= #runFinalizersOnExit </seealso>
 		''' <seealso cref= #halt(int) </seealso>
-		Public Overridable Sub [exit](ByVal status As Integer)
+		Public Overridable Sub [exit](  status As Integer)
 			Dim security As SecurityManager = System.securityManager
 			If security IsNot Nothing Then security.checkExit(status)
 			Shutdown.exit(status)
@@ -202,7 +202,7 @@ Namespace java.lang
 		''' <seealso cref= #halt(int) </seealso>
 		''' <seealso cref= #exit(int)
 		''' @since 1.3 </seealso>
-		Public Overridable Sub addShutdownHook(ByVal hook As Thread)
+		Public Overridable Sub addShutdownHook(  hook As Thread)
 			Dim sm As SecurityManager = System.securityManager
 			If sm IsNot Nothing Then sm.checkPermission(New RuntimePermission("shutdownHooks"))
 			ApplicationShutdownHooks.add(hook)
@@ -227,7 +227,7 @@ Namespace java.lang
 		''' <seealso cref= #addShutdownHook </seealso>
 		''' <seealso cref= #exit(int)
 		''' @since 1.3 </seealso>
-		Public Overridable Function removeShutdownHook(ByVal hook As Thread) As Boolean
+		Public Overridable Function removeShutdownHook(  hook As Thread) As Boolean
 			Dim sm As SecurityManager = System.securityManager
 			If sm IsNot Nothing Then sm.checkPermission(New RuntimePermission("shutdownHooks"))
 			Return ApplicationShutdownHooks.remove(hook)
@@ -260,7 +260,7 @@ Namespace java.lang
 		''' <seealso cref= #addShutdownHook </seealso>
 		''' <seealso cref= #removeShutdownHook
 		''' @since 1.3 </seealso>
-		Public Overridable Sub halt(ByVal status As Integer)
+		Public Overridable Sub halt(  status As Integer)
 			Dim sm As SecurityManager = System.securityManager
 			If sm IsNot Nothing Then sm.checkExit(status)
 			Shutdown.halt(status)
@@ -292,7 +292,7 @@ Namespace java.lang
 		''' <seealso cref=     java.lang.SecurityManager#checkExit(int)
 		''' @since   JDK1.1 </seealso>
 		<Obsolete(" This method is inherently unsafe.  It may result in")> _
-		Public Shared Sub runFinalizersOnExit(ByVal value As Boolean)
+		Public Shared Sub runFinalizersOnExit(  value As Boolean)
 			Dim security As SecurityManager = System.securityManager
 			If security IsNot Nothing Then
 				Try
@@ -332,7 +332,7 @@ Namespace java.lang
 		''' </exception>
 		''' <seealso cref=     #exec(String[], String[], File) </seealso>
 		''' <seealso cref=     ProcessBuilder </seealso>
-		Public Overridable Function exec(ByVal command As String) As Process
+		Public Overridable Function exec(  command As String) As Process
 			Return exec(command, Nothing, Nothing)
 		End Function
 
@@ -372,7 +372,7 @@ Namespace java.lang
 		''' </exception>
 		''' <seealso cref=     #exec(String[], String[], File) </seealso>
 		''' <seealso cref=     ProcessBuilder </seealso>
-		Public Overridable Function exec(ByVal command As String, ByVal envp As String()) As Process
+		Public Overridable Function exec(  command As String,   envp As String()) As Process
 			Return exec(command, envp, Nothing)
 		End Function
 
@@ -425,7 +425,7 @@ Namespace java.lang
 		''' </exception>
 		''' <seealso cref=     ProcessBuilder
 		''' @since 1.3 </seealso>
-		Public Overridable Function exec(ByVal command As String, ByVal envp As String(), ByVal dir As File) As Process
+		Public Overridable Function exec(  command As String,   envp As String(),   dir As File) As Process
 			If command.length() = 0 Then Throw New IllegalArgumentException("Empty command")
 
 			Dim st As New java.util.StringTokenizer(command)
@@ -468,7 +468,7 @@ Namespace java.lang
 		'''          (has length <code>0</code>)
 		''' </exception>
 		''' <seealso cref=     ProcessBuilder </seealso>
-		Public Overridable Function exec(ByVal cmdarray As String()) As Process
+		Public Overridable Function exec(  cmdarray As String()) As Process
 			Return exec(cmdarray, Nothing, Nothing)
 		End Function
 
@@ -510,7 +510,7 @@ Namespace java.lang
 		'''          (has length <code>0</code>)
 		''' </exception>
 		''' <seealso cref=     ProcessBuilder </seealso>
-		Public Overridable Function exec(ByVal cmdarray As String(), ByVal envp As String()) As Process
+		Public Overridable Function exec(  cmdarray As String(),   envp As String()) As Process
 			Return exec(cmdarray, envp, Nothing)
 		End Function
 
@@ -597,7 +597,7 @@ Namespace java.lang
 		''' </exception>
 		''' <seealso cref=     ProcessBuilder
 		''' @since 1.3 </seealso>
-		Public Overridable Function exec(ByVal cmdarray As String(), ByVal envp As String(), ByVal dir As File) As Process
+		Public Overridable Function exec(  cmdarray As String(),   envp As String(),   dir As File) As Process
 			Return (New ProcessBuilder(cmdarray)).environment(envp).directory(dir).start()
 		End Function
 
@@ -725,7 +725,7 @@ Namespace java.lang
 		'''               <code>false</code> to disable this feature. </param>
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Public Sub traceInstructions(ByVal [on] As Boolean)
+		Public Sub traceInstructions(  [on] As Boolean)
 		End Sub
 
 		''' <summary>
@@ -745,7 +745,7 @@ Namespace java.lang
 		'''               <code>false</code> to disable this feature. </param>
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Public Sub traceMethodCalls(ByVal [on] As Boolean)
+		Public Sub traceMethodCalls(  [on] As Boolean)
 		End Sub
 
 		''' <summary>
@@ -790,12 +790,12 @@ Namespace java.lang
 		''' <seealso cref=        java.lang.SecurityException </seealso>
 		''' <seealso cref=        java.lang.SecurityManager#checkLink(java.lang.String) </seealso>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Overridable Sub load(ByVal filename As String)
+		Public Overridable Sub load(  filename As String)
 			load0(sun.reflect.Reflection.callerClass, filename)
 		End Sub
 
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Friend Overridable Sub load0(ByVal fromClass As [Class], ByVal filename As String)
+		Friend Overridable Sub load0(  fromClass As [Class],   filename As String)
 			Dim security As SecurityManager = System.securityManager
 			If security IsNot Nothing Then security.checkLink(filename)
 			If Not((New File(filename)).absolute) Then Throw New UnsatisfiedLinkError("Expecting an absolute path of the library: " & filename)
@@ -846,12 +846,12 @@ Namespace java.lang
 		''' <seealso cref=        java.lang.SecurityException </seealso>
 		''' <seealso cref=        java.lang.SecurityManager#checkLink(java.lang.String) </seealso>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Overridable Sub loadLibrary(ByVal libname As String)
+		Public Overridable Sub loadLibrary(  libname As String)
 			loadLibrary0(sun.reflect.Reflection.callerClass, libname)
 		End Sub
 
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Friend Overridable Sub loadLibrary0(ByVal fromClass As [Class], ByVal libname As String)
+		Friend Overridable Sub loadLibrary0(  fromClass As [Class],   libname As String)
 			Dim security As SecurityManager = System.securityManager
 			If security IsNot Nothing Then security.checkLink(libname)
 			If libname.IndexOf(CInt(Fix(System.IO.Path.DirectorySeparatorChar))) <> -1 Then Throw New UnsatisfiedLinkError("Directory separator should not appear in library name: " & libname)
@@ -879,7 +879,7 @@ Namespace java.lang
 		''' the <code>InputStreamReader</code> and <code>BufferedReader</code>
 		''' classes. 
 		<Obsolete("As of JDK&nbsp;1.1, the preferred way to translate a byte")> _
-		Public Overridable Function getLocalizedInputStream(ByVal [in] As InputStream) As InputStream
+		Public Overridable Function getLocalizedInputStream(  [in] As InputStream) As InputStream
 			Return [in]
 		End Function
 
@@ -906,7 +906,7 @@ Namespace java.lang
 		''' <seealso cref=        java.io.OutputStreamWriter#OutputStreamWriter(java.io.OutputStream) </seealso>
 		''' <seealso cref=        java.io.PrintWriter#PrintWriter(java.io.OutputStream) </seealso>
 		<Obsolete("As of JDK&nbsp;1.1, the preferred way to translate a")> _
-		Public Overridable Function getLocalizedOutputStream(ByVal out As OutputStream) As OutputStream
+		Public Overridable Function getLocalizedOutputStream(  out As OutputStream) As OutputStream
 			Return out
 		End Function
 

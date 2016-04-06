@@ -162,7 +162,7 @@ Namespace java.util.concurrent
 
 			Private Const serialVersionUID As Long = 4982264981922014374L
 
-			Friend Sub New(ByVal count As Integer)
+			Friend Sub New(  count As Integer)
 				state = count
 			End Sub
 
@@ -172,11 +172,11 @@ Namespace java.util.concurrent
 				End Get
 			End Property
 
-			Protected Friend Overrides Function tryAcquireShared(ByVal acquires As Integer) As Integer
+			Protected Friend Overrides Function tryAcquireShared(  acquires As Integer) As Integer
 				Return If(state = 0, 1, -1)
 			End Function
 
-			Protected Friend Overrides Function tryReleaseShared(ByVal releases As Integer) As Boolean
+			Protected Friend Overrides Function tryReleaseShared(  releases As Integer) As Boolean
 				' Decrement count; signal when transition to zero
 				Do
 					Dim c As Integer = state
@@ -195,7 +195,7 @@ Namespace java.util.concurrent
 		''' <param name="count"> the number of times <seealso cref="#countDown"/> must be invoked
 		'''        before threads can pass through <seealso cref="#await"/> </param>
 		''' <exception cref="IllegalArgumentException"> if {@code count} is negative </exception>
-		Public Sub New(ByVal count As Integer)
+		Public Sub New(  count As Integer)
 			If count < 0 Then Throw New IllegalArgumentException("count < 0")
 			Me.sync = New Sync(count)
 		End Sub
@@ -270,7 +270,7 @@ Namespace java.util.concurrent
 		'''         if the waiting time elapsed before the count reached zero </returns>
 		''' <exception cref="InterruptedException"> if the current thread is interrupted
 		'''         while waiting </exception>
-		Public Overridable Function [await](ByVal timeout As Long, ByVal unit As TimeUnit) As Boolean
+		Public Overridable Function [await](  timeout As Long,   unit As TimeUnit) As Boolean
 			Return sync.tryAcquireSharedNanos(1, unit.toNanos(timeout))
 		End Function
 

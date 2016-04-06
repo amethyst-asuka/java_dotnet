@@ -39,7 +39,7 @@ Namespace java.net
 		''' <param name="fileName"> the specified file name </param>
 		''' <returns> a {@code String} indicating the MIME
 		''' type for the specified file name. </returns>
-		Function getContentTypeFor(ByVal fileName As String) As String
+		Function getContentTypeFor(  fileName As String) As String
 	End Interface
 
 End Namespace

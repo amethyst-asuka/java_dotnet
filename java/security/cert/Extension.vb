@@ -90,7 +90,7 @@ Namespace java.security.cert
 		''' <param name="out"> the output stream </param>
 		''' <exception cref="IOException"> on encoding or output error. </exception>
 		''' <exception cref="NullPointerException"> if {@code out} is {@code null}. </exception>
-		Sub encode(ByVal out As java.io.OutputStream)
+		Sub encode(  out As java.io.OutputStream)
 	End Interface
 
 End Namespace

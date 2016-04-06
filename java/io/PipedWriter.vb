@@ -57,7 +57,7 @@ Namespace java.io
 		''' </summary>
 		''' <param name="snk">   The piped reader to connect to. </param>
 		''' <exception cref="IOException">  if an I/O error occurs. </exception>
-		Public Sub New(ByVal snk As PipedReader)
+		Public Sub New(  snk As PipedReader)
 			connect(snk)
 		End Sub
 
@@ -89,7 +89,7 @@ Namespace java.io
 		''' <param name="snk">   the piped reader to connect to. </param>
 		''' <exception cref="IOException">  if an I/O error occurs. </exception>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Sub connect(ByVal snk As PipedReader)
+		Public Overridable Sub connect(  snk As PipedReader)
 			If snk Is Nothing Then
 				Throw New NullPointerException
 			ElseIf sink IsNot Nothing OrElse snk.connected Then
@@ -117,7 +117,7 @@ Namespace java.io
 		'''          <a href=PipedOutputStream.html#BROKEN> <code>broken</code></a>,
 		'''          <seealso cref="#connect(java.io.PipedReader) unconnected"/>, closed
 		'''          or an I/O error occurs. </exception>
-		Public Overrides Sub write(ByVal c As Integer)
+		Public Overrides Sub write(  c As Integer)
 			If sink Is Nothing Then Throw New IOException("Pipe not connected")
 			sink.receive(c)
 		End Sub

@@ -66,7 +66,7 @@ Namespace java.lang
 		''' </returns>
 		''' <exception cref="IOException">
 		'''          If an I/O error occurs </exception>
-		Function append(ByVal csq As CharSequence) As Appendable
+		Function append(  csq As CharSequence) As Appendable
 
 		''' <summary>
 		''' Appends a subsequence of the specified character sequence to this
@@ -101,7 +101,7 @@ Namespace java.lang
 		''' </exception>
 		''' <exception cref="IOException">
 		'''          If an I/O error occurs </exception>
-		Function append(ByVal csq As CharSequence, ByVal start As Integer, ByVal [end] As Integer) As Appendable
+		Function append(  csq As CharSequence,   start As Integer,   [end] As Integer) As Appendable
 
 		''' <summary>
 		''' Appends the specified character to this <tt>Appendable</tt>.
@@ -113,7 +113,7 @@ Namespace java.lang
 		''' </returns>
 		''' <exception cref="IOException">
 		'''          If an I/O error occurs </exception>
-		Function append(ByVal c As Char) As Appendable
+		Function append(  c As Char) As Appendable
 	End Interface
 
 End Namespace

@@ -72,7 +72,7 @@ Namespace java.text
 		''' <param name="iterators"> AttributedCharacterIterators to construct
 		''' AttributedString from. </param>
 		''' <exception cref="NullPointerException"> if iterators is null </exception>
-		Friend Sub New(ByVal iterators As AttributedCharacterIterator())
+		Friend Sub New(  iterators As AttributedCharacterIterator())
 			If iterators Is Nothing Then Throw New NullPointerException("Iterators must not be null")
 			If iterators.Length = 0 Then
 				text = ""
@@ -116,7 +116,7 @@ Namespace java.text
 		''' Constructs an AttributedString instance with the given text. </summary>
 		''' <param name="text"> The text for this attributed string. </param>
 		''' <exception cref="NullPointerException"> if <code>text</code> is null. </exception>
-		Public Sub New(ByVal text As String)
+		Public Sub New(  text As String)
 			If text Is Nothing Then Throw New NullPointerException
 			Me.text = text
 		End Sub
@@ -131,7 +131,7 @@ Namespace java.text
 		''' and the attributes parameter is not an empty Map (attributes
 		''' cannot be applied to a 0-length range). </exception>
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-		Public Sub New(Of T1 As java.text.AttributedCharacterIterator.Attribute, ?)(ByVal text As String, ByVal attributes As Map(Of T1))
+		Public Sub New(Of T1 As java.text.AttributedCharacterIterator.Attribute, ?)(  text As String,   attributes As Map(Of T1))
 			If text Is Nothing OrElse attributes Is Nothing Then Throw New NullPointerException
 			Me.text = text
 
@@ -164,7 +164,7 @@ Namespace java.text
 		''' text represented by AttributedCharacterIterator. </summary>
 		''' <param name="text"> The text for this attributed string. </param>
 		''' <exception cref="NullPointerException"> if <code>text</code> is null. </exception>
-		Public Sub New(ByVal text As AttributedCharacterIterator)
+		Public Sub New(  text As AttributedCharacterIterator)
 			' If performance is critical, this constructor should be
 			' implemented here rather than invoking the constructor for a
 			' subrange. We can avoid some range checking in the loops.
@@ -187,7 +187,7 @@ Namespace java.text
 		''' <exception cref="IllegalArgumentException"> if the subrange given by
 		''' beginIndex and endIndex is out of the text range. </exception>
 		''' <seealso cref= java.text.Annotation </seealso>
-		Public Sub New(ByVal text As AttributedCharacterIterator, ByVal beginIndex As Integer, ByVal endIndex As Integer)
+		Public Sub New(  text As AttributedCharacterIterator,   beginIndex As Integer,   endIndex As Integer)
 			Me.New(text, beginIndex, endIndex, Nothing)
 		End Sub
 
@@ -212,7 +212,7 @@ Namespace java.text
 		''' <exception cref="IllegalArgumentException"> if the subrange given by
 		''' beginIndex and endIndex is out of the text range. </exception>
 		''' <seealso cref= java.text.Annotation </seealso>
-		Public Sub New(ByVal text As AttributedCharacterIterator, ByVal beginIndex As Integer, ByVal endIndex As Integer, ByVal attributes As java.text.AttributedCharacterIterator.Attribute())
+		Public Sub New(  text As AttributedCharacterIterator,   beginIndex As Integer,   endIndex As Integer,   attributes As java.text.AttributedCharacterIterator.Attribute())
 			If text Is Nothing Then Throw New NullPointerException
 
 			' Validate the given subrange
@@ -287,7 +287,7 @@ Namespace java.text
 		''' <exception cref="NullPointerException"> if <code>attribute</code> is null. </exception>
 		''' <exception cref="IllegalArgumentException"> if the AttributedString has length 0
 		''' (attributes cannot be applied to a 0-length range). </exception>
-		Public Overridable Sub addAttribute(ByVal attribute As java.text.AttributedCharacterIterator.Attribute, ByVal value As Object)
+		Public Overridable Sub addAttribute(  attribute As java.text.AttributedCharacterIterator.Attribute,   value As Object)
 
 			If attribute Is Nothing Then Throw New NullPointerException
 
@@ -307,7 +307,7 @@ Namespace java.text
 		''' <exception cref="IllegalArgumentException"> if beginIndex is less then 0, endIndex is
 		''' greater than the length of the string, or beginIndex and endIndex together don't
 		''' define a non-empty subrange of the string. </exception>
-		Public Overridable Sub addAttribute(ByVal attribute As java.text.AttributedCharacterIterator.Attribute, ByVal value As Object, ByVal beginIndex As Integer, ByVal endIndex As Integer)
+		Public Overridable Sub addAttribute(  attribute As java.text.AttributedCharacterIterator.Attribute,   value As Object,   beginIndex As Integer,   endIndex As Integer)
 
 			If attribute Is Nothing Then Throw New NullPointerException
 
@@ -329,7 +329,7 @@ Namespace java.text
 		''' subrange of the string and the attributes parameter is not an
 		''' empty Map. </exception>
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-		Public Overridable Sub addAttributes(Of T1 As java.text.AttributedCharacterIterator.Attribute, ?)(ByVal attributes As Map(Of T1), ByVal beginIndex As Integer, ByVal endIndex As Integer)
+		Public Overridable Sub addAttributes(Of T1 As java.text.AttributedCharacterIterator.Attribute, ?)(  attributes As Map(Of T1),   beginIndex As Integer,   endIndex As Integer)
 			If attributes Is Nothing Then Throw New NullPointerException
 
 			If beginIndex < 0 OrElse endIndex > length() OrElse beginIndex > endIndex Then Throw New IllegalArgumentException("Invalid substring range")
@@ -355,7 +355,7 @@ Namespace java.text
 		End Sub
 
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Private Sub addAttributeImpl(ByVal attribute As java.text.AttributedCharacterIterator.Attribute, ByVal value As Object, ByVal beginIndex As Integer, ByVal endIndex As Integer)
+		Private Sub addAttributeImpl(  attribute As java.text.AttributedCharacterIterator.Attribute,   value As Object,   beginIndex As Integer,   endIndex As Integer)
 
 			' make sure we have run attribute data vectors
 			If runCount = 0 Then createRunAttributeDataVectors()
@@ -387,7 +387,7 @@ Namespace java.text
 		End Sub
 
 		' ensure there's a run break at offset, return the index of the run
-		Private Function ensureRunBreak(ByVal offset As Integer) As Integer
+		Private Function ensureRunBreak(  offset As Integer) As Integer
 			Return ensureRunBreak(offset, True)
 		End Function
 
@@ -402,7 +402,7 @@ Namespace java.text
 		''' but will exist on the run to the left (< offset).
 		''' </ul>
 		''' </summary>
-		Private Function ensureRunBreak(ByVal offset As Integer, ByVal copyAttrs As Boolean) As Integer
+		Private Function ensureRunBreak(  offset As Integer,   copyAttrs As Boolean) As Integer
 			If offset = length() Then Return runCount
 
 			' search for the run index where this offset should be
@@ -466,7 +466,7 @@ Namespace java.text
 		End Function
 
 		' add the attribute attribute/value to all runs where beginRunIndex <= runIndex < endRunIndex
-		Private Sub addAttributeRunData(ByVal attribute As java.text.AttributedCharacterIterator.Attribute, ByVal value As Object, ByVal beginRunIndex As Integer, ByVal endRunIndex As Integer)
+		Private Sub addAttributeRunData(  attribute As java.text.AttributedCharacterIterator.Attribute,   value As Object,   beginRunIndex As Integer,   endRunIndex As Integer)
 
 			For i As Integer = beginRunIndex To endRunIndex - 1
 				Dim keyValueIndex As Integer = -1 ' index of key and value in our vectors; assume we don't have an entry yet
@@ -518,7 +518,7 @@ Namespace java.text
 		''' </summary>
 		''' <param name="attributes"> a list of attributes that the client is interested in </param>
 		''' <returns> an iterator providing access to the entire text and its selected attributes </returns>
-		Public Overridable Function getIterator(ByVal attributes As java.text.AttributedCharacterIterator.Attribute()) As AttributedCharacterIterator
+		Public Overridable Function getIterator(  attributes As java.text.AttributedCharacterIterator.Attribute()) As AttributedCharacterIterator
 			Return getIterator(attributes, 0, length())
 		End Function
 
@@ -537,7 +537,7 @@ Namespace java.text
 		''' <exception cref="IllegalArgumentException"> if beginIndex is less then 0,
 		''' endIndex is greater than the length of the string, or beginIndex is
 		''' greater than endIndex. </exception>
-		Public Overridable Function getIterator(ByVal attributes As java.text.AttributedCharacterIterator.Attribute(), ByVal beginIndex As Integer, ByVal endIndex As Integer) As AttributedCharacterIterator
+		Public Overridable Function getIterator(  attributes As java.text.AttributedCharacterIterator.Attribute(),   beginIndex As Integer,   endIndex As Integer) As AttributedCharacterIterator
 			Return New AttributedStringIterator(Me, attributes, beginIndex, endIndex)
 		End Function
 
@@ -550,12 +550,12 @@ Namespace java.text
 			Return text.length()
 		End Function
 
-		Private Function charAt(ByVal index As Integer) As Char
+		Private Function charAt(  index As Integer) As Char
 			Return text.Chars(index)
 		End Function
 
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Private Function getAttribute(ByVal attribute As java.text.AttributedCharacterIterator.Attribute, ByVal runIndex As Integer) As Object
+		Private Function getAttribute(  attribute As java.text.AttributedCharacterIterator.Attribute,   runIndex As Integer) As Object
 			Dim currentRunAttributes As Vector(Of java.text.AttributedCharacterIterator.Attribute) = runAttributes(runIndex)
 			Dim currentRunAttributeValues As Vector(Of Object) = runAttributeValues(runIndex)
 			If currentRunAttributes Is Nothing Then Return Nothing
@@ -568,7 +568,7 @@ Namespace java.text
 		End Function
 
 		' gets an attribute value, but returns an annotation only if it's range does not extend outside the range beginIndex..endIndex
-		Private Function getAttributeCheckRange(ByVal attribute As java.text.AttributedCharacterIterator.Attribute, ByVal runIndex As Integer, ByVal beginIndex As Integer, ByVal endIndex As Integer) As Object
+		Private Function getAttributeCheckRange(  attribute As java.text.AttributedCharacterIterator.Attribute,   runIndex As Integer,   beginIndex As Integer,   endIndex As Integer) As Object
 			Dim value As Object = getAttribute(attribute, runIndex)
 			If TypeOf value Is Annotation Then
 				' need to check whether the annotation's range extends outside the iterator's range
@@ -598,7 +598,7 @@ Namespace java.text
 		End Function
 
 		' returns whether all specified attributes have equal values in the runs with the given indices
-		Private Function attributeValuesMatch(Of T1 As java.text.AttributedCharacterIterator.Attribute)(ByVal attributes As [Set](Of T1), ByVal runIndex1 As Integer, ByVal runIndex2 As Integer) As Boolean
+		Private Function attributeValuesMatch(Of T1 As java.text.AttributedCharacterIterator.Attribute)(  attributes As [Set](Of T1),   runIndex1 As Integer,   runIndex2 As Integer) As Boolean
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 			Dim iterator_Renamed As [Iterator](Of ? As java.text.AttributedCharacterIterator.Attribute) = attributes.GetEnumerator()
 			Do While iterator_Renamed.MoveNext()
@@ -609,7 +609,7 @@ Namespace java.text
 		End Function
 
 		' returns whether the two objects are either both null or equal
-		Private Shared Function valuesMatch(ByVal value1 As Object, ByVal value2 As Object) As Boolean
+		Private Shared Function valuesMatch(  value1 As Object,   value2 As Object) As Boolean
 			If value1 Is Nothing Then
 				Return value2 Is Nothing
 			Else
@@ -621,7 +621,7 @@ Namespace java.text
 		''' Appends the contents of the CharacterIterator iterator into the
 		''' StringBuffer buf.
 		''' </summary>
-		Private Sub appendContents(ByVal buf As StringBuffer, ByVal [iterator] As CharacterIterator)
+		Private Sub appendContents(  buf As StringBuffer,   [iterator] As CharacterIterator)
 			Dim index As Integer = [iterator].beginIndex
 			Dim [end] As Integer = [iterator].endIndex
 
@@ -637,7 +637,7 @@ Namespace java.text
 		''' (typically the end of the text) to the ones specified in attrs.
 		''' This is only meant to be called from the constructor!
 		''' </summary>
-		Private Sub setAttributes(ByVal attrs As Map(Of java.text.AttributedCharacterIterator.Attribute, Object), ByVal offset As Integer)
+		Private Sub setAttributes(  attrs As Map(Of java.text.AttributedCharacterIterator.Attribute, Object),   offset As Integer)
 			If runCount = 0 Then createRunAttributeDataVectors()
 
 			Dim index As Integer = ensureRunBreak(offset, False)
@@ -663,7 +663,7 @@ Namespace java.text
 		''' <summary>
 		''' Returns true if the attributes specified in last and attrs differ.
 		''' </summary>
-		Private Shared Function mapsDiffer(Of K, V)(ByVal last As Map(Of K, V), ByVal attrs As Map(Of K, V)) As Boolean
+		Private Shared Function mapsDiffer(Of K, V)(  last As Map(Of K, V),   attrs As Map(Of K, V)) As Boolean
 			If last Is Nothing Then Return (attrs IsNot Nothing AndAlso attrs.size() > 0)
 			Return ((Not last.Equals(attrs)))
 		End Function
@@ -698,7 +698,7 @@ Namespace java.text
 			Private currentRunLimit As Integer
 
 			' constructor
-			Friend Sub New(ByVal outerInstance As AttributedString, ByVal attributes As java.text.AttributedCharacterIterator.Attribute(), ByVal beginIndex As Integer, ByVal endIndex As Integer)
+			Friend Sub New(  outerInstance As AttributedString,   attributes As java.text.AttributedCharacterIterator.Attribute(),   beginIndex As Integer,   endIndex As Integer)
 					Me.outerInstance = outerInstance
 
 				If beginIndex < 0 OrElse beginIndex > endIndex OrElse endIndex > outerInstance.length() Then Throw New IllegalArgumentException("Invalid substring range")
@@ -712,7 +712,7 @@ Namespace java.text
 
 			' Object methods. See documentation in that class.
 
-			Public Overrides Function Equals(ByVal obj As Object) As Boolean
+			Public Overrides Function Equals(  obj As Object) As Boolean
 				If Me Is obj Then Return True
 				If Not(TypeOf obj Is AttributedStringIterator) Then Return False
 
@@ -774,7 +774,7 @@ Namespace java.text
 				End If
 			End Function
 
-			Public Function setIndex(ByVal position As Integer) As Char Implements CharacterIterator.setIndex
+			Public Function setIndex(  position As Integer) As Char Implements CharacterIterator.setIndex
 				If position < beginIndex OrElse position > endIndex Then Throw New IllegalArgumentException("Invalid index")
 				Return internalSetIndex(position)
 			End Function
@@ -805,7 +805,7 @@ Namespace java.text
 				End Get
 			End Property
 
-			Public Function getRunStart(ByVal attribute As java.text.AttributedCharacterIterator.Attribute) As Integer
+			Public Function getRunStart(  attribute As java.text.AttributedCharacterIterator.Attribute) As Integer
 				If currentRunStart = beginIndex OrElse currentRunIndex = -1 Then
 					Return currentRunStart
 				Else
@@ -821,7 +821,7 @@ Namespace java.text
 				End If
 			End Function
 
-			Public Function getRunStart(Of T1 As java.text.AttributedCharacterIterator.Attribute)(ByVal attributes As [Set](Of T1)) As Integer
+			Public Function getRunStart(Of T1 As java.text.AttributedCharacterIterator.Attribute)(  attributes As [Set](Of T1)) As Integer
 				If currentRunStart = beginIndex OrElse currentRunIndex = -1 Then
 					Return currentRunStart
 				Else
@@ -842,7 +842,7 @@ Namespace java.text
 				End Get
 			End Property
 
-			Public Function getRunLimit(ByVal attribute As java.text.AttributedCharacterIterator.Attribute) As Integer
+			Public Function getRunLimit(  attribute As java.text.AttributedCharacterIterator.Attribute) As Integer
 				If currentRunLimit = endIndex OrElse currentRunIndex = -1 Then
 					Return currentRunLimit
 				Else
@@ -858,7 +858,7 @@ Namespace java.text
 				End If
 			End Function
 
-			Public Function getRunLimit(Of T1 As java.text.AttributedCharacterIterator.Attribute)(ByVal attributes As [Set](Of T1)) As Integer
+			Public Function getRunLimit(Of T1 As java.text.AttributedCharacterIterator.Attribute)(  attributes As [Set](Of T1)) As Integer
 				If currentRunLimit = endIndex OrElse currentRunIndex = -1 Then
 					Return currentRunLimit
 				Else
@@ -910,7 +910,7 @@ Namespace java.text
 				End Get
 			End Property
 
-			Public Function getAttribute(ByVal attribute As java.text.AttributedCharacterIterator.Attribute) As Object
+			Public Function getAttribute(  attribute As java.text.AttributedCharacterIterator.Attribute) As Object
 				Dim runIndex As Integer = currentRunIndex
 				If runIndex < 0 Then Return Nothing
 				Return outerInstance.getAttributeCheckRange(attribute, runIndex, beginIndex, endIndex)
@@ -926,7 +926,7 @@ Namespace java.text
 
 			' set the current index, update information about the current run if necessary,
 			' return the character at the current index
-			Private Function internalSetIndex(ByVal position As Integer) As Char
+			Private Function internalSetIndex(  position As Integer) As Char
 				currentIndex = position
 				If position < currentRunStart OrElse position >= currentRunLimit Then updateRunInfo()
 				If currentIndex = endIndex Then
@@ -979,7 +979,7 @@ Namespace java.text
 			Friend beginIndex As Integer
 			Friend endIndex As Integer
 
-			Friend Sub New(ByVal outerInstance As AttributedString, ByVal runIndex As Integer, ByVal beginIndex As Integer, ByVal endIndex As Integer)
+			Friend Sub New(  outerInstance As AttributedString,   runIndex As Integer,   beginIndex As Integer,   endIndex As Integer)
 					Me.outerInstance = outerInstance
 				Me.runIndex = runIndex
 				Me.beginIndex = beginIndex
@@ -1005,7 +1005,7 @@ Namespace java.text
 				Return [set]
 			End Function
 
-			Public Function [get](ByVal key As Object) As Object
+			Public Function [get](  key As Object) As Object
 				Return outerInstance.getAttributeCheckRange(CType(key, java.text.AttributedCharacterIterator.Attribute), runIndex, beginIndex, endIndex)
 			End Function
 		End Class
@@ -1017,12 +1017,12 @@ Namespace java.text
 		Private key As java.text.AttributedCharacterIterator.Attribute
 		Private value As Object
 
-		Friend Sub New(ByVal key As java.text.AttributedCharacterIterator.Attribute, ByVal value As Object)
+		Friend Sub New(  key As java.text.AttributedCharacterIterator.Attribute,   value As Object)
 			Me.key = key
 			Me.value = value
 		End Sub
 
-		Public Overrides Function Equals(ByVal o As Object) As Boolean
+		Public Overrides Function Equals(  o As Object) As Boolean
 			If Not(TypeOf o Is AttributeEntry) Then Return False
 			Dim other As AttributeEntry = CType(o, AttributeEntry)
 			Return other.key.Equals(key) AndAlso (If(value Is Nothing, other.value Is Nothing, other.value.Equals(value)))
@@ -1040,7 +1040,7 @@ Namespace java.text
 			End Get
 		End Property
 
-		Public Overridable Function setValue(ByVal newValue As Object) As Object
+		Public Overridable Function setValue(  newValue As Object) As Object
 			Throw New UnsupportedOperationException
 		End Function
 

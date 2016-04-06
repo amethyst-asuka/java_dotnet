@@ -91,7 +91,7 @@ Namespace java.rmi.dgc
 		''' <param name="lease"> requested lease </param>
 		''' <returns> granted lease </returns>
 		''' <exception cref="RemoteException"> if dirty call fails </exception>
-		Function dirty(ByVal ids As java.rmi.server.ObjID(), ByVal sequenceNum As Long, ByVal lease As Lease) As Lease
+		Function dirty(  ids As java.rmi.server.ObjID(),   sequenceNum As Long,   lease As Lease) As Lease
 
 		''' <summary>
 		''' The clean call removes the 'vmid' from the reference list of
@@ -106,7 +106,7 @@ Namespace java.rmi.dgc
 		''' <param name="vmid"> client VMID </param>
 		''' <param name="strong"> make 'strong' clean call </param>
 		''' <exception cref="RemoteException"> if clean call fails </exception>
-		Sub clean(ByVal ids As java.rmi.server.ObjID(), ByVal sequenceNum As Long, ByVal vmid As VMID, ByVal strong As Boolean)
+		Sub clean(  ids As java.rmi.server.ObjID(),   sequenceNum As Long,   vmid As VMID,   strong As Boolean)
 	End Interface
 
 End Namespace

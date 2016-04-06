@@ -147,7 +147,7 @@ Namespace java.nio.file
 		'''          for the next key </exception>
 		''' <exception cref="InterruptedException">
 		'''          if interrupted while waiting </exception>
-		Function poll(ByVal timeout As Long, ByVal unit As java.util.concurrent.TimeUnit) As WatchKey
+		Function poll(  timeout As Long,   unit As java.util.concurrent.TimeUnit) As WatchKey
 
 		''' <summary>
 		''' Retrieves and removes next watch key, waiting if none are yet present.

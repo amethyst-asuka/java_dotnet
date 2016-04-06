@@ -131,7 +131,7 @@ Namespace java.net
 		'''             {@code checkListen} method doesn't allow the operation. </exception>
 		''' <seealso cref= SecurityManager#checkListen </seealso>
 		''' <seealso cref= java.net.DatagramSocket#setReuseAddress(boolean) </seealso>
-		Public Sub New(ByVal port As Integer)
+		Public Sub New(  port As Integer)
 			Me.New(New InetSocketAddress(port))
 		End Sub
 
@@ -159,7 +159,7 @@ Namespace java.net
 		''' <seealso cref= java.net.DatagramSocket#setReuseAddress(boolean)
 		''' 
 		''' @since 1.4 </seealso>
-		Public Sub New(ByVal bindaddr As SocketAddress)
+		Public Sub New(  bindaddr As SocketAddress)
 			MyBase.New(CType(Nothing, SocketAddress))
 
 			' Enable SO_REUSEADDR before binding
@@ -208,7 +208,7 @@ Namespace java.net
 		''' <seealso cref= #getTTL() </seealso>
 		<Obsolete("use the setTimeToLive method instead, which uses")> _
 		Public Overridable Property tTL As SByte
-			Set(ByVal ttl As SByte)
+			Set(  ttl As SByte)
 				If closed Then Throw New SocketException("Socket is closed")
 				impl.tTL = ttl
 			End Set
@@ -237,7 +237,7 @@ Namespace java.net
 		''' </exception>
 		''' <seealso cref= #getTimeToLive() </seealso>
 		Public Overridable Property timeToLive As Integer
-			Set(ByVal ttl As Integer)
+			Set(  ttl As Integer)
 				If ttl < 0 OrElse ttl > 255 Then Throw New IllegalArgumentException("ttl out of range")
 				If closed Then Throw New SocketException("Socket is closed")
 				impl.timeToLive = ttl
@@ -267,7 +267,7 @@ Namespace java.net
 		''' {@code checkMulticast} method doesn't allow the join.
 		''' </exception>
 		''' <seealso cref= SecurityManager#checkMulticast(InetAddress) </seealso>
-		Public Overridable Sub joinGroup(ByVal mcastaddr As InetAddress)
+		Public Overridable Sub joinGroup(  mcastaddr As InetAddress)
 			If closed Then Throw New SocketException("Socket is closed")
 
 			checkAddress(mcastaddr, "joinGroup")
@@ -303,7 +303,7 @@ Namespace java.net
 		''' {@code checkMulticast} method doesn't allow the operation.
 		''' </exception>
 		''' <seealso cref= SecurityManager#checkMulticast(InetAddress) </seealso>
-		Public Overridable Sub leaveGroup(ByVal mcastaddr As InetAddress)
+		Public Overridable Sub leaveGroup(  mcastaddr As InetAddress)
 			If closed Then Throw New SocketException("Socket is closed")
 
 			checkAddress(mcastaddr, "leaveGroup")
@@ -338,7 +338,7 @@ Namespace java.net
 		''' </exception>
 		''' <seealso cref= SecurityManager#checkMulticast(InetAddress)
 		''' @since 1.4 </seealso>
-		Public Overridable Sub joinGroup(ByVal mcastaddr As SocketAddress, ByVal netIf As NetworkInterface)
+		Public Overridable Sub joinGroup(  mcastaddr As SocketAddress,   netIf As NetworkInterface)
 			If closed Then Throw New SocketException("Socket is closed")
 
 			If mcastaddr Is Nothing OrElse Not(TypeOf mcastaddr Is InetSocketAddress) Then Throw New IllegalArgumentException("Unsupported address type")
@@ -376,7 +376,7 @@ Namespace java.net
 		''' </exception>
 		''' <seealso cref= SecurityManager#checkMulticast(InetAddress)
 		''' @since 1.4 </seealso>
-		Public Overridable Sub leaveGroup(ByVal mcastaddr As SocketAddress, ByVal netIf As NetworkInterface)
+		Public Overridable Sub leaveGroup(  mcastaddr As SocketAddress,   netIf As NetworkInterface)
 			If closed Then Throw New SocketException("Socket is closed")
 
 			If mcastaddr Is Nothing OrElse Not(TypeOf mcastaddr Is InetSocketAddress) Then Throw New IllegalArgumentException("Unsupported address type")
@@ -401,7 +401,7 @@ Namespace java.net
 		''' the underlying protocol, such as a TCP error. </exception>
 		''' <seealso cref= #getInterface() </seealso>
 		Public Overridable Property [interface] As InetAddress
-			Set(ByVal inf As InetAddress)
+			Set(  inf As InetAddress)
 				If closed Then Throw New SocketException("Socket is closed")
 				checkAddress(inf, "setInterface")
 				SyncLock infLock
@@ -465,7 +465,7 @@ Namespace java.net
 		''' <seealso cref= #getNetworkInterface()
 		''' @since 1.4 </seealso>
 		Public Overridable Property networkInterface As NetworkInterface
-			Set(ByVal netIf As NetworkInterface)
+			Set(  netIf As NetworkInterface)
     
 				SyncLock infLock
 					impl.optionion(SocketOptions.IP_MULTICAST_IF2, netIf)
@@ -500,7 +500,7 @@ Namespace java.net
 		''' @since 1.4 </exception>
 		''' <seealso cref= #getLoopbackMode </seealso>
 		Public Overridable Property loopbackMode As Boolean
-			Set(ByVal disable As Boolean)
+			Set(  disable As Boolean)
 				impl.optionion(SocketOptions.IP_MULTICAST_LOOP, Convert.ToBoolean(disable))
 			End Set
 			Get
@@ -556,7 +556,7 @@ Namespace java.net
 		''' <seealso cref= SecurityManager#checkMulticast(java.net.InetAddress, byte) </seealso>
 		''' <seealso cref= SecurityManager#checkConnect </seealso>
 		<Obsolete("Use the following code or its equivalent instead:")> _
-		Public Overridable Sub send(ByVal p As DatagramPacket, ByVal ttl As SByte)
+		Public Overridable Sub send(  p As DatagramPacket,   ttl As SByte)
 				If closed Then Throw New SocketException("Socket is closed")
 				checkAddress(p.address, "send")
 				SyncLock ttlLock

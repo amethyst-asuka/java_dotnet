@@ -199,7 +199,7 @@ Namespace java.awt.geom
 		''' <seealso cref= #SEG_QUADTO </seealso>
 		''' <seealso cref= #SEG_CUBICTO </seealso>
 		''' <seealso cref= #SEG_CLOSE </seealso>
-		Function currentSegment(ByVal coords As Single()) As Integer
+		Function currentSegment(  coords As Single()) As Integer
 
 		''' <summary>
 		''' Returns the coordinates and type of the current path segment in
@@ -221,7 +221,7 @@ Namespace java.awt.geom
 		''' <seealso cref= #SEG_QUADTO </seealso>
 		''' <seealso cref= #SEG_CUBICTO </seealso>
 		''' <seealso cref= #SEG_CLOSE </seealso>
-		Function currentSegment(ByVal coords As Double()) As Integer
+		Function currentSegment(  coords As Double()) As Integer
 	End Interface
 
 End Namespace

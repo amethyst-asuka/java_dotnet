@@ -202,7 +202,7 @@ Namespace java.awt
 		''' <returns> a <code>Graphics2D</code> to be used for rendering into
 		''' the specified <code>BufferedImage</code> </returns>
 		''' <exception cref="NullPointerException"> if <code>img</code> is null </exception>
-		Public MustOverride Function createGraphics(ByVal img As java.awt.image.BufferedImage) As Graphics2D
+		Public MustOverride Function createGraphics(  img As java.awt.image.BufferedImage) As Graphics2D
 
 		''' <summary>
 		''' Returns an array containing a one-point size instance of all fonts
@@ -272,7 +272,7 @@ Namespace java.awt
 		''' <seealso cref= java.awt.Font </seealso>
 		''' <seealso cref= java.awt.Font#getFamily
 		''' @since 1.2 </seealso>
-		Public MustOverride Function getAvailableFontFamilyNames(ByVal l As java.util.Locale) As String()
+		Public MustOverride Function getAvailableFontFamilyNames(  l As java.util.Locale) As String()
 
 		''' <summary>
 		''' Registers a <i>created</i> <code>Font</code>in this
@@ -304,7 +304,7 @@ Namespace java.awt
 		''' registered in this <code>GraphicsEnvironment</code>. </returns>
 		''' <exception cref="NullPointerException"> if <code>font</code> is null
 		''' @since 1.6 </exception>
-		Public Overridable Function registerFont(ByVal font_Renamed As Font) As Boolean
+		Public Overridable Function registerFont(  font_Renamed As Font) As Boolean
 			If font_Renamed Is Nothing Then Throw New NullPointerException("font cannot be null.")
 			Dim fm As sun.font.FontManager = sun.font.FontManagerFactory.instance
 			Return fm.registerFont(font_Renamed)

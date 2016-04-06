@@ -140,7 +140,7 @@ Namespace java.lang.invoke
 		' generated adapter classes.
 		'
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Shared Function asInterfaceInstance(Of T)(ByVal intfc As [Class], ByVal target As MethodHandle) As T
+		Public Shared Function asInterfaceInstance(Of T)(  intfc As [Class],   target As MethodHandle) As T
 			If (Not intfc.interface) OrElse (Not Modifier.isPublic(intfc.modifiers)) Then Throw newIllegalArgumentException("not a public interface", intfc.name)
 			Dim mh As MethodHandle
 			If System.securityManager IsNot Nothing Then
@@ -183,12 +183,12 @@ Namespace java.lang.invoke
 		Private Class InvocationHandlerAnonymousInnerClassHelper
 			Implements InvocationHandler
 
-			Private Function getArg(ByVal name As String) As Object
+			Private Function getArg(  name As String) As Object
 				If CObj(name) Is "getWrapperInstanceTarget" Then Return target
 				If CObj(name) Is "getWrapperInstanceType" Then Return intfc
 				Throw New AssertionError
 			End Function
-			Public Overridable Function invoke(ByVal proxy_Renamed As Object, ByVal method As Method, ByVal args As Object()) As Object Implements InvocationHandler.invoke
+			Public Overridable Function invoke(  proxy_Renamed As Object,   method As Method,   args As Object()) As Object Implements InvocationHandler.invoke
 				For i As Integer = 0 To methods.length - 1
 					If method.Equals(methods(i)) Then Return vaTargets(i).invokeExact(args)
 				Next i
@@ -206,7 +206,7 @@ Namespace java.lang.invoke
 			End Function
 		End Class
 
-		Private Shared Function bindCaller(ByVal target As MethodHandle, ByVal hostClass As [Class]) As MethodHandle
+		Private Shared Function bindCaller(  target As MethodHandle,   hostClass As [Class]) As MethodHandle
 			Dim cbmh As MethodHandle = MethodHandleImpl.bindCaller(target, hostClass)
 			If target.varargsCollector Then
 				Dim type As MethodType = cbmh.type()
@@ -220,11 +220,11 @@ Namespace java.lang.invoke
 		''' Determines if the given object was produced by a call to <seealso cref="#asInterfaceInstance asInterfaceInstance"/>. </summary>
 		''' <param name="x"> any reference </param>
 		''' <returns> true if the reference is not null and points to an object produced by {@code asInterfaceInstance} </returns>
-		Public Shared Function isWrapperInstance(ByVal x As Object) As Boolean
+		Public Shared Function isWrapperInstance(  x As Object) As Boolean
 			Return TypeOf x Is sun.invoke.WrapperInstance
 		End Function
 
-		Private Shared Function asWrapperInstance(ByVal x As Object) As sun.invoke.WrapperInstance
+		Private Shared Function asWrapperInstance(  x As Object) As sun.invoke.WrapperInstance
 			Try
 				If x IsNot Nothing Then Return CType(x, sun.invoke.WrapperInstance)
 			Catch ex As  ClassCastException
@@ -240,7 +240,7 @@ Namespace java.lang.invoke
 		''' <param name="x"> any reference </param>
 		''' <returns> a method handle implementing the unique method </returns>
 		''' <exception cref="IllegalArgumentException"> if the reference x is not to a wrapper instance </exception>
-		Public Shared Function wrapperInstanceTarget(ByVal x As Object) As MethodHandle
+		Public Shared Function wrapperInstanceTarget(  x As Object) As MethodHandle
 			Return asWrapperInstance(x).wrapperInstanceTarget
 		End Function
 
@@ -251,11 +251,11 @@ Namespace java.lang.invoke
 		''' <param name="x"> any reference </param>
 		''' <returns> the single-method interface type for which the wrapper was created </returns>
 		''' <exception cref="IllegalArgumentException"> if the reference x is not to a wrapper instance </exception>
-		Public Shared Function wrapperInstanceType(ByVal x As Object) As  [Class]
+		Public Shared Function wrapperInstanceType(  x As Object) As  [Class]
 			Return asWrapperInstance(x).wrapperInstanceType
 		End Function
 
-		Private Shared Function isObjectMethod(ByVal m As Method) As Boolean
+		Private Shared Function isObjectMethod(  m As Method) As Boolean
 			Select Case m.name
 			Case "toString"
 				Return (m.returnType Is GetType(String) AndAlso m.parameterTypes.Length = 0)
@@ -267,7 +267,7 @@ Namespace java.lang.invoke
 			Return False
 		End Function
 
-		Private Shared Function callObjectMethod(ByVal self As Object, ByVal m As Method, ByVal args As Object()) As Object
+		Private Shared Function callObjectMethod(  self As Object,   m As Method,   args As Object()) As Object
 			assert(isObjectMethod(m)) : m
 			Select Case m.name
 			Case "toString"
@@ -280,7 +280,7 @@ Namespace java.lang.invoke
 			Return Nothing
 		End Function
 
-		Private Shared Function getSingleNameMethods(ByVal intfc As [Class]) As Method()
+		Private Shared Function getSingleNameMethods(  intfc As [Class]) As Method()
 			Dim methods As New List(Of Method)
 			Dim uniqueName As String = Nothing
 			For Each m As Method In intfc.methods

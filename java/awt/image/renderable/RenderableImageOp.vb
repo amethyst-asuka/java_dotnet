@@ -70,7 +70,7 @@ Namespace java.awt.image.renderable
 		''' <param name="paramBlock"> a ParameterBlock containing this operation's source
 		'''        images and other parameters necessary for the operation
 		'''        to run. </param>
-		Public Sub New(ByVal CRIF As ContextualRenderedImageFactory, ByVal paramBlock As ParameterBlock)
+		Public Sub New(  CRIF As ContextualRenderedImageFactory,   paramBlock As ParameterBlock)
 			Me.myCRIF = CRIF
 			Me.paramBlock = CType(paramBlock.clone(), ParameterBlock)
 		End Sub
@@ -115,7 +115,7 @@ Namespace java.awt.image.renderable
         ''' <param name="name"> the name of the property to get, as a String. </param>
         ''' <returns> a reference to the property Object, or the value
         '''         java.awt.Image.UndefinedProperty. </returns>
-        Public Overridable Function getProperty(ByVal name As String) As Object Implements RenderableImage.getProperty
+        Public Overridable Function getProperty(  name As String) As Object Implements RenderableImage.getProperty
 			Return myCRIF.getProperty(paramBlock, name)
 		End Function
 
@@ -197,7 +197,7 @@ Namespace java.awt.image.renderable
         ''' <param name="paramBlock"> the new ParameterBlock. </param>
         ''' <returns> the old ParameterBlock. </returns>
         ''' <seealso cref= #getParameterBlock </seealso>
-        Public Overridable Function setParameterBlock(ByVal paramBlock As ParameterBlock) As ParameterBlock
+        Public Overridable Function setParameterBlock(  paramBlock As ParameterBlock) As ParameterBlock
 			Dim oldParamBlock As ParameterBlock = Me.paramBlock
 			Me.paramBlock = CType(paramBlock.clone(), ParameterBlock)
 			Return oldParamBlock
@@ -238,7 +238,7 @@ Namespace java.awt.image.renderable
         ''' <param name="h"> the height of rendered image in pixels, or 0. </param>
         ''' <param name="hints"> a RenderingHints object containing hints. </param>
         ''' <returns> a RenderedImage containing the rendered data. </returns>
-        Public Overridable Function createScaledRendering(ByVal w As Integer, ByVal h As Integer, ByVal hints As java.awt.RenderingHints) As java.awt.image.RenderedImage
+        Public Overridable Function createScaledRendering(  w As Integer,   h As Integer,   hints As java.awt.RenderingHints) As java.awt.image.RenderedImage
 			' DSR -- code to try to get a unit scale
 			Dim sx As Double = CDbl(w)/width
 			Dim sy As Double = CDbl(h)/height
@@ -300,7 +300,7 @@ Namespace java.awt.image.renderable
         ''' </summary>
         ''' <param name="renderContext"> The RenderContext to use to perform the rendering. </param>
         ''' <returns> a RenderedImage containing the desired output image. </returns>
-        Public Overridable Function createRendering(ByVal renderContext As RenderContext) As RenderedImage
+        Public Overridable Function createRendering(  renderContext As RenderContext) As RenderedImage
             Dim image_Renamed As RenderedImage = Nothing
             Dim rcOut As RenderContext = Nothing
 

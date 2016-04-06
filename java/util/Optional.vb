@@ -87,7 +87,7 @@ Namespace java.util
 		''' </summary>
 		''' <param name="value"> the non-null value to be present </param>
 		''' <exception cref="NullPointerException"> if value is null </exception>
-		Private Sub New(ByVal value As T)
+		Private Sub New(  value As T)
 			Me.value = Objects.requireNonNull(value)
 		End Sub
 
@@ -98,7 +98,7 @@ Namespace java.util
 		''' <param name="value"> the value to be present, which must be non-null </param>
 		''' <returns> an {@code Optional} with the value present </returns>
 		''' <exception cref="NullPointerException"> if value is null </exception>
-		Public Shared Function [of](Of T)(ByVal value As T) As [Optional](Of T)
+		Public Shared Function [of](Of T)(  value As T) As [Optional](Of T)
 			Return New OptionalCType(value, [Of])
 		End Function
 
@@ -110,7 +110,7 @@ Namespace java.util
 		''' <param name="value"> the possibly-null value to describe </param>
 		''' <returns> an {@code Optional} with a present value if the specified value
 		''' is non-null, otherwise an empty {@code Optional} </returns>
-		Public Shared Function ofNullable(Of T)(ByVal value As T) As [Optional](Of T)
+		Public Shared Function ofNullable(Of T)(  value As T) As [Optional](Of T)
 			Return If(value Is Nothing, empty(), [of](value))
 		End Function
 
@@ -145,7 +145,7 @@ Namespace java.util
 		''' <exception cref="NullPointerException"> if value is present and {@code consumer} is
 		''' null </exception>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Sub ifPresent(Of T1)(ByVal consumer As java.util.function.Consumer(Of T1))
+		Public Sub ifPresent(Of T1)(  consumer As java.util.function.Consumer(Of T1))
 			If value IsNot Nothing Then consumer.accept(value)
 		End Sub
 
@@ -160,7 +160,7 @@ Namespace java.util
 		''' otherwise an empty {@code Optional} </returns>
 		''' <exception cref="NullPointerException"> if the predicate is null </exception>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Function filter(Of T1)(ByVal predicate As java.util.function.Predicate(Of T1)) As [Optional](Of T)
+		Public Function filter(Of T1)(  predicate As java.util.function.Predicate(Of T1)) As [Optional](Of T)
 			Objects.requireNonNull(predicate)
 			If Not present Then
 				Return Me
@@ -198,7 +198,7 @@ Namespace java.util
 		''' otherwise an empty {@code Optional} </returns>
 		''' <exception cref="NullPointerException"> if the mapping function is null </exception>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Function map(Of U, T1 As U)(ByVal mapper As java.util.function.Function(Of T1)) As [Optional](Of U)
+		Public Function map(Of U, T1 As U)(  mapper As java.util.function.Function(Of T1)) As [Optional](Of U)
 			Objects.requireNonNull(mapper)
 			If Not present Then
 				Return empty()
@@ -224,7 +224,7 @@ Namespace java.util
 		''' <exception cref="NullPointerException"> if the mapping function is null or returns
 		''' a null result </exception>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Function flatMap(Of U, T1)(ByVal mapper As java.util.function.Function(Of T1)) As [Optional](Of U)
+		Public Function flatMap(Of U, T1)(  mapper As java.util.function.Function(Of T1)) As [Optional](Of U)
 			Objects.requireNonNull(mapper)
 			If Not present Then
 				Return empty()
@@ -239,7 +239,7 @@ Namespace java.util
 		''' <param name="other"> the value to be returned if there is no value present, may
 		''' be null </param>
 		''' <returns> the value, if present, otherwise {@code other} </returns>
-		Public Function [orElse](ByVal other As T) As T
+		Public Function [orElse](  other As T) As T
 			Return If(value IsNot Nothing, value, other)
 		End Function
 
@@ -252,7 +252,7 @@ Namespace java.util
 		''' <returns> the value if present otherwise the result of {@code other.get()} </returns>
 		''' <exception cref="NullPointerException"> if value is not present and {@code other} is
 		''' null </exception>
-		Public Function orElseGet(Of T1 As T)(ByVal other As java.util.function.Supplier(Of T1)) As T
+		Public Function orElseGet(Of T1 As T)(  other As java.util.function.Supplier(Of T1)) As T
 			Return If(value IsNot Nothing, value, other.get())
 		End Function
 
@@ -271,7 +271,7 @@ Namespace java.util
 		''' <exception cref="X"> if there is no value present </exception>
 		''' <exception cref="NullPointerException"> if no value is present and
 		''' {@code exceptionSupplier} is null </exception>
-		Public Function orElseThrow(Of X As Throwable, T1 As X)(ByVal exceptionSupplier As java.util.function.Supplier(Of T1)) As T
+		Public Function orElseThrow(Of X As Throwable, T1 As X)(  exceptionSupplier As java.util.function.Supplier(Of T1)) As T
 			If value IsNot Nothing Then
 				Return value
 			Else
@@ -291,7 +291,7 @@ Namespace java.util
 		''' <param name="obj"> an object to be tested for equality </param>
 		''' <returns> {code true} if the other object is "equal to" this object
 		''' otherwise {@code false} </returns>
-		Public Overrides Function Equals(ByVal obj As Object) As Boolean
+		Public Overrides Function Equals(  obj As Object) As Boolean
 			If Me Is obj Then Return True
 
 			If Not(TypeOf obj Is Optional) Then Return False

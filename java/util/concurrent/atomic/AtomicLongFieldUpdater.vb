@@ -71,7 +71,7 @@ Namespace java.util.concurrent.atomic
 		''' or the field is inaccessible to the caller according to Java language
 		''' access control </exception>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Shared Function newUpdater(Of U)(ByVal tclass As [Class], ByVal fieldName As String) As AtomicLongFieldUpdater(Of U)
+		Public Shared Function newUpdater(Of U)(  tclass As [Class],   fieldName As String) As AtomicLongFieldUpdater(Of U)
 			Dim caller As  [Class] = sun.reflect.Reflection.callerClass
 			If AtomicLong.VM_SUPPORTS_LONG_CAS Then
 				Return New CASUpdater(Of U)(tclass, fieldName, caller)
@@ -99,7 +99,7 @@ Namespace java.util.concurrent.atomic
 		''' <returns> {@code true} if successful </returns>
 		''' <exception cref="ClassCastException"> if {@code obj} is not an instance
 		''' of the class possessing the field established in the constructor </exception>
-		Public MustOverride Function compareAndSet(ByVal obj As T, ByVal expect As Long, ByVal update As Long) As Boolean
+		Public MustOverride Function compareAndSet(  obj As T,   expect As Long,   update As Long) As Boolean
 
 		''' <summary>
 		''' Atomically sets the field of the given object managed by this updater
@@ -118,7 +118,7 @@ Namespace java.util.concurrent.atomic
 		''' <returns> {@code true} if successful </returns>
 		''' <exception cref="ClassCastException"> if {@code obj} is not an instance
 		''' of the class possessing the field established in the constructor </exception>
-		Public MustOverride Function weakCompareAndSet(ByVal obj As T, ByVal expect As Long, ByVal update As Long) As Boolean
+		Public MustOverride Function weakCompareAndSet(  obj As T,   expect As Long,   update As Long) As Boolean
 
 		''' <summary>
 		''' Sets the field of the given object managed by this updater to the
@@ -127,7 +127,7 @@ Namespace java.util.concurrent.atomic
 		''' </summary>
 		''' <param name="obj"> An object whose field to set </param>
 		''' <param name="newValue"> the new value </param>
-		Public MustOverride Sub [set](ByVal obj As T, ByVal newValue As Long)
+		Public MustOverride Sub [set](  obj As T,   newValue As Long)
 
 		''' <summary>
 		''' Eventually sets the field of the given object managed by this
@@ -136,7 +136,7 @@ Namespace java.util.concurrent.atomic
 		''' <param name="obj"> An object whose field to set </param>
 		''' <param name="newValue"> the new value
 		''' @since 1.6 </param>
-		Public MustOverride Sub lazySet(ByVal obj As T, ByVal newValue As Long)
+		Public MustOverride Sub lazySet(  obj As T,   newValue As Long)
 
 		''' <summary>
 		''' Gets the current value held in the field of the given object managed
@@ -144,7 +144,7 @@ Namespace java.util.concurrent.atomic
 		''' </summary>
 		''' <param name="obj"> An object whose field to get </param>
 		''' <returns> the current value </returns>
-		Public MustOverride Function [get](ByVal obj As T) As Long
+		Public MustOverride Function [get](  obj As T) As Long
 
 		''' <summary>
 		''' Atomically sets the field of the given object managed by this updater
@@ -153,7 +153,7 @@ Namespace java.util.concurrent.atomic
 		''' <param name="obj"> An object whose field to get and set </param>
 		''' <param name="newValue"> the new value </param>
 		''' <returns> the previous value </returns>
-		Public Overridable Function getAndSet(ByVal obj As T, ByVal newValue As Long) As Long
+		Public Overridable Function getAndSet(  obj As T,   newValue As Long) As Long
 			Dim prev As Long
 			Do
 				prev = [get](obj)
@@ -167,7 +167,7 @@ Namespace java.util.concurrent.atomic
 		''' </summary>
 		''' <param name="obj"> An object whose field to get and set </param>
 		''' <returns> the previous value </returns>
-		Public Overridable Function getAndIncrement(ByVal obj As T) As Long
+		Public Overridable Function getAndIncrement(  obj As T) As Long
 			Dim prev, [next] As Long
 			Do
 				prev = [get](obj)
@@ -182,7 +182,7 @@ Namespace java.util.concurrent.atomic
 		''' </summary>
 		''' <param name="obj"> An object whose field to get and set </param>
 		''' <returns> the previous value </returns>
-		Public Overridable Function getAndDecrement(ByVal obj As T) As Long
+		Public Overridable Function getAndDecrement(  obj As T) As Long
 			Dim prev, [next] As Long
 			Do
 				prev = [get](obj)
@@ -198,7 +198,7 @@ Namespace java.util.concurrent.atomic
 		''' <param name="obj"> An object whose field to get and set </param>
 		''' <param name="delta"> the value to add </param>
 		''' <returns> the previous value </returns>
-		Public Overridable Function getAndAdd(ByVal obj As T, ByVal delta As Long) As Long
+		Public Overridable Function getAndAdd(  obj As T,   delta As Long) As Long
 			Dim prev, [next] As Long
 			Do
 				prev = [get](obj)
@@ -213,7 +213,7 @@ Namespace java.util.concurrent.atomic
 		''' </summary>
 		''' <param name="obj"> An object whose field to get and set </param>
 		''' <returns> the updated value </returns>
-		Public Overridable Function incrementAndGet(ByVal obj As T) As Long
+		Public Overridable Function incrementAndGet(  obj As T) As Long
 			Dim prev, [next] As Long
 			Do
 				prev = [get](obj)
@@ -228,7 +228,7 @@ Namespace java.util.concurrent.atomic
 		''' </summary>
 		''' <param name="obj"> An object whose field to get and set </param>
 		''' <returns> the updated value </returns>
-		Public Overridable Function decrementAndGet(ByVal obj As T) As Long
+		Public Overridable Function decrementAndGet(  obj As T) As Long
 			Dim prev, [next] As Long
 			Do
 				prev = [get](obj)
@@ -244,7 +244,7 @@ Namespace java.util.concurrent.atomic
 		''' <param name="obj"> An object whose field to get and set </param>
 		''' <param name="delta"> the value to add </param>
 		''' <returns> the updated value </returns>
-		Public Overridable Function addAndGet(ByVal obj As T, ByVal delta As Long) As Long
+		Public Overridable Function addAndGet(  obj As T,   delta As Long) As Long
 			Dim prev, [next] As Long
 			Do
 				prev = [get](obj)
@@ -263,7 +263,7 @@ Namespace java.util.concurrent.atomic
 		''' <param name="updateFunction"> a side-effect-free function </param>
 		''' <returns> the previous value
 		''' @since 1.8 </returns>
-		Public Function getAndUpdate(ByVal obj As T, ByVal updateFunction As java.util.function.LongUnaryOperator) As Long
+		Public Function getAndUpdate(  obj As T,   updateFunction As java.util.function.LongUnaryOperator) As Long
 			Dim prev, [next] As Long
 			Do
 				prev = [get](obj)
@@ -282,7 +282,7 @@ Namespace java.util.concurrent.atomic
 		''' <param name="updateFunction"> a side-effect-free function </param>
 		''' <returns> the updated value
 		''' @since 1.8 </returns>
-		Public Function updateAndGet(ByVal obj As T, ByVal updateFunction As java.util.function.LongUnaryOperator) As Long
+		Public Function updateAndGet(  obj As T,   updateFunction As java.util.function.LongUnaryOperator) As Long
 			Dim prev, [next] As Long
 			Do
 				prev = [get](obj)
@@ -305,7 +305,7 @@ Namespace java.util.concurrent.atomic
 		''' <param name="accumulatorFunction"> a side-effect-free function of two arguments </param>
 		''' <returns> the previous value
 		''' @since 1.8 </returns>
-		Public Function getAndAccumulate(ByVal obj As T, ByVal x As Long, ByVal accumulatorFunction As java.util.function.LongBinaryOperator) As Long
+		Public Function getAndAccumulate(  obj As T,   x As Long,   accumulatorFunction As java.util.function.LongBinaryOperator) As Long
 			Dim prev, [next] As Long
 			Do
 				prev = [get](obj)
@@ -328,7 +328,7 @@ Namespace java.util.concurrent.atomic
 		''' <param name="accumulatorFunction"> a side-effect-free function of two arguments </param>
 		''' <returns> the updated value
 		''' @since 1.8 </returns>
-		Public Function accumulateAndGet(ByVal obj As T, ByVal x As Long, ByVal accumulatorFunction As java.util.function.LongBinaryOperator) As Long
+		Public Function accumulateAndGet(  obj As T,   x As Long,   accumulatorFunction As java.util.function.LongBinaryOperator) As Long
 			Dim prev, [next] As Long
 			Do
 				prev = [get](obj)
@@ -345,7 +345,7 @@ Namespace java.util.concurrent.atomic
 			Private ReadOnly tclass As  [Class]
 			Private ReadOnly cclass As  [Class]
 
-			Friend Sub New(ByVal tclass As [Class], ByVal fieldName As String, ByVal caller As [Class])
+			Friend Sub New(  tclass As [Class],   fieldName As String,   caller As [Class])
 				Dim field As Field
 				Dim modifiers As Integer
 				Try
@@ -379,67 +379,67 @@ Namespace java.util.concurrent.atomic
 				End Function
 			End Class
 
-			Private Sub fullCheck(ByVal obj As T)
+			Private Sub fullCheck(  obj As T)
 				If Not tclass.isInstance(obj) Then Throw New ClassCastException
 				If cclass IsNot Nothing Then ensureProtectedAccess(obj)
 			End Sub
 
-			Public Overridable Function compareAndSet(ByVal obj As T, ByVal expect As Long, ByVal update As Long) As Boolean
+			Public Overridable Function compareAndSet(  obj As T,   expect As Long,   update As Long) As Boolean
 				If obj Is Nothing OrElse obj.GetType() IsNot tclass OrElse cclass IsNot Nothing Then fullCheck(obj)
 				Return unsafe.compareAndSwapLong(obj, offset, expect, update)
 			End Function
 
-			Public Overridable Function weakCompareAndSet(ByVal obj As T, ByVal expect As Long, ByVal update As Long) As Boolean
+			Public Overridable Function weakCompareAndSet(  obj As T,   expect As Long,   update As Long) As Boolean
 				If obj Is Nothing OrElse obj.GetType() IsNot tclass OrElse cclass IsNot Nothing Then fullCheck(obj)
 				Return unsafe.compareAndSwapLong(obj, offset, expect, update)
 			End Function
 
-			Public Overridable Sub [set](ByVal obj As T, ByVal newValue As Long)
+			Public Overridable Sub [set](  obj As T,   newValue As Long)
 				If obj Is Nothing OrElse obj.GetType() IsNot tclass OrElse cclass IsNot Nothing Then fullCheck(obj)
 				unsafe.putLongVolatile(obj, offset, newValue)
 			End Sub
 
-			Public Overridable Sub lazySet(ByVal obj As T, ByVal newValue As Long)
+			Public Overridable Sub lazySet(  obj As T,   newValue As Long)
 				If obj Is Nothing OrElse obj.GetType() IsNot tclass OrElse cclass IsNot Nothing Then fullCheck(obj)
 				unsafe.putOrderedLong(obj, offset, newValue)
 			End Sub
 
-			Public Overridable Function [get](ByVal obj As T) As Long
+			Public Overridable Function [get](  obj As T) As Long
 				If obj Is Nothing OrElse obj.GetType() IsNot tclass OrElse cclass IsNot Nothing Then fullCheck(obj)
 				Return unsafe.getLongVolatile(obj, offset)
 			End Function
 
-			Public Overridable Function getAndSet(ByVal obj As T, ByVal newValue As Long) As Long
+			Public Overridable Function getAndSet(  obj As T,   newValue As Long) As Long
 				If obj Is Nothing OrElse obj.GetType() IsNot tclass OrElse cclass IsNot Nothing Then fullCheck(obj)
 				Return unsafe.getAndSetLong(obj, offset, newValue)
 			End Function
 
-			Public Overridable Function getAndIncrement(ByVal obj As T) As Long
+			Public Overridable Function getAndIncrement(  obj As T) As Long
 				Return getAndAdd(obj, 1)
 			End Function
 
-			Public Overridable Function getAndDecrement(ByVal obj As T) As Long
+			Public Overridable Function getAndDecrement(  obj As T) As Long
 				Return getAndAdd(obj, -1)
 			End Function
 
-			Public Overridable Function getAndAdd(ByVal obj As T, ByVal delta As Long) As Long
+			Public Overridable Function getAndAdd(  obj As T,   delta As Long) As Long
 				If obj Is Nothing OrElse obj.GetType() IsNot tclass OrElse cclass IsNot Nothing Then fullCheck(obj)
 				Return unsafe.getAndAddLong(obj, offset, delta)
 			End Function
 
-			Public Overridable Function incrementAndGet(ByVal obj As T) As Long
+			Public Overridable Function incrementAndGet(  obj As T) As Long
 				Return getAndAdd(obj, 1) + 1
 			End Function
 
-			Public Overridable Function decrementAndGet(ByVal obj As T) As Long
+			Public Overridable Function decrementAndGet(  obj As T) As Long
 				 Return getAndAdd(obj, -1) - 1
 			End Function
 
-			Public Overridable Function addAndGet(ByVal obj As T, ByVal delta As Long) As Long
+			Public Overridable Function addAndGet(  obj As T,   delta As Long) As Long
 				Return getAndAdd(obj, delta) + delta
 			End Function
 
-			Private Sub ensureProtectedAccess(ByVal obj As T)
+			Private Sub ensureProtectedAccess(  obj As T)
 				If cclass.isInstance(obj) Then Return
 				Throw New RuntimeException(New IllegalAccessException("Class " & cclass.name & " can not access a protected member of class " & tclass.name & " using an instance of " & obj.GetType().name)
 			   )
@@ -455,7 +455,7 @@ Namespace java.util.concurrent.atomic
 			Private ReadOnly tclass As  [Class]
 			Private ReadOnly cclass As  [Class]
 
-			Friend Sub New(ByVal tclass As [Class], ByVal fieldName As String, ByVal caller As [Class])
+			Friend Sub New(  tclass As [Class],   fieldName As String,   caller As [Class])
 				Dim field As Field = Nothing
 				Dim modifiers As Integer = 0
 				Try
@@ -489,12 +489,12 @@ Namespace java.util.concurrent.atomic
 				End Function
 			End Class
 
-			Private Sub fullCheck(ByVal obj As T)
+			Private Sub fullCheck(  obj As T)
 				If Not tclass.isInstance(obj) Then Throw New ClassCastException
 				If cclass IsNot Nothing Then ensureProtectedAccess(obj)
 			End Sub
 
-			Public Overridable Function compareAndSet(ByVal obj As T, ByVal expect As Long, ByVal update As Long) As Boolean
+			Public Overridable Function compareAndSet(  obj As T,   expect As Long,   update As Long) As Boolean
 				If obj Is Nothing OrElse obj.GetType() IsNot tclass OrElse cclass IsNot Nothing Then fullCheck(obj)
 				SyncLock Me
 					Dim v As Long = unsafe.getLong(obj, offset)
@@ -504,29 +504,29 @@ Namespace java.util.concurrent.atomic
 				End SyncLock
 			End Function
 
-			Public Overridable Function weakCompareAndSet(ByVal obj As T, ByVal expect As Long, ByVal update As Long) As Boolean
+			Public Overridable Function weakCompareAndSet(  obj As T,   expect As Long,   update As Long) As Boolean
 				Return compareAndSet(obj, expect, update)
 			End Function
 
-			Public Overridable Sub [set](ByVal obj As T, ByVal newValue As Long)
+			Public Overridable Sub [set](  obj As T,   newValue As Long)
 				If obj Is Nothing OrElse obj.GetType() IsNot tclass OrElse cclass IsNot Nothing Then fullCheck(obj)
 				SyncLock Me
 					unsafe.putLong(obj, offset, newValue)
 				End SyncLock
 			End Sub
 
-			Public Overridable Sub lazySet(ByVal obj As T, ByVal newValue As Long)
+			Public Overridable Sub lazySet(  obj As T,   newValue As Long)
 				[set](obj, newValue)
 			End Sub
 
-			Public Overridable Function [get](ByVal obj As T) As Long
+			Public Overridable Function [get](  obj As T) As Long
 				If obj Is Nothing OrElse obj.GetType() IsNot tclass OrElse cclass IsNot Nothing Then fullCheck(obj)
 				SyncLock Me
 					Return unsafe.getLong(obj, offset)
 				End SyncLock
 			End Function
 
-			Private Sub ensureProtectedAccess(ByVal obj As T)
+			Private Sub ensureProtectedAccess(  obj As T)
 				If cclass.isInstance(obj) Then Return
 				Throw New RuntimeException(New IllegalAccessException("Class " & cclass.name & " can not access a protected member of class " & tclass.name & " using an instance of " & obj.GetType().name)
 			   )
@@ -538,7 +538,7 @@ Namespace java.util.concurrent.atomic
 		''' classloader's delegation chain.
 		''' Equivalent to the inaccessible: first.isAncestor(second).
 		''' </summary>
-		Private Shared Function isAncestor(ByVal first As  ClassLoader, ByVal second As  ClassLoader) As Boolean
+		Private Shared Function isAncestor(  first As  ClassLoader,   second As  ClassLoader) As Boolean
 			Dim acl As  ClassLoader = first
 			Do
 				acl = acl.parent

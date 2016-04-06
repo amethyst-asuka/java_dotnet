@@ -178,7 +178,7 @@ Namespace java.awt
         ''' </summary>
         ''' <param name="parent"> the owner of the dialog
         ''' @since JDK1.1 </param>
-        Public Sub New(ByVal parent As Frame)
+        Public Sub New(  parent As Frame)
             Me.New(parent, "", LOAD)
         End Sub
 
@@ -190,7 +190,7 @@ Namespace java.awt
         ''' </summary>
         ''' <param name="parent">   the owner of the dialog </param>
         ''' <param name="title">    the title of the dialog </param>
-        Public Sub New(ByVal parent As Frame, ByVal title As String)
+        Public Sub New(  parent As Frame,   title As String)
             Me.New(parent, title, LOAD)
         End Sub
 
@@ -212,7 +212,7 @@ Namespace java.awt
         '''                 dialog mode is supplied </exception>
         ''' <seealso cref=       java.awt.FileDialog#LOAD </seealso>
         ''' <seealso cref=       java.awt.FileDialog#SAVE </seealso>
-        Public Sub New(ByVal parent As Frame, ByVal title As String, ByVal mode As Integer)
+        Public Sub New(  parent As Frame,   title As String,   mode As Integer)
             MyBase.New(parent, title, True)
             Me.mode = mode
             layout = Nothing
@@ -233,7 +233,7 @@ Namespace java.awt
         '''            returns <code>true</code> </exception>
         ''' <seealso cref= java.awt.GraphicsEnvironment#isHeadless
         ''' @since 1.5 </seealso>
-        Public Sub New(ByVal parent As Dialog)
+        Public Sub New(  parent As Dialog)
             Me.New(parent, "", LOAD)
         End Sub
 
@@ -256,7 +256,7 @@ Namespace java.awt
         '''            returns <code>true</code> </exception>
         ''' <seealso cref= java.awt.GraphicsEnvironment#isHeadless
         ''' @since     1.5 </seealso>
-        Public Sub New(ByVal parent As Dialog, ByVal title As String)
+        Public Sub New(  parent As Dialog,   title As String)
             Me.New(parent, title, LOAD)
         End Sub
 
@@ -289,7 +289,7 @@ Namespace java.awt
         ''' <seealso cref=       java.awt.FileDialog#LOAD </seealso>
         ''' <seealso cref=       java.awt.FileDialog#SAVE
         ''' @since     1.5 </seealso>
-        Public Sub New(ByVal parent As Dialog, ByVal title As String, ByVal mode As Integer)
+        Public Sub New(  parent As Dialog,   title As String,   mode As Integer)
             MyBase.New(parent, title, True)
             Me.mode = mode
             layout = Nothing
@@ -333,7 +333,7 @@ Namespace java.awt
             Get
                 Return mode
             End Get
-            Set(ByVal mode As Integer)
+            Set(  mode As Integer)
                 Select Case mode
                     Case LOAD, SAVE
                         Me.mode = mode
@@ -354,7 +354,7 @@ Namespace java.awt
             Get
                 Return _dir
             End Get
-            Set(ByVal dir As String)
+            Set(  dir As String)
                 Me._dir = If(dir IsNot Nothing AndAlso dir.Equals(""), Nothing, dir)
                 Dim peer_Renamed As java.awt.peer.FileDialogPeer = CType(Me.peer, java.awt.peer.FileDialogPeer)
                 If peer_Renamed IsNot Nothing Then peer_Renamed.directory = Me.dir
@@ -373,7 +373,7 @@ Namespace java.awt
             Get
                 Return _file
             End Get
-            Set(ByVal file As String)
+            Set(  file As String)
                 Me._file = If(file IsNot Nothing AndAlso file.Equals(""), Nothing, file)
                 Dim peer_Renamed As java.awt.peer.FileDialogPeer = CType(Me.peer, java.awt.peer.FileDialogPeer)
                 If peer_Renamed IsNot Nothing Then peer_Renamed.file = Me.file
@@ -401,7 +401,7 @@ Namespace java.awt
                     End If
                 End SyncLock
             End Get
-            Set(ByVal files As java.io.File())
+            Set(  files As java.io.File())
                 SyncLock objectLock
                     Me._files = files
                 End SyncLock
@@ -416,7 +416,7 @@ Namespace java.awt
         ''' <seealso cref= #isMultipleMode
         ''' @since 1.7 </seealso>
         Public Overridable Property multipleMode As Boolean
-            Set(ByVal enable As Boolean)
+            Set(  enable As Boolean)
                 SyncLock objectLock
                     Me._multipleMode = enable
                 End SyncLock
@@ -442,7 +442,7 @@ Namespace java.awt
             Get
                 Return filter
             End Get
-            Set(ByVal filter As java.io.FilenameFilter)
+            Set(  filter As java.io.FilenameFilter)
                 Me.filter = filter
                 Dim peer_Renamed As java.awt.peer.FileDialogPeer = CType(Me.peer, java.awt.peer.FileDialogPeer)
                 If peer_Renamed IsNot Nothing Then peer_Renamed.filenameFilter = filter
@@ -457,7 +457,7 @@ Namespace java.awt
         ''' equal to an empty string to <code>null</code>.
         ''' </summary>
         ''' <param name="s"> the <code>ObjectInputStream</code> to read </param>
-        Private Sub readObject(ByVal s As java.io.ObjectInputStream)
+        Private Sub readObject(  s As java.io.ObjectInputStream)
             s.defaultReadObject()
 
             ' 1.1 Compatibility: "" is not converted to null in 1.1

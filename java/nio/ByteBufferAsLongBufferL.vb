@@ -38,7 +38,7 @@ Namespace java.nio
 
 
 
-		Friend Sub New(ByVal bb As ByteBuffer) ' package-private
+		Friend Sub New(  bb As ByteBuffer) ' package-private
 
 			MyBase.New(-1, 0, bb.remaining() >> 3, bb.remaining() >> 3)
 			Me.bb = bb
@@ -53,7 +53,7 @@ Namespace java.nio
 
 		End Sub
 
-		Friend Sub New(ByVal bb As ByteBuffer, ByVal mark As Integer, ByVal pos As Integer, ByVal lim As Integer, ByVal cap As Integer, ByVal [off] As Integer)
+		Friend Sub New(  bb As ByteBuffer,   mark As Integer,   pos As Integer,   lim As Integer,   cap As Integer,   [off] As Integer)
 
 			MyBase.New(mark, pos, lim, cap)
 			Me.bb = bb
@@ -87,7 +87,7 @@ Namespace java.nio
 
 
 
-		Protected Friend Overridable Function ix(ByVal i As Integer) As Integer
+		Protected Friend Overridable Function ix(  i As Integer) As Integer
 			Return (i << 3) + offset
 		End Function
 
@@ -95,7 +95,7 @@ Namespace java.nio
 			Return Bits.getLongL(bb, ix(nextGetIndex()))
 		End Function
 
-		Public Overrides Function [get](ByVal i As Integer) As Long
+		Public Overrides Function [get](  i As Integer) As Long
 			Return Bits.getLongL(bb, ix(checkIndex(i)))
 		End Function
 
@@ -107,7 +107,7 @@ Namespace java.nio
 
 
 
-		Public Overrides Function put(ByVal x As Long) As LongBuffer
+		Public Overrides Function put(  x As Long) As LongBuffer
 
 			Bits.putLongL(bb, ix(nextPutIndex()), x)
 			Return Me
@@ -116,7 +116,7 @@ Namespace java.nio
 
 		End Function
 
-		Public Overrides Function put(ByVal i As Integer, ByVal x As Long) As LongBuffer
+		Public Overrides Function put(  i As Integer,   x As Long) As LongBuffer
 
 			Bits.putLongL(bb, ix(checkIndex(i)), x)
 			Return Me

@@ -118,7 +118,7 @@ Namespace java.util
 		''' </summary>
 		''' <param name="c"> the collection whose elements are to be placed into this list </param>
 		''' <exception cref="NullPointerException"> if the specified collection is null </exception>
-		Public Sub New(Of T1 As E)(ByVal c As Collection(Of T1))
+		Public Sub New(Of T1 As E)(  c As Collection(Of T1))
 			Me.New()
 			addAll(c)
 		End Sub
@@ -126,7 +126,7 @@ Namespace java.util
 		''' <summary>
 		''' Links e as first element.
 		''' </summary>
-		Private Sub linkFirst(ByVal e As E)
+		Private Sub linkFirst(  e As E)
 			Dim f As Node(Of E) = first
 			Dim newNode As New Node(Of E)(Nothing, e, f)
 			first = newNode
@@ -142,7 +142,7 @@ Namespace java.util
 		''' <summary>
 		''' Links e as last element.
 		''' </summary>
-		Friend Overridable Sub linkLast(ByVal e As E)
+		Friend Overridable Sub linkLast(  e As E)
 			Dim l As Node(Of E) = last
 			Dim newNode As New Node(Of E)(l, e, Nothing)
 			last = newNode
@@ -158,7 +158,7 @@ Namespace java.util
 		''' <summary>
 		''' Inserts element e before non-null Node succ.
 		''' </summary>
-		Friend Overridable Sub linkBefore(ByVal e As E, ByVal succ As Node(Of E))
+		Friend Overridable Sub linkBefore(  e As E,   succ As Node(Of E))
 			' assert succ != null;
 			Dim pred As Node(Of E) = succ.prev
 			Dim newNode As New Node(Of E)(pred, e, succ)
@@ -175,7 +175,7 @@ Namespace java.util
 		''' <summary>
 		''' Unlinks non-null first node f.
 		''' </summary>
-		Private Function unlinkFirst(ByVal f As Node(Of E)) As E
+		Private Function unlinkFirst(  f As Node(Of E)) As E
 			' assert f == first && f != null;
 			Dim element As E = f.item
 			Dim [next] As Node(Of E) = f.next
@@ -195,7 +195,7 @@ Namespace java.util
 		''' <summary>
 		''' Unlinks non-null last node l.
 		''' </summary>
-		Private Function unlinkLast(ByVal l As Node(Of E)) As E
+		Private Function unlinkLast(  l As Node(Of E)) As E
 			' assert l == last && l != null;
 			Dim element As E = l.item
 			Dim prev As Node(Of E) = l.prev
@@ -215,7 +215,7 @@ Namespace java.util
 		''' <summary>
 		''' Unlinks non-null node x.
 		''' </summary>
-		Friend Overridable Function unlink(ByVal x As Node(Of E)) As E
+		Friend Overridable Function unlink(  x As Node(Of E)) As E
 			' assert x != null;
 			Dim element As E = x.item
 			Dim [next] As Node(Of E) = x.next
@@ -293,7 +293,7 @@ Namespace java.util
 		''' Inserts the specified element at the beginning of this list.
 		''' </summary>
 		''' <param name="e"> the element to add </param>
-		Public Overridable Sub addFirst(ByVal e As E)
+		Public Overridable Sub addFirst(  e As E)
 			linkFirst(e)
 		End Sub
 
@@ -303,7 +303,7 @@ Namespace java.util
 		''' <p>This method is equivalent to <seealso cref="#add"/>.
 		''' </summary>
 		''' <param name="e"> the element to add </param>
-		Public Overridable Sub addLast(ByVal e As E)
+		Public Overridable Sub addLast(  e As E)
 			linkLast(e)
 		End Sub
 
@@ -315,7 +315,7 @@ Namespace java.util
 		''' </summary>
 		''' <param name="o"> element whose presence in this list is to be tested </param>
 		''' <returns> {@code true} if this list contains the specified element </returns>
-		Public Overridable Function contains(ByVal o As Object) As Boolean Implements List(Of E).contains, Deque(Of E).contains
+		Public Overridable Function contains(  o As Object) As Boolean Implements List(Of E).contains, Deque(Of E).contains
 			Return IndexOf(o) <> -1
 		End Function
 
@@ -334,7 +334,7 @@ Namespace java.util
 		''' </summary>
 		''' <param name="e"> element to be appended to this list </param>
 		''' <returns> {@code true} (as specified by <seealso cref="Collection#add"/>) </returns>
-		Public Overridable Function add(ByVal e As E) As Boolean
+		Public Overridable Function add(  e As E) As Boolean
 			linkLast(e)
 			Return True
 		End Function
@@ -351,7 +351,7 @@ Namespace java.util
 		''' </summary>
 		''' <param name="o"> element to be removed from this list, if present </param>
 		''' <returns> {@code true} if this list contained the specified element </returns>
-		Public Overridable Function remove(ByVal o As Object) As Boolean Implements List(Of E).remove, Deque(Of E).remove
+		Public Overridable Function remove(  o As Object) As Boolean Implements List(Of E).remove, Deque(Of E).remove
 			If o Is Nothing Then
 				Dim x As Node(Of E) = first
 				Do While x IsNot Nothing
@@ -385,7 +385,7 @@ Namespace java.util
 		''' <param name="c"> collection containing elements to be added to this list </param>
 		''' <returns> {@code true} if this list changed as a result of the call </returns>
 		''' <exception cref="NullPointerException"> if the specified collection is null </exception>
-		Public Overridable Function addAll(Of T1 As E)(ByVal c As Collection(Of T1)) As Boolean Implements List(Of E).addAll
+		Public Overridable Function addAll(Of T1 As E)(  c As Collection(Of T1)) As Boolean Implements List(Of E).addAll
 			Return addAll(size_Renamed, c)
 		End Function
 
@@ -403,7 +403,7 @@ Namespace java.util
 		''' <returns> {@code true} if this list changed as a result of the call </returns>
 		''' <exception cref="IndexOutOfBoundsException"> {@inheritDoc} </exception>
 		''' <exception cref="NullPointerException"> if the specified collection is null </exception>
-		Public Overridable Function addAll(Of T1 As E)(ByVal index As Integer, ByVal c As Collection(Of T1)) As Boolean Implements List(Of E).addAll
+		Public Overridable Function addAll(Of T1 As E)(  index As Integer,   c As Collection(Of T1)) As Boolean Implements List(Of E).addAll
 			checkPositionIndex(index)
 
 			Dim a As Object() = c.ToArray()
@@ -475,7 +475,7 @@ Namespace java.util
 		''' <param name="index"> index of the element to return </param>
 		''' <returns> the element at the specified position in this list </returns>
 		''' <exception cref="IndexOutOfBoundsException"> {@inheritDoc} </exception>
-		Public Overridable Function [get](ByVal index As Integer) As E Implements List(Of E).get
+		Public Overridable Function [get](  index As Integer) As E Implements List(Of E).get
 			checkElementIndex(index)
 			Return node(index).item
 		End Function
@@ -488,7 +488,7 @@ Namespace java.util
 		''' <param name="element"> element to be stored at the specified position </param>
 		''' <returns> the element previously at the specified position </returns>
 		''' <exception cref="IndexOutOfBoundsException"> {@inheritDoc} </exception>
-		Public Overridable Function [set](ByVal index As Integer, ByVal element As E) As E
+		Public Overridable Function [set](  index As Integer,   element As E) As E
 			checkElementIndex(index)
 			Dim x As Node(Of E) = node(index)
 			Dim oldVal As E = x.item
@@ -504,7 +504,7 @@ Namespace java.util
 		''' <param name="index"> index at which the specified element is to be inserted </param>
 		''' <param name="element"> element to be inserted </param>
 		''' <exception cref="IndexOutOfBoundsException"> {@inheritDoc} </exception>
-		Public Overridable Sub add(ByVal index As Integer, ByVal element As E)
+		Public Overridable Sub add(  index As Integer,   element As E)
 			checkPositionIndex(index)
 
 			If index = size_Renamed Then
@@ -522,7 +522,7 @@ Namespace java.util
 		''' <param name="index"> the index of the element to be removed </param>
 		''' <returns> the element previously at the specified position </returns>
 		''' <exception cref="IndexOutOfBoundsException"> {@inheritDoc} </exception>
-		Public Overridable Function remove(ByVal index As Integer) As E Implements List(Of E).remove
+		Public Overridable Function remove(  index As Integer) As E Implements List(Of E).remove
 			checkElementIndex(index)
 			Return unlink(node(index))
 		End Function
@@ -530,7 +530,7 @@ Namespace java.util
 		''' <summary>
 		''' Tells if the argument is the index of an existing element.
 		''' </summary>
-		Private Function isElementIndex(ByVal index As Integer) As Boolean
+		Private Function isElementIndex(  index As Integer) As Boolean
 			Return index >= 0 AndAlso index < size_Renamed
 		End Function
 
@@ -538,7 +538,7 @@ Namespace java.util
 		''' Tells if the argument is the index of a valid position for an
 		''' iterator or an add operation.
 		''' </summary>
-		Private Function isPositionIndex(ByVal index As Integer) As Boolean
+		Private Function isPositionIndex(  index As Integer) As Boolean
 			Return index >= 0 AndAlso index <= size_Renamed
 		End Function
 
@@ -547,22 +547,22 @@ Namespace java.util
 		''' Of the many possible refactorings of the error handling code,
 		''' this "outlining" performs best with both server and client VMs.
 		''' </summary>
-		Private Function outOfBoundsMsg(ByVal index As Integer) As String
+		Private Function outOfBoundsMsg(  index As Integer) As String
 			Return "Index: " & index & ", Size: " & size_Renamed
 		End Function
 
-		Private Sub checkElementIndex(ByVal index As Integer)
+		Private Sub checkElementIndex(  index As Integer)
 			If Not isElementIndex(index) Then Throw New IndexOutOfBoundsException(outOfBoundsMsg(index))
 		End Sub
 
-		Private Sub checkPositionIndex(ByVal index As Integer)
+		Private Sub checkPositionIndex(  index As Integer)
 			If Not isPositionIndex(index) Then Throw New IndexOutOfBoundsException(outOfBoundsMsg(index))
 		End Sub
 
 		''' <summary>
 		''' Returns the (non-null) Node at the specified element index.
 		''' </summary>
-		Friend Overridable Function node(ByVal index As Integer) As Node(Of E)
+		Friend Overridable Function node(  index As Integer) As Node(Of E)
 			' assert isElementIndex(index);
 
 			If index < (size_Renamed >> 1) Then
@@ -596,7 +596,7 @@ Namespace java.util
 		''' <param name="o"> element to search for </param>
 		''' <returns> the index of the first occurrence of the specified element in
 		'''         this list, or -1 if this list does not contain the element </returns>
-		Public Overridable Function indexOf(ByVal o As Object) As Integer Implements List(Of E).indexOf
+		Public Overridable Function indexOf(  o As Object) As Integer Implements List(Of E).indexOf
 			Dim index As Integer = 0
 			If o Is Nothing Then
 				Dim x As Node(Of E) = first
@@ -626,7 +626,7 @@ Namespace java.util
 		''' <param name="o"> element to search for </param>
 		''' <returns> the index of the last occurrence of the specified element in
 		'''         this list, or -1 if this list does not contain the element </returns>
-		Public Overridable Function lastIndexOf(ByVal o As Object) As Integer Implements List(Of E).lastIndexOf
+		Public Overridable Function lastIndexOf(  o As Object) As Integer Implements List(Of E).lastIndexOf
 			Dim index As Integer = size_Renamed
 			If o Is Nothing Then
 				Dim x As Node(Of E) = last
@@ -694,7 +694,7 @@ Namespace java.util
 		''' <param name="e"> the element to add </param>
 		''' <returns> {@code true} (as specified by <seealso cref="Queue#offer"/>)
 		''' @since 1.5 </returns>
-		Public Overridable Function offer(ByVal e As E) As Boolean
+		Public Overridable Function offer(  e As E) As Boolean
 			Return add(e)
 		End Function
 
@@ -705,7 +705,7 @@ Namespace java.util
 		''' <param name="e"> the element to insert </param>
 		''' <returns> {@code true} (as specified by <seealso cref="Deque#offerFirst"/>)
 		''' @since 1.6 </returns>
-		Public Overridable Function offerFirst(ByVal e As E) As Boolean
+		Public Overridable Function offerFirst(  e As E) As Boolean
 			addFirst(e)
 			Return True
 		End Function
@@ -716,7 +716,7 @@ Namespace java.util
 		''' <param name="e"> the element to insert </param>
 		''' <returns> {@code true} (as specified by <seealso cref="Deque#offerLast"/>)
 		''' @since 1.6 </returns>
-		Public Overridable Function offerLast(ByVal e As E) As Boolean
+		Public Overridable Function offerLast(  e As E) As Boolean
 			addLast(e)
 			Return True
 		End Function
@@ -777,7 +777,7 @@ Namespace java.util
 		''' </summary>
 		''' <param name="e"> the element to push
 		''' @since 1.6 </param>
-		Public Overridable Sub push(ByVal e As E)
+		Public Overridable Sub push(  e As E)
 			addFirst(e)
 		End Sub
 
@@ -803,7 +803,7 @@ Namespace java.util
 		''' <param name="o"> element to be removed from this list, if present </param>
 		''' <returns> {@code true} if the list contained the specified element
 		''' @since 1.6 </returns>
-		Public Overridable Function removeFirstOccurrence(ByVal o As Object) As Boolean Implements Deque(Of E).removeFirstOccurrence
+		Public Overridable Function removeFirstOccurrence(  o As Object) As Boolean Implements Deque(Of E).removeFirstOccurrence
 			Return remove(o)
 		End Function
 
@@ -815,7 +815,7 @@ Namespace java.util
 		''' <param name="o"> element to be removed from this list, if present </param>
 		''' <returns> {@code true} if the list contained the specified element
 		''' @since 1.6 </returns>
-		Public Overridable Function removeLastOccurrence(ByVal o As Object) As Boolean Implements Deque(Of E).removeLastOccurrence
+		Public Overridable Function removeLastOccurrence(  o As Object) As Boolean Implements Deque(Of E).removeLastOccurrence
 			If o Is Nothing Then
 				Dim x As Node(Of E) = last
 				Do While x IsNot Nothing
@@ -858,7 +858,7 @@ Namespace java.util
 		'''         sequence), starting at the specified position in the list </returns>
 		''' <exception cref="IndexOutOfBoundsException"> {@inheritDoc} </exception>
 		''' <seealso cref= List#listIterator(int) </seealso>
-		Public Overridable Function listIterator(ByVal index As Integer) As ListIterator(Of E) Implements List(Of E).listIterator
+		Public Overridable Function listIterator(  index As Integer) As ListIterator(Of E) Implements List(Of E).listIterator
 			checkPositionIndex(index)
 			Return New ListItr(Me, index)
 		End Function
@@ -873,7 +873,7 @@ Namespace java.util
 			Private nextIndex_Renamed As Integer
 			Private expectedModCount As Integer = outerInstance.modCount
 
-			Friend Sub New(ByVal outerInstance As LinkedList, ByVal index As Integer)
+			Friend Sub New(  outerInstance As LinkedList,   index As Integer)
 					Me.outerInstance = outerInstance
 				' assert isPositionIndex(index);
 				next_Renamed = If(index = outerInstance.size_Renamed, Nothing, outerInstance.node(index))
@@ -931,13 +931,13 @@ Namespace java.util
 				expectedModCount += 1
 			End Sub
 
-			Public Overridable Sub [set](ByVal e As E)
+			Public Overridable Sub [set](  e As E)
 				If lastReturned Is Nothing Then Throw New IllegalStateException
 				checkForComodification()
 				lastReturned.item = e
 			End Sub
 
-			Public Overridable Sub add(ByVal e As E)
+			Public Overridable Sub add(  e As E)
 				checkForComodification()
 				lastReturned = Nothing
 				If next_Renamed Is Nothing Then
@@ -950,7 +950,7 @@ Namespace java.util
 			End Sub
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Overridable Sub forEachRemaining(Of T1)(ByVal action As java.util.function.Consumer(Of T1))
+			Public Overridable Sub forEachRemaining(Of T1)(  action As java.util.function.Consumer(Of T1))
 				Objects.requireNonNull(action)
 				Do While outerInstance.modCount = expectedModCount AndAlso nextIndex_Renamed < outerInstance.size_Renamed
 					action.accept(next_Renamed.item)
@@ -971,7 +971,7 @@ Namespace java.util
 			Friend [next] As Node(Of E)
 			Friend prev As Node(Of E)
 
-			Friend Sub New(ByVal prev As Node(Of E), ByVal element As E, ByVal [next] As Node(Of E))
+			Friend Sub New(  prev As Node(Of E),   element As E,   [next] As Node(Of E))
 				Me.item = element
 				Me.next = [next]
 				Me.prev = prev
@@ -993,7 +993,7 @@ Namespace java.util
 
 			Private ReadOnly outerInstance As LinkedList
 
-			Public Sub New(ByVal outerInstance As LinkedList)
+			Public Sub New(  outerInstance As LinkedList)
 				Me.outerInstance = outerInstance
 			End Sub
 
@@ -1105,7 +1105,7 @@ Namespace java.util
 		'''         this list </exception>
 		''' <exception cref="NullPointerException"> if the specified array is null </exception>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Overridable Function toArray(Of T)(ByVal a As T()) As T() Implements List(Of E).toArray
+		Public Overridable Function toArray(Of T)(  a As T()) As T() Implements List(Of E).toArray
 			If a.Length < size_Renamed Then a = CType(java.lang.reflect.Array.newInstance(a.GetType().GetElementType(), size_Renamed), T())
 			Dim i As Integer = 0
 			Dim result As Object() = a
@@ -1131,7 +1131,7 @@ Namespace java.util
 		'''             contains) is emitted (int), followed by all of its
 		'''             elements (each an Object) in the proper order.
 		''' </summary>
-		Private Sub writeObject(ByVal s As java.io.ObjectOutputStream)
+		Private Sub writeObject(  s As java.io.ObjectOutputStream)
 			' Write out any hidden serialization magic
 			s.defaultWriteObject()
 
@@ -1151,7 +1151,7 @@ Namespace java.util
 		''' (that is, deserializes it).
 		''' </summary>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Private Sub readObject(ByVal s As java.io.ObjectInputStream)
+		Private Sub readObject(  s As java.io.ObjectInputStream)
 			' Read in any hidden serialization magic
 			s.defaultReadObject()
 
@@ -1196,7 +1196,7 @@ Namespace java.util
 			Friend expectedModCount As Integer ' initialized when est set
 			Friend batch As Integer ' batch size for splits
 
-			Friend Sub New(ByVal list As LinkedList(Of E), ByVal est As Integer, ByVal expectedModCount As Integer)
+			Friend Sub New(  list As LinkedList(Of E),   est As Integer,   expectedModCount As Integer)
 				Me.list = list
 				Me.est = est
 				Me.expectedModCount = expectedModCount
@@ -1251,7 +1251,7 @@ Namespace java.util
 			End Function
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Sub forEachRemaining(Of T1)(ByVal action As java.util.function.Consumer(Of T1)) Implements Spliterator(Of E).forEachRemaining
+			Public Sub forEachRemaining(Of T1)(  action As java.util.function.Consumer(Of T1)) Implements Spliterator(Of E).forEachRemaining
 				Dim p As Node(Of E)
 				Dim n As Integer
 				If action Is Nothing Then Throw New NullPointerException
@@ -1271,7 +1271,7 @@ Namespace java.util
 			End Sub
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Function tryAdvance(Of T1)(ByVal action As java.util.function.Consumer(Of T1)) As Boolean Implements Spliterator(Of E).tryAdvance
+			Public Function tryAdvance(Of T1)(  action As java.util.function.Consumer(Of T1)) As Boolean Implements Spliterator(Of E).tryAdvance
 				Dim p As Node(Of E)
 				If action Is Nothing Then Throw New NullPointerException
 				p = current

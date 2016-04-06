@@ -58,7 +58,7 @@ Namespace java.util.spi
 		'''         or {@code null} if the given {@code baseName} is not
 		'''         applicable to this provider. </returns>
 		''' <exception cref="NullPointerException"> if {@code baseName} is {@code null} </exception>
-		Function getControl(ByVal baseName As String) As java.util.ResourceBundle.Control
+		Function getControl(  baseName As String) As java.util.ResourceBundle.Control
 	End Interface
 
 End Namespace

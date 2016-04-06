@@ -80,7 +80,7 @@ Namespace java.time.zone
 		''' Constructs a new date-time exception with the specified message.
 		''' </summary>
 		''' <param name="message">  the message to use for this exception, may be null </param>
-		Public Sub New(ByVal message As String)
+		Public Sub New(  message As String)
 			MyBase.New(message)
 		End Sub
 
@@ -89,7 +89,7 @@ Namespace java.time.zone
 		''' </summary>
 		''' <param name="message">  the message to use for this exception, may be null </param>
 		''' <param name="cause">  the cause of the exception, may be null </param>
-		Public Sub New(ByVal message As String, ByVal cause As Throwable)
+		Public Sub New(  message As String,   cause As Throwable)
 			MyBase.New(message, cause)
 		End Sub
 

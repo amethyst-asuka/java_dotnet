@@ -26,44 +26,44 @@
 Namespace java.lang
 
 	Friend MustInherit Class CharacterData
-		Friend MustOverride Function getProperties(ByVal ch As Integer) As Integer
-		Friend MustOverride Function [getType](ByVal ch As Integer) As Integer
-		Friend MustOverride Function isWhitespace(ByVal ch As Integer) As Boolean
-		Friend MustOverride Function isMirrored(ByVal ch As Integer) As Boolean
-		Friend MustOverride Function isJavaIdentifierStart(ByVal ch As Integer) As Boolean
-		Friend MustOverride Function isJavaIdentifierPart(ByVal ch As Integer) As Boolean
-		Friend MustOverride Function isUnicodeIdentifierStart(ByVal ch As Integer) As Boolean
-		Friend MustOverride Function isUnicodeIdentifierPart(ByVal ch As Integer) As Boolean
-		Friend MustOverride Function isIdentifierIgnorable(ByVal ch As Integer) As Boolean
-		Friend MustOverride Function toLowerCase(ByVal ch As Integer) As Integer
-		Friend MustOverride Function toUpperCase(ByVal ch As Integer) As Integer
-		Friend MustOverride Function toTitleCase(ByVal ch As Integer) As Integer
-		Friend MustOverride Function digit(ByVal ch As Integer, ByVal radix As Integer) As Integer
-		Friend MustOverride Function getNumericValue(ByVal ch As Integer) As Integer
-		Friend MustOverride Function getDirectionality(ByVal ch As Integer) As SByte
+		Friend MustOverride Function getProperties(  ch As Integer) As Integer
+		Friend MustOverride Function [getType](  ch As Integer) As Integer
+		Friend MustOverride Function isWhitespace(  ch As Integer) As Boolean
+		Friend MustOverride Function isMirrored(  ch As Integer) As Boolean
+		Friend MustOverride Function isJavaIdentifierStart(  ch As Integer) As Boolean
+		Friend MustOverride Function isJavaIdentifierPart(  ch As Integer) As Boolean
+		Friend MustOverride Function isUnicodeIdentifierStart(  ch As Integer) As Boolean
+		Friend MustOverride Function isUnicodeIdentifierPart(  ch As Integer) As Boolean
+		Friend MustOverride Function isIdentifierIgnorable(  ch As Integer) As Boolean
+		Friend MustOverride Function toLowerCase(  ch As Integer) As Integer
+		Friend MustOverride Function toUpperCase(  ch As Integer) As Integer
+		Friend MustOverride Function toTitleCase(  ch As Integer) As Integer
+		Friend MustOverride Function digit(  ch As Integer,   radix As Integer) As Integer
+		Friend MustOverride Function getNumericValue(  ch As Integer) As Integer
+		Friend MustOverride Function getDirectionality(  ch As Integer) As SByte
 
 		'need to implement for JSR204
-		Friend Overridable Function toUpperCaseEx(ByVal ch As Integer) As Integer
+		Friend Overridable Function toUpperCaseEx(  ch As Integer) As Integer
 			Return ToUpper(ch)
 		End Function
 
-		Friend Overridable Function toUpperCaseCharArray(ByVal ch As Integer) As Char()
+		Friend Overridable Function toUpperCaseCharArray(  ch As Integer) As Char()
 			Return Nothing
 		End Function
 
-		Friend Overridable Function isOtherLowercase(ByVal ch As Integer) As Boolean
+		Friend Overridable Function isOtherLowercase(  ch As Integer) As Boolean
 			Return False
 		End Function
 
-		Friend Overridable Function isOtherUppercase(ByVal ch As Integer) As Boolean
+		Friend Overridable Function isOtherUppercase(  ch As Integer) As Boolean
 			Return False
 		End Function
 
-		Friend Overridable Function isOtherAlphabetic(ByVal ch As Integer) As Boolean
+		Friend Overridable Function isOtherAlphabetic(  ch As Integer) As Boolean
 			Return False
 		End Function
 
-		Friend Overridable Function isIdeographic(ByVal ch As Integer) As Boolean
+		Friend Overridable Function isIdeographic(  ch As Integer) As Boolean
 			Return False
 		End Function
 
@@ -73,7 +73,7 @@ Namespace java.lang
 		' in negative cases for some accessors due to complicated ranges.
 		' Should revisit after optimization of table initialization.
 
-		Shared Function [of](ByVal ch As Integer) As CharacterData
+		Shared Function [of](  ch As Integer) As CharacterData
 			If CInt(CUInt(ch) >> 8 = 0) Then ' fast-path
 				Return CharacterDataLatin1.instance
 			Else

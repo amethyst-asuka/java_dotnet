@@ -76,7 +76,7 @@ Namespace java.awt
 		''' rendering alternatives </param>
 		''' <returns> the <code>CompositeContext</code> object used to perform the
 		''' compositing operation. </returns>
-		Function createContext(ByVal srcColorModel As java.awt.image.ColorModel, ByVal dstColorModel As java.awt.image.ColorModel, ByVal hints As RenderingHints) As CompositeContext
+		Function createContext(  srcColorModel As java.awt.image.ColorModel,   dstColorModel As java.awt.image.ColorModel,   hints As RenderingHints) As CompositeContext
 
 	End Interface
 

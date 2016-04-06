@@ -45,7 +45,7 @@ Namespace java.security.spec
 		Private ReadOnly seed As SByte()
 
 		' Check coefficient c is a valid element in ECField field.
-		Private Shared Sub checkValidity(ByVal field As ECField, ByVal c As System.Numerics.BigInteger, ByVal cName As String)
+		Private Shared Sub checkValidity(  field As ECField,   c As System.Numerics.BigInteger,   cName As String)
 			' can only perform check if field is ECFieldFp or ECFieldF2m.
 			If TypeOf field Is ECFieldFp Then
 				Dim p As System.Numerics.BigInteger = CType(field, ECFieldFp).p
@@ -71,7 +71,7 @@ Namespace java.security.spec
 		''' {@code a}, or {@code b} is null. </exception>
 		''' <exception cref="IllegalArgumentException"> if {@code a}
 		''' or {@code b} is not null and not in {@code field}. </exception>
-		Public Sub New(ByVal field As ECField, ByVal a As System.Numerics.BigInteger, ByVal b As System.Numerics.BigInteger)
+		Public Sub New(  field As ECField,   a As System.Numerics.BigInteger,   b As System.Numerics.BigInteger)
 			Me.New(field, a, b, Nothing)
 		End Sub
 
@@ -89,7 +89,7 @@ Namespace java.security.spec
 		''' {@code a}, or {@code b} is null. </exception>
 		''' <exception cref="IllegalArgumentException"> if {@code a}
 		''' or {@code b} is not null and not in {@code field}. </exception>
-		Public Sub New(ByVal field As ECField, ByVal a As System.Numerics.BigInteger, ByVal b As System.Numerics.BigInteger, ByVal seed As SByte())
+		Public Sub New(  field As ECField,   a As System.Numerics.BigInteger,   b As System.Numerics.BigInteger,   seed As SByte())
 			If field Is Nothing Then Throw New NullPointerException("field is null")
 			If a Is Nothing Then Throw New NullPointerException("first coefficient is null")
 			If b Is Nothing Then Throw New NullPointerException("second coefficient is null")
@@ -157,7 +157,7 @@ Namespace java.security.spec
 		''' <param name="obj"> the object to be compared. </param>
 		''' <returns> true if {@code obj} is an instance of
 		''' EllipticCurve and the field, A, and B match, false otherwise. </returns>
-		Public Overrides Function Equals(ByVal obj As Object) As Boolean
+		Public Overrides Function Equals(  obj As Object) As Boolean
 			If Me Is obj Then Return True
 			If TypeOf obj Is EllipticCurve Then
 				Dim curve As EllipticCurve = CType(obj, EllipticCurve)

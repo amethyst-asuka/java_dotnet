@@ -53,7 +53,7 @@ Namespace java.security
 		''' this particular exception.
 		''' </summary>
 		''' <param name="msg"> the detail message. </param>
-		Public Sub New(ByVal msg As String)
+		Public Sub New(  msg As String)
 			MyBase.New(msg)
 		End Sub
 	End Class

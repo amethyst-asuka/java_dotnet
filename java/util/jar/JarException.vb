@@ -46,7 +46,7 @@ Namespace java.util.jar
 		''' <summary>
 		''' Constructs a JarException with the specified detail message. </summary>
 		''' <param name="s"> the detail message </param>
-		Public Sub New(ByVal s As String)
+		Public Sub New(  s As String)
 			MyBase.New(s)
 		End Sub
 	End Class

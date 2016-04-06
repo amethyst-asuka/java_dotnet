@@ -46,7 +46,7 @@ Namespace java.lang.ref
         Private Class Null(Of S)
             Inherits ReferenceQueue(Of S)
 
-            Friend Overridable Function enqueue(Of T1 As S)(ByVal r As Reference(Of T1)) As Boolean
+            Friend Overridable Function enqueue(Of T1 As S)(  r As Reference(Of T1)) As Boolean
                 Return False
             End Function
         End Class
@@ -60,7 +60,7 @@ Namespace java.lang.ref
         Private head As Reference(Of T) = Nothing
         Private queueLength As Long = 0
 
-        Friend Overridable Function enqueue(ByVal r As Reference(Of T)) As Boolean ' Called only by Reference class
+        Friend Overridable Function enqueue(  r As Reference(Of T)) As Boolean ' Called only by Reference class
             SyncLock _lock
                 ' Check that since getting the lock this reference hasn't already been
                 ' enqueued (and even then removed)
@@ -129,7 +129,7 @@ Namespace java.lang.ref
         ''' <exception cref="InterruptedException">
         '''          If the timeout wait is interrupted </exception>
         'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-        Public Overridable Function remove(ByVal timeout As Long) As Reference(Of T)
+        Public Overridable Function remove(  timeout As Long) As Reference(Of T)
             If timeout < 0 Then Throw New IllegalArgumentException("Negative timeout value")
             SyncLock _lock
                 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:

@@ -108,7 +108,7 @@ Namespace java.util
 		''' <summary>
 		''' Given a bit index, return word index containing it.
 		''' </summary>
-		Private Shared Function wordIndex(ByVal bitIndex As Integer) As Integer
+		Private Shared Function wordIndex(  bitIndex As Integer) As Integer
 			Return bitIndex >> ADDRESS_BITS_PER_WORD
 		End Function
 
@@ -152,7 +152,7 @@ Namespace java.util
 		''' <param name="nbits"> the initial size of the bit set </param>
 		''' <exception cref="NegativeArraySizeException"> if the specified initial size
 		'''         is negative </exception>
-		Public Sub New(ByVal nbits As Integer)
+		Public Sub New(  nbits As Integer)
 			' nbits can't be negative; size 0 is OK
 			If nbits < 0 Then Throw New NegativeArraySizeException("nbits < 0: " & nbits)
 
@@ -160,7 +160,7 @@ Namespace java.util
 			sizeIsSticky = True
 		End Sub
 
-		Private Sub initWords(ByVal nbits As Integer)
+		Private Sub initWords(  nbits As Integer)
 			words = New Long(wordIndex(nbits-1)){}
 		End Sub
 
@@ -168,7 +168,7 @@ Namespace java.util
 		''' Creates a bit set using words as the internal representation.
 		''' The last word (if there is one) must be non-zero.
 		''' </summary>
-		Private Sub New(ByVal words As Long())
+		Private Sub New(  words As Long())
 			Me.words = words
 			Me.wordsInUse = words.Length
 			checkInvariants()
@@ -189,7 +189,7 @@ Namespace java.util
 		'''        new bit set </param>
 		''' <returns> a {@code BitSet} containing all the bits in the long array
 		''' @since 1.7 </returns>
-		Public Shared Function valueOf(ByVal longs As Long()) As BitSet
+		Public Shared Function valueOf(  longs As Long()) As BitSet
 			Dim n As Integer
 			n = longs.Length
 			Do While n > 0 AndAlso longs(n - 1) = 0
@@ -216,7 +216,7 @@ Namespace java.util
 		''' <returns> a {@code BitSet} containing all the bits in the buffer in the
 		'''         specified range
 		''' @since 1.7 </returns>
-		Public Shared Function valueOf(ByVal lb As java.nio.LongBuffer) As BitSet
+		Public Shared Function valueOf(  lb As java.nio.LongBuffer) As BitSet
 			lb = lb.slice()
 			Dim n As Integer
 			n = lb.remaining()
@@ -244,7 +244,7 @@ Namespace java.util
 		'''        initial bits of the new bit set </param>
 		''' <returns> a {@code BitSet} containing all the bits in the byte array
 		''' @since 1.7 </returns>
-		Public Shared Function valueOf(ByVal bytes As SByte()) As BitSet
+		Public Shared Function valueOf(  bytes As SByte()) As BitSet
 			Return BitSet.valueOf(java.nio.ByteBuffer.wrap(bytes))
 		End Function
 
@@ -265,7 +265,7 @@ Namespace java.util
 		''' <returns> a {@code BitSet} containing all the bits in the buffer in the
 		'''         specified range
 		''' @since 1.7 </returns>
-		Public Shared Function valueOf(ByVal bb As java.nio.ByteBuffer) As BitSet
+		Public Shared Function valueOf(  bb As java.nio.ByteBuffer) As BitSet
 			bb = bb.slice().order(java.nio.ByteOrder.LITTLE_ENDIAN)
 			Dim n As Integer
 			n = bb.remaining()
@@ -342,7 +342,7 @@ Namespace java.util
 		''' <summary>
 		''' Ensures that the BitSet can hold enough words. </summary>
 		''' <param name="wordsRequired"> the minimum acceptable number of words. </param>
-		Private Sub ensureCapacity(ByVal wordsRequired As Integer)
+		Private Sub ensureCapacity(  wordsRequired As Integer)
 			If words.Length < wordsRequired Then
 				' Allocate larger of doubled size or required size
 				Dim request As Integer = System.Math.Max(2 * words.Length, wordsRequired)
@@ -358,7 +358,7 @@ Namespace java.util
 		''' restore the invariants before returning to the user,
 		''' possibly using recalculateWordsInUse(). </summary>
 		''' <param name="wordIndex"> the index to be accommodated. </param>
-		Private Sub expandTo(ByVal wordIndex As Integer)
+		Private Sub expandTo(  wordIndex As Integer)
 			Dim wordsRequired As Integer = wordIndex+1
 			If wordsInUse < wordsRequired Then
 				ensureCapacity(wordsRequired)
@@ -369,7 +369,7 @@ Namespace java.util
 		''' <summary>
 		''' Checks that fromIndex ... toIndex is a valid range of bit indices.
 		''' </summary>
-		Private Shared Sub checkRange(ByVal fromIndex As Integer, ByVal toIndex As Integer)
+		Private Shared Sub checkRange(  fromIndex As Integer,   toIndex As Integer)
 			If fromIndex < 0 Then Throw New IndexOutOfBoundsException("fromIndex < 0: " & fromIndex)
 			If toIndex < 0 Then Throw New IndexOutOfBoundsException("toIndex < 0: " & toIndex)
 			If fromIndex > toIndex Then Throw New IndexOutOfBoundsException("fromIndex: " & fromIndex & " > toIndex: " & toIndex)
@@ -382,7 +382,7 @@ Namespace java.util
 		''' <param name="bitIndex"> the index of the bit to flip </param>
 		''' <exception cref="IndexOutOfBoundsException"> if the specified index is negative
 		''' @since  1.4 </exception>
-		Public Overridable Sub flip(ByVal bitIndex As Integer)
+		Public Overridable Sub flip(  bitIndex As Integer)
 			If bitIndex < 0 Then Throw New IndexOutOfBoundsException("bitIndex < 0: " & bitIndex)
 
 			Dim wordIndex As Integer = wordIndex(bitIndex)
@@ -405,7 +405,7 @@ Namespace java.util
 		'''         or {@code toIndex} is negative, or {@code fromIndex} is
 		'''         larger than {@code toIndex}
 		''' @since  1.4 </exception>
-		Public Overridable Sub flip(ByVal fromIndex As Integer, ByVal toIndex As Integer)
+		Public Overridable Sub flip(  fromIndex As Integer,   toIndex As Integer)
 			checkRange(fromIndex, toIndex)
 
 			If fromIndex = toIndex Then Return
@@ -445,7 +445,7 @@ Namespace java.util
 		''' <param name="bitIndex"> a bit index </param>
 		''' <exception cref="IndexOutOfBoundsException"> if the specified index is negative
 		''' @since  JDK1.0 </exception>
-		Public Overridable Sub [set](ByVal bitIndex As Integer)
+		Public Overridable Sub [set](  bitIndex As Integer)
 			If bitIndex < 0 Then Throw New IndexOutOfBoundsException("bitIndex < 0: " & bitIndex)
 
 			Dim wordIndex As Integer = wordIndex(bitIndex)
@@ -463,7 +463,7 @@ Namespace java.util
 		''' <param name="value"> a boolean value to set </param>
 		''' <exception cref="IndexOutOfBoundsException"> if the specified index is negative
 		''' @since  1.4 </exception>
-		Public Overridable Sub [set](ByVal bitIndex As Integer, ByVal value As Boolean)
+		Public Overridable Sub [set](  bitIndex As Integer,   value As Boolean)
 			If value Then
 				[set](bitIndex)
 			Else
@@ -481,7 +481,7 @@ Namespace java.util
 		'''         or {@code toIndex} is negative, or {@code fromIndex} is
 		'''         larger than {@code toIndex}
 		''' @since  1.4 </exception>
-		Public Overridable Sub [set](ByVal fromIndex As Integer, ByVal toIndex As Integer)
+		Public Overridable Sub [set](  fromIndex As Integer,   toIndex As Integer)
 			checkRange(fromIndex, toIndex)
 
 			If fromIndex = toIndex Then Return
@@ -526,7 +526,7 @@ Namespace java.util
 		'''         or {@code toIndex} is negative, or {@code fromIndex} is
 		'''         larger than {@code toIndex}
 		''' @since  1.4 </exception>
-		Public Overridable Sub [set](ByVal fromIndex As Integer, ByVal toIndex As Integer, ByVal value As Boolean)
+		Public Overridable Sub [set](  fromIndex As Integer,   toIndex As Integer,   value As Boolean)
 			If value Then
 				[set](fromIndex, toIndex)
 			Else
@@ -540,7 +540,7 @@ Namespace java.util
 		''' <param name="bitIndex"> the index of the bit to be cleared </param>
 		''' <exception cref="IndexOutOfBoundsException"> if the specified index is negative
 		''' @since  JDK1.0 </exception>
-		Public Overridable Sub clear(ByVal bitIndex As Integer)
+		Public Overridable Sub clear(  bitIndex As Integer)
 			If bitIndex < 0 Then Throw New IndexOutOfBoundsException("bitIndex < 0: " & bitIndex)
 
 			Dim wordIndex As Integer = wordIndex(bitIndex)
@@ -562,7 +562,7 @@ Namespace java.util
 		'''         or {@code toIndex} is negative, or {@code fromIndex} is
 		'''         larger than {@code toIndex}
 		''' @since  1.4 </exception>
-		Public Overridable Sub clear(ByVal fromIndex As Integer, ByVal toIndex As Integer)
+		Public Overridable Sub clear(  fromIndex As Integer,   toIndex As Integer)
 			checkRange(fromIndex, toIndex)
 
 			If fromIndex = toIndex Then Return
@@ -620,7 +620,7 @@ Namespace java.util
 		''' <param name="bitIndex">   the bit index </param>
 		''' <returns> the value of the bit with the specified index </returns>
 		''' <exception cref="IndexOutOfBoundsException"> if the specified index is negative </exception>
-		Public Overridable Function [get](ByVal bitIndex As Integer) As Boolean
+		Public Overridable Function [get](  bitIndex As Integer) As Boolean
 			If bitIndex < 0 Then Throw New IndexOutOfBoundsException("bitIndex < 0: " & bitIndex)
 
 			checkInvariants()
@@ -640,7 +640,7 @@ Namespace java.util
 		'''         or {@code toIndex} is negative, or {@code fromIndex} is
 		'''         larger than {@code toIndex}
 		''' @since  1.4 </exception>
-		Public Overridable Function [get](ByVal fromIndex As Integer, ByVal toIndex As Integer) As BitSet
+		Public Overridable Function [get](  fromIndex As Integer,   toIndex As Integer) As BitSet
 			checkRange(fromIndex, toIndex)
 
 			checkInvariants()
@@ -699,7 +699,7 @@ Namespace java.util
 		'''         is no such bit </returns>
 		''' <exception cref="IndexOutOfBoundsException"> if the specified index is negative
 		''' @since  1.4 </exception>
-		Public Overridable Function nextSetBit(ByVal fromIndex As Integer) As Integer
+		Public Overridable Function nextSetBit(  fromIndex As Integer) As Integer
 			If fromIndex < 0 Then Throw New IndexOutOfBoundsException("fromIndex < 0: " & fromIndex)
 
 			checkInvariants()
@@ -725,7 +725,7 @@ Namespace java.util
 		''' <returns> the index of the next clear bit </returns>
 		''' <exception cref="IndexOutOfBoundsException"> if the specified index is negative
 		''' @since  1.4 </exception>
-		Public Overridable Function nextClearBit(ByVal fromIndex As Integer) As Integer
+		Public Overridable Function nextClearBit(  fromIndex As Integer) As Integer
 			' Neither spec nor implementation handle bitsets of maximal length.
 			' See 4816253.
 			If fromIndex < 0 Then Throw New IndexOutOfBoundsException("fromIndex < 0: " & fromIndex)
@@ -765,7 +765,7 @@ Namespace java.util
 		''' <exception cref="IndexOutOfBoundsException"> if the specified index is less
 		'''         than {@code -1}
 		''' @since  1.7 </exception>
-		Public Overridable Function previousSetBit(ByVal fromIndex As Integer) As Integer
+		Public Overridable Function previousSetBit(  fromIndex As Integer) As Integer
 			If fromIndex < 0 Then
 				If fromIndex = -1 Then Return -1
 				Throw New IndexOutOfBoundsException("fromIndex < -1: " & fromIndex)
@@ -799,7 +799,7 @@ Namespace java.util
 		''' <exception cref="IndexOutOfBoundsException"> if the specified index is less
 		'''         than {@code -1}
 		''' @since  1.7 </exception>
-		Public Overridable Function previousClearBit(ByVal fromIndex As Integer) As Integer
+		Public Overridable Function previousClearBit(  fromIndex As Integer) As Integer
 			If fromIndex < 0 Then
 				If fromIndex = -1 Then Return -1
 				Throw New IndexOutOfBoundsException("fromIndex < -1: " & fromIndex)
@@ -854,7 +854,7 @@ Namespace java.util
 		''' <returns> boolean indicating whether this {@code BitSet} intersects
 		'''         the specified {@code BitSet}
 		''' @since  1.4 </returns>
-		Public Overridable Function intersects(ByVal [set] As BitSet) As Boolean
+		Public Overridable Function intersects(  [set] As BitSet) As Boolean
 			For i As Integer = System.Math.Min(wordsInUse, [set].wordsInUse) - 1 To 0 Step -1
 				If (words(i) And [set].words(i)) <> 0 Then Return True
 			Next i
@@ -884,7 +884,7 @@ Namespace java.util
 		''' bit set argument also had the value {@code true}.
 		''' </summary>
 		''' <param name="set"> a bit set </param>
-		Public Overridable Sub [and](ByVal [set] As BitSet)
+		Public Overridable Sub [and](  [set] As BitSet)
 			If Me Is [set] Then Return
 
 			Do While wordsInUse > [set].wordsInUse
@@ -911,7 +911,7 @@ Namespace java.util
 		''' argument has the value {@code true}.
 		''' </summary>
 		''' <param name="set"> a bit set </param>
-		Public Overridable Sub [or](ByVal [set] As BitSet)
+		Public Overridable Sub [or](  [set] As BitSet)
 			If Me Is [set] Then Return
 
 			Dim wordsInCommon As Integer = System.Math.Min(wordsInUse, [set].wordsInUse)
@@ -946,7 +946,7 @@ Namespace java.util
 		''' </ul>
 		''' </summary>
 		''' <param name="set"> a bit set </param>
-		Public Overridable Sub [xor](ByVal [set] As BitSet)
+		Public Overridable Sub [xor](  [set] As BitSet)
 			Dim wordsInCommon As Integer = System.Math.Min(wordsInUse, [set].wordsInUse)
 
 			If wordsInUse < [set].wordsInUse Then
@@ -973,7 +973,7 @@ Namespace java.util
 		''' <param name="set"> the {@code BitSet} with which to mask this
 		'''         {@code BitSet}
 		''' @since  1.2 </param>
-		Public Overridable Sub andNot(ByVal [set] As BitSet)
+		Public Overridable Sub andNot(  [set] As BitSet)
 			' Perform logical (a & !b) on words in common
 			For i As Integer = System.Math.Min(wordsInUse, [set].wordsInUse) - 1 To 0 Step -1
 				words(i) = words(i) And Not [set].words(i)
@@ -1034,7 +1034,7 @@ Namespace java.util
 		''' <returns> {@code true} if the objects are the same;
 		'''         {@code false} otherwise </returns>
 		''' <seealso cref=    #size() </seealso>
-		Public Overrides Function Equals(ByVal obj As Object) As Boolean
+		Public Overrides Function Equals(  obj As Object) As Boolean
 			If Not(TypeOf obj Is BitSet) Then Return False
 			If Me Is obj Then Return True
 
@@ -1091,7 +1091,7 @@ Namespace java.util
 		''' Save the state of the {@code BitSet} instance to a stream (i.e.,
 		''' serialize it).
 		''' </summary>
-		Private Sub writeObject(ByVal s As ObjectOutputStream)
+		Private Sub writeObject(  s As ObjectOutputStream)
 
 			checkInvariants()
 
@@ -1106,7 +1106,7 @@ Namespace java.util
 		''' Reconstitute the {@code BitSet} instance from a stream (i.e.,
 		''' deserialize it).
 		''' </summary>
-		Private Sub readObject(ByVal s As ObjectInputStream)
+		Private Sub readObject(  s As ObjectInputStream)
 
 			Dim fields As ObjectInputStream.GetField = s.readFields()
 			words = CType(fields.get("bits", Nothing), Long())

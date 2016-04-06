@@ -58,7 +58,7 @@ Namespace java.util
 		''' given message and -1 as the error index.
 		''' </summary>
 		''' <param name="message"> the message </param>
-		Public Sub New(ByVal message As String)
+		Public Sub New(  message As String)
 			MyBase.New(message)
 		End Sub
 
@@ -71,7 +71,7 @@ Namespace java.util
 		''' </summary>
 		''' <param name="message"> the message </param>
 		''' <param name="errorIndex"> the index </param>
-		Public Sub New(ByVal message As String, ByVal errorIndex As Integer)
+		Public Sub New(  message As String,   errorIndex As Integer)
 			MyBase.New(message + (If(errorIndex < 0, "", " [at index " & errorIndex & "]")))
 			_errIdx = errorIndex
 		End Sub

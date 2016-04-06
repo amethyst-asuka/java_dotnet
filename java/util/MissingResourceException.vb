@@ -55,7 +55,7 @@ Namespace java.util
 		''' <param name="s"> the detail message </param>
 		''' <param name="className"> the name of the resource class </param>
 		''' <param name="key"> the key for the missing resource. </param>
-		Public Sub New(ByVal s As String, ByVal className As String, ByVal key As String)
+		Public Sub New(  s As String,   className As String,   key As String)
 			MyBase.New(s)
 			Me.className = className
 			Me.key = key
@@ -78,7 +78,7 @@ Namespace java.util
 		'''        <seealso cref="Throwable.getCause()"/> method). (A null value is
 		'''        permitted, and indicates that the cause is nonexistent
 		'''        or unknown.) </param>
-		Friend Sub New(ByVal message As String, ByVal className As String, ByVal key As String, ByVal cause As Throwable)
+		Friend Sub New(  message As String,   className As String,   key As String,   cause As Throwable)
 			MyBase.New(message, cause)
 			Me.className = className
 			Me.key = key

@@ -105,7 +105,7 @@ Namespace java.security
 		''' </exception>
 		''' <seealso cref= #decode </seealso>
 		''' <seealso cref= #getFormat </seealso>
-		Sub encode(ByVal stream As OutputStream)
+		Sub encode(  stream As OutputStream)
 
 		''' <summary>
 		''' Decodes a certificate from an input stream. The format should be
@@ -123,7 +123,7 @@ Namespace java.security
 		''' </exception>
 		''' <seealso cref= #encode </seealso>
 		''' <seealso cref= #getFormat </seealso>
-		Sub decode(ByVal stream As InputStream)
+		Sub decode(  stream As InputStream)
 
 
 		''' <summary>
@@ -142,7 +142,7 @@ Namespace java.security
 		''' about the certificate
 		''' </param>
 		''' <returns> a string representing the contents of the certificate </returns>
-		Function ToString(ByVal detailed As Boolean) As String
+		Function ToString(  detailed As Boolean) As String
 	End Interface
 
 End Namespace

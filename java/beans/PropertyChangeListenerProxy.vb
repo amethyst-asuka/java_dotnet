@@ -53,7 +53,7 @@ Namespace java.beans
 		''' </summary>
 		''' <param name="propertyName">  the name of the property to listen on </param>
 		''' <param name="listener">      the listener object </param>
-		Public Sub New(ByVal propertyName As String, ByVal listener As PropertyChangeListener)
+		Public Sub New(  propertyName As String,   listener As PropertyChangeListener)
 			MyBase.New(listener)
 			Me.propertyName = propertyName
 		End Sub
@@ -62,7 +62,7 @@ Namespace java.beans
 		''' Forwards the property change event to the listener delegate.
 		''' </summary>
 		''' <param name="event">  the property change event </param>
-		Public Overridable Sub propertyChange(ByVal [event] As PropertyChangeEvent) Implements PropertyChangeListener.propertyChange
+		Public Overridable Sub propertyChange(  [event] As PropertyChangeEvent) Implements PropertyChangeListener.propertyChange
 			listener.propertyChange([event])
 		End Sub
 

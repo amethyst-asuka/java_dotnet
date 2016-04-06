@@ -98,7 +98,7 @@ Namespace java.io
         ''' if some other I/O error occurs. </exception>
         ''' <exception cref="NullPointerException">  if <code>b</code> is <code>null</code>. </exception>
         ''' <seealso cref=        java.io.InputStream#read(byte[], int, int) </seealso>
-        Public Overridable Function read(ByVal b As Byte()) As Integer
+        Public Overridable Function read(  b As Byte()) As Integer
             Return read(b, 0, b.Length)
         End Function
 

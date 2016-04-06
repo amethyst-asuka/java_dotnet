@@ -241,7 +241,7 @@ Namespace java.awt
 		''' <seealso cref= #getSystemTray </seealso>
 		''' <seealso cref= TrayIcon </seealso>
 		''' <seealso cref= java.awt.Image </seealso>
-		Public Overridable Sub add(ByVal trayIcon_Renamed As TrayIcon)
+		Public Overridable Sub add(  trayIcon_Renamed As TrayIcon)
 			If trayIcon_Renamed Is Nothing Then Throw New NullPointerException("adding null TrayIcon")
 			Dim oldArray As TrayIcon() = Nothing, newArray As TrayIcon() = Nothing
 			Dim icons As List(Of TrayIcon) = Nothing
@@ -285,7 +285,7 @@ Namespace java.awt
 		''' <param name="trayIcon"> the <code>TrayIcon</code> to be removed </param>
 		''' <seealso cref= #add(TrayIcon) </seealso>
 		''' <seealso cref= TrayIcon </seealso>
-		Public Overridable Sub remove(ByVal trayIcon_Renamed As TrayIcon)
+		Public Overridable Sub remove(  trayIcon_Renamed As TrayIcon)
 			If trayIcon_Renamed Is Nothing Then Return
 			Dim oldArray As TrayIcon() = Nothing, newArray As TrayIcon() = Nothing
 			SyncLock Me
@@ -380,7 +380,7 @@ Namespace java.awt
 		''' <seealso cref= #removePropertyChangeListener </seealso>
 		''' <seealso cref= #getPropertyChangeListeners </seealso>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Sub addPropertyChangeListener(ByVal propertyName As String, ByVal listener As java.beans.PropertyChangeListener)
+		Public Overridable Sub addPropertyChangeListener(  propertyName As String,   listener As java.beans.PropertyChangeListener)
 			If listener Is Nothing Then Return
 			currentChangeSupport.addPropertyChangeListener(propertyName, listener)
 		End Sub
@@ -400,7 +400,7 @@ Namespace java.awt
 		''' <seealso cref= #addPropertyChangeListener </seealso>
 		''' <seealso cref= #getPropertyChangeListeners </seealso>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Sub removePropertyChangeListener(ByVal propertyName As String, ByVal listener As java.beans.PropertyChangeListener)
+		Public Overridable Sub removePropertyChangeListener(  propertyName As String,   listener As java.beans.PropertyChangeListener)
 			If listener Is Nothing Then Return
 			currentChangeSupport.removePropertyChangeListener(propertyName, listener)
 		End Sub
@@ -420,7 +420,7 @@ Namespace java.awt
 		''' <seealso cref= #addPropertyChangeListener </seealso>
 		''' <seealso cref= #removePropertyChangeListener </seealso>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Function getPropertyChangeListeners(ByVal propertyName As String) As java.beans.PropertyChangeListener()
+		Public Overridable Function getPropertyChangeListeners(  propertyName As String) As java.beans.PropertyChangeListener()
 			Return currentChangeSupport.getPropertyChangeListeners(propertyName)
 		End Function
 
@@ -438,7 +438,7 @@ Namespace java.awt
 		''' <param name="propertyName"> the property whose value has changed </param>
 		''' <param name="oldValue"> the property's previous value </param>
 		''' <param name="newValue"> the property's new value </param>
-		Private Sub firePropertyChange(ByVal propertyName As String, ByVal oldValue As Object, ByVal newValue As Object)
+		Private Sub firePropertyChange(  propertyName As String,   oldValue As Object,   newValue As Object)
 			If oldValue IsNot Nothing AndAlso newValue IsNot Nothing AndAlso oldValue.Equals(newValue) Then Return
 			currentChangeSupport.firePropertyChange(propertyName, oldValue, newValue)
 		End Sub

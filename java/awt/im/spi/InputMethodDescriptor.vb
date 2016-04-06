@@ -88,7 +88,7 @@ Namespace java.awt.im.spi
 		''' </summary>
 		''' <param name="inputLocale"> the locale for which text input is supported, or null </param>
 		''' <param name="displayLanguage"> the language in which the name will be displayed </param>
-		Function getInputMethodDisplayName(ByVal inputLocale As java.util.Locale, ByVal displayLanguage As java.util.Locale) As String
+		Function getInputMethodDisplayName(  inputLocale As java.util.Locale,   displayLanguage As java.util.Locale) As String
 
 		''' <summary>
 		''' Returns an icon for the corresponding input method.
@@ -105,7 +105,7 @@ Namespace java.awt.im.spi
 		''' </summary>
 		''' <param name="inputLocale"> the locale for which text input is supported, or null </param>
 		''' <returns> an icon for the corresponding input method, or null </returns>
-		Function getInputMethodIcon(ByVal inputLocale As java.util.Locale) As java.awt.Image
+		Function getInputMethodIcon(  inputLocale As java.util.Locale) As java.awt.Image
 
 		''' <summary>
 		''' Creates a new instance of the corresponding input method.

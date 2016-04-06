@@ -51,7 +51,7 @@ Namespace java.security.acl
 		''' <returns> true if successful, false if owner is already an owner. </returns>
 		''' <exception cref="NotOwnerException"> if the caller principal is not an owner
 		''' of the ACL. </exception>
-		Function addOwner(ByVal caller As java.security.Principal, ByVal owner As java.security.Principal) As Boolean
+		Function addOwner(  caller As java.security.Principal,   owner As java.security.Principal) As Boolean
 
 		''' <summary>
 		''' Deletes an owner. If this is the last owner in the ACL, an exception is
@@ -73,7 +73,7 @@ Namespace java.security.acl
 		''' </exception>
 		''' <exception cref="LastOwnerException"> if there is only one owner left, so that
 		''' deleteOwner would leave the ACL owner-less. </exception>
-		Function deleteOwner(ByVal caller As java.security.Principal, ByVal owner As java.security.Principal) As Boolean
+		Function deleteOwner(  caller As java.security.Principal,   owner As java.security.Principal) As Boolean
 
 		''' <summary>
 		''' Returns true if the given principal is an owner of the ACL.
@@ -83,7 +83,7 @@ Namespace java.security.acl
 		''' </param>
 		''' <returns> true if the passed principal is in the list of owners, false
 		''' if not. </returns>
-		Function isOwner(ByVal owner As java.security.Principal) As Boolean
+		Function isOwner(  owner As java.security.Principal) As Boolean
 
 	End Interface
 

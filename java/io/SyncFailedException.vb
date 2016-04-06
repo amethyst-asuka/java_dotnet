@@ -42,7 +42,7 @@ Namespace java.io
 		''' A detail message is a String that describes this particular exception.
 		''' </summary>
 		''' <param name="desc">  a String describing the exception. </param>
-		Public Sub New(ByVal desc As String)
+		Public Sub New(  desc As String)
 			MyBase.New(desc)
 		End Sub
 	End Class

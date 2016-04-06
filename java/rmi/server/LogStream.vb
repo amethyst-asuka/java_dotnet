@@ -77,7 +77,7 @@ Namespace java.rmi.server
 		''' @since JDK1.1 </param>
 		''' @deprecated no replacement 
 		<Obsolete("no replacement")> _
-		Private Sub New(ByVal name As String, ByVal out As OutputStream)
+		Private Sub New(  name As String,   out As OutputStream)
 			MyBase.New(New ByteArrayOutputStream)
 			bufOut = CType(MyBase.out, ByteArrayOutputStream)
 
@@ -94,7 +94,7 @@ Namespace java.rmi.server
 		''' @since JDK1.1 </returns>
 		''' @deprecated no replacement 
 		<Obsolete("no replacement")> _
-		Public Shared Function log(ByVal name As String) As LogStream
+		Public Shared Function log(  name As String) As LogStream
 			Dim stream As LogStream
 			SyncLock known
 				stream = known.get(name)
@@ -115,7 +115,7 @@ Namespace java.rmi.server
 			Get
 				Return defaultStream
 			End Get
-			Set(ByVal newDefault As PrintStream)
+			Set(  newDefault As PrintStream)
 				Dim sm As SecurityManager = System.securityManager
     
 				If sm IsNot Nothing Then sm.checkPermission(New java.util.logging.LoggingPermission("control", Nothing))
@@ -136,7 +136,7 @@ Namespace java.rmi.server
 			Get
 				Return logOut
 			End Get
-			Set(ByVal out As OutputStream)
+			Set(  out As OutputStream)
 				logOut = out
 				' Maintain an OutputStreamWriter with default CharToByteConvertor
 				' (just like new PrintStream) for writing log message prefixes.
@@ -153,7 +153,7 @@ Namespace java.rmi.server
 		''' @since JDK1.1 </summary>
 		''' @deprecated no replacement 
 		<Obsolete("no replacement")> _
-		Public Overrides Sub write(ByVal b As Integer)
+		Public Overrides Sub write(  b As Integer)
 			If b = ControlChars.Lf Then
 				' synchronize on "this" first to avoid potential deadlock
 				SyncLock Me

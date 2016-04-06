@@ -41,7 +41,7 @@ Namespace java.lang.invoke
 		Friend ReadOnly member As MemberName
 
 		' Constructors and factory methods in this class *must* be package scoped or private.
-		Private Sub New(ByVal mtype As MethodType, ByVal form As LambdaForm, ByVal member As MemberName)
+		Private Sub New(  mtype As MethodType,   form As LambdaForm,   member As MemberName)
 			MyBase.New(mtype, form)
 			If Not member.resolved Then Throw New InternalError
 
@@ -59,7 +59,7 @@ Namespace java.lang.invoke
 		End Sub
 
 		' Factory methods:
-		Shared Function make(ByVal refKind As SByte, ByVal receiver As [Class], ByVal member As MemberName) As DirectMethodHandle
+		Shared Function make(  refKind As SByte,   receiver As [Class],   member As MemberName) As DirectMethodHandle
 			Dim mtype As MethodType = member.methodOrFieldType
 			If Not member.static Then
 				If (Not receiver.IsSubclassOf(member.declaringClass)) OrElse member.constructor Then Throw New InternalError(member.ToString())
@@ -87,22 +87,22 @@ Namespace java.lang.invoke
 				End If
 			End If
 		End Function
-		Shared Function make(ByVal receiver As [Class], ByVal member As MemberName) As DirectMethodHandle
+		Shared Function make(  receiver As [Class],   member As MemberName) As DirectMethodHandle
 			Dim refKind As SByte = member.referenceKind
 			If refKind = REF_invokeSpecial Then refKind = REF_invokeVirtual
 			Return make(refKind, receiver, member)
 		End Function
-		Shared Function make(ByVal member As MemberName) As DirectMethodHandle
+		Shared Function make(  member As MemberName) As DirectMethodHandle
 			If member.constructor Then Return makeAllocator(member)
 			Return make(member.declaringClass, member)
 		End Function
-		Shared Function make(ByVal method As Method) As DirectMethodHandle
+		Shared Function make(  method As Method) As DirectMethodHandle
 			Return make(method.declaringClass, New MemberName(method))
 		End Function
-		Shared Function make(ByVal field As Field) As DirectMethodHandle
+		Shared Function make(  field As Field) As DirectMethodHandle
 			Return make(field.declaringClass, New MemberName(field))
 		End Function
-		Private Shared Function makeAllocator(ByVal ctor As MemberName) As DirectMethodHandle
+		Private Shared Function makeAllocator(  ctor As MemberName) As DirectMethodHandle
 			assert(ctor.constructor AndAlso ctor.name.Equals("<init>"))
 			Dim instanceClass As  [Class] = ctor.declaringClass
 			ctor = ctor.asConstructor()
@@ -118,7 +118,7 @@ Namespace java.lang.invoke
 			Return BoundMethodHandle.makeReinvoker(Me)
 		End Function
 
-		Friend Overrides Function copyWith(ByVal mt As MethodType, ByVal lf As LambdaForm) As MethodHandle
+		Friend Overrides Function copyWith(  mt As MethodType,   lf As LambdaForm) As MethodHandle
 			assert(Me.GetType() Is GetType(DirectMethodHandle)) ' must override in subclasses
 			Return New DirectMethodHandle(mt, lf, member)
 		End Function
@@ -140,7 +140,7 @@ Namespace java.lang.invoke
 		''' Cache and share this structure among all methods with
 		''' the same basicType and refKind.
 		''' </summary>
-		Private Shared Function preparedLambdaForm(ByVal m As MemberName) As LambdaForm
+		Private Shared Function preparedLambdaForm(  m As MemberName) As LambdaForm
 			assert(m.invocable) : m ' call preparedFieldLambdaForm instead
 			Dim mtype As MethodType = m.invocationType.basicType()
 			assert((Not m.methodHandleInvoke) OrElse "invokeBasic".Equals(m.name)) : m
@@ -170,14 +170,14 @@ Namespace java.lang.invoke
 			Return lform
 		End Function
 
-		Private Shared Function preparedLambdaForm(ByVal mtype As MethodType, ByVal which As Integer) As LambdaForm
+		Private Shared Function preparedLambdaForm(  mtype As MethodType,   which As Integer) As LambdaForm
 			Dim lform As LambdaForm = mtype.form().cachedLambdaForm(which)
 			If lform IsNot Nothing Then Return lform
 			lform = makePreparedLambdaForm(mtype, which)
 			Return mtype.form().cachedLambdaFormorm(which, lform)
 		End Function
 
-		Private Shared Function makePreparedLambdaForm(ByVal mtype As MethodType, ByVal which As Integer) As LambdaForm
+		Private Shared Function makePreparedLambdaForm(  mtype As MethodType,   which As Integer) As LambdaForm
 			Dim needsInit As Boolean = (which = LF_INVSTATIC_INIT)
 			Dim doesAlloc As Boolean = (which = LF_NEWINVSPECIAL)
 			Dim linkerName, lambdaName As String
@@ -250,7 +250,7 @@ Namespace java.lang.invoke
 			Return lform
 		End Function
 
-		Friend Shared Function findDirectMethodHandle(ByVal name As Name) As Object
+		Friend Shared Function findDirectMethodHandle(  name As Name) As Object
 			If name.function Is Lazy.NF_internalMemberName OrElse name.function Is Lazy.NF_internalMemberNameEnsureInit OrElse name.function Is Lazy.NF_constructorMethod Then
 				assert(name.arguments.length = 1)
 				Return name.arguments(0)
@@ -258,14 +258,14 @@ Namespace java.lang.invoke
 			Return Nothing
 		End Function
 
-		Private Shared Sub maybeCompile(ByVal lform As LambdaForm, ByVal m As MemberName)
+		Private Shared Sub maybeCompile(  lform As LambdaForm,   m As MemberName)
 			If sun.invoke.util.VerifyAccess.isSamePackage(m.declaringClass, GetType(MethodHandle)) Then lform.compileToBytecode()
 		End Sub
 
 		''' <summary>
 		''' Static wrapper for DirectMethodHandle.internalMemberName. </summary>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Friend Shared Function internalMemberName(ByVal mh As Object) As Object
+		Friend Shared Function internalMemberName(  mh As Object) As Object
 		'non-public
 			Return CType(mh, DirectMethodHandle).member
 		End Function
@@ -275,14 +275,14 @@ Namespace java.lang.invoke
 		''' This one also forces initialization.
 		''' </summary>
 		'non-public
-	 Friend Shared Function internalMemberNameEnsureInit(ByVal mh As Object) As Object
+	 Friend Shared Function internalMemberNameEnsureInit(  mh As Object) As Object
 			Dim dmh As DirectMethodHandle = CType(mh, DirectMethodHandle)
 			dmh.ensureInitialized()
 			Return dmh.member
 	 End Function
 
 		'non-public
-	 Friend Shared Function shouldBeInitialized(ByVal member As MemberName) As Boolean
+	 Friend Shared Function shouldBeInitialized(  member As MemberName) As Boolean
 			Select Case member.referenceKind
 			Case REF_invokeStatic, REF_getStatic, REF_putStatic, REF_newInvokeSpecial
 			Case Else
@@ -303,7 +303,7 @@ Namespace java.lang.invoke
 		Private Class EnsureInitialized
 			Inherits ClassValue(Of WeakReference(Of Thread))
 
-			Protected Friend Overrides Function computeValue(ByVal type As [Class]) As WeakReference(Of Thread)
+			Protected Friend Overrides Function computeValue(  type As [Class]) As WeakReference(Of Thread)
 				UNSAFE.ensureClassInitialized(type)
 				If UNSAFE.shouldBeInitialized(type) Then Return New WeakReference(Of )(Thread.CurrentThread)
 				Return Nothing
@@ -321,7 +321,7 @@ Namespace java.lang.invoke
 				End If
 			End If
 		End Sub
-		Private Shared Function checkInitialized(ByVal member As MemberName) As Boolean
+		Private Shared Function checkInitialized(  member As MemberName) As Boolean
 			Dim defc As  [Class] = member.declaringClass
 			Dim ref As WeakReference(Of Thread) = EnsureInitialized.INSTANCE.get(defc)
 			If ref Is Nothing Then Return True ' the final state
@@ -341,7 +341,7 @@ Namespace java.lang.invoke
 		End Function
 
 		'non-public
-	 Friend Shared Sub ensureInitialized(ByVal mh As Object)
+	 Friend Shared Sub ensureInitialized(  mh As Object)
 			CType(mh, DirectMethodHandle).ensureInitialized()
 	 End Sub
 
@@ -350,7 +350,7 @@ Namespace java.lang.invoke
 		Friend Class Special
 			Inherits DirectMethodHandle
 
-			Private Sub New(ByVal mtype As MethodType, ByVal form As LambdaForm, ByVal member As MemberName)
+			Private Sub New(  mtype As MethodType,   form As LambdaForm,   member As MemberName)
 				MyBase.New(mtype, form, member)
 			End Sub
 			Friend  Overrides ReadOnly Property  invokeSpecial As Boolean
@@ -358,7 +358,7 @@ Namespace java.lang.invoke
 					Return True
 				End Get
 			End Property
-			Friend Overrides Function copyWith(ByVal mt As MethodType, ByVal lf As LambdaForm) As MethodHandle
+			Friend Overrides Function copyWith(  mt As MethodType,   lf As LambdaForm) As MethodHandle
 				Return New Special(mt, lf, member)
 			End Function
 		End Class
@@ -371,25 +371,25 @@ Namespace java.lang.invoke
 			Friend ReadOnly initMethod As MemberName
 			Friend ReadOnly instanceClass As  [Class]
 
-			Private Sub New(ByVal mtype As MethodType, ByVal form As LambdaForm, ByVal constructor As MemberName, ByVal initMethod As MemberName, ByVal instanceClass As [Class])
+			Private Sub New(  mtype As MethodType,   form As LambdaForm,   constructor As MemberName,   initMethod As MemberName,   instanceClass As [Class])
 				MyBase.New(mtype, form, constructor)
 				Me.initMethod = initMethod
 				Me.instanceClass = instanceClass
 				assert(initMethod.resolved)
 			End Sub
-			Friend Overrides Function copyWith(ByVal mt As MethodType, ByVal lf As LambdaForm) As MethodHandle
+			Friend Overrides Function copyWith(  mt As MethodType,   lf As LambdaForm) As MethodHandle
 				Return New Constructor(mt, lf, member, initMethod, instanceClass)
 			End Function
 		End Class
 
 		'non-public
-	 Friend Shared Function constructorMethod(ByVal mh As Object) As Object
+	 Friend Shared Function constructorMethod(  mh As Object) As Object
 			Dim dmh As Constructor = CType(mh, Constructor)
 			Return dmh.initMethod
 	 End Function
 
 		'non-public
-	 Friend Shared Function allocateInstance(ByVal mh As Object) As Object
+	 Friend Shared Function allocateInstance(  mh As Object) As Object
 			Dim dmh As Constructor = CType(mh, Constructor)
 			Return UNSAFE.allocateInstance(dmh.instanceClass)
 	 End Function
@@ -401,22 +401,22 @@ Namespace java.lang.invoke
 
 			Friend ReadOnly fieldType As  [Class]
 			Friend ReadOnly fieldOffset As Integer
-			Private Sub New(ByVal mtype As MethodType, ByVal form As LambdaForm, ByVal member As MemberName, ByVal fieldOffset As Integer)
+			Private Sub New(  mtype As MethodType,   form As LambdaForm,   member As MemberName,   fieldOffset As Integer)
 				MyBase.New(mtype, form, member)
 				Me.fieldType = member.fieldType
 				Me.fieldOffset = fieldOffset
 			End Sub
 
-			Friend Overrides Function checkCast(ByVal obj As Object) As Object
+			Friend Overrides Function checkCast(  obj As Object) As Object
 				Return fieldType.cast(obj)
 			End Function
-			Friend Overrides Function copyWith(ByVal mt As MethodType, ByVal lf As LambdaForm) As MethodHandle
+			Friend Overrides Function copyWith(  mt As MethodType,   lf As LambdaForm) As MethodHandle
 				Return New Accessor(mt, lf, member, fieldOffset)
 			End Function
 		End Class
 
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Friend Shared Function fieldOffset(ByVal accessorObj As Object) As Long
+		Friend Shared Function fieldOffset(  accessorObj As Object) As Long
 		'non-public
 			' Note: We return a long because that is what Unsafe.getObject likes.
 			' We store a plain int because it is more compact.
@@ -424,7 +424,7 @@ Namespace java.lang.invoke
 		End Function
 
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Friend Shared Function checkBase(ByVal obj As Object) As Object
+		Friend Shared Function checkBase(  obj As Object) As Object
 		'non-public
 			' Note that the object's class has already been verified,
 			' since the parameter type of the Accessor method handle
@@ -446,47 +446,47 @@ Namespace java.lang.invoke
 			Private ReadOnly staticBase As Object
 			Private ReadOnly staticOffset As Long
 
-			Private Sub New(ByVal mtype As MethodType, ByVal form As LambdaForm, ByVal member As MemberName, ByVal staticBase As Object, ByVal staticOffset As Long)
+			Private Sub New(  mtype As MethodType,   form As LambdaForm,   member As MemberName,   staticBase As Object,   staticOffset As Long)
 				MyBase.New(mtype, form, member)
 				Me.fieldType = member.fieldType
 				Me.staticBase = staticBase
 				Me.staticOffset = staticOffset
 			End Sub
 
-			Friend Overrides Function checkCast(ByVal obj As Object) As Object
+			Friend Overrides Function checkCast(  obj As Object) As Object
 				Return fieldType.cast(obj)
 			End Function
-			Friend Overrides Function copyWith(ByVal mt As MethodType, ByVal lf As LambdaForm) As MethodHandle
+			Friend Overrides Function copyWith(  mt As MethodType,   lf As LambdaForm) As MethodHandle
 				Return New StaticAccessor(mt, lf, member, staticBase, staticOffset)
 			End Function
 		End Class
 
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Friend Shared Function nullCheck(ByVal obj As Object) As Object
+		Friend Shared Function nullCheck(  obj As Object) As Object
 		'non-public
 			obj.GetType()
 			Return obj
 		End Function
 
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Friend Shared Function staticBase(ByVal accessorObj As Object) As Object
+		Friend Shared Function staticBase(  accessorObj As Object) As Object
 		'non-public
 			Return CType(accessorObj, StaticAccessor).staticBase
 		End Function
 
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Friend Shared Function staticOffset(ByVal accessorObj As Object) As Long
+		Friend Shared Function staticOffset(  accessorObj As Object) As Long
 		'non-public
 			Return CType(accessorObj, StaticAccessor).staticOffset
 		End Function
 
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Friend Shared Function checkCast(ByVal mh As Object, ByVal obj As Object) As Object
+		Friend Shared Function checkCast(  mh As Object,   obj As Object) As Object
 		'non-public
 			Return CType(mh, DirectMethodHandle).checkCast(obj)
 		End Function
 
-		Friend Overridable Function checkCast(ByVal obj As Object) As Object
+		Friend Overridable Function checkCast(  obj As Object) As Object
 			Return member.returnType.cast(obj)
 		End Function
 
@@ -495,11 +495,11 @@ Namespace java.lang.invoke
 		' Enumerate the different field kinds using Wrapper,
 		' with an extra case added for checked references.
 		Private Shared FT_LAST_WRAPPER As Integer = sun.invoke.util.Wrapper.values().length-1, FT_UNCHECKED_REF As Integer = sun.invoke.util.Wrapper.OBJECT.ordinal(), FT_CHECKED_REF As Integer = FT_LAST_WRAPPER+1, FT_LIMIT As Integer = FT_LAST_WRAPPER+2
-		Private Shared Function afIndex(ByVal formOp As SByte, ByVal isVolatile As Boolean, ByVal ftypeKind As Integer) As Integer
+		Private Shared Function afIndex(  formOp As SByte,   isVolatile As Boolean,   ftypeKind As Integer) As Integer
 			Return ((formOp * FT_LIMIT * 2) + (If(isVolatile, FT_LIMIT, 0)) + ftypeKind)
 		End Function
 		Private Shared ReadOnly ACCESSOR_FORMS As LambdaForm() = New LambdaForm(afIndex(AF_LIMIT, False, 0) - 1){}
-		Private Shared Function ftypeKind(ByVal ftype As [Class]) As Integer
+		Private Shared Function ftypeKind(  ftype As [Class]) As Integer
 			If ftype.primitive Then
 				Return sun.invoke.util.Wrapper.forPrimitiveType(ftype).ordinal()
 			ElseIf sun.invoke.util.VerifyType.isNullReferenceConversion(GetType(Object), ftype) Then
@@ -514,7 +514,7 @@ Namespace java.lang.invoke
 		''' Cache and share this structure among all fields with
 		''' the same basicType and refKind.
 		''' </summary>
-		Private Shared Function preparedFieldLambdaForm(ByVal m As MemberName) As LambdaForm
+		Private Shared Function preparedFieldLambdaForm(  m As MemberName) As LambdaForm
 			Dim ftype As  [Class] = m.fieldType
 			Dim isVolatile As Boolean = m.volatile
 			Dim formOp As SByte
@@ -541,7 +541,7 @@ Namespace java.lang.invoke
 			assert(lform.methodType().dropParameterTypes(0, 1).Equals(m.invocationType.basicType())) : java.util.Arrays.asList(m, m.invocationType.basicType(), lform, lform.methodType())
 			Return lform
 		End Function
-		Private Shared Function preparedFieldLambdaForm(ByVal formOp As SByte, ByVal isVolatile As Boolean, ByVal ftype As [Class]) As LambdaForm
+		Private Shared Function preparedFieldLambdaForm(  formOp As SByte,   isVolatile As Boolean,   ftype As [Class]) As LambdaForm
 			Dim afIndex As Integer = afIndex(formOp, isVolatile, ftypeKind(ftype))
 			Dim lform As LambdaForm = ACCESSOR_FORMS(afIndex)
 			If lform IsNot Nothing Then Return lform
@@ -550,7 +550,7 @@ Namespace java.lang.invoke
 			Return lform
 		End Function
 
-		Private Shared Function makePreparedFieldLambdaForm(ByVal formOp As SByte, ByVal isVolatile As Boolean, ByVal ftypeKind As Integer) As LambdaForm
+		Private Shared Function makePreparedFieldLambdaForm(  formOp As SByte,   isVolatile As Boolean,   ftypeKind As Integer) As LambdaForm
 			Dim isGetter As Boolean = (formOp And 1) = (AF_GETFIELD And 1)
 			Dim isStatic As Boolean = (formOp >= AF_GETSTATIC)
 			Dim needsInit As Boolean = (formOp >= AF_GETSTATIC_INIT)

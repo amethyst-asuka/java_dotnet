@@ -172,7 +172,7 @@ Namespace java.nio.charset
 		''' </param>
 		''' <exception cref="IllegalArgumentException">
 		'''          If the preconditions on the parameters do not hold </exception>
-		Protected Friend Sub New(ByVal cs As Charset, ByVal averageBytesPerChar As Single, ByVal maxBytesPerChar As Single, ByVal replacement As SByte())
+		Protected Friend Sub New(  cs As Charset,   averageBytesPerChar As Single,   maxBytesPerChar As Single,   replacement As SByte())
 			Me.charset_Renamed = cs
 			If averageBytesPerChar <= 0.0f Then Throw New IllegalArgumentException("Non-positive " & "averageBytesPerChar")
 			If maxBytesPerChar <= 0.0f Then Throw New IllegalArgumentException("Non-positive " & "maxBytesPerChar")
@@ -203,7 +203,7 @@ Namespace java.nio.charset
 		''' </param>
 		''' <exception cref="IllegalArgumentException">
 		'''          If the preconditions on the parameters do not hold </exception>
-		Protected Friend Sub New(ByVal cs As Charset, ByVal averageBytesPerChar As Single, ByVal maxBytesPerChar As Single)
+		Protected Friend Sub New(  cs As Charset,   averageBytesPerChar As Single,   maxBytesPerChar As Single)
 			Me.New(cs, averageBytesPerChar, maxBytesPerChar, New SByte() { AscW("?"c) })
 		End Sub
 
@@ -253,7 +253,7 @@ Namespace java.nio.charset
 		''' </returns>
 		''' <exception cref="IllegalArgumentException">
 		'''          If the preconditions on the parameter do not hold </exception>
-		Public Function replaceWith(ByVal newReplacement As SByte()) As CharsetEncoder
+		Public Function replaceWith(  newReplacement As SByte()) As CharsetEncoder
 			If newReplacement Is Nothing Then Throw New IllegalArgumentException("Null replacement")
 			Dim len As Integer = newReplacement.Length
 			If len = 0 Then Throw New IllegalArgumentException("Empty replacement")
@@ -277,7 +277,7 @@ Namespace java.nio.charset
 		''' the replacement.  </p>
 		''' </summary>
 		''' <param name="newReplacement">    The replacement value </param>
-		Protected Friend Overridable Sub implReplaceWith(ByVal newReplacement As SByte())
+		Protected Friend Overridable Sub implReplaceWith(  newReplacement As SByte())
 		End Sub
 
 
@@ -299,7 +299,7 @@ Namespace java.nio.charset
 		''' </param>
 		''' <returns>  <tt>true</tt> if, and only if, the given byte array
 		'''          is a legal replacement value for this encoder </returns>
-		Public Overridable Function isLegalReplacement(ByVal repl As SByte()) As Boolean
+		Public Overridable Function isLegalReplacement(  repl As SByte()) As Boolean
 			Dim wr As WeakReference(Of CharsetDecoder) = cachedDecoder
 			Dim dec As CharsetDecoder = Nothing
 			dec = wr.get()
@@ -339,7 +339,7 @@ Namespace java.nio.charset
 		''' </returns>
 		''' <exception cref="IllegalArgumentException">
 		'''         If the precondition on the parameter does not hold </exception>
-		Public Function onMalformedInput(ByVal newAction As CodingErrorAction) As CharsetEncoder
+		Public Function onMalformedInput(  newAction As CodingErrorAction) As CharsetEncoder
 			If newAction Is Nothing Then Throw New IllegalArgumentException("Null action")
 			malformedInputAction_Renamed = newAction
 			implOnMalformedInput(newAction)
@@ -354,7 +354,7 @@ Namespace java.nio.charset
 		''' the malformed-input action.  </p>
 		''' </summary>
 		''' <param name="newAction">  The new action </param>
-		Protected Friend Overridable Sub implOnMalformedInput(ByVal newAction As CodingErrorAction)
+		Protected Friend Overridable Sub implOnMalformedInput(  newAction As CodingErrorAction)
 		End Sub
 
 		''' <summary>
@@ -378,7 +378,7 @@ Namespace java.nio.charset
 		''' </returns>
 		''' <exception cref="IllegalArgumentException">
 		'''         If the precondition on the parameter does not hold </exception>
-		Public Function onUnmappableCharacter(ByVal newAction As CodingErrorAction) As CharsetEncoder
+		Public Function onUnmappableCharacter(  newAction As CodingErrorAction) As CharsetEncoder
 			If newAction Is Nothing Then Throw New IllegalArgumentException("Null action")
 			unmappableCharacterAction_Renamed = newAction
 			implOnUnmappableCharacter(newAction)
@@ -393,7 +393,7 @@ Namespace java.nio.charset
 		''' the unmappable-character action.  </p>
 		''' </summary>
 		''' <param name="newAction">  The new action </param>
-		Protected Friend Overridable Sub implOnUnmappableCharacter(ByVal newAction As CodingErrorAction)
+		Protected Friend Overridable Sub implOnUnmappableCharacter(  newAction As CodingErrorAction)
 		End Sub
 
 		''' <summary>
@@ -515,7 +515,7 @@ Namespace java.nio.charset
 		''' <exception cref="CoderMalfunctionError">
 		'''          If an invocation of the encodeLoop method threw
 		'''          an unexpected exception </exception>
-		Public Function encode(ByVal [in] As java.nio.CharBuffer, ByVal out As java.nio.ByteBuffer, ByVal endOfInput As Boolean) As CoderResult
+		Public Function encode(  [in] As java.nio.CharBuffer,   out As java.nio.ByteBuffer,   endOfInput As Boolean) As CoderResult
 			Dim newState As Integer = If(endOfInput, ST_END, ST_CODING)
 			If (state <> ST_RESET) AndAlso (state <> ST_CODING) AndAlso Not(endOfInput AndAlso (state = ST_END)) Then throwIllegalStateException(state, newState)
 			state = newState
@@ -607,7 +607,7 @@ Namespace java.nio.charset
 		'''          #encode(CharBuffer,ByteBuffer,boolean) encode} method
 		'''          with a value of <tt>true</tt> for the <tt>endOfInput</tt>
 		'''          parameter </exception>
-		Public Function flush(ByVal out As java.nio.ByteBuffer) As CoderResult
+		Public Function flush(  out As java.nio.ByteBuffer) As CoderResult
 			If state = ST_END Then
 				Dim cr As CoderResult = implFlush(out)
 				If cr.underflow Then state = ST_FLUSHED
@@ -632,7 +632,7 @@ Namespace java.nio.charset
 		''' </param>
 		''' <returns>  A coder-result object, either <seealso cref="CoderResult#UNDERFLOW"/> or
 		'''          <seealso cref="CoderResult#OVERFLOW"/> </returns>
-		Protected Friend Overridable Function implFlush(ByVal out As java.nio.ByteBuffer) As CoderResult
+		Protected Friend Overridable Function implFlush(  out As java.nio.ByteBuffer) As CoderResult
 			Return CoderResult.UNDERFLOW
 		End Function
 
@@ -694,7 +694,7 @@ Namespace java.nio.charset
 		'''         The output byte buffer
 		''' </param>
 		''' <returns>  A coder-result object describing the reason for termination </returns>
-		Protected Friend MustOverride Function encodeLoop(ByVal [in] As java.nio.CharBuffer, ByVal out As java.nio.ByteBuffer) As CoderResult
+		Protected Friend MustOverride Function encodeLoop(  [in] As java.nio.CharBuffer,   out As java.nio.ByteBuffer) As CoderResult
 
 		''' <summary>
 		''' Convenience method that encodes the remaining content of a single input
@@ -726,7 +726,7 @@ Namespace java.nio.charset
 		'''          position cannot be mapped to an equivalent byte sequence and
 		'''          the current unmappable-character action is {@link
 		'''          CodingErrorAction#REPORT} </exception>
-		Public Function encode(ByVal [in] As java.nio.CharBuffer) As java.nio.ByteBuffer
+		Public Function encode(  [in] As java.nio.CharBuffer) As java.nio.ByteBuffer
 			Dim n As Integer = CInt(Fix([in].remaining() * averageBytesPerChar()))
 			Dim out As java.nio.ByteBuffer = java.nio.ByteBuffer.allocate(n)
 
@@ -829,7 +829,7 @@ Namespace java.nio.charset
 
 
 
-		Private Function canEncode(ByVal cb As java.nio.CharBuffer) As Boolean
+		Private Function canEncode(  cb As java.nio.CharBuffer) As Boolean
 			If state = ST_FLUSHED Then
 				reset()
 			ElseIf state <> ST_RESET Then
@@ -876,7 +876,7 @@ Namespace java.nio.charset
 		''' </returns>
 		''' <exception cref="IllegalStateException">
 		'''          If an encoding operation is already in progress </exception>
-		Public Overridable Function canEncode(ByVal c As Char) As Boolean
+		Public Overridable Function canEncode(  c As Char) As Boolean
 			Dim cb As java.nio.CharBuffer = java.nio.CharBuffer.allocate(1)
 			cb.put(c)
 			cb.flip()
@@ -907,7 +907,7 @@ Namespace java.nio.charset
 		''' </returns>
 		''' <exception cref="IllegalStateException">
 		'''          If an encoding operation is already in progress </exception>
-		Public Overridable Function canEncode(ByVal cs As CharSequence) As Boolean
+		Public Overridable Function canEncode(  cs As CharSequence) As Boolean
 			Dim cb As java.nio.CharBuffer
 			If TypeOf cs Is java.nio.CharBuffer Then
 				cb = CType(cs, java.nio.CharBuffer).duplicate()
@@ -920,7 +920,7 @@ Namespace java.nio.charset
 
 
 
-		Private Sub throwIllegalStateException(ByVal [from] As Integer, ByVal [to] As Integer)
+		Private Sub throwIllegalStateException(  [from] As Integer,   [to] As Integer)
 			Throw New IllegalStateException("Current state = " & stateNames([from]) & ", new state = " & stateNames([to]))
 		End Sub
 

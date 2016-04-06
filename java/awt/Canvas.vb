@@ -63,13 +63,13 @@ Namespace java.awt
 		''' <param name="config"> a reference to a GraphicsConfiguration object.
 		''' </param>
 		''' <seealso cref= GraphicsConfiguration </seealso>
-		Public Sub New(ByVal config As GraphicsConfiguration)
+		Public Sub New(  config As GraphicsConfiguration)
 			Me.New()
 			graphicsConfiguration = config
 		End Sub
 
 		Friend Overrides Property graphicsConfiguration As GraphicsConfiguration
-			Set(ByVal gc As GraphicsConfiguration)
+			Set(  gc As GraphicsConfiguration)
 				SyncLock treeLock
 					Dim peer_Renamed As java.awt.peer.CanvasPeer = CType(peer, java.awt.peer.CanvasPeer)
 					If peer_Renamed IsNot Nothing Then gc = peer_Renamed.getAppropriateGraphicsConfiguration(gc)
@@ -115,7 +115,7 @@ Namespace java.awt
 		''' <param name="g">   the specified Graphics context </param>
 		''' <seealso cref=        #update(Graphics) </seealso>
 		''' <seealso cref=        Component#paint(Graphics) </seealso>
-		Public Overrides Sub paint(ByVal g As Graphics)
+		Public Overrides Sub paint(  g As Graphics)
 			g.clearRect(0, 0, width, height)
 		End Sub
 
@@ -133,7 +133,7 @@ Namespace java.awt
 		''' <param name="g"> the specified Graphics context </param>
 		''' <seealso cref=   #paint(Graphics) </seealso>
 		''' <seealso cref=   Component#update(Graphics) </seealso>
-		Public Overrides Sub update(ByVal g As Graphics)
+		Public Overrides Sub update(  g As Graphics)
 			g.clearRect(0, 0, width, height)
 			paint(g)
 		End Sub
@@ -160,7 +160,7 @@ Namespace java.awt
 		''' <seealso cref= #isDisplayable </seealso>
 		''' <seealso cref= #getBufferStrategy
 		''' @since 1.4 </seealso>
-		Public Overrides Sub createBufferStrategy(ByVal numBuffers As Integer)
+		Public Overrides Sub createBufferStrategy(  numBuffers As Integer)
 			MyBase.createBufferStrategy(numBuffers)
 		End Sub
 
@@ -183,7 +183,7 @@ Namespace java.awt
 		''' caps is <code>null</code> </exception>
 		''' <seealso cref= #getBufferStrategy
 		''' @since 1.4 </seealso>
-		Public Overrides Sub createBufferStrategy(ByVal numBuffers As Integer, ByVal caps As BufferCapabilities)
+		Public Overrides Sub createBufferStrategy(  numBuffers As Integer,   caps As BufferCapabilities)
 			MyBase.createBufferStrategy(numBuffers, caps)
 		End Sub
 
@@ -233,7 +233,7 @@ Namespace java.awt
 
 			Private ReadOnly outerInstance As Canvas
 
-			Public Sub New(ByVal outerInstance As Canvas)
+			Public Sub New(  outerInstance As Canvas)
 				Me.outerInstance = outerInstance
 			End Sub
 

@@ -65,7 +65,7 @@ Namespace java.awt
 		''' <param name="width"> the columns </param>
 		''' <param name="height"> the rows
 		''' @since 6.0 </param>
-		Friend Sub New(ByVal width As Integer, ByVal height As Integer)
+		Friend Sub New(  width As Integer,   height As Integer)
 			Me.width = width
 			Me.height = height
 		End Sub
@@ -74,14 +74,14 @@ Namespace java.awt
 		''' Returns true if the specified row has any component aligned on the
 		''' baseline with a baseline resize behavior of CONSTANT_DESCENT.
 		''' </summary>
-		Friend Overridable Function hasConstantDescent(ByVal row As Integer) As Boolean
+		Friend Overridable Function hasConstantDescent(  row As Integer) As Boolean
 			Return ((baselineType(row) And (1 << Component.BaselineResizeBehavior.CONSTANT_DESCENT.ordinal())) <> 0)
 		End Function
 
 		''' <summary>
 		''' Returns true if there is a baseline for the specified row.
 		''' </summary>
-		Friend Overridable Function hasBaseline(ByVal row As Integer) As Boolean
+		Friend Overridable Function hasBaseline(  row As Integer) As Boolean
 			Return (hasBaseline_Renamed AndAlso baselineType(row) <> 0)
 		End Function
 	End Class

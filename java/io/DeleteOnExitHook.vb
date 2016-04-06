@@ -58,7 +58,7 @@ Namespace java.io
 		End Sub
 
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Friend Shared Sub add(ByVal file_Renamed As String)
+		Friend Shared Sub add(  file_Renamed As String)
 			If files Is Nothing Then Throw New IllegalStateException("Shutdown in progress")
 
 			files.Add(file_Renamed)

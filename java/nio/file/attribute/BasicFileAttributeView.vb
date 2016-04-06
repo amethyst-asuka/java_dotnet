@@ -167,7 +167,7 @@ Namespace java.nio.file.attribute
 		'''          method is invoked to check write access to the file
 		''' </exception>
 		''' <seealso cref= java.nio.file.Files#setLastModifiedTime </seealso>
-		Sub setTimes(ByVal lastModifiedTime As FileTime, ByVal lastAccessTime As FileTime, ByVal createTime As FileTime)
+		Sub setTimes(  lastModifiedTime As FileTime,   lastAccessTime As FileTime,   createTime As FileTime)
 	End Interface
 
 End Namespace

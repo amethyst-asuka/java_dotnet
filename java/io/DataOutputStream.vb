@@ -58,7 +58,7 @@ Namespace java.io
 		''' <param name="out">   the underlying output stream, to be saved for later
 		'''                use. </param>
 		''' <seealso cref=     java.io.FilterOutputStream#out </seealso>
-		Public Sub New(ByVal out As OutputStream)
+		Public Sub New(  out As OutputStream)
 			MyBase.New(out)
 		End Sub
 
@@ -66,7 +66,7 @@ Namespace java.io
 		''' Increases the written counter by the specified value
 		''' until it reaches  java.lang.[Integer].MAX_VALUE.
 		''' </summary>
-		Private Sub incCount(ByVal value As Integer)
+		Private Sub incCount(  value As Integer)
 			Dim temp As Integer = written + value
 			If temp < 0 Then temp =  java.lang.[Integer].Max_Value
 			written = temp
@@ -84,7 +84,7 @@ Namespace java.io
 		''' <exception cref="IOException">  if an I/O error occurs. </exception>
 		''' <seealso cref=        java.io.FilterOutputStream#out </seealso>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overrides Sub write(ByVal b As Integer) Implements DataOutput.write
+		Public Overrides Sub write(  b As Integer) Implements DataOutput.write
 			out.write(b)
 			incCount(1)
 		End Sub

@@ -39,7 +39,7 @@ Namespace java.util.zip
 		''' <summary>
 		''' Constructs a ZipError with the given detail message. </summary>
 		''' <param name="s"> the {@code String} containing a detail message </param>
-		Public Sub New(ByVal s As String)
+		Public Sub New(  s As String)
 			MyBase.New(s)
 		End Sub
 	End Class

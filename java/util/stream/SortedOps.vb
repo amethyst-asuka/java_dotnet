@@ -43,7 +43,7 @@ Namespace java.util.stream
 		''' </summary>
 		''' @param <T> the type of both input and output elements </param>
 		''' <param name="upstream"> a reference stream with element type T </param>
-		Friend Shared Function makeRef(Of T, T1)(ByVal upstream As AbstractPipeline(Of T1)) As Stream(Of T)
+		Friend Shared Function makeRef(Of T, T1)(  upstream As AbstractPipeline(Of T1)) As Stream(Of T)
 			Return New OfRef(Of )(upstream)
 		End Function
 
@@ -54,7 +54,7 @@ Namespace java.util.stream
 		''' <param name="upstream"> a reference stream with element type T </param>
 		''' <param name="comparator"> the comparator to order elements by </param>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Friend Shared Function makeRef(Of T, T1, T2)(ByVal upstream As AbstractPipeline(Of T1), ByVal comparator As IComparer(Of T2)) As Stream(Of T)
+		Friend Shared Function makeRef(Of T, T1, T2)(  upstream As AbstractPipeline(Of T1),   comparator As IComparer(Of T2)) As Stream(Of T)
 			Return New OfRef(Of )(upstream, comparator)
 		End Function
 
@@ -63,7 +63,7 @@ Namespace java.util.stream
 		''' </summary>
 		''' @param <T> the type of both input and output elements </param>
 		''' <param name="upstream"> a reference stream with element type T </param>
-		Friend Shared Function makeInt(Of T, T1)(ByVal upstream As AbstractPipeline(Of T1)) As IntStream
+		Friend Shared Function makeInt(Of T, T1)(  upstream As AbstractPipeline(Of T1)) As IntStream
 			Return New OfInt(upstream)
 		End Function
 
@@ -72,7 +72,7 @@ Namespace java.util.stream
 		''' </summary>
 		''' @param <T> the type of both input and output elements </param>
 		''' <param name="upstream"> a reference stream with element type T </param>
-		Friend Shared Function makeLong(Of T, T1)(ByVal upstream As AbstractPipeline(Of T1)) As LongStream
+		Friend Shared Function makeLong(Of T, T1)(  upstream As AbstractPipeline(Of T1)) As LongStream
 			Return New OfLong(upstream)
 		End Function
 
@@ -81,7 +81,7 @@ Namespace java.util.stream
 		''' </summary>
 		''' @param <T> the type of both input and output elements </param>
 		''' <param name="upstream"> a reference stream with element type T </param>
-		Friend Shared Function makeDouble(Of T, T1)(ByVal upstream As AbstractPipeline(Of T1)) As DoubleStream
+		Friend Shared Function makeDouble(Of T, T1)(  upstream As AbstractPipeline(Of T1)) As DoubleStream
 			Return New OfDouble(upstream)
 		End Function
 
@@ -103,7 +103,7 @@ Namespace java.util.stream
 			''' Sort using natural order of {@literal <T>} which must be
 			''' {@code Comparable}.
 			''' </summary>
-			Friend Sub New(Of T1)(ByVal upstream As AbstractPipeline(Of T1))
+			Friend Sub New(Of T1)(  upstream As AbstractPipeline(Of T1))
 				MyBase.New(upstream, StreamShape.REFERENCE, StreamOpFlag.IS_ORDERED Or StreamOpFlag.IS_SORTED)
 				Me.isNaturalSort = True
 				' Will throw CCE when we try to sort if T is not Comparable
@@ -119,13 +119,13 @@ Namespace java.util.stream
 			''' </summary>
 			''' <param name="comparator"> The comparator to be used to evaluate ordering. </param>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Friend Sub New(Of T1, T2)(ByVal upstream As AbstractPipeline(Of T1), ByVal comparator As IComparer(Of T2))
+			Friend Sub New(Of T1, T2)(  upstream As AbstractPipeline(Of T1),   comparator As IComparer(Of T2))
 				MyBase.New(upstream, StreamShape.REFERENCE, StreamOpFlag.IS_ORDERED Or StreamOpFlag.NOT_SORTED)
 				Me.isNaturalSort = False
 				Me.comparator = java.util.Objects.requireNonNull(comparator)
 			End Sub
 
-			Public Overrides Function opWrapSink(ByVal flags As Integer, ByVal sink As Sink(Of T)) As Sink(Of T)
+			Public Overrides Function opWrapSink(  flags As Integer,   sink As Sink(Of T)) As Sink(Of T)
 				java.util.Objects.requireNonNull(sink)
 
 				' If the input is already naturally sorted and this operation
@@ -139,7 +139,7 @@ Namespace java.util.stream
 				End If
 			End Function
 
-			Public Overrides Function opEvaluateParallel(Of P_IN)(ByVal helper As PipelineHelper(Of T), ByVal spliterator As java.util.Spliterator(Of P_IN), ByVal generator As java.util.function.IntFunction(Of T())) As Node(Of T)
+			Public Overrides Function opEvaluateParallel(Of P_IN)(  helper As PipelineHelper(Of T),   spliterator As java.util.Spliterator(Of P_IN),   generator As java.util.function.IntFunction(Of T())) As Node(Of T)
 				' If the input is already naturally sorted and this operation
 				' naturally sorts then collect the output
 				If StreamOpFlag.SORTED.isKnown(helper.streamAndOpFlags) AndAlso isNaturalSort Then
@@ -159,11 +159,11 @@ Namespace java.util.stream
 		Private NotInheritable Class OfInt
 			Inherits IntPipeline.StatefulOp(Of Integer?)
 
-			Friend Sub New(Of T1)(ByVal upstream As AbstractPipeline(Of T1))
+			Friend Sub New(Of T1)(  upstream As AbstractPipeline(Of T1))
 				MyBase.New(upstream, StreamShape.INT_VALUE, StreamOpFlag.IS_ORDERED Or StreamOpFlag.IS_SORTED)
 			End Sub
 
-			Public Overrides Function opWrapSink(ByVal flags As Integer, ByVal sink As Sink(Of Integer?)) As Sink(Of Integer?)
+			Public Overrides Function opWrapSink(  flags As Integer,   sink As Sink(Of Integer?)) As Sink(Of Integer?)
 				java.util.Objects.requireNonNull(sink)
 
 				If StreamOpFlag.SORTED.isKnown(flags) Then
@@ -175,7 +175,7 @@ Namespace java.util.stream
 				End If
 			End Function
 
-			Public Overrides Function opEvaluateParallel(Of P_IN)(ByVal helper As PipelineHelper(Of Integer?), ByVal spliterator As java.util.Spliterator(Of P_IN), ByVal generator As java.util.function.IntFunction(Of Integer?())) As Node(Of Integer?)
+			Public Overrides Function opEvaluateParallel(Of P_IN)(  helper As PipelineHelper(Of Integer?),   spliterator As java.util.Spliterator(Of P_IN),   generator As java.util.function.IntFunction(Of Integer?())) As Node(Of Integer?)
 				If StreamOpFlag.SORTED.isKnown(helper.streamAndOpFlags) Then
 					Return helper.evaluate(spliterator, False, generator)
 				Else
@@ -195,11 +195,11 @@ Namespace java.util.stream
 		Private NotInheritable Class OfLong
 			Inherits LongPipeline.StatefulOp(Of Long?)
 
-			Friend Sub New(Of T1)(ByVal upstream As AbstractPipeline(Of T1))
+			Friend Sub New(Of T1)(  upstream As AbstractPipeline(Of T1))
 				MyBase.New(upstream, StreamShape.LONG_VALUE, StreamOpFlag.IS_ORDERED Or StreamOpFlag.IS_SORTED)
 			End Sub
 
-			Public Overrides Function opWrapSink(ByVal flags As Integer, ByVal sink As Sink(Of Long?)) As Sink(Of Long?)
+			Public Overrides Function opWrapSink(  flags As Integer,   sink As Sink(Of Long?)) As Sink(Of Long?)
 				java.util.Objects.requireNonNull(sink)
 
 				If StreamOpFlag.SORTED.isKnown(flags) Then
@@ -211,7 +211,7 @@ Namespace java.util.stream
 				End If
 			End Function
 
-			Public Overrides Function opEvaluateParallel(Of P_IN)(ByVal helper As PipelineHelper(Of Long?), ByVal spliterator As java.util.Spliterator(Of P_IN), ByVal generator As java.util.function.IntFunction(Of Long?())) As Node(Of Long?)
+			Public Overrides Function opEvaluateParallel(Of P_IN)(  helper As PipelineHelper(Of Long?),   spliterator As java.util.Spliterator(Of P_IN),   generator As java.util.function.IntFunction(Of Long?())) As Node(Of Long?)
 				If StreamOpFlag.SORTED.isKnown(helper.streamAndOpFlags) Then
 					Return helper.evaluate(spliterator, False, generator)
 				Else
@@ -231,11 +231,11 @@ Namespace java.util.stream
 		Private NotInheritable Class OfDouble
 			Inherits DoublePipeline.StatefulOp(Of Double?)
 
-			Friend Sub New(Of T1)(ByVal upstream As AbstractPipeline(Of T1))
+			Friend Sub New(Of T1)(  upstream As AbstractPipeline(Of T1))
 				MyBase.New(upstream, StreamShape.DOUBLE_VALUE, StreamOpFlag.IS_ORDERED Or StreamOpFlag.IS_SORTED)
 			End Sub
 
-			Public Overrides Function opWrapSink(ByVal flags As Integer, ByVal sink As Sink(Of Double?)) As Sink(Of Double?)
+			Public Overrides Function opWrapSink(  flags As Integer,   sink As Sink(Of Double?)) As Sink(Of Double?)
 				java.util.Objects.requireNonNull(sink)
 
 				If StreamOpFlag.SORTED.isKnown(flags) Then
@@ -247,7 +247,7 @@ Namespace java.util.stream
 				End If
 			End Function
 
-			Public Overrides Function opEvaluateParallel(Of P_IN)(ByVal helper As PipelineHelper(Of Double?), ByVal spliterator As java.util.Spliterator(Of P_IN), ByVal generator As java.util.function.IntFunction(Of Double?())) As Node(Of Double?)
+			Public Overrides Function opEvaluateParallel(Of P_IN)(  helper As PipelineHelper(Of Double?),   spliterator As java.util.Spliterator(Of P_IN),   generator As java.util.function.IntFunction(Of Double?())) As Node(Of Double?)
 				If StreamOpFlag.SORTED.isKnown(helper.streamAndOpFlags) Then
 					Return helper.evaluate(spliterator, False, generator)
 				Else
@@ -294,7 +294,7 @@ Namespace java.util.stream
 			Protected Friend cancellationWasRequested As Boolean
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Friend Sub New(Of T1, T2)(ByVal downstream As Sink(Of T1), ByVal comparator As IComparer(Of T2))
+			Friend Sub New(Of T1, T2)(  downstream As Sink(Of T1),   comparator As IComparer(Of T2))
 				MyBase.New(downstream)
 				Me.comparator = comparator
 			End Sub
@@ -320,12 +320,12 @@ Namespace java.util.stream
 			Private offset As Integer
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Friend Sub New(Of T1, T2)(ByVal sink As Sink(Of T1), ByVal comparator As IComparer(Of T2))
+			Friend Sub New(Of T1, T2)(  sink As Sink(Of T1),   comparator As IComparer(Of T2))
 				MyBase.New(sink, comparator)
 			End Sub
 
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-			Public Overrides Sub begin(ByVal size As Long)
+			Public Overrides Sub begin(  size As Long)
 				If size >= Nodes.MAX_ARRAY_SIZE Then Throw New IllegalArgumentException(Nodes.BAD_SIZE)
 				array = CType(New Object(CInt(size) - 1){}, T())
 			End Sub
@@ -350,7 +350,7 @@ Namespace java.util.stream
 				array = Nothing
 			End Sub
 
-			Public Overrides Sub accept(ByVal t As T)
+			Public Overrides Sub accept(  t As T)
 				array(offset) = t
 				offset += 1
 			End Sub
@@ -365,11 +365,11 @@ Namespace java.util.stream
 			Private list As List(Of T)
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Friend Sub New(Of T1, T2)(ByVal sink As Sink(Of T1), ByVal comparator As IComparer(Of T2))
+			Friend Sub New(Of T1, T2)(  sink As Sink(Of T1),   comparator As IComparer(Of T2))
 				MyBase.New(sink, comparator)
 			End Sub
 
-			Public Overrides Sub begin(ByVal size As Long)
+			Public Overrides Sub begin(  size As Long)
 				If size >= Nodes.MAX_ARRAY_SIZE Then Throw New IllegalArgumentException(Nodes.BAD_SIZE)
 				list = If(size >= 0, New List(Of T)(CInt(size)), New List(Of T))
 			End Sub
@@ -389,7 +389,7 @@ Namespace java.util.stream
 				list = Nothing
 			End Sub
 
-			Public Overrides Sub accept(ByVal t As T)
+			Public Overrides Sub accept(  t As T)
 				list.add(t)
 			End Sub
 		End Class
@@ -403,7 +403,7 @@ Namespace java.util.stream
 			Protected Friend cancellationWasRequested As Boolean
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Friend Sub New(Of T1)(ByVal downstream As Sink(Of T1))
+			Friend Sub New(Of T1)(  downstream As Sink(Of T1))
 				MyBase.New(downstream)
 			End Sub
 
@@ -423,11 +423,11 @@ Namespace java.util.stream
 			Private offset As Integer
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Friend Sub New(Of T1)(ByVal downstream As Sink(Of T1))
+			Friend Sub New(Of T1)(  downstream As Sink(Of T1))
 				MyBase.New(downstream)
 			End Sub
 
-			Public Overrides Sub begin(ByVal size As Long)
+			Public Overrides Sub begin(  size As Long)
 				If size >= Nodes.MAX_ARRAY_SIZE Then Throw New IllegalArgumentException(Nodes.BAD_SIZE)
 				array = New Integer(CInt(size) - 1){}
 			End Sub
@@ -452,7 +452,7 @@ Namespace java.util.stream
 				array = Nothing
 			End Sub
 
-			Public Overrides Sub accept(ByVal t As Integer)
+			Public Overrides Sub accept(  t As Integer)
 				array(offset) = t
 				offset += 1
 			End Sub
@@ -467,11 +467,11 @@ Namespace java.util.stream
 			Private b As SpinedBuffer.OfInt
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Friend Sub New(Of T1)(ByVal sink As Sink(Of T1))
+			Friend Sub New(Of T1)(  sink As Sink(Of T1))
 				MyBase.New(sink)
 			End Sub
 
-			Public Overrides Sub begin(ByVal size As Long)
+			Public Overrides Sub begin(  size As Long)
 				If size >= Nodes.MAX_ARRAY_SIZE Then Throw New IllegalArgumentException(Nodes.BAD_SIZE)
 				b = If(size > 0, New SpinedBuffer.OfInt(CInt(size)), New SpinedBuffer.OfInt)
 			End Sub
@@ -493,7 +493,7 @@ Namespace java.util.stream
 				downstream.end()
 			End Sub
 
-			Public Overrides Sub accept(ByVal t As Integer)
+			Public Overrides Sub accept(  t As Integer)
 				b.accept(t)
 			End Sub
 		End Class
@@ -507,7 +507,7 @@ Namespace java.util.stream
 			Protected Friend cancellationWasRequested As Boolean
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Friend Sub New(Of T1)(ByVal downstream As Sink(Of T1))
+			Friend Sub New(Of T1)(  downstream As Sink(Of T1))
 				MyBase.New(downstream)
 			End Sub
 
@@ -527,11 +527,11 @@ Namespace java.util.stream
 			Private offset As Integer
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Friend Sub New(Of T1)(ByVal downstream As Sink(Of T1))
+			Friend Sub New(Of T1)(  downstream As Sink(Of T1))
 				MyBase.New(downstream)
 			End Sub
 
-			Public Overrides Sub begin(ByVal size As Long)
+			Public Overrides Sub begin(  size As Long)
 				If size >= Nodes.MAX_ARRAY_SIZE Then Throw New IllegalArgumentException(Nodes.BAD_SIZE)
 				array = New Long(CInt(size) - 1){}
 			End Sub
@@ -556,7 +556,7 @@ Namespace java.util.stream
 				array = Nothing
 			End Sub
 
-			Public Overrides Sub accept(ByVal t As Long)
+			Public Overrides Sub accept(  t As Long)
 				array(offset) = t
 				offset += 1
 			End Sub
@@ -571,11 +571,11 @@ Namespace java.util.stream
 			Private b As SpinedBuffer.OfLong
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Friend Sub New(Of T1)(ByVal sink As Sink(Of T1))
+			Friend Sub New(Of T1)(  sink As Sink(Of T1))
 				MyBase.New(sink)
 			End Sub
 
-			Public Overrides Sub begin(ByVal size As Long)
+			Public Overrides Sub begin(  size As Long)
 				If size >= Nodes.MAX_ARRAY_SIZE Then Throw New IllegalArgumentException(Nodes.BAD_SIZE)
 				b = If(size > 0, New SpinedBuffer.OfLong(CInt(size)), New SpinedBuffer.OfLong)
 			End Sub
@@ -597,7 +597,7 @@ Namespace java.util.stream
 				downstream.end()
 			End Sub
 
-			Public Overrides Sub accept(ByVal t As Long)
+			Public Overrides Sub accept(  t As Long)
 				b.accept(t)
 			End Sub
 		End Class
@@ -611,7 +611,7 @@ Namespace java.util.stream
 			Protected Friend cancellationWasRequested As Boolean
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Friend Sub New(Of T1)(ByVal downstream As Sink(Of T1))
+			Friend Sub New(Of T1)(  downstream As Sink(Of T1))
 				MyBase.New(downstream)
 			End Sub
 
@@ -631,11 +631,11 @@ Namespace java.util.stream
 			Private offset As Integer
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Friend Sub New(Of T1)(ByVal downstream As Sink(Of T1))
+			Friend Sub New(Of T1)(  downstream As Sink(Of T1))
 				MyBase.New(downstream)
 			End Sub
 
-			Public Overrides Sub begin(ByVal size As Long)
+			Public Overrides Sub begin(  size As Long)
 				If size >= Nodes.MAX_ARRAY_SIZE Then Throw New IllegalArgumentException(Nodes.BAD_SIZE)
 				array = New Double(CInt(size) - 1){}
 			End Sub
@@ -660,7 +660,7 @@ Namespace java.util.stream
 				array = Nothing
 			End Sub
 
-			Public Overrides Sub accept(ByVal t As Double)
+			Public Overrides Sub accept(  t As Double)
 				array(offset) = t
 				offset += 1
 			End Sub
@@ -675,11 +675,11 @@ Namespace java.util.stream
 			Private b As SpinedBuffer.OfDouble
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Friend Sub New(Of T1)(ByVal sink As Sink(Of T1))
+			Friend Sub New(Of T1)(  sink As Sink(Of T1))
 				MyBase.New(sink)
 			End Sub
 
-			Public Overrides Sub begin(ByVal size As Long)
+			Public Overrides Sub begin(  size As Long)
 				If size >= Nodes.MAX_ARRAY_SIZE Then Throw New IllegalArgumentException(Nodes.BAD_SIZE)
 				b = If(size > 0, New SpinedBuffer.OfDouble(CInt(size)), New SpinedBuffer.OfDouble)
 			End Sub
@@ -701,7 +701,7 @@ Namespace java.util.stream
 				downstream.end()
 			End Sub
 
-			Public Overrides Sub accept(ByVal t As Double)
+			Public Overrides Sub accept(  t As Double)
 				b.accept(t)
 			End Sub
 		End Class

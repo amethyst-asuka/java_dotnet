@@ -155,12 +155,12 @@ Namespace java.time.chrono
 		''' <param name="temporal">  the temporal to convert, not null </param>
 		''' <returns> the chronology, not null </returns>
 		''' <exception cref="DateTimeException"> if unable to convert to an {@code Chronology} </exception>
-		Shared Function [from](ByVal temporal As java.time.temporal.TemporalAccessor) As Chronology
+		Shared Function [from](  temporal As java.time.temporal.TemporalAccessor) As Chronology
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 			java.util.Objects.requireNonNull(temporal, "temporal");
 'JAVA TO VB CONVERTER TODO TASK: Interfaces cannot contain fields in .NET:
 '			Chronology obj = temporal.query(java.time.temporal.TemporalQueries.chronology());
-			Sub [New](obj != Nothing ? obj : ByVal IsoChronology.INSTANCE As )
+			Sub [New](obj != Nothing ? obj :   IsoChronology.INSTANCE As )
 
 		'-----------------------------------------------------------------------
 		''' <summary>
@@ -202,7 +202,7 @@ Namespace java.time.chrono
 		''' <param name="locale">  the locale to use to obtain the calendar system, not null </param>
 		''' <returns> the calendar system associated with the locale, not null </returns>
 		''' <exception cref="DateTimeException"> if the locale-specified calendar cannot be found </exception>
-		Shared Function ofLocale(ByVal locale As java.util.Locale) As Chronology
+		Shared Function ofLocale(  locale As java.util.Locale) As Chronology
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 			Return AbstractChronology.ofLocale(locale);
 
@@ -226,7 +226,7 @@ Namespace java.time.chrono
 		''' <param name="id">  the chronology ID or calendar system type, not null </param>
 		''' <returns> the chronology with the identifier requested, not null </returns>
 		''' <exception cref="DateTimeException"> if the chronology cannot be found </exception>
-		Shared Function [of](ByVal id As String) As Chronology
+		Shared Function [of](  id As String) As Chronology
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 			Return AbstractChronology.of(id);
 
@@ -283,7 +283,7 @@ Namespace java.time.chrono
 		''' <returns> the local date in this chronology, not null </returns>
 		''' <exception cref="DateTimeException"> if unable to create the date </exception>
 		''' <exception cref="ClassCastException"> if the {@code era} is not of the correct type for the chronology </exception>
-		default Function [date](ByVal era As Era, ByVal yearOfEra As Integer, ByVal month As Integer, ByVal dayOfMonth As Integer) As ChronoLocalDate
+		default Function [date](  era As Era,   yearOfEra As Integer,   month As Integer,   dayOfMonth As Integer) As ChronoLocalDate
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 			Return date(prolepticYear(era, yearOfEra), month, dayOfMonth);
 
@@ -296,7 +296,7 @@ Namespace java.time.chrono
 		''' <param name="dayOfMonth">  the chronology day-of-month </param>
 		''' <returns> the local date in this chronology, not null </returns>
 		''' <exception cref="DateTimeException"> if unable to create the date </exception>
-		Function [date](ByVal prolepticYear As Integer, ByVal month As Integer, ByVal dayOfMonth As Integer) As ChronoLocalDate
+		Function [date](  prolepticYear As Integer,   month As Integer,   dayOfMonth As Integer) As ChronoLocalDate
 
 		''' <summary>
 		''' Obtains a local date in this chronology from the era, year-of-era and
@@ -312,7 +312,7 @@ Namespace java.time.chrono
 		''' <returns> the local date in this chronology, not null </returns>
 		''' <exception cref="DateTimeException"> if unable to create the date </exception>
 		''' <exception cref="ClassCastException"> if the {@code era} is not of the correct type for the chronology </exception>
-		default Function dateYearDay(ByVal era As Era, ByVal yearOfEra As Integer, ByVal dayOfYear As Integer) As ChronoLocalDate
+		default Function dateYearDay(  era As Era,   yearOfEra As Integer,   dayOfYear As Integer) As ChronoLocalDate
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 			Return dateYearDay(prolepticYear(era, yearOfEra), dayOfYear);
 
@@ -324,7 +324,7 @@ Namespace java.time.chrono
 		''' <param name="dayOfYear">  the chronology day-of-year </param>
 		''' <returns> the local date in this chronology, not null </returns>
 		''' <exception cref="DateTimeException"> if unable to create the date </exception>
-		Function dateYearDay(ByVal prolepticYear As Integer, ByVal dayOfYear As Integer) As ChronoLocalDate
+		Function dateYearDay(  prolepticYear As Integer,   dayOfYear As Integer) As ChronoLocalDate
 
 		''' <summary>
 		''' Obtains a local date in this chronology from the epoch-day.
@@ -335,7 +335,7 @@ Namespace java.time.chrono
 		''' <param name="epochDay">  the epoch day </param>
 		''' <returns> the local date in this chronology, not null </returns>
 		''' <exception cref="DateTimeException"> if unable to create the date </exception>
-		Function dateEpochDay(ByVal epochDay As Long) As ChronoLocalDate
+		Function dateEpochDay(  epochDay As Long) As ChronoLocalDate
 
 		'-----------------------------------------------------------------------
 		''' <summary>
@@ -353,7 +353,7 @@ Namespace java.time.chrono
 		''' <returns> the current local date using the system clock and default time-zone, not null </returns>
 		''' <exception cref="DateTimeException"> if unable to create the date </exception>
 		default Function dateNow() As ChronoLocalDate
-			Function dateNow(java.time.Clock.systemDefaultZone() ByVal  As ) As [Return]
+			Function dateNow(java.time.Clock.systemDefaultZone()    As ) As [Return]
 
 		''' <summary>
 		''' Obtains the current local date in this chronology from the system clock in the specified time-zone.
@@ -370,8 +370,8 @@ Namespace java.time.chrono
 		''' <param name="zone">  the zone ID to use, not null </param>
 		''' <returns> the current local date using the system clock, not null </returns>
 		''' <exception cref="DateTimeException"> if unable to create the date </exception>
-		default Function dateNow(ByVal zone As java.time.ZoneId) As ChronoLocalDate
-			Function dateNow(java.time.Clock.system(zone) ByVal  As ) As [Return]
+		default Function dateNow(  zone As java.time.ZoneId) As ChronoLocalDate
+			Function dateNow(java.time.Clock.system(zone)    As ) As [Return]
 
 		''' <summary>
 		''' Obtains the current local date in this chronology from the specified clock.
@@ -386,10 +386,10 @@ Namespace java.time.chrono
 		''' <param name="clock">  the clock to use, not null </param>
 		''' <returns> the current local date, not null </returns>
 		''' <exception cref="DateTimeException"> if unable to create the date </exception>
-		default Function dateNow(ByVal clock As java.time.Clock) As ChronoLocalDate
+		default Function dateNow(  clock As java.time.Clock) As ChronoLocalDate
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 			java.util.Objects.requireNonNull(clock, "clock");
-			Function [date](java.time.LocalDate.now(clock) ByVal  As ) As [Return]
+			Function [date](java.time.LocalDate.now(clock)    As ) As [Return]
 
 		'-----------------------------------------------------------------------
 		''' <summary>
@@ -409,7 +409,7 @@ Namespace java.time.chrono
 		''' <returns> the local date in this chronology, not null </returns>
 		''' <exception cref="DateTimeException"> if unable to create the date </exception>
 		''' <seealso cref= ChronoLocalDate#from(TemporalAccessor) </seealso>
-		Function [date](ByVal temporal As java.time.temporal.TemporalAccessor) As ChronoLocalDate
+		Function [date](  temporal As java.time.temporal.TemporalAccessor) As ChronoLocalDate
 
 		''' <summary>
 		''' Obtains a local date-time in this chronology from another temporal object.
@@ -432,11 +432,11 @@ Namespace java.time.chrono
 		''' <exception cref="DateTimeException"> if unable to create the date-time </exception>
 		''' <seealso cref= ChronoLocalDateTime#from(TemporalAccessor) </seealso>
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-		default Function localDateTime(ByVal temporal As java.time.temporal.TemporalAccessor) As ChronoLocalDateTime(Of ? As ChronoLocalDate)
+		default Function localDateTime(  temporal As java.time.temporal.TemporalAccessor) As ChronoLocalDateTime(Of ? As ChronoLocalDate)
 			Try
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 				Return date(temporal).atTime(java.time.LocalTime.from(temporal));
-			Sub [New](ByVal ex As java.time.DateTimeException)
+			Sub [New](  ex As java.time.DateTimeException)
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 				throw New java.time.DateTimeException("Unable to obtain ChronoLocalDateTime from TemporalAccessor: " & temporal.getClass(), ex);
 
@@ -464,7 +464,7 @@ Namespace java.time.chrono
 		''' <exception cref="DateTimeException"> if unable to create the date-time </exception>
 		''' <seealso cref= ChronoZonedDateTime#from(TemporalAccessor) </seealso>
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-		default Function zonedDateTime(ByVal temporal As java.time.temporal.TemporalAccessor) As ChronoZonedDateTime(Of ? As ChronoLocalDate)
+		default Function zonedDateTime(  temporal As java.time.temporal.TemporalAccessor) As ChronoZonedDateTime(Of ? As ChronoLocalDate)
 			Try
 'JAVA TO VB CONVERTER TODO TASK: Interfaces cannot contain fields in .NET:
 '				java.time.ZoneId zone = java.time.ZoneId.from(temporal);
@@ -474,12 +474,12 @@ Namespace java.time.chrono
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 					Return zonedDateTime(instant, zone);
 
-				Sub [New](ByVal ex1 As java.time.DateTimeException)
+				Sub [New](  ex1 As java.time.DateTimeException)
 'JAVA TO VB CONVERTER TODO TASK: Interfaces cannot contain fields in .NET:
 '					ChronoLocalDateTimeImpl(Of JavaToDotNetGenericWildcard) cldt = ChronoLocalDateTimeImpl.ensureValid(Me, localDateTime(temporal));
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 					Return ChronoZonedDateTimeImpl.ofBest(cldt, zone, Nothing);
-			Sub [New](ByVal ex As java.time.DateTimeException)
+			Sub [New](  ex As java.time.DateTimeException)
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 				throw New java.time.DateTimeException("Unable to obtain ChronoZonedDateTime from TemporalAccessor: " & temporal.getClass(), ex);
 
@@ -493,7 +493,7 @@ Namespace java.time.chrono
 		''' <returns> the zoned date-time, not null </returns>
 		''' <exception cref="DateTimeException"> if the result exceeds the supported range </exception>
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-		default Function zonedDateTime(ByVal instant As java.time.Instant, ByVal zone As java.time.ZoneId) As ChronoZonedDateTime(Of ? As ChronoLocalDate)
+		default Function zonedDateTime(  instant As java.time.Instant,   zone As java.time.ZoneId) As ChronoZonedDateTime(Of ? As ChronoLocalDate)
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 			Return ChronoZonedDateTimeImpl.ofInstant(Me, instant, zone);
 
@@ -510,7 +510,7 @@ Namespace java.time.chrono
 		''' </summary>
 		''' <param name="prolepticYear">  the proleptic-year to check, not validated for range </param>
 		''' <returns> true if the year is a leap year </returns>
-		Function isLeapYear(ByVal prolepticYear As Long) As Boolean
+		Function isLeapYear(  prolepticYear As Long) As Boolean
 
 		''' <summary>
 		''' Calculates the proleptic-year given the era and year-of-era.
@@ -527,7 +527,7 @@ Namespace java.time.chrono
 		''' <exception cref="DateTimeException"> if unable to convert to a proleptic-year,
 		'''  such as if the year is invalid for the era </exception>
 		''' <exception cref="ClassCastException"> if the {@code era} is not of the correct type for the chronology </exception>
-		Function prolepticYear(ByVal era As Era, ByVal yearOfEra As Integer) As Integer
+		Function prolepticYear(  era As Era,   yearOfEra As Integer) As Integer
 
 		''' <summary>
 		''' Creates the chronology era object from the numeric value.
@@ -547,7 +547,7 @@ Namespace java.time.chrono
 		''' <param name="eraValue">  the era value </param>
 		''' <returns> the calendar system era, not null </returns>
 		''' <exception cref="DateTimeException"> if unable to create the era </exception>
-		Function eraOf(ByVal eraValue As Integer) As Era
+		Function eraOf(  eraValue As Integer) As Era
 
 		''' <summary>
 		''' Gets the list of eras for the chronology.
@@ -575,7 +575,7 @@ Namespace java.time.chrono
 		''' <param name="field">  the field to get the range for, not null </param>
 		''' <returns> the range of valid values for the field, not null </returns>
 		''' <exception cref="DateTimeException"> if the range for the field cannot be obtained </exception>
-		Function range(ByVal field As java.time.temporal.ChronoField) As java.time.temporal.ValueRange
+		Function range(  field As java.time.temporal.ChronoField) As java.time.temporal.ValueRange
 
 		'-----------------------------------------------------------------------
 		''' <summary>
@@ -592,7 +592,7 @@ Namespace java.time.chrono
 		''' <param name="style">  the style of the text required, not null </param>
 		''' <param name="locale">  the locale to use, not null </param>
 		''' <returns> the text value of the chronology, not null </returns>
-		default Function getDisplayName(ByVal style As java.time.format.TextStyle, ByVal locale As java.util.Locale) As String
+		default Function getDisplayName(  style As java.time.format.TextStyle,   locale As java.util.Locale) As String
 'JAVA TO VB CONVERTER TODO TASK: Interfaces cannot contain fields in .NET:
 '			java.time.temporal.TemporalAccessor temporal = New TemporalAccessorAnonymousInnerClassHelper();
 			Return Function java.time.format.DateTimeFormatterBuilder() As New
@@ -615,7 +615,7 @@ Namespace java.time.chrono
 		''' <returns> the resolved date, null if insufficient information to create a date </returns>
 		''' <exception cref="DateTimeException"> if the date cannot be resolved, typically
 		'''  because of a conflict in the input data </exception>
-		Function resolveDate(ByVal fieldValues As IDictionary(Of java.time.temporal.TemporalField, Long?), ByVal resolverStyle As java.time.format.ResolverStyle) As ChronoLocalDate
+		Function resolveDate(  fieldValues As IDictionary(Of java.time.temporal.TemporalField, Long?),   resolverStyle As java.time.format.ResolverStyle) As ChronoLocalDate
 
 		'-----------------------------------------------------------------------
 		''' <summary>
@@ -644,7 +644,7 @@ Namespace java.time.chrono
 		''' <param name="months">  the number of years, may be negative </param>
 		''' <param name="days">  the number of years, may be negative </param>
 		''' <returns> the period in terms of this chronology, not null </returns>
-		default Function period(ByVal years As Integer, ByVal months As Integer, ByVal days As Integer) As ChronoPeriod
+		default Function period(  years As Integer,   months As Integer,   days As Integer) As ChronoPeriod
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 			Return New ChronoPeriodImpl(Me, years, months, days);
 
@@ -658,7 +658,7 @@ Namespace java.time.chrono
 		''' </summary>
 		''' <param name="other">  the other chronology to compare to, not null </param>
 		''' <returns> the comparator value, negative if less, positive if greater </returns>
-		Overrides Function compareTo(ByVal other As Chronology) As Integer
+		Overrides Function compareTo(  other As Chronology) As Integer
 
 		''' <summary>
 		''' Checks if this chronology is equal to another chronology.
@@ -667,7 +667,7 @@ Namespace java.time.chrono
 		''' </summary>
 		''' <param name="obj">  the object to check, null returns false </param>
 		''' <returns> true if this is equal to the other chronology </returns>
-		Overrides Function Equals(ByVal obj As Object) As Boolean
+		Overrides Function Equals(  obj As Object) As Boolean
 
 		''' <summary>
 		''' A hash code for this chronology.
@@ -692,14 +692,14 @@ Namespace java.time.chrono
 	Private Class TemporalAccessorAnonymousInnerClassHelper
 		Implements java.time.temporal.TemporalAccessor
 
-		Public Overrides Function isSupported(ByVal field As java.time.temporal.TemporalField) As Boolean
+		Public Overrides Function isSupported(  field As java.time.temporal.TemporalField) As Boolean
 			Return False
 		End Function
-		Public Overrides Function getLong(ByVal field As java.time.temporal.TemporalField) As Long
+		Public Overrides Function getLong(  field As java.time.temporal.TemporalField) As Long
 			Throw New java.time.temporal.UnsupportedTemporalTypeException("Unsupported field: " & field)
 		End Function
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Overrides Function query(Of R)(ByVal query_Renamed As java.time.temporal.TemporalQuery(Of R)) As R
+		Public Overrides Function query(Of R)(  query_Renamed As java.time.temporal.TemporalQuery(Of R)) As R
 			If query_Renamed Is java.time.temporal.TemporalQueries.chronology() Then Return CType(Chronology.this, R)
 			Return outerInstance.query(query_Renamed)
 		End Function

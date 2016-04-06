@@ -178,7 +178,7 @@ Namespace java.awt
 		''' <param name="orientation">  specifies which scrollbar this object represents,
 		'''                     can be either  <code>Adjustable.HORIZONTAL</code>
 		'''                     or <code>Adjustable.VERTICAL</code>. </param>
-		Friend Sub New(ByVal sp As ScrollPane, ByVal l As java.awt.event.AdjustmentListener, ByVal orientation As Integer)
+		Friend Sub New(  sp As ScrollPane,   l As java.awt.event.AdjustmentListener,   orientation As Integer)
 			Me.sp = sp
 			Me.orientation = orientation
 			addAdjustmentListener(l)
@@ -191,7 +191,7 @@ Namespace java.awt
 		''' that should be changing these since it is the source of these
 		''' values.
 		''' </summary>
-		Friend Overridable Sub setSpan(ByVal min As Integer, ByVal max As Integer, ByVal visible As Integer)
+		Friend Overridable Sub setSpan(  min As Integer,   max As Integer,   visible As Integer)
 			' adjust the values to be reasonable
 			minimum = min
 			maximum = System.Math.Max(max, minimum + 1)
@@ -219,7 +219,7 @@ Namespace java.awt
 		''' </summary>
 		''' <exception cref="AWTError"> Always throws an error when called. </exception>
 		Public Overridable Property minimum Implements Adjustable.setMinimum As Integer
-			Set(ByVal min As Integer)
+			Set(  min As Integer)
 				Throw New AWTError(SCROLLPANE_ONLY)
 			End Set
 			Get
@@ -237,7 +237,7 @@ Namespace java.awt
 		''' </summary>
 		''' <exception cref="AWTError"> Always throws an error when called. </exception>
 		Public Overridable Property maximum Implements Adjustable.setMaximum As Integer
-			Set(ByVal max As Integer)
+			Set(  max As Integer)
 				Throw New AWTError(SCROLLPANE_ONLY)
 			End Set
 			Get
@@ -248,7 +248,7 @@ Namespace java.awt
 
 		<MethodImpl(MethodImplOptions.Synchronized)> _
 		Public Overridable Property unitIncrement Implements Adjustable.setUnitIncrement As Integer
-			Set(ByVal u As Integer)
+			Set(  u As Integer)
 				If u <> unitIncrement Then
 					unitIncrement = u
 					If sp.peer IsNot Nothing Then
@@ -265,7 +265,7 @@ Namespace java.awt
 
 		<MethodImpl(MethodImplOptions.Synchronized)> _
 		Public Overridable Property blockIncrement Implements Adjustable.setBlockIncrement As Integer
-			Set(ByVal b As Integer)
+			Set(  b As Integer)
 				blockIncrement = b
 			End Set
 			Get
@@ -281,7 +281,7 @@ Namespace java.awt
 		''' </summary>
 		''' <exception cref="AWTError"> Always throws an error when called. </exception>
 		Public Overridable Property visibleAmount Implements Adjustable.setVisibleAmount As Integer
-			Set(ByVal v As Integer)
+			Set(  v As Integer)
 				Throw New AWTError(SCROLLPANE_ONLY)
 			End Set
 			Get
@@ -298,7 +298,7 @@ Namespace java.awt
 		''' <seealso cref= #getValueIsAdjusting
 		''' @since 1.4 </seealso>
 		Public Overridable Property valueIsAdjusting As Boolean
-			Set(ByVal b As Boolean)
+			Set(  b As Boolean)
 				If isAdjusting <> b Then
 					isAdjusting = b
 					Dim e As New java.awt.event.AdjustmentEvent(Me, java.awt.event.AdjustmentEvent.ADJUSTMENT_VALUE_CHANGED, java.awt.event.AdjustmentEvent.TRACK, value, b)
@@ -320,7 +320,7 @@ Namespace java.awt
 		''' </summary>
 		''' <param name="v"> the new value of the scrollbar </param>
 		Public Overridable Property value Implements Adjustable.setValue As Integer
-			Set(ByVal v As Integer)
+			Set(  v As Integer)
 				typedValuelue(v, java.awt.event.AdjustmentEvent.TRACK)
 			End Set
 			Get
@@ -338,7 +338,7 @@ Namespace java.awt
 		''' </summary>
 		''' <param name="v"> the new value of the scrollbar </param>
 		''' <param name="type"> the type of the scrolling operation occurred </param>
-		Private Sub setTypedValue(ByVal v As Integer, ByVal type As Integer)
+		Private Sub setTypedValue(  v As Integer,   type As Integer)
 			v = System.Math.Max(v, minimum)
 			v = System.Math.Min(v, maximum - visibleAmount)
 
@@ -367,7 +367,7 @@ Namespace java.awt
 		''' <seealso cref=      java.awt.event.AdjustmentListener </seealso>
 		''' <seealso cref=      java.awt.event.AdjustmentEvent </seealso>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Sub addAdjustmentListener(ByVal l As java.awt.event.AdjustmentListener)
+		Public Overridable Sub addAdjustmentListener(  l As java.awt.event.AdjustmentListener)
 			If l Is Nothing Then Return
 			adjustmentListener = AWTEventMulticaster.add(adjustmentListener, l)
 		End Sub
@@ -387,7 +387,7 @@ Namespace java.awt
 		''' <seealso cref=           java.awt.event.AdjustmentEvent
 		''' @since         JDK1.1 </seealso>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Sub removeAdjustmentListener(ByVal l As java.awt.event.AdjustmentListener)
+		Public Overridable Sub removeAdjustmentListener(  l As java.awt.event.AdjustmentListener)
 			If l Is Nothing Then Return
 			adjustmentListener = AWTEventMulticaster.remove(adjustmentListener, l)
 		End Sub

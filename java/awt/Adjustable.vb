@@ -114,13 +114,13 @@ Namespace java.awt
 		''' the adjustable object changes. </summary>
 		''' <param name="l"> the listener to receive events </param>
 		''' <seealso cref= AdjustmentEvent </seealso>
-		Sub addAdjustmentListener(ByVal l As AdjustmentListener)
+		Sub addAdjustmentListener(  l As AdjustmentListener)
 
 		''' <summary>
 		''' Removes an adjustment listener. </summary>
 		''' <param name="l"> the listener being removed </param>
 		''' <seealso cref= AdjustmentEvent </seealso>
-		Sub removeAdjustmentListener(ByVal l As AdjustmentListener)
+		Sub removeAdjustmentListener(  l As AdjustmentListener)
 
 	End Interface
 

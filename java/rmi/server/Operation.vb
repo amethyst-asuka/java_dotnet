@@ -46,7 +46,7 @@ Namespace java.rmi.server
 		''' @deprecated no replacement
 		''' @since JDK1.1 
 		<Obsolete("no replacement")> _
-		Public Sub New(ByVal op As String)
+		Public Sub New(  op As String)
 			operation_Renamed = op
 		End Sub
 

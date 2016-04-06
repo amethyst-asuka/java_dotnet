@@ -41,7 +41,7 @@ Namespace java.util
 		''' <param name="o">     the observable object. </param>
 		''' <param name="arg">   an argument passed to the <code>notifyObservers</code>
 		'''                 method. </param>
-		Sub update(ByVal o As Observable, ByVal arg As Object)
+		Sub update(  o As Observable,   arg As Object)
 	End Interface
 
 End Namespace

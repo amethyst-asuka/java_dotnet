@@ -299,27 +299,27 @@ Namespace java.util.concurrent
 			''' Constructs a new node.  Uses relaxed write because item can
 			''' only be seen after publication via casNext or casPrev.
 			''' </summary>
-			Friend Sub New(ByVal item As E)
+			Friend Sub New(  item As E)
 				UNSAFE.putObject(Me, itemOffset, item)
 			End Sub
 
-			Friend Function casItem(ByVal cmp As E, ByVal val As E) As Boolean
+			Friend Function casItem(  cmp As E,   val As E) As Boolean
 				Return UNSAFE.compareAndSwapObject(Me, itemOffset, cmp, val)
 			End Function
 
-			Friend Sub lazySetNext(ByVal val As Node(Of E))
+			Friend Sub lazySetNext(  val As Node(Of E))
 				UNSAFE.putOrderedObject(Me, nextOffset, val)
 			End Sub
 
-			Friend Function casNext(ByVal cmp As Node(Of E), ByVal val As Node(Of E)) As Boolean
+			Friend Function casNext(  cmp As Node(Of E),   val As Node(Of E)) As Boolean
 				Return UNSAFE.compareAndSwapObject(Me, nextOffset, cmp, val)
 			End Function
 
-			Friend Sub lazySetPrev(ByVal val As Node(Of E))
+			Friend Sub lazySetPrev(  val As Node(Of E))
 				UNSAFE.putOrderedObject(Me, prevOffset, val)
 			End Sub
 
-			Friend Function casPrev(ByVal cmp As Node(Of E), ByVal val As Node(Of E)) As Boolean
+			Friend Function casPrev(  cmp As Node(Of E),   val As Node(Of E)) As Boolean
 				Return UNSAFE.compareAndSwapObject(Me, prevOffset, cmp, val)
 			End Function
 
@@ -346,7 +346,7 @@ Namespace java.util.concurrent
 		''' <summary>
 		''' Links e as first element.
 		''' </summary>
-		Private Sub linkFirst(ByVal e As E)
+		Private Sub linkFirst(  e As E)
 			checkNotNull(e)
 			Dim newNode As New Node(Of E)(e)
 
@@ -382,7 +382,7 @@ Namespace java.util.concurrent
 		''' <summary>
 		''' Links e as last element.
 		''' </summary>
-		Private Sub linkLast(ByVal e As E)
+		Private Sub linkLast(  e As E)
 			checkNotNull(e)
 			Dim newNode As New Node(Of E)(e)
 
@@ -420,7 +420,7 @@ Namespace java.util.concurrent
 		''' <summary>
 		''' Unlinks non-null node x.
 		''' </summary>
-		Friend Overridable Sub unlink(ByVal x As Node(Of E))
+		Friend Overridable Sub unlink(  x As Node(Of E))
 			' assert x != null;
 			' assert x.item == null;
 			' assert x != PREV_TERMINATOR;
@@ -525,7 +525,7 @@ Namespace java.util.concurrent
 		''' <summary>
 		''' Unlinks non-null first node.
 		''' </summary>
-		Private Sub unlinkFirst(ByVal first As Node(Of E), ByVal [next] As Node(Of E))
+		Private Sub unlinkFirst(  first As Node(Of E),   [next] As Node(Of E))
 			' assert first != null;
 			' assert next != null;
 			' assert first.item == null;
@@ -557,7 +557,7 @@ Namespace java.util.concurrent
 		''' <summary>
 		''' Unlinks non-null last node.
 		''' </summary>
-		Private Sub unlinkLast(ByVal last As Node(Of E), ByVal prev As Node(Of E))
+		Private Sub unlinkLast(  last As Node(Of E),   prev As Node(Of E))
 			' assert last != null;
 			' assert prev != null;
 			' assert last.item == null;
@@ -660,7 +660,7 @@ Namespace java.util.concurrent
 			Loop
 		End Sub
 
-		Private Sub skipDeletedPredecessors(ByVal x As Node(Of E))
+		Private Sub skipDeletedPredecessors(  x As Node(Of E))
 			whileActive:
 			Do
 				Dim prev As Node(Of E) = x.prev
@@ -688,7 +688,7 @@ Namespace java.util.concurrent
 			Loop While x.item IsNot Nothing OrElse x.next Is Nothing
 		End Sub
 
-		Private Sub skipDeletedSuccessors(ByVal x As Node(Of E))
+		Private Sub skipDeletedSuccessors(  x As Node(Of E))
 			whileActive:
 			Do
 				Dim [next] As Node(Of E) = x.next
@@ -721,7 +721,7 @@ Namespace java.util.concurrent
 		''' linked to self, which will only be true if traversing with a
 		''' stale pointer that is now off the list.
 		''' </summary>
-		Friend Function succ(ByVal p As Node(Of E)) As Node(Of E)
+		Friend Function succ(  p As Node(Of E)) As Node(Of E)
 			' TODO: should we skip deleted nodes here?
 			Dim q As Node(Of E) = p.next
 			Return If(p Is q, first(), q)
@@ -732,7 +732,7 @@ Namespace java.util.concurrent
 		''' linked to self, which will only be true if traversing with a
 		''' stale pointer that is now off the list.
 		''' </summary>
-		Friend Function pred(ByVal p As Node(Of E)) As Node(Of E)
+		Friend Function pred(  p As Node(Of E)) As Node(Of E)
 			Dim q As Node(Of E) = p.prev
 			Return If(p Is q, last(), q)
 		End Function
@@ -801,7 +801,7 @@ Namespace java.util.concurrent
 		''' Throws NullPointerException if argument is null.
 		''' </summary>
 		''' <param name="v"> the element </param>
-		Private Shared Sub checkNotNull(ByVal v As Object)
+		Private Shared Sub checkNotNull(  v As Object)
 			If v Is Nothing Then Throw New NullPointerException
 		End Sub
 
@@ -811,7 +811,7 @@ Namespace java.util.concurrent
 		''' </summary>
 		''' <param name="v"> the element </param>
 		''' <returns> the element </returns>
-		Private Function screenNullResult(ByVal v As E) As E
+		Private Function screenNullResult(  v As E) As E
 			If v Is Nothing Then Throw New java.util.NoSuchElementException
 			Return v
 		End Function
@@ -848,7 +848,7 @@ Namespace java.util.concurrent
 		''' <param name="c"> the collection of elements to initially contain </param>
 		''' <exception cref="NullPointerException"> if the specified collection or any
 		'''         of its elements are null </exception>
-		Public Sub New(Of T1 As E)(ByVal c As ICollection(Of T1))
+		Public Sub New(Of T1 As E)(  c As ICollection(Of T1))
 			' Copy c into a private chain of Nodes
 			Dim h As Node(Of E) = Nothing, t As Node(Of E) = Nothing
 			For Each e As E In c
@@ -869,7 +869,7 @@ Namespace java.util.concurrent
 		''' <summary>
 		''' Initializes head and tail, ensuring invariants hold.
 		''' </summary>
-		Private Sub initHeadTail(ByVal h As Node(Of E), ByVal t As Node(Of E))
+		Private Sub initHeadTail(  h As Node(Of E),   t As Node(Of E))
 			If h Is t Then
 				If h Is Nothing Then
 						t = New Node(Of E)(Nothing)
@@ -892,7 +892,7 @@ Namespace java.util.concurrent
 		''' <seealso cref="IllegalStateException"/>.
 		''' </summary>
 		''' <exception cref="NullPointerException"> if the specified element is null </exception>
-		Public Overridable Sub addFirst(ByVal e As E)
+		Public Overridable Sub addFirst(  e As E)
 			linkFirst(e)
 		End Sub
 
@@ -904,7 +904,7 @@ Namespace java.util.concurrent
 		''' <p>This method is equivalent to <seealso cref="#add"/>.
 		''' </summary>
 		''' <exception cref="NullPointerException"> if the specified element is null </exception>
-		Public Overridable Sub addLast(ByVal e As E)
+		Public Overridable Sub addLast(  e As E)
 			linkLast(e)
 		End Sub
 
@@ -914,7 +914,7 @@ Namespace java.util.concurrent
 		''' </summary>
 		''' <returns> {@code true} (as specified by <seealso cref="Deque#offerFirst"/>) </returns>
 		''' <exception cref="NullPointerException"> if the specified element is null </exception>
-		Public Overridable Function offerFirst(ByVal e As E) As Boolean
+		Public Overridable Function offerFirst(  e As E) As Boolean
 			linkFirst(e)
 			Return True
 		End Function
@@ -927,7 +927,7 @@ Namespace java.util.concurrent
 		''' </summary>
 		''' <returns> {@code true} (as specified by <seealso cref="Deque#offerLast"/>) </returns>
 		''' <exception cref="NullPointerException"> if the specified element is null </exception>
-		Public Overridable Function offerLast(ByVal e As E) As Boolean
+		Public Overridable Function offerLast(  e As E) As Boolean
 			linkLast(e)
 			Return True
 		End Function
@@ -1010,7 +1010,7 @@ Namespace java.util.concurrent
 		''' </summary>
 		''' <returns> {@code true} (as specified by <seealso cref="Queue#offer"/>) </returns>
 		''' <exception cref="NullPointerException"> if the specified element is null </exception>
-		Public Overridable Function offer(ByVal e As E) As Boolean
+		Public Overridable Function offer(  e As E) As Boolean
 			Return offerLast(e)
 		End Function
 
@@ -1021,7 +1021,7 @@ Namespace java.util.concurrent
 		''' </summary>
 		''' <returns> {@code true} (as specified by <seealso cref="Collection#add"/>) </returns>
 		''' <exception cref="NullPointerException"> if the specified element is null </exception>
-		Public Overridable Function add(ByVal e As E) As Boolean
+		Public Overridable Function add(  e As E) As Boolean
 			Return offerLast(e)
 		End Function
 
@@ -1048,7 +1048,7 @@ Namespace java.util.concurrent
 		End Function
 
 		''' <exception cref="NullPointerException"> {@inheritDoc} </exception>
-		Public Overridable Sub push(ByVal e As E)
+		Public Overridable Sub push(  e As E)
 			addFirst(e)
 		End Sub
 
@@ -1060,7 +1060,7 @@ Namespace java.util.concurrent
 		''' <param name="o"> element to be removed from this deque, if present </param>
 		''' <returns> {@code true} if the deque contained the specified element </returns>
 		''' <exception cref="NullPointerException"> if the specified element is null </exception>
-		Public Overridable Function removeFirstOccurrence(ByVal o As Object) As Boolean
+		Public Overridable Function removeFirstOccurrence(  o As Object) As Boolean
 			checkNotNull(o)
 			Dim p As Node(Of E) = first()
 			Do While p IsNot Nothing
@@ -1082,7 +1082,7 @@ Namespace java.util.concurrent
 		''' <param name="o"> element to be removed from this deque, if present </param>
 		''' <returns> {@code true} if the deque contained the specified element </returns>
 		''' <exception cref="NullPointerException"> if the specified element is null </exception>
-		Public Overridable Function removeLastOccurrence(ByVal o As Object) As Boolean
+		Public Overridable Function removeLastOccurrence(  o As Object) As Boolean
 			checkNotNull(o)
 			Dim p As Node(Of E) = last()
 			Do While p IsNot Nothing
@@ -1102,7 +1102,7 @@ Namespace java.util.concurrent
 		''' </summary>
 		''' <param name="o"> element whose presence in this deque is to be tested </param>
 		''' <returns> {@code true} if this deque contains the specified element </returns>
-		Public Overridable Function contains(ByVal o As Object) As Boolean
+		Public Overridable Function contains(  o As Object) As Boolean
 			If o Is Nothing Then Return False
 			Dim p As Node(Of E) = first()
 			Do While p IsNot Nothing
@@ -1160,7 +1160,7 @@ Namespace java.util.concurrent
 		''' <param name="o"> element to be removed from this deque, if present </param>
 		''' <returns> {@code true} if the deque contained the specified element </returns>
 		''' <exception cref="NullPointerException"> if the specified element is null </exception>
-		Public Overridable Function remove(ByVal o As Object) As Boolean
+		Public Overridable Function remove(  o As Object) As Boolean
 			Return removeFirstOccurrence(o)
 		End Function
 
@@ -1175,7 +1175,7 @@ Namespace java.util.concurrent
 		''' <exception cref="NullPointerException"> if the specified collection or any
 		'''         of its elements are null </exception>
 		''' <exception cref="IllegalArgumentException"> if the collection is this deque </exception>
-		Public Overridable Function addAll(Of T1 As E)(ByVal c As ICollection(Of T1)) As Boolean
+		Public Overridable Function addAll(Of T1 As E)(  c As ICollection(Of T1)) As Boolean
 			If c Is Me Then Throw New IllegalArgumentException
 
 			' Copy c into a private chain of Nodes
@@ -1289,7 +1289,7 @@ Namespace java.util.concurrent
 		'''         is not a supertype of the runtime type of every element in
 		'''         this deque </exception>
 		''' <exception cref="NullPointerException"> if the specified array is null </exception>
-		Public Overridable Function toArray(Of T)(ByVal a As T()) As T()
+		Public Overridable Function toArray(Of T)(  a As T()) As T()
 			Return toArrayList().ToArray(a)
 		End Function
 
@@ -1343,9 +1343,9 @@ Namespace java.util.concurrent
 			Private lastRet As Node(Of E)
 
 			Friend MustOverride Function startNode() As Node(Of E)
-			Friend MustOverride Function nextNode(ByVal p As Node(Of E)) As Node(Of E)
+			Friend MustOverride Function nextNode(  p As Node(Of E)) As Node(Of E)
 
-			Friend Sub New(ByVal outerInstance As ConcurrentLinkedDeque)
+			Friend Sub New(  outerInstance As ConcurrentLinkedDeque)
 					Me.outerInstance = outerInstance
 				advance()
 			End Sub
@@ -1402,14 +1402,14 @@ Namespace java.util.concurrent
 
 			Private ReadOnly outerInstance As ConcurrentLinkedDeque
 
-			Public Sub New(ByVal outerInstance As ConcurrentLinkedDeque)
+			Public Sub New(  outerInstance As ConcurrentLinkedDeque)
 				Me.outerInstance = outerInstance
 			End Sub
 
 			Friend Overrides Function startNode() As Node(Of E)
 				Return outerInstance.first()
 			End Function
-			Friend Overrides Function nextNode(ByVal p As Node(Of E)) As Node(Of E)
+			Friend Overrides Function nextNode(  p As Node(Of E)) As Node(Of E)
 				Return outerInstance.succ(p)
 			End Function
 		End Class
@@ -1421,14 +1421,14 @@ Namespace java.util.concurrent
 
 			Private ReadOnly outerInstance As ConcurrentLinkedDeque
 
-			Public Sub New(ByVal outerInstance As ConcurrentLinkedDeque)
+			Public Sub New(  outerInstance As ConcurrentLinkedDeque)
 				Me.outerInstance = outerInstance
 			End Sub
 
 			Friend Overrides Function startNode() As Node(Of E)
 				Return outerInstance.last()
 			End Function
-			Friend Overrides Function nextNode(ByVal p As Node(Of E)) As Node(Of E)
+			Friend Overrides Function nextNode(  p As Node(Of E)) As Node(Of E)
 				Return outerInstance.pred(p)
 			End Function
 		End Class
@@ -1443,7 +1443,7 @@ Namespace java.util.concurrent
 			Friend current As Node(Of E) ' current node; null until initialized
 			Friend batch As Integer ' batch size for splits
 			Friend exhausted As Boolean ' true when no more nodes
-			Friend Sub New(ByVal queue As ConcurrentLinkedDeque(Of E))
+			Friend Sub New(  queue As ConcurrentLinkedDeque(Of E))
 				Me.queue = queue
 			End Sub
 
@@ -1481,7 +1481,7 @@ Namespace java.util.concurrent
 			End Function
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Sub forEachRemaining(Of T1)(ByVal action As java.util.function.Consumer(Of T1))
+			Public Sub forEachRemaining(Of T1)(  action As java.util.function.Consumer(Of T1))
 				Dim p As Node(Of E)
 				If action Is Nothing Then Throw New NullPointerException
 				Dim q As ConcurrentLinkedDeque(Of E) = Me.queue
@@ -1499,7 +1499,7 @@ Namespace java.util.concurrent
 			End Sub
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Function tryAdvance(Of T1)(ByVal action As java.util.function.Consumer(Of T1)) As Boolean
+			Public Function tryAdvance(Of T1)(  action As java.util.function.Consumer(Of T1)) As Boolean
 				Dim p As Node(Of E)
 				If action Is Nothing Then Throw New NullPointerException
 				Dim q As ConcurrentLinkedDeque(Of E) = Me.queue
@@ -1557,7 +1557,7 @@ Namespace java.util.concurrent
 		''' <exception cref="java.io.IOException"> if an I/O error occurs
 		''' @serialData All of the elements (each an {@code E}) in
 		''' the proper order, followed by a null </exception>
-		Private Sub writeObject(ByVal s As java.io.ObjectOutputStream)
+		Private Sub writeObject(  s As java.io.ObjectOutputStream)
 
 			' Write out any hidden stuff
 			s.defaultWriteObject()
@@ -1580,7 +1580,7 @@ Namespace java.util.concurrent
 		''' <exception cref="ClassNotFoundException"> if the class of a serialized object
 		'''         could not be found </exception>
 		''' <exception cref="java.io.IOException"> if an I/O error occurs </exception>
-		Private Sub readObject(ByVal s As java.io.ObjectInputStream)
+		Private Sub readObject(  s As java.io.ObjectInputStream)
 			s.defaultReadObject()
 
 			' Read in elements until trailing null sentinel found
@@ -1603,11 +1603,11 @@ Namespace java.util.concurrent
 			initHeadTail(h, t)
 		End Sub
 
-		Private Function casHead(ByVal cmp As Node(Of E), ByVal val As Node(Of E)) As Boolean
+		Private Function casHead(  cmp As Node(Of E),   val As Node(Of E)) As Boolean
 			Return UNSAFE.compareAndSwapObject(Me, headOffset, cmp, val)
 		End Function
 
-		Private Function casTail(ByVal cmp As Node(Of E), ByVal val As Node(Of E)) As Boolean
+		Private Function casTail(  cmp As Node(Of E),   val As Node(Of E)) As Boolean
 			Return UNSAFE.compareAndSwapObject(Me, tailOffset, cmp, val)
 		End Function
 

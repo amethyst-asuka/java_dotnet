@@ -65,7 +65,7 @@ Namespace java.awt.font
 		''' <seealso cref="#IDENTITY"/> in this case.) </summary>
 		''' <param name="transform"> the specified <seealso cref="AffineTransform"/> to be wrapped,
 		''' or null. </param>
-		Public Sub New(ByVal transform As java.awt.geom.AffineTransform)
+		Public Sub New(  transform As java.awt.geom.AffineTransform)
 			If transform IsNot Nothing AndAlso (Not transform.identity) Then Me.transform = New java.awt.geom.AffineTransform(transform)
 		End Sub
 
@@ -98,7 +98,7 @@ Namespace java.awt.font
 		''' </summary>
 		Public Shared ReadOnly IDENTITY As New TransformAttribute(Nothing)
 
-		Private Sub writeObject(ByVal s As java.io.ObjectOutputStream)
+		Private Sub writeObject(  s As java.io.ObjectOutputStream)
 			' sigh -- 1.3 expects transform is never null, so we need to always write one out
 			If Me.transform Is Nothing Then Me.transform = New java.awt.geom.AffineTransform
 			s.defaultWriteObject()
@@ -131,7 +131,7 @@ Namespace java.awt.font
 		''' whose transform is equal to this <code>TransformAttribute</code>'s
 		''' transform.
 		''' @since 1.6 </returns>
-		Public Overrides Function Equals(ByVal rhs As Object) As Boolean
+		Public Overrides Function Equals(  rhs As Object) As Boolean
 			If rhs IsNot Nothing Then
 				Try
 					Dim that As TransformAttribute = CType(rhs, TransformAttribute)

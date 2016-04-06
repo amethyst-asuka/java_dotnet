@@ -44,7 +44,7 @@ Namespace java.util.logging
 		''' Check if a given log record should be published. </summary>
 		''' <param name="record">  a LogRecord </param>
 		''' <returns> true if the log record should be published. </returns>
-		Function isLoggable(ByVal record As LogRecord) As Boolean
+		Function isLoggable(  record As LogRecord) As Boolean
 	End Interface
 
 End Namespace

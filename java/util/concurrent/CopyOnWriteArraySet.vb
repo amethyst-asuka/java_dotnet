@@ -108,7 +108,7 @@ Namespace java.util.concurrent
 		''' </summary>
 		''' <param name="c"> the collection of elements to initially contain </param>
 		''' <exception cref="NullPointerException"> if the specified collection is null </exception>
-		Public Sub New(Of T1 As E)(ByVal c As ICollection(Of T1))
+		Public Sub New(Of T1 As E)(  c As ICollection(Of T1))
 			If c.GetType() Is GetType(CopyOnWriteArraySet) Then
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
 				Dim cc As CopyOnWriteArraySet(Of E) = CType(c, CopyOnWriteArraySet(Of E))
@@ -145,7 +145,7 @@ Namespace java.util.concurrent
 		''' </summary>
 		''' <param name="o"> element whose presence in this set is to be tested </param>
 		''' <returns> {@code true} if this set contains the specified element </returns>
-		Public Overridable Function contains(ByVal o As Object) As Boolean
+		Public Overridable Function contains(  o As Object) As Boolean
 			Return al.contains(o)
 		End Function
 
@@ -208,7 +208,7 @@ Namespace java.util.concurrent
 		'''         is not a supertype of the runtime type of every element in this
 		'''         set </exception>
 		''' <exception cref="NullPointerException"> if the specified array is null </exception>
-		Public Overridable Function toArray(Of T)(ByVal a As T()) As T()
+		Public Overridable Function toArray(Of T)(  a As T()) As T()
 			Return al.ToArray(a)
 		End Function
 
@@ -231,7 +231,7 @@ Namespace java.util.concurrent
 		''' </summary>
 		''' <param name="o"> object to be removed from this set, if present </param>
 		''' <returns> {@code true} if this set contained the specified element </returns>
-		Public Overridable Function remove(ByVal o As Object) As Boolean
+		Public Overridable Function remove(  o As Object) As Boolean
 			Return al.remove(o)
 		End Function
 
@@ -246,7 +246,7 @@ Namespace java.util.concurrent
 		''' <param name="e"> element to be added to this set </param>
 		''' <returns> {@code true} if this set did not already contain the specified
 		'''         element </returns>
-		Public Overridable Function add(ByVal e As E) As Boolean
+		Public Overridable Function add(  e As E) As Boolean
 			Return al.addIfAbsent(e)
 		End Function
 
@@ -260,7 +260,7 @@ Namespace java.util.concurrent
 		'''         specified collection </returns>
 		''' <exception cref="NullPointerException"> if the specified collection is null </exception>
 		''' <seealso cref= #contains(Object) </seealso>
-		Public Overridable Function containsAll(Of T1)(ByVal c As ICollection(Of T1)) As Boolean
+		Public Overridable Function containsAll(Of T1)(  c As ICollection(Of T1)) As Boolean
 			Return al.containsAll(c)
 		End Function
 
@@ -276,7 +276,7 @@ Namespace java.util.concurrent
 		''' <returns> {@code true} if this set changed as a result of the call </returns>
 		''' <exception cref="NullPointerException"> if the specified collection is null </exception>
 		''' <seealso cref= #add(Object) </seealso>
-		Public Overridable Function addAll(Of T1 As E)(ByVal c As ICollection(Of T1)) As Boolean
+		Public Overridable Function addAll(Of T1 As E)(  c As ICollection(Of T1)) As Boolean
 			Return al.addAllAbsent(c) > 0
 		End Function
 
@@ -294,7 +294,7 @@ Namespace java.util.concurrent
 		'''         specified collection does not permit null elements (optional),
 		'''         or if the specified collection is null </exception>
 		''' <seealso cref= #remove(Object) </seealso>
-		Public Overridable Function removeAll(Of T1)(ByVal c As ICollection(Of T1)) As Boolean
+		Public Overridable Function removeAll(Of T1)(  c As ICollection(Of T1)) As Boolean
 			Return al.removeAll(c)
 		End Function
 
@@ -314,7 +314,7 @@ Namespace java.util.concurrent
 		'''         specified collection does not permit null elements (optional),
 		'''         or if the specified collection is null </exception>
 		''' <seealso cref= #remove(Object) </seealso>
-		Public Overridable Function retainAll(Of T1)(ByVal c As ICollection(Of T1)) As Boolean
+		Public Overridable Function retainAll(Of T1)(  c As ICollection(Of T1)) As Boolean
 			Return al.retainAll(c)
 		End Function
 
@@ -347,7 +347,7 @@ Namespace java.util.concurrent
 		''' </summary>
 		''' <param name="o"> object to be compared for equality with this set </param>
 		''' <returns> {@code true} if the specified object is equal to this set </returns>
-		Public Overrides Function Equals(ByVal o As Object) As Boolean
+		Public Overrides Function Equals(  o As Object) As Boolean
 			If o Is Me Then Return True
 			If Not(TypeOf o Is java.util.Set) Then Return False
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
@@ -381,12 +381,12 @@ Namespace java.util.concurrent
 		End Function
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Overridable Function removeIf(Of T1)(ByVal filter As java.util.function.Predicate(Of T1)) As Boolean
+		Public Overridable Function removeIf(Of T1)(  filter As java.util.function.Predicate(Of T1)) As Boolean
 			Return al.removeIf(filter)
 		End Function
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Overridable Sub forEach(Of T1)(ByVal action As java.util.function.Consumer(Of T1))
+		Public Overridable Sub forEach(Of T1)(  action As java.util.function.Consumer(Of T1))
 			al.forEach(action)
 		End Sub
 
@@ -411,7 +411,7 @@ Namespace java.util.concurrent
 		''' <summary>
 		''' Tests for equality, coping with nulls.
 		''' </summary>
-		Private Shared Function eq(ByVal o1 As Object, ByVal o2 As Object) As Boolean
+		Private Shared Function eq(  o1 As Object,   o2 As Object) As Boolean
 			Return If(o1 Is Nothing, o2 Is Nothing, o1.Equals(o2))
 		End Function
 	End Class

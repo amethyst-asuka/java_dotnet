@@ -80,7 +80,7 @@ Namespace java.util
 		''' <param name="o">   an observer to be added. </param>
 		''' <exception cref="NullPointerException">   if the parameter o is null. </exception>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Sub addObserver(ByVal o As Observer)
+		Public Overridable Sub addObserver(  o As Observer)
 			If o Is Nothing Then Throw New NullPointerException
 			If Not obs.contains(o) Then obs.addElement(o)
 		End Sub
@@ -90,7 +90,7 @@ Namespace java.util
 		''' Passing <CODE>null</CODE> to this method will have no effect. </summary>
 		''' <param name="o">   the observer to be deleted. </param>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Sub deleteObserver(ByVal o As Observer)
+		Public Overridable Sub deleteObserver(  o As Observer)
 			obs.removeElement(o)
 		End Sub
 
@@ -126,7 +126,7 @@ Namespace java.util
 		''' <seealso cref=     java.util.Observable#clearChanged() </seealso>
 		''' <seealso cref=     java.util.Observable#hasChanged() </seealso>
 		''' <seealso cref=     java.util.Observer#update(java.util.Observable, java.lang.Object) </seealso>
-		Public Overridable Sub notifyObservers(ByVal arg As Object)
+		Public Overridable Sub notifyObservers(  arg As Object)
 	'        
 	'         * a temporary array buffer, used as a snapshot of the state of
 	'         * current Observers.

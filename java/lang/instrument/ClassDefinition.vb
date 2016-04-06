@@ -54,7 +54,7 @@ Namespace java.lang.instrument
 		''' <param name="theClassFile"> the new class file bytes
 		''' </param>
 		''' <exception cref="java.lang.NullPointerException"> if the supplied class or array is <code>null</code>. </exception>
-		Public Sub New(ByVal theClass As [Class], ByVal theClassFile As SByte())
+		Public Sub New(  theClass As [Class],   theClassFile As SByte())
 			If theClass Is Nothing OrElse theClassFile Is Nothing Then Throw New NullPointerException
 			mClass = theClass
 			mClassFile = theClassFile

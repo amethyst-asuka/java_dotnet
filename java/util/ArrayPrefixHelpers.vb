@@ -104,7 +104,7 @@ Namespace java.util
 
 			''' <summary>
 			''' Root task constructor </summary>
-			Public Sub New(ByVal parent As CumulateTask(Of T), ByVal [function] As java.util.function.BinaryOperator(Of T), ByVal array As T(), ByVal lo As Integer, ByVal hi As Integer)
+			Public Sub New(  parent As CumulateTask(Of T),   [function] As java.util.function.BinaryOperator(Of T),   array As T(),   lo As Integer,   hi As Integer)
 				MyBase.New(parent)
 				Me.function = [function]
 				Me.array = array
@@ -119,7 +119,7 @@ Namespace java.util
 
 			''' <summary>
 			''' Subtask constructor </summary>
-			Friend Sub New(ByVal parent As CumulateTask(Of T), ByVal [function] As java.util.function.BinaryOperator(Of T), ByVal array As T(), ByVal origin As Integer, ByVal fence As Integer, ByVal threshold As Integer, ByVal lo As Integer, ByVal hi As Integer)
+			Friend Sub New(  parent As CumulateTask(Of T),   [function] As java.util.function.BinaryOperator(Of T),   array As T(),   origin As Integer,   fence As Integer,   threshold As Integer,   lo As Integer,   hi As Integer)
 				MyBase.New(parent)
 				Me.function = [function]
 				Me.array = array
@@ -265,7 +265,7 @@ Namespace java.util
 
 			''' <summary>
 			''' Root task constructor </summary>
-			Public Sub New(ByVal parent As LongCumulateTask, ByVal [function] As java.util.function.LongBinaryOperator, ByVal array As Long(), ByVal lo As Integer, ByVal hi As Integer)
+			Public Sub New(  parent As LongCumulateTask,   [function] As java.util.function.LongBinaryOperator,   array As Long(),   lo As Integer,   hi As Integer)
 				MyBase.New(parent)
 				Me.function = [function]
 				Me.array = array
@@ -280,7 +280,7 @@ Namespace java.util
 
 			''' <summary>
 			''' Subtask constructor </summary>
-			Friend Sub New(ByVal parent As LongCumulateTask, ByVal [function] As java.util.function.LongBinaryOperator, ByVal array As Long(), ByVal origin As Integer, ByVal fence As Integer, ByVal threshold As Integer, ByVal lo As Integer, ByVal hi As Integer)
+			Friend Sub New(  parent As LongCumulateTask,   [function] As java.util.function.LongBinaryOperator,   array As Long(),   origin As Integer,   fence As Integer,   threshold As Integer,   lo As Integer,   hi As Integer)
 				MyBase.New(parent)
 				Me.function = [function]
 				Me.array = array
@@ -425,7 +425,7 @@ Namespace java.util
 
 			''' <summary>
 			''' Root task constructor </summary>
-			Public Sub New(ByVal parent As DoubleCumulateTask, ByVal [function] As java.util.function.DoubleBinaryOperator, ByVal array As Double(), ByVal lo As Integer, ByVal hi As Integer)
+			Public Sub New(  parent As DoubleCumulateTask,   [function] As java.util.function.DoubleBinaryOperator,   array As Double(),   lo As Integer,   hi As Integer)
 				MyBase.New(parent)
 				Me.function = [function]
 				Me.array = array
@@ -440,7 +440,7 @@ Namespace java.util
 
 			''' <summary>
 			''' Subtask constructor </summary>
-			Friend Sub New(ByVal parent As DoubleCumulateTask, ByVal [function] As java.util.function.DoubleBinaryOperator, ByVal array As Double(), ByVal origin As Integer, ByVal fence As Integer, ByVal threshold As Integer, ByVal lo As Integer, ByVal hi As Integer)
+			Friend Sub New(  parent As DoubleCumulateTask,   [function] As java.util.function.DoubleBinaryOperator,   array As Double(),   origin As Integer,   fence As Integer,   threshold As Integer,   lo As Integer,   hi As Integer)
 				MyBase.New(parent)
 				Me.function = [function]
 				Me.array = array
@@ -585,7 +585,7 @@ Namespace java.util
 
 			''' <summary>
 			''' Root task constructor </summary>
-			Public Sub New(ByVal parent As IntCumulateTask, ByVal [function] As java.util.function.IntBinaryOperator, ByVal array As Integer(), ByVal lo As Integer, ByVal hi As Integer)
+			Public Sub New(  parent As IntCumulateTask,   [function] As java.util.function.IntBinaryOperator,   array As Integer(),   lo As Integer,   hi As Integer)
 				MyBase.New(parent)
 				Me.function = [function]
 				Me.array = array
@@ -600,7 +600,7 @@ Namespace java.util
 
 			''' <summary>
 			''' Subtask constructor </summary>
-			Friend Sub New(ByVal parent As IntCumulateTask, ByVal [function] As java.util.function.IntBinaryOperator, ByVal array As Integer(), ByVal origin As Integer, ByVal fence As Integer, ByVal threshold As Integer, ByVal lo As Integer, ByVal hi As Integer)
+			Friend Sub New(  parent As IntCumulateTask,   [function] As java.util.function.IntBinaryOperator,   array As Integer(),   origin As Integer,   fence As Integer,   threshold As Integer,   lo As Integer,   hi As Integer)
 				MyBase.New(parent)
 				Me.function = [function]
 				Me.array = array

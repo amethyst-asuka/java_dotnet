@@ -142,7 +142,7 @@ Namespace java.util
         ''' <exception cref="NullPointerException"> if the specified element is null and this
         '''         list does not permit null elements
         ''' (<a href="Collection.html#optional-restrictions">optional</a>) </exception>
-        Function contains(ByVal o As Object) As Boolean
+        Function contains(  o As Object) As Boolean
 
         ''' <summary>
         ''' Returns an iterator over the elements in this list in proper sequence.
@@ -205,7 +205,7 @@ Namespace java.util
         '''         is not a supertype of the runtime type of every element in
         '''         this list </exception>
         ''' <exception cref="NullPointerException"> if the specified array is null </exception>
-        Function toArray(Of T)(ByVal a As T()) As T()
+        Function toArray(Of T)(  a As T()) As T()
 
 
         ' Modification Operations
@@ -231,7 +231,7 @@ Namespace java.util
         '''         list does not permit null elements </exception>
         ''' <exception cref="IllegalArgumentException"> if some property of this element
         '''         prevents it from being added to this list </exception>
-        Function add(ByVal e As E) As Boolean
+        Function add(  e As E) As Boolean
 
         ''' <summary>
         ''' Removes the first occurrence of the specified element from this list,
@@ -253,7 +253,7 @@ Namespace java.util
         ''' (<a href="Collection.html#optional-restrictions">optional</a>) </exception>
         ''' <exception cref="UnsupportedOperationException"> if the <tt>remove</tt> operation
         '''         is not supported by this list </exception>
-        Function remove(ByVal o As Object) As Boolean
+        Function remove(  o As Object) As Boolean
 
 
         ' Bulk Modification Operations
@@ -275,7 +275,7 @@ Namespace java.util
         '''         (<a href="Collection.html#optional-restrictions">optional</a>),
         '''         or if the specified collection is null </exception>
         ''' <seealso cref= #contains(Object) </seealso>
-        Function containsAll(Of T1)(ByVal c As Collection(Of T1)) As Boolean
+        Function containsAll(Of T1)(  c As Collection(Of T1)) As Boolean
 
         ''' <summary>
         ''' Appends all of the elements in the specified collection to the end of
@@ -297,7 +297,7 @@ Namespace java.util
         ''' <exception cref="IllegalArgumentException"> if some property of an element of the
         '''         specified collection prevents it from being added to this list </exception>
         ''' <seealso cref= #add(Object) </seealso>
-        Function addAll(Of T1 As E)(ByVal c As Collection(Of T1)) As Boolean
+        Function addAll(Of T1 As E)(  c As Collection(Of T1)) As Boolean
 
         ''' <summary>
         ''' Inserts all of the elements in the specified collection into this
@@ -325,7 +325,7 @@ Namespace java.util
         '''         specified collection prevents it from being added to this list </exception>
         ''' <exception cref="IndexOutOfBoundsException"> if the index is out of range
         '''         (<tt>index &lt; 0 || index &gt; size()</tt>) </exception>
-        Function addAll(Of T1 As E)(ByVal index As Integer, ByVal c As Collection(Of T1)) As Boolean
+        Function addAll(Of T1 As E)(  index As Integer,   c As Collection(Of T1)) As Boolean
 
         ''' <summary>
         ''' Removes from this list all of its elements that are contained in the
@@ -344,7 +344,7 @@ Namespace java.util
         '''         or if the specified collection is null </exception>
         ''' <seealso cref= #remove(Object) </seealso>
         ''' <seealso cref= #contains(Object) </seealso>
-        Function removeAll(Of T1)(ByVal c As Collection(Of T1)) As Boolean
+        Function removeAll(Of T1)(  c As Collection(Of T1)) As Boolean
 
         ''' <summary>
         ''' Retains only the elements in this list that are contained in the
@@ -365,7 +365,7 @@ Namespace java.util
         '''         or if the specified collection is null </exception>
         ''' <seealso cref= #remove(Object) </seealso>
         ''' <seealso cref= #contains(Object) </seealso>
-        Function retainAll(Of T1)(ByVal c As Collection(Of T1)) As Boolean
+        Function retainAll(Of T1)(  c As Collection(Of T1)) As Boolean
 
         ''' <summary>
         ''' Removes all of the elements from this list (optional operation).
@@ -391,7 +391,7 @@ Namespace java.util
         ''' </summary>
         ''' <param name="o"> the object to be compared for equality with this list </param>
         ''' <returns> <tt>true</tt> if the specified object is equal to this list </returns>
-        Function Equals(ByVal o As Object) As Boolean
+        Function Equals(  o As Object) As Boolean
 
         ''' <summary>
         ''' Returns the hash code value for this list.  The hash code of a list
@@ -421,7 +421,7 @@ Namespace java.util
         ''' <returns> the element at the specified position in this list </returns>
         ''' <exception cref="IndexOutOfBoundsException"> if the index is out of range
         '''         (<tt>index &lt; 0 || index &gt;= size()</tt>) </exception>
-        Function [get](ByVal index As Integer) As E
+        Function [get](  index As Integer) As E
 
         ''' <summary>
         ''' Replaces the element at the specified position in this list with the
@@ -440,7 +440,7 @@ Namespace java.util
         '''         element prevents it from being added to this list </exception>
         ''' <exception cref="IndexOutOfBoundsException"> if the index is out of range
         '''         (<tt>index &lt; 0 || index &gt;= size()</tt>) </exception>
-        Function [set](ByVal index As Integer, ByVal element As E) As E
+        Function [set](  index As Integer,   element As E) As E
 
         ''' <summary>
         ''' Inserts the specified element at the specified position in this list
@@ -460,7 +460,7 @@ Namespace java.util
         '''         element prevents it from being added to this list </exception>
         ''' <exception cref="IndexOutOfBoundsException"> if the index is out of range
         '''         (<tt>index &lt; 0 || index &gt; size()</tt>) </exception>
-        Sub add(ByVal index As Integer, ByVal element As E)
+        Sub add(  index As Integer,   element As E)
 
         ''' <summary>
         ''' Removes the element at the specified position in this list (optional
@@ -474,7 +474,7 @@ Namespace java.util
         '''         is not supported by this list </exception>
         ''' <exception cref="IndexOutOfBoundsException"> if the index is out of range
         '''         (<tt>index &lt; 0 || index &gt;= size()</tt>) </exception>
-        Function remove(ByVal index As Integer) As E
+        Function remove(  index As Integer) As E
 
 
         ' Search Operations
@@ -495,7 +495,7 @@ Namespace java.util
         ''' <exception cref="NullPointerException"> if the specified element is null and this
         '''         list does not permit null elements
         '''         (<a href="Collection.html#optional-restrictions">optional</a>) </exception>
-        Function indexOf(ByVal o As Object) As Integer
+        Function indexOf(  o As Object) As Integer
 
         ''' <summary>
         ''' Returns the index of the last occurrence of the specified element
@@ -513,7 +513,7 @@ Namespace java.util
         ''' <exception cref="NullPointerException"> if the specified element is null and this
         '''         list does not permit null elements
         '''         (<a href="Collection.html#optional-restrictions">optional</a>) </exception>
-        Function lastIndexOf(ByVal o As Object) As Integer
+        Function lastIndexOf(  o As Object) As Integer
 
 
         ' List Iterators
@@ -540,7 +540,7 @@ Namespace java.util
         '''         sequence), starting at the specified position in the list </returns>
         ''' <exception cref="IndexOutOfBoundsException"> if the index is out of range
         '''         ({@code index < 0 || index > size()}) </exception>
-        Function listIterator(ByVal index As Integer) As ListIterator(Of E)
+        Function listIterator(  index As Integer) As ListIterator(Of E)
 
         ' View
 
@@ -577,7 +577,7 @@ Namespace java.util
         ''' <exception cref="IndexOutOfBoundsException"> for an illegal endpoint index value
         '''         (<tt>fromIndex &lt; 0 || toIndex &gt; size ||
         '''         fromIndex &gt; toIndex</tt>) </exception>
-        Function subList(ByVal fromIndex As Integer, ByVal toIndex As Integer) As List(Of E)
+        Function subList(  fromIndex As Integer,   toIndex As Integer) As List(Of E)
 
     End Interface
 
@@ -635,14 +635,14 @@ Namespace java.util
         '''         not permit null elements
         '''         (<a href="Collection.html#optional-restrictions">optional</a>)
         ''' @since 1.8 </exception>
-        <Extension> Public Sub replaceAll(Of E)(list As IList(Of E), ByVal [operator] As java.util.function.UnaryOperator(Of E))
+        <Extension> Public Sub replaceAll(Of E)(list As IList(Of E),   [operator] As java.util.function.UnaryOperator(Of E))
             'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
             Objects.requireNonNull(Of E)([operator])
         End Sub
 
         '	final ListIterator(Of E) li = Me.listIterator();
-        ' Sub [New](li.hasNext() ByVal  As )
-        ' Sub [New](operator.apply(li.Next()) ByVal  As )
+        ' Sub [New](li.hasNext()    As )
+        ' Sub [New](operator.apply(li.Next())    As )
 
         ''' <summary>
         ''' Sorts this list according to the order induced by the specified
@@ -701,7 +701,7 @@ Namespace java.util
         '''         if the comparator is found to violate the <seealso cref="Comparator"/>
         '''         contract
         ''' @since 1.8 </exception>
-        <Extension> Public Sub sort(Of T1)(ByVal c As Comparator(Of T1))
+        <Extension> Public Sub sort(Of T1)(  c As Comparator(Of T1))
             'JAVA TO VB CONVERTER TODO TASK: Interfaces cannot contain fields in .NET:
             '			Object[] a = Me.toArray();
             'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
@@ -709,8 +709,8 @@ Namespace java.util
         End Sub
 
         '			ListIterator(Of E) i = Me.listIterator();
-        ' Sub [New](Object e : ByVal a As )
+        ' Sub [New](Object e :   a As )
         ' Sub [New]()
-        ' Sub [New]((E) ByVal e As )
+        ' Sub [New]((E)   e As )
     End Module
 End Namespace

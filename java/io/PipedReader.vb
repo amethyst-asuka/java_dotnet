@@ -81,7 +81,7 @@ Namespace java.io
         ''' </summary>
         ''' <param name="src">   the stream to connect to. </param>
         ''' <exception cref="IOException">  if an I/O error occurs. </exception>
-        Public Sub New(ByVal src As PipedWriter)
+        Public Sub New(  src As PipedWriter)
             Me.New(src, DEFAULT_PIPE_SIZE)
         End Sub
 
@@ -96,7 +96,7 @@ Namespace java.io
         ''' <exception cref="IOException">  if an I/O error occurs. </exception>
         ''' <exception cref="IllegalArgumentException"> if {@code pipeSize <= 0}.
         ''' @since      1.6 </exception>
-        Public Sub New(ByVal src As PipedWriter, ByVal pipeSize As Integer)
+        Public Sub New(  src As PipedWriter,   pipeSize As Integer)
             initPipe(pipeSize)
             connect(src)
         End Sub
@@ -124,11 +124,11 @@ Namespace java.io
         ''' <param name="pipeSize"> the size of the pipe's buffer. </param>
         ''' <exception cref="IllegalArgumentException"> if {@code pipeSize <= 0}.
         ''' @since      1.6 </exception>
-        Public Sub New(ByVal pipeSize As Integer)
+        Public Sub New(  pipeSize As Integer)
             initPipe(pipeSize)
         End Sub
 
-        Private Sub initPipe(ByVal pipeSize As Integer)
+        Private Sub initPipe(  pipeSize As Integer)
             If pipeSize <= 0 Then Throw New IllegalArgumentException("Pipe size <= 0")
             buffer = New Char(pipeSize - 1) {}
         End Sub
@@ -155,7 +155,7 @@ Namespace java.io
         ''' </summary>
         ''' <param name="src">   The piped writer to connect to. </param>
         ''' <exception cref="IOException">  if an I/O error occurs. </exception>
-        Public Overridable Sub connect(ByVal src As PipedWriter)
+        Public Overridable Sub connect(  src As PipedWriter)
             src.connect(Me)
         End Sub
 

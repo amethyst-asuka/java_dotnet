@@ -106,7 +106,7 @@ Namespace java.lang.reflect
 		''' instantiation of these objects in Java code from the java.lang
 		''' package via sun.reflect.LangReflectAccess.
 		''' </summary>
-		Friend Sub New(ByVal declaringClass As [Class], ByVal parameterTypes As  [Class](), ByVal checkedExceptions As  [Class](), ByVal modifiers As Integer, ByVal slot As Integer, ByVal signature As String, ByVal annotations As SByte(), ByVal parameterAnnotations As SByte())
+		Friend Sub New(  declaringClass As [Class],   parameterTypes As  [Class](),   checkedExceptions As  [Class](),   modifiers As Integer,   slot As Integer,   signature As String,   annotations As SByte(),   parameterAnnotations As SByte())
 			Me.clazz = declaringClass
 			Me.parameterTypes = parameterTypes
 			Me.exceptionTypes = checkedExceptions
@@ -251,7 +251,7 @@ Namespace java.lang.reflect
 		''' the same if they were declared by the same class and have the
 		''' same formal parameter types.
 		''' </summary>
-		Public Overrides Function Equals(ByVal obj As Object) As Boolean
+		Public Overrides Function Equals(  obj As Object) As Boolean
 			If obj IsNot Nothing AndAlso TypeOf obj Is Constructor Then
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 				Dim other As Constructor(Of ?) = CType(obj, Constructor(Of ?))
@@ -290,7 +290,7 @@ Namespace java.lang.reflect
 			Return sharedToString(Modifier.constructorModifiers(), False, parameterTypes, exceptionTypes)
 		End Function
 
-		Friend Overrides Sub specificToStringHeader(ByVal sb As StringBuilder)
+		Friend Overrides Sub specificToStringHeader(  sb As StringBuilder)
 			sb.append(declaringClass.typeName)
 		End Sub
 
@@ -331,7 +331,7 @@ Namespace java.lang.reflect
 			Return sharedToGenericString(Modifier.constructorModifiers(), False)
 		End Function
 
-		Friend Overrides Sub specificToGenericStringHeader(ByVal sb As StringBuilder)
+		Friend Overrides Sub specificToGenericStringHeader(  sb As StringBuilder)
 			specificToStringHeader(sb)
 		End Sub
 
@@ -383,7 +383,7 @@ Namespace java.lang.reflect
 		''' <exception cref="ExceptionInInitializerError"> if the initialization provoked
 		'''              by this method fails. </exception>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Function newInstance(ParamArray ByVal initargs As Object()) As T
+		Public Function newInstance(ParamArray   initargs As Object()) As T
 			If Not override Then
 				If Not sun.reflect.Reflection.quickCheckMemberAccess(clazz, modifiers) Then
 					Dim caller As  [Class] = sun.reflect.Reflection.callerClass
@@ -446,7 +446,7 @@ Namespace java.lang.reflect
 			Get
 				Return constructorAccessor
 			End Get
-			Set(ByVal accessor As sun.reflect.ConstructorAccessor)
+			Set(  accessor As sun.reflect.ConstructorAccessor)
 				constructorAccessor = accessor
 				' Propagate up
 				If root IsNot Nothing Then root.constructorAccessor = accessor
@@ -485,7 +485,7 @@ Namespace java.lang.reflect
 		''' {@inheritDoc} </summary>
 		''' <exception cref="NullPointerException">  {@inheritDoc}
 		''' @since 1.5 </exception>
-		Public Overrides Function getAnnotation(Of T As Annotation)(ByVal annotationClass As [Class]) As T
+		Public Overrides Function getAnnotation(Of T As Annotation)(  annotationClass As [Class]) As T
 			Return MyBase.getAnnotation(annotationClass)
 		End Function
 
@@ -509,7 +509,7 @@ Namespace java.lang.reflect
 			End Get
 		End Property
 
-		Friend Overrides Sub handleParameterNumberMismatch(ByVal resultLength As Integer, ByVal numParameters As Integer)
+		Friend Overrides Sub handleParameterNumberMismatch(  resultLength As Integer,   numParameters As Integer)
 			Dim declaringClass_Renamed As  [Class] = declaringClass
 			If declaringClass_Renamed.enum OrElse declaringClass_Renamed.anonymousClass OrElse declaringClass_Renamed.localClass Then
 				Return ' Can't do reliable parameter counting

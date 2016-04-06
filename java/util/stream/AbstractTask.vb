@@ -130,7 +130,7 @@ Namespace java.util.stream
 		'''               up to this operation </param>
 		''' <param name="spliterator"> The {@code Spliterator} describing the source for this
 		'''                    pipeline </param>
-		Protected Friend Sub New(ByVal helper As PipelineHelper(Of P_OUT), ByVal spliterator As java.util.Spliterator(Of P_IN))
+		Protected Friend Sub New(  helper As PipelineHelper(Of P_OUT),   spliterator As java.util.Spliterator(Of P_IN))
 			MyBase.New(Nothing)
 			Me.helper = helper
 			Me.spliterator = spliterator
@@ -143,7 +143,7 @@ Namespace java.util.stream
 		''' <param name="parent"> this node's parent task </param>
 		''' <param name="spliterator"> {@code Spliterator} describing the subtree rooted at
 		'''        this node, obtained by splitting the parent {@code Spliterator} </param>
-		Protected Friend Sub New(ByVal parent As K, ByVal spliterator As java.util.Spliterator(Of P_IN))
+		Protected Friend Sub New(  parent As K,   spliterator As java.util.Spliterator(Of P_IN))
 			MyBase.New(parent)
 			Me.spliterator = spliterator
 			Me.helper = parent.helper
@@ -158,7 +158,7 @@ Namespace java.util.stream
 		''' <param name="spliterator"> {@code Spliterator} describing the subtree rooted at
 		'''        this node, obtained by splitting the parent {@code Spliterator} </param>
 		''' <returns> newly constructed child node </returns>
-		Protected Friend MustOverride Function makeChild(ByVal spliterator As java.util.Spliterator(Of P_IN)) As K
+		Protected Friend MustOverride Function makeChild(  spliterator As java.util.Spliterator(Of P_IN)) As K
 
 		''' <summary>
 		''' Computes the result associated with a leaf node.  Will be called by
@@ -171,7 +171,7 @@ Namespace java.util.stream
 		''' Returns a suggested target leaf size based on the initial size estimate.
 		''' </summary>
 		''' <returns> suggested target leaf size </returns>
-		Public Shared Function suggestTargetSize(ByVal sizeEstimate As Long) As Long
+		Public Shared Function suggestTargetSize(  sizeEstimate As Long) As Long
 			Dim est As Long = sizeEstimate \ LEAF_TARGET
 			Return If(est > 0L, est, 1L)
 		End Function
@@ -180,7 +180,7 @@ Namespace java.util.stream
 		''' Returns the targetSize, initializing it via the supplied
 		''' size estimate if not already initialized.
 		''' </summary>
-		Protected Friend Function getTargetSize(ByVal sizeEstimate As Long) As Long
+		Protected Friend Function getTargetSize(  sizeEstimate As Long) As Long
 			Dim s As Long
 				s = targetSize
 				If s <> 0 Then
@@ -203,7 +203,7 @@ Namespace java.util.stream
 			Get
 				Return localResult
 			End Get
-			Set(ByVal result As R)
+			Set(  result As R)
 				If result IsNot Nothing Then Throw New IllegalStateException
 			End Set
 		End Property
@@ -218,7 +218,7 @@ Namespace java.util.stream
 			Get
 				Return localResult
 			End Get
-			Set(ByVal localResult As R)
+			Set(  localResult As R)
 				Me.localResult = localResult
 			End Set
 		End Property
@@ -312,7 +312,7 @@ Namespace java.util.stream
 		''' {@code super.onCompletion} as the last thing they do if they want these
 		''' cleared.
 		''' </summary>
-		Public Overrides Sub onCompletion(Of T1)(ByVal caller As java.util.concurrent.CountedCompleter(Of T1))
+		Public Overrides Sub onCompletion(Of T1)(  caller As java.util.concurrent.CountedCompleter(Of T1))
 			spliterator = Nothing
 				rightChild = Nothing
 				leftChild = rightChild

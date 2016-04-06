@@ -68,13 +68,13 @@ Namespace java.util.concurrent.atomic
 			End Try
 		End Sub
 
-		Private Function checkedByteOffset(ByVal i As Integer) As Long
+		Private Function checkedByteOffset(  i As Integer) As Long
 			If i < 0 OrElse i >= array.Length Then Throw New IndexOutOfBoundsException("index " & i)
 
 			Return byteOffset(i)
 		End Function
 
-		Private Shared Function byteOffset(ByVal i As Integer) As Long
+		Private Shared Function byteOffset(  i As Integer) As Long
 			Return (CLng(i) << shift) + base
 		End Function
 
@@ -83,7 +83,7 @@ Namespace java.util.concurrent.atomic
 		''' elements initially null.
 		''' </summary>
 		''' <param name="length"> the length of the array </param>
-		Public Sub New(ByVal length As Integer)
+		Public Sub New(  length As Integer)
 			array = New Object(length - 1){}
 		End Sub
 
@@ -93,7 +93,7 @@ Namespace java.util.concurrent.atomic
 		''' </summary>
 		''' <param name="array"> the array to copy elements from </param>
 		''' <exception cref="NullPointerException"> if array is null </exception>
-		Public Sub New(ByVal array As E())
+		Public Sub New(  array As E())
 			' Visibility guaranteed by final field guarantees
 			Me.array = java.util.Arrays.copyOf(array, array.Length, GetType(Object()))
 		End Sub
@@ -111,12 +111,12 @@ Namespace java.util.concurrent.atomic
 		''' </summary>
 		''' <param name="i"> the index </param>
 		''' <returns> the current value </returns>
-		Public Function [get](ByVal i As Integer) As E
+		Public Function [get](  i As Integer) As E
 			Return getRaw(checkedByteOffset(i))
 		End Function
 
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Private Function getRaw(ByVal offset As Long) As E
+		Private Function getRaw(  offset As Long) As E
 			Return CType(unsafe.getObjectVolatile(array, offset), E)
 		End Function
 
@@ -125,7 +125,7 @@ Namespace java.util.concurrent.atomic
 		''' </summary>
 		''' <param name="i"> the index </param>
 		''' <param name="newValue"> the new value </param>
-		Public Sub [set](ByVal i As Integer, ByVal newValue As E)
+		Public Sub [set](  i As Integer,   newValue As E)
 			unsafe.putObjectVolatile(array, checkedByteOffset(i), newValue)
 		End Sub
 
@@ -135,7 +135,7 @@ Namespace java.util.concurrent.atomic
 		''' <param name="i"> the index </param>
 		''' <param name="newValue"> the new value
 		''' @since 1.6 </param>
-		Public Sub lazySet(ByVal i As Integer, ByVal newValue As E)
+		Public Sub lazySet(  i As Integer,   newValue As E)
 			unsafe.putOrderedObject(array, checkedByteOffset(i), newValue)
 		End Sub
 
@@ -147,7 +147,7 @@ Namespace java.util.concurrent.atomic
 		''' <param name="newValue"> the new value </param>
 		''' <returns> the previous value </returns>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Function getAndSet(ByVal i As Integer, ByVal newValue As E) As E
+		Public Function getAndSet(  i As Integer,   newValue As E) As E
 			Return CType(unsafe.getAndSetObject(array, checkedByteOffset(i), newValue), E)
 		End Function
 
@@ -160,11 +160,11 @@ Namespace java.util.concurrent.atomic
 		''' <param name="update"> the new value </param>
 		''' <returns> {@code true} if successful. False return indicates that
 		''' the actual value was not equal to the expected value. </returns>
-		Public Function compareAndSet(ByVal i As Integer, ByVal expect As E, ByVal update As E) As Boolean
+		Public Function compareAndSet(  i As Integer,   expect As E,   update As E) As Boolean
 			Return compareAndSetRaw(checkedByteOffset(i), expect, update)
 		End Function
 
-		Private Function compareAndSetRaw(ByVal offset As Long, ByVal expect As E, ByVal update As E) As Boolean
+		Private Function compareAndSetRaw(  offset As Long,   expect As E,   update As E) As Boolean
 			Return unsafe.compareAndSwapObject(array, offset, expect, update)
 		End Function
 
@@ -180,7 +180,7 @@ Namespace java.util.concurrent.atomic
 		''' <param name="expect"> the expected value </param>
 		''' <param name="update"> the new value </param>
 		''' <returns> {@code true} if successful </returns>
-		Public Function weakCompareAndSet(ByVal i As Integer, ByVal expect As E, ByVal update As E) As Boolean
+		Public Function weakCompareAndSet(  i As Integer,   expect As E,   update As E) As Boolean
 			Return compareAndSet(i, expect, update)
 		End Function
 
@@ -194,7 +194,7 @@ Namespace java.util.concurrent.atomic
 		''' <param name="updateFunction"> a side-effect-free function </param>
 		''' <returns> the previous value
 		''' @since 1.8 </returns>
-		Public Function getAndUpdate(ByVal i As Integer, ByVal updateFunction As java.util.function.UnaryOperator(Of E)) As E
+		Public Function getAndUpdate(  i As Integer,   updateFunction As java.util.function.UnaryOperator(Of E)) As E
 			Dim offset As Long = checkedByteOffset(i)
 			Dim prev, [next] As E
 			Do
@@ -214,7 +214,7 @@ Namespace java.util.concurrent.atomic
 		''' <param name="updateFunction"> a side-effect-free function </param>
 		''' <returns> the updated value
 		''' @since 1.8 </returns>
-		Public Function updateAndGet(ByVal i As Integer, ByVal updateFunction As java.util.function.UnaryOperator(Of E)) As E
+		Public Function updateAndGet(  i As Integer,   updateFunction As java.util.function.UnaryOperator(Of E)) As E
 			Dim offset As Long = checkedByteOffset(i)
 			Dim prev, [next] As E
 			Do
@@ -238,7 +238,7 @@ Namespace java.util.concurrent.atomic
 		''' <param name="accumulatorFunction"> a side-effect-free function of two arguments </param>
 		''' <returns> the previous value
 		''' @since 1.8 </returns>
-		Public Function getAndAccumulate(ByVal i As Integer, ByVal x As E, ByVal accumulatorFunction As java.util.function.BinaryOperator(Of E)) As E
+		Public Function getAndAccumulate(  i As Integer,   x As E,   accumulatorFunction As java.util.function.BinaryOperator(Of E)) As E
 			Dim offset As Long = checkedByteOffset(i)
 			Dim prev, [next] As E
 			Do
@@ -262,7 +262,7 @@ Namespace java.util.concurrent.atomic
 		''' <param name="accumulatorFunction"> a side-effect-free function of two arguments </param>
 		''' <returns> the updated value
 		''' @since 1.8 </returns>
-		Public Function accumulateAndGet(ByVal i As Integer, ByVal x As E, ByVal accumulatorFunction As java.util.function.BinaryOperator(Of E)) As E
+		Public Function accumulateAndGet(  i As Integer,   x As E,   accumulatorFunction As java.util.function.BinaryOperator(Of E)) As E
 			Dim offset As Long = checkedByteOffset(i)
 			Dim prev, [next] As E
 			Do
@@ -293,7 +293,7 @@ Namespace java.util.concurrent.atomic
 		''' <summary>
 		''' Reconstitutes the instance from a stream (that is, deserializes it).
 		''' </summary>
-		Private Sub readObject(ByVal s As java.io.ObjectInputStream)
+		Private Sub readObject(  s As java.io.ObjectInputStream)
 			' Note: This must be changed if any additional fields are defined
 			Dim a As Object = s.readFields().get("array", Nothing)
 			If a Is Nothing OrElse (Not a.GetType().IsArray) Then Throw New java.io.InvalidObjectException("Not array type")

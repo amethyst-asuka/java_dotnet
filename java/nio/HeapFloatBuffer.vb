@@ -54,7 +54,7 @@ Namespace java.nio
         '
         '    
 
-        Friend Sub New(ByVal cap As Integer, ByVal lim As Integer) ' package-private
+        Friend Sub New(  cap As Integer,   lim As Integer) ' package-private
 
             MyBase.New(-1, 0, lim, cap, New Single(cap - 1) {}, 0)
             '        
@@ -67,7 +67,7 @@ Namespace java.nio
 
         End Sub
 
-        Friend Sub New(ByVal buf As Single(), ByVal [off] As Integer, ByVal len As Integer) ' package-private
+        Friend Sub New(  buf As Single(),   [off] As Integer,   len As Integer) ' package-private
 
             MyBase.New(-1, [off], [off] + len, buf.Length, buf, 0)
             '        
@@ -80,7 +80,7 @@ Namespace java.nio
 
         End Sub
 
-        Protected Friend Sub New(ByVal buf As Single(), ByVal mark As Integer, ByVal pos As Integer, ByVal lim As Integer, ByVal cap As Integer, ByVal [off] As Integer)
+        Protected Friend Sub New(  buf As Single(),   mark As Integer,   pos As Integer,   lim As Integer,   cap As Integer,   [off] As Integer)
 
             MyBase.New(mark, pos, lim, cap, buf, [off])
             '        
@@ -111,7 +111,7 @@ Namespace java.nio
 
 
 
-        Protected Friend Overridable Function ix(ByVal i As Integer) As Integer
+        Protected Friend Overridable Function ix(  i As Integer) As Integer
             Return i + offset
         End Function
 
@@ -119,7 +119,7 @@ Namespace java.nio
             Return hb(ix(nextGetIndex()))
         End Function
 
-        Public Overrides Function [get](ByVal i As Integer) As Single
+        Public Overrides Function [get](  i As Integer) As Single
             Return hb(ix(checkIndex(i)))
         End Function
 
@@ -129,7 +129,7 @@ Namespace java.nio
 
 
 
-        Public Overrides Function [get](ByVal dst As Single(), ByVal offset As Integer, ByVal length As Integer) As FloatBuffer
+        Public Overrides Function [get](  dst As Single(),   offset As Integer,   length As Integer) As FloatBuffer
             checkBounds(offset, length, dst.Length)
             If length > remaining() Then Throw New BufferUnderflowException
             array.Copy(hb, ix(position()), dst, offset, length)
@@ -151,7 +151,7 @@ Namespace java.nio
             End Get
         End Property
 
-        Public Overrides Function put(ByVal x As Single) As FloatBuffer
+        Public Overrides Function put(  x As Single) As FloatBuffer
 
             hb(ix(nextPutIndex())) = x
             Return Me
@@ -160,7 +160,7 @@ Namespace java.nio
 
         End Function
 
-        Public Overrides Function put(ByVal i As Integer, ByVal x As Single) As FloatBuffer
+        Public Overrides Function put(  i As Integer,   x As Single) As FloatBuffer
 
             hb(ix(checkIndex(i))) = x
             Return Me
@@ -169,7 +169,7 @@ Namespace java.nio
 
         End Function
 
-        Public Overrides Function put(ByVal src As Single(), ByVal offset As Integer, ByVal length As Integer) As FloatBuffer
+        Public Overrides Function put(  src As Single(),   offset As Integer,   length As Integer) As FloatBuffer
 
             checkBounds(offset, length, src.Length)
             If length > remaining() Then Throw New BufferOverflowException
@@ -181,7 +181,7 @@ Namespace java.nio
 
         End Function
 
-        Public Overrides Function put(ByVal src As FloatBuffer) As FloatBuffer
+        Public Overrides Function put(  src As FloatBuffer) As FloatBuffer
 
             If TypeOf src Is HeapFloatBuffer Then
                 If src Is Me Then Throw New IllegalArgumentException

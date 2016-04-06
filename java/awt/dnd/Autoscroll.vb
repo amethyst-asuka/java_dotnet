@@ -71,7 +71,7 @@ Namespace java.awt.dnd
 		''' <param name="cursorLocn"> A <code>Point</code> indicating the
 		''' location of the cursor that triggered this operation. </param>
 
-		Sub autoscroll(ByVal cursorLocn As java.awt.Point)
+		Sub autoscroll(  cursorLocn As java.awt.Point)
 
 	End Interface
 

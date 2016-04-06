@@ -243,7 +243,7 @@ Namespace java.io
 		''' <summary>
 		''' Internal constructor for already-normalized pathname strings.
 		''' </summary>
-		Private Sub New(ByVal pathname As String, ByVal prefixLength As Integer)
+		Private Sub New(  pathname As String,   prefixLength As Integer)
 			Me.path = pathname
 			Me.prefixLength = prefixLength
 		End Sub
@@ -253,7 +253,7 @@ Namespace java.io
 		''' The parameter order is used to disambiguate this method from the
 		''' public(File, String) constructor.
 		''' </summary>
-		Private Sub New(ByVal child As String, ByVal parent As File)
+		Private Sub New(  child As String,   parent As File)
 			Debug.Assert(parent.path IsNot Nothing)
 			assert((Not parent.path.Equals("")))
 			Me.path = fs.resolve(parent.path, child)
@@ -268,7 +268,7 @@ Namespace java.io
 		''' <param name="pathname">  A pathname string </param>
 		''' <exception cref="NullPointerException">
 		'''          If the <code>pathname</code> argument is <code>null</code> </exception>
-		Public Sub New(ByVal pathname As String)
+		Public Sub New(  pathname As String)
 			If pathname Is Nothing Then Throw New NullPointerException
 			Me.path = fs.normalize(pathname)
 			Me.prefixLength = fs.prefixLength(Me.path)
@@ -305,7 +305,7 @@ Namespace java.io
 		''' <param name="child">   The child pathname string </param>
 		''' <exception cref="NullPointerException">
 		'''          If <code>child</code> is <code>null</code> </exception>
-		Public Sub New(ByVal parent As String, ByVal child As String)
+		Public Sub New(  parent As String,   child As String)
 			If child Is Nothing Then Throw New NullPointerException
 			If parent IsNot Nothing Then
 				If parent.Equals("") Then
@@ -343,7 +343,7 @@ Namespace java.io
 		''' <param name="child">   The child pathname string </param>
 		''' <exception cref="NullPointerException">
 		'''          If <code>child</code> is <code>null</code> </exception>
-		Public Sub New(ByVal parent As File, ByVal child As String)
+		Public Sub New(  parent As File,   child As String)
 			If child Is Nothing Then Throw New NullPointerException
 			If parent IsNot Nothing Then
 				If parent.path.Equals("") Then
@@ -392,7 +392,7 @@ Namespace java.io
 		''' <seealso cref= #toURI() </seealso>
 		''' <seealso cref= java.net.URI
 		''' @since 1.4 </seealso>
-		Public Sub New(ByVal uri As java.net.URI)
+		Public Sub New(  uri As java.net.URI)
 
 			' Check our many preconditions
 			If Not uri.absolute Then Throw New IllegalArgumentException("URI is not absolute")
@@ -625,7 +625,7 @@ Namespace java.io
 			End Get
 		End Property
 
-		Private Shared Function slashify(ByVal path As String, ByVal isDirectory As Boolean) As String
+		Private Shared Function slashify(  path As String,   isDirectory As Boolean) As String
 			Dim p As String = path
 			If System.IO.Path.DirectorySeparatorChar <> "/"c Then p = p.replace(System.IO.Path.DirectorySeparatorChar, "/"c)
 			If Not p.StartsWith("/") Then p = "/" & p
@@ -1070,7 +1070,7 @@ Namespace java.io
 		'''          the directory
 		''' </exception>
 		''' <seealso cref= java.nio.file.Files#newDirectoryStream(Path,String) </seealso>
-		Public Overridable Function list(ByVal filter As FilenameFilter) As String()
+		Public Overridable Function list(  filter As FilenameFilter) As String()
 			Dim names As String() = list()
 			If (names Is Nothing) OrElse (filter Is Nothing) Then Return names
 			Dim v As IList(Of String) = New List(Of String)
@@ -1157,7 +1157,7 @@ Namespace java.io
 		''' 
 		''' @since  1.2 </exception>
 		''' <seealso cref= java.nio.file.Files#newDirectoryStream(Path,String) </seealso>
-		Public Overridable Function listFiles(ByVal filter As FilenameFilter) As File()
+		Public Overridable Function listFiles(  filter As FilenameFilter) As File()
 			Dim ss As String() = list()
 			If ss Is Nothing Then Return Nothing
 			Dim files As New List(Of File)
@@ -1194,7 +1194,7 @@ Namespace java.io
 		''' 
 		''' @since  1.2 </exception>
 		''' <seealso cref= java.nio.file.Files#newDirectoryStream(Path,java.nio.file.DirectoryStream.Filter) </seealso>
-		Public Overridable Function listFiles(ByVal filter As FileFilter) As File()
+		Public Overridable Function listFiles(  filter As FileFilter) As File()
 			Dim ss As String() = list()
 			If ss Is Nothing Then Return Nothing
 			Dim files As New List(Of File)
@@ -1281,7 +1281,7 @@ Namespace java.io
 		''' </exception>
 		''' <exception cref="NullPointerException">
 		'''          If parameter <code>dest</code> is <code>null</code> </exception>
-		Public Overridable Function renameTo(ByVal dest As File) As Boolean
+		Public Overridable Function renameTo(  dest As File) As Boolean
 			Dim security As SecurityManager = System.securityManager
 			If security IsNot Nothing Then
 				security.checkWrite(path)
@@ -1317,7 +1317,7 @@ Namespace java.io
 		'''          method denies write access to the named file
 		''' 
 		''' @since 1.2 </exception>
-		Public Overridable Function setLastModified(ByVal time As Long) As Boolean
+		Public Overridable Function setLastModified(  time As Long) As Boolean
 			If time < 0 Then Throw New IllegalArgumentException("Negative time")
 			Dim security As SecurityManager = System.securityManager
 			If security IsNot Nothing Then security.checkWrite(path)
@@ -1381,7 +1381,7 @@ Namespace java.io
 		'''          method denies write access to the named file
 		''' 
 		''' @since 1.6 </exception>
-		Public Overridable Function setWritable(ByVal writable As Boolean, ByVal ownerOnly As Boolean) As Boolean
+		Public Overridable Function setWritable(  writable As Boolean,   ownerOnly As Boolean) As Boolean
 			Dim security As SecurityManager = System.securityManager
 			If security IsNot Nothing Then security.checkWrite(path)
 			If invalid Then Return False
@@ -1414,7 +1414,7 @@ Namespace java.io
 		'''          method denies write access to the file
 		''' 
 		''' @since 1.6 </exception>
-		Public Overridable Function setWritable(ByVal writable As Boolean) As Boolean
+		Public Overridable Function setWritable(  writable As Boolean) As Boolean
 			Return writableble(writable, True)
 		End Function
 
@@ -1452,7 +1452,7 @@ Namespace java.io
 		'''          method denies write access to the file
 		''' 
 		''' @since 1.6 </exception>
-		Public Overridable Function setReadable(ByVal readable As Boolean, ByVal ownerOnly As Boolean) As Boolean
+		Public Overridable Function setReadable(  readable As Boolean,   ownerOnly As Boolean) As Boolean
 			Dim security As SecurityManager = System.securityManager
 			If security IsNot Nothing Then security.checkWrite(path)
 			If invalid Then Return False
@@ -1488,7 +1488,7 @@ Namespace java.io
 		'''          method denies write access to the file
 		''' 
 		''' @since 1.6 </exception>
-		Public Overridable Function setReadable(ByVal readable As Boolean) As Boolean
+		Public Overridable Function setReadable(  readable As Boolean) As Boolean
 			Return readableble(readable, True)
 		End Function
 
@@ -1526,7 +1526,7 @@ Namespace java.io
 		'''          method denies write access to the file
 		''' 
 		''' @since 1.6 </exception>
-		Public Overridable Function setExecutable(ByVal executable As Boolean, ByVal ownerOnly As Boolean) As Boolean
+		Public Overridable Function setExecutable(  executable As Boolean,   ownerOnly As Boolean) As Boolean
 			Dim security As SecurityManager = System.securityManager
 			If security IsNot Nothing Then security.checkWrite(path)
 			If invalid Then Return False
@@ -1562,7 +1562,7 @@ Namespace java.io
 		'''          method denies write access to the file
 		''' 
 		''' @since 1.6 </exception>
-		Public Overridable Function setExecutable(ByVal executable As Boolean) As Boolean
+		Public Overridable Function setExecutable(  executable As Boolean) As Boolean
 			Return executableble(executable, True)
 		End Function
 
@@ -1757,7 +1757,7 @@ Namespace java.io
 
 			' file name generation
 			Private Shared ReadOnly random As New java.security.SecureRandom
-			Friend Shared Function generateFile(ByVal prefix As String, ByVal suffix As String, ByVal dir As File) As File
+			Friend Shared Function generateFile(  prefix As String,   suffix As String,   dir As File) As File
 				Dim n As Long = random.nextLong()
 				If n = java.lang.[Long].MIN_VALUE Then
 					n = 0 ' corner case
@@ -1849,7 +1849,7 @@ Namespace java.io
 		'''          method does not allow a file to be created
 		''' 
 		''' @since 1.2 </exception>
-		Public Shared Function createTempFile(ByVal prefix As String, ByVal suffix As String, ByVal directory As File) As File
+		Public Shared Function createTempFile(  prefix As String,   suffix As String,   directory As File) As File
 			If prefix.length() < 3 Then Throw New IllegalArgumentException("Prefix string too short")
 			If suffix Is Nothing Then suffix = ".tmp"
 
@@ -1911,7 +1911,7 @@ Namespace java.io
 		''' 
 		''' @since 1.2 </exception>
 		''' <seealso cref= java.nio.file.Files#createTempDirectory(String,FileAttribute[]) </seealso>
-		Public Shared Function createTempFile(ByVal prefix As String, ByVal suffix As String) As File
+		Public Shared Function createTempFile(  prefix As String,   suffix As String) As File
 			Return createTempFile(prefix, suffix, Nothing)
 		End Function
 
@@ -1933,7 +1933,7 @@ Namespace java.io
 		'''          greater than the argument
 		''' 
 		''' @since   1.2 </returns>
-		Public Overridable Function compareTo(ByVal pathname As File) As Integer Implements Comparable(Of File).compareTo
+		Public Overridable Function compareTo(  pathname As File) As Integer Implements Comparable(Of File).compareTo
 			Return fs.Compare(Me, pathname)
 		End Function
 
@@ -1950,7 +1950,7 @@ Namespace java.io
 		''' </param>
 		''' <returns>  <code>true</code> if and only if the objects are the same;
 		'''          <code>false</code> otherwise </returns>
-		Public Overrides Function Equals(ByVal obj As Object) As Boolean
+		Public Overrides Function Equals(  obj As Object) As Boolean
 			If (obj IsNot Nothing) AndAlso (TypeOf obj Is File) Then Return compareTo(CType(obj, File)) = 0
 			Return False
 		End Function
@@ -1989,7 +1989,7 @@ Namespace java.io
 		''' @serialData  Default fields followed by separator character.
 		''' </summary>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Private Sub writeObject(ByVal s As java.io.ObjectOutputStream)
+		Private Sub writeObject(  s As java.io.ObjectOutputStream)
 			s.defaultWriteObject()
 			s.writeChar(separatorChar) ' Add the separator character
 		End Sub
@@ -2001,7 +2001,7 @@ Namespace java.io
 		''' is replaced by the local separator.
 		''' </summary>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Private Sub readObject(ByVal s As java.io.ObjectInputStream)
+		Private Sub readObject(  s As java.io.ObjectInputStream)
 			Dim fields As ObjectInputStream.GetField = s.readFields()
 			Dim pathField As String = CStr(fields.get("path", Nothing))
 			Dim sep As Char = s.readChar() ' read the previous separator char

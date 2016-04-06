@@ -173,7 +173,7 @@ Namespace java.util
         ''' <exception cref="NullPointerException"> if the specified element is null and this
         '''         collection does not permit null elements
         '''         (<a href="#optional-restrictions">optional</a>) </exception>
-        Function contains(ByVal o As Object) As Boolean
+        Function contains(  o As Object) As Boolean
 
         ''' <summary>
         ''' Returns an iterator over the elements in this collection.  There are no
@@ -243,7 +243,7 @@ Namespace java.util
         '''         is not a supertype of the runtime type of every element in
         '''         this collection </exception>
         ''' <exception cref="NullPointerException"> if the specified array is null </exception>
-        Function toArray(Of T)(ByVal a As T()) As T()
+        Function toArray(Of T)(  a As T()) As T()
 
         ' Modification Operations
 
@@ -279,7 +279,7 @@ Namespace java.util
         '''         prevents it from being added to this collection </exception>
         ''' <exception cref="IllegalStateException"> if the element cannot be added at this
         '''         time due to insertion restrictions </exception>
-        Function add(ByVal e As E) As Boolean
+        Function add(  e As E) As Boolean
 
         ''' <summary>
         ''' Removes a single instance of the specified element from this
@@ -300,7 +300,7 @@ Namespace java.util
         '''         (<a href="#optional-restrictions">optional</a>) </exception>
         ''' <exception cref="UnsupportedOperationException"> if the <tt>remove</tt> operation
         '''         is not supported by this collection </exception>
-        Function remove(ByVal o As Object) As Boolean
+        Function remove(  o As Object) As Boolean
 
 
         ' Bulk Operations
@@ -322,7 +322,7 @@ Namespace java.util
         '''         (<a href="#optional-restrictions">optional</a>),
         '''         or if the specified collection is null. </exception>
         ''' <seealso cref=    #contains(Object) </seealso>
-        Function containsAll(Of T1)(ByVal c As Collection(Of T1)) As Boolean
+        Function containsAll(Of T1)(  c As Collection(Of T1)) As Boolean
 
         ''' <summary>
         ''' Adds all of the elements in the specified collection to this collection
@@ -347,7 +347,7 @@ Namespace java.util
         ''' <exception cref="IllegalStateException"> if not all the elements can be added at
         '''         this time due to insertion restrictions </exception>
         ''' <seealso cref= #add(Object) </seealso>
-        Function addAll(Of T1 As E)(ByVal c As Collection(Of T1)) As Boolean
+        Function addAll(Of T1 As E)(  c As Collection(Of T1)) As Boolean
 
         ''' <summary>
         ''' Removes all of this collection's elements that are also contained in the
@@ -371,7 +371,7 @@ Namespace java.util
         '''         or if the specified collection is null </exception>
         ''' <seealso cref= #remove(Object) </seealso>
         ''' <seealso cref= #contains(Object) </seealso>
-        Function removeAll(Of T1)(ByVal c As Collection(Of T1)) As Boolean
+        Function removeAll(Of T1)(  c As Collection(Of T1)) As Boolean
 
         ''' <summary>
         ''' Removes all of the elements of this collection that satisfy the given
@@ -395,15 +395,15 @@ Namespace java.util
         '''         supported.
         ''' @since 1.8 </exception>
         'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-        Default Function removeIf(Of T1)(ByVal filter As java.util.function.Predicate(Of T1)) As Boolean
+        Default Function removeIf(Of T1)(  filter As java.util.function.Predicate(Of T1)) As Boolean
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 			Objects.requireNonNull(filter);
 'JAVA TO VB CONVERTER TODO TASK: Interfaces cannot contain fields in .NET:
 '			boolean removed = False;
 'JAVA TO VB CONVERTER TODO TASK: Interfaces cannot contain fields in .NET:
 '			final Iterator(Of E) each = iterator();
-			Sub [New](each.hasNext() ByVal  As )
-				Sub [New](filter.test(Each.Next()) ByVal  As )
+			Sub [New](each.hasNext()    As )
+				Sub [New](filter.test(Each.Next())    As )
 					Sub [New]()
 					removed = True
 'JAVA TO VB CONVERTER TODO TASK: Interfaces cannot contain fields in .NET:
@@ -430,7 +430,7 @@ Namespace java.util
 		'''         or if the specified collection is null </exception>
 		''' <seealso cref= #remove(Object) </seealso>
 		''' <seealso cref= #contains(Object) </seealso>
-		Function retainAll(Of T1)(ByVal c As Collection(Of T1)) As Boolean
+		Function retainAll(Of T1)(  c As Collection(Of T1)) As Boolean
 
         ''' <summary>
         ''' Removes all of the elements from this collection (optional operation).
@@ -475,7 +475,7 @@ Namespace java.util
         ''' <seealso cref= Object#equals(Object) </seealso>
         ''' <seealso cref= Set#equals(Object) </seealso>
         ''' <seealso cref= List#equals(Object) </seealso>
-        Function Equals(ByVal o As Object) As Boolean
+        Function Equals(  o As Object) As Boolean
 
         ''' <summary>
         ''' Returns the hash code value for this collection.  While the

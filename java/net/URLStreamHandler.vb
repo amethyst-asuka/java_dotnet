@@ -62,7 +62,7 @@ Namespace java.net
 		''' <returns>     a {@code URLConnection} object for the {@code URL}. </returns>
 		''' <exception cref="IOException">  if an I/O error occurs while opening the
 		'''               connection. </exception>
-		Protected Friend MustOverride Function openConnection(ByVal u As URL) As URLConnection
+		Protected Friend MustOverride Function openConnection(  u As URL) As URLConnection
 
 		''' <summary>
 		''' Same as openConnection(URL), except that the connection will be
@@ -85,7 +85,7 @@ Namespace java.net
 		''' <exception cref="UnsupportedOperationException"> if the subclass that
 		'''               implements the protocol doesn't support this method.
 		''' @since      1.5 </exception>
-		Protected Friend Overridable Function openConnection(ByVal u As URL, ByVal p As Proxy) As URLConnection
+		Protected Friend Overridable Function openConnection(  u As URL,   p As Proxy) As URLConnection
 			Throw New UnsupportedOperationException("Method not implemented.")
 		End Function
 
@@ -113,7 +113,7 @@ Namespace java.net
 		'''                  end of the string or the position of the
 		'''                  "{@code #}" character, if present. All information
 		'''                  after the sharp sign indicates an anchor. </param>
-		Protected Friend Overridable Sub parseURL(ByVal u As URL, ByVal spec As String, ByVal start As Integer, ByVal limit As Integer)
+		Protected Friend Overridable Sub parseURL(  u As URL,   spec As String,   start As Integer,   limit As Integer)
 			' These fields may receive context content if this was relative URL
 			Dim protocol As String = u.protocol
 			Dim authority As String = u.authority
@@ -297,7 +297,7 @@ Namespace java.net
 		''' considered equal, ie. they refer to the same
 		''' fragment in the same file.
 		''' @since 1.3 </returns>
-		Protected Friend Overrides Function Equals(ByVal u1 As URL, ByVal u2 As URL) As Boolean
+		Protected Friend Overrides Function Equals(  u1 As URL,   u2 As URL) As Boolean
 			Dim ref1 As String = u1.ref
 			Dim ref2 As String = u2.ref
 			Return (ref1 = ref2 OrElse (ref1 IsNot Nothing AndAlso ref1.Equals(ref2))) AndAlso sameFile(u1, u2)
@@ -310,7 +310,7 @@ Namespace java.net
 		''' <param name="u"> a URL object </param>
 		''' <returns> an {@code int} suitable for hash table indexing
 		''' @since 1.3 </returns>
-		Protected Friend Overrides Function GetHashCode(ByVal u As URL) As Integer
+		Protected Friend Overrides Function GetHashCode(  u As URL) As Integer
 			Dim h As Integer = 0
 
 			' Generate the protocol part.
@@ -354,7 +354,7 @@ Namespace java.net
 		''' <param name="u2"> a URL object </param>
 		''' <returns> true if u1 and u2 refer to the same file
 		''' @since 1.3 </returns>
-		Protected Friend Overridable Function sameFile(ByVal u1 As URL, ByVal u2 As URL) As Boolean
+		Protected Friend Overridable Function sameFile(  u1 As URL,   u2 As URL) As Boolean
 			' Compare the protocols.
 			If Not((u1.protocol = u2.protocol) OrElse (u1.protocol IsNot Nothing AndAlso u1.protocol.equalsIgnoreCase(u2.protocol))) Then Return False
 
@@ -382,7 +382,7 @@ Namespace java.net
 		''' IP address.
 		''' @since 1.3 </returns>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Protected Friend Overridable Function getHostAddress(ByVal u As URL) As InetAddress
+		Protected Friend Overridable Function getHostAddress(  u As URL) As InetAddress
 			If u.hostAddress IsNot Nothing Then Return u.hostAddress
 
 			Dim host As String = u.host
@@ -407,7 +407,7 @@ Namespace java.net
 		''' <returns>  {@code true} if and only if they
 		''' are equal, {@code false} otherwise.
 		''' @since 1.3 </returns>
-		Protected Friend Overridable Function hostsEqual(ByVal u1 As URL, ByVal u2 As URL) As Boolean
+		Protected Friend Overridable Function hostsEqual(  u1 As URL,   u2 As URL) As Boolean
 			Dim a1 As InetAddress = getHostAddress(u1)
 			Dim a2 As InetAddress = getHostAddress(u2)
 			' if we have internet address for both, compare them
@@ -427,7 +427,7 @@ Namespace java.net
 		''' </summary>
 		''' <param name="u">   the URL. </param>
 		''' <returns>  a string representation of the {@code URL} argument. </returns>
-		Protected Friend Overridable Function toExternalForm(ByVal u As URL) As String
+		Protected Friend Overridable Function toExternalForm(  u As URL) As String
 
 			' pre-compute length of StringBuffer
 			Dim len As Integer = u.protocol.length() + 1
@@ -473,7 +473,7 @@ Namespace java.net
 		'''                                  different from this one </exception>
 		''' <seealso cref=     java.net.URL#set(java.lang.String, java.lang.String, int, java.lang.String, java.lang.String)
 		''' @since 1.3 </seealso>
-		   Protected Friend Overridable Sub setURL(ByVal u As URL, ByVal protocol As String, ByVal host As String, ByVal port As Integer, ByVal authority As String, ByVal userInfo As String, ByVal path As String, ByVal query As String, ByVal ref As String)
+		   Protected Friend Overridable Sub setURL(  u As URL,   protocol As String,   host As String,   port As Integer,   authority As String,   userInfo As String,   path As String,   query As String,   ref As String)
 			If Me IsNot u.handler Then Throw New SecurityException("handler for url different from " & "this handler")
 			' ensure that no one can reset the protocol on a given URL.
 			u.set(u.protocol, host, port, authority, userInfo, path, query, ref)
@@ -495,7 +495,7 @@ Namespace java.net
 		''' @deprecated Use setURL(URL, String, String, int, String, String, String,
 		'''             String); 
 		<Obsolete("Use setURL(URL, String, String, int, String, String, String,")> _
-		Protected Friend Overridable Sub setURL(ByVal u As URL, ByVal protocol As String, ByVal host As String, ByVal port As Integer, ByVal file As String, ByVal ref As String)
+		Protected Friend Overridable Sub setURL(  u As URL,   protocol As String,   host As String,   port As Integer,   file As String,   ref As String)
 	'        
 	'         * Only old URL handlers call this, so assume that the host
 	'         * field might contain "user:passwd@host". Fix as necessary.

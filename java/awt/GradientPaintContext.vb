@@ -39,7 +39,7 @@ Namespace java.awt
 		Friend Shared cached As WeakReference(Of java.awt.image.Raster)
 
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Friend Shared Function getCachedRaster(ByVal cm As java.awt.image.ColorModel, ByVal w As Integer, ByVal h As Integer) As java.awt.image.Raster
+		Friend Shared Function getCachedRaster(  cm As java.awt.image.ColorModel,   w As Integer,   h As Integer) As java.awt.image.Raster
 			If cm Is cachedModel Then
 				If cached IsNot Nothing Then
 					Dim ras As java.awt.image.Raster = CType(cached.get(), java.awt.image.Raster)
@@ -53,7 +53,7 @@ Namespace java.awt
 		End Function
 
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Friend Shared Sub putCachedRaster(ByVal cm As java.awt.image.ColorModel, ByVal ras As java.awt.image.Raster)
+		Friend Shared Sub putCachedRaster(  cm As java.awt.image.ColorModel,   ras As java.awt.image.Raster)
 			If cached IsNot Nothing Then
 				Dim cras As java.awt.image.Raster = CType(cached.get(), java.awt.image.Raster)
 				If cras IsNot Nothing Then
@@ -78,7 +78,7 @@ Namespace java.awt
 		Friend saved As java.awt.image.Raster
 		Friend model As java.awt.image.ColorModel
 
-		Public Sub New(ByVal cm As java.awt.image.ColorModel, ByVal p1 As java.awt.geom.Point2D, ByVal p2 As java.awt.geom.Point2D, ByVal xform As java.awt.geom.AffineTransform, ByVal c1 As Color, ByVal c2 As Color, ByVal cyclic As Boolean)
+		Public Sub New(  cm As java.awt.image.ColorModel,   p1 As java.awt.geom.Point2D,   p2 As java.awt.geom.Point2D,   xform As java.awt.geom.AffineTransform,   c1 As Color,   c2 As Color,   cyclic As Boolean)
 			' First calculate the distance moved in user space when
 			' we move a single unit along the X & Y axes in device space.
 			Dim xvec As java.awt.geom.Point2D = New java.awt.geom.Point2D.Double(1, 0)
@@ -210,7 +210,7 @@ Namespace java.awt
 		''' operation. </summary>
 		''' <param name="x">,y,w,h The area in device space for which colors are
 		''' generated. </param>
-		Public Overridable Function getRaster(ByVal x As Integer, ByVal y As Integer, ByVal w As Integer, ByVal h As Integer) As java.awt.image.Raster Implements PaintContext.getRaster
+		Public Overridable Function getRaster(  x As Integer,   y As Integer,   w As Integer,   h As Integer) As java.awt.image.Raster Implements PaintContext.getRaster
 			Dim rowrel As Double = (x - x1) * dx + (y - y1) * dy
 
 			Dim rast As java.awt.image.Raster = saved
@@ -234,7 +234,7 @@ Namespace java.awt
 			Return rast
 		End Function
 
-		Friend Overridable Sub cycleFillRaster(ByVal pixels As Integer(), ByVal [off] As Integer, ByVal adjust As Integer, ByVal w As Integer, ByVal h As Integer, ByVal rowrel As Double, ByVal dx As Double, ByVal dy As Double)
+		Friend Overridable Sub cycleFillRaster(  pixels As Integer(),   [off] As Integer,   adjust As Integer,   w As Integer,   h As Integer,   rowrel As Double,   dx As Double,   dy As Double)
 			rowrel = rowrel Mod 2.0
 			Dim irowrel As Integer = (CInt(Fix(rowrel * (1 << 30)))) << 1
 			Dim idx As Integer = CInt(Fix(-dx * (1 << 31)))
@@ -254,7 +254,7 @@ Namespace java.awt
 			Loop
 		End Sub
 
-		Friend Overridable Sub clipFillRaster(ByVal pixels As Integer(), ByVal [off] As Integer, ByVal adjust As Integer, ByVal w As Integer, ByVal h As Integer, ByVal rowrel As Double, ByVal dx As Double, ByVal dy As Double)
+		Friend Overridable Sub clipFillRaster(  pixels As Integer(),   [off] As Integer,   adjust As Integer,   w As Integer,   h As Integer,   rowrel As Double,   dx As Double,   dy As Double)
 			h -= 1
 			Do While h >= 0
 				Dim colrel As Double = rowrel

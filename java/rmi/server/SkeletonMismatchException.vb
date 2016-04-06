@@ -55,7 +55,7 @@ Namespace java.rmi.server
 		''' @since JDK1.1 </param>
 		''' @deprecated no replacement 
 		<Obsolete("no replacement")> _
-		Public Sub New(ByVal s As String)
+		Public Sub New(  s As String)
 			MyBase.New(s)
 		End Sub
 

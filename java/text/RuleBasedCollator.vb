@@ -276,7 +276,7 @@ Namespace java.text
 		''' will be thrown if the build process of the rules fails. For
 		''' example, build rule "a &lt; ? &lt; d" will cause the constructor to
 		''' throw the ParseException because the '?' is not quoted. </exception>
-		Public Sub New(ByVal rules As String)
+		Public Sub New(  rules As String)
 			Me.New(rules, Collator.CANONICAL_DECOMPOSITION)
 		End Sub
 
@@ -292,7 +292,7 @@ Namespace java.text
 		''' will be thrown if the build process of the rules fails. For
 		''' example, build rule "a < ? < d" will cause the constructor to
 		''' throw the ParseException because the '?' is not quoted. </exception>
-		Friend Sub New(ByVal rules As String, ByVal decomp As Integer)
+		Friend Sub New(  rules As String,   decomp As Integer)
 			strength = Collator.TERTIARY
 			decomposition = decomp
 			tables = New RBCollationTables(rules, decomp)
@@ -301,7 +301,7 @@ Namespace java.text
 		''' <summary>
 		''' "Copy constructor."  Used in clone() for performance.
 		''' </summary>
-		Private Sub New(ByVal that As RuleBasedCollator)
+		Private Sub New(  that As RuleBasedCollator)
 			strength = that.strength
 			decomposition = that.decomposition
 			tables = that.tables
@@ -323,7 +323,7 @@ Namespace java.text
 		''' <param name="source"> the string to be collated </param>
 		''' <returns> a {@code CollationElementIterator} object </returns>
 		''' <seealso cref= java.text.CollationElementIterator </seealso>
-		Public Overridable Function getCollationElementIterator(ByVal source As String) As CollationElementIterator
+		Public Overridable Function getCollationElementIterator(  source As String) As CollationElementIterator
 			Return New CollationElementIterator(source, Me)
 		End Function
 
@@ -334,7 +334,7 @@ Namespace java.text
 		''' <returns> a {@code CollationElementIterator} object </returns>
 		''' <seealso cref= java.text.CollationElementIterator
 		''' @since 1.2 </seealso>
-		Public Overridable Function getCollationElementIterator(ByVal source As CharacterIterator) As CollationElementIterator
+		Public Overridable Function getCollationElementIterator(  source As CharacterIterator) As CollationElementIterator
 			Return New CollationElementIterator(source, Me)
 		End Function
 
@@ -346,7 +346,7 @@ Namespace java.text
 		''' </summary>
 		''' <exception cref="NullPointerException"> if <code>source</code> or <code>target</code> is null. </exception>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overrides Function compare(ByVal source As String, ByVal target As String) As Integer
+		Public Overrides Function compare(  source As String,   target As String) As Integer
 			If source Is Nothing OrElse target Is Nothing Then Throw New NullPointerException
 
 			' The basic algorithm here is that we use CollationElementIterators
@@ -563,7 +563,7 @@ Namespace java.text
 		''' It can be overriden in a subclass.
 		''' </summary>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overrides Function getCollationKey(ByVal source As String) As CollationKey
+		Public Overrides Function getCollationKey(  source As String) As CollationKey
 			'
 			' The basic algorithm here is to find all of the collation elements for each
 			' character in the source string, convert them to a char representation,
@@ -693,7 +693,7 @@ Namespace java.text
 		''' <param name="obj"> the table-based collation object to be compared with this. </param>
 		''' <returns> true if the current table-based collation object is the same
 		''' as the table-based collation object obj; false otherwise. </returns>
-		Public Overrides Function Equals(ByVal obj As Object) As Boolean
+		Public Overrides Function Equals(  obj As Object) As Boolean
 			If obj Is Nothing Then Return False
 			If Not MyBase.Equals(obj) Then ' super does class check Return False
 			Dim other As RuleBasedCollator = CType(obj, RuleBasedCollator)

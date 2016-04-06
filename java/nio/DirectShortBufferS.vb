@@ -182,7 +182,7 @@ Namespace java.nio
 
         ' For duplicates and slices
         '
-        Friend Sub New(ByVal db As sun.nio.ch.DirectBuffer, ByVal mark As Integer, ByVal pos As Integer, ByVal lim As Integer, ByVal cap As Integer, ByVal [off] As Integer) ' package-private
+        Friend Sub New(  db As sun.nio.ch.DirectBuffer,   mark As Integer,   pos As Integer,   lim As Integer,   cap As Integer,   [off] As Integer) ' package-private
 
             MyBase.New(mark, pos, lim, cap)
             address = db.address() + [off]
@@ -223,7 +223,7 @@ Namespace java.nio
             Return address
         End Function
 
-        Private Function ix(ByVal i As Integer) As Long
+        Private Function ix(  i As Integer) As Long
             Return address() + (CLng(i) << 1)
         End Function
 
@@ -231,7 +231,7 @@ Namespace java.nio
             Return (Bits.swap(unsafe.getShort(ix(nextGetIndex()))))
         End Function
 
-        Public Overrides Function [get](ByVal i As Integer) As Short
+        Public Overrides Function [get](  i As Integer) As Short
             Return (Bits.swap(unsafe.getShort(ix(checkIndex(i)))))
         End Function
 
@@ -241,7 +241,7 @@ Namespace java.nio
 
 
 
-        Public Overrides Function [get](ByVal dst As Short(), ByVal offset As Integer, ByVal length As Integer) As ShortBuffer
+        Public Overrides Function [get](  dst As Short(),   offset As Integer,   length As Integer) As ShortBuffer
 
             If (CLng(length) << 1) > Bits.JNI_COPY_TO_ARRAY_THRESHOLD Then
                 checkBounds(offset, length, dst.Length)
@@ -270,7 +270,7 @@ Namespace java.nio
 
 
 
-        Public Overrides Function put(ByVal x As Short) As ShortBuffer
+        Public Overrides Function put(  x As Short) As ShortBuffer
 
             unsafe.putShort(ix(nextPutIndex()), Bits.swap((x)))
             Return Me
@@ -279,7 +279,7 @@ Namespace java.nio
 
         End Function
 
-        Public Overrides Function put(ByVal i As Integer, ByVal x As Short) As ShortBuffer
+        Public Overrides Function put(  i As Integer,   x As Short) As ShortBuffer
 
             unsafe.putShort(ix(checkIndex(i)), Bits.swap((x)))
             Return Me
@@ -288,7 +288,7 @@ Namespace java.nio
 
         End Function
 
-        Public Overrides Function put(ByVal src As ShortBuffer) As ShortBuffer
+        Public Overrides Function put(  src As ShortBuffer) As ShortBuffer
 
             If TypeOf src Is DirectShortBufferS Then
                 If src Is Me Then Throw New IllegalArgumentException
@@ -327,7 +327,7 @@ Namespace java.nio
 
         End Function
 
-        Public Overrides Function put(ByVal src As Short(), ByVal offset As Integer, ByVal length As Integer) As ShortBuffer
+        Public Overrides Function put(  src As Short(),   offset As Integer,   length As Integer) As ShortBuffer
 
             If (CLng(length) << 1) > Bits.JNI_COPY_FROM_ARRAY_THRESHOLD Then
                 checkBounds(offset, length, src.Length)

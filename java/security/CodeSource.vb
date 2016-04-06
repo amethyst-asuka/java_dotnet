@@ -81,7 +81,7 @@ Namespace java.security
         ''' </param>
         ''' <param name="certs"> the certificate(s). It may be null. The contents of the
         ''' array are copied to protect against subsequent modification. </param>
-        Public Sub New(ByVal url As java.net.URL, ByVal certs As java.security.cert.Certificate())
+        Public Sub New(  url As java.net.URL,   certs As java.security.cert.Certificate())
             Me.location = url
 
             ' Copy the supplied certs
@@ -97,7 +97,7 @@ Namespace java.security
         ''' array are copied to protect against subsequent modification.
         ''' 
         ''' @since 1.5 </param>
-        Public Sub New(ByVal url As java.net.URL, ByVal signers As CodeSigner())
+        Public Sub New(  url As java.net.URL,   signers As CodeSigner())
             Me.location = url
 
             ' Copy the supplied signers
@@ -126,7 +126,7 @@ Namespace java.security
         ''' <param name="obj"> the object to test for equality with this object.
         ''' </param>
         ''' <returns> true if the objects are considered equal, false otherwise. </returns>
-        Public Overrides Function Equals(ByVal obj As Object) As Boolean
+        Public Overrides Function Equals(  obj As Object) As Boolean
             If obj Is Me Then Return True
 
             ' objects types must be equal
@@ -289,7 +289,7 @@ Namespace java.security
         ''' <returns> true if the specified codesource is implied by this codesource,
         ''' false if not. </returns>
 
-        Public Overridable Function implies(ByVal codesource As CodeSource) As Boolean
+        Public Overridable Function implies(  codesource As CodeSource) As Boolean
             If codesource Is Nothing Then Return False
 
             Return matchCerts(codesource, False) AndAlso matchLocation(codesource)
@@ -302,7 +302,7 @@ Namespace java.security
         ''' <param name="that"> the CodeSource to check against. </param>
         ''' <param name="strict"> If true then a strict equality match is performed.
         '''               Otherwise a subset match is performed. </param>
-        Private Function matchCerts(ByVal that As CodeSource, ByVal [strict] As Boolean) As Boolean
+        Private Function matchCerts(  that As CodeSource,   [strict] As Boolean) As Boolean
             Dim match As Boolean
 
             ' match any key
@@ -351,7 +351,7 @@ Namespace java.security
         ''' Returns true if two CodeSource's have the "same" location.
         ''' </summary>
         ''' <param name="that"> CodeSource to compare against </param>
-        Private Function matchLocation(ByVal that As CodeSource) As Boolean
+        Private Function matchLocation(  that As CodeSource) As Boolean
             If location Is Nothing Then Return True
 
             If (that Is Nothing) OrElse (that.location Is Nothing) Then Return False
@@ -448,7 +448,7 @@ Namespace java.security
         ''' array of bytes. Finally, if any code signers are present then the array
         ''' of code signers is serialized and written out too.
         ''' </summary>
-        Private Sub writeObject(ByVal oos As java.io.ObjectOutputStream)
+        Private Sub writeObject(  oos As java.io.ObjectOutputStream)
             oos.defaultWriteObject() ' location
 
             ' Serialize the array of certs
@@ -478,7 +478,7 @@ Namespace java.security
         ''' <summary>
         ''' Restores this object from a stream (i.e., deserializes it).
         ''' </summary>
-        Private Sub readObject(ByVal ois As java.io.ObjectInputStream)
+        Private Sub readObject(  ois As java.io.ObjectInputStream)
             Dim cf As CertificateFactory
             Dim cfs As Dictionary(Of String, CertificateFactory) = Nothing
 
@@ -542,7 +542,7 @@ Namespace java.security
         '     *
         '     * @return An array of code signers or null if none are generated.
         '     
-        Private Function convertCertArrayToSignerArray(ByVal certs As java.security.cert.Certificate()) As CodeSigner()
+        Private Function convertCertArrayToSignerArray(  certs As java.security.cert.Certificate()) As CodeSigner()
 
             If certs Is Nothing Then Return Nothing
 

@@ -52,7 +52,7 @@ Namespace java.util
 		''' </param>
 		''' <param name="c">
 		'''         The conversion </param>
-		Public Sub New(ByVal f As String, ByVal c As Char)
+		Public Sub New(  f As String,   c As Char)
 			If f Is Nothing Then Throw New NullPointerException
 			Me.f = f
 			Me.c = c

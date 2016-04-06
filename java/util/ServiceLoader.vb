@@ -209,29 +209,29 @@ Namespace java.util
 			lookupIterator = New LazyIterator(Me, service, loader)
 		End Sub
 
-		Private Sub New(ByVal svc As [Class], ByVal cl As  ClassLoader)
+		Private Sub New(  svc As [Class],   cl As  ClassLoader)
 			service = Objects.requireNonNull(svc, "Service interface cannot be null")
 			loader = If(cl Is Nothing, ClassLoader.systemClassLoader, cl)
 			acc = If(System.securityManager IsNot Nothing, java.security.AccessController.context, Nothing)
 			reload()
 		End Sub
 
-		Private Shared Sub fail(ByVal service As [Class], ByVal msg As String, ByVal cause As Throwable)
+		Private Shared Sub fail(  service As [Class],   msg As String,   cause As Throwable)
 			Throw New ServiceConfigurationError(service.name & ": " & msg, cause)
 		End Sub
 
-		Private Shared Sub fail(ByVal service As [Class], ByVal msg As String)
+		Private Shared Sub fail(  service As [Class],   msg As String)
 			Throw New ServiceConfigurationError(service.name & ": " & msg)
 		End Sub
 
-		Private Shared Sub fail(ByVal service As [Class], ByVal u As java.net.URL, ByVal line As Integer, ByVal msg As String)
+		Private Shared Sub fail(  service As [Class],   u As java.net.URL,   line As Integer,   msg As String)
 			fail(service, u & ":" & line & ": " & msg)
 		End Sub
 
 		' Parse a single line from the given configuration file, adding the name
 		' on the line to the names list.
 		'
-		Private Function parseLine(ByVal service As [Class], ByVal u As java.net.URL, ByVal r As java.io.BufferedReader, ByVal lc As Integer, ByVal names As IList(Of String)) As Integer
+		Private Function parseLine(  service As [Class],   u As java.net.URL,   r As java.io.BufferedReader,   lc As Integer,   names As IList(Of String)) As Integer
 			Dim ln As String = r.readLine()
 			If ln Is Nothing Then Return -1
 			Dim ci As Integer = ln.IndexOf("#"c)
@@ -268,7 +268,7 @@ Namespace java.util
 		'         If an I/O error occurs while reading from the given URL, or
 		'         if a configuration-file format error is detected
 		'
-		Private Function parse(ByVal service As [Class], ByVal u As java.net.URL) As IEnumerator(Of String)
+		Private Function parse(  service As [Class],   u As java.net.URL) As IEnumerator(Of String)
 			Dim [in] As java.io.InputStream = Nothing
 			Dim r As java.io.BufferedReader = Nothing
 			Dim names As New List(Of String)
@@ -308,7 +308,7 @@ Namespace java.util
 			Friend pending As IEnumerator(Of String) = Nothing
 			Friend nextName As String = Nothing
 
-			Private Sub New(ByVal outerInstance As ServiceLoader, ByVal service As [Class], ByVal loader As  ClassLoader)
+			Private Sub New(  outerInstance As ServiceLoader,   service As [Class],   loader As  ClassLoader)
 					Me.outerInstance = outerInstance
 				Me.service = service
 				Me.loader = loader
@@ -486,7 +486,7 @@ Namespace java.util
 		'''         used
 		''' </param>
 		''' <returns> A new service loader </returns>
-		Public Shared Function load(Of S)(ByVal service As [Class], ByVal loader As  ClassLoader) As ServiceLoader(Of S)
+		Public Shared Function load(Of S)(  service As [Class],   loader As  ClassLoader) As ServiceLoader(Of S)
 			Return New ServiceLoader(Of )(service, loader)
 		End Function
 
@@ -512,7 +512,7 @@ Namespace java.util
 		'''         The interface or abstract class representing the service
 		''' </param>
 		''' <returns> A new service loader </returns>
-		Public Shared Function load(Of S)(ByVal service As [Class]) As ServiceLoader(Of S)
+		Public Shared Function load(Of S)(  service As [Class]) As ServiceLoader(Of S)
 			Dim cl As  ClassLoader = Thread.CurrentThread.contextClassLoader
 			Return ServiceLoader.load(service, cl)
 		End Function
@@ -542,7 +542,7 @@ Namespace java.util
 		'''         The interface or abstract class representing the service
 		''' </param>
 		''' <returns> A new service loader </returns>
-		Public Shared Function loadInstalled(Of S)(ByVal service As [Class]) As ServiceLoader(Of S)
+		Public Shared Function loadInstalled(Of S)(  service As [Class]) As ServiceLoader(Of S)
 			Dim cl As  ClassLoader = ClassLoader.systemClassLoader
 			Dim prev As  ClassLoader = Nothing
 			Do While cl IsNot Nothing

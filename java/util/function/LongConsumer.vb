@@ -43,7 +43,7 @@ Namespace java.util.function
 		''' Performs this operation on the given argument.
 		''' </summary>
 		''' <param name="value"> the input argument </param>
-		Sub accept(ByVal value As Long)
+		Sub accept(  value As Long)
 
 		''' <summary>
 		''' Returns a composed {@code LongConsumer} that performs, in sequence, this
@@ -56,10 +56,10 @@ Namespace java.util.function
 		''' <returns> a composed {@code LongConsumer} that performs in sequence this
 		''' operation followed by the {@code after} operation </returns>
 		''' <exception cref="NullPointerException"> if {@code after} is null </exception>
-		default Function andThen(ByVal after As LongConsumer) As LongConsumer
+		default Function andThen(  after As LongConsumer) As LongConsumer
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 			java.util.Objects.requireNonNull(after);
-			Sub [New](ByVal t As Long)
+			Sub [New](  t As Long)
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 				accept(t);
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:

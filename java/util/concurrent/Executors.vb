@@ -78,7 +78,7 @@ Namespace java.util.concurrent
 		''' <param name="nThreads"> the number of threads in the pool </param>
 		''' <returns> the newly created thread pool </returns>
 		''' <exception cref="IllegalArgumentException"> if {@code nThreads <= 0} </exception>
-		Public Shared Function newFixedThreadPool(ByVal nThreads As Integer) As ExecutorService
+		Public Shared Function newFixedThreadPool(  nThreads As Integer) As ExecutorService
 			Return New ThreadPoolExecutor(nThreads, nThreads, 0L, TimeUnit.MILLISECONDS, New LinkedBlockingQueue(Of Runnable))
 		End Function
 
@@ -96,7 +96,7 @@ Namespace java.util.concurrent
 		''' <returns> the newly created thread pool </returns>
 		''' <exception cref="IllegalArgumentException"> if {@code parallelism <= 0}
 		''' @since 1.8 </exception>
-		Public Shared Function newWorkStealingPool(ByVal parallelism As Integer) As ExecutorService
+		Public Shared Function newWorkStealingPool(  parallelism As Integer) As ExecutorService
 			Return New ForkJoinPool(parallelism, ForkJoinPool.defaultForkJoinWorkerThreadFactory, Nothing, True)
 		End Function
 
@@ -129,7 +129,7 @@ Namespace java.util.concurrent
 		''' <returns> the newly created thread pool </returns>
 		''' <exception cref="NullPointerException"> if threadFactory is null </exception>
 		''' <exception cref="IllegalArgumentException"> if {@code nThreads <= 0} </exception>
-		Public Shared Function newFixedThreadPool(ByVal nThreads As Integer, ByVal threadFactory As ThreadFactory) As ExecutorService
+		Public Shared Function newFixedThreadPool(  nThreads As Integer,   threadFactory As ThreadFactory) As ExecutorService
 			Return New ThreadPoolExecutor(nThreads, nThreads, 0L, TimeUnit.MILLISECONDS, New LinkedBlockingQueue(Of Runnable), threadFactory)
 		End Function
 
@@ -162,7 +162,7 @@ Namespace java.util.concurrent
 		''' </param>
 		''' <returns> the newly created single-threaded Executor </returns>
 		''' <exception cref="NullPointerException"> if threadFactory is null </exception>
-		Public Shared Function newSingleThreadExecutor(ByVal threadFactory As ThreadFactory) As ExecutorService
+		Public Shared Function newSingleThreadExecutor(  threadFactory As ThreadFactory) As ExecutorService
 			Return New FinalizableDelegatedExecutorService(New ThreadPoolExecutor(1, 1, 0L, TimeUnit.MILLISECONDS, New LinkedBlockingQueue(Of Runnable), threadFactory))
 		End Function
 
@@ -193,7 +193,7 @@ Namespace java.util.concurrent
 		''' <param name="threadFactory"> the factory to use when creating new threads </param>
 		''' <returns> the newly created thread pool </returns>
 		''' <exception cref="NullPointerException"> if threadFactory is null </exception>
-		Public Shared Function newCachedThreadPool(ByVal threadFactory As ThreadFactory) As ExecutorService
+		Public Shared Function newCachedThreadPool(  threadFactory As ThreadFactory) As ExecutorService
 			Return New ThreadPoolExecutor(0,  java.lang.[Integer].Max_Value, 60L, TimeUnit.SECONDS, New SynchronousQueue(Of Runnable), threadFactory)
 		End Function
 
@@ -228,7 +228,7 @@ Namespace java.util.concurrent
 		''' threads </param>
 		''' <returns> a newly created scheduled executor </returns>
 		''' <exception cref="NullPointerException"> if threadFactory is null </exception>
-		Public Shared Function newSingleThreadScheduledExecutor(ByVal threadFactory As ThreadFactory) As ScheduledExecutorService
+		Public Shared Function newSingleThreadScheduledExecutor(  threadFactory As ThreadFactory) As ScheduledExecutorService
 			Return New DelegatedScheduledExecutorService(New ScheduledThreadPoolExecutor(1, threadFactory))
 		End Function
 
@@ -239,7 +239,7 @@ Namespace java.util.concurrent
 		''' even if they are idle </param>
 		''' <returns> a newly created scheduled thread pool </returns>
 		''' <exception cref="IllegalArgumentException"> if {@code corePoolSize < 0} </exception>
-		Public Shared Function newScheduledThreadPool(ByVal corePoolSize As Integer) As ScheduledExecutorService
+		Public Shared Function newScheduledThreadPool(  corePoolSize As Integer) As ScheduledExecutorService
 			Return New ScheduledThreadPoolExecutor(corePoolSize)
 		End Function
 
@@ -253,7 +253,7 @@ Namespace java.util.concurrent
 		''' <returns> a newly created scheduled thread pool </returns>
 		''' <exception cref="IllegalArgumentException"> if {@code corePoolSize < 0} </exception>
 		''' <exception cref="NullPointerException"> if threadFactory is null </exception>
-		Public Shared Function newScheduledThreadPool(ByVal corePoolSize As Integer, ByVal threadFactory As ThreadFactory) As ScheduledExecutorService
+		Public Shared Function newScheduledThreadPool(  corePoolSize As Integer,   threadFactory As ThreadFactory) As ScheduledExecutorService
 			Return New ScheduledThreadPoolExecutor(corePoolSize, threadFactory)
 		End Function
 
@@ -266,7 +266,7 @@ Namespace java.util.concurrent
 		''' <param name="executor"> the underlying implementation </param>
 		''' <returns> an {@code ExecutorService} instance </returns>
 		''' <exception cref="NullPointerException"> if executor null </exception>
-		Public Shared Function unconfigurableExecutorService(ByVal executor As ExecutorService) As ExecutorService
+		Public Shared Function unconfigurableExecutorService(  executor As ExecutorService) As ExecutorService
 			If executor Is Nothing Then Throw New NullPointerException
 			Return New DelegatedExecutorService(executor)
 		End Function
@@ -280,7 +280,7 @@ Namespace java.util.concurrent
 		''' <param name="executor"> the underlying implementation </param>
 		''' <returns> a {@code ScheduledExecutorService} instance </returns>
 		''' <exception cref="NullPointerException"> if executor null </exception>
-		Public Shared Function unconfigurableScheduledExecutorService(ByVal executor As ScheduledExecutorService) As ScheduledExecutorService
+		Public Shared Function unconfigurableScheduledExecutorService(  executor As ScheduledExecutorService) As ScheduledExecutorService
 			If executor Is Nothing Then Throw New NullPointerException
 			Return New DelegatedScheduledExecutorService(executor)
 		End Function
@@ -350,7 +350,7 @@ Namespace java.util.concurrent
 		''' @param <T> the type of the result </param>
 		''' <returns> a callable object </returns>
 		''' <exception cref="NullPointerException"> if task null </exception>
-		Public Shared Function callable(Of T)(ByVal task As Runnable, ByVal result As T) As Callable(Of T)
+		Public Shared Function callable(Of T)(  task As Runnable,   result As T) As Callable(Of T)
 			If task Is Nothing Then Throw New NullPointerException
 			Return New RunnableAdapter(Of T)(task, result)
 		End Function
@@ -361,7 +361,7 @@ Namespace java.util.concurrent
 		''' <param name="task"> the task to run </param>
 		''' <returns> a callable object </returns>
 		''' <exception cref="NullPointerException"> if task null </exception>
-		Public Shared Function callable(ByVal task As Runnable) As Callable(Of Object)
+		Public Shared Function callable(  task As Runnable) As Callable(Of Object)
 			If task Is Nothing Then Throw New NullPointerException
 			Return New RunnableAdapter(Of Object)(task, Nothing)
 		End Function
@@ -372,7 +372,7 @@ Namespace java.util.concurrent
 		''' <param name="action"> the privileged action to run </param>
 		''' <returns> a callable object </returns>
 		''' <exception cref="NullPointerException"> if action null </exception>
-		Public Shared Function callable(Of T1)(ByVal action As java.security.PrivilegedAction(Of T1)) As Callable(Of Object)
+		Public Shared Function callable(Of T1)(  action As java.security.PrivilegedAction(Of T1)) As Callable(Of Object)
 			If action Is Nothing Then Throw New NullPointerException
 			Return New CallableAnonymousInnerClassHelper(Of V)
 		End Function
@@ -392,7 +392,7 @@ Namespace java.util.concurrent
 		''' <param name="action"> the privileged exception action to run </param>
 		''' <returns> a callable object </returns>
 		''' <exception cref="NullPointerException"> if action null </exception>
-		Public Shared Function callable(Of T1)(ByVal action As java.security.PrivilegedExceptionAction(Of T1)) As Callable(Of Object)
+		Public Shared Function callable(Of T1)(  action As java.security.PrivilegedExceptionAction(Of T1)) As Callable(Of Object)
 			If action Is Nothing Then Throw New NullPointerException
 			Return New CallableAnonymousInnerClassHelper2(Of V)
 		End Function
@@ -418,7 +418,7 @@ Namespace java.util.concurrent
 		''' @param <T> the type of the callable's result </param>
 		''' <returns> a callable object </returns>
 		''' <exception cref="NullPointerException"> if callable null </exception>
-		Public Shared Function privilegedCallable(Of T)(ByVal callable As Callable(Of T)) As Callable(Of T)
+		Public Shared Function privilegedCallable(Of T)(  callable As Callable(Of T)) As Callable(Of T)
 			If callable Is Nothing Then Throw New NullPointerException
 			Return New PrivilegedCallable(Of T)(callable)
 		End Function
@@ -442,7 +442,7 @@ Namespace java.util.concurrent
 		''' <exception cref="AccessControlException"> if the current access control
 		''' context does not have permission to both set and get context
 		''' class loader </exception>
-		Public Shared Function privilegedCallableUsingCurrentClassLoader(Of T)(ByVal callable As Callable(Of T)) As Callable(Of T)
+		Public Shared Function privilegedCallableUsingCurrentClassLoader(Of T)(  callable As Callable(Of T)) As Callable(Of T)
 			If callable Is Nothing Then Throw New NullPointerException
 			Return New PrivilegedCallableUsingCurrentClassLoader(Of T)(callable)
 		End Function
@@ -457,7 +457,7 @@ Namespace java.util.concurrent
 
 			Friend ReadOnly task As Runnable
 			Friend ReadOnly result As T
-			Friend Sub New(ByVal task As Runnable, ByVal result As T)
+			Friend Sub New(  task As Runnable,   result As T)
 				Me.task = task
 				Me.result = result
 			End Sub
@@ -476,7 +476,7 @@ Namespace java.util.concurrent
 			Private ReadOnly task As Callable(Of T)
 			Private ReadOnly acc As java.security.AccessControlContext
 
-			Friend Sub New(ByVal task As Callable(Of T))
+			Friend Sub New(  task As Callable(Of T))
 				Me.task = task
 				Me.acc = java.security.AccessController.context
 			End Sub
@@ -509,7 +509,7 @@ Namespace java.util.concurrent
 			Private ReadOnly acc As java.security.AccessControlContext
 			Private ReadOnly ccl As  ClassLoader
 
-			Friend Sub New(ByVal task As Callable(Of T))
+			Friend Sub New(  task As Callable(Of T))
 				Dim sm As SecurityManager = System.securityManager
 				If sm IsNot Nothing Then
 					' Calls to getContextClassLoader from this class
@@ -571,7 +571,7 @@ Namespace java.util.concurrent
 				namePrefix = "pool-" & poolNumber.andIncrement & "-thread-"
 			End Sub
 
-			Public Overridable Function newThread(ByVal r As Runnable) As Thread Implements ThreadFactory.newThread
+			Public Overridable Function newThread(  r As Runnable) As Thread Implements ThreadFactory.newThread
 				Dim t As New Thread(group, r, namePrefix + threadNumber.andIncrement, 0)
 				If t.daemon Then t.daemon = False
 				If t.priority <> Thread.NORM_PRIORITY Then t.priority = Thread.NORM_PRIORITY
@@ -604,7 +604,7 @@ Namespace java.util.concurrent
 				Me.ccl = Thread.CurrentThread.contextClassLoader
 			End Sub
 
-			Public Overrides Function newThread(ByVal r As Runnable) As Thread
+			Public Overrides Function newThread(  r As Runnable) As Thread
 				Return MyBase.newThread(New RunnableAnonymousInnerClassHelper
 			End Function
 
@@ -635,10 +635,10 @@ Namespace java.util.concurrent
 			Inherits AbstractExecutorService
 
 			Private ReadOnly e As ExecutorService
-			Friend Sub New(ByVal executor As ExecutorService)
+			Friend Sub New(  executor As ExecutorService)
 				e = executor
 			End Sub
-			Public Overridable Sub execute(ByVal command As Runnable)
+			Public Overridable Sub execute(  command As Runnable)
 				e.execute(command)
 			End Sub
 			Public Overrides Sub shutdown()
@@ -657,29 +657,29 @@ Namespace java.util.concurrent
 					Return e.terminated
 				End Get
 			End Property
-			Public Overrides Function awaitTermination(ByVal timeout As Long, ByVal unit As TimeUnit) As Boolean
+			Public Overrides Function awaitTermination(  timeout As Long,   unit As TimeUnit) As Boolean
 				Return e.awaitTermination(timeout, unit)
 			End Function
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-			Public Overrides Function submit(ByVal task As Runnable) As Future(Of ?)
+			Public Overrides Function submit(  task As Runnable) As Future(Of ?)
 				Return e.submit(task)
 			End Function
-			Public Overrides Function submit(Of T)(ByVal task As Callable(Of T)) As Future(Of T)
+			Public Overrides Function submit(Of T)(  task As Callable(Of T)) As Future(Of T)
 				Return e.submit(task)
 			End Function
-			Public Overrides Function submit(Of T)(ByVal task As Runnable, ByVal result As T) As Future(Of T)
+			Public Overrides Function submit(Of T)(  task As Runnable,   result As T) As Future(Of T)
 				Return e.submit(task, result)
 			End Function
-			Public Overrides Function invokeAll(Of T, T1 As Callable(Of T)(ByVal tasks As Collection(Of T1)) As List(Of Future(Of T))
+			Public Overrides Function invokeAll(Of T, T1 As Callable(Of T)(  tasks As Collection(Of T1)) As List(Of Future(Of T))
 				Return e.invokeAll(tasks)
 			End Function
-			Public Overrides Function invokeAll(Of T, T1 As Callable(Of T)(ByVal tasks As Collection(Of T1), ByVal timeout As Long, ByVal unit As TimeUnit) As List(Of Future(Of T))
+			Public Overrides Function invokeAll(Of T, T1 As Callable(Of T)(  tasks As Collection(Of T1),   timeout As Long,   unit As TimeUnit) As List(Of Future(Of T))
 				Return e.invokeAll(tasks, timeout, unit)
 			End Function
-			Public Overrides Function invokeAny(Of T, T1 As Callable(Of T)(ByVal tasks As Collection(Of T1)) As T
+			Public Overrides Function invokeAny(Of T, T1 As Callable(Of T)(  tasks As Collection(Of T1)) As T
 				Return e.invokeAny(tasks)
 			End Function
-			Public Overrides Function invokeAny(Of T, T1 As Callable(Of T)(ByVal tasks As Collection(Of T1), ByVal timeout As Long, ByVal unit As TimeUnit) As T
+			Public Overrides Function invokeAny(Of T, T1 As Callable(Of T)(  tasks As Collection(Of T1),   timeout As Long,   unit As TimeUnit) As T
 				Return e.invokeAny(tasks, timeout, unit)
 			End Function
 		End Class
@@ -687,7 +687,7 @@ Namespace java.util.concurrent
 		Friend Class FinalizableDelegatedExecutorService
 			Inherits DelegatedExecutorService
 
-			Friend Sub New(ByVal executor As ExecutorService)
+			Friend Sub New(  executor As ExecutorService)
 				MyBase.New(executor)
 			End Sub
 			Protected Overrides Sub Finalize()
@@ -704,23 +704,23 @@ Namespace java.util.concurrent
 			Implements ScheduledExecutorService
 
 			Private ReadOnly e As ScheduledExecutorService
-			Friend Sub New(ByVal executor As ScheduledExecutorService)
+			Friend Sub New(  executor As ScheduledExecutorService)
 				MyBase.New(executor)
 				e = executor
 			End Sub
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-			Public Overridable Function schedule(ByVal command As Runnable, ByVal delay As Long, ByVal unit As TimeUnit) As ScheduledFuture(Of ?) Implements ScheduledExecutorService.schedule
+			Public Overridable Function schedule(  command As Runnable,   delay As Long,   unit As TimeUnit) As ScheduledFuture(Of ?) Implements ScheduledExecutorService.schedule
 				Return e.schedule(command, delay, unit)
 			End Function
-			Public Overridable Function schedule(Of V)(ByVal callable As Callable(Of V), ByVal delay As Long, ByVal unit As TimeUnit) As ScheduledFuture(Of V) Implements ScheduledExecutorService.schedule
+			Public Overridable Function schedule(Of V)(  callable As Callable(Of V),   delay As Long,   unit As TimeUnit) As ScheduledFuture(Of V) Implements ScheduledExecutorService.schedule
 				Return e.schedule(callable, delay, unit)
 			End Function
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-			Public Overridable Function scheduleAtFixedRate(ByVal command As Runnable, ByVal initialDelay As Long, ByVal period As Long, ByVal unit As TimeUnit) As ScheduledFuture(Of ?) Implements ScheduledExecutorService.scheduleAtFixedRate
+			Public Overridable Function scheduleAtFixedRate(  command As Runnable,   initialDelay As Long,   period As Long,   unit As TimeUnit) As ScheduledFuture(Of ?) Implements ScheduledExecutorService.scheduleAtFixedRate
 				Return e.scheduleAtFixedRate(command, initialDelay, period, unit)
 			End Function
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-			Public Overridable Function scheduleWithFixedDelay(ByVal command As Runnable, ByVal initialDelay As Long, ByVal delay As Long, ByVal unit As TimeUnit) As ScheduledFuture(Of ?) Implements ScheduledExecutorService.scheduleWithFixedDelay
+			Public Overridable Function scheduleWithFixedDelay(  command As Runnable,   initialDelay As Long,   delay As Long,   unit As TimeUnit) As ScheduledFuture(Of ?) Implements ScheduledExecutorService.scheduleWithFixedDelay
 				Return e.scheduleWithFixedDelay(command, initialDelay, delay, unit)
 			End Function
 		End Class

@@ -68,7 +68,7 @@ Namespace java.awt
 		''' <returns> a <code>Raster</code> representing the specified
 		''' rectangular area and containing the colors generated for
 		''' the graphics operation. </returns>
-		Function getRaster(ByVal x As Integer, ByVal y As Integer, ByVal w As Integer, ByVal h As Integer) As java.awt.image.Raster
+		Function getRaster(  x As Integer,   y As Integer,   w As Integer,   h As Integer) As java.awt.image.Raster
 
 	End Interface
 

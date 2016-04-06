@@ -190,7 +190,7 @@ Namespace java.lang
 		''' </summary>
 		''' <param name="command"> the list containing the program and its arguments </param>
 		''' <exception cref="NullPointerException"> if the argument is null </exception>
-		Public Sub New(ByVal command As IList(Of String))
+		Public Sub New(  command As IList(Of String))
 			If command Is Nothing Then Throw New NullPointerException
 			Me.command_Renamed = command
 		End Sub
@@ -205,7 +205,7 @@ Namespace java.lang
 		''' command.
 		''' </summary>
 		''' <param name="command"> a string array containing the program and its arguments </param>
-		Public Sub New(ParamArray ByVal command As String())
+		Public Sub New(ParamArray   command As String())
 			Me.command_Renamed = New List(Of )(command.Length)
 			For Each arg As String In command
 				Me.command_Renamed.Add(arg)
@@ -224,7 +224,7 @@ Namespace java.lang
 		''' <returns> this process builder
 		''' </returns>
 		''' <exception cref="NullPointerException"> if the argument is null </exception>
-		Public Function command(ByVal command_Renamed As IList(Of String)) As ProcessBuilder
+		Public Function command(  command_Renamed As IList(Of String)) As ProcessBuilder
 			If command_Renamed Is Nothing Then Throw New NullPointerException
 			Me.command_Renamed = command_Renamed
 			Return Me
@@ -240,7 +240,7 @@ Namespace java.lang
 		''' </summary>
 		''' <param name="command"> a string array containing the program and its arguments </param>
 		''' <returns> this process builder </returns>
-		Public Function command(ParamArray ByVal command_Renamed As String()) As ProcessBuilder
+		Public Function command(ParamArray   command_Renamed As String()) As ProcessBuilder
 			Me.command_Renamed = New List(Of )(command_Renamed.Length)
 			For Each arg As String In command_Renamed
 				Me.command_Renamed.Add(arg)
@@ -338,7 +338,7 @@ Namespace java.lang
 		End Function
 
 		' Only for use by Runtime.exec(...envp...)
-		Friend Function environment(ByVal envp As String()) As ProcessBuilder
+		Friend Function environment(  envp As String()) As ProcessBuilder
 			Debug.Assert(environment_Renamed Is Nothing)
 			If envp IsNot Nothing Then
 				environment_Renamed = ProcessEnvironment.emptyEnvironment(envp.Length)
@@ -388,7 +388,7 @@ Namespace java.lang
 		''' </summary>
 		''' <param name="directory"> the new working directory </param>
 		''' <returns> this process builder </returns>
-		Public Function directory(ByVal directory_Renamed As java.io.File) As ProcessBuilder
+		Public Function directory(  directory_Renamed As java.io.File) As ProcessBuilder
 			Me.directory_Renamed = directory_Renamed
 			Return Me
 		End Function
@@ -421,7 +421,7 @@ Namespace java.lang
 			Friend Shared ReadOnly INSTANCE As New NullOutputStream
 			Private Sub New()
 			End Sub
-			Public Overrides Sub write(ByVal b As Integer)
+			Public Overrides Sub write(  b As Integer)
 				Throw New java.io.IOException("Stream closed")
 			End Sub
 		End Class
@@ -566,7 +566,7 @@ Namespace java.lang
 			''' <param name="file"> The {@code File} for the {@code Redirect}. </param>
 			''' <exception cref="NullPointerException"> if the specified file is null </exception>
 			''' <returns> a redirect to read from the specified file </returns>
-			Public Shared Function [from](ByVal file As java.io.File) As Redirect
+			Public Shared Function [from](  file As java.io.File) As Redirect
 				If file Is Nothing Then Throw New NullPointerException
 				Return New RedirectAnonymousInnerClassHelper3
 			End Function
@@ -599,7 +599,7 @@ Namespace java.lang
 			''' <param name="file"> The {@code File} for the {@code Redirect}. </param>
 			''' <exception cref="NullPointerException"> if the specified file is null </exception>
 			''' <returns> a redirect to write to the specified file </returns>
-			Public Shared Function [to](ByVal file As java.io.File) As Redirect
+			Public Shared Function [to](  file As java.io.File) As Redirect
 				If file Is Nothing Then Throw New NullPointerException
 				Return New RedirectAnonymousInnerClassHelper4
 			End Function
@@ -638,7 +638,7 @@ Namespace java.lang
 			''' <param name="file"> The {@code File} for the {@code Redirect}. </param>
 			''' <exception cref="NullPointerException"> if the specified file is null </exception>
 			''' <returns> a redirect to append to the specified file </returns>
-			Public Shared Function appendTo(ByVal file As java.io.File) As Redirect
+			Public Shared Function appendTo(  file As java.io.File) As Redirect
 				If file Is Nothing Then Throw New NullPointerException
 				Return New RedirectAnonymousInnerClassHelper5
 			End Function
@@ -667,7 +667,7 @@ Namespace java.lang
 			''' instances of the same type associated with non-null equal
 			''' {@code File} instances.
 			''' </summary>
-			Public Overrides Function Equals(ByVal obj As Object) As Boolean
+			Public Overrides Function Equals(  obj As Object) As Boolean
 				If obj Is Me Then Return True
 				If Not(TypeOf obj Is Redirect) Then Return False
 				Dim r As Redirect = CType(obj, Redirect)
@@ -723,7 +723,7 @@ Namespace java.lang
 		'''         <seealso cref="Redirect.Type#WRITE WRITE"/> or
 		'''         <seealso cref="Redirect.Type#APPEND APPEND"/>
 		''' @since  1.7 </exception>
-		Public Function redirectInput(ByVal source As Redirect) As ProcessBuilder
+		Public Function redirectInput(  source As Redirect) As ProcessBuilder
 			If source.type() = Redirect.Type.WRITE OrElse source.type() = Redirect.Type.APPEND Then Throw New IllegalArgumentException("Redirect invalid for reading: " & source)
 			redirects()(0) = source
 			Return Me
@@ -750,7 +750,7 @@ Namespace java.lang
 		'''         destination of data, that is, has type
 		'''         <seealso cref="Redirect.Type#READ READ"/>
 		''' @since  1.7 </exception>
-		Public Function redirectOutput(ByVal destination As Redirect) As ProcessBuilder
+		Public Function redirectOutput(  destination As Redirect) As ProcessBuilder
 			If destination.type() = Redirect.Type.READ Then Throw New IllegalArgumentException("Redirect invalid for writing: " & destination)
 			redirects()(1) = destination
 			Return Me
@@ -781,7 +781,7 @@ Namespace java.lang
 		'''         destination of data, that is, has type
 		'''         <seealso cref="Redirect.Type#READ READ"/>
 		''' @since  1.7 </exception>
-		Public Function redirectError(ByVal destination As Redirect) As ProcessBuilder
+		Public Function redirectError(  destination As Redirect) As ProcessBuilder
 			If destination.type() = Redirect.Type.READ Then Throw New IllegalArgumentException("Redirect invalid for writing: " & destination)
 			redirects()(2) = destination
 			Return Me
@@ -799,7 +799,7 @@ Namespace java.lang
 		''' <param name="file"> the new standard input source </param>
 		''' <returns> this process builder
 		''' @since  1.7 </returns>
-		Public Function redirectInput(ByVal file As java.io.File) As ProcessBuilder
+		Public Function redirectInput(  file As java.io.File) As ProcessBuilder
 			Return redirectInput(Redirect.from(file))
 		End Function
 
@@ -815,7 +815,7 @@ Namespace java.lang
 		''' <param name="file"> the new standard output destination </param>
 		''' <returns> this process builder
 		''' @since  1.7 </returns>
-		Public Function redirectOutput(ByVal file As java.io.File) As ProcessBuilder
+		Public Function redirectOutput(  file As java.io.File) As ProcessBuilder
 			Return redirectOutput(Redirect.to(file))
 		End Function
 
@@ -831,7 +831,7 @@ Namespace java.lang
 		''' <param name="file"> the new standard error destination </param>
 		''' <returns> this process builder
 		''' @since  1.7 </returns>
-		Public Function redirectError(ByVal file As java.io.File) As ProcessBuilder
+		Public Function redirectError(  file As java.io.File) As ProcessBuilder
 			Return redirectError(Redirect.to(file))
 		End Function
 
@@ -930,7 +930,7 @@ Namespace java.lang
 		''' </summary>
 		''' <param name="redirectErrorStream"> the new property value </param>
 		''' <returns> this process builder </returns>
-		Public Function redirectErrorStream(ByVal redirectErrorStream_Renamed As Boolean) As ProcessBuilder
+		Public Function redirectErrorStream(  redirectErrorStream_Renamed As Boolean) As ProcessBuilder
 			Me.redirectErrorStream_Renamed = redirectErrorStream_Renamed
 			Return Me
 		End Function

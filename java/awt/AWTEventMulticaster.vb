@@ -110,7 +110,7 @@ Namespace java.awt
 		''' in that case. </summary>
 		''' <param name="a"> listener-a </param>
 		''' <param name="b"> listener-b </param>
-		Protected Friend Sub New(ByVal a As java.util.EventListener, ByVal b As java.util.EventListener)
+		Protected Friend Sub New(  a As java.util.EventListener,   b As java.util.EventListener)
 			Me.a = a
 			Me.b = b
 		End Sub
@@ -128,7 +128,7 @@ Namespace java.awt
 		''' </summary>
 		''' <param name="oldl"> the listener to be removed </param>
 		''' <returns> resulting listener </returns>
-		Protected Friend Overridable Function remove(ByVal oldl As java.util.EventListener) As java.util.EventListener
+		Protected Friend Overridable Function remove(  oldl As java.util.EventListener) As java.util.EventListener
 			If oldl Is a Then Return b
 			If oldl Is b Then Return a
 			Dim a2 As java.util.EventListener = removeInternal(a, oldl)
@@ -141,7 +141,7 @@ Namespace java.awt
 		''' Handles the componentResized event by invoking the
 		''' componentResized methods on listener-a and listener-b. </summary>
 		''' <param name="e"> the component event </param>
-		Public Overridable Sub componentResized(ByVal e As ComponentEvent) Implements ComponentListener.componentResized
+		Public Overridable Sub componentResized(  e As ComponentEvent) Implements ComponentListener.componentResized
 			CType(a, ComponentListener).componentResized(e)
 			CType(b, ComponentListener).componentResized(e)
 		End Sub
@@ -150,7 +150,7 @@ Namespace java.awt
 		''' Handles the componentMoved event by invoking the
 		''' componentMoved methods on listener-a and listener-b. </summary>
 		''' <param name="e"> the component event </param>
-		Public Overridable Sub componentMoved(ByVal e As ComponentEvent) Implements ComponentListener.componentMoved
+		Public Overridable Sub componentMoved(  e As ComponentEvent) Implements ComponentListener.componentMoved
 			CType(a, ComponentListener).componentMoved(e)
 			CType(b, ComponentListener).componentMoved(e)
 		End Sub
@@ -159,7 +159,7 @@ Namespace java.awt
 		''' Handles the componentShown event by invoking the
 		''' componentShown methods on listener-a and listener-b. </summary>
 		''' <param name="e"> the component event </param>
-		Public Overridable Sub componentShown(ByVal e As ComponentEvent) Implements ComponentListener.componentShown
+		Public Overridable Sub componentShown(  e As ComponentEvent) Implements ComponentListener.componentShown
 			CType(a, ComponentListener).componentShown(e)
 			CType(b, ComponentListener).componentShown(e)
 		End Sub
@@ -168,7 +168,7 @@ Namespace java.awt
 		''' Handles the componentHidden event by invoking the
 		''' componentHidden methods on listener-a and listener-b. </summary>
 		''' <param name="e"> the component event </param>
-		Public Overridable Sub componentHidden(ByVal e As ComponentEvent) Implements ComponentListener.componentHidden
+		Public Overridable Sub componentHidden(  e As ComponentEvent) Implements ComponentListener.componentHidden
 			CType(a, ComponentListener).componentHidden(e)
 			CType(b, ComponentListener).componentHidden(e)
 		End Sub
@@ -177,7 +177,7 @@ Namespace java.awt
 		''' Handles the componentAdded container event by invoking the
 		''' componentAdded methods on listener-a and listener-b. </summary>
 		''' <param name="e"> the component event </param>
-		Public Overridable Sub componentAdded(ByVal e As ContainerEvent) Implements ContainerListener.componentAdded
+		Public Overridable Sub componentAdded(  e As ContainerEvent) Implements ContainerListener.componentAdded
 			CType(a, ContainerListener).componentAdded(e)
 			CType(b, ContainerListener).componentAdded(e)
 		End Sub
@@ -186,7 +186,7 @@ Namespace java.awt
 		''' Handles the componentRemoved container event by invoking the
 		''' componentRemoved methods on listener-a and listener-b. </summary>
 		''' <param name="e"> the component event </param>
-		Public Overridable Sub componentRemoved(ByVal e As ContainerEvent) Implements ContainerListener.componentRemoved
+		Public Overridable Sub componentRemoved(  e As ContainerEvent) Implements ContainerListener.componentRemoved
 			CType(a, ContainerListener).componentRemoved(e)
 			CType(b, ContainerListener).componentRemoved(e)
 		End Sub
@@ -195,7 +195,7 @@ Namespace java.awt
 		''' Handles the focusGained event by invoking the
 		''' focusGained methods on listener-a and listener-b. </summary>
 		''' <param name="e"> the focus event </param>
-		Public Overridable Sub focusGained(ByVal e As FocusEvent) Implements FocusListener.focusGained
+		Public Overridable Sub focusGained(  e As FocusEvent) Implements FocusListener.focusGained
 			CType(a, FocusListener).focusGained(e)
 			CType(b, FocusListener).focusGained(e)
 		End Sub
@@ -204,7 +204,7 @@ Namespace java.awt
 		''' Handles the focusLost event by invoking the
 		''' focusLost methods on listener-a and listener-b. </summary>
 		''' <param name="e"> the focus event </param>
-		Public Overridable Sub focusLost(ByVal e As FocusEvent) Implements FocusListener.focusLost
+		Public Overridable Sub focusLost(  e As FocusEvent) Implements FocusListener.focusLost
 			CType(a, FocusListener).focusLost(e)
 			CType(b, FocusListener).focusLost(e)
 		End Sub
@@ -213,7 +213,7 @@ Namespace java.awt
 		''' Handles the keyTyped event by invoking the
 		''' keyTyped methods on listener-a and listener-b. </summary>
 		''' <param name="e"> the key event </param>
-		Public Overridable Sub keyTyped(ByVal e As KeyEvent) Implements KeyListener.keyTyped
+		Public Overridable Sub keyTyped(  e As KeyEvent) Implements KeyListener.keyTyped
 			CType(a, KeyListener).keyTyped(e)
 			CType(b, KeyListener).keyTyped(e)
 		End Sub
@@ -222,7 +222,7 @@ Namespace java.awt
 		''' Handles the keyPressed event by invoking the
 		''' keyPressed methods on listener-a and listener-b. </summary>
 		''' <param name="e"> the key event </param>
-		Public Overridable Sub keyPressed(ByVal e As KeyEvent) Implements KeyListener.keyPressed
+		Public Overridable Sub keyPressed(  e As KeyEvent) Implements KeyListener.keyPressed
 			CType(a, KeyListener).keyPressed(e)
 			CType(b, KeyListener).keyPressed(e)
 		End Sub
@@ -231,7 +231,7 @@ Namespace java.awt
 		''' Handles the keyReleased event by invoking the
 		''' keyReleased methods on listener-a and listener-b. </summary>
 		''' <param name="e"> the key event </param>
-		Public Overridable Sub keyReleased(ByVal e As KeyEvent) Implements KeyListener.keyReleased
+		Public Overridable Sub keyReleased(  e As KeyEvent) Implements KeyListener.keyReleased
 			CType(a, KeyListener).keyReleased(e)
 			CType(b, KeyListener).keyReleased(e)
 		End Sub
@@ -240,7 +240,7 @@ Namespace java.awt
 		''' Handles the mouseClicked event by invoking the
 		''' mouseClicked methods on listener-a and listener-b. </summary>
 		''' <param name="e"> the mouse event </param>
-		Public Overridable Sub mouseClicked(ByVal e As MouseEvent) Implements MouseListener.mouseClicked
+		Public Overridable Sub mouseClicked(  e As MouseEvent) Implements MouseListener.mouseClicked
 			CType(a, MouseListener).mouseClicked(e)
 			CType(b, MouseListener).mouseClicked(e)
 		End Sub
@@ -249,7 +249,7 @@ Namespace java.awt
 		''' Handles the mousePressed event by invoking the
 		''' mousePressed methods on listener-a and listener-b. </summary>
 		''' <param name="e"> the mouse event </param>
-		Public Overridable Sub mousePressed(ByVal e As MouseEvent) Implements MouseListener.mousePressed
+		Public Overridable Sub mousePressed(  e As MouseEvent) Implements MouseListener.mousePressed
 			CType(a, MouseListener).mousePressed(e)
 			CType(b, MouseListener).mousePressed(e)
 		End Sub
@@ -258,7 +258,7 @@ Namespace java.awt
 		''' Handles the mouseReleased event by invoking the
 		''' mouseReleased methods on listener-a and listener-b. </summary>
 		''' <param name="e"> the mouse event </param>
-		Public Overridable Sub mouseReleased(ByVal e As MouseEvent) Implements MouseListener.mouseReleased
+		Public Overridable Sub mouseReleased(  e As MouseEvent) Implements MouseListener.mouseReleased
 			CType(a, MouseListener).mouseReleased(e)
 			CType(b, MouseListener).mouseReleased(e)
 		End Sub
@@ -267,7 +267,7 @@ Namespace java.awt
 		''' Handles the mouseEntered event by invoking the
 		''' mouseEntered methods on listener-a and listener-b. </summary>
 		''' <param name="e"> the mouse event </param>
-		Public Overridable Sub mouseEntered(ByVal e As MouseEvent) Implements MouseListener.mouseEntered
+		Public Overridable Sub mouseEntered(  e As MouseEvent) Implements MouseListener.mouseEntered
 			CType(a, MouseListener).mouseEntered(e)
 			CType(b, MouseListener).mouseEntered(e)
 		End Sub
@@ -276,7 +276,7 @@ Namespace java.awt
 		''' Handles the mouseExited event by invoking the
 		''' mouseExited methods on listener-a and listener-b. </summary>
 		''' <param name="e"> the mouse event </param>
-		Public Overridable Sub mouseExited(ByVal e As MouseEvent) Implements MouseListener.mouseExited
+		Public Overridable Sub mouseExited(  e As MouseEvent) Implements MouseListener.mouseExited
 			CType(a, MouseListener).mouseExited(e)
 			CType(b, MouseListener).mouseExited(e)
 		End Sub
@@ -285,7 +285,7 @@ Namespace java.awt
 		''' Handles the mouseDragged event by invoking the
 		''' mouseDragged methods on listener-a and listener-b. </summary>
 		''' <param name="e"> the mouse event </param>
-		Public Overridable Sub mouseDragged(ByVal e As MouseEvent) Implements MouseMotionListener.mouseDragged
+		Public Overridable Sub mouseDragged(  e As MouseEvent) Implements MouseMotionListener.mouseDragged
 			CType(a, MouseMotionListener).mouseDragged(e)
 			CType(b, MouseMotionListener).mouseDragged(e)
 		End Sub
@@ -294,7 +294,7 @@ Namespace java.awt
 		''' Handles the mouseMoved event by invoking the
 		''' mouseMoved methods on listener-a and listener-b. </summary>
 		''' <param name="e"> the mouse event </param>
-		Public Overridable Sub mouseMoved(ByVal e As MouseEvent) Implements MouseMotionListener.mouseMoved
+		Public Overridable Sub mouseMoved(  e As MouseEvent) Implements MouseMotionListener.mouseMoved
 			CType(a, MouseMotionListener).mouseMoved(e)
 			CType(b, MouseMotionListener).mouseMoved(e)
 		End Sub
@@ -303,7 +303,7 @@ Namespace java.awt
 		''' Handles the windowOpened event by invoking the
 		''' windowOpened methods on listener-a and listener-b. </summary>
 		''' <param name="e"> the window event </param>
-		Public Overridable Sub windowOpened(ByVal e As WindowEvent) Implements WindowListener.windowOpened
+		Public Overridable Sub windowOpened(  e As WindowEvent) Implements WindowListener.windowOpened
 			CType(a, WindowListener).windowOpened(e)
 			CType(b, WindowListener).windowOpened(e)
 		End Sub
@@ -312,7 +312,7 @@ Namespace java.awt
 		''' Handles the windowClosing event by invoking the
 		''' windowClosing methods on listener-a and listener-b. </summary>
 		''' <param name="e"> the window event </param>
-		Public Overridable Sub windowClosing(ByVal e As WindowEvent) Implements WindowListener.windowClosing
+		Public Overridable Sub windowClosing(  e As WindowEvent) Implements WindowListener.windowClosing
 			CType(a, WindowListener).windowClosing(e)
 			CType(b, WindowListener).windowClosing(e)
 		End Sub
@@ -321,7 +321,7 @@ Namespace java.awt
 		''' Handles the windowClosed event by invoking the
 		''' windowClosed methods on listener-a and listener-b. </summary>
 		''' <param name="e"> the window event </param>
-		Public Overridable Sub windowClosed(ByVal e As WindowEvent) Implements WindowListener.windowClosed
+		Public Overridable Sub windowClosed(  e As WindowEvent) Implements WindowListener.windowClosed
 			CType(a, WindowListener).windowClosed(e)
 			CType(b, WindowListener).windowClosed(e)
 		End Sub
@@ -330,7 +330,7 @@ Namespace java.awt
 		''' Handles the windowIconified event by invoking the
 		''' windowIconified methods on listener-a and listener-b. </summary>
 		''' <param name="e"> the window event </param>
-		Public Overridable Sub windowIconified(ByVal e As WindowEvent) Implements WindowListener.windowIconified
+		Public Overridable Sub windowIconified(  e As WindowEvent) Implements WindowListener.windowIconified
 			CType(a, WindowListener).windowIconified(e)
 			CType(b, WindowListener).windowIconified(e)
 		End Sub
@@ -339,7 +339,7 @@ Namespace java.awt
 		''' Handles the windowDeiconfied event by invoking the
 		''' windowDeiconified methods on listener-a and listener-b. </summary>
 		''' <param name="e"> the window event </param>
-		Public Overridable Sub windowDeiconified(ByVal e As WindowEvent) Implements WindowListener.windowDeiconified
+		Public Overridable Sub windowDeiconified(  e As WindowEvent) Implements WindowListener.windowDeiconified
 			CType(a, WindowListener).windowDeiconified(e)
 			CType(b, WindowListener).windowDeiconified(e)
 		End Sub
@@ -348,7 +348,7 @@ Namespace java.awt
 		''' Handles the windowActivated event by invoking the
 		''' windowActivated methods on listener-a and listener-b. </summary>
 		''' <param name="e"> the window event </param>
-		Public Overridable Sub windowActivated(ByVal e As WindowEvent) Implements WindowListener.windowActivated
+		Public Overridable Sub windowActivated(  e As WindowEvent) Implements WindowListener.windowActivated
 			CType(a, WindowListener).windowActivated(e)
 			CType(b, WindowListener).windowActivated(e)
 		End Sub
@@ -357,7 +357,7 @@ Namespace java.awt
 		''' Handles the windowDeactivated event by invoking the
 		''' windowDeactivated methods on listener-a and listener-b. </summary>
 		''' <param name="e"> the window event </param>
-		Public Overridable Sub windowDeactivated(ByVal e As WindowEvent) Implements WindowListener.windowDeactivated
+		Public Overridable Sub windowDeactivated(  e As WindowEvent) Implements WindowListener.windowDeactivated
 			CType(a, WindowListener).windowDeactivated(e)
 			CType(b, WindowListener).windowDeactivated(e)
 		End Sub
@@ -367,7 +367,7 @@ Namespace java.awt
 		''' windowStateChanged methods on listener-a and listener-b. </summary>
 		''' <param name="e"> the window event
 		''' @since 1.4 </param>
-		Public Overridable Sub windowStateChanged(ByVal e As WindowEvent) Implements WindowStateListener.windowStateChanged
+		Public Overridable Sub windowStateChanged(  e As WindowEvent) Implements WindowStateListener.windowStateChanged
 			CType(a, WindowStateListener).windowStateChanged(e)
 			CType(b, WindowStateListener).windowStateChanged(e)
 		End Sub
@@ -378,7 +378,7 @@ Namespace java.awt
 		''' methods on listener-a and listener-b. </summary>
 		''' <param name="e"> the window event
 		''' @since 1.4 </param>
-		Public Overridable Sub windowGainedFocus(ByVal e As WindowEvent) Implements WindowFocusListener.windowGainedFocus
+		Public Overridable Sub windowGainedFocus(  e As WindowEvent) Implements WindowFocusListener.windowGainedFocus
 			CType(a, WindowFocusListener).windowGainedFocus(e)
 			CType(b, WindowFocusListener).windowGainedFocus(e)
 		End Sub
@@ -388,7 +388,7 @@ Namespace java.awt
 		''' methods on listener-a and listener-b. </summary>
 		''' <param name="e"> the window event
 		''' @since 1.4 </param>
-		Public Overridable Sub windowLostFocus(ByVal e As WindowEvent) Implements WindowFocusListener.windowLostFocus
+		Public Overridable Sub windowLostFocus(  e As WindowEvent) Implements WindowFocusListener.windowLostFocus
 			CType(a, WindowFocusListener).windowLostFocus(e)
 			CType(b, WindowFocusListener).windowLostFocus(e)
 		End Sub
@@ -397,7 +397,7 @@ Namespace java.awt
 		''' Handles the actionPerformed event by invoking the
 		''' actionPerformed methods on listener-a and listener-b. </summary>
 		''' <param name="e"> the action event </param>
-		Public Overridable Sub actionPerformed(ByVal e As ActionEvent) Implements ActionListener.actionPerformed
+		Public Overridable Sub actionPerformed(  e As ActionEvent) Implements ActionListener.actionPerformed
 			CType(a, ActionListener).actionPerformed(e)
 			CType(b, ActionListener).actionPerformed(e)
 		End Sub
@@ -406,7 +406,7 @@ Namespace java.awt
 		''' Handles the itemStateChanged event by invoking the
 		''' itemStateChanged methods on listener-a and listener-b. </summary>
 		''' <param name="e"> the item event </param>
-		Public Overridable Sub itemStateChanged(ByVal e As ItemEvent) Implements ItemListener.itemStateChanged
+		Public Overridable Sub itemStateChanged(  e As ItemEvent) Implements ItemListener.itemStateChanged
 			CType(a, ItemListener).itemStateChanged(e)
 			CType(b, ItemListener).itemStateChanged(e)
 		End Sub
@@ -415,11 +415,11 @@ Namespace java.awt
 		''' Handles the adjustmentValueChanged event by invoking the
 		''' adjustmentValueChanged methods on listener-a and listener-b. </summary>
 		''' <param name="e"> the adjustment event </param>
-		Public Overridable Sub adjustmentValueChanged(ByVal e As AdjustmentEvent) Implements AdjustmentListener.adjustmentValueChanged
+		Public Overridable Sub adjustmentValueChanged(  e As AdjustmentEvent) Implements AdjustmentListener.adjustmentValueChanged
 			CType(a, AdjustmentListener).adjustmentValueChanged(e)
 			CType(b, AdjustmentListener).adjustmentValueChanged(e)
 		End Sub
-		Public Overridable Sub textValueChanged(ByVal e As TextEvent) Implements TextListener.textValueChanged
+		Public Overridable Sub textValueChanged(  e As TextEvent) Implements TextListener.textValueChanged
 			CType(a, TextListener).textValueChanged(e)
 			CType(b, TextListener).textValueChanged(e)
 		End Sub
@@ -428,7 +428,7 @@ Namespace java.awt
 		''' Handles the inputMethodTextChanged event by invoking the
 		''' inputMethodTextChanged methods on listener-a and listener-b. </summary>
 		''' <param name="e"> the item event </param>
-		Public Overridable Sub inputMethodTextChanged(ByVal e As InputMethodEvent) Implements InputMethodListener.inputMethodTextChanged
+		Public Overridable Sub inputMethodTextChanged(  e As InputMethodEvent) Implements InputMethodListener.inputMethodTextChanged
 		   CType(a, InputMethodListener).inputMethodTextChanged(e)
 		   CType(b, InputMethodListener).inputMethodTextChanged(e)
 		End Sub
@@ -437,7 +437,7 @@ Namespace java.awt
 		''' Handles the caretPositionChanged event by invoking the
 		''' caretPositionChanged methods on listener-a and listener-b. </summary>
 		''' <param name="e"> the item event </param>
-		Public Overridable Sub caretPositionChanged(ByVal e As InputMethodEvent) Implements InputMethodListener.caretPositionChanged
+		Public Overridable Sub caretPositionChanged(  e As InputMethodEvent) Implements InputMethodListener.caretPositionChanged
 		   CType(a, InputMethodListener).caretPositionChanged(e)
 		   CType(b, InputMethodListener).caretPositionChanged(e)
 		End Sub
@@ -447,7 +447,7 @@ Namespace java.awt
 		''' hierarchyChanged methods on listener-a and listener-b. </summary>
 		''' <param name="e"> the item event
 		''' @since 1.3 </param>
-		Public Overridable Sub hierarchyChanged(ByVal e As HierarchyEvent) Implements HierarchyListener.hierarchyChanged
+		Public Overridable Sub hierarchyChanged(  e As HierarchyEvent) Implements HierarchyListener.hierarchyChanged
 			CType(a, HierarchyListener).hierarchyChanged(e)
 			CType(b, HierarchyListener).hierarchyChanged(e)
 		End Sub
@@ -457,7 +457,7 @@ Namespace java.awt
 		''' ancestorMoved methods on listener-a and listener-b. </summary>
 		''' <param name="e"> the item event
 		''' @since 1.3 </param>
-		Public Overridable Sub ancestorMoved(ByVal e As HierarchyEvent) Implements HierarchyBoundsListener.ancestorMoved
+		Public Overridable Sub ancestorMoved(  e As HierarchyEvent) Implements HierarchyBoundsListener.ancestorMoved
 			CType(a, HierarchyBoundsListener).ancestorMoved(e)
 			CType(b, HierarchyBoundsListener).ancestorMoved(e)
 		End Sub
@@ -467,7 +467,7 @@ Namespace java.awt
 		''' ancestorResized methods on listener-a and listener-b. </summary>
 		''' <param name="e"> the item event
 		''' @since 1.3 </param>
-		Public Overridable Sub ancestorResized(ByVal e As HierarchyEvent) Implements HierarchyBoundsListener.ancestorResized
+		Public Overridable Sub ancestorResized(  e As HierarchyEvent) Implements HierarchyBoundsListener.ancestorResized
 			CType(a, HierarchyBoundsListener).ancestorResized(e)
 			CType(b, HierarchyBoundsListener).ancestorResized(e)
 		End Sub
@@ -477,7 +477,7 @@ Namespace java.awt
 		''' mouseWheelMoved methods on listener-a and listener-b. </summary>
 		''' <param name="e"> the mouse event
 		''' @since 1.4 </param>
-		Public Overridable Sub mouseWheelMoved(ByVal e As MouseWheelEvent) Implements MouseWheelListener.mouseWheelMoved
+		Public Overridable Sub mouseWheelMoved(  e As MouseWheelEvent) Implements MouseWheelListener.mouseWheelMoved
 			CType(a, MouseWheelListener).mouseWheelMoved(e)
 			CType(b, MouseWheelListener).mouseWheelMoved(e)
 		End Sub
@@ -487,7 +487,7 @@ Namespace java.awt
 		''' returns the resulting multicast listener. </summary>
 		''' <param name="a"> component-listener-a </param>
 		''' <param name="b"> component-listener-b </param>
-		Public Shared Function add(ByVal a As ComponentListener, ByVal b As ComponentListener) As ComponentListener
+		Public Shared Function add(  a As ComponentListener,   b As ComponentListener) As ComponentListener
 			Return CType(addInternal(a, b), ComponentListener)
 		End Function
 
@@ -496,7 +496,7 @@ Namespace java.awt
 		''' returns the resulting multicast listener. </summary>
 		''' <param name="a"> container-listener-a </param>
 		''' <param name="b"> container-listener-b </param>
-		Public Shared Function add(ByVal a As ContainerListener, ByVal b As ContainerListener) As ContainerListener
+		Public Shared Function add(  a As ContainerListener,   b As ContainerListener) As ContainerListener
 			Return CType(addInternal(a, b), ContainerListener)
 		End Function
 
@@ -505,7 +505,7 @@ Namespace java.awt
 		''' returns the resulting multicast listener. </summary>
 		''' <param name="a"> focus-listener-a </param>
 		''' <param name="b"> focus-listener-b </param>
-		Public Shared Function add(ByVal a As FocusListener, ByVal b As FocusListener) As FocusListener
+		Public Shared Function add(  a As FocusListener,   b As FocusListener) As FocusListener
 			Return CType(addInternal(a, b), FocusListener)
 		End Function
 
@@ -514,7 +514,7 @@ Namespace java.awt
 		''' returns the resulting multicast listener. </summary>
 		''' <param name="a"> key-listener-a </param>
 		''' <param name="b"> key-listener-b </param>
-		Public Shared Function add(ByVal a As KeyListener, ByVal b As KeyListener) As KeyListener
+		Public Shared Function add(  a As KeyListener,   b As KeyListener) As KeyListener
 			Return CType(addInternal(a, b), KeyListener)
 		End Function
 
@@ -523,7 +523,7 @@ Namespace java.awt
 		''' returns the resulting multicast listener. </summary>
 		''' <param name="a"> mouse-listener-a </param>
 		''' <param name="b"> mouse-listener-b </param>
-		Public Shared Function add(ByVal a As MouseListener, ByVal b As MouseListener) As MouseListener
+		Public Shared Function add(  a As MouseListener,   b As MouseListener) As MouseListener
 			Return CType(addInternal(a, b), MouseListener)
 		End Function
 
@@ -532,7 +532,7 @@ Namespace java.awt
 		''' returns the resulting multicast listener. </summary>
 		''' <param name="a"> mouse-motion-listener-a </param>
 		''' <param name="b"> mouse-motion-listener-b </param>
-		Public Shared Function add(ByVal a As MouseMotionListener, ByVal b As MouseMotionListener) As MouseMotionListener
+		Public Shared Function add(  a As MouseMotionListener,   b As MouseMotionListener) As MouseMotionListener
 			Return CType(addInternal(a, b), MouseMotionListener)
 		End Function
 
@@ -541,7 +541,7 @@ Namespace java.awt
 		''' returns the resulting multicast listener. </summary>
 		''' <param name="a"> window-listener-a </param>
 		''' <param name="b"> window-listener-b </param>
-		Public Shared Function add(ByVal a As WindowListener, ByVal b As WindowListener) As WindowListener
+		Public Shared Function add(  a As WindowListener,   b As WindowListener) As WindowListener
 			Return CType(addInternal(a, b), WindowListener)
 		End Function
 
@@ -551,7 +551,7 @@ Namespace java.awt
 		''' <param name="a"> window-state-listener-a </param>
 		''' <param name="b"> window-state-listener-b
 		''' @since 1.4 </param>
-		Public Shared Function add(ByVal a As WindowStateListener, ByVal b As WindowStateListener) As WindowStateListener
+		Public Shared Function add(  a As WindowStateListener,   b As WindowStateListener) As WindowStateListener
 			Return CType(addInternal(a, b), WindowStateListener)
 		End Function
 
@@ -561,7 +561,7 @@ Namespace java.awt
 		''' <param name="a"> window-focus-listener-a </param>
 		''' <param name="b"> window-focus-listener-b
 		''' @since 1.4 </param>
-		Public Shared Function add(ByVal a As WindowFocusListener, ByVal b As WindowFocusListener) As WindowFocusListener
+		Public Shared Function add(  a As WindowFocusListener,   b As WindowFocusListener) As WindowFocusListener
 			Return CType(addInternal(a, b), WindowFocusListener)
 		End Function
 
@@ -570,7 +570,7 @@ Namespace java.awt
 		''' returns the resulting multicast listener. </summary>
 		''' <param name="a"> action-listener-a </param>
 		''' <param name="b"> action-listener-b </param>
-		Public Shared Function add(ByVal a As ActionListener, ByVal b As ActionListener) As ActionListener
+		Public Shared Function add(  a As ActionListener,   b As ActionListener) As ActionListener
 			Return CType(addInternal(a, b), ActionListener)
 		End Function
 
@@ -579,7 +579,7 @@ Namespace java.awt
 		''' returns the resulting multicast listener. </summary>
 		''' <param name="a"> item-listener-a </param>
 		''' <param name="b"> item-listener-b </param>
-		Public Shared Function add(ByVal a As ItemListener, ByVal b As ItemListener) As ItemListener
+		Public Shared Function add(  a As ItemListener,   b As ItemListener) As ItemListener
 			Return CType(addInternal(a, b), ItemListener)
 		End Function
 
@@ -588,10 +588,10 @@ Namespace java.awt
 		''' returns the resulting multicast listener. </summary>
 		''' <param name="a"> adjustment-listener-a </param>
 		''' <param name="b"> adjustment-listener-b </param>
-		Public Shared Function add(ByVal a As AdjustmentListener, ByVal b As AdjustmentListener) As AdjustmentListener
+		Public Shared Function add(  a As AdjustmentListener,   b As AdjustmentListener) As AdjustmentListener
 			Return CType(addInternal(a, b), AdjustmentListener)
 		End Function
-		Public Shared Function add(ByVal a As TextListener, ByVal b As TextListener) As TextListener
+		Public Shared Function add(  a As TextListener,   b As TextListener) As TextListener
 			Return CType(addInternal(a, b), TextListener)
 		End Function
 
@@ -600,7 +600,7 @@ Namespace java.awt
 		''' returns the resulting multicast listener. </summary>
 		''' <param name="a"> input-method-listener-a </param>
 		''' <param name="b"> input-method-listener-b </param>
-		 Public Shared Function add(ByVal a As InputMethodListener, ByVal b As InputMethodListener) As InputMethodListener
+		 Public Shared Function add(  a As InputMethodListener,   b As InputMethodListener) As InputMethodListener
 			Return CType(addInternal(a, b), InputMethodListener)
 		 End Function
 
@@ -610,7 +610,7 @@ Namespace java.awt
 		''' <param name="a"> hierarchy-listener-a </param>
 		''' <param name="b"> hierarchy-listener-b
 		''' @since 1.3 </param>
-		 Public Shared Function add(ByVal a As HierarchyListener, ByVal b As HierarchyListener) As HierarchyListener
+		 Public Shared Function add(  a As HierarchyListener,   b As HierarchyListener) As HierarchyListener
 			Return CType(addInternal(a, b), HierarchyListener)
 		 End Function
 
@@ -620,7 +620,7 @@ Namespace java.awt
 		''' <param name="a"> hierarchy-bounds-listener-a </param>
 		''' <param name="b"> hierarchy-bounds-listener-b
 		''' @since 1.3 </param>
-		 Public Shared Function add(ByVal a As HierarchyBoundsListener, ByVal b As HierarchyBoundsListener) As HierarchyBoundsListener
+		 Public Shared Function add(  a As HierarchyBoundsListener,   b As HierarchyBoundsListener) As HierarchyBoundsListener
 			Return CType(addInternal(a, b), HierarchyBoundsListener)
 		 End Function
 
@@ -630,7 +630,7 @@ Namespace java.awt
 		''' <param name="a"> mouse-wheel-listener-a </param>
 		''' <param name="b"> mouse-wheel-listener-b
 		''' @since 1.4 </param>
-		Public Shared Function add(ByVal a As MouseWheelListener, ByVal b As MouseWheelListener) As MouseWheelListener
+		Public Shared Function add(  a As MouseWheelListener,   b As MouseWheelListener) As MouseWheelListener
 			Return CType(addInternal(a, b), MouseWheelListener)
 		End Function
 
@@ -639,7 +639,7 @@ Namespace java.awt
 		''' returns the resulting multicast listener. </summary>
 		''' <param name="l"> component-listener-l </param>
 		''' <param name="oldl"> the component-listener being removed </param>
-		Public Shared Function remove(ByVal l As ComponentListener, ByVal oldl As ComponentListener) As ComponentListener
+		Public Shared Function remove(  l As ComponentListener,   oldl As ComponentListener) As ComponentListener
 			Return CType(removeInternal(l, oldl), ComponentListener)
 		End Function
 
@@ -648,7 +648,7 @@ Namespace java.awt
 		''' returns the resulting multicast listener. </summary>
 		''' <param name="l"> container-listener-l </param>
 		''' <param name="oldl"> the container-listener being removed </param>
-		Public Shared Function remove(ByVal l As ContainerListener, ByVal oldl As ContainerListener) As ContainerListener
+		Public Shared Function remove(  l As ContainerListener,   oldl As ContainerListener) As ContainerListener
 			Return CType(removeInternal(l, oldl), ContainerListener)
 		End Function
 
@@ -657,7 +657,7 @@ Namespace java.awt
 		''' returns the resulting multicast listener. </summary>
 		''' <param name="l"> focus-listener-l </param>
 		''' <param name="oldl"> the focus-listener being removed </param>
-		Public Shared Function remove(ByVal l As FocusListener, ByVal oldl As FocusListener) As FocusListener
+		Public Shared Function remove(  l As FocusListener,   oldl As FocusListener) As FocusListener
 			Return CType(removeInternal(l, oldl), FocusListener)
 		End Function
 
@@ -666,7 +666,7 @@ Namespace java.awt
 		''' returns the resulting multicast listener. </summary>
 		''' <param name="l"> key-listener-l </param>
 		''' <param name="oldl"> the key-listener being removed </param>
-		Public Shared Function remove(ByVal l As KeyListener, ByVal oldl As KeyListener) As KeyListener
+		Public Shared Function remove(  l As KeyListener,   oldl As KeyListener) As KeyListener
 			Return CType(removeInternal(l, oldl), KeyListener)
 		End Function
 
@@ -675,7 +675,7 @@ Namespace java.awt
 		''' returns the resulting multicast listener. </summary>
 		''' <param name="l"> mouse-listener-l </param>
 		''' <param name="oldl"> the mouse-listener being removed </param>
-		Public Shared Function remove(ByVal l As MouseListener, ByVal oldl As MouseListener) As MouseListener
+		Public Shared Function remove(  l As MouseListener,   oldl As MouseListener) As MouseListener
 			Return CType(removeInternal(l, oldl), MouseListener)
 		End Function
 
@@ -684,7 +684,7 @@ Namespace java.awt
 		''' and returns the resulting multicast listener. </summary>
 		''' <param name="l"> mouse-motion-listener-l </param>
 		''' <param name="oldl"> the mouse-motion-listener being removed </param>
-		Public Shared Function remove(ByVal l As MouseMotionListener, ByVal oldl As MouseMotionListener) As MouseMotionListener
+		Public Shared Function remove(  l As MouseMotionListener,   oldl As MouseMotionListener) As MouseMotionListener
 			Return CType(removeInternal(l, oldl), MouseMotionListener)
 		End Function
 
@@ -693,7 +693,7 @@ Namespace java.awt
 		''' returns the resulting multicast listener. </summary>
 		''' <param name="l"> window-listener-l </param>
 		''' <param name="oldl"> the window-listener being removed </param>
-		Public Shared Function remove(ByVal l As WindowListener, ByVal oldl As WindowListener) As WindowListener
+		Public Shared Function remove(  l As WindowListener,   oldl As WindowListener) As WindowListener
 			Return CType(removeInternal(l, oldl), WindowListener)
 		End Function
 
@@ -703,7 +703,7 @@ Namespace java.awt
 		''' <param name="l"> window-state-listener-l </param>
 		''' <param name="oldl"> the window-state-listener being removed
 		''' @since 1.4 </param>
-		Public Shared Function remove(ByVal l As WindowStateListener, ByVal oldl As WindowStateListener) As WindowStateListener
+		Public Shared Function remove(  l As WindowStateListener,   oldl As WindowStateListener) As WindowStateListener
 			Return CType(removeInternal(l, oldl), WindowStateListener)
 		End Function
 
@@ -713,7 +713,7 @@ Namespace java.awt
 		''' <param name="l"> window-focus-listener-l </param>
 		''' <param name="oldl"> the window-focus-listener being removed
 		''' @since 1.4 </param>
-		Public Shared Function remove(ByVal l As WindowFocusListener, ByVal oldl As WindowFocusListener) As WindowFocusListener
+		Public Shared Function remove(  l As WindowFocusListener,   oldl As WindowFocusListener) As WindowFocusListener
 			Return CType(removeInternal(l, oldl), WindowFocusListener)
 		End Function
 
@@ -722,7 +722,7 @@ Namespace java.awt
 		''' returns the resulting multicast listener. </summary>
 		''' <param name="l"> action-listener-l </param>
 		''' <param name="oldl"> the action-listener being removed </param>
-		Public Shared Function remove(ByVal l As ActionListener, ByVal oldl As ActionListener) As ActionListener
+		Public Shared Function remove(  l As ActionListener,   oldl As ActionListener) As ActionListener
 			Return CType(removeInternal(l, oldl), ActionListener)
 		End Function
 
@@ -731,7 +731,7 @@ Namespace java.awt
 		''' returns the resulting multicast listener. </summary>
 		''' <param name="l"> item-listener-l </param>
 		''' <param name="oldl"> the item-listener being removed </param>
-		Public Shared Function remove(ByVal l As ItemListener, ByVal oldl As ItemListener) As ItemListener
+		Public Shared Function remove(  l As ItemListener,   oldl As ItemListener) As ItemListener
 			Return CType(removeInternal(l, oldl), ItemListener)
 		End Function
 
@@ -740,10 +740,10 @@ Namespace java.awt
 		''' returns the resulting multicast listener. </summary>
 		''' <param name="l"> adjustment-listener-l </param>
 		''' <param name="oldl"> the adjustment-listener being removed </param>
-		Public Shared Function remove(ByVal l As AdjustmentListener, ByVal oldl As AdjustmentListener) As AdjustmentListener
+		Public Shared Function remove(  l As AdjustmentListener,   oldl As AdjustmentListener) As AdjustmentListener
 			Return CType(removeInternal(l, oldl), AdjustmentListener)
 		End Function
-		Public Shared Function remove(ByVal l As TextListener, ByVal oldl As TextListener) As TextListener
+		Public Shared Function remove(  l As TextListener,   oldl As TextListener) As TextListener
 			Return CType(removeInternal(l, oldl), TextListener)
 		End Function
 
@@ -752,7 +752,7 @@ Namespace java.awt
 		''' returns the resulting multicast listener. </summary>
 		''' <param name="l"> input-method-listener-l </param>
 		''' <param name="oldl"> the input-method-listener being removed </param>
-		Public Shared Function remove(ByVal l As InputMethodListener, ByVal oldl As InputMethodListener) As InputMethodListener
+		Public Shared Function remove(  l As InputMethodListener,   oldl As InputMethodListener) As InputMethodListener
 			Return CType(removeInternal(l, oldl), InputMethodListener)
 		End Function
 
@@ -762,7 +762,7 @@ Namespace java.awt
 		''' <param name="l"> hierarchy-listener-l </param>
 		''' <param name="oldl"> the hierarchy-listener being removed
 		''' @since 1.3 </param>
-		Public Shared Function remove(ByVal l As HierarchyListener, ByVal oldl As HierarchyListener) As HierarchyListener
+		Public Shared Function remove(  l As HierarchyListener,   oldl As HierarchyListener) As HierarchyListener
 			Return CType(removeInternal(l, oldl), HierarchyListener)
 		End Function
 
@@ -773,7 +773,7 @@ Namespace java.awt
 		''' <param name="l"> hierarchy-bounds-listener-l </param>
 		''' <param name="oldl"> the hierarchy-bounds-listener being removed
 		''' @since 1.3 </param>
-		Public Shared Function remove(ByVal l As HierarchyBoundsListener, ByVal oldl As HierarchyBoundsListener) As HierarchyBoundsListener
+		Public Shared Function remove(  l As HierarchyBoundsListener,   oldl As HierarchyBoundsListener) As HierarchyBoundsListener
 			Return CType(removeInternal(l, oldl), HierarchyBoundsListener)
 		End Function
 
@@ -783,7 +783,7 @@ Namespace java.awt
 		''' <param name="l"> mouse-wheel-listener-l </param>
 		''' <param name="oldl"> the mouse-wheel-listener being removed
 		''' @since 1.4 </param>
-		Public Shared Function remove(ByVal l As MouseWheelListener, ByVal oldl As MouseWheelListener) As MouseWheelListener
+		Public Shared Function remove(  l As MouseWheelListener,   oldl As MouseWheelListener) As MouseWheelListener
 		  Return CType(removeInternal(l, oldl), MouseWheelListener)
 		End Function
 
@@ -796,7 +796,7 @@ Namespace java.awt
 		''' a new AWTEventMulticaster instance which chains a with b. </summary>
 		''' <param name="a"> event listener-a </param>
 		''' <param name="b"> event listener-b </param>
-		Protected Friend Shared Function addInternal(ByVal a As java.util.EventListener, ByVal b As java.util.EventListener) As java.util.EventListener
+		Protected Friend Shared Function addInternal(  a As java.util.EventListener,   b As java.util.EventListener) As java.util.EventListener
 			If a Is Nothing Then Return b
 			If b Is Nothing Then Return a
 			Return New AWTEventMulticaster(a, b)
@@ -812,7 +812,7 @@ Namespace java.awt
 		''' Else, returns listener l. </summary>
 		''' <param name="l"> the listener being removed from </param>
 		''' <param name="oldl"> the listener being removed </param>
-		Protected Friend Shared Function removeInternal(ByVal l As java.util.EventListener, ByVal oldl As java.util.EventListener) As java.util.EventListener
+		Protected Friend Shared Function removeInternal(  l As java.util.EventListener,   oldl As java.util.EventListener) As java.util.EventListener
 			If l Is oldl OrElse l Is Nothing Then
 				Return Nothing
 			ElseIf TypeOf l Is AWTEventMulticaster Then
@@ -826,7 +826,7 @@ Namespace java.awt
 	'     Serialization support.
 	'     
 
-		Protected Friend Overridable Sub saveInternal(ByVal s As java.io.ObjectOutputStream, ByVal k As String)
+		Protected Friend Overridable Sub saveInternal(  s As java.io.ObjectOutputStream,   k As String)
 			If TypeOf a Is AWTEventMulticaster Then
 				CType(a, AWTEventMulticaster).saveInternal(s, k)
 			ElseIf TypeOf a Is java.io.Serializable Then
@@ -842,7 +842,7 @@ Namespace java.awt
 			End If
 		End Sub
 
-		Protected Friend Shared Sub save(ByVal s As java.io.ObjectOutputStream, ByVal k As String, ByVal l As java.util.EventListener)
+		Protected Friend Shared Sub save(  s As java.io.ObjectOutputStream,   k As String,   l As java.util.EventListener)
 		  If l Is Nothing Then
 			  Return
 		  ElseIf TypeOf l Is AWTEventMulticaster Then
@@ -859,7 +859,7 @@ Namespace java.awt
         '     * AWTEventMulticaster.  Additionally, only listeners of type listenerType
         '     * are counted.  Method modified to fix bug 4513402.  -bchristi
         '     
-        Private Shared Function getListenerCount(ByVal l As java.util.EventListener, ByVal listenerType As [Class]) As Integer
+        Private Shared Function getListenerCount(  l As java.util.EventListener,   listenerType As [Class]) As Integer
             If TypeOf l Is AWTEventMulticaster Then
                 Dim mc As AWTEventMulticaster = CType(l, AWTEventMulticaster)
                 Return getListenerCount(mc.a, listenerType) + getListenerCount(mc.b, listenerType)
@@ -876,7 +876,7 @@ Namespace java.awt
         '     * would occur.  Now l is only inserted into a if it's of the appropriate
         '     * type.  -bchristi
         '     
-        Private Shared Function populateListenerArray(ByVal a As java.util.EventListener(), ByVal l As java.util.EventListener, ByVal index As Integer) As Integer
+        Private Shared Function populateListenerArray(  a As java.util.EventListener(),   l As java.util.EventListener,   index As Integer) As Integer
 			If TypeOf l Is AWTEventMulticaster Then
 				Dim mc As AWTEventMulticaster = CType(l, AWTEventMulticaster)
 				Dim lhs As Integer = populateListenerArray(a, mc.a, index)
@@ -919,7 +919,7 @@ Namespace java.awt
 		''' 
 		''' @since 1.4 </exception>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Shared Function getListeners(Of T As java.util.EventListener)(ByVal l As java.util.EventListener, ByVal listenerType As [Class]) As T()
+		Public Shared Function getListeners(Of T As java.util.EventListener)(  l As java.util.EventListener,   listenerType As [Class]) As T()
 			If listenerType Is Nothing Then Throw New NullPointerException("Listener type should not be null")
 
 			Dim n As Integer = getListenerCount(l, listenerType)

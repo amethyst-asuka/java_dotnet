@@ -84,7 +84,7 @@ Namespace java.sql
 		'''         connection to the URL </returns>
 		''' <exception cref="SQLException"> if a database access error occurs or the url is
 		''' {@code null} </exception>
-		Function connect(ByVal url As String, ByVal info As java.util.Properties) As Connection
+		Function connect(  url As String,   info As java.util.Properties) As Connection
 
 		''' <summary>
 		''' Retrieves whether the driver thinks that it can open a connection
@@ -97,7 +97,7 @@ Namespace java.sql
 		'''         <code>false</code> otherwise </returns>
 		''' <exception cref="SQLException"> if a database access error occurs or the url is
 		''' {@code null} </exception>
-		Function acceptsURL(ByVal url As String) As Boolean
+		Function acceptsURL(  url As String) As Boolean
 
 
 		''' <summary>
@@ -118,7 +118,7 @@ Namespace java.sql
 		'''          possible properties.  This array may be an empty array if
 		'''          no properties are required. </returns>
 		''' <exception cref="SQLException"> if a database access error occurs </exception>
-		Function getPropertyInfo(ByVal url As String, ByVal info As java.util.Properties) As DriverPropertyInfo()
+		Function getPropertyInfo(  url As String,   info As java.util.Properties) As DriverPropertyInfo()
 
 
 		''' <summary>

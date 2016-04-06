@@ -120,7 +120,7 @@ Namespace java.io
 		''' <seealso cref=        java.lang.SecurityManager#checkWrite(java.lang.String)
 		''' @revised 1.4
 		''' @spec JSR-51 </seealso>
-		Public Sub New(ByVal name As String, ByVal mode As String)
+		Public Sub New(  name As String,   mode As String)
 			Me.New(If(name IsNot Nothing, New File(name), Nothing), mode)
 		End Sub
 
@@ -199,7 +199,7 @@ Namespace java.io
 		''' <seealso cref=        java.nio.channels.FileChannel#force(boolean)
 		''' @revised 1.4
 		''' @spec JSR-51 </seealso>
-		Public Sub New(ByVal file_Renamed As File, ByVal mode As String)
+		Public Sub New(  file_Renamed As File,   mode As String)
 			Dim name As String = (If(file_Renamed IsNot Nothing, file_Renamed.path, Nothing))
 			Dim imode As Integer = -1
 			If mode.Equals("r") Then
@@ -283,7 +283,7 @@ Namespace java.io
 		'''             defined above </param>
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Private Sub open0(ByVal name As String, ByVal mode As Integer)
+		Private Sub open0(  name As String,   mode As Integer)
 		End Sub
 
 		' wrap native call to allow instrumentation
@@ -297,7 +297,7 @@ Namespace java.io
 		''' <param name="name"> the name of the file </param>
 		''' <param name="mode"> the mode flags, a combination of the O_ constants
 		'''             defined above </param>
-		Private Sub open(ByVal name As String, ByVal mode As Integer)
+		Private Sub open(  name As String,   mode As Integer)
 			open0(name, mode)
 		End Sub
 
@@ -334,7 +334,7 @@ Namespace java.io
 		''' <exception cref="IOException"> If an I/O error has occurred. </exception>
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Private Function readBytes(byte ByVal  As b(), ByVal [off] As Integer, ByVal len As Integer) As Integer
+		Private Function readBytes(byte    As b(),   [off] As Integer,   len As Integer) As Integer
 		End Function
 
 		''' <summary>

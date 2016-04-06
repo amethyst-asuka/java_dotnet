@@ -215,7 +215,7 @@ Namespace java.util.logging
 			Private ReadOnly outerInstance As LogManager
 
 
-			Private Sub New(ByVal outerInstance As LogManager)
+			Private Sub New(  outerInstance As LogManager)
 					Me.outerInstance = outerInstance
 	'             Set context class loader to null in order to avoid
 	'             * keeping a strong reference to an application classloader.
@@ -252,7 +252,7 @@ Namespace java.util.logging
 			Me.New(checkSubclassPermissions())
 		End Sub
 
-		Private Sub New(ByVal checked As Void)
+		Private Sub New(  checked As Void)
 
 			' Add a shutdown hook to close the global handlers.
 			Try
@@ -420,7 +420,7 @@ Namespace java.util.logging
 		'''             logging configuration by overridding the {@link
 		'''             #readConfiguration readConfiguration} method. 
 		<Obsolete("The dependency on {@code PropertyChangeListener} creates a")> _
-		Public Overridable Sub addPropertyChangeListener(ByVal l As java.beans.PropertyChangeListener)
+		Public Overridable Sub addPropertyChangeListener(  l As java.beans.PropertyChangeListener)
 			Dim listener As java.beans.PropertyChangeListener = Objects.requireNonNull(l)
 			checkPermission()
 			SyncLock listenerMap
@@ -455,7 +455,7 @@ Namespace java.util.logging
 		'''             logging configuration by overridding the {@link
 		'''             #readConfiguration readConfiguration} method. 
 		<Obsolete("The dependency on {@code PropertyChangeListener} creates a")> _
-		Public Overridable Sub removePropertyChangeListener(ByVal l As java.beans.PropertyChangeListener)
+		Public Overridable Sub removePropertyChangeListener(  l As java.beans.PropertyChangeListener)
 			checkPermission()
 			If l IsNot Nothing Then
 				Dim listener As java.beans.PropertyChangeListener = l
@@ -535,7 +535,7 @@ Namespace java.util.logging
 		' add a new Logger or return the one that has been added previously
 		' as a LogManager subclass may override the addLogger, getLogger,
 		' readConfiguration, and other methods.
-		Friend Overridable Function demandLogger(ByVal name As String, ByVal resourceBundleName As String, ByVal caller As [Class]) As Logger
+		Friend Overridable Function demandLogger(  name As String,   resourceBundleName As String,   caller As [Class]) As Logger
 			Dim result As Logger = getLogger(name)
 			If result Is Nothing Then
 				' only allocate the new logger once
@@ -560,7 +560,7 @@ Namespace java.util.logging
 			Return result
 		End Function
 
-		Friend Overridable Function demandSystemLogger(ByVal name As String, ByVal resourceBundleName As String) As Logger
+		Friend Overridable Function demandSystemLogger(  name As String,   resourceBundleName As String) As Logger
 			' Add a system logger in the system context's namespace
 			Dim sysLogger As Logger = systemContext.demandLogger(name, resourceBundleName)
 
@@ -615,7 +615,7 @@ Namespace java.util.logging
 			Private ReadOnly namedLoggers As New Dictionary(Of String, LoggerWeakRef)
 			' Tree of named Loggers
 			Private ReadOnly root As LogNode
-			Private Sub New(ByVal outerInstance As LogManager)
+			Private Sub New(  outerInstance As LogManager)
 					Me.outerInstance = outerInstance
 				Me.root = New LogNode(Nothing, Me)
 			End Sub
@@ -656,7 +656,7 @@ Namespace java.util.logging
 				End Get
 			End Property
 
-			Friend Overridable Function demandLogger(ByVal name As String, ByVal resourceBundleName As String) As Logger
+			Friend Overridable Function demandLogger(  name As String,   resourceBundleName As String) As Logger
 				' a LogManager subclass may have its own implementation to add and
 				' get a Logger.  So delegate to the LogManager to do the work.
 				Dim owner_Renamed As LogManager = owner
@@ -681,7 +681,7 @@ Namespace java.util.logging
 
 
 			<MethodImpl(MethodImplOptions.Synchronized)> _
-			Friend Overridable Function findLogger(ByVal name As String) As Logger
+			Friend Overridable Function findLogger(  name As String) As Logger
 				' ensure that this context is properly initialized before
 				' looking for loggers.
 				ensureInitialized()
@@ -698,7 +698,7 @@ Namespace java.util.logging
 			' This method will ensure that the defaults loggers are added
 			' before adding 'logger'.
 			'
-			Private Sub ensureAllDefaultLoggers(ByVal logger_Renamed As Logger)
+			Private Sub ensureAllDefaultLoggers(  logger_Renamed As Logger)
 				If requiresDefaultLoggers() Then
 					Dim name As String = logger_Renamed.name
 					If Not name.empty Then
@@ -708,7 +708,7 @@ Namespace java.util.logging
 				End If
 			End Sub
 
-			Private Sub ensureDefaultLogger(ByVal logger_Renamed As Logger)
+			Private Sub ensureDefaultLogger(  logger_Renamed As Logger)
 				' Used for lazy addition of root logger and global logger
 				' to a LoggerContext.
 
@@ -731,7 +731,7 @@ Namespace java.util.logging
 				If Not namedLoggers.containsKey(logger_Renamed.name) Then addLocalLogger(logger_Renamed, False)
 			End Sub
 
-			Friend Overridable Function addLocalLogger(ByVal logger_Renamed As Logger) As Boolean
+			Friend Overridable Function addLocalLogger(  logger_Renamed As Logger) As Boolean
 				' no need to add default loggers if it's not required
 				Return addLocalLogger(logger_Renamed, requiresDefaultLoggers())
 			End Function
@@ -739,7 +739,7 @@ Namespace java.util.logging
 			' Add a logger to this context.  This method will only set its level
 			' and process parent loggers.  It doesn't set its handlers.
 			<MethodImpl(MethodImplOptions.Synchronized)> _
-			Friend Overridable Function addLocalLogger(ByVal logger_Renamed As Logger, ByVal addDefaultLoggersIfNeeded As Boolean) As Boolean
+			Friend Overridable Function addLocalLogger(  logger_Renamed As Logger,   addDefaultLoggersIfNeeded As Boolean) As Boolean
 				' addDefaultLoggersIfNeeded serves to break recursion when adding
 				' default loggers. If we're adding one of the default loggers
 				' (we're being called from ensureDefaultLogger()) then
@@ -806,7 +806,7 @@ Namespace java.util.logging
 			End Function
 
 			<MethodImpl(MethodImplOptions.Synchronized)> _
-			Friend Overridable Sub removeLoggerRef(ByVal name As String, ByVal ref As LoggerWeakRef)
+			Friend Overridable Sub removeLoggerRef(  name As String,   ref As LoggerWeakRef)
 				namedLoggers.remove(name, ref)
 			End Sub
 
@@ -822,7 +822,7 @@ Namespace java.util.logging
 
 			' If logger.getUseParentHandlers() returns 'true' and any of the logger's
 			' parents have levels or handlers defined, make sure they are instantiated.
-			Private Sub processParentHandlers(ByVal logger_Renamed As Logger, ByVal name As String)
+			Private Sub processParentHandlers(  logger_Renamed As Logger,   name As String)
 				Dim owner_Renamed As LogManager = owner
 				AccessController.doPrivileged(New PrivilegedActionAnonymousInnerClassHelper3(Of T)
 
@@ -850,7 +850,7 @@ Namespace java.util.logging
 
 			' Gets a node in our tree of logger nodes.
 			' If necessary, create it.
-			Friend Overridable Function getNode(ByVal name As String) As LogNode
+			Friend Overridable Function getNode(  name As String) As LogNode
 				If name Is Nothing OrElse name.Equals("") Then Return root
 				Dim node_Renamed As LogNode = root
 				Do While name.length() > 0
@@ -880,7 +880,7 @@ Namespace java.util.logging
 
 			Private ReadOnly outerInstance As LogManager
 
-			Public Sub New(ByVal outerInstance As LogManager)
+			Public Sub New(  outerInstance As LogManager)
 				Me.outerInstance = outerInstance
 			End Sub
 
@@ -888,7 +888,7 @@ Namespace java.util.logging
 			' in the LogManager's namespace if not exist so that there is only
 			' one single logger of the given name.  System loggers are visible
 			' to applications unless a logger of the same name has been added.
-			Friend Overrides Function demandLogger(ByVal name As String, ByVal resourceBundleName As String) As Logger
+			Friend Overrides Function demandLogger(  name As String,   resourceBundleName As String) As Logger
 				Dim result As Logger = findLogger(name)
 				If result Is Nothing Then
 					' only allocate the new system logger once
@@ -922,7 +922,7 @@ Namespace java.util.logging
 		' We need to raise privilege here. All our decisions will
 		' be made based on the logging configuration, which can
 		' only be modified by trusted code.
-		Private Sub loadLoggerHandlers(ByVal logger_Renamed As Logger, ByVal name As String, ByVal handlersPropertyName As String)
+		Private Sub loadLoggerHandlers(  logger_Renamed As Logger,   name As String,   handlersPropertyName As String)
 			AccessController.doPrivileged(New PrivilegedActionAnonymousInnerClassHelper(Of T)
 		End Sub
 
@@ -995,7 +995,7 @@ Namespace java.util.logging
 			Private parentRef As WeakReference(Of Logger) ' for kids cleanup
 			Private disposed As Boolean = False ' avoid calling dispose twice
 
-			Friend Sub New(ByVal outerInstance As LogManager, ByVal logger_Renamed As Logger)
+			Friend Sub New(  outerInstance As LogManager,   logger_Renamed As Logger)
 					Me.outerInstance = outerInstance
 				MyBase.New(logger_Renamed, outerInstance.loggerRefQueue)
 
@@ -1053,14 +1053,14 @@ Namespace java.util.logging
 
 			' set the node field to the specified value
 			Friend Property node As LogNode
-				Set(ByVal node As LogNode)
+				Set(  node As LogNode)
 					Me.node = node
 				End Set
 			End Property
 
 			' set the parentRef field to the specified value
 			Friend Property parentRef As WeakReference(Of Logger)
-				Set(ByVal parentRef As WeakReference(Of Logger))
+				Set(  parentRef As WeakReference(Of Logger))
 					Me.parentRef = parentRef
 				End Set
 			End Property
@@ -1119,7 +1119,7 @@ Namespace java.util.logging
 		''' <returns>  true if the argument logger was registered successfully,
 		'''          false if a logger of that name already exists. </returns>
 		''' <exception cref="NullPointerException"> if the logger name is null. </exception>
-		Public Overridable Function addLogger(ByVal logger_Renamed As Logger) As Boolean
+		Public Overridable Function addLogger(  logger_Renamed As Logger) As Boolean
 			Dim name As String = logger_Renamed.name
 			If name Is Nothing Then Throw New NullPointerException
 			drainLoggerRefQueueBounded()
@@ -1136,7 +1136,7 @@ Namespace java.util.logging
 
 		' Private method to set a level on a logger.
 		' If necessary, we raise privilege before doing the call.
-		Private Shared Sub doSetLevel(ByVal logger_Renamed As Logger, ByVal level_Renamed As Level)
+		Private Shared Sub doSetLevel(  logger_Renamed As Logger,   level_Renamed As Level)
 			Dim sm As SecurityManager = System.securityManager
 			If sm Is Nothing Then
 				' There is no security manager, so things are easy.
@@ -1159,7 +1159,7 @@ Namespace java.util.logging
 
 		' Private method to set a parent on a logger.
 		' If necessary, we raise privilege before doing the setParent call.
-		Private Shared Sub doSetParent(ByVal logger_Renamed As Logger, ByVal parent As Logger)
+		Private Shared Sub doSetParent(  logger_Renamed As Logger,   parent As Logger)
 			Dim sm As SecurityManager = System.securityManager
 			If sm Is Nothing Then
 				' There is no security manager, so things are easy.
@@ -1194,7 +1194,7 @@ Namespace java.util.logging
 		''' <p> </summary>
 		''' <param name="name"> name of the logger </param>
 		''' <returns>  matching logger or null if none is found </returns>
-		Public Overridable Function getLogger(ByVal name As String) As Logger
+		Public Overridable Function getLogger(  name As String) As Logger
 			Return userContext.findLogger(name)
 		End Function
 
@@ -1303,7 +1303,7 @@ Namespace java.util.logging
 		End Sub
 
 		' Private method to reset an individual target logger.
-		Private Sub resetLogger(ByVal logger_Renamed As Logger)
+		Private Sub resetLogger(  logger_Renamed As Logger)
 			' Close all the Logger's handlers.
 			Dim targets As Handler() = logger_Renamed.handlers
 			For i As Integer = 0 To targets.Length - 1
@@ -1325,7 +1325,7 @@ Namespace java.util.logging
 		End Sub
 
 		' get a list of whitespace separated classnames from a property.
-		Private Function parseClassNames(ByVal propertyName As String) As String()
+		Private Function parseClassNames(  propertyName As String) As String()
 			Dim hands As String = getProperty(propertyName)
 			If hands Is Nothing Then Return New String(){}
 			hands = hands.Trim()
@@ -1359,7 +1359,7 @@ Namespace java.util.logging
 		''' <exception cref="SecurityException">  if a security manager exists and if
 		'''             the caller does not have LoggingPermission("control"). </exception>
 		''' <exception cref="IOException"> if there are problems reading from the stream. </exception>
-		Public Overridable Sub readConfiguration(ByVal ins As InputStream)
+		Public Overridable Sub readConfiguration(  ins As InputStream)
 			checkPermission()
 			reset()
 
@@ -1415,14 +1415,14 @@ Namespace java.util.logging
 		''' The method returns null if the property is not found. </summary>
 		''' <param name="name">      property name </param>
 		''' <returns>          property value </returns>
-		Public Overridable Function getProperty(ByVal name As String) As String
+		Public Overridable Function getProperty(  name As String) As String
 			Return props.getProperty(name)
 		End Function
 
 		' Package private method to get a String property.
 		' If the property is not defined we return the given
 		' default value.
-		Friend Overridable Function getStringProperty(ByVal name As String, ByVal defaultValue As String) As String
+		Friend Overridable Function getStringProperty(  name As String,   defaultValue As String) As String
 			Dim val As String = getProperty(name)
 			If val Is Nothing Then Return defaultValue
 			Return val.Trim()
@@ -1431,7 +1431,7 @@ Namespace java.util.logging
 		' Package private method to get an integer property.
 		' If the property is not defined or cannot be parsed
 		' we return the given default value.
-		Friend Overridable Function getIntProperty(ByVal name As String, ByVal defaultValue As Integer) As Integer
+		Friend Overridable Function getIntProperty(  name As String,   defaultValue As Integer) As Integer
 			Dim val As String = getProperty(name)
 			If val Is Nothing Then Return defaultValue
 			Try
@@ -1444,7 +1444,7 @@ Namespace java.util.logging
 		' Package private method to get a boolean property.
 		' If the property is not defined or cannot be parsed
 		' we return the given default value.
-		Friend Overridable Function getBooleanProperty(ByVal name As String, ByVal defaultValue As Boolean) As Boolean
+		Friend Overridable Function getBooleanProperty(  name As String,   defaultValue As Boolean) As Boolean
 			Dim val As String = getProperty(name)
 			If val Is Nothing Then Return defaultValue
 			val = val.ToLower()
@@ -1459,7 +1459,7 @@ Namespace java.util.logging
 		' Package private method to get a Level property.
 		' If the property is not defined or cannot be parsed
 		' we return the given default value.
-		Friend Overridable Function getLevelProperty(ByVal name As String, ByVal defaultValue As Level) As Level
+		Friend Overridable Function getLevelProperty(  name As String,   defaultValue As Level) As Level
 			Dim val As String = getProperty(name)
 			If val Is Nothing Then Return defaultValue
 			Dim l As Level = Level.findLevel(val.Trim())
@@ -1470,7 +1470,7 @@ Namespace java.util.logging
 		' We return an instance of the class named by the "name"
 		' property. If the property is not defined or has problems
 		' we return the defaultValue.
-		Friend Overridable Function getFilterProperty(ByVal name As String, ByVal defaultValue As Filter) As Filter
+		Friend Overridable Function getFilterProperty(  name As String,   defaultValue As Filter) As Filter
 			Dim val As String = getProperty(name)
 			Try
 				If val IsNot Nothing Then
@@ -1491,7 +1491,7 @@ Namespace java.util.logging
 		' We return an instance of the class named by the "name"
 		' property. If the property is not defined or has problems
 		' we return the defaultValue.
-		Friend Overridable Function getFormatterProperty(ByVal name As String, ByVal defaultValue As Formatter) As Formatter
+		Friend Overridable Function getFormatterProperty(  name As String,   defaultValue As Formatter) As Formatter
 			Dim val As String = getProperty(name)
 			Try
 				If val IsNot Nothing Then
@@ -1547,14 +1547,14 @@ Namespace java.util.logging
 			Friend parent As LogNode
 			Friend ReadOnly context As LoggerContext
 
-			Friend Sub New(ByVal parent As LogNode, ByVal context As LoggerContext)
+			Friend Sub New(  parent As LogNode,   context As LoggerContext)
 				Me.parent = parent
 				Me.context = context
 			End Sub
 
 			' Recursive method to walk the tree below a node and set
 			' a new parent logger.
-			Friend Overridable Sub walkAndSetParent(ByVal parent As Logger)
+			Friend Overridable Sub walkAndSetParent(  parent As Logger)
 				If children Is Nothing Then Return
 				Dim values As [Iterator](Of LogNode) = children.values().GetEnumerator()
 				Do While values.MoveNext()
@@ -1578,7 +1578,7 @@ Namespace java.util.logging
 
 			Private ReadOnly outerInstance As LogManager
 
-			Private Sub New(ByVal outerInstance As LogManager)
+			Private Sub New(  outerInstance As LogManager)
 					Me.outerInstance = outerInstance
 				' We do not call the protected Logger two args constructor here,
 				' to avoid calling LogManager.getLogManager() from within the
@@ -1586,18 +1586,18 @@ Namespace java.util.logging
 				MyBase.New("", Nothing, Nothing, LogManager.this, True)
 			End Sub
 
-			Public Overrides Sub log(ByVal record As LogRecord)
+			Public Overrides Sub log(  record As LogRecord)
 				' Make sure that the global handlers have been instantiated.
 				outerInstance.initializeGlobalHandlers()
 				MyBase.log(record)
 			End Sub
 
-			Public Overrides Sub [addHandler](ByVal h As Handler)
+			Public Overrides Sub [addHandler](  h As Handler)
 				outerInstance.initializeGlobalHandlers()
 				MyBase.addHandler(h)
 			End Sub
 
-			Public Overrides Sub [removeHandler](ByVal h As Handler)
+			Public Overrides Sub [removeHandler](  h As Handler)
 				outerInstance.initializeGlobalHandlers()
 				MyBase.removeHandler(h)
 			End Sub
@@ -1684,7 +1684,7 @@ Namespace java.util.logging
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 			Private Shared ReadOnly propertyEventCtor As Constructor(Of ?) = getConstructor(propertyChangeEventClass, GetType(Object), GetType(String), GetType(Object), GetType(Object))
 
-			Private Shared Function getClass(ByVal name As String) As  [Class]
+			Private Shared Function getClass(  name As String) As  [Class]
 				Try
 					Return Type.GetType(name, True, GetType(Beans).classLoader)
 				Catch e As  ClassNotFoundException
@@ -1692,7 +1692,7 @@ Namespace java.util.logging
 				End Try
 			End Function
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-			Private Shared Function getConstructor(ByVal c As [Class], ParamArray ByVal types As  [Class]()) As Constructor(Of ?)
+			Private Shared Function getConstructor(  c As [Class], ParamArray   types As  [Class]()) As Constructor(Of ?)
 				Try
 					Return If(c Is Nothing, Nothing, c.getDeclaredConstructor(types))
 				Catch x As NoSuchMethodException
@@ -1700,7 +1700,7 @@ Namespace java.util.logging
 				End Try
 			End Function
 
-			Private Shared Function getMethod(ByVal c As [Class], ByVal name As String, ParamArray ByVal types As  [Class]()) As Method
+			Private Shared Function getMethod(  c As [Class],   name As String, ParamArray   types As  [Class]()) As Method
 				Try
 					Return If(c Is Nothing, Nothing, c.getMethod(name, types))
 				Catch e As NoSuchMethodException
@@ -1721,7 +1721,7 @@ Namespace java.util.logging
 			''' Returns a new PropertyChangeEvent with the given source, property
 			''' name, old and new values.
 			''' </summary>
-			Friend Shared Function newPropertyChangeEvent(ByVal source As Object, ByVal prop As String, ByVal oldValue As Object, ByVal newValue As Object) As Object
+			Friend Shared Function newPropertyChangeEvent(  source As Object,   prop As String,   oldValue As Object,   newValue As Object) As Object
 				Try
 					Return propertyEventCtor.newInstance(source, prop, oldValue, newValue)
 'JAVA TO VB CONVERTER TODO TASK: There is no equivalent in VB to Java 'multi-catch' syntax:
@@ -1739,7 +1739,7 @@ Namespace java.util.logging
 			''' Invokes the given PropertyChangeListener's propertyChange method
 			''' with the given event.
 			''' </summary>
-			Friend Shared Sub invokePropertyChange(ByVal listener As Object, ByVal ev As Object)
+			Friend Shared Sub invokePropertyChange(  listener As Object,   ev As Object)
 				Try
 					propertyChangeMethod.invoke(listener, ev)
 				Catch x As IllegalAccessException

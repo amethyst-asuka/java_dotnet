@@ -65,7 +65,7 @@ Namespace java.util.spi
 		'''     {@link java.util.spi.LocaleServiceProvider#getAvailableLocales()
 		'''     getAvailableLocales()}. </exception>
 		''' <seealso cref= java.util.Locale#getDisplayLanguage(java.util.Locale) </seealso>
-		Public MustOverride Function getDisplayLanguage(ByVal languageCode As String, ByVal locale As java.util.Locale) As String
+		Public MustOverride Function getDisplayLanguage(  languageCode As String,   locale As java.util.Locale) As String
 
 		''' <summary>
 		''' Returns a localized name for the given <a href="http://www.rfc-editor.org/rfc/bcp/bcp47.txt">
@@ -92,7 +92,7 @@ Namespace java.util.spi
 		'''     getAvailableLocales()}. </exception>
 		''' <seealso cref= java.util.Locale#getDisplayScript(java.util.Locale)
 		''' @since 1.7 </seealso>
-		Public Overridable Function getDisplayScript(ByVal scriptCode As String, ByVal locale_Renamed As java.util.Locale) As String
+		Public Overridable Function getDisplayScript(  scriptCode As String,   locale_Renamed As java.util.Locale) As String
 			Return Nothing
 		End Function
 
@@ -119,7 +119,7 @@ Namespace java.util.spi
 		'''     {@link java.util.spi.LocaleServiceProvider#getAvailableLocales()
 		'''     getAvailableLocales()}. </exception>
 		''' <seealso cref= java.util.Locale#getDisplayCountry(java.util.Locale) </seealso>
-		Public MustOverride Function getDisplayCountry(ByVal countryCode As String, ByVal locale As java.util.Locale) As String
+		Public MustOverride Function getDisplayCountry(  countryCode As String,   locale As java.util.Locale) As String
 
 		''' <summary>
 		''' Returns a localized name for the given variant code and the given locale that
@@ -136,7 +136,7 @@ Namespace java.util.spi
 		'''     {@link java.util.spi.LocaleServiceProvider#getAvailableLocales()
 		'''     getAvailableLocales()}. </exception>
 		''' <seealso cref= java.util.Locale#getDisplayVariant(java.util.Locale) </seealso>
-		Public MustOverride Function getDisplayVariant(ByVal [variant] As String, ByVal locale As java.util.Locale) As String
+		Public MustOverride Function getDisplayVariant(  [variant] As String,   locale As java.util.Locale) As String
 	End Class
 
 End Namespace

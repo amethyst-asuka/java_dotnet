@@ -55,7 +55,7 @@ Namespace java.security.cert
 		''' "../../../../technotes/guides/security/crypto/CryptoSpec.html#AppA">
 		''' Java Cryptography Architecture API Specification &amp; Reference </a>
 		''' for information about standard CRL types. </param>
-		Protected Friend Sub New(ByVal type As String)
+		Protected Friend Sub New(  type As String)
 			Me.type = type
 		End Sub
 
@@ -81,7 +81,7 @@ Namespace java.security.cert
 		''' <param name="cert"> the certificate to check for. </param>
 		''' <returns> true if the given certificate is on this CRL,
 		''' false otherwise. </returns>
-		Public MustOverride Function isRevoked(ByVal cert As Certificate) As Boolean
+		Public MustOverride Function isRevoked(  cert As Certificate) As Boolean
 	End Class
 
 End Namespace

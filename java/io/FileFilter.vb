@@ -45,7 +45,7 @@ Namespace java.io
 		''' <param name="pathname">  The abstract pathname to be tested </param>
 		''' <returns>  <code>true</code> if and only if <code>pathname</code>
 		'''          should be included </returns>
-		Function accept(ByVal pathname As File) As Boolean
+		Function accept(  pathname As File) As Boolean
 	End Interface
 
 End Namespace

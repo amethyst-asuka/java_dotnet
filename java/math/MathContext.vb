@@ -133,7 +133,7 @@ Namespace java.math
         ''' <param name="setPrecision"> The non-negative {@code int} precision setting. </param>
         ''' <exception cref="IllegalArgumentException"> if the {@code setPrecision} parameter is less
         '''         than zero. </exception>
-        Public Sub New(ByVal setPrecision As Integer)
+        Public Sub New(  setPrecision As Integer)
             Me.New(precisionion, DEFAULT_ROUNDINGMODE)
             Return
         End Sub
@@ -147,7 +147,7 @@ Namespace java.math
         ''' <exception cref="IllegalArgumentException"> if the {@code setPrecision} parameter is less
         '''         than zero. </exception>
         ''' <exception cref="NullPointerException"> if the rounding mode argument is {@code null} </exception>
-        Public Sub New(ByVal setPrecision As Integer, ByVal setRoundingMode As RoundingMode)
+        Public Sub New(  setPrecision As Integer,   setRoundingMode As RoundingMode)
             If precisionion < MIN_DIGITS Then Throw New IllegalArgumentException("Digits < 0")
             If roundingModeode Is Nothing Then Throw New NullPointerException("null RoundingMode")
 
@@ -170,7 +170,7 @@ Namespace java.math
         ''' <exception cref="IllegalArgumentException"> if the precision section is out of range
         ''' or of incorrect format </exception>
         ''' <exception cref="NullPointerException"> if the argument is {@code null} </exception>
-        Public Sub New(ByVal val As String)
+        Public Sub New(  val As String)
             Dim bad As Boolean = False
             Dim precisionion As Integer
             If val Is Nothing Then Throw New NullPointerException("null String")
@@ -235,7 +235,7 @@ Namespace java.math
         ''' <returns> {@code true} if and only if the specified {@code Object} is
         '''         a {@code MathContext} object which has exactly the same
         '''         settings as this object </returns>
-        Public Overrides Function Equals(ByVal x As Object) As Boolean
+        Public Overrides Function Equals(  x As Object) As Boolean
             Dim mc As MathContext
             If Not (TypeOf x Is MathContext) Then Return False
             mc = CType(x, MathContext)
@@ -292,7 +292,7 @@ Namespace java.math
         ''' deserialize it).
         ''' </summary>
         ''' <param name="s"> the stream being read. </param>
-        Private Sub readObject(ByVal s As java.io.ObjectInputStream)
+        Private Sub readObject(  s As java.io.ObjectInputStream)
             s.defaultReadObject() ' read in all fields
             ' validate possibly bad fields
             If precision < MIN_DIGITS Then

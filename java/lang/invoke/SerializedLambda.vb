@@ -89,7 +89,7 @@ Namespace java.lang.invoke
 		''' <param name="capturedArgs"> The dynamic arguments to the lambda factory site,
 		'''                     which represent variables captured by
 		'''                     the lambda </param>
-		Public Sub New(ByVal capturingClass As [Class], ByVal functionalInterfaceClass As String, ByVal functionalInterfaceMethodName As String, ByVal functionalInterfaceMethodSignature As String, ByVal implMethodKind As Integer, ByVal implClass As String, ByVal implMethodName As String, ByVal implMethodSignature As String, ByVal instantiatedMethodType As String, ByVal capturedArgs As Object())
+		Public Sub New(  capturingClass As [Class],   functionalInterfaceClass As String,   functionalInterfaceMethodName As String,   functionalInterfaceMethodSignature As String,   implMethodKind As Integer,   implClass As String,   implMethodName As String,   implMethodSignature As String,   instantiatedMethodType As String,   capturedArgs As Object())
 			Me.capturingClass = capturingClass
 			Me.functionalInterfaceClass = functionalInterfaceClass
 			Me.functionalInterfaceMethodName = functionalInterfaceMethodName
@@ -207,7 +207,7 @@ Namespace java.lang.invoke
 		''' Get a dynamic argument to the lambda capture site. </summary>
 		''' <param name="i"> the argument to capture </param>
 		''' <returns> a dynamic argument to the lambda capture site </returns>
-		Public Function getCapturedArg(ByVal i As Integer) As Object
+		Public Function getCapturedArg(  i As Integer) As Object
 			Return capturedArgs(i)
 		End Function
 

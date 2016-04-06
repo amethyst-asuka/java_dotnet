@@ -108,7 +108,7 @@ Namespace java.time.format
 		''' Creates a new instance of the context.
 		''' </summary>
 		''' <param name="formatter">  the formatter controlling the parse, not null </param>
-		Friend Sub New(ByVal formatter As DateTimeFormatter)
+		Friend Sub New(  formatter As DateTimeFormatter)
 			MyBase.New()
 			Me.formatter = formatter
 			parsed.Add(New Parsed)
@@ -175,7 +175,7 @@ Namespace java.time.format
 			Get
 				Return caseSensitive
 			End Get
-			Set(ByVal caseSensitive As Boolean)
+			Set(  caseSensitive As Boolean)
 				Me.caseSensitive = caseSensitive
 			End Set
 		End Property
@@ -192,7 +192,7 @@ Namespace java.time.format
 		''' <param name="offset2">  the offset into the second sequence, valid </param>
 		''' <param name="length">  the length to check, valid </param>
 		''' <returns> true if equal </returns>
-		Friend Function subSequenceEquals(ByVal cs1 As CharSequence, ByVal offset1 As Integer, ByVal cs2 As CharSequence, ByVal offset2 As Integer, ByVal length As Integer) As Boolean
+		Friend Function subSequenceEquals(  cs1 As CharSequence,   offset1 As Integer,   cs2 As CharSequence,   offset2 As Integer,   length As Integer) As Boolean
 			If offset1 + length > cs1.length() OrElse offset2 + length > cs2.length() Then Return False
 			If caseSensitive Then
 				For i As Integer = 0 To length - 1
@@ -217,7 +217,7 @@ Namespace java.time.format
 		''' <param name="ch1">  the first character </param>
 		''' <param name="ch2">  the second character </param>
 		''' <returns> true if equal </returns>
-		Friend Function charEquals(ByVal ch1 As Char, ByVal ch2 As Char) As Boolean
+		Friend Function charEquals(  ch1 As Char,   ch2 As Char) As Boolean
 			If caseSensitive Then Return ch1 = ch2
 			Return charEqualsIgnoreCase(ch1, ch2)
 		End Function
@@ -228,7 +228,7 @@ Namespace java.time.format
 		''' <param name="c1">  the first </param>
 		''' <param name="c2">  the second </param>
 		''' <returns> true if equal </returns>
-		Friend Shared Function charEqualsIgnoreCase(ByVal c1 As Char, ByVal c2 As Char) As Boolean
+		Friend Shared Function charEqualsIgnoreCase(  c1 As Char,   c2 As Char) As Boolean
 			Return c1 = c2 OrElse Char.ToUpper(c1) = Char.ToUpper(c2) OrElse Char.ToLower(c1) = Char.ToLower(c2)
 		End Function
 
@@ -243,7 +243,7 @@ Namespace java.time.format
 			Get
 				Return [strict]
 			End Get
-			Set(ByVal [strict] As Boolean)
+			Set(  [strict] As Boolean)
 				Me.strict = [strict]
 			End Set
 		End Property
@@ -261,7 +261,7 @@ Namespace java.time.format
 		''' Ends the parsing of an optional segment of the input.
 		''' </summary>
 		''' <param name="successful">  whether the optional segment was successfully parsed </param>
-		Friend Sub endOptional(ByVal successful As Boolean)
+		Friend Sub endOptional(  successful As Boolean)
 			If successful Then
 				parsed.Remove(parsed.Count - 2)
 			Else
@@ -290,7 +290,7 @@ Namespace java.time.format
 		''' Gets the resolved result of the parse.
 		''' </summary>
 		''' <returns> the result of the parse, not null </returns>
-		Friend Function toResolved(ByVal resolverStyle As ResolverStyle, ByVal resolverFields As java.util.Set(Of java.time.temporal.TemporalField)) As java.time.temporal.TemporalAccessor
+		Friend Function toResolved(  resolverStyle As ResolverStyle,   resolverFields As java.util.Set(Of java.time.temporal.TemporalField)) As java.time.temporal.TemporalAccessor
 			Dim parsed_Renamed As Parsed = currentParsed()
 			parsed_Renamed.chrono = effectiveChronology
 			parsed_Renamed.zone = (If(parsed_Renamed.zone IsNot Nothing, parsed_Renamed.zone, formatter.zone))
@@ -309,7 +309,7 @@ Namespace java.time.format
 		''' </summary>
 		''' <param name="field">  the field to query from the map, null returns null </param>
 		''' <returns> the value mapped to the specified field, null if field was not parsed </returns>
-		Friend Function getParsed(ByVal field As java.time.temporal.TemporalField) As Long?
+		Friend Function getParsed(  field As java.time.temporal.TemporalField) As Long?
 			Return currentParsed().fieldValues(field)
 		End Function
 
@@ -324,7 +324,7 @@ Namespace java.time.format
 		''' <param name="errorPos">  the position of the field being parsed </param>
 		''' <param name="successPos">  the position after the field being parsed </param>
 		''' <returns> the new position </returns>
-		Friend Function setParsedField(ByVal field As java.time.temporal.TemporalField, ByVal value As Long, ByVal errorPos As Integer, ByVal successPos As Integer) As Integer
+		Friend Function setParsedField(  field As java.time.temporal.TemporalField,   value As Long,   errorPos As Integer,   successPos As Integer) As Integer
 			java.util.Objects.requireNonNull(field, "field")
 				currentParsed().fieldValues(field) = value
 				Dim old As Long? = currentParsed().fieldValues(field)
@@ -343,7 +343,7 @@ Namespace java.time.format
 		''' </summary>
 		''' <param name="chrono">  the parsed chronology, not null </param>
 		Friend Property parsed As java.time.chrono.Chronology
-			Set(ByVal chrono As java.time.chrono.Chronology)
+			Set(  chrono As java.time.chrono.Chronology)
 				java.util.Objects.requireNonNull(chrono, "chrono")
 				currentParsed().chrono = chrono
 				If chronoListeners IsNot Nothing AndAlso chronoListeners.Count > 0 Then
@@ -362,7 +362,7 @@ Namespace java.time.format
 		''' Adds a Consumer<Chronology> to the list of listeners to be notified
 		''' if the Chronology changes. </summary>
 		''' <param name="listener"> a Consumer<Chronology> to be called when Chronology changes </param>
-		Friend Sub addChronoChangedListener(ByVal listener As java.util.function.Consumer(Of java.time.chrono.Chronology))
+		Friend Sub addChronoChangedListener(  listener As java.util.function.Consumer(Of java.time.chrono.Chronology))
 			If chronoListeners Is Nothing Then chronoListeners = New List(Of java.util.function.Consumer(Of java.time.chrono.Chronology))
 			chronoListeners.Add(listener)
 		End Sub
@@ -375,7 +375,7 @@ Namespace java.time.format
 		''' </summary>
 		''' <param name="zone">  the parsed zone, not null </param>
 		Friend Property parsed As java.time.ZoneId
-			Set(ByVal zone As java.time.ZoneId)
+			Set(  zone As java.time.ZoneId)
 				java.util.Objects.requireNonNull(zone, "zone")
 				currentParsed().zone = zone
 			End Set

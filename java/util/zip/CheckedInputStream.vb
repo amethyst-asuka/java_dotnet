@@ -41,7 +41,7 @@ Namespace java.util.zip
 		''' Creates an input stream using the specified Checksum. </summary>
 		''' <param name="in"> the input stream </param>
 		''' <param name="cksum"> the Checksum </param>
-		Public Sub New(ByVal [in] As java.io.InputStream, ByVal cksum As Checksum)
+		Public Sub New(  [in] As java.io.InputStream,   cksum As Checksum)
 			MyBase.New([in])
 			Me.cksum = cksum
 		End Sub
@@ -70,7 +70,7 @@ Namespace java.util.zip
 		''' <code>len</code> is negative, or <code>len</code> is greater than
 		''' <code>buf.length - off</code> </exception>
 		''' <exception cref="IOException"> if an I/O error has occurred </exception>
-		Public Overrides Function read(ByVal buf As SByte(), ByVal [off] As Integer, ByVal len As Integer) As Integer
+		Public Overrides Function read(  buf As SByte(),   [off] As Integer,   len As Integer) As Integer
 			len = [in].read(buf, [off], len)
 			If len <> -1 Then cksum.update(buf, [off], len)
 			Return len
@@ -81,7 +81,7 @@ Namespace java.util.zip
 		''' <param name="n"> the number of bytes to skip </param>
 		''' <returns> the actual number of bytes skipped </returns>
 		''' <exception cref="IOException"> if an I/O error has occurred </exception>
-		Public Overrides Function skip(ByVal n As Long) As Long
+		Public Overrides Function skip(  n As Long) As Long
 			Dim buf As SByte() = New SByte(511){}
 			Dim total As Long = 0
 			Do While total < n

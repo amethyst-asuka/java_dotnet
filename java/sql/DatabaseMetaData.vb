@@ -411,7 +411,7 @@ Namespace java.sql
 		''' <returns> <code>true</code> if so; <code>false</code> otherwise </returns>
 		''' <exception cref="SQLException"> if a database access error occurs </exception>
 		''' <seealso cref= Types </seealso>
-		Function supportsConvert(ByVal fromType As Integer, ByVal toType As Integer) As Boolean
+		Function supportsConvert(  fromType As Integer,   toType As Integer) As Boolean
 
 		''' <summary>
 		''' Retrieves whether this database supports table correlation names.
@@ -1052,7 +1052,7 @@ Namespace java.sql
 		''' <returns> <code>true</code> if so; <code>false</code> otherwise </returns>
 		''' <exception cref="SQLException"> if a database access error occurs </exception>
 		''' <seealso cref= Connection </seealso>
-		Function supportsTransactionIsolationLevel(ByVal level As Integer) As Boolean
+		Function supportsTransactionIsolationLevel(  level As Integer) As Boolean
 
 		''' <summary>
 		''' Retrieves whether this database supports both data definition and
@@ -1130,7 +1130,7 @@ Namespace java.sql
 		''' <returns> <code>ResultSet</code> - each row is a procedure description </returns>
 		''' <exception cref="SQLException"> if a database access error occurs </exception>
 		''' <seealso cref= #getSearchStringEscape </seealso>
-		Function getProcedures(ByVal catalog As String, ByVal schemaPattern As String, ByVal procedureNamePattern As String) As ResultSet
+		Function getProcedures(  catalog As String,   schemaPattern As String,   procedureNamePattern As String) As ResultSet
 
 		''' <summary>
 		''' Indicates that it is not known whether the procedure returns
@@ -1254,7 +1254,7 @@ Namespace java.sql
 		'''      column </returns>
 		''' <exception cref="SQLException"> if a database access error occurs </exception>
 		''' <seealso cref= #getSearchStringEscape </seealso>
-		Function getProcedureColumns(ByVal catalog As String, ByVal schemaPattern As String, ByVal procedureNamePattern As String, ByVal columnNamePattern As String) As ResultSet
+		Function getProcedureColumns(  catalog As String,   schemaPattern As String,   procedureNamePattern As String,   columnNamePattern As String) As ResultSet
 
 		''' <summary>
 		''' Indicates that type of the column is unknown.
@@ -1401,7 +1401,7 @@ Namespace java.sql
 		''' <returns> <code>ResultSet</code> - each row is a table description </returns>
 		''' <exception cref="SQLException"> if a database access error occurs </exception>
 		''' <seealso cref= #getSearchStringEscape </seealso>
-		Function getTables(ByVal catalog As String, ByVal schemaPattern As String, ByVal tableNamePattern As String, ByVal types As String()) As ResultSet
+		Function getTables(  catalog As String,   schemaPattern As String,   tableNamePattern As String,   types As String()) As ResultSet
 
 		''' <summary>
 		''' Retrieves the schema names available in this database.  The results
@@ -1539,7 +1539,7 @@ Namespace java.sql
 		''' <returns> <code>ResultSet</code> - each row is a column description </returns>
 		''' <exception cref="SQLException"> if a database access error occurs </exception>
 		''' <seealso cref= #getSearchStringEscape </seealso>
-		Function getColumns(ByVal catalog As String, ByVal schemaPattern As String, ByVal tableNamePattern As String, ByVal columnNamePattern As String) As ResultSet
+		Function getColumns(  catalog As String,   schemaPattern As String,   tableNamePattern As String,   columnNamePattern As String) As ResultSet
 
 		''' <summary>
 		''' Indicates that the column might not allow <code>NULL</code> values.
@@ -1609,7 +1609,7 @@ Namespace java.sql
 		''' <returns> <code>ResultSet</code> - each row is a column privilege description </returns>
 		''' <exception cref="SQLException"> if a database access error occurs </exception>
 		''' <seealso cref= #getSearchStringEscape </seealso>
-		Function getColumnPrivileges(ByVal catalog As String, ByVal schema As String, ByVal table As String, ByVal columnNamePattern As String) As ResultSet
+		Function getColumnPrivileges(  catalog As String,   schema As String,   table As String,   columnNamePattern As String) As ResultSet
 
 		''' <summary>
 		''' Retrieves a description of the access rights for each table available
@@ -1650,7 +1650,7 @@ Namespace java.sql
 		''' <returns> <code>ResultSet</code> - each row is a table privilege description </returns>
 		''' <exception cref="SQLException"> if a database access error occurs </exception>
 		''' <seealso cref= #getSearchStringEscape </seealso>
-		Function getTablePrivileges(ByVal catalog As String, ByVal schemaPattern As String, ByVal tableNamePattern As String) As ResultSet
+		Function getTablePrivileges(  catalog As String,   schemaPattern As String,   tableNamePattern As String) As ResultSet
 
 		''' <summary>
 		''' Retrieves a description of a table's optimal set of columns that
@@ -1702,7 +1702,7 @@ Namespace java.sql
 		''' <param name="nullable"> include columns that are nullable. </param>
 		''' <returns> <code>ResultSet</code> - each row is a column description </returns>
 		''' <exception cref="SQLException"> if a database access error occurs </exception>
-		Function getBestRowIdentifier(ByVal catalog As String, ByVal schema As String, ByVal table As String, ByVal scope As Integer, ByVal nullable As Boolean) As ResultSet
+		Function getBestRowIdentifier(  catalog As String,   schema As String,   table As String,   scope As Integer,   nullable As Boolean) As ResultSet
 
 		''' <summary>
 		''' Indicates that the scope of the best row identifier is
@@ -1817,7 +1817,7 @@ Namespace java.sql
 		''' <returns> a <code>ResultSet</code> object in which each row is a
 		'''         column description </returns>
 		''' <exception cref="SQLException"> if a database access error occurs </exception>
-		Function getVersionColumns(ByVal catalog As String, ByVal schema As String, ByVal table As String) As ResultSet
+		Function getVersionColumns(  catalog As String,   schema As String,   table As String) As ResultSet
 
 		''' <summary>
 		''' Indicates that this version column may or may not be a pseudo column.
@@ -1880,7 +1880,7 @@ Namespace java.sql
 		'''        in the database </param>
 		''' <returns> <code>ResultSet</code> - each row is a primary key column description </returns>
 		''' <exception cref="SQLException"> if a database access error occurs </exception>
-		Function getPrimaryKeys(ByVal catalog As String, ByVal schema As String, ByVal table As String) As ResultSet
+		Function getPrimaryKeys(  catalog As String,   schema As String,   table As String) As ResultSet
 
 		''' <summary>
 		''' Retrieves a description of the primary key columns that are
@@ -1956,7 +1956,7 @@ Namespace java.sql
 		''' <returns> <code>ResultSet</code> - each row is a primary key column description </returns>
 		''' <exception cref="SQLException"> if a database access error occurs </exception>
 		''' <seealso cref= #getExportedKeys </seealso>
-		Function getImportedKeys(ByVal catalog As String, ByVal schema As String, ByVal table As String) As ResultSet
+		Function getImportedKeys(  catalog As String,   schema As String,   table As String) As ResultSet
 
 		''' <summary>
 		''' For the column <code>UPDATE_RULE</code>,
@@ -2146,7 +2146,7 @@ Namespace java.sql
 		'''         foreign key column description </returns>
 		''' <exception cref="SQLException"> if a database access error occurs </exception>
 		''' <seealso cref= #getImportedKeys </seealso>
-		Function getExportedKeys(ByVal catalog As String, ByVal schema As String, ByVal table As String) As ResultSet
+		Function getExportedKeys(  catalog As String,   schema As String,   table As String) As ResultSet
 
 		''' <summary>
 		''' Retrieves a description of the foreign key columns in the given foreign key
@@ -2230,7 +2230,7 @@ Namespace java.sql
 		''' <returns> <code>ResultSet</code> - each row is a foreign key column description </returns>
 		''' <exception cref="SQLException"> if a database access error occurs </exception>
 		''' <seealso cref= #getImportedKeys </seealso>
-		Function getCrossReference(ByVal parentCatalog As String, ByVal parentSchema As String, ByVal parentTable As String, ByVal foreignCatalog As String, ByVal foreignSchema As String, ByVal foreignTable As String) As ResultSet
+		Function getCrossReference(  parentCatalog As String,   parentSchema As String,   parentTable As String,   foreignCatalog As String,   foreignSchema As String,   foreignTable As String) As ResultSet
 
 		''' <summary>
 		''' Retrieves a description of all the data types supported by
@@ -2433,7 +2433,7 @@ Namespace java.sql
 		'''     accurate </param>
 		''' <returns> <code>ResultSet</code> - each row is an index column description </returns>
 		''' <exception cref="SQLException"> if a database access error occurs </exception>
-		Function getIndexInfo(ByVal catalog As String, ByVal schema As String, ByVal table As String, ByVal unique As Boolean, ByVal approximate As Boolean) As ResultSet
+		Function getIndexInfo(  catalog As String,   schema As String,   table As String,   unique As Boolean,   approximate As Boolean) As ResultSet
 
 		''' <summary>
 		''' Indicates that this column contains table statistics that
@@ -2488,7 +2488,7 @@ Namespace java.sql
 		''' <exception cref="SQLException"> if a database access error occurs </exception>
 		''' <seealso cref= Connection
 		''' @since 1.2 </seealso>
-		Function supportsResultSetType(ByVal type As Integer) As Boolean
+		Function supportsResultSetType(  type As Integer) As Boolean
 
 		''' <summary>
 		''' Retrieves whether this database supports the given concurrency type
@@ -2500,7 +2500,7 @@ Namespace java.sql
 		''' <exception cref="SQLException"> if a database access error occurs </exception>
 		''' <seealso cref= Connection
 		''' @since 1.2 </seealso>
-		Function supportsResultSetConcurrency(ByVal type As Integer, ByVal concurrency As Integer) As Boolean
+		Function supportsResultSetConcurrency(  type As Integer,   concurrency As Integer) As Boolean
 
 		''' 
 		''' <summary>
@@ -2515,7 +2515,7 @@ Namespace java.sql
 		'''        <code>false</code> otherwise </returns>
 		''' <exception cref="SQLException"> if a database access error occurs
 		''' @since 1.2 </exception>
-		Function ownUpdatesAreVisible(ByVal type As Integer) As Boolean
+		Function ownUpdatesAreVisible(  type As Integer) As Boolean
 
 		''' <summary>
 		''' Retrieves whether a result set's own deletes are visible.
@@ -2528,7 +2528,7 @@ Namespace java.sql
 		'''        <code>false</code> otherwise </returns>
 		''' <exception cref="SQLException"> if a database access error occurs
 		''' @since 1.2 </exception>
-		Function ownDeletesAreVisible(ByVal type As Integer) As Boolean
+		Function ownDeletesAreVisible(  type As Integer) As Boolean
 
 		''' <summary>
 		''' Retrieves whether a result set's own inserts are visible.
@@ -2541,7 +2541,7 @@ Namespace java.sql
 		'''        <code>false</code> otherwise </returns>
 		''' <exception cref="SQLException"> if a database access error occurs
 		''' @since 1.2 </exception>
-		Function ownInsertsAreVisible(ByVal type As Integer) As Boolean
+		Function ownInsertsAreVisible(  type As Integer) As Boolean
 
 		''' <summary>
 		''' Retrieves whether updates made by others are visible.
@@ -2555,7 +2555,7 @@ Namespace java.sql
 		'''        <code>false</code> otherwise </returns>
 		''' <exception cref="SQLException"> if a database access error occurs
 		''' @since 1.2 </exception>
-		Function othersUpdatesAreVisible(ByVal type As Integer) As Boolean
+		Function othersUpdatesAreVisible(  type As Integer) As Boolean
 
 		''' <summary>
 		''' Retrieves whether deletes made by others are visible.
@@ -2569,7 +2569,7 @@ Namespace java.sql
 		'''        <code>false</code> otherwise </returns>
 		''' <exception cref="SQLException"> if a database access error occurs
 		''' @since 1.2 </exception>
-		Function othersDeletesAreVisible(ByVal type As Integer) As Boolean
+		Function othersDeletesAreVisible(  type As Integer) As Boolean
 
 		''' <summary>
 		''' Retrieves whether inserts made by others are visible.
@@ -2583,7 +2583,7 @@ Namespace java.sql
 		'''         <code>false</code> otherwise </returns>
 		''' <exception cref="SQLException"> if a database access error occurs
 		''' @since 1.2 </exception>
-		Function othersInsertsAreVisible(ByVal type As Integer) As Boolean
+		Function othersInsertsAreVisible(  type As Integer) As Boolean
 
 		''' <summary>
 		''' Retrieves whether or not a visible row update can be detected by
@@ -2597,7 +2597,7 @@ Namespace java.sql
 		'''         <code>false</code> otherwise </returns>
 		''' <exception cref="SQLException"> if a database access error occurs
 		''' @since 1.2 </exception>
-		Function updatesAreDetected(ByVal type As Integer) As Boolean
+		Function updatesAreDetected(  type As Integer) As Boolean
 
 		''' <summary>
 		''' Retrieves whether or not a visible row delete can be detected by
@@ -2613,7 +2613,7 @@ Namespace java.sql
 		'''         <code>false</code> otherwise </returns>
 		''' <exception cref="SQLException"> if a database access error occurs
 		''' @since 1.2 </exception>
-		Function deletesAreDetected(ByVal type As Integer) As Boolean
+		Function deletesAreDetected(  type As Integer) As Boolean
 
 		''' <summary>
 		''' Retrieves whether or not a visible row insert can be detected
@@ -2627,7 +2627,7 @@ Namespace java.sql
 		'''         set type; <code>false</code> otherwise </returns>
 		''' <exception cref="SQLException"> if a database access error occurs
 		''' @since 1.2 </exception>
-		Function insertsAreDetected(ByVal type As Integer) As Boolean
+		Function insertsAreDetected(  type As Integer) As Boolean
 
 		''' <summary>
 		''' Retrieves whether this database supports batch updates.
@@ -2686,7 +2686,7 @@ Namespace java.sql
 		''' <exception cref="SQLException"> if a database access error occurs </exception>
 		''' <seealso cref= #getSearchStringEscape
 		''' @since 1.2 </seealso>
-		Function getUDTs(ByVal catalog As String, ByVal schemaPattern As String, ByVal typeNamePattern As String, ByVal types As Integer()) As ResultSet
+		Function getUDTs(  catalog As String,   schemaPattern As String,   typeNamePattern As String,   types As Integer()) As ResultSet
 
 		''' <summary>
 		''' Retrieves the connection that produced this metadata object.
@@ -2782,7 +2782,7 @@ Namespace java.sql
 		''' <exception cref="SQLException"> if a database access error occurs </exception>
 		''' <seealso cref= #getSearchStringEscape
 		''' @since 1.4 </seealso>
-		Function getSuperTypes(ByVal catalog As String, ByVal schemaPattern As String, ByVal typeNamePattern As String) As ResultSet
+		Function getSuperTypes(  catalog As String,   schemaPattern As String,   typeNamePattern As String) As ResultSet
 
 		''' <summary>
 		''' Retrieves a description of the table hierarchies defined in a particular
@@ -2817,7 +2817,7 @@ Namespace java.sql
 		''' <exception cref="SQLException"> if a database access error occurs </exception>
 		''' <seealso cref= #getSearchStringEscape
 		''' @since 1.4 </seealso>
-		Function getSuperTables(ByVal catalog As String, ByVal schemaPattern As String, ByVal tableNamePattern As String) As ResultSet
+		Function getSuperTables(  catalog As String,   schemaPattern As String,   tableNamePattern As String) As ResultSet
 
 		''' <summary>
 		''' Indicates that <code>NULL</code> values might not be allowed.
@@ -2927,7 +2927,7 @@ Namespace java.sql
 		''' <exception cref="SQLException"> if a database access error occurs </exception>
 		''' <seealso cref= #getSearchStringEscape
 		''' @since 1.4 </seealso>
-		Function getAttributes(ByVal catalog As String, ByVal schemaPattern As String, ByVal typeNamePattern As String, ByVal attributeNamePattern As String) As ResultSet
+		Function getAttributes(  catalog As String,   schemaPattern As String,   typeNamePattern As String,   attributeNamePattern As String) As ResultSet
 
 		''' <summary>
 		''' Retrieves whether this database supports the given result set holdability.
@@ -2939,7 +2939,7 @@ Namespace java.sql
 		''' <exception cref="SQLException"> if a database access error occurs </exception>
 		''' <seealso cref= Connection
 		''' @since 1.4 </seealso>
-		Function supportsResultSetHoldability(ByVal holdability As Integer) As Boolean
+		Function supportsResultSetHoldability(  holdability As Integer) As Boolean
 
 		''' <summary>
 		''' Retrieves this database's default holdability for <code>ResultSet</code>
@@ -3096,7 +3096,7 @@ Namespace java.sql
 		''' <exception cref="SQLException"> if a database access error occurs </exception>
 		''' <seealso cref= #getSearchStringEscape
 		''' @since 1.6 </seealso>
-		Function getSchemas(ByVal catalog As String, ByVal schemaPattern As String) As ResultSet
+		Function getSchemas(  catalog As String,   schemaPattern As String) As ResultSet
 
 		''' <summary>
 		''' Retrieves whether this database supports invoking user-defined or vendor functions
@@ -3188,7 +3188,7 @@ Namespace java.sql
 		''' <exception cref="SQLException"> if a database access error occurs </exception>
 		''' <seealso cref= #getSearchStringEscape
 		''' @since 1.6 </seealso>
-		Function getFunctions(ByVal catalog As String, ByVal schemaPattern As String, ByVal functionNamePattern As String) As ResultSet
+		Function getFunctions(  catalog As String,   schemaPattern As String,   functionNamePattern As String) As ResultSet
 		''' <summary>
 		''' Retrieves a description of the given catalog's system or user
 		''' function parameters and return type.
@@ -3282,7 +3282,7 @@ Namespace java.sql
 		''' <exception cref="SQLException"> if a database access error occurs </exception>
 		''' <seealso cref= #getSearchStringEscape
 		''' @since 1.6 </seealso>
-		Function getFunctionColumns(ByVal catalog As String, ByVal schemaPattern As String, ByVal functionNamePattern As String, ByVal columnNamePattern As String) As ResultSet
+		Function getFunctionColumns(  catalog As String,   schemaPattern As String,   functionNamePattern As String,   columnNamePattern As String) As ResultSet
 
 
 		''' <summary>
@@ -3490,7 +3490,7 @@ Namespace java.sql
 		''' <exception cref="SQLException"> if a database access error occurs </exception>
 		''' <seealso cref= PseudoColumnUsage
 		''' @since 1.7 </seealso>
-		Function getPseudoColumns(ByVal catalog As String, ByVal schemaPattern As String, ByVal tableNamePattern As String, ByVal columnNamePattern As String) As ResultSet
+		Function getPseudoColumns(  catalog As String,   schemaPattern As String,   tableNamePattern As String,   columnNamePattern As String) As ResultSet
 
 		''' <summary>
 		''' Retrieves whether a generated key will always be returned if the column

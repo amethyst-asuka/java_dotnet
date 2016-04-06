@@ -44,7 +44,7 @@ Namespace java.util.function
 		''' </summary>
 		''' <param name="value"> the function argument </param>
 		''' <returns> the function result </returns>
-		Function apply(ByVal value As Integer) As R
+		Function apply(  value As Integer) As R
 	End Interface
 
 End Namespace

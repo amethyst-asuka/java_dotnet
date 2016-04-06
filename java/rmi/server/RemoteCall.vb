@@ -97,7 +97,7 @@ Namespace java.rmi.server
 		''' @since JDK1.1 </exception>
 		''' @deprecated no replacement 
 		<Obsolete("no replacement")> _
-		Function getResultStream(ByVal success As Boolean) As java.io.ObjectOutput
+		Function getResultStream(  success As Boolean) As java.io.ObjectOutput
 
 		''' <summary>
 		''' Do whatever it takes to execute the call.

@@ -117,7 +117,7 @@ Namespace java.time.chrono
 		''' </summary>
 		''' <param name="type">  the type </param>
 		''' <param name="object">  the object </param>
-		Friend Sub New(ByVal type As SByte, ByVal [object] As Object)
+		Friend Sub New(  type As SByte,   [object] As Object)
 			Me.type = type
 			Me.object_Renamed = object_Renamed
 		End Sub
@@ -145,11 +145,11 @@ Namespace java.time.chrono
 		''' </ul>
 		''' </summary>
 		''' <param name="out">  the data stream to write to, not null </param>
-		Public Overrides Sub writeExternal(ByVal out As java.io.ObjectOutput)
+		Public Overrides Sub writeExternal(  out As java.io.ObjectOutput)
 			writeInternal(type, object_Renamed, out)
 		End Sub
 
-		Private Shared Sub writeInternal(ByVal type As SByte, ByVal [object] As Object, ByVal out As java.io.ObjectOutput)
+		Private Shared Sub writeInternal(  type As SByte,   [object] As Object,   out As java.io.ObjectOutput)
 			out.writeByte(type)
 			Select Case type
 				Case CHRONO_TYPE
@@ -202,17 +202,17 @@ Namespace java.time.chrono
 		''' </ul>
 		''' </summary>
 		''' <param name="in">  the data stream to read from, not null </param>
-		Public Overrides Sub readExternal(ByVal [in] As java.io.ObjectInput)
+		Public Overrides Sub readExternal(  [in] As java.io.ObjectInput)
 			type = [in].readByte()
 			object_Renamed = readInternal(type, [in])
 		End Sub
 
-		Friend Shared Function read(ByVal [in] As java.io.ObjectInput) As Object
+		Friend Shared Function read(  [in] As java.io.ObjectInput) As Object
 			Dim type As SByte = [in].readByte()
 			Return readInternal(type, [in])
 		End Function
 
-		Private Shared Function readInternal(ByVal type As SByte, ByVal [in] As java.io.ObjectInput) As Object
+		Private Shared Function readInternal(  type As SByte,   [in] As java.io.ObjectInput) As Object
 			Select Case type
 				Case CHRONO_TYPE
 					Return AbstractChronology.readExternal([in])

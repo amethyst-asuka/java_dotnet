@@ -63,7 +63,7 @@ Namespace java.util.zip
 		''' <param name="size"> the output buffer size </param>
 		''' <exception cref="IOException"> If an I/O error has occurred. </exception>
 		''' <exception cref="IllegalArgumentException"> if {@code size <= 0} </exception>
-		Public Sub New(ByVal out As java.io.OutputStream, ByVal size As Integer)
+		Public Sub New(  out As java.io.OutputStream,   size As Integer)
 			Me.New(out, size, False)
 		End Sub
 
@@ -83,7 +83,7 @@ Namespace java.util.zip
 		''' <exception cref="IllegalArgumentException"> if {@code size <= 0}
 		''' 
 		''' @since 1.7 </exception>
-		Public Sub New(ByVal out As java.io.OutputStream, ByVal size As Integer, ByVal syncFlush As Boolean)
+		Public Sub New(  out As java.io.OutputStream,   size As Integer,   syncFlush As Boolean)
 			MyBase.New(out, New Deflater(Deflater.DEFAULT_COMPRESSION, True), size, syncFlush)
 			usesDefaultDeflater = True
 			writeHeader()
@@ -99,7 +99,7 @@ Namespace java.util.zip
 		''' </summary>
 		''' <param name="out"> the output stream </param>
 		''' <exception cref="IOException"> If an I/O error has occurred. </exception>
-		Public Sub New(ByVal out As java.io.OutputStream)
+		Public Sub New(  out As java.io.OutputStream)
 			Me.New(out, 512, False)
 		End Sub
 
@@ -118,7 +118,7 @@ Namespace java.util.zip
 		''' <exception cref="IOException"> If an I/O error has occurred.
 		''' 
 		''' @since 1.7 </exception>
-		Public Sub New(ByVal out As java.io.OutputStream, ByVal syncFlush As Boolean)
+		Public Sub New(  out As java.io.OutputStream,   syncFlush As Boolean)
 			Me.New(out, 512, syncFlush)
 		End Sub
 
@@ -130,7 +130,7 @@ Namespace java.util.zip
 		''' <param name="len"> the length of the data </param>
 		''' <exception cref="IOException"> If an I/O error has occurred. </exception>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overrides Sub write(ByVal buf As SByte(), ByVal [off] As Integer, ByVal len As Integer)
+		Public Overrides Sub write(  buf As SByte(),   [off] As Integer,   len As Integer)
 			MyBase.write(buf, [off], len)
 			crc.update(buf, [off], len)
 		End Sub
@@ -173,7 +173,7 @@ Namespace java.util.zip
 	'     * Writes GZIP member trailer to a byte array, starting at a given
 	'     * offset.
 	'     
-		Private Sub writeTrailer(ByVal buf As SByte(), ByVal offset As Integer)
+		Private Sub writeTrailer(  buf As SByte(),   offset As Integer)
 			writeInt(CInt(crc.value), buf, offset) ' CRC-32 of uncompr. data
 			writeInt(def.totalIn, buf, offset + 4) ' Number of uncompr. bytes
 		End Sub
@@ -182,7 +182,7 @@ Namespace java.util.zip
 	'     * Writes integer in Intel byte order to a byte array, starting at a
 	'     * given offset.
 	'     
-		Private Sub writeInt(ByVal i As Integer, ByVal buf As SByte(), ByVal offset As Integer)
+		Private Sub writeInt(  i As Integer,   buf As SByte(),   offset As Integer)
 			writeShort(i And &Hffff, buf, offset)
 			writeShort((i >> 16) And &Hffff, buf, offset + 2)
 		End Sub
@@ -191,7 +191,7 @@ Namespace java.util.zip
 	'     * Writes short integer in Intel byte order to a byte array, starting
 	'     * at a given offset
 	'     
-		Private Sub writeShort(ByVal s As Integer, ByVal buf As SByte(), ByVal offset As Integer)
+		Private Sub writeShort(  s As Integer,   buf As SByte(),   offset As Integer)
 			buf(offset) = CByte(s And &Hff)
 			buf(offset + 1) = CByte((s >> 8) And &Hff)
 		End Sub

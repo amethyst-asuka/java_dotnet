@@ -82,7 +82,7 @@ Namespace java.io
         ''' </summary>
         ''' <param name="lock">
         '''         Object to synchronize on </param>
-        Protected Friend Sub New(ByVal lock As Object)
+        Protected Friend Sub New(  lock As Object)
             If lock Is Nothing Then Throw New NullPointerException
             Me.lock = lock
         End Sub
@@ -100,7 +100,7 @@ Namespace java.io
         ''' </param>
         ''' <exception cref="IOException">
         '''          If an I/O error occurs </exception>
-        Public Overridable Sub write(ByVal c As Integer)
+        Public Overridable Sub write(  c As Integer)
             SyncLock lock
                 If writeBuffer Is Nothing Then writeBuffer = New Char(WRITE_BUFFER_SIZE - 1) {}
                 writeBuffer(0) = ChrW(c)
@@ -116,7 +116,7 @@ Namespace java.io
         ''' </param>
         ''' <exception cref="IOException">
         '''          If an I/O error occurs </exception>
-        Public Overridable Sub write(ByVal cbuf As Char())
+        Public Overridable Sub write(  cbuf As Char())
             write(cbuf, 0, cbuf.Length)
         End Sub
 
@@ -134,7 +134,7 @@ Namespace java.io
         ''' </param>
         ''' <exception cref="IOException">
         '''          If an I/O error occurs </exception>
-        Public MustOverride Sub write(cbuf() As Char, ByVal [off] As Integer, ByVal len As Integer)
+        Public MustOverride Sub write(cbuf() As Char,   [off] As Integer,   len As Integer)
 
         ''' <summary>
         ''' Writes a string.
@@ -144,7 +144,7 @@ Namespace java.io
         ''' </param>
         ''' <exception cref="IOException">
         '''          If an I/O error occurs </exception>
-        Public Overridable Sub write(ByVal str As String)
+        Public Overridable Sub write(  str As String)
             write(str, 0, str.length())
         End Sub
 
@@ -167,7 +167,7 @@ Namespace java.io
         ''' </exception>
         ''' <exception cref="IOException">
         '''          If an I/O error occurs </exception>
-        Public Overridable Sub write(ByVal str As String, ByVal [off] As Integer, ByVal len As Integer)
+        Public Overridable Sub write(  str As String,   [off] As Integer,   len As Integer)
             SyncLock lock
                 Dim cbuf As Char()
                 If len <= WRITE_BUFFER_SIZE Then
@@ -207,7 +207,7 @@ Namespace java.io
         '''          If an I/O error occurs
         ''' 
         ''' @since  1.5 </exception>
-        Public Overridable Function append(ByVal csq As CharSequence) As Writer
+        Public Overridable Function append(  csq As CharSequence) As Writer
             If csq Is Nothing Then
                 write("null")
             Else
@@ -251,7 +251,7 @@ Namespace java.io
         '''          If an I/O error occurs
         ''' 
         ''' @since  1.5 </exception>
-        Public Overridable Function append(ByVal csq As CharSequence, ByVal start As Integer, ByVal [end] As Integer) As Writer
+        Public Overridable Function append(  csq As CharSequence,   start As Integer,   [end] As Integer) As Writer
             Dim cs As CharSequence = (If(csq Is Nothing, "null", csq))
             write(cs.subSequence(start, [end]).ToString())
             Return Me
@@ -275,7 +275,7 @@ Namespace java.io
         '''          If an I/O error occurs
         ''' 
         ''' @since 1.5 </exception>
-        Public Overridable Function append(ByVal c As Char) As Writer
+        Public Overridable Function append(  c As Char) As Writer
             write(c)
             Return Me
         End Function

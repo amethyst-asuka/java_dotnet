@@ -120,7 +120,7 @@ Namespace java.util.stream
 		''' 
 		''' <p>Prior to this call, the sink must be in the initial state, and after
 		''' this call it is in the active state. </param>
-		default Sub begin(ByVal size As Long)
+		default Sub begin(  size As Long)
 
 		''' <summary>
 		''' Indicates that all elements have been pushed.  If the {@code Sink} is
@@ -148,8 +148,8 @@ Namespace java.util.stream
 		''' @implSpec The default implementation throws IllegalStateException.
 		''' </summary>
 		''' <exception cref="IllegalStateException"> if this sink does not accept int values </exception>
-		default Sub accept(ByVal value As Integer)
-			throw Function IllegalStateException("called wrong accept method" ByVal  As ) As New
+		default Sub accept(  value As Integer)
+			throw Function IllegalStateException("called wrong accept method"    As ) As New
 
 		''' <summary>
 		''' Accepts a long value.
@@ -157,8 +157,8 @@ Namespace java.util.stream
 		''' @implSpec The default implementation throws IllegalStateException.
 		''' </summary>
 		''' <exception cref="IllegalStateException"> if this sink does not accept long values </exception>
-		default Sub accept(ByVal value As Long)
-			throw Function IllegalStateException("called wrong accept method" ByVal  As ) As New
+		default Sub accept(  value As Long)
+			throw Function IllegalStateException("called wrong accept method"    As ) As New
 
 		''' <summary>
 		''' Accepts a double value.
@@ -166,8 +166,8 @@ Namespace java.util.stream
 		''' @implSpec The default implementation throws IllegalStateException.
 		''' </summary>
 		''' <exception cref="IllegalStateException"> if this sink does not accept double values </exception>
-		default Sub accept(ByVal value As Double)
-			throw Function IllegalStateException("called wrong accept method" ByVal  As ) As New
+		default Sub accept(  value As Double)
+			throw Function IllegalStateException("called wrong accept method"    As ) As New
 
 		''' <summary>
 		''' {@code Sink} that implements {@code Sink<Integer>}, re-abstracts

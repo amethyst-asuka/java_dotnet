@@ -1027,7 +1027,7 @@ Namespace java.util.regex
 		''' <returns> the given regular expression compiled into a pattern </returns>
 		''' <exception cref="PatternSyntaxException">
 		'''          If the expression's syntax is invalid </exception>
-		Public Shared Function compile(ByVal regex As String) As Pattern
+		Public Shared Function compile(  regex As String) As Pattern
 			Return New Pattern(regex, 0)
 		End Function
 
@@ -1052,7 +1052,7 @@ Namespace java.util.regex
 		''' </exception>
 		''' <exception cref="PatternSyntaxException">
 		'''          If the expression's syntax is invalid </exception>
-		Public Shared Function compile(ByVal regex As String, ByVal flags As Integer) As Pattern
+		Public Shared Function compile(  regex As String,   flags As Integer) As Pattern
 			Return New Pattern(regex, flags)
 		End Function
 
@@ -1082,7 +1082,7 @@ Namespace java.util.regex
 		'''         The character sequence to be matched
 		''' </param>
 		''' <returns>  A new matcher for this pattern </returns>
-		Public Function matcher(ByVal input As CharSequence) As Matcher
+		Public Function matcher(  input As CharSequence) As Matcher
 			If Not compiled Then
 				SyncLock Me
 					If Not compiled Then compile()
@@ -1125,7 +1125,7 @@ Namespace java.util.regex
 		''' <returns> whether or not the regular expression matches on the input </returns>
 		''' <exception cref="PatternSyntaxException">
 		'''          If the expression's syntax is invalid </exception>
-		Public Shared Function matches(ByVal regex As String, ByVal input As CharSequence) As Boolean
+		Public Shared Function matches(  regex As String,   input As CharSequence) As Boolean
 			Dim p As Pattern = Pattern.compile(regex)
 			Dim m As Matcher = p.matcher(input)
 			Return m.matches()
@@ -1194,7 +1194,7 @@ Namespace java.util.regex
 		''' </param>
 		''' <returns>  The array of strings computed by splitting the input
 		'''          around matches of this pattern </returns>
-		Public Function split(ByVal input As CharSequence, ByVal limit As Integer) As String()
+		Public Function split(  input As CharSequence,   limit As Integer) As String()
 			Dim index As Integer = 0
 			Dim matchLimited As Boolean = limit > 0
 			Dim matchList As New List(Of String)
@@ -1258,7 +1258,7 @@ Namespace java.util.regex
 		''' </param>
 		''' <returns>  The array of strings computed by splitting the input
 		'''          around matches of this pattern </returns>
-		Public Function split(ByVal input As CharSequence) As String()
+		Public Function split(  input As CharSequence) As String()
 			Return Split(input, 0)
 		End Function
 
@@ -1275,7 +1275,7 @@ Namespace java.util.regex
 		''' <param name="s"> The string to be literalized </param>
 		''' <returns>  A literal string replacement
 		''' @since 1.5 </returns>
-		Public Shared Function quote(ByVal s As String) As String
+		Public Shared Function quote(  s As String) As String
 			Dim slashEIndex As Integer = s.IndexOf("\E")
 			If slashEIndex = -1 Then Return "\Q" & s & "\E"
 
@@ -1299,7 +1299,7 @@ Namespace java.util.regex
 		''' Recompile the Pattern instance from a stream.  The original pattern
 		''' string is read in and the object tree is recompiled from it.
 		''' </summary>
-		Private Sub readObject(ByVal s As java.io.ObjectInputStream)
+		Private Sub readObject(  s As java.io.ObjectInputStream)
 
 			' Read in all fields
 			s.defaultReadObject()
@@ -1323,7 +1323,7 @@ Namespace java.util.regex
 		''' a Pattern. An empty pattern string results in an object tree with
 		''' only a Start node and a LastNode node.
 		''' </summary>
-		Private Sub New(ByVal p As String, ByVal f As Integer)
+		Private Sub New(  p As String,   f As Integer)
 			pattern_Renamed = p
 			flags_Renamed = f
 
@@ -1389,7 +1389,7 @@ Namespace java.util.regex
 		''' of alternations to it that will match the canonical equivalences
 		''' of the characters within the class.
 		''' </summary>
-		Private Function normalizeCharClass(ByVal newPattern As StringBuilder, ByVal i As Integer) As Integer
+		Private Function normalizeCharClass(  newPattern As StringBuilder,   i As Integer) As Integer
 			Dim charClass As New StringBuilder
 			Dim eq As StringBuilder = Nothing
 			Dim lastCodePoint As Integer = -1
@@ -1442,7 +1442,7 @@ Namespace java.util.regex
 		''' combining marks that follow it, produce the alternation that will
 		''' match all canonical equivalences of that sequence.
 		''' </summary>
-		Private Function produceEquivalentAlternation(ByVal source As String) As String
+		Private Function produceEquivalentAlternation(  source As String) As String
 			Dim len As Integer = countChars(source, 0, 1)
 			If source.length() = len Then Return source
 
@@ -1471,7 +1471,7 @@ Namespace java.util.regex
 		''' possibilities must be removed because they are not canonically
 		''' equivalent.
 		''' </summary>
-		Private Function producePermutations(ByVal input As String) As String()
+		Private Function producePermutations(  input As String) As String()
 			If input.length() = countChars(input, 0, 1) Then Return New String() {input}
 
 			If input.length() = countChars(input, 0, 2) Then
@@ -1538,7 +1538,7 @@ Namespace java.util.regex
 			Return result
 		End Function
 
-		Private Function getClass(ByVal c As Integer) As Integer
+		Private Function getClass(  c As Integer) As Integer
 			Return sun.text.Normalizer.getCombiningClass(c)
 		End Function
 
@@ -1549,7 +1549,7 @@ Namespace java.util.regex
 		''' combining mark followed by the remaining combining marks. Returns
 		''' null if the first two characters cannot be further composed.
 		''' </summary>
-		Private Function composeOneStep(ByVal input As String) As String
+		Private Function composeOneStep(  input As String) As String
 			Dim len As Integer = countChars(input, 0, 2)
 			Dim firstTwoCharacters As String = input.Substring(0, len)
 			Dim result As String = java.text.Normalizer.normalize(firstTwoCharacters, java.text.Normalizer.Form.NFC)

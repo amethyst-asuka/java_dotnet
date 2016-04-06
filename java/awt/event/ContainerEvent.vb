@@ -107,7 +107,7 @@ Namespace java.awt.event
 		''' <seealso cref= #getContainer() </seealso>
 		''' <seealso cref= #getID() </seealso>
 		''' <seealso cref= #getChild() </seealso>
-		Public Sub New(ByVal source As java.awt.Component, ByVal id As Integer, ByVal child As java.awt.Component)
+		Public Sub New(  source As java.awt.Component,   id As Integer,   child As java.awt.Component)
 			MyBase.New(source, id)
 			Me.child = child
 		End Sub

@@ -61,13 +61,13 @@ Namespace java.awt.dnd
 		Inherits DragGestureRecognizer
 		Implements java.awt.event.MouseListener, java.awt.event.MouseMotionListener
 
-			Public MustOverride Sub mouseMoved(ByVal e As java.awt.event.MouseEvent)
-			Public MustOverride Sub mouseDragged(ByVal e As java.awt.event.MouseEvent)
-			Public MustOverride Sub mouseExited(ByVal e As java.awt.event.MouseEvent)
-			Public MustOverride Sub mouseEntered(ByVal e As java.awt.event.MouseEvent)
-			Public MustOverride Sub mouseReleased(ByVal e As java.awt.event.MouseEvent)
-			Public MustOverride Sub mousePressed(ByVal e As java.awt.event.MouseEvent)
-			Public MustOverride Sub mouseClicked(ByVal e As java.awt.event.MouseEvent)
+			Public MustOverride Sub mouseMoved(  e As java.awt.event.MouseEvent)
+			Public MustOverride Sub mouseDragged(  e As java.awt.event.MouseEvent)
+			Public MustOverride Sub mouseExited(  e As java.awt.event.MouseEvent)
+			Public MustOverride Sub mouseEntered(  e As java.awt.event.MouseEvent)
+			Public MustOverride Sub mouseReleased(  e As java.awt.event.MouseEvent)
+			Public MustOverride Sub mousePressed(  e As java.awt.event.MouseEvent)
+			Public MustOverride Sub mouseClicked(  e As java.awt.event.MouseEvent)
 
 		Private Const serialVersionUID As Long = 6220099344182281120L
 
@@ -86,7 +86,7 @@ Namespace java.awt.dnd
 		''' <param name="dgl"> The DragGestureListener to notify when a gesture is detected
 		'''  </param>
 
-		Protected Friend Sub New(ByVal ds As DragSource, ByVal c As java.awt.Component, ByVal act As Integer, ByVal dgl As DragGestureListener)
+		Protected Friend Sub New(  ds As DragSource,   c As java.awt.Component,   act As Integer,   dgl As DragGestureListener)
 			MyBase.New(ds, c, act, dgl)
 		End Sub
 
@@ -101,7 +101,7 @@ Namespace java.awt.dnd
 		''' <param name="c">   The Component to observe </param>
 		''' <param name="act"> The actions permitted for this drag </param>
 
-		Protected Friend Sub New(ByVal ds As DragSource, ByVal c As java.awt.Component, ByVal act As Integer)
+		Protected Friend Sub New(  ds As DragSource,   c As java.awt.Component,   act As Integer)
 			Me.New(ds, c, act, Nothing)
 		End Sub
 
@@ -114,7 +114,7 @@ Namespace java.awt.dnd
 		''' <param name="ds">  The DragSource for the Component c </param>
 		''' <param name="c">   The Component to observe </param>
 
-		Protected Friend Sub New(ByVal ds As DragSource, ByVal c As java.awt.Component)
+		Protected Friend Sub New(  ds As DragSource,   c As java.awt.Component)
 			Me.New(ds, c, DnDConstants.ACTION_NONE)
 		End Sub
 
@@ -124,7 +124,7 @@ Namespace java.awt.dnd
 		''' <P> </summary>
 		''' <param name="ds">  The DragSource for the Component </param>
 
-		Protected Friend Sub New(ByVal ds As DragSource)
+		Protected Friend Sub New(  ds As DragSource)
 			Me.New(ds, Nothing)
 		End Sub
 
@@ -154,7 +154,7 @@ Namespace java.awt.dnd
 		''' <P> </summary>
 		''' <param name="e"> the <code>MouseEvent</code> </param>
 
-		Public Overridable Sub mouseClicked(ByVal e As java.awt.event.MouseEvent)
+		Public Overridable Sub mouseClicked(  e As java.awt.event.MouseEvent)
 		End Sub
 
 		''' <summary>
@@ -163,7 +163,7 @@ Namespace java.awt.dnd
 		''' <P> </summary>
 		''' <param name="e"> the <code>MouseEvent</code> </param>
 
-		Public Overridable Sub mousePressed(ByVal e As java.awt.event.MouseEvent)
+		Public Overridable Sub mousePressed(  e As java.awt.event.MouseEvent)
 		End Sub
 
 		''' <summary>
@@ -171,7 +171,7 @@ Namespace java.awt.dnd
 		''' <P> </summary>
 		''' <param name="e"> the <code>MouseEvent</code> </param>
 
-		Public Overridable Sub mouseReleased(ByVal e As java.awt.event.MouseEvent)
+		Public Overridable Sub mouseReleased(  e As java.awt.event.MouseEvent)
 		End Sub
 
 		''' <summary>
@@ -179,7 +179,7 @@ Namespace java.awt.dnd
 		''' <P> </summary>
 		''' <param name="e"> the <code>MouseEvent</code> </param>
 
-		Public Overridable Sub mouseEntered(ByVal e As java.awt.event.MouseEvent)
+		Public Overridable Sub mouseEntered(  e As java.awt.event.MouseEvent)
 		End Sub
 
 		''' <summary>
@@ -187,7 +187,7 @@ Namespace java.awt.dnd
 		''' <P> </summary>
 		''' <param name="e"> the <code>MouseEvent</code> </param>
 
-		Public Overridable Sub mouseExited(ByVal e As java.awt.event.MouseEvent)
+		Public Overridable Sub mouseExited(  e As java.awt.event.MouseEvent)
 		End Sub
 
 		''' <summary>
@@ -195,7 +195,7 @@ Namespace java.awt.dnd
 		''' <P> </summary>
 		''' <param name="e"> the <code>MouseEvent</code> </param>
 
-		Public Overridable Sub mouseDragged(ByVal e As java.awt.event.MouseEvent)
+		Public Overridable Sub mouseDragged(  e As java.awt.event.MouseEvent)
 		End Sub
 
 		''' <summary>
@@ -204,7 +204,7 @@ Namespace java.awt.dnd
 		''' <P> </summary>
 		''' <param name="e"> the <code>MouseEvent</code> </param>
 
-		Public Overridable Sub mouseMoved(ByVal e As java.awt.event.MouseEvent)
+		Public Overridable Sub mouseMoved(  e As java.awt.event.MouseEvent)
 		End Sub
 	End Class
 

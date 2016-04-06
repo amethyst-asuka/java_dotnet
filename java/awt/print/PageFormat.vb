@@ -276,7 +276,7 @@ Namespace java.awt.print
 			Get
 				Return CType(mPaper.clone(), Paper)
 			End Get
-			Set(ByVal paper As Paper)
+			Set(  paper As Paper)
 				 mPaper = CType(paper.clone(), Paper)
 			 End Set
 		End Property
@@ -291,7 +291,7 @@ Namespace java.awt.print
 		'''          an unknown orientation was requested </exception>
 		''' <seealso cref= #getOrientation </seealso>
 		Public Overridable Property orientation As Integer
-			Set(ByVal orientation As Integer)
+			Set(  orientation As Integer)
 				If 0 <= orientation AndAlso orientation <= REVERSE_LANDSCAPE Then
 					mOrientation = orientation
 				Else

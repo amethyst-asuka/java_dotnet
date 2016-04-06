@@ -52,7 +52,7 @@ Namespace java.awt.datatransfer
 		''' this object. </summary>
 		''' <param name="flavor"> the requested flavor for the data </param>
 		''' <returns> boolean indicating whether or not the data flavor is supported </returns>
-		Function isDataFlavorSupported(ByVal flavor As DataFlavor) As Boolean
+		Function isDataFlavorSupported(  flavor As DataFlavor) As Boolean
 
 		''' <summary>
 		''' Returns an object which represents the data to be transferred.  The class
@@ -64,7 +64,7 @@ Namespace java.awt.datatransfer
 		'''              in the requested flavor. </exception>
 		''' <exception cref="UnsupportedFlavorException"> if the requested data flavor is
 		'''              not supported. </exception>
-		Function getTransferData(ByVal flavor As DataFlavor) As Object
+		Function getTransferData(  flavor As DataFlavor) As Object
 
 	End Interface
 

@@ -173,7 +173,7 @@ Namespace java.awt
         ''' <code>Choice</code> menu. </summary>
         ''' <param name="index"> the index at which to begin </param>
         ''' <seealso cref=        #getItemCount </seealso>
-        Public Overridable Function getItem(ByVal index As Integer) As String
+        Public Overridable Function getItem(  index As Integer) As String
             Return getItemImpl(index)
         End Function
 
@@ -181,7 +181,7 @@ Namespace java.awt
         '     * This is called by the native code, so client code can't
         '     * be called on the toolkit thread.
         '     
-        Friend Function getItemImpl(ByVal index As Integer) As String
+        Friend Function getItemImpl(  index As Integer) As String
             Return pItems.elementAt(index)
         End Function
 
@@ -191,7 +191,7 @@ Namespace java.awt
         ''' <exception cref="NullPointerException">   if the item's value is
         '''                  <code>null</code>
         ''' @since      JDK1.1 </exception>
-        Public Overridable Sub add(ByVal item As String)
+        Public Overridable Sub add(  item As String)
             addItem(item)
         End Sub
 
@@ -203,7 +203,7 @@ Namespace java.awt
         ''' <param name="item"> the item to be added </param>
         ''' <exception cref="NullPointerException"> if the item's value is equal to
         '''          <code>null</code> </exception>
-        Public Overridable Sub addItem(ByVal item As String)
+        Public Overridable Sub addItem(  item As String)
             SyncLock Me
                 insertNoInvalidate(item, pItems.size())
             End SyncLock
@@ -221,7 +221,7 @@ Namespace java.awt
         ''' <param name="index"> the new item position </param>
         ''' <exception cref="NullPointerException"> if the item's value is equal to
         '''          <code>null</code> </exception>
-        Private Sub insertNoInvalidate(ByVal item As String, ByVal index As Integer)
+        Private Sub insertNoInvalidate(  item As String,   index As Integer)
             If item Is Nothing Then Throw New NullPointerException("cannot add null item to Choice")
             pItems.insertElementAt(item, index)
             Dim peer_Renamed As java.awt.peer.ChoicePeer = CType(Me.peer, java.awt.peer.ChoicePeer)
@@ -248,7 +248,7 @@ Namespace java.awt
         ''' <param name="item"> the non-<code>null</code> item to be inserted </param>
         ''' <param name="index"> the position at which the item should be inserted </param>
         ''' <exception cref="IllegalArgumentException"> if index is less than 0 </exception>
-        Public Overridable Sub insert(ByVal item As String, ByVal index As Integer)
+        Public Overridable Sub insert(  item As String,   index As Integer)
             SyncLock Me
                 If index < 0 Then Throw New IllegalArgumentException("index less than zero.")
                 ' if the index greater than item count, add item to the end 
@@ -273,7 +273,7 @@ Namespace java.awt
         ''' <exception cref="IllegalArgumentException">  if the item doesn't
         '''                     exist in the choice menu
         ''' @since      JDK1.1 </exception>
-        Public Overridable Sub remove(ByVal item As String)
+        Public Overridable Sub remove(  item As String)
             SyncLock Me
                 Dim index As Integer = pItems.indexOf(item)
                 If index < 0 Then
@@ -299,7 +299,7 @@ Namespace java.awt
         ''' <exception cref="IndexOutOfBoundsException"> if the specified
         '''          position is out of bounds
         ''' @since      JDK1.1 </exception>
-        Public Overridable Sub remove(ByVal position As Integer)
+        Public Overridable Sub remove(  position As Integer)
             SyncLock Me
                 removeNoInvalidate(position)
             End SyncLock
@@ -314,7 +314,7 @@ Namespace java.awt
         ''' Client methods must provide their
         ''' own synchronization before invoking this method. </summary>
         ''' <param name="position">   the position of the item </param>
-        Private Sub removeNoInvalidate(ByVal position As Integer)
+        Private Sub removeNoInvalidate(  position As Integer)
             pItems.removeElementAt(position)
             Dim peer_Renamed As java.awt.peer.ChoicePeer = CType(Me.peer, java.awt.peer.ChoicePeer)
             If peer_Renamed IsNot Nothing Then peer_Renamed.remove(position)
@@ -402,7 +402,7 @@ Namespace java.awt
         ''' <seealso cref=        #getSelectedItem </seealso>
         ''' <seealso cref=        #getSelectedIndex </seealso>
         <MethodImpl(MethodImplOptions.Synchronized)>
-        Public Overridable Sub [select](ByVal pos As Integer)
+        Public Overridable Sub [select](  pos As Integer)
             If (pos >= pItems.size()) OrElse (pos < 0) Then Throw New IllegalArgumentException("illegal Choice item position: " & pos)
             If pItems.size() > 0 Then
                 selectedIndex = pos
@@ -427,7 +427,7 @@ Namespace java.awt
         ''' <seealso cref=         #getSelectedItem </seealso>
         ''' <seealso cref=         #getSelectedIndex </seealso>
         <MethodImpl(MethodImplOptions.Synchronized)>
-        Public Overridable Sub [select](ByVal str As String)
+        Public Overridable Sub [select](  str As String)
             Dim index As Integer = pItems.indexOf(str)
             If index >= 0 Then [select](index)
         End Sub
@@ -448,7 +448,7 @@ Namespace java.awt
         ''' <seealso cref=           java.awt.event.ItemListener
         ''' @since         JDK1.1 </seealso>
         <MethodImpl(MethodImplOptions.Synchronized)>
-        Public Overridable Sub addItemListener(ByVal l As ItemListener) Implements ItemSelectable.addItemListener
+        Public Overridable Sub addItemListener(  l As ItemListener) Implements ItemSelectable.addItemListener
             If l Is Nothing Then Return
             itemListener = AWTEventMulticaster.add(itemListener, l)
             newEventsOnly = True
@@ -468,7 +468,7 @@ Namespace java.awt
         ''' <seealso cref=           java.awt.event.ItemListener
         ''' @since         JDK1.1 </seealso>
         <MethodImpl(MethodImplOptions.Synchronized)>
-        Public Overridable Sub removeItemListener(ByVal l As ItemListener) Implements ItemSelectable.removeItemListener
+        Public Overridable Sub removeItemListener(  l As ItemListener) Implements ItemSelectable.removeItemListener
             If l Is Nothing Then Return
             itemListener = AWTEventMulticaster.remove(itemListener, l)
         End Sub
@@ -525,7 +525,7 @@ Namespace java.awt
         ''' </exception>
         ''' <seealso cref= #getItemListeners
         ''' @since 1.3 </seealso>
-        Public Overrides Function getListeners(Of T As java.util.EventListener)(ByVal listenerType As [Class]) As T()
+        Public Overrides Function getListeners(Of T As java.util.EventListener)(  listenerType As [Class]) As T()
             Dim l As java.util.EventListener = Nothing
             If listenerType Is GetType(ItemListener) Then
                 l = itemListener
@@ -536,7 +536,7 @@ Namespace java.awt
         End Function
 
         ' REMIND: remove when filtering is done at lower level
-        Friend Overrides Function eventEnabled(ByVal e As AWTEvent) As Boolean
+        Friend Overrides Function eventEnabled(  e As AWTEvent) As Boolean
             If e.id = ItemEvent.ITEM_STATE_CHANGED Then
                 If (eventMask And AWTEvent.ITEM_EVENT_MASK) <> 0 OrElse itemListener IsNot Nothing Then Return True
                 Return False
@@ -557,7 +557,7 @@ Namespace java.awt
         ''' <seealso cref=        java.awt.event.ItemEvent </seealso>
         ''' <seealso cref=        #processItemEvent
         ''' @since      JDK1.1 </seealso>
-        Protected Friend Overrides Sub processEvent(ByVal e As AWTEvent)
+        Protected Friend Overrides Sub processEvent(  e As AWTEvent)
             If TypeOf e Is ItemEvent Then
                 processItemEvent(CType(e, ItemEvent))
                 Return
@@ -588,7 +588,7 @@ Namespace java.awt
         ''' <seealso cref=         #addItemListener(ItemListener) </seealso>
         ''' <seealso cref=         java.awt.Component#enableEvents
         ''' @since       JDK1.1 </seealso>
-        Protected Friend Overridable Sub processItemEvent(ByVal e As ItemEvent)
+        Protected Friend Overridable Sub processItemEvent(  e As ItemEvent)
             Dim listener As ItemListener = itemListener
             If listener IsNot Nothing Then listener.itemStateChanged(e)
         End Sub
@@ -633,7 +633,7 @@ Namespace java.awt
         ''' <seealso cref= AWTEventMulticaster#save(ObjectOutputStream, String, EventListener) </seealso>
         ''' <seealso cref= java.awt.Component#itemListenerK </seealso>
         ''' <seealso cref= #readObject(ObjectInputStream) </seealso>
-        Private Sub writeObject(ByVal s As java.io.ObjectOutputStream)
+        Private Sub writeObject(  s As java.io.ObjectOutputStream)
             s.defaultWriteObject()
 
             AWTEventMulticaster.save(s, itemListenerK, itemListener)
@@ -655,7 +655,7 @@ Namespace java.awt
         ''' <seealso cref= #addItemListener(ItemListener) </seealso>
         ''' <seealso cref= java.awt.GraphicsEnvironment#isHeadless </seealso>
         ''' <seealso cref= #writeObject(ObjectOutputStream) </seealso>
-        Private Sub readObject(ByVal s As java.io.ObjectInputStream)
+        Private Sub readObject(  s As java.io.ObjectInputStream)
             GraphicsEnvironment.checkHeadless()
             s.defaultReadObject()
 
@@ -721,7 +721,7 @@ Namespace java.awt
             '         
             Private Const serialVersionUID As Long = 7175603582428509322L
 
-            Public Sub New(ByVal outerInstance As Choice)
+            Public Sub New(  outerInstance As Choice)
                 Me.outerInstance = outerInstance
                 MyBase.New()
             End Sub
@@ -770,7 +770,7 @@ Namespace java.awt
             ''' <param name="i"> zero-based index of the actions </param>
             ''' <returns> a String description of the action </returns>
             ''' <seealso cref= #getAccessibleActionCount </seealso>
-            Public Overridable Function getAccessibleActionDescription(ByVal i As Integer) As String
+            Public Overridable Function getAccessibleActionDescription(  i As Integer) As String
                 Return Nothing '  To be fully implemented in a future release
             End Function
 
@@ -780,7 +780,7 @@ Namespace java.awt
             ''' <param name="i"> zero-based index of actions </param>
             ''' <returns> true if the action was performed; otherwise false. </returns>
             ''' <seealso cref= #getAccessibleActionCount </seealso>
-            Public Overridable Function doAccessibleAction(ByVal i As Integer) As Boolean
+            Public Overridable Function doAccessibleAction(  i As Integer) As Boolean
                 Return False '  To be fully implemented in a future release
             End Function
 

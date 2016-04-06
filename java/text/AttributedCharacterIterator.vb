@@ -218,7 +218,7 @@ Namespace java.text
 		''' </summary>
 		''' <param name="attribute"> the desired attribute. </param>
 		''' <returns> the index of the first character of the run </returns>
-		Function getRunStart(ByVal attribute As Attribute) As Integer
+		Function getRunStart(  attribute As Attribute) As Integer
 
 		''' <summary>
 		''' Returns the index of the first character of the run
@@ -226,7 +226,7 @@ Namespace java.text
 		''' </summary>
 		''' <param name="attributes"> a set of the desired attributes. </param>
 		''' <returns> the index of the first character of the run </returns>
-		Function getRunStart(Of T1 As Attribute)(ByVal attributes As java.util.Set(Of T1)) As Integer
+		Function getRunStart(Of T1 As Attribute)(  attributes As java.util.Set(Of T1)) As Integer
 
 		''' <summary>
 		''' Returns the index of the first character following the run
@@ -245,7 +245,7 @@ Namespace java.text
 		''' </summary>
 		''' <param name="attribute"> the desired attribute </param>
 		''' <returns> the index of the first character following the run </returns>
-		Function getRunLimit(ByVal attribute As Attribute) As Integer
+		Function getRunLimit(  attribute As Attribute) As Integer
 
 		''' <summary>
 		''' Returns the index of the first character following the run
@@ -253,7 +253,7 @@ Namespace java.text
 		''' </summary>
 		''' <param name="attributes"> a set of the desired attributes </param>
 		''' <returns> the index of the first character following the run </returns>
-		Function getRunLimit(Of T1 As Attribute)(ByVal attributes As java.util.Set(Of T1)) As Integer
+		Function getRunLimit(Of T1 As Attribute)(  attributes As java.util.Set(Of T1)) As Integer
 
 		''' <summary>
 		''' Returns a map with the attributes defined on the current
@@ -268,7 +268,7 @@ Namespace java.text
 		''' </summary>
 		''' <param name="attribute"> the desired attribute </param>
 		''' <returns> the value of the named {@code attribute} or {@code null} </returns>
-		Function getAttribute(ByVal attribute As Attribute) As Object
+		Function getAttribute(  attribute As Attribute) As Object
 
 		''' <summary>
 		''' Returns the keys of all attributes defined on the

@@ -70,7 +70,7 @@ Namespace java.awt.image.renderable
 	  '''        for the RenderedImage to be created. </param>
 	  ''' <param name="hints"> a RenderingHints object containing hints. </param>
 	  ''' <returns> A RenderedImage containing the desired output. </returns>
-	  Function create(ByVal paramBlock As ParameterBlock, ByVal hints As java.awt.RenderingHints) As java.awt.image.RenderedImage
+	  Function create(  paramBlock As ParameterBlock,   hints As java.awt.RenderingHints) As java.awt.image.RenderedImage
 	End Interface
 
 End Namespace

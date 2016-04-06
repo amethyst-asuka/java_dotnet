@@ -38,7 +38,7 @@ Namespace java.awt.im
 	Public NotInheritable Class InputSubset
 		Inherits Character.Subset
 
-		Private Sub New(ByVal name As String)
+		Private Sub New(  name As String)
 			MyBase.New(name)
 		End Sub
 

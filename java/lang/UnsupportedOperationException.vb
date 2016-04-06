@@ -49,7 +49,7 @@ Namespace java.lang
 		''' detail message.
 		''' </summary>
 		''' <param name="message"> the detail message </param>
-		Public Sub New(ByVal message As String)
+		Public Sub New(  message As String)
 			MyBase.New(message)
 		End Sub
 
@@ -68,7 +68,7 @@ Namespace java.lang
 		'''         is permitted, and indicates that the cause is nonexistent or
 		'''         unknown.)
 		''' @since 1.5 </param>
-		Public Sub New(ByVal message As String, ByVal cause As Throwable)
+		Public Sub New(  message As String,   cause As Throwable)
 			MyBase.New(message, cause)
 		End Sub
 
@@ -85,7 +85,7 @@ Namespace java.lang
 		'''         permitted, and indicates that the cause is nonexistent or
 		'''         unknown.)
 		''' @since  1.5 </param>
-		Public Sub New(ByVal cause As Throwable)
+		Public Sub New(  cause As Throwable)
 			MyBase.New(cause)
 		End Sub
 

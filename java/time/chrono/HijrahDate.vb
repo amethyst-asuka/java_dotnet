@@ -132,7 +132,7 @@ Namespace java.time.chrono
 		''' <param name="dayOfMonth">  the day-of-month to represent, from 1 to 30 </param>
 		''' <returns> the Hijrah date, never null </returns>
 		''' <exception cref="DateTimeException"> if the value of any field is out of range </exception>
-		Shared Function [of](ByVal chrono As HijrahChronology, ByVal prolepticYear As Integer, ByVal monthOfYear As Integer, ByVal dayOfMonth As Integer) As HijrahDate
+		Shared Function [of](  chrono As HijrahChronology,   prolepticYear As Integer,   monthOfYear As Integer,   dayOfMonth As Integer) As HijrahDate
 			Return New HijrahDate(chrono, prolepticYear, monthOfYear, dayOfMonth)
 		End Function
 
@@ -141,7 +141,7 @@ Namespace java.time.chrono
 		''' <param name="chrono"> The Hijrah chronology </param>
 		''' <param name="epochDay"> the epoch day </param>
 		''' <returns> a HijrahDate for the epoch day; non-null </returns>
-		Shared Function ofEpochDay(ByVal chrono As HijrahChronology, ByVal epochDay As Long) As HijrahDate
+		Shared Function ofEpochDay(  chrono As HijrahChronology,   epochDay As Long) As HijrahDate
 			Return New HijrahDate(chrono, epochDay)
 		End Function
 
@@ -173,7 +173,7 @@ Namespace java.time.chrono
 		''' </summary>
 		''' <param name="zone">  the zone ID to use, not null </param>
 		''' <returns> the current date using the system clock, not null </returns>
-		Public Shared Function now(ByVal zone As java.time.ZoneId) As HijrahDate
+		Public Shared Function now(  zone As java.time.ZoneId) As HijrahDate
 			Return now(java.time.Clock.system(zone))
 		End Function
 
@@ -188,7 +188,7 @@ Namespace java.time.chrono
 		''' <param name="clock">  the clock to use, not null </param>
 		''' <returns> the current date, not null </returns>
 		''' <exception cref="DateTimeException"> if the current date cannot be obtained </exception>
-		Public Shared Function now(ByVal clock_Renamed As java.time.Clock) As HijrahDate
+		Public Shared Function now(  clock_Renamed As java.time.Clock) As HijrahDate
 			Return HijrahDate.ofEpochDay(HijrahChronology.INSTANCE, java.time.LocalDate.now(clock_Renamed).toEpochDay())
 		End Function
 
@@ -205,7 +205,7 @@ Namespace java.time.chrono
 		''' <returns> the date in Hijrah calendar system, not null </returns>
 		''' <exception cref="DateTimeException"> if the value of any field is out of range,
 		'''  or if the day-of-month is invalid for the month-year </exception>
-		Public Shared Function [of](ByVal prolepticYear As Integer, ByVal month As Integer, ByVal dayOfMonth As Integer) As HijrahDate
+		Public Shared Function [of](  prolepticYear As Integer,   month As Integer,   dayOfMonth As Integer) As HijrahDate
 			Return HijrahChronology.INSTANCE.date(prolepticYear, month, dayOfMonth)
 		End Function
 
@@ -225,7 +225,7 @@ Namespace java.time.chrono
 		''' <param name="temporal">  the temporal object to convert, not null </param>
 		''' <returns> the date in Hijrah calendar system, not null </returns>
 		''' <exception cref="DateTimeException"> if unable to convert to a {@code HijrahDate} </exception>
-		Public Shared Function [from](ByVal temporal As java.time.temporal.TemporalAccessor) As HijrahDate
+		Public Shared Function [from](  temporal As java.time.temporal.TemporalAccessor) As HijrahDate
 			Return HijrahChronology.INSTANCE.date(temporal)
 		End Function
 
@@ -238,7 +238,7 @@ Namespace java.time.chrono
 		''' <param name="prolepticYear"> the proleptic year </param>
 		''' <param name="monthOfYear"> the month of year </param>
 		''' <param name="dayOfMonth"> the day of month </param>
-		Private Sub New(ByVal chrono As HijrahChronology, ByVal prolepticYear As Integer, ByVal monthOfYear As Integer, ByVal dayOfMonth As Integer)
+		Private Sub New(  chrono As HijrahChronology,   prolepticYear As Integer,   monthOfYear As Integer,   dayOfMonth As Integer)
 			' Computing the Gregorian day checks the valid ranges
 			chrono.getEpochDay(prolepticYear, monthOfYear, dayOfMonth)
 
@@ -252,7 +252,7 @@ Namespace java.time.chrono
 		''' Constructs an instance with the Epoch Day.
 		''' </summary>
 		''' <param name="epochDay">  the epochDay </param>
-		Private Sub New(ByVal chrono As HijrahChronology, ByVal epochDay As Long)
+		Private Sub New(  chrono As HijrahChronology,   epochDay As Long)
 			Dim dateInfo As Integer() = chrono.getHijrahDateInfo(CInt(epochDay))
 
 			Me.chrono = chrono
@@ -312,7 +312,7 @@ Namespace java.time.chrono
 		End Function
 
 		'-----------------------------------------------------------------------
-		Public Overrides Function range(ByVal field As java.time.temporal.TemporalField) As java.time.temporal.ValueRange
+		Public Overrides Function range(  field As java.time.temporal.TemporalField) As java.time.temporal.ValueRange
 			If TypeOf field Is java.time.temporal.ChronoField Then
 				If isSupported(field) Then
 					Dim f As java.time.temporal.ChronoField = CType(field, java.time.temporal.ChronoField)
@@ -333,7 +333,7 @@ Namespace java.time.chrono
 			Return field.rangeRefinedBy(Me)
 		End Function
 
-		Public Overrides Function getLong(ByVal field As java.time.temporal.TemporalField) As Long
+		Public Overrides Function getLong(  field As java.time.temporal.TemporalField) As Long
 			If TypeOf field Is java.time.temporal.ChronoField Then
 				Select Case CType(field, java.time.temporal.ChronoField)
 					Case DAY_OF_WEEK
@@ -374,7 +374,7 @@ Namespace java.time.chrono
 			End Get
 		End Property
 
-		Public Overrides Function [with](ByVal field As java.time.temporal.TemporalField, ByVal newValue As Long) As HijrahDate
+		Public Overrides Function [with](  field As java.time.temporal.TemporalField,   newValue As Long) As HijrahDate
 			If TypeOf field Is java.time.temporal.ChronoField Then
 				Dim f As java.time.temporal.ChronoField = CType(field, java.time.temporal.ChronoField)
 				' not using checkValidIntValue so EPOCH_DAY and PROLEPTIC_MONTH work
@@ -413,7 +413,7 @@ Namespace java.time.chrono
 			Return MyBase.with(field, newValue)
 		End Function
 
-		Private Function resolvePreviousValid(ByVal prolepticYear As Integer, ByVal month As Integer, ByVal day As Integer) As HijrahDate
+		Private Function resolvePreviousValid(  prolepticYear As Integer,   month As Integer,   day As Integer) As HijrahDate
 			Dim monthDays As Integer = chrono.getMonthLength(prolepticYear, month)
 			If day > monthDays Then day = monthDays
 			Return HijrahDate.of(chrono, prolepticYear, month, day)
@@ -424,7 +424,7 @@ Namespace java.time.chrono
 		''' <exception cref="DateTimeException"> if unable to make the adjustment.
 		'''     For example, if the adjuster requires an ISO chronology </exception>
 		''' <exception cref="ArithmeticException"> {@inheritDoc} </exception>
-		Public Overrides Function [with](ByVal adjuster As java.time.temporal.TemporalAdjuster) As HijrahDate
+		Public Overrides Function [with](  adjuster As java.time.temporal.TemporalAdjuster) As HijrahDate
 			Return MyBase.with(adjuster)
 		End Function
 
@@ -437,7 +437,7 @@ Namespace java.time.chrono
 		''' </summary>
 		''' <param name="chronology"> the new HijrahChonology, non-null </param>
 		''' <returns> a HijrahDate with the requested HijrahChronology, non-null </returns>
-		Public Function withVariant(ByVal chronology As HijrahChronology) As HijrahDate
+		Public Function withVariant(  chronology As HijrahChronology) As HijrahDate
 			If chrono Is chronology Then Return Me
 			' Like resolvePreviousValid the day is constrained to stay in the same month
 			Dim monthDays As Integer = chronology.getDayOfYear(prolepticYear, monthOfYear)
@@ -448,7 +448,7 @@ Namespace java.time.chrono
 		''' {@inheritDoc} </summary>
 		''' <exception cref="DateTimeException"> {@inheritDoc} </exception>
 		''' <exception cref="ArithmeticException"> {@inheritDoc} </exception>
-		Public Overrides Function plus(ByVal amount As java.time.temporal.TemporalAmount) As HijrahDate
+		Public Overrides Function plus(  amount As java.time.temporal.TemporalAmount) As HijrahDate
 			Return MyBase.plus(amount)
 		End Function
 
@@ -456,7 +456,7 @@ Namespace java.time.chrono
 		''' {@inheritDoc} </summary>
 		''' <exception cref="DateTimeException"> {@inheritDoc} </exception>
 		''' <exception cref="ArithmeticException"> {@inheritDoc} </exception>
-		Public Overrides Function minus(ByVal amount As java.time.temporal.TemporalAmount) As HijrahDate
+		Public Overrides Function minus(  amount As java.time.temporal.TemporalAmount) As HijrahDate
 			Return MyBase.minus(amount)
 		End Function
 
@@ -509,13 +509,13 @@ Namespace java.time.chrono
 		End Property
 
 		'-----------------------------------------------------------------------
-		Friend Overrides Function plusYears(ByVal years As Long) As HijrahDate
+		Friend Overrides Function plusYears(  years As Long) As HijrahDate
 			If years = 0 Then Return Me
 			Dim newYear As Integer = System.Math.addExact(Me.prolepticYear, CInt(years))
 			Return resolvePreviousValid(newYear, monthOfYear, dayOfMonth)
 		End Function
 
-		Friend Overrides Function plusMonths(ByVal monthsToAdd As Long) As HijrahDate
+		Friend Overrides Function plusMonths(  monthsToAdd As Long) As HijrahDate
 			If monthsToAdd = 0 Then Return Me
 			Dim monthCount As Long = prolepticYear * 12L + (monthOfYear - 1)
 			Dim calcMonths As Long = monthCount + monthsToAdd ' safe overflow
@@ -524,44 +524,44 @@ Namespace java.time.chrono
 			Return resolvePreviousValid(newYear, newMonth, dayOfMonth)
 		End Function
 
-		Friend Overrides Function plusWeeks(ByVal weeksToAdd As Long) As HijrahDate
+		Friend Overrides Function plusWeeks(  weeksToAdd As Long) As HijrahDate
 			Return MyBase.plusWeeks(weeksToAdd)
 		End Function
 
-		Friend Overrides Function plusDays(ByVal days As Long) As HijrahDate
+		Friend Overrides Function plusDays(  days As Long) As HijrahDate
 			Return New HijrahDate(chrono, toEpochDay() + days)
 		End Function
 
-		Public Overrides Function plus(ByVal amountToAdd As Long, ByVal unit As java.time.temporal.TemporalUnit) As HijrahDate
+		Public Overrides Function plus(  amountToAdd As Long,   unit As java.time.temporal.TemporalUnit) As HijrahDate
 			Return MyBase.plus(amountToAdd, unit)
 		End Function
 
-		Public Overrides Function minus(ByVal amountToSubtract As Long, ByVal unit As java.time.temporal.TemporalUnit) As HijrahDate
+		Public Overrides Function minus(  amountToSubtract As Long,   unit As java.time.temporal.TemporalUnit) As HijrahDate
 			Return MyBase.minus(amountToSubtract, unit)
 		End Function
 
-		Friend Overrides Function minusYears(ByVal yearsToSubtract As Long) As HijrahDate
+		Friend Overrides Function minusYears(  yearsToSubtract As Long) As HijrahDate
 			Return MyBase.minusYears(yearsToSubtract)
 		End Function
 
-		Friend Overrides Function minusMonths(ByVal monthsToSubtract As Long) As HijrahDate
+		Friend Overrides Function minusMonths(  monthsToSubtract As Long) As HijrahDate
 			Return MyBase.minusMonths(monthsToSubtract)
 		End Function
 
-		Friend Overrides Function minusWeeks(ByVal weeksToSubtract As Long) As HijrahDate
+		Friend Overrides Function minusWeeks(  weeksToSubtract As Long) As HijrahDate
 			Return MyBase.minusWeeks(weeksToSubtract)
 		End Function
 
-		Friend Overrides Function minusDays(ByVal daysToSubtract As Long) As HijrahDate
+		Friend Overrides Function minusDays(  daysToSubtract As Long) As HijrahDate
 			Return MyBase.minusDays(daysToSubtract)
 		End Function
 
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Overrides Function atTime(ByVal localTime_Renamed As java.time.LocalTime) As ChronoLocalDateTime(Of HijrahDate) Implements ChronoLocalDate.atTime ' for javadoc and covariant return type
+		Public Overrides Function atTime(  localTime_Renamed As java.time.LocalTime) As ChronoLocalDateTime(Of HijrahDate) Implements ChronoLocalDate.atTime ' for javadoc and covariant return type
 			Return CType(MyBase.atTime(localTime_Renamed), ChronoLocalDateTime(Of HijrahDate))
 		End Function
 
-		Public Overrides Function [until](ByVal endDate As ChronoLocalDate) As ChronoPeriod Implements ChronoLocalDate.until
+		Public Overrides Function [until](  endDate As ChronoLocalDate) As ChronoPeriod Implements ChronoLocalDate.until
 			' TODO: untested
 			Dim [end] As HijrahDate = chronology.date(endDate)
 			Dim totalMonths As Long = ([end].prolepticYear - Me.prolepticYear) * 12 + ([end].monthOfYear - Me.monthOfYear) ' safe
@@ -591,7 +591,7 @@ Namespace java.time.chrono
 		''' </summary>
 		''' <param name="obj">  the object to check, null returns false </param>
 		''' <returns> true if this is equal to the other date and the Chronologies are equal </returns>
-		Public Overrides Function Equals(ByVal obj As Object) As Boolean ' override for performance
+		Public Overrides Function Equals(  obj As Object) As Boolean ' override for performance
 			If Me Is obj Then Return True
 			If TypeOf obj Is HijrahDate Then
 				Dim otherDate As HijrahDate = CType(obj, HijrahDate)
@@ -617,7 +617,7 @@ Namespace java.time.chrono
 		''' </summary>
 		''' <param name="s"> the stream to read </param>
 		''' <exception cref="InvalidObjectException"> always </exception>
-		Private Sub readObject(ByVal s As java.io.ObjectInputStream)
+		Private Sub readObject(  s As java.io.ObjectInputStream)
 			Throw New java.io.InvalidObjectException("Deserialization via serialization delegate")
 		End Sub
 
@@ -638,7 +638,7 @@ Namespace java.time.chrono
 			Return New Ser(Ser.HIJRAH_DATE_TYPE, Me)
 		End Function
 
-		Friend Sub writeExternal(ByVal out As java.io.ObjectOutput)
+		Friend Sub writeExternal(  out As java.io.ObjectOutput)
 			' HijrahChronology is implicit in the Hijrah_DATE_TYPE
 			out.writeObject(chronology)
 			out.writeInt(get(YEAR))
@@ -646,7 +646,7 @@ Namespace java.time.chrono
 			out.writeByte(get(DAY_OF_MONTH))
 		End Sub
 
-		Shared Function readExternal(ByVal [in] As java.io.ObjectInput) As HijrahDate
+		Shared Function readExternal(  [in] As java.io.ObjectInput) As HijrahDate
 			Dim chrono As HijrahChronology = CType([in].readObject(), HijrahChronology)
 			Dim year_Renamed As Integer = [in].readInt()
 			Dim month As Integer = [in].readByte()

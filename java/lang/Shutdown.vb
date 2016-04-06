@@ -68,7 +68,7 @@ Namespace java.lang
 
 		' Invoked by Runtime.runFinalizersOnExit 
 		Friend Shared Property runFinalizersOnExit As Boolean
-			Set(ByVal run As Boolean)
+			Set(  run As Boolean)
 				SyncLock lock
 					runFinalizersOnExit = run
 				End SyncLock
@@ -96,7 +96,7 @@ Namespace java.lang
 		'''        if registerShutdownInProgress is true and the shutdown process
 		'''           already passes the given slot
 		''' </summary>
-		Friend Shared Sub add(ByVal slot As Integer, ByVal registerShutdownInProgress As Boolean, ByVal hook As Runnable)
+		Friend Shared Sub add(  slot As Integer,   registerShutdownInProgress As Boolean,   hook As Runnable)
 			SyncLock lock
 				If hooks(slot) IsNot Nothing Then Throw New InternalError("Shutdown hook at slot " & slot & " already registered")
 
@@ -136,7 +136,7 @@ Namespace java.lang
 	'     * to avoid corruption of the delete-on-shutdown file list.
 	'     * It invokes the true native halt method.
 	'     
-		Friend Shared Sub halt(ByVal status As Integer)
+		Friend Shared Sub halt(  status As Integer)
 			SyncLock haltLock
 				halt0(status)
 			End SyncLock
@@ -144,7 +144,7 @@ Namespace java.lang
 
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Friend Shared Sub halt0(ByVal status As Integer)
+		Friend Shared Sub halt0(  status As Integer)
 		End Sub
 
 		' Wormhole for invoking java.lang.ref.Finalizer.runAllFinalizers 
@@ -186,7 +186,7 @@ Namespace java.lang
 	'     * Also invoked by handlers for system-provided termination events,
 	'     * which should pass a nonzero status code.
 	'     
-		Friend Shared Sub [exit](ByVal status As Integer)
+		Friend Shared Sub [exit](  status As Integer)
 			Dim runMoreFinalizers As Boolean = False
 			SyncLock lock
 				If status <> 0 Then runFinalizersOnExit = False

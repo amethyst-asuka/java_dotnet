@@ -54,25 +54,25 @@ Namespace java.awt.event
 		''' <summary>
 		''' Invoked when the component's size changes.
 		''' </summary>
-		Public Overridable Sub componentResized(ByVal e As ComponentEvent) Implements ComponentListener.componentResized
+		Public Overridable Sub componentResized(  e As ComponentEvent) Implements ComponentListener.componentResized
 		End Sub
 
 		''' <summary>
 		''' Invoked when the component's position changes.
 		''' </summary>
-		Public Overridable Sub componentMoved(ByVal e As ComponentEvent) Implements ComponentListener.componentMoved
+		Public Overridable Sub componentMoved(  e As ComponentEvent) Implements ComponentListener.componentMoved
 		End Sub
 
 		''' <summary>
 		''' Invoked when the component has been made visible.
 		''' </summary>
-		Public Overridable Sub componentShown(ByVal e As ComponentEvent) Implements ComponentListener.componentShown
+		Public Overridable Sub componentShown(  e As ComponentEvent) Implements ComponentListener.componentShown
 		End Sub
 
 		''' <summary>
 		''' Invoked when the component has been made invisible.
 		''' </summary>
-		Public Overridable Sub componentHidden(ByVal e As ComponentEvent) Implements ComponentListener.componentHidden
+		Public Overridable Sub componentHidden(  e As ComponentEvent) Implements ComponentListener.componentHidden
 		End Sub
 	End Class
 

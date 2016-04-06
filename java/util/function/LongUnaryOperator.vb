@@ -43,7 +43,7 @@ Namespace java.util.function
 		''' </summary>
 		''' <param name="operand"> the operand </param>
 		''' <returns> the operator result </returns>
-		Function applyAsLong(ByVal operand As Long) As Long
+		Function applyAsLong(  operand As Long) As Long
 
 		''' <summary>
 		''' Returns a composed operator that first applies the {@code before}
@@ -57,10 +57,10 @@ Namespace java.util.function
 		''' <exception cref="NullPointerException"> if before is null
 		''' </exception>
 		''' <seealso cref= #andThen(LongUnaryOperator) </seealso>
-		default Function compose(ByVal before As LongUnaryOperator) As LongUnaryOperator
+		default Function compose(  before As LongUnaryOperator) As LongUnaryOperator
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 			java.util.Objects.requireNonNull(before);
-			Sub [New](ByVal v As Long)
+			Sub [New](  v As Long)
 
 		''' <summary>
 		''' Returns a composed operator that first applies this operator to
@@ -74,10 +74,10 @@ Namespace java.util.function
 		''' <exception cref="NullPointerException"> if after is null
 		''' </exception>
 		''' <seealso cref= #compose(LongUnaryOperator) </seealso>
-		default Function andThen(ByVal after As LongUnaryOperator) As LongUnaryOperator
+		default Function andThen(  after As LongUnaryOperator) As LongUnaryOperator
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 			java.util.Objects.requireNonNull(after);
-			Sub [New](ByVal t As Long)
+			Sub [New](  t As Long)
 
 		''' <summary>
 		''' Returns a unary operator that always returns its input argument.

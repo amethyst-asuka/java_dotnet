@@ -46,7 +46,7 @@ Namespace java.lang.invoke
 
         Private Const F_TRANS As Integer = &H10, F_OWNED As Integer = &H3
 
-        Friend Sub New(ByVal lf As LambdaForm)
+        Friend Sub New(  lf As LambdaForm)
             Me.arity = lf.arity_Renamed
             names = lf.names
             Dim result_Renamed As Integer = lf.result
@@ -61,7 +61,7 @@ Namespace java.lang.invoke
             Return New LambdaForm(debugName, arity, nameArray(), resultIndex())
         End Function
 
-        Friend Function name(ByVal i As Integer) As Name
+        Friend Function name(  i As Integer) As Name
             Assert(i < length)
             Return names(i)
         End Function
@@ -78,7 +78,7 @@ Namespace java.lang.invoke
         End Function
 
         Friend Property names As Name()
-            Set(ByVal names2 As Name())
+            Set(  names2 As Name())
                 originalNames = names2
                 names = originalNames
                 length = names2.Length
@@ -119,14 +119,14 @@ Namespace java.lang.invoke
             Return True
         End Function
 
-        Private Shared Function indexOf(ByVal fn As NamedFunction, ByVal fns As NamedFunction()) As Integer
+        Private Shared Function indexOf(  fn As NamedFunction,   fns As NamedFunction()) As Integer
             For i As Integer = 0 To fns.Length - 1
                 If fns(i) Is fn Then Return i
             Next i
             Return -1
         End Function
 
-        Private Shared Function indexOf(ByVal n As Name, ByVal ns As Name()) As Integer
+        Private Shared Function indexOf(  n As Name,   ns As Name()) As Integer
             For i As Integer = 0 To ns.Length - 1
                 If ns(i) Is n Then Return i
             Next i
@@ -141,7 +141,7 @@ Namespace java.lang.invoke
             Return flags And F_OWNED
         End Function
 
-        Friend Sub growNames(ByVal insertPos As Integer, ByVal growLength As Integer)
+        Friend Sub growNames(  insertPos As Integer,   growLength As Integer)
             Dim oldLength As Integer = length
             Dim newLength As Integer = oldLength + growLength
             Dim oc As Integer = ownedCount()
@@ -174,7 +174,7 @@ Namespace java.lang.invoke
             If firstChange >= insertPos Then firstChange += growLength
         End Sub
 
-        Friend Function lastIndexOf(ByVal n As Name) As Integer
+        Friend Function lastIndexOf(  n As Name) As Integer
             Dim result_Renamed As Integer = -1
             For i As Integer = 0 To length - 1
                 If names(i) Is n Then result_Renamed = i
@@ -186,7 +186,7 @@ Namespace java.lang.invoke
         ''' We have just overwritten the name at pos1 with the name at pos2.
         '''  This means that there are two copies of the name, which we will have to fix later.
         ''' </summary>
-        Private Sub noteDuplicate(ByVal pos1 As Integer, ByVal pos2 As Integer)
+        Private Sub noteDuplicate(  pos1 As Integer,   pos2 As Integer)
             Dim n As Name = names(pos1)
             Assert(n Is names(pos2))
             Assert(originalNames(pos1) IsNot Nothing) ' something was replaced at pos1
@@ -254,7 +254,7 @@ Namespace java.lang.invoke
             Assert(inTrans())
         End Sub
 
-        Private Sub changeName(ByVal i As Integer, ByVal name As Name)
+        Private Sub changeName(  i As Integer,   name As Name)
             Assert(inTrans())
             Assert(i < length)
             Dim oldName As Name = names(i)
@@ -269,7 +269,7 @@ Namespace java.lang.invoke
         ''' <summary>
         ''' Change the result name.  Null means a  Sub  result. </summary>
         Friend Property result As Name
-            Set(ByVal name As Name)
+            Set(  name As Name)
                 Assert(name Is Nothing OrElse lastIndexOf(name) >= 0)
                 resultName = name
             End Set
@@ -320,7 +320,7 @@ Namespace java.lang.invoke
             Return lambdaForm()
         End Function
 
-        Private Function copyNamesInto(ByVal buffer As Name()) As Name()
+        Private Function copyNamesInto(  buffer As Name()) As Name()
             Array.Copy(names, 0, buffer, 0, length)
             java.util.Arrays.fill(buffer, length, buffer.Length, Nothing)
             Return buffer
@@ -331,7 +331,7 @@ Namespace java.lang.invoke
         '''  whose function is in the corresponding position in newFns.
         '''  Only do this if the arguments are exactly equal to the given.
         ''' </summary>
-        Friend Function replaceFunctions(ByVal oldFns As NamedFunction(), ByVal newFns As NamedFunction(), ParamArray ByVal forArguments As Object()) As LambdaFormBuffer
+        Friend Function replaceFunctions(  oldFns As NamedFunction(),   newFns As NamedFunction(), ParamArray   forArguments As Object()) As LambdaFormBuffer
             Assert(inTrans())
             If oldFns.Length = 0 Then Return Me
             For i As Integer = arity To length - 1
@@ -342,7 +342,7 @@ Namespace java.lang.invoke
             Return Me
         End Function
 
-        Private Sub replaceName(ByVal pos As Integer, ByVal binding As Name)
+        Private Sub replaceName(  pos As Integer,   binding As Name)
             Assert(inTrans())
             Assert(verifyArity())
             Assert(pos < arity)
@@ -354,7 +354,7 @@ Namespace java.lang.invoke
 
         ''' <summary>
         ''' Replace a parameter by a fresh parameter. </summary>
-        Friend Function renameParameter(ByVal pos As Integer, ByVal newParam As Name) As LambdaFormBuffer
+        Friend Function renameParameter(  pos As Integer,   newParam As Name) As LambdaFormBuffer
             Assert(newParam.param)
             replaceName(pos, newParam)
             Return Me
@@ -362,7 +362,7 @@ Namespace java.lang.invoke
 
         ''' <summary>
         ''' Replace a parameter by a fresh expression. </summary>
-        Friend Function replaceParameterByNewExpression(ByVal pos As Integer, ByVal binding As Name) As LambdaFormBuffer
+        Friend Function replaceParameterByNewExpression(  pos As Integer,   binding As Name) As LambdaFormBuffer
             Assert((Not binding.param))
             Assert(lastIndexOf(binding) < 0) ' else use replaceParameterByCopy
             replaceName(pos, binding)
@@ -371,14 +371,14 @@ Namespace java.lang.invoke
 
         ''' <summary>
         ''' Replace a parameter by another parameter or expression already in the form. </summary>
-        Friend Function replaceParameterByCopy(ByVal pos As Integer, ByVal valuePos As Integer) As LambdaFormBuffer
+        Friend Function replaceParameterByCopy(  pos As Integer,   valuePos As Integer) As LambdaFormBuffer
             Assert(pos <> valuePos)
             replaceName(pos, names(valuePos))
             noteDuplicate(pos, valuePos) ' temporarily, will occur twice in the names array
             Return Me
         End Function
 
-        Private Sub insertName(ByVal pos As Integer, ByVal expr As Name, ByVal isParameter As Boolean)
+        Private Sub insertName(  pos As Integer,   expr As Name,   isParameter As Boolean)
             Assert(inTrans())
             Assert(verifyArity())
             Assert(If(isParameter, pos <= arity, pos >= arity))
@@ -389,7 +389,7 @@ Namespace java.lang.invoke
 
         ''' <summary>
         ''' Insert a fresh expression. </summary>
-        Friend Function insertExpression(ByVal pos As Integer, ByVal expr As Name) As LambdaFormBuffer
+        Friend Function insertExpression(  pos As Integer,   expr As Name) As LambdaFormBuffer
             Assert((Not expr.param))
             insertName(pos, expr, False)
             Return Me
@@ -397,7 +397,7 @@ Namespace java.lang.invoke
 
         ''' <summary>
         ''' Insert a fresh parameter. </summary>
-        Friend Function insertParameter(ByVal pos As Integer, ByVal param As Name) As LambdaFormBuffer
+        Friend Function insertParameter(  pos As Integer,   param As Name) As LambdaFormBuffer
             Assert(param.param)
             insertName(pos, param, True)
             Return Me

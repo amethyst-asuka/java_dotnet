@@ -130,7 +130,7 @@ Namespace java.awt.print
 		''' <param name="mimeType"> the required output format, or null to mean any format. </param>
 		''' <returns> a possibly empty array of 2D stream print service factories.
 		''' @since     1.4 </returns>
-		Public Shared Function lookupStreamPrintServices(ByVal mimeType As String) As javax.print.StreamPrintServiceFactory()
+		Public Shared Function lookupStreamPrintServices(  mimeType As String) As javax.print.StreamPrintServiceFactory()
 			Return javax.print.StreamPrintServiceFactory.lookupStreamPrintServiceFactories(javax.print.DocFlavor.SERVICE_FORMATTED.PAGEABLE, mimeType)
 		End Function
 
@@ -157,7 +157,7 @@ Namespace java.awt.print
 			Get
 				Return Nothing
 			End Get
-			Set(ByVal service As javax.print.PrintService)
+			Set(  service As javax.print.PrintService)
 					Throw New PrinterException("Setting a service is not supported on this class")
 			End Set
 		End Property
@@ -183,7 +183,7 @@ Namespace java.awt.print
 		'''          each page of the document </param>
 		''' <param name="format"> the size and orientation of each page to
 		'''                   be printed </param>
-		Public MustOverride Sub setPrintable(ByVal painter As Printable, ByVal format As PageFormat)
+		Public MustOverride Sub setPrintable(  painter As Printable,   format As PageFormat)
 
 		''' <summary>
 		''' Queries <code>document</code> for the number of pages and
@@ -263,7 +263,7 @@ Namespace java.awt.print
 		''' <seealso cref= java.awt.GraphicsEnvironment#isHeadless
 		''' @since     1.4
 		'''  </seealso>
-		Public Overridable Function printDialog(ByVal attributes As javax.print.attribute.PrintRequestAttributeSet) As Boolean
+		Public Overridable Function printDialog(  attributes As javax.print.attribute.PrintRequestAttributeSet) As Boolean
 
 			If attributes Is Nothing Then Throw New NullPointerException("attributes")
 			Return printDialog()
@@ -290,7 +290,7 @@ Namespace java.awt.print
 		''' returns true. </exception>
 		''' <seealso cref= java.awt.GraphicsEnvironment#isHeadless
 		''' @since     1.2 </seealso>
-		Public MustOverride Function pageDialog(ByVal page As PageFormat) As PageFormat
+		Public MustOverride Function pageDialog(  page As PageFormat) As PageFormat
 
 		''' <summary>
 		''' A convenience method which displays a cross-platform page setup dialog.
@@ -320,7 +320,7 @@ Namespace java.awt.print
 		''' <seealso cref= java.awt.GraphicsEnvironment#isHeadless
 		''' @since     1.4
 		'''  </seealso>
-		Public Overridable Function pageDialog(ByVal attributes As javax.print.attribute.PrintRequestAttributeSet) As PageFormat
+		Public Overridable Function pageDialog(  attributes As javax.print.attribute.PrintRequestAttributeSet) As PageFormat
 
 			If attributes Is Nothing Then Throw New NullPointerException("attributes")
 			Return pageDialog(defaultPage())
@@ -332,7 +332,7 @@ Namespace java.awt.print
 		''' <param name="page"> the <code>PageFormat</code> to be cloned and altered </param>
 		''' <returns> clone of <code>page</code>, altered to describe a default
 		'''                      <code>PageFormat</code>. </returns>
-		Public MustOverride Function defaultPage(ByVal page As PageFormat) As PageFormat
+		Public MustOverride Function defaultPage(  page As PageFormat) As PageFormat
 
 		''' <summary>
 		''' Creates a new <code>PageFormat</code> instance and
@@ -359,7 +359,7 @@ Namespace java.awt.print
 		''' <returns> a <code>PageFormat</code> whose settings conform with
 		''' those of the current service and the specified attributes.
 		''' @since 1.6 </returns>
-		Public Overridable Function getPageFormat(ByVal attributes As javax.print.attribute.PrintRequestAttributeSet) As PageFormat
+		Public Overridable Function getPageFormat(  attributes As javax.print.attribute.PrintRequestAttributeSet) As PageFormat
 
 			Dim service As javax.print.PrintService = printService
 			Dim pf As PageFormat = defaultPage()
@@ -433,7 +433,7 @@ Namespace java.awt.print
 		''' <returns> a <code>PageFormat</code> that is cloned from
 		'''          <code>page</code> and whose settings are changed
 		'''          to conform with this <code>PrinterJob</code>. </returns>
-		Public MustOverride Function validatePage(ByVal page As PageFormat) As PageFormat
+		Public MustOverride Function validatePage(  page As PageFormat) As PageFormat
 
 		''' <summary>
 		''' Prints a set of pages. </summary>
@@ -481,7 +481,7 @@ Namespace java.awt.print
 	   ''' <seealso cref= Pageable </seealso>
 	   ''' <seealso cref= Printable
 	   ''' @since 1.4 </seealso>
-		Public Overridable Sub print(ByVal attributes As javax.print.attribute.PrintRequestAttributeSet)
+		Public Overridable Sub print(  attributes As javax.print.attribute.PrintRequestAttributeSet)
 			print()
 		End Sub
 

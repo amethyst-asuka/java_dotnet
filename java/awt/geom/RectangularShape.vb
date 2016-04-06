@@ -45,14 +45,14 @@ Namespace java.awt.geom
     Public MustInherit Class RectangularShape : Inherits java.lang.Object
         Implements java.awt.Shape, Cloneable
 
-        Public MustOverride Function getPathIterator(ByVal at As java.awt.geom.AffineTransform, ByVal flatness As Double) As java.awt.geom.PathIterator
-        Public MustOverride Function getPathIterator(ByVal at As java.awt.geom.AffineTransform) As java.awt.geom.PathIterator
-        Public MustOverride Function contains(ByVal r As java.awt.geom.Rectangle2D) As Boolean
-        Public MustOverride Function contains(ByVal x As Double, ByVal y As Double, ByVal w As Double, ByVal h As Double) As Boolean
-        Public MustOverride Function intersects(ByVal r As java.awt.geom.Rectangle2D) As Boolean
-        Public MustOverride Function intersects(ByVal x As Double, ByVal y As Double, ByVal w As Double, ByVal h As Double) As Boolean
-        Public MustOverride Function contains(ByVal p As java.awt.geom.Point2D) As Boolean
-        Public MustOverride Function contains(ByVal x As Double, ByVal y As Double) As Boolean
+        Public MustOverride Function getPathIterator(  at As java.awt.geom.AffineTransform,   flatness As Double) As java.awt.geom.PathIterator
+        Public MustOverride Function getPathIterator(  at As java.awt.geom.AffineTransform) As java.awt.geom.PathIterator
+        Public MustOverride Function contains(  r As java.awt.geom.Rectangle2D) As Boolean
+        Public MustOverride Function contains(  x As Double,   y As Double,   w As Double,   h As Double) As Boolean
+        Public MustOverride Function intersects(  r As java.awt.geom.Rectangle2D) As Boolean
+        Public MustOverride Function intersects(  x As Double,   y As Double,   w As Double,   h As Double) As Boolean
+        Public MustOverride Function contains(  p As java.awt.geom.Point2D) As Boolean
+        Public MustOverride Function contains(  x As Double,   y As Double) As Boolean
         Public MustOverride ReadOnly Property bounds2D As java.awt.geom.Rectangle2D
 
         ''' <summary>
@@ -187,7 +187,7 @@ Namespace java.awt.geom
             Get
                 Return New Rectangle2D.Double(x, y, width, height)
             End Get
-            Set(ByVal r As Rectangle2D)
+            Set(  r As Rectangle2D)
                 setFrame(r.x, r.y, r.width, r.height)
             End Set
         End Property
@@ -213,7 +213,7 @@ Namespace java.awt.geom
         ''' <param name="h"> the height of the specified rectangular shape </param>
         ''' <seealso cref= #getFrame
         ''' @since 1.2 </seealso>
-        Public MustOverride Sub setFrame(ByVal x As Double, ByVal y As Double, ByVal w As Double, ByVal h As Double)
+        Public MustOverride Sub setFrame(  x As Double,   y As Double,   w As Double,   h As Double)
 
         ''' <summary>
         ''' Sets the location and size of the framing rectangle of this
@@ -225,7 +225,7 @@ Namespace java.awt.geom
         ''' <param name="size"> the specified <code>Dimension2D</code> </param>
         ''' <seealso cref= #getFrame
         ''' @since 1.2 </seealso>
-        Public Overridable Sub setFrame(ByVal loc As Point2D, ByVal size As Dimension2D)
+        Public Overridable Sub setFrame(  loc As Point2D,   size As Dimension2D)
             frameame(loc.x, loc.y, size.width, size.height)
         End Sub
 
@@ -240,7 +240,7 @@ Namespace java.awt.geom
         ''' <param name="x2"> the X coordinate of the end point of the specified diagonal </param>
         ''' <param name="y2"> the Y coordinate of the end point of the specified diagonal
         ''' @since 1.2 </param>
-        Public Overridable Sub setFrameFromDiagonal(ByVal x1 As Double, ByVal y1 As Double, ByVal x2 As Double, ByVal y2 As Double)
+        Public Overridable Sub setFrameFromDiagonal(  x1 As Double,   y1 As Double,   x2 As Double,   y2 As Double)
             If x2 < x1 Then
                 Dim t As Double = x1
                 x1 = x2
@@ -263,7 +263,7 @@ Namespace java.awt.geom
         ''' <param name="p1"> the start <code>Point2D</code> of the specified diagonal </param>
         ''' <param name="p2"> the end <code>Point2D</code> of the specified diagonal
         ''' @since 1.2 </param>
-        Public Overridable Sub setFrameFromDiagonal(ByVal p1 As Point2D, ByVal p2 As Point2D)
+        Public Overridable Sub setFrameFromDiagonal(  p1 As Point2D,   p2 As Point2D)
             frameFromDiagonalnal(p1.x, p1.y, p2.x, p2.y)
         End Sub
 
@@ -278,7 +278,7 @@ Namespace java.awt.geom
         ''' <param name="cornerX"> the X coordinate of the specified corner point </param>
         ''' <param name="cornerY"> the Y coordinate of the specified corner point
         ''' @since 1.2 </param>
-        Public Overridable Sub setFrameFromCenter(ByVal centerX As Double, ByVal centerY As Double, ByVal cornerX As Double, ByVal cornerY As Double)
+        Public Overridable Sub setFrameFromCenter(  centerX As Double,   centerY As Double,   cornerX As Double,   cornerY As Double)
             Dim halfW As Double = System.Math.Abs(cornerX - centerX)
             Dim halfH As Double = System.Math.Abs(cornerY - centerY)
             frameame(centerX - halfW, centerY - halfH, halfW * 2.0, halfH * 2.0)
@@ -292,7 +292,7 @@ Namespace java.awt.geom
         ''' <param name="center"> the specified center <code>Point2D</code> </param>
         ''' <param name="corner"> the specified corner <code>Point2D</code>
         ''' @since 1.2 </param>
-        Public Overridable Sub setFrameFromCenter(ByVal center As Point2D, ByVal corner As Point2D)
+        Public Overridable Sub setFrameFromCenter(  center As Point2D,   corner As Point2D)
             frameFromCenterter(center.x, center.y, corner.x, corner.y)
         End Sub
 
@@ -300,7 +300,7 @@ Namespace java.awt.geom
         ''' {@inheritDoc}
         ''' @since 1.2
         ''' </summary>
-        Public Overridable Function contains(ByVal p As Point2D) As Boolean
+        Public Overridable Function contains(  p As Point2D) As Boolean
             Return contains(p.x, p.y)
         End Function
 
@@ -308,7 +308,7 @@ Namespace java.awt.geom
         ''' {@inheritDoc}
         ''' @since 1.2
         ''' </summary>
-        Public Overridable Function intersects(ByVal r As Rectangle2D) As Boolean
+        Public Overridable Function intersects(  r As Rectangle2D) As Boolean
             Return intersects(r.x, r.y, r.width, r.height)
         End Function
 
@@ -316,7 +316,7 @@ Namespace java.awt.geom
         ''' {@inheritDoc}
         ''' @since 1.2
         ''' </summary>
-        Public Overridable Function contains(ByVal r As Rectangle2D) As Boolean
+        Public Overridable Function contains(  r As Rectangle2D) As Boolean
             Return contains(r.x, r.y, r.width, r.height)
         End Function
 
@@ -364,7 +364,7 @@ Namespace java.awt.geom
         ''' <returns> a <code>PathIterator</code> object that provides access to
         '''          the <code>Shape</code> object's flattened geometry.
         ''' @since 1.2 </returns>
-        Public Overridable Function getPathIterator(ByVal at As AffineTransform, ByVal flatness As Double) As PathIterator
+        Public Overridable Function getPathIterator(  at As AffineTransform,   flatness As Double) As PathIterator
             Return New FlatteningPathIterator(getPathIterator(at), flatness)
         End Function
 

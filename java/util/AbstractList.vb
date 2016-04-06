@@ -109,7 +109,7 @@ Namespace java.util
 		'''         list does not permit null elements </exception>
 		''' <exception cref="IllegalArgumentException"> if some property of this element
 		'''         prevents it from being added to this list </exception>
-		Public Overridable Function add(ByVal e As E) As Boolean
+		Public Overridable Function add(  e As E) As Boolean
 			add(size(), e)
 			Return True
 		End Function
@@ -118,7 +118,7 @@ Namespace java.util
 		''' {@inheritDoc}
 		''' </summary>
 		''' <exception cref="IndexOutOfBoundsException"> {@inheritDoc} </exception>
-		Public MustOverride Function [get](ByVal index As Integer) As E Implements List(Of E).get
+		Public MustOverride Function [get](  index As Integer) As E Implements List(Of E).get
 
 		''' <summary>
 		''' {@inheritDoc}
@@ -131,7 +131,7 @@ Namespace java.util
 		''' <exception cref="NullPointerException">          {@inheritDoc} </exception>
 		''' <exception cref="IllegalArgumentException">      {@inheritDoc} </exception>
 		''' <exception cref="IndexOutOfBoundsException">     {@inheritDoc} </exception>
-		Public Overridable Function [set](ByVal index As Integer, ByVal element As E) As E
+		Public Overridable Function [set](  index As Integer,   element As E) As E
 			Throw New UnsupportedOperationException
 		End Function
 
@@ -146,7 +146,7 @@ Namespace java.util
 		''' <exception cref="NullPointerException">          {@inheritDoc} </exception>
 		''' <exception cref="IllegalArgumentException">      {@inheritDoc} </exception>
 		''' <exception cref="IndexOutOfBoundsException">     {@inheritDoc} </exception>
-		Public Overridable Sub add(ByVal index As Integer, ByVal element As E)
+		Public Overridable Sub add(  index As Integer,   element As E)
 			Throw New UnsupportedOperationException
 		End Sub
 
@@ -158,7 +158,7 @@ Namespace java.util
 		''' </summary>
 		''' <exception cref="UnsupportedOperationException"> {@inheritDoc} </exception>
 		''' <exception cref="IndexOutOfBoundsException">     {@inheritDoc} </exception>
-		Public Overridable Function remove(ByVal index As Integer) As E Implements List(Of E).remove
+		Public Overridable Function remove(  index As Integer) As E Implements List(Of E).remove
 			Throw New UnsupportedOperationException
 		End Function
 
@@ -174,7 +174,7 @@ Namespace java.util
 		''' </summary>
 		''' <exception cref="ClassCastException">   {@inheritDoc} </exception>
 		''' <exception cref="NullPointerException"> {@inheritDoc} </exception>
-		Public Overridable Function indexOf(ByVal o As Object) As Integer Implements List(Of E).indexOf
+		Public Overridable Function indexOf(  o As Object) As Integer Implements List(Of E).indexOf
 			Dim it As ListIterator(Of E) = listIterator()
 			If o Is Nothing Then
 				Do While it.hasNext()
@@ -198,7 +198,7 @@ Namespace java.util
 		''' </summary>
 		''' <exception cref="ClassCastException">   {@inheritDoc} </exception>
 		''' <exception cref="NullPointerException"> {@inheritDoc} </exception>
-		Public Overridable Function lastIndexOf(ByVal o As Object) As Integer Implements List(Of E).lastIndexOf
+		Public Overridable Function lastIndexOf(  o As Object) As Integer Implements List(Of E).lastIndexOf
 			Dim it As ListIterator(Of E) = listIterator(size())
 			If o Is Nothing Then
 				Do While it.hasPrevious()
@@ -250,7 +250,7 @@ Namespace java.util
 		''' <exception cref="NullPointerException">          {@inheritDoc} </exception>
 		''' <exception cref="IllegalArgumentException">      {@inheritDoc} </exception>
 		''' <exception cref="IndexOutOfBoundsException">     {@inheritDoc} </exception>
-		Public Overridable Function addAll(Of T1 As E)(ByVal index As Integer, ByVal c As Collection(Of T1)) As Boolean Implements List(Of E).addAll
+		Public Overridable Function addAll(Of T1 As E)(  index As Integer,   c As Collection(Of T1)) As Boolean Implements List(Of E).addAll
 			rangeCheckForAdd(index)
 			Dim modified As Boolean = False
 			For Each e As E In c
@@ -316,7 +316,7 @@ Namespace java.util
 		''' the (protected) <seealso cref="#modCount"/> field.
 		''' </summary>
 		''' <exception cref="IndexOutOfBoundsException"> {@inheritDoc} </exception>
-		Public Overridable Function listIterator(ByVal index As Integer) As ListIterator(Of E) Implements List(Of E).listIterator
+		Public Overridable Function listIterator(  index As Integer) As ListIterator(Of E) Implements List(Of E).listIterator
 			rangeCheckForAdd(index)
 
 			Return New ListItr(Me, index)
@@ -327,7 +327,7 @@ Namespace java.util
 
 			Private ReadOnly outerInstance As AbstractList
 
-			Public Sub New(ByVal outerInstance As AbstractList)
+			Public Sub New(  outerInstance As AbstractList)
 				Me.outerInstance = outerInstance
 			End Sub
 
@@ -393,7 +393,7 @@ Namespace java.util
 
 			Private ReadOnly outerInstance As AbstractList
 
-			Friend Sub New(ByVal outerInstance As AbstractList, ByVal index As Integer)
+			Friend Sub New(  outerInstance As AbstractList,   index As Integer)
 					Me.outerInstance = outerInstance
 				cursor = index
 			End Sub
@@ -424,7 +424,7 @@ Namespace java.util
 				Return cursor-1
 			End Function
 
-			Public Overridable Sub [set](ByVal e As E)
+			Public Overridable Sub [set](  e As E)
 				If lastRet < 0 Then Throw New IllegalStateException
 				checkForComodification()
 
@@ -436,7 +436,7 @@ Namespace java.util
 				End Try
 			End Sub
 
-			Public Overridable Sub add(ByVal e As E)
+			Public Overridable Sub add(  e As E)
 				checkForComodification()
 
 				Try
@@ -485,7 +485,7 @@ Namespace java.util
 		'''         {@code (fromIndex < 0 || toIndex > size)} </exception>
 		''' <exception cref="IllegalArgumentException"> if the endpoint indices are out of order
 		'''         {@code (fromIndex > toIndex)} </exception>
-		Public Overridable Function subList(ByVal fromIndex As Integer, ByVal toIndex As Integer) As List(Of E) Implements List(Of E).subList
+		Public Overridable Function subList(  fromIndex As Integer,   toIndex As Integer) As List(Of E) Implements List(Of E).subList
 			Return (If(TypeOf Me Is RandomAccess, New RandomAccessSubList(Of )(Me, fromIndex, toIndex), New SubList(Of )(Me, fromIndex, toIndex)))
 		End Function
 
@@ -511,7 +511,7 @@ Namespace java.util
 		''' </summary>
 		''' <param name="o"> the object to be compared for equality with this list </param>
 		''' <returns> {@code true} if the specified object is equal to this list </returns>
-		Public Overrides Function Equals(ByVal o As Object) As Boolean
+		Public Overrides Function Equals(  o As Object) As Boolean
 			If o Is Me Then Return True
 			If Not(TypeOf o Is List) Then Return False
 
@@ -563,7 +563,7 @@ Namespace java.util
 		''' </summary>
 		''' <param name="fromIndex"> index of first element to be removed </param>
 		''' <param name="toIndex"> index after last element to be removed </param>
-		Protected Friend Overridable Sub removeRange(ByVal fromIndex As Integer, ByVal toIndex As Integer)
+		Protected Friend Overridable Sub removeRange(  fromIndex As Integer,   toIndex As Integer)
 			Dim it As ListIterator(Of E) = listIterator(fromIndex)
 			Dim i As Integer=0
 			Dim n As Integer=toIndex-fromIndex
@@ -603,11 +603,11 @@ Namespace java.util
 		<NonSerialized> _
 		Protected Friend modCount As Integer = 0
 
-		Private Sub rangeCheckForAdd(ByVal index As Integer)
+		Private Sub rangeCheckForAdd(  index As Integer)
 			If index < 0 OrElse index > size() Then Throw New IndexOutOfBoundsException(outOfBoundsMsg(index))
 		End Sub
 
-		Private Function outOfBoundsMsg(ByVal index As Integer) As String
+		Private Function outOfBoundsMsg(  index As Integer) As String
 			Return "Index: " & index & ", Size: " & size()
 		End Function
 	End Class
@@ -619,7 +619,7 @@ Namespace java.util
 		Private ReadOnly offset As Integer
 		Private size_Renamed As Integer
 
-		Friend Sub New(ByVal list As AbstractList(Of E), ByVal fromIndex As Integer, ByVal toIndex As Integer)
+		Friend Sub New(  list As AbstractList(Of E),   fromIndex As Integer,   toIndex As Integer)
 			If fromIndex < 0 Then Throw New IndexOutOfBoundsException("fromIndex = " & fromIndex)
 			If toIndex > list.size() Then Throw New IndexOutOfBoundsException("toIndex = " & toIndex)
 			If fromIndex > toIndex Then Throw New IllegalArgumentException("fromIndex(" & fromIndex & ") > toIndex(" & toIndex & ")")
@@ -629,13 +629,13 @@ Namespace java.util
 			Me.modCount = l.modCount
 		End Sub
 
-		Public Overridable Function [set](ByVal index As Integer, ByVal element As E) As E
+		Public Overridable Function [set](  index As Integer,   element As E) As E
 			rangeCheck(index)
 			checkForComodification()
 			Return l.set(index+offset, element)
 		End Function
 
-		Public Overridable Function [get](ByVal index As Integer) As E
+		Public Overridable Function [get](  index As Integer) As E
 			rangeCheck(index)
 			checkForComodification()
 			Return l.get(index+offset)
@@ -646,7 +646,7 @@ Namespace java.util
 			Return size_Renamed
 		End Function
 
-		Public Overridable Sub add(ByVal index As Integer, ByVal element As E)
+		Public Overridable Sub add(  index As Integer,   element As E)
 			rangeCheckForAdd(index)
 			checkForComodification()
 			l.add(index+offset, element)
@@ -654,7 +654,7 @@ Namespace java.util
 			size_Renamed += 1
 		End Sub
 
-		Public Overridable Function remove(ByVal index As Integer) As E
+		Public Overridable Function remove(  index As Integer) As E
 			rangeCheck(index)
 			checkForComodification()
 			Dim result As E = l.remove(index+offset)
@@ -663,18 +663,18 @@ Namespace java.util
 			Return result
 		End Function
 
-		Protected Friend Overridable Sub removeRange(ByVal fromIndex As Integer, ByVal toIndex As Integer)
+		Protected Friend Overridable Sub removeRange(  fromIndex As Integer,   toIndex As Integer)
 			checkForComodification()
 			l.removeRange(fromIndex+offset, toIndex+offset)
 			Me.modCount = l.modCount
 			size_Renamed -= (toIndex-fromIndex)
 		End Sub
 
-		Public Overridable Function addAll(Of T1 As E)(ByVal c As Collection(Of T1)) As Boolean
+		Public Overridable Function addAll(Of T1 As E)(  c As Collection(Of T1)) As Boolean
 			Return addAll(size_Renamed, c)
 		End Function
 
-		Public Overridable Function addAll(Of T1 As E)(ByVal index As Integer, ByVal c As Collection(Of T1)) As Boolean
+		Public Overridable Function addAll(Of T1 As E)(  index As Integer,   c As Collection(Of T1)) As Boolean
 			rangeCheckForAdd(index)
 			Dim cSize As Integer = c.size()
 			If cSize=0 Then Return False
@@ -690,7 +690,7 @@ Namespace java.util
 			Return listIterator()
 		End Function
 
-		Public Overridable Function listIterator(ByVal index As Integer) As ListIterator(Of E)
+		Public Overridable Function listIterator(  index As Integer) As ListIterator(Of E)
 			checkForComodification()
 			rangeCheckForAdd(index)
 
@@ -740,30 +740,30 @@ Namespace java.util
 				outerInstance.size_Renamed -= 1
 			End Sub
 
-			Public Overridable Sub [set](ByVal e As E)
+			Public Overridable Sub [set](  e As E)
 				i.set(e)
 			End Sub
 
-			Public Overridable Sub add(ByVal e As E)
+			Public Overridable Sub add(  e As E)
 				i.add(e)
 				outerInstance.modCount = outerInstance.l.modCount
 				outerInstance.size_Renamed += 1
 			End Sub
 		End Class
 
-		Public Overridable Function subList(ByVal fromIndex As Integer, ByVal toIndex As Integer) As List(Of E)
+		Public Overridable Function subList(  fromIndex As Integer,   toIndex As Integer) As List(Of E)
 			Return New SubList(Of )(Me, fromIndex, toIndex)
 		End Function
 
-		Private Sub rangeCheck(ByVal index As Integer)
+		Private Sub rangeCheck(  index As Integer)
 			If index < 0 OrElse index >= size_Renamed Then Throw New IndexOutOfBoundsException(outOfBoundsMsg(index))
 		End Sub
 
-		Private Sub rangeCheckForAdd(ByVal index As Integer)
+		Private Sub rangeCheckForAdd(  index As Integer)
 			If index < 0 OrElse index > size_Renamed Then Throw New IndexOutOfBoundsException(outOfBoundsMsg(index))
 		End Sub
 
-		Private Function outOfBoundsMsg(ByVal index As Integer) As String
+		Private Function outOfBoundsMsg(  index As Integer) As String
 			Return "Index: " & index & ", Size: " & size_Renamed
 		End Function
 
@@ -776,11 +776,11 @@ Namespace java.util
 		Inherits SubList(Of E)
 		Implements RandomAccess
 
-		Friend Sub New(ByVal list As AbstractList(Of E), ByVal fromIndex As Integer, ByVal toIndex As Integer)
+		Friend Sub New(  list As AbstractList(Of E),   fromIndex As Integer,   toIndex As Integer)
 			MyBase.New(list, fromIndex, toIndex)
 		End Sub
 
-		Public Overridable Function subList(ByVal fromIndex As Integer, ByVal toIndex As Integer) As List(Of E)
+		Public Overridable Function subList(  fromIndex As Integer,   toIndex As Integer) As List(Of E)
 			Return New RandomAccessSubList(Of )(Me, fromIndex, toIndex)
 		End Function
 	End Class

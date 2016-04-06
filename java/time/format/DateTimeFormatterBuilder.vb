@@ -3765,10 +3765,10 @@ Namespace java.time.format
 	Private Class DateTimeTextProviderAnonymousInnerClassHelper
 		Inherits DateTimeTextProvider
 
-		Public Overrides Function getText(ByVal field As java.time.temporal.TemporalField, ByVal value As Long, ByVal style As TextStyle, ByVal locale As java.util.Locale) As String
+		Public Overrides Function getText(  field As java.time.temporal.TemporalField,   value As Long,   style As TextStyle,   locale As java.util.Locale) As String
 			Return store.getText(value, style)
 		End Function
-		Public Overrides Function getTextIterator(ByVal field As java.time.temporal.TemporalField, ByVal style As TextStyle, ByVal locale As java.util.Locale) As IEnumerator(Of KeyValuePair(Of String, Long?))
+		Public Overrides Function getTextIterator(  field As java.time.temporal.TemporalField,   style As TextStyle,   locale As java.util.Locale) As IEnumerator(Of KeyValuePair(Of String, Long?))
 			Return store.getTextIterator(style)
 		End Function
 	End Class
@@ -3776,7 +3776,7 @@ Namespace java.time.format
 	Private Class ComparatorAnonymousInnerClassHelper(Of T)
 		Implements IComparer(Of T)
 
-		Public Overrides Function compare(ByVal str1 As String, ByVal str2 As String) As Integer
+		Public Overrides Function compare(  str1 As String,   str2 As String) As Integer
 			Return If(str1.length() = str2.length(), str1.CompareTo(str2), str1.length() - str2.length())
 		End Function
 	End Class

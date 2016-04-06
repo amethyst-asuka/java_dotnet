@@ -330,7 +330,7 @@ Namespace java.math
         ''' Trusted simply means if val is INFLATED, intVal could not be null and
         ''' if intVal is null, val could not be INFLATED.
         ''' </summary>
-        Friend Sub New(ByVal intVal As BigInteger, ByVal val As Long, ByVal scale As Integer, ByVal prec As Integer)
+        Friend Sub New(  intVal As BigInteger,   val As Long,   scale As Integer,   prec As Integer)
             Me.scale_Renamed = scale
             Me.precision_Renamed = prec
             Me.intCompact = val
@@ -355,7 +355,7 @@ Namespace java.math
         '''         representation of a {@code BigDecimal} or the defined subarray
         '''         is not wholly within {@code in}.
         ''' @since  1.5 </exception>
-        Public Sub New(ByVal [in] As Char(), ByVal offset As Integer, ByVal len As Integer)
+        Public Sub New(  [in] As Char(),   offset As Integer,   len As Integer)
             Me.New([in], offset, len, MathContext.UNLIMITED)
         End Sub
 
@@ -381,7 +381,7 @@ Namespace java.math
         '''         representation of a {@code BigDecimal} or the defined subarray
         '''         is not wholly within {@code in}.
         ''' @since  1.5 </exception>
-        Public Sub New(ByVal [in] As Char(), ByVal offset As Integer, ByVal len As Integer, ByVal mc As MathContext)
+        Public Sub New(  [in] As Char(),   offset As Integer,   len As Integer,   mc As MathContext)
             ' protect against huge length.
             If offset + len > [in].Length OrElse offset < 0 Then Throw New NumberFormatException("Bad offset or len arguments for char[] input.")
             ' This is the primary string to BigDecimal constructor; all
@@ -573,7 +573,7 @@ Namespace java.math
             Me.intVal = rb
         End Sub
 
-        Private Function adjustScale(ByVal scl As Integer, ByVal exp As Long) As Integer
+        Private Function adjustScale(  scl As Integer,   exp As Long) As Integer
             Dim adjustedScale As Long = scl - exp
             If adjustedScale >  java.lang.[Integer].Max_Value OrElse adjustedScale <  java.lang.[Integer].MIN_VALUE Then Throw New NumberFormatException("Scale out of range.")
             scl = CInt(adjustedScale)
@@ -583,7 +583,7 @@ Namespace java.math
         '    
         '     * parse exponent
         '     
-        Private Shared Function parseExp(ByVal [in] As Char(), ByVal offset As Integer, ByVal len As Integer) As Long
+        Private Shared Function parseExp(  [in] As Char(),   offset As Integer,   len As Integer) As Long
             Dim exp As Long = 0
             offset += 1
             Dim c As Char = [in](offset)
@@ -637,7 +637,7 @@ Namespace java.math
         ''' <exception cref="NumberFormatException"> if {@code in} is not a valid
         '''         representation of a {@code BigDecimal}.
         ''' @since  1.5 </exception>
-        Public Sub New(ByVal [in] As Char())
+        Public Sub New(  [in] As Char())
             Me.New([in], 0, [in].Length)
         End Sub
 
@@ -660,7 +660,7 @@ Namespace java.math
         ''' <exception cref="NumberFormatException"> if {@code in} is not a valid
         '''         representation of a {@code BigDecimal}.
         ''' @since  1.5 </exception>
-        Public Sub New(ByVal [in] As Char(), ByVal mc As MathContext)
+        Public Sub New(  [in] As Char(),   mc As MathContext)
             Me.New([in], 0, [in].Length, mc)
         End Sub
 
@@ -764,7 +764,7 @@ Namespace java.math
         ''' </param>
         ''' <exception cref="NumberFormatException"> if {@code val} is not a valid
         '''         representation of a {@code BigDecimal}. </exception>
-        Public Sub New(ByVal val As String)
+        Public Sub New(  val As String)
             Me.New(val.ToCharArray(), 0, val.Length())
         End Sub
 
@@ -781,7 +781,7 @@ Namespace java.math
         ''' <exception cref="NumberFormatException"> if {@code val} is not a valid
         '''         representation of a BigDecimal.
         ''' @since  1.5 </exception>
-        Public Sub New(ByVal val As String, ByVal mc As MathContext)
+        Public Sub New(  val As String,   mc As MathContext)
             Me.New(val.ToCharArray(), 0, val.Length(), mc)
         End Sub
 
@@ -828,7 +828,7 @@ Namespace java.math
         ''' <param name="val"> {@code double} value to be converted to
         '''        {@code BigDecimal}. </param>
         ''' <exception cref="NumberFormatException"> if {@code val} is infinite or NaN. </exception>
-        Public Sub New(ByVal val As Double)
+        Public Sub New(  val As Double)
             Me.New(val, MathContext.UNLIMITED)
         End Sub
 
@@ -849,7 +849,7 @@ Namespace java.math
         '''         RoundingMode is UNNECESSARY. </exception>
         ''' <exception cref="NumberFormatException"> if {@code val} is infinite or NaN.
         ''' @since  1.5 </exception>
-        Public Sub New(ByVal val As Double, ByVal mc As MathContext)
+        Public Sub New(  val As Double,   mc As MathContext)
             If java.lang.[Double].IsInfinity(val) OrElse java.lang.[Double].IsNaN(val) Then Throw New NumberFormatException("Infinite or NaN")
             ' Translate the double into sign, exponent and significand, according
             ' to the formulae in JLS, Section 20.10.22.
@@ -932,7 +932,7 @@ Namespace java.math
         ''' </summary>
         ''' <param name="val"> {@code BigInteger} value to be converted to
         '''            {@code BigDecimal}. </param>
-        Public Sub New(ByVal val As BigInteger)
+        Public Sub New(  val As BigInteger)
             scale_Renamed = 0
             intVal = val
             intCompact = compactValFor(val)
@@ -949,7 +949,7 @@ Namespace java.math
         ''' <exception cref="ArithmeticException"> if the result is inexact but the
         '''         rounding mode is {@code UNNECESSARY}.
         ''' @since  1.5 </exception>
-        Public Sub New(ByVal val As BigInteger, ByVal mc As MathContext)
+        Public Sub New(  val As BigInteger,   mc As MathContext)
             Me.New(val, 0, mc)
         End Sub
 
@@ -961,7 +961,7 @@ Namespace java.math
         ''' </summary>
         ''' <param name="unscaledVal"> unscaled value of the {@code BigDecimal}. </param>
         ''' <param name="scale"> scale of the {@code BigDecimal}. </param>
-        Public Sub New(ByVal unscaledVal As BigInteger, ByVal scale As Integer)
+        Public Sub New(  unscaledVal As BigInteger,   scale As Integer)
             ' Negative scales are now allowed
             Me.intVal = unscaledVal
             Me.intCompact = compactValFor(unscaledVal)
@@ -982,7 +982,7 @@ Namespace java.math
         ''' <exception cref="ArithmeticException"> if the result is inexact but the
         '''         rounding mode is {@code UNNECESSARY}.
         ''' @since  1.5 </exception>
-        Public Sub New(ByVal unscaledVal As BigInteger, ByVal scale As Integer, ByVal mc As MathContext)
+        Public Sub New(  unscaledVal As BigInteger,   scale As Integer,   mc As MathContext)
             Dim compactVal As Long = compactValFor(unscaledVal)
             Dim mcp As Integer = mc.precision
             Dim prec As Integer = 0
@@ -1025,7 +1025,7 @@ Namespace java.math
         ''' <param name="val"> {@code int} value to be converted to
         '''            {@code BigDecimal}.
         ''' @since  1.5 </param>
-        Public Sub New(ByVal val As Integer)
+        Public Sub New(  val As Integer)
             Me.intCompact = val
             Me.scale_Renamed = 0
             Me.intVal = Nothing
@@ -1041,7 +1041,7 @@ Namespace java.math
         ''' <exception cref="ArithmeticException"> if the result is inexact but the
         '''         rounding mode is {@code UNNECESSARY}.
         ''' @since  1.5 </exception>
-        Public Sub New(ByVal val As Integer, ByVal mc As MathContext)
+        Public Sub New(  val As Integer,   mc As MathContext)
             Dim mcp As Integer = mc.precision
             Dim compactVal As Long = val
             Dim scale_Renamed As Integer = 0
@@ -1068,7 +1068,7 @@ Namespace java.math
         ''' </summary>
         ''' <param name="val"> {@code long} value to be converted to {@code BigDecimal}.
         ''' @since  1.5 </param>
-        Public Sub New(ByVal val As Long)
+        Public Sub New(  val As Long)
             Me.intCompact = val
             Me.intVal = If(val = INFLATED_Renamed, INFLATED_BIGINT, Nothing)
             Me.scale_Renamed = 0
@@ -1084,7 +1084,7 @@ Namespace java.math
         ''' <exception cref="ArithmeticException"> if the result is inexact but the
         '''         rounding mode is {@code UNNECESSARY}.
         ''' @since  1.5 </exception>
-        Public Sub New(ByVal val As Long, ByVal mc As MathContext)
+        Public Sub New(  val As Long,   mc As MathContext)
             Dim mcp As Integer = mc.precision
             Dim mode As Integer = mc.roundingMode.oldMode
             Dim prec As Integer = 0
@@ -1134,7 +1134,7 @@ Namespace java.math
         ''' <param name="scale"> scale of the {@code BigDecimal}. </param>
         ''' <returns> a {@code BigDecimal} whose value is
         '''         <tt>(unscaledVal &times; 10<sup>-scale</sup>)</tt>. </returns>
-        Public Shared Function valueOf(ByVal unscaledVal As Long, ByVal scale As Integer) As BigDecimal
+        Public Shared Function valueOf(  unscaledVal As Long,   scale As Integer) As BigDecimal
             If scale = 0 Then
                 Return valueOf(unscaledVal)
             ElseIf unscaledVal = 0 Then
@@ -1152,7 +1152,7 @@ Namespace java.math
         ''' </summary>
         ''' <param name="val"> value of the {@code BigDecimal}. </param>
         ''' <returns> a {@code BigDecimal} whose value is {@code val}. </returns>
-        Public Shared Function valueOf(ByVal val As Long) As BigDecimal
+        Public Shared Function valueOf(  val As Long) As BigDecimal
             If val >= 0 AndAlso val < zeroThroughTen.Length Then
                 Return zeroThroughTen(CInt(val))
             ElseIf val <> INFLATED_Renamed Then
@@ -1161,7 +1161,7 @@ Namespace java.math
             Return New BigDecimal(INFLATED_BIGINT, val, 0, 0)
         End Function
 
-        Shared Function valueOf(ByVal unscaledVal As Long, ByVal scale As Integer, ByVal prec As Integer) As BigDecimal
+        Shared Function valueOf(  unscaledVal As Long,   scale As Integer,   prec As Integer) As BigDecimal
             If scale = 0 AndAlso unscaledVal >= 0 AndAlso unscaledVal < zeroThroughTen.Length Then
                 Return zeroThroughTen(CInt(unscaledVal))
             ElseIf unscaledVal = 0 Then
@@ -1170,7 +1170,7 @@ Namespace java.math
             Return New BigDecimal(If(unscaledVal = INFLATED_Renamed, INFLATED_BIGINT, Nothing), unscaledVal, scale, prec)
         End Function
 
-        Shared Function valueOf(ByVal intVal As BigInteger, ByVal scale As Integer, ByVal prec As Integer) As BigDecimal
+        Shared Function valueOf(  intVal As BigInteger,   scale As Integer,   prec As Integer) As BigDecimal
             Dim val As Long = compactValFor(intVal)
             If val = 0 Then
                 Return zeroValueOf(scale)
@@ -1180,7 +1180,7 @@ Namespace java.math
             Return New BigDecimal(intVal, val, scale, prec)
         End Function
 
-        Shared Function zeroValueOf(ByVal scale As Integer) As BigDecimal
+        Shared Function zeroValueOf(  scale As Integer) As BigDecimal
             If scale >= 0 AndAlso scale < ZERO_SCALED_BY.Length Then
                 Return ZERO_SCALED_BY(scale)
             Else
@@ -1204,7 +1204,7 @@ Namespace java.math
         '''         equal to the value of {@code val}. </returns>
         ''' <exception cref="NumberFormatException"> if {@code val} is infinite or NaN.
         ''' @since  1.5 </exception>
-        Public Shared Function valueOf(ByVal val As Double) As BigDecimal
+        Public Shared Function valueOf(  val As Double) As BigDecimal
             ' Reminder: a zero double returns '0.0', so we cannot fastpath
             ' to use the constant ZERO.  This might be important enough to
             ' justify a factory approach, a cache, or a few private
@@ -1220,7 +1220,7 @@ Namespace java.math
         ''' </summary>
         ''' <param name="augend"> value to be added to this {@code BigDecimal}. </param>
         ''' <returns> {@code this + augend} </returns>
-        Public Overridable Function add(ByVal augend As BigDecimal) As BigDecimal
+        Public Overridable Function add(  augend As BigDecimal) As BigDecimal
             If Me.intCompact <> INFLATED_Renamed Then
                 If (augend.intCompact <> INFLATED_Renamed) Then
                     Return add(Me.intCompact, Me.scale_Renamed, augend.intCompact, augend.scale_Renamed)
@@ -1249,7 +1249,7 @@ Namespace java.math
         ''' <exception cref="ArithmeticException"> if the result is inexact but the
         '''         rounding mode is {@code UNNECESSARY}.
         ''' @since  1.5 </exception>
-        Public Overridable Function add(ByVal augend As BigDecimal, ByVal mc As MathContext) As BigDecimal
+        Public Overridable Function add(  augend As BigDecimal,   mc As MathContext) As BigDecimal
             If mc.precision = 0 Then Return add(augend)
             Dim lhs As BigDecimal = Me
 
@@ -1313,7 +1313,7 @@ Namespace java.math
         ''' that the number of digits of the smaller operand could be
         ''' reduced even though the significands partially overlapped.
         ''' </summary>
-        Private Function preAlign(ByVal lhs As BigDecimal, ByVal augend As BigDecimal, ByVal padding As Long, ByVal mc As MathContext) As BigDecimal()
+        Private Function preAlign(  lhs As BigDecimal,   augend As BigDecimal,   padding As Long,   mc As MathContext) As BigDecimal()
             Debug.Assert(padding <> 0)
             Dim big As BigDecimal
             Dim small As BigDecimal
@@ -1359,7 +1359,7 @@ Namespace java.math
         ''' </summary>
         ''' <param name="subtrahend"> value to be subtracted from this {@code BigDecimal}. </param>
         ''' <returns> {@code this - subtrahend} </returns>
-        Public Overridable Function subtract(ByVal subtrahend As BigDecimal) As BigDecimal
+        Public Overridable Function subtract(  subtrahend As BigDecimal) As BigDecimal
             If Me.intCompact <> INFLATED_Renamed Then
                 If (subtrahend.intCompact <> INFLATED_Renamed) Then
                     Return add(Me.intCompact, Me.scale_Renamed, -subtrahend.intCompact, subtrahend.scale_Renamed)
@@ -1391,7 +1391,7 @@ Namespace java.math
         ''' <exception cref="ArithmeticException"> if the result is inexact but the
         '''         rounding mode is {@code UNNECESSARY}.
         ''' @since  1.5 </exception>
-        Public Overridable Function subtract(ByVal subtrahend As BigDecimal, ByVal mc As MathContext) As BigDecimal
+        Public Overridable Function subtract(  subtrahend As BigDecimal,   mc As MathContext) As BigDecimal
             If mc.precision = 0 Then Return subtract(subtrahend)
             ' share the special rounding code in add()
             Return add(subtrahend.negate(), mc)
@@ -1404,7 +1404,7 @@ Namespace java.math
         ''' </summary>
         ''' <param name="multiplicand"> value to be multiplied by this {@code BigDecimal}. </param>
         ''' <returns> {@code this * multiplicand} </returns>
-        Public Overridable Function multiply(ByVal multiplicand As BigDecimal) As BigDecimal
+        Public Overridable Function multiply(  multiplicand As BigDecimal) As BigDecimal
             Dim productScale As Integer = checkScale(CLng(scale_Renamed) + multiplicand.scale_Renamed)
             If Me.intCompact <> INFLATED_Renamed Then
                 If (multiplicand.intCompact <> INFLATED_Renamed) Then
@@ -1431,7 +1431,7 @@ Namespace java.math
         ''' <exception cref="ArithmeticException"> if the result is inexact but the
         '''         rounding mode is {@code UNNECESSARY}.
         ''' @since  1.5 </exception>
-        Public Overridable Function multiply(ByVal multiplicand As BigDecimal, ByVal mc As MathContext) As BigDecimal
+        Public Overridable Function multiply(  multiplicand As BigDecimal,   mc As MathContext) As BigDecimal
             If mc.precision = 0 Then Return multiply(multiplicand)
             Dim productScale As Integer = checkScale(CLng(scale_Renamed) + multiplicand.scale_Renamed)
             If Me.intCompact <> INFLATED_Renamed Then
@@ -1476,7 +1476,7 @@ Namespace java.math
         ''' <seealso cref=    #ROUND_HALF_DOWN </seealso>
         ''' <seealso cref=    #ROUND_HALF_EVEN </seealso>
         ''' <seealso cref=    #ROUND_UNNECESSARY </seealso>
-        Public Overridable Function divide(ByVal divisor As BigDecimal, ByVal scale As Integer, ByVal roundingMode As Integer) As BigDecimal
+        Public Overridable Function divide(  divisor As BigDecimal,   scale As Integer,   roundingMode As Integer) As BigDecimal
             If roundingMode < ROUND_UP OrElse roundingMode > ROUND_UNNECESSARY Then Throw New IllegalArgumentException("Invalid rounding mode")
             If Me.intCompact <> INFLATED_Renamed Then
                 If (divisor.intCompact <> INFLATED_Renamed) Then
@@ -1508,7 +1508,7 @@ Namespace java.math
         '''         the specified scale is insufficient to represent the result
         '''         of the division exactly.
         ''' @since 1.5 </exception>
-        Public Overridable Function divide(ByVal divisor As BigDecimal, ByVal scale As Integer, ByVal roundingMode As RoundingMode) As BigDecimal
+        Public Overridable Function divide(  divisor As BigDecimal,   scale As Integer,   roundingMode As RoundingMode) As BigDecimal
             Return divide(divisor, scale, roundingMode.oldMode)
         End Function
 
@@ -1538,7 +1538,7 @@ Namespace java.math
         ''' <seealso cref=    #ROUND_HALF_DOWN </seealso>
         ''' <seealso cref=    #ROUND_HALF_EVEN </seealso>
         ''' <seealso cref=    #ROUND_UNNECESSARY </seealso>
-        Public Overridable Function divide(ByVal divisor As BigDecimal, ByVal roundingMode As Integer) As BigDecimal
+        Public Overridable Function divide(  divisor As BigDecimal,   roundingMode As Integer) As BigDecimal
             Return Me.divide(divisor, scale_Renamed, roundingMode)
         End Function
 
@@ -1556,7 +1556,7 @@ Namespace java.math
         '''         {@code this.scale()} is insufficient to represent the result
         '''         of the division exactly.
         ''' @since 1.5 </exception>
-        Public Overridable Function divide(ByVal divisor As BigDecimal, ByVal roundingMode As RoundingMode) As BigDecimal
+        Public Overridable Function divide(  divisor As BigDecimal,   roundingMode As RoundingMode) As BigDecimal
             Return Me.divide(divisor, scale_Renamed, roundingMode.oldMode)
         End Function
 
@@ -1573,7 +1573,7 @@ Namespace java.math
         ''' <returns> {@code this / divisor}
         ''' @since 1.5
         ''' @author Joseph D. Darcy </returns>
-        Public Overridable Function divide(ByVal divisor As BigDecimal) As BigDecimal
+        Public Overridable Function divide(  divisor As BigDecimal) As BigDecimal
             '        
             '         * Handle zero cases first.
             '         
@@ -1628,7 +1628,7 @@ Namespace java.math
         '''         {@code mc.precision == 0} and the quotient has a
         '''         non-terminating decimal expansion.
         ''' @since  1.5 </exception>
-        Public Overridable Function divide(ByVal divisor As BigDecimal, ByVal mc As MathContext) As BigDecimal
+        Public Overridable Function divide(  divisor As BigDecimal,   mc As MathContext) As BigDecimal
             Dim mcp As Integer = mc.precision
             If mcp = 0 Then Return divide(divisor)
 
@@ -1678,7 +1678,7 @@ Namespace java.math
         ''' <returns> The integer part of {@code this / divisor}. </returns>
         ''' <exception cref="ArithmeticException"> if {@code divisor==0}
         ''' @since  1.5 </exception>
-        Public Overridable Function divideToIntegralValue(ByVal divisor As BigDecimal) As BigDecimal
+        Public Overridable Function divideToIntegralValue(  divisor As BigDecimal) As BigDecimal
             ' Calculate preferred scale
             Dim preferredScale As Integer = saturateLong(CLng(Me.scale_Renamed) - divisor.scale_Renamed)
             If Me.compareMagnitude(divisor) < 0 Then Return zeroValueOf(preferredScale)
@@ -1719,7 +1719,7 @@ Namespace java.math
         '''         requires a precision of more than {@code mc.precision} digits.
         ''' @since  1.5
         ''' @author Joseph D. Darcy </exception>
-        Public Overridable Function divideToIntegralValue(ByVal divisor As BigDecimal, ByVal mc As MathContext) As BigDecimal
+        Public Overridable Function divideToIntegralValue(  divisor As BigDecimal,   mc As MathContext) As BigDecimal
             If mc.precision = 0 OrElse (Me.compareMagnitude(divisor) < 0) Then ' zero result -  exact result Return divideToIntegralValue(divisor)
 
                 ' Calculate preferred scale
@@ -1775,7 +1775,7 @@ Namespace java.math
         ''' <returns> {@code this % divisor}. </returns>
         ''' <exception cref="ArithmeticException"> if {@code divisor==0}
         ''' @since  1.5 </exception>
-        Public Overridable Function remainder(ByVal divisor As BigDecimal) As BigDecimal
+        Public Overridable Function remainder(  divisor As BigDecimal) As BigDecimal
             Dim divrem As BigDecimal() = Me.divideAndRemainder(divisor)
             Return divrem(1)
         End Function
@@ -1804,7 +1804,7 @@ Namespace java.math
         '''         require a precision of more than {@code mc.precision} digits. </exception>
         ''' <seealso cref=    #divideToIntegralValue(java.math.BigDecimal, java.math.MathContext)
         ''' @since  1.5 </seealso>
-        Public Overridable Function remainder(ByVal divisor As BigDecimal, ByVal mc As MathContext) As BigDecimal
+        Public Overridable Function remainder(  divisor As BigDecimal,   mc As MathContext) As BigDecimal
             Dim divrem As BigDecimal() = Me.divideAndRemainder(divisor, mc)
             Return divrem(1)
         End Function
@@ -1828,7 +1828,7 @@ Namespace java.math
         ''' <seealso cref=    #divideToIntegralValue(java.math.BigDecimal, java.math.MathContext) </seealso>
         ''' <seealso cref=    #remainder(java.math.BigDecimal, java.math.MathContext)
         ''' @since  1.5 </seealso>
-        Public Overridable Function divideAndRemainder(ByVal divisor As BigDecimal) As BigDecimal()
+        Public Overridable Function divideAndRemainder(  divisor As BigDecimal) As BigDecimal()
             ' we use the identity  x = i * y + r to determine r
             Dim result As BigDecimal() = New BigDecimal(1) {}
 
@@ -1862,7 +1862,7 @@ Namespace java.math
         ''' <seealso cref=    #divideToIntegralValue(java.math.BigDecimal, java.math.MathContext) </seealso>
         ''' <seealso cref=    #remainder(java.math.BigDecimal, java.math.MathContext)
         ''' @since  1.5 </seealso>
-        Public Overridable Function divideAndRemainder(ByVal divisor As BigDecimal, ByVal mc As MathContext) As BigDecimal()
+        Public Overridable Function divideAndRemainder(  divisor As BigDecimal,   mc As MathContext) As BigDecimal()
             If mc.precision = 0 Then Return divideAndRemainder(divisor)
 
             Dim result As BigDecimal() = New BigDecimal(1) {}
@@ -1889,7 +1889,7 @@ Namespace java.math
         ''' <returns> <tt>this<sup>n</sup></tt> </returns>
         ''' <exception cref="ArithmeticException"> if {@code n} is out of range.
         ''' @since  1.5 </exception>
-        Public Overridable Function pow(ByVal n As Integer) As BigDecimal
+        Public Overridable Function pow(  n As Integer) As BigDecimal
             If n < 0 OrElse n > 999999999 Then Throw New ArithmeticException("Invalid operation")
             ' No need to calculate pow(n) if result will over/underflow.
             ' Don't attempt to support "supernormal" numbers.
@@ -1947,7 +1947,7 @@ Namespace java.math
         '''         rounding mode is {@code UNNECESSARY}, or {@code n} is out
         '''         of range.
         ''' @since  1.5 </exception>
-        Public Overridable Function pow(ByVal n As Integer, ByVal mc As MathContext) As BigDecimal
+        Public Overridable Function pow(  n As Integer,   mc As MathContext) As BigDecimal
             If mc.precision = 0 Then Return pow(n)
             If n < -999999999 OrElse n > 999999999 Then Throw New ArithmeticException("Invalid operation")
             If n = 0 Then Return ONE ' x**0 == 1 in X3.274
@@ -2000,7 +2000,7 @@ Namespace java.math
         ''' <exception cref="ArithmeticException"> if the result is inexact but the
         '''         rounding mode is {@code UNNECESSARY}.
         ''' @since 1.5 </exception>
-        Public Overridable Function abs(ByVal mc As MathContext) As BigDecimal
+        Public Overridable Function abs(  mc As MathContext) As BigDecimal
             Return (If(signum() < 0, negate(mc), plus(mc)))
         End Function
 
@@ -2026,7 +2026,7 @@ Namespace java.math
         ''' <exception cref="ArithmeticException"> if the result is inexact but the
         '''         rounding mode is {@code UNNECESSARY}.
         ''' @since  1.5 </exception>
-        Public Overridable Function negate(ByVal mc As MathContext) As BigDecimal
+        Public Overridable Function negate(  mc As MathContext) As BigDecimal
             Return negate().plus(mc)
         End Function
 
@@ -2059,7 +2059,7 @@ Namespace java.math
         '''         rounding mode is {@code UNNECESSARY}. </exception>
         ''' <seealso cref=    #round(MathContext)
         ''' @since  1.5 </seealso>
-        Public Overridable Function plus(ByVal mc As MathContext) As BigDecimal
+        Public Overridable Function plus(  mc As MathContext) As BigDecimal
             If mc.precision = 0 Then ' no rounding please Return Me
                 Return doRound(Me, mc)
         End Function
@@ -2212,7 +2212,7 @@ Namespace java.math
         '''         {@code BigDecimal}  operation would require rounding. </exception>
         ''' <seealso cref=    #plus(MathContext)
         ''' @since  1.5 </seealso>
-        Public Overridable Function round(ByVal mc As MathContext) As BigDecimal
+        Public Overridable Function round(  mc As MathContext) As BigDecimal
             Return plus(mc)
         End Function
 
@@ -2244,7 +2244,7 @@ Namespace java.math
         '''         rounding. </exception>
         ''' <seealso cref=    RoundingMode
         ''' @since  1.5 </seealso>
-        Public Overridable Function setScale(ByVal newScale As Integer, ByVal roundingMode As RoundingMode) As BigDecimal
+        Public Overridable Function setScale(  newScale As Integer,   roundingMode As RoundingMode) As BigDecimal
             Return scaleale(newScale, roundingMode.oldMode)
         End Function
 
@@ -2287,7 +2287,7 @@ Namespace java.math
         ''' <seealso cref=    #ROUND_HALF_DOWN </seealso>
         ''' <seealso cref=    #ROUND_HALF_EVEN </seealso>
         ''' <seealso cref=    #ROUND_UNNECESSARY </seealso>
-        Public Overridable Function setScale(ByVal newScale As Integer, ByVal roundingMode As Integer) As BigDecimal
+        Public Overridable Function setScale(  newScale As Integer,   roundingMode As Integer) As BigDecimal
             If roundingMode < ROUND_UP OrElse roundingMode > ROUND_UNNECESSARY Then Throw New IllegalArgumentException("Invalid rounding mode")
 
             Dim oldScale As Integer = Me.scale_Renamed
@@ -2364,7 +2364,7 @@ Namespace java.math
         '''         require rounding. </exception>
         ''' <seealso cref=    #setScale(int, int) </seealso>
         ''' <seealso cref=    #setScale(int, RoundingMode) </seealso>
-        Public Overridable Function setScale(ByVal newScale As Integer) As BigDecimal
+        Public Overridable Function setScale(  newScale As Integer) As BigDecimal
             Return scaleale(newScale, ROUND_UNNECESSARY)
         End Function
 
@@ -2384,7 +2384,7 @@ Namespace java.math
         ''' <returns> a {@code BigDecimal} which is equivalent to this one with the
         '''         decimal point moved {@code n} places to the left. </returns>
         ''' <exception cref="ArithmeticException"> if scale overflows. </exception>
-        Public Overridable Function movePointLeft(ByVal n As Integer) As BigDecimal
+        Public Overridable Function movePointLeft(  n As Integer) As BigDecimal
             ' Cannot use movePointRight(-n) in case of n== java.lang.[Integer].MIN_VALUE
             Dim newScale As Integer = checkScale(CLng(scale_Renamed) + n)
             Dim num As New BigDecimal(intVal, intCompact, newScale, 0)
@@ -2405,7 +2405,7 @@ Namespace java.math
         ''' <returns> a {@code BigDecimal} which is equivalent to this one
         '''         with the decimal point moved {@code n} places to the right. </returns>
         ''' <exception cref="ArithmeticException"> if scale overflows. </exception>
-        Public Overridable Function movePointRight(ByVal n As Integer) As BigDecimal
+        Public Overridable Function movePointRight(  n As Integer) As BigDecimal
             ' Cannot use movePointLeft(-n) in case of n== java.lang.[Integer].MIN_VALUE
             Dim newScale As Integer = checkScale(CLng(scale_Renamed) - n)
             Dim num As New BigDecimal(intVal, intCompact, newScale, 0)
@@ -2424,7 +2424,7 @@ Namespace java.math
         '''         outside the range of a 32-bit  java.lang.[Integer].
         ''' 
         ''' @since 1.5 </exception>
-        Public Overridable Function scaleByPowerOfTen(ByVal n As Integer) As BigDecimal
+        Public Overridable Function scaleByPowerOfTen(  n As Integer) As BigDecimal
             Return New BigDecimal(intVal, intCompact, checkScale(CLng(scale_Renamed) - n), precision_Renamed)
         End Function
 
@@ -2470,7 +2470,7 @@ Namespace java.math
         '''         to be compared. </param>
         ''' <returns> -1, 0, or 1 as this {@code BigDecimal} is numerically
         '''          less than, equal to, or greater than {@code val}. </returns>
-        Public Overridable Function compareTo(ByVal val As BigDecimal) As Integer Implements Comparable(Of BigDecimal).compareTo
+        Public Overridable Function compareTo(  val As BigDecimal) As Integer Implements Comparable(Of BigDecimal).compareTo
             ' Quick path for equal scale and non-inflated case.
             If scale_Renamed = val.scale_Renamed Then
                 Dim xs As Long = intCompact
@@ -2488,7 +2488,7 @@ Namespace java.math
         ''' <summary>
         ''' Version of compareTo that ignores sign.
         ''' </summary>
-        Private Function compareMagnitude(ByVal val As BigDecimal) As Integer
+        Private Function compareMagnitude(  val As BigDecimal) As Integer
             ' Match scales, avoid unnecessary inflation
             Dim ys As Long = val.intCompact
             Dim xs As Long = Me.intCompact
@@ -2543,7 +2543,7 @@ Namespace java.math
         '''         {@code BigDecimal}'s. </returns>
         ''' <seealso cref=    #compareTo(java.math.BigDecimal) </seealso>
         ''' <seealso cref=    #hashCode </seealso>
-        Public Overrides Function Equals(ByVal x As Object) As Boolean
+        Public Overrides Function Equals(  x As Object) As Boolean
             If Not (TypeOf x Is BigDecimal) Then Return False
             Dim xDec As BigDecimal = CDec(x)
             If x Is Me Then Return True
@@ -2570,7 +2570,7 @@ Namespace java.math
         '''         as defined by the <seealso cref="#compareTo(BigDecimal) compareTo"/>
         '''         method, {@code this} is returned. </returns>
         ''' <seealso cref=    #compareTo(java.math.BigDecimal) </seealso>
-        Public Overridable Function min(ByVal val As BigDecimal) As BigDecimal
+        Public Overridable Function min(  val As BigDecimal) As BigDecimal
             Return (If(compareTo(val) <= 0, Me, val))
         End Function
 
@@ -2583,7 +2583,7 @@ Namespace java.math
         '''         as defined by the <seealso cref="#compareTo(BigDecimal) compareTo"/>
         '''         method, {@code this} is returned. </returns>
         ''' <seealso cref=    #compareTo(java.math.BigDecimal) </seealso>
-        Public Overridable Function max(ByVal val As BigDecimal) As BigDecimal
+        Public Overridable Function max(  val As BigDecimal) As BigDecimal
             Return (If(compareTo(val) >= 0, Me, val))
         End Function
 
@@ -2810,7 +2810,7 @@ Namespace java.math
         End Function
 
         ' Returns a digit.digit string 
-        Private Function getValueString(ByVal signum As Integer, ByVal intString As String, ByVal scale As Integer) As String
+        Private Function getValueString(  signum As Integer,   intString As String,   scale As Integer) As String
             ' Insert decimal point 
             Dim buf As StringBuilder
             Dim insertionPoint As Integer = intString.Length() - scale
@@ -2921,7 +2921,7 @@ Namespace java.math
             ''' BigInteger equal to java.lang.[Long].MAX_VALUE. </summary>
             Private Shared ReadOnly LONGMAX As BigInteger = Big java.lang.[Integer].valueOf(Long.MAX_VALUE)
 
-            Public Shared Sub check(ByVal num As BigDecimal)
+            Public Shared Sub check(  num As BigDecimal)
                 Dim intVal As BigInteger = num.inflated()
                 If intVal.compareTo(LONGMIN) < 0 OrElse intVal.compareTo(LONGMAX) > 0 Then Throw New java.lang.ArithmeticException("Overflow")
             End Sub
@@ -3152,7 +3152,7 @@ Namespace java.math
             ''' <param name="intCompact"> the number to put into the cmpCharArray. </param>
             ''' <returns> offset to the array where the representation starts.
             ''' Note: intCompact must be greater or equal to zero. </returns>
-            Friend Overridable Function putIntCompact(ByVal intCompact As Long) As Integer
+            Friend Overridable Function putIntCompact(  intCompact As Long) As Integer
                 Debug.Assert(intCompact >= 0)
 
                 Dim q As Long
@@ -3208,7 +3208,7 @@ Namespace java.math
         '''          {@code false} for Engineering </param>
         ''' <returns> string with canonical string representation of this
         '''         {@code BigDecimal} </returns>
-        Private Function layoutChars(ByVal sci As Boolean) As String
+        Private Function layoutChars(  sci As Boolean) As String
             If scale_Renamed = 0 Then ' zero scale is trivial Return If(intCompact <> INFLATED_Renamed, Convert.ToString(intCompact), intVal.ToString())
                 If scale_Renamed = 2 AndAlso intCompact >= 0 AndAlso intCompact <  java.lang.[Integer].Max_Value Then
                     ' currency fast path
@@ -3303,7 +3303,7 @@ Namespace java.math
         ''' </summary>
         ''' <param name="n"> the power of ten to be returned (>=0) </param>
         ''' <returns> a {@code BigInteger} with the value (10<sup>n</sup>) </returns>
-        Private Shared Function bigTenToThe(ByVal n As Integer) As BigInteger
+        Private Shared Function bigTenToThe(  n As Integer) As BigInteger
             If n < 0 Then Return Big java.lang.[Integer].ZERO
 
             If n < BIG_TEN_POWERS_TABLE_MAX Then
@@ -3325,7 +3325,7 @@ Namespace java.math
         ''' <returns> a {@code BigDecimal} with the value (10<sup>n</sup>) and
         '''         in the meantime, the BIG_TEN_POWERS_TABLE array gets
         '''         expanded to the size greater than n. </returns>
-        Private Shared Function expandBigIntegerTenPowers(ByVal n As Integer) As BigInteger
+        Private Shared Function expandBigIntegerTenPowers(  n As Integer) As BigInteger
             SyncLock GetType(BigDecimal)
                 Dim pows As BigInteger() = BIG_TEN_POWERS_TABLE
                 Dim curLen As Integer = pows.Length
@@ -3364,7 +3364,7 @@ Namespace java.math
         ''' Compute val * 10 ^ n; return this product if it is
         ''' representable as a long, INFLATED otherwise.
         ''' </summary>
-        Private Shared Function longMultiplyPowerTen(ByVal val As Long, ByVal n As Integer) As Long
+        Private Shared Function longMultiplyPowerTen(  val As Long,   n As Integer) As Long
             If val = 0 OrElse n <= 0 Then Return val
             Dim tab As Long() = LONG_TEN_POWERS_TABLE
             Dim bounds As Long() = THRESHOLDS_TABLE
@@ -3380,7 +3380,7 @@ Namespace java.math
         ''' Compute this * 10 ^ n.
         ''' Needed mainly to allow special casing to trap zero value
         ''' </summary>
-        Private Function bigMultiplyPowerTen(ByVal n As Integer) As BigInteger
+        Private Function bigMultiplyPowerTen(  n As Integer) As BigInteger
             If n <= 0 Then Return Me.inflated()
 
             If intCompact <> INFLATED_Renamed Then
@@ -3411,7 +3411,7 @@ Namespace java.math
         ''' </summary>
         ''' <param name="val"> array of two elements referring to the two
         '''         {@code BigDecimal}s to be aligned. </param>
-        Private Shared Sub matchScale(ByVal val As BigDecimal())
+        Private Shared Sub matchScale(  val As BigDecimal())
             If val(0).scale_Renamed = val(1).scale_Renamed Then
                 Return
             ElseIf val(0).scale_Renamed < val(1).scale_Renamed Then
@@ -3434,11 +3434,11 @@ Namespace java.math
                     Throw New ExceptionInInitializerError(ex)
                 End Try
             End Sub
-            Friend Shared Sub setIntCompactVolatile(ByVal bd As BigDecimal, ByVal val As Long)
+            Friend Shared Sub setIntCompactVolatile(  bd As BigDecimal,   val As Long)
                 unsafe.putLongVolatile(bd, intCompactOffset, val)
             End Sub
 
-            Friend Shared Sub setIntValVolatile(ByVal bd As BigDecimal, ByVal val As BigInteger)
+            Friend Shared Sub setIntValVolatile(  bd As BigDecimal,   val As BigInteger)
                 unsafe.putObjectVolatile(bd, intValOffset, val)
             End Sub
         End Class
@@ -3448,7 +3448,7 @@ Namespace java.math
         ''' deserialize it).
         ''' </summary>
         ''' <param name="s"> the stream being read. </param>
-        Private Sub readObject(ByVal s As java.io.ObjectInputStream)
+        Private Sub readObject(  s As java.io.ObjectInputStream)
             ' Read in all fields
             s.defaultReadObject()
             ' validate possibly bad fields
@@ -3464,7 +3464,7 @@ Namespace java.math
         ''' Serialize this {@code BigDecimal} to the stream in question
         ''' </summary>
         ''' <param name="s"> the stream to serialize to. </param>
-        Private Sub writeObject(ByVal s As java.io.ObjectOutputStream)
+        Private Sub writeObject(  s As java.io.ObjectOutputStream)
             ' Must inflate to maintain compatible serial form.
             If Me.intVal Is Nothing Then UnsafeHolder.intValVolatileile(Me, Big java.lang.[Integer].valueOf(Me.intCompact))
             ' Could reset intVal back to null if it has to be set.
@@ -3477,7 +3477,7 @@ Namespace java.math
         ''' </summary>
         ''' <param name="x"> the {@code long} </param>
         ''' <returns> the length of the unscaled value, in deciaml digits. </returns>
-        Friend Shared Function longDigitLength(ByVal x As Long) As Integer
+        Friend Shared Function longDigitLength(  x As Long) As Integer
             '        
             '         * As described in "Bit Twiddling Hacks" by Sean Anderson,
             '         * (http://graphics.stanford.edu/~seander/bithacks.html)
@@ -3506,7 +3506,7 @@ Namespace java.math
         ''' </summary>
         ''' <param name="b"> the BigInteger </param>
         ''' <returns> the length of the unscaled value, in decimal digits </returns>
-        Private Shared Function bigDigitLength(ByVal b As BigInteger) As Integer
+        Private Shared Function bigDigitLength(  b As BigInteger) As Integer
             '        
             '         * Same idea as the long version, but we need a better
             '         * approximation of log10(2). Using 646456993/2^31
@@ -3527,7 +3527,7 @@ Namespace java.math
         ''' <exception cref="ArithmeticException"> (overflow or underflow) if the new
         '''         scale is out of range. </exception>
         ''' <returns> validated scale as an int. </returns>
-        Private Function checkScale(ByVal val As Long) As Integer
+        Private Function checkScale(  val As Long) As Integer
             Dim asInt As Integer = CInt(val)
             If asInt <> val Then
                 asInt = If(val >  java.lang.[Integer].Max_Value,  java.lang.[Integer].Max_Value,  java.lang.[Integer].MIN_VALUE)
@@ -3543,7 +3543,7 @@ Namespace java.math
         ''' INFLATED if too big. Relies on internal representation of
         ''' {@code BigInteger}.
         ''' </summary>
-        Private Shared Function compactValFor(ByVal b As BigInteger) As Long
+        Private Shared Function compactValFor(  b As BigInteger) As Long
             Dim m As Integer() = b.mag
             Dim len As Integer = m.Length
             If len = 0 Then Return 0
@@ -3554,13 +3554,13 @@ Namespace java.math
             Return If(b.signum_Renamed < 0, -u, u)
         End Function
 
-        Private Shared Function longCompareMagnitude(ByVal x As Long, ByVal y As Long) As Integer
+        Private Shared Function longCompareMagnitude(  x As Long,   y As Long) As Integer
             If x < 0 Then x = -x
             If y < 0 Then y = -y
             Return If(x < y, -1, (If(x = y, 0, 1)))
         End Function
 
-        Private Shared Function saturateLong(ByVal s As Long) As Integer
+        Private Shared Function saturateLong(  s As Long) As Integer
             Dim i As Integer = CInt(s)
             Return If(s = i, i, (If(s < 0,  java.lang.[Integer].MIN_VALUE,  java.lang.[Integer].Max_Value)))
         End Function
@@ -3568,7 +3568,7 @@ Namespace java.math
         '    
         '     * Internal printing routine
         '     
-        Private Shared Sub print(ByVal name As String, ByVal bd As BigDecimal)
+        Private Shared Sub print(  name As String,   bd As BigDecimal)
             System.err.format("%s:" & vbTab & "intCompact %d" & vbTab & "intVal %d" & vbTab & "scale %d" & vbTab & "precision %d%n", name, bd.intCompact, bd.intVal, bd.scale_Renamed, bd.precision_Renamed)
         End Sub
 
@@ -3620,13 +3620,13 @@ Namespace java.math
         End Function
 
         ' the same as checkScale where value!=0 
-        Private Shared Function checkScaleNonZero(ByVal val As Long) As Integer
+        Private Shared Function checkScaleNonZero(  val As Long) As Integer
             Dim asInt As Integer = CInt(val)
             If asInt <> val Then Throw New ArithmeticException(If(asInt > 0, "Underflow", "Overflow"))
             Return asInt
         End Function
 
-        Private Shared Function checkScale(ByVal intCompact As Long, ByVal val As Long) As Integer
+        Private Shared Function checkScale(  intCompact As Long,   val As Long) As Integer
             Dim asInt As Integer = CInt(val)
             If asInt <> val Then
                 asInt = If(val >  java.lang.[Integer].Max_Value,  java.lang.[Integer].Max_Value,  java.lang.[Integer].MIN_VALUE)
@@ -3635,7 +3635,7 @@ Namespace java.math
             Return asInt
         End Function
 
-        Private Shared Function checkScale(ByVal intVal As BigInteger, ByVal val As Long) As Integer
+        Private Shared Function checkScale(  intVal As BigInteger,   val As Long) As Integer
             Dim asInt As Integer = CInt(val)
             If asInt <> val Then
                 asInt = If(val >  java.lang.[Integer].Max_Value,  java.lang.[Integer].Max_Value,  java.lang.[Integer].MIN_VALUE)
@@ -3656,7 +3656,7 @@ Namespace java.math
         ''' <exception cref="ArithmeticException"> if the rounding mode is
         '''         {@code RoundingMode.UNNECESSARY} and the
         '''         result is inexact. </exception>
-        Private Shared Function doRound(ByVal val As BigDecimal, ByVal mc As MathContext) As BigDecimal
+        Private Shared Function doRound(  val As BigDecimal,   mc As MathContext) As BigDecimal
             Dim mcp As Integer = mc.precision
             Dim wasDivided As Boolean = False
             If mcp > 0 Then
@@ -3701,7 +3701,7 @@ Namespace java.math
         '     * Returns a {@code BigDecimal} created from {@code long} value with
         '     * given scale rounded according to the MathContext settings
         '     
-        Private Shared Function doRound(ByVal compactVal As Long, ByVal scale As Integer, ByVal mc As MathContext) As BigDecimal
+        Private Shared Function doRound(  compactVal As Long,   scale As Integer,   mc As MathContext) As BigDecimal
             Dim mcp As Integer = mc.precision
             If mcp > 0 AndAlso mcp < 19 Then
                 Dim prec As Integer = longDigitLength(compactVal)
@@ -3721,7 +3721,7 @@ Namespace java.math
         '     * Returns a {@code BigDecimal} created from {@code BigInteger} value with
         '     * given scale rounded according to the MathContext settings
         '     
-        Private Shared Function doRound(ByVal intVal As BigInteger, ByVal scale As Integer, ByVal mc As MathContext) As BigDecimal
+        Private Shared Function doRound(  intVal As BigInteger,   scale As Integer,   mc As MathContext) As BigDecimal
             Dim mcp As Integer = mc.precision
             Dim prec As Integer = 0
             If mcp > 0 Then
@@ -3758,7 +3758,7 @@ Namespace java.math
         '    
         '     * Divides {@code BigInteger} value by ten power.
         '     
-        Private Shared Function divideAndRoundByTenPow(ByVal intVal As BigInteger, ByVal tenPow As Integer, ByVal roundingMode As Integer) As BigInteger
+        Private Shared Function divideAndRoundByTenPow(  intVal As BigInteger,   tenPow As Integer,   roundingMode As Integer) As BigInteger
             If tenPow < LONG_TEN_POWERS_TABLE.Length Then
                 intVal = divideAndRound(intVal, LONG_TEN_POWERS_TABLE(tenPow), roundingMode)
             Else
@@ -3776,7 +3776,7 @@ Namespace java.math
         ''' the last parameter, i.e. preferredScale is NOT equal to scale, the
         ''' trailing zeros of the result is stripped to match the preferredScale.
         ''' </summary>
-        Private Shared Function divideAndRound(ByVal ldividend As Long, ByVal ldivisor As Long, ByVal scale As Integer, ByVal roundingMode As Integer, ByVal preferredScale As Integer) As BigDecimal
+        Private Shared Function divideAndRound(  ldividend As Long,   ldivisor As Long,   scale As Integer,   roundingMode As Integer,   preferredScale As Integer) As BigDecimal
 
             Dim qsign As Integer ' quotient sign
             Dim q As Long = ldividend \ ldivisor ' store quotient in long
@@ -3799,7 +3799,7 @@ Namespace java.math
         ''' Divides {@code long} by {@code long} and do rounding based on the
         ''' passed in roundingMode.
         ''' </summary>
-        Private Shared Function divideAndRound(ByVal ldividend As Long, ByVal ldivisor As Long, ByVal roundingMode As Integer) As Long
+        Private Shared Function divideAndRound(  ldividend As Long,   ldivisor As Long,   roundingMode As Integer) As Long
             Dim qsign As Integer ' quotient sign
             Dim q As Long = ldividend \ ldivisor ' store quotient in long
             If roundingMode = ROUND_DOWN Then Return q
@@ -3816,7 +3816,7 @@ Namespace java.math
         ''' <summary>
         ''' Shared logic of need increment computation.
         ''' </summary>
-        Private Shared Function commonNeedIncrement(ByVal roundingMode As Integer, ByVal qsign As Integer, ByVal cmpFracHalf As Integer, ByVal oddQuot As Boolean) As Boolean
+        Private Shared Function commonNeedIncrement(  roundingMode As Integer,   qsign As Integer,   cmpFracHalf As Integer,   oddQuot As Boolean) As Boolean
             Select Case roundingMode
                 Case ROUND_UNNECESSARY
                     Throw New ArithmeticException("Rounding necessary")
@@ -3863,7 +3863,7 @@ Namespace java.math
         ''' <summary>
         ''' Tests if quotient has to be incremented according the roundingMode
         ''' </summary>
-        Private Shared Function needIncrement(ByVal ldivisor As Long, ByVal roundingMode As Integer, ByVal qsign As Integer, ByVal q As Long, ByVal r As Long) As Boolean
+        Private Shared Function needIncrement(  ldivisor As Long,   roundingMode As Integer,   qsign As Integer,   q As Long,   r As Long) As Boolean
             Debug.Assert(r <> 0L)
 
             Dim cmpFracHalf As Integer
@@ -3880,7 +3880,7 @@ Namespace java.math
         ''' Divides {@code BigInteger} value by {@code long} value and
         ''' do rounding based on the passed in roundingMode.
         ''' </summary>
-        Private Shared Function divideAndRound(ByVal bdividend As BigInteger, ByVal ldivisor As Long, ByVal roundingMode As Integer) As BigInteger
+        Private Shared Function divideAndRound(  bdividend As BigInteger,   ldivisor As Long,   roundingMode As Integer) As BigInteger
             Dim isRemainderZero As Boolean ' record remainder is zero or not
             Dim qsign As Integer ' quotient sign
             Dim r As Long = 0 ' store quotient & remainder in long
@@ -3906,7 +3906,7 @@ Namespace java.math
         ''' the last parameter, i.e. preferredScale is NOT equal to scale, the
         ''' trailing zeros of the result is stripped to match the preferredScale.
         ''' </summary>
-        Private Shared Function divideAndRound(ByVal bdividend As BigInteger, ByVal ldivisor As Long, ByVal scale As Integer, ByVal roundingMode As Integer, ByVal preferredScale As Integer) As BigDecimal
+        Private Shared Function divideAndRound(  bdividend As BigInteger,   ldivisor As Long,   scale As Integer,   roundingMode As Integer,   preferredScale As Integer) As BigDecimal
             Dim isRemainderZero As Boolean ' record remainder is zero or not
             Dim qsign As Integer ' quotient sign
             Dim r As Long = 0 ' store quotient & remainder in long
@@ -3935,7 +3935,7 @@ Namespace java.math
         ''' <summary>
         ''' Tests if quotient has to be incremented according the roundingMode
         ''' </summary>
-        Private Shared Function needIncrement(ByVal ldivisor As Long, ByVal roundingMode As Integer, ByVal qsign As Integer, ByVal mq As MutableBigInteger, ByVal r As Long) As Boolean
+        Private Shared Function needIncrement(  ldivisor As Long,   roundingMode As Integer,   qsign As Integer,   mq As MutableBigInteger,   r As Long) As Boolean
             Debug.Assert(r <> 0L)
 
             Dim cmpFracHalf As Integer
@@ -3952,7 +3952,7 @@ Namespace java.math
         ''' Divides {@code BigInteger} value by {@code BigInteger} value and
         ''' do rounding based on the passed in roundingMode.
         ''' </summary>
-        Private Shared Function divideAndRound(ByVal bdividend As BigInteger, ByVal bdivisor As BigInteger, ByVal roundingMode As Integer) As BigInteger
+        Private Shared Function divideAndRound(  bdividend As BigInteger,   bdivisor As BigInteger,   roundingMode As Integer) As BigInteger
             Dim isRemainderZero As Boolean ' record remainder is zero or not
             Dim qsign As Integer ' quotient sign
             ' Descend into mutables for faster remainder checks
@@ -3977,7 +3977,7 @@ Namespace java.math
         ''' the last parameter, i.e. preferredScale is NOT equal to scale, the
         ''' trailing zeros of the result is stripped to match the preferredScale.
         ''' </summary>
-        Private Shared Function divideAndRound(ByVal bdividend As BigInteger, ByVal bdivisor As BigInteger, ByVal scale As Integer, ByVal roundingMode As Integer, ByVal preferredScale As Integer) As BigDecimal
+        Private Shared Function divideAndRound(  bdividend As BigInteger,   bdivisor As BigInteger,   scale As Integer,   roundingMode As Integer,   preferredScale As Integer) As BigDecimal
             Dim isRemainderZero As Boolean ' record remainder is zero or not
             Dim qsign As Integer ' quotient sign
             ' Descend into mutables for faster remainder checks
@@ -4005,7 +4005,7 @@ Namespace java.math
         ''' <summary>
         ''' Tests if quotient has to be incremented according the roundingMode
         ''' </summary>
-        Private Shared Function needIncrement(ByVal mdivisor As MutableBigInteger, ByVal roundingMode As Integer, ByVal qsign As Integer, ByVal mq As MutableBigInteger, ByVal mr As MutableBigInteger) As Boolean
+        Private Shared Function needIncrement(  mdivisor As MutableBigInteger,   roundingMode As Integer,   qsign As Integer,   mq As MutableBigInteger,   mr As MutableBigInteger) As Boolean
             Debug.Assert((Not mr.zero))
             Dim cmpFracHalf As Integer = mr.compareHalf(mdivisor)
             Return commonNeedIncrement(roundingMode, qsign, cmpFracHalf, mq.odd)
@@ -4019,7 +4019,7 @@ Namespace java.math
         ''' </summary>
         ''' <returns> new {@code BigDecimal} with a scale possibly reduced
         ''' to be closed to the preferred scale. </returns>
-        Private Shared Function createAndStripZerosToMatchScale(ByVal intVal As BigInteger, ByVal scale As Integer, ByVal preferredScale As Long) As BigDecimal
+        Private Shared Function createAndStripZerosToMatchScale(  intVal As BigInteger,   scale As Integer,   preferredScale As Long) As BigDecimal
             Dim qr As BigInteger() ' quotient-remainder pair
             Do While intVal.compareMagnitude(Big java.lang.[Integer].TEN) >= 0 AndAlso scale > preferredScale
                 If intVal.testBit(0) Then Exit Do ' odd number cannot end in 0
@@ -4039,7 +4039,7 @@ Namespace java.math
         ''' </summary>
         ''' <returns> new {@code BigDecimal} with a scale possibly reduced
         ''' to be closed to the preferred scale. </returns>
-        Private Shared Function createAndStripZerosToMatchScale(ByVal compactVal As Long, ByVal scale As Integer, ByVal preferredScale As Long) As BigDecimal
+        Private Shared Function createAndStripZerosToMatchScale(  compactVal As Long,   scale As Integer,   preferredScale As Long) As BigDecimal
             Do While System.Math.Abs(compactVal) >= 10L AndAlso scale > preferredScale
                 If (compactVal And 1L) <> 0L Then Exit Do ' odd number cannot end in 0
                 Dim r As Long = compactVal Mod 10L
@@ -4050,7 +4050,7 @@ Namespace java.math
             Return valueOf(compactVal, scale)
         End Function
 
-        Private Shared Function stripZerosToMatchScale(ByVal intVal As BigInteger, ByVal intCompact As Long, ByVal scale As Integer, ByVal preferredScale As Integer) As BigDecimal
+        Private Shared Function stripZerosToMatchScale(  intVal As BigInteger,   intCompact As Long,   scale As Integer,   preferredScale As Integer) As BigDecimal
             If intCompact <> INFLATED_Renamed Then
                 Return createAndStripZerosToMatchScale(intCompact, scale, preferredScale)
             Else
@@ -4061,7 +4061,7 @@ Namespace java.math
         '    
         '     * returns INFLATED if oveflow
         '     
-        Private Shared Function add(ByVal xs As Long, ByVal ys As Long) As Long
+        Private Shared Function add(  xs As Long,   ys As Long) As Long
             Dim sum As Long = xs + ys
             ' See "Hacker's Delight" section 2-12 for explanation of
             ' the overflow test.
@@ -4069,13 +4069,13 @@ Namespace java.math
                 Return INFLATED_Renamed
         End Function
 
-        Private Shared Function add(ByVal xs As Long, ByVal ys As Long, ByVal scale As Integer) As BigDecimal
+        Private Shared Function add(  xs As Long,   ys As Long,   scale As Integer) As BigDecimal
             Dim sum As Long = add(xs, ys)
             If sum <> INFLATED_Renamed Then Return BigDecimal.valueOf(sum, scale)
             Return New BigDecimal(Big java.lang.[Integer].valueOf(xs) + ys, scale)
         End Function
 
-        Private Shared Function add(ByVal xs As Long, ByVal scale1 As Integer, ByVal ys As Long, ByVal scale2 As Integer) As BigDecimal
+        Private Shared Function add(  xs As Long,   scale1 As Integer,   ys As Long,   scale2 As Integer) As BigDecimal
             Dim sdiff As Long = CLng(scale1) - scale2
             If sdiff = 0 Then
                 Return add(xs, ys, scale1)
@@ -4100,7 +4100,7 @@ Namespace java.math
             End If
         End Function
 
-        Private Shared Function add(ByVal xs As Long, ByVal scale1 As Integer, ByVal snd As BigInteger, ByVal scale2 As Integer) As BigDecimal
+        Private Shared Function add(  xs As Long,   scale1 As Integer,   snd As BigInteger,   scale2 As Integer) As BigDecimal
             Dim rscale As Integer = scale1
             Dim sdiff As Long = CLng(rscale) - scale2
             Dim sameSigns As Boolean = (Long.signum(xs) = snd.signum_Renamed)
@@ -4122,7 +4122,7 @@ Namespace java.math
             Return If(sameSigns, New BigDecimal(sum, INFLATED_Renamed, rscale, 0), valueOf(sum, rscale, 0))
         End Function
 
-        Private Shared Function add(ByVal fst As BigInteger, ByVal scale1 As Integer, ByVal snd As BigInteger, ByVal scale2 As Integer) As BigDecimal
+        Private Shared Function add(  fst As BigInteger,   scale1 As Integer,   snd As BigInteger,   scale2 As Integer) As BigDecimal
             Dim rscale As Integer = scale1
             Dim sdiff As Long = CLng(rscale) - scale2
             If sdiff <> 0 Then
@@ -4139,12 +4139,12 @@ Namespace java.math
             Return If(fst.signum_Renamed = snd.signum_Renamed, New BigDecimal(sum, INFLATED_Renamed, rscale, 0), valueOf(sum, rscale, 0))
         End Function
 
-        Private Shared Function bigMultiplyPowerTen(ByVal value As Long, ByVal n As Integer) As BigInteger
+        Private Shared Function bigMultiplyPowerTen(  value As Long,   n As Integer) As BigInteger
             If n <= 0 Then Return Big java.lang.[Integer].valueOf(value)
             Return bigTenToThe(n).multiply(value)
         End Function
 
-        Private Shared Function bigMultiplyPowerTen(ByVal value As BigInteger, ByVal n As Integer) As BigInteger
+        Private Shared Function bigMultiplyPowerTen(  value As BigInteger,   n As Integer) As BigInteger
             If n <= 0 Then Return value
             If n < LONG_TEN_POWERS_TABLE.Length Then Return value.multiply(LONG_TEN_POWERS_TABLE(n))
             Return value.multiply(bigTenToThe(n))
@@ -4157,7 +4157,7 @@ Namespace java.math
         ''' Fast path - used only when (xscale <= yscale && yscale < 18
         '''  && mc.presision<18) {
         ''' </summary>
-        Private Shared Function divideSmallFastPath(ByVal xs As Long, ByVal xscale As Integer, ByVal ys As Long, ByVal yscale As Integer, ByVal preferredScale As Long, ByVal mc As MathContext) As BigDecimal
+        Private Shared Function divideSmallFastPath(  xs As Long,   xscale As Integer,   ys As Long,   yscale As Integer,   preferredScale As Long,   mc As MathContext) As BigDecimal
             Dim mcp As Integer = mc.precision
             Dim roundingMode As Integer = mc.roundingMode.oldMode
 
@@ -4233,7 +4233,7 @@ Namespace java.math
         ''' Returns a {@code BigDecimal} whose value is {@code (xs /
         ''' ys)}, with rounding according to the context settings.
         ''' </summary>
-        Private Shared Function divide(ByVal xs As Long, ByVal xscale As Integer, ByVal ys As Long, ByVal yscale As Integer, ByVal preferredScale As Long, ByVal mc As MathContext) As BigDecimal
+        Private Shared Function divide(  xs As Long,   xscale As Integer,   ys As Long,   yscale As Integer,   preferredScale As Long,   mc As MathContext) As BigDecimal
             Dim mcp As Integer = mc.precision
             If xscale <= yscale AndAlso yscale < 18 AndAlso mcp < 18 Then Return divideSmallFastPath(xs, xscale, ys, yscale, preferredScale, mc)
             If compareMagnitudeNormalized(xs, xscale, ys, yscale) > 0 Then ' satisfy constraint (b) yscale -= 1 ' [that is, divisor *= 10]
@@ -4278,7 +4278,7 @@ Namespace java.math
         ''' Returns a {@code BigDecimal} whose value is {@code (xs /
         ''' ys)}, with rounding according to the context settings.
         ''' </summary>
-        Private Shared Function divide(ByVal xs As BigInteger, ByVal xscale As Integer, ByVal ys As Long, ByVal yscale As Integer, ByVal preferredScale As Long, ByVal mc As MathContext) As BigDecimal
+        Private Shared Function divide(  xs As BigInteger,   xscale As Integer,   ys As Long,   yscale As Integer,   preferredScale As Long,   mc As MathContext) As BigDecimal
             ' Normalize dividend & divisor so that both fall into [0.1, 0.999...]
             If (-compareMagnitudeNormalized(ys, yscale, xs, xscale)) > 0 Then ' satisfy constraint (b) yscale -= 1 ' [that is, divisor *= 10]
                 Dim mcp As Integer = mc.precision
@@ -4318,7 +4318,7 @@ Namespace java.math
         ''' Returns a {@code BigDecimal} whose value is {@code (xs /
         ''' ys)}, with rounding according to the context settings.
         ''' </summary>
-        Private Shared Function divide(ByVal xs As Long, ByVal xscale As Integer, ByVal ys As BigInteger, ByVal yscale As Integer, ByVal preferredScale As Long, ByVal mc As MathContext) As BigDecimal
+        Private Shared Function divide(  xs As Long,   xscale As Integer,   ys As BigInteger,   yscale As Integer,   preferredScale As Long,   mc As MathContext) As BigDecimal
             ' Normalize dividend & divisor so that both fall into [0.1, 0.999...]
             If compareMagnitudeNormalized(xs, xscale, ys, yscale) > 0 Then ' satisfy constraint (b) yscale -= 1 ' [that is, divisor *= 10]
                 Dim mcp As Integer = mc.precision
@@ -4347,7 +4347,7 @@ Namespace java.math
         ''' Returns a {@code BigDecimal} whose value is {@code (xs /
         ''' ys)}, with rounding according to the context settings.
         ''' </summary>
-        Private Shared Function divide(ByVal xs As BigInteger, ByVal xscale As Integer, ByVal ys As BigInteger, ByVal yscale As Integer, ByVal preferredScale As Long, ByVal mc As MathContext) As BigDecimal
+        Private Shared Function divide(  xs As BigInteger,   xscale As Integer,   ys As BigInteger,   yscale As Integer,   preferredScale As Long,   mc As MathContext) As BigDecimal
             ' Normalize dividend & divisor so that both fall into [0.1, 0.999...]
             If compareMagnitudeNormalized(xs, xscale, ys, yscale) > 0 Then ' satisfy constraint (b) yscale -= 1 ' [that is, divisor *= 10]
                 Dim mcp As Integer = mc.precision
@@ -4376,7 +4376,7 @@ Namespace java.math
         '     * performs divideAndRound for (dividend0*dividend1, divisor)
         '     * returns null if quotient can't fit into long value;
         '     
-        Private Shared Function multiplyDivideAndRound(ByVal dividend0 As Long, ByVal dividend1 As Long, ByVal divisor As Long, ByVal scale As Integer, ByVal roundingMode As Integer, ByVal preferredScale As Integer) As BigDecimal
+        Private Shared Function multiplyDivideAndRound(  dividend0 As Long,   dividend1 As Long,   divisor As Long,   scale As Integer,   roundingMode As Integer,   preferredScale As Integer) As BigDecimal
             Dim qsign As Integer = java.lang.[Long].signum(dividend0) * java.lang.[Long].signum(dividend1) * java.lang.[Long].signum(divisor)
             dividend0 = System.Math.Abs(dividend0)
             dividend1 = System.Math.Abs(dividend1)
@@ -4413,7 +4413,7 @@ Namespace java.math
         '     * returns null if quotient can't fit into long value;
         '     * Specialized version of Knuth's division
         '     
-        Private Shared Function divideAndRound128(ByVal dividendHi As Long, ByVal dividendLo As Long, ByVal divisor As Long, ByVal sign As Integer, ByVal scale As Integer, ByVal roundingMode As Integer, ByVal preferredScale As Integer) As BigDecimal
+        Private Shared Function divideAndRound128(  dividendHi As Long,   dividendLo As Long,   divisor As Long,   sign As Integer,   scale As Integer,   roundingMode As Integer,   preferredScale As Integer) As BigDecimal
             If dividendHi >= divisor Then Return Nothing
 
             Dim shift As Integer = java.lang.[Long].numberOfLeadingZeros(divisor)
@@ -4509,7 +4509,7 @@ Namespace java.math
         '     * calculate divideAndRound for ldividend*10^raise / divisor
         '     * when abs(dividend)==abs(divisor);
         '     
-        Private Shared Function roundedTenPower(ByVal qsign As Integer, ByVal raise As Integer, ByVal scale As Integer, ByVal preferredScale As Integer) As BigDecimal
+        Private Shared Function roundedTenPower(  qsign As Integer,   raise As Integer,   scale As Integer,   preferredScale As Integer) As BigDecimal
             If scale > preferredScale Then
                 Dim diff As Integer = scale - preferredScale
                 If diff < raise Then
@@ -4522,7 +4522,7 @@ Namespace java.math
             End If
         End Function
 
-        Shared Function scaledTenPow(ByVal n As Integer, ByVal sign As Integer, ByVal scale As Integer) As BigDecimal
+        Shared Function scaledTenPow(  n As Integer,   sign As Integer,   scale As Integer) As BigDecimal
             If n < LONG_TEN_POWERS_TABLE.Length Then
                 Return valueOf(sign * LONG_TEN_POWERS_TABLE(n), scale)
             Else
@@ -4540,7 +4540,7 @@ Namespace java.math
         ''' <param name="d"> the denominator; must not be unity </param>
         ''' <returns> a two-element {@long} array with the remainder and quotient in
         '''         the initial and final elements, respectively </returns>
-        Private Shared Function divRemNegativeLong(ByVal n As Long, ByVal d As Long) As Long()
+        Private Shared Function divRemNegativeLong(  n As Long,   d As Long) As Long()
             Debug.Assert(n < 0, "Non-negative numerator " & n)
             Debug.Assert(d <> 1, "Unity denominator")
 
@@ -4562,26 +4562,26 @@ Namespace java.math
             Return New Long() {r, q}
         End Function
 
-        Private Shared Function make64(ByVal hi As Long, ByVal lo As Long) As Long
+        Private Shared Function make64(  hi As Long,   lo As Long) As Long
             Return hi << 32 Or lo
         End Function
 
-        Private Shared Function mulsub(ByVal u1 As Long, ByVal u0 As Long, ByVal v1 As Long, ByVal v0 As Long, ByVal q0 As Long) As Long
+        Private Shared Function mulsub(  u1 As Long,   u0 As Long,   v1 As Long,   v0 As Long,   q0 As Long) As Long
             Dim tmp As Long = u0 - q0 * v0
             Return make64(u1 + (CLng(CULng(tmp) >> 32)) - q0 * v1, tmp And LONG_MASK)
         End Function
 
-        Private Shared Function unsignedLongCompare(ByVal one As Long, ByVal two As Long) As Boolean
+        Private Shared Function unsignedLongCompare(  one As Long,   two As Long) As Boolean
             Return (one + java.lang.[Long].MIN_VALUE) > (two + java.lang.[Long].MIN_VALUE)
         End Function
 
-        Private Shared Function unsignedLongCompareEq(ByVal one As Long, ByVal two As Long) As Boolean
+        Private Shared Function unsignedLongCompareEq(  one As Long,   two As Long) As Boolean
             Return (one + java.lang.[Long].MIN_VALUE) >= (two + java.lang.[Long].MIN_VALUE)
         End Function
 
 
         ' Compare Normalize dividend & divisor so that both fall into [0.1, 0.999...]
-        Private Shared Function compareMagnitudeNormalized(ByVal xs As Long, ByVal xscale As Integer, ByVal ys As Long, ByVal yscale As Integer) As Integer
+        Private Shared Function compareMagnitudeNormalized(  xs As Long,   xscale As Integer,   ys As Long,   yscale As Integer) As Integer
             ' assert xs!=0 && ys!=0
             Dim sdiff As Integer = xscale - yscale
             If sdiff <> 0 Then
@@ -4599,7 +4599,7 @@ Namespace java.math
         End Function
 
         ' Compare Normalize dividend & divisor so that both fall into [0.1, 0.999...]
-        Private Shared Function compareMagnitudeNormalized(ByVal xs As Long, ByVal xscale As Integer, ByVal ys As BigInteger, ByVal yscale As Integer) As Integer
+        Private Shared Function compareMagnitudeNormalized(  xs As Long,   xscale As Integer,   ys As BigInteger,   yscale As Integer) As Integer
             ' assert "ys can't be represented as long"
             If xs = 0 Then Return -1
             Dim sdiff As Integer = xscale - yscale
@@ -4610,7 +4610,7 @@ Namespace java.math
         End Function
 
         ' Compare Normalize dividend & divisor so that both fall into [0.1, 0.999...]
-        Private Shared Function compareMagnitudeNormalized(ByVal xs As BigInteger, ByVal xscale As Integer, ByVal ys As BigInteger, ByVal yscale As Integer) As Integer
+        Private Shared Function compareMagnitudeNormalized(  xs As BigInteger,   xscale As Integer,   ys As BigInteger,   yscale As Integer) As Integer
             Dim sdiff As Integer = xscale - yscale
             If sdiff < 0 Then
                 Return bigMultiplyPowerTen(xs, -sdiff).compareMagnitude(ys) ' sdiff >= 0
@@ -4619,7 +4619,7 @@ Namespace java.math
             End If
         End Function
 
-        Private Shared Function multiply(ByVal x As Long, ByVal y As Long) As Long
+        Private Shared Function multiply(  x As Long,   y As Long) As Long
             Dim product As Long = x * y
             Dim ax As Long = System.Math.Abs(x)
             Dim ay As Long = System.Math.Abs(y)
@@ -4627,25 +4627,25 @@ Namespace java.math
             Return INFLATED_Renamed
         End Function
 
-        Private Shared Function multiply(ByVal x As Long, ByVal y As Long, ByVal scale As Integer) As BigDecimal
+        Private Shared Function multiply(  x As Long,   y As Long,   scale As Integer) As BigDecimal
             Dim product As Long = multiply(x, y)
             If product <> INFLATED_Renamed Then Return valueOf(product, scale)
             Return New BigDecimal(Big java.lang.[Integer].valueOf(x) * y, INFLATED_Renamed, scale, 0)
         End Function
 
-        Private Shared Function multiply(ByVal x As Long, ByVal y As BigInteger, ByVal scale As Integer) As BigDecimal
+        Private Shared Function multiply(  x As Long,   y As BigInteger,   scale As Integer) As BigDecimal
             If x = 0 Then Return zeroValueOf(scale)
             Return New BigDecimal(y.multiply(x), INFLATED_Renamed, scale, 0)
         End Function
 
-        Private Shared Function multiply(ByVal x As BigInteger, ByVal y As BigInteger, ByVal scale As Integer) As BigDecimal
+        Private Shared Function multiply(  x As BigInteger,   y As BigInteger,   scale As Integer) As BigDecimal
             Return New BigDecimal(x.multiply(y), INFLATED_Renamed, scale, 0)
         End Function
 
         ''' <summary>
         ''' Multiplies two long values and rounds according {@code MathContext}
         ''' </summary>
-        Private Shared Function multiplyAndRound(ByVal x As Long, ByVal y As Long, ByVal scale As Integer, ByVal mc As MathContext) As BigDecimal
+        Private Shared Function multiplyAndRound(  x As Long,   y As Long,   scale As Integer,   mc As MathContext) As BigDecimal
             Dim product As Long = multiply(x, y)
             If product <> INFLATED_Renamed Then Return doRound(product, scale, mc)
             ' attempt to do it in 128 bits
@@ -4685,12 +4685,12 @@ Namespace java.math
             Return doRound(res, mc)
         End Function
 
-        Private Shared Function multiplyAndRound(ByVal x As Long, ByVal y As BigInteger, ByVal scale As Integer, ByVal mc As MathContext) As BigDecimal
+        Private Shared Function multiplyAndRound(  x As Long,   y As BigInteger,   scale As Integer,   mc As MathContext) As BigDecimal
             If x = 0 Then Return zeroValueOf(scale)
             Return doRound(y.multiply(x), scale, mc)
         End Function
 
-        Private Shared Function multiplyAndRound(ByVal x As BigInteger, ByVal y As BigInteger, ByVal scale As Integer, ByVal mc As MathContext) As BigDecimal
+        Private Shared Function multiplyAndRound(  x As BigInteger,   y As BigInteger,   scale As Integer,   mc As MathContext) As BigDecimal
             Return doRound(x.multiply(y), scale, mc)
         End Function
 
@@ -4698,7 +4698,7 @@ Namespace java.math
         ''' rounds 128-bit value according {@code MathContext}
         ''' returns null if result can't be repsented as compact BigDecimal.
         ''' </summary>
-        Private Shared Function doRound128(ByVal hi As Long, ByVal lo As Long, ByVal sign As Integer, ByVal scale As Integer, ByVal mc As MathContext) As BigDecimal
+        Private Shared Function doRound128(  hi As Long,   lo As Long,   sign As Integer,   scale As Integer,   mc As MathContext) As BigDecimal
             Dim mcp As Integer = mc.precision
             Dim drop As Integer
             Dim res As BigDecimal = Nothing
@@ -4716,7 +4716,7 @@ Namespace java.math
         '    
         '     * returns precision of 128-bit value
         '     
-        Private Shared Function precision(ByVal hi As Long, ByVal lo As Long) As Integer
+        Private Shared Function precision(  hi As Long,   lo As Long) As Integer
             If hi = 0 Then
                 If lo >= 0 Then Return longDigitLength(lo)
                 Return If(unsignedLongCompareEq(lo, LONGLONG_TEN_POWERS_TABLE(0)(1)), 20, 19)
@@ -4731,12 +4731,12 @@ Namespace java.math
         '     * returns true if 128 bit number <hi0,lo0> is less then <hi1,lo1>
         '     * hi0 & hi1 should be non-negative
         '     
-        Private Shared Function longLongCompareMagnitude(ByVal hi0 As Long, ByVal lo0 As Long, ByVal hi1 As Long, ByVal lo1 As Long) As Boolean
+        Private Shared Function longLongCompareMagnitude(  hi0 As Long,   lo0 As Long,   hi1 As Long,   lo1 As Long) As Boolean
             If hi0 <> hi1 Then Return hi0 < hi1
             Return (lo0 + java.lang.[Long].MIN_VALUE) < (lo1 + java.lang.[Long].MIN_VALUE)
         End Function
 
-        Private Shared Function divide(ByVal dividend As Long, ByVal dividendScale As Integer, ByVal divisor As Long, ByVal divisorScale As Integer, ByVal scale As Integer, ByVal roundingMode As Integer) As BigDecimal
+        Private Shared Function divide(  dividend As Long,   dividendScale As Integer,   divisor As Long,   divisorScale As Integer,   scale As Integer,   roundingMode As Integer) As BigDecimal
             If checkScale(dividend, CLng(scale) + divisorScale) > dividendScale Then
                 Dim newScale As Integer = scale + divisorScale
                 Dim raise As Integer = newScale - dividendScale
@@ -4762,7 +4762,7 @@ Namespace java.math
             End If
         End Function
 
-        Private Shared Function divide(ByVal dividend As BigInteger, ByVal dividendScale As Integer, ByVal divisor As Long, ByVal divisorScale As Integer, ByVal scale As Integer, ByVal roundingMode As Integer) As BigDecimal
+        Private Shared Function divide(  dividend As BigInteger,   dividendScale As Integer,   divisor As Long,   divisorScale As Integer,   scale As Integer,   roundingMode As Integer) As BigDecimal
             If checkScale(dividend, CLng(scale) + divisorScale) > dividendScale Then
                 Dim newScale As Integer = scale + divisorScale
                 Dim raise As Integer = newScale - dividendScale
@@ -4781,7 +4781,7 @@ Namespace java.math
             End If
         End Function
 
-        Private Shared Function divide(ByVal dividend As Long, ByVal dividendScale As Integer, ByVal divisor As BigInteger, ByVal divisorScale As Integer, ByVal scale As Integer, ByVal roundingMode As Integer) As BigDecimal
+        Private Shared Function divide(  dividend As Long,   dividendScale As Integer,   divisor As BigInteger,   divisorScale As Integer,   scale As Integer,   roundingMode As Integer) As BigDecimal
             If checkScale(dividend, CLng(scale) + divisorScale) > dividendScale Then
                 Dim newScale As Integer = scale + divisorScale
                 Dim raise As Integer = newScale - dividendScale
@@ -4795,7 +4795,7 @@ Namespace java.math
             End If
         End Function
 
-        Private Shared Function divide(ByVal dividend As BigInteger, ByVal dividendScale As Integer, ByVal divisor As BigInteger, ByVal divisorScale As Integer, ByVal scale As Integer, ByVal roundingMode As Integer) As BigDecimal
+        Private Shared Function divide(  dividend As BigInteger,   dividendScale As Integer,   divisor As BigInteger,   divisorScale As Integer,   scale As Integer,   roundingMode As Integer) As BigDecimal
             If checkScale(dividend, CLng(scale) + divisorScale) > dividendScale Then
                 Dim newScale As Integer = scale + divisorScale
                 Dim raise As Integer = newScale - dividendScale

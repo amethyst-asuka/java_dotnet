@@ -82,7 +82,7 @@ Namespace java.util.stream
 		''' <exception cref="IllegalArgumentException"> if the specified initial capacity
 		'''         is negative </exception>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Friend Sub New(ByVal initialCapacity As Integer)
+		Friend Sub New(  initialCapacity As Integer)
 			MyBase.New(initialCapacity)
 			curChunk = CType(New Object(1 << initialChunkPower - 1){}, E())
 		End Sub
@@ -116,7 +116,7 @@ Namespace java.util.stream
 		''' Ensure that the buffer has at least capacity to hold the target size
 		''' </summary>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Protected Friend Sub ensureCapacity(ByVal targetSize As Long)
+		Protected Friend Sub ensureCapacity(  targetSize As Long)
 			Dim capacity As Long = capacity()
 			If targetSize > capacity Then
 				inflateSpine()
@@ -146,7 +146,7 @@ Namespace java.util.stream
 		''' <summary>
 		''' Retrieve the element at the specified index.
 		''' </summary>
-		Public Overridable Function [get](ByVal index As Long) As E
+		Public Overridable Function [get](  index As Long) As E
 			' @@@ can further optimize by caching last seen spineIndex,
 			' which is going to be right most of the time
 
@@ -173,7 +173,7 @@ Namespace java.util.stream
 		''' Copy the elements, starting at the specified offset, into the specified
 		''' array.
 		''' </summary>
-		Public Overridable Sub copyInto(ByVal array As E(), ByVal offset As Integer)
+		Public Overridable Sub copyInto(  array As E(),   offset As Integer)
 			Dim finalOffset As Long = offset + count()
 			If finalOffset > array.Length OrElse finalOffset < offset Then Throw New IndexOutOfBoundsException("does not fit")
 
@@ -193,7 +193,7 @@ Namespace java.util.stream
 		''' Create a new array using the specified array factory, and copy the
 		''' elements into it.
 		''' </summary>
-		Public Overridable Function asArray(ByVal arrayFactory As java.util.function.IntFunction(Of E())) As E()
+		Public Overridable Function asArray(  arrayFactory As java.util.function.IntFunction(Of E())) As E()
 			Dim size As Long = count()
 			If size >= Nodes.MAX_ARRAY_SIZE Then Throw New IllegalArgumentException(Nodes.BAD_SIZE)
 			Dim result As E() = arrayFactory.apply(CInt(size))
@@ -225,7 +225,7 @@ Namespace java.util.stream
 		End Function
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Overrides Sub forEach(Of T1)(ByVal consumer As java.util.function.Consumer(Of T1)) Implements Iterable(Of E).forEach
+		Public Overrides Sub forEach(Of T1)(  consumer As java.util.function.Consumer(Of T1)) Implements Iterable(Of E).forEach
 			' completed chunks, if any
 			For j As Integer = 0 To spineIndex - 1
 				For Each t As E In spine(j)
@@ -241,7 +241,7 @@ Namespace java.util.stream
 			Loop
 		End Sub
 
-		Public Overrides Sub accept(ByVal e As E)
+		Public Overrides Sub accept(  e As E)
 			If elementIndex = curChunk.Length Then
 				inflateSpine()
 				If spineIndex+1 >= spine.Length OrElse spine(spineIndex+1) Is Nothing Then increaseCapacity()
@@ -441,7 +441,7 @@ Namespace java.util.stream
 			''' <param name="initialCapacity">  the initial capacity of the list </param>
 			''' <exception cref="IllegalArgumentException"> if the specified initial capacity
 			'''         is negative </exception>
-			Friend Sub New(ByVal initialCapacity As Integer)
+			Friend Sub New(  initialCapacity As Integer)
 				MyBase.New(initialCapacity)
 				curChunk = newArray(1 << initialChunkPower)
 			End Sub
@@ -457,23 +457,23 @@ Namespace java.util.stream
 			Public MustOverride Overrides Function [iterator]() As IEnumerator(Of E) Implements Iterable(Of E).iterator
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public MustOverride Overrides Sub forEach(Of T1)(ByVal consumer As java.util.function.Consumer(Of T1)) Implements Iterable(Of E).forEach
+			Public MustOverride Overrides Sub forEach(Of T1)(  consumer As java.util.function.Consumer(Of T1)) Implements Iterable(Of E).forEach
 
 			''' <summary>
 			''' Create a new array-of-array of the proper type and size </summary>
-			Protected Friend MustOverride Function newArrayArray(ByVal size As Integer) As T_ARR()
+			Protected Friend MustOverride Function newArrayArray(  size As Integer) As T_ARR()
 
 			''' <summary>
 			''' Create a new array of the proper type and size </summary>
-			Public MustOverride Function newArray(ByVal size As Integer) As T_ARR
+			Public MustOverride Function newArray(  size As Integer) As T_ARR
 
 			''' <summary>
 			''' Get the length of an array </summary>
-			Protected Friend MustOverride Function arrayLength(ByVal array As T_ARR) As Integer
+			Protected Friend MustOverride Function arrayLength(  array As T_ARR) As Integer
 
 			''' <summary>
 			''' Iterate an array with the provided consumer </summary>
-			Protected Friend MustOverride Sub arrayForEach(ByVal array As T_ARR, ByVal [from] As Integer, ByVal [to] As Integer, ByVal consumer As T_CONS)
+			Protected Friend MustOverride Sub arrayForEach(  array As T_ARR,   [from] As Integer,   [to] As Integer,   consumer As T_CONS)
 
 			Protected Friend Overridable Function capacity() As Long
 				Return If(spineIndex = 0, arrayLength(curChunk), priorElementCount(spineIndex) + arrayLength(spine(spineIndex)))
@@ -487,7 +487,7 @@ Namespace java.util.stream
 				End If
 			End Sub
 
-			Protected Friend Sub ensureCapacity(ByVal targetSize As Long)
+			Protected Friend Sub ensureCapacity(  targetSize As Long)
 				Dim capacity As Long = capacity()
 				If targetSize > capacity Then
 					inflateSpine()
@@ -511,7 +511,7 @@ Namespace java.util.stream
 				ensureCapacity(capacity() + 1)
 			End Sub
 
-			Protected Friend Overridable Function chunkFor(ByVal index As Long) As Integer
+			Protected Friend Overridable Function chunkFor(  index As Long) As Integer
 				If spineIndex = 0 Then
 					If index < elementIndex Then
 						Return 0
@@ -529,7 +529,7 @@ Namespace java.util.stream
 				Throw New IndexOutOfBoundsException(Convert.ToString(index))
 			End Function
 
-			Public Overridable Sub copyInto(ByVal array As T_ARR, ByVal offset As Integer)
+			Public Overridable Sub copyInto(  array As T_ARR,   offset As Integer)
 				Dim finalOffset As Long = offset + count()
 				If finalOffset > arrayLength(array) OrElse finalOffset < offset Then Throw New IndexOutOfBoundsException("does not fit")
 
@@ -574,7 +574,7 @@ Namespace java.util.stream
 			End Sub
 
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-			Public Overridable Sub forEach(ByVal consumer As T_CONS)
+			Public Overridable Sub forEach(  consumer As T_CONS)
 				' completed chunks, if any
 				For j As Integer = 0 To spineIndex - 1
 					arrayForEach(spine(j), 0, arrayLength(spine(j)), consumer)
@@ -609,7 +609,7 @@ Namespace java.util.stream
 				' The current spine array
 				Friend splChunk As T_ARR
 
-				Friend Sub New(ByVal outerInstance As SpinedBuffer.OfPrimitive, ByVal firstSpineIndex As Integer, ByVal lastSpineIndex As Integer, ByVal firstSpineElementIndex As Integer, ByVal lastSpineElementFence As Integer)
+				Friend Sub New(  outerInstance As SpinedBuffer.OfPrimitive,   firstSpineIndex As Integer,   lastSpineIndex As Integer,   firstSpineElementIndex As Integer,   lastSpineElementFence As Integer)
 						Me.outerInstance = outerInstance
 					Me.splSpineIndex = firstSpineIndex
 					Me.lastSpineIndex = lastSpineIndex
@@ -619,11 +619,11 @@ Namespace java.util.stream
 					splChunk = If(outerInstance.spine Is Nothing, outerInstance.curChunk, outerInstance.spine(firstSpineIndex))
 				End Sub
 
-				Friend MustOverride Function newSpliterator(ByVal firstSpineIndex As Integer, ByVal lastSpineIndex As Integer, ByVal firstSpineElementIndex As Integer, ByVal lastSpineElementFence As Integer) As T_SPLITR
+				Friend MustOverride Function newSpliterator(  firstSpineIndex As Integer,   lastSpineIndex As Integer,   firstSpineElementIndex As Integer,   lastSpineElementFence As Integer) As T_SPLITR
 
-				Friend MustOverride Sub arrayForOne(ByVal array As T_ARR, ByVal index As Integer, ByVal consumer As T_CONS)
+				Friend MustOverride Sub arrayForOne(  array As T_ARR,   index As Integer,   consumer As T_CONS)
 
-				Friend MustOverride Function arraySpliterator(ByVal array As T_ARR, ByVal offset As Integer, ByVal len As Integer) As T_SPLITR
+				Friend MustOverride Function arraySpliterator(  array As T_ARR,   offset As Integer,   len As Integer) As T_SPLITR
 
 				Public Overrides Function estimateSize() As Long
 					Return If(splSpineIndex = lastSpineIndex, CLng(lastSpineElementFence) - splElementIndex, outerInstance.priorElementCount(lastSpineIndex) + lastSpineElementFence - outerInstance.priorElementCount(splSpineIndex) - splElementIndex) ' # of elements prior to end -
@@ -634,7 +634,7 @@ Namespace java.util.stream
 					Return SPLITERATOR_CHARACTERISTICS
 				End Function
 
-				Public Overrides Function tryAdvance(ByVal consumer As T_CONS) As Boolean
+				Public Overrides Function tryAdvance(  consumer As T_CONS) As Boolean
 					java.util.Objects.requireNonNull(consumer)
 
 					If splSpineIndex < lastSpineIndex OrElse (splSpineIndex = lastSpineIndex AndAlso splElementIndex < lastSpineElementFence) Then
@@ -651,7 +651,7 @@ Namespace java.util.stream
 					Return False
 				End Function
 
-				Public Overrides Sub forEachRemaining(ByVal consumer As T_CONS)
+				Public Overrides Sub forEachRemaining(  consumer As T_CONS)
 					java.util.Objects.requireNonNull(consumer)
 
 					If splSpineIndex < lastSpineIndex OrElse (splSpineIndex = lastSpineIndex AndAlso splElementIndex < lastSpineElementFence) Then
@@ -706,12 +706,12 @@ Namespace java.util.stream
 			Friend Sub New()
 			End Sub
 
-			Friend Sub New(ByVal initialCapacity As Integer)
+			Friend Sub New(  initialCapacity As Integer)
 				MyBase.New(initialCapacity)
 			End Sub
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Overrides Sub forEach(Of T1)(ByVal consumer As java.util.function.Consumer(Of T1))
+			Public Overrides Sub forEach(Of T1)(  consumer As java.util.function.Consumer(Of T1))
 				If TypeOf consumer Is java.util.function.IntConsumer Then
 					forEach(CType(consumer, java.util.function.IntConsumer))
 				Else
@@ -720,31 +720,31 @@ Namespace java.util.stream
 				End If
 			End Sub
 
-			Protected Friend Overrides Function newArrayArray(ByVal size As Integer) As Integer()()
+			Protected Friend Overrides Function newArrayArray(  size As Integer) As Integer()()
 				Return New Integer(size - 1)(){}
 			End Function
 
-			Public Overrides Function newArray(ByVal size As Integer) As Integer()
+			Public Overrides Function newArray(  size As Integer) As Integer()
 				Return New Integer(size - 1){}
 			End Function
 
-			Protected Friend Overrides Function arrayLength(ByVal array As Integer()) As Integer
+			Protected Friend Overrides Function arrayLength(  array As Integer()) As Integer
 				Return array.Length
 			End Function
 
-			Protected Friend Overrides Sub arrayForEach(ByVal array As Integer(), ByVal [from] As Integer, ByVal [to] As Integer, ByVal consumer As java.util.function.IntConsumer)
+			Protected Friend Overrides Sub arrayForEach(  array As Integer(),   [from] As Integer,   [to] As Integer,   consumer As java.util.function.IntConsumer)
 				For i As Integer = from To [to] - 1
 					consumer.accept(array(i))
 				Next i
 			End Sub
 
-			Public Overrides Sub accept(ByVal i As Integer)
+			Public Overrides Sub accept(  i As Integer)
 				preAccept()
 				curChunk(elementIndex) = i
 				elementIndex += 1
 			End Sub
 
-			Public Overridable Function [get](ByVal index As Long) As Integer
+			Public Overridable Function [get](  index As Long) As Integer
 				' Casts to int are safe since the spine array index is the index minus
 				' the prior element count from the current spine
 				Dim ch As Integer = chunkFor(index)
@@ -807,12 +807,12 @@ Namespace java.util.stream
 			Friend Sub New()
 			End Sub
 
-			Friend Sub New(ByVal initialCapacity As Integer)
+			Friend Sub New(  initialCapacity As Integer)
 				MyBase.New(initialCapacity)
 			End Sub
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Overrides Sub forEach(Of T1)(ByVal consumer As java.util.function.Consumer(Of T1))
+			Public Overrides Sub forEach(Of T1)(  consumer As java.util.function.Consumer(Of T1))
 				If TypeOf consumer Is java.util.function.LongConsumer Then
 					forEach(CType(consumer, java.util.function.LongConsumer))
 				Else
@@ -821,31 +821,31 @@ Namespace java.util.stream
 				End If
 			End Sub
 
-			Protected Friend Overrides Function newArrayArray(ByVal size As Integer) As Long()()
+			Protected Friend Overrides Function newArrayArray(  size As Integer) As Long()()
 				Return New Long(size - 1)(){}
 			End Function
 
-			Public Overrides Function newArray(ByVal size As Integer) As Long()
+			Public Overrides Function newArray(  size As Integer) As Long()
 				Return New Long(size - 1){}
 			End Function
 
-			Protected Friend Overrides Function arrayLength(ByVal array As Long()) As Integer
+			Protected Friend Overrides Function arrayLength(  array As Long()) As Integer
 				Return array.Length
 			End Function
 
-			Protected Friend Overrides Sub arrayForEach(ByVal array As Long(), ByVal [from] As Integer, ByVal [to] As Integer, ByVal consumer As java.util.function.LongConsumer)
+			Protected Friend Overrides Sub arrayForEach(  array As Long(),   [from] As Integer,   [to] As Integer,   consumer As java.util.function.LongConsumer)
 				For i As Integer = from To [to] - 1
 					consumer.accept(array(i))
 				Next i
 			End Sub
 
-			Public Overrides Sub accept(ByVal i As Long)
+			Public Overrides Sub accept(  i As Long)
 				preAccept()
 				curChunk(elementIndex) = i
 				elementIndex += 1
 			End Sub
 
-			Public Overridable Function [get](ByVal index As Long) As Long
+			Public Overridable Function [get](  index As Long) As Long
 				' Casts to int are safe since the spine array index is the index minus
 				' the prior element count from the current spine
 				Dim ch As Integer = chunkFor(index)
@@ -909,12 +909,12 @@ Namespace java.util.stream
 			Friend Sub New()
 			End Sub
 
-			Friend Sub New(ByVal initialCapacity As Integer)
+			Friend Sub New(  initialCapacity As Integer)
 				MyBase.New(initialCapacity)
 			End Sub
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Overrides Sub forEach(Of T1)(ByVal consumer As java.util.function.Consumer(Of T1))
+			Public Overrides Sub forEach(Of T1)(  consumer As java.util.function.Consumer(Of T1))
 				If TypeOf consumer Is java.util.function.DoubleConsumer Then
 					forEach(CType(consumer, java.util.function.DoubleConsumer))
 				Else
@@ -923,31 +923,31 @@ Namespace java.util.stream
 				End If
 			End Sub
 
-			Protected Friend Overrides Function newArrayArray(ByVal size As Integer) As Double()()
+			Protected Friend Overrides Function newArrayArray(  size As Integer) As Double()()
 				Return New Double(size - 1)(){}
 			End Function
 
-			Public Overrides Function newArray(ByVal size As Integer) As Double()
+			Public Overrides Function newArray(  size As Integer) As Double()
 				Return New Double(size - 1){}
 			End Function
 
-			Protected Friend Overrides Function arrayLength(ByVal array As Double()) As Integer
+			Protected Friend Overrides Function arrayLength(  array As Double()) As Integer
 				Return array.Length
 			End Function
 
-			Protected Friend Overrides Sub arrayForEach(ByVal array As Double(), ByVal [from] As Integer, ByVal [to] As Integer, ByVal consumer As java.util.function.DoubleConsumer)
+			Protected Friend Overrides Sub arrayForEach(  array As Double(),   [from] As Integer,   [to] As Integer,   consumer As java.util.function.DoubleConsumer)
 				For i As Integer = from To [to] - 1
 					consumer.accept(array(i))
 				Next i
 			End Sub
 
-			Public Overrides Sub accept(ByVal i As Double)
+			Public Overrides Sub accept(  i As Double)
 				preAccept()
 				curChunk(elementIndex) = i
 				elementIndex += 1
 			End Sub
 
-			Public Overridable Function [get](ByVal index As Long) As Double
+			Public Overridable Function [get](  index As Long) As Double
 				' Casts to int are safe since the spine array index is the index minus
 				' the prior element count from the current spine
 				Dim ch As Integer = chunkFor(index)

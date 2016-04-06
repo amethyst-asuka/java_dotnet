@@ -52,10 +52,10 @@ Namespace java.awt
 		Friend Sub New()
 			Me.New(Nothing)
 		End Sub
-		Friend Sub New(ByVal nested As AWTEvent)
+		Friend Sub New(  nested As AWTEvent)
 			Me.New(nested, Nothing)
 		End Sub
-		Friend Sub New(ByVal nested As AWTEvent, ByVal toNotify As sun.awt.AppContext)
+		Friend Sub New(  nested As AWTEvent,   toNotify As sun.awt.AppContext)
 			MyBase.New(If(nested IsNot Nothing, nested.source, Toolkit.defaultToolkit), ID)
 			Me.nested = nested
 			Me.toNotify = toNotify

@@ -56,7 +56,7 @@ Namespace java.rmi.server
 		''' </summary>
 		''' <param name="s"> the detail message.
 		''' @since JDK1.1 </param>
-		Public Sub New(ByVal s As String)
+		Public Sub New(  s As String)
 			MyBase.New(s)
 		End Sub
 	End Class

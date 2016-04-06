@@ -42,11 +42,11 @@ Namespace java.nio
 		Private index As Integer ' current index, modified on advance/split
 		Private ReadOnly limit As Integer
 
-		Friend Sub New(ByVal buffer_Renamed As CharBuffer)
+		Friend Sub New(  buffer_Renamed As CharBuffer)
 			Me.New(buffer_Renamed, buffer_Renamed.position(), buffer_Renamed.limit())
 		End Sub
 
-		Friend Sub New(ByVal buffer_Renamed As CharBuffer, ByVal origin As Integer, ByVal limit As Integer)
+		Friend Sub New(  buffer_Renamed As CharBuffer,   origin As Integer,   limit As Integer)
 			Debug.Assert(origin <= limit)
 			Me.buffer_Renamed = buffer_Renamed
 			Me.index = If(origin <= limit, origin, limit)
@@ -59,7 +59,7 @@ Namespace java.nio
 			Return If(lo >= mid, Nothing, New CharBufferSpliterator(buffer_Renamed, lo, index = mid))
 		End Function
 
-		Public Overrides Sub forEachRemaining(ByVal action As java.util.function.IntConsumer)
+		Public Overrides Sub forEachRemaining(  action As java.util.function.IntConsumer)
 			If action Is Nothing Then Throw New NullPointerException
 			Dim cb As CharBuffer = buffer_Renamed
 			Dim i As Integer = index
@@ -71,7 +71,7 @@ Namespace java.nio
 			Loop
 		End Sub
 
-		Public Overrides Function tryAdvance(ByVal action As java.util.function.IntConsumer) As Boolean
+		Public Overrides Function tryAdvance(  action As java.util.function.IntConsumer) As Boolean
 			If action Is Nothing Then Throw New NullPointerException
 			If index >= 0 AndAlso index < limit Then
 				action.accept(buffer_Renamed.getUnchecked(index))

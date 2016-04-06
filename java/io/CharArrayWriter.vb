@@ -65,7 +65,7 @@ Namespace java.io
 		''' </summary>
 		''' <param name="initialSize">  an int specifying the initial buffer size. </param>
 		''' <exception cref="IllegalArgumentException"> if initialSize is negative </exception>
-		Public Sub New(ByVal initialSize As Integer)
+		Public Sub New(  initialSize As Integer)
 			If initialSize < 0 Then Throw New IllegalArgumentException("Negative initial size: " & initialSize)
 			buf = New Char(initialSize - 1){}
 		End Sub
@@ -73,7 +73,7 @@ Namespace java.io
 		''' <summary>
 		''' Writes a character to the buffer.
 		''' </summary>
-		Public Overrides Sub write(ByVal c As Integer)
+		Public Overrides Sub write(  c As Integer)
 			SyncLock lock
 				Dim newcount As Integer = count + 1
 				If newcount > buf.Length Then buf = java.util.Arrays.copyOf(buf, System.Math.Max(buf.Length << 1, newcount))

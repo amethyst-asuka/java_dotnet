@@ -185,7 +185,7 @@ Namespace java.awt.event
 		''' <seealso cref= #getID() </seealso>
 		''' <seealso cref= #getChanged() </seealso>
 		''' <seealso cref= #getChangedParent() </seealso>
-		Public Sub New(ByVal source As java.awt.Component, ByVal id As Integer, ByVal changed As java.awt.Component, ByVal changedParent As java.awt.Container)
+		Public Sub New(  source As java.awt.Component,   id As Integer,   changed As java.awt.Component,   changedParent As java.awt.Container)
 			MyBase.New(source, id)
 			Me.changed = changed
 			Me.changedParent = changedParent
@@ -220,7 +220,7 @@ Namespace java.awt.event
 		''' <seealso cref= #getChanged() </seealso>
 		''' <seealso cref= #getChangedParent() </seealso>
 		''' <seealso cref= #getChangeFlags() </seealso>
-		Public Sub New(ByVal source As java.awt.Component, ByVal id As Integer, ByVal changed As java.awt.Component, ByVal changedParent As java.awt.Container, ByVal changeFlags As Long)
+		Public Sub New(  source As java.awt.Component,   id As Integer,   changed As java.awt.Component,   changedParent As java.awt.Container,   changeFlags As Long)
 			MyBase.New(source, id)
 			Me.changed = changed
 			Me.changedParent = changedParent

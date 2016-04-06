@@ -68,7 +68,7 @@ Namespace java.security.spec
 	   ''' {@code prime}, {@code primeExponent},
 	   ''' {@code crtCoefficient}, is null.
 	   '''  </exception>
-		Public Sub New(ByVal prime As System.Numerics.BigInteger, ByVal primeExponent As System.Numerics.BigInteger, ByVal crtCoefficient As System.Numerics.BigInteger)
+		Public Sub New(  prime As System.Numerics.BigInteger,   primeExponent As System.Numerics.BigInteger,   crtCoefficient As System.Numerics.BigInteger)
 			If prime Is Nothing Then Throw New NullPointerException("the prime parameter must be " & "non-null")
 			If primeExponent Is Nothing Then Throw New NullPointerException("the primeExponent parameter " & "must be non-null")
 			If crtCoefficient Is Nothing Then Throw New NullPointerException("the crtCoefficient parameter " & "must be non-null")

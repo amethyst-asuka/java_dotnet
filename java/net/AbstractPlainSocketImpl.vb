@@ -93,7 +93,7 @@ Namespace java.net
         ''' is a stream socket (true) or an unconnected UDP socket (false).
         ''' </summary>
         <MethodImpl(MethodImplOptions.Synchronized)>
-        Protected Friend Overrides Sub create(ByVal stream As Boolean)
+        Protected Friend Overrides Sub create(  stream As Boolean)
             Me.stream = stream
             If Not stream Then
                 sun.net.ResourceManager.beforeUdpCreate()
@@ -119,7 +119,7 @@ Namespace java.net
         ''' the specified host. </summary>
         ''' <param name="host"> the specified host </param>
         ''' <param name="port"> the specified port </param>
-        Protected Friend Overrides Sub connect(ByVal host As String, ByVal port As Integer)
+        Protected Friend Overrides Sub connect(  host As String,   port As Integer)
             Dim connected As Boolean = False
             Try
                 Dim address_Renamed As InetAddress = InetAddress.getByName(host)
@@ -145,7 +145,7 @@ Namespace java.net
         ''' the specified port. </summary>
         ''' <param name="address"> the address </param>
         ''' <param name="port"> the specified port </param>
-        Protected Friend Overrides Sub connect(ByVal address As InetAddress, ByVal port As Integer)
+        Protected Friend Overrides Sub connect(  address As InetAddress,   port As Integer)
             Me.port = port
             Me.address = address
 
@@ -168,7 +168,7 @@ Namespace java.net
         ''' <exception cref="IllegalArgumentException"> if address is null or is a
         '''          SocketAddress subclass not supported by this socket
         ''' @since 1.4 </exception>
-        Protected Friend Overrides Sub connect(ByVal address As SocketAddress, ByVal timeout As Integer)
+        Protected Friend Overrides Sub connect(  address As SocketAddress,   timeout As Integer)
             Dim connected As Boolean = False
             Try
                 If address Is Nothing OrElse Not (TypeOf address Is InetSocketAddress) Then Throw New IllegalArgumentException("unsupported address type")
@@ -191,7 +191,7 @@ Namespace java.net
             End Try
         End Sub
 
-        Private Sub connectToAddress(ByVal address As InetAddress, ByVal port As Integer, ByVal timeout As Integer)
+        Private Sub connectToAddress(  address As InetAddress,   port As Integer,   timeout As Integer)
             If address.anyLocalAddress Then
                 doConnect(inetAddress.localHost, port, timeout)
             Else
@@ -199,7 +199,7 @@ Namespace java.net
             End If
         End Sub
 
-        Public Overrides Sub setOption(ByVal opt As Integer, ByVal val As Object)
+        Public Overrides Sub setOption(  opt As Integer,   val As Object)
             If closedOrPending Then Throw New SocketException("Socket Closed")
             Dim [on] As Boolean = True
             Select Case opt
@@ -239,7 +239,7 @@ Namespace java.net
             End Select
             socketSetOption(opt, [on], val)
         End Sub
-        Public Overrides Function getOption(ByVal opt As Integer) As Object
+        Public Overrides Function getOption(  opt As Integer) As Object
             If closedOrPending Then Throw New SocketException("Socket Closed")
             If opt = SO_TIMEOUT Then Return New Integer?(timeout)
             Dim ret As Integer = 0

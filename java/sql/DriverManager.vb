@@ -132,7 +132,7 @@ Namespace java.sql
 			Get
 					Return logWriter
 			End Get
-			Set(ByVal out As java.io.PrintWriter)
+			Set(  out As java.io.PrintWriter)
     
 				Dim sec As SecurityManager = System.securityManager
 				If sec IsNot Nothing Then sec.checkPermission(SET_LOG_PERMISSION)
@@ -169,7 +169,7 @@ Namespace java.sql
 		''' has been exceeded and has at least tried to cancel the
 		''' current database connection attempt </exception>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Shared Function getConnection(ByVal url As String, ByVal info As java.util.Properties) As Connection
+		Public Shared Function getConnection(  url As String,   info As java.util.Properties) As Connection
 
 			Return (getConnection(url, info, sun.reflect.Reflection.callerClass))
 		End Function
@@ -198,7 +198,7 @@ Namespace java.sql
 		''' has been exceeded and has at least tried to cancel the
 		''' current database connection attempt </exception>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Shared Function getConnection(ByVal url As String, ByVal user As String, ByVal password As String) As Connection
+		Public Shared Function getConnection(  url As String,   user As String,   password As String) As Connection
 			Dim info As New java.util.Properties
 
 			If user IsNot Nothing Then info("user") = user
@@ -222,7 +222,7 @@ Namespace java.sql
 		''' has been exceeded and has at least tried to cancel the
 		''' current database connection attempt </exception>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Shared Function getConnection(ByVal url As String) As Connection
+		Public Shared Function getConnection(  url As String) As Connection
 
 			Dim info As New java.util.Properties
 			Return (getConnection(url, info, sun.reflect.Reflection.callerClass))
@@ -239,7 +239,7 @@ Namespace java.sql
 		''' that can connect to the given URL </returns>
 		''' <exception cref="SQLException"> if a database access error occurs </exception>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Shared Function getDriver(ByVal url As String) As Driver
+		Public Shared Function getDriver(  url As String) As Driver
 
 			println("DriverManager.getDriver(""" & url & """)")
 
@@ -284,7 +284,7 @@ Namespace java.sql
 		''' <exception cref="SQLException"> if a database access error occurs </exception>
 		''' <exception cref="NullPointerException"> if {@code driver} is null </exception>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Shared Sub registerDriver(ByVal driver As java.sql.Driver)
+		Public Shared Sub registerDriver(  driver As java.sql.Driver)
 
 			registerDriver(driver, Nothing)
 		End Sub
@@ -304,7 +304,7 @@ Namespace java.sql
 		''' <exception cref="NullPointerException"> if {@code driver} is null
 		''' @since 1.8 </exception>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Shared Sub registerDriver(ByVal driver As java.sql.Driver, ByVal da As DriverAction)
+		Public Shared Sub registerDriver(  driver As java.sql.Driver,   da As DriverAction)
 
 			' Register the driver if it has not already been added to our list 
 			If driver IsNot Nothing Then
@@ -344,7 +344,7 @@ Namespace java.sql
 		''' <seealso cref= SecurityManager#checkPermission </seealso>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Shared Sub deregisterDriver(ByVal driver As Driver)
+		Public Shared Sub deregisterDriver(  driver As Driver)
 			If driver Is Nothing Then Return
 
 			Dim sec As SecurityManager = System.securityManager
@@ -408,7 +408,7 @@ Namespace java.sql
 		''' <param name="seconds"> the login time limit in seconds; zero means there is no limit </param>
 		''' <seealso cref= #getLoginTimeout </seealso>
 		Public Shared Property loginTimeout As Integer
-			Set(ByVal seconds As Integer)
+			Set(  seconds As Integer)
 				loginTimeout = seconds
 			End Set
 			Get
@@ -437,7 +437,7 @@ Namespace java.sql
 		''' <seealso cref= #getLogStream </seealso>
 		<Obsolete("Use {@code setLogWriter}")> _
 		Public Shared Property logStream As java.io.PrintStream
-			Set(ByVal out As java.io.PrintStream)
+			Set(  out As java.io.PrintStream)
     
 				Dim sec As SecurityManager = System.securityManager
 				If sec IsNot Nothing Then sec.checkPermission(SET_LOG_PERMISSION)
@@ -459,7 +459,7 @@ Namespace java.sql
 		''' Prints a message to the current JDBC log stream.
 		''' </summary>
 		''' <param name="message"> a log or tracing message </param>
-		Public Shared Sub println(ByVal message As String)
+		Public Shared Sub println(  message As String)
 			SyncLock logSync
 				If logWriter IsNot Nothing Then
 					logWriter.println(message)
@@ -474,12 +474,12 @@ Namespace java.sql
 
 		' Indicates whether the class object that would be created if the code calling
 		' DriverManager is accessible.
-		Private Shared Function isDriverAllowed(ByVal driver As Driver, ByVal caller As [Class]) As Boolean
+		Private Shared Function isDriverAllowed(  driver As Driver,   caller As [Class]) As Boolean
 			Dim callerCL As  ClassLoader = If(caller IsNot Nothing, caller.classLoader, Nothing)
 			Return isDriverAllowed(driver, callerCL)
 		End Function
 
-		Private Shared Function isDriverAllowed(ByVal driver As Driver, ByVal classLoader_Renamed As  ClassLoader) As Boolean
+		Private Shared Function isDriverAllowed(  driver As Driver,   classLoader_Renamed As  ClassLoader) As Boolean
 			Dim result As Boolean = False
 			If driver IsNot Nothing Then
 				Dim aClass As  [Class] = Nothing
@@ -565,7 +565,7 @@ Namespace java.sql
 
 
 		'  Worker method called by the public getConnection() methods.
-		Private Shared Function getConnection(ByVal url As String, ByVal info As java.util.Properties, ByVal caller As [Class]) As Connection
+		Private Shared Function getConnection(  url As String,   info As java.util.Properties,   caller As [Class]) As Connection
 	'        
 	'         * When callerCl is null, we should check the application's
 	'         * (which is invoking this class indirectly)
@@ -630,12 +630,12 @@ Namespace java.sql
 
 		Friend ReadOnly driver As Driver
 		Friend da As DriverAction
-		Friend Sub New(ByVal driver As Driver, ByVal action As DriverAction)
+		Friend Sub New(  driver As Driver,   action As DriverAction)
 			Me.driver = driver
 			da = action
 		End Sub
 
-		Public Overrides Function Equals(ByVal other As Object) As Boolean
+		Public Overrides Function Equals(  other As Object) As Boolean
 			Return (TypeOf other Is DriverInfo) AndAlso Me.driver Is CType(other, DriverInfo).driver
 		End Function
 

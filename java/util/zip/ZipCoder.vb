@@ -34,7 +34,7 @@ Namespace java.util.zip
 
 	Friend NotInheritable Class ZipCoder
 
-		Friend Overrides Function ToString(ByVal ba As SByte(), ByVal length As Integer) As String
+		Friend Overrides Function ToString(  ba As SByte(),   length As Integer) As String
 			Dim cd As java.nio.charset.CharsetDecoder = decoder().reset()
 			Dim len As Integer = CInt(Fix(length * cd.maxCharsPerByte()))
 			Dim ca As Char() = New Char(len - 1){}
@@ -56,11 +56,11 @@ Namespace java.util.zip
 			Return New String(ca, 0, cb.position())
 		End Function
 
-		Friend Overrides Function ToString(ByVal ba As SByte()) As String
+		Friend Overrides Function ToString(  ba As SByte()) As String
 			Return ToString(ba, ba.Length)
 		End Function
 
-		Friend Function getBytes(ByVal s As String) As SByte()
+		Friend Function getBytes(  s As String) As SByte()
 			Dim ce As java.nio.charset.CharsetEncoder = encoder().reset()
 			Dim ca As Char() = s.ToCharArray()
 			Dim len As Integer = CInt(Fix(ca.Length * ce.maxBytesPerChar()))
@@ -87,14 +87,14 @@ Namespace java.util.zip
 		End Function
 
 		' assume invoked only if "this" is not utf8
-		Friend Function getBytesUTF8(ByVal s As String) As SByte()
+		Friend Function getBytesUTF8(  s As String) As SByte()
 			If isUTF8_Renamed Then Return getBytes(s)
 			If utf8 Is Nothing Then utf8 = New ZipCoder(java.nio.charset.StandardCharsets.UTF_8)
 			Return utf8.getBytes(s)
 		End Function
 
 
-		Friend Function toStringUTF8(ByVal ba As SByte(), ByVal len As Integer) As String
+		Friend Function toStringUTF8(  ba As SByte(),   len As Integer) As String
 			If isUTF8_Renamed Then Return ToString(ba, len)
 			If utf8 Is Nothing Then utf8 = New ZipCoder(java.nio.charset.StandardCharsets.UTF_8)
 			Return utf8.ToString(ba, len)
@@ -112,12 +112,12 @@ Namespace java.util.zip
 		Private isUTF8_Renamed As Boolean
 		Private utf8 As ZipCoder
 
-		Private Sub New(ByVal cs As java.nio.charset.Charset)
+		Private Sub New(  cs As java.nio.charset.Charset)
 			Me.cs = cs
 			Me.isUTF8_Renamed = cs.name().Equals(java.nio.charset.StandardCharsets.UTF_8.name())
 		End Sub
 
-		Shared Function [get](ByVal charset As java.nio.charset.Charset) As ZipCoder
+		Shared Function [get](  charset As java.nio.charset.Charset) As ZipCoder
 			Return New ZipCoder(charset)
 		End Function
 

@@ -140,7 +140,7 @@ Namespace java.lang.management
 		''' <param name="poolName"> The name of the memory pool which triggers this notification. </param>
 		''' <param name="usage"> Memory usage of the memory pool. </param>
 		''' <param name="count"> The threshold crossing count. </param>
-		Public Sub New(ByVal poolName As String, ByVal usage As MemoryUsage, ByVal count As Long)
+		Public Sub New(  poolName As String,   usage As MemoryUsage,   count As Long)
 			If poolName Is Nothing Then Throw New NullPointerException("Null poolName")
 			If usage Is Nothing Then Throw New NullPointerException("Null usage")
 
@@ -149,7 +149,7 @@ Namespace java.lang.management
 			Me.count = count
 		End Sub
 
-		Friend Sub New(ByVal cd As javax.management.openmbean.CompositeData)
+		Friend Sub New(  cd As javax.management.openmbean.CompositeData)
 			sun.management.MemoryNotifInfoCompositeData.validateCompositeData(cd)
 
 			Me.poolName = sun.management.MemoryNotifInfoCompositeData.getPoolName(cd)
@@ -233,7 +233,7 @@ Namespace java.lang.management
 		''' <returns> a <tt>MemoryNotificationInfo</tt> object represented
 		'''         by <tt>cd</tt> if <tt>cd</tt> is not <tt>null</tt>;
 		'''         <tt>null</tt> otherwise. </returns>
-		Public Shared Function [from](ByVal cd As javax.management.openmbean.CompositeData) As MemoryNotificationInfo
+		Public Shared Function [from](  cd As javax.management.openmbean.CompositeData) As MemoryNotificationInfo
 			If cd Is Nothing Then Return Nothing
 
 			If TypeOf cd Is sun.management.MemoryNotifInfoCompositeData Then

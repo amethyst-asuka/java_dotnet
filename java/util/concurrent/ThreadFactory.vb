@@ -64,7 +64,7 @@ Namespace java.util.concurrent
 		''' <param name="r"> a runnable to be executed by new thread instance </param>
 		''' <returns> constructed thread, or {@code null} if the request to
 		'''         create a thread is rejected </returns>
-		Function newThread(ByVal r As Runnable) As Thread
+		Function newThread(  r As Runnable) As Thread
 	End Interface
 
 End Namespace

@@ -308,7 +308,7 @@ Namespace java.awt.font
             ''' <returns> <code>hit1</code> or <code>hit2</code>
             '''        (or an equivalent <code>TextHitInfo</code>), indicating the
             '''        strong caret. </returns>
-            Public Overridable Function getStrongCaret(ByVal hit1 As TextHitInfo, ByVal hit2 As TextHitInfo, ByVal layout As TextLayout) As TextHitInfo
+            Public Overridable Function getStrongCaret(  hit1 As TextHitInfo,   hit2 As TextHitInfo,   layout As TextLayout) As TextHitInfo
 
                 ' default implementation just calls private method on layout
                 Return layout.getStrongHit(hit1, hit2)
@@ -341,7 +341,7 @@ Namespace java.awt.font
         '''       device resolution, and attributes such as antialiasing.  This
         '''       parameter does not specify a translation between the
         '''       <code>TextLayout</code> and user space. </param>
-        Public Sub New(ByVal [string] As String, ByVal font_Renamed As java.awt.font, ByVal frc As FontRenderContext)
+        Public Sub New(  [string] As String,   font_Renamed As java.awt.font,   frc As FontRenderContext)
 
             'If font_Renamed Is Nothing Then Throw New IllegalArgumentException("Null font passed to TextLayout constructor.")
             '         If string_Renamed Is Nothing Then Throw New IllegalArgumentException("Null string passed to TextLayout constructor.")
@@ -377,7 +377,7 @@ Namespace java.awt.font
         '''       parameter does not specify a translation between the
         '''       <code>TextLayout</code> and user space. </param>
         'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-        Public Sub New(Of T1 As java.text.AttributedCharacterIterator.Attribute, ?)(ByVal [string] As String, ByVal attributes As IDictionary(Of T1), ByVal frc As FontRenderContext)
+        Public Sub New(Of T1 As java.text.AttributedCharacterIterator.Attribute, ?)(  [string] As String,   attributes As IDictionary(Of T1),   frc As FontRenderContext)
 			If string_Renamed Is Nothing Then Throw New IllegalArgumentException("Null string passed to TextLayout constructor.")
 
             If attributes Is Nothing Then Throw New IllegalArgumentException("Null map passed to TextLayout constructor.")
@@ -402,7 +402,7 @@ Namespace java.awt.font
         '     * If the AttributeSet contains an embedded graphic, return null.
         '
         'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-        Private Shared Function singleFont(Of T1 As java.text.AttributedCharacterIterator.Attribute, ?)(ByVal text As Char(), ByVal start As Integer, ByVal limit As Integer, ByVal attributes As IDictionary(Of T1)) As java.awt.Font
+        Private Shared Function singleFont(Of T1 As java.text.AttributedCharacterIterator.Attribute, ?)(  text As Char(),   start As Integer,   limit As Integer,   attributes As IDictionary(Of T1)) As java.awt.Font
 
 			'If attributes(TextAttribute.CHAR_REPLACEMENT) IsNot Nothing Then Return Nothing
 
@@ -441,7 +441,7 @@ Namespace java.awt.font
         '''       device resolution, and attributes such as antialiasing.  This
         '''       parameter does not specify a translation between the
         '''       <code>TextLayout</code> and user space. </param>
-        Public Sub New(ByVal text As java.text.AttributedCharacterIterator, ByVal frc As FontRenderContext)
+        Public Sub New(  text As java.text.AttributedCharacterIterator,   frc As FontRenderContext)
             'If text Is Nothing Then Throw New IllegalArgumentException("Null iterator passed to TextLayout constructor.")
 
             'Dim start As Integer = text.beginIndex
@@ -485,7 +485,7 @@ Namespace java.awt.font
         ''' <code>baseline</code> </param>
         ''' <param name="justifyRatio"> <code>0</code> if the <code>TextLayout</code>
         '''     cannot be justified; <code>1</code> otherwise. </param>
-        Friend Sub New(ByVal textLine_Renamed As TextLine, ByVal baseline As SByte, ByVal baselineOffsets As Single(), ByVal justifyRatio As Single)
+        Friend Sub New(  textLine_Renamed As TextLine,   baseline As SByte,   baselineOffsets As Single(),   justifyRatio As Single)
 
             Me.characterCount = textLine_Renamed.characterCount()
             Me.baseline = baseline
@@ -498,7 +498,7 @@ Namespace java.awt.font
         ''' Initialize the paragraph-specific data.
         ''' </summary>
         'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-        Private Sub paragraphInit(Of T1 As java.text.AttributedCharacterIterator.Attribute, ?)(ByVal aBaseline As SByte, ByVal lm As sun.font.CoreMetrics, ByVal paragraphAttrs As IDictionary(Of T1), ByVal text As Char())
+        Private Sub paragraphInit(Of T1 As java.text.AttributedCharacterIterator.Attribute, ?)(  aBaseline As SByte,   lm As sun.font.CoreMetrics,   paragraphAttrs As IDictionary(Of T1),   text As Char())
 
 			baseline = aBaseline
 
@@ -517,7 +517,7 @@ Namespace java.awt.font
         '     * all on one baseline
         '
         'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-        Private Sub fastInit(Of T1 As java.text.AttributedCharacterIterator.Attribute, ?)(ByVal chars As Char(), ByVal font_Renamed As java.awt.Font, ByVal attrs As IDictionary(Of T1), ByVal frc As FontRenderContext)
+        Private Sub fastInit(Of T1 As java.text.AttributedCharacterIterator.Attribute, ?)(  chars As Char(),   font_Renamed As java.awt.Font,   attrs As IDictionary(Of T1),   frc As FontRenderContext)
 
 			' Object vf = attrs.get(TextAttribute.ORIENTATION);
 			' isVerticalLine = TextAttribute.ORIENTATION_VERTICAL.equals(vf);
@@ -545,7 +545,7 @@ Namespace java.awt.font
         '     * renderable, and baseline runs.
         '     * @param chars the text in the iterator, extracted into a char array
         '
-        Private Sub standardInit(ByVal text As java.text.AttributedCharacterIterator, ByVal chars As Char(), ByVal frc As FontRenderContext)
+        Private Sub standardInit(  text As java.text.AttributedCharacterIterator,   chars As Char(),   frc As FontRenderContext)
 
             characterCount = chars.Length
 
@@ -684,7 +684,7 @@ Namespace java.awt.font
         '     * Utility to throw an expection if an invalid TextHitInfo is passed
         '     * as a parameter.  Avoids code duplication.
         '
-        Private Sub checkTextHit(ByVal hit As TextHitInfo)
+        Private Sub checkTextHit(  hit As TextHitInfo)
             If hit Is Nothing Then Throw New IllegalArgumentException("TextHitInfo is null.")
 
             If hit.insertionIndex < 0 OrElse hit.insertionIndex > characterCount Then Throw New IllegalArgumentException("TextHitInfo is out of range")
@@ -704,7 +704,7 @@ Namespace java.awt.font
         ''' <returns> a <code>TextLayout</code> justified to the specified width. </returns>
         ''' <exception cref="Error"> if this layout has already been justified, an Error is
         ''' thrown. </exception>
-        Public Function getJustifiedLayout(ByVal justificationWidth As Single) As TextLayout
+        Public Function getJustifiedLayout(  justificationWidth As Single) As TextLayout
 
             If justificationWidth <= 0 Then Throw New IllegalArgumentException("justificationWidth <= 0 passed to TextLayout.getJustifiedLayout()")
 
@@ -744,7 +744,7 @@ Namespace java.awt.font
         ''' For best results, it should not be too different from the current
         ''' advance of the line. </param>
         ''' <seealso cref= #getJustifiedLayout(float) </seealso>
-        Protected Friend Sub handleJustify(ByVal justificationWidth As Single)
+        Protected Friend Sub handleJustify(  justificationWidth As Single)
             ' never called
         End Sub
 
@@ -913,7 +913,7 @@ Namespace java.awt.font
         ''' <returns> a <code>Rectangle</code> bounding the pixels that would be affected. </returns>
         ''' <seealso cref= GlyphVector#getPixelBounds
         ''' @since 1.6 </seealso>
-        Public Function getPixelBounds(ByVal frc As FontRenderContext, ByVal x As Single, ByVal y As Single) As java.awt.Rectangle
+        Public Function getPixelBounds(  frc As FontRenderContext,   x As Single,   y As Single) As java.awt.Rectangle
             Return textLine.getPixelBounds(frc, x, y)
         End Function
 
@@ -1028,7 +1028,7 @@ Namespace java.awt.font
         '     * first (last) caret position in the layout.
         '
 
-        Private Function getCaretInfo(ByVal caret As Integer, ByVal bounds As java.awt.geom.Rectangle2D, ByVal info As Single()) As Single()
+        Private Function getCaretInfo(  caret As Integer,   bounds As java.awt.geom.Rectangle2D,   info As Single()) As Single()
 
             Dim top1X, top2X As Single
             Dim bottom1X, bottom2X As Single
@@ -1109,7 +1109,7 @@ Namespace java.awt.font
         ''' the caret.  The returned caret info is in baseline-relative coordinates. </returns>
         ''' <seealso cref= #getCaretShapes(int, Rectangle2D, TextLayout.CaretPolicy) </seealso>
         ''' <seealso cref= Font#getItalicAngle </seealso>
-        Public Function getCaretInfo(ByVal hit As TextHitInfo, ByVal bounds As java.awt.geom.Rectangle2D) As Single()
+        Public Function getCaretInfo(  hit As TextHitInfo,   bounds As java.awt.geom.Rectangle2D) As Single()
             ensureCache()
             checkTextHit(hit)
 
@@ -1123,7 +1123,7 @@ Namespace java.awt.font
         ' natural ascent and descent.
         ' these  values are trimmed to the bounds where required to fit,
         ' but otherwise independent of it.
-        Private Function getCaretInfoTestInternal(ByVal hit As TextHitInfo, ByVal bounds As java.awt.geom.Rectangle2D) As Single()
+        Private Function getCaretInfoTestInternal(  hit As TextHitInfo,   bounds As java.awt.geom.Rectangle2D) As Single()
             ensureCache()
             checkTextHit(hit)
 
@@ -1214,7 +1214,7 @@ Namespace java.awt.font
         ''' <param name="hit"> a hit on a character in this <code>TextLayout</code> </param>
         ''' <returns> the information about a caret corresponding to a hit.  The
         '''     returned caret info is in baseline-relative coordinates. </returns>
-        Public Function getCaretInfo(ByVal hit As TextHitInfo) As Single()
+        Public Function getCaretInfo(  hit As TextHitInfo) As Single()
 
             Return getCaretInfo(hit, naturalBounds)
         End Function
@@ -1226,7 +1226,7 @@ Namespace java.awt.font
         ''' indicated side of the character. </summary>
         ''' <param name="hit"> a hit on a character in this <code>TextLayout</code> </param>
         ''' <returns> a caret index corresponding to the specified hit. </returns>
-        Private Function hitToCaret(ByVal hit As TextHitInfo) As Integer
+        Private Function hitToCaret(  hit As TextHitInfo) As Integer
 
             Dim hitIndex As Integer = hit.charIndex
 
@@ -1250,7 +1250,7 @@ Namespace java.awt.font
         ''' <param name="caret"> a caret index. </param>
         ''' <returns> a hit on this layout whose strong caret is at the requested
         ''' index. </returns>
-        Private Function caretToHit(ByVal caret As Integer) As TextHitInfo
+        Private Function caretToHit(  caret As Integer) As TextHitInfo
 
             If caret = 0 OrElse caret = characterCount Then
 
@@ -1268,7 +1268,7 @@ Namespace java.awt.font
             End If
         End Function
 
-        Private Function caretIsValid(ByVal caret As Integer) As Boolean
+        Private Function caretIsValid(  caret As Integer) As Boolean
 
             If caret = characterCount OrElse caret = 0 Then Return True
 
@@ -1293,7 +1293,7 @@ Namespace java.awt.font
         ''' <param name="hit"> a hit on a character in this layout </param>
         ''' <returns> a hit whose caret appears at the next position to the
         ''' right (bottom) of the caret of the provided hit or <code>null</code>. </returns>
-        Public Function getNextRightHit(ByVal hit As TextHitInfo) As TextHitInfo
+        Public Function getNextRightHit(  hit As TextHitInfo) As TextHitInfo
             ensureCache()
             checkTextHit(hit)
 
@@ -1321,7 +1321,7 @@ Namespace java.awt.font
         ''' <param name="policy"> the policy used to select the strong caret </param>
         ''' <returns> a hit whose caret appears at the next position to the
         ''' right (bottom) of the caret of the provided hit, or <code>null</code>. </returns>
-        Public Function getNextRightHit(ByVal offset As Integer, ByVal policy As CaretPolicy) As TextHitInfo
+        Public Function getNextRightHit(  offset As Integer,   policy As CaretPolicy) As TextHitInfo
 
             If offset < 0 OrElse offset > characterCount Then Throw New IllegalArgumentException("Offset out of bounds in TextLayout.getNextRightHit()")
 
@@ -1352,7 +1352,7 @@ Namespace java.awt.font
         ''' object's character count. </param>
         ''' <returns> a hit whose caret appears at the next position to the
         ''' right (bottom) of the caret of the provided hit, or <code>null</code>. </returns>
-        Public Function getNextRightHit(ByVal offset As Integer) As TextHitInfo
+        Public Function getNextRightHit(  offset As Integer) As TextHitInfo
 
             Return getNextRightHit(offset, DEFAULT_CARET_POLICY)
         End Function
@@ -1365,7 +1365,7 @@ Namespace java.awt.font
         ''' <param name="hit"> a hit on a character in this <code>TextLayout</code>. </param>
         ''' <returns> a hit whose caret appears at the next position to the
         ''' left (top) of the caret of the provided hit, or <code>null</code>. </returns>
-        Public Function getNextLeftHit(ByVal hit As TextHitInfo) As TextHitInfo
+        Public Function getNextLeftHit(  hit As TextHitInfo) As TextHitInfo
             ensureCache()
             checkTextHit(hit)
 
@@ -1393,7 +1393,7 @@ Namespace java.awt.font
         ''' <param name="policy"> the policy used to select the strong caret </param>
         ''' <returns> a hit whose caret appears at the next position to the
         ''' left (top) of the caret of the provided hit, or <code>null</code>. </returns>
-        Public Function getNextLeftHit(ByVal offset As Integer, ByVal policy As CaretPolicy) As TextHitInfo
+        Public Function getNextLeftHit(  offset As Integer,   policy As CaretPolicy) As TextHitInfo
 
             If policy Is Nothing Then Throw New IllegalArgumentException("Null CaretPolicy passed to TextLayout.getNextLeftHit()")
 
@@ -1424,7 +1424,7 @@ Namespace java.awt.font
         ''' object's character count. </param>
         ''' <returns> a hit whose caret appears at the next position to the
         ''' left (top) of the caret of the provided hit, or <code>null</code>. </returns>
-        Public Function getNextLeftHit(ByVal offset As Integer) As TextHitInfo
+        Public Function getNextLeftHit(  offset As Integer) As TextHitInfo
 
             Return getNextLeftHit(offset, DEFAULT_CARET_POLICY)
         End Function
@@ -1434,7 +1434,7 @@ Namespace java.awt.font
         ''' <param name="hit"> the specified hit </param>
         ''' <returns> a hit that is on the opposite side of the specified hit's
         '''    caret. </returns>
-        Public Function getVisualOtherHit(ByVal hit As TextHitInfo) As TextHitInfo
+        Public Function getVisualOtherHit(  hit As TextHitInfo) As TextHitInfo
 
             ensureCache()
             checkTextHit(hit)
@@ -1487,7 +1487,7 @@ Namespace java.awt.font
             Return If(leading_Renamed, TextHitInfo.leading(charIndex), TextHitInfo.trailing(charIndex))
         End Function
 
-        Private Function getCaretPath(ByVal hit As TextHitInfo, ByVal bounds As java.awt.geom.Rectangle2D) As Double()
+        Private Function getCaretPath(  hit As TextHitInfo,   bounds As java.awt.geom.Rectangle2D) As Double()
             Dim info As Single() = getCaretInfo(hit, bounds)
             Return New Double() {info(2), info(3), info(4), info(5)}
         End Function
@@ -1501,7 +1501,7 @@ Namespace java.awt.font
         ''' position, and extending from ascent above the baseline to descent below
         ''' it.
         ''' </summary>
-        Private Function getCaretPath(ByVal caret As Integer, ByVal bounds As java.awt.geom.Rectangle2D, ByVal clipToBounds As Boolean) As Double()
+        Private Function getCaretPath(  caret As Integer,   bounds As java.awt.geom.Rectangle2D,   clipToBounds As Boolean) As Double()
 
             Dim info As Single() = getCaretInfo(caret, bounds, Nothing)
 
@@ -1603,7 +1603,7 @@ Namespace java.awt.font
 		End Function
 
 
-        Private Shared Function pathToShape(ByVal path As Double(), ByVal close As Boolean, ByVal lp As sun.font.LayoutPathImpl) As java.awt.geom.GeneralPath
+        Private Shared Function pathToShape(  path As Double(),   close As Boolean,   lp As sun.font.LayoutPathImpl) As java.awt.geom.GeneralPath
             Dim result As New java.awt.geom.GeneralPath(java.awt.geom.GeneralPath.WIND_EVEN_ODD, path.Length)
             result.moveTo(CSng(path(0)), CSng(path(1)))
             For i As Integer = 2 To path.Length - 1 Step 2
@@ -1624,7 +1624,7 @@ Namespace java.awt.font
         '''    coordinates. </param>
         ''' <returns> a <code>Shape</code> representing the caret.  The returned
         '''    shape is in standard coordinates. </returns>
-        Public Function getCaretShape(ByVal hit As TextHitInfo, ByVal bounds As java.awt.geom.Rectangle2D) As java.awt.Shape
+        Public Function getCaretShape(  hit As TextHitInfo,   bounds As java.awt.geom.Rectangle2D) As java.awt.Shape
             ensureCache()
             checkTextHit(hit)
 
@@ -1639,7 +1639,7 @@ Namespace java.awt.font
         ''' <param name="hit"> the hit at which to generate the caret </param>
         ''' <returns> a <code>Shape</code> representing the caret.  The returned
         '''     shape is in standard coordinates. </returns>
-        Public Function getCaretShape(ByVal hit As TextHitInfo) As java.awt.Shape
+        Public Function getCaretShape(  hit As TextHitInfo) As java.awt.Shape
 
             Return getCaretShape(hit, naturalBounds)
         End Function
@@ -1649,7 +1649,7 @@ Namespace java.awt.font
         ''' should be logical or visual counterparts.  They are not
         ''' checked for validity.
         ''' </summary>
-        Private Function getStrongHit(ByVal hit1 As TextHitInfo, ByVal hit2 As TextHitInfo) As TextHitInfo
+        Private Function getStrongHit(  hit1 As TextHitInfo,   hit2 As TextHitInfo) As TextHitInfo
 
             ' right now we're using the following rule for strong hits:
             ' A hit on a character with a lower level
@@ -1678,7 +1678,7 @@ Namespace java.awt.font
         ''' level of this <code>TextLayout</code>. </summary>
         ''' <param name="index"> the index of the character from which to get the level </param>
         ''' <returns> the level of the character at the specified index. </returns>
-        Public Function getCharacterLevel(ByVal index As Integer) As SByte
+        Public Function getCharacterLevel(  index As Integer) As SByte
 
             ' hmm, allow indices at endpoints?  For now, yes.
             If index < -1 OrElse index > characterCount Then Throw New IllegalArgumentException("Index is out of range in getCharacterLevel.")
@@ -1699,7 +1699,7 @@ Namespace java.awt.font
         ''' caret.  If there are two carets, element one is the weak caret,
         ''' otherwise it is <code>null</code>. The returned shapes
         ''' are in standard coordinates. </returns>
-        Public Function getCaretShapes(ByVal offset As Integer, ByVal bounds As java.awt.geom.Rectangle2D, ByVal policy As CaretPolicy) As java.awt.Shape()
+        Public Function getCaretShapes(  offset As Integer,   bounds As java.awt.geom.Rectangle2D,   policy As CaretPolicy) As java.awt.Shape()
 
             ensureCache()
 
@@ -1750,7 +1750,7 @@ Namespace java.awt.font
         ''' <returns> two paths corresponding to the strong and weak caret as
         '''    defined by the <code>DEFAULT_CARET_POLICY</code>.  These are
         '''    in standard coordinates. </returns>
-        Public Function getCaretShapes(ByVal offset As Integer, ByVal bounds As java.awt.geom.Rectangle2D) As java.awt.Shape()
+        Public Function getCaretShapes(  offset As Integer,   bounds As java.awt.geom.Rectangle2D) As java.awt.Shape()
             ' {sfb} parameter checking is done in overloaded version
             Return getCaretShapes(offset, bounds, DEFAULT_CARET_POLICY)
         End Function
@@ -1764,7 +1764,7 @@ Namespace java.awt.font
         ''' <returns> two paths corresponding to the strong and weak caret as
         '''    defined by the <code>DEFAULT_CARET_POLICY</code>.  These are
         '''    in standard coordinates. </returns>
-        Public Function getCaretShapes(ByVal offset As Integer) As java.awt.Shape()
+        Public Function getCaretShapes(  offset As Integer) As java.awt.Shape()
             ' {sfb} parameter checking is done in overloaded version
             Return getCaretShapes(offset, naturalBounds, DEFAULT_CARET_POLICY)
         End Function
@@ -1772,7 +1772,7 @@ Namespace java.awt.font
         ' A utility to return a path enclosing the given path
         ' Path0 must be left or top of path1
         ' {jbr} no assumptions about size of path0, path1 anymore.
-        Private Function boundingShape(ByVal path0 As Double(), ByVal path1 As Double()) As java.awt.geom.GeneralPath
+        Private Function boundingShape(  path0 As Double(),   path1 As Double()) As java.awt.geom.GeneralPath
 
             ' Really, we want the path to be a convex hull around all of the
             ' points in path0 and path1.  But we can get by with less than
@@ -1818,7 +1818,7 @@ Namespace java.awt.font
 
         ' A utility to convert a pair of carets into a bounding path
         ' {jbr} Shape is never outside of bounds.
-        Private Function caretBoundingShape(ByVal caret0 As Integer, ByVal caret1 As Integer, ByVal bounds As java.awt.geom.Rectangle2D) As java.awt.geom.GeneralPath
+        Private Function caretBoundingShape(  caret0 As Integer,   caret1 As Integer,   bounds As java.awt.geom.Rectangle2D) As java.awt.geom.GeneralPath
 
             If caret0 > caret1 Then
                 Dim temp As Integer = caret0
@@ -1834,7 +1834,7 @@ Namespace java.awt.font
         '     * layout.
         '     * Shape is never outside of bounds.
         '
-        Private Function leftShape(ByVal bounds As java.awt.geom.Rectangle2D) As java.awt.geom.GeneralPath
+        Private Function leftShape(  bounds As java.awt.geom.Rectangle2D) As java.awt.geom.GeneralPath
 
             Dim path0 As Double()
             If isVerticalLine Then
@@ -1852,7 +1852,7 @@ Namespace java.awt.font
         '     * A utility to return the path bounding the area to the right (bottom) of
         '     * the layout.
         '
-        Private Function rightShape(ByVal bounds As java.awt.geom.Rectangle2D) As java.awt.geom.GeneralPath
+        Private Function rightShape(  bounds As java.awt.geom.Rectangle2D) As java.awt.geom.GeneralPath
             Dim path1 As Double()
             If isVerticalLine Then
                 path1 = New Double() {bounds.x, bounds.y + bounds.height, bounds.x + bounds.width, bounds.y + bounds.height}
@@ -1873,7 +1873,7 @@ Namespace java.awt.font
         ''' <returns> an array of integers representing start/limit pairs for the
         ''' selected ranges. </returns>
         ''' <seealso cref= #getVisualHighlightShape(TextHitInfo, TextHitInfo, Rectangle2D) </seealso>
-        Public Function getLogicalRangesForVisualSelection(ByVal firstEndpoint As TextHitInfo, ByVal secondEndpoint As TextHitInfo) As Integer()
+        Public Function getLogicalRangesForVisualSelection(  firstEndpoint As TextHitInfo,   secondEndpoint As TextHitInfo) As Integer()
             ensureCache()
 
             checkTextHit(firstEndpoint)
@@ -1973,7 +1973,7 @@ Namespace java.awt.font
         '''     standard coordinates. </returns>
         ''' <seealso cref= #getLogicalRangesForVisualSelection(TextHitInfo, TextHitInfo) </seealso>
         ''' <seealso cref= #getLogicalHighlightShape(int, int, Rectangle2D) </seealso>
-        Public Function getVisualHighlightShape(ByVal firstEndpoint As TextHitInfo, ByVal secondEndpoint As TextHitInfo, ByVal bounds As java.awt.geom.Rectangle2D) As java.awt.Shape
+        Public Function getVisualHighlightShape(  firstEndpoint As TextHitInfo,   secondEndpoint As TextHitInfo,   bounds As java.awt.geom.Rectangle2D) As java.awt.Shape
             ensureCache()
 
             checkTextHit(firstEndpoint)
@@ -2013,7 +2013,7 @@ Namespace java.awt.font
         ''' <param name="secondEndpoint"> the other end of the visual selection </param>
         ''' <returns> a <code>Shape</code> enclosing the selection.  This is
         '''     in standard coordinates. </returns>
-        Public Function getVisualHighlightShape(ByVal firstEndpoint As TextHitInfo, ByVal secondEndpoint As TextHitInfo) As java.awt.Shape
+        Public Function getVisualHighlightShape(  firstEndpoint As TextHitInfo,   secondEndpoint As TextHitInfo) As java.awt.Shape
             Return getVisualHighlightShape(firstEndpoint, secondEndpoint, naturalBounds)
         End Function
 
@@ -2055,7 +2055,7 @@ Namespace java.awt.font
         ''' <returns> an area enclosing the selection.  This is in standard
         '''     coordinates. </returns>
         ''' <seealso cref= #getVisualHighlightShape(TextHitInfo, TextHitInfo, Rectangle2D) </seealso>
-        Public Function getLogicalHighlightShape(ByVal firstEndpoint As Integer, ByVal secondEndpoint As Integer, ByVal bounds As java.awt.geom.Rectangle2D) As java.awt.Shape
+        Public Function getLogicalHighlightShape(  firstEndpoint As Integer,   secondEndpoint As Integer,   bounds As java.awt.geom.Rectangle2D) As java.awt.Shape
             If bounds Is Nothing Then Throw New IllegalArgumentException("Null Rectangle2D passed to TextLayout.getLogicalHighlightShape()")
 
             ensureCache()
@@ -2137,7 +2137,7 @@ Namespace java.awt.font
         ''' excludes max(firstEndpoint, secondEndpoint). </param>
         ''' <returns> a <code>Shape</code> enclosing the selection.  This is in
         '''     standard coordinates. </returns>
-        Public Function getLogicalHighlightShape(ByVal firstEndpoint As Integer, ByVal secondEndpoint As Integer) As java.awt.Shape
+        Public Function getLogicalHighlightShape(  firstEndpoint As Integer,   secondEndpoint As Integer) As java.awt.Shape
 
             Return getLogicalHighlightShape(firstEndpoint, secondEndpoint, naturalBounds)
         End Function
@@ -2152,7 +2152,7 @@ Namespace java.awt.font
         ''' less than <code>firstEndpoint</code>. </param>
         ''' <returns> a <code>Shape</code> enclosing the black box bounds.  This is
         '''     in standard coordinates. </returns>
-        Public Function getBlackBoxBounds(ByVal firstEndpoint As Integer, ByVal secondEndpoint As Integer) As java.awt.Shape
+        Public Function getBlackBoxBounds(  firstEndpoint As Integer,   secondEndpoint As Integer) As java.awt.Shape
             ensureCache()
 
             If firstEndpoint > secondEndpoint Then
@@ -2196,7 +2196,7 @@ Namespace java.awt.font
         ''' line, or above the caret on a vertical line.
         ''' Utility for use by hitTestChar.
         ''' </summary>
-        Private Function caretToPointDistance(ByVal caretInfo As Single(), ByVal x As Single, ByVal y As Single) As Single
+        Private Function caretToPointDistance(  caretInfo As Single(),   x As Single,   y As Single) As Single
             ' distanceOffBaseline is negative if you're 'above' baseline
 
             Dim lineDistance As Single = If(isVerticalLine, y, x)
@@ -2221,7 +2221,7 @@ Namespace java.awt.font
         '''     is in baseline-relative coordinates. </param>
         ''' <returns> a hit describing the character and edge (leading or trailing)
         '''     under the specified point. </returns>
-        Public Function hitTestChar(ByVal x As Single, ByVal y As Single, ByVal bounds As java.awt.geom.Rectangle2D) As TextHitInfo
+        Public Function hitTestChar(  x As Single,   y As Single,   bounds As java.awt.geom.Rectangle2D) As TextHitInfo
             ' check boundary conditions
 
             Dim lp As sun.font.LayoutPathImpl = textLine.layoutPath
@@ -2316,7 +2316,7 @@ Namespace java.awt.font
         '''     <code>TextLayout</code>.  This is in standard coordinates. </param>
         ''' <returns> a hit describing the character and edge (leading or trailing)
         ''' under the specified point. </returns>
-        Public Function hitTestChar(ByVal x As Single, ByVal y As Single) As TextHitInfo
+        Public Function hitTestChar(  x As Single,   y As Single) As TextHitInfo
 
             Return hitTestChar(x, y, naturalBounds)
         End Function
@@ -2340,7 +2340,7 @@ Namespace java.awt.font
         ''' <returns> <code>true</code> if the specified <code>Object</code>
         '''      equals this <code>TextLayout</code>; <code>false</code>
         '''      otherwise. </returns>
-        Public Overrides Function Equals(ByVal obj As Object) As Boolean
+        Public Overrides Function Equals(  obj As Object) As Boolean
             Return (TypeOf obj Is TextLayout) AndAlso Equals(CType(obj, TextLayout))
         End Function
 
@@ -2352,7 +2352,7 @@ Namespace java.awt.font
         ''' <returns> <code>true</code> if the specified <code>TextLayout</code>
         '''      equals this <code>TextLayout</code>.
         '''  </returns>
-        Public Overrides Function Equals(ByVal rhs As TextLayout) As Boolean
+        Public Overrides Function Equals(  rhs As TextLayout) As Boolean
 
             If rhs Is Nothing Then Return False
             If rhs Is Me Then Return True
@@ -2382,7 +2382,7 @@ Namespace java.awt.font
         ''' <param name="x"> the X coordinate of the origin of this <code>TextLayout</code> </param>
         ''' <param name="y"> the Y coordinate of the origin of this <code>TextLayout</code> </param>
         ''' <seealso cref= #getBounds() </seealso>
-        Public Sub draw(ByVal g2 As java.awt.Graphics2D, ByVal x As Single, ByVal y As Single)
+        Public Sub draw(  g2 As java.awt.Graphics2D,   x As Single,   y As Single)
 
             If g2 Is Nothing Then Throw New IllegalArgumentException("Null Graphics2D passed to TextLayout.draw()")
 
@@ -2405,7 +2405,7 @@ Namespace java.awt.font
         ''' character at start, or limit if all characters between start and limit have
         ''' the same baseline.
         ''' </summary>
-        Private Shared Function sameBaselineUpTo(ByVal font_Renamed As java.awt.font, ByVal text As Char(), ByVal start As Integer, ByVal limit As Integer) As Integer
+        Private Shared Function sameBaselineUpTo(  font_Renamed As java.awt.font,   text As Char(),   start As Integer,   limit As Integer) As Integer
             ' current implementation doesn't support multiple baselines
             Return limit
             '
@@ -2417,7 +2417,7 @@ Namespace java.awt.font
             '
         End Function
 
-		Friend Shared Function getBaselineFromGraphic(ByVal graphic As GraphicAttribute) As SByte
+		Friend Shared Function getBaselineFromGraphic(  graphic As GraphicAttribute) As SByte
 
 			Dim alignment As SByte = CByte(graphic.alignment)
 
@@ -2436,7 +2436,7 @@ Namespace java.awt.font
 		'''     outline of this <code>TextLayout</code>. </param>
 		''' <returns> a <code>Shape</code> that is the outline of this
 		'''     <code>TextLayout</code>.  This is in standard coordinates. </returns>
-		Public Function getOutline(ByVal tx As java.awt.geom.AffineTransform) As java.awt.Shape
+		Public Function getOutline(  tx As java.awt.geom.AffineTransform) As java.awt.Shape
 			ensureCache()
 			Dim result As java.awt.Shape = textLine.getOutline(tx)
 			Dim lp As sun.font.LayoutPathImpl = textLine.layoutPath
@@ -2469,7 +2469,7 @@ Namespace java.awt.font
 	   ''' TextLayout. </exception>
 	   ''' <exception cref="NullPointerException"> if hit or point is null.
 	   ''' @since 1.6 </exception>
-		Public Sub hitToPoint(ByVal hit As TextHitInfo, ByVal point As java.awt.geom.Point2D)
+		Public Sub hitToPoint(  hit As TextHitInfo,   point As java.awt.geom.Point2D)
 			If hit Is Nothing OrElse point Is Nothing Then Throw New NullPointerException((If(hit Is Nothing, "hit", "point")) & " can't be null")
 			ensureCache()
 			checkTextHit(hit)

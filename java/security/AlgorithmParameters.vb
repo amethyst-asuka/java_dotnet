@@ -91,7 +91,7 @@ Namespace java.security
         ''' <param name="paramSpi"> the delegate </param>
         ''' <param name="provider"> the provider </param>
         ''' <param name="algorithm"> the algorithm </param>
-        Protected Friend Sub New(ByVal paramSpi As AlgorithmParametersSpi, ByVal provider_Renamed As Provider, ByVal algorithm As String)
+        Protected Friend Sub New(  paramSpi As AlgorithmParametersSpi,   provider_Renamed As Provider,   algorithm As String)
             Me.paramSpi = paramSpi
             Me._provider = provider_Renamed
             Me._algorithm = algorithm
@@ -136,7 +136,7 @@ Namespace java.security
         '''          specified algorithm.
         ''' </exception>
         ''' <seealso cref= Provider </seealso>
-        Public Shared Function getInstance(ByVal algorithm As String) As AlgorithmParameters
+        Public Shared Function getInstance(  algorithm As String) As AlgorithmParameters
             Try
                 Dim objs As Object() = Security.getImpl(algorithm, "AlgorithmParameters", CStr(Nothing))
                 Return New AlgorithmParameters(CType(objs(0), AlgorithmParametersSpi), CType(objs(1), Provider), algorithm)
@@ -181,7 +181,7 @@ Namespace java.security
         '''          or empty.
         ''' </exception>
         ''' <seealso cref= Provider </seealso>
-        Public Shared Function getInstance(ByVal algorithm As String, ByVal provider_Renamed As String) As AlgorithmParameters
+        Public Shared Function getInstance(  algorithm As String,   provider_Renamed As String) As AlgorithmParameters
             If provider_Renamed Is Nothing OrElse provider_Renamed.Length() = 0 Then Throw New IllegalArgumentException("missing provider")
             Dim objs As Object() = Security.getImpl(algorithm, "AlgorithmParameters", provider_Renamed)
             Return New AlgorithmParameters(CType(objs(0), AlgorithmParametersSpi), CType(objs(1), Provider), algorithm)
@@ -218,7 +218,7 @@ Namespace java.security
         ''' <seealso cref= Provider
         ''' 
         ''' @since 1.4 </seealso>
-        Public Shared Function getInstance(ByVal algorithm As String, ByVal provider_Renamed As Provider) As AlgorithmParameters
+        Public Shared Function getInstance(  algorithm As String,   provider_Renamed As Provider) As AlgorithmParameters
             If provider_Renamed Is Nothing Then Throw New IllegalArgumentException("missing provider")
             Dim objs As Object() = Security.getImpl(algorithm, "AlgorithmParameters", provider_Renamed)
             Return New AlgorithmParameters(CType(objs(0), AlgorithmParametersSpi), CType(objs(1), Provider), algorithm)
@@ -243,7 +243,7 @@ Namespace java.security
         ''' <exception cref="InvalidParameterSpecException"> if the given parameter
         ''' specification is inappropriate for the initialization of this parameter
         ''' object, or if this parameter object has already been initialized. </exception>
-        Public Sub init(ByVal paramSpec As java.security.spec.AlgorithmParameterSpec)
+        Public Sub init(  paramSpec As java.security.spec.AlgorithmParameterSpec)
             If Me.initialized Then Throw New java.security.spec.InvalidParameterSpecException("already initialized")
             paramSpi.engineInit(paramSpec)
             Me.initialized = True
@@ -259,7 +259,7 @@ Namespace java.security
         ''' </param>
         ''' <exception cref="IOException"> on decoding errors, or if this parameter object
         ''' has already been initialized. </exception>
-        Public Sub init(ByVal params As SByte())
+        Public Sub init(  params As SByte())
             If Me.initialized Then Throw New IOException("already initialized")
             paramSpi.engineInit(params)
             Me.initialized = True
@@ -279,7 +279,7 @@ Namespace java.security
         ''' </param>
         ''' <exception cref="IOException"> on decoding errors, or if this parameter object
         ''' has already been initialized. </exception>
-        Public Sub init(ByVal params As SByte(), ByVal format As String)
+        Public Sub init(  params As SByte(),   format As String)
             If Me.initialized Then Throw New IOException("already initialized")
             paramSpi.engineInit(params, format)
             Me.initialized = True
@@ -302,7 +302,7 @@ Namespace java.security
         ''' <exception cref="InvalidParameterSpecException"> if the requested parameter
         ''' specification is inappropriate for this parameter object, or if this
         ''' parameter object has not been initialized. </exception>
-        Public Function getParameterSpec(Of T As java.security.spec.AlgorithmParameterSpec)(ByVal paramSpec As [Class]) As T
+        Public Function getParameterSpec(Of T As java.security.spec.AlgorithmParameterSpec)(  paramSpec As [Class]) As T
             If Me.initialized = False Then Throw New java.security.spec.InvalidParameterSpecException("not initialized")
             Return paramSpi.engineGetParameterSpec(paramSpec)
         End Function
@@ -336,7 +336,7 @@ Namespace java.security
         ''' </returns>
         ''' <exception cref="IOException"> on encoding errors, or if this parameter object
         ''' has not been initialized. </exception>
-        Public Function getEncoded(ByVal format As String) As SByte()
+        Public Function getEncoded(  format As String) As SByte()
             If Me.initialized = False Then Throw New IOException("not initialized")
             Return paramSpi.engineGetEncoded(format)
         End Function

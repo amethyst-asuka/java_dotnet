@@ -88,7 +88,7 @@ Namespace java.util.zip
 		''' <exception cref="NullPointerException"> if the entry name is null </exception>
 		''' <exception cref="IllegalArgumentException"> if the entry name is longer than
 		'''         0xFFFF bytes </exception>
-		Public Sub New(ByVal name As String)
+		Public Sub New(  name As String)
 			java.util.Objects.requireNonNull(name, "name")
 			If name.length() > &HFFFF Then Throw New IllegalArgumentException("entry name too long")
 			Me.name = name
@@ -102,7 +102,7 @@ Namespace java.util.zip
 		'''         A zip Entry object
 		''' </param>
 		''' <exception cref="NullPointerException"> if the entry object is null </exception>
-		Public Sub New(ByVal e As ZipEntry)
+		Public Sub New(  e As ZipEntry)
 			java.util.Objects.requireNonNull(e, "entry")
 			name = e.name
 			xdostime = e.xdostime
@@ -146,7 +146,7 @@ Namespace java.util.zip
         ''' <seealso cref= #getTime() </seealso>
         ''' <seealso cref= #getLastModifiedTime() </seealso>
         Public Overridable Property time As Long
-			Set(ByVal time As Long)
+			Set(  time As Long)
 				Me.xdostime = javaToExtendedDosTime(time)
 				' Avoid setting the mtime field if time is in the valid
 				' range for a DOS time
@@ -180,7 +180,7 @@ Namespace java.util.zip
 		''' </exception>
 		''' <seealso cref= #getLastModifiedTime()
 		''' @since 1.8 </seealso>
-		Public Overridable Function setLastModifiedTime(ByVal time As java.nio.file.attribute.FileTime) As ZipEntry
+		Public Overridable Function setLastModifiedTime(  time As java.nio.file.attribute.FileTime) As ZipEntry
 			Me.mtime = java.util.Objects.requireNonNull(time, "lastModifiedTime")
 			Me.xdostime = javaToExtendedDosTime(time.to(java.util.concurrent.TimeUnit.MILLISECONDS))
 			Return Me
@@ -224,7 +224,7 @@ Namespace java.util.zip
         ''' </exception>
         ''' <seealso cref= #getLastAccessTime()
         ''' @since 1.8 </seealso>
-        Public Overridable Function setLastAccessTime(ByVal time As java.nio.file.attribute.FileTime) As ZipEntry
+        Public Overridable Function setLastAccessTime(  time As java.nio.file.attribute.FileTime) As ZipEntry
 			Me.atime = java.util.Objects.requireNonNull(time, "lastAccessTime")
 			Return Me
 		End Function
@@ -261,7 +261,7 @@ Namespace java.util.zip
         ''' </exception>
         ''' <seealso cref= #getCreationTime()
         ''' @since 1.8 </seealso>
-        Public Overridable Function setCreationTime(ByVal time As java.nio.file.attribute.FileTime) As ZipEntry
+        Public Overridable Function setCreationTime(  time As java.nio.file.attribute.FileTime) As ZipEntry
 			Me.ctime = java.util.Objects.requireNonNull(time, "creationTime")
 			Return Me
 		End Function
@@ -293,7 +293,7 @@ Namespace java.util.zip
         '''         or is less than 0 when ZIP64 is supported </exception>
         ''' <seealso cref= #getSize() </seealso>
         Public Overridable Property size As Long
-			Set(ByVal size As Long)
+			Set(  size As Long)
 				If size < 0 Then Throw New IllegalArgumentException("invalid entry size")
                 Me._size = size
             End Set
@@ -315,7 +315,7 @@ Namespace java.util.zip
 			Get
 				Return csize
 			End Get
-			Set(ByVal csize As Long)
+			Set(  csize As Long)
 				Me.csize = csize
 			End Set
 		End Property
@@ -330,7 +330,7 @@ Namespace java.util.zip
 		'''         less than 0 or greater than 0xFFFFFFFF </exception>
 		''' <seealso cref= #getCrc() </seealso>
 		Public Overridable Property crc As Long
-			Set(ByVal crc As Long)
+			Set(  crc As Long)
 				If crc < 0 OrElse crc > &HFFFFFFFFL Then Throw New IllegalArgumentException("invalid entry crc-32")
 				Me.crc = crc
 			End Set
@@ -349,7 +349,7 @@ Namespace java.util.zip
 		'''          method is invalid </exception>
 		''' <seealso cref= #getMethod() </seealso>
 		Public Overridable Property method As Integer
-			Set(ByVal method As Integer)
+			Set(  method As Integer)
 				If method <> STORED AndAlso method <> DEFLATED Then Throw New IllegalArgumentException("invalid compression method")
 				Me.method = method
 			End Set
@@ -377,7 +377,7 @@ Namespace java.util.zip
 		''' </exception>
 		''' <seealso cref= #getExtra() </seealso>
 		Public Overridable Property extra As SByte()
-			Set(ByVal extra As SByte())
+			Set(  extra As SByte())
 				extra0ra0(extra, False)
 			End Set
 			Get
@@ -392,7 +392,7 @@ Namespace java.util.zip
 		'''        the extra field data bytes </param>
 		''' <param name="doZIP64">
 		'''        if true, set size and csize from ZIP64 fields if present </param>
-		Friend Overridable Sub setExtra0(ByVal extra As SByte(), ByVal doZIP64 As Boolean)
+		Friend Overridable Sub setExtra0(  extra As SByte(),   doZIP64 As Boolean)
 			If extra IsNot Nothing Then
 				If extra.Length > &HFFFF Then Throw New IllegalArgumentException("invalid extra field length")
 				' extra fields are in "HeaderID(2)DataSize(2)Data... format

@@ -135,7 +135,7 @@ Namespace java.nio.file
 		''' </param>
 		''' <returns>  {@code true} if, and only if, the file attribute view is
 		'''          supported </returns>
-		Public MustOverride Function supportsFileAttributeView(ByVal type As [Class]) As Boolean
+		Public MustOverride Function supportsFileAttributeView(  type As [Class]) As Boolean
 
 		''' <summary>
 		''' Tells whether or not this file store supports the file attributes
@@ -153,7 +153,7 @@ Namespace java.nio.file
 		''' </param>
 		''' <returns>  {@code true} if, and only if, the file attribute view is
 		'''          supported </returns>
-		Public MustOverride Function supportsFileAttributeView(ByVal name As String) As Boolean
+		Public MustOverride Function supportsFileAttributeView(  name As String) As Boolean
 
 		''' <summary>
 		''' Returns a {@code FileStoreAttributeView} of the given type.
@@ -170,7 +170,7 @@ Namespace java.nio.file
 		''' </param>
 		''' <returns>  a file store attribute view of the specified type or
 		'''          {@code null} if the attribute view is not available </returns>
-		Public MustOverride Function getFileStoreAttributeView(Of V As FileStoreAttributeView)(ByVal type As [Class]) As V
+		Public MustOverride Function getFileStoreAttributeView(Of V As FileStoreAttributeView)(  type As [Class]) As V
 
 		''' <summary>
 		''' Reads the value of a file store attribute.
@@ -204,7 +204,7 @@ Namespace java.nio.file
 		'''          reading the attribute </exception>
 		''' <exception cref="IOException">
 		'''          if an I/O error occurs </exception>
-		Public MustOverride Function getAttribute(ByVal attribute As String) As Object
+		Public MustOverride Function getAttribute(  attribute As String) As Object
 	End Class
 
 End Namespace

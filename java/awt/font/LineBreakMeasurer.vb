@@ -269,7 +269,7 @@ Namespace java.awt.font
 		'''       <code>LineBreakMeasurer</code> and user space </param>
 		''' <seealso cref= LineBreakMeasurer#insertChar </seealso>
 		''' <seealso cref= LineBreakMeasurer#deleteChar </seealso>
-		Public Sub New(ByVal text As java.text.AttributedCharacterIterator, ByVal frc As java.awt.font.FontRenderContext)
+		Public Sub New(  text As java.text.AttributedCharacterIterator,   frc As java.awt.font.FontRenderContext)
 			Me.New(text, java.text.BreakIterator.lineInstance, frc)
 		End Sub
 
@@ -294,7 +294,7 @@ Namespace java.awt.font
 		''' <exception cref="IllegalArgumentException"> if the text has less than one character </exception>
 		''' <seealso cref= LineBreakMeasurer#insertChar </seealso>
 		''' <seealso cref= LineBreakMeasurer#deleteChar </seealso>
-		Public Sub New(ByVal text As java.text.AttributedCharacterIterator, ByVal breakIter As java.text.BreakIterator, ByVal frc As java.awt.font.FontRenderContext)
+		Public Sub New(  text As java.text.AttributedCharacterIterator,   breakIter As java.text.BreakIterator,   frc As java.awt.font.FontRenderContext)
 			If text.endIndex - text.beginIndex < 1 Then Throw New IllegalArgumentException("Text must contain at least one character.")
 
 			Me.breakIter = breakIter
@@ -315,7 +315,7 @@ Namespace java.awt.font
 		'''    the text in the next layout </param>
 		''' <returns> an offset in the text representing the limit of the
 		'''    next <code>TextLayout</code>. </returns>
-		Public Function nextOffset(ByVal wrappingWidth As Single) As Integer
+		Public Function nextOffset(  wrappingWidth As Single) As Integer
 			Return nextOffset(wrappingWidth, limit, False)
 		End Function
 
@@ -335,7 +335,7 @@ Namespace java.awt.font
 		'''    returned is at least one greater than the current position </param>
 		''' <returns> an offset in the text representing the limit of the
 		'''    next <code>TextLayout</code> </returns>
-		Public Function nextOffset(ByVal wrappingWidth As Single, ByVal offsetLimit As Integer, ByVal requireNextWord As Boolean) As Integer
+		Public Function nextOffset(  wrappingWidth As Single,   offsetLimit As Integer,   requireNextWord As Boolean) As Integer
 
 			Dim nextOffset_Renamed As Integer = pos
 
@@ -388,7 +388,7 @@ Namespace java.awt.font
 		''' <returns> a <code>TextLayout</code>, beginning at the current
 		'''     position, which represents the next line fitting within
 		'''     <code>wrappingWidth</code> </returns>
-		Public Function nextLayout(ByVal wrappingWidth As Single) As TextLayout
+		Public Function nextLayout(  wrappingWidth As Single) As TextLayout
 			Return nextLayout(wrappingWidth, limit, False)
 		End Function
 
@@ -411,7 +411,7 @@ Namespace java.awt.font
 		'''    <code>wrappingWidth</code>.  If the current position is at the end
 		'''    of the text used by this <code>LineBreakMeasurer</code>,
 		'''    <code>null</code> is returned </returns>
-		Public Function nextLayout(ByVal wrappingWidth As Single, ByVal offsetLimit As Integer, ByVal requireNextWord As Boolean) As TextLayout
+		Public Function nextLayout(  wrappingWidth As Single,   offsetLimit As Integer,   requireNextWord As Boolean) As TextLayout
 
 			If pos < limit Then
 				Dim layoutLimit As Integer = nextOffset(wrappingWidth, offsetLimit, requireNextWord)
@@ -435,7 +435,7 @@ Namespace java.awt.font
 			Get
 				Return pos
 			End Get
-			Set(ByVal newPosition As Integer)
+			Set(  newPosition As Integer)
 				If newPosition < start OrElse newPosition > limit Then Throw New IllegalArgumentException("position is out of range")
 				pos = newPosition
 			End Set
@@ -456,7 +456,7 @@ Namespace java.awt.font
 		''' <exception cref="NullPointerException"> if <code>newParagraph</code> is
 		'''         <code>null</code> </exception>
 		''' <seealso cref= #deleteChar </seealso>
-		Public Sub insertChar(ByVal newParagraph As java.text.AttributedCharacterIterator, ByVal insertPos As Integer)
+		Public Sub insertChar(  newParagraph As java.text.AttributedCharacterIterator,   insertPos As Integer)
 
 			measurer.insertChar(newParagraph, insertPos)
 
@@ -481,7 +481,7 @@ Namespace java.awt.font
 		''' <exception cref="NullPointerException"> if <code>newParagraph</code> is
 		'''         <code>null</code> </exception>
 		''' <seealso cref= #insertChar </seealso>
-		Public Sub deleteChar(ByVal newParagraph As java.text.AttributedCharacterIterator, ByVal deletePos As Integer)
+		Public Sub deleteChar(  newParagraph As java.text.AttributedCharacterIterator,   deletePos As Integer)
 
 			measurer.deleteChar(newParagraph, deletePos)
 

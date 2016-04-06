@@ -55,7 +55,7 @@ Namespace java.util
         ''' </summary>
         ''' <param name="source">    The object on which the Event initially occurred. </param>
         ''' <exception cref="IllegalArgumentException">  if source is null. </exception>
-        Public Sub New(ByVal source As Object)
+        Public Sub New(  source As Object)
             If source Is Nothing Then Throw New IllegalArgumentException("null source")
 
             Me._source = source

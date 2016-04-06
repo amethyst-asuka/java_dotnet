@@ -62,7 +62,7 @@ Namespace java.awt.image
 		''' <exception cref="IllegalArgumentException"> if <code>offset</code> is
 		'''         is less than 0 or if the length of <code>data</code>
 		'''         is less than 1 </exception>
-		Public Sub New(ByVal offset As Integer, ByVal data As SByte()())
+		Public Sub New(  offset As Integer,   data As SByte()())
 			MyBase.New(offset,data.Length)
 			numComponents = data.Length
 			numEntries = data(0).Length
@@ -85,7 +85,7 @@ Namespace java.awt.image
 		''' <exception cref="IllegalArgumentException"> if <code>offset</code> is
 		'''         is less than 0 or if the length of <code>data</code>
 		'''         is less than 1 </exception>
-		Public Sub New(ByVal offset As Integer, ByVal data As SByte())
+		Public Sub New(  offset As Integer,   data As SByte())
 			MyBase.New(offset,data.Length)
 			numComponents = 1
 			numEntries = data.Length
@@ -122,7 +122,7 @@ Namespace java.awt.image
 		'''            <code>src[i]-offset</code> is either less than zero or
 		'''            greater than or equal to the length of the lookup table
 		'''            for any band. </exception>
-		Public Overrides Function lookupPixel(ByVal src As Integer(), ByVal dst As Integer()) As Integer()
+		Public Overrides Function lookupPixel(  src As Integer(),   dst As Integer()) As Integer()
 			If dst Is Nothing Then dst = New Integer(src.Length - 1){}
 
 			If numComponents = 1 Then
@@ -160,7 +160,7 @@ Namespace java.awt.image
 		'''            {@code (src[i]&0xff)-offset} is either less than
 		'''            zero or greater than or equal to the length of the
 		'''            lookup table for any band. </exception>
-		Public Overridable Function lookupPixel(ByVal src As SByte(), ByVal dst As SByte()) As SByte()
+		Public Overridable Function lookupPixel(  src As SByte(),   dst As SByte()) As SByte()
 			If dst Is Nothing Then dst = New SByte(src.Length - 1){}
 
 			If numComponents = 1 Then

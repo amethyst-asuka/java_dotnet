@@ -40,7 +40,7 @@ Namespace java.io
 		''' Constructor to create a new NotActiveException with the reason given.
 		''' </summary>
 		''' <param name="reason">  a String describing the reason for the exception. </param>
-		Public Sub New(ByVal reason As String)
+		Public Sub New(  reason As String)
 			MyBase.New(reason)
 		End Sub
 

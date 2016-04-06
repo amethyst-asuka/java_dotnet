@@ -51,7 +51,7 @@ Namespace java.nio.file
 		''' <p> Unless overridden, this method returns {@link FileVisitResult#CONTINUE
 		''' CONTINUE}.
 		''' </summary>
-		Public Overrides Function preVisitDirectory(ByVal dir As T, ByVal attrs As java.nio.file.attribute.BasicFileAttributes) As FileVisitResult Implements FileVisitor(Of T).preVisitDirectory
+		Public Overrides Function preVisitDirectory(  dir As T,   attrs As java.nio.file.attribute.BasicFileAttributes) As FileVisitResult Implements FileVisitor(Of T).preVisitDirectory
 			java.util.Objects.requireNonNull(dir)
 			java.util.Objects.requireNonNull(attrs)
 			Return FileVisitResult.CONTINUE
@@ -63,7 +63,7 @@ Namespace java.nio.file
 		''' <p> Unless overridden, this method returns {@link FileVisitResult#CONTINUE
 		''' CONTINUE}.
 		''' </summary>
-		Public Overrides Function visitFile(ByVal file As T, ByVal attrs As java.nio.file.attribute.BasicFileAttributes) As FileVisitResult Implements FileVisitor(Of T).visitFile
+		Public Overrides Function visitFile(  file As T,   attrs As java.nio.file.attribute.BasicFileAttributes) As FileVisitResult Implements FileVisitor(Of T).visitFile
 			java.util.Objects.requireNonNull(file)
 			java.util.Objects.requireNonNull(attrs)
 			Return FileVisitResult.CONTINUE
@@ -75,7 +75,7 @@ Namespace java.nio.file
 		''' <p> Unless overridden, this method re-throws the I/O exception that prevented
 		''' the file from being visited.
 		''' </summary>
-		Public Overrides Function visitFileFailed(ByVal file As T, ByVal exc As java.io.IOException) As FileVisitResult Implements FileVisitor(Of T).visitFileFailed
+		Public Overrides Function visitFileFailed(  file As T,   exc As java.io.IOException) As FileVisitResult Implements FileVisitor(Of T).visitFileFailed
 			java.util.Objects.requireNonNull(file)
 			Throw exc
 		End Function
@@ -89,7 +89,7 @@ Namespace java.nio.file
 		''' otherwise this method re-throws the I/O exception that caused the iteration
 		''' of the directory to terminate prematurely.
 		''' </summary>
-		Public Overrides Function postVisitDirectory(ByVal dir As T, ByVal exc As java.io.IOException) As FileVisitResult Implements FileVisitor(Of T).postVisitDirectory
+		Public Overrides Function postVisitDirectory(  dir As T,   exc As java.io.IOException) As FileVisitResult Implements FileVisitor(Of T).postVisitDirectory
 			java.util.Objects.requireNonNull(dir)
 			If exc IsNot Nothing Then Throw exc
 			Return FileVisitResult.CONTINUE

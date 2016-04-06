@@ -47,7 +47,7 @@ Namespace java.util.function
 		''' </summary>
 		''' <param name="t"> the first input argument </param>
 		''' <param name="u"> the second input argument </param>
-		Sub accept(ByVal t As T, ByVal u As U)
+		Sub accept(  t As T,   u As U)
 
 		''' <summary>
 		''' Returns a composed {@code BiConsumer} that performs, in sequence, this
@@ -61,7 +61,7 @@ Namespace java.util.function
 		''' operation followed by the {@code after} operation </returns>
 		''' <exception cref="NullPointerException"> if {@code after} is null </exception>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		default Function andThen(Of T1)(ByVal after As BiConsumer(Of T1)) As BiConsumer(Of T, U)
+		default Function andThen(Of T1)(  after As BiConsumer(Of T1)) As BiConsumer(Of T, U)
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 			java.util.Objects.requireNonNull(after);
 

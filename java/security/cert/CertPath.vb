@@ -127,7 +127,7 @@ Namespace java.security.cert
         ''' </summary>
         ''' <param name="type"> the standard name of the type of
         ''' {@code Certificate}s in this path </param>
-        Protected Friend Sub New(ByVal type As String)
+        Protected Friend Sub New(  type As String)
 			Me.type = type
 		End Sub
 
@@ -165,7 +165,7 @@ Namespace java.security.cert
 		''' <param name="other"> the object to test for equality with this certification path </param>
 		''' <returns> true if the specified object is equal to this certification path,
 		''' false otherwise </returns>
-		Public Overrides Function Equals(ByVal other As Object) As Boolean
+		Public Overrides Function Equals(  other As Object) As Boolean
 			If Me Is other Then Return True
             If Not (TypeOf other Is CertPath) Then Return False
 
@@ -240,7 +240,7 @@ Namespace java.security.cert
 		''' <returns> the encoded bytes </returns>
 		''' <exception cref="CertificateEncodingException"> if an encoding error occurs or
 		'''   the encoding requested is not supported </exception>
-		Public MustOverride Function getEncoded(ByVal encoding As String) As SByte()
+		Public MustOverride Function getEncoded(  encoding As String) As SByte()
 
         ''' <summary>
         ''' Returns the list of certificates in this certification path.
@@ -290,7 +290,7 @@ Namespace java.security.cert
 			''' </summary>
 			''' <param name="type"> the standard name of a {@code CertPath} type </param>
 			''' <param name="data"> the encoded form of the certification path </param>
-			Protected Friend Sub New(ByVal type As String, ByVal data As SByte())
+			Protected Friend Sub New(  type As String,   data As SByte())
 				Me.type = type
 				Me.data = data
 			End Sub

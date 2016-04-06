@@ -197,7 +197,7 @@ Namespace java.lang.management
 		''' <exception cref="java.lang.SecurityException"> if a security manager
 		'''         exists and the caller does not have
 		'''         ManagementPermission("monitor"). </exception>
-		Function getThreadInfo(ByVal id As Long) As ThreadInfo
+		Function getThreadInfo(  id As Long) As ThreadInfo
 
 		''' <summary>
 		''' Returns the thread info for each thread
@@ -234,7 +234,7 @@ Namespace java.lang.management
 		''' <exception cref="java.lang.SecurityException"> if a security manager
 		'''         exists and the caller does not have
 		'''         ManagementPermission("monitor"). </exception>
-		Function getThreadInfo(ByVal ids As Long()) As ThreadInfo()
+		Function getThreadInfo(  ids As Long()) As ThreadInfo()
 
 		''' <summary>
 		''' Returns a thread info for a thread of the specified <tt>id</tt>,
@@ -281,7 +281,7 @@ Namespace java.lang.management
 		'''         exists and the caller does not have
 		'''         ManagementPermission("monitor").
 		'''  </exception>
-		Function getThreadInfo(ByVal id As Long, ByVal maxDepth As Integer) As ThreadInfo
+		Function getThreadInfo(  id As Long,   maxDepth As Integer) As ThreadInfo
 
 		''' <summary>
 		''' Returns the thread info for each thread
@@ -333,7 +333,7 @@ Namespace java.lang.management
 		'''         exists and the caller does not have
 		'''         ManagementPermission("monitor").
 		'''  </exception>
-		Function getThreadInfo(ByVal ids As Long(), ByVal maxDepth As Integer) As ThreadInfo()
+		Function getThreadInfo(  ids As Long(),   maxDepth As Integer) As ThreadInfo()
 
 		''' <summary>
 		''' Tests if the Java virtual machine supports thread contention monitoring.
@@ -446,7 +446,7 @@ Namespace java.lang.management
 		''' <seealso cref= #isThreadCpuTimeSupported </seealso>
 		''' <seealso cref= #isThreadCpuTimeEnabled </seealso>
 		''' <seealso cref= #setThreadCpuTimeEnabled </seealso>
-		Function getThreadCpuTime(ByVal id As Long) As Long
+		Function getThreadCpuTime(  id As Long) As Long
 
 		''' <summary>
 		''' Returns the CPU time that a thread of the specified ID
@@ -480,7 +480,7 @@ Namespace java.lang.management
 		''' <seealso cref= #isThreadCpuTimeSupported </seealso>
 		''' <seealso cref= #isThreadCpuTimeEnabled </seealso>
 		''' <seealso cref= #setThreadCpuTimeEnabled </seealso>
-		Function getThreadUserTime(ByVal id As Long) As Long
+		Function getThreadUserTime(  id As Long) As Long
 
 		''' <summary>
 		''' Tests if the Java virtual machine implementation supports CPU time
@@ -706,7 +706,7 @@ Namespace java.lang.management
 		''' <seealso cref= #isSynchronizerUsageSupported
 		''' 
 		''' @since 1.6 </seealso>
-		Function getThreadInfo(ByVal ids As Long(), ByVal lockedMonitors As Boolean, ByVal lockedSynchronizers As Boolean) As ThreadInfo()
+		Function getThreadInfo(  ids As Long(),   lockedMonitors As Boolean,   lockedSynchronizers As Boolean) As ThreadInfo()
 
 		''' <summary>
 		''' Returns the thread info for all live threads with stack trace
@@ -744,7 +744,7 @@ Namespace java.lang.management
 		''' <seealso cref= #isSynchronizerUsageSupported
 		''' 
 		''' @since 1.6 </seealso>
-		Function dumpAllThreads(ByVal lockedMonitors As Boolean, ByVal lockedSynchronizers As Boolean) As ThreadInfo()
+		Function dumpAllThreads(  lockedMonitors As Boolean,   lockedSynchronizers As Boolean) As ThreadInfo()
 	End Interface
 
 End Namespace

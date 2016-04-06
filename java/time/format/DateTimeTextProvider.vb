@@ -90,7 +90,7 @@ Namespace java.time.format
 		Private Class ComparatorAnonymousInnerClassHelper(Of T)
 			Implements IComparer(Of T)
 
-			Public Overrides Function compare(ByVal obj1 As KeyValuePair(Of String, Long?), ByVal obj2 As KeyValuePair(Of String, Long?)) As Integer
+			Public Overrides Function compare(  obj1 As KeyValuePair(Of String, Long?),   obj2 As KeyValuePair(Of String, Long?)) As Integer
 				Return obj2.Key.length() - obj1.Key.length() ' longest to shortest
 			End Function
 		End Class
@@ -121,7 +121,7 @@ Namespace java.time.format
 		''' <param name="style">  the style to get text for, not null </param>
 		''' <param name="locale">  the locale to get text for, not null </param>
 		''' <returns> the text for the field value, null if no text found </returns>
-		Public Overridable Function getText(ByVal field As java.time.temporal.TemporalField, ByVal value As Long, ByVal style As TextStyle, ByVal locale As java.util.Locale) As String
+		Public Overridable Function getText(  field As java.time.temporal.TemporalField,   value As Long,   style As TextStyle,   locale As java.util.Locale) As String
 			Dim store As Object = findStore(field, locale)
 			If TypeOf store Is LocaleStore Then Return CType(store, LocaleStore).getText(value, style)
 			Return Nothing
@@ -141,7 +141,7 @@ Namespace java.time.format
 		''' <param name="style">  the style to get text for, not null </param>
 		''' <param name="locale">  the locale to get text for, not null </param>
 		''' <returns> the text for the field value, null if no text found </returns>
-		Public Overridable Function getText(ByVal chrono As java.time.chrono.Chronology, ByVal field As java.time.temporal.TemporalField, ByVal value As Long, ByVal style As TextStyle, ByVal locale As java.util.Locale) As String
+		Public Overridable Function getText(  chrono As java.time.chrono.Chronology,   field As java.time.temporal.TemporalField,   value As Long,   style As TextStyle,   locale As java.util.Locale) As String
 			If chrono Is java.time.chrono.IsoChronology.INSTANCE OrElse Not(TypeOf field Is java.time.temporal.ChronoField) Then Return getText(field, value, style, locale)
 
 			Dim fieldIndex As Integer
@@ -188,7 +188,7 @@ Namespace java.time.format
 		''' <param name="locale">  the locale to get text for, not null </param>
 		''' <returns> the iterator of text to field pairs, in order from longest text to shortest text,
 		'''  null if the field or style is not parsable </returns>
-		Public Overridable Function getTextIterator(ByVal field As java.time.temporal.TemporalField, ByVal style As TextStyle, ByVal locale As java.util.Locale) As IEnumerator(Of KeyValuePair(Of String, Long?))
+		Public Overridable Function getTextIterator(  field As java.time.temporal.TemporalField,   style As TextStyle,   locale As java.util.Locale) As IEnumerator(Of KeyValuePair(Of String, Long?))
 			Dim store As Object = findStore(field, locale)
 			If TypeOf store Is LocaleStore Then Return CType(store, LocaleStore).getTextIterator(style)
 			Return Nothing
@@ -210,7 +210,7 @@ Namespace java.time.format
 		''' <param name="locale">  the locale to get text for, not null </param>
 		''' <returns> the iterator of text to field pairs, in order from longest text to shortest text,
 		'''  null if the field or style is not parsable </returns>
-		Public Overridable Function getTextIterator(ByVal chrono As java.time.chrono.Chronology, ByVal field As java.time.temporal.TemporalField, ByVal style As TextStyle, ByVal locale As java.util.Locale) As IEnumerator(Of KeyValuePair(Of String, Long?))
+		Public Overridable Function getTextIterator(  chrono As java.time.chrono.Chronology,   field As java.time.temporal.TemporalField,   style As TextStyle,   locale As java.util.Locale) As IEnumerator(Of KeyValuePair(Of String, Long?))
 			If chrono Is java.time.chrono.IsoChronology.INSTANCE OrElse Not(TypeOf field Is java.time.temporal.ChronoField) Then Return getTextIterator(field, style, locale)
 
 			Dim fieldIndex As Integer
@@ -260,7 +260,7 @@ Namespace java.time.format
 			Return list.GetEnumerator()
 		End Function
 
-		Private Function findStore(ByVal field As java.time.temporal.TemporalField, ByVal locale As java.util.Locale) As Object
+		Private Function findStore(  field As java.time.temporal.TemporalField,   locale As java.util.Locale) As Object
 			Dim key As KeyValuePair(Of java.time.temporal.TemporalField, java.util.Locale) = createEntry(field, locale)
 			Dim store As Object = CACHE.get(key)
 			If store Is Nothing Then
@@ -271,7 +271,7 @@ Namespace java.time.format
 			Return store
 		End Function
 
-		Private Shared Function toWeekDay(ByVal calWeekDay As Integer) As Integer
+		Private Shared Function toWeekDay(  calWeekDay As Integer) As Integer
 			If calWeekDay = DayOfWeek.Sunday Then
 				Return 7
 			Else
@@ -279,7 +279,7 @@ Namespace java.time.format
 			End If
 		End Function
 
-		Private Function createStore(ByVal field As java.time.temporal.TemporalField, ByVal locale As java.util.Locale) As Object
+		Private Function createStore(  field As java.time.temporal.TemporalField,   locale As java.util.Locale) As Object
 			Dim styleMap As IDictionary(Of TextStyle, IDictionary(Of Long?, String)) = New Dictionary(Of TextStyle, IDictionary(Of Long?, String))
 			If field = ERA Then
 				For Each textStyle As TextStyle In System.Enum.GetValues(GetType(TextStyle))
@@ -384,7 +384,7 @@ Namespace java.time.format
 		''' <param name="text">  the text, not null </param>
 		''' <param name="field">  the field, not null </param>
 		''' <returns> the entry, not null </returns>
-		Private Shared Function createEntry(Of A, B)(ByVal text As A, ByVal field As B) As KeyValuePair(Of A, B)
+		Private Shared Function createEntry(Of A, B)(  text As A,   field As B) As KeyValuePair(Of A, B)
 			Return New java.util.AbstractMap.SimpleImmutableEntry(Of )(text, field)
 		End Function
 
@@ -397,7 +397,7 @@ Namespace java.time.format
 		''' <returns> the localized resource, or null if not available </returns>
 		''' <exception cref="NullPointerException"> if key or locale is null </exception>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Friend Shared Function getLocalizedResource(Of T)(ByVal key As String, ByVal locale As java.util.Locale) As T
+		Friend Shared Function getLocalizedResource(Of T)(  key As String,   locale As java.util.Locale) As T
 			Dim lr As sun.util.locale.provider.LocaleResources = sun.util.locale.provider.LocaleProviderAdapter.resourceBundleBased.getLocaleResources(locale)
 			Dim rb As java.util.ResourceBundle = lr.javaTimeFormatData
 			Return If(rb.containsKey(key), CType(rb.getObject(key), T), Nothing)
@@ -426,7 +426,7 @@ Namespace java.time.format
 			''' Constructor.
 			''' </summary>
 			''' <param name="valueTextMap">  the map of values to text to store, assigned and not altered, not null </param>
-			Friend Sub New(ByVal valueTextMap As IDictionary(Of TextStyle, IDictionary(Of Long?, String)))
+			Friend Sub New(  valueTextMap As IDictionary(Of TextStyle, IDictionary(Of Long?, String)))
 				Me.valueTextMap = valueTextMap
 				Dim map As IDictionary(Of TextStyle, IList(Of KeyValuePair(Of String, Long?))) = New Dictionary(Of TextStyle, IList(Of KeyValuePair(Of String, Long?)))
 				Dim allList As IList(Of KeyValuePair(Of String, Long?)) = New List(Of KeyValuePair(Of String, Long?))
@@ -452,7 +452,7 @@ Namespace java.time.format
 			''' <param name="value">  the value to get text for, not null </param>
 			''' <param name="style">  the style to get text for, not null </param>
 			''' <returns> the text for the field value, null if no text found </returns>
-			Friend Function getText(ByVal value As Long, ByVal style As TextStyle) As String
+			Friend Function getText(  value As Long,   style As TextStyle) As String
 				Dim map As IDictionary(Of Long?, String) = valueTextMap(style)
 				Return If(map IsNot Nothing, map(value), Nothing)
 			End Function
@@ -465,7 +465,7 @@ Namespace java.time.format
 			''' <param name="style">  the style to get text for, null for all parsable text </param>
 			''' <returns> the iterator of text to field pairs, in order from longest text to shortest text,
 			'''  null if the style is not parsable </returns>
-			Friend Function getTextIterator(ByVal style As TextStyle) As IEnumerator(Of KeyValuePair(Of String, Long?))
+			Friend Function getTextIterator(  style As TextStyle) As IEnumerator(Of KeyValuePair(Of String, Long?))
 				Dim list As IList(Of KeyValuePair(Of String, Long?)) = parsable(style)
 				Return If(list IsNot Nothing, list.GetEnumerator(), Nothing)
 			End Function

@@ -259,7 +259,7 @@ Namespace java.lang
         ''' </summary>
         ''' <param name="message">   the detail message. The detail message is saved for
         '''          later retrieval by the <seealso cref="#getMessage()"/> method. </param>
-        Public Sub New(ByVal message As String)
+        Public Sub New(  message As String)
             fillInStackTrace()
             detailMessage = message
         End Sub
@@ -280,7 +280,7 @@ Namespace java.lang
         '''         permitted, and indicates that the cause is nonexistent or
         '''         unknown.)
         ''' @since  1.4 </param>
-        Public Sub New(ByVal message As String, ByVal cause As Throwable)
+        Public Sub New(  message As String,   cause As Throwable)
             fillInStackTrace()
             detailMessage = message
             Me._cause = cause
@@ -302,7 +302,7 @@ Namespace java.lang
         '''         permitted, and indicates that the cause is nonexistent or
         '''         unknown.)
         ''' @since  1.4 </param>
-        Public Sub New(ByVal cause As Throwable)
+        Public Sub New(  cause As Throwable)
             fillInStackTrace()
             detailMessage = (If(cause Is Nothing, Nothing, cause.ToString()))
             Me._cause = cause
@@ -348,7 +348,7 @@ Namespace java.lang
         ''' <seealso cref= NullPointerException </seealso>
         ''' <seealso cref= ArithmeticException
         ''' @since 1.7 </seealso>
-        Protected Friend Sub New(ByVal message As String, ByVal cause As Throwable, ByVal enableSuppression As Boolean, ByVal writableStackTrace As Boolean)
+        Protected Friend Sub New(  message As String,   cause As Throwable,   enableSuppression As Boolean,   writableStackTrace As Boolean)
             If writableStackTrace Then
                 fillInStackTrace()
             Else
@@ -459,7 +459,7 @@ Namespace java.lang
         '''         been called on this throwable.
         ''' @since  1.4 </exception>
         <MethodImpl(MethodImplOptions.Synchronized)>
-        Public Overridable Function initCause(ByVal cause As Throwable) As Throwable
+        Public Overridable Function initCause(  cause As Throwable) As Throwable
             If Me.cause IsNot Me Then Throw New IllegalStateException("Can't overwrite cause with " & Objects.ToString(cause, "a null"), Me)
             If cause Is Me Then Throw New IllegalArgumentException("Self-causation not permitted", Me)
             Me.cause = cause
@@ -642,11 +642,11 @@ Namespace java.lang
         ''' Prints this throwable and its backtrace to the specified print stream.
         ''' </summary>
         ''' <param name="s"> {@code PrintStream} to use for output </param>
-        Public Overridable Sub printStackTrace(ByVal s As PrintStream)
+        Public Overridable Sub printStackTrace(  s As PrintStream)
             printStackTrace(New WrappedPrintStream(s))
         End Sub
 
-        Private Sub printStackTrace(ByVal s As PrintStreamOrWriter)
+        Private Sub printStackTrace(  s As PrintStreamOrWriter)
             ' Guard against malicious overrides of Throwable.equals by
             ' using a Set with identity equality semantics.
             Dim dejaVu As [Set](Of Throwable) = Collections.newSetFromMap(New IdentityHashMap(Of Throwable, Boolean?))
@@ -675,7 +675,7 @@ Namespace java.lang
         ''' Print our stack trace as an enclosed exception for the specified
         ''' stack trace.
         ''' </summary>
-        Private Sub printEnclosedStackTrace(ByVal s As PrintStreamOrWriter, ByVal enclosingTrace As StackTraceElement(), ByVal caption As String, ByVal prefix As String, ByVal dejaVu As [Set](Of Throwable))
+        Private Sub printEnclosedStackTrace(  s As PrintStreamOrWriter,   enclosingTrace As StackTraceElement(),   caption As String,   prefix As String,   dejaVu As [Set](Of Throwable))
             Debug.Assert(Thread.holdsLock(s.lock()))
             If dejaVu.contains(Me) Then
                 s.println(vbTab & "[CIRCULAR REFERENCE:" & Me & "]")
@@ -715,7 +715,7 @@ Namespace java.lang
         ''' </summary>
         ''' <param name="s"> {@code PrintWriter} to use for output
         ''' @since   JDK1.1 </param>
-        Public Overridable Sub printStackTrace(ByVal s As PrintWriter)
+        Public Overridable Sub printStackTrace(  s As PrintWriter)
             printStackTrace(New WrappedPrintWriter(s))
         End Sub
 
@@ -730,7 +730,7 @@ Namespace java.lang
 
             ''' <summary>
             ''' Prints the specified string as a line on this StreamOrWriter </summary>
-            Friend MustOverride Sub println(ByVal o As Object)
+            Friend MustOverride Sub println(  o As Object)
         End Class
 
         Private Class WrappedPrintStream
@@ -738,7 +738,7 @@ Namespace java.lang
 
             Private ReadOnly printStream As PrintStream
 
-            Friend Sub New(ByVal printStream As PrintStream)
+            Friend Sub New(  printStream As PrintStream)
                 Me.printStream = printStream
             End Sub
 
@@ -746,7 +746,7 @@ Namespace java.lang
                 Return printStream
             End Function
 
-            Friend Overrides Sub println(ByVal o As Object)
+            Friend Overrides Sub println(  o As Object)
                 printStream.println(o)
             End Sub
         End Class
@@ -756,7 +756,7 @@ Namespace java.lang
 
             Private ReadOnly printWriter As PrintWriter
 
-            Friend Sub New(ByVal printWriter As PrintWriter)
+            Friend Sub New(  printWriter As PrintWriter)
                 Me.printWriter = printWriter
             End Sub
 
@@ -764,7 +764,7 @@ Namespace java.lang
                 Return printWriter
             End Function
 
-            Friend Overrides Sub println(ByVal o As Object)
+            Friend Overrides Sub println(  o As Object)
                 printWriter.println(o)
             End Sub
         End Class
@@ -791,7 +791,7 @@ Namespace java.lang
 
         'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
         <DllImport("unknown")>
-        Private Shared Function fillInStackTrace(ByVal dummy As Integer) As Throwable
+        Private Shared Function fillInStackTrace(  dummy As Integer) As Throwable
         End Function
 
         ''' <summary>
@@ -821,7 +821,7 @@ Namespace java.lang
             Get
                 Return ourStackTrace.Clone()
             End Get
-            Set(ByVal stackTrace As StackTraceElement())
+            Set(  stackTrace As StackTraceElement())
                 ' Validate argument
                 Dim defensiveCopy As StackTraceElement() = stackTrace.Clone()
                 For i As Integer = 0 To defensiveCopy.Length - 1
@@ -875,7 +875,7 @@ Namespace java.lang
         '''         index >= getStackTraceDepth() } </exception>
         'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
         <DllImport("unknown")>
-        Friend Function getStackTraceElement(ByVal index As Integer) As StackTraceElement
+        Friend Function getStackTraceElement(  index As Integer) As StackTraceElement
         End Function
 
         ''' <summary>
@@ -893,7 +893,7 @@ Namespace java.lang
         ''' cause} field can hold; both {@code null} and {@code this} are
         ''' valid values for the field.
         ''' </summary>
-        Private Sub readObject(ByVal s As ObjectInputStream)
+        Private Sub readObject(  s As ObjectInputStream)
             s.defaultReadObject() ' read in all fields
             If suppressedExceptions IsNot Nothing Then
                 Dim suppressed_Renamed As List(Of Throwable) = Nothing
@@ -950,7 +950,7 @@ Namespace java.lang
         ''' new StackTraceElement("", "", null,  java.lang.[Integer].MIN_VALUE)}.
         ''' </summary>
         <MethodImpl(MethodImplOptions.Synchronized)>
-        Private Sub writeObject(ByVal s As ObjectOutputStream)
+        Private Sub writeObject(  s As ObjectOutputStream)
             ' Ensure that the stackTrace field is initialized to a
             ' non-null value, if appropriate.  As of JDK 7, a null stack
             ' trace field is a valid value indicating the stack trace
@@ -1015,7 +1015,7 @@ Namespace java.lang
         ''' <exception cref="NullPointerException"> if {@code exception} is {@code null}
         ''' @since 1.7 </exception>
         <MethodImpl(MethodImplOptions.Synchronized)>
-        Public Sub addSuppressed(ByVal exception_Renamed As Throwable)
+        Public Sub addSuppressed(  exception_Renamed As Throwable)
             If exception_Renamed Is Me Then Throw New IllegalArgumentException(SELF_SUPPRESSION_MESSAGE, exception_Renamed)
 
             If exception_Renamed Is Nothing Then Throw New NullPointerException(NULL_CAUSE_MESSAGE)

@@ -242,7 +242,7 @@ Namespace java.util.concurrent.locks
 		''' the given fairness policy.
 		''' </summary>
 		''' <param name="fair"> {@code true} if this lock should use a fair ordering policy </param>
-		Public Sub New(ByVal fair As Boolean)
+		Public Sub New(  fair As Boolean)
 			sync = If(fair, New FairSync, New NonfairSync)
 			readerLock = New ReadLock(Me)
 			writerLock = New WriteLock(Me)
@@ -278,12 +278,12 @@ Namespace java.util.concurrent.locks
 
 			''' <summary>
 			''' Returns the number of shared holds represented in count </summary>
-			Friend Shared Function sharedCount(ByVal c As Integer) As Integer
+			Friend Shared Function sharedCount(  c As Integer) As Integer
 				Return CInt(CUInt(c) >> SHARED_SHIFT)
 			End Function
 			''' <summary>
 			''' Returns the number of exclusive holds represented in count </summary>
-			Friend Shared Function exclusiveCount(ByVal c As Integer) As Integer
+			Friend Shared Function exclusiveCount(  c As Integer) As Integer
 				Return c And EXCLUSIVE_MASK
 			End Function
 
@@ -389,7 +389,7 @@ Namespace java.util.concurrent.locks
 	'         * condition wait and re-established in tryAcquire.
 	'         
 
-			Protected Friend NotOverridable Overrides Function tryRelease(ByVal releases As Integer) As Boolean
+			Protected Friend NotOverridable Overrides Function tryRelease(  releases As Integer) As Boolean
 				If Not heldExclusively Then Throw New IllegalMonitorStateException
 				Dim nextc As Integer = state - releases
 				Dim free As Boolean = exclusiveCount(nextc) = 0
@@ -398,7 +398,7 @@ Namespace java.util.concurrent.locks
 				Return free
 			End Function
 
-			Protected Friend NotOverridable Overrides Function tryAcquire(ByVal acquires As Integer) As Boolean
+			Protected Friend NotOverridable Overrides Function tryAcquire(  acquires As Integer) As Boolean
 	'            
 	'             * Walkthrough:
 	'             * 1. If read count nonzero or write count nonzero
@@ -426,7 +426,7 @@ Namespace java.util.concurrent.locks
 				Return True
 			End Function
 
-			Protected Friend NotOverridable Overrides Function tryReleaseShared(ByVal unused As Integer) As Boolean
+			Protected Friend NotOverridable Overrides Function tryReleaseShared(  unused As Integer) As Boolean
 				Dim current As Thread = Thread.CurrentThread
 				If firstReader Is current Then
 					' assert firstReaderHoldCount > 0;
@@ -456,7 +456,7 @@ Namespace java.util.concurrent.locks
 				Return New IllegalMonitorStateException("attempt to unlock read lock, not locked by current thread")
 			End Function
 
-			Protected Friend NotOverridable Overrides Function tryAcquireShared(ByVal unused As Integer) As Integer
+			Protected Friend NotOverridable Overrides Function tryAcquireShared(  unused As Integer) As Integer
 	'            
 	'             * Walkthrough:
 	'             * 1. If write lock held by another thread, fail.
@@ -501,7 +501,7 @@ Namespace java.util.concurrent.locks
 			''' Full version of acquire for reads, that handles CAS misses
 			''' and reentrant reads not dealt with in tryAcquireShared.
 			''' </summary>
-			Friend Function fullTryAcquireShared(ByVal current As Thread) As Integer
+			Friend Function fullTryAcquireShared(  current As Thread) As Integer
 	'            
 	'             * This code is in part redundant with that in
 	'             * tryAcquireShared but is simpler overall by not
@@ -661,7 +661,7 @@ Namespace java.util.concurrent.locks
 			''' <summary>
 			''' Reconstitutes the instance from a stream (that is, deserializes it).
 			''' </summary>
-			Private Sub readObject(ByVal s As java.io.ObjectInputStream)
+			Private Sub readObject(  s As java.io.ObjectInputStream)
 				s.defaultReadObject()
 				readHolds = New ThreadLocalHoldCounter
 				state = 0 ' reset to unlocked state
@@ -726,7 +726,7 @@ Namespace java.util.concurrent.locks
 			''' </summary>
 			''' <param name="lock"> the outer lock object </param>
 			''' <exception cref="NullPointerException"> if the lock is null </exception>
-			Protected Friend Sub New(ByVal lock As ReentrantReadWriteLock)
+			Protected Friend Sub New(  lock As ReentrantReadWriteLock)
 				sync_Renamed = lock.sync
 			End Sub
 
@@ -880,7 +880,7 @@ Namespace java.util.concurrent.locks
 			''' <returns> {@code true} if the read lock was acquired </returns>
 			''' <exception cref="InterruptedException"> if the current thread is interrupted </exception>
 			''' <exception cref="NullPointerException"> if the time unit is null </exception>
-			Public Overridable Function tryLock(ByVal timeout As Long, ByVal unit As java.util.concurrent.TimeUnit) As Boolean Implements Lock.tryLock
+			Public Overridable Function tryLock(  timeout As Long,   unit As java.util.concurrent.TimeUnit) As Boolean Implements Lock.tryLock
 				Return sync_Renamed.tryAcquireSharedNanos(1, unit.toNanos(timeout))
 			End Function
 
@@ -930,7 +930,7 @@ Namespace java.util.concurrent.locks
 			''' </summary>
 			''' <param name="lock"> the outer lock object </param>
 			''' <exception cref="NullPointerException"> if the lock is null </exception>
-			Protected Friend Sub New(ByVal lock As ReentrantReadWriteLock)
+			Protected Friend Sub New(  lock As ReentrantReadWriteLock)
 				sync_Renamed = lock.sync
 			End Sub
 
@@ -1119,7 +1119,7 @@ Namespace java.util.concurrent.locks
 			''' </returns>
 			''' <exception cref="InterruptedException"> if the current thread is interrupted </exception>
 			''' <exception cref="NullPointerException"> if the time unit is null </exception>
-			Public Overridable Function tryLock(ByVal timeout As Long, ByVal unit As java.util.concurrent.TimeUnit) As Boolean Implements Lock.tryLock
+			Public Overridable Function tryLock(  timeout As Long,   unit As java.util.concurrent.TimeUnit) As Boolean Implements Lock.tryLock
 				Return sync_Renamed.tryAcquireNanos(1, unit.toNanos(timeout))
 			End Function
 
@@ -1373,7 +1373,7 @@ Namespace java.util.concurrent.locks
 		''' <param name="thread"> the thread </param>
 		''' <returns> {@code true} if the given thread is queued waiting for this lock </returns>
 		''' <exception cref="NullPointerException"> if the thread is null </exception>
-		Public Function hasQueuedThread(ByVal thread_Renamed As Thread) As Boolean
+		Public Function hasQueuedThread(  thread_Renamed As Thread) As Boolean
 			Return sync.isQueued(thread_Renamed)
 		End Function
 
@@ -1422,7 +1422,7 @@ Namespace java.util.concurrent.locks
 		''' <exception cref="IllegalArgumentException"> if the given condition is
 		'''         not associated with this lock </exception>
 		''' <exception cref="NullPointerException"> if the condition is null </exception>
-		Public Overridable Function hasWaiters(ByVal condition As Condition) As Boolean
+		Public Overridable Function hasWaiters(  condition As Condition) As Boolean
 			If condition Is Nothing Then Throw New NullPointerException
 			If Not(TypeOf condition Is AbstractQueuedSynchronizer.ConditionObject) Then Throw New IllegalArgumentException("not owner")
 			Return sync.hasWaiters(CType(condition, AbstractQueuedSynchronizer.ConditionObject))
@@ -1442,7 +1442,7 @@ Namespace java.util.concurrent.locks
 		''' <exception cref="IllegalArgumentException"> if the given condition is
 		'''         not associated with this lock </exception>
 		''' <exception cref="NullPointerException"> if the condition is null </exception>
-		Public Overridable Function getWaitQueueLength(ByVal condition As Condition) As Integer
+		Public Overridable Function getWaitQueueLength(  condition As Condition) As Integer
 			If condition Is Nothing Then Throw New NullPointerException
 			If Not(TypeOf condition Is AbstractQueuedSynchronizer.ConditionObject) Then Throw New IllegalArgumentException("not owner")
 			Return sync.getWaitQueueLength(CType(condition, AbstractQueuedSynchronizer.ConditionObject))
@@ -1464,7 +1464,7 @@ Namespace java.util.concurrent.locks
 		''' <exception cref="IllegalArgumentException"> if the given condition is
 		'''         not associated with this lock </exception>
 		''' <exception cref="NullPointerException"> if the condition is null </exception>
-		Protected Friend Overridable Function getWaitingThreads(ByVal condition As Condition) As ICollection(Of Thread)
+		Protected Friend Overridable Function getWaitingThreads(  condition As Condition) As ICollection(Of Thread)
 			If condition Is Nothing Then Throw New NullPointerException
 			If Not(TypeOf condition Is AbstractQueuedSynchronizer.ConditionObject) Then Throw New IllegalArgumentException("not owner")
 			Return sync.getWaitingThreads(CType(condition, AbstractQueuedSynchronizer.ConditionObject))
@@ -1492,7 +1492,7 @@ Namespace java.util.concurrent.locks
 		''' getId() is not final, and has been known to be overridden in
 		''' ways that do not preserve unique mappings.
 		''' </summary>
-		Friend Shared Function getThreadId(ByVal thread_Renamed As Thread) As Long
+		Friend Shared Function getThreadId(  thread_Renamed As Thread) As Long
 			Return UNSAFE.getLongVolatile(thread_Renamed, TID_OFFSET)
 		End Function
 

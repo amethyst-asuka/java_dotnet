@@ -43,7 +43,7 @@ Namespace java.util.function
         ''' Performs this operation on the given argument.
         ''' </summary>
         ''' <param name="value"> the input argument </param>
-        Sub accept(ByVal value As Integer)
+        Sub accept(  value As Integer)
 
         ''' <summary>
         ''' Returns a composed {@code IntConsumer} that performs, in sequence, this
@@ -56,6 +56,6 @@ Namespace java.util.function
         ''' <returns> a composed {@code IntConsumer} that performs in sequence this
         ''' operation followed by the {@code after} operation </returns>
         ''' <exception cref="NullPointerException"> if {@code after} is null </exception>
-        Function andThen(ByVal after As IntConsumer) As IntConsumer
+        Function andThen(  after As IntConsumer) As IntConsumer
     End Interface
 End Namespace

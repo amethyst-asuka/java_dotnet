@@ -350,7 +350,7 @@ Namespace java.text
 		''' </summary>
 		''' <param name="pattern"> the pattern for this message format </param>
 		''' <exception cref="IllegalArgumentException"> if the pattern is invalid </exception>
-		Public Sub New(ByVal pattern As String)
+		Public Sub New(  pattern As String)
 			Me.locale = java.util.Locale.getDefault(java.util.Locale.Category.FORMAT)
 			applyPattern(pattern)
 		End Sub
@@ -367,7 +367,7 @@ Namespace java.text
 		''' <param name="locale"> the locale for this message format </param>
 		''' <exception cref="IllegalArgumentException"> if the pattern is invalid
 		''' @since 1.4 </exception>
-		Public Sub New(ByVal pattern As String, ByVal locale As java.util.Locale)
+		Public Sub New(  pattern As String,   locale As java.util.Locale)
 			Me.locale = locale
 			applyPattern(pattern)
 		End Sub
@@ -389,7 +389,7 @@ Namespace java.text
 		''' </summary>
 		''' <param name="locale"> the locale to be used when creating or comparing subformats </param>
 		Public Overridable Property locale As java.util.Locale
-			Set(ByVal locale As java.util.Locale)
+			Set(  locale As java.util.Locale)
 				Me.locale = locale
 			End Set
 			Get
@@ -409,7 +409,7 @@ Namespace java.text
 		''' <param name="pattern"> the pattern for this message format </param>
 		''' <exception cref="IllegalArgumentException"> if the pattern is invalid </exception>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Overridable Sub applyPattern(ByVal pattern As String) ' fallthrough in switch is expected, suppress it
+		Public Overridable Sub applyPattern(  pattern As String) ' fallthrough in switch is expected, suppress it
 				Dim segments As StringBuilder() = New StringBuilder(3){}
 				' Allocate only segments[SEG_RAW] here. The rest are
 				' allocated on demand.
@@ -576,7 +576,7 @@ Namespace java.text
 		''' <exception cref="NullPointerException"> if <code>newFormats</code> is null
 		''' @since 1.4 </exception>
 		Public Overridable Property formatsByArgumentIndex As Format()
-			Set(ByVal newFormats As Format())
+			Set(  newFormats As Format())
 				For i As Integer = 0 To maxOffset
 					Dim j As Integer = argumentNumbers(i)
 					If j < newFormats.Length Then formats(i) = newFormats(j)
@@ -617,7 +617,7 @@ Namespace java.text
 		''' <param name="newFormats"> the new formats to use </param>
 		''' <exception cref="NullPointerException"> if <code>newFormats</code> is null </exception>
 		Public Overridable Property formats As Format()
-			Set(ByVal newFormats As Format())
+			Set(  newFormats As Format())
 				Dim runsToCopy As Integer = newFormats.Length
 				If runsToCopy > maxOffset + 1 Then runsToCopy = maxOffset + 1
 				For i As Integer = 0 To runsToCopy - 1
@@ -648,7 +648,7 @@ Namespace java.text
 		''' <param name="argumentIndex"> the argument index for which to use the new format </param>
 		''' <param name="newFormat"> the new format to use
 		''' @since 1.4 </param>
-		Public Overridable Sub setFormatByArgumentIndex(ByVal argumentIndex As Integer, ByVal newFormat As Format)
+		Public Overridable Sub setFormatByArgumentIndex(  argumentIndex As Integer,   newFormat As Format)
 			For j As Integer = 0 To maxOffset
 				If argumentNumbers(j) = argumentIndex Then formats(j) = newFormat
 			Next j
@@ -670,7 +670,7 @@ Namespace java.text
 		''' <param name="newFormat"> the format to use for the specified format element </param>
 		''' <exception cref="ArrayIndexOutOfBoundsException"> if {@code formatElementIndex} is equal to or
 		'''            larger than the number of format elements in the pattern string </exception>
-		Public Overridable Sub setFormat(ByVal formatElementIndex As Integer, ByVal newFormat As Format)
+		Public Overridable Sub setFormat(  formatElementIndex As Integer,   newFormat As Format)
 			formats(formatElementIndex) = newFormat
 		End Sub
 
@@ -742,7 +742,7 @@ Namespace java.text
 		''' <exception cref="IllegalArgumentException"> if an argument in the
 		'''            <code>arguments</code> array is not of the type
 		'''            expected by the format element(s) that use it. </exception>
-		Public NotOverridable Overrides Function format(ByVal arguments As Object(), ByVal result As StringBuffer, ByVal pos As FieldPosition) As StringBuffer
+		Public NotOverridable Overrides Function format(  arguments As Object(),   result As StringBuffer,   pos As FieldPosition) As StringBuffer
 			Return subformat(arguments, result, pos, Nothing)
 		End Function
 
@@ -760,7 +760,7 @@ Namespace java.text
 		'''            or if an argument in the <code>arguments</code> array
 		'''            is not of the type expected by the format element(s)
 		'''            that use it. </exception>
-		Public Shared Function format(ByVal pattern As String, ParamArray ByVal arguments As Object()) As String
+		Public Shared Function format(  pattern As String, ParamArray   arguments As Object()) As String
 			Dim temp As New MessageFormat(pattern)
 			Return temp.format(arguments)
 		End Function
@@ -782,7 +782,7 @@ Namespace java.text
 		''' <exception cref="IllegalArgumentException"> if an argument in the
 		'''            <code>arguments</code> array is not of the type
 		'''            expected by the format element(s) that use it. </exception>
-		Public NotOverridable Overrides Function format(ByVal arguments As Object, ByVal result As StringBuffer, ByVal pos As FieldPosition) As StringBuffer
+		Public NotOverridable Overrides Function format(  arguments As Object,   result As StringBuffer,   pos As FieldPosition) As StringBuffer
 			Return subformat(CType(arguments, Object()), result, pos, Nothing)
 		End Function
 
@@ -820,7 +820,7 @@ Namespace java.text
 		'''            <code>arguments</code> array is not of the type
 		'''            expected by the format element(s) that use it.
 		''' @since 1.4 </exception>
-		Public Overrides Function formatToCharacterIterator(ByVal arguments As Object) As AttributedCharacterIterator
+		Public Overrides Function formatToCharacterIterator(  arguments As Object) As AttributedCharacterIterator
 			Dim result As New StringBuffer
 			Dim iterators As New List(Of AttributedCharacterIterator)
 
@@ -860,7 +860,7 @@ Namespace java.text
 		''' <param name="source"> the string to parse </param>
 		''' <param name="pos">    the parse position </param>
 		''' <returns> an array of parsed objects </returns>
-		Public Overridable Function parse(ByVal source As String, ByVal pos As ParsePosition) As Object()
+		Public Overridable Function parse(  source As String,   pos As ParsePosition) As Object()
 			If source Is Nothing Then
 				Dim empty As Object() = {}
 				Return empty
@@ -940,7 +940,7 @@ Namespace java.text
 		''' <returns> An <code>Object</code> array parsed from the string. </returns>
 		''' <exception cref="ParseException"> if the beginning of the specified string
 		'''            cannot be parsed. </exception>
-		Public Overridable Function parse(ByVal source As String) As Object()
+		Public Overridable Function parse(  source As String) As Object()
 			Dim pos As New ParsePosition(0)
 			Dim result As Object() = parse(source, pos)
 			If pos.index = 0 Then ' unchanged, returned object is null Throw New ParseException("MessageFormat parse error!", pos.errorIndex)
@@ -971,7 +971,7 @@ Namespace java.text
 		''' <returns> An <code>Object</code> array parsed from the string. In case of
 		'''         error, returns null. </returns>
 		''' <exception cref="NullPointerException"> if <code>pos</code> is null. </exception>
-		Public Overrides Function parseObject(ByVal source As String, ByVal pos As ParsePosition) As Object
+		Public Overrides Function parseObject(  source As String,   pos As ParsePosition) As Object
 			Return parse(source, pos)
 		End Function
 
@@ -997,7 +997,7 @@ Namespace java.text
 		''' <summary>
 		''' Equality comparison between two message format objects
 		''' </summary>
-		Public Overrides Function Equals(ByVal obj As Object) As Boolean
+		Public Overrides Function Equals(  obj As Object) As Boolean
 			If Me Is obj Then ' quick check Return True
 			If obj Is Nothing OrElse Me.GetType() IsNot obj.GetType() Then Return False
 			Dim other As MessageFormat = CType(obj, MessageFormat)
@@ -1029,7 +1029,7 @@ Namespace java.text
 			''' Creates a Field with the specified name.
 			''' </summary>
 			''' <param name="name"> Name of the attribute </param>
-			Protected Friend Sub New(ByVal name As String)
+			Protected Friend Sub New(  name As String)
 				MyBase.New(name)
 			End Sub
 
@@ -1119,7 +1119,7 @@ Namespace java.text
 		''' <exception cref="IllegalArgumentException"> if an argument in the
 		'''            <code>arguments</code> array is not of the type
 		'''            expected by the format element(s) that use it. </exception>
-		Private Function subformat(ByVal arguments As Object(), ByVal result As StringBuffer, ByVal fp As FieldPosition, ByVal characterIterators As IList(Of AttributedCharacterIterator)) As StringBuffer
+		Private Function subformat(  arguments As Object(),   result As StringBuffer,   fp As FieldPosition,   characterIterators As IList(Of AttributedCharacterIterator)) As StringBuffer
 			' note: this implementation assumes a fast substring & index.
 			' if this is not true, would be better to append chars one by one.
 			Dim lastOffset As Integer = 0
@@ -1213,7 +1213,7 @@ Namespace java.text
 		''' Convenience method to append all the characters in
 		''' <code>iterator</code> to the StringBuffer <code>result</code>.
 		''' </summary>
-		Private Sub append(ByVal result As StringBuffer, ByVal [iterator] As CharacterIterator)
+		Private Sub append(  result As StringBuffer,   [iterator] As CharacterIterator)
 			If [iterator].first() <> CharacterIterator.DONE Then
 				Dim aChar As Char
 
@@ -1260,7 +1260,7 @@ Namespace java.text
 		' Date-time style values corresponding to the date-time modifiers.
 		Private Shared ReadOnly DATE_TIME_MODIFIERS As Integer() = { DateFormat.DEFAULT, DateFormat.SHORT, DateFormat.MEDIUM, DateFormat.LONG, DateFormat.FULL }
 
-		Private Sub makeFormat(ByVal position As Integer, ByVal offsetNumber As Integer, ByVal textSegments As StringBuilder())
+		Private Sub makeFormat(  position As Integer,   offsetNumber As Integer,   textSegments As StringBuilder())
 			Dim segments As String() = New String(textSegments.Length - 1){}
 			For i As Integer = 0 To textSegments.Length - 1
 				Dim oneseg As StringBuilder = textSegments(i)
@@ -1357,7 +1357,7 @@ Namespace java.text
 			formats(offsetNumber) = newFormat
 		End Sub
 
-		Private Shared Function findKeyword(ByVal s As String, ByVal list As String()) As Integer
+		Private Shared Function findKeyword(  s As String,   list As String()) As Integer
 			For i As Integer = 0 To list.Length - 1
 				If s.Equals(list(i)) Then Return i
 			Next i
@@ -1372,7 +1372,7 @@ Namespace java.text
 			Return -1
 		End Function
 
-		Private Shared Sub copyAndFixQuotes(ByVal source As String, ByVal start As Integer, ByVal [end] As Integer, ByVal target As StringBuilder)
+		Private Shared Sub copyAndFixQuotes(  source As String,   start As Integer,   [end] As Integer,   target As StringBuilder)
 			Dim quoted As Boolean = False
 
 			For i As Integer = start To [end] - 1
@@ -1400,7 +1400,7 @@ Namespace java.text
 		''' After reading an object from the input stream, do a simple verification
 		''' to maintain class invariants. </summary>
 		''' <exception cref="InvalidObjectException"> if the objects read from the stream is invalid. </exception>
-		Private Sub readObject(ByVal [in] As java.io.ObjectInputStream)
+		Private Sub readObject(  [in] As java.io.ObjectInputStream)
 			[in].defaultReadObject()
 			Dim isValid As Boolean = maxOffset >= -1 AndAlso formats.Length > maxOffset AndAlso offsets.Length > maxOffset AndAlso argumentNumbers.Length > maxOffset
 			If isValid Then

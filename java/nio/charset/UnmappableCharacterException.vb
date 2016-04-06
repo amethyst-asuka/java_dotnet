@@ -45,7 +45,7 @@ Namespace java.nio.charset
 		''' Constructs an {@code UnmappableCharacterException} with the
 		''' given length. </summary>
 		''' <param name="inputLength"> the length of the input </param>
-		Public Sub New(ByVal inputLength As Integer)
+		Public Sub New(  inputLength As Integer)
 			Me.inputLength = inputLength
 		End Sub
 

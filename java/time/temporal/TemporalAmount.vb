@@ -111,7 +111,7 @@ Namespace java.time.temporal
 		''' <returns> the long value of the unit </returns>
 		''' <exception cref="DateTimeException"> if a value for the unit cannot be obtained </exception>
 		''' <exception cref="UnsupportedTemporalTypeException"> if the {@code unit} is not supported </exception>
-		Function [get](ByVal unit As TemporalUnit) As Long
+		Function [get](  unit As TemporalUnit) As Long
 
 		''' <summary>
 		''' Returns the list of units uniquely defining the value of this TemporalAmount.
@@ -168,7 +168,7 @@ Namespace java.time.temporal
 		''' <returns> an object of the same observable type with the addition made, not null </returns>
 		''' <exception cref="DateTimeException"> if unable to add </exception>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
-		Function addTo(ByVal temporal As Temporal) As Temporal
+		Function addTo(  temporal As Temporal) As Temporal
 
 		''' <summary>
 		''' Subtracts this object from the specified temporal object.
@@ -209,7 +209,7 @@ Namespace java.time.temporal
 		''' <returns> an object of the same observable type with the subtraction made, not null </returns>
 		''' <exception cref="DateTimeException"> if unable to subtract </exception>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
-		Function subtractFrom(ByVal temporal As Temporal) As Temporal
+		Function subtractFrom(  temporal As Temporal) As Temporal
 	End Interface
 
 End Namespace

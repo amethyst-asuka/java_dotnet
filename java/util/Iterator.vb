@@ -103,7 +103,7 @@ Namespace java.util
         ''' <param name="action"> The action to be performed for each element </param>
         ''' <exception cref="NullPointerException"> if the specified action is null
         ''' @since 1.8 </exception>
-        Sub forEachRemaining(Of T1)(ByVal action As java.util.function.Consumer(Of T1))
+        Sub forEachRemaining(Of T1)(  action As java.util.function.Consumer(Of T1))
     End Interface
 
 End Namespace

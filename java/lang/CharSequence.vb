@@ -75,7 +75,7 @@ Namespace java.lang
         ''' <exception cref="IndexOutOfBoundsException">
         '''          if the <tt>index</tt> argument is negative or not less than
         '''          <tt>length()</tt> </exception>
-        Function charAt(ByVal index As Integer) As Char
+        Function charAt(  index As Integer) As Char
 
         ''' <summary>
         ''' Returns a <code>CharSequence</code> that is a subsequence of this sequence.
@@ -94,7 +94,7 @@ Namespace java.lang
         '''          if <tt>start</tt> or <tt>end</tt> are negative,
         '''          if <tt>end</tt> is greater than <tt>length()</tt>,
         '''          or if <tt>start</tt> is greater than <tt>end</tt> </exception>
-        Function subSequence(ByVal start As Integer, ByVal [end] As Integer) As CharSequence
+        Function subSequence(  start As Integer,   [end] As Integer) As CharSequence
 
         ''' <summary>
         ''' Returns a string containing the characters in this sequence in the same

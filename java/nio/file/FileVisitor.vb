@@ -113,7 +113,7 @@ Namespace java.nio.file
 		''' </returns>
 		''' <exception cref="IOException">
 		'''          if an I/O error occurs </exception>
-		Function preVisitDirectory(ByVal dir As T, ByVal attrs As java.nio.file.attribute.BasicFileAttributes) As FileVisitResult
+		Function preVisitDirectory(  dir As T,   attrs As java.nio.file.attribute.BasicFileAttributes) As FileVisitResult
 
 		''' <summary>
 		''' Invoked for a file in a directory.
@@ -127,7 +127,7 @@ Namespace java.nio.file
 		''' </returns>
 		''' <exception cref="IOException">
 		'''          if an I/O error occurs </exception>
-		Function visitFile(ByVal file As T, ByVal attrs As java.nio.file.attribute.BasicFileAttributes) As FileVisitResult
+		Function visitFile(  file As T,   attrs As java.nio.file.attribute.BasicFileAttributes) As FileVisitResult
 
 		''' <summary>
 		''' Invoked for a file that could not be visited. This method is invoked
@@ -143,7 +143,7 @@ Namespace java.nio.file
 		''' </returns>
 		''' <exception cref="IOException">
 		'''          if an I/O error occurs </exception>
-		Function visitFileFailed(ByVal file As T, ByVal exc As java.io.IOException) As FileVisitResult
+		Function visitFileFailed(  file As T,   exc As java.io.IOException) As FileVisitResult
 
 		''' <summary>
 		''' Invoked for a directory after entries in the directory, and all of their
@@ -163,7 +163,7 @@ Namespace java.nio.file
 		''' </returns>
 		''' <exception cref="IOException">
 		'''          if an I/O error occurs </exception>
-		Function postVisitDirectory(ByVal dir As T, ByVal exc As java.io.IOException) As FileVisitResult
+		Function postVisitDirectory(  dir As T,   exc As java.io.IOException) As FileVisitResult
 	End Interface
 
 End Namespace

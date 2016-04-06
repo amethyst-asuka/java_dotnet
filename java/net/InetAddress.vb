@@ -195,14 +195,14 @@ Namespace java.net
             Friend Sub New()
             End Sub
 
-            Friend Sub New(ByVal hostName As String, ByVal address As Integer, ByVal family As Integer)
+            Friend Sub New(  hostName As String,   address As Integer,   family As Integer)
                 Me.originalHostName = hostName
                 Me.hostName = hostName
                 Me.address = address
                 Me.family = family
             End Sub
 
-            Friend Overridable Sub init(ByVal hostName As String, ByVal family As Integer)
+            Friend Overridable Sub init(  hostName As String,   family As Integer)
                 Me.originalHostName = hostName
                 Me.hostName = hostName
                 If family <> -1 Then Me._family = family
@@ -473,7 +473,7 @@ Namespace java.net
         ''' <exception cref="IOException"> if a network error occurs </exception>
         ''' <exception cref="IllegalArgumentException"> if {@code timeout} is negative.
         ''' @since 1.5 </exception>
-        Public Overridable Function isReachable(ByVal timeout As Integer) As Boolean
+        Public Overridable Function isReachable(  timeout As Integer) As Boolean
             Return isReachable(Nothing, 0, timeout)
         End Function
 
@@ -507,7 +507,7 @@ Namespace java.net
         ''' <returns> a {@code boolean}indicating if the address is reachable. </returns>
         ''' <exception cref="IOException"> if a network error occurs
         ''' @since 1.5 </exception>
-        Public Overridable Function isReachable(ByVal netif As NetworkInterface, ByVal ttl As Integer, ByVal timeout As Integer) As Boolean
+        Public Overridable Function isReachable(  netif As NetworkInterface,   ttl As Integer,   timeout As Integer) As Boolean
             If ttl < 0 Then Throw New IllegalArgumentException("ttl can't be negative")
             If timeout < 0 Then Throw New IllegalArgumentException("timeout can't be negative")
 
@@ -566,7 +566,7 @@ Namespace java.net
         ''' <param name="check"> make security check if true
         ''' </param>
         ''' <seealso cref= SecurityManager#checkConnect </seealso>
-        Friend Overridable Function getHostName(ByVal check As Boolean) As String
+        Friend Overridable Function getHostName(  check As Boolean) As String
             If holder().hostName Is Nothing Then holder().hostName = InetAddress.getHostFromNameService(Me, check)
             Return holder().hostName
         End Function
@@ -616,7 +616,7 @@ Namespace java.net
         ''' <param name="check"> make security check if true
         ''' </param>
         ''' <seealso cref= SecurityManager#checkConnect </seealso>
-        Private Shared Function getHostFromNameService(ByVal addr As InetAddress, ByVal check As Boolean) As String
+        Private Shared Function getHostFromNameService(  addr As InetAddress,   check As Boolean) As String
             Dim host As String = Nothing
             For Each nameService As NameService In nameServices
                 Try
@@ -713,7 +713,7 @@ Namespace java.net
         ''' <returns>  {@code true} if the objects are the same;
         '''          {@code false} otherwise. </returns>
         ''' <seealso cref=     java.net.InetAddress#getAddress() </seealso>
-        Public Overrides Function Equals(ByVal obj As Object) As Boolean
+        Public Overrides Function Equals(  obj As Object) As Boolean
             Return False
         End Function
 
@@ -751,7 +751,7 @@ Namespace java.net
         ''' </summary>
         Friend NotInheritable Class CacheEntry
 
-            Friend Sub New(ByVal addresses As InetAddress(), ByVal expiration As Long)
+            Friend Sub New(  addresses As InetAddress(),   expiration As Long)
                 Me.addresses = addresses
                 Me.expiration = expiration
             End Sub
@@ -776,7 +776,7 @@ Namespace java.net
             ''' <summary>
             ''' Create cache
             ''' </summary>
-            Public Sub New(ByVal type As Type)
+            Public Sub New(  type As Type)
                 Me.type_Renamed = type
                 cache_Renamed = New java.util.LinkedHashMap(Of String, CacheEntry)
             End Sub
@@ -796,7 +796,7 @@ Namespace java.net
             ''' entry then for this host then the entry will be
             ''' replaced.
             ''' </summary>
-            Public Function put(ByVal host As String, ByVal addresses As InetAddress()) As Cache
+            Public Function put(  host As String,   addresses As InetAddress()) As Cache
                 Dim policy_Renamed As Integer = policy
                 If policy_Renamed = sun.net.InetAddressCachePolicy.NEVER Then Return Me
 
@@ -842,7 +842,7 @@ Namespace java.net
             ''' Query the cache for the specific host. If found then
             ''' return its CacheEntry, or null if not found.
             ''' </summary>
-            Public Function [get](ByVal host As String) As CacheEntry
+            Public Function [get](  host As String) As CacheEntry
                 Dim policy_Renamed As Integer = policy
                 If policy_Renamed = sun.net.InetAddressCachePolicy.NEVER Then Return Nothing
                 Dim entry As CacheEntry = cache_Renamed(host)
@@ -877,7 +877,7 @@ Namespace java.net
         '    
         '     * Cache the given hostname and addresses.
         '     
-        Private Shared Sub cacheAddresses(ByVal hostname As String, ByVal addresses As InetAddress(), ByVal success As Boolean)
+        Private Shared Sub cacheAddresses(  hostname As String,   addresses As InetAddress(),   success As Boolean)
             hostname = hostname.ToLower()
             SyncLock addressCache
                 cacheInitIfNeeded()
@@ -893,7 +893,7 @@ Namespace java.net
         '     * Lookup hostname in cache (positive & negative cache). If
         '     * found return addresses, null if not found.
         '     
-        Private Shared Function getCachedAddresses(ByVal hostname As String) As InetAddress()
+        Private Shared Function getCachedAddresses(  hostname As String) As InetAddress()
             hostname = hostname.ToLower()
 
             ' search both positive & negative caches
@@ -911,7 +911,7 @@ Namespace java.net
             Return Nothing
         End Function
 
-        Private Shared Function createNSProvider(ByVal provider As String) As NameService
+        Private Shared Function createNSProvider(  provider As String) As NameService
             If provider Is Nothing Then Return Nothing
 
             Dim nameService As NameService = Nothing
@@ -984,7 +984,7 @@ Namespace java.net
         ''' <returns>  an InetAddress object created from the raw IP address. </returns>
         ''' <exception cref="UnknownHostException">  if IP address is of illegal length
         ''' @since 1.4 </exception>
-        Public Shared Function getByAddress(ByVal host As String, ByVal addr As SByte()) As InetAddress
+        Public Shared Function getByAddress(  host As String,   addr As SByte()) As InetAddress
             If host IsNot Nothing AndAlso host.Length() > 0 AndAlso host.Chars(0) = "["c Then
                 If host.Chars(host.Length() - 1) = "]"c Then host = host.Substring(1, host.Length() - 1 - 1)
             End If
@@ -1031,12 +1031,12 @@ Namespace java.net
         '''               for a global IPv6 address. </exception>
         ''' <exception cref="SecurityException"> if a security manager exists
         '''             and its checkConnect method doesn't allow the operation </exception>
-        Public Shared Function getByName(ByVal host As String) As InetAddress
+        Public Shared Function getByName(  host As String) As InetAddress
             Return InetAddress.getAllByName(host)(0)
         End Function
 
         ' called from deployment cache manager
-        Private Shared Function getByName(ByVal host As String, ByVal reqAddr As InetAddress) As InetAddress
+        Private Shared Function getByName(  host As String,   reqAddr As InetAddress) As InetAddress
             Return InetAddress.getAllByName(host, reqAddr)(0)
         End Function
 
@@ -1078,11 +1078,11 @@ Namespace java.net
         '''               {@code checkConnect} method doesn't allow the operation.
         ''' </exception>
         ''' <seealso cref= SecurityManager#checkConnect </seealso>
-        Public Shared Function getAllByName(ByVal host As String) As InetAddress()
+        Public Shared Function getAllByName(  host As String) As InetAddress()
             Return getAllByName(host, Nothing)
         End Function
 
-        Private Shared Function getAllByName(ByVal host As String, ByVal reqAddr As InetAddress) As InetAddress()
+        Private Shared Function getAllByName(  host As String,   reqAddr As InetAddress) As InetAddress()
 
             If host Is Nothing OrElse host.Length() = 0 Then
                 Dim ret As InetAddress() = New InetAddress(0) {}
@@ -1168,7 +1168,7 @@ Namespace java.net
         ''' %nn may also be a string that represents the displayName of
         ''' a currently available NetworkInterface.
         ''' </summary>
-        Private Shared Function checkNumericZone(ByVal s As String) As Integer
+        Private Shared Function checkNumericZone(  s As String) As Integer
             Dim percent As Integer = s.IndexOf("%"c)
             Dim slen As Integer = s.Length()
             Dim digit As Integer, zone As Integer = 0
@@ -1186,18 +1186,18 @@ Namespace java.net
             Return zone
         End Function
 
-        Private Shared Function getAllByName0(ByVal host As String) As InetAddress()
+        Private Shared Function getAllByName0(  host As String) As InetAddress()
             Return getAllByName0(host, True)
         End Function
 
         ''' <summary>
         ''' package private so SocketPermission can call it
         ''' </summary>
-        Shared Function getAllByName0(ByVal host As String, ByVal check As Boolean) As InetAddress()
+        Shared Function getAllByName0(  host As String,   check As Boolean) As InetAddress()
             Return getAllByName0(host, Nothing, check)
         End Function
 
-        Private Shared Function getAllByName0(ByVal host As String, ByVal reqAddr As InetAddress, ByVal check As Boolean) As InetAddress()
+        Private Shared Function getAllByName0(  host As String,   reqAddr As InetAddress,   check As Boolean) As InetAddress()
 
             ' If it gets here it is presumed to be a hostname 
             ' Cache.get can return: null, unknownAddress, or InetAddress[] 
@@ -1220,7 +1220,7 @@ Namespace java.net
             Return addresses.Clone()
         End Function
 
-        Private Shared Function getAddressesFromNameService(ByVal host As String, ByVal reqAddr As InetAddress) As InetAddress()
+        Private Shared Function getAddressesFromNameService(  host As String,   reqAddr As InetAddress) As InetAddress()
             Dim addresses As InetAddress() = Nothing
             Dim success As Boolean = False
             Dim ex As UnknownHostException = Nothing
@@ -1309,7 +1309,7 @@ Namespace java.net
         End Function
 
 
-        Private Shared Function checkLookupTable(ByVal host As String) As InetAddress()
+        Private Shared Function checkLookupTable(  host As String) As InetAddress()
             SyncLock lookupTable
                 ' If the host isn't in the lookupTable, add it in the
                 ' lookuptable and return null. The caller should do
@@ -1345,7 +1345,7 @@ Namespace java.net
             Return addresses
         End Function
 
-        Private Shared Sub updateLookupTable(ByVal host As String)
+        Private Shared Sub updateLookupTable(  host As String)
             SyncLock lookupTable
                 lookupTable.Remove(host)
                 lookupTable.notifyAll()
@@ -1367,7 +1367,7 @@ Namespace java.net
         ''' <returns>  an InetAddress object created from the raw IP address. </returns>
         ''' <exception cref="UnknownHostException">  if IP address is of illegal length
         ''' @since 1.4 </exception>
-        Public Shared Function getByAddress(ByVal addr As SByte()) As InetAddress
+        Public Shared Function getByAddress(  addr As SByte()) As InetAddress
             Return getByAddress(Nothing, addr)
         End Function
 
@@ -1464,7 +1464,7 @@ Namespace java.net
         '    
         '     * Load and instantiate an underlying impl class
         '     
-        Friend Shared Function loadImpl(ByVal implName As String) As InetAddressImpl
+        Friend Shared Function loadImpl(  implName As String) As InetAddressImpl
             Dim impl As Object = Nothing
 
             '        
@@ -1496,7 +1496,7 @@ Namespace java.net
             Return CType(impl, InetAddressImpl)
         End Function
 
-        Private Sub readObjectNoData(ByVal s As java.io.ObjectInputStream)
+        Private Sub readObjectNoData(  s As java.io.ObjectInputStream)
             If Me.GetType().classLoader IsNot Nothing Then Throw New SecurityException("invalid address type")
         End Sub
 
@@ -1504,7 +1504,7 @@ Namespace java.net
         Private Shared ReadOnly UNSAFE As sun.misc.Unsafe
 
 
-        Private Sub readObject(ByVal s As java.io.ObjectInputStream)
+        Private Sub readObject(  s As java.io.ObjectInputStream)
             If Me.GetType().classLoader IsNot Nothing Then Throw New SecurityException("invalid address type")
             Dim gf As java.io.ObjectInputStream.GetField = s.readFields()
             Dim host As String = CStr(gf.get("hostName", Nothing))
@@ -1523,7 +1523,7 @@ Namespace java.net
         ''' </summary>
         Private Shared ReadOnly serialPersistentFields As java.io.ObjectStreamField() = {New java.io.ObjectStreamField("hostName", GetType(String)), New java.io.ObjectStreamField("address", GetType(Integer)), New java.io.ObjectStreamField("family", GetType(Integer))}
 
-        Private Sub writeObject(ByVal s As java.io.ObjectOutputStream)
+        Private Sub writeObject(  s As java.io.ObjectOutputStream)
             If Me.GetType().classLoader IsNot Nothing Then Throw New SecurityException("invalid address type")
             Dim pf As java.io.ObjectOutputStream.PutField = s.putFields()
             pf.put("hostName", holder().hostName)

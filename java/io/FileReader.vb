@@ -53,7 +53,7 @@ Namespace java.io
 	   '''                   is a directory rather than a regular file,
 	   '''                   or for some other reason cannot be opened for
 	   '''                   reading. </exception>
-		Public Sub New(ByVal fileName As String)
+		Public Sub New(  fileName As String)
 			MyBase.New(New FileInputStream(fileName))
 		End Sub
 
@@ -66,7 +66,7 @@ Namespace java.io
 	   '''                   is a directory rather than a regular file,
 	   '''                   or for some other reason cannot be opened for
 	   '''                   reading. </exception>
-		Public Sub New(ByVal file_Renamed As File)
+		Public Sub New(  file_Renamed As File)
 			MyBase.New(New FileInputStream(file_Renamed))
 		End Sub
 
@@ -75,7 +75,7 @@ Namespace java.io
 	   ''' <tt>FileDescriptor</tt> to read from.
 	   ''' </summary>
 	   ''' <param name="fd"> the FileDescriptor to read from </param>
-		Public Sub New(ByVal fd As FileDescriptor)
+		Public Sub New(  fd As FileDescriptor)
 			MyBase.New(New FileInputStream(fd))
 		End Sub
 

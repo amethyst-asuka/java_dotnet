@@ -90,7 +90,7 @@ Namespace java.net
 		''' <param name="sa"> the {@code SocketAddress} for that proxy </param>
 		''' <exception cref="IllegalArgumentException"> when the type and the address are
 		''' incompatible </exception>
-		Public Sub New(ByVal type As Type, ByVal sa As SocketAddress)
+		Public Sub New(  type As Type,   sa As SocketAddress)
 			If (type = Type.DIRECT) OrElse Not(TypeOf sa Is InetSocketAddress) Then Throw New IllegalArgumentException("type " & type & " is not compatible with address " & sa)
 			Me.type_Renamed = type
 			Me.sa = sa
@@ -139,7 +139,7 @@ Namespace java.net
 			''' <returns>  {@code true} if the objects are the same;
 			'''          {@code false} otherwise. </returns>
 			''' <seealso cref= java.net.InetSocketAddress#equals(java.lang.Object) </seealso>
-		Public NotOverridable Overrides Function Equals(ByVal obj As Object) As Boolean
+		Public NotOverridable Overrides Function Equals(  obj As Object) As Boolean
 			If obj Is Nothing OrElse Not(TypeOf obj Is Proxy) Then Return False
 			Dim p As Proxy = CType(obj, Proxy)
 			If p.type() = type() Then

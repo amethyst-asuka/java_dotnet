@@ -54,7 +54,7 @@ Namespace java.awt.peer
 		''' <param name="index"> the index where to add the item into the list
 		''' </param>
 		''' <seealso cref= List#add(String, int) </seealso>
-		Sub add(ByVal item As String, ByVal index As Integer)
+		Sub add(  item As String,   index As Integer)
 
 		''' <summary>
 		''' Deletes items from the list. All items from start to end should are
@@ -62,7 +62,7 @@ Namespace java.awt.peer
 		''' </summary>
 		''' <param name="start"> the first item to be deleted </param>
 		''' <param name="end"> the last item to be deleted </param>
-		Sub delItems(ByVal start As Integer, ByVal [end] As Integer)
+		Sub delItems(  start As Integer,   [end] As Integer)
 
 		''' <summary>
 		''' Removes all items from the list.
@@ -76,7 +76,7 @@ Namespace java.awt.peer
 		''' <param name="index"> the index of the item to select
 		''' </param>
 		''' <seealso cref= List#select(int) </seealso>
-		Sub [select](ByVal index As Integer)
+		Sub [select](  index As Integer)
 
 		''' <summary>
 		''' De-selects the item at the specified {@code index}.
@@ -84,7 +84,7 @@ Namespace java.awt.peer
 		''' <param name="index"> the index of the item to de-select
 		''' </param>
 		''' <seealso cref= List#deselect(int) </seealso>
-		Sub deselect(ByVal index As Integer)
+		Sub deselect(  index As Integer)
 
 		''' <summary>
 		''' Makes sure that the item at the specified {@code index} is visible,
@@ -93,7 +93,7 @@ Namespace java.awt.peer
 		''' <param name="index"> the index of the item to make visible
 		''' </param>
 		''' <seealso cref= List#makeVisible(int) </seealso>
-		Sub makeVisible(ByVal index As Integer)
+		Sub makeVisible(  index As Integer)
 
 		''' <summary>
 		''' Toggles multiple selection mode on or off.
@@ -112,7 +112,7 @@ Namespace java.awt.peer
 		''' <returns> the preferred size of the list
 		''' </returns>
 		''' <seealso cref= List#getPreferredSize(int) </seealso>
-		Function getPreferredSize(ByVal rows As Integer) As java.awt.Dimension
+		Function getPreferredSize(  rows As Integer) As java.awt.Dimension
 
 		''' <summary>
 		''' Returns the minimum size for a list with the specified number of rows.
@@ -122,7 +122,7 @@ Namespace java.awt.peer
 		''' <returns> the minimum size of the list
 		''' </returns>
 		''' <seealso cref= List#getMinimumSize(int) </seealso>
-		Function getMinimumSize(ByVal rows As Integer) As java.awt.Dimension
+		Function getMinimumSize(  rows As Integer) As java.awt.Dimension
 
 	End Interface
 

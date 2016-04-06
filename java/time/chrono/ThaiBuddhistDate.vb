@@ -121,7 +121,7 @@ Namespace java.time.chrono
 		''' </summary>
 		''' <param name="zone">  the zone ID to use, not null </param>
 		''' <returns> the current date using the system clock, not null </returns>
-		Public Shared Function now(ByVal zone As java.time.ZoneId) As ThaiBuddhistDate
+		Public Shared Function now(  zone As java.time.ZoneId) As ThaiBuddhistDate
 			Return now(java.time.Clock.system(zone))
 		End Function
 
@@ -135,7 +135,7 @@ Namespace java.time.chrono
 		''' <param name="clock">  the clock to use, not null </param>
 		''' <returns> the current date, not null </returns>
 		''' <exception cref="DateTimeException"> if the current date cannot be obtained </exception>
-		Public Shared Function now(ByVal clock_Renamed As java.time.Clock) As ThaiBuddhistDate
+		Public Shared Function now(  clock_Renamed As java.time.Clock) As ThaiBuddhistDate
 			Return New ThaiBuddhistDate(java.time.LocalDate.now(clock_Renamed))
 		End Function
 
@@ -152,7 +152,7 @@ Namespace java.time.chrono
 		''' <returns> the date in Thai Buddhist calendar system, not null </returns>
 		''' <exception cref="DateTimeException"> if the value of any field is out of range,
 		'''  or if the day-of-month is invalid for the month-year </exception>
-		Public Shared Function [of](ByVal prolepticYear As Integer, ByVal month As Integer, ByVal dayOfMonth As Integer) As ThaiBuddhistDate
+		Public Shared Function [of](  prolepticYear As Integer,   month As Integer,   dayOfMonth As Integer) As ThaiBuddhistDate
 			Return New ThaiBuddhistDate(java.time.LocalDate.of(prolepticYear - YEARS_DIFFERENCE, month, dayOfMonth))
 		End Function
 
@@ -172,7 +172,7 @@ Namespace java.time.chrono
 		''' <param name="temporal">  the temporal object to convert, not null </param>
 		''' <returns> the date in Thai Buddhist calendar system, not null </returns>
 		''' <exception cref="DateTimeException"> if unable to convert to a {@code ThaiBuddhistDate} </exception>
-		Public Shared Function [from](ByVal temporal As java.time.temporal.TemporalAccessor) As ThaiBuddhistDate
+		Public Shared Function [from](  temporal As java.time.temporal.TemporalAccessor) As ThaiBuddhistDate
 			Return ThaiBuddhistChronology.INSTANCE.date(temporal)
 		End Function
 
@@ -181,7 +181,7 @@ Namespace java.time.chrono
 		''' Creates an instance from an ISO date.
 		''' </summary>
 		''' <param name="isoDate">  the standard local date, validated not null </param>
-		Friend Sub New(ByVal isoDate As java.time.LocalDate)
+		Friend Sub New(  isoDate As java.time.LocalDate)
 			java.util.Objects.requireNonNull(isoDate, "isoDate")
 			Me.isoDate = isoDate
 		End Sub
@@ -225,7 +225,7 @@ Namespace java.time.chrono
 		End Function
 
 		'-----------------------------------------------------------------------
-		Public Overrides Function range(ByVal field As java.time.temporal.TemporalField) As java.time.temporal.ValueRange
+		Public Overrides Function range(  field As java.time.temporal.TemporalField) As java.time.temporal.ValueRange
 			If TypeOf field Is java.time.temporal.ChronoField Then
 				If isSupported(field) Then
 					Dim f As java.time.temporal.ChronoField = CType(field, java.time.temporal.ChronoField)
@@ -244,7 +244,7 @@ Namespace java.time.chrono
 			Return field.rangeRefinedBy(Me)
 		End Function
 
-		Public Overrides Function getLong(ByVal field As java.time.temporal.TemporalField) As Long
+		Public Overrides Function getLong(  field As java.time.temporal.TemporalField) As Long
 			If TypeOf field Is java.time.temporal.ChronoField Then
 				Select Case CType(field, java.time.temporal.ChronoField)
 					Case PROLEPTIC_MONTH
@@ -275,7 +275,7 @@ Namespace java.time.chrono
 		End Property
 
 		'-----------------------------------------------------------------------
-		Public Overrides Function [with](ByVal field As java.time.temporal.TemporalField, ByVal newValue As Long) As ThaiBuddhistDate
+		Public Overrides Function [with](  field As java.time.temporal.TemporalField,   newValue As Long) As ThaiBuddhistDate
 			If TypeOf field Is java.time.temporal.ChronoField Then
 				Dim f As java.time.temporal.ChronoField = CType(field, java.time.temporal.ChronoField)
 				If getLong(f) = newValue Then Return Me
@@ -303,7 +303,7 @@ Namespace java.time.chrono
 		''' {@inheritDoc} </summary>
 		''' <exception cref="DateTimeException"> {@inheritDoc} </exception>
 		''' <exception cref="ArithmeticException"> {@inheritDoc} </exception>
-		Public Overrides Function [with](ByVal adjuster As java.time.temporal.TemporalAdjuster) As ThaiBuddhistDate
+		Public Overrides Function [with](  adjuster As java.time.temporal.TemporalAdjuster) As ThaiBuddhistDate
 			Return MyBase.with(adjuster)
 		End Function
 
@@ -311,7 +311,7 @@ Namespace java.time.chrono
 		''' {@inheritDoc} </summary>
 		''' <exception cref="DateTimeException"> {@inheritDoc} </exception>
 		''' <exception cref="ArithmeticException"> {@inheritDoc} </exception>
-		Public Overrides Function plus(ByVal amount As java.time.temporal.TemporalAmount) As ThaiBuddhistDate
+		Public Overrides Function plus(  amount As java.time.temporal.TemporalAmount) As ThaiBuddhistDate
 			Return MyBase.plus(amount)
 		End Function
 
@@ -319,61 +319,61 @@ Namespace java.time.chrono
 		''' {@inheritDoc} </summary>
 		''' <exception cref="DateTimeException"> {@inheritDoc} </exception>
 		''' <exception cref="ArithmeticException"> {@inheritDoc} </exception>
-		Public Overrides Function minus(ByVal amount As java.time.temporal.TemporalAmount) As ThaiBuddhistDate
+		Public Overrides Function minus(  amount As java.time.temporal.TemporalAmount) As ThaiBuddhistDate
 			Return MyBase.minus(amount)
 		End Function
 
 		'-----------------------------------------------------------------------
-		Friend Overrides Function plusYears(ByVal years As Long) As ThaiBuddhistDate
+		Friend Overrides Function plusYears(  years As Long) As ThaiBuddhistDate
 			Return [with](isoDate.plusYears(years))
 		End Function
 
-		Friend Overrides Function plusMonths(ByVal months As Long) As ThaiBuddhistDate
+		Friend Overrides Function plusMonths(  months As Long) As ThaiBuddhistDate
 			Return [with](isoDate.plusMonths(months))
 		End Function
 
-		Friend Overrides Function plusWeeks(ByVal weeksToAdd As Long) As ThaiBuddhistDate
+		Friend Overrides Function plusWeeks(  weeksToAdd As Long) As ThaiBuddhistDate
 			Return MyBase.plusWeeks(weeksToAdd)
 		End Function
 
-		Friend Overrides Function plusDays(ByVal days As Long) As ThaiBuddhistDate
+		Friend Overrides Function plusDays(  days As Long) As ThaiBuddhistDate
 			Return [with](isoDate.plusDays(days))
 		End Function
 
-		Public Overrides Function plus(ByVal amountToAdd As Long, ByVal unit As java.time.temporal.TemporalUnit) As ThaiBuddhistDate
+		Public Overrides Function plus(  amountToAdd As Long,   unit As java.time.temporal.TemporalUnit) As ThaiBuddhistDate
 			Return MyBase.plus(amountToAdd, unit)
 		End Function
 
-		Public Overrides Function minus(ByVal amountToAdd As Long, ByVal unit As java.time.temporal.TemporalUnit) As ThaiBuddhistDate
+		Public Overrides Function minus(  amountToAdd As Long,   unit As java.time.temporal.TemporalUnit) As ThaiBuddhistDate
 			Return MyBase.minus(amountToAdd, unit)
 		End Function
 
-		Friend Overrides Function minusYears(ByVal yearsToSubtract As Long) As ThaiBuddhistDate
+		Friend Overrides Function minusYears(  yearsToSubtract As Long) As ThaiBuddhistDate
 			Return MyBase.minusYears(yearsToSubtract)
 		End Function
 
-		Friend Overrides Function minusMonths(ByVal monthsToSubtract As Long) As ThaiBuddhistDate
+		Friend Overrides Function minusMonths(  monthsToSubtract As Long) As ThaiBuddhistDate
 			Return MyBase.minusMonths(monthsToSubtract)
 		End Function
 
-		Friend Overrides Function minusWeeks(ByVal weeksToSubtract As Long) As ThaiBuddhistDate
+		Friend Overrides Function minusWeeks(  weeksToSubtract As Long) As ThaiBuddhistDate
 			Return MyBase.minusWeeks(weeksToSubtract)
 		End Function
 
-		Friend Overrides Function minusDays(ByVal daysToSubtract As Long) As ThaiBuddhistDate
+		Friend Overrides Function minusDays(  daysToSubtract As Long) As ThaiBuddhistDate
 			Return MyBase.minusDays(daysToSubtract)
 		End Function
 
-		Private Function [with](ByVal newDate As java.time.LocalDate) As ThaiBuddhistDate
+		Private Function [with](  newDate As java.time.LocalDate) As ThaiBuddhistDate
 			[Return] (If(newDate.Equals(isoDate), Me, New ThaiBuddhistDate(newDate)))
 		End Function
 
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Overrides Function atTime(ByVal localTime_Renamed As java.time.LocalTime) As ChronoLocalDateTime(Of ThaiBuddhistDate) Implements ChronoLocalDate.atTime ' for javadoc and covariant return type
+		Public Overrides Function atTime(  localTime_Renamed As java.time.LocalTime) As ChronoLocalDateTime(Of ThaiBuddhistDate) Implements ChronoLocalDate.atTime ' for javadoc and covariant return type
 			Return CType(MyBase.atTime(localTime_Renamed), ChronoLocalDateTime(Of ThaiBuddhistDate))
 		End Function
 
-		Public Overrides Function [until](ByVal endDate As ChronoLocalDate) As ChronoPeriod Implements ChronoLocalDate.until
+		Public Overrides Function [until](  endDate As ChronoLocalDate) As ChronoPeriod Implements ChronoLocalDate.until
 			Dim period_Renamed As java.time.Period = isoDate.until(endDate)
 			Return chronology.period(period_Renamed.years, period_Renamed.months, period_Renamed.days)
 		End Function
@@ -394,7 +394,7 @@ Namespace java.time.chrono
 		''' </summary>
 		''' <param name="obj">  the object to check, null returns false </param>
 		''' <returns> true if this is equal to the other date </returns>
-		Public Overrides Function Equals(ByVal obj As Object) As Boolean ' override for performance
+		Public Overrides Function Equals(  obj As Object) As Boolean ' override for performance
 			If Me Is obj Then Return True
 			If TypeOf obj Is ThaiBuddhistDate Then
 				Dim otherDate As ThaiBuddhistDate = CType(obj, ThaiBuddhistDate)
@@ -417,7 +417,7 @@ Namespace java.time.chrono
 		''' </summary>
 		''' <param name="s"> the stream to read </param>
 		''' <exception cref="InvalidObjectException"> always </exception>
-		Private Sub readObject(ByVal s As java.io.ObjectInputStream)
+		Private Sub readObject(  s As java.io.ObjectInputStream)
 			Throw New java.io.InvalidObjectException("Deserialization via serialization delegate")
 		End Sub
 
@@ -437,14 +437,14 @@ Namespace java.time.chrono
 			Return New Ser(Ser.THAIBUDDHIST_DATE_TYPE, Me)
 		End Function
 
-		Friend Sub writeExternal(ByVal out As java.io.DataOutput)
+		Friend Sub writeExternal(  out As java.io.DataOutput)
 			' ThaiBuddhistChronology is implicit in the THAIBUDDHIST_DATE_TYPE
 			out.writeInt(Me.get(YEAR))
 			out.writeByte(Me.get(MONTH_OF_YEAR))
 			out.writeByte(Me.get(DAY_OF_MONTH))
 		End Sub
 
-		Shared Function readExternal(ByVal [in] As java.io.DataInput) As ThaiBuddhistDate
+		Shared Function readExternal(  [in] As java.io.DataInput) As ThaiBuddhistDate
 			Dim year_Renamed As Integer = [in].readInt()
 			Dim month As Integer = [in].readByte()
 			Dim dayOfMonth As Integer = [in].readByte()

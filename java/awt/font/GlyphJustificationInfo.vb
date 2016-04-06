@@ -98,7 +98,7 @@ Namespace java.awt.font
 		''' glyph can shrink.  Must be non-negative. </param>
 		''' <param name="shrinkRightLimit"> the maximum amount by which the right side
 		''' of this glyph can shrink.  Must be non-negative. </param>
-		 Public Sub New(ByVal weight As Single, ByVal growAbsorb As Boolean, ByVal growPriority As Integer, ByVal growLeftLimit As Single, ByVal growRightLimit As Single, ByVal shrinkAbsorb As Boolean, ByVal shrinkPriority As Integer, ByVal shrinkLeftLimit As Single, ByVal shrinkRightLimit As Single)
+		 Public Sub New(  weight As Single,   growAbsorb As Boolean,   growPriority As Integer,   growLeftLimit As Single,   growRightLimit As Single,   shrinkAbsorb As Boolean,   shrinkPriority As Integer,   shrinkLeftLimit As Single,   shrinkRightLimit As Single)
 			If weight < 0 Then Throw New IllegalArgumentException("weight is negative")
 
 			If Not priorityIsValid(growPriority) Then Throw New IllegalArgumentException("Invalid grow priority")
@@ -120,7 +120,7 @@ Namespace java.awt.font
 			Me.shrinkRightLimit = shrinkRightLimit
 		 End Sub
 
-		Private Shared Function priorityIsValid(ByVal priority As Integer) As Boolean
+		Private Shared Function priorityIsValid(  priority As Integer) As Boolean
 
 			Return priority >= PRIORITY_KASHIDA AndAlso priority <= PRIORITY_NONE
 		End Function

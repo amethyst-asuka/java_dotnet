@@ -205,7 +205,7 @@ Namespace java.awt.image
 		'''         <code>location.x + w</code> or
 		'''         <code>location.y + h</code> results in integer
 		'''         overflow </exception>
-		Public Shared Function createInterleavedRaster(ByVal dataType As Integer, ByVal w As Integer, ByVal h As Integer, ByVal bands As Integer, ByVal location As java.awt.Point) As WritableRaster
+		Public Shared Function createInterleavedRaster(  dataType As Integer,   w As Integer,   h As Integer,   bands As Integer,   location As java.awt.Point) As WritableRaster
 			Dim bandOffsets As Integer() = New Integer(bands - 1){}
 			For i As Integer = 0 To bands - 1
 				bandOffsets(i) = i

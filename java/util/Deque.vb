@@ -208,7 +208,7 @@ Namespace java.util
 		'''         deque does not permit null elements </exception>
 		''' <exception cref="IllegalArgumentException"> if some property of the specified
 		'''         element prevents it from being added to this deque </exception>
-		Sub addFirst(ByVal e As E)
+		Sub addFirst(  e As E)
 
 		''' <summary>
 		''' Inserts the specified element at the end of this deque if it is
@@ -228,7 +228,7 @@ Namespace java.util
 		'''         deque does not permit null elements </exception>
 		''' <exception cref="IllegalArgumentException"> if some property of the specified
 		'''         element prevents it from being added to this deque </exception>
-		Sub addLast(ByVal e As E)
+		Sub addLast(  e As E)
 
 		''' <summary>
 		''' Inserts the specified element at the front of this deque unless it would
@@ -245,7 +245,7 @@ Namespace java.util
 		'''         deque does not permit null elements </exception>
 		''' <exception cref="IllegalArgumentException"> if some property of the specified
 		'''         element prevents it from being added to this deque </exception>
-		Function offerFirst(ByVal e As E) As Boolean
+		Function offerFirst(  e As E) As Boolean
 
 		''' <summary>
 		''' Inserts the specified element at the end of this deque unless it would
@@ -262,7 +262,7 @@ Namespace java.util
 		'''         deque does not permit null elements </exception>
 		''' <exception cref="IllegalArgumentException"> if some property of the specified
 		'''         element prevents it from being added to this deque </exception>
-		Function offerLast(ByVal e As E) As Boolean
+		Function offerLast(  e As E) As Boolean
 
 		''' <summary>
 		''' Retrieves and removes the first element of this deque.  This method
@@ -346,7 +346,7 @@ Namespace java.util
 		''' <exception cref="NullPointerException"> if the specified element is null and this
 		'''         deque does not permit null elements
 		''' (<a href="Collection.html#optional-restrictions">optional</a>) </exception>
-		Function removeFirstOccurrence(ByVal o As Object) As Boolean
+		Function removeFirstOccurrence(  o As Object) As Boolean
 
 		''' <summary>
 		''' Removes the last occurrence of the specified element from this deque.
@@ -365,7 +365,7 @@ Namespace java.util
 		''' <exception cref="NullPointerException"> if the specified element is null and this
 		'''         deque does not permit null elements
 		''' (<a href="Collection.html#optional-restrictions">optional</a>) </exception>
-		Function removeLastOccurrence(ByVal o As Object) As Boolean
+		Function removeLastOccurrence(  o As Object) As Boolean
 
 		' *** Queue methods ***
 
@@ -390,7 +390,7 @@ Namespace java.util
 		'''         deque does not permit null elements </exception>
 		''' <exception cref="IllegalArgumentException"> if some property of the specified
 		'''         element prevents it from being added to this deque </exception>
-		Function add(ByVal e As E) As Boolean
+		Function add(  e As E) As Boolean
 
 		''' <summary>
 		''' Inserts the specified element into the queue represented by this deque
@@ -412,7 +412,7 @@ Namespace java.util
 		'''         deque does not permit null elements </exception>
 		''' <exception cref="IllegalArgumentException"> if some property of the specified
 		'''         element prevents it from being added to this deque </exception>
-		Function offer(ByVal e As E) As Boolean
+		Function offer(  e As E) As Boolean
 
 		''' <summary>
 		''' Retrieves and removes the head of the queue represented by this deque
@@ -480,7 +480,7 @@ Namespace java.util
 		'''         deque does not permit null elements </exception>
 		''' <exception cref="IllegalArgumentException"> if some property of the specified
 		'''         element prevents it from being added to this deque </exception>
-		Sub push(ByVal e As E)
+		Sub push(  e As E)
 
 		''' <summary>
 		''' Pops an element from the stack represented by this deque.  In other
@@ -515,7 +515,7 @@ Namespace java.util
 		''' <exception cref="NullPointerException"> if the specified element is null and this
 		'''         deque does not permit null elements
 		''' (<a href="Collection.html#optional-restrictions">optional</a>) </exception>
-		Function remove(ByVal o As Object) As Boolean
+		Function remove(  o As Object) As Boolean
 
 		''' <summary>
 		''' Returns {@code true} if this deque contains the specified element.
@@ -531,7 +531,7 @@ Namespace java.util
 		''' <exception cref="NullPointerException"> if the specified element is null and this
 		'''         deque does not permit null elements
 		''' (<a href="Collection.html#optional-restrictions">optional</a>) </exception>
-		Function contains(ByVal o As Object) As Boolean
+		Function contains(  o As Object) As Boolean
 
 		''' <summary>
 		''' Returns the number of elements in this deque.

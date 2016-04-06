@@ -107,7 +107,7 @@ Namespace java.awt.dnd
 	'     * load a system default cursor
 	'     
 
-		Private Shared Function load(ByVal name As String) As java.awt.Cursor
+		Private Shared Function load(  name As String) As java.awt.Cursor
 			If java.awt.GraphicsEnvironment.headless Then Return Nothing
 
 			Try
@@ -258,7 +258,7 @@ Namespace java.awt.dnd
 		'''    attempts to start a drag while an existing drag operation
 		'''    is still executing </exception>
 
-		Public Overridable Sub startDrag(ByVal trigger As DragGestureEvent, ByVal dragCursor As java.awt.Cursor, ByVal dragImage As java.awt.Image, ByVal imageOffset As java.awt.Point, ByVal transferable As java.awt.datatransfer.Transferable, ByVal dsl As DragSourceListener, ByVal flavorMap As java.awt.datatransfer.FlavorMap)
+		Public Overridable Sub startDrag(  trigger As DragGestureEvent,   dragCursor As java.awt.Cursor,   dragImage As java.awt.Image,   imageOffset As java.awt.Point,   transferable As java.awt.datatransfer.Transferable,   dsl As DragSourceListener,   flavorMap As java.awt.datatransfer.FlavorMap)
 
 			sun.awt.dnd.SunDragSourceContextPeer.dragDropInProgress = True
 
@@ -302,7 +302,7 @@ Namespace java.awt.dnd
 		'''    attempts to start a drag while an existing drag operation
 		'''    is still executing </exception>
 
-		Public Overridable Sub startDrag(ByVal trigger As DragGestureEvent, ByVal dragCursor As java.awt.Cursor, ByVal transferable As java.awt.datatransfer.Transferable, ByVal dsl As DragSourceListener, ByVal flavorMap As java.awt.datatransfer.FlavorMap)
+		Public Overridable Sub startDrag(  trigger As DragGestureEvent,   dragCursor As java.awt.Cursor,   transferable As java.awt.datatransfer.Transferable,   dsl As DragSourceListener,   flavorMap As java.awt.datatransfer.FlavorMap)
 			startDrag(trigger, dragCursor, Nothing, Nothing, transferable, dsl, flavorMap)
 		End Sub
 
@@ -334,7 +334,7 @@ Namespace java.awt.dnd
 		'''    attempts to start a drag while an existing drag operation
 		'''    is still executing </exception>
 
-		Public Overridable Sub startDrag(ByVal trigger As DragGestureEvent, ByVal dragCursor As java.awt.Cursor, ByVal dragImage As java.awt.Image, ByVal dragOffset As java.awt.Point, ByVal transferable As java.awt.datatransfer.Transferable, ByVal dsl As DragSourceListener)
+		Public Overridable Sub startDrag(  trigger As DragGestureEvent,   dragCursor As java.awt.Cursor,   dragImage As java.awt.Image,   dragOffset As java.awt.Point,   transferable As java.awt.datatransfer.Transferable,   dsl As DragSourceListener)
 			startDrag(trigger, dragCursor, dragImage, dragOffset, transferable, dsl, Nothing)
 		End Sub
 
@@ -360,7 +360,7 @@ Namespace java.awt.dnd
 		'''    attempts to start a drag while an existing drag operation
 		'''    is still executing </exception>
 
-		Public Overridable Sub startDrag(ByVal trigger As DragGestureEvent, ByVal dragCursor As java.awt.Cursor, ByVal transferable As java.awt.datatransfer.Transferable, ByVal dsl As DragSourceListener)
+		Public Overridable Sub startDrag(  trigger As DragGestureEvent,   dragCursor As java.awt.Cursor,   transferable As java.awt.datatransfer.Transferable,   dsl As DragSourceListener)
 			startDrag(trigger, dragCursor, Nothing, Nothing, transferable, dsl, Nothing)
 		End Sub
 
@@ -410,7 +410,7 @@ Namespace java.awt.dnd
 		'''         <code>DragGestureRecognizer</code> associated with the trigger
 		'''         event are equal to <code>DnDConstants.ACTION_NONE</code>. </exception>
 
-		Protected Friend Overridable Function createDragSourceContext(ByVal dscp As java.awt.dnd.peer.DragSourceContextPeer, ByVal dgl As DragGestureEvent, ByVal dragCursor As java.awt.Cursor, ByVal dragImage As java.awt.Image, ByVal imageOffset As java.awt.Point, ByVal t As java.awt.datatransfer.Transferable, ByVal dsl As DragSourceListener) As DragSourceContext
+		Protected Friend Overridable Function createDragSourceContext(  dscp As java.awt.dnd.peer.DragSourceContextPeer,   dgl As DragGestureEvent,   dragCursor As java.awt.Cursor,   dragImage As java.awt.Image,   imageOffset As java.awt.Point,   t As java.awt.datatransfer.Transferable,   dsl As DragSourceListener) As DragSourceContext
 			Return New DragSourceContext(dscp, dgl, dragCursor, dragImage, imageOffset, t, dsl)
 		End Function
 
@@ -442,7 +442,7 @@ Namespace java.awt.dnd
         '''    the requested <code>DragGestureRecognizer</code>
         '''    subclass and returns <code>null</code> </returns>
 
-        Public Overridable Function createDragGestureRecognizer(Of T As DragGestureRecognizer)(ByVal recognizerAbstractClass As [Class], ByVal c As java.awt.Component, ByVal actions As Integer, ByVal dgl As DragGestureListener) As T
+        Public Overridable Function createDragGestureRecognizer(Of T As DragGestureRecognizer)(  recognizerAbstractClass As [Class],   c As java.awt.Component,   actions As Integer,   dgl As DragGestureListener) As T
 			Return java.awt.Toolkit.defaultToolkit.createDragGestureRecognizer(recognizerAbstractClass, Me, c, actions, dgl)
 		End Function
 
@@ -469,7 +469,7 @@ Namespace java.awt.dnd
 		'''    the requested <code>DragGestureRecognizer</code>
 		'''    subclass and returns <code>null</code> </returns>
 
-		Public Overridable Function createDefaultDragGestureRecognizer(ByVal c As java.awt.Component, ByVal actions As Integer, ByVal dgl As DragGestureListener) As DragGestureRecognizer
+		Public Overridable Function createDefaultDragGestureRecognizer(  c As java.awt.Component,   actions As Integer,   dgl As DragGestureListener) As DragGestureRecognizer
 			Return java.awt.Toolkit.defaultToolkit.createDragGestureRecognizer(GetType(MouseDragGestureRecognizer), Me, c, actions, dgl)
 		End Function
 
@@ -485,7 +485,7 @@ Namespace java.awt.dnd
 		''' <seealso cref=      #removeDragSourceListener </seealso>
 		''' <seealso cref=      #getDragSourceListeners
 		''' @since 1.4 </seealso>
-		Public Overridable Sub addDragSourceListener(ByVal dsl As DragSourceListener)
+		Public Overridable Sub addDragSourceListener(  dsl As DragSourceListener)
 			If dsl IsNot Nothing Then
 				SyncLock Me
 					listener = DnDEventMulticaster.add(listener, dsl)
@@ -507,7 +507,7 @@ Namespace java.awt.dnd
 		''' <seealso cref=      #addDragSourceListener </seealso>
 		''' <seealso cref=      #getDragSourceListeners
 		''' @since 1.4 </seealso>
-		Public Overridable Sub removeDragSourceListener(ByVal dsl As DragSourceListener)
+		Public Overridable Sub removeDragSourceListener(  dsl As DragSourceListener)
 			If dsl IsNot Nothing Then
 				SyncLock Me
 					listener = DnDEventMulticaster.remove(listener, dsl)
@@ -544,7 +544,7 @@ Namespace java.awt.dnd
 		''' <seealso cref=      #removeDragSourceMotionListener </seealso>
 		''' <seealso cref=      #getDragSourceMotionListeners
 		''' @since 1.4 </seealso>
-		Public Overridable Sub addDragSourceMotionListener(ByVal dsml As DragSourceMotionListener)
+		Public Overridable Sub addDragSourceMotionListener(  dsml As DragSourceMotionListener)
 			If dsml IsNot Nothing Then
 				SyncLock Me
 					motionListener = DnDEventMulticaster.add(motionListener, dsml)
@@ -566,7 +566,7 @@ Namespace java.awt.dnd
 		''' <seealso cref=      #addDragSourceMotionListener </seealso>
 		''' <seealso cref=      #getDragSourceMotionListeners
 		''' @since 1.4 </seealso>
-		Public Overridable Sub removeDragSourceMotionListener(ByVal dsml As DragSourceMotionListener)
+		Public Overridable Sub removeDragSourceMotionListener(  dsml As DragSourceMotionListener)
 			If dsml IsNot Nothing Then
 				SyncLock Me
 					motionListener = DnDEventMulticaster.remove(motionListener, dsml)
@@ -611,7 +611,7 @@ Namespace java.awt.dnd
 		''' <seealso cref= #getDragSourceListeners </seealso>
 		''' <seealso cref= #getDragSourceMotionListeners
 		''' @since 1.4 </seealso>
-		Public Overridable Function getListeners(Of T As java.util.EventListener)(ByVal listenerType As [Class]) As T()
+		Public Overridable Function getListeners(Of T As java.util.EventListener)(  listenerType As [Class]) As T()
 			Dim l As java.util.EventListener = Nothing
 			If listenerType Is GetType(DragSourceListener) Then
 				l = listener
@@ -628,7 +628,7 @@ Namespace java.awt.dnd
 		''' <code>DragSourceDragEvent</code>.
 		''' </summary>
 		''' <param name="dsde"> the <code>DragSourceDragEvent</code> </param>
-		Friend Overridable Sub processDragEnter(ByVal dsde As DragSourceDragEvent)
+		Friend Overridable Sub processDragEnter(  dsde As DragSourceDragEvent)
 			Dim dsl As DragSourceListener = listener
 			If dsl IsNot Nothing Then dsl.dragEnter(dsde)
 		End Sub
@@ -640,7 +640,7 @@ Namespace java.awt.dnd
 		''' <code>DragSourceDragEvent</code>.
 		''' </summary>
 		''' <param name="dsde"> the <code>DragSourceDragEvent</code> </param>
-		Friend Overridable Sub processDragOver(ByVal dsde As DragSourceDragEvent)
+		Friend Overridable Sub processDragOver(  dsde As DragSourceDragEvent)
 			Dim dsl As DragSourceListener = listener
 			If dsl IsNot Nothing Then dsl.dragOver(dsde)
 		End Sub
@@ -652,7 +652,7 @@ Namespace java.awt.dnd
 		''' <code>DragSourceDragEvent</code>.
 		''' </summary>
 		''' <param name="dsde"> the <code>DragSourceDragEvent</code> </param>
-		Friend Overridable Sub processDropActionChanged(ByVal dsde As DragSourceDragEvent)
+		Friend Overridable Sub processDropActionChanged(  dsde As DragSourceDragEvent)
 			Dim dsl As DragSourceListener = listener
 			If dsl IsNot Nothing Then dsl.dropActionChanged(dsde)
 		End Sub
@@ -664,7 +664,7 @@ Namespace java.awt.dnd
 		''' <code>DragSourceEvent</code>.
 		''' </summary>
 		''' <param name="dse"> the <code>DragSourceEvent</code> </param>
-		Friend Overridable Sub processDragExit(ByVal dse As DragSourceEvent)
+		Friend Overridable Sub processDragExit(  dse As DragSourceEvent)
 			Dim dsl As DragSourceListener = listener
 			If dsl IsNot Nothing Then dsl.dragExit(dse)
 		End Sub
@@ -676,7 +676,7 @@ Namespace java.awt.dnd
 		''' <code>DragSourceDropEvent</code>.
 		''' </summary>
 		''' <param name="dsde"> the <code>DragSourceEvent</code> </param>
-		Friend Overridable Sub processDragDropEnd(ByVal dsde As DragSourceDropEvent)
+		Friend Overridable Sub processDragDropEnd(  dsde As DragSourceDropEvent)
 			Dim dsl As DragSourceListener = listener
 			If dsl IsNot Nothing Then dsl.dragDropEnd(dsde)
 		End Sub
@@ -688,7 +688,7 @@ Namespace java.awt.dnd
 		''' <code>DragSourceDragEvent</code>.
 		''' </summary>
 		''' <param name="dsde"> the <code>DragSourceEvent</code> </param>
-		Friend Overridable Sub processDragMouseMoved(ByVal dsde As DragSourceDragEvent)
+		Friend Overridable Sub processDragMouseMoved(  dsde As DragSourceDragEvent)
 			Dim dsml As DragSourceMotionListener = motionListener
 			If dsml IsNot Nothing Then dsml.dragMouseMoved(dsde)
 		End Sub
@@ -724,7 +724,7 @@ Namespace java.awt.dnd
 		'''      </ul>.
 		''' @since 1.4
 		''' </summary>
-		Private Sub writeObject(ByVal s As java.io.ObjectOutputStream)
+		Private Sub writeObject(  s As java.io.ObjectOutputStream)
 			s.defaultWriteObject()
 
 			s.writeObject(If(SerializationTester.test(flavorMap), flavorMap, Nothing))
@@ -758,7 +758,7 @@ Namespace java.awt.dnd
 		''' </summary>
 		''' <seealso cref= java.awt.datatransfer.SystemFlavorMap#getDefaultFlavorMap
 		''' @since 1.4 </seealso>
-		Private Sub readObject(ByVal s As java.io.ObjectInputStream)
+		Private Sub readObject(  s As java.io.ObjectInputStream)
 			s.defaultReadObject()
 
 			' 'flavorMap' was written explicitly

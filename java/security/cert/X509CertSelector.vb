@@ -163,9 +163,9 @@ Namespace java.security.cert
 		''' {@code null}) </param>
 		''' <seealso cref= #getCertificate </seealso>
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
-        Public Overridable Sub setCertificate(ByVal cert As X509Certificate) 'JavaToDotNetTempPropertySetcertificate
+        Public Overridable Sub setCertificate(  cert As X509Certificate) 'JavaToDotNetTempPropertySetcertificate
 		Public Overridable Property certificate As X509Certificate
-			Set(ByVal cert As X509Certificate)
+			Set(  cert As X509Certificate)
 				x509Cert = cert
 			End Set
 			Get
@@ -181,9 +181,9 @@ Namespace java.security.cert
 		'''        (or {@code null}) </param>
 		''' <seealso cref= #getSerialNumber </seealso>
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
-        Public Overridable Sub setSerialNumber(ByVal serial As System.Numerics.BigInteger) 'JavaToDotNetTempPropertySetserialNumber
+        Public Overridable Sub setSerialNumber(  serial As System.Numerics.BigInteger) 'JavaToDotNetTempPropertySetserialNumber
 		Public Overridable Property serialNumber As System.Numerics.BigInteger
-			Set(ByVal serial As System.Numerics.BigInteger)
+			Set(  serial As System.Numerics.BigInteger)
 				serialNumber = serial
 			End Set
 			Get
@@ -199,9 +199,9 @@ Namespace java.security.cert
 		'''                 (or {@code null})
 		''' @since 1.5 </param>
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
-        Public Overridable Sub setIssuer(ByVal issuer As javax.security.auth.x500.X500Principal) 'JavaToDotNetTempPropertySetissuer
+        Public Overridable Sub setIssuer(  issuer As javax.security.auth.x500.X500Principal) 'JavaToDotNetTempPropertySetissuer
 		Public Overridable Property issuer As javax.security.auth.x500.X500Principal
-			Set(ByVal issuer As javax.security.auth.x500.X500Principal)
+			Set(  issuer As javax.security.auth.x500.X500Principal)
 				Me.issuer = issuer
 			End Set
 			Get
@@ -227,7 +227,7 @@ Namespace java.security.cert
 		'''                 (or {@code null}) </param>
 		''' <exception cref="IOException"> if a parsing error occurs (incorrect form for DN) </exception>
 		Public Overridable Property issuer As String
-			Set(ByVal issuerDN As String)
+			Set(  issuerDN As String)
 				If issuerDN Is Nothing Then
 					issuer = Nothing
 				Else
@@ -278,7 +278,7 @@ Namespace java.security.cert
 		'''                 in ASN.1 DER encoded form (or {@code null}) </param>
 		''' <exception cref="IOException"> if an encoding error occurs (incorrect form for DN) </exception>
 		Public Overridable Property issuer As SByte()
-			Set(ByVal issuerDN As SByte())
+			Set(  issuerDN As SByte())
 				Try
 					issuer = (If(issuerDN Is Nothing, Nothing, New javax.security.auth.x500.X500Principal(issuerDN)))
 				Catch e As IllegalArgumentException
@@ -297,9 +297,9 @@ Namespace java.security.cert
 		'''                  (or {@code null})
 		''' @since 1.5 </param>
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
-        Public Overridable Sub setSubject(ByVal subject As javax.security.auth.x500.X500Principal) 'JavaToDotNetTempPropertySetsubject
+        Public Overridable Sub setSubject(  subject As javax.security.auth.x500.X500Principal) 'JavaToDotNetTempPropertySetsubject
 		Public Overridable Property subject As javax.security.auth.x500.X500Principal
-			Set(ByVal subject As javax.security.auth.x500.X500Principal)
+			Set(  subject As javax.security.auth.x500.X500Principal)
 				Me.subject = subject
 			End Set
 			Get
@@ -324,7 +324,7 @@ Namespace java.security.cert
 		'''                  (or {@code null}) </param>
 		''' <exception cref="IOException"> if a parsing error occurs (incorrect form for DN) </exception>
 		Public Overridable Property subject As String
-			Set(ByVal subjectDN As String)
+			Set(  subjectDN As String)
 				If subjectDN Is Nothing Then
 					subject = Nothing
 				Else
@@ -348,7 +348,7 @@ Namespace java.security.cert
 		'''                  ASN.1 DER format (or {@code null}) </param>
 		''' <exception cref="IOException"> if an encoding error occurs (incorrect form for DN) </exception>
 		Public Overridable Property subject As SByte()
-			Set(ByVal subjectDN As SByte())
+			Set(  subjectDN As SByte())
 				Try
 					subject = (If(subjectDN Is Nothing, Nothing, New javax.security.auth.x500.X500Principal(subjectDN)))
 				Catch e As IllegalArgumentException
@@ -389,9 +389,9 @@ Namespace java.security.cert
 		''' <param name="subjectKeyID"> the subject key identifier (or {@code null}) </param>
 		''' <seealso cref= #getSubjectKeyIdentifier </seealso>
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
-        Public Overridable Sub setSubjectKeyIdentifier(ByVal subjectKeyID As SByte[]) 'JavaToDotNetTempPropertySetsubjectKeyIdentifier
+        Public Overridable Sub setSubjectKeyIdentifier(  subjectKeyID As SByte[]) 'JavaToDotNetTempPropertySetsubjectKeyIdentifier
 		Public Overridable Property subjectKeyIdentifier As SByte()
-			Set(ByVal subjectKeyID As SByte())
+			Set(  subjectKeyID As SByte())
 				If subjectKeyID Is Nothing Then
 					Me.subjectKeyID = Nothing
 				Else
@@ -454,9 +454,9 @@ Namespace java.security.cert
 		'''        (or {@code null}) </param>
 		''' <seealso cref= #getAuthorityKeyIdentifier </seealso>
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
-        Public Overridable Sub setAuthorityKeyIdentifier(ByVal authorityKeyID As SByte[]) 'JavaToDotNetTempPropertySetauthorityKeyIdentifier
+        Public Overridable Sub setAuthorityKeyIdentifier(  authorityKeyID As SByte[]) 'JavaToDotNetTempPropertySetauthorityKeyIdentifier
 		Public Overridable Property authorityKeyIdentifier As SByte()
-			Set(ByVal authorityKeyID As SByte())
+			Set(  authorityKeyID As SByte())
 				If authorityKeyID Is Nothing Then
 					Me.authorityKeyID = Nothing
 				Else
@@ -478,9 +478,9 @@ Namespace java.security.cert
 		''' <param name="certValid"> the {@code Date} to check (or {@code null}) </param>
 		''' <seealso cref= #getCertificateValid </seealso>
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
-        Public Overridable Sub setCertificateValid(ByVal certValid As Date) 'JavaToDotNetTempPropertySetcertificateValid
+        Public Overridable Sub setCertificateValid(  certValid As Date) 'JavaToDotNetTempPropertySetcertificateValid
 		Public Overridable Property certificateValid As Date
-			Set(ByVal certValid As Date)
+			Set(  certValid As Date)
 				If certValid Is Nothing Then
 					certificateValid = Nothing
 				Else
@@ -503,9 +503,9 @@ Namespace java.security.cert
 		'''                        {@code null}) </param>
 		''' <seealso cref= #getPrivateKeyValid </seealso>
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
-        Public Overridable Sub setPrivateKeyValid(ByVal privateKeyValid As Date) 'JavaToDotNetTempPropertySetprivateKeyValid
+        Public Overridable Sub setPrivateKeyValid(  privateKeyValid As Date) 'JavaToDotNetTempPropertySetprivateKeyValid
 		Public Overridable Property privateKeyValid As Date
-			Set(ByVal privateKeyValid As Date)
+			Set(  privateKeyValid As Date)
 				If privateKeyValid Is Nothing Then
 					Me.privateKeyValid = Nothing
 				Else
@@ -530,9 +530,9 @@ Namespace java.security.cert
 		''' </exception>
 		''' <seealso cref= #getSubjectPublicKeyAlgID </seealso>
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
-        Public Overridable Sub setSubjectPublicKeyAlgID(ByVal oid As String) 'JavaToDotNetTempPropertySetsubjectPublicKeyAlgID
+        Public Overridable Sub setSubjectPublicKeyAlgID(  oid As String) 'JavaToDotNetTempPropertySetsubjectPublicKeyAlgID
 		Public Overridable Property subjectPublicKeyAlgID As String
-			Set(ByVal oid As String)
+			Set(  oid As String)
 				If oid Is Nothing Then
 					subjectPublicKeyAlgID = Nothing
 				Else
@@ -550,9 +550,9 @@ Namespace java.security.cert
 		''' <param name="key"> the subject public key to check for (or {@code null}) </param>
 		''' <seealso cref= #getSubjectPublicKey </seealso>
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
-        Public Overridable Sub setSubjectPublicKey(ByVal key As java.security.PublicKey) 'JavaToDotNetTempPropertySetsubjectPublicKey
+        Public Overridable Sub setSubjectPublicKey(  key As java.security.PublicKey) 'JavaToDotNetTempPropertySetsubjectPublicKey
 		Public Overridable Property subjectPublicKey As java.security.PublicKey
-			Set(ByVal key As java.security.PublicKey)
+			Set(  key As java.security.PublicKey)
 				If key Is Nothing Then
 					subjectPublicKey = Nothing
 					subjectPublicKeyBytes = Nothing
@@ -597,7 +597,7 @@ Namespace java.security.cert
 		''' subject public key) </exception>
 		''' <seealso cref= #getSubjectPublicKey </seealso>
 		Public Overridable Property subjectPublicKey As SByte()
-			Set(ByVal key As SByte())
+			Set(  key As SByte())
 				If key Is Nothing Then
 					subjectPublicKey = Nothing
 					subjectPublicKeyBytes = Nothing
@@ -623,9 +623,9 @@ Namespace java.security.cert
 		'''                 Or {@code null}. </param>
 		''' <seealso cref= #getKeyUsage </seealso>
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
-        Public Overridable Sub setKeyUsage(ByVal keyUsage As Boolean[]) 'JavaToDotNetTempPropertySetkeyUsage
+        Public Overridable Sub setKeyUsage(  keyUsage As Boolean[]) 'JavaToDotNetTempPropertySetkeyUsage
 		Public Overridable Property keyUsage As Boolean()
-			Set(ByVal keyUsage As Boolean())
+			Set(  keyUsage As Boolean())
 				If keyUsage Is Nothing Then
 					Me.keyUsage = Nothing
 				Else
@@ -654,9 +654,9 @@ Namespace java.security.cert
 		''' being greater than 39. </exception>
 		''' <seealso cref= #getExtendedKeyUsage </seealso>
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
-        Public Overridable Sub setExtendedKeyUsage(ByVal keyPurposeSet As Set(Of String)) 'JavaToDotNetTempPropertySetextendedKeyUsage
+        Public Overridable Sub setExtendedKeyUsage(  keyPurposeSet As Set(Of String)) 'JavaToDotNetTempPropertySetextendedKeyUsage
 		Public Overridable Property extendedKeyUsage As [Set](Of String)
-			Set(ByVal keyPurposeSet As [Set](Of String))
+			Set(  keyPurposeSet As [Set](Of String))
 				If (keyPurposeSet Is Nothing) OrElse keyPurposeSet.empty Then
 					Me.keyPurposeSet = Nothing
 					keyPurposeOIDSet = Nothing
@@ -687,9 +687,9 @@ Namespace java.security.cert
 		''' if {@code false}, the flag is disabled. </param>
 		''' <seealso cref= #getMatchAllSubjectAltNames </seealso>
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
-        Public Overridable Sub setMatchAllSubjectAltNames(ByVal matchAllNames As Boolean) 'JavaToDotNetTempPropertySetmatchAllSubjectAltNames
+        Public Overridable Sub setMatchAllSubjectAltNames(  matchAllNames As Boolean) 'JavaToDotNetTempPropertySetmatchAllSubjectAltNames
 		Public Overridable Property matchAllSubjectAltNames As Boolean
-			Set(ByVal matchAllNames As Boolean)
+			Set(  matchAllNames As Boolean)
 				Me.matchAllSubjectAltNames = matchAllNames
 			End Set
 			Get
@@ -742,9 +742,9 @@ Namespace java.security.cert
 		''' <exception cref="IOException"> if a parsing error occurs </exception>
 		''' <seealso cref= #getSubjectAlternativeNames </seealso>
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
-        Public Overridable Sub setSubjectAlternativeNames(Of T1)(ByVal names As Collection(Of T1)) 'JavaToDotNetTempPropertySetsubjectAlternativeNames
+        Public Overridable Sub setSubjectAlternativeNames(Of T1)(  names As Collection(Of T1)) 'JavaToDotNetTempPropertySetsubjectAlternativeNames
 		Public Overridable Property subjectAlternativeNames(Of T1) As Collection(Of T1)
-			Set(ByVal names As Collection(Of T1))
+			Set(  names As Collection(Of T1))
 				If names Is Nothing Then
 					subjectAlternativeNames = Nothing
 					subjectAlternativeGeneralNames = Nothing
@@ -801,7 +801,7 @@ Namespace java.security.cert
 		'''             RFC 3280, section 4.2.1.7) </param>
 		''' <param name="name"> the name in string form (not {@code null}) </param>
 		''' <exception cref="IOException"> if a parsing error occurs </exception>
-		Public Overridable Sub addSubjectAlternativeName(ByVal type As Integer, ByVal name As String)
+		Public Overridable Sub addSubjectAlternativeName(  type As Integer,   name As String)
 			addSubjectAlternativeNameInternal(type, name)
 		End Sub
 
@@ -843,7 +843,7 @@ Namespace java.security.cert
 		''' <param name="type"> the name type (0-8, as listed above) </param>
 		''' <param name="name"> a byte array containing the name in ASN.1 DER encoded form </param>
 		''' <exception cref="IOException"> if a parsing error occurs </exception>
-		Public Overridable Sub addSubjectAlternativeName(ByVal type As Integer, ByVal name As SByte())
+		Public Overridable Sub addSubjectAlternativeName(  type As Integer,   name As SByte())
 			' clone because byte arrays are modifiable
 			addSubjectAlternativeNameInternal(type, name.clone())
 		End Sub
@@ -857,7 +857,7 @@ Namespace java.security.cert
 		'''             RFC 3280, section 4.2.1.7) </param>
 		''' <param name="name"> the name in string or byte array form </param>
 		''' <exception cref="IOException"> if a parsing error occurs </exception>
-		Private Sub addSubjectAlternativeNameInternal(ByVal type As Integer, ByVal name As Object)
+		Private Sub addSubjectAlternativeNameInternal(  type As Integer,   name As Object)
 			' First, ensure that the name parses
 			Dim tempName As GeneralNameInterface = makeGeneralNameInterface(type, name)
 			If subjectAlternativeNames Is Nothing Then subjectAlternativeNames = New HashSet(Of List(Of ?))
@@ -885,7 +885,7 @@ Namespace java.security.cert
 		'''              not an acceptable value. </param>
 		''' <returns> a Set of {@code GeneralNameInterface}s </returns>
 		''' <exception cref="IOException"> if a parsing error occurs </exception>
-		Private Shared Function parseNames(Of T1)(ByVal names As Collection(Of T1)) As [Set](Of GeneralNameInterface)
+		Private Shared Function parseNames(Of T1)(  names As Collection(Of T1)) As [Set](Of GeneralNameInterface)
 			Dim genNames As [Set](Of GeneralNameInterface) = New HashSet(Of GeneralNameInterface)
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 			For Each nameList As List(Of ?) In names
@@ -909,7 +909,7 @@ Namespace java.security.cert
 		''' <param name="object1"> a Collection containing the first object to compare </param>
 		''' <param name="object2"> a Collection containing the second object to compare </param>
 		''' <returns> true if the objects are equal, false otherwise </returns>
-		Friend Shared Function equalNames(Of T1, T2)(ByVal object1 As Collection(Of T1), ByVal object2 As Collection(Of T2)) As Boolean
+		Friend Shared Function equalNames(Of T1, T2)(  object1 As Collection(Of T1),   object2 As Collection(Of T2)) As Boolean
 			If (object1 Is Nothing) OrElse (object2 Is Nothing) Then Return object1 Is object2
 			Return object1.Equals(object2)
 		End Function
@@ -928,7 +928,7 @@ Namespace java.security.cert
 		''' <param name="name"> name as ASN.1 Der-encoded byte array or String </param>
 		''' <returns> a GeneralNameInterface name </returns>
 		''' <exception cref="IOException"> if a parsing error occurs </exception>
-		Friend Shared Function makeGeneralNameInterface(ByVal type As Integer, ByVal name As Object) As GeneralNameInterface
+		Friend Shared Function makeGeneralNameInterface(  type As Integer,   name As Object) As GeneralNameInterface
 			Dim result As GeneralNameInterface
 			If debug IsNot Nothing Then debug.println("X509CertSelector.makeGeneralNameInterface(" & type & ")...")
 
@@ -1034,9 +1034,9 @@ Namespace java.security.cert
 		''' <exception cref="IOException"> if a parsing error occurs </exception>
 		''' <seealso cref= #getNameConstraints </seealso>
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
-        Public Overridable Sub setNameConstraints(ByVal bytes As SByte[]) 'JavaToDotNetTempPropertySetnameConstraints
+        Public Overridable Sub setNameConstraints(  bytes As SByte[]) 'JavaToDotNetTempPropertySetnameConstraints
 		Public Overridable Property nameConstraints As SByte()
-			Set(ByVal bytes As SByte())
+			Set(  bytes As SByte())
 				If bytes Is Nothing Then
 					ncBytes = Nothing
 					nc = Nothing
@@ -1064,9 +1064,9 @@ Namespace java.security.cert
 		''' <exception cref="IllegalArgumentException"> if the value is less than -2 </exception>
 		''' <seealso cref= #getBasicConstraints </seealso>
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
-        Public Overridable Sub setBasicConstraints(ByVal minMaxPathLen As Integer) 'JavaToDotNetTempPropertySetbasicConstraints
+        Public Overridable Sub setBasicConstraints(  minMaxPathLen As Integer) 'JavaToDotNetTempPropertySetbasicConstraints
 		Public Overridable Property basicConstraints As Integer
-			Set(ByVal minMaxPathLen As Integer)
+			Set(  minMaxPathLen As Integer)
 				If minMaxPathLen < -2 Then Throw New IllegalArgumentException("basic constraints less than -2")
 				basicConstraints = minMaxPathLen
 			End Set
@@ -1093,9 +1093,9 @@ Namespace java.security.cert
 		''' greater than 39. </exception>
 		''' <seealso cref= #getPolicy </seealso>
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
-        Public Overridable Sub setPolicy(ByVal certPolicySet As Set(Of String)) 'JavaToDotNetTempPropertySetpolicy
+        Public Overridable Sub setPolicy(  certPolicySet As Set(Of String)) 'JavaToDotNetTempPropertySetpolicy
 		Public Overridable Property policy As [Set](Of String)
-			Set(ByVal certPolicySet As [Set](Of String))
+			Set(  certPolicySet As [Set](Of String))
 				If certPolicySet Is Nothing Then
 					policySet = Nothing
 					policy_Renamed = Nothing
@@ -1169,9 +1169,9 @@ Namespace java.security.cert
 		''' <exception cref="IOException"> if a parsing error occurs </exception>
 		''' <seealso cref= #getPathToNames </seealso>
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
-        Public Overridable Sub setPathToNames(Of T1)(ByVal names As Collection(Of T1)) 'JavaToDotNetTempPropertySetpathToNames
+        Public Overridable Sub setPathToNames(Of T1)(  names As Collection(Of T1)) 'JavaToDotNetTempPropertySetpathToNames
 		Public Overridable Property pathToNames(Of T1) As Collection(Of T1)
-			Set(ByVal names As Collection(Of T1))
+			Set(  names As Collection(Of T1))
 				If (names Is Nothing) OrElse names.empty Then
 					pathToNames = Nothing
 					pathToGeneralNames = Nothing
@@ -1188,7 +1188,7 @@ Namespace java.security.cert
 
 		' called from CertPathHelper
 		Friend Overridable Property pathToNamesInternal As [Set](Of GeneralNameInterface)
-			Set(ByVal names As [Set](Of GeneralNameInterface))
+			Set(  names As [Set](Of GeneralNameInterface))
 				' set names to non-null dummy value
 				' this breaks getPathToNames()
 	'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
@@ -1229,7 +1229,7 @@ Namespace java.security.cert
 		'''             RFC 3280, section 4.2.1.7) </param>
 		''' <param name="name"> the name in string form </param>
 		''' <exception cref="IOException"> if a parsing error occurs </exception>
-		Public Overridable Sub addPathToName(ByVal type As Integer, ByVal name As String)
+		Public Overridable Sub addPathToName(  type As Integer,   name As String)
 			addPathToNameInternal(type, name)
 		End Sub
 
@@ -1257,7 +1257,7 @@ Namespace java.security.cert
 		'''             RFC 3280, section 4.2.1.7) </param>
 		''' <param name="name"> a byte array containing the name in ASN.1 DER encoded form </param>
 		''' <exception cref="IOException"> if a parsing error occurs </exception>
-		Public Overridable Sub addPathToName(ByVal type As Integer, ByVal name As SByte ())
+		Public Overridable Sub addPathToName(  type As Integer,   name As SByte ())
 			' clone because byte arrays are modifiable
 			addPathToNameInternal(type, name.clone())
 		End Sub
@@ -1271,7 +1271,7 @@ Namespace java.security.cert
 		'''             RFC 3280, section 4.2.1.7) </param>
 		''' <param name="name"> the name in string or byte array form </param>
 		''' <exception cref="IOException"> if an encoding error occurs (incorrect form for DN) </exception>
-		Private Sub addPathToNameInternal(ByVal type As Integer, ByVal name As Object)
+		Private Sub addPathToNameInternal(  type As Integer,   name As Object)
 			' First, ensure that the name parses
 			Dim tempName As GeneralNameInterface = makeGeneralNameInterface(type, name)
 			If pathToGeneralNames Is Nothing Then
@@ -1482,7 +1482,7 @@ Namespace java.security.cert
 		''' <returns> a deep copy of the specified {@code Collection} </returns>
 		''' <exception cref="RuntimeException"> if a parsing error occurs </exception>
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-		Private Shared Function cloneNames(Of T1)(ByVal names As Collection(Of T1)) As [Set](Of List(Of ?))
+		Private Shared Function cloneNames(Of T1)(  names As Collection(Of T1)) As [Set](Of List(Of ?))
 			Try
 				Return cloneAndCheckNames(names)
 			Catch e As java.io.IOException
@@ -1505,7 +1505,7 @@ Namespace java.security.cert
 		''' <returns> a deep copy of the specified {@code Collection} </returns>
 		''' <exception cref="IOException"> if a parsing error occurs </exception>
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-		Private Shared Function cloneAndCheckNames(Of T1)(ByVal names As Collection(Of T1)) As [Set](Of List(Of ?))
+		Private Shared Function cloneAndCheckNames(Of T1)(  names As Collection(Of T1)) As [Set](Of List(Of ?))
 			' Copy the Lists and Collection
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 			Dim namesCopy As [Set](Of List(Of ?)) = New HashSet(Of List(Of ?))
@@ -1636,7 +1636,7 @@ Namespace java.security.cert
 		''' <summary>
 		''' Returns a printable representation of the KeyUsage.
 		''' </summary>
-		Private Shared Function keyUsageToString(ByVal k As Boolean()) As String
+		Private Shared Function keyUsageToString(  k As Boolean()) As String
 			Dim s As String = "KeyUsage [" & vbLf
 			Try
 				If k(0) Then s &= "  DigitalSignature" & vbLf
@@ -1674,7 +1674,7 @@ Namespace java.security.cert
 		''' <exception cref="IOException"> if cannot construct the {@code Extension}
 		''' object with the extension encoding retrieved from the passed in
 		''' {@code X509Certificate}. </exception>
-		Private Shared Function getExtensionObject(ByVal cert As X509Certificate, ByVal extId As Integer) As Extension
+		Private Shared Function getExtensionObject(  cert As X509Certificate,   extId As Integer) As Extension
 			If TypeOf cert Is X509CertImpl Then
 				Dim impl As X509CertImpl = CType(cert, X509CertImpl)
 				Select Case extId
@@ -1722,7 +1722,7 @@ Namespace java.security.cert
 		''' <param name="cert"> the {@code Certificate} to be checked </param>
 		''' <returns> {@code true} if the {@code Certificate} should be
 		'''         selected, {@code false} otherwise </returns>
-		Public Overridable Function match(ByVal cert As Certificate) As Boolean Implements CertSelector.match
+		Public Overridable Function match(  cert As Certificate) As Boolean Implements CertSelector.match
 			If Not(TypeOf cert Is X509Certificate) Then Return False
 			Dim xcert As X509Certificate = CType(cert, X509Certificate)
 
@@ -1786,7 +1786,7 @@ Namespace java.security.cert
 		End Function
 
 		' match on subject key identifier extension value 
-		Private Function matchSubjectKeyID(ByVal xcert As X509Certificate) As Boolean
+		Private Function matchSubjectKeyID(  xcert As X509Certificate) As Boolean
 			If subjectKeyID Is Nothing Then Return True
 			Try
 				Dim extVal As SByte() = xcert.getExtensionValue("2.5.29.14")
@@ -1808,7 +1808,7 @@ Namespace java.security.cert
 		End Function
 
 		' match on authority key identifier extension value 
-		Private Function matchAuthorityKeyID(ByVal xcert As X509Certificate) As Boolean
+		Private Function matchAuthorityKeyID(  xcert As X509Certificate) As Boolean
 			If authorityKeyID Is Nothing Then Return True
 			Try
 				Dim extVal As SByte() = xcert.getExtensionValue("2.5.29.35")
@@ -1830,7 +1830,7 @@ Namespace java.security.cert
 		End Function
 
 		' match on private key usage range 
-		Private Function matchPrivateKeyValid(ByVal xcert As X509Certificate) As Boolean
+		Private Function matchPrivateKeyValid(  xcert As X509Certificate) As Boolean
 			If privateKeyValid Is Nothing Then Return True
 			Dim ext As PrivateKeyUsageExtension = Nothing
 			Try
@@ -1876,7 +1876,7 @@ Namespace java.security.cert
 		End Function
 
 		' match on subject public key algorithm OID 
-		Private Function matchSubjectPublicKeyAlgID(ByVal xcert As X509Certificate) As Boolean
+		Private Function matchSubjectPublicKeyAlgID(  xcert As X509Certificate) As Boolean
 			If subjectPublicKeyAlgID Is Nothing Then Return True
 			Try
 				Dim encodedKey As SByte() = xcert.publicKey.encoded
@@ -1897,7 +1897,7 @@ Namespace java.security.cert
 		End Function
 
 		' match on key usage extension value 
-		Private Function matchKeyUsage(ByVal xcert As X509Certificate) As Boolean
+		Private Function matchKeyUsage(  xcert As X509Certificate) As Boolean
 			If keyUsage Is Nothing Then Return True
 			Dim certKeyUsage As Boolean() = xcert.keyUsage
 			If certKeyUsage IsNot Nothing Then
@@ -1912,7 +1912,7 @@ Namespace java.security.cert
 		End Function
 
 		' match on extended key usage purpose OIDs 
-		Private Function matchExtendedKeyUsage(ByVal xcert As X509Certificate) As Boolean
+		Private Function matchExtendedKeyUsage(  xcert As X509Certificate) As Boolean
 			If (keyPurposeSet Is Nothing) OrElse keyPurposeSet.empty Then Return True
 			Try
 				Dim ext As ExtendedKeyUsageExtension = CType(getExtensionObject(xcert, EXTENDED_KEY_USAGE_ID), ExtendedKeyUsageExtension)
@@ -1931,7 +1931,7 @@ Namespace java.security.cert
 		End Function
 
 		' match on subject alternative name extension names 
-		Private Function matchSubjectAlternativeNames(ByVal xcert As X509Certificate) As Boolean
+		Private Function matchSubjectAlternativeNames(  xcert As X509Certificate) As Boolean
 			If (subjectAlternativeNames Is Nothing) OrElse subjectAlternativeNames.empty Then Return True
 			Try
 				Dim sanExt As SubjectAlternativeNameExtension = CType(getExtensionObject(xcert, SUBJECT_ALT_NAME_ID), SubjectAlternativeNameExtension)
@@ -1964,7 +1964,7 @@ Namespace java.security.cert
 		End Function
 
 		' match on name constraints 
-		Private Function matchNameConstraints(ByVal xcert As X509Certificate) As Boolean
+		Private Function matchNameConstraints(  xcert As X509Certificate) As Boolean
 			If nc Is Nothing Then Return True
 			Try
 				If Not nc.verify(xcert) Then
@@ -1979,7 +1979,7 @@ Namespace java.security.cert
 		End Function
 
 		' match on policy OIDs 
-		Private Function matchPolicy(ByVal xcert As X509Certificate) As Boolean
+		Private Function matchPolicy(  xcert As X509Certificate) As Boolean
 			If policy_Renamed Is Nothing Then Return True
 			Try
 				Dim ext As CertificatePoliciesExtension = CType(getExtensionObject(xcert, CERT_POLICIES_ID), CertificatePoliciesExtension)
@@ -2029,7 +2029,7 @@ Namespace java.security.cert
 		End Function
 
 		' match on pathToNames 
-		Private Function matchPathToNames(ByVal xcert As X509Certificate) As Boolean
+		Private Function matchPathToNames(  xcert As X509Certificate) As Boolean
 			If pathToGeneralNames Is Nothing Then Return True
 			Try
 				Dim ext As NameConstraintsExtension = CType(getExtensionObject(xcert, NAME_CONSTRAINTS_ID), NameConstraintsExtension)
@@ -2057,7 +2057,7 @@ Namespace java.security.cert
 			Return True
 		End Function
 
-		Private Function matchExcluded(ByVal excluded As GeneralSubtrees) As Boolean
+		Private Function matchExcluded(  excluded As GeneralSubtrees) As Boolean
 	'        
 	'         * Enumerate through excluded and compare each entry
 	'         * to all pathToNames. If any pathToName is within any of the
@@ -2086,7 +2086,7 @@ Namespace java.security.cert
 			Return True
 		End Function
 
-		Private Function matchPermitted(ByVal permitted As GeneralSubtrees) As Boolean
+		Private Function matchPermitted(  permitted As GeneralSubtrees) As Boolean
 	'        
 	'         * Enumerate through pathToNames, checking that each pathToName
 	'         * is in at least one of the subtrees listed in permitted.
@@ -2122,7 +2122,7 @@ Namespace java.security.cert
 		End Function
 
 		' match on basic constraints 
-		Private Function matchBasicConstraints(ByVal xcert As X509Certificate) As Boolean
+		Private Function matchBasicConstraints(  xcert As X509Certificate) As Boolean
 			If basicConstraints = -1 Then Return True
 			Dim maxPathLen As Integer = xcert.basicConstraints
 			If basicConstraints = -2 Then
@@ -2140,7 +2140,7 @@ Namespace java.security.cert
 		End Function
 
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Private Shared Function cloneSet(Of T)(ByVal [set] As [Set](Of T)) As [Set](Of T) ' Safe casts assuming clone() works correctly
+		Private Shared Function cloneSet(Of T)(  [set] As [Set](Of T)) As [Set](Of T) ' Safe casts assuming clone() works correctly
 			If TypeOf [set] Is HashSet Then
 				Dim clone As Object = CType([set], HashSet(Of T)).clone()
 				Return CType(clone, Set(Of T))

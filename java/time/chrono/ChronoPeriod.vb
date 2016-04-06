@@ -106,7 +106,7 @@ Namespace java.time.chrono
 		''' <param name="endDateExclusive">  the end date, exclusive, in any chronology, not null </param>
 		''' <returns> the period between this date and the end date, not null </returns>
 		''' <seealso cref= ChronoLocalDate#until(ChronoLocalDate) </seealso>
-		Shared Function between(ByVal startDateInclusive As ChronoLocalDate, ByVal endDateExclusive As ChronoLocalDate) As ChronoPeriod
+		Shared Function between(  startDateInclusive As ChronoLocalDate,   endDateExclusive As ChronoLocalDate) As ChronoPeriod
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 			java.util.Objects.requireNonNull(startDateInclusive, "startDateInclusive");
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
@@ -127,7 +127,7 @@ Namespace java.time.chrono
 		''' <returns> the long value of the unit </returns>
 		''' <exception cref="DateTimeException"> if the unit is not supported </exception>
 		''' <exception cref="UnsupportedTemporalTypeException"> if the unit is not supported </exception>
-		Overrides Function [get](ByVal unit As java.time.temporal.TemporalUnit) As Long
+		Overrides Function [get](  unit As java.time.temporal.TemporalUnit) As Long
 
 		''' <summary>
 		''' Gets the set of units supported by this period.
@@ -159,8 +159,8 @@ Namespace java.time.chrono
 		''' </summary>
 		''' <returns> true if this period is zero-length </returns>
 		ReadOnly Property default zero As Boolean
-			Sub [New](java.time.temporal.TemporalUnit unit : getUnits() ByVal  As )
-				Sub [New](get(unit) != ByVal 0 As )
+			Sub [New](java.time.temporal.TemporalUnit unit : getUnits()    As )
+				Sub [New](get(unit) !=   0 As )
 'JAVA TO VB CONVERTER TODO TASK: Interfaces cannot contain fields in .NET:
 '					Return False;
 'JAVA TO VB CONVERTER TODO TASK: Interfaces cannot contain fields in .NET:
@@ -171,8 +171,8 @@ Namespace java.time.chrono
 		''' </summary>
 		''' <returns> true if any unit of this period is negative </returns>
 		ReadOnly Property default negative As Boolean
-			Sub [New](java.time.temporal.TemporalUnit unit : getUnits() ByVal  As )
-				Sub [New](get(unit) < ByVal 0 As )
+			Sub [New](java.time.temporal.TemporalUnit unit : getUnits()    As )
+				Sub [New](get(unit) <   0 As )
 'JAVA TO VB CONVERTER TODO TASK: Interfaces cannot contain fields in .NET:
 '					Return True;
 'JAVA TO VB CONVERTER TODO TASK: Interfaces cannot contain fields in .NET:
@@ -191,7 +191,7 @@ Namespace java.time.chrono
 		''' <param name="amountToAdd">  the period to add, not null </param>
 		''' <returns> a {@code ChronoPeriod} based on this period with the requested period added, not null </returns>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
-		Function plus(ByVal amountToAdd As java.time.temporal.TemporalAmount) As ChronoPeriod
+		Function plus(  amountToAdd As java.time.temporal.TemporalAmount) As ChronoPeriod
 
 		''' <summary>
 		''' Returns a copy of this period with the specified period subtracted.
@@ -205,7 +205,7 @@ Namespace java.time.chrono
 		''' <param name="amountToSubtract">  the period to subtract, not null </param>
 		''' <returns> a {@code ChronoPeriod} based on this period with the requested period subtracted, not null </returns>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
-		Function minus(ByVal amountToSubtract As java.time.temporal.TemporalAmount) As ChronoPeriod
+		Function minus(  amountToSubtract As java.time.temporal.TemporalAmount) As ChronoPeriod
 
 		'-----------------------------------------------------------------------
 		''' <summary>
@@ -221,7 +221,7 @@ Namespace java.time.chrono
 		''' <returns> a {@code ChronoPeriod} based on this period with the amounts multiplied
 		'''  by the scalar, not null </returns>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
-		Function multipliedBy(ByVal scalar As Integer) As ChronoPeriod
+		Function multipliedBy(  scalar As Integer) As ChronoPeriod
 
 		''' <summary>
 		''' Returns a new instance with each amount in this period negated.
@@ -235,7 +235,7 @@ Namespace java.time.chrono
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs, which only happens if
 		'''  one of the units has the value {@code java.lang.[Long].MIN_VALUE} </exception>
 		default Function negated() As ChronoPeriod
-			Function multipliedBy(- ByVal 1 As ) As [Return]
+			Function multipliedBy(-   1 As ) As [Return]
 
 		'-----------------------------------------------------------------------
 		''' <summary>
@@ -277,7 +277,7 @@ Namespace java.time.chrono
 		''' <returns> an object of the same type with the adjustment made, not null </returns>
 		''' <exception cref="DateTimeException"> if unable to add </exception>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
-		Overrides Function addTo(ByVal temporal As java.time.temporal.Temporal) As java.time.temporal.Temporal
+		Overrides Function addTo(  temporal As java.time.temporal.Temporal) As java.time.temporal.Temporal
 
 		''' <summary>
 		''' Subtracts this period from the specified temporal object.
@@ -302,7 +302,7 @@ Namespace java.time.chrono
 		''' <returns> an object of the same type with the adjustment made, not null </returns>
 		''' <exception cref="DateTimeException"> if unable to subtract </exception>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
-		Overrides Function subtractFrom(ByVal temporal As java.time.temporal.Temporal) As java.time.temporal.Temporal
+		Overrides Function subtractFrom(  temporal As java.time.temporal.Temporal) As java.time.temporal.Temporal
 
 		'-----------------------------------------------------------------------
 		''' <summary>
@@ -315,7 +315,7 @@ Namespace java.time.chrono
 		''' </summary>
 		''' <param name="obj">  the object to check, null returns false </param>
 		''' <returns> true if this is equal to the other period </returns>
-		Overrides Function Equals(ByVal obj As Object) As Boolean
+		Overrides Function Equals(  obj As Object) As Boolean
 
 		''' <summary>
 		''' A hash code for this period.

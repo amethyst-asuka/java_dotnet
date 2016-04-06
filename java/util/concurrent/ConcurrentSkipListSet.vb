@@ -112,7 +112,7 @@ Namespace java.util.concurrent
 		'''        If {@code null}, the {@link Comparable natural
 		'''        ordering} of the elements will be used. </param>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Sub New(Of T1)(ByVal comparator As IComparer(Of T1))
+		Public Sub New(Of T1)(  comparator As IComparer(Of T1))
 			m = New ConcurrentSkipListMap(Of E, Object)(comparator)
 		End Sub
 
@@ -126,7 +126,7 @@ Namespace java.util.concurrent
 		'''         not <seealso cref="Comparable"/>, or are not mutually comparable </exception>
 		''' <exception cref="NullPointerException"> if the specified collection or any
 		'''         of its elements are null </exception>
-		Public Sub New(Of T1 As E)(ByVal c As ICollection(Of T1))
+		Public Sub New(Of T1 As E)(  c As ICollection(Of T1))
 			m = New ConcurrentSkipListMap(Of E, Object)
 			addAll(c)
 		End Sub
@@ -138,7 +138,7 @@ Namespace java.util.concurrent
 		''' <param name="s"> sorted set whose elements will comprise the new set </param>
 		''' <exception cref="NullPointerException"> if the specified sorted set or any
 		'''         of its elements are null </exception>
-		Public Sub New(ByVal s As java.util.SortedSet(Of E))
+		Public Sub New(  s As java.util.SortedSet(Of E))
 			m = New ConcurrentSkipListMap(Of E, Object)(s.comparator())
 			addAll(s)
 		End Sub
@@ -146,7 +146,7 @@ Namespace java.util.concurrent
 		''' <summary>
 		''' For use by submaps
 		''' </summary>
-		Friend Sub New(ByVal m As ConcurrentNavigableMap(Of E, Object))
+		Friend Sub New(  m As ConcurrentNavigableMap(Of E, Object))
 			Me.m = m
 		End Sub
 
@@ -206,7 +206,7 @@ Namespace java.util.concurrent
 		''' <exception cref="ClassCastException"> if the specified element cannot be
 		'''         compared with the elements currently in this set </exception>
 		''' <exception cref="NullPointerException"> if the specified element is null </exception>
-		Public Overridable Function contains(ByVal o As Object) As Boolean
+		Public Overridable Function contains(  o As Object) As Boolean
 			Return m.containsKey(o)
 		End Function
 
@@ -223,7 +223,7 @@ Namespace java.util.concurrent
 		''' <exception cref="ClassCastException"> if {@code e} cannot be compared
 		'''         with the elements currently in this set </exception>
 		''' <exception cref="NullPointerException"> if the specified element is null </exception>
-		Public Overridable Function add(ByVal e As E) As Boolean
+		Public Overridable Function add(  e As E) As Boolean
 			Return m.putIfAbsent(e,  java.lang.[Boolean].TRUE) Is Nothing
 		End Function
 
@@ -240,7 +240,7 @@ Namespace java.util.concurrent
 		''' <exception cref="ClassCastException"> if {@code o} cannot be compared
 		'''         with the elements currently in this set </exception>
 		''' <exception cref="NullPointerException"> if the specified element is null </exception>
-		Public Overridable Function remove(ByVal o As Object) As Boolean
+		Public Overridable Function remove(  o As Object) As Boolean
 			Return m.remove(o,  java.lang.[Boolean].TRUE)
 		End Function
 
@@ -281,7 +281,7 @@ Namespace java.util.concurrent
 		''' </summary>
 		''' <param name="o"> the object to be compared for equality with this set </param>
 		''' <returns> {@code true} if the specified object is equal to this set </returns>
-		Public Overrides Function Equals(ByVal o As Object) As Boolean
+		Public Overrides Function Equals(  o As Object) As Boolean
 			' Override AbstractSet version to avoid calling size()
 			If o Is Me Then Return True
 			If Not(TypeOf o Is java.util.Set) Then Return False
@@ -309,7 +309,7 @@ Namespace java.util.concurrent
 		'''         set are incompatible with the specified collection </exception>
 		''' <exception cref="NullPointerException"> if the specified collection or any
 		'''         of its elements are null </exception>
-		Public Overridable Function removeAll(Of T1)(ByVal c As ICollection(Of T1)) As Boolean
+		Public Overridable Function removeAll(Of T1)(  c As ICollection(Of T1)) As Boolean
 			' Override AbstractSet version to avoid unnecessary call to size()
 			Dim modified As Boolean = False
 			For Each e As Object In c
@@ -322,25 +322,25 @@ Namespace java.util.concurrent
 
 		''' <exception cref="ClassCastException"> {@inheritDoc} </exception>
 		''' <exception cref="NullPointerException"> if the specified element is null </exception>
-		Public Overridable Function lower(ByVal e As E) As E
+		Public Overridable Function lower(  e As E) As E
 			Return m.lowerKey(e)
 		End Function
 
 		''' <exception cref="ClassCastException"> {@inheritDoc} </exception>
 		''' <exception cref="NullPointerException"> if the specified element is null </exception>
-		Public Overridable Function floor(ByVal e As E) As E
+		Public Overridable Function floor(  e As E) As E
 			Return m.floorKey(e)
 		End Function
 
 		''' <exception cref="ClassCastException"> {@inheritDoc} </exception>
 		''' <exception cref="NullPointerException"> if the specified element is null </exception>
-		Public Overridable Function ceiling(ByVal e As E) As E
+		Public Overridable Function ceiling(  e As E) As E
 			Return m.ceilingKey(e)
 		End Function
 
 		''' <exception cref="ClassCastException"> {@inheritDoc} </exception>
 		''' <exception cref="NullPointerException"> if the specified element is null </exception>
-		Public Overridable Function higher(ByVal e As E) As E
+		Public Overridable Function higher(  e As E) As E
 			Return m.higherKey(e)
 		End Function
 
@@ -378,21 +378,21 @@ Namespace java.util.concurrent
 		''' <exception cref="NullPointerException"> if {@code fromElement} or
 		'''         {@code toElement} is null </exception>
 		''' <exception cref="IllegalArgumentException"> {@inheritDoc} </exception>
-		Public Overridable Function subSet(ByVal fromElement As E, ByVal fromInclusive As Boolean, ByVal toElement As E, ByVal toInclusive As Boolean) As java.util.NavigableSet(Of E)
+		Public Overridable Function subSet(  fromElement As E,   fromInclusive As Boolean,   toElement As E,   toInclusive As Boolean) As java.util.NavigableSet(Of E)
 			Return New ConcurrentSkipListSet(Of E) (m.subMap(fromElement, fromInclusive, toElement, toInclusive))
 		End Function
 
 		''' <exception cref="ClassCastException"> {@inheritDoc} </exception>
 		''' <exception cref="NullPointerException"> if {@code toElement} is null </exception>
 		''' <exception cref="IllegalArgumentException"> {@inheritDoc} </exception>
-		Public Overridable Function headSet(ByVal toElement As E, ByVal inclusive As Boolean) As java.util.NavigableSet(Of E)
+		Public Overridable Function headSet(  toElement As E,   inclusive As Boolean) As java.util.NavigableSet(Of E)
 			Return New ConcurrentSkipListSet(Of E)(m.headMap(toElement, inclusive))
 		End Function
 
 		''' <exception cref="ClassCastException"> {@inheritDoc} </exception>
 		''' <exception cref="NullPointerException"> if {@code fromElement} is null </exception>
 		''' <exception cref="IllegalArgumentException"> {@inheritDoc} </exception>
-		Public Overridable Function tailSet(ByVal fromElement As E, ByVal inclusive As Boolean) As java.util.NavigableSet(Of E)
+		Public Overridable Function tailSet(  fromElement As E,   inclusive As Boolean) As java.util.NavigableSet(Of E)
 			Return New ConcurrentSkipListSet(Of E)(m.tailMap(fromElement, inclusive))
 		End Function
 
@@ -400,21 +400,21 @@ Namespace java.util.concurrent
 		''' <exception cref="NullPointerException"> if {@code fromElement} or
 		'''         {@code toElement} is null </exception>
 		''' <exception cref="IllegalArgumentException"> {@inheritDoc} </exception>
-		Public Overridable Function subSet(ByVal fromElement As E, ByVal toElement As E) As java.util.NavigableSet(Of E)
+		Public Overridable Function subSet(  fromElement As E,   toElement As E) As java.util.NavigableSet(Of E)
 			Return subSet(fromElement, True, toElement, False)
 		End Function
 
 		''' <exception cref="ClassCastException"> {@inheritDoc} </exception>
 		''' <exception cref="NullPointerException"> if {@code toElement} is null </exception>
 		''' <exception cref="IllegalArgumentException"> {@inheritDoc} </exception>
-		Public Overridable Function headSet(ByVal toElement As E) As java.util.NavigableSet(Of E)
+		Public Overridable Function headSet(  toElement As E) As java.util.NavigableSet(Of E)
 			Return headSet(toElement, False)
 		End Function
 
 		''' <exception cref="ClassCastException"> {@inheritDoc} </exception>
 		''' <exception cref="NullPointerException"> if {@code fromElement} is null </exception>
 		''' <exception cref="IllegalArgumentException"> {@inheritDoc} </exception>
-		Public Overridable Function tailSet(ByVal fromElement As E) As java.util.NavigableSet(Of E)
+		Public Overridable Function tailSet(  fromElement As E) As java.util.NavigableSet(Of E)
 			Return tailSet(fromElement, True)
 		End Function
 
@@ -463,7 +463,7 @@ Namespace java.util.concurrent
 
 		' Support for resetting map in clone
 		Private Property map As ConcurrentNavigableMap(Of E, Object)
-			Set(ByVal map As ConcurrentNavigableMap(Of E, Object))
+			Set(  map As ConcurrentNavigableMap(Of E, Object))
 				UNSAFE.putObjectVolatile(Me, mapOffset, map)
 			End Set
 		End Property

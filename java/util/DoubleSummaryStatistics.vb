@@ -82,7 +82,7 @@ Namespace java.util
 		''' Records another value into the summary information.
 		''' </summary>
 		''' <param name="value"> the input value </param>
-		Public Overrides Sub accept(ByVal value As Double)
+		Public Overrides Sub accept(  value As Double)
 			count += 1
 			simpleSum += value
 			sumWithCompensation(value)
@@ -96,7 +96,7 @@ Namespace java.util
 		''' </summary>
 		''' <param name="other"> another {@code DoubleSummaryStatistics} </param>
 		''' <exception cref="NullPointerException"> if {@code other} is null </exception>
-		Public Overridable Sub combine(ByVal other As DoubleSummaryStatistics)
+		Public Overridable Sub combine(  other As DoubleSummaryStatistics)
 			count += other.count
 			simpleSum += other.simpleSum
 			sumWithCompensation(other.sum)
@@ -109,7 +109,7 @@ Namespace java.util
 		''' Incorporate a new double value using Kahan summation /
 		''' compensated summation.
 		''' </summary>
-		Private Sub sumWithCompensation(ByVal value As Double)
+		Private Sub sumWithCompensation(  value As Double)
 			Dim tmp As Double = value - sumCompensation
 			Dim velvel As Double = sum + tmp ' Little wolf of rounding error
 			sumCompensation = (velvel - sum) - tmp

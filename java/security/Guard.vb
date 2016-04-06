@@ -50,7 +50,7 @@ Namespace java.security
 		''' </param>
 		''' <exception cref="SecurityException"> if access is denied.
 		'''  </exception>
-		Sub checkGuard(ByVal [object] As Object)
+		Sub checkGuard(  [object] As Object)
 	End Interface
 
 End Namespace

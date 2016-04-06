@@ -411,7 +411,7 @@ Namespace java.awt.font
 	  ''' <returns> a <code>byte</code> array that is the table that
 	  ''' contains the font data corresponding to the specified
 	  ''' tag. </returns>
-	  Function getFontTable(ByVal sfntTag As Integer) As SByte()
+	  Function getFontTable(  sfntTag As Integer) As SByte()
 
 	  ''' <summary>
 	  ''' Returns the table as an array of bytes for a specified tag.
@@ -423,7 +423,7 @@ Namespace java.awt.font
 	  ''' <returns> a <code>byte</code> array that is the table that
 	  ''' contains the font data corresponding to the specified
 	  ''' tag. </returns>
-	  Function getFontTable(ByVal strSfntTag As String) As SByte()
+	  Function getFontTable(  strSfntTag As String) As SByte()
 
 	  ''' <summary>
 	  ''' Returns a subset of the table as an array of bytes
@@ -438,7 +438,7 @@ Namespace java.awt.font
 	  '''            <code>sfntTag</code> and containing the bytes
 	  '''            starting at <code>offset</code> byte and including
 	  '''            <code>count</code> bytes. </returns>
-	  Function getFontTable(ByVal sfntTag As Integer, ByVal offset As Integer, ByVal count As Integer) As SByte()
+	  Function getFontTable(  sfntTag As Integer,   offset As Integer,   count As Integer) As SByte()
 
 	  ''' <summary>
 	  ''' Returns a subset of the table as an array of bytes
@@ -454,7 +454,7 @@ Namespace java.awt.font
 	  '''            <code>strSfntTag</code> and containing the bytes
 	  '''            starting at <code>offset</code> byte and including
 	  '''            <code>count</code> bytes. </returns>
-	  Function getFontTable(ByVal strSfntTag As String, ByVal offset As Integer, ByVal count As Integer) As SByte()
+	  Function getFontTable(  strSfntTag As String,   offset As Integer,   count As Integer) As SByte()
 
 	  ''' <summary>
 	  ''' Returns the size of the table for a specified tag. Tags for sfnt
@@ -462,7 +462,7 @@ Namespace java.awt.font
 	  ''' <param name="sfntTag"> a four-character code as a 32-bit integer </param>
 	  ''' <returns> the size of the table corresponding to the specified
 	  ''' tag. </returns>
-	  Function getFontTableSize(ByVal sfntTag As Integer) As Integer
+	  Function getFontTableSize(  sfntTag As Integer) As Integer
 
 	  ''' <summary>
 	  ''' Returns the size of the table for a specified tag. Tags for sfnt
@@ -470,7 +470,7 @@ Namespace java.awt.font
 	  ''' <param name="strSfntTag"> a four-character code as a
 	  ''' <code>String</code> </param>
 	  ''' <returns> the size of the table corresponding to the specified tag. </returns>
-	  Function getFontTableSize(ByVal strSfntTag As String) As Integer
+	  Function getFontTableSize(  strSfntTag As String) As Integer
 
 
 	End Interface

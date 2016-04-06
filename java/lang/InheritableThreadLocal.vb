@@ -57,7 +57,7 @@ Namespace java.lang
 		''' </summary>
 		''' <param name="parentValue"> the parent thread's value </param>
 		''' <returns> the child thread's initial value </returns>
-		Protected Friend Overridable Function childValue(ByVal parentValue As T) As T
+		Protected Friend Overridable Function childValue(  parentValue As T) As T
 			Return parentValue
 		End Function
 
@@ -65,7 +65,7 @@ Namespace java.lang
 		''' Get the map associated with a ThreadLocal.
 		''' </summary>
 		''' <param name="t"> the current thread </param>
-		Friend Overridable Function getMap(ByVal t As Thread) As ThreadLocalMap
+		Friend Overridable Function getMap(  t As Thread) As ThreadLocalMap
 		   Return t.inheritableThreadLocals
 		End Function
 
@@ -74,7 +74,7 @@ Namespace java.lang
 		''' </summary>
 		''' <param name="t"> the current thread </param>
 		''' <param name="firstValue"> value for the initial entry of the table. </param>
-		Friend Overridable Sub createMap(ByVal t As Thread, ByVal firstValue As T)
+		Friend Overridable Sub createMap(  t As Thread,   firstValue As T)
 			t.inheritableThreadLocals = New ThreadLocalMap(Me, firstValue)
 		End Sub
 	End Class

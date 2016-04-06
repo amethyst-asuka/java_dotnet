@@ -62,7 +62,7 @@ Namespace java.awt
 		'''        information is not available. </param>
 		''' <seealso cref= #BIT_DEPTH_MULTI </seealso>
 		''' <seealso cref= #REFRESH_RATE_UNKNOWN </seealso>
-		Public Sub New(ByVal width As Integer, ByVal height As Integer, ByVal bitDepth As Integer, ByVal refreshRate As Integer)
+		Public Sub New(  width As Integer,   height As Integer,   bitDepth As Integer,   refreshRate As Integer)
 			Me.size = New Dimension(width, height)
 			Me.bitDepth = bitDepth
 			Me.refreshRate = refreshRate
@@ -127,7 +127,7 @@ Namespace java.awt
 		''' <summary>
 		''' Returns whether the two display modes are equal. </summary>
 		''' <returns> whether the two display modes are equal </returns>
-		Public Overrides Function Equals(ByVal dm As DisplayMode) As Boolean
+		Public Overrides Function Equals(  dm As DisplayMode) As Boolean
 			If dm Is Nothing Then Return False
 			Return (height = dm.height AndAlso width = dm.width AndAlso bitDepth = dm.bitDepth AndAlso refreshRate = dm.refreshRate)
 		End Function
@@ -135,7 +135,7 @@ Namespace java.awt
 		''' <summary>
 		''' {@inheritDoc}
 		''' </summary>
-		Public Overrides Function Equals(ByVal dm As Object) As Boolean
+		Public Overrides Function Equals(  dm As Object) As Boolean
 			If TypeOf dm Is DisplayMode Then
 				Return Equals(CType(dm, DisplayMode))
 			Else

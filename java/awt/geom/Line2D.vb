@@ -98,7 +98,7 @@ Namespace java.awt.geom
 			''' <param name="x2"> the X coordinate of the end point </param>
 			''' <param name="y2"> the Y coordinate of the end point
 			''' @since 1.2 </param>
-			Public Sub New(ByVal x1 As Single, ByVal y1 As Single, ByVal x2 As Single, ByVal y2 As Single)
+			Public Sub New(  x1 As Single,   y1 As Single,   x2 As Single,   y2 As Single)
 				lineine(x1, y1, x2, y2)
 			End Sub
 
@@ -108,7 +108,7 @@ Namespace java.awt.geom
 			''' <param name="p1"> the start <code>Point2D</code> of this line segment </param>
 			''' <param name="p2"> the end <code>Point2D</code> of this line segment
 			''' @since 1.2 </param>
-			Public Sub New(ByVal p1 As Point2D, ByVal p2 As Point2D)
+			Public Sub New(  p1 As Point2D,   p2 As Point2D)
 				lineine(p1, p2)
 			End Sub
 
@@ -176,7 +176,7 @@ Namespace java.awt.geom
 			''' {@inheritDoc}
 			''' @since 1.2
 			''' </summary>
-			Public Overrides Sub setLine(ByVal x1 As Double, ByVal y1 As Double, ByVal x2 As Double, ByVal y2 As Double)
+			Public Overrides Sub setLine(  x1 As Double,   y1 As Double,   x2 As Double,   y2 As Double)
 				Me.x1 = CSng(x1)
 				Me.y1 = CSng(y1)
 				Me.x2 = CSng(x2)
@@ -191,7 +191,7 @@ Namespace java.awt.geom
 			''' <param name="x2"> the X coordinate of the end point </param>
 			''' <param name="y2"> the Y coordinate of the end point
 			''' @since 1.2 </param>
-			Public Overridable Sub setLine(ByVal x1 As Single, ByVal y1 As Single, ByVal x2 As Single, ByVal y2 As Single)
+			Public Overridable Sub setLine(  x1 As Single,   y1 As Single,   x2 As Single,   y2 As Single)
 				Me.x1 = x1
 				Me.y1 = y1
 				Me.x2 = x2
@@ -280,7 +280,7 @@ Namespace java.awt.geom
 			''' <param name="x2"> the X coordinate of the end point </param>
 			''' <param name="y2"> the Y coordinate of the end point
 			''' @since 1.2 </param>
-			Function java.lang.Double(ByVal x1 As Double, ByVal y1 As Double, ByVal x2 As Double, ByVal y2 As Double) As [Public] Overridable
+			Function java.lang.Double(  x1 As Double,   y1 As Double,   x2 As Double,   y2 As Double) As [Public] Overridable
 				lineine(x1, y1, x2, y2)
 			End Function
 
@@ -290,7 +290,7 @@ Namespace java.awt.geom
 			''' <param name="p1"> the start <code>Point2D</code> of this line segment </param>
 			''' <param name="p2"> the end <code>Point2D</code> of this line segment
 			''' @since 1.2 </param>
-			Function java.lang.Double(ByVal p1 As Point2D, ByVal p2 As Point2D) As [Public] Overridable
+			Function java.lang.Double(  p1 As Point2D,   p2 As Point2D) As [Public] Overridable
 				lineine(p1, p2)
 			End Function
 
@@ -358,7 +358,7 @@ Namespace java.awt.geom
 			''' {@inheritDoc}
 			''' @since 1.2
 			''' </summary>
-			Public Overrides Sub setLine(ByVal x1 As Double, ByVal y1 As Double, ByVal x2 As Double, ByVal y2 As Double)
+			Public Overrides Sub setLine(  x1 As Double,   y1 As Double,   x2 As Double,   y2 As Double)
 				Me.x1 = x1
 				Me.y1 = y1
 				Me.x2 = x2
@@ -457,7 +457,7 @@ Namespace java.awt.geom
 		''' <param name="x2"> the X coordinate of the end point </param>
 		''' <param name="y2"> the Y coordinate of the end point
 		''' @since 1.2 </param>
-		Public MustOverride Sub setLine(ByVal x1 As Double, ByVal y1 As Double, ByVal x2 As Double, ByVal y2 As Double)
+		Public MustOverride Sub setLine(  x1 As Double,   y1 As Double,   x2 As Double,   y2 As Double)
 
 		''' <summary>
 		''' Sets the location of the end points of this <code>Line2D</code> to
@@ -465,7 +465,7 @@ Namespace java.awt.geom
 		''' <param name="p1"> the start <code>Point2D</code> of the line segment </param>
 		''' <param name="p2"> the end <code>Point2D</code> of the line segment
 		''' @since 1.2 </param>
-		Public Overridable Sub setLine(ByVal p1 As Point2D, ByVal p2 As Point2D)
+		Public Overridable Sub setLine(  p1 As Point2D,   p2 As Point2D)
 			lineine(p1.x, p1.y, p2.x, p2.y)
 		End Sub
 
@@ -475,7 +475,7 @@ Namespace java.awt.geom
 		''' <param name="l"> the specified <code>Line2D</code>
 		''' @since 1.2 </param>
 		Public Overridable Property line As Line2D
-			Set(ByVal l As Line2D)
+			Set(  l As Line2D)
 				lineine(l.x1, l.y1, l.x2, l.y2)
 			End Set
 		End Property
@@ -521,7 +521,7 @@ Namespace java.awt.geom
 		'''                  coordinates with respect to the line segment formed
 		'''                  by the first two specified coordinates.
 		''' @since 1.2 </returns>
-		Public Shared Function relativeCCW(ByVal x1 As Double, ByVal y1 As Double, ByVal x2 As Double, ByVal y2 As Double, ByVal px As Double, ByVal py As Double) As Integer
+		Public Shared Function relativeCCW(  x1 As Double,   y1 As Double,   x2 As Double,   y2 As Double,   px As Double,   py As Double) As Integer
 			x2 -= x1
 			y2 -= y1
 			px -= x1
@@ -566,7 +566,7 @@ Namespace java.awt.geom
 		'''         coordinates with respect to this <code>Line2D</code> </returns>
 		''' <seealso cref= #relativeCCW(double, double, double, double, double, double)
 		''' @since 1.2 </seealso>
-		Public Overridable Function relativeCCW(ByVal px As Double, ByVal py As Double) As Integer
+		Public Overridable Function relativeCCW(  px As Double,   py As Double) As Integer
 			Return relativeCCW(x1, y1, x2, y2, px, py)
 		End Function
 
@@ -582,7 +582,7 @@ Namespace java.awt.geom
 		'''         <code>Point2D</code> with respect to this <code>Line2D</code> </returns>
 		''' <seealso cref= #relativeCCW(double, double, double, double, double, double)
 		''' @since 1.2 </seealso>
-		Public Overridable Function relativeCCW(ByVal p As Point2D) As Integer
+		Public Overridable Function relativeCCW(  p As Point2D) As Integer
 			Return relativeCCW(x1, y1, x2, y2, p.x, p.y)
 		End Function
 
@@ -611,7 +611,7 @@ Namespace java.awt.geom
 		'''                  and the second specified line segment intersect
 		'''                  each other; <code>false</code> otherwise.
 		''' @since 1.2 </returns>
-		Public Shared Function linesIntersect(ByVal x1 As Double, ByVal y1 As Double, ByVal x2 As Double, ByVal y2 As Double, ByVal x3 As Double, ByVal y3 As Double, ByVal x4 As Double, ByVal y4 As Double) As Boolean
+		Public Shared Function linesIntersect(  x1 As Double,   y1 As Double,   x2 As Double,   y2 As Double,   x3 As Double,   y3 As Double,   x4 As Double,   y4 As Double) As Boolean
 			Return ((relativeCCW(x1, y1, x2, y2, x3, y3) * relativeCCW(x1, y1, x2, y2, x4, y4) <= 0) AndAlso (relativeCCW(x3, y3, x4, y4, x1, y1) * relativeCCW(x3, y3, x4, y4, x2, y2) <= 0))
 		End Function
 
@@ -630,7 +630,7 @@ Namespace java.awt.geom
 		''' <returns> {@code <true>} if this line segment and the specified line segment
 		'''                  intersect each other; <code>false</code> otherwise.
 		''' @since 1.2 </returns>
-		Public Overridable Function intersectsLine(ByVal x1 As Double, ByVal y1 As Double, ByVal x2 As Double, ByVal y2 As Double) As Boolean
+		Public Overridable Function intersectsLine(  x1 As Double,   y1 As Double,   x2 As Double,   y2 As Double) As Boolean
 			Return linesIntersect(x1, y1, x2, y2, x1, y1, x2, y2)
 		End Function
 
@@ -641,7 +641,7 @@ Namespace java.awt.geom
 		'''                  segment intersect each other;
 		'''                  <code>false</code> otherwise.
 		''' @since 1.2 </returns>
-		Public Overridable Function intersectsLine(ByVal l As Line2D) As Boolean
+		Public Overridable Function intersectsLine(  l As Line2D) As Boolean
 			Return linesIntersect(l.x1, l.y1, l.x2, l.y2, x1, y1, x2, y2)
 		End Function
 
@@ -668,7 +668,7 @@ Namespace java.awt.geom
 		'''                  specified point to the specified line segment. </returns>
 		''' <seealso cref= #ptLineDistSq(double, double, double, double, double, double)
 		''' @since 1.2 </seealso>
-		Public Shared Function ptSegDistSq(ByVal x1 As Double, ByVal y1 As Double, ByVal x2 As Double, ByVal y2 As Double, ByVal px As Double, ByVal py As Double) As Double
+		Public Shared Function ptSegDistSq(  x1 As Double,   y1 As Double,   x2 As Double,   y2 As Double,   px As Double,   py As Double) As Double
 			' Adjust vectors relative to x1,y1
 			' x2,y2 becomes relative vector from x1,y1 to end of segment
 			x2 -= x1
@@ -737,7 +737,7 @@ Namespace java.awt.geom
 		'''                          to the specified line segment. </returns>
 		''' <seealso cref= #ptLineDist(double, double, double, double, double, double)
 		''' @since 1.2 </seealso>
-		Public Shared Function ptSegDist(ByVal x1 As Double, ByVal y1 As Double, ByVal x2 As Double, ByVal y2 As Double, ByVal px As Double, ByVal py As Double) As Double
+		Public Shared Function ptSegDist(  x1 As Double,   y1 As Double,   x2 As Double,   y2 As Double,   px As Double,   py As Double) As Double
 			Return System.Math.Sqrt(ptSegDistSq(x1, y1, x2, y2, px, py))
 		End Function
 
@@ -756,7 +756,7 @@ Namespace java.awt.geom
 		'''                  specified point to the current line segment. </returns>
 		''' <seealso cref= #ptLineDistSq(double, double)
 		''' @since 1.2 </seealso>
-		Public Overridable Function ptSegDistSq(ByVal px As Double, ByVal py As Double) As Double
+		Public Overridable Function ptSegDistSq(  px As Double,   py As Double) As Double
 			Return ptSegDistSq(x1, y1, x2, y2, px, py)
 		End Function
 
@@ -774,7 +774,7 @@ Namespace java.awt.geom
 		'''                  line segment. </returns>
 		''' <seealso cref= #ptLineDistSq(Point2D)
 		''' @since 1.2 </seealso>
-		Public Overridable Function ptSegDistSq(ByVal pt As Point2D) As Double
+		Public Overridable Function ptSegDistSq(  pt As Point2D) As Double
 			Return ptSegDistSq(x1, y1, x2, y2, pt.x, pt.y)
 		End Function
 
@@ -793,7 +793,7 @@ Namespace java.awt.geom
 		'''                  point to the current line segment. </returns>
 		''' <seealso cref= #ptLineDist(double, double)
 		''' @since 1.2 </seealso>
-		Public Overridable Function ptSegDist(ByVal px As Double, ByVal py As Double) As Double
+		Public Overridable Function ptSegDist(  px As Double,   py As Double) As Double
 			Return ptSegDist(x1, y1, x2, y2, px, py)
 		End Function
 
@@ -811,7 +811,7 @@ Namespace java.awt.geom
 		'''                          segment. </returns>
 		''' <seealso cref= #ptLineDist(Point2D)
 		''' @since 1.2 </seealso>
-		Public Overridable Function ptSegDist(ByVal pt As Point2D) As Double
+		Public Overridable Function ptSegDist(  pt As Point2D) As Double
 			Return ptSegDist(x1, y1, x2, y2, pt.x, pt.y)
 		End Function
 
@@ -834,7 +834,7 @@ Namespace java.awt.geom
 		'''                  specified point to the specified line. </returns>
 		''' <seealso cref= #ptSegDistSq(double, double, double, double, double, double)
 		''' @since 1.2 </seealso>
-		Public Shared Function ptLineDistSq(ByVal x1 As Double, ByVal y1 As Double, ByVal x2 As Double, ByVal y2 As Double, ByVal px As Double, ByVal py As Double) As Double
+		Public Shared Function ptLineDistSq(  x1 As Double,   y1 As Double,   x2 As Double,   y2 As Double,   px As Double,   py As Double) As Double
 			' Adjust vectors relative to x1,y1
 			' x2,y2 becomes relative vector from x1,y1 to end of segment
 			x2 -= x1
@@ -873,7 +873,7 @@ Namespace java.awt.geom
 		'''                   point to the specified line. </returns>
 		''' <seealso cref= #ptSegDist(double, double, double, double, double, double)
 		''' @since 1.2 </seealso>
-		Public Shared Function ptLineDist(ByVal x1 As Double, ByVal y1 As Double, ByVal x2 As Double, ByVal y2 As Double, ByVal px As Double, ByVal py As Double) As Double
+		Public Shared Function ptLineDist(  x1 As Double,   y1 As Double,   x2 As Double,   y2 As Double,   px As Double,   py As Double) As Double
 			Return System.Math.Sqrt(ptLineDistSq(x1, y1, x2, y2, px, py))
 		End Function
 
@@ -892,7 +892,7 @@ Namespace java.awt.geom
 		'''                  specified point to the current line. </returns>
 		''' <seealso cref= #ptSegDistSq(double, double)
 		''' @since 1.2 </seealso>
-		Public Overridable Function ptLineDistSq(ByVal px As Double, ByVal py As Double) As Double
+		Public Overridable Function ptLineDistSq(  px As Double,   py As Double) As Double
 			Return ptLineDistSq(x1, y1, x2, y2, px, py)
 		End Function
 
@@ -910,7 +910,7 @@ Namespace java.awt.geom
 		'''                  line. </returns>
 		''' <seealso cref= #ptSegDistSq(Point2D)
 		''' @since 1.2 </seealso>
-		Public Overridable Function ptLineDistSq(ByVal pt As Point2D) As Double
+		Public Overridable Function ptLineDistSq(  pt As Point2D) As Double
 			Return ptLineDistSq(x1, y1, x2, y2, pt.x, pt.y)
 		End Function
 
@@ -929,7 +929,7 @@ Namespace java.awt.geom
 		'''                  to the current line. </returns>
 		''' <seealso cref= #ptSegDist(double, double)
 		''' @since 1.2 </seealso>
-		Public Overridable Function ptLineDist(ByVal px As Double, ByVal py As Double) As Double
+		Public Overridable Function ptLineDist(  px As Double,   py As Double) As Double
 			Return ptLineDist(x1, y1, x2, y2, px, py)
 		End Function
 
@@ -944,7 +944,7 @@ Namespace java.awt.geom
 		'''                  <code>Point2D</code> to the current line. </returns>
 		''' <seealso cref= #ptSegDist(Point2D)
 		''' @since 1.2 </seealso>
-		Public Overridable Function ptLineDist(ByVal pt As Point2D) As Double
+		Public Overridable Function ptLineDist(  pt As Point2D) As Double
 			Return ptLineDist(x1, y1, x2, y2, pt.x, pt.y)
 		End Function
 
@@ -959,7 +959,7 @@ Namespace java.awt.geom
 		''' <returns> <code>false</code> because a <code>Line2D</code> contains
 		''' no area.
 		''' @since 1.2 </returns>
-		Public Overridable Function contains(ByVal x As Double, ByVal y As Double) As Boolean
+		Public Overridable Function contains(  x As Double,   y As Double) As Boolean
 			Return False
 		End Function
 
@@ -973,7 +973,7 @@ Namespace java.awt.geom
 		''' <returns> <code>false</code> because a <code>Line2D</code> contains
 		''' no area.
 		''' @since 1.2 </returns>
-		Public Overridable Function contains(ByVal p As Point2D) As Boolean
+		Public Overridable Function contains(  p As Point2D) As Boolean
 			Return False
 		End Function
 
@@ -981,7 +981,7 @@ Namespace java.awt.geom
 		''' {@inheritDoc}
 		''' @since 1.2
 		''' </summary>
-		Public Overridable Function intersects(ByVal x As Double, ByVal y As Double, ByVal w As Double, ByVal h As Double) As Boolean
+		Public Overridable Function intersects(  x As Double,   y As Double,   w As Double,   h As Double) As Boolean
 			Return intersects(New Rectangle2D.Double(x, y, w, h))
 		End Function
 
@@ -989,7 +989,7 @@ Namespace java.awt.geom
 		''' {@inheritDoc}
 		''' @since 1.2
 		''' </summary>
-		Public Overridable Function intersects(ByVal r As Rectangle2D) As Boolean
+		Public Overridable Function intersects(  r As Rectangle2D) As Boolean
 			Return r.intersectsLine(x1, y1, x2, y2)
 		End Function
 
@@ -1008,7 +1008,7 @@ Namespace java.awt.geom
 		''' <returns> <code>false</code> because a <code>Line2D</code> contains
 		''' no area.
 		''' @since 1.2 </returns>
-		Public Overridable Function contains(ByVal x As Double, ByVal y As Double, ByVal w As Double, ByVal h As Double) As Boolean
+		Public Overridable Function contains(  x As Double,   y As Double,   w As Double,   h As Double) As Boolean
 			Return False
 		End Function
 
@@ -1022,7 +1022,7 @@ Namespace java.awt.geom
 		''' <returns> <code>false</code> because a <code>Line2D</code> contains
 		''' no area.
 		''' @since 1.2 </returns>
-		Public Overridable Function contains(ByVal r As Rectangle2D) As Boolean
+		Public Overridable Function contains(  r As Rectangle2D) As Boolean
 			Return False
 		End Function
 
@@ -1048,7 +1048,7 @@ Namespace java.awt.geom
 		''' <returns> a <seealso cref="PathIterator"/> that defines the boundary of this
 		'''          <code>Line2D</code>.
 		''' @since 1.2 </returns>
-		Public Overridable Function getPathIterator(ByVal at As AffineTransform) As PathIterator
+		Public Overridable Function getPathIterator(  at As AffineTransform) As PathIterator
 			Return New LineIterator(Me, at)
 		End Function
 
@@ -1069,7 +1069,7 @@ Namespace java.awt.geom
 		''' <returns> a <code>PathIterator</code> that defines the boundary of the
 		'''                  flattened <code>Line2D</code>
 		''' @since 1.2 </returns>
-		Public Overridable Function getPathIterator(ByVal at As AffineTransform, ByVal flatness As Double) As PathIterator
+		Public Overridable Function getPathIterator(  at As AffineTransform,   flatness As Double) As PathIterator
 			Return New LineIterator(Me, at)
 		End Function
 

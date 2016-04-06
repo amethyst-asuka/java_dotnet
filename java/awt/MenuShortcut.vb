@@ -97,7 +97,7 @@ Namespace java.awt
 		''' this key were pressed. </param>
 		''' <seealso cref= java.awt.event.KeyEvent
 		'''  </seealso>
-		Public Sub New(ByVal key As Integer)
+		Public Sub New(  key As Integer)
 			Me.New(key, False)
 		End Sub
 
@@ -110,7 +110,7 @@ Namespace java.awt
 		''' with the SHIFT key down. </param>
 		''' <seealso cref= java.awt.event.KeyEvent
 		'''  </seealso>
-		Public Sub New(ByVal key As Integer, ByVal useShiftModifier As Boolean)
+		Public Sub New(  key As Integer,   useShiftModifier As Boolean)
 			Me.key = key
 			Me.usesShift = useShiftModifier
 		End Sub
@@ -143,7 +143,7 @@ Namespace java.awt
 		''' <returns> <code>true</code> if this MenuShortcut is the same as another,
 		''' <code>false</code> otherwise.
 		''' @since JDK1.1 </returns>
-		Public Overrides Function Equals(ByVal s As MenuShortcut) As Boolean
+		Public Overrides Function Equals(  s As MenuShortcut) As Boolean
 			Return (s IsNot Nothing AndAlso (s.key = key) AndAlso (s.usesShiftModifier() = usesShift))
 		End Function
 
@@ -155,7 +155,7 @@ Namespace java.awt
 		''' <returns> <code>true</code> if this MenuShortcut is the same as another,
 		''' <code>false</code> otherwise.
 		''' @since 1.2 </returns>
-		Public Overrides Function Equals(ByVal obj As Object) As Boolean
+		Public Overrides Function Equals(  obj As Object) As Boolean
 			If TypeOf obj Is MenuShortcut Then Return Equals(CType(obj, MenuShortcut))
 			Return False
 		End Function

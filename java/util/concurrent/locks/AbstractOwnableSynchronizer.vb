@@ -75,7 +75,7 @@ Namespace java.util.concurrent.locks
 		''' {@code volatile} field accesses. </summary>
 		''' <param name="thread"> the owner thread </param>
 		Protected Friend Property exclusiveOwnerThread As Thread
-			Set(ByVal thread_Renamed As Thread)
+			Set(  thread_Renamed As Thread)
 				exclusiveOwnerThread = thread_Renamed
 			End Set
 			Get

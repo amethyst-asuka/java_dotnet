@@ -105,7 +105,7 @@ Namespace java.lang
 		'''          If {@code clazz} is {@code null} </exception>
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Public Shared Function compileClass(ByVal clazz As [Class]) As Boolean
+		Public Shared Function compileClass(  clazz As [Class]) As Boolean
 		End Function
 
 		''' <summary>
@@ -121,7 +121,7 @@ Namespace java.lang
 		'''          If {@code string} is {@code null} </exception>
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Public Shared Function compileClasses(ByVal [string] As String) As Boolean
+		Public Shared Function compileClasses(  [string] As String) As Boolean
 		End Function
 
 		''' <summary>
@@ -138,7 +138,7 @@ Namespace java.lang
 		'''          If {@code any} is {@code null} </exception>
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Public Shared Function command(ByVal any As Object) As Object
+		Public Shared Function command(  any As Object) As Object
 		End Function
 
 		''' <summary>

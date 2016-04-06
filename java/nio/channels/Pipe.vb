@@ -58,15 +58,15 @@ Namespace java.nio.channels
 			Inherits AbstractSelectableChannel
 			Implements ReadableByteChannel, ScatteringByteChannel
 
-				Public MustOverride Function read(ByVal dsts As java.nio.ByteBuffer()) As Long Implements ScatteringByteChannel.read
-				Public MustOverride Function read(ByVal dsts As java.nio.ByteBuffer(), ByVal offset As Integer, ByVal length As Integer) As Long Implements ScatteringByteChannel.read
-				Public MustOverride Function read(ByVal dst As java.nio.ByteBuffer) As Integer Implements ReadableByteChannel.read
+				Public MustOverride Function read(  dsts As java.nio.ByteBuffer()) As Long Implements ScatteringByteChannel.read
+				Public MustOverride Function read(  dsts As java.nio.ByteBuffer(),   offset As Integer,   length As Integer) As Long Implements ScatteringByteChannel.read
+				Public MustOverride Function read(  dst As java.nio.ByteBuffer) As Integer Implements ReadableByteChannel.read
 			''' <summary>
 			''' Constructs a new instance of this class.
 			''' </summary>
 			''' <param name="provider">
 			'''         The selector provider </param>
-			Protected Friend Sub New(ByVal provider As SelectorProvider)
+			Protected Friend Sub New(  provider As SelectorProvider)
 				MyBase.New(provider)
 			End Sub
 
@@ -93,15 +93,15 @@ Namespace java.nio.channels
 			Inherits AbstractSelectableChannel
 			Implements WritableByteChannel, GatheringByteChannel
 
-				Public MustOverride Function write(ByVal srcs As java.nio.ByteBuffer()) As Long Implements GatheringByteChannel.write
-				Public MustOverride Function write(ByVal srcs As java.nio.ByteBuffer(), ByVal offset As Integer, ByVal length As Integer) As Long Implements GatheringByteChannel.write
-				Public MustOverride Function write(ByVal src As java.nio.ByteBuffer) As Integer Implements WritableByteChannel.write
+				Public MustOverride Function write(  srcs As java.nio.ByteBuffer()) As Long Implements GatheringByteChannel.write
+				Public MustOverride Function write(  srcs As java.nio.ByteBuffer(),   offset As Integer,   length As Integer) As Long Implements GatheringByteChannel.write
+				Public MustOverride Function write(  src As java.nio.ByteBuffer) As Integer Implements WritableByteChannel.write
 			''' <summary>
 			''' Initializes a new instance of this class.
 			''' </summary>
 			''' <param name="provider">
 			'''         The selector provider </param>
-			Protected Friend Sub New(ByVal provider As SelectorProvider)
+			Protected Friend Sub New(  provider As SelectorProvider)
 				MyBase.New(provider)
 			End Sub
 

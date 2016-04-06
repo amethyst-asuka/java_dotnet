@@ -68,7 +68,7 @@ Namespace java.security.cert
 		''' <param name="port"> the port number of the LDAP server </param>
 		''' <exception cref="NullPointerException"> if {@code serverName} is
 		''' {@code null} </exception>
-		Public Sub New(ByVal serverName As String, ByVal port As Integer)
+		Public Sub New(  serverName As String,   port As Integer)
 			If serverName Is Nothing Then Throw New NullPointerException
 			Me.serverName = serverName
 			Me.port = port
@@ -81,7 +81,7 @@ Namespace java.security.cert
 		''' <param name="serverName"> the DNS name of the LDAP server </param>
 		''' <exception cref="NullPointerException"> if {@code serverName} is
 		''' {@code null} </exception>
-		Public Sub New(ByVal serverName As String)
+		Public Sub New(  serverName As String)
 			Me.New(serverName, LDAP_DEFAULT_PORT)
 		End Sub
 

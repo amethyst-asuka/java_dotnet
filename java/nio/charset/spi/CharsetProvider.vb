@@ -100,7 +100,7 @@ Namespace java.nio.charset.spi
 		''' <returns>  A charset object for the named charset,
 		'''          or <tt>null</tt> if the named charset
 		'''          is not supported by this provider </returns>
-		Public MustOverride Function charsetForName(ByVal charsetName As String) As java.nio.charset.Charset
+		Public MustOverride Function charsetForName(  charsetName As String) As java.nio.charset.Charset
 
 	End Class
 

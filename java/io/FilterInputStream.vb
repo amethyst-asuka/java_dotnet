@@ -59,7 +59,7 @@ Namespace java.io
 		''' </summary>
 		''' <param name="in">   the underlying input stream, or <code>null</code> if
 		'''          this instance is to be created without an underlying stream. </param>
-		Protected Friend Sub New(ByVal [in] As InputStream)
+		Protected Friend Sub New(  [in] As InputStream)
 			Me.in = [in]
 		End Sub
 
@@ -102,7 +102,7 @@ Namespace java.io
 		'''             the stream has been reached. </returns>
 		''' <exception cref="IOException">  if an I/O error occurs. </exception>
 		''' <seealso cref=        java.io.FilterInputStream#read(byte[], int, int) </seealso>
-		Public Overrides Function read(ByVal b As SByte()) As Integer
+		Public Overrides Function read(  b As SByte()) As Integer
 			Return read(b, 0, b.Length)
 		End Function
 

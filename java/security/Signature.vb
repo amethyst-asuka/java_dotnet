@@ -154,7 +154,7 @@ Namespace java.security
 		''' "{@docRoot}/../technotes/guides/security/StandardNames.html#Signature">
 		''' Java Cryptography Architecture Standard Algorithm Name Documentation</a>
 		''' for information about standard algorithm names. </param>
-		Protected Friend Sub New(ByVal algorithm As String)
+		Protected Friend Sub New(  algorithm As String)
 			Me.algorithm = algorithm
 		End Sub
 
@@ -193,7 +193,7 @@ Namespace java.security
 		'''          specified algorithm.
 		''' </exception>
 		''' <seealso cref= Provider </seealso>
-		Public Shared Function getInstance(ByVal algorithm As String) As Signature
+		Public Shared Function getInstance(  algorithm As String) As Signature
 			Dim list As List(Of java.security.Provider.Service)
 			If algorithm.equalsIgnoreCase(RSA_SIGNATURE) Then
 				list = GetInstance.getServices(rsaIds)
@@ -221,7 +221,7 @@ Namespace java.security
 			Throw failure
 		End Function
 
-		Private Shared Function getInstance(ByVal instance As sun.security.jca.GetInstance.Instance, ByVal algorithm As String) As Signature
+		Private Shared Function getInstance(  instance As sun.security.jca.GetInstance.Instance,   algorithm As String) As Signature
 			Dim sig As Signature
 			If TypeOf instance.impl Is Signature Then
 				sig = CType(instance.impl, Signature)
@@ -252,7 +252,7 @@ Namespace java.security
 			signatureInfo.put("sun.security.pkcs11.P11Signature", [TRUE])
 		End Sub
 
-		Private Shared Function isSpi(ByVal s As java.security.Provider.Service) As Boolean
+		Private Shared Function isSpi(  s As java.security.Provider.Service) As Boolean
 			If s.type.Equals("Cipher") Then Return True
 			Dim className As String = s.className
 			Dim result As Boolean? = signatureInfo.get(className)
@@ -310,7 +310,7 @@ Namespace java.security
 		'''          or empty.
 		''' </exception>
 		''' <seealso cref= Provider </seealso>
-		Public Shared Function getInstance(ByVal algorithm As String, ByVal provider_Renamed As String) As Signature
+		Public Shared Function getInstance(  algorithm As String,   provider_Renamed As String) As Signature
 			If algorithm.equalsIgnoreCase(RSA_SIGNATURE) Then
 				' exception compatibility with existing code
 				If (provider_Renamed Is Nothing) OrElse (provider_Renamed.length() = 0) Then Throw New IllegalArgumentException("missing provider")
@@ -350,7 +350,7 @@ Namespace java.security
 		''' <seealso cref= Provider
 		''' 
 		''' @since 1.4 </seealso>
-		Public Shared Function getInstance(ByVal algorithm As String, ByVal provider_Renamed As Provider) As Signature
+		Public Shared Function getInstance(  algorithm As String,   provider_Renamed As Provider) As Signature
 			If algorithm.equalsIgnoreCase(RSA_SIGNATURE) Then
 				' exception compatibility with existing code
 				If provider_Renamed Is Nothing Then Throw New IllegalArgumentException("missing provider")
@@ -362,7 +362,7 @@ Namespace java.security
 
 		' return an implementation for NONEwithRSA, which is a special case
 		' because of the Cipher.RSA/ECB/PKCS1Padding compatibility wrapper
-		Private Shared Function getInstanceRSA(ByVal p As Provider) As Signature
+		Private Shared Function getInstanceRSA(  p As Provider) As Signature
 			' try Signature first
 			Dim s As java.security.Provider.Service = p.getService("Signature", RSA_SIGNATURE)
 			If s IsNot Nothing Then
@@ -404,7 +404,7 @@ Namespace java.security
 		''' going to be verified.
 		''' </param>
 		''' <exception cref="InvalidKeyException"> if the key is invalid. </exception>
-		Public Sub initVerify(ByVal publicKey As PublicKey)
+		Public Sub initVerify(  publicKey As PublicKey)
 			engineInitVerify(publicKey)
 			state = VERIFY_Renamed
 
@@ -428,7 +428,7 @@ Namespace java.security
 		''' is not encoded properly or does not include required  parameter
 		''' information or cannot be used for digital signature purposes.
 		''' @since 1.3 </exception>
-		Public Sub initVerify(ByVal certificate As java.security.cert.Certificate)
+		Public Sub initVerify(  certificate As java.security.cert.Certificate)
 			' If the certificate is of type X509Certificate,
 			' we should check whether it has a Key Usage
 			' extension marked as critical.
@@ -462,7 +462,7 @@ Namespace java.security
 		''' is going to be generated.
 		''' </param>
 		''' <exception cref="InvalidKeyException"> if the key is invalid. </exception>
-		Public Sub initSign(ByVal privateKey As PrivateKey)
+		Public Sub initSign(  privateKey As PrivateKey)
 			engineInitSign(privateKey)
 			state = SIGN_Renamed
 
@@ -480,7 +480,7 @@ Namespace java.security
 		''' <param name="random"> the source of randomness for this signature.
 		''' </param>
 		''' <exception cref="InvalidKeyException"> if the key is invalid. </exception>
-		Public Sub initSign(ByVal privateKey As PrivateKey, ByVal random_Renamed As SecureRandom)
+		Public Sub initSign(  privateKey As PrivateKey,   random_Renamed As SecureRandom)
 			engineInitSign(privateKey, random_Renamed)
 			state = SIGN_Renamed
 
@@ -536,7 +536,7 @@ Namespace java.security
 		''' than the actual signature length.
 		''' 
 		''' @since 1.2 </exception>
-		Public Function sign(ByVal outbuf As SByte(), ByVal offset As Integer, ByVal len As Integer) As Integer
+		Public Function sign(  outbuf As SByte(),   offset As Integer,   len As Integer) As Integer
 			If outbuf Is Nothing Then Throw New IllegalArgumentException("No output buffer given")
 			If offset < 0 OrElse len < 0 Then Throw New IllegalArgumentException("offset or len is less than 0")
 			If outbuf.Length - offset < len Then Throw New IllegalArgumentException("Output buffer too small for specified offset and length")
@@ -561,7 +561,7 @@ Namespace java.security
 		''' initialized properly, the passed-in signature is improperly
 		''' encoded or of the wrong type, if this signature algorithm is unable to
 		''' process the input data provided, etc. </exception>
-		Public Function verify(ByVal signature_Renamed As SByte()) As Boolean
+		Public Function verify(  signature_Renamed As SByte()) As Boolean
 			If state = VERIFY_Renamed Then Return engineVerify(signature_Renamed)
 			Throw New SignatureException("object not initialized for " & "verification")
 		End Function
@@ -593,7 +593,7 @@ Namespace java.security
 		''' {@code length} is greater than the length of the
 		''' {@code signature} byte array.
 		''' @since 1.4 </exception>
-		Public Function verify(ByVal signature_Renamed As SByte(), ByVal offset As Integer, ByVal length As Integer) As Boolean
+		Public Function verify(  signature_Renamed As SByte(),   offset As Integer,   length As Integer) As Boolean
 			If state = VERIFY_Renamed Then
 				If signature_Renamed Is Nothing Then Throw New IllegalArgumentException("signature is null")
 				If offset < 0 OrElse length < 0 Then Throw New IllegalArgumentException("offset or length is less than 0")
@@ -611,7 +611,7 @@ Namespace java.security
 		''' </param>
 		''' <exception cref="SignatureException"> if this signature object is not
 		''' initialized properly. </exception>
-		Public Sub update(ByVal b As SByte)
+		Public Sub update(  b As SByte)
 			If state = VERIFY_Renamed OrElse state = SIGN_Renamed Then
 				engineUpdate(b)
 			Else
@@ -627,7 +627,7 @@ Namespace java.security
 		''' </param>
 		''' <exception cref="SignatureException"> if this signature object is not
 		''' initialized properly. </exception>
-		Public Sub update(ByVal data As SByte())
+		Public Sub update(  data As SByte())
 			update(data, 0, data.Length)
 		End Sub
 
@@ -641,7 +641,7 @@ Namespace java.security
 		''' </param>
 		''' <exception cref="SignatureException"> if this signature object is not
 		''' initialized properly. </exception>
-		Public Sub update(ByVal data As SByte(), ByVal [off] As Integer, ByVal len As Integer)
+		Public Sub update(  data As SByte(),   [off] As Integer,   len As Integer)
 			If state = SIGN_Renamed OrElse state = VERIFY_Renamed Then
 				If data Is Nothing Then Throw New IllegalArgumentException("data is null")
 				If [off] < 0 OrElse len < 0 Then Throw New IllegalArgumentException("off or len is less than 0")
@@ -664,7 +664,7 @@ Namespace java.security
 		''' <exception cref="SignatureException"> if this signature object is not
 		''' initialized properly.
 		''' @since 1.5 </exception>
-		Public Sub update(ByVal data As java.nio.ByteBuffer)
+		Public Sub update(  data As java.nio.ByteBuffer)
 			If (state <> SIGN_Renamed) AndAlso (state <> VERIFY_Renamed) Then Throw New SignatureException("object not initialized for " & "signature or verification")
 			If data Is Nothing Then Throw New NullPointerException
 			engineUpdate(data)
@@ -724,7 +724,7 @@ Namespace java.security
 		''' {@link #setParameter(java.security.spec.AlgorithmParameterSpec)
 		''' setParameter}. 
 		<Obsolete("Use")> _
-		Public Sub setParameter(ByVal param As String, ByVal value As Object)
+		Public Sub setParameter(  param As String,   value As Object)
 			engineSetParameter(param, value)
 		End Sub
 
@@ -738,7 +738,7 @@ Namespace java.security
 		''' </exception>
 		''' <seealso cref= #getParameters </seealso>
 		Public Property parameter As java.security.spec.AlgorithmParameterSpec
-			Set(ByVal params As java.security.spec.AlgorithmParameterSpec)
+			Set(  params As java.security.spec.AlgorithmParameterSpec)
 				engineSetParameter(params)
 			End Set
 		End Property
@@ -786,7 +786,7 @@ Namespace java.security
 		''' 
 		''' @deprecated </seealso>
 		<Obsolete> _
-		Public Function getParameter(ByVal param As String) As Object
+		Public Function getParameter(  param As String) As Object
 			Return engineGetParameter(param)
 		End Function
 
@@ -839,14 +839,14 @@ Namespace java.security
 			Private serviceIterator As [Iterator](Of java.security.Provider.Service)
 
 			' constructor
-			Friend Sub New(ByVal sigSpi As SignatureSpi, ByVal algorithm As String)
+			Friend Sub New(  sigSpi As SignatureSpi,   algorithm As String)
 				MyBase.New(algorithm)
 				Me.sigSpi = sigSpi
 				Me.lock = Nothing ' no lock needed
 			End Sub
 
 			' used with delayed provider selection
-			Friend Sub New(ByVal service As java.security.Provider.Service, ByVal [iterator] As [Iterator](Of java.security.Provider.Service), ByVal algorithm As String)
+			Friend Sub New(  service As java.security.Provider.Service,   [iterator] As [Iterator](Of java.security.Provider.Service),   algorithm As String)
 				MyBase.New(algorithm)
 				Me.firstService = service
 				Me.serviceIterator = [iterator]
@@ -875,7 +875,7 @@ Namespace java.security
 				End If
 			End Function
 
-			Private Shared Function newInstance(ByVal s As java.security.Provider.Service) As SignatureSpi
+			Private Shared Function newInstance(  s As java.security.Provider.Service) As SignatureSpi
 				If s.type.Equals("Cipher") Then
 					' must be NONEwithRSA
 					Try
@@ -939,7 +939,7 @@ Namespace java.security
 				End SyncLock
 			End Sub
 
-			Private Sub chooseProvider(ByVal type As Integer, ByVal key As Key, ByVal random_Renamed As SecureRandom)
+			Private Sub chooseProvider(  type As Integer,   key As Key,   random_Renamed As SecureRandom)
 				SyncLock lock
 					If sigSpi IsNot Nothing Then
 						init(sigSpi, type, key, random_Renamed)
@@ -985,7 +985,7 @@ Namespace java.security
 			Private Const I_PRIV As Integer = 2
 			Private Const I_PRIV_SR As Integer = 3
 
-			Private Sub init(ByVal spi As SignatureSpi, ByVal type As Integer, ByVal key As Key, ByVal random_Renamed As SecureRandom)
+			Private Sub init(  spi As SignatureSpi,   type As Integer,   key As Key,   random_Renamed As SecureRandom)
 				Select Case type
 				Case I_PUB
 					spi.engineInitVerify(CType(key, PublicKey))
@@ -998,7 +998,7 @@ Namespace java.security
 				End Select
 			End Sub
 
-			Protected Friend Overrides Sub engineInitVerify(ByVal publicKey As PublicKey)
+			Protected Friend Overrides Sub engineInitVerify(  publicKey As PublicKey)
 				If sigSpi IsNot Nothing Then
 					sigSpi.engineInitVerify(publicKey)
 				Else
@@ -1006,7 +1006,7 @@ Namespace java.security
 				End If
 			End Sub
 
-			Protected Friend Overrides Sub engineInitSign(ByVal privateKey As PrivateKey)
+			Protected Friend Overrides Sub engineInitSign(  privateKey As PrivateKey)
 				If sigSpi IsNot Nothing Then
 					sigSpi.engineInitSign(privateKey)
 				Else
@@ -1014,7 +1014,7 @@ Namespace java.security
 				End If
 			End Sub
 
-			Protected Friend Overrides Sub engineInitSign(ByVal privateKey As PrivateKey, ByVal sr As SecureRandom)
+			Protected Friend Overrides Sub engineInitSign(  privateKey As PrivateKey,   sr As SecureRandom)
 				If sigSpi IsNot Nothing Then
 					sigSpi.engineInitSign(privateKey, sr)
 				Else
@@ -1022,17 +1022,17 @@ Namespace java.security
 				End If
 			End Sub
 
-			Protected Friend Overrides Sub engineUpdate(ByVal b As SByte)
+			Protected Friend Overrides Sub engineUpdate(  b As SByte)
 				chooseFirstProvider()
 				sigSpi.engineUpdate(b)
 			End Sub
 
-			Protected Friend Overrides Sub engineUpdate(ByVal b As SByte(), ByVal [off] As Integer, ByVal len As Integer)
+			Protected Friend Overrides Sub engineUpdate(  b As SByte(),   [off] As Integer,   len As Integer)
 				chooseFirstProvider()
 				sigSpi.engineUpdate(b, [off], len)
 			End Sub
 
-			Protected Friend Overrides Sub engineUpdate(ByVal data As java.nio.ByteBuffer)
+			Protected Friend Overrides Sub engineUpdate(  data As java.nio.ByteBuffer)
 				chooseFirstProvider()
 				sigSpi.engineUpdate(data)
 			End Sub
@@ -1042,32 +1042,32 @@ Namespace java.security
 				Return sigSpi.engineSign()
 			End Function
 
-			Protected Friend Overrides Function engineSign(ByVal outbuf As SByte(), ByVal offset As Integer, ByVal len As Integer) As Integer
+			Protected Friend Overrides Function engineSign(  outbuf As SByte(),   offset As Integer,   len As Integer) As Integer
 				chooseFirstProvider()
 				Return sigSpi.engineSign(outbuf, offset, len)
 			End Function
 
-			Protected Friend Overrides Function engineVerify(ByVal sigBytes As SByte()) As Boolean
+			Protected Friend Overrides Function engineVerify(  sigBytes As SByte()) As Boolean
 				chooseFirstProvider()
 				Return sigSpi.engineVerify(sigBytes)
 			End Function
 
-			Protected Friend Overrides Function engineVerify(ByVal sigBytes As SByte(), ByVal offset As Integer, ByVal length As Integer) As Boolean
+			Protected Friend Overrides Function engineVerify(  sigBytes As SByte(),   offset As Integer,   length As Integer) As Boolean
 				chooseFirstProvider()
 				Return sigSpi.engineVerify(sigBytes, offset, length)
 			End Function
 
-			Protected Friend Overrides Sub engineSetParameter(ByVal param As String, ByVal value As Object)
+			Protected Friend Overrides Sub engineSetParameter(  param As String,   value As Object)
 				chooseFirstProvider()
 				sigSpi.engineSetParameter(param, value)
 			End Sub
 
-			Protected Friend Overrides Sub engineSetParameter(ByVal params As java.security.spec.AlgorithmParameterSpec)
+			Protected Friend Overrides Sub engineSetParameter(  params As java.security.spec.AlgorithmParameterSpec)
 				chooseFirstProvider()
 				sigSpi.engineSetParameter(params)
 			End Sub
 
-			Protected Friend Overrides Function engineGetParameter(ByVal param As String) As Object
+			Protected Friend Overrides Function engineGetParameter(  param As String) As Object
 				chooseFirstProvider()
 				Return sigSpi.engineGetParameter(param)
 			End Function
@@ -1087,11 +1087,11 @@ Namespace java.security
 
 			Private data As ByteArrayOutputStream
 
-			Friend Sub New(ByVal cipher As javax.crypto.Cipher)
+			Friend Sub New(  cipher As javax.crypto.Cipher)
 				Me.cipher = cipher
 			End Sub
 
-			Protected Friend Overrides Sub engineInitVerify(ByVal publicKey As PublicKey)
+			Protected Friend Overrides Sub engineInitVerify(  publicKey As PublicKey)
 				cipher.init(javax.crypto.Cipher.DECRYPT_MODE, publicKey)
 				If data Is Nothing Then
 					data = New ByteArrayOutputStream(128)
@@ -1100,21 +1100,21 @@ Namespace java.security
 				End If
 			End Sub
 
-			Protected Friend Overrides Sub engineInitSign(ByVal privateKey As PrivateKey)
+			Protected Friend Overrides Sub engineInitSign(  privateKey As PrivateKey)
 				cipher.init(javax.crypto.Cipher.ENCRYPT_MODE, privateKey)
 				data = Nothing
 			End Sub
 
-			Protected Friend Overrides Sub engineInitSign(ByVal privateKey As PrivateKey, ByVal random_Renamed As SecureRandom)
+			Protected Friend Overrides Sub engineInitSign(  privateKey As PrivateKey,   random_Renamed As SecureRandom)
 				cipher.init(javax.crypto.Cipher.ENCRYPT_MODE, privateKey, random_Renamed)
 				data = Nothing
 			End Sub
 
-			Protected Friend Overrides Sub engineUpdate(ByVal b As SByte)
+			Protected Friend Overrides Sub engineUpdate(  b As SByte)
 				engineUpdate(New SByte() {b}, 0, 1)
 			End Sub
 
-			Protected Friend Overrides Sub engineUpdate(ByVal b As SByte(), ByVal [off] As Integer, ByVal len As Integer)
+			Protected Friend Overrides Sub engineUpdate(  b As SByte(),   [off] As Integer,   len As Integer)
 				If data IsNot Nothing Then
 					data.write(b, [off], len)
 					Return
@@ -1133,7 +1133,7 @@ Namespace java.security
 				End Try
 			End Function
 
-			Protected Friend Overrides Function engineVerify(ByVal sigBytes As SByte()) As Boolean
+			Protected Friend Overrides Function engineVerify(  sigBytes As SByte()) As Boolean
 				Try
 					Dim out As SByte() = cipher.doFinal(sigBytes)
 					Dim dataBytes As SByte() = data.toByteArray()
@@ -1148,11 +1148,11 @@ Namespace java.security
 				End Try
 			End Function
 
-			Protected Friend Overrides Sub engineSetParameter(ByVal param As String, ByVal value As Object)
+			Protected Friend Overrides Sub engineSetParameter(  param As String,   value As Object)
 				Throw New InvalidParameterException("Parameters not supported")
 			End Sub
 
-			Protected Friend Overrides Function engineGetParameter(ByVal param As String) As Object
+			Protected Friend Overrides Function engineGetParameter(  param As String) As Object
 				Throw New InvalidParameterException("Parameters not supported")
 			End Function
 

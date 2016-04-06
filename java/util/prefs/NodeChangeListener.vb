@@ -42,14 +42,14 @@ Namespace java.util.prefs
 		''' </summary>
 		''' <param name="evt"> A node change event object describing the parent
 		'''            and child node. </param>
-		Sub childAdded(ByVal evt As NodeChangeEvent)
+		Sub childAdded(  evt As NodeChangeEvent)
 
 		''' <summary>
 		''' This method gets called when a child node is removed.
 		''' </summary>
 		''' <param name="evt"> A node change event object describing the parent
 		'''            and child node. </param>
-		Sub childRemoved(ByVal evt As NodeChangeEvent)
+		Sub childRemoved(  evt As NodeChangeEvent)
 	End Interface
 
 End Namespace

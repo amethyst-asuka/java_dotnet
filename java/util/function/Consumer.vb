@@ -43,7 +43,7 @@ Namespace java.util.function
 		''' Performs this operation on the given argument.
 		''' </summary>
 		''' <param name="t"> the input argument </param>
-		Sub accept(ByVal t As T)
+		Sub accept(  t As T)
 
 		''' <summary>
 		''' Returns a composed {@code Consumer} that performs, in sequence, this
@@ -57,10 +57,10 @@ Namespace java.util.function
 		''' operation followed by the {@code after} operation </returns>
 		''' <exception cref="NullPointerException"> if {@code after} is null </exception>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		default Function andThen(Of T1)(ByVal after As Consumer(Of T1)) As Consumer(Of T)
+		default Function andThen(Of T1)(  after As Consumer(Of T1)) As Consumer(Of T)
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 			java.util.Objects.requireNonNull(after);
-			Sub [New](ByVal t As T)
+			Sub [New](  t As T)
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 				accept(t);
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:

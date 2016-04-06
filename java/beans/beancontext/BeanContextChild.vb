@@ -89,7 +89,7 @@ Namespace java.beans.beancontext
 		''' whenever the specified property has changed. </summary>
 		''' <param name="name"> the name of the property to listen on </param>
 		''' <param name="pcl"> the <code>PropertyChangeListener</code> to add </param>
-		Sub addPropertyChangeListener(ByVal name As String, ByVal pcl As java.beans.PropertyChangeListener)
+		Sub addPropertyChangeListener(  name As String,   pcl As java.beans.PropertyChangeListener)
 
 		''' <summary>
 		''' Removes a <code>PropertyChangeListener</code> from this
@@ -99,7 +99,7 @@ Namespace java.beans.beancontext
 		''' </summary>
 		''' <param name="name"> the name of the property that was listened on </param>
 		''' <param name="pcl"> the <code>PropertyChangeListener</code> to remove </param>
-		Sub removePropertyChangeListener(ByVal name As String, ByVal pcl As java.beans.PropertyChangeListener)
+		Sub removePropertyChangeListener(  name As String,   pcl As java.beans.PropertyChangeListener)
 
 		''' <summary>
 		''' Adds a <code>VetoableChangeListener</code> to
@@ -107,7 +107,7 @@ Namespace java.beans.beancontext
 		''' to receive events whenever the specified property changes. </summary>
 		''' <param name="name"> the name of the property to listen on </param>
 		''' <param name="vcl"> the <code>VetoableChangeListener</code> to add </param>
-		Sub addVetoableChangeListener(ByVal name As String, ByVal vcl As java.beans.VetoableChangeListener)
+		Sub addVetoableChangeListener(  name As String,   vcl As java.beans.VetoableChangeListener)
 
 		''' <summary>
 		''' Removes a <code>VetoableChangeListener</code> from this
@@ -115,7 +115,7 @@ Namespace java.beans.beancontext
 		''' events when the specified property changes. </summary>
 		''' <param name="name"> the name of the property that was listened on. </param>
 		''' <param name="vcl"> the <code>VetoableChangeListener</code> to remove. </param>
-		Sub removeVetoableChangeListener(ByVal name As String, ByVal vcl As java.beans.VetoableChangeListener)
+		Sub removeVetoableChangeListener(  name As String,   vcl As java.beans.VetoableChangeListener)
 
 	End Interface
 

@@ -198,7 +198,7 @@ Namespace java.util.concurrent
 		''' <param name="initialCapacity"> the initial capacity for this priority queue </param>
 		''' <exception cref="IllegalArgumentException"> if {@code initialCapacity} is less
 		'''         than 1 </exception>
-		Public Sub New(ByVal initialCapacity As Integer)
+		Public Sub New(  initialCapacity As Integer)
 			Me.New(initialCapacity, Nothing)
 		End Sub
 
@@ -214,7 +214,7 @@ Namespace java.util.concurrent
 		''' <exception cref="IllegalArgumentException"> if {@code initialCapacity} is less
 		'''         than 1 </exception>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Sub New(Of T1)(ByVal initialCapacity As Integer, ByVal comparator As IComparer(Of T1))
+		Public Sub New(Of T1)(  initialCapacity As Integer,   comparator As IComparer(Of T1))
 			If initialCapacity < 1 Then Throw New IllegalArgumentException
 			Me.lock = New java.util.concurrent.locks.ReentrantLock
 			Me.notEmpty = lock.newCondition()
@@ -237,7 +237,7 @@ Namespace java.util.concurrent
 		'''         queue's ordering </exception>
 		''' <exception cref="NullPointerException"> if the specified collection or any
 		'''         of its elements are null </exception>
-		Public Sub New(Of T1 As E)(ByVal c As ICollection(Of T1))
+		Public Sub New(Of T1 As E)(  c As ICollection(Of T1))
 			Me.lock = New java.util.concurrent.locks.ReentrantLock
 			Me.notEmpty = lock.newCondition()
 			Dim heapify As Boolean = True ' true if not known to be in heap order
@@ -282,7 +282,7 @@ Namespace java.util.concurrent
 		''' </summary>
 		''' <param name="array"> the heap array </param>
 		''' <param name="oldCap"> the length of the array </param>
-		Private Sub tryGrow(ByVal array As Object(), ByVal oldCap As Integer)
+		Private Sub tryGrow(  array As Object(),   oldCap As Integer)
 			lock.unlock() ' must release and then re-acquire main lock
 			Dim newArray As Object() = Nothing
 			If allocationSpinLock = 0 AndAlso UNSAFE.compareAndSwapInt(Me, allocationSpinLockOffset, 0, 1) Then
@@ -345,7 +345,7 @@ Namespace java.util.concurrent
 		''' <param name="k"> the position to fill </param>
 		''' <param name="x"> the item to insert </param>
 		''' <param name="array"> the heap array </param>
-		Private Shared Sub siftUpComparable(Of T)(ByVal k As Integer, ByVal x As T, ByVal array As Object())
+		Private Shared Sub siftUpComparable(Of T)(  k As Integer,   x As T,   array As Object())
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 			Dim key As Comparable(Of ?) = CType(x, Comparable(Of ?))
@@ -360,7 +360,7 @@ Namespace java.util.concurrent
 		End Sub
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Private Shared Sub siftUpUsingComparator(Of T, T1)(ByVal k As Integer, ByVal x As T, ByVal array As Object(), ByVal cmp As IComparer(Of T1))
+		Private Shared Sub siftUpUsingComparator(Of T, T1)(  k As Integer,   x As T,   array As Object(),   cmp As IComparer(Of T1))
 			Do While k > 0
 				Dim parent As Integer = CInt(CUInt((k - 1)) >> 1)
 				Dim e As Object = array(parent)
@@ -380,7 +380,7 @@ Namespace java.util.concurrent
 		''' <param name="x"> the item to insert </param>
 		''' <param name="array"> the heap array </param>
 		''' <param name="n"> heap size </param>
-		Private Shared Sub siftDownComparable(Of T)(ByVal k As Integer, ByVal x As T, ByVal array As Object(), ByVal n As Integer)
+		Private Shared Sub siftDownComparable(Of T)(  k As Integer,   x As T,   array As Object(),   n As Integer)
 			If n > 0 Then
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
@@ -402,7 +402,7 @@ Namespace java.util.concurrent
 		End Sub
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Private Shared Sub siftDownUsingComparator(Of T, T1)(ByVal k As Integer, ByVal x As T, ByVal array As Object(), ByVal n As Integer, ByVal cmp As IComparer(Of T1))
+		Private Shared Sub siftDownUsingComparator(Of T, T1)(  k As Integer,   x As T,   array As Object(),   n As Integer,   cmp As IComparer(Of T1))
 			If n > 0 Then
 				Dim half As Integer = CInt(CUInt(n) >> 1)
 				Do While k < half
@@ -449,7 +449,7 @@ Namespace java.util.concurrent
 		'''         with elements currently in the priority queue according to the
 		'''         priority queue's ordering </exception>
 		''' <exception cref="NullPointerException"> if the specified element is null </exception>
-		Public Overridable Function add(ByVal e As E) As Boolean
+		Public Overridable Function add(  e As E) As Boolean
 			Return offer(e)
 		End Function
 
@@ -463,7 +463,7 @@ Namespace java.util.concurrent
 		'''         with elements currently in the priority queue according to the
 		'''         priority queue's ordering </exception>
 		''' <exception cref="NullPointerException"> if the specified element is null </exception>
-		Public Overridable Function offer(ByVal e As E) As Boolean
+		Public Overridable Function offer(  e As E) As Boolean
 			If e Is Nothing Then Throw New NullPointerException
 			Dim lock As java.util.concurrent.locks.ReentrantLock = Me.lock
 			lock.lock()
@@ -503,7 +503,7 @@ Namespace java.util.concurrent
 		'''         with elements currently in the priority queue according to the
 		'''         priority queue's ordering </exception>
 		''' <exception cref="NullPointerException"> if the specified element is null </exception>
-		Public Overridable Sub put(ByVal e As E)
+		Public Overridable Sub put(  e As E)
 			offer(e) ' never need to block
 		End Sub
 
@@ -521,7 +521,7 @@ Namespace java.util.concurrent
 		'''         with elements currently in the priority queue according to the
 		'''         priority queue's ordering </exception>
 		''' <exception cref="NullPointerException"> if the specified element is null </exception>
-		Public Overridable Function offer(ByVal e As E, ByVal timeout As Long, ByVal unit As TimeUnit) As Boolean
+		Public Overridable Function offer(  e As E,   timeout As Long,   unit As TimeUnit) As Boolean
 			Return offer(e) ' never need to block
 		End Function
 
@@ -551,7 +551,7 @@ Namespace java.util.concurrent
 			Return result
 		End Function
 
-		Public Overridable Function poll(ByVal timeout As Long, ByVal unit As TimeUnit) As E Implements BlockingQueue(Of E).poll
+		Public Overridable Function poll(  timeout As Long,   unit As TimeUnit) As E Implements BlockingQueue(Of E).poll
 			Dim nanos As Long = unit.toNanos(timeout)
 			Dim lock As java.util.concurrent.locks.ReentrantLock = Me.lock
 			lock.lockInterruptibly()
@@ -610,7 +610,7 @@ Namespace java.util.concurrent
 			Return  java.lang.[Integer].Max_Value
 		End Function
 
-		Private Function indexOf(ByVal o As Object) As Integer
+		Private Function indexOf(  o As Object) As Integer
 			If o IsNot Nothing Then
 				Dim array As Object() = queue
 				Dim n As Integer = size_Renamed
@@ -624,7 +624,7 @@ Namespace java.util.concurrent
 		''' <summary>
 		''' Removes the ith element from queue.
 		''' </summary>
-		Private Sub removeAt(ByVal i As Integer)
+		Private Sub removeAt(  i As Integer)
 			Dim array As Object() = queue
 			Dim n As Integer = size_Renamed - 1
 			If n = i Then ' removed last element
@@ -661,7 +661,7 @@ Namespace java.util.concurrent
 		''' </summary>
 		''' <param name="o"> element to be removed from this queue, if present </param>
 		''' <returns> {@code true} if this queue changed as a result of the call </returns>
-		Public Overridable Function remove(ByVal o As Object) As Boolean Implements BlockingQueue(Of E).remove
+		Public Overridable Function remove(  o As Object) As Boolean Implements BlockingQueue(Of E).remove
 			Dim lock As java.util.concurrent.locks.ReentrantLock = Me.lock
 			lock.lock()
 			Try
@@ -677,7 +677,7 @@ Namespace java.util.concurrent
 		''' <summary>
 		''' Identity-based version for use in Itr.remove
 		''' </summary>
-		Friend Overridable Sub removeEQ(ByVal o As Object)
+		Friend Overridable Sub removeEQ(  o As Object)
 			Dim lock As java.util.concurrent.locks.ReentrantLock = Me.lock
 			lock.lock()
 			Try
@@ -703,7 +703,7 @@ Namespace java.util.concurrent
 		''' </summary>
 		''' <param name="o"> object to be checked for containment in this queue </param>
 		''' <returns> {@code true} if this queue contains the specified element </returns>
-		Public Overridable Function contains(ByVal o As Object) As Boolean Implements BlockingQueue(Of E).contains
+		Public Overridable Function contains(  o As Object) As Boolean Implements BlockingQueue(Of E).contains
 			Dim lock As java.util.concurrent.locks.ReentrantLock = Me.lock
 			lock.lock()
 			Try
@@ -759,7 +759,7 @@ Namespace java.util.concurrent
 		''' <exception cref="NullPointerException">          {@inheritDoc} </exception>
 		''' <exception cref="IllegalArgumentException">      {@inheritDoc} </exception>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Overridable Function drainTo(Of T1)(ByVal c As ICollection(Of T1)) As Integer Implements BlockingQueue(Of E).drainTo
+		Public Overridable Function drainTo(Of T1)(  c As ICollection(Of T1)) As Integer Implements BlockingQueue(Of E).drainTo
 			Return drainTo(c,  java.lang.[Integer].Max_Value)
 		End Function
 
@@ -768,7 +768,7 @@ Namespace java.util.concurrent
 		''' <exception cref="NullPointerException">          {@inheritDoc} </exception>
 		''' <exception cref="IllegalArgumentException">      {@inheritDoc} </exception>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Overridable Function drainTo(Of T1)(ByVal c As ICollection(Of T1), ByVal maxElements As Integer) As Integer Implements BlockingQueue(Of E).drainTo
+		Public Overridable Function drainTo(Of T1)(  c As ICollection(Of T1),   maxElements As Integer) As Integer Implements BlockingQueue(Of E).drainTo
 			If c Is Nothing Then Throw New NullPointerException
 			If c Is Me Then Throw New IllegalArgumentException
 			If maxElements <= 0 Then Return 0
@@ -840,7 +840,7 @@ Namespace java.util.concurrent
 		'''         is not a supertype of the runtime type of every element in
 		'''         this queue </exception>
 		''' <exception cref="NullPointerException"> if the specified array is null </exception>
-		Public Overridable Function toArray(Of T)(ByVal a As T()) As T()
+		Public Overridable Function toArray(Of T)(  a As T()) As T()
 			Dim lock As java.util.concurrent.locks.ReentrantLock = Me.lock
 			lock.lock()
 			Try
@@ -878,7 +878,7 @@ Namespace java.util.concurrent
 			Friend cursor As Integer ' index of next element to return
 			Friend lastRet As Integer ' index of last element, or -1 if no such
 
-			Friend Sub New(ByVal outerInstance As PriorityBlockingQueue, ByVal array As Object())
+			Friend Sub New(  outerInstance As PriorityBlockingQueue,   array As Object())
 					Me.outerInstance = outerInstance
 				lastRet = -1
 				Me.array = array
@@ -912,7 +912,7 @@ Namespace java.util.concurrent
 		''' </summary>
 		''' <param name="s"> the stream </param>
 		''' <exception cref="java.io.IOException"> if an I/O error occurs </exception>
-		Private Sub writeObject(ByVal s As java.io.ObjectOutputStream)
+		Private Sub writeObject(  s As java.io.ObjectOutputStream)
 			lock.lock()
 			Try
 				' avoid zero capacity argument
@@ -931,7 +931,7 @@ Namespace java.util.concurrent
 		''' <exception cref="ClassNotFoundException"> if the class of a serialized object
 		'''         could not be found </exception>
 		''' <exception cref="java.io.IOException"> if an I/O error occurs </exception>
-		Private Sub readObject(ByVal s As java.io.ObjectInputStream)
+		Private Sub readObject(  s As java.io.ObjectInputStream)
 			Try
 				s.defaultReadObject()
 				Me.queue = New Object(q.size() - 1){}
@@ -952,7 +952,7 @@ Namespace java.util.concurrent
 			Friend index As Integer
 			Friend fence As Integer
 
-			Friend Sub New(ByVal queue As PriorityBlockingQueue(Of E), ByVal array As Object(), ByVal index As Integer, ByVal fence As Integer)
+			Friend Sub New(  queue As PriorityBlockingQueue(Of E),   array As Object(),   index As Integer,   fence As Integer)
 				Me.queue = queue
 				Me.array = array
 				Me.index = index
@@ -980,7 +980,7 @@ Namespace java.util.concurrent
 
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Sub forEachRemaining(Of T1)(ByVal action As java.util.function.Consumer(Of T1))
+			Public Sub forEachRemaining(Of T1)(  action As java.util.function.Consumer(Of T1))
 				Dim a As Object() ' hoist accesses and checks from loop
 				Dim i, hi As Integer
 				If action Is Nothing Then Throw New NullPointerException
@@ -998,7 +998,7 @@ Namespace java.util.concurrent
 			End Sub
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Function tryAdvance(Of T1)(ByVal action As java.util.function.Consumer(Of T1)) As Boolean
+			Public Function tryAdvance(Of T1)(  action As java.util.function.Consumer(Of T1)) As Boolean
 				If action Is Nothing Then Throw New NullPointerException
 				If fence > index AndAlso index >= 0 Then
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:

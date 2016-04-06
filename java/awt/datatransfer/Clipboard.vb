@@ -71,7 +71,7 @@ Namespace java.awt.datatransfer
 		''' Creates a clipboard object.
 		''' </summary>
 		''' <seealso cref= java.awt.Toolkit#getSystemClipboard </seealso>
-		Public Sub New(ByVal name As String)
+		Public Sub New(  name As String)
 			Me.name = name
 		End Sub
 
@@ -106,7 +106,7 @@ Namespace java.awt.datatransfer
         ''' <exception cref="IllegalStateException"> if the clipboard is currently unavailable </exception>
         ''' <seealso cref= java.awt.Toolkit#getSystemClipboard </seealso>
         <MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Sub setContents(ByVal contents As Transferable, ByVal owner As ClipboardOwner)
+		Public Overridable Sub setContents(  contents As Transferable,   owner As ClipboardOwner)
 			Dim oldOwner As ClipboardOwner = Me.owner
 			Dim oldContents As Transferable = Me.contents
 
@@ -139,7 +139,7 @@ Namespace java.awt.datatransfer
 		''' <exception cref="IllegalStateException"> if the clipboard is currently unavailable </exception>
 		''' <seealso cref= java.awt.Toolkit#getSystemClipboard </seealso>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Function getContents(ByVal requestor As Object) As Transferable
+		Public Overridable Function getContents(  requestor As Object) As Transferable
 			Return contents
 		End Function
 
@@ -178,7 +178,7 @@ Namespace java.awt.datatransfer
 		''' <exception cref="IllegalStateException"> if this clipboard is currently unavailable
 		''' 
 		''' @since 1.5 </exception>
-		Public Overridable Function isDataFlavorAvailable(ByVal flavor As DataFlavor) As Boolean
+		Public Overridable Function isDataFlavorAvailable(  flavor As DataFlavor) As Boolean
 			If flavor Is Nothing Then Throw New NullPointerException("flavor")
 
 			Dim cntnts As Transferable = getContents(Nothing)
@@ -207,7 +207,7 @@ Namespace java.awt.datatransfer
 		''' <seealso cref= DataFlavor#getRepresentationClass
 		''' 
 		''' @since 1.5 </seealso>
-		Public Overridable Function getData(ByVal flavor As DataFlavor) As Object
+		Public Overridable Function getData(  flavor As DataFlavor) As Object
 			If flavor Is Nothing Then Throw New NullPointerException("flavor")
 
 			Dim cntnts As Transferable = getContents(Nothing)
@@ -230,7 +230,7 @@ Namespace java.awt.datatransfer
 		''' <seealso cref= FlavorEvent
 		''' @since 1.5 </seealso>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Sub addFlavorListener(ByVal listener As FlavorListener)
+		Public Overridable Sub addFlavorListener(  listener As FlavorListener)
 			If listener Is Nothing Then Return
 			If flavorListeners Is Nothing Then
 				currentDataFlavors = availableDataFlavorSet
@@ -256,7 +256,7 @@ Namespace java.awt.datatransfer
 		''' <seealso cref= FlavorEvent
 		''' @since 1.5 </seealso>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Sub removeFlavorListener(ByVal listener As FlavorListener)
+		Public Overridable Sub removeFlavorListener(  listener As FlavorListener)
 			If listener Is Nothing OrElse flavorListeners Is Nothing Then Return
 			flavorListeners.remove(listener)
 		End Sub

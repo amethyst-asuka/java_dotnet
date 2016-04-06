@@ -44,7 +44,7 @@ Namespace java.awt.peer
 		'''        popup menu
 		''' </param>
 		''' <seealso cref= PopupMenu#show(java.awt.Component, int, int) </seealso>
-		Sub show(ByVal e As java.awt.Event)
+		Sub show(  e As java.awt.Event)
 	End Interface
 
 End Namespace

@@ -63,13 +63,13 @@ Namespace java.awt.event
 		''' <code>MOUSE_DRAGGED</code> events may not be delivered during a native
 		''' Drag&amp;Drop operation.
 		''' </summary>
-		Sub mouseDragged(ByVal e As MouseEvent)
+		Sub mouseDragged(  e As MouseEvent)
 
 		''' <summary>
 		''' Invoked when the mouse cursor has been moved onto a component
 		''' but no buttons have been pushed.
 		''' </summary>
-		Sub mouseMoved(ByVal e As MouseEvent)
+		Sub mouseMoved(  e As MouseEvent)
 
 	End Interface
 

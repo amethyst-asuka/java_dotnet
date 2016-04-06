@@ -69,7 +69,7 @@ Namespace java.io
 		''' Creates a string input stream to read data from the specified string.
 		''' </summary>
 		''' <param name="s">   the underlying input buffer. </param>
-		Public Sub New(ByVal s As String)
+		Public Sub New(  s As String)
 			Me.buffer = s
 			count = s.length()
 		End Sub

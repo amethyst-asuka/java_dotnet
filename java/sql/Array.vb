@@ -152,7 +152,7 @@ Namespace java.sql
 	  ''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 	  ''' this method
 	  ''' @since 1.2 </exception>
-	  Function getArray(ByVal map As IDictionary(Of String, [Class])) As Object
+	  Function getArray(  map As IDictionary(Of String, [Class])) As Object
 
 	  ''' <summary>
 	  ''' Retrieves a slice of the SQL <code>ARRAY</code>
@@ -176,7 +176,7 @@ Namespace java.sql
 	  ''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 	  ''' this method
 	  ''' @since 1.2 </exception>
-	  Function getArray(ByVal index As Long, ByVal count As Integer) As Object
+	  Function getArray(  index As Long,   count As Integer) As Object
 
 	  ''' <summary>
 	  ''' Retreives a slice of the SQL <code>ARRAY</code> value
@@ -213,7 +213,7 @@ Namespace java.sql
 	  ''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 	  ''' this method
 	  ''' @since 1.2 </exception>
-	  Function getArray(ByVal index As Long, ByVal count As Integer, ByVal map As IDictionary(Of String, [Class])) As Object
+	  Function getArray(  index As Long,   count As Integer,   map As IDictionary(Of String, [Class])) As Object
 
 	  ''' <summary>
 	  ''' Retrieves a result set that contains the elements of the SQL
@@ -267,7 +267,7 @@ Namespace java.sql
 	  ''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 	  ''' this method
 	  ''' @since 1.2 </exception>
-	  Function getResultSet(ByVal map As IDictionary(Of String, [Class])) As ResultSet
+	  Function getResultSet(  map As IDictionary(Of String, [Class])) As ResultSet
 
 	  ''' <summary>
 	  ''' Retrieves a result set holding the elements of the subarray that
@@ -297,7 +297,7 @@ Namespace java.sql
 	  ''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 	  ''' this method
 	  ''' @since 1.2 </exception>
-	  Function getResultSet(ByVal index As Long, ByVal count As Integer) As ResultSet
+	  Function getResultSet(  index As Long,   count As Integer) As ResultSet
 
 	  ''' <summary>
 	  ''' Retrieves a result set holding the elements of the subarray that
@@ -333,7 +333,7 @@ Namespace java.sql
 	  ''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 	  ''' this method
 	  ''' @since 1.2 </exception>
-	  Function getResultSet(ByVal index As Long, ByVal count As Integer, ByVal map As IDictionary(Of String, [Class])) As ResultSet
+	  Function getResultSet(  index As Long,   count As Integer,   map As IDictionary(Of String, [Class])) As ResultSet
 		''' <summary>
 		''' This method frees the <code>Array</code> object and releases the resources that
 		''' it holds. The object is invalid once the <code>free</code>

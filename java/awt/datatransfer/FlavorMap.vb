@@ -54,7 +54,7 @@ Namespace java.awt.datatransfer
 		'''        <code>String</code> natives will be returned. </param>
 		''' <returns> a <code>java.util.Map</code> of <code>DataFlavor</code>s to
 		'''         <code>String</code> natives </returns>
-		Function getNativesForFlavors(ByVal flavors As DataFlavor()) As IDictionary(Of DataFlavor, String)
+		Function getNativesForFlavors(  flavors As DataFlavor()) As IDictionary(Of DataFlavor, String)
 
 		''' <summary>
 		''' Returns a <code>Map</code> of the specified <code>String</code> natives
@@ -70,7 +70,7 @@ Namespace java.awt.datatransfer
 		'''        <code>DataFlavor</code>s will be returned. </param>
 		''' <returns> a <code>java.util.Map</code> of <code>String</code> natives to
 		'''         <code>DataFlavor</code>s </returns>
-		Function getFlavorsForNatives(ByVal natives As String()) As IDictionary(Of String, DataFlavor)
+		Function getFlavorsForNatives(  natives As String()) As IDictionary(Of String, DataFlavor)
 	End Interface
 
 End Namespace

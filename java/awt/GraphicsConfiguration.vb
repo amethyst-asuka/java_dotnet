@@ -136,7 +136,7 @@ Namespace java.awt
 		''' <param name="height"> the height of the returned <code>BufferedImage</code> </param>
 		''' <returns> a <code>BufferedImage</code> whose data layout and color
 		''' model is compatible with this <code>GraphicsConfiguration</code>. </returns>
-		Public Overridable Function createCompatibleImage(ByVal width As Integer, ByVal height As Integer) As java.awt.image.BufferedImage
+		Public Overridable Function createCompatibleImage(  width As Integer,   height As Integer) As java.awt.image.BufferedImage
 			Dim model As java.awt.image.ColorModel = colorModel
 			Dim raster As java.awt.image.WritableRaster = model.createCompatibleWritableRaster(width, height)
 			Return New java.awt.image.BufferedImage(model, raster, model.alphaPremultiplied, Nothing)
@@ -160,7 +160,7 @@ Namespace java.awt
 		''' <seealso cref= Transparency#OPAQUE </seealso>
 		''' <seealso cref= Transparency#BITMASK </seealso>
 		''' <seealso cref= Transparency#TRANSLUCENT </seealso>
-		Public Overridable Function createCompatibleImage(ByVal width As Integer, ByVal height As Integer, ByVal transparency As Integer) As java.awt.image.BufferedImage
+		Public Overridable Function createCompatibleImage(  width As Integer,   height As Integer,   transparency As Integer) As java.awt.image.BufferedImage
 			If colorModel.transparency = transparency Then Return createCompatibleImage(width, height)
 
 			Dim cm As java.awt.image.ColorModel = getColorModel(transparency)
@@ -183,7 +183,7 @@ Namespace java.awt
 		''' model is compatible with this <code>GraphicsConfiguration</code>. </returns>
 		''' <seealso cref= Component#createVolatileImage(int, int)
 		''' @since 1.4 </seealso>
-		Public Overridable Function createCompatibleVolatileImage(ByVal width As Integer, ByVal height As Integer) As java.awt.image.VolatileImage
+		Public Overridable Function createCompatibleVolatileImage(  width As Integer,   height As Integer) As java.awt.image.VolatileImage
 			Dim vi As java.awt.image.VolatileImage = Nothing
 			Try
 				vi = createCompatibleVolatileImage(width, height, Nothing, Transparency.OPAQUE)
@@ -212,7 +212,7 @@ Namespace java.awt
 		''' <seealso cref= Transparency#TRANSLUCENT </seealso>
 		''' <seealso cref= Component#createVolatileImage(int, int)
 		''' @since 1.5 </seealso>
-		Public Overridable Function createCompatibleVolatileImage(ByVal width As Integer, ByVal height As Integer, ByVal transparency As Integer) As java.awt.image.VolatileImage
+		Public Overridable Function createCompatibleVolatileImage(  width As Integer,   height As Integer,   transparency As Integer) As java.awt.image.VolatileImage
 			Dim vi As java.awt.image.VolatileImage = Nothing
 			Try
 				vi = createCompatibleVolatileImage(width, height, Nothing, transparency)
@@ -243,7 +243,7 @@ Namespace java.awt
 		''' <exception cref="AWTException"> if the supplied image capabilities could not
 		''' be met by this graphics configuration
 		''' @since 1.4 </exception>
-		Public Overridable Function createCompatibleVolatileImage(ByVal width As Integer, ByVal height As Integer, ByVal caps As ImageCapabilities) As java.awt.image.VolatileImage
+		Public Overridable Function createCompatibleVolatileImage(  width As Integer,   height As Integer,   caps As ImageCapabilities) As java.awt.image.VolatileImage
 			Return createCompatibleVolatileImage(width, height, caps, Transparency.OPAQUE)
 		End Function
 
@@ -273,7 +273,7 @@ Namespace java.awt
 		''' be met by this graphics configuration </exception>
 		''' <seealso cref= Component#createVolatileImage(int, int)
 		''' @since 1.5 </seealso>
-		Public Overridable Function createCompatibleVolatileImage(ByVal width As Integer, ByVal height As Integer, ByVal caps As ImageCapabilities, ByVal transparency As Integer) As java.awt.image.VolatileImage
+		Public Overridable Function createCompatibleVolatileImage(  width As Integer,   height As Integer,   caps As ImageCapabilities,   transparency As Integer) As java.awt.image.VolatileImage
 			Dim vi As java.awt.image.VolatileImage = New sun.awt.image.SunVolatileImage(Me, width, height, transparency, caps)
 			If caps IsNot Nothing AndAlso caps.accelerated AndAlso (Not vi.capabilities.accelerated) Then Throw New AWTException("Supplied image capabilities could not " & "be met by this graphics configuration.")
 			Return vi
@@ -298,7 +298,7 @@ Namespace java.awt
 		''' <seealso cref= Transparency#OPAQUE </seealso>
 		''' <seealso cref= Transparency#BITMASK </seealso>
 		''' <seealso cref= Transparency#TRANSLUCENT </seealso>
-		Public MustOverride Function getColorModel(ByVal transparency As Integer) As java.awt.image.ColorModel
+		Public MustOverride Function getColorModel(  transparency As Integer) As java.awt.image.ColorModel
 
 		''' <summary>
 		''' Returns the default <seealso cref="AffineTransform"/> for this
@@ -362,7 +362,7 @@ Namespace java.awt
 		Private Class DefaultBufferCapabilities
 			Inherits BufferCapabilities
 
-			Public Sub New(ByVal imageCaps As ImageCapabilities)
+			Public Sub New(  imageCaps As ImageCapabilities)
 				MyBase.New(imageCaps, imageCaps, Nothing)
 			End Sub
 		End Class

@@ -186,7 +186,7 @@ Namespace java.lang
 		''' </summary>
 		''' <param name="url"> the code source url </param>
 		''' <returns> true if this package is sealed with respect to url </returns>
-		Public Overridable Function isSealed(ByVal url As java.net.URL) As Boolean
+		Public Overridable Function isSealed(  url As java.net.URL) As Boolean
 			Return url.Equals(sealBase)
 		End Function
 
@@ -211,7 +211,7 @@ Namespace java.lang
 		''' </returns>
 		''' <exception cref="NumberFormatException"> if the desired or current version
 		'''          is not of the correct dotted form. </exception>
-		Public Overridable Function isCompatibleWith(ByVal desired As String) As Boolean
+		Public Overridable Function isCompatibleWith(  desired As String) As Boolean
 			If specVersion Is Nothing OrElse specVersion.length() < 1 Then Throw New NumberFormatException("Empty version string")
 
 			Dim sa As String() = specVersion.Split("\.", -1)
@@ -254,7 +254,7 @@ Namespace java.lang
 		''' <returns> the package of the requested name. It may be null if no package
 		'''          information is available from the archive or codebase. </returns>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Shared Function getPackage(ByVal name As String) As Package
+		Public Shared Function getPackage(  name As String) As Package
 			Dim l As  ClassLoader = ClassLoader.getClassLoader(sun.reflect.Reflection.callerClass)
 			If l IsNot Nothing Then
 				Return l.getPackage(name)
@@ -303,7 +303,7 @@ Namespace java.lang
 		''' <param name="c"> the class to get the package of. </param>
 		''' <returns> the package of the class. It may be null if no package
 		'''          information is available from the archive or codebase.   </returns>
-		Shared Function getPackage(ByVal c As [Class]) As Package
+		Shared Function getPackage(  c As [Class]) As Package
 			Dim name_Renamed As String = c.name
 			Dim i As Integer = name_Renamed.LastIndexOf("."c)
 			If i <> -1 Then
@@ -368,7 +368,7 @@ Namespace java.lang
 
 		''' <exception cref="NullPointerException"> {@inheritDoc}
 		''' @since 1.5 </exception>
-		Public Overridable Function getAnnotation(Of A As Annotation)(ByVal annotationClass As [Class]) As A
+		Public Overridable Function getAnnotation(Of A As Annotation)(  annotationClass As [Class]) As A
 			Return packageInfo.getAnnotation(annotationClass)
 		End Function
 
@@ -376,13 +376,13 @@ Namespace java.lang
 		''' {@inheritDoc} </summary>
 		''' <exception cref="NullPointerException"> {@inheritDoc}
 		''' @since 1.5 </exception>
-		Public Overrides Function isAnnotationPresent(ByVal annotationClass As [Class]) As Boolean
+		Public Overrides Function isAnnotationPresent(  annotationClass As [Class]) As Boolean
 			Return outerInstance.isAnnotationPresent(annotationClass)
 		End Function
 
 		''' <exception cref="NullPointerException"> {@inheritDoc}
 		''' @since 1.8 </exception>
-		Public Overrides Function getAnnotationsByType(Of A As Annotation)(ByVal annotationClass As [Class]) As A()
+		Public Overrides Function getAnnotationsByType(Of A As Annotation)(  annotationClass As [Class]) As A()
 			Return packageInfo.getAnnotationsByType(annotationClass)
 		End Function
 
@@ -397,13 +397,13 @@ Namespace java.lang
 
 		''' <exception cref="NullPointerException"> {@inheritDoc}
 		''' @since 1.8 </exception>
-		Public Overrides Function getDeclaredAnnotation(Of A As Annotation)(ByVal annotationClass As [Class]) As A
+		Public Overrides Function getDeclaredAnnotation(Of A As Annotation)(  annotationClass As [Class]) As A
 			Return packageInfo.getDeclaredAnnotation(annotationClass)
 		End Function
 
 		''' <exception cref="NullPointerException"> {@inheritDoc}
 		''' @since 1.8 </exception>
-		Public Overrides Function getDeclaredAnnotationsByType(Of A As Annotation)(ByVal annotationClass As [Class]) As A()
+		Public Overrides Function getDeclaredAnnotationsByType(Of A As Annotation)(  annotationClass As [Class]) As A()
 			Return packageInfo.getDeclaredAnnotationsByType(annotationClass)
 		End Function
 
@@ -426,7 +426,7 @@ Namespace java.lang
 		''' <param name="impltitle"> the title of the implementation </param>
 		''' <param name="implversion"> the version of the implementation </param>
 		''' <param name="implvendor"> the organization that maintains the implementation </param>
-		Friend Sub New(ByVal name As String, ByVal spectitle As String, ByVal specversion As String, ByVal specvendor As String, ByVal impltitle As String, ByVal implversion As String, ByVal implvendor As String, ByVal sealbase As java.net.URL, ByVal loader As  ClassLoader)
+		Friend Sub New(  name As String,   spectitle As String,   specversion As String,   specvendor As String,   impltitle As String,   implversion As String,   implvendor As String,   sealbase As java.net.URL,   loader As  ClassLoader)
 			pkgName = name
 			Me.implTitle = impltitle
 			Me.implVersion = implversion
@@ -445,7 +445,7 @@ Namespace java.lang
 	'     * @param man the optional manifest for the package
 	'     * @param url the optional code source url for the package
 	'     
-		Private Sub New(ByVal name As String, ByVal man As java.util.jar.Manifest, ByVal url As java.net.URL, ByVal loader As  ClassLoader)
+		Private Sub New(  name As String,   man As java.util.jar.Manifest,   url As java.net.URL,   loader As  ClassLoader)
 			Dim path As String = name.replace("."c, "/"c) & "/"
 			Dim sealed_Renamed As String = Nothing
 			Dim specTitle As String= Nothing
@@ -490,7 +490,7 @@ Namespace java.lang
 	'    
 	'     * Returns the loaded system package for the specified name.
 	'     
-		Shared Function getSystemPackage(ByVal name As String) As Package
+		Shared Function getSystemPackage(  name As String) As Package
 			SyncLock pkgs
 				Dim pkg As Package = pkgs(name)
 				If pkg Is Nothing Then
@@ -518,7 +518,7 @@ Namespace java.lang
 			End Get
 		End Property
 
-		Private Shared Function defineSystemPackage(ByVal iname As String, ByVal fn As String) As Package
+		Private Shared Function defineSystemPackage(  iname As String,   fn As String) As Package
 			Return java.security.AccessController.doPrivileged(New PrivilegedActionAnonymousInnerClassHelper(Of T)
 		End Function
 
@@ -559,7 +559,7 @@ Namespace java.lang
 	'    
 	'     * Returns the Manifest for the specified JAR file name.
 	'     
-		Private Shared Function loadManifest(ByVal fn As String) As java.util.jar.Manifest
+		Private Shared Function loadManifest(  fn As String) As java.util.jar.Manifest
 			Using fis As New java.io.FileInputStream(fn), jis As New java.util.jar.JarInputStream(fis, False)
 					Try
 					Return jis.manifest
@@ -580,7 +580,7 @@ Namespace java.lang
 
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Private Shared Function getSystemPackage0(ByVal name As String) As String
+		Private Shared Function getSystemPackage0(  name As String) As String
 		End Function
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _

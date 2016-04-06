@@ -91,7 +91,7 @@ Namespace java.util
 		'''         this queue does not permit null elements </exception>
 		''' <exception cref="IllegalArgumentException"> if some property of this element
 		'''         prevents it from being added to this queue </exception>
-		Public Overridable Function add(ByVal e As E) As Boolean
+		Public Overridable Function add(  e As E) As Boolean
 			If offer(e) Then
 				Return True
 			Else
@@ -178,7 +178,7 @@ Namespace java.util
 		''' <exception cref="IllegalStateException"> if not all the elements can be added at
 		'''         this time due to insertion restrictions </exception>
 		''' <seealso cref= #add(Object) </seealso>
-		Public Overridable Function addAll(Of T1 As E)(ByVal c As Collection(Of T1)) As Boolean
+		Public Overridable Function addAll(Of T1 As E)(  c As Collection(Of T1)) As Boolean
 			If c Is Nothing Then Throw New NullPointerException
 			If c Is Me Then Throw New IllegalArgumentException
 			Dim modified As Boolean = False

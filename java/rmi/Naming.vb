@@ -83,7 +83,7 @@ Namespace java.rmi
 		''' <exception cref="MalformedURLException"> if the name is not an appropriately
 		'''  formatted URL
 		''' @since JDK1.1 </exception>
-		Public Shared Function lookup(ByVal name As String) As Remote
+		Public Shared Function lookup(  name As String) As Remote
 			Dim parsed As ParsedNamingURL = parseURL(name)
 			Dim registry_Renamed As Registry = getRegistry(parsed)
 
@@ -103,7 +103,7 @@ Namespace java.rmi
 		''' <exception cref="AccessException"> if this operation is not permitted (if
 		''' originating from a non-local host, for example)
 		''' @since JDK1.1 </exception>
-		Public Shared Sub bind(ByVal name As String, ByVal obj As Remote)
+		Public Shared Sub bind(  name As String,   obj As Remote)
 			Dim parsed As ParsedNamingURL = parseURL(name)
 			Dim registry_Renamed As Registry = getRegistry(parsed)
 
@@ -124,7 +124,7 @@ Namespace java.rmi
 		''' <exception cref="AccessException"> if this operation is not permitted (if
 		''' originating from a non-local host, for example)
 		''' @since JDK1.1 </exception>
-		Public Shared Sub unbind(ByVal name As String)
+		Public Shared Sub unbind(  name As String)
 			Dim parsed As ParsedNamingURL = parseURL(name)
 			Dim registry_Renamed As Registry = getRegistry(parsed)
 
@@ -143,7 +143,7 @@ Namespace java.rmi
 		''' <exception cref="AccessException"> if this operation is not permitted (if
 		''' originating from a non-local host, for example)
 		''' @since JDK1.1 </exception>
-		Public Shared Sub rebind(ByVal name As String, ByVal obj As Remote)
+		Public Shared Sub rebind(  name As String,   obj As Remote)
 			Dim parsed As ParsedNamingURL = parseURL(name)
 			Dim registry_Renamed As Registry = getRegistry(parsed)
 
@@ -166,7 +166,7 @@ Namespace java.rmi
 		'''  formatted URL </exception>
 		''' <exception cref="RemoteException"> if registry could not be contacted.
 		''' @since JDK1.1 </exception>
-		Public Shared Function list(ByVal name As String) As String()
+		Public Shared Function list(  name As String) As String()
 			Dim parsed As ParsedNamingURL = parseURL(name)
 			Dim registry_Renamed As Registry = getRegistry(parsed)
 
@@ -185,7 +185,7 @@ Namespace java.rmi
 		''' <summary>
 		''' Returns a registry reference obtained from information in the URL.
 		''' </summary>
-		Private Shared Function getRegistry(ByVal parsed As ParsedNamingURL) As Registry
+		Private Shared Function getRegistry(  parsed As ParsedNamingURL) As Registry
 			Return LocateRegistry.getRegistry(parsed.host, parsed.port)
 		End Function
 
@@ -197,7 +197,7 @@ Namespace java.rmi
 		''' components.
 		''' </returns>
 		''' <exception cref="MalformedURLException"> if given url string is malformed </exception>
-		Private Shared Function parseURL(ByVal str As String) As ParsedNamingURL
+		Private Shared Function parseURL(  str As String) As ParsedNamingURL
 			Try
 				Return intParseURL(str)
 			Catch ex As java.net.URISyntaxException
@@ -225,7 +225,7 @@ Namespace java.rmi
 			End Try
 		End Function
 
-		Private Shared Function intParseURL(ByVal str As String) As ParsedNamingURL
+		Private Shared Function intParseURL(  str As String) As ParsedNamingURL
 			Dim uri As New java.net.URI(str)
 			If uri.opaque Then Throw New java.net.MalformedURLException("not a hierarchical URL: " & str)
 			If uri.fragment IsNot Nothing Then
@@ -287,7 +287,7 @@ Namespace java.rmi
 			Friend port As Integer
 			Friend name As String
 
-			Friend Sub New(ByVal host As String, ByVal port As Integer, ByVal name As String)
+			Friend Sub New(  host As String,   port As Integer,   name As String)
 				Me.host = host
 				Me.port = port
 				Me.name = name

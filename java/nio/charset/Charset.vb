@@ -258,7 +258,7 @@ Namespace java.nio.charset
 'JAVA TO VB CONVERTER TODO TASK: There is no VB equivalent to 'volatile':
 		Private Shared bugLevel As String = Nothing
 
-		Friend Shared Function atBugLevel(ByVal bl As String) As Boolean ' package-private
+		Friend Shared Function atBugLevel(  bl As String) As Boolean ' package-private
 			Dim level As String = bugLevel
 			If level Is Nothing Then
 				If Not sun.misc.VM.booted Then Return False
@@ -276,7 +276,7 @@ Namespace java.nio.charset
 		''' </param>
 		''' <exception cref="IllegalCharsetNameException">
 		'''          If the given name is not a legal charset name </exception>
-		Private Shared Sub checkName(ByVal s As String)
+		Private Shared Sub checkName(  s As String)
 			Dim n As Integer = s.length()
 			If Not atBugLevel("1.4") Then
 				If n = 0 Then Throw New IllegalCharsetNameException(s)
@@ -306,7 +306,7 @@ Namespace java.nio.charset
 'JAVA TO VB CONVERTER TODO TASK: There is no VB equivalent to 'volatile':
 		Private Shared cache2 As Object() = Nothing ' "Level 2" cache
 
-		Private Shared Sub cache(ByVal charsetName As String, ByVal cs As Charset)
+		Private Shared Sub cache(  charsetName As String,   cs As Charset)
 			cache2 = cache1
 			cache1 = New Object() { charsetName, cs }
 		End Sub
@@ -364,7 +364,7 @@ Namespace java.nio.charset
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 		Private Shared gate As New ThreadLocal(Of ThreadLocal(Of ?))
 
-		Private Shared Function lookupViaProviders(ByVal charsetName As String) As Charset
+		Private Shared Function lookupViaProviders(  charsetName As String) As Charset
 
 			' The runtime startup sequence looks up standard charsets as a
 			' consequence of the VM's invocation of System.initializeSystemClass
@@ -428,12 +428,12 @@ Namespace java.nio.charset
 			End Class
 		End Class
 
-		Private Shared Function lookupExtendedCharset(ByVal charsetName As String) As Charset
+		Private Shared Function lookupExtendedCharset(  charsetName As String) As Charset
 			Dim ecp As java.nio.charset.spi.CharsetProvider = ExtendedProviderHolder.extendedProvider_Renamed
 			Return If(ecp IsNot Nothing, ecp.charsetForName(charsetName), Nothing)
 		End Function
 
-		Private Shared Function lookup(ByVal charsetName As String) As Charset
+		Private Shared Function lookup(  charsetName As String) As Charset
 			If charsetName Is Nothing Then Throw New IllegalArgumentException("Null charset name")
 			Dim a As Object()
 			a = cache1
@@ -444,7 +444,7 @@ Namespace java.nio.charset
 			Return lookup2(charsetName)
 		End Function
 
-		Private Shared Function lookup2(ByVal charsetName As String) As Charset
+		Private Shared Function lookup2(  charsetName As String) As Charset
 			Dim a As Object()
 			a = cache2
 			If a IsNot Nothing AndAlso charsetName.Equals(a(0)) Then
@@ -481,7 +481,7 @@ Namespace java.nio.charset
 		''' </exception>
 		''' <exception cref="IllegalArgumentException">
 		'''          If the given <tt>charsetName</tt> is null </exception>
-		Public Shared Function isSupported(ByVal charsetName As String) As Boolean
+		Public Shared Function isSupported(  charsetName As String) As Boolean
 			Return (lookup(charsetName) IsNot Nothing)
 		End Function
 
@@ -503,7 +503,7 @@ Namespace java.nio.charset
 		''' <exception cref="UnsupportedCharsetException">
 		'''          If no support for the named charset is available
 		'''          in this instance of the Java virtual machine </exception>
-		Public Shared Function forName(ByVal charsetName As String) As Charset
+		Public Shared Function forName(  charsetName As String) As Charset
 			Dim cs As Charset = lookup(charsetName)
 			If cs IsNot Nothing Then Return cs
 			Throw New UnsupportedCharsetException(charsetName)
@@ -512,7 +512,7 @@ Namespace java.nio.charset
 		' Fold charsets from the given iterator into the given map, ignoring
 		' charsets whose names already have entries in the map.
 		'
-		Private Shared Sub put(ByVal i As IEnumerator(Of Charset), ByVal m As IDictionary(Of String, Charset))
+		Private Shared Sub put(  i As IEnumerator(Of Charset),   m As IDictionary(Of String, Charset))
 			Do While i.MoveNext()
 				Dim cs As Charset = i.Current
 				If Not m.ContainsKey(cs.name()) Then m(cs.name()) = cs
@@ -612,7 +612,7 @@ Namespace java.nio.charset
 		''' </param>
 		''' <exception cref="IllegalCharsetNameException">
 		'''         If the canonical name or any of the aliases are illegal </exception>
-		Protected Friend Sub New(ByVal canonicalName As String, ByVal aliases As String())
+		Protected Friend Sub New(  canonicalName As String,   aliases As String())
 			checkName(canonicalName)
 			Dim [as] As String() = If(aliases Is Nothing, New String(){}, aliases)
 			For i As Integer = 0 To [as].Length - 1
@@ -681,7 +681,7 @@ Namespace java.nio.charset
 		'''         The locale for which the display name is to be retrieved
 		''' </param>
 		''' <returns>  The display name of this charset in the given locale </returns>
-		Public Overridable Function displayName(ByVal locale As java.util.Locale) As String
+		Public Overridable Function displayName(  locale As java.util.Locale) As String
 			Return name_Renamed
 		End Function
 
@@ -711,7 +711,7 @@ Namespace java.nio.charset
 		'''          The given charset
 		''' </param>
 		''' <returns>  <tt>true</tt> if the given charset is contained in this charset </returns>
-		Public MustOverride Function contains(ByVal cs As Charset) As Boolean
+		Public MustOverride Function contains(  cs As Charset) As Boolean
 
 		''' <summary>
 		''' Constructs a new decoder for this charset.
@@ -768,7 +768,7 @@ Namespace java.nio.charset
 		''' <param name="bb">  The byte buffer to be decoded
 		''' </param>
 		''' <returns>  A char buffer containing the decoded characters </returns>
-		Public Function decode(ByVal bb As java.nio.ByteBuffer) As java.nio.CharBuffer
+		Public Function decode(  bb As java.nio.ByteBuffer) As java.nio.CharBuffer
 			Try
 				Return sun.nio.cs.ThreadLocalCoders.decoderFor(Me).onMalformedInput(CodingErrorAction.REPLACE).onUnmappableCharacter(CodingErrorAction.REPLACE).decode(bb)
 			Catch x As CharacterCodingException
@@ -800,7 +800,7 @@ Namespace java.nio.charset
 		''' <param name="cb">  The char buffer to be encoded
 		''' </param>
 		''' <returns>  A byte buffer containing the encoded characters </returns>
-		Public Function encode(ByVal cb As java.nio.CharBuffer) As java.nio.ByteBuffer
+		Public Function encode(  cb As java.nio.CharBuffer) As java.nio.ByteBuffer
 			Try
 				Return sun.nio.cs.ThreadLocalCoders.encoderFor(Me).onMalformedInput(CodingErrorAction.REPLACE).onUnmappableCharacter(CodingErrorAction.REPLACE).encode(cb)
 			Catch x As CharacterCodingException
@@ -820,7 +820,7 @@ Namespace java.nio.charset
 		''' <param name="str">  The string to be encoded
 		''' </param>
 		''' <returns>  A byte buffer containing the encoded characters </returns>
-		Public Function encode(ByVal str As String) As java.nio.ByteBuffer
+		Public Function encode(  str As String) As java.nio.ByteBuffer
 			Return encode(java.nio.CharBuffer.wrap(str))
 		End Function
 
@@ -835,7 +835,7 @@ Namespace java.nio.charset
 		''' </param>
 		''' <returns> A negative integer, zero, or a positive integer as this charset
 		'''         is less than, equal to, or greater than the specified charset </returns>
-		Public Function compareTo(ByVal that As Charset) As Integer Implements Comparable(Of Charset).compareTo
+		Public Function compareTo(  that As Charset) As Integer Implements Comparable(Of Charset).compareTo
 			Return (name().compareToIgnoreCase(that.name()))
 		End Function
 
@@ -855,7 +855,7 @@ Namespace java.nio.charset
 		''' </summary>
 		''' <returns>  <tt>true</tt> if, and only if, this charset is equal to the
 		'''          given object </returns>
-		Public NotOverridable Overrides Function Equals(ByVal ob As Object) As Boolean
+		Public NotOverridable Overrides Function Equals(  ob As Object) As Boolean
 			If Not(TypeOf ob Is Charset) Then Return False
 			If Me Is ob Then Return True
 			Return name_Renamed.Equals(CType(ob, Charset).name())

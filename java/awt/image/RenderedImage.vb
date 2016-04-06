@@ -64,7 +64,7 @@ Namespace java.awt.image
 		''' <param name="name"> the name of the property </param>
 		''' <returns> the property indicated by the specified name. </returns>
 		''' <seealso cref= java.awt.Image#UndefinedProperty </seealso>
-		Function getProperty(ByVal name As String) As Object
+		Function getProperty(  name As String) As Object
 
 		''' <summary>
 		''' Returns an array of names recognized by
@@ -161,7 +161,7 @@ Namespace java.awt.image
 		''' <param name="tileX"> the X index of the requested tile in the tile array </param>
 		''' <param name="tileY"> the Y index of the requested tile in the tile array </param>
 		''' <returns> the tile given the specified indices. </returns>
-	   Function getTile(ByVal tileX As Integer, ByVal tileY As Integer) As Raster
+	   Function getTile(  tileX As Integer,   tileY As Integer) As Raster
 
 		''' <summary>
 		''' Returns the image as one large tile (for tile based
@@ -179,7 +179,7 @@ Namespace java.awt.image
 		''' <param name="rect"> the region of the RenderedImage to be returned. </param>
 		''' <returns> the region of the <code>RenderedImage</code>
 		''' indicated by the specified <code>Rectangle</code>. </returns>
-		Function getData(ByVal rect As java.awt.Rectangle) As Raster
+		Function getData(  rect As java.awt.Rectangle) As Raster
 
 		''' <summary>
 		''' Computes an arbitrary rectangular region of the RenderedImage
@@ -191,7 +191,7 @@ Namespace java.awt.image
 		''' <param name="raster"> a WritableRaster to hold the returned portion of the
 		'''               image, or null. </param>
 		''' <returns> a reference to the supplied or created WritableRaster. </returns>
-		Function copyData(ByVal raster As WritableRaster) As WritableRaster
+		Function copyData(  raster As WritableRaster) As WritableRaster
 	End Interface
 
 End Namespace

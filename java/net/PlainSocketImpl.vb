@@ -107,7 +107,7 @@ Namespace java.net
 		''' <summary>
 		''' Constructs an instance with the given file descriptor.
 		''' </summary>
-		Friend Sub New(ByVal fd As FileDescriptor)
+		Friend Sub New(  fd As FileDescriptor)
 			If useDualStackImpl Then
 				impl = New DualStackPlainSocketImpl(fd, exclusiveBind)
 			Else
@@ -142,7 +142,7 @@ Namespace java.net
 		End Property
 
 		Friend Overrides Property socket As Socket
-			Set(ByVal soc As Socket)
+			Set(  soc As Socket)
 				impl.socket = soc
 			End Set
 			Get
@@ -152,7 +152,7 @@ Namespace java.net
 
 
 		Friend Overrides Property serverSocket As ServerSocket
-			Set(ByVal soc As ServerSocket)
+			Set(  soc As ServerSocket)
 				impl.serverSocket = soc
 			End Set
 			Get
@@ -168,30 +168,30 @@ Namespace java.net
 		' Override methods in AbstractPlainSocketImpl that access impl's fields.
 
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Protected Friend Overrides Sub create(ByVal stream As Boolean)
+		Protected Friend Overrides Sub create(  stream As Boolean)
 			impl.create(stream)
 
 			' set fd to delegate's fd to be compatible with older releases
 			Me.fd = impl.fd
 		End Sub
 
-		Protected Friend Overrides Sub connect(ByVal host As String, ByVal port As Integer)
+		Protected Friend Overrides Sub connect(  host As String,   port As Integer)
 			impl.connect(host, port)
 		End Sub
 
-		Protected Friend Overrides Sub connect(ByVal address As InetAddress, ByVal port As Integer)
+		Protected Friend Overrides Sub connect(  address As InetAddress,   port As Integer)
 			impl.connect(address, port)
 		End Sub
 
-		Protected Friend Overrides Sub connect(ByVal address As SocketAddress, ByVal timeout As Integer)
+		Protected Friend Overrides Sub connect(  address As SocketAddress,   timeout As Integer)
 			impl.connect(address, timeout)
 		End Sub
 
-		Public Overrides Sub setOption(ByVal opt As Integer, ByVal val As Object)
+		Public Overrides Sub setOption(  opt As Integer,   val As Object)
 			impl.optionion(opt, val)
 		End Sub
 
-		Public Overrides Function getOption(ByVal opt As Integer) As Object
+		Public Overrides Function getOption(  opt As Integer) As Object
 			Return impl.getOption(opt)
 		End Function
 

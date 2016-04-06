@@ -387,13 +387,13 @@ Namespace java.util.concurrent
 		Private Shared ReadOnly TERMINATED_Renamed As Integer = 3 << COUNT_BITS
 
 		' Packing and unpacking ctl
-		Private Shared Function runStateOf(ByVal c As Integer) As Integer
+		Private Shared Function runStateOf(  c As Integer) As Integer
 			Return c And Not CAPACITY
 		End Function
-		Private Shared Function workerCountOf(ByVal c As Integer) As Integer
+		Private Shared Function workerCountOf(  c As Integer) As Integer
 			Return c And CAPACITY
 		End Function
-		Private Shared Function ctlOf(ByVal rs As Integer, ByVal wc As Integer) As Integer
+		Private Shared Function ctlOf(  rs As Integer,   wc As Integer) As Integer
 			Return rs Or wc
 		End Function
 
@@ -402,29 +402,29 @@ Namespace java.util.concurrent
 	'     * These depend on the bit layout and on workerCount being never negative.
 	'     
 
-		Private Shared Function runStateLessThan(ByVal c As Integer, ByVal s As Integer) As Boolean
+		Private Shared Function runStateLessThan(  c As Integer,   s As Integer) As Boolean
 			Return c < s
 		End Function
 
-		Private Shared Function runStateAtLeast(ByVal c As Integer, ByVal s As Integer) As Boolean
+		Private Shared Function runStateAtLeast(  c As Integer,   s As Integer) As Boolean
 			Return c >= s
 		End Function
 
-		Private Shared Function isRunning(ByVal c As Integer) As Boolean
+		Private Shared Function isRunning(  c As Integer) As Boolean
 			Return c < SHUTDOWN_Renamed
 		End Function
 
 		''' <summary>
 		''' Attempts to CAS-increment the workerCount field of ctl.
 		''' </summary>
-		Private Function compareAndIncrementWorkerCount(ByVal expect As Integer) As Boolean
+		Private Function compareAndIncrementWorkerCount(  expect As Integer) As Boolean
 			Return ctl.compareAndSet(expect, expect + 1)
 		End Function
 
 		''' <summary>
 		''' Attempts to CAS-decrement the workerCount field of ctl.
 		''' </summary>
-		Private Function compareAndDecrementWorkerCount(ByVal expect As Integer) As Boolean
+		Private Function compareAndDecrementWorkerCount(  expect As Integer) As Boolean
 			Return ctl.compareAndSet(expect, expect - 1)
 		End Function
 
@@ -623,7 +623,7 @@ Namespace java.util.concurrent
 			''' <summary>
 			''' Creates with given first task and thread from ThreadFactory. </summary>
 			''' <param name="firstTask"> the first task (null if none) </param>
-			Friend Sub New(ByVal outerInstance As ThreadPoolExecutor, ByVal firstTask As Runnable)
+			Friend Sub New(  outerInstance As ThreadPoolExecutor,   firstTask As Runnable)
 					Me.outerInstance = outerInstance
 				state = -1 ' inhibit interrupts until runWorker
 				Me.firstTask = firstTask
@@ -647,7 +647,7 @@ Namespace java.util.concurrent
 				End Get
 			End Property
 
-			Protected Friend Overrides Function tryAcquire(ByVal unused As Integer) As Boolean
+			Protected Friend Overrides Function tryAcquire(  unused As Integer) As Boolean
 				If compareAndSetState(0, 1) Then
 					exclusiveOwnerThread = Thread.CurrentThread
 					Return True
@@ -655,7 +655,7 @@ Namespace java.util.concurrent
 				Return False
 			End Function
 
-			Protected Friend Overrides Function tryRelease(ByVal unused As Integer) As Boolean
+			Protected Friend Overrides Function tryRelease(  unused As Integer) As Boolean
 				exclusiveOwnerThread = Nothing
 				state = 0
 				Return True
@@ -698,7 +698,7 @@ Namespace java.util.concurrent
 		''' </summary>
 		''' <param name="targetState"> the desired state, either SHUTDOWN or STOP
 		'''        (but not TIDYING or TERMINATED -- use tryTerminate for that) </param>
-		Private Sub advanceRunState(ByVal targetState As Integer)
+		Private Sub advanceRunState(  targetState As Integer)
 			Do
 				Dim c As Integer = ctl.get()
 				If runStateAtLeast(c, targetState) OrElse ctl.compareAndSet(c, ctlOf(targetState, workerCountOf(c))) Then Exit Do
@@ -805,7 +805,7 @@ Namespace java.util.concurrent
 		''' interrupt only one idle worker, but shutdown() interrupts all
 		''' idle workers so that redundant workers exit promptly, not
 		''' waiting for a straggler task to finish. </param>
-		Private Sub interruptIdleWorkers(ByVal onlyOne As Boolean)
+		Private Sub interruptIdleWorkers(  onlyOne As Boolean)
 			Dim mainLock As java.util.concurrent.locks.ReentrantLock = Me.mainLock
 			mainLock.lock()
 			Try
@@ -845,7 +845,7 @@ Namespace java.util.concurrent
 		''' Invokes the rejected execution handler for the given command.
 		''' Package-protected for use by ScheduledThreadPoolExecutor.
 		''' </summary>
-		Friend Sub reject(ByVal command As Runnable)
+		Friend Sub reject(  command As Runnable)
 			handler.rejectedExecution(command, Me)
 		End Sub
 
@@ -862,7 +862,7 @@ Namespace java.util.concurrent
 		''' enable running tasks during shutdown.
 		''' </summary>
 		''' <param name="shutdownOK"> true if should return true if SHUTDOWN </param>
-		Friend Function isRunningOrShutdown(ByVal shutdownOK As Boolean) As Boolean
+		Friend Function isRunningOrShutdown(  shutdownOK As Boolean) As Boolean
 			Dim rs As Integer = runStateOf(ctl.get())
 			Return rs = RUNNING OrElse (rs = SHUTDOWN_Renamed AndAlso shutdownOK)
 		End Function
@@ -914,7 +914,7 @@ Namespace java.util.concurrent
 		''' value to ensure reads of fresh values after checking other pool
 		''' state). </param>
 		''' <returns> true if successful </returns>
-		Private Function addWorker(ByVal firstTask As Runnable, ByVal core As Boolean) As Boolean
+		Private Function addWorker(  firstTask As Runnable,   core As Boolean) As Boolean
 			retry:
 			Do
 				Dim c As Integer = ctl.get()
@@ -976,7 +976,7 @@ Namespace java.util.concurrent
 		''' - rechecks for termination, in case the existence of this
 		'''   worker was holding up termination
 		''' </summary>
-		Private Sub addWorkerFailed(ByVal w As Worker)
+		Private Sub addWorkerFailed(  w As Worker)
 			Dim mainLock As java.util.concurrent.locks.ReentrantLock = Me.mainLock
 			mainLock.lock()
 			Try
@@ -1000,7 +1000,7 @@ Namespace java.util.concurrent
 		''' </summary>
 		''' <param name="w"> the worker </param>
 		''' <param name="completedAbruptly"> if the worker died due to user exception </param>
-		Private Sub processWorkerExit(ByVal w As Worker, ByVal completedAbruptly As Boolean)
+		Private Sub processWorkerExit(  w As Worker,   completedAbruptly As Boolean)
 			If completedAbruptly Then ' If abrupt, then workerCount wasn't adjusted decrementWorkerCount()
 
 			Dim mainLock As java.util.concurrent.locks.ReentrantLock = Me.mainLock
@@ -1118,7 +1118,7 @@ Namespace java.util.concurrent
 		''' user code.
 		''' </summary>
 		''' <param name="w"> the worker </param>
-		Friend Sub runWorker(ByVal w As Worker)
+		Friend Sub runWorker(  w As Worker)
 			Dim wt As Thread = Thread.CurrentThread
 			Dim task_Renamed As Runnable = w.firstTask
 			w.firstTask = Nothing
@@ -1188,7 +1188,7 @@ Namespace java.util.concurrent
 		'''         {@code maximumPoolSize <= 0}<br>
 		'''         {@code maximumPoolSize < corePoolSize} </exception>
 		''' <exception cref="NullPointerException"> if {@code workQueue} is null </exception>
-		Public Sub New(ByVal corePoolSize As Integer, ByVal maximumPoolSize As Integer, ByVal keepAliveTime As Long, ByVal unit As TimeUnit, ByVal workQueue As BlockingQueue(Of Runnable))
+		Public Sub New(  corePoolSize As Integer,   maximumPoolSize As Integer,   keepAliveTime As Long,   unit As TimeUnit,   workQueue As BlockingQueue(Of Runnable))
 			Me.New(corePoolSize, maximumPoolSize, keepAliveTime, unit, workQueue, Executors.defaultThreadFactory(), defaultHandler)
 		End Sub
 
@@ -1216,7 +1216,7 @@ Namespace java.util.concurrent
 		'''         {@code maximumPoolSize < corePoolSize} </exception>
 		''' <exception cref="NullPointerException"> if {@code workQueue}
 		'''         or {@code threadFactory} is null </exception>
-		Public Sub New(ByVal corePoolSize As Integer, ByVal maximumPoolSize As Integer, ByVal keepAliveTime As Long, ByVal unit As TimeUnit, ByVal workQueue As BlockingQueue(Of Runnable), ByVal threadFactory As ThreadFactory)
+		Public Sub New(  corePoolSize As Integer,   maximumPoolSize As Integer,   keepAliveTime As Long,   unit As TimeUnit,   workQueue As BlockingQueue(Of Runnable),   threadFactory As ThreadFactory)
 			Me.New(corePoolSize, maximumPoolSize, keepAliveTime, unit, workQueue, threadFactory, defaultHandler)
 		End Sub
 
@@ -1244,7 +1244,7 @@ Namespace java.util.concurrent
 		'''         {@code maximumPoolSize < corePoolSize} </exception>
 		''' <exception cref="NullPointerException"> if {@code workQueue}
 		'''         or {@code handler} is null </exception>
-		Public Sub New(ByVal corePoolSize As Integer, ByVal maximumPoolSize As Integer, ByVal keepAliveTime As Long, ByVal unit As TimeUnit, ByVal workQueue As BlockingQueue(Of Runnable), ByVal handler As RejectedExecutionHandler)
+		Public Sub New(  corePoolSize As Integer,   maximumPoolSize As Integer,   keepAliveTime As Long,   unit As TimeUnit,   workQueue As BlockingQueue(Of Runnable),   handler As RejectedExecutionHandler)
 			Me.New(corePoolSize, maximumPoolSize, keepAliveTime, unit, workQueue, Executors.defaultThreadFactory(), handler)
 		End Sub
 
@@ -1274,7 +1274,7 @@ Namespace java.util.concurrent
 		'''         {@code maximumPoolSize < corePoolSize} </exception>
 		''' <exception cref="NullPointerException"> if {@code workQueue}
 		'''         or {@code threadFactory} or {@code handler} is null </exception>
-		Public Sub New(ByVal corePoolSize As Integer, ByVal maximumPoolSize As Integer, ByVal keepAliveTime As Long, ByVal unit As TimeUnit, ByVal workQueue As BlockingQueue(Of Runnable), ByVal threadFactory As ThreadFactory, ByVal handler As RejectedExecutionHandler)
+		Public Sub New(  corePoolSize As Integer,   maximumPoolSize As Integer,   keepAliveTime As Long,   unit As TimeUnit,   workQueue As BlockingQueue(Of Runnable),   threadFactory As ThreadFactory,   handler As RejectedExecutionHandler)
 			If corePoolSize < 0 OrElse maximumPoolSize <= 0 OrElse maximumPoolSize < corePoolSize OrElse keepAliveTime < 0 Then Throw New IllegalArgumentException
 			If workQueue Is Nothing OrElse threadFactory Is Nothing OrElse handler Is Nothing Then Throw New NullPointerException
 			Me.corePoolSize = corePoolSize
@@ -1298,7 +1298,7 @@ Namespace java.util.concurrent
 		'''         {@code RejectedExecutionHandler}, if the task
 		'''         cannot be accepted for execution </exception>
 		''' <exception cref="NullPointerException"> if {@code command} is null </exception>
-		Public Overridable Sub execute(ByVal command As Runnable)
+		Public Overridable Sub execute(  command As Runnable)
 			If command Is Nothing Then Throw New NullPointerException
 	'        
 	'         * Proceed in 3 steps:
@@ -1422,7 +1422,7 @@ Namespace java.util.concurrent
 			End Get
 		End Property
 
-		Public Overrides Function awaitTermination(ByVal timeout As Long, ByVal unit As TimeUnit) As Boolean
+		Public Overrides Function awaitTermination(  timeout As Long,   unit As TimeUnit) As Boolean
 			Dim nanos As Long = unit.toNanos(timeout)
 			Dim mainLock As java.util.concurrent.locks.ReentrantLock = Me.mainLock
 			mainLock.lock()
@@ -1452,7 +1452,7 @@ Namespace java.util.concurrent
 		''' <exception cref="NullPointerException"> if threadFactory is null </exception>
 		''' <seealso cref= #getThreadFactory </seealso>
 		Public Overridable Property threadFactory As ThreadFactory
-			Set(ByVal threadFactory As ThreadFactory)
+			Set(  threadFactory As ThreadFactory)
 				If threadFactory Is Nothing Then Throw New NullPointerException
 				Me.threadFactory = threadFactory
 			End Set
@@ -1469,7 +1469,7 @@ Namespace java.util.concurrent
 		''' <exception cref="NullPointerException"> if handler is null </exception>
 		''' <seealso cref= #getRejectedExecutionHandler </seealso>
 		Public Overridable Property rejectedExecutionHandler As RejectedExecutionHandler
-			Set(ByVal handler As RejectedExecutionHandler)
+			Set(  handler As RejectedExecutionHandler)
 				If handler Is Nothing Then Throw New NullPointerException
 				Me.handler = handler
 			End Set
@@ -1490,7 +1490,7 @@ Namespace java.util.concurrent
 		''' <exception cref="IllegalArgumentException"> if {@code corePoolSize < 0} </exception>
 		''' <seealso cref= #getCorePoolSize </seealso>
 		Public Overridable Property corePoolSize As Integer
-			Set(ByVal corePoolSize As Integer)
+			Set(  corePoolSize As Integer)
 				If corePoolSize < 0 Then Throw New IllegalArgumentException
 				Dim delta As Integer = corePoolSize - Me.corePoolSize
 				Me.corePoolSize = corePoolSize
@@ -1587,7 +1587,7 @@ Namespace java.util.concurrent
 		'''         and the current keep-alive time is not greater than zero
 		''' 
 		''' @since 1.6 </exception>
-		Public Overridable Sub allowCoreThreadTimeOut(ByVal value As Boolean)
+		Public Overridable Sub allowCoreThreadTimeOut(  value As Boolean)
 			If value AndAlso keepAliveTime <= 0 Then Throw New IllegalArgumentException("Core threads must have nonzero keep alive times")
 			If value <> allowCoreThreadTimeOut_Renamed Then
 				allowCoreThreadTimeOut_Renamed = value
@@ -1607,7 +1607,7 @@ Namespace java.util.concurrent
 		'''         less than the <seealso cref="#getCorePoolSize core pool size"/> </exception>
 		''' <seealso cref= #getMaximumPoolSize </seealso>
 		Public Overridable Property maximumPoolSize As Integer
-			Set(ByVal maximumPoolSize As Integer)
+			Set(  maximumPoolSize As Integer)
 				If maximumPoolSize <= 0 OrElse maximumPoolSize < corePoolSize Then Throw New IllegalArgumentException
 				Me.maximumPoolSize = maximumPoolSize
 				If workerCountOf(ctl.get()) > maximumPoolSize Then interruptIdleWorkers()
@@ -1631,7 +1631,7 @@ Namespace java.util.concurrent
 		''' <exception cref="IllegalArgumentException"> if {@code time} less than zero or
 		'''         if {@code time} is zero and {@code allowsCoreThreadTimeOut} </exception>
 		''' <seealso cref= #getKeepAliveTime(TimeUnit) </seealso>
-		Public Overridable Sub setKeepAliveTime(ByVal time As Long, ByVal unit As TimeUnit)
+		Public Overridable Sub setKeepAliveTime(  time As Long,   unit As TimeUnit)
 			If time < 0 Then Throw New IllegalArgumentException
 			If time = 0 AndAlso allowsCoreThreadTimeOut() Then Throw New IllegalArgumentException("Core threads must have nonzero keep alive times")
 			Dim keepAliveTime_Renamed As Long = unit.toNanos(time)
@@ -1648,7 +1648,7 @@ Namespace java.util.concurrent
 		''' <param name="unit"> the desired time unit of the result </param>
 		''' <returns> the time limit </returns>
 		''' <seealso cref= #setKeepAliveTime(long, TimeUnit) </seealso>
-		Public Overridable Function getKeepAliveTime(ByVal unit As TimeUnit) As Long
+		Public Overridable Function getKeepAliveTime(  unit As TimeUnit) As Long
 			Return unit.convert(keepAliveTime, TimeUnit.NANOSECONDS)
 		End Function
 
@@ -1682,7 +1682,7 @@ Namespace java.util.concurrent
 		''' </summary>
 		''' <param name="task"> the task to remove </param>
 		''' <returns> {@code true} if the task was removed </returns>
-		Public Overridable Function remove(ByVal task As Runnable) As Boolean
+		Public Overridable Function remove(  task As Runnable) As Boolean
 			Dim removed As Boolean = workQueue.remove(task)
 			tryTerminate() ' In case SHUTDOWN and now empty
 			Return removed
@@ -1868,7 +1868,7 @@ Namespace java.util.concurrent
 		''' </summary>
 		''' <param name="t"> the thread that will run task {@code r} </param>
 		''' <param name="r"> the task that will be executed </param>
-		Protected Friend Overridable Sub beforeExecute(ByVal t As Thread, ByVal r As Runnable)
+		Protected Friend Overridable Sub beforeExecute(  t As Thread,   r As Runnable)
 		End Sub
 
 		''' <summary>
@@ -1916,7 +1916,7 @@ Namespace java.util.concurrent
 		''' <param name="r"> the runnable that has completed </param>
 		''' <param name="t"> the exception that caused termination, or null if
 		''' execution completed normally </param>
-		Protected Friend Overridable Sub afterExecute(ByVal r As Runnable, ByVal t As Throwable)
+		Protected Friend Overridable Sub afterExecute(  r As Runnable,   t As Throwable)
 		End Sub
 
 		''' <summary>
@@ -1951,7 +1951,7 @@ Namespace java.util.concurrent
 			''' </summary>
 			''' <param name="r"> the runnable task requested to be executed </param>
 			''' <param name="e"> the executor attempting to execute this task </param>
-			Public Overridable Sub rejectedExecution(ByVal r As Runnable, ByVal e As ThreadPoolExecutor) Implements RejectedExecutionHandler.rejectedExecution
+			Public Overridable Sub rejectedExecution(  r As Runnable,   e As ThreadPoolExecutor) Implements RejectedExecutionHandler.rejectedExecution
 				If Not e.shutdown Then r.run()
 			End Sub
 		End Class
@@ -1975,7 +1975,7 @@ Namespace java.util.concurrent
 			''' <param name="r"> the runnable task requested to be executed </param>
 			''' <param name="e"> the executor attempting to execute this task </param>
 			''' <exception cref="RejectedExecutionException"> always </exception>
-			Public Overridable Sub rejectedExecution(ByVal r As Runnable, ByVal e As ThreadPoolExecutor) Implements RejectedExecutionHandler.rejectedExecution
+			Public Overridable Sub rejectedExecution(  r As Runnable,   e As ThreadPoolExecutor) Implements RejectedExecutionHandler.rejectedExecution
 				Throw New RejectedExecutionException("Task " & r.ToString() & " rejected from " & e.ToString())
 			End Sub
 		End Class
@@ -1998,7 +1998,7 @@ Namespace java.util.concurrent
 			''' </summary>
 			''' <param name="r"> the runnable task requested to be executed </param>
 			''' <param name="e"> the executor attempting to execute this task </param>
-			Public Overridable Sub rejectedExecution(ByVal r As Runnable, ByVal e As ThreadPoolExecutor) Implements RejectedExecutionHandler.rejectedExecution
+			Public Overridable Sub rejectedExecution(  r As Runnable,   e As ThreadPoolExecutor) Implements RejectedExecutionHandler.rejectedExecution
 			End Sub
 		End Class
 
@@ -2024,7 +2024,7 @@ Namespace java.util.concurrent
 			''' </summary>
 			''' <param name="r"> the runnable task requested to be executed </param>
 			''' <param name="e"> the executor attempting to execute this task </param>
-			Public Overridable Sub rejectedExecution(ByVal r As Runnable, ByVal e As ThreadPoolExecutor) Implements RejectedExecutionHandler.rejectedExecution
+			Public Overridable Sub rejectedExecution(  r As Runnable,   e As ThreadPoolExecutor) Implements RejectedExecutionHandler.rejectedExecution
 				If Not e.shutdown Then
 					e.queue.poll()
 					e.execute(r)

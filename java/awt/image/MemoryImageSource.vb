@@ -127,7 +127,7 @@ Namespace java.awt.image
         ''' <param name="scan"> the distance from one row of pixels to the next in
         '''        the array </param>
         ''' <seealso cref= java.awt.Component#createImage </seealso>
-        Public Sub New(ByVal w As Integer, ByVal h As Integer, ByVal cm As java.awt.image.ColorModel, ByVal pix As SByte(), ByVal [off] As Integer, ByVal scan As Integer)
+        Public Sub New(  w As Integer,   h As Integer,   cm As java.awt.image.ColorModel,   pix As SByte(),   [off] As Integer,   scan As Integer)
             initialize(w, h, cm, CObj(pix), [off], scan, Nothing)
         End Sub
 
@@ -145,7 +145,7 @@ Namespace java.awt.image
         ''' <param name="props"> a list of properties that the <code>ImageProducer</code>
         '''        uses to process an image </param>
         ''' <seealso cref= java.awt.Component#createImage </seealso>
-        Public Sub New(ByVal w As Integer, ByVal h As Integer, ByVal cm As java.awt.image.ColorModel, ByVal pix As SByte(), ByVal [off] As Integer, ByVal scan As Integer, ByVal props As Dictionary(Of T1))
+        Public Sub New(  w As Integer,   h As Integer,   cm As java.awt.image.ColorModel,   pix As SByte(),   [off] As Integer,   scan As Integer,   props As Dictionary(Of T1))
             initialize(w, h, cm, CObj(pix), [off], scan, props)
         End Sub
 
@@ -161,7 +161,7 @@ Namespace java.awt.image
         ''' <param name="scan"> the distance from one row of pixels to the next in
         '''        the array </param>
         ''' <seealso cref= java.awt.Component#createImage </seealso>
-        Public Sub New(ByVal w As Integer, ByVal h As Integer, ByVal cm As java.awt.image.ColorModel, ByVal pix As Integer(), ByVal [off] As Integer, ByVal scan As Integer)
+        Public Sub New(  w As Integer,   h As Integer,   cm As java.awt.image.ColorModel,   pix As Integer(),   [off] As Integer,   scan As Integer)
             initialize(w, h, cm, CObj(pix), [off], scan, Nothing)
         End Sub
 
@@ -179,11 +179,11 @@ Namespace java.awt.image
         ''' <param name="props"> a list of properties that the <code>ImageProducer</code>
         '''        uses to process an image </param>
         ''' <seealso cref= java.awt.Component#createImage </seealso>
-        Public Sub New(ByVal w As Integer, ByVal h As Integer, ByVal cm As java.awt.image.ColorModel, ByVal pix As Integer(), ByVal [off] As Integer, ByVal scan As Integer, ByVal props As Dictionary(Of T1))
+        Public Sub New(  w As Integer,   h As Integer,   cm As java.awt.image.ColorModel,   pix As Integer(),   [off] As Integer,   scan As Integer,   props As Dictionary(Of T1))
             initialize(w, h, cm, CObj(pix), [off], scan, props)
         End Sub
 
-        Private Sub initialize(ByVal w As Integer, ByVal h As Integer, ByVal cm As java.awt.image.ColorModel, ByVal pix As Object, ByVal [off] As Integer, ByVal scan As Integer, ByVal props As Hashtable)
+        Private Sub initialize(  w As Integer,   h As Integer,   cm As java.awt.image.ColorModel,   pix As Object,   [off] As Integer,   scan As Integer,   props As Hashtable)
             width = w
             height = h
             model = cm

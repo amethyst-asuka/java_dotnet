@@ -50,7 +50,7 @@ Namespace java.awt.event
 		''' The code written for this method performs the operations
 		''' that need to occur when an item is selected (or deselected).
 		''' </summary>
-		Sub itemStateChanged(ByVal e As ItemEvent)
+		Sub itemStateChanged(  e As ItemEvent)
 
 	End Interface
 

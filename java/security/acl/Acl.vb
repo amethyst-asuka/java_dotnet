@@ -102,7 +102,7 @@ Namespace java.security.acl
 		''' is not an owner of this ACL.
 		''' </exception>
 		''' <seealso cref= #getName </seealso>
-		Sub setName(ByVal caller As java.security.Principal, ByVal name As String)
+		Sub setName(  caller As java.security.Principal,   name As String)
 
 		''' <summary>
 		''' Returns the name of this ACL.
@@ -132,7 +132,7 @@ Namespace java.security.acl
 		''' </returns>
 		''' <exception cref="NotOwnerException"> if the caller principal
 		'''  is not an owner of this ACL. </exception>
-		Function addEntry(ByVal caller As java.security.Principal, ByVal entry As AclEntry) As Boolean
+		Function addEntry(  caller As java.security.Principal,   entry As AclEntry) As Boolean
 
 		''' <summary>
 		''' Removes an ACL entry from this ACL.
@@ -146,7 +146,7 @@ Namespace java.security.acl
 		''' </returns>
 		''' <exception cref="NotOwnerException"> if the caller principal is not
 		''' an owner of this Acl. </exception>
-		Function removeEntry(ByVal caller As java.security.Principal, ByVal entry As AclEntry) As Boolean
+		Function removeEntry(  caller As java.security.Principal,   entry As AclEntry) As Boolean
 
 		''' <summary>
 		''' Returns an enumeration for the set of allowed permissions for the
@@ -192,7 +192,7 @@ Namespace java.security.acl
 		''' </param>
 		''' <returns> the permission set specifying the permissions the principal
 		''' is allowed. </returns>
-		Function getPermissions(ByVal user As java.security.Principal) As System.Collections.IEnumerator(Of Permission)
+		Function getPermissions(  user As java.security.Principal) As System.Collections.IEnumerator(Of Permission)
 
 		''' <summary>
 		''' Returns an enumeration of the entries in this ACL. Each element in
@@ -219,7 +219,7 @@ Namespace java.security.acl
 		''' otherwise.
 		''' </returns>
 		''' <seealso cref= #getPermissions </seealso>
-		Function checkPermission(ByVal principal As java.security.Principal, ByVal permission As Permission) As Boolean
+		Function checkPermission(  principal As java.security.Principal,   permission As Permission) As Boolean
 
 		''' <summary>
 		''' Returns a string representation of the

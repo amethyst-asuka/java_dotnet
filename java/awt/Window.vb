@@ -501,7 +501,7 @@ Namespace java.awt
 		'''     {@code GraphicsEnvironment.isHeadless()} returns {@code true}
 		''' </exception>
 		''' <seealso cref= java.awt.GraphicsEnvironment#isHeadless </seealso>
-		Friend Sub New(ByVal gc As GraphicsConfiguration)
+		Friend Sub New(  gc As GraphicsConfiguration)
 			init(gc)
 		End Sub
 
@@ -514,7 +514,7 @@ Namespace java.awt
 			Friend ReadOnly weakThis As WeakReference(Of Window)
 			Friend ReadOnly context As WeakReference(Of sun.awt.AppContext)
 
-			Friend Sub New(ByVal context As sun.awt.AppContext, ByVal victim As Window)
+			Friend Sub New(  context As sun.awt.AppContext,   victim As Window)
 				weakThis = victim.weakThis
 				Me.context = New WeakReference(Of sun.awt.AppContext)(context)
 			End Sub
@@ -534,7 +534,7 @@ Namespace java.awt
 			End Sub
 		End Class
 
-		Private Function initGC(ByVal gc As GraphicsConfiguration) As GraphicsConfiguration
+		Private Function initGC(  gc As GraphicsConfiguration) As GraphicsConfiguration
 			GraphicsEnvironment.checkHeadless()
 
 			If gc Is Nothing Then gc = GraphicsEnvironment.localGraphicsEnvironment.defaultScreenDevice.defaultConfiguration
@@ -543,7 +543,7 @@ Namespace java.awt
 			Return gc
 		End Function
 
-		Private Sub init(ByVal gc As GraphicsConfiguration)
+		Private Sub init(  gc As GraphicsConfiguration)
 			GraphicsEnvironment.checkHeadless()
 
 			syncLWRequests = systemSyncLWRequests
@@ -615,7 +615,7 @@ Namespace java.awt
 		''' </exception>
 		''' <seealso cref= java.awt.GraphicsEnvironment#isHeadless </seealso>
 		''' <seealso cref= #isShowing </seealso>
-		Public Sub New(ByVal owner As Frame)
+		Public Sub New(  owner As Frame)
 			Me.New(If(owner Is Nothing, CType(Nothing, GraphicsConfiguration), owner.graphicsConfiguration))
 			ownedInit(owner)
 		End Sub
@@ -643,7 +643,7 @@ Namespace java.awt
 		''' <seealso cref=       #isShowing
 		''' 
 		''' @since     1.2 </seealso>
-		Public Sub New(ByVal owner As Window)
+		Public Sub New(  owner As Window)
 			Me.New(If(owner Is Nothing, CType(Nothing, GraphicsConfiguration), owner.graphicsConfiguration))
 			ownedInit(owner)
 		End Sub
@@ -675,12 +675,12 @@ Namespace java.awt
 		''' <seealso cref=       GraphicsConfiguration#getBounds </seealso>
 		''' <seealso cref=       #isShowing
 		''' @since     1.3 </seealso>
-		Public Sub New(ByVal owner As Window, ByVal gc As GraphicsConfiguration)
+		Public Sub New(  owner As Window,   gc As GraphicsConfiguration)
 			Me.New(gc)
 			ownedInit(owner)
 		End Sub
 
-		Private Sub ownedInit(ByVal owner As Window)
+		Private Sub ownedInit(  owner As Window)
 			Me.parent = owner
 			If owner IsNot Nothing Then
 				owner.addOwnedWindow(weakThis)
@@ -725,7 +725,7 @@ Namespace java.awt
 				If icons Is Nothing OrElse icons.Count = 0 Then Return New List(Of Image)
 				Return New List(Of Image)(icons)
 			End Get
-			Set(ByVal icons As IList(Of T1))
+			Set(  icons As IList(Of T1))
 				Me.icons = If(icons Is Nothing, New List(Of Image), New List(Of Image)(icons))
 				Dim peer_Renamed As java.awt.peer.WindowPeer = CType(Me.peer, java.awt.peer.WindowPeer)
 				If peer_Renamed IsNot Nothing Then peer_Renamed.updateIconImages()
@@ -762,7 +762,7 @@ Namespace java.awt
 		''' <seealso cref=       #getIconImages()
 		''' @since     1.6 </seealso>
 		Public Overridable Property iconImage As Image
-			Set(ByVal image_Renamed As Image)
+			Set(  image_Renamed As Image)
 				Dim imageList As New List(Of Image)
 				If image_Renamed IsNot Nothing Then imageList.Add(image_Renamed)
 				iconImages = imageList
@@ -856,7 +856,7 @@ Namespace java.awt
 		''' <seealso cref= #pack
 		''' @since 1.6 </seealso>
 		Public Overrides Property minimumSize As Dimension
-			Set(ByVal minimumSize As Dimension)
+			Set(  minimumSize As Dimension)
 				SyncLock treeLock
 					MyBase.minimumSize = minimumSize
 					Dim size_Renamed As Dimension = size
@@ -890,7 +890,7 @@ Namespace java.awt
 		''' <seealso cref= #setMinimumSize
 		''' @since 1.6 </seealso>
 		Public Overrides Property size As Dimension
-			Set(ByVal d As Dimension)
+			Set(  d As Dimension)
 				MyBase.size = d
 			End Set
 		End Property
@@ -912,7 +912,7 @@ Namespace java.awt
 		''' <seealso cref= #setBounds </seealso>
 		''' <seealso cref= #setMinimumSize
 		''' @since 1.6 </seealso>
-		Public Overrides Sub setSize(ByVal width As Integer, ByVal height As Integer)
+		Public Overrides Sub setSize(  width As Integer,   height As Integer)
 			MyBase.sizeize(width, height)
 		End Sub
 
@@ -924,7 +924,7 @@ Namespace java.awt
 		''' the requested data, so that the {@code Window} object is placed and sized
 		''' in a way that corresponds closely to the desktop settings.
 		''' </summary>
-		Public Overrides Sub setLocation(ByVal x As Integer, ByVal y As Integer)
+		Public Overrides Sub setLocation(  x As Integer,   y As Integer)
 			MyBase.locationion(x, y)
 		End Sub
 
@@ -937,7 +937,7 @@ Namespace java.awt
 		''' in a way that corresponds closely to the desktop settings.
 		''' </summary>
 		Public Overrides Property location As Point
-			Set(ByVal p As Point)
+			Set(  p As Point)
 				MyBase.location = p
 			End Set
 		End Property
@@ -945,7 +945,7 @@ Namespace java.awt
 		''' @deprecated As of JDK version 1.1,
 		''' replaced by {@code setBounds(int, int, int, int)}. 
 		<Obsolete("As of JDK version 1.1,")> _
-		Public Overrides Sub reshape(ByVal x As Integer, ByVal y As Integer, ByVal width As Integer, ByVal height As Integer)
+		Public Overrides Sub reshape(  x As Integer,   y As Integer,   width As Integer,   height As Integer)
 			If minimumSizeSet Then
 				Dim minSize As Dimension = minimumSize
 				If width < minSize.width Then width = minSize.width
@@ -954,7 +954,7 @@ Namespace java.awt
 			MyBase.reshape(x, y, width, height)
 		End Sub
 
-		Friend Overridable Sub setClientSize(ByVal w As Integer, ByVal h As Integer)
+		Friend Overridable Sub setClientSize(  w As Integer,   h As Integer)
 			SyncLock treeLock
 				boundsOp = java.awt.peer.ComponentPeer.SET_CLIENT_SIZE
 				boundsnds(x, y, w, h)
@@ -1009,7 +1009,7 @@ Namespace java.awt
 		''' <seealso cref= java.awt.Window#setAutoRequestFocus </seealso>
 		''' <seealso cref= java.awt.Window#isFocusableWindow </seealso>
 		Public Overrides Property visible As Boolean
-			Set(ByVal b As Boolean)
+			Set(  b As Boolean)
 				MyBase.visible = b
 			End Set
 		End Property
@@ -1065,7 +1065,7 @@ Namespace java.awt
 			End If
 		End Sub
 
-		Shared Sub updateChildFocusableWindowState(ByVal w As Window)
+		Shared Sub updateChildFocusableWindowState(  w As Window)
 			If w.peer IsNot Nothing AndAlso w.showing Then CType(w.peer, java.awt.peer.WindowPeer).updateFocusableWindowState()
 			For i As Integer = 0 To w.ownedWindowList.Count - 1
 				Dim child As Window = w.ownedWindowList(i).get()
@@ -1074,7 +1074,7 @@ Namespace java.awt
 		End Sub
 
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Friend Overridable Sub postWindowEvent(ByVal id As Integer)
+		Friend Overridable Sub postWindowEvent(  id As Integer)
 			If windowListener IsNot Nothing OrElse (eventMask And AWTEvent.WINDOW_EVENT_MASK) <> 0 OrElse Toolkit.enabledOnToolkit(AWTEvent.WINDOW_EVENT_MASK) Then
 				Dim e As New WindowEvent(Me, id)
 				Toolkit.eventQueue.postEvent(e)
@@ -1227,11 +1227,11 @@ Namespace java.awt
 	'     * It's overridden here because parent == owner in Window,
 	'     * and we shouldn't adjust counter on owner
 	'     
-		Friend Overrides Sub adjustListeningChildrenOnParent(ByVal mask As Long, ByVal num As Integer)
+		Friend Overrides Sub adjustListeningChildrenOnParent(  mask As Long,   num As Integer)
 		End Sub
 
 		' Should only be called while holding tree lock
-		Friend Overrides Sub adjustDecendantsOnParent(ByVal num As Integer)
+		Friend Overrides Sub adjustDecendantsOnParent(  num As Integer)
 			' do nothing since parent == owner and we shouldn't
 			' ajust counter on owner
 		End Sub
@@ -1425,7 +1425,7 @@ Namespace java.awt
 		''' <seealso cref=       Cursor
 		''' @since     JDK1.1 </seealso>
 		Public Overrides Property cursor As Cursor
-			Set(ByVal cursor_Renamed As Cursor)
+			Set(  cursor_Renamed As Cursor)
 				If cursor_Renamed Is Nothing Then cursor_Renamed = Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR)
 				MyBase.cursor = cursor_Renamed
 			End Set
@@ -1493,7 +1493,7 @@ Namespace java.awt
 			End Get
 		End Property
 
-		Friend Overridable Sub setModalBlocked(ByVal blocker As Dialog, ByVal blocked As Boolean, ByVal peerCall As Boolean)
+		Friend Overridable Sub setModalBlocked(  blocker As Dialog,   blocked As Boolean,   peerCall As Boolean)
 			Me.modalBlocker = If(blocked, blocker, Nothing)
 			If peerCall Then
 				Dim peer_Renamed As java.awt.peer.WindowPeer = CType(Me.peer, java.awt.peer.WindowPeer)
@@ -1537,7 +1537,7 @@ Namespace java.awt
 			End Get
 		End Property
 
-		Private Shared Function getWindows(ByVal appContext As sun.awt.AppContext) As Window()
+		Private Shared Function getWindows(  appContext As sun.awt.AppContext) As Window()
 			SyncLock GetType(Window)
 				Dim realCopy As Window()
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
@@ -1661,7 +1661,7 @@ Namespace java.awt
 		''' 
 		''' @since 1.6 </seealso>
 		Public Overridable Property modalExclusionType As Dialog.ModalExclusionType
-			Set(ByVal exclusionType As Dialog.ModalExclusionType)
+			Set(  exclusionType As Dialog.ModalExclusionType)
 				If exclusionType Is Nothing Then exclusionType = Dialog.ModalExclusionType.NO_EXCLUDE
 				If Not Toolkit.defaultToolkit.isModalExclusionTypeSupported(exclusionType) Then exclusionType = Dialog.ModalExclusionType.NO_EXCLUDE
 				If modalExclusionType = exclusionType Then Return
@@ -1688,7 +1688,7 @@ Namespace java.awt
 		End Property
 
 
-		Friend Overridable Function isModalExcluded(ByVal exclusionType As Dialog.ModalExclusionType) As Boolean
+		Friend Overridable Function isModalExcluded(  exclusionType As Dialog.ModalExclusionType) As Boolean
 			If (modalExclusionType IsNot Nothing) AndAlso modalExclusionType.CompareTo(exclusionType) >= 0 Then Return True
 			Dim owner_Renamed As Window = owner_NoClientCode
 			Return (owner_Renamed IsNot Nothing) AndAlso owner_Renamed.isModalExcluded(exclusionType)
@@ -1729,7 +1729,7 @@ Namespace java.awt
 		''' <seealso cref= #removeWindowListener </seealso>
 		''' <seealso cref= #getWindowListeners </seealso>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Sub addWindowListener(ByVal l As WindowListener)
+		Public Overridable Sub addWindowListener(  l As WindowListener)
 			If l Is Nothing Then Return
 			newEventsOnly = True
 			windowListener = AWTEventMulticaster.add(windowListener, l)
@@ -1747,7 +1747,7 @@ Namespace java.awt
 		''' <seealso cref= #getWindowStateListeners
 		''' @since 1.4 </seealso>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Sub addWindowStateListener(ByVal l As WindowStateListener)
+		Public Overridable Sub addWindowStateListener(  l As WindowStateListener)
 			If l Is Nothing Then Return
 			windowStateListener = AWTEventMulticaster.add(windowStateListener, l)
 			newEventsOnly = True
@@ -1765,7 +1765,7 @@ Namespace java.awt
 		''' <seealso cref= #getWindowFocusListeners
 		''' @since 1.4 </seealso>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Sub addWindowFocusListener(ByVal l As WindowFocusListener)
+		Public Overridable Sub addWindowFocusListener(  l As WindowFocusListener)
 			If l Is Nothing Then Return
 			windowFocusListener = AWTEventMulticaster.add(windowFocusListener, l)
 			newEventsOnly = True
@@ -1782,7 +1782,7 @@ Namespace java.awt
 		''' <seealso cref= #addWindowListener </seealso>
 		''' <seealso cref= #getWindowListeners </seealso>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Sub removeWindowListener(ByVal l As WindowListener)
+		Public Overridable Sub removeWindowListener(  l As WindowListener)
 			If l Is Nothing Then Return
 			windowListener = AWTEventMulticaster.remove(windowListener, l)
 		End Sub
@@ -1800,7 +1800,7 @@ Namespace java.awt
 		''' <seealso cref= #getWindowStateListeners
 		''' @since 1.4 </seealso>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Sub removeWindowStateListener(ByVal l As WindowStateListener)
+		Public Overridable Sub removeWindowStateListener(  l As WindowStateListener)
 			If l Is Nothing Then Return
 			windowStateListener = AWTEventMulticaster.remove(windowStateListener, l)
 		End Sub
@@ -1817,7 +1817,7 @@ Namespace java.awt
 		''' <seealso cref= #getWindowFocusListeners
 		''' @since 1.4 </seealso>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Sub removeWindowFocusListener(ByVal l As WindowFocusListener)
+		Public Overridable Sub removeWindowFocusListener(  l As WindowFocusListener)
 			If l Is Nothing Then Return
 			windowFocusListener = AWTEventMulticaster.remove(windowFocusListener, l)
 		End Sub
@@ -1911,7 +1911,7 @@ Namespace java.awt
 		''' </exception>
 		''' <seealso cref= #getWindowListeners
 		''' @since 1.3 </seealso>
-		Public Overrides Function getListeners(Of T As java.util.EventListener)(ByVal listenerType As [Class]) As T()
+		Public Overrides Function getListeners(Of T As java.util.EventListener)(  listenerType As [Class]) As T()
 			Dim l As java.util.EventListener = Nothing
 			If listenerType Is GetType(WindowFocusListener) Then
 				l = windowFocusListener
@@ -1926,7 +1926,7 @@ Namespace java.awt
 		End Function
 
 		' REMIND: remove when filtering is handled at lower level
-		Friend Overrides Function eventEnabled(ByVal e As AWTEvent) As Boolean
+		Friend Overrides Function eventEnabled(  e As AWTEvent) As Boolean
 			Select Case e.id
 			  Case WindowEvent.WINDOW_OPENED, WindowEvent.WINDOW_CLOSING, WindowEvent.WINDOW_CLOSED, WindowEvent.WINDOW_ICONIFIED, WindowEvent.WINDOW_DEICONIFIED, WindowEvent.WINDOW_ACTIVATED, WindowEvent.WINDOW_DEACTIVATED
 				If (eventMask And AWTEvent.WINDOW_EVENT_MASK) <> 0 OrElse windowListener IsNot Nothing Then Return True
@@ -1952,7 +1952,7 @@ Namespace java.awt
 		''' exception.
 		''' </summary>
 		''' <param name="e"> the event </param>
-		Protected Friend Overrides Sub processEvent(ByVal e As AWTEvent)
+		Protected Friend Overrides Sub processEvent(  e As AWTEvent)
 			If TypeOf e Is WindowEvent Then
 				Select Case e.iD
 					Case WindowEvent.WINDOW_OPENED, WindowEvent.WINDOW_CLOSING, WindowEvent.WINDOW_CLOSED, WindowEvent.WINDOW_ICONIFIED, WindowEvent.WINDOW_DEICONIFIED, WindowEvent.WINDOW_ACTIVATED, WindowEvent.WINDOW_DEACTIVATED
@@ -1984,7 +1984,7 @@ Namespace java.awt
 		''' </summary>
 		''' <param name="e"> the window event </param>
 		''' <seealso cref= Component#enableEvents </seealso>
-		Protected Friend Overridable Sub processWindowEvent(ByVal e As WindowEvent)
+		Protected Friend Overridable Sub processWindowEvent(  e As WindowEvent)
 			Dim listener As WindowListener = windowListener
 			If listener IsNot Nothing Then
 				Select Case e.iD
@@ -2025,7 +2025,7 @@ Namespace java.awt
 		''' <param name="e"> the window focus event </param>
 		''' <seealso cref= Component#enableEvents
 		''' @since 1.4 </seealso>
-		Protected Friend Overridable Sub processWindowFocusEvent(ByVal e As WindowEvent)
+		Protected Friend Overridable Sub processWindowFocusEvent(  e As WindowEvent)
 			Dim listener As WindowFocusListener = windowFocusListener
 			If listener IsNot Nothing Then
 				Select Case e.iD
@@ -2057,7 +2057,7 @@ Namespace java.awt
 		''' <param name="e"> the window state event </param>
 		''' <seealso cref= java.awt.Component#enableEvents
 		''' @since 1.4 </seealso>
-		Protected Friend Overridable Sub processWindowStateEvent(ByVal e As WindowEvent)
+		Protected Friend Overridable Sub processWindowStateEvent(  e As WindowEvent)
 			Dim listener As WindowStateListener = windowStateListener
 			If listener IsNot Nothing Then
 				Select Case e.iD
@@ -2073,12 +2073,12 @@ Namespace java.awt
 		''' the user has typed <i>control-shift-F1</i>.  If so,
 		''' the list of child windows is dumped to {@code System.out}. </summary>
 		''' <param name="e">  the keyboard event </param>
-		Friend Overrides Sub preProcessKeyEvent(ByVal e As KeyEvent)
+		Friend Overrides Sub preProcessKeyEvent(  e As KeyEvent)
 			' Dump the list of child windows to System.out.
 			If e.actionKey AndAlso e.keyCode = KeyEvent.VK_F1 AndAlso e.controlDown AndAlso e.shiftDown AndAlso e.iD = KeyEvent.KEY_PRESSED Then list(System.out, 0)
 		End Sub
 
-		Friend Overrides Sub postProcessKeyEvent(ByVal e As KeyEvent)
+		Friend Overrides Sub postProcessKeyEvent(  e As KeyEvent)
 			' Do nothing
 		End Sub
 
@@ -2142,9 +2142,9 @@ Namespace java.awt
 		''' <seealso cref= Toolkit#isAlwaysOnTopSupported
 		''' @since 1.5 </seealso>
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
-        Public Sub setAlwaysOnTop(ByVal alwaysOnTop As Boolean) 'JavaToDotNetTempPropertySetalwaysOnTop
+        Public Sub setAlwaysOnTop(  alwaysOnTop As Boolean) 'JavaToDotNetTempPropertySetalwaysOnTop
 		Public Property alwaysOnTop As Boolean
-			Set(ByVal alwaysOnTop As Boolean)
+			Set(  alwaysOnTop As Boolean)
 				Dim security As SecurityManager = System.securityManager
 				If security IsNot Nothing Then security.checkPermission(sun.security.util.SecurityConstants.AWT.SET_WINDOW_ALWAYS_ON_TOP_PERMISSION)
     
@@ -2169,7 +2169,7 @@ Namespace java.awt
 
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
 		Private Property ownedWindowsAlwaysOnTop As Boolean
-			Set(ByVal alwaysOnTop As Boolean)
+			Set(  alwaysOnTop As Boolean)
 				Dim ownedWindowArray As WeakReference(Of Window)()
 				SyncLock ownedWindowList
 					ownedWindowArray = New WeakReference(ownedWindowList.Count - 1){}
@@ -2319,7 +2319,7 @@ Namespace java.awt
 		'''         KeyboardFocusManager.DOWN_CYCLE_TRAVERSAL_KEYS
 		''' @since 1.4 </exception>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Overrides Function getFocusTraversalKeys(ByVal id As Integer) As java.util.Set(Of AWTKeyStroke)
+		Public Overrides Function getFocusTraversalKeys(  id As Integer) As java.util.Set(Of AWTKeyStroke)
 			If id < 0 OrElse id >= KeyboardFocusManager.TRAVERSAL_KEY_LENGTH Then Throw New IllegalArgumentException("invalid focus traversal key identifier")
 
 			' Okay to return Set directly because it is an unmodifiable view
@@ -2343,7 +2343,7 @@ Namespace java.awt
 		''' <seealso cref= Container#getFocusTraversalPolicy
 		''' @since 1.4 </seealso>
 		Public NotOverridable Overrides Property focusCycleRoot As Boolean
-			Set(ByVal focusCycleRoot As Boolean)
+			Set(  focusCycleRoot As Boolean)
 			End Set
 			Get
 				Return True
@@ -2431,7 +2431,7 @@ Namespace java.awt
 			Get
 				Return focusableWindowState
 			End Get
-			Set(ByVal focusableWindowState As Boolean)
+			Set(  focusableWindowState As Boolean)
 				Dim oldFocusableWindowState As Boolean
 				SyncLock Me
 					oldFocusableWindowState = Me.focusableWindowState
@@ -2474,7 +2474,7 @@ Namespace java.awt
 		''' <seealso cref= #toFront
 		''' @since 1.7 </seealso>
 		Public Overridable Property autoRequestFocus As Boolean
-			Set(ByVal autoRequestFocus As Boolean)
+			Set(  autoRequestFocus As Boolean)
 				Me.autoRequestFocus = autoRequestFocus
 			End Set
 			Get
@@ -2517,7 +2517,7 @@ Namespace java.awt
 		''' </param>
 		''' <seealso cref= Component#removePropertyChangeListener </seealso>
 		''' <seealso cref= #addPropertyChangeListener(java.lang.String,java.beans.PropertyChangeListener) </seealso>
-		Public Overrides Sub addPropertyChangeListener(ByVal listener As java.beans.PropertyChangeListener)
+		Public Overrides Sub addPropertyChangeListener(  listener As java.beans.PropertyChangeListener)
 			MyBase.addPropertyChangeListener(listener)
 		End Sub
 
@@ -2556,7 +2556,7 @@ Namespace java.awt
 		''' </param>
 		''' <seealso cref= #addPropertyChangeListener(java.beans.PropertyChangeListener) </seealso>
 		''' <seealso cref= Component#removePropertyChangeListener </seealso>
-		Public Overrides Sub addPropertyChangeListener(ByVal propertyName As String, ByVal listener As java.beans.PropertyChangeListener)
+		Public Overrides Sub addPropertyChangeListener(  propertyName As String,   listener As java.beans.PropertyChangeListener)
 			MyBase.addPropertyChangeListener(propertyName, listener)
 		End Sub
 
@@ -2578,7 +2578,7 @@ Namespace java.awt
 		''' <summary>
 		''' Dispatches an event to this window or one of its sub components. </summary>
 		''' <param name="e"> the event </param>
-		Friend Overrides Sub dispatchEventImpl(ByVal e As AWTEvent)
+		Friend Overrides Sub dispatchEventImpl(  e As AWTEvent)
 			If e.iD = ComponentEvent.COMPONENT_RESIZED Then
 				invalidate()
 				validate()
@@ -2589,7 +2589,7 @@ Namespace java.awt
 		''' @deprecated As of JDK version 1.1
 		''' replaced by {@code dispatchEvent(AWTEvent)}. 
 		<Obsolete("As of JDK version 1.1")> _
-		Public Overrides Function postEvent(ByVal e As [Event]) As Boolean
+		Public Overrides Function postEvent(  e As [Event]) As Boolean
 			If handleEvent(e) Then
 				e.consume()
 				Return True
@@ -2615,21 +2615,21 @@ Namespace java.awt
 		''' @deprecated As of J2SE 1.4, replaced by
 		''' <seealso cref="Component#applyComponentOrientation Component.applyComponentOrientation"/>. 
 		<Obsolete("As of J2SE 1.4, replaced by")> _
-		Public Overridable Sub applyResourceBundle(ByVal rb As java.util.ResourceBundle)
+		Public Overridable Sub applyResourceBundle(  rb As java.util.ResourceBundle)
 			applyComponentOrientation(ComponentOrientation.getOrientation(rb))
 		End Sub
 
 		''' @deprecated As of J2SE 1.4, replaced by
 		''' <seealso cref="Component#applyComponentOrientation Component.applyComponentOrientation"/>. 
 		<Obsolete("As of J2SE 1.4, replaced by")> _
-		Public Overridable Sub applyResourceBundle(ByVal rbName As String)
+		Public Overridable Sub applyResourceBundle(  rbName As String)
 			applyResourceBundle(java.util.ResourceBundle.getBundle(rbName))
 		End Sub
 
 	'   
 	'    * Support for tracking all windows owned by this window
 	'    
-		Friend Overridable Sub addOwnedWindow(ByVal weakWindow As WeakReference(Of Window))
+		Friend Overridable Sub addOwnedWindow(  weakWindow As WeakReference(Of Window))
 			If weakWindow IsNot Nothing Then
 				SyncLock ownedWindowList
 					' this if statement should really be an assert, but we don't
@@ -2639,11 +2639,11 @@ Namespace java.awt
 			End If
 		End Sub
 
-		Friend Overridable Sub removeOwnedWindow(ByVal weakWindow As WeakReference(Of Window))
+		Friend Overridable Sub removeOwnedWindow(  weakWindow As WeakReference(Of Window))
 			If weakWindow IsNot Nothing Then ownedWindowList.Remove(weakWindow)
 		End Sub
 
-		Friend Overridable Sub connectOwnedWindow(ByVal child As Window)
+		Friend Overridable Sub connectOwnedWindow(  child As Window)
 			child.parent = Me
 			addOwnedWindow(child.weakThis)
 			child.disposerRecord.updateOwner()
@@ -2661,7 +2661,7 @@ Namespace java.awt
 			End SyncLock
 		End Sub
 
-		Private Shared Sub removeFromWindowList(ByVal context As sun.awt.AppContext, ByVal weakThis As WeakReference(Of Window))
+		Private Shared Sub removeFromWindowList(  context As sun.awt.AppContext,   weakThis As WeakReference(Of Window))
 			SyncLock GetType(Window)
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
 				Dim windowList As List(Of WeakReference(Of Window)) = CType(context.get(GetType(Window)), List(Of WeakReference(Of Window)))
@@ -2692,7 +2692,7 @@ Namespace java.awt
 		''' <seealso cref=    #getType
 		''' @since 1.7 </seealso>
 		Public Overridable Property type As Type
-			Set(ByVal type As Type)
+			Set(  type As Type)
 				If type Is Nothing Then Throw New IllegalArgumentException("type should not be null.")
 				SyncLock treeLock
 					If displayable Then Throw New IllegalComponentStateException("The window is displayable.")
@@ -2740,7 +2740,7 @@ Namespace java.awt
 		''' <seealso cref= Component#windowFocusListenerK </seealso>
 		''' <seealso cref= Component#ownedWindowK </seealso>
 		''' <seealso cref= #readObject(ObjectInputStream) </seealso>
-		Private Sub writeObject(ByVal s As java.io.ObjectOutputStream)
+		Private Sub writeObject(  s As java.io.ObjectOutputStream)
 			SyncLock Me
 				' Update old focusMgr fields so that our object stream can be read
 				' by previous releases
@@ -2802,7 +2802,7 @@ Namespace java.awt
 			ownedWindowList = New List(Of )
 		End Sub
 
-		Private Sub deserializeResources(ByVal s As java.io.ObjectInputStream)
+		Private Sub deserializeResources(  s As java.io.ObjectInputStream)
 
 				If windowSerializedDataVersion < 2 Then
 					' Translate old-style focus tracking to new model. For 1.4 and
@@ -2880,7 +2880,7 @@ Namespace java.awt
 		'''   {@code true} </exception>
 		''' <seealso cref= java.awt.GraphicsEnvironment#isHeadless </seealso>
 		''' <seealso cref= #writeObject </seealso>
-		Private Sub readObject(ByVal s As java.io.ObjectInputStream)
+		Private Sub readObject(  s As java.io.ObjectInputStream)
 			 GraphicsEnvironment.checkHeadless()
 			 initDeserializedWindow()
 			 Dim f As java.io.ObjectInputStream.GetField = s.readFields()
@@ -2941,7 +2941,7 @@ Namespace java.awt
 
 			Private ReadOnly outerInstance As Window
 
-			Public Sub New(ByVal outerInstance As Window)
+			Public Sub New(  outerInstance As Window)
 				Me.outerInstance = outerInstance
 			End Sub
 
@@ -2979,7 +2979,7 @@ Namespace java.awt
 		End Class ' inner class AccessibleAWTWindow
 
 		Friend Overrides Property graphicsConfiguration As GraphicsConfiguration
-			Set(ByVal gc As GraphicsConfiguration)
+			Set(  gc As GraphicsConfiguration)
 				If gc Is Nothing Then gc = GraphicsEnvironment.localGraphicsEnvironment.defaultScreenDevice.defaultConfiguration
 				SyncLock treeLock
 					MyBase.graphicsConfiguration = gc
@@ -3044,7 +3044,7 @@ Namespace java.awt
 		''' <seealso cref= java.awt.GraphicsEnvironment#getCenterPoint
 		''' @since 1.4 </seealso>
 		Public Overridable Property locationRelativeTo As Component
-			Set(ByVal c As Component)
+			Set(  c As Component)
 				' target location
 				Dim dx As Integer = 0, dy As Integer = 0
 				' target GC
@@ -3104,13 +3104,13 @@ Namespace java.awt
 		''' Overridden from Component.  Top-level Windows should not propagate a
 		''' MouseWheelEvent beyond themselves into their owning Windows.
 		''' </summary>
-		Friend Overridable Sub deliverMouseWheelToAncestor(ByVal e As MouseWheelEvent)
+		Friend Overridable Sub deliverMouseWheelToAncestor(  e As MouseWheelEvent)
 		End Sub
 
 		''' <summary>
 		''' Overridden from Component.  Top-level Windows don't dispatch to ancestors
 		''' </summary>
-		Friend Overrides Function dispatchMouseWheelToAncestor(ByVal e As MouseWheelEvent) As Boolean
+		Friend Overrides Function dispatchMouseWheelToAncestor(  e As MouseWheelEvent) As Boolean
 			Return False
 		End Function
 
@@ -3132,7 +3132,7 @@ Namespace java.awt
 		''' <seealso cref= #isDisplayable </seealso>
 		''' <seealso cref= #getBufferStrategy
 		''' @since 1.4 </seealso>
-		Public Overrides Sub createBufferStrategy(ByVal numBuffers As Integer)
+		Public Overrides Sub createBufferStrategy(  numBuffers As Integer)
 			MyBase.createBufferStrategy(numBuffers)
 		End Sub
 
@@ -3155,7 +3155,7 @@ Namespace java.awt
 		''' caps is {@code null} </exception>
 		''' <seealso cref= #getBufferStrategy
 		''' @since 1.4 </seealso>
-		Public Overrides Sub createBufferStrategy(ByVal numBuffers As Integer, ByVal caps As BufferCapabilities)
+		Public Overrides Sub createBufferStrategy(  numBuffers As Integer,   caps As BufferCapabilities)
 			MyBase.createBufferStrategy(numBuffers, caps)
 		End Sub
 
@@ -3178,7 +3178,7 @@ Namespace java.awt
 				Return temporaryLostComponent
 			End Get
 		End Property
-		Friend Overridable Function setTemporaryLostComponent(ByVal component_Renamed As Component) As Component
+		Friend Overridable Function setTemporaryLostComponent(  component_Renamed As Component) As Component
 			Dim previousComp As Component = temporaryLostComponent
 			' Check that "component" is an acceptable focus owner and don't store it otherwise
 			' - or later we will have problems with opposite while handling  WINDOW_GAINED_FOCUS
@@ -3195,7 +3195,7 @@ Namespace java.awt
 		''' Verifies that it is focusable and as container it can container focus owner.
 		''' @since 1.5
 		''' </summary>
-		Friend Overrides Function canContainFocusOwner(ByVal focusOwnerCandidate As Component) As Boolean
+		Friend Overrides Function canContainFocusOwner(  focusOwnerCandidate As Component) As Boolean
 			Return MyBase.canContainFocusOwner(focusOwnerCandidate) AndAlso focusableWindow
 		End Function
 
@@ -3249,7 +3249,7 @@ Namespace java.awt
 		''' <seealso cref= java.lang.System#getProperty(String)
 		''' @since 1.5 </seealso>
 		Public Overridable Property locationByPlatform As Boolean
-			Set(ByVal locationByPlatform As Boolean)
+			Set(  locationByPlatform As Boolean)
 				SyncLock treeLock
 					If locationByPlatform AndAlso showing Then Throw New IllegalComponentStateException("The window is showing on screen.")
 					Me.locationByPlatform = locationByPlatform
@@ -3285,7 +3285,7 @@ Namespace java.awt
 		''' <seealso cref= #setLocationByPlatform </seealso>
 		''' <seealso cref= #isLocationByPlatform
 		''' @since 1.6 </seealso>
-		Public Overrides Sub setBounds(ByVal x As Integer, ByVal y As Integer, ByVal width As Integer, ByVal height As Integer)
+		Public Overrides Sub setBounds(  x As Integer,   y As Integer,   width As Integer,   height As Integer)
 			SyncLock treeLock
 				If boundsOp = java.awt.peer.ComponentPeer.SET_LOCATION OrElse boundsOp = java.awt.peer.ComponentPeer.SET_BOUNDS Then locationByPlatform = False
 				MyBase.boundsnds(x, y, width, height)
@@ -3315,7 +3315,7 @@ Namespace java.awt
 		''' <seealso cref= #isLocationByPlatform
 		''' @since 1.6 </seealso>
 		Public Overrides Property bounds As Rectangle
-			Set(ByVal r As Rectangle)
+			Set(  r As Rectangle)
 				boundsnds(r.x, r.y, r.width, r.height)
 			End Set
 		End Property
@@ -3350,7 +3350,7 @@ Namespace java.awt
 					Return opacity
 				End SyncLock
 			End Get
-			Set(ByVal opacity As Single)
+			Set(  opacity As Single)
 				SyncLock treeLock
 					If opacity < 0.0f OrElse opacity > 1.0f Then Throw New IllegalArgumentException("The value of opacity should be in the range [0.0f .. 1.0f].")
 					If opacity < 1.0f Then
@@ -3387,7 +3387,7 @@ Namespace java.awt
 					Return If(shape Is Nothing, Nothing, New java.awt.geom.Path2D.Float(shape))
 				End SyncLock
 			End Get
-			Set(ByVal shape As Shape)
+			Set(  shape As Shape)
 				SyncLock treeLock
 					If shape IsNot Nothing Then
 						Dim gc As GraphicsConfiguration = graphicsConfiguration
@@ -3418,7 +3418,7 @@ Namespace java.awt
 			Get
 				Return MyBase.background
 			End Get
-			Set(ByVal bgColor As Color)
+			Set(  bgColor As Color)
 				Dim oldBg As Color = background
 				MyBase.background = bgColor
 				If oldBg IsNot Nothing AndAlso oldBg.Equals(bgColor) Then Return
@@ -3474,7 +3474,7 @@ Namespace java.awt
 		''' 
 		''' @since 1.7
 		''' </summary>
-		Public Overrides Sub paint(ByVal g As Graphics)
+		Public Overrides Sub paint(  g As Graphics)
 			If Not opaque Then
 				Dim gg As Graphics = g.create()
 				Try
@@ -3490,7 +3490,7 @@ Namespace java.awt
 			MyBase.paint(g)
 		End Sub
 
-		Private Shared Sub setLayersOpaque(ByVal component_Renamed As Component, ByVal isOpaque As Boolean)
+		Private Shared Sub setLayersOpaque(  component_Renamed As Component,   isOpaque As Boolean)
 			' Shouldn't use instanceof to avoid loading Swing classes
 			'    if it's a pure AWT application.
 			If sun.awt.SunToolkit.isInstanceOf(component_Renamed, "javax.swing.RootPaneContainer") Then
@@ -3530,7 +3530,7 @@ Namespace java.awt
 		''' <summary>
 		''' Applies the shape to the component </summary>
 		''' <param name="shape"> Shape to be applied to the component </param>
-		Friend NotOverridable Overrides Sub applyCompoundShape(ByVal shape As sun.java2d.pipe.Region)
+		Friend NotOverridable Overrides Sub applyCompoundShape(  shape As sun.java2d.pipe.Region)
 			' The shape calculated by mixing code is not intended to be applied
 			' to windows or frames
 		End Sub
@@ -3556,7 +3556,7 @@ Namespace java.awt
 		''' <summary>
 		''' Limit the given double value with the given range.
 		''' </summary>
-		Private Shared Function limit(ByVal value As Double, ByVal min As Double, ByVal max As Double) As Double
+		Private Shared Function limit(  value As Double,   min As Double,   max As Double) As Double
 			value = System.Math.Max(value, min)
 			value = System.Math.Min(value, max)
 			Return value
@@ -3573,7 +3573,7 @@ Namespace java.awt
 		''' NOTE: this method is invoked on the toolkit thread, and therefore is not
 		''' supposed to become public/user-overridable.
 		''' </summary>
-		Private Function calculateSecurityWarningPosition(ByVal x As Double, ByVal y As Double, ByVal w As Double, ByVal h As Double) As java.awt.geom.Point2D
+		Private Function calculateSecurityWarningPosition(  x As Double,   y As Double,   w As Double,   h As Double) As java.awt.geom.Point2D
 			' The position according to the spec of SecurityWarning.setPosition()
 			Dim wx As Double = x + w * securityWarningAlignmentX + securityWarningPointX
 			Dim wy As Double = y + h * securityWarningAlignmentY + securityWarningPointY

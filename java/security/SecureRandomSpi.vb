@@ -49,7 +49,7 @@ Namespace java.security
 		''' never to reduce randomness.
 		''' </summary>
 		''' <param name="seed"> the seed. </param>
-		Protected Friend MustOverride Sub engineSetSeed(ByVal seed As SByte())
+		Protected Friend MustOverride Sub engineSetSeed(  seed As SByte())
 
 		''' <summary>
 		''' Generates a user-specified number of random bytes.
@@ -60,7 +60,7 @@ Namespace java.security
 		''' {@code engineSetSeed} was previously called.
 		''' </summary>
 		''' <param name="bytes"> the array to be filled in with random bytes. </param>
-		Protected Friend MustOverride Sub engineNextBytes(ByVal bytes As SByte())
+		Protected Friend MustOverride Sub engineNextBytes(  bytes As SByte())
 
 		''' <summary>
 		''' Returns the given number of seed bytes.  This call may be used to
@@ -69,7 +69,7 @@ Namespace java.security
 		''' <param name="numBytes"> the number of seed bytes to generate.
 		''' </param>
 		''' <returns> the seed bytes. </returns>
-		 Protected Friend MustOverride Function engineGenerateSeed(ByVal numBytes As Integer) As SByte()
+		 Protected Friend MustOverride Function engineGenerateSeed(  numBytes As Integer) As SByte()
 	End Class
 
 End Namespace

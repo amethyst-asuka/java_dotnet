@@ -55,7 +55,7 @@ Namespace java.rmi.server
 		''' @since JDK1.1 </exception>
 		''' @deprecated no replacement 
 		<Obsolete("no replacement")> _
-		Sub dispatch(ByVal obj As java.rmi.Remote, ByVal theCall As RemoteCall, ByVal opnum As Integer, ByVal hash As Long)
+		Sub dispatch(  obj As java.rmi.Remote,   theCall As RemoteCall,   opnum As Integer,   hash As Long)
 
 		''' <summary>
 		''' Returns the operations supported by the skeleton. </summary>

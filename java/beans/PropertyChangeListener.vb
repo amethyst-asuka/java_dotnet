@@ -39,7 +39,7 @@ Namespace java.beans
 		''' <param name="evt"> A PropertyChangeEvent object describing the event source
 		'''          and the property that has changed. </param>
 
-		Sub propertyChange(ByVal evt As PropertyChangeEvent)
+		Sub propertyChange(  evt As PropertyChangeEvent)
 
 	End Interface
 

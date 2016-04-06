@@ -44,7 +44,7 @@ Namespace java.awt.peer
 		''' <param name="pos"> the position to insert
 		''' </param>
 		''' <seealso cref= TextArea#insert(String, int) </seealso>
-		Sub insert(ByVal text As String, ByVal pos As Integer)
+		Sub insert(  text As String,   pos As Integer)
 
 		''' <summary>
 		''' Replaces a range of text by the specified string.
@@ -54,7 +54,7 @@ Namespace java.awt.peer
 		''' <param name="end"> the end of the range to replace
 		''' </param>
 		''' <seealso cref= TextArea#replaceRange(String, int, int) </seealso>
-		Sub replaceRange(ByVal text As String, ByVal start As Integer, ByVal [end] As Integer)
+		Sub replaceRange(  text As String,   start As Integer,   [end] As Integer)
 
 		''' <summary>
 		''' Returns the preferred size of a textarea with the specified number of
@@ -66,7 +66,7 @@ Namespace java.awt.peer
 		''' <returns> the preferred size of a textarea
 		''' </returns>
 		''' <seealso cref= TextArea#getPreferredSize(int, int) </seealso>
-		Function getPreferredSize(ByVal rows As Integer, ByVal columns As Integer) As java.awt.Dimension
+		Function getPreferredSize(  rows As Integer,   columns As Integer) As java.awt.Dimension
 
 		''' <summary>
 		''' Returns the minimum size of a textarea with the specified number of
@@ -78,7 +78,7 @@ Namespace java.awt.peer
 		''' <returns> the minimum size of a textarea
 		''' </returns>
 		''' <seealso cref= TextArea#getMinimumSize(int, int) </seealso>
-		Function getMinimumSize(ByVal rows As Integer, ByVal columns As Integer) As java.awt.Dimension
+		Function getMinimumSize(  rows As Integer,   columns As Integer) As java.awt.Dimension
 
 	End Interface
 

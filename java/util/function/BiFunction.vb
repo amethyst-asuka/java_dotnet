@@ -47,7 +47,7 @@ Namespace java.util.function
 		''' <param name="t"> the first function argument </param>
 		''' <param name="u"> the second function argument </param>
 		''' <returns> the function result </returns>
-		Function apply(ByVal t As T, ByVal u As U) As R
+		Function apply(  t As T,   u As U) As R
 
 		''' <summary>
 		''' Returns a composed function that first applies this function to
@@ -65,7 +65,7 @@ Namespace java.util.function
 		default <V> BiFunction<T, U, V> andThen(Function<? MyBase R, ? extends V> after)
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 			java.util.Objects.requireNonNull(after);
-			Sub [New](ByVal t As T, ByVal u As U)
+			Sub [New](  t As T,   u As U)
 	End Interface
 
 End Namespace

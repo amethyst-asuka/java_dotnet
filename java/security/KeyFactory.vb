@@ -117,13 +117,13 @@ Namespace java.security
 		''' <param name="provider"> the provider </param>
 		''' <param name="algorithm"> the name of the algorithm
 		''' to associate with this {@code KeyFactory} </param>
-		Protected Friend Sub New(ByVal keyFacSpi As KeyFactorySpi, ByVal provider_Renamed As Provider, ByVal algorithm As String)
+		Protected Friend Sub New(  keyFacSpi As KeyFactorySpi,   provider_Renamed As Provider,   algorithm As String)
 			Me.spi = keyFacSpi
 			Me.provider = provider_Renamed
 			Me.algorithm = algorithm
 		End Sub
 
-		Private Sub New(ByVal algorithm As String)
+		Private Sub New(  algorithm As String)
 			Me.algorithm = algorithm
 			Dim list As List(Of java.security.Provider.Service) = GetInstance.getServices("KeyFactory", algorithm)
 			serviceIterator = list.GetEnumerator()
@@ -157,7 +157,7 @@ Namespace java.security
 		'''          specified algorithm.
 		''' </exception>
 		''' <seealso cref= Provider </seealso>
-		Public Shared Function getInstance(ByVal algorithm As String) As KeyFactory
+		Public Shared Function getInstance(  algorithm As String) As KeyFactory
 			Return New KeyFactory(algorithm)
 		End Function
 
@@ -194,7 +194,7 @@ Namespace java.security
 		'''          or empty.
 		''' </exception>
 		''' <seealso cref= Provider </seealso>
-		Public Shared Function getInstance(ByVal algorithm As String, ByVal provider_Renamed As String) As KeyFactory
+		Public Shared Function getInstance(  algorithm As String,   provider_Renamed As String) As KeyFactory
 			Dim instance_Renamed As sun.security.jca.GetInstance.Instance = GetInstance.getInstance("KeyFactory", GetType(KeyFactorySpi), algorithm, provider_Renamed)
 			Return New KeyFactory(CType(instance_Renamed.impl, KeyFactorySpi), instance_Renamed.provider, algorithm)
 		End Function
@@ -227,7 +227,7 @@ Namespace java.security
 		''' <seealso cref= Provider
 		''' 
 		''' @since 1.4 </seealso>
-		Public Shared Function getInstance(ByVal algorithm As String, ByVal provider_Renamed As Provider) As KeyFactory
+		Public Shared Function getInstance(  algorithm As String,   provider_Renamed As Provider) As KeyFactory
 			Dim instance_Renamed As sun.security.jca.GetInstance.Instance = GetInstance.getInstance("KeyFactory", GetType(KeyFactorySpi), algorithm, provider_Renamed)
 			Return New KeyFactory(CType(instance_Renamed.impl, KeyFactorySpi), instance_Renamed.provider, algorithm)
 		End Function
@@ -264,7 +264,7 @@ Namespace java.security
 		''' available, this method returns null. However, the active spi of
 		''' this class is never set to null.
 		''' </summary>
-		Private Function nextSpi(ByVal oldSpi As KeyFactorySpi) As KeyFactorySpi
+		Private Function nextSpi(  oldSpi As KeyFactorySpi) As KeyFactorySpi
 			SyncLock lock
 				' somebody else did a failover concurrently
 				' try that spi now
@@ -298,7 +298,7 @@ Namespace java.security
 		''' </returns>
 		''' <exception cref="InvalidKeySpecException"> if the given key specification
 		''' is inappropriate for this key factory to produce a public key. </exception>
-		Public Function generatePublic(ByVal keySpec As java.security.spec.KeySpec) As PublicKey
+		Public Function generatePublic(  keySpec As java.security.spec.KeySpec) As PublicKey
 			If serviceIterator Is Nothing Then Return spi.engineGeneratePublic(keySpec)
 			Dim failure As Exception = Nothing
 			Dim mySpi As KeyFactorySpi = spi
@@ -325,7 +325,7 @@ Namespace java.security
 		''' </returns>
 		''' <exception cref="InvalidKeySpecException"> if the given key specification
 		''' is inappropriate for this key factory to produce a private key. </exception>
-		Public Function generatePrivate(ByVal keySpec As java.security.spec.KeySpec) As PrivateKey
+		Public Function generatePrivate(  keySpec As java.security.spec.KeySpec) As PrivateKey
 			If serviceIterator Is Nothing Then Return spi.engineGeneratePrivate(keySpec)
 			Dim failure As Exception = Nothing
 			Dim mySpi As KeyFactorySpi = spi
@@ -363,7 +363,7 @@ Namespace java.security
 		''' <exception cref="InvalidKeySpecException"> if the requested key specification is
 		''' inappropriate for the given key, or the given key cannot be processed
 		''' (e.g., the given key has an unrecognized algorithm or format). </exception>
-		Public Function getKeySpec(Of T As java.security.spec.KeySpec)(ByVal key As Key, ByVal keySpec As [Class]) As T
+		Public Function getKeySpec(Of T As java.security.spec.KeySpec)(  key As Key,   keySpec As [Class]) As T
 			If serviceIterator Is Nothing Then Return spi.engineGetKeySpec(key, keySpec)
 			Dim failure As Exception = Nothing
 			Dim mySpi As KeyFactorySpi = spi
@@ -390,7 +390,7 @@ Namespace java.security
 		''' </returns>
 		''' <exception cref="InvalidKeyException"> if the given key cannot be processed
 		''' by this key factory. </exception>
-		Public Function translateKey(ByVal key As Key) As Key
+		Public Function translateKey(  key As Key) As Key
 			If serviceIterator Is Nothing Then Return spi.engineTranslateKey(key)
 			Dim failure As Exception = Nothing
 			Dim mySpi As KeyFactorySpi = spi

@@ -52,7 +52,7 @@ Namespace java.lang
 		''' detail message.
 		''' </summary>
 		''' <param name="s"> the detail message. </param>
-		Public Sub New(ByVal s As String)
+		Public Sub New(  s As String)
 			MyBase.New(s)
 		End Sub
 
@@ -62,7 +62,7 @@ Namespace java.lang
 		''' </summary>
 		''' <param name="s"> the detail message. </param>
 		''' <param name="cause"> the cause, may be {@code null}. </param>
-		Public Sub New(ByVal s As String, ByVal cause As Throwable)
+		Public Sub New(  s As String,   cause As Throwable)
 			MyBase.New(s, cause)
 		End Sub
 
@@ -71,7 +71,7 @@ Namespace java.lang
 		''' cause.
 		''' </summary>
 		''' <param name="cause"> the cause, may be {@code null}. </param>
-		Public Sub New(ByVal cause As Throwable)
+		Public Sub New(  cause As Throwable)
 			' cf. Throwable(Throwable cause) constructor.
 			MyBase.New(If(cause Is Nothing, Nothing, cause.ToString()))
 			initCause(cause)

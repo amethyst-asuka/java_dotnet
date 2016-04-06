@@ -84,7 +84,7 @@ Namespace java.awt.image
 		''' <seealso cref= Image#getWidth </seealso>
 		''' <seealso cref= Image#getHeight </seealso>
 		''' <seealso cref= java.awt.Graphics#drawImage </seealso>
-		Function imageUpdate(ByVal img As java.awt.Image, ByVal infoflags As Integer, ByVal x As Integer, ByVal y As Integer, ByVal width As Integer, ByVal height As Integer) As Boolean
+		Function imageUpdate(  img As java.awt.Image,   infoflags As Integer,   x As Integer,   y As Integer,   width As Integer,   height As Integer) As Boolean
 
 		''' <summary>
 		''' This flag in the infoflags argument to imageUpdate indicates that

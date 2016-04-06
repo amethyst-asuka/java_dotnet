@@ -48,7 +48,7 @@ Namespace java.awt
 		''' <summary>
 		''' Package-private constructor to prevent instantiation.
 		''' </summary>
-		Friend Sub New(ByVal device As GraphicsDevice, ByVal location As Point)
+		Friend Sub New(  device As GraphicsDevice,   location As Point)
 			Me.device = device
 			Me.location = location
 		End Sub

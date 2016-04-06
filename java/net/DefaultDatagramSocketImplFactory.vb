@@ -107,7 +107,7 @@ Namespace java.net
 		''' </summary>
 		''' <param name="isMulticast"> true if this impl is to be used for a MutlicastSocket </param>
 		''' <returns>  a new instance of <code>PlainDatagramSocketImpl</code>. </returns>
-		Friend Shared Function createDatagramSocketImpl(ByVal isMulticast As Boolean) As DatagramSocketImpl
+		Friend Shared Function createDatagramSocketImpl(  isMulticast As Boolean) As DatagramSocketImpl
 			If prefixImplClass IsNot Nothing Then
 				Try
 					Return CType(prefixImplClass.newInstance(), DatagramSocketImpl)

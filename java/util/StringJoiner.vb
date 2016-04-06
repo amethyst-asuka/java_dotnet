@@ -94,7 +94,7 @@ Namespace java.util
 		''' <param name="delimiter"> the sequence of characters to be used between each
 		'''         element added to the {@code StringJoiner} value </param>
 		''' <exception cref="NullPointerException"> if {@code delimiter} is {@code null} </exception>
-		Public Sub New(ByVal delimiter As CharSequence)
+		Public Sub New(  delimiter As CharSequence)
 			Me.New(delimiter, "", "")
 		End Sub
 
@@ -112,7 +112,7 @@ Namespace java.util
 		''' <param name="suffix"> the sequence of characters to be used at the end </param>
 		''' <exception cref="NullPointerException"> if {@code prefix}, {@code delimiter}, or
 		'''         {@code suffix} is {@code null} </exception>
-		Public Sub New(ByVal delimiter As CharSequence, ByVal prefix As CharSequence, ByVal suffix As CharSequence)
+		Public Sub New(  delimiter As CharSequence,   prefix As CharSequence,   suffix As CharSequence)
 			Objects.requireNonNull(prefix, "The prefix must not be null")
 			Objects.requireNonNull(delimiter, "The delimiter must not be null")
 			Objects.requireNonNull(suffix, "The suffix must not be null")
@@ -136,7 +136,7 @@ Namespace java.util
 		''' <returns> this {@code StringJoiner} itself so the calls may be chained </returns>
 		''' <exception cref="NullPointerException"> when the {@code emptyValue} parameter is
 		'''         {@code null} </exception>
-		Public Function setEmptyValue(ByVal emptyValue As CharSequence) As StringJoiner
+		Public Function setEmptyValue(  emptyValue As CharSequence) As StringJoiner
 			Me.emptyValue = Objects.requireNonNull(emptyValue, "The empty value must not be null").ToString()
 			Return Me
 		End Function
@@ -171,7 +171,7 @@ Namespace java.util
 		''' </summary>
 		''' <param name="newElement"> The element to add </param>
 		''' <returns> a reference to this {@code StringJoiner} </returns>
-		Public Function add(ByVal newElement As CharSequence) As StringJoiner
+		Public Function add(  newElement As CharSequence) As StringJoiner
 			prepareBuilder().append(newElement)
 			Return Me
 		End Function
@@ -194,7 +194,7 @@ Namespace java.util
 		'''              into this one </param>
 		''' <exception cref="NullPointerException"> if the other {@code StringJoiner} is null </exception>
 		''' <returns> This {@code StringJoiner} </returns>
-		Public Function merge(ByVal other As StringJoiner) As StringJoiner
+		Public Function merge(  other As StringJoiner) As StringJoiner
 			Objects.requireNonNull(other)
 			If other.value IsNot Nothing Then
 				Dim length As Integer = other.value.length()

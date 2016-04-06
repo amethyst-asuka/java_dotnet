@@ -76,7 +76,7 @@ Namespace java.io
         ''' Returns a charset object for the given charset name. </summary>
         ''' <exception cref="NullPointerException">          is csn is null </exception>
         ''' <exception cref="UnsupportedEncodingException">  if the charset is not supported </exception>
-        Private Shared Function toCharset(ByVal csn As String) As java.nio.charset.Charset
+        Private Shared Function toCharset(  csn As String) As java.nio.charset.Charset
             java.util.Objects.requireNonNull(csn, "charsetName")
             Try
                 Return java.nio.charset.Charset.forName(csn)
@@ -93,7 +93,7 @@ Namespace java.io
         ''' Creates a new PrintWriter, without automatic line flushing.
         ''' </summary>
         ''' <param name="out">        A character-output stream </param>
-        Public Sub New(ByVal out As Writer)
+        Public Sub New(  out As Writer)
             Me.New(out, False)
         End Sub
 
@@ -104,7 +104,7 @@ Namespace java.io
         ''' <param name="autoFlush">  A boolean; if true, the <tt>println</tt>,
         '''                    <tt>printf</tt>, or <tt>format</tt> methods will
         '''                    flush the output buffer </param>
-        Public Sub New(ByVal out As Writer, ByVal autoFlush As Boolean)
+        Public Sub New(  out As Writer,   autoFlush As Boolean)
             MyBase.New(out)
             Me.out = out
             Me.autoFlush = autoFlush
@@ -120,7 +120,7 @@ Namespace java.io
         ''' <param name="out">        An output stream
         ''' </param>
         ''' <seealso cref= java.io.OutputStreamWriter#OutputStreamWriter(java.io.OutputStream) </seealso>
-        Public Sub New(ByVal out As OutputStream)
+        Public Sub New(  out As OutputStream)
             Me.New(out, False)
         End Sub
 
@@ -136,7 +136,7 @@ Namespace java.io
         '''                    flush the output buffer
         ''' </param>
         ''' <seealso cref= java.io.OutputStreamWriter#OutputStreamWriter(java.io.OutputStream) </seealso>
-        Public Sub New(ByVal out As OutputStream, ByVal autoFlush As Boolean)
+        Public Sub New(  out As OutputStream,   autoFlush As Boolean)
             Me.New(New BufferedWriter(New OutputStreamWriter(out)), autoFlush)
 
             ' save print stream for error propagation
@@ -169,12 +169,12 @@ Namespace java.io
         '''          access to the file
         ''' 
         ''' @since  1.5 </exception>
-        Public Sub New(ByVal fileName As String)
+        Public Sub New(  fileName As String)
             Me.New(New BufferedWriter(New OutputStreamWriter(New FileOutputStream(fileName))), False)
         End Sub
 
         ' Private constructor 
-        Private Sub New(ByVal charset As java.nio.charset.Charset, ByVal file_Renamed As File)
+        Private Sub New(  charset As java.nio.charset.Charset,   file_Renamed As File)
             Me.New(New BufferedWriter(New OutputStreamWriter(New FileOutputStream(file_Renamed), charset)), False)
         End Sub
 
@@ -210,7 +210,7 @@ Namespace java.io
         '''          If the named charset is not supported
         ''' 
         ''' @since  1.5 </exception>
-        Public Sub New(ByVal fileName As String, ByVal csn As String)
+        Public Sub New(  fileName As String,   csn As String)
             Me.New(toCharset(csn), New File(fileName))
         End Sub
 
@@ -240,7 +240,7 @@ Namespace java.io
         '''          denies write access to the file
         ''' 
         ''' @since  1.5 </exception>
-        Public Sub New(ByVal file_Renamed As File)
+        Public Sub New(  file_Renamed As File)
             Me.New(New BufferedWriter(New OutputStreamWriter(New FileOutputStream(file_Renamed))), False)
         End Sub
 
@@ -276,7 +276,7 @@ Namespace java.io
         '''          If the named charset is not supported
         ''' 
         ''' @since  1.5 </exception>
-        Public Sub New(ByVal file_Renamed As File, ByVal csn As String)
+        Public Sub New(  file_Renamed As File,   csn As String)
             Me.New(toCharset(csn), file_Renamed)
         End Sub
 
@@ -366,7 +366,7 @@ Namespace java.io
         ''' <summary>
         ''' Writes a single character. </summary>
         ''' <param name="c"> int specifying a character to be written. </param>
-        Public Overrides Sub write(ByVal c As Integer)
+        Public Overrides Sub write(  c As Integer)
             Try
                 SyncLock lock
                     ensureOpen()

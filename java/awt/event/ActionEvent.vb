@@ -150,7 +150,7 @@ Namespace java.awt.event
 		''' <seealso cref= #getSource() </seealso>
 		''' <seealso cref= #getID() </seealso>
 		''' <seealso cref= #getActionCommand() </seealso>
-		Public Sub New(ByVal source As Object, ByVal id As Integer, ByVal command As String)
+		Public Sub New(  source As Object,   id As Integer,   command As String)
 			Me.New(source, id, command, 0)
 		End Sub
 
@@ -178,7 +178,7 @@ Namespace java.awt.event
 		''' <seealso cref= #getID() </seealso>
 		''' <seealso cref= #getActionCommand() </seealso>
 		''' <seealso cref= #getModifiers() </seealso>
-		Public Sub New(ByVal source As Object, ByVal id As Integer, ByVal command As String, ByVal modifiers As Integer)
+		Public Sub New(  source As Object,   id As Integer,   command As String,   modifiers As Integer)
 			Me.New(source, id, command, 0, modifiers)
 		End Sub
 
@@ -213,7 +213,7 @@ Namespace java.awt.event
 		''' <seealso cref= #getWhen()
 		''' 
 		''' @since 1.4 </seealso>
-		Public Sub New(ByVal source As Object, ByVal id As Integer, ByVal command As String, ByVal [when] As Long, ByVal modifiers As Integer)
+		Public Sub New(  source As Object,   id As Integer,   command As String,   [when] As Long,   modifiers As Integer)
 			MyBase.New(source, id)
 			Me.actionCommand = command
 			Me.when = [when]

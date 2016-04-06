@@ -34,12 +34,12 @@ Namespace java.awt
 
 	Public Interface MenuContainer
 		ReadOnly Property font As Font
-		Sub remove(ByVal comp As MenuComponent)
+		Sub remove(  comp As MenuComponent)
 
 		''' @deprecated As of JDK version 1.1
 		''' replaced by dispatchEvent(AWTEvent). 
 		<Obsolete("As of JDK version 1.1")> _
-		Function postEvent(ByVal evt As [Event]) As Boolean
+		Function postEvent(  evt As [Event]) As Boolean
 	End Interface
 
 End Namespace

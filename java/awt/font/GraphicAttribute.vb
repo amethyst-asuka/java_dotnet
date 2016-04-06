@@ -92,7 +92,7 @@ Namespace java.awt.font
 		''' <code>GraphicAttribute</code> alignment fields </param>
 		''' <exception cref="IllegalArgumentException"> if alignment is not one of the
 		''' five defined values. </exception>
-		Protected Friend Sub New(ByVal alignment As Integer)
+		Protected Friend Sub New(  alignment As Integer)
 			If alignment < BOTTOM_ALIGNMENT OrElse alignment > HANGING_BASELINE Then Throw New IllegalArgumentException("bad alignment")
 			fAlignment = alignment
 		End Sub
@@ -153,7 +153,7 @@ Namespace java.awt.font
         ''' <returns> a <code>Shape</code> representing this graphic attribute,
         '''   suitable for stroking or filling.
         ''' @since 1.6 </returns>
-        Public Overridable Function getOutline(ByVal tx As java.awt.geom.AffineTransform) As java.awt.Shape
+        Public Overridable Function getOutline(  tx As java.awt.geom.AffineTransform) As java.awt.Shape
 			Dim b As java.awt.Shape = bounds
 			If tx IsNot Nothing Then b = tx.createTransformedShape(b)
 			Return b
@@ -166,7 +166,7 @@ Namespace java.awt.font
 		''' graphic </param>
 		''' <param name="x"> the user-space X coordinate where the graphic is rendered </param>
 		''' <param name="y"> the user-space Y coordinate where the graphic is rendered </param>
-		Public MustOverride Sub draw(ByVal graphics As java.awt.Graphics2D, ByVal x As Single, ByVal y As Single)
+		Public MustOverride Sub draw(  graphics As java.awt.Graphics2D,   x As Single,   y As Single)
 
         ''' <summary>
         ''' Returns the alignment of this <code>GraphicAttribute</code>.

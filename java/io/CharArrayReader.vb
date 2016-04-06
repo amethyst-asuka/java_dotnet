@@ -58,7 +58,7 @@ Namespace java.io
 		''' <summary>
 		''' Creates a CharArrayReader from the specified array of chars. </summary>
 		''' <param name="buf">       Input buffer (not copied) </param>
-		Public Sub New(ByVal buf As Char())
+		Public Sub New(  buf As Char())
 			Me.buf = buf
 			Me.pos = 0
 			Me.count = buf.Length

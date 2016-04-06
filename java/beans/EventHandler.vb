@@ -303,7 +303,7 @@ Namespace java.beans
 		''' <seealso cref= #getEventPropertyName </seealso>
 		''' <seealso cref= #getListenerMethodName </seealso>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Sub New(ByVal target As Object, ByVal action As String, ByVal eventPropertyName As String, ByVal listenerMethodName As String)
+		Public Sub New(  target As Object,   action As String,   eventPropertyName As String,   listenerMethodName As String)
 			Me.target = target
 			Me.action = action
 			If target Is Nothing Then Throw New NullPointerException("target must be non-null")
@@ -364,7 +364,7 @@ Namespace java.beans
 			End Get
 		End Property
 
-		Private Function applyGetters(ByVal target As Object, ByVal getters As String) As Object
+		Private Function applyGetters(  target As Object,   getters As String) As Object
 			If getters Is Nothing OrElse getters.Equals("") Then Return target
 			Dim firstDot As Integer = getters.IndexOf("."c)
 			If firstDot = -1 Then firstDot = getters.length()
@@ -396,7 +396,7 @@ Namespace java.beans
 		''' <returns> the result of applying the action to the target
 		''' </returns>
 		''' <seealso cref= EventHandler </seealso>
-		Public Overridable Function invoke(ByVal proxy As Object, ByVal method As Method, ByVal arguments As Object()) As Object Implements InvocationHandler.invoke
+		Public Overridable Function invoke(  proxy As Object,   method As Method,   arguments As Object()) As Object Implements InvocationHandler.invoke
 			Dim acc As java.security.AccessControlContext = Me.acc
 			If (acc Is Nothing) AndAlso (System.securityManager IsNot Nothing) Then Throw New SecurityException("AccessControlContext is not set")
             Return java.security.AccessController.doPrivileged(New PrivilegedActionAnonymousInnerClassHelper(Of T))
@@ -410,7 +410,7 @@ Namespace java.beans
 			End Function
 		End Class
 
-		Private Function invokeInternal(ByVal proxy As Object, ByVal method As Method, ByVal arguments As Object()) As Object
+		Private Function invokeInternal(  proxy As Object,   method As Method,   arguments As Object()) As Object
 			Dim methodName As String = method.name
 			If method.declaringClass = GetType(Object) Then
 				' Handle the Object public methods.
@@ -492,7 +492,7 @@ Namespace java.beans
 		''' <exception cref="NullPointerException"> if <code>action</code> is null
 		''' </exception>
 		''' <seealso cref= #create(Class, Object, String, String) </seealso>
-		Public Shared Function create(Of T)(ByVal listenerInterface As [Class], ByVal target As Object, ByVal action As String) As T
+		Public Shared Function create(Of T)(  listenerInterface As [Class],   target As Object,   action As String) As T
 			Return create(listenerInterface, target, action, Nothing, Nothing)
 		End Function
 
@@ -547,7 +547,7 @@ Namespace java.beans
 		''' <exception cref="NullPointerException"> if <code>action</code> is null
 		''' </exception>
 		''' <seealso cref= #create(Class, Object, String, String, String) </seealso>
-		Public Shared Function create(Of T)(ByVal listenerInterface As [Class], ByVal target As Object, ByVal action As String, ByVal eventPropertyName As String) As T
+		Public Shared Function create(Of T)(  listenerInterface As [Class],   target As Object,   action As String,   eventPropertyName As String) As T
 			Return create(listenerInterface, target, action, eventPropertyName, Nothing)
 		End Function
 
@@ -634,7 +634,7 @@ Namespace java.beans
 		''' <exception cref="NullPointerException"> if <code>action</code> is null
 		''' </exception>
 		''' <seealso cref= EventHandler </seealso>
-		Public Shared Function create(Of T)(ByVal listenerInterface As [Class], ByVal target As Object, ByVal action As String, ByVal eventPropertyName As String, ByVal listenerMethodName As String) As T
+		Public Shared Function create(Of T)(  listenerInterface As [Class],   target As Object,   action As String,   eventPropertyName As String,   listenerMethodName As String) As T
 			' Create this first to verify target/action are non-null
 			Dim handler As New EventHandler(target, action, eventPropertyName, listenerMethodName)
 			If listenerInterface Is Nothing Then Throw New NullPointerException("listenerInterface must be non-null")
@@ -652,7 +652,7 @@ Namespace java.beans
 			End Function
 		End Class
 
-		Private Shared Function getClassLoader(ByVal type As [Class]) As  ClassLoader
+		Private Shared Function getClassLoader(  type As [Class]) As  ClassLoader
 			sun.reflect.misc.ReflectUtil.checkPackageAccess(type)
 			Dim loader As  ClassLoader = type.classLoader
 			If loader Is Nothing Then

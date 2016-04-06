@@ -69,7 +69,7 @@ Namespace java.rmi.activation
 		''' <code>desc</code> is not registered with this system </exception>
 		''' <exception cref="RemoteException"> if remote call fails
 		''' @since 1.2 </exception>
-		Function registerObject(ByVal desc As ActivationDesc) As ActivationID
+		Function registerObject(  desc As ActivationDesc) As ActivationID
 
 		''' <summary>
 		''' Remove the activation id and associated descriptor previously
@@ -82,7 +82,7 @@ Namespace java.rmi.activation
 		''' <exception cref="UnknownObjectException"> if object is unknown (not registered) </exception>
 		''' <exception cref="RemoteException"> if remote call fails
 		''' @since 1.2 </exception>
-		Sub unregisterObject(ByVal id As ActivationID)
+		Sub unregisterObject(  id As ActivationID)
 
 		''' <summary>
 		''' Register the activation group. An activation group must be
@@ -94,7 +94,7 @@ Namespace java.rmi.activation
 		''' <exception cref="ActivationException"> if group registration fails </exception>
 		''' <exception cref="RemoteException"> if remote call fails
 		''' @since 1.2 </exception>
-		Function registerGroup(ByVal desc As ActivationGroupDesc) As ActivationGroupID
+		Function registerGroup(  desc As ActivationGroupDesc) As ActivationGroupID
 
 		''' <summary>
 		''' Callback to inform activation system that group is now
@@ -114,7 +114,7 @@ Namespace java.rmi.activation
 		''' <code>incarnation</code> than the specified <code>group</code> </exception>
 		''' <exception cref="RemoteException"> if remote call fails
 		''' @since 1.2 </exception>
-		Function activeGroup(ByVal id As ActivationGroupID, ByVal group As ActivationInstantiator, ByVal incarnation As Long) As ActivationMonitor
+		Function activeGroup(  id As ActivationGroupID,   group As ActivationInstantiator,   incarnation As Long) As ActivationMonitor
 
 		''' <summary>
 		''' Remove the activation group. An activation group makes this call back
@@ -129,7 +129,7 @@ Namespace java.rmi.activation
 		''' <exception cref="UnknownGroupException"> if group is not registered </exception>
 		''' <exception cref="RemoteException"> if remote call fails
 		''' @since 1.2 </exception>
-		Sub unregisterGroup(ByVal id As ActivationGroupID)
+		Sub unregisterGroup(  id As ActivationGroupID)
 
 		''' <summary>
 		''' Shutdown the activation system. Destroys all groups spawned by
@@ -156,7 +156,7 @@ Namespace java.rmi.activation
 		''' <returns> the previous value of the activation descriptor </returns>
 		''' <seealso cref= #getActivationDesc
 		''' @since 1.2 </seealso>
-		Function setActivationDesc(ByVal id As ActivationID, ByVal desc As ActivationDesc) As ActivationDesc
+		Function setActivationDesc(  id As ActivationID,   desc As ActivationDesc) As ActivationDesc
 
 		''' <summary>
 		''' Set the activation group descriptor, <code>desc</code> for the object
@@ -173,7 +173,7 @@ Namespace java.rmi.activation
 		''' <returns> the previous value of the activation group descriptor </returns>
 		''' <seealso cref= #getActivationGroupDesc
 		''' @since 1.2 </seealso>
-		Function setActivationGroupDesc(ByVal id As ActivationGroupID, ByVal desc As ActivationGroupDesc) As ActivationGroupDesc
+		Function setActivationGroupDesc(  id As ActivationGroupID,   desc As ActivationGroupDesc) As ActivationGroupDesc
 
 		''' <summary>
 		''' Returns the activation descriptor, for the object with the activation
@@ -186,7 +186,7 @@ Namespace java.rmi.activation
 		''' <returns> the activation descriptor </returns>
 		''' <seealso cref= #setActivationDesc
 		''' @since 1.2 </seealso>
-		Function getActivationDesc(ByVal id As ActivationID) As ActivationDesc
+		Function getActivationDesc(  id As ActivationID) As ActivationDesc
 
 		''' <summary>
 		''' Returns the activation group descriptor, for the group
@@ -199,7 +199,7 @@ Namespace java.rmi.activation
 		''' <returns> the activation group descriptor </returns>
 		''' <seealso cref= #setActivationGroupDesc
 		''' @since 1.2 </seealso>
-		Function getActivationGroupDesc(ByVal id As ActivationGroupID) As ActivationGroupDesc
+		Function getActivationGroupDesc(  id As ActivationGroupID) As ActivationGroupDesc
 	End Interface
 
 End Namespace

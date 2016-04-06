@@ -54,13 +54,13 @@ Namespace java.awt.event
 		''' <summary>
 		''' Invoked when a component has been added to the container.
 		''' </summary>
-		Public Overridable Sub componentAdded(ByVal e As ContainerEvent) Implements ContainerListener.componentAdded
+		Public Overridable Sub componentAdded(  e As ContainerEvent) Implements ContainerListener.componentAdded
 		End Sub
 
 		''' <summary>
 		''' Invoked when a component has been removed from the container.
 		''' </summary>
-		Public Overridable Sub componentRemoved(ByVal e As ContainerEvent) Implements ContainerListener.componentRemoved
+		Public Overridable Sub componentRemoved(  e As ContainerEvent) Implements ContainerListener.componentRemoved
 		End Sub
 	End Class
 

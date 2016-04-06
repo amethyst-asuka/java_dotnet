@@ -78,7 +78,7 @@ Namespace java.awt.peer
 		''' <param name="selEnd"> the end index of the new selection
 		''' </param>
 		''' <seealso cref= TextComponent#select(int, int) </seealso>
-		Sub [select](ByVal selStart As Integer, ByVal selEnd As Integer)
+		Sub [select](  selStart As Integer,   selEnd As Integer)
 
 		''' <summary>
 		''' Sets the caret position of the text component.

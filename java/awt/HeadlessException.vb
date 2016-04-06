@@ -42,7 +42,7 @@ Namespace java.awt
 		Private Shadows Const serialVersionUID As Long = 167183644944358563L
 		Public Sub New()
 		End Sub
-		Public Sub New(ByVal msg As String)
+		Public Sub New(  msg As String)
 			MyBase.New(msg)
 		End Sub
         Public Overrides ReadOnly Property message As String

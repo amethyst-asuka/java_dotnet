@@ -43,7 +43,7 @@ Namespace java.util.function
 		''' <param name="left"> the first operand </param>
 		''' <param name="right"> the second operand </param>
 		''' <returns> the operator result </returns>
-		Function applyAsDouble(ByVal left As Double, ByVal right As Double) As Double
+		Function applyAsDouble(  left As Double,   right As Double) As Double
 	End Interface
 
 End Namespace

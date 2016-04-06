@@ -302,7 +302,7 @@ Namespace java.net
 			Implements FileNameMap
 
 			Private map As FileNameMap = fileNameMap
-			Public Overridable Function getContentTypeFor(ByVal fileName As String) As String Implements FileNameMap.getContentTypeFor
+			Public Overridable Function getContentTypeFor(  fileName As String) As String Implements FileNameMap.getContentTypeFor
 				Return map.getContentTypeFor(fileName)
 			End Function
 		End Class
@@ -322,7 +322,7 @@ Namespace java.net
 		''' <seealso cref= #getFileNameMap()
 		''' @since 1.2 </seealso>
 		Public Shared Property fileNameMap As FileNameMap
-			Set(ByVal map As FileNameMap)
+			Set(  map As FileNameMap)
 				Dim sm As SecurityManager = System.securityManager
 				If sm IsNot Nothing Then sm.checkSetFactory()
 				fileNameMap = map
@@ -374,7 +374,7 @@ Namespace java.net
 		''' <seealso cref= #connect()
 		''' @since 1.5 </seealso>
 		Public Overridable Property connectTimeout As Integer
-			Set(ByVal timeout As Integer)
+			Set(  timeout As Integer)
 				If timeout < 0 Then Throw New IllegalArgumentException("timeout can not be negative")
 				connectTimeout = timeout
 			End Set
@@ -404,7 +404,7 @@ Namespace java.net
 		''' <seealso cref= InputStream#read()
 		''' @since 1.5 </seealso>
 		Public Overridable Property readTimeout As Integer
-			Set(ByVal timeout As Integer)
+			Set(  timeout As Integer)
 				If timeout < 0 Then Throw New IllegalArgumentException("timeout can not be negative")
 				readTimeout = timeout
 			End Set
@@ -419,7 +419,7 @@ Namespace java.net
 		''' the object referenced by the URL is not created.
 		''' </summary>
 		''' <param name="url">   the specified URL. </param>
-		Protected Friend Sub New(ByVal url As URL)
+		Protected Friend Sub New(  url As URL)
 			Me.url = url
 		End Sub
 
@@ -541,7 +541,7 @@ Namespace java.net
 		''' <param name="name">   the name of a header field. </param>
 		''' <returns>  the value of the named header field, or {@code null}
 		'''          if there is no such field in the header. </returns>
-		Public Overridable Function getHeaderField(ByVal name As String) As String
+		Public Overridable Function getHeaderField(  name As String) As String
 			Return Nothing
 		End Function
 
@@ -573,7 +573,7 @@ Namespace java.net
 		''' <returns>  the value of the named field, parsed as an  java.lang.[Integer]. The
 		'''          {@code Default} value is returned if the field is
 		'''          missing or malformed. </returns>
-		Public Overridable Function getHeaderFieldInt(ByVal name As String, ByVal [Default] As Integer) As Integer
+		Public Overridable Function getHeaderFieldInt(  name As String,   [Default] As Integer) As Integer
 			Dim value As String = getHeaderField(name)
 			Try
 				Return Convert.ToInt32(value)
@@ -596,7 +596,7 @@ Namespace java.net
 		'''          {@code Default} value is returned if the field is
 		'''          missing or malformed.
 		''' @since 7.0 </returns>
-		Public Overridable Function getHeaderFieldLong(ByVal name As String, ByVal [Default] As Long) As Long
+		Public Overridable Function getHeaderFieldLong(  name As String,   [Default] As Long) As Long
 			Dim value As String = getHeaderField(name)
 			Try
 				Return Convert.ToInt64(value)
@@ -621,7 +621,7 @@ Namespace java.net
 		'''          {@code Default} argument is returned if the field is
 		'''          missing or malformed. </returns>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Overridable Function getHeaderFieldDate(ByVal name As String, ByVal [Default] As Long) As Long
+		Public Overridable Function getHeaderFieldDate(  name As String,   [Default] As Long) As Long
 			Dim value As String = getHeaderField(name)
 			Try
 				Return DateTime.Parse(value)
@@ -638,7 +638,7 @@ Namespace java.net
 		''' <returns>  the key for the {@code n}<sup>th</sup> header field,
 		'''          or {@code null} if there are fewer than {@code n+1}
 		'''          fields. </returns>
-		Public Overridable Function getHeaderFieldKey(ByVal n As Integer) As String
+		Public Overridable Function getHeaderFieldKey(  n As Integer) As String
 			Return Nothing
 		End Function
 
@@ -655,7 +655,7 @@ Namespace java.net
 		''' <returns>  the value of the {@code n}<sup>th</sup> header field
 		'''          or {@code null} if there are fewer than {@code n+1} fields </returns>
 		''' <seealso cref=     java.net.URLConnection#getHeaderFieldKey(int) </seealso>
-		Public Overridable Function getHeaderField(ByVal n As Integer) As String
+		Public Overridable Function getHeaderField(  n As Integer) As String
 			Return Nothing
 		End Function
 
@@ -730,7 +730,7 @@ Namespace java.net
 		''' <seealso cref=        java.net.URLConnection#getContent(java.lang.Class[]) </seealso>
 		''' <seealso cref=        java.net.URLConnection#setContentHandlerFactory(java.net.ContentHandlerFactory)
 		''' @since 1.3 </seealso>
-		Public Overridable Function getContent(ByVal classes As  [Class]()) As Object
+		Public Overridable Function getContent(  classes As  [Class]()) As Object
 			' Must call getInputStream before GetHeaderField gets called
 			' so that FileNotFoundException has a chance to be thrown up
 			' from here without being caught.
@@ -837,7 +837,7 @@ Namespace java.net
 		''' <seealso cref=     java.net.URLConnection#doInput </seealso>
 		''' <seealso cref= #getDoInput() </seealso>
 		Public Overridable Property doInput As Boolean
-			Set(ByVal doinput As Boolean)
+			Set(  doinput As Boolean)
 				If connected Then Throw New IllegalStateException("Already connected")
 				Me.doInput = doinput
 			End Set
@@ -859,7 +859,7 @@ Namespace java.net
 		''' <exception cref="IllegalStateException"> if already connected </exception>
 		''' <seealso cref= #getDoOutput() </seealso>
 		Public Overridable Property doOutput As Boolean
-			Set(ByVal dooutput As Boolean)
+			Set(  dooutput As Boolean)
 				If connected Then Throw New IllegalStateException("Already connected")
 				Me.doOutput = dooutput
 			End Set
@@ -877,7 +877,7 @@ Namespace java.net
 		''' <exception cref="IllegalStateException"> if already connected </exception>
 		''' <seealso cref=     #getAllowUserInteraction() </seealso>
 		Public Overridable Property allowUserInteraction As Boolean
-			Set(ByVal allowuserinteraction As Boolean)
+			Set(  allowuserinteraction As Boolean)
 				If connected Then Throw New IllegalStateException("Already connected")
 				Me.allowUserInteraction = allowuserinteraction
 			End Set
@@ -895,7 +895,7 @@ Namespace java.net
 		''' <param name="defaultallowuserinteraction">   the new value. </param>
 		''' <seealso cref=     #getDefaultAllowUserInteraction() </seealso>
 		Public Shared Property defaultAllowUserInteraction As Boolean
-			Set(ByVal defaultallowuserinteraction As Boolean)
+			Set(  defaultallowuserinteraction As Boolean)
 				URLConnection.defaultAllowUserInteraction = defaultallowuserinteraction
 			End Set
 			Get
@@ -921,7 +921,7 @@ Namespace java.net
 		''' <exception cref="IllegalStateException"> if already connected </exception>
 		''' <seealso cref= #getUseCaches() </seealso>
 		Public Overridable Property useCaches As Boolean
-			Set(ByVal usecaches As Boolean)
+			Set(  usecaches As Boolean)
 				If connected Then Throw New IllegalStateException("Already connected")
 				Me.useCaches = usecaches
 			End Set
@@ -939,7 +939,7 @@ Namespace java.net
 		''' <exception cref="IllegalStateException"> if already connected </exception>
 		''' <seealso cref=     #getIfModifiedSince() </seealso>
 		Public Overridable Property ifModifiedSince As Long
-			Set(ByVal ifmodifiedsince As Long)
+			Set(  ifmodifiedsince As Long)
 				If connected Then Throw New IllegalStateException("Already connected")
 				Me.ifModifiedSince = ifmodifiedsince
 			End Set
@@ -964,7 +964,7 @@ Namespace java.net
 			Get
 				Return defaultUseCaches
 			End Get
-			Set(ByVal defaultusecaches As Boolean)
+			Set(  defaultusecaches As Boolean)
 				URLConnection.defaultUseCaches = defaultusecaches
 			End Set
 		End Property
@@ -985,7 +985,7 @@ Namespace java.net
 		''' <exception cref="IllegalStateException"> if already connected </exception>
 		''' <exception cref="NullPointerException"> if key is <CODE>null</CODE> </exception>
 		''' <seealso cref= #getRequestProperty(java.lang.String) </seealso>
-		Public Overridable Sub setRequestProperty(ByVal key As String, ByVal value As String)
+		Public Overridable Sub setRequestProperty(  key As String,   value As String)
 			If connected Then Throw New IllegalStateException("Already connected")
 			If key Is Nothing Then Throw New NullPointerException("key is null")
 
@@ -1006,7 +1006,7 @@ Namespace java.net
 		''' <exception cref="NullPointerException"> if key is null </exception>
 		''' <seealso cref= #getRequestProperties()
 		''' @since 1.4 </seealso>
-		Public Overridable Sub addRequestProperty(ByVal key As String, ByVal value As String)
+		Public Overridable Sub addRequestProperty(  key As String,   value As String)
 			If connected Then Throw New IllegalStateException("Already connected")
 			If key Is Nothing Then Throw New NullPointerException("key is null")
 
@@ -1025,7 +1025,7 @@ Namespace java.net
 		'''           connection. If key is null, then null is returned. </returns>
 		''' <exception cref="IllegalStateException"> if already connected </exception>
 		''' <seealso cref= #setRequestProperty(java.lang.String, java.lang.String) </seealso>
-		Public Overridable Function getRequestProperty(ByVal key As String) As String
+		Public Overridable Function getRequestProperty(  key As String) As String
 			If connected Then Throw New IllegalStateException("Already connected")
 
 			If requests Is Nothing Then Return Nothing
@@ -1071,7 +1071,7 @@ Namespace java.net
 		''' 
 		''' <seealso cref= #getDefaultRequestProperty(java.lang.String) </seealso>
 		<Obsolete("The instance specific setRequestProperty method")> _
-		Public Shared Sub setDefaultRequestProperty(ByVal key As String, ByVal value As String)
+		Public Shared Sub setDefaultRequestProperty(  key As String,   value As String)
 		End Sub
 
 		''' <summary>
@@ -1090,7 +1090,7 @@ Namespace java.net
 		''' 
 		''' <seealso cref= #setDefaultRequestProperty(java.lang.String, java.lang.String) </seealso>
 		<Obsolete("The instance specific getRequestProperty method")> _
-		Public Shared Function getDefaultRequestProperty(ByVal key As String) As String
+		Public Shared Function getDefaultRequestProperty(  key As String) As String
 			Return Nothing
 		End Function
 
@@ -1120,7 +1120,7 @@ Namespace java.net
 		''' <seealso cref=        SecurityManager#checkSetFactory </seealso>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
 		Public Shared Property contentHandlerFactory As ContentHandlerFactory
-			Set(ByVal fac As ContentHandlerFactory)
+			Set(  fac As ContentHandlerFactory)
 				If factory IsNot Nothing Then Throw New [Error]("factory already defined")
 				Dim security As SecurityManager = System.securityManager
 				If security IsNot Nothing Then security.checkSetFactory()

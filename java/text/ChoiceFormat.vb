@@ -170,7 +170,7 @@ Namespace java.text
 		''' <summary>
 		''' Sets the pattern. </summary>
 		''' <param name="newPattern"> See the class description. </param>
-		Public Overridable Sub applyPattern(ByVal newPattern As String)
+		Public Overridable Sub applyPattern(  newPattern As String)
 			Dim segments As StringBuffer() = New StringBuffer(1){}
 			For i As Integer = 0 To segments.Length - 1
 				segments(i) = New StringBuffer
@@ -295,7 +295,7 @@ Namespace java.text
 		''' </summary>
 		''' <param name="newPattern"> the new pattern string </param>
 		''' <seealso cref= #applyPattern </seealso>
-		Public Sub New(ByVal newPattern As String)
+		Public Sub New(  newPattern As String)
 			applyPattern(newPattern)
 		End Sub
 
@@ -305,7 +305,7 @@ Namespace java.text
 		''' <param name="limits"> limits in ascending order </param>
 		''' <param name="formats"> corresponding format strings </param>
 		''' <seealso cref= #setChoices </seealso>
-		Public Sub New(ByVal limits As Double(), ByVal formats As String())
+		Public Sub New(  limits As Double(),   formats As String())
 			choicesces(limits, formats)
 		End Sub
 
@@ -322,7 +322,7 @@ Namespace java.text
 		''' When formatting with object Y,
 		''' if the object is a NumberFormat, then ((NumberFormat) Y).format(X)
 		''' is called. Otherwise Y.toString() is called. </param>
-		Public Overridable Sub setChoices(ByVal limits As Double(), ByVal formats As String())
+		Public Overridable Sub setChoices(  limits As Double(),   formats As String())
 			If limits.Length <> formats.Length Then Throw New IllegalArgumentException("Array and limit arrays must be of the same length.")
 			choiceLimits = java.util.Arrays.copyOf(limits, limits.Length)
 			choiceFormats = java.util.Arrays.copyOf(formats, formats.Length)
@@ -357,7 +357,7 @@ Namespace java.text
 		''' the range that can be stored by java.lang.[Double]. This will never be
 		''' a practical limitation.
 		''' </summary>
-		Public Overrides Function format(ByVal number As Long, ByVal toAppendTo As StringBuffer, ByVal status As FieldPosition) As StringBuffer
+		Public Overrides Function format(  number As Long,   toAppendTo As StringBuffer,   status As FieldPosition) As StringBuffer
 			Return format(CDbl(number), toAppendTo, status)
 		End Function
 
@@ -366,7 +366,7 @@ Namespace java.text
 		''' <param name="number"> number to be formatted and substituted. </param>
 		''' <param name="toAppendTo"> where text is appended. </param>
 		''' <param name="status"> ignore no useful status is returned. </param>
-	   Public Overrides Function format(ByVal number As Double, ByVal toAppendTo As StringBuffer, ByVal status As FieldPosition) As StringBuffer
+	   Public Overrides Function format(  number As Double,   toAppendTo As StringBuffer,   status As FieldPosition) As StringBuffer
 			' find the number
 			Dim i As Integer
 			For i = 0 To choiceLimits.Length - 1
@@ -389,7 +389,7 @@ Namespace java.text
 		''' status.index is unchanged and status.errorIndex is set to the
 		''' first index of the character that caused the parse to fail. </param>
 		''' <returns> A Number representing the value of the number parsed. </returns>
-		Public Overrides Function parse(ByVal text As String, ByVal status As ParsePosition) As Number
+		Public Overrides Function parse(  text As String,   status As ParsePosition) As Number
 			' find the best number (defined as the one with the longest parse)
 			Dim start As Integer = status.index
 			Dim furthest As Integer = start
@@ -420,7 +420,7 @@ Namespace java.text
 		''' <param name="d"> the reference value </param>
 		''' <returns> the least double value greather than {@code d} </returns>
 		''' <seealso cref= #previousDouble </seealso>
-		Public Shared Function nextDouble(ByVal d As Double) As Double
+		Public Shared Function nextDouble(  d As Double) As Double
 			Return nextDouble(d,True)
 		End Function
 
@@ -431,7 +431,7 @@ Namespace java.text
 		''' <param name="d"> the reference value </param>
 		''' <returns> the greatest double value less than {@code d} </returns>
 		''' <seealso cref= #nextDouble </seealso>
-		Public Shared Function previousDouble(ByVal d As Double) As Double
+		Public Shared Function previousDouble(  d As Double) As Double
 			Return nextDouble(d,False)
 		End Function
 
@@ -458,7 +458,7 @@ Namespace java.text
 		''' <summary>
 		''' Equality comparision between two
 		''' </summary>
-		Public Overrides Function Equals(ByVal obj As Object) As Boolean
+		Public Overrides Function Equals(  obj As Object) As Boolean
 			If obj Is Nothing Then Return False
 			If Me Is obj Then ' quick check Return True
 			If Me.GetType() IsNot obj.GetType() Then Return False
@@ -470,7 +470,7 @@ Namespace java.text
 		''' After reading an object from the input stream, do a simple verification
 		''' to maintain class invariants. </summary>
 		''' <exception cref="InvalidObjectException"> if the objects read from the stream is invalid. </exception>
-		Private Sub readObject(ByVal [in] As java.io.ObjectInputStream)
+		Private Sub readObject(  [in] As java.io.ObjectInputStream)
 			[in].defaultReadObject()
 			If choiceLimits.Length <> choiceFormats.Length Then Throw New java.io.InvalidObjectException("limits and format arrays of different length.")
 		End Sub
@@ -540,7 +540,7 @@ Namespace java.text
 		''' <param name="positive"> {@code true} if the least double is desired;
 		'''                 {@code false} otherwise </param>
 		''' <returns> the least or greater double value </returns>
-		Public Shared Function nextDouble(ByVal d As Double, ByVal positive As Boolean) As Double
+		Public Shared Function nextDouble(  d As Double,   positive As Boolean) As Double
 
 			' filter out NaN's 
 			If java.lang.[Double].IsNaN(d) Then Return d
@@ -576,14 +576,14 @@ Namespace java.text
 			Return java.lang.[Double].longBitsToDouble(magnitude Or signbit)
 		End Function
 
-		Private Shared Function doubleArraySize(ByVal array As Double()) As Double()
+		Private Shared Function doubleArraySize(  array As Double()) As Double()
 			Dim oldSize As Integer = array.Length
 			Dim newArray As Double() = New Double(oldSize * 2 - 1){}
 			Array.Copy(array, 0, newArray, 0, oldSize)
 			Return newArray
 		End Function
 
-		Private Function doubleArraySize(ByVal array As String()) As String()
+		Private Function doubleArraySize(  array As String()) As String()
 			Dim oldSize As Integer = array.Length
 			Dim newArray As String() = New String(oldSize * 2 - 1){}
 			Array.Copy(array, 0, newArray, 0, oldSize)

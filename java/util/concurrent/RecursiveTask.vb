@@ -84,7 +84,7 @@ Namespace java.util.concurrent
 			Get
 				Return result
 			End Get
-			Set(ByVal value As V)
+			Set(  value As V)
 				result = value
 			End Set
 		End Property

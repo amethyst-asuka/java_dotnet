@@ -63,7 +63,7 @@ Namespace java.net
 		''' </exception>
 		''' <seealso cref= #get
 		'''  </seealso>
-		Sub add(ByVal uri As URI, ByVal cookie As HttpCookie)
+		Sub add(  uri As URI,   cookie As HttpCookie)
 
 
 		''' <summary>
@@ -80,7 +80,7 @@ Namespace java.net
 		''' </exception>
 		''' <seealso cref= #add
 		'''  </seealso>
-		Function [get](ByVal uri As URI) As IList(Of HttpCookie)
+		Function [get](  uri As URI) As IList(Of HttpCookie)
 
 
 		''' <summary>
@@ -112,7 +112,7 @@ Namespace java.net
 		''' <returns>          {@code true} if this store contained the specified cookie
 		''' </returns>
 		''' <exception cref="NullPointerException"> if {@code cookie} is {@code null} </exception>
-		Function remove(ByVal uri As URI, ByVal cookie As HttpCookie) As Boolean
+		Function remove(  uri As URI,   cookie As HttpCookie) As Boolean
 
 
 		''' <summary>

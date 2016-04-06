@@ -282,7 +282,7 @@ Namespace java.util
             Friend value As V
             Friend [next] As Node(Of K, V)
 
-            Friend Sub New(ByVal hash As Integer, ByVal key As K, ByVal value As V, ByVal [next] As Node(Of K, V))
+            Friend Sub New(  hash As Integer,   key As K,   value As V,   [next] As Node(Of K, V))
                 Me.hash = hash
                 Me.key = key
                 Me.value = value
@@ -307,13 +307,13 @@ Namespace java.util
                 Return Objects.hashCode(key) Xor Objects.hashCode(value)
             End Function
 
-            Public Function setValue(ByVal newValue As V) As V
+            Public Function setValue(  newValue As V) As V
                 Dim oldValue As V = value
                 value = newValue
                 Return oldValue
             End Function
 
-            Public NotOverridable Overrides Function Equals(ByVal o As Object) As Boolean
+            Public NotOverridable Overrides Function Equals(  o As Object) As Boolean
                 If o Is Me Then Return True
                 If TypeOf o Is DictionaryEntry Then
                     'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
@@ -342,7 +342,7 @@ Namespace java.util
         ''' to incorporate impact of the highest bits that would otherwise
         ''' never be used in index calculations because of table bounds.
         ''' </summary>
-        Friend Shared Function hash(ByVal key As Object) As Integer
+        Friend Shared Function hash(  key As Object) As Integer
             Dim h As Integer
             If key Is Nothing Then
                 Return 0
@@ -356,7 +356,7 @@ Namespace java.util
         ''' Returns x's Class if it is of the form "class C implements
         ''' Comparable<C>", else null.
         ''' </summary>
-        Friend Shared Function comparableClassFor(ByVal x As Object) As [Class]
+        Friend Shared Function comparableClassFor(  x As Object) As [Class]
             If TypeOf x Is Comparable Then
                 Dim c As [Class]
                 Dim ts, [as] As Type()
@@ -382,14 +382,14 @@ Namespace java.util
         ''' [Class]), else 0.
         ''' </summary>
         'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-        Friend Shared Function compareComparables(ByVal kc As [Class], ByVal k As Object, ByVal x As Object) As Integer ' for cast to Comparable
+        Friend Shared Function compareComparables(  kc As [Class],   k As Object,   x As Object) As Integer ' for cast to Comparable
             Return (If(x Is Nothing OrElse x.GetType() IsNot kc, 0, CType(k, Comparable).CompareTo(x)))
         End Function
 
         ''' <summary>
         ''' Returns a power of two size for the given target capacity.
         ''' </summary>
-        Friend Shared Function tableSizeFor(ByVal cap As Integer) As Integer
+        Friend Shared Function tableSizeFor(  cap As Integer) As Integer
             Dim n As Integer = cap - 1
             n = n Or CInt(CUInt(n) >> 1)
             n = n Or CInt(CUInt(n) >> 2)
@@ -461,7 +461,7 @@ Namespace java.util
         ''' <param name="loadFactor">      the load factor </param>
         ''' <exception cref="IllegalArgumentException"> if the initial capacity is negative
         '''         or the load factor is nonpositive </exception>
-        Public Sub New(ByVal initialCapacity As Integer, ByVal loadFactor As Single)
+        Public Sub New(  initialCapacity As Integer,   loadFactor As Single)
             If initialCapacity < 0 Then Throw New IllegalArgumentException("Illegal initial capacity: " & initialCapacity)
             If initialCapacity > MAXIMUM_CAPACITY Then initialCapacity = MAXIMUM_CAPACITY
             If loadFactor <= 0 OrElse Float.IsNaN(loadFactor) Then Throw New IllegalArgumentException("Illegal load factor: " & loadFactor)
@@ -475,7 +475,7 @@ Namespace java.util
         ''' </summary>
         ''' <param name="initialCapacity"> the initial capacity. </param>
         ''' <exception cref="IllegalArgumentException"> if the initial capacity is negative. </exception>
-        Public Sub New(ByVal initialCapacity As Integer)
+        Public Sub New(  initialCapacity As Integer)
             Me.New(initialCapacity, DEFAULT_LOAD_FACTOR)
         End Sub
 
@@ -496,7 +496,7 @@ Namespace java.util
         ''' <param name="m"> the map whose mappings are to be placed in this map </param>
         ''' <exception cref="NullPointerException"> if the specified map is null </exception>
         'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-        Public Sub New(Of T1 As K, ? As V)(ByVal m As Map(Of T1))
+        Public Sub New(Of T1 As K, ? As V)(  m As Map(Of T1))
 			Me.loadFactor_Renamed = DEFAULT_LOAD_FACTOR
             putMapEntries(m, False)
         End Sub
@@ -508,7 +508,7 @@ Namespace java.util
         ''' <param name="evict"> false when initially constructing this map, else
         ''' true (relayed to method afterNodeInsertion). </param>
         'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-        Friend Sub putMapEntries(Of T1 As K, ? As V)(ByVal m As Map(Of T1), ByVal evict As Boolean)
+        Friend Sub putMapEntries(Of T1 As K, ? As V)(  m As Map(Of T1),   evict As Boolean)
 			Dim s As Integer = m.size()
             If s > 0 Then
                 If table Is Nothing Then ' pre-size
@@ -561,7 +561,7 @@ Namespace java.util
         ''' distinguish these two cases.
         ''' </summary>
         ''' <seealso cref= #put(Object, Object) </seealso>
-        Public Overridable Function [get](ByVal key As Object) As V Implements Map(Of K, V).get
+        Public Overridable Function [get](  key As Object) As V Implements Map(Of K, V).get
             Dim e As Node(Of K, V)
             'JAVA TO VB CONVERTER TODO TASK: Assignments within expressions are not supported in VB
             Return If((e = getNode(hash(key), key)) Is Nothing, Nothing, e.value)
@@ -573,7 +573,7 @@ Namespace java.util
         ''' <param name="hash"> hash for key </param>
         ''' <param name="key"> the key </param>
         ''' <returns> the node, or null if none </returns>
-        Friend Function getNode(ByVal hash As Integer, ByVal key As Object) As Node(Of K, V)
+        Friend Function getNode(  hash As Integer,   key As Object) As Node(Of K, V)
             Dim tab As Node(Of K, V)()
             Dim first As Node(Of K, V), e As Node(Of K, V)
             Dim n As Integer
@@ -604,7 +604,7 @@ Namespace java.util
         ''' <param name="key">   The key whose presence in this map is to be tested </param>
         ''' <returns> <tt>true</tt> if this map contains a mapping for the specified
         ''' key. </returns>
-        Public Overridable Function containsKey(ByVal key As Object) As Boolean Implements Map(Of K, V).containsKey
+        Public Overridable Function containsKey(  key As Object) As Boolean Implements Map(Of K, V).containsKey
             Return getNode(hash(key), key) IsNot Nothing
         End Function
 
@@ -619,7 +619,7 @@ Namespace java.util
         '''         <tt>null</tt> if there was no mapping for <tt>key</tt>.
         '''         (A <tt>null</tt> return can also indicate that the map
         '''         previously associated <tt>null</tt> with <tt>key</tt>.) </returns>
-        Public Overridable Function put(ByVal key As K, ByVal value As V) As V Implements Map(Of K, V).put
+        Public Overridable Function put(  key As K,   value As V) As V Implements Map(Of K, V).put
             Return putVal(hash(key), key, value, False, True)
         End Function
 
@@ -632,7 +632,7 @@ Namespace java.util
         ''' <param name="onlyIfAbsent"> if true, don't change existing value </param>
         ''' <param name="evict"> if false, the table is in creation mode. </param>
         ''' <returns> previous value, or null if none </returns>
-        Friend Function putVal(ByVal hash As Integer, ByVal key As K, ByVal value As V, ByVal onlyIfAbsent As Boolean, ByVal evict As Boolean) As V
+        Friend Function putVal(  hash As Integer,   key As K,   value As V,   onlyIfAbsent As Boolean,   evict As Boolean) As V
             Dim tab As Node(Of K, V)()
             Dim p As Node(Of K, V)
             Dim n, i As Integer
@@ -767,7 +767,7 @@ Namespace java.util
         ''' Replaces all linked nodes in bin at index for given hash unless
         ''' table is too small, in which case resizes instead.
         ''' </summary>
-        Friend Sub treeifyBin(ByVal tab As Node(Of K, V)(), ByVal hash As Integer)
+        Friend Sub treeifyBin(  tab As Node(Of K, V)(),   hash As Integer)
             Dim n, index As Integer
             Dim e As Node(Of K, V)
             n = tab.Length
@@ -803,7 +803,7 @@ Namespace java.util
         ''' <param name="m"> mappings to be stored in this map </param>
         ''' <exception cref="NullPointerException"> if the specified map is null </exception>
         'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-        Public Overridable Sub putAll(Of T1 As K, ? As V)(ByVal m As Map(Of T1)) Implements Map(Of K, V).putAll
+        Public Overridable Sub putAll(Of T1 As K, ? As V)(  m As Map(Of T1)) Implements Map(Of K, V).putAll
 			putMapEntries(m, True)
         End Sub
 
@@ -815,7 +815,7 @@ Namespace java.util
         '''         <tt>null</tt> if there was no mapping for <tt>key</tt>.
         '''         (A <tt>null</tt> return can also indicate that the map
         '''         previously associated <tt>null</tt> with <tt>key</tt>.) </returns>
-        Public Overridable Function remove(ByVal key As Object) As V Implements Map(Of K, V).remove
+        Public Overridable Function remove(  key As Object) As V Implements Map(Of K, V).remove
             Dim e As Node(Of K, V)
             'JAVA TO VB CONVERTER TODO TASK: Assignments within expressions are not supported in VB
             Return If((e = removeNode(hash(key), key, Nothing, False, True)) Is Nothing, Nothing, e.value)
@@ -830,7 +830,7 @@ Namespace java.util
         ''' <param name="matchValue"> if true only remove if value is equal </param>
         ''' <param name="movable"> if false do not move other nodes while removing </param>
         ''' <returns> the node, or null if none </returns>
-        Friend Function removeNode(ByVal hash As Integer, ByVal key As Object, ByVal value As Object, ByVal matchValue As Boolean, ByVal movable As Boolean) As Node(Of K, V)
+        Friend Function removeNode(  hash As Integer,   key As Object,   value As Object,   matchValue As Boolean,   movable As Boolean) As Node(Of K, V)
             Dim tab As Node(Of K, V)()
             Dim p As Node(Of K, V)
             Dim n, index As Integer
@@ -904,7 +904,7 @@ Namespace java.util
         ''' <param name="value"> value whose presence in this map is to be tested </param>
         ''' <returns> <tt>true</tt> if this map maps one or more keys to the
         '''         specified value </returns>
-        Public Overridable Function containsValue(ByVal value As Object) As Boolean Implements Map(Of K, V).containsValue
+        Public Overridable Function containsValue(  value As Object) As Boolean Implements Map(Of K, V).containsValue
             Dim tab As Node(Of K, V)()
             Dim v As V
             tab = table
@@ -951,7 +951,7 @@ Namespace java.util
 
             Private ReadOnly outerInstance As HashMap
 
-            Public Sub New(ByVal outerInstance As HashMap)
+            Public Sub New(  outerInstance As HashMap)
                 Me.outerInstance = outerInstance
             End Sub
 
@@ -964,17 +964,17 @@ Namespace java.util
             Public Function [iterator]() As [Iterator](Of K)
                 Return New KeyIterator
             End Function
-            Public Function contains(ByVal o As Object) As Boolean
+            Public Function contains(  o As Object) As Boolean
                 Return outerInstance.containsKey(o)
             End Function
-            Public Function remove(ByVal key As Object) As Boolean
+            Public Function remove(  key As Object) As Boolean
                 Return outerInstance.removeNode(hash(key), key, Nothing, False, True) IsNot Nothing
             End Function
             Public Function spliterator() As Spliterator(Of K)
                 Return New KeySpliterator(Of )(HashMap.this, 0, -1, 0, 0)
             End Function
             'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-            Public Sub forEach(Of T1)(ByVal action As java.util.function.Consumer(Of T1))
+            Public Sub forEach(Of T1)(  action As java.util.function.Consumer(Of T1))
                 Dim tab As Node(Of K, V)()
                 If action Is Nothing Then Throw New NullPointerException
                 tab = outerInstance.table
@@ -1022,7 +1022,7 @@ Namespace java.util
 
             Private ReadOnly outerInstance As HashMap
 
-            Public Sub New(ByVal outerInstance As HashMap)
+            Public Sub New(  outerInstance As HashMap)
                 Me.outerInstance = outerInstance
             End Sub
 
@@ -1035,14 +1035,14 @@ Namespace java.util
             Public Function [iterator]() As [Iterator](Of V)
                 Return New ValueIterator
             End Function
-            Public Function contains(ByVal o As Object) As Boolean
+            Public Function contains(  o As Object) As Boolean
                 Return outerInstance.containsValue(o)
             End Function
             Public Function spliterator() As Spliterator(Of V)
                 Return New ValueSpliterator(Of )(HashMap.this, 0, -1, 0, 0)
             End Function
             'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-            Public Sub forEach(Of T1)(ByVal action As java.util.function.Consumer(Of T1))
+            Public Sub forEach(Of T1)(  action As java.util.function.Consumer(Of T1))
                 Dim tab As Node(Of K, V)()
                 If action Is Nothing Then Throw New NullPointerException
                 tab = outerInstance.table
@@ -1091,7 +1091,7 @@ Namespace java.util
 
             Private ReadOnly outerInstance As HashMap
 
-            Public Sub New(ByVal outerInstance As HashMap)
+            Public Sub New(  outerInstance As HashMap)
                 Me.outerInstance = outerInstance
             End Sub
 
@@ -1104,7 +1104,7 @@ Namespace java.util
             Public Function [iterator]() As [Iterator](Of KeyValuePair(Of K, V))
                 Return New EntryIterator
             End Function
-            Public Function contains(ByVal o As Object) As Boolean
+            Public Function contains(  o As Object) As Boolean
                 If Not (TypeOf o Is DictionaryEntry) Then Return False
                 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
                 Dim e As KeyValuePair(Of ?, ?) = CType(o, KeyValuePair(Of ?, ?))
@@ -1112,7 +1112,7 @@ Namespace java.util
                 Dim candidate As Node(Of K, V) = outerInstance.getNode(hash(key), key)
                 Return candidate IsNot Nothing AndAlso candidate.Equals(e)
             End Function
-            Public Function remove(ByVal o As Object) As Boolean
+            Public Function remove(  o As Object) As Boolean
                 If TypeOf o Is DictionaryEntry Then
                     'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
                     Dim e As KeyValuePair(Of ?, ?) = CType(o, KeyValuePair(Of ?, ?))
@@ -1126,7 +1126,7 @@ Namespace java.util
                 Return New EntrySpliterator(Of )(HashMap.this, 0, -1, 0, 0)
             End Function
             'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-            Public Sub forEach(Of T1)(ByVal action As java.util.function.Consumer(Of T1))
+            Public Sub forEach(Of T1)(  action As java.util.function.Consumer(Of T1))
                 Dim tab As Node(Of K, V)()
                 If action Is Nothing Then Throw New NullPointerException
                 tab = outerInstance.table
@@ -1146,21 +1146,21 @@ Namespace java.util
 
         ' Overrides of JDK8 Map extension methods
 
-        Public Overrides Function getOrDefault(ByVal key As Object, ByVal defaultValue As V) As V Implements Map(Of K, V).getOrDefault
+        Public Overrides Function getOrDefault(  key As Object,   defaultValue As V) As V Implements Map(Of K, V).getOrDefault
             Dim e As Node(Of K, V)
             'JAVA TO VB CONVERTER TODO TASK: Assignments within expressions are not supported in VB
             Return If((e = getNode(hash(key), key)) Is Nothing, defaultValue, e.value)
         End Function
 
-        Public Overrides Function putIfAbsent(ByVal key As K, ByVal value As V) As V Implements Map(Of K, V).putIfAbsent
+        Public Overrides Function putIfAbsent(  key As K,   value As V) As V Implements Map(Of K, V).putIfAbsent
             Return putVal(hash(key), key, value, True, True)
         End Function
 
-        Public Overrides Function remove(ByVal key As Object, ByVal value As Object) As Boolean Implements Map(Of K, V).remove
+        Public Overrides Function remove(  key As Object,   value As Object) As Boolean Implements Map(Of K, V).remove
             Return removeNode(hash(key), key, value, True, True) IsNot Nothing
         End Function
 
-        Public Overrides Function replace(ByVal key As K, ByVal oldValue As V, ByVal newValue As V) As Boolean Implements Map(Of K, V).replace
+        Public Overrides Function replace(  key As K,   oldValue As V,   newValue As V) As Boolean Implements Map(Of K, V).replace
             Dim e As Node(Of K, V)
             Dim v As V
             e = getNode(hash(key), key)
@@ -1173,7 +1173,7 @@ Namespace java.util
             Return False
         End Function
 
-        Public Overrides Function replace(ByVal key As K, ByVal value As V) As V Implements Map(Of K, V).replace
+        Public Overrides Function replace(  key As K,   value As V) As V Implements Map(Of K, V).replace
             Dim e As Node(Of K, V)
             e = getNode(hash(key), key)
             If e IsNot Nothing Then
@@ -1186,7 +1186,7 @@ Namespace java.util
         End Function
 
         'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-        Public Overrides Function computeIfAbsent(Of T1 As V)(ByVal key As K, ByVal mappingFunction As java.util.function.Function(Of T1)) As V Implements Map(Of K, V).computeIfAbsent
+        Public Overrides Function computeIfAbsent(Of T1 As V)(  key As K,   mappingFunction As java.util.function.Function(Of T1)) As V Implements Map(Of K, V).computeIfAbsent
             If mappingFunction Is Nothing Then Throw New NullPointerException
             Dim hash As Integer = hash(key)
             Dim tab As Node(Of K, V)()
@@ -1244,7 +1244,7 @@ Namespace java.util
         End Function
 
         'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-        Public Overridable Function computeIfPresent(Of T1 As V)(ByVal key As K, ByVal remappingFunction As java.util.function.BiFunction(Of T1)) As V Implements Map(Of K, V).computeIfPresent
+        Public Overridable Function computeIfPresent(Of T1 As V)(  key As K,   remappingFunction As java.util.function.BiFunction(Of T1)) As V Implements Map(Of K, V).computeIfPresent
             If remappingFunction Is Nothing Then Throw New NullPointerException
             Dim e As Node(Of K, V)
             Dim oldValue As V
@@ -1265,7 +1265,7 @@ Namespace java.util
         End Function
 
         'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-        Public Overrides Function compute(Of T1 As V)(ByVal key As K, ByVal remappingFunction As java.util.function.BiFunction(Of T1)) As V Implements Map(Of K, V).compute
+        Public Overrides Function compute(Of T1 As V)(  key As K,   remappingFunction As java.util.function.BiFunction(Of T1)) As V Implements Map(Of K, V).compute
             If remappingFunction Is Nothing Then Throw New NullPointerException
             Dim hash As Integer = hash(key)
             Dim tab As Node(Of K, V)()
@@ -1321,7 +1321,7 @@ Namespace java.util
         End Function
 
         'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-        Public Overrides Function merge(Of T1 As V)(ByVal key As K, ByVal value As V, ByVal remappingFunction As java.util.function.BiFunction(Of T1)) As V Implements Map(Of K, V).merge
+        Public Overrides Function merge(Of T1 As V)(  key As K,   value As V,   remappingFunction As java.util.function.BiFunction(Of T1)) As V Implements Map(Of K, V).merge
             If value Is Nothing Then Throw New NullPointerException
             If remappingFunction Is Nothing Then Throw New NullPointerException
             Dim hash As Integer = hash(key)
@@ -1384,7 +1384,7 @@ Namespace java.util
         End Function
 
         'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-        Public Overrides Sub forEach(Of T1)(ByVal action As java.util.function.BiConsumer(Of T1)) Implements Map(Of K, V).forEach
+        Public Overrides Sub forEach(Of T1)(  action As java.util.function.BiConsumer(Of T1)) Implements Map(Of K, V).forEach
             Dim tab As Node(Of K, V)()
             If action Is Nothing Then Throw New NullPointerException
             tab = table
@@ -1402,7 +1402,7 @@ Namespace java.util
         End Sub
 
         'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-        Public Overrides Sub replaceAll(Of T1 As V)(ByVal [function] As java.util.function.BiFunction(Of T1)) Implements Map(Of K, V).replaceAll
+        Public Overrides Sub replaceAll(Of T1 As V)(  [function] As java.util.function.BiFunction(Of T1)) Implements Map(Of K, V).replaceAll
             Dim tab As Node(Of K, V)()
             If [function] Is Nothing Then Throw New NullPointerException
             tab = table
@@ -1460,7 +1460,7 @@ Namespace java.util
         '''             for each key-value mapping.  The key-value mappings are
         '''             emitted in no particular order.
         ''' </summary>
-        Private Sub writeObject(ByVal s As java.io.ObjectOutputStream)
+        Private Sub writeObject(  s As java.io.ObjectOutputStream)
             Dim buckets As Integer = capacity()
             ' Write out the threshold, loadfactor, and any hidden stuff
             s.defaultWriteObject()
@@ -1473,7 +1473,7 @@ Namespace java.util
         ''' Reconstitute the {@code HashMap} instance from a stream (i.e.,
         ''' deserialize it).
         ''' </summary>
-        Private Sub readObject(ByVal s As java.io.ObjectInputStream)
+        Private Sub readObject(  s As java.io.ObjectInputStream)
             ' Read in the threshold (ignored), loadfactor, and any hidden stuff
             s.defaultReadObject()
             reinitialize()
@@ -1516,7 +1516,7 @@ Namespace java.util
             Friend expectedModCount As Integer ' for fast-fail
             Friend index As Integer ' current slot
 
-            Friend Sub New(ByVal outerInstance As HashMap)
+            Friend Sub New(  outerInstance As HashMap)
                 Me.outerInstance = outerInstance
                 expectedModCount = outerInstance.modCount
                 Dim t As Node(Of K, V)() = outerInstance.table
@@ -1574,7 +1574,7 @@ Namespace java.util
 
             Private ReadOnly outerInstance As HashMap
 
-            Public Sub New(ByVal outerInstance As HashMap)
+            Public Sub New(  outerInstance As HashMap)
                 Me.outerInstance = outerInstance
             End Sub
 
@@ -1589,7 +1589,7 @@ Namespace java.util
 
             Private ReadOnly outerInstance As HashMap
 
-            Public Sub New(ByVal outerInstance As HashMap)
+            Public Sub New(  outerInstance As HashMap)
                 Me.outerInstance = outerInstance
             End Sub
 
@@ -1604,7 +1604,7 @@ Namespace java.util
 
             Private ReadOnly outerInstance As HashMap
 
-            Public Sub New(ByVal outerInstance As HashMap)
+            Public Sub New(  outerInstance As HashMap)
                 Me.outerInstance = outerInstance
             End Sub
 
@@ -1624,7 +1624,7 @@ Namespace java.util
             Friend est As Integer ' size estimate
             Friend expectedModCount As Integer ' for comodification checks
 
-            Friend Sub New(ByVal m As HashMap(Of K, V), ByVal origin As Integer, ByVal fence As Integer, ByVal est As Integer, ByVal expectedModCount As Integer)
+            Friend Sub New(  m As HashMap(Of K, V),   origin As Integer,   fence As Integer,   est As Integer,   expectedModCount As Integer)
                 Me.map = m
                 Me.index = origin
                 Me.fence = fence
@@ -1658,7 +1658,7 @@ Namespace java.util
             Inherits HashMapSpliterator(Of K, V)
             Implements Spliterator(Of K)
 
-            Friend Sub New(ByVal m As HashMap(Of K, V), ByVal origin As Integer, ByVal fence As Integer, ByVal est As Integer, ByVal expectedModCount As Integer)
+            Friend Sub New(  m As HashMap(Of K, V),   origin As Integer,   fence As Integer,   est As Integer,   expectedModCount As Integer)
                 MyBase.New(m, origin, fence, est, expectedModCount)
             End Sub
 
@@ -1669,7 +1669,7 @@ Namespace java.util
             End Function
 
             'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-            Public Sub forEachRemaining(Of T1)(ByVal action As java.util.function.Consumer(Of T1)) Implements Spliterator(Of K).forEachRemaining
+            Public Sub forEachRemaining(Of T1)(  action As java.util.function.Consumer(Of T1)) Implements Spliterator(Of K).forEachRemaining
                 Dim i, hi, mc As Integer
                 If action Is Nothing Then Throw New NullPointerException
                 Dim m As HashMap(Of K, V) = map
@@ -1702,7 +1702,7 @@ Namespace java.util
             End Sub
 
             'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-            Public Function tryAdvance(Of T1)(ByVal action As java.util.function.Consumer(Of T1)) As Boolean Implements Spliterator(Of K).tryAdvance
+            Public Function tryAdvance(Of T1)(  action As java.util.function.Consumer(Of T1)) As Boolean Implements Spliterator(Of K).tryAdvance
                 Dim hi As Integer
                 If action Is Nothing Then Throw New NullPointerException
                 Dim tab As Node(Of K, V)() = map.table
@@ -1733,7 +1733,7 @@ Namespace java.util
             Inherits HashMapSpliterator(Of K, V)
             Implements Spliterator(Of V)
 
-            Friend Sub New(ByVal m As HashMap(Of K, V), ByVal origin As Integer, ByVal fence As Integer, ByVal est As Integer, ByVal expectedModCount As Integer)
+            Friend Sub New(  m As HashMap(Of K, V),   origin As Integer,   fence As Integer,   est As Integer,   expectedModCount As Integer)
                 MyBase.New(m, origin, fence, est, expectedModCount)
             End Sub
 
@@ -1744,7 +1744,7 @@ Namespace java.util
             End Function
 
             'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-            Public Sub forEachRemaining(Of T1)(ByVal action As java.util.function.Consumer(Of T1)) Implements Spliterator(Of V).forEachRemaining
+            Public Sub forEachRemaining(Of T1)(  action As java.util.function.Consumer(Of T1)) Implements Spliterator(Of V).forEachRemaining
                 Dim i, hi, mc As Integer
                 If action Is Nothing Then Throw New NullPointerException
                 Dim m As HashMap(Of K, V) = map
@@ -1777,7 +1777,7 @@ Namespace java.util
             End Sub
 
             'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-            Public Function tryAdvance(Of T1)(ByVal action As java.util.function.Consumer(Of T1)) As Boolean Implements Spliterator(Of V).tryAdvance
+            Public Function tryAdvance(Of T1)(  action As java.util.function.Consumer(Of T1)) As Boolean Implements Spliterator(Of V).tryAdvance
                 Dim hi As Integer
                 If action Is Nothing Then Throw New NullPointerException
                 Dim tab As Node(Of K, V)() = map.table
@@ -1808,7 +1808,7 @@ Namespace java.util
             Inherits HashMapSpliterator(Of K, V)
             Implements Spliterator(Of KeyValuePair(Of K, V))
 
-            Friend Sub New(ByVal m As HashMap(Of K, V), ByVal origin As Integer, ByVal fence As Integer, ByVal est As Integer, ByVal expectedModCount As Integer)
+            Friend Sub New(  m As HashMap(Of K, V),   origin As Integer,   fence As Integer,   est As Integer,   expectedModCount As Integer)
                 MyBase.New(m, origin, fence, est, expectedModCount)
             End Sub
 
@@ -1819,7 +1819,7 @@ Namespace java.util
             End Function
 
             'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-            Public Sub forEachRemaining(Of T1)(ByVal action As java.util.function.Consumer(Of T1)) Implements Spliterator(Of KeyValuePair(Of K, V)).forEachRemaining
+            Public Sub forEachRemaining(Of T1)(  action As java.util.function.Consumer(Of T1)) Implements Spliterator(Of KeyValuePair(Of K, V)).forEachRemaining
                 Dim i, hi, mc As Integer
                 If action Is Nothing Then Throw New NullPointerException
                 Dim m As HashMap(Of K, V) = map
@@ -1852,7 +1852,7 @@ Namespace java.util
             End Sub
 
             'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-            Public Function tryAdvance(Of T1)(ByVal action As java.util.function.Consumer(Of T1)) As Boolean Implements Spliterator(Of KeyValuePair(Of K, V)).tryAdvance
+            Public Function tryAdvance(Of T1)(  action As java.util.function.Consumer(Of T1)) As Boolean Implements Spliterator(Of KeyValuePair(Of K, V)).tryAdvance
                 Dim hi As Integer
                 If action Is Nothing Then Throw New NullPointerException
                 Dim tab As Node(Of K, V)() = map.table
@@ -1892,22 +1892,22 @@ Namespace java.util
         '     
 
         ' Create a regular (non-tree) node
-        Friend Overridable Function newNode(ByVal hash As Integer, ByVal key As K, ByVal value As V, ByVal [next] As Node(Of K, V)) As Node(Of K, V)
+        Friend Overridable Function newNode(  hash As Integer,   key As K,   value As V,   [next] As Node(Of K, V)) As Node(Of K, V)
             Return New Node(Of )(hash, key, value, [next])
         End Function
 
         ' For conversion from TreeNodes to plain nodes
-        Friend Overridable Function replacementNode(ByVal p As Node(Of K, V), ByVal [next] As Node(Of K, V)) As Node(Of K, V)
+        Friend Overridable Function replacementNode(  p As Node(Of K, V),   [next] As Node(Of K, V)) As Node(Of K, V)
             Return New Node(Of )(p.hash, p.key, p.value, [next])
         End Function
 
         ' Create a tree bin node
-        Friend Overridable Function newTreeNode(ByVal hash As Integer, ByVal key As K, ByVal value As V, ByVal [next] As Node(Of K, V)) As TreeNode(Of K, V)
+        Friend Overridable Function newTreeNode(  hash As Integer,   key As K,   value As V,   [next] As Node(Of K, V)) As TreeNode(Of K, V)
             Return New TreeNode(Of )(hash, key, value, [next])
         End Function
 
         ' For treeifyBin
-        Friend Overridable Function replacementTreeNode(ByVal p As Node(Of K, V), ByVal [next] As Node(Of K, V)) As TreeNode(Of K, V)
+        Friend Overridable Function replacementTreeNode(  p As Node(Of K, V),   [next] As Node(Of K, V)) As TreeNode(Of K, V)
             Return New TreeNode(Of )(p.hash, p.key, p.value, [next])
         End Function
 
@@ -1925,15 +1925,15 @@ Namespace java.util
         End Sub
 
         ' Callbacks to allow LinkedHashMap post-actions
-        Friend Overridable Sub afterNodeAccess(ByVal p As Node(Of K, V))
+        Friend Overridable Sub afterNodeAccess(  p As Node(Of K, V))
         End Sub
-        Friend Overridable Sub afterNodeInsertion(ByVal evict As Boolean)
+        Friend Overridable Sub afterNodeInsertion(  evict As Boolean)
         End Sub
-        Friend Overridable Sub afterNodeRemoval(ByVal p As Node(Of K, V))
+        Friend Overridable Sub afterNodeRemoval(  p As Node(Of K, V))
         End Sub
 
         ' Called only from writeObject, to ensure compatible ordering.
-        Friend Overridable Sub internalWriteEntries(ByVal s As java.io.ObjectOutputStream)
+        Friend Overridable Sub internalWriteEntries(  s As java.io.ObjectOutputStream)
             Dim tab As Node(Of K, V)()
             tab = table
             If size_Renamed > 0 AndAlso tab IsNot Nothing Then
@@ -1964,7 +1964,7 @@ Namespace java.util
             Friend right As TreeNode(Of K, V)
             Friend prev As TreeNode(Of K, V) ' needed to unlink next upon deletion
             Friend red As Boolean
-            Friend Sub New(ByVal hash As Integer, ByVal key As K, ByVal val As V, ByVal [next] As Node(Of K, V))
+            Friend Sub New(  hash As Integer,   key As K,   val As V,   [next] As Node(Of K, V))
                 MyBase.New(hash, key, val, [next])
             End Sub
 
@@ -1982,7 +1982,7 @@ Namespace java.util
             ''' <summary>
             ''' Ensures that the given root is the first node of its bin.
             ''' </summary>
-            Shared Sub moveRootToFront(Of K, V)(ByVal tab As Node(Of K, V)(), ByVal root As TreeNode(Of K, V))
+            Shared Sub moveRootToFront(Of K, V)(  tab As Node(Of K, V)(),   root As TreeNode(Of K, V))
                 Dim n As Integer
                 n = tab.Length
                 If root IsNot Nothing AndAlso tab IsNot Nothing AndAlso n > 0 Then
@@ -2008,7 +2008,7 @@ Namespace java.util
             ''' The kc argument caches comparableClassFor(key) upon first use
             ''' comparing keys.
             ''' </summary>
-            Friend Function find(ByVal h As Integer, ByVal k As Object, ByVal kc As [Class]) As TreeNode(Of K, V)
+            Friend Function find(  h As Integer,   k As Object,   kc As [Class]) As TreeNode(Of K, V)
                 Dim p As TreeNode(Of K, V) = Me
                 Do
                     Dim ph, dir As Integer
@@ -2049,7 +2049,7 @@ Namespace java.util
             ''' <summary>
             ''' Calls find for root node.
             ''' </summary>
-            Friend Function getTreeNode(ByVal h As Integer, ByVal k As Object) As TreeNode(Of K, V)
+            Friend Function getTreeNode(  h As Integer,   k As Object) As TreeNode(Of K, V)
                 Return (If(parent IsNot Nothing, root(), Me)).find(h, k, Nothing)
             End Function
 
@@ -2060,7 +2060,7 @@ Namespace java.util
             ''' equivalence across rebalancings. Tie-breaking further than
             ''' necessary simplifies testing a bit.
             ''' </summary>
-            Friend Shared Function tieBreakOrder(ByVal a As Object, ByVal b As Object) As Integer
+            Friend Shared Function tieBreakOrder(  a As Object,   b As Object) As Integer
                 Dim d As Integer
                 d = a.GetType().Name.CompareTo(b.GetType().Name)
                 If a Is Nothing OrElse b Is Nothing OrElse d = 0 Then d = (If(System.identityHashCode(a) <= System.identityHashCode(b), -1, 1))
@@ -2070,7 +2070,7 @@ Namespace java.util
             ''' <summary>
             ''' Forms tree of the nodes linked from this node. </summary>
             ''' <returns> root of tree </returns>
-            Friend Sub treeify(ByVal tab As Node(Of K, V)())
+            Friend Sub treeify(  tab As Node(Of K, V)())
                 Dim root As TreeNode(Of K, V) = Nothing
                 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
                 For (TreeNode < K,V> x = Me, next; x != Nothing; x = next)
@@ -2121,7 +2121,7 @@ Namespace java.util
             ''' Returns a list of non-TreeNodes replacing those linked from
             ''' this node.
             ''' </summary>
-            Friend Function untreeify(ByVal map As HashMap(Of K, V)) As Node(Of K, V)
+            Friend Function untreeify(  map As HashMap(Of K, V)) As Node(Of K, V)
                 Dim hd As Node(Of K, V) = Nothing, tl As Node(Of K, V) = Nothing
                 Dim q As Node(Of K, V) = Me
                 Do While q IsNot Nothing
@@ -2140,7 +2140,7 @@ Namespace java.util
             ''' <summary>
             ''' Tree version of putVal.
             ''' </summary>
-            Friend Function putTreeVal(ByVal map As HashMap(Of K, V), ByVal tab As Node(Of K, V)(), ByVal h As Integer, ByVal k As K, ByVal v As V) As TreeNode(Of K, V)
+            Friend Function putTreeVal(  map As HashMap(Of K, V),   tab As Node(Of K, V)(),   h As Integer,   k As K,   v As V) As TreeNode(Of K, V)
                 Dim kc As [Class] = Nothing
                 Dim searched As Boolean = False
                 Dim root As TreeNode(Of K, V) = If(parent IsNot Nothing, root(), Me)
@@ -2205,7 +2205,7 @@ Namespace java.util
             ''' the bin is converted back to a plain bin. (The test triggers
             ''' somewhere between 2 and 6 nodes, depending on tree structure).
             ''' </summary>
-            Friend Sub removeTreeNode(ByVal map As HashMap(Of K, V), ByVal tab As Node(Of K, V)(), ByVal movable As Boolean)
+            Friend Sub removeTreeNode(  map As HashMap(Of K, V),   tab As Node(Of K, V)(),   movable As Boolean)
                 Dim n As Integer
                 n = tab.Length
                 If tab Is Nothing OrElse n = 0 Then Return
@@ -2320,7 +2320,7 @@ Namespace java.util
             ''' <param name="tab"> the table for recording bin heads </param>
             ''' <param name="index"> the index of the table being split </param>
             ''' <param name="bit"> the bit of hash to split on </param>
-            Friend Sub split(ByVal map As HashMap(Of K, V), ByVal tab As Node(Of K, V)(), ByVal index As Integer, ByVal bit As Integer)
+            Friend Sub split(  map As HashMap(Of K, V),   tab As Node(Of K, V)(),   index As Integer,   bit As Integer)
                 Dim b As TreeNode(Of K, V) = Me
                 ' Relink into lo and hi lists, preserving order
                 Dim loHead As TreeNode(Of K, V) = Nothing, loTail As TreeNode(Of K, V) = Nothing
@@ -2371,7 +2371,7 @@ Namespace java.util
             ' ------------------------------------------------------------ 
             ' Red-black tree methods, all adapted from CLR
 
-            Shared Function rotateLeft(Of K, V)(ByVal root As TreeNode(Of K, V), ByVal p As TreeNode(Of K, V)) As TreeNode(Of K, V)
+            Shared Function rotateLeft(Of K, V)(  root As TreeNode(Of K, V),   p As TreeNode(Of K, V)) As TreeNode(Of K, V)
                 Dim r As TreeNode(Of K, V), pp As TreeNode(Of K, V), rl As TreeNode(Of K, V)
                 r = p.right
                 If p IsNot Nothing AndAlso r IsNot Nothing Then
@@ -2394,7 +2394,7 @@ Namespace java.util
                 Return root
             End Function
 
-            Shared Function rotateRight(Of K, V)(ByVal root As TreeNode(Of K, V), ByVal p As TreeNode(Of K, V)) As TreeNode(Of K, V)
+            Shared Function rotateRight(Of K, V)(  root As TreeNode(Of K, V),   p As TreeNode(Of K, V)) As TreeNode(Of K, V)
                 Dim l As TreeNode(Of K, V), pp As TreeNode(Of K, V), lr As TreeNode(Of K, V)
                 l = p.left
                 If p IsNot Nothing AndAlso l IsNot Nothing Then
@@ -2417,7 +2417,7 @@ Namespace java.util
                 Return root
             End Function
 
-            Shared Function balanceInsertion(Of K, V)(ByVal root As TreeNode(Of K, V), ByVal x As TreeNode(Of K, V)) As TreeNode(Of K, V)
+            Shared Function balanceInsertion(Of K, V)(  root As TreeNode(Of K, V),   x As TreeNode(Of K, V)) As TreeNode(Of K, V)
                 x.red = True
                 Dim xp As TreeNode(Of K, V)
                 xpp
@@ -2480,7 +2480,7 @@ Namespace java.util
                 Loop
             End Function
 
-            Shared Function balanceDeletion(Of K, V)(ByVal root As TreeNode(Of K, V), ByVal x As TreeNode(Of K, V)) As TreeNode(Of K, V)
+            Shared Function balanceDeletion(Of K, V)(  root As TreeNode(Of K, V),   x As TreeNode(Of K, V)) As TreeNode(Of K, V)
                 Dim xp As TreeNode(Of K, V)
                 xpl
                 xpr
@@ -2577,7 +2577,7 @@ Namespace java.util
             ''' <summary>
             ''' Recursive invariant check
             ''' </summary>
-            Shared Function checkInvariants(Of K, V)(ByVal t As TreeNode(Of K, V)) As Boolean
+            Shared Function checkInvariants(Of K, V)(  t As TreeNode(Of K, V)) As Boolean
                 Dim tp As TreeNode(Of K, V) = t.parent, tl As TreeNode(Of K, V) = t.left, tr As TreeNode(Of K, V) = t.right, tb As TreeNode(Of K, V) = t.prev, tn As TreeNode(Of K, V) = CType(t.next, TreeNode(Of K, V))
                 If tb IsNot Nothing AndAlso tb.next IsNot t Then Return False
                 If tn IsNot Nothing AndAlso tn.prev IsNot t Then Return False

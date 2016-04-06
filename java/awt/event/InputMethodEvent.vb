@@ -143,7 +143,7 @@ Namespace java.awt.event
 		''' <exception cref="IllegalArgumentException"> if <code>source</code> is null
 		''' 
 		''' @since 1.4 </exception>
-		Public Sub New(ByVal source As java.awt.Component, ByVal id As Integer, ByVal [when] As Long, ByVal text As java.text.AttributedCharacterIterator, ByVal committedCharacterCount As Integer, ByVal caret As java.awt.font.TextHitInfo, ByVal visiblePosition As java.awt.font.TextHitInfo)
+		Public Sub New(  source As java.awt.Component,   id As Integer,   [when] As Long,   text As java.text.AttributedCharacterIterator,   committedCharacterCount As Integer,   caret As java.awt.font.TextHitInfo,   visiblePosition As java.awt.font.TextHitInfo)
 			MyBase.New(source, id)
 			If id < INPUT_METHOD_FIRST OrElse id > INPUT_METHOD_LAST Then Throw New IllegalArgumentException("id outside of valid range")
 
@@ -202,7 +202,7 @@ Namespace java.awt.event
 		'''      or if <code>committedCharacterCount</code> is not in the range
 		'''      <code>0</code>..<code>(text.getEndIndex() - text.getBeginIndex())</code> </exception>
 		''' <exception cref="IllegalArgumentException"> if <code>source</code> is null </exception>
-		Public Sub New(ByVal source As java.awt.Component, ByVal id As Integer, ByVal text As java.text.AttributedCharacterIterator, ByVal committedCharacterCount As Integer, ByVal caret As java.awt.font.TextHitInfo, ByVal visiblePosition As java.awt.font.TextHitInfo)
+		Public Sub New(  source As java.awt.Component,   id As Integer,   text As java.text.AttributedCharacterIterator,   committedCharacterCount As Integer,   caret As java.awt.font.TextHitInfo,   visiblePosition As java.awt.font.TextHitInfo)
 			Me.New(source, id, getMostRecentEventTimeForSource(source), text, committedCharacterCount, caret, visiblePosition)
 		End Sub
 
@@ -240,7 +240,7 @@ Namespace java.awt.event
 		'''      in the range
 		'''      <code>INPUT_METHOD_FIRST</code>..<code>INPUT_METHOD_LAST</code> </exception>
 		''' <exception cref="IllegalArgumentException"> if <code>source</code> is null </exception>
-		Public Sub New(ByVal source As java.awt.Component, ByVal id As Integer, ByVal caret As java.awt.font.TextHitInfo, ByVal visiblePosition As java.awt.font.TextHitInfo)
+		Public Sub New(  source As java.awt.Component,   id As Integer,   caret As java.awt.font.TextHitInfo,   visiblePosition As java.awt.font.TextHitInfo)
 			Me.New(source, id, getMostRecentEventTimeForSource(source), Nothing, 0, caret, visiblePosition)
 		End Sub
 
@@ -397,7 +397,7 @@ Namespace java.awt.event
 		''' object input stream. In that case, the field will be initialized by
 		''' invoking <seealso cref="java.awt.EventQueue#getMostRecentEventTime()"/>.
 		''' </summary>
-		Private Sub readObject(ByVal s As java.io.ObjectInputStream)
+		Private Sub readObject(  s As java.io.ObjectInputStream)
 			s.defaultReadObject()
 			If [when] = 0 Then [when] = java.awt.EventQueue.mostRecentEventTime
 		End Sub
@@ -409,7 +409,7 @@ Namespace java.awt.event
 		''' <param name="source"> the source of the event </param>
 		''' <exception cref="IllegalArgumentException">  if source is null. </exception>
 		''' <returns> most recent event time in the {@code EventQueue} </returns>
-		Private Shared Function getMostRecentEventTimeForSource(ByVal source As Object) As Long
+		Private Shared Function getMostRecentEventTimeForSource(  source As Object) As Long
 			If source Is Nothing Then Throw New IllegalArgumentException("null source")
 			Dim appContext As sun.awt.AppContext = sun.awt.SunToolkit.targetToAppContext(source)
 			Dim eventQueue_Renamed As java.awt.EventQueue = sun.awt.SunToolkit.getSystemEventQueueImplPP(appContext)

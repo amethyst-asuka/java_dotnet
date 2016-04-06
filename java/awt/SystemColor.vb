@@ -428,7 +428,7 @@ Namespace java.awt
 		''' Creates a symbolic color that represents an indexed entry into system
 		''' color cache. Used by above static system colors.
 		''' </summary>
-		Private Sub New(ByVal index As SByte)
+		Private Sub New(  index As SByte)
 			MyBase.New(systemColors(index))
 			Me.index = index
 		End Sub

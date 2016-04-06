@@ -42,7 +42,7 @@ Namespace java.net
 		''' specified detail message.
 		''' </summary>
 		''' <param name="host">   the detail message. </param>
-		Public Sub New(ByVal host As String)
+		Public Sub New(  host As String)
 			MyBase.New(host)
 		End Sub
 

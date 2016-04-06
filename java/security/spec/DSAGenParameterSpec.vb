@@ -51,7 +51,7 @@ Namespace java.security.spec
         ''' <exception cref="IllegalArgumentException"> if {@code primePLen}
         ''' or {@code subprimeQLen} is illegal per the specification of
         ''' FIPS 186-3. </exception>
-        Public Sub New(ByVal primePLen As Integer, ByVal subprimeQLen As Integer)
+        Public Sub New(  primePLen As Integer,   subprimeQLen As Integer)
             Me.New(primePLen, subprimeQLen, subprimeQLen)
         End Sub
 
@@ -66,7 +66,7 @@ Namespace java.security.spec
         ''' <exception cref="IllegalArgumentException"> if {@code primePLenLen},
         ''' {@code subprimeQLen}, or {@code seedLen} is illegal per the
         ''' specification of FIPS 186-3. </exception>
-        Public Sub New(ByVal primePLen As Integer, ByVal subprimeQLen As Integer, ByVal seedLen As Integer)
+        Public Sub New(  primePLen As Integer,   subprimeQLen As Integer,   seedLen As Integer)
             Select Case primePLen
                 Case 1024
                     If subprimeQLen <> 160 Then Throw New IllegalArgumentException("subprimeQLen must be 160 when primePLen=1024")

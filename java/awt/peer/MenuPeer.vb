@@ -49,7 +49,7 @@ Namespace java.awt.peer
 		''' <param name="item"> the menu item to add
 		''' </param>
 		''' <seealso cref= Menu#add(MenuItem) </seealso>
-		Sub addItem(ByVal item As java.awt.MenuItem)
+		Sub addItem(  item As java.awt.MenuItem)
 
 		''' <summary>
 		''' Removes the menu item at the specified index.
@@ -57,7 +57,7 @@ Namespace java.awt.peer
 		''' <param name="index"> the index of the item to remove
 		''' </param>
 		''' <seealso cref= Menu#remove(int) </seealso>
-		Sub delItem(ByVal index As Integer)
+		Sub delItem(  index As Integer)
 	End Interface
 
 End Namespace

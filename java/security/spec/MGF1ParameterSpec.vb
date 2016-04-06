@@ -87,7 +87,7 @@ Namespace java.security.spec
 		''' <param name="mdName"> the algorithm name for the message digest
 		''' used in this mask generation function MGF1. </param>
 		''' <exception cref="NullPointerException"> if {@code mdName} is null. </exception>
-		Public Sub New(ByVal mdName As String)
+		Public Sub New(  mdName As String)
 			If mdName Is Nothing Then Throw New NullPointerException("digest algorithm is null")
 			Me.mdName = mdName
 		End Sub

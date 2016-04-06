@@ -36,7 +36,7 @@ Namespace java.lang.invoke
 		Private ReadOnly member As MemberName
 		Private ReadOnly referenceKind As Integer
 
-		Friend Sub New(ByVal lookup As Lookup, ByVal member As MemberName, ByVal referenceKind As SByte)
+		Friend Sub New(  lookup As Lookup,   member As MemberName,   referenceKind As SByte)
 			assert(member.resolved OrElse member.methodHandleInvoke)
 			assert(member.referenceKindIsConsistentWith(referenceKind))
 			Me.member = member
@@ -77,7 +77,7 @@ Namespace java.lang.invoke
 			Return MethodHandleInfo.ToString(referenceKind, declaringClass, name, methodType)
 		End Function
 
-		Public Overrides Function reflectAs(Of T As Member)(ByVal expected As [Class], ByVal lookup As Lookup) As T Implements MethodHandleInfo.reflectAs
+		Public Overrides Function reflectAs(Of T As Member)(  expected As [Class],   lookup As Lookup) As T Implements MethodHandleInfo.reflectAs
 			If member.methodHandleInvoke AndAlso (Not member.varargs) Then Throw New IllegalArgumentException("cannot reflect signature polymorphic method")
 			Dim mem As Member = AccessController.doPrivileged(New PrivilegedActionAnonymousInnerClassHelper(Of T)
 			Try
@@ -129,7 +129,7 @@ Namespace java.lang.invoke
 			End If
 		End Function
 
-		Private Shared Function convertToMemberName(ByVal refKind As SByte, ByVal mem As Member) As MemberName
+		Private Shared Function convertToMemberName(  refKind As SByte,   mem As Member) As MemberName
 			If TypeOf mem Is Method Then
 				Dim wantSpecial As Boolean = (refKind = REF_invokeSpecial)
 				Return New MemberName(CType(mem, Method), wantSpecial)

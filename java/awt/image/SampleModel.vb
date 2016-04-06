@@ -125,7 +125,7 @@ Namespace java.awt.image
 		'''         <code> java.lang.[Integer].MAX_VALUE</code> </exception>
 		''' <exception cref="IllegalArgumentException"> if <code>dataType</code> is not
 		'''         one of the supported data types </exception>
-		Public Sub New(ByVal dataType As Integer, ByVal w As Integer, ByVal h As Integer, ByVal numBands As Integer)
+		Public Sub New(  dataType As Integer,   w As Integer,   h As Integer,   numBands As Integer)
 			Dim size As Long = CLng(w) * h
 			If w <= 0 OrElse h <= 0 Then Throw New IllegalArgumentException("Width (" & w & ") and height (" & h & ") must be > 0")
 			If size >=  java.lang.[Integer].Max_Value Then Throw New IllegalArgumentException("Dimensions (width=" & w & " height=" & h & ") are too large")
@@ -234,7 +234,7 @@ Namespace java.awt.image
 		''' <exception cref="NullPointerException"> if data is null. </exception>
 		''' <exception cref="ArrayIndexOutOfBoundsException"> if the coordinates are
 		''' not in bounds, or if iArray is too small to hold the output. </exception>
-		Public Overridable Function getPixel(ByVal x As Integer, ByVal y As Integer, ByVal iArray As Integer(), ByVal data As DataBuffer) As Integer()
+		Public Overridable Function getPixel(  x As Integer,   y As Integer,   iArray As Integer(),   data As DataBuffer) As Integer()
 
 			Dim pixels_Renamed As Integer()
 
@@ -296,7 +296,7 @@ Namespace java.awt.image
 		''' <exception cref="NullPointerException"> if data is null. </exception>
 		''' <exception cref="ArrayIndexOutOfBoundsException"> if the coordinates are
 		''' not in bounds, or if obj is too small to hold the output. </exception>
-		Public MustOverride Function getDataElements(ByVal x As Integer, ByVal y As Integer, ByVal obj As Object, ByVal data As DataBuffer) As Object
+		Public MustOverride Function getDataElements(  x As Integer,   y As Integer,   obj As Object,   data As DataBuffer) As Object
 
 		''' <summary>
 		''' Returns the pixel data for the specified rectangle of pixels in a
@@ -348,7 +348,7 @@ Namespace java.awt.image
 		''' <exception cref="NullPointerException"> if data is null. </exception>
 		''' <exception cref="ArrayIndexOutOfBoundsException"> if the coordinates are
 		''' not in bounds, or if obj is too small to hold the output. </exception>
-		Public Overridable Function getDataElements(ByVal x As Integer, ByVal y As Integer, ByVal w As Integer, ByVal h As Integer, ByVal obj As Object, ByVal data As DataBuffer) As Object
+		Public Overridable Function getDataElements(  x As Integer,   y As Integer,   w As Integer,   h As Integer,   obj As Object,   data As DataBuffer) As Object
 
 			Dim type As Integer = transferType
 			Dim numDataElems As Integer = numDataElements
@@ -527,7 +527,7 @@ Namespace java.awt.image
 		''' <exception cref="NullPointerException"> if data is null. </exception>
 		''' <exception cref="ArrayIndexOutOfBoundsException"> if the coordinates are
 		''' not in bounds, or if obj is too small to hold the input. </exception>
-		Public MustOverride Sub setDataElements(ByVal x As Integer, ByVal y As Integer, ByVal obj As Object, ByVal data As DataBuffer)
+		Public MustOverride Sub setDataElements(  x As Integer,   y As Integer,   obj As Object,   data As DataBuffer)
 
 		''' <summary>
 		''' Sets the data for a rectangle of pixels in the specified DataBuffer
@@ -574,7 +574,7 @@ Namespace java.awt.image
 		''' <exception cref="NullPointerException"> if data is null. </exception>
 		''' <exception cref="ArrayIndexOutOfBoundsException"> if the coordinates are
 		''' not in bounds, or if obj is too small to hold the input. </exception>
-		Public Overridable Sub setDataElements(ByVal x As Integer, ByVal y As Integer, ByVal w As Integer, ByVal h As Integer, ByVal obj As Object, ByVal data As DataBuffer)
+		Public Overridable Sub setDataElements(  x As Integer,   y As Integer,   w As Integer,   h As Integer,   obj As Object,   data As DataBuffer)
 
 			Dim cnt As Integer = 0
 			Dim o As Object = Nothing
@@ -685,7 +685,7 @@ Namespace java.awt.image
 		''' <exception cref="NullPointerException"> if data is null. </exception>
 		''' <exception cref="ArrayIndexOutOfBoundsException"> if the coordinates are
 		''' not in bounds, or if fArray is too small to hold the output. </exception>
-		Public Overridable Function getPixel(ByVal x As Integer, ByVal y As Integer, ByVal fArray As Single(), ByVal data As DataBuffer) As Single()
+		Public Overridable Function getPixel(  x As Integer,   y As Integer,   fArray As Single(),   data As DataBuffer) As Single()
 
 			Dim pixels_Renamed As Single()
 
@@ -716,7 +716,7 @@ Namespace java.awt.image
 		''' <exception cref="NullPointerException"> if data is null. </exception>
 		''' <exception cref="ArrayIndexOutOfBoundsException"> if the coordinates are
 		''' not in bounds, or if dArray is too small to hold the output. </exception>
-		Public Overridable Function getPixel(ByVal x As Integer, ByVal y As Integer, ByVal dArray As Double(), ByVal data As DataBuffer) As Double()
+		Public Overridable Function getPixel(  x As Integer,   y As Integer,   dArray As Double(),   data As DataBuffer) As Double()
 
 			Dim pixels_Renamed As Double()
 
@@ -750,7 +750,7 @@ Namespace java.awt.image
 		''' <exception cref="NullPointerException"> if data is null. </exception>
 		''' <exception cref="ArrayIndexOutOfBoundsException"> if the coordinates are
 		''' not in bounds, or if iArray is too small to hold the output. </exception>
-		Public Overridable Function getPixels(ByVal x As Integer, ByVal y As Integer, ByVal w As Integer, ByVal h As Integer, ByVal iArray As Integer(), ByVal data As DataBuffer) As Integer()
+		Public Overridable Function getPixels(  x As Integer,   y As Integer,   w As Integer,   h As Integer,   iArray As Integer(),   data As DataBuffer) As Integer()
 
 			Dim pixels_Renamed As Integer()
 			Dim Offset As Integer=0
@@ -794,7 +794,7 @@ Namespace java.awt.image
 		''' <exception cref="NullPointerException"> if data is null. </exception>
 		''' <exception cref="ArrayIndexOutOfBoundsException"> if the coordinates are
 		''' not in bounds, or if fArray is too small to hold the output. </exception>
-		Public Overridable Function getPixels(ByVal x As Integer, ByVal y As Integer, ByVal w As Integer, ByVal h As Integer, ByVal fArray As Single(), ByVal data As DataBuffer) As Single()
+		Public Overridable Function getPixels(  x As Integer,   y As Integer,   w As Integer,   h As Integer,   fArray As Single(),   data As DataBuffer) As Single()
 
 			Dim pixels_Renamed As Single()
 			Dim Offset As Integer = 0
@@ -838,7 +838,7 @@ Namespace java.awt.image
 		''' <exception cref="NullPointerException"> if data is null. </exception>
 		''' <exception cref="ArrayIndexOutOfBoundsException"> if the coordinates are
 		''' not in bounds, or if dArray is too small to hold the output. </exception>
-		Public Overridable Function getPixels(ByVal x As Integer, ByVal y As Integer, ByVal w As Integer, ByVal h As Integer, ByVal dArray As Double(), ByVal data As DataBuffer) As Double()
+		Public Overridable Function getPixels(  x As Integer,   y As Integer,   w As Integer,   h As Integer,   dArray As Double(),   data As DataBuffer) As Double()
 			Dim pixels_Renamed As Double()
 			Dim Offset As Integer = 0
 			Dim x1 As Integer = x + w
@@ -881,7 +881,7 @@ Namespace java.awt.image
 		''' <exception cref="NullPointerException"> if data is null. </exception>
 		''' <exception cref="ArrayIndexOutOfBoundsException"> if the coordinates or
 		''' the band index are not in bounds. </exception>
-		Public MustOverride Function getSample(ByVal x As Integer, ByVal y As Integer, ByVal b As Integer, ByVal data As DataBuffer) As Integer
+		Public MustOverride Function getSample(  x As Integer,   y As Integer,   b As Integer,   data As DataBuffer) As Integer
 
 
 		''' <summary>
@@ -898,7 +898,7 @@ Namespace java.awt.image
 		''' <exception cref="NullPointerException"> if data is null. </exception>
 		''' <exception cref="ArrayIndexOutOfBoundsException"> if the coordinates or
 		''' the band index are not in bounds. </exception>
-		Public Overridable Function getSampleFloat(ByVal x As Integer, ByVal y As Integer, ByVal b As Integer, ByVal data As DataBuffer) As Single
+		Public Overridable Function getSampleFloat(  x As Integer,   y As Integer,   b As Integer,   data As DataBuffer) As Single
 
 			Dim sample_Renamed As Single
 			sample_Renamed = CSng(getSample(x, y, b, data))
@@ -919,7 +919,7 @@ Namespace java.awt.image
 		''' <exception cref="NullPointerException"> if data is null. </exception>
 		''' <exception cref="ArrayIndexOutOfBoundsException"> if the coordinates or
 		''' the band index are not in bounds. </exception>
-		Public Overridable Function getSampleDouble(ByVal x As Integer, ByVal y As Integer, ByVal b As Integer, ByVal data As DataBuffer) As Double
+		Public Overridable Function getSampleDouble(  x As Integer,   y As Integer,   b As Integer,   data As DataBuffer) As Double
 
 			Dim sample_Renamed As Double
 
@@ -947,7 +947,7 @@ Namespace java.awt.image
 		''' <exception cref="ArrayIndexOutOfBoundsException"> if the coordinates or
 		''' the band index are not in bounds, or if iArray is too small to
 		''' hold the output. </exception>
-		Public Overridable Function getSamples(ByVal x As Integer, ByVal y As Integer, ByVal w As Integer, ByVal h As Integer, ByVal b As Integer, ByVal iArray As Integer(), ByVal data As DataBuffer) As Integer()
+		Public Overridable Function getSamples(  x As Integer,   y As Integer,   w As Integer,   h As Integer,   b As Integer,   iArray As Integer(),   data As DataBuffer) As Integer()
 			Dim pixels_Renamed As Integer()
 			Dim Offset As Integer=0
 			Dim x1 As Integer = x + w
@@ -991,7 +991,7 @@ Namespace java.awt.image
 		''' <exception cref="ArrayIndexOutOfBoundsException"> if the coordinates or
 		''' the band index are not in bounds, or if fArray is too small to
 		''' hold the output. </exception>
-		Public Overridable Function getSamples(ByVal x As Integer, ByVal y As Integer, ByVal w As Integer, ByVal h As Integer, ByVal b As Integer, ByVal fArray As Single(), ByVal data As DataBuffer) As Single()
+		Public Overridable Function getSamples(  x As Integer,   y As Integer,   w As Integer,   h As Integer,   b As Integer,   fArray As Single(),   data As DataBuffer) As Single()
 			Dim pixels_Renamed As Single()
 			Dim Offset As Integer=0
 			Dim x1 As Integer = x + w
@@ -1035,7 +1035,7 @@ Namespace java.awt.image
 		''' <exception cref="ArrayIndexOutOfBoundsException"> if the coordinates or
 		''' the band index are not in bounds, or if dArray is too small to
 		''' hold the output. </exception>
-		Public Overridable Function getSamples(ByVal x As Integer, ByVal y As Integer, ByVal w As Integer, ByVal h As Integer, ByVal b As Integer, ByVal dArray As Double(), ByVal data As DataBuffer) As Double()
+		Public Overridable Function getSamples(  x As Integer,   y As Integer,   w As Integer,   h As Integer,   b As Integer,   dArray As Double(),   data As DataBuffer) As Double()
 			Dim pixels_Renamed As Double()
 			Dim Offset As Integer=0
 			Dim x1 As Integer = x + w

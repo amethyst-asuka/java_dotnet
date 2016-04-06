@@ -120,7 +120,7 @@ Namespace java.time.temporal
 		''' </summary>
 		''' <param name="field">  the field to check, null returns false </param>
 		''' <returns> true if this date-time can be queried for the field, false if not </returns>
-		Function isSupported(ByVal field As TemporalField) As Boolean
+		Function isSupported(  field As TemporalField) As Boolean
 
 		''' <summary>
 		''' Gets the range of valid values for the specified field.
@@ -162,11 +162,11 @@ Namespace java.time.temporal
 		''' <returns> the range of valid values for the field, not null </returns>
 		''' <exception cref="DateTimeException"> if the range for the field cannot be obtained </exception>
 		''' <exception cref="UnsupportedTemporalTypeException"> if the field is not supported </exception>
-		default Function range(ByVal field As TemporalField) As ValueRange
-			Sub [New](field ByVal ChronoField As instanceof)
-				Sub [New](isSupported(field) ByVal  As )
+		default Function range(  field As TemporalField) As ValueRange
+			Sub [New](field   ChronoField As instanceof)
+				Sub [New](isSupported(field)    As )
 					Function field.range() As [Return]
-				throw Function UnsupportedTemporalTypeException("Unsupported field: " & ByVal field As ) As New
+				throw Function UnsupportedTemporalTypeException("Unsupported field: " &   field As ) As New
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 			java.util.Objects.requireNonNull(field, "field");
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
@@ -208,15 +208,15 @@ Namespace java.time.temporal
 		''' <exception cref="UnsupportedTemporalTypeException"> if the field is not supported or
 		'''         the range of values exceeds an {@code int} </exception>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
-		default Function [get](ByVal field As TemporalField) As Integer
+		default Function [get](  field As TemporalField) As Integer
 'JAVA TO VB CONVERTER TODO TASK: Interfaces cannot contain fields in .NET:
 '			ValueRange range = range(field);
-			Sub [New](range.isIntValue() == ByVal [False] As )
-				throw Function UnsupportedTemporalTypeException("Invalid field " & field & " for get() method, use getLong() instead" ByVal  As ) As New
+			Sub [New](range.isIntValue() ==   [False] As )
+				throw Function UnsupportedTemporalTypeException("Invalid field " & field & " for get() method, use getLong() instead"    As ) As New
 'JAVA TO VB CONVERTER TODO TASK: Interfaces cannot contain fields in .NET:
 '			long value = getLong(field);
-			Sub [New](range.isValidValue(value) == ByVal [False] As )
-				throw Function java.time.DateTimeException("Invalid value for " & field & " (valid values " & range & "): " & ByVal value As ) As New
+			Sub [New](range.isValidValue(value) ==   [False] As )
+				throw Function java.time.DateTimeException("Invalid value for " & field & " (valid values " & range & "): " &   value As ) As New
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 			Return (int) value;
 
@@ -245,7 +245,7 @@ Namespace java.time.temporal
 		''' <exception cref="DateTimeException"> if a value for the field cannot be obtained </exception>
 		''' <exception cref="UnsupportedTemporalTypeException"> if the field is not supported </exception>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
-		Function getLong(ByVal field As TemporalField) As Long
+		Function getLong(  field As TemporalField) As Long
 
 		''' <summary>
 		''' Queries this date-time.
@@ -297,8 +297,8 @@ Namespace java.time.temporal
 		''' <returns> the query result, null may be returned (defined by the query) </returns>
 		''' <exception cref="DateTimeException"> if unable to query </exception>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
-		default Function query(ByVal query As TemporalQuery(Of R)) As R(Of R)
-			Sub [New](query == TemporalQueries.zoneId() || query == TemporalQueries.chronology() || query == TemporalQueries.precision() ByVal  As )
+		default Function query(  query As TemporalQuery(Of R)) As R(Of R)
+			Sub [New](query == TemporalQueries.zoneId() || query == TemporalQueries.chronology() || query == TemporalQueries.precision()    As )
 'JAVA TO VB CONVERTER TODO TASK: Interfaces cannot contain fields in .NET:
 '				Return Nothing;
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:

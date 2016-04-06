@@ -107,7 +107,7 @@ Namespace java.sql
         '''  <code>REF</code>, <code>ROWID</code>, <code>SQLXML</code>
         ''' or  <code>STRUCT</code> data type and the JDBC driver does not support
         ''' this data type </exception>
-        Sub setNull(ByVal parameterIndex As Integer, ByVal sqlType As Integer)
+        Sub setNull(  parameterIndex As Integer,   sqlType As Integer)
 
         ''' <summary>
         ''' Sets the designated parameter to the given Java <code>boolean</code> value.
@@ -120,7 +120,7 @@ Namespace java.sql
         ''' marker in the SQL statement;
         ''' if a database access error occurs or
         ''' this method is called on a closed <code>PreparedStatement</code> </exception>
-        Sub setBoolean(ByVal parameterIndex As Integer, ByVal x As Boolean)
+        Sub setBoolean(  parameterIndex As Integer,   x As Boolean)
 
         ''' <summary>
         ''' Sets the designated parameter to the given Java <code>byte</code> value.
@@ -132,7 +132,7 @@ Namespace java.sql
         ''' <exception cref="SQLException"> if parameterIndex does not correspond to a parameter
         ''' marker in the SQL statement; if a database access error occurs or
         ''' this method is called on a closed <code>PreparedStatement</code> </exception>
-        Sub setByte(ByVal parameterIndex As Integer, ByVal x As SByte)
+        Sub setByte(  parameterIndex As Integer,   x As SByte)
 
         ''' <summary>
         ''' Sets the designated parameter to the given Java <code>short</code> value.
@@ -144,7 +144,7 @@ Namespace java.sql
         ''' <exception cref="SQLException"> if parameterIndex does not correspond to a parameter
         ''' marker in the SQL statement; if a database access error occurs or
         ''' this method is called on a closed <code>PreparedStatement</code> </exception>
-        Sub setShort(ByVal parameterIndex As Integer, ByVal x As Short)
+        Sub setShort(  parameterIndex As Integer,   x As Short)
 
         ''' <summary>
         ''' Sets the designated parameter to the given Java <code>int</code> value.
@@ -156,7 +156,7 @@ Namespace java.sql
         ''' <exception cref="SQLException"> if parameterIndex does not correspond to a parameter
         ''' marker in the SQL statement; if a database access error occurs or
         ''' this method is called on a closed <code>PreparedStatement</code> </exception>
-        Sub setInt(ByVal parameterIndex As Integer, ByVal x As Integer)
+        Sub setInt(  parameterIndex As Integer,   x As Integer)
 
         ''' <summary>
         ''' Sets the designated parameter to the given Java <code>long</code> value.
@@ -168,7 +168,7 @@ Namespace java.sql
         ''' <exception cref="SQLException"> if parameterIndex does not correspond to a parameter
         ''' marker in the SQL statement; if a database access error occurs or
         ''' this method is called on a closed <code>PreparedStatement</code> </exception>
-        Sub setLong(ByVal parameterIndex As Integer, ByVal x As Long)
+        Sub setLong(  parameterIndex As Integer,   x As Long)
 
         ''' <summary>
         ''' Sets the designated parameter to the given Java <code>float</code> value.
@@ -180,7 +180,7 @@ Namespace java.sql
         ''' <exception cref="SQLException"> if parameterIndex does not correspond to a parameter
         ''' marker in the SQL statement; if a database access error occurs or
         ''' this method is called on a closed <code>PreparedStatement</code> </exception>
-        Sub setFloat(ByVal parameterIndex As Integer, ByVal x As Single)
+        Sub setFloat(  parameterIndex As Integer,   x As Single)
 
         ''' <summary>
         ''' Sets the designated parameter to the given Java <code>double</code> value.
@@ -192,7 +192,7 @@ Namespace java.sql
         ''' <exception cref="SQLException"> if parameterIndex does not correspond to a parameter
         ''' marker in the SQL statement; if a database access error occurs or
         ''' this method is called on a closed <code>PreparedStatement</code> </exception>
-        Sub setDouble(ByVal parameterIndex As Integer, ByVal x As Double)
+        Sub setDouble(  parameterIndex As Integer,   x As Double)
 
         ''' <summary>
         ''' Sets the designated parameter to the given <code>java.math.BigDecimal</code> value.
@@ -204,7 +204,7 @@ Namespace java.sql
         ''' <exception cref="SQLException"> if parameterIndex does not correspond to a parameter
         ''' marker in the SQL statement; if a database access error occurs or
         ''' this method is called on a closed <code>PreparedStatement</code> </exception>
-        Sub setBigDecimal(ByVal parameterIndex As Integer, ByVal x As Decimal)
+        Sub setBigDecimal(  parameterIndex As Integer,   x As Decimal)
 
         ''' <summary>
         ''' Sets the designated parameter to the given Java <code>String</code> value.
@@ -219,7 +219,7 @@ Namespace java.sql
         ''' <exception cref="SQLException"> if parameterIndex does not correspond to a parameter
         ''' marker in the SQL statement; if a database access error occurs or
         ''' this method is called on a closed <code>PreparedStatement</code> </exception>
-        Sub setString(ByVal parameterIndex As Integer, ByVal x As String)
+        Sub setString(  parameterIndex As Integer,   x As String)
 
         ''' <summary>
         ''' Sets the designated parameter to the given Java array of bytes.  The driver converts
@@ -232,7 +232,7 @@ Namespace java.sql
         ''' <exception cref="SQLException"> if parameterIndex does not correspond to a parameter
         ''' marker in the SQL statement; if a database access error occurs or
         ''' this method is called on a closed <code>PreparedStatement</code> </exception>
-        Sub setBytes(ByVal parameterIndex As Integer, ByVal x As SByte())
+        Sub setBytes(  parameterIndex As Integer,   x As SByte())
 
         ''' <summary>
         ''' Sets the designated parameter to the given <code>java.sql.Date</code> value
@@ -246,7 +246,7 @@ Namespace java.sql
         ''' <exception cref="SQLException"> if parameterIndex does not correspond to a parameter
         ''' marker in the SQL statement; if a database access error occurs or
         ''' this method is called on a closed <code>PreparedStatement</code> </exception>
-        Sub setDate(ByVal parameterIndex As Integer, ByVal x As java.sql.Date)
+        Sub setDate(  parameterIndex As Integer,   x As java.sql.Date)
 
         ''' <summary>
         ''' Sets the designated parameter to the given <code>java.sql.Time</code> value.
@@ -258,7 +258,7 @@ Namespace java.sql
         ''' <exception cref="SQLException"> if parameterIndex does not correspond to a parameter
         ''' marker in the SQL statement; if a database access error occurs or
         ''' this method is called on a closed <code>PreparedStatement</code> </exception>
-        Sub setTime(ByVal parameterIndex As Integer, ByVal x As java.sql.Time)
+        Sub setTime(  parameterIndex As Integer,   x As java.sql.Time)
 
         ''' <summary>
         ''' Sets the designated parameter to the given <code>java.sql.Timestamp</code> value.
@@ -271,7 +271,7 @@ Namespace java.sql
         ''' <exception cref="SQLException"> if parameterIndex does not correspond to a parameter
         ''' marker in the SQL statement; if a database access error occurs or
         ''' this method is called on a closed <code>PreparedStatement</code>      </exception>
-        Sub setTimestamp(ByVal parameterIndex As Integer, ByVal x As java.sql.Timestamp)
+        Sub setTimestamp(  parameterIndex As Integer,   x As java.sql.Timestamp)
 
         ''' <summary>
         ''' Sets the designated parameter to the given input stream, which will have
@@ -292,7 +292,7 @@ Namespace java.sql
         ''' <exception cref="SQLException"> if parameterIndex does not correspond to a parameter
         ''' marker in the SQL statement; if a database access error occurs or
         ''' this method is called on a closed <code>PreparedStatement</code> </exception>
-        Sub setAsciiStream(ByVal parameterIndex As Integer, ByVal x As java.io.InputStream, ByVal length As Integer)
+        Sub setAsciiStream(  parameterIndex As Integer,   x As java.io.InputStream,   length As Integer)
 
         ''' <summary>
         ''' Sets the designated parameter to the given input stream, which
@@ -322,7 +322,7 @@ Namespace java.sql
         ''' this method </exception>
         ''' @deprecated Use {@code setCharacterStream} 
         <Obsolete("Use {@code setCharacterStream}")>
-        Sub setUnicodeStream(ByVal parameterIndex As Integer, ByVal x As java.io.InputStream, ByVal length As Integer)
+        Sub setUnicodeStream(  parameterIndex As Integer,   x As java.io.InputStream,   length As Integer)
 
         ''' <summary>
         ''' Sets the designated parameter to the given input stream, which will have
@@ -342,7 +342,7 @@ Namespace java.sql
         ''' <exception cref="SQLException"> if parameterIndex does not correspond to a parameter
         ''' marker in the SQL statement; if a database access error occurs or
         ''' this method is called on a closed <code>PreparedStatement</code> </exception>
-        Sub setBinaryStream(ByVal parameterIndex As Integer, ByVal x As java.io.InputStream, ByVal length As Integer)
+        Sub setBinaryStream(  parameterIndex As Integer,   x As java.io.InputStream,   length As Integer)
 
         ''' <summary>
         ''' Clears the current parameter values immediately.
@@ -376,7 +376,7 @@ Namespace java.sql
         ''' <exception cref="SQLFeatureNotSupportedException"> if
         ''' the JDBC driver does not support the specified targetSqlType </exception>
         ''' <seealso cref= Types </seealso>
-        Sub setObject(ByVal parameterIndex As Integer, ByVal x As Object, ByVal targetSqlType As Integer)
+        Sub setObject(  parameterIndex As Integer,   x As Object,   targetSqlType As Integer)
 
         ''' <summary>
         ''' <p>Sets the value of the designated parameter using the given object.
@@ -414,7 +414,7 @@ Namespace java.sql
         ''' marker in the SQL statement; if a database access error occurs;
         '''  this method is called on a closed <code>PreparedStatement</code>
         ''' or the type of the given object is ambiguous </exception>
-        Sub setObject(ByVal parameterIndex As Integer, ByVal x As Object)
+        Sub setObject(  parameterIndex As Integer,   x As Object)
 
         ''' <summary>
         ''' Executes the SQL statement in this <code>PreparedStatement</code> object,
@@ -480,7 +480,7 @@ Namespace java.sql
         ''' marker in the SQL statement; if a database access error occurs or
         ''' this method is called on a closed <code>PreparedStatement</code>
         ''' @since 1.2 </exception>
-        Sub setCharacterStream(ByVal parameterIndex As Integer, ByVal reader As java.io.Reader, ByVal length As Integer)
+        Sub setCharacterStream(  parameterIndex As Integer,   reader As java.io.Reader,   length As Integer)
 
         ''' <summary>
         ''' Sets the designated parameter to the given
@@ -495,7 +495,7 @@ Namespace java.sql
         ''' this method is called on a closed <code>PreparedStatement</code> </exception>
         ''' <exception cref="SQLFeatureNotSupportedException">  if the JDBC driver does not support this method
         ''' @since 1.2 </exception>
-        Sub setRef(ByVal parameterIndex As Integer, ByVal x As Ref)
+        Sub setRef(  parameterIndex As Integer,   x As Ref)
 
         ''' <summary>
         ''' Sets the designated parameter to the given <code>java.sql.Blob</code> object.
@@ -509,7 +509,7 @@ Namespace java.sql
         ''' this method is called on a closed <code>PreparedStatement</code> </exception>
         ''' <exception cref="SQLFeatureNotSupportedException">  if the JDBC driver does not support this method
         ''' @since 1.2 </exception>
-        Sub setBlob(ByVal parameterIndex As Integer, ByVal x As Blob)
+        Sub setBlob(  parameterIndex As Integer,   x As Blob)
 
         ''' <summary>
         ''' Sets the designated parameter to the given <code>java.sql.Clob</code> object.
@@ -523,7 +523,7 @@ Namespace java.sql
         ''' this method is called on a closed <code>PreparedStatement</code> </exception>
         ''' <exception cref="SQLFeatureNotSupportedException">  if the JDBC driver does not support this method
         ''' @since 1.2 </exception>
-        Sub setClob(ByVal parameterIndex As Integer, ByVal x As Clob)
+        Sub setClob(  parameterIndex As Integer,   x As Clob)
 
         ''' <summary>
         ''' Sets the designated parameter to the given <code>java.sql.Array</code> object.
@@ -537,7 +537,7 @@ Namespace java.sql
         ''' this method is called on a closed <code>PreparedStatement</code> </exception>
         ''' <exception cref="SQLFeatureNotSupportedException">  if the JDBC driver does not support this method
         ''' @since 1.2 </exception>
-        Sub setArray(ByVal parameterIndex As Integer, ByVal x As Array)
+        Sub setArray(  parameterIndex As Integer,   x As Array)
 
         ''' <summary>
         ''' Retrieves a <code>ResultSetMetaData</code> object that contains
@@ -584,7 +584,7 @@ Namespace java.sql
         ''' marker in the SQL statement; if a database access error occurs or
         ''' this method is called on a closed <code>PreparedStatement</code>
         ''' @since 1.2 </exception>
-        Sub setDate(ByVal parameterIndex As Integer, ByVal x As java.sql.Date, ByVal cal As DateTime?)
+        Sub setDate(  parameterIndex As Integer,   x As java.sql.Date,   cal As DateTime?)
 
         ''' <summary>
         ''' Sets the designated parameter to the given <code>java.sql.Time</code> value,
@@ -604,7 +604,7 @@ Namespace java.sql
         ''' marker in the SQL statement; if a database access error occurs or
         ''' this method is called on a closed <code>PreparedStatement</code>
         ''' @since 1.2 </exception>
-        Sub setTime(ByVal parameterIndex As Integer, ByVal x As java.sql.Time, ByVal cal As DateTime?)
+        Sub setTime(  parameterIndex As Integer,   x As java.sql.Time,   cal As DateTime?)
 
         ''' <summary>
         ''' Sets the designated parameter to the given <code>java.sql.Timestamp</code> value,
@@ -624,7 +624,7 @@ Namespace java.sql
         ''' marker in the SQL statement; if a database access error occurs or
         ''' this method is called on a closed <code>PreparedStatement</code>
         ''' @since 1.2 </exception>
-        Sub setTimestamp(ByVal parameterIndex As Integer, ByVal x As java.sql.Timestamp, ByVal cal As DateTime?)
+        Sub setTimestamp(  parameterIndex As Integer,   x As java.sql.Timestamp,   cal As DateTime?)
 
         ''' <summary>
         ''' Sets the designated parameter to SQL <code>NULL</code>.
@@ -662,7 +662,7 @@ Namespace java.sql
         ''' or  <code>STRUCT</code> data type and the JDBC driver does not support
         ''' this data type or if the JDBC driver does not support this method
         ''' @since 1.2 </exception>
-        Sub setNull(ByVal parameterIndex As Integer, ByVal sqlType As Integer, ByVal typeName As String)
+        Sub setNull(  parameterIndex As Integer,   sqlType As Integer,   typeName As String)
 
         '------------------------- JDBC 3.0 -----------------------------------
 
@@ -678,7 +678,7 @@ Namespace java.sql
         ''' this method is called on a closed <code>PreparedStatement</code> </exception>
         ''' <exception cref="SQLFeatureNotSupportedException">  if the JDBC driver does not support this method
         ''' @since 1.4 </exception>
-        Sub setURL(ByVal parameterIndex As Integer, ByVal x As java.net.URL)
+        Sub setURL(  parameterIndex As Integer,   x As java.net.URL)
 
         ''' <summary>
         ''' Retrieves the number, types and properties of this
@@ -708,7 +708,7 @@ Namespace java.sql
         ''' <exception cref="SQLFeatureNotSupportedException">  if the JDBC driver does not support this method
         ''' 
         ''' @since 1.6 </exception>
-        Sub setRowId(ByVal parameterIndex As Integer, ByVal x As RowId)
+        Sub setRowId(  parameterIndex As Integer,   x As RowId)
 
 
         ''' <summary>
@@ -728,7 +728,7 @@ Namespace java.sql
         ''' this method is called on a closed <code>PreparedStatement</code> </exception>
         ''' <exception cref="SQLFeatureNotSupportedException">  if the JDBC driver does not support this method
         ''' @since 1.6 </exception>
-        Sub setNString(ByVal parameterIndex As Integer, ByVal value As String)
+        Sub setNString(  parameterIndex As Integer,   value As String)
 
         ''' <summary>
         ''' Sets the designated parameter to a <code>Reader</code> object. The
@@ -745,7 +745,7 @@ Namespace java.sql
         ''' this method is called on a closed <code>PreparedStatement</code> </exception>
         ''' <exception cref="SQLFeatureNotSupportedException">  if the JDBC driver does not support this method
         ''' @since 1.6 </exception>
-        Sub setNCharacterStream(ByVal parameterIndex As Integer, ByVal value As java.io.Reader, ByVal length As Long)
+        Sub setNCharacterStream(  parameterIndex As Integer,   value As java.io.Reader,   length As Long)
 
         ''' <summary>
         ''' Sets the designated parameter to a <code>java.sql.NClob</code> object. The driver converts this to a
@@ -759,7 +759,7 @@ Namespace java.sql
         ''' this method is called on a closed <code>PreparedStatement</code> </exception>
         ''' <exception cref="SQLFeatureNotSupportedException">  if the JDBC driver does not support this method
         ''' @since 1.6 </exception>
-        Sub setNClob(ByVal parameterIndex As Integer, ByVal value As NClob)
+        Sub setNClob(  parameterIndex As Integer,   value As NClob)
 
         ''' <summary>
         ''' Sets the designated parameter to a <code>Reader</code> object.  The reader must contain  the number
@@ -779,7 +779,7 @@ Namespace java.sql
         ''' </exception>
         ''' <exception cref="SQLFeatureNotSupportedException">  if the JDBC driver does not support this method
         ''' @since 1.6 </exception>
-        Sub setClob(ByVal parameterIndex As Integer, ByVal reader As java.io.Reader, ByVal length As Long)
+        Sub setClob(  parameterIndex As Integer,   reader As java.io.Reader,   length As Long)
 
         ''' <summary>
         ''' Sets the designated parameter to a <code>InputStream</code> object.  The inputstream must contain  the number
@@ -804,7 +804,7 @@ Namespace java.sql
         ''' <exception cref="SQLFeatureNotSupportedException">  if the JDBC driver does not support this method
         ''' 
         ''' @since 1.6 </exception>
-        Sub setBlob(ByVal parameterIndex As Integer, ByVal inputStream As java.io.InputStream, ByVal length As Long)
+        Sub setBlob(  parameterIndex As Integer,   inputStream As java.io.InputStream,   length As Long)
         ''' <summary>
         ''' Sets the designated parameter to a <code>Reader</code> object.  The reader must contain  the number
         ''' of characters specified by length otherwise a <code>SQLException</code> will be
@@ -826,7 +826,7 @@ Namespace java.sql
         ''' <exception cref="SQLFeatureNotSupportedException">  if the JDBC driver does not support this method
         ''' 
         ''' @since 1.6 </exception>
-        Sub setNClob(ByVal parameterIndex As Integer, ByVal reader As java.io.Reader, ByVal length As Long)
+        Sub setNClob(  parameterIndex As Integer,   reader As java.io.Reader,   length As Long)
 
         ''' <summary>
         ''' Sets the designated parameter to the given <code>java.sql.SQLXML</code> object.
@@ -845,7 +845,7 @@ Namespace java.sql
         ''' <exception cref="SQLFeatureNotSupportedException">  if the JDBC driver does not support this method
         ''' 
         ''' @since 1.6 </exception>
-        Sub setSQLXML(ByVal parameterIndex As Integer, ByVal xmlObject As SQLXML)
+        Sub setSQLXML(  parameterIndex As Integer,   xmlObject As SQLXML)
 
         ''' <summary>
         ''' <p>Sets the value of the designated parameter with the given object.
@@ -893,7 +893,7 @@ Namespace java.sql
         ''' the JDBC driver does not support the specified targetSqlType </exception>
         ''' <seealso cref= Types
         '''  </seealso>
-        Sub setObject(ByVal parameterIndex As Integer, ByVal x As Object, ByVal targetSqlType As Integer, ByVal scaleOrLength As Integer)
+        Sub setObject(  parameterIndex As Integer,   x As Object,   targetSqlType As Integer,   scaleOrLength As Integer)
         ''' <summary>
         ''' Sets the designated parameter to the given input stream, which will have
         ''' the specified number of bytes.
@@ -914,7 +914,7 @@ Namespace java.sql
         ''' marker in the SQL statement; if a database access error occurs or
         ''' this method is called on a closed <code>PreparedStatement</code>
         ''' @since 1.6 </exception>
-        Sub setAsciiStream(ByVal parameterIndex As Integer, ByVal x As java.io.InputStream, ByVal length As Long)
+        Sub setAsciiStream(  parameterIndex As Integer,   x As java.io.InputStream,   length As Long)
         ''' <summary>
         ''' Sets the designated parameter to the given input stream, which will have
         ''' the specified number of bytes.
@@ -934,7 +934,7 @@ Namespace java.sql
         ''' marker in the SQL statement; if a database access error occurs or
         ''' this method is called on a closed <code>PreparedStatement</code>
         ''' @since 1.6 </exception>
-        Sub setBinaryStream(ByVal parameterIndex As Integer, ByVal x As java.io.InputStream, ByVal length As Long)
+        Sub setBinaryStream(  parameterIndex As Integer,   x As java.io.InputStream,   length As Long)
         ''' <summary>
         ''' Sets the designated parameter to the given <code>Reader</code>
         ''' object, which is the given number of characters java.lang.[Long].
@@ -956,7 +956,7 @@ Namespace java.sql
         ''' marker in the SQL statement; if a database access error occurs or
         ''' this method is called on a closed <code>PreparedStatement</code>
         ''' @since 1.6 </exception>
-        Sub setCharacterStream(ByVal parameterIndex As Integer, ByVal reader As java.io.Reader, ByVal length As Long)
+        Sub setCharacterStream(  parameterIndex As Integer,   reader As java.io.Reader,   length As Long)
         '-----
         ''' <summary>
         ''' Sets the designated parameter to the given input stream.
@@ -980,7 +980,7 @@ Namespace java.sql
         ''' this method is called on a closed <code>PreparedStatement</code> </exception>
         ''' <exception cref="SQLFeatureNotSupportedException">  if the JDBC driver does not support this method
         ''' @since 1.6 </exception>
-        Sub setAsciiStream(ByVal parameterIndex As Integer, ByVal x As java.io.InputStream)
+        Sub setAsciiStream(  parameterIndex As Integer,   x As java.io.InputStream)
         ''' <summary>
         ''' Sets the designated parameter to the given input stream.
         ''' When a very large binary value is input to a <code>LONGVARBINARY</code>
@@ -1002,7 +1002,7 @@ Namespace java.sql
         ''' this method is called on a closed <code>PreparedStatement</code> </exception>
         ''' <exception cref="SQLFeatureNotSupportedException">  if the JDBC driver does not support this method
         ''' @since 1.6 </exception>
-        Sub setBinaryStream(ByVal parameterIndex As Integer, ByVal x As java.io.InputStream)
+        Sub setBinaryStream(  parameterIndex As Integer,   x As java.io.InputStream)
         ''' <summary>
         ''' Sets the designated parameter to the given <code>Reader</code>
         ''' object.
@@ -1027,7 +1027,7 @@ Namespace java.sql
         ''' this method is called on a closed <code>PreparedStatement</code> </exception>
         ''' <exception cref="SQLFeatureNotSupportedException">  if the JDBC driver does not support this method
         ''' @since 1.6 </exception>
-        Sub setCharacterStream(ByVal parameterIndex As Integer, ByVal reader As java.io.Reader)
+        Sub setCharacterStream(  parameterIndex As Integer,   reader As java.io.Reader)
         ''' <summary>
         ''' Sets the designated parameter to a <code>Reader</code> object. The
         ''' <code>Reader</code> reads the data till end-of-file is reached. The
@@ -1050,7 +1050,7 @@ Namespace java.sql
         ''' this method is called on a closed <code>PreparedStatement</code> </exception>
         ''' <exception cref="SQLFeatureNotSupportedException">  if the JDBC driver does not support this method
         ''' @since 1.6 </exception>
-        Sub setNCharacterStream(ByVal parameterIndex As Integer, ByVal value As java.io.Reader)
+        Sub setNCharacterStream(  parameterIndex As Integer,   value As java.io.Reader)
 
         ''' <summary>
         ''' Sets the designated parameter to a <code>Reader</code> object.
@@ -1073,7 +1073,7 @@ Namespace java.sql
         ''' </exception>
         ''' <exception cref="SQLFeatureNotSupportedException">  if the JDBC driver does not support this method
         ''' @since 1.6 </exception>
-        Sub setClob(ByVal parameterIndex As Integer, ByVal reader As java.io.Reader)
+        Sub setClob(  parameterIndex As Integer,   reader As java.io.Reader)
 
         ''' <summary>
         ''' Sets the designated parameter to a <code>InputStream</code> object.
@@ -1099,7 +1099,7 @@ Namespace java.sql
         ''' <exception cref="SQLFeatureNotSupportedException">  if the JDBC driver does not support this method
         ''' 
         ''' @since 1.6 </exception>
-        Sub setBlob(ByVal parameterIndex As Integer, ByVal inputStream As java.io.InputStream)
+        Sub setBlob(  parameterIndex As Integer,   inputStream As java.io.InputStream)
         ''' <summary>
         ''' Sets the designated parameter to a <code>Reader</code> object.
         ''' This method differs from the <code>setCharacterStream (int, Reader)</code> method
@@ -1122,7 +1122,7 @@ Namespace java.sql
         ''' <exception cref="SQLFeatureNotSupportedException">  if the JDBC driver does not support this method
         ''' 
         ''' @since 1.6 </exception>
-        Sub setNClob(ByVal parameterIndex As Integer, ByVal reader As java.io.Reader)
+        Sub setNClob(  parameterIndex As Integer,   reader As java.io.Reader)
 
         '------------------------- JDBC 4.2 -----------------------------------
 
@@ -1176,7 +1176,7 @@ Namespace java.sql
         ''' <seealso cref= JDBCType </seealso>
         ''' <seealso cref= SQLType
         ''' @since 1.8 </seealso>
-        Sub setObject(ByVal parameterIndex As Integer, ByVal x As Object, ByVal targetSqlType As SQLType, ByVal scaleOrLength As Integer)
+        Sub setObject(  parameterIndex As Integer,   x As Object,   targetSqlType As SQLType,   scaleOrLength As Integer)
 
         ''' <summary>
         ''' Sets the value of the designated parameter with the given object.
@@ -1198,7 +1198,7 @@ Namespace java.sql
         ''' <seealso cref= JDBCType </seealso>
         ''' <seealso cref= SQLType
         ''' @since 1.8 </seealso>
-        Sub setObject(ByVal parameterIndex As Integer, ByVal x As Object, ByVal targetSqlType As SQLType)
+        Sub setObject(  parameterIndex As Integer,   x As Object,   targetSqlType As SQLType)
 
         ''' <summary>
         ''' Executes the SQL statement in this <code>PreparedStatement</code> object,

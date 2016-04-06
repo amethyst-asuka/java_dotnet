@@ -93,7 +93,7 @@ Namespace java.awt.geom
 		''' <param name="src"> the original unflattened path being iterated over </param>
 		''' <param name="flatness"> the maximum allowable distance between the
 		''' control points and the flattened curve </param>
-		Public Sub New(ByVal src As PathIterator, ByVal flatness As Double)
+		Public Sub New(  src As PathIterator,   flatness As Double)
 			Me.New(src, flatness, 10)
 		End Sub
 
@@ -114,7 +114,7 @@ Namespace java.awt.geom
 		''' <exception cref="IllegalArgumentException"> if
 		'''          <code>flatness</code> or <code>limit</code>
 		'''          is less than zero </exception>
-		Public Sub New(ByVal src As PathIterator, ByVal flatness As Double, ByVal limit As Integer)
+		Public Sub New(  src As PathIterator,   flatness As Double,   limit As Integer)
 			If flatness < 0.0 Then Throw New IllegalArgumentException("flatness must be >= 0")
 			If limit < 0 Then Throw New IllegalArgumentException("limit must be >= 0")
 			Me.src = src
@@ -171,7 +171,7 @@ Namespace java.awt.geom
 	'     * Ensures that the hold array can hold up to (want) more values.
 	'     * It is currently holding (hold.length - holdIndex) values.
 	'     
-		Friend Overridable Sub ensureHoldCapacity(ByVal want As Integer)
+		Friend Overridable Sub ensureHoldCapacity(  want As Integer)
 			If holdIndex - want < 0 Then
 				Dim have As Integer = hold.Length - holdIndex
 				Dim newsize As Integer = hold.Length + GROW_SIZE
@@ -192,7 +192,7 @@ Namespace java.awt.geom
 			[next](True)
 		End Sub
 
-		Private Sub [next](ByVal doNext As Boolean)
+		Private Sub [next](  doNext As Boolean)
 			Dim level As Integer
 
 			If holdIndex >= holdEnd Then
@@ -329,7 +329,7 @@ Namespace java.awt.geom
 		''' <seealso cref= PathIterator#SEG_MOVETO </seealso>
 		''' <seealso cref= PathIterator#SEG_LINETO </seealso>
 		''' <seealso cref= PathIterator#SEG_CLOSE </seealso>
-		Public Overridable Function currentSegment(ByVal coords As Single()) As Integer Implements PathIterator.currentSegment
+		Public Overridable Function currentSegment(  coords As Single()) As Integer Implements PathIterator.currentSegment
 			If done Then Throw New NoSuchElementException("flattening iterator out of bounds")
 			Dim type As Integer = holdType
 			If type <> SEG_CLOSE Then
@@ -359,7 +359,7 @@ Namespace java.awt.geom
 		''' <seealso cref= PathIterator#SEG_MOVETO </seealso>
 		''' <seealso cref= PathIterator#SEG_LINETO </seealso>
 		''' <seealso cref= PathIterator#SEG_CLOSE </seealso>
-		Public Overridable Function currentSegment(ByVal coords As Double()) As Integer Implements PathIterator.currentSegment
+		Public Overridable Function currentSegment(  coords As Double()) As Integer Implements PathIterator.currentSegment
 			If done Then Throw New NoSuchElementException("flattening iterator out of bounds")
 			Dim type As Integer = holdType
 			If type <> SEG_CLOSE Then

@@ -38,8 +38,8 @@ Namespace java.net
 	Public MustInherit Class DatagramSocketImpl
 		Implements SocketOptions
 
-			Public MustOverride Function getOption(ByVal optID As Integer) As Object Implements SocketOptions.getOption
-			Public MustOverride Sub setOption(ByVal optID As Integer, ByVal value As Object) Implements SocketOptions.setOption
+			Public MustOverride Function getOption(  optID As Integer) As Object Implements SocketOptions.getOption
+			Public MustOverride Sub setOption(  optID As Integer,   value As Object) Implements SocketOptions.setOption
 
 		''' <summary>
 		''' The local port number.
@@ -64,7 +64,7 @@ Namespace java.net
 		Friend socket As DatagramSocket
 
 		Friend Overridable Property datagramSocket As DatagramSocket
-			Set(ByVal socket_Renamed As DatagramSocket)
+			Set(  socket_Renamed As DatagramSocket)
 				Me.socket = socket_Renamed
 			End Set
 			Get
@@ -85,7 +85,7 @@ Namespace java.net
 		''' <param name="laddr"> the local address </param>
 		''' <exception cref="SocketException"> if there is an error in the
 		''' underlying protocol, such as a TCP error. </exception>
-		Protected Friend MustOverride Sub bind(ByVal lport As Integer, ByVal laddr As InetAddress)
+		Protected Friend MustOverride Sub bind(  lport As Integer,   laddr As InetAddress)
 
 		''' <summary>
 		''' Sends a datagram packet. The packet contains the data and the
@@ -96,7 +96,7 @@ Namespace java.net
 		''' <exception cref="PortUnreachableException"> may be thrown if the socket is connected
 		''' to a currently unreachable destination. Note, there is no guarantee that
 		''' the exception will be thrown. </exception>
-		Protected Friend MustOverride Sub send(ByVal p As DatagramPacket)
+		Protected Friend MustOverride Sub send(  p As DatagramPacket)
 
 		''' <summary>
 		''' Connects a datagram socket to a remote destination. This associates the remote
@@ -114,7 +114,7 @@ Namespace java.net
 		''' <exception cref="SocketException"> may be thrown if the socket cannot be
 		''' connected to the remote destination
 		''' @since 1.4 </exception>
-		Protected Friend Overridable Sub connect(ByVal address As InetAddress, ByVal port As Integer)
+		Protected Friend Overridable Sub connect(  address As InetAddress,   port As Integer)
 		End Sub
 
 		''' <summary>
@@ -133,7 +133,7 @@ Namespace java.net
 		''' <exception cref="PortUnreachableException"> may be thrown if the socket is connected
 		'''       to a currently unreachable destination. Note, there is no guarantee that the
 		'''       exception will be thrown. </exception>
-		Protected Friend MustOverride Function peek(ByVal i As InetAddress) As Integer
+		Protected Friend MustOverride Function peek(  i As InetAddress) As Integer
 
 		''' <summary>
 		''' Peek at the packet to see who it is from. The data is copied into the specified
@@ -147,7 +147,7 @@ Namespace java.net
 		'''       to a currently unreachable destination. Note, there is no guarantee that the
 		'''       exception will be thrown.
 		''' @since 1.4 </exception>
-		Protected Friend MustOverride Function peekData(ByVal p As DatagramPacket) As Integer
+		Protected Friend MustOverride Function peekData(  p As DatagramPacket) As Integer
 		''' <summary>
 		''' Receive the datagram packet. </summary>
 		''' <param name="p"> the Packet Received. </param>
@@ -156,7 +156,7 @@ Namespace java.net
 		''' <exception cref="PortUnreachableException"> may be thrown if the socket is connected
 		'''       to a currently unreachable destination. Note, there is no guarantee that the
 		'''       exception will be thrown. </exception>
-		Protected Friend MustOverride Sub receive(ByVal p As DatagramPacket)
+		Protected Friend MustOverride Sub receive(  p As DatagramPacket)
 
 		''' <summary>
 		''' Set the TTL (time-to-live) option. </summary>
@@ -184,14 +184,14 @@ Namespace java.net
 		''' <param name="inetaddr"> multicast address to join. </param>
 		''' <exception cref="IOException"> if an I/O exception occurs
 		''' while joining the multicast group. </exception>
-		Protected Friend MustOverride Sub join(ByVal inetaddr As InetAddress)
+		Protected Friend MustOverride Sub join(  inetaddr As InetAddress)
 
 		''' <summary>
 		''' Leave the multicast group. </summary>
 		''' <param name="inetaddr"> multicast address to leave. </param>
 		''' <exception cref="IOException"> if an I/O exception occurs
 		''' while leaving the multicast group. </exception>
-		Protected Friend MustOverride Sub leave(ByVal inetaddr As InetAddress)
+		Protected Friend MustOverride Sub leave(  inetaddr As InetAddress)
 
 		''' <summary>
 		''' Join the multicast group. </summary>
@@ -201,7 +201,7 @@ Namespace java.net
 		''' <exception cref="IOException"> if an I/O exception occurs while joining
 		''' the multicast group
 		''' @since 1.4 </exception>
-		Protected Friend MustOverride Sub joinGroup(ByVal mcastaddr As SocketAddress, ByVal netIf As NetworkInterface)
+		Protected Friend MustOverride Sub joinGroup(  mcastaddr As SocketAddress,   netIf As NetworkInterface)
 
 		''' <summary>
 		''' Leave the multicast group. </summary>
@@ -210,7 +210,7 @@ Namespace java.net
 		''' <exception cref="IOException"> if an I/O exception occurs while leaving
 		''' the multicast group
 		''' @since 1.4 </exception>
-		Protected Friend MustOverride Sub leaveGroup(ByVal mcastaddr As SocketAddress, ByVal netIf As NetworkInterface)
+		Protected Friend MustOverride Sub leaveGroup(  mcastaddr As SocketAddress,   netIf As NetworkInterface)
 
 		''' <summary>
 		''' Close the socket.
@@ -226,7 +226,7 @@ Namespace java.net
 			End Get
 		End Property
 
-		 Friend Overridable Sub setOption(Of T)(ByVal name As SocketOption(Of T), ByVal value As T)
+		 Friend Overridable Sub setOption(Of T)(  name As SocketOption(Of T),   value As T)
 			If name Is StandardSocketOptions.SO_SNDBUF Then
 				optionion(SocketOptions.SO_SNDBUF, value)
 			ElseIf name Is StandardSocketOptions.SO_RCVBUF Then
@@ -247,7 +247,7 @@ Namespace java.net
 			End If
 		 End Sub
 
-		 Friend Overridable Function getOption(Of T)(ByVal name As SocketOption(Of T)) As T
+		 Friend Overridable Function getOption(Of T)(  name As SocketOption(Of T)) As T
 			If name Is StandardSocketOptions.SO_SNDBUF Then
 				Return CType(getOption(SocketOptions.SO_SNDBUF), T)
 			ElseIf name Is StandardSocketOptions.SO_RCVBUF Then

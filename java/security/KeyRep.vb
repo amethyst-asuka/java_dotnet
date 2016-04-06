@@ -125,7 +125,7 @@ Namespace java.security
 		'''          if algorithm is {@code null},
 		'''          if format is {@code null},
 		'''          or if encoded is {@code null} </exception>
-		Public Sub New(ByVal type As Type, ByVal algorithm As String, ByVal format As String, ByVal encoded As SByte())
+		Public Sub New(  type As Type,   algorithm As String,   format As String,   encoded As SByte())
 
 			If type Is Nothing OrElse algorithm Is Nothing OrElse format Is Nothing OrElse encoded Is Nothing Then Throw New NullPointerException("invalid null input(s)")
 

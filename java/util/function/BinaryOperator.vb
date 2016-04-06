@@ -53,7 +53,7 @@ Namespace java.util.function
 		'''         according to the supplied {@code Comparator} </returns>
 		''' <exception cref="NullPointerException"> if the argument is null </exception>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Shared Function minBy(Of T, T1)(ByVal comparator As IComparer(Of T1)) As BinaryOperator(Of T)
+		Shared Function minBy(Of T, T1)(  comparator As IComparer(Of T1)) As BinaryOperator(Of T)
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 			java.util.Objects.requireNonNull(comparator);
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
@@ -69,7 +69,7 @@ Namespace java.util.function
 		'''         according to the supplied {@code Comparator} </returns>
 		''' <exception cref="NullPointerException"> if the argument is null </exception>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Shared Function maxBy(Of T, T1)(ByVal comparator As IComparer(Of T1)) As BinaryOperator(Of T)
+		Shared Function maxBy(Of T, T1)(  comparator As IComparer(Of T1)) As BinaryOperator(Of T)
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 			java.util.Objects.requireNonNull(comparator);
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:

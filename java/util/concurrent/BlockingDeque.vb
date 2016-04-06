@@ -217,7 +217,7 @@ Namespace java.util.concurrent
 		''' <exception cref="ClassCastException"> {@inheritDoc} </exception>
 		''' <exception cref="NullPointerException"> if the specified element is null </exception>
 		''' <exception cref="IllegalArgumentException"> {@inheritDoc} </exception>
-		Sub addFirst(ByVal e As E)
+		Sub addFirst(  e As E)
 
 		''' <summary>
 		''' Inserts the specified element at the end of this deque if it is
@@ -231,7 +231,7 @@ Namespace java.util.concurrent
 		''' <exception cref="ClassCastException"> {@inheritDoc} </exception>
 		''' <exception cref="NullPointerException"> if the specified element is null </exception>
 		''' <exception cref="IllegalArgumentException"> {@inheritDoc} </exception>
-		Sub addLast(ByVal e As E)
+		Sub addLast(  e As E)
 
 		''' <summary>
 		''' Inserts the specified element at the front of this deque if it is
@@ -246,7 +246,7 @@ Namespace java.util.concurrent
 		''' <exception cref="ClassCastException"> {@inheritDoc} </exception>
 		''' <exception cref="NullPointerException"> if the specified element is null </exception>
 		''' <exception cref="IllegalArgumentException"> {@inheritDoc} </exception>
-		Function offerFirst(ByVal e As E) As Boolean
+		Function offerFirst(  e As E) As Boolean
 
 		''' <summary>
 		''' Inserts the specified element at the end of this deque if it is
@@ -261,7 +261,7 @@ Namespace java.util.concurrent
 		''' <exception cref="ClassCastException"> {@inheritDoc} </exception>
 		''' <exception cref="NullPointerException"> if the specified element is null </exception>
 		''' <exception cref="IllegalArgumentException"> {@inheritDoc} </exception>
-		Function offerLast(ByVal e As E) As Boolean
+		Function offerLast(  e As E) As Boolean
 
 		''' <summary>
 		''' Inserts the specified element at the front of this deque,
@@ -274,7 +274,7 @@ Namespace java.util.concurrent
 		''' <exception cref="NullPointerException"> if the specified element is null </exception>
 		''' <exception cref="IllegalArgumentException"> if some property of the specified
 		'''         element prevents it from being added to this deque </exception>
-		Sub putFirst(ByVal e As E)
+		Sub putFirst(  e As E)
 
 		''' <summary>
 		''' Inserts the specified element at the end of this deque,
@@ -287,7 +287,7 @@ Namespace java.util.concurrent
 		''' <exception cref="NullPointerException"> if the specified element is null </exception>
 		''' <exception cref="IllegalArgumentException"> if some property of the specified
 		'''         element prevents it from being added to this deque </exception>
-		Sub putLast(ByVal e As E)
+		Sub putLast(  e As E)
 
 		''' <summary>
 		''' Inserts the specified element at the front of this deque,
@@ -307,7 +307,7 @@ Namespace java.util.concurrent
 		''' <exception cref="NullPointerException"> if the specified element is null </exception>
 		''' <exception cref="IllegalArgumentException"> if some property of the specified
 		'''         element prevents it from being added to this deque </exception>
-		Function offerFirst(ByVal e As E, ByVal timeout As Long, ByVal unit As TimeUnit) As Boolean
+		Function offerFirst(  e As E,   timeout As Long,   unit As TimeUnit) As Boolean
 
 		''' <summary>
 		''' Inserts the specified element at the end of this deque,
@@ -327,7 +327,7 @@ Namespace java.util.concurrent
 		''' <exception cref="NullPointerException"> if the specified element is null </exception>
 		''' <exception cref="IllegalArgumentException"> if some property of the specified
 		'''         element prevents it from being added to this deque </exception>
-		Function offerLast(ByVal e As E, ByVal timeout As Long, ByVal unit As TimeUnit) As Boolean
+		Function offerLast(  e As E,   timeout As Long,   unit As TimeUnit) As Boolean
 
 		''' <summary>
 		''' Retrieves and removes the first element of this deque, waiting
@@ -357,7 +357,7 @@ Namespace java.util.concurrent
 		''' <returns> the head of this deque, or {@code null} if the specified
 		'''         waiting time elapses before an element is available </returns>
 		''' <exception cref="InterruptedException"> if interrupted while waiting </exception>
-		Function pollFirst(ByVal timeout As Long, ByVal unit As TimeUnit) As E
+		Function pollFirst(  timeout As Long,   unit As TimeUnit) As E
 
 		''' <summary>
 		''' Retrieves and removes the last element of this deque, waiting
@@ -371,7 +371,7 @@ Namespace java.util.concurrent
 		''' <returns> the tail of this deque, or {@code null} if the specified
 		'''         waiting time elapses before an element is available </returns>
 		''' <exception cref="InterruptedException"> if interrupted while waiting </exception>
-		Function pollLast(ByVal timeout As Long, ByVal unit As TimeUnit) As E
+		Function pollLast(  timeout As Long,   unit As TimeUnit) As E
 
 		''' <summary>
 		''' Removes the first occurrence of the specified element from this deque.
@@ -388,7 +388,7 @@ Namespace java.util.concurrent
 		'''         (<a href="../Collection.html#optional-restrictions">optional</a>) </exception>
 		''' <exception cref="NullPointerException"> if the specified element is null
 		'''         (<a href="../Collection.html#optional-restrictions">optional</a>) </exception>
-		Function removeFirstOccurrence(ByVal o As Object) As Boolean
+		Function removeFirstOccurrence(  o As Object) As Boolean
 
 		''' <summary>
 		''' Removes the last occurrence of the specified element from this deque.
@@ -405,7 +405,7 @@ Namespace java.util.concurrent
 		'''         (<a href="../Collection.html#optional-restrictions">optional</a>) </exception>
 		''' <exception cref="NullPointerException"> if the specified element is null
 		'''         (<a href="../Collection.html#optional-restrictions">optional</a>) </exception>
-		Function removeLastOccurrence(ByVal o As Object) As Boolean
+		Function removeLastOccurrence(  o As Object) As Boolean
 
 		' *** BlockingQueue methods ***
 
@@ -427,7 +427,7 @@ Namespace java.util.concurrent
 		''' <exception cref="NullPointerException"> if the specified element is null </exception>
 		''' <exception cref="IllegalArgumentException"> if some property of the specified
 		'''         element prevents it from being added to this deque </exception>
-		Function add(ByVal e As E) As Boolean
+		Function add(  e As E) As Boolean
 
 		''' <summary>
 		''' Inserts the specified element into the queue represented by this deque
@@ -446,7 +446,7 @@ Namespace java.util.concurrent
 		''' <exception cref="NullPointerException"> if the specified element is null </exception>
 		''' <exception cref="IllegalArgumentException"> if some property of the specified
 		'''         element prevents it from being added to this deque </exception>
-		Function offer(ByVal e As E) As Boolean
+		Function offer(  e As E) As Boolean
 
 		''' <summary>
 		''' Inserts the specified element into the queue represented by this deque
@@ -462,7 +462,7 @@ Namespace java.util.concurrent
 		''' <exception cref="NullPointerException"> if the specified element is null </exception>
 		''' <exception cref="IllegalArgumentException"> if some property of the specified
 		'''         element prevents it from being added to this deque </exception>
-		Sub put(ByVal e As E)
+		Sub put(  e As E)
 
 		''' <summary>
 		''' Inserts the specified element into the queue represented by this deque
@@ -481,7 +481,7 @@ Namespace java.util.concurrent
 		''' <exception cref="NullPointerException"> if the specified element is null </exception>
 		''' <exception cref="IllegalArgumentException"> if some property of the specified
 		'''         element prevents it from being added to this deque </exception>
-		Function offer(ByVal e As E, ByVal timeout As Long, ByVal unit As TimeUnit) As Boolean
+		Function offer(  e As E,   timeout As Long,   unit As TimeUnit) As Boolean
 
 		''' <summary>
 		''' Retrieves and removes the head of the queue represented by this deque
@@ -527,7 +527,7 @@ Namespace java.util.concurrent
 		''' <returns> the head of this deque, or {@code null} if the
 		'''         specified waiting time elapses before an element is available </returns>
 		''' <exception cref="InterruptedException"> if interrupted while waiting </exception>
-		Function poll(ByVal timeout As Long, ByVal unit As TimeUnit) As E
+		Function poll(  timeout As Long,   unit As TimeUnit) As E
 
 		''' <summary>
 		''' Retrieves, but does not remove, the head of the queue represented by
@@ -569,7 +569,7 @@ Namespace java.util.concurrent
 		'''         (<a href="../Collection.html#optional-restrictions">optional</a>) </exception>
 		''' <exception cref="NullPointerException"> if the specified element is null
 		'''         (<a href="../Collection.html#optional-restrictions">optional</a>) </exception>
-		Function remove(ByVal o As Object) As Boolean
+		Function remove(  o As Object) As Boolean
 
 		''' <summary>
 		''' Returns {@code true} if this deque contains the specified element.
@@ -583,7 +583,7 @@ Namespace java.util.concurrent
 		'''         (<a href="../Collection.html#optional-restrictions">optional</a>) </exception>
 		''' <exception cref="NullPointerException"> if the specified element is null
 		'''         (<a href="../Collection.html#optional-restrictions">optional</a>) </exception>
-		Function contains(ByVal o As Object) As Boolean
+		Function contains(  o As Object) As Boolean
 
 		''' <summary>
 		''' Returns the number of elements in this deque.
@@ -612,7 +612,7 @@ Namespace java.util.concurrent
 		''' <exception cref="ClassCastException"> {@inheritDoc} </exception>
 		''' <exception cref="NullPointerException"> if the specified element is null </exception>
 		''' <exception cref="IllegalArgumentException"> {@inheritDoc} </exception>
-		Sub push(ByVal e As E)
+		Sub push(  e As E)
 	End Interface
 
 End Namespace

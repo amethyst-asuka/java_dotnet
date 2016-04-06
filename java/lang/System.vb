@@ -257,15 +257,15 @@ Namespace java.lang
 
         'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
         <DllImport("unknown")>
-        Private Shared Sub setIn0(ByVal [in] As InputStream)
+        Private Shared Sub setIn0(  [in] As InputStream)
         End Sub
         'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
         <DllImport("unknown")>
-        Private Shared Sub setOut0(ByVal out As PrintStream)
+        Private Shared Sub setOut0(  out As PrintStream)
         End Sub
         'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
         <DllImport("unknown")>
-        Private Shared Sub setErr0(ByVal err As PrintStream)
+        Private Shared Sub setErr0(  err As PrintStream)
         End Sub
 
         ''' <summary>
@@ -294,7 +294,7 @@ Namespace java.lang
             Get
                 Return _securityManager
             End Get
-            Set(ByVal s As SecurityManager)
+            Set(  s As SecurityManager)
                 Try
                     s.checkPackageAccess("java.lang")
                 Catch e As Exception
@@ -482,7 +482,7 @@ Namespace java.lang
         '''               <code>dest</code> is <code>null</code>. </exception>
         'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
         <DllImport("unknown")>
-        Public Shared Sub arraycopy(ByVal src As Object, ByVal srcPos As Integer, ByVal dest As Object, ByVal destPos As Integer, ByVal length As Integer)
+        Public Shared Sub arraycopy(  src As Object,   srcPos As Integer,   dest As Object,   destPos As Integer,   length As Integer)
         End Sub
 
         ''' <summary>
@@ -497,7 +497,7 @@ Namespace java.lang
         ''' @since   JDK1.1 </returns>
         'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
         <DllImport("unknown")>
-        Public Shared Function identityHashCode(ByVal x As Object) As Integer
+        Public Shared Function identityHashCode(  x As Object) As Integer
         End Function
 
         ''' <summary>
@@ -524,7 +524,7 @@ Namespace java.lang
         Private Shared props As java.util.Properties
 
         <DllImport("unknown")>
-        Private Shared Function initProperties(ByVal props As java.util.Properties) As java.util.Properties
+        Private Shared Function initProperties(  props As java.util.Properties) As java.util.Properties
         End Function
 
         ''' <summary>
@@ -626,7 +626,7 @@ Namespace java.lang
 
                 Return props
             End Get
-            Set(ByVal props As java.util.Properties)
+            Set(  props As java.util.Properties)
                 Dim sm As SecurityManager = securityManager
                 If sm IsNot Nothing Then sm.checkPropertiesAccess()
                 If props Is Nothing Then
@@ -674,7 +674,7 @@ Namespace java.lang
         ''' <seealso cref=        java.lang.SecurityException </seealso>
         ''' <seealso cref=        java.lang.SecurityManager#checkPropertyAccess(java.lang.String) </seealso>
         ''' <seealso cref=        java.lang.System#getProperties() </seealso>
-        Public Shared Function getProperty(ByVal key As String) As String
+        Public Shared Function getProperty(  key As String) As String
             checkKey(key)
             Dim sm As SecurityManager = securityManager
             If sm IsNot Nothing Then sm.checkPropertyAccess(key)
@@ -707,7 +707,7 @@ Namespace java.lang
         ''' <seealso cref=        #setProperty </seealso>
         ''' <seealso cref=        java.lang.SecurityManager#checkPropertyAccess(java.lang.String) </seealso>
         ''' <seealso cref=        java.lang.System#getProperties() </seealso>
-        Public Shared Function getProperty(ByVal key As String, ByVal def As String) As String
+        Public Shared Function getProperty(  key As String,   def As String) As String
             checkKey(key)
             Dim sm As SecurityManager = securityManager
             If sm IsNot Nothing Then sm.checkPropertyAccess(key)
@@ -743,7 +743,7 @@ Namespace java.lang
         ''' <seealso cref=        java.util.PropertyPermission </seealso>
         ''' <seealso cref=        SecurityManager#checkPermission
         ''' @since      1.2 </seealso>
-        Public Shared Function setProperty(ByVal key As String, ByVal value As String) As String
+        Public Shared Function setProperty(  key As String,   value As String) As String
             checkKey(key)
             Dim sm As SecurityManager = securityManager
             If sm IsNot Nothing Then sm.checkPermission(New java.util.PropertyPermission(key, sun.security.util.SecurityConstants.PROPERTY_WRITE_ACTION))
@@ -777,7 +777,7 @@ Namespace java.lang
         ''' <seealso cref=        java.lang.SecurityException </seealso>
         ''' <seealso cref=        java.lang.SecurityManager#checkPropertiesAccess()
         ''' @since 1.5 </seealso>
-        Public Shared Function clearProperty(ByVal key As String) As String
+        Public Shared Function clearProperty(  key As String) As String
             checkKey(key)
             Dim sm As SecurityManager = securityManager
             If sm IsNot Nothing Then sm.checkPermission(New java.util.PropertyPermission(key, "write"))
@@ -785,7 +785,7 @@ Namespace java.lang
             Return CStr(props.remove(key))
         End Function
 
-        Private Shared Sub checkKey(ByVal key As String)
+        Private Shared Sub checkKey(  key As String)
             If key Is Nothing Then Throw New NullPointerException("key can't be null")
             If key.Equals("") Then Throw New IllegalArgumentException("key can't be empty")
         End Sub
@@ -835,7 +835,7 @@ Namespace java.lang
         '''         <code>name</code> </exception>
         ''' <seealso cref=    #getenv() </seealso>
         ''' <seealso cref=    ProcessBuilder#environment() </seealso>
-        Public Shared Function getenv(ByVal name As String) As String
+        Public Shared Function getenv(  name As String) As String
             Dim sm As SecurityManager = securityManager
             If sm IsNot Nothing Then sm.checkPermission(New RuntimePermission("getenv." & name))
 
@@ -908,7 +908,7 @@ Namespace java.lang
         '''        if a security manager exists and its <code>checkExit</code>
         '''        method doesn't allow exit with the specified status. </exception>
         ''' <seealso cref=        java.lang.Runtime#exit(int) </seealso>
-        Public Shared Sub [exit](ByVal status As Integer)
+        Public Shared Sub [exit](  status As Integer)
             Call App.Exit(status)
         End Sub
 
@@ -979,7 +979,7 @@ Namespace java.lang
         ''' <seealso cref=     java.lang.SecurityManager#checkExit(int)
         ''' @since   JDK1.1 </seealso>
         <Obsolete(" This method is inherently unsafe.  It may result in")>
-        Public Shared Sub runFinalizersOnExit(ByVal value As Boolean)
+        Public Shared Sub runFinalizersOnExit(  value As Boolean)
             Runtime.runFinalizersOnExit(value)
         End Sub
 
@@ -1019,7 +1019,7 @@ Namespace java.lang
         ''' <seealso cref=        java.lang.Runtime#load(java.lang.String) </seealso>
         ''' <seealso cref=        java.lang.SecurityManager#checkLink(java.lang.String) </seealso>
         'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-        Public Shared Sub load(ByVal filename As String)
+        Public Shared Sub load(  filename As String)
             java.lang.Runtime.runtime.load0(sun.reflect.Reflection.callerClass, filename)
         End Sub
 
@@ -1054,7 +1054,7 @@ Namespace java.lang
         ''' <seealso cref=        java.lang.Runtime#loadLibrary(java.lang.String) </seealso>
         ''' <seealso cref=        java.lang.SecurityManager#checkLink(java.lang.String) </seealso>
         'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-        Public Shared Sub loadLibrary(ByVal libname As String)
+        Public Shared Sub loadLibrary(  libname As String)
             Runtime.runtime.loadLibrary0(sun.reflect.Reflection.callerClass, libname)
         End Sub
 
@@ -1071,13 +1071,13 @@ Namespace java.lang
         ''' @since      1.2 </seealso>
         'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
         <DllImport("unknown")>
-        Public Shared Function mapLibraryName(ByVal libname As String) As String
+        Public Shared Function mapLibraryName(  libname As String) As String
         End Function
 
         ''' <summary>
         ''' Create PrintStream for stdout/err based on encoding.
         ''' </summary>
-        Private Shared Function newPrintStream(ByVal fos As FileOutputStream, ByVal enc As String) As PrintStream
+        Private Shared Function newPrintStream(  fos As FileOutputStream,   enc As String) As PrintStream
             If enc IsNot Nothing Then
                 Try
                     Return New PrintStream(New BufferedOutputStream(fos, 128), True, enc)

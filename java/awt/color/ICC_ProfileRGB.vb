@@ -111,7 +111,7 @@ Namespace java.awt.Icolor
         ''' </summary>
         ''' <param name="p"> The CMM ID for the profile.
         '''  </param>
-        Friend Sub New(ByVal p As sun.java2d.cmm.Profile)
+        Friend Sub New(  p As sun.java2d.cmm.Profile)
             MyBase.New(p)
         End Sub
 
@@ -120,7 +120,7 @@ Namespace java.awt.Icolor
         ''' ProfileDeferralInfo object.
         ''' </summary>
         ''' <param name="pdi"> </param>
-        Friend Sub New(ByVal pdi As sun.java2d.cmm.ProfileDeferralInfo)
+        Friend Sub New(  pdi As sun.java2d.cmm.ProfileDeferralInfo)
             MyBase.New(pdi)
         End Sub
 
@@ -194,7 +194,7 @@ Namespace java.awt.Icolor
         ''' <returns> the gamma value as a float. </returns>
         ''' <exception cref="ProfileDataException"> if the profile does not specify
         '''            the corresponding TRC as a single gamma value. </exception>
-        Public Overrides Function getGamma(ByVal component_Renamed As Integer) As Single
+        Public Overrides Function getGamma(  component_Renamed As Integer) As Single
             Dim theGamma As Single
             Dim theSignature As Integer
 
@@ -246,7 +246,7 @@ Namespace java.awt.Icolor
         ''' <returns> a short array representing the TRC. </returns>
         ''' <exception cref="ProfileDataException"> if the profile does not specify
         '''            the corresponding TRC as a table. </exception>
-        Public Overrides Function getTRC(ByVal component_Renamed As Integer) As Short()
+        Public Overrides Function getTRC(  component_Renamed As Integer) As Short()
             Dim theTRC As Short()
             Dim theSignature As Integer
 

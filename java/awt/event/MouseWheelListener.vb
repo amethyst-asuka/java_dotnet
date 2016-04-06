@@ -52,7 +52,7 @@ Namespace java.awt.event
 		''' <summary>
 		''' Invoked when the mouse wheel is rotated. </summary>
 		''' <seealso cref= MouseWheelEvent </seealso>
-		Sub mouseWheelMoved(ByVal e As MouseWheelEvent)
+		Sub mouseWheelMoved(  e As MouseWheelEvent)
 	End Interface
 
 End Namespace

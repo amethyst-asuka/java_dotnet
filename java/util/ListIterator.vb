@@ -162,7 +162,7 @@ Namespace java.util
 		'''         {@code previous} have been called, or {@code remove} or
 		'''         {@code add} have been called after the last call to
 		'''         {@code next} or {@code previous} </exception>
-		Sub [set](ByVal e As E)
+		Sub [set](  e As E)
 
 		''' <summary>
 		''' Inserts the specified element into the list (optional operation).
@@ -183,7 +183,7 @@ Namespace java.util
 		'''         prevents it from being added to this list </exception>
 		''' <exception cref="IllegalArgumentException"> if some aspect of this element
 		'''         prevents it from being added to this list </exception>
-		Sub add(ByVal e As E)
+		Sub add(  e As E)
 	End Interface
 
 End Namespace

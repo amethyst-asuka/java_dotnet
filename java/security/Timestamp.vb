@@ -70,7 +70,7 @@ Namespace java.security
 		''' <param name="timestamp"> is the timestamp's date and time. It must not be null. </param>
 		''' <param name="signerCertPath"> is the TSA's certificate path. It must not be null. </param>
 		''' <exception cref="NullPointerException"> if timestamp or signerCertPath is null. </exception>
-		Public Sub New(ByVal timestamp As DateTime?, ByVal signerCertPath As java.security.cert.CertPath)
+		Public Sub New(  timestamp As DateTime?,   signerCertPath As java.security.cert.CertPath)
 			If timestamp Is Nothing OrElse signerCertPath Is Nothing Then Throw New NullPointerException
 			Me.timestamp_Renamed = New DateTime?(timestamp.Value.time) ' clone
 			Me.signerCertPath = signerCertPath
@@ -115,7 +115,7 @@ Namespace java.security
 		''' <param name="obj"> the object to test for equality with this timestamp.
 		''' </param>
 		''' <returns> true if the timestamp are considered equal, false otherwise. </returns>
-		Public Overrides Function Equals(ByVal obj As Object) As Boolean
+		Public Overrides Function Equals(  obj As Object) As Boolean
 			If obj Is Nothing OrElse (Not(TypeOf obj Is Timestamp)) Then Return False
 			Dim that As Timestamp = CType(obj, Timestamp)
 
@@ -144,7 +144,7 @@ Namespace java.security
 		End Function
 
 		' Explicitly reset hash code value to -1
-		Private Sub readObject(ByVal ois As ObjectInputStream)
+		Private Sub readObject(  ois As ObjectInputStream)
 			ois.defaultReadObject()
 			myhash = -1
 			timestamp_Renamed = New DateTime?(timestamp_Renamed.Value.time)

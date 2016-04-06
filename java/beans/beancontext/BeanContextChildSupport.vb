@@ -74,7 +74,7 @@ Namespace java.beans.beancontext
 		''' that interface to this implementation </summary>
 		''' <param name="bcc"> the underlying bean context child </param>
 
-		Public Sub New(ByVal bcc As BeanContextChild)
+		Public Sub New(  bcc As BeanContextChild)
 			MyBase.New()
 
 			beanContextChildPeer = If(bcc IsNot Nothing, bcc, Me)
@@ -91,7 +91,7 @@ Namespace java.beans.beancontext
 		''' <exception cref="PropertyVetoException"> if the change is rejected </exception>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
 		Public Overridable Property beanContext As BeanContext
-			Set(ByVal bc As BeanContext)
+			Set(  bc As BeanContext)
 				If bc Is beanContext Then Return
     
 				Dim oldValue As BeanContext = beanContext
@@ -138,7 +138,7 @@ Namespace java.beans.beancontext
 		''' </summary>
 		''' <param name="name"> The name of the property to listen on </param>
 		''' <param name="pcl"> The <code>PropertyChangeListener</code> to be added </param>
-		Public Overridable Sub addPropertyChangeListener(ByVal name As String, ByVal pcl As java.beans.PropertyChangeListener) Implements BeanContextChild.addPropertyChangeListener
+		Public Overridable Sub addPropertyChangeListener(  name As String,   pcl As java.beans.PropertyChangeListener) Implements BeanContextChild.addPropertyChangeListener
 			pcSupport.addPropertyChangeListener(name, pcl)
 		End Sub
 
@@ -154,7 +154,7 @@ Namespace java.beans.beancontext
 		''' </summary>
 		''' <param name="name"> The name of the property that was listened on </param>
 		''' <param name="pcl"> The PropertyChangeListener to be removed </param>
-		Public Overridable Sub removePropertyChangeListener(ByVal name As String, ByVal pcl As java.beans.PropertyChangeListener) Implements BeanContextChild.removePropertyChangeListener
+		Public Overridable Sub removePropertyChangeListener(  name As String,   pcl As java.beans.PropertyChangeListener) Implements BeanContextChild.removePropertyChangeListener
 			pcSupport.removePropertyChangeListener(name, pcl)
 		End Sub
 
@@ -168,7 +168,7 @@ Namespace java.beans.beancontext
 		''' </summary>
 		''' <param name="name"> The name of the property to listen on </param>
 		''' <param name="vcl"> The <code>VetoableChangeListener</code> to be added </param>
-		Public Overridable Sub addVetoableChangeListener(ByVal name As String, ByVal vcl As java.beans.VetoableChangeListener) Implements BeanContextChild.addVetoableChangeListener
+		Public Overridable Sub addVetoableChangeListener(  name As String,   vcl As java.beans.VetoableChangeListener) Implements BeanContextChild.addVetoableChangeListener
 			vcSupport.addVetoableChangeListener(name, vcl)
 		End Sub
 
@@ -184,7 +184,7 @@ Namespace java.beans.beancontext
 		''' </summary>
 		''' <param name="name"> The name of the property that was listened on </param>
 		''' <param name="vcl"> The <code>VetoableChangeListener</code> to be removed </param>
-		Public Overridable Sub removeVetoableChangeListener(ByVal name As String, ByVal vcl As java.beans.VetoableChangeListener) Implements BeanContextChild.removeVetoableChangeListener
+		Public Overridable Sub removeVetoableChangeListener(  name As String,   vcl As java.beans.VetoableChangeListener) Implements BeanContextChild.removeVetoableChangeListener
 			vcSupport.removeVetoableChangeListener(name, vcl)
 		End Sub
 
@@ -195,7 +195,7 @@ Namespace java.beans.beancontext
 		''' behaviors. </summary>
 		''' <param name="bcsre"> The <code>BeanContextServiceRevokedEvent</code> fired as a
 		''' result of a service being revoked </param>
-		Public Overridable Sub serviceRevoked(ByVal bcsre As BeanContextServiceRevokedEvent)
+		Public Overridable Sub serviceRevoked(  bcsre As BeanContextServiceRevokedEvent)
 		End Sub
 
 		''' <summary>
@@ -206,7 +206,7 @@ Namespace java.beans.beancontext
 		''' <param name="bcsae"> The BeanContextServiceAvailableEvent fired as a
 		''' result of a service becoming available
 		'''  </param>
-		Public Overridable Sub serviceAvailable(ByVal bcsae As BeanContextServiceAvailableEvent)
+		Public Overridable Sub serviceAvailable(  bcsae As BeanContextServiceAvailableEvent)
 		End Sub
 
 		''' <summary>
@@ -236,7 +236,7 @@ Namespace java.beans.beancontext
 		''' <param name="name"> The programmatic name of the property that was changed </param>
 		''' <param name="oldValue">  The old value of the property </param>
 		''' <param name="newValue">  The new value of the property </param>
-		Public Overridable Sub firePropertyChange(ByVal name As String, ByVal oldValue As Object, ByVal newValue As Object)
+		Public Overridable Sub firePropertyChange(  name As String,   oldValue As Object,   newValue As Object)
 			pcSupport.firePropertyChange(name, oldValue, newValue)
 		End Sub
 
@@ -256,7 +256,7 @@ Namespace java.beans.beancontext
 		''' </param>
 		''' <exception cref="PropertyVetoException"> if the recipient wishes the property
 		''' change to be rolled back. </exception>
-		Public Overridable Sub fireVetoableChange(ByVal name As String, ByVal oldValue As Object, ByVal newValue As Object)
+		Public Overridable Sub fireVetoableChange(  name As String,   oldValue As Object,   newValue As Object)
 			vcSupport.fireVetoableChange(name, oldValue, newValue)
 		End Sub
 
@@ -268,7 +268,7 @@ Namespace java.beans.beancontext
 		''' <param name="newValue"> the new value that has been requested for
 		'''  the BeanContext property </param>
 		''' <returns> <code>true</code> if the change operation is to be vetoed </returns>
-		Public Overridable Function validatePendingSetBeanContext(ByVal newValue As BeanContext) As Boolean
+		Public Overridable Function validatePendingSetBeanContext(  newValue As BeanContext) As Boolean
 			Return True
 		End Function
 
@@ -297,7 +297,7 @@ Namespace java.beans.beancontext
 		''' Write the persistence state of the object.
 		''' </summary>
 
-		Private Sub writeObject(ByVal oos As java.io.ObjectOutputStream)
+		Private Sub writeObject(  oos As java.io.ObjectOutputStream)
 
 	'        
 	'         * don't serialize if we are delegated and the delegator is not also
@@ -320,7 +320,7 @@ Namespace java.beans.beancontext
 		''' BeanContext
 		''' </summary>
 
-		Private Sub readObject(ByVal ois As java.io.ObjectInputStream)
+		Private Sub readObject(  ois As java.io.ObjectInputStream)
 			ois.defaultReadObject()
 		End Sub
 

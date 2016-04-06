@@ -74,7 +74,7 @@ Namespace java.security
 		''' Updates the digest using the specified java.lang.[Byte].
 		''' </summary>
 		''' <param name="input"> the byte to use for the update. </param>
-		Protected Friend MustOverride Sub engineUpdate(ByVal input As SByte)
+		Protected Friend MustOverride Sub engineUpdate(  input As SByte)
 
 		''' <summary>
 		''' Updates the digest using the specified array of bytes,
@@ -86,7 +86,7 @@ Namespace java.security
 		''' </param>
 		''' <param name="len"> the number of bytes to use, starting at
 		''' {@code offset}. </param>
-		Protected Friend MustOverride Sub engineUpdate(ByVal input As SByte(), ByVal offset As Integer, ByVal len As Integer)
+		Protected Friend MustOverride Sub engineUpdate(  input As SByte(),   offset As Integer,   len As Integer)
 
 		''' <summary>
 		''' Update the digest using the specified ByteBuffer. The digest is
@@ -97,7 +97,7 @@ Namespace java.security
 		''' </summary>
 		''' <param name="input"> the ByteBuffer
 		''' @since 1.5 </param>
-		Protected Friend Overridable Sub engineUpdate(ByVal input As java.nio.ByteBuffer)
+		Protected Friend Overridable Sub engineUpdate(  input As java.nio.ByteBuffer)
 			If input.hasRemaining() = False Then Return
 			If input.hasArray() Then
 				Dim b As SByte() = input.array()
@@ -159,7 +159,7 @@ Namespace java.security
 		''' <exception cref="DigestException"> if an error occurs.
 		''' 
 		''' @since 1.2 </exception>
-		Protected Friend Overridable Function engineDigest(ByVal buf As SByte(), ByVal offset As Integer, ByVal len As Integer) As Integer
+		Protected Friend Overridable Function engineDigest(  buf As SByte(),   offset As Integer,   len As Integer) As Integer
 
 			Dim digest As SByte() = engineDigest()
 			If len < digest.Length Then Throw New DigestException("partial digests not returned")

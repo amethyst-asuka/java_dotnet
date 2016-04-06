@@ -111,7 +111,7 @@ Namespace java.lang
 		''' <returns>  the sine of the argument. </returns>
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Public Shared Function sin(ByVal a As Double) As Double
+		Public Shared Function sin(  a As Double) As Double
 		End Function
 
 		''' <summary>
@@ -123,7 +123,7 @@ Namespace java.lang
 		''' <returns>  the cosine of the argument. </returns>
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Public Shared Function cos(ByVal a As Double) As Double
+		Public Shared Function cos(  a As Double) As Double
 		End Function
 
 		''' <summary>
@@ -137,7 +137,7 @@ Namespace java.lang
 		''' <returns>  the tangent of the argument. </returns>
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Public Shared Function tan(ByVal a As Double) As Double
+		Public Shared Function tan(  a As Double) As Double
 		End Function
 
 		''' <summary>
@@ -152,7 +152,7 @@ Namespace java.lang
 		''' <returns>  the arc sine of the argument. </returns>
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Public Shared Function asin(ByVal a As Double) As Double
+		Public Shared Function asin(  a As Double) As Double
 		End Function
 
 		''' <summary>
@@ -165,7 +165,7 @@ Namespace java.lang
 		''' <returns>  the arc cosine of the argument. </returns>
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Public Shared Function acos(ByVal a As Double) As Double
+		Public Shared Function acos(  a As Double) As Double
 		End Function
 
 		''' <summary>
@@ -179,7 +179,7 @@ Namespace java.lang
 		''' <returns>  the arc tangent of the argument. </returns>
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Public Shared Function atan(ByVal a As Double) As Double
+		Public Shared Function atan(  a As Double) As Double
 		End Function
 
 		''' <summary>
@@ -191,7 +191,7 @@ Namespace java.lang
 		''' <returns>  the measurement of the angle {@code angdeg}
 		'''          in radians. </returns>
 'JAVA TO VB CONVERTER TODO TASK: There is no equivalent to 'strictfp' in .NET:
-		Public Shared Function toRadians(ByVal angdeg As Double) As Double
+		Public Shared Function toRadians(  angdeg As Double) As Double
 			' Do not delegate to System.Math.toRadians(angdeg) because
 			' this method has the strictfp modifier.
 			Return angdeg / 180.0 * PI
@@ -208,7 +208,7 @@ Namespace java.lang
 		''' <returns>  the measurement of the angle {@code angrad}
 		'''          in degrees. </returns>
 'JAVA TO VB CONVERTER TODO TASK: There is no equivalent to 'strictfp' in .NET:
-		Public Shared Function toDegrees(ByVal angrad As Double) As Double
+		Public Shared Function toDegrees(  angrad As Double) As Double
 			' Do not delegate to System.Math.toDegrees(angrad) because
 			' this method has the strictfp modifier.
 			Return angrad * 180.0 / PI
@@ -228,7 +228,7 @@ Namespace java.lang
 		'''          where <i>e</i> is the base of the natural logarithms. </returns>
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Public Shared Function exp(ByVal a As Double) As Double
+		Public Shared Function exp(  a As Double) As Double
 		End Function
 
 		''' <summary>
@@ -246,7 +246,7 @@ Namespace java.lang
 		'''          {@code a}. </returns>
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Public Shared Function log(ByVal a As Double) As Double
+		Public Shared Function log(  a As Double) As Double
 		End Function
 
 
@@ -269,7 +269,7 @@ Namespace java.lang
 		''' @since 1.5 </returns>
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Public Shared Function log10(ByVal a As Double) As Double
+		Public Shared Function log10(  a As Double) As Double
 		End Function
 
 		''' <summary>
@@ -289,7 +289,7 @@ Namespace java.lang
 		''' <returns>  the positive square root of {@code a}. </returns>
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Public Shared Function sqrt(ByVal a As Double) As Double
+		Public Shared Function sqrt(  a As Double) As Double
 		End Function
 
 		''' <summary>
@@ -316,7 +316,7 @@ Namespace java.lang
 		''' @since 1.5 </returns>
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Public Shared Function cbrt(ByVal a As Double) As Double
+		Public Shared Function cbrt(  a As Double) As Double
 		End Function
 
 		''' <summary>
@@ -342,7 +342,7 @@ Namespace java.lang
 		'''          {@code f2}. </returns>
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Public Shared Function IEEEremainder(ByVal f1 As Double, ByVal f2 As Double) As Double
+		Public Shared Function IEEEremainder(  f1 As Double,   f2 As Double) As Double
 		End Function
 
 		''' <summary>
@@ -362,7 +362,7 @@ Namespace java.lang
 		''' <returns>  the smallest (closest to negative infinity)
 		'''          floating-point value that is greater than or equal to
 		'''          the argument and is equal to a mathematical  java.lang.[Integer]. </returns>
-		Public Shared Function ceil(ByVal a As Double) As Double
+		Public Shared Function ceil(  a As Double) As Double
 			Return floorOrCeil(a, -0.0, 1.0, 1.0)
 		End Function
 
@@ -380,7 +380,7 @@ Namespace java.lang
 		''' <returns>  the largest (closest to positive infinity)
 		'''          floating-point value that less than or equal to the argument
 		'''          and is equal to a mathematical  java.lang.[Integer]. </returns>
-		Public Shared Function floor(ByVal a As Double) As Double
+		Public Shared Function floor(  a As Double) As Double
 			Return floorOrCeil(a, -1.0, 0.0, -1.0)
 		End Function
 
@@ -391,7 +391,7 @@ Namespace java.lang
 		''' <param name="negativeBoundary"> result for values in (-1, 0) </param>
 		''' <param name="positiveBoundary"> result for values in (0, 1) </param>
 		''' <param name="increment"> value to add when the argument is non-integral </param>
-		Private Shared Function floorOrCeil(ByVal a As Double, ByVal negativeBoundary As Double, ByVal positiveBoundary As Double, ByVal sign As Double) As Double
+		Private Shared Function floorOrCeil(  a As Double,   negativeBoundary As Double,   positiveBoundary As Double,   sign As Double) As Double
 			Dim exponent_Renamed As Integer = System.Math.getExponent(a)
 
 			If exponent_Renamed < 0 Then
@@ -438,7 +438,7 @@ Namespace java.lang
 		''' <returns>  the closest floating-point value to {@code a} that is
 		'''          equal to a mathematical  java.lang.[Integer].
 		''' @author Joseph D. Darcy </returns>
-		Public Shared Function rint(ByVal a As Double) As Double
+		Public Shared Function rint(  a As Double) As Double
 	'        
 	'         * If the absolute value of a is not less than 2^52, it
 	'         * is either a finite integer (the double format does not have
@@ -523,7 +523,7 @@ Namespace java.lang
 		'''          (<i>x</i>,&nbsp;<i>y</i>) in Cartesian coordinates. </returns>
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Public Shared Function atan2(ByVal y As Double, ByVal x As Double) As Double
+		Public Shared Function atan2(  y As Double,   x As Double) As Double
 		End Function
 
 
@@ -648,7 +648,7 @@ Namespace java.lang
 		''' <returns>  the value {@code a}<sup>{@code b}</sup>. </returns>
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Public Shared Function pow(ByVal a As Double, ByVal b As Double) As Double
+		Public Shared Function pow(  a As Double,   b As Double) As Double
 		End Function
 
 		''' <summary>
@@ -669,7 +669,7 @@ Namespace java.lang
 		'''          {@code int} value. </returns>
 		''' <seealso cref=     java.lang.Integer#MAX_VALUE </seealso>
 		''' <seealso cref=     java.lang.Integer#MIN_VALUE </seealso>
-		Public Shared Function round(ByVal a As Single) As Integer
+		Public Shared Function round(  a As Single) As Integer
 			Return System.Math.Round(a)
 		End Function
 
@@ -692,7 +692,7 @@ Namespace java.lang
 		'''          {@code long} value. </returns>
 		''' <seealso cref=     java.lang.Long#MAX_VALUE </seealso>
 		''' <seealso cref=     java.lang.Long#MIN_VALUE </seealso>
-		Public Shared Function round(ByVal a As Double) As Long
+		Public Shared Function round(  a As Double) As Long
 			Return System.Math.Round(a)
 		End Function
 
@@ -736,7 +736,7 @@ Namespace java.lang
 		''' <exception cref="ArithmeticException"> if the result overflows an int </exception>
 		''' <seealso cref= Math#addExact(int,int)
 		''' @since 1.8 </seealso>
-		Public Shared Function addExact(ByVal x As Integer, ByVal y As Integer) As Integer
+		Public Shared Function addExact(  x As Integer,   y As Integer) As Integer
 			Return System.Math.addExact(x, y)
 		End Function
 
@@ -750,7 +750,7 @@ Namespace java.lang
 		''' <exception cref="ArithmeticException"> if the result overflows a long </exception>
 		''' <seealso cref= Math#addExact(long,long)
 		''' @since 1.8 </seealso>
-		Public Shared Function addExact(ByVal x As Long, ByVal y As Long) As Long
+		Public Shared Function addExact(  x As Long,   y As Long) As Long
 			Return System.Math.addExact(x, y)
 		End Function
 
@@ -764,7 +764,7 @@ Namespace java.lang
 		''' <exception cref="ArithmeticException"> if the result overflows an int </exception>
 		''' <seealso cref= Math#subtractExact(int,int)
 		''' @since 1.8 </seealso>
-		Public Shared Function subtractExact(ByVal x As Integer, ByVal y As Integer) As Integer
+		Public Shared Function subtractExact(  x As Integer,   y As Integer) As Integer
 			Return System.Math.subtractExact(x, y)
 		End Function
 
@@ -778,7 +778,7 @@ Namespace java.lang
 		''' <exception cref="ArithmeticException"> if the result overflows a long </exception>
 		''' <seealso cref= Math#subtractExact(long,long)
 		''' @since 1.8 </seealso>
-		Public Shared Function subtractExact(ByVal x As Long, ByVal y As Long) As Long
+		Public Shared Function subtractExact(  x As Long,   y As Long) As Long
 			Return System.Math.subtractExact(x, y)
 		End Function
 
@@ -792,7 +792,7 @@ Namespace java.lang
 		''' <exception cref="ArithmeticException"> if the result overflows an int </exception>
 		''' <seealso cref= Math#multiplyExact(int,int)
 		''' @since 1.8 </seealso>
-		Public Shared Function multiplyExact(ByVal x As Integer, ByVal y As Integer) As Integer
+		Public Shared Function multiplyExact(  x As Integer,   y As Integer) As Integer
 			Return System.Math.multiplyExact(x, y)
 		End Function
 
@@ -806,7 +806,7 @@ Namespace java.lang
 		''' <exception cref="ArithmeticException"> if the result overflows a long </exception>
 		''' <seealso cref= Math#multiplyExact(long,long)
 		''' @since 1.8 </seealso>
-		Public Shared Function multiplyExact(ByVal x As Long, ByVal y As Long) As Long
+		Public Shared Function multiplyExact(  x As Long,   y As Long) As Long
 			Return System.Math.multiplyExact(x, y)
 		End Function
 
@@ -819,7 +819,7 @@ Namespace java.lang
 		''' <exception cref="ArithmeticException"> if the {@code argument} overflows an int </exception>
 		''' <seealso cref= Math#toIntExact(long)
 		''' @since 1.8 </seealso>
-		Public Shared Function toIntExact(ByVal value As Long) As Integer
+		Public Shared Function toIntExact(  value As Long) As Integer
 			Return System.Math.toIntExact(value)
 		End Function
 
@@ -842,7 +842,7 @@ Namespace java.lang
 		''' <seealso cref= Math#floorDiv(int, int) </seealso>
 		''' <seealso cref= Math#floor(double)
 		''' @since 1.8 </seealso>
-		Public Shared Function floorDiv(ByVal x As Integer, ByVal y As Integer) As Integer
+		Public Shared Function floorDiv(  x As Integer,   y As Integer) As Integer
 			Return System.Math.floorDiv(x, y)
 		End Function
 
@@ -865,7 +865,7 @@ Namespace java.lang
 		''' <seealso cref= Math#floorDiv(long, long) </seealso>
 		''' <seealso cref= Math#floor(double)
 		''' @since 1.8 </seealso>
-		Public Shared Function floorDiv(ByVal x As Long, ByVal y As Long) As Long
+		Public Shared Function floorDiv(  x As Long,   y As Long) As Long
 			Return System.Math.floorDiv(x, y)
 		End Function
 
@@ -891,7 +891,7 @@ Namespace java.lang
 		''' <seealso cref= Math#floorMod(int, int) </seealso>
 		''' <seealso cref= StrictMath#floorDiv(int, int)
 		''' @since 1.8 </seealso>
-		Public Shared Function floorMod(ByVal x As Integer, ByVal y As Integer) As Integer
+		Public Shared Function floorMod(  x As Integer,   y As Integer) As Integer
 			Return System.Math.floorMod(x, y)
 		End Function
 		''' <summary>
@@ -916,7 +916,7 @@ Namespace java.lang
 		''' <seealso cref= Math#floorMod(long, long) </seealso>
 		''' <seealso cref= StrictMath#floorDiv(long, long)
 		''' @since 1.8 </seealso>
-		Public Shared Function floorMod(ByVal x As Long, ByVal y As Long) As Long
+		Public Shared Function floorMod(  x As Long,   y As Long) As Long
 			Return System.Math.floorMod(x, y)
 		End Function
 
@@ -932,7 +932,7 @@ Namespace java.lang
 		''' </summary>
 		''' <param name="a">   the  argument whose absolute value is to be determined. </param>
 		''' <returns>  the absolute value of the argument. </returns>
-		Public Shared Function abs(ByVal a As Integer) As Integer
+		Public Shared Function abs(  a As Integer) As Integer
 			Return System.Math.Abs(a)
 		End Function
 
@@ -948,7 +948,7 @@ Namespace java.lang
 		''' </summary>
 		''' <param name="a">   the  argument whose absolute value is to be determined. </param>
 		''' <returns>  the absolute value of the argument. </returns>
-		Public Shared Function abs(ByVal a As Long) As Long
+		Public Shared Function abs(  a As Long) As Long
 			Return System.Math.Abs(a)
 		End Function
 
@@ -966,7 +966,7 @@ Namespace java.lang
 		''' </summary>
 		''' <param name="a">   the argument whose absolute value is to be determined </param>
 		''' <returns>  the absolute value of the argument. </returns>
-		Public Shared Function abs(ByVal a As Single) As Single
+		Public Shared Function abs(  a As Single) As Single
 			Return System.Math.Abs(a)
 		End Function
 
@@ -984,7 +984,7 @@ Namespace java.lang
 		''' </summary>
 		''' <param name="a">   the argument whose absolute value is to be determined </param>
 		''' <returns>  the absolute value of the argument. </returns>
-		Public Shared Function abs(ByVal a As Double) As Double
+		Public Shared Function abs(  a As Double) As Double
 			Return System.Math.Abs(a)
 		End Function
 
@@ -997,7 +997,7 @@ Namespace java.lang
 		''' <param name="a">   an argument. </param>
 		''' <param name="b">   another argument. </param>
 		''' <returns>  the larger of {@code a} and {@code b}. </returns>
-		Public Shared Function max(ByVal a As Integer, ByVal b As Integer) As Integer
+		Public Shared Function max(  a As Integer,   b As Integer) As Integer
 			Return System.Math.Max(a, b)
 		End Function
 
@@ -1010,7 +1010,7 @@ Namespace java.lang
 		''' <param name="a">   an argument. </param>
 		''' <param name="b">   another argument. </param>
 		''' <returns>  the larger of {@code a} and {@code b}. </returns>
-		Public Shared Function max(ByVal a As Long, ByVal b As Long) As Long
+		Public Shared Function max(  a As Long,   b As Long) As Long
 			Return System.Math.Max(a, b)
 		End Function
 
@@ -1027,7 +1027,7 @@ Namespace java.lang
 		''' <param name="a">   an argument. </param>
 		''' <param name="b">   another argument. </param>
 		''' <returns>  the larger of {@code a} and {@code b}. </returns>
-		Public Shared Function max(ByVal a As Single, ByVal b As Single) As Single
+		Public Shared Function max(  a As Single,   b As Single) As Single
 			Return System.Math.Max(a, b)
 		End Function
 
@@ -1044,7 +1044,7 @@ Namespace java.lang
 		''' <param name="a">   an argument. </param>
 		''' <param name="b">   another argument. </param>
 		''' <returns>  the larger of {@code a} and {@code b}. </returns>
-		Public Shared Function max(ByVal a As Double, ByVal b As Double) As Double
+		Public Shared Function max(  a As Double,   b As Double) As Double
 			Return System.Math.Max(a, b)
 		End Function
 
@@ -1057,7 +1057,7 @@ Namespace java.lang
 		''' <param name="a">   an argument. </param>
 		''' <param name="b">   another argument. </param>
 		''' <returns>  the smaller of {@code a} and {@code b}. </returns>
-		Public Shared Function min(ByVal a As Integer, ByVal b As Integer) As Integer
+		Public Shared Function min(  a As Integer,   b As Integer) As Integer
 			Return System.Math.Min(a, b)
 		End Function
 
@@ -1070,7 +1070,7 @@ Namespace java.lang
 		''' <param name="a">   an argument. </param>
 		''' <param name="b">   another argument. </param>
 		''' <returns>  the smaller of {@code a} and {@code b}. </returns>
-		Public Shared Function min(ByVal a As Long, ByVal b As Long) As Long
+		Public Shared Function min(  a As Long,   b As Long) As Long
 			Return System.Math.Min(a, b)
 		End Function
 
@@ -1087,7 +1087,7 @@ Namespace java.lang
 		''' <param name="a">   an argument. </param>
 		''' <param name="b">   another argument. </param>
 		''' <returns>  the smaller of {@code a} and {@code b.} </returns>
-		Public Shared Function min(ByVal a As Single, ByVal b As Single) As Single
+		Public Shared Function min(  a As Single,   b As Single) As Single
 			Return System.Math.Min(a, b)
 		End Function
 
@@ -1104,7 +1104,7 @@ Namespace java.lang
 		''' <param name="a">   an argument. </param>
 		''' <param name="b">   another argument. </param>
 		''' <returns>  the smaller of {@code a} and {@code b}. </returns>
-		Public Shared Function min(ByVal a As Double, ByVal b As Double) As Double
+		Public Shared Function min(  a As Double,   b As Double) As Double
 			Return System.Math.Min(a, b)
 		End Function
 
@@ -1130,7 +1130,7 @@ Namespace java.lang
 		''' <returns> the size of an ulp of the argument
 		''' @author Joseph D. Darcy
 		''' @since 1.5 </returns>
-		Public Shared Function ulp(ByVal d As Double) As Double
+		Public Shared Function ulp(  d As Double) As Double
 			Return System.Math.ulp(d)
 		End Function
 
@@ -1156,7 +1156,7 @@ Namespace java.lang
 		''' <returns> the size of an ulp of the argument
 		''' @author Joseph D. Darcy
 		''' @since 1.5 </returns>
-		Public Shared Function ulp(ByVal f As Single) As Single
+		Public Shared Function ulp(  f As Single) As Single
 			Return System.Math.ulp(f)
 		End Function
 
@@ -1176,7 +1176,7 @@ Namespace java.lang
 		''' <returns> the signum function of the argument
 		''' @author Joseph D. Darcy
 		''' @since 1.5 </returns>
-		Public Shared Function signum(ByVal d As Double) As Double
+		Public Shared Function signum(  d As Double) As Double
 			Return System.Math.Sign(d)
 		End Function
 
@@ -1196,7 +1196,7 @@ Namespace java.lang
 		''' <returns> the signum function of the argument
 		''' @author Joseph D. Darcy
 		''' @since 1.5 </returns>
-		Public Shared Function signum(ByVal f As Single) As Single
+		Public Shared Function signum(  f As Single) As Single
 			Return System.Math.Sign(f)
 		End Function
 
@@ -1224,7 +1224,7 @@ Namespace java.lang
 		''' @since 1.5 </returns>
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Public Shared Function sinh(ByVal x As Double) As Double
+		Public Shared Function sinh(  x As Double) As Double
 		End Function
 
 		''' <summary>
@@ -1250,7 +1250,7 @@ Namespace java.lang
 		''' @since 1.5 </returns>
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Public Shared Function cosh(ByVal x As Double) As Double
+		Public Shared Function cosh(  x As Double) As Double
 		End Function
 
 		''' <summary>
@@ -1283,7 +1283,7 @@ Namespace java.lang
 		''' @since 1.5 </returns>
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Public Shared Function tanh(ByVal x As Double) As Double
+		Public Shared Function tanh(  x As Double) As Double
 		End Function
 
 		''' <summary>
@@ -1308,7 +1308,7 @@ Namespace java.lang
 		''' @since 1.5 </returns>
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Public Shared Function hypot(ByVal x As Double, ByVal y As Double) As Double
+		Public Shared Function hypot(  x As Double,   y As Double) As Double
 		End Function
 
 		''' <summary>
@@ -1338,7 +1338,7 @@ Namespace java.lang
 		''' @since 1.5 </returns>
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Public Shared Function expm1(ByVal x As Double) As Double
+		Public Shared Function expm1(  x As Double) As Double
 		End Function
 
 		''' <summary>
@@ -1371,7 +1371,7 @@ Namespace java.lang
 		''' @since 1.5 </returns>
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Public Shared Function log1p(ByVal x As Double) As Double
+		Public Shared Function log1p(  x As Double) As Double
 		End Function
 
 		''' <summary>
@@ -1385,7 +1385,7 @@ Namespace java.lang
 		''' <returns> a value with the magnitude of {@code magnitude}
 		''' and the sign of {@code sign}.
 		''' @since 1.6 </returns>
-		Public Shared Function copySign(ByVal magnitude As Double, ByVal sign As Double) As Double
+		Public Shared Function copySign(  magnitude As Double,   sign As Double) As Double
 			Return System.Math.copySign(magnitude, (If(Double.IsNaN(sign), 1.0R, sign)))
 		End Function
 
@@ -1400,7 +1400,7 @@ Namespace java.lang
 		''' <returns> a value with the magnitude of {@code magnitude}
 		''' and the sign of {@code sign}.
 		''' @since 1.6 </returns>
-		Public Shared Function copySign(ByVal magnitude As Single, ByVal sign As Single) As Single
+		Public Shared Function copySign(  magnitude As Single,   sign As Single) As Single
 			Return System.Math.copySign(magnitude, (If(Float.IsNaN(sign), 1.0f, sign)))
 		End Function
 		''' <summary>
@@ -1416,7 +1416,7 @@ Namespace java.lang
 		''' <param name="f"> a {@code float} value </param>
 		''' <returns> the unbiased exponent of the argument
 		''' @since 1.6 </returns>
-		Public Shared Function getExponent(ByVal f As Single) As Integer
+		Public Shared Function getExponent(  f As Single) As Integer
 			Return System.Math.getExponent(f)
 		End Function
 
@@ -1433,7 +1433,7 @@ Namespace java.lang
 		''' <param name="d"> a {@code double} value </param>
 		''' <returns> the unbiased exponent of the argument
 		''' @since 1.6 </returns>
-		Public Shared Function getExponent(ByVal d As Double) As Integer
+		Public Shared Function getExponent(  d As Double) As Integer
 			Return System.Math.getExponent(d)
 		End Function
 
@@ -1475,7 +1475,7 @@ Namespace java.lang
 		''' <returns> The floating-point number adjacent to {@code start} in the
 		''' direction of {@code direction}.
 		''' @since 1.6 </returns>
-		Public Shared Function nextAfter(ByVal start As Double, ByVal direction As Double) As Double
+		Public Shared Function nextAfter(  start As Double,   direction As Double) As Double
 			Return System.Math.nextAfter(start, direction)
 		End Function
 
@@ -1516,7 +1516,7 @@ Namespace java.lang
 		''' <returns> The floating-point number adjacent to {@code start} in the
 		''' direction of {@code direction}.
 		''' @since 1.6 </returns>
-		Public Shared Function nextAfter(ByVal start As Single, ByVal direction As Double) As Single
+		Public Shared Function nextAfter(  start As Single,   direction As Double) As Single
 			Return System.Math.nextAfter(start, direction)
 		End Function
 
@@ -1544,7 +1544,7 @@ Namespace java.lang
 		''' <returns> The adjacent floating-point value closer to positive
 		''' infinity.
 		''' @since 1.6 </returns>
-		Public Shared Function nextUp(ByVal d As Double) As Double
+		Public Shared Function nextUp(  d As Double) As Double
 			Return System.Math.nextUp(d)
 		End Function
 
@@ -1572,7 +1572,7 @@ Namespace java.lang
 		''' <returns> The adjacent floating-point value closer to positive
 		''' infinity.
 		''' @since 1.6 </returns>
-		Public Shared Function nextUp(ByVal f As Single) As Single
+		Public Shared Function nextUp(  f As Single) As Single
 			Return System.Math.nextUp(f)
 		End Function
 
@@ -1600,7 +1600,7 @@ Namespace java.lang
 		''' <returns> The adjacent floating-point value closer to negative
 		''' infinity.
 		''' @since 1.8 </returns>
-		Public Shared Function nextDown(ByVal d As Double) As Double
+		Public Shared Function nextDown(  d As Double) As Double
 			Return System.Math.nextDown(d)
 		End Function
 
@@ -1628,7 +1628,7 @@ Namespace java.lang
 		''' <returns> The adjacent floating-point value closer to negative
 		''' infinity.
 		''' @since 1.8 </returns>
-		Public Shared Function nextDown(ByVal f As Single) As Single
+		Public Shared Function nextDown(  f As Single) As Single
 			Return System.Math.nextDown(f)
 		End Function
 
@@ -1661,7 +1661,7 @@ Namespace java.lang
 		''' <param name="scaleFactor"> power of 2 used to scale {@code d} </param>
 		''' <returns> {@code d} &times; 2<sup>{@code scaleFactor}</sup>
 		''' @since 1.6 </returns>
-		Public Shared Function scalb(ByVal d As Double, ByVal scaleFactor As Integer) As Double
+		Public Shared Function scalb(  d As Double,   scaleFactor As Integer) As Double
 			Return System.Math.scalb(d, scaleFactor)
 		End Function
 
@@ -1694,7 +1694,7 @@ Namespace java.lang
 		''' <param name="scaleFactor"> power of 2 used to scale {@code f} </param>
 		''' <returns> {@code f} &times; 2<sup>{@code scaleFactor}</sup>
 		''' @since 1.6 </returns>
-		Public Shared Function scalb(ByVal f As Single, ByVal scaleFactor As Integer) As Single
+		Public Shared Function scalb(  f As Single,   scaleFactor As Integer) As Single
 			Return System.Math.scalb(f, scaleFactor)
 		End Function
 	End Class

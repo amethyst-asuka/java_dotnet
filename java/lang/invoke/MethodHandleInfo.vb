@@ -179,7 +179,7 @@ Namespace java.lang.invoke
 		''' <exception cref="ClassCastException"> if the member is not of the expected type </exception>
 		''' <exception cref="NullPointerException"> if either argument is {@code null} </exception>
 		''' <exception cref="IllegalArgumentException"> if the underlying member is not accessible to the given lookup object </exception>
-		 Function reflectAs(Of T As Member)(ByVal expected As [Class], ByVal lookup As Lookup) As T
+		 Function reflectAs(Of T As Member)(  expected As [Class],   lookup As Lookup) As T
 
 		''' <summary>
 		''' Returns the access modifiers of the underlying member. </summary>
@@ -203,14 +203,14 @@ Namespace java.lang.invoke
 		' spelling derived from java.lang.reflect.Executable, not MethodHandle.isVarargsCollector
 		ReadOnly Property default varArgs As Boolean
 			' fields are never varargs:
-			Sub [New](MethodHandleNatives.refKindIsField((SByte) getReferenceKind()) ByVal  As )
+			Sub [New](MethodHandleNatives.refKindIsField((SByte) getReferenceKind())    As )
 'JAVA TO VB CONVERTER TODO TASK: Interfaces cannot contain fields in .NET:
 '				Return False;
 			' not in the public API: Modifier.VARARGS
 'JAVA TO VB CONVERTER TODO TASK: Interfaces cannot contain fields in .NET:
 '			final int ACC_VARARGS = &H80; ' from JVMS 4.6 (Table 4.20)
-			Sub [New](ACC_VARARGS == ByVal Modifier.TRANSIENT As )
-			Function Modifier.isTransient(getModifiers() ByVal  As ) As [Return]
+			Sub [New](ACC_VARARGS ==   Modifier.TRANSIENT As )
+			Function Modifier.isTransient(getModifiers()    As ) As [Return]
 
 		''' <summary>
 		''' Returns the descriptive name of the given reference kind,
@@ -220,11 +220,11 @@ Namespace java.lang.invoke
 		''' <returns> a mixed-case string such as {@code "getField"} </returns>
 		''' <exception cref="IllegalArgumentException"> if the argument is not a valid
 		'''            <a href="MethodHandleInfo.html#refkinds">reference kind number</a> </exception>
-		Shared Function referenceKindToString(ByVal referenceKind As Integer) As String
-			Sub [New](!MethodHandleNatives.refKindIsValid(referenceKind) ByVal  As )
+		Shared Function referenceKindToString(  referenceKind As Integer) As String
+			Sub [New](!MethodHandleNatives.refKindIsValid(referenceKind)    As )
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 				throw newIllegalArgumentException("invalid reference kind", referenceKind);
-			Function MethodHandleNatives.refKindName((SByte) ByVal referenceKind As ) As [Return]
+			Function MethodHandleNatives.refKindName((SByte)   referenceKind As ) As [Return]
 
 		''' <summary>
 		''' Returns a string representation for a {@code MethodHandleInfo},
@@ -255,7 +255,7 @@ Namespace java.lang.invoke
 		''' <exception cref="IllegalArgumentException"> if the first argument is not a valid
 		'''            <a href="MethodHandleInfo.html#refkinds">reference kind number</a> </exception>
 		''' <exception cref="NullPointerException"> if any reference argument is {@code null} </exception>
-		Shared Function ToString(ByVal kind As Integer, ByVal defc As [Class], ByVal name As String, ByVal type As MethodType) As String
+		Shared Function ToString(  kind As Integer,   defc As [Class],   name As String,   type As MethodType) As String
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 			Objects.requireNonNull(name);
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:

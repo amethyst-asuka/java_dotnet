@@ -93,7 +93,7 @@ Namespace java.lang
 		'''               thread in the specified thread group. </exception>
 		''' <seealso cref=     java.lang.ThreadGroup#checkAccess()
 		''' @since   JDK1.0 </seealso>
-		Public Sub New(ByVal name As String)
+		Public Sub New(  name As String)
 			Me.New(Thread.CurrentThread.threadGroup, name)
 		End Sub
 
@@ -113,11 +113,11 @@ Namespace java.lang
 		''' <seealso cref=     java.lang.SecurityException </seealso>
 		''' <seealso cref=     java.lang.ThreadGroup#checkAccess()
 		''' @since   JDK1.0 </seealso>
-		Public Sub New(ByVal parent As ThreadGroup, ByVal name As String)
+		Public Sub New(  parent As ThreadGroup,   name As String)
 			Me.New(checkParentAccess(parent), parent, name)
 		End Sub
 
-		Private Sub New(ByVal unused As Void, ByVal parent As ThreadGroup, ByVal name As String)
+		Private Sub New(  unused As Void,   parent As ThreadGroup,   name As String)
 			Me.name = name
 			Me.maxPriority = parent.maxPriority
 			Me.daemon = parent.daemon
@@ -131,7 +131,7 @@ Namespace java.lang
 	'     * @throws  SecurityException     if the current thread cannot create a
 	'     *                                thread in the specified thread group.
 	'     
-		Private Shared Function checkParentAccess(ByVal parent As ThreadGroup) As Void
+		Private Shared Function checkParentAccess(  parent As ThreadGroup) As Void
 			parent.checkAccess()
 			Return Nothing
 		End Function
@@ -184,7 +184,7 @@ Namespace java.lang
 			Get
 				Return maxPriority
 			End Get
-			Set(ByVal pri As Integer)
+			Set(  pri As Integer)
 		End Property
 
 		''' <summary>
@@ -199,7 +199,7 @@ Namespace java.lang
 			Get
 				Return daemon
 			End Get
-			Set(ByVal daemon As Boolean)
+			Set(  daemon As Boolean)
 				checkAccess()
 				Me.daemon = daemon
 			End Set
@@ -245,7 +245,7 @@ Namespace java.lang
 		'''          argument or one of its ancestor thread groups;
 		'''          <code>false</code> otherwise.
 		''' @since   JDK1.0 </returns>
-		Public Function parentOf(ByVal g As ThreadGroup) As Boolean
+		Public Function parentOf(  g As ThreadGroup) As Boolean
 			Do While g IsNot Nothing
 				If g Is Me Then Return True
 				g = g.parent
@@ -329,7 +329,7 @@ Namespace java.lang
 		'''          the current thread cannot access this thread group
 		''' 
 		''' @since   JDK1.0 </exception>
-		Public Overridable Function enumerate(ByVal list As Thread()) As Integer
+		Public Overridable Function enumerate(  list As Thread()) As Integer
 			checkAccess()
 			Return enumerate(list, 0, True)
 		End Function

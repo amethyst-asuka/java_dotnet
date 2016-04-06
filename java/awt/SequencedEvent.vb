@@ -78,7 +78,7 @@ Namespace java.awt
 		''' </summary>
 		''' <param name="nested"> the AWTEvent which this SequencedEvent's dispatch()
 		'''        method will dispatch </param>
-		Public Sub New(ByVal nested As AWTEvent)
+		Public Sub New(  nested As AWTEvent)
 			MyBase.New(nested.source, ID)
 			Me.nested = nested
 			' All AWTEvents that are wrapped in SequencedEvents are (at
@@ -142,7 +142,7 @@ Namespace java.awt
 		''' <summary>
 		''' true only if event exists and nested source appContext is disposed.
 		''' </summary>
-		Private Shared Function isOwnerAppContextDisposed(ByVal se As SequencedEvent) As Boolean
+		Private Shared Function isOwnerAppContextDisposed(  se As SequencedEvent) As Boolean
 			If se IsNot Nothing Then
 				Dim target As Object = se.nested.source
 				If TypeOf target Is Component Then Return CType(target, Component).appContext.disposed

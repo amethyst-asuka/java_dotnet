@@ -190,7 +190,7 @@ Namespace java.rmi.server
 		''' (if <code>port</code> is zero, an anonymous port is chosen) </param>
 		''' <exception cref="RemoteException"> if failed to export object
 		''' @since 1.2 </exception>
-		Protected Friend Sub New(ByVal port As Integer)
+		Protected Friend Sub New(  port As Integer)
 			Me.port = port
 			exportObject(CType(Me, Remote), port)
 		End Sub
@@ -210,7 +210,7 @@ Namespace java.rmi.server
 		''' <param name="ssf"> the server-side socket factory for receiving remote calls </param>
 		''' <exception cref="RemoteException"> if failed to export object
 		''' @since 1.2 </exception>
-		Protected Friend Sub New(ByVal port As Integer, ByVal csf As RMIClientSocketFactory, ByVal ssf As RMIServerSocketFactory)
+		Protected Friend Sub New(  port As Integer,   csf As RMIClientSocketFactory,   ssf As RMIServerSocketFactory)
 			Me.port = port
 			Me.csf = csf
 			Me.ssf = ssf
@@ -220,7 +220,7 @@ Namespace java.rmi.server
 		''' <summary>
 		''' Re-export the remote object when it is deserialized.
 		''' </summary>
-		Private Sub readObject(ByVal [in] As java.io.ObjectInputStream)
+		Private Sub readObject(  [in] As java.io.ObjectInputStream)
 			[in].defaultReadObject()
 			reexport()
 		End Sub
@@ -274,7 +274,7 @@ Namespace java.rmi.server
 		''' exportObject(Remote, port, csf, ssf)}
 		''' instead. 
 		<Obsolete("This method is deprecated because it supports only static stubs.")> _
-		Public Shared Function exportObject(ByVal obj As Remote) As RemoteStub
+		Public Shared Function exportObject(  obj As Remote) As RemoteStub
 	'        
 	'         * Use UnicastServerRef constructor passing the boolean value true
 	'         * to indicate that only a generated stub class should be used.  A
@@ -297,7 +297,7 @@ Namespace java.rmi.server
 		''' <returns> remote object stub </returns>
 		''' <exception cref="RemoteException"> if export fails
 		''' @since 1.2 </exception>
-		Public Shared Function exportObject(ByVal obj As Remote, ByVal port As Integer) As Remote
+		Public Shared Function exportObject(  obj As Remote,   port As Integer) As Remote
 			Return exportObject(obj, New sun.rmi.server.UnicastServerRef(port))
 		End Function
 
@@ -317,7 +317,7 @@ Namespace java.rmi.server
 		''' <returns> remote object stub </returns>
 		''' <exception cref="RemoteException"> if export fails
 		''' @since 1.2 </exception>
-		Public Shared Function exportObject(ByVal obj As Remote, ByVal port As Integer, ByVal csf As RMIClientSocketFactory, ByVal ssf As RMIServerSocketFactory) As Remote
+		Public Shared Function exportObject(  obj As Remote,   port As Integer,   csf As RMIClientSocketFactory,   ssf As RMIServerSocketFactory) As Remote
 
 			Return exportObject(obj, New sun.rmi.server.UnicastServerRef2(port, csf, ssf))
 		End Function
@@ -339,14 +339,14 @@ Namespace java.rmi.server
 		''' <exception cref="NoSuchObjectException"> if the remote object is not
 		''' currently exported
 		''' @since 1.2 </exception>
-		Public Shared Function unexportObject(ByVal obj As Remote, ByVal force As Boolean) As Boolean
+		Public Shared Function unexportObject(  obj As Remote,   force As Boolean) As Boolean
 			Return sun.rmi.transport.ObjectTable.unexportObject(obj, force)
 		End Function
 
 		''' <summary>
 		''' Exports the specified object using the specified server ref.
 		''' </summary>
-		Private Shared Function exportObject(ByVal obj As Remote, ByVal sref As sun.rmi.server.UnicastServerRef) As Remote
+		Private Shared Function exportObject(  obj As Remote,   sref As sun.rmi.server.UnicastServerRef) As Remote
 			' if obj extends UnicastRemoteObject, set its ref.
 			If TypeOf obj Is UnicastRemoteObject Then CType(obj, UnicastRemoteObject).ref = sref
 			Return sref.exportObject(obj, Nothing, False)

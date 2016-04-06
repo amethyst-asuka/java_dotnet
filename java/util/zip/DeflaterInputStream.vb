@@ -76,7 +76,7 @@ Namespace java.util.zip
 		''' </summary>
 		''' <param name="in"> input stream to read the uncompressed data to </param>
 		''' <exception cref="NullPointerException"> if {@code in} is null </exception>
-		Public Sub New(ByVal [in] As java.io.InputStream)
+		Public Sub New(  [in] As java.io.InputStream)
 			Me.New([in], New Deflater)
 			usesDefaultDeflater = True
 		End Sub
@@ -88,7 +88,7 @@ Namespace java.util.zip
 		''' <param name="in"> input stream to read the uncompressed data to </param>
 		''' <param name="defl"> compressor ("deflater") for this stream </param>
 		''' <exception cref="NullPointerException"> if {@code in} or {@code defl} is null </exception>
-		Public Sub New(ByVal [in] As java.io.InputStream, ByVal defl As Deflater)
+		Public Sub New(  [in] As java.io.InputStream,   defl As Deflater)
 			Me.New([in], defl, 512)
 		End Sub
 
@@ -101,7 +101,7 @@ Namespace java.util.zip
 		''' <param name="bufLen"> compression buffer size </param>
 		''' <exception cref="IllegalArgumentException"> if {@code bufLen <= 0} </exception>
 		''' <exception cref="NullPointerException"> if {@code in} or {@code defl} is null </exception>
-		Public Sub New(ByVal [in] As java.io.InputStream, ByVal defl As Deflater, ByVal bufLen As Integer)
+		Public Sub New(  [in] As java.io.InputStream,   defl As Deflater,   bufLen As Integer)
 			MyBase.New([in])
 
 			' Sanity checks
@@ -159,7 +159,7 @@ Namespace java.util.zip
 		''' <exception cref="IndexOutOfBoundsException">  if {@code len > b.length - off} </exception>
 		''' <exception cref="IOException"> if an I/O error occurs or if this input stream is
 		''' already closed </exception>
-		Public Overrides Function read(ByVal b As SByte(), ByVal [off] As Integer, ByVal len As Integer) As Integer
+		Public Overrides Function read(  b As SByte(),   [off] As Integer,   len As Integer) As Integer
 			' Sanity checks
 			ensureOpen()
 			If b Is Nothing Then
@@ -211,7 +211,7 @@ Namespace java.util.zip
 		''' <returns> the actual number of bytes skipped </returns>
 		''' <exception cref="IOException"> if an I/O error occurs or if this stream is
 		''' already closed </exception>
-		Public Overrides Function skip(ByVal n As Long) As Long
+		Public Overrides Function skip(  n As Long) As Long
 			If n < 0 Then Throw New IllegalArgumentException("negative skip length")
 			ensureOpen()
 
@@ -259,7 +259,7 @@ Namespace java.util.zip
 		''' <i>This operation is not supported</i>.
 		''' </summary>
 		''' <param name="limit"> maximum bytes that can be read before invalidating the position marker </param>
-		Public Overrides Sub mark(ByVal limit As Integer)
+		Public Overrides Sub mark(  limit As Integer)
 			' Operation not supported
 		End Sub
 

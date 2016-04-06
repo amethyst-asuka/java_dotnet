@@ -57,7 +57,7 @@ Namespace java.lang.reflect
 		''' <param name="mod"> a set of modifiers </param>
 		''' <returns> {@code true} if {@code mod} includes the
 		''' {@code public} modifier; {@code false} otherwise. </returns>
-		Public Shared Function isPublic(ByVal [mod] As Integer) As Boolean
+		Public Shared Function isPublic(  [mod] As Integer) As Boolean
 			Return ([mod] And [PUBLIC]) <> 0
 		End Function
 
@@ -68,7 +68,7 @@ Namespace java.lang.reflect
 		''' <param name="mod"> a set of modifiers </param>
 		''' <returns> {@code true} if {@code mod} includes the
 		''' {@code private} modifier; {@code false} otherwise. </returns>
-		Public Shared Function isPrivate(ByVal [mod] As Integer) As Boolean
+		Public Shared Function isPrivate(  [mod] As Integer) As Boolean
 			Return ([mod] And [PRIVATE]) <> 0
 		End Function
 
@@ -79,7 +79,7 @@ Namespace java.lang.reflect
 		''' <param name="mod"> a set of modifiers </param>
 		''' <returns> {@code true} if {@code mod} includes the
 		''' {@code protected} modifier; {@code false} otherwise. </returns>
-		Public Shared Function isProtected(ByVal [mod] As Integer) As Boolean
+		Public Shared Function isProtected(  [mod] As Integer) As Boolean
 			Return ([mod] And [PROTECTED]) <> 0
 		End Function
 
@@ -90,7 +90,7 @@ Namespace java.lang.reflect
 		''' <param name="mod"> a set of modifiers </param>
 		''' <returns> {@code true} if {@code mod} includes the
 		''' {@code static} modifier; {@code false} otherwise. </returns>
-		Public Shared Function isStatic(ByVal [mod] As Integer) As Boolean
+		Public Shared Function isStatic(  [mod] As Integer) As Boolean
 			Return ([mod] And [STATIC]) <> 0
 		End Function
 
@@ -101,7 +101,7 @@ Namespace java.lang.reflect
 		''' <param name="mod"> a set of modifiers </param>
 		''' <returns> {@code true} if {@code mod} includes the
 		''' {@code final} modifier; {@code false} otherwise. </returns>
-		Public Shared Function isFinal(ByVal [mod] As Integer) As Boolean
+		Public Shared Function isFinal(  [mod] As Integer) As Boolean
 			Return ([mod] And FINAL) <> 0
 		End Function
 
@@ -112,7 +112,7 @@ Namespace java.lang.reflect
 		''' <param name="mod"> a set of modifiers </param>
 		''' <returns> {@code true} if {@code mod} includes the
 		''' {@code synchronized} modifier; {@code false} otherwise. </returns>
-		Public Shared Function isSynchronized(ByVal [mod] As Integer) As Boolean
+		Public Shared Function isSynchronized(  [mod] As Integer) As Boolean
 			Return ([mod] And SYNCHRONIZED) <> 0
 		End Function
 
@@ -123,7 +123,7 @@ Namespace java.lang.reflect
 		''' <param name="mod"> a set of modifiers </param>
 		''' <returns> {@code true} if {@code mod} includes the
 		''' {@code volatile} modifier; {@code false} otherwise. </returns>
-		Public Shared Function isVolatile(ByVal [mod] As Integer) As Boolean
+		Public Shared Function isVolatile(  [mod] As Integer) As Boolean
 			Return ([mod] And VOLATILE) <> 0
 		End Function
 
@@ -134,7 +134,7 @@ Namespace java.lang.reflect
 		''' <param name="mod"> a set of modifiers </param>
 		''' <returns> {@code true} if {@code mod} includes the
 		''' {@code transient} modifier; {@code false} otherwise. </returns>
-		Public Shared Function isTransient(ByVal [mod] As Integer) As Boolean
+		Public Shared Function isTransient(  [mod] As Integer) As Boolean
 			Return ([mod] And TRANSIENT) <> 0
 		End Function
 
@@ -145,7 +145,7 @@ Namespace java.lang.reflect
 		''' <param name="mod"> a set of modifiers </param>
 		''' <returns> {@code true} if {@code mod} includes the
 		''' {@code native} modifier; {@code false} otherwise. </returns>
-		Public Shared Function isNative(ByVal [mod] As Integer) As Boolean
+		Public Shared Function isNative(  [mod] As Integer) As Boolean
 			Return ([mod] And NATIVE) <> 0
 		End Function
 
@@ -156,7 +156,7 @@ Namespace java.lang.reflect
 		''' <param name="mod"> a set of modifiers </param>
 		''' <returns> {@code true} if {@code mod} includes the
 		''' {@code interface} modifier; {@code false} otherwise. </returns>
-		Public Shared Function isInterface(ByVal [mod] As Integer) As Boolean
+		Public Shared Function isInterface(  [mod] As Integer) As Boolean
 			Return ([mod] And [INTERFACE]) <> 0
 		End Function
 
@@ -167,7 +167,7 @@ Namespace java.lang.reflect
 		''' <param name="mod"> a set of modifiers </param>
 		''' <returns> {@code true} if {@code mod} includes the
 		''' {@code abstract} modifier; {@code false} otherwise. </returns>
-		Public Shared Function isAbstract(ByVal [mod] As Integer) As Boolean
+		Public Shared Function isAbstract(  [mod] As Integer) As Boolean
 			Return ([mod] And ABSTRACT) <> 0
 		End Function
 
@@ -178,7 +178,7 @@ Namespace java.lang.reflect
 		''' <param name="mod"> a set of modifiers </param>
 		''' <returns> {@code true} if {@code mod} includes the
 		''' {@code strictfp} modifier; {@code false} otherwise. </returns>
-		Public Shared Function isStrict(ByVal [mod] As Integer) As Boolean
+		Public Shared Function isStrict(  [mod] As Integer) As Boolean
 			Return ([mod] And [STRICT]) <> 0
 		End Function
 
@@ -212,7 +212,7 @@ Namespace java.lang.reflect
 		''' <param name="mod"> a set of modifiers </param>
 		''' <returns>  a string representation of the set of modifiers
 		''' represented by {@code mod} </returns>
-		Public Shared Function ToString(ByVal [mod] As Integer) As String
+		Public Shared Function ToString(  [mod] As Integer) As String
 			Dim sb As New StringBuilder
 			Dim len As Integer
 
@@ -323,11 +323,11 @@ Namespace java.lang.reflect
 		Friend Const ANNOTATION As Integer = &H2000
 		Friend Const [ENUM] As Integer = &H4000
 		Friend Const MANDATED As Integer = &H8000
-		Friend Shared Function isSynthetic(ByVal [mod] As Integer) As Boolean
+		Friend Shared Function isSynthetic(  [mod] As Integer) As Boolean
 		  Return ([mod] And SYNTHETIC) <> 0
 		End Function
 
-		Friend Shared Function isMandated(ByVal [mod] As Integer) As Boolean
+		Friend Shared Function isMandated(  [mod] As Integer) As Boolean
 		  Return ([mod] And MANDATED) <> 0
 		End Function
 

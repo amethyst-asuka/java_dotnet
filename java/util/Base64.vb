@@ -127,7 +127,7 @@ Namespace java.util
 		''' <exception cref="IllegalArgumentException"> if {@code lineSeparator} includes any
 		'''          character of "The Base64 Alphabet" as specified in Table 1 of
 		'''          RFC 2045. </exception>
-		Public Shared Function getMimeEncoder(ByVal lineLength As Integer, ByVal lineSeparator As SByte()) As Encoder
+		Public Shared Function getMimeEncoder(  lineLength As Integer,   lineSeparator As SByte()) As Encoder
 			 Objects.requireNonNull(lineSeparator)
 			 Dim base64_Renamed As Integer() = Decoder.fromBase64
 			 For Each b As SByte In lineSeparator
@@ -192,7 +192,7 @@ Namespace java.util
 			Private ReadOnly isURL As Boolean
 			Private ReadOnly doPadding As Boolean
 
-			Private Sub New(ByVal isURL As Boolean, ByVal newline As SByte(), ByVal linemax As Integer, ByVal doPadding As Boolean)
+			Private Sub New(  isURL As Boolean,   newline As SByte(),   linemax As Integer,   doPadding As Boolean)
 				Me.isURL = isURL
 				Me.newline = newline
 				Me.linemax = linemax
@@ -220,7 +220,7 @@ Namespace java.util
 			Friend Shared ReadOnly RFC4648_URLSAFE As New Encoder(True, Nothing, -1, True)
 			Friend Shared ReadOnly RFC2045 As New Encoder(False, CRLF, MIMELINEMAX, True)
 
-			Private Function outLength(ByVal srclen As Integer) As Integer
+			Private Function outLength(  srclen As Integer) As Integer
 				Dim len As Integer = 0
 				If doPadding Then
 					len = 4 * ((srclen + 2) \ 3)
@@ -241,7 +241,7 @@ Namespace java.util
 			'''          the byte array to encode </param>
 			''' <returns>  A newly-allocated byte array containing the resulting
 			'''          encoded bytes. </returns>
-			Public Overridable Function encode(ByVal src As SByte()) As SByte()
+			Public Overridable Function encode(  src As SByte()) As SByte()
 				Dim len As Integer = outLength(src.Length) ' dst array size
 				Dim dst As SByte() = New SByte(len - 1){}
 				Dim ret As Integer = encode0(src, 0, src.Length, dst)
@@ -267,7 +267,7 @@ Namespace java.util
 			''' </returns>
 			''' <exception cref="IllegalArgumentException"> if {@code dst} does not have enough
 			'''          space for encoding all input bytes. </exception>
-			Public Overridable Function encode(ByVal src As SByte(), ByVal dst As SByte()) As Integer
+			Public Overridable Function encode(  src As SByte(),   dst As SByte()) As Integer
 				Dim len As Integer = outLength(src.Length) ' dst array size
 				If dst.Length < len Then Throw New IllegalArgumentException("Output byte array is too small for encoding all input bytes")
 				Return encode0(src, 0, src.Length, dst)
@@ -290,7 +290,7 @@ Namespace java.util
 			'''          the byte array to encode </param>
 			''' <returns>  A String containing the resulting Base64 encoded characters </returns>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-			Public Overridable Function encodeToString(ByVal src As SByte()) As String
+			Public Overridable Function encodeToString(  src As SByte()) As String
 				Dim encoded As SByte() = encode(src)
 				Return New String(encoded, 0, 0, encoded.Length)
 			End Function
@@ -308,7 +308,7 @@ Namespace java.util
 			''' <param name="buffer">
 			'''          the source ByteBuffer to encode </param>
 			''' <returns>  A newly-allocated byte buffer containing the encoded bytes. </returns>
-			Public Overridable Function encode(ByVal buffer As java.nio.ByteBuffer) As java.nio.ByteBuffer
+			Public Overridable Function encode(  buffer As java.nio.ByteBuffer) As java.nio.ByteBuffer
 				Dim len As Integer = outLength(buffer.remaining())
 				Dim dst As SByte() = New SByte(len - 1){}
 				Dim ret As Integer = 0
@@ -340,7 +340,7 @@ Namespace java.util
 			'''          the output stream. </param>
 			''' <returns>  the output stream for encoding the byte data into the
 			'''          specified Base64 encoded format </returns>
-			Public Overridable Function wrap(ByVal os As java.io.OutputStream) As java.io.OutputStream
+			Public Overridable Function wrap(  os As java.io.OutputStream) As java.io.OutputStream
 				Objects.requireNonNull(os)
 				Return New EncOutputStream(os,If(isURL, toBase64URL, toBase64), newline, linemax, doPadding)
 			End Function
@@ -361,7 +361,7 @@ Namespace java.util
 				Return New Encoder(isURL, newline, linemax, False)
 			End Function
 
-			Private Function encode0(ByVal src As SByte(), ByVal [off] As Integer, ByVal [end] As Integer, ByVal dst As SByte()) As Integer
+			Private Function encode0(  src As SByte(),   [off] As Integer,   [end] As Integer,   dst As SByte()) As Integer
 				Dim base64_Renamed As Char() = If(isURL, toBase64URL, toBase64)
 				Dim sp As Integer = [off]
 				Dim slen As Integer = ([end] - [off]) \ 3 * 3
@@ -455,7 +455,7 @@ Namespace java.util
 			Private ReadOnly isURL As Boolean
 			Private ReadOnly isMIME As Boolean
 
-			Private Sub New(ByVal isURL As Boolean, ByVal isMIME As Boolean)
+			Private Sub New(  isURL As Boolean,   isMIME As Boolean)
 				Me.isURL = isURL
 				Me.isMIME = isMIME
 			End Sub
@@ -506,7 +506,7 @@ Namespace java.util
 			''' </returns>
 			''' <exception cref="IllegalArgumentException">
 			'''          if {@code src} is not in valid Base64 scheme </exception>
-			Public Overridable Function decode(ByVal src As SByte()) As SByte()
+			Public Overridable Function decode(  src As SByte()) As SByte()
 				Dim dst As SByte() = New SByte(outLength(src, 0, src.Length) - 1){}
 				Dim ret As Integer = decode0(src, 0, src.Length, dst)
 				If ret <> dst.Length Then
@@ -530,7 +530,7 @@ Namespace java.util
 			''' </returns>
 			''' <exception cref="IllegalArgumentException">
 			'''          if {@code src} is not in valid Base64 scheme </exception>
-			Public Overridable Function decode(ByVal src As String) As SByte()
+			Public Overridable Function decode(  src As String) As SByte()
 				Return decode(src.getBytes(java.nio.charset.StandardCharsets.ISO_8859_1))
 			End Function
 
@@ -558,7 +558,7 @@ Namespace java.util
 			''' <exception cref="IllegalArgumentException">
 			'''          if {@code src} is not in valid Base64 scheme, or {@code dst}
 			'''          does not have enough space for decoding all input bytes. </exception>
-			Public Overridable Function decode(ByVal src As SByte(), ByVal dst As SByte()) As Integer
+			Public Overridable Function decode(  src As SByte(),   dst As SByte()) As Integer
 				Dim len As Integer = outLength(src, 0, src.Length)
 				If dst.Length < len Then Throw New IllegalArgumentException("Output byte array is too small for decoding all input bytes")
 				Return decode0(src, 0, src.Length, dst)
@@ -584,7 +584,7 @@ Namespace java.util
 			''' </returns>
 			''' <exception cref="IllegalArgumentException">
 			'''          if {@code src} is not in valid Base64 scheme. </exception>
-			Public Overridable Function decode(ByVal buffer As java.nio.ByteBuffer) As java.nio.ByteBuffer
+			Public Overridable Function decode(  buffer As java.nio.ByteBuffer) As java.nio.ByteBuffer
 				Dim pos0 As Integer = buffer.position()
 				Try
 					Dim src As SByte()
@@ -622,12 +622,12 @@ Namespace java.util
 			''' </param>
 			''' <returns>  the input stream for decoding the specified Base64 encoded
 			'''          byte stream </returns>
-			Public Overridable Function wrap(ByVal [is] As java.io.InputStream) As java.io.InputStream
+			Public Overridable Function wrap(  [is] As java.io.InputStream) As java.io.InputStream
 				Objects.requireNonNull([is])
 				Return New DecInputStream([is],If(isURL, fromBase64URL, fromBase64), isMIME)
 			End Function
 
-			Private Function outLength(ByVal src As SByte(), ByVal sp As Integer, ByVal sl As Integer) As Integer
+			Private Function outLength(  src As SByte(),   sp As Integer,   sl As Integer) As Integer
 				Dim base64_Renamed As Integer() = If(isURL, fromBase64URL, fromBase64)
 				Dim paddings As Integer = 0
 				Dim len As Integer = sl - sp
@@ -661,7 +661,7 @@ Namespace java.util
 				Return 3 * ((len + 3) \ 4) - paddings
 			End Function
 
-			Private Function decode0(ByVal src As SByte(), ByVal sp As Integer, ByVal sl As Integer, ByVal dst As SByte()) As Integer
+			Private Function decode0(  src As SByte(),   sp As Integer,   sl As Integer,   dst As SByte()) As Integer
 				Dim base64_Renamed As Integer() = If(isURL, fromBase64URL, fromBase64)
 				Dim dp As Integer = 0
 				Dim bits As Integer = 0
@@ -742,7 +742,7 @@ Namespace java.util
 			Private ReadOnly doPadding As Boolean ' whether or not to pad
 			Private linepos As Integer = 0
 
-			Friend Sub New(ByVal os As java.io.OutputStream, ByVal base64_Renamed As Char(), ByVal newline As SByte(), ByVal linemax As Integer, ByVal doPadding As Boolean)
+			Friend Sub New(  os As java.io.OutputStream,   base64_Renamed As Char(),   newline As SByte(),   linemax As Integer,   doPadding As Boolean)
 				MyBase.New(os)
 				Me.base64_Renamed = base64_Renamed
 				Me.newline = newline
@@ -750,7 +750,7 @@ Namespace java.util
 				Me.doPadding = doPadding
 			End Sub
 
-			Public Overrides Sub write(ByVal b As Integer)
+			Public Overrides Sub write(  b As Integer)
 				Dim buf As SByte() = New SByte(0){}
 				buf(0) = CByte(b And &Hff)
 				write(buf, 0, 1)
@@ -763,7 +763,7 @@ Namespace java.util
 				End If
 			End Sub
 
-			Public Overrides Sub write(ByVal b As SByte(), ByVal [off] As Integer, ByVal len As Integer)
+			Public Overrides Sub write(  b As SByte(),   [off] As Integer,   len As Integer)
 				If closed Then Throw New java.io.IOException("Stream is closed")
 				If [off] < 0 OrElse len < 0 OrElse [off] + len > b.Length Then Throw New ArrayIndexOutOfBoundsException
 				If len = 0 Then Return
@@ -855,7 +855,7 @@ Namespace java.util
 			Private eof As Boolean = False
 			Private closed As Boolean = False
 
-			Friend Sub New(ByVal [is] As java.io.InputStream, ByVal base64_Renamed As Integer(), ByVal isMIME As Boolean)
+			Friend Sub New(  [is] As java.io.InputStream,   base64_Renamed As Integer(),   isMIME As Boolean)
 				Me.is = [is]
 				Me.base64_Renamed = base64_Renamed
 				Me.isMIME = isMIME
@@ -867,7 +867,7 @@ Namespace java.util
 				Return If(read(sbBuf, 0, 1) = -1, -1, sbBuf(0) And &Hff)
 			End Function
 
-			Public Overrides Function read(ByVal b As SByte(), ByVal [off] As Integer, ByVal len As Integer) As Integer
+			Public Overrides Function read(  b As SByte(),   [off] As Integer,   len As Integer) As Integer
 				If closed Then Throw New java.io.IOException("Stream is closed")
 				If eof AndAlso nextout < 0 Then ' eof and no leftover Return -1
 				If [off] < 0 OrElse len < 0 OrElse len > b.Length - [off] Then Throw New IndexOutOfBoundsException

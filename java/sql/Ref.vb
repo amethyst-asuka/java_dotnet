@@ -82,7 +82,7 @@ Namespace java.sql
 		''' this method
 		''' @since 1.4 </exception>
 		''' <seealso cref= #setObject </seealso>
-		Function getObject(ByVal map As IDictionary(Of String, [Class])) As Object
+		Function getObject(  map As IDictionary(Of String, [Class])) As Object
 
 
 		''' <summary>

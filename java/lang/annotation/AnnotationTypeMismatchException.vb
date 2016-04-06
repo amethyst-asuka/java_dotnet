@@ -61,7 +61,7 @@ Namespace java.lang.annotation
 		''' <param name="foundType"> the (erroneous) type of data found in the annotation.
 		'''        This string may, but is not required to, contain the value
 		'''        as well.  The exact format of the string is unspecified. </param>
-		Public Sub New(ByVal element As Method, ByVal foundType As String)
+		Public Sub New(  element As Method,   foundType As String)
 			MyBase.New("Incorrectly typed data found for annotation element " & element & " (Found data of type " & foundType & ")")
 			Me.element_Renamed = element
 			Me.foundType_Renamed = foundType

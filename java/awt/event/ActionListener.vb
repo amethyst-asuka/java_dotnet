@@ -46,7 +46,7 @@ Namespace java.awt.event
 		''' <summary>
 		''' Invoked when an action occurs.
 		''' </summary>
-		Sub actionPerformed(ByVal e As ActionEvent)
+		Sub actionPerformed(  e As ActionEvent)
 
 	End Interface
 

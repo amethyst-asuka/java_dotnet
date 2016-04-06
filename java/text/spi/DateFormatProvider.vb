@@ -60,7 +60,7 @@ Namespace java.text.spi
 		''' <exception cref="NullPointerException"> if <code>locale</code> is null </exception>
 		''' <returns> a time formatter. </returns>
 		''' <seealso cref= java.text.DateFormat#getTimeInstance(int, java.util.Locale) </seealso>
-		Public MustOverride Function getTimeInstance(ByVal style As Integer, ByVal locale As java.util.Locale) As java.text.DateFormat
+		Public MustOverride Function getTimeInstance(  style As Integer,   locale As java.util.Locale) As java.text.DateFormat
 
 		''' <summary>
 		''' Returns a new <code>DateFormat</code> instance which formats date
@@ -79,7 +79,7 @@ Namespace java.text.spi
 		''' <exception cref="NullPointerException"> if <code>locale</code> is null </exception>
 		''' <returns> a date formatter. </returns>
 		''' <seealso cref= java.text.DateFormat#getDateInstance(int, java.util.Locale) </seealso>
-		Public MustOverride Function getDateInstance(ByVal style As Integer, ByVal locale As java.util.Locale) As java.text.DateFormat
+		Public MustOverride Function getDateInstance(  style As Integer,   locale As java.util.Locale) As java.text.DateFormat
 
 		''' <summary>
 		''' Returns a new <code>DateFormat</code> instance which formats date and time
@@ -104,7 +104,7 @@ Namespace java.text.spi
 		''' <exception cref="NullPointerException"> if <code>locale</code> is null </exception>
 		''' <returns> a date/time formatter. </returns>
 		''' <seealso cref= java.text.DateFormat#getDateTimeInstance(int, int, java.util.Locale) </seealso>
-		Public MustOverride Function getDateTimeInstance(ByVal dateStyle As Integer, ByVal timeStyle As Integer, ByVal locale As java.util.Locale) As java.text.DateFormat
+		Public MustOverride Function getDateTimeInstance(  dateStyle As Integer,   timeStyle As Integer,   locale As java.util.Locale) As java.text.DateFormat
 	End Class
 
 End Namespace

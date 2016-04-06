@@ -91,7 +91,7 @@ Namespace java.beans
 		''' </summary>
 		''' <param name="gfx">  Graphics object to paint into. </param>
 		''' <param name="box">  Rectangle within graphics object into which we should paint. </param>
-		Sub paintValue(ByVal gfx As java.awt.Graphics, ByVal box As java.awt.Rectangle)
+		Sub paintValue(  gfx As java.awt.Graphics,   box As java.awt.Rectangle)
 
 		'----------------------------------------------------------------------
 
@@ -189,13 +189,13 @@ Namespace java.beans
 		''' and itself as the source.
 		''' </summary>
 		''' <param name="listener">  the <seealso cref="PropertyChangeListener"/> to add </param>
-		Sub addPropertyChangeListener(ByVal listener As PropertyChangeListener)
+		Sub addPropertyChangeListener(  listener As PropertyChangeListener)
 
 		''' <summary>
 		''' Removes a listener for the value change.
 		''' </summary>
 		''' <param name="listener">  the <seealso cref="PropertyChangeListener"/> to remove </param>
-		Sub removePropertyChangeListener(ByVal listener As PropertyChangeListener)
+		Sub removePropertyChangeListener(  listener As PropertyChangeListener)
 
 	End Interface
 

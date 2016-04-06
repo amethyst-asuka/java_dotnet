@@ -145,7 +145,7 @@ Namespace java.util
 		''' prolong the lifetime of the application.
 		''' </summary>
 		''' <param name="isDaemon"> true if the associated thread should run as a daemon. </param>
-		Public Sub New(ByVal isDaemon As Boolean)
+		Public Sub New(  isDaemon As Boolean)
 			Me.New("Timer-" & serialNumber(), isDaemon)
 		End Sub
 
@@ -157,7 +157,7 @@ Namespace java.util
 		''' <param name="name"> the name of the associated thread </param>
 		''' <exception cref="NullPointerException"> if {@code name} is null
 		''' @since 1.5 </exception>
-		Public Sub New(ByVal name As String)
+		Public Sub New(  name As String)
 			thread_Renamed.name = name
 			thread_Renamed.start()
 		End Sub
@@ -171,7 +171,7 @@ Namespace java.util
 		''' <param name="isDaemon"> true if the associated thread should run as a daemon </param>
 		''' <exception cref="NullPointerException"> if {@code name} is null
 		''' @since 1.5 </exception>
-		Public Sub New(ByVal name As String, ByVal isDaemon As Boolean)
+		Public Sub New(  name As String,   isDaemon As Boolean)
 			thread_Renamed.name = name
 			thread_Renamed.daemon = isDaemon
 			thread_Renamed.start()
@@ -187,7 +187,7 @@ Namespace java.util
 		''' <exception cref="IllegalStateException"> if task was already scheduled or
 		'''         cancelled, timer was cancelled, or timer thread terminated. </exception>
 		''' <exception cref="NullPointerException"> if {@code task} is null </exception>
-		Public Overridable Sub schedule(ByVal task As TimerTask, ByVal delay As Long)
+		Public Overridable Sub schedule(  task As TimerTask,   delay As Long)
 			If delay < 0 Then Throw New IllegalArgumentException("Negative delay.")
 			sched(task, System.currentTimeMillis()+delay, 0)
 		End Sub
@@ -202,7 +202,7 @@ Namespace java.util
 		''' <exception cref="IllegalStateException"> if task was already scheduled or
 		'''         cancelled, timer was cancelled, or timer thread terminated. </exception>
 		''' <exception cref="NullPointerException"> if {@code task} or {@code time} is null </exception>
-		Public Overridable Sub schedule(ByVal task As TimerTask, ByVal time As DateTime?)
+		Public Overridable Sub schedule(  task As TimerTask,   time As DateTime?)
 			sched(task, time.Value.time, 0)
 		End Sub
 
@@ -237,7 +237,7 @@ Namespace java.util
 		''' <exception cref="IllegalStateException"> if task was already scheduled or
 		'''         cancelled, timer was cancelled, or timer thread terminated. </exception>
 		''' <exception cref="NullPointerException"> if {@code task} is null </exception>
-		Public Overridable Sub schedule(ByVal task As TimerTask, ByVal delay As Long, ByVal period As Long)
+		Public Overridable Sub schedule(  task As TimerTask,   delay As Long,   period As Long)
 			If delay < 0 Then Throw New IllegalArgumentException("Negative delay.")
 			If period <= 0 Then Throw New IllegalArgumentException("Non-positive period.")
 			sched(task, System.currentTimeMillis()+delay, -period)
@@ -275,7 +275,7 @@ Namespace java.util
 		''' <exception cref="IllegalStateException"> if task was already scheduled or
 		'''         cancelled, timer was cancelled, or timer thread terminated. </exception>
 		''' <exception cref="NullPointerException"> if {@code task} or {@code firstTime} is null </exception>
-		Public Overridable Sub schedule(ByVal task As TimerTask, ByVal firstTime As DateTime?, ByVal period As Long)
+		Public Overridable Sub schedule(  task As TimerTask,   firstTime As DateTime?,   period As Long)
 			If period <= 0 Then Throw New IllegalArgumentException("Non-positive period.")
 			sched(task, firstTime.Value.time, -period)
 		End Sub
@@ -312,7 +312,7 @@ Namespace java.util
 		''' <exception cref="IllegalStateException"> if task was already scheduled or
 		'''         cancelled, timer was cancelled, or timer thread terminated. </exception>
 		''' <exception cref="NullPointerException"> if {@code task} is null </exception>
-		Public Overridable Sub scheduleAtFixedRate(ByVal task As TimerTask, ByVal delay As Long, ByVal period As Long)
+		Public Overridable Sub scheduleAtFixedRate(  task As TimerTask,   delay As Long,   period As Long)
 			If delay < 0 Then Throw New IllegalArgumentException("Negative delay.")
 			If period <= 0 Then Throw New IllegalArgumentException("Non-positive period.")
 			sched(task, System.currentTimeMillis()+delay, period)
@@ -352,7 +352,7 @@ Namespace java.util
 		''' <exception cref="IllegalStateException"> if task was already scheduled or
 		'''         cancelled, timer was cancelled, or timer thread terminated. </exception>
 		''' <exception cref="NullPointerException"> if {@code task} or {@code firstTime} is null </exception>
-		Public Overridable Sub scheduleAtFixedRate(ByVal task As TimerTask, ByVal firstTime As DateTime?, ByVal period As Long)
+		Public Overridable Sub scheduleAtFixedRate(  task As TimerTask,   firstTime As DateTime?,   period As Long)
 			If period <= 0 Then Throw New IllegalArgumentException("Non-positive period.")
 			sched(task, firstTime.Value.time, period)
 		End Sub
@@ -369,7 +369,7 @@ Namespace java.util
 		''' <exception cref="IllegalStateException"> if task was already scheduled or
 		'''         cancelled, timer was cancelled, or timer thread terminated. </exception>
 		''' <exception cref="NullPointerException"> if {@code task} is null </exception>
-		Private Sub sched(ByVal task As TimerTask, ByVal time As Long, ByVal period As Long)
+		Private Sub sched(  task As TimerTask,   time As Long,   period As Long)
 			If time < 0 Then Throw New IllegalArgumentException("Illegal execution time.")
 
 			' Constrain value of period sufficiently to prevent numeric
@@ -476,7 +476,7 @@ Namespace java.util
 		''' </summary>
 		Private queue As TaskQueue
 
-		Friend Sub New(ByVal queue As TaskQueue)
+		Friend Sub New(  queue As TaskQueue)
 			Me.queue = queue
 		End Sub
 
@@ -570,7 +570,7 @@ Namespace java.util
 		''' <summary>
 		''' Adds a new task to the priority queue.
 		''' </summary>
-		Friend Overridable Sub add(ByVal task As TimerTask)
+		Friend Overridable Sub add(  task As TimerTask)
 			' Grow backing store if necessary
 			If size_Renamed + 1 = queue.Length Then
 				queue = New java.util.TimerTask(2*queue.length - 1){}
@@ -597,7 +597,7 @@ Namespace java.util
 		''' head task, which is returned by getMin) to the number of tasks on the
 		''' queue, inclusive.
 		''' </summary>
-		Friend Overridable Function [get](ByVal i As Integer) As TimerTask
+		Friend Overridable Function [get](  i As Integer) As TimerTask
 			Return queue(i)
 		End Function
 
@@ -616,7 +616,7 @@ Namespace java.util
 		''' the heap invariant.  Recall that queue is one-based, so
 		''' 1 <= i <= size.
 		''' </summary>
-		Friend Overridable Sub quickRemove(ByVal i As Integer)
+		Friend Overridable Sub quickRemove(  i As Integer)
 			Debug.Assert(i <= size_Renamed)
 
 			queue(i) = queue(size_Renamed)
@@ -628,7 +628,7 @@ Namespace java.util
 		''' Sets the nextExecutionTime associated with the head task to the
 		''' specified value, and adjusts priority queue accordingly.
 		''' </summary>
-		Friend Overridable Sub rescheduleMin(ByVal newTime As Long)
+		Friend Overridable Sub rescheduleMin(  newTime As Long)
 			queue(1).nextExecutionTime = newTime
 			fixDown(1)
 		End Sub
@@ -665,7 +665,7 @@ Namespace java.util
 		''' (by swapping it with its parent) repeatedly until queue[k]'s
 		''' nextExecutionTime is greater than or equal to that of its parent.
 		''' </summary>
-		Private Sub fixUp(ByVal k As Integer)
+		Private Sub fixUp(  k As Integer)
 			Do While k > 1
 				Dim j As Integer = k >> 1
 				If queue(j).nextExecutionTime <= queue(k).nextExecutionTime Then Exit Do
@@ -686,7 +686,7 @@ Namespace java.util
 		''' (by swapping it with its smaller child) repeatedly until queue[k]'s
 		''' nextExecutionTime is less than or equal to those of its children.
 		''' </summary>
-		Private Sub fixDown(ByVal k As Integer)
+		Private Sub fixDown(  k As Integer)
 			Dim j As Integer
 			j = k << 1
 			Do While j <= size_Renamed AndAlso j > 0

@@ -192,7 +192,7 @@ Namespace java.nio
 		' Creates a new buffer with the given mark, position, limit, and capacity,
 		' after checking invariants.
 		'
-		Friend Sub New(ByVal mark As Integer, ByVal pos As Integer, ByVal lim As Integer, ByVal cap As Integer) ' package-private
+		Friend Sub New(  mark As Integer,   pos As Integer,   lim As Integer,   cap As Integer) ' package-private
 			If cap < 0 Then Throw New IllegalArgumentException("Negative capacity: " & cap)
 			Me.capacity_Renamed = cap
 			limit(lim)
@@ -231,7 +231,7 @@ Namespace java.nio
 		''' </returns>
 		''' <exception cref="IllegalArgumentException">
 		'''          If the preconditions on <tt>newPosition</tt> do not hold </exception>
-		Public Function position(ByVal newPosition As Integer) As Buffer
+		Public Function position(  newPosition As Integer) As Buffer
 			If (newPosition > limit_Renamed) OrElse (newPosition < 0) Then Throw New IllegalArgumentException
 			position_Renamed = newPosition
 			If mark_Renamed > position_Renamed Then mark_Renamed = -1
@@ -259,7 +259,7 @@ Namespace java.nio
 		''' </returns>
 		''' <exception cref="IllegalArgumentException">
 		'''          If the preconditions on <tt>newLimit</tt> do not hold </exception>
-		Public Function limit(ByVal newLimit As Integer) As Buffer
+		Public Function limit(  newLimit As Integer) As Buffer
 			If (newLimit > capacity_Renamed) OrElse (newLimit < 0) Then Throw New IllegalArgumentException
 			limit_Renamed = newLimit
 			If position_Renamed > limit_Renamed Then position_Renamed = limit_Renamed
@@ -476,7 +476,7 @@ Namespace java.nio
 				Return tempVar
 		End Function
 
-		Friend Function nextGetIndex(ByVal nb As Integer) As Integer ' package-private
+		Friend Function nextGetIndex(  nb As Integer) As Integer ' package-private
 			If limit_Renamed - position_Renamed < nb Then Throw New BufferUnderflowException
 			Dim p As Integer = position_Renamed
 			position_Renamed += nb
@@ -496,7 +496,7 @@ Namespace java.nio
 				Return tempVar
 		End Function
 
-		Friend Function nextPutIndex(ByVal nb As Integer) As Integer ' package-private
+		Friend Function nextPutIndex(  nb As Integer) As Integer ' package-private
 			If limit_Renamed - position_Renamed < nb Then Throw New BufferOverflowException
 			Dim p As Integer = position_Renamed
 			position_Renamed += nb
@@ -508,12 +508,12 @@ Namespace java.nio
 		''' IndexOutOfBoundsException} if it is not smaller than the limit
 		''' or is smaller than zero.
 		''' </summary>
-		Friend Function checkIndex(ByVal i As Integer) As Integer ' package-private
+		Friend Function checkIndex(  i As Integer) As Integer ' package-private
 			If (i < 0) OrElse (i >= limit_Renamed) Then Throw New IndexOutOfBoundsException
 			Return i
 		End Function
 
-		Friend Function checkIndex(ByVal i As Integer, ByVal nb As Integer) As Integer ' package-private
+		Friend Function checkIndex(  i As Integer,   nb As Integer) As Integer ' package-private
 			If (i < 0) OrElse (nb > limit_Renamed - i) Then Throw New IndexOutOfBoundsException
 			Return i
 		End Function
@@ -533,7 +533,7 @@ Namespace java.nio
 			mark_Renamed = -1
 		End Sub
 
-		Friend Shared Sub checkBounds(ByVal [off] As Integer, ByVal len As Integer, ByVal size As Integer) ' package-private
+		Friend Shared Sub checkBounds(  [off] As Integer,   len As Integer,   size As Integer) ' package-private
 			If ([off] Or len Or ([off] + len) Or (size - ([off] + len))) < 0 Then Throw New IndexOutOfBoundsException
 		End Sub
 

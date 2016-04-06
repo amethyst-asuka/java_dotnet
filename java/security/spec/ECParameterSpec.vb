@@ -54,7 +54,7 @@ Namespace java.security.spec
 		''' {@code g}, or {@code n} is null. </exception>
 		''' <exception cref="IllegalArgumentException"> if {@code n}
 		''' or {@code h} is not positive. </exception>
-		Public Sub New(ByVal curve As EllipticCurve, ByVal g As ECPoint, ByVal n As System.Numerics.BigInteger, ByVal h As Integer)
+		Public Sub New(  curve As EllipticCurve,   g As ECPoint,   n As System.Numerics.BigInteger,   h As Integer)
 			If curve Is Nothing Then Throw New NullPointerException("curve is null")
 			If g Is Nothing Then Throw New NullPointerException("g is null")
 			If n Is Nothing Then Throw New NullPointerException("n is null")

@@ -157,7 +157,7 @@ Namespace java.text
 		''' getBeginIndex() to getEndIndex().  An IllegalArgumentException is thrown
 		''' if an invalid value is supplied. </param>
 		''' <returns> the character at the specified position or DONE if the specified position is equal to getEndIndex() </returns>
-		Function setIndex(ByVal position As Integer) As Char
+		Function setIndex(  position As Integer) As Char
 
 		''' <summary>
 		''' Returns the start index of the text. </summary>

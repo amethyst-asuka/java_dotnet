@@ -66,7 +66,7 @@ Namespace java.lang
 		''' </summary>
 		''' <param name="message">   the detail message. The detail message is saved for
 		'''          later retrieval by the <seealso cref="#getMessage()"/> method. </param>
-		Public Sub New(ByVal message As String)
+		Public Sub New(  message As String)
 			MyBase.New(message)
 		End Sub
 
@@ -83,7 +83,7 @@ Namespace java.lang
 		'''         permitted, and indicates that the cause is nonexistent or
 		'''         unknown.)
 		''' @since  1.4 </param>
-		Public Sub New(ByVal message As String, ByVal cause As Throwable)
+		Public Sub New(  message As String,   cause As Throwable)
 			MyBase.New(message, cause)
 		End Sub
 
@@ -99,7 +99,7 @@ Namespace java.lang
 		'''         permitted, and indicates that the cause is nonexistent or
 		'''         unknown.)
 		''' @since  1.4 </param>
-		Public Sub New(ByVal cause As Throwable)
+		Public Sub New(  cause As Throwable)
 			MyBase.New(cause)
 		End Sub
 
@@ -117,7 +117,7 @@ Namespace java.lang
 		'''                           be writable
 		''' 
 		''' @since 1.7 </param>
-		Protected Friend Sub New(ByVal message As String, ByVal cause As Throwable, ByVal enableSuppression As Boolean, ByVal writableStackTrace As Boolean)
+		Protected Friend Sub New(  message As String,   cause As Throwable,   enableSuppression As Boolean,   writableStackTrace As Boolean)
 			MyBase.New(message, cause, enableSuppression, writableStackTrace)
 		End Sub
 	End Class

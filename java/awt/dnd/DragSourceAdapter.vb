@@ -67,7 +67,7 @@ Namespace java.awt.dnd
 		''' </UL>
 		''' </summary>
 		''' <param name="dsde"> the <code>DragSourceDragEvent</code> </param>
-		Public Overridable Sub dragEnter(ByVal dsde As DragSourceDragEvent) Implements DragSourceListener.dragEnter
+		Public Overridable Sub dragEnter(  dsde As DragSourceDragEvent) Implements DragSourceListener.dragEnter
 		End Sub
 
 		''' <summary>
@@ -82,14 +82,14 @@ Namespace java.awt.dnd
 		''' </UL>
 		''' </summary>
 		''' <param name="dsde"> the <code>DragSourceDragEvent</code> </param>
-		Public Overridable Sub dragOver(ByVal dsde As DragSourceDragEvent) Implements DragSourceListener.dragOver
+		Public Overridable Sub dragOver(  dsde As DragSourceDragEvent) Implements DragSourceListener.dragOver
 		End Sub
 
 		''' <summary>
 		''' Called whenever the mouse is moved during a drag operation.
 		''' </summary>
 		''' <param name="dsde"> the <code>DragSourceDragEvent</code> </param>
-		Public Overridable Sub dragMouseMoved(ByVal dsde As DragSourceDragEvent) Implements DragSourceMotionListener.dragMouseMoved
+		Public Overridable Sub dragMouseMoved(  dsde As DragSourceDragEvent) Implements DragSourceMotionListener.dragMouseMoved
 		End Sub
 
 		''' <summary>
@@ -100,7 +100,7 @@ Namespace java.awt.dnd
 		''' modifiers that the user is interacting with.
 		''' </summary>
 		''' <param name="dsde"> the <code>DragSourceDragEvent</code> </param>
-		Public Overridable Sub dropActionChanged(ByVal dsde As DragSourceDragEvent) Implements DragSourceListener.dropActionChanged
+		Public Overridable Sub dropActionChanged(  dsde As DragSourceDragEvent) Implements DragSourceListener.dropActionChanged
 		End Sub
 
 		''' <summary>
@@ -122,7 +122,7 @@ Namespace java.awt.dnd
 		''' </UL>
 		''' </summary>
 		''' <param name="dse"> the <code>DragSourceEvent</code> </param>
-		Public Overridable Sub dragExit(ByVal dse As DragSourceEvent) Implements DragSourceListener.dragExit
+		Public Overridable Sub dragExit(  dse As DragSourceEvent) Implements DragSourceListener.dragExit
 		End Sub
 
 		''' <summary>
@@ -136,7 +136,7 @@ Namespace java.awt.dnd
 		''' associated resources become invalid.
 		''' </summary>
 		''' <param name="dsde"> the <code>DragSourceDropEvent</code> </param>
-		Public Overridable Sub dragDropEnd(ByVal dsde As DragSourceDropEvent) Implements DragSourceListener.dragDropEnd
+		Public Overridable Sub dragDropEnd(  dsde As DragSourceDropEvent) Implements DragSourceListener.dragDropEnd
 		End Sub
 	End Class
 

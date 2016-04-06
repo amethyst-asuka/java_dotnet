@@ -116,7 +116,7 @@ Namespace java.nio.channels
 		''' </exception>
 		''' <exception cref="IOException">
 		'''          If some other I/O error occurs </exception>
-		Function read(ByVal dsts As java.nio.ByteBuffer(), ByVal offset As Integer, ByVal length As Integer) As Long
+		Function read(  dsts As java.nio.ByteBuffer(),   offset As Integer,   length As Integer) As Long
 
 		''' <summary>
 		''' Reads a sequence of bytes from this channel into the given buffers.
@@ -151,7 +151,7 @@ Namespace java.nio.channels
 		''' </exception>
 		''' <exception cref="IOException">
 		'''          If some other I/O error occurs </exception>
-		Function read(ByVal dsts As java.nio.ByteBuffer()) As Long
+		Function read(  dsts As java.nio.ByteBuffer()) As Long
 
 	End Interface
 

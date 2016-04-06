@@ -53,7 +53,7 @@ Namespace java.util.jar
 		''' the signatures if the JarInputStream is signed. </summary>
 		''' <param name="in"> the actual input stream </param>
 		''' <exception cref="IOException"> if an I/O error has occurred </exception>
-		Public Sub New(ByVal [in] As InputStream)
+		Public Sub New(  [in] As InputStream)
 			Me.New([in], True)
 		End Sub
 
@@ -66,7 +66,7 @@ Namespace java.util.jar
 		''' <param name="verify"> whether or not to verify the JarInputStream if
 		''' it is signed. </param>
 		''' <exception cref="IOException"> if an I/O error has occurred </exception>
-		Public Sub New(ByVal [in] As InputStream, ByVal verify As Boolean)
+		Public Sub New(  [in] As InputStream,   verify As Boolean)
 			MyBase.New([in])
 			Me.doVerify = verify
 
@@ -79,7 +79,7 @@ Namespace java.util.jar
 			first = checkManifest(e)
 		End Sub
 
-		Private Function checkManifest(ByVal e As JarEntry) As JarEntry
+		Private Function checkManifest(  e As JarEntry) As JarEntry
 			If e IsNot Nothing AndAlso JarFile.MANIFEST_NAME.equalsIgnoreCase(e.name) Then
 				man = New Manifest
 				Dim bytes_Renamed As SByte() = getBytes(New BufferedInputStream(Me))
@@ -94,7 +94,7 @@ Namespace java.util.jar
 			Return e
 		End Function
 
-		Private Function getBytes(ByVal [is] As InputStream) As SByte()
+		Private Function getBytes(  [is] As InputStream) As SByte()
 			Dim buffer As SByte() = New SByte(8191){}
 			Dim baos As New ByteArrayOutputStream(2048)
 			Dim n As Integer
@@ -193,7 +193,7 @@ Namespace java.util.jar
 		''' <exception cref="IOException"> if an I/O error has occurred </exception>
 		''' <exception cref="SecurityException"> if any of the jar file entries
 		'''         are incorrectly signed. </exception>
-		Public Overrides Function read(ByVal b As SByte(), ByVal [off] As Integer, ByVal len As Integer) As Integer
+		Public Overrides Function read(  b As SByte(),   [off] As Integer,   len As Integer) As Integer
 			Dim n As Integer
 			If first Is Nothing Then
 				n = MyBase.read(b, [off], len)
@@ -212,7 +212,7 @@ Namespace java.util.jar
 		''' </summary>
 		''' <param name="name"> the name of the JAR/ZIP file entry </param>
 		''' <returns> the <code>JarEntry</code> object just created </returns>
-		Protected Friend Overrides Function createZipEntry(ByVal name As String) As ZipEntry
+		Protected Friend Overrides Function createZipEntry(  name As String) As ZipEntry
 			Dim e As New JarEntry(name)
 			If man IsNot Nothing Then e.attr = man.getAttributes(name)
 			Return e

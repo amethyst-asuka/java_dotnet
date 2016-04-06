@@ -104,7 +104,7 @@ Namespace java.security
         ''' <param name="paramGenSpi"> the delegate </param>
         ''' <param name="provider"> the provider </param>
         ''' <param name="algorithm"> the algorithm </param>
-        Protected Friend Sub New(ByVal paramGenSpi As AlgorithmParameterGeneratorSpi, ByVal provider_Renamed As Provider, ByVal algorithm As String)
+        Protected Friend Sub New(  paramGenSpi As AlgorithmParameterGeneratorSpi,   provider_Renamed As Provider,   algorithm As String)
 			Me.paramGenSpi = paramGenSpi
             Me._provider = provider_Renamed
             Me._algorithm = algorithm
@@ -148,7 +148,7 @@ Namespace java.security
         '''          specified algorithm.
         ''' </exception>
         ''' <seealso cref= Provider </seealso>
-        Public Shared Function getInstance(ByVal algorithm As String) As AlgorithmParameterGenerator
+        Public Shared Function getInstance(  algorithm As String) As AlgorithmParameterGenerator
 				Try
 					Dim objs As Object() = Security.getImpl(algorithm, "AlgorithmParameterGenerator", CStr(Nothing))
 					Return New AlgorithmParameterGenerator(CType(objs(0), AlgorithmParameterGeneratorSpi), CType(objs(1), Provider), algorithm)
@@ -191,7 +191,7 @@ Namespace java.security
 		'''          or empty.
 		''' </exception>
 		''' <seealso cref= Provider </seealso>
-		Public Shared Function getInstance(ByVal algorithm As String, ByVal provider_Renamed As String) As AlgorithmParameterGenerator
+		Public Shared Function getInstance(  algorithm As String,   provider_Renamed As String) As AlgorithmParameterGenerator
 			If provider_Renamed Is Nothing OrElse provider_Renamed.length() = 0 Then Throw New IllegalArgumentException("missing provider")
 			Dim objs As Object() = Security.getImpl(algorithm, "AlgorithmParameterGenerator", provider_Renamed)
 			Return New AlgorithmParameterGenerator(CType(objs(0), AlgorithmParameterGeneratorSpi), CType(objs(1), Provider), algorithm)
@@ -226,7 +226,7 @@ Namespace java.security
 		''' <seealso cref= Provider
 		''' 
 		''' @since 1.4 </seealso>
-		Public Shared Function getInstance(ByVal algorithm As String, ByVal provider_Renamed As Provider) As AlgorithmParameterGenerator
+		Public Shared Function getInstance(  algorithm As String,   provider_Renamed As Provider) As AlgorithmParameterGenerator
 			If provider_Renamed Is Nothing Then Throw New IllegalArgumentException("missing provider")
 			Dim objs As Object() = Security.getImpl(algorithm, "AlgorithmParameterGenerator", provider_Renamed)
 			Return New AlgorithmParameterGenerator(CType(objs(0), AlgorithmParameterGeneratorSpi), CType(objs(1), Provider), algorithm)
@@ -252,7 +252,7 @@ Namespace java.security
         ''' used.)
         ''' </summary>
         ''' <param name="size"> the size (number of bits). </param>
-        Public Sub init(ByVal size As Integer)
+        Public Sub init(  size As Integer)
 			paramGenSpi.engineInit(size, New SecureRandom)
 		End Sub
 
@@ -262,7 +262,7 @@ Namespace java.security
 		''' </summary>
 		''' <param name="size"> the size (number of bits). </param>
 		''' <param name="random"> the source of randomness. </param>
-		Public Sub init(ByVal size As Integer, ByVal random As SecureRandom)
+		Public Sub init(  size As Integer,   random As SecureRandom)
 			paramGenSpi.engineInit(size, random)
 		End Sub
 
@@ -280,7 +280,7 @@ Namespace java.security
 		''' </param>
 		''' <exception cref="InvalidAlgorithmParameterException"> if the given parameter
 		''' generation values are inappropriate for this parameter generator. </exception>
-		Public Sub init(ByVal genParamSpec As java.security.spec.AlgorithmParameterSpec)
+		Public Sub init(  genParamSpec As java.security.spec.AlgorithmParameterSpec)
 				paramGenSpi.engineInit(genParamSpec, New SecureRandom)
 		End Sub
 
@@ -293,7 +293,7 @@ Namespace java.security
 		''' </param>
 		''' <exception cref="InvalidAlgorithmParameterException"> if the given parameter
 		''' generation values are inappropriate for this parameter generator. </exception>
-		Public Sub init(ByVal genParamSpec As java.security.spec.AlgorithmParameterSpec, ByVal random As SecureRandom)
+		Public Sub init(  genParamSpec As java.security.spec.AlgorithmParameterSpec,   random As SecureRandom)
 				paramGenSpi.engineInit(genParamSpec, random)
 		End Sub
 

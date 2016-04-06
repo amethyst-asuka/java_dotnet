@@ -120,7 +120,7 @@ Namespace java.awt.geom
             ''' <param name="x2"> the X coordinate of the end point </param>
             ''' <param name="y2"> the Y coordinate of the end point
             ''' @since 1.2 </param>
-            Public Sub New(ByVal x1 As Single, ByVal y1 As Single, ByVal ctrlx As Single, ByVal ctrly As Single, ByVal x2 As Single, ByVal y2 As Single)
+            Public Sub New(  x1 As Single,   y1 As Single,   ctrlx As Single,   ctrly As Single,   x2 As Single,   y2 As Single)
                 curverve(x1, y1, ctrlx, ctrly, x2, y2)
             End Sub
 
@@ -218,7 +218,7 @@ Namespace java.awt.geom
             ''' {@inheritDoc}
             ''' @since 1.2
             ''' </summary>
-            Public Overrides Sub setCurve(ByVal x1 As Double, ByVal y1 As Double, ByVal ctrlx As Double, ByVal ctrly As Double, ByVal x2 As Double, ByVal y2 As Double)
+            Public Overrides Sub setCurve(  x1 As Double,   y1 As Double,   ctrlx As Double,   ctrly As Double,   x2 As Double,   y2 As Double)
                 Me.x1 = CSng(x1)
                 Me.y1 = CSng(y1)
                 Me.ctrlx = CSng(ctrlx)
@@ -238,7 +238,7 @@ Namespace java.awt.geom
             ''' <param name="x2"> the X coordinate of the end point </param>
             ''' <param name="y2"> the Y coordinate of the end point
             ''' @since 1.2 </param>
-            Public Overridable Sub setCurve(ByVal x1 As Single, ByVal y1 As Single, ByVal ctrlx As Single, ByVal ctrly As Single, ByVal x2 As Single, ByVal y2 As Single)
+            Public Overridable Sub setCurve(  x1 As Single,   y1 As Single,   ctrlx As Single,   ctrly As Single,   x2 As Single,   y2 As Single)
                 Me.x1 = x1
                 Me.y1 = y1
                 Me.ctrlx = ctrlx
@@ -344,7 +344,7 @@ Namespace java.awt.geom
             ''' <param name="x2"> the X coordinate of the end point </param>
             ''' <param name="y2"> the Y coordinate of the end point
             ''' @since 1.2 </param>
-            Function java.lang.Double(ByVal x1 As Double, ByVal y1 As Double, ByVal ctrlx As Double, ByVal ctrly As Double, ByVal x2 As Double, ByVal y2 As Double) As [Public] Overridable
+            Function java.lang.Double(  x1 As Double,   y1 As Double,   ctrlx As Double,   ctrly As Double,   x2 As Double,   y2 As Double) As [Public] Overridable
 				curverve(x1, y1, ctrlx, ctrly, x2, y2)
             End Function
 
@@ -442,7 +442,7 @@ Namespace java.awt.geom
             ''' {@inheritDoc}
             ''' @since 1.2
             ''' </summary>
-            Public Overrides Sub setCurve(ByVal x1 As Double, ByVal y1 As Double, ByVal ctrlx As Double, ByVal ctrly As Double, ByVal x2 As Double, ByVal y2 As Double)
+            Public Overrides Sub setCurve(  x1 As Double,   y1 As Double,   ctrlx As Double,   ctrly As Double,   x2 As Double,   y2 As Double)
                 Me.x1 = x1
                 Me.y1 = y1
                 Me.ctrlx = ctrlx
@@ -558,7 +558,7 @@ Namespace java.awt.geom
         ''' <param name="x2"> the X coordinate of the end point </param>
         ''' <param name="y2"> the Y coordinate of the end point
         ''' @since 1.2 </param>
-        Public MustOverride Sub setCurve(ByVal x1 As Double, ByVal y1 As Double, ByVal ctrlx As Double, ByVal ctrly As Double, ByVal x2 As Double, ByVal y2 As Double)
+        Public MustOverride Sub setCurve(  x1 As Double,   y1 As Double,   ctrlx As Double,   ctrly As Double,   x2 As Double,   y2 As Double)
 
         ''' <summary>
         ''' Sets the location of the end points and control points of this
@@ -569,7 +569,7 @@ Namespace java.awt.geom
         '''          getting the coordinate values and assigning them to this
         '''          <code>QuadCurve2D</code>
         ''' @since 1.2 </param>
-        Public Overridable Sub setCurve(ByVal coords As Double(), ByVal offset As Integer)
+        Public Overridable Sub setCurve(  coords As Double(),   offset As Integer)
             curverve(coords(offset + 0), coords(offset + 1), coords(offset + 2), coords(offset + 3), coords(offset + 4), coords(offset + 5))
         End Sub
 
@@ -581,7 +581,7 @@ Namespace java.awt.geom
         ''' <param name="cp"> the control point </param>
         ''' <param name="p2"> the end point
         ''' @since 1.2 </param>
-        Public Overridable Sub setCurve(ByVal p1 As Point2D, ByVal cp As Point2D, ByVal p2 As Point2D)
+        Public Overridable Sub setCurve(  p1 As Point2D,   cp As Point2D,   p2 As Point2D)
             curverve(p1.x, p1.y, cp.x, cp.y, p2.x, p2.y)
         End Sub
 
@@ -596,7 +596,7 @@ Namespace java.awt.geom
         '''          getting the coordinate values and assigning them to this
         '''          <code>QuadCurve2D</code>
         ''' @since 1.2 </param>
-        Public Overridable Sub setCurve(ByVal pts As Point2D(), ByVal offset As Integer)
+        Public Overridable Sub setCurve(  pts As Point2D(),   offset As Integer)
             curverve(pts(offset + 0).x, pts(offset + 0).y, pts(offset + 1).x, pts(offset + 1).y, pts(offset + 2).x, pts(offset + 2).y)
         End Sub
 
@@ -607,7 +607,7 @@ Namespace java.awt.geom
         ''' <param name="c"> the specified <code>QuadCurve2D</code>
         ''' @since 1.2 </param>
         Public Overridable Property curve As QuadCurve2D
-            Set(ByVal c As QuadCurve2D)
+            Set(  c As QuadCurve2D)
                 curverve(c.x1, c.y1, c.ctrlX, c.ctrlY, c.x2, c.y2)
             End Set
         End Property
@@ -626,7 +626,7 @@ Namespace java.awt.geom
         ''' <returns> the square of the flatness of the quadratic curve
         '''          defined by the specified coordinates.
         ''' @since 1.2 </returns>
-        Public Shared Function getFlatnessSq(ByVal x1 As Double, ByVal y1 As Double, ByVal ctrlx As Double, ByVal ctrly As Double, ByVal x2 As Double, ByVal y2 As Double) As Double
+        Public Shared Function getFlatnessSq(  x1 As Double,   y1 As Double,   ctrlx As Double,   ctrly As Double,   x2 As Double,   y2 As Double) As Double
             Return Line2D.ptSegDistSq(x1, y1, x2, y2, ctrlx, ctrly)
         End Function
 
@@ -644,7 +644,7 @@ Namespace java.awt.geom
         ''' <returns> the flatness of the quadratic curve defined by the
         '''          specified coordinates.
         ''' @since 1.2 </returns>
-        Public Shared Function getFlatness(ByVal x1 As Double, ByVal y1 As Double, ByVal ctrlx As Double, ByVal ctrly As Double, ByVal x2 As Double, ByVal y2 As Double) As Double
+        Public Shared Function getFlatness(  x1 As Double,   y1 As Double,   ctrlx As Double,   ctrly As Double,   x2 As Double,   y2 As Double) As Double
             Return Line2D.ptSegDist(x1, y1, x2, y2, ctrlx, ctrly)
         End Function
 

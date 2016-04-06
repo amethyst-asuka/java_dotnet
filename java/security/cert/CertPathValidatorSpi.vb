@@ -78,7 +78,7 @@ Namespace java.security.cert
 		''' <exception cref="InvalidAlgorithmParameterException"> if the specified
 		''' parameters or the type of the specified {@code CertPath} are
 		''' inappropriate for this {@code CertPathValidator} </exception>
-		Public MustOverride Function engineValidate(ByVal certPath As CertPath, ByVal params As CertPathParameters) As CertPathValidatorResult
+		Public MustOverride Function engineValidate(  certPath As CertPath,   params As CertPathParameters) As CertPathValidatorResult
 
 		''' <summary>
 		''' Returns a {@code CertPathChecker} that this implementation uses to

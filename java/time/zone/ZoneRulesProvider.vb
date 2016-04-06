@@ -210,7 +210,7 @@ Namespace java.time.zone
 		''' is a dynamic provider that wants to prevent caching in {@code ZoneId},
 		''' otherwise not null </returns>
 		''' <exception cref="ZoneRulesException"> if rules cannot be obtained for the zone ID </exception>
-		Public Shared Function getRules(ByVal zoneId_Renamed As String, ByVal forCaching As Boolean) As ZoneRules
+		Public Shared Function getRules(  zoneId_Renamed As String,   forCaching As Boolean) As ZoneRules
 			java.util.Objects.requireNonNull(zoneId_Renamed, "zoneId")
 			Return getProvider(zoneId_Renamed).provideRules(zoneId_Renamed, forCaching)
 		End Function
@@ -238,7 +238,7 @@ Namespace java.time.zone
 		''' <returns> a modifiable copy of the history of the rules for the ID, sorted
 		'''  from oldest to newest, not null </returns>
 		''' <exception cref="ZoneRulesException"> if history cannot be obtained for the zone ID </exception>
-		Public Shared Function getVersions(ByVal zoneId_Renamed As String) As java.util.NavigableMap(Of String, ZoneRules)
+		Public Shared Function getVersions(  zoneId_Renamed As String) As java.util.NavigableMap(Of String, ZoneRules)
 			java.util.Objects.requireNonNull(zoneId_Renamed, "zoneId")
 			Return getProvider(zoneId_Renamed).provideVersions(zoneId_Renamed)
 		End Function
@@ -249,7 +249,7 @@ Namespace java.time.zone
 		''' <param name="zoneId">  the zone ID as defined by {@code ZoneId}, not null </param>
 		''' <returns> the provider, not null </returns>
 		''' <exception cref="ZoneRulesException"> if the zone ID is unknown </exception>
-		Private Shared Function getProvider(ByVal zoneId_Renamed As String) As ZoneRulesProvider
+		Private Shared Function getProvider(  zoneId_Renamed As String) As ZoneRulesProvider
 			Dim provider_Renamed As ZoneRulesProvider = ZONES.get(zoneId_Renamed)
 			If provider_Renamed Is Nothing Then
 				If ZONES.empty Then Throw New ZoneRulesException("No time-zone data files registered")
@@ -273,7 +273,7 @@ Namespace java.time.zone
 		''' </summary>
 		''' <param name="provider">  the provider to register, not null </param>
 		''' <exception cref="ZoneRulesException"> if a zone ID is already registered </exception>
-		Public Shared Sub registerProvider(ByVal provider As ZoneRulesProvider)
+		Public Shared Sub registerProvider(  provider As ZoneRulesProvider)
 			java.util.Objects.requireNonNull(provider, "provider")
 			registerProvider0(provider)
 			PROVIDERS.add(provider)
@@ -284,7 +284,7 @@ Namespace java.time.zone
 		''' </summary>
 		''' <param name="provider">  the provider to register, not null </param>
 		''' <exception cref="ZoneRulesException"> if unable to complete the registration </exception>
-		Private Shared Sub registerProvider0(ByVal provider As ZoneRulesProvider)
+		Private Shared Sub registerProvider0(  provider As ZoneRulesProvider)
 			For Each zoneId_Renamed As String In provider.provideZoneIds()
 				java.util.Objects.requireNonNull(zoneId_Renamed, "zoneId")
 				Dim old As ZoneRulesProvider = ZONES.putIfAbsent(zoneId_Renamed, provider)
@@ -367,7 +367,7 @@ Namespace java.time.zone
 		''' is a dynamic provider that wants to prevent caching in {@code ZoneId},
 		''' otherwise not null </returns>
 		''' <exception cref="ZoneRulesException"> if rules cannot be obtained for the zone ID </exception>
-		Protected Friend MustOverride Function provideRules(ByVal zoneId As String, ByVal forCaching As Boolean) As ZoneRules
+		Protected Friend MustOverride Function provideRules(  zoneId As String,   forCaching As Boolean) As ZoneRules
 
 		''' <summary>
 		''' SPI method to get the history of rules for the zone ID.
@@ -391,7 +391,7 @@ Namespace java.time.zone
 		''' <returns> a modifiable copy of the history of the rules for the ID, sorted
 		'''  from oldest to newest, not null </returns>
 		''' <exception cref="ZoneRulesException"> if history cannot be obtained for the zone ID </exception>
-		Protected Friend MustOverride Function provideVersions(ByVal zoneId As String) As java.util.NavigableMap(Of String, ZoneRules)
+		Protected Friend MustOverride Function provideVersions(  zoneId As String) As java.util.NavigableMap(Of String, ZoneRules)
 
 		''' <summary>
 		''' SPI method to refresh the rules from the underlying data provider.

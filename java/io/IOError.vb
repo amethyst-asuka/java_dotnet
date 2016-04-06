@@ -43,7 +43,7 @@ Namespace java.io
 		''' <param name="cause">
 		'''         The cause of this error, or <tt>null</tt> if the cause
 		'''         is not known </param>
-		Public Sub New(ByVal cause As Throwable)
+		Public Sub New(  cause As Throwable)
 			MyBase.New(cause)
 		End Sub
 

@@ -44,7 +44,7 @@ Namespace java.awt.datatransfer
 		''' <param name="source">  the <code>Clipboard</code> that is the source of the event
 		''' </param>
 		''' <exception cref="IllegalArgumentException"> if the {@code source} is {@code null} </exception>
-		Public Sub New(ByVal source As Clipboard)
+		Public Sub New(  source As Clipboard)
 			MyBase.New(source)
 		End Sub
 	End Class

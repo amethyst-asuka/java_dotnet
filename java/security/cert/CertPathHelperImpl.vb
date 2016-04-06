@@ -54,11 +54,11 @@ Namespace java.security.cert
 			If sun.security.provider.certpath.CertPathHelper.instance Is Nothing Then sun.security.provider.certpath.CertPathHelper.instance = New CertPathHelperImpl
 		End Sub
 
-		Protected Friend Overridable Sub implSetPathToNames(ByVal sel As X509CertSelector, ByVal names As [Set](Of sun.security.x509.GeneralNameInterface))
+		Protected Friend Overridable Sub implSetPathToNames(  sel As X509CertSelector,   names As [Set](Of sun.security.x509.GeneralNameInterface))
 			sel.pathToNamesInternal = names
 		End Sub
 
-		Protected Friend Overridable Sub implSetDateAndTime(ByVal sel As X509CRLSelector, ByVal [date] As Date, ByVal skew As Long)
+		Protected Friend Overridable Sub implSetDateAndTime(  sel As X509CRLSelector,   [date] As Date,   skew As Long)
 			sel.dateAndTimeime(date_Renamed, skew)
 		End Sub
 	End Class

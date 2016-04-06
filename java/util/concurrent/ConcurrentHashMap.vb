@@ -597,7 +597,7 @@ Namespace java.util.concurrent
 'JAVA TO VB CONVERTER TODO TASK: There is no VB equivalent to 'volatile':
 			Friend [next] As Node(Of K, V)
 
-			Friend Sub New(ByVal hash As Integer, ByVal key As K, ByVal val As V, ByVal [next] As Node(Of K, V))
+			Friend Sub New(  hash As Integer,   key As K,   val As V,   [next] As Node(Of K, V))
 				Me.hash = hash
 				Me.key = key
 				Me.val = val
@@ -620,11 +620,11 @@ Namespace java.util.concurrent
 			Public NotOverridable Overrides Function ToString() As String
 				Return key & "=" & val
 			End Function
-			Public Function setValue(ByVal value As V) As V
+			Public Function setValue(  value As V) As V
 				Throw New UnsupportedOperationException
 			End Function
 
-			Public NotOverridable Overrides Function Equals(ByVal o As Object) As Boolean
+			Public NotOverridable Overrides Function Equals(  o As Object) As Boolean
 				Dim k, v, u As Object
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 				Dim e As KeyValuePair(Of ?, ?)
@@ -636,7 +636,7 @@ Namespace java.util.concurrent
 			''' <summary>
 			''' Virtualized support for map.get(); overridden in subclasses.
 			''' </summary>
-			Friend Overridable Function find(ByVal h As Integer, ByVal k As Object) As Node(Of K, V)
+			Friend Overridable Function find(  h As Integer,   k As Object) As Node(Of K, V)
 				Dim e As Node(Of K, V) = Me
 				If k IsNot Nothing Then
 					Do
@@ -668,7 +668,7 @@ Namespace java.util.concurrent
 		''' to incorporate impact of the highest bits that would otherwise
 		''' never be used in index calculations because of table bounds.
 		''' </summary>
-		Friend Shared Function spread(ByVal h As Integer) As Integer
+		Friend Shared Function spread(  h As Integer) As Integer
 			Return (h Xor (CInt(CUInt(h) >> 16))) And HASH_BITS
 		End Function
 
@@ -676,7 +676,7 @@ Namespace java.util.concurrent
 		''' Returns a power of two table size for the given desired capacity.
 		''' See Hackers Delight, sec 3.2
 		''' </summary>
-		Private Shared Function tableSizeFor(ByVal c As Integer) As Integer
+		Private Shared Function tableSizeFor(  c As Integer) As Integer
 			Dim n As Integer = c - 1
 			n = n Or CInt(CUInt(n) >> 1)
 			n = n Or CInt(CUInt(n) >> 2)
@@ -690,7 +690,7 @@ Namespace java.util.concurrent
 		''' Returns x's Class if it is of the form "class C implements
 		''' Comparable<C>", else null.
 		''' </summary>
-		Friend Shared Function comparableClassFor(ByVal x As Object) As  [Class]
+		Friend Shared Function comparableClassFor(  x As Object) As  [Class]
 			If TypeOf x Is Comparable Then
 				Dim c As  [Class]
 				Dim ts, [as] As Type()
@@ -716,7 +716,7 @@ Namespace java.util.concurrent
 		''' [Class]), else 0.
 		''' </summary>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Friend Shared Function compareComparables(ByVal kc As [Class], ByVal k As Object, ByVal x As Object) As Integer ' for cast to Comparable
+		Friend Shared Function compareComparables(  kc As [Class],   k As Object,   x As Object) As Integer ' for cast to Comparable
 			Return (If(x Is Nothing OrElse x.GetType() IsNot kc, 0, CType(k, Comparable).CompareTo(x)))
 		End Function
 
@@ -739,15 +739,15 @@ Namespace java.util.concurrent
 	'     
 
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Friend Shared Function tabAt(Of K, V)(ByVal tab As Node(Of K, V)(), ByVal i As Integer) As Node(Of K, V)
+		Friend Shared Function tabAt(Of K, V)(  tab As Node(Of K, V)(),   i As Integer) As Node(Of K, V)
 			Return CType(U.getObjectVolatile(tab, (CLng(i) << ASHIFT) + ABASE), Node(Of K, V))
 		End Function
 
-		Friend Shared Function casTabAt(Of K, V)(ByVal tab As Node(Of K, V)(), ByVal i As Integer, ByVal c As Node(Of K, V), ByVal v As Node(Of K, V)) As Boolean
+		Friend Shared Function casTabAt(Of K, V)(  tab As Node(Of K, V)(),   i As Integer,   c As Node(Of K, V),   v As Node(Of K, V)) As Boolean
 			Return U.compareAndSwapObject(tab, (CLng(i) << ASHIFT) + ABASE, c, v)
 		End Function
 
-		Friend Shared Sub setTabAt(Of K, V)(ByVal tab As Node(Of K, V)(), ByVal i As Integer, ByVal v As Node(Of K, V))
+		Friend Shared Sub setTabAt(Of K, V)(  tab As Node(Of K, V)(),   i As Integer,   v As Node(Of K, V))
 			U.putObjectVolatile(tab, (CLng(i) << ASHIFT) + ABASE, v)
 		End Sub
 
@@ -836,7 +836,7 @@ Namespace java.util.concurrent
 		''' sizing to accommodate this many elements. </param>
 		''' <exception cref="IllegalArgumentException"> if the initial capacity of
 		''' elements is negative </exception>
-		Public Sub New(ByVal initialCapacity As Integer)
+		Public Sub New(  initialCapacity As Integer)
 			If initialCapacity < 0 Then Throw New IllegalArgumentException
 			Dim cap As Integer = (If(initialCapacity >= (CInt(CUInt(MAXIMUM_CAPACITY) >> 1)), MAXIMUM_CAPACITY, tableSizeFor(initialCapacity + (CInt(CUInt(initialCapacity) >> 1)) + 1)))
 			Me.sizeCtl = cap
@@ -847,7 +847,7 @@ Namespace java.util.concurrent
 		''' </summary>
 		''' <param name="m"> the map </param>
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-		Public Sub New(Of T1 As K, ? As V)(ByVal m As IDictionary(Of T1))
+		Public Sub New(Of T1 As K, ? As V)(  m As IDictionary(Of T1))
 			Me.sizeCtl = DEFAULT_CAPACITY
 			putAll(m)
 		End Sub
@@ -866,7 +866,7 @@ Namespace java.util.concurrent
 		''' elements is negative or the load factor is nonpositive
 		''' 
 		''' @since 1.6 </exception>
-		Public Sub New(ByVal initialCapacity As Integer, ByVal loadFactor As Single)
+		Public Sub New(  initialCapacity As Integer,   loadFactor As Single)
 			Me.New(initialCapacity, loadFactor, 1)
 		End Sub
 
@@ -887,7 +887,7 @@ Namespace java.util.concurrent
 		''' <exception cref="IllegalArgumentException"> if the initial capacity is
 		''' negative or the load factor or concurrencyLevel are
 		''' nonpositive </exception>
-		Public Sub New(ByVal initialCapacity As Integer, ByVal loadFactor As Single, ByVal concurrencyLevel As Integer)
+		Public Sub New(  initialCapacity As Integer,   loadFactor As Single,   concurrencyLevel As Integer)
 			If Not(loadFactor > 0.0f) OrElse initialCapacity < 0 OrElse concurrencyLevel <= 0 Then Throw New IllegalArgumentException
 			If initialCapacity < concurrencyLevel Then ' Use at least as many bins initialCapacity = concurrencyLevel ' as estimated threads
 			Dim size As Long = CLng(Fix(1.0 + CLng(initialCapacity) / loadFactor))
@@ -924,7 +924,7 @@ Namespace java.util.concurrent
 		''' {@code null}.  (There can be at most one such mapping.)
 		''' </summary>
 		''' <exception cref="NullPointerException"> if the specified key is null </exception>
-		Public Overridable Function [get](ByVal key As Object) As V
+		Public Overridable Function [get](  key As Object) As V
 			Dim tab As Node(Of K, V)()
 			Dim e As Node(Of K, V), p As Node(Of K, V)
 			Dim n, eh As Integer
@@ -960,7 +960,7 @@ Namespace java.util.concurrent
 		'''         is a key in this table, as determined by the
 		'''         {@code equals} method; {@code false} otherwise </returns>
 		''' <exception cref="NullPointerException"> if the specified key is null </exception>
-		Public Overridable Function containsKey(ByVal key As Object) As Boolean
+		Public Overridable Function containsKey(  key As Object) As Boolean
 			Return [get](key) IsNot Nothing
 		End Function
 
@@ -973,7 +973,7 @@ Namespace java.util.concurrent
 		''' <returns> {@code true} if this map maps one or more keys to the
 		'''         specified value </returns>
 		''' <exception cref="NullPointerException"> if the specified value is null </exception>
-		Public Overridable Function containsValue(ByVal value As Object) As Boolean
+		Public Overridable Function containsValue(  value As Object) As Boolean
 			If value Is Nothing Then Throw New NullPointerException
 			Dim t As Node(Of K, V)()
 			t = table
@@ -1002,13 +1002,13 @@ Namespace java.util.concurrent
 		''' <returns> the previous value associated with {@code key}, or
 		'''         {@code null} if there was no mapping for {@code key} </returns>
 		''' <exception cref="NullPointerException"> if the specified key or value is null </exception>
-		Public Overridable Function put(ByVal key As K, ByVal value As V) As V
+		Public Overridable Function put(  key As K,   value As V) As V
 			Return putVal(key, value, False)
 		End Function
 
 		''' <summary>
 		''' Implementation for put and putIfAbsent </summary>
-		Friend Function putVal(ByVal key As K, ByVal value As V, ByVal onlyIfAbsent As Boolean) As V
+		Friend Function putVal(  key As K,   value As V,   onlyIfAbsent As Boolean) As V
 			If key Is Nothing OrElse value Is Nothing Then Throw New NullPointerException
 			Dim hash As Integer = spread(key.GetHashCode())
 			Dim binCount As Integer = 0
@@ -1082,7 +1082,7 @@ Namespace java.util.concurrent
 		''' </summary>
 		''' <param name="m"> mappings to be stored in this map </param>
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-		Public Overridable Sub putAll(Of T1 As K, ? As V)(ByVal m As IDictionary(Of T1))
+		Public Overridable Sub putAll(Of T1 As K, ? As V)(  m As IDictionary(Of T1))
 			tryPresize(m.Count)
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 			For Each e As KeyValuePair(Of ? As K, ? As V) In m
@@ -1098,7 +1098,7 @@ Namespace java.util.concurrent
 		''' <returns> the previous value associated with {@code key}, or
 		'''         {@code null} if there was no mapping for {@code key} </returns>
 		''' <exception cref="NullPointerException"> if the specified key is null </exception>
-		Public Overridable Function remove(ByVal key As Object) As V
+		Public Overridable Function remove(  key As Object) As V
 			Return replaceNode(key, Nothing, Nothing)
 		End Function
 
@@ -1107,7 +1107,7 @@ Namespace java.util.concurrent
 		''' Replaces node value with v, conditional upon match of cv if
 		''' non-null.  If resulting value is null, delete.
 		''' </summary>
-		Friend Function replaceNode(ByVal key As Object, ByVal value As V, ByVal cv As Object) As V
+		Friend Function replaceNode(  key As Object,   value As V,   cv As Object) As V
 			Dim hash As Integer = spread(key.GetHashCode())
 			Dim tab As Node(Of K, V)() = table
 			Do
@@ -1367,7 +1367,7 @@ Namespace java.util.concurrent
 		''' </summary>
 		''' <param name="o"> object to be compared for equality with this map </param>
 		''' <returns> {@code true} if the specified object is equal to this map </returns>
-		Public Overrides Function Equals(ByVal o As Object) As Boolean
+		Public Overrides Function Equals(  o As Object) As Boolean
 			If o IsNot Me Then
 				If Not(TypeOf o Is IDictionary) Then Return False
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
@@ -1405,7 +1405,7 @@ Namespace java.util.concurrent
 
 			Private Const serialVersionUID As Long = 2249069246763182397L
 			Friend ReadOnly loadFactor As Single
-			Friend Sub New(ByVal lf As Single)
+			Friend Sub New(  lf As Single)
 				Me.loadFactor = lf
 			End Sub
 		End Class
@@ -1419,7 +1419,7 @@ Namespace java.util.concurrent
 		''' the key (Object) and value (Object)
 		''' for each key-value mapping, followed by a null pair.
 		''' The key-value mappings are emitted in no particular order. </exception>
-		Private Sub writeObject(ByVal s As java.io.ObjectOutputStream)
+		Private Sub writeObject(  s As java.io.ObjectOutputStream)
 			' For serialization compatibility
 			' Emulate segment calculation from previous version of this class
 			Dim sshift As Integer = 0
@@ -1463,7 +1463,7 @@ Namespace java.util.concurrent
 		''' <exception cref="ClassNotFoundException"> if the class of a serialized object
 		'''         could not be found </exception>
 		''' <exception cref="java.io.IOException"> if an I/O error occurs </exception>
-		Private Sub readObject(ByVal s As java.io.ObjectInputStream)
+		Private Sub readObject(  s As java.io.ObjectInputStream)
 	'        
 	'         * To improve performance in typical cases, we create nodes
 	'         * while reading, then place in table once size is known.
@@ -1572,7 +1572,7 @@ Namespace java.util.concurrent
 		''' <returns> the previous value associated with the specified key,
 		'''         or {@code null} if there was no mapping for the key </returns>
 		''' <exception cref="NullPointerException"> if the specified key or value is null </exception>
-		Public Overridable Function putIfAbsent(ByVal key As K, ByVal value As V) As V
+		Public Overridable Function putIfAbsent(  key As K,   value As V) As V
 			Return putVal(key, value, True)
 		End Function
 
@@ -1580,7 +1580,7 @@ Namespace java.util.concurrent
 		''' {@inheritDoc}
 		''' </summary>
 		''' <exception cref="NullPointerException"> if the specified key is null </exception>
-		Public Overridable Function remove(ByVal key As Object, ByVal value As Object) As Boolean
+		Public Overridable Function remove(  key As Object,   value As Object) As Boolean
 			If key Is Nothing Then Throw New NullPointerException
 			Return value IsNot Nothing AndAlso replaceNode(key, Nothing, value) IsNot Nothing
 		End Function
@@ -1589,7 +1589,7 @@ Namespace java.util.concurrent
 		''' {@inheritDoc}
 		''' </summary>
 		''' <exception cref="NullPointerException"> if any of the arguments are null </exception>
-		Public Overridable Function replace(ByVal key As K, ByVal oldValue As V, ByVal newValue As V) As Boolean
+		Public Overridable Function replace(  key As K,   oldValue As V,   newValue As V) As Boolean
 			If key Is Nothing OrElse oldValue Is Nothing OrElse newValue Is Nothing Then Throw New NullPointerException
 			Return replaceNode(key, newValue, oldValue) IsNot Nothing
 		End Function
@@ -1600,7 +1600,7 @@ Namespace java.util.concurrent
 		''' <returns> the previous value associated with the specified key,
 		'''         or {@code null} if there was no mapping for the key </returns>
 		''' <exception cref="NullPointerException"> if the specified key or value is null </exception>
-		Public Overridable Function replace(ByVal key As K, ByVal value As V) As V
+		Public Overridable Function replace(  key As K,   value As V) As V
 			If key Is Nothing OrElse value Is Nothing Then Throw New NullPointerException
 			Return replaceNode(key, value, Nothing)
 		End Function
@@ -1617,14 +1617,14 @@ Namespace java.util.concurrent
 		''' no mapping for the given key </param>
 		''' <returns> the mapping for the key, if present; else the default value </returns>
 		''' <exception cref="NullPointerException"> if the specified key is null </exception>
-		Public Overridable Function getOrDefault(ByVal key As Object, ByVal defaultValue As V) As V
+		Public Overridable Function getOrDefault(  key As Object,   defaultValue As V) As V
 			Dim v As V
 'JAVA TO VB CONVERTER TODO TASK: Assignments within expressions are not supported in VB
 			Return If((v = [get](key)) Is Nothing, defaultValue, v)
 		End Function
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Overridable Sub forEach(Of T1)(ByVal action As java.util.function.BiConsumer(Of T1))
+		Public Overridable Sub forEach(Of T1)(  action As java.util.function.BiConsumer(Of T1))
 			If action Is Nothing Then Throw New NullPointerException
 			Dim t As Node(Of K, V)()
 			t = table
@@ -1639,7 +1639,7 @@ Namespace java.util.concurrent
 		End Sub
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Overridable Sub replaceAll(Of T1 As V)(ByVal [function] As java.util.function.BiFunction(Of T1))
+		Public Overridable Sub replaceAll(Of T1 As V)(  [function] As java.util.function.BiFunction(Of T1))
 			If [function] Is Nothing Then Throw New NullPointerException
 			Dim t As Node(Of K, V)()
 			t = table
@@ -1682,7 +1682,7 @@ Namespace java.util.concurrent
 		''' <exception cref="RuntimeException"> or Error if the mappingFunction does so,
 		'''         in which case the mapping is left unestablished </exception>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Overridable Function computeIfAbsent(Of T1 As V)(ByVal key As K, ByVal mappingFunction As java.util.function.Function(Of T1)) As V
+		Public Overridable Function computeIfAbsent(Of T1 As V)(  key As K,   mappingFunction As java.util.function.Function(Of T1)) As V
 			If key Is Nothing OrElse mappingFunction Is Nothing Then Throw New NullPointerException
 			Dim h As Integer = spread(key.GetHashCode())
 			Dim val As V = Nothing
@@ -1794,7 +1794,7 @@ Namespace java.util.concurrent
 		''' <exception cref="RuntimeException"> or Error if the remappingFunction does so,
 		'''         in which case the mapping is unchanged </exception>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Overridable Function computeIfPresent(Of T1 As V)(ByVal key As K, ByVal remappingFunction As java.util.function.BiFunction(Of T1)) As V
+		Public Overridable Function computeIfPresent(Of T1 As V)(  key As K,   remappingFunction As java.util.function.BiFunction(Of T1)) As V
 			If key Is Nothing OrElse remappingFunction Is Nothing Then Throw New NullPointerException
 			Dim h As Integer = spread(key.GetHashCode())
 			Dim val As V = Nothing
@@ -1893,7 +1893,7 @@ Namespace java.util.concurrent
 		''' <exception cref="RuntimeException"> or Error if the remappingFunction does so,
 		'''         in which case the mapping is unchanged </exception>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Overridable Function compute(Of T1 As V)(ByVal key As K, ByVal remappingFunction As java.util.function.BiFunction(Of T1)) As V
+		Public Overridable Function compute(Of T1 As V)(  key As K,   remappingFunction As java.util.function.BiFunction(Of T1)) As V
 			If key Is Nothing OrElse remappingFunction Is Nothing Then Throw New NullPointerException
 			Dim h As Integer = spread(key.GetHashCode())
 			Dim val As V = Nothing
@@ -2026,7 +2026,7 @@ Namespace java.util.concurrent
 		''' <exception cref="RuntimeException"> or Error if the remappingFunction does so,
 		'''         in which case the mapping is unchanged </exception>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Overridable Function merge(Of T1 As V)(ByVal key As K, ByVal value As V, ByVal remappingFunction As java.util.function.BiFunction(Of T1)) As V
+		Public Overridable Function merge(Of T1 As V)(  key As K,   value As V,   remappingFunction As java.util.function.BiFunction(Of T1)) As V
 			If key Is Nothing OrElse value Is Nothing OrElse remappingFunction Is Nothing Then Throw New NullPointerException
 			Dim h As Integer = spread(key.GetHashCode())
 			Dim val As V = Nothing
@@ -2135,7 +2135,7 @@ Namespace java.util.concurrent
 		'''         determined by the {@code equals} method;
 		'''         {@code false} otherwise </returns>
 		''' <exception cref="NullPointerException"> if the specified value is null </exception>
-		Public Overridable Function contains(ByVal value As Object) As Boolean
+		Public Overridable Function contains(  value As Object) As Boolean
 			Return containsValue(value)
 		End Function
 
@@ -2201,7 +2201,7 @@ Namespace java.util.concurrent
 		''' <exception cref="IllegalArgumentException"> if the initial capacity of
 		''' elements is negative
 		''' @since 1.8 </exception>
-		Public Shared Function newKeySet(Of K)(ByVal initialCapacity As Integer) As KeySetView(Of K, Boolean?)
+		Public Shared Function newKeySet(Of K)(  initialCapacity As Integer) As KeySetView(Of K, Boolean?)
 			Return New KeySetView(Of K, Boolean?) (New ConcurrentHashMap(Of K, Boolean?)(initialCapacity),  java.lang.[Boolean].TRUE)
 		End Function
 
@@ -2215,7 +2215,7 @@ Namespace java.util.concurrent
 		''' <param name="mappedValue"> the mapped value to use for any additions </param>
 		''' <returns> the set view </returns>
 		''' <exception cref="NullPointerException"> if the mappedValue is null </exception>
-		Public Overridable Function keySet(ByVal mappedValue As V) As KeySetView(Of K, V)
+		Public Overridable Function keySet(  mappedValue As V) As KeySetView(Of K, V)
 			If mappedValue Is Nothing Then Throw New NullPointerException
 			Return New KeySetView(Of K, V)(Me, mappedValue)
 		End Function
@@ -2229,12 +2229,12 @@ Namespace java.util.concurrent
 			Inherits Node(Of K, V)
 
 			Friend ReadOnly nextTable As Node(Of K, V)()
-			Friend Sub New(ByVal tab As Node(Of K, V)())
+			Friend Sub New(  tab As Node(Of K, V)())
 				MyBase.New(MOVED, Nothing, Nothing, Nothing)
 				Me.nextTable = tab
 			End Sub
 
-			Friend Function find(ByVal h As Integer, ByVal k As Object) As Node(Of K, V)
+			Friend Function find(  h As Integer,   k As Object) As Node(Of K, V)
 				' loop to avoid arbitrarily deep recursion on forwarding nodes
 				outer:
 				Dim tab As Node(Of K, V)() = nextTable
@@ -2275,7 +2275,7 @@ Namespace java.util.concurrent
 				MyBase.New(RESERVED, Nothing, Nothing, Nothing)
 			End Sub
 
-			Friend Function find(ByVal h As Integer, ByVal k As Object) As Node(Of K, V)
+			Friend Function find(  h As Integer,   k As Object) As Node(Of K, V)
 				Return Nothing
 			End Function
 		End Class
@@ -2286,7 +2286,7 @@ Namespace java.util.concurrent
 		''' Returns the stamp bits for resizing a table of size n.
 		''' Must be negative when shifted left by RESIZE_STAMP_SHIFT.
 		''' </summary>
-		Friend Shared Function resizeStamp(ByVal n As Integer) As Integer
+		Friend Shared Function resizeStamp(  n As Integer) As Integer
 			Return  java.lang.[Integer].numberOfLeadingZeros(n) Or (1 << (RESIZE_STAMP_BITS - 1))
 		End Function
 
@@ -2332,7 +2332,7 @@ Namespace java.util.concurrent
 		''' </summary>
 		''' <param name="x"> the count to add </param>
 		''' <param name="check"> if <0, don't check resize, if <= 1 only check if uncontended </param>
-		Private Sub addCount(ByVal x As Long, ByVal check As Integer)
+		Private Sub addCount(  x As Long,   check As Integer)
 			Dim [as] As CounterCell()
 			Dim b, s As Long
 			[as] = counterCells
@@ -2379,7 +2379,7 @@ Namespace java.util.concurrent
 		''' <summary>
 		''' Helps transfer if a resize is in progress.
 		''' </summary>
-		Friend Function helpTransfer(ByVal tab As Node(Of K, V)(), ByVal f As Node(Of K, V)) As Node(Of K, V)()
+		Friend Function helpTransfer(  tab As Node(Of K, V)(),   f As Node(Of K, V)) As Node(Of K, V)()
 			Dim nextTab As Node(Of K, V)()
 			Dim sc As Integer
 			nextTab = CType(f, ForwardingNode(Of K, V)).nextTable
@@ -2403,7 +2403,7 @@ Namespace java.util.concurrent
 		''' Tries to presize table to accommodate the given number of elements.
 		''' </summary>
 		''' <param name="size"> number of elements (doesn't need to be perfectly accurate) </param>
-		Private Sub tryPresize(ByVal size As Integer)
+		Private Sub tryPresize(  size As Integer)
 			Dim c As Integer = If(size >= (CInt(CUInt(MAXIMUM_CAPACITY) >> 1)), MAXIMUM_CAPACITY, tableSizeFor(size + (CInt(CUInt(size) >> 1)) + 1))
 			Dim sc As Integer
 			sc = sizeCtl
@@ -2447,7 +2447,7 @@ Namespace java.util.concurrent
 		''' Moves and/or copies the nodes in each bin to new table. See
 		''' above for explanation.
 		''' </summary>
-		Private Sub transfer(ByVal tab As Node(Of K, V)(), ByVal nextTab As Node(Of K, V)())
+		Private Sub transfer(  tab As Node(Of K, V)(),   nextTab As Node(Of K, V)())
 			Dim n As Integer = tab.Length, stride As Integer
 			stride = If(NCPU > 1, (CInt(CUInt(n) >> 3)) \ NCPU, n)
 			If stride < MIN_TRANSFER_STRIDE Then stride = MIN_TRANSFER_STRIDE ' subdivide range
@@ -2608,7 +2608,7 @@ Namespace java.util.concurrent
 		Friend NotInheritable Class CounterCell
 'JAVA TO VB CONVERTER TODO TASK: There is no VB equivalent to 'volatile':
 			Friend value As Long
-			Friend Sub New(ByVal x As Long)
+			Friend Sub New(  x As Long)
 				value = x
 			End Sub
 		End Class
@@ -2627,7 +2627,7 @@ Namespace java.util.concurrent
 		End Function
 
 		' See LongAdder version for explanation
-		Private Sub fullAddCount(ByVal x As Long, ByVal wasUncontended As Boolean)
+		Private Sub fullAddCount(  x As Long,   wasUncontended As Boolean)
 			Dim h As Integer
 			h = ThreadLocalRandom.probe
 			If h = 0 Then
@@ -2719,7 +2719,7 @@ Namespace java.util.concurrent
 		''' Replaces all linked nodes in bin at given index unless table is
 		''' too small, in which case resizes instead.
 		''' </summary>
-		Private Sub treeifyBin(ByVal tab As Node(Of K, V)(), ByVal index As Integer)
+		Private Sub treeifyBin(  tab As Node(Of K, V)(),   index As Integer)
 			Dim b As Node(Of K, V)
 			Dim n, sc As Integer
 			If tab IsNot Nothing Then
@@ -2755,7 +2755,7 @@ Namespace java.util.concurrent
 		''' <summary>
 		''' Returns a list on non-TreeNodes replacing those in given list.
 		''' </summary>
-		Friend Shared Function untreeify(Of K, V)(ByVal b As Node(Of K, V)) As Node(Of K, V)
+		Friend Shared Function untreeify(Of K, V)(  b As Node(Of K, V)) As Node(Of K, V)
 			Dim hd As Node(Of K, V) = Nothing, tl As Node(Of K, V) = Nothing
 			Dim q As Node(Of K, V) = b
 			Do While q IsNot Nothing
@@ -2785,12 +2785,12 @@ Namespace java.util.concurrent
 			Friend prev As TreeNode(Of K, V) ' needed to unlink next upon deletion
 			Friend red As Boolean
 
-			Friend Sub New(ByVal hash As Integer, ByVal key As K, ByVal val As V, ByVal [next] As Node(Of K, V), ByVal parent As TreeNode(Of K, V))
+			Friend Sub New(  hash As Integer,   key As K,   val As V,   [next] As Node(Of K, V),   parent As TreeNode(Of K, V))
 				MyBase.New(hash, key, val, [next])
 				Me.parent = parent
 			End Sub
 
-			Friend Function find(ByVal h As Integer, ByVal k As Object) As Node(Of K, V)
+			Friend Function find(  h As Integer,   k As Object) As Node(Of K, V)
 				Return findTreeNode(h, k, Nothing)
 			End Function
 
@@ -2798,7 +2798,7 @@ Namespace java.util.concurrent
 			''' Returns the TreeNode (or null if not found) for the given key
 			''' starting at given root.
 			''' </summary>
-			Friend Function findTreeNode(ByVal h As Integer, ByVal k As Object, ByVal kc As [Class]) As TreeNode(Of K, V)
+			Friend Function findTreeNode(  h As Integer,   k As Object,   kc As [Class]) As TreeNode(Of K, V)
 				If k IsNot Nothing Then
 					Dim p As TreeNode(Of K, V) = Me
 					Do
@@ -2871,7 +2871,7 @@ Namespace java.util.concurrent
 			''' equivalence across rebalancings. Tie-breaking further than
 			''' necessary simplifies testing a bit.
 			''' </summary>
-			Friend Shared Function tieBreakOrder(ByVal a As Object, ByVal b As Object) As Integer
+			Friend Shared Function tieBreakOrder(  a As Object,   b As Object) As Integer
 				Dim d As Integer
 				d = a.GetType().name.CompareTo(b.GetType().name)
 				If a Is Nothing OrElse b Is Nothing OrElse d = 0 Then d = (If(System.identityHashCode(a) <= System.identityHashCode(b), -1, 1))
@@ -2881,7 +2881,7 @@ Namespace java.util.concurrent
 			''' <summary>
 			''' Creates bin with initial set of nodes headed by b.
 			''' </summary>
-			Friend Sub New(ByVal b As TreeNode(Of K, V))
+			Friend Sub New(  b As TreeNode(Of K, V))
 				MyBase.New(TREEBIN, Nothing, Nothing, Nothing)
 				Me.first = b
 				Dim r As TreeNode(Of K, V) = Nothing
@@ -2973,7 +2973,7 @@ Namespace java.util.concurrent
 			''' using tree comparisons from root, but continues linear
 			''' search when lock not available.
 			''' </summary>
-			Friend Function find(ByVal h As Integer, ByVal k As Object) As Node(Of K, V)
+			Friend Function find(  h As Integer,   k As Object) As Node(Of K, V)
 				If k IsNot Nothing Then
 					Dim e As Node(Of K, V) = first
 					Do While e IsNot Nothing
@@ -3004,7 +3004,7 @@ Namespace java.util.concurrent
 			''' <summary>
 			''' Finds or adds a node. </summary>
 			''' <returns> null if added </returns>
-			Friend Function putTreeVal(ByVal h As Integer, ByVal k As K, ByVal v As V) As TreeNode(Of K, V)
+			Friend Function putTreeVal(  h As Integer,   k As K,   v As V) As TreeNode(Of K, V)
 				Dim kc As  [Class] = Nothing
 				Dim searched As Boolean = False
 				Dim p As TreeNode(Of K, V) = root
@@ -3082,7 +3082,7 @@ Namespace java.util.concurrent
 			''' swap the tree linkages.
 			''' </summary>
 			''' <returns> true if now too small, so should be untreeified </returns>
-			Friend Function removeTreeNode(ByVal p As TreeNode(Of K, V)) As Boolean
+			Friend Function removeTreeNode(  p As TreeNode(Of K, V)) As Boolean
 				Dim [next] As TreeNode(Of K, V) = CType(p.next, TreeNode(Of K, V))
 				Dim pred As TreeNode(Of K, V) = p.prev ' unlink traversal pointers
 				Dim r As TreeNode(Of K, V), rl As TreeNode(Of K, V)
@@ -3196,7 +3196,7 @@ Namespace java.util.concurrent
 			' ------------------------------------------------------------ 
 			' Red-black tree methods, all adapted from CLR
 
-			Friend Shared Function rotateLeft(Of K, V)(ByVal root As TreeNode(Of K, V), ByVal p As TreeNode(Of K, V)) As TreeNode(Of K, V)
+			Friend Shared Function rotateLeft(Of K, V)(  root As TreeNode(Of K, V),   p As TreeNode(Of K, V)) As TreeNode(Of K, V)
 				Dim r As TreeNode(Of K, V), pp As TreeNode(Of K, V), rl As TreeNode(Of K, V)
 				r = p.right
 				If p IsNot Nothing AndAlso r IsNot Nothing Then
@@ -3219,7 +3219,7 @@ Namespace java.util.concurrent
 				Return root
 			End Function
 
-			Friend Shared Function rotateRight(Of K, V)(ByVal root As TreeNode(Of K, V), ByVal p As TreeNode(Of K, V)) As TreeNode(Of K, V)
+			Friend Shared Function rotateRight(Of K, V)(  root As TreeNode(Of K, V),   p As TreeNode(Of K, V)) As TreeNode(Of K, V)
 				Dim l As TreeNode(Of K, V), pp As TreeNode(Of K, V), lr As TreeNode(Of K, V)
 				l = p.left
 				If p IsNot Nothing AndAlso l IsNot Nothing Then
@@ -3242,7 +3242,7 @@ Namespace java.util.concurrent
 				Return root
 			End Function
 
-			Friend Shared Function balanceInsertion(Of K, V)(ByVal root As TreeNode(Of K, V), ByVal x As TreeNode(Of K, V)) As TreeNode(Of K, V)
+			Friend Shared Function balanceInsertion(Of K, V)(  root As TreeNode(Of K, V),   x As TreeNode(Of K, V)) As TreeNode(Of K, V)
 				x.red = True
 				Dim xp As TreeNode(Of K, V)
 				xpp
@@ -3305,7 +3305,7 @@ Namespace java.util.concurrent
 				Loop
 			End Function
 
-			Friend Shared Function balanceDeletion(Of K, V)(ByVal root As TreeNode(Of K, V), ByVal x As TreeNode(Of K, V)) As TreeNode(Of K, V)
+			Friend Shared Function balanceDeletion(Of K, V)(  root As TreeNode(Of K, V),   x As TreeNode(Of K, V)) As TreeNode(Of K, V)
 				Dim xp As TreeNode(Of K, V)
 				xpl
 				xpr
@@ -3402,7 +3402,7 @@ Namespace java.util.concurrent
 			''' <summary>
 			''' Recursive invariant check
 			''' </summary>
-			Friend Shared Function checkInvariants(Of K, V)(ByVal t As TreeNode(Of K, V)) As Boolean
+			Friend Shared Function checkInvariants(Of K, V)(  t As TreeNode(Of K, V)) As Boolean
 				Dim tp As TreeNode(Of K, V) = t.parent, tl As TreeNode(Of K, V) = t.left, tr As TreeNode(Of K, V) = t.right, tb As TreeNode(Of K, V) = t.prev, tn As TreeNode(Of K, V) = CType(t.next, TreeNode(Of K, V))
 				If tb IsNot Nothing AndAlso tb.next IsNot t Then Return False
 				If tn IsNot Nothing AndAlso tn.prev IsNot t Then Return False
@@ -3472,7 +3472,7 @@ Namespace java.util.concurrent
 			Friend baseLimit As Integer ' index bound for initial table
 			Friend ReadOnly baseSize As Integer ' initial table size
 
-			Friend Sub New(ByVal tab As Node(Of K, V)(), ByVal size As Integer, ByVal index As Integer, ByVal limit As Integer)
+			Friend Sub New(  tab As Node(Of K, V)(),   size As Integer,   index As Integer,   limit As Integer)
 				Me.tab = tab
 				Me.baseSize = size
 					Me.index = index
@@ -3532,7 +3532,7 @@ Namespace java.util.concurrent
 			''' <summary>
 			''' Saves traversal state upon encountering a forwarding node.
 			''' </summary>
-			Private Sub pushState(ByVal t As Node(Of K, V)(), ByVal i As Integer, ByVal n As Integer)
+			Private Sub pushState(  t As Node(Of K, V)(),   i As Integer,   n As Integer)
 				Dim s As TableStack(Of K, V) = spare ' reuse if possible
 				If s IsNot Nothing Then
 					spare = s.next
@@ -3550,7 +3550,7 @@ Namespace java.util.concurrent
 			''' Possibly pops traversal state.
 			''' </summary>
 			''' <param name="n"> length of current table </param>
-			Private Sub recoverState(ByVal n As Integer)
+			Private Sub recoverState(  n As Integer)
 				Dim s As TableStack(Of K, V)
 				Dim len As Integer
 				s = stack
@@ -3585,7 +3585,7 @@ Namespace java.util.concurrent
 
 			Friend ReadOnly map As ConcurrentHashMap(Of K, V)
 			Friend lastReturned As Node(Of K, V)
-			Friend Sub New(ByVal tab As Node(Of K, V)(), ByVal size As Integer, ByVal index As Integer, ByVal limit As Integer, ByVal map As ConcurrentHashMap(Of K, V))
+			Friend Sub New(  tab As Node(Of K, V)(),   size As Integer,   index As Integer,   limit As Integer,   map As ConcurrentHashMap(Of K, V))
 				MyBase.New(tab, size, index, limit)
 				Me.map = map
 				advance()
@@ -3611,7 +3611,7 @@ Namespace java.util.concurrent
 			Inherits BaseIterator(Of K, V)
 			Implements IEnumerator(Of K), System.Collections.IEnumerator(Of K)
 
-			Friend Sub New(ByVal tab As Node(Of K, V)(), ByVal index As Integer, ByVal size As Integer, ByVal limit As Integer, ByVal map As ConcurrentHashMap(Of K, V))
+			Friend Sub New(  tab As Node(Of K, V)(),   index As Integer,   size As Integer,   limit As Integer,   map As ConcurrentHashMap(Of K, V))
 				MyBase.New(tab, index, size, limit, map)
 			End Sub
 
@@ -3634,7 +3634,7 @@ Namespace java.util.concurrent
 			Inherits BaseIterator(Of K, V)
 			Implements IEnumerator(Of V), System.Collections.IEnumerator(Of V)
 
-			Friend Sub New(ByVal tab As Node(Of K, V)(), ByVal index As Integer, ByVal size As Integer, ByVal limit As Integer, ByVal map As ConcurrentHashMap(Of K, V))
+			Friend Sub New(  tab As Node(Of K, V)(),   index As Integer,   size As Integer,   limit As Integer,   map As ConcurrentHashMap(Of K, V))
 				MyBase.New(tab, index, size, limit, map)
 			End Sub
 
@@ -3657,7 +3657,7 @@ Namespace java.util.concurrent
 			Inherits BaseIterator(Of K, V)
 			Implements IEnumerator(Of KeyValuePair(Of K, V))
 
-			Friend Sub New(ByVal tab As Node(Of K, V)(), ByVal index As Integer, ByVal size As Integer, ByVal limit As Integer, ByVal map As ConcurrentHashMap(Of K, V))
+			Friend Sub New(  tab As Node(Of K, V)(),   index As Integer,   size As Integer,   limit As Integer,   map As ConcurrentHashMap(Of K, V))
 				MyBase.New(tab, index, size, limit, map)
 			End Sub
 
@@ -3682,7 +3682,7 @@ Namespace java.util.concurrent
 			Friend ReadOnly key As K ' non-null
 			Friend val As V ' non-null
 			Friend ReadOnly map As ConcurrentHashMap(Of K, V)
-			Friend Sub New(ByVal key As K, ByVal val As V, ByVal map As ConcurrentHashMap(Of K, V))
+			Friend Sub New(  key As K,   val As V,   map As ConcurrentHashMap(Of K, V))
 				Me.key = key
 				Me.val = val
 				Me.map = map
@@ -3704,7 +3704,7 @@ Namespace java.util.concurrent
 				Return key & "=" & val
 			End Function
 
-			Public Overrides Function Equals(ByVal o As Object) As Boolean
+			Public Overrides Function Equals(  o As Object) As Boolean
 				Dim k, v As Object
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 				Dim e As KeyValuePair(Of ?, ?)
@@ -3721,7 +3721,7 @@ Namespace java.util.concurrent
 			''' could even have been removed, in which case the put will
 			''' re-establish). We do not and cannot guarantee more.
 			''' </summary>
-			Public Function setValue(ByVal value As V) As V
+			Public Function setValue(  value As V) As V
 				If value Is Nothing Then Throw New NullPointerException
 				Dim v As V = val
 				val = value
@@ -3735,7 +3735,7 @@ Namespace java.util.concurrent
 			Implements java.util.Spliterator(Of K)
 
 			Friend est As Long ' size estimate
-			Friend Sub New(ByVal tab As Node(Of K, V)(), ByVal size As Integer, ByVal index As Integer, ByVal limit As Integer, ByVal est As Long)
+			Friend Sub New(  tab As Node(Of K, V)(),   size As Integer,   index As Integer,   limit As Integer,   est As Long)
 				MyBase.New(tab, size, index, limit)
 				Me.est = est
 			End Sub
@@ -3747,7 +3747,7 @@ Namespace java.util.concurrent
 			End Function
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Sub forEachRemaining(Of T1)(ByVal action As java.util.function.Consumer(Of T1))
+			Public Sub forEachRemaining(Of T1)(  action As java.util.function.Consumer(Of T1))
 				If action Is Nothing Then Throw New NullPointerException
 				Dim p As Node(Of K, V)
 'JAVA TO VB CONVERTER TODO TASK: Assignments within expressions are not supported in VB
@@ -3757,7 +3757,7 @@ Namespace java.util.concurrent
 			End Sub
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Function tryAdvance(Of T1)(ByVal action As java.util.function.Consumer(Of T1)) As Boolean
+			Public Function tryAdvance(Of T1)(  action As java.util.function.Consumer(Of T1)) As Boolean
 				If action Is Nothing Then Throw New NullPointerException
 				Dim p As Node(Of K, V)
 				p = advance()
@@ -3780,7 +3780,7 @@ Namespace java.util.concurrent
 			Implements java.util.Spliterator(Of V)
 
 			Friend est As Long ' size estimate
-			Friend Sub New(ByVal tab As Node(Of K, V)(), ByVal size As Integer, ByVal index As Integer, ByVal limit As Integer, ByVal est As Long)
+			Friend Sub New(  tab As Node(Of K, V)(),   size As Integer,   index As Integer,   limit As Integer,   est As Long)
 				MyBase.New(tab, size, index, limit)
 				Me.est = est
 			End Sub
@@ -3792,7 +3792,7 @@ Namespace java.util.concurrent
 			End Function
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Sub forEachRemaining(Of T1)(ByVal action As java.util.function.Consumer(Of T1))
+			Public Sub forEachRemaining(Of T1)(  action As java.util.function.Consumer(Of T1))
 				If action Is Nothing Then Throw New NullPointerException
 				Dim p As Node(Of K, V)
 'JAVA TO VB CONVERTER TODO TASK: Assignments within expressions are not supported in VB
@@ -3802,7 +3802,7 @@ Namespace java.util.concurrent
 			End Sub
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Function tryAdvance(Of T1)(ByVal action As java.util.function.Consumer(Of T1)) As Boolean
+			Public Function tryAdvance(Of T1)(  action As java.util.function.Consumer(Of T1)) As Boolean
 				If action Is Nothing Then Throw New NullPointerException
 				Dim p As Node(Of K, V)
 				p = advance()
@@ -3826,7 +3826,7 @@ Namespace java.util.concurrent
 
 			Friend ReadOnly map As ConcurrentHashMap(Of K, V) ' To export MapEntry
 			Friend est As Long ' size estimate
-			Friend Sub New(ByVal tab As Node(Of K, V)(), ByVal size As Integer, ByVal index As Integer, ByVal limit As Integer, ByVal est As Long, ByVal map As ConcurrentHashMap(Of K, V))
+			Friend Sub New(  tab As Node(Of K, V)(),   size As Integer,   index As Integer,   limit As Integer,   est As Long,   map As ConcurrentHashMap(Of K, V))
 				MyBase.New(tab, size, index, limit)
 				Me.map = map
 				Me.est = est
@@ -3839,7 +3839,7 @@ Namespace java.util.concurrent
 			End Function
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Sub forEachRemaining(Of T1)(ByVal action As java.util.function.Consumer(Of T1))
+			Public Sub forEachRemaining(Of T1)(  action As java.util.function.Consumer(Of T1))
 				If action Is Nothing Then Throw New NullPointerException
 				Dim p As Node(Of K, V)
 'JAVA TO VB CONVERTER TODO TASK: Assignments within expressions are not supported in VB
@@ -3849,7 +3849,7 @@ Namespace java.util.concurrent
 			End Sub
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Function tryAdvance(Of T1)(ByVal action As java.util.function.Consumer(Of T1)) As Boolean
+			Public Function tryAdvance(Of T1)(  action As java.util.function.Consumer(Of T1)) As Boolean
 				If action Is Nothing Then Throw New NullPointerException
 				Dim p As Node(Of K, V)
 				p = advance()
@@ -3877,7 +3877,7 @@ Namespace java.util.concurrent
 		''' splitting than is the depth, since it is used while dividing by
 		''' two anyway.
 		''' </summary>
-		Friend Function batchFor(ByVal b As Long) As Integer
+		Friend Function batchFor(  b As Long) As Integer
 			Dim n As Long
 			n = sumCount()
 			If b = java.lang.[Long].Max_Value OrElse n <= 1L OrElse n < b Then Return 0
@@ -3894,7 +3894,7 @@ Namespace java.util.concurrent
 		''' <param name="action"> the action
 		''' @since 1.8 </param>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Overridable Sub forEach(Of T1)(ByVal parallelismThreshold As Long, ByVal action As java.util.function.BiConsumer(Of T1))
+		Public Overridable Sub forEach(Of T1)(  parallelismThreshold As Long,   action As java.util.function.BiConsumer(Of T1))
 			If action Is Nothing Then Throw New NullPointerException
 			CType(New ForEachMappingTask(Of K, V) (Nothing, batchFor(parallelismThreshold), 0, 0, table, action), ForEachMappingTask(Of K, V)).invoke()
 		End Sub
@@ -3912,7 +3912,7 @@ Namespace java.util.concurrent
 		''' @param <U> the return type of the transformer
 		''' @since 1.8 </param>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Overridable Sub forEach(Of U, T1 As U, T2)(ByVal parallelismThreshold As Long, ByVal transformer As java.util.function.BiFunction(Of T1), ByVal action As java.util.function.Consumer(Of T2))
+		Public Overridable Sub forEach(Of U, T1 As U, T2)(  parallelismThreshold As Long,   transformer As java.util.function.BiFunction(Of T1),   action As java.util.function.Consumer(Of T2))
 			If transformer Is Nothing OrElse action Is Nothing Then Throw New NullPointerException
 			CType(New ForEachTransformedMappingTask(Of K, V, U) (Nothing, batchFor(parallelismThreshold), 0, 0, table, transformer, action), ForEachTransformedMappingTask(Of K, V, U)).invoke()
 		End Sub
@@ -3933,7 +3933,7 @@ Namespace java.util.concurrent
 		''' function on each (key, value), or null if none
 		''' @since 1.8 </returns>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Overridable Function search(Of U, T1 As U)(ByVal parallelismThreshold As Long, ByVal searchFunction As java.util.function.BiFunction(Of T1)) As U
+		Public Overridable Function search(Of U, T1 As U)(  parallelismThreshold As Long,   searchFunction As java.util.function.BiFunction(Of T1)) As U
 			If searchFunction Is Nothing Then Throw New NullPointerException
 			Return (New SearchMappingsTask(Of K, V, U) (Nothing, batchFor(parallelismThreshold), 0, 0, table, searchFunction, New java.util.concurrent.atomic.AtomicReference(Of U))).invoke()
 		End Function
@@ -3954,7 +3954,7 @@ Namespace java.util.concurrent
 		''' of all (key, value) pairs
 		''' @since 1.8 </returns>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Overridable Function reduce(Of U, T1 As U, T2 As U)(ByVal parallelismThreshold As Long, ByVal transformer As java.util.function.BiFunction(Of T1), ByVal reducer As java.util.function.BiFunction(Of T2)) As U
+		Public Overridable Function reduce(Of U, T1 As U, T2 As U)(  parallelismThreshold As Long,   transformer As java.util.function.BiFunction(Of T1),   reducer As java.util.function.BiFunction(Of T2)) As U
 			If transformer Is Nothing OrElse reducer Is Nothing Then Throw New NullPointerException
 			Return (New MapReduceMappingsTask(Of K, V, U) (Nothing, batchFor(parallelismThreshold), 0, 0, table, Nothing, transformer, reducer)).invoke()
 		End Function
@@ -3974,7 +3974,7 @@ Namespace java.util.concurrent
 		''' of all (key, value) pairs
 		''' @since 1.8 </returns>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Overridable Function reduceToDouble(Of T1)(ByVal parallelismThreshold As Long, ByVal transformer As java.util.function.ToDoubleBiFunction(Of T1), ByVal basis As Double, ByVal reducer As java.util.function.DoubleBinaryOperator) As Double
+		Public Overridable Function reduceToDouble(Of T1)(  parallelismThreshold As Long,   transformer As java.util.function.ToDoubleBiFunction(Of T1),   basis As Double,   reducer As java.util.function.DoubleBinaryOperator) As Double
 			If transformer Is Nothing OrElse reducer Is Nothing Then Throw New NullPointerException
 			Return (New MapReduceMappingsToDoubleTask(Of K, V) (Nothing, batchFor(parallelismThreshold), 0, 0, table, Nothing, transformer, basis, reducer)).invoke()
 		End Function
@@ -3994,7 +3994,7 @@ Namespace java.util.concurrent
 		''' of all (key, value) pairs
 		''' @since 1.8 </returns>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Overridable Function reduceToLong(Of T1)(ByVal parallelismThreshold As Long, ByVal transformer As java.util.function.ToLongBiFunction(Of T1), ByVal basis As Long, ByVal reducer As java.util.function.LongBinaryOperator) As Long
+		Public Overridable Function reduceToLong(Of T1)(  parallelismThreshold As Long,   transformer As java.util.function.ToLongBiFunction(Of T1),   basis As Long,   reducer As java.util.function.LongBinaryOperator) As Long
 			If transformer Is Nothing OrElse reducer Is Nothing Then Throw New NullPointerException
 			Return (New MapReduceMappingsToLongTask(Of K, V) (Nothing, batchFor(parallelismThreshold), 0, 0, table, Nothing, transformer, basis, reducer)).invoke()
 		End Function
@@ -4014,7 +4014,7 @@ Namespace java.util.concurrent
 		''' of all (key, value) pairs
 		''' @since 1.8 </returns>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Overridable Function reduceToInt(Of T1)(ByVal parallelismThreshold As Long, ByVal transformer As java.util.function.ToIntBiFunction(Of T1), ByVal basis As Integer, ByVal reducer As java.util.function.IntBinaryOperator) As Integer
+		Public Overridable Function reduceToInt(Of T1)(  parallelismThreshold As Long,   transformer As java.util.function.ToIntBiFunction(Of T1),   basis As Integer,   reducer As java.util.function.IntBinaryOperator) As Integer
 			If transformer Is Nothing OrElse reducer Is Nothing Then Throw New NullPointerException
 			Return (New MapReduceMappingsToIntTask(Of K, V) (Nothing, batchFor(parallelismThreshold), 0, 0, table, Nothing, transformer, basis, reducer)).invoke()
 		End Function
@@ -4027,7 +4027,7 @@ Namespace java.util.concurrent
 		''' <param name="action"> the action
 		''' @since 1.8 </param>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Overridable Sub forEachKey(Of T1)(ByVal parallelismThreshold As Long, ByVal action As java.util.function.Consumer(Of T1))
+		Public Overridable Sub forEachKey(Of T1)(  parallelismThreshold As Long,   action As java.util.function.Consumer(Of T1))
 			If action Is Nothing Then Throw New NullPointerException
 			CType(New ForEachKeyTask(Of K, V) (Nothing, batchFor(parallelismThreshold), 0, 0, table, action), ForEachKeyTask(Of K, V)).invoke()
 		End Sub
@@ -4045,7 +4045,7 @@ Namespace java.util.concurrent
 		''' @param <U> the return type of the transformer
 		''' @since 1.8 </param>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Overridable Sub forEachKey(Of U, T1 As U, T2)(ByVal parallelismThreshold As Long, ByVal transformer As java.util.function.Function(Of T1), ByVal action As java.util.function.Consumer(Of T2))
+		Public Overridable Sub forEachKey(Of U, T1 As U, T2)(  parallelismThreshold As Long,   transformer As java.util.function.Function(Of T1),   action As java.util.function.Consumer(Of T2))
 			If transformer Is Nothing OrElse action Is Nothing Then Throw New NullPointerException
 			CType(New ForEachTransformedKeyTask(Of K, V, U) (Nothing, batchFor(parallelismThreshold), 0, 0, table, transformer, action), ForEachTransformedKeyTask(Of K, V, U)).invoke()
 		End Sub
@@ -4066,7 +4066,7 @@ Namespace java.util.concurrent
 		''' function on each key, or null if none
 		''' @since 1.8 </returns>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Overridable Function searchKeys(Of U, T1 As U)(ByVal parallelismThreshold As Long, ByVal searchFunction As java.util.function.Function(Of T1)) As U
+		Public Overridable Function searchKeys(Of U, T1 As U)(  parallelismThreshold As Long,   searchFunction As java.util.function.Function(Of T1)) As U
 			If searchFunction Is Nothing Then Throw New NullPointerException
 			Return (New SearchKeysTask(Of K, V, U) (Nothing, batchFor(parallelismThreshold), 0, 0, table, searchFunction, New java.util.concurrent.atomic.AtomicReference(Of U))).invoke()
 		End Function
@@ -4082,7 +4082,7 @@ Namespace java.util.concurrent
 		''' reducer to combine values, or null if none
 		''' @since 1.8 </returns>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Overridable Function reduceKeys(Of T1 As K)(ByVal parallelismThreshold As Long, ByVal reducer As java.util.function.BiFunction(Of T1)) As K
+		Public Overridable Function reduceKeys(Of T1 As K)(  parallelismThreshold As Long,   reducer As java.util.function.BiFunction(Of T1)) As K
 			If reducer Is Nothing Then Throw New NullPointerException
 			Return (New ReduceKeysTask(Of K, V) (Nothing, batchFor(parallelismThreshold), 0, 0, table, Nothing, reducer)).invoke()
 		End Function
@@ -4103,7 +4103,7 @@ Namespace java.util.concurrent
 		''' of all keys
 		''' @since 1.8 </returns>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Overridable Function reduceKeys(Of U, T1 As U, T2 As U)(ByVal parallelismThreshold As Long, ByVal transformer As java.util.function.Function(Of T1), ByVal reducer As java.util.function.BiFunction(Of T2)) As U
+		Public Overridable Function reduceKeys(Of U, T1 As U, T2 As U)(  parallelismThreshold As Long,   transformer As java.util.function.Function(Of T1),   reducer As java.util.function.BiFunction(Of T2)) As U
 			If transformer Is Nothing OrElse reducer Is Nothing Then Throw New NullPointerException
 			Return (New MapReduceKeysTask(Of K, V, U) (Nothing, batchFor(parallelismThreshold), 0, 0, table, Nothing, transformer, reducer)).invoke()
 		End Function
@@ -4123,7 +4123,7 @@ Namespace java.util.concurrent
 		''' of all keys
 		''' @since 1.8 </returns>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Overridable Function reduceKeysToDouble(Of T1)(ByVal parallelismThreshold As Long, ByVal transformer As java.util.function.ToDoubleFunction(Of T1), ByVal basis As Double, ByVal reducer As java.util.function.DoubleBinaryOperator) As Double
+		Public Overridable Function reduceKeysToDouble(Of T1)(  parallelismThreshold As Long,   transformer As java.util.function.ToDoubleFunction(Of T1),   basis As Double,   reducer As java.util.function.DoubleBinaryOperator) As Double
 			If transformer Is Nothing OrElse reducer Is Nothing Then Throw New NullPointerException
 			Return (New MapReduceKeysToDoubleTask(Of K, V) (Nothing, batchFor(parallelismThreshold), 0, 0, table, Nothing, transformer, basis, reducer)).invoke()
 		End Function
@@ -4143,7 +4143,7 @@ Namespace java.util.concurrent
 		''' of all keys
 		''' @since 1.8 </returns>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Overridable Function reduceKeysToLong(Of T1)(ByVal parallelismThreshold As Long, ByVal transformer As java.util.function.ToLongFunction(Of T1), ByVal basis As Long, ByVal reducer As java.util.function.LongBinaryOperator) As Long
+		Public Overridable Function reduceKeysToLong(Of T1)(  parallelismThreshold As Long,   transformer As java.util.function.ToLongFunction(Of T1),   basis As Long,   reducer As java.util.function.LongBinaryOperator) As Long
 			If transformer Is Nothing OrElse reducer Is Nothing Then Throw New NullPointerException
 			Return (New MapReduceKeysToLongTask(Of K, V) (Nothing, batchFor(parallelismThreshold), 0, 0, table, Nothing, transformer, basis, reducer)).invoke()
 		End Function
@@ -4163,7 +4163,7 @@ Namespace java.util.concurrent
 		''' of all keys
 		''' @since 1.8 </returns>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Overridable Function reduceKeysToInt(Of T1)(ByVal parallelismThreshold As Long, ByVal transformer As java.util.function.ToIntFunction(Of T1), ByVal basis As Integer, ByVal reducer As java.util.function.IntBinaryOperator) As Integer
+		Public Overridable Function reduceKeysToInt(Of T1)(  parallelismThreshold As Long,   transformer As java.util.function.ToIntFunction(Of T1),   basis As Integer,   reducer As java.util.function.IntBinaryOperator) As Integer
 			If transformer Is Nothing OrElse reducer Is Nothing Then Throw New NullPointerException
 			Return (New MapReduceKeysToIntTask(Of K, V) (Nothing, batchFor(parallelismThreshold), 0, 0, table, Nothing, transformer, basis, reducer)).invoke()
 		End Function
@@ -4176,7 +4176,7 @@ Namespace java.util.concurrent
 		''' <param name="action"> the action
 		''' @since 1.8 </param>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Overridable Sub forEachValue(Of T1)(ByVal parallelismThreshold As Long, ByVal action As java.util.function.Consumer(Of T1))
+		Public Overridable Sub forEachValue(Of T1)(  parallelismThreshold As Long,   action As java.util.function.Consumer(Of T1))
 			If action Is Nothing Then Throw New NullPointerException
 			CType(New ForEachValueTask(Of K, V) (Nothing, batchFor(parallelismThreshold), 0, 0, table, action), ForEachValueTask(Of K, V)).invoke()
 		End Sub
@@ -4194,7 +4194,7 @@ Namespace java.util.concurrent
 		''' @param <U> the return type of the transformer
 		''' @since 1.8 </param>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Overridable Sub forEachValue(Of U, T1 As U, T2)(ByVal parallelismThreshold As Long, ByVal transformer As java.util.function.Function(Of T1), ByVal action As java.util.function.Consumer(Of T2))
+		Public Overridable Sub forEachValue(Of U, T1 As U, T2)(  parallelismThreshold As Long,   transformer As java.util.function.Function(Of T1),   action As java.util.function.Consumer(Of T2))
 			If transformer Is Nothing OrElse action Is Nothing Then Throw New NullPointerException
 			CType(New ForEachTransformedValueTask(Of K, V, U) (Nothing, batchFor(parallelismThreshold), 0, 0, table, transformer, action), ForEachTransformedValueTask(Of K, V, U)).invoke()
 		End Sub
@@ -4215,7 +4215,7 @@ Namespace java.util.concurrent
 		''' function on each value, or null if none
 		''' @since 1.8 </returns>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Overridable Function searchValues(Of U, T1 As U)(ByVal parallelismThreshold As Long, ByVal searchFunction As java.util.function.Function(Of T1)) As U
+		Public Overridable Function searchValues(Of U, T1 As U)(  parallelismThreshold As Long,   searchFunction As java.util.function.Function(Of T1)) As U
 			If searchFunction Is Nothing Then Throw New NullPointerException
 			Return (New SearchValuesTask(Of K, V, U) (Nothing, batchFor(parallelismThreshold), 0, 0, table, searchFunction, New java.util.concurrent.atomic.AtomicReference(Of U))).invoke()
 		End Function
@@ -4230,7 +4230,7 @@ Namespace java.util.concurrent
 		''' <returns> the result of accumulating all values
 		''' @since 1.8 </returns>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Overridable Function reduceValues(Of T1 As V)(ByVal parallelismThreshold As Long, ByVal reducer As java.util.function.BiFunction(Of T1)) As V
+		Public Overridable Function reduceValues(Of T1 As V)(  parallelismThreshold As Long,   reducer As java.util.function.BiFunction(Of T1)) As V
 			If reducer Is Nothing Then Throw New NullPointerException
 			Return (New ReduceValuesTask(Of K, V) (Nothing, batchFor(parallelismThreshold), 0, 0, table, Nothing, reducer)).invoke()
 		End Function
@@ -4251,7 +4251,7 @@ Namespace java.util.concurrent
 		''' of all values
 		''' @since 1.8 </returns>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Overridable Function reduceValues(Of U, T1 As U, T2 As U)(ByVal parallelismThreshold As Long, ByVal transformer As java.util.function.Function(Of T1), ByVal reducer As java.util.function.BiFunction(Of T2)) As U
+		Public Overridable Function reduceValues(Of U, T1 As U, T2 As U)(  parallelismThreshold As Long,   transformer As java.util.function.Function(Of T1),   reducer As java.util.function.BiFunction(Of T2)) As U
 			If transformer Is Nothing OrElse reducer Is Nothing Then Throw New NullPointerException
 			Return (New MapReduceValuesTask(Of K, V, U) (Nothing, batchFor(parallelismThreshold), 0, 0, table, Nothing, transformer, reducer)).invoke()
 		End Function
@@ -4271,7 +4271,7 @@ Namespace java.util.concurrent
 		''' of all values
 		''' @since 1.8 </returns>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Overridable Function reduceValuesToDouble(Of T1)(ByVal parallelismThreshold As Long, ByVal transformer As java.util.function.ToDoubleFunction(Of T1), ByVal basis As Double, ByVal reducer As java.util.function.DoubleBinaryOperator) As Double
+		Public Overridable Function reduceValuesToDouble(Of T1)(  parallelismThreshold As Long,   transformer As java.util.function.ToDoubleFunction(Of T1),   basis As Double,   reducer As java.util.function.DoubleBinaryOperator) As Double
 			If transformer Is Nothing OrElse reducer Is Nothing Then Throw New NullPointerException
 			Return (New MapReduceValuesToDoubleTask(Of K, V) (Nothing, batchFor(parallelismThreshold), 0, 0, table, Nothing, transformer, basis, reducer)).invoke()
 		End Function
@@ -4291,7 +4291,7 @@ Namespace java.util.concurrent
 		''' of all values
 		''' @since 1.8 </returns>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Overridable Function reduceValuesToLong(Of T1)(ByVal parallelismThreshold As Long, ByVal transformer As java.util.function.ToLongFunction(Of T1), ByVal basis As Long, ByVal reducer As java.util.function.LongBinaryOperator) As Long
+		Public Overridable Function reduceValuesToLong(Of T1)(  parallelismThreshold As Long,   transformer As java.util.function.ToLongFunction(Of T1),   basis As Long,   reducer As java.util.function.LongBinaryOperator) As Long
 			If transformer Is Nothing OrElse reducer Is Nothing Then Throw New NullPointerException
 			Return (New MapReduceValuesToLongTask(Of K, V) (Nothing, batchFor(parallelismThreshold), 0, 0, table, Nothing, transformer, basis, reducer)).invoke()
 		End Function
@@ -4311,7 +4311,7 @@ Namespace java.util.concurrent
 		''' of all values
 		''' @since 1.8 </returns>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Overridable Function reduceValuesToInt(Of T1)(ByVal parallelismThreshold As Long, ByVal transformer As java.util.function.ToIntFunction(Of T1), ByVal basis As Integer, ByVal reducer As java.util.function.IntBinaryOperator) As Integer
+		Public Overridable Function reduceValuesToInt(Of T1)(  parallelismThreshold As Long,   transformer As java.util.function.ToIntFunction(Of T1),   basis As Integer,   reducer As java.util.function.IntBinaryOperator) As Integer
 			If transformer Is Nothing OrElse reducer Is Nothing Then Throw New NullPointerException
 			Return (New MapReduceValuesToIntTask(Of K, V) (Nothing, batchFor(parallelismThreshold), 0, 0, table, Nothing, transformer, basis, reducer)).invoke()
 		End Function
@@ -4324,7 +4324,7 @@ Namespace java.util.concurrent
 		''' <param name="action"> the action
 		''' @since 1.8 </param>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Overridable Sub forEachEntry(Of T1)(ByVal parallelismThreshold As Long, ByVal action As java.util.function.Consumer(Of T1))
+		Public Overridable Sub forEachEntry(Of T1)(  parallelismThreshold As Long,   action As java.util.function.Consumer(Of T1))
 			If action Is Nothing Then Throw New NullPointerException
 			CType(New ForEachEntryTask(Of K, V)(Nothing, batchFor(parallelismThreshold), 0, 0, table, action), ForEachEntryTask(Of K, V)).invoke()
 		End Sub
@@ -4342,7 +4342,7 @@ Namespace java.util.concurrent
 		''' @param <U> the return type of the transformer
 		''' @since 1.8 </param>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Overridable Sub forEachEntry(Of U, T1 As U, T2)(ByVal parallelismThreshold As Long, ByVal transformer As java.util.function.Function(Of T1), ByVal action As java.util.function.Consumer(Of T2))
+		Public Overridable Sub forEachEntry(Of U, T1 As U, T2)(  parallelismThreshold As Long,   transformer As java.util.function.Function(Of T1),   action As java.util.function.Consumer(Of T2))
 			If transformer Is Nothing OrElse action Is Nothing Then Throw New NullPointerException
 			CType(New ForEachTransformedEntryTask(Of K, V, U) (Nothing, batchFor(parallelismThreshold), 0, 0, table, transformer, action), ForEachTransformedEntryTask(Of K, V, U)).invoke()
 		End Sub
@@ -4362,7 +4362,7 @@ Namespace java.util.concurrent
 		''' <returns> a non-null result from applying the given search
 		''' function on each entry, or null if none
 		''' @since 1.8 </returns>
-		Public Overridable Function searchEntries(Of U, T1 As U)(ByVal parallelismThreshold As Long, ByVal searchFunction As java.util.function.Function(Of T1)) As U
+		Public Overridable Function searchEntries(Of U, T1 As U)(  parallelismThreshold As Long,   searchFunction As java.util.function.Function(Of T1)) As U
 			If searchFunction Is Nothing Then Throw New NullPointerException
 			Return (New SearchEntriesTask(Of K, V, U) (Nothing, batchFor(parallelismThreshold), 0, 0, table, searchFunction, New java.util.concurrent.atomic.AtomicReference(Of U))).invoke()
 		End Function
@@ -4376,7 +4376,7 @@ Namespace java.util.concurrent
 		''' <param name="reducer"> a commutative associative combining function </param>
 		''' <returns> the result of accumulating all entries
 		''' @since 1.8 </returns>
-		Public Overridable Function reduceEntries(Of T1 As KeyValuePair(Of K, V)(ByVal parallelismThreshold As Long, ByVal reducer As java.util.function.BiFunction(Of T1)) As KeyValuePair(Of K, V)
+		Public Overridable Function reduceEntries(Of T1 As KeyValuePair(Of K, V)(  parallelismThreshold As Long,   reducer As java.util.function.BiFunction(Of T1)) As KeyValuePair(Of K, V)
 			If reducer Is Nothing Then Throw New NullPointerException
 			Return (New ReduceEntriesTask(Of K, V) (Nothing, batchFor(parallelismThreshold), 0, 0, table, Nothing, reducer)).invoke()
 		End Function
@@ -4397,7 +4397,7 @@ Namespace java.util.concurrent
 		''' of all entries
 		''' @since 1.8 </returns>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Overridable Function reduceEntries(Of U, T1 As U, T2 As U)(ByVal parallelismThreshold As Long, ByVal transformer As java.util.function.Function(Of T1), ByVal reducer As java.util.function.BiFunction(Of T2)) As U
+		Public Overridable Function reduceEntries(Of U, T1 As U, T2 As U)(  parallelismThreshold As Long,   transformer As java.util.function.Function(Of T1),   reducer As java.util.function.BiFunction(Of T2)) As U
 			If transformer Is Nothing OrElse reducer Is Nothing Then Throw New NullPointerException
 			Return (New MapReduceEntriesTask(Of K, V, U) (Nothing, batchFor(parallelismThreshold), 0, 0, table, Nothing, transformer, reducer)).invoke()
 		End Function
@@ -4416,7 +4416,7 @@ Namespace java.util.concurrent
 		''' <returns> the result of accumulating the given transformation
 		''' of all entries
 		''' @since 1.8 </returns>
-		Public Overridable Function reduceEntriesToDouble(ByVal parallelismThreshold As Long, ByVal transformer As java.util.function.ToDoubleFunction(Of KeyValuePair(Of K, V)), ByVal basis As Double, ByVal reducer As java.util.function.DoubleBinaryOperator) As Double
+		Public Overridable Function reduceEntriesToDouble(  parallelismThreshold As Long,   transformer As java.util.function.ToDoubleFunction(Of KeyValuePair(Of K, V)),   basis As Double,   reducer As java.util.function.DoubleBinaryOperator) As Double
 			If transformer Is Nothing OrElse reducer Is Nothing Then Throw New NullPointerException
 			Return (New MapReduceEntriesToDoubleTask(Of K, V) (Nothing, batchFor(parallelismThreshold), 0, 0, table, Nothing, transformer, basis, reducer)).invoke()
 		End Function
@@ -4435,7 +4435,7 @@ Namespace java.util.concurrent
 		''' <returns> the result of accumulating the given transformation
 		''' of all entries
 		''' @since 1.8 </returns>
-		Public Overridable Function reduceEntriesToLong(ByVal parallelismThreshold As Long, ByVal transformer As java.util.function.ToLongFunction(Of KeyValuePair(Of K, V)), ByVal basis As Long, ByVal reducer As java.util.function.LongBinaryOperator) As Long
+		Public Overridable Function reduceEntriesToLong(  parallelismThreshold As Long,   transformer As java.util.function.ToLongFunction(Of KeyValuePair(Of K, V)),   basis As Long,   reducer As java.util.function.LongBinaryOperator) As Long
 			If transformer Is Nothing OrElse reducer Is Nothing Then Throw New NullPointerException
 			Return (New MapReduceEntriesToLongTask(Of K, V) (Nothing, batchFor(parallelismThreshold), 0, 0, table, Nothing, transformer, basis, reducer)).invoke()
 		End Function
@@ -4454,7 +4454,7 @@ Namespace java.util.concurrent
 		''' <returns> the result of accumulating the given transformation
 		''' of all entries
 		''' @since 1.8 </returns>
-		Public Overridable Function reduceEntriesToInt(ByVal parallelismThreshold As Long, ByVal transformer As java.util.function.ToIntFunction(Of KeyValuePair(Of K, V)), ByVal basis As Integer, ByVal reducer As java.util.function.IntBinaryOperator) As Integer
+		Public Overridable Function reduceEntriesToInt(  parallelismThreshold As Long,   transformer As java.util.function.ToIntFunction(Of KeyValuePair(Of K, V)),   basis As Integer,   reducer As java.util.function.IntBinaryOperator) As Integer
 			If transformer Is Nothing OrElse reducer Is Nothing Then Throw New NullPointerException
 			Return (New MapReduceEntriesToIntTask(Of K, V) (Nothing, batchFor(parallelismThreshold), 0, 0, table, Nothing, transformer, basis, reducer)).invoke()
 		End Function
@@ -4471,7 +4471,7 @@ Namespace java.util.concurrent
 
 			Private Const serialVersionUID As Long = 7249069246763182397L
 			Friend ReadOnly map As ConcurrentHashMap(Of K, V)
-			Friend Sub New(ByVal map As ConcurrentHashMap(Of K, V))
+			Friend Sub New(  map As ConcurrentHashMap(Of K, V))
 				Me.map = map
 			End Sub
 
@@ -4511,8 +4511,8 @@ Namespace java.util.concurrent
 			''' </summary>
 			''' <returns> an iterator over the elements in this collection </returns>
 			Public MustOverride Function [iterator]() As IEnumerator(Of E)
-			Public MustOverride Function contains(ByVal o As Object) As Boolean
-			Public MustOverride Function remove(ByVal o As Object) As Boolean
+			Public MustOverride Function contains(  o As Object) As Boolean
+			Public MustOverride Function remove(  o As Object) As Boolean
 
 			Private Const oomeMsg As String = "Required array size too large"
 
@@ -4539,7 +4539,7 @@ Namespace java.util.concurrent
 			End Function
 
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-			Public Function toArray(Of T)(ByVal a As T()) As T()
+			Public Function toArray(Of T)(  a As T()) As T()
 				Dim sz As Long = map.mappingCount()
 				If sz > MAX_ARRAY_SIZE Then Throw New OutOfMemoryError(oomeMsg)
 				Dim m As Integer = CInt(sz)
@@ -4594,7 +4594,7 @@ Namespace java.util.concurrent
 				Return sb.append("]"c).ToString()
 			End Function
 
-			Public Function containsAll(Of T1)(ByVal c As ICollection(Of T1)) As Boolean
+			Public Function containsAll(Of T1)(  c As ICollection(Of T1)) As Boolean
 				If c IsNot Me Then
 					For Each e As Object In c
 						If e Is Nothing OrElse (Not contains(e)) Then Return False
@@ -4603,7 +4603,7 @@ Namespace java.util.concurrent
 				Return True
 			End Function
 
-			Public Function removeAll(Of T1)(ByVal c As ICollection(Of T1)) As Boolean
+			Public Function removeAll(Of T1)(  c As ICollection(Of T1)) As Boolean
 				If c Is Nothing Then Throw New NullPointerException
 				Dim modified As Boolean = False
 				Dim it As IEnumerator(Of E) = [iterator]()
@@ -4616,7 +4616,7 @@ Namespace java.util.concurrent
 				Return modified
 			End Function
 
-			Public Function retainAll(Of T1)(ByVal c As ICollection(Of T1)) As Boolean
+			Public Function retainAll(Of T1)(  c As ICollection(Of T1)) As Boolean
 				If c Is Nothing Then Throw New NullPointerException
 				Dim modified As Boolean = False
 				Dim it As IEnumerator(Of E) = [iterator]()
@@ -4649,7 +4649,7 @@ Namespace java.util.concurrent
 
 			Private Const serialVersionUID As Long = 7249069246763182397L
 			Private ReadOnly value As V
-			Friend Sub New(ByVal map As ConcurrentHashMap(Of K, V), ByVal value As V) ' non-public
+			Friend Sub New(  map As ConcurrentHashMap(Of K, V),   value As V) ' non-public
 				MyBase.New(map)
 				Me.value = value
 			End Sub
@@ -4669,7 +4669,7 @@ Namespace java.util.concurrent
 			''' <summary>
 			''' {@inheritDoc} </summary>
 			''' <exception cref="NullPointerException"> if the specified key is null </exception>
-			Public Overridable Function contains(ByVal o As Object) As Boolean
+			Public Overridable Function contains(  o As Object) As Boolean
 				Return map.containsKey(o)
 			End Function
 
@@ -4681,7 +4681,7 @@ Namespace java.util.concurrent
 			''' <param name="o"> the key to be removed from the backing map </param>
 			''' <returns> {@code true} if the backing map contained the specified key </returns>
 			''' <exception cref="NullPointerException"> if the specified key is null </exception>
-			Public Overridable Function remove(ByVal o As Object) As Boolean
+			Public Overridable Function remove(  o As Object) As Boolean
 				Return map.remove(o) IsNot Nothing
 			End Function
 
@@ -4703,7 +4703,7 @@ Namespace java.util.concurrent
 			''' <exception cref="NullPointerException"> if the specified key is null </exception>
 			''' <exception cref="UnsupportedOperationException"> if no default mapped value
 			''' for additions was provided </exception>
-			Public Overridable Function add(ByVal e As K) As Boolean
+			Public Overridable Function add(  e As K) As Boolean
 				Dim v As V
 				v = value
 				If v Is Nothing Then Throw New UnsupportedOperationException
@@ -4720,7 +4720,7 @@ Namespace java.util.concurrent
 			''' elements are {@code null} </exception>
 			''' <exception cref="UnsupportedOperationException"> if no default mapped value
 			''' for additions was provided </exception>
-			Public Overridable Function addAll(Of T1 As K)(ByVal c As ICollection(Of T1)) As Boolean
+			Public Overridable Function addAll(Of T1 As K)(  c As ICollection(Of T1)) As Boolean
 				Dim added As Boolean = False
 				Dim v As V
 				v = value
@@ -4739,7 +4739,7 @@ Namespace java.util.concurrent
 				Return h
 			End Function
 
-			Public Overrides Function Equals(ByVal o As Object) As Boolean
+			Public Overrides Function Equals(  o As Object) As Boolean
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 				Dim c As java.util.Set(Of ?)
 'JAVA TO VB CONVERTER TODO TASK: Assignments within expressions are not supported in VB
@@ -4757,7 +4757,7 @@ Namespace java.util.concurrent
 			End Function
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Overridable Sub forEach(Of T1)(ByVal action As java.util.function.Consumer(Of T1))
+			Public Overridable Sub forEach(Of T1)(  action As java.util.function.Consumer(Of T1))
 				If action Is Nothing Then Throw New NullPointerException
 				Dim t As Node(Of K, V)()
 				t = map.table
@@ -4783,14 +4783,14 @@ Namespace java.util.concurrent
 			Implements ICollection(Of V)
 
 			Private Const serialVersionUID As Long = 2249069246763182397L
-			Friend Sub New(ByVal map As ConcurrentHashMap(Of K, V))
+			Friend Sub New(  map As ConcurrentHashMap(Of K, V))
 				MyBase.New(map)
 			End Sub
-			Public Function contains(ByVal o As Object) As Boolean
+			Public Function contains(  o As Object) As Boolean
 				Return map.containsValue(o)
 			End Function
 
-			Public Function remove(ByVal o As Object) As Boolean
+			Public Function remove(  o As Object) As Boolean
 				If o IsNot Nothing Then
 					Dim it As IEnumerator(Of V) = [iterator]()
 					Do While it.MoveNext()
@@ -4811,10 +4811,10 @@ Namespace java.util.concurrent
 				Return New ValueIterator(Of K, V)(t, f, 0, f, m)
 			End Function
 
-			Public Function add(ByVal e As V) As Boolean
+			Public Function add(  e As V) As Boolean
 				Throw New UnsupportedOperationException
 			End Function
-			Public Function addAll(Of T1 As V)(ByVal c As ICollection(Of T1)) As Boolean
+			Public Function addAll(Of T1 As V)(  c As ICollection(Of T1)) As Boolean
 				Throw New UnsupportedOperationException
 			End Function
 
@@ -4828,7 +4828,7 @@ Namespace java.util.concurrent
 			End Function
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Sub forEach(Of T1)(ByVal action As java.util.function.Consumer(Of T1))
+			Public Sub forEach(Of T1)(  action As java.util.function.Consumer(Of T1))
 				If action Is Nothing Then Throw New NullPointerException
 				Dim t As Node(Of K, V)()
 				t = map.table
@@ -4854,11 +4854,11 @@ Namespace java.util.concurrent
 			Implements java.util.Set(Of KeyValuePair(Of K, V))
 
 			Private Const serialVersionUID As Long = 2249069246763182397L
-			Friend Sub New(ByVal map As ConcurrentHashMap(Of K, V))
+			Friend Sub New(  map As ConcurrentHashMap(Of K, V))
 				MyBase.New(map)
 			End Sub
 
-			Public Function contains(ByVal o As Object) As Boolean
+			Public Function contains(  o As Object) As Boolean
 				Dim k, v, r As Object
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 				Dim e As KeyValuePair(Of ?, ?)
@@ -4867,7 +4867,7 @@ Namespace java.util.concurrent
 				Return ((TypeOf o Is DictionaryEntry) AndAlso (k = (e = CType(o, KeyValuePair(Of ?, ?))).key) IsNot Nothing AndAlso (r = map.get(k)) IsNot Nothing AndAlso (v = e.Value) IsNot Nothing AndAlso (v Is r OrElse v.Equals(r)))
 			End Function
 
-			Public Function remove(ByVal o As Object) As Boolean
+			Public Function remove(  o As Object) As Boolean
 				Dim k, v As Object
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 				Dim e As KeyValuePair(Of ?, ?)
@@ -4885,11 +4885,11 @@ Namespace java.util.concurrent
 				Return New EntryIterator(Of K, V)(t, f, 0, f, m)
 			End Function
 
-			Public Function add(ByVal e As Entry(Of K, V)) As Boolean
+			Public Function add(  e As Entry(Of K, V)) As Boolean
 				Return map.putVal(e.key, e.value, False) Is Nothing
 			End Function
 
-			Public Function addAll(Of T1 As Entry(Of K, V)(ByVal c As ICollection(Of T1)) As Boolean
+			Public Function addAll(Of T1 As Entry(Of K, V)(  c As ICollection(Of T1)) As Boolean
 				Dim added As Boolean = False
 				For Each e As Entry(Of K, V) In c
 					If add(e) Then added = True
@@ -4912,7 +4912,7 @@ Namespace java.util.concurrent
 				Return h
 			End Function
 
-			Public NotOverridable Overrides Function Equals(ByVal o As Object) As Boolean
+			Public NotOverridable Overrides Function Equals(  o As Object) As Boolean
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 				Dim c As java.util.Set(Of ?)
 'JAVA TO VB CONVERTER TODO TASK: Assignments within expressions are not supported in VB
@@ -4930,7 +4930,7 @@ Namespace java.util.concurrent
 			End Function
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Sub forEach(Of T1)(ByVal action As java.util.function.Consumer(Of T1))
+			Public Sub forEach(Of T1)(  action As java.util.function.Consumer(Of T1))
 				If action Is Nothing Then Throw New NullPointerException
 				Dim t As Node(Of K, V)()
 				t = map.table
@@ -4965,7 +4965,7 @@ Namespace java.util.concurrent
 			Friend ReadOnly baseSize As Integer
 			Friend batch As Integer ' split control
 
-			Friend Sub New(Of T1)(ByVal par As BulkTask(Of T1), ByVal b As Integer, ByVal i As Integer, ByVal f As Integer, ByVal t As Node(Of K, V)())
+			Friend Sub New(Of T1)(  par As BulkTask(Of T1),   b As Integer,   i As Integer,   f As Integer,   t As Node(Of K, V)())
 				MyBase.New(par)
 				Me.batch = b
 					Me.baseIndex = i
@@ -5031,7 +5031,7 @@ Namespace java.util.concurrent
 				Loop
 			End Function
 
-			Private Sub pushState(ByVal t As Node(Of K, V)(), ByVal i As Integer, ByVal n As Integer)
+			Private Sub pushState(  t As Node(Of K, V)(),   i As Integer,   n As Integer)
 				Dim s As TableStack(Of K, V) = spare
 				If s IsNot Nothing Then
 					spare = s.next
@@ -5045,7 +5045,7 @@ Namespace java.util.concurrent
 				stack = s
 			End Sub
 
-			Private Sub recoverState(ByVal n As Integer)
+			Private Sub recoverState(  n As Integer)
 				Dim s As TableStack(Of K, V)
 				Dim len As Integer
 				s = stack
@@ -5086,7 +5086,7 @@ Namespace java.util.concurrent
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 			Friend ReadOnly action As java.util.function.Consumer(Of ?)
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Friend Sub New(Of T1, T2)(ByVal p As BulkTask(Of T1), ByVal b As Integer, ByVal i As Integer, ByVal f As Integer, ByVal t As Node(Of K, V)(), ByVal action As java.util.function.Consumer(Of T2))
+			Friend Sub New(Of T1, T2)(  p As BulkTask(Of T1),   b As Integer,   i As Integer,   f As Integer,   t As Node(Of K, V)(),   action As java.util.function.Consumer(Of T2))
 				MyBase.New(p, b, i, f, t)
 				Me.action = action
 			End Sub
@@ -5119,7 +5119,7 @@ Namespace java.util.concurrent
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 			Friend ReadOnly action As java.util.function.Consumer(Of ?)
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Friend Sub New(Of T1, T2)(ByVal p As BulkTask(Of T1), ByVal b As Integer, ByVal i As Integer, ByVal f As Integer, ByVal t As Node(Of K, V)(), ByVal action As java.util.function.Consumer(Of T2))
+			Friend Sub New(Of T1, T2)(  p As BulkTask(Of T1),   b As Integer,   i As Integer,   f As Integer,   t As Node(Of K, V)(),   action As java.util.function.Consumer(Of T2))
 				MyBase.New(p, b, i, f, t)
 				Me.action = action
 			End Sub
@@ -5152,7 +5152,7 @@ Namespace java.util.concurrent
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 			Friend ReadOnly action As java.util.function.Consumer(Of ?)
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Friend Sub New(Of T1, T2)(ByVal p As BulkTask(Of T1), ByVal b As Integer, ByVal i As Integer, ByVal f As Integer, ByVal t As Node(Of K, V)(), ByVal action As java.util.function.Consumer(Of T2))
+			Friend Sub New(Of T1, T2)(  p As BulkTask(Of T1),   b As Integer,   i As Integer,   f As Integer,   t As Node(Of K, V)(),   action As java.util.function.Consumer(Of T2))
 				MyBase.New(p, b, i, f, t)
 				Me.action = action
 			End Sub
@@ -5185,7 +5185,7 @@ Namespace java.util.concurrent
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 			Friend ReadOnly action As java.util.function.BiConsumer(Of ?, ?)
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Friend Sub New(Of T1, T2)(ByVal p As BulkTask(Of T1), ByVal b As Integer, ByVal i As Integer, ByVal f As Integer, ByVal t As Node(Of K, V)(), ByVal action As java.util.function.BiConsumer(Of T2))
+			Friend Sub New(Of T1, T2)(  p As BulkTask(Of T1),   b As Integer,   i As Integer,   f As Integer,   t As Node(Of K, V)(),   action As java.util.function.BiConsumer(Of T2))
 				MyBase.New(p, b, i, f, t)
 				Me.action = action
 			End Sub
@@ -5221,7 +5221,7 @@ Namespace java.util.concurrent
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 			Friend ReadOnly action As java.util.function.Consumer(Of ?)
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Friend Sub New(Of T1, T2 As U, T3)(ByVal p As BulkTask(Of T1), ByVal b As Integer, ByVal i As Integer, ByVal f As Integer, ByVal t As Node(Of K, V)(), ByVal transformer As java.util.function.Function(Of T2), ByVal action As java.util.function.Consumer(Of T3))
+			Friend Sub New(Of T1, T2 As U, T3)(  p As BulkTask(Of T1),   b As Integer,   i As Integer,   f As Integer,   t As Node(Of K, V)(),   transformer As java.util.function.Function(Of T2),   action As java.util.function.Consumer(Of T3))
 				MyBase.New(p, b, i, f, t)
 				Me.transformer = transformer
 				Me.action = action
@@ -5264,7 +5264,7 @@ Namespace java.util.concurrent
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 			Friend ReadOnly action As java.util.function.Consumer(Of ?)
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Friend Sub New(Of T1, T2 As U, T3)(ByVal p As BulkTask(Of T1), ByVal b As Integer, ByVal i As Integer, ByVal f As Integer, ByVal t As Node(Of K, V)(), ByVal transformer As java.util.function.Function(Of T2), ByVal action As java.util.function.Consumer(Of T3))
+			Friend Sub New(Of T1, T2 As U, T3)(  p As BulkTask(Of T1),   b As Integer,   i As Integer,   f As Integer,   t As Node(Of K, V)(),   transformer As java.util.function.Function(Of T2),   action As java.util.function.Consumer(Of T3))
 				MyBase.New(p, b, i, f, t)
 				Me.transformer = transformer
 				Me.action = action
@@ -5306,7 +5306,7 @@ Namespace java.util.concurrent
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 			Friend ReadOnly action As java.util.function.Consumer(Of ?)
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Friend Sub New(Of T1, T2 As U, T3)(ByVal p As BulkTask(Of T1), ByVal b As Integer, ByVal i As Integer, ByVal f As Integer, ByVal t As Node(Of K, V)(), ByVal transformer As java.util.function.Function(Of T2), ByVal action As java.util.function.Consumer(Of T3))
+			Friend Sub New(Of T1, T2 As U, T3)(  p As BulkTask(Of T1),   b As Integer,   i As Integer,   f As Integer,   t As Node(Of K, V)(),   transformer As java.util.function.Function(Of T2),   action As java.util.function.Consumer(Of T3))
 				MyBase.New(p, b, i, f, t)
 				Me.transformer = transformer
 				Me.action = action
@@ -5348,7 +5348,7 @@ Namespace java.util.concurrent
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 			Friend ReadOnly action As java.util.function.Consumer(Of ?)
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Friend Sub New(Of T1, T2 As U, T3)(ByVal p As BulkTask(Of T1), ByVal b As Integer, ByVal i As Integer, ByVal f As Integer, ByVal t As Node(Of K, V)(), ByVal transformer As java.util.function.BiFunction(Of T2), ByVal action As java.util.function.Consumer(Of T3))
+			Friend Sub New(Of T1, T2 As U, T3)(  p As BulkTask(Of T1),   b As Integer,   i As Integer,   f As Integer,   t As Node(Of K, V)(),   transformer As java.util.function.BiFunction(Of T2),   action As java.util.function.Consumer(Of T3))
 				MyBase.New(p, b, i, f, t)
 				Me.transformer = transformer
 				Me.action = action
@@ -5389,7 +5389,7 @@ Namespace java.util.concurrent
 			Friend ReadOnly searchFunction As java.util.function.Function(Of ?, ? As U)
 			Friend ReadOnly result As java.util.concurrent.atomic.AtomicReference(Of U)
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Friend Sub New(Of T1, T2 As U)(ByVal p As BulkTask(Of T1), ByVal b As Integer, ByVal i As Integer, ByVal f As Integer, ByVal t As Node(Of K, V)(), ByVal searchFunction As java.util.function.Function(Of T2), ByVal result As java.util.concurrent.atomic.AtomicReference(Of U))
+			Friend Sub New(Of T1, T2 As U)(  p As BulkTask(Of T1),   b As Integer,   i As Integer,   f As Integer,   t As Node(Of K, V)(),   searchFunction As java.util.function.Function(Of T2),   result As java.util.concurrent.atomic.AtomicReference(Of U))
 				MyBase.New(p, b, i, f, t)
 				Me.searchFunction = searchFunction
 				Me.result = result
@@ -5440,7 +5440,7 @@ Namespace java.util.concurrent
 			Friend ReadOnly searchFunction As java.util.function.Function(Of ?, ? As U)
 			Friend ReadOnly result As java.util.concurrent.atomic.AtomicReference(Of U)
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Friend Sub New(Of T1, T2 As U)(ByVal p As BulkTask(Of T1), ByVal b As Integer, ByVal i As Integer, ByVal f As Integer, ByVal t As Node(Of K, V)(), ByVal searchFunction As java.util.function.Function(Of T2), ByVal result As java.util.concurrent.atomic.AtomicReference(Of U))
+			Friend Sub New(Of T1, T2 As U)(  p As BulkTask(Of T1),   b As Integer,   i As Integer,   f As Integer,   t As Node(Of K, V)(),   searchFunction As java.util.function.Function(Of T2),   result As java.util.concurrent.atomic.AtomicReference(Of U))
 				MyBase.New(p, b, i, f, t)
 				Me.searchFunction = searchFunction
 				Me.result = result
@@ -5489,7 +5489,7 @@ Namespace java.util.concurrent
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 			Friend ReadOnly searchFunction As java.util.function.Function(Of Entry(Of K, V), ? As U)
 			Friend ReadOnly result As java.util.concurrent.atomic.AtomicReference(Of U)
-			Friend Sub New(Of T1, T2 As U)(ByVal p As BulkTask(Of T1), ByVal b As Integer, ByVal i As Integer, ByVal f As Integer, ByVal t As Node(Of K, V)(), ByVal searchFunction As java.util.function.Function(Of T2), ByVal result As java.util.concurrent.atomic.AtomicReference(Of U))
+			Friend Sub New(Of T1, T2 As U)(  p As BulkTask(Of T1),   b As Integer,   i As Integer,   f As Integer,   t As Node(Of K, V)(),   searchFunction As java.util.function.Function(Of T2),   result As java.util.concurrent.atomic.AtomicReference(Of U))
 				MyBase.New(p, b, i, f, t)
 				Me.searchFunction = searchFunction
 				Me.result = result
@@ -5539,7 +5539,7 @@ Namespace java.util.concurrent
 			Friend ReadOnly searchFunction As java.util.function.BiFunction(Of ?, ?, ? As U)
 			Friend ReadOnly result As java.util.concurrent.atomic.AtomicReference(Of U)
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Friend Sub New(Of T1, T2 As U)(ByVal p As BulkTask(Of T1), ByVal b As Integer, ByVal i As Integer, ByVal f As Integer, ByVal t As Node(Of K, V)(), ByVal searchFunction As java.util.function.BiFunction(Of T2), ByVal result As java.util.concurrent.atomic.AtomicReference(Of U))
+			Friend Sub New(Of T1, T2 As U)(  p As BulkTask(Of T1),   b As Integer,   i As Integer,   f As Integer,   t As Node(Of K, V)(),   searchFunction As java.util.function.BiFunction(Of T2),   result As java.util.concurrent.atomic.AtomicReference(Of U))
 				MyBase.New(p, b, i, f, t)
 				Me.searchFunction = searchFunction
 				Me.result = result
@@ -5591,7 +5591,7 @@ Namespace java.util.concurrent
 			Friend result As K
 			Friend rights As ReduceKeysTask(Of K, V), nextRight As ReduceKeysTask(Of K, V)
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Friend Sub New(Of T1, T2 As K)(ByVal p As BulkTask(Of T1), ByVal b As Integer, ByVal i As Integer, ByVal f As Integer, ByVal t As Node(Of K, V)(), ByVal nextRight As ReduceKeysTask(Of K, V), ByVal reducer As java.util.function.BiFunction(Of T2))
+			Friend Sub New(Of T1, T2 As K)(  p As BulkTask(Of T1),   b As Integer,   i As Integer,   f As Integer,   t As Node(Of K, V)(),   nextRight As ReduceKeysTask(Of K, V),   reducer As java.util.function.BiFunction(Of T2))
 				MyBase.New(p, b, i, f, t)
 				Me.nextRight = nextRight
 				Me.reducer = reducer
@@ -5649,7 +5649,7 @@ Namespace java.util.concurrent
 			Friend result As V
 			Friend rights As ReduceValuesTask(Of K, V), nextRight As ReduceValuesTask(Of K, V)
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Friend Sub New(Of T1, T2 As V)(ByVal p As BulkTask(Of T1), ByVal b As Integer, ByVal i As Integer, ByVal f As Integer, ByVal t As Node(Of K, V)(), ByVal nextRight As ReduceValuesTask(Of K, V), ByVal reducer As java.util.function.BiFunction(Of T2))
+			Friend Sub New(Of T1, T2 As V)(  p As BulkTask(Of T1),   b As Integer,   i As Integer,   f As Integer,   t As Node(Of K, V)(),   nextRight As ReduceValuesTask(Of K, V),   reducer As java.util.function.BiFunction(Of T2))
 				MyBase.New(p, b, i, f, t)
 				Me.nextRight = nextRight
 				Me.reducer = reducer
@@ -5705,7 +5705,7 @@ Namespace java.util.concurrent
 			Friend ReadOnly reducer As java.util.function.BiFunction(Of KeyValuePair(Of K, V), KeyValuePair(Of K, V), ? As KeyValuePair(Of K, V))
 			Friend result As KeyValuePair(Of K, V)
 			Friend rights As ReduceEntriesTask(Of K, V), nextRight As ReduceEntriesTask(Of K, V)
-			Friend Sub New(Of T1, T2 As KeyValuePair(Of K, V)(ByVal p As BulkTask(Of T1), ByVal b As Integer, ByVal i As Integer, ByVal f As Integer, ByVal t As Node(Of K, V)(), ByVal nextRight As ReduceEntriesTask(Of K, V), ByVal reducer As java.util.function.BiFunction(Of T2))
+			Friend Sub New(Of T1, T2 As KeyValuePair(Of K, V)(  p As BulkTask(Of T1),   b As Integer,   i As Integer,   f As Integer,   t As Node(Of K, V)(),   nextRight As ReduceEntriesTask(Of K, V),   reducer As java.util.function.BiFunction(Of T2))
 				MyBase.New(p, b, i, f, t)
 				Me.nextRight = nextRight
 				Me.reducer = reducer
@@ -5764,7 +5764,7 @@ Namespace java.util.concurrent
 			Friend result As U
 			Friend rights As MapReduceKeysTask(Of K, V, U), nextRight As MapReduceKeysTask(Of K, V, U)
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Friend Sub New(Of T1, T2 As U, T3 As U)(ByVal p As BulkTask(Of T1), ByVal b As Integer, ByVal i As Integer, ByVal f As Integer, ByVal t As Node(Of K, V)(), ByVal nextRight As MapReduceKeysTask(Of K, V, U), ByVal transformer As java.util.function.Function(Of T2), ByVal reducer As java.util.function.BiFunction(Of T3))
+			Friend Sub New(Of T1, T2 As U, T3 As U)(  p As BulkTask(Of T1),   b As Integer,   i As Integer,   f As Integer,   t As Node(Of K, V)(),   nextRight As MapReduceKeysTask(Of K, V, U),   transformer As java.util.function.Function(Of T2),   reducer As java.util.function.BiFunction(Of T3))
 				MyBase.New(p, b, i, f, t)
 				Me.nextRight = nextRight
 				Me.transformer = transformer
@@ -5831,7 +5831,7 @@ Namespace java.util.concurrent
 			Friend result As U
 			Friend rights As MapReduceValuesTask(Of K, V, U), nextRight As MapReduceValuesTask(Of K, V, U)
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Friend Sub New(Of T1, T2 As U, T3 As U)(ByVal p As BulkTask(Of T1), ByVal b As Integer, ByVal i As Integer, ByVal f As Integer, ByVal t As Node(Of K, V)(), ByVal nextRight As MapReduceValuesTask(Of K, V, U), ByVal transformer As java.util.function.Function(Of T2), ByVal reducer As java.util.function.BiFunction(Of T3))
+			Friend Sub New(Of T1, T2 As U, T3 As U)(  p As BulkTask(Of T1),   b As Integer,   i As Integer,   f As Integer,   t As Node(Of K, V)(),   nextRight As MapReduceValuesTask(Of K, V, U),   transformer As java.util.function.Function(Of T2),   reducer As java.util.function.BiFunction(Of T3))
 				MyBase.New(p, b, i, f, t)
 				Me.nextRight = nextRight
 				Me.transformer = transformer
@@ -5897,7 +5897,7 @@ Namespace java.util.concurrent
 			Friend result As U
 			Friend rights As MapReduceEntriesTask(Of K, V, U), nextRight As MapReduceEntriesTask(Of K, V, U)
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Friend Sub New(Of T1, T2 As U, T3 As U)(ByVal p As BulkTask(Of T1), ByVal b As Integer, ByVal i As Integer, ByVal f As Integer, ByVal t As Node(Of K, V)(), ByVal nextRight As MapReduceEntriesTask(Of K, V, U), ByVal transformer As java.util.function.Function(Of T2), ByVal reducer As java.util.function.BiFunction(Of T3))
+			Friend Sub New(Of T1, T2 As U, T3 As U)(  p As BulkTask(Of T1),   b As Integer,   i As Integer,   f As Integer,   t As Node(Of K, V)(),   nextRight As MapReduceEntriesTask(Of K, V, U),   transformer As java.util.function.Function(Of T2),   reducer As java.util.function.BiFunction(Of T3))
 				MyBase.New(p, b, i, f, t)
 				Me.nextRight = nextRight
 				Me.transformer = transformer
@@ -5963,7 +5963,7 @@ Namespace java.util.concurrent
 			Friend result As U
 			Friend rights As MapReduceMappingsTask(Of K, V, U), nextRight As MapReduceMappingsTask(Of K, V, U)
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Friend Sub New(Of T1, T2 As U, T3 As U)(ByVal p As BulkTask(Of T1), ByVal b As Integer, ByVal i As Integer, ByVal f As Integer, ByVal t As Node(Of K, V)(), ByVal nextRight As MapReduceMappingsTask(Of K, V, U), ByVal transformer As java.util.function.BiFunction(Of T2), ByVal reducer As java.util.function.BiFunction(Of T3))
+			Friend Sub New(Of T1, T2 As U, T3 As U)(  p As BulkTask(Of T1),   b As Integer,   i As Integer,   f As Integer,   t As Node(Of K, V)(),   nextRight As MapReduceMappingsTask(Of K, V, U),   transformer As java.util.function.BiFunction(Of T2),   reducer As java.util.function.BiFunction(Of T3))
 				MyBase.New(p, b, i, f, t)
 				Me.nextRight = nextRight
 				Me.transformer = transformer
@@ -6029,7 +6029,7 @@ Namespace java.util.concurrent
 			Friend result As Double
 			Friend rights As MapReduceKeysToDoubleTask(Of K, V), nextRight As MapReduceKeysToDoubleTask(Of K, V)
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Friend Sub New(Of T1, T2)(ByVal p As BulkTask(Of T1), ByVal b As Integer, ByVal i As Integer, ByVal f As Integer, ByVal t As Node(Of K, V)(), ByVal nextRight As MapReduceKeysToDoubleTask(Of K, V), ByVal transformer As java.util.function.ToDoubleFunction(Of T2), ByVal basis As Double, ByVal reducer As java.util.function.DoubleBinaryOperator)
+			Friend Sub New(Of T1, T2)(  p As BulkTask(Of T1),   b As Integer,   i As Integer,   f As Integer,   t As Node(Of K, V)(),   nextRight As MapReduceKeysToDoubleTask(Of K, V),   transformer As java.util.function.ToDoubleFunction(Of T2),   basis As Double,   reducer As java.util.function.DoubleBinaryOperator)
 				MyBase.New(p, b, i, f, t)
 				Me.nextRight = nextRight
 				Me.transformer = transformer
@@ -6090,7 +6090,7 @@ Namespace java.util.concurrent
 			Friend result As Double
 			Friend rights As MapReduceValuesToDoubleTask(Of K, V), nextRight As MapReduceValuesToDoubleTask(Of K, V)
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Friend Sub New(Of T1, T2)(ByVal p As BulkTask(Of T1), ByVal b As Integer, ByVal i As Integer, ByVal f As Integer, ByVal t As Node(Of K, V)(), ByVal nextRight As MapReduceValuesToDoubleTask(Of K, V), ByVal transformer As java.util.function.ToDoubleFunction(Of T2), ByVal basis As Double, ByVal reducer As java.util.function.DoubleBinaryOperator)
+			Friend Sub New(Of T1, T2)(  p As BulkTask(Of T1),   b As Integer,   i As Integer,   f As Integer,   t As Node(Of K, V)(),   nextRight As MapReduceValuesToDoubleTask(Of K, V),   transformer As java.util.function.ToDoubleFunction(Of T2),   basis As Double,   reducer As java.util.function.DoubleBinaryOperator)
 				MyBase.New(p, b, i, f, t)
 				Me.nextRight = nextRight
 				Me.transformer = transformer
@@ -6148,7 +6148,7 @@ Namespace java.util.concurrent
 			Friend ReadOnly basis As Double
 			Friend result As Double
 			Friend rights As MapReduceEntriesToDoubleTask(Of K, V), nextRight As MapReduceEntriesToDoubleTask(Of K, V)
-			Friend Sub New(Of T1)(ByVal p As BulkTask(Of T1), ByVal b As Integer, ByVal i As Integer, ByVal f As Integer, ByVal t As Node(Of K, V)(), ByVal nextRight As MapReduceEntriesToDoubleTask(Of K, V), ByVal transformer As java.util.function.ToDoubleFunction(Of KeyValuePair(Of K, V)), ByVal basis As Double, ByVal reducer As java.util.function.DoubleBinaryOperator)
+			Friend Sub New(Of T1)(  p As BulkTask(Of T1),   b As Integer,   i As Integer,   f As Integer,   t As Node(Of K, V)(),   nextRight As MapReduceEntriesToDoubleTask(Of K, V),   transformer As java.util.function.ToDoubleFunction(Of KeyValuePair(Of K, V)),   basis As Double,   reducer As java.util.function.DoubleBinaryOperator)
 				MyBase.New(p, b, i, f, t)
 				Me.nextRight = nextRight
 				Me.transformer = transformer
@@ -6207,7 +6207,7 @@ Namespace java.util.concurrent
 			Friend result As Double
 			Friend rights As MapReduceMappingsToDoubleTask(Of K, V), nextRight As MapReduceMappingsToDoubleTask(Of K, V)
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Friend Sub New(Of T1, T2)(ByVal p As BulkTask(Of T1), ByVal b As Integer, ByVal i As Integer, ByVal f As Integer, ByVal t As Node(Of K, V)(), ByVal nextRight As MapReduceMappingsToDoubleTask(Of K, V), ByVal transformer As java.util.function.ToDoubleBiFunction(Of T2), ByVal basis As Double, ByVal reducer As java.util.function.DoubleBinaryOperator)
+			Friend Sub New(Of T1, T2)(  p As BulkTask(Of T1),   b As Integer,   i As Integer,   f As Integer,   t As Node(Of K, V)(),   nextRight As MapReduceMappingsToDoubleTask(Of K, V),   transformer As java.util.function.ToDoubleBiFunction(Of T2),   basis As Double,   reducer As java.util.function.DoubleBinaryOperator)
 				MyBase.New(p, b, i, f, t)
 				Me.nextRight = nextRight
 				Me.transformer = transformer
@@ -6268,7 +6268,7 @@ Namespace java.util.concurrent
 			Friend result As Long
 			Friend rights As MapReduceKeysToLongTask(Of K, V), nextRight As MapReduceKeysToLongTask(Of K, V)
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Friend Sub New(Of T1, T2)(ByVal p As BulkTask(Of T1), ByVal b As Integer, ByVal i As Integer, ByVal f As Integer, ByVal t As Node(Of K, V)(), ByVal nextRight As MapReduceKeysToLongTask(Of K, V), ByVal transformer As java.util.function.ToLongFunction(Of T2), ByVal basis As Long, ByVal reducer As java.util.function.LongBinaryOperator)
+			Friend Sub New(Of T1, T2)(  p As BulkTask(Of T1),   b As Integer,   i As Integer,   f As Integer,   t As Node(Of K, V)(),   nextRight As MapReduceKeysToLongTask(Of K, V),   transformer As java.util.function.ToLongFunction(Of T2),   basis As Long,   reducer As java.util.function.LongBinaryOperator)
 				MyBase.New(p, b, i, f, t)
 				Me.nextRight = nextRight
 				Me.transformer = transformer
@@ -6329,7 +6329,7 @@ Namespace java.util.concurrent
 			Friend result As Long
 			Friend rights As MapReduceValuesToLongTask(Of K, V), nextRight As MapReduceValuesToLongTask(Of K, V)
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Friend Sub New(Of T1, T2)(ByVal p As BulkTask(Of T1), ByVal b As Integer, ByVal i As Integer, ByVal f As Integer, ByVal t As Node(Of K, V)(), ByVal nextRight As MapReduceValuesToLongTask(Of K, V), ByVal transformer As java.util.function.ToLongFunction(Of T2), ByVal basis As Long, ByVal reducer As java.util.function.LongBinaryOperator)
+			Friend Sub New(Of T1, T2)(  p As BulkTask(Of T1),   b As Integer,   i As Integer,   f As Integer,   t As Node(Of K, V)(),   nextRight As MapReduceValuesToLongTask(Of K, V),   transformer As java.util.function.ToLongFunction(Of T2),   basis As Long,   reducer As java.util.function.LongBinaryOperator)
 				MyBase.New(p, b, i, f, t)
 				Me.nextRight = nextRight
 				Me.transformer = transformer
@@ -6387,7 +6387,7 @@ Namespace java.util.concurrent
 			Friend ReadOnly basis As Long
 			Friend result As Long
 			Friend rights As MapReduceEntriesToLongTask(Of K, V), nextRight As MapReduceEntriesToLongTask(Of K, V)
-			Friend Sub New(Of T1)(ByVal p As BulkTask(Of T1), ByVal b As Integer, ByVal i As Integer, ByVal f As Integer, ByVal t As Node(Of K, V)(), ByVal nextRight As MapReduceEntriesToLongTask(Of K, V), ByVal transformer As java.util.function.ToLongFunction(Of KeyValuePair(Of K, V)), ByVal basis As Long, ByVal reducer As java.util.function.LongBinaryOperator)
+			Friend Sub New(Of T1)(  p As BulkTask(Of T1),   b As Integer,   i As Integer,   f As Integer,   t As Node(Of K, V)(),   nextRight As MapReduceEntriesToLongTask(Of K, V),   transformer As java.util.function.ToLongFunction(Of KeyValuePair(Of K, V)),   basis As Long,   reducer As java.util.function.LongBinaryOperator)
 				MyBase.New(p, b, i, f, t)
 				Me.nextRight = nextRight
 				Me.transformer = transformer
@@ -6446,7 +6446,7 @@ Namespace java.util.concurrent
 			Friend result As Long
 			Friend rights As MapReduceMappingsToLongTask(Of K, V), nextRight As MapReduceMappingsToLongTask(Of K, V)
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Friend Sub New(Of T1, T2)(ByVal p As BulkTask(Of T1), ByVal b As Integer, ByVal i As Integer, ByVal f As Integer, ByVal t As Node(Of K, V)(), ByVal nextRight As MapReduceMappingsToLongTask(Of K, V), ByVal transformer As java.util.function.ToLongBiFunction(Of T2), ByVal basis As Long, ByVal reducer As java.util.function.LongBinaryOperator)
+			Friend Sub New(Of T1, T2)(  p As BulkTask(Of T1),   b As Integer,   i As Integer,   f As Integer,   t As Node(Of K, V)(),   nextRight As MapReduceMappingsToLongTask(Of K, V),   transformer As java.util.function.ToLongBiFunction(Of T2),   basis As Long,   reducer As java.util.function.LongBinaryOperator)
 				MyBase.New(p, b, i, f, t)
 				Me.nextRight = nextRight
 				Me.transformer = transformer
@@ -6507,7 +6507,7 @@ Namespace java.util.concurrent
 			Friend result As Integer
 			Friend rights As MapReduceKeysToIntTask(Of K, V), nextRight As MapReduceKeysToIntTask(Of K, V)
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Friend Sub New(Of T1, T2)(ByVal p As BulkTask(Of T1), ByVal b As Integer, ByVal i As Integer, ByVal f As Integer, ByVal t As Node(Of K, V)(), ByVal nextRight As MapReduceKeysToIntTask(Of K, V), ByVal transformer As java.util.function.ToIntFunction(Of T2), ByVal basis As Integer, ByVal reducer As java.util.function.IntBinaryOperator)
+			Friend Sub New(Of T1, T2)(  p As BulkTask(Of T1),   b As Integer,   i As Integer,   f As Integer,   t As Node(Of K, V)(),   nextRight As MapReduceKeysToIntTask(Of K, V),   transformer As java.util.function.ToIntFunction(Of T2),   basis As Integer,   reducer As java.util.function.IntBinaryOperator)
 				MyBase.New(p, b, i, f, t)
 				Me.nextRight = nextRight
 				Me.transformer = transformer
@@ -6568,7 +6568,7 @@ Namespace java.util.concurrent
 			Friend result As Integer
 			Friend rights As MapReduceValuesToIntTask(Of K, V), nextRight As MapReduceValuesToIntTask(Of K, V)
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Friend Sub New(Of T1, T2)(ByVal p As BulkTask(Of T1), ByVal b As Integer, ByVal i As Integer, ByVal f As Integer, ByVal t As Node(Of K, V)(), ByVal nextRight As MapReduceValuesToIntTask(Of K, V), ByVal transformer As java.util.function.ToIntFunction(Of T2), ByVal basis As Integer, ByVal reducer As java.util.function.IntBinaryOperator)
+			Friend Sub New(Of T1, T2)(  p As BulkTask(Of T1),   b As Integer,   i As Integer,   f As Integer,   t As Node(Of K, V)(),   nextRight As MapReduceValuesToIntTask(Of K, V),   transformer As java.util.function.ToIntFunction(Of T2),   basis As Integer,   reducer As java.util.function.IntBinaryOperator)
 				MyBase.New(p, b, i, f, t)
 				Me.nextRight = nextRight
 				Me.transformer = transformer
@@ -6626,7 +6626,7 @@ Namespace java.util.concurrent
 			Friend ReadOnly basis As Integer
 			Friend result As Integer
 			Friend rights As MapReduceEntriesToIntTask(Of K, V), nextRight As MapReduceEntriesToIntTask(Of K, V)
-			Friend Sub New(Of T1)(ByVal p As BulkTask(Of T1), ByVal b As Integer, ByVal i As Integer, ByVal f As Integer, ByVal t As Node(Of K, V)(), ByVal nextRight As MapReduceEntriesToIntTask(Of K, V), ByVal transformer As java.util.function.ToIntFunction(Of KeyValuePair(Of K, V)), ByVal basis As Integer, ByVal reducer As java.util.function.IntBinaryOperator)
+			Friend Sub New(Of T1)(  p As BulkTask(Of T1),   b As Integer,   i As Integer,   f As Integer,   t As Node(Of K, V)(),   nextRight As MapReduceEntriesToIntTask(Of K, V),   transformer As java.util.function.ToIntFunction(Of KeyValuePair(Of K, V)),   basis As Integer,   reducer As java.util.function.IntBinaryOperator)
 				MyBase.New(p, b, i, f, t)
 				Me.nextRight = nextRight
 				Me.transformer = transformer
@@ -6685,7 +6685,7 @@ Namespace java.util.concurrent
 			Friend result As Integer
 			Friend rights As MapReduceMappingsToIntTask(Of K, V), nextRight As MapReduceMappingsToIntTask(Of K, V)
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Friend Sub New(Of T1, T2)(ByVal p As BulkTask(Of T1), ByVal b As Integer, ByVal i As Integer, ByVal f As Integer, ByVal t As Node(Of K, V)(), ByVal nextRight As MapReduceMappingsToIntTask(Of K, V), ByVal transformer As java.util.function.ToIntBiFunction(Of T2), ByVal basis As Integer, ByVal reducer As java.util.function.IntBinaryOperator)
+			Friend Sub New(Of T1, T2)(  p As BulkTask(Of T1),   b As Integer,   i As Integer,   f As Integer,   t As Node(Of K, V)(),   nextRight As MapReduceMappingsToIntTask(Of K, V),   transformer As java.util.function.ToIntBiFunction(Of T2),   basis As Integer,   reducer As java.util.function.IntBinaryOperator)
 				MyBase.New(p, b, i, f, t)
 				Me.nextRight = nextRight
 				Me.transformer = transformer

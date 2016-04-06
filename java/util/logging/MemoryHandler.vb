@@ -157,7 +157,7 @@ Namespace java.util.logging
 		''' <param name="pushLevel">  message level to push on
 		''' </param>
 		''' <exception cref="IllegalArgumentException"> if {@code size is <= 0} </exception>
-		Public Sub New(ByVal target As Handler, ByVal size As Integer, ByVal pushLevel As Level)
+		Public Sub New(  target As Handler,   size As Integer,   pushLevel As Level)
 			If target Is Nothing OrElse pushLevel Is Nothing Then Throw New NullPointerException
 			If size <= 0 Then Throw New IllegalArgumentException
 			sealed = False
@@ -184,7 +184,7 @@ Namespace java.util.logging
 		''' <param name="record">  description of the log event. A null record is
 		'''                 silently ignored and is not published </param>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overrides Sub publish(ByVal record As LogRecord)
+		Public Overrides Sub publish(  record As LogRecord)
 			If Not isLoggable(record) Then Return
 			Dim ix As Integer = (start+count) Mod buffer.Length
 			buffer(ix) = record
@@ -245,7 +245,7 @@ Namespace java.util.logging
 		'''             the caller does not have <tt>LoggingPermission("control")</tt>. </exception>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
 		Public Overridable Property pushLevel As Level
-			Set(ByVal newLevel As Level)
+			Set(  newLevel As Level)
 				If newLevel Is Nothing Then Throw New NullPointerException
 				checkPermission()
 				pushLevel = newLevel
@@ -268,7 +268,7 @@ Namespace java.util.logging
 		''' <param name="record">  a <tt>LogRecord</tt> </param>
 		''' <returns> true if the <tt>LogRecord</tt> would be logged.
 		'''  </returns>
-		Public Overrides Function isLoggable(ByVal record As LogRecord) As Boolean
+		Public Overrides Function isLoggable(  record As LogRecord) As Boolean
 			Return MyBase.isLoggable(record)
 		End Function
 	End Class

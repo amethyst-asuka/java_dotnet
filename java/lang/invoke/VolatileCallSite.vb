@@ -49,7 +49,7 @@ Namespace java.lang.invoke
 		''' of the given type which will throw an {@code IllegalStateException} if called. </summary>
 		''' <param name="type"> the method type that this call site will have </param>
 		''' <exception cref="NullPointerException"> if the proposed type is null </exception>
-		Public Sub New(ByVal type As MethodType)
+		Public Sub New(  type As MethodType)
 			MyBase.New(type)
 		End Sub
 
@@ -58,7 +58,7 @@ Namespace java.lang.invoke
 		''' The target is set to the given value. </summary>
 		''' <param name="target"> the method handle that will be the initial target of the call site </param>
 		''' <exception cref="NullPointerException"> if the proposed target is null </exception>
-		Public Sub New(ByVal target As MethodHandle)
+		Public Sub New(  target As MethodHandle)
 			MyBase.New(target)
 		End Sub
 
@@ -79,7 +79,7 @@ Namespace java.lang.invoke
 			Get
 				Return targetVolatile
 			End Get
-			Set(ByVal newTarget As MethodHandle)
+			Set(  newTarget As MethodHandle)
 				checkTargetChange(targetVolatile, newTarget)
 				targetVolatile = newTarget
 			End Set

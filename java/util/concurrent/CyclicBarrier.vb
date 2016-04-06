@@ -198,7 +198,7 @@ Namespace java.util.concurrent
 		''' <summary>
 		''' Main barrier code, covering the various policies.
 		''' </summary>
-		Private Function dowait(ByVal timed As Boolean, ByVal nanos As Long) As Integer
+		Private Function dowait(  timed As Boolean,   nanos As Long) As Integer
 			Dim lock As java.util.concurrent.locks.ReentrantLock = Me.lock
 			lock.lock()
 			Try
@@ -271,7 +271,7 @@ Namespace java.util.concurrent
 		''' <param name="barrierAction"> the command to execute when the barrier is
 		'''        tripped, or {@code null} if there is no action </param>
 		''' <exception cref="IllegalArgumentException"> if {@code parties} is less than 1 </exception>
-		Public Sub New(ByVal parties As Integer, ByVal barrierAction As Runnable)
+		Public Sub New(  parties As Integer,   barrierAction As Runnable)
 			If parties <= 0 Then Throw New IllegalArgumentException
 			Me.parties = parties
 			Me.count = parties
@@ -286,7 +286,7 @@ Namespace java.util.concurrent
 		''' <param name="parties"> the number of threads that must invoke <seealso cref="#await"/>
 		'''        before the barrier is tripped </param>
 		''' <exception cref="IllegalArgumentException"> if {@code parties} is less than 1 </exception>
-		Public Sub New(ByVal parties As Integer)
+		Public Sub New(  parties As Integer)
 			Me.New(parties, Nothing)
 		End Sub
 
@@ -423,7 +423,7 @@ Namespace java.util.concurrent
 		'''         waiting, or the barrier was reset, or the barrier was broken
 		'''         when {@code await} was called, or the barrier action (if
 		'''         present) failed due to an exception </exception>
-		Public Overridable Function [await](ByVal timeout As Long, ByVal unit As TimeUnit) As Integer
+		Public Overridable Function [await](  timeout As Long,   unit As TimeUnit) As Integer
 			Return dowait(True, unit.toNanos(timeout))
 		End Function
 

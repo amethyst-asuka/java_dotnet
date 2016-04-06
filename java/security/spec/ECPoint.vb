@@ -58,7 +58,7 @@ Namespace java.security.spec
 		''' <param name="y"> the affine y-coordinate. </param>
 		''' <exception cref="NullPointerException"> if {@code x} or
 		''' {@code y} is null. </exception>
-		Public Sub New(ByVal x As System.Numerics.BigInteger, ByVal y As System.Numerics.BigInteger)
+		Public Sub New(  x As System.Numerics.BigInteger,   y As System.Numerics.BigInteger)
 			If (x Is Nothing) OrElse (y Is Nothing) Then Throw New NullPointerException("affine coordinate x or y is null")
 			Me.x = x
 			Me.y = y
@@ -90,7 +90,7 @@ Namespace java.security.spec
 		''' <param name="obj"> the object to be compared. </param>
 		''' <returns> true if {@code obj} is an instance of
 		''' ECPoint and the affine coordinates match, false otherwise. </returns>
-		Public Overrides Function Equals(ByVal obj As Object) As Boolean
+		Public Overrides Function Equals(  obj As Object) As Boolean
 			If Me Is obj Then Return True
 			If Me Is POINT_INFINITY Then Return False
 			If TypeOf obj Is ECPoint Then Return ((x.Equals(CType(obj, ECPoint).x)) AndAlso (y.Equals(CType(obj, ECPoint).y)))

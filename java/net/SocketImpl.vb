@@ -40,8 +40,8 @@ Namespace java.net
 	Public MustInherit Class SocketImpl
 		Implements SocketOptions
 
-			Public MustOverride Function getOption(ByVal optID As Integer) As Object Implements SocketOptions.getOption
-			Public MustOverride Sub setOption(ByVal optID As Integer, ByVal value As Object) Implements SocketOptions.setOption
+			Public MustOverride Function getOption(  optID As Integer) As Object Implements SocketOptions.getOption
+			Public MustOverride Sub setOption(  optID As Integer,   value As Object) Implements SocketOptions.setOption
 		''' <summary>
 		''' The actual Socket object.
 		''' </summary>
@@ -75,7 +75,7 @@ Namespace java.net
 		'''                      otherwise, create a datagram socket. </param>
 		''' <exception cref="IOException">  if an I/O error occurs while creating the
 		'''               socket. </exception>
-		Protected Friend MustOverride Sub create(ByVal stream As Boolean)
+		Protected Friend MustOverride Sub create(  stream As Boolean)
 
 		''' <summary>
 		''' Connects this socket to the specified port on the named host.
@@ -84,7 +84,7 @@ Namespace java.net
 		''' <param name="port">   the port number. </param>
 		''' <exception cref="IOException">  if an I/O error occurs when connecting to the
 		'''               remote host. </exception>
-		Protected Friend MustOverride Sub connect(ByVal host As String, ByVal port As Integer)
+		Protected Friend MustOverride Sub connect(  host As String,   port As Integer)
 
 		''' <summary>
 		''' Connects this socket to the specified port number on the specified host.
@@ -93,7 +93,7 @@ Namespace java.net
 		''' <param name="port">      the port number. </param>
 		''' <exception cref="IOException">  if an I/O error occurs when attempting a
 		'''               connection. </exception>
-		Protected Friend MustOverride Sub connect(ByVal address As InetAddress, ByVal port As Integer)
+		Protected Friend MustOverride Sub connect(  address As InetAddress,   port As Integer)
 
 		''' <summary>
 		''' Connects this socket to the specified port number on the specified host.
@@ -105,7 +105,7 @@ Namespace java.net
 		''' <exception cref="IOException">  if an I/O error occurs when attempting a
 		'''               connection.
 		''' @since 1.4 </exception>
-		Protected Friend MustOverride Sub connect(ByVal address As SocketAddress, ByVal timeout As Integer)
+		Protected Friend MustOverride Sub connect(  address As SocketAddress,   timeout As Integer)
 
 		''' <summary>
 		''' Binds this socket to the specified local IP address and port number.
@@ -113,7 +113,7 @@ Namespace java.net
 		''' <param name="host">   an IP address that belongs to a local interface. </param>
 		''' <param name="port">   the port number. </param>
 		''' <exception cref="IOException">  if an I/O error occurs when binding this socket. </exception>
-		Protected Friend MustOverride Sub bind(ByVal host As InetAddress, ByVal port As Integer)
+		Protected Friend MustOverride Sub bind(  host As InetAddress,   port As Integer)
 
 		''' <summary>
 		''' Sets the maximum queue length for incoming connection indications
@@ -123,7 +123,7 @@ Namespace java.net
 		''' </summary>
 		''' <param name="backlog">   the maximum length of the queue. </param>
 		''' <exception cref="IOException">  if an I/O error occurs when creating the queue. </exception>
-		Protected Friend MustOverride Sub listen(ByVal backlog As Integer)
+		Protected Friend MustOverride Sub listen(  backlog As Integer)
 
 		''' <summary>
 		''' Accepts a connection.
@@ -131,7 +131,7 @@ Namespace java.net
 		''' <param name="s">   the accepted connection. </param>
 		''' <exception cref="IOException">  if an I/O error occurs when accepting the
 		'''               connection. </exception>
-		Protected Friend MustOverride Sub accept(ByVal s As SocketImpl)
+		Protected Friend MustOverride Sub accept(  s As SocketImpl)
 
 		''' <summary>
 		''' Returns an input stream for this socket.
@@ -255,7 +255,7 @@ Namespace java.net
 		''' <exception cref="IOException"> if there is an error
 		'''  sending the data.
 		''' @since 1.4 </exception>
-		Protected Friend MustOverride Sub sendUrgentData(ByVal data As Integer)
+		Protected Friend MustOverride Sub sendUrgentData(  data As Integer)
 
 		''' <summary>
 		''' Returns the value of this socket's {@code localport} field.
@@ -269,7 +269,7 @@ Namespace java.net
 		End Property
 
 		Friend Overridable Property socket As Socket
-			Set(ByVal soc As Socket)
+			Set(  soc As Socket)
 				Me.socket_Renamed = soc
 			End Set
 			Get
@@ -279,7 +279,7 @@ Namespace java.net
 
 
 		Friend Overridable Property serverSocket As ServerSocket
-			Set(ByVal soc As ServerSocket)
+			Set(  soc As ServerSocket)
 				Me.serverSocket_Renamed = soc
 			End Set
 			Get
@@ -339,11 +339,11 @@ Namespace java.net
 		'''         bandwidth
 		''' 
 		''' @since 1.5 </param>
-		Protected Friend Overridable Sub setPerformancePreferences(ByVal connectionTime As Integer, ByVal latency As Integer, ByVal bandwidth As Integer)
+		Protected Friend Overridable Sub setPerformancePreferences(  connectionTime As Integer,   latency As Integer,   bandwidth As Integer)
 			' Not implemented yet 
 		End Sub
 
-		 Friend Overridable Sub setOption(Of T)(ByVal name As SocketOption(Of T), ByVal value As T)
+		 Friend Overridable Sub setOption(Of T)(  name As SocketOption(Of T),   value As T)
 			If name Is StandardSocketOptions.SO_KEEPALIVE Then
 				optionion(SocketOptions.SO_KEEPALIVE, value)
 			ElseIf name Is StandardSocketOptions.SO_SNDBUF Then
@@ -363,7 +363,7 @@ Namespace java.net
 			End If
 		 End Sub
 
-		 Friend Overridable Function getOption(Of T)(ByVal name As SocketOption(Of T)) As T
+		 Friend Overridable Function getOption(Of T)(  name As SocketOption(Of T)) As T
 			If name Is StandardSocketOptions.SO_KEEPALIVE Then
 				Return CType(getOption(SocketOptions.SO_KEEPALIVE), T)
 			ElseIf name Is StandardSocketOptions.SO_SNDBUF Then

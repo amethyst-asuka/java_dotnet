@@ -62,7 +62,7 @@ Namespace java.beans
 			Get
 				Return name
 			End Get
-			Set(ByVal name As String)
+			Set(  name As String)
 				Me.name = name
 			End Set
 		End Property
@@ -78,7 +78,7 @@ Namespace java.beans
 				If displayName Is Nothing Then Return name
 				Return displayName
 			End Get
-			Set(ByVal displayName As String)
+			Set(  displayName As String)
 				Me.displayName = displayName
 			End Set
 		End Property
@@ -93,7 +93,7 @@ Namespace java.beans
 			Get
 				Return expert
 			End Get
-			Set(ByVal expert As Boolean)
+			Set(  expert As Boolean)
 				Me.expert = expert
 			End Set
 		End Property
@@ -108,7 +108,7 @@ Namespace java.beans
 			Get
 				Return hidden
 			End Get
-			Set(ByVal hidden As Boolean)
+			Set(  hidden As Boolean)
 				Me.hidden = hidden
 			End Set
 		End Property
@@ -123,7 +123,7 @@ Namespace java.beans
 			Get
 				Return preferred
 			End Get
-			Set(ByVal preferred As Boolean)
+			Set(  preferred As Boolean)
 				Me.preferred = preferred
 			End Set
 		End Property
@@ -139,7 +139,7 @@ Namespace java.beans
 				If shortDescription Is Nothing Then Return displayName
 				Return shortDescription
 			End Get
-			Set(ByVal text As String)
+			Set(  text As String)
 				shortDescription = text
 			End Set
 		End Property
@@ -150,7 +150,7 @@ Namespace java.beans
 		''' </summary>
 		''' <param name="attributeName">  The locale-independent name of the attribute </param>
 		''' <param name="value">  The value. </param>
-		Public Overridable Sub setValue(ByVal attributeName As String, ByVal value As Object)
+		Public Overridable Sub setValue(  attributeName As String,   value As Object)
 			table(attributeName) = value
 		End Sub
 
@@ -160,7 +160,7 @@ Namespace java.beans
 		''' <param name="attributeName">  The locale-independent name of the attribute </param>
 		''' <returns>  The value of the attribute.  May be null if
 		'''     the attribute is unknown. </returns>
-		Public Overridable Function getValue(ByVal attributeName As String) As Object
+		Public Overridable Function getValue(  attributeName As String) As Object
 			Return If(Me.table IsNot Nothing, Me.table(attributeName), Nothing)
 		End Function
 
@@ -183,7 +183,7 @@ Namespace java.beans
 		''' </summary>
 		''' <param name="x">  The first (lower priority) MethodDescriptor </param>
 		''' <param name="y">  The second (higher priority) MethodDescriptor </param>
-		Friend Sub New(ByVal x As FeatureDescriptor, ByVal y As FeatureDescriptor)
+		Friend Sub New(  x As FeatureDescriptor,   y As FeatureDescriptor)
 			expert = x.expert Or y.expert
 			hidden = x.hidden Or y.hidden
 			preferred = x.preferred Or y.preferred
@@ -202,7 +202,7 @@ Namespace java.beans
 	'     * Package-private dup constructor
 	'     * This must isolate the new object from any changes to the old object.
 	'     
-		Friend Sub New(ByVal old As FeatureDescriptor)
+		Friend Sub New(  old As FeatureDescriptor)
 			expert = old.expert
 			hidden = old.hidden
 			preferred = old.preferred
@@ -219,7 +219,7 @@ Namespace java.beans
 		''' If some attribute is exist its value should be overridden.
 		''' </summary>
 		''' <param name="table">  the attribute table with new values </param>
-		Private Sub addTable(ByVal table As Dictionary(Of String, Object))
+		Private Sub addTable(  table As Dictionary(Of String, Object))
 			If (table IsNot Nothing) AndAlso table.Count > 0 Then table.putAll(table)
 		End Sub
 
@@ -241,7 +241,7 @@ Namespace java.beans
 		''' </summary>
 		''' <param name="annotation">  the annotation of the element of the feature </param>
 		Friend Overridable Property transient As Transient
-			Set(ByVal annotation As Transient)
+			Set(  annotation As Transient)
 				If (annotation IsNot Nothing) AndAlso (Nothing Is getValue(TRANSIENT)) Then valuelue(TRANSIENT, annotation.value())
 			End Set
 			Get
@@ -254,7 +254,7 @@ Namespace java.beans
 		' Package private methods for recreating the weak/soft referent
 
 		Friend Overridable Property class0 As  [Class]
-			Set(ByVal cls As [Class])
+			Set(  cls As [Class])
 				Me.classRef = getWeakReference(cls)
 			End Set
 			Get
@@ -269,7 +269,7 @@ Namespace java.beans
 		''' <returns> a new soft reference or <code>null</code> if object is <code>null</code>
 		''' </returns>
 		''' <seealso cref= SoftReference </seealso>
-		Friend Shared Function getSoftReference(Of T)(ByVal [object] As T) As Reference(Of T)
+		Friend Shared Function getSoftReference(Of T)(  [object] As T) As Reference(Of T)
 			Return If(object_Renamed IsNot Nothing, New SoftReference(Of )(object_Renamed), Nothing)
 		End Function
 
@@ -279,7 +279,7 @@ Namespace java.beans
 		''' <returns> a new weak reference or <code>null</code> if object is <code>null</code>
 		''' </returns>
 		''' <seealso cref= WeakReference </seealso>
-		Friend Shared Function getWeakReference(Of T)(ByVal [object] As T) As Reference(Of T)
+		Friend Shared Function getWeakReference(Of T)(  [object] As T) As Reference(Of T)
 			Return If(object_Renamed IsNot Nothing, New WeakReference(Of )(object_Renamed), Nothing)
 		End Function
 
@@ -292,7 +292,7 @@ Namespace java.beans
 		''' </returns>
 		''' <seealso cref= Method#getGenericReturnType </seealso>
 		''' <seealso cref= Method#getReturnType </seealso>
-		Friend Shared Function getReturnType(ByVal base As [Class], ByVal method As Method) As  [Class]
+		Friend Shared Function getReturnType(  base As [Class],   method As Method) As  [Class]
 			If base Is Nothing Then base = method.declaringClass
 			Return com.sun.beans.TypeResolver.erase(com.sun.beans.TypeResolver.resolveInClass(base, method.genericReturnType))
 		End Function
@@ -306,7 +306,7 @@ Namespace java.beans
 		''' </returns>
 		''' <seealso cref= Method#getGenericParameterTypes </seealso>
 		''' <seealso cref= Method#getParameterTypes </seealso>
-		Friend Shared Function getParameterTypes(ByVal base As [Class], ByVal method As Method) As  [Class]()
+		Friend Shared Function getParameterTypes(  base As [Class],   method As Method) As  [Class]()
 			If base Is Nothing Then base = method.declaringClass
 			Return com.sun.beans.TypeResolver.erase(com.sun.beans.TypeResolver.resolveInClass(base, method.genericParameterTypes))
 		End Function
@@ -345,18 +345,18 @@ Namespace java.beans
 			Return sb.append("]").ToString()
 		End Function
 
-		Friend Overridable Sub appendTo(ByVal sb As StringBuilder)
+		Friend Overridable Sub appendTo(  sb As StringBuilder)
 		End Sub
 
-		Friend Shared Sub appendTo(Of T1)(ByVal sb As StringBuilder, ByVal name As String, ByVal reference As Reference(Of T1))
+		Friend Shared Sub appendTo(Of T1)(  sb As StringBuilder,   name As String,   reference As Reference(Of T1))
 			If reference IsNot Nothing Then appendTo(sb, name, reference.get())
 		End Sub
 
-		Friend Shared Sub appendTo(ByVal sb As StringBuilder, ByVal name As String, ByVal value As Object)
+		Friend Shared Sub appendTo(  sb As StringBuilder,   name As String,   value As Object)
 			If value IsNot Nothing Then sb.append("; ").append(name).append("=").append(value)
 		End Sub
 
-		Friend Shared Sub appendTo(ByVal sb As StringBuilder, ByVal name As String, ByVal value As Boolean)
+		Friend Shared Sub appendTo(  sb As StringBuilder,   name As String,   value As Boolean)
 			If value Then sb.append("; ").append(name)
 		End Sub
 	End Class

@@ -94,7 +94,7 @@ Namespace java.security.cert
 		''' <exception cref="ClassCastException"> if any of the elements of
 		''' {@code trustAnchors} are not of type
 		''' {@code java.security.cert.TrustAnchor} </exception>
-		Public Sub New(ByVal trustAnchors As java.util.Set(Of TrustAnchor), ByVal targetConstraints As CertSelector)
+		Public Sub New(  trustAnchors As java.util.Set(Of TrustAnchor),   targetConstraints As CertSelector)
 			MyBase.New(trustAnchors)
 			targetCertConstraints = targetConstraints
 		End Sub
@@ -116,7 +116,7 @@ Namespace java.security.cert
 		''' not contain at least one trusted certificate entry </exception>
 		''' <exception cref="NullPointerException"> if {@code keystore} is
 		''' {@code null} </exception>
-		Public Sub New(ByVal keystore As java.security.KeyStore, ByVal targetConstraints As CertSelector)
+		Public Sub New(  keystore As java.security.KeyStore,   targetConstraints As CertSelector)
 			MyBase.New(keystore)
 			targetCertConstraints = targetConstraints
 		End Sub
@@ -151,7 +151,7 @@ Namespace java.security.cert
 		''' </exception>
 		''' <seealso cref= #getMaxPathLength </seealso>
 		Public Overridable Property maxPathLength As Integer
-			Set(ByVal maxPathLength As Integer)
+			Set(  maxPathLength As Integer)
 				If maxPathLength < -1 Then Throw New java.security.InvalidParameterException("the maximum path " & "length parameter can not be less than -1")
 				Me.maxPathLength = maxPathLength
 			End Set

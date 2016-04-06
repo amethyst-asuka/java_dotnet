@@ -75,13 +75,13 @@ Namespace java.nio.channels.spi
 		''' </summary>
 		''' <param name="provider">
 		'''         The provider that created this selector </param>
-		Protected Friend Sub New(ByVal provider As SelectorProvider)
+		Protected Friend Sub New(  provider As SelectorProvider)
 			Me.provider_Renamed = provider
 		End Sub
 
 		Private ReadOnly cancelledKeys_Renamed As java.util.Set(Of java.nio.channels.SelectionKey) = New HashSet(Of java.nio.channels.SelectionKey)
 
-		Friend Overridable Sub cancel(ByVal k As java.nio.channels.SelectionKey) ' package-private
+		Friend Overridable Sub cancel(  k As java.nio.channels.SelectionKey) ' package-private
 			SyncLock cancelledKeys_Renamed
 				cancelledKeys_Renamed.add(k)
 			End SyncLock
@@ -162,7 +162,7 @@ Namespace java.nio.channels.spi
 		''' </param>
 		''' <returns>  A new key representing the registration of the given channel
 		'''          with this selector </returns>
-		Protected Friend MustOverride Function register(ByVal ch As AbstractSelectableChannel, ByVal ops As Integer, ByVal att As Object) As java.nio.channels.SelectionKey
+		Protected Friend MustOverride Function register(  ch As AbstractSelectableChannel,   ops As Integer,   att As Object) As java.nio.channels.SelectionKey
 
 		''' <summary>
 		''' Removes the given key from its channel's key set.
@@ -172,7 +172,7 @@ Namespace java.nio.channels.spi
 		''' </summary>
 		''' <param name="key">
 		'''         The selection key to be removed </param>
-		Protected Friend Sub deregister(ByVal key As AbstractSelectionKey)
+		Protected Friend Sub deregister(  key As AbstractSelectionKey)
 			CType(key.channel(), AbstractSelectableChannel).removeKey(key)
 		End Sub
 

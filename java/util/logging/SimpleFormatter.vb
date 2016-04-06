@@ -136,7 +136,7 @@ Namespace java.util.logging
 		''' <param name="record"> the log record to be formatted. </param>
 		''' <returns> a formatted log record </returns>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overrides Function format(ByVal record As LogRecord) As String
+		Public Overrides Function format(  record As LogRecord) As String
 			dat.Value.time = record.millis
 			Dim source As String
 			If record.sourceClassName IsNot Nothing Then

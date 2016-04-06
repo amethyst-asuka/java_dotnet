@@ -128,7 +128,7 @@ Namespace java.util
 		'''                              increased when the vector overflows </param>
 		''' <exception cref="IllegalArgumentException"> if the specified initial capacity
 		'''         is negative </exception>
-		Public Sub New(ByVal initialCapacity As Integer, ByVal capacityIncrement As Integer)
+		Public Sub New(  initialCapacity As Integer,   capacityIncrement As Integer)
 			MyBase.New()
 			If initialCapacity < 0 Then Throw New IllegalArgumentException("Illegal Capacity: " & initialCapacity)
 			Me.elementData_Renamed = New Object(initialCapacity - 1){}
@@ -142,7 +142,7 @@ Namespace java.util
 		''' <param name="initialCapacity">   the initial capacity of the vector </param>
 		''' <exception cref="IllegalArgumentException"> if the specified initial capacity
 		'''         is negative </exception>
-		Public Sub New(ByVal initialCapacity As Integer)
+		Public Sub New(  initialCapacity As Integer)
 			Me.New(initialCapacity, 0)
 		End Sub
 
@@ -164,7 +164,7 @@ Namespace java.util
 		'''       vector </param>
 		''' <exception cref="NullPointerException"> if the specified collection is null
 		''' @since   1.2 </exception>
-		Public Sub New(Of T1 As E)(ByVal c As Collection(Of T1))
+		Public Sub New(Of T1 As E)(  c As Collection(Of T1))
 			elementData_Renamed = c.ToArray()
 			elementCount = elementData_Renamed.Length
 			' c.toArray might (incorrectly) not return Object[] (see 6260652)
@@ -184,7 +184,7 @@ Namespace java.util
 		'''         a runtime type that can be stored in the specified array </exception>
 		''' <seealso cref= #toArray(Object[]) </seealso>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Sub copyInto(ByVal anArray As Object())
+		Public Overridable Sub copyInto(  anArray As Object())
 			Array.Copy(elementData_Renamed, 0, anArray, 0, elementCount)
 		End Sub
 
@@ -223,7 +223,7 @@ Namespace java.util
 		''' </summary>
 		''' <param name="minCapacity"> the desired minimum capacity </param>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Sub ensureCapacity(ByVal minCapacity As Integer)
+		Public Overridable Sub ensureCapacity(  minCapacity As Integer)
 			If minCapacity > 0 Then
 				modCount += 1
 				ensureCapacityHelper(minCapacity)
@@ -237,7 +237,7 @@ Namespace java.util
 		''' extra synchronization.
 		''' </summary>
 		''' <seealso cref= #ensureCapacity(int) </seealso>
-		Private Sub ensureCapacityHelper(ByVal minCapacity As Integer)
+		Private Sub ensureCapacityHelper(  minCapacity As Integer)
 			' overflow-conscious code
 			If minCapacity - elementData_Renamed.Length > 0 Then grow(minCapacity)
 		End Sub
@@ -250,7 +250,7 @@ Namespace java.util
 		''' </summary>
 		Private Shared ReadOnly MAX_ARRAY_SIZE As Integer =  java.lang.[Integer].MAX_VALUE - 8
 
-		Private Sub grow(ByVal minCapacity As Integer)
+		Private Sub grow(  minCapacity As Integer)
 			' overflow-conscious code
 			Dim oldCapacity As Integer = elementData_Renamed.Length
 			Dim newCapacity As Integer = oldCapacity + (If(capacityIncrement > 0, capacityIncrement, oldCapacity))
@@ -260,7 +260,7 @@ Namespace java.util
 			Array.Copy(elementData_Renamed, elementData_Renamed, newCapacity)
 		End Sub
 
-		Private Shared Function hugeCapacity(ByVal minCapacity As Integer) As Integer
+		Private Shared Function hugeCapacity(  minCapacity As Integer) As Integer
 			If minCapacity < 0 Then ' overflow Throw New OutOfMemoryError
 			Return If(minCapacity > MAX_ARRAY_SIZE,  java.lang.[Integer].Max_Value, MAX_ARRAY_SIZE)
 		End Function
@@ -275,7 +275,7 @@ Namespace java.util
 		''' <exception cref="ArrayIndexOutOfBoundsException"> if the new size is negative </exception>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
 		Public Overridable Property size As Integer
-			Set(ByVal newSize As Integer)
+			Set(  newSize As Integer)
 				modCount += 1
 				If newSize > elementCount Then
 					ensureCapacityHelper(newSize)
@@ -358,7 +358,7 @@ Namespace java.util
 		''' </summary>
 		''' <param name="o"> element whose presence in this vector is to be tested </param>
 		''' <returns> {@code true} if this vector contains the specified element </returns>
-		Public Overridable Function contains(ByVal o As Object) As Boolean Implements List(Of E).contains
+		Public Overridable Function contains(  o As Object) As Boolean Implements List(Of E).contains
 			Return IndexOf(o, 0) >= 0
 		End Function
 
@@ -372,7 +372,7 @@ Namespace java.util
 		''' <param name="o"> element to search for </param>
 		''' <returns> the index of the first occurrence of the specified element in
 		'''         this vector, or -1 if this vector does not contain the element </returns>
-		Public Overridable Function indexOf(ByVal o As Object) As Integer Implements List(Of E).indexOf
+		Public Overridable Function indexOf(  o As Object) As Integer Implements List(Of E).indexOf
 			Return IndexOf(o, 0)
 		End Function
 
@@ -392,7 +392,7 @@ Namespace java.util
 		''' <exception cref="IndexOutOfBoundsException"> if the specified index is negative </exception>
 		''' <seealso cref=     Object#equals(Object) </seealso>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Function indexOf(ByVal o As Object, ByVal index As Integer) As Integer
+		Public Overridable Function indexOf(  o As Object,   index As Integer) As Integer
 			If o Is Nothing Then
 				For i As Integer = index To elementCount - 1
 					If elementData_Renamed(i) Is Nothing Then Return i
@@ -416,7 +416,7 @@ Namespace java.util
 		''' <returns> the index of the last occurrence of the specified element in
 		'''         this vector, or -1 if this vector does not contain the element </returns>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Function lastIndexOf(ByVal o As Object) As Integer Implements List(Of E).lastIndexOf
+		Public Overridable Function lastIndexOf(  o As Object) As Integer Implements List(Of E).lastIndexOf
 			Return LastIndexOf(o, elementCount-1)
 		End Function
 
@@ -436,7 +436,7 @@ Namespace java.util
 		''' <exception cref="IndexOutOfBoundsException"> if the specified index is greater
 		'''         than or equal to the current size of this vector </exception>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Function lastIndexOf(ByVal o As Object, ByVal index As Integer) As Integer
+		Public Overridable Function lastIndexOf(  o As Object,   index As Integer) As Integer
 			If index >= elementCount Then Throw New IndexOutOfBoundsException(index & " >= " & elementCount)
 
 			If o Is Nothing Then
@@ -462,7 +462,7 @@ Namespace java.util
 		''' <exception cref="ArrayIndexOutOfBoundsException"> if the index is out of range
 		'''         ({@code index < 0 || index >= size()}) </exception>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Function elementAt(ByVal index As Integer) As E
+		Public Overridable Function elementAt(  index As Integer) As E
 			If index >= elementCount Then Throw New ArrayIndexOutOfBoundsException(index & " >= " & elementCount)
 
 			Return elementData(index)
@@ -512,7 +512,7 @@ Namespace java.util
 		''' <exception cref="ArrayIndexOutOfBoundsException"> if the index is out of range
 		'''         ({@code index < 0 || index >= size()}) </exception>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Sub setElementAt(ByVal obj As E, ByVal index As Integer)
+		Public Overridable Sub setElementAt(  obj As E,   index As Integer)
 			If index >= elementCount Then Throw New ArrayIndexOutOfBoundsException(index & " >= " & elementCount)
 			elementData_Renamed(index) = obj
 		End Sub
@@ -536,7 +536,7 @@ Namespace java.util
 		''' <exception cref="ArrayIndexOutOfBoundsException"> if the index is out of range
 		'''         ({@code index < 0 || index >= size()}) </exception>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Sub removeElementAt(ByVal index As Integer)
+		Public Overridable Sub removeElementAt(  index As Integer)
 			modCount += 1
 			If index >= elementCount Then
 				Throw New ArrayIndexOutOfBoundsException(index & " >= " & elementCount)
@@ -572,7 +572,7 @@ Namespace java.util
 		''' <exception cref="ArrayIndexOutOfBoundsException"> if the index is out of range
 		'''         ({@code index < 0 || index > size()}) </exception>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Sub insertElementAt(ByVal obj As E, ByVal index As Integer)
+		Public Overridable Sub insertElementAt(  obj As E,   index As Integer)
 			modCount += 1
 			If index > elementCount Then Throw New ArrayIndexOutOfBoundsException(index & " > " & elementCount)
 			ensureCapacityHelper(elementCount + 1)
@@ -592,7 +592,7 @@ Namespace java.util
 		''' </summary>
 		''' <param name="obj">   the component to be added </param>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Sub addElement(ByVal obj As E)
+		Public Overridable Sub addElement(  obj As E)
 			modCount += 1
 			ensureCapacityHelper(elementCount + 1)
 			elementData_Renamed(elementCount) = obj
@@ -614,7 +614,7 @@ Namespace java.util
 		''' <returns>  {@code true} if the argument was a component of this
 		'''          vector; {@code false} otherwise. </returns>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Function removeElement(ByVal obj As Object) As Boolean
+		Public Overridable Function removeElement(  obj As Object) As Boolean
 			modCount += 1
 			Dim i As Integer = IndexOf(obj)
 			If i >= 0 Then
@@ -699,7 +699,7 @@ Namespace java.util
 		''' @since 1.2 </exception>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Function toArray(Of T)(ByVal a As T()) As T() Implements List(Of E).toArray
+		Public Overridable Function toArray(Of T)(  a As T()) As T() Implements List(Of E).toArray
 			If a.Length < elementCount Then Return CType(Arrays.copyOf(elementData_Renamed, elementCount, a.GetType()), T())
 
 			Array.Copy(elementData_Renamed, 0, a, 0, elementCount)
@@ -712,7 +712,7 @@ Namespace java.util
 		' Positional Access Operations
 
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Friend Overridable Function elementData(ByVal index As Integer) As E
+		Friend Overridable Function elementData(  index As Integer) As E
 			Return CType(elementData_Renamed(index), E)
 		End Function
 
@@ -725,7 +725,7 @@ Namespace java.util
 		'''            ({@code index < 0 || index >= size()})
 		''' @since 1.2 </exception>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Function [get](ByVal index As Integer) As E Implements List(Of E).get
+		Public Overridable Function [get](  index As Integer) As E Implements List(Of E).get
 			If index >= elementCount Then Throw New ArrayIndexOutOfBoundsException(index)
 
 			Return elementData(index)
@@ -742,7 +742,7 @@ Namespace java.util
 		'''         ({@code index < 0 || index >= size()})
 		''' @since 1.2 </exception>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Function [set](ByVal index As Integer, ByVal element As E) As E
+		Public Overridable Function [set](  index As Integer,   element As E) As E
 			If index >= elementCount Then Throw New ArrayIndexOutOfBoundsException(index)
 
 			Dim oldValue As E = elementData(index)
@@ -757,7 +757,7 @@ Namespace java.util
 		''' <returns> {@code true} (as specified by <seealso cref="Collection#add"/>)
 		''' @since 1.2 </returns>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Function add(ByVal e As E) As Boolean
+		Public Overridable Function add(  e As E) As Boolean
 			modCount += 1
 			ensureCapacityHelper(elementCount + 1)
 			elementData_Renamed(elementCount) = e
@@ -775,7 +775,7 @@ Namespace java.util
 		''' <param name="o"> element to be removed from this Vector, if present </param>
 		''' <returns> true if the Vector contained the specified element
 		''' @since 1.2 </returns>
-		Public Overridable Function remove(ByVal o As Object) As Boolean Implements List(Of E).remove
+		Public Overridable Function remove(  o As Object) As Boolean Implements List(Of E).remove
 			Return removeElement(o)
 		End Function
 
@@ -789,7 +789,7 @@ Namespace java.util
 		''' <exception cref="ArrayIndexOutOfBoundsException"> if the index is out of range
 		'''         ({@code index < 0 || index > size()})
 		''' @since 1.2 </exception>
-		Public Overridable Sub add(ByVal index As Integer, ByVal element As E)
+		Public Overridable Sub add(  index As Integer,   element As E)
 			insertElementAt(element, index)
 		End Sub
 
@@ -804,7 +804,7 @@ Namespace java.util
 		''' <returns> element that was removed
 		''' @since 1.2 </returns>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Function remove(ByVal index As Integer) As E Implements List(Of E).remove
+		Public Overridable Function remove(  index As Integer) As E Implements List(Of E).remove
 			modCount += 1
 			If index >= elementCount Then Throw New ArrayIndexOutOfBoundsException(index)
 			Dim oldValue As E = elementData(index)
@@ -839,7 +839,7 @@ Namespace java.util
 		'''         specified collection </returns>
 		''' <exception cref="NullPointerException"> if the specified collection is null </exception>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Function containsAll(Of T1)(ByVal c As Collection(Of T1)) As Boolean Implements List(Of E).containsAll
+		Public Overridable Function containsAll(Of T1)(  c As Collection(Of T1)) As Boolean Implements List(Of E).containsAll
 			Return MyBase.containsAll(c)
 		End Function
 
@@ -856,7 +856,7 @@ Namespace java.util
 		''' <exception cref="NullPointerException"> if the specified collection is null
 		''' @since 1.2 </exception>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Function addAll(Of T1 As E)(ByVal c As Collection(Of T1)) As Boolean Implements List(Of E).addAll
+		Public Overridable Function addAll(Of T1 As E)(  c As Collection(Of T1)) As Boolean Implements List(Of E).addAll
 			modCount += 1
 			Dim a As Object() = c.ToArray()
 			Dim numNew As Integer = a.Length
@@ -883,7 +883,7 @@ Namespace java.util
 		'''         or if the specified collection is null
 		''' @since 1.2 </exception>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Function removeAll(Of T1)(ByVal c As Collection(Of T1)) As Boolean Implements List(Of E).removeAll
+		Public Overridable Function removeAll(Of T1)(  c As Collection(Of T1)) As Boolean Implements List(Of E).removeAll
 			Return MyBase.removeAll(c)
 		End Function
 
@@ -906,7 +906,7 @@ Namespace java.util
 		'''         or if the specified collection is null
 		''' @since 1.2 </exception>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Function retainAll(Of T1)(ByVal c As Collection(Of T1)) As Boolean Implements List(Of E).retainAll
+		Public Overridable Function retainAll(Of T1)(  c As Collection(Of T1)) As Boolean Implements List(Of E).retainAll
 			Return MyBase.retainAll(c)
 		End Function
 
@@ -927,7 +927,7 @@ Namespace java.util
 		''' <exception cref="NullPointerException"> if the specified collection is null
 		''' @since 1.2 </exception>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Function addAll(Of T1 As E)(ByVal index As Integer, ByVal c As Collection(Of T1)) As Boolean Implements List(Of E).addAll
+		Public Overridable Function addAll(Of T1 As E)(  index As Integer,   c As Collection(Of T1)) As Boolean Implements List(Of E).addAll
 			modCount += 1
 			If index < 0 OrElse index > elementCount Then Throw New ArrayIndexOutOfBoundsException(index)
 
@@ -955,7 +955,7 @@ Namespace java.util
 		''' <param name="o"> the Object to be compared for equality with this Vector </param>
 		''' <returns> true if the specified Object is equal to this Vector </returns>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overrides Function Equals(ByVal o As Object) As Boolean
+		Public Overrides Function Equals(  o As Object) As Boolean
 			Return MyBase.Equals(o)
 		End Function
 
@@ -1010,7 +1010,7 @@ Namespace java.util
 		''' <exception cref="IllegalArgumentException"> if the endpoint indices are out of order
 		'''         {@code (fromIndex > toIndex)} </exception>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Function subList(ByVal fromIndex As Integer, ByVal toIndex As Integer) As List(Of E) Implements List(Of E).subList
+		Public Overridable Function subList(  fromIndex As Integer,   toIndex As Integer) As List(Of E) Implements List(Of E).subList
 			Return Collections.synchronizedList(MyBase.subList(fromIndex, toIndex), Me)
 		End Function
 
@@ -1022,7 +1022,7 @@ Namespace java.util
 		''' (If {@code toIndex==fromIndex}, this operation has no effect.)
 		''' </summary>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Protected Friend Overridable Sub removeRange(ByVal fromIndex As Integer, ByVal toIndex As Integer)
+		Protected Friend Overridable Sub removeRange(  fromIndex As Integer,   toIndex As Integer)
 			modCount += 1
 			Dim numMoved As Integer = elementCount - toIndex
 			Array.Copy(elementData_Renamed, toIndex, elementData_Renamed, fromIndex, numMoved)
@@ -1041,7 +1041,7 @@ Namespace java.util
 		''' This method performs synchronization to ensure the consistency
 		''' of the serialized data.
 		''' </summary>
-		Private Sub writeObject(ByVal s As java.io.ObjectOutputStream)
+		Private Sub writeObject(  s As java.io.ObjectOutputStream)
 			Dim fields As java.io.ObjectOutputStream.PutField = s.putFields()
 			Dim data As Object()
 			SyncLock Me
@@ -1065,7 +1065,7 @@ Namespace java.util
 		''' </summary>
 		''' <exception cref="IndexOutOfBoundsException"> {@inheritDoc} </exception>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Function listIterator(ByVal index As Integer) As ListIterator(Of E) Implements List(Of E).listIterator
+		Public Overridable Function listIterator(  index As Integer) As ListIterator(Of E) Implements List(Of E).listIterator
 			If index < 0 OrElse index > elementCount Then Throw New IndexOutOfBoundsException("Index: " & index)
 			Return New ListItr(Me, index)
 		End Function
@@ -1101,7 +1101,7 @@ Namespace java.util
 
 			Private ReadOnly outerInstance As Vector
 
-			Public Sub New(ByVal outerInstance As Vector)
+			Public Sub New(  outerInstance As Vector)
 				Me.outerInstance = outerInstance
 			End Sub
 
@@ -1138,7 +1138,7 @@ Namespace java.util
 			End Sub
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Overrides Sub forEachRemaining(Of T1)(ByVal action As java.util.function.Consumer(Of T1)) Implements Iterator(Of E).forEachRemaining
+			Public Overrides Sub forEachRemaining(Of T1)(  action As java.util.function.Consumer(Of T1)) Implements Iterator(Of E).forEachRemaining
 				Objects.requireNonNull(action)
 				SyncLock Vector.this
 					Dim size As Integer = outerInstance.elementCount
@@ -1172,7 +1172,7 @@ Namespace java.util
 
 			Private ReadOnly outerInstance As Vector
 
-			Friend Sub New(ByVal outerInstance As Vector, ByVal index As Integer)
+			Friend Sub New(  outerInstance As Vector,   index As Integer)
 					Me.outerInstance = outerInstance
 				MyBase.New()
 				cursor = index
@@ -1201,7 +1201,7 @@ Namespace java.util
 				End SyncLock
 			End Function
 
-			Public Sub [set](ByVal e As E)
+			Public Sub [set](  e As E)
 				If lastRet = -1 Then Throw New IllegalStateException
 				SyncLock Vector.this
 					checkForComodification()
@@ -1209,7 +1209,7 @@ Namespace java.util
 				End SyncLock
 			End Sub
 
-			Public Sub add(ByVal e As E)
+			Public Sub add(  e As E)
 				Dim i As Integer = cursor
 				SyncLock Vector.this
 					checkForComodification()
@@ -1223,7 +1223,7 @@ Namespace java.util
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overrides Sub forEach(Of T1)(ByVal action As java.util.function.Consumer(Of T1))
+		Public Overrides Sub forEach(Of T1)(  action As java.util.function.Consumer(Of T1))
 			Objects.requireNonNull(action)
 			Dim expectedModCount As Integer = modCount
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
@@ -1240,7 +1240,7 @@ Namespace java.util
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overrides Function removeIf(Of T1)(ByVal filter As java.util.function.Predicate(Of T1)) As Boolean
+		Public Overrides Function removeIf(Of T1)(  filter As java.util.function.Predicate(Of T1)) As Boolean
 			Objects.requireNonNull(filter)
 			' figure out which elements are to be removed
 			' any exception thrown from the filter predicate at this stage
@@ -1286,7 +1286,7 @@ Namespace java.util
 
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overrides Sub replaceAll(ByVal [operator] As java.util.function.UnaryOperator(Of E)) Implements List(Of E).replaceAll
+		Public Overrides Sub replaceAll(  [operator] As java.util.function.UnaryOperator(Of E)) Implements List(Of E).replaceAll
 			Objects.requireNonNull([operator])
 			Dim expectedModCount As Integer = modCount
 			Dim size_Renamed As Integer = elementCount
@@ -1302,7 +1302,7 @@ Namespace java.util
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overrides Sub sort(Of T1)(ByVal c As Comparator(Of T1)) Implements List(Of E).sort
+		Public Overrides Sub sort(Of T1)(  c As Comparator(Of T1)) Implements List(Of E).sort
 			Dim expectedModCount As Integer = modCount
 			Array.Sort(CType(elementData_Renamed, E()), 0, elementCount, c)
 			If modCount <> expectedModCount Then Throw New ConcurrentModificationException
@@ -1338,7 +1338,7 @@ Namespace java.util
 
 			''' <summary>
 			''' Create new spliterator covering the given  range </summary>
-			Friend Sub New(ByVal list As Vector(Of E), ByVal array As Object(), ByVal origin As Integer, ByVal fence As Integer, ByVal expectedModCount As Integer)
+			Friend Sub New(  list As Vector(Of E),   array As Object(),   origin As Integer,   fence As Integer,   expectedModCount As Integer)
 				Me.list = list
 				Me.array = array
 				Me.index = origin
@@ -1370,7 +1370,7 @@ Namespace java.util
 
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Function tryAdvance(Of T1)(ByVal action As java.util.function.Consumer(Of T1)) As Boolean Implements Spliterator(Of E).tryAdvance
+			Public Function tryAdvance(Of T1)(  action As java.util.function.Consumer(Of T1)) As Boolean Implements Spliterator(Of E).tryAdvance
 				Dim i As Integer
 				If action Is Nothing Then Throw New NullPointerException
 				i = index
@@ -1385,7 +1385,7 @@ Namespace java.util
 
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Sub forEachRemaining(Of T1)(ByVal action As java.util.function.Consumer(Of T1)) Implements Spliterator(Of E).forEachRemaining
+			Public Sub forEachRemaining(Of T1)(  action As java.util.function.Consumer(Of T1)) Implements Spliterator(Of E).forEachRemaining
 				Dim i, hi As Integer ' hoist accesses and checks from loop
 				Dim lst As Vector(Of E)
 				Dim a As Object()

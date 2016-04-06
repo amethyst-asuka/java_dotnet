@@ -44,7 +44,7 @@ Namespace java.awt.peer
 		''' 
 		''' @since 1.7
 		''' </summary>
-		Function getAppropriateGraphicsConfiguration(ByVal gc As java.awt.GraphicsConfiguration) As java.awt.GraphicsConfiguration
+		Function getAppropriateGraphicsConfiguration(  gc As java.awt.GraphicsConfiguration) As java.awt.GraphicsConfiguration
 	End Interface
 
 End Namespace

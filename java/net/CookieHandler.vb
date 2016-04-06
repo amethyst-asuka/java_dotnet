@@ -73,7 +73,7 @@ Namespace java.net
 				If sm IsNot Nothing Then sm.checkPermission(sun.security.util.SecurityConstants.GET_COOKIEHANDLER_PERMISSION)
 				Return cookieHandler
 			End Get
-			Set(ByVal cHandler As CookieHandler)
+			Set(  cHandler As CookieHandler)
 				Dim sm As SecurityManager = System.securityManager
 				If sm IsNot Nothing Then sm.checkPermission(sun.security.util.SecurityConstants.SET_COOKIEHANDLER_PERMISSION)
 				cookieHandler = cHandler
@@ -110,7 +110,7 @@ Namespace java.net
 		''' <exception cref="IOException"> if an I/O error occurs </exception>
 		''' <exception cref="IllegalArgumentException"> if either argument is null </exception>
 		''' <seealso cref= #put(URI, Map) </seealso>
-		Public MustOverride Function [get](ByVal uri As URI, ByVal requestHeaders As IDictionary(Of String, IList(Of String))) As IDictionary(Of String, IList(Of String))
+		Public MustOverride Function [get](  uri As URI,   requestHeaders As IDictionary(Of String, IList(Of String))) As IDictionary(Of String, IList(Of String))
 
 		''' <summary>
 		''' Sets all the applicable cookies, examples are response header
@@ -124,7 +124,7 @@ Namespace java.net
 		''' <exception cref="IOException"> if an I/O error occurs </exception>
 		''' <exception cref="IllegalArgumentException"> if either argument is null </exception>
 		''' <seealso cref= #get(URI, Map) </seealso>
-		Public MustOverride Sub put(ByVal uri As URI, ByVal responseHeaders As IDictionary(Of String, IList(Of String)))
+		Public MustOverride Sub put(  uri As URI,   responseHeaders As IDictionary(Of String, IList(Of String)))
 	End Class
 
 End Namespace

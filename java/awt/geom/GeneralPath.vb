@@ -69,7 +69,7 @@ Namespace java.awt.geom
 		''' <seealso cref= #WIND_EVEN_ODD </seealso>
 		''' <seealso cref= #WIND_NON_ZERO
 		''' @since 1.2 </seealso>
-		Public Sub New(ByVal rule As Integer)
+		Public Sub New(  rule As Integer)
 			MyBase.New(rule, INIT_SIZE)
 		End Sub
 
@@ -87,7 +87,7 @@ Namespace java.awt.geom
 		''' <seealso cref= #WIND_EVEN_ODD </seealso>
 		''' <seealso cref= #WIND_NON_ZERO
 		''' @since 1.2 </seealso>
-		Public Sub New(ByVal rule As Integer, ByVal initialCapacity As Integer)
+		Public Sub New(  rule As Integer,   initialCapacity As Integer)
 			MyBase.New(rule, initialCapacity)
 		End Sub
 
@@ -99,11 +99,11 @@ Namespace java.awt.geom
 		''' </summary>
 		''' <param name="s"> the specified <code>Shape</code> object
 		''' @since 1.2 </param>
-		Public Sub New(ByVal s As java.awt.Shape)
+		Public Sub New(  s As java.awt.Shape)
 			MyBase.New(s, Nothing)
 		End Sub
 
-		Friend Sub New(ByVal windingRule As Integer, ByVal pointTypes As SByte(), ByVal numTypes As Integer, ByVal pointCoords As Single(), ByVal numCoords As Integer)
+		Friend Sub New(  windingRule As Integer,   pointTypes As SByte(),   numTypes As Integer,   pointCoords As Single(),   numCoords As Integer)
 			' used to construct from native
 
 			Me.windingRule = windingRule

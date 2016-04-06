@@ -72,7 +72,7 @@ Namespace java.lang
 		''' <param name="s"> the {@code short} to be converted </param>
 		''' <returns> the string representation of the specified {@code short} </returns>
 		''' <seealso cref= java.lang.Integer#toString(int) </seealso>
-		Public Shared Function ToString(ByVal s As Short) As String
+		Public Shared Function ToString(  s As Short) As String
 			Return Convert.ToString(CInt(s), 10)
 		End Function
 
@@ -115,7 +115,7 @@ Namespace java.lang
 		'''                  argument in the specified radix. </returns>
 		''' <exception cref="NumberFormatException"> If the {@code String}
 		'''                  does not contain a parsable {@code short}. </exception>
-		Public Shared Function parseShort(ByVal s As String, ByVal radix As Integer) As Short
+		Public Shared Function parseShort(  s As String,   radix As Integer) As Short
 			Dim i As Integer = Convert.ToInt32(s, radix)
 			If i < MIN_VALUE OrElse i > MAX_VALUE Then Throw New NumberFormatException("Value out of range. Value:""" & s & """ Radix:" & radix)
 			Return CShort(i)
@@ -138,7 +138,7 @@ Namespace java.lang
 		'''          argument in decimal. </returns>
 		''' <exception cref="NumberFormatException"> If the string does not
 		'''          contain a parsable {@code short}. </exception>
-		Public Shared Function parseShort(ByVal s As String) As Short
+		Public Shared Function parseShort(  s As String) As Short
 			Return parseShort(s, 10)
 		End Function
 
@@ -166,7 +166,7 @@ Namespace java.lang
 		'''                  specified radix. </returns>
 		''' <exception cref="NumberFormatException"> If the {@code String} does
 		'''                  not contain a parsable {@code short}. </exception>
-		Public Shared Function valueOf(ByVal s As String, ByVal radix As Integer) As Short?
+		Public Shared Function valueOf(  s As String,   radix As Integer) As Short?
 			Return valueOf(parseShort(s, radix))
 		End Function
 
@@ -191,7 +191,7 @@ Namespace java.lang
 		'''          represented by the string argument </returns>
 		''' <exception cref="NumberFormatException"> If the {@code String} does
 		'''          not contain a parsable {@code short}. </exception>
-		Public Shared Function valueOf(ByVal s As String) As Short?
+		Public Shared Function valueOf(  s As String) As Short?
 			Return valueOf(s, 10)
 		End Function
 
@@ -223,7 +223,7 @@ Namespace java.lang
 		''' <param name="s"> a short value. </param>
 		''' <returns> a {@code Short} instance representing {@code s}.
 		''' @since  1.5 </returns>
-		Public Shared Function valueOf(ByVal s As Short) As Short?
+		Public Shared Function valueOf(  s As Short) As Short?
 			Const offset As Integer = 128
 			Dim sAsInt As Integer = s
 			If sAsInt >= -128 AndAlso sAsInt <= 127 Then ' must cache Return ShortCache.cache(sAsInt + offset)
@@ -271,7 +271,7 @@ Namespace java.lang
 		''' <exception cref="NumberFormatException">  if the {@code String} does not
 		'''            contain a parsable {@code short}. </exception>
 		''' <seealso cref= java.lang.Short#parseShort(java.lang.String, int) </seealso>
-		Public Shared Function decode(ByVal nm As String) As Short?
+		Public Shared Function decode(  nm As String) As Short?
 			Dim i As Integer =  java.lang.[Integer].decode(nm)
 			If i < MIN_VALUE OrElse i > MAX_VALUE Then Throw New NumberFormatException("Value " & i & " out of range from input " & nm)
 			Return valueOf(CShort(i))
@@ -290,7 +290,7 @@ Namespace java.lang
 		''' </summary>
 		''' <param name="value">     the value to be represented by the
 		'''                  {@code Short}. </param>
-		Function java.lang.Short(ByVal value As Short) As [Public]
+		Function java.lang.Short(  value As Short) As [Public]
 			Me.value = value
 		End Function
 
@@ -306,7 +306,7 @@ Namespace java.lang
 		''' <exception cref="NumberFormatException"> If the {@code String}
 		'''          does not contain a parsable {@code short}. </exception>
 		''' <seealso cref=     java.lang.Short#parseShort(java.lang.String, int) </seealso>
-		Function java.lang.Short(ByVal s As String) As [Public]
+		Function java.lang.Short(  s As String) As [Public]
 			Me.value = parseShort(s, 10)
 		End Function
 
@@ -392,7 +392,7 @@ Namespace java.lang
 		''' <param name="value"> the value to hash </param>
 		''' <returns> a hash code value for a {@code short} value.
 		''' @since 1.8 </returns>
-		Public Shared Function GetHashCode(ByVal value As Short) As Integer
+		Public Shared Function GetHashCode(  value As Short) As Integer
 			Return CInt(value)
 		End Function
 
@@ -405,7 +405,7 @@ Namespace java.lang
 		''' <param name="obj">       the object to compare with </param>
 		''' <returns>          {@code true} if the objects are the same;
 		'''                  {@code false} otherwise. </returns>
-		Public Overrides Function Equals(ByVal obj As Object) As Boolean
+		Public Overrides Function Equals(  obj As Object) As Boolean
 			If TypeOf obj Is Short? Then Return value = CShort(Fix(obj))
 			Return False
 		End Function
@@ -422,7 +422,7 @@ Namespace java.lang
 		'''           greater than the argument {@code Short} (signed
 		'''           comparison).
 		''' @since   1.2 </returns>
-		Public Function compareTo(ByVal anotherShort As Short?) As Integer
+		Public Function compareTo(  anotherShort As Short?) As Integer
 			Return compare(Me.value, another java.lang.[Short].value)
 		End Function
 
@@ -439,7 +439,7 @@ Namespace java.lang
 		'''         a value less than {@code 0} if {@code x < y}; and
 		'''         a value greater than {@code 0} if {@code x > y}
 		''' @since 1.7 </returns>
-		Public Shared Function compare(ByVal x As Short, ByVal y As Short) As Integer
+		Public Shared Function compare(  x As Short,   y As Short) As Integer
 			Return x - y
 		End Function
 
@@ -466,7 +466,7 @@ Namespace java.lang
 		''' <returns> the value obtained by reversing (or, equivalently, swapping)
 		'''     the bytes in the specified {@code short} value.
 		''' @since 1.5 </returns>
-		Public Shared Function reverseBytes(ByVal i As Short) As Short
+		Public Shared Function reverseBytes(  i As Short) As Short
 			Return CShort(Fix(((i And &HFF00) >> 8) Or (i << 8)))
 		End Function
 
@@ -486,7 +486,7 @@ Namespace java.lang
 		''' <returns> the argument converted to {@code int} by an unsigned
 		'''         conversion
 		''' @since 1.8 </returns>
-		Public Shared Function toUnsignedInt(ByVal x As Short) As Integer
+		Public Shared Function toUnsignedInt(  x As Short) As Integer
 			Return (CInt(x)) And &Hffff
 		End Function
 
@@ -505,7 +505,7 @@ Namespace java.lang
 		''' <returns> the argument converted to {@code long} by an unsigned
 		'''         conversion
 		''' @since 1.8 </returns>
-		Public Shared Function toUnsignedLong(ByVal x As Short) As Long
+		Public Shared Function toUnsignedLong(  x As Short) As Long
 			Return (CLng(x)) And &HffffL
 		End Function
 

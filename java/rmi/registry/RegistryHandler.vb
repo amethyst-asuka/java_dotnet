@@ -51,7 +51,7 @@ Namespace java.rmi.registry
 		''' <exception cref="RemoteException"> if a remote error occurs </exception>
 		''' <exception cref="UnknownHostException"> if unable to resolve given hostname </exception>
 		<Obsolete("no replacement.  As of the Java 2 platform v1.2, RMI no")> _
-		Function registryStub(ByVal host As String, ByVal port As Integer) As Registry
+		Function registryStub(  host As String,   port As Integer) As Registry
 
 		''' <summary>
 		''' Constructs and exports a Registry on the specified port.
@@ -64,7 +64,7 @@ Namespace java.rmi.registry
 		''' <returns> registry stub </returns>
 		''' <exception cref="RemoteException"> if a remote error occurs </exception>
 		<Obsolete("no replacement.  As of the Java 2 platform v1.2, RMI no")> _
-		Function registryImpl(ByVal port As Integer) As Registry
+		Function registryImpl(  port As Integer) As Registry
 	End Interface
 
 End Namespace

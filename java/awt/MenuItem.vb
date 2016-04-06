@@ -192,7 +192,7 @@ Namespace java.awt
 		''' returns true. </exception>
 		''' <seealso cref= java.awt.GraphicsEnvironment#isHeadless
 		''' @since       JDK1.0 </seealso>
-		Public Sub New(ByVal label_Renamed As String)
+		Public Sub New(  label_Renamed As String)
 			Me.New(label_Renamed, Nothing)
 		End Sub
 
@@ -208,7 +208,7 @@ Namespace java.awt
 		''' returns true. </exception>
 		''' <seealso cref= java.awt.GraphicsEnvironment#isHeadless
 		''' @since       JDK1.1 </seealso>
-		Public Sub New(ByVal label_Renamed As String, ByVal s As MenuShortcut)
+		Public Sub New(  label_Renamed As String,   s As MenuShortcut)
 			Me.label_Renamed = label_Renamed
 			Me.shortcut = s
 		End Sub
@@ -245,7 +245,7 @@ Namespace java.awt
 			Get
 				Return label_Renamed
 			End Get
-			Set(ByVal label_Renamed As String)
+			Set(  label_Renamed As String)
 				Me.label_Renamed = label_Renamed
 				Dim peer_Renamed As java.awt.peer.MenuItemPeer = CType(Me.peer, java.awt.peer.MenuItemPeer)
 				If peer_Renamed IsNot Nothing Then peer_Renamed.label = label_Renamed
@@ -261,7 +261,7 @@ Namespace java.awt
 			Get
 				Return enabled
 			End Get
-			Set(ByVal b As Boolean)
+			Set(  b As Boolean)
 				enable(b)
 			End Set
 		End Property
@@ -279,7 +279,7 @@ Namespace java.awt
 		''' @deprecated As of JDK version 1.1,
 		''' replaced by <code>setEnabled(boolean)</code>. 
 		<Obsolete("As of JDK version 1.1,")> _
-		Public Overridable Sub enable(ByVal b As Boolean)
+		Public Overridable Sub enable(  b As Boolean)
 			If b Then
 				enable()
 			Else
@@ -307,7 +307,7 @@ Namespace java.awt
 			Get
 				Return shortcut
 			End Get
-			Set(ByVal s As MenuShortcut)
+			Set(  s As MenuShortcut)
 				shortcut = s
 				Dim peer_Renamed As java.awt.peer.MenuItemPeer = CType(Me.peer, java.awt.peer.MenuItemPeer)
 				If peer_Renamed IsNot Nothing Then peer_Renamed.label = label_Renamed
@@ -330,7 +330,7 @@ Namespace java.awt
 	'     * Delete a matching MenuShortcut associated with this MenuItem.
 	'     * Used when iterating Menus.
 	'     
-		Friend Overridable Sub deleteShortcut(ByVal s As MenuShortcut)
+		Friend Overridable Sub deleteShortcut(  s As MenuShortcut)
 			If s.Equals(shortcut) Then
 				shortcut = Nothing
 				Dim peer_Renamed As java.awt.peer.MenuItemPeer = CType(Me.peer, java.awt.peer.MenuItemPeer)
@@ -344,7 +344,7 @@ Namespace java.awt
 	'     * in subclasses this method may do more than just posting
 	'     * an event.
 	'     
-		Friend Overridable Sub doMenuEvent(ByVal [when] As Long, ByVal modifiers As Integer)
+		Friend Overridable Sub doMenuEvent(  [when] As Long,   modifiers As Integer)
 			Toolkit.eventQueue.postEvent(New ActionEvent(Me, ActionEvent.ACTION_PERFORMED, actionCommand, [when], modifiers))
 		End Sub
 
@@ -373,7 +373,7 @@ Namespace java.awt
 	'     * keydown) and the item is enabled.
 	'     * Returns true if there is an associated shortcut.
 	'     
-		Friend Overridable Function handleShortcut(ByVal e As KeyEvent) As Boolean
+		Friend Overridable Function handleShortcut(  e As KeyEvent) As Boolean
 			Dim s As New MenuShortcut(e.keyCode, (e.modifiers And InputEvent.SHIFT_MASK) > 0)
 			Dim sE As New MenuShortcut(e.extendedKeyCode, (e.modifiers And InputEvent.SHIFT_MASK) > 0)
 			' Fix For 6185151: Menu shortcuts of all menuitems within a menu
@@ -390,7 +390,7 @@ Namespace java.awt
 			Return False
 		End Function
 
-		Friend Overridable Function getShortcutMenuItem(ByVal s As MenuShortcut) As MenuItem
+		Friend Overridable Function getShortcutMenuItem(  s As MenuShortcut) As MenuItem
 			Return If(s.Equals(shortcut), Me, Nothing)
 		End Function
 
@@ -409,7 +409,7 @@ Namespace java.awt
 		''' <seealso cref=         java.awt.MenuItem#disableEvents </seealso>
 		''' <seealso cref=         java.awt.Component#enableEvents
 		''' @since       JDK1.1 </seealso>
-		Protected Friend Sub enableEvents(ByVal eventsToEnable As Long)
+		Protected Friend Sub enableEvents(  eventsToEnable As Long)
 			eventMask = eventMask Or eventsToEnable
 			newEventsOnly = True
 		End Sub
@@ -423,7 +423,7 @@ Namespace java.awt
 		''' <seealso cref=         java.awt.MenuItem#enableEvents </seealso>
 		''' <seealso cref=         java.awt.Component#disableEvents
 		''' @since       JDK1.1 </seealso>
-		Protected Friend Sub disableEvents(ByVal eventsToDisable As Long)
+		Protected Friend Sub disableEvents(  eventsToDisable As Long)
 			eventMask = eventMask And Not eventsToDisable
 		End Sub
 
@@ -438,7 +438,7 @@ Namespace java.awt
 		''' <seealso cref=         java.awt.MenuItem#getActionCommand
 		''' @since       JDK1.1 </seealso>
 		Public Overridable Property actionCommand As String
-			Set(ByVal command As String)
+			Set(  command As String)
 				actionCommand = command
 			End Set
 			Get
@@ -468,7 +468,7 @@ Namespace java.awt
 		''' <seealso cref=        java.awt.event.ActionListener
 		''' @since      JDK1.1 </seealso>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Sub addActionListener(ByVal l As ActionListener)
+		Public Overridable Sub addActionListener(  l As ActionListener)
 			If l Is Nothing Then Return
 			actionListener = AWTEventMulticaster.add(actionListener, l)
 			newEventsOnly = True
@@ -488,7 +488,7 @@ Namespace java.awt
 		''' <seealso cref=        java.awt.event.ActionListener
 		''' @since      JDK1.1 </seealso>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Sub removeActionListener(ByVal l As ActionListener)
+		Public Overridable Sub removeActionListener(  l As ActionListener)
 			If l Is Nothing Then Return
 			actionListener = AWTEventMulticaster.remove(actionListener, l)
 		End Sub
@@ -545,7 +545,7 @@ Namespace java.awt
 		''' </exception>
 		''' <seealso cref= #getActionListeners
 		''' @since 1.3 </seealso>
-		Public Overridable Function getListeners(Of T As java.util.EventListener)(ByVal listenerType As [Class]) As T()
+		Public Overridable Function getListeners(Of T As java.util.EventListener)(  listenerType As [Class]) As T()
 			Dim l As java.util.EventListener = Nothing
 			If listenerType Is GetType(ActionListener) Then l = actionListener
 			Return AWTEventMulticaster.getListeners(l, listenerType)
@@ -565,12 +565,12 @@ Namespace java.awt
 		''' <param name="e"> the event </param>
 		''' <seealso cref=         java.awt.MenuItem#processActionEvent
 		''' @since       JDK1.1 </seealso>
-		Protected Friend Overrides Sub processEvent(ByVal e As AWTEvent)
+		Protected Friend Overrides Sub processEvent(  e As AWTEvent)
 			If TypeOf e Is ActionEvent Then processActionEvent(CType(e, ActionEvent))
 		End Sub
 
 		' REMIND: remove when filtering is done at lower level
-		Friend Overrides Function eventEnabled(ByVal e As AWTEvent) As Boolean
+		Friend Overrides Function eventEnabled(  e As AWTEvent) As Boolean
 			If e.id = ActionEvent.ACTION_PERFORMED Then
 				If (eventMask And AWTEvent.ACTION_EVENT_MASK) <> 0 OrElse actionListener IsNot Nothing Then Return True
 				Return False
@@ -599,7 +599,7 @@ Namespace java.awt
 		''' <seealso cref=         java.awt.event.ActionListener </seealso>
 		''' <seealso cref=         java.awt.MenuItem#enableEvents
 		''' @since       JDK1.1 </seealso>
-		Protected Friend Overridable Sub processActionEvent(ByVal e As ActionEvent)
+		Protected Friend Overridable Sub processActionEvent(  e As ActionEvent)
 			Dim listener As ActionListener = actionListener
 			If listener IsNot Nothing Then listener.actionPerformed(e)
 		End Sub
@@ -645,7 +645,7 @@ Namespace java.awt
 		''' </param>
 		''' <seealso cref= AWTEventMulticaster#save(ObjectOutputStream, String, EventListener) </seealso>
 		''' <seealso cref= #readObject(ObjectInputStream) </seealso>
-		Private Sub writeObject(ByVal s As java.io.ObjectOutputStream)
+		Private Sub writeObject(  s As java.io.ObjectOutputStream)
 		  s.defaultWriteObject()
 
 		  AWTEventMulticaster.save(s, actionListenerK, actionListener)
@@ -665,7 +665,7 @@ Namespace java.awt
 		''' <seealso cref= #removeActionListener(ActionListener) </seealso>
 		''' <seealso cref= #addActionListener(ActionListener) </seealso>
 		''' <seealso cref= #writeObject(ObjectOutputStream) </seealso>
-		Private Sub readObject(ByVal s As java.io.ObjectInputStream)
+		Private Sub readObject(  s As java.io.ObjectInputStream)
 		  ' HeadlessException will be thrown from MenuComponent's readObject
 		  s.defaultReadObject()
 
@@ -730,7 +730,7 @@ Namespace java.awt
 
 			Private ReadOnly outerInstance As MenuItem
 
-			Public Sub New(ByVal outerInstance As MenuItem)
+			Public Sub New(  outerInstance As MenuItem)
 				Me.outerInstance = outerInstance
 			End Sub
 
@@ -810,7 +810,7 @@ Namespace java.awt
 			''' Return a description of the specified action of the object.
 			''' </summary>
 			''' <param name="i"> zero-based index of the actions </param>
-			Public Overridable Function getAccessibleActionDescription(ByVal i As Integer) As String
+			Public Overridable Function getAccessibleActionDescription(  i As Integer) As String
 				If i = 0 Then
 					' [[[PENDING:  WDW -- need to provide a localized string]]]
 					Return "click"
@@ -824,7 +824,7 @@ Namespace java.awt
 			''' </summary>
 			''' <param name="i"> zero-based index of actions </param>
 			''' <returns> true if the action was performed; otherwise false. </returns>
-			Public Overridable Function doAccessibleAction(ByVal i As Integer) As Boolean
+			Public Overridable Function doAccessibleAction(  i As Integer) As Boolean
 				If i = 0 Then
 					' Simulate a button click
 					Toolkit.eventQueue.postEvent(New ActionEvent(MenuItem.this, ActionEvent.ACTION_PERFORMED, outerInstance.actionCommand, EventQueue.mostRecentEventTime, 0))
@@ -850,7 +850,7 @@ Namespace java.awt
 			''' Set the value of this object as a Number.
 			''' </summary>
 			''' <returns> True if the value was set. </returns>
-			Public Overridable Function setCurrentAccessibleValue(ByVal n As Number) As Boolean
+			Public Overridable Function setCurrentAccessibleValue(  n As Number) As Boolean
 				Return False
 			End Function
 

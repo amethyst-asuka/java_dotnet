@@ -42,7 +42,7 @@ Namespace java.util.function
 		''' </summary>
 		''' <param name="value"> the function argument </param>
 		''' <returns> the function result </returns>
-		Function applyAsInt(ByVal value As Double) As Integer
+		Function applyAsInt(  value As Double) As Integer
 	End Interface
 
 End Namespace

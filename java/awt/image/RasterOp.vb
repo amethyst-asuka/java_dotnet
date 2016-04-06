@@ -56,7 +56,7 @@ Namespace java.awt.image
 		''' <param name="dest"> the destination <code>WritableRaster</code> </param>
 		''' <returns> a <code>WritableRaster</code> that represents the result of
 		'''         the filtering operation. </returns>
-		Function filter(ByVal src As Raster, ByVal dest As WritableRaster) As WritableRaster
+		Function filter(  src As Raster,   dest As WritableRaster) As WritableRaster
 
 		''' <summary>
 		''' Returns the bounding box of the filtered destination Raster.
@@ -67,7 +67,7 @@ Namespace java.awt.image
 		''' <returns> a <code>Rectangle2D</code> that is the bounding box of
 		'''         the <code>Raster</code> resulting from the filtering
 		'''         operation. </returns>
-		Function getBounds2D(ByVal src As Raster) As java.awt.geom.Rectangle2D
+		Function getBounds2D(  src As Raster) As java.awt.geom.Rectangle2D
 
 		''' <summary>
 		''' Creates a zeroed destination Raster with the correct size and number of
@@ -78,7 +78,7 @@ Namespace java.awt.image
 		''' <param name="src"> the source <code>Raster</code> </param>
 		''' <returns> a <code>WritableRaster</code> that is compatible with
 		'''         <code>src</code> </returns>
-		Function createCompatibleDestRaster(ByVal src As Raster) As WritableRaster
+		Function createCompatibleDestRaster(  src As Raster) As WritableRaster
 
 		''' <summary>
 		''' Returns the location of the destination point given a
@@ -87,7 +87,7 @@ Namespace java.awt.image
 		''' <param name="srcPt"> the source <code>Point2D</code> </param>
 		''' <param name="dstPt"> the destination <code>Point2D</code> </param>
 		''' <returns> the location of the destination point. </returns>
-		Function getPoint2D(ByVal srcPt As java.awt.geom.Point2D, ByVal dstPt As java.awt.geom.Point2D) As java.awt.geom.Point2D
+		Function getPoint2D(  srcPt As java.awt.geom.Point2D,   dstPt As java.awt.geom.Point2D) As java.awt.geom.Point2D
 
 		''' <summary>
 		''' Returns the rendering hints for this RasterOp.  Returns

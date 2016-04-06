@@ -47,7 +47,7 @@ Namespace java.rmi.activation
 		''' </summary>
 		''' <param name="s"> the detail message
 		''' @since 1.2 </param>
-		Public Sub New(ByVal s As String)
+		Public Sub New(  s As String)
 			MyBase.New(s)
 		End Sub
 
@@ -58,7 +58,7 @@ Namespace java.rmi.activation
 		''' <param name="s"> the detail message </param>
 		''' <param name="ex"> the nested exception
 		''' @since 1.2 </param>
-		Public Sub New(ByVal s As String, ByVal ex As Exception)
+		Public Sub New(  s As String,   ex As Exception)
 			MyBase.New(s, ex)
 		End Sub
 	End Class

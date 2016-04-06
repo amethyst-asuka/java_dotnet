@@ -45,7 +45,7 @@ Namespace java.beans.beancontext
 		''' from which this service is being revoked </param>
 		''' <param name="sc"> the service that is being revoked </param>
 		''' <param name="invalidate"> <code>true</code> for immediate revocation </param>
-		Public Sub New(ByVal bcs As java.beans.beancontext.BeanContextServices, ByVal sc As [Class], ByVal invalidate As Boolean)
+		Public Sub New(  bcs As java.beans.beancontext.BeanContextServices,   sc As [Class],   invalidate As Boolean)
 			MyBase.New(CType(bcs, BeanContext))
 
 			serviceClass = sc
@@ -78,7 +78,7 @@ Namespace java.beans.beancontext
 		''' <param name="service"> the service of interest (should be non-null) </param>
 		''' <returns> <code>true</code> if the service being revoked is of the
 		''' same class as the specified service </returns>
-		Public Overridable Function isServiceClass(ByVal service As [Class]) As Boolean
+		Public Overridable Function isServiceClass(  service As [Class]) As Boolean
 			Return serviceClass.Equals(service)
 		End Function
 

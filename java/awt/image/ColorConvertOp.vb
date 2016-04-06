@@ -85,7 +85,7 @@ Namespace java.awt.image
 		''' cannot be specified as null. </summary>
 		''' <param name="hints"> the <code>RenderingHints</code> object used to control
 		'''        the color conversion, or <code>null</code> </param>
-		Public Sub New(ByVal hints As java.awt.RenderingHints)
+		Public Sub New(  hints As java.awt.RenderingHints)
 			profileList = New ICC_Profile (){} ' 0 length list
 			Me.hints = hints
 		End Sub
@@ -105,7 +105,7 @@ Namespace java.awt.image
 		''' <param name="hints"> the <code>RenderingHints</code> object used to control
 		'''        the color conversion, or <code>null</code> </param>
 		''' <exception cref="NullPointerException"> if cspace is null </exception>
-		Public Sub New(ByVal cspace As ColorSpace, ByVal hints As java.awt.RenderingHints)
+		Public Sub New(  cspace As ColorSpace,   hints As java.awt.RenderingHints)
 			If cspace Is Nothing Then Throw New NullPointerException("ColorSpace cannot be null")
 			If TypeOf cspace Is ICC_ColorSpace Then
 				profileList = New ICC_Profile (0){} ' 1 profile in the list
@@ -135,7 +135,7 @@ Namespace java.awt.image
 		''' <param name="hints"> the <code>RenderingHints</code> object used to control
 		'''        the color conversion, or <code>null</code> </param>
 		''' <exception cref="NullPointerException"> if either srcCspace or dstCspace is null </exception>
-		Public Sub New(ByVal srcCspace As ColorSpace, ByVal dstCspace As ColorSpace, ByVal hints As java.awt.RenderingHints)
+		Public Sub New(  srcCspace As ColorSpace,   dstCspace As ColorSpace,   hints As java.awt.RenderingHints)
 			If (srcCspace Is Nothing) OrElse (dstCspace Is Nothing) Then Throw New NullPointerException("ColorSpaces cannot be null")
 			If (TypeOf srcCspace Is ICC_ColorSpace) AndAlso (TypeOf dstCspace Is ICC_ColorSpace) Then
 				profileList = New ICC_Profile (1){} ' 2 profiles in the list
@@ -180,7 +180,7 @@ Namespace java.awt.image
 		 ''' <exception cref="IllegalArgumentException"> when the profile sequence does not
 		 '''             specify a well-defined color conversion </exception>
 		 ''' <exception cref="NullPointerException"> if profiles is null </exception>
-		Public Sub New(ByVal profiles As ICC_Profile(), ByVal hints As java.awt.RenderingHints)
+		Public Sub New(  profiles As ICC_Profile(),   hints As java.awt.RenderingHints)
 			If profiles Is Nothing Then Throw New NullPointerException("Profiles cannot be null")
 			gotProfiles = True
 			profileList = New ICC_Profile(profiles.Length - 1){}
@@ -225,7 +225,7 @@ Namespace java.awt.image
 		''' <exception cref="IllegalArgumentException"> if dest is null and this op was
 		'''             constructed using the constructor which takes only a
 		'''             RenderingHints argument, since the operation is ill defined. </exception>
-		Public Function filter(ByVal src As BufferedImage, ByVal dest As BufferedImage) As BufferedImage Implements BufferedImageOp.filter
+		Public Function filter(  src As BufferedImage,   dest As BufferedImage) As BufferedImage Implements BufferedImageOp.filter
 			Dim srcColorSpace, destColorSpace As ColorSpace
 			Dim savdest As BufferedImage = Nothing
 
@@ -266,7 +266,7 @@ Namespace java.awt.image
 			End If
 		End Function
 
-		Private Function ICCBIFilter(ByVal src As BufferedImage, ByVal srcColorSpace As ColorSpace, ByVal dest As BufferedImage, ByVal destColorSpace As ColorSpace) As BufferedImage
+		Private Function ICCBIFilter(  src As BufferedImage,   srcColorSpace As ColorSpace,   dest As BufferedImage,   destColorSpace As ColorSpace) As BufferedImage
 		Dim nProfiles As Integer = profileList.Length
 		Dim srcProfile As ICC_Profile = Nothing, destProfile As ICC_Profile = Nothing
 
@@ -315,7 +315,7 @@ Namespace java.awt.image
 			Return dest
 		End Function
 
-		Private Sub updateBITransform(ByVal srcProfile As ICC_Profile, ByVal destProfile As ICC_Profile)
+		Private Sub updateBITransform(  srcProfile As ICC_Profile,   destProfile As ICC_Profile)
 			Dim theProfiles As ICC_Profile()
 			Dim i1, nProfiles, nTransforms, whichTrans, renderState As Integer
 			Dim theTransforms As sun.java2d.cmm.ColorTransform()
@@ -416,7 +416,7 @@ Namespace java.awt.image
 		'''             color spaces are undefined, or this op was constructed
 		'''             with one of the constructors that applies only to
 		'''             operations on BufferedImages. </exception>
-		Public Function filter(ByVal src As Raster, ByVal dest As WritableRaster) As WritableRaster Implements RasterOp.filter
+		Public Function filter(  src As Raster,   dest As WritableRaster) As WritableRaster Implements RasterOp.filter
 
 			If CSList IsNot Nothing Then Return nonICCRasterFilter(src, dest)
 			Dim nProfiles As Integer = profileList.Length
@@ -498,7 +498,7 @@ Namespace java.awt.image
 		''' <param name="src"> the source <code>BufferedImage</code> </param>
 		''' <returns> a <code>Rectangle2D</code> that is the bounding box
 		'''         of the destination, given the specified <code>src</code> </returns>
-		Public Function getBounds2D(ByVal src As BufferedImage) As java.awt.geom.Rectangle2D Implements BufferedImageOp.getBounds2D
+		Public Function getBounds2D(  src As BufferedImage) As java.awt.geom.Rectangle2D Implements BufferedImageOp.getBounds2D
 			Return getBounds2D(src.raster)
 		End Function
 
@@ -509,7 +509,7 @@ Namespace java.awt.image
 		''' <param name="src"> the source <code>Raster</code> </param>
 		''' <returns> a <code>Rectangle2D</code> that is the bounding box
 		'''         of the destination, given the specified <code>src</code> </returns>
-		Public Function getBounds2D(ByVal src As Raster) As java.awt.geom.Rectangle2D Implements RasterOp.getBounds2D
+		Public Function getBounds2D(  src As Raster) As java.awt.geom.Rectangle2D Implements RasterOp.getBounds2D
 	'                return new Rectangle (src.getXOffset(),
 	'                              src.getYOffset(),
 	'                              src.getWidth(), src.getHeight()); 
@@ -528,7 +528,7 @@ Namespace java.awt.image
 		'''         <code>null</code> and this <code>ColorConvertOp</code> was
 		'''         created without any <code>ICC_Profile</code> or
 		'''         <code>ColorSpace</code> defined for the destination </exception>
-		Public Overridable Function createCompatibleDestImage(ByVal src As BufferedImage, ByVal destCM As ColorModel) As BufferedImage Implements BufferedImageOp.createCompatibleDestImage
+		Public Overridable Function createCompatibleDestImage(  src As BufferedImage,   destCM As ColorModel) As BufferedImage Implements BufferedImageOp.createCompatibleDestImage
 			Dim cs As ColorSpace = Nothing
 			If destCM Is Nothing Then
 				If CSList Is Nothing Then
@@ -546,7 +546,7 @@ Namespace java.awt.image
 			Return createCompatibleDestImage(src, destCM, cs)
 		End Function
 
-		Private Function createCompatibleDestImage(ByVal src As BufferedImage, ByVal destCM As ColorModel, ByVal destCS As ColorSpace) As BufferedImage
+		Private Function createCompatibleDestImage(  src As BufferedImage,   destCM As ColorModel,   destCS As ColorSpace) As BufferedImage
 			Dim image_Renamed As BufferedImage
 			If destCM Is Nothing Then
 				Dim srcCM As ColorModel = src.colorModel
@@ -575,7 +575,7 @@ Namespace java.awt.image
 		''' <exception cref="IllegalArgumentException"> if this <code>ColorConvertOp</code>
 		'''         was created without sufficient information to define the
 		'''         <code>dst</code> and <code>src</code> color spaces </exception>
-		Public Overridable Function createCompatibleDestRaster(ByVal src As Raster) As WritableRaster Implements RasterOp.createCompatibleDestRaster
+		Public Overridable Function createCompatibleDestRaster(  src As Raster) As WritableRaster Implements RasterOp.createCompatibleDestRaster
 			Dim ncomponents As Integer
 
 			If CSList IsNot Nothing Then
@@ -603,7 +603,7 @@ Namespace java.awt.image
 		''' <param name="dstPt"> the destination <code>Point2D</code> </param>
 		''' <returns> <code>dstPt</code> after setting its location to be
 		'''         the same as <code>srcPt</code> </returns>
-		Public Function getPoint2D(ByVal srcPt As java.awt.geom.Point2D, ByVal dstPt As java.awt.geom.Point2D) As java.awt.geom.Point2D Implements BufferedImageOp.getPoint2D, RasterOp.getPoint2D
+		Public Function getPoint2D(  srcPt As java.awt.geom.Point2D,   dstPt As java.awt.geom.Point2D) As java.awt.geom.Point2D Implements BufferedImageOp.getPoint2D, RasterOp.getPoint2D
 			If dstPt Is Nothing Then dstPt = New java.awt.geom.Point2D.Float
 			dstPt.locationion(srcPt.x, srcPt.y)
 
@@ -614,7 +614,7 @@ Namespace java.awt.image
 		''' <summary>
 		''' Returns the RenderingIntent from the specified ICC Profile.
 		''' </summary>
-		Private Function getRenderingIntent(ByVal profile As ICC_Profile) As Integer
+		Private Function getRenderingIntent(  profile As ICC_Profile) As Integer
 			Dim header As SByte() = profile.getData(ICC_Profile.icSigHead)
 			Dim index As Integer = ICC_Profile.icHdrRenderingIntent
 
@@ -638,7 +638,7 @@ Namespace java.awt.image
 			End Get
 		End Property
 
-		Private Function nonICCBIFilter(ByVal src As BufferedImage, ByVal srcColorSpace As ColorSpace, ByVal dst As BufferedImage, ByVal dstColorSpace As ColorSpace) As BufferedImage
+		Private Function nonICCBIFilter(  src As BufferedImage,   srcColorSpace As ColorSpace,   dst As BufferedImage,   dstColorSpace As ColorSpace) As BufferedImage
 
 			Dim w As Integer = src.width
 			Dim h As Integer = src.height
@@ -815,7 +815,7 @@ Namespace java.awt.image
 
 	'     color convert a Raster - handles byte, ushort, int, short, float,
 	'       or double transferTypes 
-		Private Function nonICCRasterFilter(ByVal src As Raster, ByVal dst As WritableRaster) As WritableRaster
+		Private Function nonICCRasterFilter(  src As Raster,   dst As WritableRaster) As WritableRaster
 
 			If CSList.Length <> 2 Then Throw New IllegalArgumentException("Destination ColorSpace is undefined")
 			If src.numBands <> CSList(0).numComponents Then Throw New IllegalArgumentException("Numbers of source Raster bands and source color space " & "components do not match")
@@ -908,7 +908,7 @@ Namespace java.awt.image
 			Return dst
 		End Function
 
-		Private Sub getMinMaxValsFromProfiles(ByVal srcProfile As ICC_Profile, ByVal dstProfile As ICC_Profile)
+		Private Sub getMinMaxValsFromProfiles(  srcProfile As ICC_Profile,   dstProfile As ICC_Profile)
 			Dim type As Integer = srcProfile.colorSpaceType
 			Dim nc As Integer = srcProfile.numComponents
 			srcMinVals = New Single(nc - 1){}
@@ -921,7 +921,7 @@ Namespace java.awt.image
 			minMaxMax(type, nc, dstMinVals, dstMaxVals)
 		End Sub
 
-		Private Sub setMinMax(ByVal type As Integer, ByVal nc As Integer, ByVal minVals As Single(), ByVal maxVals As Single())
+		Private Sub setMinMax(  type As Integer,   nc As Integer,   minVals As Single(),   maxVals As Single())
 			If type = ColorSpace.TYPE_Lab Then
 				minVals(0) = 0.0f ' L
 				maxVals(0) = 100.0f
@@ -944,7 +944,7 @@ Namespace java.awt.image
 			End If
 		End Sub
 
-		Private Sub getMinMaxValsFromColorSpaces(ByVal srcCspace As ColorSpace, ByVal dstCspace As ColorSpace)
+		Private Sub getMinMaxValsFromColorSpaces(  srcCspace As ColorSpace,   dstCspace As ColorSpace)
 			Dim nc As Integer = srcCspace.numComponents
 			srcMinVals = New Single(nc - 1){}
 			srcMaxVals = New Single(nc - 1){}

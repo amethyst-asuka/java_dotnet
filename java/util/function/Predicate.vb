@@ -43,7 +43,7 @@ Namespace java.util.function
 		''' <param name="t"> the input argument </param>
 		''' <returns> {@code true} if the input argument matches the predicate,
 		''' otherwise {@code false} </returns>
-		Function test(ByVal t As T) As Boolean
+		Function test(  t As T) As Boolean
 
 		''' <summary>
 		''' Returns a composed predicate that represents a short-circuiting logical
@@ -61,7 +61,7 @@ Namespace java.util.function
 		''' AND of this predicate and the {@code other} predicate </returns>
 		''' <exception cref="NullPointerException"> if other is null </exception>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		default Function [and](Of T1)(ByVal other As Predicate(Of T1)) As Predicate(Of T)
+		default Function [and](Of T1)(  other As Predicate(Of T1)) As Predicate(Of T)
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 			java.util.Objects.requireNonNull(other);
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
@@ -93,7 +93,7 @@ Namespace java.util.function
 		''' OR of this predicate and the {@code other} predicate </returns>
 		''' <exception cref="NullPointerException"> if other is null </exception>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		default Function [or](Of T1)(ByVal other As Predicate(Of T1)) As Predicate(Of T)
+		default Function [or](Of T1)(  other As Predicate(Of T1)) As Predicate(Of T)
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 			java.util.Objects.requireNonNull(other);
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
@@ -108,8 +108,8 @@ Namespace java.util.function
 		'''               which may be {@code null} </param>
 		''' <returns> a predicate that tests if two arguments are equal according
 		''' to <seealso cref="Objects#equals(Object, Object)"/> </returns>
-		Shared Function isEqual(Of T)(ByVal targetRef As Object) As Predicate(Of T)
-			Sub [New](Nothing == ByVal targetRef As )
+		Shared Function isEqual(Of T)(  targetRef As Object) As Predicate(Of T)
+			Sub [New](Nothing ==   targetRef As )
 	End Interface
 
 End Namespace

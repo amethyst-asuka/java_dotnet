@@ -41,9 +41,9 @@ Namespace java.text
 		Private Class FieldDelegateAnonymousInnerClassHelper
 			Implements FieldDelegate
 
-			Public Overridable Sub formatted(ByVal attr As Format.Field, ByVal value As Object, ByVal start As Integer, ByVal [end] As Integer, ByVal buffer As StringBuffer)
+			Public Overridable Sub formatted(  attr As Format.Field,   value As Object,   start As Integer,   [end] As Integer,   buffer As StringBuffer)
 			End Sub
-			Public Overridable Sub formatted(ByVal fieldID As Integer, ByVal attr As Format.Field, ByVal value As Object, ByVal start As Integer, ByVal [end] As Integer, ByVal buffer As StringBuffer)
+			Public Overridable Sub formatted(  fieldID As Integer,   attr As Format.Field,   value As Object,   start As Integer,   [end] As Integer,   buffer As StringBuffer)
 			End Sub
 		End Class
 

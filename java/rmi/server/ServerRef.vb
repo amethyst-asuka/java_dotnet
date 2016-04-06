@@ -54,7 +54,7 @@ Namespace java.rmi.server
 		''' <exception cref="RemoteException"> if an exception occurs attempting
 		''' to export the object (e.g., stub class could not be found)
 		''' @since JDK1.1 </exception>
-		Function exportObject(ByVal obj As Remote, ByVal data As Object) As RemoteStub
+		Function exportObject(  obj As Remote,   data As Object) As RemoteStub
 
 		''' <summary>
 		''' Returns the hostname of the current client.  When called from a

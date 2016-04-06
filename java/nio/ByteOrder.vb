@@ -38,7 +38,7 @@ Namespace java.nio
 
 		Private name As String
 
-		Private Sub New(ByVal name As String)
+		Private Sub New(  name As String)
 			Me.name = name
 		End Sub
 

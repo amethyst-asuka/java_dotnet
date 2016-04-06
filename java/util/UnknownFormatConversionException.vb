@@ -46,7 +46,7 @@ Namespace java.util
 		''' </summary>
 		''' <param name="s">
 		'''         Unknown conversion </param>
-		Public Sub New(ByVal s As String)
+		Public Sub New(  s As String)
 			If s Is Nothing Then Throw New NullPointerException
 			Me.s = s
 		End Sub

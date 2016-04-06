@@ -48,7 +48,7 @@ Namespace java.awt.im.spi
 		''' and dispatches it to the client component. For arguments,
 		''' see <seealso cref="java.awt.event.InputMethodEvent#InputMethodEvent"/>.
 		''' </summary>
-		Sub dispatchInputMethodEvent(ByVal id As Integer, ByVal text As java.text.AttributedCharacterIterator, ByVal committedCharacterCount As Integer, ByVal caret As java.awt.font.TextHitInfo, ByVal visiblePosition As java.awt.font.TextHitInfo)
+		Sub dispatchInputMethodEvent(  id As Integer,   text As java.text.AttributedCharacterIterator,   committedCharacterCount As Integer,   caret As java.awt.font.TextHitInfo,   visiblePosition As java.awt.font.TextHitInfo)
 
 		''' <summary>
 		''' Creates a top-level window for use by the input method.
@@ -79,7 +79,7 @@ Namespace java.awt.im.spi
 		''' <returns> a window with special characteristics for use by input methods </returns>
 		''' <exception cref="HeadlessException"> if <code>GraphicsEnvironment.isHeadless
 		'''              </code> returns <code>true</code> </exception>
-		Function createInputMethodWindow(ByVal title As String, ByVal attachToInputContext As Boolean) As java.awt.Window
+		Function createInputMethodWindow(  title As String,   attachToInputContext As Boolean) As java.awt.Window
 
 		''' <summary>
 		''' Creates a top-level Swing JFrame for use by the input method.
@@ -112,7 +112,7 @@ Namespace java.awt.im.spi
 		'''              </code> returns <code>true</code>
 		''' 
 		''' @since 1.4 </exception>
-		Function createInputMethodJFrame(ByVal title As String, ByVal attachToInputContext As Boolean) As javax.swing.JFrame
+		Function createInputMethodJFrame(  title As String,   attachToInputContext As Boolean) As javax.swing.JFrame
 
 		''' <summary>
 		''' Enables or disables notification of the current client window's
@@ -126,7 +126,7 @@ Namespace java.awt.im.spi
 		''' <param name="inputMethod"> the input method for which notifications are
 		''' enabled or disabled </param>
 		''' <param name="enable"> true to enable, false to disable </param>
-		Sub enableClientWindowNotification(ByVal inputMethod As InputMethod, ByVal enable As Boolean)
+		Sub enableClientWindowNotification(  inputMethod As InputMethod,   enable As Boolean)
 	End Interface
 
 End Namespace

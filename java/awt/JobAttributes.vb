@@ -89,7 +89,7 @@ Namespace java.awt
 			''' </summary>
 			Public Shared ReadOnly SELECTION As New DefaultSelectionType(I_SELECTION)
 
-			Private Sub New(ByVal type As Integer)
+			Private Sub New(  type As Integer)
 				MyBase.New(type, NAMES)
 			End Sub
 		End Class
@@ -117,7 +117,7 @@ Namespace java.awt
 			''' </summary>
 			Public Shared ReadOnly PRINTER As New DestinationType(I_PRINTER)
 
-			Private Sub New(ByVal type As Integer)
+			Private Sub New(  type As Integer)
 				MyBase.New(type, NAMES)
 			End Sub
 		End Class
@@ -151,7 +151,7 @@ Namespace java.awt
 			''' </summary>
 			Public Shared ReadOnly NONE As New DialogType(I_NONE)
 
-			Private Sub New(ByVal type As Integer)
+			Private Sub New(  type As Integer)
 				MyBase.New(type, NAMES)
 			End Sub
 		End Class
@@ -181,7 +181,7 @@ Namespace java.awt
 			''' </summary>
 			Public Shared ReadOnly SEPARATE_DOCUMENTS_UNCOLLATED_COPIES As New MultipleDocumentHandlingType(I_SEPARATE_DOCUMENTS_UNCOLLATED_COPIES)
 
-			Private Sub New(ByVal type As Integer)
+			Private Sub New(  type As Integer)
 				MyBase.New(type, NAMES)
 			End Sub
 		End Class
@@ -223,7 +223,7 @@ Namespace java.awt
 			''' </summary>
 			Public Shared ReadOnly TWO_SIDED_SHORT_EDGE As New SidesType(I_TWO_SIDED_SHORT_EDGE)
 
-			Private Sub New(ByVal type As Integer)
+			Private Sub New(  type As Integer)
 				MyBase.New(type, NAMES)
 			End Sub
 		End Class
@@ -272,7 +272,7 @@ Namespace java.awt
 		''' of the supplied <code>JobAttributes</code>.
 		''' </summary>
 		''' <param name="obj"> the <code>JobAttributes</code> to copy </param>
-		Public Sub New(ByVal obj As JobAttributes)
+		Public Sub New(  obj As JobAttributes)
 			[set](obj)
 		End Sub
 
@@ -317,7 +317,7 @@ Namespace java.awt
 		'''          <code>SidesType.TWO_SIDED_SHORT_EDGE</code> </param>
 		''' <exception cref="IllegalArgumentException"> if one or more of the above
 		'''          conditions is violated </exception>
-		Public Sub New(ByVal copies As Integer, ByVal defaultSelection As DefaultSelectionType, ByVal destination As DestinationType, ByVal dialog_Renamed As DialogType, ByVal fileName As String, ByVal maxPage As Integer, ByVal minPage As Integer, ByVal multipleDocumentHandling As MultipleDocumentHandlingType, ByVal pageRanges As Integer()(), ByVal printer As String, ByVal sides As SidesType)
+		Public Sub New(  copies As Integer,   defaultSelection As DefaultSelectionType,   destination As DestinationType,   dialog_Renamed As DialogType,   fileName As String,   maxPage As Integer,   minPage As Integer,   multipleDocumentHandling As MultipleDocumentHandlingType,   pageRanges As Integer()(),   printer As String,   sides As SidesType)
 			copies = copies
 			defaultSelection = defaultSelection
 			destination = destination
@@ -350,7 +350,7 @@ Namespace java.awt
 		''' the same values as the attributes of obj.
 		''' </summary>
 		''' <param name="obj"> the <code>JobAttributes</code> to copy </param>
-		Public Sub [set](ByVal obj As JobAttributes)
+		Public Sub [set](  obj As JobAttributes)
 			copies = obj.copies
 			defaultSelection = obj.defaultSelection
 			destination = obj.destination
@@ -379,7 +379,7 @@ Namespace java.awt
 			Get
 				Return copies
 			End Get
-			Set(ByVal copies As Integer)
+			Set(  copies As Integer)
 				If copies <= 0 Then Throw New IllegalArgumentException("Invalid value for attribute " & "copies")
 				Me.copies = copies
 			End Set
@@ -406,7 +406,7 @@ Namespace java.awt
 			Get
 				Return defaultSelection
 			End Get
-			Set(ByVal defaultSelection As DefaultSelectionType)
+			Set(  defaultSelection As DefaultSelectionType)
 				If defaultSelection Is Nothing Then Throw New IllegalArgumentException("Invalid value for attribute " & "defaultSelection")
 				Me.defaultSelection = defaultSelection
 			End Set
@@ -423,7 +423,7 @@ Namespace java.awt
 			Get
 				Return destination
 			End Get
-			Set(ByVal destination As DestinationType)
+			Set(  destination As DestinationType)
 				If destination Is Nothing Then Throw New IllegalArgumentException("Invalid value for attribute " & "destination")
 				Me.destination = destination
 			End Set
@@ -447,7 +447,7 @@ Namespace java.awt
 			Get
 				Return dialog_Renamed
 			End Get
-			Set(ByVal dialog_Renamed As DialogType)
+			Set(  dialog_Renamed As DialogType)
 				If dialog_Renamed Is Nothing Then Throw New IllegalArgumentException("Invalid value for attribute " & "dialog")
 				Me.dialog_Renamed = dialog_Renamed
 			End Set
@@ -463,7 +463,7 @@ Namespace java.awt
 			Get
 				Return fileName
 			End Get
-			Set(ByVal fileName As String)
+			Set(  fileName As String)
 				Me.fileName = fileName
 			End Set
 		End Property
@@ -493,7 +493,7 @@ Namespace java.awt
 					Return minPage
 				End If
 			End Get
-			Set(ByVal fromPage As Integer)
+			Set(  fromPage As Integer)
 				If fromPage <= 0 OrElse (toPage <> 0 AndAlso fromPage > toPage) OrElse fromPage < minPage OrElse fromPage > maxPage Then Throw New IllegalArgumentException("Invalid value for attribute " & "fromPage")
 				Me.fromPage = fromPage
 			End Set
@@ -512,7 +512,7 @@ Namespace java.awt
 			Get
 				Return maxPage
 			End Get
-			Set(ByVal maxPage As Integer)
+			Set(  maxPage As Integer)
 				If maxPage <= 0 OrElse maxPage < minPage Then Throw New IllegalArgumentException("Invalid value for attribute " & "maxPage")
 				Me.maxPage = maxPage
 			End Set
@@ -531,7 +531,7 @@ Namespace java.awt
 			Get
 				Return minPage
 			End Get
-			Set(ByVal minPage As Integer)
+			Set(  minPage As Integer)
 				If minPage <= 0 OrElse minPage > maxPage Then Throw New IllegalArgumentException("Invalid value for attribute " & "minPage")
 				Me.minPage = minPage
 			End Set
@@ -551,7 +551,7 @@ Namespace java.awt
 			Get
 				Return multipleDocumentHandling
 			End Get
-			Set(ByVal multipleDocumentHandling As MultipleDocumentHandlingType)
+			Set(  multipleDocumentHandling As MultipleDocumentHandlingType)
 				If multipleDocumentHandling Is Nothing Then Throw New IllegalArgumentException("Invalid value for attribute " & "multipleDocumentHandling")
 				Me.multipleDocumentHandling = multipleDocumentHandling
 			End Set
@@ -605,7 +605,7 @@ Namespace java.awt
 					Return New Integer() { New Integer() { minPage_Renamed, minPage_Renamed } }
 				End If
 			End Get
-			Set(ByVal pageRanges As Integer()())
+			Set(  pageRanges As Integer()())
 				Dim xcp As String = "Invalid value for attribute pageRanges"
 				Dim first As Integer = 0
 				Dim last As Integer = 0
@@ -644,7 +644,7 @@ Namespace java.awt
 			Get
 				Return printer
 			End Get
-			Set(ByVal printer As String)
+			Set(  printer As String)
 				Me.printer = printer
 			End Set
 		End Property
@@ -672,7 +672,7 @@ Namespace java.awt
 			Get
 				Return sides
 			End Get
-			Set(ByVal sides As SidesType)
+			Set(  sides As SidesType)
 				If sides Is Nothing Then Throw New IllegalArgumentException("Invalid value for attribute " & "sides")
 				Me.sides = sides
 			End Set
@@ -712,7 +712,7 @@ Namespace java.awt
 					Return minPage
 				End If
 			End Get
-			Set(ByVal toPage As Integer)
+			Set(  toPage As Integer)
 				If toPage <= 0 OrElse (fromPage <> 0 AndAlso toPage < fromPage) OrElse toPage < minPage OrElse toPage > maxPage Then Throw New IllegalArgumentException("Invalid value for attribute " & "toPage")
 				Me.toPage = toPage
 			End Set
@@ -731,7 +731,7 @@ Namespace java.awt
 		''' <param name="obj"> the object whose equality will be checked. </param>
 		''' <returns>  whether obj is equal to this JobAttribute according to the
 		'''          above criteria. </returns>
-		Public Overrides Function Equals(ByVal obj As Object) As Boolean
+		Public Overrides Function Equals(  obj As Object) As Boolean
 			If Not(TypeOf obj Is JobAttributes) Then Return False
 			Dim rhs As JobAttributes = CType(obj, JobAttributes)
 
@@ -809,7 +809,7 @@ End Namespace
 '	arrays with inner arrays of the same length.
 '----------------------------------------------------------------------------------------
 Partial Friend Class RectangularArrays
-    Friend Shared Function ReturnRectangularIntegerArray(ByVal Size1 As Integer, ByVal Size2 As Integer) As Integer()()
+    Friend Shared Function ReturnRectangularIntegerArray(  Size1 As Integer,   Size2 As Integer) As Integer()()
         Dim Array As Integer()() = New Integer(Size1 - 1)() {}
         For Array1 As Integer = 0 To Size1 - 1
             Array(Array1) = New Integer(Size2 - 1) {}

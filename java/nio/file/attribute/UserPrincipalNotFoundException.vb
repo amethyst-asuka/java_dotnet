@@ -45,7 +45,7 @@ Namespace java.nio.file.attribute
 		''' </summary>
 		''' <param name="name">
 		'''          the principal name; may be {@code null} </param>
-		Public Sub New(ByVal name As String)
+		Public Sub New(  name As String)
 			MyBase.New()
 			Me.name = name
 		End Sub

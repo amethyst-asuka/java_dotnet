@@ -95,7 +95,7 @@ Namespace java.awt.peer
 		''' <seealso cref= EmbeddedFrame#setBoundsPrivate(int, int, int, int) </seealso>
 		' TODO: This is only used in EmbeddedFrame, and should probably be moved
 		' into an EmbeddedFramePeer which would extend FramePeer
-		Sub setBoundsPrivate(ByVal x As Integer, ByVal y As Integer, ByVal width As Integer, ByVal height As Integer)
+		Sub setBoundsPrivate(  x As Integer,   y As Integer,   width As Integer,   height As Integer)
 
 		''' <summary>
 		''' Returns the size and location for embedded frames. (On embedded frames,
@@ -113,7 +113,7 @@ Namespace java.awt.peer
 		''' Requests the peer to emulate window activation.
 		''' </summary>
 		''' <param name="activate"> activate or deactivate the window </param>
-		Sub emulateActivation(ByVal activate As Boolean)
+		Sub emulateActivation(  activate As Boolean)
 	End Interface
 
 End Namespace

@@ -64,10 +64,10 @@ Namespace java.lang
 		''' <exception cref="NullPointerException"> if the specified action is null
 		''' @since 1.8 </exception>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		default Sub forEach(Of T1)(ByVal action As java.util.function.Consumer(Of T1))
+		default Sub forEach(Of T1)(  action As java.util.function.Consumer(Of T1))
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 			java.util.Objects.requireNonNull(action);
-			Sub [New](T t : ByVal [Me] As )
+			Sub [New](T t :   [Me] As )
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 				action.accept(t);
 

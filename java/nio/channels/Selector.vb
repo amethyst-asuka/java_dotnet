@@ -316,7 +316,7 @@ Namespace java.nio.channels
 		''' </exception>
 		''' <exception cref="IllegalArgumentException">
 		'''          If the value of the timeout argument is negative </exception>
-		Public MustOverride Function [select](ByVal timeout As Long) As Integer
+		Public MustOverride Function [select](  timeout As Long) As Integer
 
 		''' <summary>
 		''' Selects a set of keys whose corresponding channels are ready for I/O

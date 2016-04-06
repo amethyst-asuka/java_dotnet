@@ -141,7 +141,7 @@ Namespace java.security
 		''' "{@docRoot}/../technotes/guides/security/StandardNames.html#KeyPairGenerator">
 		''' Java Cryptography Architecture Standard Algorithm Name Documentation</a>
 		''' for information about standard algorithm names. </param>
-		Protected Friend Sub New(ByVal algorithm As String)
+		Protected Friend Sub New(  algorithm As String)
 			Me.algorithm = algorithm
 		End Sub
 
@@ -159,7 +159,7 @@ Namespace java.security
 			End Get
 		End Property
 
-		Private Shared Function getInstance(ByVal instance As sun.security.jca.GetInstance.Instance, ByVal algorithm As String) As KeyPairGenerator
+		Private Shared Function getInstance(  instance As sun.security.jca.GetInstance.Instance,   algorithm As String) As KeyPairGenerator
 			Dim kpg As KeyPairGenerator
 			If TypeOf instance.impl Is KeyPairGenerator Then
 				kpg = CType(instance.impl, KeyPairGenerator)
@@ -200,7 +200,7 @@ Namespace java.security
 		'''          specified algorithm.
 		''' </exception>
 		''' <seealso cref= Provider </seealso>
-		Public Shared Function getInstance(ByVal algorithm As String) As KeyPairGenerator
+		Public Shared Function getInstance(  algorithm As String) As KeyPairGenerator
 			Dim list As List(Of java.security.Provider.Service) = GetInstance.getServices("KeyPairGenerator", algorithm)
 			Dim t As [Iterator](Of java.security.Provider.Service) = list.GetEnumerator()
 			If t.hasNext() = False Then Throw New NoSuchAlgorithmException(algorithm & " KeyPairGenerator not available")
@@ -255,7 +255,7 @@ Namespace java.security
 		'''          or empty.
 		''' </exception>
 		''' <seealso cref= Provider </seealso>
-		Public Shared Function getInstance(ByVal algorithm As String, ByVal provider_Renamed As String) As KeyPairGenerator
+		Public Shared Function getInstance(  algorithm As String,   provider_Renamed As String) As KeyPairGenerator
 			Dim instance_Renamed As sun.security.jca.GetInstance.Instance = GetInstance.getInstance("KeyPairGenerator", GetType(KeyPairGeneratorSpi), algorithm, provider_Renamed)
 			Return getInstance(instance_Renamed, algorithm)
 		End Function
@@ -288,7 +288,7 @@ Namespace java.security
 		''' <seealso cref= Provider
 		''' 
 		''' @since 1.4 </seealso>
-		Public Shared Function getInstance(ByVal algorithm As String, ByVal provider_Renamed As Provider) As KeyPairGenerator
+		Public Shared Function getInstance(  algorithm As String,   provider_Renamed As Provider) As KeyPairGenerator
 			Dim instance_Renamed As sun.security.jca.GetInstance.Instance = GetInstance.getInstance("KeyPairGenerator", GetType(KeyPairGeneratorSpi), algorithm, provider_Renamed)
 			Return getInstance(instance_Renamed, algorithm)
 		End Function
@@ -323,7 +323,7 @@ Namespace java.security
 		''' </param>
 		''' <exception cref="InvalidParameterException"> if the {@code keysize} is not
 		''' supported by this KeyPairGenerator object. </exception>
-		Public Overridable Sub initialize(ByVal keysize As Integer)
+		Public Overridable Sub initialize(  keysize As Integer)
 			initialize(keysize, JCAUtil.secureRandom)
 		End Sub
 
@@ -340,7 +340,7 @@ Namespace java.security
 		''' supported by this KeyPairGenerator object.
 		''' 
 		''' @since 1.2 </exception>
-		Public Overrides Sub initialize(ByVal keysize As Integer, ByVal random_Renamed As SecureRandom)
+		Public Overrides Sub initialize(  keysize As Integer,   random_Renamed As SecureRandom)
 			' This does nothing, because either
 			' 1. the implementation object returned by getInstance() is an
 			'    instance of KeyPairGenerator which has its own
@@ -380,7 +380,7 @@ Namespace java.security
 		''' are inappropriate for this key pair generator.
 		''' 
 		''' @since 1.2 </exception>
-		Public Overridable Sub initialize(ByVal params As java.security.spec.AlgorithmParameterSpec)
+		Public Overridable Sub initialize(  params As java.security.spec.AlgorithmParameterSpec)
 			initialize(params, JCAUtil.secureRandom)
 		End Sub
 
@@ -406,7 +406,7 @@ Namespace java.security
 		''' are inappropriate for this key pair generator.
 		''' 
 		''' @since 1.2 </exception>
-		Public Overrides Sub initialize(ByVal params As java.security.spec.AlgorithmParameterSpec, ByVal random_Renamed As SecureRandom)
+		Public Overrides Sub initialize(  params As java.security.spec.AlgorithmParameterSpec,   random_Renamed As SecureRandom)
 			' This does nothing, because either
 			' 1. the implementation object returned by getInstance() is an
 			'    instance of KeyPairGenerator which has its own
@@ -526,12 +526,12 @@ Namespace java.security
 			Private initRandom As SecureRandom
 
 			' constructor
-			Friend Sub New(ByVal spi As KeyPairGeneratorSpi, ByVal algorithm As String)
+			Friend Sub New(  spi As KeyPairGeneratorSpi,   algorithm As String)
 				MyBase.New(algorithm)
 				Me.spi = spi
 			End Sub
 
-			Friend Sub New(ByVal instance As sun.security.jca.GetInstance.Instance, ByVal serviceIterator As [Iterator](Of java.security.Provider.Service), ByVal algorithm As String)
+			Friend Sub New(  instance As sun.security.jca.GetInstance.Instance,   serviceIterator As [Iterator](Of java.security.Provider.Service),   algorithm As String)
 				MyBase.New(algorithm)
 				spi = CType(instance.impl, KeyPairGeneratorSpi)
 				provider = instance.provider
@@ -547,7 +547,7 @@ Namespace java.security
 			''' available, this method returns null. However, the active spi of
 			''' this class is never set to null.
 			''' </summary>
-			Private Function nextSpi(ByVal oldSpi As KeyPairGeneratorSpi, ByVal reinit As Boolean) As KeyPairGeneratorSpi
+			Private Function nextSpi(  oldSpi As KeyPairGeneratorSpi,   reinit As Boolean) As KeyPairGeneratorSpi
 				SyncLock lock
 					' somebody else did a failover concurrently
 					' try that spi now
@@ -590,7 +590,7 @@ Namespace java.security
 			End Sub
 
 			' engine method
-			Public Overrides Sub initialize(ByVal keysize As Integer, ByVal random_Renamed As SecureRandom)
+			Public Overrides Sub initialize(  keysize As Integer,   random_Renamed As SecureRandom)
 				If serviceIterator Is Nothing Then
 					spi.initialize(keysize, random_Renamed)
 					Return
@@ -614,7 +614,7 @@ Namespace java.security
 			End Sub
 
 			' engine method
-			Public Overrides Sub initialize(ByVal params As java.security.spec.AlgorithmParameterSpec, ByVal random_Renamed As SecureRandom)
+			Public Overrides Sub initialize(  params As java.security.spec.AlgorithmParameterSpec,   random_Renamed As SecureRandom)
 				If serviceIterator Is Nothing Then
 					spi.initialize(params, random_Renamed)
 					Return

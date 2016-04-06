@@ -53,7 +53,7 @@ Namespace java.nio
 	'
 	'    
 
-		Friend Sub New(ByVal cap As Integer, ByVal lim As Integer) ' package-private
+		Friend Sub New(  cap As Integer,   lim As Integer) ' package-private
 
 			MyBase.New(-1, 0, lim, cap, New Long(cap - 1){}, 0)
 	'        
@@ -66,7 +66,7 @@ Namespace java.nio
 
 		End Sub
 
-		Friend Sub New(ByVal buf As Long(), ByVal [off] As Integer, ByVal len As Integer) ' package-private
+		Friend Sub New(  buf As Long(),   [off] As Integer,   len As Integer) ' package-private
 
 			MyBase.New(-1, [off], [off] + len, buf.Length, buf, 0)
 	'        
@@ -79,7 +79,7 @@ Namespace java.nio
 
 		End Sub
 
-		Protected Friend Sub New(ByVal buf As Long(), ByVal mark As Integer, ByVal pos As Integer, ByVal lim As Integer, ByVal cap As Integer, ByVal [off] As Integer)
+		Protected Friend Sub New(  buf As Long(),   mark As Integer,   pos As Integer,   lim As Integer,   cap As Integer,   [off] As Integer)
 
 			MyBase.New(mark, pos, lim, cap, buf, [off])
 	'        
@@ -110,7 +110,7 @@ Namespace java.nio
 
 
 
-		Protected Friend Overridable Function ix(ByVal i As Integer) As Integer
+		Protected Friend Overridable Function ix(  i As Integer) As Integer
 			Return i + offset
 		End Function
 
@@ -118,7 +118,7 @@ Namespace java.nio
 			Return hb(ix(nextGetIndex()))
 		End Function
 
-		Public Overrides Function [get](ByVal i As Integer) As Long
+		Public Overrides Function [get](  i As Integer) As Long
 			Return hb(ix(checkIndex(i)))
 		End Function
 
@@ -128,7 +128,7 @@ Namespace java.nio
 
 
 
-		Public Overrides Function [get](ByVal dst As Long(), ByVal offset As Integer, ByVal length As Integer) As LongBuffer
+		Public Overrides Function [get](  dst As Long(),   offset As Integer,   length As Integer) As LongBuffer
 			checkBounds(offset, length, dst.Length)
 			If length > remaining() Then Throw New BufferUnderflowException
 			Array.Copy(hb, ix(position()), dst, offset, length)
@@ -150,7 +150,7 @@ Namespace java.nio
 			End Get
 		End Property
 
-		Public Overrides Function put(ByVal x As Long) As LongBuffer
+		Public Overrides Function put(  x As Long) As LongBuffer
 
 			hb(ix(nextPutIndex())) = x
 			Return Me
@@ -159,7 +159,7 @@ Namespace java.nio
 
 		End Function
 
-		Public Overrides Function put(ByVal i As Integer, ByVal x As Long) As LongBuffer
+		Public Overrides Function put(  i As Integer,   x As Long) As LongBuffer
 
 			hb(ix(checkIndex(i))) = x
 			Return Me
@@ -168,7 +168,7 @@ Namespace java.nio
 
 		End Function
 
-		Public Overrides Function put(ByVal src As Long(), ByVal offset As Integer, ByVal length As Integer) As LongBuffer
+		Public Overrides Function put(  src As Long(),   offset As Integer,   length As Integer) As LongBuffer
 
 			checkBounds(offset, length, src.Length)
 			If length > remaining() Then Throw New BufferOverflowException
@@ -180,7 +180,7 @@ Namespace java.nio
 
 		End Function
 
-		Public Overrides Function put(ByVal src As LongBuffer) As LongBuffer
+		Public Overrides Function put(  src As LongBuffer) As LongBuffer
 
 			If TypeOf src Is HeapLongBuffer Then
 				If src Is Me Then Throw New IllegalArgumentException

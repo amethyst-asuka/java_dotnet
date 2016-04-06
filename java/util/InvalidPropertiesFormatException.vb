@@ -51,7 +51,7 @@ Namespace java.util
 		''' </summary>
 		''' <param name="cause"> the cause (which is saved for later retrieval by the
 		'''         <seealso cref="Throwable#getCause()"/> method). </param>
-		Public Sub New(ByVal cause As Throwable)
+		Public Sub New(  cause As Throwable)
 			MyBase.New(If(cause Is Nothing, Nothing, cause.ToString()))
 			Me.initCause(cause)
 		End Sub
@@ -62,7 +62,7 @@ Namespace java.util
 	   ''' </summary>
 	   ''' <param name="message">   the detail message. The detail message is saved for
 	   '''          later retrieval by the <seealso cref="Throwable#getMessage()"/> method. </param>
-		Public Sub New(ByVal message As String)
+		Public Sub New(  message As String)
 			MyBase.New(message)
 		End Sub
 
@@ -70,7 +70,7 @@ Namespace java.util
 		''' Throws NotSerializableException, since InvalidPropertiesFormatException
 		''' objects are not intended to be serializable.
 		''' </summary>
-		Private Sub writeObject(ByVal out As java.io.ObjectOutputStream)
+		Private Sub writeObject(  out As java.io.ObjectOutputStream)
 			Throw New java.io.NotSerializableException("Not serializable.")
 		End Sub
 
@@ -78,7 +78,7 @@ Namespace java.util
 		''' Throws NotSerializableException, since InvalidPropertiesFormatException
 		''' objects are not intended to be serializable.
 		''' </summary>
-		Private Sub readObject(ByVal [in] As java.io.ObjectInputStream)
+		Private Sub readObject(  [in] As java.io.ObjectInputStream)
 			Throw New java.io.NotSerializableException("Not serializable.")
 		End Sub
 

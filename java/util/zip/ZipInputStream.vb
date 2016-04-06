@@ -70,7 +70,7 @@ Namespace java.util.zip
 		''' decode the entry names.
 		''' </summary>
 		''' <param name="in"> the actual input stream </param>
-		Public Sub New(ByVal [in] As java.io.InputStream)
+		Public Sub New(  [in] As java.io.InputStream)
 			Me.New([in], java.nio.charset.StandardCharsets.UTF_8)
 		End Sub
 
@@ -87,7 +87,7 @@ Namespace java.util.zip
 		'''        flag is set).
 		''' 
 		''' @since 1.7 </param>
-		Public Sub New(ByVal [in] As java.io.InputStream, ByVal charset As java.nio.charset.Charset)
+		Public Sub New(  [in] As java.io.InputStream,   charset As java.nio.charset.Charset)
 			MyBase.New(New java.io.PushbackInputStream([in], 512), New Inflater(True), 512)
 			usesDefaultInflater = True
 			If [in] Is Nothing Then Throw New NullPointerException("in is null")
@@ -163,7 +163,7 @@ Namespace java.util.zip
 		''' <code>b.length - off</code> </exception>
 		''' <exception cref="ZipException"> if a ZIP file error has occurred </exception>
 		''' <exception cref="IOException"> if an I/O error has occurred </exception>
-		Public Overrides Function read(ByVal b As SByte(), ByVal [off] As Integer, ByVal len As Integer) As Integer
+		Public Overrides Function read(  b As SByte(),   [off] As Integer,   len As Integer) As Integer
 			ensureOpen()
 			If [off] < 0 OrElse len < 0 OrElse [off] > b.Length - len Then
 				Throw New IndexOutOfBoundsException
@@ -208,7 +208,7 @@ Namespace java.util.zip
 		''' <exception cref="ZipException"> if a ZIP file error has occurred </exception>
 		''' <exception cref="IOException"> if an I/O error has occurred </exception>
 		''' <exception cref="IllegalArgumentException"> if {@code n < 0} </exception>
-		Public Overrides Function skip(ByVal n As Long) As Long
+		Public Overrides Function skip(  n As Long) As Long
 			If n < 0 Then Throw New IllegalArgumentException("negative skip length")
 			ensureOpen()
 			Dim max As Integer = CInt(Fix (System.Math.Min(n,  java.lang.[Integer].Max_Value)))
@@ -290,14 +290,14 @@ Namespace java.util.zip
 		''' </summary>
 		''' <param name="name"> the ZIP file entry name </param>
 		''' <returns> the ZipEntry just created </returns>
-		Protected Friend Overridable Function createZipEntry(ByVal name As String) As ZipEntry
+		Protected Friend Overridable Function createZipEntry(  name As String) As ZipEntry
 			Return New ZipEntry(name)
 		End Function
 
 	'    
 	'     * Reads end of deflated entry as well as EXT descriptor if present.
 	'     
-		Private Sub readEnd(ByVal e As ZipEntry)
+		Private Sub readEnd(  e As ZipEntry)
 			Dim n As Integer = inf.remaining
 			If n > 0 Then CType([in], java.io.PushbackInputStream).unread(buf, len - n, n)
 			If (flag And 8) = 8 Then
@@ -339,7 +339,7 @@ Namespace java.util.zip
 	'    
 	'     * Reads bytes, blocking until all bytes are read.
 	'     
-		Private Sub readFully(ByVal b As SByte(), ByVal [off] As Integer, ByVal len As Integer)
+		Private Sub readFully(  b As SByte(),   [off] As Integer,   len As Integer)
 			Do While len > 0
 				Dim n As Integer = [in].read(b, [off], len)
 				If n = -1 Then Throw New java.io.EOFException

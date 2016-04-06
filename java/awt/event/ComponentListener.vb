@@ -55,22 +55,22 @@ Namespace java.awt.event
 		''' <summary>
 		''' Invoked when the component's size changes.
 		''' </summary>
-		Sub componentResized(ByVal e As ComponentEvent)
+		Sub componentResized(  e As ComponentEvent)
 
 		''' <summary>
 		''' Invoked when the component's position changes.
 		''' </summary>
-		Sub componentMoved(ByVal e As ComponentEvent)
+		Sub componentMoved(  e As ComponentEvent)
 
 		''' <summary>
 		''' Invoked when the component has been made visible.
 		''' </summary>
-		Sub componentShown(ByVal e As ComponentEvent)
+		Sub componentShown(  e As ComponentEvent)
 
 		''' <summary>
 		''' Invoked when the component has been made invisible.
 		''' </summary>
-		Sub componentHidden(ByVal e As ComponentEvent)
+		Sub componentHidden(  e As ComponentEvent)
 	End Interface
 
 End Namespace

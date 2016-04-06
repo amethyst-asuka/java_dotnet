@@ -50,7 +50,7 @@ Namespace java.rmi
 		''' @since JDK1.1 </param>
 		''' @deprecated no replacement 
 		<Obsolete("no replacement")> _
-		Public Sub New(ByVal name As String)
+		Public Sub New(  name As String)
 			MyBase.New(name)
 		End Sub
 
@@ -61,7 +61,7 @@ Namespace java.rmi
 		''' @since JDK1.1 </param>
 		''' @deprecated no replacement 
 		<Obsolete("no replacement")> _
-		Public Sub New(ByVal name As String, ByVal arg As String)
+		Public Sub New(  name As String,   arg As String)
 			Me.New(name)
 		End Sub
 	End Class

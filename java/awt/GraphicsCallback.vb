@@ -37,7 +37,7 @@ Namespace java.awt
 
             Private Sub New()
 			End Sub
-			Public Sub run(ByVal comp As Component, ByVal cg As Graphics)
+			Public Sub run(  comp As Component,   cg As Graphics)
 				comp.paint(cg)
 			End Sub
             Public Shared ReadOnly Property instance As PaintCallback
@@ -53,7 +53,7 @@ Namespace java.awt
 
             Private Sub New()
 			End Sub
-			Public Sub run(ByVal comp As Component, ByVal cg As Graphics)
+			Public Sub run(  comp As Component,   cg As Graphics)
 				comp.print(cg)
 			End Sub
             Public Shared ReadOnly Property instance As PrintCallback
@@ -69,7 +69,7 @@ Namespace java.awt
 
             Private Sub New()
 			End Sub
-			Public Sub run(ByVal comp As Component, ByVal cg As Graphics)
+			Public Sub run(  comp As Component,   cg As Graphics)
 				comp.paintAll(cg)
 			End Sub
             Public Shared ReadOnly Property instance As PaintAllCallback
@@ -85,7 +85,7 @@ Namespace java.awt
 
             Private Sub New()
 			End Sub
-			Public Sub run(ByVal comp As Component, ByVal cg As Graphics)
+			Public Sub run(  comp As Component,   cg As Graphics)
 				comp.printAll(cg)
 			End Sub
             Public Shared ReadOnly Property instance As PrintAllCallback
@@ -101,7 +101,7 @@ Namespace java.awt
 
             Private Sub New()
 			End Sub
-			Public Sub run(ByVal comp As Component, ByVal cg As Graphics)
+			Public Sub run(  comp As Component,   cg As Graphics)
 				comp.validate()
 				If TypeOf comp.peer Is java.awt.peer.LightweightPeer Then
 					comp.lightweightPaint(cg)
@@ -122,7 +122,7 @@ Namespace java.awt
 
             Private Sub New()
 			End Sub
-			Public Sub run(ByVal comp As Component, ByVal cg As Graphics)
+			Public Sub run(  comp As Component,   cg As Graphics)
 				comp.validate()
 				If TypeOf comp.peer Is java.awt.peer.LightweightPeer Then
 					comp.lightweightPrint(cg)
@@ -143,7 +143,7 @@ Namespace java.awt
 
             Private Sub New()
 			End Sub
-			Public Sub run(ByVal comp As Component, ByVal cg As Graphics)
+			Public Sub run(  comp As Component,   cg As Graphics)
 				If TypeOf comp.peer Is java.awt.peer.LightweightPeer Then
 					comp.paintHeavyweightComponents(cg)
 				Else
@@ -163,7 +163,7 @@ Namespace java.awt
 
             Private Sub New()
 			End Sub
-			Public Sub run(ByVal comp As Component, ByVal cg As Graphics)
+			Public Sub run(  comp As Component,   cg As Graphics)
 				If TypeOf comp.peer Is java.awt.peer.LightweightPeer Then
 					comp.printHeavyweightComponents(cg)
 				Else

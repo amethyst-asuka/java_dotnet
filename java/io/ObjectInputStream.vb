@@ -290,7 +290,7 @@ Namespace java.io
 		''' <seealso cref=     ObjectInputStream#ObjectInputStream() </seealso>
 		''' <seealso cref=     ObjectInputStream#readFields() </seealso>
 		''' <seealso cref=     ObjectOutputStream#ObjectOutputStream(OutputStream) </seealso>
-		Public Sub New(ByVal [in] As InputStream)
+		Public Sub New(  [in] As InputStream)
 			verifySubclass()
 			bin = New BlockDataInputStream(Me, [in])
 			[handles] = New HandleTable(10)
@@ -517,7 +517,7 @@ Namespace java.io
 		''' <exception cref="NotActiveException"> The stream is not currently reading objects
 		'''          so it is invalid to register a callback. </exception>
 		''' <exception cref="InvalidObjectException"> The validation object is null. </exception>
-		Public Overridable Sub registerValidation(ByVal obj As ObjectInputValidation, ByVal prio As Integer)
+		Public Overridable Sub registerValidation(  obj As ObjectInputValidation,   prio As Integer)
 			If depth = 0 Then Throw New NotActiveException("stream inactive")
 			vlist.register(obj, prio)
 		End Sub
@@ -562,7 +562,7 @@ Namespace java.io
 		''' <exception cref="IOException"> any of the usual Input/Output exceptions. </exception>
 		''' <exception cref="ClassNotFoundException"> if class of a serialized object cannot
 		'''          be found. </exception>
-		Protected Friend Overridable Function resolveClass(ByVal desc As ObjectStreamClass) As  [Class]
+		Protected Friend Overridable Function resolveClass(  desc As ObjectStreamClass) As  [Class]
 			Dim name As String = desc.name
 			Try
 				Return Type.GetType(name, False, latestUserDefinedLoader())
@@ -626,7 +626,7 @@ Namespace java.io
 		'''                named interfaces could not be found </exception>
 		''' <seealso cref= ObjectOutputStream#annotateProxyClass(Class)
 		''' @since 1.3 </seealso>
-		Protected Friend Overridable Function resolveProxyClass(ByVal interfaces As String()) As  [Class]
+		Protected Friend Overridable Function resolveProxyClass(  interfaces As String()) As  [Class]
 			Dim latestLoader As  ClassLoader = latestUserDefinedLoader()
 			Dim nonPublicLoader As  ClassLoader = Nothing
 			Dim hasNonPublicInterface As Boolean = False
@@ -678,7 +678,7 @@ Namespace java.io
 		''' <param name="obj"> object to be substituted </param>
 		''' <returns>  the substituted object </returns>
 		''' <exception cref="IOException"> Any of the usual Input/Output exceptions. </exception>
-		Protected Friend Overridable Function resolveObject(ByVal obj As Object) As Object
+		Protected Friend Overridable Function resolveObject(  obj As Object) As Object
 			Return obj
 		End Function
 
@@ -702,7 +702,7 @@ Namespace java.io
 		'''          to allow objects read from the stream to be replaced. </exception>
 		''' <seealso cref= SecurityManager#checkPermission </seealso>
 		''' <seealso cref= java.io.SerializablePermission </seealso>
-		Protected Friend Overridable Function enableResolveObject(ByVal enable As Boolean) As Boolean
+		Protected Friend Overridable Function enableResolveObject(  enable As Boolean) As Boolean
 			If enable = enableResolve Then Return enable
 			If enable Then
 				Dim sm As SecurityManager = System.securityManager
@@ -770,7 +770,7 @@ Namespace java.io
 		'''          the stream is reached. </returns>
 		''' <exception cref="IOException"> If an I/O error has occurred. </exception>
 		''' <seealso cref= java.io.DataInputStream#readFully(byte[],int,int) </seealso>
-		Public Overrides Function read(ByVal buf As SByte(), ByVal [off] As Integer, ByVal len As Integer) As Integer
+		Public Overrides Function read(  buf As SByte(),   [off] As Integer,   len As Integer) As Integer
 			If buf Is Nothing Then Throw New NullPointerException
 			Dim endoff As Integer = [off] + len
 			If [off] < 0 OrElse len < 0 OrElse endoff > buf.Length OrElse endoff < 0 Then Throw New IndexOutOfBoundsException
@@ -908,7 +908,7 @@ Namespace java.io
 		''' <param name="buf"> the buffer into which the data is read </param>
 		''' <exception cref="EOFException"> If end of file is reached. </exception>
 		''' <exception cref="IOException"> If other I/O error has occurred. </exception>
-		Public Overridable Sub readFully(ByVal buf As SByte()) Implements DataInput.readFully
+		Public Overridable Sub readFully(  buf As SByte()) Implements DataInput.readFully
 			bin.readFully(buf, 0, buf.Length, False)
 		End Sub
 
@@ -920,7 +920,7 @@ Namespace java.io
 		''' <param name="len"> the maximum number of bytes to read </param>
 		''' <exception cref="EOFException"> If end of file is reached. </exception>
 		''' <exception cref="IOException"> If other I/O error has occurred. </exception>
-		Public Overridable Sub readFully(ByVal buf As SByte(), ByVal [off] As Integer, ByVal len As Integer)
+		Public Overridable Sub readFully(  buf As SByte(),   [off] As Integer,   len As Integer)
 			Dim endoff As Integer = [off] + len
 			If [off] < 0 OrElse len < 0 OrElse endoff > buf.Length OrElse endoff < 0 Then Throw New IndexOutOfBoundsException
 			bin.readFully(buf, [off], len, False)
@@ -932,7 +932,7 @@ Namespace java.io
 		''' <param name="len"> the number of bytes to be skipped </param>
 		''' <returns>  the actual number of bytes skipped. </returns>
 		''' <exception cref="IOException"> If an I/O error has occurred. </exception>
-		Public Overridable Function skipBytes(ByVal len As Integer) As Integer Implements DataInput.skipBytes
+		Public Overridable Function skipBytes(  len As Integer) As Integer Implements DataInput.skipBytes
 			Return bin.skipBytes(len)
 		End Function
 
@@ -984,7 +984,7 @@ Namespace java.io
 			'''         the underlying <code>InputStream</code> </exception>
 			''' <exception cref="IllegalArgumentException"> if <code>name</code> does not
 			'''         correspond to a serializable field </exception>
-			Public MustOverride Function defaulted(ByVal name As String) As Boolean
+			Public MustOverride Function defaulted(  name As String) As Boolean
 
 			''' <summary>
 			''' Get the value of the named boolean field from the persistent field.
@@ -997,7 +997,7 @@ Namespace java.io
 			'''         underlying <code>InputStream</code> </exception>
 			''' <exception cref="IllegalArgumentException"> if type of <code>name</code> is
 			'''         not serializable or if the field type is incorrect </exception>
-			Public MustOverride Function [get](ByVal name As String, ByVal val As Boolean) As Boolean
+			Public MustOverride Function [get](  name As String,   val As Boolean) As Boolean
 
 			''' <summary>
 			''' Get the value of the named byte field from the persistent field.
@@ -1010,7 +1010,7 @@ Namespace java.io
 			'''         underlying <code>InputStream</code> </exception>
 			''' <exception cref="IllegalArgumentException"> if type of <code>name</code> is
 			'''         not serializable or if the field type is incorrect </exception>
-			Public MustOverride Function [get](ByVal name As String, ByVal val As SByte) As SByte
+			Public MustOverride Function [get](  name As String,   val As SByte) As SByte
 
 			''' <summary>
 			''' Get the value of the named char field from the persistent field.
@@ -1023,7 +1023,7 @@ Namespace java.io
 			'''         underlying <code>InputStream</code> </exception>
 			''' <exception cref="IllegalArgumentException"> if type of <code>name</code> is
 			'''         not serializable or if the field type is incorrect </exception>
-			Public MustOverride Function [get](ByVal name As String, ByVal val As Char) As Char
+			Public MustOverride Function [get](  name As String,   val As Char) As Char
 
 			''' <summary>
 			''' Get the value of the named short field from the persistent field.
@@ -1036,7 +1036,7 @@ Namespace java.io
 			'''         underlying <code>InputStream</code> </exception>
 			''' <exception cref="IllegalArgumentException"> if type of <code>name</code> is
 			'''         not serializable or if the field type is incorrect </exception>
-			Public MustOverride Function [get](ByVal name As String, ByVal val As Short) As Short
+			Public MustOverride Function [get](  name As String,   val As Short) As Short
 
 			''' <summary>
 			''' Get the value of the named int field from the persistent field.
@@ -1049,7 +1049,7 @@ Namespace java.io
 			'''         underlying <code>InputStream</code> </exception>
 			''' <exception cref="IllegalArgumentException"> if type of <code>name</code> is
 			'''         not serializable or if the field type is incorrect </exception>
-			Public MustOverride Function [get](ByVal name As String, ByVal val As Integer) As Integer
+			Public MustOverride Function [get](  name As String,   val As Integer) As Integer
 
 			''' <summary>
 			''' Get the value of the named long field from the persistent field.
@@ -1062,7 +1062,7 @@ Namespace java.io
 			'''         underlying <code>InputStream</code> </exception>
 			''' <exception cref="IllegalArgumentException"> if type of <code>name</code> is
 			'''         not serializable or if the field type is incorrect </exception>
-			Public MustOverride Function [get](ByVal name As String, ByVal val As Long) As Long
+			Public MustOverride Function [get](  name As String,   val As Long) As Long
 
 			''' <summary>
 			''' Get the value of the named float field from the persistent field.
@@ -1075,7 +1075,7 @@ Namespace java.io
 			'''         underlying <code>InputStream</code> </exception>
 			''' <exception cref="IllegalArgumentException"> if type of <code>name</code> is
 			'''         not serializable or if the field type is incorrect </exception>
-			Public MustOverride Function [get](ByVal name As String, ByVal val As Single) As Single
+			Public MustOverride Function [get](  name As String,   val As Single) As Single
 
 			''' <summary>
 			''' Get the value of the named double field from the persistent field.
@@ -1088,7 +1088,7 @@ Namespace java.io
 			'''         underlying <code>InputStream</code> </exception>
 			''' <exception cref="IllegalArgumentException"> if type of <code>name</code> is
 			'''         not serializable or if the field type is incorrect </exception>
-			Public MustOverride Function [get](ByVal name As String, ByVal val As Double) As Double
+			Public MustOverride Function [get](  name As String,   val As Double) As Double
 
 			''' <summary>
 			''' Get the value of the named Object field from the persistent field.
@@ -1101,7 +1101,7 @@ Namespace java.io
 			'''         underlying <code>InputStream</code> </exception>
 			''' <exception cref="IllegalArgumentException"> if type of <code>name</code> is
 			'''         not serializable or if the field type is incorrect </exception>
-			Public MustOverride Function [get](ByVal name As String, ByVal val As Object) As Object
+			Public MustOverride Function [get](  name As String,   val As Object) As Object
 		End Class
 
 		''' <summary>
@@ -1131,7 +1131,7 @@ Namespace java.io
 		''' override security-sensitive non-final methods.  Returns true if subclass
 		''' is "safe", false otherwise.
 		''' </summary>
-		Private Shared Function auditSubclass(ByVal subcl As [Class]) As Boolean
+		Private Shared Function auditSubclass(  subcl As [Class]) As Boolean
 			Dim result As Boolean? = java.security.AccessController.doPrivileged(New PrivilegedActionAnonymousInnerClassHelper(Of T)
 		   )
 			Return result
@@ -1170,7 +1170,7 @@ Namespace java.io
 		''' <summary>
 		''' Underlying readObject implementation.
 		''' </summary>
-		Private Function readObject0(ByVal unshared As Boolean) As Object
+		Private Function readObject0(  unshared As Boolean) As Object
 			Dim oldMode As Boolean = bin.blockDataMode
 			If oldMode Then
 				Dim remain As Integer = bin.currentBlockRemaining()
@@ -1260,7 +1260,7 @@ Namespace java.io
 		''' occurred.  Expects that passHandle is set to given object's handle prior
 		''' to calling this method.
 		''' </summary>
-		Private Function checkResolve(ByVal obj As Object) As Object
+		Private Function checkResolve(  obj As Object) As Object
 			If (Not enableResolve) OrElse [handles].lookupException(passHandle) IsNot Nothing Then Return obj
 			Dim rep As Object = resolveObject(obj)
 			If rep IsNot obj Then [handles].objectect(passHandle, rep)
@@ -1306,7 +1306,7 @@ Namespace java.io
 		''' Reads in object handle, sets passHandle to the read handle, and returns
 		''' object associated with the handle.
 		''' </summary>
-		Private Function readHandle(ByVal unshared As Boolean) As Object
+		Private Function readHandle(  unshared As Boolean) As Object
 			If bin.readByte() <> TC_REFERENCE Then Throw New InternalError
 			passHandle = bin.readInt() - baseWireHandle
 			If passHandle < 0 OrElse passHandle >= [handles].size() Then Throw New StreamCorruptedException(String.Format("invalid handle value: {0:X8}", passHandle + baseWireHandle))
@@ -1323,7 +1323,7 @@ Namespace java.io
 		''' ClassNotFoundException will be associated with the class' handle in the
 		''' handle table).
 		''' </summary>
-		Private Function readClass(ByVal unshared As Boolean) As  [Class]
+		Private Function readClass(  unshared As Boolean) As  [Class]
 			If bin.readByte() <> TC_CLASS Then Throw New InternalError
 			Dim desc As ObjectStreamClass = readClassDesc(False)
 			Dim cl As  [Class] = desc.forClass()
@@ -1342,7 +1342,7 @@ Namespace java.io
 		''' resolved to a class in the local VM, a ClassNotFoundException is
 		''' associated with the class descriptor's handle.
 		''' </summary>
-		Private Function readClassDesc(ByVal unshared As Boolean) As ObjectStreamClass
+		Private Function readClassDesc(  unshared As Boolean) As ObjectStreamClass
 			Dim tc As SByte = bin.peekByte()
 			Select Case tc
 				Case TC_NULL
@@ -1375,7 +1375,7 @@ Namespace java.io
 		''' descriptor cannot be resolved to a class in the local VM, a
 		''' ClassNotFoundException is associated with the descriptor's handle.
 		''' </summary>
-		Private Function readProxyDesc(ByVal unshared As Boolean) As ObjectStreamClass
+		Private Function readProxyDesc(  unshared As Boolean) As ObjectStreamClass
 			If bin.readByte() <> TC_PROXYCLASSDESC Then Throw New InternalError
 
 			Dim desc As New ObjectStreamClass
@@ -1421,7 +1421,7 @@ Namespace java.io
 		''' class descriptor cannot be resolved to a class in the local VM, a
 		''' ClassNotFoundException is associated with the descriptor's handle.
 		''' </summary>
-		Private Function readNonProxyDesc(ByVal unshared As Boolean) As ObjectStreamClass
+		Private Function readNonProxyDesc(  unshared As Boolean) As ObjectStreamClass
 			If bin.readByte() <> TC_CLASSDESC Then Throw New InternalError
 
 			Dim desc As New ObjectStreamClass
@@ -1462,7 +1462,7 @@ Namespace java.io
 		''' Reads in and returns new string.  Sets passHandle to new string's
 		''' assigned handle.
 		''' </summary>
-		Private Function readString(ByVal unshared As Boolean) As String
+		Private Function readString(  unshared As Boolean) As String
 			Dim str As String
 			Dim tc As SByte = bin.readByte()
 			Select Case tc
@@ -1484,7 +1484,7 @@ Namespace java.io
 		''' Reads in and returns array object, or null if array class is
 		''' unresolvable.  Sets passHandle to array's assigned handle.
 		''' </summary>
-		Private Function readArray(ByVal unshared As Boolean) As Object
+		Private Function readArray(  unshared As Boolean) As Object
 			If bin.readByte() <> TC_ARRAY Then Throw New InternalError
 
 			Dim desc As ObjectStreamClass = readClassDesc(False)
@@ -1544,7 +1544,7 @@ Namespace java.io
 		''' unresolvable.  Sets passHandle to enum constant's assigned handle.
 		''' </summary>
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-		Private Function readEnum(ByVal unshared As Boolean) As System.Enum(Of ?)
+		Private Function readEnum(  unshared As Boolean) As System.Enum(Of ?)
 			If bin.readByte() <> TC_ENUM Then Throw New InternalError
 
 			Dim desc As ObjectStreamClass = readClassDesc(False)
@@ -1582,7 +1582,7 @@ Namespace java.io
 		''' associated with object's handle).  Sets passHandle to object's assigned
 		''' handle.
 		''' </summary>
-		Private Function readOrdinaryObject(ByVal unshared As Boolean) As Object
+		Private Function readOrdinaryObject(  unshared As Boolean) As Object
 			If bin.readByte() <> TC_OBJECT Then Throw New InternalError
 
 			Dim desc As ObjectStreamClass = readClassDesc(False)
@@ -1625,7 +1625,7 @@ Namespace java.io
 		''' Expects that passHandle is set to obj's handle before this method is
 		''' called.
 		''' </summary>
-		Private Sub readExternalData(ByVal obj As Externalizable, ByVal desc As ObjectStreamClass)
+		Private Sub readExternalData(  obj As Externalizable,   desc As ObjectStreamClass)
 			Dim oldContext As SerialCallbackContext = curContext
 			If oldContext IsNot Nothing Then oldContext.check()
 			curContext = Nothing
@@ -1671,7 +1671,7 @@ Namespace java.io
 		''' object in stream, from superclass to subclass.  Expects that passHandle
 		''' is set to obj's handle before this method is called.
 		''' </summary>
-		Private Sub readSerialData(ByVal obj As Object, ByVal desc As ObjectStreamClass)
+		Private Sub readSerialData(  obj As Object,   desc As ObjectStreamClass)
 			Dim slots As ObjectStreamClass.ClassDataSlot() = desc.classDataLayout
 			For i As Integer = 0 To slots.Length - 1
 				Dim slotDesc As ObjectStreamClass = slots(i).desc
@@ -1754,7 +1754,7 @@ Namespace java.io
 		''' descriptor.  If obj is non-null, sets field values in obj.  Expects that
 		''' passHandle is set to obj's handle before this method is called.
 		''' </summary>
-		Private Sub defaultReadFields(ByVal obj As Object, ByVal desc As ObjectStreamClass)
+		Private Sub defaultReadFields(  obj As Object,   desc As ObjectStreamClass)
 			Dim cl As  [Class] = desc.forClass()
 			If cl IsNot Nothing AndAlso obj IsNot Nothing AndAlso (Not cl.isInstance(obj)) Then Throw New ClassCastException
 
@@ -1803,7 +1803,7 @@ Namespace java.io
 		' REMIND: remove once hotspot inlines Float.intBitsToFloat
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Private Shared Sub bytesToFloats(ByVal src As SByte(), ByVal srcpos As Integer, ByVal dst As Single(), ByVal dstpos As Integer, ByVal nfloats As Integer)
+		Private Shared Sub bytesToFloats(  src As SByte(),   srcpos As Integer,   dst As Single(),   dstpos As Integer,   nfloats As Integer)
 		End Sub
 
 		''' <summary>
@@ -1812,7 +1812,7 @@ Namespace java.io
 		' REMIND: remove once hotspot inlines java.lang.[Double].longBitsToDouble
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Private Shared Sub bytesToDoubles(ByVal src As SByte(), ByVal srcpos As Integer, ByVal dst As Double(), ByVal dstpos As Integer, ByVal ndoubles As Integer)
+		Private Shared Sub bytesToDoubles(  src As SByte(),   srcpos As Integer,   dst As Double(),   dstpos As Integer,   ndoubles As Integer)
 		End Sub
 
 		''' <summary>
@@ -1856,7 +1856,7 @@ Namespace java.io
 			''' Creates GetFieldImpl object for reading fields defined in given
 			''' class descriptor.
 			''' </summary>
-			Friend Sub New(ByVal outerInstance As ObjectInputStream, ByVal desc As ObjectStreamClass)
+			Friend Sub New(  outerInstance As ObjectInputStream,   desc As ObjectStreamClass)
 					Me.outerInstance = outerInstance
 				Me.desc = desc
 				primVals = New SByte(desc.primDataSize - 1){}
@@ -1870,51 +1870,51 @@ Namespace java.io
 				End Get
 			End Property
 
-			Public Overrides Function defaulted(ByVal name As String) As Boolean
+			Public Overrides Function defaulted(  name As String) As Boolean
 				Return (getFieldOffset(name, Nothing) < 0)
 			End Function
 
-			Public Overrides Function [get](ByVal name As String, ByVal val As Boolean) As Boolean
+			Public Overrides Function [get](  name As String,   val As Boolean) As Boolean
 				Dim [off] As Integer = getFieldOffset(name,  java.lang.[Boolean].TYPE)
 				Return If([off] >= 0, Bits.getBoolean(primVals, [off]), val)
 			End Function
 
-			Public Overrides Function [get](ByVal name As String, ByVal val As SByte) As SByte
+			Public Overrides Function [get](  name As String,   val As SByte) As SByte
 				Dim [off] As Integer = getFieldOffset(name, java.lang.[Byte].TYPE)
 				Return If([off] >= 0, primVals([off]), val)
 			End Function
 
-			Public Overrides Function [get](ByVal name As String, ByVal val As Char) As Char
+			Public Overrides Function [get](  name As String,   val As Char) As Char
 				Dim [off] As Integer = getFieldOffset(name, Character.TYPE)
 				Return If([off] >= 0, Bits.getChar(primVals, [off]), val)
 			End Function
 
-			Public Overrides Function [get](ByVal name As String, ByVal val As Short) As Short
+			Public Overrides Function [get](  name As String,   val As Short) As Short
 				Dim [off] As Integer = getFieldOffset(name,  java.lang.[Short].TYPE)
 				Return If([off] >= 0, Bits.getShort(primVals, [off]), val)
 			End Function
 
-			Public Overrides Function [get](ByVal name As String, ByVal val As Integer) As Integer
+			Public Overrides Function [get](  name As String,   val As Integer) As Integer
 				Dim [off] As Integer = getFieldOffset(name,  java.lang.[Integer].TYPE)
 				Return If([off] >= 0, Bits.getInt(primVals, [off]), val)
 			End Function
 
-			Public Overrides Function [get](ByVal name As String, ByVal val As Single) As Single
+			Public Overrides Function [get](  name As String,   val As Single) As Single
 				Dim [off] As Integer = getFieldOffset(name, Float.TYPE)
 				Return If([off] >= 0, Bits.getFloat(primVals, [off]), val)
 			End Function
 
-			Public Overrides Function [get](ByVal name As String, ByVal val As Long) As Long
+			Public Overrides Function [get](  name As String,   val As Long) As Long
 				Dim [off] As Integer = getFieldOffset(name, java.lang.[Long].TYPE)
 				Return If([off] >= 0, Bits.getLong(primVals, [off]), val)
 			End Function
 
-			Public Overrides Function [get](ByVal name As String, ByVal val As Double) As Double
+			Public Overrides Function [get](  name As String,   val As Double) As Double
 				Dim [off] As Integer = getFieldOffset(name, java.lang.[Double].TYPE)
 				Return If([off] >= 0, Bits.getDouble(primVals, [off]), val)
 			End Function
 
-			Public Overrides Function [get](ByVal name As String, ByVal val As Object) As Object
+			Public Overrides Function [get](  name As String,   val As Object) As Object
 				Dim [off] As Integer = getFieldOffset(name, GetType(Object))
 				If [off] >= 0 Then
 					Dim objHandle As Integer = objHandles([off])
@@ -1950,7 +1950,7 @@ Namespace java.io
 			''' class descriptor, returns -1.  Throws IllegalArgumentException if
 			''' neither incoming nor local class descriptor contains a match.
 			''' </summary>
-			Private Function getFieldOffset(ByVal name As String, ByVal type As [Class]) As Integer
+			Private Function getFieldOffset(  name As String,   type As [Class]) As Integer
 				Dim field As ObjectStreamField = desc.getField(name, type)
 				If field IsNot Nothing Then
 					Return field.offset
@@ -1974,7 +1974,7 @@ Namespace java.io
 				Friend [next] As Callback
 				Friend ReadOnly acc As java.security.AccessControlContext
 
-				Friend Sub New(ByVal obj As ObjectInputValidation, ByVal priority As Integer, ByVal [next] As Callback, ByVal acc As java.security.AccessControlContext)
+				Friend Sub New(  obj As ObjectInputValidation,   priority As Integer,   [next] As Callback,   acc As java.security.AccessControlContext)
 					Me.obj = obj
 					Me.priority = priority
 					Me.next = [next]
@@ -1996,7 +1996,7 @@ Namespace java.io
 			''' Registers callback.  Throws InvalidObjectException if callback
 			''' object is null.
 			''' </summary>
-			Friend Overridable Sub register(ByVal obj As ObjectInputValidation, ByVal priority As Integer)
+			Friend Overridable Sub register(  obj As ObjectInputValidation,   priority As Integer)
 				If obj Is Nothing Then Throw New InvalidObjectException("null callback")
 
 				Dim prev As Callback = Nothing, cur As Callback = list
@@ -2064,7 +2064,7 @@ Namespace java.io
 			''' <summary>
 			''' Creates new PeekInputStream on top of given underlying stream.
 			''' </summary>
-			Friend Sub New(ByVal [in] As InputStream)
+			Friend Sub New(  [in] As InputStream)
 				Me.in = [in]
 			End Sub
 
@@ -2091,7 +2091,7 @@ Namespace java.io
 				End If
 			End Function
 
-			Public Overrides Function read(ByVal b As SByte(), ByVal [off] As Integer, ByVal len As Integer) As Integer
+			Public Overrides Function read(  b As SByte(),   [off] As Integer,   len As Integer) As Integer
 				If len = 0 Then
 					Return 0
 				ElseIf peekb < 0 Then
@@ -2106,7 +2106,7 @@ Namespace java.io
 				End If
 			End Function
 
-			Friend Overridable Sub readFully(ByVal b As SByte(), ByVal [off] As Integer, ByVal len As Integer)
+			Friend Overridable Sub readFully(  b As SByte(),   [off] As Integer,   len As Integer)
 				Dim n As Integer = 0
 				Do While n < len
 					Dim count As Integer = read(b, [off] + n, len - n)
@@ -2115,7 +2115,7 @@ Namespace java.io
 				Loop
 			End Sub
 
-			Public Overrides Function skip(ByVal n As Long) As Long
+			Public Overrides Function skip(  n As Long) As Long
 				If n <= 0 Then Return 0
 				Dim skipped As Integer = 0
 				If peekb >= 0 Then
@@ -2198,7 +2198,7 @@ Namespace java.io
 			''' Creates new BlockDataInputStream on top of given underlying stream.
 			''' Block data mode is turned off by default.
 			''' </summary>
-			Friend Sub New(ByVal outerInstance As ObjectInputStream, ByVal [in] As InputStream)
+			Friend Sub New(  outerInstance As ObjectInputStream,   [in] As InputStream)
 					Me.outerInstance = outerInstance
 				Me.in = New PeekInputStream([in])
 				din = New DataInputStream(Me)
@@ -2211,7 +2211,7 @@ Namespace java.io
 			''' block data mode is being switched from on to off while unconsumed
 			''' block data is still present in the stream.
 			''' </summary>
-			Friend Overridable Function setBlockDataMode(ByVal newmode As Boolean) As Boolean
+			Friend Overridable Function setBlockDataMode(  newmode As Boolean) As Boolean
 				If blkmode = newmode Then Return blkmode
 				If newmode Then
 					pos = 0
@@ -2253,7 +2253,7 @@ Namespace java.io
 			''' stream is a block data header, returns the block data length
 			''' specified by the header, else returns -1.
 			''' </summary>
-			Private Function readBlockHeader(ByVal canBlock As Boolean) As Integer
+			Private Function readBlockHeader(  canBlock As Boolean) As Integer
 				If outerInstance.defaultDataEnd Then Return -1
 				Try
 					Do
@@ -2390,11 +2390,11 @@ Namespace java.io
 				End If
 			End Function
 
-			Public Overrides Function read(ByVal b As SByte(), ByVal [off] As Integer, ByVal len As Integer) As Integer
+			Public Overrides Function read(  b As SByte(),   [off] As Integer,   len As Integer) As Integer
 				Return read(b, [off], len, False)
 			End Function
 
-			Public Overrides Function skip(ByVal len As Long) As Long
+			Public Overrides Function skip(  len As Long) As Long
 				Dim remain As Long = len
 				Do While remain > 0
 					If blkmode Then
@@ -2459,7 +2459,7 @@ Namespace java.io
 			''' buffer before copying them to b (to avoid exposing a reference to
 			''' b).
 			''' </summary>
-			Friend Overridable Function read(ByVal b As SByte(), ByVal [off] As Integer, ByVal len As Integer, ByVal copy As Boolean) As Integer
+			Friend Overridable Function read(  b As SByte(),   [off] As Integer,   len As Integer,   copy As Boolean) As Integer
 				If len = 0 Then
 					Return 0
 				ElseIf blkmode Then
@@ -2486,15 +2486,15 @@ Namespace java.io
 	'         * data mode.
 	'         
 
-			Public Overridable Sub readFully(ByVal b As SByte()) Implements DataInput.readFully
+			Public Overridable Sub readFully(  b As SByte()) Implements DataInput.readFully
 				readFully(b, 0, b.Length, False)
 			End Sub
 
-			Public Overridable Sub readFully(ByVal b As SByte(), ByVal [off] As Integer, ByVal len As Integer)
+			Public Overridable Sub readFully(  b As SByte(),   [off] As Integer,   len As Integer)
 				readFully(b, [off], len, False)
 			End Sub
 
-			Public Overridable Sub readFully(ByVal b As SByte(), ByVal [off] As Integer, ByVal len As Integer, ByVal copy As Boolean)
+			Public Overridable Sub readFully(  b As SByte(),   [off] As Integer,   len As Integer,   copy As Boolean)
 				Do While len > 0
 					Dim n As Integer = read(b, [off], len, copy)
 					If n < 0 Then Throw New EOFException
@@ -2503,7 +2503,7 @@ Namespace java.io
 				Loop
 			End Sub
 
-			Public Overridable Function skipBytes(ByVal n As Integer) As Integer Implements DataInput.skipBytes
+			Public Overridable Function skipBytes(  n As Integer) As Integer Implements DataInput.skipBytes
 				Return din.skipBytes(n)
 			End Function
 
@@ -2626,7 +2626,7 @@ Namespace java.io
 	'         * of primitive data values more efficiently.
 	'         
 
-			Friend Overridable Sub readBooleans(ByVal v As Boolean(), ByVal [off] As Integer, ByVal len As Integer)
+			Friend Overridable Sub readBooleans(  v As Boolean(),   [off] As Integer,   len As Integer)
 				Dim [stop] As Integer, endoff As Integer = [off] + len
 				Do While [off] < endoff
 					If Not blkmode Then
@@ -2650,7 +2650,7 @@ Namespace java.io
 				Loop
 			End Sub
 
-			Friend Overridable Sub readChars(ByVal v As Char(), ByVal [off] As Integer, ByVal len As Integer)
+			Friend Overridable Sub readChars(  v As Char(),   [off] As Integer,   len As Integer)
 				Dim [stop] As Integer, endoff As Integer = [off] + len
 				Do While [off] < endoff
 					If Not blkmode Then
@@ -2674,7 +2674,7 @@ Namespace java.io
 				Loop
 			End Sub
 
-			Friend Overridable Sub readShorts(ByVal v As Short(), ByVal [off] As Integer, ByVal len As Integer)
+			Friend Overridable Sub readShorts(  v As Short(),   [off] As Integer,   len As Integer)
 				Dim [stop] As Integer, endoff As Integer = [off] + len
 				Do While [off] < endoff
 					If Not blkmode Then
@@ -2698,7 +2698,7 @@ Namespace java.io
 				Loop
 			End Sub
 
-			Friend Overridable Sub readInts(ByVal v As Integer(), ByVal [off] As Integer, ByVal len As Integer)
+			Friend Overridable Sub readInts(  v As Integer(),   [off] As Integer,   len As Integer)
 				Dim [stop] As Integer, endoff As Integer = [off] + len
 				Do While [off] < endoff
 					If Not blkmode Then
@@ -2722,7 +2722,7 @@ Namespace java.io
 				Loop
 			End Sub
 
-			Friend Overridable Sub readFloats(ByVal v As Single(), ByVal [off] As Integer, ByVal len As Integer)
+			Friend Overridable Sub readFloats(  v As Single(),   [off] As Integer,   len As Integer)
 				Dim span As Integer, endoff As Integer = [off] + len
 				Do While [off] < endoff
 					If Not blkmode Then
@@ -2743,7 +2743,7 @@ Namespace java.io
 				Loop
 			End Sub
 
-			Friend Overridable Sub readLongs(ByVal v As Long(), ByVal [off] As Integer, ByVal len As Integer)
+			Friend Overridable Sub readLongs(  v As Long(),   [off] As Integer,   len As Integer)
 				Dim [stop] As Integer, endoff As Integer = [off] + len
 				Do While [off] < endoff
 					If Not blkmode Then
@@ -2767,7 +2767,7 @@ Namespace java.io
 				Loop
 			End Sub
 
-			Friend Overridable Sub readDoubles(ByVal v As Double(), ByVal [off] As Integer, ByVal len As Integer)
+			Friend Overridable Sub readDoubles(  v As Double(),   [off] As Integer,   len As Integer)
 				Dim span As Integer, endoff As Integer = [off] + len
 				Do While [off] < endoff
 					If Not blkmode Then
@@ -2802,7 +2802,7 @@ Namespace java.io
 			''' or 8-byte length header) of a UTF encoding, which occupies the next
 			''' utflen bytes.
 			''' </summary>
-			Private Function readUTFBody(ByVal utflen As Long) As String
+			Private Function readUTFBody(  utflen As Long) As String
 				Dim sbuf As New StringBuilder
 				If Not blkmode Then
 						pos = 0
@@ -2837,7 +2837,7 @@ Namespace java.io
 			''' consuming no more than utflen bytes.  Appends read characters to
 			''' sbuf.  Returns the number of bytes consumed.
 			''' </summary>
-			Private Function readUTFSpan(ByVal sbuf As StringBuilder, ByVal utflen As Long) As Long
+			Private Function readUTFSpan(  sbuf As StringBuilder,   utflen As Long) As Long
 				Dim cpos As Integer = 0
 				Dim start As Integer = pos
 				Dim avail As Integer = System.Math.Min([end] - pos, CHAR_BUF_SIZE)
@@ -2899,7 +2899,7 @@ Namespace java.io
 			''' data mode to handle UTF-encoded characters which (potentially)
 			''' straddle block-data boundaries.
 			''' </summary>
-			Private Function readUTFChar(ByVal sbuf As StringBuilder, ByVal utflen As Long) As Integer
+			Private Function readUTFChar(  sbuf As StringBuilder,   utflen As Long) As Integer
 				Dim b1, b2, b3 As Integer
 				b1 = readByte() And &HFF
 				Select Case b1 >> 4
@@ -2986,7 +2986,7 @@ Namespace java.io
 			''' <summary>
 			''' Creates handle table with the given initial capacity.
 			''' </summary>
-			Friend Sub New(ByVal initialCapacity As Integer)
+			Friend Sub New(  initialCapacity As Integer)
 				status = New SByte(initialCapacity - 1){}
 				entries = New Object(initialCapacity - 1){}
 				deps = New HandleList(initialCapacity - 1){}
@@ -2998,7 +2998,7 @@ Namespace java.io
 			''' dependencies on other objects identified), the handle should be
 			''' "closed" by passing it to finish().
 			''' </summary>
-			Friend Overridable Function assign(ByVal obj As Object) As Integer
+			Friend Overridable Function assign(  obj As Object) As Integer
 				If size_Renamed >= entries.Length Then grow()
 				status(size_Renamed) = STATUS_UNKNOWN
 				entries(size_Renamed) = obj
@@ -3013,7 +3013,7 @@ Namespace java.io
 			''' not finished yet).  No action is taken if either dependent or target
 			''' handle is NULL_HANDLE.
 			''' </summary>
-			Friend Overridable Sub markDependency(ByVal dependent As Integer, ByVal target As Integer)
+			Friend Overridable Sub markDependency(  dependent As Integer,   target As Integer)
 				If dependent = NULL_HANDLE OrElse target = NULL_HANDLE Then Return
 				Select Case status(dependent)
 
@@ -3051,7 +3051,7 @@ Namespace java.io
 			''' referencing objects as appropriate.  The specified handle must be
 			''' "open" (i.e., assigned, but not finished yet).
 			''' </summary>
-			Friend Overridable Sub markException(ByVal handle As Integer, ByVal ex As  ClassNotFoundException)
+			Friend Overridable Sub markException(  handle As Integer,   ex As  ClassNotFoundException)
 				Select Case status(handle)
 					Case STATUS_UNKNOWN
 						status(handle) = STATUS_EXCEPTION
@@ -3079,7 +3079,7 @@ Namespace java.io
 			''' will be marked for handle.  Calls to the assign and finish methods
 			''' must occur in LIFO order.
 			''' </summary>
-			Friend Overridable Sub finish(ByVal handle As Integer)
+			Friend Overridable Sub finish(  handle As Integer)
 				Dim [end] As Integer
 				If lowDep < 0 Then
 					' no pending unknowns, only resolve current handle
@@ -3114,7 +3114,7 @@ Namespace java.io
 			''' if the given handle already has an exception associated with it.
 			''' This method may be called at any time after the handle is assigned.
 			''' </summary>
-			Friend Overridable Sub setObject(ByVal handle As Integer, ByVal obj As Object)
+			Friend Overridable Sub setObject(  handle As Integer,   obj As Object)
 				Select Case status(handle)
 					Case STATUS_UNKNOWN, STATUS_OK
 						entries(handle) = obj
@@ -3131,7 +3131,7 @@ Namespace java.io
 			''' Returns null if the given handle is NULL_HANDLE, or if it has an
 			''' associated ClassNotFoundException.
 			''' </summary>
-			Friend Overridable Function lookupObject(ByVal handle As Integer) As Object
+			Friend Overridable Function lookupObject(  handle As Integer) As Object
 				Return If(handle <> NULL_HANDLE AndAlso status(handle) <> STATUS_EXCEPTION, entries(handle), Nothing)
 			End Function
 
@@ -3140,7 +3140,7 @@ Namespace java.io
 			''' given handle.  Returns null if the given handle is NULL_HANDLE, or
 			''' if there is no ClassNotFoundException associated with the handle.
 			''' </summary>
-			Friend Overridable Function lookupException(ByVal handle As Integer) As  ClassNotFoundException
+			Friend Overridable Function lookupException(  handle As Integer) As  ClassNotFoundException
 				Return If(handle <> NULL_HANDLE AndAlso status(handle) = STATUS_EXCEPTION, CType(entries(handle), ClassNotFoundException), Nothing)
 			End Function
 
@@ -3191,7 +3191,7 @@ Namespace java.io
 				Public Sub New()
 				End Sub
 
-				Public Overridable Sub add(ByVal handle As Integer)
+				Public Overridable Sub add(  handle As Integer)
 					If size_Renamed >= list.Length Then
 						Dim newList As Integer() = New Integer(list.Length << 1 - 1){}
 						Array.Copy(list, 0, newList, 0, list.Length)
@@ -3201,7 +3201,7 @@ Namespace java.io
 					size_Renamed += 1
 				End Sub
 
-				Public Overridable Function [get](ByVal index As Integer) As Integer
+				Public Overridable Function [get](  index As Integer) As Integer
 					If index >= size_Renamed Then Throw New ArrayIndexOutOfBoundsException
 					Return list(index)
 				End Function
@@ -3215,7 +3215,7 @@ Namespace java.io
 		''' <summary>
 		''' Method for cloning arrays in case of using unsharing reading
 		''' </summary>
-		Private Shared Function cloneArray(ByVal array As Object) As Object
+		Private Shared Function cloneArray(  array As Object) As Object
 			If TypeOf array Is Object() Then
 				Return CType(array, Object()).clone()
 			ElseIf TypeOf array Is Boolean() Then

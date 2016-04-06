@@ -64,7 +64,7 @@ Namespace java.security
 		''' </param>
 		''' <param name="guard"> the Guard object that guards access to the object. </param>
 
-		Public Sub New(ByVal [object] As Object, ByVal guard As Guard)
+		Public Sub New(  [object] As Object,   guard As Guard)
 			Me.guard = guard
 			Me.object_Renamed = object_Renamed
 		End Sub
@@ -89,7 +89,7 @@ Namespace java.security
 		''' Writes this object out to a stream (i.e., serializes it).
 		''' We check the guard if there is one.
 		''' </summary>
-		Private Sub writeObject(ByVal oos As java.io.ObjectOutputStream)
+		Private Sub writeObject(  oos As java.io.ObjectOutputStream)
 			If guard IsNot Nothing Then guard.checkGuard(object_Renamed)
 
 			oos.defaultWriteObject()

@@ -58,7 +58,7 @@ Namespace java.security
 		''' </summary>
 		''' <param name="size"> the size (number of bits). </param>
 		''' <param name="random"> the source of randomness. </param>
-		Protected Friend MustOverride Sub engineInit(ByVal size As Integer, ByVal random As SecureRandom)
+		Protected Friend MustOverride Sub engineInit(  size As Integer,   random As SecureRandom)
 
 		''' <summary>
 		''' Initializes this parameter generator with a set of
@@ -69,7 +69,7 @@ Namespace java.security
 		''' </param>
 		''' <exception cref="InvalidAlgorithmParameterException"> if the given parameter
 		''' generation values are inappropriate for this parameter generator. </exception>
-		Protected Friend MustOverride Sub engineInit(ByVal genParamSpec As java.security.spec.AlgorithmParameterSpec, ByVal random As SecureRandom)
+		Protected Friend MustOverride Sub engineInit(  genParamSpec As java.security.spec.AlgorithmParameterSpec,   random As SecureRandom)
 
 		''' <summary>
 		''' Generates the parameters.

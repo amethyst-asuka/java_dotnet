@@ -54,21 +54,21 @@ Namespace java.awt.event
 		''' See the class description for <seealso cref="KeyEvent"/> for a definition of
 		''' a key typed event.
 		''' </summary>
-		Sub keyTyped(ByVal e As KeyEvent)
+		Sub keyTyped(  e As KeyEvent)
 
 		''' <summary>
 		''' Invoked when a key has been pressed.
 		''' See the class description for <seealso cref="KeyEvent"/> for a definition of
 		''' a key pressed event.
 		''' </summary>
-		Sub keyPressed(ByVal e As KeyEvent)
+		Sub keyPressed(  e As KeyEvent)
 
 		''' <summary>
 		''' Invoked when a key has been released.
 		''' See the class description for <seealso cref="KeyEvent"/> for a definition of
 		''' a key released event.
 		''' </summary>
-		Sub keyReleased(ByVal e As KeyEvent)
+		Sub keyReleased(  e As KeyEvent)
 	End Interface
 
 End Namespace

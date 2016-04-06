@@ -179,7 +179,7 @@ Namespace java.lang
 			''' Returns {@code true} is successfully registered; {@code false} if
 			''' loader's super class is not registered.
 			''' </summary>
-			Friend Shared Function register(ByVal c As [Class]) As Boolean
+			Friend Shared Function register(  c As [Class]) As Boolean
 				SyncLock loaderTypes
 					If loaderTypes.contains(c.BaseType) Then
 						' register the class loader as parallel capable
@@ -199,7 +199,7 @@ Namespace java.lang
 			''' Returns {@code true} if the given class loader type is
 			''' registered as parallel capable.
 			''' </summary>
-			Friend Shared Function isRegistered(ByVal c As [Class]) As Boolean
+			Friend Shared Function isRegistered(  c As [Class]) As Boolean
 				SyncLock loaderTypes
 					Return loaderTypes.contains(c)
 				End SyncLock
@@ -230,7 +230,7 @@ Namespace java.lang
 		Private ReadOnly domains As java.util.Set(Of java.security.ProtectionDomain)
 
 		' Invoked by the VM to record every loaded class with this loader.
-		Friend Overridable Sub addClass(ByVal c As [Class])
+		Friend Overridable Sub addClass(  c As [Class])
 			classes.Add(c)
 		End Sub
 
@@ -245,7 +245,7 @@ Namespace java.lang
 			Return Nothing
 		End Function
 
-		Private Sub New(ByVal unused As Void, ByVal parent As  ClassLoader)
+		Private Sub New(  unused As Void,   parent As  ClassLoader)
 			Me.parent = parent
 			If ParallelLoaders.isRegistered(Me.GetType()) Then
 				parallelLockMap = New ConcurrentDictionary(Of )
@@ -279,7 +279,7 @@ Namespace java.lang
 		'''          of a new class loader.
 		''' 
 		''' @since  1.2 </exception>
-		Protected Friend Sub New(ByVal parent As  ClassLoader)
+		Protected Friend Sub New(  parent As  ClassLoader)
 			Me.New(checkCreateClassLoader(), parent)
 		End Sub
 
@@ -318,7 +318,7 @@ Namespace java.lang
 		''' </returns>
 		''' <exception cref="ClassNotFoundException">
 		'''          If the class was not found </exception>
-		Public Overridable Function loadClass(ByVal name As String) As  [Class]
+		Public Overridable Function loadClass(  name As String) As  [Class]
 			Return loadClass(name, False)
 		End Function
 
@@ -362,7 +362,7 @@ Namespace java.lang
         ''' </returns>
         ''' <exception cref="ClassNotFoundException">
         '''          If the class could not be found </exception>
-        Protected Friend Overridable Function loadClass(ByVal name As String, ByVal resolve As Boolean) As [Class]
+        Protected Friend Overridable Function loadClass(  name As String,   resolve As Boolean) As [Class]
             SyncLock getClassLoadingLock(name)
                 ' First, check if the class has already been loaded
                 Dim c As [Class] = findLoadedClass(name)
@@ -415,7 +415,7 @@ Namespace java.lang
         ''' <seealso cref= #loadClass(String, boolean)
         ''' 
         ''' @since  1.7 </seealso>
-        Protected Friend Overridable Function getClassLoadingLock(ByVal className As String) As Object
+        Protected Friend Overridable Function getClassLoadingLock(  className As String) As Object
 			Dim lock As Object = Me
 			If parallelLockMap IsNot Nothing Then
 				Dim newLock As New Object
@@ -426,7 +426,7 @@ Namespace java.lang
 		End Function
 
 		' This method is invoked by the virtual machine to load a class.
-		Private Function loadClassInternal(ByVal name As String) As  [Class]
+		Private Function loadClassInternal(  name As String) As  [Class]
 			' For backward compatibility, explicitly lock on 'this' when
 			' the current class loader is not parallel capable.
 			If parallelLockMap Is Nothing Then
@@ -439,7 +439,7 @@ Namespace java.lang
 		End Function
 
         ' Invoked by the VM after loading class with this loader.
-        Private Sub checkPackageAccess(ByVal cls As [Class], ByVal pd As java.security.ProtectionDomain)
+        Private Sub checkPackageAccess(  cls As [Class],   pd As java.security.ProtectionDomain)
             Dim sm As SecurityManager = System.securityManager
             If sm IsNot Nothing Then
                 If sun.reflect.misc.ReflectUtil.isNonPublicProxyClass(cls) Then
@@ -482,7 +482,7 @@ Namespace java.lang
 		'''          If the class could not be found
 		''' 
 		''' @since  1.2 </exception>
-		Protected Friend Overridable Function findClass(ByVal name As String) As  [Class]
+		Protected Friend Overridable Function findClass(  name As String) As  [Class]
 			Throw New ClassNotFoundException(name)
 		End Function
 
@@ -527,7 +527,7 @@ Namespace java.lang
 		''' @deprecated  Replaced by {@link #defineClass(String, byte[], int, int)
 		''' defineClass(String, byte[], int, int)} 
 		<Obsolete(" Replaced by {@link #defineClass(String, byte[], int, int)")> _
-		Protected Friend Function defineClass(ByVal b As SByte(), ByVal [off] As Integer, ByVal len As Integer) As  [Class]
+		Protected Friend Function defineClass(  b As SByte(),   [off] As Integer,   len As Integer) As  [Class]
 			Return defineClass(Nothing, b, [off], len, Nothing)
 		End Function
 
@@ -588,7 +588,7 @@ Namespace java.lang
 		''' <seealso cref=  java.security.SecureClassLoader
 		''' 
 		''' @since  1.1 </seealso>
-		Protected Friend Function defineClass(ByVal name As String, ByVal b As SByte(), ByVal [off] As Integer, ByVal len As Integer) As  [Class]
+		Protected Friend Function defineClass(  name As String,   b As SByte(),   [off] As Integer,   len As Integer) As  [Class]
 			Return defineClass(name, b, [off], len, Nothing)
 		End Function
 
@@ -597,7 +597,7 @@ Namespace java.lang
 	'        - signer of this class matches signers for the rest of the classes in
 	'          package.
 	'    
-		Private Function preDefineClass(ByVal name As String, ByVal pd As java.security.ProtectionDomain) As java.security.ProtectionDomain
+		Private Function preDefineClass(  name As String,   pd As java.security.ProtectionDomain) As java.security.ProtectionDomain
 			If Not checkName(name) Then Throw New NoClassDefFoundError("IllegalName: " & name)
 
 			If (name IsNot Nothing) AndAlso name.StartsWith("java.") Then Throw New SecurityException("Prohibited package name: " & name.Substring(0, name.LastIndexOf("."c)))
@@ -608,14 +608,14 @@ Namespace java.lang
 			Return pd
 		End Function
 
-		Private Function defineClassSourceLocation(ByVal pd As java.security.ProtectionDomain) As String
+		Private Function defineClassSourceLocation(  pd As java.security.ProtectionDomain) As String
 			Dim cs As java.security.CodeSource = pd.codeSource
 			Dim source As String = Nothing
 			If cs IsNot Nothing AndAlso cs.location IsNot Nothing Then source = cs.location.ToString()
 			Return source
 		End Function
 
-		Private Sub postDefineClass(ByVal c As [Class], ByVal pd As java.security.ProtectionDomain)
+		Private Sub postDefineClass(  c As [Class],   pd As java.security.ProtectionDomain)
 			If pd.codeSource IsNot Nothing Then
 				Dim certs As java.security.cert.Certificate() = pd.codeSource.certificates
 				If certs IsNot Nothing Then signersers(c, certs)
@@ -686,7 +686,7 @@ Namespace java.lang
 		'''          contains classes that were signed by a different set of
 		'''          certificates than this [Class], or if <tt>name</tt> begins with
 		'''          "<tt>java.</tt>". </exception>
-		Protected Friend Function defineClass(ByVal name As String, ByVal b As SByte(), ByVal [off] As Integer, ByVal len As Integer, ByVal protectionDomain As java.security.ProtectionDomain) As  [Class]
+		Protected Friend Function defineClass(  name As String,   b As SByte(),   [off] As Integer,   len As Integer,   protectionDomain As java.security.ProtectionDomain) As  [Class]
 			protectionDomain = preDefineClass(name, protectionDomain)
 			Dim source As String = defineClassSourceLocation(protectionDomain)
 			Dim c As  [Class] = defineClass1(name, b, [off], len, protectionDomain, source)
@@ -755,7 +755,7 @@ Namespace java.lang
 		''' <seealso cref=      #defineClass(String, byte[], int, int, ProtectionDomain)
 		''' 
 		''' @since  1.5 </seealso>
-		Protected Friend Function defineClass(ByVal name As String, ByVal b As java.nio.ByteBuffer, ByVal protectionDomain As java.security.ProtectionDomain) As  [Class]
+		Protected Friend Function defineClass(  name As String,   b As java.nio.ByteBuffer,   protectionDomain As java.security.ProtectionDomain) As  [Class]
 			Dim len As Integer = b.remaining()
 
 			' Use byte[] if not a direct ByteBufer:
@@ -779,27 +779,27 @@ Namespace java.lang
 
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Private Function defineClass0(ByVal name As String, ByVal b As SByte(), ByVal [off] As Integer, ByVal len As Integer, ByVal pd As java.security.ProtectionDomain) As  [Class]
+		Private Function defineClass0(  name As String,   b As SByte(),   [off] As Integer,   len As Integer,   pd As java.security.ProtectionDomain) As  [Class]
 		End Function
 
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Private Function defineClass1(ByVal name As String, ByVal b As SByte(), ByVal [off] As Integer, ByVal len As Integer, ByVal pd As java.security.ProtectionDomain, ByVal source As String) As  [Class]
+		Private Function defineClass1(  name As String,   b As SByte(),   [off] As Integer,   len As Integer,   pd As java.security.ProtectionDomain,   source As String) As  [Class]
 		End Function
 
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Private Function defineClass2(ByVal name As String, ByVal b As java.nio.ByteBuffer, ByVal [off] As Integer, ByVal len As Integer, ByVal pd As java.security.ProtectionDomain, ByVal source As String) As  [Class]
+		Private Function defineClass2(  name As String,   b As java.nio.ByteBuffer,   [off] As Integer,   len As Integer,   pd As java.security.ProtectionDomain,   source As String) As  [Class]
 		End Function
 
 		' true if the name is null or has the potential to be a valid binary name
-		Private Function checkName(ByVal name As String) As Boolean
+		Private Function checkName(  name As String) As Boolean
 			If (name Is Nothing) OrElse (name.length() = 0) Then Return True
 			If (name.IndexOf("/"c) <> -1) OrElse ((Not sun.misc.VM.allowArraySyntax()) AndAlso (name.Chars(0) = "["c)) Then Return False
 			Return True
 		End Function
 
-		Private Sub checkCerts(ByVal name As String, ByVal cs As java.security.CodeSource)
+		Private Sub checkCerts(  name As String,   cs As java.security.CodeSource)
 			Dim i As Integer = name.LastIndexOf("."c)
 			Dim pname As String = If(i = -1, "", name.Substring(0, i))
 
@@ -821,7 +821,7 @@ Namespace java.lang
 		''' check to make sure the certs for the new class (certs) are the same as
 		''' the certs for the first class inserted in the package (pcerts)
 		''' </summary>
-		Private Function compareCerts(ByVal pcerts As java.security.cert.Certificate(), ByVal certs As java.security.cert.Certificate()) As Boolean
+		Private Function compareCerts(  pcerts As java.security.cert.Certificate(),   certs As java.security.cert.Certificate()) As Boolean
 			' certs can be null, indicating no certs.
 			If (certs Is Nothing) OrElse (certs.Length = 0) Then Return pcerts.Length = 0
 
@@ -871,13 +871,13 @@ Namespace java.lang
 		'''          If <tt>c</tt> is <tt>null</tt>.
 		''' </exception>
 		''' <seealso cref=  #defineClass(String, byte[], int, int) </seealso>
-		Protected Friend Sub resolveClass(ByVal c As [Class])
+		Protected Friend Sub resolveClass(  c As [Class])
 			resolveClass0(c)
 		End Sub
 
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Private Sub resolveClass0(ByVal c As [Class])
+		Private Sub resolveClass0(  c As [Class])
 		End Sub
 
 		''' <summary>
@@ -901,7 +901,7 @@ Namespace java.lang
 		''' </exception>
 		''' <seealso cref=  #ClassLoader(ClassLoader) </seealso>
 		''' <seealso cref=  #getParent() </seealso>
-		Protected Friend Function findSystemClass(ByVal name As String) As  [Class]
+		Protected Friend Function findSystemClass(  name As String) As  [Class]
 			Dim system_Renamed As  ClassLoader = systemClassLoader
 			If system_Renamed Is Nothing Then
 				If Not checkName(name) Then Throw New ClassNotFoundException(name)
@@ -916,7 +916,7 @@ Namespace java.lang
 		''' Returns a class loaded by the bootstrap class loader;
 		''' or return null if not found.
 		''' </summary>
-		Private Function findBootstrapClassOrNull(ByVal name As String) As  [Class]
+		Private Function findBootstrapClassOrNull(  name As String) As  [Class]
 			If Not checkName(name) Then Return Nothing
 
 			Return findBootstrapClass(name)
@@ -925,7 +925,7 @@ Namespace java.lang
 		' return null if not found
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Private Function findBootstrapClass(ByVal name As String) As  [Class]
+		Private Function findBootstrapClass(  name As String) As  [Class]
 		End Function
 
 		''' <summary>
@@ -941,14 +941,14 @@ Namespace java.lang
 		'''          not been loaded
 		''' 
 		''' @since  1.1 </returns>
-		Protected Friend Function findLoadedClass(ByVal name As String) As  [Class]
+		Protected Friend Function findLoadedClass(  name As String) As  [Class]
 			If Not checkName(name) Then Return Nothing
 			Return findLoadedClass0(name)
 		End Function
 
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Private final Function findLoadedClass0(ByVal name As String) As  [Class]
+		Private final Function findLoadedClass0(  name As String) As  [Class]
 		End Function
 
 		''' <summary>
@@ -962,7 +962,7 @@ Namespace java.lang
 		'''         The signers for the class
 		''' 
 		''' @since  1.1 </param>
-		Protected Friend Sub setSigners(ByVal c As [Class], ByVal signers As Object())
+		Protected Friend Sub setSigners(  c As [Class],   signers As Object())
 			c.signers = signers
 		End Sub
 
@@ -994,7 +994,7 @@ Namespace java.lang
 		'''          doesn't have adequate  privileges to get the resource.
 		''' 
 		''' @since  1.1 </returns>
-		Public Overridable Function getResource(ByVal name As String) As java.net.URL
+		Public Overridable Function getResource(  name As String) As java.net.URL
 			Dim url As java.net.URL
 			If parent IsNot Nothing Then
 				url = parent.getResource(name)
@@ -1037,7 +1037,7 @@ Namespace java.lang
 		''' <seealso cref=  #findResources(String)
 		''' 
 		''' @since  1.2 </seealso>
-		Public Overridable Function getResources(ByVal name As String) As System.Collections.IEnumerator(Of java.net.URL)
+		Public Overridable Function getResources(  name As String) As System.Collections.IEnumerator(Of java.net.URL)
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 			Dim tmp As System.Collections.IEnumerator(Of java.net.URL)() = CType(New System.Collections.IEnumerator(Of ?)(1){}, System.Collections.IEnumerator(Of java.net.URL)())
@@ -1062,7 +1062,7 @@ Namespace java.lang
 		'''          <tt>null</tt> if the resource could not be found
 		''' 
 		''' @since  1.2 </returns>
-		Protected Friend Overridable Function findResource(ByVal name As String) As java.net.URL
+		Protected Friend Overridable Function findResource(  name As String) As java.net.URL
 			Return Nothing
 		End Function
 
@@ -1082,7 +1082,7 @@ Namespace java.lang
 		'''          If I/O errors occur
 		''' 
 		''' @since  1.2 </exception>
-		Protected Friend Overridable Function findResources(ByVal name As String) As System.Collections.IEnumerator(Of java.net.URL)
+		Protected Friend Overridable Function findResources(  name As String) As System.Collections.IEnumerator(Of java.net.URL)
 			Return java.util.Collections.emptyEnumeration()
 		End Function
 
@@ -1120,7 +1120,7 @@ Namespace java.lang
 		'''          resource, or <tt>null</tt> if the resource could not be found
 		''' 
 		''' @since  1.1 </returns>
-		Public Shared Function getSystemResource(ByVal name As String) As java.net.URL
+		Public Shared Function getSystemResource(  name As String) As java.net.URL
 			Dim system_Renamed As  ClassLoader = systemClassLoader
 			If system_Renamed Is Nothing Then Return getBootstrapResource(name)
 			Return system_Renamed.getResource(name)
@@ -1145,7 +1145,7 @@ Namespace java.lang
 		'''          If I/O errors occur
 		''' 
 		''' @since  1.2 </exception>
-		Public Shared Function getSystemResources(ByVal name As String) As System.Collections.IEnumerator(Of java.net.URL)
+		Public Shared Function getSystemResources(  name As String) As System.Collections.IEnumerator(Of java.net.URL)
 			Dim system_Renamed As  ClassLoader = systemClassLoader
 			If system_Renamed Is Nothing Then Return getBootstrapResources(name)
 			Return system_Renamed.getResources(name)
@@ -1154,7 +1154,7 @@ Namespace java.lang
 		''' <summary>
 		''' Find resources from the VM's built-in classloader.
 		''' </summary>
-		Private Shared Function getBootstrapResource(ByVal name As String) As java.net.URL
+		Private Shared Function getBootstrapResource(  name As String) As java.net.URL
 			Dim ucp As sun.misc.URLClassPath = bootstrapClassPath
 			Dim res As sun.misc.Resource = ucp.getResource(name)
 			Return If(res IsNot Nothing, res.uRL, Nothing)
@@ -1163,7 +1163,7 @@ Namespace java.lang
 		''' <summary>
 		''' Find resources from the VM's built-in classloader.
 		''' </summary>
-		Private Shared Function getBootstrapResources(ByVal name As String) As System.Collections.IEnumerator(Of java.net.URL)
+		Private Shared Function getBootstrapResources(  name As String) As System.Collections.IEnumerator(Of java.net.URL)
 			Dim e As System.Collections.IEnumerator(Of sun.misc.Resource) = bootstrapClassPath.getResources(name)
 			Return New EnumerationAnonymousInnerClassHelper(Of E)
 		End Function
@@ -1200,7 +1200,7 @@ Namespace java.lang
 		'''          if the resource could not be found
 		''' 
 		''' @since  1.1 </returns>
-		Public Overridable Function getResourceAsStream(ByVal name As String) As java.io.InputStream
+		Public Overridable Function getResourceAsStream(  name As String) As java.io.InputStream
 			Dim url As java.net.URL = getResource(name)
 			Try
 				Return If(url IsNot Nothing, url.openStream(), Nothing)
@@ -1221,7 +1221,7 @@ Namespace java.lang
 		'''          if the resource could not be found
 		''' 
 		''' @since  1.1 </returns>
-		Public Shared Function getSystemResourceAsStream(ByVal name As String) As java.io.InputStream
+		Public Shared Function getSystemResourceAsStream(  name As String) As java.io.InputStream
 			Dim url As java.net.URL = getSystemResource(name)
 			Try
 				Return If(url IsNot Nothing, url.openStream(), Nothing)
@@ -1361,7 +1361,7 @@ Namespace java.lang
 
 		' Returns true if the specified class loader can be found in this class
 		' loader's delegation chain.
-		Friend Overridable Function isAncestor(ByVal cl As  ClassLoader) As Boolean
+		Friend Overridable Function isAncestor(  cl As  ClassLoader) As Boolean
 			Dim acl As  ClassLoader = Me
 			Do
 				acl = acl.parent
@@ -1375,7 +1375,7 @@ Namespace java.lang
 		' class loader 'from' is same As  [Class] loader 'to' or an ancestor
 		' of 'to'.  The class loader in a system domain can access
 		' any class loader.
-		Private Shared Function needsClassLoaderPermissionCheck(ByVal [from] As  ClassLoader, ByVal [to] As  ClassLoader) As Boolean
+		Private Shared Function needsClassLoaderPermissionCheck(  [from] As  ClassLoader,   [to] As  ClassLoader) As Boolean
 			If [from] Is [to] Then Return False
 
 			If [from] Is Nothing Then Return False
@@ -1384,7 +1384,7 @@ Namespace java.lang
 		End Function
 
 		' Returns the class's class loader, or null if none.
-		Shared Function getClassLoader(ByVal caller As [Class]) As  ClassLoader
+		Shared Function getClassLoader(  caller As [Class]) As  ClassLoader
 			' This can be null if the VM is requesting it
 			If caller Is Nothing Then Return Nothing
 			' Circumvent security check since this is package-private
@@ -1396,7 +1396,7 @@ Namespace java.lang
 	'     * if caller's class loader is not null and caller's class loader
 	'     * is not the same as or an ancestor of the given cl argument.
 	'     
-		Shared Sub checkClassLoaderPermission(ByVal cl As  ClassLoader, ByVal caller As [Class])
+		Shared Sub checkClassLoaderPermission(  cl As  ClassLoader,   caller As [Class])
 			Dim sm As SecurityManager = System.securityManager
 			If sm IsNot Nothing Then
 				' caller can be null if the VM is requesting it
@@ -1456,7 +1456,7 @@ Namespace java.lang
 		'''          class loader or one of its ancestors
 		''' 
 		''' @since  1.2 </exception>
-		Protected Friend Overridable Function definePackage(ByVal name As String, ByVal specTitle As String, ByVal specVersion As String, ByVal specVendor As String, ByVal implTitle As String, ByVal implVersion As String, ByVal implVendor As String, ByVal sealBase As java.net.URL) As Package
+		Protected Friend Overridable Function definePackage(  name As String,   specTitle As String,   specVersion As String,   specVendor As String,   implTitle As String,   implVersion As String,   implVendor As String,   sealBase As java.net.URL) As Package
 			SyncLock packages
 				Dim pkg As Package = getPackage(name)
 				If pkg IsNot Nothing Then Throw New IllegalArgumentException(name)
@@ -1477,7 +1477,7 @@ Namespace java.lang
 		'''          <tt>null</tt> if not found
 		''' 
 		''' @since  1.2 </returns>
-		Protected Friend Overridable Function getPackage(ByVal name As String) As Package
+		Protected Friend Overridable Function getPackage(  name As String) As Package
 			Dim pkg As Package
 			SyncLock packages
 				pkg = packages(name)
@@ -1551,7 +1551,7 @@ Namespace java.lang
 		''' <seealso cref=  System#mapLibraryName(String)
 		''' 
 		''' @since  1.2 </seealso>
-		Protected Friend Overridable Function findLibrary(ByVal libname As String) As String
+		Protected Friend Overridable Function findLibrary(  libname As String) As String
 			Return Nothing
 		End Function
 
@@ -1586,19 +1586,19 @@ Namespace java.lang
 			Friend loaded As Boolean
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 			<DllImport("unknown")> _
-			Friend Sub load(ByVal name As String, ByVal isBuiltin As Boolean)
+			Friend Sub load(  name As String,   isBuiltin As Boolean)
 			End Sub
 
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 			<DllImport("unknown")> _
-			Friend Function find(ByVal name As String) As Long
+			Friend Function find(  name As String) As Long
 			End Function
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 			<DllImport("unknown")> _
-			Friend Sub unload(ByVal name As String, ByVal isBuiltin As Boolean)
+			Friend Sub unload(  name As String,   isBuiltin As Boolean)
 			End Sub
 
-			Public Sub New(ByVal fromClass As [Class], ByVal name As String, ByVal isBuiltin As Boolean)
+			Public Sub New(  fromClass As [Class],   name As String,   isBuiltin As Boolean)
 				Me.name = name
 				Me.fromClass = fromClass
 				Me.isBuiltin = isBuiltin
@@ -1650,7 +1650,7 @@ Namespace java.lang
 		Private Shared usr_paths As String()
 		Private Shared sys_paths As String()
 
-		Private Shared Function initializePath(ByVal propname As String) As String()
+		Private Shared Function initializePath(  propname As String) As String()
 			Dim ldpath As String = System.getProperty(propname, "")
 			Dim ps As String = File.pathSeparator
 			Dim ldlen As Integer = ldpath.length()
@@ -1686,7 +1686,7 @@ Namespace java.lang
 		End Function
 
 		' Invoked in the java.lang.Runtime class to implement load and loadLibrary.
-		Friend Shared Sub loadLibrary(ByVal fromClass As [Class], ByVal name As String, ByVal isAbsolute As Boolean)
+		Friend Shared Sub loadLibrary(  fromClass As [Class],   name As String,   isAbsolute As Boolean)
 			Dim loader As  ClassLoader = If(fromClass Is Nothing, Nothing, fromClass.classLoader)
 			If sys_paths Is Nothing Then
 				usr_paths = initializePath("java.library.path")
@@ -1725,10 +1725,10 @@ Namespace java.lang
 
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Private Shared Function findBuiltinLib(ByVal name As String) As String
+		Private Shared Function findBuiltinLib(  name As String) As String
 		End Function
 
-		Private Shared Function loadLibrary0(ByVal fromClass As [Class], ByVal file As java.io.File) As Boolean
+		Private Shared Function loadLibrary0(  fromClass As [Class],   file As java.io.File) As Boolean
 			' Check to see if we're attempting to access a static library
 			Dim name As String = findBuiltinLib(file.name)
 			Dim isBuiltin As Boolean = (name IsNot Nothing)
@@ -1802,7 +1802,7 @@ Namespace java.lang
 		End Class
 
 		' Invoked in the VM class linking code.
-		Shared Function findNative(ByVal loader As  ClassLoader, ByVal name As String) As Long
+		Shared Function findNative(  loader As  ClassLoader,   name As String) As Long
 			Dim libs As List(Of NativeLibrary) = If(loader IsNot Nothing, loader.nativeLibraries, systemNativeLibraries)
 			SyncLock libs
 				Dim size As Integer = libs.Count
@@ -1854,7 +1854,7 @@ Namespace java.lang
 		''' 
 		''' @since  1.4 </param>
 		Public Overridable Property defaultAssertionStatus As Boolean
-			Set(ByVal enabled As Boolean)
+			Set(  enabled As Boolean)
 				SyncLock assertionLock
 					If classAssertionStatus Is Nothing Then initializeJavaAssertionMaps()
     
@@ -1899,7 +1899,7 @@ Namespace java.lang
 		'''         have assertions disabled by default.
 		''' 
 		''' @since  1.4 </param>
-		Public Overridable Sub setPackageAssertionStatus(ByVal packageName As String, ByVal enabled As Boolean)
+		Public Overridable Sub setPackageAssertionStatus(  packageName As String,   enabled As Boolean)
 			SyncLock assertionLock
 				If packageAssertionStatus Is Nothing Then initializeJavaAssertionMaps()
 
@@ -1928,7 +1928,7 @@ Namespace java.lang
 		'''         class is to have assertions disabled.
 		''' 
 		''' @since  1.4 </param>
-		Public Overridable Sub setClassAssertionStatus(ByVal className As String, ByVal enabled As Boolean)
+		Public Overridable Sub setClassAssertionStatus(  className As String,   enabled As Boolean)
 			SyncLock assertionLock
 				If classAssertionStatus Is Nothing Then initializeJavaAssertionMaps()
 
@@ -1978,7 +1978,7 @@ Namespace java.lang
 		''' <seealso cref=  #setDefaultAssertionStatus(boolean)
 		''' 
 		''' @since  1.4 </seealso>
-		Friend Overridable Function desiredAssertionStatus(ByVal className As String) As Boolean
+		Friend Overridable Function desiredAssertionStatus(  className As String) As Boolean
 			SyncLock assertionLock
 				' assert classAssertionStatus   != null;
 				' assert packageAssertionStatus != null;
@@ -2038,7 +2038,7 @@ Namespace java.lang
 
 		Private parent As  ClassLoader
 
-		Friend Sub New(ByVal parent As  ClassLoader)
+		Friend Sub New(  parent As  ClassLoader)
 			Me.parent = parent
 		End Sub
 

@@ -346,7 +346,7 @@ Namespace java.awt
 		''' and the vertical gap is specified by <code>vgap</code>. </summary>
 		''' <param name="hgap">   the horizontal gap. </param>
 		''' <param name="vgap">   the vertical gap. </param>
-		Public Sub New(ByVal hgap As Integer, ByVal vgap As Integer)
+		Public Sub New(  hgap As Integer,   vgap As Integer)
 			Me.hgap = hgap
 			Me.vgap = vgap
 		End Sub
@@ -359,7 +359,7 @@ Namespace java.awt
 			Get
 				Return hgap
 			End Get
-			Set(ByVal hgap As Integer)
+			Set(  hgap As Integer)
 				Me.hgap = hgap
 			End Set
 		End Property
@@ -373,7 +373,7 @@ Namespace java.awt
 			Get
 				Return vgap
 			End Get
-			Set(ByVal vgap As Integer)
+			Set(  vgap As Integer)
 				Me.vgap = vgap
 			End Set
 		End Property
@@ -397,7 +397,7 @@ Namespace java.awt
 		'''                 a string, or if it not one of the five specified
 		'''              constants.
 		''' @since   JDK1.1 </exception>
-		Public Overridable Sub addLayoutComponent(ByVal comp As Component, ByVal constraints As Object) Implements LayoutManager2.addLayoutComponent
+		Public Overridable Sub addLayoutComponent(  comp As Component,   constraints As Object) Implements LayoutManager2.addLayoutComponent
 		  SyncLock comp.treeLock
 			If (constraints Is Nothing) OrElse (TypeOf constraints Is String) Then
 				addLayoutComponent(CStr(constraints), comp)
@@ -409,7 +409,7 @@ Namespace java.awt
 
 		''' @deprecated  replaced by <code>addLayoutComponent(Component, Object)</code>. 
 		<Obsolete(" replaced by <code>addLayoutComponent(Component, Object)</code>.")> _
-		Public Overridable Sub addLayoutComponent(ByVal name As String, ByVal comp As Component) Implements LayoutManager.addLayoutComponent
+		Public Overridable Sub addLayoutComponent(  name As String,   comp As Component) Implements LayoutManager.addLayoutComponent
 		  SyncLock comp.treeLock
 			' Special case:  treat null the same as "Center". 
 			If name Is Nothing Then name = "Center"
@@ -448,7 +448,7 @@ Namespace java.awt
 		''' <param name="comp">   the component to be removed. </param>
 		''' <seealso cref=     java.awt.Container#remove(java.awt.Component) </seealso>
 		''' <seealso cref=     java.awt.Container#removeAll() </seealso>
-		Public Overridable Sub removeLayoutComponent(ByVal comp As Component) Implements LayoutManager.removeLayoutComponent
+		Public Overridable Sub removeLayoutComponent(  comp As Component) Implements LayoutManager.removeLayoutComponent
 		  SyncLock comp.treeLock
 			If comp Is center Then
 				center = Nothing
@@ -487,7 +487,7 @@ Namespace java.awt
 		'''              not one of the nine specified constants </exception>
 		''' <seealso cref=     #addLayoutComponent(java.awt.Component, java.lang.Object)
 		''' @since 1.5 </seealso>
-		Public Overridable Function getLayoutComponent(ByVal constraints As Object) As Component
+		Public Overridable Function getLayoutComponent(  constraints As Object) As Component
 			If CENTER.Equals(constraints) Then
 				Return center
 			ElseIf NORTH.Equals(constraints) Then
@@ -535,7 +535,7 @@ Namespace java.awt
 		''' <exception cref="NullPointerException">  if the target parameter is null </exception>
 		''' <seealso cref=     #addLayoutComponent(java.awt.Component, java.lang.Object)
 		''' @since 1.5 </seealso>
-		Public Overridable Function getLayoutComponent(ByVal target As Container, ByVal constraints As Object) As Component
+		Public Overridable Function getLayoutComponent(  target As Container,   constraints As Object) As Component
 			Dim ltr As Boolean = target.componentOrientation.leftToRight
 			Dim result As Component = Nothing
 
@@ -568,7 +568,7 @@ Namespace java.awt
 		'''          in this layout </returns>
 		''' <seealso cref= #addLayoutComponent(java.awt.Component, java.lang.Object)
 		''' @since 1.5 </seealso>
-		Public Overridable Function getConstraints(ByVal comp As Component) As Object
+		Public Overridable Function getConstraints(  comp As Component) As Object
 			'fix for 6242148 : API method java.awt.BorderLayout.getConstraints(null) should return null
 			If comp Is Nothing Then Return Nothing
 			If comp Is center Then
@@ -606,7 +606,7 @@ Namespace java.awt
 		''' <seealso cref=     java.awt.Container </seealso>
 		''' <seealso cref=     java.awt.BorderLayout#preferredLayoutSize </seealso>
 		''' <seealso cref=     java.awt.Container#getMinimumSize() </seealso>
-		Public Overridable Function minimumLayoutSize(ByVal target As Container) As Dimension Implements LayoutManager.minimumLayoutSize
+		Public Overridable Function minimumLayoutSize(  target As Container) As Dimension Implements LayoutManager.minimumLayoutSize
 		  SyncLock target.treeLock
 			Dim [dim] As New Dimension(0, 0)
 
@@ -666,7 +666,7 @@ Namespace java.awt
 		''' <seealso cref=     java.awt.Container </seealso>
 		''' <seealso cref=     java.awt.BorderLayout#minimumLayoutSize </seealso>
 		''' <seealso cref=     java.awt.Container#getPreferredSize() </seealso>
-		Public Overridable Function preferredLayoutSize(ByVal target As Container) As Dimension Implements LayoutManager.preferredLayoutSize
+		Public Overridable Function preferredLayoutSize(  target As Container) As Dimension Implements LayoutManager.preferredLayoutSize
 		  SyncLock target.treeLock
 			Dim [dim] As New Dimension(0, 0)
 
@@ -719,7 +719,7 @@ Namespace java.awt
 		''' <seealso cref= Container </seealso>
 		''' <seealso cref= #minimumLayoutSize </seealso>
 		''' <seealso cref= #preferredLayoutSize </seealso>
-		Public Overridable Function maximumLayoutSize(ByVal target As Container) As Dimension Implements LayoutManager2.maximumLayoutSize
+		Public Overridable Function maximumLayoutSize(  target As Container) As Dimension Implements LayoutManager2.maximumLayoutSize
 			Return New Dimension( java.lang.[Integer].Max_Value,  java.lang.[Integer].Max_Value)
 		End Function
 
@@ -730,7 +730,7 @@ Namespace java.awt
 		''' where 0 represents alignment along the origin, 1 is aligned
 		''' the furthest away from the origin, 0.5 is centered, etc.
 		''' </summary>
-		Public Overridable Function getLayoutAlignmentX(ByVal parent As Container) As Single Implements LayoutManager2.getLayoutAlignmentX
+		Public Overridable Function getLayoutAlignmentX(  parent As Container) As Single Implements LayoutManager2.getLayoutAlignmentX
 			Return 0.5f
 		End Function
 
@@ -741,7 +741,7 @@ Namespace java.awt
 		''' where 0 represents alignment along the origin, 1 is aligned
 		''' the furthest away from the origin, 0.5 is centered, etc.
 		''' </summary>
-		Public Overridable Function getLayoutAlignmentY(ByVal parent As Container) As Single Implements LayoutManager2.getLayoutAlignmentY
+		Public Overridable Function getLayoutAlignmentY(  parent As Container) As Single Implements LayoutManager2.getLayoutAlignmentY
 			Return 0.5f
 		End Function
 
@@ -749,7 +749,7 @@ Namespace java.awt
 		''' Invalidates the layout, indicating that if the layout manager
 		''' has cached information it should be discarded.
 		''' </summary>
-		Public Overridable Sub invalidateLayout(ByVal target As Container) Implements LayoutManager2.invalidateLayout
+		Public Overridable Sub invalidateLayout(  target As Container) Implements LayoutManager2.invalidateLayout
 		End Sub
 
 		''' <summary>
@@ -770,7 +770,7 @@ Namespace java.awt
 		''' <param name="target">   the container in which to do the layout. </param>
 		''' <seealso cref=     java.awt.Container </seealso>
 		''' <seealso cref=     java.awt.Container#doLayout() </seealso>
-		Public Overridable Sub layoutContainer(ByVal target As Container) Implements LayoutManager.layoutContainer
+		Public Overridable Sub layoutContainer(  target As Container) Implements LayoutManager.layoutContainer
 		  SyncLock target.treeLock
 			Dim insets_Renamed As Insets = target.insets
 			Dim top As Integer = insets_Renamed.top
@@ -820,7 +820,7 @@ Namespace java.awt
 		''' <param name="key">     The desired absolute position,
 		'''                  either NORTH, SOUTH, EAST, or WEST. </param>
 		''' <param name="ltr">     Is the component line direction left-to-right? </param>
-		Private Function getChild(ByVal key As String, ByVal ltr As Boolean) As Component
+		Private Function getChild(  key As String,   ltr As Boolean) As Component
 			Dim result As Component = Nothing
 
 			If key = NORTH Then

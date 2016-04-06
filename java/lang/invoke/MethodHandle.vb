@@ -439,7 +439,7 @@ Namespace java.lang.invoke
 
 			Private ReadOnly outerInstance As MethodHandle
 
-			Public Sub New(ByVal outerInstance As MethodHandle)
+			Public Sub New(  outerInstance As MethodHandle)
 				Me.outerInstance = outerInstance
 			End Sub
 
@@ -471,7 +471,7 @@ Namespace java.lang.invoke
 		''' </summary>
 		' @param type type (permanently assigned) of the new method handle
 		'non-public
-	 Friend Sub New(ByVal type As MethodType, ByVal form As LambdaForm)
+	 Friend Sub New(  type As MethodType,   form As LambdaForm)
 			type.GetType() ' explicit NPE
 			form.GetType() ' explicit NPE
 			Me.type_Renamed = type
@@ -498,7 +498,7 @@ Namespace java.lang.invoke
 		''' <exception cref="Throwable"> anything thrown by the underlying method propagates unchanged through the method handle call </exception>
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Public final PolymorphicSignature Function invokeExact(ParamArray ByVal args As Object()) As Object
+		Public final PolymorphicSignature Function invokeExact(ParamArray   args As Object()) As Object
 		End Function
 
 		''' <summary>
@@ -537,7 +537,7 @@ Namespace java.lang.invoke
 		''' <exception cref="Throwable"> anything thrown by the underlying method propagates unchanged through the method handle call </exception>
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Public final PolymorphicSignature Function invoke(ParamArray ByVal args As Object()) As Object
+		Public final PolymorphicSignature Function invoke(ParamArray   args As Object()) As Object
 		End Function
 
 		''' <summary>
@@ -559,7 +559,7 @@ Namespace java.lang.invoke
 		'non-public
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 	 <DllImport("unknown")> _
-	 Friend final PolymorphicSignature Function invokeBasic(ParamArray ByVal args As Object()) As Object
+	 Friend final PolymorphicSignature Function invokeBasic(ParamArray   args As Object()) As Object
 	 End Function
 
 		''' <summary>
@@ -571,7 +571,7 @@ Namespace java.lang.invoke
 		'non-public
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 	 <DllImport("unknown")> _
-	 Friend Shared PolymorphicSignature Function linkToVirtual(ParamArray ByVal args As Object()) As Object
+	 Friend Shared PolymorphicSignature Function linkToVirtual(ParamArray   args As Object()) As Object
 	 End Function
 
 		''' <summary>
@@ -583,7 +583,7 @@ Namespace java.lang.invoke
 		'non-public
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 	 <DllImport("unknown")> _
-	 Friend Shared PolymorphicSignature Function linkToStatic(ParamArray ByVal args As Object()) As Object
+	 Friend Shared PolymorphicSignature Function linkToStatic(ParamArray   args As Object()) As Object
 	 End Function
 
 		''' <summary>
@@ -595,7 +595,7 @@ Namespace java.lang.invoke
 		'non-public
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 	 <DllImport("unknown")> _
-	 Friend Shared PolymorphicSignature Function linkToSpecial(ParamArray ByVal args As Object()) As Object
+	 Friend Shared PolymorphicSignature Function linkToSpecial(ParamArray   args As Object()) As Object
 	 End Function
 
 		''' <summary>
@@ -607,7 +607,7 @@ Namespace java.lang.invoke
 		'non-public
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 	 <DllImport("unknown")> _
-	 Friend Shared PolymorphicSignature Function linkToInterface(ParamArray ByVal args As Object()) As Object
+	 Friend Shared PolymorphicSignature Function linkToInterface(ParamArray   args As Object()) As Object
 	 End Function
 
 		''' <summary>
@@ -659,7 +659,7 @@ Namespace java.lang.invoke
 		''' <exception cref="WrongMethodTypeException"> if the target's type cannot be adjusted to take the given number of {@code Object} arguments </exception>
 		''' <exception cref="Throwable"> anything thrown by the target method invocation </exception>
 		''' <seealso cref= MethodHandles#spreadInvoker </seealso>
-		Public Overridable Function invokeWithArguments(ParamArray ByVal arguments As Object()) As Object
+		Public Overridable Function invokeWithArguments(ParamArray   arguments As Object()) As Object
 			Dim invocationType As MethodType = MethodType.genericMethodType(If(arguments Is Nothing, 0, arguments.Length))
 			Return invocationType.invokers().spreadInvoker(0).invokeExact(asType(invocationType), arguments)
 		End Function
@@ -681,7 +681,7 @@ Namespace java.lang.invoke
 		''' <exception cref="ClassCastException"> if an argument cannot be converted by reference casting </exception>
 		''' <exception cref="WrongMethodTypeException"> if the target's type cannot be adjusted to take the given number of {@code Object} arguments </exception>
 		''' <exception cref="Throwable"> anything thrown by the target method invocation </exception>
-		Public Overridable Function invokeWithArguments(Of T1)(ByVal arguments As IList(Of T1)) As Object
+		Public Overridable Function invokeWithArguments(Of T1)(  arguments As IList(Of T1)) As Object
 			Return invokeWithArguments(arguments.ToArray())
 		End Function
 
@@ -782,7 +782,7 @@ Namespace java.lang.invoke
 		''' <exception cref="NullPointerException"> if {@code newType} is a null reference </exception>
 		''' <exception cref="WrongMethodTypeException"> if the conversion cannot be made </exception>
 		''' <seealso cref= MethodHandles#explicitCastArguments </seealso>
-		Public Overridable Function asType(ByVal newType As MethodType) As MethodHandle
+		Public Overridable Function asType(  newType As MethodType) As MethodHandle
 			' Fast path alternative to a heavyweight {@code asType} call.
 			' Return 'this' if the conversion will be a no-op.
 			If newType Is type_Renamed Then Return Me
@@ -792,7 +792,7 @@ Namespace java.lang.invoke
 			Return asTypeUncached(newType)
 		End Function
 
-		Private Function asTypeCached(ByVal newType As MethodType) As MethodHandle
+		Private Function asTypeCached(  newType As MethodType) As MethodHandle
 			Dim atc As MethodHandle = asTypeCache
 			If atc IsNot Nothing AndAlso newType Is atc.type_Renamed Then Return atc
 			Return Nothing
@@ -801,7 +801,7 @@ Namespace java.lang.invoke
 		''' <summary>
 		''' Override this to change asType behavior. </summary>
 		'non-public
-	 Friend Overridable Function asTypeUncached(ByVal newType As MethodType) As MethodHandle
+	 Friend Overridable Function asTypeUncached(  newType As MethodType) As MethodHandle
 			If Not type_Renamed.isConvertibleTo(newType) Then Throw New WrongMethodTypeException("cannot convert " & Me & " to " & newType)
 				asTypeCache = MethodHandleImpl.makePairwiseConvert(Me, newType, True)
 				Return asTypeCache
@@ -895,7 +895,7 @@ Namespace java.lang.invoke
 		'''         <a href="MethodHandle.html#maxarity">too many parameters</a> </exception>
 		''' <exception cref="WrongMethodTypeException"> if the implied {@code asType} call fails </exception>
 		''' <seealso cref= #asCollector </seealso>
-		Public Overridable Function asSpreader(ByVal arrayType As [Class], ByVal arrayLength As Integer) As MethodHandle
+		Public Overridable Function asSpreader(  arrayType As [Class],   arrayLength As Integer) As MethodHandle
 			Dim postSpreadType As MethodType = asSpreaderChecks(arrayType, arrayLength)
 			Dim arity As Integer = type().parameterCount()
 			Dim spreadArgPos As Integer = arity - arrayLength
@@ -910,7 +910,7 @@ Namespace java.lang.invoke
 		''' See if {@code asSpreader} can be validly called with the given arguments.
 		''' Return the type of the method handle call after spreading but before conversions.
 		''' </summary>
-		Private Function asSpreaderChecks(ByVal arrayType As [Class], ByVal arrayLength As Integer) As MethodType
+		Private Function asSpreaderChecks(  arrayType As [Class],   arrayLength As Integer) As MethodType
 			spreadArrayChecks(arrayType, arrayLength)
 			Dim nargs As Integer = type().parameterCount()
 			If nargs < arrayLength OrElse arrayLength < 0 Then Throw newIllegalArgumentException("bad spread array length")
@@ -935,7 +935,7 @@ Namespace java.lang.invoke
 			Throw newInternalError("should not return", Nothing)
 		End Function
 
-		Private Sub spreadArrayChecks(ByVal arrayType As [Class], ByVal arrayLength As Integer)
+		Private Sub spreadArrayChecks(  arrayType As [Class],   arrayLength As Integer)
 			Dim arrayElement As  [Class] = arrayType.componentType
 			If arrayElement Is Nothing Then Throw newIllegalArgumentException("not an array type", arrayType)
 			If (arrayLength And &H7F) <> arrayLength Then
@@ -1015,7 +1015,7 @@ Namespace java.lang.invoke
 		''' <exception cref="WrongMethodTypeException"> if the implied {@code asType} call fails </exception>
 		''' <seealso cref= #asSpreader </seealso>
 		''' <seealso cref= #asVarargsCollector </seealso>
-		Public Overridable Function asCollector(ByVal arrayType As [Class], ByVal arrayLength As Integer) As MethodHandle
+		Public Overridable Function asCollector(  arrayType As [Class],   arrayLength As Integer) As MethodHandle
 			asCollectorChecks(arrayType, arrayLength)
 			Dim collectArgPos As Integer = type().parameterCount() - 1
 			Dim mh As BoundMethodHandle = rebind()
@@ -1032,7 +1032,7 @@ Namespace java.lang.invoke
 		''' Return false if the last parameter is not an exact match to arrayType.
 		''' </summary>
 		'non-public
-	 Friend Overridable Function asCollectorChecks(ByVal arrayType As [Class], ByVal arrayLength As Integer) As Boolean
+	 Friend Overridable Function asCollectorChecks(  arrayType As [Class],   arrayLength As Integer) As Boolean
 			spreadArrayChecks(arrayType, arrayLength)
 			Dim nargs As Integer = type().parameterCount()
 			If nargs <> 0 Then
@@ -1192,7 +1192,7 @@ Namespace java.lang.invoke
 		''' <seealso cref= #asCollector </seealso>
 		''' <seealso cref= #isVarargsCollector </seealso>
 		''' <seealso cref= #asFixedArity </seealso>
-		Public Overridable Function asVarargsCollector(ByVal arrayType As [Class]) As MethodHandle
+		Public Overridable Function asVarargsCollector(  arrayType As [Class]) As MethodHandle
 			arrayType.GetType() ' explicit NPE
 			Dim lastMatch As Boolean = asCollectorChecks(arrayType, 0)
 			If varargsCollector AndAlso lastMatch Then Return Me
@@ -1292,7 +1292,7 @@ Namespace java.lang.invoke
 		''' <exception cref="ClassCastException"> if {@code x} cannot be converted
 		'''         to the leading parameter type of the target </exception>
 		''' <seealso cref= MethodHandles#insertArguments </seealso>
-		Public Overridable Function bindTo(ByVal x As Object) As MethodHandle
+		Public Overridable Function bindTo(  x As Object) As MethodHandle
 			x = type_Renamed.leadingReferenceParameter().cast(x) ' throw CCE if needed
 			Return bindArgumentL(0, x)
 		End Function
@@ -1332,12 +1332,12 @@ Namespace java.lang.invoke
 
 		' Other transforms to do:  convert, explicitCast, permute, drop, filter, fold, GWT, catch
 
-		Friend Overridable Function bindArgumentL(ByVal pos As Integer, ByVal value As Object) As BoundMethodHandle
+		Friend Overridable Function bindArgumentL(  pos As Integer,   value As Object) As BoundMethodHandle
 			Return rebind().bindArgumentL(pos, value)
 		End Function
 
 		'non-public
-		Friend Overridable Function setVarargs(ByVal member As MemberName) As MethodHandle
+		Friend Overridable Function setVarargs(  member As MemberName) As MethodHandle
 			If Not member.varargs Then Return Me
 			Dim arrayType As  [Class] = type().lastParameterType()
 			If arrayType.array Then Return MethodHandleImpl.makeVarargsCollector(Me, arrayType)
@@ -1345,7 +1345,7 @@ Namespace java.lang.invoke
 		End Function
 
 		'non-public
-		Friend Overridable Function viewAsType(ByVal newType As MethodType, ByVal [strict] As Boolean) As MethodHandle
+		Friend Overridable Function viewAsType(  newType As MethodType,   [strict] As Boolean) As MethodHandle
 			' No actual conversions, just a new view of the same method.
 			' Note that this operation must not produce a DirectMethodHandle,
 			' because retyped DMHs, like any transformed MHs,
@@ -1357,7 +1357,7 @@ Namespace java.lang.invoke
 		End Function
 
 		'non-public
-		Friend Overridable Function viewAsTypeChecks(ByVal newType As MethodType, ByVal [strict] As Boolean) As Boolean
+		Friend Overridable Function viewAsTypeChecks(  newType As MethodType,   [strict] As Boolean) As Boolean
 			If [strict] Then
 				assert(type().isViewableAs(newType, True)) : Me, newType
 			Else
@@ -1390,7 +1390,7 @@ Namespace java.lang.invoke
 		End Function
 
 		'non-public
-		Friend Overridable Function withInternalMemberName(ByVal member As MemberName, ByVal isInvokeSpecial As Boolean) As MethodHandle
+		Friend Overridable Function withInternalMemberName(  member As MemberName,   isInvokeSpecial As Boolean) As MethodHandle
 			If member IsNot Nothing Then
 				Return MethodHandleImpl.makeWrappedMember(Me, member, isInvokeSpecial)
 			ElseIf internalMemberName() Is Nothing Then
@@ -1427,7 +1427,7 @@ Namespace java.lang.invoke
 		'// All these methods assume arguments are already validated.
 
 		'non-public
-		Friend MustOverride Function copyWith(ByVal mt As MethodType, ByVal lf As LambdaForm) As MethodHandle
+		Friend MustOverride Function copyWith(  mt As MethodType,   lf As LambdaForm) As MethodHandle
 
 		''' <summary>
 		''' Require this method handle to be a BMH, or else replace it with a "wrapper" BMH.
@@ -1443,7 +1443,7 @@ Namespace java.lang.invoke
 		''' Use with discretion.
 		''' </summary>
 		'non-public
-		Friend Overridable Sub updateForm(ByVal newForm As LambdaForm)
+		Friend Overridable Sub updateForm(  newForm As LambdaForm)
 			assert(newForm.customized Is Nothing OrElse newForm.customized Is Me)
 			If form Is newForm Then Return
 			newForm.prepare() ' as in MethodHandle.<init>

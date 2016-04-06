@@ -108,7 +108,7 @@ Namespace java.sql
 	 ''' this method </exception>
 	 ''' <seealso cref= SQLInput
 	 ''' @since 1.2 </seealso>
-	  Sub readSQL(ByVal stream As SQLInput, ByVal typeName As String)
+	  Sub readSQL(  stream As SQLInput,   typeName As String)
 
 	  ''' <summary>
 	  ''' Writes this object to the given SQL data stream, converting it back to
@@ -130,7 +130,7 @@ Namespace java.sql
 	  ''' this method </exception>
 	  ''' <seealso cref= SQLOutput
 	  ''' @since 1.2 </seealso>
-	  Sub writeSQL(ByVal stream As SQLOutput)
+	  Sub writeSQL(  stream As SQLOutput)
 	End Interface
 
 End Namespace

@@ -117,7 +117,7 @@ Namespace java.security
 		''' "{@docRoot}/../technotes/guides/security/StandardNames.html#MessageDigest">
 		''' Java Cryptography Architecture Standard Algorithm Name Documentation</a>
 		''' for information about standard algorithm names. </param>
-		Protected Friend Sub New(ByVal algorithm As String)
+		Protected Friend Sub New(  algorithm As String)
 			Me.algorithm = algorithm
 		End Sub
 
@@ -147,7 +147,7 @@ Namespace java.security
 		'''          specified algorithm.
 		''' </exception>
 		''' <seealso cref= Provider </seealso>
-		Public Shared Function getInstance(ByVal algorithm As String) As MessageDigest
+		Public Shared Function getInstance(  algorithm As String) As MessageDigest
 			Try
 				Dim md As MessageDigest
 				Dim objs As Object() = Security.getImpl(algorithm, "MessageDigest", CStr(Nothing))
@@ -200,7 +200,7 @@ Namespace java.security
 		'''          or empty.
 		''' </exception>
 		''' <seealso cref= Provider </seealso>
-		Public Shared Function getInstance(ByVal algorithm As String, ByVal provider_Renamed As String) As MessageDigest
+		Public Shared Function getInstance(  algorithm As String,   provider_Renamed As String) As MessageDigest
 			If provider_Renamed Is Nothing OrElse provider_Renamed.length() = 0 Then Throw New IllegalArgumentException("missing provider")
 			Dim objs As Object() = Security.getImpl(algorithm, "MessageDigest", provider_Renamed)
 			If TypeOf objs(0) Is MessageDigest Then
@@ -242,7 +242,7 @@ Namespace java.security
 		''' <seealso cref= Provider
 		''' 
 		''' @since 1.4 </seealso>
-		Public Shared Function getInstance(ByVal algorithm As String, ByVal provider_Renamed As Provider) As MessageDigest
+		Public Shared Function getInstance(  algorithm As String,   provider_Renamed As Provider) As MessageDigest
 			If provider_Renamed Is Nothing Then Throw New IllegalArgumentException("missing provider")
 			Dim objs As Object() = Security.getImpl(algorithm, "MessageDigest", provider_Renamed)
 			If TypeOf objs(0) Is MessageDigest Then
@@ -270,7 +270,7 @@ Namespace java.security
 		''' Updates the digest using the specified java.lang.[Byte].
 		''' </summary>
 		''' <param name="input"> the byte with which to update the digest. </param>
-		Public Overridable Sub update(ByVal input As SByte)
+		Public Overridable Sub update(  input As SByte)
 			engineUpdate(input)
 			state = IN_PROGRESS
 		End Sub
@@ -285,7 +285,7 @@ Namespace java.security
 		''' </param>
 		''' <param name="len"> the number of bytes to use, starting at
 		''' {@code offset}. </param>
-		Public Overridable Sub update(ByVal input As SByte(), ByVal offset As Integer, ByVal len As Integer)
+		Public Overridable Sub update(  input As SByte(),   offset As Integer,   len As Integer)
 			If input Is Nothing Then Throw New IllegalArgumentException("No input buffer given")
 			If input.Length - offset < len Then Throw New IllegalArgumentException("Input buffer too short")
 			engineUpdate(input, offset, len)
@@ -296,7 +296,7 @@ Namespace java.security
 		''' Updates the digest using the specified array of bytes.
 		''' </summary>
 		''' <param name="input"> the array of bytes. </param>
-		Public Overridable Sub update(ByVal input As SByte())
+		Public Overridable Sub update(  input As SByte())
 			engineUpdate(input, 0, input.Length)
 			state = IN_PROGRESS
 		End Sub
@@ -310,7 +310,7 @@ Namespace java.security
 		''' </summary>
 		''' <param name="input"> the ByteBuffer
 		''' @since 1.5 </param>
-		Public Sub update(ByVal input As java.nio.ByteBuffer)
+		Public Sub update(  input As java.nio.ByteBuffer)
 			If input Is Nothing Then Throw New NullPointerException
 			engineUpdate(input)
 			state = IN_PROGRESS
@@ -341,7 +341,7 @@ Namespace java.security
 		''' <returns> the number of bytes placed into {@code buf}
 		''' </returns>
 		''' <exception cref="DigestException"> if an error occurs. </exception>
-		Public Overridable Function digest(ByVal buf As SByte(), ByVal offset As Integer, ByVal len As Integer) As Integer
+		Public Overridable Function digest(  buf As SByte(),   offset As Integer,   len As Integer) As Integer
 			If buf Is Nothing Then Throw New IllegalArgumentException("No output buffer given")
 			If buf.Length - offset < len Then Throw New IllegalArgumentException("Output buffer too small for specified offset and length")
 			Dim numBytes As Integer = engineDigest(buf, offset, len)
@@ -360,7 +360,7 @@ Namespace java.security
 		''' completed.
 		''' </param>
 		''' <returns> the array of bytes for the resulting hash value. </returns>
-		Public Overridable Function digest(ByVal input As SByte()) As SByte()
+		Public Overridable Function digest(  input As SByte()) As SByte()
 			update(input)
 			Return digest()
 		End Function
@@ -390,7 +390,7 @@ Namespace java.security
 		''' <param name="digestb"> the other digest to compare.
 		''' </param>
 		''' <returns> true if the digests are equal, false otherwise. </returns>
-		Public Shared Function isEqual(ByVal digesta As SByte(), ByVal digestb As SByte()) As Boolean
+		Public Shared Function isEqual(  digesta As SByte(),   digestb As SByte()) As Boolean
 			If digesta = digestb Then Return True
 			If digesta Is Nothing OrElse digestb Is Nothing Then Return False
 			If digesta.Length <> digestb.Length Then Return False
@@ -490,7 +490,7 @@ Namespace java.security
 			Private digestSpi As MessageDigestSpi
 
 			' constructor
-			Public Sub New(ByVal digestSpi As MessageDigestSpi, ByVal algorithm As String)
+			Public Sub New(  digestSpi As MessageDigestSpi,   algorithm As String)
 				MyBase.New(algorithm)
 				Me.digestSpi = digestSpi
 			End Sub
@@ -521,15 +521,15 @@ Namespace java.security
 				Return digestSpi.engineGetDigestLength()
 			End Function
 
-			Protected Friend Overrides Sub engineUpdate(ByVal input As SByte)
+			Protected Friend Overrides Sub engineUpdate(  input As SByte)
 				digestSpi.engineUpdate(input)
 			End Sub
 
-			Protected Friend Overrides Sub engineUpdate(ByVal input As SByte(), ByVal offset As Integer, ByVal len As Integer)
+			Protected Friend Overrides Sub engineUpdate(  input As SByte(),   offset As Integer,   len As Integer)
 				digestSpi.engineUpdate(input, offset, len)
 			End Sub
 
-			Protected Friend Overrides Sub engineUpdate(ByVal input As java.nio.ByteBuffer)
+			Protected Friend Overrides Sub engineUpdate(  input As java.nio.ByteBuffer)
 				digestSpi.engineUpdate(input)
 			End Sub
 
@@ -537,7 +537,7 @@ Namespace java.security
 				Return digestSpi.engineDigest()
 			End Function
 
-			Protected Friend Overrides Function engineDigest(ByVal buf As SByte(), ByVal offset As Integer, ByVal len As Integer) As Integer
+			Protected Friend Overrides Function engineDigest(  buf As SByte(),   offset As Integer,   len As Integer) As Integer
 					Return digestSpi.engineDigest(buf, offset, len)
 			End Function
 

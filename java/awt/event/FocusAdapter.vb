@@ -54,13 +54,13 @@ Namespace java.awt.event
 		''' <summary>
 		''' Invoked when a component gains the keyboard focus.
 		''' </summary>
-		Public Overridable Sub focusGained(ByVal e As FocusEvent) Implements FocusListener.focusGained
+		Public Overridable Sub focusGained(  e As FocusEvent) Implements FocusListener.focusGained
 		End Sub
 
 		''' <summary>
 		''' Invoked when a component loses the keyboard focus.
 		''' </summary>
-		Public Overridable Sub focusLost(ByVal e As FocusEvent) Implements FocusListener.focusLost
+		Public Overridable Sub focusLost(  e As FocusEvent) Implements FocusListener.focusLost
 		End Sub
 	End Class
 

@@ -108,7 +108,7 @@ Namespace java.util
 		''' <summary>
 		''' Constructs a set backed by the specified navigable map.
 		''' </summary>
-		Friend Sub New(ByVal m As NavigableMap(Of E, Object))
+		Friend Sub New(  m As NavigableMap(Of E, Object))
 			Me.m = m
 		End Sub
 
@@ -142,7 +142,7 @@ Namespace java.util
 		'''        If {@code null}, the {@link Comparable natural
 		'''        ordering} of the elements will be used. </param>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Sub New(Of T1)(ByVal comparator As Comparator(Of T1))
+		Public Sub New(Of T1)(  comparator As Comparator(Of T1))
 			Me.New(New TreeMap(Of )(comparator))
 		End Sub
 
@@ -159,7 +159,7 @@ Namespace java.util
 		''' <exception cref="ClassCastException"> if the elements in {@code c} are
 		'''         not <seealso cref="Comparable"/>, or are not mutually comparable </exception>
 		''' <exception cref="NullPointerException"> if the specified collection is null </exception>
-		Public Sub New(Of T1 As E)(ByVal c As Collection(Of T1))
+		Public Sub New(Of T1 As E)(  c As Collection(Of T1))
 			Me.New()
 			addAll(c)
 		End Sub
@@ -170,7 +170,7 @@ Namespace java.util
 		''' </summary>
 		''' <param name="s"> sorted set whose elements will comprise the new set </param>
 		''' <exception cref="NullPointerException"> if the specified sorted set is null </exception>
-		Public Sub New(ByVal s As SortedSet(Of E))
+		Public Sub New(  s As SortedSet(Of E))
 			Me.New(s.comparator())
 			addAll(s)
 		End Sub
@@ -230,7 +230,7 @@ Namespace java.util
 		''' <exception cref="NullPointerException"> if the specified element is null
 		'''         and this set uses natural ordering, or its comparator
 		'''         does not permit null elements </exception>
-		Public Overridable Function contains(ByVal o As Object) As Boolean
+		Public Overridable Function contains(  o As Object) As Boolean
 			Return m.containsKey(o)
 		End Function
 
@@ -250,7 +250,7 @@ Namespace java.util
 		''' <exception cref="NullPointerException"> if the specified element is null
 		'''         and this set uses natural ordering, or its comparator
 		'''         does not permit null elements </exception>
-		Public Overridable Function add(ByVal e As E) As Boolean
+		Public Overridable Function add(  e As E) As Boolean
 			Return m.put(e, PRESENT) Is Nothing
 		End Function
 
@@ -270,7 +270,7 @@ Namespace java.util
 		''' <exception cref="NullPointerException"> if the specified element is null
 		'''         and this set uses natural ordering, or its comparator
 		'''         does not permit null elements </exception>
-		Public Overridable Function remove(ByVal o As Object) As Boolean
+		Public Overridable Function remove(  o As Object) As Boolean
 			Return m.remove(o) Is PRESENT
 		End Function
 
@@ -292,7 +292,7 @@ Namespace java.util
 		''' <exception cref="NullPointerException"> if the specified collection is null or
 		'''         if any element is null and this set uses natural ordering, or
 		'''         its comparator does not permit null elements </exception>
-		Public Overridable Function addAll(Of T1 As E)(ByVal c As Collection(Of T1)) As Boolean
+		Public Overridable Function addAll(Of T1 As E)(  c As Collection(Of T1)) As Boolean
 			' Use linear-time version if applicable
 			If m.size()=0 AndAlso c.size() > 0 AndAlso TypeOf c Is SortedSet AndAlso TypeOf m Is TreeMap Then
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
@@ -317,7 +317,7 @@ Namespace java.util
 		'''         does not permit null elements </exception>
 		''' <exception cref="IllegalArgumentException"> {@inheritDoc}
 		''' @since 1.6 </exception>
-		Public Overridable Function subSet(ByVal fromElement As E, ByVal fromInclusive As Boolean, ByVal toElement As E, ByVal toInclusive As Boolean) As NavigableSet(Of E)
+		Public Overridable Function subSet(  fromElement As E,   fromInclusive As Boolean,   toElement As E,   toInclusive As Boolean) As NavigableSet(Of E)
 			Return New TreeSet(Of )(m.subMap(fromElement, fromInclusive, toElement, toInclusive))
 		End Function
 
@@ -327,7 +327,7 @@ Namespace java.util
 		'''         not permit null elements </exception>
 		''' <exception cref="IllegalArgumentException"> {@inheritDoc}
 		''' @since 1.6 </exception>
-		Public Overridable Function headSet(ByVal toElement As E, ByVal inclusive As Boolean) As NavigableSet(Of E)
+		Public Overridable Function headSet(  toElement As E,   inclusive As Boolean) As NavigableSet(Of E)
 			Return New TreeSet(Of )(m.headMap(toElement, inclusive))
 		End Function
 
@@ -337,7 +337,7 @@ Namespace java.util
 		'''         not permit null elements </exception>
 		''' <exception cref="IllegalArgumentException"> {@inheritDoc}
 		''' @since 1.6 </exception>
-		Public Overridable Function tailSet(ByVal fromElement As E, ByVal inclusive As Boolean) As NavigableSet(Of E)
+		Public Overridable Function tailSet(  fromElement As E,   inclusive As Boolean) As NavigableSet(Of E)
 			Return New TreeSet(Of )(m.tailMap(fromElement, inclusive))
 		End Function
 
@@ -346,7 +346,7 @@ Namespace java.util
 		'''         {@code toElement} is null and this set uses natural ordering,
 		'''         or its comparator does not permit null elements </exception>
 		''' <exception cref="IllegalArgumentException"> {@inheritDoc} </exception>
-		Public Overridable Function subSet(ByVal fromElement As E, ByVal toElement As E) As SortedSet(Of E)
+		Public Overridable Function subSet(  fromElement As E,   toElement As E) As SortedSet(Of E)
 			Return subSet(fromElement, True, toElement, False)
 		End Function
 
@@ -355,7 +355,7 @@ Namespace java.util
 		'''         and this set uses natural ordering, or its comparator does
 		'''         not permit null elements </exception>
 		''' <exception cref="IllegalArgumentException"> {@inheritDoc} </exception>
-		Public Overridable Function headSet(ByVal toElement As E) As SortedSet(Of E)
+		Public Overridable Function headSet(  toElement As E) As SortedSet(Of E)
 			Return headSet(toElement, False)
 		End Function
 
@@ -364,7 +364,7 @@ Namespace java.util
 		'''         and this set uses natural ordering, or its comparator does
 		'''         not permit null elements </exception>
 		''' <exception cref="IllegalArgumentException"> {@inheritDoc} </exception>
-		Public Overridable Function tailSet(ByVal fromElement As E) As SortedSet(Of E)
+		Public Overridable Function tailSet(  fromElement As E) As SortedSet(Of E)
 			Return tailSet(fromElement, True)
 		End Function
 
@@ -391,7 +391,7 @@ Namespace java.util
 		'''         and this set uses natural ordering, or its comparator
 		'''         does not permit null elements
 		''' @since 1.6 </exception>
-		Public Overridable Function lower(ByVal e As E) As E
+		Public Overridable Function lower(  e As E) As E
 			Return m.lowerKey(e)
 		End Function
 
@@ -400,7 +400,7 @@ Namespace java.util
 		'''         and this set uses natural ordering, or its comparator
 		'''         does not permit null elements
 		''' @since 1.6 </exception>
-		Public Overridable Function floor(ByVal e As E) As E
+		Public Overridable Function floor(  e As E) As E
 			Return m.floorKey(e)
 		End Function
 
@@ -409,7 +409,7 @@ Namespace java.util
 		'''         and this set uses natural ordering, or its comparator
 		'''         does not permit null elements
 		''' @since 1.6 </exception>
-		Public Overridable Function ceiling(ByVal e As E) As E
+		Public Overridable Function ceiling(  e As E) As E
 			Return m.ceilingKey(e)
 		End Function
 
@@ -418,7 +418,7 @@ Namespace java.util
 		'''         and this set uses natural ordering, or its comparator
 		'''         does not permit null elements
 		''' @since 1.6 </exception>
-		Public Overridable Function higher(ByVal e As E) As E
+		Public Overridable Function higher(  e As E) As E
 			Return m.higherKey(e)
 		End Function
 
@@ -470,7 +470,7 @@ Namespace java.util
 		'''             set's Comparator, or by the elements' natural ordering if
 		'''             the set has no Comparator).
 		''' </summary>
-		Private Sub writeObject(ByVal s As java.io.ObjectOutputStream)
+		Private Sub writeObject(  s As java.io.ObjectOutputStream)
 			' Write out any hidden stuff
 			s.defaultWriteObject()
 
@@ -490,7 +490,7 @@ Namespace java.util
 		''' Reconstitute the {@code TreeSet} instance from a stream (that is,
 		''' deserialize it).
 		''' </summary>
-		Private Sub readObject(ByVal s As java.io.ObjectInputStream)
+		Private Sub readObject(  s As java.io.ObjectInputStream)
 			' Read in any hidden stuff
 			s.defaultReadObject()
 

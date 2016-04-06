@@ -183,12 +183,12 @@ Namespace java.net
 			Private ReadOnly outerInstance As Inet6Address
 
 
-			Private Sub New(ByVal outerInstance As Inet6Address)
+			Private Sub New(  outerInstance As Inet6Address)
 					Me.outerInstance = outerInstance
 				ipaddress = New SByte(INADDRSZ - 1){}
 			End Sub
 
-			Private Sub New(ByVal outerInstance As Inet6Address, ByVal ipaddress As SByte(), ByVal scope_id As Integer, ByVal scope_id_set As Boolean, ByVal ifname As NetworkInterface, ByVal scope_ifname_set As Boolean)
+			Private Sub New(  outerInstance As Inet6Address,   ipaddress As SByte(),   scope_id As Integer,   scope_id_set As Boolean,   ifname As NetworkInterface,   scope_ifname_set As Boolean)
 					Me.outerInstance = outerInstance
 				Me.ipaddress = ipaddress
 				Me.scope_id = scope_id
@@ -228,7 +228,7 @@ Namespace java.net
 			Friend scope_ifname_set As Boolean ' false;
 
 			Friend Overridable Property addr As SByte()
-				Set(ByVal addr As SByte())
+				Set(  addr As SByte())
 					If addr.Length = INADDRSZ Then ' normal IPv6 address Array.Copy(addr, 0, ipaddress, 0, INADDRSZ)
 				End Set
 			End Property

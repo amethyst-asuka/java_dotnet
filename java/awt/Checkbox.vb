@@ -120,7 +120,7 @@ Namespace java.awt
         ''' Should remain package-private.
         ''' </summary>
         Friend Overridable Property stateInternal As Boolean
-            Set(ByVal state As Boolean)
+            Set(  state As Boolean)
                 Me.state = state
                 Dim peer_Renamed As java.awt.peer.CheckboxPeer = CType(Me.peer, java.awt.peer.CheckboxPeer)
                 If peer_Renamed IsNot Nothing Then peer_Renamed.state = state
@@ -149,7 +149,7 @@ Namespace java.awt
         '''      <code>GraphicsEnvironment.isHeadless</code>
         '''      returns <code>true</code> </exception>
         ''' <seealso cref= java.awt.GraphicsEnvironment#isHeadless </seealso>
-        Public Sub New(ByVal label_Renamed As String)
+        Public Sub New(  label_Renamed As String)
             Me.New(label_Renamed, False, Nothing)
         End Sub
 
@@ -165,7 +165,7 @@ Namespace java.awt
         '''     <code>GraphicsEnvironment.isHeadless</code>
         '''     returns <code>true</code> </exception>
         ''' <seealso cref= java.awt.GraphicsEnvironment#isHeadless </seealso>
-        Public Sub New(ByVal label_Renamed As String, ByVal state As Boolean)
+        Public Sub New(  label_Renamed As String,   state As Boolean)
             Me.New(label_Renamed, state, Nothing)
         End Sub
 
@@ -183,7 +183,7 @@ Namespace java.awt
         '''     returns <code>true</code> </exception>
         ''' <seealso cref= java.awt.GraphicsEnvironment#isHeadless
         ''' @since     JDK1.1 </seealso>
-        Public Sub New(ByVal label_Renamed As String, ByVal state As Boolean, ByVal group As CheckboxGroup)
+        Public Sub New(  label_Renamed As String,   state As Boolean,   group As CheckboxGroup)
             GraphicsEnvironment.checkHeadless()
             Me.label = label_Renamed
             Me.state = state
@@ -205,7 +205,7 @@ Namespace java.awt
         '''    returns <code>true</code> </exception>
         ''' <seealso cref= java.awt.GraphicsEnvironment#isHeadless
         ''' @since     JDK1.1 </seealso>
-        Public Sub New(ByVal label_Renamed As String, ByVal group As CheckboxGroup, ByVal state As Boolean)
+        Public Sub New(  label_Renamed As String,   group As CheckboxGroup,   state As Boolean)
             Me.New(label_Renamed, state, group)
         End Sub
 
@@ -245,7 +245,7 @@ Namespace java.awt
             Get
                 Return label
             End Get
-            Set(ByVal label_Renamed As String)
+            Set(  label_Renamed As String)
                 Dim testvalid As Boolean = False
 
                 SyncLock Me
@@ -274,7 +274,7 @@ Namespace java.awt
             Get
                 Return state
             End Get
-            Set(ByVal state As Boolean)
+            Set(  state As Boolean)
                 ' Cannot hold check box lock when calling group.setSelectedCheckbox. 
                 Dim group As CheckboxGroup = Me.group
                 If group IsNot Nothing Then
@@ -313,7 +313,7 @@ Namespace java.awt
             Get
                 Return group
             End Get
-            Set(ByVal g As CheckboxGroup)
+            Set(  g As CheckboxGroup)
                 Dim oldGroup As CheckboxGroup
                 Dim oldState As Boolean
 
@@ -367,7 +367,7 @@ Namespace java.awt
         ''' <seealso cref=           java.awt.event.ItemListener
         ''' @since         JDK1.1 </seealso>
         <MethodImpl(MethodImplOptions.Synchronized)>
-        Public Overridable Sub addItemListener(ByVal l As ItemListener) Implements ItemSelectable.addItemListener
+        Public Overridable Sub addItemListener(  l As ItemListener) Implements ItemSelectable.addItemListener
             If l Is Nothing Then Return
             itemListener = AWTEventMulticaster.add(itemListener, l)
             newEventsOnly = True
@@ -387,7 +387,7 @@ Namespace java.awt
         ''' <seealso cref=           java.awt.event.ItemListener
         ''' @since         JDK1.1 </seealso>
         <MethodImpl(MethodImplOptions.Synchronized)>
-        Public Overridable Sub removeItemListener(ByVal l As ItemListener) Implements ItemSelectable.removeItemListener
+        Public Overridable Sub removeItemListener(  l As ItemListener) Implements ItemSelectable.removeItemListener
             If l Is Nothing Then Return
             itemListener = AWTEventMulticaster.remove(itemListener, l)
         End Sub
@@ -444,7 +444,7 @@ Namespace java.awt
         ''' </exception>
         ''' <seealso cref= #getItemListeners
         ''' @since 1.3 </seealso>
-        Public Overrides Function getListeners(Of T As java.util.EventListener)(ByVal listenerType As [Class]) As T()
+        Public Overrides Function getListeners(Of T As java.util.EventListener)(  listenerType As [Class]) As T()
             Dim l As java.util.EventListener = Nothing
             If listenerType Is GetType(ItemListener) Then
                 l = itemListener
@@ -455,7 +455,7 @@ Namespace java.awt
         End Function
 
         ' REMIND: remove when filtering is done at lower level
-        Friend Overrides Function eventEnabled(ByVal e As AWTEvent) As Boolean
+        Friend Overrides Function eventEnabled(  e As AWTEvent) As Boolean
             If e.id = ItemEvent.ITEM_STATE_CHANGED Then
                 If (eventMask And AWTEvent.ITEM_EVENT_MASK) <> 0 OrElse itemListener IsNot Nothing Then Return True
                 Return False
@@ -476,7 +476,7 @@ Namespace java.awt
         ''' <seealso cref=           java.awt.event.ItemEvent </seealso>
         ''' <seealso cref=           #processItemEvent
         ''' @since         JDK1.1 </seealso>
-        Protected Friend Overrides Sub processEvent(ByVal e As AWTEvent)
+        Protected Friend Overrides Sub processEvent(  e As AWTEvent)
             If TypeOf e Is ItemEvent Then
                 processItemEvent(CType(e, ItemEvent))
                 Return
@@ -507,7 +507,7 @@ Namespace java.awt
         ''' <seealso cref=         #addItemListener </seealso>
         ''' <seealso cref=         java.awt.Component#enableEvents
         ''' @since       JDK1.1 </seealso>
-        Protected Friend Overridable Sub processItemEvent(ByVal e As ItemEvent)
+        Protected Friend Overridable Sub processItemEvent(  e As ItemEvent)
             Dim listener As ItemListener = itemListener
             If listener IsNot Nothing Then listener.itemStateChanged(e)
         End Sub
@@ -555,7 +555,7 @@ Namespace java.awt
         ''' <seealso cref= AWTEventMulticaster#save(ObjectOutputStream, String, EventListener) </seealso>
         ''' <seealso cref= java.awt.Component#itemListenerK </seealso>
         ''' <seealso cref= #readObject(ObjectInputStream) </seealso>
-        Private Sub writeObject(ByVal s As java.io.ObjectOutputStream)
+        Private Sub writeObject(  s As java.io.ObjectOutputStream)
             s.defaultWriteObject()
 
             AWTEventMulticaster.save(s, itemListenerK, itemListener)
@@ -577,7 +577,7 @@ Namespace java.awt
         ''' <seealso cref= #addItemListener(ItemListener) </seealso>
         ''' <seealso cref= java.awt.GraphicsEnvironment#isHeadless </seealso>
         ''' <seealso cref= #writeObject(ObjectOutputStream) </seealso>
-        Private Sub readObject(ByVal s As java.io.ObjectInputStream)
+        Private Sub readObject(  s As java.io.ObjectInputStream)
             GraphicsEnvironment.checkHeadless()
             s.defaultReadObject()
 
@@ -643,7 +643,7 @@ Namespace java.awt
             '         
             Private Const serialVersionUID As Long = 7881579233144754107L
 
-            Public Sub New(ByVal outerInstance As Checkbox)
+            Public Sub New(  outerInstance As Checkbox)
                 MyBase.New(outerInstance)
                 outerInstance.addItemListener(Me)
             End Sub
@@ -652,7 +652,7 @@ Namespace java.awt
             ''' Fire accessible property change events when the state of the
             ''' toggle button changes.
             ''' </summary>
-            Public Overridable Sub itemStateChanged(ByVal e As ItemEvent) Implements ItemListener.itemStateChanged
+            Public Overridable Sub itemStateChanged(  e As ItemEvent) Implements ItemListener.itemStateChanged
                 Dim cb As Checkbox = CType(e.source, Checkbox)
                 If outerInstance.accessibleContext IsNot Nothing Then
                     If cb.state Then
@@ -705,7 +705,7 @@ Namespace java.awt
             ''' Return a description of the specified action of the object.
             ''' </summary>
             ''' <param name="i"> zero-based index of the actions </param>
-            Public Overridable Function getAccessibleActionDescription(ByVal i As Integer) As String
+            Public Overridable Function getAccessibleActionDescription(  i As Integer) As String
                 Return Nothing '  To be fully implemented in a future release
             End Function
 
@@ -714,7 +714,7 @@ Namespace java.awt
             ''' </summary>
             ''' <param name="i"> zero-based index of actions </param>
             ''' <returns> true if the the action was performed; else false. </returns>
-            Public Overridable Function doAccessibleAction(ByVal i As Integer) As Boolean
+            Public Overridable Function doAccessibleAction(  i As Integer) As Boolean
                 Return False '  To be fully implemented in a future release
             End Function
 
@@ -735,7 +735,7 @@ Namespace java.awt
             ''' </summary>
             ''' <returns> True if the value was set; else False </returns>
             ''' <seealso cref= #getCurrentAccessibleValue </seealso>
-            Public Overridable Function setCurrentAccessibleValue(ByVal n As Number) As Boolean
+            Public Overridable Function setCurrentAccessibleValue(  n As Number) As Boolean
                 Return False '  To be fully implemented in a future release
             End Function
 

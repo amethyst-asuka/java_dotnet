@@ -58,7 +58,7 @@ Namespace java.beans
 		'''              object could not be found. </exception>
 		''' <exception cref="IOException"> if an I/O error occurs. </exception>
 
-		Public Shared Function instantiate(ByVal cls As  ClassLoader, ByVal beanName As String) As Object
+		Public Shared Function instantiate(  cls As  ClassLoader,   beanName As String) As Object
 			Return Beans.instantiate(cls, beanName, Nothing, Nothing)
 		End Function
 
@@ -79,7 +79,7 @@ Namespace java.beans
 		'''              object could not be found. </exception>
 		''' <exception cref="IOException"> if an I/O error occurs. </exception>
 
-		Public Shared Function instantiate(ByVal cls As  ClassLoader, ByVal beanName As String, ByVal beanContext As java.beans.beancontext.BeanContext) As Object
+		Public Shared Function instantiate(  cls As  ClassLoader,   beanName As String,   beanContext As java.beans.beancontext.BeanContext) As Object
 			Return Beans.instantiate(cls, beanName, beanContext, Nothing)
 		End Function
 
@@ -134,7 +134,7 @@ Namespace java.beans
 		'''              object could not be found. </exception>
 		''' <exception cref="IOException"> if an I/O error occurs. </exception>
 
-		Public Shared Function instantiate(ByVal cls As  ClassLoader, ByVal beanName As String, ByVal beanContext As java.beans.beancontext.BeanContext, ByVal initializer As AppletInitializer) As Object
+		Public Shared Function instantiate(  cls As  ClassLoader,   beanName As String,   beanContext As java.beans.beancontext.BeanContext,   initializer As AppletInitializer) As Object
 
 			Dim ins As java.io.InputStream
 			Dim oins As java.io.ObjectInputStream = Nothing
@@ -316,7 +316,7 @@ Namespace java.beans
 		End Function
 
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Private Shared Sub unsafeBeanContextAdd(ByVal beanContext As java.beans.beancontext.BeanContext, ByVal res As Object)
+		Private Shared Sub unsafeBeanContextAdd(  beanContext As java.beans.beancontext.BeanContext,   res As Object)
 			beanContext.add(res)
 		End Sub
 
@@ -336,7 +336,7 @@ Namespace java.beans
 		''' <param name="bean">        Object from which we want to obtain a view. </param>
 		''' <param name="targetType">  The type of view we'd like to get.
 		'''  </param>
-		Public Shared Function getInstanceOf(ByVal bean As Object, ByVal targetType As [Class]) As Object
+		Public Shared Function getInstanceOf(  bean As Object,   targetType As [Class]) As Object
 			Return bean
 		End Function
 
@@ -350,7 +350,7 @@ Namespace java.beans
 		''' <param name="targetType">  The type of view we'd like to get. </param>
 		''' <returns> "true" if the given bean supports the given targetType.
 		'''  </returns>
-		Public Shared Function isInstanceOf(ByVal bean As Object, ByVal targetType As [Class]) As Boolean
+		Public Shared Function isInstanceOf(  bean As Object,   targetType As [Class]) As Boolean
 			Return Introspector.isSubclass(bean.GetType(), targetType)
 		End Function
 
@@ -365,7 +365,7 @@ Namespace java.beans
 			Get
 				Return ThreadGroupContext.context.designTime
 			End Get
-			Set(ByVal isDesignTime As Boolean)
+			Set(  isDesignTime As Boolean)
 				Dim sm As SecurityManager = System.securityManager
 				If sm IsNot Nothing Then sm.checkPropertiesAccess()
 				ThreadGroupContext.context.designTime = isDesignTime
@@ -388,7 +388,7 @@ Namespace java.beans
 			Get
 				Return ThreadGroupContext.context.guiAvailable
 			End Get
-			Set(ByVal isGuiAvailable As Boolean)
+			Set(  isGuiAvailable As Boolean)
 				Dim sm As SecurityManager = System.securityManager
 				If sm IsNot Nothing Then sm.checkPropertiesAccess()
 				ThreadGroupContext.context.guiAvailable = isGuiAvailable
@@ -414,7 +414,7 @@ Namespace java.beans
 		''' Loader must be non-null;
 		''' </summary>
 
-		Public Sub New(ByVal [in] As java.io.InputStream, ByVal loader As  ClassLoader)
+		Public Sub New(  [in] As java.io.InputStream,   loader As  ClassLoader)
 
 			MyBase.New([in])
 			If loader Is Nothing Then Throw New IllegalArgumentException("Illegal null argument to ObjectInputStreamWithLoader")
@@ -425,7 +425,7 @@ Namespace java.beans
 		''' Use the given ClassLoader rather than using the system class
 		''' </summary>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Protected Friend Overridable Function resolveClass(ByVal classDesc As java.io.ObjectStreamClass) As  [Class]
+		Protected Friend Overridable Function resolveClass(  classDesc As java.io.ObjectStreamClass) As  [Class]
 
 			Dim cname As String = classDesc.name
 			Return com.sun.beans.finder.ClassFinder.resolveClass(cname, Me.loader)
@@ -443,11 +443,11 @@ Namespace java.beans
 		Friend target As java.applet.Applet
 		Friend imageCache As New Dictionary(Of java.net.URL, Object)
 
-		Friend Sub New(ByVal target As java.applet.Applet)
+		Friend Sub New(  target As java.applet.Applet)
 			Me.target = target
 		End Sub
 
-		Public Overridable Function getAudioClip(ByVal url As java.net.URL) As java.applet.AudioClip
+		Public Overridable Function getAudioClip(  url As java.net.URL) As java.applet.AudioClip
 			' We don't currently support audio clips in the Beans.instantiate
 			' applet context, unless by some luck there exists a URL content
 			' class that can generate an AudioClip from the audio URL.
@@ -459,7 +459,7 @@ Namespace java.beans
 		End Function
 
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Function getImage(ByVal url As java.net.URL) As java.awt.Image
+		Public Overridable Function getImage(  url As java.net.URL) As java.awt.Image
 			Dim o As Object = imageCache(url)
 			If o IsNot Nothing Then Return CType(o, java.awt.Image)
 			Try
@@ -479,7 +479,7 @@ Namespace java.beans
 			End Try
 		End Function
 
-		Public Overridable Function getApplet(ByVal name As String) As java.applet.Applet
+		Public Overridable Function getApplet(  name As String) As java.applet.Applet
 			Return Nothing
 		End Function
 
@@ -491,23 +491,23 @@ Namespace java.beans
 			End Get
 		End Property
 
-		Public Overridable Sub showDocument(ByVal url As java.net.URL)
+		Public Overridable Sub showDocument(  url As java.net.URL)
 			' We do nothing.
 		End Sub
 
-		Public Overridable Sub showDocument(ByVal url As java.net.URL, ByVal target As String)
+		Public Overridable Sub showDocument(  url As java.net.URL,   target As String)
 			' We do nothing.
 		End Sub
 
-		Public Overridable Sub showStatus(ByVal status As String)
+		Public Overridable Sub showStatus(  status As String)
 			' We do nothing.
 		End Sub
 
-		Public Overridable Sub setStream(ByVal key As String, ByVal stream As java.io.InputStream)
+		Public Overridable Sub setStream(  key As String,   stream As java.io.InputStream)
 			' We do nothing.
 		End Sub
 
-		Public Overridable Function getStream(ByVal key As String) As java.io.InputStream
+		Public Overridable Function getStream(  key As String) As java.io.InputStream
 			' We do nothing.
 			Return Nothing
 		End Function
@@ -538,7 +538,7 @@ Namespace java.beans
 		<NonSerialized> _
 		Friend docBase As java.net.URL
 
-		Friend Sub New(ByVal target As java.applet.Applet, ByVal context As java.applet.AppletContext, ByVal codeBase As java.net.URL, ByVal docBase As java.net.URL)
+		Friend Sub New(  target As java.applet.Applet,   context As java.applet.AppletContext,   codeBase As java.net.URL,   docBase As java.net.URL)
 			Me.target = target
 			Me.context = context
 			Me.codeBase = codeBase
@@ -565,7 +565,7 @@ Namespace java.beans
 			End Get
 		End Property
 
-		Public Overridable Function getParameter(ByVal name As String) As String
+		Public Overridable Function getParameter(  name As String) As String
 			Return Nothing
 		End Function
 
@@ -575,7 +575,7 @@ Namespace java.beans
 			End Get
 		End Property
 
-		Public Overridable Sub appletResize(ByVal width As Integer, ByVal height As Integer)
+		Public Overridable Sub appletResize(  width As Integer,   height As Integer)
 			' we do nothing.
 		End Sub
 	End Class

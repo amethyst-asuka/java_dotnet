@@ -270,7 +270,7 @@ Namespace java.util
 		''' so that we can insure that there's never more than one instance for a
 		''' given currency.
 		''' </summary>
-		Private Sub New(ByVal currencyCode As String, ByVal defaultFractionDigits As Integer, ByVal numericCode As Integer)
+		Private Sub New(  currencyCode As String,   defaultFractionDigits As Integer,   numericCode As Integer)
 			Me.currencyCode = currencyCode
 			Me.defaultFractionDigits = defaultFractionDigits
 			Me.numericCode = numericCode
@@ -284,11 +284,11 @@ Namespace java.util
 		''' <exception cref="NullPointerException"> if <code>currencyCode</code> is null </exception>
 		''' <exception cref="IllegalArgumentException"> if <code>currencyCode</code> is not
 		''' a supported ISO 4217 code. </exception>
-		Public Shared Function getInstance(ByVal currencyCode As String) As Currency
+		Public Shared Function getInstance(  currencyCode As String) As Currency
 			Return getInstance(currencyCode,  java.lang.[Integer].MIN_VALUE, 0)
 		End Function
 
-		Private Shared Function getInstance(ByVal currencyCode As String, ByVal defaultFractionDigits As Integer, ByVal numericCode As Integer) As Currency
+		Private Shared Function getInstance(  currencyCode As String,   defaultFractionDigits As Integer,   numericCode As Integer) As Currency
 			' Try to look up the currency code in the instances table.
 			' This does the null pointer check as a side effect.
 			' Also, if there already is an entry, the currencyCode must be valid.
@@ -341,7 +341,7 @@ Namespace java.util
 		''' code is {@code null} </exception>
 		''' <exception cref="IllegalArgumentException"> if the country of the given {@code locale}
 		''' is not a supported ISO 3166 country code. </exception>
-		Public Shared Function getInstance(ByVal locale_Renamed As Locale) As Currency
+		Public Shared Function getInstance(  locale_Renamed As Locale) As Currency
 			Dim country As String = locale_Renamed.country
 			If country Is Nothing Then Throw New NullPointerException
 
@@ -458,7 +458,7 @@ Namespace java.util
 		''' needed </param>
 		''' <returns> the symbol of this currency for the specified locale </returns>
 		''' <exception cref="NullPointerException"> if <code>locale</code> is null </exception>
-		Public Function getSymbol(ByVal locale_Renamed As Locale) As String
+		Public Function getSymbol(  locale_Renamed As Locale) As String
 			Dim pool As sun.util.locale.provider.LocaleServiceProviderPool = sun.util.locale.provider.LocaleServiceProviderPool.getPool(GetType(java.util.spi.CurrencyNameProvider))
 			Dim symbol_Renamed As String = pool.getLocalizedObject(CurrencyNameGetter.INSTANCE, locale_Renamed, currencyCode, SYMBOL)
 			If symbol_Renamed IsNot Nothing Then Return symbol_Renamed
@@ -521,7 +521,7 @@ Namespace java.util
 		''' <returns> the display name of this currency for the specified locale </returns>
 		''' <exception cref="NullPointerException"> if <code>locale</code> is null
 		''' @since 1.7 </exception>
-		Public Function getDisplayName(ByVal locale_Renamed As Locale) As String
+		Public Function getDisplayName(  locale_Renamed As Locale) As String
 			Dim pool As sun.util.locale.provider.LocaleServiceProviderPool = sun.util.locale.provider.LocaleServiceProviderPool.getPool(GetType(java.util.spi.CurrencyNameProvider))
 			Dim result As String = pool.getLocalizedObject(CurrencyNameGetter.INSTANCE, locale_Renamed, currencyCode, DISPLAYNAME)
 			If result IsNot Nothing Then Return result
@@ -549,7 +549,7 @@ Namespace java.util
 		''' Gets the main table entry for the country whose country code consists
 		''' of char1 and char2.
 		''' </summary>
-		Private Shared Function getMainTableEntry(ByVal char1 As Char, ByVal char2 As Char) As Integer
+		Private Shared Function getMainTableEntry(  char1 As Char,   char2 As Char) As Integer
 			If char1 < "A"c OrElse char1 > "Z"c OrElse char2 < "A"c OrElse char2 > "Z"c Then Throw New IllegalArgumentException
 			Return mainTable((AscW(char1) - AscW("A"c)) * A_TO_Z + (AscW(char2) - AscW("A"c)))
 		End Function
@@ -558,7 +558,7 @@ Namespace java.util
 		''' Sets the main table entry for the country whose country code consists
 		''' of char1 and char2.
 		''' </summary>
-		Private Shared Sub setMainTableEntry(ByVal char1 As Char, ByVal char2 As Char, ByVal entry As Integer)
+		Private Shared Sub setMainTableEntry(  char1 As Char,   char2 As Char,   entry As Integer)
 			If char1 < "A"c OrElse char1 > "Z"c OrElse char2 < "A"c OrElse char2 > "Z"c Then Throw New IllegalArgumentException
 			mainTable((AscW(char1) - AscW("A"c)) * A_TO_Z + (AscW(char2) - AscW("A"c))) = entry
 		End Sub
@@ -572,7 +572,7 @@ Namespace java.util
 
 			Private Shared ReadOnly INSTANCE As New CurrencyNameGetter
 
-			Public Overrides Function getObject(ByVal currencyNameProvider As java.util.spi.CurrencyNameProvider, ByVal locale_Renamed As Locale, ByVal key As String, ParamArray ByVal params As Object()) As String
+			Public Overrides Function getObject(  currencyNameProvider As java.util.spi.CurrencyNameProvider,   locale_Renamed As Locale,   key As String, ParamArray   params As Object()) As String
 				Debug.Assert(params.Length = 1)
 				Dim type As Integer = CInt(Fix(params(0)))
 
@@ -589,7 +589,7 @@ Namespace java.util
 			End Function
 		End Class
 
-		Private Shared Function readIntArray(ByVal dis As java.io.DataInputStream, ByVal count As Integer) As Integer()
+		Private Shared Function readIntArray(  dis As java.io.DataInputStream,   count As Integer) As Integer()
 			Dim ret As Integer() = New Integer(count - 1){}
 			For i As Integer = 0 To count - 1
 				ret(i) = dis.readInt()
@@ -598,7 +598,7 @@ Namespace java.util
 			Return ret
 		End Function
 
-		Private Shared Function readLongArray(ByVal dis As java.io.DataInputStream, ByVal count As Integer) As Long()
+		Private Shared Function readLongArray(  dis As java.io.DataInputStream,   count As Integer) As Long()
 			Dim ret As Long() = New Long(count - 1){}
 			For i As Integer = 0 To count - 1
 				ret(i) = dis.readLong()
@@ -607,7 +607,7 @@ Namespace java.util
 			Return ret
 		End Function
 
-		Private Shared Function readStringArray(ByVal dis As java.io.DataInputStream, ByVal count As Integer) As String()
+		Private Shared Function readStringArray(  dis As java.io.DataInputStream,   count As Integer) As String()
 			Dim ret As String() = New String(count - 1){}
 			For i As Integer = 0 To count - 1
 				ret(i) = dis.readUTF()
@@ -629,7 +629,7 @@ Namespace java.util
 		'''    to allow a currency change take effect after date specified.
 		'''    For example, "JP=JPZ,999,0,2014-01-01T00:00:00" has no effect unless
 		'''    UTC time is past 1st January 2014 00:00:00 GMT. </param>
-		Private Shared Sub replaceCurrencyData(ByVal pattern As java.util.regex.Pattern, ByVal ctry As String, ByVal curdata As String)
+		Private Shared Sub replaceCurrencyData(  pattern As java.util.regex.Pattern,   ctry As String,   curdata As String)
 
 			If ctry.length() <> 2 Then
 				' ignore invalid country code
@@ -679,7 +679,7 @@ Namespace java.util
 			mainTableEntrytry(ctry.Chars(0), ctry.Chars(1), entry)
 		End Sub
 
-		Private Shared Function isPastCutoverDate(ByVal s As String) As Boolean
+		Private Shared Function isPastCutoverDate(  s As String) As Boolean
 			Dim format As New java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.ROOT)
 			format.timeZone = TimeZone.getTimeZone("UTC")
 			format.lenient = False
@@ -688,7 +688,7 @@ Namespace java.util
 
 		End Function
 
-		Private Shared Function countOccurrences(ByVal value As String, ByVal match As Char) As Integer
+		Private Shared Function countOccurrences(  value As String,   match As Char) As Integer
 			Dim count As Integer = 0
 			For Each c As Char In value.ToCharArray()
 				If c = match Then count += 1
@@ -696,7 +696,7 @@ Namespace java.util
 			Return count
 		End Function
 
-		Private Shared Sub info(ByVal message As String, ByVal t As Throwable)
+		Private Shared Sub info(  message As String,   t As Throwable)
 			Dim logger As sun.util.logging.PlatformLogger = sun.util.logging.PlatformLogger.getLogger("java.util.Currency")
 			If logger.isLoggable(sun.util.logging.PlatformLogger.Level.INFO) Then
 				If t IsNot Nothing Then

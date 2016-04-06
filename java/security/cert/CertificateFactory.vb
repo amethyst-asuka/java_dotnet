@@ -131,7 +131,7 @@ Namespace java.security.cert
 		''' <param name="certFacSpi"> the provider implementation. </param>
 		''' <param name="provider"> the provider. </param>
 		''' <param name="type"> the certificate type. </param>
-		Protected Friend Sub New(ByVal certFacSpi As CertificateFactorySpi, ByVal provider_Renamed As java.security.Provider, ByVal type As String)
+		Protected Friend Sub New(  certFacSpi As CertificateFactorySpi,   provider_Renamed As java.security.Provider,   type As String)
 			Me.certFacSpi = certFacSpi
 			Me.provider_Renamed = provider_Renamed
 			Me.type = type
@@ -163,7 +163,7 @@ Namespace java.security.cert
 		'''          specified type.
 		''' </exception>
 		''' <seealso cref= java.security.Provider </seealso>
-		Public Shared Function getInstance(ByVal type As String) As CertificateFactory
+		Public Shared Function getInstance(  type As String) As CertificateFactory
 			Try
 				Dim instance_Renamed As sun.security.jca.GetInstance.Instance = GetInstance.getInstance("CertificateFactory", GetType(CertificateFactorySpi), type)
 				Return New CertificateFactory(CType(instance_Renamed.impl, CertificateFactorySpi), instance_Renamed.provider, type)
@@ -205,7 +205,7 @@ Namespace java.security.cert
 		'''          or empty.
 		''' </exception>
 		''' <seealso cref= java.security.Provider </seealso>
-		Public Shared Function getInstance(ByVal type As String, ByVal provider_Renamed As String) As CertificateFactory
+		Public Shared Function getInstance(  type As String,   provider_Renamed As String) As CertificateFactory
 			Try
 				Dim instance_Renamed As sun.security.jca.GetInstance.Instance = GetInstance.getInstance("CertificateFactory", GetType(CertificateFactorySpi), type, provider_Renamed)
 				Return New CertificateFactory(CType(instance_Renamed.impl, CertificateFactorySpi), instance_Renamed.provider, type)
@@ -242,7 +242,7 @@ Namespace java.security.cert
 		''' <seealso cref= java.security.Provider
 		''' 
 		''' @since 1.4 </seealso>
-		Public Shared Function getInstance(ByVal type As String, ByVal provider_Renamed As java.security.Provider) As CertificateFactory
+		Public Shared Function getInstance(  type As String,   provider_Renamed As java.security.Provider) As CertificateFactory
 			Try
 				Dim instance_Renamed As sun.security.jca.GetInstance.Instance = GetInstance.getInstance("CertificateFactory", GetType(CertificateFactorySpi), type, provider_Renamed)
 				Return New CertificateFactory(CType(instance_Renamed.impl, CertificateFactorySpi), instance_Renamed.provider, type)
@@ -308,7 +308,7 @@ Namespace java.security.cert
 		''' from the input stream.
 		''' </returns>
 		''' <exception cref="CertificateException"> on parsing errors. </exception>
-		Public Function generateCertificate(ByVal inStream As java.io.InputStream) As Certificate
+		Public Function generateCertificate(  inStream As java.io.InputStream) As Certificate
 			Return certFacSpi.engineGenerateCertificate(inStream)
 		End Function
 
@@ -345,7 +345,7 @@ Namespace java.security.cert
 		'''   {@code InputStream} </returns>
 		''' <exception cref="CertificateException"> if an exception occurs while decoding
 		''' @since 1.4 </exception>
-		Public Function generateCertPath(ByVal inStream As java.io.InputStream) As CertPath
+		Public Function generateCertPath(  inStream As java.io.InputStream) As CertPath
 			Return (certFacSpi.engineGenerateCertPath(inStream))
 		End Function
 
@@ -365,7 +365,7 @@ Namespace java.security.cert
 		''' <exception cref="CertificateException"> if an exception occurs while decoding or
 		'''   the encoding requested is not supported
 		''' @since 1.4 </exception>
-		Public Function generateCertPath(ByVal inStream As java.io.InputStream, ByVal encoding As String) As CertPath
+		Public Function generateCertPath(  inStream As java.io.InputStream,   encoding As String) As CertPath
 			Return (certFacSpi.engineGenerateCertPath(inStream, encoding))
 		End Function
 
@@ -382,7 +382,7 @@ Namespace java.security.cert
 		'''   certificates </returns>
 		''' <exception cref="CertificateException"> if an exception occurs
 		''' @since 1.4 </exception>
-		Public Function generateCertPath(Of T1 As Certificate)(ByVal certificates As IList(Of T1)) As CertPath
+		Public Function generateCertPath(Of T1 As Certificate)(  certificates As IList(Of T1)) As CertPath
 			Return (certFacSpi.engineGenerateCertPath(certificates))
 		End Function
 
@@ -421,7 +421,7 @@ Namespace java.security.cert
 		''' </returns>
 		''' <exception cref="CertificateException"> on parsing errors. </exception>
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-		Public Function generateCertificates(ByVal inStream As java.io.InputStream) As ICollection(Of ? As Certificate)
+		Public Function generateCertificates(  inStream As java.io.InputStream) As ICollection(Of ? As Certificate)
 			Return certFacSpi.engineGenerateCertificates(inStream)
 		End Function
 
@@ -453,7 +453,7 @@ Namespace java.security.cert
 		''' from the input stream.
 		''' </returns>
 		''' <exception cref="CRLException"> on parsing errors. </exception>
-		Public Function generateCRL(ByVal inStream As java.io.InputStream) As CRL
+		Public Function generateCRL(  inStream As java.io.InputStream) As CRL
 			Return certFacSpi.engineGenerateCRL(inStream)
 		End Function
 
@@ -490,7 +490,7 @@ Namespace java.security.cert
 		''' </returns>
 		''' <exception cref="CRLException"> on parsing errors. </exception>
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-		Public Function generateCRLs(ByVal inStream As java.io.InputStream) As ICollection(Of ? As CRL)
+		Public Function generateCRLs(  inStream As java.io.InputStream) As ICollection(Of ? As CRL)
 			Return certFacSpi.engineGenerateCRLs(inStream)
 		End Function
 	End Class

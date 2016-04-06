@@ -177,7 +177,7 @@ Namespace java.nio
 
 		' For duplicates and slices
 		'
-		Friend Sub New(ByVal db As sun.nio.ch.DirectBuffer, ByVal mark As Integer, ByVal pos As Integer, ByVal lim As Integer, ByVal cap As Integer, ByVal [off] As Integer) ' package-private
+		Friend Sub New(  db As sun.nio.ch.DirectBuffer,   mark As Integer,   pos As Integer,   lim As Integer,   cap As Integer,   [off] As Integer) ' package-private
 
 
 
@@ -274,7 +274,7 @@ Namespace java.nio
 
 
 
-		Public Overrides Function put(ByVal x As Char) As CharBuffer
+		Public Overrides Function put(  x As Char) As CharBuffer
 
 
 
@@ -283,7 +283,7 @@ Namespace java.nio
 
 		End Function
 
-		Public Overrides Function put(ByVal i As Integer, ByVal x As Char) As CharBuffer
+		Public Overrides Function put(  i As Integer,   x As Char) As CharBuffer
 
 
 
@@ -292,7 +292,7 @@ Namespace java.nio
 
 		End Function
 
-		Public Overrides Function put(ByVal src As CharBuffer) As CharBuffer
+		Public Overrides Function put(  src As CharBuffer) As CharBuffer
 
 
 
@@ -333,7 +333,7 @@ Namespace java.nio
 
 		End Function
 
-		Public Overrides Function put(ByVal src As Char(), ByVal offset As Integer, ByVal length As Integer) As CharBuffer
+		Public Overrides Function put(  src As Char(),   offset As Integer,   length As Integer) As CharBuffer
 
 
 
@@ -398,7 +398,7 @@ Namespace java.nio
 
 
 
-		Public Overrides Function ToString(ByVal start As Integer, ByVal [end] As Integer) As String
+		Public Overrides Function ToString(  start As Integer,   [end] As Integer) As String
 			If ([end] > limit()) OrElse (start > [end]) Then Throw New IndexOutOfBoundsException
 			Try
 				Dim len As Integer = [end] - start
@@ -417,7 +417,7 @@ Namespace java.nio
 
 		' --- Methods to support CharSequence ---
 
-		Public Overrides Function subSequence(ByVal start As Integer, ByVal [end] As Integer) As CharBuffer
+		Public Overrides Function subSequence(  start As Integer,   [end] As Integer) As CharBuffer
 			Dim pos As Integer = position()
 			Dim lim As Integer = limit()
 			assert(pos <= lim)

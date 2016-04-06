@@ -95,13 +95,13 @@ Namespace java.time.format
 		''' </summary>
 		''' <param name="temporal">  the temporal object being output, not null </param>
 		''' <param name="formatter">  the formatter controlling the format, not null </param>
-		Friend Sub New(ByVal temporal As java.time.temporal.TemporalAccessor, ByVal formatter As DateTimeFormatter)
+		Friend Sub New(  temporal As java.time.temporal.TemporalAccessor,   formatter As DateTimeFormatter)
 			MyBase.New()
 			Me.temporal = adjust(temporal, formatter)
 			Me.formatter = formatter
 		End Sub
 
-		Private Shared Function adjust(ByVal temporal As java.time.temporal.TemporalAccessor, ByVal formatter As DateTimeFormatter) As java.time.temporal.TemporalAccessor
+		Private Shared Function adjust(  temporal As java.time.temporal.TemporalAccessor,   formatter As DateTimeFormatter) As java.time.temporal.TemporalAccessor
 			' normal case first (early return is an optimization)
 			Dim overrideChrono As java.time.chrono.Chronology = formatter.chronology
 			Dim overrideZone As java.time.ZoneId = formatter.zone
@@ -152,20 +152,20 @@ Namespace java.time.format
 		Private Class TemporalAccessorAnonymousInnerClassHelper
 			Implements java.time.temporal.TemporalAccessor
 
-			Public Overrides Function isSupported(ByVal field As java.time.temporal.TemporalField) As Boolean
+			Public Overrides Function isSupported(  field As java.time.temporal.TemporalField) As Boolean
 				If effectiveDate IsNot Nothing AndAlso field.dateBased Then Return effectiveDate.isSupported(field)
 				Return outerInstance.temporal.isSupported(field)
 			End Function
-			Public Overrides Function range(ByVal field As java.time.temporal.TemporalField) As java.time.temporal.ValueRange
+			Public Overrides Function range(  field As java.time.temporal.TemporalField) As java.time.temporal.ValueRange
 				If effectiveDate IsNot Nothing AndAlso field.dateBased Then Return effectiveDate.range(field)
 				Return outerInstance.temporal.range(field)
 			End Function
-			Public Overrides Function getLong(ByVal field As java.time.temporal.TemporalField) As Long
+			Public Overrides Function getLong(  field As java.time.temporal.TemporalField) As Long
 				If effectiveDate IsNot Nothing AndAlso field.dateBased Then Return effectiveDate.getLong(field)
 				Return outerInstance.temporal.getLong(field)
 			End Function
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-			Public Overrides Function query(Of R)(ByVal query_Renamed As java.time.temporal.TemporalQuery(Of R)) As R
+			Public Overrides Function query(Of R)(  query_Renamed As java.time.temporal.TemporalQuery(Of R)) As R
 				If query_Renamed Is java.time.temporal.TemporalQueries.chronology() Then Return CType(effectiveChrono, R)
 				If query_Renamed Is java.time.temporal.TemporalQueries.zoneId() Then Return CType(effectiveZone, R)
 				If query_Renamed Is java.time.temporal.TemporalQueries.precision() Then Return outerInstance.temporal.query(query_Renamed)
@@ -230,7 +230,7 @@ Namespace java.time.format
 		''' <param name="query">  the query to use, not null </param>
 		''' <returns> the result, null if not found and optional is true </returns>
 		''' <exception cref="DateTimeException"> if the type is not available and the section is not optional </exception>
-		 Friend Function getValue(Of R)(ByVal query As java.time.temporal.TemporalQuery(Of R)) As R
+		 Friend Function getValue(Of R)(  query As java.time.temporal.TemporalQuery(Of R)) As R
 			Dim result As R = temporal.query(query)
 			If result Is Nothing AndAlso [optional] = 0 Then Throw New java.time.DateTimeException("Unable to extract value: " & temporal.GetType())
 			Return result
@@ -244,7 +244,7 @@ Namespace java.time.format
 		''' <param name="field">  the field to find, not null </param>
 		''' <returns> the value, null if not found and optional is true </returns>
 		''' <exception cref="DateTimeException"> if the field is not available and the section is not optional </exception>
-		Friend Function getValue(ByVal field As java.time.temporal.TemporalField) As Long?
+		Friend Function getValue(  field As java.time.temporal.TemporalField) As Long?
 			Try
 				Return temporal.getLong(field)
 			Catch ex As java.time.DateTimeException

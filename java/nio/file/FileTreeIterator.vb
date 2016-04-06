@@ -60,7 +60,7 @@ Namespace java.nio.file
 		''' <exception cref="NullPointerException">
 		'''          if {@code start} or {@code options} is {@ocde null} or
 		'''          the options array contains a {@code null} element </exception>
-		Friend Sub New(ByVal start As Path, ByVal maxDepth As Integer, ParamArray ByVal options As FileVisitOption())
+		Friend Sub New(  start As Path,   maxDepth As Integer, ParamArray   options As FileVisitOption())
 			Me.walker = New FileTreeWalker(java.util.Arrays.asList(options), maxDepth)
 			Me.next_Renamed = walker.walk(start)
 			Debug.Assert(next_Renamed.type() = FileTreeWalker.EventType.ENTRY OrElse next_Renamed.type() = FileTreeWalker.EventType.START_DIRECTORY)

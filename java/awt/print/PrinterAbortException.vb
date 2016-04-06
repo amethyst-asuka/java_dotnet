@@ -48,7 +48,7 @@ Namespace java.awt.print
 		''' the specified detail message. </summary>
 		''' <param name="msg"> the message to be generated when a
 		''' <code>PrinterAbortException</code> is thrown </param>
-		Public Sub New(ByVal msg As String)
+		Public Sub New(  msg As String)
 			MyBase.New(msg)
 		End Sub
 

@@ -107,7 +107,7 @@ Namespace java.time.zone
 			Return New HashSet(Of )(regionIds)
 		End Function
 
-		Protected Friend Overrides Function provideRules(ByVal zoneId_Renamed As String, ByVal forCaching As Boolean) As ZoneRules
+		Protected Friend Overrides Function provideRules(  zoneId_Renamed As String,   forCaching As Boolean) As ZoneRules
 			' forCaching flag is ignored because this is not a dynamic provider
 			Dim obj As Object = regionToRules(zoneId_Renamed)
 			If obj Is Nothing Then Throw New ZoneRulesException("Unknown time-zone ID: " & zoneId_Renamed)
@@ -124,7 +124,7 @@ Namespace java.time.zone
 			End Try
 		End Function
 
-		Protected Friend Overrides Function provideVersions(ByVal zoneId_Renamed As String) As java.util.NavigableMap(Of String, ZoneRules)
+		Protected Friend Overrides Function provideVersions(  zoneId_Renamed As String) As java.util.NavigableMap(Of String, ZoneRules)
 			Dim map As New SortedDictionary(Of String, ZoneRules)
 			Dim rules_Renamed As ZoneRules = getRules(zoneId_Renamed, False)
 			If rules_Renamed IsNot Nothing Then map(versionId) = rules_Renamed
@@ -136,7 +136,7 @@ Namespace java.time.zone
 		''' </summary>
 		''' <param name="dis">  the DateInputStream to load, not null </param>
 		''' <exception cref="Exception"> if an error occurs </exception>
-		Private Sub load(ByVal dis As java.io.DataInputStream)
+		Private Sub load(  dis As java.io.DataInputStream)
 			If dis.readByte() <> 1 Then Throw New java.io.StreamCorruptedException("File format not recognised")
 			' group
 			Dim groupId As String = dis.readUTF()

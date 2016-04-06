@@ -43,7 +43,7 @@ Namespace java.net
 		Friend Const PORT_MIN As Integer = 0
 		Friend Shared ReadOnly PORT_MAX As Integer = (1 << 16) -1
 
-		Friend Overrides Function Equals(ByVal that As HostPortrange) As Boolean
+		Friend Overrides Function Equals(  that As HostPortrange) As Boolean
 			Return Me.hostname_Renamed.Equals(that.hostname_Renamed) AndAlso Me.portrange_Renamed(0) = that.portrange_Renamed(0) AndAlso Me.portrange_Renamed(1) = that.portrange_Renamed(1) AndAlso Me.wildcard_Renamed = that.wildcard_Renamed AndAlso Me.literal_Renamed = that.literal_Renamed
 		End Function
 
@@ -51,7 +51,7 @@ Namespace java.net
 			Return hostname_Renamed.GetHashCode() + portrange_Renamed(0) + portrange_Renamed(1)
 		End Function
 
-		Friend Sub New(ByVal scheme As String, ByVal str As String)
+		Friend Sub New(  scheme As String,   str As String)
 			' Parse the host name.  A name has up to three components, the
 			' hostname, a port number, or two numbers representing a port
 			' range.   "www.sun.com:8080-9090" is a valid host name.
@@ -157,7 +157,7 @@ Namespace java.net
 		''' Convert to lower case, and check that all chars are ascii
 		''' alphanumeric, '-' or '.' only.
 		''' </summary>
-		Friend Shared Function toLowerCase(ByVal s As String) As String
+		Friend Shared Function toLowerCase(  s As String) As String
 			Dim len As Integer = s.length()
 			Dim sb As StringBuilder = Nothing
 
@@ -226,7 +226,7 @@ Namespace java.net
 			Return NO_PORT
 		End Function
 
-		Friend Overridable Function parsePort(ByVal port As String) As Integer()
+		Friend Overridable Function parsePort(  port As String) As Integer()
 
 			If port Is Nothing OrElse port.Equals("") Then Return defaultPort()
 

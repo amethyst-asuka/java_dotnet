@@ -71,7 +71,7 @@ Namespace java.nio.file.attribute
 		''' <exception cref="SecurityException">
 		'''          In the case of the default provider, and a security manager is
 		'''          installed, it checks <seealso cref="RuntimePermission"/><tt>("lookupUserInformation")</tt> </exception>
-		Public MustOverride Function lookupPrincipalByName(ByVal name As String) As UserPrincipal
+		Public MustOverride Function lookupPrincipalByName(  name As String) As UserPrincipal
 
 		''' <summary>
 		''' Lookup a group principal by group name.
@@ -94,7 +94,7 @@ Namespace java.nio.file.attribute
 		''' <exception cref="SecurityException">
 		'''          In the case of the default provider, and a security manager is
 		'''          installed, it checks <seealso cref="RuntimePermission"/><tt>("lookupUserInformation")</tt> </exception>
-		Public MustOverride Function lookupPrincipalByGroupName(ByVal group As String) As GroupPrincipal
+		Public MustOverride Function lookupPrincipalByGroupName(  group As String) As GroupPrincipal
 	End Class
 
 End Namespace

@@ -45,7 +45,7 @@ Namespace java.io
 		''' <summary>
 		''' Constructs an UnsupportedEncodingException with a detail message. </summary>
 		''' <param name="s"> Describes the reason for the exception. </param>
-		Public Sub New(ByVal s As String)
+		Public Sub New(  s As String)
 			MyBase.New(s)
 		End Sub
 	End Class

@@ -603,11 +603,11 @@ Namespace java.awt
 		Friend extraAlpha As Single
 		Friend rule As Integer
 
-		Private Sub New(ByVal rule As Integer)
+		Private Sub New(  rule As Integer)
 			Me.New(rule, 1.0f)
 		End Sub
 
-		Private Sub New(ByVal rule As Integer, ByVal alpha As Single)
+		Private Sub New(  rule As Integer,   alpha As Single)
 			If rule < MIN_RULE OrElse rule > MAX_RULE Then Throw New IllegalArgumentException("unknown composite rule")
 			If alpha >= 0.0f AndAlso alpha <= 1.0f Then
 				Me.rule = rule
@@ -625,7 +625,7 @@ Namespace java.awt
 		'''         <seealso cref="#SRC_OVER"/>, <seealso cref="#DST_OVER"/>, <seealso cref="#SRC_IN"/>,
 		'''         <seealso cref="#DST_IN"/>, <seealso cref="#SRC_OUT"/>, <seealso cref="#DST_OUT"/>,
 		'''         <seealso cref="#SRC_ATOP"/>, <seealso cref="#DST_ATOP"/>, or <seealso cref="#XOR"/> </exception>
-		Public Shared Function getInstance(ByVal rule As Integer) As AlphaComposite
+		Public Shared Function getInstance(  rule As Integer) As AlphaComposite
 			Select Case rule
 			Case CLEAR
 				Return Clear
@@ -672,7 +672,7 @@ Namespace java.awt
 		'''         <seealso cref="#SRC_OVER"/>, <seealso cref="#DST_OVER"/>, <seealso cref="#SRC_IN"/>,
 		'''         <seealso cref="#DST_IN"/>, <seealso cref="#SRC_OUT"/>, <seealso cref="#DST_OUT"/>,
 		'''         <seealso cref="#SRC_ATOP"/>, <seealso cref="#DST_ATOP"/>, or <seealso cref="#XOR"/> </exception>
-		Public Shared Function getInstance(ByVal rule As Integer, ByVal alpha As Single) As AlphaComposite
+		Public Shared Function getInstance(  rule As Integer,   alpha As Single) As AlphaComposite
 			If alpha = 1.0f Then Return getInstance(rule)
 			Return New AlphaComposite(rule, alpha)
 		End Function
@@ -685,7 +685,7 @@ Namespace java.awt
 		''' <param name="dstColorModel">  the <code>ColorModel</code> of the destination </param>
 		''' <returns> the <code>CompositeContext</code> object to be used to perform
 		''' compositing operations. </returns>
-		Public Function createContext(ByVal srcColorModel As java.awt.image.ColorModel, ByVal dstColorModel As java.awt.image.ColorModel, ByVal hints As RenderingHints) As CompositeContext Implements Composite.createContext
+		Public Function createContext(  srcColorModel As java.awt.image.ColorModel,   dstColorModel As java.awt.image.ColorModel,   hints As RenderingHints) As CompositeContext Implements Composite.createContext
 			Return New sun.java2d.SunCompositeContext(Me, srcColorModel, dstColorModel)
 		End Function
 
@@ -723,7 +723,7 @@ Namespace java.awt
 		'''         <seealso cref="#DST_IN"/>, <seealso cref="#SRC_OUT"/>, <seealso cref="#DST_OUT"/>,
 		'''         <seealso cref="#SRC_ATOP"/>, <seealso cref="#DST_ATOP"/>, or <seealso cref="#XOR"/>
 		''' @since 1.6 </exception>
-		Public Function derive(ByVal rule As Integer) As AlphaComposite
+		Public Function derive(  rule As Integer) As AlphaComposite
 			Return If(Me.rule = rule, Me, getInstance(rule, Me.extraAlpha))
 		End Function
 
@@ -740,7 +740,7 @@ Namespace java.awt
 		''' <exception cref="IllegalArgumentException"> if
 		'''         <code>alpha</code> is less than 0.0 or greater than 1.0
 		''' @since 1.6 </exception>
-		Public Function derive(ByVal alpha As Single) As AlphaComposite
+		Public Function derive(  alpha As Single) As AlphaComposite
 			Return If(Me.extraAlpha = alpha, Me, getInstance(Me.rule, alpha))
 		End Function
 
@@ -763,7 +763,7 @@ Namespace java.awt
 		''' <param name="obj"> the <code>Object</code> to test for equality </param>
 		''' <returns> <code>true</code> if <code>obj</code> equals this
 		''' <code>AlphaComposite</code>; <code>false</code> otherwise. </returns>
-		Public Overrides Function Equals(ByVal obj As Object) As Boolean
+		Public Overrides Function Equals(  obj As Object) As Boolean
 			If Not(TypeOf obj Is AlphaComposite) Then Return False
 
 			Dim ac As AlphaComposite = CType(obj, AlphaComposite)

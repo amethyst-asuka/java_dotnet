@@ -128,7 +128,7 @@ Namespace java.awt
 		''' <exception cref="HeadlessException"> if GraphicsEnvironment.isHeadless()
 		''' returns true. </exception>
 		''' <seealso cref= java.awt.GraphicsEnvironment#isHeadless </seealso>
-		Public Sub New(ByVal label_Renamed As String)
+		Public Sub New(  label_Renamed As String)
 			Me.New(label_Renamed, False)
 		End Sub
 
@@ -147,7 +147,7 @@ Namespace java.awt
 		''' returns true. </exception>
 		''' <seealso cref= java.awt.GraphicsEnvironment#isHeadless
 		''' @since       JDK1.0. </seealso>
-		Public Sub New(ByVal label_Renamed As String, ByVal tearOff As Boolean)
+		Public Sub New(  label_Renamed As String,   tearOff As Boolean)
 			MyBase.New(label_Renamed)
 			Me.tearOff = tearOff
 		End Sub
@@ -237,7 +237,7 @@ Namespace java.awt
 		''' Gets the item located at the specified index of this menu. </summary>
 		''' <param name="index"> the position of the item to be returned. </param>
 		''' <returns>    the item located at the specified index. </returns>
-		Public Overridable Function getItem(ByVal index As Integer) As MenuItem
+		Public Overridable Function getItem(  index As Integer) As MenuItem
 			Return getItemImpl(index)
 		End Function
 
@@ -245,7 +245,7 @@ Namespace java.awt
 	'     * This is called by the native code, so client code can't
 	'     * be called on the toolkit thread.
 	'     
-		Friend Function getItemImpl(ByVal index As Integer) As MenuItem
+		Friend Function getItemImpl(  index As Integer) As MenuItem
 			Return CType(items(index), MenuItem)
 		End Function
 
@@ -258,7 +258,7 @@ Namespace java.awt
 		''' <returns>      the menu item added </returns>
 		''' <seealso cref=         java.awt.Menu#insert(java.lang.String, int) </seealso>
 		''' <seealso cref=         java.awt.Menu#insert(java.awt.MenuItem, int) </seealso>
-		Public Overridable Function add(ByVal mi As MenuItem) As MenuItem
+		Public Overridable Function add(  mi As MenuItem) As MenuItem
 			SyncLock treeLock
 				If mi.parent IsNot Nothing Then mi.parent.remove(mi)
 				items.Add(mi)
@@ -278,7 +278,7 @@ Namespace java.awt
 		''' <param name="label">   the text on the item </param>
 		''' <seealso cref=         java.awt.Menu#insert(java.lang.String, int) </seealso>
 		''' <seealso cref=         java.awt.Menu#insert(java.awt.MenuItem, int) </seealso>
-		Public Overridable Sub add(ByVal label_Renamed As String)
+		Public Overridable Sub add(  label_Renamed As String)
 			add(New MenuItem(label_Renamed))
 		End Sub
 
@@ -295,7 +295,7 @@ Namespace java.awt
 		'''                    <code>index</code> is less than zero
 		''' @since         JDK1.1 </exception>
 
-		Public Overridable Sub insert(ByVal menuitem As MenuItem, ByVal index As Integer)
+		Public Overridable Sub insert(  menuitem As MenuItem,   index As Integer)
 			SyncLock treeLock
 				If index < 0 Then Throw New IllegalArgumentException("index less than zero.")
 
@@ -336,7 +336,7 @@ Namespace java.awt
 		'''                    <code>index</code> is less than zero
 		''' @since       JDK1.1 </exception>
 
-		Public Overridable Sub insert(ByVal label_Renamed As String, ByVal index As Integer)
+		Public Overridable Sub insert(  label_Renamed As String,   index As Integer)
 			insert(New MenuItem(label_Renamed), index)
 		End Sub
 
@@ -356,7 +356,7 @@ Namespace java.awt
 		''' <seealso cref=         java.awt.Menu#addSeparator
 		''' @since       JDK1.1 </seealso>
 
-		Public Overridable Sub insertSeparator(ByVal index As Integer)
+		Public Overridable Sub insertSeparator(  index As Integer)
 			SyncLock treeLock
 				If index < 0 Then Throw New IllegalArgumentException("index less than zero.")
 
@@ -386,7 +386,7 @@ Namespace java.awt
 		''' <summary>
 		''' Removes the menu item at the specified index from this menu. </summary>
 		''' <param name="index"> the position of the item to be removed. </param>
-		Public Overridable Sub remove(ByVal index As Integer)
+		Public Overridable Sub remove(  index As Integer)
 			SyncLock treeLock
 				Dim mi As MenuItem = getItem(index)
 				items.RemoveAt(index)
@@ -405,7 +405,7 @@ Namespace java.awt
 		'''         If <code>item</code> is <code>null</code>
 		'''         or is not in this menu, this method does
 		'''         nothing. </param>
-		Public Overridable Sub remove(ByVal item As MenuComponent) Implements MenuContainer.remove
+		Public Overridable Sub remove(  item As MenuComponent) Implements MenuContainer.remove
 			SyncLock treeLock
 				Dim index As Integer = items.IndexOf(item)
 				If index >= 0 Then remove(index)
@@ -431,7 +431,7 @@ Namespace java.awt
 	'     * keydown).  Returns true if there is an associated
 	'     * keyboard event.
 	'     
-		Friend Overridable Function handleShortcut(ByVal e As java.awt.event.KeyEvent) As Boolean
+		Friend Overridable Function handleShortcut(  e As java.awt.event.KeyEvent) As Boolean
 			Dim nitems As Integer = itemCount
 			For i As Integer = 0 To nitems - 1
 				Dim mi As MenuItem = getItem(i)
@@ -440,7 +440,7 @@ Namespace java.awt
 			Return False
 		End Function
 
-		Friend Overrides Function getShortcutMenuItem(ByVal s As MenuShortcut) As MenuItem
+		Friend Overrides Function getShortcutMenuItem(  s As MenuShortcut) As MenuItem
 			Dim nitems As Integer = itemCount
 			For i As Integer = 0 To nitems - 1
 				Dim mi As MenuItem = getItem(i).getShortcutMenuItem(s)
@@ -470,7 +470,7 @@ Namespace java.awt
 			Return shortcuts_Renamed.elements()
 		End Function
 
-		Friend Overrides Sub deleteShortcut(ByVal s As MenuShortcut)
+		Friend Overrides Sub deleteShortcut(  s As MenuShortcut)
 			Dim nitems As Integer = itemCount
 			For i As Integer = 0 To nitems - 1
 				getItem(i).deleteShortcut(s)
@@ -495,7 +495,7 @@ Namespace java.awt
 		''' <param name="s"> the <code>ObjectOutputStream</code> to write </param>
 		''' <seealso cref= AWTEventMulticaster#save(ObjectOutputStream, String, EventListener) </seealso>
 		''' <seealso cref= #readObject(ObjectInputStream) </seealso>
-		Private Sub writeObject(ByVal s As java.io.ObjectOutputStream)
+		Private Sub writeObject(  s As java.io.ObjectOutputStream)
 		  s.defaultWriteObject()
 		End Sub
 
@@ -509,7 +509,7 @@ Namespace java.awt
 		'''   <code>true</code> </exception>
 		''' <seealso cref= java.awt.GraphicsEnvironment#isHeadless </seealso>
 		''' <seealso cref= #writeObject(ObjectOutputStream) </seealso>
-		Private Sub readObject(ByVal s As java.io.ObjectInputStream)
+		Private Sub readObject(  s As java.io.ObjectInputStream)
 		  ' HeadlessException will be thrown from MenuComponent's readObject
 		  s.defaultReadObject()
 		  For i As Integer = 0 To items.Count - 1
@@ -563,7 +563,7 @@ Namespace java.awt
 		''' <summary>
 		''' Defined in MenuComponent. Overridden here.
 		''' </summary>
-		Friend Overrides Function getAccessibleChildIndex(ByVal child As MenuComponent) As Integer
+		Friend Overrides Function getAccessibleChildIndex(  child As MenuComponent) As Integer
 			Return items.IndexOf(child)
 		End Function
 
@@ -583,7 +583,7 @@ Namespace java.awt
 
 			Private ReadOnly outerInstance As Menu
 
-			Public Sub New(ByVal outerInstance As Menu)
+			Public Sub New(  outerInstance As Menu)
 				Me.outerInstance = outerInstance
 			End Sub
 

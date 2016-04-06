@@ -61,7 +61,7 @@ Namespace java.rmi.server
 		''' </summary>
 		''' <param name="ref"> the remote reference
 		''' @since JDK1.1 </param>
-		Protected Friend Sub New(ByVal ref As RemoteRef)
+		Protected Friend Sub New(  ref As RemoteRef)
 			MyBase.New(ref)
 		End Sub
 
@@ -78,7 +78,7 @@ Namespace java.rmi.server
 		''' and initialized with a remote reference through use of
 		''' the <seealso cref="#RemoteStub(RemoteRef)"/> constructor. 
 		<Obsolete("No replacement.  The {@code setRef} method")> _
-		Protected Friend Shared Sub setRef(ByVal stub As RemoteStub, ByVal ref As RemoteRef)
+		Protected Friend Shared Sub setRef(  stub As RemoteStub,   ref As RemoteRef)
 			Throw New UnsupportedOperationException
 		End Sub
 	End Class

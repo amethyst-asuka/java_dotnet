@@ -54,7 +54,7 @@ Namespace java.lang
 		''' </summary>
 		''' <param name="message">   the detail message. The detail message is saved for
 		'''          later retrieval by the <seealso cref="#getMessage()"/> method. </param>
-		Public Sub New(ByVal message As String)
+		Public Sub New(  message As String)
 			MyBase.New(message)
 		End Sub
 
@@ -72,7 +72,7 @@ Namespace java.lang
 		'''         <seealso cref="#getCause()"/> method).  (A {@code null} value is
 		'''         permitted, and indicates that the cause is nonexistent or
 		'''         unknown.) </param>
-		Public Sub New(ByVal message As String, ByVal cause As Throwable)
+		Public Sub New(  message As String,   cause As Throwable)
 			MyBase.New(message, cause)
 		End Sub
 
@@ -85,7 +85,7 @@ Namespace java.lang
 		'''         <seealso cref="#getCause()"/> method).  (A {@code null} value is
 		'''         permitted, and indicates that the cause is nonexistent or
 		'''         unknown.) </param>
-		Public Sub New(ByVal cause As Throwable)
+		Public Sub New(  cause As Throwable)
 			MyBase.New(cause)
 		End Sub
 	End Class

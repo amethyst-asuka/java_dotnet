@@ -114,7 +114,7 @@ Namespace java.security.spec
 		''' <exception cref="IllegalArgumentException"> if {@code saltLen}
 		''' or {@code trailerField} is less than 0.
 		''' @since 1.5 </exception>
-		Public Sub New(ByVal mdName As String, ByVal mgfName As String, ByVal mgfSpec As AlgorithmParameterSpec, ByVal saltLen As Integer, ByVal trailerField As Integer)
+		Public Sub New(  mdName As String,   mgfName As String,   mgfSpec As AlgorithmParameterSpec,   saltLen As Integer,   trailerField As Integer)
 			If mdName Is Nothing Then Throw New NullPointerException("digest algorithm is null")
 			If mgfName Is Nothing Then Throw New NullPointerException("mask generation function " & "algorithm is null")
 			If saltLen < 0 Then Throw New IllegalArgumentException("negative saltLen value: " & saltLen)
@@ -135,7 +135,7 @@ Namespace java.security.spec
 		''' PSS encoding. </param>
 		''' <exception cref="IllegalArgumentException"> if {@code saltLen} is
 		''' less than 0. </exception>
-		Public Sub New(ByVal saltLen As Integer)
+		Public Sub New(  saltLen As Integer)
 			If saltLen < 0 Then Throw New IllegalArgumentException("negative saltLen value: " & saltLen)
 			Me.saltLen = saltLen
 		End Sub

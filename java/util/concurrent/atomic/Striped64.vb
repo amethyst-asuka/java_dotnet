@@ -121,10 +121,10 @@ Namespace java.util.concurrent.atomic
 		Friend NotInheritable Class Cell
 'JAVA TO VB CONVERTER TODO TASK: There is no VB equivalent to 'volatile':
 			Friend value As Long
-			Friend Sub New(ByVal x As Long)
+			Friend Sub New(  x As Long)
 				value = x
 			End Sub
-			Friend Function cas(ByVal cmp As Long, ByVal val As Long) As Boolean
+			Friend Function cas(  cmp As Long,   val As Long) As Boolean
 				Return UNSAFE.compareAndSwapLong(Me, valueOffset, cmp, val)
 			End Function
 
@@ -177,7 +177,7 @@ Namespace java.util.concurrent.atomic
 		''' <summary>
 		''' CASes the base field.
 		''' </summary>
-		Friend Function casBase(ByVal cmp As Long, ByVal val As Long) As Boolean
+		Friend Function casBase(  cmp As Long,   val As Long) As Boolean
 			Return UNSAFE.compareAndSwapLong(Me, BASE, cmp, val)
 		End Function
 
@@ -203,7 +203,7 @@ Namespace java.util.concurrent.atomic
 		''' given thread.
 		''' Duplicated from ThreadLocalRandom because of packaging restrictions.
 		''' </summary>
-		Friend Shared Function advanceProbe(ByVal probe As Integer) As Integer
+		Friend Shared Function advanceProbe(  probe As Integer) As Integer
 			probe = probe Xor probe << 13 ' xorshift
 			probe = probe Xor CInt(CUInt(probe) >> 17)
 			probe = probe Xor probe << 5
@@ -222,7 +222,7 @@ Namespace java.util.concurrent.atomic
 		''' <param name="fn"> the update function, or null for add (this convention
 		''' avoids the need for an extra field or function in LongAdder). </param>
 		''' <param name="wasUncontended"> false if CAS failed before call </param>
-		Friend Sub longAccumulate(ByVal x As Long, ByVal fn As java.util.function.LongBinaryOperator, ByVal wasUncontended As Boolean)
+		Friend Sub longAccumulate(  x As Long,   fn As java.util.function.LongBinaryOperator,   wasUncontended As Boolean)
 			Dim h As Integer
 			h = probe
 			If h = 0 Then
@@ -316,7 +316,7 @@ Namespace java.util.concurrent.atomic
 		''' the low-overhead requirements of this class. So must instead be
 		''' maintained by copy/paste/adapt.
 		''' </summary>
-		Friend Sub doubleAccumulate(ByVal x As Double, ByVal fn As java.util.function.DoubleBinaryOperator, ByVal wasUncontended As Boolean)
+		Friend Sub doubleAccumulate(  x As Double,   fn As java.util.function.DoubleBinaryOperator,   wasUncontended As Boolean)
 			Dim h As Integer
 			h = probe
 			If h = 0 Then

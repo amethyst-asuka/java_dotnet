@@ -96,7 +96,7 @@ Namespace java.io
 		'''               <code>checkWrite</code> method denies write access
 		'''               to the file. </exception>
 		''' <seealso cref=        java.lang.SecurityManager#checkWrite(java.lang.String) </seealso>
-		Public Sub New(ByVal name As String)
+		Public Sub New(  name As String)
 			Me.New(If(name IsNot Nothing, New File(name), Nothing), False)
 		End Sub
 
@@ -125,7 +125,7 @@ Namespace java.io
 		'''               to the file. </exception>
 		''' <seealso cref=        java.lang.SecurityManager#checkWrite(java.lang.String)
 		''' @since     JDK1.1 </seealso>
-		Public Sub New(ByVal name As String, ByVal append As Boolean)
+		Public Sub New(  name As String,   append As Boolean)
 			Me.New(If(name IsNot Nothing, New File(name), Nothing), append)
 		End Sub
 
@@ -153,7 +153,7 @@ Namespace java.io
 		''' <seealso cref=        java.io.File#getPath() </seealso>
 		''' <seealso cref=        java.lang.SecurityException </seealso>
 		''' <seealso cref=        java.lang.SecurityManager#checkWrite(java.lang.String) </seealso>
-		Public Sub New(ByVal file_Renamed As File)
+		Public Sub New(  file_Renamed As File)
 			Me.New(file_Renamed, False)
 		End Sub
 
@@ -185,7 +185,7 @@ Namespace java.io
 		''' <seealso cref=        java.lang.SecurityException </seealso>
 		''' <seealso cref=        java.lang.SecurityManager#checkWrite(java.lang.String)
 		''' @since 1.4 </seealso>
-		Public Sub New(ByVal file_Renamed As File, ByVal append As Boolean)
+		Public Sub New(  file_Renamed As File,   append As Boolean)
 			Dim name As String = (If(file_Renamed IsNot Nothing, file_Renamed.path, Nothing))
 			Dim security As SecurityManager = System.securityManager
 			If security IsNot Nothing Then security.checkWrite(name)
@@ -221,7 +221,7 @@ Namespace java.io
 		'''               <code>checkWrite</code> method denies
 		'''               write access to the file descriptor </exception>
 		''' <seealso cref=        java.lang.SecurityManager#checkWrite(java.io.FileDescriptor) </seealso>
-		Public Sub New(ByVal fdObj As FileDescriptor)
+		Public Sub New(  fdObj As FileDescriptor)
 			Dim security As SecurityManager = System.securityManager
 			If fdObj Is Nothing Then Throw New NullPointerException
 			If security IsNot Nothing Then security.checkWrite(fdObj)
@@ -238,7 +238,7 @@ Namespace java.io
 		''' <param name="append"> whether the file is to be opened in append mode </param>
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Private Sub open0(ByVal name As String, ByVal append As Boolean)
+		Private Sub open0(  name As String,   append As Boolean)
 		End Sub
 
 		' wrap native call to allow instrumentation
@@ -246,7 +246,7 @@ Namespace java.io
 		''' Opens a file, with the specified name, for overwriting or appending. </summary>
 		''' <param name="name"> name of file to be opened </param>
 		''' <param name="append"> whether the file is to be opened in append mode </param>
-		Private Sub open(ByVal name As String, ByVal append As Boolean)
+		Private Sub open(  name As String,   append As Boolean)
 			open0(name, append)
 		End Sub
 
@@ -258,7 +258,7 @@ Namespace java.io
 		'''     advances the position to the end of file </param>
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Private Sub write(ByVal b As Integer, ByVal append As Boolean)
+		Private Sub write(  b As Integer,   append As Boolean)
 		End Sub
 
 		''' <summary>
@@ -267,7 +267,7 @@ Namespace java.io
 		''' </summary>
 		''' <param name="b">   the byte to be written. </param>
 		''' <exception cref="IOException">  if an I/O error occurs. </exception>
-		Public Overrides Sub write(ByVal b As Integer)
+		Public Overrides Sub write(  b As Integer)
 			write(b, append)
 		End Sub
 
@@ -281,7 +281,7 @@ Namespace java.io
 		''' <exception cref="IOException"> If an I/O error has occurred. </exception>
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Private Sub writeBytes(byte ByVal  As b(), ByVal [off] As Integer, ByVal len As Integer, ByVal append As Boolean)
+		Private Sub writeBytes(byte    As b(),   [off] As Integer,   len As Integer,   append As Boolean)
 		End Sub
 
 		''' <summary>
@@ -290,7 +290,7 @@ Namespace java.io
 		''' </summary>
 		''' <param name="b">   the data. </param>
 		''' <exception cref="IOException">  if an I/O error occurs. </exception>
-		Public Overrides Sub write(ByVal b As SByte())
+		Public Overrides Sub write(  b As SByte())
 			writeBytes(b, 0, b.Length, append)
 		End Sub
 

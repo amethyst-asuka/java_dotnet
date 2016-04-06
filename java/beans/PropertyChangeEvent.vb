@@ -57,7 +57,7 @@ Namespace java.beans
 		''' <param name="newValue">      the new value of the property
 		''' </param>
 		''' <exception cref="IllegalArgumentException"> if {@code source} is {@code null} </exception>
-		Public Sub New(ByVal source As Object, ByVal propertyName As String, ByVal oldValue As Object, ByVal newValue As Object)
+		Public Sub New(  source As Object,   propertyName As String,   oldValue As Object,   newValue As Object)
 			MyBase.New(source)
 			Me.propertyName = propertyName
 			Me.newValue = newValue
@@ -102,7 +102,7 @@ Namespace java.beans
 		''' </summary>
 		''' <param name="propagationId">  The propagationId object for the event. </param>
 		Public Overridable Property propagationId As Object
-			Set(ByVal propagationId As Object)
+			Set(  propagationId As Object)
 				Me.propagationId = propagationId
 			End Set
 			Get
@@ -152,7 +152,7 @@ Namespace java.beans
 			Return sb.append("]").ToString()
 		End Function
 
-		Friend Overridable Sub appendTo(ByVal sb As StringBuilder)
+		Friend Overridable Sub appendTo(  sb As StringBuilder)
 		End Sub
 	End Class
 

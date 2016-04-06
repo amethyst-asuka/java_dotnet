@@ -375,7 +375,7 @@ Namespace java.awt
         '''     <code>GraphicsEnvironment.isHeadless()</code> returns <code>true</code> </exception>
         ''' <seealso cref= java.awt.GraphicsEnvironment#isHeadless()
         ''' @since     1.3 </seealso>
-        Public Sub New(ByVal gc As GraphicsConfiguration)
+        Public Sub New(  gc As GraphicsConfiguration)
             Me.New("", gc)
         End Sub
 
@@ -391,7 +391,7 @@ Namespace java.awt
         ''' <seealso cref= java.awt.Component#setSize </seealso>
         ''' <seealso cref= java.awt.Component#setVisible(boolean) </seealso>
         ''' <seealso cref= java.awt.GraphicsConfiguration#getBounds </seealso>
-        Public Sub New(ByVal title As String)
+        Public Sub New(  title As String)
             init(title, Nothing)
         End Sub
 
@@ -415,12 +415,12 @@ Namespace java.awt
         ''' <seealso cref= java.awt.Component#setVisible(boolean) </seealso>
         ''' <seealso cref= java.awt.GraphicsConfiguration#getBounds
         ''' @since 1.3 </seealso>
-        Public Sub New(ByVal title As String, ByVal gc As GraphicsConfiguration)
+        Public Sub New(  title As String,   gc As GraphicsConfiguration)
             MyBase.New(gc)
             init(title, gc)
         End Sub
 
-        Private Sub init(ByVal title As String, ByVal gc As GraphicsConfiguration)
+        Private Sub init(  title As String,   gc As GraphicsConfiguration)
             Me.title = title
             sun.awt.SunToolkit.checkAndSetPolicy(Me)
         End Sub
@@ -470,7 +470,7 @@ Namespace java.awt
             Get
                 Return title
             End Get
-            Set(ByVal title As String)
+            Set(  title As String)
                 Dim oldTitle As String = Me.title
                 If title Is Nothing Then title = ""
 
@@ -507,7 +507,7 @@ Namespace java.awt
                 End If
                 Return Nothing
             End Get
-            Set(ByVal image_Renamed As image)
+            Set(  image_Renamed As image)
                 MyBase.iconImage = image_Renamed
             End Set
         End Property
@@ -522,7 +522,7 @@ Namespace java.awt
             Get
                 Return menuBar
             End Get
-            Set(ByVal mb As MenuBar)
+            Set(  mb As MenuBar)
                 SyncLock treeLock
                     If menuBar Is mb Then Return
                     If (mb IsNot Nothing) AndAlso (mb.parent IsNot Nothing) Then mb.parent.remove(mb)
@@ -554,7 +554,7 @@ Namespace java.awt
             Get
                 Return resizable
             End Get
-            Set(ByVal resizable As Boolean)
+            Set(  resizable As Boolean)
                 Dim oldResizable As Boolean = Me.resizable
                 Dim testvalid As Boolean = False
 
@@ -625,9 +625,9 @@ Namespace java.awt
         ''' <seealso cref= #setExtendedState(int) </seealso>
         ''' <seealso cref= java.awt.Window#addWindowStateListener </seealso>
         <MethodImpl(MethodImplOptions.Synchronized)>
-        Public Overridable Sub setState(ByVal state As Integer) 'JavaToDotNetTempPropertySetstate
+        Public Overridable Sub setState(  state As Integer) 'JavaToDotNetTempPropertySetstate
         Public Overridable Property state As Integer
-            Set(ByVal state As Integer)
+            Set(  state As Integer)
                 Dim current As Integer = extendedState
                 If state = ICONIFIED AndAlso (current And ICONIFIED) = 0 Then
                     extendedState = current Or ICONIFIED
@@ -680,9 +680,9 @@ Namespace java.awt
         ''' <param name="state"> a bitwise mask of frame state constants
         ''' @since   1.4 </param>
         ''' <seealso cref= java.awt.Window#addWindowStateListener </seealso>
-        Public Overridable Sub setExtendedState(ByVal state As Integer) 'JavaToDotNetTempPropertySetextendedState
+        Public Overridable Sub setExtendedState(  state As Integer) 'JavaToDotNetTempPropertySetextendedState
         Public Overridable Property extendedState As Integer
-            Set(ByVal state As Integer)
+            Set(  state As Integer)
                 If Not isFrameStateSupported(state) Then Return
                 SyncLock objectLock
                     Me.state = state
@@ -694,7 +694,7 @@ Namespace java.awt
             End Set
             Get
         End Property
-        Private Function isFrameStateSupported(ByVal state As Integer) As Boolean
+        Private Function isFrameStateSupported(  state As Integer) As Boolean
             If Not toolkit.isFrameStateSupported(state) Then
                 ' * Toolkit.isFrameStateSupported returns always false
                 ' on compound state even if all parts are supported;
@@ -743,7 +743,7 @@ Namespace java.awt
         ''' <seealso cref= #getMaximizedBounds()
         ''' @since 1.4 </seealso>
         Public Overridable Property maximizedBounds As Rectangle
-            Set(ByVal bounds As Rectangle)
+            Set(  bounds As Rectangle)
                 SyncLock objectLock
                     Me.maximizedBounds = bounds
                 End SyncLock
@@ -789,7 +789,7 @@ Namespace java.awt
         '''
         ''' @since 1.4 </seealso>
         Public Overridable Property undecorated As Boolean
-            Set(ByVal undecorated As Boolean)
+            Set(  undecorated As Boolean)
                 ' Make sure we don't run in the middle of peer creation.
                 SyncLock treeLock
                     If displayable Then Throw New IllegalComponentStateException("The frame is displayable.")
@@ -812,7 +812,7 @@ Namespace java.awt
         ''' {@inheritDoc}
         ''' </summary>
         Public Overrides Property opacity As Single
-            Set(ByVal opacity As Single)
+            Set(  opacity As Single)
                 SyncLock treeLock
                     If (opacity < 1.0F) AndAlso (Not undecorated) Then Throw New IllegalComponentStateException("The frame is decorated")
                     MyBase.opacity = opacity
@@ -824,7 +824,7 @@ Namespace java.awt
         ''' {@inheritDoc}
         ''' </summary>
         Public Overrides Property shape As Shape
-            Set(ByVal shape As Shape)
+            Set(  shape As Shape)
                 SyncLock treeLock
                     If (shape IsNot Nothing) AndAlso (Not undecorated) Then Throw New IllegalComponentStateException("The frame is decorated")
                     MyBase.shape = shape
@@ -836,7 +836,7 @@ Namespace java.awt
         ''' {@inheritDoc}
         ''' </summary>
         Public Overrides Property background As Color
-            Set(ByVal bgColor As Color)
+            Set(  bgColor As Color)
                 SyncLock treeLock
                     If (bgColor IsNot Nothing) AndAlso (bgColor.alpha < 255) AndAlso (Not undecorated) Then Throw New IllegalComponentStateException("The frame is decorated")
                     MyBase.background = bgColor
@@ -849,7 +849,7 @@ Namespace java.awt
         ''' <param name="m">   the menu component to remove.
         '''           If <code>m</code> is <code>null</code>, then
         '''           no action is taken </param>
-        Public Overridable Sub remove(ByVal m As MenuComponent) Implements MenuContainer.remove
+        Public Overridable Sub remove(  m As MenuComponent) Implements MenuContainer.remove
             If m Is Nothing Then Return
             SyncLock treeLock
                 If m Is menuBar Then
@@ -893,7 +893,7 @@ Namespace java.awt
             End SyncLock
         End Sub
 
-        Friend Overrides Sub postProcessKeyEvent(ByVal e As KeyEvent)
+        Friend Overrides Sub postProcessKeyEvent(  e As KeyEvent)
             If menuBar IsNot Nothing AndAlso menuBar.handleShortcut(e) Then
                 e.consume()
                 Return
@@ -933,7 +933,7 @@ Namespace java.awt
         ''' replaced by <code>Component.setCursor(Cursor)</code>.
         <Obsolete("As of JDK version 1.1,")>
         Public Overridable Property cursor As Integer
-            Set(ByVal cursorType As Integer)
+            Set(  cursorType As Integer)
                 If cursorType < DEFAULT_CURSOR OrElse cursorType > MOVE_CURSOR Then Throw New IllegalArgumentException("illegal cursor type")
                 cursor = cursor.getPredefinedCursor(cursorType)
             End Set
@@ -1012,7 +1012,7 @@ Namespace java.awt
         ''' <seealso cref= #getIconImage </seealso>
         ''' <seealso cref= #setIconImage(Image) </seealso>
         ''' <seealso cref= #readObject(ObjectInputStream) </seealso>
-        Private Sub writeObject(ByVal s As java.io.ObjectOutputStream)
+        Private Sub writeObject(  s As java.io.ObjectOutputStream)
             s.defaultWriteObject()
             If icons IsNot Nothing AndAlso icons.Count > 0 Then
                 Dim icon1 As image = icons(0)
@@ -1045,7 +1045,7 @@ Namespace java.awt
         ''' <seealso cref= #getIconImage </seealso>
         ''' <seealso cref= #setIconImage(Image) </seealso>
         ''' <seealso cref= #writeObject(ObjectOutputStream) </seealso>
-        Private Sub readObject(ByVal s As java.io.ObjectInputStream)
+        Private Sub readObject(  s As java.io.ObjectInputStream)
             ' HeadlessException is thrown by Window's readObject
             s.defaultReadObject()
             Try
@@ -1118,7 +1118,7 @@ Namespace java.awt
 
             Private ReadOnly outerInstance As Frame
 
-            Public Sub New(ByVal outerInstance As Frame)
+            Public Sub New(  outerInstance As Frame)
                 Me.outerInstance = outerInstance
             End Sub
 

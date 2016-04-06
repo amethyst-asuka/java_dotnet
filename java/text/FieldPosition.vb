@@ -104,7 +104,7 @@ Namespace java.text
 		''' <seealso cref= java.text.NumberFormat#FRACTION_FIELD </seealso>
 		''' <seealso cref= java.text.DateFormat#YEAR_FIELD </seealso>
 		''' <seealso cref= java.text.DateFormat#MONTH_FIELD </seealso>
-		Public Sub New(ByVal field As Integer)
+		Public Sub New(  field As Integer)
 			Me.field = field
 		End Sub
 
@@ -116,7 +116,7 @@ Namespace java.text
 		''' </summary>
 		''' <param name="attribute"> Format.Field constant identifying a field
 		''' @since 1.4 </param>
-		Public Sub New(ByVal attribute As Format.Field)
+		Public Sub New(  attribute As Format.Field)
 			Me.New(attribute, -1)
 		End Sub
 
@@ -135,7 +135,7 @@ Namespace java.text
 		''' <param name="attribute"> Format.Field constant identifying a field </param>
 		''' <param name="fieldID"> integer constant identifying a field
 		''' @since 1.4 </param>
-		Public Sub New(ByVal attribute As Format.Field, ByVal fieldID As Integer)
+		Public Sub New(  attribute As Format.Field,   fieldID As Integer)
 			Me.attribute = attribute
 			Me.field = fieldID
 		End Sub
@@ -171,7 +171,7 @@ Namespace java.text
 			Get
 				Return beginIndex
 			End Get
-			Set(ByVal bi As Integer)
+			Set(  bi As Integer)
 				beginIndex = bi
 			End Set
 		End Property
@@ -185,7 +185,7 @@ Namespace java.text
 			Get
 				Return endIndex
 			End Get
-			Set(ByVal ei As Integer)
+			Set(  ei As Integer)
 				endIndex = ei
 			End Set
 		End Property
@@ -207,7 +207,7 @@ Namespace java.text
 		''' <summary>
 		''' Overrides equals
 		''' </summary>
-		Public Overrides Function Equals(ByVal obj As Object) As Boolean
+		Public Overrides Function Equals(  obj As Object) As Boolean
 			If obj Is Nothing Then Return False
 			If Not(TypeOf obj Is FieldPosition) Then Return False
 			Dim other As FieldPosition = CType(obj, FieldPosition)
@@ -238,7 +238,7 @@ Namespace java.text
 		''' Return true if the receiver wants a <code>Format.Field</code> value and
 		''' <code>attribute</code> is equal to it.
 		''' </summary>
-		Private Function matchesField(ByVal attribute As Format.Field) As Boolean
+		Private Function matchesField(  attribute As Format.Field) As Boolean
 			If Me.attribute IsNot Nothing Then Return Me.attribute.Equals(attribute)
 			Return False
 		End Function
@@ -248,7 +248,7 @@ Namespace java.text
 		''' <code>attribute</code> is equal to it, or true if the receiver
 		''' represents an inteter constant and <code>field</code> equals it.
 		''' </summary>
-		Private Function matchesField(ByVal attribute As Format.Field, ByVal field As Integer) As Boolean
+		Private Function matchesField(  attribute As Format.Field,   field As Integer) As Boolean
 			If Me.attribute IsNot Nothing Then Return Me.attribute.Equals(attribute)
 			Return (field = Me.field)
 		End Function
@@ -264,7 +264,7 @@ Namespace java.text
 
 			Private ReadOnly outerInstance As FieldPosition
 
-			Public Sub New(ByVal outerInstance As FieldPosition)
+			Public Sub New(  outerInstance As FieldPosition)
 				Me.outerInstance = outerInstance
 			End Sub
 
@@ -275,7 +275,7 @@ Namespace java.text
 			''' </summary>
 			Private encounteredField As Boolean
 
-			Public Overridable Sub formatted(ByVal attr As Format.Field, ByVal value As Object, ByVal start As Integer, ByVal [end] As Integer, ByVal buffer As StringBuffer) Implements Format.FieldDelegate.formatted
+			Public Overridable Sub formatted(  attr As Format.Field,   value As Object,   start As Integer,   [end] As Integer,   buffer As StringBuffer) Implements Format.FieldDelegate.formatted
 				If (Not encounteredField) AndAlso outerInstance.matchesField(attr) Then
 					outerInstance.beginIndex = start
 					outerInstance.endIndex = [end]
@@ -283,7 +283,7 @@ Namespace java.text
 				End If
 			End Sub
 
-			Public Overridable Sub formatted(ByVal fieldID As Integer, ByVal attr As Format.Field, ByVal value As Object, ByVal start As Integer, ByVal [end] As Integer, ByVal buffer As StringBuffer) Implements Format.FieldDelegate.formatted
+			Public Overridable Sub formatted(  fieldID As Integer,   attr As Format.Field,   value As Object,   start As Integer,   [end] As Integer,   buffer As StringBuffer) Implements Format.FieldDelegate.formatted
 				If (Not encounteredField) AndAlso outerInstance.matchesField(attr, fieldID) Then
 					outerInstance.beginIndex = start
 					outerInstance.endIndex = [end]

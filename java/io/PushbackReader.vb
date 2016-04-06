@@ -53,7 +53,7 @@ Namespace java.io
 		''' <param name="in">   The reader from which characters will be read </param>
 		''' <param name="size"> The size of the pushback buffer </param>
 		''' <exception cref="IllegalArgumentException"> if {@code size <= 0} </exception>
-		Public Sub New(ByVal [in] As Reader, ByVal size As Integer)
+		Public Sub New(  [in] As Reader,   size As Integer)
 			MyBase.New([in])
 			If size <= 0 Then Throw New IllegalArgumentException("size <= 0")
 			Me.buf = New Char(size - 1){}
@@ -64,7 +64,7 @@ Namespace java.io
 		''' Creates a new pushback reader with a one-character pushback buffer.
 		''' </summary>
 		''' <param name="in">  The reader from which characters will be read </param>
-		Public Sub New(ByVal [in] As Reader)
+		Public Sub New(  [in] As Reader)
 			Me.New([in], 1)
 		End Sub
 

@@ -46,7 +46,7 @@ Namespace java.util.function
 		''' <param name="t"> the first function argument </param>
 		''' <param name="u"> the second function argument </param>
 		''' <returns> the function result </returns>
-		Function applyAsDouble(ByVal t As T, ByVal u As U) As Double
+		Function applyAsDouble(  t As T,   u As U) As Double
 	End Interface
 
 End Namespace

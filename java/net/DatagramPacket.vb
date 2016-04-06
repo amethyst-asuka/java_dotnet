@@ -52,7 +52,7 @@ Namespace java.net
 		Private Class CookiePolicyAnonymousInnerClassHelper
 			Implements CookiePolicy
 
-			Public Overridable Function shouldAccept(ByVal uri As URI, ByVal cookie As HttpCookie) As Boolean Implements CookiePolicy.shouldAccept
+			Public Overridable Function shouldAccept(  uri As URI,   cookie As HttpCookie) As Boolean Implements CookiePolicy.shouldAccept
 				Return True
 			End Function
 		End Class
@@ -60,7 +60,7 @@ Namespace java.net
 		Private Class CookiePolicyAnonymousInnerClassHelper2
 			Implements CookiePolicy
 
-			Public Overridable Function shouldAccept(ByVal uri As URI, ByVal cookie As HttpCookie) As Boolean Implements CookiePolicy.shouldAccept
+			Public Overridable Function shouldAccept(  uri As URI,   cookie As HttpCookie) As Boolean Implements CookiePolicy.shouldAccept
 				Return False
 			End Function
 		End Class
@@ -68,7 +68,7 @@ Namespace java.net
 		Private Class CookiePolicyAnonymousInnerClassHelper3
 			Implements CookiePolicy
 
-			Public Overridable Function shouldAccept(ByVal uri As URI, ByVal cookie As HttpCookie) As Boolean Implements CookiePolicy.shouldAccept
+			Public Overridable Function shouldAccept(  uri As URI,   cookie As HttpCookie) As Boolean Implements CookiePolicy.shouldAccept
 				If uri Is Nothing OrElse cookie Is Nothing Then Return False
 				Return HttpCookie.domainMatches(cookie.domain, uri.host)
 			End Function

@@ -114,7 +114,7 @@ Namespace java.awt.geom
 		''' <param name="s">  the <code>Shape</code> from which the area is constructed </param>
 		''' <exception cref="NullPointerException"> if <code>s</code> is null
 		''' @since 1.2 </exception>
-		Public Sub New(ByVal s As java.awt.Shape)
+		Public Sub New(  s As java.awt.Shape)
 			If TypeOf s Is Area Then
 				curves = CType(s, Area).curves
 			Else
@@ -122,7 +122,7 @@ Namespace java.awt.geom
 			End If
 		End Sub
 
-		Private Shared Function pathToCurves(ByVal pi As PathIterator) As ArrayList
+		Private Shared Function pathToCurves(  pi As PathIterator) As ArrayList
 			Dim curves As New ArrayList
 			Dim windingRule As Integer = pi.windingRule
 			' coords array is big enough for holding:
@@ -214,7 +214,7 @@ Namespace java.awt.geom
 		'''          current shape </param>
 		''' <exception cref="NullPointerException"> if <code>rhs</code> is null
 		''' @since 1.2 </exception>
-		Public Overridable Sub add(ByVal rhs As Area)
+		Public Overridable Sub add(  rhs As Area)
 			curves = (New sun.awt.geom.AreaOp.AddOp).calculate(Me.curves, rhs.curves)
 			invalidateBounds()
 		End Sub
@@ -246,7 +246,7 @@ Namespace java.awt.geom
 		'''          current shape </param>
 		''' <exception cref="NullPointerException"> if <code>rhs</code> is null
 		''' @since 1.2 </exception>
-		Public Overridable Sub subtract(ByVal rhs As Area)
+		Public Overridable Sub subtract(  rhs As Area)
 			curves = (New sun.awt.geom.AreaOp.SubOp).calculate(Me.curves, rhs.curves)
 			invalidateBounds()
 		End Sub
@@ -278,7 +278,7 @@ Namespace java.awt.geom
 		'''          <code>Area</code> </param>
 		''' <exception cref="NullPointerException"> if <code>rhs</code> is null
 		''' @since 1.2 </exception>
-		Public Overridable Sub intersect(ByVal rhs As Area)
+		Public Overridable Sub intersect(  rhs As Area)
 			curves = (New sun.awt.geom.AreaOp.IntOp).calculate(Me.curves, rhs.curves)
 			invalidateBounds()
 		End Sub
@@ -311,7 +311,7 @@ Namespace java.awt.geom
 		'''          <code>Area</code>. </param>
 		''' <exception cref="NullPointerException"> if <code>rhs</code> is null
 		''' @since 1.2 </exception>
-		Public Overridable Sub exclusiveOr(ByVal rhs As Area)
+		Public Overridable Sub exclusiveOr(  rhs As Area)
 			curves = (New sun.awt.geom.AreaOp.XorOp).calculate(Me.curves, rhs.curves)
 			invalidateBounds()
 		End Sub
@@ -473,7 +473,7 @@ Namespace java.awt.geom
 		''' <returns>  <code>true</code> if the two geometries are equal;
 		'''          <code>false</code> otherwise.
 		''' @since 1.2 </returns>
-		Public Overrides Function Equals(ByVal other As Area) As Boolean
+		Public Overrides Function Equals(  other As Area) As Boolean
 			' REMIND: A *much* simpler operation should be possible...
 			' Should be able to do a curve-wise comparison since all Areas
 			' should evaluate their curves in the same top-down order.
@@ -490,7 +490,7 @@ Namespace java.awt.geom
 		''' <param name="t">  the transformation used to transform the area </param>
 		''' <exception cref="NullPointerException"> if <code>t</code> is null
 		''' @since 1.2 </exception>
-		Public Overridable Sub transform(ByVal t As AffineTransform)
+		Public Overridable Sub transform(  t As AffineTransform)
 			If t Is Nothing Then Throw New NullPointerException("transform must not be null")
 			' REMIND: A simpler operation can be performed for some types
 			' of transform.
@@ -509,7 +509,7 @@ Namespace java.awt.geom
 		''' <returns>   a new <code>Area</code> object representing the transformed
 		'''           geometry.
 		''' @since 1.2 </returns>
-		Public Overridable Function createTransformedArea(ByVal t As AffineTransform) As Area
+		Public Overridable Function createTransformedArea(  t As AffineTransform) As Area
 			Dim a As New Area(Me)
 			a.transform(t)
 			Return a
@@ -519,7 +519,7 @@ Namespace java.awt.geom
 		''' {@inheritDoc}
 		''' @since 1.2
 		''' </summary>
-		Public Overridable Function contains(ByVal x As Double, ByVal y As Double) As Boolean
+		Public Overridable Function contains(  x As Double,   y As Double) As Boolean
 			If Not cachedBounds.contains(x, y) Then Return False
 			Dim enum_ As System.Collections.IEnumerator = curves.elements()
 			Dim crossings As Integer = 0
@@ -534,7 +534,7 @@ Namespace java.awt.geom
 		''' {@inheritDoc}
 		''' @since 1.2
 		''' </summary>
-		Public Overridable Function contains(ByVal p As Point2D) As Boolean
+		Public Overridable Function contains(  p As Point2D) As Boolean
 			Return contains(p.x, p.y)
 		End Function
 
@@ -542,7 +542,7 @@ Namespace java.awt.geom
 		''' {@inheritDoc}
 		''' @since 1.2
 		''' </summary>
-		Public Overridable Function contains(ByVal x As Double, ByVal y As Double, ByVal w As Double, ByVal h As Double) As Boolean
+		Public Overridable Function contains(  x As Double,   y As Double,   w As Double,   h As Double) As Boolean
 			If w < 0 OrElse h < 0 Then Return False
 			If Not cachedBounds.contains(x, y, w, h) Then Return False
 			Dim c As sun.awt.geom.Crossings = sun.awt.geom.Crossings.findCrossings(curves, x, y, x+w, y+h)
@@ -553,7 +553,7 @@ Namespace java.awt.geom
 		''' {@inheritDoc}
 		''' @since 1.2
 		''' </summary>
-		Public Overridable Function contains(ByVal r As Rectangle2D) As Boolean
+		Public Overridable Function contains(  r As Rectangle2D) As Boolean
 			Return contains(r.x, r.y, r.width, r.height)
 		End Function
 
@@ -561,7 +561,7 @@ Namespace java.awt.geom
 		''' {@inheritDoc}
 		''' @since 1.2
 		''' </summary>
-		Public Overridable Function intersects(ByVal x As Double, ByVal y As Double, ByVal w As Double, ByVal h As Double) As Boolean
+		Public Overridable Function intersects(  x As Double,   y As Double,   w As Double,   h As Double) As Boolean
 			If w < 0 OrElse h < 0 Then Return False
 			If Not cachedBounds.intersects(x, y, w, h) Then Return False
 			Dim c As sun.awt.geom.Crossings = sun.awt.geom.Crossings.findCrossings(curves, x, y, x+w, y+h)
@@ -572,7 +572,7 @@ Namespace java.awt.geom
 		''' {@inheritDoc}
 		''' @since 1.2
 		''' </summary>
-		Public Overridable Function intersects(ByVal r As Rectangle2D) As Boolean
+		Public Overridable Function intersects(  r As Rectangle2D) As Boolean
 			Return intersects(r.x, r.y, r.width, r.height)
 		End Function
 
@@ -586,7 +586,7 @@ Namespace java.awt.geom
 		'''          geometry of the outline of this <code>Area</code>, one
 		'''          segment at a time.
 		''' @since 1.2 </returns>
-		Public Overridable Function getPathIterator(ByVal at As AffineTransform) As PathIterator
+		Public Overridable Function getPathIterator(  at As AffineTransform) As PathIterator
 			Return New AreaIterator(curves, at)
 		End Function
 
@@ -607,7 +607,7 @@ Namespace java.awt.geom
 		''' geometry of the outline of this <code>Area</code>, one segment
 		''' at a time.
 		''' @since 1.2 </returns>
-		Public Overridable Function getPathIterator(ByVal at As AffineTransform, ByVal flatness As Double) As PathIterator
+		Public Overridable Function getPathIterator(  at As AffineTransform,   flatness As Double) As PathIterator
 			Return New FlatteningPathIterator(getPathIterator(at), flatness)
 		End Function
 	End Class
@@ -621,7 +621,7 @@ Namespace java.awt.geom
 		Private prevcurve As sun.awt.geom.Curve
 		Private thiscurve As sun.awt.geom.Curve
 
-		Public Sub New(ByVal curves As ArrayList, ByVal at As AffineTransform)
+		Public Sub New(  curves As ArrayList,   at As AffineTransform)
 			Me.curves = curves
 			Me.transform = at
 			If curves.Count >= 1 Then thiscurve = CType(curves(0), sun.awt.geom.Curve)
@@ -657,7 +657,7 @@ Namespace java.awt.geom
 			End If
 		End Sub
 
-		Public Overridable Function currentSegment(ByVal coords As Single()) As Integer Implements PathIterator.currentSegment
+		Public Overridable Function currentSegment(  coords As Single()) As Integer Implements PathIterator.currentSegment
 			Dim dcoords As Double() = New Double(5){}
 			Dim segtype As Integer = currentSegment(dcoords)
 			Dim numpoints As Integer = (If(segtype = SEG_CLOSE, 0, (If(segtype = SEG_QUADTO, 2, (If(segtype = SEG_CUBICTO, 3, 1))))))
@@ -667,7 +667,7 @@ Namespace java.awt.geom
 			Return segtype
 		End Function
 
-		Public Overridable Function currentSegment(ByVal coords As Double()) As Integer Implements PathIterator.currentSegment
+		Public Overridable Function currentSegment(  coords As Double()) As Integer Implements PathIterator.currentSegment
 			Dim segtype As Integer
 			Dim numpoints As Integer
 			If prevcurve IsNot Nothing Then

@@ -57,14 +57,14 @@ Namespace java.awt.event
 		''' that the Window, or one of its subcomponents, will receive keyboard
 		''' events.
 		''' </summary>
-		Sub windowGainedFocus(ByVal e As WindowEvent)
+		Sub windowGainedFocus(  e As WindowEvent)
 
 		''' <summary>
 		''' Invoked when the Window is no longer the focused Window, which means
 		''' that keyboard events will no longer be delivered to the Window or any of
 		''' its subcomponents.
 		''' </summary>
-		Sub windowLostFocus(ByVal e As WindowEvent)
+		Sub windowLostFocus(  e As WindowEvent)
 	End Interface
 
 End Namespace

@@ -44,7 +44,7 @@ Namespace java.io
 			Private timestamp_Renamed As Long
 			Private val_Renamed As String
 
-			Friend Sub New(ByVal timestamp As Long, ByVal val As String)
+			Friend Sub New(  timestamp As Long,   val As String)
 				Me.timestamp_Renamed = timestamp
 				Me.val_Renamed = val
 			End Sub
@@ -53,7 +53,7 @@ Namespace java.io
 				Return timestamp_Renamed
 			End Function
 			Friend Overridable Property timestamp As Long
-				Set(ByVal timestamp As Long)
+				Set(  timestamp As Long)
 					Me.timestamp_Renamed = timestamp
 				End Set
 			End Property
@@ -62,7 +62,7 @@ Namespace java.io
 				Return val_Renamed
 			End Function
 			Friend Overridable Property val As String
-				Set(ByVal val As String)
+				Set(  val As String)
 					Me.val_Renamed = val
 				End Set
 			End Property
@@ -73,7 +73,7 @@ Namespace java.io
 		End Sub
 
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Friend Sub New(ByVal millisUntilExpiration As Long)
+		Friend Sub New(  millisUntilExpiration As Long)
 			Me.millisUntilExpiration = millisUntilExpiration
 			map = New LinkedHashMapAnonymousInnerClassHelper(Of K, V)
 		End Sub
@@ -81,13 +81,13 @@ Namespace java.io
 		Private Class LinkedHashMapAnonymousInnerClassHelper(Of K, V)
 			Inherits java.util.LinkedHashMap(Of K, V)
 
-			Protected Friend Overridable Function removeEldestEntry(ByVal eldest As KeyValuePair(Of String, Entry)) As Boolean
+			Protected Friend Overridable Function removeEldestEntry(  eldest As KeyValuePair(Of String, Entry)) As Boolean
 			  Return size() > outerInstance.MAX_ENTRIES
 			End Function
 		End Class
 
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Friend Overridable Function [get](ByVal key As String) As String
+		Friend Overridable Function [get](  key As String) As String
 			queryCount += 1
 			If queryCount >= queryOverflow Then cleanup()
 			Dim entry As Entry = entryFor(key)
@@ -96,7 +96,7 @@ Namespace java.io
 		End Function
 
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Friend Overridable Sub put(ByVal key As String, ByVal val As String)
+		Friend Overridable Sub put(  key As String,   val As String)
 			queryCount += 1
 			If queryCount >= queryOverflow Then cleanup()
 			Dim entry As Entry = entryFor(key)
@@ -113,7 +113,7 @@ Namespace java.io
 			map.Clear()
 		End Sub
 
-		Private Function entryFor(ByVal key As String) As Entry
+		Private Function entryFor(  key As String) As Entry
 			Dim entry As Entry = map(key)
 			If entry IsNot Nothing Then
 				Dim delta As Long = System.currentTimeMillis() - entry.timestamp()

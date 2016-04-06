@@ -1072,7 +1072,7 @@ Namespace java.util
 			''' <seealso cref= Calendar#setTime(Date) </seealso>
 			''' <seealso cref= Calendar#setTimeInMillis(long) </seealso>
 			''' <seealso cref= Calendar#time </seealso>
-			Public Overridable Function setInstant(ByVal instant As Long) As Builder
+			Public Overridable Function setInstant(  instant As Long) As Builder
 				If fields IsNot Nothing Then Throw New IllegalStateException
 				Me.instant = instant
 				nextStamp = COMPUTED
@@ -1093,7 +1093,7 @@ Namespace java.util
 			''' <seealso cref= Calendar#setTime(Date) </seealso>
 			''' <seealso cref= Calendar#setTimeInMillis(long) </seealso>
 			''' <seealso cref= Calendar#time </seealso>
-			Public Overridable Function setInstant(ByVal instant As Date) As Builder
+			Public Overridable Function setInstant(  instant As Date) As Builder
 				Return instantant(instant.time) ' NPE if instant == null
 			End Function
 
@@ -1113,7 +1113,7 @@ Namespace java.util
 			'''                      or if fields have been set too many
 			'''                      (approximately <seealso cref="Integer#MAX_VALUE"/>) times. </exception>
 			''' <seealso cref= Calendar#set(int, int) </seealso>
-			Public Overridable Function [set](ByVal field As Integer, ByVal value As Integer) As Builder
+			Public Overridable Function [set](  field As Integer,   value As Integer) As Builder
 				' Note: WEEK_YEAR can't be set with this method.
 				If field < 0 OrElse field >= FIELD_COUNT Then Throw New IllegalArgumentException("field is invalid")
 				If instantSet Then Throw New IllegalStateException("instant has been set")
@@ -1145,7 +1145,7 @@ Namespace java.util
 			''' <exception cref="IllegalStateException">    if the instant value has been set,
 			'''             or if fields have been set too many (approximately
 			'''             <seealso cref="Integer#MAX_VALUE"/>) times. </exception>
-			Public Overridable Function setFields(ParamArray ByVal fieldValuePairs As Integer()) As Builder
+			Public Overridable Function setFields(ParamArray   fieldValuePairs As Integer()) As Builder
 				Dim len As Integer = fieldValuePairs.Length
 				If (len Mod 2) <> 0 Then Throw New IllegalArgumentException
 				If instantSet Then Throw New IllegalStateException("instant has been set")
@@ -1177,7 +1177,7 @@ Namespace java.util
 			'''                   (the month numbering is <em>0-based</em>). </param>
 			''' <param name="dayOfMonth"> the <seealso cref="Calendar#DAY_OF_MONTH DAY_OF_MONTH"/> value </param>
 			''' <returns> this {@code Calendar.Builder} </returns>
-			Public Overridable Function setDate(ByVal year As Integer, ByVal month As Integer, ByVal dayOfMonth As Integer) As Builder
+			Public Overridable Function setDate(  year As Integer,   month As Integer,   dayOfMonth As Integer) As Builder
 				Return fieldslds(Builder.YEAR, year, Builder.MONTH, month, DAY_OF_MONTH, dayOfMonth)
 			End Function
 
@@ -1193,7 +1193,7 @@ Namespace java.util
 			''' <param name="minute">    the <seealso cref="Calendar#MINUTE MINUTE"/> value </param>
 			''' <param name="second">    the <seealso cref="Calendar#SECOND SECOND"/> value </param>
 			''' <returns> this {@code Calendar.Builder} </returns>
-			Public Overridable Function setTimeOfDay(ByVal hourOfDay As Integer, ByVal minute As Integer, ByVal second As Integer) As Builder
+			Public Overridable Function setTimeOfDay(  hourOfDay As Integer,   minute As Integer,   second As Integer) As Builder
 				Return timeOfDayDay(hourOfDay, minute, second, 0)
 			End Function
 
@@ -1213,7 +1213,7 @@ Namespace java.util
 			''' <param name="second">    the <seealso cref="Calendar#SECOND SECOND"/> value </param>
 			''' <param name="millis">    the <seealso cref="Calendar#MILLISECOND MILLISECOND"/> value </param>
 			''' <returns> this {@code Calendar.Builder} </returns>
-			Public Overridable Function setTimeOfDay(ByVal hourOfDay As Integer, ByVal minute As Integer, ByVal second As Integer, ByVal millis As Integer) As Builder
+			Public Overridable Function setTimeOfDay(  hourOfDay As Integer,   minute As Integer,   second As Integer,   millis As Integer) As Builder
 				Return fieldslds(HOUR_OF_DAY, hourOfDay, Builder.MINUTE, minute, Builder.SECOND, second, MILLISECOND, millis)
 			End Function
 
@@ -1232,7 +1232,7 @@ Namespace java.util
 			''' <returns> this {@code Calendar.Builder} </returns>
 			''' <seealso cref= Calendar#setWeekDate(int, int, int) </seealso>
 			''' <seealso cref= Calendar#isWeekDateSupported() </seealso>
-			Public Overridable Function setWeekDate(ByVal weekYear As Integer, ByVal weekOfYear As Integer, ByVal dayOfWeek As Integer) As Builder
+			Public Overridable Function setWeekDate(  weekYear As Integer,   weekOfYear As Integer,   dayOfWeek As Integer) As Builder
 				allocateFields()
 				internalSet(WEEK_YEAR, weekYear)
 				internalSet(WEEK_OF_YEAR, weekOfYear)
@@ -1251,7 +1251,7 @@ Namespace java.util
 			''' <returns> this {@code Calendar.Builder} </returns>
 			''' <exception cref="NullPointerException"> if {@code zone} is {@code null} </exception>
 			''' <seealso cref= Calendar#setTimeZone(TimeZone) </seealso>
-			Public Overridable Function setTimeZone(ByVal zone As TimeZone) As Builder
+			Public Overridable Function setTimeZone(  zone As TimeZone) As Builder
 				If zone Is Nothing Then Throw New NullPointerException
 				Me.zone = zone
 				Return Me
@@ -1266,7 +1266,7 @@ Namespace java.util
 			'''                {@code false} for non-lenient mode </param>
 			''' <returns> this {@code Calendar.Builder} </returns>
 			''' <seealso cref= Calendar#setLenient(boolean) </seealso>
-			Public Overridable Function setLenient(ByVal lenient As Boolean) As Builder
+			Public Overridable Function setLenient(  lenient As Boolean) As Builder
 				Me.lenient = lenient
 				Return Me
 			End Function
@@ -1289,7 +1289,7 @@ Namespace java.util
 			''' <exception cref="IllegalStateException"> if another calendar type has already been set </exception>
 			''' <seealso cref= Calendar#getCalendarType() </seealso>
 			''' <seealso cref= Calendar#getAvailableCalendarTypes() </seealso>
-			Public Overridable Function setCalendarType(ByVal type As String) As Builder
+			Public Overridable Function setCalendarType(  type As String) As Builder
 				If type.Equals("gregorian") Then ' NPE if type == null type = "gregory"
 				If (Not Calendar.availableCalendarTypes.contains(type)) AndAlso (Not type.Equals("iso8601")) Then Throw New IllegalArgumentException("unknown calendar type: " & type)
 				If Me.type Is Nothing Then
@@ -1319,7 +1319,7 @@ Namespace java.util
 			''' <exception cref="NullPointerException"> if {@code locale} is {@code null} </exception>
 			''' <returns> this {@code Calendar.Builder} </returns>
 			''' <seealso cref= Calendar#getInstance(Locale) </seealso>
-			Public Overridable Function setLocale(ByVal locale_Renamed As Locale) As Builder
+			Public Overridable Function setLocale(  locale_Renamed As Locale) As Builder
 				If locale_Renamed Is Nothing Then Throw New NullPointerException
 				Me.locale = locale_Renamed
 				Return Me
@@ -1342,7 +1342,7 @@ Namespace java.util
 			'''                                  {@code minimalDaysInFirstWeek} is invalid </exception>
 			''' <seealso cref= Calendar#getFirstDayOfWeek() </seealso>
 			''' <seealso cref= Calendar#getMinimalDaysInFirstWeek() </seealso>
-			Public Overridable Function setWeekDefinition(ByVal firstDayOfWeek As Integer, ByVal minimalDaysInFirstWeek As Integer) As Builder
+			Public Overridable Function setWeekDefinition(  firstDayOfWeek As Integer,   minimalDaysInFirstWeek As Integer) As Builder
 				If (Not isValidWeekParameter(firstDayOfWeek)) OrElse (Not isValidWeekParameter(minimalDaysInFirstWeek)) Then Throw New IllegalArgumentException
 				Me.firstDayOfWeek = firstDayOfWeek
 				Me.minimalDaysInFirstWeek = minimalDaysInFirstWeek
@@ -1457,7 +1457,7 @@ Namespace java.util
 				End If
 			End Sub
 
-			Private Sub internalSet(ByVal field As Integer, ByVal value As Integer)
+			Private Sub internalSet(  field As Integer,   value As Integer)
 				fields(field) = nextStamp
 				nextStamp += 1
 				If nextStamp < 0 Then Throw New IllegalStateException("stamp counter overflow")
@@ -1471,11 +1471,11 @@ Namespace java.util
 				End Get
 			End Property
 
-			Private Function isSet(ByVal index As Integer) As Boolean
+			Private Function isSet(  index As Integer) As Boolean
 				Return fields IsNot Nothing AndAlso fields(index) > UNSET
 			End Function
 
-			Private Function isValidWeekParameter(ByVal value As Integer) As Boolean
+			Private Function isValidWeekParameter(  value As Integer) As Boolean
 				Return value > 0 AndAlso value <= 7
 			End Function
 		End Class
@@ -1495,7 +1495,7 @@ Namespace java.util
 		''' </summary>
 		''' <param name="zone"> the time zone to use </param>
 		''' <param name="aLocale"> the locale for the week data </param>
-		Protected Friend Sub New(ByVal zone As TimeZone, ByVal aLocale As Locale)
+		Protected Friend Sub New(  zone As TimeZone,   aLocale As Locale)
 			fields = New Integer(FIELD_COUNT - 1){}
 			isSet_Renamed = New Boolean(FIELD_COUNT - 1){}
 			stamp = New Integer(FIELD_COUNT - 1){}
@@ -1525,7 +1525,7 @@ Namespace java.util
 		''' </summary>
 		''' <param name="zone"> the time zone to use </param>
 		''' <returns> a Calendar. </returns>
-		Public Shared Function getInstance(ByVal zone As TimeZone) As Calendar
+		Public Shared Function getInstance(  zone As TimeZone) As Calendar
 			Return createCalendar(zone, Locale.getDefault(Locale.Category.FORMAT))
 		End Function
 
@@ -1536,7 +1536,7 @@ Namespace java.util
 		''' </summary>
 		''' <param name="aLocale"> the locale for the week data </param>
 		''' <returns> a Calendar. </returns>
-		Public Shared Function getInstance(ByVal aLocale As Locale) As Calendar
+		Public Shared Function getInstance(  aLocale As Locale) As Calendar
 			Return createCalendar(TimeZone.default, aLocale)
 		End Function
 
@@ -1548,11 +1548,11 @@ Namespace java.util
 		''' <param name="zone"> the time zone to use </param>
 		''' <param name="aLocale"> the locale for the week data </param>
 		''' <returns> a Calendar. </returns>
-		Public Shared Function getInstance(ByVal zone As TimeZone, ByVal aLocale As Locale) As Calendar
+		Public Shared Function getInstance(  zone As TimeZone,   aLocale As Locale) As Calendar
 			Return createCalendar(zone, aLocale)
 		End Function
 
-		Private Shared Function createCalendar(ByVal zone As TimeZone, ByVal aLocale As Locale) As Calendar
+		Private Shared Function createCalendar(  zone As TimeZone,   aLocale As Locale) As Calendar
 			Dim provider As sun.util.spi.CalendarProvider = sun.util.locale.provider.LocaleProviderAdapter.getAdapter(GetType(sun.util.spi.CalendarProvider), aLocale).calendarProvider
 			If provider IsNot Nothing Then
 				Try
@@ -1642,7 +1642,7 @@ Namespace java.util
 			Get
 				Return New Date(timeInMillis)
 			End Get
-			Set(ByVal [date] As Date)
+			Set(  [date] As Date)
 				timeInMillis = date_Renamed.time
 			End Set
 		End Property
@@ -1659,7 +1659,7 @@ Namespace java.util
 				If Not isTimeSet Then updateTime()
 				Return time
 			End Get
-			Set(ByVal millis As Long)
+			Set(  millis As Long)
 				' If we don't need to recalculate the calendar field values,
 				' do nothing.
 				If time = millis AndAlso isTimeSet AndAlso areFieldsSet AndAlso areAllFieldsSet AndAlso (TypeOf zone Is sun.util.calendar.ZoneInfo) AndAlso (Not CType(zone, sun.util.calendar.ZoneInfo).dirty) Then Return
@@ -1688,7 +1688,7 @@ Namespace java.util
 		'''             (<code>field &lt; 0 || field &gt;= FIELD_COUNT</code>). </exception>
 		''' <seealso cref= #set(int,int) </seealso>
 		''' <seealso cref= #complete() </seealso>
-		Public Overridable Function [get](ByVal field As Integer) As Integer
+		Public Overridable Function [get](  field As Integer) As Integer
 			complete()
 			Return internalGet(field)
 		End Function
@@ -1700,7 +1700,7 @@ Namespace java.util
 		''' <param name="field"> the given calendar field. </param>
 		''' <returns> the value for the given calendar field. </returns>
 		''' <seealso cref= #get(int) </seealso>
-		Protected Friend Function internalGet(ByVal field As Integer) As Integer
+		Protected Friend Function internalGet(  field As Integer) As Integer
 			Return fields(field)
 		End Function
 
@@ -1715,7 +1715,7 @@ Namespace java.util
 		''' <seealso cref= #isTimeSet </seealso>
 		''' <seealso cref= #areAllFieldsSet </seealso>
 		''' <seealso cref= #set(int,int) </seealso>
-		Friend Sub internalSet(ByVal field As Integer, ByVal value As Integer)
+		Friend Sub internalSet(  field As Integer,   value As Integer)
 			fields(field) = value
 		End Sub
 
@@ -1732,7 +1732,7 @@ Namespace java.util
 		''' <seealso cref= #set(int,int,int,int,int) </seealso>
 		''' <seealso cref= #set(int,int,int,int,int,int) </seealso>
 		''' <seealso cref= #get(int) </seealso>
-		Public Overridable Sub [set](ByVal field As Integer, ByVal value As Integer)
+		Public Overridable Sub [set](  field As Integer,   value As Integer)
 			' If the fields are partially normalized, calculate all the
 			' fields before changing any fields.
 			If areFieldsSet AndAlso (Not areAllFieldsSet) Then computeFields()
@@ -1758,7 +1758,7 @@ Namespace java.util
 		''' <seealso cref= #set(int,int) </seealso>
 		''' <seealso cref= #set(int,int,int,int,int) </seealso>
 		''' <seealso cref= #set(int,int,int,int,int,int) </seealso>
-		Public Sub [set](ByVal year As Integer, ByVal month As Integer, ByVal [date] As Integer)
+		Public Sub [set](  year As Integer,   month As Integer,   [date] As Integer)
 			[set](Calendar.YEAR, year)
 			[set](Calendar.MONTH, month)
 			[set](Calendar.DATE, date_Renamed)
@@ -1780,7 +1780,7 @@ Namespace java.util
 		''' <seealso cref= #set(int,int) </seealso>
 		''' <seealso cref= #set(int,int,int) </seealso>
 		''' <seealso cref= #set(int,int,int,int,int,int) </seealso>
-		Public Sub [set](ByVal year As Integer, ByVal month As Integer, ByVal [date] As Integer, ByVal hourOfDay As Integer, ByVal minute As Integer)
+		Public Sub [set](  year As Integer,   month As Integer,   [date] As Integer,   hourOfDay As Integer,   minute As Integer)
 			[set](Calendar.YEAR, year)
 			[set](Calendar.MONTH, month)
 			[set](Calendar.DATE, date_Renamed)
@@ -1805,7 +1805,7 @@ Namespace java.util
 		''' <seealso cref= #set(int,int) </seealso>
 		''' <seealso cref= #set(int,int,int) </seealso>
 		''' <seealso cref= #set(int,int,int,int,int) </seealso>
-		Public Sub [set](ByVal year As Integer, ByVal month As Integer, ByVal [date] As Integer, ByVal hourOfDay As Integer, ByVal minute As Integer, ByVal second As Integer)
+		Public Sub [set](  year As Integer,   month As Integer,   [date] As Integer,   hourOfDay As Integer,   minute As Integer,   second As Integer)
 			[set](Calendar.YEAR, year)
 			[set](Calendar.MONTH, month)
 			[set](Calendar.DATE, date_Renamed)
@@ -1860,7 +1860,7 @@ Namespace java.util
 		''' </summary>
 		''' <param name="field"> the calendar field to be cleared. </param>
 		''' <seealso cref= #clear() </seealso>
-		Public Sub clear(ByVal field As Integer)
+		Public Sub clear(  field As Integer)
 			fields(field) = 0
 			stamp(field) = UNSET
 			isSet_Renamed(field) = False
@@ -1878,7 +1878,7 @@ Namespace java.util
 		''' <param name="field"> the calendar field to test </param>
 		''' <returns> <code>true</code> if the given calendar field has a value set;
 		''' <code>false</code> otherwise. </returns>
-		Public Function isSet(ByVal field As Integer) As Boolean
+		Public Function isSet(  field As Integer) As Boolean
 			Return stamp(field) <> UNSET
 		End Function
 
@@ -1925,7 +1925,7 @@ Namespace java.util
 		''' <exception cref="NullPointerException">
 		'''        if {@code locale} is null
 		''' @since 1.6 </exception>
-		Public Overridable Function getDisplayName(ByVal field As Integer, ByVal style As Integer, ByVal locale_Renamed As Locale) As String
+		Public Overridable Function getDisplayName(  field As Integer,   style As Integer,   locale_Renamed As Locale) As String
 			If Not checkDisplayNameParams(field, style, [SHORT], NARROW_FORMAT, locale_Renamed, ERA_MASK Or MONTH_MASK Or DAY_OF_WEEK_MASK Or AM_PM_MASK) Then Return Nothing
 
 			Dim calendarType_Renamed As String = calendarType
@@ -2000,7 +2000,7 @@ Namespace java.util
 		''' <exception cref="NullPointerException">
 		'''        if {@code locale} is null
 		''' @since 1.6 </exception>
-		Public Overridable Function getDisplayNames(ByVal field As Integer, ByVal style As Integer, ByVal locale_Renamed As Locale) As Map(Of String, Integer?)
+		Public Overridable Function getDisplayNames(  field As Integer,   style As Integer,   locale_Renamed As Locale) As Map(Of String, Integer?)
 			If Not checkDisplayNameParams(field, style, ALL_STYLES, NARROW_FORMAT, locale_Renamed, ERA_MASK Or MONTH_MASK Or DAY_OF_WEEK_MASK Or AM_PM_MASK) Then Return Nothing
 
 			Dim calendarType_Renamed As String = calendarType
@@ -2023,7 +2023,7 @@ Namespace java.util
 			Return getDisplayNamesImpl(field, style, locale_Renamed)
 		End Function
 
-		Private Function getDisplayNamesImpl(ByVal field As Integer, ByVal style As Integer, ByVal locale_Renamed As Locale) As Map(Of String, Integer?)
+		Private Function getDisplayNamesImpl(  field As Integer,   style As Integer,   locale_Renamed As Locale) As Map(Of String, Integer?)
 			Dim symbols As java.text.DateFormatSymbols = java.text.DateFormatSymbols.getInstance(locale_Renamed)
 			Dim strings As String() = getFieldStrings(field, style, symbols)
 			If strings IsNot Nothing Then
@@ -2037,14 +2037,14 @@ Namespace java.util
 			Return Nothing
 		End Function
 
-		Friend Overridable Function checkDisplayNameParams(ByVal field As Integer, ByVal style As Integer, ByVal minStyle As Integer, ByVal maxStyle As Integer, ByVal locale_Renamed As Locale, ByVal fieldMask As Integer) As Boolean
+		Friend Overridable Function checkDisplayNameParams(  field As Integer,   style As Integer,   minStyle As Integer,   maxStyle As Integer,   locale_Renamed As Locale,   fieldMask As Integer) As Boolean
 			Dim baseStyle_Renamed As Integer = getBaseStyle(style) ' Ignore the standalone mask
 			If field < 0 OrElse field >= fields.Length OrElse baseStyle_Renamed < minStyle OrElse baseStyle_Renamed > maxStyle Then Throw New IllegalArgumentException
 			If locale_Renamed Is Nothing Then Throw New NullPointerException
 			Return isFieldSet(fieldMask, field)
 		End Function
 
-		Private Function getFieldStrings(ByVal field As Integer, ByVal style As Integer, ByVal symbols As java.text.DateFormatSymbols) As String()
+		Private Function getFieldStrings(  field As Integer,   style As Integer,   symbols As java.text.DateFormatSymbols) As String()
 			Dim baseStyle_Renamed As Integer = getBaseStyle(style) ' ignore the standalone mask
 
 			' DateFormatSymbols doesn't support any narrow names.
@@ -2095,7 +2095,7 @@ Namespace java.util
 		'''               (<code>field &lt; 0 || field &gt;= FIELD_COUNT</code>). </exception>
 		''' <seealso cref= #selectFields() </seealso>
 		''' <seealso cref= #setFieldsComputed(int) </seealso>
-		Friend Function isExternallySet(ByVal field As Integer) As Boolean
+		Friend Function isExternallySet(  field As Integer) As Boolean
 			Return stamp(field) >= MINIMUM_USER_STAMP
 		End Function
 
@@ -2127,7 +2127,7 @@ Namespace java.util
 		''' <seealso cref= #isExternallySet(int) </seealso>
 		''' <seealso cref= #selectFields() </seealso>
 		Friend Property fieldsComputed As Integer
-			Set(ByVal fieldMask As Integer)
+			Set(  fieldMask As Integer)
 				If fieldMask = ALL_FIELDS Then
 					For i As Integer = 0 To fields.Length - 1
 						stamp(i) = COMPUTED
@@ -2164,7 +2164,7 @@ Namespace java.util
 		''' <seealso cref= #isExternallySet(int) </seealso>
 		''' <seealso cref= #selectFields() </seealso>
 		Friend Property fieldsNormalized As Integer
-			Set(ByVal fieldMask As Integer)
+			Set(  fieldMask As Integer)
 				If fieldMask <> ALL_FIELDS Then
 					For i As Integer = 0 To fields.Length - 1
 						If (fieldMask And 1) = 0 Then
@@ -2215,7 +2215,7 @@ Namespace java.util
 		''' Returns whether the specified <code>field</code> is on in the
 		''' <code>fieldMask</code>.
 		''' </summary>
-		Friend Shared Function isFieldSet(ByVal fieldMask As Integer, ByVal field As Integer) As Boolean
+		Friend Shared Function isFieldSet(  fieldMask As Integer,   field As Integer) As Boolean
 			Return (fieldMask And (1 << field)) <> 0
 		End Function
 
@@ -2357,23 +2357,23 @@ Namespace java.util
 			Return fieldMask
 		End Function
 
-		Friend Overridable Function getBaseStyle(ByVal style As Integer) As Integer
+		Friend Overridable Function getBaseStyle(  style As Integer) As Integer
 			Return style And Not STANDALONE_MASK
 		End Function
 
-		Private Function toStandaloneStyle(ByVal style As Integer) As Integer
+		Private Function toStandaloneStyle(  style As Integer) As Integer
 			Return style Or STANDALONE_MASK
 		End Function
 
-		Private Function isStandaloneStyle(ByVal style As Integer) As Boolean
+		Private Function isStandaloneStyle(  style As Integer) As Boolean
 			Return (style And STANDALONE_MASK) <> 0
 		End Function
 
-		Private Function isNarrowStyle(ByVal style As Integer) As Boolean
+		Private Function isNarrowStyle(  style As Integer) As Boolean
 			Return style = NARROW_FORMAT OrElse style = NARROW_STANDALONE
 		End Function
 
-		Private Function isNarrowFormatStyle(ByVal style As Integer) As Boolean
+		Private Function isNarrowFormatStyle(  style As Integer) As Boolean
 			Return style = NARROW_FORMAT
 		End Function
 
@@ -2383,7 +2383,7 @@ Namespace java.util
 		''' is unset, then the aggregate is unset.  Otherwise, the
 		''' aggregate is the later of the two stamps.
 		''' </summary>
-		Private Shared Function aggregateStamp(ByVal stamp_a As Integer, ByVal stamp_b As Integer) As Integer
+		Private Shared Function aggregateStamp(  stamp_a As Integer,   stamp_b As Integer) As Integer
 			If stamp_a = UNSET OrElse stamp_b = UNSET Then Return UNSET
 			Return If(stamp_a > stamp_b, stamp_a, stamp_b)
 		End Function
@@ -2465,7 +2465,7 @@ Namespace java.util
 		''' <returns> <code>true</code> if this object is equal to <code>obj</code>;
 		''' <code>false</code> otherwise. </returns>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Overrides Function Equals(ByVal obj As Object) As Boolean
+		Public Overrides Function Equals(  obj As Object) As Boolean
 			If Me Is obj Then Return True
 			Try
 				Dim that As Calendar = CType(obj, Calendar)
@@ -2505,7 +2505,7 @@ Namespace java.util
 		''' <code>Calendar</code> is before the time represented by
 		''' <code>when</code>; <code>false</code> otherwise. </returns>
 		''' <seealso cref=     #compareTo(Calendar) </seealso>
-		Public Overridable Function before(ByVal [when] As Object) As Boolean
+		Public Overridable Function before(  [when] As Object) As Boolean
 			Return TypeOf [when] Is Calendar AndAlso compareTo(CType([when], Calendar)) < 0
 		End Function
 
@@ -2524,7 +2524,7 @@ Namespace java.util
 		''' after the time represented by <code>when</code>; <code>false</code>
 		''' otherwise. </returns>
 		''' <seealso cref=     #compareTo(Calendar) </seealso>
-		Public Overridable Function after(ByVal [when] As Object) As Boolean
+		Public Overridable Function after(  [when] As Object) As Boolean
 			Return TypeOf [when] Is Calendar AndAlso compareTo(CType([when], Calendar)) > 0
 		End Function
 
@@ -2546,7 +2546,7 @@ Namespace java.util
 		''' specified <code>Calendar</code> object can't be obtained due to
 		''' any invalid calendar values.
 		''' @since   1.5 </exception>
-		Public Overrides Function compareTo(ByVal anotherCalendar As Calendar) As Integer Implements Comparable(Of Calendar).compareTo
+		Public Overrides Function compareTo(  anotherCalendar As Calendar) As Integer Implements Comparable(Of Calendar).compareTo
 			Return compareTo(getMillisOf(anotherCalendar))
 		End Function
 
@@ -2560,7 +2560,7 @@ Namespace java.util
 		''' <param name="amount"> the amount of date or time to be added to the field. </param>
 		''' <seealso cref= #roll(int,int) </seealso>
 		''' <seealso cref= #set(int,int) </seealso>
-		Public MustOverride Sub add(ByVal field As Integer, ByVal amount As Integer)
+		Public MustOverride Sub add(  field As Integer,   amount As Integer)
 
 		''' <summary>
 		''' Adds or subtracts (up/down) a single unit of time on the given time
@@ -2581,7 +2581,7 @@ Namespace java.util
 		''' rolled up or rolled down. Use true if rolling up, false otherwise. </param>
 		''' <seealso cref= Calendar#add(int,int) </seealso>
 		''' <seealso cref= Calendar#set(int,int) </seealso>
-		Public MustOverride Sub roll(ByVal field As Integer, ByVal up As Boolean)
+		Public MustOverride Sub roll(  field As Integer,   up As Boolean)
 
 		''' <summary>
 		''' Adds the specified (signed) amount to the specified calendar field
@@ -2601,7 +2601,7 @@ Namespace java.util
 		''' <seealso cref= #roll(int,boolean) </seealso>
 		''' <seealso cref= #add(int,int) </seealso>
 		''' <seealso cref= #set(int,int) </seealso>
-		Public Overridable Sub roll(ByVal field As Integer, ByVal amount As Integer)
+		Public Overridable Sub roll(  field As Integer,   amount As Integer)
 			Do While amount > 0
 				roll(field, True)
 				amount -= 1
@@ -2617,7 +2617,7 @@ Namespace java.util
 		''' </summary>
 		''' <param name="value"> the given time zone. </param>
 		Public Overridable Property timeZone As TimeZone
-			Set(ByVal value As TimeZone)
+			Set(  value As TimeZone)
 				zone = value
 				sharedZone = False
 		'         Recompute the fields from the time using the new zone.  This also
@@ -2657,7 +2657,7 @@ Namespace java.util
 		''' Sets the sharedZone flag to <code>shared</code>.
 		''' </summary>
 		Friend Overridable Property zoneShared As Boolean
-			Set(ByVal [shared] As Boolean)
+			Set(  [shared] As Boolean)
 				sharedZone = [shared]
 			End Set
 		End Property
@@ -2674,7 +2674,7 @@ Namespace java.util
 		''' <seealso cref= #isLenient() </seealso>
 		''' <seealso cref= java.text.DateFormat#setLenient </seealso>
 		Public Overridable Property lenient As Boolean
-			Set(ByVal lenient As Boolean)
+			Set(  lenient As Boolean)
 				Me.lenient = lenient
 			End Set
 			Get
@@ -2691,7 +2691,7 @@ Namespace java.util
 		''' <seealso cref= #getFirstDayOfWeek() </seealso>
 		''' <seealso cref= #getMinimalDaysInFirstWeek() </seealso>
 		Public Overridable Property firstDayOfWeek As Integer
-			Set(ByVal value As Integer)
+			Set(  value As Integer)
 				If firstDayOfWeek = value Then Return
 				firstDayOfWeek = value
 				invalidateWeekFields()
@@ -2712,7 +2712,7 @@ Namespace java.util
 		''' of the year. </param>
 		''' <seealso cref= #getMinimalDaysInFirstWeek() </seealso>
 		Public Overridable Property minimalDaysInFirstWeek As Integer
-			Set(ByVal value As Integer)
+			Set(  value As Integer)
 				If minimalDaysInFirstWeek = value Then Return
 				minimalDaysInFirstWeek = value
 				invalidateWeekFields()
@@ -2794,7 +2794,7 @@ Namespace java.util
 		''' <seealso cref= #getFirstDayOfWeek() </seealso>
 		''' <seealso cref= #getMinimalDaysInFirstWeek()
 		''' @since 1.7 </seealso>
-		Public Overridable Sub setWeekDate(ByVal weekYear As Integer, ByVal weekOfYear As Integer, ByVal dayOfWeek As Integer)
+		Public Overridable Sub setWeekDate(  weekYear As Integer,   weekOfYear As Integer,   dayOfWeek As Integer)
 			Throw New UnsupportedOperationException
 		End Sub
 
@@ -2834,7 +2834,7 @@ Namespace java.util
 		''' <seealso cref= #getLeastMaximum(int) </seealso>
 		''' <seealso cref= #getActualMinimum(int) </seealso>
 		''' <seealso cref= #getActualMaximum(int) </seealso>
-		Public MustOverride Function getMinimum(ByVal field As Integer) As Integer
+		Public MustOverride Function getMinimum(  field As Integer) As Integer
 
 		''' <summary>
 		''' Returns the maximum value for the given calendar field of this
@@ -2850,7 +2850,7 @@ Namespace java.util
 		''' <seealso cref= #getLeastMaximum(int) </seealso>
 		''' <seealso cref= #getActualMinimum(int) </seealso>
 		''' <seealso cref= #getActualMaximum(int) </seealso>
-		Public MustOverride Function getMaximum(ByVal field As Integer) As Integer
+		Public MustOverride Function getMaximum(  field As Integer) As Integer
 
 		''' <summary>
 		''' Returns the highest minimum value for the given calendar field
@@ -2867,7 +2867,7 @@ Namespace java.util
 		''' <seealso cref= #getLeastMaximum(int) </seealso>
 		''' <seealso cref= #getActualMinimum(int) </seealso>
 		''' <seealso cref= #getActualMaximum(int) </seealso>
-		Public MustOverride Function getGreatestMinimum(ByVal field As Integer) As Integer
+		Public MustOverride Function getGreatestMinimum(  field As Integer) As Integer
 
 		''' <summary>
 		''' Returns the lowest maximum value for the given calendar field
@@ -2888,7 +2888,7 @@ Namespace java.util
 		''' <seealso cref= #getGreatestMinimum(int) </seealso>
 		''' <seealso cref= #getActualMinimum(int) </seealso>
 		''' <seealso cref= #getActualMaximum(int) </seealso>
-		Public MustOverride Function getLeastMaximum(ByVal field As Integer) As Integer
+		Public MustOverride Function getLeastMaximum(  field As Integer) As Integer
 
 		''' <summary>
 		''' Returns the minimum value that the specified calendar field
@@ -2909,7 +2909,7 @@ Namespace java.util
 		''' <seealso cref= #getLeastMaximum(int) </seealso>
 		''' <seealso cref= #getActualMaximum(int)
 		''' @since 1.2 </seealso>
-		Public Overridable Function getActualMinimum(ByVal field As Integer) As Integer
+		Public Overridable Function getActualMinimum(  field As Integer) As Integer
 			Dim fieldValue As Integer = getGreatestMinimum(field)
 			Dim endValue As Integer = getMinimum(field)
 
@@ -2960,7 +2960,7 @@ Namespace java.util
 		''' <seealso cref= #getLeastMaximum(int) </seealso>
 		''' <seealso cref= #getActualMinimum(int)
 		''' @since 1.2 </seealso>
-		Public Overridable Function getActualMaximum(ByVal field As Integer) As Integer
+		Public Overridable Function getActualMaximum(  field As Integer) As Integer
 			Dim fieldValue As Integer = getLeastMaximum(field)
 			Dim endValue As Integer = getMaximum(field)
 
@@ -3027,7 +3027,7 @@ Namespace java.util
 		''' <returns> the calendar field name </returns>
 		''' <exception cref="IndexOutOfBoundsException"> if <code>field</code> is negative,
 		''' equal to or greater then <code>FIELD_COUNT</code>. </exception>
-		Friend Shared Function getFieldName(ByVal field As Integer) As String
+		Friend Shared Function getFieldName(  field As Integer) As String
 			Return FIELD_NAME(field)
 		End Function
 
@@ -3062,7 +3062,7 @@ Namespace java.util
 
 		' =======================privates===============================
 
-		Private Shared Sub appendValue(ByVal sb As StringBuilder, ByVal item As String, ByVal valid As Boolean, ByVal value As Long)
+		Private Shared Sub appendValue(  sb As StringBuilder,   item As String,   valid As Boolean,   value As Long)
 			sb.append(item).append("="c)
 			If valid Then
 				sb.append(value)
@@ -3077,7 +3077,7 @@ Namespace java.util
 		''' a given locale. These must be set when a Calendar is constructed. </summary>
 		''' <param name="desiredLocale"> the given locale. </param>
 		Private Property weekCountData As Locale
-			Set(ByVal desiredLocale As Locale)
+			Set(  desiredLocale As Locale)
 				' try to get the Locale data from the cache 
 				Dim data As Integer() = cachedLocaleData.get(desiredLocale)
 				If data Is Nothing Then ' cache miss
@@ -3103,12 +3103,12 @@ Namespace java.util
 			isTimeSet = True
 		End Sub
 
-		Private Function compareTo(ByVal t As Long) As Integer
+		Private Function compareTo(  t As Long) As Integer
 			Dim thisTime As Long = getMillisOf(Me)
 			Return If(thisTime > t, 1, If(thisTime = t, 0, -1))
 		End Function
 
-		Private Shared Function getMillisOf(ByVal calendar_Renamed As Calendar) As Long
+		Private Shared Function getMillisOf(  calendar_Renamed As Calendar) As Long
 			If calendar_Renamed.isTimeSet Then Return calendar_Renamed.time
 			Dim cal As Calendar = CType(calendar_Renamed.clone(), Calendar)
 			cal.lenient = True
@@ -3180,7 +3180,7 @@ Namespace java.util
 		''' near future.
 		''' </summary>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Private Sub writeObject(ByVal stream As java.io.ObjectOutputStream)
+		Private Sub writeObject(  stream As java.io.ObjectOutputStream)
 			' Try to compute the time correctly, for the future (stream
 			' version 2) in which we don't write out fields[] or isSet[].
 			If Not isTimeSet Then
@@ -3227,7 +3227,7 @@ Namespace java.util
 		''' <summary>
 		''' Reconstitutes this object from a stream (i.e., deserialize it).
 		''' </summary>
-		Private Sub readObject(ByVal stream As java.io.ObjectInputStream)
+		Private Sub readObject(  stream As java.io.ObjectInputStream)
 			Dim input As java.io.ObjectInputStream = stream
 			input.defaultReadObject()
 

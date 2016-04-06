@@ -60,13 +60,13 @@ Namespace java.util.concurrent.atomic
 			shift = 31 -  java.lang.[Integer].numberOfLeadingZeros(scale)
 		End Sub
 
-		Private Function checkedByteOffset(ByVal i As Integer) As Long
+		Private Function checkedByteOffset(  i As Integer) As Long
 			If i < 0 OrElse i >= array.Length Then Throw New IndexOutOfBoundsException("index " & i)
 
 			Return byteOffset(i)
 		End Function
 
-		Private Shared Function byteOffset(ByVal i As Integer) As Long
+		Private Shared Function byteOffset(  i As Integer) As Long
 			Return (CLng(i) << shift) + base
 		End Function
 
@@ -75,7 +75,7 @@ Namespace java.util.concurrent.atomic
 		''' elements initially zero.
 		''' </summary>
 		''' <param name="length"> the length of the array </param>
-		Public Sub New(ByVal length As Integer)
+		Public Sub New(  length As Integer)
 			array = New Integer(length - 1){}
 		End Sub
 
@@ -85,7 +85,7 @@ Namespace java.util.concurrent.atomic
 		''' </summary>
 		''' <param name="array"> the array to copy elements from </param>
 		''' <exception cref="NullPointerException"> if array is null </exception>
-		Public Sub New(ByVal array As Integer())
+		Public Sub New(  array As Integer())
 			' Visibility guaranteed by final field guarantees
 			Me.array = array.clone()
 		End Sub
@@ -103,11 +103,11 @@ Namespace java.util.concurrent.atomic
 		''' </summary>
 		''' <param name="i"> the index </param>
 		''' <returns> the current value </returns>
-		Public Function [get](ByVal i As Integer) As Integer
+		Public Function [get](  i As Integer) As Integer
 			Return getRaw(checkedByteOffset(i))
 		End Function
 
-		Private Function getRaw(ByVal offset As Long) As Integer
+		Private Function getRaw(  offset As Long) As Integer
 			Return unsafe.getIntVolatile(array, offset)
 		End Function
 
@@ -116,7 +116,7 @@ Namespace java.util.concurrent.atomic
 		''' </summary>
 		''' <param name="i"> the index </param>
 		''' <param name="newValue"> the new value </param>
-		Public Sub [set](ByVal i As Integer, ByVal newValue As Integer)
+		Public Sub [set](  i As Integer,   newValue As Integer)
 			unsafe.putIntVolatile(array, checkedByteOffset(i), newValue)
 		End Sub
 
@@ -126,7 +126,7 @@ Namespace java.util.concurrent.atomic
 		''' <param name="i"> the index </param>
 		''' <param name="newValue"> the new value
 		''' @since 1.6 </param>
-		Public Sub lazySet(ByVal i As Integer, ByVal newValue As Integer)
+		Public Sub lazySet(  i As Integer,   newValue As Integer)
 			unsafe.putOrderedInt(array, checkedByteOffset(i), newValue)
 		End Sub
 
@@ -137,7 +137,7 @@ Namespace java.util.concurrent.atomic
 		''' <param name="i"> the index </param>
 		''' <param name="newValue"> the new value </param>
 		''' <returns> the previous value </returns>
-		Public Function getAndSet(ByVal i As Integer, ByVal newValue As Integer) As Integer
+		Public Function getAndSet(  i As Integer,   newValue As Integer) As Integer
 			Return unsafe.getAndSetInt(array, checkedByteOffset(i), newValue)
 		End Function
 
@@ -150,11 +150,11 @@ Namespace java.util.concurrent.atomic
 		''' <param name="update"> the new value </param>
 		''' <returns> {@code true} if successful. False return indicates that
 		''' the actual value was not equal to the expected value. </returns>
-		Public Function compareAndSet(ByVal i As Integer, ByVal expect As Integer, ByVal update As Integer) As Boolean
+		Public Function compareAndSet(  i As Integer,   expect As Integer,   update As Integer) As Boolean
 			Return compareAndSetRaw(checkedByteOffset(i), expect, update)
 		End Function
 
-		Private Function compareAndSetRaw(ByVal offset As Long, ByVal expect As Integer, ByVal update As Integer) As Boolean
+		Private Function compareAndSetRaw(  offset As Long,   expect As Integer,   update As Integer) As Boolean
 			Return unsafe.compareAndSwapInt(array, offset, expect, update)
 		End Function
 
@@ -170,7 +170,7 @@ Namespace java.util.concurrent.atomic
 		''' <param name="expect"> the expected value </param>
 		''' <param name="update"> the new value </param>
 		''' <returns> {@code true} if successful </returns>
-		Public Function weakCompareAndSet(ByVal i As Integer, ByVal expect As Integer, ByVal update As Integer) As Boolean
+		Public Function weakCompareAndSet(  i As Integer,   expect As Integer,   update As Integer) As Boolean
 			Return compareAndSet(i, expect, update)
 		End Function
 
@@ -179,7 +179,7 @@ Namespace java.util.concurrent.atomic
 		''' </summary>
 		''' <param name="i"> the index </param>
 		''' <returns> the previous value </returns>
-		Public Function getAndIncrement(ByVal i As Integer) As Integer
+		Public Function getAndIncrement(  i As Integer) As Integer
 			Return getAndAdd(i, 1)
 		End Function
 
@@ -188,7 +188,7 @@ Namespace java.util.concurrent.atomic
 		''' </summary>
 		''' <param name="i"> the index </param>
 		''' <returns> the previous value </returns>
-		Public Function getAndDecrement(ByVal i As Integer) As Integer
+		Public Function getAndDecrement(  i As Integer) As Integer
 			Return getAndAdd(i, -1)
 		End Function
 
@@ -198,7 +198,7 @@ Namespace java.util.concurrent.atomic
 		''' <param name="i"> the index </param>
 		''' <param name="delta"> the value to add </param>
 		''' <returns> the previous value </returns>
-		Public Function getAndAdd(ByVal i As Integer, ByVal delta As Integer) As Integer
+		Public Function getAndAdd(  i As Integer,   delta As Integer) As Integer
 			Return unsafe.getAndAddInt(array, checkedByteOffset(i), delta)
 		End Function
 
@@ -207,7 +207,7 @@ Namespace java.util.concurrent.atomic
 		''' </summary>
 		''' <param name="i"> the index </param>
 		''' <returns> the updated value </returns>
-		Public Function incrementAndGet(ByVal i As Integer) As Integer
+		Public Function incrementAndGet(  i As Integer) As Integer
 			Return getAndAdd(i, 1) + 1
 		End Function
 
@@ -216,7 +216,7 @@ Namespace java.util.concurrent.atomic
 		''' </summary>
 		''' <param name="i"> the index </param>
 		''' <returns> the updated value </returns>
-		Public Function decrementAndGet(ByVal i As Integer) As Integer
+		Public Function decrementAndGet(  i As Integer) As Integer
 			Return getAndAdd(i, -1) - 1
 		End Function
 
@@ -226,7 +226,7 @@ Namespace java.util.concurrent.atomic
 		''' <param name="i"> the index </param>
 		''' <param name="delta"> the value to add </param>
 		''' <returns> the updated value </returns>
-		Public Function addAndGet(ByVal i As Integer, ByVal delta As Integer) As Integer
+		Public Function addAndGet(  i As Integer,   delta As Integer) As Integer
 			Return getAndAdd(i, delta) + delta
 		End Function
 
@@ -241,7 +241,7 @@ Namespace java.util.concurrent.atomic
 		''' <param name="updateFunction"> a side-effect-free function </param>
 		''' <returns> the previous value
 		''' @since 1.8 </returns>
-		Public Function getAndUpdate(ByVal i As Integer, ByVal updateFunction As java.util.function.IntUnaryOperator) As Integer
+		Public Function getAndUpdate(  i As Integer,   updateFunction As java.util.function.IntUnaryOperator) As Integer
 			Dim offset As Long = checkedByteOffset(i)
 			Dim prev, [next] As Integer
 			Do
@@ -261,7 +261,7 @@ Namespace java.util.concurrent.atomic
 		''' <param name="updateFunction"> a side-effect-free function </param>
 		''' <returns> the updated value
 		''' @since 1.8 </returns>
-		Public Function updateAndGet(ByVal i As Integer, ByVal updateFunction As java.util.function.IntUnaryOperator) As Integer
+		Public Function updateAndGet(  i As Integer,   updateFunction As java.util.function.IntUnaryOperator) As Integer
 			Dim offset As Long = checkedByteOffset(i)
 			Dim prev, [next] As Integer
 			Do
@@ -285,7 +285,7 @@ Namespace java.util.concurrent.atomic
 		''' <param name="accumulatorFunction"> a side-effect-free function of two arguments </param>
 		''' <returns> the previous value
 		''' @since 1.8 </returns>
-		Public Function getAndAccumulate(ByVal i As Integer, ByVal x As Integer, ByVal accumulatorFunction As java.util.function.IntBinaryOperator) As Integer
+		Public Function getAndAccumulate(  i As Integer,   x As Integer,   accumulatorFunction As java.util.function.IntBinaryOperator) As Integer
 			Dim offset As Long = checkedByteOffset(i)
 			Dim prev, [next] As Integer
 			Do
@@ -309,7 +309,7 @@ Namespace java.util.concurrent.atomic
 		''' <param name="accumulatorFunction"> a side-effect-free function of two arguments </param>
 		''' <returns> the updated value
 		''' @since 1.8 </returns>
-		Public Function accumulateAndGet(ByVal i As Integer, ByVal x As Integer, ByVal accumulatorFunction As java.util.function.IntBinaryOperator) As Integer
+		Public Function accumulateAndGet(  i As Integer,   x As Integer,   accumulatorFunction As java.util.function.IntBinaryOperator) As Integer
 			Dim offset As Long = checkedByteOffset(i)
 			Dim prev, [next] As Integer
 			Do

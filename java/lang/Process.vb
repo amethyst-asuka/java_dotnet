@@ -179,7 +179,7 @@ Namespace java.lang
 		'''         while waiting. </exception>
 		''' <exception cref="NullPointerException"> if unit is null
 		''' @since 1.8 </exception>
-		Public Overridable Function waitFor(ByVal timeout As Long, ByVal unit As java.util.concurrent.TimeUnit) As Boolean
+		Public Overridable Function waitFor(  timeout As Long,   unit As java.util.concurrent.TimeUnit) As Boolean
 			Dim startTime As Long = System.nanoTime()
 			Dim [rem] As Long = unit.toNanos(timeout)
 

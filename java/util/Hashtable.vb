@@ -182,7 +182,7 @@ Namespace java.util
         ''' <param name="loadFactor">        the load factor of the hashtable. </param>
         ''' <exception cref="IllegalArgumentException">  if the initial capacity is less
         '''             than zero, or if the load factor is nonpositive. </exception>
-        Public Sub New(ByVal initialCapacity As Integer, ByVal loadFactor As Single)
+        Public Sub New(  initialCapacity As Integer,   loadFactor As Single)
             If initialCapacity < 0 Then Throw New IllegalArgumentException("Illegal Capacity: " & initialCapacity)
             If loadFactor <= 0 OrElse Float.isNaN(loadFactor) Then Throw New IllegalArgumentException("Illegal Load: " & loadFactor)
 
@@ -200,7 +200,7 @@ Namespace java.util
         ''' <param name="initialCapacity">   the initial capacity of the hashtable. </param>
         ''' <exception cref="IllegalArgumentException"> if the initial capacity is less
         '''              than zero. </exception>
-        Public Sub New(ByVal initialCapacity As Integer)
+        Public Sub New(  initialCapacity As Integer)
             Me.New(initialCapacity, 0.75F)
         End Sub
 
@@ -220,7 +220,7 @@ Namespace java.util
         ''' <param name="t"> the map whose mappings are to be placed in this map. </param>
         ''' <exception cref="NullPointerException"> if the specified map is null.
         ''' @since   1.2 </exception>
-        Public Sub New(ByVal t As Map(Of K, V))
+        Public Sub New(  t As Map(Of K, V))
             Me.New(System.Math.Max(2 * t.size(), 11), 0.75F)
             putAll(t)
         End Sub
@@ -290,7 +290,7 @@ Namespace java.util
         '''             <code>false</code> otherwise. </returns>
         ''' <exception cref="NullPointerException">  if the value is <code>null</code> </exception>
         <MethodImpl(MethodImplOptions.Synchronized)>
-        Public Overridable Function contains(ByVal value As Object) As Boolean
+        Public Overridable Function contains(  value As Object) As Boolean
             If value Is Nothing Then Throw New NullPointerException
 
             'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
@@ -319,7 +319,7 @@ Namespace java.util
         '''         specified value </returns>
         ''' <exception cref="NullPointerException">  if the value is <code>null</code>
         ''' @since 1.2 </exception>
-        Public Overridable Function containsValue(ByVal value As Object) As Boolean Implements Map(Of K, V).containsValue
+        Public Overridable Function containsValue(  value As Object) As Boolean Implements Map(Of K, V).containsValue
             Return contains(value)
         End Function
 
@@ -333,7 +333,7 @@ Namespace java.util
         ''' <exception cref="NullPointerException">  if the key is <code>null</code> </exception>
         ''' <seealso cref=     #contains(Object) </seealso>
         <MethodImpl(MethodImplOptions.Synchronized)>
-        Public Overridable Function containsKey(ByVal key As Object) As Boolean Implements Map(Of K, V).containsKey
+        Public Overridable Function containsKey(  key As Object) As Boolean Implements Map(Of K, V).containsKey
             Dim tab As Entry(Of K, V)() = table
             Dim hash As Integer = key.GetHashCode()
             Dim index As Integer = (hash And &H7FFFFFFF) Mod tab.Length
@@ -362,7 +362,7 @@ Namespace java.util
         ''' <seealso cref=     #put(Object, Object) </seealso>
         'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
         <MethodImpl(MethodImplOptions.Synchronized)>
-        Public Overridable Function [get](ByVal key As Object) As V Implements Map(Of K, V).get
+        Public Overridable Function [get](  key As Object) As V Implements Map(Of K, V).get
             'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
             Dim tab As Entry(Of ?, ?)() = table
             Dim hash As Integer = key.GetHashCode()
@@ -425,7 +425,7 @@ Namespace java.util
             Loop
         End Sub
 
-        Private Sub addEntry(ByVal hash As Integer, ByVal key As K, ByVal value As V, ByVal index As Integer)
+        Private Sub addEntry(  hash As Integer,   key As K,   value As V,   index As Integer)
             modCount += 1
 
             'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
@@ -463,7 +463,7 @@ Namespace java.util
         ''' <seealso cref=     Object#equals(Object) </seealso>
         ''' <seealso cref=     #get(Object) </seealso>
         <MethodImpl(MethodImplOptions.Synchronized)>
-        Public Overridable Function put(ByVal key As K, ByVal value As V) As V Implements Map(Of K, V).put
+        Public Overridable Function put(  key As K,   value As V) As V Implements Map(Of K, V).put
             ' Make sure the value is not null
             If value Is Nothing Then Throw New NullPointerException
 
@@ -496,7 +496,7 @@ Namespace java.util
         '''          or <code>null</code> if the key did not have a mapping </returns>
         ''' <exception cref="NullPointerException">  if the key is <code>null</code> </exception>
         <MethodImpl(MethodImplOptions.Synchronized)>
-        Public Overridable Function remove(ByVal key As Object) As V Implements Map(Of K, V).remove
+        Public Overridable Function remove(  key As Object) As V Implements Map(Of K, V).remove
             'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
             Dim tab As Entry(Of ?, ?)() = table
             Dim hash As Integer = key.GetHashCode()
@@ -533,7 +533,7 @@ Namespace java.util
         ''' @since 1.2 </exception>
         'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
         <MethodImpl(MethodImplOptions.Synchronized)>
-        Public Overridable Sub putAll(ByVal t As Map(Of K, V)) Implements Map(Of K, V).putAll
+        Public Overridable Sub putAll(  t As Map(Of K, V)) Implements Map(Of K, V).putAll
             For Each e As KeyValuePair(Of K, V) In t.entrySet()
                 put(e.Key, e.Value)
             Next e
@@ -617,7 +617,7 @@ Namespace java.util
         End Function
 
 
-        Private Function getEnumeration(Of T)(ByVal type As Integer) As Enumeration(Of T)
+        Private Function getEnumeration(Of T)(  type As Integer) As Enumeration(Of T)
             If count = 0 Then
                 Return Collections.emptyEnumeration()
             Else
@@ -625,7 +625,7 @@ Namespace java.util
             End If
         End Function
 
-        Private Function getIterator(Of T)(ByVal type As Integer) As [Iterator](Of T)
+        Private Function getIterator(Of T)(  type As Integer) As [Iterator](Of T)
             If count = 0 Then
                 Return Collections.emptyIterator()
             Else
@@ -675,7 +675,7 @@ Namespace java.util
 
             Private ReadOnly outerInstance As Hashtable
 
-            Public Sub New(ByVal outerInstance As Hashtable)
+            Public Sub New(  outerInstance As Hashtable)
                 Me.outerInstance = outerInstance
             End Sub
 
@@ -685,10 +685,10 @@ Namespace java.util
             Public Overrides Function size() As Integer
                 Return outerInstance.Count
             End Function
-            Public Overrides Function contains(ByVal o As Object) As Boolean
+            Public Overrides Function contains(  o As Object) As Boolean
                 Return outerInstance.ContainsKey(o)
             End Function
-            Public Overrides Function remove(ByVal o As Object) As Boolean
+            Public Overrides Function remove(  o As Object) As Boolean
                 Return outerInstance.Remove(o) IsNot Nothing
             End Function
             Public Overrides Sub clear()
@@ -722,7 +722,7 @@ Namespace java.util
 
             Private ReadOnly outerInstance As Hashtable
 
-            Public Sub New(ByVal outerInstance As Hashtable)
+            Public Sub New(  outerInstance As Hashtable)
                 Me.outerInstance = outerInstance
             End Sub
 
@@ -730,11 +730,11 @@ Namespace java.util
                 Return outerInstance.getIterator(ENTRIES)
             End Function
 
-            Public Overridable Function add(ByVal o As KeyValuePair(Of K, V)) As Boolean
+            Public Overridable Function add(  o As KeyValuePair(Of K, V)) As Boolean
                 Return MyBase.add(o)
             End Function
 
-            Public Overridable Function contains(ByVal o As Object) As Boolean
+            Public Overridable Function contains(  o As Object) As Boolean
                 If Not (TypeOf o Is DictionaryEntry) Then Return False
                 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
                 Dim entry As KeyValuePair(Of ?, ?) = CType(o, KeyValuePair(Of ?, ?))
@@ -753,7 +753,7 @@ Namespace java.util
                 Return False
             End Function
 
-            Public Overridable Function remove(ByVal o As Object) As Boolean
+            Public Overridable Function remove(  o As Object) As Boolean
                 If Not (TypeOf o Is DictionaryEntry) Then Return False
                 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
                 Dim entry As KeyValuePair(Of ?, ?) = CType(o, KeyValuePair(Of ?, ?))
@@ -819,7 +819,7 @@ Namespace java.util
 
             Private ReadOnly outerInstance As Hashtable
 
-            Public Sub New(ByVal outerInstance As Hashtable)
+            Public Sub New(  outerInstance As Hashtable)
                 Me.outerInstance = outerInstance
             End Sub
 
@@ -829,7 +829,7 @@ Namespace java.util
             Public Overridable Function size() As Integer
                 Return outerInstance.Count
             End Function
-            Public Overridable Function contains(ByVal o As Object) As Boolean
+            Public Overridable Function contains(  o As Object) As Boolean
                 Return outerInstance.ContainsValue(o)
             End Function
             Public Overridable Sub clear()
@@ -848,7 +848,7 @@ Namespace java.util
         ''' <seealso cref= Map#equals(Object)
         ''' @since 1.2 </seealso>
         <MethodImpl(MethodImplOptions.Synchronized)>
-        Public Overrides Function Equals(ByVal o As Object) As Boolean
+        Public Overrides Function Equals(  o As Object) As Boolean
             If o Is Me Then Return True
 
             If Not (TypeOf o Is Map) Then Return False
@@ -915,7 +915,7 @@ Namespace java.util
         End Function
 
         <MethodImpl(MethodImplOptions.Synchronized)>
-        Public Function getOrDefault(ByVal key As Object, ByVal defaultValue As V) As V Implements Map(Of K, V).getOrDefault
+        Public Function getOrDefault(  key As Object,   defaultValue As V) As V Implements Map(Of K, V).getOrDefault
             Dim result As V = [get](key)
             Return If(Nothing Is result, defaultValue, result)
         End Function
@@ -923,7 +923,7 @@ Namespace java.util
         'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
         'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
         <MethodImpl(MethodImplOptions.Synchronized)>
-        Public Overrides Sub forEach(Of T1)(ByVal action As java.util.function.BiConsumer(Of T1)) Implements Map(Of K, V).forEach
+        Public Overrides Sub forEach(Of T1)(  action As java.util.function.BiConsumer(Of T1)) Implements Map(Of K, V).forEach
             Objects.requireNonNull(action) ' explicit check required in case
             ' table is empty.
             Dim expectedModCount As Integer = modCount
@@ -944,7 +944,7 @@ Namespace java.util
         'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
         'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
         <MethodImpl(MethodImplOptions.Synchronized)>
-        Public Overrides Sub replaceAll(Of T1 As V)(ByVal [function] As java.util.function.BiFunction(Of T1)) Implements Map(Of K, V).replaceAll
+        Public Overrides Sub replaceAll(Of T1 As V)(  [function] As java.util.function.BiFunction(Of T1)) Implements Map(Of K, V).replaceAll
             Objects.requireNonNull([function]) ' explicit check required in case
             ' table is empty.
             Dim expectedModCount As Integer = modCount
@@ -961,7 +961,7 @@ Namespace java.util
         End Sub
 
         <MethodImpl(MethodImplOptions.Synchronized)>
-        Public Overrides Function putIfAbsent(ByVal key As K, ByVal value As V) As V Implements Map(Of K, V).putIfAbsent
+        Public Overrides Function putIfAbsent(  key As K,   value As V) As V Implements Map(Of K, V).putIfAbsent
             Objects.requireNonNull(value)
 
             ' Makes sure the key is not already in the hashtable.
@@ -985,7 +985,7 @@ Namespace java.util
         End Function
 
         <MethodImpl(MethodImplOptions.Synchronized)>
-        Public Overrides Function remove(ByVal key As Object, ByVal value As Object) As Boolean Implements Map(Of K, V).remove
+        Public Overrides Function remove(  key As Object,   value As Object) As Boolean Implements Map(Of K, V).remove
             Objects.requireNonNull(value)
 
             'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
@@ -1014,7 +1014,7 @@ Namespace java.util
         End Function
 
         <MethodImpl(MethodImplOptions.Synchronized)>
-        Public Overrides Function replace(ByVal key As K, ByVal oldValue As V, ByVal newValue As V) As Boolean Implements Map(Of K, V).replace
+        Public Overrides Function replace(  key As K,   oldValue As V,   newValue As V) As Boolean Implements Map(Of K, V).replace
             Objects.requireNonNull(oldValue)
             Objects.requireNonNull(newValue)
             'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
@@ -1038,7 +1038,7 @@ Namespace java.util
         End Function
 
         <MethodImpl(MethodImplOptions.Synchronized)>
-        Public Overrides Function replace(ByVal key As K, ByVal value As V) As V Implements Map(Of K, V).replace
+        Public Overrides Function replace(  key As K,   value As V) As V Implements Map(Of K, V).replace
             Objects.requireNonNull(value)
             'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
             Dim tab As Entry(Of ?, ?)() = table
@@ -1059,7 +1059,7 @@ Namespace java.util
 
         'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
         <MethodImpl(MethodImplOptions.Synchronized)>
-        Public Overrides Function computeIfAbsent(Of T1 As V)(ByVal key As K, ByVal mappingFunction As java.util.function.Function(Of T1)) As V Implements Map(Of K, V).computeIfAbsent
+        Public Overrides Function computeIfAbsent(Of T1 As V)(  key As K,   mappingFunction As java.util.function.Function(Of T1)) As V Implements Map(Of K, V).computeIfAbsent
             Objects.requireNonNull(mappingFunction)
 
             'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
@@ -1081,7 +1081,7 @@ Namespace java.util
 
         'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
         <MethodImpl(MethodImplOptions.Synchronized)>
-        Public Overrides Function computeIfPresent(Of T1 As V)(ByVal key As K, ByVal remappingFunction As java.util.function.BiFunction(Of T1)) As V Implements Map(Of K, V).computeIfPresent
+        Public Overrides Function computeIfPresent(Of T1 As V)(  key As K,   remappingFunction As java.util.function.BiFunction(Of T1)) As V Implements Map(Of K, V).computeIfPresent
             Objects.requireNonNull(remappingFunction)
 
             'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
@@ -1115,7 +1115,7 @@ Namespace java.util
 
         'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
         <MethodImpl(MethodImplOptions.Synchronized)>
-        Public Overrides Function compute(Of T1 As V)(ByVal key As K, ByVal remappingFunction As java.util.function.BiFunction(Of T1)) As V Implements Map(Of K, V).compute
+        Public Overrides Function compute(Of T1 As V)(  key As K,   remappingFunction As java.util.function.BiFunction(Of T1)) As V Implements Map(Of K, V).compute
             Objects.requireNonNull(remappingFunction)
 
             'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
@@ -1153,7 +1153,7 @@ Namespace java.util
 
         'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
         <MethodImpl(MethodImplOptions.Synchronized)>
-        Public Overrides Function merge(Of T1 As V)(ByVal key As K, ByVal value As V, ByVal remappingFunction As java.util.function.BiFunction(Of T1)) As V Implements Map(Of K, V).merge
+        Public Overrides Function merge(Of T1 As V)(  key As K,   value As V,   remappingFunction As java.util.function.BiFunction(Of T1)) As V Implements Map(Of K, V).merge
             Objects.requireNonNull(remappingFunction)
 
             'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
@@ -1198,7 +1198,7 @@ Namespace java.util
         '''             for each key-value mapping represented by the Hashtable
         '''             The key-value mappings are emitted in no particular order.
         ''' </summary>
-        Private Sub writeObject(ByVal s As java.io.ObjectOutputStream)
+        Private Sub writeObject(  s As java.io.ObjectOutputStream)
             Dim entryStack As Entry(Of Object, Object) = Nothing
 
             SyncLock Me
@@ -1232,7 +1232,7 @@ Namespace java.util
         ''' <summary>
         ''' Reconstitute the Hashtable from a stream (i.e., deserialize it).
         ''' </summary>
-        Private Sub readObject(ByVal s As java.io.ObjectInputStream)
+        Private Sub readObject(  s As java.io.ObjectInputStream)
             ' Read in the length, threshold, and loadfactor
             s.defaultReadObject()
 
@@ -1275,7 +1275,7 @@ Namespace java.util
         ''' because we are creating a new instance. Also, no return value
         ''' is needed.
         ''' </summary>
-        Private Sub reconstitutionPut(Of T1)(ByVal tab As Entry(Of T1)(), ByVal key As K, ByVal value As V)
+        Private Sub reconstitutionPut(Of T1)(  tab As Entry(Of T1)(),   key As K,   value As V)
             If value Is Nothing Then Throw New java.io.StreamCorruptedException
             ' Makes sure the key is not already in the hashtable.
             ' This should not happen in deserialized version.
@@ -1305,7 +1305,7 @@ Namespace java.util
             Friend value As V
             Friend [next] As Entry(Of K, V)
 
-            Protected Friend Sub New(ByVal hash As Integer, ByVal key As K, ByVal value As V, ByVal [next] As Entry(Of K, V))
+            Protected Friend Sub New(  hash As Integer,   key As K,   value As V,   [next] As Entry(Of K, V))
                 Me.hash = hash
                 Me.key = key
                 Me.value = value
@@ -1331,7 +1331,7 @@ Namespace java.util
                 End Get
             End Property
 
-            Public Overridable Function setValue(ByVal value As V) As V
+            Public Overridable Function setValue(  value As V) As V
                 If value Is Nothing Then Throw New NullPointerException
 
                 Dim oldValue As V = Me.value
@@ -1339,7 +1339,7 @@ Namespace java.util
                 Return oldValue
             End Function
 
-            Public Overrides Function Equals(ByVal o As Object) As Boolean
+            Public Overrides Function Equals(  o As Object) As Boolean
                 If Not (TypeOf o Is DictionaryEntry) Then Return False
                 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
                 Dim e As KeyValuePair(Of ?, ?) = CType(o, KeyValuePair(Of ?, ?))
@@ -1395,7 +1395,7 @@ Namespace java.util
             ''' </summary>
             Protected Friend expectedModCount As Integer = outerInstance.modCount
 
-            Friend Sub New(ByVal outerInstance As Hashtable, ByVal type As Integer, ByVal [iterator] As Boolean)
+            Friend Sub New(  outerInstance As Hashtable,   type As Integer,   [iterator] As Boolean)
                 Me.outerInstance = outerInstance
                 Me.type = type
                 Me.iterator = [iterator]

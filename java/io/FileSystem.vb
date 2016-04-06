@@ -48,20 +48,20 @@ Namespace java.io
 		''' Convert the given pathname string to normal form.  If the string is
 		''' already in normal form then it is simply returned.
 		''' </summary>
-		Public MustOverride Function normalize(ByVal path As String) As String
+		Public MustOverride Function normalize(  path As String) As String
 
 		''' <summary>
 		''' Compute the length of this pathname string's prefix.  The pathname
 		''' string must be in normal form.
 		''' </summary>
-		Public MustOverride Function prefixLength(ByVal path As String) As Integer
+		Public MustOverride Function prefixLength(  path As String) As Integer
 
 		''' <summary>
 		''' Resolve the child pathname string against the parent.
 		''' Both strings must be in normal form, and the result
 		''' will be in normal form.
 		''' </summary>
-		Public MustOverride Function resolve(ByVal parent As String, ByVal child As String) As String
+		Public MustOverride Function resolve(  parent As String,   child As String) As String
 
 		''' <summary>
 		''' Return the parent pathname string to be used when the parent-directory
@@ -76,7 +76,7 @@ Namespace java.io
 		''' still has slash separators; code in the File class will translate them
 		''' after this method returns.
 		''' </summary>
-		Public MustOverride Function fromURIPath(ByVal path As String) As String
+		Public MustOverride Function fromURIPath(  path As String) As String
 
 
 		' -- Path operations -- 
@@ -84,15 +84,15 @@ Namespace java.io
 		''' <summary>
 		''' Tell whether or not the given abstract pathname is absolute.
 		''' </summary>
-		Public MustOverride Function isAbsolute(ByVal f As File) As Boolean
+		Public MustOverride Function isAbsolute(  f As File) As Boolean
 
 		''' <summary>
 		''' Resolve the given abstract pathname into absolute form.  Invoked by the
 		''' getAbsolutePath and getCanonicalPath methods in the File class.
 		''' </summary>
-		Public MustOverride Function resolve(ByVal f As File) As String
+		Public MustOverride Function resolve(  f As File) As String
 
-		Public MustOverride Function canonicalize(ByVal path As String) As String
+		Public MustOverride Function canonicalize(  path As String) As String
 
 
 		' -- Attribute accessors -- 
@@ -112,7 +112,7 @@ Namespace java.io
 		''' by the given abstract pathname, or zero if it does not exist or some
 		''' other I/O error occurs.
 		''' </summary>
-		Public MustOverride Function getBooleanAttributes(ByVal f As File) As Integer
+		Public MustOverride Function getBooleanAttributes(  f As File) As Integer
 
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
 		Public Const ACCESS_READ As Integer = &H4
@@ -127,27 +127,27 @@ Namespace java.io
 		''' which access, ACCESS_READ, ACCESS_WRITE or ACCESS_EXECUTE, to check.
 		''' Return false if access is denied or an I/O error occurs
 		''' </summary>
-		Public MustOverride Function checkAccess(ByVal f As File, ByVal access As Integer) As Boolean
+		Public MustOverride Function checkAccess(  f As File,   access As Integer) As Boolean
 		''' <summary>
 		''' Set on or off the access permission (to owner only or to all) to the file
 		''' or directory denoted by the given abstract pathname, based on the parameters
 		''' enable, access and oweronly.
 		''' </summary>
-		Public MustOverride Function setPermission(ByVal f As File, ByVal access As Integer, ByVal enable As Boolean, ByVal owneronly As Boolean) As Boolean
+		Public MustOverride Function setPermission(  f As File,   access As Integer,   enable As Boolean,   owneronly As Boolean) As Boolean
 
 		''' <summary>
 		''' Return the time at which the file or directory denoted by the given
 		''' abstract pathname was last modified, or zero if it does not exist or
 		''' some other I/O error occurs.
 		''' </summary>
-		Public MustOverride Function getLastModifiedTime(ByVal f As File) As Long
+		Public MustOverride Function getLastModifiedTime(  f As File) As Long
 
 		''' <summary>
 		''' Return the length in bytes of the file denoted by the given abstract
 		''' pathname, or zero if it does not exist, is a directory, or some other
 		''' I/O error occurs.
 		''' </summary>
-		Public MustOverride Function getLength(ByVal f As File) As Long
+		Public MustOverride Function getLength(  f As File) As Long
 
 
 		' -- File operations -- 
@@ -158,47 +158,47 @@ Namespace java.io
 		''' file or directory with the given pathname already exists.  Throw an
 		''' IOException if an I/O error occurs.
 		''' </summary>
-		Public MustOverride Function createFileExclusively(ByVal pathname As String) As Boolean
+		Public MustOverride Function createFileExclusively(  pathname As String) As Boolean
 
 		''' <summary>
 		''' Delete the file or directory denoted by the given abstract pathname,
 		''' returning <code>true</code> if and only if the operation succeeds.
 		''' </summary>
-		Public MustOverride Function delete(ByVal f As File) As Boolean
+		Public MustOverride Function delete(  f As File) As Boolean
 
 		''' <summary>
 		''' List the elements of the directory denoted by the given abstract
 		''' pathname.  Return an array of strings naming the elements of the
 		''' directory if successful; otherwise, return <code>null</code>.
 		''' </summary>
-		Public MustOverride Function list(ByVal f As File) As String()
+		Public MustOverride Function list(  f As File) As String()
 
 		''' <summary>
 		''' Create a new directory denoted by the given abstract pathname,
 		''' returning <code>true</code> if and only if the operation succeeds.
 		''' </summary>
-		Public MustOverride Function createDirectory(ByVal f As File) As Boolean
+		Public MustOverride Function createDirectory(  f As File) As Boolean
 
 		''' <summary>
 		''' Rename the file or directory denoted by the first abstract pathname to
 		''' the second abstract pathname, returning <code>true</code> if and only if
 		''' the operation succeeds.
 		''' </summary>
-		Public MustOverride Function rename(ByVal f1 As File, ByVal f2 As File) As Boolean
+		Public MustOverride Function rename(  f1 As File,   f2 As File) As Boolean
 
 		''' <summary>
 		''' Set the last-modified time of the file or directory denoted by the
 		''' given abstract pathname, returning <code>true</code> if and only if the
 		''' operation succeeds.
 		''' </summary>
-		Public MustOverride Function setLastModifiedTime(ByVal f As File, ByVal time As Long) As Boolean
+		Public MustOverride Function setLastModifiedTime(  f As File,   time As Long) As Boolean
 
 		''' <summary>
 		''' Mark the file or directory denoted by the given abstract pathname as
 		''' read-only, returning <code>true</code> if and only if the operation
 		''' succeeds.
 		''' </summary>
-		Public MustOverride Function setReadOnly(ByVal f As File) As Boolean
+		Public MustOverride Function setReadOnly(  f As File) As Boolean
 
 
 		' -- Filesystem interface -- 
@@ -216,26 +216,26 @@ Namespace java.io
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
 		Public Const SPACE_USABLE As Integer = 2
 
-		Public MustOverride Function getSpace(ByVal f As File, ByVal t As Integer) As Long
+		Public MustOverride Function getSpace(  f As File,   t As Integer) As Long
 
 		' -- Basic infrastructure -- 
 
 		''' <summary>
 		''' Compare two abstract pathnames lexicographically.
 		''' </summary>
-		Public MustOverride Function compare(ByVal f1 As File, ByVal f2 As File) As Integer
+		Public MustOverride Function compare(  f1 As File,   f2 As File) As Integer
 
 		''' <summary>
 		''' Compute the hash code of an abstract pathname.
 		''' </summary>
-		Public MustOverride Function GetHashCode(ByVal f As File) As Integer
+		Public MustOverride Function GetHashCode(  f As File) As Integer
 
 		' Flags for enabling/disabling performance optimizations for file
 		' name canonicalization
 		Friend Shared useCanonCaches As Boolean = True
 		Friend Shared useCanonPrefixCache As Boolean = True
 
-		Private Shared Function getBooleanProperty(ByVal prop As String, ByVal defaultVal As Boolean) As Boolean
+		Private Shared Function getBooleanProperty(  prop As String,   defaultVal As Boolean) As Boolean
 			Dim val As String = System.getProperty(prop)
 			If val Is Nothing Then Return defaultVal
 			If val.equalsIgnoreCase("true") Then

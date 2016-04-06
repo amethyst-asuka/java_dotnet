@@ -130,7 +130,7 @@ Namespace java.security
         ''' <param name="version"> the provider version number.
         ''' </param>
         ''' <param name="info"> a description of the provider and its services. </param>
-        Protected Friend Sub New(ByVal name As String, ByVal version As Double, ByVal info As String)
+        Protected Friend Sub New(  name As String,   version As Double,   info As String)
             Me.name = name
             Me.version = version
             Me.info = info
@@ -215,7 +215,7 @@ Namespace java.security
         '''               input stream. </exception>
         ''' <seealso cref= java.util.Properties#load </seealso>
         <MethodImpl(MethodImplOptions.Synchronized)>
-        Public Overrides Sub load(ByVal inStream As InputStream)
+        Public Overrides Sub load(  inStream As InputStream)
             check("putProviderProperty." & name)
             If debug IsNot Nothing Then debug.println("Load " & name & " provider properties")
             Dim tempProperties As New Properties
@@ -231,7 +231,7 @@ Namespace java.security
         ''' @since 1.2
         ''' </summary>
         <MethodImpl(MethodImplOptions.Synchronized)>
-        Public Overrides Sub putAll(Of T1)(ByVal t As Map(Of T1))
+        Public Overrides Sub putAll(Of T1)(  t As Map(Of T1))
             check("putProviderProperty." & name)
             If debug IsNot Nothing Then debug.println("Put all " & name & " provider properties")
             implPutAll(t)
@@ -304,7 +304,7 @@ Namespace java.security
         ''' 
         ''' @since 1.2 </exception>
         <MethodImpl(MethodImplOptions.Synchronized)>
-        Public Overrides Function put(ByVal key As Object, ByVal value As Object) As Object
+        Public Overrides Function put(  key As Object,   value As Object) As Object
             check("putProviderProperty." & name)
             If debug IsNot Nothing Then debug.println("Set " & name & " provider property [" & key & "/" & value & "]")
             Return implPut(key, value)
@@ -327,7 +327,7 @@ Namespace java.security
         ''' 
         ''' @since 1.8 </exception>
         <MethodImpl(MethodImplOptions.Synchronized)>
-        Public Overrides Function putIfAbsent(ByVal key As Object, ByVal value As Object) As Object
+        Public Overrides Function putIfAbsent(  key As Object,   value As Object) As Object
             check("putProviderProperty." & name)
             If debug IsNot Nothing Then debug.println("Set " & name & " provider property [" & key & "/" & value & "]")
             Return implPutIfAbsent(key, value)
@@ -349,7 +349,7 @@ Namespace java.security
         ''' 
         ''' @since 1.2 </exception>
         <MethodImpl(MethodImplOptions.Synchronized)>
-        Public Overrides Function remove(ByVal key As Object) As Object
+        Public Overrides Function remove(  key As Object) As Object
             check("removeProviderProperty." & name)
             If debug IsNot Nothing Then debug.println("Remove " & name & " provider property " & key)
             Return implRemove(key)
@@ -371,7 +371,7 @@ Namespace java.security
         ''' 
         ''' @since 1.8 </exception>
         <MethodImpl(MethodImplOptions.Synchronized)>
-        Public Overrides Function remove(ByVal key As Object, ByVal value As Object) As Boolean
+        Public Overrides Function remove(  key As Object,   value As Object) As Boolean
             check("removeProviderProperty." & name)
             If debug IsNot Nothing Then debug.println("Remove " & name & " provider property " & key)
             Return implRemove(key, value)
@@ -393,7 +393,7 @@ Namespace java.security
         ''' 
         ''' @since 1.8 </exception>
         <MethodImpl(MethodImplOptions.Synchronized)>
-        Public Overrides Function replace(ByVal key As Object, ByVal oldValue As Object, ByVal newValue As Object) As Boolean
+        Public Overrides Function replace(  key As Object,   oldValue As Object,   newValue As Object) As Boolean
             check("putProviderProperty." & name)
 
             If debug IsNot Nothing Then debug.println("Replace " & name & " provider property " & key)
@@ -416,7 +416,7 @@ Namespace java.security
         ''' 
         ''' @since 1.8 </exception>
         <MethodImpl(MethodImplOptions.Synchronized)>
-        Public Overrides Function replace(ByVal key As Object, ByVal value As Object) As Object
+        Public Overrides Function replace(  key As Object,   value As Object) As Object
             check("putProviderProperty." & name)
 
             If debug IsNot Nothing Then debug.println("Replace " & name & " provider property " & key)
@@ -442,7 +442,7 @@ Namespace java.security
         ''' @since 1.8 </exception>
         'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
         <MethodImpl(MethodImplOptions.Synchronized)>
-        Public Overrides Sub replaceAll(Of T1 As Object)(ByVal [function] As java.util.function.BiFunction(Of T1))
+        Public Overrides Sub replaceAll(Of T1 As Object)(  [function] As java.util.function.BiFunction(Of T1))
             check("putProviderProperty." & name)
 
             If debug IsNot Nothing Then debug.println("ReplaceAll " & name & " provider property ")
@@ -468,7 +468,7 @@ Namespace java.security
         ''' @since 1.8 </exception>
         'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
         <MethodImpl(MethodImplOptions.Synchronized)>
-        Public Overrides Function compute(Of T1 As Object)(ByVal key As Object, ByVal remappingFunction As java.util.function.BiFunction(Of T1)) As Object
+        Public Overrides Function compute(Of T1 As Object)(  key As Object,   remappingFunction As java.util.function.BiFunction(Of T1)) As Object
             check("putProviderProperty." & name)
             check("removeProviderProperty" & name)
 
@@ -496,7 +496,7 @@ Namespace java.security
         ''' @since 1.8 </exception>
         'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
         <MethodImpl(MethodImplOptions.Synchronized)>
-        Public Overrides Function computeIfAbsent(Of T1 As Object)(ByVal key As Object, ByVal mappingFunction As java.util.function.Function(Of T1)) As Object
+        Public Overrides Function computeIfAbsent(Of T1 As Object)(  key As Object,   mappingFunction As java.util.function.Function(Of T1)) As Object
             check("putProviderProperty." & name)
             check("removeProviderProperty" & name)
 
@@ -522,7 +522,7 @@ Namespace java.security
         ''' @since 1.8 </exception>
         'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
         <MethodImpl(MethodImplOptions.Synchronized)>
-        Public Overrides Function computeIfPresent(Of T1 As Object)(ByVal key As Object, ByVal remappingFunction As java.util.function.BiFunction(Of T1)) As Object
+        Public Overrides Function computeIfPresent(Of T1 As Object)(  key As Object,   remappingFunction As java.util.function.BiFunction(Of T1)) As Object
             check("putProviderProperty." & name)
             check("removeProviderProperty" & name)
 
@@ -551,7 +551,7 @@ Namespace java.security
         ''' @since 1.8 </exception>
         'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
         <MethodImpl(MethodImplOptions.Synchronized)>
-        Public Overrides Function merge(Of T1 As Object)(ByVal key As Object, ByVal value As Object, ByVal remappingFunction As java.util.function.BiFunction(Of T1)) As Object
+        Public Overrides Function merge(Of T1 As Object)(  key As Object,   value As Object,   remappingFunction As java.util.function.BiFunction(Of T1)) As Object
             check("putProviderProperty." & name)
             check("removeProviderProperty" & name)
 
@@ -560,7 +560,7 @@ Namespace java.security
         End Function
 
         ' let javadoc show doc from superclass
-        Public Overrides Function [get](ByVal key As Object) As Object
+        Public Overrides Function [get](  key As Object) As Object
             checkInitialized()
             Return MyBase.get(key)
         End Function
@@ -568,7 +568,7 @@ Namespace java.security
         ''' @since 1.8
         ''' </summary>
         <MethodImpl(MethodImplOptions.Synchronized)>
-        Public Overrides Function getOrDefault(ByVal key As Object, ByVal defaultValue As Object) As Object
+        Public Overrides Function getOrDefault(  key As Object,   defaultValue As Object) As Object
             checkInitialized()
             Return MyBase.getOrDefault(key, defaultValue)
         End Function
@@ -578,7 +578,7 @@ Namespace java.security
         ''' </summary>
         'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
         <MethodImpl(MethodImplOptions.Synchronized)>
-        Public Overrides Sub forEach(Of T1)(ByVal action As java.util.function.BiConsumer(Of T1))
+        Public Overrides Sub forEach(Of T1)(  action As java.util.function.BiConsumer(Of T1))
             checkInitialized()
             MyBase.forEach(action)
         End Sub
@@ -596,7 +596,7 @@ Namespace java.security
         End Function
 
         ' let javadoc show doc from superclass
-        Public Overrides Function getProperty(ByVal key As String) As String
+        Public Overrides Function getProperty(  key As String) As String
             checkInitialized()
             Return MyBase.getProperty(key)
         End Function
@@ -605,7 +605,7 @@ Namespace java.security
             If Not initialized Then Throw New IllegalStateException
         End Sub
 
-        Private Sub check(ByVal directive As String)
+        Private Sub check(  directive As String)
             checkInitialized()
             Dim security_Renamed As SecurityManager = System.securityManager
             If security_Renamed IsNot Nothing Then security_Renamed.checkSecurityAccess(directive)
@@ -648,7 +648,7 @@ Namespace java.security
             MyBase.put("Provider.id className", Me.GetType().name)
         End Sub
 
-        Private Sub readObject(ByVal [in] As ObjectInputStream)
+        Private Sub readObject(  [in] As ObjectInputStream)
             Dim copy As Map(Of Object, Object) = New HashMap(Of Object, Object)
             For Each entry As KeyValuePair(Of Object, Object) In MyBase.entrySet()
                 copy.put(entry.Key, entry.Value)
@@ -660,7 +660,7 @@ Namespace java.security
             putAll(copy)
         End Sub
 
-        Private Function checkLegacy(ByVal key As Object) As Boolean
+        Private Function checkLegacy(  key As Object) As Boolean
             Dim keyString As String = CStr(key)
             If keyString.StartsWith("Provider.") Then Return False
 
@@ -674,14 +674,14 @@ Namespace java.security
         ''' Internal method to be called AFTER the security check has been
         ''' performed.
         ''' </summary>
-        Private Sub implPutAll(Of T1)(ByVal t As Map(Of T1))
+        Private Sub implPutAll(Of T1)(  t As Map(Of T1))
             'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
             For Each e As KeyValuePair(Of ?, ?) In t.entrySet()
                 implPut(e.Key, e.Value)
             Next e
         End Sub
 
-        Private Function implRemove(ByVal key As Object) As Object
+        Private Function implRemove(  key As Object) As Object
             If TypeOf key Is String Then
                 If Not checkLegacy(key) Then Return Nothing
                 legacyStrings.remove(CStr(key))
@@ -689,7 +689,7 @@ Namespace java.security
             Return MyBase.remove(key)
         End Function
 
-        Private Function implRemove(ByVal key As Object, ByVal value As Object) As Boolean
+        Private Function implRemove(  key As Object,   value As Object) As Boolean
             If TypeOf key Is String AndAlso TypeOf value Is String Then
                 If Not checkLegacy(key) Then Return False
                 legacyStrings.remove(CStr(key), value)
@@ -697,7 +697,7 @@ Namespace java.security
             Return MyBase.remove(key, value)
         End Function
 
-        Private Function implReplace(ByVal key As Object, ByVal oldValue As Object, ByVal newValue As Object) As Boolean
+        Private Function implReplace(  key As Object,   oldValue As Object,   newValue As Object) As Boolean
             If (TypeOf key Is String) AndAlso (TypeOf oldValue Is String) AndAlso (TypeOf newValue Is String) Then
                 If Not checkLegacy(key) Then Return False
                 legacyStrings.replace(CStr(key), CStr(oldValue), CStr(newValue))
@@ -705,7 +705,7 @@ Namespace java.security
             Return MyBase.replace(key, oldValue, newValue)
         End Function
 
-        Private Function implReplace(ByVal key As Object, ByVal value As Object) As Object
+        Private Function implReplace(  key As Object,   value As Object) As Object
             If (TypeOf key Is String) AndAlso (TypeOf value Is String) Then
                 If Not checkLegacy(key) Then Return Nothing
                 legacyStrings.replace(CStr(key), CStr(value))
@@ -714,7 +714,7 @@ Namespace java.security
         End Function
 
         'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-        Private Sub implReplaceAll(Of T1 As Object)(ByVal [function] As java.util.function.BiFunction(Of T1))
+        Private Sub implReplaceAll(Of T1 As Object)(  [function] As java.util.function.BiFunction(Of T1))
             legacyChanged = True
             If legacyStrings Is Nothing Then
                 legacyStrings = New LinkedHashMap(Of String, String)
@@ -728,7 +728,7 @@ Namespace java.security
 
 
         'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-        Private Function implMerge(Of T1 As Object)(ByVal key As Object, ByVal value As Object, ByVal remappingFunction As java.util.function.BiFunction(Of T1)) As Object
+        Private Function implMerge(Of T1 As Object)(  key As Object,   value As Object,   remappingFunction As java.util.function.BiFunction(Of T1)) As Object
             If (TypeOf key Is String) AndAlso (TypeOf value Is String) Then
                 If Not checkLegacy(key) Then Return Nothing
                 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
@@ -739,7 +739,7 @@ Namespace java.security
         End Function
 
         'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-        Private Function implCompute(Of T1 As Object)(ByVal key As Object, ByVal remappingFunction As java.util.function.BiFunction(Of T1)) As Object
+        Private Function implCompute(Of T1 As Object)(  key As Object,   remappingFunction As java.util.function.BiFunction(Of T1)) As Object
             If TypeOf key Is String Then
                 If Not checkLegacy(key) Then Return Nothing
                 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
@@ -750,7 +750,7 @@ Namespace java.security
         End Function
 
         'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-        Private Function implComputeIfAbsent(Of T1 As Object)(ByVal key As Object, ByVal mappingFunction As java.util.function.Function(Of T1)) As Object
+        Private Function implComputeIfAbsent(Of T1 As Object)(  key As Object,   mappingFunction As java.util.function.Function(Of T1)) As Object
             If TypeOf key Is String Then
                 If Not checkLegacy(key) Then Return Nothing
                 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
@@ -761,7 +761,7 @@ Namespace java.security
         End Function
 
         'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-        Private Function implComputeIfPresent(Of T1 As Object)(ByVal key As Object, ByVal remappingFunction As java.util.function.BiFunction(Of T1)) As Object
+        Private Function implComputeIfPresent(Of T1 As Object)(  key As Object,   remappingFunction As java.util.function.BiFunction(Of T1)) As Object
             If TypeOf key Is String Then
                 If Not checkLegacy(key) Then Return Nothing
                 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
@@ -771,7 +771,7 @@ Namespace java.security
             Return MyBase.computeIfPresent(key, remappingFunction)
         End Function
 
-        Private Function implPut(ByVal key As Object, ByVal value As Object) As Object
+        Private Function implPut(  key As Object,   value As Object) As Object
             If (TypeOf key Is String) AndAlso (TypeOf value Is String) Then
                 If Not checkLegacy(key) Then Return Nothing
                 legacyStrings.put(CStr(key), CStr(value))
@@ -779,7 +779,7 @@ Namespace java.security
             Return MyBase.put(key, value)
         End Function
 
-        Private Function implPutIfAbsent(ByVal key As Object, ByVal value As Object) As Object
+        Private Function implPutIfAbsent(  key As Object,   value As Object) As Object
             If (TypeOf key Is String) AndAlso (TypeOf value Is String) Then
                 If Not checkLegacy(key) Then Return Nothing
                 legacyStrings.putIfAbsent(CStr(key), CStr(value))
@@ -803,7 +803,7 @@ Namespace java.security
             Private ReadOnly type As String
             Private ReadOnly algorithm As String
             Private ReadOnly originalAlgorithm As String
-            Private Sub New(ByVal type As String, ByVal algorithm As String, ByVal intern As Boolean)
+            Private Sub New(  type As String,   algorithm As String,   intern As Boolean)
                 Me.type = type
                 Me.originalAlgorithm = algorithm
                 algorithm = algorithm.ToUpper(ENGLISH)
@@ -812,13 +812,13 @@ Namespace java.security
             Public Overrides Function GetHashCode() As Integer
                 Return type.GetHashCode() + algorithm.GetHashCode()
             End Function
-            Public Overrides Function Equals(ByVal obj As Object) As Boolean
+            Public Overrides Function Equals(  obj As Object) As Boolean
                 If Me Is obj Then Return True
                 If TypeOf obj Is ServiceKey = False Then Return False
                 Dim other As ServiceKey = CType(obj, ServiceKey)
                 Return Me.type.Equals(other.type) AndAlso Me.algorithm.Equals(other.algorithm)
             End Function
-            Friend Overridable Function matches(ByVal type As String, ByVal algorithm As String) As Boolean
+            Friend Overridable Function matches(  type As String,   algorithm As String) As Boolean
                 Return (Me.type = type) AndAlso (Me.originalAlgorithm = algorithm)
             End Function
         End Class
@@ -846,7 +846,7 @@ Namespace java.security
         ''' Remove all invalid services from the Map. Invalid services can only
         ''' occur if the legacy properties are inconsistent or incomplete.
         ''' </summary>
-        Private Sub removeInvalidServices(ByVal map As Map(Of ServiceKey, Service))
+        Private Sub removeInvalidServices(  map As Map(Of ServiceKey, Service))
             Dim t As [Iterator](Of KeyValuePair(Of ServiceKey, Service)) = map.entrySet().GetEnumerator()
             Do While t.MoveNext()
                 Dim s As Service = t.Current.value
@@ -854,7 +854,7 @@ Namespace java.security
             Loop
         End Sub
 
-        Private Function getTypeAndAlgorithm(ByVal key As String) As String()
+        Private Function getTypeAndAlgorithm(  key As String) As String()
             Dim i As Integer = key.IndexOf(".")
             If i < 1 Then
                 If debug IsNot Nothing Then debug.println("Ignoring invalid entry in provider " & name & ":" & key)
@@ -869,7 +869,7 @@ Namespace java.security
         Private Const ALIAS_PREFIX_LOWER As String = "alg.alias."
         Private Shared ReadOnly ALIAS_LENGTH As Integer = ALIAS_PREFIX.Length()
 
-        Private Sub parseLegacyPut(ByVal name As String, ByVal value As String)
+        Private Sub parseLegacyPut(  name As String,   value As String)
             If name.ToLower(ENGLISH).StartsWith(ALIAS_PREFIX_LOWER) Then
                 ' e.g. put("Alg.Alias.MessageDigest.SHA", "SHA-1");
                 ' aliasKey ~ MessageDigest.SHA
@@ -952,7 +952,7 @@ Namespace java.security
         ''' 
         ''' @since 1.5 </exception>
         <MethodImpl(MethodImplOptions.Synchronized)>
-        Public Overridable Function getService(ByVal type As String, ByVal algorithm As String) As Service
+        Public Overridable Function getService(  type As String,   algorithm As String) As Service
             checkInitialized()
             ' avoid allocating a new key object if possible
             Dim key As ServiceKey = previousKey
@@ -1031,7 +1031,7 @@ Namespace java.security
         ''' 
         ''' @since 1.5 </exception>
         <MethodImpl(MethodImplOptions.Synchronized)>
-        Protected Friend Overridable Sub putService(ByVal s As Service)
+        Protected Friend Overridable Sub putService(  s As Service)
             check("putProviderProperty." & name)
             If debug IsNot Nothing Then debug.println(name & ".putService(): " & s)
             If s Is Nothing Then Throw New NullPointerException
@@ -1054,7 +1054,7 @@ Namespace java.security
         ''' Put the string properties for this Service in this Provider's
         ''' Hashtable.
         ''' </summary>
-        Private Sub putPropertyStrings(ByVal s As Service)
+        Private Sub putPropertyStrings(  s As Service)
             Dim type As String = s.type
             Dim algorithm As String = s.algorithm
             ' use super() to avoid permission check and other processing
@@ -1072,7 +1072,7 @@ Namespace java.security
         ''' Remove the string properties for this Service from this Provider's
         ''' Hashtable.
         ''' </summary>
-        Private Sub removePropertyStrings(ByVal s As Service)
+        Private Sub removePropertyStrings(  s As Service)
             Dim type As String = s.type
             Dim algorithm As String = s.algorithm
             ' use super() to avoid permission check and other processing
@@ -1114,14 +1114,14 @@ Namespace java.security
         ''' 
         ''' @since 1.5 </exception>
         <MethodImpl(MethodImplOptions.Synchronized)>
-        Protected Friend Overridable Sub removeService(ByVal s As Service)
+        Protected Friend Overridable Sub removeService(  s As Service)
             check("removeProviderProperty." & name)
             If debug IsNot Nothing Then debug.println(name & ".removeService(): " & s)
             If s Is Nothing Then Throw New NullPointerException
             implRemoveService(s)
         End Sub
 
-        Private Sub implRemoveService(ByVal s As Service)
+        Private Sub implRemoveService(  s As Service)
             If (s Is Nothing) OrElse (serviceMap Is Nothing) Then Return
             Dim type As String = s.type
             Dim algorithm As String = s.algorithm
@@ -1141,7 +1141,7 @@ Namespace java.security
             Friend ReadOnly string_Renamed As String
             Friend ReadOnly lowerString As String
 
-            Friend Sub New(ByVal s As String)
+            Friend Sub New(  s As String)
                 Me.string_Renamed = s
                 Me.lowerString = s.ToLower(ENGLISH)
             End Sub
@@ -1150,7 +1150,7 @@ Namespace java.security
                 Return lowerString.GetHashCode()
             End Function
 
-            Public Overrides Function Equals(ByVal obj As Object) As Boolean
+            Public Overrides Function Equals(  obj As Object) As Boolean
                 If Me Is obj Then Return True
                 If TypeOf obj Is UString = False Then Return False
                 Dim other As UString = CType(obj, UString)
@@ -1169,7 +1169,7 @@ Namespace java.security
             Friend ReadOnly constructorParameterClassName As String
             Private _constructorParameterClass As [Class]
 
-            Friend Sub New(ByVal name As String, ByVal sp As Boolean, ByVal paramName As String)
+            Friend Sub New(  name As String,   sp As Boolean,   paramName As String)
                 Me.name = name
                 Me.supportsParameter = sp
                 Me.constructorParameterClassName = paramName
@@ -1189,7 +1189,7 @@ Namespace java.security
         ' built in knowledge of the engine types shipped as part of the JDK
         Private Shared ReadOnly knownEngines As Map(Of String, EngineDescription)
 
-        Private Shared Sub addEngine(ByVal name As String, ByVal sp As Boolean, ByVal paramName As String)
+        Private Shared Sub addEngine(  name As String,   sp As Boolean,   paramName As String)
             Dim ed As New EngineDescription(name, sp, paramName)
             ' also index by canonical name to avoid toLowerCase() for some lookups
             knownEngines.put(name.ToLower(ENGLISH), ed)
@@ -1241,7 +1241,7 @@ Namespace java.security
 
         ' get the "standard" (mixed-case) engine name for arbitary case engine name
         ' if there is no known engine by that name, return s
-        Private Shared Function getEngineName(ByVal s As String) As String
+        Private Shared Function getEngineName(  s As String) As String
             ' try original case first, usually correct
             Dim e As EngineDescription = knownEngines.get(s)
             If e Is Nothing Then e = knownEngines.get(s.ToLower(ENGLISH))
@@ -1307,7 +1307,7 @@ Namespace java.security
             ' this constructor and these methods are used for parsing
             ' the legacy string properties.
 
-            Private Sub New(ByVal provider_Renamed As Provider)
+            Private Sub New(  provider_Renamed As Provider)
                 Me.provider_Renamed = provider_Renamed
                 aliases = Collections.emptyList(Of String)()
                 attributes = Collections.emptyMap(Of UString, String)()
@@ -1319,12 +1319,12 @@ Namespace java.security
                 End Get
             End Property
 
-            Private Sub addAlias(ByVal [alias] As String)
+            Private Sub addAlias(  [alias] As String)
                 If aliases.empty Then aliases = New List(Of String)(2)
                 aliases.add([alias])
             End Sub
 
-            Friend Overridable Sub addAttribute(ByVal type As String, ByVal value As String)
+            Friend Overridable Sub addAttribute(  type As String,   value As String)
                 If attributes.empty Then attributes = New HashMap(Of UString, String)(8)
                 attributes.put(New UString(type), value)
             End Sub
@@ -1342,7 +1342,7 @@ Namespace java.security
             ''' </param>
             ''' <exception cref="NullPointerException"> if provider, type, algorithm, or
             ''' className is null </exception>
-            Public Sub New(ByVal provider_Renamed As Provider, ByVal type As String, ByVal algorithm As String, ByVal className As String, ByVal aliases As List(Of String), ByVal attributes As Map(Of String, String))
+            Public Sub New(  provider_Renamed As Provider,   type As String,   algorithm As String,   className As String,   aliases As List(Of String),   attributes As Map(Of String, String))
                 If (provider_Renamed Is Nothing) OrElse (type Is Nothing) OrElse (algorithm Is Nothing) OrElse (className Is Nothing) Then Throw New NullPointerException
                 Me.provider_Renamed = provider_Renamed
                 Me.type = getEngineName(type)
@@ -1421,7 +1421,7 @@ Namespace java.security
             '''         attribute is not present
             ''' </returns>
             ''' <exception cref="NullPointerException"> if name is null </exception>
-            Public Function getAttribute(ByVal name As String) As String
+            Public Function getAttribute(  name As String) As String
                 If name Is Nothing Then Throw New NullPointerException
                 Return attributes.get(New UString(name))
             End Function
@@ -1451,7 +1451,7 @@ Namespace java.security
             ''' constructorParameter is invalid for this type of service. </exception>
             ''' <exception cref="NoSuchAlgorithmException"> if instantiation failed for
             ''' any other reason. </exception>
-            Public Overridable Function newInstance(ByVal constructorParameter As Object) As Object
+            Public Overridable Function newInstance(  constructorParameter As Object) As Object
                 If registered = False Then
                     If provider_Renamed.getService(type, algorithm) IsNot Me Then Throw New NoSuchAlgorithmException("Service not registered with Provider " & provider_Renamed.name & ": " & Me)
                     registered = True
@@ -1514,7 +1514,7 @@ Namespace java.security
             ''' no-args constructor if constructorParameter is null, otherwise
             ''' use the first matching constructor.
             ''' </summary>
-            Private Function newInstanceGeneric(ByVal constructorParameter As Object) As Object
+            Private Function newInstanceGeneric(  constructorParameter As Object) As Object
                 Dim clazz As [Class] = implClass
                 If constructorParameter Is Nothing Then
                     ' create instance with public no-arg constructor if it exists
@@ -1567,7 +1567,7 @@ Namespace java.security
             ''' <exception cref="InvalidParameterException"> if the value of parameter is
             ''' invalid for this type of service or if this method cannot be
             ''' used with this type of service </exception>
-            Public Overridable Function supportsParameter(ByVal parameter As Object) As Boolean
+            Public Overridable Function supportsParameter(  parameter As Object) As Boolean
                 Dim cap As EngineDescription = knownEngines.get(type)
                 If cap Is Nothing Then Return True
                 If cap.supportsParameter = False Then Throw New InvalidParameterException("supportsParameter() not " & "used with " & type & " engines")
@@ -1611,7 +1611,7 @@ Namespace java.security
             End Function
 
             ' get the key class object of the specified name
-            Private Function getKeyClass(ByVal name As String) As [Class]
+            Private Function getKeyClass(  name As String) As [Class]
                 Try
                     Return type.GetType(name)
                 Catch e As ClassNotFoundException
@@ -1626,7 +1626,7 @@ Namespace java.security
                 Return Nothing
             End Function
 
-            Private Function supportsKeyFormat(ByVal key As Key) As Boolean
+            Private Function supportsKeyFormat(  key As Key) As Boolean
                 If supportedFormats Is Nothing Then Return False
                 Dim format As String = key.format
                 If format Is Nothing Then Return False
@@ -1636,7 +1636,7 @@ Namespace java.security
                 Return False
             End Function
 
-            Private Function supportsKeyClass(ByVal key As Key) As Boolean
+            Private Function supportsKeyClass(  key As Key) As Boolean
                 If supportedClasses Is Nothing Then Return False
                 Dim keyClass_Renamed As [Class] = key.GetType()
                 For Each clazz As [Class] In supportedClasses

@@ -43,7 +43,7 @@ Namespace java.util.prefs
 		''' <p> </summary>
 		''' <param name="evt"> A PreferenceChangeEvent object describing the event source
 		'''          and the preference that has changed. </param>
-		Sub preferenceChange(ByVal evt As PreferenceChangeEvent)
+		Sub preferenceChange(  evt As PreferenceChangeEvent)
 	End Interface
 
 End Namespace

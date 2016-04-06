@@ -52,7 +52,7 @@ Namespace java.awt.event
 		''' </summary>
 		''' <param name="eventMask">  the bitmap of event types to receive </param>
 		''' <param name="listener">   the listener object </param>
-		Public Sub New(ByVal eventMask As Long, ByVal listener As AWTEventListener)
+		Public Sub New(  eventMask As Long,   listener As AWTEventListener)
 			MyBase.New(listener)
 			Me.eventMask = eventMask
 		End Sub
@@ -61,7 +61,7 @@ Namespace java.awt.event
 		''' Forwards the AWT event to the listener delegate.
 		''' </summary>
 		''' <param name="event">  the AWT event </param>
-		Public Overridable Sub eventDispatched(ByVal [event] As java.awt.AWTEvent) Implements AWTEventListener.eventDispatched
+		Public Overridable Sub eventDispatched(  [event] As java.awt.AWTEvent) Implements AWTEventListener.eventDispatched
 			listener.eventDispatched(event_Renamed)
 		End Sub
 

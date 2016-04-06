@@ -44,7 +44,7 @@ Namespace java.util.function
 		''' <param name="value"> the input argument </param>
 		''' <returns> {@code true} if the input argument matches the predicate,
 		''' otherwise {@code false} </returns>
-		Function test(ByVal value As Integer) As Boolean
+		Function test(  value As Integer) As Boolean
 
 		''' <summary>
 		''' Returns a composed predicate that represents a short-circuiting logical
@@ -61,7 +61,7 @@ Namespace java.util.function
 		''' <returns> a composed predicate that represents the short-circuiting logical
 		''' AND of this predicate and the {@code other} predicate </returns>
 		''' <exception cref="NullPointerException"> if other is null </exception>
-		default Function [and](ByVal other As IntPredicate) As IntPredicate
+		default Function [and](  other As IntPredicate) As IntPredicate
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 			java.util.Objects.requireNonNull(other);
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
@@ -92,7 +92,7 @@ Namespace java.util.function
 		''' <returns> a composed predicate that represents the short-circuiting logical
 		''' OR of this predicate and the {@code other} predicate </returns>
 		''' <exception cref="NullPointerException"> if other is null </exception>
-		default Function [or](ByVal other As IntPredicate) As IntPredicate
+		default Function [or](  other As IntPredicate) As IntPredicate
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 			java.util.Objects.requireNonNull(other);
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:

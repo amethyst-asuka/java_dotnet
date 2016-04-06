@@ -111,7 +111,7 @@ Namespace java.security.cert
 		''' </summary>
 		''' <param name="uri"> the responder URI </param>
 		Public Overridable Property ocspResponder As java.net.URI
-			Set(ByVal uri As java.net.URI)
+			Set(  uri As java.net.URI)
 				Me.ocspResponder = uri
 			End Set
 			Get
@@ -128,7 +128,7 @@ Namespace java.security.cert
 		''' </summary>
 		''' <param name="cert"> the responder's certificate </param>
 		Public Overridable Property ocspResponderCert As X509Certificate
-			Set(ByVal cert As X509Certificate)
+			Set(  cert As X509Certificate)
 				Me.ocspResponderCert = cert
 			End Set
 			Get
@@ -144,7 +144,7 @@ Namespace java.security.cert
 		''' <param name="extensions"> a list of extensions. The list is copied to protect
 		'''        against subsequent modification. </param>
 		Public Overridable Property ocspExtensions As IList(Of Extension)
-			Set(ByVal extensions As IList(Of Extension))
+			Set(  extensions As IList(Of Extension))
 				Me.ocspExtensions = If(extensions Is Nothing, java.util.Collections.emptyList(Of Extension)(), New List(Of Extension)(extensions))
 			End Set
 			Get
@@ -162,7 +162,7 @@ Namespace java.security.cert
 		'''        DER-encoded OCSP response for that certificate. A deep copy of
 		'''        the map is performed to protect against subsequent modification. </param>
 		Public Overridable Property ocspResponses As IDictionary(Of X509Certificate, SByte())
-			Set(ByVal responses As IDictionary(Of X509Certificate, SByte()))
+			Set(  responses As IDictionary(Of X509Certificate, SByte()))
 				If responses Is Nothing Then
 					Me.ocspResponses = java.util.Collections.emptyMap(Of X509Certificate, SByte())()
 				Else
@@ -189,7 +189,7 @@ Namespace java.security.cert
 		''' <param name="options"> a set of revocation options. The set is copied to protect
 		'''        against subsequent modification. </param>
 		Public Overridable Property options As java.util.Set(Of [Option])
-			Set(ByVal options As java.util.Set(Of [Option]))
+			Set(  options As java.util.Set(Of [Option]))
 				Me.options = If(options Is Nothing, java.util.Collections.emptySet(Of [Option])(), New HashSet(Of [Option])(options))
 			End Set
 			Get

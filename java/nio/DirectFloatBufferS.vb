@@ -181,7 +181,7 @@ Namespace java.nio
 
 		' For duplicates and slices
 		'
-		Friend Sub New(ByVal db As sun.nio.ch.DirectBuffer, ByVal mark As Integer, ByVal pos As Integer, ByVal lim As Integer, ByVal cap As Integer, ByVal [off] As Integer) ' package-private
+		Friend Sub New(  db As sun.nio.ch.DirectBuffer,   mark As Integer,   pos As Integer,   lim As Integer,   cap As Integer,   [off] As Integer) ' package-private
 
 			MyBase.New(mark, pos, lim, cap)
 			address = db.address() + [off]
@@ -222,7 +222,7 @@ Namespace java.nio
 			Return address
 		End Function
 
-		Private Function ix(ByVal i As Integer) As Long
+		Private Function ix(  i As Integer) As Long
 			Return address + (CLng(i) << 2)
 		End Function
 
@@ -230,7 +230,7 @@ Namespace java.nio
 			Return Float.intBitsToFloat(Bits.swap(unsafe.getInt(ix(nextGetIndex()))))
 		End Function
 
-		Public Overrides Function [get](ByVal i As Integer) As Single
+		Public Overrides Function [get](  i As Integer) As Single
 			Return Float.intBitsToFloat(Bits.swap(unsafe.getInt(ix(checkIndex(i)))))
 		End Function
 
@@ -240,7 +240,7 @@ Namespace java.nio
 
 
 
-		Public Overrides Function [get](ByVal dst As Single(), ByVal offset As Integer, ByVal length As Integer) As FloatBuffer
+		Public Overrides Function [get](  dst As Single(),   offset As Integer,   length As Integer) As FloatBuffer
 
 			If (CLng(length) << 2) > Bits.JNI_COPY_TO_ARRAY_THRESHOLD Then
 				checkBounds(offset, length, dst.Length)
@@ -269,7 +269,7 @@ Namespace java.nio
 
 
 
-		Public Overrides Function put(ByVal x As Single) As FloatBuffer
+		Public Overrides Function put(  x As Single) As FloatBuffer
 
 			unsafe.putInt(ix(nextPutIndex()), Bits.swap(Float.floatToRawIntBits(x)))
 			Return Me
@@ -278,7 +278,7 @@ Namespace java.nio
 
 		End Function
 
-		Public Overrides Function put(ByVal i As Integer, ByVal x As Single) As FloatBuffer
+		Public Overrides Function put(  i As Integer,   x As Single) As FloatBuffer
 
 			unsafe.putInt(ix(checkIndex(i)), Bits.swap(Float.floatToRawIntBits(x)))
 			Return Me
@@ -287,7 +287,7 @@ Namespace java.nio
 
 		End Function
 
-		Public Overrides Function put(ByVal src As FloatBuffer) As FloatBuffer
+		Public Overrides Function put(  src As FloatBuffer) As FloatBuffer
 
 			If TypeOf src Is DirectFloatBufferS Then
 				If src Is Me Then Throw New IllegalArgumentException
@@ -326,7 +326,7 @@ Namespace java.nio
 
 		End Function
 
-		Public Overrides Function put(ByVal src As Single(), ByVal offset As Integer, ByVal length As Integer) As FloatBuffer
+		Public Overrides Function put(  src As Single(),   offset As Integer,   length As Integer) As FloatBuffer
 
 			If (CLng(length) << 2) > Bits.JNI_COPY_FROM_ARRAY_THRESHOLD Then
 				checkBounds(offset, length, src.Length)

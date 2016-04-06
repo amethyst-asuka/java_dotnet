@@ -45,7 +45,7 @@ Namespace java.util.stream
 		''' <param name="source"> {@code Supplier<Spliterator>} describing the stream source </param>
 		''' <param name="sourceFlags"> the source flags for the stream source, described in
 		''' <seealso cref="StreamOpFlag"/> </param>
-		Friend Sub New(Of T1 As java.util.Spliterator(Of Double?)(ByVal source As java.util.function.Supplier(Of T1), ByVal sourceFlags As Integer, ByVal parallel As Boolean)
+		Friend Sub New(Of T1 As java.util.Spliterator(Of Double?)(  source As java.util.function.Supplier(Of T1),   sourceFlags As Integer,   parallel As Boolean)
 			MyBase.New(source, sourceFlags, parallel)
 		End Sub
 
@@ -55,7 +55,7 @@ Namespace java.util.stream
 		''' <param name="source"> {@code Spliterator} describing the stream source </param>
 		''' <param name="sourceFlags"> the source flags for the stream source, described in
 		''' <seealso cref="StreamOpFlag"/> </param>
-		Friend Sub New(ByVal source As java.util.Spliterator(Of Double?), ByVal sourceFlags As Integer, ByVal parallel As Boolean)
+		Friend Sub New(  source As java.util.Spliterator(Of Double?),   sourceFlags As Integer,   parallel As Boolean)
 			MyBase.New(source, sourceFlags, parallel)
 		End Sub
 
@@ -65,7 +65,7 @@ Namespace java.util.stream
 		''' </summary>
 		''' <param name="upstream"> the upstream element source. </param>
 		''' <param name="opFlags"> the operation flags </param>
-		Friend Sub New(Of T1)(ByVal upstream As AbstractPipeline(Of T1), ByVal opFlags As Integer)
+		Friend Sub New(Of T1)(  upstream As AbstractPipeline(Of T1),   opFlags As Integer)
 			MyBase.New(upstream, opFlags)
 		End Sub
 
@@ -73,7 +73,7 @@ Namespace java.util.stream
 		''' Adapt a {@code Sink<Double> to a {@code DoubleConsumer}, ideally simply
 		''' by casting.
 		''' </summary>
-		Private Shared Function adapt(ByVal sink As Sink(Of Double?)) As java.util.function.DoubleConsumer
+		Private Shared Function adapt(  sink As Sink(Of Double?)) As java.util.function.DoubleConsumer
 			If TypeOf sink Is java.util.function.DoubleConsumer Then
 				Return CType(sink, java.util.function.DoubleConsumer)
 			Else
@@ -89,7 +89,7 @@ Namespace java.util.stream
 		''' The implementation attempts to cast to a Spliterator.OfDouble, and throws
 		''' an exception if this cast is not possible.
 		''' </summary>
-		Private Shared Function adapt(ByVal s As java.util.Spliterator(Of Double?)) As java.util.Spliterator.OfDouble
+		Private Shared Function adapt(  s As java.util.Spliterator(Of Double?)) As java.util.Spliterator.OfDouble
 			If TypeOf s Is java.util.Spliterator.OfDouble Then
 				Return CType(s, java.util.Spliterator.OfDouble)
 			Else
@@ -107,27 +107,27 @@ Namespace java.util.stream
 			End Get
 		End Property
 
-		Friend Overrides Function evaluateToNode(Of P_IN)(ByVal helper As PipelineHelper(Of Double?), ByVal spliterator As java.util.Spliterator(Of P_IN), ByVal flattenTree As Boolean, ByVal generator As java.util.function.IntFunction(Of Double?())) As Node(Of Double?)
+		Friend Overrides Function evaluateToNode(Of P_IN)(  helper As PipelineHelper(Of Double?),   spliterator As java.util.Spliterator(Of P_IN),   flattenTree As Boolean,   generator As java.util.function.IntFunction(Of Double?())) As Node(Of Double?)
 			Return Nodes.collectDouble(helper, spliterator, flattenTree)
 		End Function
 
-		Friend Overrides Function wrap(Of P_IN)(ByVal ph As PipelineHelper(Of Double?), ByVal supplier As java.util.function.Supplier(Of java.util.Spliterator(Of P_IN)), ByVal isParallel As Boolean) As java.util.Spliterator(Of Double?)
+		Friend Overrides Function wrap(Of P_IN)(  ph As PipelineHelper(Of Double?),   supplier As java.util.function.Supplier(Of java.util.Spliterator(Of P_IN)),   isParallel As Boolean) As java.util.Spliterator(Of Double?)
 			Return New StreamSpliterators.DoubleWrappingSpliterator(Of )(ph, supplier, isParallel)
 		End Function
 
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Friend Overrides Function lazySpliterator(Of T1 As java.util.Spliterator(Of Double?)(ByVal supplier As java.util.function.Supplier(Of T1)) As java.util.Spliterator.OfDouble
+		Friend Overrides Function lazySpliterator(Of T1 As java.util.Spliterator(Of Double?)(  supplier As java.util.function.Supplier(Of T1)) As java.util.Spliterator.OfDouble
 			Return New StreamSpliterators.DelegatingSpliterator.OfDouble(CType(supplier, java.util.function.Supplier(Of java.util.Spliterator.OfDouble)))
 		End Function
 
-		Friend Overrides Sub forEachWithCancel(ByVal spliterator As java.util.Spliterator(Of Double?), ByVal sink As Sink(Of Double?))
+		Friend Overrides Sub forEachWithCancel(  spliterator As java.util.Spliterator(Of Double?),   sink As Sink(Of Double?))
 			Dim spl As java.util.Spliterator.OfDouble = adapt(spliterator)
 			Dim adaptedSink As java.util.function.DoubleConsumer = adapt(sink)
 			Do
 			Loop While (Not sink.cancellationRequested()) AndAlso spl.tryAdvance(adaptedSink)
 		End Sub
 
-		Friend Overrides Function makeNodeBuilder(ByVal exactSizeIfKnown As Long, ByVal generator As java.util.function.IntFunction(Of Double?())) As Node.Builder(Of Double?)
+		Friend Overrides Function makeNodeBuilder(  exactSizeIfKnown As Long,   generator As java.util.function.IntFunction(Of Double?())) As Node.Builder(Of Double?)
 			Return Nodes.doubleBuilder(exactSizeIfKnown)
 		End Function
 
@@ -148,7 +148,7 @@ Namespace java.util.stream
 			Return mapToObj(Double?::valueOf)
 		End Function
 
-		Public Overrides Function map(ByVal mapper As java.util.function.DoubleUnaryOperator) As DoubleStream Implements DoubleStream.map
+		Public Overrides Function map(  mapper As java.util.function.DoubleUnaryOperator) As DoubleStream Implements DoubleStream.map
 			java.util.Objects.requireNonNull(mapper)
 			Return New StatelessOpAnonymousInnerClassHelper(Of E_IN)
 		End Function
@@ -156,7 +156,7 @@ Namespace java.util.stream
 		Private Class StatelessOpAnonymousInnerClassHelper(Of E_IN)
 			Inherits StatelessOp(Of E_IN)
 
-			Friend Overrides Function opWrapSink(ByVal flags As Integer, ByVal sink As Sink(Of Double?)) As Sink(Of Double?)
+			Friend Overrides Function opWrapSink(  flags As Integer,   sink As Sink(Of Double?)) As Sink(Of Double?)
 'JAVA TO VB CONVERTER TODO TASK: Anonymous inner classes are not converted to VB if the base type is not defined in the code being converted:
 '				Return New Sink.ChainedDouble<java.lang.Double>(sink)
 	'			{
@@ -168,7 +168,7 @@ Namespace java.util.stream
 			End Function
 		End Class
 
-		Public Overrides Function mapToObj(Of U, T1 As U)(ByVal mapper As java.util.function.DoubleFunction(Of T1)) As Stream(Of U) Implements DoubleStream.mapToObj
+		Public Overrides Function mapToObj(Of U, T1 As U)(  mapper As java.util.function.DoubleFunction(Of T1)) As Stream(Of U) Implements DoubleStream.mapToObj
 			java.util.Objects.requireNonNull(mapper)
 			Return New StatelessOpAnonymousInnerClassHelper(Of E_IN, E_OUT)
 		End Function
@@ -176,7 +176,7 @@ Namespace java.util.stream
 		Private Class StatelessOpAnonymousInnerClassHelper(Of E_IN, E_OUT)
 			Inherits StatelessOp(Of E_IN, E_OUT)
 
-			Friend Overrides Function opWrapSink(ByVal flags As Integer, ByVal sink As Sink(Of U)) As Sink(Of Double?)
+			Friend Overrides Function opWrapSink(  flags As Integer,   sink As Sink(Of U)) As Sink(Of Double?)
 'JAVA TO VB CONVERTER TODO TASK: Anonymous inner classes are not converted to VB if the base type is not defined in the code being converted:
 '				Return New Sink.ChainedDouble<U>(sink)
 	'			{
@@ -188,7 +188,7 @@ Namespace java.util.stream
 			End Function
 		End Class
 
-		Public Overrides Function mapToInt(ByVal mapper As java.util.function.DoubleToIntFunction) As IntStream Implements DoubleStream.mapToInt
+		Public Overrides Function mapToInt(  mapper As java.util.function.DoubleToIntFunction) As IntStream Implements DoubleStream.mapToInt
 			java.util.Objects.requireNonNull(mapper)
 			Return New StatelessOpAnonymousInnerClassHelper(Of E_IN)
 		End Function
@@ -196,7 +196,7 @@ Namespace java.util.stream
 		Private Class StatelessOpAnonymousInnerClassHelper(Of E_IN)
 			Inherits StatelessOp(Of E_IN)
 
-			Friend Overrides Function opWrapSink(ByVal flags As Integer, ByVal sink As Sink(Of Integer?)) As Sink(Of Double?)
+			Friend Overrides Function opWrapSink(  flags As Integer,   sink As Sink(Of Integer?)) As Sink(Of Double?)
 'JAVA TO VB CONVERTER TODO TASK: Anonymous inner classes are not converted to VB if the base type is not defined in the code being converted:
 '				Return New Sink.ChainedDouble<java.lang.Integer>(sink)
 	'			{
@@ -208,7 +208,7 @@ Namespace java.util.stream
 			End Function
 		End Class
 
-		Public Overrides Function mapToLong(ByVal mapper As java.util.function.DoubleToLongFunction) As LongStream Implements DoubleStream.mapToLong
+		Public Overrides Function mapToLong(  mapper As java.util.function.DoubleToLongFunction) As LongStream Implements DoubleStream.mapToLong
 			java.util.Objects.requireNonNull(mapper)
 			Return New StatelessOpAnonymousInnerClassHelper(Of E_IN)
 		End Function
@@ -216,7 +216,7 @@ Namespace java.util.stream
 		Private Class StatelessOpAnonymousInnerClassHelper(Of E_IN)
 			Inherits StatelessOp(Of E_IN)
 
-			Friend Overrides Function opWrapSink(ByVal flags As Integer, ByVal sink As Sink(Of Long?)) As Sink(Of Double?)
+			Friend Overrides Function opWrapSink(  flags As Integer,   sink As Sink(Of Long?)) As Sink(Of Double?)
 'JAVA TO VB CONVERTER TODO TASK: Anonymous inner classes are not converted to VB if the base type is not defined in the code being converted:
 '				Return New Sink.ChainedDouble<java.lang.Long>(sink)
 	'			{
@@ -228,14 +228,14 @@ Namespace java.util.stream
 			End Function
 		End Class
 
-		Public Overrides Function flatMap(Of T1 As DoubleStream)(ByVal mapper As java.util.function.DoubleFunction(Of T1)) As DoubleStream Implements DoubleStream.flatMap
+		Public Overrides Function flatMap(Of T1 As DoubleStream)(  mapper As java.util.function.DoubleFunction(Of T1)) As DoubleStream Implements DoubleStream.flatMap
 			Return New StatelessOpAnonymousInnerClassHelper2(Of E_IN)
 		End Function
 
 		Private Class StatelessOpAnonymousInnerClassHelper2(Of E_IN)
 			Inherits StatelessOp(Of E_IN)
 
-			Friend Overrides Function opWrapSink(ByVal flags As Integer, ByVal sink As Sink(Of Double?)) As Sink(Of Double?)
+			Friend Overrides Function opWrapSink(  flags As Integer,   sink As Sink(Of Double?)) As Sink(Of Double?)
 'JAVA TO VB CONVERTER TODO TASK: Anonymous inner classes are not converted to VB if the base type is not defined in the code being converted:
 '				Return New Sink.ChainedDouble<java.lang.Double>(sink)
 	'			{
@@ -265,12 +265,12 @@ Namespace java.util.stream
 		Private Class StatelessOpAnonymousInnerClassHelper3(Of E_IN)
 			Inherits StatelessOp(Of E_IN)
 
-			Friend Overrides Function opWrapSink(ByVal flags As Integer, ByVal sink As Sink(Of Double?)) As Sink(Of Double?)
+			Friend Overrides Function opWrapSink(  flags As Integer,   sink As Sink(Of Double?)) As Sink(Of Double?)
 				Return sink
 			End Function
 		End Class
 
-		Public Overrides Function filter(ByVal predicate As java.util.function.DoublePredicate) As DoubleStream Implements DoubleStream.filter
+		Public Overrides Function filter(  predicate As java.util.function.DoublePredicate) As DoubleStream Implements DoubleStream.filter
 			java.util.Objects.requireNonNull(predicate)
 			Return New StatelessOpAnonymousInnerClassHelper4(Of E_IN)
 		End Function
@@ -278,7 +278,7 @@ Namespace java.util.stream
 		Private Class StatelessOpAnonymousInnerClassHelper4(Of E_IN)
 			Inherits StatelessOp(Of E_IN)
 
-			Friend Overrides Function opWrapSink(ByVal flags As Integer, ByVal sink As Sink(Of Double?)) As Sink(Of Double?)
+			Friend Overrides Function opWrapSink(  flags As Integer,   sink As Sink(Of Double?)) As Sink(Of Double?)
 'JAVA TO VB CONVERTER TODO TASK: Anonymous inner classes are not converted to VB if the base type is not defined in the code being converted:
 '				Return New Sink.ChainedDouble<java.lang.Double>(sink)
 	'			{
@@ -296,7 +296,7 @@ Namespace java.util.stream
 			End Function
 		End Class
 
-		Public Overrides Function peek(ByVal action As java.util.function.DoubleConsumer) As DoubleStream Implements DoubleStream.peek
+		Public Overrides Function peek(  action As java.util.function.DoubleConsumer) As DoubleStream Implements DoubleStream.peek
 			java.util.Objects.requireNonNull(action)
 			Return New StatelessOpAnonymousInnerClassHelper5(Of E_IN)
 		End Function
@@ -304,7 +304,7 @@ Namespace java.util.stream
 		Private Class StatelessOpAnonymousInnerClassHelper5(Of E_IN)
 			Inherits StatelessOp(Of E_IN)
 
-			Friend Overrides Function opWrapSink(ByVal flags As Integer, ByVal sink As Sink(Of Double?)) As Sink(Of Double?)
+			Friend Overrides Function opWrapSink(  flags As Integer,   sink As Sink(Of Double?)) As Sink(Of Double?)
 'JAVA TO VB CONVERTER TODO TASK: Anonymous inner classes are not converted to VB if the base type is not defined in the code being converted:
 '				Return New Sink.ChainedDouble<java.lang.Double>(sink)
 	'			{
@@ -319,12 +319,12 @@ Namespace java.util.stream
 
 		' Stateful intermediate ops from DoubleStream
 
-		Public Overrides Function limit(ByVal maxSize As Long) As DoubleStream Implements DoubleStream.limit
+		Public Overrides Function limit(  maxSize As Long) As DoubleStream Implements DoubleStream.limit
 			If maxSize < 0 Then Throw New IllegalArgumentException(Convert.ToString(maxSize))
 			Return SliceOps.makeDouble(Me, CLng(0), maxSize)
 		End Function
 
-		Public Overrides Function skip(ByVal n As Long) As DoubleStream Implements DoubleStream.skip
+		Public Overrides Function skip(  n As Long) As DoubleStream Implements DoubleStream.skip
 			If n < 0 Then Throw New IllegalArgumentException(Convert.ToString(n))
 			If n = 0 Then
 				Return Me
@@ -346,11 +346,11 @@ Namespace java.util.stream
 
 		' Terminal ops from DoubleStream
 
-		Public Overrides Sub forEach(ByVal consumer As java.util.function.DoubleConsumer) Implements DoubleStream.forEach
+		Public Overrides Sub forEach(  consumer As java.util.function.DoubleConsumer) Implements DoubleStream.forEach
 			evaluate(ForEachOps.makeDouble(consumer, False))
 		End Sub
 
-		Public Overrides Sub forEachOrdered(ByVal consumer As java.util.function.DoubleConsumer) Implements DoubleStream.forEachOrdered
+		Public Overrides Sub forEachOrdered(  consumer As java.util.function.DoubleConsumer) Implements DoubleStream.forEachOrdered
 			evaluate(ForEachOps.makeDouble(consumer, True))
 		End Sub
 
@@ -408,30 +408,30 @@ Namespace java.util.stream
 			Return collect(java.util.DoubleSummaryStatistics::New, java.util.DoubleSummaryStatistics::accept, java.util.DoubleSummaryStatistics::combine)
 		End Function
 
-		Public Overrides Function reduce(ByVal identity As Double, ByVal op As java.util.function.DoubleBinaryOperator) As Double Implements DoubleStream.reduce
+		Public Overrides Function reduce(  identity As Double,   op As java.util.function.DoubleBinaryOperator) As Double Implements DoubleStream.reduce
 			Return evaluate(ReduceOps.makeDouble(identity, op))
 		End Function
 
-		Public Overrides Function reduce(ByVal op As java.util.function.DoubleBinaryOperator) As java.util.OptionalDouble Implements DoubleStream.reduce
+		Public Overrides Function reduce(  op As java.util.function.DoubleBinaryOperator) As java.util.OptionalDouble Implements DoubleStream.reduce
 			Return evaluate(ReduceOps.makeDouble(op))
 		End Function
 
-		Public Overrides Function collect(Of R)(ByVal supplier As java.util.function.Supplier(Of R), ByVal accumulator As java.util.function.ObjDoubleConsumer(Of R), ByVal combiner As java.util.function.BiConsumer(Of R, R)) As R Implements DoubleStream.collect
+		Public Overrides Function collect(Of R)(  supplier As java.util.function.Supplier(Of R),   accumulator As java.util.function.ObjDoubleConsumer(Of R),   combiner As java.util.function.BiConsumer(Of R, R)) As R Implements DoubleStream.collect
 			Dim [operator] As java.util.function.BinaryOperator(Of R) = (left, right) ->
 				combiner.accept(left, right)
 				Return left
 			Return evaluate(ReduceOps.makeDouble(supplier, accumulator, [operator]))
 		End Function
 
-		Public Overrides Function anyMatch(ByVal predicate As java.util.function.DoublePredicate) As Boolean Implements DoubleStream.anyMatch
+		Public Overrides Function anyMatch(  predicate As java.util.function.DoublePredicate) As Boolean Implements DoubleStream.anyMatch
 			Return evaluate(MatchOps.makeDouble(predicate, MatchOps.MatchKind.ANY))
 		End Function
 
-		Public Overrides Function allMatch(ByVal predicate As java.util.function.DoublePredicate) As Boolean Implements DoubleStream.allMatch
+		Public Overrides Function allMatch(  predicate As java.util.function.DoublePredicate) As Boolean Implements DoubleStream.allMatch
 			Return evaluate(MatchOps.makeDouble(predicate, MatchOps.MatchKind.ALL))
 		End Function
 
-		Public Overrides Function noneMatch(ByVal predicate As java.util.function.DoublePredicate) As Boolean Implements DoubleStream.noneMatch
+		Public Overrides Function noneMatch(  predicate As java.util.function.DoublePredicate) As Boolean Implements DoubleStream.noneMatch
 			Return evaluate(MatchOps.makeDouble(predicate, MatchOps.MatchKind.NONE))
 		End Function
 
@@ -464,7 +464,7 @@ Namespace java.util.stream
 			''' <param name="sourceFlags"> the source flags for the stream source, described
 			'''                    in <seealso cref="StreamOpFlag"/> </param>
 			''' <param name="parallel"> {@code true} if the pipeline is parallel </param>
-			Friend Sub New(Of T1 As java.util.Spliterator(Of Double?)(ByVal source As java.util.function.Supplier(Of T1), ByVal sourceFlags As Integer, ByVal parallel As Boolean)
+			Friend Sub New(Of T1 As java.util.Spliterator(Of Double?)(  source As java.util.function.Supplier(Of T1),   sourceFlags As Integer,   parallel As Boolean)
 				MyBase.New(source, sourceFlags, parallel)
 			End Sub
 
@@ -475,7 +475,7 @@ Namespace java.util.stream
 			''' <param name="sourceFlags"> the source flags for the stream source, described
 			'''                    in <seealso cref="StreamOpFlag"/> </param>
 			''' <param name="parallel"> {@code true} if the pipeline is parallel </param>
-			Friend Sub New(ByVal source As java.util.Spliterator(Of Double?), ByVal sourceFlags As Integer, ByVal parallel As Boolean)
+			Friend Sub New(  source As java.util.Spliterator(Of Double?),   sourceFlags As Integer,   parallel As Boolean)
 				MyBase.New(source, sourceFlags, parallel)
 			End Sub
 
@@ -483,13 +483,13 @@ Namespace java.util.stream
 				Throw New UnsupportedOperationException
 			End Function
 
-			Friend Overrides Function opWrapSink(ByVal flags As Integer, ByVal sink As Sink(Of Double?)) As Sink(Of E_IN)
+			Friend Overrides Function opWrapSink(  flags As Integer,   sink As Sink(Of Double?)) As Sink(Of E_IN)
 				Throw New UnsupportedOperationException
 			End Function
 
 			' Optimized sequential terminal operations for the head of the pipeline
 
-			Public Overrides Sub forEach(ByVal consumer As java.util.function.DoubleConsumer)
+			Public Overrides Sub forEach(  consumer As java.util.function.DoubleConsumer)
 				If Not parallel Then
 					adapt(sourceStageSpliterator()).forEachRemaining(consumer)
 				Else
@@ -497,7 +497,7 @@ Namespace java.util.stream
 				End If
 			End Sub
 
-			Public Overrides Sub forEachOrdered(ByVal consumer As java.util.function.DoubleConsumer)
+			Public Overrides Sub forEachOrdered(  consumer As java.util.function.DoubleConsumer)
 				If Not parallel Then
 					adapt(sourceStageSpliterator()).forEachRemaining(consumer)
 				Else
@@ -522,7 +522,7 @@ Namespace java.util.stream
 			''' <param name="upstream"> the upstream pipeline stage </param>
 			''' <param name="inputShape"> the stream shape for the upstream pipeline stage </param>
 			''' <param name="opFlags"> operation flags for the new stage </param>
-			Friend Sub New(Of T1)(ByVal upstream As AbstractPipeline(Of T1), ByVal inputShape As StreamShape, ByVal opFlags As Integer)
+			Friend Sub New(Of T1)(  upstream As AbstractPipeline(Of T1),   inputShape As StreamShape,   opFlags As Integer)
 				MyBase.New(upstream, opFlags)
 				Debug.Assert(upstream.outputShape = inputShape)
 			End Sub
@@ -547,7 +547,7 @@ Namespace java.util.stream
 			''' <param name="upstream"> the upstream pipeline stage </param>
 			''' <param name="inputShape"> the stream shape for the upstream pipeline stage </param>
 			''' <param name="opFlags"> operation flags for the new stage </param>
-			Friend Sub New(Of T1)(ByVal upstream As AbstractPipeline(Of T1), ByVal inputShape As StreamShape, ByVal opFlags As Integer)
+			Friend Sub New(Of T1)(  upstream As AbstractPipeline(Of T1),   inputShape As StreamShape,   opFlags As Integer)
 				MyBase.New(upstream, opFlags)
 				Debug.Assert(upstream.outputShape = inputShape)
 			End Sub
@@ -556,7 +556,7 @@ Namespace java.util.stream
 				Return True
 			End Function
 
-			Friend MustOverride Overrides Function opEvaluateParallel(Of P_IN)(ByVal helper As PipelineHelper(Of Double?), ByVal spliterator As java.util.Spliterator(Of P_IN), ByVal generator As java.util.function.IntFunction(Of Double?())) As Node(Of Double?)
+			Friend MustOverride Overrides Function opEvaluateParallel(Of P_IN)(  helper As PipelineHelper(Of Double?),   spliterator As java.util.Spliterator(Of P_IN),   generator As java.util.function.IntFunction(Of Double?())) As Node(Of Double?)
 		End Class
 	End Class
 

@@ -95,7 +95,7 @@ Namespace java.awt
 			End Get
 		End Property
 
-		Private Shared Function areScreenDevicesIndependent(ByVal gds As GraphicsDevice()) As Boolean
+		Private Shared Function areScreenDevicesIndependent(  gds As GraphicsDevice()) As Boolean
 			For i As Integer = 0 To gds.Length - 1
 				Dim bounds As Rectangle = gds(i).defaultConfiguration.bounds
 				If bounds.x <> 0 OrElse bounds.y <> 0 Then Return False

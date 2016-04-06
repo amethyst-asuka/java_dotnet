@@ -136,7 +136,7 @@ Namespace java.lang
 		''' </summary>
 		''' <param name="a">   an angle, in radians. </param>
 		''' <returns>  the sine of the argument. </returns>
-		Public Shared Function sin(ByVal a As Double) As Double
+		Public Shared Function sin(  a As Double) As Double
 			Return Math.Sin(a) ' default impl. delegates to StrictMath
 		End Function
 
@@ -150,7 +150,7 @@ Namespace java.lang
 		''' </summary>
 		''' <param name="a">   an angle, in radians. </param>
 		''' <returns>  the cosine of the argument. </returns>
-		Public Shared Function cos(ByVal a As Double) As Double
+		Public Shared Function cos(  a As Double) As Double
 			Return Math.Cos(a) ' default impl. delegates to StrictMath
 		End Function
 
@@ -166,7 +166,7 @@ Namespace java.lang
 		''' </summary>
 		''' <param name="a">   an angle, in radians. </param>
 		''' <returns>  the tangent of the argument. </returns>
-		Public Shared Function tan(ByVal a As Double) As Double
+		Public Shared Function tan(  a As Double) As Double
 			Return Math.Tan(a) ' default impl. delegates to StrictMath
 		End Function
 
@@ -183,7 +183,7 @@ Namespace java.lang
 		''' </summary>
 		''' <param name="a">   the value whose arc sine is to be returned. </param>
 		''' <returns>  the arc sine of the argument. </returns>
-		Public Shared Function asin(ByVal a As Double) As Double
+		Public Shared Function asin(  a As Double) As Double
 			Return Math.Asin(a) ' default impl. delegates to StrictMath
 		End Function
 
@@ -198,7 +198,7 @@ Namespace java.lang
 		''' </summary>
 		''' <param name="a">   the value whose arc cosine is to be returned. </param>
 		''' <returns>  the arc cosine of the argument. </returns>
-		Public Shared Function acos(ByVal a As Double) As Double
+		Public Shared Function acos(  a As Double) As Double
 			Return Math.Acos(a) ' default impl. delegates to StrictMath
 		End Function
 
@@ -214,7 +214,7 @@ Namespace java.lang
 		''' </summary>
 		''' <param name="a">   the value whose arc tangent is to be returned. </param>
 		''' <returns>  the arc tangent of the argument. </returns>
-		Public Shared Function atan(ByVal a As Double) As Double
+		Public Shared Function atan(  a As Double) As Double
 			Return Math.Atan(a) ' default impl. delegates to StrictMath
 		End Function
 
@@ -227,7 +227,7 @@ Namespace java.lang
 		''' <returns>  the measurement of the angle {@code angdeg}
 		'''          in radians.
 		''' @since   1.2 </returns>
-		Public Shared Function toRadians(ByVal angdeg As Double) As Double
+		Public Shared Function toRadians(  angdeg As Double) As Double
 			Return angdeg / 180.0 * PI
 		End Function
 
@@ -242,7 +242,7 @@ Namespace java.lang
 		''' <returns>  the measurement of the angle {@code angrad}
 		'''          in degrees.
 		''' @since   1.2 </returns>
-		Public Shared Function toDegrees(ByVal angrad As Double) As Double
+		Public Shared Function toDegrees(  angrad As Double) As Double
 			Return angrad * 180.0 / PI
 		End Function
 
@@ -261,7 +261,7 @@ Namespace java.lang
 		''' <param name="a">   the exponent to raise <i>e</i> to. </param>
 		''' <returns>  the value <i>e</i><sup>{@code a}</sup>,
 		'''          where <i>e</i> is the base of the natural logarithms. </returns>
-		Public Shared Function exp(ByVal a As Double) As Double
+		Public Shared Function exp(  a As Double) As Double
 			Return Math.Exp(a) ' default impl. delegates to StrictMath
 		End Function
 
@@ -281,7 +281,7 @@ Namespace java.lang
 		''' <param name="a">   a value </param>
 		''' <returns>  the value ln&nbsp;{@code a}, the natural logarithm of
 		'''          {@code a}. </returns>
-		Public Shared Function log(ByVal a As Double) As Double
+		Public Shared Function log(  a As Double) As Double
 			Return Math.Log(a) ' default impl. delegates to StrictMath
 		End Function
 
@@ -305,7 +305,7 @@ Namespace java.lang
 		''' <param name="a">   a value </param>
 		''' <returns>  the base 10 logarithm of  {@code a}.
 		''' @since 1.5 </returns>
-		Public Shared Function log10(ByVal a As Double) As Double
+		Public Shared Function log10(  a As Double) As Double
 			Return Math.Log10(a) ' default impl. delegates to StrictMath
 		End Function
 
@@ -325,7 +325,7 @@ Namespace java.lang
 		''' <param name="a">   a value. </param>
 		''' <returns>  the positive square root of {@code a}.
 		'''          If the argument is NaN or less than zero, the result is NaN. </returns>
-		Public Shared Function sqrt(ByVal a As Double) As Double
+		Public Shared Function sqrt(  a As Double) As Double
 			Return Math.Sqrt(a) ' default impl. delegates to StrictMath
 									   ' Note that hardware sqrt instructions
 									   ' frequently can be directly used by JITs
@@ -359,7 +359,7 @@ Namespace java.lang
 		''' <param name="a">   a value. </param>
 		''' <returns>  the cube root of {@code a}.
 		''' @since 1.5 </returns>
-		Public Shared Function cbrt(ByVal a As Double) As Double
+		Public Shared Function cbrt(  a As Double) As Double
 			Return Math.cbrt(a)
 		End Function
 
@@ -384,7 +384,7 @@ Namespace java.lang
 		''' <param name="f2">   the divisor. </param>
 		''' <returns>  the remainder when {@code f1} is divided by
 		'''          {@code f2}. </returns>
-		Public Shared Function IEEEremainder(ByVal f1 As Double, ByVal f2 As Double) As Double
+		Public Shared Function IEEEremainder(  f1 As Double,   f2 As Double) As Double
 			Return Math.IEEERemainder(f1, f2) ' delegate to StrictMath
 		End Function
 
@@ -406,7 +406,7 @@ Namespace java.lang
 		''' <returns>  the smallest (closest to negative infinity)
 		'''          floating-point value that is greater than or equal to
 		'''          the argument and is equal to a mathematical  java.lang.[Integer]. </returns>
-		Public Shared Function ceil(ByVal a As Double) As Double
+		Public Shared Function ceil(  a As Double) As Double
 			Return Math.Ceiling(a) ' default impl. delegates to StrictMath
 		End Function
 
@@ -424,7 +424,7 @@ Namespace java.lang
 		''' <returns>  the largest (closest to positive infinity)
 		'''          floating-point value that less than or equal to the argument
 		'''          and is equal to a mathematical  java.lang.[Integer]. </returns>
-		Public Shared Function floor(ByVal a As Double) As Double
+		Public Shared Function floor(  a As Double) As Double
 			Return Math.Floor(a) ' default impl. delegates to StrictMath
 		End Function
 
@@ -442,7 +442,7 @@ Namespace java.lang
 		''' <param name="a">   a {@code double} value. </param>
 		''' <returns>  the closest floating-point value to {@code a} that is
 		'''          equal to a mathematical  java.lang.[Integer]. </returns>
-		Public Shared Function rint(ByVal a As Double) As Double
+		Public Shared Function rint(  a As Double) As Double
 			Return Math.rint(a) ' default impl. delegates to StrictMath
 		End Function
 
@@ -497,7 +497,7 @@ Namespace java.lang
 		'''          (<i>r</i>,&nbsp;<i>theta</i>)
 		'''          in polar coordinates that corresponds to the point
 		'''          (<i>x</i>,&nbsp;<i>y</i>) in Cartesian coordinates. </returns>
-		Public Shared Function atan2(ByVal y As Double, ByVal x As Double) As Double
+		Public Shared Function atan2(  y As Double,   x As Double) As Double
 			Return Math.Atan2(y, x) ' default impl. delegates to StrictMath
 		End Function
 
@@ -623,7 +623,7 @@ Namespace java.lang
 		''' <param name="a">   the base. </param>
 		''' <param name="b">   the exponent. </param>
 		''' <returns>  the value {@code a}<sup>{@code b}</sup>. </returns>
-		Public Shared Function pow(ByVal a As Double, ByVal b As Double) As Double
+		Public Shared Function pow(  a As Double,   b As Double) As Double
 			Return Math.Pow(a, b) ' default impl. delegates to StrictMath
 		End Function
 
@@ -646,7 +646,7 @@ Namespace java.lang
 		'''          {@code int} value. </returns>
 		''' <seealso cref=     java.lang.Integer#MAX_VALUE </seealso>
 		''' <seealso cref=     java.lang.Integer#MIN_VALUE </seealso>
-		Public Shared Function round(ByVal a As Single) As Integer
+		Public Shared Function round(  a As Single) As Integer
 			Dim intBits As Integer = Float.floatToRawIntBits(a)
 			Dim biasedExp As Integer = (intBits And sun.misc.FloatConsts.EXP_BIT_MASK) >> (sun.misc.FloatConsts.SIGNIFICAND_WIDTH - 1)
 			Dim shift As Integer = (sun.misc.FloatConsts.SIGNIFICAND_WIDTH - 2 + sun.misc.FloatConsts.EXP_BIAS) - biasedExp
@@ -689,7 +689,7 @@ Namespace java.lang
 		'''          {@code long} value. </returns>
 		''' <seealso cref=     java.lang.Long#MAX_VALUE </seealso>
 		''' <seealso cref=     java.lang.Long#MIN_VALUE </seealso>
-		Public Shared Function round(ByVal a As Double) As Long
+		Public Shared Function round(  a As Double) As Long
 			Dim longBits As Long = java.lang.[Double].doubleToRawLongBits(a)
 			Dim biasedExp As Long = (longBits And sun.misc.DoubleConsts.EXP_BIT_MASK) >> (sun.misc.DoubleConsts.SIGNIFICAND_WIDTH - 1)
 			Dim shift As Long = (sun.misc.DoubleConsts.SIGNIFICAND_WIDTH - 2 + sun.misc.DoubleConsts.EXP_BIAS) - biasedExp
@@ -752,7 +752,7 @@ Namespace java.lang
 		''' <returns> the result </returns>
 		''' <exception cref="ArithmeticException"> if the result overflows an int
 		''' @since 1.8 </exception>
-		Public Shared Function addExact(ByVal x As Integer, ByVal y As Integer) As Integer
+		Public Shared Function addExact(  x As Integer,   y As Integer) As Integer
 			Dim r As Integer = x + y
 			' HD 2-12 Overflow iff both arguments have the opposite sign of the result
 			If ((x Xor r) And (y Xor r)) < 0 Then Throw New ArithmeticException("integer overflow")
@@ -768,7 +768,7 @@ Namespace java.lang
 		''' <returns> the result </returns>
 		''' <exception cref="ArithmeticException"> if the result overflows a long
 		''' @since 1.8 </exception>
-		Public Shared Function addExact(ByVal x As Long, ByVal y As Long) As Long
+		Public Shared Function addExact(  x As Long,   y As Long) As Long
 			Dim r As Long = x + y
 			' HD 2-12 Overflow iff both arguments have the opposite sign of the result
 			If ((x Xor r) And (y Xor r)) < 0 Then Throw New ArithmeticException("long overflow")
@@ -784,7 +784,7 @@ Namespace java.lang
 		''' <returns> the result </returns>
 		''' <exception cref="ArithmeticException"> if the result overflows an int
 		''' @since 1.8 </exception>
-		Public Shared Function subtractExact(ByVal x As Integer, ByVal y As Integer) As Integer
+		Public Shared Function subtractExact(  x As Integer,   y As Integer) As Integer
 			Dim r As Integer = x - y
 			' HD 2-12 Overflow iff the arguments have different signs and
 			' the sign of the result is different than the sign of x
@@ -801,7 +801,7 @@ Namespace java.lang
 		''' <returns> the result </returns>
 		''' <exception cref="ArithmeticException"> if the result overflows a long
 		''' @since 1.8 </exception>
-		Public Shared Function subtractExact(ByVal x As Long, ByVal y As Long) As Long
+		Public Shared Function subtractExact(  x As Long,   y As Long) As Long
 			Dim r As Long = x - y
 			' HD 2-12 Overflow iff the arguments have different signs and
 			' the sign of the result is different than the sign of x
@@ -818,7 +818,7 @@ Namespace java.lang
 		''' <returns> the result </returns>
 		''' <exception cref="ArithmeticException"> if the result overflows an int
 		''' @since 1.8 </exception>
-		Public Shared Function multiplyExact(ByVal x As Integer, ByVal y As Integer) As Integer
+		Public Shared Function multiplyExact(  x As Integer,   y As Integer) As Integer
 			Dim r As Long = CLng(x) * CLng(y)
 			If CInt(r) <> r Then Throw New ArithmeticException("integer overflow")
 			Return CInt(r)
@@ -833,7 +833,7 @@ Namespace java.lang
 		''' <returns> the result </returns>
 		''' <exception cref="ArithmeticException"> if the result overflows a long
 		''' @since 1.8 </exception>
-		Public Shared Function multiplyExact(ByVal x As Long, ByVal y As Long) As Long
+		Public Shared Function multiplyExact(  x As Long,   y As Long) As Long
 			Dim r As Long = x * y
 			Dim ax As Long = Math.Abs(x)
 			Dim ay As Long = Math.Abs(y)
@@ -854,7 +854,7 @@ Namespace java.lang
 		''' <returns> the result </returns>
 		''' <exception cref="ArithmeticException"> if the result overflows an int
 		''' @since 1.8 </exception>
-		Public Shared Function incrementExact(ByVal a As Integer) As Integer
+		Public Shared Function incrementExact(  a As Integer) As Integer
 			If a =  java.lang.[Integer].Max_Value Then Throw New ArithmeticException("integer overflow")
 
 			Return a + 1
@@ -868,7 +868,7 @@ Namespace java.lang
 		''' <returns> the result </returns>
 		''' <exception cref="ArithmeticException"> if the result overflows a long
 		''' @since 1.8 </exception>
-		Public Shared Function incrementExact(ByVal a As Long) As Long
+		Public Shared Function incrementExact(  a As Long) As Long
 			If a = java.lang.[Long].Max_Value Then Throw New ArithmeticException("long overflow")
 
 			Return a + 1L
@@ -882,7 +882,7 @@ Namespace java.lang
 		''' <returns> the result </returns>
 		''' <exception cref="ArithmeticException"> if the result overflows an int
 		''' @since 1.8 </exception>
-		Public Shared Function decrementExact(ByVal a As Integer) As Integer
+		Public Shared Function decrementExact(  a As Integer) As Integer
 			If a =  java.lang.[Integer].MIN_VALUE Then Throw New ArithmeticException("integer overflow")
 
 			Return a - 1
@@ -896,7 +896,7 @@ Namespace java.lang
 		''' <returns> the result </returns>
 		''' <exception cref="ArithmeticException"> if the result overflows a long
 		''' @since 1.8 </exception>
-		Public Shared Function decrementExact(ByVal a As Long) As Long
+		Public Shared Function decrementExact(  a As Long) As Long
 			If a = java.lang.[Long].MIN_VALUE Then Throw New ArithmeticException("long overflow")
 
 			Return a - 1L
@@ -910,7 +910,7 @@ Namespace java.lang
 		''' <returns> the result </returns>
 		''' <exception cref="ArithmeticException"> if the result overflows an int
 		''' @since 1.8 </exception>
-		Public Shared Function negateExact(ByVal a As Integer) As Integer
+		Public Shared Function negateExact(  a As Integer) As Integer
 			If a =  java.lang.[Integer].MIN_VALUE Then Throw New ArithmeticException("integer overflow")
 
 			Return -a
@@ -924,7 +924,7 @@ Namespace java.lang
 		''' <returns> the result </returns>
 		''' <exception cref="ArithmeticException"> if the result overflows a long
 		''' @since 1.8 </exception>
-		Public Shared Function negateExact(ByVal a As Long) As Long
+		Public Shared Function negateExact(  a As Long) As Long
 			If a = java.lang.[Long].MIN_VALUE Then Throw New ArithmeticException("long overflow")
 
 			Return -a
@@ -938,7 +938,7 @@ Namespace java.lang
 		''' <returns> the argument as an int </returns>
 		''' <exception cref="ArithmeticException"> if the {@code argument} overflows an int
 		''' @since 1.8 </exception>
-		Public Shared Function toIntExact(ByVal value As Long) As Integer
+		Public Shared Function toIntExact(  value As Long) As Integer
 			If CInt(value) <> value Then Throw New ArithmeticException("integer overflow")
 			Return CInt(value)
 		End Function
@@ -977,7 +977,7 @@ Namespace java.lang
 		''' <seealso cref= #floorMod(int, int) </seealso>
 		''' <seealso cref= #floor(double)
 		''' @since 1.8 </seealso>
-		Public Shared Function floorDiv(ByVal x As Integer, ByVal y As Integer) As Integer
+		Public Shared Function floorDiv(  x As Integer,   y As Integer) As Integer
 			Dim r As Integer = x \ y
 			' if the signs are different and modulo not zero, round down
 			If (x Xor y) < 0 AndAlso (r * y <> x) Then r -= 1
@@ -1008,7 +1008,7 @@ Namespace java.lang
 		''' <seealso cref= #floorMod(long, long) </seealso>
 		''' <seealso cref= #floor(double)
 		''' @since 1.8 </seealso>
-		Public Shared Function floorDiv(ByVal x As Long, ByVal y As Long) As Long
+		Public Shared Function floorDiv(  x As Long,   y As Long) As Long
 			Dim r As Long = x \ y
 			' if the signs are different and modulo not zero, round down
 			If (x Xor y) < 0 AndAlso (r * y <> x) Then r -= 1
@@ -1058,7 +1058,7 @@ Namespace java.lang
 		''' <exception cref="ArithmeticException"> if the divisor {@code y} is zero </exception>
 		''' <seealso cref= #floorDiv(int, int)
 		''' @since 1.8 </seealso>
-		Public Shared Function floorMod(ByVal x As Integer, ByVal y As Integer) As Integer
+		Public Shared Function floorMod(  x As Integer,   y As Integer) As Integer
 			Dim r As Integer = x - floorDiv(x, y) * y
 			Return r
 		End Function
@@ -1084,7 +1084,7 @@ Namespace java.lang
 		''' <exception cref="ArithmeticException"> if the divisor {@code y} is zero </exception>
 		''' <seealso cref= #floorDiv(long, long)
 		''' @since 1.8 </seealso>
-		Public Shared Function floorMod(ByVal x As Long, ByVal y As Long) As Long
+		Public Shared Function floorMod(  x As Long,   y As Long) As Long
 			Return x - floorDiv(x, y) * y
 		End Function
 
@@ -1100,7 +1100,7 @@ Namespace java.lang
 		''' </summary>
 		''' <param name="a">   the argument whose absolute value is to be determined </param>
 		''' <returns>  the absolute value of the argument. </returns>
-		Public Shared Function abs(ByVal a As Integer) As Integer
+		Public Shared Function abs(  a As Integer) As Integer
 			Return If(a < 0, -a, a)
 		End Function
 
@@ -1116,7 +1116,7 @@ Namespace java.lang
 		''' </summary>
 		''' <param name="a">   the argument whose absolute value is to be determined </param>
 		''' <returns>  the absolute value of the argument. </returns>
-		Public Shared Function abs(ByVal a As Long) As Long
+		Public Shared Function abs(  a As Long) As Long
 			Return If(a < 0, -a, a)
 		End Function
 
@@ -1134,7 +1134,7 @@ Namespace java.lang
 		''' </summary>
 		''' <param name="a">   the argument whose absolute value is to be determined </param>
 		''' <returns>  the absolute value of the argument. </returns>
-		Public Shared Function abs(ByVal a As Single) As Single
+		Public Shared Function abs(  a As Single) As Single
 			Return If(a <= 0.0F, 0.0F - a, a)
 		End Function
 
@@ -1152,7 +1152,7 @@ Namespace java.lang
 		''' </summary>
 		''' <param name="a">   the argument whose absolute value is to be determined </param>
 		''' <returns>  the absolute value of the argument. </returns>
-		Public Shared Function abs(ByVal a As Double) As Double
+		Public Shared Function abs(  a As Double) As Double
 			Return If(a <= 0.0R, 0.0R - a, a)
 		End Function
 
@@ -1165,7 +1165,7 @@ Namespace java.lang
 		''' <param name="a">   an argument. </param>
 		''' <param name="b">   another argument. </param>
 		''' <returns>  the larger of {@code a} and {@code b}. </returns>
-		Public Shared Function max(ByVal a As Integer, ByVal b As Integer) As Integer
+		Public Shared Function max(  a As Integer,   b As Integer) As Integer
 			Return If(a >= b, a, b)
 		End Function
 
@@ -1178,7 +1178,7 @@ Namespace java.lang
 		''' <param name="a">   an argument. </param>
 		''' <param name="b">   another argument. </param>
 		''' <returns>  the larger of {@code a} and {@code b}. </returns>
-		Public Shared Function max(ByVal a As Long, ByVal b As Long) As Long
+		Public Shared Function max(  a As Long,   b As Long) As Long
 			Return If(a >= b, a, b)
 		End Function
 
@@ -1199,7 +1199,7 @@ Namespace java.lang
 		''' <param name="a">   an argument. </param>
 		''' <param name="b">   another argument. </param>
 		''' <returns>  the larger of {@code a} and {@code b}. </returns>
-		Public Shared Function max(ByVal a As Single, ByVal b As Single) As Single
+		Public Shared Function max(  a As Single,   b As Single) As Single
 			If a <> a Then Return a ' a is NaN
 			If (a = 0.0f) AndAlso (b = 0.0f) AndAlso (Float.floatToRawIntBits(a) = negativeZeroFloatBits) Then Return b
 			Return If(a >= b, a, b)
@@ -1218,7 +1218,7 @@ Namespace java.lang
 		''' <param name="a">   an argument. </param>
 		''' <param name="b">   another argument. </param>
 		''' <returns>  the larger of {@code a} and {@code b}. </returns>
-		Public Shared Function max(ByVal a As Double, ByVal b As Double) As Double
+		Public Shared Function max(  a As Double,   b As Double) As Double
 			If a <> a Then Return a ' a is NaN
 			If (a = 0.0R) AndAlso (b = 0.0R) AndAlso (Double.doubleToRawLongBits(a) = negativeZeroDoubleBits) Then Return b
 			Return If(a >= b, a, b)
@@ -1233,7 +1233,7 @@ Namespace java.lang
 		''' <param name="a">   an argument. </param>
 		''' <param name="b">   another argument. </param>
 		''' <returns>  the smaller of {@code a} and {@code b}. </returns>
-		Public Shared Function min(ByVal a As Integer, ByVal b As Integer) As Integer
+		Public Shared Function min(  a As Integer,   b As Integer) As Integer
 			Return If(a <= b, a, b)
 		End Function
 
@@ -1246,7 +1246,7 @@ Namespace java.lang
 		''' <param name="a">   an argument. </param>
 		''' <param name="b">   another argument. </param>
 		''' <returns>  the smaller of {@code a} and {@code b}. </returns>
-		Public Shared Function min(ByVal a As Long, ByVal b As Long) As Long
+		Public Shared Function min(  a As Long,   b As Long) As Long
 			Return If(a <= b, a, b)
 		End Function
 
@@ -1263,7 +1263,7 @@ Namespace java.lang
 		''' <param name="a">   an argument. </param>
 		''' <param name="b">   another argument. </param>
 		''' <returns>  the smaller of {@code a} and {@code b}. </returns>
-		Public Shared Function min(ByVal a As Single, ByVal b As Single) As Single
+		Public Shared Function min(  a As Single,   b As Single) As Single
 			If a <> a Then Return a ' a is NaN
 			If (a = 0.0f) AndAlso (b = 0.0f) AndAlso (Float.floatToRawIntBits(b) = negativeZeroFloatBits) Then Return b
 			Return If(a <= b, a, b)
@@ -1282,7 +1282,7 @@ Namespace java.lang
 		''' <param name="a">   an argument. </param>
 		''' <param name="b">   another argument. </param>
 		''' <returns>  the smaller of {@code a} and {@code b}. </returns>
-		Public Shared Function min(ByVal a As Double, ByVal b As Double) As Double
+		Public Shared Function min(  a As Double,   b As Double) As Double
 			If a <> a Then Return a ' a is NaN
 			If (a = 0.0R) AndAlso (b = 0.0R) AndAlso (Double.doubleToRawLongBits(b) = negativeZeroDoubleBits) Then Return b
 			Return If(a <= b, a, b)
@@ -1310,7 +1310,7 @@ Namespace java.lang
 		''' <returns> the size of an ulp of the argument
 		''' @author Joseph D. Darcy
 		''' @since 1.5 </returns>
-		Public Shared Function ulp(ByVal d As Double) As Double
+		Public Shared Function ulp(  d As Double) As Double
 			Dim exp As Integer = getExponent(d)
 
 			Select Case exp
@@ -1358,7 +1358,7 @@ Namespace java.lang
 		''' <returns> the size of an ulp of the argument
 		''' @author Joseph D. Darcy
 		''' @since 1.5 </returns>
-		Public Shared Function ulp(ByVal f As Single) As Single
+		Public Shared Function ulp(  f As Single) As Single
 			Dim exp As Integer = getExponent(f)
 
 			Select Case exp
@@ -1400,7 +1400,7 @@ Namespace java.lang
 		''' <returns> the signum function of the argument
 		''' @author Joseph D. Darcy
 		''' @since 1.5 </returns>
-		Public Shared Function signum(ByVal d As Double) As Double
+		Public Shared Function signum(  d As Double) As Double
 			Return If(d = 0.0 OrElse java.lang.[Double].IsNaN(d), d, copySign(1.0, d))
 		End Function
 
@@ -1420,7 +1420,7 @@ Namespace java.lang
 		''' <returns> the signum function of the argument
 		''' @author Joseph D. Darcy
 		''' @since 1.5 </returns>
-		Public Shared Function signum(ByVal f As Single) As Single
+		Public Shared Function signum(  f As Single) As Single
 			Return If(f = 0.0f OrElse Float.IsNaN(f), f, copySign(1.0f, f))
 		End Function
 
@@ -1448,7 +1448,7 @@ Namespace java.lang
 		''' <param name="x"> The number whose hyperbolic sine is to be returned. </param>
 		''' <returns>  The hyperbolic sine of {@code x}.
 		''' @since 1.5 </returns>
-		Public Shared Function sinh(ByVal x As Double) As Double
+		Public Shared Function sinh(  x As Double) As Double
 			Return Math.Sinh(x)
 		End Function
 
@@ -1475,7 +1475,7 @@ Namespace java.lang
 		''' <param name="x"> The number whose hyperbolic cosine is to be returned. </param>
 		''' <returns>  The hyperbolic cosine of {@code x}.
 		''' @since 1.5 </returns>
-		Public Shared Function cosh(ByVal x As Double) As Double
+		Public Shared Function cosh(  x As Double) As Double
 			Return Math.Cosh(x)
 		End Function
 
@@ -1514,7 +1514,7 @@ Namespace java.lang
 		''' <param name="x"> The number whose hyperbolic tangent is to be returned. </param>
 		''' <returns>  The hyperbolic tangent of {@code x}.
 		''' @since 1.5 </returns>
-		Public Shared Function tanh(ByVal x As Double) As Double
+		Public Shared Function tanh(  x As Double) As Double
 			Return Math.Tanh(x)
 		End Function
 
@@ -1542,7 +1542,7 @@ Namespace java.lang
 		''' <returns> sqrt(<i>x</i><sup>2</sup>&nbsp;+<i>y</i><sup>2</sup>)
 		''' without intermediate overflow or underflow
 		''' @since 1.5 </returns>
-		Public Shared Function hypot(ByVal x As Double, ByVal y As Double) As Double
+		Public Shared Function hypot(  x As Double,   y As Double) As Double
 			Return Math.hypot(x, y)
 		End Function
 
@@ -1579,7 +1579,7 @@ Namespace java.lang
 		'''              <i>e</i><sup>{@code x}</sup>&nbsp;-1. </param>
 		''' <returns>  the value <i>e</i><sup>{@code x}</sup>&nbsp;-&nbsp;1.
 		''' @since 1.5 </returns>
-		Public Shared Function expm1(ByVal x As Double) As Double
+		Public Shared Function expm1(  x As Double) As Double
 			Return Math.expm1(x)
 		End Function
 
@@ -1615,7 +1615,7 @@ Namespace java.lang
 		''' <returns> the value ln({@code x}&nbsp;+&nbsp;1), the natural
 		''' log of {@code x}&nbsp;+&nbsp;1
 		''' @since 1.5 </returns>
-		Public Shared Function log1p(ByVal x As Double) As Double
+		Public Shared Function log1p(  x As Double) As Double
 			Return Math.log1p(x)
 		End Function
 
@@ -1633,7 +1633,7 @@ Namespace java.lang
 		''' <returns> a value with the magnitude of {@code magnitude}
 		''' and the sign of {@code sign}.
 		''' @since 1.6 </returns>
-		Public Shared Function copySign(ByVal magnitude As Double, ByVal sign As Double) As Double
+		Public Shared Function copySign(  magnitude As Double,   sign As Double) As Double
 			Return java.lang.[Double].longBitsToDouble((Double.doubleToRawLongBits(sign) And (sun.misc.DoubleConsts.SIGN_BIT_MASK)) Or (Double.doubleToRawLongBits(magnitude) And (sun.misc.DoubleConsts.EXP_BIT_MASK Or sun.misc.DoubleConsts.SIGNIF_BIT_MASK)))
 		End Function
 
@@ -1651,7 +1651,7 @@ Namespace java.lang
 		''' <returns> a value with the magnitude of {@code magnitude}
 		''' and the sign of {@code sign}.
 		''' @since 1.6 </returns>
-		Public Shared Function copySign(ByVal magnitude As Single, ByVal sign As Single) As Single
+		Public Shared Function copySign(  magnitude As Single,   sign As Single) As Single
 			Return Float.intBitsToFloat((Float.floatToRawIntBits(sign) And (sun.misc.FloatConsts.SIGN_BIT_MASK)) Or (Float.floatToRawIntBits(magnitude) And (sun.misc.FloatConsts.EXP_BIT_MASK Or sun.misc.FloatConsts.SIGNIF_BIT_MASK)))
 		End Function
 
@@ -1668,7 +1668,7 @@ Namespace java.lang
 		''' <param name="f"> a {@code float} value </param>
 		''' <returns> the unbiased exponent of the argument
 		''' @since 1.6 </returns>
-		Public Shared Function getExponent(ByVal f As Single) As Integer
+		Public Shared Function getExponent(  f As Single) As Integer
 	'        
 	'         * Bitwise convert f to integer, mask out exponent bits, shift
 	'         * to the right and then subtract out float's bias adjust to
@@ -1690,7 +1690,7 @@ Namespace java.lang
 		''' <param name="d"> a {@code double} value </param>
 		''' <returns> the unbiased exponent of the argument
 		''' @since 1.6 </returns>
-		Public Shared Function getExponent(ByVal d As Double) As Integer
+		Public Shared Function getExponent(  d As Double) As Integer
 	'        
 	'         * Bitwise convert d to long, mask out exponent bits, shift
 	'         * to the right and then subtract out double's bias adjust to
@@ -1738,7 +1738,7 @@ Namespace java.lang
 		''' <returns> The floating-point number adjacent to {@code start} in the
 		''' direction of {@code direction}.
 		''' @since 1.6 </returns>
-		Public Shared Function nextAfter(ByVal start As Double, ByVal direction As Double) As Double
+		Public Shared Function nextAfter(  start As Double,   direction As Double) As Double
 	'        
 	'         * The cases:
 	'         *
@@ -1838,7 +1838,7 @@ Namespace java.lang
 		''' <returns> The floating-point number adjacent to {@code start} in the
 		''' direction of {@code direction}.
 		''' @since 1.6 </returns>
-		Public Shared Function nextAfter(ByVal start As Single, ByVal direction As Double) As Single
+		Public Shared Function nextAfter(  start As Single,   direction As Double) As Single
 	'        
 	'         * The cases:
 	'         *
@@ -1924,7 +1924,7 @@ Namespace java.lang
 		''' <returns> The adjacent floating-point value closer to positive
 		''' infinity.
 		''' @since 1.6 </returns>
-		Public Shared Function nextUp(ByVal d As Double) As Double
+		Public Shared Function nextUp(  d As Double) As Double
 			If java.lang.[Double].IsNaN(d) OrElse d = java.lang.[Double].PositiveInfinity Then
 				Return d
 			Else
@@ -1957,7 +1957,7 @@ Namespace java.lang
 		''' <returns> The adjacent floating-point value closer to positive
 		''' infinity.
 		''' @since 1.6 </returns>
-		Public Shared Function nextUp(ByVal f As Single) As Single
+		Public Shared Function nextUp(  f As Single) As Single
 			If Float.IsNaN(f) OrElse f = sun.misc.FloatConsts.POSITIVE_INFINITY Then
 				Return f
 			Else
@@ -1990,7 +1990,7 @@ Namespace java.lang
 		''' <returns> The adjacent floating-point value closer to negative
 		''' infinity.
 		''' @since 1.8 </returns>
-		Public Shared Function nextDown(ByVal d As Double) As Double
+		Public Shared Function nextDown(  d As Double) As Double
 			If java.lang.[Double].IsNaN(d) OrElse d = java.lang.[Double].NegativeInfinity Then
 				Return d
 			Else
@@ -2026,7 +2026,7 @@ Namespace java.lang
 		''' <returns> The adjacent floating-point value closer to negative
 		''' infinity.
 		''' @since 1.8 </returns>
-		Public Shared Function nextDown(ByVal f As Single) As Single
+		Public Shared Function nextDown(  f As Single) As Single
 			If Float.IsNaN(f) OrElse f = Float.NegativeInfinity Then
 				Return f
 			Else
@@ -2067,7 +2067,7 @@ Namespace java.lang
 		''' <param name="scaleFactor"> power of 2 used to scale {@code d} </param>
 		''' <returns> {@code d} &times; 2<sup>{@code scaleFactor}</sup>
 		''' @since 1.6 </returns>
-		Public Shared Function scalb(ByVal d As Double, ByVal scaleFactor As Integer) As Double
+		Public Shared Function scalb(  d As Double,   scaleFactor As Integer) As Double
 	'        
 	'         * This method does not need to be declared strictfp to
 	'         * compute the same correct result on all platforms.  When
@@ -2171,7 +2171,7 @@ Namespace java.lang
 		''' <param name="scaleFactor"> power of 2 used to scale {@code f} </param>
 		''' <returns> {@code f} &times; 2<sup>{@code scaleFactor}</sup>
 		''' @since 1.6 </returns>
-		Public Shared Function scalb(ByVal f As Single, ByVal scaleFactor As Integer) As Single
+		Public Shared Function scalb(  f As Single,   scaleFactor As Integer) As Single
 			' magnitude of a power of two so large that scaling a finite
 			' nonzero value by it would be guaranteed to over or
 			' underflow; due to rounding, scaling down takes takes an
@@ -2200,7 +2200,7 @@ Namespace java.lang
 		''' <summary>
 		''' Returns a floating-point power of two in the normal range.
 		''' </summary>
-		Friend Shared Function powerOfTwoD(ByVal n As Integer) As Double
+		Friend Shared Function powerOfTwoD(  n As Integer) As Double
 			assert(n >= sun.misc.DoubleConsts.MIN_EXPONENT AndAlso n <= sun.misc.DoubleConsts.MAX_EXPONENT)
 			Return java.lang.[Double].longBitsToDouble(((CLng(n) + CLng(Fix(sun.misc.DoubleConsts.EXP_BIAS))) << (sun.misc.DoubleConsts.SIGNIFICAND_WIDTH-1)) And sun.misc.DoubleConsts.EXP_BIT_MASK)
 		End Function
@@ -2208,7 +2208,7 @@ Namespace java.lang
 		''' <summary>
 		''' Returns a floating-point power of two in the normal range.
 		''' </summary>
-		Friend Shared Function powerOfTwoF(ByVal n As Integer) As Single
+		Friend Shared Function powerOfTwoF(  n As Integer) As Single
 			assert(n >= sun.misc.FloatConsts.MIN_EXPONENT AndAlso n <= sun.misc.FloatConsts.MAX_EXPONENT)
 			Return Float.intBitsToFloat(((n + sun.misc.FloatConsts.EXP_BIAS) << (sun.misc.FloatConsts.SIGNIFICAND_WIDTH-1)) And sun.misc.FloatConsts.EXP_BIT_MASK)
 		End Function

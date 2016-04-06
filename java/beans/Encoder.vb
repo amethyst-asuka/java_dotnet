@@ -64,7 +64,7 @@ Namespace java.beans
 		''' <param name="o"> The object to be written to the stream.
 		''' </param>
 		''' <seealso cref= XMLDecoder#readObject </seealso>
-		Protected Friend Overridable Sub writeObject(ByVal o As Object)
+		Protected Friend Overridable Sub writeObject(  o As Object)
 			If o Is Me Then Return
 			Dim info As PersistenceDelegate = getPersistenceDelegate(If(o Is Nothing, Nothing, o.GetType()))
 			info.writeObject(o, Me)
@@ -80,7 +80,7 @@ Namespace java.beans
 		''' </param>
 		''' <seealso cref= #getExceptionListener </seealso>
 		Public Overridable Property exceptionListener As ExceptionListener
-			Set(ByVal exceptionListener As ExceptionListener)
+			Set(  exceptionListener As ExceptionListener)
 				Me.exceptionListener = exceptionListener
 			End Set
 			Get
@@ -89,7 +89,7 @@ Namespace java.beans
 		End Property
 
 
-		Friend Overridable Function getValue(ByVal exp As Expression) As Object
+		Friend Overridable Function getValue(  exp As Expression) As Object
 			Try
 				Return If(exp Is Nothing, Nothing, exp.value)
 			Catch e As Exception
@@ -180,7 +180,7 @@ Namespace java.beans
 		''' <seealso cref= #setPersistenceDelegate </seealso>
 		''' <seealso cref= java.beans.Introspector#getBeanInfo </seealso>
 		''' <seealso cref= java.beans.BeanInfo#getBeanDescriptor </seealso>
-		Public Overridable Function getPersistenceDelegate(ByVal type As [Class]) As PersistenceDelegate
+		Public Overridable Function getPersistenceDelegate(  type As [Class]) As PersistenceDelegate
 			Dim pd As PersistenceDelegate = Me.finder.find(type)
 			If pd Is Nothing Then
 				pd = MetaData.getPersistenceDelegate(type)
@@ -198,7 +198,7 @@ Namespace java.beans
 		''' <seealso cref= #getPersistenceDelegate </seealso>
 		''' <seealso cref= java.beans.Introspector#getBeanInfo </seealso>
 		''' <seealso cref= java.beans.BeanInfo#getBeanDescriptor </seealso>
-		Public Overridable Sub setPersistenceDelegate(ByVal type As [Class], ByVal [delegate] As PersistenceDelegate)
+		Public Overridable Sub setPersistenceDelegate(  type As [Class],   [delegate] As PersistenceDelegate)
 			Me.finder.register(type, [delegate])
 		End Sub
 
@@ -209,7 +209,7 @@ Namespace java.beans
 		''' <returns> The entry that was removed.
 		''' </returns>
 		''' <seealso cref= #get </seealso>
-		Public Overridable Function remove(ByVal oldInstance As Object) As Object
+		Public Overridable Function remove(  oldInstance As Object) As Object
 			Dim exp As Expression = bindings.Remove(oldInstance)
 			Return getValue(exp)
 		End Function
@@ -225,13 +225,13 @@ Namespace java.beans
 		''' </summary>
 		''' <param name="oldInstance"> The instance to be looked up. </param>
 		''' <returns> The object, null if the object has not been seen before. </returns>
-		Public Overridable Function [get](ByVal oldInstance As Object) As Object
+		Public Overridable Function [get](  oldInstance As Object) As Object
 			If oldInstance Is Nothing OrElse oldInstance Is Me OrElse oldInstance.GetType() Is GetType(String) Then Return oldInstance
 			Dim exp As Expression = bindings(oldInstance)
 			Return getValue(exp)
 		End Function
 
-		Private Function writeObject1(ByVal oldInstance As Object) As Object
+		Private Function writeObject1(  oldInstance As Object) As Object
 			Dim o As Object = [get](oldInstance)
 			If o Is Nothing Then
 				writeObject(oldInstance)
@@ -240,7 +240,7 @@ Namespace java.beans
 			Return o
 		End Function
 
-		Private Function cloneStatement(ByVal oldExp As Statement) As Statement
+		Private Function cloneStatement(  oldExp As Statement) As Statement
 			Dim oldTarget As Object = oldExp.target
 			Dim newTarget As Object = writeObject1(oldTarget)
 
@@ -272,7 +272,7 @@ Namespace java.beans
 		''' expression with the results.
 		''' </summary>
 		''' <param name="oldStm"> The expression to be written to the stream. </param>
-		Public Overridable Sub writeStatement(ByVal oldStm As Statement)
+		Public Overridable Sub writeStatement(  oldStm As Statement)
 			' System.out.println("writeStatement: " + oldExp);
 			Dim newStm As Statement = cloneStatement(oldStm)
 			If oldStm.target IsNot Me AndAlso executeStatements Then
@@ -294,7 +294,7 @@ Namespace java.beans
 		''' by calling <code>writeObject</code>.
 		''' </summary>
 		''' <param name="oldExp"> The expression to be written to the stream. </param>
-		Public Overridable Sub writeExpression(ByVal oldExp As Expression)
+		Public Overridable Sub writeExpression(  oldExp As Expression)
 			' System.out.println("Encoder::writeExpression: " + oldExp);
 			Dim oldValue As Object = getValue(oldExp)
 			If [get](oldValue) IsNot Nothing Then Return
@@ -307,12 +307,12 @@ Namespace java.beans
 		End Sub
 
 		' Package private method for setting an attributes table for the encoder
-		Friend Overridable Sub setAttribute(ByVal key As Object, ByVal value As Object)
+		Friend Overridable Sub setAttribute(  key As Object,   value As Object)
 			If attributes Is Nothing Then attributes = New Dictionary(Of )
 			attributes(key) = value
 		End Sub
 
-		Friend Overridable Function getAttribute(ByVal key As Object) As Object
+		Friend Overridable Function getAttribute(  key As Object) As Object
 			If attributes Is Nothing Then Return Nothing
 			Return attributes(key)
 		End Function

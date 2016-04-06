@@ -154,7 +154,7 @@ Namespace java.awt.geom
 			''' <param name="type"> The closure type for the arc:
 			''' <seealso cref="#OPEN"/>, <seealso cref="#CHORD"/>, or <seealso cref="#PIE"/>.
 			''' @since 1.2 </param>
-			Public Sub New(ByVal type As Integer)
+			Public Sub New(  type As Integer)
 				MyBase.New(type)
 			End Sub
 
@@ -175,7 +175,7 @@ Namespace java.awt.geom
 			''' <param name="type"> The closure type for the arc:
 			''' <seealso cref="#OPEN"/>, <seealso cref="#CHORD"/>, or <seealso cref="#PIE"/>.
 			''' @since 1.2 </param>
-			Public Sub New(ByVal x As Single, ByVal y As Single, ByVal w As Single, ByVal h As Single, ByVal start As Single, ByVal extent As Single, ByVal type As Integer)
+			Public Sub New(  x As Single,   y As Single,   w As Single,   h As Single,   start As Single,   extent As Single,   type As Integer)
 				MyBase.New(type)
 				Me.x = x
 				Me.y = y
@@ -197,7 +197,7 @@ Namespace java.awt.geom
 			''' <param name="type"> The closure type for the arc:
 			''' <seealso cref="#OPEN"/>, <seealso cref="#CHORD"/>, or <seealso cref="#PIE"/>.
 			''' @since 1.2 </param>
-			Public Sub New(ByVal ellipseBounds As Rectangle2D, ByVal start As Single, ByVal extent As Single, ByVal type As Integer)
+			Public Sub New(  ellipseBounds As Rectangle2D,   start As Single,   extent As Single,   type As Integer)
 				MyBase.New(type)
 				Me.x = CSng(ellipseBounds.x)
 				Me.y = CSng(ellipseBounds.y)
@@ -271,7 +271,7 @@ Namespace java.awt.geom
                 Get
                     Return CDbl(start)
                 End Get
-                Set(ByVal angSt As Double)
+                Set(  angSt As Double)
                     Me.start = CSng(angSt)
                 End Set
             End Property
@@ -284,7 +284,7 @@ Namespace java.awt.geom
                 Get
                     Return CDbl(extent)
                 End Get
-                Set(ByVal angExt As Double)
+                Set(  angExt As Double)
                     Me.extent = CSng(angExt)
                 End Set
             End Property
@@ -303,7 +303,7 @@ Namespace java.awt.geom
             ''' {@inheritDoc}
             ''' @since 1.2
             ''' </summary>
-            Public Overrides Sub setArc(ByVal x As Double, ByVal y As Double, ByVal w As Double, ByVal h As Double, ByVal angSt As Double, ByVal angExt As Double, ByVal closure As Integer)
+            Public Overrides Sub setArc(  x As Double,   y As Double,   w As Double,   h As Double,   angSt As Double,   angExt As Double,   closure As Integer)
 				Me.arcType = closure
 				Me.x = CSng(x)
 				Me.y = CSng(y)
@@ -317,7 +317,7 @@ Namespace java.awt.geom
             ''' {@inheritDoc}
             ''' @since 1.2
             ''' </summary>
-            Protected Friend Overrides Function makeBounds(ByVal x As Double, ByVal y As Double, ByVal w As Double, ByVal h As Double) As Rectangle2D
+            Protected Friend Overrides Function makeBounds(  x As Double,   y As Double,   w As Double,   h As Double) As Rectangle2D
 				Return New Rectangle2D.Float(CSng(x), CSng(y), CSng(w), CSng(h))
 			End Function
 
@@ -340,7 +340,7 @@ Namespace java.awt.geom
 			''' <seealso cref="#OPEN"/>, <seealso cref="#CHORD"/>, or <seealso cref="#PIE"/>.
 			''' </ol>
 			''' </summary>
-			Private Sub writeObject(ByVal s As java.io.ObjectOutputStream)
+			Private Sub writeObject(  s As java.io.ObjectOutputStream)
 				s.defaultWriteObject()
 
 				s.writeByte(arcType)
@@ -360,7 +360,7 @@ Namespace java.awt.geom
 			''' <seealso cref="#OPEN"/>, <seealso cref="#CHORD"/>, or <seealso cref="#PIE"/>.
 			''' </ol>
 			''' </summary>
-			Private Sub readObject(ByVal s As java.io.ObjectInputStream)
+			Private Sub readObject(  s As java.io.ObjectInputStream)
 				s.defaultReadObject()
 
 				Try
@@ -442,7 +442,7 @@ Namespace java.awt.geom
             ''' <param name="type"> The closure type for the arc:
             ''' <seealso cref="#OPEN"/>, <seealso cref="#CHORD"/>, or <seealso cref="#PIE"/>.
             ''' @since 1.2 </param>
-            Sub New(ByVal type As Integer)
+            Sub New(  type As Integer)
                 MyBase.New(type)
             End Sub
 
@@ -463,7 +463,7 @@ Namespace java.awt.geom
             ''' <param name="type"> The closure type for the arc:
             ''' <seealso cref="#OPEN"/>, <seealso cref="#CHORD"/>, or <seealso cref="#PIE"/>.
             ''' @since 1.2 </param>
-            Sub New(ByVal x As Double, ByVal y As Double, ByVal w As Double, ByVal h As Double, ByVal start As Double, ByVal extent As Double, ByVal type As Integer)
+            Sub New(  x As Double,   y As Double,   w As Double,   h As Double,   start As Double,   extent As Double,   type As Integer)
                 MyBase.New(type)
                 Me.x = x
                 Me.y = y
@@ -485,7 +485,7 @@ Namespace java.awt.geom
             ''' <param name="type"> The closure type for the arc:
             ''' <seealso cref="#OPEN"/>, <seealso cref="#CHORD"/>, or <seealso cref="#PIE"/>.
             ''' @since 1.2 </param>
-            Sub New(ByVal ellipseBounds As Rectangle2D, ByVal start As Double, ByVal extent As Double, ByVal type As Integer)
+            Sub New(  ellipseBounds As Rectangle2D,   start As Double,   extent As Double,   type As Integer)
                 MyBase.New(type)
                 Me.x = ellipseBounds.x
                 Me.y = ellipseBounds.y
@@ -561,7 +561,7 @@ Namespace java.awt.geom
                 Get
                     Return start
                 End Get
-                Set(ByVal angSt As Double)
+                Set(  angSt As Double)
             End Property
 
             ''' <summary>
@@ -574,7 +574,7 @@ Namespace java.awt.geom
                 Get
                     Return extent
                 End Get
-                Set(ByVal angExt As Double)
+                Set(  angExt As Double)
             End Property
 
             ''' <summary>
@@ -591,7 +591,7 @@ Namespace java.awt.geom
             ''' {@inheritDoc}
             ''' @since 1.2
             ''' </summary>
-            Public Overrides Sub setArc(ByVal x As Double, ByVal y As Double, ByVal w As Double, ByVal h As Double, ByVal angSt As Double, ByVal angExt As Double, ByVal closure As Integer)
+            Public Overrides Sub setArc(  x As Double,   y As Double,   w As Double,   h As Double,   angSt As Double,   angExt As Double,   closure As Integer)
                 Me.arcType = closure
                 Me.x = x
                 Me.y = y
@@ -611,7 +611,7 @@ Namespace java.awt.geom
             ''' {@inheritDoc}
             ''' @since 1.2
             ''' </summary>
-            Protected Friend Overrides Function makeBounds(ByVal x As Double, ByVal y As Double, ByVal w As Double, ByVal h As Double) As Rectangle2D
+            Protected Friend Overrides Function makeBounds(  x As Double,   y As Double,   w As Double,   h As Double) As Rectangle2D
                 Return New Rectangle2D.Double(x, y, w, h)
             End Function
 
@@ -634,7 +634,7 @@ Namespace java.awt.geom
             ''' <seealso cref="#OPEN"/>, <seealso cref="#CHORD"/>, or <seealso cref="#PIE"/>.
             ''' </ol>
             ''' </summary>
-            Private Sub writeObject(ByVal s As java.io.ObjectOutputStream)
+            Private Sub writeObject(  s As java.io.ObjectOutputStream)
                 s.defaultWriteObject()
 
                 s.writeByte(arcType)
@@ -654,7 +654,7 @@ Namespace java.awt.geom
             ''' <seealso cref="#OPEN"/>, <seealso cref="#CHORD"/>, or <seealso cref="#PIE"/>.
             ''' </ol>
             ''' </summary>
-            Private Sub readObject(ByVal s As java.io.ObjectInputStream)
+            Private Sub readObject(  s As java.io.ObjectInputStream)
                 s.defaultReadObject()
 
                 Try
@@ -696,7 +696,7 @@ Namespace java.awt.geom
 		''' <seealso cref= java.awt.geom.Arc2D.Float </seealso>
 		''' <seealso cref= java.awt.geom.Arc2D.Double
 		''' @since 1.2 </seealso>
-		Protected Friend Sub New(ByVal type As Integer)
+		Protected Friend Sub New(  type As Integer)
 			arcType = type
 		End Sub
 
@@ -731,7 +731,7 @@ Namespace java.awt.geom
 			Get
 				Return type
 			End Get
-			Set(ByVal type As Integer)
+			Set(  type As Integer)
 		End Property
 
 		''' <summary>
@@ -784,7 +784,7 @@ Namespace java.awt.geom
 		''' <param name="closure"> The closure type for the arc:
 		''' <seealso cref="#OPEN"/>, <seealso cref="#CHORD"/>, or <seealso cref="#PIE"/>.
 		''' @since 1.2 </param>
-		Public MustOverride Sub setArc(ByVal x As Double, ByVal y As Double, ByVal w As Double, ByVal h As Double, ByVal angSt As Double, ByVal angExt As Double, ByVal closure As Integer)
+		Public MustOverride Sub setArc(  x As Double,   y As Double,   w As Double,   h As Double,   angSt As Double,   angExt As Double,   closure As Integer)
 
 		''' <summary>
 		''' Sets the location, size, angular extents, and closure type of
@@ -800,7 +800,7 @@ Namespace java.awt.geom
 		''' <param name="closure"> The closure type for the arc:
 		''' <seealso cref="#OPEN"/>, <seealso cref="#CHORD"/>, or <seealso cref="#PIE"/>.
 		''' @since 1.2 </param>
-		Public Overridable Sub setArc(ByVal loc As Point2D, ByVal size As Dimension2D, ByVal angSt As Double, ByVal angExt As Double, ByVal closure As Integer)
+		Public Overridable Sub setArc(  loc As Point2D,   size As Dimension2D,   angSt As Double,   angExt As Double,   closure As Integer)
 			arcArc(loc.x, loc.y, size.width, size.height, angSt, angExt, closure)
 		End Sub
 
@@ -816,7 +816,7 @@ Namespace java.awt.geom
 		''' <param name="closure"> The closure type for the arc:
 		''' <seealso cref="#OPEN"/>, <seealso cref="#CHORD"/>, or <seealso cref="#PIE"/>.
 		''' @since 1.2 </param>
-		Public Overridable Sub setArc(ByVal rect As Rectangle2D, ByVal angSt As Double, ByVal angExt As Double, ByVal closure As Integer)
+		Public Overridable Sub setArc(  rect As Rectangle2D,   angSt As Double,   angExt As Double,   closure As Integer)
 			arcArc(rect.x, rect.y, rect.width, rect.height, angSt, angExt, closure)
 		End Sub
 
@@ -826,7 +826,7 @@ Namespace java.awt.geom
 		''' <param name="a"> The <CODE>Arc2D</CODE> to use to set the arc's values.
 		''' @since 1.2 </param>
 		Public Overridable Property arc As Arc2D
-			Set(ByVal a As Arc2D)
+			Set(  a As Arc2D)
 				arcArc(a.x, a.y, a.width, a.height, a.angleStart, a.angleExtent, a.type)
 			End Set
 		End Property
@@ -844,7 +844,7 @@ Namespace java.awt.geom
 		''' <param name="closure"> The closure type for the arc:
 		''' <seealso cref="#OPEN"/>, <seealso cref="#CHORD"/>, or <seealso cref="#PIE"/>.
 		''' @since 1.2 </param>
-		Public Overridable Sub setArcByCenter(ByVal x As Double, ByVal y As Double, ByVal radius As Double, ByVal angSt As Double, ByVal angExt As Double, ByVal closure As Integer)
+		Public Overridable Sub setArcByCenter(  x As Double,   y As Double,   radius As Double,   angSt As Double,   angExt As Double,   closure As Integer)
 			arcArc(x - radius, y - radius, radius * 2.0, radius * 2.0, angSt, angExt, closure)
 		End Sub
 
@@ -865,7 +865,7 @@ Namespace java.awt.geom
 		''' of the arc is tangent to the line specified by points (p2, p3). </param>
 		''' <param name="radius"> The radius of the arc.
 		''' @since 1.2 </param>
-		Public Overridable Sub setArcByTangent(ByVal p1 As Point2D, ByVal p2 As Point2D, ByVal p3 As Point2D, ByVal radius As Double)
+		Public Overridable Sub setArcByTangent(  p1 As Point2D,   p2 As Point2D,   p3 As Point2D,   radius As Double)
 			Dim ang1 As Double = System.Math.Atan2(p1.y - p2.y, p1.x - p2.x)
 			Dim ang2 As Double = System.Math.Atan2(p3.y - p2.y, p3.x - p2.x)
 			Dim diff As Double = ang2 - ang1
@@ -909,7 +909,7 @@ Namespace java.awt.geom
 		''' <seealso cref= #getAngleStart
 		''' @since 1.2 </seealso>
 		Public Overridable Property angleStart As Point2D
-			Set(ByVal p As Point2D)
+			Set(  p As Point2D)
 				' Bias the dx and dy by the height and width of the oval.
 				Dim dx As Double = height * (p.x - centerX)
 				Dim dy As Double = width * (p.y - centerY)
@@ -931,7 +931,7 @@ Namespace java.awt.geom
 		''' <param name="x2"> The X coordinate of the arc's ending point. </param>
 		''' <param name="y2"> The Y coordinate of the arc's ending point.
 		''' @since 1.2 </param>
-		Public Overridable Sub setAngles(ByVal x1 As Double, ByVal y1 As Double, ByVal x2 As Double, ByVal y2 As Double)
+		Public Overridable Sub setAngles(  x1 As Double,   y1 As Double,   x2 As Double,   y2 As Double)
 			Dim x_Renamed As Double = centerX
 			Dim y_Renamed As Double = centerY
 			Dim w As Double = width
@@ -961,7 +961,7 @@ Namespace java.awt.geom
 		''' <param name="p2"> The <CODE>Point2D</CODE> that defines the arc's
 		''' ending point.
 		''' @since 1.2 </param>
-		Public Overridable Sub setAngles(ByVal p1 As Point2D, ByVal p2 As Point2D)
+		Public Overridable Sub setAngles(  p1 As Point2D,   p2 As Point2D)
 			anglesles(p1.x, p1.y, p2.x, p2.y)
 		End Sub
 
@@ -977,7 +977,7 @@ Namespace java.awt.geom
 		''' 
 		''' @since 1.2
 		''' </summary>
-		Public Overrides Sub setFrame(ByVal x As Double, ByVal y As Double, ByVal w As Double, ByVal h As Double)
+		Public Overrides Sub setFrame(  x As Double,   y As Double,   w As Double,   h As Double)
 			arcArc(x, y, w, h, angleStart, angleExtent, type)
 		End Sub
 
@@ -1056,12 +1056,12 @@ Namespace java.awt.geom
 		''' <returns> a <code>Rectangle2D</code> that is the framing rectangle
 		'''     of this arc.
 		''' @since 1.2 </returns>
-		Protected Friend MustOverride Function makeBounds(ByVal x As Double, ByVal y As Double, ByVal w As Double, ByVal h As Double) As Rectangle2D
+		Protected Friend MustOverride Function makeBounds(  x As Double,   y As Double,   w As Double,   h As Double) As Rectangle2D
 
 	'    
 	'     * Normalizes the specified angle into the range -180 to 180.
 	'     
-		Friend Shared Function normalizeDegrees(ByVal angle As Double) As Double
+		Friend Shared Function normalizeDegrees(  angle As Double) As Double
 			If angle > 180.0 Then
 				If angle <= (180.0 + 360.0) Then
 					angle = angle - 360.0
@@ -1091,7 +1091,7 @@ Namespace java.awt.geom
 		''' <returns> <CODE>true</CODE> if the arc contains the angle,
 		''' <CODE>false</CODE> if the arc doesn't contain the angle.
 		''' @since 1.2 </returns>
-		Public Overridable Function containsAngle(ByVal angle As Double) As Boolean
+		Public Overridable Function containsAngle(  angle As Double) As Boolean
 			Dim angExt As Double = angleExtent
 			Dim backwards As Boolean = (angExt < 0.0)
 			If backwards Then angExt = -angExt
@@ -1115,7 +1115,7 @@ Namespace java.awt.geom
 		''' the arc, <CODE>false</CODE> if the point lies outside of the
 		''' arc's bounds.
 		''' @since 1.2 </returns>
-		Public Overrides Function contains(ByVal x As Double, ByVal y As Double) As Boolean
+		Public Overrides Function contains(  x As Double,   y As Double) As Boolean
 			' Normalize the coordinates compared to the ellipse
 			' having a center at 0,0 and a radius of 0.5.
 			Dim ellw As Double = width
@@ -1162,7 +1162,7 @@ Namespace java.awt.geom
 		''' <returns> <CODE>true</CODE> if the arc intersects the rectangle,
 		''' <CODE>false</CODE> if the arc doesn't intersect the rectangle.
 		''' @since 1.2 </returns>
-		Public Overrides Function intersects(ByVal x As Double, ByVal y As Double, ByVal w As Double, ByVal h As Double) As Boolean
+		Public Overrides Function intersects(  x As Double,   y As Double,   w As Double,   h As Double) As Boolean
 
 			Dim aw As Double = width
 			Dim ah As Double = height
@@ -1242,7 +1242,7 @@ Namespace java.awt.geom
 		''' <returns> <CODE>true</CODE> if the arc contains the rectangle,
 		''' <CODE>false</CODE> if the arc doesn't contain the rectangle.
 		''' @since 1.2 </returns>
-		Public Overrides Function contains(ByVal x As Double, ByVal y As Double, ByVal w As Double, ByVal h As Double) As Boolean
+		Public Overrides Function contains(  x As Double,   y As Double,   w As Double,   h As Double) As Boolean
 			Return contains(x, y, w, h, Nothing)
 		End Function
 
@@ -1255,11 +1255,11 @@ Namespace java.awt.geom
 		''' <returns> <CODE>true</CODE> if the arc contains the rectangle,
 		''' <CODE>false</CODE> if the arc doesn't contain the rectangle.
 		''' @since 1.2 </returns>
-		Public Overrides Function contains(ByVal r As Rectangle2D) As Boolean
+		Public Overrides Function contains(  r As Rectangle2D) As Boolean
 			Return contains(r.x, r.y, r.width, r.height, r)
 		End Function
 
-		Private Function contains(ByVal x As Double, ByVal y As Double, ByVal w As Double, ByVal h As Double, ByVal origrect As Rectangle2D) As Boolean
+		Private Function contains(  x As Double,   y As Double,   w As Double,   h As Double,   origrect As Rectangle2D) As Boolean
 			If Not(contains(x, y) AndAlso contains(x + w, y) AndAlso contains(x, y + h) AndAlso contains(x + w, y + h)) Then Return False
 			' If the shape is convex then we have done all the testing
 			' we need.  Only PIE arcs can be concave and then only if
@@ -1301,7 +1301,7 @@ Namespace java.awt.geom
 		''' </param>
 		''' <returns> A <CODE>PathIterator</CODE> that defines the arc's boundary.
 		''' @since 1.2 </returns>
-		Public Overridable Function getPathIterator(ByVal at As AffineTransform) As PathIterator
+		Public Overridable Function getPathIterator(  at As AffineTransform) As PathIterator
 			Return New ArcIterator(Me, at)
 		End Function
 
@@ -1333,7 +1333,7 @@ Namespace java.awt.geom
 		'''          of <code>Arc2D</code> and has the same values;
 		'''          <code>false</code> otherwise.
 		''' @since 1.6 </returns>
-		Public Overrides Function Equals(ByVal obj As Object) As Boolean
+		Public Overrides Function Equals(  obj As Object) As Boolean
 			If obj Is Me Then Return True
 			If TypeOf obj Is Arc2D Then
 				Dim a2d As Arc2D = CType(obj, Arc2D)

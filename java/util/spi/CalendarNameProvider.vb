@@ -231,7 +231,7 @@ Namespace java.util.spi
 		''' <seealso cref= TimeZoneNameProvider </seealso>
 		''' <seealso cref= java.util.Calendar#get(int) </seealso>
 		''' <seealso cref= java.util.Calendar#getDisplayName(int, int, Locale) </seealso>
-		Public MustOverride Function getDisplayName(ByVal calendarType As String, ByVal field As Integer, ByVal value As Integer, ByVal style As Integer, ByVal locale As java.util.Locale) As String
+		Public MustOverride Function getDisplayName(  calendarType As String,   field As Integer,   value As Integer,   style As Integer,   locale As java.util.Locale) As String
 
 		''' <summary>
 		''' Returns a {@code Map} containing all string representations (display
@@ -281,7 +281,7 @@ Namespace java.util.spi
 		''' <exception cref="NullPointerException">
 		'''         if {@code locale} is {@code null} </exception>
 		''' <seealso cref= Calendar#getDisplayNames(int, int, Locale) </seealso>
-		Public MustOverride Function getDisplayNames(ByVal calendarType As String, ByVal field As Integer, ByVal style As Integer, ByVal locale As java.util.Locale) As IDictionary(Of String, Integer?)
+		Public MustOverride Function getDisplayNames(  calendarType As String,   field As Integer,   style As Integer,   locale As java.util.Locale) As IDictionary(Of String, Integer?)
 	End Class
 
 End Namespace

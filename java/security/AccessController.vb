@@ -292,7 +292,7 @@ Namespace java.security
         ''' <seealso cref= #doPrivilegedWithCombiner(PrivilegedAction) </seealso>
         ''' <seealso cref= java.security.DomainCombiner </seealso>
         <DllImport("unknown")>
-        Public Shared Function doPrivileged(Of T)(ByVal action As PrivilegedAction(Of T)) As T
+        Public Shared Function doPrivileged(Of T)(  action As PrivilegedAction(Of T)) As T
         End Function
 
         ''' <summary>
@@ -320,7 +320,7 @@ Namespace java.security
         ''' 
         ''' @since 1.6 </seealso>
         'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-        Public Shared Function doPrivilegedWithCombiner(Of T)(ByVal action As PrivilegedAction(Of T)) As T
+        Public Shared Function doPrivilegedWithCombiner(Of T)(  action As PrivilegedAction(Of T)) As T
 			Dim acc As AccessControlContext = stackAccessControlContext
 			If acc Is Nothing Then Return AccessController.doPrivileged(action)
 			Dim dc As DomainCombiner = acc.assignedCombiner
@@ -363,7 +363,7 @@ Namespace java.security
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Public Shared Function doPrivileged(ByVal action As PrivilegedAction(Of T), ByVal context As AccessControlContext) As T(Of T)
+		Public Shared Function doPrivileged(  action As PrivilegedAction(Of T),   context As AccessControlContext) As T(Of T)
 		End Function
 
 
@@ -411,7 +411,7 @@ Namespace java.security
 		''' 
 		''' @since 1.8 </seealso>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Shared Function doPrivileged(Of T)(ByVal action As PrivilegedAction(Of T), ByVal context As AccessControlContext, ParamArray ByVal perms As Permission()) As T
+		Public Shared Function doPrivileged(Of T)(  action As PrivilegedAction(Of T),   context As AccessControlContext, ParamArray   perms As Permission()) As T
 
 			Dim parent As AccessControlContext = context
 			If perms Is Nothing Then Throw New NullPointerException("null permissions parameter")
@@ -467,7 +467,7 @@ Namespace java.security
         ''' <seealso cref= java.security.DomainCombiner
         ''' 
         ''' @since 1.8 </seealso>
-        Public Shared Function doPrivilegedWithCombiner(Of T)(ByVal action As PrivilegedAction(Of T), ByVal context As AccessControlContext, ParamArray ByVal perms As Permission()) As T
+        Public Shared Function doPrivilegedWithCombiner(Of T)(  action As PrivilegedAction(Of T),   context As AccessControlContext, ParamArray   perms As Permission()) As T
 
             Dim parent As AccessControlContext = context
             Dim dc As DomainCombiner = parent.combiner
@@ -506,7 +506,7 @@ Namespace java.security
         'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
         'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
         <DllImport("unknown")> _
-		Public Shared Function doPrivileged(ByVal action As PrivilegedExceptionAction(Of T)) As T(Of T)
+		Public Shared Function doPrivileged(  action As PrivilegedExceptionAction(Of T)) As T(Of T)
 		End Function
 
 
@@ -538,7 +538,7 @@ Namespace java.security
 		''' 
 		''' @since 1.6 </seealso>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Shared Function doPrivilegedWithCombiner(Of T)(ByVal action As PrivilegedExceptionAction(Of T)) As T
+		Public Shared Function doPrivilegedWithCombiner(Of T)(  action As PrivilegedExceptionAction(Of T)) As T
 			Dim acc As AccessControlContext = stackAccessControlContext
 			If acc Is Nothing Then Return AccessController.doPrivileged(action)
 			Dim dc As DomainCombiner = acc.assignedCombiner
@@ -548,14 +548,14 @@ Namespace java.security
 		''' <summary>
 		''' preserve the combiner across the doPrivileged call
 		''' </summary>
-		Private Shared Function preserveCombiner(ByVal combiner As DomainCombiner, ByVal caller As [Class]) As AccessControlContext
+		Private Shared Function preserveCombiner(  combiner As DomainCombiner,   caller As [Class]) As AccessControlContext
 			Return createWrapper(combiner, caller, Nothing, Nothing, Nothing)
 		End Function
 
 		''' <summary>
 		''' Create a wrapper to contain the limited privilege scope data.
 		''' </summary>
-		Private Shared Function createWrapper(ByVal combiner As DomainCombiner, ByVal caller As [Class], ByVal parent As AccessControlContext, ByVal context As AccessControlContext, ByVal perms As Permission()) As AccessControlContext
+		Private Shared Function createWrapper(  combiner As DomainCombiner,   caller As [Class],   parent As AccessControlContext,   context As AccessControlContext,   perms As Permission()) As AccessControlContext
 			Dim callerPD_Renamed As ProtectionDomain = getCallerPD(caller)
 			' check if caller is authorized to create context
 			If context IsNot Nothing AndAlso (Not context.authorized) AndAlso System.securityManager IsNot Nothing AndAlso (Not callerPD_Renamed.impliesCreateAccessControlContext()) Then
@@ -566,7 +566,7 @@ Namespace java.security
 			End If
 		End Function
 
-		Private Shared Function getCallerPD(ByVal caller As [Class]) As ProtectionDomain
+		Private Shared Function getCallerPD(  caller As [Class]) As ProtectionDomain
 			Dim callerPd_Renamed As ProtectionDomain = doPrivileged(New PrivilegedActionAnonymousInnerClassHelper(Of T)
 
 			Return callerPd_Renamed
@@ -618,7 +618,7 @@ Namespace java.security
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Public Shared Function doPrivileged(ByVal action As PrivilegedExceptionAction(Of T), ByVal context As AccessControlContext) As T(Of T)
+		Public Shared Function doPrivileged(  action As PrivilegedExceptionAction(Of T),   context As AccessControlContext) As T(Of T)
 		End Function
 
 
@@ -668,7 +668,7 @@ Namespace java.security
 		''' 
 		''' @since 1.8 </seealso>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Shared Function doPrivileged(Of T)(ByVal action As PrivilegedExceptionAction(Of T), ByVal context As AccessControlContext, ParamArray ByVal perms As Permission()) As T
+		Public Shared Function doPrivileged(Of T)(  action As PrivilegedExceptionAction(Of T),   context As AccessControlContext, ParamArray   perms As Permission()) As T
 			Dim parent As AccessControlContext = context
 			If perms Is Nothing Then Throw New NullPointerException("null permissions parameter")
             Dim caller As [Class] = sun.reflect.Reflection.callerClass
@@ -726,7 +726,7 @@ Namespace java.security
 		''' 
 		''' @since 1.8 </seealso>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Shared Function doPrivilegedWithCombiner(Of T)(ByVal action As PrivilegedExceptionAction(Of T), ByVal context As AccessControlContext, ParamArray ByVal perms As Permission()) As T
+		Public Shared Function doPrivilegedWithCombiner(Of T)(  action As PrivilegedExceptionAction(Of T),   context As AccessControlContext, ParamArray   perms As Permission()) As T
 			Dim parent As AccessControlContext = context
 			Dim dc As DomainCombiner = parent.combiner
 			If dc Is Nothing AndAlso context IsNot Nothing Then dc = context.combiner
@@ -801,7 +801,7 @@ Namespace java.security
         '''            is {@code null} and is checked based on the
         '''            security policy currently in effect. </exception>
 
-        Public Shared Sub checkPermission(ByVal perm As Permission)
+        Public Shared Sub checkPermission(  perm As Permission)
 			'System.err.println("checkPermission "+perm);
 			'Thread.currentThread().dumpStack();
 

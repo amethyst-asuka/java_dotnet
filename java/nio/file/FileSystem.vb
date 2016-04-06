@@ -277,7 +277,7 @@ Namespace java.nio.file
 		''' </returns>
 		''' <exception cref="InvalidPathException">
 		'''          If the path string cannot be converted </exception>
-		Public MustOverride Function getPath(ByVal first As String, ParamArray ByVal more As String()) As Path
+		Public MustOverride Function getPath(  first As String, ParamArray   more As String()) As Path
 
 		''' <summary>
 		''' Returns a {@code PathMatcher} that performs match operations on the
@@ -412,7 +412,7 @@ Namespace java.nio.file
 		'''          If the pattern syntax is not known to the implementation
 		''' </exception>
 		''' <seealso cref= Files#newDirectoryStream(Path,String) </seealso>
-		Public MustOverride Function getPathMatcher(ByVal syntaxAndPattern As String) As PathMatcher
+		Public MustOverride Function getPathMatcher(  syntaxAndPattern As String) As PathMatcher
 
 		''' <summary>
 		''' Returns the {@code UserPrincipalLookupService} for this file system

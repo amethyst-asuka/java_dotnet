@@ -96,7 +96,7 @@ Namespace java.io
 		''' <param name="sz">   Input-buffer size
 		''' </param>
 		''' <exception cref="IllegalArgumentException">  If {@code sz <= 0} </exception>
-		Public Sub New(ByVal [in] As Reader, ByVal sz As Integer)
+		Public Sub New(  [in] As Reader,   sz As Integer)
 			MyBase.New([in])
 			If sz <= 0 Then Throw New IllegalArgumentException("Buffer size <= 0")
 			Me.in = [in]
@@ -110,7 +110,7 @@ Namespace java.io
 		''' input buffer.
 		''' </summary>
 		''' <param name="in">   A Reader </param>
-		Public Sub New(ByVal [in] As Reader)
+		Public Sub New(  [in] As Reader)
 			Me.New([in], defaultCharBufferSize)
 		End Sub
 
@@ -198,7 +198,7 @@ Namespace java.io
 		''' Reads characters into a portion of an array, reading from the underlying
 		''' stream if necessary.
 		''' </summary>
-		Private Function read1(ByVal cbuf As Char(), ByVal [off] As Integer, ByVal len As Integer) As Integer
+		Private Function read1(  cbuf As Char(),   [off] As Integer,   len As Integer) As Integer
 			If nextChar >= nChars Then
 	'             If the requested length is at least as large as the buffer, and
 	'               if there is no mark/reset activity, and if line feeds are not

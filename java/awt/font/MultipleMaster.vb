@@ -72,7 +72,7 @@ Namespace java.awt.font
 	  ''' <returns> a <seealso cref="Font"/> object that is an instance of
 	  ''' <code>MultipleMaster</code> and is based on the design axis values
 	  ''' provided by <code>axes</code>. </returns>
-	  Function deriveMMFont(ByVal axes As Single()) As java.awt.Font
+	  Function deriveMMFont(  axes As Single()) As java.awt.Font
 
 	  ''' <summary>
 	  ''' Creates a new instance of a multiple master font based on detailed metric
@@ -88,7 +88,7 @@ Namespace java.awt.font
 	  ''' <returns> a <code>Font</code> object that is an instance of
 	  ''' <code>MultipleMaster</code> and is based on the specified metric
 	  ''' information. </returns>
-	  Function deriveMMFont(ByVal glyphWidths As Single(), ByVal avgStemWidth As Single, ByVal typicalCapHeight As Single, ByVal typicalXHeight As Single, ByVal italicAngle As Single) As java.awt.Font
+	  Function deriveMMFont(  glyphWidths As Single(),   avgStemWidth As Single,   typicalCapHeight As Single,   typicalXHeight As Single,   italicAngle As Single) As java.awt.Font
 
 
 	End Interface

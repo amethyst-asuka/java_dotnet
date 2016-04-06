@@ -286,7 +286,7 @@ Namespace java.text
 		''' 5 and 8, respectively, for the first occurrence of the timezone
 		''' pattern character 'z'. </param>
 		''' <seealso cref= java.text.Format </seealso>
-		Public NotOverridable Overrides Function format(ByVal obj As Object, ByVal toAppendTo As StringBuffer, ByVal fieldPosition As FieldPosition) As StringBuffer
+		Public NotOverridable Overrides Function format(  obj As Object,   toAppendTo As StringBuffer,   fieldPosition As FieldPosition) As StringBuffer
 			If TypeOf obj Is DateTime? Then
 				Return format(CDate(obj), toAppendTo, fieldPosition)
 			ElseIf TypeOf obj Is Number Then
@@ -317,13 +317,13 @@ Namespace java.text
 		''' 5 and 8, respectively, for the first occurrence of the timezone
 		''' pattern character 'z'. </param>
 		''' <returns> the string buffer passed in as toAppendTo, with formatted text appended. </returns>
-		Public MustOverride Function format(ByVal [date] As DateTime?, ByVal toAppendTo As StringBuffer, ByVal fieldPosition As FieldPosition) As StringBuffer
+		Public MustOverride Function format(  [date] As DateTime?,   toAppendTo As StringBuffer,   fieldPosition As FieldPosition) As StringBuffer
 
 		''' <summary>
 		''' Formats a Date into a date/time string. </summary>
 		''' <param name="date"> the time value to be formatted into a time string. </param>
 		''' <returns> the formatted time string. </returns>
-		Public Function format(ByVal [date] As DateTime?) As String
+		Public Function format(  [date] As DateTime?) As String
 			Return format(date_Renamed, New StringBuffer, DontCareFieldPosition.INSTANCE).ToString()
 		End Function
 
@@ -338,7 +338,7 @@ Namespace java.text
 		''' <returns> A <code>Date</code> parsed from the string. </returns>
 		''' <exception cref="ParseException"> if the beginning of the specified string
 		'''            cannot be parsed. </exception>
-		Public Overridable Function parse(ByVal source As String) As DateTime?
+		Public Overridable Function parse(  source As String) As DateTime?
 			Dim pos As New ParsePosition(0)
 			Dim result As DateTime? = parse(source, pos)
 			If pos.index = 0 Then Throw New ParseException("Unparseable date: """ & source & """", pos.errorIndex)
@@ -370,7 +370,7 @@ Namespace java.text
 		'''              start position if the parse failed.
 		''' </param>
 		''' <returns>      A {@code Date}, or {@code null} if the input could not be parsed </returns>
-		Public MustOverride Function parse(ByVal source As String, ByVal pos As ParsePosition) As DateTime?
+		Public MustOverride Function parse(  source As String,   pos As ParsePosition) As DateTime?
 
 		''' <summary>
 		''' Parses text from a string to produce a <code>Date</code>.
@@ -395,7 +395,7 @@ Namespace java.text
 		''' <returns> A <code>Date</code> parsed from the string. In case of
 		'''         error, returns null. </returns>
 		''' <exception cref="NullPointerException"> if <code>pos</code> is null. </exception>
-		Public Overrides Function parseObject(ByVal source As String, ByVal pos As ParsePosition) As Object
+		Public Overrides Function parseObject(  source As String,   pos As ParsePosition) As Object
 			Return parse(source, pos)
 		End Function
 
@@ -446,7 +446,7 @@ Namespace java.text
 		''' <param name="style"> the given formatting style. For example,
 		''' SHORT for "h:mm a" in the US locale. </param>
 		''' <returns> a time formatter. </returns>
-		Public Shared Function getTimeInstance(ByVal style As Integer) As DateFormat
+		Public Shared Function getTimeInstance(  style As Integer) As DateFormat
 			Return [get](style, 0, 1, java.util.Locale.getDefault(java.util.Locale.Category.FORMAT))
 		End Function
 
@@ -457,7 +457,7 @@ Namespace java.text
 		''' SHORT for "h:mm a" in the US locale. </param>
 		''' <param name="aLocale"> the given locale. </param>
 		''' <returns> a time formatter. </returns>
-		Public Shared Function getTimeInstance(ByVal style As Integer, ByVal aLocale As java.util.Locale) As DateFormat
+		Public Shared Function getTimeInstance(  style As Integer,   aLocale As java.util.Locale) As DateFormat
 			Return [get](style, 0, 1, aLocale)
 		End Function
 
@@ -487,7 +487,7 @@ Namespace java.text
 		''' <param name="style"> the given formatting style. For example,
 		''' SHORT for "M/d/yy" in the US locale. </param>
 		''' <returns> a date formatter. </returns>
-		Public Shared Function getDateInstance(ByVal style As Integer) As DateFormat
+		Public Shared Function getDateInstance(  style As Integer) As DateFormat
 			Return [get](0, style, 2, java.util.Locale.getDefault(java.util.Locale.Category.FORMAT))
 		End Function
 
@@ -498,7 +498,7 @@ Namespace java.text
 		''' SHORT for "M/d/yy" in the US locale. </param>
 		''' <param name="aLocale"> the given locale. </param>
 		''' <returns> a date formatter. </returns>
-		Public Shared Function getDateInstance(ByVal style As Integer, ByVal aLocale As java.util.Locale) As DateFormat
+		Public Shared Function getDateInstance(  style As Integer,   aLocale As java.util.Locale) As DateFormat
 			Return [get](0, style, 2, aLocale)
 		End Function
 
@@ -530,7 +530,7 @@ Namespace java.text
 		''' <param name="timeStyle"> the given time formatting style. For example,
 		''' SHORT for "h:mm a" in the US locale. </param>
 		''' <returns> a date/time formatter. </returns>
-		Public Shared Function getDateTimeInstance(ByVal dateStyle As Integer, ByVal timeStyle As Integer) As DateFormat
+		Public Shared Function getDateTimeInstance(  dateStyle As Integer,   timeStyle As Integer) As DateFormat
 			Return [get](timeStyle, dateStyle, 3, java.util.Locale.getDefault(java.util.Locale.Category.FORMAT))
 		End Function
 
@@ -541,7 +541,7 @@ Namespace java.text
 		''' <param name="timeStyle"> the given time formatting style. </param>
 		''' <param name="aLocale"> the given locale. </param>
 		''' <returns> a date/time formatter. </returns>
-		Public Shared Function getDateTimeInstance(ByVal dateStyle As Integer, ByVal timeStyle As Integer, ByVal aLocale As java.util.Locale) As DateFormat
+		Public Shared Function getDateTimeInstance(  dateStyle As Integer,   timeStyle As Integer,   aLocale As java.util.Locale) As DateFormat
 			Return [get](timeStyle, dateStyle, 3, aLocale)
 		End Function
 
@@ -585,7 +585,7 @@ Namespace java.text
 		''' </summary>
 		''' <param name="newCalendar"> the new {@code Calendar} to be used by the date format </param>
 		Public Overridable Property calendar As DateTime?
-			Set(ByVal newCalendar As DateTime?)
+			Set(  newCalendar As DateTime?)
 				Me.calendar = newCalendar
 			End Set
 			Get
@@ -598,7 +598,7 @@ Namespace java.text
 		''' Allows you to set the number formatter. </summary>
 		''' <param name="newNumberFormat"> the given new NumberFormat. </param>
 		Public Overridable Property numberFormat As NumberFormat
-			Set(ByVal newNumberFormat As NumberFormat)
+			Set(  newNumberFormat As NumberFormat)
 				Me.numberFormat = newNumberFormat
 			End Set
 			Get
@@ -622,7 +622,7 @@ Namespace java.text
 		''' </summary>
 		''' <param name="zone"> the given new time zone. </param>
 		Public Overridable Property timeZone As java.util.TimeZone
-			Set(ByVal zone As java.util.TimeZone)
+			Set(  zone As java.util.TimeZone)
 				calendar.Value.timeZone = zone
 			End Set
 			Get
@@ -648,7 +648,7 @@ Namespace java.text
 		''' <param name="lenient"> when {@code true}, parsing is lenient </param>
 		''' <seealso cref= java.util.Calendar#setLenient(boolean) </seealso>
 		Public Overridable Property lenient As Boolean
-			Set(ByVal lenient As Boolean)
+			Set(  lenient As Boolean)
 				calendar.Value.lenient = lenient
 			End Set
 			Get
@@ -668,7 +668,7 @@ Namespace java.text
 		''' <summary>
 		''' Overrides equals
 		''' </summary>
-		Public Overrides Function Equals(ByVal obj As Object) As Boolean
+		Public Overrides Function Equals(  obj As Object) As Boolean
 			If Me Is obj Then Return True
 			If obj Is Nothing OrElse Me.GetType() IsNot obj.GetType() Then Return False
 			Dim other As DateFormat = CType(obj, DateFormat)
@@ -695,7 +695,7 @@ Namespace java.text
 		''' <param name="flags"> either 1 for a time format, 2 for a date format,
 		''' or 3 for a date/time format </param>
 		''' <param name="loc"> the locale for the format </param>
-		Private Shared Function [get](ByVal timeStyle As Integer, ByVal dateStyle As Integer, ByVal flags As Integer, ByVal loc As java.util.Locale) As DateFormat
+		Private Shared Function [get](  timeStyle As Integer,   dateStyle As Integer,   flags As Integer,   loc As java.util.Locale) As DateFormat
 			If (flags And 1) <> 0 Then
 				If timeStyle < 0 OrElse timeStyle > 3 Then Throw New IllegalArgumentException("Illegal time style " & timeStyle)
 			Else
@@ -713,7 +713,7 @@ Namespace java.text
 			Return dateFormat_Renamed
 		End Function
 
-		Private Shared Function [get](ByVal adapter As sun.util.locale.provider.LocaleProviderAdapter, ByVal timeStyle As Integer, ByVal dateStyle As Integer, ByVal loc As java.util.Locale) As DateFormat
+		Private Shared Function [get](  adapter As sun.util.locale.provider.LocaleProviderAdapter,   timeStyle As Integer,   dateStyle As Integer,   loc As java.util.Locale) As DateFormat
 			Dim provider As java.text.spi.DateFormatProvider = adapter.dateFormatProvider
 			Dim dateFormat_Renamed As DateFormat
 			If timeStyle = -1 Then
@@ -772,7 +772,7 @@ Namespace java.text
 			''' <param name="calendarField"> Calendar field constant </param>
 			''' <returns> Field instance representing calendarField. </returns>
 			''' <seealso cref= java.util.Calendar </seealso>
-			Public Shared Function ofCalendarField(ByVal calendarField As Integer) As Field
+			Public Shared Function ofCalendarField(  calendarField As Integer) As Field
 				If calendarField < 0 OrElse calendarField >= calendarToFieldMapping.Length Then Throw New IllegalArgumentException("Unknown Calendar constant " & calendarField)
 				Return calendarToFieldMapping(calendarField)
 			End Function
@@ -786,7 +786,7 @@ Namespace java.text
 			'''        outside the range of legal <code>Calendar</code> values may
 			'''        be used, but <code>-1</code> should be used for values
 			'''        that don't correspond to legal <code>Calendar</code> values </param>
-			Protected Friend Sub New(ByVal name As String, ByVal calendarField As Integer)
+			Protected Friend Sub New(  name As String,   calendarField As Integer)
 				MyBase.New(name)
 				Me.calendarField = calendarField
 				If Me.GetType() Is GetType(DateFormat.Field) Then

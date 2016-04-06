@@ -101,7 +101,7 @@ Namespace java.security.cert
 		Inherits Certificate
 		Implements X509Extension
 
-			Public MustOverride Function getExtensionValue(ByVal oid As String) As SByte() Implements X509Extension.getExtensionValue
+			Public MustOverride Function getExtensionValue(  oid As String) As SByte() Implements X509Extension.getExtensionValue
 			Public MustOverride ReadOnly Property nonCriticalExtensionOIDs As java.util.Set(Of String) Implements X509Extension.getNonCriticalExtensionOIDs
 			Public MustOverride ReadOnly Property criticalExtensionOIDs As java.util.Set(Of String) Implements X509Extension.getCriticalExtensionOIDs
 			Public MustOverride Function hasUnsupportedCriticalExtension() As Boolean Implements X509Extension.hasUnsupportedCriticalExtension
@@ -158,7 +158,7 @@ Namespace java.security.cert
 		''' yet valid with respect to the {@code date} supplied.
 		''' </exception>
 		''' <seealso cref= #checkValidity() </seealso>
-		Public MustOverride Sub checkValidity(ByVal [date] As DateTime?)
+		Public MustOverride Sub checkValidity(  [date] As DateTime?)
 
 		''' <summary>
 		''' Gets the {@code version} (version number) value from the
@@ -652,7 +652,7 @@ Namespace java.security.cert
 		 ''' <exception cref="CertificateException"> on encoding errors. </exception>
 		 ''' <exception cref="UnsupportedOperationException"> if the method is not supported
 		 ''' @since 1.8 </exception>
-		Public Overridable Sub verify(ByVal key As PublicKey, ByVal sigProvider As Provider)
+		Public Overridable Sub verify(  key As PublicKey,   sigProvider As Provider)
 			sun.security.x509.X509CertImpl.verify(Me, key, sigProvider)
 		End Sub
 	End Class

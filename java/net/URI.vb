@@ -596,7 +596,7 @@ Namespace java.net
 		''' <exception cref="URISyntaxException">
 		'''          If the given string violates RFC&nbsp;2396, as augmented
 		'''          by the above deviations </exception>
-		Public Sub New(ByVal str As String)
+		Public Sub New(  str As String)
 			CType(New Parser(Me, str), Parser).parse(False)
 		End Sub
 
@@ -672,7 +672,7 @@ Namespace java.net
 		'''         if the URI string constructed from the given components violates
 		'''         RFC&nbsp;2396, or if the authority component of the string is
 		'''         present but cannot be parsed as a server-based authority </exception>
-		Public Sub New(ByVal scheme As String, ByVal userInfo As String, ByVal host As String, ByVal port As Integer, ByVal path As String, ByVal query As String, ByVal fragment As String)
+		Public Sub New(  scheme As String,   userInfo As String,   host As String,   port As Integer,   path As String,   query As String,   fragment As String)
 			Dim s As String = ToString(scheme, Nothing, Nothing, userInfo, host, port, path, query, fragment)
 			checkPath(s, scheme, path)
 			CType(New Parser(Me, s), Parser).parse(True)
@@ -738,7 +738,7 @@ Namespace java.net
 		'''         if the URI string constructed from the given components violates
 		'''         RFC&nbsp;2396, or if the authority component of the string is
 		'''         present but cannot be parsed as a server-based authority </exception>
-		Public Sub New(ByVal scheme As String, ByVal authority As String, ByVal path As String, ByVal query As String, ByVal fragment As String)
+		Public Sub New(  scheme As String,   authority As String,   path As String,   query As String,   fragment As String)
 			Dim s As String = ToString(scheme, Nothing, authority, Nothing, Nothing, -1, path, query, fragment)
 			checkPath(s, scheme, path)
 			CType(New Parser(Me, s), Parser).parse(False)
@@ -765,7 +765,7 @@ Namespace java.net
 		''' <exception cref="URISyntaxException">
 		'''          If the URI string constructed from the given components
 		'''          violates RFC&nbsp;2396 </exception>
-		Public Sub New(ByVal scheme As String, ByVal host As String, ByVal path As String, ByVal fragment As String)
+		Public Sub New(  scheme As String,   host As String,   path As String,   fragment As String)
 			Me.New(scheme, Nothing, host, -1, path, Nothing, fragment)
 		End Sub
 
@@ -805,7 +805,7 @@ Namespace java.net
 		''' <exception cref="URISyntaxException">
 		'''          If the URI string constructed from the given components
 		'''          violates RFC&nbsp;2396 </exception>
-		Public Sub New(ByVal scheme As String, ByVal ssp As String, ByVal fragment As String)
+		Public Sub New(  scheme As String,   ssp As String,   fragment As String)
 			CType(New Parser(Me, ToString(scheme, ssp, Nothing, Nothing, Nothing, -1, Nothing, Nothing, fragment)), Parser).parse(False)
 		End Sub
 
@@ -833,7 +833,7 @@ Namespace java.net
 		''' </exception>
 		''' <exception cref="IllegalArgumentException">
 		'''          If the given string violates RFC&nbsp;2396 </exception>
-		Public Shared Function create(ByVal str As String) As URI
+		Public Shared Function create(  str As String) As URI
 			Try
 				Return New URI(str)
 			Catch x As URISyntaxException
@@ -993,7 +993,7 @@ Namespace java.net
 		''' </returns>
 		''' <exception cref="NullPointerException">
 		'''          If {@code uri} is {@code null} </exception>
-		Public Function resolve(ByVal uri As URI) As URI
+		Public Function resolve(  uri As URI) As URI
 			Return resolve(Me, uri)
 		End Function
 
@@ -1013,7 +1013,7 @@ Namespace java.net
 		''' </exception>
 		''' <exception cref="IllegalArgumentException">
 		'''          If the given string violates RFC&nbsp;2396 </exception>
-		Public Function resolve(ByVal str As String) As URI
+		Public Function resolve(  str As String) As URI
 			Return resolve(URI.create(str))
 		End Function
 
@@ -1042,7 +1042,7 @@ Namespace java.net
 		''' </returns>
 		''' <exception cref="NullPointerException">
 		'''          If {@code uri} is {@code null} </exception>
-		Public Function relativize(ByVal uri As URI) As URI
+		Public Function relativize(  uri As URI) As URI
 			Return relativize(Me, uri)
 		End Function
 
@@ -1397,7 +1397,7 @@ Namespace java.net
 		''' </param>
 		''' <returns>  {@code true} if, and only if, the given object is a URI that
 		'''          is identical to this URI </returns>
-		Public Overrides Function Equals(ByVal ob As Object) As Boolean
+		Public Overrides Function Equals(  ob As Object) As Boolean
 			If ob Is Me Then Return True
 			If Not(TypeOf ob Is URI) Then Return False
 			Dim that As URI = CType(ob, URI)
@@ -1523,7 +1523,7 @@ Namespace java.net
 		''' </returns>
 		''' <exception cref="ClassCastException">
 		'''          If the given object is not a URI </exception>
-		Public Function compareTo(ByVal that As URI) As Integer Implements Comparable(Of URI).compareTo
+		Public Function compareTo(  that As URI) As Integer Implements Comparable(Of URI).compareTo
 			Dim c As Integer
 
 			c = compareIgnoringCase(Me.scheme, that.scheme)
@@ -1616,7 +1616,7 @@ Namespace java.net
 		''' </summary>
 		''' <param name="os">  The object-output stream to which this object
 		'''             is to be written </param>
-		Private Sub writeObject(ByVal os As java.io.ObjectOutputStream)
+		Private Sub writeObject(  os As java.io.ObjectOutputStream)
 			defineString()
 			os.defaultWriteObject() ' Writes the string field only
 		End Sub
@@ -1630,7 +1630,7 @@ Namespace java.net
 		''' </summary>
 		''' <param name="is">  The object-input stream from which this object
 		'''             is being read </param>
-		Private Sub readObject(ByVal [is] As java.io.ObjectInputStream)
+		Private Sub readObject(  [is] As java.io.ObjectInputStream)
 			port = -1 ' Argh
 			[is].defaultReadObject()
 			Try
@@ -1656,18 +1656,18 @@ Namespace java.net
 		' these methods are faster than the similar methods in the String class.
 
 		' US-ASCII only
-		Private Shared Function toLower(ByVal c As Char) As Integer
+		Private Shared Function toLower(  c As Char) As Integer
 			If (c >= "A"c) AndAlso (c <= "Z"c) Then Return AscW(c) + (AscW("a"c) - AscW("A"c))
 			Return c
 		End Function
 
 		' US-ASCII only
-		Private Shared Function toUpper(ByVal c As Char) As Integer
+		Private Shared Function toUpper(  c As Char) As Integer
 			If (c >= "a"c) AndAlso (c <= "z"c) Then Return AscW(c) - (AscW("a"c) - AscW("A"c))
 			Return c
 		End Function
 
-		Private Shared Function equal(ByVal s As String, ByVal t As String) As Boolean
+		Private Shared Function equal(  s As String,   t As String) As Boolean
 			If s = t Then Return True
 			If (s IsNot Nothing) AndAlso (t IsNot Nothing) Then
 				If s.length() <> t.length() Then Return False
@@ -1695,7 +1695,7 @@ Namespace java.net
 		End Function
 
 		' US-ASCII only
-		Private Shared Function equalIgnoringCase(ByVal s As String, ByVal t As String) As Boolean
+		Private Shared Function equalIgnoringCase(  s As String,   t As String) As Boolean
 			If s = t Then Return True
 			If (s IsNot Nothing) AndAlso (t IsNot Nothing) Then
 				Dim n As Integer = s.length()
@@ -1708,13 +1708,13 @@ Namespace java.net
 			Return False
 		End Function
 
-		Private Shared Function hash(ByVal hash_Renamed As Integer, ByVal s As String) As Integer
+		Private Shared Function hash(  hash_Renamed As Integer,   s As String) As Integer
 			If s Is Nothing Then Return hash_Renamed
 			Return If(s.IndexOf("%"c) < 0, hash_Renamed * 127 + s.GetHashCode(), normalizedHash(hash_Renamed, s))
 		End Function
 
 
-		Private Shared Function normalizedHash(ByVal hash As Integer, ByVal s As String) As Integer
+		Private Shared Function normalizedHash(  hash As Integer,   s As String) As Integer
 			Dim h As Integer = 0
 			For index As Integer = 0 To s.length() - 1
 				Dim ch As Char = s.Chars(index)
@@ -1733,7 +1733,7 @@ Namespace java.net
 		End Function
 
 		' US-ASCII only
-		Private Shared Function hashIgnoringCase(ByVal hash As Integer, ByVal s As String) As Integer
+		Private Shared Function hashIgnoringCase(  hash As Integer,   s As String) As Integer
 			If s Is Nothing Then Return hash
 			Dim h As Integer = hash
 			Dim n As Integer = s.length()
@@ -1743,7 +1743,7 @@ Namespace java.net
 			Return h
 		End Function
 
-		Private Shared Function compare(ByVal s As String, ByVal t As String) As Integer
+		Private Shared Function compare(  s As String,   t As String) As Integer
 			If s = t Then Return 0
 			If s IsNot Nothing Then
 				If t IsNot Nothing Then
@@ -1757,7 +1757,7 @@ Namespace java.net
 		End Function
 
 		' US-ASCII only
-		Private Shared Function compareIgnoringCase(ByVal s As String, ByVal t As String) As Integer
+		Private Shared Function compareIgnoringCase(  s As String,   t As String) As Integer
 			If s = t Then Return 0
 			If s IsNot Nothing Then
 				If t IsNot Nothing Then
@@ -1781,13 +1781,13 @@ Namespace java.net
 
 		' If a scheme is given then the path, if given, must be absolute
 		'
-		Private Shared Sub checkPath(ByVal s As String, ByVal scheme As String, ByVal path As String)
+		Private Shared Sub checkPath(  s As String,   scheme As String,   path As String)
 			If scheme IsNot Nothing Then
 				If (path IsNot Nothing) AndAlso ((path.length() > 0) AndAlso (path.Chars(0) <> "/"c)) Then Throw New URISyntaxException(s, "Relative path in absolute URI")
 			End If
 		End Sub
 
-		Private Sub appendAuthority(ByVal sb As StringBuffer, ByVal authority As String, ByVal userInfo As String, ByVal host As String, ByVal port As Integer)
+		Private Sub appendAuthority(  sb As StringBuffer,   authority As String,   userInfo As String,   host As String,   port As Integer)
 			If host IsNot Nothing Then
 				sb.append("//")
 				If userInfo IsNot Nothing Then
@@ -1826,7 +1826,7 @@ Namespace java.net
 			End If
 		End Sub
 
-		Private Sub appendSchemeSpecificPart(ByVal sb As StringBuffer, ByVal opaquePart As String, ByVal authority As String, ByVal userInfo As String, ByVal host As String, ByVal port As Integer, ByVal path As String, ByVal query As String)
+		Private Sub appendSchemeSpecificPart(  sb As StringBuffer,   opaquePart As String,   authority As String,   userInfo As String,   host As String,   port As Integer,   path As String,   query As String)
 			If opaquePart IsNot Nothing Then
 	'             check if SSP begins with an IPv6 address
 	'             * because we must not quote a literal IPv6 address
@@ -1858,14 +1858,14 @@ Namespace java.net
 			End If
 		End Sub
 
-		Private Sub appendFragment(ByVal sb As StringBuffer, ByVal fragment As String)
+		Private Sub appendFragment(  sb As StringBuffer,   fragment As String)
 			If fragment IsNot Nothing Then
 				sb.append("#"c)
 				sb.append(quote(fragment, L_URIC, H_URIC))
 			End If
 		End Sub
 
-		Private Overrides Function ToString(ByVal scheme As String, ByVal opaquePart As String, ByVal authority As String, ByVal userInfo As String, ByVal host As String, ByVal port As Integer, ByVal path As String, ByVal query As String, ByVal fragment As String) As String
+		Private Overrides Function ToString(  scheme As String,   opaquePart As String,   authority As String,   userInfo As String,   host As String,   port As Integer,   path As String,   query As String,   fragment As String) As String
 			Dim sb As New StringBuffer
 			If scheme IsNot Nothing Then
 				sb.append(scheme)
@@ -1930,7 +1930,7 @@ Namespace java.net
 		' -- Normalization, resolution, and relativization --
 
 		' RFC2396 5.2 (6)
-		Private Shared Function resolvePath(ByVal base As String, ByVal child As String, ByVal absolute As Boolean) As String
+		Private Shared Function resolvePath(  base As String,   child As String,   absolute As Boolean) As String
 			Dim i As Integer = base.LastIndexOf("/"c)
 			Dim cn As Integer = child.length()
 			Dim path_Renamed As String = ""
@@ -1957,7 +1957,7 @@ Namespace java.net
 		End Function
 
 		' RFC2396 5.2
-		Private Shared Function resolve(ByVal base As URI, ByVal child As URI) As URI
+		Private Shared Function resolve(  base As URI,   child As URI) As URI
 			' check if child if opaque first so that NPE is thrown
 			' if child is null.
 			If child.opaque OrElse base.opaque Then Return child
@@ -2016,7 +2016,7 @@ Namespace java.net
 		' If the given URI's path is normal then return the URI;
 		' o.w., return a new URI containing the normalized path.
 		'
-		Private Shared Function normalize(ByVal u As URI) As URI
+		Private Shared Function normalize(  u As URI) As URI
 			If u.opaque OrElse (u.path Is Nothing) OrElse (u.path.length() = 0) Then Return u
 
 			Dim np As String = normalize(u.path)
@@ -2039,7 +2039,7 @@ Namespace java.net
 		' return a relative URI that, when resolved against the base, yields the
 		' child; otherwise, return the child.
 		'
-		Private Shared Function relativize(ByVal base As URI, ByVal child As URI) As URI
+		Private Shared Function relativize(  base As URI,   child As URI) As URI
 			' check if child if opaque first so that NPE is thrown
 			' if child is null.
 			If child.opaque OrElse base.opaque Then Return child
@@ -2084,7 +2084,7 @@ Namespace java.net
 		' This method takes a string argument rather than a char array so that
 		' this test can be performed without invoking path.toCharArray().
 		'
-		Private Shared Function needsNormalization(ByVal path As String) As Integer
+		Private Shared Function needsNormalization(  path As String) As Integer
 			Dim normal As Boolean = True
 			Dim ns As Integer = 0 ' Number of segments
 			Dim [end] As Integer = path.length() - 1 ' Index of last char in path
@@ -2135,7 +2135,7 @@ Namespace java.net
 		'   All slashes in path replaced by '\0'
 		'   segs[i] == Index of first char in segment i (0 <= i < segs.length)
 		'
-		Private Shared Sub split(ByVal path As Char(), ByVal segs As Integer())
+		Private Shared Sub split(  path As Char(),   segs As Integer())
 			Dim [end] As Integer = path.Length - 1 ' Index of last char in path
 			Dim p As Integer = 0 ' Index of next char in path
 			Dim i As Integer = 0 ' Index of current segment
@@ -2187,7 +2187,7 @@ Namespace java.net
 		' Postconditions:
 		'   path[0] .. path[return value] == Resulting path
 		'
-		Private Shared Function join(ByVal path As Char(), ByVal segs As Integer()) As Integer
+		Private Shared Function join(  path As Char(),   segs As Integer()) As Integer
 			Dim ns As Integer = segs.Length ' Number of segments
 			Dim [end] As Integer = path.Length - 1 ' Index of last char in path
 			Dim p As Integer = 0 ' Index of next path char to write
@@ -2236,7 +2236,7 @@ Namespace java.net
 		' Remove "." segments from the given path, and remove segment pairs
 		' consisting of a non-".." segment followed by a ".." segment.
 		'
-		Private Shared Sub removeDots(ByVal path As Char(), ByVal segs As Integer())
+		Private Shared Sub removeDots(  path As Char(),   segs As Integer())
 			Dim ns As Integer = segs.Length
 			Dim [end] As Integer = path.Length - 1
 
@@ -2288,7 +2288,7 @@ Namespace java.net
 		' DEVIATION: If the normalized path is relative, and if the first
 		' segment could be parsed as a scheme name, then prepend a "." segment
 		'
-		Private Shared Sub maybeAddLeadingDot(ByVal path As Char(), ByVal segs As Integer())
+		Private Shared Sub maybeAddLeadingDot(  path As Char(),   segs As Integer())
 
 			If path(0) = ControlChars.NullChar Then Return
 
@@ -2320,7 +2320,7 @@ Namespace java.net
 		' In contrast to Unix-style pathname normalization, for URI paths we
 		' always retain trailing slashes.
 		'
-		Private Shared Function normalize(ByVal ps As String) As String
+		Private Shared Function normalize(  ps As String) As String
 
 			' Does this path need normalization?
 			Dim ns As Integer = needsNormalization(ps) ' Number of segments
@@ -2361,7 +2361,7 @@ Namespace java.net
 		' given mask could be determined by a single table lookup.
 
 		' Compute the low-order mask for the characters in the given string
-		Private Shared Function lowMask(ByVal chars As String) As Long
+		Private Shared Function lowMask(  chars As String) As Long
 			Dim n As Integer = chars.length()
 			Dim m As Long = 0
 			For i As Integer = 0 To n - 1
@@ -2372,7 +2372,7 @@ Namespace java.net
 		End Function
 
 		' Compute the high-order mask for the characters in the given string
-		Private Shared Function highMask(ByVal chars As String) As Long
+		Private Shared Function highMask(  chars As String) As Long
 			Dim n As Integer = chars.length()
 			Dim m As Long = 0
 			For i As Integer = 0 To n - 1
@@ -2384,7 +2384,7 @@ Namespace java.net
 
 		' Compute a low-order mask for the characters
 		' between first and last, inclusive
-		Private Shared Function lowMask(ByVal first As Char, ByVal last As Char) As Long
+		Private Shared Function lowMask(  first As Char,   last As Char) As Long
 			Dim m As Long = 0
 			Dim f As Integer = System.Math.Max (System.Math.Min(first, 63), 0)
 			Dim l As Integer = System.Math.Max (System.Math.Min(last, 63), 0)
@@ -2396,7 +2396,7 @@ Namespace java.net
 
 		' Compute a high-order mask for the characters
 		' between first and last, inclusive
-		Private Shared Function highMask(ByVal first As Char, ByVal last As Char) As Long
+		Private Shared Function highMask(  first As Char,   last As Char) As Long
 			Dim m As Long = 0
 			Dim f As Integer = System.Math.Max (System.Math.Min(first, 127), 64) - 64
 			Dim l As Integer = System.Math.Max (System.Math.Min(last, 127), 64) - 64
@@ -2407,7 +2407,7 @@ Namespace java.net
 		End Function
 
 		' Tell whether the given character is permitted by the given mask pair
-		Private Shared Function match(ByVal c As Char, ByVal lowMask As Long, ByVal highMask As Long) As Boolean
+		Private Shared Function match(  c As Char,   lowMask As Long,   highMask As Long) As Boolean
 			If AscW(c) = 0 Then ' 0 doesn't have a slot in the mask. So, it never matches. Return False
 			If AscW(c) < 64 Then Return ((1L << AscW(c)) And lowMask) <> 0
 			If AscW(c) < 128 Then Return ((1L << (AscW(c) - 64)) And highMask) <> 0
@@ -2523,13 +2523,13 @@ Namespace java.net
 
 		Private Shared ReadOnly hexDigits As Char() = { "0"c, "1"c, "2"c, "3"c, "4"c, "5"c, "6"c, "7"c, "8"c, "9"c, "A"c, "B"c, "C"c, "D"c, "E"c, "F"c }
 
-		Private Shared Sub appendEscape(ByVal sb As StringBuffer, ByVal b As SByte)
+		Private Shared Sub appendEscape(  sb As StringBuffer,   b As SByte)
 			sb.append("%"c)
 			sb.append(hexDigits((b >> 4) And &Hf))
 			sb.append(hexDigits((b >> 0) And &Hf))
 		End Sub
 
-		Private Shared Sub appendEncoded(ByVal sb As StringBuffer, ByVal c As Char)
+		Private Shared Sub appendEncoded(  sb As StringBuffer,   c As Char)
 			Dim bb As java.nio.ByteBuffer = Nothing
 			Try
 				bb = sun.nio.cs.ThreadLocalCoders.encoderFor("UTF-8").encode(java.nio.CharBuffer.wrap("" & AscW(c)))
@@ -2549,7 +2549,7 @@ Namespace java.net
 		' Quote any characters in s that are not permitted
 		' by the given mask pair
 		'
-		Private Shared Function quote(ByVal s As String, ByVal lowMask As Long, ByVal highMask As Long) As String
+		Private Shared Function quote(  s As String,   lowMask As Long,   highMask As Long) As String
 			Dim n As Integer = s.length()
 			Dim sb As StringBuffer = Nothing
 			Dim allowNonASCII As Boolean = ((lowMask And L_ESCAPED) <> 0)
@@ -2581,7 +2581,7 @@ Namespace java.net
 		' Encodes all characters >= \u0080 into escaped, normalized UTF-8 octets,
 		' assuming that s is otherwise legal
 		'
-		Private Shared Function encode(ByVal s As String) As String
+		Private Shared Function encode(  s As String) As String
 			Dim n As Integer = s.length()
 			If n = 0 Then Return s
 
@@ -2613,7 +2613,7 @@ Namespace java.net
 			Return sb.ToString()
 		End Function
 
-		Private Shared Function decode(ByVal c As Char) As Integer
+		Private Shared Function decode(  c As Char) As Integer
 			If (c >= "0"c) AndAlso (c <= "9"c) Then Return AscW(c) - AscW("0"c)
 			If (c >= "a"c) AndAlso (c <= "f"c) Then Return AscW(c) - AscW("a"c) + 10
 			If (c >= "A"c) AndAlso (c <= "F"c) Then Return AscW(c) - AscW("A"c) + 10
@@ -2621,7 +2621,7 @@ Namespace java.net
 			Return -1
 		End Function
 
-		Private Shared Function decode(ByVal c1 As Char, ByVal c2 As Char) As SByte
+		Private Shared Function decode(  c1 As Char,   c2 As Char) As SByte
 			Return CByte(((decode(c1) And &Hf) << 4) Or ((decode(c2) And &Hf) << 0))
 		End Function
 
@@ -2632,7 +2632,7 @@ Namespace java.net
 		' Exception: any "%" found between "[]" is left alone. It is an IPv6 literal
 		'            with a scope_id
 		'
-		Private Shared Function decode(ByVal s As String) As String
+		Private Shared Function decode(  s As String) As String
 			If s Is Nothing Then Return s
 			Dim n As Integer = s.length()
 			If n = 0 Then Return s
@@ -2700,7 +2700,7 @@ Namespace java.net
 			Private input As String ' URI input string
 			Private requireServerAuthority As Boolean = False
 
-			Friend Sub New(ByVal outerInstance As URI, ByVal s As String)
+			Friend Sub New(  outerInstance As URI,   s As String)
 					Me.outerInstance = outerInstance
 				input = s
 				outerInstance.string_Renamed = s
@@ -2708,19 +2708,19 @@ Namespace java.net
 
 			' -- Methods for throwing URISyntaxException in various ways --
 
-			Private Sub fail(ByVal reason As String)
+			Private Sub fail(  reason As String)
 				Throw New URISyntaxException(input, reason)
 			End Sub
 
-			Private Sub fail(ByVal reason As String, ByVal p As Integer)
+			Private Sub fail(  reason As String,   p As Integer)
 				Throw New URISyntaxException(input, reason, p)
 			End Sub
 
-			Private Sub failExpecting(ByVal expected As String, ByVal p As Integer)
+			Private Sub failExpecting(  expected As String,   p As Integer)
 				fail("Expected " & expected, p)
 			End Sub
 
-			Private Sub failExpecting(ByVal expected As String, ByVal prior As String, ByVal p As Integer)
+			Private Sub failExpecting(  expected As String,   prior As String,   p As Integer)
 				fail("Expected " & expected & " following " & prior, p)
 			End Sub
 
@@ -2729,27 +2729,27 @@ Namespace java.net
 
 			' Return a substring of the input string
 			'
-			Private Function substring(ByVal start As Integer, ByVal [end] As Integer) As String
+			Private Function substring(  start As Integer,   [end] As Integer) As String
 				Return input.Substring(start, [end] - start)
 			End Function
 
 			' Return the char at position p,
 			' assuming that p < input.length()
 			'
-			Private Function charAt(ByVal p As Integer) As Char
+			Private Function charAt(  p As Integer) As Char
 				Return input.Chars(p)
 			End Function
 
 			' Tells whether start < end and, if so, whether charAt(start) == c
 			'
-			Private Function at(ByVal start As Integer, ByVal [end] As Integer, ByVal c As Char) As Boolean
+			Private Function at(  start As Integer,   [end] As Integer,   c As Char) As Boolean
 				Return (start < [end]) AndAlso (charAt(start) = c)
 			End Function
 
 			' Tells whether start + s.length() < end and, if so,
 			' whether the chars at the start position match s exactly
 			'
-			Private Function at(ByVal start As Integer, ByVal [end] As Integer, ByVal s As String) As Boolean
+			Private Function at(  start As Integer,   [end] As Integer,   s As String) As Boolean
 				Dim p As Integer = start
 				Dim sn As Integer = s.length()
 				If sn > [end] - p Then Return False
@@ -2794,7 +2794,7 @@ Namespace java.net
 			' equal to c, return the index of the next char; otherwise, return the
 			' start position.
 			'
-			Private Function scan(ByVal start As Integer, ByVal [end] As Integer, ByVal c As Char) As Integer
+			Private Function scan(  start As Integer,   [end] As Integer,   c As Char) As Integer
 				If (start < [end]) AndAlso (charAt(start) = c) Then Return start + 1
 				Return start
 			End Function
@@ -2806,7 +2806,7 @@ Namespace java.net
 			' of the input string is returned).  May return the start position if
 			' nothing matches.
 			'
-			Private Function scan(ByVal start As Integer, ByVal [end] As Integer, ByVal err As String, ByVal [stop] As String) As Integer
+			Private Function scan(  start As Integer,   [end] As Integer,   err As String,   [stop] As String) As Integer
 				Dim p As Integer = start
 				Do While p < [end]
 					Dim c As Char = charAt(p)
@@ -2823,7 +2823,7 @@ Namespace java.net
 			' This method assumes that if escapes are allowed then visible
 			' non-US-ASCII chars are also allowed.
 			'
-			Private Function scanEscape(ByVal start As Integer, ByVal n As Integer, ByVal first As Char) As Integer
+			Private Function scanEscape(  start As Integer,   n As Integer,   first As Char) As Integer
 				Dim p As Integer = start
 				Dim c As Char = first
 				If c = "%"c Then
@@ -2839,7 +2839,7 @@ Namespace java.net
 
 			' Scan chars that match the given mask pair
 			'
-			Private Function scan(ByVal start As Integer, ByVal n As Integer, ByVal lowMask As Long, ByVal highMask As Long) As Integer
+			Private Function scan(  start As Integer,   n As Integer,   lowMask As Long,   highMask As Long) As Integer
 				Dim p As Integer = start
 				Do While p < n
 					Dim c As Char = charAt(p)
@@ -2861,14 +2861,14 @@ Namespace java.net
 
 			' Check that each of the chars in [start, end) matches the given mask
 			'
-			Private Sub checkChars(ByVal start As Integer, ByVal [end] As Integer, ByVal lowMask As Long, ByVal highMask As Long, ByVal what As String)
+			Private Sub checkChars(  start As Integer,   [end] As Integer,   lowMask As Long,   highMask As Long,   what As String)
 				Dim p As Integer = scan(start, [end], lowMask, highMask)
 				If p < [end] Then fail("Illegal character in " & what, p)
 			End Sub
 
 			' Check that the char at position p matches the given mask
 			'
-			Private Sub checkChar(ByVal p As Integer, ByVal lowMask As Long, ByVal highMask As Long, ByVal what As String)
+			Private Sub checkChar(  p As Integer,   lowMask As Long,   highMask As Long,   what As String)
 				checkChars(p, p + 1, lowMask, highMask, what)
 			End Sub
 
@@ -2877,7 +2877,7 @@ Namespace java.net
 
 			' [<scheme>:]<scheme-specific-part>[#<fragment>]
 			'
-			Friend Overridable Sub parse(ByVal rsa As Boolean)
+			Friend Overridable Sub parse(  rsa As Boolean)
 				requireServerAuthority = rsa
 				Dim ssp As Integer ' Start of scheme-specific part
 				Dim n As Integer = input.length()
@@ -2924,7 +2924,7 @@ Namespace java.net
 			' The primary consequence of this deviation is that "#f" parses as a
 			' relative URI with an empty path.
 			'
-			Private Function parseHierarchical(ByVal start As Integer, ByVal n As Integer) As Integer
+			Private Function parseHierarchical(  start As Integer,   n As Integer) As Integer
 				Dim p As Integer = start
 				If at(p, n, "/"c) AndAlso at(p + 1, n, "/"c) Then
 					p += 2
@@ -2960,7 +2960,7 @@ Namespace java.net
 			' input string to resolve this: If the complete authority did not
 			' parse as a server then we try to parse it as a registry name.
 			'
-			Private Function parseAuthority(ByVal start As Integer, ByVal n As Integer) As Integer
+			Private Function parseAuthority(  start As Integer,   n As Integer) As Integer
 				Dim p As Integer = start
 				Dim q As Integer = p
 				Dim ex As URISyntaxException = Nothing
@@ -3027,7 +3027,7 @@ Namespace java.net
 
 			' [<userinfo>@]<host>[:<port>]
 			'
-			Private Function parseServer(ByVal start As Integer, ByVal n As Integer) As Integer
+			Private Function parseServer(  start As Integer,   n As Integer) As Integer
 				Dim p As Integer = start
 				Dim q As Integer
 
@@ -3086,7 +3086,7 @@ Namespace java.net
 
 			' Scan a string of decimal digits whose value fits in a byte
 			'
-			Private Function scanByte(ByVal start As Integer, ByVal n As Integer) As Integer
+			Private Function scanByte(  start As Integer,   n As Integer) As Integer
 				Dim p As Integer = start
 				Dim q As Integer = scan(p, n, L_DIGIT, H_DIGIT)
 				If q <= p Then Return q
@@ -3109,7 +3109,7 @@ Namespace java.net
 			' address.  It won't parse as a hostname anyway, so making that
 			' assumption here allows more meaningful exceptions to be thrown.
 			'
-			Private Function scanIPv4Address(ByVal start As Integer, ByVal n As Integer, ByVal [strict] As Boolean) As Integer
+			Private Function scanIPv4Address(  start As Integer,   n As Integer,   [strict] As Boolean) As Integer
 				Dim p As Integer = start
 				Dim q As Integer
 				Dim m As Integer = scan(p, n, L_DIGIT Or L_DOT, H_DIGIT Or H_DOT)
@@ -3148,7 +3148,7 @@ Namespace java.net
 			' Take an IPv4 address: Throw an exception if the given interval
 			' contains anything except an IPv4 address
 			'
-			Private Function takeIPv4Address(ByVal start As Integer, ByVal n As Integer, ByVal expected As String) As Integer
+			Private Function takeIPv4Address(  start As Integer,   n As Integer,   expected As String) As Integer
 				Dim p As Integer = scanIPv4Address(start, n, True)
 				If p <= start Then failExpecting(expected, start)
 				Return p
@@ -3158,7 +3158,7 @@ Namespace java.net
 			' allowing the given interval to contain [:<characters>] after
 			' the IPv4 address.
 			'
-			Private Function parseIPv4Address(ByVal start As Integer, ByVal n As Integer) As Integer
+			Private Function parseIPv4Address(  start As Integer,   n As Integer) As Integer
 				Dim p As Integer
 
 				Try
@@ -3185,7 +3185,7 @@ Namespace java.net
 			' domainlabel   = alphanum | alphanum *( alphanum | "-" ) alphanum
 			' toplabel      = alpha | alpha *( alphanum | "-" ) alphanum
 			'
-			Private Function parseHostname(ByVal start As Integer, ByVal n As Integer) As Integer
+			Private Function parseHostname(  start As Integer,   n As Integer) As Integer
 				Dim p As Integer = start
 				Dim q As Integer
 				Dim l As Integer = -1 ' Start of last parsed label
@@ -3264,7 +3264,7 @@ Namespace java.net
 
 			Private ipv6byteCount As Integer = 0
 
-			Private Function parseIPv6Reference(ByVal start As Integer, ByVal n As Integer) As Integer
+			Private Function parseIPv6Reference(  start As Integer,   n As Integer) As Integer
 				Dim p As Integer = start
 				Dim q As Integer
 				Dim compressedZeros As Boolean = False
@@ -3292,7 +3292,7 @@ Namespace java.net
 				Return p
 			End Function
 
-			Private Function scanHexPost(ByVal start As Integer, ByVal n As Integer) As Integer
+			Private Function scanHexPost(  start As Integer,   n As Integer) As Integer
 				Dim p As Integer = start
 				Dim q As Integer
 
@@ -3315,7 +3315,7 @@ Namespace java.net
 
 			' Scan a hex sequence; return -1 if one could not be scanned
 			'
-			Private Function scanHexSeq(ByVal start As Integer, ByVal n As Integer) As Integer
+			Private Function scanHexSeq(  start As Integer,   n As Integer) As Integer
 				Dim p As Integer = start
 				Dim q As Integer
 

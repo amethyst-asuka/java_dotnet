@@ -96,7 +96,7 @@ Namespace java.rmi.registry
 		''' the caller access to perform this operation
 		''' </exception>
 		''' <exception cref="NullPointerException"> if <code>name</code> is <code>null</code> </exception>
-		Function lookup(ByVal name As String) As java.rmi.Remote
+		Function lookup(  name As String) As java.rmi.Remote
 
 		''' <summary>
 		''' Binds a remote reference to the specified <code>name</code> in
@@ -118,7 +118,7 @@ Namespace java.rmi.registry
 		''' </exception>
 		''' <exception cref="NullPointerException"> if <code>name</code> is
 		''' <code>null</code>, or if <code>obj</code> is <code>null</code> </exception>
-		Sub bind(ByVal name As String, ByVal obj As java.rmi.Remote)
+		Sub bind(  name As String,   obj As java.rmi.Remote)
 
 		''' <summary>
 		''' Removes the binding for the specified <code>name</code> in
@@ -138,7 +138,7 @@ Namespace java.rmi.registry
 		''' the caller access to perform this operation
 		''' </exception>
 		''' <exception cref="NullPointerException"> if <code>name</code> is <code>null</code> </exception>
-		Sub unbind(ByVal name As String)
+		Sub unbind(  name As String)
 
 		''' <summary>
 		''' Replaces the binding for the specified <code>name</code> in
@@ -160,7 +160,7 @@ Namespace java.rmi.registry
 		''' </exception>
 		''' <exception cref="NullPointerException"> if <code>name</code> is
 		''' <code>null</code>, or if <code>obj</code> is <code>null</code> </exception>
-		Sub rebind(ByVal name As String, ByVal obj As java.rmi.Remote)
+		Sub rebind(  name As String,   obj As java.rmi.Remote)
 
 		''' <summary>
 		''' Returns an array of the names bound in this registry.  The

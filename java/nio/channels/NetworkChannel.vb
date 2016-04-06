@@ -79,7 +79,7 @@ Namespace java.nio.channels
 		'''          any required permissions.
 		''' </exception>
 		''' <seealso cref= #getLocalAddress </seealso>
-		Function bind(ByVal local As java.net.SocketAddress) As NetworkChannel
+		Function bind(  local As java.net.SocketAddress) As NetworkChannel
 
 		''' <summary>
 		''' Returns the socket address that this channel's socket is bound to.
@@ -120,7 +120,7 @@ Namespace java.nio.channels
 		'''          If an I/O error occurs
 		''' </exception>
 		''' <seealso cref= java.net.StandardSocketOptions </seealso>
-		 Function setOption(Of T)(ByVal name As java.net.SocketOption(Of T), ByVal value As T) As NetworkChannel
+		 Function setOption(Of T)(  name As java.net.SocketOption(Of T),   value As T) As NetworkChannel
 
 		''' <summary>
 		''' Returns the value of a socket option.
@@ -141,7 +141,7 @@ Namespace java.nio.channels
 		'''          If an I/O error occurs
 		''' </exception>
 		''' <seealso cref= java.net.StandardSocketOptions </seealso>
-		 Function getOption(Of T)(ByVal name As java.net.SocketOption(Of T)) As T
+		 Function getOption(Of T)(  name As java.net.SocketOption(Of T)) As T
 
 		''' <summary>
 		''' Returns a set of the socket options supported by this channel.

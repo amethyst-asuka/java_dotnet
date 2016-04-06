@@ -142,7 +142,7 @@ Namespace java.util.stream
 		'''                  should be included </param>
 		''' <returns> the new stream </returns>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Function filter(Of T1)(ByVal predicate As java.util.function.Predicate(Of T1)) As Stream(Of T)
+		Function filter(Of T1)(  predicate As java.util.function.Predicate(Of T1)) As Stream(Of T)
 
 		''' <summary>
 		''' Returns a stream consisting of the results of applying the given
@@ -157,7 +157,7 @@ Namespace java.util.stream
 		'''               function to apply to each element </param>
 		''' <returns> the new stream </returns>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		 Function map(Of R, T1 As R)(ByVal mapper As java.util.function.Function(Of T1)) As Stream(Of R)
+		 Function map(Of R, T1 As R)(  mapper As java.util.function.Function(Of T1)) As Stream(Of R)
 
 		''' <summary>
 		''' Returns an {@code IntStream} consisting of the results of applying the
@@ -171,7 +171,7 @@ Namespace java.util.stream
 		'''               function to apply to each element </param>
 		''' <returns> the new stream </returns>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Function mapToInt(Of T1)(ByVal mapper As java.util.function.ToIntFunction(Of T1)) As IntStream
+		Function mapToInt(Of T1)(  mapper As java.util.function.ToIntFunction(Of T1)) As IntStream
 
 		''' <summary>
 		''' Returns a {@code LongStream} consisting of the results of applying the
@@ -185,7 +185,7 @@ Namespace java.util.stream
 		'''               function to apply to each element </param>
 		''' <returns> the new stream </returns>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Function mapToLong(Of T1)(ByVal mapper As java.util.function.ToLongFunction(Of T1)) As LongStream
+		Function mapToLong(Of T1)(  mapper As java.util.function.ToLongFunction(Of T1)) As LongStream
 
 		''' <summary>
 		''' Returns a {@code DoubleStream} consisting of the results of applying the
@@ -199,7 +199,7 @@ Namespace java.util.stream
 		'''               function to apply to each element </param>
 		''' <returns> the new stream </returns>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Function mapToDouble(Of T1)(ByVal mapper As java.util.function.ToDoubleFunction(Of T1)) As DoubleStream
+		Function mapToDouble(Of T1)(  mapper As java.util.function.ToDoubleFunction(Of T1)) As DoubleStream
 
 		''' <summary>
 		''' Returns a stream consisting of the results of replacing each element of
@@ -244,7 +244,7 @@ Namespace java.util.stream
 		''' <returns> the new stream </returns>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-		 Function flatMap(Of R, T1 As Stream(Of ? As R)(ByVal mapper As java.util.function.Function(Of T1)) As Stream(Of R)
+		 Function flatMap(Of R, T1 As Stream(Of ? As R)(  mapper As java.util.function.Function(Of T1)) As Stream(Of R)
 
 		''' <summary>
 		''' Returns an {@code IntStream} consisting of the results of replacing each
@@ -264,7 +264,7 @@ Namespace java.util.stream
 		''' <returns> the new stream </returns>
 		''' <seealso cref= #flatMap(Function) </seealso>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Function flatMapToInt(Of T1 As IntStream)(ByVal mapper As java.util.function.Function(Of T1)) As IntStream
+		Function flatMapToInt(Of T1 As IntStream)(  mapper As java.util.function.Function(Of T1)) As IntStream
 
 		''' <summary>
 		''' Returns an {@code LongStream} consisting of the results of replacing each
@@ -284,7 +284,7 @@ Namespace java.util.stream
 		''' <returns> the new stream </returns>
 		''' <seealso cref= #flatMap(Function) </seealso>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Function flatMapToLong(Of T1 As LongStream)(ByVal mapper As java.util.function.Function(Of T1)) As LongStream
+		Function flatMapToLong(Of T1 As LongStream)(  mapper As java.util.function.Function(Of T1)) As LongStream
 
 		''' <summary>
 		''' Returns an {@code DoubleStream} consisting of the results of replacing
@@ -304,7 +304,7 @@ Namespace java.util.stream
 		''' <returns> the new stream </returns>
 		''' <seealso cref= #flatMap(Function) </seealso>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Function flatMapToDouble(Of T1 As DoubleStream)(ByVal mapper As java.util.function.Function(Of T1)) As DoubleStream
+		Function flatMapToDouble(Of T1 As DoubleStream)(  mapper As java.util.function.Function(Of T1)) As DoubleStream
 
 		''' <summary>
 		''' Returns a stream consisting of the distinct elements (according to
@@ -364,7 +364,7 @@ Namespace java.util.stream
 		'''                   {@code Comparator} to be used to compare stream elements </param>
 		''' <returns> the new stream </returns>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Function sorted(Of T1)(ByVal comparator As IComparer(Of T1)) As Stream(Of T)
+		Function sorted(Of T1)(  comparator As IComparer(Of T1)) As Stream(Of T)
 
 		''' <summary>
 		''' Returns a stream consisting of the elements of this stream, additionally
@@ -395,7 +395,7 @@ Namespace java.util.stream
 		'''                 they are consumed from the stream </param>
 		''' <returns> the new stream </returns>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Function peek(Of T1)(ByVal action As java.util.function.Consumer(Of T1)) As Stream(Of T)
+		Function peek(Of T1)(  action As java.util.function.Consumer(Of T1)) As Stream(Of T)
 
 		''' <summary>
 		''' Returns a stream consisting of the elements of this stream, truncated
@@ -421,7 +421,7 @@ Namespace java.util.stream
 		''' <param name="maxSize"> the number of elements the stream should be limited to </param>
 		''' <returns> the new stream </returns>
 		''' <exception cref="IllegalArgumentException"> if {@code maxSize} is negative </exception>
-		Function limit(ByVal maxSize As Long) As Stream(Of T)
+		Function limit(  maxSize As Long) As Stream(Of T)
 
 		''' <summary>
 		''' Returns a stream consisting of the remaining elements of this stream
@@ -449,7 +449,7 @@ Namespace java.util.stream
 		''' <param name="n"> the number of leading elements to skip </param>
 		''' <returns> the new stream </returns>
 		''' <exception cref="IllegalArgumentException"> if {@code n} is negative </exception>
-		Function skip(ByVal n As Long) As Stream(Of T)
+		Function skip(  n As Long) As Stream(Of T)
 
 		''' <summary>
 		''' Performs an action for each element of this stream.
@@ -468,7 +468,7 @@ Namespace java.util.stream
 		''' <param name="action"> a <a href="package-summary.html#NonInterference">
 		'''               non-interfering</a> action to perform on the elements </param>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Sub forEach(Of T1)(ByVal action As java.util.function.Consumer(Of T1))
+		Sub forEach(Of T1)(  action As java.util.function.Consumer(Of T1))
 
 		''' <summary>
 		''' Performs an action for each element of this stream, in the encounter
@@ -487,7 +487,7 @@ Namespace java.util.stream
 		'''               non-interfering</a> action to perform on the elements </param>
 		''' <seealso cref= #forEach(Consumer) </seealso>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Sub forEachOrdered(Of T1)(ByVal action As java.util.function.Consumer(Of T1))
+		Sub forEachOrdered(Of T1)(  action As java.util.function.Consumer(Of T1))
 
 		''' <summary>
 		''' Returns an array containing the elements of this stream.
@@ -524,7 +524,7 @@ Namespace java.util.stream
 		''' <exception cref="ArrayStoreException"> if the runtime type of the array returned
 		''' from the array generator is not a supertype of the runtime type of every
 		''' element in this stream </exception>
-		 Function toArray(Of A)(ByVal generator As java.util.function.IntFunction(Of A())) As A()
+		 Function toArray(Of A)(  generator As java.util.function.IntFunction(Of A())) As A()
 
 		''' <summary>
 		''' Performs a <a href="package-summary.html#Reduction">reduction</a> on the
@@ -574,7 +574,7 @@ Namespace java.util.stream
 		'''                    <a href="package-summary.html#Statelessness">stateless</a>
 		'''                    function for combining two values </param>
 		''' <returns> the result of the reduction </returns>
-		Function reduce(ByVal identity As T, ByVal accumulator As java.util.function.BinaryOperator(Of T)) As T
+		Function reduce(  identity As T,   accumulator As java.util.function.BinaryOperator(Of T)) As T
 
 		''' <summary>
 		''' Performs a <a href="package-summary.html#Reduction">reduction</a> on the
@@ -613,7 +613,7 @@ Namespace java.util.stream
 		''' <seealso cref= #reduce(Object, BinaryOperator) </seealso>
 		''' <seealso cref= #min(Comparator) </seealso>
 		''' <seealso cref= #max(Comparator) </seealso>
-		Function reduce(ByVal accumulator As java.util.function.BinaryOperator(Of T)) As java.util.Optional(Of T)
+		Function reduce(  accumulator As java.util.function.BinaryOperator(Of T)) As java.util.Optional(Of T)
 
 		''' <summary>
 		''' Performs a <a href="package-summary.html#Reduction">reduction</a> on the
@@ -662,7 +662,7 @@ Namespace java.util.stream
 		''' <seealso cref= #reduce(BinaryOperator) </seealso>
 		''' <seealso cref= #reduce(Object, BinaryOperator) </seealso>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		 Function reduce(Of U, T1)(ByVal identity As U, ByVal accumulator As java.util.function.BiFunction(Of T1), ByVal combiner As java.util.function.BinaryOperator(Of U)) As U
+		 Function reduce(Of U, T1)(  identity As U,   accumulator As java.util.function.BiFunction(Of T1),   combiner As java.util.function.BinaryOperator(Of U)) As U
 
 		''' <summary>
 		''' Performs a <a href="package-summary.html#MutableReduction">mutable
@@ -715,7 +715,7 @@ Namespace java.util.stream
 		'''                    compatible with the accumulator function </param>
 		''' <returns> the result of the reduction </returns>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		 Function collect(Of R, T1)(ByVal supplier As java.util.function.Supplier(Of R), ByVal accumulator As java.util.function.BiConsumer(Of T1), ByVal combiner As java.util.function.BiConsumer(Of R, R)) As R
+		 Function collect(Of R, T1)(  supplier As java.util.function.Supplier(Of R),   accumulator As java.util.function.BiConsumer(Of T1),   combiner As java.util.function.BiConsumer(Of R, R)) As R
 
 		''' <summary>
 		''' Performs a <a href="package-summary.html#MutableReduction">mutable
@@ -769,7 +769,7 @@ Namespace java.util.stream
 		''' <seealso cref= #collect(Supplier, BiConsumer, BiConsumer) </seealso>
 		''' <seealso cref= Collectors </seealso>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		 Function collect(Of R, A, T1)(ByVal collector As Collector(Of T1)) As R
+		 Function collect(Of R, A, T1)(  collector As Collector(Of T1)) As R
 
 		''' <summary>
 		''' Returns the minimum element of this stream according to the provided
@@ -785,7 +785,7 @@ Namespace java.util.stream
 		''' or an empty {@code Optional} if the stream is empty </returns>
 		''' <exception cref="NullPointerException"> if the minimum element is null </exception>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Function min(Of T1)(ByVal comparator As IComparer(Of T1)) As java.util.Optional(Of T)
+		Function min(Of T1)(  comparator As IComparer(Of T1)) As java.util.Optional(Of T)
 
 		''' <summary>
 		''' Returns the maximum element of this stream according to the provided
@@ -802,7 +802,7 @@ Namespace java.util.stream
 		''' or an empty {@code Optional} if the stream is empty </returns>
 		''' <exception cref="NullPointerException"> if the maximum element is null </exception>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Function max(Of T1)(ByVal comparator As IComparer(Of T1)) As java.util.Optional(Of T)
+		Function max(Of T1)(  comparator As IComparer(Of T1)) As java.util.Optional(Of T)
 
 		''' <summary>
 		''' Returns the count of elements in this stream.  This is a special case of
@@ -836,7 +836,7 @@ Namespace java.util.stream
 		''' <returns> {@code true} if any elements of the stream match the provided
 		''' predicate, otherwise {@code false} </returns>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Function anyMatch(Of T1)(ByVal predicate As java.util.function.Predicate(Of T1)) As Boolean
+		Function anyMatch(Of T1)(  predicate As java.util.function.Predicate(Of T1)) As Boolean
 
 		''' <summary>
 		''' Returns whether all elements of this stream match the provided predicate.
@@ -859,7 +859,7 @@ Namespace java.util.stream
 		''' <returns> {@code true} if either all elements of the stream match the
 		''' provided predicate or the stream is empty, otherwise {@code false} </returns>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Function allMatch(Of T1)(ByVal predicate As java.util.function.Predicate(Of T1)) As Boolean
+		Function allMatch(Of T1)(  predicate As java.util.function.Predicate(Of T1)) As Boolean
 
 		''' <summary>
 		''' Returns whether no elements of this stream match the provided predicate.
@@ -882,7 +882,7 @@ Namespace java.util.stream
 		''' <returns> {@code true} if either no elements of the stream match the
 		''' provided predicate or the stream is empty, otherwise {@code false} </returns>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Function noneMatch(Of T1)(ByVal predicate As java.util.function.Predicate(Of T1)) As Boolean
+		Function noneMatch(Of T1)(  predicate As java.util.function.Predicate(Of T1)) As Boolean
 
 		''' <summary>
 		''' Returns an <seealso cref="Optional"/> describing the first element of this stream,
@@ -941,7 +941,7 @@ Namespace java.util.stream
 		''' <param name="t"> the single element </param>
 		''' @param <T> the type of stream elements </param>
 		''' <returns> a singleton sequential stream </returns>
-		Shared Function [of](Of T)(ByVal t As T) As Stream(Of T)
+		Shared Function [of](Of T)(  t As T) As Stream(Of T)
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 			Return StreamSupport.stream(New Streams.StreamBuilderImpl<>(t), False);
 
@@ -952,7 +952,7 @@ Namespace java.util.stream
 		''' <param name="values"> the elements of the new stream </param>
 		''' <returns> the new stream </returns>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Shared Function [of](Of T)(ParamArray ByVal values As T()) As Stream(Of T) ' Creating a stream from an array is safe
+		Shared Function [of](Of T)(ParamArray   values As T()) As Stream(Of T) ' Creating a stream from an array is safe
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 			Return java.util.Arrays.stream(values);
 
@@ -972,7 +972,7 @@ Namespace java.util.stream
 		''' <param name="f"> a function to be applied to to the previous element to produce
 		'''          a new element </param>
 		''' <returns> a new sequential {@code Stream} </returns>
-		Shared Function iterate(Of T)(ByVal seed As T, ByVal f As java.util.function.UnaryOperator(Of T)) As Stream(Of T)
+		Shared Function iterate(Of T)(  seed As T,   f As java.util.function.UnaryOperator(Of T)) As Stream(Of T)
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 			java.util.Objects.requireNonNull(f);
 'JAVA TO VB CONVERTER TODO TASK: Interfaces cannot contain fields in .NET:
@@ -988,7 +988,7 @@ Namespace java.util.stream
 		''' @param <T> the type of stream elements </param>
 		''' <param name="s"> the {@code Supplier} of generated elements </param>
 		''' <returns> a new infinite sequential unordered {@code Stream} </returns>
-		Shared Function generate(Of T)(ByVal s As java.util.function.Supplier(Of T)) As Stream(Of T)
+		Shared Function generate(Of T)(  s As java.util.function.Supplier(Of T)) As Stream(Of T)
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 			java.util.Objects.requireNonNull(s);
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
@@ -1011,7 +1011,7 @@ Namespace java.util.stream
 		''' <param name="a"> the first stream </param>
 		''' <param name="b"> the second stream </param>
 		''' <returns> the concatenation of the two input streams </returns>
-		Shared Function concat(Of T, T1 As T, T2 As T)(ByVal a As Stream(Of T1), ByVal b As Stream(Of T2)) As Stream(Of T)
+		Shared Function concat(Of T, T1 As T, T2 As T)(  a As Stream(Of T1),   b As Stream(Of T2)) As Stream(Of T)
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 			java.util.Objects.requireNonNull(a);
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
@@ -1022,7 +1022,7 @@ Namespace java.util.stream
 '			java.util.Spliterator(Of T) split = New Streams.ConcatSpliterator.OfRef(Of )((java.util.Spliterator(Of T)) a.spliterator(), (java.util.Spliterator(Of T)) b.spliterator());
 'JAVA TO VB CONVERTER TODO TASK: Interfaces cannot contain fields in .NET:
 '			Stream(Of T) stream = StreamSupport.stream(split, a.isParallel() || b.isParallel());
-			Function stream.onClose(Streams.composedClose(a, b) ByVal  As ) As [Return]
+			Function stream.onClose(Streams.composedClose(a, b)    As ) As [Return]
 
 		''' <summary>
 		''' A mutable builder for a {@code Stream}.  This allows the creation of a

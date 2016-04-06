@@ -52,7 +52,7 @@ Namespace java.util
 		''' </param>
 		''' <param name="arg">
 		'''         Class of the mismatched argument </param>
-		Public Sub New(ByVal c As Char, ByVal arg As [Class])
+		Public Sub New(  c As Char,   arg As [Class])
 			If arg Is Nothing Then Throw New NullPointerException
 			Me.c = c
 			Me.arg = arg

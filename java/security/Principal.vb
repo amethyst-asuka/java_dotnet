@@ -45,7 +45,7 @@ Namespace java.security
 		''' </param>
 		''' <returns> true if the principal passed in is the same as that
 		''' encapsulated by this principal, and false otherwise. </returns>
-		Function Equals(ByVal another As Object) As Boolean
+		Function Equals(  another As Object) As Boolean
 
 		''' <summary>
 		''' Returns a string representation of this principal.
@@ -79,8 +79,8 @@ Namespace java.security
 		''' <returns> true if {@code subject} is non-null and is
 		'''              implied by this principal, or false otherwise.
 		''' @since 1.8 </returns>
-		default Function implies(ByVal subject As javax.security.auth.Subject) As Boolean
-			Sub [New](subject == ByVal [Nothing] As )
+		default Function implies(  subject As javax.security.auth.Subject) As Boolean
+			Sub [New](subject ==   [Nothing] As )
 'JAVA TO VB CONVERTER TODO TASK: Interfaces cannot contain fields in .NET:
 '				Return False;
 			ReadOnly Property subject.getPrincipals() As [Return]

@@ -70,7 +70,7 @@ Namespace java.awt.image
 		''' its source Image as specified by the width and height parameters. </summary>
 		''' <param name="width"> the target width to scale the image </param>
 		''' <param name="height"> the target height to scale the image </param>
-		Public Sub New(ByVal width As Integer, ByVal height As Integer)
+		Public Sub New(  width As Integer,   height As Integer)
 			MyBase.New(width, height)
 		End Sub
 
@@ -86,7 +86,7 @@ Namespace java.awt.image
         ''' with the filtering operation. </summary>
         ''' <seealso cref= ImageConsumer#setHints </seealso>
         Public Overrides ReadOnly Property hints As Integer
-            Set(ByVal hints As Integer)
+            Set(  hints As Integer)
                 passthrough = ((hints And neededHints) <> neededHints)
                 MyBase.hints = hints
             End Set
@@ -139,7 +139,7 @@ Namespace java.awt.image
 			Return outpix
 		End Function
 
-		Private Sub accumPixels(ByVal x As Integer, ByVal y As Integer, ByVal w As Integer, ByVal h As Integer, ByVal model As java.awt.image.ColorModel, ByVal pixels As Object, ByVal [off] As Integer, ByVal scansize As Integer)
+		Private Sub accumPixels(  x As Integer,   y As Integer,   w As Integer,   h As Integer,   model As java.awt.image.ColorModel,   pixels As Object,   [off] As Integer,   scansize As Integer)
 			If reds Is Nothing Then makeAccumBuffers()
 			Dim sy As Integer = y
 			Dim syrem As Integer = destHeight

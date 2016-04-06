@@ -87,7 +87,7 @@ Namespace java.io
 		''' </param>
 		''' <exception cref="UnsupportedEncodingException">
 		'''             If the named encoding is not supported </exception>
-		Public Sub New(ByVal out As OutputStream, ByVal charsetName As String)
+		Public Sub New(  out As OutputStream,   charsetName As String)
 			MyBase.New(out)
 			If charsetName Is Nothing Then Throw New NullPointerException("charsetName")
 			se = sun.nio.cs.StreamEncoder.forOutputStreamWriter(out, Me, charsetName)
@@ -97,7 +97,7 @@ Namespace java.io
 		''' Creates an OutputStreamWriter that uses the default character encoding.
 		''' </summary>
 		''' <param name="out">  An OutputStream </param>
-		Public Sub New(ByVal out As OutputStream)
+		Public Sub New(  out As OutputStream)
 			MyBase.New(out)
 			Try
 				se = sun.nio.cs.StreamEncoder.forOutputStreamWriter(out, Me, CStr(Nothing))
@@ -117,7 +117,7 @@ Namespace java.io
 		''' 
 		''' @since 1.4
 		''' @spec JSR-51 </param>
-		Public Sub New(ByVal out As OutputStream, ByVal cs As java.nio.charset.Charset)
+		Public Sub New(  out As OutputStream,   cs As java.nio.charset.Charset)
 			MyBase.New(out)
 			If cs Is Nothing Then Throw New NullPointerException("charset")
 			se = sun.nio.cs.StreamEncoder.forOutputStreamWriter(out, Me, cs)
@@ -134,7 +134,7 @@ Namespace java.io
 		''' 
 		''' @since 1.4
 		''' @spec JSR-51 </param>
-		Public Sub New(ByVal out As OutputStream, ByVal enc As java.nio.charset.CharsetEncoder)
+		Public Sub New(  out As OutputStream,   enc As java.nio.charset.CharsetEncoder)
 			MyBase.New(out)
 			If enc Is Nothing Then Throw New NullPointerException("charset encoder")
 			se = sun.nio.cs.StreamEncoder.forOutputStreamWriter(out, Me, enc)
@@ -178,7 +178,7 @@ Namespace java.io
 		''' Writes a single character.
 		''' </summary>
 		''' <exception cref="IOException">  If an I/O error occurs </exception>
-		Public Overrides Sub write(ByVal c As Integer)
+		Public Overrides Sub write(  c As Integer)
 			se.write(c)
 		End Sub
 

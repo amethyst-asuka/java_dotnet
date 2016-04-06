@@ -41,7 +41,7 @@ Namespace java.io
 		''' Create a StreamCorruptedException and list a reason why thrown.
 		''' </summary>
 		''' <param name="reason">  String describing the reason for the exception. </param>
-		Public Sub New(ByVal reason As String)
+		Public Sub New(  reason As String)
 			MyBase.New(reason)
 		End Sub
 

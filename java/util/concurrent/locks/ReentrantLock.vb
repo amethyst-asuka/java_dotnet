@@ -134,7 +134,7 @@ Namespace java.util.concurrent.locks
 			''' Performs non-fair tryLock.  tryAcquire is implemented in
 			''' subclasses, but both need nonfair try for trylock method.
 			''' </summary>
-			Friend Function nonfairTryAcquire(ByVal acquires As Integer) As Boolean
+			Friend Function nonfairTryAcquire(  acquires As Integer) As Boolean
 				Dim current As Thread = Thread.CurrentThread
 				Dim c As Integer = state
 				If c = 0 Then
@@ -151,7 +151,7 @@ Namespace java.util.concurrent.locks
 				Return False
 			End Function
 
-			Protected Friend NotOverridable Overrides Function tryRelease(ByVal releases As Integer) As Boolean
+			Protected Friend NotOverridable Overrides Function tryRelease(  releases As Integer) As Boolean
 				Dim c As Integer = state - releases
 				If Thread.CurrentThread IsNot exclusiveOwnerThread Then Throw New IllegalMonitorStateException
 				Dim free As Boolean = False
@@ -198,7 +198,7 @@ Namespace java.util.concurrent.locks
 			''' <summary>
 			''' Reconstitutes the instance from a stream (that is, deserializes it).
 			''' </summary>
-			Private Sub readObject(ByVal s As java.io.ObjectInputStream)
+			Private Sub readObject(  s As java.io.ObjectInputStream)
 				s.defaultReadObject()
 				state = 0 ' reset to unlocked state
 			End Sub
@@ -224,7 +224,7 @@ Namespace java.util.concurrent.locks
 				End If
 			End Sub
 
-			Protected Friend NotOverridable Overrides Function tryAcquire(ByVal acquires As Integer) As Boolean
+			Protected Friend NotOverridable Overrides Function tryAcquire(  acquires As Integer) As Boolean
 				Return nonfairTryAcquire(acquires)
 			End Function
 		End Class
@@ -245,7 +245,7 @@ Namespace java.util.concurrent.locks
 			''' Fair version of tryAcquire.  Don't grant access unless
 			''' recursive call or no waiters or is first.
 			''' </summary>
-			Protected Friend NotOverridable Overrides Function tryAcquire(ByVal acquires As Integer) As Boolean
+			Protected Friend NotOverridable Overrides Function tryAcquire(  acquires As Integer) As Boolean
 				Dim current As Thread = Thread.CurrentThread
 				Dim c As Integer = state
 				If c = 0 Then
@@ -276,7 +276,7 @@ Namespace java.util.concurrent.locks
 		''' given fairness policy.
 		''' </summary>
 		''' <param name="fair"> {@code true} if this lock should use a fair ordering policy </param>
-		Public Sub New(ByVal fair As Boolean)
+		Public Sub New(  fair As Boolean)
 			sync = If(fair, New FairSync, New NonfairSync)
 		End Sub
 
@@ -447,7 +447,7 @@ Namespace java.util.concurrent.locks
 		'''         the lock could be acquired </returns>
 		''' <exception cref="InterruptedException"> if the current thread is interrupted </exception>
 		''' <exception cref="NullPointerException"> if the time unit is null </exception>
-		Public Overridable Function tryLock(ByVal timeout As Long, ByVal unit As java.util.concurrent.TimeUnit) As Boolean Implements Lock.tryLock
+		Public Overridable Function tryLock(  timeout As Long,   unit As java.util.concurrent.TimeUnit) As Boolean Implements Lock.tryLock
 			Return sync.tryAcquireNanos(1, unit.toNanos(timeout))
 		End Function
 
@@ -651,7 +651,7 @@ Namespace java.util.concurrent.locks
 		''' <param name="thread"> the thread </param>
 		''' <returns> {@code true} if the given thread is queued waiting for this lock </returns>
 		''' <exception cref="NullPointerException"> if the thread is null </exception>
-		Public Function hasQueuedThread(ByVal thread_Renamed As Thread) As Boolean
+		Public Function hasQueuedThread(  thread_Renamed As Thread) As Boolean
 			Return sync.isQueued(thread_Renamed)
 		End Function
 
@@ -700,7 +700,7 @@ Namespace java.util.concurrent.locks
 		''' <exception cref="IllegalArgumentException"> if the given condition is
 		'''         not associated with this lock </exception>
 		''' <exception cref="NullPointerException"> if the condition is null </exception>
-		Public Overridable Function hasWaiters(ByVal condition As Condition) As Boolean
+		Public Overridable Function hasWaiters(  condition As Condition) As Boolean
 			If condition Is Nothing Then Throw New NullPointerException
 			If Not(TypeOf condition Is AbstractQueuedSynchronizer.ConditionObject) Then Throw New IllegalArgumentException("not owner")
 			Return sync.hasWaiters(CType(condition, AbstractQueuedSynchronizer.ConditionObject))
@@ -720,7 +720,7 @@ Namespace java.util.concurrent.locks
 		''' <exception cref="IllegalArgumentException"> if the given condition is
 		'''         not associated with this lock </exception>
 		''' <exception cref="NullPointerException"> if the condition is null </exception>
-		Public Overridable Function getWaitQueueLength(ByVal condition As Condition) As Integer
+		Public Overridable Function getWaitQueueLength(  condition As Condition) As Integer
 			If condition Is Nothing Then Throw New NullPointerException
 			If Not(TypeOf condition Is AbstractQueuedSynchronizer.ConditionObject) Then Throw New IllegalArgumentException("not owner")
 			Return sync.getWaitQueueLength(CType(condition, AbstractQueuedSynchronizer.ConditionObject))
@@ -742,7 +742,7 @@ Namespace java.util.concurrent.locks
 		''' <exception cref="IllegalArgumentException"> if the given condition is
 		'''         not associated with this lock </exception>
 		''' <exception cref="NullPointerException"> if the condition is null </exception>
-		Protected Friend Overridable Function getWaitingThreads(ByVal condition As Condition) As ICollection(Of Thread)
+		Protected Friend Overridable Function getWaitingThreads(  condition As Condition) As ICollection(Of Thread)
 			If condition Is Nothing Then Throw New NullPointerException
 			If Not(TypeOf condition Is AbstractQueuedSynchronizer.ConditionObject) Then Throw New IllegalArgumentException("not owner")
 			Return sync.getWaitingThreads(CType(condition, AbstractQueuedSynchronizer.ConditionObject))

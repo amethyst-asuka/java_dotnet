@@ -126,7 +126,7 @@ Namespace java.rmi.server
 		''' constructor.
 		''' </summary>
 		''' <param name="objNum"> object number for well-known object identifier </param>
-		Public Sub New(ByVal objNum As Integer)
+		Public Sub New(  objNum As Integer)
 			space = New UID(CShort(0))
 			Me.objNum = objNum
 		End Sub
@@ -134,7 +134,7 @@ Namespace java.rmi.server
 		''' <summary>
 		''' Constructs an object identifier given data read from a stream.
 		''' </summary>
-		Private Sub New(ByVal objNum As Long, ByVal space As UID)
+		Private Sub New(  objNum As Long,   space As UID)
 			Me.objNum = objNum
 			Me.space = space
 		End Sub
@@ -154,7 +154,7 @@ Namespace java.rmi.server
 		''' </param>
 		''' <exception cref="IOException"> if an I/O error occurs while performing
 		''' this operation </exception>
-		Public Sub write(ByVal out As java.io.ObjectOutput)
+		Public Sub write(  out As java.io.ObjectOutput)
 			out.writeLong(objNum)
 			space.write(out)
 		End Sub
@@ -179,7 +179,7 @@ Namespace java.rmi.server
 		''' </returns>
 		''' <exception cref="IOException"> if an I/O error occurs while performing
 		''' this operation </exception>
-		Public Shared Function read(ByVal [in] As java.io.ObjectInput) As ObjID
+		Public Shared Function read(  [in] As java.io.ObjectInput) As ObjID
 			Dim num As Long = [in].readLong()
 			Dim space As UID = UID.read([in])
 			Return New ObjID(num, space)
@@ -206,7 +206,7 @@ Namespace java.rmi.server
 		''' </param>
 		''' <returns>  <code>true</code> if the given object is equivalent to
 		''' this one, and <code>false</code> otherwise </returns>
-		Public Overrides Function Equals(ByVal obj As Object) As Boolean
+		Public Overrides Function Equals(  obj As Object) As Boolean
 			If TypeOf obj Is ObjID Then
 				Dim id As ObjID = CType(obj, ObjID)
 				Return objNum = id.objNum AndAlso space.Equals(id.space)

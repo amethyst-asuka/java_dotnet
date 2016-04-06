@@ -281,14 +281,14 @@ Namespace java.net
 		''' <param name="host"> the hostname or IPaddress of the computer, optionally
 		''' including a colon followed by a port or port range. </param>
 		''' <param name="action"> the action string. </param>
-		Public Sub New(ByVal host As String, ByVal action As String)
+		Public Sub New(  host As String,   action As String)
 			MyBase.New(getHost(host))
 			' name initialized to getHost(host); NPE detected in getHost()
 			init(name, getMask(action))
 		End Sub
 
 
-		Friend Sub New(ByVal host As String, ByVal mask As Integer)
+		Friend Sub New(  host As String,   mask As Integer)
 			MyBase.New(getHost(host))
 			' name initialized to getHost(host); NPE detected in getHost()
 			init(name, mask)
@@ -298,7 +298,7 @@ Namespace java.net
 			defaultDeny = True
 		End Sub
 
-		Private Shared Function getHost(ByVal host As String) As String
+		Private Shared Function getHost(  host As String) As String
 			If host.Equals("") Then
 				Return "localhost"
 			Else
@@ -333,7 +333,7 @@ Namespace java.net
 			End If
 		End Function
 
-		Private Function parsePort(ByVal port As String) As Integer()
+		Private Function parsePort(  port As String) As Integer()
 
 			If port Is Nothing OrElse port.Equals("") OrElse port.Equals("*") Then Return New Integer() {PORT_MIN, PORT_MAX}
 
@@ -377,7 +377,7 @@ Namespace java.net
 		''' as this point, instead we hold off until the implies method is
 		''' called.
 		''' </summary>
-		Private Sub init(ByVal host As String, ByVal mask As Integer)
+		Private Sub init(  host As String,   mask As Integer)
 			' Set the integer mask that represents the actions
 
 			If (mask And ALL) <> mask Then Throw New IllegalArgumentException("invalid actions mask")
@@ -466,7 +466,7 @@ Namespace java.net
 		''' </summary>
 		''' <param name="action"> the action string </param>
 		''' <returns> the action mask </returns>
-		Private Shared Function getMask(ByVal action As String) As Integer
+		Private Shared Function getMask(  action As String) As Integer
 
 			If action Is Nothing Then Throw New NullPointerException("action can't be null")
 
@@ -605,7 +605,7 @@ Namespace java.net
 		<NonSerialized> _
 		Private cdomain, hdomain As String
 
-		Private Function match(ByVal cname As String, ByVal hname As String) As Boolean
+		Private Function match(  cname As String,   hname As String) As Boolean
 			Dim a As String = cname.ToLower()
 			Dim b As String = hname.ToLower()
 			If a.StartsWith(b) AndAlso ((a.length() = b.length()) OrElse (a.Chars(b.length()) = "."c)) Then Return True
@@ -615,7 +615,7 @@ Namespace java.net
 			Return cdomain.length() <> 0 AndAlso hdomain.length() <> 0 AndAlso cdomain.Equals(hdomain)
 		End Function
 
-		Private Function authorized(ByVal cname As String, ByVal addr As SByte()) As Boolean
+		Private Function authorized(  cname As String,   addr As SByte()) As Boolean
 			If addr.Length = 4 Then
 				Return authorizedIPv4(cname, addr)
 			ElseIf addr.Length = 16 Then
@@ -625,7 +625,7 @@ Namespace java.net
 			End If
 		End Function
 
-		Private Function authorizedIPv4(ByVal cname As String, ByVal addr As SByte()) As Boolean
+		Private Function authorizedIPv4(  cname As String,   addr As SByte()) As Boolean
 			Dim authHost As String = ""
 			Dim auth As java.net.InetAddress
 
@@ -645,7 +645,7 @@ Namespace java.net
 			Return False
 		End Function
 
-		Private Function authorizedIPv6(ByVal cname As String, ByVal addr As SByte()) As Boolean
+		Private Function authorizedIPv6(  cname As String,   addr As SByte()) As Boolean
 			Dim authHost As String = ""
 			Dim auth As java.net.InetAddress
 
@@ -739,7 +739,7 @@ Namespace java.net
 		''' </param>
 		''' <returns> true if the specified permission is implied by this object,
 		''' false if not. </returns>
-		Public Function implies(ByVal p As java.security.Permission) As Boolean
+		Public Function implies(  p As java.security.Permission) As Boolean
 			Dim i, j As Integer
 
 			If Not(TypeOf p Is SocketPermission) Then Return False
@@ -773,7 +773,7 @@ Namespace java.net
 		''' </param>
 		''' <returns> true if "permission" is a proper subset of the current object,
 		''' false if not. </returns>
-		Friend Function impliesIgnoreMask(ByVal that As SocketPermission) As Boolean
+		Friend Function impliesIgnoreMask(  that As SocketPermission) As Boolean
 			Dim i, j As Integer
 
 			If (that.mask And RESOLVE) <> that.mask Then
@@ -860,7 +860,7 @@ Namespace java.net
 			Return False
 		End Function
 
-		Private Function compareHostnames(ByVal that As SocketPermission) As Boolean
+		Private Function compareHostnames(  that As SocketPermission) As Boolean
 			' we see if the original names/IPs passed in were equal.
 
 			Dim thisHost As String = hostname
@@ -885,7 +885,7 @@ Namespace java.net
 		'''  same hostname, port range, and actions as this
 		'''  SocketPermission object. However, port range will be ignored
 		'''  in the comparison if <i>obj</i> only contains the action, 'resolve'. </returns>
-		Public Overrides Function Equals(ByVal obj As Object) As Boolean
+		Public Overrides Function Equals(  obj As Object) As Boolean
 			If obj Is Me Then Return True
 
 			If Not(TypeOf obj Is SocketPermission) Then Return False
@@ -976,7 +976,7 @@ Namespace java.net
 		''' </summary>
 		''' <param name="mask"> a specific integer action mask to translate into a string </param>
 		''' <returns> the canonical string representation of the actions </returns>
-		Private Shared Function getActions(ByVal mask As Integer) As String
+		Private Shared Function getActions(  mask As Integer) As String
 			Dim sb As New StringBuilder
 			Dim comma As Boolean = False
 
@@ -1051,7 +1051,7 @@ Namespace java.net
 		''' takes care of the name.
 		''' </summary>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Private Sub writeObject(ByVal s As java.io.ObjectOutputStream)
+		Private Sub writeObject(  s As java.io.ObjectOutputStream)
 			' Write out the actions. The superclass takes care of the name
 			' call getActions to make sure actions field is initialized
 			If actions Is Nothing Then actions
@@ -1063,7 +1063,7 @@ Namespace java.net
 		''' a stream.
 		''' </summary>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Private Sub readObject(ByVal s As java.io.ObjectInputStream)
+		Private Sub readObject(  s As java.io.ObjectInputStream)
 			' Read in the action, then initialize the rest
 			s.defaultReadObject()
 			init(name,getMask(actions))
@@ -1073,7 +1073,7 @@ Namespace java.net
 		''' Check the system/security property for the ephemeral port range
 		''' for this system. The suffix is either "high" or "low"
 		''' </summary>
-		Private Shared Function initEphemeralPorts(ByVal suffix As String, ByVal defval As Integer) As Integer
+		Private Shared Function initEphemeralPorts(  suffix As String,   defval As Integer) As Integer
 			Return java.security.AccessController.doPrivileged(New PrivilegedActionAnonymousInnerClassHelper(Of T)
 		   )
 		End Function
@@ -1096,7 +1096,7 @@ Namespace java.net
 		''' together with the ephemeral range for this platform
 		''' (if policy includes ephemeral range)
 		''' </summary>
-		Private Shared Function inRange(ByVal policyLow As Integer, ByVal policyHigh As Integer, ByVal targetLow As Integer, ByVal targetHigh As Integer) As Boolean
+		Private Shared Function inRange(  policyLow As Integer,   policyHigh As Integer,   targetLow As Integer,   targetHigh As Integer) As Boolean
 			Dim ephemeralLow As Integer = EphemeralRange.low
 			Dim ephemeralHigh As Integer = EphemeralRange.high
 
@@ -1207,7 +1207,7 @@ Namespace java.net
 		''' </exception>
 		''' <exception cref="SecurityException"> - if this SocketPermissionCollection object
 		'''                                has been marked readonly </exception>
-		Public Sub add(ByVal permission As java.security.Permission)
+		Public Sub add(  permission As java.security.Permission)
 			If Not(TypeOf permission Is SocketPermission) Then Throw New IllegalArgumentException("invalid permission: " & permission)
 			If [readOnly] Then Throw New SecurityException("attempt to add a Permission to a readonly PermissionCollection")
 
@@ -1227,7 +1227,7 @@ Namespace java.net
 		''' <returns> true if "permission" is a proper subset of a permission in
 		''' the collection, false if not. </returns>
 
-		Public Function implies(ByVal permission As java.security.Permission) As Boolean
+		Public Function implies(  permission As java.security.Permission) As Boolean
 			If Not(TypeOf permission Is SocketPermission) Then Return False
 
 			Dim np As SocketPermission = CType(permission, SocketPermission)
@@ -1290,7 +1290,7 @@ Namespace java.net
 	'     * Writes the contents of the perms field out as a Vector for
 	'     * serialization compatibility with earlier releases.
 	'     
-		Private Sub writeObject(ByVal out As java.io.ObjectOutputStream)
+		Private Sub writeObject(  out As java.io.ObjectOutputStream)
 			' Don't call out.defaultWriteObject()
 
 			' Write out Vector
@@ -1308,7 +1308,7 @@ Namespace java.net
 	'    
 	'     * Reads in a Vector of SocketPermissions and saves them in the perms field.
 	'     
-		Private Sub readObject(ByVal [in] As java.io.ObjectInputStream)
+		Private Sub readObject(  [in] As java.io.ObjectInputStream)
 			' Don't call in.defaultReadObject()
 
 			' Read in serialized fields

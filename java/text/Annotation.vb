@@ -60,7 +60,7 @@ Namespace java.text
 		''' may be null.
 		''' </summary>
 		''' <param name="value"> the value of the attribute </param>
-		Public Sub New(ByVal value As Object)
+		Public Sub New(  value As Object)
 			Me.value = value
 		End Sub
 

@@ -38,7 +38,7 @@ Namespace java.awt.event
 		''' <summary>
 		''' Invoked when the value of the adjustable has changed.
 		''' </summary>
-		Sub adjustmentValueChanged(ByVal e As AdjustmentEvent)
+		Sub adjustmentValueChanged(  e As AdjustmentEvent)
 
 	End Interface
 

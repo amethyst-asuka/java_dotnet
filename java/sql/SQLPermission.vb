@@ -126,7 +126,7 @@ Namespace java.sql
 		''' <exception cref="IllegalArgumentException"> if <code>name</code> is empty.
 		'''  </exception>
 
-		Public Sub New(ByVal name As String)
+		Public Sub New(  name As String)
 			MyBase.New(name)
 		End Sub
 
@@ -144,7 +144,7 @@ Namespace java.sql
 		''' <exception cref="IllegalArgumentException"> if <code>name</code> is empty.
 		'''  </exception>
 
-		Public Sub New(ByVal name As String, ByVal actions As String)
+		Public Sub New(  name As String,   actions As String)
 			MyBase.New(name, actions)
 		End Sub
 

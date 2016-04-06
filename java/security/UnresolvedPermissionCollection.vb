@@ -69,7 +69,7 @@ Namespace java.security
 		''' </summary>
 		''' <param name="permission"> the Permission object to add. </param>
 
-		Public Overrides Sub add(ByVal permission As Permission)
+		Public Overrides Sub add(  permission As Permission)
 			If Not(TypeOf permission Is UnresolvedPermission) Then Throw New IllegalArgumentException("invalid permission: " & permission)
 			Dim up As UnresolvedPermission = CType(permission, UnresolvedPermission)
 
@@ -90,7 +90,7 @@ Namespace java.security
 		''' get any unresolved permissions of the same type as p,
 		''' and return the List containing them.
 		''' </summary>
-		Friend Function getUnresolvedPermissions(ByVal p As Permission) As List(Of UnresolvedPermission)
+		Friend Function getUnresolvedPermissions(  p As Permission) As List(Of UnresolvedPermission)
 			SyncLock Me
 				Return perms.get(p.GetType().name)
 			End SyncLock
@@ -100,7 +100,7 @@ Namespace java.security
 		''' always returns false for unresolved permissions
 		''' 
 		''' </summary>
-		Public Overrides Function implies(ByVal permission As Permission) As Boolean
+		Public Overrides Function implies(  permission As Permission) As Boolean
 			Return False
 		End Function
 
@@ -146,7 +146,7 @@ Namespace java.security
 	'     * in which the values are Vectors for
 	'     * serialization compatibility with earlier releases.
 	'     
-		Private Sub writeObject(ByVal out As java.io.ObjectOutputStream)
+		Private Sub writeObject(  out As java.io.ObjectOutputStream)
 			' Don't call out.defaultWriteObject()
 
 			' Copy perms into a Hashtable
@@ -178,7 +178,7 @@ Namespace java.security
 	'     * Reads in a Hashtable in which the values are Vectors of
 	'     * UnresolvedPermissions and saves them in the perms field.
 	'     
-		Private Sub readObject(ByVal [in] As java.io.ObjectInputStream)
+		Private Sub readObject(  [in] As java.io.ObjectInputStream)
 			' Don't call defaultReadObject()
 
 			' Read in serialized fields

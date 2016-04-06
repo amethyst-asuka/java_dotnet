@@ -125,8 +125,8 @@ Namespace java.time.chrono
 		''' </summary>
 		''' <param name="field">  the field to check, null returns false </param>
 		''' <returns> true if the field is supported on this era, false if not </returns>
-		default Overrides Function isSupported(ByVal field As java.time.temporal.TemporalField) As Boolean
-			Sub [New](field ByVal java.time.temporal.ChronoField As instanceof)
+		default Overrides Function isSupported(  field As java.time.temporal.TemporalField) As Boolean
+			Sub [New](field   java.time.temporal.ChronoField As instanceof)
 'JAVA TO VB CONVERTER TODO TASK: Interfaces cannot contain fields in .NET:
 '				Return field == ERA;
 'JAVA TO VB CONVERTER TODO TASK: Interfaces cannot contain fields in .NET:
@@ -156,7 +156,7 @@ Namespace java.time.chrono
 		''' <returns> the range of valid values for the field, not null </returns>
 		''' <exception cref="DateTimeException"> if the range for the field cannot be obtained </exception>
 		''' <exception cref="UnsupportedTemporalTypeException"> if the unit is not supported </exception>
-		default Overrides Function range(ByVal field As java.time.temporal.TemporalField) As java.time.temporal.ValueRange ' override for Javadoc
+		default Overrides Function range(  field As java.time.temporal.TemporalField) As java.time.temporal.ValueRange ' override for Javadoc
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 			Return outerInstance.range(field);
 
@@ -184,8 +184,8 @@ Namespace java.time.chrono
 		''' <exception cref="UnsupportedTemporalTypeException"> if the field is not supported or
 		'''         the range of values exceeds an {@code int} </exception>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
-		default Overrides Function [get](ByVal field As java.time.temporal.TemporalField) As Integer ' override for Javadoc and performance
-			Sub [New](field == ByVal ERA As )
+		default Overrides Function [get](  field As java.time.temporal.TemporalField) As Integer ' override for Javadoc and performance
+			Sub [New](field ==   ERA As )
 				ReadOnly Property value As [Return]
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 			Return outerInstance.get(field);
@@ -211,11 +211,11 @@ Namespace java.time.chrono
 		''' <exception cref="DateTimeException"> if a value for the field cannot be obtained </exception>
 		''' <exception cref="UnsupportedTemporalTypeException"> if the field is not supported </exception>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
-		default Overrides Function getLong(ByVal field As java.time.temporal.TemporalField) As Long
-			Sub [New](field == ByVal ERA As )
+		default Overrides Function getLong(  field As java.time.temporal.TemporalField) As Long
+			Sub [New](field ==   ERA As )
 				ReadOnly Property value As [Return]
-			Function [if](field ByVal java.time.temporal.ChronoField As instanceof) As else
-				throw Function java.time.temporal.UnsupportedTemporalTypeException("Unsupported field: " & ByVal field As ) As New
+			Function [if](field   java.time.temporal.ChronoField As instanceof) As else
+				throw Function java.time.temporal.UnsupportedTemporalTypeException("Unsupported field: " &   field As ) As New
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 			Return field.getFrom(Me);
 
@@ -238,8 +238,8 @@ Namespace java.time.chrono
 		''' <exception cref="DateTimeException"> if unable to query (defined by the query) </exception>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs (defined by the query) </exception>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		default Overrides Function query(ByVal query As java.time.temporal.TemporalQuery(Of R)) As R(Of R)
-			Sub [New](query == java.time.temporal.TemporalQueries.precision() ByVal  As )
+		default Overrides Function query(  query As java.time.temporal.TemporalQuery(Of R)) As R(Of R)
+			Sub [New](query == java.time.temporal.TemporalQueries.precision()    As )
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 				Return (R) ERAS;
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
@@ -268,7 +268,7 @@ Namespace java.time.chrono
 		''' <returns> the adjusted object, not null </returns>
 		''' <exception cref="DateTimeException"> if unable to make the adjustment </exception>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
-		default Overrides Function adjustInto(ByVal temporal As java.time.temporal.Temporal) As java.time.temporal.Temporal
+		default Overrides Function adjustInto(  temporal As java.time.temporal.Temporal) As java.time.temporal.Temporal
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 			Return temporal.with(ERA, getValue());
 
@@ -287,7 +287,7 @@ Namespace java.time.chrono
 		''' <param name="style">  the style of the text required, not null </param>
 		''' <param name="locale">  the locale to use, not null </param>
 		''' <returns> the text value of the era, not null </returns>
-		default Function getDisplayName(ByVal style As java.time.format.TextStyle, ByVal locale As java.util.Locale) As String
+		default Function getDisplayName(  style As java.time.format.TextStyle,   locale As java.util.Locale) As String
 			Return Function java.time.format.DateTimeFormatterBuilder() As New
 
 		' NOTE: methods to convert year-of-era/proleptic-year cannot be here as they may depend on month/day (Japanese)

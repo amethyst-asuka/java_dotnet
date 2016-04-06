@@ -55,7 +55,7 @@ Namespace java.nio.file
         ''' </exception>
         ''' <exception cref="IllegalArgumentException">
         '''          if the error index is less than <tt>-1</tt> </exception>
-        Public Sub New(ByVal input As String, ByVal reason As String, ByVal index As Integer)
+        Public Sub New(  input As String,   reason As String,   index As Integer)
             MyBase.New(reason)
             If (input Is Nothing) OrElse (reason Is Nothing) Then Throw New NullPointerException
             If index < -1 Then Throw New IllegalArgumentException
@@ -72,7 +72,7 @@ Namespace java.nio.file
         ''' </param>
         ''' <exception cref="NullPointerException">
         '''          if either the input or reason strings are <tt>null</tt> </exception>
-        Public Sub New(ByVal input As String, ByVal reason As String)
+        Public Sub New(  input As String,   reason As String)
             Me.New(input, reason, -1)
         End Sub
 

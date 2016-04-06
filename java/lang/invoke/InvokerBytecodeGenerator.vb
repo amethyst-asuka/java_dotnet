@@ -90,7 +90,7 @@ Namespace java.lang.invoke
 
         ''' <summary>
         ''' Main constructor; other constructors delegate to this one. </summary>
-        Private Sub New(ByVal lambdaForm_Renamed As LambdaForm, ByVal localsMapSize As Integer, ByVal className As String, ByVal invokerName As String, ByVal invokerType As MethodType)
+        Private Sub New(  lambdaForm_Renamed As LambdaForm,   localsMapSize As Integer,   className As String,   invokerName As String,   invokerType As MethodType)
             If invokerName.Contains(".") Then
                 Dim p As Integer = invokerName.IndexOf(".")
                 className = invokerName.Substring(0, p)
@@ -110,7 +110,7 @@ Namespace java.lang.invoke
 
         ''' <summary>
         ''' For generating LambdaForm interpreter entry points. </summary>
-        Private Sub New(ByVal className As String, ByVal invokerName As String, ByVal invokerType As MethodType)
+        Private Sub New(  className As String,   invokerName As String,   invokerType As MethodType)
             Me.New(Nothing, invokerType.parameterCount(), className, invokerName, invokerType)
             ' Create an array to map name indexes to locals indexes.
             localTypes(localTypes.Length - 1) = V_TYPE
@@ -122,7 +122,7 @@ Namespace java.lang.invoke
 
         ''' <summary>
         ''' For generating customized code for a single LambdaForm. </summary>
-        Private Sub New(ByVal className As String, ByVal form As LambdaForm, ByVal invokerType As MethodType)
+        Private Sub New(  className As String,   form As LambdaForm,   invokerType As MethodType)
             Me.New(form, form.names.Length, className, form.debugName, invokerType)
             ' Create an array to map name indexes to locals indexes.
             Dim names As Name() = form.names
@@ -164,7 +164,7 @@ Namespace java.lang.invoke
             End If
         End Sub
 
-        Friend Shared Sub maybeDump(ByVal className As String, ByVal classFile As SByte())
+        Friend Shared Sub maybeDump(  className As String,   classFile As SByte())
             If DUMP_CLASS_FILES Then java.security.AccessController.doPrivileged(New PrivilegedActionAnonymousInnerClassHelper(Of T)
 
         End Sub
@@ -189,7 +189,7 @@ Namespace java.lang.invoke
             End Function
         End Class
 
-        Private Shared Function makeDumpableClassName(ByVal className As String) As String
+        Private Shared Function makeDumpableClassName(  className As String) As String
             Dim ctr As Integer?
             SyncLock DUMP_CLASS_FILES_COUNTERS
                 ctr = DUMP_CLASS_FILES_COUNTERS.get(className)
@@ -210,7 +210,7 @@ Namespace java.lang.invoke
             Friend ReadOnly index As Integer
             Friend ReadOnly placeholder As String
             Friend ReadOnly value As Object
-            Friend Sub New(ByVal outerInstance As InvokerBytecodeGenerator, ByVal index As Integer, ByVal placeholder As String, ByVal value As Object)
+            Friend Sub New(  outerInstance As InvokerBytecodeGenerator,   index As Integer,   placeholder As String,   value As Object)
                 Me.outerInstance = outerInstance
                 Me.index = index
                 Me.placeholder = placeholder
@@ -225,7 +225,7 @@ Namespace java.lang.invoke
 
         Friend cph As Integer = 0 ' for counting constant placeholders
 
-        Friend Overridable Function constantPlaceholder(ByVal arg As Object) As String
+        Friend Overridable Function constantPlaceholder(  arg As Object) As String
             Dim cpPlaceholder As String = "CONSTANT_PLACEHOLDER_" & cph
             cph += 1
             If DUMP_CLASS_FILES Then ' debugging aid cpPlaceholder &= " <<" & debugString(arg) & ">>"
@@ -236,7 +236,7 @@ Namespace java.lang.invoke
                 Return cpPlaceholder
         End Function
 
-        Friend Overridable Function cpPatches(ByVal classFile As SByte()) As Object()
+        Friend Overridable Function cpPatches(  classFile As SByte()) As Object()
             Dim size As Integer = getConstantPoolSize(classFile)
             Dim res As Object() = New Object(size - 1) {}
             For Each p As CpPatch In cpPatches_Renamed.values()
@@ -246,7 +246,7 @@ Namespace java.lang.invoke
             Return res
         End Function
 
-        Private Shared Function debugString(ByVal arg As Object) As String
+        Private Shared Function debugString(  arg As Object) As String
             If TypeOf arg Is MethodHandle Then
                 Dim mh_Renamed As MethodHandle = CType(arg, MethodHandle)
                 Dim member As MemberName = mh_Renamed.internalMemberName()
@@ -261,7 +261,7 @@ Namespace java.lang.invoke
         ''' </summary>
         ''' <param name="classFile"> the bytes of the class file in question. </param>
         ''' <returns> the number of entries in the constant pool. </returns>
-        Private Shared Function getConstantPoolSize(ByVal classFile As SByte()) As Integer
+        Private Shared Function getConstantPoolSize(  classFile As SByte()) As Integer
             ' The first few bytes:
             ' u4 magic;
             ' u2 minor_version;
@@ -273,7 +273,7 @@ Namespace java.lang.invoke
         ''' <summary>
         ''' Extract the MemberName of a newly-defined method.
         ''' </summary>
-        Private Function loadMethod(ByVal classFile As SByte()) As MemberName
+        Private Function loadMethod(  classFile As SByte()) As MemberName
             Dim invokerClass As [Class] = loadAndInitializeInvokerClass(classFile, cpPatches(classFile))
             Return resolveInvokerMember(invokerClass, invokerName, invokerType)
         End Function
@@ -281,13 +281,13 @@ Namespace java.lang.invoke
         ''' <summary>
         ''' Define a given class as anonymous class in the runtime system.
         ''' </summary>
-        Private Shared Function loadAndInitializeInvokerClass(ByVal classBytes As SByte(), ByVal patches As Object()) As [Class]
+        Private Shared Function loadAndInitializeInvokerClass(  classBytes As SByte(),   patches As Object()) As [Class]
             Dim invokerClass As [Class] = UNSAFE.defineAnonymousClass(HOST_CLASS, classBytes, patches)
             UNSAFE.ensureClassInitialized(invokerClass) ' Make sure the class is initialized; VM might complain.
             Return invokerClass
         End Function
 
-        Private Shared Function resolveInvokerMember(ByVal invokerClass As [Class], ByVal name As String, ByVal type As MethodType) As MemberName
+        Private Shared Function resolveInvokerMember(  invokerClass As [Class],   name As String,   type As MethodType) As MemberName
             Dim member As New MemberName(invokerClass, name, type, REF_invokeStatic)
             'System.out.println("resolveInvokerMember => "+member);
             'for (Method m : invokerClass.getDeclaredMethods())  System.out.println("  "+m);
@@ -324,7 +324,7 @@ Namespace java.lang.invoke
         '
         '     * Low-level emit helpers.
         '
-        Private Sub emitConst(ByVal con As Object)
+        Private Sub emitConst(  con As Object)
             If con Is Nothing Then
                 mv.visitInsn(Opcodes.ACONST_NULL)
                 Return
@@ -365,7 +365,7 @@ Namespace java.lang.invoke
             mv.visitLdcInsn(con)
         End Sub
 
-        Private Sub emitIconstInsn(ByVal i As Integer)
+        Private Sub emitIconstInsn(  i As Integer)
             Dim opcode As Integer
             Select Case i
                 Case 0
@@ -396,12 +396,12 @@ Namespace java.lang.invoke
         '
         '     * NOTE: These load/store methods use the localsMap to find the correct index!
         '
-        Private Sub emitLoadInsn(ByVal type As BasicType, ByVal index As Integer)
+        Private Sub emitLoadInsn(  type As BasicType,   index As Integer)
             Dim opcode As Integer = loadInsnOpcode(type)
             mv.visitVarInsn(opcode, localsMap(index))
         End Sub
 
-        Private Function loadInsnOpcode(ByVal type As BasicType) As Integer
+        Private Function loadInsnOpcode(  type As BasicType) As Integer
             Select Case type
                 Case I_TYPE
                     Return Opcodes.ILOAD
@@ -417,16 +417,16 @@ Namespace java.lang.invoke
                     Throw New InternalError("unknown type: " & type)
             End Select
         End Function
-        Private Sub emitAloadInsn(ByVal index As Integer)
+        Private Sub emitAloadInsn(  index As Integer)
             emitLoadInsn(L_TYPE, index)
         End Sub
 
-        Private Sub emitStoreInsn(ByVal type As BasicType, ByVal index As Integer)
+        Private Sub emitStoreInsn(  type As BasicType,   index As Integer)
             Dim opcode As Integer = storeInsnOpcode(type)
             mv.visitVarInsn(opcode, localsMap(index))
         End Sub
 
-        Private Function storeInsnOpcode(ByVal type As BasicType) As Integer
+        Private Function storeInsnOpcode(  type As BasicType) As Integer
             Select Case type
                 Case I_TYPE
                     Return Opcodes.ISTORE
@@ -442,11 +442,11 @@ Namespace java.lang.invoke
                     Throw New InternalError("unknown type: " & type)
             End Select
         End Function
-        Private Sub emitAstoreInsn(ByVal index As Integer)
+        Private Sub emitAstoreInsn(  index As Integer)
             emitStoreInsn(L_TYPE, index)
         End Sub
 
-        Private Function arrayTypeCode(ByVal elementType As sun.invoke.util.Wrapper) As SByte
+        Private Function arrayTypeCode(  elementType As sun.invoke.util.Wrapper) As SByte
             Select Case elementType
                 Case Boolean
                     Return Opcodes.T_BOOLEAN
@@ -471,7 +471,7 @@ Namespace java.lang.invoke
             End Select
         End Function
 
-        Private Function arrayInsnOpcode(ByVal tcode As SByte, ByVal aaop As Integer) As Integer
+        Private Function arrayInsnOpcode(  tcode As SByte,   aaop As Integer) As Integer
             Assert(aaop = Opcodes.AASTORE OrElse aaop = Opcodes.AALOAD)
             Dim xas As Integer
             Select Case tcode
@@ -500,7 +500,7 @@ Namespace java.lang.invoke
         End Function
 
 
-        Private Sub freeFrameLocal(ByVal oldFrameLocal As Integer)
+        Private Sub freeFrameLocal(  oldFrameLocal As Integer)
             Dim i As Integer = indexForFrameLocal(oldFrameLocal)
             If i < 0 Then Return
             Dim type As BasicType = localTypes(i)
@@ -511,13 +511,13 @@ Namespace java.lang.invoke
             localsMap(i) = newFrameLocal
             Assert(indexForFrameLocal(oldFrameLocal) < 0)
         End Sub
-        Private Function indexForFrameLocal(ByVal frameLocal As Integer) As Integer
+        Private Function indexForFrameLocal(  frameLocal As Integer) As Integer
             For i As Integer = 0 To localsMap.Length - 1
                 If localsMap(i) = frameLocal AndAlso localTypes(i) IsNot V_TYPE Then Return i
             Next i
             Return -1
         End Function
-        Private Function makeLocalTemp(ByVal type As BasicType) As Integer
+        Private Function makeLocalTemp(  type As BasicType) As Integer
             Dim frameLocal As Integer = localsMap(localsMap.Length - 1)
             localsMap(localsMap.Length - 1) = frameLocal + type.basicTypeSlots()
             Return frameLocal
@@ -527,7 +527,7 @@ Namespace java.lang.invoke
         ''' Emit a boxing call.
         ''' </summary>
         ''' <param name="wrapper"> primitive type class to box. </param>
-        Private Sub emitBoxing(ByVal wrapper As sun.invoke.util.Wrapper)
+        Private Sub emitBoxing(  wrapper As sun.invoke.util.Wrapper)
             Dim owner As String = "java/lang/" & wrapper.wrapperType().simpleName
             Dim name As String = "valueOf"
             Dim desc As String = "(" & wrapper.basicTypeChar() & ")L" & owner & ";"
@@ -538,7 +538,7 @@ Namespace java.lang.invoke
         ''' Emit an unboxing call (plus preceding checkcast).
         ''' </summary>
         ''' <param name="wrapper"> wrapper type class to unbox. </param>
-        Private Sub emitUnboxing(ByVal wrapper As sun.invoke.util.Wrapper)
+        Private Sub emitUnboxing(  wrapper As sun.invoke.util.Wrapper)
             Dim owner As String = "java/lang/" & wrapper.wrapperType().simpleName
             Dim name As String = wrapper.primitiveSimpleName() & "Value"
             Dim desc As String = "()" & wrapper.basicTypeChar()
@@ -553,7 +553,7 @@ Namespace java.lang.invoke
         ''' <param name="ptype"> type of value present on stack </param>
         ''' <param name="pclass"> type of value required on stack </param>
         ''' <param name="arg"> compile-time representation of value on stack (Node, constant) or null if none </param>
-        Private Sub emitImplicitConversion(ByVal ptype As BasicType, ByVal pclass As [Class], ByVal arg As Object)
+        Private Sub emitImplicitConversion(  ptype As BasicType,   pclass As [Class],   arg As Object)
             Assert(BasicType(pclass) Is ptype) ' boxing/unboxing handled by caller
             If pclass Is ptype.basicTypeClass() AndAlso ptype IsNot L_TYPE Then Return ' nothing to do
             Select Case ptype
@@ -573,7 +573,7 @@ Namespace java.lang.invoke
 
         ''' <summary>
         ''' Update localClasses type map.  Return true if the information is already present. </summary>
-        Private Function assertStaticType(ByVal cls As [Class], ByVal n As Name) As Boolean
+        Private Function assertStaticType(  cls As [Class],   n As Name) As Boolean
             Dim local As Integer = n.index()
             Dim aclass As [Class] = localClasses(local)
             If aclass IsNot Nothing AndAlso (aclass Is cls OrElse aclass.IsSubclassOf(cls)) Then
@@ -584,7 +584,7 @@ Namespace java.lang.invoke
             Return False
         End Function
 
-        Private Sub emitReferenceCast(ByVal cls As [Class], ByVal arg As Object)
+        Private Sub emitReferenceCast(  cls As [Class],   arg As Object)
             Dim writeBack As Name = Nothing ' local to write back result
             If TypeOf arg Is Name Then
                 Dim n As Name = CType(arg, Name)
@@ -614,7 +614,7 @@ Namespace java.lang.invoke
         ''' <summary>
         ''' Emits an actual return instruction conforming to the given return type.
         ''' </summary>
-        Private Sub emitReturnInsn(ByVal type As BasicType)
+        Private Sub emitReturnInsn(  type As BasicType)
             Dim opcode As Integer
             Select Case type
                 Case BasicType.I_TYPE
@@ -635,7 +635,7 @@ Namespace java.lang.invoke
             mv.visitInsn(opcode)
         End Sub
 
-        Private Shared Function getInternalName(ByVal c As [Class]) As String
+        Private Shared Function getInternalName(  c As [Class]) As String
             If c Is GetType(Object) Then
                 Return OBJ
             ElseIf c Is GetType(Object()) Then
@@ -652,7 +652,7 @@ Namespace java.lang.invoke
         ''' <summary>
         ''' Generate customized bytecode for a given LambdaForm.
         ''' </summary>
-        Friend Shared Function generateCustomizedCode(ByVal form As LambdaForm, ByVal invokerType As MethodType) As MemberName
+        Friend Shared Function generateCustomizedCode(  form As LambdaForm,   invokerType As MethodType) As MemberName
             Dim g As New InvokerBytecodeGenerator("MH", form, invokerType)
             Return g.loadMethod(g.generateCustomizedCodeBytes())
         End Function
@@ -766,14 +766,14 @@ Namespace java.lang.invoke
             Return classFile
         End Function
 
-        Friend Overridable Sub emitArrayLoad(ByVal name As Name)
+        Friend Overridable Sub emitArrayLoad(  name As Name)
             emitArrayOp(name, Opcodes.AALOAD)
         End Sub
-        Friend Overridable Sub emitArrayStore(ByVal name As Name)
+        Friend Overridable Sub emitArrayStore(  name As Name)
             emitArrayOp(name, Opcodes.AASTORE)
         End Sub
 
-        Friend Overridable Sub emitArrayOp(ByVal name As Name, ByVal arrayOpcode As Integer)
+        Friend Overridable Sub emitArrayOp(  name As Name,   arrayOpcode As Integer)
             Debug.Assert(arrayOpcode = Opcodes.AALOAD OrElse arrayOpcode = Opcodes.AASTORE)
             Dim elementType As [Class] = name.function.methodType().parameterType(0).componentType
             Debug.Assert(elementType IsNot Nothing)
@@ -788,7 +788,7 @@ Namespace java.lang.invoke
         ''' <summary>
         ''' Emit an invoke for the given name.
         ''' </summary>
-        Friend Overridable Sub emitInvoke(ByVal name As Name)
+        Friend Overridable Sub emitInvoke(  name As Name)
             Assert((Not isLinkerMethodInvoke(name))) ' should use the static path for these
             If True Then
                 ' push receiver
@@ -815,11 +815,11 @@ Namespace java.lang.invoke
 
         Private Shared STATICALLY_INVOCABLE_PACKAGES As [Class]() = {GetType(Object), GetType(Arrays), GetType(sun.misc.Unsafe)}
 
-        Friend Shared Function isStaticallyInvocable(ByVal name As Name) As Boolean
+        Friend Shared Function isStaticallyInvocable(  name As Name) As Boolean
             Return isStaticallyInvocable(name.function.member())
         End Function
 
-        Friend Shared Function isStaticallyInvocable(ByVal member As MemberName) As Boolean
+        Friend Shared Function isStaticallyInvocable(  member As MemberName) As Boolean
             If member Is Nothing Then Return False
             If member.constructor Then Return False
             Dim cls_Renamed As [Class] = member.declaringClass
@@ -837,7 +837,7 @@ Namespace java.lang.invoke
             Return False
         End Function
 
-        Friend Shared Function isStaticallyNameable(ByVal cls As [Class]) As Boolean
+        Friend Shared Function isStaticallyNameable(  cls As [Class]) As Boolean
             If cls Is GetType(Object) Then Return True
             Do While cls.array
                 cls = cls.componentType
@@ -854,14 +854,14 @@ Namespace java.lang.invoke
                 Return False
         End Function
 
-        Friend Overridable Sub emitStaticInvoke(ByVal name As Name)
+        Friend Overridable Sub emitStaticInvoke(  name As Name)
             emitStaticInvoke(name.function.member(), name)
         End Sub
 
         ''' <summary>
         ''' Emit an invoke for the given name, using the MemberName directly.
         ''' </summary>
-        Friend Overridable Sub emitStaticInvoke(ByVal member As MemberName, ByVal name As Name)
+        Friend Overridable Sub emitStaticInvoke(  member As MemberName,   name As Name)
             Assert(member.Equals(name.function.member()))
             Dim defc As [Class] = member.declaringClass
             Dim cname As String = getInternalName(defc)
@@ -895,7 +895,7 @@ Namespace java.lang.invoke
             End If
         End Sub
 
-        Friend Overridable Sub emitNewArray(ByVal name As Name)
+        Friend Overridable Sub emitNewArray(  name As Name)
             Dim rtype As [Class] = name.function.methodType().returnType()
             If name.arguments.Length = 0 Then
                 ' The array will be a constant.
@@ -932,7 +932,7 @@ Namespace java.lang.invoke
             ' the array is left on the stack
             assertStaticType(rtype, name)
         End Sub
-        Friend Overridable Function refKindOpcode(ByVal refKind As SByte) As Integer
+        Friend Overridable Function refKindOpcode(  refKind As SByte) As Integer
             Select Case refKind
                 Case REF_invokeVirtual
                     Return Opcodes.INVOKEVIRTUAL
@@ -957,17 +957,17 @@ Namespace java.lang.invoke
         ''' <summary>
         ''' Check if MemberName is a call to a method named {@code name} in class {@code declaredClass}.
         ''' </summary>
-        Private Function memberRefersTo(ByVal member As MemberName, ByVal declaringClass As [Class], ByVal name As String) As Boolean
+        Private Function memberRefersTo(  member As MemberName,   declaringClass As [Class],   name As String) As Boolean
             Return member IsNot Nothing AndAlso member.declaringClass Is declaringClass AndAlso member.name.Equals(name)
         End Function
-        Private Function nameRefersTo(ByVal name As Name, ByVal declaringClass As [Class], ByVal methodName As String) As Boolean
+        Private Function nameRefersTo(  name As Name,   declaringClass As [Class],   methodName As String) As Boolean
             Return name.function IsNot Nothing AndAlso memberRefersTo(name.function.member(), declaringClass, methodName)
         End Function
 
         ''' <summary>
         ''' Check if MemberName is a call to MethodHandle.invokeBasic.
         ''' </summary>
-        Private Function isInvokeBasic(ByVal name As Name) As Boolean
+        Private Function isInvokeBasic(  name As Name) As Boolean
             If name.function Is Nothing Then Return False
             If name.arguments.Length < 1 Then Return False ' must have MH argument
             Dim member As MemberName = name.function.member()
@@ -977,7 +977,7 @@ Namespace java.lang.invoke
         ''' <summary>
         ''' Check if MemberName is a call to MethodHandle.linkToStatic, etc.
         ''' </summary>
-        Private Function isLinkerMethodInvoke(ByVal name As Name) As Boolean
+        Private Function isLinkerMethodInvoke(  name As Name) As Boolean
             If name.function Is Nothing Then Return False
             If name.arguments.Length < 1 Then Return False ' must have MH argument
             Dim member As MemberName = name.function.member()
@@ -987,7 +987,7 @@ Namespace java.lang.invoke
         ''' <summary>
         ''' Check if i-th name is a call to MethodHandleImpl.selectAlternative.
         ''' </summary>
-        Private Function isSelectAlternative(ByVal pos As Integer) As Boolean
+        Private Function isSelectAlternative(  pos As Integer) As Boolean
             ' selectAlternative idiom:
             '   t_{n}:L=MethodHandleImpl.selectAlternative(...)
             '   t_{n+1}:?=MethodHandle.invokeBasic(t_{n}, ...)
@@ -1000,7 +1000,7 @@ Namespace java.lang.invoke
         ''' <summary>
         ''' Check if i-th name is a start of GuardWithCatch idiom.
         ''' </summary>
-        Private Function isGuardWithCatch(ByVal pos As Integer) As Boolean
+        Private Function isGuardWithCatch(  pos As Integer) As Boolean
             ' GuardWithCatch idiom:
             '   t_{n}:L=MethodHandle.invokeBasic(...)
             '   t_{n+1}:L=MethodHandleImpl.guardWithCatch(*, *, *, t_{n});
@@ -1023,7 +1023,7 @@ Namespace java.lang.invoke
         '''     t4:I=MethodHandle.invokeBasic(t3:L,a1:I);t4:I}
         ''' }</pre></blockquote>
         ''' </summary>
-        Private Function emitSelectAlternative(ByVal selectAlternativeName As Name, ByVal invokeBasicName As Name) As Name
+        Private Function emitSelectAlternative(  selectAlternativeName As Name,   invokeBasicName As Name) As Name
             Debug.Assert(isStaticallyInvocable(invokeBasicName))
 
             Dim receiver As Name = CType(invokeBasicName.arguments(0), Name)
@@ -1083,7 +1083,7 @@ Namespace java.lang.invoke
         '''      return a3.invokeBasic(ex, a6, a7);
         '''  }}
         ''' </summary>
-        Private Function emitGuardWithCatch(ByVal pos As Integer) As Name
+        Private Function emitGuardWithCatch(  pos As Integer) As Name
             Dim args As Name = lambdaForm.names(pos)
             Dim invoker As Name = lambdaForm.names(pos + 1)
             Dim result As Name = lambdaForm.names(pos + 2)
@@ -1136,23 +1136,23 @@ Namespace java.lang.invoke
             Return result
         End Function
 
-        Private Sub emitPushArguments(ByVal args As Name)
+        Private Sub emitPushArguments(  args As Name)
             emitPushArguments(args, 0)
         End Sub
 
-        Private Sub emitPushArguments(ByVal args As Name, ByVal start As Integer)
+        Private Sub emitPushArguments(  args As Name,   start As Integer)
             For i As Integer = start To args.arguments.Length - 1
                 emitPushArgument(args, i)
             Next i
         End Sub
 
-        Private Sub emitPushArgument(ByVal name As Name, ByVal paramIndex As Integer)
+        Private Sub emitPushArgument(  name As Name,   paramIndex As Integer)
             Dim arg As Object = name.arguments(paramIndex)
             Dim ptype As [Class] = name.function.methodType().parameterType(paramIndex)
             emitPushArgument(ptype, arg)
         End Sub
 
-        Private Sub emitPushArgument(ByVal ptype As [Class], ByVal arg As Object)
+        Private Sub emitPushArgument(  ptype As [Class],   arg As Object)
             Dim bptype As BasicType = BasicType(ptype)
             If TypeOf arg Is Name Then
                 Dim n As Name = CType(arg, Name)
@@ -1173,14 +1173,14 @@ Namespace java.lang.invoke
         ''' <summary>
         ''' Store the name to its local, if necessary.
         ''' </summary>
-        Private Sub emitStoreResult(ByVal name As Name)
+        Private Sub emitStoreResult(  name As Name)
             If name IsNot Nothing AndAlso name.type <> V_TYPE Then emitStoreInsn(name.type, name.index())
         End Sub
 
         ''' <summary>
         ''' Emits a return statement from a LF invoker. If required, the result type is cast to the correct return type.
         ''' </summary>
-        Private Sub emitReturn(ByVal onStack As Name)
+        Private Sub emitReturn(  onStack As Name)
             ' return statement
             Dim rclass As [Class] = invokerType.returnType()
             Dim rtype As BasicType = lambdaForm.returnType()
@@ -1205,7 +1205,7 @@ Namespace java.lang.invoke
         ''' <summary>
         ''' Emit a type conversion bytecode casting from "from" to "to".
         ''' </summary>
-        Private Sub emitPrimCast(ByVal [from] As sun.invoke.util.Wrapper, ByVal [to] As sun.invoke.util.Wrapper)
+        Private Sub emitPrimCast(  [from] As sun.invoke.util.Wrapper,   [to] As sun.invoke.util.Wrapper)
             ' Here's how.
             ' -   indicates forbidden
             ' <-> indicates implicit
@@ -1267,7 +1267,7 @@ Namespace java.lang.invoke
             End If
         End Sub
 
-        Private Sub emitI2X(ByVal type As sun.invoke.util.Wrapper)
+        Private Sub emitI2X(  type As sun.invoke.util.Wrapper)
             Select Case type
                 Case Byte
                     mv.visitInsn(Opcodes.I2B)
@@ -1291,7 +1291,7 @@ Namespace java.lang.invoke
             End Select
         End Sub
 
-        Private Sub emitX2I(ByVal type As sun.invoke.util.Wrapper)
+        Private Sub emitX2I(  type As sun.invoke.util.Wrapper)
             Select Case type
                 Case Long
                     mv.visitInsn(Opcodes.L2I)
@@ -1307,7 +1307,7 @@ Namespace java.lang.invoke
         ''' <summary>
         ''' Generate bytecode for a LambdaForm.vmentry which calls interpretWithArguments.
         ''' </summary>
-        Friend Shared Function generateLambdaFormInterpreterEntryPoint(ByVal sig As String) As MemberName
+        Friend Shared Function generateLambdaFormInterpreterEntryPoint(  sig As String) As MemberName
             Assert(isValidSignature(sig))
             Dim name As String = "interpret_" & signatureReturn(sig).basicTypeChar()
             Dim type As MethodType = signatureType(sig) ' sig includes leading argument
@@ -1363,14 +1363,14 @@ Namespace java.lang.invoke
         ''' <summary>
         ''' Generate bytecode for a NamedFunction invoker.
         ''' </summary>
-        Friend Shared Function generateNamedFunctionInvoker(ByVal typeForm As MethodTypeForm) As MemberName
+        Friend Shared Function generateNamedFunctionInvoker(  typeForm As MethodTypeForm) As MemberName
             Dim invokerType As MethodType = NamedFunction.INVOKER_METHOD_TYPE
             Dim invokerName As String = "invoke_" & shortenSignature(basicTypeSignature(typeForm.erasedType()))
             Dim g As New InvokerBytecodeGenerator("NFI", invokerName, invokerType)
             Return g.loadMethod(g.generateNamedFunctionInvokerImpl(typeForm))
         End Function
 
-        Private Function generateNamedFunctionInvokerImpl(ByVal typeForm As MethodTypeForm) As SByte()
+        Private Function generateNamedFunctionInvokerImpl(  typeForm As MethodTypeForm) As SByte()
             Dim dstType As MethodType = typeForm.erasedType()
             classFilePrologue()
 
@@ -1430,7 +1430,7 @@ Namespace java.lang.invoke
         ''' Emit a bogus method that just loads some string constants. This is to get the constants into the constant pool
         ''' for debugging purposes.
         ''' </summary>
-        Private Sub bogusMethod(ParamArray ByVal os As Object())
+        Private Sub bogusMethod(ParamArray   os As Object())
             If DUMP_CLASS_FILES Then
                 mv = cw.visitMethod(Opcodes.ACC_STATIC, "dummy", "()V", Nothing, Nothing)
                 For Each o As Object In os

@@ -363,7 +363,7 @@ Namespace java.awt
 		''' <exception cref="HeadlessException"> if GraphicsEnvironment.isHeadless()
 		''' returns true. </exception>
 		''' <seealso cref= java.awt.GraphicsEnvironment#isHeadless </seealso>
-		Public Sub New(ByVal orientation As Integer)
+		Public Sub New(  orientation As Integer)
 			Me.New(orientation, 0, 10, 0, 100)
 		End Sub
 
@@ -391,7 +391,7 @@ Namespace java.awt
 		''' returns true. </exception>
 		''' <seealso cref= #setValues </seealso>
 		''' <seealso cref= java.awt.GraphicsEnvironment#isHeadless </seealso>
-		Public Sub New(ByVal orientation As Integer, ByVal value As Integer, ByVal visible As Integer, ByVal minimum As Integer, ByVal maximum As Integer)
+		Public Sub New(  orientation As Integer,   value As Integer,   visible As Integer,   minimum As Integer,   maximum As Integer)
 			GraphicsEnvironment.checkHeadless()
 			Select Case orientation
 			  Case HORIZONTAL, VERTICAL
@@ -437,7 +437,7 @@ Namespace java.awt
 			Get
 				Return orientation
 			End Get
-			Set(ByVal orientation As Integer)
+			Set(  orientation As Integer)
 				SyncLock treeLock
 					If orientation = Me.orientation Then Return
 					Select Case orientation
@@ -468,7 +468,7 @@ Namespace java.awt
 			Get
 				Return value
 			End Get
-			Set(ByVal newValue As Integer)
+			Set(  newValue As Integer)
 				' Use setValues so that a consistent policy relating
 				' minimum, maximum, visible amount, and value is enforced.
 				valuesues(newValue, visibleAmount, minimum, maximum)
@@ -486,7 +486,7 @@ Namespace java.awt
 			Get
 				Return minimum
 			End Get
-			Set(ByVal newMinimum As Integer)
+			Set(  newMinimum As Integer)
 				' No checks are necessary in this method since minimum is
 				' the first variable checked in the setValues function.
     
@@ -507,7 +507,7 @@ Namespace java.awt
 			Get
 				Return maximum
 			End Get
-			Set(ByVal newMaximum As Integer)
+			Set(  newMaximum As Integer)
 				' minimum is checked first in setValues, so we need to
 				' enforce minimum and maximum checks here.
 				If newMaximum =  java.lang.[Integer].MIN_VALUE Then newMaximum =  java.lang.[Integer].MIN_VALUE + 1
@@ -546,7 +546,7 @@ Namespace java.awt
 			Get
 				Return visible
 			End Get
-			Set(ByVal newAmount As Integer)
+			Set(  newAmount As Integer)
 				' Use setValues so that a consistent policy relating
 				' minimum, maximum, visible amount, and value is enforced.
 				valuesues(value, newAmount, minimum, maximum)
@@ -582,7 +582,7 @@ Namespace java.awt
 		''' <seealso cref=          java.awt.Scrollbar#getUnitIncrement
 		''' @since        JDK1.1 </seealso>
 		Public Overridable Property unitIncrement Implements Adjustable.setUnitIncrement As Integer
-			Set(ByVal v As Integer)
+			Set(  v As Integer)
 				lineIncrement = v
 			End Set
 			Get
@@ -594,7 +594,7 @@ Namespace java.awt
 		''' replaced by <code>setUnitIncrement(int)</code>. 
 		<Obsolete("As of JDK version 1.1,"), MethodImpl(MethodImplOptions.Synchronized)> _
 		Public Overridable Property lineIncrement As Integer
-			Set(ByVal v As Integer)
+			Set(  v As Integer)
 				Dim tmp As Integer = If(v < 1, 1, v)
     
 				If lineIncrement = tmp Then Return
@@ -626,7 +626,7 @@ Namespace java.awt
 		''' <seealso cref=          java.awt.Scrollbar#getBlockIncrement
 		''' @since        JDK1.1 </seealso>
 		Public Overridable Property blockIncrement Implements Adjustable.setBlockIncrement As Integer
-			Set(ByVal v As Integer)
+			Set(  v As Integer)
 				pageIncrement = v
 			End Set
 			Get
@@ -638,7 +638,7 @@ Namespace java.awt
 		''' replaced by <code>setBlockIncrement()</code>. 
 		<Obsolete("As of JDK version 1.1,"), MethodImpl(MethodImplOptions.Synchronized)> _
 		Public Overridable Property pageIncrement As Integer
-			Set(ByVal v As Integer)
+			Set(  v As Integer)
 				Dim tmp As Integer = If(v < 1, 1, v)
     
 				If pageIncrement = tmp Then Return
@@ -686,7 +686,7 @@ Namespace java.awt
 		''' <seealso cref=        #setMaximum </seealso>
 		''' <seealso cref=        #setVisibleAmount </seealso>
 		''' <seealso cref=        #setValue </seealso>
-		Public Overridable Sub setValues(ByVal value As Integer, ByVal visible As Integer, ByVal minimum As Integer, ByVal maximum As Integer)
+		Public Overridable Sub setValues(  value As Integer,   visible As Integer,   minimum As Integer,   maximum As Integer)
 			Dim oldValue As Integer
 			SyncLock Me
 				If minimum =  java.lang.[Integer].Max_Value Then minimum =  java.lang.[Integer].Max_Value - 1
@@ -726,7 +726,7 @@ Namespace java.awt
 			Get
 				Return isAdjusting
 			End Get
-			Set(ByVal b As Boolean)
+			Set(  b As Boolean)
 				Dim oldValue As Boolean
     
 				SyncLock Me
@@ -756,7 +756,7 @@ Namespace java.awt
 		''' <seealso cref=          java.awt.event.AdjustmentListener
 		''' @since        JDK1.1 </seealso>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Sub addAdjustmentListener(ByVal l As AdjustmentListener) Implements Adjustable.addAdjustmentListener
+		Public Overridable Sub addAdjustmentListener(  l As AdjustmentListener) Implements Adjustable.addAdjustmentListener
 			If l Is Nothing Then Return
 			adjustmentListener = AWTEventMulticaster.add(adjustmentListener, l)
 			newEventsOnly = True
@@ -777,7 +777,7 @@ Namespace java.awt
 		''' <seealso cref=             java.awt.event.AdjustmentListener
 		''' @since           JDK1.1 </seealso>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Sub removeAdjustmentListener(ByVal l As AdjustmentListener) Implements Adjustable.removeAdjustmentListener
+		Public Overridable Sub removeAdjustmentListener(  l As AdjustmentListener) Implements Adjustable.removeAdjustmentListener
 			If l Is Nothing Then Return
 			adjustmentListener = AWTEventMulticaster.remove(adjustmentListener, l)
 		End Sub
@@ -830,7 +830,7 @@ Namespace java.awt
 		'''          <code>java.util.EventListener</code>
 		''' 
 		''' @since 1.3 </exception>
-		Public Overrides Function getListeners(Of T As java.util.EventListener)(ByVal listenerType As [Class]) As T()
+		Public Overrides Function getListeners(Of T As java.util.EventListener)(  listenerType As [Class]) As T()
 			Dim l As java.util.EventListener = Nothing
 			If listenerType Is GetType(AdjustmentListener) Then
 				l = adjustmentListener
@@ -841,7 +841,7 @@ Namespace java.awt
 		End Function
 
 		' REMIND: remove when filtering is done at lower level
-		Friend Overrides Function eventEnabled(ByVal e As AWTEvent) As Boolean
+		Friend Overrides Function eventEnabled(  e As AWTEvent) As Boolean
 			If e.id = AdjustmentEvent.ADJUSTMENT_VALUE_CHANGED Then
 				If (eventMask And AWTEvent.ADJUSTMENT_EVENT_MASK) <> 0 OrElse adjustmentListener IsNot Nothing Then Return True
 				Return False
@@ -863,7 +863,7 @@ Namespace java.awt
 		''' <seealso cref=          java.awt.event.AdjustmentEvent </seealso>
 		''' <seealso cref=          java.awt.Scrollbar#processAdjustmentEvent
 		''' @since        JDK1.1 </seealso>
-		Protected Friend Overrides Sub processEvent(ByVal e As AWTEvent)
+		Protected Friend Overrides Sub processEvent(  e As AWTEvent)
 			If TypeOf e Is AdjustmentEvent Then
 				processAdjustmentEvent(CType(e, AdjustmentEvent))
 				Return
@@ -894,7 +894,7 @@ Namespace java.awt
 		''' <seealso cref=         java.awt.Scrollbar#addAdjustmentListener </seealso>
 		''' <seealso cref=         java.awt.Component#enableEvents
 		''' @since       JDK1.1 </seealso>
-		Protected Friend Overridable Sub processAdjustmentEvent(ByVal e As AdjustmentEvent)
+		Protected Friend Overridable Sub processAdjustmentEvent(  e As AdjustmentEvent)
 			Dim listener As AdjustmentListener = adjustmentListener
 			If listener IsNot Nothing Then listener.adjustmentValueChanged(e)
 		End Sub
@@ -939,7 +939,7 @@ Namespace java.awt
 		''' <seealso cref= AWTEventMulticaster#save(ObjectOutputStream, String, EventListener) </seealso>
 		''' <seealso cref= java.awt.Component#adjustmentListenerK </seealso>
 		''' <seealso cref= #readObject(ObjectInputStream) </seealso>
-		Private Sub writeObject(ByVal s As java.io.ObjectOutputStream)
+		Private Sub writeObject(  s As java.io.ObjectOutputStream)
 		  s.defaultWriteObject()
 
 		  AWTEventMulticaster.save(s, adjustmentListenerK, adjustmentListener)
@@ -959,7 +959,7 @@ Namespace java.awt
 		'''   <code>true</code> </exception>
 		''' <seealso cref= java.awt.GraphicsEnvironment#isHeadless </seealso>
 		''' <seealso cref= #writeObject(ObjectOutputStream) </seealso>
-		Private Sub readObject(ByVal s As java.io.ObjectInputStream)
+		Private Sub readObject(  s As java.io.ObjectInputStream)
 		  GraphicsEnvironment.checkHeadless()
 		  s.defaultReadObject()
 
@@ -1013,7 +1013,7 @@ Namespace java.awt
 
 			Private ReadOnly outerInstance As Scrollbar
 
-			Public Sub New(ByVal outerInstance As Scrollbar)
+			Public Sub New(  outerInstance As Scrollbar)
 				Me.outerInstance = outerInstance
 			End Sub
 
@@ -1080,7 +1080,7 @@ Namespace java.awt
 			''' Set the value of this object as a Number.
 			''' </summary>
 			''' <returns> True if the value was set. </returns>
-			Public Overridable Function setCurrentAccessibleValue(ByVal n As Number) As Boolean
+			Public Overridable Function setCurrentAccessibleValue(  n As Number) As Boolean
 				If TypeOf n Is Integer? Then
 					outerInstance.value = n
 					Return True

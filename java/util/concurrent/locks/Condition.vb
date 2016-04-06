@@ -353,7 +353,7 @@ Namespace java.util.concurrent.locks
 		'''         indicates that no time remains. </returns>
 		''' <exception cref="InterruptedException"> if the current thread is interrupted
 		'''         (and interruption of thread suspension is supported) </exception>
-		Function awaitNanos(ByVal nanosTimeout As Long) As Long
+		Function awaitNanos(  nanosTimeout As Long) As Long
 
 		''' <summary>
 		''' Causes the current thread to wait until it is signalled or interrupted,
@@ -367,7 +367,7 @@ Namespace java.util.concurrent.locks
 		'''         before return from the method, else {@code true} </returns>
 		''' <exception cref="InterruptedException"> if the current thread is interrupted
 		'''         (and interruption of thread suspension is supported) </exception>
-		Function [await](ByVal time As Long, ByVal unit As java.util.concurrent.TimeUnit) As Boolean
+		Function [await](  time As Long,   unit As java.util.concurrent.TimeUnit) As Boolean
 
 		''' <summary>
 		''' Causes the current thread to wait until it is signalled or interrupted,
@@ -443,7 +443,7 @@ Namespace java.util.concurrent.locks
 		'''         {@code true} </returns>
 		''' <exception cref="InterruptedException"> if the current thread is interrupted
 		'''         (and interruption of thread suspension is supported) </exception>
-		Function awaitUntil(ByVal deadline As DateTime?) As Boolean
+		Function awaitUntil(  deadline As DateTime?) As Boolean
 
 		''' <summary>
 		''' Wakes up one waiting thread.

@@ -114,7 +114,7 @@ Namespace java.util
 		''' <exception cref="NullPointerException"> if the specified element is null and this
 		'''         set does not permit null elements
 		''' (<a href="Collection.html#optional-restrictions">optional</a>) </exception>
-		Function contains(ByVal o As Object) As Boolean
+		Function contains(  o As Object) As Boolean
 
 		''' <summary>
 		''' Returns an iterator over the elements in this set.  The elements are
@@ -182,7 +182,7 @@ Namespace java.util
 		'''         is not a supertype of the runtime type of every element in this
 		'''         set </exception>
 		''' <exception cref="NullPointerException"> if the specified array is null </exception>
-		 Function toArray(Of T)(ByVal a As T()) As T()
+		 Function toArray(Of T)(  a As T()) As T()
 
 
 		' Modification Operations
@@ -216,7 +216,7 @@ Namespace java.util
 		'''         set does not permit null elements </exception>
 		''' <exception cref="IllegalArgumentException"> if some property of the specified element
 		'''         prevents it from being added to this set </exception>
-		Function add(ByVal e As E) As Boolean
+		Function add(  e As E) As Boolean
 
 
 		''' <summary>
@@ -239,7 +239,7 @@ Namespace java.util
 		''' (<a href="Collection.html#optional-restrictions">optional</a>) </exception>
 		''' <exception cref="UnsupportedOperationException"> if the <tt>remove</tt> operation
 		'''         is not supported by this set </exception>
-		Function remove(ByVal o As Object) As Boolean
+		Function remove(  o As Object) As Boolean
 
 
 		' Bulk Operations
@@ -262,7 +262,7 @@ Namespace java.util
 		''' (<a href="Collection.html#optional-restrictions">optional</a>),
 		'''         or if the specified collection is null </exception>
 		''' <seealso cref=    #contains(Object) </seealso>
-		Function containsAll(Of T1)(ByVal c As Collection(Of T1)) As Boolean
+		Function containsAll(Of T1)(  c As Collection(Of T1)) As Boolean
 
 		''' <summary>
 		''' Adds all of the elements in the specified collection to this set if
@@ -285,7 +285,7 @@ Namespace java.util
 		''' <exception cref="IllegalArgumentException"> if some property of an element of the
 		'''         specified collection prevents it from being added to this set </exception>
 		''' <seealso cref= #add(Object) </seealso>
-		Function addAll(Of T1 As E)(ByVal c As Collection(Of T1)) As Boolean
+		Function addAll(Of T1 As E)(  c As Collection(Of T1)) As Boolean
 
 		''' <summary>
 		''' Retains only the elements in this set that are contained in the
@@ -307,7 +307,7 @@ Namespace java.util
 		'''         (<a href="Collection.html#optional-restrictions">optional</a>),
 		'''         or if the specified collection is null </exception>
 		''' <seealso cref= #remove(Object) </seealso>
-		Function retainAll(Of T1)(ByVal c As Collection(Of T1)) As Boolean
+		Function retainAll(Of T1)(  c As Collection(Of T1)) As Boolean
 
 		''' <summary>
 		''' Removes from this set all of its elements that are contained in the
@@ -329,7 +329,7 @@ Namespace java.util
 		'''         or if the specified collection is null </exception>
 		''' <seealso cref= #remove(Object) </seealso>
 		''' <seealso cref= #contains(Object) </seealso>
-		Function removeAll(Of T1)(ByVal c As Collection(Of T1)) As Boolean
+		Function removeAll(Of T1)(  c As Collection(Of T1)) As Boolean
 
 		''' <summary>
 		''' Removes all of the elements from this set (optional operation).
@@ -353,7 +353,7 @@ Namespace java.util
 		''' </summary>
 		''' <param name="o"> object to be compared for equality with this set </param>
 		''' <returns> <tt>true</tt> if the specified object is equal to this set </returns>
-		Function Equals(ByVal o As Object) As Boolean
+		Function Equals(  o As Object) As Boolean
 
 		''' <summary>
 		''' Returns the hash code value for this set.  The hash code of a set is

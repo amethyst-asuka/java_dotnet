@@ -64,7 +64,7 @@ Namespace java.rmi.activation
 	   ''' <exception cref="UnknownObjectException"> if object is unknown </exception>
 	   ''' <exception cref="RemoteException"> if remote call fails
 	   ''' @since 1.2 </exception>
-		Sub inactiveObject(ByVal id As ActivationID)
+		Sub inactiveObject(  id As ActivationID)
 
 		''' <summary>
 		''' Informs that an object is now active. An <code>ActivationGroup</code>
@@ -77,7 +77,7 @@ Namespace java.rmi.activation
 		''' <exception cref="UnknownObjectException"> if object is unknown </exception>
 		''' <exception cref="RemoteException"> if remote call fails
 		''' @since 1.2 </exception>
-		Sub activeObject(Of T1 As java.rmi.Remote)(ByVal id As ActivationID, ByVal obj As java.rmi.MarshalledObject(Of T1))
+		Sub activeObject(Of T1 As java.rmi.Remote)(  id As ActivationID,   obj As java.rmi.MarshalledObject(Of T1))
 
 		''' <summary>
 		''' Informs that the group is now inactive. The group will be
@@ -90,7 +90,7 @@ Namespace java.rmi.activation
 		''' <exception cref="UnknownGroupException"> if group is unknown </exception>
 		''' <exception cref="RemoteException"> if remote call fails
 		''' @since 1.2 </exception>
-		Sub inactiveGroup(ByVal id As ActivationGroupID, ByVal incarnation As Long)
+		Sub inactiveGroup(  id As ActivationGroupID,   incarnation As Long)
 
 	End Interface
 

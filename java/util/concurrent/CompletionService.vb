@@ -69,7 +69,7 @@ Namespace java.util.concurrent
 		''' <exception cref="RejectedExecutionException"> if the task cannot be
 		'''         scheduled for execution </exception>
 		''' <exception cref="NullPointerException"> if the task is null </exception>
-		Function submit(ByVal task As Callable(Of V)) As Future(Of V)
+		Function submit(  task As Callable(Of V)) As Future(Of V)
 
 		''' <summary>
 		''' Submits a Runnable task for execution and returns a Future
@@ -84,7 +84,7 @@ Namespace java.util.concurrent
 		''' <exception cref="RejectedExecutionException"> if the task cannot be
 		'''         scheduled for execution </exception>
 		''' <exception cref="NullPointerException"> if the task is null </exception>
-		Function submit(ByVal task As Runnable, ByVal result As V) As Future(Of V)
+		Function submit(  task As Runnable,   result As V) As Future(Of V)
 
 		''' <summary>
 		''' Retrieves and removes the Future representing the next
@@ -115,7 +115,7 @@ Namespace java.util.concurrent
 		'''         {@code null} if the specified waiting time elapses
 		'''         before one is present </returns>
 		''' <exception cref="InterruptedException"> if interrupted while waiting </exception>
-		Function poll(ByVal timeout As Long, ByVal unit As TimeUnit) As Future(Of V)
+		Function poll(  timeout As Long,   unit As TimeUnit) As Future(Of V)
 	End Interface
 
 End Namespace

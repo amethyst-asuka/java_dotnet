@@ -79,7 +79,7 @@ Namespace java.awt
 		''' the specified <code>Point</code> object. </summary>
 		''' <param name="p"> a point
 		''' @since       1.1 </param>
-		Public Sub New(ByVal p As Point)
+		Public Sub New(  p As Point)
 			Me.New(p.x, p.y)
 		End Sub
 
@@ -89,7 +89,7 @@ Namespace java.awt
 		''' <param name="x"> the X coordinate of the newly constructed <code>Point</code> </param>
 		''' <param name="y"> the Y coordinate of the newly constructed <code>Point</code>
 		''' @since 1.0 </param>
-		Public Sub New(ByVal x As Integer, ByVal y As Integer)
+		Public Sub New(  x As Integer,   y As Integer)
 			Me.x = x
 			Me.y = y
 		End Sub
@@ -128,7 +128,7 @@ Namespace java.awt
 			Get
 				Return New Point(x, y)
 			End Get
-			Set(ByVal p As Point)
+			Set(  p As Point)
 				locationion(p.x, p.y)
 			End Set
 		End Property
@@ -146,7 +146,7 @@ Namespace java.awt
 		''' <seealso cref=         java.awt.Point#getLocation </seealso>
 		''' <seealso cref=         java.awt.Point#move(int, int)
 		''' @since       1.1 </seealso>
-		Public Overridable Sub setLocation(ByVal x As Integer, ByVal y As Integer)
+		Public Overridable Sub setLocation(  x As Integer,   y As Integer)
 			move(x, y)
 		End Sub
 
@@ -161,7 +161,7 @@ Namespace java.awt
 		''' <param name="x"> the X coordinate of the new location </param>
 		''' <param name="y"> the Y coordinate of the new location </param>
 		''' <seealso cref= #getLocation </seealso>
-		Public Overrides Sub setLocation(ByVal x As Double, ByVal y As Double)
+		Public Overrides Sub setLocation(  x As Double,   y As Double)
 			Me.x = CInt(Fix (System.Math.Floor(x+0.5)))
 			Me.y = CInt(Fix (System.Math.Floor(y+0.5)))
 		End Sub
@@ -173,7 +173,7 @@ Namespace java.awt
 		''' <param name="x"> the X coordinate of the new location </param>
 		''' <param name="y"> the Y coordinate of the new location </param>
 		''' <seealso cref=         java.awt.Component#setLocation(int, int) </seealso>
-		Public Overridable Sub move(ByVal x As Integer, ByVal y As Integer)
+		Public Overridable Sub move(  x As Integer,   y As Integer)
 			Me.x = x
 			Me.y = y
 		End Sub
@@ -188,7 +188,7 @@ Namespace java.awt
 		'''                            along the X axis </param>
 		''' <param name="dy">    the distance to move this point
 		'''                            along the Y axis </param>
-		Public Overridable Sub translate(ByVal dx As Integer, ByVal dy As Integer)
+		Public Overridable Sub translate(  dx As Integer,   dy As Integer)
 			Me.x += dx
 			Me.y += dy
 		End Sub
@@ -202,7 +202,7 @@ Namespace java.awt
 		''' <returns> <code>true</code> if the object to be compared is
 		'''         an instance of <code>Point2D</code> and has
 		'''         the same values; <code>false</code> otherwise. </returns>
-		Public Overrides Function Equals(ByVal obj As Object) As Boolean
+		Public Overrides Function Equals(  obj As Object) As Boolean
 			If TypeOf obj Is Point Then
 				Dim pt As Point = CType(obj, Point)
 				Return (x = pt.x) AndAlso (y = pt.y)

@@ -67,7 +67,7 @@ Namespace java.awt.dnd
 		''' </exception>
 		''' <seealso cref= DragSourceEvent#getLocation </seealso>
 
-		Public Sub New(ByVal dsc As DragSourceContext, ByVal action As Integer, ByVal success As Boolean)
+		Public Sub New(  dsc As DragSourceContext,   action As Integer,   success As Boolean)
 			MyBase.New(dsc)
 
 			dropSuccess = success
@@ -93,7 +93,7 @@ Namespace java.awt.dnd
 		''' <exception cref="IllegalArgumentException"> if <code>dsc</code> is <code>null</code>.
 		''' 
 		''' @since 1.4 </exception>
-		Public Sub New(ByVal dsc As DragSourceContext, ByVal action As Integer, ByVal success As Boolean, ByVal x As Integer, ByVal y As Integer)
+		Public Sub New(  dsc As DragSourceContext,   action As Integer,   success As Boolean,   x As Integer,   y As Integer)
 			MyBase.New(dsc, x, y)
 
 			dropSuccess = success
@@ -113,7 +113,7 @@ Namespace java.awt.dnd
 		''' </exception>
 		''' <seealso cref= DragSourceEvent#getLocation </seealso>
 
-		Public Sub New(ByVal dsc As DragSourceContext)
+		Public Sub New(  dsc As DragSourceContext)
 			MyBase.New(dsc)
 
 			dropSuccess = False

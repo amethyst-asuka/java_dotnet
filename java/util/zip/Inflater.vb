@@ -99,7 +99,7 @@ Namespace java.util.zip
 		''' library in order to support certain optimizations.
 		''' </summary>
 		''' <param name="nowrap"> if true then support GZIP compatible compression </param>
-		Public Sub New(ByVal nowrap As Boolean)
+		Public Sub New(  nowrap As Boolean)
 			zsRef = New ZStreamRef(init(nowrap))
 		End Sub
 
@@ -118,7 +118,7 @@ Namespace java.util.zip
 		''' <param name="off"> the start offset of the input data </param>
 		''' <param name="len"> the length of the input data </param>
 		''' <seealso cref= Inflater#needsInput </seealso>
-		Public Overridable Sub setInput(ByVal b As SByte(), ByVal [off] As Integer, ByVal len As Integer)
+		Public Overridable Sub setInput(  b As SByte(),   [off] As Integer,   len As Integer)
 			If b Is Nothing Then Throw New NullPointerException
 			If [off] < 0 OrElse len < 0 OrElse [off] > b.Length - len Then Throw New ArrayIndexOutOfBoundsException
 			SyncLock zsRef
@@ -135,7 +135,7 @@ Namespace java.util.zip
 		''' <param name="b"> the input data bytes </param>
 		''' <seealso cref= Inflater#needsInput </seealso>
 		Public Overridable Property input As SByte()
-			Set(ByVal b As SByte())
+			Set(  b As SByte())
 				inputput(b, 0, b.Length)
 			End Set
 		End Property
@@ -150,7 +150,7 @@ Namespace java.util.zip
 		''' <param name="len"> the length of the data </param>
 		''' <seealso cref= Inflater#needsDictionary </seealso>
 		''' <seealso cref= Inflater#getAdler </seealso>
-		Public Overridable Sub setDictionary(ByVal b As SByte(), ByVal [off] As Integer, ByVal len As Integer)
+		Public Overridable Sub setDictionary(  b As SByte(),   [off] As Integer,   len As Integer)
 			If b Is Nothing Then Throw New NullPointerException
 			If [off] < 0 OrElse len < 0 OrElse [off] > b.Length - len Then Throw New ArrayIndexOutOfBoundsException
 			SyncLock zsRef
@@ -169,7 +169,7 @@ Namespace java.util.zip
 		''' <seealso cref= Inflater#needsDictionary </seealso>
 		''' <seealso cref= Inflater#getAdler </seealso>
 		Public Overridable Property dictionary As SByte()
-			Set(ByVal b As SByte())
+			Set(  b As SByte())
 				dictionaryary(b, 0, b.Length)
 			End Set
 		End Property
@@ -233,7 +233,7 @@ Namespace java.util.zip
 		''' <exception cref="DataFormatException"> if the compressed data format is invalid </exception>
 		''' <seealso cref= Inflater#needsInput </seealso>
 		''' <seealso cref= Inflater#needsDictionary </seealso>
-		Public Overridable Function inflate(ByVal b As SByte(), ByVal [off] As Integer, ByVal len As Integer) As Integer
+		Public Overridable Function inflate(  b As SByte(),   [off] As Integer,   len As Integer) As Integer
 			If b Is Nothing Then Throw New NullPointerException
 			If [off] < 0 OrElse len < 0 OrElse [off] > b.Length - len Then Throw New ArrayIndexOutOfBoundsException
 			SyncLock zsRef
@@ -258,7 +258,7 @@ Namespace java.util.zip
 		''' <exception cref="DataFormatException"> if the compressed data format is invalid </exception>
 		''' <seealso cref= Inflater#needsInput </seealso>
 		''' <seealso cref= Inflater#needsDictionary </seealso>
-		Public Overridable Function inflate(ByVal b As SByte()) As Integer
+		Public Overridable Function inflate(  b As SByte()) As Integer
 			Return inflate(b, 0, b.Length)
 		End Function
 
@@ -390,27 +390,27 @@ Namespace java.util.zip
 		End Sub
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Private Shared Function init(ByVal nowrap As Boolean) As Long
+		Private Shared Function init(  nowrap As Boolean) As Long
 		End Function
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Private Shared Sub setDictionary(ByVal addr As Long, ByVal b As SByte(), ByVal [off] As Integer, ByVal len As Integer)
+		Private Shared Sub setDictionary(  addr As Long,   b As SByte(),   [off] As Integer,   len As Integer)
 		End Sub
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Private Function inflateBytes(ByVal addr As Long, ByVal b As SByte(), ByVal [off] As Integer, ByVal len As Integer) As Integer
+		Private Function inflateBytes(  addr As Long,   b As SByte(),   [off] As Integer,   len As Integer) As Integer
 		End Function
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Private Shared Function getAdler(ByVal addr As Long) As Integer
+		Private Shared Function getAdler(  addr As Long) As Integer
 		End Function
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Private Shared Sub reset(ByVal addr As Long)
+		Private Shared Sub reset(  addr As Long)
 		End Sub
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Private Shared Sub [end](ByVal addr As Long)
+		Private Shared Sub [end](  addr As Long)
 		End Sub
 	End Class
 

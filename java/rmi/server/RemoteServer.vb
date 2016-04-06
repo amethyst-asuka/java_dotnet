@@ -55,7 +55,7 @@ Namespace java.rmi.server
 		''' </summary>
 		''' <param name="ref"> the remote reference
 		''' @since JDK1.1 </param>
-		Protected Friend Sub New(ByVal ref As RemoteRef)
+		Protected Friend Sub New(  ref As RemoteRef)
 			MyBase.New(ref)
 		End Sub
 
@@ -91,7 +91,7 @@ Namespace java.rmi.server
 		''' <seealso cref= #getLog
 		''' @since JDK1.1 </seealso>
 		Public Shared Property log As java.io.OutputStream
-			Set(ByVal out As java.io.OutputStream)
+			Set(  out As java.io.OutputStream)
 				logNull = (out Is Nothing)
 				sun.rmi.server.UnicastServerRef.callLog.outputStream = out
 			End Set

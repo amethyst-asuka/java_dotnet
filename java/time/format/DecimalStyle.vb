@@ -145,7 +145,7 @@ Namespace java.time.format
 		''' </summary>
 		''' <param name="locale">  the locale, not null </param>
 		''' <returns> the decimal style, not null </returns>
-		Public Shared Function [of](ByVal locale As java.util.Locale) As DecimalStyle
+		Public Shared Function [of](  locale As java.util.Locale) As DecimalStyle
 			java.util.Objects.requireNonNull(locale, "locale")
 			Dim info As DecimalStyle = CACHE.get(locale)
 			If info Is Nothing Then
@@ -156,7 +156,7 @@ Namespace java.time.format
 			Return info
 		End Function
 
-		Private Shared Function create(ByVal locale As java.util.Locale) As DecimalStyle
+		Private Shared Function create(  locale As java.util.Locale) As DecimalStyle
 			Dim oldSymbols As java.text.DecimalFormatSymbols = java.text.DecimalFormatSymbols.getInstance(locale)
 			Dim zeroDigit_Renamed As Char = oldSymbols.zeroDigit
 			Dim positiveSign_Renamed As Char = "+"c
@@ -174,7 +174,7 @@ Namespace java.time.format
 		''' <param name="positiveSignChar">  the character to use for the positive sign </param>
 		''' <param name="negativeSignChar">  the character to use for the negative sign </param>
 		''' <param name="decimalPointChar">  the character to use for the decimal point </param>
-		Private Sub New(ByVal zeroChar As Char, ByVal positiveSignChar As Char, ByVal negativeSignChar As Char, ByVal decimalPointChar As Char)
+		Private Sub New(  zeroChar As Char,   positiveSignChar As Char,   negativeSignChar As Char,   decimalPointChar As Char)
 			Me.zeroDigit = zeroChar
 			Me.positiveSign = positiveSignChar
 			Me.negativeSign = negativeSignChar
@@ -204,7 +204,7 @@ Namespace java.time.format
 		''' <param name="zeroDigit">  the character for zero </param>
 		''' <returns>  a copy with a new character that represents zero, not null
 		'''  </returns>
-		Public Function withZeroDigit(ByVal zeroDigit As Char) As DecimalStyle
+		Public Function withZeroDigit(  zeroDigit As Char) As DecimalStyle
 			If zeroDigit = Me.zeroDigit Then Return Me
 			Return New DecimalStyle(zeroDigit, positiveSign, negativeSign, decimalSeparator)
 		End Function
@@ -231,7 +231,7 @@ Namespace java.time.format
 		''' </summary>
 		''' <param name="positiveSign">  the character for the positive sign </param>
 		''' <returns>  a copy with a new character that represents the positive sign, not null </returns>
-		Public Function withPositiveSign(ByVal positiveSign As Char) As DecimalStyle
+		Public Function withPositiveSign(  positiveSign As Char) As DecimalStyle
 			If positiveSign = Me.positiveSign Then Return Me
 			Return New DecimalStyle(zeroDigit, positiveSign, negativeSign, decimalSeparator)
 		End Function
@@ -258,7 +258,7 @@ Namespace java.time.format
 		''' </summary>
 		''' <param name="negativeSign">  the character for the negative sign </param>
 		''' <returns>  a copy with a new character that represents the negative sign, not null </returns>
-		Public Function withNegativeSign(ByVal negativeSign As Char) As DecimalStyle
+		Public Function withNegativeSign(  negativeSign As Char) As DecimalStyle
 			If negativeSign = Me.negativeSign Then Return Me
 			Return New DecimalStyle(zeroDigit, positiveSign, negativeSign, decimalSeparator)
 		End Function
@@ -285,7 +285,7 @@ Namespace java.time.format
 		''' </summary>
 		''' <param name="decimalSeparator">  the character for the decimal point </param>
 		''' <returns>  a copy with a new character that represents the decimal point, not null </returns>
-		Public Function withDecimalSeparator(ByVal decimalSeparator As Char) As DecimalStyle
+		Public Function withDecimalSeparator(  decimalSeparator As Char) As DecimalStyle
 			If decimalSeparator = Me.decimalSeparator Then Return Me
 			Return New DecimalStyle(zeroDigit, positiveSign, negativeSign, decimalSeparator)
 		End Function
@@ -296,7 +296,7 @@ Namespace java.time.format
 		''' </summary>
 		''' <param name="ch">  the character to check </param>
 		''' <returns> the value, 0 to 9, of the character, or -1 if not a digit </returns>
-		Friend Function convertToDigit(ByVal ch As Char) As Integer
+		Friend Function convertToDigit(  ch As Char) As Integer
 			Dim val As Integer = AscW(ch) - AscW(zeroDigit)
 			Return If(val >= 0 AndAlso val <= 9, val, -1)
 		End Function
@@ -306,7 +306,7 @@ Namespace java.time.format
 		''' </summary>
 		''' <param name="numericText">  the text, consisting of digits 0 to 9, to convert, not null </param>
 		''' <returns> the internationalized text, not null </returns>
-		Friend Function convertNumberToI18N(ByVal numericText As String) As String
+		Friend Function convertNumberToI18N(  numericText As String) As String
 			If zeroDigit = "0"c Then Return numericText
 			Dim diff As Integer = AscW(zeroDigit) - AscW("0"c)
 			Dim array As Char() = numericText.ToCharArray()
@@ -322,7 +322,7 @@ Namespace java.time.format
 		''' </summary>
 		''' <param name="obj">  the object to check, null returns false </param>
 		''' <returns> true if this is equal to the other date </returns>
-		Public Overrides Function Equals(ByVal obj As Object) As Boolean
+		Public Overrides Function Equals(  obj As Object) As Boolean
 			If Me Is obj Then Return True
 			If TypeOf obj Is DecimalStyle Then
 				Dim other As DecimalStyle = CType(obj, DecimalStyle)

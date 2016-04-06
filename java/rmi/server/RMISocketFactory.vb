@@ -115,7 +115,7 @@ Namespace java.rmi.server
 		''' <returns> a socket connected to the specified host and port. </returns>
 		''' <exception cref="IOException"> if an I/O error occurs during socket creation
 		''' @since JDK1.1 </exception>
-		Public MustOverride Function createSocket(ByVal host As String, ByVal port As Integer) As Socket Implements RMIClientSocketFactory.createSocket
+		Public MustOverride Function createSocket(  host As String,   port As Integer) As Socket Implements RMIClientSocketFactory.createSocket
 
 		''' <summary>
 		''' Create a server socket on the specified port (port 0 indicates
@@ -125,7 +125,7 @@ Namespace java.rmi.server
 		''' <exception cref="IOException"> if an I/O error occurs during server socket
 		''' creation
 		''' @since JDK1.1 </exception>
-		Public MustOverride Function createServerSocket(ByVal port As Integer) As ServerSocket Implements RMIServerSocketFactory.createServerSocket
+		Public MustOverride Function createServerSocket(  port As Integer) As ServerSocket Implements RMIServerSocketFactory.createServerSocket
 
 		''' <summary>
 		''' Set the global socket factory from which RMI gets sockets (if the
@@ -143,7 +143,7 @@ Namespace java.rmi.server
 		''' @since JDK1.1 </seealso>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
 		Public Shared Property socketFactory As RMISocketFactory
-			Set(ByVal fac As RMISocketFactory)
+			Set(  fac As RMISocketFactory)
 				If factory IsNot Nothing Then Throw New SocketException("factory already defined")
 				Dim security As SecurityManager = System.securityManager
 				If security IsNot Nothing Then security.checkSetFactory()
@@ -190,7 +190,7 @@ Namespace java.rmi.server
 		''' @since JDK1.1 </seealso>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
 		Public Shared Property failureHandler As RMIFailureHandler
-			Set(ByVal fh As RMIFailureHandler)
+			Set(  fh As RMIFailureHandler)
 				Dim security As SecurityManager = System.securityManager
 				If security IsNot Nothing Then security.checkSetFactory()
 				handler = fh

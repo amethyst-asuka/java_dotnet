@@ -68,7 +68,7 @@ Namespace java.util.stream
 		''' <param name="consumer"> a {@code Consumer} that is to be invoked with each
 		'''        element in this {@code Node} </param>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Sub forEach(Of T1)(ByVal consumer As java.util.function.Consumer(Of T1))
+		Sub forEach(Of T1)(  consumer As java.util.function.Consumer(Of T1))
 
 		''' <summary>
 		''' Returns the number of child nodes of this node.
@@ -90,7 +90,7 @@ Namespace java.util.stream
 		''' <returns> the child node </returns>
 		''' <exception cref="IndexOutOfBoundsException"> if the index is less than 0 or greater
 		'''         than or equal to the number of child nodes </exception>
-		default Function getChild(ByVal i As Integer) As Node(Of T)
+		default Function getChild(  i As Integer) As Node(Of T)
 			throw Function IndexOutOfBoundsException() As New
 
 		''' <summary>
@@ -105,8 +105,8 @@ Namespace java.util.stream
 		''' <param name="generator"> A function to be used to create a new array, if needed,
 		'''                  for reference nodes. </param>
 		''' <returns> the truncated node </returns>
-		default Function truncate(ByVal [from] As Long, ByVal [to] As Long, ByVal generator As java.util.function.IntFunction(Of T())) As Node(Of T)
-			Sub [New](from == 0 && to == count() ByVal  As )
+		default Function truncate(  [from] As Long,   [to] As Long,   generator As java.util.function.IntFunction(Of T())) As Node(Of T)
+			Sub [New](from == 0 && to == count()    As )
 'JAVA TO VB CONVERTER TODO TASK: Interfaces cannot contain fields in .NET:
 '				Return Me;
 'JAVA TO VB CONVERTER TODO TASK: Interfaces cannot contain fields in .NET:
@@ -117,8 +117,8 @@ Namespace java.util.stream
 '			Node.Builder(Of T) nodeBuilder = Nodes.builder(size, generator);
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 			nodeBuilder.begin(size);
-			Sub [New](Integer i = 0; i < from && spliterator.tryAdvance(e -> { }); i += ByVal 1 As )
-			Sub [New](Integer i = 0; (i < size) && spliterator.tryAdvance(nodeBuilder); i += ByVal 1 As )
+			Sub [New](Integer i = 0; i < from && spliterator.tryAdvance(e -> { }); i +=   1 As )
+			Sub [New](Integer i = 0; (i < size) && spliterator.tryAdvance(nodeBuilder); i +=   1 As )
 			Sub [New]()
 			Function nodeBuilder.build() As [Return]
 
@@ -135,7 +135,7 @@ Namespace java.util.stream
 		'''        returns a new, empty array of that size and of the appropriate
 		'''        array type </param>
 		''' <returns> an array containing the contents of this {@code Node} </returns>
-		Function asArray(ByVal generator As java.util.function.IntFunction(Of T())) As T()
+		Function asArray(  generator As java.util.function.IntFunction(Of T())) As T()
 
 		''' <summary>
 		''' Copies the content of this {@code Node} into an array, starting at a
@@ -150,7 +150,7 @@ Namespace java.util.stream
 		''' <exception cref="IndexOutOfBoundsException"> if copying would cause access of data
 		'''         outside array bounds </exception>
 		''' <exception cref="NullPointerException"> if {@code array} is {@code null} </exception>
-		Sub copyInto(ByVal array As T(), ByVal offset As Integer)
+		Sub copyInto(  array As T(),   offset As Integer)
 
 		''' <summary>
 		''' Gets the {@code StreamShape} associated with this {@code Node}.

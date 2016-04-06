@@ -89,7 +89,7 @@ Namespace java.nio.file
 		'''          In the case of the default provider, and a security manager is
 		'''          installed, the <seealso cref="SecurityManager#checkRead(String) checkRead"/>
 		'''          method is invoked to check read access to the directory. </exception>
-		Function newDirectoryStream(ByVal path As T, ParamArray ByVal options As LinkOption()) As SecureDirectoryStream(Of T)
+		Function newDirectoryStream(  path As T, ParamArray   options As LinkOption()) As SecureDirectoryStream(Of T)
 
 		''' <summary>
 		''' Opens or creates a file in this directory, returning a seekable byte
@@ -138,7 +138,7 @@ Namespace java.nio.file
 		'''          is opened for reading. The {@link SecurityManager#checkWrite(String)
 		'''          checkWrite} method is invoked to check write access to the path
 		'''          if the file is opened for writing. </exception>
-		Function newByteChannel(Of T1 As OpenOption, T2)(ByVal path As T, ByVal options As java.util.Set(Of T1), ParamArray ByVal attrs As FileAttribute(Of T2)()) As java.nio.channels.SeekableByteChannel
+		Function newByteChannel(Of T1 As OpenOption, T2)(  path As T,   options As java.util.Set(Of T1), ParamArray   attrs As FileAttribute(Of T2)()) As java.nio.channels.SeekableByteChannel
 
 		''' <summary>
 		''' Deletes a file.
@@ -164,7 +164,7 @@ Namespace java.nio.file
 		'''          In the case of the default provider, and a security manager is
 		'''          installed, the <seealso cref="SecurityManager#checkDelete(String) checkDelete"/>
 		'''          method is invoked to check delete access to the file </exception>
-		Sub deleteFile(ByVal path As T)
+		Sub deleteFile(  path As T)
 
 		''' <summary>
 		''' Deletes a directory.
@@ -191,7 +191,7 @@ Namespace java.nio.file
 		'''          In the case of the default provider, and a security manager is
 		'''          installed, the <seealso cref="SecurityManager#checkDelete(String) checkDelete"/>
 		'''          method is invoked to check delete access to the directory </exception>
-		Sub deleteDirectory(ByVal path As T)
+		Sub deleteDirectory(  path As T)
 
 		''' <summary>
 		''' Move a file from this directory to another directory.
@@ -230,7 +230,7 @@ Namespace java.nio.file
 		'''          installed, the <seealso cref="SecurityManager#checkWrite(String) checkWrite"/>
 		'''          method is invoked to check write access to both the source and
 		'''          target file. </exception>
-		Sub move(ByVal srcpath As T, ByVal targetdir As SecureDirectoryStream(Of T), ByVal targetpath As T)
+		Sub move(  srcpath As T,   targetdir As SecureDirectoryStream(Of T),   targetpath As T)
 
 		''' <summary>
 		''' Returns a new file attribute view to access the file attributes of this
@@ -256,7 +256,7 @@ Namespace java.nio.file
 		''' <returns>  a new file attribute view of the specified type bound to
 		'''          this directory stream, or {@code null} if the attribute view
 		'''          type is not available </returns>
-		 Function getFileAttributeView(Of V As FileAttributeView)(ByVal type As [Class]) As V
+		 Function getFileAttributeView(Of V As FileAttributeView)(  type As [Class]) As V
 
 		''' <summary>
 		''' Returns a new file attribute view to access the file attributes of a file
@@ -290,7 +290,7 @@ Namespace java.nio.file
 		'''          this directory stream, or {@code null} if the attribute view
 		'''          type is not available
 		'''  </returns>
-		 Function getFileAttributeView(Of V As FileAttributeView)(ByVal path As T, ByVal type As [Class], ParamArray ByVal options As LinkOption()) As V
+		 Function getFileAttributeView(Of V As FileAttributeView)(  path As T,   type As [Class], ParamArray   options As LinkOption()) As V
 	End Interface
 
 End Namespace

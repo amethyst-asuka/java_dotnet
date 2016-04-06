@@ -98,7 +98,7 @@ Namespace java.util
 		'''         compared with the elements currently in the set </exception>
 		''' <exception cref="NullPointerException"> if the specified element is null
 		'''         and this set does not permit null elements </exception>
-		Function lower(ByVal e As E) As E
+		Function lower(  e As E) As E
 
 		''' <summary>
 		''' Returns the greatest element in this set less than or equal to
@@ -111,7 +111,7 @@ Namespace java.util
 		'''         compared with the elements currently in the set </exception>
 		''' <exception cref="NullPointerException"> if the specified element is null
 		'''         and this set does not permit null elements </exception>
-		Function floor(ByVal e As E) As E
+		Function floor(  e As E) As E
 
 		''' <summary>
 		''' Returns the least element in this set greater than or equal to
@@ -124,7 +124,7 @@ Namespace java.util
 		'''         compared with the elements currently in the set </exception>
 		''' <exception cref="NullPointerException"> if the specified element is null
 		'''         and this set does not permit null elements </exception>
-		Function ceiling(ByVal e As E) As E
+		Function ceiling(  e As E) As E
 
 		''' <summary>
 		''' Returns the least element in this set strictly greater than the
@@ -137,7 +137,7 @@ Namespace java.util
 		'''         compared with the elements currently in the set </exception>
 		''' <exception cref="NullPointerException"> if the specified element is null
 		'''         and this set does not permit null elements </exception>
-		Function higher(ByVal e As E) As E
+		Function higher(  e As E) As E
 
 		''' <summary>
 		''' Retrieves and removes the first (lowest) element,
@@ -216,7 +216,7 @@ Namespace java.util
 		'''         greater than {@code toElement}; or if this set itself
 		'''         has a restricted range, and {@code fromElement} or
 		'''         {@code toElement} lies outside the bounds of the range. </exception>
-		Function subSet(ByVal fromElement As E, ByVal fromInclusive As Boolean, ByVal toElement As E, ByVal toInclusive As Boolean) As NavigableSet(Of E)
+		Function subSet(  fromElement As E,   fromInclusive As Boolean,   toElement As E,   toInclusive As Boolean) As NavigableSet(Of E)
 
 		''' <summary>
 		''' Returns a view of the portion of this set whose elements are less than
@@ -244,7 +244,7 @@ Namespace java.util
 		''' <exception cref="IllegalArgumentException"> if this set itself has a
 		'''         restricted range, and {@code toElement} lies outside the
 		'''         bounds of the range </exception>
-		Function headSet(ByVal toElement As E, ByVal inclusive As Boolean) As NavigableSet(Of E)
+		Function headSet(  toElement As E,   inclusive As Boolean) As NavigableSet(Of E)
 
 		''' <summary>
 		''' Returns a view of the portion of this set whose elements are greater
@@ -272,7 +272,7 @@ Namespace java.util
 		''' <exception cref="IllegalArgumentException"> if this set itself has a
 		'''         restricted range, and {@code fromElement} lies outside the
 		'''         bounds of the range </exception>
-		Function tailSet(ByVal fromElement As E, ByVal inclusive As Boolean) As NavigableSet(Of E)
+		Function tailSet(  fromElement As E,   inclusive As Boolean) As NavigableSet(Of E)
 
 		''' <summary>
 		''' {@inheritDoc}
@@ -282,7 +282,7 @@ Namespace java.util
 		''' <exception cref="ClassCastException">       {@inheritDoc} </exception>
 		''' <exception cref="NullPointerException">     {@inheritDoc} </exception>
 		''' <exception cref="IllegalArgumentException"> {@inheritDoc} </exception>
-		Function subSet(ByVal fromElement As E, ByVal toElement As E) As SortedSet(Of E)
+		Function subSet(  fromElement As E,   toElement As E) As SortedSet(Of E)
 
 		''' <summary>
 		''' {@inheritDoc}
@@ -292,7 +292,7 @@ Namespace java.util
 		''' <exception cref="ClassCastException">       {@inheritDoc} </exception>
 		''' <exception cref="NullPointerException">     {@inheritDoc} </exception>
 		''' <exception cref="IllegalArgumentException"> {@inheritDoc} </exception>
-		Function headSet(ByVal toElement As E) As SortedSet(Of E)
+		Function headSet(  toElement As E) As SortedSet(Of E)
 
 		''' <summary>
 		''' {@inheritDoc}
@@ -302,7 +302,7 @@ Namespace java.util
 		''' <exception cref="ClassCastException">       {@inheritDoc} </exception>
 		''' <exception cref="NullPointerException">     {@inheritDoc} </exception>
 		''' <exception cref="IllegalArgumentException"> {@inheritDoc} </exception>
-		Function tailSet(ByVal fromElement As E) As SortedSet(Of E)
+		Function tailSet(  fromElement As E) As SortedSet(Of E)
 	End Interface
 
 End Namespace

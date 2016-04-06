@@ -49,13 +49,13 @@ Namespace java.util.logging
 		Private manager As LogManager = LogManager.logManager
 
 		' Append a two digit number.
-		Private Sub a2(ByVal sb As StringBuilder, ByVal x As Integer)
+		Private Sub a2(  sb As StringBuilder,   x As Integer)
 			If x < 10 Then sb.append("0"c)
 			sb.append(x)
 		End Sub
 
 		' Append the time and date in ISO 8601 format
-		Private Sub appendISO8601(ByVal sb As StringBuilder, ByVal millis As Long)
+		Private Sub appendISO8601(  sb As StringBuilder,   millis As Long)
 			Dim cal As New GregorianCalendar
 			cal.timeInMillis = millis
 			sb.append(cal.get(Calendar.YEAR))
@@ -74,7 +74,7 @@ Namespace java.util.logging
 		' Append to the given StringBuilder an escaped version of the
 		' given text string where XML special characters have been escaped.
 		' For a null string we append "<null>"
-		Private Sub escape(ByVal sb As StringBuilder, ByVal text As String)
+		Private Sub escape(  sb As StringBuilder,   text As String)
 			If text Is Nothing Then text = "<null>"
 			For i As Integer = 0 To text.length() - 1
 				Dim ch As Char = text.Chars(i)
@@ -99,7 +99,7 @@ Namespace java.util.logging
 		''' </summary>
 		''' <param name="record"> the log record to be formatted. </param>
 		''' <returns> a formatted log record </returns>
-		Public Overrides Function format(ByVal record As LogRecord) As String
+		Public Overrides Function format(  record As LogRecord) As String
 			Dim sb As New StringBuilder(500)
 			sb.append("<record>" & vbLf)
 
@@ -219,7 +219,7 @@ Namespace java.util.logging
 		''' </summary>
 		''' <param name="h">  The target handler (can be null) </param>
 		''' <returns>  a valid XML string </returns>
-		Public Overrides Function getHead(ByVal h As Handler) As String
+		Public Overrides Function getHead(  h As Handler) As String
 			Dim sb As New StringBuilder
 			Dim encoding As String
 			sb.append("<?xml version=""1.0""")
@@ -254,7 +254,7 @@ Namespace java.util.logging
 		''' </summary>
 		''' <param name="h">  The target handler (can be null) </param>
 		''' <returns>  a valid XML string </returns>
-		Public Overrides Function getTail(ByVal h As Handler) As String
+		Public Overrides Function getTail(  h As Handler) As String
 			Return "</log>" & vbLf
 		End Function
 	End Class

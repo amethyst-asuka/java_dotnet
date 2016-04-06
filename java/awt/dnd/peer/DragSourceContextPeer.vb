@@ -44,7 +44,7 @@ Namespace java.awt.dnd.peer
 		''' start a drag
 		''' </summary>
 
-		Sub startDrag(ByVal dsc As java.awt.dnd.DragSourceContext, ByVal c As java.awt.Cursor, ByVal dragImage As java.awt.Image, ByVal imageOffset As java.awt.Point)
+		Sub startDrag(  dsc As java.awt.dnd.DragSourceContext,   c As java.awt.Cursor,   dragImage As java.awt.Image,   imageOffset As java.awt.Point)
 
 		''' <summary>
 		''' return the current drag cursor

@@ -57,7 +57,7 @@ Namespace java.text
 			attributedStrings = New List(Of )
 		End Sub
 
-		Public Overridable Sub formatted(ByVal attr As Format.Field, ByVal value As Object, ByVal start As Integer, ByVal [end] As Integer, ByVal buffer As StringBuffer) Implements Format.FieldDelegate.formatted
+		Public Overridable Sub formatted(  attr As Format.Field,   value As Object,   start As Integer,   [end] As Integer,   buffer As StringBuffer) Implements Format.FieldDelegate.formatted
 			If start <> [end] Then
 				If start < size Then
 					' Adjust attributes of existing runs
@@ -91,7 +91,7 @@ Namespace java.text
 			End If
 		End Sub
 
-		Public Overridable Sub formatted(ByVal fieldID As Integer, ByVal attr As Format.Field, ByVal value As Object, ByVal start As Integer, ByVal [end] As Integer, ByVal buffer As StringBuffer) Implements Format.FieldDelegate.formatted
+		Public Overridable Sub formatted(  fieldID As Integer,   attr As Format.Field,   value As Object,   start As Integer,   [end] As Integer,   buffer As StringBuffer) Implements Format.FieldDelegate.formatted
 			formatted(attr, value, start, [end], buffer)
 		End Sub
 
@@ -101,7 +101,7 @@ Namespace java.text
 		''' 
 		''' @pararm string Result of formatting.
 		''' </summary>
-		Public Overridable Function getIterator(ByVal [string] As String) As AttributedCharacterIterator
+		Public Overridable Function getIterator(  [string] As String) As AttributedCharacterIterator
 			' Add the last AttributedCharacterIterator if necessary
 			' assert(size <= string.length());
 			If string_Renamed.length() > size Then

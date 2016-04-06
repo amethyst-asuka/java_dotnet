@@ -77,7 +77,7 @@ Namespace java.awt.geom
         ''' <param name="height">  the new height for the <code>Dimension</code>
         ''' object
         ''' @since 1.2 </param>
-        Public MustOverride Sub setSize(ByVal width As Double, ByVal height As Double)
+        Public MustOverride Sub setSize(  width As Double,   height As Double)
 
         ''' <summary>
         ''' Sets the size of this <code>Dimension2D</code> object to
@@ -88,7 +88,7 @@ Namespace java.awt.geom
         ''' object
         ''' @since 1.2 </param>
         Public Overridable WriteOnly Property size As Dimension2D
-            Set(ByVal d As Dimension2D)
+            Set(  d As Dimension2D)
                 setSize(d.width, d.height)
             End Set
         End Property

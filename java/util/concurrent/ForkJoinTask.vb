@@ -254,7 +254,7 @@ Namespace java.util.concurrent
 		''' </summary>
 		''' <param name="completion"> one of NORMAL, CANCELLED, EXCEPTIONAL </param>
 		''' <returns> completion status on exit </returns>
-		Private Function setCompletion(ByVal completion As Integer) As Integer
+		Private Function setCompletion(  completion As Integer) As Integer
 			Dim s As Integer
 			Do
 				s = status
@@ -296,7 +296,7 @@ Namespace java.util.concurrent
 		''' This task may or may not be done on exit. Ignores interrupts.
 		''' </summary>
 		''' <param name="timeout"> using Object.wait conventions. </param>
-		Friend Sub internalWait(ByVal timeout As Long)
+		Friend Sub internalWait(  timeout As Long)
 			Dim s As Integer
 			s = status
 			If s >= 0 AndAlso U.compareAndSwapInt(Me, STATUS, s, s Or SIGNAL) Then ' force completer to issue notify
@@ -446,7 +446,7 @@ Namespace java.util.concurrent
 			Friend [next] As ExceptionNode
 			Friend ReadOnly thrower As Long ' use id not ref to avoid weak cycles
 			Friend ReadOnly hashCode As Integer ' store task hashCode before weak ref disappears
-			Friend Sub New(Of T1)(ByVal task As ForkJoinTask(Of T1), ByVal ex As Throwable, ByVal [next] As ExceptionNode)
+			Friend Sub New(Of T1)(  task As ForkJoinTask(Of T1),   ex As Throwable,   [next] As ExceptionNode)
 				MyBase.New(task, exceptionTableRefQueue)
 				Me.ex = ex
 				Me.next = [next]
@@ -459,7 +459,7 @@ Namespace java.util.concurrent
 		''' Records exception and sets status.
 		''' </summary>
 		''' <returns> status on exit </returns>
-		Friend Function recordExceptionalCompletion(ByVal ex As Throwable) As Integer
+		Friend Function recordExceptionalCompletion(  ex As Throwable) As Integer
 			Dim s As Integer
 			s = status
 			If s >= 0 Then
@@ -491,7 +491,7 @@ Namespace java.util.concurrent
 		''' Records exception and possibly propagates.
 		''' </summary>
 		''' <returns> status on exit </returns>
-		Private Function setExceptionalCompletion(ByVal ex As Throwable) As Integer
+		Private Function setExceptionalCompletion(  ex As Throwable) As Integer
 			Dim s As Integer = recordExceptionalCompletion(ex)
 			If (s And DONE_MASK) = EXCEPTIONAL Then internalPropagateException(ex)
 			Return s
@@ -500,7 +500,7 @@ Namespace java.util.concurrent
 		''' <summary>
 		''' Hook for exception propagation support for tasks with completers.
 		''' </summary>
-		Friend Overridable Sub internalPropagateException(ByVal ex As Throwable)
+		Friend Overridable Sub internalPropagateException(  ex As Throwable)
 		End Sub
 
 		''' <summary>
@@ -509,7 +509,7 @@ Namespace java.util.concurrent
 		''' exceptions, but if it does anyway, we have no recourse during
 		''' shutdown, so guard against this case.
 		''' </summary>
-		Shared Sub cancelIgnoringExceptions(Of T1)(ByVal t As ForkJoinTask(Of T1))
+		Shared Sub cancelIgnoringExceptions(Of T1)(  t As ForkJoinTask(Of T1))
 			If t IsNot Nothing AndAlso t.status >= 0 Then
 				Try
 					t.cancel(False)
@@ -663,7 +663,7 @@ Namespace java.util.concurrent
 		''' <summary>
 		''' A version of "sneaky throw" to relay exceptions
 		''' </summary>
-		Friend Shared Sub rethrow(ByVal ex As Throwable)
+		Friend Shared Sub rethrow(  ex As Throwable)
 			If ex IsNot Nothing Then ForkJoinTask.uncheckedThrow(Of RuntimeException)(ex)
 		End Sub
 
@@ -673,14 +673,14 @@ Namespace java.util.concurrent
 		''' unchecked exceptions
 		''' </summary>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Friend Shared Sub uncheckedThrow(Of T As Throwable)(ByVal t As Throwable)
+		Friend Shared Sub uncheckedThrow(Of T As Throwable)(  t As Throwable)
 			Throw CType(t, T) ' rely on vacuous cast
 		End Sub
 
 		''' <summary>
 		''' Throws exception, if any, associated with the given status.
 		''' </summary>
-		Private Sub reportException(ByVal s As Integer)
+		Private Sub reportException(  s As Integer)
 			If s = CANCELLED Then Throw New java.util.concurrent.CancellationException
 			If s = EXCEPTIONAL Then rethrow(throwableException)
 		End Sub
@@ -759,7 +759,7 @@ Namespace java.util.concurrent
 		''' <param name="t1"> the first task </param>
 		''' <param name="t2"> the second task </param>
 		''' <exception cref="NullPointerException"> if any task is null </exception>
-		Public Shared Sub invokeAll(Of T1, T2)(ByVal t1 As ForkJoinTask(Of T1), ByVal t2 As ForkJoinTask(Of T2))
+		Public Shared Sub invokeAll(Of T1, T2)(  t1 As ForkJoinTask(Of T1),   t2 As ForkJoinTask(Of T2))
 			Dim s1, s2 As Integer
 			t2.fork()
 			s1 = t1.doInvoke() And DONE_MASK
@@ -782,7 +782,7 @@ Namespace java.util.concurrent
 		''' </summary>
 		''' <param name="tasks"> the tasks </param>
 		''' <exception cref="NullPointerException"> if any task is null </exception>
-		Public Shared Sub invokeAll(Of T1)(ParamArray ByVal tasks As ForkJoinTask(Of T1)())
+		Public Shared Sub invokeAll(Of T1)(ParamArray   tasks As ForkJoinTask(Of T1)())
 			Dim ex As Throwable = Nothing
 			Dim last As Integer = tasks.Length - 1
 			For i As Integer = last To 0 Step -1
@@ -828,7 +828,7 @@ Namespace java.util.concurrent
 		''' <returns> the tasks argument, to simplify usage </returns>
 		''' <exception cref="NullPointerException"> if tasks or any element are null </exception>
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-		Public Shared Function invokeAll(Of T As ForkJoinTask(Of ?))(ByVal tasks As ICollection(Of T)) As ICollection(Of T)
+		Public Shared Function invokeAll(Of T As ForkJoinTask(Of ?))(  tasks As ICollection(Of T)) As ICollection(Of T)
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 			If Not(TypeOf tasks Is java.util.RandomAccess) OrElse Not(TypeOf tasks Is IList(Of ?)) Then
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
@@ -892,7 +892,7 @@ Namespace java.util.concurrent
 		''' control cancellation.
 		''' </param>
 		''' <returns> {@code true} if this task is now cancelled </returns>
-		Public Overridable Function cancel(ByVal mayInterruptIfRunning As Boolean) As Boolean
+		Public Overridable Function cancel(  mayInterruptIfRunning As Boolean) As Boolean
 			Return (completionion(CANCELLED) And DONE_MASK) = CANCELLED
 		End Function
 
@@ -956,7 +956,7 @@ Namespace java.util.concurrent
 		''' <param name="ex"> the exception to throw. If this exception is not a
 		''' {@code RuntimeException} or {@code Error}, the actual exception
 		''' thrown will be a {@code RuntimeException} with cause {@code ex}. </param>
-		Public Overridable Sub completeExceptionally(ByVal ex As Throwable)
+		Public Overridable Sub completeExceptionally(  ex As Throwable)
 			exceptionalCompletion = If((TypeOf ex Is RuntimeException) OrElse (TypeOf ex Is Error), ex, New RuntimeException(ex))
 		End Sub
 
@@ -972,7 +972,7 @@ Namespace java.util.concurrent
 		''' guarantees.
 		''' </summary>
 		''' <param name="value"> the result value for this task </param>
-		Public Overridable Sub complete(ByVal value As V)
+		Public Overridable Sub complete(  value As V)
 			Try
 				rawResult = value
 			Catch rex As Throwable
@@ -1027,7 +1027,7 @@ Namespace java.util.concurrent
 		''' <exception cref="InterruptedException"> if the current thread is not a
 		''' member of a ForkJoinPool and was interrupted while waiting </exception>
 		''' <exception cref="TimeoutException"> if the wait timed out </exception>
-		Public Function [get](ByVal timeout As Long, ByVal unit As java.util.concurrent.TimeUnit) As V
+		Public Function [get](  timeout As Long,   unit As java.util.concurrent.TimeUnit) As V
 			Dim s As Integer
 			Dim nanos As Long = unit.toNanos(timeout)
 			If Thread.interrupted() Then Throw New InterruptedException
@@ -1325,7 +1325,7 @@ Namespace java.util.concurrent
 		''' <param name="tag"> the tag value </param>
 		''' <returns> the previous value of the tag
 		''' @since 1.8 </returns>
-		Public Function setForkJoinTaskTag(ByVal tag As Short) As Short
+		Public Function setForkJoinTaskTag(  tag As Short) As Short
 			Dim s As Integer
 			Do
 'JAVA TO VB CONVERTER TODO TASK: Assignments within expressions are not supported in VB
@@ -1346,7 +1346,7 @@ Namespace java.util.concurrent
 		''' <returns> {@code true} if successful; i.e., the current value was
 		''' equal to e and is now tag.
 		''' @since 1.8 </returns>
-		Public Function compareAndSetForkJoinTaskTag(ByVal e As Short, ByVal tag As Short) As Boolean
+		Public Function compareAndSetForkJoinTaskTag(  e As Short,   tag As Short) As Boolean
 			Dim s As Integer
 			Do
 				s = status
@@ -1366,7 +1366,7 @@ Namespace java.util.concurrent
 
 			Friend ReadOnly runnable As Runnable
 			Friend result As T
-			Friend Sub New(ByVal runnable As Runnable, ByVal result As T)
+			Friend Sub New(  runnable As Runnable,   result As T)
 				If runnable Is Nothing Then Throw New NullPointerException
 				Me.runnable = runnable
 				Me.result = result ' OK to set this even before completion
@@ -1375,7 +1375,7 @@ Namespace java.util.concurrent
 				Get
 					Return result
 				End Get
-				Set(ByVal v As T)
+				Set(  v As T)
 					result = v
 				End Set
 			End Property
@@ -1397,7 +1397,7 @@ Namespace java.util.concurrent
 			Implements java.util.concurrent.RunnableFuture(Of Void)
 
 			Friend ReadOnly runnable As Runnable
-			Friend Sub New(ByVal runnable As Runnable)
+			Friend Sub New(  runnable As Runnable)
 				If runnable Is Nothing Then Throw New NullPointerException
 				Me.runnable = runnable
 			End Sub
@@ -1405,7 +1405,7 @@ Namespace java.util.concurrent
 				Get
 					Return Nothing
 				End Get
-				Set(ByVal v As Void)
+				Set(  v As Void)
 				End Set
 			End Property
 			Public Function exec() As Boolean
@@ -1425,7 +1425,7 @@ Namespace java.util.concurrent
 			Inherits ForkJoinTask(Of Void)
 
 			Friend ReadOnly runnable As Runnable
-			Friend Sub New(ByVal runnable As Runnable)
+			Friend Sub New(  runnable As Runnable)
 				If runnable Is Nothing Then Throw New NullPointerException
 				Me.runnable = runnable
 			End Sub
@@ -1433,14 +1433,14 @@ Namespace java.util.concurrent
 				Get
 					Return Nothing
 				End Get
-				Set(ByVal v As Void)
+				Set(  v As Void)
 				End Set
 			End Property
 			Public Function exec() As Boolean
 				runnable.run()
 				Return True
 			End Function
-			Friend Sub internalPropagateException(ByVal ex As Throwable)
+			Friend Sub internalPropagateException(  ex As Throwable)
 				rethrow(ex) ' rethrow outside exec() catches.
 			End Sub
 			Private Const serialVersionUID As Long = 5232453952276885070L
@@ -1456,7 +1456,7 @@ Namespace java.util.concurrent
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 			Friend ReadOnly callable As java.util.concurrent.Callable(Of ? As T)
 			Friend result As T
-			Friend Sub New(Of T1 As T)(ByVal callable As java.util.concurrent.Callable(Of T1))
+			Friend Sub New(Of T1 As T)(  callable As java.util.concurrent.Callable(Of T1))
 				If callable Is Nothing Then Throw New NullPointerException
 				Me.callable = callable
 			End Sub
@@ -1464,7 +1464,7 @@ Namespace java.util.concurrent
 				Get
 					Return result
 				End Get
-				Set(ByVal v As T)
+				Set(  v As T)
 					result = v
 				End Set
 			End Property
@@ -1494,7 +1494,7 @@ Namespace java.util.concurrent
 		''' <param name="runnable"> the runnable action </param>
 		''' <returns> the task </returns>
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-		Public Shared Function adapt(ByVal runnable As Runnable) As ForkJoinTask(Of ?)
+		Public Shared Function adapt(  runnable As Runnable) As ForkJoinTask(Of ?)
 			Return New AdaptedRunnableAction(runnable)
 		End Function
 
@@ -1507,7 +1507,7 @@ Namespace java.util.concurrent
 		''' <param name="result"> the result upon completion </param>
 		''' @param <T> the type of the result </param>
 		''' <returns> the task </returns>
-		Public Shared Function adapt(Of T)(ByVal runnable As Runnable, ByVal result As T) As ForkJoinTask(Of T)
+		Public Shared Function adapt(Of T)(  runnable As Runnable,   result As T) As ForkJoinTask(Of T)
 			Return New AdaptedRunnable(Of T)(runnable, result)
 		End Function
 
@@ -1520,7 +1520,7 @@ Namespace java.util.concurrent
 		''' <param name="callable"> the callable action </param>
 		''' @param <T> the type of the callable's result </param>
 		''' <returns> the task </returns>
-		Public Shared Function adapt(Of T, T1 As T)(ByVal callable As java.util.concurrent.Callable(Of T1)) As ForkJoinTask(Of T)
+		Public Shared Function adapt(Of T, T1 As T)(  callable As java.util.concurrent.Callable(Of T1)) As ForkJoinTask(Of T)
 			Return New AdaptedCallable(Of T)(callable)
 		End Function
 
@@ -1535,7 +1535,7 @@ Namespace java.util.concurrent
 		''' <exception cref="java.io.IOException"> if an I/O error occurs
 		''' @serialData the current run status and the exception thrown
 		''' during execution, or {@code null} if none </exception>
-		Private Sub writeObject(ByVal s As java.io.ObjectOutputStream)
+		Private Sub writeObject(  s As java.io.ObjectOutputStream)
 			s.defaultWriteObject()
 			s.writeObject(exception)
 		End Sub
@@ -1546,7 +1546,7 @@ Namespace java.util.concurrent
 		''' <exception cref="ClassNotFoundException"> if the class of a serialized object
 		'''         could not be found </exception>
 		''' <exception cref="java.io.IOException"> if an I/O error occurs </exception>
-		Private Sub readObject(ByVal s As java.io.ObjectInputStream)
+		Private Sub readObject(  s As java.io.ObjectInputStream)
 			s.defaultReadObject()
 			Dim ex As Object = s.readObject()
 			If ex IsNot Nothing Then exceptionalCompletion = CType(ex, Throwable)

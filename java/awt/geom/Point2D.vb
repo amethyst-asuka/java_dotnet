@@ -84,7 +84,7 @@ Namespace java.awt.geom
 			''' <param name="y"> the Y coordinate of the newly
 			'''          constructed <code>Point2D</code>
 			''' @since 1.2 </param>
-			Public Sub New(ByVal x As Single, ByVal y As Single)
+			Public Sub New(  x As Single,   y As Single)
 				Me.x = x
 				Me.y = y
 			End Sub
@@ -113,7 +113,7 @@ Namespace java.awt.geom
 			''' {@inheritDoc}
 			''' @since 1.2
 			''' </summary>
-			Public Overrides Sub setLocation(ByVal x As Double, ByVal y As Double)
+			Public Overrides Sub setLocation(  x As Double,   y As Double)
 				Me.x = CSng(x)
 				Me.y = CSng(y)
 			End Sub
@@ -125,7 +125,7 @@ Namespace java.awt.geom
 			''' <param name="x"> the new X coordinate of this {@code Point2D} </param>
 			''' <param name="y"> the new Y coordinate of this {@code Point2D}
 			''' @since 1.2 </param>
-			Public Overridable Sub setLocation(ByVal x As Single, ByVal y As Single)
+			Public Overridable Sub setLocation(  x As Single,   y As Single)
 				Me.x = x
 				Me.y = y
 			End Sub
@@ -185,7 +185,7 @@ Namespace java.awt.geom
 			''' <param name="y"> the Y coordinate of the newly
 			'''          constructed <code>Point2D</code>
 			''' @since 1.2 </param>
-			Function java.lang.Double(ByVal x As Double, ByVal y As Double) As [Public] Overridable
+			Function java.lang.Double(  x As Double,   y As Double) As [Public] Overridable
 				Me.x = x
 				Me.y = y
 			End Function
@@ -214,7 +214,7 @@ Namespace java.awt.geom
 			''' {@inheritDoc}
 			''' @since 1.2
 			''' </summary>
-			Public Overrides Sub setLocation(ByVal x As Double, ByVal y As Double)
+			Public Overrides Sub setLocation(  x As Double,   y As Double)
 				Me.x = x
 				Me.y = y
 			End Sub
@@ -269,7 +269,7 @@ Namespace java.awt.geom
 		''' <param name="x"> the new X coordinate of this {@code Point2D} </param>
 		''' <param name="y"> the new Y coordinate of this {@code Point2D}
 		''' @since 1.2 </param>
-		Public MustOverride Sub setLocation(ByVal x As Double, ByVal y As Double)
+		Public MustOverride Sub setLocation(  x As Double,   y As Double)
 
 		''' <summary>
 		''' Sets the location of this <code>Point2D</code> to the same
@@ -278,7 +278,7 @@ Namespace java.awt.geom
 		''' this <code>Point2D</code>
 		''' @since 1.2 </param>
 		Public Overridable Property location As Point2D
-			Set(ByVal p As Point2D)
+			Set(  p As Point2D)
 				locationion(p.x, p.y)
 			End Set
 		End Property
@@ -293,7 +293,7 @@ Namespace java.awt.geom
 		''' <returns> the square of the distance between the two
 		''' sets of specified coordinates.
 		''' @since 1.2 </returns>
-		Public Shared Function distanceSq(ByVal x1 As Double, ByVal y1 As Double, ByVal x2 As Double, ByVal y2 As Double) As Double
+		Public Shared Function distanceSq(  x1 As Double,   y1 As Double,   x2 As Double,   y2 As Double) As Double
 			x1 -= x2
 			y1 -= y2
 			Return (x1 * x1 + y1 * y1)
@@ -309,7 +309,7 @@ Namespace java.awt.geom
 		''' <returns> the distance between the two sets of specified
 		''' coordinates.
 		''' @since 1.2 </returns>
-		Public Shared Function distance(ByVal x1 As Double, ByVal y1 As Double, ByVal x2 As Double, ByVal y2 As Double) As Double
+		Public Shared Function distance(  x1 As Double,   y1 As Double,   x2 As Double,   y2 As Double) As Double
 			x1 -= x2
 			y1 -= y2
 			Return System.Math.Sqrt(x1 * x1 + y1 * y1)
@@ -326,7 +326,7 @@ Namespace java.awt.geom
 		''' <returns> the square of the distance between this
 		''' <code>Point2D</code> and the specified point.
 		''' @since 1.2 </returns>
-		Public Overridable Function distanceSq(ByVal px As Double, ByVal py As Double) As Double
+		Public Overridable Function distanceSq(  px As Double,   py As Double) As Double
 			px -= x
 			py -= y
 			Return (px * px + py * py)
@@ -341,7 +341,7 @@ Namespace java.awt.geom
 		''' <returns> the square of the distance between this
 		''' <code>Point2D</code> to a specified <code>Point2D</code>.
 		''' @since 1.2 </returns>
-		Public Overridable Function distanceSq(ByVal pt As Point2D) As Double
+		Public Overridable Function distanceSq(  pt As Point2D) As Double
 			Dim px As Double = pt.x - Me.x
 			Dim py As Double = pt.y - Me.y
 			Return (px * px + py * py)
@@ -358,7 +358,7 @@ Namespace java.awt.geom
 		''' <returns> the distance between this <code>Point2D</code>
 		''' and a specified point.
 		''' @since 1.2 </returns>
-		Public Overridable Function distance(ByVal px As Double, ByVal py As Double) As Double
+		Public Overridable Function distance(  px As Double,   py As Double) As Double
 			px -= x
 			py -= y
 			Return System.Math.Sqrt(px * px + py * py)
@@ -373,7 +373,7 @@ Namespace java.awt.geom
 		''' <returns> the distance between this <code>Point2D</code> and
 		''' the specified <code>Point2D</code>.
 		''' @since 1.2 </returns>
-		Public Overridable Function distance(ByVal pt As Point2D) As Double
+		Public Overridable Function distance(  pt As Point2D) As Double
 			Dim px As Double = pt.x - Me.x
 			Dim py As Double = pt.y - Me.y
 			Return System.Math.Sqrt(px * px + py * py)
@@ -414,7 +414,7 @@ Namespace java.awt.geom
 		'''         an instance of <code>Point2D</code> and has
 		'''         the same values; <code>false</code> otherwise.
 		''' @since 1.2 </returns>
-		Public Overrides Function Equals(ByVal obj As Object) As Boolean
+		Public Overrides Function Equals(  obj As Object) As Boolean
 			If TypeOf obj Is Point2D Then
 				Dim p2d As Point2D = CType(obj, Point2D)
 				Return (x = p2d.x) AndAlso (y = p2d.y)

@@ -55,7 +55,7 @@ Namespace java.text.spi
 		'''     getAvailableLocales()}. </exception>
 		''' <returns> a currency formatter </returns>
 		''' <seealso cref= java.text.NumberFormat#getCurrencyInstance(java.util.Locale) </seealso>
-		Public MustOverride Function getCurrencyInstance(ByVal locale As java.util.Locale) As java.text.NumberFormat
+		Public MustOverride Function getCurrencyInstance(  locale As java.util.Locale) As java.text.NumberFormat
 
 		''' <summary>
 		''' Returns a new <code>NumberFormat</code> instance which formats
@@ -75,7 +75,7 @@ Namespace java.text.spi
 		'''     getAvailableLocales()}. </exception>
 		''' <returns> a number format for integer values </returns>
 		''' <seealso cref= java.text.NumberFormat#getIntegerInstance(java.util.Locale) </seealso>
-		Public MustOverride Function getIntegerInstance(ByVal locale As java.util.Locale) As java.text.NumberFormat
+		Public MustOverride Function getIntegerInstance(  locale As java.util.Locale) As java.text.NumberFormat
 
 		''' <summary>
 		''' Returns a new general-purpose <code>NumberFormat</code> instance for
@@ -89,7 +89,7 @@ Namespace java.text.spi
 		'''     getAvailableLocales()}. </exception>
 		''' <returns> a general-purpose number formatter </returns>
 		''' <seealso cref= java.text.NumberFormat#getNumberInstance(java.util.Locale) </seealso>
-		Public MustOverride Function getNumberInstance(ByVal locale As java.util.Locale) As java.text.NumberFormat
+		Public MustOverride Function getNumberInstance(  locale As java.util.Locale) As java.text.NumberFormat
 
 		''' <summary>
 		''' Returns a new <code>NumberFormat</code> instance which formats
@@ -103,7 +103,7 @@ Namespace java.text.spi
 		'''     getAvailableLocales()}. </exception>
 		''' <returns> a percent formatter </returns>
 		''' <seealso cref= java.text.NumberFormat#getPercentInstance(java.util.Locale) </seealso>
-		Public MustOverride Function getPercentInstance(ByVal locale As java.util.Locale) As java.text.NumberFormat
+		Public MustOverride Function getPercentInstance(  locale As java.util.Locale) As java.text.NumberFormat
 	End Class
 
 End Namespace

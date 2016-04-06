@@ -76,7 +76,7 @@ Namespace java.awt.im.spi
 		''' <param name="locale"> locale to input </param>
 		''' <returns> whether the specified locale is supported </returns>
 		''' <exception cref="NullPointerException"> if <code>locale</code> is null </exception>
-		Function setLocale(ByVal locale As java.util.Locale) As Boolean
+		Function setLocale(  locale As java.util.Locale) As Boolean
 
 		''' <summary>
 		''' Returns the current input locale. Might return null in exceptional cases.
@@ -181,7 +181,7 @@ Namespace java.awt.im.spi
 		''' </summary>
 		''' <param name="event"> the event being dispatched to the input method </param>
 		''' <exception cref="NullPointerException"> if <code>event</code> is null </exception>
-		Sub dispatchEvent(ByVal [event] As java.awt.AWTEvent)
+		Sub dispatchEvent(  [event] As java.awt.AWTEvent)
 
 		''' <summary>
 		''' Notifies this input method of changes in the client window
@@ -217,7 +217,7 @@ Namespace java.awt.im.spi
 		''' <param name="bounds"> client window's {@link
 		''' java.awt.Component#getBounds bounds} on the screen; or null if
 		''' the client window is iconified or invisible </param>
-		Sub notifyClientWindowChange(ByVal bounds As java.awt.Rectangle)
+		Sub notifyClientWindowChange(  bounds As java.awt.Rectangle)
 
 		''' <summary>
 		''' Activates the input method for immediate input processing.
@@ -266,7 +266,7 @@ Namespace java.awt.im.spi
 		''' The method is only called when the input method is active.
 		''' </summary>
 		''' <param name="isTemporary"> whether the focus change is temporary </param>
-		Sub deactivate(ByVal isTemporary As Boolean)
+		Sub deactivate(  isTemporary As Boolean)
 
 		''' <summary>
 		''' Closes or hides all windows opened by this input method instance or

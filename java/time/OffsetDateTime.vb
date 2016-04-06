@@ -141,7 +141,7 @@ Namespace java.time
 		''' <param name="datetime1">  the first date-time to compare, not null </param>
 		''' <param name="datetime2">  the other date-time to compare to, not null </param>
 		''' <returns> the comparator value, negative if less, positive if greater </returns>
-		Private Shared Function compareInstant(ByVal datetime1 As OffsetDateTime, ByVal datetime2 As OffsetDateTime) As Integer
+		Private Shared Function compareInstant(  datetime1 As OffsetDateTime,   datetime2 As OffsetDateTime) As Integer
 			If datetime1.offset.Equals(datetime2.offset) Then Return datetime1.toLocalDateTime().CompareTo(datetime2.toLocalDateTime())
 			Dim cmp As Integer = java.lang.[Long].Compare(datetime1.toEpochSecond(), datetime2.toEpochSecond())
 			If cmp = 0 Then cmp = datetime1.toLocalTime().nano - datetime2.toLocalTime().nano
@@ -190,7 +190,7 @@ Namespace java.time
 		''' </summary>
 		''' <param name="zone">  the zone ID to use, not null </param>
 		''' <returns> the current date-time using the system clock, not null </returns>
-		Public Shared Function now(ByVal zone As ZoneId) As OffsetDateTime
+		Public Shared Function now(  zone As ZoneId) As OffsetDateTime
 			Return now(Clock.system(zone))
 		End Function
 
@@ -205,7 +205,7 @@ Namespace java.time
 		''' </summary>
 		''' <param name="clock">  the clock to use, not null </param>
 		''' <returns> the current date-time, not null </returns>
-		Public Shared Function now(ByVal clock_Renamed As Clock) As OffsetDateTime
+		Public Shared Function now(  clock_Renamed As Clock) As OffsetDateTime
 			java.util.Objects.requireNonNull(clock_Renamed, "clock")
 			Dim now_Renamed As Instant = clock_Renamed.instant() ' called once
 			Return ofInstant(now_Renamed, clock_Renamed.zone.rules.getOffset(now_Renamed))
@@ -221,7 +221,7 @@ Namespace java.time
 		''' <param name="time">  the local time, not null </param>
 		''' <param name="offset">  the zone offset, not null </param>
 		''' <returns> the offset date-time, not null </returns>
-		Public Shared Function [of](ByVal [date] As LocalDate, ByVal time As LocalTime, ByVal offset As ZoneOffset) As OffsetDateTime
+		Public Shared Function [of](  [date] As LocalDate,   time As LocalTime,   offset As ZoneOffset) As OffsetDateTime
 			Dim dt As LocalDateTime = LocalDateTime.of(date_Renamed, time)
 			Return New OffsetDateTime(dt, offset)
 		End Function
@@ -234,7 +234,7 @@ Namespace java.time
 		''' <param name="dateTime">  the local date-time, not null </param>
 		''' <param name="offset">  the zone offset, not null </param>
 		''' <returns> the offset date-time, not null </returns>
-		Public Shared Function [of](ByVal dateTime As LocalDateTime, ByVal offset As ZoneOffset) As OffsetDateTime
+		Public Shared Function [of](  dateTime As LocalDateTime,   offset As ZoneOffset) As OffsetDateTime
 			Return New OffsetDateTime(dateTime, offset)
 		End Function
 
@@ -261,7 +261,7 @@ Namespace java.time
 		''' <returns> the offset date-time, not null </returns>
 		''' <exception cref="DateTimeException"> if the value of any field is out of range, or
 		'''  if the day-of-month is invalid for the month-year </exception>
-		Public Shared Function [of](ByVal year_Renamed As Integer, ByVal month As Integer, ByVal dayOfMonth As Integer, ByVal hour As Integer, ByVal minute As Integer, ByVal second As Integer, ByVal nanoOfSecond As Integer, ByVal offset As ZoneOffset) As OffsetDateTime
+		Public Shared Function [of](  year_Renamed As Integer,   month As Integer,   dayOfMonth As Integer,   hour As Integer,   minute As Integer,   second As Integer,   nanoOfSecond As Integer,   offset As ZoneOffset) As OffsetDateTime
 			Dim dt As LocalDateTime = LocalDateTime.of(year_Renamed, month, dayOfMonth, hour, minute, second, nanoOfSecond)
 			Return New OffsetDateTime(dt, offset)
 		End Function
@@ -278,7 +278,7 @@ Namespace java.time
 		''' <param name="zone">  the time-zone, which may be an offset, not null </param>
 		''' <returns> the offset date-time, not null </returns>
 		''' <exception cref="DateTimeException"> if the result exceeds the supported range </exception>
-		Public Shared Function ofInstant(ByVal instant_Renamed As Instant, ByVal zone As ZoneId) As OffsetDateTime
+		Public Shared Function ofInstant(  instant_Renamed As Instant,   zone As ZoneId) As OffsetDateTime
 			java.util.Objects.requireNonNull(instant_Renamed, "instant")
 			java.util.Objects.requireNonNull(zone, "zone")
 			Dim rules As java.time.zone.ZoneRules = zone.rules
@@ -308,7 +308,7 @@ Namespace java.time
 		''' <param name="temporal">  the temporal object to convert, not null </param>
 		''' <returns> the offset date-time, not null </returns>
 		''' <exception cref="DateTimeException"> if unable to convert to an {@code OffsetDateTime} </exception>
-		Public Shared Function [from](ByVal temporal As java.time.temporal.TemporalAccessor) As OffsetDateTime
+		Public Shared Function [from](  temporal As java.time.temporal.TemporalAccessor) As OffsetDateTime
 			If TypeOf temporal Is OffsetDateTime Then Return CType(temporal, OffsetDateTime)
 			Try
 				Dim offset_Renamed As ZoneOffset = ZoneOffset.from(temporal)
@@ -336,7 +336,7 @@ Namespace java.time
 		''' <param name="text">  the text to parse such as "2007-12-03T10:15:30+01:00", not null </param>
 		''' <returns> the parsed offset date-time, not null </returns>
 		''' <exception cref="DateTimeParseException"> if the text cannot be parsed </exception>
-		Public Shared Function parse(ByVal text As CharSequence) As OffsetDateTime
+		Public Shared Function parse(  text As CharSequence) As OffsetDateTime
 			Return parse(text, java.time.format.DateTimeFormatter.ISO_OFFSET_DATE_TIME)
 		End Function
 
@@ -349,7 +349,7 @@ Namespace java.time
 		''' <param name="formatter">  the formatter to use, not null </param>
 		''' <returns> the parsed offset date-time, not null </returns>
 		''' <exception cref="DateTimeParseException"> if the text cannot be parsed </exception>
-		Public Shared Function parse(ByVal text As CharSequence, ByVal formatter As java.time.format.DateTimeFormatter) As OffsetDateTime
+		Public Shared Function parse(  text As CharSequence,   formatter As java.time.format.DateTimeFormatter) As OffsetDateTime
 			java.util.Objects.requireNonNull(formatter, "formatter")
 			Return formatter.parse(text, OffsetDateTime::from)
 		End Function
@@ -360,7 +360,7 @@ Namespace java.time
 		''' </summary>
 		''' <param name="dateTime">  the local date-time, not null </param>
 		''' <param name="offset">  the zone offset, not null </param>
-		Private Sub New(ByVal dateTime As LocalDateTime, ByVal offset As ZoneOffset)
+		Private Sub New(  dateTime As LocalDateTime,   offset As ZoneOffset)
 			Me.dateTime = java.util.Objects.requireNonNull(dateTime, "dateTime")
 			Me.offset = java.util.Objects.requireNonNull(offset, "offset")
 		End Sub
@@ -370,7 +370,7 @@ Namespace java.time
 		''' </summary>
 		''' <param name="dateTime">  the date-time to create with, not null </param>
 		''' <param name="offset">  the zone offset to create with, not null </param>
-		Private Function [with](ByVal dateTime As LocalDateTime, ByVal offset As ZoneOffset) As OffsetDateTime
+		Private Function [with](  dateTime As LocalDateTime,   offset As ZoneOffset) As OffsetDateTime
 			If Me.dateTime Is dateTime AndAlso Me.offset.Equals(offset) Then Return Me
 			Return New OffsetDateTime(dateTime, offset)
 		End Function
@@ -427,7 +427,7 @@ Namespace java.time
 		''' </summary>
 		''' <param name="field">  the field to check, null returns false </param>
 		''' <returns> true if the field is supported on this date-time, false if not </returns>
-		Public Overrides Function isSupported(ByVal field As java.time.temporal.TemporalField) As Boolean
+		Public Overrides Function isSupported(  field As java.time.temporal.TemporalField) As Boolean
 			Return TypeOf field Is java.time.temporal.ChronoField OrElse (field IsNot Nothing AndAlso field.isSupportedBy(Me))
 		End Function
 
@@ -466,7 +466,7 @@ Namespace java.time
 		''' </summary>
 		''' <param name="unit">  the unit to check, null returns false </param>
 		''' <returns> true if the unit can be added/subtracted, false if not </returns>
-		Public Overrides Function isSupported(ByVal unit As java.time.temporal.TemporalUnit) As Boolean ' override for Javadoc
+		Public Overrides Function isSupported(  unit As java.time.temporal.TemporalUnit) As Boolean ' override for Javadoc
 			If TypeOf unit Is java.time.temporal.ChronoUnit Then Return unit <> FOREVER
 			Return unit IsNot Nothing AndAlso unit.isSupportedBy(Me)
 		End Function
@@ -494,7 +494,7 @@ Namespace java.time
 		''' <returns> the range of valid values for the field, not null </returns>
 		''' <exception cref="DateTimeException"> if the range for the field cannot be obtained </exception>
 		''' <exception cref="UnsupportedTemporalTypeException"> if the field is not supported </exception>
-		Public Overrides Function range(ByVal field As java.time.temporal.TemporalField) As java.time.temporal.ValueRange
+		Public Overrides Function range(  field As java.time.temporal.TemporalField) As java.time.temporal.ValueRange
 			If TypeOf field Is java.time.temporal.ChronoField Then
 				If field = INSTANT_SECONDS OrElse field = OFFSET_SECONDS Then Return field.range()
 				Return dateTime.range(field)
@@ -529,7 +529,7 @@ Namespace java.time
 		''' <exception cref="UnsupportedTemporalTypeException"> if the field is not supported or
 		'''         the range of values exceeds an {@code int} </exception>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
-		Public Overrides Function [get](ByVal field As java.time.temporal.TemporalField) As Integer
+		Public Overrides Function [get](  field As java.time.temporal.TemporalField) As Integer
 			If TypeOf field Is java.time.temporal.ChronoField Then
 				Select Case CType(field, java.time.temporal.ChronoField)
 					Case INSTANT_SECONDS
@@ -564,7 +564,7 @@ Namespace java.time
 		''' <exception cref="DateTimeException"> if a value for the field cannot be obtained </exception>
 		''' <exception cref="UnsupportedTemporalTypeException"> if the field is not supported </exception>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
-		Public Overrides Function getLong(ByVal field As java.time.temporal.TemporalField) As Long
+		Public Overrides Function getLong(  field As java.time.temporal.TemporalField) As Long
 			If TypeOf field Is java.time.temporal.ChronoField Then
 				Select Case CType(field, java.time.temporal.ChronoField)
 					Case INSTANT_SECONDS
@@ -606,7 +606,7 @@ Namespace java.time
 		''' </summary>
 		''' <param name="offset">  the zone offset to change to, not null </param>
 		''' <returns> an {@code OffsetDateTime} based on this date-time with the requested offset, not null </returns>
-		Public Function withOffsetSameLocal(ByVal offset As ZoneOffset) As OffsetDateTime
+		Public Function withOffsetSameLocal(  offset As ZoneOffset) As OffsetDateTime
 			Return [with](dateTime, offset)
 		End Function
 
@@ -628,7 +628,7 @@ Namespace java.time
 		''' <param name="offset">  the zone offset to change to, not null </param>
 		''' <returns> an {@code OffsetDateTime} based on this date-time with the requested offset, not null </returns>
 		''' <exception cref="DateTimeException"> if the result exceeds the supported date range </exception>
-		Public Function withOffsetSameInstant(ByVal offset As ZoneOffset) As OffsetDateTime
+		Public Function withOffsetSameInstant(  offset As ZoneOffset) As OffsetDateTime
 			If offset.Equals(Me.offset) Then Return Me
 			Dim difference As Integer = offset.totalSeconds - Me.offset.totalSeconds
 			Dim adjusted As LocalDateTime = dateTime.plusSeconds(difference)
@@ -843,7 +843,7 @@ Namespace java.time
 		''' <returns> an {@code OffsetDateTime} based on {@code this} with the adjustment made, not null </returns>
 		''' <exception cref="DateTimeException"> if the adjustment cannot be made </exception>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
-		Public Overrides Function [with](ByVal adjuster As java.time.temporal.TemporalAdjuster) As OffsetDateTime
+		Public Overrides Function [with](  adjuster As java.time.temporal.TemporalAdjuster) As OffsetDateTime
 			' optimizations
 			If TypeOf adjuster Is LocalDate OrElse TypeOf adjuster Is LocalTime OrElse TypeOf adjuster Is LocalDateTime Then
 				Return [with](dateTime.with(adjuster), offset)
@@ -900,7 +900,7 @@ Namespace java.time
 		''' <exception cref="DateTimeException"> if the field cannot be set </exception>
 		''' <exception cref="UnsupportedTemporalTypeException"> if the field is not supported </exception>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
-		Public Overrides Function [with](ByVal field As java.time.temporal.TemporalField, ByVal newValue As Long) As OffsetDateTime
+		Public Overrides Function [with](  field As java.time.temporal.TemporalField,   newValue As Long) As OffsetDateTime
 			If TypeOf field Is java.time.temporal.ChronoField Then
 				Dim f As java.time.temporal.ChronoField = CType(field, java.time.temporal.ChronoField)
 				Select Case f
@@ -926,7 +926,7 @@ Namespace java.time
 		''' <param name="year">  the year to set in the result, from MIN_YEAR to MAX_YEAR </param>
 		''' <returns> an {@code OffsetDateTime} based on this date-time with the requested year, not null </returns>
 		''' <exception cref="DateTimeException"> if the year value is invalid </exception>
-		Public Function withYear(ByVal year_Renamed As Integer) As OffsetDateTime
+		Public Function withYear(  year_Renamed As Integer) As OffsetDateTime
 			Return [with](dateTime.withYear(year_Renamed), offset)
 		End Function
 
@@ -941,7 +941,7 @@ Namespace java.time
 		''' <param name="month">  the month-of-year to set in the result, from 1 (January) to 12 (December) </param>
 		''' <returns> an {@code OffsetDateTime} based on this date-time with the requested month, not null </returns>
 		''' <exception cref="DateTimeException"> if the month-of-year value is invalid </exception>
-		Public Function withMonth(ByVal month As Integer) As OffsetDateTime
+		Public Function withMonth(  month As Integer) As OffsetDateTime
 			Return [with](dateTime.withMonth(month), offset)
 		End Function
 
@@ -957,7 +957,7 @@ Namespace java.time
 		''' <returns> an {@code OffsetDateTime} based on this date-time with the requested day, not null </returns>
 		''' <exception cref="DateTimeException"> if the day-of-month value is invalid,
 		'''  or if the day-of-month is invalid for the month-year </exception>
-		Public Function withDayOfMonth(ByVal dayOfMonth As Integer) As OffsetDateTime
+		Public Function withDayOfMonth(  dayOfMonth As Integer) As OffsetDateTime
 			Return [with](dateTime.withDayOfMonth(dayOfMonth), offset)
 		End Function
 
@@ -973,7 +973,7 @@ Namespace java.time
 		''' <returns> an {@code OffsetDateTime} based on this date with the requested day, not null </returns>
 		''' <exception cref="DateTimeException"> if the day-of-year value is invalid,
 		'''  or if the day-of-year is invalid for the year </exception>
-		Public Function withDayOfYear(ByVal dayOfYear As Integer) As OffsetDateTime
+		Public Function withDayOfYear(  dayOfYear As Integer) As OffsetDateTime
 			Return [with](dateTime.withDayOfYear(dayOfYear), offset)
 		End Function
 
@@ -988,7 +988,7 @@ Namespace java.time
 		''' <param name="hour">  the hour-of-day to set in the result, from 0 to 23 </param>
 		''' <returns> an {@code OffsetDateTime} based on this date-time with the requested hour, not null </returns>
 		''' <exception cref="DateTimeException"> if the hour value is invalid </exception>
-		Public Function withHour(ByVal hour As Integer) As OffsetDateTime
+		Public Function withHour(  hour As Integer) As OffsetDateTime
 			Return [with](dateTime.withHour(hour), offset)
 		End Function
 
@@ -1002,7 +1002,7 @@ Namespace java.time
 		''' <param name="minute">  the minute-of-hour to set in the result, from 0 to 59 </param>
 		''' <returns> an {@code OffsetDateTime} based on this date-time with the requested minute, not null </returns>
 		''' <exception cref="DateTimeException"> if the minute value is invalid </exception>
-		Public Function withMinute(ByVal minute As Integer) As OffsetDateTime
+		Public Function withMinute(  minute As Integer) As OffsetDateTime
 			Return [with](dateTime.withMinute(minute), offset)
 		End Function
 
@@ -1016,7 +1016,7 @@ Namespace java.time
 		''' <param name="second">  the second-of-minute to set in the result, from 0 to 59 </param>
 		''' <returns> an {@code OffsetDateTime} based on this date-time with the requested second, not null </returns>
 		''' <exception cref="DateTimeException"> if the second value is invalid </exception>
-		Public Function withSecond(ByVal second As Integer) As OffsetDateTime
+		Public Function withSecond(  second As Integer) As OffsetDateTime
 			Return [with](dateTime.withSecond(second), offset)
 		End Function
 
@@ -1030,7 +1030,7 @@ Namespace java.time
 		''' <param name="nanoOfSecond">  the nano-of-second to set in the result, from 0 to 999,999,999 </param>
 		''' <returns> an {@code OffsetDateTime} based on this date-time with the requested nanosecond, not null </returns>
 		''' <exception cref="DateTimeException"> if the nano value is invalid </exception>
-		Public Function withNano(ByVal nanoOfSecond As Integer) As OffsetDateTime
+		Public Function withNano(  nanoOfSecond As Integer) As OffsetDateTime
 			Return [with](dateTime.withNano(nanoOfSecond), offset)
 		End Function
 
@@ -1056,7 +1056,7 @@ Namespace java.time
 		''' <returns> an {@code OffsetDateTime} based on this date-time with the time truncated, not null </returns>
 		''' <exception cref="DateTimeException"> if unable to truncate </exception>
 		''' <exception cref="UnsupportedTemporalTypeException"> if the unit is not supported </exception>
-		Public Function truncatedTo(ByVal unit As java.time.temporal.TemporalUnit) As OffsetDateTime
+		Public Function truncatedTo(  unit As java.time.temporal.TemporalUnit) As OffsetDateTime
 			Return [with](dateTime.truncatedTo(unit), offset)
 		End Function
 
@@ -1080,7 +1080,7 @@ Namespace java.time
 		''' <returns> an {@code OffsetDateTime} based on this date-time with the addition made, not null </returns>
 		''' <exception cref="DateTimeException"> if the addition cannot be made </exception>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
-		Public Overrides Function plus(ByVal amountToAdd As java.time.temporal.TemporalAmount) As OffsetDateTime
+		Public Overrides Function plus(  amountToAdd As java.time.temporal.TemporalAmount) As OffsetDateTime
 			Return CType(amountToAdd.addTo(Me), OffsetDateTime)
 		End Function
 
@@ -1108,7 +1108,7 @@ Namespace java.time
 		''' <exception cref="DateTimeException"> if the addition cannot be made </exception>
 		''' <exception cref="UnsupportedTemporalTypeException"> if the unit is not supported </exception>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
-		Public Overrides Function plus(ByVal amountToAdd As Long, ByVal unit As java.time.temporal.TemporalUnit) As OffsetDateTime
+		Public Overrides Function plus(  amountToAdd As Long,   unit As java.time.temporal.TemporalUnit) As OffsetDateTime
 			If TypeOf unit Is java.time.temporal.ChronoUnit Then Return [with](dateTime.plus(amountToAdd, unit), offset)
 			Return unit.addTo(Me, amountToAdd)
 		End Function
@@ -1133,7 +1133,7 @@ Namespace java.time
 		''' <param name="years">  the years to add, may be negative </param>
 		''' <returns> an {@code OffsetDateTime} based on this date-time with the years added, not null </returns>
 		''' <exception cref="DateTimeException"> if the result exceeds the supported date range </exception>
-		Public Function plusYears(ByVal years As Long) As OffsetDateTime
+		Public Function plusYears(  years As Long) As OffsetDateTime
 			Return [with](dateTime.plusYears(years), offset)
 		End Function
 
@@ -1156,7 +1156,7 @@ Namespace java.time
 		''' <param name="months">  the months to add, may be negative </param>
 		''' <returns> an {@code OffsetDateTime} based on this date-time with the months added, not null </returns>
 		''' <exception cref="DateTimeException"> if the result exceeds the supported date range </exception>
-		Public Function plusMonths(ByVal months As Long) As OffsetDateTime
+		Public Function plusMonths(  months As Long) As OffsetDateTime
 			Return [with](dateTime.plusMonths(months), offset)
 		End Function
 
@@ -1174,7 +1174,7 @@ Namespace java.time
 		''' <param name="weeks">  the weeks to add, may be negative </param>
 		''' <returns> an {@code OffsetDateTime} based on this date-time with the weeks added, not null </returns>
 		''' <exception cref="DateTimeException"> if the result exceeds the supported date range </exception>
-		Public Function plusWeeks(ByVal weeks As Long) As OffsetDateTime
+		Public Function plusWeeks(  weeks As Long) As OffsetDateTime
 			Return [with](dateTime.plusWeeks(weeks), offset)
 		End Function
 
@@ -1192,7 +1192,7 @@ Namespace java.time
 		''' <param name="days">  the days to add, may be negative </param>
 		''' <returns> an {@code OffsetDateTime} based on this date-time with the days added, not null </returns>
 		''' <exception cref="DateTimeException"> if the result exceeds the supported date range </exception>
-		Public Function plusDays(ByVal days As Long) As OffsetDateTime
+		Public Function plusDays(  days As Long) As OffsetDateTime
 			Return [with](dateTime.plusDays(days), offset)
 		End Function
 
@@ -1204,7 +1204,7 @@ Namespace java.time
 		''' <param name="hours">  the hours to add, may be negative </param>
 		''' <returns> an {@code OffsetDateTime} based on this date-time with the hours added, not null </returns>
 		''' <exception cref="DateTimeException"> if the result exceeds the supported date range </exception>
-		Public Function plusHours(ByVal hours As Long) As OffsetDateTime
+		Public Function plusHours(  hours As Long) As OffsetDateTime
 			Return [with](dateTime.plusHours(hours), offset)
 		End Function
 
@@ -1216,7 +1216,7 @@ Namespace java.time
 		''' <param name="minutes">  the minutes to add, may be negative </param>
 		''' <returns> an {@code OffsetDateTime} based on this date-time with the minutes added, not null </returns>
 		''' <exception cref="DateTimeException"> if the result exceeds the supported date range </exception>
-		Public Function plusMinutes(ByVal minutes As Long) As OffsetDateTime
+		Public Function plusMinutes(  minutes As Long) As OffsetDateTime
 			Return [with](dateTime.plusMinutes(minutes), offset)
 		End Function
 
@@ -1228,7 +1228,7 @@ Namespace java.time
 		''' <param name="seconds">  the seconds to add, may be negative </param>
 		''' <returns> an {@code OffsetDateTime} based on this date-time with the seconds added, not null </returns>
 		''' <exception cref="DateTimeException"> if the result exceeds the supported date range </exception>
-		Public Function plusSeconds(ByVal seconds As Long) As OffsetDateTime
+		Public Function plusSeconds(  seconds As Long) As OffsetDateTime
 			Return [with](dateTime.plusSeconds(seconds), offset)
 		End Function
 
@@ -1240,7 +1240,7 @@ Namespace java.time
 		''' <param name="nanos">  the nanos to add, may be negative </param>
 		''' <returns> an {@code OffsetDateTime} based on this date-time with the nanoseconds added, not null </returns>
 		''' <exception cref="DateTimeException"> if the unit cannot be added to this type </exception>
-		Public Function plusNanos(ByVal nanos As Long) As OffsetDateTime
+		Public Function plusNanos(  nanos As Long) As OffsetDateTime
 			Return [with](dateTime.plusNanos(nanos), offset)
 		End Function
 
@@ -1264,7 +1264,7 @@ Namespace java.time
 		''' <returns> an {@code OffsetDateTime} based on this date-time with the subtraction made, not null </returns>
 		''' <exception cref="DateTimeException"> if the subtraction cannot be made </exception>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
-		Public Overrides Function minus(ByVal amountToSubtract As java.time.temporal.TemporalAmount) As OffsetDateTime
+		Public Overrides Function minus(  amountToSubtract As java.time.temporal.TemporalAmount) As OffsetDateTime
 			Return CType(amountToSubtract.subtractFrom(Me), OffsetDateTime)
 		End Function
 
@@ -1286,7 +1286,7 @@ Namespace java.time
 		''' <exception cref="DateTimeException"> if the subtraction cannot be made </exception>
 		''' <exception cref="UnsupportedTemporalTypeException"> if the unit is not supported </exception>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
-		Public Overrides Function minus(ByVal amountToSubtract As Long, ByVal unit As java.time.temporal.TemporalUnit) As OffsetDateTime
+		Public Overrides Function minus(  amountToSubtract As Long,   unit As java.time.temporal.TemporalUnit) As OffsetDateTime
 			Return (If(amountToSubtract = java.lang.[Long].MIN_VALUE, plus(Long.Max_Value, unit).plus(1, unit), plus(-amountToSubtract, unit)))
 		End Function
 
@@ -1310,7 +1310,7 @@ Namespace java.time
 		''' <param name="years">  the years to subtract, may be negative </param>
 		''' <returns> an {@code OffsetDateTime} based on this date-time with the years subtracted, not null </returns>
 		''' <exception cref="DateTimeException"> if the result exceeds the supported date range </exception>
-		Public Function minusYears(ByVal years As Long) As OffsetDateTime
+		Public Function minusYears(  years As Long) As OffsetDateTime
 			Return (If(years = java.lang.[Long].MIN_VALUE, plusYears(Long.Max_Value).plusYears(1), plusYears(-years)))
 		End Function
 
@@ -1333,7 +1333,7 @@ Namespace java.time
 		''' <param name="months">  the months to subtract, may be negative </param>
 		''' <returns> an {@code OffsetDateTime} based on this date-time with the months subtracted, not null </returns>
 		''' <exception cref="DateTimeException"> if the result exceeds the supported date range </exception>
-		Public Function minusMonths(ByVal months As Long) As OffsetDateTime
+		Public Function minusMonths(  months As Long) As OffsetDateTime
 			Return (If(months = java.lang.[Long].MIN_VALUE, plusMonths(Long.Max_Value).plusMonths(1), plusMonths(-months)))
 		End Function
 
@@ -1351,7 +1351,7 @@ Namespace java.time
 		''' <param name="weeks">  the weeks to subtract, may be negative </param>
 		''' <returns> an {@code OffsetDateTime} based on this date-time with the weeks subtracted, not null </returns>
 		''' <exception cref="DateTimeException"> if the result exceeds the supported date range </exception>
-		Public Function minusWeeks(ByVal weeks As Long) As OffsetDateTime
+		Public Function minusWeeks(  weeks As Long) As OffsetDateTime
 			Return (If(weeks = java.lang.[Long].MIN_VALUE, plusWeeks(Long.Max_Value).plusWeeks(1), plusWeeks(-weeks)))
 		End Function
 
@@ -1369,7 +1369,7 @@ Namespace java.time
 		''' <param name="days">  the days to subtract, may be negative </param>
 		''' <returns> an {@code OffsetDateTime} based on this date-time with the days subtracted, not null </returns>
 		''' <exception cref="DateTimeException"> if the result exceeds the supported date range </exception>
-		Public Function minusDays(ByVal days As Long) As OffsetDateTime
+		Public Function minusDays(  days As Long) As OffsetDateTime
 			Return (If(days = java.lang.[Long].MIN_VALUE, plusDays(Long.Max_Value).plusDays(1), plusDays(-days)))
 		End Function
 
@@ -1381,7 +1381,7 @@ Namespace java.time
 		''' <param name="hours">  the hours to subtract, may be negative </param>
 		''' <returns> an {@code OffsetDateTime} based on this date-time with the hours subtracted, not null </returns>
 		''' <exception cref="DateTimeException"> if the result exceeds the supported date range </exception>
-		Public Function minusHours(ByVal hours As Long) As OffsetDateTime
+		Public Function minusHours(  hours As Long) As OffsetDateTime
 			Return (If(hours = java.lang.[Long].MIN_VALUE, plusHours(Long.Max_Value).plusHours(1), plusHours(-hours)))
 		End Function
 
@@ -1393,7 +1393,7 @@ Namespace java.time
 		''' <param name="minutes">  the minutes to subtract, may be negative </param>
 		''' <returns> an {@code OffsetDateTime} based on this date-time with the minutes subtracted, not null </returns>
 		''' <exception cref="DateTimeException"> if the result exceeds the supported date range </exception>
-		Public Function minusMinutes(ByVal minutes As Long) As OffsetDateTime
+		Public Function minusMinutes(  minutes As Long) As OffsetDateTime
 			Return (If(minutes = java.lang.[Long].MIN_VALUE, plusMinutes(Long.Max_Value).plusMinutes(1), plusMinutes(-minutes)))
 		End Function
 
@@ -1405,7 +1405,7 @@ Namespace java.time
 		''' <param name="seconds">  the seconds to subtract, may be negative </param>
 		''' <returns> an {@code OffsetDateTime} based on this date-time with the seconds subtracted, not null </returns>
 		''' <exception cref="DateTimeException"> if the result exceeds the supported date range </exception>
-		Public Function minusSeconds(ByVal seconds As Long) As OffsetDateTime
+		Public Function minusSeconds(  seconds As Long) As OffsetDateTime
 			Return (If(seconds = java.lang.[Long].MIN_VALUE, plusSeconds(Long.Max_Value).plusSeconds(1), plusSeconds(-seconds)))
 		End Function
 
@@ -1417,7 +1417,7 @@ Namespace java.time
 		''' <param name="nanos">  the nanos to subtract, may be negative </param>
 		''' <returns> an {@code OffsetDateTime} based on this date-time with the nanoseconds subtracted, not null </returns>
 		''' <exception cref="DateTimeException"> if the result exceeds the supported date range </exception>
-		Public Function minusNanos(ByVal nanos As Long) As OffsetDateTime
+		Public Function minusNanos(  nanos As Long) As OffsetDateTime
 			Return (If(nanos = java.lang.[Long].MIN_VALUE, plusNanos(Long.Max_Value).plusNanos(1), plusNanos(-nanos)))
 		End Function
 
@@ -1440,7 +1440,7 @@ Namespace java.time
 		''' <exception cref="DateTimeException"> if unable to query (defined by the query) </exception>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs (defined by the query) </exception>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Overrides Function query(Of R)(ByVal query_Renamed As java.time.temporal.TemporalQuery(Of R)) As R
+		Public Overrides Function query(Of R)(  query_Renamed As java.time.temporal.TemporalQuery(Of R)) As R
 			If query_Renamed Is java.time.temporal.TemporalQueries.offset() OrElse query_Renamed Is java.time.temporal.TemporalQueries.zone() Then
 				Return CType(offset, R)
 			ElseIf query_Renamed Is java.time.temporal.TemporalQueries.zoneId() Then
@@ -1484,7 +1484,7 @@ Namespace java.time
 		''' <returns> the adjusted object, not null </returns>
 		''' <exception cref="DateTimeException"> if unable to make the adjustment </exception>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
-		Public Overrides Function adjustInto(ByVal temporal As java.time.temporal.Temporal) As java.time.temporal.Temporal
+		Public Overrides Function adjustInto(  temporal As java.time.temporal.Temporal) As java.time.temporal.Temporal
 			' OffsetDateTime is treated as three separate fields, not an instant
 			' this produces the most consistent set of results overall
 			' the offset is set after the date and time, as it is typically a small
@@ -1543,7 +1543,7 @@ Namespace java.time
 		'''  temporal cannot be converted to an {@code OffsetDateTime} </exception>
 		''' <exception cref="UnsupportedTemporalTypeException"> if the unit is not supported </exception>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
-		Public Overrides Function [until](ByVal endExclusive As java.time.temporal.Temporal, ByVal unit As java.time.temporal.TemporalUnit) As Long
+		Public Overrides Function [until](  endExclusive As java.time.temporal.Temporal,   unit As java.time.temporal.TemporalUnit) As Long
 			Dim [end] As OffsetDateTime = OffsetDateTime.from(endExclusive)
 			If TypeOf unit Is java.time.temporal.ChronoUnit Then
 				[end] = [end].withOffsetSameInstant(offset)
@@ -1560,7 +1560,7 @@ Namespace java.time
 		''' <param name="formatter">  the formatter to use, not null </param>
 		''' <returns> the formatted date-time string, not null </returns>
 		''' <exception cref="DateTimeException"> if an error occurs during printing </exception>
-		Public Function format(ByVal formatter As java.time.format.DateTimeFormatter) As String
+		Public Function format(  formatter As java.time.format.DateTimeFormatter) As String
 			java.util.Objects.requireNonNull(formatter, "formatter")
 			Return formatter.format(Me)
 		End Function
@@ -1580,7 +1580,7 @@ Namespace java.time
 		''' </summary>
 		''' <param name="zone">  the time-zone to use, not null </param>
 		''' <returns> the zoned date-time formed from this date-time, not null </returns>
-		Public Function atZoneSameInstant(ByVal zone As ZoneId) As ZonedDateTime
+		Public Function atZoneSameInstant(  zone As ZoneId) As ZonedDateTime
 			Return ZonedDateTime.ofInstant(dateTime, offset, zone)
 		End Function
 
@@ -1607,7 +1607,7 @@ Namespace java.time
 		''' </summary>
 		''' <param name="zone">  the time-zone to use, not null </param>
 		''' <returns> the zoned date-time formed from this date and the earliest valid time for the zone, not null </returns>
-		Public Function atZoneSimilarLocal(ByVal zone As ZoneId) As ZonedDateTime
+		Public Function atZoneSimilarLocal(  zone As ZoneId) As ZonedDateTime
 			Return ZonedDateTime.ofLocal(dateTime, zone, offset)
 		End Function
 
@@ -1682,7 +1682,7 @@ Namespace java.time
 		''' </summary>
 		''' <param name="other">  the other date-time to compare to, not null </param>
 		''' <returns> the comparator value, negative if less, positive if greater </returns>
-		Public Overrides Function compareTo(ByVal other As OffsetDateTime) As Integer Implements Comparable(Of OffsetDateTime).compareTo
+		Public Overrides Function compareTo(  other As OffsetDateTime) As Integer Implements Comparable(Of OffsetDateTime).compareTo
 			Dim cmp As Integer = compareInstant(Me, other)
 			If cmp = 0 Then cmp = toLocalDateTime().CompareTo(other.toLocalDateTime())
 			Return cmp
@@ -1698,7 +1698,7 @@ Namespace java.time
 		''' </summary>
 		''' <param name="other">  the other date-time to compare to, not null </param>
 		''' <returns> true if this is after the instant of the specified date-time </returns>
-		Public Function isAfter(ByVal other As OffsetDateTime) As Boolean
+		Public Function isAfter(  other As OffsetDateTime) As Boolean
 			Dim thisEpochSec As Long = toEpochSecond()
 			Dim otherEpochSec As Long = other.toEpochSecond()
 			Return thisEpochSec > otherEpochSec OrElse (thisEpochSec = otherEpochSec AndAlso toLocalTime().nano > other.toLocalTime().nano)
@@ -1713,7 +1713,7 @@ Namespace java.time
 		''' </summary>
 		''' <param name="other">  the other date-time to compare to, not null </param>
 		''' <returns> true if this is before the instant of the specified date-time </returns>
-		Public Function isBefore(ByVal other As OffsetDateTime) As Boolean
+		Public Function isBefore(  other As OffsetDateTime) As Boolean
 			Dim thisEpochSec As Long = toEpochSecond()
 			Dim otherEpochSec As Long = other.toEpochSecond()
 			Return thisEpochSec < otherEpochSec OrElse (thisEpochSec = otherEpochSec AndAlso toLocalTime().nano < other.toLocalTime().nano)
@@ -1728,7 +1728,7 @@ Namespace java.time
 		''' </summary>
 		''' <param name="other">  the other date-time to compare to, not null </param>
 		''' <returns> true if the instant equals the instant of the specified date-time </returns>
-		Public Function isEqual(ByVal other As OffsetDateTime) As Boolean
+		Public Function isEqual(  other As OffsetDateTime) As Boolean
 			Return toEpochSecond() = other.toEpochSecond() AndAlso toLocalTime().nano = other.toLocalTime().nano
 		End Function
 
@@ -1742,7 +1742,7 @@ Namespace java.time
 		''' </summary>
 		''' <param name="obj">  the object to check, null returns false </param>
 		''' <returns> true if this is equal to the other date-time </returns>
-		Public Overrides Function Equals(ByVal obj As Object) As Boolean
+		Public Overrides Function Equals(  obj As Object) As Boolean
 			If Me Is obj Then Return True
 			If TypeOf obj Is OffsetDateTime Then
 				Dim other As OffsetDateTime = CType(obj, OffsetDateTime)
@@ -1800,16 +1800,16 @@ Namespace java.time
 		''' </summary>
 		''' <param name="s"> the stream to read </param>
 		''' <exception cref="InvalidObjectException"> always </exception>
-		Private Sub readObject(ByVal s As java.io.ObjectInputStream)
+		Private Sub readObject(  s As java.io.ObjectInputStream)
 			Throw New java.io.InvalidObjectException("Deserialization via serialization delegate")
 		End Sub
 
-		Friend Sub writeExternal(ByVal out As java.io.ObjectOutput)
+		Friend Sub writeExternal(  out As java.io.ObjectOutput)
 			dateTime.writeExternal(out)
 			offset.writeExternal(out)
 		End Sub
 
-		Shared Function readExternal(ByVal [in] As java.io.ObjectInput) As OffsetDateTime
+		Shared Function readExternal(  [in] As java.io.ObjectInput) As OffsetDateTime
 			Dim dateTime As LocalDateTime = LocalDateTime.readExternal([in])
 			Dim offset_Renamed As ZoneOffset = ZoneOffset.readExternal([in])
 			Return OffsetDateTime.of(dateTime, offset_Renamed)

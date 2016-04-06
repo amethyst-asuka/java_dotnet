@@ -45,19 +45,19 @@ Namespace java.lang
 
 		Private Shared warnUnsupportedCharset_Renamed As Boolean = True
 
-		Private Shared Function deref(Of T)(ByVal tl As ThreadLocal(Of SoftReference(Of T))) As T
+		Private Shared Function deref(Of T)(  tl As ThreadLocal(Of SoftReference(Of T))) As T
 			Dim sr As SoftReference(Of T) = tl.get()
 			If sr Is Nothing Then Return Nothing
 			Return sr.get()
 		End Function
 
-		Private Shared Sub [set](Of T)(ByVal tl As ThreadLocal(Of SoftReference(Of T)), ByVal ob As T)
+		Private Shared Sub [set](Of T)(  tl As ThreadLocal(Of SoftReference(Of T)),   ob As T)
 			tl.set(New SoftReference(Of T)(ob))
 		End Sub
 
 		' Trim the given byte array to the given length
 		'
-		Private Shared Function safeTrim(ByVal ba As SByte(), ByVal len As Integer, ByVal cs As java.nio.charset.Charset, ByVal isTrusted As Boolean) As SByte()
+		Private Shared Function safeTrim(  ba As SByte(),   len As Integer,   cs As java.nio.charset.Charset,   isTrusted As Boolean) As SByte()
 			If len = ba.Length AndAlso (isTrusted OrElse System.securityManager Is Nothing) Then
 				Return ba
 			Else
@@ -67,7 +67,7 @@ Namespace java.lang
 
 		' Trim the given char array to the given length
 		'
-		Private Shared Function safeTrim(ByVal ca As Char(), ByVal len As Integer, ByVal cs As java.nio.charset.Charset, ByVal isTrusted As Boolean) As Char()
+		Private Shared Function safeTrim(  ca As Char(),   len As Integer,   cs As java.nio.charset.Charset,   isTrusted As Boolean) As Char()
 			If len = ca.Length AndAlso (isTrusted OrElse System.securityManager Is Nothing) Then
 				Return ca
 			Else
@@ -75,13 +75,13 @@ Namespace java.lang
 			End If
 		End Function
 
-		Private Shared Function scale(ByVal len As Integer, ByVal expansionFactor As Single) As Integer
+		Private Shared Function scale(  len As Integer,   expansionFactor As Single) As Integer
 			' We need to perform double, not float, arithmetic; otherwise
 			' we lose low order bits when len is larger than 2**24.
 			Return CInt(Fix(len * CDbl(expansionFactor)))
 		End Function
 
-		Private Shared Function lookupCharset(ByVal csn As String) As java.nio.charset.Charset
+		Private Shared Function lookupCharset(  csn As String) As java.nio.charset.Charset
 			If java.nio.charset.Charset.isSupported(csn) Then
 				Try
 					Return java.nio.charset.Charset.forName(csn)
@@ -92,7 +92,7 @@ Namespace java.lang
 			Return Nothing
 		End Function
 
-		Private Shared Sub warnUnsupportedCharset(ByVal csn As String)
+		Private Shared Sub warnUnsupportedCharset(  csn As String)
 			If warnUnsupportedCharset_Renamed Then
 				' Use sun.misc.MessageUtils rather than the Logging API or
 				' System.err since this method may be called during VM
@@ -110,7 +110,7 @@ Namespace java.lang
 			Private ReadOnly cd As java.nio.charset.CharsetDecoder
 			Private ReadOnly isTrusted As Boolean
 
-			Private Sub New(ByVal cs As java.nio.charset.Charset, ByVal rcn As String)
+			Private Sub New(  cs As java.nio.charset.Charset,   rcn As String)
 				Me.requestedCharsetName_Renamed = rcn
 				Me.cs = cs
 				Me.cd = cs.newDecoder().onMalformedInput(java.nio.charset.CodingErrorAction.REPLACE).onUnmappableCharacter(java.nio.charset.CodingErrorAction.REPLACE)
@@ -126,7 +126,7 @@ Namespace java.lang
 				Return requestedCharsetName_Renamed
 			End Function
 
-			Friend Overridable Function decode(ByVal ba As SByte(), ByVal [off] As Integer, ByVal len As Integer) As Char()
+			Friend Overridable Function decode(  ba As SByte(),   [off] As Integer,   len As Integer) As Char()
 				Dim en As Integer = scale(len, cd.maxCharsPerByte())
 				Dim ca As Char() = New Char(en - 1){}
 				If len = 0 Then Return ca
@@ -152,7 +152,7 @@ Namespace java.lang
 			End Function
 		End Class
 
-		Friend Shared Function decode(ByVal charsetName As String, ByVal ba As SByte(), ByVal [off] As Integer, ByVal len As Integer) As Char()
+		Friend Shared Function decode(  charsetName As String,   ba As SByte(),   [off] As Integer,   len As Integer) As Char()
 			Dim sd As StringDecoder = deref(decoder)
 			Dim csn As String = If(charsetName Is Nothing, "ISO-8859-1", charsetName)
 			If (sd Is Nothing) OrElse Not(csn.Equals(sd.requestedCharsetName()) OrElse csn.Equals(sd.charsetName())) Then
@@ -168,7 +168,7 @@ Namespace java.lang
 			Return sd.decode(ba, [off], len)
 		End Function
 
-		Friend Shared Function decode(ByVal cs As java.nio.charset.Charset, ByVal ba As SByte(), ByVal [off] As Integer, ByVal len As Integer) As Char()
+		Friend Shared Function decode(  cs As java.nio.charset.Charset,   ba As SByte(),   [off] As Integer,   len As Integer) As Char()
 			' (1)We never cache the "external" cs, the only benefit of creating
 			' an additional StringDe/Encoder object to wrap it is to share the
 			' de/encode() method. These SD/E objects are short-lifed, the young-gen
@@ -218,7 +218,7 @@ Namespace java.lang
 			End If
 		End Function
 
-		Friend Shared Function decode(ByVal ba As SByte(), ByVal [off] As Integer, ByVal len As Integer) As Char()
+		Friend Shared Function decode(  ba As SByte(),   [off] As Integer,   len As Integer) As Char()
 			Dim csn As String = java.nio.charset.Charset.defaultCharset().name()
 			Try
 				' use charset name decode() variant which provides caching.
@@ -246,7 +246,7 @@ Namespace java.lang
 			Private ReadOnly requestedCharsetName_Renamed As String
 			Private ReadOnly isTrusted As Boolean
 
-			Private Sub New(ByVal cs As java.nio.charset.Charset, ByVal rcn As String)
+			Private Sub New(  cs As java.nio.charset.Charset,   rcn As String)
 				Me.requestedCharsetName_Renamed = rcn
 				Me.cs = cs
 				Me.ce = cs.newEncoder().onMalformedInput(java.nio.charset.CodingErrorAction.REPLACE).onUnmappableCharacter(java.nio.charset.CodingErrorAction.REPLACE)
@@ -262,7 +262,7 @@ Namespace java.lang
 				Return requestedCharsetName_Renamed
 			End Function
 
-			Friend Overridable Function encode(ByVal ca As Char(), ByVal [off] As Integer, ByVal len As Integer) As SByte()
+			Friend Overridable Function encode(  ca As Char(),   [off] As Integer,   len As Integer) As SByte()
 				Dim en As Integer = scale(len, ce.maxBytesPerChar())
 				Dim ba As SByte() = New SByte(en - 1){}
 				If len = 0 Then Return ba
@@ -288,7 +288,7 @@ Namespace java.lang
 			End Function
 		End Class
 
-		Friend Shared Function encode(ByVal charsetName As String, ByVal ca As Char(), ByVal [off] As Integer, ByVal len As Integer) As SByte()
+		Friend Shared Function encode(  charsetName As String,   ca As Char(),   [off] As Integer,   len As Integer) As SByte()
 			Dim se As StringEncoder = deref(encoder)
 			Dim csn As String = If(charsetName Is Nothing, "ISO-8859-1", charsetName)
 			If (se Is Nothing) OrElse Not(csn.Equals(se.requestedCharsetName()) OrElse csn.Equals(se.charsetName())) Then
@@ -304,7 +304,7 @@ Namespace java.lang
 			Return se.encode(ca, [off], len)
 		End Function
 
-		Friend Shared Function encode(ByVal cs As java.nio.charset.Charset, ByVal ca As Char(), ByVal [off] As Integer, ByVal len As Integer) As SByte()
+		Friend Shared Function encode(  cs As java.nio.charset.Charset,   ca As Char(),   [off] As Integer,   len As Integer) As SByte()
 			Dim ce As java.nio.charset.CharsetEncoder = cs.newEncoder()
 			Dim en As Integer = scale(len, ce.maxBytesPerChar())
 			Dim ba As SByte() = New SByte(en - 1){}
@@ -336,7 +336,7 @@ Namespace java.lang
 			End If
 		End Function
 
-		Friend Shared Function encode(ByVal ca As Char(), ByVal [off] As Integer, ByVal len As Integer) As SByte()
+		Friend Shared Function encode(  ca As Char(),   [off] As Integer,   len As Integer) As SByte()
 			Dim csn As String = java.nio.charset.Charset.defaultCharset().name()
 			Try
 				' use charset name encode() variant which provides caching.

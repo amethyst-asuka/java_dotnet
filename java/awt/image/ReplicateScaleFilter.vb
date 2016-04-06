@@ -94,7 +94,7 @@ Namespace java.awt.image
         ''' <param name="height"> the target height to scale the image </param>
         ''' <exception cref="IllegalArgumentException"> if <code>width</code> equals
         '''         zero or <code>height</code> equals zero </exception>
-        Public Sub New(ByVal width As Integer, ByVal height As Integer)
+        Public Sub New(  width As Integer,   height As Integer)
             If width = 0 OrElse height = 0 Then Throw New IllegalArgumentException("Width (" & width & ") and height (" & height & ") must be non-zero")
             destWidth = width
             destHeight = height
@@ -114,7 +114,7 @@ Namespace java.awt.image
         ''' with the filtering operation.
         ''' </summary>
         Public Overrides Property properties(Of T1) As Dictionary(Of T1)
-            Set(ByVal props As Dictionary(Of T1))
+            Set(  props As Dictionary(Of T1))
                 Dim p As Dictionary(Of Object, Object) = CType(props.clone(), Dictionary(Of Object, Object))
                 Dim key As String = "rescale"
                 Dim val As String = destWidth & "x" & destHeight
@@ -136,7 +136,7 @@ Namespace java.awt.image
         ''' this method directly since that operation could interfere
         ''' with the filtering operation. </summary>
         ''' <seealso cref= ImageConsumer </seealso>
-        Public Overrides Sub setDimensions(ByVal w As Integer, ByVal h As Integer)
+        Public Overrides Sub setDimensions(  w As Integer,   h As Integer)
             srcWidth = w
             srcHeight = h
             If destWidth < 0 Then

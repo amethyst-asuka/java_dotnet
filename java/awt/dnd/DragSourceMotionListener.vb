@@ -55,7 +55,7 @@ Namespace java.awt.dnd
 		''' Called whenever the mouse is moved during a drag operation.
 		''' </summary>
 		''' <param name="dsde"> the <code>DragSourceDragEvent</code> </param>
-		Sub dragMouseMoved(ByVal dsde As DragSourceDragEvent)
+		Sub dragMouseMoved(  dsde As DragSourceDragEvent)
 	End Interface
 
 End Namespace

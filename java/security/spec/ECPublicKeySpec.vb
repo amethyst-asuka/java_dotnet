@@ -51,7 +51,7 @@ Namespace java.security.spec
 		''' or {@code params} is null. </exception>
 		''' <exception cref="IllegalArgumentException"> if {@code w}
 		''' is point at infinity, i.e. ECPoint.POINT_INFINITY </exception>
-		Public Sub New(ByVal w As ECPoint, ByVal params As ECParameterSpec)
+		Public Sub New(  w As ECPoint,   params As ECParameterSpec)
 			If w Is Nothing Then Throw New NullPointerException("w is null")
 			If params Is Nothing Then Throw New NullPointerException("params is null")
 			If w Is ECPoint.POINT_INFINITY Then Throw New IllegalArgumentException("w is ECPoint.POINT_INFINITY")

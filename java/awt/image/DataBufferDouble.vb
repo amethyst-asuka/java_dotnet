@@ -67,7 +67,7 @@ Namespace java.awt.image
         ''' with a specified size.
         ''' </summary>
         ''' <param name="size"> The number of elements in the <code>DataBuffer</code>. </param>
-        Public Sub New(ByVal size As Integer)
+        Public Sub New(  size As Integer)
 			MyBase.New(STABLE, TYPE_DOUBLE, size)
             _data = New Double(size - 1) {}
             _bankdata = New Double(0)() {}
@@ -82,7 +82,7 @@ Namespace java.awt.image
 		''' <param name="size"> The number of elements in each bank of the
 		'''        <code>DataBuffer</code>. </param>
 		''' <param name="numBanks"> The number of banks in the <code>DataBuffer</code>. </param>
-		Public Sub New(ByVal size As Integer, ByVal numBanks As Integer)
+		Public Sub New(  size As Integer,   numBanks As Integer)
 			MyBase.New(STABLE, TYPE_DOUBLE, size, numBanks)
             _bankdata = New Double(numBanks - 1)() {}
             For i As Integer = 0 To numBanks - 1

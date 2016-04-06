@@ -172,7 +172,7 @@ Namespace java.util.logging
 		''' </summary>
 		''' <param name="level">  a logging level value </param>
 		''' <param name="msg">  the raw non-localized logging message (may be null) </param>
-		Public Sub New(ByVal level_Renamed As Level, ByVal msg As String)
+		Public Sub New(  level_Renamed As Level,   msg As String)
 			' Make sure level isn't null, by calling random method.
 			level_Renamed.GetType()
 			Me.level_Renamed = level_Renamed
@@ -192,7 +192,7 @@ Namespace java.util.logging
 			Get
 				Return loggerName
 			End Get
-			Set(ByVal name As String)
+			Set(  name As String)
 				loggerName = name
 			End Set
 		End Property
@@ -210,7 +210,7 @@ Namespace java.util.logging
 			Get
 				Return resourceBundle_Renamed
 			End Get
-			Set(ByVal bundle As ResourceBundle)
+			Set(  bundle As ResourceBundle)
 				resourceBundle_Renamed = bundle
 			End Set
 		End Property
@@ -227,7 +227,7 @@ Namespace java.util.logging
 			Get
 				Return resourceBundleName
 			End Get
-			Set(ByVal name As String)
+			Set(  name As String)
 				resourceBundleName = name
 			End Set
 		End Property
@@ -240,7 +240,7 @@ Namespace java.util.logging
 			Get
 				Return level_Renamed
 			End Get
-			Set(ByVal level_Renamed As Level)
+			Set(  level_Renamed As Level)
 				If level_Renamed Is Nothing Then Throw New NullPointerException
 				Me.level_Renamed = level_Renamed
 			End Set
@@ -258,7 +258,7 @@ Namespace java.util.logging
 			Get
 				Return sequenceNumber
 			End Get
-			Set(ByVal seq As Long)
+			Set(  seq As Long)
 				sequenceNumber = seq
 			End Set
 		End Property
@@ -282,7 +282,7 @@ Namespace java.util.logging
 				If needToInferCaller Then inferCaller()
 				Return sourceClassName
 			End Get
-			Set(ByVal sourceClassName As String)
+			Set(  sourceClassName As String)
 				Me.sourceClassName = sourceClassName
 				needToInferCaller = False
 			End Set
@@ -307,7 +307,7 @@ Namespace java.util.logging
 				If needToInferCaller Then inferCaller()
 				Return sourceMethodName
 			End Get
-			Set(ByVal sourceMethodName As String)
+			Set(  sourceMethodName As String)
 				Me.sourceMethodName = sourceMethodName
 				needToInferCaller = False
 			End Set
@@ -331,7 +331,7 @@ Namespace java.util.logging
 			Get
 				Return message
 			End Get
-			Set(ByVal message As String)
+			Set(  message As String)
 				Me.message = message
 			End Set
 		End Property
@@ -346,7 +346,7 @@ Namespace java.util.logging
 			Get
 				Return parameters
 			End Get
-			Set(ByVal parameters As Object())
+			Set(  parameters As Object())
 				Me.parameters = parameters
 			End Set
 		End Property
@@ -363,7 +363,7 @@ Namespace java.util.logging
 			Get
 				Return threadID
 			End Get
-			Set(ByVal threadID As Integer)
+			Set(  threadID As Integer)
 				Me.threadID = threadID
 			End Set
 		End Property
@@ -377,7 +377,7 @@ Namespace java.util.logging
 			Get
 				Return millis
 			End Get
-			Set(ByVal millis As Long)
+			Set(  millis As Long)
 				Me.millis = millis
 			End Set
 		End Property
@@ -394,7 +394,7 @@ Namespace java.util.logging
 			Get
 				Return thrown
 			End Get
-			Set(ByVal thrown As Throwable)
+			Set(  thrown As Throwable)
 				Me.thrown = thrown
 			End Set
 		End Property
@@ -412,7 +412,7 @@ Namespace java.util.logging
 		''' a null String is written.  Otherwise the output of Object.toString()
 		''' is written.
 		''' </summary>
-		Private Sub writeObject(ByVal out As ObjectOutputStream)
+		Private Sub writeObject(  out As ObjectOutputStream)
 			' We have to call defaultWriteObject first.
 			out.defaultWriteObject()
 
@@ -434,7 +434,7 @@ Namespace java.util.logging
 			Next i
 		End Sub
 
-		Private Sub readObject(ByVal [in] As ObjectInputStream)
+		Private Sub readObject(  [in] As ObjectInputStream)
 			' We have to call defaultReadObject first.
 			[in].defaultReadObject()
 
@@ -501,7 +501,7 @@ Namespace java.util.logging
 			' OK as we are only committed to making a "best effort" here.
 		End Sub
 
-		Private Function isLoggerImplFrame(ByVal cname As String) As Boolean
+		Private Function isLoggerImplFrame(  cname As String) As Boolean
 			' the log record could be created for a platform logger
 			Return (cname.Equals("java.util.logging.Logger") OrElse cname.StartsWith("java.util.logging.LoggingProxyImpl") OrElse cname.StartsWith("sun.util.logging."))
 		End Function

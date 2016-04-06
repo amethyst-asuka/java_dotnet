@@ -59,7 +59,7 @@ Namespace java.text
 		''' </summary>
 		''' <param name="s"> the detail message </param>
 		''' <param name="errorOffset"> the position where the error is found while parsing. </param>
-		Public Sub New(ByVal s As String, ByVal errorOffset As Integer)
+		Public Sub New(  s As String,   errorOffset As Integer)
 			MyBase.New(s)
 			Me.errorOffset = errorOffset
 		End Sub

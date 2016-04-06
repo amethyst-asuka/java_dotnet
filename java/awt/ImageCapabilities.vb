@@ -38,7 +38,7 @@ Namespace java.awt
 		''' <summary>
 		''' Creates a new object for specifying image capabilities. </summary>
 		''' <param name="accelerated"> whether or not an accelerated image is desired </param>
-		Public Sub New(ByVal accelerated As Boolean)
+		Public Sub New(  accelerated As Boolean)
 			Me.accelerated = accelerated
 		End Sub
 

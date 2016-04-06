@@ -250,7 +250,7 @@ Namespace java.awt
 		''' <param name="theEvent"> an instance of <code>java.awt.AWTEvent</code>,
 		'''          or a subclass of it </param>
 		''' <exception cref="NullPointerException"> if <code>theEvent</code> is <code>null</code> </exception>
-		Public Overridable Sub postEvent(ByVal theEvent As AWTEvent)
+		Public Overridable Sub postEvent(  theEvent As AWTEvent)
 			SunToolkit.flushPendingEvents(appContext)
 			postEventPrivate(theEvent)
 		End Sub
@@ -263,7 +263,7 @@ Namespace java.awt
 		''' </summary>
 		''' <param name="theEvent"> an instance of <code>java.awt.AWTEvent</code>,
 		'''          or a subclass of it </param>
-		Private Sub postEventPrivate(ByVal theEvent As AWTEvent)
+		Private Sub postEventPrivate(  theEvent As AWTEvent)
 			theEvent.isPosted = True
 			pushPopLock.lock()
 			Try
@@ -285,7 +285,7 @@ Namespace java.awt
 			End Try
 		End Sub
 
-		Private Shared Function getPriority(ByVal theEvent As AWTEvent) As Integer
+		Private Shared Function getPriority(  theEvent As AWTEvent) As Integer
 			If TypeOf theEvent Is PeerEvent Then
 				Dim peerEvent As PeerEvent = CType(theEvent, PeerEvent)
 				If (peerEvent.flags And PeerEvent.ULTIMATE_PRIORITY_EVENT) <> 0 Then Return ULTIMATE_PRIORITY
@@ -304,7 +304,7 @@ Namespace java.awt
 		''' <param name="theEvent"> an instance of <code>java.awt.AWTEvent</code>,
 		'''          or a subclass of it </param>
 		''' <param name="priority">  the desired priority of the event </param>
-		Private Sub postEvent(ByVal theEvent As AWTEvent, ByVal priority As Integer)
+		Private Sub postEvent(  theEvent As AWTEvent,   priority As Integer)
 			If coalesceEvent(theEvent, priority) Then Return
 
 			Dim newItem As New EventQueueItem(theEvent)
@@ -333,7 +333,7 @@ Namespace java.awt
 			End If
 		End Sub
 
-		Private Function coalescePaintEvent(ByVal e As PaintEvent) As Boolean
+		Private Function coalescePaintEvent(  e As PaintEvent) As Boolean
 			Dim sourcePeer As java.awt.peer.ComponentPeer = CType(e.source, Component).peer
 			If sourcePeer IsNot Nothing Then sourcePeer.coalescePaintEvent(e)
 			Dim cache As EventQueueItem() = CType(e.source, Component).eventCache
@@ -350,7 +350,7 @@ Namespace java.awt
 			Return False
 		End Function
 
-		Private Function mergePaintEvents(ByVal a As PaintEvent, ByVal b As PaintEvent) As PaintEvent
+		Private Function mergePaintEvents(  a As PaintEvent,   b As PaintEvent) As PaintEvent
 			Dim aRect As Rectangle = a.updateRect
 			Dim bRect As Rectangle = b.updateRect
 			If bRect.contains(aRect) Then Return b
@@ -358,7 +358,7 @@ Namespace java.awt
 			Return Nothing
 		End Function
 
-		Private Function coalesceMouseEvent(ByVal e As MouseEvent) As Boolean
+		Private Function coalesceMouseEvent(  e As MouseEvent) As Boolean
 			Dim cache As EventQueueItem() = CType(e.source, Component).eventCache
 			If cache Is Nothing Then Return False
 			Dim index As Integer = eventToCacheIndex(e)
@@ -369,7 +369,7 @@ Namespace java.awt
 			Return False
 		End Function
 
-		Private Function coalescePeerEvent(ByVal e As PeerEvent) As Boolean
+		Private Function coalescePeerEvent(  e As PeerEvent) As Boolean
 			Dim cache As EventQueueItem() = CType(e.source, Component).eventCache
 			If cache Is Nothing Then Return False
 			Dim index As Integer = eventToCacheIndex(e)
@@ -392,7 +392,7 @@ Namespace java.awt
 	'     * 10 times by stalling the Event processing.
 	'     * Only here by backward compatibility reasons.
 	'     
-		Private Function coalesceOtherEvent(ByVal e As AWTEvent, ByVal priority As Integer) As Boolean
+		Private Function coalesceOtherEvent(  e As AWTEvent,   priority As Integer) As Boolean
 			Dim id As Integer = e.iD
 			Dim source As Component = CType(e.source, Component)
 			Dim entry As EventQueueItem = queues(priority).head
@@ -410,7 +410,7 @@ Namespace java.awt
 			Return False
 		End Function
 
-		Private Function coalesceEvent(ByVal e As AWTEvent, ByVal priority As Integer) As Boolean
+		Private Function coalesceEvent(  e As AWTEvent,   priority As Integer) As Boolean
 			If Not(TypeOf e.source Is Component) Then Return False
 			If TypeOf e Is PeerEvent Then Return coalescePeerEvent(CType(e, PeerEvent))
 			' The worst case
@@ -420,7 +420,7 @@ Namespace java.awt
 			Return False
 		End Function
 
-		Private Sub cacheEQItem(ByVal entry As EventQueueItem)
+		Private Sub cacheEQItem(  entry As EventQueueItem)
 			Dim index As Integer = eventToCacheIndex(entry.event)
 			If index <> -1 AndAlso TypeOf entry.event.source Is Component Then
 				Dim source As Component = CType(entry.event.source, Component)
@@ -429,7 +429,7 @@ Namespace java.awt
 			End If
 		End Sub
 
-		Private Sub uncacheEQItem(ByVal entry As EventQueueItem)
+		Private Sub uncacheEQItem(  entry As EventQueueItem)
 			Dim index As Integer = eventToCacheIndex(entry.event)
 			If index <> -1 AndAlso TypeOf entry.event.source Is Component Then
 				Dim source As Component = CType(entry.event.source, Component)
@@ -445,7 +445,7 @@ Namespace java.awt
 		Private Const PEER As Integer = 4
 		Private Const CACHE_LENGTH As Integer = 5
 
-		Private Shared Function eventToCacheIndex(ByVal e As AWTEvent) As Integer
+		Private Shared Function eventToCacheIndex(  e As AWTEvent) As Integer
 			Select Case e.iD
 			Case PaintEvent.PAINT
 				Return PAINT
@@ -521,7 +521,7 @@ Namespace java.awt
 			End Get
 		End Property
 
-		Friend Overridable Function getNextEvent(ByVal id As Integer) As AWTEvent
+		Friend Overridable Function getNextEvent(  id As Integer) As AWTEvent
 			Do
 	'            
 	'             * SunToolkit.flushPendingEvents must be called outside
@@ -580,7 +580,7 @@ Namespace java.awt
 		''' <param name="id"> the id of the type of event desired </param>
 		''' <returns> the first event of the specified id or <code>null</code>
 		'''    if there is no such event </returns>
-		Public Overridable Function peekEvent(ByVal id As Integer) As AWTEvent
+		Public Overridable Function peekEvent(  id As Integer) As AWTEvent
 			pushPopLock.lock()
 			Try
 				For i As Integer = NUM_PRIORITIES - 1 To 0 Step -1
@@ -636,7 +636,7 @@ Namespace java.awt
 		'''          or a subclass of it </param>
 		''' <exception cref="NullPointerException"> if <code>event</code> is <code>null</code>
 		''' @since           1.2 </exception>
-		Protected Friend Overridable Sub dispatchEvent(ByVal [event] As AWTEvent)
+		Protected Friend Overridable Sub dispatchEvent(  [event] As AWTEvent)
 			Dim src As Object = event_Renamed.source
 			Dim action As java.security.PrivilegedAction(Of Void) = New PrivilegedActionAnonymousInnerClassHelper(Of T)
 
@@ -683,14 +683,14 @@ Namespace java.awt
 			End Function
 		End Class
 
-		Private Shared Function getAccessControlContextFrom(ByVal src As Object) As java.security.AccessControlContext
+		Private Shared Function getAccessControlContextFrom(  src As Object) As java.security.AccessControlContext
 			Return If(TypeOf src Is Component, CType(src, Component).accessControlContext, If(TypeOf src Is MenuComponent, CType(src, MenuComponent).accessControlContext, If(TypeOf src Is TrayIcon, CType(src, TrayIcon).accessControlContext, Nothing)))
 		End Function
 
 		''' <summary>
 		''' Called from dispatchEvent() under a correct AccessControlContext
 		''' </summary>
-		Private Sub dispatchEventImpl(ByVal [event] As AWTEvent, ByVal src As Object)
+		Private Sub dispatchEventImpl(  [event] As AWTEvent,   src As Object)
 			event_Renamed.isPosted = True
 			If TypeOf event_Renamed Is ActiveEvent Then
 				' This could become the sole method of dispatching in time.
@@ -802,7 +802,7 @@ Namespace java.awt
         ''' <seealso cref=      java.awt.EventQueue#pop </seealso>
         ''' <exception cref="NullPointerException"> if <code>newEventQueue</code> is <code>null</code>
         ''' @since           1.2 </exception>
-        Public Overridable Sub push(ByVal newEventQueue As EventQueue)
+        Public Overridable Sub push(  newEventQueue As EventQueue)
             If eventLog.isLoggable(sun.util.logging.PlatformLogger.Level.FINE) Then eventLog.fine("EventQueue.push(" & newEventQueue & ")")
 
             pushPopLock.lock()
@@ -915,7 +915,7 @@ Namespace java.awt
             Return createSecondaryLoop(Nothing, Nothing, 0)
         End Function
 
-        Friend Overridable Function createSecondaryLoop(ByVal cond As Conditional, ByVal filter As EventFilter, ByVal interval As Long) As SecondaryLoop
+        Friend Overridable Function createSecondaryLoop(  cond As Conditional,   filter As EventFilter,   interval As Long) As SecondaryLoop
             pushPopLock.lock()
             Try
                 If nextQueue IsNot Nothing Then Return nextQueue.createSecondaryLoop(cond, filter, interval)
@@ -997,7 +997,7 @@ Namespace java.awt
 			End Function
 		End Class
 
-		Friend Sub detachDispatchThread(ByVal edt As EventDispatchThread)
+		Friend Sub detachDispatchThread(  edt As EventDispatchThread)
 	'        
 	'         * Minimize discard possibility for non-posted events
 	'         
@@ -1056,7 +1056,7 @@ Namespace java.awt
 	'     * This method is normally called by the source's
 	'     * <code>removeNotify</code> method.
 	'     
-		Friend Sub removeSourceEvents(ByVal source As Object, ByVal removeAllEvents As Boolean)
+		Friend Sub removeSourceEvents(  source As Object,   removeAllEvents As Boolean)
 			SunToolkit.flushPendingEvents(appContext)
 			pushPopLock.lock()
 			Try
@@ -1099,12 +1099,12 @@ Namespace java.awt
 		End Property
 
 		Friend Shared Property currentEventAndMostRecentTime As AWTEvent
-			Set(ByVal e As AWTEvent)
+			Set(  e As AWTEvent)
 				Toolkit.eventQueue.currentEventAndMostRecentTimeImpl = e
 			End Set
 		End Property
 		Private Property currentEventAndMostRecentTimeImpl As AWTEvent
-			Set(ByVal e As AWTEvent)
+			Set(  e As AWTEvent)
 				pushPopLock.lock()
 				Try
 					If Thread.CurrentThread IsNot dispatchThread Then Return
@@ -1156,7 +1156,7 @@ Namespace java.awt
 		''' <seealso cref=             Toolkit#getSystemEventQueue </seealso>
 		''' <seealso cref=             #isDispatchThread
 		''' @since           1.2 </seealso>
-		Public Shared Sub invokeLater(ByVal runnable As Runnable)
+		Public Shared Sub invokeLater(  runnable As Runnable)
 			Toolkit.eventQueue.postEvent(New InvocationEvent(Toolkit.defaultToolkit, runnable))
 		End Sub
 
@@ -1182,11 +1182,11 @@ Namespace java.awt
 		''' <seealso cref=             Toolkit#getSystemEventQueue </seealso>
 		''' <seealso cref=             #isDispatchThread
 		''' @since           1.2 </seealso>
-		Public Shared Sub invokeAndWait(ByVal runnable As Runnable)
+		Public Shared Sub invokeAndWait(  runnable As Runnable)
 			invokeAndWait(Toolkit.defaultToolkit, runnable)
 		End Sub
 
-		Friend Shared Sub invokeAndWait(ByVal source As Object, ByVal runnable As Runnable)
+		Friend Shared Sub invokeAndWait(  source As Object,   runnable As Runnable)
 			If EventQueue.dispatchThread Then Throw New [Error]("Cannot call invokeAndWait from the event dispatcher thread")
 
 'JAVA TO VB CONVERTER TODO TASK: Local classes are not converted by Java to VB Converter:
@@ -1214,7 +1214,7 @@ Namespace java.awt
 	'     * stack, then notifies the associated dispatch thread if it exists
 	'     * or starts a new one otherwise.
 	'     
-		Private Sub wakeup(ByVal isShutdown As Boolean)
+		Private Sub wakeup(  isShutdown As Boolean)
 			pushPopLock.lock()
 			Try
 				If nextQueue IsNot Nothing Then
@@ -1232,7 +1232,7 @@ Namespace java.awt
 
 		' The method is used by AWTAccessor for javafx/AWT single threaded mode.
 		Private Property fwDispatcher As FwDispatcher
-			Set(ByVal dispatcher As FwDispatcher)
+			Set(  dispatcher As FwDispatcher)
 				If nextQueue IsNot Nothing Then
 					nextQueue.fwDispatcher = dispatcher
 				Else

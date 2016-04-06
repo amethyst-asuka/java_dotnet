@@ -125,7 +125,7 @@ Namespace java.security
 		''' </param>
 		''' <exception cref="NullPointerException"> if {@code configuration} or
 		'''     {@code protectionParams} is {@code null} </exception>
-		Public Sub New(ByVal configuration As java.net.URI, ByVal protectionParams As Map(Of String, ProtectionParameter))
+		Public Sub New(  configuration As java.net.URI,   protectionParams As Map(Of String, ProtectionParameter))
 			If configuration Is Nothing OrElse protectionParams Is Nothing Then Throw New NullPointerException("invalid null input")
 			Me.configuration = configuration
 			Me.protectionParams = Collections.unmodifiableMap(New HashMap(Of )(protectionParams))

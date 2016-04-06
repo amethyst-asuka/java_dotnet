@@ -40,7 +40,7 @@ Namespace java.lang.invoke
 		''' Creates a call site with a permanent target. </summary>
 		''' <param name="target"> the target to be permanently associated with this call site </param>
 		''' <exception cref="NullPointerException"> if the proposed target is null </exception>
-		Public Sub New(ByVal target As MethodHandle)
+		Public Sub New(  target As MethodHandle)
 			MyBase.New(target)
 			isFrozen = True
 		End Sub
@@ -77,7 +77,7 @@ Namespace java.lang.invoke
 		''' <exception cref="NullPointerException"> if the hook returns a null value </exception>
 		''' <exception cref="ClassCastException"> if the hook returns something other than a {@code MethodHandle} </exception>
 		''' <exception cref="Throwable"> anything else thrown by the hook function </exception>
-		Protected Friend Sub New(ByVal targetType As MethodType, ByVal createTargetHook As MethodHandle)
+		Protected Friend Sub New(  targetType As MethodType,   createTargetHook As MethodHandle)
 			MyBase.New(targetType, createTargetHook)
 			isFrozen = True
 		End Sub
@@ -95,7 +95,7 @@ Namespace java.lang.invoke
 				If Not isFrozen Then Throw New IllegalStateException
 				Return target
 			End Get
-			Set(ByVal ignore As MethodHandle)
+			Set(  ignore As MethodHandle)
 				Throw New UnsupportedOperationException
 			End Set
 		End Property

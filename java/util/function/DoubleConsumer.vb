@@ -43,7 +43,7 @@ Namespace java.util.function
 		''' Performs this operation on the given argument.
 		''' </summary>
 		''' <param name="value"> the input argument </param>
-		Sub accept(ByVal value As Double)
+		Sub accept(  value As Double)
 
 		''' <summary>
 		''' Returns a composed {@code DoubleConsumer} that performs, in sequence, this
@@ -56,10 +56,10 @@ Namespace java.util.function
 		''' <returns> a composed {@code DoubleConsumer} that performs in sequence this
 		''' operation followed by the {@code after} operation </returns>
 		''' <exception cref="NullPointerException"> if {@code after} is null </exception>
-		default Function andThen(ByVal after As DoubleConsumer) As DoubleConsumer
+		default Function andThen(  after As DoubleConsumer) As DoubleConsumer
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 			java.util.Objects.requireNonNull(after);
-			Sub [New](ByVal t As Double)
+			Sub [New](  t As Double)
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 				accept(t);
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:

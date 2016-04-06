@@ -313,7 +313,7 @@ Namespace java.util.concurrent.locks
 		''' <exception cref="InterruptedException"> if the current thread is interrupted
 		'''         while acquiring the lock (and interruption of lock
 		'''         acquisition is supported) </exception>
-		Function tryLock(ByVal time As Long, ByVal unit As java.util.concurrent.TimeUnit) As Boolean
+		Function tryLock(  time As Long,   unit As java.util.concurrent.TimeUnit) As Boolean
 
 		''' <summary>
 		''' Releases the lock.

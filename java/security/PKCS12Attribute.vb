@@ -65,7 +65,7 @@ Namespace java.security
 		'''     is {@code null} </exception>
 		''' <exception cref="IllegalArgumentException"> if {@code name} or
 		'''     {@code value} is incorrectly formatted </exception>
-		Public Sub New(ByVal name As String, ByVal value As String)
+		Public Sub New(  name As String,   value As String)
 			If name Is Nothing OrElse value Is Nothing Then Throw New NullPointerException
 			' Validate name
 			Dim type As ObjectIdentifier
@@ -114,7 +114,7 @@ Namespace java.security
 		'''     {@code null} </exception>
 		''' <exception cref="IllegalArgumentException"> if {@code encoded} is
 		'''     incorrectly formatted </exception>
-		Public Sub New(ByVal encoded As SByte())
+		Public Sub New(  encoded As SByte())
 			If encoded Is Nothing Then Throw New NullPointerException
 			Me.encoded = encoded.clone()
 
@@ -181,7 +181,7 @@ Namespace java.security
 		''' </param>
 		''' <returns> true if {@code obj} is a {@code PKCS12Attribute} and
 		''' their DER encodings are equal. </returns>
-		Public Overrides Function Equals(ByVal obj As Object) As Boolean
+		Public Overrides Function Equals(  obj As Object) As Boolean
 			If Me Is obj Then Return True
 			If Not(TypeOf obj Is PKCS12Attribute) Then Return False
 			Return java.util.Arrays.Equals(encoded, CType(obj, PKCS12Attribute).encoded)
@@ -205,7 +205,7 @@ Namespace java.security
 			Return (name & "=" & value)
 		End Function
 
-		Private Function encode(ByVal type As ObjectIdentifier, ByVal values As String()) As SByte()
+		Private Function encode(  type As ObjectIdentifier,   values As String()) As SByte()
 			Dim attribute As New DerOutputStream
 			attribute.putOID(type)
 			Dim attrContent As New DerOutputStream
@@ -225,7 +225,7 @@ Namespace java.security
 			Return attributeValue.toByteArray()
 		End Function
 
-		Private Sub parse(ByVal encoded As SByte())
+		Private Sub parse(  encoded As SByte())
 			Dim attributeValue As New DerInputStream(encoded)
 			Dim attrSeq As DerValue() = attributeValue.getSequence(2)
 			Dim type As ObjectIdentifier = attrSeq(0).oID

@@ -131,7 +131,7 @@ Namespace java.lang.invoke
         ''' <exception cref="IllegalArgumentException"> if the target is not a direct method handle </exception>
         ''' <exception cref="ClassCastException"> if the member is not of the expected type
         ''' @since 1.8 </exception>
-        Public Shared Function reflectAs(Of T As Member)(ByVal expected As [Class], ByVal target As MethodHandle) As T
+        Public Shared Function reflectAs(Of T As Member)(  expected As [Class],   target As MethodHandle) As T
             Dim smgr As SecurityManager = System.securityManager
             If smgr IsNot Nothing Then smgr.checkPermission(ACCESS_PERMISSION)
             Dim lookup_Renamed As Lookup = lookup.IMPL_LOOKUP ' use maximally privileged lookup
@@ -542,7 +542,7 @@ Namespace java.lang.invoke
             Private Shared ReadOnly ALL_MODES As Integer = ([PUBLIC] Or [PRIVATE] Or [PROTECTED] Or PACKAGE)
             Private Const TRUSTED As Integer = -1
 
-            Private Shared Function fixmods(ByVal mods As Integer) As Integer
+            Private Shared Function fixmods(  mods As Integer) As Integer
                 mods = mods And (ALL_MODES - PACKAGE)
                 Return If(mods <> 0, mods, PACKAGE)
             End Function
@@ -593,13 +593,13 @@ Namespace java.lang.invoke
             ''' Must be called by from a method in this package,
             ''' which in turn is called by a method not in this package.
             ''' </summary>
-            Friend Sub New(ByVal lookupClass As [Class])
+            Friend Sub New(  lookupClass As [Class])
                 Me.New(lookupClass, ALL_MODES)
                 ' make sure we haven't accidentally picked up a privileged class:
                 checkUnprivilegedlookupClass(lookupClass, ALL_MODES)
             End Sub
 
-            Private Sub New(ByVal lookupClass As [Class], ByVal allowedModes As Integer)
+            Private Sub New(  lookupClass As [Class],   allowedModes As Integer)
                 Me.lookupClass_Renamed = lookupClass
                 Me.allowedModes = allowedModes
             End Sub
@@ -627,7 +627,7 @@ Namespace java.lang.invoke
             ''' <param name="requestedLookupClass"> the desired lookup class for the new lookup object </param>
             ''' <returns> a lookup object which reports the desired lookup class </returns>
             ''' <exception cref="NullPointerException"> if the argument is null </exception>
-            Public Function [in](ByVal requestedLookupClass As [Class]) As Lookup
+            Public Function [in](  requestedLookupClass As [Class]) As Lookup
                 requestedLookupClass.GetType() ' null check
                 If allowedModes = TRUSTED Then ' IMPL_LOOKUP can make any lookup at all Return New Lookup(requestedLookupClass, ALL_MODES)
                     If requestedLookupClass Is Me.lookupClass_Renamed Then Return Me ' keep same capabilities
@@ -653,7 +653,7 @@ Namespace java.lang.invoke
             ''' Package-private version of lookup which is trusted. </summary>
             Friend Shared ReadOnly IMPL_LOOKUP As New Lookup(GetType(Object), TRUSTED)
 
-            Private Shared Sub checkUnprivilegedlookupClass(ByVal lookupClass As [Class], ByVal allowedModes As Integer)
+            Private Shared Sub checkUnprivilegedlookupClass(  lookupClass As [Class],   allowedModes As Integer)
                 Dim name As String = lookupClass.name
                 If name.StartsWith("java.lang.invoke.") Then Throw New IllegalArgumentException("illegal lookupClass: " & lookupClass)
 
@@ -750,7 +750,7 @@ Namespace java.lang.invoke
             ''' <exception cref="SecurityException"> if a security manager is present and it
             '''                              <a href="MethodHandles.Lookup.html#secmgr">refuses access</a> </exception>
             ''' <exception cref="NullPointerException"> if any argument is null </exception>
-            Public Function findStatic(ByVal refc As [Class], ByVal name As String, ByVal type As MethodType) As MethodHandle
+            Public Function findStatic(  refc As [Class],   name As String,   type As MethodType) As MethodHandle
                 Dim method As MemberName = resolveOrFail(REF_invokeStatic, refc, name, type)
                 Return getDirectMethod(REF_invokeStatic, refc, method, findBoundCallerClass(method))
             End Function
@@ -825,7 +825,7 @@ Namespace java.lang.invoke
             ''' <exception cref="SecurityException"> if a security manager is present and it
             '''                              <a href="MethodHandles.Lookup.html#secmgr">refuses access</a> </exception>
             ''' <exception cref="NullPointerException"> if any argument is null </exception>
-            Public Function findVirtual(ByVal refc As [Class], ByVal name As String, ByVal type As MethodType) As MethodHandle
+            Public Function findVirtual(  refc As [Class],   name As String,   type As MethodType) As MethodHandle
                 If refc Is GetType(MethodHandle) Then
                     Dim mh As MethodHandle = findVirtualForMH(name, type)
                     If mh IsNot Nothing Then Return mh
@@ -834,7 +834,7 @@ Namespace java.lang.invoke
                 Dim method As MemberName = resolveOrFail(refKind, refc, name, type)
                 Return getDirectMethod(refKind, refc, method, findBoundCallerClass(method))
             End Function
-            Private Function findVirtualForMH(ByVal name As String, ByVal type As MethodType) As MethodHandle
+            Private Function findVirtualForMH(  name As String,   type As MethodType) As MethodHandle
                 ' these names require special lookups because of the implicit MethodType argument
                 If "invoke".Equals(name) Then Return invoker(type)
                 If "invokeExact".Equals(name) Then Return exactInvoker(type)
@@ -887,7 +887,7 @@ Namespace java.lang.invoke
             ''' <exception cref="SecurityException"> if a security manager is present and it
             '''                              <a href="MethodHandles.Lookup.html#secmgr">refuses access</a> </exception>
             ''' <exception cref="NullPointerException"> if any argument is null </exception>
-            Public Function findConstructor(ByVal refc As [Class], ByVal type As MethodType) As MethodHandle
+            Public Function findConstructor(  refc As [Class],   type As MethodType) As MethodHandle
                 Dim name As String = "<init>"
                 Dim ctor As MemberName = resolveOrFail(REF_newInvokeSpecial, refc, name, type)
                 Return getDirectConstructor(refc, ctor)
@@ -964,7 +964,7 @@ Namespace java.lang.invoke
             ''' <exception cref="SecurityException"> if a security manager is present and it
             '''                              <a href="MethodHandles.Lookup.html#secmgr">refuses access</a> </exception>
             ''' <exception cref="NullPointerException"> if any argument is null </exception>
-            Public Function findSpecial(ByVal refc As [Class], ByVal name As String, ByVal type As MethodType, ByVal specialCaller As [Class]) As MethodHandle
+            Public Function findSpecial(  refc As [Class],   name As String,   type As MethodType,   specialCaller As [Class]) As MethodHandle
                 checkSpecialCaller(specialCaller)
                 Dim specialLookup As Lookup = Me.in(specialCaller)
                 Dim method As MemberName = specialLookup.resolveOrFail(REF_invokeSpecial, refc, name, type)
@@ -987,7 +987,7 @@ Namespace java.lang.invoke
             ''' <exception cref="SecurityException"> if a security manager is present and it
             '''                              <a href="MethodHandles.Lookup.html#secmgr">refuses access</a> </exception>
             ''' <exception cref="NullPointerException"> if any argument is null </exception>
-            Public Function findGetter(ByVal refc As [Class], ByVal name As String, ByVal type As [Class]) As MethodHandle
+            Public Function findGetter(  refc As [Class],   name As String,   type As [Class]) As MethodHandle
                 Dim field As MemberName = resolveOrFail(REF_getField, refc, name, type)
                 Return getDirectField(REF_getField, refc, field)
             End Function
@@ -1008,7 +1008,7 @@ Namespace java.lang.invoke
             ''' <exception cref="SecurityException"> if a security manager is present and it
             '''                              <a href="MethodHandles.Lookup.html#secmgr">refuses access</a> </exception>
             ''' <exception cref="NullPointerException"> if any argument is null </exception>
-            Public Function findSetter(ByVal refc As [Class], ByVal name As String, ByVal type As [Class]) As MethodHandle
+            Public Function findSetter(  refc As [Class],   name As String,   type As [Class]) As MethodHandle
                 Dim field As MemberName = resolveOrFail(REF_putField, refc, name, type)
                 Return getDirectField(REF_putField, refc, field)
             End Function
@@ -1031,7 +1031,7 @@ Namespace java.lang.invoke
             ''' <exception cref="SecurityException"> if a security manager is present and it
             '''                              <a href="MethodHandles.Lookup.html#secmgr">refuses access</a> </exception>
             ''' <exception cref="NullPointerException"> if any argument is null </exception>
-            Public Function findStaticGetter(ByVal refc As [Class], ByVal name As String, ByVal type As [Class]) As MethodHandle
+            Public Function findStaticGetter(  refc As [Class],   name As String,   type As [Class]) As MethodHandle
                 Dim field As MemberName = resolveOrFail(REF_getStatic, refc, name, type)
                 Return getDirectField(REF_getStatic, refc, field)
             End Function
@@ -1054,7 +1054,7 @@ Namespace java.lang.invoke
             ''' <exception cref="SecurityException"> if a security manager is present and it
             '''                              <a href="MethodHandles.Lookup.html#secmgr">refuses access</a> </exception>
             ''' <exception cref="NullPointerException"> if any argument is null </exception>
-            Public Function findStaticSetter(ByVal refc As [Class], ByVal name As String, ByVal type As [Class]) As MethodHandle
+            Public Function findStaticSetter(  refc As [Class],   name As String,   type As [Class]) As MethodHandle
                 Dim field As MemberName = resolveOrFail(REF_putStatic, refc, name, type)
                 Return getDirectField(REF_putStatic, refc, field)
             End Function
@@ -1106,7 +1106,7 @@ Namespace java.lang.invoke
             ''' <exception cref="NullPointerException"> if any argument is null </exception>
             ''' <seealso cref= MethodHandle#bindTo </seealso>
             ''' <seealso cref= #findVirtual </seealso>
-            Public Function bind(ByVal receiver As Object, ByVal name As String, ByVal type As MethodType) As MethodHandle
+            Public Function bind(  receiver As Object,   name As String,   type As MethodType) As MethodHandle
                 Dim refc As [Class] = receiver.GetType() ' may get NPE
                 Dim method As MemberName = resolveOrFail(REF_invokeSpecial, refc, name, type)
                 Dim mh As MethodHandle = getDirectMethodNoRestrict(REF_invokeSpecial, refc, method, findBoundCallerClass(method))
@@ -1138,7 +1138,7 @@ Namespace java.lang.invoke
             '''                                or if the method's variable arity modifier bit
             '''                                is set and {@code asVarargsCollector} fails </exception>
             ''' <exception cref="NullPointerException"> if the argument is null </exception>
-            Public Function unreflect(ByVal m As Method) As MethodHandle
+            Public Function unreflect(  m As Method) As MethodHandle
                 If m.declaringClass Is GetType(MethodHandle) Then
                     Dim mh As MethodHandle = unreflectForMH(m)
                     If mh IsNot Nothing Then Return mh
@@ -1150,7 +1150,7 @@ Namespace java.lang.invoke
                 Dim lookup_Renamed As Lookup = If(m.accessible, IMPL_LOOKUP, Me)
                 Return lookup_Renamed.getDirectMethodNoSecurityManager(refKind, method.declaringClass, method, findBoundCallerClass(method))
             End Function
-            Private Function unreflectForMH(ByVal m As Method) As MethodHandle
+            Private Function unreflectForMH(  m As Method) As MethodHandle
                 ' these names require special lookups because they throw UnsupportedOperationException
                 If MemberName.isMethodHandleInvokeName(m.name) Then Return MethodHandleImpl.fakeMethodHandleInvoke(New MemberName(m))
                 Return Nothing
@@ -1184,7 +1184,7 @@ Namespace java.lang.invoke
             '''                                or if the method's variable arity modifier bit
             '''                                is set and {@code asVarargsCollector} fails </exception>
             ''' <exception cref="NullPointerException"> if any argument is null </exception>
-            Public Function unreflectSpecial(ByVal m As Method, ByVal specialCaller As [Class]) As MethodHandle
+            Public Function unreflectSpecial(  m As Method,   specialCaller As [Class]) As MethodHandle
                 checkSpecialCaller(specialCaller)
                 Dim specialLookup As Lookup = Me.in(specialCaller)
                 Dim method As New MemberName(m, True)
@@ -1216,7 +1216,7 @@ Namespace java.lang.invoke
             '''                                or if the method's variable arity modifier bit
             '''                                is set and {@code asVarargsCollector} fails </exception>
             ''' <exception cref="NullPointerException"> if the argument is null </exception>
-            Public Function unreflectConstructor(Of T1)(ByVal c As Constructor(Of T1)) As MethodHandle
+            Public Function unreflectConstructor(Of T1)(  c As Constructor(Of T1)) As MethodHandle
                 Dim ctor As New MemberName(c)
                 Assert(ctor.constructor)
                 Dim lookup_Renamed As Lookup = If(c.accessible, IMPL_LOOKUP, Me)
@@ -1240,10 +1240,10 @@ Namespace java.lang.invoke
             ''' <returns> a method handle which can load values from the reflected field </returns>
             ''' <exception cref="IllegalAccessException"> if access checking fails </exception>
             ''' <exception cref="NullPointerException"> if the argument is null </exception>
-            Public Function unreflectGetter(ByVal f As Field) As MethodHandle
+            Public Function unreflectGetter(  f As Field) As MethodHandle
                 Return unreflectField(f, False)
             End Function
-            Private Function unreflectField(ByVal f As Field, ByVal isSetter As Boolean) As MethodHandle
+            Private Function unreflectField(  f As Field,   isSetter As Boolean) As MethodHandle
                 Dim field As New MemberName(f, isSetter)
                 Assert(If(isSetter, MethodHandleNatives.refKindIsSetter(field.referenceKind), MethodHandleNatives.refKindIsGetter(field.referenceKind)))
                 Dim lookup_Renamed As Lookup = If(f.accessible, IMPL_LOOKUP, Me)
@@ -1267,7 +1267,7 @@ Namespace java.lang.invoke
             ''' <returns> a method handle which can store values into the reflected field </returns>
             ''' <exception cref="IllegalAccessException"> if access checking fails </exception>
             ''' <exception cref="NullPointerException"> if the argument is null </exception>
-            Public Function unreflectSetter(ByVal f As Field) As MethodHandle
+            Public Function unreflectSetter(  f As Field) As MethodHandle
                 Return unreflectField(f, True)
             End Function
 
@@ -1288,7 +1288,7 @@ Namespace java.lang.invoke
             ''' <exception cref="NullPointerException"> if the target is {@code null} </exception>
             ''' <seealso cref= MethodHandleInfo
             ''' @since 1.8 </seealso>
-            Public Function revealDirect(ByVal target As MethodHandle) As MethodHandleInfo
+            Public Function revealDirect(  target As MethodHandle) As MethodHandleInfo
                 Dim member As MemberName = target.internalMemberName()
                 If member Is Nothing OrElse ((Not member.resolved) AndAlso (Not member.methodHandleInvoke)) Then Throw newIllegalArgumentException("not a direct method handle")
                 Dim defc As [Class] = member.declaringClass
@@ -1313,14 +1313,14 @@ Namespace java.lang.invoke
 
             '/ Helper methods, all package-private.
 
-            Friend Function resolveOrFail(ByVal refKind As SByte, ByVal refc As [Class], ByVal name As String, ByVal type As [Class]) As MemberName
+            Friend Function resolveOrFail(  refKind As SByte,   refc As [Class],   name As String,   type As [Class]) As MemberName
                 checkSymbolicClass(refc) ' do this before attempting to resolve
                 name.GetType() ' NPE
                 type.GetType() ' NPE
                 Return IMPL_NAMES.resolveOrFail(refKind, New MemberName(refc, name, type, refKind), lookupClassOrNull(), GetType(NoSuchFieldException))
             End Function
 
-            Friend Function resolveOrFail(ByVal refKind As SByte, ByVal refc As [Class], ByVal name As String, ByVal type As MethodType) As MemberName
+            Friend Function resolveOrFail(  refKind As SByte,   refc As [Class],   name As String,   type As MethodType) As MemberName
                 checkSymbolicClass(refc) ' do this before attempting to resolve
                 name.GetType() ' NPE
                 type.GetType() ' NPE
@@ -1328,14 +1328,14 @@ Namespace java.lang.invoke
                 Return IMPL_NAMES.resolveOrFail(refKind, New MemberName(refc, name, type, refKind), lookupClassOrNull(), GetType(NoSuchMethodException))
             End Function
 
-            Friend Function resolveOrFail(ByVal refKind As SByte, ByVal member As MemberName) As MemberName
+            Friend Function resolveOrFail(  refKind As SByte,   member As MemberName) As MemberName
                 checkSymbolicClass(member.declaringClass) ' do this before attempting to resolve
                 member.name.GetType() ' NPE
                 member.type.GetType() ' NPE
                 Return IMPL_NAMES.resolveOrFail(refKind, member, lookupClassOrNull(), GetType(ReflectiveOperationException))
             End Function
 
-            Friend Sub checkSymbolicClass(ByVal refc As [Class])
+            Friend Sub checkSymbolicClass(  refc As [Class])
                 refc.GetType() ' NPE
                 Dim caller As [Class] = lookupClassOrNull()
                 If caller IsNot Nothing AndAlso (Not sun.invoke.util.VerifyAccess.isClassAccessible(refc, caller, allowedModes)) Then Throw (New MemberName(refc)).makeAccessException("symbolic reference class is not public", Me)
@@ -1343,7 +1343,7 @@ Namespace java.lang.invoke
 
             ''' <summary>
             ''' Check name for an illegal leading "&lt;" character. </summary>
-            Friend Sub checkMethodName(ByVal refKind As SByte, ByVal name As String)
+            Friend Sub checkMethodName(  refKind As SByte,   name As String)
                 If name.StartsWith("<") AndAlso refKind <> REF_newInvokeSpecial Then Throw New NoSuchMethodException("illegal method name: " & name)
             End Sub
 
@@ -1353,7 +1353,7 @@ Namespace java.lang.invoke
             ''' If this lookup object has private access, then the caller class is the lookupClass.
             ''' Otherwise, if m is caller-sensitive, throw IllegalAccessException.
             ''' </summary>
-            Friend Function findBoundCallerClass(ByVal m As MemberName) As [Class]
+            Friend Function findBoundCallerClass(  m As MemberName) As [Class]
                 Dim callerClass As [Class] = Nothing
                 If MethodHandleNatives.isCallerSensitive(m) Then
                     ' Only lookups with private access are allowed to resolve caller-sensitive methods
@@ -1375,7 +1375,7 @@ Namespace java.lang.invoke
             ''' Determines a trustable caller class to compare with refc, the symbolic reference class.
             ''' If this lookup object has private access, then the caller class is the lookupClass.
             ''' </summary>
-            Friend Sub checkSecurityManager(ByVal refc As [Class], ByVal m As MemberName)
+            Friend Sub checkSecurityManager(  refc As [Class],   m As MemberName)
                 Dim smgr As SecurityManager = System.securityManager
                 If smgr Is Nothing Then Return
                 If allowedModes = TRUSTED Then Return
@@ -1393,7 +1393,7 @@ Namespace java.lang.invoke
                 If (Not fullPowerLookup) AndAlso defc IsNot refc Then sun.reflect.misc.ReflectUtil.checkPackageAccess(defc)
             End Sub
 
-            Friend Sub checkMethod(ByVal refKind As SByte, ByVal refc As [Class], ByVal m As MemberName)
+            Friend Sub checkMethod(  refKind As SByte,   refc As [Class],   m As MemberName)
                 Dim wantStatic As Boolean = (refKind = REF_invokeStatic)
                 Dim message As String
                 If m.constructor Then
@@ -1409,7 +1409,7 @@ Namespace java.lang.invoke
                 Throw m.makeAccessException(message, Me)
             End Sub
 
-            Friend Sub checkField(ByVal refKind As SByte, ByVal refc As [Class], ByVal m As MemberName)
+            Friend Sub checkField(  refKind As SByte,   refc As [Class],   m As MemberName)
                 Dim wantStatic As Boolean = Not MethodHandleNatives.refKindHasReceiver(refKind)
                 Dim message As String
                 If wantStatic <> m.static Then
@@ -1423,7 +1423,7 @@ Namespace java.lang.invoke
 
             ''' <summary>
             ''' Check public/protected/private bits on the symbolic reference class and its member. </summary>
-            Friend Sub checkAccess(ByVal refKind As SByte, ByVal refc As [Class], ByVal m As MemberName)
+            Friend Sub checkAccess(  refKind As SByte,   refc As [Class],   m As MemberName)
                 Assert(m.referenceKindIsConsistentWith(refKind) AndAlso MethodHandleNatives.refKindIsValid(refKind) AndAlso (MethodHandleNatives.refKindIsField(refKind) = m.field))
                 Dim allowedModes As Integer = Me.allowedModes
                 If allowedModes = TRUSTED Then Return
@@ -1442,7 +1442,7 @@ Namespace java.lang.invoke
                 Throw m.makeAccessException(accessFailedMessage(refc, m), Me)
             End Sub
 
-            Friend Function accessFailedMessage(ByVal refc As [Class], ByVal m As MemberName) As String
+            Friend Function accessFailedMessage(  refc As [Class],   m As MemberName) As String
                 Dim defc As [Class] = m.declaringClass
                 Dim mods As Integer = m.modifiers
                 ' check the class first:
@@ -1457,19 +1457,19 @@ Namespace java.lang.invoke
 
             Private Const ALLOW_NESTMATE_ACCESS As Boolean = False
 
-            Private Sub checkSpecialCaller(ByVal specialCaller As [Class])
+            Private Sub checkSpecialCaller(  specialCaller As [Class])
                 Dim allowedModes As Integer = Me.allowedModes
                 If allowedModes = TRUSTED Then Return
                 If (Not hasPrivateAccess()) OrElse (specialCaller IsNot lookupClass() AndAlso Not (ALLOW_NESTMATE_ACCESS AndAlso sun.invoke.util.VerifyAccess.isSamePackageMember(specialCaller, lookupClass()))) Then Throw (New MemberName(specialCaller)).makeAccessException("no private access for invokespecial", Me)
             End Sub
 
-            Private Function restrictProtectedReceiver(ByVal method As MemberName) As Boolean
+            Private Function restrictProtectedReceiver(  method As MemberName) As Boolean
                 ' The accessing class only has the right to use a protected member
                 ' on itself or a subclass.  Enforce that restriction, from JVMS 5.4.4, etc.
                 If (Not method.protected) OrElse method.static OrElse allowedModes = TRUSTED OrElse method.declaringClass Is lookupClass() OrElse sun.invoke.util.VerifyAccess.isSamePackage(method.declaringClass, lookupClass()) OrElse (ALLOW_NESTMATE_ACCESS AndAlso sun.invoke.util.VerifyAccess.isSamePackageMember(method.declaringClass, lookupClass())) Then Return False
                 Return True
             End Function
-            Private Function restrictReceiver(ByVal method As MemberName, ByVal mh As DirectMethodHandle, ByVal caller As [Class]) As MethodHandle
+            Private Function restrictReceiver(  method As MemberName,   mh As DirectMethodHandle,   caller As [Class]) As MethodHandle
                 Assert((Not method.static))
                 ' receiver type of mh is too wide; narrow to caller
                 If Not caller.IsSubclassOf(method.declaringClass) Then Throw method.makeAccessException("caller class must be a subclass below the method", caller)
@@ -1483,28 +1483,28 @@ Namespace java.lang.invoke
 
             ''' <summary>
             ''' Check access and get the requested method. </summary>
-            Private Function getDirectMethod(ByVal refKind As SByte, ByVal refc As [Class], ByVal method As MemberName, ByVal callerClass As [Class]) As MethodHandle
+            Private Function getDirectMethod(  refKind As SByte,   refc As [Class],   method As MemberName,   callerClass As [Class]) As MethodHandle
                 Const doRestrict As Boolean = True
                 Const checkSecurity As Boolean = True
                 Return getDirectMethodCommon(refKind, refc, method, checkSecurity, doRestrict, callerClass)
             End Function
             ''' <summary>
             ''' Check access and get the requested method, eliding receiver narrowing rules. </summary>
-            Private Function getDirectMethodNoRestrict(ByVal refKind As SByte, ByVal refc As [Class], ByVal method As MemberName, ByVal callerClass As [Class]) As MethodHandle
+            Private Function getDirectMethodNoRestrict(  refKind As SByte,   refc As [Class],   method As MemberName,   callerClass As [Class]) As MethodHandle
                 Const doRestrict As Boolean = False
                 Const checkSecurity As Boolean = True
                 Return getDirectMethodCommon(refKind, refc, method, checkSecurity, doRestrict, callerClass)
             End Function
             ''' <summary>
             ''' Check access and get the requested method, eliding security manager checks. </summary>
-            Private Function getDirectMethodNoSecurityManager(ByVal refKind As SByte, ByVal refc As [Class], ByVal method As MemberName, ByVal callerClass As [Class]) As MethodHandle
+            Private Function getDirectMethodNoSecurityManager(  refKind As SByte,   refc As [Class],   method As MemberName,   callerClass As [Class]) As MethodHandle
                 Const doRestrict As Boolean = True
                 Const checkSecurity As Boolean = False ' not needed for reflection or for linking CONSTANT_MH constants
                 Return getDirectMethodCommon(refKind, refc, method, checkSecurity, doRestrict, callerClass)
             End Function
             ''' <summary>
             ''' Common code for all methods; do not call directly except from immediately above. </summary>
-            Private Function getDirectMethodCommon(ByVal refKind As SByte, ByVal refc As [Class], ByVal method As MemberName, ByVal checkSecurity As Boolean, ByVal doRestrict As Boolean, ByVal callerClass As [Class]) As MethodHandle
+            Private Function getDirectMethodCommon(  refKind As SByte,   refc As [Class],   method As MemberName,   checkSecurity As Boolean,   doRestrict As Boolean,   callerClass As [Class]) As MethodHandle
                 checkMethod(refKind, refc, method)
                 ' Optionally check with the security manager; this isn't needed for unreflect* calls.
                 If checkSecurity Then checkSecurityManager(refc, method)
@@ -1541,7 +1541,7 @@ Namespace java.lang.invoke
                 mh = mh.varargsrgs(method)
                 Return mh
             End Function
-            Private Function maybeBindCaller(ByVal method As MemberName, ByVal mh As MethodHandle, ByVal callerClass As [Class]) As MethodHandle
+            Private Function maybeBindCaller(  method As MemberName,   mh As MethodHandle,   callerClass As [Class]) As MethodHandle
                 If allowedModes = TRUSTED OrElse (Not MethodHandleNatives.isCallerSensitive(method)) Then Return mh
                 Dim hostClass As [Class] = lookupClass_Renamed
                 If Not hasPrivateAccess() Then ' caller must have private access hostClass = callerClass ' callerClass came from a security manager style stack walk
@@ -1551,19 +1551,19 @@ Namespace java.lang.invoke
             End Function
             ''' <summary>
             ''' Check access and get the requested field. </summary>
-            Private Function getDirectField(ByVal refKind As SByte, ByVal refc As [Class], ByVal field As MemberName) As MethodHandle
+            Private Function getDirectField(  refKind As SByte,   refc As [Class],   field As MemberName) As MethodHandle
                 Const checkSecurity As Boolean = True
                 Return getDirectFieldCommon(refKind, refc, field, checkSecurity)
             End Function
             ''' <summary>
             ''' Check access and get the requested field, eliding security manager checks. </summary>
-            Private Function getDirectFieldNoSecurityManager(ByVal refKind As SByte, ByVal refc As [Class], ByVal field As MemberName) As MethodHandle
+            Private Function getDirectFieldNoSecurityManager(  refKind As SByte,   refc As [Class],   field As MemberName) As MethodHandle
                 Const checkSecurity As Boolean = False ' not needed for reflection or for linking CONSTANT_MH constants
                 Return getDirectFieldCommon(refKind, refc, field, checkSecurity)
             End Function
             ''' <summary>
             ''' Common code for all fields; do not call directly except from immediately above. </summary>
-            Private Function getDirectFieldCommon(ByVal refKind As SByte, ByVal refc As [Class], ByVal field As MemberName, ByVal checkSecurity As Boolean) As MethodHandle
+            Private Function getDirectFieldCommon(  refKind As SByte,   refc As [Class],   field As MemberName,   checkSecurity As Boolean) As MethodHandle
                 checkField(refKind, refc, field)
                 ' Optionally check with the security manager; this isn't needed for unreflect* calls.
                 If checkSecurity Then checkSecurityManager(refc, field)
@@ -1574,19 +1574,19 @@ Namespace java.lang.invoke
             End Function
             ''' <summary>
             ''' Check access and get the requested constructor. </summary>
-            Private Function getDirectConstructor(ByVal refc As [Class], ByVal ctor As MemberName) As MethodHandle
+            Private Function getDirectConstructor(  refc As [Class],   ctor As MemberName) As MethodHandle
                 Const checkSecurity As Boolean = True
                 Return getDirectConstructorCommon(refc, ctor, checkSecurity)
             End Function
             ''' <summary>
             ''' Check access and get the requested constructor, eliding security manager checks. </summary>
-            Private Function getDirectConstructorNoSecurityManager(ByVal refc As [Class], ByVal ctor As MemberName) As MethodHandle
+            Private Function getDirectConstructorNoSecurityManager(  refc As [Class],   ctor As MemberName) As MethodHandle
                 Const checkSecurity As Boolean = False ' not needed for reflection or for linking CONSTANT_MH constants
                 Return getDirectConstructorCommon(refc, ctor, checkSecurity)
             End Function
             ''' <summary>
             ''' Common code for all constructors; do not call directly except from immediately above. </summary>
-            Private Function getDirectConstructorCommon(ByVal refc As [Class], ByVal ctor As MemberName, ByVal checkSecurity As Boolean) As MethodHandle
+            Private Function getDirectConstructorCommon(  refc As [Class],   ctor As MemberName,   checkSecurity As Boolean) As MethodHandle
                 Assert(ctor.constructor)
                 checkAccess(REF_newInvokeSpecial, refc, ctor)
                 ' Optionally check with the security manager; this isn't needed for unreflect* calls.
@@ -1599,7 +1599,7 @@ Namespace java.lang.invoke
             ''' Hook called from the JVM (via MethodHandleNatives) to link MH constants:
             ''' </summary>
             'non-public
-            Friend Function linkMethodHandleConstant(ByVal refKind As SByte, ByVal defc As [Class], ByVal name As String, ByVal type As Object) As MethodHandle
+            Friend Function linkMethodHandleConstant(  refKind As SByte,   defc As [Class],   name As String,   type As Object) As MethodHandle
                 If Not (TypeOf type Is Class OrElse TypeOf type Is MethodType) Then Throw New InternalError("unresolved MemberName")
                 Dim member As New MemberName(refKind, defc, name, type)
                 Dim mh As MethodHandle = LOOKASIDE_TABLE(member)
@@ -1621,7 +1621,7 @@ Namespace java.lang.invoke
                     End If
                     Return mh
             End Function
-            Private Function canBeCached(ByVal refKind As SByte, ByVal defc As [Class], ByVal member As MemberName) As Boolean
+            Private Function canBeCached(  refKind As SByte,   defc As [Class],   member As MemberName) As Boolean
                 If refKind = REF_invokeSpecial Then Return False
                 If (Not Modifier.isPublic(defc.modifiers)) OrElse (Not Modifier.isPublic(member.declaringClass.modifiers)) OrElse (Not member.public) OrElse member.callerSensitive Then Return False
                 Dim loader As ClassLoader = defc.classLoader
@@ -1646,7 +1646,7 @@ Namespace java.lang.invoke
                 End Try
                 Return True
             End Function
-            Private Function getDirectMethodForConstant(ByVal refKind As SByte, ByVal defc As [Class], ByVal member As MemberName) As MethodHandle
+            Private Function getDirectMethodForConstant(  refKind As SByte,   defc As [Class],   member As MemberName) As MethodHandle
                 If MethodHandleNatives.refKindIsField(refKind) Then
                     Return getDirectFieldNoSecurityManager(refKind, defc, member)
                 ElseIf MethodHandleNatives.refKindIsMethod(refKind) Then
@@ -1670,7 +1670,7 @@ Namespace java.lang.invoke
         ''' <returns> a method handle which can load values from the given array type </returns>
         ''' <exception cref="NullPointerException"> if the argument is null </exception>
         ''' <exception cref="IllegalArgumentException"> if arrayClass is not an array type </exception>
-        Public Shared Function arrayElementGetter(ByVal arrayClass As [Class]) As MethodHandle
+        Public Shared Function arrayElementGetter(  arrayClass As [Class]) As MethodHandle
             Return MethodHandleImpl.makeArrayElementAccessor(arrayClass, False)
         End Function
 
@@ -1683,7 +1683,7 @@ Namespace java.lang.invoke
         ''' <returns> a method handle which can store values into the array type </returns>
         ''' <exception cref="NullPointerException"> if the argument is null </exception>
         ''' <exception cref="IllegalArgumentException"> if arrayClass is not an array type </exception>
-        Public Shared Function arrayElementSetter(ByVal arrayClass As [Class]) As MethodHandle
+        Public Shared Function arrayElementSetter(  arrayClass As [Class]) As MethodHandle
             Return MethodHandleImpl.makeArrayElementAccessor(arrayClass, True)
         End Function
 
@@ -1734,7 +1734,7 @@ Namespace java.lang.invoke
         '''                  the range from 0 to {@code type.parameterCount()} inclusive,
         '''                  or if the resulting method handle's type would have
         '''          <a href="MethodHandle.html#maxarity">too many parameters</a> </exception>
-        Public Shared Function spreadInvoker(ByVal type As MethodType, ByVal leadingArgCount As Integer) As MethodHandle
+        Public Shared Function spreadInvoker(  type As MethodType,   leadingArgCount As Integer) As MethodHandle
             If leadingArgCount < 0 OrElse leadingArgCount > type.parameterCount() Then Throw newIllegalArgumentException("bad argument count", leadingArgCount)
             type = type.asSpreaderType(GetType(Object()), type.parameterCount() - leadingArgCount)
             Return type.invokers().spreadInvoker(leadingArgCount)
@@ -1774,7 +1774,7 @@ Namespace java.lang.invoke
         ''' <returns> a method handle suitable for invoking any method handle of the given type </returns>
         ''' <exception cref="IllegalArgumentException"> if the resulting method handle's type would have
         '''          <a href="MethodHandle.html#maxarity">too many parameters</a> </exception>
-        Public Shared Function exactInvoker(ByVal type As MethodType) As MethodHandle
+        Public Shared Function exactInvoker(  type As MethodType) As MethodHandle
             Return type.invokers().exactInvoker()
         End Function
 
@@ -1811,11 +1811,11 @@ Namespace java.lang.invoke
         ''' <returns> a method handle suitable for invoking any method handle convertible to the given type </returns>
         ''' <exception cref="IllegalArgumentException"> if the resulting method handle's type would have
         '''          <a href="MethodHandle.html#maxarity">too many parameters</a> </exception>
-        Public Shared Function invoker(ByVal type As MethodType) As MethodHandle
+        Public Shared Function invoker(  type As MethodType) As MethodHandle
             Return type.invokers().genericInvoker()
         End Function
 
-        Friend Shared Function basicInvoker(ByVal type As MethodType) As MethodHandle 'non-public
+        Friend Shared Function basicInvoker(  type As MethodType) As MethodHandle 'non-public
             Return type.invokers().basicInvoker()
         End Function
 
@@ -1864,7 +1864,7 @@ Namespace java.lang.invoke
         ''' <exception cref="NullPointerException"> if either argument is null </exception>
         ''' <exception cref="WrongMethodTypeException"> if the conversion cannot be made </exception>
         ''' <seealso cref= MethodHandle#asType </seealso>
-        Public Shared Function explicitCastArguments(ByVal target As MethodHandle, ByVal newType As MethodType) As MethodHandle
+        Public Shared Function explicitCastArguments(  target As MethodHandle,   newType As MethodType) As MethodHandle
             explicitCastArgumentsChecks(target, newType)
             ' use the asTypeCache when possible:
             Dim oldType As MethodType = target.type()
@@ -1873,7 +1873,7 @@ Namespace java.lang.invoke
             Return MethodHandleImpl.makePairwiseConvert(target, newType, False)
         End Function
 
-        Private Shared Sub explicitCastArgumentsChecks(ByVal target As MethodHandle, ByVal newType As MethodType)
+        Private Shared Sub explicitCastArgumentsChecks(  target As MethodHandle,   newType As MethodType)
             If target.type().parameterCount() <> newType.parameterCount() Then Throw New WrongMethodTypeException("cannot explicitly cast " & target & " to " & newType)
         End Sub
 
@@ -1935,7 +1935,7 @@ Namespace java.lang.invoke
         '''                  not a valid index for a parameter of {@code newType},
         '''                  or if two corresponding parameter types in
         '''                  {@code target.type()} and {@code newType} are not identical, </exception>
-        Public Shared Function permuteArguments(ByVal target As MethodHandle, ByVal newType As MethodType, ParamArray ByVal reorder As Integer()) As MethodHandle
+        Public Shared Function permuteArguments(  target As MethodHandle,   newType As MethodType, ParamArray   reorder As Integer()) As MethodHandle
             reorder = reorder.Clone() ' get a private copy
             Dim oldType As MethodType = target.type()
             permuteArgumentChecks(reorder, newType, oldType)
@@ -2010,7 +2010,7 @@ Namespace java.lang.invoke
         ''' Otherwise, return zero.
         ''' If an element not in [0..newArity-1] is encountered, return reorder.length.
         ''' </summary>
-        Private Shared Function findFirstDupOrDrop(ByVal reorder As Integer(), ByVal newArity As Integer) As Integer
+        Private Shared Function findFirstDupOrDrop(  reorder As Integer(),   newArity As Integer) As Integer
             Const BIT_LIMIT As Integer = 63 ' max number of bits in bit mask
             If newArity < BIT_LIMIT Then
                 Dim mask As Long = 0
@@ -2047,7 +2047,7 @@ Namespace java.lang.invoke
             End If
         End Function
 
-        Private Shared Function permuteArgumentChecks(ByVal reorder As Integer(), ByVal newType As MethodTypeForm, ByVal oldType As MethodType) As Boolean
+        Private Shared Function permuteArgumentChecks(  reorder As Integer(),   newType As MethodTypeForm,   oldType As MethodType) As Boolean
             If newType.returnType() IsNot oldType.returnType() Then Throw New IllegalArgumentException("return types do not match", oldType, newType)
             If reorder.Length = oldType.parameterCount() Then
                 Dim limit As Integer = newType.parameterCount()
@@ -2081,7 +2081,7 @@ Namespace java.lang.invoke
         ''' <exception cref="NullPointerException"> if the {@code type} argument is null </exception>
         ''' <exception cref="ClassCastException"> if the value cannot be converted to the required return type </exception>
         ''' <exception cref="IllegalArgumentException"> if the given type is {@code void.class} </exception>
-        Public Shared Function constant(ByVal type As [Class], ByVal value As Object) As MethodHandle
+        Public Shared Function constant(  type As [Class],   value As Object) As MethodHandle
             If type.primitive Then
                 If type Is GetType(Void) Then Throw New IllegalArgumentException("void type")
                 Dim w As sun.invoke.util.Wrapper = sun.invoke.util.Wrapper.forPrimitiveType(type)
@@ -2100,7 +2100,7 @@ Namespace java.lang.invoke
         ''' <returns> a unary method handle which accepts and returns the given type </returns>
         ''' <exception cref="NullPointerException"> if the argument is null </exception>
         ''' <exception cref="IllegalArgumentException"> if the given type is {@code void.class} </exception>
-        Public Shared Function identity(ByVal type As [Class]) As MethodHandle
+        Public Shared Function identity(  type As [Class]) As MethodHandle
             Dim btw As sun.invoke.util.Wrapper = (If(type.primitive, sun.invoke.util.Wrapper.forPrimitiveType(type), sun.invoke.util.Wrapper.OBJECT))
             Dim pos As Integer = btw.ordinal()
             Dim ident As MethodHandle = IDENTITY_MHS(pos)
@@ -2111,13 +2111,13 @@ Namespace java.lang.invoke
             Return makeIdentity(type)
         End Function
         Private Shared ReadOnly IDENTITY_MHS As MethodHandle() = New MethodHandle(sun.invoke.util.Wrapper.values().length - 1) {}
-        Private Shared Function makeIdentity(ByVal ptype As [Class]) As MethodHandle
+        Private Shared Function makeIdentity(  ptype As [Class]) As MethodHandle
             Dim mtype As MethodType = MethodType.methodType(ptype, ptype)
             Dim lform As LambdaForm = LambdaForm.identityForm(BasicType.basicType(ptype))
             Return MethodHandleImpl.makeIntrinsic(mtype, lform, Intrinsic.IDENTITY)
         End Function
 
-        Private Shared Function zero(ByVal btw As sun.invoke.util.Wrapper, ByVal rtype As [Class]) As MethodHandle
+        Private Shared Function zero(  btw As sun.invoke.util.Wrapper,   rtype As [Class]) As MethodHandle
             Dim pos As Integer = btw.ordinal()
             Dim zero_Renamed As MethodHandle = ZERO_MHS(pos)
             If zero_Renamed Is Nothing Then zero_Renamed = cachedMethodHandledle(ZERO_MHS, pos, makeZero(btw.primitiveType()))
@@ -2126,14 +2126,14 @@ Namespace java.lang.invoke
             Return makeZero(rtype)
         End Function
         Private Shared ReadOnly ZERO_MHS As MethodHandle() = New MethodHandle(sun.invoke.util.Wrapper.values().length - 1) {}
-        Private Shared Function makeZero(ByVal rtype As [Class]) As MethodHandle
+        Private Shared Function makeZero(  rtype As [Class]) As MethodHandle
             Dim mtype As MethodType = MethodType.methodType(rtype)
             Dim lform As LambdaForm = LambdaForm.zeroForm(BasicType.basicType(rtype))
             Return MethodHandleImpl.makeIntrinsic(mtype, lform, Intrinsic.ZERO)
         End Function
 
         <MethodImpl(MethodImplOptions.Synchronized)>
-        Private Shared Function setCachedMethodHandle(ByVal cache As MethodHandle(), ByVal pos As Integer, ByVal value As MethodHandle) As MethodHandle
+        Private Shared Function setCachedMethodHandle(  cache As MethodHandle(),   pos As Integer,   value As MethodHandle) As MethodHandle
             ' Simulate a CAS, to avoid racy duplication of results.
             Dim prev As MethodHandle = cache(pos)
             If prev IsNot Nothing Then Return prev
@@ -2170,7 +2170,7 @@ Namespace java.lang.invoke
         '''         before calling the original method handle </returns>
         ''' <exception cref="NullPointerException"> if the target or the {@code values} array is null </exception>
         ''' <seealso cref= MethodHandle#bindTo </seealso>
-        Public Shared Function insertArguments(ByVal target As MethodHandle, ByVal pos As Integer, ParamArray ByVal values As Object()) As MethodHandle
+        Public Shared Function insertArguments(  target As MethodHandle,   pos As Integer, ParamArray   values As Object()) As MethodHandle
             Dim insCount As Integer = values.Length
             Dim ptypes As [Class]() = insertArgumentsChecks(target, insCount, pos)
             If insCount = 0 Then Return target
@@ -2188,7 +2188,7 @@ Namespace java.lang.invoke
             Return result
         End Function
 
-        Private Shared Function insertArgumentPrimitive(ByVal result As BoundMethodHandle, ByVal pos As Integer, ByVal ptype As [Class], ByVal value As Object) As BoundMethodHandle
+        Private Shared Function insertArgumentPrimitive(  result As BoundMethodHandle,   pos As Integer,   ptype As [Class],   value As Object) As BoundMethodHandle
             Dim w As sun.invoke.util.Wrapper = sun.invoke.util.Wrapper.forPrimitiveType(ptype)
             ' perform unboxing and/or primitive conversion
             value = w.convert(value, ptype)
@@ -2206,7 +2206,7 @@ Namespace java.lang.invoke
             End Select
         End Function
 
-        Private Shared Function insertArgumentsChecks(ByVal target As MethodHandle, ByVal insCount As Integer, ByVal pos As Integer) As [Class]()
+        Private Shared Function insertArgumentsChecks(  target As MethodHandle,   insCount As Integer,   pos As Integer) As [Class]()
             Dim oldType As MethodType = target.type()
             Dim outargs As Integer = oldType.parameterCount()
             Dim inargs As Integer = outargs - insCount
@@ -2256,7 +2256,7 @@ Namespace java.lang.invoke
         ''' <exception cref="IllegalArgumentException"> if any element of {@code valueTypes} is {@code void.class},
         '''                  or if {@code pos} is negative or greater than the arity of the target,
         '''                  or if the new method handle's type would have too many parameters </exception>
-        Public Shared Function dropArguments(ByVal target As MethodHandle, ByVal pos As Integer, ByVal valueTypes As IList(Of [Class])) As MethodHandle
+        Public Shared Function dropArguments(  target As MethodHandle,   pos As Integer,   valueTypes As IList(Of [Class])) As MethodHandle
             Dim oldType As MethodType = target.type() ' get NPE
             Dim dropped As Integer = dropArgumentChecks(oldType, pos, valueTypes)
             Dim newType As MethodType = oldType.insertParameterTypes(pos, valueTypes)
@@ -2272,7 +2272,7 @@ Namespace java.lang.invoke
             Return result
         End Function
 
-        Private Shared Function dropArgumentChecks(ByVal oldType As MethodType, ByVal pos As Integer, ByVal valueTypes As IList(Of [Class])) As Integer
+        Private Shared Function dropArgumentChecks(  oldType As MethodType,   pos As Integer,   valueTypes As IList(Of [Class])) As Integer
             Dim dropped As Integer = valueTypes.Count
             MethodType.checkSlotCount(dropped)
             Dim outargs As Integer = oldType.parameterCount()
@@ -2327,7 +2327,7 @@ Namespace java.lang.invoke
         '''                  or if {@code pos} is negative or greater than the arity of the target,
         '''                  or if the new method handle's type would have
         '''                  <a href="MethodHandle.html#maxarity">too many parameters</a> </exception>
-        Public Shared Function dropArguments(ByVal target As MethodHandle, ByVal pos As Integer, ParamArray ByVal valueTypes As [Class]()) As MethodHandle
+        Public Shared Function dropArguments(  target As MethodHandle,   pos As Integer, ParamArray   valueTypes As [Class]()) As MethodHandle
             Return dropArguments(target, pos, java.util.Arrays.asList(valueTypes))
         End Function
 
@@ -2395,7 +2395,7 @@ Namespace java.lang.invoke
         '''          or if the {@code pos+filters.length} is greater than {@code target.type().parameterCount()},
         '''          or if the resulting method handle's type would have
         '''          <a href="MethodHandle.html#maxarity">too many parameters</a> </exception>
-        Public Shared Function filterArguments(ByVal target As MethodHandle, ByVal pos As Integer, ParamArray ByVal filters As MethodHandle()) As MethodHandle
+        Public Shared Function filterArguments(  target As MethodHandle,   pos As Integer, ParamArray   filters As MethodHandle()) As MethodHandle
             filterArgumentsCheckArity(target, pos, filters)
             Dim adapter As MethodHandle = target
             Dim curPos As Integer = pos - 1 ' pre-incremented
@@ -2408,7 +2408,7 @@ Namespace java.lang.invoke
         End Function
 
         'non-public
-        Friend Shared Function filterArgument(ByVal target As MethodHandle, ByVal pos As Integer, ByVal filter As MethodHandle) As MethodHandle
+        Friend Shared Function filterArgument(  target As MethodHandle,   pos As Integer,   filter As MethodHandle) As MethodHandle
             filterArgumentChecks(target, pos, filter)
             Dim targetType As MethodType = target.type()
             Dim filterType As MethodType = filter.type()
@@ -2420,13 +2420,13 @@ Namespace java.lang.invoke
             Return result
         End Function
 
-        Private Shared Sub filterArgumentsCheckArity(ByVal target As MethodHandle, ByVal pos As Integer, ByVal filters As MethodHandle())
+        Private Shared Sub filterArgumentsCheckArity(  target As MethodHandle,   pos As Integer,   filters As MethodHandle())
             Dim targetType As MethodType = target.type()
             Dim maxPos As Integer = targetType.parameterCount()
             If pos + filters.Length > maxPos Then Throw newIllegalArgumentException("too many filters")
         End Sub
 
-        Private Shared Sub filterArgumentChecks(ByVal target As MethodHandle, ByVal pos As Integer, ByVal filter As MethodHandle)
+        Private Shared Sub filterArgumentChecks(  target As MethodHandle,   pos As Integer,   filter As MethodHandle)
             Dim targetType As MethodType = target.type()
             Dim filterType As MethodType = filter.type()
             If filterType.parameterCount() <> 1 OrElse filterType.returnType() IsNot targetType.parameterType(pos) Then Throw newIllegalArgumentException("target and filter types do not match", targetType, filterType)
@@ -2537,7 +2537,7 @@ Namespace java.lang.invoke
         ''' <seealso cref= MethodHandles#foldArguments </seealso>
         ''' <seealso cref= MethodHandles#filterArguments </seealso>
         ''' <seealso cref= MethodHandles#filterReturnValue </seealso>
-        Public Shared Function collectArguments(ByVal target As MethodHandle, ByVal pos As Integer, ByVal filter As MethodHandle) As MethodHandle
+        Public Shared Function collectArguments(  target As MethodHandle,   pos As Integer,   filter As MethodHandle) As MethodHandle
             Dim newType As MethodType = collectArgumentsChecks(target, pos, filter)
             Dim collectorType As MethodType = filter.type()
             Dim result As BoundMethodHandle = target.rebind()
@@ -2550,7 +2550,7 @@ Namespace java.lang.invoke
             Return result.copyWithExtendL(newType, lform, filter)
         End Function
 
-        Private Shared Function collectArgumentsChecks(ByVal target As MethodHandle, ByVal pos As Integer, ByVal filter As MethodHandle) As MethodType
+        Private Shared Function collectArgumentsChecks(  target As MethodHandle,   pos As Integer,   filter As MethodHandle) As MethodType
             Dim targetType As MethodType = target.type()
             Dim filterType As MethodType = filter.type()
             Dim rtype As [Class] = filterType.returnType()
@@ -2616,7 +2616,7 @@ Namespace java.lang.invoke
         ''' <exception cref="NullPointerException"> if either argument is null </exception>
         ''' <exception cref="IllegalArgumentException"> if the argument list of {@code filter}
         '''          does not match the return type of target as described above </exception>
-        Public Shared Function filterReturnValue(ByVal target As MethodHandle, ByVal filter As MethodHandle) As MethodHandle
+        Public Shared Function filterReturnValue(  target As MethodHandle,   filter As MethodHandle) As MethodHandle
             Dim targetType As MethodType = target.type()
             Dim filterType As MethodType = filter.type()
             filterReturnValueChecks(targetType, filterType)
@@ -2628,7 +2628,7 @@ Namespace java.lang.invoke
             Return result
         End Function
 
-        Private Shared Sub filterReturnValueChecks(ByVal targetType As MethodType, ByVal filterType As MethodType)
+        Private Shared Sub filterReturnValueChecks(  targetType As MethodType,   filterType As MethodType)
             Dim rtype As [Class] = targetType.returnType()
             Dim filterValues As Integer = filterType.parameterCount()
             If If(filterValues = 0, (rtype IsNot GetType(Void)), (rtype IsNot filterType.parameterType(0))) Then Throw newIllegalArgumentException("target and filter types do not match", targetType, filterType)
@@ -2709,7 +2709,7 @@ Namespace java.lang.invoke
         '''          of the target
         '''          (skipping one matching the {@code combiner}'s return type)
         '''          are not identical with the argument types of {@code combiner} </exception>
-        Public Shared Function foldArguments(ByVal target As MethodHandle, ByVal combiner As MethodHandle) As MethodHandle
+        Public Shared Function foldArguments(  target As MethodHandle,   combiner As MethodHandle) As MethodHandle
             Dim foldPos As Integer = 0
             Dim targetType As MethodType = target.type()
             Dim combinerType As MethodType = combiner.type()
@@ -2724,7 +2724,7 @@ Namespace java.lang.invoke
             Return result
         End Function
 
-        Private Shared Function foldArgumentChecks(ByVal foldPos As Integer, ByVal targetType As MethodType, ByVal combinerType As MethodType) As [Class]
+        Private Shared Function foldArgumentChecks(  foldPos As Integer,   targetType As MethodType,   combinerType As MethodType) As [Class]
             Dim foldArgs As Integer = combinerType.parameterCount()
             Dim rtype As [Class] = combinerType.returnType()
             Dim foldVals As Integer = If(rtype Is GetType(Void), 0, 1)
@@ -2767,7 +2767,7 @@ Namespace java.lang.invoke
         ''' <exception cref="IllegalArgumentException"> if {@code test} does not return boolean,
         '''          or if all three method types do not match (with the return
         '''          type of {@code test} changed to match that of the target). </exception>
-        Public Shared Function guardWithTest(ByVal test As MethodHandle, ByVal target As MethodHandle, ByVal fallback As MethodHandle) As MethodHandle
+        Public Shared Function guardWithTest(  test As MethodHandle,   target As MethodHandle,   fallback As MethodHandle) As MethodHandle
             Dim gtype As MethodType = test.type()
             Dim ttype As MethodType = target.type()
             Dim ftype As MethodType = fallback.type()
@@ -2784,7 +2784,7 @@ Namespace java.lang.invoke
             Return MethodHandleImpl.makeGuardWithTest(test, target, fallback)
         End Function
 
-        Friend Shared Function misMatchedTypes(ByVal what As String, ByVal t1 As MethodType, ByVal t2 As MethodType) As RuntimeException
+        Friend Shared Function misMatchedTypes(  what As String,   t1 As MethodType,   t2 As MethodType) As RuntimeException
             Return newIllegalArgumentException(what & " must match: " & t1 & " != " & t2)
         End Function
 
@@ -2830,7 +2830,7 @@ Namespace java.lang.invoke
         '''          the given exception type, or if the method handle types do
         '''          not match in their return types and their
         '''          corresponding parameters </exception>
-        Public Shared Function catchException(ByVal target As MethodHandle, ByVal exType As [Class], ByVal handler As MethodHandle) As MethodHandle
+        Public Shared Function catchException(  target As MethodHandle,   exType As [Class],   handler As MethodHandle) As MethodHandle
             Dim ttype As MethodType = target.type()
             Dim htype As MethodType = handler.type()
             If htype.parameterCount() < 1 OrElse (Not exType.IsSubclassOf(htype.parameterType(0))) Then Throw newIllegalArgumentException("handler does not accept exception type " & exType)
@@ -2858,7 +2858,7 @@ Namespace java.lang.invoke
         ''' <param name="exType"> the parameter type of the desired method handle </param>
         ''' <returns> method handle which can throw the given exceptions </returns>
         ''' <exception cref="NullPointerException"> if either argument is null </exception>
-        Public Shared Function throwException(ByVal returnType As [Class], ByVal exType As [Class]) As MethodHandle
+        Public Shared Function throwException(  returnType As [Class],   exType As [Class]) As MethodHandle
             If Not exType.IsSubclassOf(GetType(Throwable)) Then Throw New ClassCastException(exType.name)
             Return MethodHandleImpl.throwException(MethodType.methodType(returnType, exType))
         End Function

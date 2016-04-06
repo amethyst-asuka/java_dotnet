@@ -191,7 +191,7 @@ Namespace java.util
 			Inherits HashMap.Node(Of K, V)
 
 			Friend before As Entry(Of K, V), after As Entry(Of K, V)
-			Friend Sub New(ByVal hash As Integer, ByVal key As K, ByVal value As V, ByVal [next] As Node(Of K, V))
+			Friend Sub New(  hash As Integer,   key As K,   value As V,   [next] As Node(Of K, V))
 				MyBase.New(hash, key, value, [next])
 			End Sub
 		End Class
@@ -221,7 +221,7 @@ Namespace java.util
 		' internal utilities
 
 		' link at the end of list
-		Private Sub linkNodeLast(ByVal p As LinkedHashMap.Entry(Of K, V))
+		Private Sub linkNodeLast(  p As LinkedHashMap.Entry(Of K, V))
 			Dim last As LinkedHashMap.Entry(Of K, V) = tail
 			tail = p
 			If last Is Nothing Then
@@ -233,7 +233,7 @@ Namespace java.util
 		End Sub
 
 		' apply src's links to dst
-		Private Sub transferLinks(ByVal src As LinkedHashMap.Entry(Of K, V), ByVal dst As LinkedHashMap.Entry(Of K, V))
+		Private Sub transferLinks(  src As LinkedHashMap.Entry(Of K, V),   dst As LinkedHashMap.Entry(Of K, V))
 				dst.before = src.before
 				Dim b As LinkedHashMap.Entry(Of K, V) = dst.before
 				dst.after = src.after
@@ -258,33 +258,33 @@ Namespace java.util
 				head = tail
 		End Sub
 
-		Friend Overridable Function newNode(ByVal hash As Integer, ByVal key As K, ByVal value As V, ByVal e As Node(Of K, V)) As Node(Of K, V)
+		Friend Overridable Function newNode(  hash As Integer,   key As K,   value As V,   e As Node(Of K, V)) As Node(Of K, V)
 			Dim p As New LinkedHashMap.Entry(Of K, V)(hash, key, value, e)
 			linkNodeLast(p)
 			Return p
 		End Function
 
-		Friend Overridable Function replacementNode(ByVal p As Node(Of K, V), ByVal [next] As Node(Of K, V)) As Node(Of K, V)
+		Friend Overridable Function replacementNode(  p As Node(Of K, V),   [next] As Node(Of K, V)) As Node(Of K, V)
 			Dim q As LinkedHashMap.Entry(Of K, V) = CType(p, LinkedHashMap.Entry(Of K, V))
 			Dim t As New LinkedHashMap.Entry(Of K, V)(q.hash, q.key, q.value, [next])
 			transferLinks(q, t)
 			Return t
 		End Function
 
-		Friend Overridable Function newTreeNode(ByVal hash As Integer, ByVal key As K, ByVal value As V, ByVal [next] As Node(Of K, V)) As TreeNode(Of K, V)
+		Friend Overridable Function newTreeNode(  hash As Integer,   key As K,   value As V,   [next] As Node(Of K, V)) As TreeNode(Of K, V)
 			Dim p As New TreeNode(Of K, V)(hash, key, value, [next])
 			linkNodeLast(p)
 			Return p
 		End Function
 
-		Friend Overridable Function replacementTreeNode(ByVal p As Node(Of K, V), ByVal [next] As Node(Of K, V)) As TreeNode(Of K, V)
+		Friend Overridable Function replacementTreeNode(  p As Node(Of K, V),   [next] As Node(Of K, V)) As TreeNode(Of K, V)
 			Dim q As LinkedHashMap.Entry(Of K, V) = CType(p, LinkedHashMap.Entry(Of K, V))
 			Dim t As New TreeNode(Of K, V)(q.hash, q.key, q.value, [next])
 			transferLinks(q, t)
 			Return t
 		End Function
 
-		Friend Overridable Sub afterNodeRemoval(ByVal e As Node(Of K, V)) ' unlink
+		Friend Overridable Sub afterNodeRemoval(  e As Node(Of K, V)) ' unlink
 			Dim p As LinkedHashMap.Entry(Of K, V) = CType(e, LinkedHashMap.Entry(Of K, V)), b As LinkedHashMap.Entry(Of K, V) = p.before, a As LinkedHashMap.Entry(Of K, V) = p.after
 				p.after = Nothing
 				p.before = p.after
@@ -300,7 +300,7 @@ Namespace java.util
 			End If
 		End Sub
 
-		Friend Overridable Sub afterNodeInsertion(ByVal evict As Boolean) ' possibly remove eldest
+		Friend Overridable Sub afterNodeInsertion(  evict As Boolean) ' possibly remove eldest
 			Dim first As LinkedHashMap.Entry(Of K, V)
 			first = head
 			If evict AndAlso first IsNot Nothing AndAlso removeEldestEntry(first) Then
@@ -309,7 +309,7 @@ Namespace java.util
 			End If
 		End Sub
 
-		Friend Overridable Sub afterNodeAccess(ByVal e As Node(Of K, V)) ' move node to last
+		Friend Overridable Sub afterNodeAccess(  e As Node(Of K, V)) ' move node to last
 			Dim last As LinkedHashMap.Entry(Of K, V)
 			last = tail
 			If accessOrder AndAlso last IsNot e Then
@@ -336,7 +336,7 @@ Namespace java.util
 			End If
 		End Sub
 
-		Friend Overridable Sub internalWriteEntries(ByVal s As java.io.ObjectOutputStream)
+		Friend Overridable Sub internalWriteEntries(  s As java.io.ObjectOutputStream)
 			Dim e As LinkedHashMap.Entry(Of K, V) = head
 			Do While e IsNot Nothing
 				s.writeObject(e.key)
@@ -353,7 +353,7 @@ Namespace java.util
 		''' <param name="loadFactor">      the load factor </param>
 		''' <exception cref="IllegalArgumentException"> if the initial capacity is negative
 		'''         or the load factor is nonpositive </exception>
-		Public Sub New(ByVal initialCapacity As Integer, ByVal loadFactor As Single)
+		Public Sub New(  initialCapacity As Integer,   loadFactor As Single)
 			MyBase.New(initialCapacity, loadFactor)
 			accessOrder = False
 		End Sub
@@ -364,7 +364,7 @@ Namespace java.util
 		''' </summary>
 		''' <param name="initialCapacity"> the initial capacity </param>
 		''' <exception cref="IllegalArgumentException"> if the initial capacity is negative </exception>
-		Public Sub New(ByVal initialCapacity As Integer)
+		Public Sub New(  initialCapacity As Integer)
 			MyBase.New(initialCapacity)
 			accessOrder = False
 		End Sub
@@ -387,7 +387,7 @@ Namespace java.util
 		''' <param name="m"> the map whose mappings are to be placed in this map </param>
 		''' <exception cref="NullPointerException"> if the specified map is null </exception>
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-		Public Sub New(Of T1 As K, ? As V)(ByVal m As Map(Of T1))
+		Public Sub New(Of T1 As K, ? As V)(  m As Map(Of T1))
 			MyBase.New()
 			accessOrder = False
 			putMapEntries(m, False)
@@ -403,7 +403,7 @@ Namespace java.util
 		'''         access-order, <tt>false</tt> for insertion-order </param>
 		''' <exception cref="IllegalArgumentException"> if the initial capacity is negative
 		'''         or the load factor is nonpositive </exception>
-		Public Sub New(ByVal initialCapacity As Integer, ByVal loadFactor As Single, ByVal accessOrder As Boolean)
+		Public Sub New(  initialCapacity As Integer,   loadFactor As Single,   accessOrder As Boolean)
 			MyBase.New(initialCapacity, loadFactor)
 			Me.accessOrder = accessOrder
 		End Sub
@@ -416,7 +416,7 @@ Namespace java.util
 		''' <param name="value"> value whose presence in this map is to be tested </param>
 		''' <returns> <tt>true</tt> if this map maps one or more keys to the
 		'''         specified value </returns>
-		Public Overridable Function containsValue(ByVal value As Object) As Boolean Implements Map(Of K, V).containsValue
+		Public Overridable Function containsValue(  value As Object) As Boolean Implements Map(Of K, V).containsValue
 			Dim e As LinkedHashMap.Entry(Of K, V) = head
 			Do While e IsNot Nothing
 				Dim v As V = e.value
@@ -441,7 +441,7 @@ Namespace java.util
 		''' The <seealso cref="#containsKey containsKey"/> operation may be used to
 		''' distinguish these two cases.
 		''' </summary>
-		Public Overridable Function [get](ByVal key As Object) As V Implements Map(Of K, V).get
+		Public Overridable Function [get](  key As Object) As V Implements Map(Of K, V).get
 			Dim e As Node(Of K, V)
 			e = getNode(hash(key), key)
 			If e Is Nothing Then Return Nothing
@@ -452,7 +452,7 @@ Namespace java.util
 		''' <summary>
 		''' {@inheritDoc}
 		''' </summary>
-		Public Overridable Function getOrDefault(ByVal key As Object, ByVal defaultValue As V) As V Implements Map(Of K, V).getOrDefault
+		Public Overridable Function getOrDefault(  key As Object,   defaultValue As V) As V Implements Map(Of K, V).getOrDefault
 		   Dim e As Node(Of K, V)
 		   e = getNode(hash(key), key)
 		   If e Is Nothing Then Return defaultValue
@@ -509,7 +509,7 @@ Namespace java.util
 		'''           entry, the eldest entry is also the newest. </param>
 		''' <returns>   <tt>true</tt> if the eldest entry should be removed
 		'''           from the map; <tt>false</tt> if it should be retained. </returns>
-		Protected Friend Overridable Function removeEldestEntry(ByVal eldest As KeyValuePair(Of K, V)) As Boolean
+		Protected Friend Overridable Function removeEldestEntry(  eldest As KeyValuePair(Of K, V)) As Boolean
 			Return False
 		End Function
 
@@ -546,7 +546,7 @@ Namespace java.util
 
 			Private ReadOnly outerInstance As LinkedHashMap
 
-			Public Sub New(ByVal outerInstance As LinkedHashMap)
+			Public Sub New(  outerInstance As LinkedHashMap)
 				Me.outerInstance = outerInstance
 			End Sub
 
@@ -559,17 +559,17 @@ Namespace java.util
 			Public Function [iterator]() As [Iterator](Of K)
 				Return New LinkedKeyIterator
 			End Function
-			Public Function contains(ByVal o As Object) As Boolean
+			Public Function contains(  o As Object) As Boolean
 				Return outerInstance.containsKey(o)
 			End Function
-			Public Function remove(ByVal key As Object) As Boolean
+			Public Function remove(  key As Object) As Boolean
 				Return outerInstance.removeNode(hash(key), key, Nothing, False, True) IsNot Nothing
 			End Function
 			Public Function spliterator() As Spliterator(Of K)
 				Return Spliterators.spliterator(Me, Spliterator.SIZED Or Spliterator.ORDERED Or Spliterator.DISTINCT)
 			End Function
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Sub forEach(Of T1)(ByVal action As java.util.function.Consumer(Of T1))
+			Public Sub forEach(Of T1)(  action As java.util.function.Consumer(Of T1))
 				If action Is Nothing Then Throw New NullPointerException
 				Dim mc As Integer = outerInstance.modCount
 				Dim e As LinkedHashMap.Entry(Of K, V) = outerInstance.head
@@ -614,7 +614,7 @@ Namespace java.util
 
 			Private ReadOnly outerInstance As LinkedHashMap
 
-			Public Sub New(ByVal outerInstance As LinkedHashMap)
+			Public Sub New(  outerInstance As LinkedHashMap)
 				Me.outerInstance = outerInstance
 			End Sub
 
@@ -627,14 +627,14 @@ Namespace java.util
 			Public Function [iterator]() As [Iterator](Of V)
 				Return New LinkedValueIterator
 			End Function
-			Public Function contains(ByVal o As Object) As Boolean
+			Public Function contains(  o As Object) As Boolean
 				Return outerInstance.containsValue(o)
 			End Function
 			Public Function spliterator() As Spliterator(Of V)
 				Return Spliterators.spliterator(Me, Spliterator.SIZED Or Spliterator.ORDERED)
 			End Function
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Sub forEach(Of T1)(ByVal action As java.util.function.Consumer(Of T1))
+			Public Sub forEach(Of T1)(  action As java.util.function.Consumer(Of T1))
 				If action Is Nothing Then Throw New NullPointerException
 				Dim mc As Integer = outerInstance.modCount
 				Dim e As LinkedHashMap.Entry(Of K, V) = outerInstance.head
@@ -680,7 +680,7 @@ Namespace java.util
 
 			Private ReadOnly outerInstance As LinkedHashMap
 
-			Public Sub New(ByVal outerInstance As LinkedHashMap)
+			Public Sub New(  outerInstance As LinkedHashMap)
 				Me.outerInstance = outerInstance
 			End Sub
 
@@ -693,7 +693,7 @@ Namespace java.util
 			Public Function [iterator]() As [Iterator](Of KeyValuePair(Of K, V))
 				Return New LinkedEntryIterator
 			End Function
-			Public Function contains(ByVal o As Object) As Boolean
+			Public Function contains(  o As Object) As Boolean
 				If Not(TypeOf o Is DictionaryEntry) Then Return False
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 				Dim e As KeyValuePair(Of ?, ?) = CType(o, KeyValuePair(Of ?, ?))
@@ -701,7 +701,7 @@ Namespace java.util
 				Dim candidate As Node(Of K, V) = outerInstance.getNode(hash(key), key)
 				Return candidate IsNot Nothing AndAlso candidate.Equals(e)
 			End Function
-			Public Function remove(ByVal o As Object) As Boolean
+			Public Function remove(  o As Object) As Boolean
 				If TypeOf o Is DictionaryEntry Then
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 					Dim e As KeyValuePair(Of ?, ?) = CType(o, KeyValuePair(Of ?, ?))
@@ -715,7 +715,7 @@ Namespace java.util
 				Return Spliterators.spliterator(Me, Spliterator.SIZED Or Spliterator.ORDERED Or Spliterator.DISTINCT)
 			End Function
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Sub forEach(Of T1)(ByVal action As java.util.function.Consumer(Of T1))
+			Public Sub forEach(Of T1)(  action As java.util.function.Consumer(Of T1))
 				If action Is Nothing Then Throw New NullPointerException
 				Dim mc As Integer = outerInstance.modCount
 				Dim e As LinkedHashMap.Entry(Of K, V) = outerInstance.head
@@ -730,7 +730,7 @@ Namespace java.util
 		' Map overrides
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Overridable Sub forEach(Of T1)(ByVal action As java.util.function.BiConsumer(Of T1)) Implements Map(Of K, V).forEach
+		Public Overridable Sub forEach(Of T1)(  action As java.util.function.BiConsumer(Of T1)) Implements Map(Of K, V).forEach
 			If action Is Nothing Then Throw New NullPointerException
 			Dim mc As Integer = modCount
 			Dim e As LinkedHashMap.Entry(Of K, V) = head
@@ -742,7 +742,7 @@ Namespace java.util
 		End Sub
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Overridable Sub replaceAll(Of T1 As V)(ByVal [function] As java.util.function.BiFunction(Of T1)) Implements Map(Of K, V).replaceAll
+		Public Overridable Sub replaceAll(Of T1 As V)(  [function] As java.util.function.BiFunction(Of T1)) Implements Map(Of K, V).replaceAll
 			If [function] Is Nothing Then Throw New NullPointerException
 			Dim mc As Integer = modCount
 			Dim e As LinkedHashMap.Entry(Of K, V) = head
@@ -762,7 +762,7 @@ Namespace java.util
 			Friend current As LinkedHashMap.Entry(Of K, V)
 			Friend expectedModCount As Integer
 
-			Friend Sub New(ByVal outerInstance As LinkedHashMap)
+			Friend Sub New(  outerInstance As LinkedHashMap)
 					Me.outerInstance = outerInstance
 				[next] = outerInstance.head
 				expectedModCount = outerInstance.modCount
@@ -799,7 +799,7 @@ Namespace java.util
 
 			Private ReadOnly outerInstance As LinkedHashMap
 
-			Public Sub New(ByVal outerInstance As LinkedHashMap)
+			Public Sub New(  outerInstance As LinkedHashMap)
 				Me.outerInstance = outerInstance
 			End Sub
 
@@ -814,7 +814,7 @@ Namespace java.util
 
 			Private ReadOnly outerInstance As LinkedHashMap
 
-			Public Sub New(ByVal outerInstance As LinkedHashMap)
+			Public Sub New(  outerInstance As LinkedHashMap)
 				Me.outerInstance = outerInstance
 			End Sub
 
@@ -829,7 +829,7 @@ Namespace java.util
 
 			Private ReadOnly outerInstance As LinkedHashMap
 
-			Public Sub New(ByVal outerInstance As LinkedHashMap)
+			Public Sub New(  outerInstance As LinkedHashMap)
 				Me.outerInstance = outerInstance
 			End Sub
 

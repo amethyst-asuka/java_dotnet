@@ -83,7 +83,7 @@ Namespace java.util
 		''' </summary>
 		''' <param name="o"> object to be compared for equality with this set </param>
 		''' <returns> <tt>true</tt> if the specified object is equal to this set </returns>
-		Public Overrides Function Equals(ByVal o As Object) As Boolean
+		Public Overrides Function Equals(  o As Object) As Boolean
 			If o Is Me Then Return True
 
 			If Not(TypeOf o Is Set) Then Return False
@@ -161,7 +161,7 @@ Namespace java.util
 		'''         or if the specified collection is null </exception>
 		''' <seealso cref= #remove(Object) </seealso>
 		''' <seealso cref= #contains(Object) </seealso>
-		Public Overridable Function removeAll(Of T1)(ByVal c As Collection(Of T1)) As Boolean Implements Set(Of E).removeAll
+		Public Overridable Function removeAll(Of T1)(  c As Collection(Of T1)) As Boolean Implements Set(Of E).removeAll
 			Objects.requireNonNull(c)
 			Dim modified As Boolean = False
 

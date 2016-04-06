@@ -50,7 +50,7 @@ Namespace java.lang
 		''' specified detail message.
 		''' </summary>
 		''' <param name="s">   the detail message. </param>
-		Public Sub New(ByVal s As String)
+		Public Sub New(  s As String)
 			MyBase.New(s)
 		End Sub
 
@@ -59,7 +59,7 @@ Namespace java.lang
 		''' given the specified input which caused the error.
 		''' </summary>
 		''' <param name="s">   the input causing the error </param>
-		Shared Function forInputString(ByVal s As String) As NumberFormatException
+		Shared Function forInputString(  s As String) As NumberFormatException
 			Return New NumberFormatException("For input string: """ & s & """")
 		End Function
 	End Class

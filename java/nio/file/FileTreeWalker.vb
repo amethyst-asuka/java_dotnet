@@ -68,7 +68,7 @@ Namespace java.nio.file
 			Private ReadOnly iterator_Renamed As IEnumerator(Of Path)
 			Private skipped_Renamed As Boolean
 
-			Friend Sub New(ByVal dir As Path, ByVal key As Object, ByVal stream As DirectoryStream(Of Path))
+			Friend Sub New(  dir As Path,   key As Object,   stream As DirectoryStream(Of Path))
 				Me.dir = dir
 				Me.key_Renamed = key
 				Me.stream_Renamed = stream
@@ -127,18 +127,18 @@ Namespace java.nio.file
 			Private ReadOnly attrs As java.nio.file.attribute.BasicFileAttributes
 			Private ReadOnly ioe As java.io.IOException
 
-			Private Sub New(ByVal type As EventType, ByVal file As Path, ByVal attrs As java.nio.file.attribute.BasicFileAttributes, ByVal ioe As java.io.IOException)
+			Private Sub New(  type As EventType,   file As Path,   attrs As java.nio.file.attribute.BasicFileAttributes,   ioe As java.io.IOException)
 				Me.type_Renamed = type
 				Me.file_Renamed = file
 				Me.attrs = attrs
 				Me.ioe = ioe
 			End Sub
 
-			Friend Sub New(ByVal type As EventType, ByVal file As Path, ByVal attrs As java.nio.file.attribute.BasicFileAttributes)
+			Friend Sub New(  type As EventType,   file As Path,   attrs As java.nio.file.attribute.BasicFileAttributes)
 				Me.New(type, file, attrs, Nothing)
 			End Sub
 
-			Friend Sub New(ByVal type As EventType, ByVal file As Path, ByVal ioe As java.io.IOException)
+			Friend Sub New(  type As EventType,   file As Path,   ioe As java.io.IOException)
 				Me.New(type, file, Nothing, ioe)
 			End Sub
 
@@ -170,7 +170,7 @@ Namespace java.nio.file
 		''' <exception cref="NullPointerException">
 		'''          if {@code options} is {@ocde null} or the options
 		'''          array contains a {@code null} element </exception>
-		Friend Sub New(ByVal options As ICollection(Of FileVisitOption), ByVal maxDepth As Integer)
+		Friend Sub New(  options As ICollection(Of FileVisitOption),   maxDepth As Integer)
 			Dim fl As Boolean = False
 			For Each [option] As FileVisitOption In options
 				' will throw NPE if options contains null
@@ -193,7 +193,7 @@ Namespace java.nio.file
 		''' the walk is following sym links is not. The {@code canUseCached}
 		''' argument determines whether this method can use cached attributes.
 		''' </summary>
-		Private Function getAttributes(ByVal file As Path, ByVal canUseCached As Boolean) As java.nio.file.attribute.BasicFileAttributes
+		Private Function getAttributes(  file As Path,   canUseCached As Boolean) As java.nio.file.attribute.BasicFileAttributes
 			' if attributes are cached then use them if possible
 			If canUseCached AndAlso (TypeOf file Is sun.nio.fs.BasicFileAttributesHolder) AndAlso (System.securityManager Is Nothing) Then
 				Dim cached As java.nio.file.attribute.BasicFileAttributes = CType(file, sun.nio.fs.BasicFileAttributesHolder).get()
@@ -218,7 +218,7 @@ Namespace java.nio.file
 		''' Returns true if walking into the given directory would result in a
 		''' file system loop/cycle.
 		''' </summary>
-		Private Function wouldLoop(ByVal dir As Path, ByVal key As Object) As Boolean
+		Private Function wouldLoop(  dir As Path,   key As Object) As Boolean
 			' if this directory and ancestor has a file key then we compare
 			' them; otherwise we use less efficient isSameFile test.
 			For Each ancestor As DirectoryNode In stack
@@ -249,7 +249,7 @@ Namespace java.nio.file
 		''' The {@code canUseCached} parameter determines whether cached attributes
 		''' for the file can be used or not.
 		''' </summary>
-		Private Function visit(ByVal entry As Path, ByVal ignoreSecurityException As Boolean, ByVal canUseCached As Boolean) As [Event]
+		Private Function visit(  entry As Path,   ignoreSecurityException As Boolean,   canUseCached As Boolean) As [Event]
 			' need the file attributes
 			Dim attrs As java.nio.file.attribute.BasicFileAttributes
 			Try
@@ -288,7 +288,7 @@ Namespace java.nio.file
 		''' <summary>
 		''' Start walking from the given file.
 		''' </summary>
-		Friend Overridable Function walk(ByVal file As Path) As [Event]
+		Friend Overridable Function walk(  file As Path) As [Event]
 			If closed Then Throw New IllegalStateException("Closed")
 
 			Dim ev As [Event] = visit(file, False, False) ' canUseCached -  ignoreSecurityException

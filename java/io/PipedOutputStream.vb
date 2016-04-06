@@ -59,7 +59,7 @@ Namespace java.io
 		''' </summary>
 		''' <param name="snk">   The piped input stream to connect to. </param>
 		''' <exception cref="IOException">  if an I/O error occurs. </exception>
-		Public Sub New(ByVal snk As PipedInputStream)
+		Public Sub New(  snk As PipedInputStream)
 			connect(snk)
 		End Sub
 
@@ -91,7 +91,7 @@ Namespace java.io
 		''' <param name="snk">   the piped input stream to connect to. </param>
 		''' <exception cref="IOException">  if an I/O error occurs. </exception>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Sub connect(ByVal snk As PipedInputStream)
+		Public Overridable Sub connect(  snk As PipedInputStream)
 			If snk Is Nothing Then
 				Throw New NullPointerException
 			ElseIf sink IsNot Nothing OrElse snk.connected Then
@@ -112,7 +112,7 @@ Namespace java.io
 		''' <exception cref="IOException"> if the pipe is <a href=#BROKEN> broken</a>,
 		'''          <seealso cref="#connect(java.io.PipedInputStream) unconnected"/>,
 		'''          closed, or if an I/O error occurs. </exception>
-		Public Overrides Sub write(ByVal b As Integer)
+		Public Overrides Sub write(  b As Integer)
 			If sink Is Nothing Then Throw New IOException("Pipe not connected")
 			sink.receive(b)
 		End Sub

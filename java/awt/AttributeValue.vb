@@ -31,7 +31,7 @@ Namespace java.awt
 		Private ReadOnly value As Integer
 		Private ReadOnly names As String()
 
-		Protected Friend Sub New(ByVal value As Integer, ByVal names As String())
+		Protected Friend Sub New(  value As Integer,   names As String())
 			If log.isLoggable(sun.util.logging.PlatformLogger.Level.FINEST) Then log.finest("value = " & value & ", names = " & names)
 
 			If log.isLoggable(sun.util.logging.PlatformLogger.Level.FINER) Then

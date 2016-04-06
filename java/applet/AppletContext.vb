@@ -45,7 +45,7 @@ Namespace java.applet
 		''' </summary>
 		''' <param name="url">   an absolute URL giving the location of the audio clip. </param>
 		''' <returns>  the audio clip at the specified URL. </returns>
-		Function getAudioClip(ByVal url As java.net.URL) As AudioClip
+		Function getAudioClip(  url As java.net.URL) As AudioClip
 
 		''' <summary>
 		''' Returns an <code>Image</code> object that can then be painted on
@@ -60,7 +60,7 @@ Namespace java.applet
 		''' <param name="url">   an absolute URL giving the location of the image. </param>
 		''' <returns>  the image at the specified URL. </returns>
 		''' <seealso cref=     java.awt.Image </seealso>
-		Function getImage(ByVal url As java.net.URL) As java.awt.Image
+		Function getImage(  url As java.net.URL) As java.awt.Image
 
 		''' <summary>
 		''' Finds and returns the applet in the document represented by this
@@ -70,7 +70,7 @@ Namespace java.applet
 		''' <param name="name">   an applet name. </param>
 		''' <returns>  the applet with the given name, or <code>null</code> if
 		'''          not found. </returns>
-		Function getApplet(ByVal name As String) As Applet
+		Function getApplet(  name As String) As Applet
 
 		''' <summary>
 		''' Finds all the applets in the document represented by this applet
@@ -88,7 +88,7 @@ Namespace java.applet
 		''' are not browsers.
 		''' </summary>
 		''' <param name="url">   an absolute URL giving the location of the document. </param>
-		Sub showDocument(ByVal url As java.net.URL)
+		Sub showDocument(  url As java.net.URL)
 
 		''' <summary>
 		''' Requests that the browser or applet viewer show the Web page
@@ -120,7 +120,7 @@ Namespace java.applet
 		''' <param name="url">   an absolute URL giving the location of the document. </param>
 		''' <param name="target">   a <code>String</code> indicating where to display
 		'''                   the page. </param>
-		Sub showDocument(ByVal url As java.net.URL, ByVal target As String)
+		Sub showDocument(  url As java.net.URL,   target As String)
 
 		''' <summary>
 		''' Requests that the argument string be displayed in the
@@ -129,7 +129,7 @@ Namespace java.applet
 		''' its current state.
 		''' </summary>
 		''' <param name="status">   a string to display in the status window. </param>
-		Sub showStatus(ByVal status As String)
+		Sub showStatus(  status As String)
 
 		''' <summary>
 		''' Associates the specified stream with the specified key in this
@@ -148,7 +148,7 @@ Namespace java.applet
 		'''         size limit. Size limit is decided by the implementor of this
 		'''         interface.
 		''' @since 1.4 </exception>
-		Sub setStream(ByVal key As String, ByVal stream As java.io.InputStream)
+		Sub setStream(  key As String,   stream As java.io.InputStream)
 
 		''' <summary>
 		''' Returns the stream to which specified key is associated within this
@@ -162,7 +162,7 @@ Namespace java.applet
 		''' <returns> the stream to which this applet context maps the key </returns>
 		''' <param name="key"> key whose associated stream is to be returned.
 		''' @since 1.4 </param>
-		Function getStream(ByVal key As String) As java.io.InputStream
+		Function getStream(  key As String) As java.io.InputStream
 
 		''' <summary>
 		''' Finds all the keys of the streams in this applet context.

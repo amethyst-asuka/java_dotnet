@@ -64,7 +64,7 @@ Namespace java.io
 		''' Creates an InputStreamReader that uses the default charset.
 		''' </summary>
 		''' <param name="in">   An InputStream </param>
-		Public Sub New(ByVal [in] As InputStream)
+		Public Sub New(  [in] As InputStream)
 			MyBase.New([in])
 			Try
 				sd = sun.nio.cs.StreamDecoder.forInputStreamReader([in], Me, CStr(Nothing)) ' ## check lock object
@@ -86,7 +86,7 @@ Namespace java.io
 		''' </param>
 		''' <exception cref="UnsupportedEncodingException">
 		'''             If the named charset is not supported </exception>
-		Public Sub New(ByVal [in] As InputStream, ByVal charsetName As String)
+		Public Sub New(  [in] As InputStream,   charsetName As String)
 			MyBase.New([in])
 			If charsetName Is Nothing Then Throw New NullPointerException("charsetName")
 			sd = sun.nio.cs.StreamDecoder.forInputStreamReader([in], Me, charsetName)
@@ -100,7 +100,7 @@ Namespace java.io
 		''' 
 		''' @since 1.4
 		''' @spec JSR-51 </param>
-		Public Sub New(ByVal [in] As InputStream, ByVal cs As java.nio.charset.Charset)
+		Public Sub New(  [in] As InputStream,   cs As java.nio.charset.Charset)
 			MyBase.New([in])
 			If cs Is Nothing Then Throw New NullPointerException("charset")
 			sd = sun.nio.cs.StreamDecoder.forInputStreamReader([in], Me, cs)
@@ -114,7 +114,7 @@ Namespace java.io
 		''' 
 		''' @since 1.4
 		''' @spec JSR-51 </param>
-		Public Sub New(ByVal [in] As InputStream, ByVal dec As java.nio.charset.CharsetDecoder)
+		Public Sub New(  [in] As InputStream,   dec As java.nio.charset.CharsetDecoder)
 			MyBase.New([in])
 			If dec Is Nothing Then Throw New NullPointerException("charset decoder")
 			sd = sun.nio.cs.StreamDecoder.forInputStreamReader([in], Me, dec)

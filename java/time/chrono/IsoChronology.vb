@@ -158,7 +158,7 @@ Namespace java.time.chrono
 		''' <returns> the ISO local date, not null </returns>
 		''' <exception cref="DateTimeException"> if unable to create the date </exception>
 		''' <exception cref="ClassCastException"> if the type of {@code era} is not {@code IsoEra} </exception>
-		Public Overrides Function [date](ByVal era As Era, ByVal yearOfEra As Integer, ByVal month As Integer, ByVal dayOfMonth As Integer) As java.time.LocalDate ' override with covariant return type
+		Public Overrides Function [date](  era As Era,   yearOfEra As Integer,   month As Integer,   dayOfMonth As Integer) As java.time.LocalDate ' override with covariant return type
 			Return [date](prolepticYear(era, yearOfEra), month, dayOfMonth)
 		End Function
 
@@ -173,7 +173,7 @@ Namespace java.time.chrono
 		''' <param name="dayOfMonth">  the ISO day-of-month </param>
 		''' <returns> the ISO local date, not null </returns>
 		''' <exception cref="DateTimeException"> if unable to create the date </exception>
-		Public Overrides Function [date](ByVal prolepticYear As Integer, ByVal month As Integer, ByVal dayOfMonth As Integer) As java.time.LocalDate ' override with covariant return type
+		Public Overrides Function [date](  prolepticYear As Integer,   month As Integer,   dayOfMonth As Integer) As java.time.LocalDate ' override with covariant return type
 			Return java.time.LocalDate.of(prolepticYear, month, dayOfMonth)
 		End Function
 
@@ -185,7 +185,7 @@ Namespace java.time.chrono
 		''' <param name="dayOfYear">  the ISO day-of-year </param>
 		''' <returns> the ISO local date, not null </returns>
 		''' <exception cref="DateTimeException"> if unable to create the date </exception>
-		Public Overrides Function dateYearDay(ByVal era As Era, ByVal yearOfEra As Integer, ByVal dayOfYear As Integer) As java.time.LocalDate ' override with covariant return type
+		Public Overrides Function dateYearDay(  era As Era,   yearOfEra As Integer,   dayOfYear As Integer) As java.time.LocalDate ' override with covariant return type
 			Return dateYearDay(prolepticYear(era, yearOfEra), dayOfYear)
 		End Function
 
@@ -198,7 +198,7 @@ Namespace java.time.chrono
 		''' <param name="dayOfYear">  the ISO day-of-year </param>
 		''' <returns> the ISO local date, not null </returns>
 		''' <exception cref="DateTimeException"> if unable to create the date </exception>
-		Public Overrides Function dateYearDay(ByVal prolepticYear As Integer, ByVal dayOfYear As Integer) As java.time.LocalDate ' override with covariant return type
+		Public Overrides Function dateYearDay(  prolepticYear As Integer,   dayOfYear As Integer) As java.time.LocalDate ' override with covariant return type
 			Return java.time.LocalDate.ofYearDay(prolepticYear, dayOfYear)
 		End Function
 
@@ -210,7 +210,7 @@ Namespace java.time.chrono
 		''' <param name="epochDay">  the epoch day </param>
 		''' <returns> the ISO local date, not null </returns>
 		''' <exception cref="DateTimeException"> if unable to create the date </exception>
-		Public Overrides Function dateEpochDay(ByVal epochDay As Long) As java.time.LocalDate ' override with covariant return type
+		Public Overrides Function dateEpochDay(  epochDay As Long) As java.time.LocalDate ' override with covariant return type
 			Return java.time.LocalDate.ofEpochDay(epochDay)
 		End Function
 
@@ -223,7 +223,7 @@ Namespace java.time.chrono
 		''' <param name="temporal">  the date-time object to convert, not null </param>
 		''' <returns> the ISO local date, not null </returns>
 		''' <exception cref="DateTimeException"> if unable to create the date </exception>
-		Public Overrides Function [date](ByVal temporal As java.time.temporal.TemporalAccessor) As java.time.LocalDate ' override with covariant return type
+		Public Overrides Function [date](  temporal As java.time.temporal.TemporalAccessor) As java.time.LocalDate ' override with covariant return type
 			Return java.time.LocalDate.from(temporal)
 		End Function
 
@@ -235,7 +235,7 @@ Namespace java.time.chrono
 		''' <param name="temporal">  the date-time object to convert, not null </param>
 		''' <returns> the ISO local date-time, not null </returns>
 		''' <exception cref="DateTimeException"> if unable to create the date-time </exception>
-		Public Overrides Function localDateTime(ByVal temporal As java.time.temporal.TemporalAccessor) As java.time.LocalDateTime ' override with covariant return type
+		Public Overrides Function localDateTime(  temporal As java.time.temporal.TemporalAccessor) As java.time.LocalDateTime ' override with covariant return type
 			Return java.time.LocalDateTime.from(temporal)
 		End Function
 
@@ -247,7 +247,7 @@ Namespace java.time.chrono
 		''' <param name="temporal">  the date-time object to convert, not null </param>
 		''' <returns> the ISO zoned date-time, not null </returns>
 		''' <exception cref="DateTimeException"> if unable to create the date-time </exception>
-		Public Overrides Function zonedDateTime(ByVal temporal As java.time.temporal.TemporalAccessor) As java.time.ZonedDateTime ' override with covariant return type
+		Public Overrides Function zonedDateTime(  temporal As java.time.temporal.TemporalAccessor) As java.time.ZonedDateTime ' override with covariant return type
 			Return java.time.ZonedDateTime.from(temporal)
 		End Function
 
@@ -260,7 +260,7 @@ Namespace java.time.chrono
 		''' <param name="zone">  the time-zone, not null </param>
 		''' <returns> the zoned date-time, not null </returns>
 		''' <exception cref="DateTimeException"> if the result exceeds the supported range </exception>
-		Public Overrides Function zonedDateTime(ByVal instant_Renamed As java.time.Instant, ByVal zone As java.time.ZoneId) As java.time.ZonedDateTime
+		Public Overrides Function zonedDateTime(  instant_Renamed As java.time.Instant,   zone As java.time.ZoneId) As java.time.ZonedDateTime
 			Return java.time.ZonedDateTime.ofInstant(instant_Renamed, zone)
 		End Function
 
@@ -291,7 +291,7 @@ Namespace java.time.chrono
 		''' </summary>
 		''' <returns> the current ISO local date using the system clock, not null </returns>
 		''' <exception cref="DateTimeException"> if unable to create the date </exception>
-		Public Overrides Function dateNow(ByVal zone As java.time.ZoneId) As java.time.LocalDate ' override with covariant return type
+		Public Overrides Function dateNow(  zone As java.time.ZoneId) As java.time.LocalDate ' override with covariant return type
 			Return dateNow(java.time.Clock.system(zone))
 		End Function
 
@@ -305,7 +305,7 @@ Namespace java.time.chrono
 		''' <param name="clock">  the clock to use, not null </param>
 		''' <returns> the current ISO local date, not null </returns>
 		''' <exception cref="DateTimeException"> if unable to create the date </exception>
-		Public Overrides Function dateNow(ByVal clock_Renamed As java.time.Clock) As java.time.LocalDate ' override with covariant return type
+		Public Overrides Function dateNow(  clock_Renamed As java.time.Clock) As java.time.LocalDate ' override with covariant return type
 			java.util.Objects.requireNonNull(clock_Renamed, "clock")
 			Return [date](java.time.LocalDate.now(clock_Renamed))
 		End Function
@@ -329,16 +329,16 @@ Namespace java.time.chrono
 		''' </summary>
 		''' <param name="prolepticYear">  the ISO proleptic year to check </param>
 		''' <returns> true if the year is leap, false otherwise </returns>
-		Public Overrides Function isLeapYear(ByVal prolepticYear As Long) As Boolean
+		Public Overrides Function isLeapYear(  prolepticYear As Long) As Boolean
 			[Return] ((prolepticYear And 3) = 0) AndAlso ((prolepticYear Mod 100) <> 0 OrElse (prolepticYear Mod 400) = 0)
 		End Function
 
-		Public Overrides Function prolepticYear(ByVal era As Era, ByVal yearOfEra As Integer) As Integer
+		Public Overrides Function prolepticYear(  era As Era,   yearOfEra As Integer) As Integer
 			If TypeOf era Is IsoEra = False Then Throw New ClassCastException("Era must be IsoEra")
 			[Return] (If(era = IsoEra.CE, yearOfEra, 1 - yearOfEra))
 		End Function
 
-		Public Overrides Function eraOf(ByVal eraValue As Integer) As IsoEra
+		Public Overrides Function eraOf(  eraValue As Integer) As IsoEra
 			Return IsoEra.of(eraValue)
 		End Function
 
@@ -431,11 +431,11 @@ Namespace java.time.chrono
 		''' <returns> the resolved date, null if insufficient information to create a date </returns>
 		''' <exception cref="DateTimeException"> if the date cannot be resolved, typically
 		'''  because of a conflict in the input data </exception>
-		Public Overrides Function resolveDate(ByVal fieldValues As IDictionary(Of java.time.temporal.TemporalField, Long?), ByVal resolverStyle As java.time.format.ResolverStyle) As java.time.LocalDate ' override for performance
+		Public Overrides Function resolveDate(  fieldValues As IDictionary(Of java.time.temporal.TemporalField, Long?),   resolverStyle As java.time.format.ResolverStyle) As java.time.LocalDate ' override for performance
 			Return CType(MyBase.resolveDate(fieldValues, resolverStyle), java.time.LocalDate)
 		End Function
 
-		Friend Overrides Sub resolveProlepticMonth(ByVal fieldValues As IDictionary(Of java.time.temporal.TemporalField, Long?), ByVal resolverStyle As java.time.format.ResolverStyle) ' override for better proleptic algorithm
+		Friend Overrides Sub resolveProlepticMonth(  fieldValues As IDictionary(Of java.time.temporal.TemporalField, Long?),   resolverStyle As java.time.format.ResolverStyle) ' override for better proleptic algorithm
 			Dim pMonth As Long? = fieldValues.Remove(PROLEPTIC_MONTH)
 			If pMonth IsNot Nothing Then
 				If resolverStyle <> java.time.format.ResolverStyle.LENIENT Then PROLEPTIC_MONTH.checkValidValue(pMonth)
@@ -444,7 +444,7 @@ Namespace java.time.chrono
 			End If
 		End Sub
 
-		Friend Overrides Function resolveYearOfEra(ByVal fieldValues As IDictionary(Of java.time.temporal.TemporalField, Long?), ByVal resolverStyle As java.time.format.ResolverStyle) As java.time.LocalDate ' override for enhanced behaviour
+		Friend Overrides Function resolveYearOfEra(  fieldValues As IDictionary(Of java.time.temporal.TemporalField, Long?),   resolverStyle As java.time.format.ResolverStyle) As java.time.LocalDate ' override for enhanced behaviour
 			Dim yoeLong As Long? = fieldValues.Remove(YEAR_OF_ERA)
 			If yoeLong IsNot Nothing Then
 				If resolverStyle <> java.time.format.ResolverStyle.LENIENT Then YEAR_OF_ERA.checkValidValue(yoeLong)
@@ -476,7 +476,7 @@ Namespace java.time.chrono
 			Return Nothing
 		End Function
 
-		Friend Overrides Function resolveYMD(j ByVal fieldValues As IDictionary(Of java.time.temporal.TemporalField, Long?), ByVal resolverStyle As java.time.format.ResolverStyle) As java.time.LocalDate ' override for performance
+		Friend Overrides Function resolveYMD(j   fieldValues As IDictionary(Of java.time.temporal.TemporalField, Long?),   resolverStyle As java.time.format.ResolverStyle) As java.time.LocalDate ' override for performance
 			Dim y As Integer = YEAR.checkValidIntValue(fieldValues.Remove(YEAR))
 			If resolverStyle = java.time.format.ResolverStyle.LENIENT Then
 				Dim months As Long = System.Math.subtractExact(fieldValues.Remove(MONTH_OF_YEAR), 1)
@@ -497,7 +497,7 @@ Namespace java.time.chrono
 		End Function
 
 		'-----------------------------------------------------------------------
-		Public Overrides Function range(ByVal field As java.time.temporal.ChronoField) As java.time.temporal.ValueRange
+		Public Overrides Function range(  field As java.time.temporal.ChronoField) As java.time.temporal.ValueRange
 			Return field.range()
 		End Function
 
@@ -513,7 +513,7 @@ Namespace java.time.chrono
 		''' <param name="days">  the number of years, may be negative </param>
 		''' <returns> the period in terms of this chronology, not null </returns>
 		''' <returns> the ISO period, not null </returns>
-		Public Overrides Function period(ByVal years As Integer, ByVal months As Integer, ByVal days As Integer) As java.time.Period ' override with covariant return type
+		Public Overrides Function period(  years As Integer,   months As Integer,   days As Integer) As java.time.Period ' override with covariant return type
 			Return java.time.Period.of(years, months, days)
 		End Function
 
@@ -537,7 +537,7 @@ Namespace java.time.chrono
 		''' </summary>
 		''' <param name="s"> the stream to read </param>
 		''' <exception cref="InvalidObjectException"> always </exception>
-		Private Sub readObject(ByVal s As java.io.ObjectInputStream)
+		Private Sub readObject(  s As java.io.ObjectInputStream)
 			Throw New java.io.InvalidObjectException("Deserialization via serialization delegate")
 		End Sub
 	End Class

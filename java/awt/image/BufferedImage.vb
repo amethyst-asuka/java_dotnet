@@ -300,7 +300,7 @@ Namespace java.awt.image
 		''' <seealso cref= #TYPE_BYTE_INDEXED </seealso>
 		''' <seealso cref= #TYPE_USHORT_565_RGB </seealso>
 		''' <seealso cref= #TYPE_USHORT_555_RGB </seealso>
-		Public Sub New(ByVal width As Integer, ByVal height As Integer, ByVal imageType As Integer)
+		Public Sub New(  width As Integer,   height As Integer,   imageType As Integer)
 			Select Case imageType
 			Case TYPE_INT_RGB
 					colorModel = New DirectColorModel(24, &Hff0000, &Hff00, &Hff, &H0) ' Alpha -  Blue -  Green -  Red
@@ -421,7 +421,7 @@ Namespace java.awt.image
 		''' TYPE_BYTE_BINARY and the color map has more than 16 entries. </exception>
 		''' <seealso cref= #TYPE_BYTE_BINARY </seealso>
 		''' <seealso cref= #TYPE_BYTE_INDEXED </seealso>
-		Public Sub New(ByVal width As Integer, ByVal height As Integer, ByVal imageType As Integer, ByVal cm As IndexColorModel)
+		Public Sub New(  width As Integer,   height As Integer,   imageType As Integer,   cm As IndexColorModel)
 			If cm.hasAlpha() AndAlso cm.alphaPremultiplied Then Throw New IllegalArgumentException("This image types do not have " & "premultiplied alpha.")
 
 			Select Case imageType
@@ -488,7 +488,7 @@ Namespace java.awt.image
 	' *  SEE THE METHOD DEFINERASTERTYPE @ RASTEROUTPUTMANAGER
 	' *
 	' 
-		Public Sub New(Of T1)(ByVal cm As ColorModel, ByVal raster_Renamed As WritableRaster, ByVal isRasterPremultiplied As Boolean, ByVal properties As Dictionary(Of T1))
+		Public Sub New(Of T1)(  cm As ColorModel,   raster_Renamed As WritableRaster,   isRasterPremultiplied As Boolean,   properties As Dictionary(Of T1))
 
 			If Not cm.isCompatibleRaster(raster_Renamed) Then Throw New IllegalArgumentException("Raster " & raster_Renamed & " is incompatible with ColorModel " & cm)
 
@@ -593,7 +593,7 @@ Namespace java.awt.image
 			End If ' else if ((raster instanceof ByteComponentRaster) &&
 		End Sub
 
-		Private Shared Function isStandard(ByVal cm As ColorModel, ByVal wr As WritableRaster) As Boolean
+		Private Shared Function isStandard(  cm As ColorModel,   wr As WritableRaster) As Boolean
 			Dim cmClass As  [Class] = cm.GetType()
 			Dim wrClass As  [Class] = wr.GetType()
 			Dim smClass As  [Class] = wr.sampleModel.GetType()
@@ -707,7 +707,7 @@ Namespace java.awt.image
 		'''          default sRGB colorspace. </returns>
 		''' <seealso cref= #setRGB(int, int, int) </seealso>
 		''' <seealso cref= #setRGB(int, int, int, int, int[], int, int) </seealso>
-		Public Overridable Function getRGB(ByVal x As Integer, ByVal y As Integer) As Integer
+		Public Overridable Function getRGB(  x As Integer,   y As Integer) As Integer
 			Return colorModel.getRGB(raster.getDataElements(x, y, Nothing))
 		End Function
 
@@ -741,7 +741,7 @@ Namespace java.awt.image
 		''' <returns>            array of RGB pixels. </returns>
 		''' <seealso cref= #setRGB(int, int, int) </seealso>
 		''' <seealso cref= #setRGB(int, int, int, int, int[], int, int) </seealso>
-		Public Overridable Function getRGB(ByVal startX As Integer, ByVal startY As Integer, ByVal w As Integer, ByVal h As Integer, ByVal rgbArray As Integer(), ByVal offset As Integer, ByVal scansize As Integer) As Integer()
+		Public Overridable Function getRGB(  startX As Integer,   startY As Integer,   w As Integer,   h As Integer,   rgbArray As Integer(),   offset As Integer,   scansize As Integer) As Integer()
 			Dim yoff As Integer = offset
 			Dim [off] As Integer
 			Dim data_Renamed As Object
@@ -798,7 +798,7 @@ Namespace java.awt.image
 		''' <seealso cref= #getRGB(int, int) </seealso>
 		''' <seealso cref= #getRGB(int, int, int, int, int[], int, int) </seealso>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Sub setRGB(ByVal x As Integer, ByVal y As Integer, ByVal rgb As Integer)
+		Public Overridable Sub setRGB(  x As Integer,   y As Integer,   rgb As Integer)
 			raster.dataElementsnts(x, y, colorModel.getDataElements(rgb, Nothing))
 		End Sub
 
@@ -831,7 +831,7 @@ Namespace java.awt.image
 		''' <param name="scansize">    scanline stride for the <code>rgbArray</code> </param>
 		''' <seealso cref= #getRGB(int, int) </seealso>
 		''' <seealso cref= #getRGB(int, int, int, int, int[], int, int) </seealso>
-		Public Overridable Sub setRGB(ByVal startX As Integer, ByVal startY As Integer, ByVal w As Integer, ByVal h As Integer, ByVal rgbArray As Integer(), ByVal offset As Integer, ByVal scansize As Integer)
+		Public Overridable Sub setRGB(  startX As Integer,   startY As Integer,   w As Integer,   h As Integer,   rgbArray As Integer(),   offset As Integer,   scansize As Integer)
 			Dim yoff As Integer = offset
 			Dim [off] As Integer
 			Dim pixel As Object = Nothing
@@ -872,7 +872,7 @@ Namespace java.awt.image
 		''' Returns the width of the <code>BufferedImage</code>. </summary>
 		''' <param name="observer"> ignored </param>
 		''' <returns> the width of this <code>BufferedImage</code> </returns>
-		Public Overridable Function getWidth(ByVal observer As ImageObserver) As Integer
+		Public Overridable Function getWidth(  observer As ImageObserver) As Integer
 			Return raster.width
 		End Function
 
@@ -880,7 +880,7 @@ Namespace java.awt.image
 		''' Returns the height of the <code>BufferedImage</code>. </summary>
 		''' <param name="observer"> ignored </param>
 		''' <returns> the height of this <code>BufferedImage</code> </returns>
-		Public Overridable Function getHeight(ByVal observer As ImageObserver) As Integer
+		Public Overridable Function getHeight(  observer As ImageObserver) As Integer
 			Return raster.height
 		End Function
 
@@ -919,7 +919,7 @@ Namespace java.awt.image
 		''' <exception cref="NullPointerException"> if the property name is null. </exception>
 		''' <seealso cref= ImageObserver </seealso>
 		''' <seealso cref= java.awt.Image#UndefinedProperty </seealso>
-		Public Overridable Function getProperty(ByVal name As String, ByVal observer As ImageObserver) As Object
+		Public Overridable Function getProperty(  name As String,   observer As ImageObserver) As Object
 			Return getProperty(name)
 		End Function
 
@@ -929,7 +929,7 @@ Namespace java.awt.image
 		''' <returns> an <code>Object</code> that is the property referred to by
 		'''          the specified <code>name</code>. </returns>
 		''' <exception cref="NullPointerException"> if the property name is null. </exception>
-		Public Overridable Function getProperty(ByVal name As String) As Object Implements RenderedImage.getProperty
+		Public Overridable Function getProperty(  name As String) As Object Implements RenderedImage.getProperty
 			If name Is Nothing Then Throw New NullPointerException("null property name is not allowed")
 			If properties Is Nothing Then Return java.awt.Image.UndefinedProperty
 			Dim o As Object = properties(name)
@@ -974,7 +974,7 @@ Namespace java.awt.image
 		'''          <code>BufferedImage</code>. </returns>
 		''' <exception cref="RasterFormatException"> if the specified
 		''' area is not contained within this <code>BufferedImage</code>. </exception>
-		Public Overridable Function getSubimage(ByVal x As Integer, ByVal y As Integer, ByVal w As Integer, ByVal h As Integer) As BufferedImage
+		Public Overridable Function getSubimage(  x As Integer,   y As Integer,   w As Integer,   h As Integer) As BufferedImage
 			Return New BufferedImage(colorModel, raster.createWritableChild(x, y, w, h, 0, 0, Nothing), colorModel.alphaPremultiplied, properties)
 		End Function
 
@@ -996,7 +996,7 @@ Namespace java.awt.image
 		''' in the correct state. </summary>
 		''' <param name="isAlphaPremultiplied"> <code>true</code> if the alpha has been
 		'''          premultiplied; <code>false</code> otherwise. </param>
-		Public Overridable Sub coerceData(ByVal isAlphaPremultiplied As Boolean)
+		Public Overridable Sub coerceData(  isAlphaPremultiplied As Boolean)
 			If colorModel.hasAlpha() AndAlso colorModel.alphaPremultiplied <> isAlphaPremultiplied Then colorModel = colorModel.coerceData(raster, isAlphaPremultiplied)
 		End Sub
 
@@ -1170,7 +1170,7 @@ Namespace java.awt.image
 		''' <exception cref="ArrayIndexOutOfBoundsException"> if both
 		'''          <code>tileX</code> and <code>tileY</code> are not
 		'''          equal to 0 </exception>
-		Public Overridable Function getTile(ByVal tileX As Integer, ByVal tileY As Integer) As Raster Implements RenderedImage.getTile
+		Public Overridable Function getTile(  tileX As Integer,   tileY As Integer) As Raster Implements RenderedImage.getTile
 			If tileX = 0 AndAlso tileY = 0 Then Return raster
 			Throw New ArrayIndexOutOfBoundsException("BufferedImages only have" & " one tile with index 0,0")
 		End Function
@@ -1201,7 +1201,7 @@ Namespace java.awt.image
 				Next i
 				Return wr
 			End Get
-			Set(ByVal r As Raster)
+			Set(  r As Raster)
 				Dim width_Renamed As Integer = r.width
 				Dim height_Renamed As Integer = r.height
 				Dim startX As Integer = r.minX
@@ -1238,7 +1238,7 @@ Namespace java.awt.image
 		''' <returns> a <code>Raster</code> that is a copy of the image data of
 		'''          the specified region of the <code>BufferedImage</code> </returns>
 		''' <seealso cref= #setData(Raster) </seealso>
-		Public Overridable Function getData(ByVal rect As java.awt.Rectangle) As Raster Implements RenderedImage.getData
+		Public Overridable Function getData(  rect As java.awt.Rectangle) As Raster Implements RenderedImage.getData
 			Dim sm As SampleModel = raster.sampleModel
 			Dim nsm As SampleModel = sm.createCompatibleSampleModel(rect.width, rect.height)
 			Dim wr As WritableRaster = Raster.createWritableRaster(nsm, rect.location)
@@ -1270,7 +1270,7 @@ Namespace java.awt.image
 		'''          part of the image, or <code>null</code> </param>
 		''' <returns> a reference to the supplied or created
 		'''          <code>WritableRaster</code>. </returns>
-		Public Overridable Function copyData(ByVal outRaster As WritableRaster) As WritableRaster Implements RenderedImage.copyData
+		Public Overridable Function copyData(  outRaster As WritableRaster) As WritableRaster Implements RenderedImage.copyData
 			If outRaster Is Nothing Then Return CType(data, WritableRaster)
 			Dim width_Renamed As Integer = outRaster.width
 			Dim height_Renamed As Integer = outRaster.height
@@ -1293,7 +1293,7 @@ Namespace java.awt.image
 	  ''' Adds a tile observer.  If the observer is already present,
 	  ''' it receives multiple notifications. </summary>
 	  ''' <param name="to"> the specified <seealso cref="TileObserver"/> </param>
-		Public Overridable Sub addTileObserver(ByVal [to] As TileObserver) Implements WritableRenderedImage.addTileObserver
+		Public Overridable Sub addTileObserver(  [to] As TileObserver) Implements WritableRenderedImage.addTileObserver
 		End Sub
 
 	  ''' <summary>
@@ -1301,7 +1301,7 @@ Namespace java.awt.image
 	  ''' nothing happens.  If the observer was registered for multiple
 	  ''' notifications, it is now registered for one fewer notification. </summary>
 	  ''' <param name="to"> the specified <code>TileObserver</code>. </param>
-		Public Overridable Sub removeTileObserver(ByVal [to] As TileObserver) Implements WritableRenderedImage.removeTileObserver
+		Public Overridable Sub removeTileObserver(  [to] As TileObserver) Implements WritableRenderedImage.removeTileObserver
 		End Sub
 
 		''' <summary>
@@ -1314,7 +1314,7 @@ Namespace java.awt.image
 		''' <exception cref="ArrayIndexOutOfBoundsException"> if both
 		'''          <code>tileX</code> and <code>tileY</code> are not equal
 		'''          to 0 </exception>
-		Public Overridable Function isTileWritable(ByVal tileX As Integer, ByVal tileY As Integer) As Boolean Implements WritableRenderedImage.isTileWritable
+		Public Overridable Function isTileWritable(  tileX As Integer,   tileY As Integer) As Boolean Implements WritableRenderedImage.isTileWritable
 			If tileX = 0 AndAlso tileY = 0 Then Return True
 			Throw New IllegalArgumentException("Only 1 tile in image")
 		End Function
@@ -1355,7 +1355,7 @@ Namespace java.awt.image
 	  ''' <param name="tileY"> the y index of the tile </param>
 	  ''' <returns> a <code>WritableRaster</code> that is the tile, indicated by
 	  '''            the specified indices, to be checked out for writing. </returns>
-		Public Overridable Function getWritableTile(ByVal tileX As Integer, ByVal tileY As Integer) As WritableRaster Implements WritableRenderedImage.getWritableTile
+		Public Overridable Function getWritableTile(  tileX As Integer,   tileY As Integer) As WritableRaster Implements WritableRenderedImage.getWritableTile
 			Return raster
 		End Function
 
@@ -1369,7 +1369,7 @@ Namespace java.awt.image
 	  ''' writers. </summary>
 	  ''' <param name="tileX"> the x index of the tile </param>
 	  ''' <param name="tileY"> the y index of the tile </param>
-		Public Overridable Sub releaseWritableTile(ByVal tileX As Integer, ByVal tileY As Integer) Implements WritableRenderedImage.releaseWritableTile
+		Public Overridable Sub releaseWritableTile(  tileX As Integer,   tileY As Integer) Implements WritableRenderedImage.releaseWritableTile
 		End Sub
 
 		''' <summary>

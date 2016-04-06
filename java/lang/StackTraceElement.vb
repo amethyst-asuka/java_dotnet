@@ -65,7 +65,7 @@ Namespace java.lang
         ''' <exception cref="NullPointerException"> if {@code declaringClass} or
         '''         {@code methodName} is null
         ''' @since 1.5 </exception>
-        Public Sub New(ByVal declaringClass As String, ByVal methodName As String, ByVal fileName As String, ByVal lineNumber As Integer)
+        Public Sub New(  declaringClass As String,   methodName As String,   fileName As String,   lineNumber As Integer)
             Me.declaringClass = java.util.Objects.requireNonNull(declaringClass, "Declaring class is null")
             Me.methodName = java.util.Objects.requireNonNull(methodName, "Method name is null")
             Me.fileName = fileName
@@ -176,7 +176,7 @@ Namespace java.lang
         ''' <returns> true if the specified object is another
         '''         {@code StackTraceElement} instance representing the same
         '''         execution point as this instance. </returns>
-        Public Overrides Function Equals(ByVal obj As Object) As Boolean
+        Public Overrides Function Equals(  obj As Object) As Boolean
             If obj Is Me Then Return True
             If Not (TypeOf obj Is StackTraceElement) Then Return False
             Dim e As StackTraceElement = CType(obj, StackTraceElement)

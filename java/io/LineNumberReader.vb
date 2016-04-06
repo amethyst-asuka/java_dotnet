@@ -75,7 +75,7 @@ Namespace java.io
 		''' </summary>
 		''' <param name="in">
 		'''         A Reader object to provide the underlying stream </param>
-		Public Sub New(ByVal [in] As Reader)
+		Public Sub New(  [in] As Reader)
 			MyBase.New([in])
 		End Sub
 
@@ -88,7 +88,7 @@ Namespace java.io
 		''' </param>
 		''' <param name="sz">
 		'''         An int specifying the size of the buffer </param>
-		Public Sub New(ByVal [in] As Reader, ByVal sz As Integer)
+		Public Sub New(  [in] As Reader,   sz As Integer)
 			MyBase.New([in], sz)
 		End Sub
 
@@ -100,7 +100,7 @@ Namespace java.io
 		''' </param>
 		''' <seealso cref= #getLineNumber </seealso>
 		Public Overridable Property lineNumber As Integer
-			Set(ByVal lineNumber As Integer)
+			Set(  lineNumber As Integer)
 				Me.lineNumber = lineNumber
 			End Set
 			Get

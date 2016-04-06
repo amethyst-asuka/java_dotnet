@@ -68,7 +68,7 @@ Namespace java.rmi.activation
 		''' <exception cref="UnsupportedOperationException"> if and only if activation is
 		'''         not supported by this implementation
 		''' @since 1.2 </exception>
-		Public Sub New(ByVal system_Renamed As ActivationSystem)
+		Public Sub New(  system_Renamed As ActivationSystem)
 			Me.system_Renamed = system_Renamed
 		End Sub
 
@@ -104,7 +104,7 @@ Namespace java.rmi.activation
 		''' <returns>  true if these Objects are equal; false otherwise. </returns>
 		''' <seealso cref=             java.util.Hashtable
 		''' @since 1.2 </seealso>
-		Public Overrides Function Equals(ByVal obj As Object) As Boolean
+		Public Overrides Function Equals(  obj As Object) As Boolean
 			If Me Is obj Then
 				Return True
 			ElseIf TypeOf obj Is ActivationGroupID Then

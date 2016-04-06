@@ -136,33 +136,33 @@ Namespace java.time.chrono
 		''' <exception cref="DateTimeException"> if unable to convert to a {@code ChronoZonedDateTime} </exception>
 		''' <seealso cref= Chronology#zonedDateTime(TemporalAccessor) </seealso>
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-		Shared Function [from](ByVal temporal As java.time.temporal.TemporalAccessor) As ChronoZonedDateTime(Of ?)
-			Sub [New](temporal ByVal ChronoZonedDateTime As instanceof)
-				Sub [New](Of T1)(ByVal  As ChronoZonedDateTime(Of T1))
+		Shared Function [from](  temporal As java.time.temporal.TemporalAccessor) As ChronoZonedDateTime(Of ?)
+			Sub [New](temporal   ChronoZonedDateTime As instanceof)
+				Sub [New](Of T1)(   As ChronoZonedDateTime(Of T1))
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 			java.util.Objects.requireNonNull(temporal, "temporal");
 'JAVA TO VB CONVERTER TODO TASK: Interfaces cannot contain fields in .NET:
 '			Chronology chrono = temporal.query(java.time.temporal.TemporalQueries.chronology());
-			Sub [New](chrono == ByVal [Nothing] As )
-				throw Function java.time.DateTimeException("Unable to obtain ChronoZonedDateTime from TemporalAccessor: " & temporal.getClass() ByVal  As ) As New
+			Sub [New](chrono ==   [Nothing] As )
+				throw Function java.time.DateTimeException("Unable to obtain ChronoZonedDateTime from TemporalAccessor: " & temporal.getClass()    As ) As New
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 			Return chrono.zonedDateTime(temporal);
 
 		'-----------------------------------------------------------------------
-		default Overrides Function range(ByVal field As java.time.temporal.TemporalField) As java.time.temporal.ValueRange
-			Sub [New](field ByVal java.time.temporal.ChronoField As instanceof)
-				Sub [New](field == INSTANT_SECONDS || field == ByVal OFFSET_SECONDS As )
+		default Overrides Function range(  field As java.time.temporal.TemporalField) As java.time.temporal.ValueRange
+			Sub [New](field   java.time.temporal.ChronoField As instanceof)
+				Sub [New](field == INSTANT_SECONDS || field ==   OFFSET_SECONDS As )
 					Function field.range() As [Return]
 				Function toLocalDateTime() As [Return]
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 			Return field.rangeRefinedBy(Me);
 
-		default Overrides Function [get](ByVal field As java.time.temporal.TemporalField) As Integer
-			Sub [New](field ByVal java.time.temporal.ChronoField As instanceof)
-				Sub [New]((java.time.temporal.ChronoField) ByVal field As )
+		default Overrides Function [get](  field As java.time.temporal.TemporalField) As Integer
+			Sub [New](field   java.time.temporal.ChronoField As instanceof)
+				Sub [New]((java.time.temporal.ChronoField)   field As )
 'JAVA TO VB CONVERTER TODO TASK: Interfaces cannot contain fields in .NET:
 '					case INSTANT_SECONDS:
-						throw Function java.time.temporal.UnsupportedTemporalTypeException("Invalid field 'InstantSeconds' for get() method, use getLong() instead" ByVal  As ) As New
+						throw Function java.time.temporal.UnsupportedTemporalTypeException("Invalid field 'InstantSeconds' for get() method, use getLong() instead"    As ) As New
 'JAVA TO VB CONVERTER TODO TASK: Interfaces cannot contain fields in .NET:
 '					case OFFSET_SECONDS:
 						ReadOnly Property offset As [Return]
@@ -170,9 +170,9 @@ Namespace java.time.chrono
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 			Return outerInstance.get(field);
 
-		default Overrides Function getLong(ByVal field As java.time.temporal.TemporalField) As Long
-			Sub [New](field ByVal java.time.temporal.ChronoField As instanceof)
-				Sub [New]((java.time.temporal.ChronoField) ByVal field As )
+		default Overrides Function getLong(  field As java.time.temporal.TemporalField) As Long
+			Sub [New](field   java.time.temporal.ChronoField As instanceof)
+				Sub [New]((java.time.temporal.ChronoField)   field As )
 'JAVA TO VB CONVERTER TODO TASK: Interfaces cannot contain fields in .NET:
 '					case INSTANT_SECONDS:
 						Function toEpochSecond() As [Return]
@@ -291,7 +291,7 @@ Namespace java.time.chrono
 		''' </summary>
 		''' <param name="zone">  the time-zone to change to, not null </param>
 		''' <returns> a {@code ChronoZonedDateTime} based on this date-time with the requested zone, not null </returns>
-		Function withZoneSameLocal(ByVal zone As java.time.ZoneId) As ChronoZonedDateTime(Of D)
+		Function withZoneSameLocal(  zone As java.time.ZoneId) As ChronoZonedDateTime(Of D)
 
 		''' <summary>
 		''' Returns a copy of this date-time with a different time-zone,
@@ -309,7 +309,7 @@ Namespace java.time.chrono
 		''' <param name="zone">  the time-zone to change to, not null </param>
 		''' <returns> a {@code ChronoZonedDateTime} based on this date-time with the requested zone, not null </returns>
 		''' <exception cref="DateTimeException"> if the result exceeds the supported date range </exception>
-		Function withZoneSameInstant(ByVal zone As java.time.ZoneId) As ChronoZonedDateTime(Of D)
+		Function withZoneSameInstant(  zone As java.time.ZoneId) As ChronoZonedDateTime(Of D)
 
 		''' <summary>
 		''' Checks if the specified field is supported.
@@ -329,7 +329,7 @@ Namespace java.time.chrono
 		''' </summary>
 		''' <param name="field">  the field to check, null returns false </param>
 		''' <returns> true if the field can be queried, false if not </returns>
-		Overrides Function isSupported(ByVal field As java.time.temporal.TemporalField) As Boolean
+		Overrides Function isSupported(  field As java.time.temporal.TemporalField) As Boolean
 
 		''' <summary>
 		''' Checks if the specified unit is supported.
@@ -348,8 +348,8 @@ Namespace java.time.chrono
 		''' </summary>
 		''' <param name="unit">  the unit to check, null returns false </param>
 		''' <returns> true if the unit can be added/subtracted, false if not </returns>
-		default Overrides Function isSupported(ByVal unit As java.time.temporal.TemporalUnit) As Boolean
-			Sub [New](unit ByVal java.time.temporal.ChronoUnit As instanceof)
+		default Overrides Function isSupported(  unit As java.time.temporal.TemporalUnit) As Boolean
+			Sub [New](unit   java.time.temporal.ChronoUnit As instanceof)
 'JAVA TO VB CONVERTER TODO TASK: Interfaces cannot contain fields in .NET:
 '				Return unit != FOREVER;
 'JAVA TO VB CONVERTER TODO TASK: Interfaces cannot contain fields in .NET:
@@ -361,41 +361,41 @@ Namespace java.time.chrono
 		''' {@inheritDoc} </summary>
 		''' <exception cref="DateTimeException"> {@inheritDoc} </exception>
 		''' <exception cref="ArithmeticException"> {@inheritDoc} </exception>
-		default Overrides Function [with](ByVal adjuster As java.time.temporal.TemporalAdjuster) As ChronoZonedDateTime(Of D)
-			Function ChronoZonedDateTimeImpl.ensureValid(getChronology() ByVal  As , outerInstance.with(adjuster) ByVal  As ) As [Return]
+		default Overrides Function [with](  adjuster As java.time.temporal.TemporalAdjuster) As ChronoZonedDateTime(Of D)
+			Function ChronoZonedDateTimeImpl.ensureValid(getChronology()    As , outerInstance.with(adjuster)    As ) As [Return]
 
 		''' <summary>
 		''' {@inheritDoc} </summary>
 		''' <exception cref="DateTimeException"> {@inheritDoc} </exception>
 		''' <exception cref="ArithmeticException"> {@inheritDoc} </exception>
-		Overrides Function [with](ByVal field As java.time.temporal.TemporalField, ByVal newValue As Long) As ChronoZonedDateTime(Of D)
+		Overrides Function [with](  field As java.time.temporal.TemporalField,   newValue As Long) As ChronoZonedDateTime(Of D)
 
 		''' <summary>
 		''' {@inheritDoc} </summary>
 		''' <exception cref="DateTimeException"> {@inheritDoc} </exception>
 		''' <exception cref="ArithmeticException"> {@inheritDoc} </exception>
-		default Overrides Function plus(ByVal amount As java.time.temporal.TemporalAmount) As ChronoZonedDateTime(Of D)
-			Function ChronoZonedDateTimeImpl.ensureValid(getChronology() ByVal  As , outerInstance.plus(amount) ByVal  As ) As [Return]
+		default Overrides Function plus(  amount As java.time.temporal.TemporalAmount) As ChronoZonedDateTime(Of D)
+			Function ChronoZonedDateTimeImpl.ensureValid(getChronology()    As , outerInstance.plus(amount)    As ) As [Return]
 
 		''' <summary>
 		''' {@inheritDoc} </summary>
 		''' <exception cref="DateTimeException"> {@inheritDoc} </exception>
 		''' <exception cref="ArithmeticException"> {@inheritDoc} </exception>
-		Overrides Function plus(ByVal amountToAdd As Long, ByVal unit As java.time.temporal.TemporalUnit) As ChronoZonedDateTime(Of D)
+		Overrides Function plus(  amountToAdd As Long,   unit As java.time.temporal.TemporalUnit) As ChronoZonedDateTime(Of D)
 
 		''' <summary>
 		''' {@inheritDoc} </summary>
 		''' <exception cref="DateTimeException"> {@inheritDoc} </exception>
 		''' <exception cref="ArithmeticException"> {@inheritDoc} </exception>
-		default Overrides Function minus(ByVal amount As java.time.temporal.TemporalAmount) As ChronoZonedDateTime(Of D)
-			Function ChronoZonedDateTimeImpl.ensureValid(getChronology() ByVal  As , outerInstance.minus(amount) ByVal  As ) As [Return]
+		default Overrides Function minus(  amount As java.time.temporal.TemporalAmount) As ChronoZonedDateTime(Of D)
+			Function ChronoZonedDateTimeImpl.ensureValid(getChronology()    As , outerInstance.minus(amount)    As ) As [Return]
 
 		''' <summary>
 		''' {@inheritDoc} </summary>
 		''' <exception cref="DateTimeException"> {@inheritDoc} </exception>
 		''' <exception cref="ArithmeticException"> {@inheritDoc} </exception>
-		default Overrides Function minus(ByVal amountToSubtract As Long, ByVal unit As java.time.temporal.TemporalUnit) As ChronoZonedDateTime(Of D)
-			Function ChronoZonedDateTimeImpl.ensureValid(getChronology() ByVal  As , outerInstance.minus(amountToSubtract, unit) ByVal  As ) As [Return]
+		default Overrides Function minus(  amountToSubtract As Long,   unit As java.time.temporal.TemporalUnit) As ChronoZonedDateTime(Of D)
+			Function ChronoZonedDateTimeImpl.ensureValid(getChronology()    As , outerInstance.minus(amountToSubtract, unit)    As ) As [Return]
 
 		'-----------------------------------------------------------------------
 		''' <summary>
@@ -416,20 +416,20 @@ Namespace java.time.chrono
 		''' <exception cref="DateTimeException"> if unable to query (defined by the query) </exception>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs (defined by the query) </exception>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		default Overrides Function query(ByVal query As java.time.temporal.TemporalQuery(Of R)) As R(Of R)
-			Sub [New](query == java.time.temporal.TemporalQueries.zone() || query == java.time.temporal.TemporalQueries.zoneId() ByVal  As )
+		default Overrides Function query(  query As java.time.temporal.TemporalQuery(Of R)) As R(Of R)
+			Sub [New](query == java.time.temporal.TemporalQueries.zone() || query == java.time.temporal.TemporalQueries.zoneId()    As )
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 				Return (R) getZone();
-			Function [if](query == java.time.temporal.TemporalQueries.offset() ByVal  As ) As else
+			Function [if](query == java.time.temporal.TemporalQueries.offset()    As ) As else
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 				Return (R) getOffset();
-			Function [if](query == java.time.temporal.TemporalQueries.localTime() ByVal  As ) As else
+			Function [if](query == java.time.temporal.TemporalQueries.localTime()    As ) As else
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 				Return (R) toLocalTime();
-			Function [if](query == java.time.temporal.TemporalQueries.chronology() ByVal  As ) As else
+			Function [if](query == java.time.temporal.TemporalQueries.chronology()    As ) As else
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 				Return (R) getChronology();
-			Function [if](query == java.time.temporal.TemporalQueries.precision() ByVal  As ) As else
+			Function [if](query == java.time.temporal.TemporalQueries.precision()    As ) As else
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 				Return (R) NANOS;
 			' inline TemporalAccessor.super.query(query) as an optimization
@@ -450,7 +450,7 @@ Namespace java.time.chrono
 		''' <param name="formatter">  the formatter to use, not null </param>
 		''' <returns> the formatted date-time string, not null </returns>
 		''' <exception cref="DateTimeException"> if an error occurs during printing </exception>
-		default Function format(ByVal formatter As java.time.format.DateTimeFormatter) As String
+		default Function format(  formatter As java.time.format.DateTimeFormatter) As String
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 			java.util.Objects.requireNonNull(formatter, "formatter");
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
@@ -467,7 +467,7 @@ Namespace java.time.chrono
 		''' </summary>
 		''' <returns> an {@code Instant} representing the same instant, not null </returns>
 		default Function toInstant() As java.time.Instant
-			Function java.time.Instant.ofEpochSecond(toEpochSecond() ByVal  As , toLocalTime().getNano() ByVal  As ) As [Return]
+			Function java.time.Instant.ofEpochSecond(toEpochSecond()    As , toLocalTime().getNano()    As ) As [Return]
 
 		''' <summary>
 		''' Converts this date-time to the number of seconds from the epoch
@@ -504,16 +504,16 @@ Namespace java.time.chrono
 		''' </summary>
 		''' <param name="other">  the other date-time to compare to, not null </param>
 		''' <returns> the comparator value, negative if less, positive if greater </returns>
-		default Overrides Function compareTo(Of T1)(ByVal other As ChronoZonedDateTime(Of T1)) As Integer
+		default Overrides Function compareTo(Of T1)(  other As ChronoZonedDateTime(Of T1)) As Integer
 'JAVA TO VB CONVERTER TODO TASK: Interfaces cannot contain fields in .NET:
 '			int cmp = java.lang.[Long].compare(toEpochSecond(), other.toEpochSecond());
-			Sub [New](cmp == ByVal 0 As )
+			Sub [New](cmp ==   0 As )
 				cmp = Function toLocalTime() As 
-				Sub [New](cmp == ByVal 0 As )
+				Sub [New](cmp ==   0 As )
 					cmp = Function toLocalDateTime() As 
-					Sub [New](cmp == ByVal 0 As )
+					Sub [New](cmp ==   0 As )
 						ReadOnly Property cmp = zone As
-						Sub [New](cmp == ByVal 0 As )
+						Sub [New](cmp ==   0 As )
 							ReadOnly Property cmp = chronology As
 'JAVA TO VB CONVERTER TODO TASK: Interfaces cannot contain fields in .NET:
 '			Return cmp;
@@ -530,12 +530,12 @@ Namespace java.time.chrono
 		''' </summary>
 		''' <param name="other">  the other date-time to compare to, not null </param>
 		''' <returns> true if this point is before the specified date-time </returns>
-		default Function isBefore(Of T1)(ByVal other As ChronoZonedDateTime(Of T1)) As Boolean
+		default Function isBefore(Of T1)(  other As ChronoZonedDateTime(Of T1)) As Boolean
 'JAVA TO VB CONVERTER TODO TASK: Interfaces cannot contain fields in .NET:
 '			long thisEpochSec = toEpochSecond();
 'JAVA TO VB CONVERTER TODO TASK: Interfaces cannot contain fields in .NET:
 '			long otherEpochSec = other.toEpochSecond();
-			Return thisEpochSec < Function ||(thisEpochSec == otherEpochSec && toLocalTime().getNano() < other.toLocalTime().getNano() ByVal  As ) As otherEpochSec
+			Return thisEpochSec < Function ||(thisEpochSec == otherEpochSec && toLocalTime().getNano() < other.toLocalTime().getNano()    As ) As otherEpochSec
 
 		''' <summary>
 		''' Checks if the instant of this date-time is after that of the specified date-time.
@@ -549,12 +549,12 @@ Namespace java.time.chrono
 		''' </summary>
 		''' <param name="other">  the other date-time to compare to, not null </param>
 		''' <returns> true if this is after the specified date-time </returns>
-		default Function isAfter(Of T1)(ByVal other As ChronoZonedDateTime(Of T1)) As Boolean
+		default Function isAfter(Of T1)(  other As ChronoZonedDateTime(Of T1)) As Boolean
 'JAVA TO VB CONVERTER TODO TASK: Interfaces cannot contain fields in .NET:
 '			long thisEpochSec = toEpochSecond();
 'JAVA TO VB CONVERTER TODO TASK: Interfaces cannot contain fields in .NET:
 '			long otherEpochSec = other.toEpochSecond();
-			Return thisEpochSec > Function ||(thisEpochSec == otherEpochSec && toLocalTime().getNano() > other.toLocalTime().getNano() ByVal  As ) As otherEpochSec
+			Return thisEpochSec > Function ||(thisEpochSec == otherEpochSec && toLocalTime().getNano() > other.toLocalTime().getNano()    As ) As otherEpochSec
 
 		''' <summary>
 		''' Checks if the instant of this date-time is equal to that of the specified date-time.
@@ -568,7 +568,7 @@ Namespace java.time.chrono
 		''' </summary>
 		''' <param name="other">  the other date-time to compare to, not null </param>
 		''' <returns> true if the instant equals the instant of the specified date-time </returns>
-		default Function isEqual(Of T1)(ByVal other As ChronoZonedDateTime(Of T1)) As Boolean
+		default Function isEqual(Of T1)(  other As ChronoZonedDateTime(Of T1)) As Boolean
 			Function toEpochSecond() As [Return]
 
 		'-----------------------------------------------------------------------
@@ -581,7 +581,7 @@ Namespace java.time.chrono
 		''' </summary>
 		''' <param name="obj">  the object to check, null returns false </param>
 		''' <returns> true if this is equal to the other date-time </returns>
-		Overrides Function Equals(ByVal obj As Object) As Boolean
+		Overrides Function Equals(  obj As Object) As Boolean
 
 		''' <summary>
 		''' A hash code for this date-time.

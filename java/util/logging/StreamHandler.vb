@@ -119,7 +119,7 @@ Namespace java.util.logging
 		''' <p> </summary>
 		''' <param name="out">         the target output stream </param>
 		''' <param name="formatter">   Formatter to be used to format output </param>
-		Public Sub New(ByVal out As OutputStream, ByVal formatter As Formatter)
+		Public Sub New(  out As OutputStream,   formatter As Formatter)
 			sealed = False
 			configure()
 			formatter = formatter
@@ -139,7 +139,7 @@ Namespace java.util.logging
 		'''             the caller does not have <tt>LoggingPermission("control")</tt>. </exception>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
 		Protected Friend Overridable Property outputStream As OutputStream
-			Set(ByVal out As OutputStream)
+			Set(  out As OutputStream)
 				If out Is Nothing Then Throw New NullPointerException
 				flushAndClose()
 				output = out
@@ -173,7 +173,7 @@ Namespace java.util.logging
 		'''          not supported. </exception>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
 		Public Overrides Property encoding As String
-			Set(ByVal encoding As String)
+			Set(  encoding As String)
 				MyBase.encoding = encoding
 				If output Is Nothing Then Return
 				' Replace the current writer with a writer for the new encoding.
@@ -203,7 +203,7 @@ Namespace java.util.logging
 		''' <param name="record">  description of the log event. A null record is
 		'''                 silently ignored and is not published </param>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overrides Sub publish(ByVal record As LogRecord)
+		Public Overrides Sub publish(  record As LogRecord)
 			If Not isLoggable(record) Then Return
 			Dim msg As String
 			Try
@@ -239,7 +239,7 @@ Namespace java.util.logging
 		''' <param name="record">  a <tt>LogRecord</tt> </param>
 		''' <returns> true if the <tt>LogRecord</tt> would be logged.
 		'''  </returns>
-		Public Overrides Function isLoggable(ByVal record As LogRecord) As Boolean
+		Public Overrides Function isLoggable(  record As LogRecord) As Boolean
 			If writer Is Nothing OrElse record Is Nothing Then Return False
 			Return MyBase.isLoggable(record)
 		End Function

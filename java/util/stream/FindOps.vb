@@ -46,7 +46,7 @@ Namespace java.util.stream
 		''' <param name="mustFindFirst"> whether the {@code TerminalOp} must produce the
 		'''        first element in the encounter order </param>
 		''' <returns> a {@code TerminalOp} implementing the find operation </returns>
-		Public Shared Function makeRef(Of T)(ByVal mustFindFirst As Boolean) As TerminalOp(Of T, java.util.Optional(Of T))
+		Public Shared Function makeRef(Of T)(  mustFindFirst As Boolean) As TerminalOp(Of T, java.util.Optional(Of T))
 			Return New FindOp(Of )(mustFindFirst, StreamShape.REFERENCE, java.util.Optional.empty(), java.util.Optional::isPresent, FindSink.OfRef::New)
 		End Function
 
@@ -56,7 +56,7 @@ Namespace java.util.stream
 		''' <param name="mustFindFirst"> whether the {@code TerminalOp} must produce the
 		'''        first element in the encounter order </param>
 		''' <returns> a {@code TerminalOp} implementing the find operation </returns>
-		Public Shared Function makeInt(ByVal mustFindFirst As Boolean) As TerminalOp(Of Integer?, java.util.OptionalInt)
+		Public Shared Function makeInt(  mustFindFirst As Boolean) As TerminalOp(Of Integer?, java.util.OptionalInt)
 			Return New FindOp(Of )(mustFindFirst, StreamShape.INT_VALUE, java.util.OptionalInt.empty(), java.util.OptionalInt::isPresent, FindSink.OfInt::New)
 		End Function
 
@@ -66,7 +66,7 @@ Namespace java.util.stream
 		''' <param name="mustFindFirst"> whether the {@code TerminalOp} must produce the
 		'''        first element in the encounter order </param>
 		''' <returns> a {@code TerminalOp} implementing the find operation </returns>
-		Public Shared Function makeLong(ByVal mustFindFirst As Boolean) As TerminalOp(Of Long?, java.util.OptionalLong)
+		Public Shared Function makeLong(  mustFindFirst As Boolean) As TerminalOp(Of Long?, java.util.OptionalLong)
 			Return New FindOp(Of )(mustFindFirst, StreamShape.LONG_VALUE, java.util.OptionalLong.empty(), java.util.OptionalLong::isPresent, FindSink.OfLong::New)
 		End Function
 
@@ -76,7 +76,7 @@ Namespace java.util.stream
 		''' <param name="mustFindFirst"> whether the {@code TerminalOp} must produce the
 		'''        first element in the encounter order </param>
 		''' <returns> a {@code TerminalOp} implementing the find operation </returns>
-		Public Shared Function makeDouble(ByVal mustFindFirst As Boolean) As TerminalOp(Of Double?, java.util.OptionalDouble)
+		Public Shared Function makeDouble(  mustFindFirst As Boolean) As TerminalOp(Of Double?, java.util.OptionalDouble)
 			Return New FindOp(Of )(mustFindFirst, StreamShape.DOUBLE_VALUE, java.util.OptionalDouble.empty(), java.util.OptionalDouble::isPresent, FindSink.OfDouble::New)
 		End Function
 
@@ -109,7 +109,7 @@ Namespace java.util.stream
 			'''        corresponding to "found something" </param>
 			''' <param name="sinkSupplier"> supplier for a {@code TerminalSink} implementing
 			'''        the matching functionality </param>
-			Friend Sub New(ByVal mustFindFirst As Boolean, ByVal shape As StreamShape, ByVal emptyValue As O, ByVal presentPredicate As java.util.function.Predicate(Of O), ByVal sinkSupplier As java.util.function.Supplier(Of TerminalSink(Of T, O)))
+			Friend Sub New(  mustFindFirst As Boolean,   shape As StreamShape,   emptyValue As O,   presentPredicate As java.util.function.Predicate(Of O),   sinkSupplier As java.util.function.Supplier(Of TerminalSink(Of T, O)))
 				Me.mustFindFirst = mustFindFirst
 				Me.shape = shape
 				Me.emptyValue = emptyValue
@@ -127,12 +127,12 @@ Namespace java.util.stream
 				Return shape
 			End Function
 
-			Public Overrides Function evaluateSequential(Of S)(ByVal helper As PipelineHelper(Of T), ByVal spliterator As java.util.Spliterator(Of S)) As O
+			Public Overrides Function evaluateSequential(Of S)(  helper As PipelineHelper(Of T),   spliterator As java.util.Spliterator(Of S)) As O
 				Dim result As O = helper.wrapAndCopyInto(sinkSupplier.get(), spliterator).get()
 				Return If(result IsNot Nothing, result, emptyValue)
 			End Function
 
-			Public Overrides Function evaluateParallel(Of P_IN)(ByVal helper As PipelineHelper(Of T), ByVal spliterator As java.util.Spliterator(Of P_IN)) As O
+			Public Overrides Function evaluateParallel(Of P_IN)(  helper As PipelineHelper(Of T),   spliterator As java.util.Spliterator(Of P_IN)) As O
 				Return (New FindTask(Of )(Me, helper, spliterator)).invoke()
 			End Function
 		End Class
@@ -152,7 +152,7 @@ Namespace java.util.stream
 			Friend Sub New() ' Avoid creation of special accessor
 			End Sub
 
-			Public Overrides Sub accept(ByVal value As T)
+			Public Overrides Sub accept(  value As T)
 				If Not hasValue Then
 					hasValue = True
 					Me.value = value
@@ -179,7 +179,7 @@ Namespace java.util.stream
 				Inherits FindSink(Of Integer?, java.util.OptionalInt)
 				Implements Sink.OfInt
 
-				Public Overrides Sub accept(ByVal value As Integer)
+				Public Overrides Sub accept(  value As Integer)
 					' Boxing is OK here, since few values will actually flow into the sink
 					accept(CInt(value))
 				End Sub
@@ -195,7 +195,7 @@ Namespace java.util.stream
 				Inherits FindSink(Of Long?, java.util.OptionalLong)
 				Implements Sink.OfLong
 
-				Public Overrides Sub accept(ByVal value As Long)
+				Public Overrides Sub accept(  value As Long)
 					' Boxing is OK here, since few values will actually flow into the sink
 					accept(CLng(value))
 				End Sub
@@ -211,7 +211,7 @@ Namespace java.util.stream
 				Inherits FindSink(Of Double?, java.util.OptionalDouble)
 				Implements Sink.OfDouble
 
-				Public Overrides Sub accept(ByVal value As Double)
+				Public Overrides Sub accept(  value As Double)
 					' Boxing is OK here, since few values will actually flow into the sink
 					accept(CDbl(value))
 				End Sub
@@ -233,17 +233,17 @@ Namespace java.util.stream
 
 			Private ReadOnly op As FindOp(Of P_OUT, O)
 
-			Friend Sub New(ByVal op As FindOp(Of P_OUT, O), ByVal helper As PipelineHelper(Of P_OUT), ByVal spliterator As java.util.Spliterator(Of P_IN))
+			Friend Sub New(  op As FindOp(Of P_OUT, O),   helper As PipelineHelper(Of P_OUT),   spliterator As java.util.Spliterator(Of P_IN))
 				MyBase.New(helper, spliterator)
 				Me.op = op
 			End Sub
 
-			Friend Sub New(ByVal parent As FindTask(Of P_IN, P_OUT, O), ByVal spliterator As java.util.Spliterator(Of P_IN))
+			Friend Sub New(  parent As FindTask(Of P_IN, P_OUT, O),   spliterator As java.util.Spliterator(Of P_IN))
 				MyBase.New(parent, spliterator)
 				Me.op = parent.op
 			End Sub
 
-			Protected Friend Overrides Function makeChild(ByVal spliterator As java.util.Spliterator(Of P_IN)) As FindTask(Of P_IN, P_OUT, O)
+			Protected Friend Overrides Function makeChild(  spliterator As java.util.Spliterator(Of P_IN)) As FindTask(Of P_IN, P_OUT, O)
 				Return New FindTask(Of )(Me, spliterator)
 			End Function
 
@@ -253,7 +253,7 @@ Namespace java.util.stream
 				End Get
 			End Property
 
-			Private Sub foundResult(ByVal answer As O)
+			Private Sub foundResult(  answer As O)
 				If leftmostNode Then
 					shortCircuit(answer)
 				Else
@@ -276,7 +276,7 @@ Namespace java.util.stream
 				End If
 			End Function
 
-			Public Overrides Sub onCompletion(Of T1)(ByVal caller As java.util.concurrent.CountedCompleter(Of T1))
+			Public Overrides Sub onCompletion(Of T1)(  caller As java.util.concurrent.CountedCompleter(Of T1))
 				If op.mustFindFirst Then
 						Dim child As FindTask(Of P_IN, P_OUT, O) = leftChild
 						Dim p As FindTask(Of P_IN, P_OUT, O) = Nothing

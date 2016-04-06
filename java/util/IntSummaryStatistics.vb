@@ -82,7 +82,7 @@ Namespace java.util
 		''' Records a new value into the summary information
 		''' </summary>
 		''' <param name="value"> the input value </param>
-		Public Overrides Sub accept(ByVal value As Integer)
+		Public Overrides Sub accept(  value As Integer)
 			count += 1
 			sum += value
 			min = System.Math.Min(min, value)
@@ -94,7 +94,7 @@ Namespace java.util
 		''' </summary>
 		''' <param name="other"> another {@code IntSummaryStatistics} </param>
 		''' <exception cref="NullPointerException"> if {@code other} is null </exception>
-		Public Overridable Sub combine(ByVal other As IntSummaryStatistics)
+		Public Overridable Sub combine(  other As IntSummaryStatistics)
 			count += other.count
 			sum += other.sum
 			min = System.Math.Min(min, other.min)

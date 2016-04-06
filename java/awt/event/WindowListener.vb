@@ -52,19 +52,19 @@ Namespace java.awt.event
 		''' <summary>
 		''' Invoked the first time a window is made visible.
 		''' </summary>
-		Sub windowOpened(ByVal e As WindowEvent)
+		Sub windowOpened(  e As WindowEvent)
 
 		''' <summary>
 		''' Invoked when the user attempts to close the window
 		''' from the window's system menu.
 		''' </summary>
-		Sub windowClosing(ByVal e As WindowEvent)
+		Sub windowClosing(  e As WindowEvent)
 
 		''' <summary>
 		''' Invoked when a window has been closed as the result
 		''' of calling dispose on the window.
 		''' </summary>
-		Sub windowClosed(ByVal e As WindowEvent)
+		Sub windowClosed(  e As WindowEvent)
 
 		''' <summary>
 		''' Invoked when a window is changed from a normal to a
@@ -72,13 +72,13 @@ Namespace java.awt.event
 		''' is displayed as the icon specified in the window's
 		''' iconImage property. </summary>
 		''' <seealso cref= java.awt.Frame#setIconImage </seealso>
-		Sub windowIconified(ByVal e As WindowEvent)
+		Sub windowIconified(  e As WindowEvent)
 
 		''' <summary>
 		''' Invoked when a window is changed from a minimized
 		''' to a normal state.
 		''' </summary>
-		Sub windowDeiconified(ByVal e As WindowEvent)
+		Sub windowDeiconified(  e As WindowEvent)
 
 		''' <summary>
 		''' Invoked when the Window is set to be the active Window. Only a Frame or
@@ -88,7 +88,7 @@ Namespace java.awt.event
 		''' focused Window, or the first Frame or Dialog that is an owner of the
 		''' focused Window.
 		''' </summary>
-		Sub windowActivated(ByVal e As WindowEvent)
+		Sub windowActivated(  e As WindowEvent)
 
 		''' <summary>
 		''' Invoked when a Window is no longer the active Window. Only a Frame or a
@@ -98,7 +98,7 @@ Namespace java.awt.event
 		''' Window, or the first Frame or Dialog that is an owner of the focused
 		''' Window.
 		''' </summary>
-		Sub windowDeactivated(ByVal e As WindowEvent)
+		Sub windowDeactivated(  e As WindowEvent)
 	End Interface
 
 End Namespace

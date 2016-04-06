@@ -89,7 +89,7 @@ Namespace java.util.concurrent.atomic
 		''' Adds the given value.
 		''' </summary>
 		''' <param name="x"> the value to add </param>
-		Public Overridable Sub add(ByVal x As Double)
+		Public Overridable Sub add(  x As Double)
 			Dim [as] As Cell()
 			Dim b, v As Long
 			Dim m As Integer
@@ -230,7 +230,7 @@ Namespace java.util.concurrent.atomic
 			''' </summary>
 			Private ReadOnly value As Double
 
-			Friend Sub New(ByVal a As DoubleAdder)
+			Friend Sub New(  a As DoubleAdder)
 				value = a.sum()
 			End Sub
 
@@ -261,7 +261,7 @@ Namespace java.util.concurrent.atomic
 
 		''' <param name="s"> the stream </param>
 		''' <exception cref="java.io.InvalidObjectException"> always </exception>
-		Private Sub readObject(ByVal s As java.io.ObjectInputStream)
+		Private Sub readObject(  s As java.io.ObjectInputStream)
 			Throw New java.io.InvalidObjectException("Proxy required")
 		End Sub
 

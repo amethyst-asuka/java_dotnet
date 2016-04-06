@@ -83,7 +83,7 @@ Namespace java.awt.image.renderable
 		''' <param name="usr2dev"> an AffineTransform. </param>
 		''' <param name="aoi"> a Shape representing the area of interest. </param>
 		''' <param name="hints"> a RenderingHints object containing rendering hints. </param>
-		Public Sub New(ByVal usr2dev As AffineTransform, ByVal aoi As Shape, ByVal hints As RenderingHints)
+		Public Sub New(  usr2dev As AffineTransform,   aoi As Shape,   hints As RenderingHints)
 			Me.hints = hints
 			Me.aoi = aoi
 			Me.usr2dev = CType(usr2dev.clone(), AffineTransform)
@@ -95,7 +95,7 @@ Namespace java.awt.image.renderable
 		''' No rendering hints are used.
 		''' </summary>
 		''' <param name="usr2dev"> an AffineTransform. </param>
-		Public Sub New(ByVal usr2dev As AffineTransform)
+		Public Sub New(  usr2dev As AffineTransform)
 			Me.New(usr2dev, Nothing, Nothing)
 		End Sub
 
@@ -105,7 +105,7 @@ Namespace java.awt.image.renderable
 		''' </summary>
 		''' <param name="usr2dev"> an AffineTransform. </param>
 		''' <param name="hints"> a RenderingHints object containing rendering hints. </param>
-		Public Sub New(ByVal usr2dev As AffineTransform, ByVal hints As RenderingHints)
+		Public Sub New(  usr2dev As AffineTransform,   hints As RenderingHints)
 			Me.New(usr2dev, Nothing, hints)
 		End Sub
 
@@ -116,7 +116,7 @@ Namespace java.awt.image.renderable
 		''' </summary>
 		''' <param name="usr2dev"> an AffineTransform. </param>
 		''' <param name="aoi"> a Shape representing the area of interest. </param>
-		Public Sub New(ByVal usr2dev As AffineTransform, ByVal aoi As Shape)
+		Public Sub New(  usr2dev As AffineTransform,   aoi As Shape)
 			Me.New(usr2dev, aoi, Nothing)
 		End Sub
 
@@ -129,7 +129,7 @@ Namespace java.awt.image.renderable
 			Get
 				Return hints
 			End Get
-			Set(ByVal hints As RenderingHints)
+			Set(  hints As RenderingHints)
 				Me.hints = hints
 			End Set
 		End Property
@@ -142,7 +142,7 @@ Namespace java.awt.image.renderable
 		''' <param name="newTransform"> the new AffineTransform. </param>
 		''' <seealso cref= #getTransform </seealso>
 		Public Overridable Property transform As AffineTransform
-			Set(ByVal newTransform As AffineTransform)
+			Set(  newTransform As AffineTransform)
 				usr2dev = CType(newTransform.clone(), AffineTransform)
 			End Set
 			Get
@@ -160,7 +160,7 @@ Namespace java.awt.image.renderable
 		''' <param name="modTransform"> the AffineTransform to prepend to the
 		'''        current usr2dev transform.
 		''' @since 1.3 </param>
-		Public Overridable Sub preConcatenateTransform(ByVal modTransform As AffineTransform)
+		Public Overridable Sub preConcatenateTransform(  modTransform As AffineTransform)
 			Me.preConcetenateTransform(modTransform)
 		End Sub
 
@@ -179,7 +179,7 @@ Namespace java.awt.image.renderable
 		''' @deprecated     replaced by
 		'''                 <code>preConcatenateTransform(AffineTransform)</code>. 
 		<Obsolete("    replaced by")> _
-		Public Overridable Sub preConcetenateTransform(ByVal modTransform As AffineTransform)
+		Public Overridable Sub preConcetenateTransform(  modTransform As AffineTransform)
 			usr2dev.preConcatenate(modTransform)
 		End Sub
 
@@ -193,7 +193,7 @@ Namespace java.awt.image.renderable
 		''' <param name="modTransform"> the AffineTransform to append to the
 		'''        current usr2dev transform.
 		''' @since 1.3 </param>
-		Public Overridable Sub concatenateTransform(ByVal modTransform As AffineTransform)
+		Public Overridable Sub concatenateTransform(  modTransform As AffineTransform)
 			Me.concetenateTransform(modTransform)
 		End Sub
 
@@ -212,7 +212,7 @@ Namespace java.awt.image.renderable
 		''' @deprecated     replaced by
 		'''                 <code>concatenateTransform(AffineTransform)</code>. 
 		<Obsolete("    replaced by")> _
-		Public Overridable Sub concetenateTransform(ByVal modTransform As AffineTransform)
+		Public Overridable Sub concetenateTransform(  modTransform As AffineTransform)
 			usr2dev.concatenate(modTransform)
 		End Sub
 
@@ -223,7 +223,7 @@ Namespace java.awt.image.renderable
 		''' <param name="newAoi"> The new area of interest. </param>
 		''' <seealso cref= #getAreaOfInterest </seealso>
 		Public Overridable Property areaOfInterest As Shape
-			Set(ByVal newAoi As Shape)
+			Set(  newAoi As Shape)
 				aoi = newAoi
 			End Set
 			Get

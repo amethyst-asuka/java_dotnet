@@ -82,17 +82,17 @@ Namespace java.util.stream
 			' elements have been traversed
 			Private last As Integer
 
-			Friend Sub New(ByVal [from] As Integer, ByVal upTo As Integer, ByVal closed As Boolean)
+			Friend Sub New(  [from] As Integer,   upTo As Integer,   closed As Boolean)
 				Me.New([from], upTo,If(closed, 1, 0))
 			End Sub
 
-			Private Sub New(ByVal [from] As Integer, ByVal upTo As Integer, ByVal last As Integer)
+			Private Sub New(  [from] As Integer,   upTo As Integer,   last As Integer)
 				Me.from = [from]
 				Me.upTo = upTo
 				Me.last = last
 			End Sub
 
-			Public Overrides Function tryAdvance(ByVal consumer As java.util.function.IntConsumer) As Boolean
+			Public Overrides Function tryAdvance(  consumer As java.util.function.IntConsumer) As Boolean
 				java.util.Objects.requireNonNull(consumer)
 
 				Dim i As Integer = [from]
@@ -108,7 +108,7 @@ Namespace java.util.stream
 				Return False
 			End Function
 
-			Public Overrides Sub forEachRemaining(ByVal consumer As java.util.function.IntConsumer)
+			Public Overrides Sub forEachRemaining(  consumer As java.util.function.IntConsumer)
 				java.util.Objects.requireNonNull(consumer)
 
 				Dim i As Integer = [from]
@@ -172,7 +172,7 @@ Namespace java.util.stream
 			''' </summary>
 			Private Shared ReadOnly RIGHT_BALANCED_SPLIT_RATIO As Integer = 1 << 3
 
-			Private Function splitPoint(ByVal size As Long) As Integer
+			Private Function splitPoint(  size As Long) As Integer
 				Dim d As Integer = If(size < BALANCED_SPLIT_THRESHOLD, 2, RIGHT_BALANCED_SPLIT_RATIO)
 				' Cast to int is safe since:
 				'   2 <= size < 2^32
@@ -200,18 +200,18 @@ Namespace java.util.stream
 			' elements have been traversed
 			Private last As Integer
 
-			Friend Sub New(ByVal [from] As Long, ByVal upTo As Long, ByVal closed As Boolean)
+			Friend Sub New(  [from] As Long,   upTo As Long,   closed As Boolean)
 				Me.New([from], upTo,If(closed, 1, 0))
 			End Sub
 
-			Private Sub New(ByVal [from] As Long, ByVal upTo As Long, ByVal last As Integer)
+			Private Sub New(  [from] As Long,   upTo As Long,   last As Integer)
 				Debug.Assert(upTo - [from] + last > 0)
 				Me.from = [from]
 				Me.upTo = upTo
 				Me.last = last
 			End Sub
 
-			Public Overrides Function tryAdvance(ByVal consumer As java.util.function.LongConsumer) As Boolean
+			Public Overrides Function tryAdvance(  consumer As java.util.function.LongConsumer) As Boolean
 				java.util.Objects.requireNonNull(consumer)
 
 				Dim i As Long = [from]
@@ -227,7 +227,7 @@ Namespace java.util.stream
 				Return False
 			End Function
 
-			Public Overrides Sub forEachRemaining(ByVal consumer As java.util.function.LongConsumer)
+			Public Overrides Sub forEachRemaining(  consumer As java.util.function.LongConsumer)
 				java.util.Objects.requireNonNull(consumer)
 
 				Dim i As Long = [from]
@@ -290,7 +290,7 @@ Namespace java.util.stream
 			''' </summary>
 			Private Shared ReadOnly RIGHT_BALANCED_SPLIT_RATIO As Long = 1 << 3
 
-			Private Function splitPoint(ByVal size As Long) As Long
+			Private Function splitPoint(  size As Long) As Long
 				Dim d As Long = If(size < BALANCED_SPLIT_THRESHOLD, 2, RIGHT_BALANCED_SPLIT_RATIO)
 				' 2 <= size <= java.lang.[Long].MAX_VALUE
 				Return size \ d
@@ -345,14 +345,14 @@ Namespace java.util.stream
 			''' Constructor for a singleton stream.
 			''' </summary>
 			''' <param name="t"> the single element </param>
-			Friend Sub New(ByVal t As T)
+			Friend Sub New(  t As T)
 				first = t
 				count = -2
 			End Sub
 
 			' StreamBuilder implementation
 
-			Public Overrides Sub accept(ByVal t As T)
+			Public Overrides Sub accept(  t As T)
 				If count = 0 Then
 					first = t
 					count += 1
@@ -369,7 +369,7 @@ Namespace java.util.stream
 				End If
 			End Sub
 
-			Public Function add(ByVal t As T) As Stream.Builder(Of T)
+			Public Function add(  t As T) As Stream.Builder(Of T)
 				accept(t)
 				Return Me
 			End Function
@@ -392,7 +392,7 @@ Namespace java.util.stream
 			' count == -2 for one element held by first
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Overrides Function tryAdvance(Of T1)(ByVal action As java.util.function.Consumer(Of T1)) As Boolean
+			Public Overrides Function tryAdvance(Of T1)(  action As java.util.function.Consumer(Of T1)) As Boolean
 				java.util.Objects.requireNonNull(action)
 
 				If count = -2 Then
@@ -405,7 +405,7 @@ Namespace java.util.stream
 			End Function
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Overrides Sub forEachRemaining(Of T1)(ByVal action As java.util.function.Consumer(Of T1))
+			Public Overrides Sub forEachRemaining(Of T1)(  action As java.util.function.Consumer(Of T1))
 				java.util.Objects.requireNonNull(action)
 
 				If count = -2 Then
@@ -437,14 +437,14 @@ Namespace java.util.stream
 			''' Constructor for a singleton stream.
 			''' </summary>
 			''' <param name="t"> the single element </param>
-			Friend Sub New(ByVal t As Integer)
+			Friend Sub New(  t As Integer)
 				first = t
 				count = -2
 			End Sub
 
 			' StreamBuilder implementation
 
-			Public Overrides Sub accept(ByVal t As Integer)
+			Public Overrides Sub accept(  t As Integer)
 				If count = 0 Then
 					first = t
 					count += 1
@@ -478,7 +478,7 @@ Namespace java.util.stream
 			' count == -1 for no elements
 			' count == -2 for one element held by first
 
-			Public Overrides Function tryAdvance(ByVal action As java.util.function.IntConsumer) As Boolean
+			Public Overrides Function tryAdvance(  action As java.util.function.IntConsumer) As Boolean
 				java.util.Objects.requireNonNull(action)
 
 				If count = -2 Then
@@ -490,7 +490,7 @@ Namespace java.util.stream
 				End If
 			End Function
 
-			Public Overrides Sub forEachRemaining(ByVal action As java.util.function.IntConsumer)
+			Public Overrides Sub forEachRemaining(  action As java.util.function.IntConsumer)
 				java.util.Objects.requireNonNull(action)
 
 				If count = -2 Then
@@ -522,14 +522,14 @@ Namespace java.util.stream
 			''' Constructor for a singleton stream.
 			''' </summary>
 			''' <param name="t"> the single element </param>
-			Friend Sub New(ByVal t As Long)
+			Friend Sub New(  t As Long)
 				first = t
 				count = -2
 			End Sub
 
 			' StreamBuilder implementation
 
-			Public Overrides Sub accept(ByVal t As Long)
+			Public Overrides Sub accept(  t As Long)
 				If count = 0 Then
 					first = t
 					count += 1
@@ -563,7 +563,7 @@ Namespace java.util.stream
 			' count == -1 for no elements
 			' count == -2 for one element held by first
 
-			Public Overrides Function tryAdvance(ByVal action As java.util.function.LongConsumer) As Boolean
+			Public Overrides Function tryAdvance(  action As java.util.function.LongConsumer) As Boolean
 				java.util.Objects.requireNonNull(action)
 
 				If count = -2 Then
@@ -575,7 +575,7 @@ Namespace java.util.stream
 				End If
 			End Function
 
-			Public Overrides Sub forEachRemaining(ByVal action As java.util.function.LongConsumer)
+			Public Overrides Sub forEachRemaining(  action As java.util.function.LongConsumer)
 				java.util.Objects.requireNonNull(action)
 
 				If count = -2 Then
@@ -607,14 +607,14 @@ Namespace java.util.stream
 			''' Constructor for a singleton stream.
 			''' </summary>
 			''' <param name="t"> the single element </param>
-			Friend Sub New(ByVal t As Double)
+			Friend Sub New(  t As Double)
 				first = t
 				count = -2
 			End Sub
 
 			' StreamBuilder implementation
 
-			Public Overrides Sub accept(ByVal t As Double)
+			Public Overrides Sub accept(  t As Double)
 				If count = 0 Then
 					first = t
 					count += 1
@@ -648,7 +648,7 @@ Namespace java.util.stream
 			' count == -1 for no elements
 			' count == -2 for one element held by first
 
-			Public Overrides Function tryAdvance(ByVal action As java.util.function.DoubleConsumer) As Boolean
+			Public Overrides Function tryAdvance(  action As java.util.function.DoubleConsumer) As Boolean
 				java.util.Objects.requireNonNull(action)
 
 				If count = -2 Then
@@ -660,7 +660,7 @@ Namespace java.util.stream
 				End If
 			End Function
 
-			Public Overrides Sub forEachRemaining(ByVal action As java.util.function.DoubleConsumer)
+			Public Overrides Sub forEachRemaining(  action As java.util.function.DoubleConsumer)
 				java.util.Objects.requireNonNull(action)
 
 				If count = -2 Then
@@ -680,7 +680,7 @@ Namespace java.util.stream
 			' Never read after splitting
 			Friend ReadOnly unsized As Boolean
 
-			Public Sub New(ByVal aSpliterator As T_SPLITR, ByVal bSpliterator As T_SPLITR)
+			Public Sub New(  aSpliterator As T_SPLITR,   bSpliterator As T_SPLITR)
 				Me.aSpliterator = aSpliterator
 				Me.bSpliterator = bSpliterator
 				beforeSplit = True
@@ -697,7 +697,7 @@ Namespace java.util.stream
 			End Function
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Overrides Function tryAdvance(Of T1)(ByVal consumer As java.util.function.Consumer(Of T1)) As Boolean
+			Public Overrides Function tryAdvance(Of T1)(  consumer As java.util.function.Consumer(Of T1)) As Boolean
 				Dim hasNext As Boolean
 				If beforeSplit Then
 					hasNext = aSpliterator.tryAdvance(consumer)
@@ -712,7 +712,7 @@ Namespace java.util.stream
 			End Function
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Overrides Sub forEachRemaining(Of T1)(ByVal consumer As java.util.function.Consumer(Of T1))
+			Public Overrides Sub forEachRemaining(Of T1)(  consumer As java.util.function.Consumer(Of T1))
 				If beforeSplit Then aSpliterator.forEachRemaining(consumer)
 				bSpliterator.forEachRemaining(consumer)
 			End Sub
@@ -749,7 +749,7 @@ Namespace java.util.stream
 			Friend Class OfRef(Of T)
 				Inherits ConcatSpliterator(Of T, java.util.Spliterator(Of T))
 
-				Friend Sub New(ByVal aSpliterator As java.util.Spliterator(Of T), ByVal bSpliterator As java.util.Spliterator(Of T))
+				Friend Sub New(  aSpliterator As java.util.Spliterator(Of T),   bSpliterator As java.util.Spliterator(Of T))
 					MyBase.New(aSpliterator, bSpliterator)
 				End Sub
 			End Class
@@ -758,11 +758,11 @@ Namespace java.util.stream
 				Inherits ConcatSpliterator(Of T, T_SPLITR)
 				Implements java.util.Spliterator.OfPrimitive(Of T, T_CONS, T_SPLITR)
 
-				Private Sub New(ByVal aSpliterator As T_SPLITR, ByVal bSpliterator As T_SPLITR)
+				Private Sub New(  aSpliterator As T_SPLITR,   bSpliterator As T_SPLITR)
 					MyBase.New(aSpliterator, bSpliterator)
 				End Sub
 
-				Public Overrides Function tryAdvance(ByVal action As T_CONS) As Boolean
+				Public Overrides Function tryAdvance(  action As T_CONS) As Boolean
 					Dim hasNext As Boolean
 					If outerInstance.beforeSplit Then
 						hasNext = outerInstance.aSpliterator.tryAdvance(action)
@@ -776,7 +776,7 @@ Namespace java.util.stream
 					Return hasNext
 				End Function
 
-				Public Overrides Sub forEachRemaining(ByVal action As T_CONS)
+				Public Overrides Sub forEachRemaining(  action As T_CONS)
 					If outerInstance.beforeSplit Then outerInstance.aSpliterator.forEachRemaining(action)
 					outerInstance.bSpliterator.forEachRemaining(action)
 				End Sub
@@ -786,7 +786,7 @@ Namespace java.util.stream
 				Inherits ConcatSpliterator.OfPrimitive(Of Integer?, java.util.function.IntConsumer, java.util.Spliterator.OfInt)
 				Implements java.util.Spliterator.OfInt
 
-				Friend Sub New(ByVal aSpliterator As java.util.Spliterator.OfInt, ByVal bSpliterator As java.util.Spliterator.OfInt)
+				Friend Sub New(  aSpliterator As java.util.Spliterator.OfInt,   bSpliterator As java.util.Spliterator.OfInt)
 					MyBase.New(aSpliterator, bSpliterator)
 				End Sub
 			End Class
@@ -795,7 +795,7 @@ Namespace java.util.stream
 				Inherits ConcatSpliterator.OfPrimitive(Of Long?, java.util.function.LongConsumer, java.util.Spliterator.OfLong)
 				Implements java.util.Spliterator.OfLong
 
-				Friend Sub New(ByVal aSpliterator As java.util.Spliterator.OfLong, ByVal bSpliterator As java.util.Spliterator.OfLong)
+				Friend Sub New(  aSpliterator As java.util.Spliterator.OfLong,   bSpliterator As java.util.Spliterator.OfLong)
 					MyBase.New(aSpliterator, bSpliterator)
 				End Sub
 			End Class
@@ -804,7 +804,7 @@ Namespace java.util.stream
 				Inherits ConcatSpliterator.OfPrimitive(Of Double?, java.util.function.DoubleConsumer, java.util.Spliterator.OfDouble)
 				Implements java.util.Spliterator.OfDouble
 
-				Friend Sub New(ByVal aSpliterator As java.util.Spliterator.OfDouble, ByVal bSpliterator As java.util.Spliterator.OfDouble)
+				Friend Sub New(  aSpliterator As java.util.Spliterator.OfDouble,   bSpliterator As java.util.Spliterator.OfDouble)
 					MyBase.New(aSpliterator, bSpliterator)
 				End Sub
 			End Class
@@ -815,7 +815,7 @@ Namespace java.util.stream
 		''' even if the first throws an exception, and if both throw exceptions, add
 		''' any exceptions thrown by the second as suppressed exceptions of the first.
 		''' </summary>
-		Friend Shared Function composeWithExceptions(ByVal a As Runnable, ByVal b As Runnable) As Runnable
+		Friend Shared Function composeWithExceptions(  a As Runnable,   b As Runnable) As Runnable
 			Return New RunnableAnonymousInnerClassHelper
 		End Function
 
@@ -846,7 +846,7 @@ Namespace java.util.stream
 		''' even if the first throws an exception, and if both throw exceptions, add
 		''' any exceptions thrown by the second as suppressed exceptions of the first.
 		''' </summary>
-		Friend Shared Function composedClose(Of T1, T2)(ByVal a As BaseStream(Of T1), ByVal b As BaseStream(Of T2)) As Runnable
+		Friend Shared Function composedClose(Of T1, T2)(  a As BaseStream(Of T1),   b As BaseStream(Of T2)) As Runnable
 			Return New RunnableAnonymousInnerClassHelper2
 		End Function
 

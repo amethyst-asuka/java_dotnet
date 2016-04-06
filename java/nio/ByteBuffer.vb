@@ -276,7 +276,7 @@ Namespace java.nio
 		' Creates a new buffer with the given mark, position, limit, capacity,
 		' backing array, and array offset
 		'
-		Friend Sub New(ByVal mark As Integer, ByVal pos As Integer, ByVal lim As Integer, ByVal cap As Integer, ByVal hb As SByte(), ByVal offset As Integer) ' package-private
+		Friend Sub New(  mark As Integer,   pos As Integer,   lim As Integer,   cap As Integer,   hb As SByte(),   offset As Integer) ' package-private
 			MyBase.New(mark, pos, lim, cap)
 			Me.hb = hb
 			Me.offset = offset
@@ -284,7 +284,7 @@ Namespace java.nio
 
 		' Creates a new buffer with the given mark, position, limit, and capacity
 		'
-		Friend Sub New(ByVal mark As Integer, ByVal pos As Integer, ByVal lim As Integer, ByVal cap As Integer) ' package-private
+		Friend Sub New(  mark As Integer,   pos As Integer,   lim As Integer,   cap As Integer) ' package-private
 			Me.New(mark, pos, lim, cap, Nothing, 0)
 		End Sub
 
@@ -305,7 +305,7 @@ Namespace java.nio
 		''' </returns>
 		''' <exception cref="IllegalArgumentException">
 		'''          If the <tt>capacity</tt> is a negative integer </exception>
-		Public Shared Function allocateDirect(ByVal capacity As Integer) As ByteBuffer
+		Public Shared Function allocateDirect(  capacity As Integer) As ByteBuffer
 			Return New DirectByteBuffer(capacity)
 		End Function
 
@@ -326,7 +326,7 @@ Namespace java.nio
 		''' </returns>
 		''' <exception cref="IllegalArgumentException">
 		'''          If the <tt>capacity</tt> is a negative integer </exception>
-		Public Shared Function allocate(ByVal capacity As Integer) As ByteBuffer
+		Public Shared Function allocate(  capacity As Integer) As ByteBuffer
 			If capacity < 0 Then Throw New IllegalArgumentException
 			Return New HeapByteBuffer(capacity, capacity)
 		End Function
@@ -361,7 +361,7 @@ Namespace java.nio
 		''' <exception cref="IndexOutOfBoundsException">
 		'''          If the preconditions on the <tt>offset</tt> and <tt>length</tt>
 		'''          parameters do not hold </exception>
-		Public Shared Function wrap(ByVal array As SByte(), ByVal offset As Integer, ByVal length As Integer) As ByteBuffer
+		Public Shared Function wrap(  array As SByte(),   offset As Integer,   length As Integer) As ByteBuffer
 			Try
 				Return New HeapByteBuffer(array, offset, length)
 			Catch x As IllegalArgumentException
@@ -384,7 +384,7 @@ Namespace java.nio
 		'''         The array that will back this buffer
 		''' </param>
 		''' <returns>  The new byte buffer </returns>
-		Public Shared Function wrap(ByVal array As SByte()) As ByteBuffer
+		Public Shared Function wrap(  array As SByte()) As ByteBuffer
 			Return wrap(array, 0, array.Length)
 		End Function
 
@@ -563,7 +563,7 @@ Namespace java.nio
 		''' </exception>
 		''' <exception cref="ReadOnlyBufferException">
 		'''          If this buffer is read-only </exception>
-		Public MustOverride Function put(ByVal b As SByte) As ByteBuffer
+		Public MustOverride Function put(  b As SByte) As ByteBuffer
 
 		''' <summary>
 		''' Absolute <i>get</i> method.  Reads the byte at the given
@@ -577,7 +577,7 @@ Namespace java.nio
 		''' <exception cref="IndexOutOfBoundsException">
 		'''          If <tt>index</tt> is negative
 		'''          or not smaller than the buffer's limit </exception>
-		Public MustOverride Function [get](ByVal index As Integer) As SByte
+		Public MustOverride Function [get](  index As Integer) As SByte
 
 
 
@@ -612,7 +612,7 @@ Namespace java.nio
 		''' </exception>
 		''' <exception cref="ReadOnlyBufferException">
 		'''          If this buffer is read-only </exception>
-		Public MustOverride Function put(ByVal index As Integer, ByVal b As SByte) As ByteBuffer
+		Public MustOverride Function put(  index As Integer,   b As SByte) As ByteBuffer
 
 
 		' -- Bulk get operations --
@@ -666,7 +666,7 @@ Namespace java.nio
 		''' <exception cref="IndexOutOfBoundsException">
 		'''          If the preconditions on the <tt>offset</tt> and <tt>length</tt>
 		'''          parameters do not hold </exception>
-		Public Overridable Function [get](ByVal dst As SByte(), ByVal offset As Integer, ByVal length As Integer) As ByteBuffer
+		Public Overridable Function [get](  dst As SByte(),   offset As Integer,   length As Integer) As ByteBuffer
 			checkBounds(offset, length, dst.Length)
 			If length > remaining() Then Throw New BufferUnderflowException
 			Dim [end] As Integer = offset + length
@@ -694,7 +694,7 @@ Namespace java.nio
 		''' <exception cref="BufferUnderflowException">
 		'''          If there are fewer than <tt>length</tt> bytes
 		'''          remaining in this buffer </exception>
-		Public Overridable Function [get](ByVal dst As SByte()) As ByteBuffer
+		Public Overridable Function [get](  dst As SByte()) As ByteBuffer
 			Return [get](dst, 0, dst.Length)
 		End Function
 
@@ -741,7 +741,7 @@ Namespace java.nio
 		''' </exception>
 		''' <exception cref="ReadOnlyBufferException">
 		'''          If this buffer is read-only </exception>
-		Public Overridable Function put(ByVal src As ByteBuffer) As ByteBuffer
+		Public Overridable Function put(  src As ByteBuffer) As ByteBuffer
 			If src Is Me Then Throw New IllegalArgumentException
 			If [readOnly] Then Throw New ReadOnlyBufferException
 			Dim n As Integer = src.remaining()
@@ -802,7 +802,7 @@ Namespace java.nio
 		''' </exception>
 		''' <exception cref="ReadOnlyBufferException">
 		'''          If this buffer is read-only </exception>
-		Public Overridable Function put(ByVal src As SByte(), ByVal offset As Integer, ByVal length As Integer) As ByteBuffer
+		Public Overridable Function put(  src As SByte(),   offset As Integer,   length As Integer) As ByteBuffer
 			checkBounds(offset, length, src.Length)
 			If length > remaining() Then Throw New BufferOverflowException
 			Dim [end] As Integer = offset + length
@@ -833,7 +833,7 @@ Namespace java.nio
 		''' </exception>
 		''' <exception cref="ReadOnlyBufferException">
 		'''          If this buffer is read-only </exception>
-		Public Function put(ByVal src As SByte()) As ByteBuffer
+		Public Function put(  src As SByte()) As ByteBuffer
 			Return put(src, 0, src.Length)
 		End Function
 
@@ -1123,7 +1123,7 @@ Namespace java.nio
 		''' </param>
 		''' <returns>  <tt>true</tt> if, and only if, this buffer is equal to the
 		'''           given object </returns>
-		Public Overrides Function Equals(ByVal ob As Object) As Boolean
+		Public Overrides Function Equals(  ob As Object) As Boolean
 			If Me Is ob Then Return True
 			If Not(TypeOf ob Is ByteBuffer) Then Return False
 			Dim that As ByteBuffer = CType(ob, ByteBuffer)
@@ -1139,7 +1139,7 @@ Namespace java.nio
 			Return True
 		End Function
 
-		Private Shared Function Equals(ByVal x As SByte, ByVal y As SByte) As Boolean
+		Private Shared Function Equals(  x As SByte,   y As SByte) As Boolean
 
 
 
@@ -1169,7 +1169,7 @@ Namespace java.nio
 		''' </summary>
 		''' <returns>  A negative integer, zero, or a positive integer as this buffer
 		'''          is less than, equal to, or greater than the given buffer </returns>
-		Public Overridable Function compareTo(ByVal that As ByteBuffer) As Integer Implements Comparable(Of ByteBuffer).compareTo
+		Public Overridable Function compareTo(  that As ByteBuffer) As Integer Implements Comparable(Of ByteBuffer).compareTo
 			Dim n As Integer = Me.position() + System.Math.Min(Me.remaining(), that.remaining())
 			Dim i As Integer = Me.position()
 			Dim j As Integer = that.position()
@@ -1182,7 +1182,7 @@ Namespace java.nio
 			Return Me.remaining() - that.remaining()
 		End Function
 
-		Private Shared Function compare(ByVal x As SByte, ByVal y As SByte) As Integer
+		Private Shared Function compare(  x As SByte,   y As SByte) As Integer
 
 
 
@@ -1435,7 +1435,7 @@ Namespace java.nio
 		'''         or <seealso cref="ByteOrder#LITTLE_ENDIAN LITTLE_ENDIAN"/>
 		''' </param>
 		''' <returns>  This buffer </returns>
-		Public Function order(ByVal bo As ByteOrder) As ByteBuffer
+		Public Function order(  bo As ByteOrder) As ByteBuffer
 			bigEndian = (bo Is ByteOrder.BIG_ENDIAN)
 			nativeByteOrder = (bigEndian = (Bits.byteOrder() Is ByteOrder.BIG_ENDIAN))
 			Return Me
@@ -1443,8 +1443,8 @@ Namespace java.nio
 
 		' Unchecked accessors, for use by ByteBufferAs-X-Buffer classes
 		'
-		Friend MustOverride Function _get(ByVal i As Integer) As SByte ' package-private
-		Friend MustOverride Sub _put(ByVal i As Integer, ByVal b As SByte) ' package-private
+		Friend MustOverride Function _get(  i As Integer) As SByte ' package-private
+		Friend MustOverride Sub _put(  i As Integer,   b As SByte) ' package-private
 
 
 		''' <summary>
@@ -1480,7 +1480,7 @@ Namespace java.nio
 		''' </exception>
 		''' <exception cref="ReadOnlyBufferException">
 		'''          If this buffer is read-only </exception>
-		Public MustOverride Function putChar(ByVal value As Char) As ByteBuffer
+		Public MustOverride Function putChar(  value As Char) As ByteBuffer
 
 		''' <summary>
 		''' Absolute <i>get</i> method for reading a char value.
@@ -1497,7 +1497,7 @@ Namespace java.nio
 		'''          If <tt>index</tt> is negative
 		'''          or not smaller than the buffer's limit,
 		'''          minus one </exception>
-		Public MustOverride Function getChar(ByVal index As Integer) As Char
+		Public MustOverride Function getChar(  index As Integer) As Char
 
 		''' <summary>
 		''' Absolute <i>put</i> method for writing a char
@@ -1521,7 +1521,7 @@ Namespace java.nio
 		''' </exception>
 		''' <exception cref="ReadOnlyBufferException">
 		'''          If this buffer is read-only </exception>
-		Public MustOverride Function putChar(ByVal index As Integer, ByVal value As Char) As ByteBuffer
+		Public MustOverride Function putChar(  index As Integer,   value As Char) As ByteBuffer
 
 		''' <summary>
 		''' Creates a view of this byte buffer as a char buffer.
@@ -1574,7 +1574,7 @@ Namespace java.nio
 		''' </exception>
 		''' <exception cref="ReadOnlyBufferException">
 		'''          If this buffer is read-only </exception>
-		Public MustOverride Function putShort(ByVal value As Short) As ByteBuffer
+		Public MustOverride Function putShort(  value As Short) As ByteBuffer
 
 		''' <summary>
 		''' Absolute <i>get</i> method for reading a short value.
@@ -1591,7 +1591,7 @@ Namespace java.nio
 		'''          If <tt>index</tt> is negative
 		'''          or not smaller than the buffer's limit,
 		'''          minus one </exception>
-		Public MustOverride Function getShort(ByVal index As Integer) As Short
+		Public MustOverride Function getShort(  index As Integer) As Short
 
 		''' <summary>
 		''' Absolute <i>put</i> method for writing a short
@@ -1615,7 +1615,7 @@ Namespace java.nio
 		''' </exception>
 		''' <exception cref="ReadOnlyBufferException">
 		'''          If this buffer is read-only </exception>
-		Public MustOverride Function putShort(ByVal index As Integer, ByVal value As Short) As ByteBuffer
+		Public MustOverride Function putShort(  index As Integer,   value As Short) As ByteBuffer
 
 		''' <summary>
 		''' Creates a view of this byte buffer as a short buffer.
@@ -1668,7 +1668,7 @@ Namespace java.nio
 		''' </exception>
 		''' <exception cref="ReadOnlyBufferException">
 		'''          If this buffer is read-only </exception>
-		Public MustOverride Function putInt(ByVal value As Integer) As ByteBuffer
+		Public MustOverride Function putInt(  value As Integer) As ByteBuffer
 
 		''' <summary>
 		''' Absolute <i>get</i> method for reading an int value.
@@ -1685,7 +1685,7 @@ Namespace java.nio
 		'''          If <tt>index</tt> is negative
 		'''          or not smaller than the buffer's limit,
 		'''          minus three </exception>
-		Public MustOverride Function getInt(ByVal index As Integer) As Integer
+		Public MustOverride Function getInt(  index As Integer) As Integer
 
 		''' <summary>
 		''' Absolute <i>put</i> method for writing an int
@@ -1709,7 +1709,7 @@ Namespace java.nio
 		''' </exception>
 		''' <exception cref="ReadOnlyBufferException">
 		'''          If this buffer is read-only </exception>
-		Public MustOverride Function putInt(ByVal index As Integer, ByVal value As Integer) As ByteBuffer
+		Public MustOverride Function putInt(  index As Integer,   value As Integer) As ByteBuffer
 
 		''' <summary>
 		''' Creates a view of this byte buffer as an int buffer.
@@ -1762,7 +1762,7 @@ Namespace java.nio
 		''' </exception>
 		''' <exception cref="ReadOnlyBufferException">
 		'''          If this buffer is read-only </exception>
-		Public MustOverride Function putLong(ByVal value As Long) As ByteBuffer
+		Public MustOverride Function putLong(  value As Long) As ByteBuffer
 
 		''' <summary>
 		''' Absolute <i>get</i> method for reading a long value.
@@ -1779,7 +1779,7 @@ Namespace java.nio
 		'''          If <tt>index</tt> is negative
 		'''          or not smaller than the buffer's limit,
 		'''          minus seven </exception>
-		Public MustOverride Function getLong(ByVal index As Integer) As Long
+		Public MustOverride Function getLong(  index As Integer) As Long
 
 		''' <summary>
 		''' Absolute <i>put</i> method for writing a long
@@ -1803,7 +1803,7 @@ Namespace java.nio
 		''' </exception>
 		''' <exception cref="ReadOnlyBufferException">
 		'''          If this buffer is read-only </exception>
-		Public MustOverride Function putLong(ByVal index As Integer, ByVal value As Long) As ByteBuffer
+		Public MustOverride Function putLong(  index As Integer,   value As Long) As ByteBuffer
 
 		''' <summary>
 		''' Creates a view of this byte buffer as a long buffer.
@@ -1856,7 +1856,7 @@ Namespace java.nio
 		''' </exception>
 		''' <exception cref="ReadOnlyBufferException">
 		'''          If this buffer is read-only </exception>
-		Public MustOverride Function putFloat(ByVal value As Single) As ByteBuffer
+		Public MustOverride Function putFloat(  value As Single) As ByteBuffer
 
 		''' <summary>
 		''' Absolute <i>get</i> method for reading a float value.
@@ -1873,7 +1873,7 @@ Namespace java.nio
 		'''          If <tt>index</tt> is negative
 		'''          or not smaller than the buffer's limit,
 		'''          minus three </exception>
-		Public MustOverride Function getFloat(ByVal index As Integer) As Single
+		Public MustOverride Function getFloat(  index As Integer) As Single
 
 		''' <summary>
 		''' Absolute <i>put</i> method for writing a float
@@ -1897,7 +1897,7 @@ Namespace java.nio
 		''' </exception>
 		''' <exception cref="ReadOnlyBufferException">
 		'''          If this buffer is read-only </exception>
-		Public MustOverride Function putFloat(ByVal index As Integer, ByVal value As Single) As ByteBuffer
+		Public MustOverride Function putFloat(  index As Integer,   value As Single) As ByteBuffer
 
 		''' <summary>
 		''' Creates a view of this byte buffer as a float buffer.
@@ -1950,7 +1950,7 @@ Namespace java.nio
 		''' </exception>
 		''' <exception cref="ReadOnlyBufferException">
 		'''          If this buffer is read-only </exception>
-		Public MustOverride Function putDouble(ByVal value As Double) As ByteBuffer
+		Public MustOverride Function putDouble(  value As Double) As ByteBuffer
 
 		''' <summary>
 		''' Absolute <i>get</i> method for reading a double value.
@@ -1967,7 +1967,7 @@ Namespace java.nio
 		'''          If <tt>index</tt> is negative
 		'''          or not smaller than the buffer's limit,
 		'''          minus seven </exception>
-		Public MustOverride Function getDouble(ByVal index As Integer) As Double
+		Public MustOverride Function getDouble(  index As Integer) As Double
 
 		''' <summary>
 		''' Absolute <i>put</i> method for writing a double
@@ -1991,7 +1991,7 @@ Namespace java.nio
 		''' </exception>
 		''' <exception cref="ReadOnlyBufferException">
 		'''          If this buffer is read-only </exception>
-		Public MustOverride Function putDouble(ByVal index As Integer, ByVal value As Double) As ByteBuffer
+		Public MustOverride Function putDouble(  index As Integer,   value As Double) As ByteBuffer
 
 		''' <summary>
 		''' Creates a view of this byte buffer as a double buffer.

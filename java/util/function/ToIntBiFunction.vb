@@ -46,7 +46,7 @@ Namespace java.util.function
 		''' <param name="t"> the first function argument </param>
 		''' <param name="u"> the second function argument </param>
 		''' <returns> the function result </returns>
-		Function applyAsInt(ByVal t As T, ByVal u As U) As Integer
+		Function applyAsInt(  t As T,   u As U) As Integer
 	End Interface
 
 End Namespace

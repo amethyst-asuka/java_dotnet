@@ -288,7 +288,7 @@ Namespace java.time
 		''' <returns> the zone ID, not null </returns>
 		''' <exception cref="DateTimeException"> if the zone ID has an invalid format </exception>
 		''' <exception cref="ZoneRulesException"> if the zone ID is a region ID that cannot be found </exception>
-		Public Shared Function [of](ByVal zoneId_Renamed As String, ByVal aliasMap As IDictionary(Of String, String)) As ZoneId
+		Public Shared Function [of](  zoneId_Renamed As String,   aliasMap As IDictionary(Of String, String)) As ZoneId
 			java.util.Objects.requireNonNull(zoneId_Renamed, "zoneId")
 			java.util.Objects.requireNonNull(aliasMap, "aliasMap")
 			Dim id_Renamed As String = aliasMap(zoneId_Renamed)
@@ -335,7 +335,7 @@ Namespace java.time
 		''' <returns> the zone ID, not null </returns>
 		''' <exception cref="DateTimeException"> if the zone ID has an invalid format </exception>
 		''' <exception cref="ZoneRulesException"> if the zone ID is a region ID that cannot be found </exception>
-		Public Shared Function [of](ByVal zoneId_Renamed As String) As ZoneId
+		Public Shared Function [of](  zoneId_Renamed As String) As ZoneId
 			Return [of](zoneId_Renamed, True)
 		End Function
 
@@ -351,7 +351,7 @@ Namespace java.time
 		''' <returns> the zone ID, not null </returns>
 		''' <exception cref="IllegalArgumentException"> if the prefix is not one of
 		'''     "GMT", "UTC", or "UT", or "" </exception>
-		Public Shared Function ofOffset(ByVal prefix As String, ByVal offset As ZoneOffset) As ZoneId
+		Public Shared Function ofOffset(  prefix As String,   offset As ZoneOffset) As ZoneId
 			java.util.Objects.requireNonNull(prefix, "prefix")
 			java.util.Objects.requireNonNull(offset, "offset")
 			If prefix.length() = 0 Then Return offset
@@ -371,7 +371,7 @@ Namespace java.time
 		''' <returns> the zone ID, not null </returns>
 		''' <exception cref="DateTimeException"> if the ID format is invalid </exception>
 		''' <exception cref="ZoneRulesException"> if checking availability and the ID cannot be found </exception>
-		Shared Function [of](ByVal zoneId_Renamed As String, ByVal checkAvailable As Boolean) As ZoneId
+		Shared Function [of](  zoneId_Renamed As String,   checkAvailable As Boolean) As ZoneId
 			java.util.Objects.requireNonNull(zoneId_Renamed, "zoneId")
 			If zoneId_Renamed.length() <= 1 OrElse zoneId_Renamed.StartsWith("+") OrElse zoneId_Renamed.StartsWith("-") Then
 				Return ZoneOffset.of(zoneId_Renamed)
@@ -390,7 +390,7 @@ Namespace java.time
 		''' <param name="prefixLength">  the length of the prefix, 2 or 3 </param>
 		''' <returns> the zone ID, not null </returns>
 		''' <exception cref="DateTimeException"> if the zone ID has an invalid format </exception>
-		Private Shared Function ofWithPrefix(ByVal zoneId_Renamed As String, ByVal prefixLength As Integer, ByVal checkAvailable As Boolean) As ZoneId
+		Private Shared Function ofWithPrefix(  zoneId_Renamed As String,   prefixLength As Integer,   checkAvailable As Boolean) As ZoneId
 			Dim prefix As String = zoneId_Renamed.Substring(0, prefixLength)
 			If zoneId_Renamed.length() = prefixLength Then Return ofOffset(prefix, ZoneOffset.UTC)
 			If zoneId_Renamed.Chars(prefixLength) <> "+"c AndAlso zoneId_Renamed.Chars(prefixLength) <> "-"c Then Return ZoneRegion.ofId(zoneId_Renamed, checkAvailable) ' drop through to ZoneRulesProvider
@@ -423,7 +423,7 @@ Namespace java.time
 		''' <param name="temporal">  the temporal object to convert, not null </param>
 		''' <returns> the zone ID, not null </returns>
 		''' <exception cref="DateTimeException"> if unable to convert to a {@code ZoneId} </exception>
-		Public Shared Function [from](ByVal temporal As java.time.temporal.TemporalAccessor) As ZoneId
+		Public Shared Function [from](  temporal As java.time.temporal.TemporalAccessor) As ZoneId
 			Dim obj As ZoneId = temporal.query(java.time.temporal.TemporalQueries.zone())
 			If obj Is Nothing Then Throw New DateTimeException("Unable to obtain ZoneId from TemporalAccessor: " & temporal & " of type " & temporal.GetType().name)
 			Return obj
@@ -461,7 +461,7 @@ Namespace java.time
 		''' <param name="style">  the length of the text required, not null </param>
 		''' <param name="locale">  the locale to use, not null </param>
 		''' <returns> the text value of the zone, not null </returns>
-		Public Overridable Function getDisplayName(ByVal style As java.time.format.TextStyle, ByVal locale As java.util.Locale) As String
+		Public Overridable Function getDisplayName(  style As java.time.format.TextStyle,   locale As java.util.Locale) As String
 			Return (New java.time.format.DateTimeFormatterBuilder).appendZoneText(style).toFormatter(locale).format(toTemporal())
 		End Function
 
@@ -483,14 +483,14 @@ Namespace java.time
 		Private Class TemporalAccessorAnonymousInnerClassHelper
 			Implements java.time.temporal.TemporalAccessor
 
-			Public Overrides Function isSupported(ByVal field As java.time.temporal.TemporalField) As Boolean
+			Public Overrides Function isSupported(  field As java.time.temporal.TemporalField) As Boolean
 				Return False
 			End Function
-			Public Overrides Function getLong(ByVal field As java.time.temporal.TemporalField) As Long
+			Public Overrides Function getLong(  field As java.time.temporal.TemporalField) As Long
 				Throw New java.time.temporal.UnsupportedTemporalTypeException("Unsupported field: " & field)
 			End Function
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-			Public Overrides Function query(Of R)(ByVal query_Renamed As java.time.temporal.TemporalQuery(Of R)) As R
+			Public Overrides Function query(Of R)(  query_Renamed As java.time.temporal.TemporalQuery(Of R)) As R
 				If query_Renamed Is java.time.temporal.TemporalQueries.zoneId() Then Return CType(ZoneId.this, R)
 				Return outerInstance.query(query_Renamed)
 			End Function
@@ -548,7 +548,7 @@ Namespace java.time
 		''' </summary>
 		''' <param name="obj">  the object to check, null returns false </param>
 		''' <returns> true if this is equal to the other time-zone ID </returns>
-		Public Overrides Function Equals(ByVal obj As Object) As Boolean
+		Public Overrides Function Equals(  obj As Object) As Boolean
 			If Me Is obj Then Return True
 			If TypeOf obj Is ZoneId Then
 				Dim other As ZoneId = CType(obj, ZoneId)
@@ -571,7 +571,7 @@ Namespace java.time
 		''' </summary>
 		''' <param name="s"> the stream to read </param>
 		''' <exception cref="InvalidObjectException"> always </exception>
-		Private Sub readObject(ByVal s As java.io.ObjectInputStream)
+		Private Sub readObject(  s As java.io.ObjectInputStream)
 			Throw New java.io.InvalidObjectException("Deserialization via serialization delegate")
 		End Sub
 
@@ -603,7 +603,7 @@ Namespace java.time
 			Return New Ser(Ser.ZONE_REGION_TYPE, Me)
 		End Function
 
-		Friend MustOverride Sub write(ByVal out As java.io.DataOutput)
+		Friend MustOverride Sub write(  out As java.io.DataOutput)
 
 	End Class
 

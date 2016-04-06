@@ -285,7 +285,7 @@ Namespace java.lang.management
 		''' <param name="waitedCount">   Number of times waited on a lock </param>
 		''' <param name="waitedTime">    Approx time waited on a lock </param>
 		''' <param name="stackTrace">    Thread stack trace </param>
-		Private Sub New(ByVal t As Thread, ByVal state As Integer, ByVal lockObj As Object, ByVal lockOwner As Thread, ByVal blockedCount As Long, ByVal blockedTime As Long, ByVal waitedCount As Long, ByVal waitedTime As Long, ByVal stackTrace As StackTraceElement())
+		Private Sub New(  t As Thread,   state As Integer,   lockObj As Object,   lockOwner As Thread,   blockedCount As Long,   blockedTime As Long,   waitedCount As Long,   waitedTime As Long,   stackTrace As StackTraceElement())
 			initialize(t, state, lockObj, lockOwner, blockedCount, blockedTime, waitedCount, waitedTime, stackTrace, EMPTY_MONITORS, EMPTY_SYNCS)
 		End Sub
 
@@ -306,7 +306,7 @@ Namespace java.lang.management
 		''' <param name="monitors">      List of locked monitors </param>
 		''' <param name="stackDepths">   List of stack depths </param>
 		''' <param name="synchronizers"> List of locked synchronizers </param>
-		Private Sub New(ByVal t As Thread, ByVal state As Integer, ByVal lockObj As Object, ByVal lockOwner As Thread, ByVal blockedCount As Long, ByVal blockedTime As Long, ByVal waitedCount As Long, ByVal waitedTime As Long, ByVal stackTrace As StackTraceElement(), ByVal monitors As Object(), ByVal stackDepths As Integer(), ByVal synchronizers As Object())
+		Private Sub New(  t As Thread,   state As Integer,   lockObj As Object,   lockOwner As Thread,   blockedCount As Long,   blockedTime As Long,   waitedCount As Long,   waitedTime As Long,   stackTrace As StackTraceElement(),   monitors As Object(),   stackDepths As Integer(),   synchronizers As Object())
 			Dim numMonitors As Integer = (If(monitors Is Nothing, 0, monitors.Length))
 			Dim lockedMonitors_Renamed As MonitorInfo()
 			If numMonitors = 0 Then
@@ -354,7 +354,7 @@ Namespace java.lang.management
 		''' <param name="stackTrace">    Thread stack trace </param>
 		''' <param name="lockedMonitors"> List of locked monitors </param>
 		''' <param name="lockedSynchronizers"> List of locked synchronizers </param>
-		Private Sub initialize(ByVal t As Thread, ByVal state As Integer, ByVal lockObj As Object, ByVal lockOwner As Thread, ByVal blockedCount As Long, ByVal blockedTime As Long, ByVal waitedCount As Long, ByVal waitedTime As Long, ByVal stackTrace As StackTraceElement(), ByVal lockedMonitors As MonitorInfo(), ByVal lockedSynchronizers As LockInfo())
+		Private Sub initialize(  t As Thread,   state As Integer,   lockObj As Object,   lockOwner As Thread,   blockedCount As Long,   blockedTime As Long,   waitedCount As Long,   waitedTime As Long,   stackTrace As StackTraceElement(),   lockedMonitors As MonitorInfo(),   lockedSynchronizers As LockInfo())
 			Me.threadId = t.id
 			Me.threadName = t.name
 			Me.threadState = sun.management.ManagementFactoryHelper.toThreadState(state)
@@ -392,7 +392,7 @@ Namespace java.lang.management
 	'     * Constructs a <tt>ThreadInfo</tt> object from a
 	'     * {@link CompositeData CompositeData}.
 	'     
-		Private Sub New(ByVal cd As javax.management.openmbean.CompositeData)
+		Private Sub New(  cd As javax.management.openmbean.CompositeData)
 			Dim ticd As sun.management.ThreadInfoCompositeData = sun.management.ThreadInfoCompositeData.getInstance(cd)
 
 			threadId = ticd.threadId()
@@ -915,7 +915,7 @@ Namespace java.lang.management
 		''' <returns> a <tt>ThreadInfo</tt> object represented
 		'''         by <tt>cd</tt> if <tt>cd</tt> is not <tt>null</tt>;
 		'''         <tt>null</tt> otherwise. </returns>
-		Public Shared Function [from](ByVal cd As javax.management.openmbean.CompositeData) As ThreadInfo
+		Public Shared Function [from](  cd As javax.management.openmbean.CompositeData) As ThreadInfo
 			If cd Is Nothing Then Return Nothing
 
 			If TypeOf cd Is sun.management.ThreadInfoCompositeData Then

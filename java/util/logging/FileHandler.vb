@@ -157,18 +157,18 @@ Namespace java.util.logging
 			Friend ReadOnly out As java.io.OutputStream
 			Friend written As Integer
 
-			Friend Sub New(ByVal outerInstance As FileHandler, ByVal out As java.io.OutputStream, ByVal written As Integer)
+			Friend Sub New(  outerInstance As FileHandler,   out As java.io.OutputStream,   written As Integer)
 					Me.outerInstance = outerInstance
 				Me.out = out
 				Me.written = written
 			End Sub
 
-			Public Overrides Sub write(ByVal b As Integer)
+			Public Overrides Sub write(  b As Integer)
 				out.write(b)
 				written += 1
 			End Sub
 
-			Public Overrides Sub write(ByVal buff As SByte())
+			Public Overrides Sub write(  buff As SByte())
 				out.write(buff)
 				written += buff.Length
 			End Sub

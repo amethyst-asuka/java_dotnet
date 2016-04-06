@@ -150,7 +150,7 @@ Namespace java.awt.peer
 		''' <param name="g"> the graphics context to paint to
 		''' </param>
 		''' <seealso cref= Component#paintAll(Graphics) </seealso>
-		Sub paint(ByVal g As Graphics)
+		Sub paint(  g As Graphics)
 
 		''' <summary>
 		''' Prints the component to the specified graphics context. This is called
@@ -159,7 +159,7 @@ Namespace java.awt.peer
 		''' <param name="g"> the graphics context to print to
 		''' </param>
 		''' <seealso cref= Component#printAll(Graphics) </seealso>
-		Sub print(ByVal g As Graphics)
+		Sub print(  g As Graphics)
 
 		''' <summary>
 		''' Sets the location or size or both of the component. The location is
@@ -183,7 +183,7 @@ Namespace java.awt.peer
 		''' <seealso cref= #SET_LOCATION </seealso>
 		''' <seealso cref= #SET_SIZE </seealso>
 		''' <seealso cref= #SET_CLIENT_SIZE </seealso>
-		Sub setBounds(ByVal x As Integer, ByVal y As Integer, ByVal width As Integer, ByVal height As Integer, ByVal op As Integer)
+		Sub setBounds(  x As Integer,   y As Integer,   width As Integer,   height As Integer,   op As Integer)
 
 		''' <summary>
 		''' Called to let the component peer handle events.
@@ -191,7 +191,7 @@ Namespace java.awt.peer
 		''' <param name="e"> the AWT event to handle
 		''' </param>
 		''' <seealso cref= Component#dispatchEvent(AWTEvent) </seealso>
-		Sub handleEvent(ByVal e As AWTEvent)
+		Sub handleEvent(  e As AWTEvent)
 
 		''' <summary>
 		''' Called to coalesce paint events.
@@ -199,7 +199,7 @@ Namespace java.awt.peer
 		''' <param name="e"> the paint event to consider to coalesce
 		''' </param>
 		''' <seealso cref= EventQueue#coalescePaintEvent </seealso>
-		Sub coalescePaintEvent(ByVal e As java.awt.event.PaintEvent)
+		Sub coalescePaintEvent(  e As java.awt.event.PaintEvent)
 
 		''' <summary>
 		''' Determines the location of the component on the screen.
@@ -253,7 +253,7 @@ Namespace java.awt.peer
 		'''         the specified font
 		''' </returns>
 		''' <seealso cref= Component#getFontMetrics(Font) </seealso>
-		Function getFontMetrics(ByVal font As Font) As FontMetrics
+		Function getFontMetrics(  font As Font) As FontMetrics
 
 		''' <summary>
 		''' Disposes all resources held by the component peer. This is called
@@ -307,7 +307,7 @@ Namespace java.awt.peer
 		''' </param>
 		''' <returns> {@code true} if the focus change is guaranteed to be
 		'''         granted, {@code false} otherwise </returns>
-		Function requestFocus(ByVal lightweightChild As Component, ByVal temporary As Boolean, ByVal focusedWindowChangeAllowed As Boolean, ByVal time As Long, ByVal cause As sun.awt.CausedFocusEvent.Cause) As Boolean
+		Function requestFocus(  lightweightChild As Component,   temporary As Boolean,   focusedWindowChangeAllowed As Boolean,   time As Long,   cause As sun.awt.CausedFocusEvent.Cause) As Boolean
 
 		''' <summary>
 		''' Returns {@code true} when the component takes part in the focus
@@ -326,7 +326,7 @@ Namespace java.awt.peer
 		''' <returns> the created image
 		''' </returns>
 		''' <seealso cref= Component#createImage(ImageProducer) </seealso>
-		Function createImage(ByVal producer As java.awt.image.ImageProducer) As Image
+		Function createImage(  producer As java.awt.image.ImageProducer) As Image
 
 		''' <summary>
 		''' Creates an empty image with the specified width and height. This is
@@ -341,7 +341,7 @@ Namespace java.awt.peer
 		''' <seealso cref= Component#createImage(int, int) </seealso>
 		' TODO: Maybe make that return a BufferedImage, because some stuff will
 		' break if a different kind of image is returned.
-		Function createImage(ByVal width As Integer, ByVal height As Integer) As Image
+		Function createImage(  width As Integer,   height As Integer) As Image
 
 		''' <summary>
 		''' Creates an empty volatile image with the specified width and height.
@@ -355,7 +355,7 @@ Namespace java.awt.peer
 		''' </returns>
 		''' <seealso cref= Component#createVolatileImage(int, int) </seealso>
 		' TODO: Include capabilities here and fix Component#createVolatileImage
-		Function createVolatileImage(ByVal width As Integer, ByVal height As Integer) As java.awt.image.VolatileImage
+		Function createVolatileImage(  width As Integer,   height As Integer) As java.awt.image.VolatileImage
 
 		''' <summary>
 		''' Prepare the specified image for rendering on this component. This should
@@ -371,7 +371,7 @@ Namespace java.awt.peer
 		'''         {@code false} otherwise
 		''' </returns>
 		''' <seealso cref= Component#prepareImage(Image, int, int, ImageObserver) </seealso>
-		Function prepareImage(ByVal img As Image, ByVal w As Integer, ByVal h As Integer, ByVal o As java.awt.image.ImageObserver) As Boolean
+		Function prepareImage(  img As Image,   w As Integer,   h As Integer,   o As java.awt.image.ImageObserver) As Boolean
 
 		''' <summary>
 		''' Determines the status of the construction of the screen representaion
@@ -385,7 +385,7 @@ Namespace java.awt.peer
 		''' <returns> the status as bitwise ORed ImageObserver flags
 		''' </returns>
 		''' <seealso cref= Component#checkImage(Image, int, int, ImageObserver) </seealso>
-		Function checkImage(ByVal img As Image, ByVal w As Integer, ByVal h As Integer, ByVal o As java.awt.image.ImageObserver) As Integer
+		Function checkImage(  img As Image,   w As Integer,   h As Integer,   o As java.awt.image.ImageObserver) As Integer
 
 		''' <summary>
 		''' Returns the graphics configuration that corresponds to this component.
@@ -415,7 +415,7 @@ Namespace java.awt.peer
 		''' <exception cref="AWTException"> if flip buffering is not supported
 		''' </exception>
 		''' <seealso cref= Component.FlipBufferStrategy#createBuffers </seealso>
-		Sub createBuffers(ByVal numBuffers As Integer, ByVal caps As BufferCapabilities)
+		Sub createBuffers(  numBuffers As Integer,   caps As BufferCapabilities)
 
 		''' <summary>
 		''' Returns the back buffer as image.
@@ -435,7 +435,7 @@ Namespace java.awt.peer
 		''' <param name="flipAction"> the flip action to perform
 		''' </param>
 		''' <seealso cref= Component.FlipBufferStrategy#flip </seealso>
-		Sub flip(ByVal x1 As Integer, ByVal y1 As Integer, ByVal x2 As Integer, ByVal y2 As Integer, ByVal flipAction As BufferCapabilities.FlipContents)
+		Sub flip(  x1 As Integer,   y1 As Integer,   x2 As Integer,   y2 As Integer,   flipAction As BufferCapabilities.FlipContents)
 
 		''' <summary>
 		''' Destroys all created buffers.
@@ -451,7 +451,7 @@ Namespace java.awt.peer
 		''' <param name="newContainer"> peer of the new parent container
 		''' 
 		''' @since 1.5 </param>
-		Sub reparent(ByVal newContainer As ContainerPeer)
+		Sub reparent(  newContainer As ContainerPeer)
 
 		''' <summary>
 		''' Returns whether this peer supports reparenting to another parent without
@@ -475,7 +475,7 @@ Namespace java.awt.peer
 		''' @since 1.7
 		''' </summary>
 		''' <seealso cref= Component#applyCompoundShape </seealso>
-		Sub applyShape(ByVal shape As sun.java2d.pipe.Region)
+		Sub applyShape(  shape As sun.java2d.pipe.Region)
 
 		''' <summary>
 		''' Lowers this component at the bottom of the above HW peer. If the above parameter
@@ -488,7 +488,7 @@ Namespace java.awt.peer
 		''' </summary>
 		''' <returns> if the peer needs to be recreated for the changes to take effect
 		''' @since 1.7 </returns>
-		Function updateGraphicsData(ByVal gc As GraphicsConfiguration) As Boolean
+		Function updateGraphicsData(  gc As GraphicsConfiguration) As Boolean
 	End Interface
 
 End Namespace

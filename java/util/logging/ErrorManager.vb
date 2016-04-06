@@ -83,7 +83,7 @@ Namespace java.util.logging
 		''' <param name="ex">     an exception (may be null) </param>
 		''' <param name="code">   an error code defined in ErrorManager </param>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Sub [error](ByVal msg As String, ByVal ex As Exception, ByVal code As Integer)
+		Public Overridable Sub [error](  msg As String,   ex As Exception,   code As Integer)
 			If reported Then Return
 			reported = True
 			Dim text As String = "java.util.logging.ErrorManager: " & code

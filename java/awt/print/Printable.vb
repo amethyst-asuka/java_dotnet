@@ -137,7 +137,7 @@ Namespace java.awt.print
 		'''         non-existent page. </returns>
 		''' <exception cref="java.awt.print.PrinterException">
 		'''         thrown when the print job is terminated. </exception>
-		Function print(ByVal graphics As java.awt.Graphics, ByVal pageFormat As PageFormat, ByVal pageIndex As Integer) As Integer
+		Function print(  graphics As java.awt.Graphics,   pageFormat As PageFormat,   pageIndex As Integer) As Integer
 
 	End Interface
 

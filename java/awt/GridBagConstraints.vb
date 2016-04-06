@@ -617,7 +617,7 @@ Namespace java.awt
 		''' <seealso cref= java.awt.GridBagConstraints#ipady
 		''' 
 		''' @since 1.2 </seealso>
-		Public Sub New(ByVal gridx As Integer, ByVal gridy As Integer, ByVal gridwidth As Integer, ByVal gridheight As Integer, ByVal weightx As Double, ByVal weighty As Double, ByVal anchor As Integer, ByVal fill As Integer, ByVal insets_Renamed As Insets, ByVal ipadx As Integer, ByVal ipady As Integer)
+		Public Sub New(  gridx As Integer,   gridy As Integer,   gridwidth As Integer,   gridheight As Integer,   weightx As Double,   weighty As Double,   anchor As Integer,   fill As Integer,   insets_Renamed As Insets,   ipadx As Integer,   ipady As Integer)
 			Me.gridx = gridx
 			Me.gridy = gridy
 			Me.gridwidth = gridwidth

@@ -99,7 +99,7 @@ Namespace java.time.temporal
 		''' </summary>
 		''' <param name="locale">  the locale to use, not null </param>
 		''' <returns> the display name for the locale or a suitable default, not null </returns>
-		default Function getDisplayName(ByVal locale As java.util.Locale) As String
+		default Function getDisplayName(  locale As java.util.Locale) As String
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 			java.util.Objects.requireNonNull(locale, "locale");
 			Function toString() As [Return]
@@ -187,7 +187,7 @@ Namespace java.time.temporal
 		''' </summary>
 		''' <param name="temporal">  the temporal object to query, not null </param>
 		''' <returns> true if the date-time can be queried for this field, false if not </returns>
-		Function isSupportedBy(ByVal temporal As TemporalAccessor) As Boolean
+		Function isSupportedBy(  temporal As TemporalAccessor) As Boolean
 
 		''' <summary>
 		''' Get the range of valid values for this field using the temporal object to
@@ -219,7 +219,7 @@ Namespace java.time.temporal
 		''' <returns> the range of valid values for this field, not null </returns>
 		''' <exception cref="DateTimeException"> if the range for the field cannot be obtained </exception>
 		''' <exception cref="UnsupportedTemporalTypeException"> if the field is not supported by the temporal </exception>
-		Function rangeRefinedBy(ByVal temporal As TemporalAccessor) As ValueRange
+		Function rangeRefinedBy(  temporal As TemporalAccessor) As ValueRange
 
 		''' <summary>
 		''' Gets the value of this field from the specified temporal object.
@@ -247,7 +247,7 @@ Namespace java.time.temporal
 		''' <exception cref="DateTimeException"> if a value for the field cannot be obtained </exception>
 		''' <exception cref="UnsupportedTemporalTypeException"> if the field is not supported by the temporal </exception>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
-		Function getFrom(ByVal temporal As TemporalAccessor) As Long
+		Function getFrom(  temporal As TemporalAccessor) As Long
 
 		''' <summary>
 		''' Returns a copy of the specified temporal object with the value of this field set.
@@ -289,7 +289,7 @@ Namespace java.time.temporal
 		''' <exception cref="DateTimeException"> if the field cannot be set </exception>
 		''' <exception cref="UnsupportedTemporalTypeException"> if the field is not supported by the temporal </exception>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
-		 Function adjustInto(Of R As Temporal)(ByVal temporal As R, ByVal newValue As Long) As R
+		 Function adjustInto(Of R As Temporal)(  temporal As R,   newValue As Long) As R
 
 		''' <summary>
 		''' Resolves this field to provide a simpler alternative or a date.
@@ -356,7 +356,7 @@ Namespace java.time.temporal
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
 		''' <exception cref="DateTimeException"> if resolving results in an error. This must not be thrown
 		'''  by querying a field on the temporal without first checking if it is supported </exception>
-		default Function resolve(ByVal fieldValues As IDictionary(Of TemporalField, Long?), ByVal partialTemporal As TemporalAccessor, ByVal resolverStyle As java.time.format.ResolverStyle) As TemporalAccessor
+		default Function resolve(  fieldValues As IDictionary(Of TemporalField, Long?),   partialTemporal As TemporalAccessor,   resolverStyle As java.time.format.ResolverStyle) As TemporalAccessor
 'JAVA TO VB CONVERTER TODO TASK: Interfaces cannot contain fields in .NET:
 '			Return Nothing;
 

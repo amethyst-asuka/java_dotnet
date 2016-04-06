@@ -214,7 +214,7 @@ Namespace java.util.concurrent
 			''' <summary>
 			''' Creates a one-shot action with given nanoTime-based trigger time.
 			''' </summary>
-			Friend Sub New(ByVal outerInstance As ScheduledThreadPoolExecutor, ByVal r As Runnable, ByVal result As V, ByVal ns As Long)
+			Friend Sub New(  outerInstance As ScheduledThreadPoolExecutor,   r As Runnable,   result As V,   ns As Long)
 					Me.outerInstance = outerInstance
 				MyBase.New(r, result)
 				Me.time = ns
@@ -225,7 +225,7 @@ Namespace java.util.concurrent
 			''' <summary>
 			''' Creates a periodic action with given nano time and period.
 			''' </summary>
-			Friend Sub New(ByVal outerInstance As ScheduledThreadPoolExecutor, ByVal r As Runnable, ByVal result As V, ByVal ns As Long, ByVal period As Long)
+			Friend Sub New(  outerInstance As ScheduledThreadPoolExecutor,   r As Runnable,   result As V,   ns As Long,   period As Long)
 					Me.outerInstance = outerInstance
 				MyBase.New(r, result)
 				Me.time = ns
@@ -236,7 +236,7 @@ Namespace java.util.concurrent
 			''' <summary>
 			''' Creates a one-shot action with given nanoTime-based trigger time.
 			''' </summary>
-			Friend Sub New(ByVal outerInstance As ScheduledThreadPoolExecutor, ByVal callable As Callable(Of V), ByVal ns As Long)
+			Friend Sub New(  outerInstance As ScheduledThreadPoolExecutor,   callable As Callable(Of V),   ns As Long)
 					Me.outerInstance = outerInstance
 				MyBase.New(callable)
 				Me.time = ns
@@ -244,11 +244,11 @@ Namespace java.util.concurrent
 				Me.sequenceNumber = sequencer.andIncrement
 			End Sub
 
-			Public Overridable Function getDelay(ByVal unit As TimeUnit) As Long
+			Public Overridable Function getDelay(  unit As TimeUnit) As Long
 				Return unit.convert(time - outerInstance.now(), NANOSECONDS)
 			End Function
 
-			Public Overridable Function compareTo(ByVal other As Delayed) As Integer
+			Public Overridable Function compareTo(  other As Delayed) As Integer
 				If other Is Me Then ' compare zero if same object Return 0
 				If TypeOf other Is ScheduledFutureTask Then
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
@@ -290,7 +290,7 @@ Namespace java.util.concurrent
 				End If
 			End Sub
 
-			Public Overridable Function cancel(ByVal mayInterruptIfRunning As Boolean) As Boolean
+			Public Overridable Function cancel(  mayInterruptIfRunning As Boolean) As Boolean
 				Dim cancelled_Renamed As Boolean = MyBase.cancel(mayInterruptIfRunning)
 				If cancelled_Renamed AndAlso outerInstance.removeOnCancel AndAlso heapIndex >= 0 Then outerInstance.remove(Me)
 				Return cancelled_Renamed
@@ -317,7 +317,7 @@ Namespace java.util.concurrent
 		''' and run-after-shutdown parameters.
 		''' </summary>
 		''' <param name="periodic"> true if this task periodic, false if delayed </param>
-		Friend Overridable Function canRunInCurrentRunState(ByVal periodic As Boolean) As Boolean
+		Friend Overridable Function canRunInCurrentRunState(  periodic As Boolean) As Boolean
 			Return isRunningOrShutdown(If(periodic, continueExistingPeriodicTasksAfterShutdown, executeExistingDelayedTasksAfterShutdown))
 		End Function
 
@@ -331,7 +331,7 @@ Namespace java.util.concurrent
 		''' run-after-shutdown parameters.
 		''' </summary>
 		''' <param name="task"> the task </param>
-		Private Sub delayedExecute(Of T1)(ByVal task As RunnableScheduledFuture(Of T1))
+		Private Sub delayedExecute(Of T1)(  task As RunnableScheduledFuture(Of T1))
 			If shutdown Then
 				reject(task)
 			Else
@@ -349,7 +349,7 @@ Namespace java.util.concurrent
 		''' Same idea as delayedExecute except drops task rather than rejecting.
 		''' </summary>
 		''' <param name="task"> the task </param>
-		Friend Overridable Sub reExecutePeriodic(Of T1)(ByVal task As RunnableScheduledFuture(Of T1))
+		Friend Overridable Sub reExecutePeriodic(Of T1)(  task As RunnableScheduledFuture(Of T1))
 			If canRunInCurrentRunState(True) Then
 				MyBase.queue.add(task)
 				If (Not canRunInCurrentRunState(True)) AndAlso remove(task) Then
@@ -400,7 +400,7 @@ Namespace java.util.concurrent
 		''' @param <V> the type of the task's result </param>
 		''' <returns> a task that can execute the runnable
 		''' @since 1.6 </returns>
-		Protected Friend Overridable Function decorateTask(Of V)(ByVal runnable As Runnable, ByVal task As RunnableScheduledFuture(Of V)) As RunnableScheduledFuture(Of V)
+		Protected Friend Overridable Function decorateTask(Of V)(  runnable As Runnable,   task As RunnableScheduledFuture(Of V)) As RunnableScheduledFuture(Of V)
 			Return task
 		End Function
 
@@ -415,7 +415,7 @@ Namespace java.util.concurrent
 		''' @param <V> the type of the task's result </param>
 		''' <returns> a task that can execute the callable
 		''' @since 1.6 </returns>
-		Protected Friend Overridable Function decorateTask(Of V)(ByVal callable As Callable(Of V), ByVal task As RunnableScheduledFuture(Of V)) As RunnableScheduledFuture(Of V)
+		Protected Friend Overridable Function decorateTask(Of V)(  callable As Callable(Of V),   task As RunnableScheduledFuture(Of V)) As RunnableScheduledFuture(Of V)
 			Return task
 		End Function
 
@@ -426,7 +426,7 @@ Namespace java.util.concurrent
 		''' <param name="corePoolSize"> the number of threads to keep in the pool, even
 		'''        if they are idle, unless {@code allowCoreThreadTimeOut} is set </param>
 		''' <exception cref="IllegalArgumentException"> if {@code corePoolSize < 0} </exception>
-		Public Sub New(ByVal corePoolSize As Integer)
+		Public Sub New(  corePoolSize As Integer)
 			MyBase.New(corePoolSize,  java.lang.[Integer].Max_Value, 0, NANOSECONDS, New DelayedWorkQueue)
 		End Sub
 
@@ -440,7 +440,7 @@ Namespace java.util.concurrent
 		'''        creates a new thread </param>
 		''' <exception cref="IllegalArgumentException"> if {@code corePoolSize < 0} </exception>
 		''' <exception cref="NullPointerException"> if {@code threadFactory} is null </exception>
-		Public Sub New(ByVal corePoolSize As Integer, ByVal threadFactory As ThreadFactory)
+		Public Sub New(  corePoolSize As Integer,   threadFactory As ThreadFactory)
 			MyBase.New(corePoolSize,  java.lang.[Integer].Max_Value, 0, NANOSECONDS, New DelayedWorkQueue, threadFactory)
 		End Sub
 
@@ -454,7 +454,7 @@ Namespace java.util.concurrent
 		'''        because the thread bounds and queue capacities are reached </param>
 		''' <exception cref="IllegalArgumentException"> if {@code corePoolSize < 0} </exception>
 		''' <exception cref="NullPointerException"> if {@code handler} is null </exception>
-		Public Sub New(ByVal corePoolSize As Integer, ByVal handler As RejectedExecutionHandler)
+		Public Sub New(  corePoolSize As Integer,   handler As RejectedExecutionHandler)
 			MyBase.New(corePoolSize,  java.lang.[Integer].Max_Value, 0, NANOSECONDS, New DelayedWorkQueue, handler)
 		End Sub
 
@@ -471,21 +471,21 @@ Namespace java.util.concurrent
 		''' <exception cref="IllegalArgumentException"> if {@code corePoolSize < 0} </exception>
 		''' <exception cref="NullPointerException"> if {@code threadFactory} or
 		'''         {@code handler} is null </exception>
-		Public Sub New(ByVal corePoolSize As Integer, ByVal threadFactory As ThreadFactory, ByVal handler As RejectedExecutionHandler)
+		Public Sub New(  corePoolSize As Integer,   threadFactory As ThreadFactory,   handler As RejectedExecutionHandler)
 			MyBase.New(corePoolSize,  java.lang.[Integer].Max_Value, 0, NANOSECONDS, New DelayedWorkQueue, threadFactory, handler)
 		End Sub
 
 		''' <summary>
 		''' Returns the trigger time of a delayed action.
 		''' </summary>
-		Private Function triggerTime(ByVal delay As Long, ByVal unit As TimeUnit) As Long
+		Private Function triggerTime(  delay As Long,   unit As TimeUnit) As Long
 			Return triggerTime(unit.toNanos(If(delay < 0, 0, delay)))
 		End Function
 
 		''' <summary>
 		''' Returns the trigger time of a delayed action.
 		''' </summary>
-		Friend Overridable Function triggerTime(ByVal delay As Long) As Long
+		Friend Overridable Function triggerTime(  delay As Long) As Long
 			Return now() + (If(delay < (Long.Max_Value >> 1), delay, overflowFree(delay)))
 		End Function
 
@@ -496,7 +496,7 @@ Namespace java.util.concurrent
 		''' not yet been, while some other task is added with a delay of
 		''' java.lang.[Long].MAX_VALUE.
 		''' </summary>
-		Private Function overflowFree(ByVal delay As Long) As Long
+		Private Function overflowFree(  delay As Long) As Long
 			Dim head As Delayed = CType(MyBase.queue.peek(), Delayed)
 			If head IsNot Nothing Then
 				Dim headDelay As Long = head.getDelay(NANOSECONDS)
@@ -508,7 +508,7 @@ Namespace java.util.concurrent
 		''' <exception cref="RejectedExecutionException"> {@inheritDoc} </exception>
 		''' <exception cref="NullPointerException">       {@inheritDoc} </exception>
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-		Public Overridable Function schedule(ByVal command As Runnable, ByVal delay As Long, ByVal unit As TimeUnit) As ScheduledFuture(Of ?) Implements ScheduledExecutorService.schedule
+		Public Overridable Function schedule(  command As Runnable,   delay As Long,   unit As TimeUnit) As ScheduledFuture(Of ?) Implements ScheduledExecutorService.schedule
 			If command Is Nothing OrElse unit Is Nothing Then Throw New NullPointerException
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 			Dim t As RunnableScheduledFuture(Of ?) = decorateTask(command, New ScheduledFutureTask(Me, Of Void)(command, Nothing, triggerTime(delay, unit)))
@@ -518,7 +518,7 @@ Namespace java.util.concurrent
 
 		''' <exception cref="RejectedExecutionException"> {@inheritDoc} </exception>
 		''' <exception cref="NullPointerException">       {@inheritDoc} </exception>
-		Public Overridable Function schedule(Of V)(ByVal callable As Callable(Of V), ByVal delay As Long, ByVal unit As TimeUnit) As ScheduledFuture(Of V) Implements ScheduledExecutorService.schedule
+		Public Overridable Function schedule(Of V)(  callable As Callable(Of V),   delay As Long,   unit As TimeUnit) As ScheduledFuture(Of V) Implements ScheduledExecutorService.schedule
 			If callable Is Nothing OrElse unit Is Nothing Then Throw New NullPointerException
 			Dim t As RunnableScheduledFuture(Of V) = decorateTask(callable, New ScheduledFutureTask(Me, Of V)(callable, triggerTime(delay, unit)))
 			delayedExecute(t)
@@ -529,7 +529,7 @@ Namespace java.util.concurrent
 		''' <exception cref="NullPointerException">       {@inheritDoc} </exception>
 		''' <exception cref="IllegalArgumentException">   {@inheritDoc} </exception>
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-		Public Overridable Function scheduleAtFixedRate(ByVal command As Runnable, ByVal initialDelay As Long, ByVal period As Long, ByVal unit As TimeUnit) As ScheduledFuture(Of ?) Implements ScheduledExecutorService.scheduleAtFixedRate
+		Public Overridable Function scheduleAtFixedRate(  command As Runnable,   initialDelay As Long,   period As Long,   unit As TimeUnit) As ScheduledFuture(Of ?) Implements ScheduledExecutorService.scheduleAtFixedRate
 			If command Is Nothing OrElse unit Is Nothing Then Throw New NullPointerException
 			If period <= 0 Then Throw New IllegalArgumentException
 			Dim sft As New ScheduledFutureTask(Me, Of Void)(command, Nothing, triggerTime(initialDelay, unit), unit.toNanos(period))
@@ -543,7 +543,7 @@ Namespace java.util.concurrent
 		''' <exception cref="NullPointerException">       {@inheritDoc} </exception>
 		''' <exception cref="IllegalArgumentException">   {@inheritDoc} </exception>
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-		Public Overridable Function scheduleWithFixedDelay(ByVal command As Runnable, ByVal initialDelay As Long, ByVal delay As Long, ByVal unit As TimeUnit) As ScheduledFuture(Of ?) Implements ScheduledExecutorService.scheduleWithFixedDelay
+		Public Overridable Function scheduleWithFixedDelay(  command As Runnable,   initialDelay As Long,   delay As Long,   unit As TimeUnit) As ScheduledFuture(Of ?) Implements ScheduledExecutorService.scheduleWithFixedDelay
 			If command Is Nothing OrElse unit Is Nothing Then Throw New NullPointerException
 			If delay <= 0 Then Throw New IllegalArgumentException
 			Dim sft As New ScheduledFutureTask(Me, Of Void)(command, Nothing, triggerTime(initialDelay, unit), unit.toNanos(-delay))
@@ -572,7 +572,7 @@ Namespace java.util.concurrent
 		'''         cannot be accepted for execution because the
 		'''         executor has been shut down </exception>
 		''' <exception cref="NullPointerException"> {@inheritDoc} </exception>
-		Public Overrides Sub execute(ByVal command As Runnable) Implements Executor.execute
+		Public Overrides Sub execute(  command As Runnable) Implements Executor.execute
 			schedule(command, 0, NANOSECONDS)
 		End Sub
 
@@ -581,19 +581,19 @@ Namespace java.util.concurrent
 		''' <exception cref="RejectedExecutionException"> {@inheritDoc} </exception>
 		''' <exception cref="NullPointerException">       {@inheritDoc} </exception>
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-		Public Overrides Function submit(ByVal task As Runnable) As Future(Of ?) Implements ExecutorService.submit
+		Public Overrides Function submit(  task As Runnable) As Future(Of ?) Implements ExecutorService.submit
 			Return schedule(task, 0, NANOSECONDS)
 		End Function
 
 		''' <exception cref="RejectedExecutionException"> {@inheritDoc} </exception>
 		''' <exception cref="NullPointerException">       {@inheritDoc} </exception>
-		Public Overrides Function submit(Of T)(ByVal task As Runnable, ByVal result As T) As Future(Of T) Implements ExecutorService.submit
+		Public Overrides Function submit(Of T)(  task As Runnable,   result As T) As Future(Of T) Implements ExecutorService.submit
 			Return schedule(Executors.callable(task, result), 0, NANOSECONDS)
 		End Function
 
 		''' <exception cref="RejectedExecutionException"> {@inheritDoc} </exception>
 		''' <exception cref="NullPointerException">       {@inheritDoc} </exception>
-		Public Overrides Function submit(Of T)(ByVal task As Callable(Of T)) As Future(Of T) Implements ExecutorService.submit
+		Public Overrides Function submit(Of T)(  task As Callable(Of T)) As Future(Of T) Implements ExecutorService.submit
 			Return schedule(task, 0, NANOSECONDS)
 		End Function
 
@@ -608,7 +608,7 @@ Namespace java.util.concurrent
 		''' <param name="value"> if {@code true}, continue after shutdown, else don't </param>
 		''' <seealso cref= #getContinueExistingPeriodicTasksAfterShutdownPolicy </seealso>
 		Public Overridable Property continueExistingPeriodicTasksAfterShutdownPolicy As Boolean
-			Set(ByVal value As Boolean)
+			Set(  value As Boolean)
 				continueExistingPeriodicTasksAfterShutdown = value
 				If (Not value) AndAlso shutdown Then onShutdown()
 			End Set
@@ -629,7 +629,7 @@ Namespace java.util.concurrent
 		''' <param name="value"> if {@code true}, execute after shutdown, else don't </param>
 		''' <seealso cref= #getExecuteExistingDelayedTasksAfterShutdownPolicy </seealso>
 		Public Overridable Property executeExistingDelayedTasksAfterShutdownPolicy As Boolean
-			Set(ByVal value As Boolean)
+			Set(  value As Boolean)
 				executeExistingDelayedTasksAfterShutdown = value
 				If (Not value) AndAlso shutdown Then onShutdown()
 			End Set
@@ -648,7 +648,7 @@ Namespace java.util.concurrent
 		''' <seealso cref= #getRemoveOnCancelPolicy
 		''' @since 1.7 </seealso>
 		Public Overridable Property removeOnCancelPolicy As Boolean
-			Set(ByVal value As Boolean)
+			Set(  value As Boolean)
 				removeOnCancel = value
 			End Set
 			Get
@@ -783,7 +783,7 @@ Namespace java.util.concurrent
 			''' <summary>
 			''' Sets f's heapIndex if it is a ScheduledFutureTask.
 			''' </summary>
-			Private Sub setIndex(Of T1)(ByVal f As RunnableScheduledFuture(Of T1), ByVal idx As Integer)
+			Private Sub setIndex(Of T1)(  f As RunnableScheduledFuture(Of T1),   idx As Integer)
 				If TypeOf f Is ScheduledFutureTask Then CType(f, ScheduledFutureTask).heapIndex = idx
 			End Sub
 
@@ -791,7 +791,7 @@ Namespace java.util.concurrent
 			''' Sifts element added at bottom up to its heap-ordered spot.
 			''' Call only when holding lock.
 			''' </summary>
-			Private Sub siftUp(Of T1)(ByVal k As Integer, ByVal key As RunnableScheduledFuture(Of T1))
+			Private Sub siftUp(Of T1)(  k As Integer,   key As RunnableScheduledFuture(Of T1))
 				Do While k > 0
 					Dim parent As Integer = CInt(CUInt((k - 1)) >> 1)
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
@@ -809,7 +809,7 @@ Namespace java.util.concurrent
 			''' Sifts element added at top down to its heap-ordered spot.
 			''' Call only when holding lock.
 			''' </summary>
-			Private Sub siftDown(Of T1)(ByVal k As Integer, ByVal key As RunnableScheduledFuture(Of T1))
+			Private Sub siftDown(Of T1)(  k As Integer,   key As RunnableScheduledFuture(Of T1))
 				Dim half As Integer = CInt(CUInt(size_Renamed) >> 1)
 				Do While k < half
 					Dim child As Integer = (k << 1) + 1
@@ -840,7 +840,7 @@ Namespace java.util.concurrent
 			''' <summary>
 			''' Finds index of given object, or -1 if absent.
 			''' </summary>
-			Private Function indexOf(ByVal x As Object) As Integer
+			Private Function indexOf(  x As Object) As Integer
 				If x IsNot Nothing Then
 					If TypeOf x Is ScheduledFutureTask Then
 						Dim i As Integer = CType(x, ScheduledFutureTask).heapIndex
@@ -856,7 +856,7 @@ Namespace java.util.concurrent
 				Return -1
 			End Function
 
-			Public Overridable Function contains(ByVal x As Object) As Boolean Implements BlockingQueue(Of Runnable).contains
+			Public Overridable Function contains(  x As Object) As Boolean Implements BlockingQueue(Of Runnable).contains
 				Dim lock As java.util.concurrent.locks.ReentrantLock = Me.lock
 				lock.lock()
 				Try
@@ -866,7 +866,7 @@ Namespace java.util.concurrent
 				End Try
 			End Function
 
-			Public Overridable Function remove(ByVal x As Object) As Boolean Implements BlockingQueue(Of Runnable).remove
+			Public Overridable Function remove(  x As Object) As Boolean Implements BlockingQueue(Of Runnable).remove
 				Dim lock As java.util.concurrent.locks.ReentrantLock = Me.lock
 				lock.lock()
 				Try
@@ -920,7 +920,7 @@ Namespace java.util.concurrent
 				End Try
 			End Function
 
-			Public Overridable Function offer(ByVal x As Runnable) As Boolean
+			Public Overridable Function offer(  x As Runnable) As Boolean
 				If x Is Nothing Then Throw New NullPointerException
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 				Dim e As RunnableScheduledFuture(Of ?) = CType(x, RunnableScheduledFuture(Of ?))
@@ -946,15 +946,15 @@ Namespace java.util.concurrent
 				Return True
 			End Function
 
-			Public Overridable Sub put(ByVal e As Runnable)
+			Public Overridable Sub put(  e As Runnable)
 				offer(e)
 			End Sub
 
-			Public Overridable Function add(ByVal e As Runnable) As Boolean
+			Public Overridable Function add(  e As Runnable) As Boolean
 				Return offer(e)
 			End Function
 
-			Public Overridable Function offer(ByVal e As Runnable, ByVal timeout As Long, ByVal unit As TimeUnit) As Boolean
+			Public Overridable Function offer(  e As Runnable,   timeout As Long,   unit As TimeUnit) As Boolean
 				Return offer(e)
 			End Function
 
@@ -964,7 +964,7 @@ Namespace java.util.concurrent
 			''' holding lock. </summary>
 			''' <param name="f"> the task to remove and return </param>
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-			Private Function finishPoll(Of T1)(ByVal f As RunnableScheduledFuture(Of T1)) As RunnableScheduledFuture(Of ?)
+			Private Function finishPoll(Of T1)(  f As RunnableScheduledFuture(Of T1)) As RunnableScheduledFuture(Of ?)
 				size_Renamed -= 1
 				Dim s As Integer = size_Renamed
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
@@ -1026,7 +1026,7 @@ Namespace java.util.concurrent
 			End Function
 
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-			Public Overridable Function poll(ByVal timeout As Long, ByVal unit As TimeUnit) As RunnableScheduledFuture(Of ?)
+			Public Overridable Function poll(  timeout As Long,   unit As TimeUnit) As RunnableScheduledFuture(Of ?)
 				Dim nanos As Long = unit.toNanos(timeout)
 				Dim lock As java.util.concurrent.locks.ReentrantLock = Me.lock
 				lock.lockInterruptibly()
@@ -1096,7 +1096,7 @@ Namespace java.util.concurrent
 			End Function
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Overridable Function drainTo(Of T1)(ByVal c As Collection(Of T1)) As Integer
+			Public Overridable Function drainTo(Of T1)(  c As Collection(Of T1)) As Integer
 				If c Is Nothing Then Throw New NullPointerException
 				If c Is Me Then Throw New IllegalArgumentException
 				Dim lock As java.util.concurrent.locks.ReentrantLock = Me.lock
@@ -1119,7 +1119,7 @@ Namespace java.util.concurrent
 			End Function
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Overridable Function drainTo(Of T1)(ByVal c As Collection(Of T1), ByVal maxElements As Integer) As Integer
+			Public Overridable Function drainTo(Of T1)(  c As Collection(Of T1),   maxElements As Integer) As Integer
 				If c Is Nothing Then Throw New NullPointerException
 				If c Is Me Then Throw New IllegalArgumentException
 				If maxElements <= 0 Then Return 0
@@ -1153,7 +1153,7 @@ Namespace java.util.concurrent
 			End Function
 
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-			Public Overridable Function toArray(Of T)(ByVal a As T()) As T()
+			Public Overridable Function toArray(Of T)(  a As T()) As T()
 				Dim lock As java.util.concurrent.locks.ReentrantLock = Me.lock
 				lock.lock()
 				Try
@@ -1183,7 +1183,7 @@ Namespace java.util.concurrent
 				Friend cursor As Integer = 0 ' index of next element to return
 				Friend lastRet As Integer = -1 ' index of last element, or -1 if no such
 
-				Friend Sub New(ByVal outerInstance As ScheduledThreadPoolExecutor.DelayedWorkQueue, Of T1)(ByVal array As RunnableScheduledFuture(Of T1)())
+				Friend Sub New(  outerInstance As ScheduledThreadPoolExecutor.DelayedWorkQueue, Of T1)(  array As RunnableScheduledFuture(Of T1)())
 						Me.outerInstance = outerInstance
 					Me.array = array
 				End Sub

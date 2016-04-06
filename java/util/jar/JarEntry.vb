@@ -44,7 +44,7 @@ Namespace java.util.jar
 		''' <exception cref="NullPointerException"> if the entry name is <code>null</code> </exception>
 		''' <exception cref="IllegalArgumentException"> if the entry name is longer than
 		'''            0xFFFF bytes. </exception>
-		Public Sub New(ByVal name As String)
+		Public Sub New(  name As String)
 			MyBase.New(name)
 		End Sub
 
@@ -53,7 +53,7 @@ Namespace java.util.jar
 		''' specified <code>ZipEntry</code> object. </summary>
 		''' <param name="ze"> the <code>ZipEntry</code> object to create the
 		'''           <code>JarEntry</code> from </param>
-		Public Sub New(ByVal ze As java.util.zip.ZipEntry)
+		Public Sub New(  ze As java.util.zip.ZipEntry)
 			MyBase.New(ze)
 		End Sub
 
@@ -62,7 +62,7 @@ Namespace java.util.jar
 		''' specified <code>JarEntry</code> object.
 		''' </summary>
 		''' <param name="je"> the <code>JarEntry</code> to copy </param>
-		Public Sub New(ByVal je As JarEntry)
+		Public Sub New(  je As JarEntry)
 			Me.New(CType(je, java.util.zip.ZipEntry))
 			Me.attr = je.attr
 			Me.certs = je.certs

@@ -109,7 +109,7 @@ Namespace java.math
         ''' Construct a new MutableBigInteger with a magnitude specified by
         ''' the int val.
         ''' </summary>
-        Friend Sub New(ByVal val As Integer)
+        Friend Sub New(  val As Integer)
             value = New Integer(0) {}
             intLen = 1
             value(0) = val
@@ -119,7 +119,7 @@ Namespace java.math
         ''' Construct a new MutableBigInteger with the specified value array
         ''' up to the length of the array supplied.
         ''' </summary>
-        Friend Sub New(ByVal val As Integer())
+        Friend Sub New(  val As Integer())
             value = val
             intLen = val.Length
         End Sub
@@ -128,7 +128,7 @@ Namespace java.math
         ''' Construct a new MutableBigInteger with a magnitude equal to the
         ''' specified Big java.lang.[Integer].
         ''' </summary>
-        Friend Sub New(ByVal b As BigInteger)
+        Friend Sub New(  b As BigInteger)
             intLen = b.mag.Length
             value = java.util.Arrays.copyOf(b.mag, intLen)
         End Sub
@@ -137,7 +137,7 @@ Namespace java.math
         ''' Construct a new MutableBigInteger with a magnitude equal to the
         ''' specified MutableBig java.lang.[Integer].
         ''' </summary>
-        Friend Sub New(ByVal val As MutableBigInteger)
+        Friend Sub New(  val As MutableBigInteger)
             intLen = val.intLen
             value = java.util.Arrays.copyOfRange(val.value, val.offset, val.offset + intLen)
         End Sub
@@ -147,7 +147,7 @@ Namespace java.math
         ''' Used by Burnikel-Ziegler division. </summary>
         ''' <param name="n"> number of ints in the {@code value} array </param>
         ''' <returns> a number equal to {@code ((1<<(32*n)))-1} </returns>
-        Private Sub ones(ByVal n As Integer)
+        Private Sub ones(  n As Integer)
             If n > value.Length Then value = New Integer(n - 1) {}
             java.util.Arrays.fill(value, -1)
             offset = 0
@@ -179,7 +179,7 @@ Namespace java.math
         ''' <summary>
         ''' Convert this MutableBigInteger to a BigInteger object.
         ''' </summary>
-        Friend Overridable Function toBigInteger(ByVal sign As Integer) As BigInteger
+        Friend Overridable Function toBigInteger(  sign As Integer) As BigInteger
             If intLen = 0 OrElse sign = 0 Then Return Big java.lang.[Integer].ZERO
             Return New BigInteger(magnitudeArray, sign)
         End Function
@@ -196,7 +196,7 @@ Namespace java.math
         ''' Convert this MutableBigInteger to BigDecimal object with the specified sign
         ''' and scale.
         ''' </summary>
-        Friend Overridable Function toBigDecimal(ByVal sign As Integer, ByVal scale As Integer) As BigDecimal
+        Friend Overridable Function toBigDecimal(  sign As Integer,   scale As Integer) As BigDecimal
             If intLen = 0 OrElse sign = 0 Then Return BigDecimal.zeroValueOf(scale)
             Dim mag As Integer() = magnitudeArray
             Dim len As Integer = mag.Length
@@ -213,7 +213,7 @@ Namespace java.math
         ''' object into a long value given a specified sign.
         ''' returns INFLATED if value is not fit into long
         ''' </summary>
-        Friend Overridable Function toCompactValue(ByVal sign As Integer) As Long
+        Friend Overridable Function toCompactValue(  sign As Integer) As Long
             If intLen = 0 OrElse sign = 0 Then Return 0L
             Dim mag As Integer() = magnitudeArray
             Dim len As Integer = mag.Length
@@ -252,7 +252,7 @@ Namespace java.math
         ''' as this MutableBigInteger is numerically less than, equal to, or
         ''' greater than <tt>b</tt>.
         ''' </summary>
-        Friend Function compare(ByVal b As MutableBigInteger) As Integer
+        Friend Function compare(  b As MutableBigInteger) As Integer
             Dim blen As Integer = b.intLen
             If intLen < blen Then Return -1
             If intLen > blen Then Return 1
@@ -277,7 +277,7 @@ Namespace java.math
         ''' Returns a value equal to what {@code b.leftShift(32*ints); return compare(b);}
         ''' would return, but doesn't change the value of {@code b}.
         ''' </summary>
-        Private Function compareShifted(ByVal b As MutableBigInteger, ByVal ints As Integer) As Integer
+        Private Function compareShifted(  b As MutableBigInteger,   ints As Integer) As Integer
             Dim blen As Integer = b.intLen
             Dim alen As Integer = intLen - ints
             If alen < blen Then Return -1
@@ -305,7 +305,7 @@ Namespace java.math
         ''' Assumes no leading unnecessary zeros, which holds for results
         ''' from divide().
         ''' </summary>
-        Friend Function compareHalf(ByVal b As MutableBigInteger) As Integer
+        Friend Function compareHalf(  b As MutableBigInteger) As Integer
             Dim blen As Integer = b.intLen
             Dim len As Integer = intLen
             If len <= 0 Then Return If(blen <= 0, 0, -1)
@@ -364,7 +364,7 @@ Namespace java.math
         ''' index. This method is not used because it is not inlined on all
         ''' platforms.
         ''' </summary>
-        Private Function getInt(ByVal index As Integer) As Integer
+        Private Function getInt(  index As Integer) As Integer
             Return value(offset + index)
         End Function
 
@@ -373,7 +373,7 @@ Namespace java.math
         ''' use in this MutableBigInteger at the specified index. This method is
         ''' not used because it is not inlined on all platforms.
         ''' </summary>
-        Private Function getLong(ByVal index As Integer) As Long
+        Private Function getLong(  index As Integer) As Long
             Return value(offset + index) And LONG_MASK
         End Function
 
@@ -405,7 +405,7 @@ Namespace java.math
         ''' If this MutableBigInteger cannot hold len words, increase the size
         ''' of the value array to len words.
         ''' </summary>
-        Private Sub ensureCapacity(ByVal len As Integer)
+        Private Sub ensureCapacity(  len As Integer)
             If value.Length < len Then
                 value = New Integer(len - 1) {}
                 offset = 0
@@ -432,7 +432,7 @@ Namespace java.math
         ''' This does not get inlined on all platforms so it is not used
         ''' as often as originally intended.
         ''' </summary>
-        Friend Overridable Sub setInt(ByVal index As Integer, ByVal val As Integer)
+        Friend Overridable Sub setInt(  index As Integer,   val As Integer)
             value(offset + index) = val
         End Sub
 
@@ -440,7 +440,7 @@ Namespace java.math
         ''' Sets this MutableBigInteger's value array to the specified array.
         ''' The intLen is set to the specified length.
         ''' </summary>
-        Friend Overridable Sub setValue(ByVal val As Integer(), ByVal length As Integer)
+        Friend Overridable Sub setValue(  val As Integer(),   length As Integer)
             value = val
             intLen = length
             offset = 0
@@ -450,7 +450,7 @@ Namespace java.math
         ''' Sets this MutableBigInteger's value array to a copy of the specified
         ''' array. The intLen is set to the length of the new array.
         ''' </summary>
-        Friend Overridable Sub copyValue(ByVal src As MutableBigInteger)
+        Friend Overridable Sub copyValue(  src As MutableBigInteger)
             Dim len As Integer = src.intLen
             If value.Length < len Then value = New Integer(len - 1) {}
             Array.Copy(src.value, src.offset, value, 0, len)
@@ -462,7 +462,7 @@ Namespace java.math
         ''' Sets this MutableBigInteger's value array to a copy of the specified
         ''' array. The intLen is set to the length of the specified array.
         ''' </summary>
-        Friend Overridable Sub copyValue(ByVal val As Integer())
+        Friend Overridable Sub copyValue(  val As Integer())
             Dim len As Integer = val.Length
             If value.Length < len Then value = New Integer(len - 1) {}
             Array.Copy(val, 0, value, 0, len)
@@ -530,7 +530,7 @@ Namespace java.math
         ''' <summary>
         ''' Like <seealso cref="#rightShift(int)"/> but {@code n} can be greater than the length of the number.
         ''' </summary>
-        Friend Overridable Sub safeRightShift(ByVal n As Integer)
+        Friend Overridable Sub safeRightShift(  n As Integer)
             If n \ 32 >= intLen Then
                 reset()
             Else
@@ -542,7 +542,7 @@ Namespace java.math
         ''' Right shift this MutableBigInteger n bits. The MutableBigInteger is left
         ''' in normal form.
         ''' </summary>
-        Friend Overridable Sub rightShift(ByVal n As Integer)
+        Friend Overridable Sub rightShift(  n As Integer)
             If intLen = 0 Then Return
             Dim nInts As Integer = CInt(CUInt(n) >> 5)
             Dim nBits As Integer = n And &H1F
@@ -560,14 +560,14 @@ Namespace java.math
         ''' <summary>
         ''' Like <seealso cref="#leftShift(int)"/> but {@code n} can be zero.
         ''' </summary>
-        Friend Overridable Sub safeLeftShift(ByVal n As Integer)
+        Friend Overridable Sub safeLeftShift(  n As Integer)
             If n > 0 Then leftShift(n)
         End Sub
 
         ''' <summary>
         ''' Left shift this MutableBigInteger n bits.
         ''' </summary>
-        Friend Overridable Sub leftShift(ByVal n As Integer)
+        Friend Overridable Sub leftShift(  n As Integer)
             '        
             '         * If there is enough storage space in this MutableBigInteger already
             '         * the available space will be used. Space to the right of the used
@@ -627,7 +627,7 @@ Namespace java.math
         ''' divisor a back to the dividend result at a specified offset. It is used
         ''' when qhat was estimated too large, and must be adjusted.
         ''' </summary>
-        Private Function divadd(ByVal a As Integer(), ByVal result As Integer(), ByVal offset As Integer) As Integer
+        Private Function divadd(  a As Integer(),   result As Integer(),   offset As Integer) As Integer
             Dim carry As Long = 0
 
             For j As Integer = a.Length - 1 To 0 Step -1
@@ -643,7 +643,7 @@ Namespace java.math
         ''' word input x, and subtracts the n word product from q. This is needed
         ''' when subtracting qhat*divisor from dividend.
         ''' </summary>
-        Private Function mulsub(ByVal q As Integer(), ByVal a As Integer(), ByVal x As Integer, ByVal len As Integer, ByVal offset As Integer) As Integer
+        Private Function mulsub(  q As Integer(),   a As Integer(),   x As Integer,   len As Integer,   offset As Integer) As Integer
             Dim xLong As Long = x And LONG_MASK
             Dim carry As Long = 0
             offset += len
@@ -662,7 +662,7 @@ Namespace java.math
         ''' The method is the same as mulsun, except the fact that q array is not
         ''' updated, the only result of the method is borrow flag.
         ''' </summary>
-        Private Function mulsubBorrow(ByVal q As Integer(), ByVal a As Integer(), ByVal x As Integer, ByVal len As Integer, ByVal offset As Integer) As Integer
+        Private Function mulsubBorrow(  q As Integer(),   a As Integer(),   x As Integer,   len As Integer,   offset As Integer) As Integer
             Dim xLong As Long = x And LONG_MASK
             Dim carry As Long = 0
             offset += len
@@ -680,7 +680,7 @@ Namespace java.math
         ''' less than 32.
         ''' Assumes that intLen > 0, n > 0 for speed
         ''' </summary>
-        Private Sub primitiveRightShift(ByVal n As Integer)
+        Private Sub primitiveRightShift(  n As Integer)
             Dim val As Integer() = value
             Dim n2 As Integer = 32 - n
             Dim i As Integer = offset + intLen - 1
@@ -699,7 +699,7 @@ Namespace java.math
         ''' less than 32.
         ''' Assumes that intLen > 0, n > 0 for speed
         ''' </summary>
-        Private Sub primitiveLeftShift(ByVal n As Integer)
+        Private Sub primitiveLeftShift(  n As Integer)
             Dim val As Integer() = value
             Dim n2 As Integer = 32 - n
             Dim i As Integer = offset
@@ -718,7 +718,7 @@ Namespace java.math
         ''' Returns a {@code BigInteger} equal to the {@code n}
         ''' low ints of this number.
         ''' </summary>
-        Private Function getLower(ByVal n As Integer) As BigInteger
+        Private Function getLower(  n As Integer) As BigInteger
             If zero Then
                 Return Big java.lang.[Integer].ZERO
             ElseIf intLen < n Then
@@ -737,7 +737,7 @@ Namespace java.math
         ''' <summary>
         ''' Discards all ints whose index is greater than {@code n}.
         ''' </summary>
-        Private Sub keepLower(ByVal n As Integer)
+        Private Sub keepLower(  n As Integer)
             If intLen >= n Then
                 offset += intLen - n
                 intLen = n
@@ -749,7 +749,7 @@ Namespace java.math
         ''' is placed within this MutableBig java.lang.[Integer].
         ''' The contents of the addend are not changed.
         ''' </summary>
-        Friend Overridable Sub add(ByVal addend As MutableBigInteger)
+        Friend Overridable Sub add(  addend As MutableBigInteger)
             Dim x As Integer = intLen
             Dim y As Integer = addend.intLen
             Dim resultLen As Integer = (If(intLen > addend.intLen, intLen, addend.intLen))
@@ -811,7 +811,7 @@ Namespace java.math
         ''' Has the same effect as {@code addend.leftShift(32*ints); add(addend);}
         ''' but doesn't change the value of {@code addend}.
         ''' </summary>
-        Friend Overridable Sub addShifted(ByVal addend As MutableBigInteger, ByVal n As Integer)
+        Friend Overridable Sub addShifted(  addend As MutableBigInteger,   n As Integer)
             If addend.zero Then Return
 
             Dim x As Integer = intLen
@@ -877,7 +877,7 @@ Namespace java.math
         ''' not be greater than {@code n}. In other words, concatenates {@code this}
         ''' and {@code addend}.
         ''' </summary>
-        Friend Overridable Sub addDisjoint(ByVal addend As MutableBigInteger, ByVal n As Integer)
+        Friend Overridable Sub addDisjoint(  addend As MutableBigInteger,   n As Integer)
             If addend.zero Then Return
 
             Dim x As Integer = intLen
@@ -914,7 +914,7 @@ Namespace java.math
         ''' <summary>
         ''' Adds the low {@code n} ints of {@code addend}.
         ''' </summary>
-        Friend Overridable Sub addLower(ByVal addend As MutableBigInteger, ByVal n As Integer)
+        Friend Overridable Sub addLower(  addend As MutableBigInteger,   n As Integer)
             Dim a As New MutableBigInteger(addend)
             If a.offset + a.intLen >= n Then
                 a.offset = a.offset + a.intLen - n
@@ -928,7 +928,7 @@ Namespace java.math
         ''' Subtracts the smaller of this and b from the larger and places the
         ''' result into this MutableBig java.lang.[Integer].
         ''' </summary>
-        Friend Overridable Function subtract(ByVal b As MutableBigInteger) As Integer
+        Friend Overridable Function subtract(  b As MutableBigInteger) As Integer
             Dim a As MutableBigInteger = Me
 
             Dim result As Integer() = value
@@ -981,7 +981,7 @@ Namespace java.math
         ''' into the larger. Returns 1 if the answer is in a, -1 if in b, 0 if no
         ''' operation was performed.
         ''' </summary>
-        Private Function difference(ByVal b As MutableBigInteger) As Integer
+        Private Function difference(  b As MutableBigInteger) As Integer
             Dim a As MutableBigInteger = Me
             Dim sign As Integer = a.compare(b)
             If sign = 0 Then Return 0
@@ -1017,7 +1017,7 @@ Namespace java.math
         ''' Multiply the contents of two MutableBigInteger objects. The result is
         ''' placed into MutableBigInteger z. The contents of y are not changed.
         ''' </summary>
-        Friend Overridable Sub multiply(ByVal y As MutableBigInteger, ByVal z As MutableBigInteger)
+        Friend Overridable Sub multiply(  y As MutableBigInteger,   z As MutableBigInteger)
             Dim xLen As Integer = intLen
             Dim yLen As Integer = y.intLen
             Dim newLen As Integer = xLen + yLen
@@ -1063,7 +1063,7 @@ Namespace java.math
         ''' Multiply the contents of this MutableBigInteger by the word y. The
         ''' result is placed into z.
         ''' </summary>
-        Friend Overridable Sub mul(ByVal y As Integer, ByVal z As MutableBigInteger)
+        Friend Overridable Sub mul(  y As Integer,   z As MutableBigInteger)
             If y = 1 Then
                 z.copyValue(Me)
                 Return
@@ -1102,7 +1102,7 @@ Namespace java.math
         ''' </summary>
         ''' <returns> the remainder of the division is returned.
         '''  </returns>
-        Friend Overridable Function divideOneWord(ByVal divisor As Integer, ByVal quotient As MutableBigInteger) As Integer
+        Friend Overridable Function divideOneWord(  divisor As Integer,   quotient As MutableBigInteger) As Integer
             Dim divisorLong As Long = divisor And LONG_MASK
 
             ' Special case of one word dividend
@@ -1164,11 +1164,11 @@ Namespace java.math
         ''' provided MutableBigInteger objects and the remainder object is returned.
         ''' 
         ''' </summary>
-        Friend Overridable Function divide(ByVal b As MutableBigInteger, ByVal quotient As MutableBigInteger) As MutableBigInteger
+        Friend Overridable Function divide(  b As MutableBigInteger,   quotient As MutableBigInteger) As MutableBigInteger
             Return divide(b, quotient, True)
         End Function
 
-        Friend Overridable Function divide(ByVal b As MutableBigInteger, ByVal quotient As MutableBigInteger, ByVal needRemainder As Boolean) As MutableBigInteger
+        Friend Overridable Function divide(  b As MutableBigInteger,   quotient As MutableBigInteger,   needRemainder As Boolean) As MutableBigInteger
             If b.intLen < Big java.lang.[Integer].BURNIKEL_ZIEGLER_THRESHOLD OrElse intLen - b.intLen < Big java.lang.[Integer].BURNIKEL_ZIEGLER_OFFSET Then
                 Return divideKnuth(b, quotient, needRemainder)
             Else
@@ -1177,7 +1177,7 @@ Namespace java.math
         End Function
 
         ''' <seealso cref= #divideKnuth(MutableBigInteger, MutableBigInteger, boolean) </seealso>
-        Friend Overridable Function divideKnuth(ByVal b As MutableBigInteger, ByVal quotient As MutableBigInteger) As MutableBigInteger
+        Friend Overridable Function divideKnuth(  b As MutableBigInteger,   quotient As MutableBigInteger) As MutableBigInteger
             Return divideKnuth(b, quotient, True)
         End Function
 
@@ -1192,7 +1192,7 @@ Namespace java.math
         ''' changed.
         ''' 
         ''' </summary>
-        Friend Overridable Function divideKnuth(ByVal b As MutableBigInteger, ByVal quotient As MutableBigInteger, ByVal needRemainder As Boolean) As MutableBigInteger
+        Friend Overridable Function divideKnuth(  b As MutableBigInteger,   quotient As MutableBigInteger,   needRemainder As Boolean) As MutableBigInteger
             If b.intLen = 0 Then Throw New java.lang.ArithmeticException("BigInteger divide by zero")
 
             ' Dividend is zero
@@ -1256,7 +1256,7 @@ Namespace java.math
         ''' <param name="b"> the divisor </param>
         ''' <param name="quotient"> output parameter for {@code this/b} </param>
         ''' <returns> the remainder </returns>
-        Friend Overridable Function divideAndRemainderBurnikelZiegler(ByVal b As MutableBigInteger, ByVal quotient As MutableBigInteger) As MutableBigInteger
+        Friend Overridable Function divideAndRemainderBurnikelZiegler(  b As MutableBigInteger,   quotient As MutableBigInteger) As MutableBigInteger
             Dim r As Integer = intLen
             Dim s As Integer = b.intLen
 
@@ -1324,7 +1324,7 @@ Namespace java.math
         ''' <param name="b"> a positive number such that {@code b.bitLength()} is even </param>
         ''' <param name="quotient"> output parameter for {@code this/b} </param>
         ''' <returns> {@code this%b} </returns>
-        Private Function divide2n1n(ByVal b As MutableBigInteger, ByVal quotient As MutableBigInteger) As MutableBigInteger
+        Private Function divide2n1n(  b As MutableBigInteger,   quotient As MutableBigInteger) As MutableBigInteger
             Dim n As Integer = b.intLen
 
             ' step 1: base case
@@ -1356,7 +1356,7 @@ Namespace java.math
         ''' {@code this} must be a nonnegative number such that {@code 2*this.bitLength() <= 3*b.bitLength()} </summary>
         ''' <param name="quotient"> output parameter for {@code this/b} </param>
         ''' <returns> {@code this%b} </returns>
-        Private Function divide3n2n(ByVal b As MutableBigInteger, ByVal quotient As MutableBigInteger) As MutableBigInteger
+        Private Function divide3n2n(  b As MutableBigInteger,   quotient As MutableBigInteger) As MutableBigInteger
             Dim n As Integer = b.intLen \ 2 ' half the length of b in ints
 
             ' step 1: view this as [a1,a2,a3] where each ai is n ints or less; let a12=[a1,a2]
@@ -1413,7 +1413,7 @@ Namespace java.math
         ''' <param name="numBlocks"> the total number of blocks in {@code this} number </param>
         ''' <param name="blockLength"> length of one block in units of 32 bits
         ''' @return </param>
-        Private Function getBlock(ByVal index As Integer, ByVal numBlocks As Integer, ByVal blockLength As Integer) As MutableBigInteger
+        Private Function getBlock(  index As Integer,   numBlocks As Integer,   blockLength As Integer) As MutableBigInteger
             Dim blockStart As Integer = index * blockLength
             If blockStart >= intLen Then Return New MutableBigInteger
 
@@ -1441,7 +1441,7 @@ Namespace java.math
         ''' returned.
         ''' </summary>
         ''' <returns> the remainder of the division will be returned. </returns>
-        Friend Overridable Function divide(ByVal v As Long, ByVal quotient As MutableBigInteger) As Long
+        Friend Overridable Function divide(  v As Long,   quotient As MutableBigInteger) As Long
             If v = 0 Then Throw New ArithmeticException("BigInteger divide by zero")
 
             ' Dividend is zero
@@ -1462,7 +1462,7 @@ Namespace java.math
             End If
         End Function
 
-        Private Shared Sub copyAndShift(ByVal src As Integer(), ByVal srcFrom As Integer, ByVal srcLen As Integer, ByVal dst As Integer(), ByVal dstFrom As Integer, ByVal shift As Integer)
+        Private Shared Sub copyAndShift(  src As Integer(),   srcFrom As Integer,   srcLen As Integer,   dst As Integer(),   dstFrom As Integer,   shift As Integer)
             Dim n2 As Integer = 32 - shift
             Dim c As Integer = src(srcFrom)
             For i As Integer = 0 To srcLen - 2
@@ -1479,7 +1479,7 @@ Namespace java.math
         ''' The quotient will be placed into the provided quotient object &
         ''' the remainder object is returned.
         ''' </summary>
-        Private Function divideMagnitude(ByVal div As MutableBigInteger, ByVal quotient As MutableBigInteger, ByVal needRemainder As Boolean) As MutableBigInteger
+        Private Function divideMagnitude(  div As MutableBigInteger,   quotient As MutableBigInteger,   needRemainder As Boolean) As MutableBigInteger
             ' assert div.intLen > 1
             ' D1 normalize the divisor
             Dim shift As Integer =  java.lang.[Integer].numberOfLeadingZeros(div.value(div.offset))
@@ -1681,7 +1681,7 @@ Namespace java.math
         ''' value. The quotient will be placed into the provided quotient object &
         ''' the remainder object is returned.
         ''' </summary>
-        Private Function divideLongMagnitude(ByVal ldivisor As Long, ByVal quotient As MutableBigInteger) As MutableBigInteger
+        Private Function divideLongMagnitude(  ldivisor As Long,   quotient As MutableBigInteger) As MutableBigInteger
             ' Remainder starts as dividend with space for a leading zero
             Dim [rem] As New MutableBigInteger(New Integer(intLen) {})
             Array.Copy(value, offset, [rem].value, 1, intLen)
@@ -1789,7 +1789,7 @@ Namespace java.math
         ''' Specialized version of the method divadd.
         ''' dh is a high part of the divisor, dl is a low part
         ''' </summary>
-        Private Function divaddLong(ByVal dh As Integer, ByVal dl As Integer, ByVal result As Integer(), ByVal offset As Integer) As Integer
+        Private Function divaddLong(  dh As Integer,   dl As Integer,   result As Integer(),   offset As Integer) As Integer
             Dim carry As Long = 0
 
             Dim sum As Long = (dl And LONG_MASK) + (result(1 + offset) And LONG_MASK)
@@ -1806,7 +1806,7 @@ Namespace java.math
         ''' Specialized version of the method sulsub.
         ''' dh is a high part of the divisor, dl is a low part
         ''' </summary>
-        Private Function mulsubLong(ByVal q As Integer(), ByVal dh As Integer, ByVal dl As Integer, ByVal x As Integer, ByVal offset As Integer) As Integer
+        Private Function mulsubLong(  q As Integer(),   dh As Integer,   dl As Integer,   x As Integer,   offset As Integer) As Integer
             Dim xLong As Long = x And LONG_MASK
             offset += 2
             Dim product As Long = (dl And LONG_MASK) * xLong
@@ -1826,7 +1826,7 @@ Namespace java.math
         ''' Compare two longs as if they were unsigned.
         ''' Returns true iff one is bigger than two.
         ''' </summary>
-        Private Function unsignedLongCompare(ByVal one As Long, ByVal two As Long) As Boolean
+        Private Function unsignedLongCompare(  one As Long,   two As Long) As Boolean
             Return (one + java.lang.[Long].MIN_VALUE) > (two + java.lang.[Long].MIN_VALUE)
         End Function
 
@@ -1837,7 +1837,7 @@ Namespace java.math
         ''' Returns long value where high 32 bits contain remainder value and
         ''' low 32 bits contain quotient value.
         ''' </summary>
-        Friend Shared Function divWord(ByVal n As Long, ByVal d As Integer) As Long
+        Friend Shared Function divWord(  n As Long,   d As Integer) As Long
             Dim dLong As Long = d And LONG_MASK
             Dim r As Long
             Dim q As Long
@@ -1867,7 +1867,7 @@ Namespace java.math
         ''' <summary>
         ''' Calculate GCD of this and b. This and b are changed by the computation.
         ''' </summary>
-        Friend Overridable Function hybridGCD(ByVal b As MutableBigInteger) As MutableBigInteger
+        Friend Overridable Function hybridGCD(  b As MutableBigInteger) As MutableBigInteger
             ' Use Euclid's algorithm until the numbers are approximately the
             ' same length, then use the binary GCD algorithm to find the GCD.
             Dim a As MutableBigInteger = Me
@@ -1887,7 +1887,7 @@ Namespace java.math
         ''' Calculate GCD of this and v.
         ''' Assumes that this and v are not zero.
         ''' </summary>
-        Private Function binaryGCD(ByVal v As MutableBigInteger) As MutableBigInteger
+        Private Function binaryGCD(  v As MutableBigInteger) As MutableBigInteger
             ' Algorithm B from Knuth section 4.5.2
             Dim u As MutableBigInteger = Me
             Dim r As New MutableBigInteger
@@ -1944,7 +1944,7 @@ Namespace java.math
         ''' <summary>
         ''' Calculate GCD of a and b interpreted as unsigned integers.
         ''' </summary>
-        Friend Shared Function binaryGcd(ByVal a As Integer, ByVal b As Integer) As Integer
+        Friend Shared Function binaryGcd(  a As Integer,   b As Integer) As Integer
             If b = 0 Then Return a
             If a = 0 Then Return b
 
@@ -1972,7 +1972,7 @@ Namespace java.math
         ''' Returns the modInverse of this mod p. This and p are not affected by
         ''' the operation.
         ''' </summary>
-        Friend Overridable Function mutableModInverse(ByVal p As MutableBigInteger) As MutableBigInteger
+        Friend Overridable Function mutableModInverse(  p As MutableBigInteger) As MutableBigInteger
             ' Modulus is odd, use Schroeppel's algorithm
             If p.odd Then Return modInverse(p)
 
@@ -2015,7 +2015,7 @@ Namespace java.math
         '    
         '     * Calculate the multiplicative inverse of this mod 2^k.
         '     
-        Friend Overridable Function modInverseMP2(ByVal k As Integer) As MutableBigInteger
+        Friend Overridable Function modInverseMP2(  k As Integer) As MutableBigInteger
             If even Then Throw New java.lang.ArithmeticException("Non-invertible. (GCD != 1)")
 
             If k > 64 Then Return euclidModInverse(k)
@@ -2044,7 +2044,7 @@ Namespace java.math
         ''' <summary>
         ''' Returns the multiplicative inverse of val mod 2^32.  Assumes val is odd.
         ''' </summary>
-        Friend Shared Function inverseMod32(ByVal val As Integer) As Integer
+        Friend Shared Function inverseMod32(  val As Integer) As Integer
             ' Newton's iteration!
             Dim t As Integer = val
             t *= 2 - val * t
@@ -2057,7 +2057,7 @@ Namespace java.math
         ''' <summary>
         ''' Calculate the multiplicative inverse of 2^k mod mod, where mod is odd.
         ''' </summary>
-        Shared Function modInverseBP2(ByVal [mod] As MutableBigInteger, ByVal k As Integer) As MutableBigInteger
+        Shared Function modInverseBP2(  [mod] As MutableBigInteger,   k As Integer) As MutableBigInteger
             ' Copy the mod to protect original
             Return fixup(New MutableBigInteger(1), New MutableBigInteger([mod]), k)
         End Function
@@ -2071,7 +2071,7 @@ Namespace java.math
         ''' ("Montgomery Form").  The algorithm is described in an unpublished
         ''' manuscript entitled "Fast Modular Reciprocals."
         ''' </summary>
-        Private Function modInverse(ByVal [mod] As MutableBigInteger) As MutableBigInteger
+        Private Function modInverse(  [mod] As MutableBigInteger) As MutableBigInteger
             Dim p As New MutableBigInteger([mod])
             Dim f As New MutableBigInteger(Me)
             Dim g As New MutableBigInteger(p)
@@ -2132,7 +2132,7 @@ Namespace java.math
         ''' Calculates X such that X = C * 2^(-k) (mod P)
         ''' Assumes C<P and P is odd.
         ''' </summary>
-        Shared Function fixup(ByVal c As MutableBigInteger, ByVal p As MutableBigInteger, ByVal k As Integer) As MutableBigInteger
+        Shared Function fixup(  c As MutableBigInteger,   p As MutableBigInteger,   k As Integer) As MutableBigInteger
             Dim temp As New MutableBigInteger
             ' Set r to the multiplicative inverse of p mod 2^32
             Dim r As Integer = -inverseMod32(p.value(p.offset + p.intLen - 1))
@@ -2173,7 +2173,7 @@ Namespace java.math
         ''' Uses the extended Euclidean algorithm to compute the modInverse of base
         ''' mod a modulus that is a power of 2. The modulus is 2^k.
         ''' </summary>
-        Friend Overridable Function euclidModInverse(ByVal k As Integer) As MutableBigInteger
+        Friend Overridable Function euclidModInverse(  k As Integer) As MutableBigInteger
             Dim b As New MutableBigInteger(1)
             b.leftShift(k)
             Dim [mod] As New MutableBigInteger(b)

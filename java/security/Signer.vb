@@ -71,7 +71,7 @@ Namespace java.security
 		''' Creates a signer with the specified identity name.
 		''' </summary>
 		''' <param name="name"> the identity name. </param>
-		Public Sub New(ByVal name As String)
+		Public Sub New(  name As String)
 			MyBase.New(name)
 		End Sub
 
@@ -84,7 +84,7 @@ Namespace java.security
 		''' </param>
 		''' <exception cref="KeyManagementException"> if there is already an identity
 		''' with the same name in the scope. </exception>
-		Public Sub New(ByVal name As String, ByVal scope As IdentityScope)
+		Public Sub New(  name As String,   scope As IdentityScope)
 			MyBase.New(name, scope)
 		End Sub
 
@@ -129,7 +129,7 @@ Namespace java.security
 	   ''' </exception>
 	   ''' <seealso cref= SecurityManager#checkSecurityAccess </seealso>
 		Public Property keyPair As KeyPair
-			Set(ByVal pair As KeyPair)
+			Set(  pair As KeyPair)
 				check("setSignerKeyPair")
 				Dim pub As PublicKey = pair.public
 				Dim priv As PrivateKey = pair.private
@@ -173,7 +173,7 @@ Namespace java.security
 			Return "[Signer]" & MyBase.ToString()
 		End Function
 
-		Private Shared Sub check(ByVal directive As String)
+		Private Shared Sub check(  directive As String)
 			Dim security_Renamed As SecurityManager = System.securityManager
 			If security_Renamed IsNot Nothing Then security_Renamed.checkSecurityAccess(directive)
 		End Sub

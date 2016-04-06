@@ -927,7 +927,7 @@ Namespace java.awt
                 Debug.Assert(Thread.holdsLock(treeLock))
                 Return boundsOp
             End Get
-            Set(ByVal op As Integer)
+            Set(  op As Integer)
                 Debug.Assert(Thread.holdsLock(treeLock))
                 If op = java.awt.peer.ComponentPeer.RESET_OPERATION Then
                     boundsOp = java.awt.peer.ComponentPeer.DEFAULT_OPERATION
@@ -987,7 +987,7 @@ Namespace java.awt
                 End If
                 Return name
             End Get
-            Set(ByVal name As String)
+            Set(  name As String)
                 Dim oldName As String
                 SyncLock objectLock
                     oldName = Me.name
@@ -1048,7 +1048,7 @@ Namespace java.awt
 
         <MethodImpl(MethodImplOptions.Synchronized)>
         Public Overridable Property dropTarget As java.awt.dnd.DropTarget
-            Set(ByVal dt As java.awt.dnd.DropTarget)
+            Set(  dt As java.awt.dnd.DropTarget)
                 If dt Is dropTarget OrElse (dropTarget IsNot Nothing AndAlso dropTarget.Equals(dt)) Then Return
 
                 Dim old As java.awt.dnd.DropTarget
@@ -1114,7 +1114,7 @@ Namespace java.awt
                     Return graphicsConfiguration_NoClientCode
                 End SyncLock
             End Get
-            Set(ByVal gc As GraphicsConfiguration)
+            Set(  gc As GraphicsConfiguration)
                 SyncLock treeLock
                     If updateGraphicsData(gc) Then
                         removeNotify()
@@ -1131,7 +1131,7 @@ Namespace java.awt
         End Property
 
 
-        Friend Overridable Function updateGraphicsData(ByVal gc As GraphicsConfiguration) As Boolean
+        Friend Overridable Function updateGraphicsData(  gc As GraphicsConfiguration) As Boolean
             checkTreeLock()
 
             If graphicsConfig Is gc Then Return False
@@ -1147,7 +1147,7 @@ Namespace java.awt
         ''' Checks that this component's <code>GraphicsDevice</code>
         ''' <code>idString</code> matches the string argument.
         ''' </summary>
-        Friend Overridable Sub checkGD(ByVal stringID As String)
+        Friend Overridable Sub checkGD(  stringID As String)
             If graphicsConfig IsNot Nothing Then
                 If Not graphicsConfig.device.iDstring.Equals(stringID) Then Throw New IllegalArgumentException("adding a container to a container on a different GraphicsDevice")
             End If
@@ -1293,7 +1293,7 @@ Namespace java.awt
         ''' Translates absolute coordinates into coordinates in the coordinate
         ''' space of this component.
         ''' </summary>
-        Friend Overridable Function pointRelativeToComponent(ByVal absolute As Point) As Point
+        Friend Overridable Function pointRelativeToComponent(  absolute As Point) As Point
             Dim compCoords As Point = locationOnScreen
             Return New Point(absolute.x - compCoords.x, absolute.y - compCoords.y)
         End Function
@@ -1307,7 +1307,7 @@ Namespace java.awt
         ''' tree lock, as it is done in Component.getMousePosition() and
         ''' Container.getMousePosition(boolean).
         ''' </summary>
-        Friend Overridable Function findUnderMouseInWindow(ByVal pi As PointerInfo) As Component
+        Friend Overridable Function findUnderMouseInWindow(  pi As PointerInfo) As Component
             If Not showing Then Return Nothing
             Dim win As Window = containingWindow
             If Not toolkit.defaultToolkit.mouseInfoPeer.isWindowUnderMouse(win) Then Return Nothing
@@ -1369,7 +1369,7 @@ Namespace java.awt
         ''' <summary>
         ''' Overridden in Container. Must be called under TreeLock.
         ''' </summary>
-        Friend Overridable Function isSameOrAncestorOf(ByVal comp As Component, ByVal allowChildren As Boolean) As Boolean
+        Friend Overridable Function isSameOrAncestorOf(  comp As Component,   allowChildren As Boolean) As Boolean
             Return comp Is Me
         End Function
 
@@ -1413,7 +1413,7 @@ Namespace java.awt
             Get
                 Return enabledImpl
             End Get
-            Set(ByVal b As Boolean)
+            Set(  b As Boolean)
                 enable(b)
             End Set
         End Property
@@ -1449,7 +1449,7 @@ Namespace java.awt
         ''' @deprecated As of JDK version 1.1,
         ''' replaced by <code>setEnabled(boolean)</code>. 
         <Obsolete("As of JDK version 1.1,")>
-        Public Overridable Sub enable(ByVal b As Boolean)
+        Public Overridable Sub enable(  b As Boolean)
             If b Then
                 enable()
             Else
@@ -1501,7 +1501,7 @@ Namespace java.awt
         ''' <param name="enable"> true to enable, false to disable </param>
         ''' <seealso cref= #processKeyEvent
         ''' @since 1.2 </seealso>
-        Public Overridable Sub enableInputMethods(ByVal enable As Boolean)
+        Public Overridable Sub enableInputMethods(  enable As Boolean)
             If enable Then
                 If (eventMask And AWTEvent.INPUT_METHODS_ENABLED_MASK) <> 0 Then Return
 
@@ -1542,7 +1542,7 @@ Namespace java.awt
         ''' <seealso cref= #invalidate
         ''' @since JDK1.1 </seealso>
         Public Overridable Property visible As Boolean
-            Set(ByVal b As Boolean)
+            Set(  b As Boolean)
                 show(b)
             End Set
         End Property
@@ -1576,7 +1576,7 @@ Namespace java.awt
         ''' @deprecated As of JDK version 1.1,
         ''' replaced by <code>setVisible(boolean)</code>. 
         <Obsolete("As of JDK version 1.1,")>
-        Public Overridable Sub show(ByVal b As Boolean)
+        Public Overridable Sub show(  b As Boolean)
             If b Then
                 show()
             Else
@@ -1643,7 +1643,7 @@ Namespace java.awt
                 Dim parent_Renamed As Container = Me.parent
                 Return If(parent_Renamed IsNot Nothing, parent_Renamed.foreground, Nothing)
             End Get
-            Set(ByVal c As color)
+            Set(  c As color)
                 Dim oldColor As color = foreground
                 Dim peer_Renamed As java.awt.peer.ComponentPeer = Me.peer
                 foreground = c
@@ -1687,7 +1687,7 @@ Namespace java.awt
                 Dim parent_Renamed As Container = Me.parent
                 Return If(parent_Renamed IsNot Nothing, parent_Renamed.background, Nothing)
             End Get
-            Set(ByVal c As color)
+            Set(  c As color)
                 Dim oldColor As color = background
                 Dim peer_Renamed As java.awt.peer.ComponentPeer = Me.peer
                 background = c
@@ -1727,7 +1727,7 @@ Namespace java.awt
             Get
                 Return font_NoClientCode
             End Get
-            Set(ByVal f As font)
+            Set(  f As font)
                 Dim oldFont, newFont As font
                 SyncLock treeLock
                     oldFont = font
@@ -1803,7 +1803,7 @@ Namespace java.awt
                     Return parent_Renamed.locale
                 End If
             End Get
-            Set(ByVal l As java.util.Locale)
+            Set(  l As java.util.Locale)
                 Dim oldValue As java.util.Locale = locale
                 locale = l
 
@@ -1862,7 +1862,7 @@ Namespace java.awt
             Get
                 Return location()
             End Get
-            Set(ByVal p As Point)
+            Set(  p As Point)
         End Property
 
         ''' <summary>
@@ -1942,14 +1942,14 @@ Namespace java.awt
         ''' <seealso cref= #setBounds </seealso>
         ''' <seealso cref= #invalidate
         ''' @since JDK1.1 </seealso>
-        Public Overridable Sub setLocation(ByVal x As Integer, ByVal y As Integer)
+        Public Overridable Sub setLocation(  x As Integer,   y As Integer)
             move(x, y)
         End Sub
 
         ''' @deprecated As of JDK version 1.1,
         ''' replaced by <code>setLocation(int, int)</code>. 
         <Obsolete("As of JDK version 1.1,")>
-        Public Overridable Sub move(ByVal x As Integer, ByVal y As Integer)
+        Public Overridable Sub move(  x As Integer,   y As Integer)
             SyncLock treeLock
                 boundsOp = java.awt.peer.ComponentPeer.SET_LOCATION
                 boundsnds(x, y, width, height)
@@ -1976,7 +1976,7 @@ Namespace java.awt
             Get
                 Return size()
             End Get
-            Set(ByVal d As Dimension)
+            Set(  d As Dimension)
         End Property
 
         ''' @deprecated As of JDK version 1.1,
@@ -1999,14 +1999,14 @@ Namespace java.awt
         ''' <seealso cref= #setBounds </seealso>
         ''' <seealso cref= #invalidate
         ''' @since JDK1.1 </seealso>
-        Public Overridable Sub setSize(ByVal width As Integer, ByVal height As Integer)
+        Public Overridable Sub setSize(  width As Integer,   height As Integer)
             resize(width, height)
         End Sub
 
         ''' @deprecated As of JDK version 1.1,
         ''' replaced by <code>setSize(int, int)</code>. 
         <Obsolete("As of JDK version 1.1,")>
-        Public Overridable Sub resize(ByVal width As Integer, ByVal height As Integer)
+        Public Overridable Sub resize(  width As Integer,   height As Integer)
             SyncLock treeLock
                 boundsOp = java.awt.peer.ComponentPeer.SET_SIZE
                 boundsnds(x, y, width, height)
@@ -2019,7 +2019,7 @@ Namespace java.awt
         ''' @deprecated As of JDK version 1.1,
         ''' replaced by <code>setSize(Dimension)</code>. 
         <Obsolete("As of JDK version 1.1,")>
-        Public Overridable Sub resize(ByVal d As Dimension)
+        Public Overridable Sub resize(  d As Dimension)
             sizeize(d.width, d.height)
         End Sub
 
@@ -2036,7 +2036,7 @@ Namespace java.awt
             Get
                 Return bounds()
             End Get
-            Set(ByVal r As Rectangle)
+            Set(  r As Rectangle)
                 boundsnds(r.x, r.y, r.width, r.height)
             End Set
         End Property
@@ -2068,14 +2068,14 @@ Namespace java.awt
         ''' <seealso cref= #setSize(Dimension) </seealso>
         ''' <seealso cref= #invalidate
         ''' @since JDK1.1 </seealso>
-        Public Overridable Sub setBounds(ByVal x As Integer, ByVal y As Integer, ByVal width As Integer, ByVal height As Integer)
+        Public Overridable Sub setBounds(  x As Integer,   y As Integer,   width As Integer,   height As Integer)
             reshape(x, y, width, height)
         End Sub
 
         ''' @deprecated As of JDK version 1.1,
         ''' replaced by <code>setBounds(int, int, int, int)</code>. 
         <Obsolete("As of JDK version 1.1,")>
-        Public Overridable Sub reshape(ByVal x As Integer, ByVal y As Integer, ByVal width As Integer, ByVal height As Integer)
+        Public Overridable Sub reshape(  x As Integer,   y As Integer,   width As Integer,   height As Integer)
             SyncLock treeLock
                 Try
                     boundsOp = java.awt.peer.ComponentPeer.SET_BOUNDS
@@ -2119,7 +2119,7 @@ Namespace java.awt
             End SyncLock
         End Sub
 
-        Private Sub repaintParentIfNeeded(ByVal oldX As Integer, ByVal oldY As Integer, ByVal oldWidth As Integer, ByVal oldHeight As Integer)
+        Private Sub repaintParentIfNeeded(  oldX As Integer,   oldY As Integer,   oldWidth As Integer,   oldHeight As Integer)
             If parent IsNot Nothing AndAlso TypeOf peer Is java.awt.peer.LightweightPeer AndAlso showing Then
                 ' Have the parent redraw the area this component occupied.
                 parent.repaint(oldX, oldY, oldWidth, oldHeight)
@@ -2128,7 +2128,7 @@ Namespace java.awt
             End If
         End Sub
 
-        Private Sub reshapeNativePeer(ByVal x As Integer, ByVal y As Integer, ByVal width As Integer, ByVal height As Integer, ByVal op As Integer)
+        Private Sub reshapeNativePeer(  x As Integer,   y As Integer,   width As Integer,   height As Integer,   op As Integer)
             ' native peer might be offset by more than direct
             ' parent since parent might be lightweight.
             Dim nativeX As Integer = x
@@ -2143,7 +2143,7 @@ Namespace java.awt
         End Sub
 
         'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-        Private Sub notifyNewBounds(ByVal resized As Boolean, ByVal moved As Boolean)
+        Private Sub notifyNewBounds(  resized As Boolean,   moved As Boolean)
             If componentListener IsNot Nothing OrElse (eventMask And AWTEvent.COMPONENT_EVENT_MASK) <> 0 OrElse Toolkit.enabledOnToolkit(AWTEvent.COMPONENT_EVENT_MASK) Then
                 If resized Then
                     Dim e As New ComponentEvent(Me, ComponentEvent.COMPONENT_RESIZED)
@@ -2235,7 +2235,7 @@ Namespace java.awt
         ''' </summary>
         ''' <param name="rv"> the return value, modified to the components bounds </param>
         ''' <returns> rv </returns>
-        Public Overridable Function getBounds(ByVal rv As Rectangle) As Rectangle
+        Public Overridable Function getBounds(  rv As Rectangle) As Rectangle
             If rv Is Nothing Then
                 Return New Rectangle(x, y, width, height)
             Else
@@ -2253,7 +2253,7 @@ Namespace java.awt
         ''' </summary>
         ''' <param name="rv"> the return value, modified to the components size </param>
         ''' <returns> rv </returns>
-        Public Overridable Function getSize(ByVal rv As Dimension) As Dimension
+        Public Overridable Function getSize(  rv As Dimension) As Dimension
             If rv Is Nothing Then
                 Return New Dimension(width, height)
             Else
@@ -2272,7 +2272,7 @@ Namespace java.awt
         ''' </summary>
         ''' <param name="rv"> the return value, modified to the components location </param>
         ''' <returns> rv </returns>
-        Public Overridable Function getLocation(ByVal rv As Point) As Point
+        Public Overridable Function getLocation(  rv As Point) As Point
             If rv Is Nothing Then
                 Return New Point(x, y)
             Else
@@ -2341,9 +2341,9 @@ Namespace java.awt
         ''' <seealso cref= #isPreferredSizeSet
         ''' @since 1.5 </seealso>
         'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
-        Public Overridable Sub setPreferredSize(ByVal preferredSize As Dimension) 'JavaToDotNetTempPropertySetpreferredSize
+        Public Overridable Sub setPreferredSize(  preferredSize As Dimension) 'JavaToDotNetTempPropertySetpreferredSize
         Public Overridable Property preferredSize As Dimension
-            Set(ByVal preferredSize As Dimension)
+            Set(  preferredSize As Dimension)
                 Dim old As Dimension
                 ' If the preferred size was set, use it as the old value, otherwise
                 ' use null to indicate we didn't previously have a set preferred
@@ -2407,9 +2407,9 @@ Namespace java.awt
         ''' <seealso cref= #isMinimumSizeSet
         ''' @since 1.5 </seealso>
         'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
-        Public Overridable Sub setMinimumSize(ByVal minimumSize As Dimension) 'JavaToDotNetTempPropertySetminimumSize
+        Public Overridable Sub setMinimumSize(  minimumSize As Dimension) 'JavaToDotNetTempPropertySetminimumSize
         Public Overridable Property minimumSize As Dimension
-            Set(ByVal minimumSize As Dimension)
+            Set(  minimumSize As Dimension)
                 Dim old As Dimension
                 ' If the minimum size was set, use it as the old value, otherwise
                 ' use null to indicate we didn't previously have a set minimum
@@ -2471,9 +2471,9 @@ Namespace java.awt
         ''' <seealso cref= #isMaximumSizeSet
         ''' @since 1.5 </seealso>
         'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
-        Public Overridable Sub setMaximumSize(ByVal maximumSize As Dimension) 'JavaToDotNetTempPropertySetmaximumSize
+        Public Overridable Sub setMaximumSize(  maximumSize As Dimension) 'JavaToDotNetTempPropertySetmaximumSize
         Public Overridable Property maximumSize As Dimension
-            Set(ByVal maximumSize As Dimension)
+            Set(  maximumSize As Dimension)
                 ' If the maximum size was set, use it as the old value, otherwise
                 ' use null to indicate we didn't previously have a set maximum
                 ' size.
@@ -2556,7 +2556,7 @@ Namespace java.awt
         ''' <seealso cref= #getBaselineResizeBehavior </seealso>
         ''' <seealso cref= java.awt.FontMetrics
         ''' @since 1.6 </seealso>
-        Public Overridable Function getBaseline(ByVal width As Integer, ByVal height As Integer) As Integer
+        Public Overridable Function getBaseline(  width As Integer,   height As Integer) As Integer
             If width < 0 OrElse height < 0 Then Throw New IllegalArgumentException("Width and height must be >= 0")
             Return -1
         End Function
@@ -2800,7 +2800,7 @@ Namespace java.awt
         ''' <seealso cref=       java.awt.peer.ComponentPeer#getFontMetrics(Font) </seealso>
         ''' <seealso cref=       Toolkit#getFontMetrics(Font)
         ''' @since     JDK1.0 </seealso>
-        Public Overridable Function getFontMetrics(ByVal font_Renamed As font) As FontMetrics
+        Public Overridable Function getFontMetrics(  font_Renamed As font) As FontMetrics
             ' This is an unsupported hack, but left in for a customer.
             ' Do not remove.
             Dim fm As sun.font.FontManager = sun.font.FontManagerFactory.instance
@@ -2836,7 +2836,7 @@ Namespace java.awt
         ''' <seealso cref=       Cursor
         ''' @since     JDK1.1 </seealso>
         Public Overridable Property cursor As Cursor
-            Set(ByVal cursor_Renamed As Cursor)
+            Set(  cursor_Renamed As Cursor)
                 Me.cursor = cursor_Renamed
                 updateCursorImmediately()
             End Set
@@ -2914,7 +2914,7 @@ Namespace java.awt
         ''' <param name="g"> the graphics context to use for painting </param>
         ''' <seealso cref=       #update
         ''' @since     JDK1.0 </seealso>
-        Public Overridable Sub paint(ByVal g As Graphics)
+        Public Overridable Sub paint(  g As Graphics)
         End Sub
 
         ''' <summary>
@@ -2949,7 +2949,7 @@ Namespace java.awt
         ''' <seealso cref=       #paint </seealso>
         ''' <seealso cref=       #repaint()
         ''' @since     JDK1.0 </seealso>
-        Public Overridable Sub update(ByVal g As Graphics)
+        Public Overridable Sub update(  g As Graphics)
             paint(g)
         End Sub
 
@@ -2964,7 +2964,7 @@ Namespace java.awt
         ''' <param name="g">   the graphics context to use for painting </param>
         ''' <seealso cref=       #paint
         ''' @since     JDK1.0 </seealso>
-        Public Overridable Sub paintAll(ByVal g As Graphics)
+        Public Overridable Sub paintAll(  g As Graphics)
             If showing Then GraphicsCallback.PeerPaintCallback.instance.runOneComponent(Me, New Rectangle(0, 0, width, height), g, g.clip, GraphicsCallback.LIGHTWEIGHTS Or GraphicsCallback.HEAVYWEIGHTS)
         End Sub
 
@@ -2973,14 +2973,14 @@ Namespace java.awt
         ''' lightweight Components. </summary>
         ''' <param name="g">   the graphics context to use for painting </param>
         ''' <seealso cref=       #paintAll </seealso>
-        Friend Overridable Sub lightweightPaint(ByVal g As Graphics)
+        Friend Overridable Sub lightweightPaint(  g As Graphics)
             paint(g)
         End Sub
 
         ''' <summary>
         ''' Paints all the heavyweight subcomponents.
         ''' </summary>
-        Friend Overridable Sub paintHeavyweightComponents(ByVal g As Graphics)
+        Friend Overridable Sub paintHeavyweightComponents(  g As Graphics)
         End Sub
 
         ''' <summary>
@@ -3018,7 +3018,7 @@ Namespace java.awt
         ''' <seealso cref= #paint </seealso>
         ''' <seealso cref= #update(Graphics)
         ''' @since JDK1.0 </seealso>
-        Public Overridable Sub repaint(ByVal tm As Long)
+        Public Overridable Sub repaint(  tm As Long)
             repaint(tm, 0, 0, width, height)
         End Sub
 
@@ -3041,7 +3041,7 @@ Namespace java.awt
         ''' <param name="height">  the height </param>
         ''' <seealso cref=       #update(Graphics)
         ''' @since     JDK1.0 </seealso>
-        Public Overridable Sub repaint(ByVal x As Integer, ByVal y As Integer, ByVal width As Integer, ByVal height As Integer)
+        Public Overridable Sub repaint(  x As Integer,   y As Integer,   width As Integer,   height As Integer)
             repaint(0, x, y, width, height)
         End Sub
 
@@ -3066,7 +3066,7 @@ Namespace java.awt
         ''' <param name="height">   the height </param>
         ''' <seealso cref=       #update(Graphics)
         ''' @since     JDK1.0 </seealso>
-        Public Overridable Sub repaint(ByVal tm As Long, ByVal x As Integer, ByVal y As Integer, ByVal width As Integer, ByVal height As Integer)
+        Public Overridable Sub repaint(  tm As Long,   x As Integer,   y As Integer,   width As Integer,   height As Integer)
             If TypeOf Me.peer Is java.awt.peer.LightweightPeer Then
                 ' Needs to be translated to parent coordinates since
                 ' a parent native container provides the actual repaint
@@ -3114,7 +3114,7 @@ Namespace java.awt
         ''' <param name="g">   the graphics context to use for printing </param>
         ''' <seealso cref=       #paint(Graphics)
         ''' @since     JDK1.0 </seealso>
-        Public Overridable Sub print(ByVal g As Graphics)
+        Public Overridable Sub print(  g As Graphics)
             paint(g)
         End Sub
 
@@ -3128,7 +3128,7 @@ Namespace java.awt
         ''' <param name="g">   the graphics context to use for printing </param>
         ''' <seealso cref=       #print(Graphics)
         ''' @since     JDK1.0 </seealso>
-        Public Overridable Sub printAll(ByVal g As Graphics)
+        Public Overridable Sub printAll(  g As Graphics)
             If showing Then GraphicsCallback.PeerPrintCallback.instance.runOneComponent(Me, New Rectangle(0, 0, width, height), g, g.clip, GraphicsCallback.LIGHTWEIGHTS Or GraphicsCallback.HEAVYWEIGHTS)
         End Sub
 
@@ -3137,14 +3137,14 @@ Namespace java.awt
         ''' lightweight Components. </summary>
         ''' <param name="g">   the graphics context to use for printing </param>
         ''' <seealso cref=       #printAll </seealso>
-        Friend Overridable Sub lightweightPrint(ByVal g As Graphics)
+        Friend Overridable Sub lightweightPrint(  g As Graphics)
             print(g)
         End Sub
 
         ''' <summary>
         ''' Prints all the heavyweight subcomponents.
         ''' </summary>
-        Friend Overridable Sub printHeavyweightComponents(ByVal g As Graphics)
+        Friend Overridable Sub printHeavyweightComponents(  g As Graphics)
         End Sub
 
         Private Property insets_NoClientCode As Insets
@@ -3200,7 +3200,7 @@ Namespace java.awt
         ''' <seealso cref=     Graphics#drawImage(Image, int, int, int, int, java.awt.image.ImageObserver) </seealso>
         ''' <seealso cref=     java.awt.image.ImageObserver#imageUpdate(java.awt.Image, int, int, int, int, int)
         ''' @since   JDK1.0 </seealso>
-        Public Overridable Function imageUpdate(ByVal img As image, ByVal infoflags As Integer, ByVal x As Integer, ByVal y As Integer, ByVal w As Integer, ByVal h As Integer) As Boolean
+        Public Overridable Function imageUpdate(  img As image,   infoflags As Integer,   x As Integer,   y As Integer,   w As Integer,   h As Integer) As Boolean
             Dim rate As Integer = -1
             If (infoflags And (FRAMEBITS Or ALLBITS)) <> 0 Then
                 rate = 0
@@ -3219,7 +3219,7 @@ Namespace java.awt
         ''' <param name="producer">  the image producer </param>
         ''' <returns>    the image produced
         ''' @since     JDK1.0 </returns>
-        Public Overridable Function createImage(ByVal producer As java.awt.image.ImageProducer) As image
+        Public Overridable Function createImage(  producer As java.awt.image.ImageProducer) As image
             Dim peer_Renamed As java.awt.peer.ComponentPeer = Me.peer
             If (peer_Renamed IsNot Nothing) AndAlso Not (TypeOf peer_Renamed Is java.awt.peer.LightweightPeer) Then Return peer_Renamed.createImage(producer)
             Return toolkit.createImage(producer)
@@ -3238,7 +3238,7 @@ Namespace java.awt
         ''' <seealso cref= #isDisplayable </seealso>
         ''' <seealso cref= GraphicsEnvironment#isHeadless
         ''' @since     JDK1.0 </seealso>
-        Public Overridable Function createImage(ByVal width As Integer, ByVal height As Integer) As image
+        Public Overridable Function createImage(  width As Integer,   height As Integer) As image
             Dim peer_Renamed As java.awt.peer.ComponentPeer = Me.peer
             If TypeOf peer_Renamed Is java.awt.peer.LightweightPeer Then
                 If parent IsNot Nothing Then
@@ -3265,7 +3265,7 @@ Namespace java.awt
         ''' <seealso cref= #isDisplayable </seealso>
         ''' <seealso cref= GraphicsEnvironment#isHeadless
         ''' @since     1.4 </seealso>
-        Public Overridable Function createVolatileImage(ByVal width As Integer, ByVal height As Integer) As java.awt.image.VolatileImage
+        Public Overridable Function createVolatileImage(  width As Integer,   height As Integer) As java.awt.image.VolatileImage
             Dim peer_Renamed As java.awt.peer.ComponentPeer = Me.peer
             If TypeOf peer_Renamed Is java.awt.peer.LightweightPeer Then
                 If parent IsNot Nothing Then
@@ -3292,7 +3292,7 @@ Namespace java.awt
         ''' to manage surface contents loss and capabilities. </returns>
         ''' <seealso cref= java.awt.image.VolatileImage
         ''' @since 1.4 </seealso>
-        Public Overridable Function createVolatileImage(ByVal width As Integer, ByVal height As Integer, ByVal caps As ImageCapabilities) As java.awt.image.VolatileImage
+        Public Overridable Function createVolatileImage(  width As Integer,   height As Integer,   caps As ImageCapabilities) As java.awt.image.VolatileImage
             ' REMIND : check caps
             Return createVolatileImage(width, height)
         End Function
@@ -3308,7 +3308,7 @@ Namespace java.awt
         ''' <returns>    <code>true</code> if the image has already been fully
         '''           prepared; <code>false</code> otherwise
         ''' @since     JDK1.0 </returns>
-        Public Overridable Function prepareImage(ByVal image_Renamed As image, ByVal observer As java.awt.image.ImageObserver) As Boolean
+        Public Overridable Function prepareImage(  image_Renamed As image,   observer As java.awt.image.ImageObserver) As Boolean
             Return prepareImage(image_Renamed, -1, -1, observer)
         End Function
 
@@ -3329,7 +3329,7 @@ Namespace java.awt
         '''          prepared; <code>false</code> otherwise </returns>
         ''' <seealso cref=       java.awt.image.ImageObserver
         ''' @since     JDK1.0 </seealso>
-        Public Overridable Function prepareImage(ByVal image_Renamed As image, ByVal width As Integer, ByVal height As Integer, ByVal observer As java.awt.image.ImageObserver) As Boolean
+        Public Overridable Function prepareImage(  image_Renamed As image,   width As Integer,   height As Integer,   observer As java.awt.image.ImageObserver) As Boolean
             Dim peer_Renamed As java.awt.peer.ComponentPeer = Me.peer
             If TypeOf peer_Renamed Is java.awt.peer.LightweightPeer Then
                 Return If(parent IsNot Nothing, parent.prepareImage(image_Renamed, width, height, observer), toolkit.prepareImage(image_Renamed, width, height, observer))
@@ -3359,7 +3359,7 @@ Namespace java.awt
         ''' <seealso cref=      Toolkit#checkImage(Image, int, int, java.awt.image.ImageObserver) </seealso>
         ''' <seealso cref=      java.awt.image.ImageObserver
         ''' @since    JDK1.0 </seealso>
-        Public Overridable Function checkImage(ByVal image_Renamed As image, ByVal observer As java.awt.image.ImageObserver) As Integer
+        Public Overridable Function checkImage(  image_Renamed As image,   observer As java.awt.image.ImageObserver) As Integer
             Return checkImage(image_Renamed, -1, -1, observer)
         End Function
 
@@ -3394,7 +3394,7 @@ Namespace java.awt
         ''' <seealso cref=      Toolkit#checkImage(Image, int, int, java.awt.image.ImageObserver) </seealso>
         ''' <seealso cref=      java.awt.image.ImageObserver
         ''' @since    JDK1.0 </seealso>
-        Public Overridable Function checkImage(ByVal image_Renamed As image, ByVal width As Integer, ByVal height As Integer, ByVal observer As java.awt.image.ImageObserver) As Integer
+        Public Overridable Function checkImage(  image_Renamed As image,   width As Integer,   height As Integer,   observer As java.awt.image.ImageObserver) As Integer
             Dim peer_Renamed As java.awt.peer.ComponentPeer = Me.peer
             If TypeOf peer_Renamed Is java.awt.peer.LightweightPeer Then
                 Return If(parent IsNot Nothing, parent.checkImage(image_Renamed, width, height, observer), toolkit.checkImage(image_Renamed, width, height, observer))
@@ -3422,7 +3422,7 @@ Namespace java.awt
         ''' <seealso cref= Window#getBufferStrategy() </seealso>
         ''' <seealso cref= Canvas#getBufferStrategy()
         ''' @since 1.4 </seealso>
-        Friend Overridable Sub createBufferStrategy(ByVal numBuffers As Integer)
+        Friend Overridable Sub createBufferStrategy(  numBuffers As Integer)
             Dim bufferCaps As BufferCapabilities
             If numBuffers > 1 Then
                 ' Try to create a page-flipping strategy
@@ -3475,7 +3475,7 @@ Namespace java.awt
         ''' <seealso cref= Window#getBufferStrategy() </seealso>
         ''' <seealso cref= Canvas#getBufferStrategy()
         ''' @since 1.4 </seealso>
-        Friend Overridable Sub createBufferStrategy(ByVal numBuffers As Integer, ByVal caps As BufferCapabilities)
+        Friend Overridable Sub createBufferStrategy(  numBuffers As Integer,   caps As BufferCapabilities)
             ' Check arguments
             If numBuffers < 1 Then Throw New IllegalArgumentException("Number of buffers must be at least 1")
             If caps Is Nothing Then Throw New IllegalArgumentException("No capabilities specified")
@@ -3506,7 +3506,7 @@ Namespace java.awt
             Private ReadOnly outerInstance As Component
 
             Private orig As BufferCapabilities
-            Private Sub New(ByVal outerInstance As Component, ByVal orig As BufferCapabilities)
+            Private Sub New(  outerInstance As Component,   orig As BufferCapabilities)
                 Me.outerInstance = outerInstance
                 MyBase.New(orig.frontBufferCapabilities, orig.backBufferCapabilities, If(orig.flipContents Is BufferCapabilities.flipContents.BACKGROUND, BufferCapabilities.flipContents.BACKGROUND, BufferCapabilities.flipContents.COPIED))
                 Me.orig = orig
@@ -3601,7 +3601,7 @@ Namespace java.awt
             ''' or if {@code BufferCapabilities.isPageFlipping} is not
             ''' {@code true}. </exception>
             ''' <seealso cref= #createBuffers(int, BufferCapabilities) </seealso>
-            Protected Friend Sub New(ByVal outerInstance As Component, ByVal numBuffers As Integer, ByVal caps As BufferCapabilities)
+            Protected Friend Sub New(  outerInstance As Component,   numBuffers As Integer,   caps As BufferCapabilities)
                 Me.outerInstance = outerInstance
                 If Not (TypeOf Component.this Is Window) AndAlso Not (TypeOf Component.this Is Canvas) Then Throw New ClassCastException("Component must be a Canvas or Window")
                 Me.numBuffers = numBuffers
@@ -3624,7 +3624,7 @@ Namespace java.awt
             ''' or if <code>BufferCapabilities.isPageFlipping</code> is not
             ''' <code>true</code>. </exception>
             ''' <seealso cref= java.awt.BufferCapabilities#isPageFlipping() </seealso>
-            Protected Friend Overridable Sub createBuffers(ByVal numBuffers As Integer, ByVal caps As BufferCapabilities)
+            Protected Friend Overridable Sub createBuffers(  numBuffers As Integer,   caps As BufferCapabilities)
                 If numBuffers < 2 Then
                     Throw New IllegalArgumentException("Number of buffers cannot be less than two")
                 ElseIf outerInstance.peer Is Nothing Then
@@ -3698,7 +3698,7 @@ Namespace java.awt
             ''' <exception cref="IllegalStateException"> if the buffers have not yet
             ''' been created </exception>
             ''' <seealso cref= java.awt.BufferCapabilities#getFlipContents() </seealso>
-            Protected Friend Overridable Sub flip(ByVal flipAction As BufferCapabilities.FlipContents)
+            Protected Friend Overridable Sub flip(  flipAction As BufferCapabilities.FlipContents)
                 If outerInstance.peer IsNot Nothing Then
                     Dim backBuffer_Renamed As image = backBuffer
                     If backBuffer_Renamed IsNot Nothing Then outerInstance.peer.flip(0, 0, backBuffer_Renamed.getWidth(Nothing), backBuffer_Renamed.getHeight(Nothing), flipAction)
@@ -3707,7 +3707,7 @@ Namespace java.awt
                 End If
             End Sub
 
-            Friend Overridable Sub flipSubRegion(ByVal x1 As Integer, ByVal y1 As Integer, ByVal x2 As Integer, ByVal y2 As Integer, ByVal flipAction As BufferCapabilities.FlipContents)
+            Friend Overridable Sub flipSubRegion(  x1 As Integer,   y1 As Integer,   x2 As Integer,   y2 As Integer,   flipAction As BufferCapabilities.FlipContents)
                 If outerInstance.peer IsNot Nothing Then
                     outerInstance.peer.flip(x1, y1, x2, y2, flipAction)
                 Else
@@ -3756,7 +3756,7 @@ Namespace java.awt
                 revalidate(True)
             End Sub
 
-            Friend Overridable Sub revalidate(ByVal checkSize As Boolean)
+            Friend Overridable Sub revalidate(  checkSize As Boolean)
                 validatedContents = False
 
                 If checkSize AndAlso (outerInstance.width <> width OrElse outerInstance.height <> height) Then
@@ -3816,7 +3816,7 @@ Namespace java.awt
             ''' Makes specified region of the the next available buffer visible
             ''' by either blitting or flipping.
             ''' </summary>
-            Friend Overridable Sub showSubRegion(ByVal x1 As Integer, ByVal y1 As Integer, ByVal x2 As Integer, ByVal y2 As Integer)
+            Friend Overridable Sub showSubRegion(  x1 As Integer,   y1 As Integer,   x2 As Integer,   y2 As Integer)
                 flipSubRegion(x1, y1, x2, y2, caps.flipContents)
             End Sub
 
@@ -3875,7 +3875,7 @@ Namespace java.awt
             ''' <param name="numBuffers"> number of buffers to create, including the
             ''' front buffer </param>
             ''' <param name="caps"> the capabilities of the buffers </param>
-            Protected Friend Sub New(ByVal outerInstance As Component, ByVal numBuffers As Integer, ByVal caps As BufferCapabilities)
+            Protected Friend Sub New(  outerInstance As Component,   numBuffers As Integer,   caps As BufferCapabilities)
                 Me.outerInstance = outerInstance
                 Me.caps = caps
                 createBackBuffers(numBuffers - 1)
@@ -3900,7 +3900,7 @@ Namespace java.awt
             ''' <summary>
             ''' Creates the back buffers
             ''' </summary>
-            Protected Friend Overridable Sub createBackBuffers(ByVal numBuffers As Integer)
+            Protected Friend Overridable Sub createBackBuffers(  numBuffers As Integer)
                 If numBuffers = 0 Then
                     backBuffers = Nothing
                 Else
@@ -3982,7 +3982,7 @@ Namespace java.awt
             ''' methods that call this method with actual sub regions of the
             ''' buffer.
             ''' </summary>
-            Friend Overridable Sub showSubRegion(ByVal x1 As Integer, ByVal y1 As Integer, ByVal x2 As Integer, ByVal y2 As Integer)
+            Friend Overridable Sub showSubRegion(  x1 As Integer,   y1 As Integer,   x2 As Integer,   y2 As Integer)
                 If backBuffers Is Nothing Then Return
                 ' Adjust location to be relative to client area.
                 x1 -= insets.left
@@ -4013,7 +4013,7 @@ Namespace java.awt
                 revalidate(True)
             End Sub
 
-            Friend Overridable Sub revalidate(ByVal checkSize As Boolean)
+            Friend Overridable Sub revalidate(  checkSize As Boolean)
                 validatedContents = False
 
                 If backBuffers Is Nothing Then Return
@@ -4073,17 +4073,17 @@ Namespace java.awt
             Private ReadOnly outerInstance As Component
 
 
-            Protected Friend Sub New(ByVal outerInstance As Component, ByVal numBuffers As Integer, ByVal caps As BufferCapabilities)
+            Protected Friend Sub New(  outerInstance As Component,   numBuffers As Integer,   caps As BufferCapabilities)
                 Me.outerInstance = outerInstance
                 MyBase.New(numBuffers, caps)
             End Sub
 
-            Public Overridable Sub show(ByVal x1 As Integer, ByVal y1 As Integer, ByVal x2 As Integer, ByVal y2 As Integer)
+            Public Overridable Sub show(  x1 As Integer,   y1 As Integer,   x2 As Integer,   y2 As Integer)
                 showSubRegion(x1, y1, x2, y2)
             End Sub
 
             ' This is invoked by Swing on the toolkit thread.
-            Public Overridable Function showIfNotLost(ByVal x1 As Integer, ByVal y1 As Integer, ByVal x2 As Integer, ByVal y2 As Integer) As Boolean
+            Public Overridable Function showIfNotLost(  x1 As Integer,   y1 As Integer,   x2 As Integer,   y2 As Integer) As Boolean
                 If Not contentsLost() Then
                     showSubRegion(x1, y1, x2, y2)
                     Return Not contentsLost()
@@ -4105,17 +4105,17 @@ Namespace java.awt
             Private ReadOnly outerInstance As Component
 
 
-            Protected Friend Sub New(ByVal outerInstance As Component, ByVal numBuffers As Integer, ByVal caps As BufferCapabilities)
+            Protected Friend Sub New(  outerInstance As Component,   numBuffers As Integer,   caps As BufferCapabilities)
                 Me.outerInstance = outerInstance
                 MyBase.New(numBuffers, caps)
             End Sub
 
-            Public Overridable Sub show(ByVal x1 As Integer, ByVal y1 As Integer, ByVal x2 As Integer, ByVal y2 As Integer)
+            Public Overridable Sub show(  x1 As Integer,   y1 As Integer,   x2 As Integer,   y2 As Integer)
                 showSubRegion(x1, y1, x2, y2)
             End Sub
 
             ' This method is called by Swing on the toolkit thread.
-            Public Overridable Function showIfNotLost(ByVal x1 As Integer, ByVal y1 As Integer, ByVal x2 As Integer, ByVal y2 As Integer) As Boolean
+            Public Overridable Function showIfNotLost(  x1 As Integer,   y1 As Integer,   x2 As Integer,   y2 As Integer) As Boolean
                 If Not contentsLost() Then
                     showSubRegion(x1, y1, x2, y2)
                     Return Not contentsLost()
@@ -4140,7 +4140,7 @@ Namespace java.awt
 
             Private caps As BufferCapabilities
 
-            Public Sub New(ByVal outerInstance As Component, ByVal caps As BufferCapabilities)
+            Public Sub New(  outerInstance As Component,   caps As BufferCapabilities)
                 Me.outerInstance = outerInstance
                 Me.caps = caps
             End Sub
@@ -4182,7 +4182,7 @@ Namespace java.awt
         ''' <seealso cref= java.awt.image.BufferStrategy </seealso>
         ''' <seealso cref= GraphicsDevice#setFullScreenWindow </seealso>
         Public Overridable Property ignoreRepaint As Boolean
-            Set(ByVal ignoreRepaint As Boolean)
+            Set(  ignoreRepaint As Boolean)
                 Me.ignoreRepaint = ignoreRepaint
             End Set
             Get
@@ -4199,14 +4199,14 @@ Namespace java.awt
         ''' <param name="y">   the <i>y</i> coordinate of the point </param>
         ''' <seealso cref=       #getComponentAt(int, int)
         ''' @since     JDK1.1 </seealso>
-        Public Overridable Function contains(ByVal x As Integer, ByVal y As Integer) As Boolean
+        Public Overridable Function contains(  x As Integer,   y As Integer) As Boolean
             Return inside(x, y)
         End Function
 
         ''' @deprecated As of JDK version 1.1,
         ''' replaced by contains(int, int). 
         <Obsolete("As of JDK version 1.1,")>
-        Public Overridable Function inside(ByVal x As Integer, ByVal y As Integer) As Boolean
+        Public Overridable Function inside(  x As Integer,   y As Integer) As Boolean
             Return (x >= 0) AndAlso (x < width) AndAlso (y >= 0) AndAlso (y < height)
         End Function
 
@@ -4218,7 +4218,7 @@ Namespace java.awt
         ''' <exception cref="NullPointerException"> if {@code p} is {@code null} </exception>
         ''' <seealso cref=       #getComponentAt(Point)
         ''' @since     JDK1.1 </seealso>
-        Public Overridable Function contains(ByVal p As Point) As Boolean
+        Public Overridable Function contains(  p As Point) As Boolean
             Return contains(p.x, p.y)
         End Function
 
@@ -4242,14 +4242,14 @@ Namespace java.awt
         '''                is outside this component </returns>
         ''' <seealso cref=       #contains(int, int)
         ''' @since     JDK1.0 </seealso>
-        Public Overridable Function getComponentAt(ByVal x As Integer, ByVal y As Integer) As Component
+        Public Overridable Function getComponentAt(  x As Integer,   y As Integer) As Component
             Return locate(x, y)
         End Function
 
         ''' @deprecated As of JDK version 1.1,
         ''' replaced by getComponentAt(int, int). 
         <Obsolete("As of JDK version 1.1,")>
-        Public Overridable Function locate(ByVal x As Integer, ByVal y As Integer) As Component
+        Public Overridable Function locate(  x As Integer,   y As Integer) As Component
             Return If(contains(x, y), Me, Nothing)
         End Function
 
@@ -4259,14 +4259,14 @@ Namespace java.awt
         ''' <param name="p">   the point </param>
         ''' <seealso cref=       java.awt.Component#contains
         ''' @since     JDK1.1 </seealso>
-        Public Overridable Function getComponentAt(ByVal p As Point) As Component
+        Public Overridable Function getComponentAt(  p As Point) As Component
             Return getComponentAt(p.x, p.y)
         End Function
 
         ''' @deprecated As of JDK version 1.1,
         ''' replaced by <code>dispatchEvent(AWTEvent e)</code>. 
         <Obsolete("As of JDK version 1.1,")>
-        Public Overridable Sub deliverEvent(ByVal e As [event])
+        Public Overridable Sub deliverEvent(  e As [event])
             postEvent(e)
         End Sub
 
@@ -4275,12 +4275,12 @@ Namespace java.awt
         ''' Calls <code>processEvent</code> before returning for 1.1-style
         ''' events which have been enabled for the <code>Component</code>. </summary>
         ''' <param name="e"> the event </param>
-        Public Sub dispatchEvent(ByVal e As AWTEvent)
+        Public Sub dispatchEvent(  e As AWTEvent)
             dispatchEventImpl(e)
         End Sub
 
         'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-        Friend Overridable Sub dispatchEventImpl(ByVal e As AWTEvent)
+        Friend Overridable Sub dispatchEventImpl(  e As AWTEvent)
             Dim id As Integer = e.id
 
             ' Check that this component belongs to this app-context
@@ -4482,7 +4482,7 @@ Namespace java.awt
         '     * override it and handle common-case mouse wheel scrolling.  NOP
         '     * for Component.
         '     
-        Friend Overridable Sub autoProcessMouseWheel(ByVal e As MouseWheelEvent)
+        Friend Overridable Sub autoProcessMouseWheel(  e As MouseWheelEvent)
         End Sub
 
         '    
@@ -4491,7 +4491,7 @@ Namespace java.awt
         '     *
         '     * Returns whether or not event was dispatched to an ancestor
         '     
-        Friend Overridable Function dispatchMouseWheelToAncestor(ByVal e As MouseWheelEvent) As Boolean
+        Friend Overridable Function dispatchMouseWheelToAncestor(  e As MouseWheelEvent) As Boolean
             Dim newX, newY As Integer
             newX = e.x + x ' Coordinates take into account at least
             newY = e.y + y ' the cursor's position relative to this
@@ -4565,11 +4565,11 @@ Namespace java.awt
         End Function
 
         ' REMIND: remove when filtering is handled at lower level
-        Friend Overridable Function eventEnabled(ByVal e As AWTEvent) As Boolean
+        Friend Overridable Function eventEnabled(  e As AWTEvent) As Boolean
             Return eventTypeEnabled(e.id)
         End Function
 
-        Friend Overridable Function eventTypeEnabled(ByVal type As Integer) As Boolean
+        Friend Overridable Function eventTypeEnabled(  type As Integer) As Boolean
             Select Case type
                 Case ComponentEvent.COMPONENT_MOVED, ComponentEvent.COMPONENT_RESIZED, ComponentEvent.COMPONENT_SHOWN, ComponentEvent.COMPONENT_HIDDEN
                     If (eventMask And AWTEvent.COMPONENT_EVENT_MASK) <> 0 OrElse componentListener IsNot Nothing Then Return True
@@ -4609,7 +4609,7 @@ Namespace java.awt
         ''' @deprecated As of JDK version 1.1,
         ''' replaced by dispatchEvent(AWTEvent). 
         <Obsolete("As of JDK version 1.1,")>
-        Public Overridable Function postEvent(ByVal e As [event]) As Boolean Implements MenuContainer.postEvent
+        Public Overridable Function postEvent(  e As [event]) As Boolean Implements MenuContainer.postEvent
             Dim peer_Renamed As java.awt.peer.ComponentPeer = Me.peer
 
             If handleEvent(e) Then
@@ -4650,7 +4650,7 @@ Namespace java.awt
         ''' <seealso cref=      #getComponentListeners
         ''' @since    JDK1.1 </seealso>
         <MethodImpl(MethodImplOptions.Synchronized)>
-        Public Overridable Sub addComponentListener(ByVal l As ComponentListener)
+        Public Overridable Sub addComponentListener(  l As ComponentListener)
             If l Is Nothing Then Return
             componentListener = AWTEventMulticaster.add(componentListener, l)
             newEventsOnly = True
@@ -4672,7 +4672,7 @@ Namespace java.awt
         ''' <seealso cref=      #getComponentListeners
         ''' @since    JDK1.1 </seealso>
         <MethodImpl(MethodImplOptions.Synchronized)>
-        Public Overridable Sub removeComponentListener(ByVal l As ComponentListener)
+        Public Overridable Sub removeComponentListener(  l As ComponentListener)
             If l Is Nothing Then Return
             componentListener = AWTEventMulticaster.remove(componentListener, l)
         End Sub
@@ -4710,7 +4710,7 @@ Namespace java.awt
         ''' <seealso cref=      #getFocusListeners
         ''' @since    JDK1.1 </seealso>
         <MethodImpl(MethodImplOptions.Synchronized)>
-        Public Overridable Sub addFocusListener(ByVal l As FocusListener)
+        Public Overridable Sub addFocusListener(  l As FocusListener)
             If l Is Nothing Then Return
             focusListener = AWTEventMulticaster.add(focusListener, l)
             newEventsOnly = True
@@ -4737,7 +4737,7 @@ Namespace java.awt
         ''' <seealso cref=      #getFocusListeners
         ''' @since    JDK1.1 </seealso>
         <MethodImpl(MethodImplOptions.Synchronized)>
-        Public Overridable Sub removeFocusListener(ByVal l As FocusListener)
+        Public Overridable Sub removeFocusListener(  l As FocusListener)
             If l Is Nothing Then Return
             focusListener = AWTEventMulticaster.remove(focusListener, l)
         End Sub
@@ -4775,7 +4775,7 @@ Namespace java.awt
         ''' <seealso cref=      #removeHierarchyListener </seealso>
         ''' <seealso cref=      #getHierarchyListeners
         ''' @since    1.3 </seealso>
-        Public Overridable Sub addHierarchyListener(ByVal l As HierarchyListener)
+        Public Overridable Sub addHierarchyListener(  l As HierarchyListener)
             If l Is Nothing Then Return
             Dim notifyAncestors As Boolean
             SyncLock Me
@@ -4807,7 +4807,7 @@ Namespace java.awt
         ''' <seealso cref=      #addHierarchyListener </seealso>
         ''' <seealso cref=      #getHierarchyListeners
         ''' @since    1.3 </seealso>
-        Public Overridable Sub removeHierarchyListener(ByVal l As HierarchyListener)
+        Public Overridable Sub removeHierarchyListener(  l As HierarchyListener)
             If l Is Nothing Then Return
             Dim notifyAncestors As Boolean
             SyncLock Me
@@ -4855,7 +4855,7 @@ Namespace java.awt
         ''' <seealso cref=      #removeHierarchyBoundsListener </seealso>
         ''' <seealso cref=      #getHierarchyBoundsListeners
         ''' @since    1.3 </seealso>
-        Public Overridable Sub addHierarchyBoundsListener(ByVal l As HierarchyBoundsListener)
+        Public Overridable Sub addHierarchyBoundsListener(  l As HierarchyBoundsListener)
             If l Is Nothing Then Return
             Dim notifyAncestors As Boolean
             SyncLock Me
@@ -4887,7 +4887,7 @@ Namespace java.awt
         ''' <seealso cref=      #addHierarchyBoundsListener </seealso>
         ''' <seealso cref=      #getHierarchyBoundsListeners
         ''' @since    1.3 </seealso>
-        Public Overridable Sub removeHierarchyBoundsListener(ByVal l As HierarchyBoundsListener)
+        Public Overridable Sub removeHierarchyBoundsListener(  l As HierarchyBoundsListener)
             If l Is Nothing Then Return
             Dim notifyAncestors As Boolean
             SyncLock Me
@@ -4903,7 +4903,7 @@ Namespace java.awt
         End Sub
 
         ' Should only be called while holding the tree lock
-        Friend Overridable Function numListening(ByVal mask As Long) As Integer
+        Friend Overridable Function numListening(  mask As Long) As Integer
             ' One mask or the other, but not neither or both.
             If eventLog.isLoggable(sun.util.logging.PlatformLogger.Level.FINE) Then
                 If (mask <> AWTEvent.HIERARCHY_EVENT_MASK) AndAlso (mask <> AWTEvent.HIERARCHY_BOUNDS_EVENT_MASK) Then eventLog.fine("Assertion failed")
@@ -4920,7 +4920,7 @@ Namespace java.awt
             Return 1
         End Function
         ' Should only be called while holding the tree lock
-        Friend Overridable Function createHierarchyEvents(ByVal id As Integer, ByVal changed As Component, ByVal changedParent As Container, ByVal changeFlags As Long, ByVal enabledOnToolkit As Boolean) As Integer
+        Friend Overridable Function createHierarchyEvents(  id As Integer,   changed As Component,   changedParent As Container,   changeFlags As Long,   enabledOnToolkit As Boolean) As Integer
             Select Case id
                 Case HierarchyEvent.HIERARCHY_CHANGED
                     If hierarchyListener IsNot Nothing OrElse (eventMask And AWTEvent.HIERARCHY_EVENT_MASK) <> 0 OrElse enabledOnToolkit Then
@@ -4967,7 +4967,7 @@ Namespace java.awt
         '     * It's added only for overriding in java.awt.Window
         '     * because parent in Window is owner.
         '     
-        Friend Overridable Sub adjustListeningChildrenOnParent(ByVal mask As Long, ByVal num As Integer)
+        Friend Overridable Sub adjustListeningChildrenOnParent(  mask As Long,   num As Integer)
             If parent IsNot Nothing Then parent.adjustListeningChildren(mask, num)
         End Sub
 
@@ -4985,7 +4985,7 @@ Namespace java.awt
         ''' <seealso cref=      #getKeyListeners
         ''' @since    JDK1.1 </seealso>
         <MethodImpl(MethodImplOptions.Synchronized)>
-        Public Overridable Sub addKeyListener(ByVal l As KeyListener)
+        Public Overridable Sub addKeyListener(  l As KeyListener)
             If l Is Nothing Then Return
             keyListener = AWTEventMulticaster.add(keyListener, l)
             newEventsOnly = True
@@ -5012,7 +5012,7 @@ Namespace java.awt
         ''' <seealso cref=      #getKeyListeners
         ''' @since    JDK1.1 </seealso>
         <MethodImpl(MethodImplOptions.Synchronized)>
-        Public Overridable Sub removeKeyListener(ByVal l As KeyListener)
+        Public Overridable Sub removeKeyListener(  l As KeyListener)
             If l Is Nothing Then Return
             keyListener = AWTEventMulticaster.remove(keyListener, l)
         End Sub
@@ -5050,7 +5050,7 @@ Namespace java.awt
         ''' <seealso cref=      #getMouseListeners
         ''' @since    JDK1.1 </seealso>
         <MethodImpl(MethodImplOptions.Synchronized)>
-        Public Overridable Sub addMouseListener(ByVal l As MouseListener)
+        Public Overridable Sub addMouseListener(  l As MouseListener)
             If l Is Nothing Then Return
             mouseListener = AWTEventMulticaster.add(mouseListener, l)
             newEventsOnly = True
@@ -5077,7 +5077,7 @@ Namespace java.awt
         ''' <seealso cref=      #getMouseListeners
         ''' @since    JDK1.1 </seealso>
         <MethodImpl(MethodImplOptions.Synchronized)>
-        Public Overridable Sub removeMouseListener(ByVal l As MouseListener)
+        Public Overridable Sub removeMouseListener(  l As MouseListener)
             If l Is Nothing Then Return
             mouseListener = AWTEventMulticaster.remove(mouseListener, l)
         End Sub
@@ -5115,7 +5115,7 @@ Namespace java.awt
         ''' <seealso cref=      #getMouseMotionListeners
         ''' @since    JDK1.1 </seealso>
         <MethodImpl(MethodImplOptions.Synchronized)>
-        Public Overridable Sub addMouseMotionListener(ByVal l As MouseMotionListener)
+        Public Overridable Sub addMouseMotionListener(  l As MouseMotionListener)
             If l Is Nothing Then Return
             mouseMotionListener = AWTEventMulticaster.add(mouseMotionListener, l)
             newEventsOnly = True
@@ -5142,7 +5142,7 @@ Namespace java.awt
         ''' <seealso cref=      #getMouseMotionListeners
         ''' @since    JDK1.1 </seealso>
         <MethodImpl(MethodImplOptions.Synchronized)>
-        Public Overridable Sub removeMouseMotionListener(ByVal l As MouseMotionListener)
+        Public Overridable Sub removeMouseMotionListener(  l As MouseMotionListener)
             If l Is Nothing Then Return
             mouseMotionListener = AWTEventMulticaster.remove(mouseMotionListener, l)
         End Sub
@@ -5185,7 +5185,7 @@ Namespace java.awt
         ''' <seealso cref=      #getMouseWheelListeners
         ''' @since    1.4 </seealso>
         <MethodImpl(MethodImplOptions.Synchronized)>
-        Public Overridable Sub addMouseWheelListener(ByVal l As MouseWheelListener)
+        Public Overridable Sub addMouseWheelListener(  l As MouseWheelListener)
             If l Is Nothing Then Return
             mouseWheelListener = AWTEventMulticaster.add(mouseWheelListener, l)
             newEventsOnly = True
@@ -5211,7 +5211,7 @@ Namespace java.awt
         ''' <seealso cref=      #getMouseWheelListeners
         ''' @since    1.4 </seealso>
         <MethodImpl(MethodImplOptions.Synchronized)>
-        Public Overridable Sub removeMouseWheelListener(ByVal l As MouseWheelListener)
+        Public Overridable Sub removeMouseWheelListener(  l As MouseWheelListener)
             If l Is Nothing Then Return
             mouseWheelListener = AWTEventMulticaster.remove(mouseWheelListener, l)
         End Sub
@@ -5253,7 +5253,7 @@ Namespace java.awt
         ''' <seealso cref=      #getInputMethodRequests
         ''' @since    1.2 </seealso>
         <MethodImpl(MethodImplOptions.Synchronized)>
-        Public Overridable Sub addInputMethodListener(ByVal l As InputMethodListener)
+        Public Overridable Sub addInputMethodListener(  l As InputMethodListener)
             If l Is Nothing Then Return
             inputMethodListener = AWTEventMulticaster.add(inputMethodListener, l)
             newEventsOnly = True
@@ -5276,7 +5276,7 @@ Namespace java.awt
         ''' <seealso cref=      #getInputMethodListeners
         ''' @since    1.2 </seealso>
         <MethodImpl(MethodImplOptions.Synchronized)>
-        Public Overridable Sub removeInputMethodListener(ByVal l As InputMethodListener)
+        Public Overridable Sub removeInputMethodListener(  l As InputMethodListener)
             If l Is Nothing Then Return
             inputMethodListener = AWTEventMulticaster.remove(inputMethodListener, l)
         End Sub
@@ -5341,7 +5341,7 @@ Namespace java.awt
         ''' 
         ''' @since 1.3 </seealso>
         'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-        Public Overridable Function getListeners(Of T As java.util.EventListener)(ByVal listenerType As [Class]) As T()
+        Public Overridable Function getListeners(Of T As java.util.EventListener)(  listenerType As [Class]) As T()
             Dim l As java.util.EventListener = Nothing
             If listenerType Is GetType(ComponentListener) Then
                 l = componentListener
@@ -5421,7 +5421,7 @@ Namespace java.awt
         ''' <seealso cref=        #disableEvents </seealso>
         ''' <seealso cref=        AWTEvent
         ''' @since      JDK1.1 </seealso>
-        Protected Friend Sub enableEvents(ByVal eventsToEnable As Long)
+        Protected Friend Sub enableEvents(  eventsToEnable As Long)
             Dim notifyAncestors As Long = 0
             SyncLock Me
                 If (eventsToEnable And AWTEvent.HIERARCHY_EVENT_MASK) <> 0 AndAlso hierarchyListener Is Nothing AndAlso (eventMask And AWTEvent.HIERARCHY_EVENT_MASK) = 0 Then notifyAncestors = notifyAncestors Or AWTEvent.HIERARCHY_EVENT_MASK
@@ -5446,7 +5446,7 @@ Namespace java.awt
         ''' <param name="eventsToDisable">   the event mask defining the event types </param>
         ''' <seealso cref=        #enableEvents
         ''' @since      JDK1.1 </seealso>
-        Protected Friend Sub disableEvents(ByVal eventsToDisable As Long)
+        Protected Friend Sub disableEvents(  eventsToDisable As Long)
             Dim notifyAncestors As Long = 0
             SyncLock Me
                 If (eventsToDisable And AWTEvent.HIERARCHY_EVENT_MASK) <> 0 AndAlso hierarchyListener Is Nothing AndAlso (eventMask And AWTEvent.HIERARCHY_EVENT_MASK) <> 0 Then notifyAncestors = notifyAncestors Or AWTEvent.HIERARCHY_EVENT_MASK
@@ -5516,7 +5516,7 @@ Namespace java.awt
         ''' Indicates whether a class or its superclasses override coalesceEvents.
         ''' Must be called with lock on coalesceMap and privileged. </summary>
         ''' <seealso cref= checkCoalescing </seealso>
-        Private Shared Function isCoalesceEventsOverriden(ByVal clazz As [Class]) As Boolean
+        Private Shared Function isCoalesceEventsOverriden(  clazz As [Class]) As Boolean
             Debug.Assert(Thread.holdsLock(coalesceMap))
 
             ' First check superclass - we may not need to bother ourselves.
@@ -5580,7 +5580,7 @@ Namespace java.awt
         '''          <code>EventQueue</code> </param>
         ''' <returns> a coalesced event, or <code>null</code> indicating that no
         '''          coalescing was done </returns>
-        Protected Friend Overridable Function coalesceEvents(ByVal existingEvent As AWTEvent, ByVal newEvent As AWTEvent) As AWTEvent
+        Protected Friend Overridable Function coalesceEvents(  existingEvent As AWTEvent,   newEvent As AWTEvent) As AWTEvent
             Return Nothing
         End Function
 
@@ -5603,7 +5603,7 @@ Namespace java.awt
         ''' <seealso cref=       #processHierarchyEvent </seealso>
         ''' <seealso cref=       #processMouseWheelEvent
         ''' @since     JDK1.1 </seealso>
-        Protected Friend Overridable Sub processEvent(ByVal e As AWTEvent)
+        Protected Friend Overridable Sub processEvent(  e As AWTEvent)
             If TypeOf e Is FocusEvent Then
                 processFocusEvent(CType(e, FocusEvent))
 
@@ -5657,7 +5657,7 @@ Namespace java.awt
         ''' <seealso cref=         #addComponentListener </seealso>
         ''' <seealso cref=         #enableEvents
         ''' @since       JDK1.1 </seealso>
-        Protected Friend Overridable Sub processComponentEvent(ByVal e As ComponentEvent)
+        Protected Friend Overridable Sub processComponentEvent(  e As ComponentEvent)
             Dim listener As ComponentListener = componentListener
             If listener IsNot Nothing Then
                 Dim id As Integer = e.iD
@@ -5715,7 +5715,7 @@ Namespace java.awt
         ''' <seealso cref=         #enableEvents </seealso>
         ''' <seealso cref=         #dispatchEvent
         ''' @since       JDK1.1 </seealso>
-        Protected Friend Overridable Sub processFocusEvent(ByVal e As FocusEvent)
+        Protected Friend Overridable Sub processFocusEvent(  e As FocusEvent)
             Dim listener As FocusListener = focusListener
             If listener IsNot Nothing Then
                 Dim id As Integer = e.iD
@@ -5778,7 +5778,7 @@ Namespace java.awt
         ''' <seealso cref=         #enableEvents </seealso>
         ''' <seealso cref=         #isShowing
         ''' @since       JDK1.1 </seealso>
-        Protected Friend Overridable Sub processKeyEvent(ByVal e As KeyEvent)
+        Protected Friend Overridable Sub processKeyEvent(  e As KeyEvent)
             Dim listener As KeyListener = keyListener
             If listener IsNot Nothing Then
                 Dim id As Integer = e.iD
@@ -5816,7 +5816,7 @@ Namespace java.awt
         ''' <seealso cref=         #addMouseListener </seealso>
         ''' <seealso cref=         #enableEvents
         ''' @since       JDK1.1 </seealso>
-        Protected Friend Overridable Sub processMouseEvent(ByVal e As MouseEvent)
+        Protected Friend Overridable Sub processMouseEvent(  e As MouseEvent)
             Dim listener As MouseListener = mouseListener
             If listener IsNot Nothing Then
                 Dim id As Integer = e.iD
@@ -5858,7 +5858,7 @@ Namespace java.awt
         ''' <seealso cref=         #addMouseMotionListener </seealso>
         ''' <seealso cref=         #enableEvents
         ''' @since       JDK1.1 </seealso>
-        Protected Friend Overridable Sub processMouseMotionEvent(ByVal e As MouseEvent)
+        Protected Friend Overridable Sub processMouseMotionEvent(  e As MouseEvent)
             Dim listener As MouseMotionListener = mouseMotionListener
             If listener IsNot Nothing Then
                 Dim id As Integer = e.iD
@@ -5898,7 +5898,7 @@ Namespace java.awt
         ''' <seealso cref=         #addMouseWheelListener </seealso>
         ''' <seealso cref=         #enableEvents
         ''' @since       1.4 </seealso>
-        Protected Friend Overridable Sub processMouseWheelEvent(ByVal e As MouseWheelEvent)
+        Protected Friend Overridable Sub processMouseWheelEvent(  e As MouseWheelEvent)
             Dim listener As MouseWheelListener = mouseWheelListener
             If listener IsNot Nothing Then
                 Dim id As Integer = e.iD
@@ -5936,7 +5936,7 @@ Namespace java.awt
         ''' <seealso cref=         #addInputMethodListener </seealso>
         ''' <seealso cref=         #enableEvents
         ''' @since       1.2 </seealso>
-        Protected Friend Overridable Sub processInputMethodEvent(ByVal e As InputMethodEvent)
+        Protected Friend Overridable Sub processInputMethodEvent(  e As InputMethodEvent)
             Dim listener As InputMethodListener = inputMethodListener
             If listener IsNot Nothing Then
                 Dim id As Integer = e.iD
@@ -5972,7 +5972,7 @@ Namespace java.awt
         ''' <seealso cref=         #addHierarchyListener </seealso>
         ''' <seealso cref=         #enableEvents
         ''' @since       1.3 </seealso>
-        Protected Friend Overridable Sub processHierarchyEvent(ByVal e As HierarchyEvent)
+        Protected Friend Overridable Sub processHierarchyEvent(  e As HierarchyEvent)
             Dim listener As HierarchyListener = hierarchyListener
             If listener IsNot Nothing Then
                 Dim id As Integer = e.iD
@@ -6006,7 +6006,7 @@ Namespace java.awt
         ''' <seealso cref=         #addHierarchyBoundsListener </seealso>
         ''' <seealso cref=         #enableEvents
         ''' @since       1.3 </seealso>
-        Protected Friend Overridable Sub processHierarchyBoundsEvent(ByVal e As HierarchyEvent)
+        Protected Friend Overridable Sub processHierarchyBoundsEvent(  e As HierarchyEvent)
             Dim listener As HierarchyBoundsListener = hierarchyBoundsListener
             If listener IsNot Nothing Then
                 Dim id As Integer = e.iD
@@ -6022,7 +6022,7 @@ Namespace java.awt
         ''' @deprecated As of JDK version 1.1
         ''' replaced by processEvent(AWTEvent). 
         <Obsolete("As of JDK version 1.1")>
-        Public Overridable Function handleEvent(ByVal evt As [event]) As Boolean
+        Public Overridable Function handleEvent(  evt As [event]) As Boolean
             Select Case evt.id
                 Case Event.MOUSE_ENTER
 				  Return mouseEnter(evt, evt.x, evt.y)
@@ -6061,56 +6061,56 @@ Namespace java.awt
         ''' @deprecated As of JDK version 1.1,
         ''' replaced by processMouseEvent(MouseEvent). 
         <Obsolete("As of JDK version 1.1,")>
-        Public Overridable Function mouseDown(ByVal evt As [event], ByVal x As Integer, ByVal y As Integer) As Boolean
+        Public Overridable Function mouseDown(  evt As [event],   x As Integer,   y As Integer) As Boolean
             Return False
         End Function
 
         ''' @deprecated As of JDK version 1.1,
         ''' replaced by processMouseMotionEvent(MouseEvent). 
         <Obsolete("As of JDK version 1.1,")>
-        Public Overridable Function mouseDrag(ByVal evt As [event], ByVal x As Integer, ByVal y As Integer) As Boolean
+        Public Overridable Function mouseDrag(  evt As [event],   x As Integer,   y As Integer) As Boolean
             Return False
         End Function
 
         ''' @deprecated As of JDK version 1.1,
         ''' replaced by processMouseEvent(MouseEvent). 
         <Obsolete("As of JDK version 1.1,")>
-        Public Overridable Function mouseUp(ByVal evt As [event], ByVal x As Integer, ByVal y As Integer) As Boolean
+        Public Overridable Function mouseUp(  evt As [event],   x As Integer,   y As Integer) As Boolean
             Return False
         End Function
 
         ''' @deprecated As of JDK version 1.1,
         ''' replaced by processMouseMotionEvent(MouseEvent). 
         <Obsolete("As of JDK version 1.1,")>
-        Public Overridable Function mouseMove(ByVal evt As [event], ByVal x As Integer, ByVal y As Integer) As Boolean
+        Public Overridable Function mouseMove(  evt As [event],   x As Integer,   y As Integer) As Boolean
             Return False
         End Function
 
         ''' @deprecated As of JDK version 1.1,
         ''' replaced by processMouseEvent(MouseEvent). 
         <Obsolete("As of JDK version 1.1,")>
-        Public Overridable Function mouseEnter(ByVal evt As [event], ByVal x As Integer, ByVal y As Integer) As Boolean
+        Public Overridable Function mouseEnter(  evt As [event],   x As Integer,   y As Integer) As Boolean
             Return False
         End Function
 
         ''' @deprecated As of JDK version 1.1,
         ''' replaced by processMouseEvent(MouseEvent). 
         <Obsolete("As of JDK version 1.1,")>
-        Public Overridable Function mouseExit(ByVal evt As [event], ByVal x As Integer, ByVal y As Integer) As Boolean
+        Public Overridable Function mouseExit(  evt As [event],   x As Integer,   y As Integer) As Boolean
             Return False
         End Function
 
         ''' @deprecated As of JDK version 1.1,
         ''' replaced by processKeyEvent(KeyEvent). 
         <Obsolete("As of JDK version 1.1,")>
-        Public Overridable Function keyDown(ByVal evt As [event], ByVal key As Integer) As Boolean
+        Public Overridable Function keyDown(  evt As [event],   key As Integer) As Boolean
             Return False
         End Function
 
         ''' @deprecated As of JDK version 1.1,
         ''' replaced by processKeyEvent(KeyEvent). 
         <Obsolete("As of JDK version 1.1,")>
-        Public Overridable Function keyUp(ByVal evt As [event], ByVal key As Integer) As Boolean
+        Public Overridable Function keyUp(  evt As [event],   key As Integer) As Boolean
             Return False
         End Function
 
@@ -6118,7 +6118,7 @@ Namespace java.awt
         ''' should register this component as ActionListener on component
         ''' which fires action events. 
         <Obsolete("As of JDK version 1.1,")>
-        Public Overridable Function action(ByVal evt As [event], ByVal what As Object) As Boolean
+        Public Overridable Function action(  evt As [event],   what As Object) As Boolean
             Return False
         End Function
 
@@ -6268,14 +6268,14 @@ Namespace java.awt
         ''' @deprecated As of JDK version 1.1,
         ''' replaced by processFocusEvent(FocusEvent). 
         <Obsolete("As of JDK version 1.1,")>
-        Public Overridable Function gotFocus(ByVal evt As [event], ByVal what As Object) As Boolean
+        Public Overridable Function gotFocus(  evt As [event],   what As Object) As Boolean
             Return False
         End Function
 
         ''' @deprecated As of JDK version 1.1,
         ''' replaced by processFocusEvent(FocusEvent). 
         <Obsolete("As of JDK version 1.1,")>
-        Public Overridable Function lostFocus(ByVal evt As [event], ByVal what As Object) As Boolean
+        Public Overridable Function lostFocus(  evt As [event],   what As Object) As Boolean
             Return False
         End Function
 
@@ -6307,7 +6307,7 @@ Namespace java.awt
             Get
                 Return focusTraversable
             End Get
-            Set(ByVal focusable As Boolean)
+            Set(  focusable As Boolean)
                 Dim oldFocusable As Boolean
                 SyncLock Me
                     oldFocusable = Me.focusable
@@ -6401,7 +6401,7 @@ Namespace java.awt
         ''' @since 1.4
         ''' @beaninfo
         '''       bound: true </exception>
-        Public Overridable Sub setFocusTraversalKeys(Of T1 As AWTKeyStroke)(ByVal id As Integer, ByVal keystrokes As java.util.Set(Of T1))
+        Public Overridable Sub setFocusTraversalKeys(Of T1 As AWTKeyStroke)(  id As Integer,   keystrokes As java.util.Set(Of T1))
             If id < 0 OrElse id >= KeyboardFocusManager.TRAVERSAL_KEY_LENGTH - 1 Then Throw New IllegalArgumentException("invalid focus traversal key identifier")
 
             focusTraversalKeys_NoIDCheckeck(id, keystrokes)
@@ -6432,7 +6432,7 @@ Namespace java.awt
         '''         KeyboardFocusManager.BACKWARD_TRAVERSAL_KEYS, or
         '''         KeyboardFocusManager.UP_CYCLE_TRAVERSAL_KEYS
         ''' @since 1.4 </exception>
-        Public Overridable Function getFocusTraversalKeys(ByVal id As Integer) As java.util.Set(Of AWTKeyStroke)
+        Public Overridable Function getFocusTraversalKeys(  id As Integer) As java.util.Set(Of AWTKeyStroke)
             If id < 0 OrElse id >= KeyboardFocusManager.TRAVERSAL_KEY_LENGTH - 1 Then Throw New IllegalArgumentException("invalid focus traversal key identifier")
 
             Return getFocusTraversalKeys_NoIDCheck(id)
@@ -6443,7 +6443,7 @@ Namespace java.awt
         ' DOWN_CYCLE_TRAVERSAL_KEY while Component does not. The Component method
         ' would erroneously generate an IllegalArgumentException for
         ' DOWN_CYCLE_TRAVERSAL_KEY.
-        Friend Sub setFocusTraversalKeys_NoIDCheck(Of T1 As AWTKeyStroke)(ByVal id As Integer, ByVal keystrokes As java.util.Set(Of T1))
+        Friend Sub setFocusTraversalKeys_NoIDCheck(Of T1 As AWTKeyStroke)(  id As Integer,   keystrokes As java.util.Set(Of T1))
             Dim oldKeys As java.util.Set(Of AWTKeyStroke)
 
             SyncLock Me
@@ -6470,7 +6470,7 @@ Namespace java.awt
 
             firePropertyChange(focusTraversalKeyPropertyNames(id), oldKeys, keystrokes)
         End Sub
-        Friend Function getFocusTraversalKeys_NoIDCheck(ByVal id As Integer) As java.util.Set(Of AWTKeyStroke)
+        Friend Function getFocusTraversalKeys_NoIDCheck(  id As Integer) As java.util.Set(Of AWTKeyStroke)
             ' Okay to return Set directly because it is an unmodifiable view
             'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
             Dim keystrokes As java.util.Set(Of AWTKeyStroke) = If(focusTraversalKeys IsNot Nothing, focusTraversalKeys(id), Nothing)
@@ -6504,7 +6504,7 @@ Namespace java.awt
         '''         KeyboardFocusManager.BACKWARD_TRAVERSAL_KEYS, or
         '''         KeyboardFocusManager.UP_CYCLE_TRAVERSAL_KEYS
         ''' @since 1.4 </exception>
-        Public Overridable Function areFocusTraversalKeysSet(ByVal id As Integer) As Boolean
+        Public Overridable Function areFocusTraversalKeysSet(  id As Integer) As Boolean
             If id < 0 OrElse id >= KeyboardFocusManager.TRAVERSAL_KEY_LENGTH - 1 Then Throw New IllegalArgumentException("invalid focus traversal key identifier")
 
             Return (focusTraversalKeys IsNot Nothing AndAlso focusTraversalKeys(id) IsNot Nothing)
@@ -6526,7 +6526,7 @@ Namespace java.awt
         ''' @beaninfo
         '''       bound: true </seealso>
         Public Overridable Property focusTraversalKeysEnabled As Boolean
-            Set(ByVal focusTraversalKeysEnabled As Boolean)
+            Set(  focusTraversalKeysEnabled As Boolean)
                 Dim oldFocusTraversalKeysEnabled As Boolean
                 SyncLock Me
                     oldFocusTraversalKeysEnabled = Me.focusTraversalKeysEnabled
@@ -6577,7 +6577,7 @@ Namespace java.awt
             requestFocusHelper(False, True)
         End Sub
 
-        Friend Overridable Function requestFocus(ByVal cause As sun.awt.CausedFocusEvent.Cause) As Boolean
+        Friend Overridable Function requestFocus(  cause As sun.awt.CausedFocusEvent.Cause) As Boolean
             Return requestFocusHelper(False, True, cause)
         End Function
 
@@ -6639,11 +6639,11 @@ Namespace java.awt
         ''' <seealso cref= #isDisplayable </seealso>
         ''' <seealso cref= KeyboardFocusManager#clearGlobalFocusOwner
         ''' @since 1.4 </seealso>
-        Protected Friend Overridable Function requestFocus(ByVal temporary As Boolean) As Boolean
+        Protected Friend Overridable Function requestFocus(  temporary As Boolean) As Boolean
             Return requestFocusHelper(temporary, True)
         End Function
 
-        Friend Overridable Function requestFocus(ByVal temporary As Boolean, ByVal cause As sun.awt.CausedFocusEvent.Cause) As Boolean
+        Friend Overridable Function requestFocus(  temporary As Boolean,   cause As sun.awt.CausedFocusEvent.Cause) As Boolean
             Return requestFocusHelper(temporary, True, cause)
         End Function
         ''' <summary>
@@ -6693,7 +6693,7 @@ Namespace java.awt
             Return requestFocusHelper(False, False)
         End Function
 
-        Friend Overridable Function requestFocusInWindow(ByVal cause As sun.awt.CausedFocusEvent.Cause) As Boolean
+        Friend Overridable Function requestFocusInWindow(  cause As sun.awt.CausedFocusEvent.Cause) As Boolean
             Return requestFocusHelper(False, False, cause)
         End Function
 
@@ -6753,19 +6753,19 @@ Namespace java.awt
         ''' <seealso cref= #isDisplayable </seealso>
         ''' <seealso cref= KeyboardFocusManager#clearGlobalFocusOwner
         ''' @since 1.4 </seealso>
-        Protected Friend Overridable Function requestFocusInWindow(ByVal temporary As Boolean) As Boolean
+        Protected Friend Overridable Function requestFocusInWindow(  temporary As Boolean) As Boolean
             Return requestFocusHelper(temporary, False)
         End Function
 
-        Friend Overridable Function requestFocusInWindow(ByVal temporary As Boolean, ByVal cause As sun.awt.CausedFocusEvent.Cause) As Boolean
+        Friend Overridable Function requestFocusInWindow(  temporary As Boolean,   cause As sun.awt.CausedFocusEvent.Cause) As Boolean
             Return requestFocusHelper(temporary, False, cause)
         End Function
 
-        Friend Function requestFocusHelper(ByVal temporary As Boolean, ByVal focusedWindowChangeAllowed As Boolean) As Boolean
+        Friend Function requestFocusHelper(  temporary As Boolean,   focusedWindowChangeAllowed As Boolean) As Boolean
             Return requestFocusHelper(temporary, focusedWindowChangeAllowed, sun.awt.CausedFocusEvent.Cause.UNKNOWN)
         End Function
 
-        Friend Function requestFocusHelper(ByVal temporary As Boolean, ByVal focusedWindowChangeAllowed As Boolean, ByVal cause As sun.awt.CausedFocusEvent.Cause) As Boolean
+        Friend Function requestFocusHelper(  temporary As Boolean,   focusedWindowChangeAllowed As Boolean,   cause As sun.awt.CausedFocusEvent.Cause) As Boolean
             ' 1) Check if the event being dispatched is a system-generated mouse event.
             Dim currentEvent As AWTEvent = EventQueue.currentEvent
             If TypeOf currentEvent Is MouseEvent AndAlso sun.awt.SunToolkit.isSystemGenerated(currentEvent) Then
@@ -6833,7 +6833,7 @@ Namespace java.awt
             Return success
         End Function
 
-        Private Function isRequestFocusAccepted(ByVal temporary As Boolean, ByVal focusedWindowChangeAllowed As Boolean, ByVal cause As sun.awt.CausedFocusEvent.Cause) As Boolean
+        Private Function isRequestFocusAccepted(  temporary As Boolean,   focusedWindowChangeAllowed As Boolean,   cause As sun.awt.CausedFocusEvent.Cause) As Boolean
             If (Not focusable) OrElse (Not visible) Then
                 If focusLog.isLoggable(sun.util.logging.PlatformLogger.Level.FINEST) Then focusLog.finest("Not focusable or not visible")
                 Return False
@@ -6893,14 +6893,14 @@ Namespace java.awt
         Private Class DummyRequestFocusController
             Implements sun.awt.RequestFocusController
 
-            Public Overridable Function acceptRequestFocus(ByVal [from] As Component, ByVal [to] As Component, ByVal temporary As Boolean, ByVal focusedWindowChangeAllowed As Boolean, ByVal cause As sun.awt.CausedFocusEvent.Cause) As Boolean
+            Public Overridable Function acceptRequestFocus(  [from] As Component,   [to] As Component,   temporary As Boolean,   focusedWindowChangeAllowed As Boolean,   cause As sun.awt.CausedFocusEvent.Cause) As Boolean
                 Return True
             End Function
         End Class
 
         <MethodImpl(MethodImplOptions.Synchronized)>
         Friend Shared Property requestFocusController As sun.awt.RequestFocusController
-            Set(ByVal requestController As sun.awt.RequestFocusController)
+            Set(  requestController As sun.awt.RequestFocusController)
                 If requestController Is Nothing Then
                     requestFocusController = New DummyRequestFocusController
                 Else
@@ -6943,7 +6943,7 @@ Namespace java.awt
         '''         root of this Component; <code>false</code> otherwise </returns>
         ''' <seealso cref= Container#isFocusCycleRoot()
         ''' @since 1.4 </seealso>
-        Public Overridable Function isFocusCycleRoot(ByVal container_Renamed As Container) As Boolean
+        Public Overridable Function isFocusCycleRoot(  container_Renamed As Container) As Boolean
             Dim rootAncestor As Container = focusCycleRootAncestor
             Return (rootAncestor Is container_Renamed)
         End Function
@@ -6970,7 +6970,7 @@ Namespace java.awt
             transferFocus(False)
         End Sub
 
-        Friend Overridable Function transferFocus(ByVal clearOnFailure As Boolean) As Boolean
+        Friend Overridable Function transferFocus(  clearOnFailure As Boolean) As Boolean
             If focusLog.isLoggable(sun.util.logging.PlatformLogger.Level.FINER) Then focusLog.finer("clearOnFailure = " & clearOnFailure)
             Dim toFocus As Component = nextFocusCandidate
             Dim res As Boolean = False
@@ -7021,7 +7021,7 @@ Namespace java.awt
             transferFocusBackward(False)
         End Sub
 
-        Friend Overridable Function transferFocusBackward(ByVal clearOnFailure As Boolean) As Boolean
+        Friend Overridable Function transferFocusBackward(  clearOnFailure As Boolean) As Boolean
             Dim rootAncestor As Container = traversalRoot
             Dim comp As Component = Me
             Do While rootAncestor IsNot Nothing AndAlso Not (rootAncestor.showing AndAlso rootAncestor.canBeFocusOwner())
@@ -7113,7 +7113,7 @@ Namespace java.awt
         Private autoFocusTransferOnDisposal As Boolean = True
 
         Friend Overridable Property autoFocusTransferOnDisposal As Boolean
-            Set(ByVal value As Boolean)
+            Set(  value As Boolean)
                 autoFocusTransferOnDisposal = value
             End Set
             Get
@@ -7128,7 +7128,7 @@ Namespace java.awt
         ''' <seealso cref=       #remove(MenuComponent) </seealso>
         ''' <exception cref="NullPointerException"> if {@code popup} is {@code null}
         ''' @since     JDK1.1 </exception>
-        Public Overridable Sub add(ByVal popup As PopupMenu)
+        Public Overridable Sub add(  popup As PopupMenu)
             SyncLock treeLock
                 If popup.parent IsNot Nothing Then popup.parent.remove(popup)
                 If popups Is Nothing Then popups = New List(Of PopupMenu)
@@ -7147,7 +7147,7 @@ Namespace java.awt
         ''' <seealso cref=       #add(PopupMenu)
         ''' @since     JDK1.1 </seealso>
         'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-        Public Overridable Sub remove(ByVal popup As MenuComponent) Implements MenuContainer.remove
+        Public Overridable Sub remove(  popup As MenuComponent) Implements MenuContainer.remove
             SyncLock treeLock
                 If popups Is Nothing Then Return
                 Dim index As Integer = popups.IndexOf(popup)
@@ -7201,7 +7201,7 @@ Namespace java.awt
         ''' <param name="out">   a print stream </param>
         ''' <exception cref="NullPointerException"> if {@code out} is {@code null}
         ''' @since    JDK1.0 </exception>
-        Public Overridable Sub list(ByVal out As java.io.PrintStream)
+        Public Overridable Sub list(  out As java.io.PrintStream)
             list(out, 0)
         End Sub
 
@@ -7213,7 +7213,7 @@ Namespace java.awt
         ''' <seealso cref=       java.io.PrintStream#println(java.lang.Object) </seealso>
         ''' <exception cref="NullPointerException"> if {@code out} is {@code null}
         ''' @since     JDK1.0 </exception>
-        Public Overridable Sub list(ByVal out As java.io.PrintStream, ByVal indent As Integer)
+        Public Overridable Sub list(  out As java.io.PrintStream,   indent As Integer)
             For i As Integer = 0 To indent - 1
                 out.print(" ")
             Next i
@@ -7225,7 +7225,7 @@ Namespace java.awt
         ''' <param name="out">  the print writer to print to </param>
         ''' <exception cref="NullPointerException"> if {@code out} is {@code null}
         ''' @since JDK1.1 </exception>
-        Public Overridable Sub list(ByVal out As java.io.PrintWriter)
+        Public Overridable Sub list(  out As java.io.PrintWriter)
             list(out, 0)
         End Sub
 
@@ -7237,7 +7237,7 @@ Namespace java.awt
         ''' <exception cref="NullPointerException"> if {@code out} is {@code null} </exception>
         ''' <seealso cref=       java.io.PrintStream#println(java.lang.Object)
         ''' @since JDK1.1 </seealso>
-        Public Overridable Sub list(ByVal out As java.io.PrintWriter, ByVal indent As Integer)
+        Public Overridable Sub list(  out As java.io.PrintWriter,   indent As Integer)
             For i As Integer = 0 To indent - 1
                 out.print(" ")
             Next i
@@ -7291,7 +7291,7 @@ Namespace java.awt
         ''' <seealso cref= #removePropertyChangeListener </seealso>
         ''' <seealso cref= #getPropertyChangeListeners </seealso>
         ''' <seealso cref= #addPropertyChangeListener(java.lang.String, java.beans.PropertyChangeListener) </seealso>
-        Public Overridable Sub addPropertyChangeListener(ByVal listener As java.beans.PropertyChangeListener)
+        Public Overridable Sub addPropertyChangeListener(  listener As java.beans.PropertyChangeListener)
             SyncLock objectLock
                 If listener Is Nothing Then Return
                 If changeSupport Is Nothing Then changeSupport = New java.beans.PropertyChangeSupport(Me)
@@ -7311,7 +7311,7 @@ Namespace java.awt
         ''' <seealso cref= #addPropertyChangeListener </seealso>
         ''' <seealso cref= #getPropertyChangeListeners </seealso>
         ''' <seealso cref= #removePropertyChangeListener(java.lang.String,java.beans.PropertyChangeListener) </seealso>
-        Public Overridable Sub removePropertyChangeListener(ByVal listener As java.beans.PropertyChangeListener)
+        Public Overridable Sub removePropertyChangeListener(  listener As java.beans.PropertyChangeListener)
             SyncLock objectLock
                 If listener Is Nothing OrElse changeSupport Is Nothing Then Return
                 changeSupport.removePropertyChangeListener(listener)
@@ -7370,7 +7370,7 @@ Namespace java.awt
         ''' <seealso cref= #removePropertyChangeListener(java.lang.String, java.beans.PropertyChangeListener) </seealso>
         ''' <seealso cref= #getPropertyChangeListeners(java.lang.String) </seealso>
         ''' <seealso cref= #addPropertyChangeListener(java.lang.String, java.beans.PropertyChangeListener) </seealso>
-        Public Overridable Sub addPropertyChangeListener(ByVal propertyName As String, ByVal listener As java.beans.PropertyChangeListener)
+        Public Overridable Sub addPropertyChangeListener(  propertyName As String,   listener As java.beans.PropertyChangeListener)
             SyncLock objectLock
                 If listener Is Nothing Then Return
                 If changeSupport Is Nothing Then changeSupport = New java.beans.PropertyChangeSupport(Me)
@@ -7393,7 +7393,7 @@ Namespace java.awt
         ''' <seealso cref= #addPropertyChangeListener(java.lang.String, java.beans.PropertyChangeListener) </seealso>
         ''' <seealso cref= #getPropertyChangeListeners(java.lang.String) </seealso>
         ''' <seealso cref= #removePropertyChangeListener(java.beans.PropertyChangeListener) </seealso>
-        Public Overridable Sub removePropertyChangeListener(ByVal propertyName As String, ByVal listener As java.beans.PropertyChangeListener)
+        Public Overridable Sub removePropertyChangeListener(  propertyName As String,   listener As java.beans.PropertyChangeListener)
             SyncLock objectLock
                 If listener Is Nothing OrElse changeSupport Is Nothing Then Return
                 changeSupport.removePropertyChangeListener(propertyName, listener)
@@ -7413,7 +7413,7 @@ Namespace java.awt
         ''' <seealso cref= #removePropertyChangeListener(java.lang.String, java.beans.PropertyChangeListener) </seealso>
         ''' <seealso cref= #getPropertyChangeListeners
         ''' @since 1.4 </seealso>
-        Public Overridable Function getPropertyChangeListeners(ByVal propertyName As String) As java.beans.PropertyChangeListener()
+        Public Overridable Function getPropertyChangeListeners(  propertyName As String) As java.beans.PropertyChangeListener()
             SyncLock objectLock
                 If changeSupport Is Nothing Then Return New java.beans.PropertyChangeListener() {}
                 Return changeSupport.getPropertyChangeListeners(propertyName)
@@ -7429,7 +7429,7 @@ Namespace java.awt
         ''' <param name="propertyName"> the property whose value has changed </param>
         ''' <param name="oldValue"> the property's previous value </param>
         ''' <param name="newValue"> the property's new value </param>
-        Protected Friend Overridable Sub firePropertyChange(ByVal propertyName As String, ByVal oldValue As Object, ByVal newValue As Object)
+        Protected Friend Overridable Sub firePropertyChange(  propertyName As String,   oldValue As Object,   newValue As Object)
             Dim changeSupport As java.beans.PropertyChangeSupport
             SyncLock objectLock
                 changeSupport = Me.changeSupport
@@ -7448,7 +7448,7 @@ Namespace java.awt
         ''' <param name="oldValue"> the property's previous value </param>
         ''' <param name="newValue"> the property's new value
         ''' @since 1.4 </param>
-        Protected Friend Overridable Sub firePropertyChange(ByVal propertyName As String, ByVal oldValue As Boolean, ByVal newValue As Boolean)
+        Protected Friend Overridable Sub firePropertyChange(  propertyName As String,   oldValue As Boolean,   newValue As Boolean)
             Dim changeSupport As java.beans.PropertyChangeSupport = Me.changeSupport
             If changeSupport Is Nothing OrElse oldValue = newValue Then Return
             changeSupport.firePropertyChange(propertyName, oldValue, newValue)
@@ -7464,7 +7464,7 @@ Namespace java.awt
         ''' <param name="oldValue"> the property's previous value </param>
         ''' <param name="newValue"> the property's new value
         ''' @since 1.4 </param>
-        Protected Friend Overridable Sub firePropertyChange(ByVal propertyName As String, ByVal oldValue As Integer, ByVal newValue As Integer)
+        Protected Friend Overridable Sub firePropertyChange(  propertyName As String,   oldValue As Integer,   newValue As Integer)
             Dim changeSupport As java.beans.PropertyChangeSupport = Me.changeSupport
             If changeSupport Is Nothing OrElse oldValue = newValue Then Return
             changeSupport.firePropertyChange(propertyName, oldValue, newValue)
@@ -7480,7 +7480,7 @@ Namespace java.awt
         ''' <seealso cref= #firePropertyChange(java.lang.String, java.lang.Object,
         '''          java.lang.Object)
         ''' @since 1.5 </seealso>
-        Public Overridable Sub firePropertyChange(ByVal propertyName As String, ByVal oldValue As SByte, ByVal newValue As SByte)
+        Public Overridable Sub firePropertyChange(  propertyName As String,   oldValue As SByte,   newValue As SByte)
             If changeSupport Is Nothing OrElse oldValue = newValue Then Return
             firePropertyChange(propertyName, Convert.ToByte(oldValue), Convert.ToByte(newValue))
         End Sub
@@ -7495,7 +7495,7 @@ Namespace java.awt
         ''' <seealso cref= #firePropertyChange(java.lang.String, java.lang.Object,
         '''          java.lang.Object)
         ''' @since 1.5 </seealso>
-        Public Overridable Sub firePropertyChange(ByVal propertyName As String, ByVal oldValue As Char, ByVal newValue As Char)
+        Public Overridable Sub firePropertyChange(  propertyName As String,   oldValue As Char,   newValue As Char)
             If changeSupport Is Nothing OrElse oldValue = newValue Then Return
             firePropertyChange(propertyName, New Character(oldValue), New Character(newValue))
         End Sub
@@ -7510,7 +7510,7 @@ Namespace java.awt
         ''' <seealso cref= #firePropertyChange(java.lang.String, java.lang.Object,
         '''          java.lang.Object)
         ''' @since 1.5 </seealso>
-        Public Overridable Sub firePropertyChange(ByVal propertyName As String, ByVal oldValue As Short, ByVal newValue As Short)
+        Public Overridable Sub firePropertyChange(  propertyName As String,   oldValue As Short,   newValue As Short)
             If changeSupport Is Nothing OrElse oldValue = newValue Then Return
             firePropertyChange(propertyName, Convert.ToInt16(oldValue), Convert.ToInt16(newValue))
         End Sub
@@ -7526,7 +7526,7 @@ Namespace java.awt
         ''' <seealso cref= #firePropertyChange(java.lang.String, java.lang.Object,
         '''          java.lang.Object)
         ''' @since 1.5 </seealso>
-        Public Overridable Sub firePropertyChange(ByVal propertyName As String, ByVal oldValue As Long, ByVal newValue As Long)
+        Public Overridable Sub firePropertyChange(  propertyName As String,   oldValue As Long,   newValue As Long)
             If changeSupport Is Nothing OrElse oldValue = newValue Then Return
             firePropertyChange(propertyName, Convert.ToInt64(oldValue), Convert.ToInt64(newValue))
         End Sub
@@ -7541,7 +7541,7 @@ Namespace java.awt
         ''' <seealso cref= #firePropertyChange(java.lang.String, java.lang.Object,
         '''          java.lang.Object)
         ''' @since 1.5 </seealso>
-        Public Overridable Sub firePropertyChange(ByVal propertyName As String, ByVal oldValue As Single, ByVal newValue As Single)
+        Public Overridable Sub firePropertyChange(  propertyName As String,   oldValue As Single,   newValue As Single)
             If changeSupport Is Nothing OrElse oldValue = newValue Then Return
             firePropertyChange(propertyName, Convert.ToSingle(oldValue), Convert.ToSingle(newValue))
         End Sub
@@ -7556,7 +7556,7 @@ Namespace java.awt
         ''' <seealso cref= #firePropertyChange(java.lang.String, java.lang.Object,
         '''          java.lang.Object)
         ''' @since 1.5 </seealso>
-        Public Overridable Sub firePropertyChange(ByVal propertyName As String, ByVal oldValue As Double, ByVal newValue As Double)
+        Public Overridable Sub firePropertyChange(  propertyName As String,   oldValue As Double,   newValue As Double)
             If changeSupport Is Nothing OrElse oldValue = newValue Then Return
             firePropertyChange(propertyName, Convert.ToDouble(oldValue), Convert.ToDouble(newValue))
         End Sub
@@ -7670,7 +7670,7 @@ Namespace java.awt
         ''' <seealso cref= #hierarchyBoundsListenerK </seealso>
         ''' <seealso cref= #mouseWheelListenerK </seealso>
         ''' <seealso cref= #readObject(ObjectInputStream) </seealso>
-        Private Sub writeObject(ByVal s As java.io.ObjectOutputStream)
+        Private Sub writeObject(  s As java.io.ObjectOutputStream)
             doSwingSerialization()
 
             s.defaultWriteObject()
@@ -7702,7 +7702,7 @@ Namespace java.awt
         ''' </summary>
         ''' <param name="s"> the <code>ObjectInputStream</code> to read </param>
         ''' <seealso cref= #writeObject(ObjectOutputStream) </seealso>
-        Private Sub readObject(ByVal s As java.io.ObjectInputStream)
+        Private Sub readObject(  s As java.io.ObjectInputStream)
             objectLock = New Object
 
             acc = java.security.AccessController.context
@@ -7862,7 +7862,7 @@ Namespace java.awt
         ''' @beaninfo
         '''       bound: true </seealso>
         Public Overridable Property componentOrientation As ComponentOrientation
-            Set(ByVal o As ComponentOrientation)
+            Set(  o As ComponentOrientation)
                 Dim oldValue As ComponentOrientation = componentOrientation
                 componentOrientation = o
 
@@ -7894,7 +7894,7 @@ Namespace java.awt
         ''' <seealso cref= #getComponentOrientation </seealso>
         ''' <seealso cref= #invalidate
         ''' @since 1.4 </seealso>
-        Public Overridable Sub applyComponentOrientation(ByVal orientation As ComponentOrientation)
+        Public Overridable Sub applyComponentOrientation(  orientation As ComponentOrientation)
             If orientation Is Nothing Then Throw New NullPointerException
             componentOrientation = orientation
         End Sub
@@ -8015,7 +8015,7 @@ Namespace java.awt
             ''' Though the class is abstract, this should be called by
             ''' all sub-classes.
             ''' </summary>
-            Protected Friend Sub New(ByVal outerInstance As Component)
+            Protected Friend Sub New(  outerInstance As Component)
                 Me.outerInstance = outerInstance
             End Sub
 
@@ -8041,22 +8041,22 @@ Namespace java.awt
 
                 Private ReadOnly outerInstance As Component.AccessibleAWTComponent
 
-                Public Sub New(ByVal outerInstance As Component.AccessibleAWTComponent)
+                Public Sub New(  outerInstance As Component.AccessibleAWTComponent)
                     Me.outerInstance = outerInstance
                 End Sub
 
-                Public Overridable Sub componentHidden(ByVal e As ComponentEvent) Implements ComponentListener.componentHidden
+                Public Overridable Sub componentHidden(  e As ComponentEvent) Implements ComponentListener.componentHidden
                     If accessibleContext IsNot Nothing Then accessibleContext.firePropertyChange(accessibleContext.ACCESSIBLE_STATE_PROPERTY, AccessibleState.VISIBLE, Nothing)
                 End Sub
 
-                Public Overridable Sub componentShown(ByVal e As ComponentEvent) Implements ComponentListener.componentShown
+                Public Overridable Sub componentShown(  e As ComponentEvent) Implements ComponentListener.componentShown
                     If accessibleContext IsNot Nothing Then accessibleContext.firePropertyChange(accessibleContext.ACCESSIBLE_STATE_PROPERTY, Nothing, AccessibleState.VISIBLE)
                 End Sub
 
-                Public Overridable Sub componentMoved(ByVal e As ComponentEvent) Implements ComponentListener.componentMoved
+                Public Overridable Sub componentMoved(  e As ComponentEvent) Implements ComponentListener.componentMoved
                 End Sub
 
-                Public Overridable Sub componentResized(ByVal e As ComponentEvent) Implements ComponentListener.componentResized
+                Public Overridable Sub componentResized(  e As ComponentEvent) Implements ComponentListener.componentResized
                 End Sub
             End Class ' inner class AccessibleAWTComponentHandler
 
@@ -8071,14 +8071,14 @@ Namespace java.awt
 
                 Private ReadOnly outerInstance As Component.AccessibleAWTComponent
 
-                Public Sub New(ByVal outerInstance As Component.AccessibleAWTComponent)
+                Public Sub New(  outerInstance As Component.AccessibleAWTComponent)
                     Me.outerInstance = outerInstance
                 End Sub
 
-                Public Overridable Sub focusGained(ByVal [event] As FocusEvent) Implements FocusListener.focusGained
+                Public Overridable Sub focusGained(  [event] As FocusEvent) Implements FocusListener.focusGained
                     If accessibleContext IsNot Nothing Then accessibleContext.firePropertyChange(accessibleContext.ACCESSIBLE_STATE_PROPERTY, Nothing, AccessibleState.FOCUSED)
                 End Sub
-                Public Overridable Sub focusLost(ByVal [event] As FocusEvent) Implements FocusListener.focusLost
+                Public Overridable Sub focusLost(  [event] As FocusEvent) Implements FocusListener.focusLost
                     If accessibleContext IsNot Nothing Then accessibleContext.firePropertyChange(accessibleContext.ACCESSIBLE_STATE_PROPERTY, AccessibleState.FOCUSED, Nothing)
                 End Sub
             End Class ' inner class AccessibleAWTFocusHandler
@@ -8088,7 +8088,7 @@ Namespace java.awt
             ''' Adds a <code>PropertyChangeListener</code> to the listener list.
             ''' </summary>
             ''' <param name="listener">  the property change listener to be added </param>
-            Public Overridable Sub addPropertyChangeListener(ByVal listener As java.beans.PropertyChangeListener)
+            Public Overridable Sub addPropertyChangeListener(  listener As java.beans.PropertyChangeListener)
                 If accessibleAWTComponentHandler Is Nothing Then accessibleAWTComponentHandler = New AccessibleAWTComponentHandler(Me)
                 If accessibleAWTFocusHandler Is Nothing Then accessibleAWTFocusHandler = New AccessibleAWTFocusHandler(Me)
                 Dim tempVar As Boolean = propertyListenersCount = 0
@@ -8106,7 +8106,7 @@ Namespace java.awt
             ''' for all properties.
             ''' </summary>
             ''' <param name="listener">  The PropertyChangeListener to be removed </param>
-            Public Overridable Sub removePropertyChangeListener(ByVal listener As java.beans.PropertyChangeListener)
+            Public Overridable Sub removePropertyChangeListener(  listener As java.beans.PropertyChangeListener)
                 propertyListenersCount -= 1
                 If propertyListenersCount = 0 Then
                     outerInstance.removeComponentListener(accessibleAWTComponentHandler)
@@ -8230,7 +8230,7 @@ Namespace java.awt
             ''' </summary>
             ''' <param name="i"> zero-based index of child </param>
             ''' <returns> the nth <code>Accessible</code> child of the object </returns>
-            Public Overridable Function getAccessibleChild(ByVal i As Integer) As Accessible
+            Public Overridable Function getAccessibleChild(  i As Integer) As Accessible
                 Return Nothing ' Components don't have children
             End Function
 
@@ -8268,7 +8268,7 @@ Namespace java.awt
                 Get
                     Return outerInstance.background
                 End Get
-                Set(ByVal c As color)
+                Set(  c As color)
                     outerInstance.background = c
                 End Set
             End Property
@@ -8283,7 +8283,7 @@ Namespace java.awt
                 Get
                     Return outerInstance.foreground
                 End Get
-                Set(ByVal c As color)
+                Set(  c As color)
                     outerInstance.foreground = c
                 End Set
             End Property
@@ -8298,7 +8298,7 @@ Namespace java.awt
                 Get
                     Return outerInstance.cursor
                 End Get
-                Set(ByVal cursor_Renamed As Cursor)
+                Set(  cursor_Renamed As Cursor)
                     outerInstance.cursor = cursor_Renamed
                 End Set
             End Property
@@ -8313,7 +8313,7 @@ Namespace java.awt
                 Get
                     Return outerInstance.font
                 End Get
-                Set(ByVal f As font)
+                Set(  f As font)
                     outerInstance.font = f
                 End Set
             End Property
@@ -8326,7 +8326,7 @@ Namespace java.awt
             ''' <returns> the <code>FontMetrics</code>, if supported,
             '''     the object; otherwise, <code>null</code> </returns>
             ''' <seealso cref= #getFont </seealso>
-            Public Overridable Function getFontMetrics(ByVal f As font) As FontMetrics
+            Public Overridable Function getFontMetrics(  f As font) As FontMetrics
                 If f Is Nothing Then
                     Return Nothing
                 Else
@@ -8342,7 +8342,7 @@ Namespace java.awt
                 Get
                     Return outerInstance.enabled
                 End Get
-                Set(ByVal b As Boolean)
+                Set(  b As Boolean)
                     Dim old As Boolean = outerInstance.enabled
                     outerInstance.enabled = b
                     If b <> old Then
@@ -8370,7 +8370,7 @@ Namespace java.awt
                 Get
                     Return outerInstance.visible
                 End Get
-                Set(ByVal b As Boolean)
+                Set(  b As Boolean)
                     Dim old As Boolean = outerInstance.visible
                     outerInstance.visible = b
                     If b <> old Then
@@ -8408,7 +8408,7 @@ Namespace java.awt
             ''' <param name="p"> the <code>Point</code> relative to the
             '''     coordinate system of the object </param>
             ''' <returns> true if object contains <code>Point</code>; otherwise false </returns>
-            Public Overridable Function contains(ByVal p As Point) As Boolean
+            Public Overridable Function contains(  p As Point) As Boolean
                 Return outerInstance.contains(p)
             End Function
 
@@ -8441,7 +8441,7 @@ Namespace java.awt
                 Get
                     Return outerInstance.location
                 End Get
-                Set(ByVal p As Point)
+                Set(  p As Point)
                     outerInstance.location = p
                 End Set
             End Property
@@ -8458,7 +8458,7 @@ Namespace java.awt
                 Get
                     Return outerInstance.bounds
                 End Get
-                Set(ByVal r As Rectangle)
+                Set(  r As Rectangle)
                     outerInstance.bounds = r
                 End Set
             End Property
@@ -8478,7 +8478,7 @@ Namespace java.awt
                 Get
                     Return outerInstance.size
                 End Get
-                Set(ByVal d As Dimension)
+                Set(  d As Dimension)
                     outerInstance.size = d
                 End Set
             End Property
@@ -8495,7 +8495,7 @@ Namespace java.awt
             '''      coordinate space of the object's parent </param>
             ''' <returns> the <code>Accessible</code>, if it exists,
             '''      at the specified location; else <code>null</code> </returns>
-            Public Overridable Function getAccessibleAt(ByVal p As Point) As Accessible
+            Public Overridable Function getAccessibleAt(  p As Point) As Accessible
                 Return Nothing ' Components don't have children
             End Function
 
@@ -8521,7 +8521,7 @@ Namespace java.awt
             ''' component.
             ''' </summary>
             ''' <param name="l"> the focus listener </param>
-            Public Overridable Sub addFocusListener(ByVal l As FocusListener)
+            Public Overridable Sub addFocusListener(  l As FocusListener)
                 outerInstance.addFocusListener(l)
             End Sub
 
@@ -8530,7 +8530,7 @@ Namespace java.awt
             ''' events from this component.
             ''' </summary>
             ''' <param name="l"> the focus listener </param>
-            Public Overridable Sub removeFocusListener(ByVal l As FocusListener)
+            Public Overridable Sub removeFocusListener(  l As FocusListener)
                 outerInstance.removeFocusListener(l)
             End Sub
 
@@ -8608,7 +8608,7 @@ Namespace java.awt
         ''' <param name="className"> The name of the class. Must be fully-qualified class name. </param>
         ''' <returns> true, if this object is instanceof given [Class],
         '''         false, otherwise, or if obj or className is null </returns>
-        Friend Shared Function isInstanceOf(ByVal obj As Object, ByVal className As String) As Boolean
+        Friend Shared Function isInstanceOf(  obj As Object,   className As String) As Boolean
             If obj Is Nothing Then Return False
             If className Is Nothing Then Return False
 
@@ -8639,7 +8639,7 @@ Namespace java.awt
         ''' <summary>
         ''' Applies the shape to the component </summary>
         ''' <param name="shape"> Shape to be applied to the component </param>
-        Friend Overridable Sub applyCompoundShape(ByVal shape As sun.java2d.pipe.Region)
+        Friend Overridable Sub applyCompoundShape(  shape As sun.java2d.pipe.Region)
             checkTreeLock()
 
             If Not areBoundsValid() Then
@@ -8849,7 +8849,7 @@ Namespace java.awt
             applyCompoundShape(calculateCurrentShape())
         End Sub
 
-        Friend Sub subtractAndApplyShape(ByVal s As sun.java2d.pipe.Region)
+        Friend Sub subtractAndApplyShape(  s As sun.java2d.pipe.Region)
             checkTreeLock()
 
             If mixingLog.isLoggable(sun.util.logging.PlatformLogger.Level.FINE) Then mixingLog.fine("this = " & Me & "; s=" & s)
@@ -8907,7 +8907,7 @@ Namespace java.awt
             End SyncLock
         End Sub
 
-        Friend Overridable Sub mixOnHiding(ByVal isLightweight As Boolean)
+        Friend Overridable Sub mixOnHiding(  isLightweight As Boolean)
             ' We cannot be sure that the peer exists at this point, so we need the argument
             '    to find out whether the hiding component is (well, actually was) a LW or a HW.
             SyncLock treeLock
@@ -8929,7 +8929,7 @@ Namespace java.awt
             End SyncLock
         End Sub
 
-        Friend Overridable Sub mixOnZOrderChanging(ByVal oldZorder As Integer, ByVal newZorder As Integer)
+        Friend Overridable Sub mixOnZOrderChanging(  oldZorder As Integer,   newZorder As Integer)
             SyncLock treeLock
                 Dim becameHigher As Boolean = newZorder < oldZorder
                 Dim parent_Renamed As Container = container

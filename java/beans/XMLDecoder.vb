@@ -70,7 +70,7 @@ Namespace java.beans
 		''' <param name="in"> The underlying stream.
 		''' </param>
 		''' <seealso cref= XMLEncoder#XMLEncoder(java.io.OutputStream) </seealso>
-		Public Sub New(ByVal [in] As java.io.InputStream)
+		Public Sub New(  [in] As java.io.InputStream)
 			Me.New([in], Nothing)
 		End Sub
 
@@ -81,7 +81,7 @@ Namespace java.beans
 		''' <param name="in"> The underlying stream. </param>
 		''' <param name="owner"> The owner of this stream.
 		'''  </param>
-		Public Sub New(ByVal [in] As java.io.InputStream, ByVal owner As Object)
+		Public Sub New(  [in] As java.io.InputStream,   owner As Object)
 			Me.New([in], owner, Nothing)
 		End Sub
 
@@ -93,7 +93,7 @@ Namespace java.beans
 		''' <param name="owner"> the owner of this stream. </param>
 		''' <param name="exceptionListener"> the exception handler for the stream;
 		'''        if <code>null</code> the default exception listener will be used. </param>
-		Public Sub New(ByVal [in] As java.io.InputStream, ByVal owner As Object, ByVal exceptionListener As ExceptionListener)
+		Public Sub New(  [in] As java.io.InputStream,   owner As Object,   exceptionListener As ExceptionListener)
 			Me.New([in], owner, exceptionListener, Nothing)
 		End Sub
 
@@ -111,7 +111,7 @@ Namespace java.beans
 		'''        <code>null</code> indicates that the default class loader should
 		'''        be used
 		''' @since 1.5 </param>
-		Public Sub New(ByVal [in] As java.io.InputStream, ByVal owner As Object, ByVal exceptionListener As ExceptionListener, ByVal cl As  ClassLoader)
+		Public Sub New(  [in] As java.io.InputStream,   owner As Object,   exceptionListener As ExceptionListener,   cl As  ClassLoader)
 			Me.New(New org.xml.sax.InputSource([in]), owner, exceptionListener, cl)
 		End Sub
 
@@ -127,7 +127,7 @@ Namespace java.beans
 		''' <param name="is">  the input source to parse
 		''' 
 		''' @since 1.7 </param>
-		Public Sub New(ByVal [is] As org.xml.sax.InputSource)
+		Public Sub New(  [is] As org.xml.sax.InputSource)
 			Me.New([is], Nothing, Nothing, Nothing)
 		End Sub
 
@@ -143,7 +143,7 @@ Namespace java.beans
 		'''               or {@code null} to use the default class loader
 		''' 
 		''' @since 1.7 </param>
-		Private Sub New(ByVal [is] As org.xml.sax.InputSource, ByVal owner As Object, ByVal el As ExceptionListener, ByVal cl As  ClassLoader)
+		Private Sub New(  [is] As org.xml.sax.InputSource,   owner As Object,   el As ExceptionListener,   cl As  ClassLoader)
 			Me.input = [is]
 			Me.owner = owner
 			exceptionListener = el
@@ -162,7 +162,7 @@ Namespace java.beans
 			End If
 		End Sub
 
-		Private Sub close(ByVal [in] As java.io.Closeable)
+		Private Sub close(  [in] As java.io.Closeable)
 			If [in] IsNot Nothing Then
 				Try
 					[in].close()
@@ -201,7 +201,7 @@ Namespace java.beans
 		''' </param>
 		''' <seealso cref= #getExceptionListener </seealso>
 		Public Overridable Property exceptionListener As ExceptionListener
-			Set(ByVal exceptionListener As ExceptionListener)
+			Set(  exceptionListener As ExceptionListener)
 				If exceptionListener Is Nothing Then exceptionListener = Statement.defaultExceptionListener
 				Me.handler.exceptionListener = exceptionListener
 			End Set
@@ -233,7 +233,7 @@ Namespace java.beans
 		''' </param>
 		''' <seealso cref= #getOwner </seealso>
 		Public Overridable Property owner As Object
-			Set(ByVal owner As Object)
+			Set(  owner As Object)
 				Me.owner = owner
 			End Set
 			Get
@@ -263,7 +263,7 @@ Namespace java.beans
 		''' <returns> an instance of {@code DefaultHandler} for SAX parser
 		''' 
 		''' @since 1.7 </returns>
-		Public Shared Function createHandler(ByVal owner As Object, ByVal el As ExceptionListener, ByVal cl As  ClassLoader) As org.xml.sax.helpers.DefaultHandler
+		Public Shared Function createHandler(  owner As Object,   el As ExceptionListener,   cl As  ClassLoader) As org.xml.sax.helpers.DefaultHandler
 			Dim handler As New com.sun.beans.decoder.DocumentHandler
 			handler.owner = owner
 			handler.exceptionListener = el

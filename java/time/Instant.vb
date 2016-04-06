@@ -255,7 +255,7 @@ Namespace java.time
 		''' </summary>
 		''' <param name="clock">  the clock to use, not null </param>
 		''' <returns> the current instant, not null </returns>
-		Public Shared Function now(ByVal clock_Renamed As Clock) As Instant
+		Public Shared Function now(  clock_Renamed As Clock) As Instant
 			java.util.Objects.requireNonNull(clock_Renamed, "clock")
 			Return clock_Renamed.instant()
 		End Function
@@ -270,7 +270,7 @@ Namespace java.time
 		''' <param name="epochSecond">  the number of seconds from 1970-01-01T00:00:00Z </param>
 		''' <returns> an instant, not null </returns>
 		''' <exception cref="DateTimeException"> if the instant exceeds the maximum or minimum instant </exception>
-		Public Shared Function ofEpochSecond(ByVal epochSecond As Long) As Instant
+		Public Shared Function ofEpochSecond(  epochSecond As Long) As Instant
 			Return create(epochSecond, 0)
 		End Function
 
@@ -293,7 +293,7 @@ Namespace java.time
 		''' <returns> an instant, not null </returns>
 		''' <exception cref="DateTimeException"> if the instant exceeds the maximum or minimum instant </exception>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
-		Public Shared Function ofEpochSecond(ByVal epochSecond As Long, ByVal nanoAdjustment As Long) As Instant
+		Public Shared Function ofEpochSecond(  epochSecond As Long,   nanoAdjustment As Long) As Instant
 			Dim secs As Long = System.Math.addExact(epochSecond, System.Math.floorDiv(nanoAdjustment, NANOS_PER_SECOND))
 			Dim nos As Integer = CInt (System.Math.floorMod(nanoAdjustment, NANOS_PER_SECOND))
 			Return create(secs, nos)
@@ -308,7 +308,7 @@ Namespace java.time
 		''' <param name="epochMilli">  the number of milliseconds from 1970-01-01T00:00:00Z </param>
 		''' <returns> an instant, not null </returns>
 		''' <exception cref="DateTimeException"> if the instant exceeds the maximum or minimum instant </exception>
-		Public Shared Function ofEpochMilli(ByVal epochMilli As Long) As Instant
+		Public Shared Function ofEpochMilli(  epochMilli As Long) As Instant
 			Dim secs As Long = System.Math.floorDiv(epochMilli, 1000)
 			Dim mos As Integer = CInt (System.Math.floorMod(epochMilli, 1000))
 			Return create(secs, mos * 1000000)
@@ -331,7 +331,7 @@ Namespace java.time
 		''' <param name="temporal">  the temporal object to convert, not null </param>
 		''' <returns> the instant, not null </returns>
 		''' <exception cref="DateTimeException"> if unable to convert to an {@code Instant} </exception>
-		Public Shared Function [from](ByVal temporal As java.time.temporal.TemporalAccessor) As Instant
+		Public Shared Function [from](  temporal As java.time.temporal.TemporalAccessor) As Instant
 			If TypeOf temporal Is Instant Then Return CType(temporal, Instant)
 			java.util.Objects.requireNonNull(temporal, "temporal")
 			Try
@@ -354,7 +354,7 @@ Namespace java.time
 		''' <param name="text">  the text to parse, not null </param>
 		''' <returns> the parsed instant, not null </returns>
 		''' <exception cref="DateTimeParseException"> if the text cannot be parsed </exception>
-		Public Shared Function parse(ByVal text As CharSequence) As Instant
+		Public Shared Function parse(  text As CharSequence) As Instant
 			Return java.time.format.DateTimeFormatter.ISO_INSTANT.parse(text, Instant::from)
 		End Function
 
@@ -365,7 +365,7 @@ Namespace java.time
 		''' <param name="seconds">  the length of the duration in seconds </param>
 		''' <param name="nanoOfSecond">  the nano-of-second, from 0 to 999,999,999 </param>
 		''' <exception cref="DateTimeException"> if the instant exceeds the maximum or minimum instant </exception>
-		Private Shared Function create(ByVal seconds As Long, ByVal nanoOfSecond As Integer) As Instant
+		Private Shared Function create(  seconds As Long,   nanoOfSecond As Integer) As Instant
 			If (seconds Or nanoOfSecond) = 0 Then Return EPOCH
 			If seconds < MIN_SECOND OrElse seconds > MAX_SECOND Then Throw New DateTimeException("Instant exceeds minimum or maximum instant")
 			Return New Instant(seconds, nanoOfSecond)
@@ -377,7 +377,7 @@ Namespace java.time
 		''' </summary>
 		''' <param name="epochSecond">  the number of seconds from 1970-01-01T00:00:00Z </param>
 		''' <param name="nanos">  the nanoseconds within the second, must be positive </param>
-		Private Sub New(ByVal epochSecond As Long, ByVal nanos As Integer)
+		Private Sub New(  epochSecond As Long,   nanos As Integer)
 			MyBase.New()
 			Me.seconds = epochSecond
 			Me.nanos = nanos
@@ -409,7 +409,7 @@ Namespace java.time
 		''' </summary>
 		''' <param name="field">  the field to check, null returns false </param>
 		''' <returns> true if the field is supported on this instant, false if not </returns>
-		Public Overrides Function isSupported(ByVal field As java.time.temporal.TemporalField) As Boolean
+		Public Overrides Function isSupported(  field As java.time.temporal.TemporalField) As Boolean
 			If TypeOf field Is java.time.temporal.ChronoField Then Return field = INSTANT_SECONDS OrElse field = NANO_OF_SECOND OrElse field = MICRO_OF_SECOND OrElse field = MILLI_OF_SECOND
 			Return field IsNot Nothing AndAlso field.isSupportedBy(Me)
 		End Function
@@ -442,7 +442,7 @@ Namespace java.time
 		''' </summary>
 		''' <param name="unit">  the unit to check, null returns false </param>
 		''' <returns> true if the unit can be added/subtracted, false if not </returns>
-		Public Overrides Function isSupported(ByVal unit As java.time.temporal.TemporalUnit) As Boolean
+		Public Overrides Function isSupported(  unit As java.time.temporal.TemporalUnit) As Boolean
 			If TypeOf unit Is java.time.temporal.ChronoUnit Then Return unit.timeBased OrElse unit = DAYS
 			Return unit IsNot Nothing AndAlso unit.isSupportedBy(Me)
 		End Function
@@ -470,7 +470,7 @@ Namespace java.time
 		''' <returns> the range of valid values for the field, not null </returns>
 		''' <exception cref="DateTimeException"> if the range for the field cannot be obtained </exception>
 		''' <exception cref="UnsupportedTemporalTypeException"> if the field is not supported </exception>
-		Public Overrides Function range(ByVal field As java.time.temporal.TemporalField) As java.time.temporal.ValueRange ' override for Javadoc
+		Public Overrides Function range(  field As java.time.temporal.TemporalField) As java.time.temporal.ValueRange ' override for Javadoc
 			Return outerInstance.range(field)
 		End Function
 
@@ -500,7 +500,7 @@ Namespace java.time
 		''' <exception cref="UnsupportedTemporalTypeException"> if the field is not supported or
 		'''         the range of values exceeds an {@code int} </exception>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
-		Public Overrides Function [get](ByVal field As java.time.temporal.TemporalField) As Integer ' override for Javadoc and performance
+		Public Overrides Function [get](  field As java.time.temporal.TemporalField) As Integer ' override for Javadoc and performance
 			If TypeOf field Is java.time.temporal.ChronoField Then
 				Select Case CType(field, java.time.temporal.ChronoField)
 					Case NANO_OF_SECOND
@@ -539,7 +539,7 @@ Namespace java.time
 		''' <exception cref="DateTimeException"> if a value for the field cannot be obtained </exception>
 		''' <exception cref="UnsupportedTemporalTypeException"> if the field is not supported </exception>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
-		Public Overrides Function getLong(ByVal field As java.time.temporal.TemporalField) As Long
+		Public Overrides Function getLong(  field As java.time.temporal.TemporalField) As Long
 			If TypeOf field Is java.time.temporal.ChronoField Then
 				Select Case CType(field, java.time.temporal.ChronoField)
 					Case NANO_OF_SECOND
@@ -603,7 +603,7 @@ Namespace java.time
 		''' <returns> an {@code Instant} based on {@code this} with the adjustment made, not null </returns>
 		''' <exception cref="DateTimeException"> if the adjustment cannot be made </exception>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
-		Public Overrides Function [with](ByVal adjuster As java.time.temporal.TemporalAdjuster) As Instant
+		Public Overrides Function [with](  adjuster As java.time.temporal.TemporalAdjuster) As Instant
 			Return CType(adjuster.adjustInto(Me), Instant)
 		End Function
 
@@ -650,7 +650,7 @@ Namespace java.time
 		''' <exception cref="DateTimeException"> if the field cannot be set </exception>
 		''' <exception cref="UnsupportedTemporalTypeException"> if the field is not supported </exception>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
-		Public Overrides Function [with](ByVal field As java.time.temporal.TemporalField, ByVal newValue As Long) As Instant
+		Public Overrides Function [with](  field As java.time.temporal.TemporalField,   newValue As Long) As Instant
 			If TypeOf field Is java.time.temporal.ChronoField Then
 				Dim f As java.time.temporal.ChronoField = CType(field, java.time.temporal.ChronoField)
 				f.checkValidValue(newValue)
@@ -693,7 +693,7 @@ Namespace java.time
 		''' <returns> an {@code Instant} based on this instant with the time truncated, not null </returns>
 		''' <exception cref="DateTimeException"> if the unit is invalid for truncation </exception>
 		''' <exception cref="UnsupportedTemporalTypeException"> if the unit is not supported </exception>
-		Public Function truncatedTo(ByVal unit As java.time.temporal.TemporalUnit) As Instant
+		Public Function truncatedTo(  unit As java.time.temporal.TemporalUnit) As Instant
 			If unit = java.time.temporal.ChronoUnit.NANOS Then Return Me
 			Dim unitDur As Duration = unit.duration
 			If unitDur.seconds > LocalTime.SECONDS_PER_DAY Then Throw New java.time.temporal.UnsupportedTemporalTypeException("Unit is too large to be used for truncation")
@@ -724,7 +724,7 @@ Namespace java.time
 		''' <returns> an {@code Instant} based on this instant with the addition made, not null </returns>
 		''' <exception cref="DateTimeException"> if the addition cannot be made </exception>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
-		Public Overrides Function plus(ByVal amountToAdd As java.time.temporal.TemporalAmount) As Instant
+		Public Overrides Function plus(  amountToAdd As java.time.temporal.TemporalAmount) As Instant
 			Return CType(amountToAdd.addTo(Me), Instant)
 		End Function
 
@@ -785,7 +785,7 @@ Namespace java.time
 		''' <exception cref="DateTimeException"> if the addition cannot be made </exception>
 		''' <exception cref="UnsupportedTemporalTypeException"> if the unit is not supported </exception>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
-		Public Overrides Function plus(ByVal amountToAdd As Long, ByVal unit As java.time.temporal.TemporalUnit) As Instant
+		Public Overrides Function plus(  amountToAdd As Long,   unit As java.time.temporal.TemporalUnit) As Instant
 			If TypeOf unit Is java.time.temporal.ChronoUnit Then
 				Select Case CType(unit, java.time.temporal.ChronoUnit)
 					Case NANOS
@@ -820,7 +820,7 @@ Namespace java.time
 		''' <returns> an {@code Instant} based on this instant with the specified seconds added, not null </returns>
 		''' <exception cref="DateTimeException"> if the result exceeds the maximum or minimum instant </exception>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
-		Public Function plusSeconds(ByVal secondsToAdd As Long) As Instant
+		Public Function plusSeconds(  secondsToAdd As Long) As Instant
 			Return plus(secondsToAdd, 0)
 		End Function
 
@@ -833,7 +833,7 @@ Namespace java.time
 		''' <returns> an {@code Instant} based on this instant with the specified milliseconds added, not null </returns>
 		''' <exception cref="DateTimeException"> if the result exceeds the maximum or minimum instant </exception>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
-		Public Function plusMillis(ByVal millisToAdd As Long) As Instant
+		Public Function plusMillis(  millisToAdd As Long) As Instant
 			Return plus(millisToAdd \ 1000, (millisToAdd Mod 1000) * 1000000)
 		End Function
 
@@ -846,7 +846,7 @@ Namespace java.time
 		''' <returns> an {@code Instant} based on this instant with the specified nanoseconds added, not null </returns>
 		''' <exception cref="DateTimeException"> if the result exceeds the maximum or minimum instant </exception>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
-		Public Function plusNanos(ByVal nanosToAdd As Long) As Instant
+		Public Function plusNanos(  nanosToAdd As Long) As Instant
 			Return plus(0, nanosToAdd)
 		End Function
 
@@ -860,7 +860,7 @@ Namespace java.time
 		''' <returns> an {@code Instant} based on this instant with the specified seconds added, not null </returns>
 		''' <exception cref="DateTimeException"> if the result exceeds the maximum or minimum instant </exception>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
-		Private Function plus(ByVal secondsToAdd As Long, ByVal nanosToAdd As Long) As Instant
+		Private Function plus(  secondsToAdd As Long,   nanosToAdd As Long) As Instant
 			If (secondsToAdd Or nanosToAdd) = 0 Then Return Me
 			Dim epochSec As Long = System.Math.addExact(seconds, secondsToAdd)
 			epochSec = System.Math.addExact(epochSec, nanosToAdd / NANOS_PER_SECOND)
@@ -889,7 +889,7 @@ Namespace java.time
 		''' <returns> an {@code Instant} based on this instant with the subtraction made, not null </returns>
 		''' <exception cref="DateTimeException"> if the subtraction cannot be made </exception>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
-		Public Overrides Function minus(ByVal amountToSubtract As java.time.temporal.TemporalAmount) As Instant
+		Public Overrides Function minus(  amountToSubtract As java.time.temporal.TemporalAmount) As Instant
 			Return CType(amountToSubtract.subtractFrom(Me), Instant)
 		End Function
 
@@ -911,7 +911,7 @@ Namespace java.time
 		''' <exception cref="DateTimeException"> if the subtraction cannot be made </exception>
 		''' <exception cref="UnsupportedTemporalTypeException"> if the unit is not supported </exception>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
-		Public Overrides Function minus(ByVal amountToSubtract As Long, ByVal unit As java.time.temporal.TemporalUnit) As Instant
+		Public Overrides Function minus(  amountToSubtract As Long,   unit As java.time.temporal.TemporalUnit) As Instant
 			Return (If(amountToSubtract = java.lang.[Long].MIN_VALUE, plus(Long.Max_Value, unit).plus(1, unit), plus(-amountToSubtract, unit)))
 		End Function
 
@@ -925,7 +925,7 @@ Namespace java.time
 		''' <returns> an {@code Instant} based on this instant with the specified seconds subtracted, not null </returns>
 		''' <exception cref="DateTimeException"> if the result exceeds the maximum or minimum instant </exception>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
-		Public Function minusSeconds(ByVal secondsToSubtract As Long) As Instant
+		Public Function minusSeconds(  secondsToSubtract As Long) As Instant
 			If secondsToSubtract = java.lang.[Long].MIN_VALUE Then Return plusSeconds(Long.Max_Value).plusSeconds(1)
 			Return plusSeconds(-secondsToSubtract)
 		End Function
@@ -939,7 +939,7 @@ Namespace java.time
 		''' <returns> an {@code Instant} based on this instant with the specified milliseconds subtracted, not null </returns>
 		''' <exception cref="DateTimeException"> if the result exceeds the maximum or minimum instant </exception>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
-		Public Function minusMillis(ByVal millisToSubtract As Long) As Instant
+		Public Function minusMillis(  millisToSubtract As Long) As Instant
 			If millisToSubtract = java.lang.[Long].MIN_VALUE Then Return plusMillis(Long.Max_Value).plusMillis(1)
 			Return plusMillis(-millisToSubtract)
 		End Function
@@ -953,7 +953,7 @@ Namespace java.time
 		''' <returns> an {@code Instant} based on this instant with the specified nanoseconds subtracted, not null </returns>
 		''' <exception cref="DateTimeException"> if the result exceeds the maximum or minimum instant </exception>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
-		Public Function minusNanos(ByVal nanosToSubtract As Long) As Instant
+		Public Function minusNanos(  nanosToSubtract As Long) As Instant
 			If nanosToSubtract = java.lang.[Long].MIN_VALUE Then Return plusNanos(Long.Max_Value).plusNanos(1)
 			Return plusNanos(-nanosToSubtract)
 		End Function
@@ -977,7 +977,7 @@ Namespace java.time
 		''' <exception cref="DateTimeException"> if unable to query (defined by the query) </exception>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs (defined by the query) </exception>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Overrides Function query(Of R)(ByVal query_Renamed As java.time.temporal.TemporalQuery(Of R)) As R
+		Public Overrides Function query(Of R)(  query_Renamed As java.time.temporal.TemporalQuery(Of R)) As R
 			If query_Renamed Is java.time.temporal.TemporalQueries.precision() Then Return CType(NANOS, R)
 			' inline TemporalAccessor.super.query(query) as an optimization
 			If query_Renamed Is java.time.temporal.TemporalQueries.chronology() OrElse query_Renamed Is java.time.temporal.TemporalQueries.zoneId() OrElse query_Renamed Is java.time.temporal.TemporalQueries.zone() OrElse query_Renamed Is java.time.temporal.TemporalQueries.offset() OrElse query_Renamed Is java.time.temporal.TemporalQueries.localDate() OrElse query_Renamed Is java.time.temporal.TemporalQueries.localTime() Then Return Nothing
@@ -1008,7 +1008,7 @@ Namespace java.time
 		''' <returns> the adjusted object, not null </returns>
 		''' <exception cref="DateTimeException"> if unable to make the adjustment </exception>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
-		Public Overrides Function adjustInto(ByVal temporal As java.time.temporal.Temporal) As java.time.temporal.Temporal
+		Public Overrides Function adjustInto(  temporal As java.time.temporal.Temporal) As java.time.temporal.Temporal
 			Return temporal.with(INSTANT_SECONDS, seconds).with(NANO_OF_SECOND, nanos)
 		End Function
 
@@ -1055,7 +1055,7 @@ Namespace java.time
 		'''  temporal cannot be converted to an {@code Instant} </exception>
 		''' <exception cref="UnsupportedTemporalTypeException"> if the unit is not supported </exception>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
-		Public Overrides Function [until](ByVal endExclusive As java.time.temporal.Temporal, ByVal unit As java.time.temporal.TemporalUnit) As Long
+		Public Overrides Function [until](  endExclusive As java.time.temporal.Temporal,   unit As java.time.temporal.TemporalUnit) As Long
 			Dim [end] As Instant = Instant.from(endExclusive)
 			If TypeOf unit Is java.time.temporal.ChronoUnit Then
 				Dim f As java.time.temporal.ChronoUnit = CType(unit, java.time.temporal.ChronoUnit)
@@ -1082,13 +1082,13 @@ Namespace java.time
 			Return unit.between(Me, [end])
 		End Function
 
-		Private Function nanosUntil(ByVal [end] As Instant) As Long
+		Private Function nanosUntil(  [end] As Instant) As Long
 			Dim secsDiff As Long = System.Math.subtractExact([end].seconds, seconds)
 			Dim totalNanos As Long = System.Math.multiplyExact(secsDiff, NANOS_PER_SECOND)
 			Return System.Math.addExact(totalNanos, [end].nanos - nanos)
 		End Function
 
-		Private Function secondsUntil(ByVal [end] As Instant) As Long
+		Private Function secondsUntil(  [end] As Instant) As Long
 			Dim secsDiff As Long = System.Math.subtractExact([end].seconds, seconds)
 			Dim nanosDiff As Long = [end].nanos - nanos
 			If secsDiff > 0 AndAlso nanosDiff < 0 Then
@@ -1113,7 +1113,7 @@ Namespace java.time
 		''' <param name="offset">  the offset to combine with, not null </param>
 		''' <returns> the offset date-time formed from this instant and the specified offset, not null </returns>
 		''' <exception cref="DateTimeException"> if the result exceeds the supported range </exception>
-		Public Function atOffset(ByVal offset As ZoneOffset) As OffsetDateTime
+		Public Function atOffset(  offset As ZoneOffset) As OffsetDateTime
 			Return OffsetDateTime.ofInstant(Me, offset)
 		End Function
 
@@ -1130,7 +1130,7 @@ Namespace java.time
 		''' <param name="zone">  the zone to combine with, not null </param>
 		''' <returns> the zoned date-time formed from this instant and the specified zone, not null </returns>
 		''' <exception cref="DateTimeException"> if the result exceeds the supported range </exception>
-		Public Function atZone(ByVal zone As ZoneId) As ZonedDateTime
+		Public Function atZone(  zone As ZoneId) As ZonedDateTime
 			Return ZonedDateTime.ofInstant(Me, zone)
 		End Function
 
@@ -1163,7 +1163,7 @@ Namespace java.time
 		''' <param name="otherInstant">  the other instant to compare to, not null </param>
 		''' <returns> the comparator value, negative if less, positive if greater </returns>
 		''' <exception cref="NullPointerException"> if otherInstant is null </exception>
-		Public Overrides Function compareTo(ByVal otherInstant As Instant) As Integer Implements Comparable(Of Instant).compareTo
+		Public Overrides Function compareTo(  otherInstant As Instant) As Integer Implements Comparable(Of Instant).compareTo
 			Dim cmp As Integer = java.lang.[Long].Compare(seconds, otherInstant.seconds)
 			If cmp <> 0 Then Return cmp
 			Return nanos - otherInstant.nanos
@@ -1177,7 +1177,7 @@ Namespace java.time
 		''' <param name="otherInstant">  the other instant to compare to, not null </param>
 		''' <returns> true if this instant is after the specified instant </returns>
 		''' <exception cref="NullPointerException"> if otherInstant is null </exception>
-		Public Function isAfter(ByVal otherInstant As Instant) As Boolean
+		Public Function isAfter(  otherInstant As Instant) As Boolean
 			Return compareTo(otherInstant) > 0
 		End Function
 
@@ -1189,7 +1189,7 @@ Namespace java.time
 		''' <param name="otherInstant">  the other instant to compare to, not null </param>
 		''' <returns> true if this instant is before the specified instant </returns>
 		''' <exception cref="NullPointerException"> if otherInstant is null </exception>
-		Public Function isBefore(ByVal otherInstant As Instant) As Boolean
+		Public Function isBefore(  otherInstant As Instant) As Boolean
 			Return compareTo(otherInstant) < 0
 		End Function
 
@@ -1201,7 +1201,7 @@ Namespace java.time
 		''' </summary>
 		''' <param name="otherInstant">  the other instant, null returns false </param>
 		''' <returns> true if the other instant is equal to this one </returns>
-		Public Overrides Function Equals(ByVal otherInstant As Object) As Boolean
+		Public Overrides Function Equals(  otherInstant As Object) As Boolean
 			If Me Is otherInstant Then Return True
 			If TypeOf otherInstant Is Instant Then
 				Dim other As Instant = CType(otherInstant, Instant)
@@ -1250,16 +1250,16 @@ Namespace java.time
 		''' </summary>
 		''' <param name="s"> the stream to read </param>
 		''' <exception cref="InvalidObjectException"> always </exception>
-		Private Sub readObject(ByVal s As java.io.ObjectInputStream)
+		Private Sub readObject(  s As java.io.ObjectInputStream)
 			Throw New java.io.InvalidObjectException("Deserialization via serialization delegate")
 		End Sub
 
-		Friend Sub writeExternal(ByVal out As java.io.DataOutput)
+		Friend Sub writeExternal(  out As java.io.DataOutput)
 			out.writeLong(seconds)
 			out.writeInt(nanos)
 		End Sub
 
-		Shared Function readExternal(ByVal [in] As java.io.DataInput) As Instant
+		Shared Function readExternal(  [in] As java.io.DataInput) As Instant
 			Dim seconds As Long = [in].readLong()
 			Dim nanos As Integer = [in].readInt()
 			Return Instant.ofEpochSecond(seconds, nanos)

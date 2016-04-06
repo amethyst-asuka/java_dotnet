@@ -96,7 +96,7 @@ Namespace java.nio.charset
         Private ReadOnly type As Integer
         Private ReadOnly length_Renamed As Integer
 
-        Private Sub New(ByVal type As Integer, ByVal length As Integer)
+        Private Sub New(  type As Integer,   length As Integer)
             Me.type = type
             Me.length_Renamed = length
         End Sub
@@ -195,10 +195,10 @@ Namespace java.nio.charset
 
             Private cache As IDictionary(Of Integer?, WeakReference(Of CoderResult)) = Nothing
 
-            Protected Friend MustOverride Function create(ByVal len As Integer) As CoderResult
+            Protected Friend MustOverride Function create(  len As Integer) As CoderResult
 
             <MethodImpl(MethodImplOptions.Synchronized)>
-            Private Function [get](ByVal len As Integer) As CoderResult
+            Private Function [get](  len As Integer) As CoderResult
                 If len <= 0 Then Throw New IllegalArgumentException("Non-positive length")
                 Dim k As Integer? = New Integer?(len)
                 Dim w As WeakReference(Of CoderResult)
@@ -223,7 +223,7 @@ Namespace java.nio.charset
         Private Class CacheAnonymousInnerClassHelper
             Inherits Cache
 
-            Public Overrides Function create(ByVal len As Integer) As CoderResult
+            Public Overrides Function create(  len As Integer) As CoderResult
                 Return New CoderResult(CR_MALFORMED, len)
             End Function
         End Class
@@ -236,7 +236,7 @@ Namespace java.nio.charset
         '''          The given length
         ''' </param>
         ''' <returns>  The requested coder-result object </returns>
-        Public Shared Function malformedForLength(ByVal length As Integer) As CoderResult
+        Public Shared Function malformedForLength(  length As Integer) As CoderResult
             Return malformedCache.get(length)
         End Function
 
@@ -245,7 +245,7 @@ Namespace java.nio.charset
         Private Class CacheAnonymousInnerClassHelper2
             Inherits Cache
 
-            Public Overrides Function create(ByVal len As Integer) As CoderResult
+            Public Overrides Function create(  len As Integer) As CoderResult
                 Return New CoderResult(CR_UNMAPPABLE, len)
             End Function
         End Class
@@ -258,7 +258,7 @@ Namespace java.nio.charset
         '''          The given length
         ''' </param>
         ''' <returns>  The requested coder-result object </returns>
-        Public Shared Function unmappableForLength(ByVal length As Integer) As CoderResult
+        Public Shared Function unmappableForLength(  length As Integer) As CoderResult
             Return unmappableCache.get(length)
         End Function
 

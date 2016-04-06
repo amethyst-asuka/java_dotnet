@@ -62,7 +62,7 @@ Namespace java.beans.beancontext
 		''' <exception cref="NullPointerException"> if <CODE>changes</CODE> is <CODE>null</CODE> </exception>
 
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Sub New(ByVal bc As java.beans.beancontext.BeanContext, ByVal changes As ICollection)
+		Public Sub New(  bc As java.beans.beancontext.BeanContext,   changes As ICollection)
 			MyBase.New(bc)
 
 			If changes Is Nothing Then Throw New NullPointerException("BeanContextMembershipEvent constructor:  changes is null.")
@@ -78,7 +78,7 @@ Namespace java.beans.beancontext
 		''' <exception cref="NullPointerException"> if changes associated with this
 		'''                  event are null. </exception>
 
-		Public Sub New(ByVal bc As java.beans.beancontext.BeanContext, ByVal changes As Object())
+		Public Sub New(  bc As java.beans.beancontext.BeanContext,   changes As Object())
 			MyBase.New(bc)
 
 			If changes Is Nothing Then Throw New NullPointerException("BeanContextMembershipEvent:  changes is null.")
@@ -98,7 +98,7 @@ Namespace java.beans.beancontext
 		''' <returns> <code>true</code> if affected, <code>false</code>
 		''' if not </returns>
 		''' <param name="child"> the object to check for being affected </param>
-		Public Overridable Function contains(ByVal child As Object) As Boolean
+		Public Overridable Function contains(  child As Object) As Boolean
 			Return children.Contains(child)
 		End Function
 

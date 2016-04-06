@@ -49,7 +49,7 @@ Namespace java.util.stream
 		'''        results </param>
 		''' <returns> a {@code TerminalOp} implementing the reduction </returns>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Shared Function makeRef(Of T, U, T1)(ByVal seed As U, ByVal reducer As java.util.function.BiFunction(Of T1), ByVal combiner As java.util.function.BinaryOperator(Of U)) As TerminalOp(Of T, U)
+		Public Shared Function makeRef(Of T, U, T1)(  seed As U,   reducer As java.util.function.BiFunction(Of T1),   combiner As java.util.function.BinaryOperator(Of U)) As TerminalOp(Of T, U)
 			java.util.Objects.requireNonNull(reducer)
 			java.util.Objects.requireNonNull(combiner)
 'JAVA TO VB CONVERTER TODO TASK: Local classes are not converted by Java to VB Converter:
@@ -88,7 +88,7 @@ Namespace java.util.stream
 		''' @param <T> The type of the input elements, and the type of the result </param>
 		''' <param name="operator"> The reducing function </param>
 		''' <returns> A {@code TerminalOp} implementing the reduction </returns>
-		Public Shared Function makeRef(Of T)(ByVal [operator] As java.util.function.BinaryOperator(Of T)) As TerminalOp(Of T, java.util.Optional(Of T))
+		Public Shared Function makeRef(Of T)(  [operator] As java.util.function.BinaryOperator(Of T)) As TerminalOp(Of T, java.util.Optional(Of T))
 			java.util.Objects.requireNonNull([operator])
 'JAVA TO VB CONVERTER TODO TASK: Local classes are not converted by Java to VB Converter:
 '			class ReducingSink implements AccumulatingSink(Of T, java.util.Optional(Of T), ReducingSink)
@@ -146,7 +146,7 @@ Namespace java.util.stream
 		''' <param name="collector"> a {@code Collector} defining the reduction </param>
 		''' <returns> a {@code ReduceOp} implementing the reduction </returns>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Shared Function makeRef(Of T, I, T1)(ByVal collector As Collector(Of T1)) As TerminalOp(Of T, I)
+		Public Shared Function makeRef(Of T, I, T1)(  collector As Collector(Of T1)) As TerminalOp(Of T, I)
 			Dim supplier As java.util.function.Supplier(Of I) = java.util.Objects.requireNonNull(collector).supplier()
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
@@ -199,7 +199,7 @@ Namespace java.util.stream
 		''' <param name="reducer"> a function to combine an accumulator into another </param>
 		''' <returns> a {@code TerminalOp} implementing the reduction </returns>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Shared Function makeRef(Of T, R, T1)(ByVal seedFactory As java.util.function.Supplier(Of R), ByVal accumulator As java.util.function.BiConsumer(Of T1), ByVal reducer As java.util.function.BiConsumer(Of R, R)) As TerminalOp(Of T, R)
+		Public Shared Function makeRef(Of T, R, T1)(  seedFactory As java.util.function.Supplier(Of R),   accumulator As java.util.function.BiConsumer(Of T1),   reducer As java.util.function.BiConsumer(Of R, R)) As TerminalOp(Of T, R)
 			java.util.Objects.requireNonNull(seedFactory)
 			java.util.Objects.requireNonNull(accumulator)
 			java.util.Objects.requireNonNull(reducer)
@@ -239,7 +239,7 @@ Namespace java.util.stream
 		''' <param name="identity"> the identity for the combining function </param>
 		''' <param name="operator"> the combining function </param>
 		''' <returns> a {@code TerminalOp} implementing the reduction </returns>
-		Public Shared Function makeInt(ByVal identity As Integer, ByVal [operator] As java.util.function.IntBinaryOperator) As TerminalOp(Of Integer?, Integer?)
+		Public Shared Function makeInt(  identity As Integer,   [operator] As java.util.function.IntBinaryOperator) As TerminalOp(Of Integer?, Integer?)
 			java.util.Objects.requireNonNull([operator])
 'JAVA TO VB CONVERTER TODO TASK: Local classes are not converted by Java to VB Converter:
 '			class ReducingSink implements AccumulatingSink(Of java.lang.Integer, java.lang.Integer, ReducingSink), Sink.OfInt
@@ -283,7 +283,7 @@ Namespace java.util.stream
 		''' </summary>
 		''' <param name="operator"> the combining function </param>
 		''' <returns> a {@code TerminalOp} implementing the reduction </returns>
-		Public Shared Function makeInt(ByVal [operator] As java.util.function.IntBinaryOperator) As TerminalOp(Of Integer?, java.util.OptionalInt)
+		Public Shared Function makeInt(  [operator] As java.util.function.IntBinaryOperator) As TerminalOp(Of Integer?, java.util.OptionalInt)
 			java.util.Objects.requireNonNull([operator])
 'JAVA TO VB CONVERTER TODO TASK: Local classes are not converted by Java to VB Converter:
 '			class ReducingSink implements AccumulatingSink(Of java.lang.Integer, java.util.OptionalInt, ReducingSink), Sink.OfInt
@@ -342,7 +342,7 @@ Namespace java.util.stream
 		'''        accumulator </param>
 		''' <param name="combiner"> a function to combine an accumulator into another </param>
 		''' <returns> A {@code ReduceOp} implementing the reduction </returns>
-		Public Shared Function makeInt(Of R)(ByVal supplier As java.util.function.Supplier(Of R), ByVal accumulator As java.util.function.ObjIntConsumer(Of R), ByVal combiner As java.util.function.BinaryOperator(Of R)) As TerminalOp(Of Integer?, R)
+		Public Shared Function makeInt(Of R)(  supplier As java.util.function.Supplier(Of R),   accumulator As java.util.function.ObjIntConsumer(Of R),   combiner As java.util.function.BinaryOperator(Of R)) As TerminalOp(Of Integer?, R)
 			java.util.Objects.requireNonNull(supplier)
 			java.util.Objects.requireNonNull(accumulator)
 			java.util.Objects.requireNonNull(combiner)
@@ -382,7 +382,7 @@ Namespace java.util.stream
 		''' <param name="identity"> the identity for the combining function </param>
 		''' <param name="operator"> the combining function </param>
 		''' <returns> a {@code TerminalOp} implementing the reduction </returns>
-		Public Shared Function makeLong(ByVal identity As Long, ByVal [operator] As java.util.function.LongBinaryOperator) As TerminalOp(Of Long?, Long?)
+		Public Shared Function makeLong(  identity As Long,   [operator] As java.util.function.LongBinaryOperator) As TerminalOp(Of Long?, Long?)
 			java.util.Objects.requireNonNull([operator])
 'JAVA TO VB CONVERTER TODO TASK: Local classes are not converted by Java to VB Converter:
 '			class ReducingSink implements AccumulatingSink(Of java.lang.Long, java.lang.Long, ReducingSink), Sink.OfLong
@@ -426,7 +426,7 @@ Namespace java.util.stream
 		''' </summary>
 		''' <param name="operator"> the combining function </param>
 		''' <returns> a {@code TerminalOp} implementing the reduction </returns>
-		Public Shared Function makeLong(ByVal [operator] As java.util.function.LongBinaryOperator) As TerminalOp(Of Long?, java.util.OptionalLong)
+		Public Shared Function makeLong(  [operator] As java.util.function.LongBinaryOperator) As TerminalOp(Of Long?, java.util.OptionalLong)
 			java.util.Objects.requireNonNull([operator])
 'JAVA TO VB CONVERTER TODO TASK: Local classes are not converted by Java to VB Converter:
 '			class ReducingSink implements AccumulatingSink(Of java.lang.Long, java.util.OptionalLong, ReducingSink), Sink.OfLong
@@ -485,7 +485,7 @@ Namespace java.util.stream
 		'''        accumulator </param>
 		''' <param name="combiner"> a function to combine an accumulator into another </param>
 		''' <returns> a {@code TerminalOp} implementing the reduction </returns>
-		Public Shared Function makeLong(Of R)(ByVal supplier As java.util.function.Supplier(Of R), ByVal accumulator As java.util.function.ObjLongConsumer(Of R), ByVal combiner As java.util.function.BinaryOperator(Of R)) As TerminalOp(Of Long?, R)
+		Public Shared Function makeLong(Of R)(  supplier As java.util.function.Supplier(Of R),   accumulator As java.util.function.ObjLongConsumer(Of R),   combiner As java.util.function.BinaryOperator(Of R)) As TerminalOp(Of Long?, R)
 			java.util.Objects.requireNonNull(supplier)
 			java.util.Objects.requireNonNull(accumulator)
 			java.util.Objects.requireNonNull(combiner)
@@ -525,7 +525,7 @@ Namespace java.util.stream
 		''' <param name="identity"> the identity for the combining function </param>
 		''' <param name="operator"> the combining function </param>
 		''' <returns> a {@code TerminalOp} implementing the reduction </returns>
-		Public Shared Function makeDouble(ByVal identity As Double, ByVal [operator] As java.util.function.DoubleBinaryOperator) As TerminalOp(Of Double?, Double?)
+		Public Shared Function makeDouble(  identity As Double,   [operator] As java.util.function.DoubleBinaryOperator) As TerminalOp(Of Double?, Double?)
 			java.util.Objects.requireNonNull([operator])
 'JAVA TO VB CONVERTER TODO TASK: Local classes are not converted by Java to VB Converter:
 '			class ReducingSink implements AccumulatingSink(Of java.lang.Double, java.lang.Double, ReducingSink), Sink.OfDouble
@@ -569,7 +569,7 @@ Namespace java.util.stream
 		''' </summary>
 		''' <param name="operator"> the combining function </param>
 		''' <returns> a {@code TerminalOp} implementing the reduction </returns>
-		Public Shared Function makeDouble(ByVal [operator] As java.util.function.DoubleBinaryOperator) As TerminalOp(Of Double?, java.util.OptionalDouble)
+		Public Shared Function makeDouble(  [operator] As java.util.function.DoubleBinaryOperator) As TerminalOp(Of Double?, java.util.OptionalDouble)
 			java.util.Objects.requireNonNull([operator])
 'JAVA TO VB CONVERTER TODO TASK: Local classes are not converted by Java to VB Converter:
 '			class ReducingSink implements AccumulatingSink(Of java.lang.Double, java.util.OptionalDouble, ReducingSink), Sink.OfDouble
@@ -628,7 +628,7 @@ Namespace java.util.stream
 		'''        accumulator </param>
 		''' <param name="combiner"> a function to combine an accumulator into another </param>
 		''' <returns> a {@code TerminalOp} implementing the reduction </returns>
-		Public Shared Function makeDouble(Of R)(ByVal supplier As java.util.function.Supplier(Of R), ByVal accumulator As java.util.function.ObjDoubleConsumer(Of R), ByVal combiner As java.util.function.BinaryOperator(Of R)) As TerminalOp(Of Double?, R)
+		Public Shared Function makeDouble(Of R)(  supplier As java.util.function.Supplier(Of R),   accumulator As java.util.function.ObjDoubleConsumer(Of R),   combiner As java.util.function.BinaryOperator(Of R)) As TerminalOp(Of Double?, R)
 			java.util.Objects.requireNonNull(supplier)
 			java.util.Objects.requireNonNull(accumulator)
 			java.util.Objects.requireNonNull(combiner)
@@ -672,7 +672,7 @@ Namespace java.util.stream
 		Private Interface AccumulatingSink(Of T, R, K As AccumulatingSink(Of T, R, K))
 			Inherits TerminalSink(Of T, R)
 
-			Sub combine(ByVal other As K)
+			Sub combine(  other As K)
 		End Interface
 
 		''' <summary>
@@ -710,7 +710,7 @@ Namespace java.util.stream
 			''' the specified {@code Supplier} to create accumulating sinks.
 			''' </summary>
 			''' <param name="shape"> The shape of the stream pipeline </param>
-			Friend Sub New(ByVal shape As StreamShape)
+			Friend Sub New(  shape As StreamShape)
 				inputShape_Renamed = shape
 			End Sub
 
@@ -720,11 +720,11 @@ Namespace java.util.stream
 				Return inputShape_Renamed
 			End Function
 
-			Public Overrides Function evaluateSequential(Of P_IN)(ByVal helper As PipelineHelper(Of T), ByVal spliterator As java.util.Spliterator(Of P_IN)) As R Implements TerminalOp(Of T, R).evaluateSequential
+			Public Overrides Function evaluateSequential(Of P_IN)(  helper As PipelineHelper(Of T),   spliterator As java.util.Spliterator(Of P_IN)) As R Implements TerminalOp(Of T, R).evaluateSequential
 				Return helper.wrapAndCopyInto(makeSink(), spliterator).get()
 			End Function
 
-			Public Overrides Function evaluateParallel(Of P_IN)(ByVal helper As PipelineHelper(Of T), ByVal spliterator As java.util.Spliterator(Of P_IN)) As R Implements TerminalOp(Of T, R).evaluateParallel
+			Public Overrides Function evaluateParallel(Of P_IN)(  helper As PipelineHelper(Of T),   spliterator As java.util.Spliterator(Of P_IN)) As R Implements TerminalOp(Of T, R).evaluateParallel
 				Return (New ReduceTask(Of )(Me, helper, spliterator)).invoke().get()
 			End Function
 		End Class
@@ -738,17 +738,17 @@ Namespace java.util.stream
 
 			Private ReadOnly op As ReduceOp(Of P_OUT, R, S)
 
-			Friend Sub New(ByVal op As ReduceOp(Of P_OUT, R, S), ByVal helper As PipelineHelper(Of P_OUT), ByVal spliterator As java.util.Spliterator(Of P_IN))
+			Friend Sub New(  op As ReduceOp(Of P_OUT, R, S),   helper As PipelineHelper(Of P_OUT),   spliterator As java.util.Spliterator(Of P_IN))
 				MyBase.New(helper, spliterator)
 				Me.op = op
 			End Sub
 
-			Friend Sub New(ByVal parent As ReduceTask(Of P_IN, P_OUT, R, S), ByVal spliterator As java.util.Spliterator(Of P_IN))
+			Friend Sub New(  parent As ReduceTask(Of P_IN, P_OUT, R, S),   spliterator As java.util.Spliterator(Of P_IN))
 				MyBase.New(parent, spliterator)
 				Me.op = parent.op
 			End Sub
 
-			Protected Friend Overrides Function makeChild(ByVal spliterator As java.util.Spliterator(Of P_IN)) As ReduceTask(Of P_IN, P_OUT, R, S)
+			Protected Friend Overrides Function makeChild(  spliterator As java.util.Spliterator(Of P_IN)) As ReduceTask(Of P_IN, P_OUT, R, S)
 				Return New ReduceTask(Of )(Me, spliterator)
 			End Function
 
@@ -756,7 +756,7 @@ Namespace java.util.stream
 				Return helper.wrapAndCopyInto(op.makeSink(), spliterator)
 			End Function
 
-			Public Overrides Sub onCompletion(Of T1)(ByVal caller As java.util.concurrent.CountedCompleter(Of T1))
+			Public Overrides Sub onCompletion(Of T1)(  caller As java.util.concurrent.CountedCompleter(Of T1))
 				If Not leaf Then
 					Dim leftResult As S = leftChild.localResult
 					leftResult.combine(rightChild.localResult)

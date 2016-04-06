@@ -48,7 +48,7 @@ Namespace java.lang.invoke
 		'''  that implement members of the erasure-family of the given erased type.
 		''' </summary>
 		'non-public
-	 Friend Sub New(ByVal targetType As MethodType)
+	 Friend Sub New(  targetType As MethodType)
 			Me.targetType = targetType
 	 End Sub
 
@@ -84,12 +84,12 @@ Namespace java.lang.invoke
 			Return cachedInvokerker(INV_BASIC, invoker)
 	 End Function
 
-		Private Function cachedInvoker(ByVal idx As Integer) As MethodHandle
+		Private Function cachedInvoker(  idx As Integer) As MethodHandle
 			Return invokers(idx)
 		End Function
 
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Private Function setCachedInvoker(ByVal idx As Integer, ByVal invoker As MethodHandle) As MethodHandle
+		Private Function setCachedInvoker(  idx As Integer,   invoker As MethodHandle) As MethodHandle
 			' Simulate a CAS, to avoid racy duplication of results.
 			Dim prev As MethodHandle = invokers(idx)
 			If prev IsNot Nothing Then Return prev
@@ -97,7 +97,7 @@ Namespace java.lang.invoke
 				Return invokers(idx)
 		End Function
 
-		Private Function makeExactOrGeneralInvoker(ByVal isExact As Boolean) As MethodHandle
+		Private Function makeExactOrGeneralInvoker(  isExact As Boolean) As MethodHandle
 			Dim mtype As MethodType = targetType
 			Dim invokerType As MethodType = mtype.invokerType()
 			Dim which As Integer = (If(isExact, MethodTypeForm.LF_EX_INVOKER, MethodTypeForm.LF_GEN_INVOKER))
@@ -112,14 +112,14 @@ Namespace java.lang.invoke
 
 		''' <summary>
 		''' If the target type seems to be common enough, eagerly compile the invoker to bytecodes. </summary>
-		Private Sub maybeCompileToBytecode(ByVal invoker As MethodHandle)
+		Private Sub maybeCompileToBytecode(  invoker As MethodHandle)
 			Const EAGER_COMPILE_ARITY_LIMIT As Integer = 10
 			If targetType Is targetType.erase() AndAlso targetType.parameterCount() < EAGER_COMPILE_ARITY_LIMIT Then invoker.form.compileToBytecode()
 		End Sub
 
 		' This next one is called from LambdaForm.NamedFunction.<init>.
 		'non-public
-	 Friend Shared Function invokeBasicMethod(ByVal basicType As MethodType) As MemberName
+	 Friend Shared Function invokeBasicMethod(  basicType As MethodType) As MemberName
 			assert(basicType Is basicType.basicType())
 			Try
 				'Lookup.findVirtual(MethodHandle.class, name, type);
@@ -129,7 +129,7 @@ Namespace java.lang.invoke
 			End Try
 	 End Function
 
-		Private Function checkInvoker(ByVal invoker As MethodHandle) As Boolean
+		Private Function checkInvoker(  invoker As MethodHandle) As Boolean
 			assert(targetType.invokerType().Equals(invoker.type())) : java.util.Arrays.asList(targetType, targetType.invokerType(), invoker)
 			assert(invoker.internalMemberName() Is Nothing OrElse invoker.internalMemberName().methodType.Equals(targetType))
 			assert((Not invoker.varargsCollector))
@@ -144,7 +144,7 @@ Namespace java.lang.invoke
 		''' <param name="leadingArgCount"> the number of unchanged (non-spread) arguments </param>
 		''' <returns> {@code invoker.invokeExact(mh, uarg*, C[]{sarg*}) := (RT)mh.invoke(uarg*, sarg*)} </returns>
 		'non-public
-	 Friend Overridable Function spreadInvoker(ByVal leadingArgCount As Integer) As MethodHandle
+	 Friend Overridable Function spreadInvoker(  leadingArgCount As Integer) As MethodHandle
 			Dim spreadArgCount As Integer = targetType.parameterCount() - leadingArgCount
 			Dim postSpreadType As MethodType = targetType
 			Dim argArrayType As  [Class] = impliedRestargType(postSpreadType, leadingArgCount)
@@ -158,7 +158,7 @@ Namespace java.lang.invoke
 			Return MethodHandles.filterArgument(arrayInvoker, 0, makeSpreader)
 	 End Function
 
-		Private Shared Function impliedRestargType(ByVal restargType As MethodType, ByVal fromPos As Integer) As  [Class]
+		Private Shared Function impliedRestargType(  restargType As MethodType,   fromPos As Integer) As  [Class]
 			If restargType.generic Then ' can be nothing else Return GetType(Object())
 			Dim maxPos As Integer = restargType.parameterCount()
 			If fromPos >= maxPos Then ' reasonable default Return GetType(Object())
@@ -174,7 +174,7 @@ Namespace java.lang.invoke
 			Return "Invokers" & targetType
 		End Function
 
-		Friend Shared Function methodHandleInvokeLinkerMethod(ByVal name As String, ByVal mtype As MethodType, ByVal appendixResult As Object()) As MemberName
+		Friend Shared Function methodHandleInvokeLinkerMethod(  name As String,   mtype As MethodType,   appendixResult As Object()) As MemberName
 			Dim which As Integer
 			Select Case name
 			Case "invokeExact"
@@ -206,7 +206,7 @@ Namespace java.lang.invoke
 		''' <param name="customized"> whether to use a trailing appendix argument (to carry the mtype) </param>
 		''' <param name="which"> bit-encoded 0x01 whether it is a CP adapter ("linker") or MHs.invoker value ("invoker");
 		'''                          0x02 whether it is for invokeExact or generic invoke </param>
-		Private Shared Function invokeHandleForm(ByVal mtype As MethodType, ByVal customized As Boolean, ByVal which As Integer) As LambdaForm
+		Private Shared Function invokeHandleForm(  mtype As MethodType,   customized As Boolean,   which As Integer) As LambdaForm
 			Dim isCached As Boolean
 			If Not customized Then
 				mtype = mtype.basicType() ' normalize Z to I, String to Object, etc.
@@ -295,7 +295,7 @@ Namespace java.lang.invoke
 		End Function
 
 		'non-public
-	 Friend Shared Function newWrongMethodTypeException(ByVal actual As MethodType, ByVal expected As MethodType) As WrongMethodTypeException
+	 Friend Shared Function newWrongMethodTypeException(  actual As MethodType,   expected As MethodType) As WrongMethodTypeException
 			' FIXME: merge with JVM logic for throwing WMTE
 			Return New WrongMethodTypeException("expected " & expected & " but found " & actual)
 	 End Function
@@ -303,7 +303,7 @@ Namespace java.lang.invoke
 		''' <summary>
 		''' Static definition of MethodHandle.invokeExact checking code. </summary>
 		'non-public
-	 Friend Shared ForceInline Sub checkExactType(ByVal mhObj As Object, ByVal expectedObj As Object)
+	 Friend Shared ForceInline Sub checkExactType(  mhObj As Object,   expectedObj As Object)
 			Dim mh As MethodHandle = CType(mhObj, MethodHandle)
 			Dim expected As MethodType = CType(expectedObj, MethodType)
 			Dim actual As MethodType = mh.type()
@@ -316,7 +316,7 @@ Namespace java.lang.invoke
 		''' {@code (R)MH.invoke(a*) => MH.asType(TYPEOF(a*:R)).invokeBasic(a*)}
 		''' </summary>
 		'non-public
-	 Friend Shared ForceInline Function checkGenericType(ByVal mhObj As Object, ByVal expectedObj As Object) As Object
+	 Friend Shared ForceInline Function checkGenericType(  mhObj As Object,   expectedObj As Object) As Object
 			Dim mh As MethodHandle = CType(mhObj, MethodHandle)
 			Dim expected As MethodType = CType(expectedObj, MethodType)
 			Return mh.asType(expected)
@@ -339,18 +339,18 @@ Namespace java.lang.invoke
 	'         
 	 End Function
 
-		Friend Shared Function linkToCallSiteMethod(ByVal mtype As MethodType) As MemberName
+		Friend Shared Function linkToCallSiteMethod(  mtype As MethodType) As MemberName
 			Dim lform As LambdaForm = callSiteForm(mtype, False)
 			Return lform.vmentry
 		End Function
 
-		Friend Shared Function linkToTargetMethod(ByVal mtype As MethodType) As MemberName
+		Friend Shared Function linkToTargetMethod(  mtype As MethodType) As MemberName
 			Dim lform As LambdaForm = callSiteForm(mtype, True)
 			Return lform.vmentry
 		End Function
 
 		' skipCallSite is true if we are optimizing a ConstantCallSite
-		Private Shared Function callSiteForm(ByVal mtype As MethodType, ByVal skipCallSite As Boolean) As LambdaForm
+		Private Shared Function callSiteForm(  mtype As MethodType,   skipCallSite As Boolean) As LambdaForm
 			mtype = mtype.basicType() ' normalize Z to I, String to Object, etc.
 			Dim which As Integer = (If(skipCallSite, MethodTypeForm.LF_MH_LINKER, MethodTypeForm.LF_CS_LINKER))
 			Dim lform As LambdaForm = mtype.form().cachedLambdaForm(which)
@@ -389,18 +389,18 @@ Namespace java.lang.invoke
 		''' <summary>
 		''' Static definition of MethodHandle.invokeGeneric checking code. </summary>
 		'non-public
-	 Friend Shared ForceInline Function getCallSiteTarget(ByVal site As Object) As Object
+	 Friend Shared ForceInline Function getCallSiteTarget(  site As Object) As Object
 			Return CType(site, CallSite).target
 	 End Function
 
 		'non-public
-	 Friend Shared ForceInline Sub checkCustomized(ByVal o As Object)
+	 Friend Shared ForceInline Sub checkCustomized(  o As Object)
 			Dim mh As MethodHandle = CType(o, MethodHandle)
 			If mh.form.customized Is Nothing Then maybeCustomize(mh)
 	 End Sub
 
 		'non-public
-	 Friend Shared DontInline Sub maybeCustomize(ByVal mh As MethodHandle)
+	 Friend Shared DontInline Sub maybeCustomize(  mh As MethodHandle)
 			Dim count As SByte = mh.customizationCount
 			If count >= CUSTOMIZE_THRESHOLD Then
 				mh.customize()

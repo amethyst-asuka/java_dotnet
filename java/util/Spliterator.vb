@@ -301,7 +301,7 @@ Namespace java.util
 		''' upon entry to this method, else {@code true}. </returns>
 		''' <exception cref="NullPointerException"> if the specified action is null </exception>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Function tryAdvance(Of T1)(ByVal action As java.util.function.Consumer(Of T1)) As Boolean
+		Function tryAdvance(Of T1)(  action As java.util.function.Consumer(Of T1)) As Boolean
 
 		''' <summary>
 		''' Performs the given action for each remaining element, sequentially in
@@ -317,9 +317,9 @@ Namespace java.util
 		''' <param name="action"> The action </param>
 		''' <exception cref="NullPointerException"> if the specified action is null </exception>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		default Sub forEachRemaining(Of T1)(ByVal action As java.util.function.Consumer(Of T1))
+		default Sub forEachRemaining(Of T1)(  action As java.util.function.Consumer(Of T1))
 			Do
-			} Function [while](tryAdvance(action) ByVal  As ) As 
+			} Function [while](tryAdvance(action)    As ) As 
 
 		''' <summary>
 		''' If this spliterator can be partitioned, returns a Spliterator
@@ -397,7 +397,7 @@ Namespace java.util
 		''' </summary>
 		''' <returns> the exact size, if known, else {@code -1}. </returns>
 		ReadOnly Property default exactSizeIfKnown As Long
-			Sub [New](characteristics() & ByVal SIZED As )
+			Sub [New](characteristics() &   SIZED As )
 
 		''' <summary>
 		''' Returns a set of characteristics of this Spliterator and its
@@ -432,8 +432,8 @@ Namespace java.util
 		''' <param name="characteristics"> the characteristics to check for </param>
 		''' <returns> {@code true} if all the specified characteristics are present,
 		''' else {@code false} </returns>
-		default Function hasCharacteristics(ByVal characteristics As Integer) As Boolean
-			Sub [New](characteristics() & ByVal characteristics As )
+		default Function hasCharacteristics(  characteristics As Integer) As Boolean
+			Sub [New](characteristics() &   characteristics As )
 
 		''' <summary>
 		''' If this Spliterator's source is <seealso cref="#SORTED"/> by a <seealso cref="Comparator"/>,

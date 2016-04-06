@@ -41,7 +41,7 @@ Namespace java.nio.file.attribute
         End Sub
 
         ' Write string representation of permission bits to {@code sb}.
-        Private Shared Sub writeBits(ByVal sb As StringBuilder, ByVal r As Boolean, ByVal w As Boolean, ByVal x As Boolean)
+        Private Shared Sub writeBits(  sb As StringBuilder,   r As Boolean,   w As Boolean,   x As Boolean)
             If r Then
                 sb.append("r"c)
             Else
@@ -71,7 +71,7 @@ Namespace java.nio.file.attribute
         '''          the set of permissions
         ''' </param>
         ''' <returns>  the string representation of the permission set </returns>
-        Public Shared Function ToString(ByVal perms As [Set](Of PosixFilePermission)) As String
+        Public Shared Function ToString(  perms As [Set](Of PosixFilePermission)) As String
             Dim sb As New StringBuilder(9)
             writeBits(sb, perms.contains(OWNER_READ), perms.contains(OWNER_WRITE), perms.contains(OWNER_EXECUTE))
             writeBits(sb, perms.contains(GROUP_READ), perms.contains(GROUP_WRITE), perms.contains(GROUP_EXECUTE))
@@ -79,18 +79,18 @@ Namespace java.nio.file.attribute
             Return sb.ToString()
         End Function
 
-        Private Shared Function isSet(ByVal c As Char, ByVal setValue As Char) As Boolean
+        Private Shared Function isSet(  c As Char,   setValue As Char) As Boolean
             If c = valuelue Then Return True
             If c = "-"c Then Return False
             Throw New IllegalArgumentException("Invalid mode")
         End Function
-        Private Shared Function isR(ByVal c As Char) As Boolean
+        Private Shared Function isR(  c As Char) As Boolean
             Return isSet(c, "r"c)
         End Function
-        Private Shared Function isW(ByVal c As Char) As Boolean
+        Private Shared Function isW(  c As Char) As Boolean
             Return isSet(c, "w"c)
         End Function
-        Private Shared Function isX(ByVal c As Char) As Boolean
+        Private Shared Function isX(  c As Char) As Boolean
             Return isSet(c, "x"c)
         End Function
 
@@ -124,7 +124,7 @@ Namespace java.nio.file.attribute
         '''          if the string cannot be converted to a set of permissions
         ''' </exception>
         ''' <seealso cref= #toString(Set) </seealso>
-        Public Shared Function fromString(ByVal perms As String) As [Set](Of PosixFilePermission)
+        Public Shared Function fromString(  perms As String) As [Set](Of PosixFilePermission)
             If perms.Length() <> 9 Then Throw New IllegalArgumentException("Invalid mode")
             Dim result As [Set](Of PosixFilePermission) = EnumSet.noneOf(GetType(PosixFilePermission))
             If isR(perms.Chars(0)) Then result.add(OWNER_READ)
@@ -154,7 +154,7 @@ Namespace java.nio.file.attribute
         ''' <exception cref="ClassCastException">
         '''          if the set contains elements that are not of type {@code
         '''          PosixFilePermission} </exception>
-        Public Shared Function asFileAttribute(ByVal perms As [Set](Of PosixFilePermission)) As FileAttribute(Of [Set](Of PosixFilePermission))
+        Public Shared Function asFileAttribute(  perms As [Set](Of PosixFilePermission)) As FileAttribute(Of [Set](Of PosixFilePermission))
             ' copy set and check for nulls (CCE will be thrown if an element is not
             ' a PosixFilePermission)
             perms = New HashSet(Of PosixFilePermission)(perms)

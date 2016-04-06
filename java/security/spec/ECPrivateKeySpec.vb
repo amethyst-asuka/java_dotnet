@@ -49,7 +49,7 @@ Namespace java.security.spec
 		''' parameters. </param>
 		''' <exception cref="NullPointerException"> if {@code s}
 		''' or {@code params} is null. </exception>
-		Public Sub New(ByVal s As System.Numerics.BigInteger, ByVal params As ECParameterSpec)
+		Public Sub New(  s As System.Numerics.BigInteger,   params As ECParameterSpec)
 			If s Is Nothing Then Throw New NullPointerException("s is null")
 			If params Is Nothing Then Throw New NullPointerException("params is null")
 			Me.s = s

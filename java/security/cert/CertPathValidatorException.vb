@@ -90,7 +90,7 @@ Namespace java.security.cert
 		''' describes this particular exception.
 		''' </summary>
 		''' <param name="msg"> the detail message </param>
-		Public Sub New(ByVal msg As String)
+		Public Sub New(  msg As String)
 			Me.New(msg, Nothing)
 		End Sub
 
@@ -106,7 +106,7 @@ Namespace java.security.cert
 		''' <param name="cause"> the cause (which is saved for later retrieval by the
 		''' <seealso cref="#getCause getCause()"/> method). (A {@code null} value is
 		''' permitted, and indicates that the cause is nonexistent or unknown.) </param>
-		Public Sub New(ByVal cause As Throwable)
+		Public Sub New(  cause As Throwable)
 			Me.New((If(cause Is Nothing, Nothing, cause.ToString())), cause)
 		End Sub
 
@@ -118,7 +118,7 @@ Namespace java.security.cert
 		''' <param name="cause"> the cause (which is saved for later retrieval by the
 		''' <seealso cref="#getCause getCause()"/> method). (A {@code null} value is
 		''' permitted, and indicates that the cause is nonexistent or unknown.) </param>
-		Public Sub New(ByVal msg As String, ByVal cause As Throwable)
+		Public Sub New(  msg As String,   cause As Throwable)
 			Me.New(msg, cause, Nothing, -1)
 		End Sub
 
@@ -138,7 +138,7 @@ Namespace java.security.cert
 		''' certPath.getCertificates().size()) } </exception>
 		''' <exception cref="IllegalArgumentException"> if {@code certPath} is
 		''' {@code null} and {@code index} is not -1 </exception>
-		Public Sub New(ByVal msg As String, ByVal cause As Throwable, ByVal certPath As CertPath, ByVal index As Integer)
+		Public Sub New(  msg As String,   cause As Throwable,   certPath As CertPath,   index As Integer)
 			Me.New(msg, cause, certPath, index, BasicReason.UNSPECIFIED)
 		End Sub
 
@@ -162,7 +162,7 @@ Namespace java.security.cert
 		''' <exception cref="NullPointerException"> if {@code reason} is {@code null}
 		''' 
 		''' @since 1.7 </exception>
-		Public Sub New(ByVal msg As String, ByVal cause As Throwable, ByVal certPath As CertPath, ByVal index As Integer, ByVal reason As Reason)
+		Public Sub New(  msg As String,   cause As Throwable,   certPath As CertPath,   index As Integer,   reason As Reason)
 			MyBase.New(msg, cause)
 			If certPath Is Nothing AndAlso index <> -1 Then Throw New IllegalArgumentException
 			If index < -1 OrElse (certPath IsNot Nothing AndAlso index >= certPath.certificates.Count) Then Throw New IndexOutOfBoundsException
@@ -213,7 +213,7 @@ Namespace java.security.cert
 			End Get
 		End Property
 
-		Private Sub readObject(ByVal stream As java.io.ObjectInputStream)
+		Private Sub readObject(  stream As java.io.ObjectInputStream)
 			stream.defaultReadObject()
 			If reason Is Nothing Then reason = BasicReason.UNSPECIFIED
 			If certPath Is Nothing AndAlso index <> -1 Then Throw New java.io.InvalidObjectException("certpath is null and index != -1")

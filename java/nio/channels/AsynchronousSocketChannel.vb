@@ -114,7 +114,7 @@ Namespace java.nio.channels
 
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 			Public MustOverride Function supportedOptions() As java.util.Set(Of java.net.SocketOption(Of ?)) Implements NetworkChannel.supportedOptions
-			Public MustOverride Function getOption(ByVal name As java.net.SocketOption(Of T)) As T Implements NetworkChannel.getOption
+			Public MustOverride Function getOption(  name As java.net.SocketOption(Of T)) As T Implements NetworkChannel.getOption
 			Public MustOverride ReadOnly Property open As Boolean Implements Channel.isOpen
 			Public MustOverride Sub close() Implements AsynchronousChannel.close
 		Private ReadOnly provider_Renamed As AsynchronousChannelProvider
@@ -124,7 +124,7 @@ Namespace java.nio.channels
 		''' </summary>
 		''' <param name="provider">
 		'''         The provider that created this channel </param>
-		Protected Friend Sub New(ByVal provider As AsynchronousChannelProvider)
+		Protected Friend Sub New(  provider As AsynchronousChannelProvider)
 			Me.provider_Renamed = provider
 		End Sub
 
@@ -156,7 +156,7 @@ Namespace java.nio.channels
 		'''          If the channel group is shutdown </exception>
 		''' <exception cref="IOException">
 		'''          If an I/O error occurs </exception>
-		Public Shared Function open(ByVal group As AsynchronousChannelGroup) As AsynchronousSocketChannel
+		Public Shared Function open(  group As AsynchronousChannelGroup) As AsynchronousSocketChannel
 			Dim provider As AsynchronousChannelProvider = If(group Is Nothing, AsynchronousChannelProvider.provider(), group.provider())
 			Return provider.openAsynchronousSocketChannel(group)
 		End Function
@@ -192,12 +192,12 @@ Namespace java.nio.channels
 		'''          If a security manager has been installed and its
 		'''          <seealso cref="SecurityManager#checkListen checkListen"/> method denies
 		'''          the operation </exception>
-		Public MustOverride Overrides Function bind(ByVal local As java.net.SocketAddress) As AsynchronousSocketChannel
+		Public MustOverride Overrides Function bind(  local As java.net.SocketAddress) As AsynchronousSocketChannel
 
 		''' <exception cref="IllegalArgumentException">                {@inheritDoc} </exception>
 		''' <exception cref="ClosedChannelException">                  {@inheritDoc} </exception>
 		''' <exception cref="IOException">                             {@inheritDoc} </exception>
-		Public MustOverride Overrides Function setOption(Of T)(ByVal name As java.net.SocketOption(Of T), ByVal value As T) As AsynchronousSocketChannel
+		Public MustOverride Overrides Function setOption(Of T)(  name As java.net.SocketOption(Of T),   value As T) As AsynchronousSocketChannel
 
 		''' <summary>
 		''' Shutdown the connection for reading without closing the channel.
@@ -299,7 +299,7 @@ Namespace java.nio.channels
 		''' </exception>
 		''' <seealso cref= #getRemoteAddress </seealso>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public MustOverride Sub connect(Of A, T1)(ByVal remote As java.net.SocketAddress, ByVal attachment As A, ByVal handler As CompletionHandler(Of T1))
+		Public MustOverride Sub connect(Of A, T1)(  remote As java.net.SocketAddress,   attachment As A,   handler As CompletionHandler(Of T1))
 
 		''' <summary>
 		''' Connects this channel.
@@ -327,7 +327,7 @@ Namespace java.nio.channels
 		''' <exception cref="SecurityException">
 		'''          If a security manager has been installed
 		'''          and it does not permit access to the given remote endpoint </exception>
-		Public MustOverride Function connect(ByVal remote As java.net.SocketAddress) As java.util.concurrent.Future(Of Void)
+		Public MustOverride Function connect(  remote As java.net.SocketAddress) As java.util.concurrent.Future(Of Void)
 
 		''' <summary>
 		''' Reads a sequence of bytes from this channel into the given buffer.
@@ -373,7 +373,7 @@ Namespace java.nio.channels
 		''' <exception cref="ShutdownChannelGroupException">
 		'''          If the channel group has terminated </exception>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public MustOverride Sub read(Of A, T1)(ByVal dst As java.nio.ByteBuffer, ByVal timeout As Long, ByVal unit As java.util.concurrent.TimeUnit, ByVal attachment As A, ByVal handler As CompletionHandler(Of T1))
+		Public MustOverride Sub read(Of A, T1)(  dst As java.nio.ByteBuffer,   timeout As Long,   unit As java.util.concurrent.TimeUnit,   attachment As A,   handler As CompletionHandler(Of T1))
 
 		''' <exception cref="IllegalArgumentException">        {@inheritDoc} </exception>
 		''' <exception cref="ReadPendingException">            {@inheritDoc} </exception>
@@ -382,7 +382,7 @@ Namespace java.nio.channels
 		''' <exception cref="ShutdownChannelGroupException">
 		'''          If the channel group has terminated </exception>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Overrides Sub read(Of A, T1)(ByVal dst As java.nio.ByteBuffer, ByVal attachment As A, ByVal handler As CompletionHandler(Of T1)) Implements AsynchronousByteChannel.read
+		Public Overrides Sub read(Of A, T1)(  dst As java.nio.ByteBuffer,   attachment As A,   handler As CompletionHandler(Of T1)) Implements AsynchronousByteChannel.read
 			read(dst, 0L, java.util.concurrent.TimeUnit.MILLISECONDS, attachment, handler)
 		End Sub
 
@@ -390,7 +390,7 @@ Namespace java.nio.channels
 		''' <exception cref="ReadPendingException">            {@inheritDoc} </exception>
 		''' <exception cref="NotYetConnectedException">
 		'''          If this channel is not yet connected </exception>
-		Public MustOverride Overrides Function read(ByVal dst As java.nio.ByteBuffer) As java.util.concurrent.Future(Of Integer?) Implements AsynchronousByteChannel.read
+		Public MustOverride Overrides Function read(  dst As java.nio.ByteBuffer) As java.util.concurrent.Future(Of Integer?) Implements AsynchronousByteChannel.read
 
 		''' <summary>
 		''' Reads a sequence of bytes from this channel into a subsequence of the
@@ -469,7 +469,7 @@ Namespace java.nio.channels
 		''' <exception cref="ShutdownChannelGroupException">
 		'''          If the channel group has terminated </exception>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public MustOverride Sub read(Of A, T1)(ByVal dsts As java.nio.ByteBuffer(), ByVal offset As Integer, ByVal length As Integer, ByVal timeout As Long, ByVal unit As java.util.concurrent.TimeUnit, ByVal attachment As A, ByVal handler As CompletionHandler(Of T1))
+		Public MustOverride Sub read(Of A, T1)(  dsts As java.nio.ByteBuffer(),   offset As Integer,   length As Integer,   timeout As Long,   unit As java.util.concurrent.TimeUnit,   attachment As A,   handler As CompletionHandler(Of T1))
 
 		''' <summary>
 		''' Writes a sequence of bytes to this channel from the given buffer.
@@ -512,7 +512,7 @@ Namespace java.nio.channels
 		''' <exception cref="ShutdownChannelGroupException">
 		'''          If the channel group has terminated </exception>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public MustOverride Sub write(Of A, T1)(ByVal src As java.nio.ByteBuffer, ByVal timeout As Long, ByVal unit As java.util.concurrent.TimeUnit, ByVal attachment As A, ByVal handler As CompletionHandler(Of T1))
+		Public MustOverride Sub write(Of A, T1)(  src As java.nio.ByteBuffer,   timeout As Long,   unit As java.util.concurrent.TimeUnit,   attachment As A,   handler As CompletionHandler(Of T1))
 
 		''' <exception cref="WritePendingException">          {@inheritDoc} </exception>
 		''' <exception cref="NotYetConnectedException">
@@ -520,7 +520,7 @@ Namespace java.nio.channels
 		''' <exception cref="ShutdownChannelGroupException">
 		'''          If the channel group has terminated </exception>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Overrides Sub write(Of A, T1)(ByVal src As java.nio.ByteBuffer, ByVal attachment As A, ByVal handler As CompletionHandler(Of T1)) Implements AsynchronousByteChannel.write
+		Public Overrides Sub write(Of A, T1)(  src As java.nio.ByteBuffer,   attachment As A,   handler As CompletionHandler(Of T1)) Implements AsynchronousByteChannel.write
 
 			write(src, 0L, java.util.concurrent.TimeUnit.MILLISECONDS, attachment, handler)
 		End Sub
@@ -528,7 +528,7 @@ Namespace java.nio.channels
 		''' <exception cref="WritePendingException">       {@inheritDoc} </exception>
 		''' <exception cref="NotYetConnectedException">
 		'''          If this channel is not yet connected </exception>
-		Public MustOverride Overrides Function write(ByVal src As java.nio.ByteBuffer) As java.util.concurrent.Future(Of Integer?) Implements AsynchronousByteChannel.write
+		Public MustOverride Overrides Function write(  src As java.nio.ByteBuffer) As java.util.concurrent.Future(Of Integer?) Implements AsynchronousByteChannel.write
 
 		''' <summary>
 		''' Writes a sequence of bytes to this channel from a subsequence of the given
@@ -602,7 +602,7 @@ Namespace java.nio.channels
 		''' <exception cref="ShutdownChannelGroupException">
 		'''          If the channel group has terminated </exception>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public MustOverride Sub write(Of A, T1)(ByVal srcs As java.nio.ByteBuffer(), ByVal offset As Integer, ByVal length As Integer, ByVal timeout As Long, ByVal unit As java.util.concurrent.TimeUnit, ByVal attachment As A, ByVal handler As CompletionHandler(Of T1))
+		Public MustOverride Sub write(Of A, T1)(  srcs As java.nio.ByteBuffer(),   offset As Integer,   length As Integer,   timeout As Long,   unit As java.util.concurrent.TimeUnit,   attachment As A,   handler As CompletionHandler(Of T1))
 
 		''' <summary>
 		''' {@inheritDoc}

@@ -110,7 +110,7 @@ Namespace java.nio.file.attribute
 		'''          RuntimePermission}<tt>("accessUserDefinedAttributes")</tt>
 		'''          or its <seealso cref="SecurityManager#checkRead(String) checkRead"/> method
 		'''          denies read access to the file. </exception>
-		Function size(ByVal name As String) As Integer
+		Function size(  name As String) As Integer
 
 		''' <summary>
 		''' Read the value of a user-defined attribute into a buffer.
@@ -157,7 +157,7 @@ Namespace java.nio.file.attribute
 		'''          denies read access to the file.
 		''' </exception>
 		''' <seealso cref= #size </seealso>
-		Function read(ByVal name As String, ByVal dst As java.nio.ByteBuffer) As Integer
+		Function read(  name As String,   dst As java.nio.ByteBuffer) As Integer
 
 		''' <summary>
 		''' Writes the value of a user-defined attribute from a buffer.
@@ -204,7 +204,7 @@ Namespace java.nio.file.attribute
 		'''          RuntimePermission}<tt>("accessUserDefinedAttributes")</tt>
 		'''          or its <seealso cref="SecurityManager#checkWrite(String) checkWrite"/>
 		'''          method denies write access to the file. </exception>
-		Function write(ByVal name As String, ByVal src As java.nio.ByteBuffer) As Integer
+		Function write(  name As String,   src As java.nio.ByteBuffer) As Integer
 
 		''' <summary>
 		''' Deletes a user-defined attribute.
@@ -220,7 +220,7 @@ Namespace java.nio.file.attribute
 		'''          RuntimePermission}<tt>("accessUserDefinedAttributes")</tt>
 		'''          or its <seealso cref="SecurityManager#checkWrite(String) checkWrite"/>
 		'''          method denies write access to the file. </exception>
-		Sub delete(ByVal name As String)
+		Sub delete(  name As String)
 	End Interface
 
 End Namespace

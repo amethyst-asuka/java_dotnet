@@ -278,7 +278,7 @@ Namespace java.nio
         ' Creates a new buffer with the given mark, position, limit, capacity,
         ' backing array, and array offset
         '
-        Friend Sub New(ByVal mark As Integer, ByVal pos As Integer, ByVal lim As Integer, ByVal cap As Integer, ByVal hb As Single(), ByVal offset As Integer) ' package-private
+        Friend Sub New(  mark As Integer,   pos As Integer,   lim As Integer,   cap As Integer,   hb As Single(),   offset As Integer) ' package-private
             MyBase.New(mark, pos, lim, cap)
             Me.hb = hb
             Me.offset = offset
@@ -286,7 +286,7 @@ Namespace java.nio
 
         ' Creates a new buffer with the given mark, position, limit, and capacity
         '
-        Friend Sub New(ByVal mark As Integer, ByVal pos As Integer, ByVal lim As Integer, ByVal cap As Integer) ' package-private
+        Friend Sub New(  mark As Integer,   pos As Integer,   lim As Integer,   cap As Integer) ' package-private
             Me.New(mark, pos, lim, cap, Nothing, 0)
         End Sub
 
@@ -329,7 +329,7 @@ Namespace java.nio
         ''' </returns>
         ''' <exception cref="IllegalArgumentException">
         '''          If the <tt>capacity</tt> is a negative integer </exception>
-        Public Shared Function allocate(ByVal capacity As Integer) As FloatBuffer
+        Public Shared Function allocate(  capacity As Integer) As FloatBuffer
             If capacity < 0 Then Throw New IllegalArgumentException
             Return New HeapFloatBuffer(capacity, capacity)
         End Function
@@ -364,7 +364,7 @@ Namespace java.nio
         ''' <exception cref="IndexOutOfBoundsException">
         '''          If the preconditions on the <tt>offset</tt> and <tt>length</tt>
         '''          parameters do not hold </exception>
-        Public Shared Function wrap(ByVal array As Single(), ByVal offset As Integer, ByVal length As Integer) As FloatBuffer
+        Public Shared Function wrap(  array As Single(),   offset As Integer,   length As Integer) As FloatBuffer
             Try
                 Return New HeapFloatBuffer(array, offset, length)
             Catch x As IllegalArgumentException
@@ -387,7 +387,7 @@ Namespace java.nio
         '''         The array that will back this buffer
         ''' </param>
         ''' <returns>  The new float buffer </returns>
-        Public Shared Function wrap(ByVal array As Single()) As FloatBuffer
+        Public Shared Function wrap(  array As Single()) As FloatBuffer
             Return wrap(array, 0, array.Length)
         End Function
 
@@ -566,7 +566,7 @@ Namespace java.nio
         ''' </exception>
         ''' <exception cref="ReadOnlyBufferException">
         '''          If this buffer is read-only </exception>
-        Public MustOverride Function put(ByVal f As Single) As FloatBuffer
+        Public MustOverride Function put(  f As Single) As FloatBuffer
 
         ''' <summary>
         ''' Absolute <i>get</i> method.  Reads the float at the given
@@ -580,7 +580,7 @@ Namespace java.nio
         ''' <exception cref="IndexOutOfBoundsException">
         '''          If <tt>index</tt> is negative
         '''          or not smaller than the buffer's limit </exception>
-        Public MustOverride Function [get](ByVal index As Integer) As Single
+        Public MustOverride Function [get](  index As Integer) As Single
 
 
 
@@ -615,7 +615,7 @@ Namespace java.nio
         ''' </exception>
         ''' <exception cref="ReadOnlyBufferException">
         '''          If this buffer is read-only </exception>
-        Public MustOverride Function put(ByVal index As Integer, ByVal f As Single) As FloatBuffer
+        Public MustOverride Function put(  index As Integer,   f As Single) As FloatBuffer
 
 
         ' -- Bulk get operations --
@@ -669,7 +669,7 @@ Namespace java.nio
         ''' <exception cref="IndexOutOfBoundsException">
         '''          If the preconditions on the <tt>offset</tt> and <tt>length</tt>
         '''          parameters do not hold </exception>
-        Public Overridable Function [get](ByVal dst As Single(), ByVal offset As Integer, ByVal length As Integer) As FloatBuffer
+        Public Overridable Function [get](  dst As Single(),   offset As Integer,   length As Integer) As FloatBuffer
             checkBounds(offset, length, dst.Length)
             If length > remaining() Then Throw New BufferUnderflowException
             Dim [end] As Integer = offset + length
@@ -697,7 +697,7 @@ Namespace java.nio
         ''' <exception cref="BufferUnderflowException">
         '''          If there are fewer than <tt>length</tt> floats
         '''          remaining in this buffer </exception>
-        Public Overridable Function [get](ByVal dst As Single()) As FloatBuffer
+        Public Overridable Function [get](  dst As Single()) As FloatBuffer
             Return [get](dst, 0, dst.Length)
         End Function
 
@@ -744,7 +744,7 @@ Namespace java.nio
         ''' </exception>
         ''' <exception cref="ReadOnlyBufferException">
         '''          If this buffer is read-only </exception>
-        Public Overridable Function put(ByVal src As FloatBuffer) As FloatBuffer
+        Public Overridable Function put(  src As FloatBuffer) As FloatBuffer
             If src Is Me Then Throw New IllegalArgumentException
             If [readOnly] Then Throw New ReadOnlyBufferException
             Dim n As Integer = src.remaining()
@@ -805,7 +805,7 @@ Namespace java.nio
         ''' </exception>
         ''' <exception cref="ReadOnlyBufferException">
         '''          If this buffer is read-only </exception>
-        Public Overridable Function put(ByVal src As Single(), ByVal offset As Integer, ByVal length As Integer) As FloatBuffer
+        Public Overridable Function put(  src As Single(),   offset As Integer,   length As Integer) As FloatBuffer
             checkBounds(offset, length, src.Length)
             If length > remaining() Then Throw New BufferOverflowException
             Dim [end] As Integer = offset + length
@@ -836,7 +836,7 @@ Namespace java.nio
         ''' </exception>
         ''' <exception cref="ReadOnlyBufferException">
         '''          If this buffer is read-only </exception>
-        Public Function put(ByVal src As Single()) As FloatBuffer
+        Public Function put(  src As Single()) As FloatBuffer
             Return put(src, 0, src.Length)
         End Function
 
@@ -1126,7 +1126,7 @@ Namespace java.nio
         ''' </param>
         ''' <returns>  <tt>true</tt> if, and only if, this buffer is equal to the
         '''           given object </returns>
-        Public Overrides Function Equals(ByVal ob As Object) As Boolean
+        Public Overrides Function Equals(  ob As Object) As Boolean
             If Me Is ob Then Return True
             If Not (TypeOf ob Is FloatBuffer) Then Return False
             Dim that As FloatBuffer = CType(ob, FloatBuffer)
@@ -1142,7 +1142,7 @@ Namespace java.nio
             Return True
         End Function
 
-        Private Shared Function Equals(ByVal x As Single, ByVal y As Single) As Boolean
+        Private Shared Function Equals(  x As Single,   y As Single) As Boolean
 
             Return (x = y) OrElse (Float.isNaN(x) AndAlso Float.isNaN(y))
 
@@ -1172,7 +1172,7 @@ Namespace java.nio
         ''' </summary>
         ''' <returns>  A negative integer, zero, or a positive integer as this buffer
         '''          is less than, equal to, or greater than the given buffer </returns>
-        Public Overridable Function compareTo(ByVal that As FloatBuffer) As Integer Implements Comparable(Of FloatBuffer).compareTo
+        Public Overridable Function compareTo(  that As FloatBuffer) As Integer Implements Comparable(Of FloatBuffer).compareTo
             Dim n As Integer = Me.position() + System.Math.Min(Me.remaining(), that.remaining())
             Dim i As Integer = Me.position()
             Dim j As Integer = that.position()
@@ -1185,7 +1185,7 @@ Namespace java.nio
             Return Me.remaining() - that.remaining()
         End Function
 
-        Private Shared Function compare(ByVal x As Single, ByVal y As Single) As Integer
+        Private Shared Function compare(  x As Single,   y As Single) As Integer
 
             Return (If(x < y, -1, If(x > y, +1, If(x = y, 0, If(Float.isNaN(x), (If(Float.isNaN(y), 0, +1)), -1)))))
 

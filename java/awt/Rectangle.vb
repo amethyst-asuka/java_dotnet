@@ -192,7 +192,7 @@ Namespace java.awt
 		''' <param name="r">  the <code>Rectangle</code> from which to copy initial values
 		'''           to a newly constructed <code>Rectangle</code>
 		''' @since 1.1 </param>
-		Public Sub New(ByVal r As Rectangle)
+		Public Sub New(  r As Rectangle)
 			Me.New(r.x, r.y, r.width, r.height)
 		End Sub
 
@@ -206,7 +206,7 @@ Namespace java.awt
 		''' <param name="width">    the width of the <code>Rectangle</code> </param>
 		''' <param name="height">   the height of the <code>Rectangle</code>
 		''' @since 1.0 </param>
-		Public Sub New(ByVal x As Integer, ByVal y As Integer, ByVal width As Integer, ByVal height As Integer)
+		Public Sub New(  x As Integer,   y As Integer,   width As Integer,   height As Integer)
 			Me.x = x
 			Me.y = y
 			Me.width = width
@@ -219,7 +219,7 @@ Namespace java.awt
 		''' height are specified by the arguments of the same name. </summary>
 		''' <param name="width"> the width of the <code>Rectangle</code> </param>
 		''' <param name="height"> the height of the <code>Rectangle</code> </param>
-		Public Sub New(ByVal width As Integer, ByVal height As Integer)
+		Public Sub New(  width As Integer,   height As Integer)
 			Me.New(0, 0, width, height)
 		End Sub
 
@@ -232,7 +232,7 @@ Namespace java.awt
 		''' the <code>Rectangle</code> </param>
 		''' <param name="d"> a <code>Dimension</code>, representing the
 		''' width and height of the <code>Rectangle</code> </param>
-		Public Sub New(ByVal p As Point, ByVal d As Dimension)
+		Public Sub New(  p As Point,   d As Dimension)
 			Me.New(p.x, p.y, d.width, d.height)
 		End Sub
 
@@ -241,7 +241,7 @@ Namespace java.awt
 		''' specified <code>Point</code>, and whose width and height are both zero. </summary>
 		''' <param name="p"> a <code>Point</code> that is the top left corner
 		''' of the <code>Rectangle</code> </param>
-		Public Sub New(ByVal p As Point)
+		Public Sub New(  p As Point)
 			Me.New(p.x, p.y, 0, 0)
 		End Sub
 
@@ -250,7 +250,7 @@ Namespace java.awt
 		''' (0,&nbsp;0) and whose width and height are specified
 		''' by the <code>Dimension</code> argument. </summary>
 		''' <param name="d"> a <code>Dimension</code>, specifying width and height </param>
-		Public Sub New(ByVal d As Dimension)
+		Public Sub New(  d As Dimension)
 			Me.New(0, 0, d.width, d.height)
 		End Sub
 
@@ -311,7 +311,7 @@ Namespace java.awt
 			Get
 				Return New Rectangle(x, y, width, height)
 			End Get
-			Set(ByVal r As Rectangle)
+			Set(  r As Rectangle)
 				boundsnds(r.x, r.y, r.width, r.height)
 			End Set
 		End Property
@@ -344,7 +344,7 @@ Namespace java.awt
 		''' <seealso cref=       #getBounds </seealso>
 		''' <seealso cref=       java.awt.Component#setBounds(int, int, int, int)
 		''' @since     1.1 </seealso>
-		Public Overridable Sub setBounds(ByVal x As Integer, ByVal y As Integer, ByVal width As Integer, ByVal height As Integer)
+		Public Overridable Sub setBounds(  x As Integer,   y As Integer,   width As Integer,   height As Integer)
 			reshape(x, y, width, height)
 		End Sub
 
@@ -362,7 +362,7 @@ Namespace java.awt
 		'''                  the specified rectangle </param>
 		''' <param name="width"> the width of the specified rectangle </param>
 		''' <param name="height"> the new height of the specified rectangle </param>
-		Public Overrides Sub setRect(ByVal x As Double, ByVal y As Double, ByVal width As Double, ByVal height As Double)
+		Public Overrides Sub setRect(  x As Double,   y As Double,   width As Double,   height As Double)
 			Dim newx, newy, neww, newh As Integer
 
 			If x > 2.0 *  java.lang.[Integer].Max_Value Then
@@ -395,7 +395,7 @@ Namespace java.awt
 		End Sub
 		' Return best integer representation for v, clipped to integer
 		' range and floor-ed or ceiling-ed, depending on the  java.lang.[Boolean].
-		Private Shared Function clip(ByVal v As Double, ByVal doceil As Boolean) As Integer
+		Private Shared Function clip(  v As Double,   doceil As Boolean) As Integer
 			If v <=  java.lang.[Integer].MIN_VALUE Then Return  java.lang.[Integer].MIN_VALUE
 			If v >=  java.lang.[Integer].Max_Value Then Return  java.lang.[Integer].Max_Value
 			Return CInt(Fix(If(doceil, System.Math.Ceiling(v), System.Math.Floor(v))))
@@ -416,7 +416,7 @@ Namespace java.awt
 		''' @deprecated As of JDK version 1.1,
 		''' replaced by <code>setBounds(int, int, int, int)</code>. 
 		<Obsolete("As of JDK version 1.1,")> _
-		Public Overridable Sub reshape(ByVal x As Integer, ByVal y As Integer, ByVal width As Integer, ByVal height As Integer)
+		Public Overridable Sub reshape(  x As Integer,   y As Integer,   width As Integer,   height As Integer)
 			Me.x = x
 			Me.y = y
 			Me.width = width
@@ -438,7 +438,7 @@ Namespace java.awt
 			Get
 				Return New Point(x, y)
 			End Get
-			Set(ByVal p As Point)
+			Set(  p As Point)
 				locationion(p.x, p.y)
 			End Set
 		End Property
@@ -454,7 +454,7 @@ Namespace java.awt
 		''' <seealso cref=       #getLocation </seealso>
 		''' <seealso cref=       java.awt.Component#setLocation(int, int)
 		''' @since     1.1 </seealso>
-		Public Overridable Sub setLocation(ByVal x As Integer, ByVal y As Integer)
+		Public Overridable Sub setLocation(  x As Integer,   y As Integer)
 			move(x, y)
 		End Sub
 
@@ -466,7 +466,7 @@ Namespace java.awt
 		''' @deprecated As of JDK version 1.1,
 		''' replaced by <code>setLocation(int, int)</code>. 
 		<Obsolete("As of JDK version 1.1,")> _
-		Public Overridable Sub move(ByVal x As Integer, ByVal y As Integer)
+		Public Overridable Sub move(  x As Integer,   y As Integer)
 			Me.x = x
 			Me.y = y
 		End Sub
@@ -481,7 +481,7 @@ Namespace java.awt
 		'''                 along the Y axis </param>
 		''' <seealso cref=       java.awt.Rectangle#setLocation(int, int) </seealso>
 		''' <seealso cref=       java.awt.Rectangle#setLocation(java.awt.Point) </seealso>
-		Public Overridable Sub translate(ByVal dx As Integer, ByVal dy As Integer)
+		Public Overridable Sub translate(  dx As Integer,   dy As Integer)
 			Dim oldv As Integer = Me.x
 			Dim newv As Integer = oldv + dx
 			If dx < 0 Then
@@ -548,7 +548,7 @@ Namespace java.awt
 			Get
 				Return New Dimension(width, height)
 			End Get
-			Set(ByVal d As Dimension)
+			Set(  d As Dimension)
 				sizeize(d.width, d.height)
 			End Set
 		End Property
@@ -565,7 +565,7 @@ Namespace java.awt
 		''' <seealso cref=       java.awt.Component#setSize(int, int) </seealso>
 		''' <seealso cref=       #getSize
 		''' @since     1.1 </seealso>
-		Public Overridable Sub setSize(ByVal width As Integer, ByVal height As Integer)
+		Public Overridable Sub setSize(  width As Integer,   height As Integer)
 			resize(width, height)
 		End Sub
 
@@ -578,7 +578,7 @@ Namespace java.awt
 		''' @deprecated As of JDK version 1.1,
 		''' replaced by <code>setSize(int, int)</code>. 
 		<Obsolete("As of JDK version 1.1,")> _
-		Public Overridable Sub resize(ByVal width As Integer, ByVal height As Integer)
+		Public Overridable Sub resize(  width As Integer,   height As Integer)
 			Me.width = width
 			Me.height = height
 		End Sub
@@ -591,7 +591,7 @@ Namespace java.awt
 		'''            is inside this <code>Rectangle</code>;
 		'''            <code>false</code> otherwise.
 		''' @since     1.1 </returns>
-		Public Overridable Function contains(ByVal p As Point) As Boolean
+		Public Overridable Function contains(  p As Point) As Boolean
 			Return contains(p.x, p.y)
 		End Function
 
@@ -606,7 +606,7 @@ Namespace java.awt
 		'''            <code>Rectangle</code>;
 		'''            <code>false</code> otherwise.
 		''' @since     1.1 </returns>
-		Public Overridable Function contains(ByVal x As Integer, ByVal y As Integer) As Boolean
+		Public Overridable Function contains(  x As Integer,   y As Integer) As Boolean
 			Return inside(x, y)
 		End Function
 
@@ -619,7 +619,7 @@ Namespace java.awt
 		'''            is contained entirely inside this <code>Rectangle</code>;
 		'''            <code>false</code> otherwise
 		''' @since     1.2 </returns>
-		Public Overridable Function contains(ByVal r As Rectangle) As Boolean
+		Public Overridable Function contains(  r As Rectangle) As Boolean
 			Return contains(r.x, r.y, r.width, r.height)
 		End Function
 
@@ -637,7 +637,7 @@ Namespace java.awt
 		'''            is entirely enclosed inside this <code>Rectangle</code>;
 		'''            <code>false</code> otherwise.
 		''' @since     1.1 </returns>
-		Public Overridable Function contains(ByVal X As Integer, ByVal Y As Integer, ByVal W As Integer, ByVal H As Integer) As Boolean
+		Public Overridable Function contains(  X As Integer,   Y As Integer,   W As Integer,   H As Integer) As Boolean
 			Dim w_Renamed As Integer = Me.width
 			Dim h_Renamed As Integer = Me.height
 			If (w_Renamed Or h_Renamed Or W Or H) < 0 Then Return False
@@ -682,7 +682,7 @@ Namespace java.awt
 		''' @deprecated As of JDK version 1.1,
 		''' replaced by <code>contains(int, int)</code>. 
 		<Obsolete("As of JDK version 1.1,")> _
-		Public Overridable Function inside(ByVal X As Integer, ByVal Y As Integer) As Boolean
+		Public Overridable Function inside(  X As Integer,   Y As Integer) As Boolean
 			Dim w As Integer = Me.width
 			Dim h As Integer = Me.height
 			If (w Or h) < 0 Then Return False
@@ -705,7 +705,7 @@ Namespace java.awt
 		''' <returns>    <code>true</code> if the specified <code>Rectangle</code>
 		'''            and this <code>Rectangle</code> intersect;
 		'''            <code>false</code> otherwise. </returns>
-		Public Overridable Function intersects(ByVal r As Rectangle) As Boolean
+		Public Overridable Function intersects(  r As Rectangle) As Boolean
 			Dim tw As Integer = Me.width
 			Dim th As Integer = Me.height
 			Dim rw As Integer = r.width
@@ -735,7 +735,7 @@ Namespace java.awt
 		'''            specified <code>Rectangle</code> and in
 		'''            this <code>Rectangle</code>; or if the rectangles
 		'''            do not intersect, an empty rectangle. </returns>
-		Public Overridable Function intersection(ByVal r As Rectangle) As Rectangle
+		Public Overridable Function intersection(  r As Rectangle) As Rectangle
 			Dim tx1 As Integer = Me.x
 			Dim ty1 As Integer = Me.y
 			Dim rx1 As Integer = r.x
@@ -784,7 +784,7 @@ Namespace java.awt
 		''' <returns>    the smallest <code>Rectangle</code> containing both
 		'''            the specified <code>Rectangle</code> and this
 		'''            <code>Rectangle</code>. </returns>
-		Public Overridable Function union(ByVal r As Rectangle) As Rectangle
+		Public Overridable Function union(  r As Rectangle) As Rectangle
 			Dim tx2 As Long = Me.width
 			Dim ty2 As Long = Me.height
 			If (tx2 Or ty2) < 0 Then Return New Rectangle(r)
@@ -839,7 +839,7 @@ Namespace java.awt
 		''' </pre> </summary>
 		''' <param name="newx"> the X coordinate of the new point </param>
 		''' <param name="newy"> the Y coordinate of the new point </param>
-		Public Overridable Sub add(ByVal newx As Integer, ByVal newy As Integer)
+		Public Overridable Sub add(  newx As Integer,   newy As Integer)
 			If (width Or height) < 0 Then
 				Me.x = newx
 				Me.y = newy
@@ -890,7 +890,7 @@ Namespace java.awt
 		''' </pre> </summary>
 		''' <param name="pt"> the new <code>Point</code> to add to this
 		'''           <code>Rectangle</code> </param>
-		Public Overridable Sub add(ByVal pt As Point)
+		Public Overridable Sub add(  pt As Point)
 			add(pt.x, pt.y)
 		End Sub
 
@@ -916,7 +916,7 @@ Namespace java.awt
 		''' will have a dimension of {@code  java.lang.[Integer].MAX_VALUE} along
 		''' that dimension. </summary>
 		''' <param name="r"> the specified <code>Rectangle</code> </param>
-		Public Overridable Sub add(ByVal r As Rectangle)
+		Public Overridable Sub add(  r As Rectangle)
 			Dim tx2 As Long = Me.width
 			Dim ty2 As Long = Me.height
 			If (tx2 Or ty2) < 0 Then reshape(r.x, r.y, r.width, r.height)
@@ -967,7 +967,7 @@ Namespace java.awt
 		''' to negative. </summary>
 		''' <param name="h"> the horizontal expansion </param>
 		''' <param name="v"> the vertical expansion </param>
-		Public Overridable Sub grow(ByVal h As Integer, ByVal v As Integer)
+		Public Overridable Sub grow(  h As Integer,   v As Integer)
 			Dim x0 As Long = Me.x
 			Dim y0 As Long = Me.y
 			Dim x1 As Long = Me.width
@@ -1052,7 +1052,7 @@ Namespace java.awt
 		''' {@inheritDoc}
 		''' @since 1.2
 		''' </summary>
-		Public Overrides Function outcode(ByVal x As Double, ByVal y As Double) As Integer
+		Public Overrides Function outcode(  x As Double,   y As Double) As Integer
 	'        
 	'         * Note on casts to double below.  If the arithmetic of
 	'         * x+w or y+h is done in int, then we may get integer
@@ -1084,7 +1084,7 @@ Namespace java.awt
 		''' {@inheritDoc}
 		''' @since 1.2
 		''' </summary>
-		Public Overridable Function createIntersection(ByVal r As java.awt.geom.Rectangle2D) As java.awt.geom.Rectangle2D
+		Public Overridable Function createIntersection(  r As java.awt.geom.Rectangle2D) As java.awt.geom.Rectangle2D
 			If TypeOf r Is Rectangle Then Return intersection(CType(r, Rectangle))
 			Dim dest As java.awt.geom.Rectangle2D = New java.awt.geom.Rectangle2D.Double
 			java.awt.geom.Rectangle2D.intersect(Me, r, dest)
@@ -1095,7 +1095,7 @@ Namespace java.awt
 		''' {@inheritDoc}
 		''' @since 1.2
 		''' </summary>
-		Public Overridable Function createUnion(ByVal r As java.awt.geom.Rectangle2D) As java.awt.geom.Rectangle2D
+		Public Overridable Function createUnion(  r As java.awt.geom.Rectangle2D) As java.awt.geom.Rectangle2D
 			If TypeOf r Is Rectangle Then Return union(CType(r, Rectangle))
 			Dim dest As java.awt.geom.Rectangle2D = New java.awt.geom.Rectangle2D.Double
 			java.awt.geom.Rectangle2D.union(Me, r, dest)
@@ -1113,7 +1113,7 @@ Namespace java.awt
 		'''                this <code>Rectangle</code> </param>
 		''' <returns>    <code>true</code> if the objects are equal;
 		'''            <code>false</code> otherwise. </returns>
-		Public Overrides Function Equals(ByVal obj As Object) As Boolean
+		Public Overrides Function Equals(  obj As Object) As Boolean
 			If TypeOf obj Is Rectangle Then
 				Dim r As Rectangle = CType(obj, Rectangle)
 				Return ((x = r.x) AndAlso (y = r.y) AndAlso (width = r.width) AndAlso (height = r.height))

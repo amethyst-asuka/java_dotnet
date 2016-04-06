@@ -46,7 +46,7 @@ Namespace java.beans.beancontext
 		''' Construct a <code>BeanContextAvailableServiceEvent</code>. </summary>
 		''' <param name="bcs"> The context in which the service has become available </param>
 		''' <param name="sc"> A <code>Class</code> reference to the newly available service </param>
-		Public Sub New(ByVal bcs As java.beans.beancontext.BeanContextServices, ByVal sc As [Class])
+		Public Sub New(  bcs As java.beans.beancontext.BeanContextServices,   sc As [Class])
 			MyBase.New(CType(bcs, BeanContext))
 
 			serviceClass = sc

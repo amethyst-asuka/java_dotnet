@@ -50,7 +50,7 @@ Namespace java.security.spec
 		''' </summary>
 		''' <param name="modulus"> the modulus </param>
 		''' <param name="publicExponent"> the public exponent </param>
-		Public Sub New(ByVal modulus As System.Numerics.BigInteger, ByVal publicExponent As System.Numerics.BigInteger)
+		Public Sub New(  modulus As System.Numerics.BigInteger,   publicExponent As System.Numerics.BigInteger)
 			Me.modulus = modulus
 			Me.publicExponent = publicExponent
 		End Sub

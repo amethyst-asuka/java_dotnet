@@ -157,7 +157,7 @@ Namespace java.util
 		''' <exception cref="NullPointerException"> if the specified key is null and this map
 		'''         does not permit null keys
 		''' (<a href="{@docRoot}/java/util/Collection.html#optional-restrictions">optional</a>) </exception>
-		Function containsKey(ByVal key As Object) As Boolean
+		Function containsKey(  key As Object) As Boolean
 
 		''' <summary>
 		''' Returns <tt>true</tt> if this map maps one or more keys to the
@@ -176,7 +176,7 @@ Namespace java.util
 		''' <exception cref="NullPointerException"> if the specified value is null and this
 		'''         map does not permit null values
 		''' (<a href="{@docRoot}/java/util/Collection.html#optional-restrictions">optional</a>) </exception>
-		Function containsValue(ByVal value As Object) As Boolean
+		Function containsValue(  value As Object) As Boolean
 
 		''' <summary>
 		''' Returns the value to which the specified key is mapped,
@@ -202,7 +202,7 @@ Namespace java.util
 		''' <exception cref="NullPointerException"> if the specified key is null and this map
 		'''         does not permit null keys
 		''' (<a href="{@docRoot}/java/util/Collection.html#optional-restrictions">optional</a>) </exception>
-		Function [get](ByVal key As Object) As V
+		Function [get](  key As Object) As V
 
 		' Modification Operations
 
@@ -229,7 +229,7 @@ Namespace java.util
 		'''         and this map does not permit null keys or values </exception>
 		''' <exception cref="IllegalArgumentException"> if some property of the specified key
 		'''         or value prevents it from being stored in this map </exception>
-		Function put(ByVal key As K, ByVal value As V) As V
+		Function put(  key As K,   value As V) As V
 
 		''' <summary>
 		''' Removes the mapping for a key from this map if it is present
@@ -260,7 +260,7 @@ Namespace java.util
 		''' <exception cref="NullPointerException"> if the specified key is null and this
 		'''         map does not permit null keys
 		''' (<a href="{@docRoot}/java/util/Collection.html#optional-restrictions">optional</a>) </exception>
-		Function remove(ByVal key As Object) As V
+		Function remove(  key As Object) As V
 
 
 		' Bulk Operations
@@ -284,7 +284,7 @@ Namespace java.util
 		''' <exception cref="IllegalArgumentException"> if some property of a key or value in
 		'''         the specified map prevents it from being stored in this map </exception>
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-		Sub putAll(Of T1 As K, ? As V)(ByVal m As Map(Of T1))
+		Sub putAll(Of T1 As K, ? As V)(  m As Map(Of T1))
 
 		''' <summary>
 		''' Removes all of the mappings from this map (optional operation).
@@ -520,7 +520,7 @@ Namespace java.util
 		''' </summary>
 		''' <param name="o"> object to be compared for equality with this map </param>
 		''' <returns> <tt>true</tt> if the specified object is equal to this map </returns>
-		Function Equals(ByVal o As Object) As Boolean
+		Function Equals(  o As Object) As Boolean
 
 		''' <summary>
 		''' Returns the hash code value for this map.  The hash code of a map is
@@ -559,10 +559,10 @@ Namespace java.util
 		''' does not permit null keys
 		''' (<a href="{@docRoot}/java/util/Collection.html#optional-restrictions">optional</a>)
 		''' @since 1.8 </exception>
-		default Function getOrDefault(ByVal key As Object, ByVal defaultValue As V) As V
+		default Function getOrDefault(  key As Object,   defaultValue As V) As V
 'JAVA TO VB CONVERTER TODO TASK: Interfaces cannot contain fields in .NET:
 '			V v;
-			Sub [New](((v = get(key)) != Nothing) || containsKey(key) ByVal  As )
+			Sub [New](((v = get(key)) != Nothing) || containsKey(key)    As )
 
 		''' <summary>
 		''' Performs the given action for each entry in this map until all entries
@@ -589,10 +589,10 @@ Namespace java.util
 		''' removed during iteration
 		''' @since 1.8 </exception>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		default Sub forEach(Of T1)(ByVal action As java.util.function.BiConsumer(Of T1))
+		default Sub forEach(Of T1)(  action As java.util.function.BiConsumer(Of T1))
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 			Objects.requireNonNull(action);
-			Sub [New](DictionaryEntry entry : entrySet() ByVal  As (Of K, V))
+			Sub [New](DictionaryEntry entry : entrySet()    As (Of K, V))
 'JAVA TO VB CONVERTER TODO TASK: Interfaces cannot contain fields in .NET:
 '				K k;
 'JAVA TO VB CONVERTER TODO TASK: Interfaces cannot contain fields in .NET:
@@ -600,7 +600,7 @@ Namespace java.util
 				Try
 					ReadOnly Property k = entry.getKey() As
 					ReadOnly Property v = entry.getValue() As
-				Sub [New](ByVal ise As IllegalStateException)
+				Sub [New](  ise As IllegalStateException)
 					' this usually means the entry is no longer in the map.
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 					throw New ConcurrentModificationException(ise);
@@ -646,10 +646,10 @@ Namespace java.util
 		''' removed during iteration
 		''' @since 1.8 </exception>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		default Sub replaceAll(Of T1 As V)(ByVal [function] As java.util.function.BiFunction(Of T1))
+		default Sub replaceAll(Of T1 As V)(  [function] As java.util.function.BiFunction(Of T1))
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 			Objects.requireNonNull(function);
-			Sub [New](DictionaryEntry entry : entrySet() ByVal  As (Of K, V))
+			Sub [New](DictionaryEntry entry : entrySet()    As (Of K, V))
 'JAVA TO VB CONVERTER TODO TASK: Interfaces cannot contain fields in .NET:
 '				K k;
 'JAVA TO VB CONVERTER TODO TASK: Interfaces cannot contain fields in .NET:
@@ -657,7 +657,7 @@ Namespace java.util
 				Try
 					ReadOnly Property k = entry.getKey() As
 					ReadOnly Property v = entry.getValue() As
-				Sub [New](ByVal ise As IllegalStateException)
+				Sub [New](  ise As IllegalStateException)
 					' this usually means the entry is no longer in the map.
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 					throw New ConcurrentModificationException(ise);
@@ -669,7 +669,7 @@ Namespace java.util
 				Try
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 					entry.setValue(v);
-				Sub [New](ByVal ise As IllegalStateException)
+				Sub [New](  ise As IllegalStateException)
 					' this usually means the entry is no longer in the map.
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 					throw New ConcurrentModificationException(ise);
@@ -716,10 +716,10 @@ Namespace java.util
 		'''         or value prevents it from being stored in this map
 		'''         (<a href="{@docRoot}/java/util/Collection.html#optional-restrictions">optional</a>)
 		''' @since 1.8 </exception>
-		default Function putIfAbsent(ByVal key As K, ByVal value As V) As V
+		default Function putIfAbsent(  key As K,   value As V) As V
 'JAVA TO VB CONVERTER TODO TASK: Interfaces cannot contain fields in .NET:
 '			V v = get(key);
-			Sub [New](v == ByVal [Nothing] As )
+			Sub [New](v ==   [Nothing] As )
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 				v = put(key, value);
 
@@ -759,10 +759,10 @@ Namespace java.util
 		'''         and this map does not permit null keys or values
 		'''         (<a href="{@docRoot}/java/util/Collection.html#optional-restrictions">optional</a>)
 		''' @since 1.8 </exception>
-		default Function remove(ByVal key As Object, ByVal value As Object) As Boolean
+		default Function remove(  key As Object,   value As Object) As Boolean
 'JAVA TO VB CONVERTER TODO TASK: Interfaces cannot contain fields in .NET:
 '			Object curValue = get(key);
-			Sub [New](!Objects.equals(curValue, value) || (curValue == Nothing && !containsKey(key)) ByVal  As )
+			Sub [New](!Objects.equals(curValue, value) || (curValue == Nothing && !containsKey(key))    As )
 'JAVA TO VB CONVERTER TODO TASK: Interfaces cannot contain fields in .NET:
 '				Return False;
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
@@ -811,10 +811,10 @@ Namespace java.util
 		''' <exception cref="IllegalArgumentException"> if some property of a specified key
 		'''         or value prevents it from being stored in this map
 		''' @since 1.8 </exception>
-		default Function replace(ByVal key As K, ByVal oldValue As V, ByVal newValue As V) As Boolean
+		default Function replace(  key As K,   oldValue As V,   newValue As V) As Boolean
 'JAVA TO VB CONVERTER TODO TASK: Interfaces cannot contain fields in .NET:
 '			Object curValue = get(key);
-			Sub [New](!Objects.equals(curValue, oldValue) || (curValue == Nothing && !containsKey(key)) ByVal  As )
+			Sub [New](!Objects.equals(curValue, oldValue) || (curValue == Nothing && !containsKey(key))    As )
 'JAVA TO VB CONVERTER TODO TASK: Interfaces cannot contain fields in .NET:
 '				Return False;
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
@@ -859,10 +859,10 @@ Namespace java.util
 		''' <exception cref="IllegalArgumentException"> if some property of the specified key
 		'''         or value prevents it from being stored in this map
 		''' @since 1.8 </exception>
-		default Function replace(ByVal key As K, ByVal value As V) As V
+		default Function replace(  key As K,   value As V) As V
 'JAVA TO VB CONVERTER TODO TASK: Interfaces cannot contain fields in .NET:
 '			V curValue;
-			Sub [New](((curValue = get(key)) != Nothing) || containsKey(key) ByVal  As )
+			Sub [New](((curValue = get(key)) != Nothing) || containsKey(key)    As )
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 				curValue = put(key, value);
 'JAVA TO VB CONVERTER TODO TASK: Interfaces cannot contain fields in .NET:
@@ -927,15 +927,15 @@ Namespace java.util
 		'''         (<a href="{@docRoot}/java/util/Collection.html#optional-restrictions">optional</a>)
 		''' @since 1.8 </exception>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		default Function computeIfAbsent(Of T1 As V)(ByVal key As K, ByVal mappingFunction As java.util.function.Function(Of T1)) As V
+		default Function computeIfAbsent(Of T1 As V)(  key As K,   mappingFunction As java.util.function.Function(Of T1)) As V
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 			Objects.requireNonNull(mappingFunction);
 'JAVA TO VB CONVERTER TODO TASK: Interfaces cannot contain fields in .NET:
 '			V v;
-			Sub [New]((v = get(key)) == ByVal [Nothing] As )
+			Sub [New]((v = get(key)) ==   [Nothing] As )
 'JAVA TO VB CONVERTER TODO TASK: Interfaces cannot contain fields in .NET:
 '				V newValue;
-				Sub [New]((newValue = mappingFunction.apply(key)) != ByVal [Nothing] As )
+				Sub [New]((newValue = mappingFunction.apply(key)) !=   [Nothing] As )
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 					put(key, newValue);
 'JAVA TO VB CONVERTER TODO TASK: Interfaces cannot contain fields in .NET:
@@ -990,15 +990,15 @@ Namespace java.util
 		'''         (<a href="{@docRoot}/java/util/Collection.html#optional-restrictions">optional</a>)
 		''' @since 1.8 </exception>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		default Function computeIfPresent(Of T1 As V)(ByVal key As K, ByVal remappingFunction As java.util.function.BiFunction(Of T1)) As V
+		default Function computeIfPresent(Of T1 As V)(  key As K,   remappingFunction As java.util.function.BiFunction(Of T1)) As V
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 			Objects.requireNonNull(remappingFunction);
 'JAVA TO VB CONVERTER TODO TASK: Interfaces cannot contain fields in .NET:
 '			V oldValue;
-			Sub [New]((oldValue = get(key)) != ByVal [Nothing] As )
+			Sub [New]((oldValue = get(key)) !=   [Nothing] As )
 'JAVA TO VB CONVERTER TODO TASK: Interfaces cannot contain fields in .NET:
 '				V newValue = remappingFunction.apply(key, oldValue);
-				Sub [New](newValue != ByVal [Nothing] As )
+				Sub [New](newValue !=   [Nothing] As )
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 					put(key, newValue);
 'JAVA TO VB CONVERTER TODO TASK: Interfaces cannot contain fields in .NET:
@@ -1072,7 +1072,7 @@ Namespace java.util
 		'''         (<a href="{@docRoot}/java/util/Collection.html#optional-restrictions">optional</a>)
 		''' @since 1.8 </exception>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		default Function compute(Of T1 As V)(ByVal key As K, ByVal remappingFunction As java.util.function.BiFunction(Of T1)) As V
+		default Function compute(Of T1 As V)(  key As K,   remappingFunction As java.util.function.BiFunction(Of T1)) As V
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 			Objects.requireNonNull(remappingFunction);
 'JAVA TO VB CONVERTER TODO TASK: Interfaces cannot contain fields in .NET:
@@ -1080,9 +1080,9 @@ Namespace java.util
 
 'JAVA TO VB CONVERTER TODO TASK: Interfaces cannot contain fields in .NET:
 '			V newValue = remappingFunction.apply(key, oldValue);
-			Sub [New](newValue == ByVal [Nothing] As )
+			Sub [New](newValue ==   [Nothing] As )
 				' delete mapping
-				Sub [New](oldValue != Nothing || containsKey(key) ByVal  As )
+				Sub [New](oldValue != Nothing || containsKey(key)    As )
 					' something to remove
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 					remove(key);
@@ -1159,7 +1159,7 @@ Namespace java.util
 		'''         null
 		''' @since 1.8 </exception>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		default Function merge(Of T1 As V)(ByVal key As K, ByVal value As V, ByVal remappingFunction As java.util.function.BiFunction(Of T1)) As V
+		default Function merge(Of T1 As V)(  key As K,   value As V,   remappingFunction As java.util.function.BiFunction(Of T1)) As V
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 			Objects.requireNonNull(remappingFunction);
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
@@ -1168,7 +1168,7 @@ Namespace java.util
 '			V oldValue = get(key);
 'JAVA TO VB CONVERTER TODO TASK: Interfaces cannot contain fields in .NET:
 '			V newValue = (oldValue == Nothing) ? value : remappingFunction.apply(oldValue, value);
-			Sub [New](newValue == ByVal [Nothing] As )
+			Sub [New](newValue ==   [Nothing] As )
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 				remove(key);
 			Else

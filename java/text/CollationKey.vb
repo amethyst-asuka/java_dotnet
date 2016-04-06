@@ -108,7 +108,7 @@ Namespace java.text
 		''' than target, value is zero if this and target are equal and value is greater than
 		''' zero if this is greater than target. </returns>
 		''' <seealso cref= java.text.Collator#compare </seealso>
-		Public MustOverride Function compareTo(ByVal target As CollationKey) As Integer Implements Comparable(Of CollationKey).compareTo
+		Public MustOverride Function compareTo(  target As CollationKey) As Integer Implements Comparable(Of CollationKey).compareTo
 
 		''' <summary>
 		''' Returns the String that this CollationKey represents.
@@ -137,7 +137,7 @@ Namespace java.text
 	  ''' <param name="source"> the source string </param>
 	  ''' <exception cref="NullPointerException"> if {@code source} is null
 	  ''' @since 1.6 </exception>
-		Protected Friend Sub New(ByVal source As String)
+		Protected Friend Sub New(  source As String)
 			If source Is Nothing Then Throw New NullPointerException
 			Me.source = source
 		End Sub

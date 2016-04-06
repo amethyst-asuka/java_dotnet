@@ -46,7 +46,7 @@ Namespace java.awt
 		''' Report a FontFormatException for the reason specified. </summary>
 		''' <param name="reason"> a <code>String</code> message indicating why
 		'''        the font is not accepted. </param>
-		Public Sub New(ByVal reason As String)
+		Public Sub New(  reason As String)
 		  MyBase.New(reason)
 		End Sub
 	End Class

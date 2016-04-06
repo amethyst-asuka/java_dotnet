@@ -54,7 +54,7 @@ Namespace java.text.spi
 		'''     {@link java.util.spi.LocaleServiceProvider#getAvailableLocales()
 		'''     getAvailableLocales()}. </exception>
 		''' <seealso cref= java.text.Collator#getInstance(java.util.Locale) </seealso>
-		Public MustOverride Function getInstance(ByVal locale As java.util.Locale) As java.text.Collator
+		Public MustOverride Function getInstance(  locale As java.util.Locale) As java.text.Collator
 	End Class
 
 End Namespace

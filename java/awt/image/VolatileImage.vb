@@ -274,7 +274,7 @@ Namespace java.awt.image
 		''' <seealso cref= #IMAGE_OK </seealso>
 		''' <seealso cref= #IMAGE_RESTORED </seealso>
 		''' <seealso cref= #IMAGE_INCOMPATIBLE </seealso>
-		Public MustOverride Function validate(ByVal gc As java.awt.GraphicsConfiguration) As Integer
+		Public MustOverride Function validate(  gc As java.awt.GraphicsConfiguration) As Integer
 
 		''' <summary>
 		''' Returns <code>true</code> if rendering data was lost since last

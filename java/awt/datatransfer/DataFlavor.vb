@@ -114,7 +114,7 @@ Namespace java.awt.datatransfer
 		''' <param name="fallback"> the fallback loader </param>
 		''' <returns> the class loaded </returns>
 		''' <exception cref="ClassNotFoundException"> if class is not found </exception>
-		Protected Friend Shared Function tryToLoadClass(ByVal className As String, ByVal fallback As  ClassLoader) As  [Class]
+		Protected Friend Shared Function tryToLoadClass(  className As String,   fallback As  ClassLoader) As  [Class]
 			sun.reflect.misc.ReflectUtil.checkPackageAccess(className)
 			Try
 				Dim sm As SecurityManager = System.securityManager
@@ -143,7 +143,7 @@ Namespace java.awt.datatransfer
 	'    
 	'     * private initializer
 	'     
-		Private Shared Function createConstant(ByVal rc As [Class], ByVal prn As String) As DataFlavor
+		Private Shared Function createConstant(  rc As [Class],   prn As String) As DataFlavor
 			Try
 				Return New DataFlavor(rc, prn)
 			Catch e As Exception
@@ -154,7 +154,7 @@ Namespace java.awt.datatransfer
 	'    
 	'     * private initializer
 	'     
-		Private Shared Function createConstant(ByVal mt As String, ByVal prn As String) As DataFlavor
+		Private Shared Function createConstant(  mt As String,   prn As String) As DataFlavor
 			Try
 				Return New DataFlavor(mt, prn)
 			Catch e As Exception
@@ -165,7 +165,7 @@ Namespace java.awt.datatransfer
 	'    
 	'     * private initializer
 	'     
-		Private Shared Function initHtmlDataFlavor(ByVal htmlFlavorType As String) As DataFlavor
+		Private Shared Function initHtmlDataFlavor(  htmlFlavorType As String) As DataFlavor
 			Try
 				Return New DataFlavor("text/html; class=java.lang.String;document=" & htmlFlavorType & ";charset=Unicode")
 			Catch e As Exception
@@ -312,7 +312,7 @@ Namespace java.awt.datatransfer
 		''' </summary>
 		''' <exception cref="NullPointerException"> if either <code>primaryType</code>,
 		'''            <code>subType</code> or <code>representationClass</code> is null </exception>
-		Private Sub New(ByVal primaryType As String, ByVal subType As String, ByVal params As MimeTypeParameterList, ByVal representationClass As [Class], ByVal humanPresentableName As String)
+		Private Sub New(  primaryType As String,   subType As String,   params As MimeTypeParameterList,   representationClass As [Class],   humanPresentableName As String)
 			MyBase.New()
 			If primaryType Is Nothing Then Throw New NullPointerException("primaryType")
 			If subType Is Nothing Then Throw New NullPointerException("subType")
@@ -354,7 +354,7 @@ Namespace java.awt.datatransfer
 		'''                 this flavor; if this parameter is <code>null</code>
 		'''                 then the value of the the MIME Content Type is used </param>
 		''' <exception cref="NullPointerException"> if <code>representationClass</code> is null </exception>
-		Public Sub New(ByVal representationClass As [Class], ByVal humanPresentableName As String)
+		Public Sub New(  representationClass As [Class],   humanPresentableName As String)
 			Me.New("application", "x-java-serialized-object", Nothing, representationClass, humanPresentableName)
 			If representationClass Is Nothing Then Throw New NullPointerException("representationClass")
 		End Sub
@@ -387,7 +387,7 @@ Namespace java.awt.datatransfer
 		''' <exception cref="IllegalArgumentException"> if <code>mimeType</code> is
 		'''                 invalid or if the class is not successfully loaded </exception>
 		''' <exception cref="NullPointerException"> if <code>mimeType</code> is null </exception>
-		Public Sub New(ByVal mimeType_Renamed As String, ByVal humanPresentableName As String)
+		Public Sub New(  mimeType_Renamed As String,   humanPresentableName As String)
 			MyBase.New()
 			If mimeType_Renamed Is Nothing Then Throw New NullPointerException("mimeType")
 			Try
@@ -424,7 +424,7 @@ Namespace java.awt.datatransfer
 		''' <exception cref="IllegalArgumentException"> if <code>mimeType</code> is
 		'''                 invalid </exception>
 		''' <exception cref="NullPointerException"> if <code>mimeType</code> is null </exception>
-		Public Sub New(ByVal mimeType_Renamed As String, ByVal humanPresentableName As String, ByVal classLoader_Renamed As  ClassLoader)
+		Public Sub New(  mimeType_Renamed As String,   humanPresentableName As String,   classLoader_Renamed As  ClassLoader)
 			MyBase.New()
 			If mimeType_Renamed Is Nothing Then Throw New NullPointerException("mimeType")
 			Try
@@ -449,7 +449,7 @@ Namespace java.awt.datatransfer
 		''' <exception cref="IllegalArgumentException"> if <code>mimeType</code> is
 		'''                 invalid </exception>
 		''' <exception cref="NullPointerException"> if <code>mimeType</code> is null </exception>
-		Public Sub New(ByVal mimeType_Renamed As String)
+		Public Sub New(  mimeType_Renamed As String)
 			MyBase.New()
 			If mimeType_Renamed Is Nothing Then Throw New NullPointerException("mimeType")
 			Try
@@ -472,7 +472,7 @@ Namespace java.awt.datatransfer
 	   ''' <exception cref="NullPointerException"> if <code>mimeType</code> is null
 	   ''' </exception>
 	   ''' <seealso cref= #tryToLoadClass </seealso>
-		Private Sub initialize(ByVal mimeType_Renamed As String, ByVal humanPresentableName As String, ByVal classLoader_Renamed As  ClassLoader)
+		Private Sub initialize(  mimeType_Renamed As String,   humanPresentableName As String,   classLoader_Renamed As  ClassLoader)
 			If mimeType_Renamed Is Nothing Then Throw New NullPointerException("mimeType")
 
 			Me.mimeType = New MimeType(mimeType_Renamed) ' throws
@@ -676,7 +676,7 @@ Namespace java.awt.datatransfer
         '''         if <code>availableFlavors</code> is <code>null</code>,
         '''         has zero length, or contains no text flavors
         ''' @since 1.3 </returns>
-        Public Shared Function selectBestTextFlavor(ByVal availableFlavors As DataFlavor()) As DataFlavor
+        Public Shared Function selectBestTextFlavor(  availableFlavors As DataFlavor()) As DataFlavor
 			If availableFlavors Is Nothing OrElse availableFlavors.Length = 0 Then Return Nothing
 
 			If textFlavorComparator Is Nothing Then textFlavorComparator = New TextFlavorComparator
@@ -712,7 +712,7 @@ Namespace java.awt.datatransfer
 			'''         <code>null</code>
 			''' </exception>
 			''' <seealso cref= #selectBestTextFlavor </seealso>
-			Public Overridable Function compare(ByVal obj1 As Object, ByVal obj2 As Object) As Integer
+			Public Overridable Function compare(  obj1 As Object,   obj2 As Object) As Integer
 				Dim flavor1 As DataFlavor = CType(obj1, DataFlavor)
 				Dim flavor2 As DataFlavor = CType(obj2, DataFlavor)
 
@@ -769,7 +769,7 @@ Namespace java.awt.datatransfer
 		'''            I/O error </exception>
 		''' <seealso cref= #selectBestTextFlavor
 		''' @since 1.3 </seealso>
-		Public Overridable Function getReaderForText(ByVal transferable As Transferable) As java.io.Reader
+		Public Overridable Function getReaderForText(  transferable As Transferable) As java.io.Reader
 			Dim transferObject As Object = transferable.getTransferData(Me)
 			If transferObject Is Nothing Then Throw New IllegalArgumentException("getTransferData() returned null")
 
@@ -839,7 +839,7 @@ Namespace java.awt.datatransfer
 			Get
 				Return humanPresentableName
 			End Get
-			Set(ByVal humanPresentableName As String)
+			Set(  humanPresentableName As String)
 				Me.humanPresentableName = humanPresentableName
 			End Set
 		End Property
@@ -870,7 +870,7 @@ Namespace java.awt.datatransfer
 		''' <param name="paramName"> the parameter name requested </param>
 		''' <returns> the value of the name parameter, or <code>null</code>
 		'''  if there is no associated value </returns>
-		Public Overridable Function getParameter(ByVal paramName As String) As String
+		Public Overridable Function getParameter(  paramName As String) As String
 			If paramName.Equals("humanPresentableName") Then
 				Return humanPresentableName
 			Else
@@ -899,7 +899,7 @@ Namespace java.awt.datatransfer
 		''' <returns> <code>true</code> if <code>that</code> is equivalent to this
 		'''         <code>DataFlavor</code>; <code>false</code> otherwise </returns>
 		''' <seealso cref= #selectBestTextFlavor </seealso>
-		Public Overrides Function Equals(ByVal o As Object) As Boolean
+		Public Overrides Function Equals(  o As Object) As Boolean
 			Return ((TypeOf o Is DataFlavor) AndAlso Equals(CType(o, DataFlavor)))
 		End Function
 
@@ -913,7 +913,7 @@ Namespace java.awt.datatransfer
 		''' <returns> <code>true</code> if <code>that</code> is equivalent to this
 		'''         <code>DataFlavor</code>; <code>false</code> otherwise </returns>
 		''' <seealso cref= #selectBestTextFlavor </seealso>
-		Public Overrides Function Equals(ByVal that As DataFlavor) As Boolean
+		Public Overrides Function Equals(  that As DataFlavor) As Boolean
 			If that Is Nothing Then Return False
 			If Me Is that Then Return True
 
@@ -955,7 +955,7 @@ Namespace java.awt.datatransfer
 		''' <returns> true if the String (MimeType) is equal; false otherwise or if
 		'''         {@code s} is {@code null} </returns>
 		<Obsolete("As inconsistent with <code>hashCode()</code> contract,")> _
-		Public Overrides Function Equals(ByVal s As String) As Boolean
+		Public Overrides Function Equals(  s As String) As Boolean
 			If s Is Nothing OrElse mimeType Is Nothing Then Return False
 			Return isMimeTypeEqual(s)
 		End Function
@@ -1007,7 +1007,7 @@ Namespace java.awt.datatransfer
 		'''         <code>DataFlavor</code>; <code>false</code> otherwise </returns>
 		''' <seealso cref= #selectBestTextFlavor
 		''' @since 1.3 </seealso>
-		Public Overridable Function match(ByVal that As DataFlavor) As Boolean
+		Public Overridable Function match(  that As DataFlavor) As Boolean
 			Return Equals(that)
 		End Function
 
@@ -1021,7 +1021,7 @@ Namespace java.awt.datatransfer
 		'''         equivalent to the MIME type of this <code>DataFlavor</code>;
 		'''         false otherwise </returns>
 		''' <exception cref="NullPointerException"> if mimeType is <code>null</code> </exception>
-		Public Overridable Function isMimeTypeEqual(ByVal mimeType_Renamed As String) As Boolean
+		Public Overridable Function isMimeTypeEqual(  mimeType_Renamed As String) As Boolean
 			' JCK Test DataFlavor0117: if 'mimeType' is null, throw NPE
 			If mimeType_Renamed Is Nothing Then Throw New NullPointerException("mimeType")
 			If Me.mimeType Is Nothing Then Return False
@@ -1040,7 +1040,7 @@ Namespace java.awt.datatransfer
 		''' <returns> true if the <code>MimeType</code>s are equal,
 		'''  otherwise false </returns>
 
-		Public Function isMimeTypeEqual(ByVal dataFlavor_Renamed As DataFlavor) As Boolean
+		Public Function isMimeTypeEqual(  dataFlavor_Renamed As DataFlavor) As Boolean
 			Return isMimeTypeEqual(dataFlavor_Renamed.mimeType)
 		End Function
 
@@ -1051,7 +1051,7 @@ Namespace java.awt.datatransfer
 		''' <returns> true if the <code>MimeType</code>s are equal,
 		'''  otherwise false </returns>
 
-		Private Function isMimeTypeEqual(ByVal mtype As MimeType) As Boolean
+		Private Function isMimeTypeEqual(  mtype As MimeType) As Boolean
 			If Me.mimeType Is Nothing Then Return (mtype Is Nothing)
 			Return mimeType.match(mtype)
 		End Function
@@ -1239,7 +1239,7 @@ Namespace java.awt.datatransfer
 	   ''' </summary>
 
 	   <MethodImpl(MethodImplOptions.Synchronized)> _
-	   Public Overridable Sub writeExternal(ByVal os As java.io.ObjectOutput)
+	   Public Overridable Sub writeExternal(  os As java.io.ObjectOutput)
 		   If mimeType IsNot Nothing Then
 			   mimeType.parameterter("humanPresentableName", humanPresentableName)
 			   os.writeObject(mimeType)
@@ -1256,7 +1256,7 @@ Namespace java.awt.datatransfer
 	   ''' </summary>
 
 	   <MethodImpl(MethodImplOptions.Synchronized)> _
-	   Public Overridable Sub readExternal(ByVal [is] As java.io.ObjectInput)
+	   Public Overridable Sub readExternal(  [is] As java.io.ObjectInput)
 		   Dim rcn As String = Nothing
 			mimeType = CType([is].readObject(), MimeType)
 
@@ -1302,7 +1302,7 @@ Namespace java.awt.datatransfer
 	   ''' @deprecated
 	   ''' </summary>
 		<Obsolete> _
-		Protected Friend Overridable Function normalizeMimeTypeParameter(ByVal parameterName As String, ByVal parameterValue As String) As String
+		Protected Friend Overridable Function normalizeMimeTypeParameter(  parameterName As String,   parameterValue As String) As String
 			Return parameterValue
 		End Function
 
@@ -1318,7 +1318,7 @@ Namespace java.awt.datatransfer
 	   ''' @deprecated
 	   ''' </summary>
 		<Obsolete> _
-		Protected Friend Overridable Function normalizeMimeType(ByVal mimeType_Renamed As String) As String
+		Protected Friend Overridable Function normalizeMimeType(  mimeType_Renamed As String) As String
 			Return mimeType_Renamed
 		End Function
 

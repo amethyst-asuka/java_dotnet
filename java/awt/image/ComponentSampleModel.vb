@@ -146,7 +146,7 @@ Namespace java.awt.image
 		'''         <code> java.lang.[Integer].MAX_VALUE</code> </exception>
 		''' <exception cref="IllegalArgumentException"> if <code>dataType</code> is not
 		'''         one of the supported data types </exception>
-		Public Sub New(ByVal dataType As Integer, ByVal w As Integer, ByVal h As Integer, ByVal pixelStride As Integer, ByVal scanlineStride As Integer, ByVal bandOffsets As Integer())
+		Public Sub New(  dataType As Integer,   w As Integer,   h As Integer,   pixelStride As Integer,   scanlineStride As Integer,   bandOffsets As Integer())
 			MyBase.New(dataType, w, h, bandOffsets.Length)
 			Me.dataType = dataType
 			Me.pixelStride = pixelStride

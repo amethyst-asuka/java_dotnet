@@ -173,7 +173,7 @@ Namespace java.awt.font
 		''' <param name="advance"> the advance width of the glyph </param>
 		''' <param name="bounds"> the black box bounds of the glyph </param>
 		''' <param name="glyphType"> the type of the glyph </param>
-		Public Sub New(ByVal advance As Single, ByVal bounds As java.awt.geom.Rectangle2D, ByVal glyphType As SByte)
+		Public Sub New(  advance As Single,   bounds As java.awt.geom.Rectangle2D,   glyphType As SByte)
 			Me.horizontal = True
 			Me.advanceX = advance
 			Me.advanceY = 0
@@ -191,7 +191,7 @@ Namespace java.awt.font
 		''' <param name="bounds"> the visual bounds of the glyph </param>
 		''' <param name="glyphType"> the type of the glyph
 		''' @since 1.4 </param>
-		Public Sub New(ByVal horizontal As Boolean, ByVal advanceX As Single, ByVal advanceY As Single, ByVal bounds As java.awt.geom.Rectangle2D, ByVal glyphType As SByte)
+		Public Sub New(  horizontal As Boolean,   advanceX As Single,   advanceY As Single,   bounds As java.awt.geom.Rectangle2D,   glyphType As SByte)
 
 			Me.horizontal = horizontal
 			Me.advanceX = advanceX

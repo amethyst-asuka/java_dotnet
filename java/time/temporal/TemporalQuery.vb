@@ -137,7 +137,7 @@ Namespace java.time.temporal
 		''' <returns> the queried value, may return null to indicate not found </returns>
 		''' <exception cref="DateTimeException"> if unable to query </exception>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
-		Function queryFrom(ByVal temporal As TemporalAccessor) As R
+		Function queryFrom(  temporal As TemporalAccessor) As R
 
 	End Interface
 

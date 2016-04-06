@@ -45,7 +45,7 @@ Namespace java.net
 		'''                     "{@code http}", "{@code nntp}", etc.). </param>
 		''' <returns>  a {@code URLStreamHandler} for the specific protocol. </returns>
 		''' <seealso cref=     java.net.URLStreamHandler </seealso>
-		Function createURLStreamHandler(ByVal protocol As String) As URLStreamHandler
+		Function createURLStreamHandler(  protocol As String) As URLStreamHandler
 	End Interface
 
 End Namespace

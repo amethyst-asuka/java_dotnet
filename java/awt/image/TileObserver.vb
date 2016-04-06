@@ -46,7 +46,7 @@ Namespace java.awt.image
 	  ''' <param name="tileY"> the Y index of the tile that is being updated. </param>
 	  ''' <param name="willBeWritable">  If true, the tile will be grabbed for writing;
 	  '''                        otherwise it is being released. </param>
-		Sub tileUpdate(ByVal source As WritableRenderedImage, ByVal tileX As Integer, ByVal tileY As Integer, ByVal willBeWritable As Boolean)
+		Sub tileUpdate(  source As WritableRenderedImage,   tileX As Integer,   tileY As Integer,   willBeWritable As Boolean)
 
 	End Interface
 

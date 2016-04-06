@@ -62,7 +62,7 @@ Namespace java.awt
 		''' Creates a new panel with the specified layout manager. </summary>
 		''' <param name="layout"> the layout manager for this panel.
 		''' @since JDK1.1 </param>
-		Public Sub New(ByVal layout As LayoutManager)
+		Public Sub New(  layout As LayoutManager)
 			layout = layout
 		End Sub
 
@@ -121,7 +121,7 @@ Namespace java.awt
 
 			Private ReadOnly outerInstance As Panel
 
-			Public Sub New(ByVal outerInstance As Panel)
+			Public Sub New(  outerInstance As Panel)
 				Me.outerInstance = outerInstance
 			End Sub
 

@@ -44,7 +44,7 @@ Namespace java.awt.peer
 		''' <param name="y"> the Y location on screen
 		''' </param>
 		''' <seealso cref= Robot#mouseMove(int, int) </seealso>
-		Sub mouseMove(ByVal x As Integer, ByVal y As Integer)
+		Sub mouseMove(  x As Integer,   y As Integer)
 
 		''' <summary>
 		''' Simulates a mouse press with the specified button(s).
@@ -52,7 +52,7 @@ Namespace java.awt.peer
 		''' <param name="buttons"> the button mask
 		''' </param>
 		''' <seealso cref= Robot#mousePress(int) </seealso>
-		Sub mousePress(ByVal buttons As Integer)
+		Sub mousePress(  buttons As Integer)
 
 		''' <summary>
 		''' Simulates a mouse release with the specified button(s).
@@ -60,7 +60,7 @@ Namespace java.awt.peer
 		''' <param name="buttons"> the button mask
 		''' </param>
 		''' <seealso cref= Robot#mouseRelease(int) </seealso>
-		Sub mouseRelease(ByVal buttons As Integer)
+		Sub mouseRelease(  buttons As Integer)
 
 		''' <summary>
 		''' Simulates mouse wheel action.
@@ -68,7 +68,7 @@ Namespace java.awt.peer
 		''' <param name="wheelAmt"> number of notches to move the mouse wheel
 		''' </param>
 		''' <seealso cref= Robot#mouseWheel(int) </seealso>
-		Sub mouseWheel(ByVal wheelAmt As Integer)
+		Sub mouseWheel(  wheelAmt As Integer)
 
 		''' <summary>
 		''' Simulates a key press of the specified key.
@@ -76,7 +76,7 @@ Namespace java.awt.peer
 		''' <param name="keycode"> the key code to press
 		''' </param>
 		''' <seealso cref= Robot#keyPress(int) </seealso>
-		Sub keyPress(ByVal keycode As Integer)
+		Sub keyPress(  keycode As Integer)
 
 		''' <summary>
 		''' Simulates a key release of the specified key.
@@ -84,7 +84,7 @@ Namespace java.awt.peer
 		''' <param name="keycode"> the key code to release
 		''' </param>
 		''' <seealso cref= Robot#keyRelease(int) </seealso>
-		Sub keyRelease(ByVal keycode As Integer)
+		Sub keyRelease(  keycode As Integer)
 
 		''' <summary>
 		''' Gets the RGB value of the specified pixel on screen.
@@ -95,7 +95,7 @@ Namespace java.awt.peer
 		''' <returns> the RGB value of the specified pixel on screen
 		''' </returns>
 		''' <seealso cref= Robot#getPixelColor(int, int) </seealso>
-		Function getRGBPixel(ByVal x As Integer, ByVal y As Integer) As Integer
+		Function getRGBPixel(  x As Integer,   y As Integer) As Integer
 
 		''' <summary>
 		''' Gets the RGB values of the specified screen area as an array.
@@ -105,7 +105,7 @@ Namespace java.awt.peer
 		''' <returns> the RGB values of the specified screen area
 		''' </returns>
 		''' <seealso cref= Robot#createScreenCapture(Rectangle) </seealso>
-		Function getRGBPixels(ByVal bounds As Rectangle) As Integer()
+		Function getRGBPixels(  bounds As Rectangle) As Integer()
 
 		''' <summary>
 		''' Disposes the robot peer when it is not needed anymore.

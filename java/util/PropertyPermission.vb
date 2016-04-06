@@ -116,7 +116,7 @@ Namespace java.util
         ''' </summary>
         ''' <param name="mask"> the actions mask to use.
         '''  </param>
-        Private Sub init(ByVal mask As Integer)
+        Private Sub init(  mask As Integer)
             If (mask And ALL) <> mask Then Throw New IllegalArgumentException("invalid actions mask")
 
             If mask = NONE Then Throw New IllegalArgumentException("invalid actions mask")
@@ -139,7 +139,7 @@ Namespace java.util
         ''' <exception cref="NullPointerException"> if <code>name</code> is <code>null</code>. </exception>
         ''' <exception cref="IllegalArgumentException"> if <code>name</code> is empty or if
         ''' <code>actions</code> is invalid. </exception>
-        Public Sub New(ByVal name As String, ByVal actions As String)
+        Public Sub New(  name As String,   actions As String)
             MyBase.New(name, actions)
             init(getMask(actions))
         End Sub
@@ -160,7 +160,7 @@ Namespace java.util
         ''' </param>
         ''' <returns> true if the specified permission is implied by this object,
         ''' false if not. </returns>
-        Public Overrides Function implies(ByVal p As Permission) As Boolean
+        Public Overrides Function implies(  p As Permission) As Boolean
             If Not (TypeOf p Is PropertyPermission) Then Return False
 
             Dim that As PropertyPermission = CType(p, PropertyPermission)
@@ -178,7 +178,7 @@ Namespace java.util
         ''' <param name="obj"> the object we are testing for equality with this object. </param>
         ''' <returns> true if obj is a PropertyPermission, and has the same name and
         ''' actions as this PropertyPermission object. </returns>
-        Public Overrides Function Equals(ByVal obj As Object) As Boolean
+        Public Overrides Function Equals(  obj As Object) As Boolean
             If obj Is Me Then Return True
 
             If Not (TypeOf obj Is PropertyPermission) Then Return False
@@ -204,7 +204,7 @@ Namespace java.util
         ''' </summary>
         ''' <param name="actions"> the action string. </param>
         ''' <returns> the actions mask. </returns>
-        Private Shared Function getMask(ByVal actions As String) As Integer
+        Private Shared Function getMask(  actions As String) As Integer
 
             Dim mask_Renamed As Integer = NONE
 
@@ -278,7 +278,7 @@ Namespace java.util
         ''' read, write.
         ''' </summary>
         ''' <returns> the canonical string representation of the actions. </returns>
-        Friend Shared Function getActions(ByVal mask As Integer) As String
+        Friend Shared Function getActions(  mask As Integer) As String
             Dim sb As New StringBuilder
             Dim comma As Boolean = False
 
@@ -340,7 +340,7 @@ Namespace java.util
         ''' takes care of the name.
         ''' </summary>
         <MethodImpl(MethodImplOptions.Synchronized)>
-        Private Sub writeObject(ByVal s As java.io.ObjectOutputStream)
+        Private Sub writeObject(  s As java.io.ObjectOutputStream)
             ' Write out the actions. The superclass takes care of the name
             ' call getActions to make sure actions field is initialized
             If actions Is Nothing Then actions
@@ -352,7 +352,7 @@ Namespace java.util
         ''' a stream.
         ''' </summary>
         <MethodImpl(MethodImplOptions.Synchronized)>
-        Private Sub readObject(ByVal s As java.io.ObjectInputStream)
+        Private Sub readObject(  s As java.io.ObjectInputStream)
             ' Read in the action, then initialize the rest
             s.defaultReadObject()
             init(getMask(actions))
@@ -408,7 +408,7 @@ Namespace java.util
         ''' </exception>
         ''' <exception cref="SecurityException"> - if this PropertyPermissionCollection
         '''                                object has been marked readonly </exception>
-        Public Overrides Sub add(ByVal permission As Permission)
+        Public Overrides Sub add(  permission As Permission)
             If Not (TypeOf permission Is PropertyPermission) Then Throw New IllegalArgumentException("invalid permission: " & permission)
             If [readOnly] Then Throw New SecurityException("attempt to add a Permission to a readonly PermissionCollection")
 
@@ -444,7 +444,7 @@ Namespace java.util
         ''' </param>
         ''' <returns> true if "permission" is a proper subset of a permission in
         ''' the set, false if not. </returns>
-        Public Overrides Function implies(ByVal permission As Permission) As Boolean
+        Public Overrides Function implies(  permission As Permission) As Boolean
             If Not (TypeOf permission Is PropertyPermission) Then Return False
 
             Dim pp As PropertyPermission = CType(permission, PropertyPermission)
@@ -551,7 +551,7 @@ Namespace java.util
         '     * serialization compatibility with earlier releases. all_allowed
         '     * unchanged.
         '     
-        Private Sub writeObject(ByVal out As java.io.ObjectOutputStream)
+        Private Sub writeObject(  out As java.io.ObjectOutputStream)
             ' Don't call out.defaultWriteObject()
 
             ' Copy perms into a Hashtable
@@ -571,7 +571,7 @@ Namespace java.util
         '     * Reads in a Hashtable of PropertyPermissions and saves them in the
         '     * perms field. Reads in all_allowed.
         '     
-        Private Sub readObject(ByVal [in] As java.io.ObjectInputStream)
+        Private Sub readObject(  [in] As java.io.ObjectInputStream)
             ' Don't call defaultReadObject()
 
             ' Read in serialized fields

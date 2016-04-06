@@ -55,7 +55,7 @@ Namespace java.text.spi
 		'''     getAvailableLocales()}. </exception>
 		''' <returns> a <code>DateFormatSymbols</code> instance. </returns>
 		''' <seealso cref= java.text.DateFormatSymbols#getInstance(java.util.Locale) </seealso>
-		Public MustOverride Function getInstance(ByVal locale As java.util.Locale) As java.text.DateFormatSymbols
+		Public MustOverride Function getInstance(  locale As java.util.Locale) As java.text.DateFormatSymbols
 	End Class
 
 End Namespace

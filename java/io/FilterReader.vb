@@ -51,7 +51,7 @@ Namespace java.io
 		''' </summary>
 		''' <param name="in">  a Reader object providing the underlying stream. </param>
 		''' <exception cref="NullPointerException"> if <code>in</code> is <code>null</code> </exception>
-		Protected Friend Sub New(ByVal [in] As Reader)
+		Protected Friend Sub New(  [in] As Reader)
 			MyBase.New([in])
 			Me.in = [in]
 		End Sub

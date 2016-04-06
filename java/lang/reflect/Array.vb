@@ -72,7 +72,7 @@ Namespace java.lang.reflect
 		''' instance exceed 255. </exception>
 		''' <exception cref="NegativeArraySizeException"> if the specified {@code length}
 		''' is negative </exception>
-		Public Shared Function newInstance(ByVal componentType As [Class], ByVal length As Integer) As Object
+		Public Shared Function newInstance(  componentType As [Class],   length As Integer) As Object
 			Return newArray(componentType, length)
 		End Function
 
@@ -106,7 +106,7 @@ Namespace java.lang.reflect
 		''' instance exceed 255. </exception>
 		''' <exception cref="NegativeArraySizeException"> if any of the components in
 		''' the specified {@code dimensions} argument is negative. </exception>
-		Public Shared Function newInstance(ByVal componentType As [Class], ParamArray ByVal dimensions As Integer()) As Object
+		Public Shared Function newInstance(  componentType As [Class], ParamArray   dimensions As Integer()) As Object
 			Return multiNewArray(componentType, dimensions)
 		End Function
 
@@ -119,7 +119,7 @@ Namespace java.lang.reflect
 		''' an array </exception>
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Public Shared Function getLength(ByVal array As Object) As Integer
+		Public Shared Function getLength(  array As Object) As Integer
 		End Function
 
 		''' <summary>
@@ -139,7 +139,7 @@ Namespace java.lang.reflect
 		''' length of the specified array </exception>
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Public Shared Function [get](ByVal array As Object, ByVal index As Integer) As Object
+		Public Shared Function [get](  array As Object,   index As Integer) As Object
 		End Function
 
 		''' <summary>
@@ -159,7 +159,7 @@ Namespace java.lang.reflect
 		''' <seealso cref= Array#get </seealso>
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Public Shared Function getBoolean(ByVal array As Object, ByVal index As Integer) As Boolean
+		Public Shared Function getBoolean(  array As Object,   index As Integer) As Boolean
 		End Function
 
 		''' <summary>
@@ -179,7 +179,7 @@ Namespace java.lang.reflect
 		''' <seealso cref= Array#get </seealso>
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Public Shared Function getByte(ByVal array As Object, ByVal index As Integer) As SByte
+		Public Shared Function getByte(  array As Object,   index As Integer) As SByte
 		End Function
 
 		''' <summary>
@@ -199,7 +199,7 @@ Namespace java.lang.reflect
 		''' <seealso cref= Array#get </seealso>
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Public Shared Function getChar(ByVal array As Object, ByVal index As Integer) As Char
+		Public Shared Function getChar(  array As Object,   index As Integer) As Char
 		End Function
 
 		''' <summary>
@@ -219,7 +219,7 @@ Namespace java.lang.reflect
 		''' <seealso cref= Array#get </seealso>
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Public Shared Function getShort(ByVal array As Object, ByVal index As Integer) As Short
+		Public Shared Function getShort(  array As Object,   index As Integer) As Short
 		End Function
 
 		''' <summary>
@@ -239,7 +239,7 @@ Namespace java.lang.reflect
 		''' <seealso cref= Array#get </seealso>
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Public Shared Function getInt(ByVal array As Object, ByVal index As Integer) As Integer
+		Public Shared Function getInt(  array As Object,   index As Integer) As Integer
 		End Function
 
 		''' <summary>
@@ -259,7 +259,7 @@ Namespace java.lang.reflect
 		''' <seealso cref= Array#get </seealso>
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Public Shared Function getLong(ByVal array As Object, ByVal index As Integer) As Long
+		Public Shared Function getLong(  array As Object,   index As Integer) As Long
 		End Function
 
 		''' <summary>
@@ -279,7 +279,7 @@ Namespace java.lang.reflect
 		''' <seealso cref= Array#get </seealso>
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Public Shared Function getFloat(ByVal array As Object, ByVal index As Integer) As Single
+		Public Shared Function getFloat(  array As Object,   index As Integer) As Single
 		End Function
 
 		''' <summary>
@@ -299,7 +299,7 @@ Namespace java.lang.reflect
 		''' <seealso cref= Array#get </seealso>
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Public Shared Function getDouble(ByVal array As Object, ByVal index As Integer) As Double
+		Public Shared Function getDouble(  array As Object,   index As Integer) As Double
 		End Function
 
 		''' <summary>
@@ -320,7 +320,7 @@ Namespace java.lang.reflect
 		''' the length of the specified array </exception>
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Public Shared Sub [set](ByVal array As Object, ByVal index As Integer, ByVal value As Object)
+		Public Shared Sub [set](  array As Object,   index As Integer,   value As Object)
 		End Sub
 
 		''' <summary>
@@ -341,7 +341,7 @@ Namespace java.lang.reflect
 		''' <seealso cref= Array#set </seealso>
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Public Shared Sub setBoolean(ByVal array As Object, ByVal index As Integer, ByVal z As Boolean)
+		Public Shared Sub setBoolean(  array As Object,   index As Integer,   z As Boolean)
 		End Sub
 
 		''' <summary>
@@ -362,7 +362,7 @@ Namespace java.lang.reflect
 		''' <seealso cref= Array#set </seealso>
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Public Shared Sub setByte(ByVal array As Object, ByVal index As Integer, ByVal b As SByte)
+		Public Shared Sub setByte(  array As Object,   index As Integer,   b As SByte)
 		End Sub
 
 		''' <summary>
@@ -383,7 +383,7 @@ Namespace java.lang.reflect
 		''' <seealso cref= Array#set </seealso>
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Public Shared Sub setChar(ByVal array As Object, ByVal index As Integer, ByVal c As Char)
+		Public Shared Sub setChar(  array As Object,   index As Integer,   c As Char)
 		End Sub
 
 		''' <summary>
@@ -404,7 +404,7 @@ Namespace java.lang.reflect
 		''' <seealso cref= Array#set </seealso>
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Public Shared Sub setShort(ByVal array As Object, ByVal index As Integer, ByVal s As Short)
+		Public Shared Sub setShort(  array As Object,   index As Integer,   s As Short)
 		End Sub
 
 		''' <summary>
@@ -425,7 +425,7 @@ Namespace java.lang.reflect
 		''' <seealso cref= Array#set </seealso>
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Public Shared Sub setInt(ByVal array As Object, ByVal index As Integer, ByVal i As Integer)
+		Public Shared Sub setInt(  array As Object,   index As Integer,   i As Integer)
 		End Sub
 
 		''' <summary>
@@ -446,7 +446,7 @@ Namespace java.lang.reflect
 		''' <seealso cref= Array#set </seealso>
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Public Shared Sub setLong(ByVal array As Object, ByVal index As Integer, ByVal l As Long)
+		Public Shared Sub setLong(  array As Object,   index As Integer,   l As Long)
 		End Sub
 
 		''' <summary>
@@ -467,7 +467,7 @@ Namespace java.lang.reflect
 		''' <seealso cref= Array#set </seealso>
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Public Shared Sub setFloat(ByVal array As Object, ByVal index As Integer, ByVal f As Single)
+		Public Shared Sub setFloat(  array As Object,   index As Integer,   f As Single)
 		End Sub
 
 		''' <summary>
@@ -488,7 +488,7 @@ Namespace java.lang.reflect
 		''' <seealso cref= Array#set </seealso>
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Public Shared Sub setDouble(ByVal array As Object, ByVal index As Integer, ByVal d As Double)
+		Public Shared Sub setDouble(  array As Object,   index As Integer,   d As Double)
 		End Sub
 
 	'    
@@ -497,12 +497,12 @@ Namespace java.lang.reflect
 
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Private Shared Function newArray(ByVal componentType As [Class], ByVal length As Integer) As Object
+		Private Shared Function newArray(  componentType As [Class],   length As Integer) As Object
 		End Function
 
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Private Shared Function multiNewArray(ByVal componentType As [Class], ByVal dimensions As Integer()) As Object
+		Private Shared Function multiNewArray(  componentType As [Class],   dimensions As Integer()) As Object
 		End Function
 
 

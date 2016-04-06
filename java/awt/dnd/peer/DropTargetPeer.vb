@@ -45,14 +45,14 @@ Namespace java.awt.dnd.peer
 		''' </summary>
 		''' <param name="dt"> The DropTarget effected </param>
 
-		Sub addDropTarget(ByVal dt As java.awt.dnd.DropTarget)
+		Sub addDropTarget(  dt As java.awt.dnd.DropTarget)
 
 		''' <summary>
 		''' Remove the DropTarget from the system
 		''' </summary>
 		''' <param name="dt"> The DropTarget effected </param>
 
-		Sub removeDropTarget(ByVal dt As java.awt.dnd.DropTarget)
+		Sub removeDropTarget(  dt As java.awt.dnd.DropTarget)
 	End Interface
 
 End Namespace

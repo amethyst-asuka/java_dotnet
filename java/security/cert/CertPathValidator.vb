@@ -112,7 +112,7 @@ Namespace java.security.cert
 		''' <param name="validatorSpi"> the provider implementation </param>
 		''' <param name="provider"> the provider </param>
 		''' <param name="algorithm"> the algorithm name </param>
-		Protected Friend Sub New(ByVal validatorSpi As CertPathValidatorSpi, ByVal provider_Renamed As java.security.Provider, ByVal algorithm As String)
+		Protected Friend Sub New(  validatorSpi As CertPathValidatorSpi,   provider_Renamed As java.security.Provider,   algorithm As String)
 			Me.validatorSpi = validatorSpi
 			Me.provider_Renamed = provider_Renamed
 			Me.algorithm = algorithm
@@ -145,7 +145,7 @@ Namespace java.security.cert
 		'''          specified algorithm.
 		''' </exception>
 		''' <seealso cref= java.security.Provider </seealso>
-		Public Shared Function getInstance(ByVal algorithm As String) As CertPathValidator
+		Public Shared Function getInstance(  algorithm As String) As CertPathValidator
 			Dim instance_Renamed As sun.security.jca.GetInstance.Instance = GetInstance.getInstance("CertPathValidator", GetType(CertPathValidatorSpi), algorithm)
 			Return New CertPathValidator(CType(instance_Renamed.impl, CertPathValidatorSpi), instance_Renamed.provider, algorithm)
 		End Function
@@ -184,7 +184,7 @@ Namespace java.security.cert
 		'''          null or empty.
 		''' </exception>
 		''' <seealso cref= java.security.Provider </seealso>
-		Public Shared Function getInstance(ByVal algorithm As String, ByVal provider_Renamed As String) As CertPathValidator
+		Public Shared Function getInstance(  algorithm As String,   provider_Renamed As String) As CertPathValidator
 			Dim instance_Renamed As sun.security.jca.GetInstance.Instance = GetInstance.getInstance("CertPathValidator", GetType(CertPathValidatorSpi), algorithm, provider_Renamed)
 			Return New CertPathValidator(CType(instance_Renamed.impl, CertPathValidatorSpi), instance_Renamed.provider, algorithm)
 		End Function
@@ -217,7 +217,7 @@ Namespace java.security.cert
 		'''          null.
 		''' </exception>
 		''' <seealso cref= java.security.Provider </seealso>
-		Public Shared Function getInstance(ByVal algorithm As String, ByVal provider_Renamed As java.security.Provider) As CertPathValidator
+		Public Shared Function getInstance(  algorithm As String,   provider_Renamed As java.security.Provider) As CertPathValidator
 			Dim instance_Renamed As sun.security.jca.GetInstance.Instance = GetInstance.getInstance("CertPathValidator", GetType(CertPathValidatorSpi), algorithm, provider_Renamed)
 			Return New CertPathValidator(CType(instance_Renamed.impl, CertPathValidatorSpi), instance_Renamed.provider, algorithm)
 		End Function
@@ -261,7 +261,7 @@ Namespace java.security.cert
 		''' <exception cref="InvalidAlgorithmParameterException"> if the specified
 		''' parameters or the type of the specified {@code CertPath} are
 		''' inappropriate for this {@code CertPathValidator} </exception>
-		Public Function validate(ByVal certPath As CertPath, ByVal params As CertPathParameters) As CertPathValidatorResult
+		Public Function validate(  certPath As CertPath,   params As CertPathParameters) As CertPathValidatorResult
 			Return validatorSpi.engineValidate(certPath, params)
 		End Function
 

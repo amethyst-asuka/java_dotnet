@@ -177,7 +177,7 @@ Namespace java.security.cert
 		''' <param name="oid"> the Object Identifier value for the extension. </param>
 		''' <returns> the DER-encoded octet string of the extension value or
 		''' null if it is not present. </returns>
-		Function getExtensionValue(ByVal oid As String) As SByte()
+		Function getExtensionValue(  oid As String) As SByte()
 	End Interface
 
 End Namespace

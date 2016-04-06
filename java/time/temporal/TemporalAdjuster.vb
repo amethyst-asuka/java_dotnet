@@ -144,7 +144,7 @@ Namespace java.time.temporal
 		''' <returns> an object of the same observable type with the adjustment made, not null </returns>
 		''' <exception cref="DateTimeException"> if unable to make the adjustment </exception>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
-		Function adjustInto(ByVal temporal As Temporal) As Temporal
+		Function adjustInto(  temporal As Temporal) As Temporal
 
 	End Interface
 

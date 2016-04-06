@@ -71,7 +71,7 @@ Namespace java.awt.peer
 		''' <param name="blocker"> the blocking modal dialog </param>
 		''' <param name="blocked"> {@code true} to block the window, {@code false}
 		'''        to unblock it </param>
-		Sub setModalBlocked(ByVal blocker As Dialog, ByVal blocked As Boolean)
+		Sub setModalBlocked(  blocker As Dialog,   blocked As Boolean)
 
 		''' <summary>
 		''' Updates the minimum size on the peer.

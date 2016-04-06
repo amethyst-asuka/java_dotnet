@@ -59,7 +59,7 @@ Namespace java.awt.dnd
 		''' <P> </summary>
 		''' <param name="dt"> the DropTarget to associate with </param>
 
-		Friend Sub New(ByVal dt As DropTarget)
+		Friend Sub New(  dt As DropTarget)
 			MyBase.New()
 
 			dropTarget = dt
@@ -94,7 +94,7 @@ Namespace java.awt.dnd
 		''' <P> </summary>
 		''' <param name="dtcp"> the <code>DropTargetContextPeer</code> </param>
 
-		Public Overridable Sub addNotify(ByVal dtcp As java.awt.dnd.peer.DropTargetContextPeer)
+		Public Overridable Sub addNotify(  dtcp As java.awt.dnd.peer.DropTargetContextPeer)
 			dropTargetContextPeer = dtcp
 		End Sub
 
@@ -114,7 +114,7 @@ Namespace java.awt.dnd
 		''' <param name="actions"> an <code>int</code> representing the supported action(s) </param>
 
 		Protected Friend Overridable Property targetActions As Integer
-			Set(ByVal actions As Integer)
+			Set(  actions As Integer)
 				Dim peer As java.awt.dnd.peer.DropTargetContextPeer = dropTargetContextPeer
 				If peer IsNot Nothing Then
 					SyncLock peer
@@ -141,7 +141,7 @@ Namespace java.awt.dnd
 		''' <P> </param>
 		''' <exception cref="InvalidDnDOperationException"> if a drop is not outstanding/extant </exception>
 
-		Public Overridable Sub dropComplete(ByVal success As Boolean)
+		Public Overridable Sub dropComplete(  success As Boolean)
 			Dim peer As java.awt.dnd.peer.DropTargetContextPeer = dropTargetContextPeer
 			If peer IsNot Nothing Then peer.dropComplete(success)
 		End Sub
@@ -151,7 +151,7 @@ Namespace java.awt.dnd
 		''' <P> </summary>
 		''' <param name="dragOperation"> the supported action(s) </param>
 
-		Protected Friend Overridable Sub acceptDrag(ByVal dragOperation As Integer)
+		Protected Friend Overridable Sub acceptDrag(  dragOperation As Integer)
 			Dim peer As java.awt.dnd.peer.DropTargetContextPeer = dropTargetContextPeer
 			If peer IsNot Nothing Then peer.acceptDrag(dragOperation)
 		End Sub
@@ -172,7 +172,7 @@ Namespace java.awt.dnd
 		''' <P> </summary>
 		''' <param name="dropOperation"> the supported action(s) </param>
 
-		Protected Friend Overridable Sub acceptDrop(ByVal dropOperation As Integer)
+		Protected Friend Overridable Sub acceptDrop(  dropOperation As Integer)
 			Dim peer As java.awt.dnd.peer.DropTargetContextPeer = dropTargetContextPeer
 			If peer IsNot Nothing Then peer.acceptDrop(dropOperation)
 		End Sub
@@ -225,7 +225,7 @@ Namespace java.awt.dnd
 		''' <P> </param>
 		''' <returns> if the <code>DataFlavor</code> specified is supported </returns>
 
-		Protected Friend Overridable Function isDataFlavorSupported(ByVal df As java.awt.datatransfer.DataFlavor) As Boolean
+		Protected Friend Overridable Function isDataFlavorSupported(  df As java.awt.datatransfer.DataFlavor) As Boolean
 			Return currentDataFlavorsAsList.Contains(df)
 		End Function
 
@@ -274,7 +274,7 @@ Namespace java.awt.dnd
 		''' <param name="local"> <tt>true</tt> if <tt>t</tt> represents
 		'''        the result of a local drag-n-drop operation. </param>
 		''' <returns> the new <tt>TransferableProxy</tt> instance. </returns>
-		Protected Friend Overridable Function createTransferableProxy(ByVal t As java.awt.datatransfer.Transferable, ByVal local As Boolean) As java.awt.datatransfer.Transferable
+		Protected Friend Overridable Function createTransferableProxy(  t As java.awt.datatransfer.Transferable,   local As Boolean) As java.awt.datatransfer.Transferable
 			Return New TransferableProxy(Me, t, local)
 		End Function
 
@@ -309,7 +309,7 @@ Namespace java.awt.dnd
 			''' <param name="t"> the <code>Transferable</code> object </param>
 			''' <param name="local"> <code>true</code>, if <code>t</code> represents
 			'''        the result of local drag-n-drop operation </param>
-			Friend Sub New(ByVal outerInstance As DropTargetContext, ByVal t As java.awt.datatransfer.Transferable, ByVal local As Boolean)
+			Friend Sub New(  outerInstance As DropTargetContext,   t As java.awt.datatransfer.Transferable,   local As Boolean)
 					Me.outerInstance = outerInstance
 				proxy = New sun.awt.datatransfer.TransferableProxy(t, local)
 				transferable = t
@@ -334,7 +334,7 @@ Namespace java.awt.dnd
 			''' <param name="flavor"> the requested flavor for the data </param>
 			''' <returns> <code>true</code> if the data flavor is supported,
 			'''         <code>false</code> otherwise </returns>
-			Public Overridable Function isDataFlavorSupported(ByVal flavor As java.awt.datatransfer.DataFlavor) As Boolean
+			Public Overridable Function isDataFlavorSupported(  flavor As java.awt.datatransfer.DataFlavor) As Boolean
 				Return proxy.isDataFlavorSupported(flavor)
 			End Function
 
@@ -352,7 +352,7 @@ Namespace java.awt.dnd
 			'''              in the requested flavor. </exception>
 			''' <exception cref="UnsupportedFlavorException"> if the requested data flavor is
 			'''              not supported. </exception>
-			Public Overridable Function getTransferData(ByVal df As java.awt.datatransfer.DataFlavor) As Object
+			Public Overridable Function getTransferData(  df As java.awt.datatransfer.DataFlavor) As Object
 				Return proxy.getTransferData(df)
 			End Function
 

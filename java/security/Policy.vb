@@ -94,7 +94,7 @@ Namespace java.security
 			' a flag indicating if the system-wide policy has been initialized
 			Friend ReadOnly initialized As Boolean
 
-			Friend Sub New(ByVal policy_Renamed As Policy, ByVal initialized As Boolean)
+			Friend Sub New(  policy_Renamed As Policy,   initialized As Boolean)
 				Me.policy_Renamed = policy_Renamed
 				Me.initialized = initialized
 			End Sub
@@ -117,7 +117,7 @@ Namespace java.security
 			End Get
 		End Property
 
-		Private Shared Sub checkPermission(ByVal type As String)
+		Private Shared Sub checkPermission(  type As String)
 			Dim sm As SecurityManager = System.securityManager
 			If sm IsNot Nothing Then sm.checkPermission(New SecurityPermission("createPolicy." & type))
 		End Sub
@@ -250,7 +250,7 @@ Namespace java.security
 		''' <seealso cref= #getPolicy()
 		'''  </seealso>
 		Public Shared Property policy As Policy
-			Set(ByVal p As Policy)
+			Set(  p As Policy)
 				Dim sm As SecurityManager = System.securityManager
 				If sm IsNot Nothing Then sm.checkPermission(New SecurityPermission("setPolicy"))
 				If p IsNot Nothing Then initPolicy(p)
@@ -266,7 +266,7 @@ Namespace java.security
 		''' 
 		''' @since 1.4
 		''' </summary>
-		Private Shared Sub initPolicy(ByVal p As Policy)
+		Private Shared Sub initPolicy(  p As Policy)
 	'        
 	'         * A policy provider not on the bootclasspath could trigger
 	'         * security checks fulfilling a call to either Policy.implies
@@ -362,7 +362,7 @@ Namespace java.security
 		''' </exception>
 		''' <seealso cref= Provider
 		''' @since 1.6 </seealso>
-		Public Shared Function getInstance(ByVal type As String, ByVal params As Policy.Parameters) As Policy
+		Public Shared Function getInstance(  type As String,   params As Policy.Parameters) As Policy
 
 			checkPermission(type)
 			Try
@@ -414,7 +414,7 @@ Namespace java.security
 		''' </exception>
 		''' <seealso cref= Provider
 		''' @since 1.6 </seealso>
-		Public Shared Function getInstance(ByVal type As String, ByVal params As Policy.Parameters, ByVal provider_Renamed As String) As Policy
+		Public Shared Function getInstance(  type As String,   params As Policy.Parameters,   provider_Renamed As String) As Policy
 
 			If provider_Renamed Is Nothing OrElse provider_Renamed.length() = 0 Then Throw New IllegalArgumentException("missing provider")
 
@@ -461,7 +461,7 @@ Namespace java.security
 		''' </exception>
 		''' <seealso cref= Provider
 		''' @since 1.6 </seealso>
-		Public Shared Function getInstance(ByVal type As String, ByVal params As Policy.Parameters, ByVal provider_Renamed As Provider) As Policy
+		Public Shared Function getInstance(  type As String,   params As Policy.Parameters,   provider_Renamed As Provider) As Policy
 
 			If provider_Renamed Is Nothing Then Throw New IllegalArgumentException("missing provider")
 
@@ -474,7 +474,7 @@ Namespace java.security
 			End Try
 		End Function
 
-		Private Shared Function handleException(ByVal nsae As NoSuchAlgorithmException) As Policy
+		Private Shared Function handleException(  nsae As NoSuchAlgorithmException) As Policy
 			Dim cause As Throwable = nsae.InnerException
 			If TypeOf cause Is IllegalArgumentException Then Throw CType(cause, IllegalArgumentException)
 			Throw nsae
@@ -553,7 +553,7 @@ Namespace java.security
 		'''          and it must support heterogeneous Permission types.
 		'''          If this operation is not supported,
 		'''          Policy.UNSUPPORTED_EMPTY_COLLECTION is returned. </returns>
-		Public Overridable Function getPermissions(ByVal codesource As CodeSource) As PermissionCollection
+		Public Overridable Function getPermissions(  codesource As CodeSource) As PermissionCollection
 			Return Policy.UNSUPPORTED_EMPTY_COLLECTION
 		End Function
 
@@ -590,7 +590,7 @@ Namespace java.security
 		'''          Policy.UNSUPPORTED_EMPTY_COLLECTION is returned.
 		''' 
 		''' @since 1.4 </returns>
-		Public Overridable Function getPermissions(ByVal domain As ProtectionDomain) As PermissionCollection
+		Public Overridable Function getPermissions(  domain As ProtectionDomain) As PermissionCollection
 			Dim pc As PermissionCollection = Nothing
 
 			If domain Is Nothing Then Return New Permissions
@@ -624,7 +624,7 @@ Namespace java.security
 		''' <summary>
 		''' add static permissions to provided permission collection
 		''' </summary>
-		Private Sub addStaticPerms(ByVal perms As PermissionCollection, ByVal statics As PermissionCollection)
+		Private Sub addStaticPerms(  perms As PermissionCollection,   statics As PermissionCollection)
 			If statics IsNot Nothing Then
 				SyncLock statics
 					Dim e As System.Collections.IEnumerator(Of Permission) = statics.elements()
@@ -650,7 +650,7 @@ Namespace java.security
 		''' </returns>
 		''' <seealso cref= java.security.ProtectionDomain
 		''' @since 1.4 </seealso>
-		Public Overridable Function implies(ByVal domain As ProtectionDomain, ByVal permission As Permission) As Boolean
+		Public Overridable Function implies(  domain As ProtectionDomain,   permission As Permission) As Boolean
 			Dim pc As PermissionCollection
 
 			If pdMapping Is Nothing Then initPolicy(Me)
@@ -696,7 +696,7 @@ Namespace java.security
 			Private type As String
 			Private params As Policy.Parameters
 
-			Private Sub New(ByVal spi As PolicySpi, ByVal p As Provider, ByVal type As String, ByVal params As Policy.Parameters)
+			Private Sub New(  spi As PolicySpi,   p As Provider,   type As String,   params As Policy.Parameters)
 				Me.spi = spi
 				Me.p = p
 				Me.type = type
@@ -718,13 +718,13 @@ Namespace java.security
 					Return p
 				End Get
 			End Property
-			Public Overrides Function getPermissions(ByVal codesource As CodeSource) As PermissionCollection
+			Public Overrides Function getPermissions(  codesource As CodeSource) As PermissionCollection
 				Return spi.engineGetPermissions(codesource)
 			End Function
-			Public Overrides Function getPermissions(ByVal domain As ProtectionDomain) As PermissionCollection
+			Public Overrides Function getPermissions(  domain As ProtectionDomain) As PermissionCollection
 				Return spi.engineGetPermissions(domain)
 			End Function
-			Public Overrides Function implies(ByVal domain As ProtectionDomain, ByVal perm As Permission) As Boolean
+			Public Overrides Function implies(  domain As ProtectionDomain,   perm As Permission) As Boolean
 				Return spi.engineImplies(domain, perm)
 			End Function
 			Public Overrides Sub refresh()
@@ -770,7 +770,7 @@ Namespace java.security
 			''' </param>
 			''' <exception cref="SecurityException"> - if this PermissionCollection object
 			'''                                has been marked readonly </exception>
-			Public Overrides Sub add(ByVal permission As Permission)
+			Public Overrides Sub add(  permission As Permission)
 				perms.add(permission)
 			End Sub
 
@@ -782,7 +782,7 @@ Namespace java.security
 			''' </param>
 			''' <returns> true if "permission" is implied by the permissions in
 			''' the collection, false if not. </returns>
-			Public Overrides Function implies(ByVal permission As Permission) As Boolean
+			Public Overrides Function implies(  permission As Permission) As Boolean
 				Return perms.implies(permission)
 			End Function
 

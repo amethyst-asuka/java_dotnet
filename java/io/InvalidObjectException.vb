@@ -44,7 +44,7 @@ Namespace java.io
 		''' <param name="reason"> Detailed message explaining the reason for the failure.
 		''' </param>
 		''' <seealso cref= ObjectInputValidation </seealso>
-		Public Sub New(ByVal reason As String)
+		Public Sub New(  reason As String)
 			MyBase.New(reason)
 		End Sub
 	End Class

@@ -55,7 +55,7 @@ Namespace java.security
 		''' <exception cref="InvalidParameterSpecException"> if the given parameter
 		''' specification is inappropriate for the initialization of this parameter
 		''' object. </exception>
-		Protected Friend MustOverride Sub engineInit(ByVal paramSpec As java.security.spec.AlgorithmParameterSpec)
+		Protected Friend MustOverride Sub engineInit(  paramSpec As java.security.spec.AlgorithmParameterSpec)
 
 		''' <summary>
 		''' Imports the specified parameters and decodes them
@@ -66,7 +66,7 @@ Namespace java.security
 		''' <param name="params"> the encoded parameters.
 		''' </param>
 		''' <exception cref="IOException"> on decoding errors </exception>
-		Protected Friend MustOverride Sub engineInit(ByVal params As SByte())
+		Protected Friend MustOverride Sub engineInit(  params As SByte())
 
 		''' <summary>
 		''' Imports the parameters from {@code params} and
@@ -81,7 +81,7 @@ Namespace java.security
 		''' <param name="format"> the name of the decoding format.
 		''' </param>
 		''' <exception cref="IOException"> on decoding errors </exception>
-		Protected Friend MustOverride Sub engineInit(ByVal params As SByte(), ByVal format As String)
+		Protected Friend MustOverride Sub engineInit(  params As SByte(),   format As String)
 
 		''' <summary>
 		''' Returns a (transparent) specification of this parameters
@@ -101,7 +101,7 @@ Namespace java.security
 		''' </returns>
 		''' <exception cref="InvalidParameterSpecException"> if the requested parameter
 		''' specification is inappropriate for this parameter object. </exception>
-		Protected Friend MustOverride Function engineGetParameterSpec(Of T As java.security.spec.AlgorithmParameterSpec)(ByVal paramSpec As [Class]) As T
+		Protected Friend MustOverride Function engineGetParameterSpec(Of T As java.security.spec.AlgorithmParameterSpec)(  paramSpec As [Class]) As T
 
 		''' <summary>
 		''' Returns the parameters in their primary encoding format.
@@ -125,7 +125,7 @@ Namespace java.security
 		''' <returns> the parameters encoded using the specified encoding scheme.
 		''' </returns>
 		''' <exception cref="IOException"> on encoding errors. </exception>
-		Protected Friend MustOverride Function engineGetEncoded(ByVal format As String) As SByte()
+		Protected Friend MustOverride Function engineGetEncoded(  format As String) As SByte()
 
 		''' <summary>
 		''' Returns a formatted string describing the parameters.

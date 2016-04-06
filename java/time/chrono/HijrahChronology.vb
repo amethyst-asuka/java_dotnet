@@ -341,7 +341,7 @@ Namespace java.time.chrono
 		''' <param name="id"> the id of the calendar </param>
 		''' <exception cref="DateTimeException"> if the calendar type is missing from the properties file. </exception>
 		''' <exception cref="IllegalArgumentException"> if the id is empty </exception>
-		Private Sub New(ByVal id As String)
+		Private Sub New(  id As String)
 			If id.empty Then Throw New IllegalArgumentException("calendar id is empty")
 			Dim propName As String = PROP_PREFIX + id + PROP_TYPE_SUFFIX
 			Dim calType As String = calendarProperties.getProperty(propName)
@@ -412,7 +412,7 @@ Namespace java.time.chrono
 		''' <returns> the Hijrah local date, not null </returns>
 		''' <exception cref="DateTimeException"> if unable to create the date </exception>
 		''' <exception cref="ClassCastException"> if the {@code era} is not a {@code HijrahEra} </exception>
-		Public Overrides Function [date](ByVal era As Era, ByVal yearOfEra As Integer, ByVal month As Integer, ByVal dayOfMonth As Integer) As HijrahDate
+		Public Overrides Function [date](  era As Era,   yearOfEra As Integer,   month As Integer,   dayOfMonth As Integer) As HijrahDate
 			Return [date](prolepticYear(era, yearOfEra), month, dayOfMonth)
 		End Function
 
@@ -425,7 +425,7 @@ Namespace java.time.chrono
 		''' <param name="dayOfMonth">  the day-of-month </param>
 		''' <returns> the Hijrah local date, not null </returns>
 		''' <exception cref="DateTimeException"> if unable to create the date </exception>
-		Public Overrides Function [date](ByVal prolepticYear As Integer, ByVal month As Integer, ByVal dayOfMonth As Integer) As HijrahDate
+		Public Overrides Function [date](  prolepticYear As Integer,   month As Integer,   dayOfMonth As Integer) As HijrahDate
 			Return HijrahDate.of(Me, prolepticYear, month, dayOfMonth)
 		End Function
 
@@ -439,7 +439,7 @@ Namespace java.time.chrono
 		''' <returns> the Hijrah local date, not null </returns>
 		''' <exception cref="DateTimeException"> if unable to create the date </exception>
 		''' <exception cref="ClassCastException"> if the {@code era} is not a {@code HijrahEra} </exception>
-		Public Overrides Function dateYearDay(ByVal era As Era, ByVal yearOfEra As Integer, ByVal dayOfYear As Integer) As HijrahDate
+		Public Overrides Function dateYearDay(  era As Era,   yearOfEra As Integer,   dayOfYear As Integer) As HijrahDate
 			Return dateYearDay(prolepticYear(era, yearOfEra), dayOfYear)
 		End Function
 
@@ -452,7 +452,7 @@ Namespace java.time.chrono
 		''' <returns> the Hijrah local date, not null </returns>
 		''' <exception cref="DateTimeException"> if the value of the year is out of range,
 		'''  or if the day-of-year is invalid for the year </exception>
-		Public Overrides Function dateYearDay(ByVal prolepticYear As Integer, ByVal dayOfYear As Integer) As HijrahDate
+		Public Overrides Function dateYearDay(  prolepticYear As Integer,   dayOfYear As Integer) As HijrahDate
 			Dim date_Renamed As HijrahDate = HijrahDate.of(Me, prolepticYear, 1, 1)
 			If dayOfYear > date_Renamed.lengthOfYear() Then Throw New java.time.DateTimeException("Invalid dayOfYear: " & dayOfYear)
 			Return date_Renamed.plusDays(dayOfYear - 1)
@@ -464,7 +464,7 @@ Namespace java.time.chrono
 		''' <param name="epochDay">  the epoch day </param>
 		''' <returns> the Hijrah local date, not null </returns>
 		''' <exception cref="DateTimeException"> if unable to create the date </exception>
-		Public Overrides Function dateEpochDay(ByVal epochDay As Long) As HijrahDate ' override with covariant return type
+		Public Overrides Function dateEpochDay(  epochDay As Long) As HijrahDate ' override with covariant return type
 			Return HijrahDate.ofEpochDay(Me, epochDay)
 		End Function
 
@@ -472,36 +472,36 @@ Namespace java.time.chrono
 			Return dateNow(java.time.Clock.systemDefaultZone())
 		End Function
 
-		Public Overrides Function dateNow(ByVal zone As java.time.ZoneId) As HijrahDate
+		Public Overrides Function dateNow(  zone As java.time.ZoneId) As HijrahDate
 			Return dateNow(java.time.Clock.system(zone))
 		End Function
 
-		Public Overrides Function dateNow(ByVal clock_Renamed As java.time.Clock) As HijrahDate
+		Public Overrides Function dateNow(  clock_Renamed As java.time.Clock) As HijrahDate
 			Return [date](java.time.LocalDate.now(clock_Renamed))
 		End Function
 
-		Public Overrides Function [date](ByVal temporal As java.time.temporal.TemporalAccessor) As HijrahDate
+		Public Overrides Function [date](  temporal As java.time.temporal.TemporalAccessor) As HijrahDate
 			If TypeOf temporal Is HijrahDate Then Return CType(temporal, HijrahDate)
 			Return HijrahDate.ofEpochDay(Me, temporal.getLong(EPOCH_DAY))
 		End Function
 
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Overrides Function localDateTime(ByVal temporal As java.time.temporal.TemporalAccessor) As ChronoLocalDateTime(Of HijrahDate)
+		Public Overrides Function localDateTime(  temporal As java.time.temporal.TemporalAccessor) As ChronoLocalDateTime(Of HijrahDate)
 			Return CType(MyBase.localDateTime(temporal), ChronoLocalDateTime(Of HijrahDate))
 		End Function
 
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Overrides Function zonedDateTime(ByVal temporal As java.time.temporal.TemporalAccessor) As ChronoZonedDateTime(Of HijrahDate)
+		Public Overrides Function zonedDateTime(  temporal As java.time.temporal.TemporalAccessor) As ChronoZonedDateTime(Of HijrahDate)
 			Return CType(MyBase.zonedDateTime(temporal), ChronoZonedDateTime(Of HijrahDate))
 		End Function
 
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Overrides Function zonedDateTime(ByVal instant_Renamed As java.time.Instant, ByVal zone As java.time.ZoneId) As ChronoZonedDateTime(Of HijrahDate)
+		Public Overrides Function zonedDateTime(  instant_Renamed As java.time.Instant,   zone As java.time.ZoneId) As ChronoZonedDateTime(Of HijrahDate)
 			Return CType(MyBase.zonedDateTime(instant_Renamed, zone), ChronoZonedDateTime(Of HijrahDate))
 		End Function
 
 		'-----------------------------------------------------------------------
-		Public Overrides Function isLeapYear(ByVal prolepticYear As Long) As Boolean
+		Public Overrides Function isLeapYear(  prolepticYear As Long) As Boolean
 			checkCalendarInit()
 			Dim epochMonth As Integer = yearToEpochMonth(CInt(prolepticYear))
 			If epochMonth < 0 OrElse epochMonth > maxEpochDay Then Throw New java.time.DateTimeException("Hijrah date out of range")
@@ -509,12 +509,12 @@ Namespace java.time.chrono
 			[Return] (len > 354)
 		End Function
 
-		Public Overrides Function prolepticYear(ByVal era As Era, ByVal yearOfEra As Integer) As Integer
+		Public Overrides Function prolepticYear(  era As Era,   yearOfEra As Integer) As Integer
 			If TypeOf era Is HijrahEra = False Then Throw New ClassCastException("Era must be HijrahEra")
 			Return yearOfEra
 		End Function
 
-		Public Overrides Function eraOf(ByVal eraValue As Integer) As HijrahEra
+		Public Overrides Function eraOf(  eraValue As Integer) As HijrahEra
 			Select Case eraValue
 				Case 1
 					Return HijrahEra.AH
@@ -528,7 +528,7 @@ Namespace java.time.chrono
 		End Function
 
 		'-----------------------------------------------------------------------
-		Public Overrides Function range(ByVal field As java.time.temporal.ChronoField) As java.time.temporal.ValueRange
+		Public Overrides Function range(  field As java.time.temporal.ChronoField) As java.time.temporal.ValueRange
 			checkCalendarInit()
 			If TypeOf field Is java.time.temporal.ChronoField Then
 				Dim f As java.time.temporal.ChronoField = field
@@ -551,7 +551,7 @@ Namespace java.time.chrono
 		End Function
 
 		'-----------------------------------------------------------------------
-		Public Overrides Function resolveDate(ByVal fieldValues As IDictionary(Of java.time.temporal.TemporalField, Long?), ByVal resolverStyle As java.time.format.ResolverStyle) As HijrahDate ' override for return type
+		Public Overrides Function resolveDate(  fieldValues As IDictionary(Of java.time.temporal.TemporalField, Long?),   resolverStyle As java.time.format.ResolverStyle) As HijrahDate ' override for return type
 			Return CType(MyBase.resolveDate(fieldValues, resolverStyle), HijrahDate)
 		End Function
 
@@ -560,16 +560,16 @@ Namespace java.time.chrono
 		''' Check the validity of a year.
 		''' </summary>
 		''' <param name="prolepticYear"> the year to check </param>
-		Friend Function checkValidYear(ByVal prolepticYear As Long) As Integer
+		Friend Function checkValidYear(  prolepticYear As Long) As Integer
 			If prolepticYear < minimumYear OrElse prolepticYear > maximumYear Then Throw New java.time.DateTimeException("Invalid Hijrah year: " & prolepticYear)
 			Return CInt(prolepticYear)
 		End Function
 
-		Friend Sub checkValidDayOfYear(ByVal dayOfYear As Integer)
+		Friend Sub checkValidDayOfYear(  dayOfYear As Integer)
 			If dayOfYear < 1 OrElse dayOfYear > maximumDayOfYear Then Throw New java.time.DateTimeException("Invalid Hijrah day of year: " & dayOfYear)
 		End Sub
 
-		Friend Sub checkValidMonth(ByVal month As Integer)
+		Friend Sub checkValidMonth(  month As Integer)
 			If month < 1 OrElse month > 12 Then Throw New java.time.DateTimeException("Invalid Hijrah month: " & month)
 		End Sub
 
@@ -580,7 +580,7 @@ Namespace java.time.chrono
 		''' </summary>
 		''' <param name="epochDay">  the EpochDay </param>
 		''' <returns> int[0] = YEAR, int[1] = MONTH, int[2] = DATE </returns>
-		Friend Function getHijrahDateInfo(ByVal epochDay As Integer) As Integer()
+		Friend Function getHijrahDateInfo(  epochDay As Integer) As Integer()
 			checkCalendarInit() ' ensure that the chronology is initialized
 			If epochDay < minEpochDay OrElse epochDay >= maxEpochDay Then Throw New java.time.DateTimeException("Hijrah date out of range")
 
@@ -604,7 +604,7 @@ Namespace java.time.chrono
 		''' <param name="monthOfYear"> the month-of-year to represent, 1-origin </param>
 		''' <param name="dayOfMonth"> the day-of-month to represent, 1-origin </param>
 		''' <returns> the epoch day </returns>
-		Friend Function getEpochDay(ByVal prolepticYear As Integer, ByVal monthOfYear As Integer, ByVal dayOfMonth As Integer) As Long
+		Friend Function getEpochDay(  prolepticYear As Integer,   monthOfYear As Integer,   dayOfMonth As Integer) As Long
 			checkCalendarInit() ' ensure that the chronology is initialized
 			checkValidMonth(monthOfYear)
 			Dim epochMonth As Integer = yearToEpochMonth(prolepticYear) + (monthOfYear - 1)
@@ -619,7 +619,7 @@ Namespace java.time.chrono
 		''' <param name="prolepticYear"> a proleptic year </param>
 		''' <param name="month"> a month, 1-origin </param>
 		''' <returns> the day of year, 1-origin </returns>
-		Friend Function getDayOfYear(ByVal prolepticYear As Integer, ByVal month As Integer) As Integer
+		Friend Function getDayOfYear(  prolepticYear As Integer,   month As Integer) As Integer
 			Return yearMonthToDayOfYear(prolepticYear, (month - 1))
 		End Function
 
@@ -629,7 +629,7 @@ Namespace java.time.chrono
 		''' <param name="prolepticYear"> a proleptic year </param>
 		''' <param name="monthOfYear"> a month, 1-origin. </param>
 		''' <returns> the length of the month </returns>
-		Friend Function getMonthLength(ByVal prolepticYear As Integer, ByVal monthOfYear As Integer) As Integer
+		Friend Function getMonthLength(  prolepticYear As Integer,   monthOfYear As Integer) As Integer
 			Dim epochMonth As Integer = yearToEpochMonth(prolepticYear) + (monthOfYear - 1)
 			If epochMonth < 0 OrElse epochMonth >= hijrahEpochMonthStartDays.Length Then Throw New java.time.DateTimeException("Invalid Hijrah date, year: " & prolepticYear & ", month: " & monthOfYear)
 			Return epochMonthLength(epochMonth)
@@ -641,7 +641,7 @@ Namespace java.time.chrono
 		''' </summary>
 		''' <param name="prolepticYear"> a proleptic year </param>
 		''' <returns> year length in days </returns>
-		Friend Function getYearLength(ByVal prolepticYear As Integer) As Integer
+		Friend Function getYearLength(  prolepticYear As Integer) As Integer
 			Return yearMonthToDayOfYear(prolepticYear, 12)
 		End Function
 
@@ -712,7 +712,7 @@ Namespace java.time.chrono
 		''' <param name="epochDay"> </param>
 		''' <returns> The index of the element of the start of the month containing the
 		''' epochDay. </returns>
-		Private Function epochDayToEpochMonth(ByVal epochDay As Integer) As Integer
+		Private Function epochDayToEpochMonth(  epochDay As Integer) As Integer
 			' binary search
 			Dim ndx As Integer = java.util.Arrays.binarySearch(hijrahEpochMonthStartDays, epochDay)
 			If ndx < 0 Then ndx = -ndx - 2
@@ -724,7 +724,7 @@ Namespace java.time.chrono
 		''' </summary>
 		''' <param name="epochMonth"> the epochMonth </param>
 		''' <returns> the Hijrah Year </returns>
-		Private Function epochMonthToYear(ByVal epochMonth As Integer) As Integer
+		Private Function epochMonthToYear(  epochMonth As Integer) As Integer
 			[Return] (epochMonth + hijrahStartEpochMonth) / 12
 		End Function
 
@@ -733,7 +733,7 @@ Namespace java.time.chrono
 		''' </summary>
 		''' <param name="year"> the HijrahYear </param>
 		''' <returns> the epochMonth for the beginning of the year. </returns>
-		Private Function yearToEpochMonth(ByVal year_Renamed As Integer) As Integer
+		Private Function yearToEpochMonth(  year_Renamed As Integer) As Integer
 			[Return] (year_Renamed * 12) - hijrahStartEpochMonth
 		End Function
 
@@ -742,7 +742,7 @@ Namespace java.time.chrono
 		''' </summary>
 		''' <param name="epochMonth"> the epochMonth </param>
 		''' <returns> the month of the Hijrah Year </returns>
-		Private Function epochMonthToMonth(ByVal epochMonth As Integer) As Integer
+		Private Function epochMonthToMonth(  epochMonth As Integer) As Integer
 			[Return] (epochMonth + hijrahStartEpochMonth) Mod 12
 		End Function
 
@@ -751,7 +751,7 @@ Namespace java.time.chrono
 		''' </summary>
 		''' <param name="epochMonth"> the epochMonth </param>
 		''' <returns> the epochDay for the start of the epochMonth. </returns>
-		Private Function epochMonthToEpochDay(ByVal epochMonth As Integer) As Integer
+		Private Function epochMonthToEpochDay(  epochMonth As Integer) As Integer
 			Return hijrahEpochMonthStartDays(epochMonth)
 
 		End Function
@@ -762,7 +762,7 @@ Namespace java.time.chrono
 		''' <param name="prolepticYear"> the Hijrah year </param>
 		''' <param name="month"> the Hijrah month </param>
 		''' <returns> the day of year for the start of the month of the year </returns>
-		Private Function yearMonthToDayOfYear(ByVal prolepticYear As Integer, ByVal month As Integer) As Integer
+		Private Function yearMonthToDayOfYear(  prolepticYear As Integer,   month As Integer) As Integer
 			Dim epochMonthFirst As Integer = yearToEpochMonth(prolepticYear)
 			Return epochMonthToEpochDay(epochMonthFirst + month) - epochMonthToEpochDay(epochMonthFirst)
 		End Function
@@ -773,7 +773,7 @@ Namespace java.time.chrono
 		''' </summary>
 		''' <param name="epochMonth"> the epochMonth; assumed to be within range </param>
 		''' <returns> the length in days of the epochMonth </returns>
-		Private Function epochMonthLength(ByVal epochMonth As Integer) As Integer
+		Private Function epochMonthLength(  epochMonth As Integer) As Integer
 			' The very last entry in the epochMonth table is not the start of a month
 			Return hijrahEpochMonthStartDays(epochMonth + 1) - hijrahEpochMonthStartDays(epochMonth)
 		End Function
@@ -795,7 +795,7 @@ Namespace java.time.chrono
 		''' <param name="resource"> the name of the calendar property resource </param>
 		''' <returns> a Properties containing the properties read from the resource. </returns>
 		''' <exception cref="Exception"> if access to the property resource fails </exception>
-		Private Shared Function readConfigProperties(ByVal resource As String) As java.util.Properties
+		Private Shared Function readConfigProperties(  resource As String) As java.util.Properties
 			Try
 'JAVA TO VB CONVERTER TODO TASK: Assignments within expressions are not supported in VB
 				Return java.security.AccessController.doPrivileged(CType(, java.security.PrivilegedExceptionAction(Of java.util.Properties)) -> { String libDir = System.getProperty("java.home") + File.separator & "lib"; File file = New File(libDir, resource); java.util.Properties props = New java.util.Properties; try(java.io.InputStream is = New java.io.FileInputStream(file)) { props.load(is); } Return props; })
@@ -889,7 +889,7 @@ Namespace java.time.chrono
 		''' <param name="maxYear"> The maximum year for which data is provided </param>
 		''' <param name="years"> a Map of year to the array of 12 month lengths </param>
 		''' <returns> array of epochDays for each month from min to max </returns>
-		Private Function createEpochMonths(ByVal epochDay As Integer, ByVal minYear As Integer, ByVal maxYear As Integer, ByVal years As IDictionary(Of Integer?, Integer())) As Integer()
+		Private Function createEpochMonths(  epochDay As Integer,   minYear As Integer,   maxYear As Integer,   years As IDictionary(Of Integer?, Integer())) As Integer()
 			' Compute the size for the array of dates
 			Dim numMonths As Integer = (maxYear - minYear + 1) * 12 + 1
 
@@ -930,7 +930,7 @@ Namespace java.time.chrono
 		''' <returns> an array of int[12] containing the 12 month lengths </returns>
 		''' <exception cref="IllegalArgumentException"> if the number of months is not 12 </exception>
 		''' <exception cref="NumberFormatException"> if the 12 tokens are not numbers </exception>
-		Private Function parseMonths(ByVal line As String) As Integer()
+		Private Function parseMonths(  line As String) As Integer()
 			Dim months As Integer() = New Integer(11){}
 			Dim numbers As String() = line.Split("\s")
 			If numbers.Length <> 12 Then Throw New IllegalArgumentException("wrong number of months on line: " & java.util.Arrays.ToString(numbers) & "; count: " & numbers.Length)
@@ -949,7 +949,7 @@ Namespace java.time.chrono
 		''' </summary>
 		''' <param name="string"> the input string </param>
 		''' <returns> the 3 element array with year, month, day </returns>
-		Private Function parseYMD(ByVal [string] As String) As Integer()
+		Private Function parseYMD(  [string] As String) As Integer()
 			' yyyy-MM-dd
 			string_Renamed = string_Renamed.Trim()
 			Try
@@ -984,7 +984,7 @@ Namespace java.time.chrono
 		''' </summary>
 		''' <param name="s"> the stream to read </param>
 		''' <exception cref="InvalidObjectException"> always </exception>
-		Private Sub readObject(ByVal s As java.io.ObjectInputStream)
+		Private Sub readObject(  s As java.io.ObjectInputStream)
 			Throw New java.io.InvalidObjectException("Deserialization via serialization delegate")
 		End Sub
 	End Class

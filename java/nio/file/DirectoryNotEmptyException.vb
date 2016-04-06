@@ -42,7 +42,7 @@ Namespace java.nio.file
 		''' </summary>
 		''' <param name="dir">
 		'''          a string identifying the directory or {@code null} if not known </param>
-		Public Sub New(ByVal dir As String)
+		Public Sub New(  dir As String)
 			MyBase.New(dir)
 		End Sub
 	End Class

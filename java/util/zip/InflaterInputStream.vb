@@ -74,7 +74,7 @@ Namespace java.util.zip
 		''' <param name="inf"> the decompressor ("inflater") </param>
 		''' <param name="size"> the input buffer size </param>
 		''' <exception cref="IllegalArgumentException"> if {@code size <= 0} </exception>
-		Public Sub New(ByVal [in] As java.io.InputStream, ByVal inf As Inflater, ByVal size As Integer)
+		Public Sub New(  [in] As java.io.InputStream,   inf As Inflater,   size As Integer)
 			MyBase.New([in])
 			If [in] Is Nothing OrElse inf Is Nothing Then
 				Throw New NullPointerException
@@ -90,7 +90,7 @@ Namespace java.util.zip
 		''' default buffer size. </summary>
 		''' <param name="in"> the input stream </param>
 		''' <param name="inf"> the decompressor ("inflater") </param>
-		Public Sub New(ByVal [in] As java.io.InputStream, ByVal inf As Inflater)
+		Public Sub New(  [in] As java.io.InputStream,   inf As Inflater)
 			Me.New([in], inf, 512)
 		End Sub
 
@@ -99,7 +99,7 @@ Namespace java.util.zip
 		''' <summary>
 		''' Creates a new input stream with a default decompressor and buffer size. </summary>
 		''' <param name="in"> the input stream </param>
-		Public Sub New(ByVal [in] As java.io.InputStream)
+		Public Sub New(  [in] As java.io.InputStream)
 			Me.New([in], New Inflater)
 			usesDefaultInflater = True
 		End Sub
@@ -131,7 +131,7 @@ Namespace java.util.zip
 		''' <code>b.length - off</code> </exception>
 		''' <exception cref="ZipException"> if a ZIP format error has occurred </exception>
 		''' <exception cref="IOException"> if an I/O error has occurred </exception>
-		Public Overrides Function read(ByVal b As SByte(), ByVal [off] As Integer, ByVal len As Integer) As Integer
+		Public Overrides Function read(  b As SByte(),   [off] As Integer,   len As Integer) As Integer
 			ensureOpen()
 			If b Is Nothing Then
 				Throw New NullPointerException
@@ -184,7 +184,7 @@ Namespace java.util.zip
 		''' <returns> the actual number of bytes skipped. </returns>
 		''' <exception cref="IOException"> if an I/O error has occurred </exception>
 		''' <exception cref="IllegalArgumentException"> if {@code n < 0} </exception>
-		Public Overrides Function skip(ByVal n As Long) As Long
+		Public Overrides Function skip(  n As Long) As Long
 			If n < 0 Then Throw New IllegalArgumentException("negative skip length")
 			ensureOpen()
 			Dim max As Integer = CInt(Fix (System.Math.Min(n,  java.lang.[Integer].Max_Value)))
@@ -248,7 +248,7 @@ Namespace java.util.zip
 		'''                      the mark position becomes invalid. </param>
 		''' <seealso cref=     java.io.InputStream#reset() </seealso>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overrides Sub mark(ByVal readlimit As Integer)
+		Public Overrides Sub mark(  readlimit As Integer)
 		End Sub
 
 		''' <summary>

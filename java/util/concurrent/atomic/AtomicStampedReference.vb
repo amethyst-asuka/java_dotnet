@@ -51,11 +51,11 @@ Namespace java.util.concurrent.atomic
 		Private Class Pair(Of T)
 			Friend ReadOnly reference As T
 			Friend ReadOnly stamp As Integer
-			Private Sub New(ByVal reference As T, ByVal stamp As Integer)
+			Private Sub New(  reference As T,   stamp As Integer)
 				Me.reference = reference
 				Me.stamp = stamp
 			End Sub
-			Shared Function [of](Of T)(ByVal reference As T, ByVal stamp As Integer) As Pair(Of T)
+			Shared Function [of](Of T)(  reference As T,   stamp As Integer) As Pair(Of T)
 				Return New Pair(Of T)(reference, stamp)
 			End Function
 		End Class
@@ -69,7 +69,7 @@ Namespace java.util.concurrent.atomic
 		''' </summary>
 		''' <param name="initialRef"> the initial reference </param>
 		''' <param name="initialStamp"> the initial stamp </param>
-		Public Sub New(ByVal initialRef As V, ByVal initialStamp As Integer)
+		Public Sub New(  initialRef As V,   initialStamp As Integer)
 			pair_Renamed = Pair.of(initialRef, initialStamp)
 		End Sub
 
@@ -100,7 +100,7 @@ Namespace java.util.concurrent.atomic
 		''' <param name="stampHolder"> an array of size of at least one.  On return,
 		''' {@code stampholder[0]} will hold the value of the stamp. </param>
 		''' <returns> the current value of the reference </returns>
-		Public Overridable Function [get](ByVal stampHolder As Integer()) As V
+		Public Overridable Function [get](  stampHolder As Integer()) As V
 			Dim pair_Renamed As Pair(Of V) = Me.pair_Renamed
 			stampHolder(0) = pair_Renamed.stamp
 			Return pair_Renamed.reference
@@ -121,7 +121,7 @@ Namespace java.util.concurrent.atomic
 		''' <param name="expectedStamp"> the expected value of the stamp </param>
 		''' <param name="newStamp"> the new value for the stamp </param>
 		''' <returns> {@code true} if successful </returns>
-		Public Overridable Function weakCompareAndSet(ByVal expectedReference As V, ByVal newReference As V, ByVal expectedStamp As Integer, ByVal newStamp As Integer) As Boolean
+		Public Overridable Function weakCompareAndSet(  expectedReference As V,   newReference As V,   expectedStamp As Integer,   newStamp As Integer) As Boolean
 			Return compareAndSet(expectedReference, newReference, expectedStamp, newStamp)
 		End Function
 
@@ -136,7 +136,7 @@ Namespace java.util.concurrent.atomic
 		''' <param name="expectedStamp"> the expected value of the stamp </param>
 		''' <param name="newStamp"> the new value for the stamp </param>
 		''' <returns> {@code true} if successful </returns>
-		Public Overridable Function compareAndSet(ByVal expectedReference As V, ByVal newReference As V, ByVal expectedStamp As Integer, ByVal newStamp As Integer) As Boolean
+		Public Overridable Function compareAndSet(  expectedReference As V,   newReference As V,   expectedStamp As Integer,   newStamp As Integer) As Boolean
 			Dim current As Pair(Of V) = pair_Renamed
 			Return expectedReference Is current.reference AndAlso expectedStamp = current.stamp AndAlso ((newReference Is current.reference AndAlso newStamp = current.stamp) OrElse casPair(current, Pair.of(newReference, newStamp)))
 		End Function
@@ -146,7 +146,7 @@ Namespace java.util.concurrent.atomic
 		''' </summary>
 		''' <param name="newReference"> the new value for the reference </param>
 		''' <param name="newStamp"> the new value for the stamp </param>
-		Public Overridable Sub [set](ByVal newReference As V, ByVal newStamp As Integer)
+		Public Overridable Sub [set](  newReference As V,   newStamp As Integer)
 			Dim current As Pair(Of V) = pair_Renamed
 			If newReference IsNot current.reference OrElse newStamp <> current.stamp Then Me.pair_Renamed = Pair.of(newReference, newStamp)
 		End Sub
@@ -163,7 +163,7 @@ Namespace java.util.concurrent.atomic
 		''' <param name="expectedReference"> the expected value of the reference </param>
 		''' <param name="newStamp"> the new value for the stamp </param>
 		''' <returns> {@code true} if successful </returns>
-		Public Overridable Function attemptStamp(ByVal expectedReference As V, ByVal newStamp As Integer) As Boolean
+		Public Overridable Function attemptStamp(  expectedReference As V,   newStamp As Integer) As Boolean
 			Dim current As Pair(Of V) = pair_Renamed
 			Return expectedReference Is current.reference AndAlso (newStamp = current.stamp OrElse casPair(current, Pair.of(expectedReference, newStamp)))
 		End Function
@@ -173,11 +173,11 @@ Namespace java.util.concurrent.atomic
 		Private Shared ReadOnly UNSAFE As sun.misc.Unsafe = sun.misc.Unsafe.unsafe
 		Private Shared ReadOnly pairOffset As Long = objectFieldOffset(UNSAFE, "pair", GetType(AtomicStampedReference))
 
-		Private Function casPair(ByVal cmp As Pair(Of V), ByVal val As Pair(Of V)) As Boolean
+		Private Function casPair(  cmp As Pair(Of V),   val As Pair(Of V)) As Boolean
 			Return UNSAFE.compareAndSwapObject(Me, pairOffset, cmp, val)
 		End Function
 
-		Friend Shared Function objectFieldOffset(ByVal UNSAFE As sun.misc.Unsafe, ByVal field As String, ByVal klazz As [Class]) As Long
+		Friend Shared Function objectFieldOffset(  UNSAFE As sun.misc.Unsafe,   field As String,   klazz As [Class]) As Long
 			Try
 				Return UNSAFE.objectFieldOffset(klazz.getDeclaredField(field))
 			Catch e As NoSuchFieldException

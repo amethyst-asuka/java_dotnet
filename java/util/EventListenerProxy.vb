@@ -59,7 +59,7 @@ Namespace java.util
 		''' Creates a proxy for the specified listener.
 		''' </summary>
 		''' <param name="listener">  the listener object </param>
-		Public Sub New(ByVal listener As T)
+		Public Sub New(  listener As T)
 			Me.listener = listener
 		End Sub
 

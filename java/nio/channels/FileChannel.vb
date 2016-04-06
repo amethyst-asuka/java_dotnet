@@ -269,7 +269,7 @@ Namespace java.nio.channels
 		'''          write access if the file is opened for writing
 		''' 
 		''' @since   1.7 </exception>
-		Public Shared Function open(Of T1 As OpenOption, T2)(ByVal path As Path, ByVal options As java.util.Set(Of T1), ParamArray ByVal attrs As java.nio.file.attribute.FileAttribute(Of T2)()) As FileChannel
+		Public Shared Function open(Of T1 As OpenOption, T2)(  path As Path,   options As java.util.Set(Of T1), ParamArray   attrs As java.nio.file.attribute.FileAttribute(Of T2)()) As FileChannel
 			Dim provider As FileSystemProvider = path.fileSystem.provider()
 			Return provider.newFileChannel(path, options, attrs)
 		End Function
@@ -314,7 +314,7 @@ Namespace java.nio.channels
 		'''          write access if the file is opened for writing
 		''' 
 		''' @since   1.7 </exception>
-		Public Shared Function open(ByVal path As Path, ParamArray ByVal options As OpenOption()) As FileChannel
+		Public Shared Function open(  path As Path, ParamArray   options As OpenOption()) As FileChannel
 			Dim [set] As java.util.Set(Of OpenOption) = New HashSet(Of OpenOption)(options.Length)
 			java.util.Collections.addAll([set], options)
 			Return open(path, [set], NO_ATTRIBUTES)
@@ -330,7 +330,7 @@ Namespace java.nio.channels
 		''' read.  Otherwise this method behaves exactly as specified in the {@link
 		''' ReadableByteChannel} interface. </p>
 		''' </summary>
-		Public MustOverride Function read(ByVal dst As java.nio.ByteBuffer) As Integer Implements SeekableByteChannel.read, ReadableByteChannel.read
+		Public MustOverride Function read(  dst As java.nio.ByteBuffer) As Integer Implements SeekableByteChannel.read, ReadableByteChannel.read
 
 		''' <summary>
 		''' Reads a sequence of bytes from this channel into a subsequence of the
@@ -341,7 +341,7 @@ Namespace java.nio.channels
 		''' read.  Otherwise this method behaves exactly as specified in the {@link
 		''' ScatteringByteChannel} interface.  </p>
 		''' </summary>
-		Public MustOverride Function read(ByVal dsts As java.nio.ByteBuffer(), ByVal offset As Integer, ByVal length As Integer) As Long Implements ScatteringByteChannel.read
+		Public MustOverride Function read(  dsts As java.nio.ByteBuffer(),   offset As Integer,   length As Integer) As Long Implements ScatteringByteChannel.read
 
 		''' <summary>
 		''' Reads a sequence of bytes from this channel into the given buffers.
@@ -351,7 +351,7 @@ Namespace java.nio.channels
 		''' read.  Otherwise this method behaves exactly as specified in the {@link
 		''' ScatteringByteChannel} interface.  </p>
 		''' </summary>
-		Public Function read(ByVal dsts As java.nio.ByteBuffer()) As Long Implements ScatteringByteChannel.read
+		Public Function read(  dsts As java.nio.ByteBuffer()) As Long Implements ScatteringByteChannel.read
 			Return read(dsts, 0, dsts.Length)
 		End Function
 
@@ -366,7 +366,7 @@ Namespace java.nio.channels
 		''' behaves exactly as specified by the <seealso cref="WritableByteChannel"/>
 		''' interface. </p>
 		''' </summary>
-		Public MustOverride Function write(ByVal src As java.nio.ByteBuffer) As Integer Implements SeekableByteChannel.write, WritableByteChannel.write
+		Public MustOverride Function write(  src As java.nio.ByteBuffer) As Integer Implements SeekableByteChannel.write, WritableByteChannel.write
 
 		''' <summary>
 		''' Writes a sequence of bytes to this channel from a subsequence of the
@@ -380,7 +380,7 @@ Namespace java.nio.channels
 		''' behaves exactly as specified in the <seealso cref="GatheringByteChannel"/>
 		''' interface.  </p>
 		''' </summary>
-		Public MustOverride Function write(ByVal srcs As java.nio.ByteBuffer(), ByVal offset As Integer, ByVal length As Integer) As Long Implements GatheringByteChannel.write
+		Public MustOverride Function write(  srcs As java.nio.ByteBuffer(),   offset As Integer,   length As Integer) As Long Implements GatheringByteChannel.write
 
 		''' <summary>
 		''' Writes a sequence of bytes to this channel from the given buffers.
@@ -393,7 +393,7 @@ Namespace java.nio.channels
 		''' behaves exactly as specified in the <seealso cref="GatheringByteChannel"/>
 		''' interface.  </p>
 		''' </summary>
-		Public Function write(ByVal srcs As java.nio.ByteBuffer()) As Long Implements GatheringByteChannel.write
+		Public Function write(  srcs As java.nio.ByteBuffer()) As Long Implements GatheringByteChannel.write
 			Return write(srcs, 0, srcs.Length)
 		End Function
 
@@ -439,7 +439,7 @@ Namespace java.nio.channels
 		''' </exception>
 		''' <exception cref="IOException">
 		'''          If some other I/O error occurs </exception>
-		Public MustOverride Function position(ByVal newPosition As Long) As FileChannel
+		Public MustOverride Function position(  newPosition As Long) As FileChannel
 
 		''' <summary>
 		''' Returns the current size of this channel's file.
@@ -480,7 +480,7 @@ Namespace java.nio.channels
 		''' </exception>
 		''' <exception cref="IOException">
 		'''          If some other I/O error occurs </exception>
-		Public MustOverride Function truncate(ByVal size As Long) As FileChannel
+		Public MustOverride Function truncate(  size As Long) As FileChannel
 
 		''' <summary>
 		''' Forces any updates to this channel's file to be written to the storage
@@ -529,7 +529,7 @@ Namespace java.nio.channels
 		''' </exception>
 		''' <exception cref="IOException">
 		'''          If some other I/O error occurs </exception>
-		Public MustOverride Sub force(ByVal metaData As Boolean)
+		Public MustOverride Sub force(  metaData As Boolean)
 
 		''' <summary>
 		''' Transfers bytes from this channel's file to the given writable byte
@@ -593,7 +593,7 @@ Namespace java.nio.channels
 		''' </exception>
 		''' <exception cref="IOException">
 		'''          If some other I/O error occurs </exception>
-		Public MustOverride Function transferTo(ByVal position As Long, ByVal count As Long, ByVal target As WritableByteChannel) As Long
+		Public MustOverride Function transferTo(  position As Long,   count As Long,   target As WritableByteChannel) As Long
 
 		''' <summary>
 		''' Transfers bytes into this channel's file from the given readable byte
@@ -657,7 +657,7 @@ Namespace java.nio.channels
 		''' </exception>
 		''' <exception cref="IOException">
 		'''          If some other I/O error occurs </exception>
-		Public MustOverride Function transferFrom(ByVal src As ReadableByteChannel, ByVal position As Long, ByVal count As Long) As Long
+		Public MustOverride Function transferFrom(  src As ReadableByteChannel,   position As Long,   count As Long) As Long
 
 		''' <summary>
 		''' Reads a sequence of bytes from this channel into the given buffer,
@@ -701,7 +701,7 @@ Namespace java.nio.channels
 		''' </exception>
 		''' <exception cref="IOException">
 		'''          If some other I/O error occurs </exception>
-		Public MustOverride Function read(ByVal dst As java.nio.ByteBuffer, ByVal position As Long) As Integer
+		Public MustOverride Function read(  dst As java.nio.ByteBuffer,   position As Long) As Integer
 
 		''' <summary>
 		''' Writes a sequence of bytes to this channel from the given buffer,
@@ -745,7 +745,7 @@ Namespace java.nio.channels
 		''' </exception>
 		''' <exception cref="IOException">
 		'''          If some other I/O error occurs </exception>
-		Public MustOverride Function write(ByVal src As java.nio.ByteBuffer, ByVal position As Long) As Integer
+		Public MustOverride Function write(  src As java.nio.ByteBuffer,   position As Long) As Integer
 
 
 		' -- Memory-mapped buffers --
@@ -775,7 +775,7 @@ Namespace java.nio.channels
 
 			Private ReadOnly name As String
 
-			Private Sub New(ByVal name As String)
+			Private Sub New(  name As String)
 				Me.name = name
 			End Sub
 
@@ -876,7 +876,7 @@ Namespace java.nio.channels
 		''' </exception>
 		''' <seealso cref= java.nio.channels.FileChannel.MapMode </seealso>
 		''' <seealso cref= java.nio.MappedByteBuffer </seealso>
-		Public MustOverride Function map(ByVal mode As MapMode, ByVal position As Long, ByVal size As Long) As java.nio.MappedByteBuffer
+		Public MustOverride Function map(  mode As MapMode,   position As Long,   size As Long) As java.nio.MappedByteBuffer
 
 
 		' -- Locks --
@@ -969,7 +969,7 @@ Namespace java.nio.channels
 		''' <seealso cref=     #lock() </seealso>
 		''' <seealso cref=     #tryLock() </seealso>
 		''' <seealso cref=     #tryLock(long,long,boolean) </seealso>
-		Public MustOverride Function lock(ByVal position As Long, ByVal size As Long, ByVal [shared] As Boolean) As FileLock
+		Public MustOverride Function lock(  position As Long,   size As Long,   [shared] As Boolean) As FileLock
 
 		''' <summary>
 		''' Acquires an exclusive lock on this channel's file.
@@ -1077,7 +1077,7 @@ Namespace java.nio.channels
 		''' <seealso cref=     #lock() </seealso>
 		''' <seealso cref=     #lock(long,long,boolean) </seealso>
 		''' <seealso cref=     #tryLock() </seealso>
-		Public MustOverride Function tryLock(ByVal position As Long, ByVal size As Long, ByVal [shared] As Boolean) As FileLock
+		Public MustOverride Function tryLock(  position As Long,   size As Long,   [shared] As Boolean) As FileLock
 
 		''' <summary>
 		''' Attempts to acquire an exclusive lock on this channel's file.

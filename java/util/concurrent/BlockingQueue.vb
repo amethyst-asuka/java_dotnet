@@ -196,7 +196,7 @@ Namespace java.util.concurrent
 		''' <exception cref="NullPointerException"> if the specified element is null </exception>
 		''' <exception cref="IllegalArgumentException"> if some property of the specified
 		'''         element prevents it from being added to this queue </exception>
-		Function add(ByVal e As E) As Boolean
+		Function add(  e As E) As Boolean
 
 		''' <summary>
 		''' Inserts the specified element into this queue if it is possible to do
@@ -214,7 +214,7 @@ Namespace java.util.concurrent
 		''' <exception cref="NullPointerException"> if the specified element is null </exception>
 		''' <exception cref="IllegalArgumentException"> if some property of the specified
 		'''         element prevents it from being added to this queue </exception>
-		Function offer(ByVal e As E) As Boolean
+		Function offer(  e As E) As Boolean
 
 		''' <summary>
 		''' Inserts the specified element into this queue, waiting if necessary
@@ -227,7 +227,7 @@ Namespace java.util.concurrent
 		''' <exception cref="NullPointerException"> if the specified element is null </exception>
 		''' <exception cref="IllegalArgumentException"> if some property of the specified
 		'''         element prevents it from being added to this queue </exception>
-		Sub put(ByVal e As E)
+		Sub put(  e As E)
 
 		''' <summary>
 		''' Inserts the specified element into this queue, waiting up to the
@@ -246,7 +246,7 @@ Namespace java.util.concurrent
 		''' <exception cref="NullPointerException"> if the specified element is null </exception>
 		''' <exception cref="IllegalArgumentException"> if some property of the specified
 		'''         element prevents it from being added to this queue </exception>
-		Function offer(ByVal e As E, ByVal timeout As Long, ByVal unit As TimeUnit) As Boolean
+		Function offer(  e As E,   timeout As Long,   unit As TimeUnit) As Boolean
 
 		''' <summary>
 		''' Retrieves and removes the head of this queue, waiting if necessary
@@ -267,7 +267,7 @@ Namespace java.util.concurrent
 		''' <returns> the head of this queue, or {@code null} if the
 		'''         specified waiting time elapses before an element is available </returns>
 		''' <exception cref="InterruptedException"> if interrupted while waiting </exception>
-		Function poll(ByVal timeout As Long, ByVal unit As TimeUnit) As E
+		Function poll(  timeout As Long,   unit As TimeUnit) As E
 
 		''' <summary>
 		''' Returns the number of additional elements that this queue can ideally
@@ -298,7 +298,7 @@ Namespace java.util.concurrent
 		'''         (<a href="../Collection.html#optional-restrictions">optional</a>) </exception>
 		''' <exception cref="NullPointerException"> if the specified element is null
 		'''         (<a href="../Collection.html#optional-restrictions">optional</a>) </exception>
-		Function remove(ByVal o As Object) As Boolean
+		Function remove(  o As Object) As Boolean
 
 		''' <summary>
 		''' Returns {@code true} if this queue contains the specified element.
@@ -312,7 +312,7 @@ Namespace java.util.concurrent
 		'''         (<a href="../Collection.html#optional-restrictions">optional</a>) </exception>
 		''' <exception cref="NullPointerException"> if the specified element is null
 		'''         (<a href="../Collection.html#optional-restrictions">optional</a>) </exception>
-		Function contains(ByVal o As Object) As Boolean
+		Function contains(  o As Object) As Boolean
 
 		''' <summary>
 		''' Removes all available elements from this queue and adds them
@@ -337,7 +337,7 @@ Namespace java.util.concurrent
 		'''         queue, or some property of an element of this queue prevents
 		'''         it from being added to the specified collection </exception>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Function drainTo(Of T1)(ByVal c As ICollection(Of T1)) As Integer
+		Function drainTo(Of T1)(  c As ICollection(Of T1)) As Integer
 
 		''' <summary>
 		''' Removes at most the given number of available elements from
@@ -362,7 +362,7 @@ Namespace java.util.concurrent
 		'''         queue, or some property of an element of this queue prevents
 		'''         it from being added to the specified collection </exception>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Function drainTo(Of T1)(ByVal c As ICollection(Of T1), ByVal maxElements As Integer) As Integer
+		Function drainTo(Of T1)(  c As ICollection(Of T1),   maxElements As Integer) As Integer
 	End Interface
 
 End Namespace

@@ -66,7 +66,7 @@ Namespace java.lang
 	'     * but does not do any security checks.
 	'     
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Friend Shared Sub add(ByVal hook As Thread)
+		Friend Shared Sub add(  hook As Thread)
 			If hooks Is Nothing Then Throw New IllegalStateException("Shutdown in progress")
 
 			If hook.alive Then Throw New IllegalArgumentException("Hook already running")
@@ -80,7 +80,7 @@ Namespace java.lang
 	'     * does not do any security checks.
 	'     
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Friend Shared Function remove(ByVal hook As Thread) As Boolean
+		Friend Shared Function remove(  hook As Thread) As Boolean
 			If hooks Is Nothing Then Throw New IllegalStateException("Shutdown in progress")
 
 			If hook Is Nothing Then Throw New NullPointerException

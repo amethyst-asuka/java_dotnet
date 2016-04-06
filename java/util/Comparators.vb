@@ -70,12 +70,12 @@ Namespace java.util
 
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Friend Sub New(Of T1)(ByVal nullFirst As Boolean, ByVal real As Comparator(Of T1))
+			Friend Sub New(Of T1)(  nullFirst As Boolean,   real As Comparator(Of T1))
 				Me.nullFirst = nullFirst
 				Me.real = CType(real, Comparator(Of T))
 			End Sub
 
-			Public Overrides Function compare(ByVal a As T, ByVal b As T) As Integer Implements Comparator(Of T).compare
+			Public Overrides Function compare(  a As T,   b As T) As Integer Implements Comparator(Of T).compare
 				If a Is Nothing Then
 					Return If(b Is Nothing, 0, (If(nullFirst, -1, 1)))
 				ElseIf b Is Nothing Then
@@ -86,7 +86,7 @@ Namespace java.util
 			End Function
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Overrides Function thenComparing(Of T1)(ByVal other As Comparator(Of T1)) As Comparator(Of T) Implements Comparator(Of T).thenComparing
+			Public Overrides Function thenComparing(Of T1)(  other As Comparator(Of T1)) As Comparator(Of T) Implements Comparator(Of T).thenComparing
 				Objects.requireNonNull(other)
 				Return New NullComparator(Of )(nullFirst,If(real Is Nothing, other, real.thenComparing(other)))
 			End Function

@@ -60,7 +60,7 @@ Namespace java.awt.peer
 		''' <param name="y"> the Y coordinate of the scroll position
 		''' </param>
 		''' <seealso cref= ScrollPane#setScrollPosition(int, int) </seealso>
-		Sub setScrollPosition(ByVal x As Integer, ByVal y As Integer)
+		Sub setScrollPosition(  x As Integer,   y As Integer)
 
 		''' <summary>
 		''' Called when the child component changes its size.
@@ -69,7 +69,7 @@ Namespace java.awt.peer
 		''' <param name="h"> the new height of the child component
 		''' </param>
 		''' <seealso cref= ScrollPane#layout() </seealso>
-		Sub childResized(ByVal w As Integer, ByVal h As Integer)
+		Sub childResized(  w As Integer,   h As Integer)
 
 		''' <summary>
 		''' Sets the unit increment of one of the scroll pane's adjustables.
@@ -78,14 +78,14 @@ Namespace java.awt.peer
 		''' <param name="u"> the unit increment
 		''' </param>
 		''' <seealso cref= ScrollPaneAdjustable#setUnitIncrement(int) </seealso>
-		Sub setUnitIncrement(ByVal adj As java.awt.Adjustable, ByVal u As Integer)
+		Sub setUnitIncrement(  adj As java.awt.Adjustable,   u As Integer)
 
 		''' <summary>
 		''' Sets the value for one of the scroll pane's adjustables.
 		''' </summary>
 		''' <param name="adj"> the scroll pane adjustable object </param>
 		''' <param name="v"> the value to set </param>
-		Sub setValue(ByVal adj As java.awt.Adjustable, ByVal v As Integer)
+		Sub setValue(  adj As java.awt.Adjustable,   v As Integer)
 	End Interface
 
 End Namespace

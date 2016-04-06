@@ -122,7 +122,7 @@ Namespace java.util.concurrent
 		''' </summary>
 		''' <param name="s"> completed state value </param>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Private Function report(ByVal s As Integer) As V
+		Private Function report(  s As Integer) As V
 			Dim x As Object = outcome
 			If s = NORMAL Then Return CType(x, V)
 			If s >= CANCELLED Then Throw New CancellationException
@@ -135,7 +135,7 @@ Namespace java.util.concurrent
 		''' </summary>
 		''' <param name="callable"> the callable task </param>
 		''' <exception cref="NullPointerException"> if the callable is null </exception>
-		Public Sub New(ByVal callable As Callable(Of V))
+		Public Sub New(  callable As Callable(Of V))
 			If callable Is Nothing Then Throw New NullPointerException
 			Me.callable = callable
 			Me.state = [NEW] ' ensure visibility of callable
@@ -152,7 +152,7 @@ Namespace java.util.concurrent
 		''' constructions of the form:
 		''' {@code Future<?> f = new FutureTask<Void>(runnable, null)} </param>
 		''' <exception cref="NullPointerException"> if the runnable is null </exception>
-		Public Sub New(ByVal runnable As Runnable, ByVal result As V)
+		Public Sub New(  runnable As Runnable,   result As V)
 			Me.callable = Executors.callable(runnable, result)
 			Me.state = [NEW] ' ensure visibility of callable
 		End Sub
@@ -169,7 +169,7 @@ Namespace java.util.concurrent
 			End Get
 		End Property
 
-		Public Overridable Function cancel(ByVal mayInterruptIfRunning As Boolean) As Boolean
+		Public Overridable Function cancel(  mayInterruptIfRunning As Boolean) As Boolean
 			If Not(state = [NEW] AndAlso UNSAFE.compareAndSwapInt(Me, stateOffset, [NEW],If(mayInterruptIfRunning, INTERRUPTING, CANCELLED))) Then Return False
 			Try ' in case call to interrupt throws exception
 				If mayInterruptIfRunning Then
@@ -196,7 +196,7 @@ Namespace java.util.concurrent
 		End Function
 
 		''' <exception cref="CancellationException"> {@inheritDoc} </exception>
-		Public Overridable Function [get](ByVal timeout As Long, ByVal unit As TimeUnit) As V
+		Public Overridable Function [get](  timeout As Long,   unit As TimeUnit) As V
 			If unit Is Nothing Then Throw New NullPointerException
 			Dim s As Integer = state
 			s = awaitDone(True, unit.toNanos(timeout))
@@ -224,7 +224,7 @@ Namespace java.util.concurrent
 		''' upon successful completion of the computation.
 		''' </summary>
 		''' <param name="v"> the value </param>
-		Protected Friend Overridable Sub [set](ByVal v As V)
+		Protected Friend Overridable Sub [set](  v As V)
 			If UNSAFE.compareAndSwapInt(Me, stateOffset, [NEW], COMPLETING) Then
 				outcome = v
 				UNSAFE.putOrderedInt(Me, stateOffset, NORMAL) ' final state
@@ -242,7 +242,7 @@ Namespace java.util.concurrent
 		''' </summary>
 		''' <param name="t"> the cause of failure </param>
 		Protected Friend Overridable Property exception As Throwable
-			Set(ByVal t As Throwable)
+			Set(  t As Throwable)
 				If UNSAFE.compareAndSwapInt(Me, stateOffset, [NEW], COMPLETING) Then
 					outcome = t
 					UNSAFE.putOrderedInt(Me, stateOffset, EXCEPTIONAL) ' final state
@@ -317,7 +317,7 @@ Namespace java.util.concurrent
 		''' Ensures that any interrupt from a possible cancel(true) is only
 		''' delivered to a task while in run or runAndReset.
 		''' </summary>
-		Private Sub handlePossibleCancellationInterrupt(ByVal s As Integer)
+		Private Sub handlePossibleCancellationInterrupt(  s As Integer)
 			' It is possible for our interrupter to stall before getting a
 			' chance to interrupt us.  Let's spin-wait patiently.
 			If s = INTERRUPTING Then
@@ -388,7 +388,7 @@ Namespace java.util.concurrent
 		''' <param name="timed"> true if use timed waits </param>
 		''' <param name="nanos"> time to wait, if timed </param>
 		''' <returns> state upon completion </returns>
-		Private Function awaitDone(ByVal timed As Boolean, ByVal nanos As Long) As Integer
+		Private Function awaitDone(  timed As Boolean,   nanos As Long) As Integer
 			Dim deadline As Long = If(timed, System.nanoTime() + nanos, 0L)
 			Dim q As WaitNode = Nothing
 			Dim queued As Boolean = False
@@ -432,7 +432,7 @@ Namespace java.util.concurrent
 		''' expect lists to be long enough to outweigh higher-overhead
 		''' schemes.
 		''' </summary>
-		Private Sub removeWaiter(ByVal node As WaitNode)
+		Private Sub removeWaiter(  node As WaitNode)
 			If node IsNot Nothing Then
 				node.thread_Renamed = Nothing
 				retry:

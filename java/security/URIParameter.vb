@@ -44,7 +44,7 @@ Namespace java.security
 		''' <param name="uri"> the URI pointing to the data.
 		''' </param>
 		''' <exception cref="NullPointerException"> if the specified URI is null. </exception>
-		Public Sub New(ByVal uri As java.net.URI)
+		Public Sub New(  uri As java.net.URI)
 			If uri Is Nothing Then Throw New NullPointerException("invalid null URI")
 			Me.uri = uri
 		End Sub

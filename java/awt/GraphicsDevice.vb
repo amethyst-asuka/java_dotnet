@@ -189,7 +189,7 @@ Namespace java.awt
 		''' the criteria defined in the specified
 		''' <code>GraphicsConfigTemplate</code>. </returns>
 		''' <seealso cref= GraphicsConfigTemplate </seealso>
-		Public Overridable Function getBestConfiguration(ByVal gct As GraphicsConfigTemplate) As GraphicsConfiguration
+		Public Overridable Function getBestConfiguration(  gct As GraphicsConfigTemplate) As GraphicsConfiguration
 			Dim configs As GraphicsConfiguration() = configurations
 			Return gct.getBestConfiguration(configs)
 		End Function
@@ -270,7 +270,7 @@ Namespace java.awt
 		''' 
 		''' @since 1.4 </seealso>
 		Public Overridable Property fullScreenWindow As Window
-			Set(ByVal w As Window)
+			Set(  w As Window)
 				If w IsNot Nothing Then
 					If w.shape IsNot Nothing Then w.shape = Nothing
 					If w.opacity < 1.0f Then w.opacity = 1.0f
@@ -395,7 +395,7 @@ Namespace java.awt
 		''' <seealso cref= #isDisplayChangeSupported
 		''' @since 1.4 </seealso>
 		Public Overridable Property displayMode As DisplayMode
-			Set(ByVal dm As DisplayMode)
+			Set(  dm As DisplayMode)
 				Throw New UnsupportedOperationException("Cannot change display mode")
 			End Set
 			Get
@@ -464,7 +464,7 @@ Namespace java.awt
 		''' <returns> whether the given translucency kind is supported
 		''' 
 		''' @since 1.7 </returns>
-		Public Overridable Function isWindowTranslucencySupported(ByVal translucencyKind As WindowTranslucency) As Boolean
+		Public Overridable Function isWindowTranslucencySupported(  translucencyKind As WindowTranslucency) As Boolean
 			Select Case translucencyKind
 				Case WindowTranslucency.PERPIXEL_TRANSPARENT
 					Return windowShapingSupported

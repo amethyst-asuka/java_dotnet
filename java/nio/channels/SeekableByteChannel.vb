@@ -58,7 +58,7 @@ Namespace java.nio.channels
 		''' Otherwise this method behaves exactly as specified in the {@link
 		''' ReadableByteChannel} interface.
 		''' </summary>
-		Overrides Function read(ByVal dst As java.nio.ByteBuffer) As Integer
+		Overrides Function read(  dst As java.nio.ByteBuffer) As Integer
 
 		''' <summary>
 		''' Writes a sequence of bytes to this channel from the given buffer.
@@ -72,7 +72,7 @@ Namespace java.nio.channels
 		''' actually written. Otherwise this method behaves exactly as specified by
 		''' the <seealso cref="WritableByteChannel"/> interface.
 		''' </summary>
-		Overrides Function write(ByVal src As java.nio.ByteBuffer) As Integer
+		Overrides Function write(  src As java.nio.ByteBuffer) As Integer
 
 		''' <summary>
 		''' Returns this channel's position.
@@ -115,7 +115,7 @@ Namespace java.nio.channels
 		'''          If the new position is negative </exception>
 		''' <exception cref="IOException">
 		'''          If some other I/O error occurs </exception>
-		Function position(ByVal newPosition As Long) As SeekableByteChannel
+		Function position(  newPosition As Long) As SeekableByteChannel
 
 		''' <summary>
 		''' Returns the current size of entity to which this channel is connected.
@@ -155,7 +155,7 @@ Namespace java.nio.channels
 		'''          If the new size is negative </exception>
 		''' <exception cref="IOException">
 		'''          If some other I/O error occurs </exception>
-		Function truncate(ByVal size As Long) As SeekableByteChannel
+		Function truncate(  size As Long) As SeekableByteChannel
 	End Interface
 
 End Namespace

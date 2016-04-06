@@ -168,7 +168,7 @@ Namespace java.awt
         ''' <returns> <code>true</code> if the specified action is supported on
         '''         the current platform; <code>false</code> otherwise </returns>
         ''' <seealso cref= Desktop.Action </seealso>
-        Public Overridable Function isSupported(ByVal action As Action) As Boolean
+        Public Overridable Function isSupported(  action As Action) As Boolean
 			Return peer.isSupported(action)
 		End Function
 
@@ -180,7 +180,7 @@ Namespace java.awt
 		'''         denies read access to the file </exception>
 		''' <exception cref="NullPointerException"> if file is null </exception>
 		''' <exception cref="IllegalArgumentException"> if file doesn't exist </exception>
-		Private Shared Sub checkFileValidation(ByVal file As java.io.File)
+		Private Shared Sub checkFileValidation(  file As java.io.File)
 			If file Is Nothing Then Throw New NullPointerException("File must not be null")
 
 			If Not file.exists() Then Throw New IllegalArgumentException("The file: " & file.path & " doesn't exist.")
@@ -194,7 +194,7 @@ Namespace java.awt
 		''' <param name="actionType"> the action type in question </param>
 		''' <exception cref="UnsupportedOperationException"> if the specified action type is not
 		'''         supported on the current platform </exception>
-		Private Sub checkActionSupport(ByVal actionType As Action)
+		Private Sub checkActionSupport(  actionType As Action)
 			If Not isSupported(actionType) Then Throw New UnsupportedOperationException("The " & actionType.name() & " action is not supported on the current platform!")
 		End Sub
 
@@ -230,7 +230,7 @@ Namespace java.awt
 		''' permission, or the calling thread is not allowed to create a
 		''' subprocess </exception>
 		''' <seealso cref= java.awt.AWTPermission </seealso>
-		Public Overridable Sub open(ByVal file As java.io.File)
+		Public Overridable Sub open(  file As java.io.File)
 			checkAWTPermission()
 			checkExec()
 			checkActionSupport(Action.OPEN)
@@ -260,7 +260,7 @@ Namespace java.awt
 		''' permission, or the calling thread is not allowed to create a
 		''' subprocess </exception>
 		''' <seealso cref= java.awt.AWTPermission </seealso>
-		Public Overridable Sub edit(ByVal file As java.io.File)
+		Public Overridable Sub edit(  file As java.io.File)
 			checkAWTPermission()
 			checkExec()
 			checkActionSupport(Action.EDIT)
@@ -289,7 +289,7 @@ Namespace java.awt
 		''' java.lang.SecurityManager#checkPrintJobAccess()} method denies
 		''' the permission to print the file, or the calling thread is not
 		''' allowed to create a subprocess </exception>
-		Public Overridable Sub print(ByVal file As java.io.File)
+		Public Overridable Sub print(  file As java.io.File)
 			checkExec()
 			Dim sm As SecurityManager = System.securityManager
 			If sm IsNot Nothing Then sm.checkPrintJobAccess()
@@ -332,7 +332,7 @@ Namespace java.awt
 		''' <seealso cref= java.net.URI </seealso>
 		''' <seealso cref= java.awt.AWTPermission </seealso>
 		''' <seealso cref= java.applet.AppletContext </seealso>
-		Public Overridable Sub browse(ByVal uri As java.net.URI)
+		Public Overridable Sub browse(  uri As java.net.URI)
 			Dim securityException As SecurityException = Nothing
 			Try
 				checkAWTPermission()
@@ -416,7 +416,7 @@ Namespace java.awt
 		''' subprocess </exception>
 		''' <seealso cref= java.net.URI </seealso>
 		''' <seealso cref= java.awt.AWTPermission </seealso>
-		Public Overridable Sub mail(ByVal mailtoURI As java.net.URI)
+		Public Overridable Sub mail(  mailtoURI As java.net.URI)
 			checkAWTPermission()
 			checkExec()
 			checkActionSupport(Action.MAIL)

@@ -129,7 +129,7 @@ Namespace java.util
 		''' <exception cref="IllegalArgumentException"> if {@code stream} contains a
 		'''     malformed Unicode escape sequence. </exception>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Sub New(ByVal stream As java.io.InputStream)
+		Public Sub New(  stream As java.io.InputStream)
 			Dim properties As New Properties
 			properties.load(stream)
 			lookup = New HashMap(properties)
@@ -149,14 +149,14 @@ Namespace java.util
 		'''     from {@code reader}.
 		''' @since 1.6 </exception>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Sub New(ByVal reader As java.io.Reader)
+		Public Sub New(  reader As java.io.Reader)
 			Dim properties As New Properties
 			properties.load(reader)
 			lookup = New HashMap(properties)
 		End Sub
 
 		' Implements java.util.ResourceBundle.handleGetObject; inherits javadoc specification.
-		Public Overrides Function handleGetObject(ByVal key As String) As Object
+		Public Overrides Function handleGetObject(  key As String) As Object
 			If key Is Nothing Then Throw New NullPointerException
 			Return lookup.get(key)
 		End Function

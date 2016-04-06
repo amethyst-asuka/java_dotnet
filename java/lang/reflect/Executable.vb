@@ -64,7 +64,7 @@ Namespace java.lang.reflect
 
 		Friend MustOverride ReadOnly Property genericInfo As sun.reflect.generics.repository.ConstructorRepository
 
-		Friend Overridable Function equalParamTypes(ByVal params1 As  [Class](), ByVal params2 As  [Class]()) As Boolean
+		Friend Overridable Function equalParamTypes(  params1 As  [Class](),   params2 As  [Class]()) As Boolean
 			' Avoid unnecessary cloning 
 			If params1.Length = params2.Length Then
 				For i As Integer = 0 To params1.Length - 1
@@ -75,11 +75,11 @@ Namespace java.lang.reflect
 			Return False
 		End Function
 
-		Friend Overridable Function parseParameterAnnotations(ByVal parameterAnnotations As SByte()) As Annotation()()
+		Friend Overridable Function parseParameterAnnotations(  parameterAnnotations As SByte()) As Annotation()()
 			Return sun.reflect.annotation.AnnotationParser.parseParameterAnnotations(parameterAnnotations, sun.misc.SharedSecrets.javaLangAccess.getConstantPool(declaringClass), declaringClass)
 		End Function
 
-		Friend Overridable Sub separateWithCommas(ByVal types As  [Class](), ByVal sb As StringBuilder)
+		Friend Overridable Sub separateWithCommas(  types As  [Class](),   sb As StringBuilder)
 			For j As Integer = 0 To types.Length - 1
 				sb.append(types(j).typeName)
 				If j < (types.Length - 1) Then sb.append(",")
@@ -87,7 +87,7 @@ Namespace java.lang.reflect
 
 		End Sub
 
-		Friend Overridable Sub printModifiersIfNonzero(ByVal sb As StringBuilder, ByVal mask As Integer, ByVal isDefault As Boolean)
+		Friend Overridable Sub printModifiersIfNonzero(  sb As StringBuilder,   mask As Integer,   isDefault As Boolean)
 			Dim [mod] As Integer = modifiers And mask
 
 			If [mod] <> 0 AndAlso (Not isDefault) Then
@@ -101,7 +101,7 @@ Namespace java.lang.reflect
 			End If
 		End Sub
 
-		Friend Overridable Function sharedToString(ByVal modifierMask As Integer, ByVal isDefault As Boolean, ByVal parameterTypes As  [Class](), ByVal exceptionTypes As  [Class]()) As String
+		Friend Overridable Function sharedToString(  modifierMask As Integer,   isDefault As Boolean,   parameterTypes As  [Class](),   exceptionTypes As  [Class]()) As String
 			Try
 				Dim sb As New StringBuilder
 
@@ -125,9 +125,9 @@ Namespace java.lang.reflect
 		''' Generate toString header information specific to a method or
 		''' constructor.
 		''' </summary>
-		Friend MustOverride Sub specificToStringHeader(ByVal sb As StringBuilder)
+		Friend MustOverride Sub specificToStringHeader(  sb As StringBuilder)
 
-		Friend Overridable Function sharedToGenericString(ByVal modifierMask As Integer, ByVal isDefault As Boolean) As String
+		Friend Overridable Function sharedToGenericString(  modifierMask As Integer,   isDefault As Boolean) As String
 			Try
 				Dim sb As New StringBuilder
 
@@ -178,7 +178,7 @@ Namespace java.lang.reflect
 		''' Generate toGenericString header information specific to a
 		''' method or constructor.
 		''' </summary>
-		Friend MustOverride Sub specificToGenericStringHeader(ByVal sb As StringBuilder)
+		Friend MustOverride Sub specificToGenericStringHeader(  sb As StringBuilder)
 
 		''' <summary>
 		''' Returns the {@code Class} object representing the class or interface
@@ -360,7 +360,7 @@ Namespace java.lang.reflect
 			Return out
 		End Function
 
-		Private Sub verifyParameters(ByVal parameters As Parameter())
+		Private Sub verifyParameters(  parameters As Parameter())
 			Dim mask As Integer = Modifier.FINAL Or Modifier.SYNTHETIC Or Modifier.MANDATED
 
 			If parameterTypes.Length <> parameters.Length Then Throw New MalformedParametersException("Wrong number of parameters in MethodParameters attribute")
@@ -541,7 +541,7 @@ Namespace java.lang.reflect
 		'''    the executable represented by this object </returns>
 		Public MustOverride ReadOnly Property parameterAnnotations As Annotation()()
 
-		Friend Overridable Function sharedGetParameterAnnotations(ByVal parameterTypes As  [Class](), ByVal parameterAnnotations As SByte()) As Annotation()()
+		Friend Overridable Function sharedGetParameterAnnotations(  parameterTypes As  [Class](),   parameterAnnotations As SByte()) As Annotation()()
 			Dim numParameters As Integer = parameterTypes.Length
 			If parameterAnnotations Is Nothing Then Return New Annotation(numParameters - 1)(0){}
 
@@ -551,12 +551,12 @@ Namespace java.lang.reflect
 			Return result
 		End Function
 
-		Friend MustOverride Sub handleParameterNumberMismatch(ByVal resultLength As Integer, ByVal numParameters As Integer)
+		Friend MustOverride Sub handleParameterNumberMismatch(  resultLength As Integer,   numParameters As Integer)
 
 		''' <summary>
 		''' {@inheritDoc} </summary>
 		''' <exception cref="NullPointerException">  {@inheritDoc} </exception>
-		Public Overrides Function getAnnotation(Of T As Annotation)(ByVal annotationClass As [Class]) As T Implements AnnotatedElement.getAnnotation
+		Public Overrides Function getAnnotation(Of T As Annotation)(  annotationClass As [Class]) As T Implements AnnotatedElement.getAnnotation
 			java.util.Objects.requireNonNull(annotationClass)
 			Return annotationClass.cast(declaredAnnotations().get(annotationClass))
 		End Function
@@ -565,7 +565,7 @@ Namespace java.lang.reflect
 		''' {@inheritDoc} </summary>
 		''' <exception cref="NullPointerException"> {@inheritDoc}
 		''' @since 1.8 </exception>
-		Public Overrides Function getAnnotationsByType(Of T As Annotation)(ByVal annotationClass As [Class]) As T() Implements AnnotatedElement.getAnnotationsByType
+		Public Overrides Function getAnnotationsByType(Of T As Annotation)(  annotationClass As [Class]) As T() Implements AnnotatedElement.getAnnotationsByType
 			java.util.Objects.requireNonNull(annotationClass)
 
 			Return sun.reflect.annotation.AnnotationSupport.getDirectlyAndIndirectlyPresent(declaredAnnotations(), annotationClass)
@@ -622,7 +622,7 @@ Namespace java.lang.reflect
 	'     *
 	'     * @since 1.8
 	'     
-		Friend Overridable Function getAnnotatedReturnType0(ByVal returnType As Type) As AnnotatedType
+		Friend Overridable Function getAnnotatedReturnType0(  returnType As Type) As AnnotatedType
 			Return sun.reflect.annotation.TypeAnnotationParser.buildAnnotatedType(typeAnnotationBytes0, sun.misc.SharedSecrets.javaLangAccess.getConstantPool(declaringClass), Me, declaringClass, returnType, sun.reflect.annotation.TypeAnnotation.TypeAnnotationTarget.METHOD_RETURN)
 		End Function
 

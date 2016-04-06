@@ -56,7 +56,7 @@ Namespace java.awt.font
 		''' a break or sharp bend in the path, is to return true. </returns>
 		''' <exception cref="NullPointerException"> if point or location is null
 		''' @since 1.6 </exception>
-		Public MustOverride Function pointToPath(ByVal point As java.awt.geom.Point2D, ByVal location As java.awt.geom.Point2D) As Boolean
+		Public MustOverride Function pointToPath(  point As java.awt.geom.Point2D,   location As java.awt.geom.Point2D) As Boolean
 
 		''' <summary>
 		''' Convert a location relative to the path to a point in user
@@ -76,7 +76,7 @@ Namespace java.awt.font
 		''' the same object as location. </param>
 		''' <exception cref="NullPointerException"> if location or point is null
 		''' @since 1.6 </exception>
-		Public MustOverride Sub pathToPoint(ByVal location As java.awt.geom.Point2D, ByVal preceding As Boolean, ByVal point As java.awt.geom.Point2D)
+		Public MustOverride Sub pathToPoint(  location As java.awt.geom.Point2D,   preceding As Boolean,   point As java.awt.geom.Point2D)
 	End Class
 
 End Namespace

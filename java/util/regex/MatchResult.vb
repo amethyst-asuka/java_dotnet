@@ -71,7 +71,7 @@ Namespace java.util.regex
 		''' <exception cref="IndexOutOfBoundsException">
 		'''          If there is no capturing group in the pattern
 		'''          with the given index </exception>
-		Function start(ByVal group As Integer) As Integer
+		Function start(  group As Integer) As Integer
 
 		''' <summary>
 		''' Returns the offset after the last character matched.
@@ -106,7 +106,7 @@ Namespace java.util.regex
 		''' <exception cref="IndexOutOfBoundsException">
 		'''          If there is no capturing group in the pattern
 		'''          with the given index </exception>
-		Function [end](ByVal group As Integer) As Integer
+		Function [end](  group As Integer) As Integer
 
 		''' <summary>
 		''' Returns the input subsequence matched by the previous match.
@@ -162,7 +162,7 @@ Namespace java.util.regex
         ''' <exception cref="IndexOutOfBoundsException">
         '''          If there is no capturing group in the pattern
         '''          with the given index </exception>
-        Function group(ByVal igroup As Integer) As String
+        Function group(  igroup As Integer) As String
 
         ''' <summary>
         ''' Returns the number of capturing groups in this match result's pattern.

@@ -139,7 +139,7 @@ Namespace java.util
 		'''         comparator does not permit null arguments </exception>
 		''' <exception cref="ClassCastException"> if the arguments' types prevent them from
 		'''         being compared by this comparator. </exception>
-		Function compare(ByVal o1 As T, ByVal o2 As T) As Integer
+		Function compare(  o1 As T,   o2 As T) As Integer
 
 		''' <summary>
 		''' Indicates whether some other object is &quot;equal to&quot; this
@@ -162,7 +162,7 @@ Namespace java.util
 		'''          comparator. </returns>
 		''' <seealso cref= Object#equals(Object) </seealso>
 		''' <seealso cref= Object#hashCode() </seealso>
-		Function Equals(ByVal obj As Object) As Boolean
+		Function Equals(  obj As Object) As Boolean
 
 		''' <summary>
 		''' Returns a comparator that imposes the reverse ordering of this
@@ -200,13 +200,13 @@ Namespace java.util
 		''' <exception cref="NullPointerException"> if the argument is null.
 		''' @since 1.8 </exception>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		default Function thenComparing(Of T1)(ByVal other As Comparator(Of T1)) As Comparator(Of T)
+		default Function thenComparing(Of T1)(  other As Comparator(Of T1)) As Comparator(Of T)
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 			Objects.requireNonNull(other);
-			Sub [New](Comparator & ByVal java.io.Serializable As (Of T))
+			Sub [New](Comparator &   java.io.Serializable As (Of T))
 'JAVA TO VB CONVERTER TODO TASK: Interfaces cannot contain fields in .NET:
 '				int res = compare(c1, c2);
-				Sub [New](res != ByVal 0 As )
+				Sub [New](res !=   0 As )
 
 		''' <summary>
 		''' Returns a lexicographic-order comparator with a function that
@@ -225,8 +225,8 @@ Namespace java.util
 		''' <seealso cref= #thenComparing(Comparator)
 		''' @since 1.8 </seealso>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Function Comparator(ByVal T As [Of]) As default(Of U)
-			Function thenComparing(comparing(keyExtractor, keyComparator) ByVal  As ) As [Return]
+		Function Comparator(  T As [Of]) As default(Of U)
+			Function thenComparing(comparing(keyExtractor, keyComparator)    As ) As [Return]
 
 		''' <summary>
 		''' Returns a lexicographic-order comparator with a function that
@@ -246,8 +246,8 @@ Namespace java.util
 		''' @since 1.8 </seealso>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-		Function Comparator(ByVal T As [Of]) As default(Of U As Comparable(Of ?))
-			Function thenComparing(comparing(keyExtractor) ByVal  As ) As [Return]
+		Function Comparator(  T As [Of]) As default(Of U As Comparable(Of ?))
+			Function thenComparing(comparing(keyExtractor)    As ) As [Return]
 
 		''' <summary>
 		''' Returns a lexicographic-order comparator with a function that
@@ -264,8 +264,8 @@ Namespace java.util
 		''' <seealso cref= #thenComparing(Comparator)
 		''' @since 1.8 </seealso>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		default Function thenComparingInt(Of T1)(ByVal keyExtractor As java.util.function.ToIntFunction(Of T1)) As Comparator(Of T)
-			Function thenComparing(comparingInt(keyExtractor) ByVal  As ) As [Return]
+		default Function thenComparingInt(Of T1)(  keyExtractor As java.util.function.ToIntFunction(Of T1)) As Comparator(Of T)
+			Function thenComparing(comparingInt(keyExtractor)    As ) As [Return]
 
 		''' <summary>
 		''' Returns a lexicographic-order comparator with a function that
@@ -282,8 +282,8 @@ Namespace java.util
 		''' <seealso cref= #thenComparing(Comparator)
 		''' @since 1.8 </seealso>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		default Function thenComparingLong(Of T1)(ByVal keyExtractor As java.util.function.ToLongFunction(Of T1)) As Comparator(Of T)
-			Function thenComparing(comparingLong(keyExtractor) ByVal  As ) As [Return]
+		default Function thenComparingLong(Of T1)(  keyExtractor As java.util.function.ToLongFunction(Of T1)) As Comparator(Of T)
+			Function thenComparing(comparingLong(keyExtractor)    As ) As [Return]
 
 		''' <summary>
 		''' Returns a lexicographic-order comparator with a function that
@@ -300,8 +300,8 @@ Namespace java.util
 		''' <seealso cref= #thenComparing(Comparator)
 		''' @since 1.8 </seealso>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		default Function thenComparingDouble(Of T1)(ByVal keyExtractor As java.util.function.ToDoubleFunction(Of T1)) As Comparator(Of T)
-			Function thenComparing(comparingDouble(keyExtractor) ByVal  As ) As [Return]
+		default Function thenComparingDouble(Of T1)(  keyExtractor As java.util.function.ToDoubleFunction(Of T1)) As Comparator(Of T)
+			Function thenComparing(comparingDouble(keyExtractor)    As ) As [Return]
 
 		''' <summary>
 		''' Returns a comparator that imposes the reverse of the <em>natural
@@ -336,7 +336,7 @@ Namespace java.util
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 		Shared Function naturalOrder(Of T As Comparable(Of ?))() As Comparator(Of T)
-			Sub [New](ByVal  As Comparator(Of T))
+			Sub [New](   As Comparator(Of T))
 
 		''' <summary>
 		''' Returns a null-friendly comparator that considers {@code null} to be
@@ -355,7 +355,7 @@ Namespace java.util
 		'''         {@code Comparator}.
 		''' @since 1.8 </returns>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Shared Function nullsFirst(Of T, T1)(ByVal comparator As Comparator(Of T1)) As Comparator(Of T)
+		Shared Function nullsFirst(Of T, T1)(  comparator As Comparator(Of T1)) As Comparator(Of T)
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 			Return New java.util.Comparators.NullComparator<>(True, comparator);
 
@@ -376,7 +376,7 @@ Namespace java.util
 		'''         {@code Comparator}.
 		''' @since 1.8 </returns>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Shared Function nullsLast(Of T, T1)(ByVal comparator As Comparator(Of T1)) As Comparator(Of T)
+		Shared Function nullsLast(Of T, T1)(  comparator As Comparator(Of T1)) As Comparator(Of T)
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 			Return New java.util.Comparators.NullComparator<>(False, comparator);
 
@@ -407,12 +407,12 @@ Namespace java.util
 		''' <exception cref="NullPointerException"> if either argument is null
 		''' @since 1.8 </exception>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Shared Function comparing(Of T, U, T1 As U, T2)(ByVal keyExtractor As java.util.function.Function(Of T1), ByVal keyComparator As Comparator(Of T2)) As Comparator(Of T)
+		Shared Function comparing(Of T, U, T1 As U, T2)(  keyExtractor As java.util.function.Function(Of T1),   keyComparator As Comparator(Of T2)) As Comparator(Of T)
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 			Objects.requireNonNull(keyExtractor);
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 			Objects.requireNonNull(keyComparator);
-			Sub [New](Comparator & ByVal java.io.Serializable As (Of T))
+			Sub [New](Comparator &   java.io.Serializable As (Of T))
 
 		''' <summary>
 		''' Accepts a function that extracts a {@link java.lang.Comparable
@@ -439,10 +439,10 @@ Namespace java.util
 		''' @since 1.8 </exception>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-		Shared Function comparing(Of T, U As Comparable(Of ?), T1 As U)(ByVal keyExtractor As java.util.function.Function(Of T1)) As Comparator(Of T)
+		Shared Function comparing(Of T, U As Comparable(Of ?), T1 As U)(  keyExtractor As java.util.function.Function(Of T1)) As Comparator(Of T)
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 			Objects.requireNonNull(keyExtractor);
-			Sub [New](Comparator & ByVal java.io.Serializable As (Of T))
+			Sub [New](Comparator &   java.io.Serializable As (Of T))
 
 		''' <summary>
 		''' Accepts a function that extracts an {@code int} sort key from a type
@@ -459,10 +459,10 @@ Namespace java.util
 		''' <exception cref="NullPointerException"> if the argument is null
 		''' @since 1.8 </exception>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Shared Function comparingInt(Of T, T1)(ByVal keyExtractor As java.util.function.ToIntFunction(Of T1)) As Comparator(Of T)
+		Shared Function comparingInt(Of T, T1)(  keyExtractor As java.util.function.ToIntFunction(Of T1)) As Comparator(Of T)
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 			Objects.requireNonNull(keyExtractor);
-			Sub [New](Comparator & ByVal java.io.Serializable As (Of T))
+			Sub [New](Comparator &   java.io.Serializable As (Of T))
 
 		''' <summary>
 		''' Accepts a function that extracts a {@code long} sort key from a type
@@ -479,10 +479,10 @@ Namespace java.util
 		''' <exception cref="NullPointerException"> if the argument is null
 		''' @since 1.8 </exception>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Shared Function comparingLong(Of T, T1)(ByVal keyExtractor As java.util.function.ToLongFunction(Of T1)) As Comparator(Of T)
+		Shared Function comparingLong(Of T, T1)(  keyExtractor As java.util.function.ToLongFunction(Of T1)) As Comparator(Of T)
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 			Objects.requireNonNull(keyExtractor);
-			Sub [New](Comparator & ByVal java.io.Serializable As (Of T))
+			Sub [New](Comparator &   java.io.Serializable As (Of T))
 
 		''' <summary>
 		''' Accepts a function that extracts a {@code double} sort key from a type
@@ -499,10 +499,10 @@ Namespace java.util
 		''' <exception cref="NullPointerException"> if the argument is null
 		''' @since 1.8 </exception>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Shared Function comparingDouble(Of T, T1)(ByVal keyExtractor As java.util.function.ToDoubleFunction(Of T1)) As Comparator(Of T)
+		Shared Function comparingDouble(Of T, T1)(  keyExtractor As java.util.function.ToDoubleFunction(Of T1)) As Comparator(Of T)
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 			Objects.requireNonNull(keyExtractor);
-			Sub [New](Comparator & ByVal java.io.Serializable As (Of T))
+			Sub [New](Comparator &   java.io.Serializable As (Of T))
 	End Interface
 
 End Namespace

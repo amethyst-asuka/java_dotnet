@@ -195,7 +195,7 @@ Namespace java.nio.channels.spi
 		''' </exception>
 		''' <exception cref="ClosedByInterruptException">
 		'''          If the thread blocked in the I/O operation was interrupted </exception>
-		Protected Friend Sub [end](ByVal completed As Boolean)
+		Protected Friend Sub [end](  completed As Boolean)
 			blockedOn(Nothing)
 			Dim interrupted As Thread = Me.interrupted
 			If interrupted IsNot Nothing AndAlso interrupted Is Thread.CurrentThread Then
@@ -207,7 +207,7 @@ Namespace java.nio.channels.spi
 
 
 		' -- sun.misc.SharedSecrets --
-		Friend Shared Sub blockedOn(ByVal intr As sun.nio.ch.Interruptible) ' package-private
+		Friend Shared Sub blockedOn(  intr As sun.nio.ch.Interruptible) ' package-private
 			sun.misc.SharedSecrets.javaLangAccess.blockedOn(Thread.CurrentThread, intr)
 		End Sub
 	End Class

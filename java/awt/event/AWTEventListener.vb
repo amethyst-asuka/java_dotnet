@@ -55,7 +55,7 @@ Namespace java.awt.event
 		''' <summary>
 		''' Invoked when an event is dispatched in the AWT.
 		''' </summary>
-		Sub eventDispatched(ByVal [event] As java.awt.AWTEvent)
+		Sub eventDispatched(  [event] As java.awt.AWTEvent)
 
 	End Interface
 

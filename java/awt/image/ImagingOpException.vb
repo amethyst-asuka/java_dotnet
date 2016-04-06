@@ -41,7 +41,7 @@ Namespace java.awt.image
 		''' specified message. </summary>
 		''' <param name="s"> the message to generate when a
 		''' <code>ImagingOpException</code> is thrown </param>
-		Public Sub New(ByVal s As String)
+		Public Sub New(  s As String)
 			MyBase.New(s)
 		End Sub
 	End Class

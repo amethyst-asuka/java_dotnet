@@ -87,7 +87,7 @@ Namespace java.lang
         ''' likely to yield significantly better space and time performance.</b>
         ''' </summary>
         ''' <param name="value">   the value of the {@code Boolean}. </param>
-        Sub New(ByVal value As Boolean)
+        Sub New(  value As Boolean)
             Me.value = value
         End Sub
 
@@ -103,7 +103,7 @@ Namespace java.lang
         ''' that represents {@code false}.
         ''' </summary>
         ''' <param name="s">   the string to be converted to a {@code Boolean}. </param>
-        Sub New(ByVal s As String)
+        Sub New(  s As String)
             Me.New(parseBoolean(s))
         End Sub
 
@@ -119,7 +119,7 @@ Namespace java.lang
         '''                 representation to be parsed </param>
         ''' <returns>     the boolean represented by the string argument
         ''' @since 1.5 </returns>
-        Public Shared Function parseBoolean(ByVal s As String) As Boolean
+        Public Shared Function parseBoolean(  s As String) As Boolean
 			Return ((s IsNot Nothing) AndAlso s.equalsIgnoreCase("true"))
 		End Function
 
@@ -145,7 +145,7 @@ Namespace java.lang
 		''' <param name="b"> a boolean value. </param>
 		''' <returns> a {@code Boolean} instance representing {@code b}.
 		''' @since  1.4 </returns>
-		Public Shared Function valueOf(ByVal b As Boolean) As Boolean?
+		Public Shared Function valueOf(  b As Boolean) As Boolean?
 			Return (If(b, [TRUE], [FALSE]))
 		End Function
 
@@ -157,7 +157,7 @@ Namespace java.lang
 		''' </summary>
 		''' <param name="s">   a string. </param>
 		''' <returns>  the {@code Boolean} value represented by the string. </returns>
-		Public Shared Function valueOf(ByVal s As String) As Boolean?
+		Public Shared Function valueOf(  s As String) As Boolean?
 			Return If(parseBoolean(s), [TRUE], [FALSE])
 		End Function
 
@@ -170,7 +170,7 @@ Namespace java.lang
 		''' <param name="b"> the boolean to be converted </param>
 		''' <returns> the string representation of the specified {@code boolean}
 		''' @since 1.4 </returns>
-		Public Shared Function ToString(ByVal b As Boolean) As String
+		Public Shared Function ToString(  b As Boolean) As String
 			Return If(b, "true", "false")
 		End Function
 
@@ -202,7 +202,7 @@ Namespace java.lang
 		''' <param name="value"> the value to hash </param>
 		''' <returns> a hash code value for a {@code boolean} value.
 		''' @since 1.8 </returns>
-		Public Shared Function GetHashCode(ByVal value As Boolean) As Integer
+		Public Shared Function GetHashCode(  value As Boolean) As Integer
 			Return If(value, 1231, 1237)
 		End Function
 
@@ -214,7 +214,7 @@ Namespace java.lang
 	   ''' <param name="obj">   the object to compare with. </param>
 	   ''' <returns>  {@code true} if the Boolean objects represent the
 	   '''          same value; {@code false} otherwise. </returns>
-		Public Overrides Function Equals(ByVal obj As Object) As Boolean
+		Public Overrides Function Equals(  obj As Object) As Boolean
 			If TypeOf obj Is Boolean? Then Return value = CBool(obj)
 			Return False
 		End Function
@@ -237,7 +237,7 @@ Namespace java.lang
 		'''          <seealso cref="System#getProperty(String) System.getProperty"/> </exception>
 		''' <seealso cref=     java.lang.System#getProperty(java.lang.String) </seealso>
 		''' <seealso cref=     java.lang.System#getProperty(java.lang.String, java.lang.String) </seealso>
-		Public Shared Function getBoolean(ByVal name As String) As Boolean
+		Public Shared Function getBoolean(  name As String) As Boolean
 			Dim result As Boolean = False
 			Try
 				result = parseBoolean(System.getProperty(name))
@@ -258,7 +258,7 @@ Namespace java.lang
 		''' <exception cref="NullPointerException"> if the argument is {@code null} </exception>
 		''' <seealso cref=     Comparable
 		''' @since  1.5 </seealso>
-		Public Function compareTo(ByVal b As Boolean?) As Integer
+		Public Function compareTo(  b As Boolean?) As Integer
 			Return compare(Me.value, b.value)
 		End Function
 
@@ -275,7 +275,7 @@ Namespace java.lang
 		'''         a value less than {@code 0} if {@code !x && y}; and
 		'''         a value greater than {@code 0} if {@code x && !y}
 		''' @since 1.7 </returns>
-		Public Shared Function compare(ByVal x As Boolean, ByVal y As Boolean) As Integer
+		Public Shared Function compare(  x As Boolean,   y As Boolean) As Integer
 			Return If(x = y, 0, (If(x, 1, -1)))
 		End Function
 
@@ -288,7 +288,7 @@ Namespace java.lang
 		''' <returns> the logical AND of {@code a} and {@code b} </returns>
 		''' <seealso cref= java.util.function.BinaryOperator
 		''' @since 1.8 </seealso>
-		Public Shared Function logicalAnd(ByVal a As Boolean, ByVal b As Boolean) As Boolean
+		Public Shared Function logicalAnd(  a As Boolean,   b As Boolean) As Boolean
 			Return a AndAlso b
 		End Function
 
@@ -301,7 +301,7 @@ Namespace java.lang
 		''' <returns> the logical OR of {@code a} and {@code b} </returns>
 		''' <seealso cref= java.util.function.BinaryOperator
 		''' @since 1.8 </seealso>
-		Public Shared Function logicalOr(ByVal a As Boolean, ByVal b As Boolean) As Boolean
+		Public Shared Function logicalOr(  a As Boolean,   b As Boolean) As Boolean
 			Return a OrElse b
 		End Function
 
@@ -314,7 +314,7 @@ Namespace java.lang
 		''' <returns>  the logical XOR of {@code a} and {@code b} </returns>
 		''' <seealso cref= java.util.function.BinaryOperator
 		''' @since 1.8 </seealso>
-		Public Shared Function logicalXor(ByVal a As Boolean, ByVal b As Boolean) As Boolean
+		Public Shared Function logicalXor(  a As Boolean,   b As Boolean) As Boolean
 			Return a Xor b
 		End Function
 	End Class

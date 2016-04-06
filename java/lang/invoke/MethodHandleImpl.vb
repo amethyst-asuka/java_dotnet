@@ -133,7 +133,7 @@ Namespace java.lang.invoke
 			MemberName.Factory.INSTANCE.GetType()
 		End Sub
 
-		Friend Shared Function makeArrayElementAccessor(ByVal arrayClass As [Class], ByVal isSetter As Boolean) As MethodHandle
+		Friend Shared Function makeArrayElementAccessor(  arrayClass As [Class],   isSetter As Boolean) As MethodHandle
 			If arrayClass Is GetType(Object()) Then Return (If(isSetter, ArrayAccessor.OBJECT_ARRAY_SETTER, ArrayAccessor.OBJECT_ARRAY_GETTER))
 			If Not arrayClass.array Then Throw newIllegalArgumentException("not an array: " & arrayClass)
 			Dim cache As MethodHandle() = ArrayAccessor.TYPED_ACCESSORS.get(arrayClass)
@@ -170,74 +170,74 @@ Namespace java.lang.invoke
 			Private Class ClassValueAnonymousInnerClassHelper(Of T)
 				Inherits ClassValue(Of T)
 
-				Protected Friend Overrides Function computeValue(ByVal type As [Class]) As MethodHandle()
+				Protected Friend Overrides Function computeValue(  type As [Class]) As MethodHandle()
 					Return New MethodHandle(INDEX_LIMIT - 1){}
 				End Function
 			End Class
 			Friend Shared ReadOnly OBJECT_ARRAY_GETTER, OBJECT_ARRAY_SETTER As MethodHandle
 
-			Friend Shared Function getElementI(ByVal a As Integer(), ByVal i As Integer) As Integer
+			Friend Shared Function getElementI(  a As Integer(),   i As Integer) As Integer
 				Return a(i)
 			End Function
-			Friend Shared Function getElementJ(ByVal a As Long(), ByVal i As Integer) As Long
+			Friend Shared Function getElementJ(  a As Long(),   i As Integer) As Long
 				Return a(i)
 			End Function
-			Friend Shared Function getElementF(ByVal a As Single(), ByVal i As Integer) As Single
+			Friend Shared Function getElementF(  a As Single(),   i As Integer) As Single
 				Return a(i)
 			End Function
-			Friend Shared Function getElementD(ByVal a As Double(), ByVal i As Integer) As Double
+			Friend Shared Function getElementD(  a As Double(),   i As Integer) As Double
 				Return a(i)
 			End Function
-			Friend Shared Function getElementZ(ByVal a As Boolean(), ByVal i As Integer) As Boolean
+			Friend Shared Function getElementZ(  a As Boolean(),   i As Integer) As Boolean
 				Return a(i)
 			End Function
-			Friend Shared Function getElementB(ByVal a As SByte(), ByVal i As Integer) As SByte
+			Friend Shared Function getElementB(  a As SByte(),   i As Integer) As SByte
 				Return a(i)
 			End Function
-			Friend Shared Function getElementS(ByVal a As Short(), ByVal i As Integer) As Short
+			Friend Shared Function getElementS(  a As Short(),   i As Integer) As Short
 				Return a(i)
 			End Function
-			Friend Shared Function getElementC(ByVal a As Char(), ByVal i As Integer) As Char
+			Friend Shared Function getElementC(  a As Char(),   i As Integer) As Char
 				Return a(i)
 			End Function
-			Friend Shared Function getElementL(ByVal a As Object(), ByVal i As Integer) As Object
+			Friend Shared Function getElementL(  a As Object(),   i As Integer) As Object
 				Return a(i)
 			End Function
 
-			Friend Shared Sub setElementI(ByVal a As Integer(), ByVal i As Integer, ByVal x As Integer)
+			Friend Shared Sub setElementI(  a As Integer(),   i As Integer,   x As Integer)
 				a(i) = x
 			End Sub
-			Friend Shared Sub setElementJ(ByVal a As Long(), ByVal i As Integer, ByVal x As Long)
+			Friend Shared Sub setElementJ(  a As Long(),   i As Integer,   x As Long)
 				a(i) = x
 			End Sub
-			Friend Shared Sub setElementF(ByVal a As Single(), ByVal i As Integer, ByVal x As Single)
+			Friend Shared Sub setElementF(  a As Single(),   i As Integer,   x As Single)
 				a(i) = x
 			End Sub
-			Friend Shared Sub setElementD(ByVal a As Double(), ByVal i As Integer, ByVal x As Double)
+			Friend Shared Sub setElementD(  a As Double(),   i As Integer,   x As Double)
 				a(i) = x
 			End Sub
-			Friend Shared Sub setElementZ(ByVal a As Boolean(), ByVal i As Integer, ByVal x As Boolean)
+			Friend Shared Sub setElementZ(  a As Boolean(),   i As Integer,   x As Boolean)
 				a(i) = x
 			End Sub
-			Friend Shared Sub setElementB(ByVal a As SByte(), ByVal i As Integer, ByVal x As SByte)
+			Friend Shared Sub setElementB(  a As SByte(),   i As Integer,   x As SByte)
 				a(i) = x
 			End Sub
-			Friend Shared Sub setElementS(ByVal a As Short(), ByVal i As Integer, ByVal x As Short)
+			Friend Shared Sub setElementS(  a As Short(),   i As Integer,   x As Short)
 				a(i) = x
 			End Sub
-			Friend Shared Sub setElementC(ByVal a As Char(), ByVal i As Integer, ByVal x As Char)
+			Friend Shared Sub setElementC(  a As Char(),   i As Integer,   x As Char)
 				a(i) = x
 			End Sub
-			Friend Shared Sub setElementL(ByVal a As Object(), ByVal i As Integer, ByVal x As Object)
+			Friend Shared Sub setElementL(  a As Object(),   i As Integer,   x As Object)
 				a(i) = x
 			End Sub
 
-			Friend Shared Function name(ByVal arrayClass As [Class], ByVal isSetter As Boolean) As String
+			Friend Shared Function name(  arrayClass As [Class],   isSetter As Boolean) As String
 				Dim elemClass As  [Class] = arrayClass.componentType
 				If elemClass Is Nothing Then Throw newIllegalArgumentException("not an array", arrayClass)
 				Return (If((Not isSetter), "getElement", "setElement")) + sun.invoke.util.Wrapper.basicTypeChar(elemClass)
 			End Function
-			Friend Shared Function type(ByVal arrayClass As [Class], ByVal isSetter As Boolean) As MethodType
+			Friend Shared Function type(  arrayClass As [Class],   isSetter As Boolean) As MethodType
 				Dim elemClass As  [Class] = arrayClass.componentType
 				Dim arrayArgClass As  [Class] = arrayClass
 				If Not elemClass.primitive Then
@@ -246,11 +246,11 @@ Namespace java.lang.invoke
 				End If
 				Return If((Not isSetter), MethodType.methodType(elemClass, arrayArgClass, GetType(Integer)), MethodType.methodType(GetType(void), arrayArgClass, GetType(Integer), elemClass))
 			End Function
-			Friend Shared Function correctType(ByVal arrayClass As [Class], ByVal isSetter As Boolean) As MethodType
+			Friend Shared Function correctType(  arrayClass As [Class],   isSetter As Boolean) As MethodType
 				Dim elemClass As  [Class] = arrayClass.componentType
 				Return If((Not isSetter), MethodType.methodType(elemClass, arrayClass, GetType(Integer)), MethodType.methodType(GetType(void), arrayClass, GetType(Integer), elemClass))
 			End Function
-			Friend Shared Function getAccessor(ByVal arrayClass As [Class], ByVal isSetter As Boolean) As MethodHandle
+			Friend Shared Function getAccessor(  arrayClass As [Class],   isSetter As Boolean) As MethodHandle
 				Dim name As String = name(arrayClass, isSetter)
 				Dim type As MethodType = type(arrayClass, isSetter)
 				Try
@@ -274,13 +274,13 @@ Namespace java.lang.invoke
 		''' <returns> an adapter to the original handle with the desired new type,
 		'''          or the original target if the types are already identical
 		'''          or null if the adaptation cannot be made </returns>
-		Friend Shared Function makePairwiseConvert(ByVal target As MethodHandle, ByVal srcType As MethodType, ByVal [strict] As Boolean, ByVal monobox As Boolean) As MethodHandle
+		Friend Shared Function makePairwiseConvert(  target As MethodHandle,   srcType As MethodType,   [strict] As Boolean,   monobox As Boolean) As MethodHandle
 			Dim dstType As MethodType = target.type()
 			If srcType Is dstType Then Return target
 			Return makePairwiseConvertByEditor(target, srcType, [strict], monobox)
 		End Function
 
-		Private Shared Function countNonNull(ByVal array As Object()) As Integer
+		Private Shared Function countNonNull(  array As Object()) As Integer
 			Dim count As Integer = 0
 			For Each x As Object In array
 				If x IsNot Nothing Then count += 1
@@ -288,7 +288,7 @@ Namespace java.lang.invoke
 			Return count
 		End Function
 
-		Friend Shared Function makePairwiseConvertByEditor(ByVal target As MethodHandle, ByVal srcType As MethodType, ByVal [strict] As Boolean, ByVal monobox As Boolean) As MethodHandle
+		Friend Shared Function makePairwiseConvertByEditor(  target As MethodHandle,   srcType As MethodType,   [strict] As Boolean,   monobox As Boolean) As MethodHandle
 			Dim convSpecs As Object() = computeValueConversions(srcType, target.type(), [strict], monobox)
 			Dim convCount As Integer = countNonNull(convSpecs)
 			If convCount = 0 Then Return target.viewAsType(srcType, [strict])
@@ -347,7 +347,7 @@ Namespace java.lang.invoke
 			Return mh
 		End Function
 
-		Friend Shared Function makePairwiseConvertIndirect(ByVal target As MethodHandle, ByVal srcType As MethodType, ByVal [strict] As Boolean, ByVal monobox As Boolean) As MethodHandle
+		Friend Shared Function makePairwiseConvertIndirect(  target As MethodHandle,   srcType As MethodType,   [strict] As Boolean,   monobox As Boolean) As MethodHandle
 			assert(target.type().parameterCount() = srcType.parameterCount())
 			' Calculate extra arguments (temporaries) required in the names array.
 			Dim convSpecs As Object() = computeValueConversions(srcType, target.type(), [strict], monobox)
@@ -437,17 +437,17 @@ Namespace java.lang.invoke
 		''' <param name="x"> an arbitrary reference value </param>
 		''' <returns> the same value x </returns>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Friend Shared Function castReference(Of T, U)(ByVal t As [Class], ByVal x As U) As T
+		Friend Shared Function castReference(Of T, U)(  t As [Class],   x As U) As T
 			' inlined Class.cast because we can't ForceInline it
 			If x IsNot Nothing AndAlso (Not t.isInstance(x)) Then Throw newClassCastException(t, x)
 			Return CType(x, T)
 		End Function
 
-		Private Shared Function newClassCastException(ByVal t As [Class], ByVal obj As Object) As  ClassCastException
+		Private Shared Function newClassCastException(  t As [Class],   obj As Object) As  ClassCastException
 			Return New ClassCastException("Cannot cast " & obj.GetType().name & " to " & t.name)
 		End Function
 
-		Friend Shared Function computeValueConversions(ByVal srcType As MethodType, ByVal dstType As MethodType, ByVal [strict] As Boolean, ByVal monobox As Boolean) As Object()
+		Friend Shared Function computeValueConversions(  srcType As MethodType,   dstType As MethodType,   [strict] As Boolean,   monobox As Boolean) As Object()
 			Dim INARG_COUNT As Integer = srcType.parameterCount()
 			Dim convSpecs As Object() = New Object(INARG_COUNT){}
 			For i As Integer = 0 To INARG_COUNT
@@ -458,7 +458,7 @@ Namespace java.lang.invoke
 			Next i
 			Return convSpecs
 		End Function
-		Friend Shared Function makePairwiseConvert(ByVal target As MethodHandle, ByVal srcType As MethodType, ByVal [strict] As Boolean) As MethodHandle
+		Friend Shared Function makePairwiseConvert(  target As MethodHandle,   srcType As MethodType,   [strict] As Boolean) As MethodHandle
 			Return makePairwiseConvert(target, srcType, [strict], False) 'monobox=
 		End Function
 
@@ -468,7 +468,7 @@ Namespace java.lang.invoke
 		''' Return a Class object if a simple cast is needed.
 		''' Return void.class if  Sub  is involved.
 		''' </summary>
-		Friend Shared Function valueConversion(ByVal src As [Class], ByVal dst As [Class], ByVal [strict] As Boolean, ByVal monobox As Boolean) As Object
+		Friend Shared Function valueConversion(  src As [Class],   dst As [Class],   [strict] As Boolean,   monobox As Boolean) As Object
 			assert((Not sun.invoke.util.VerifyType.isNullConversion(src, dst, [strict]))) ' caller responsibility - keepInterfaces=
 			If dst Is GetType(void) Then Return dst
 			Dim fn As MethodHandle
@@ -516,7 +516,7 @@ Namespace java.lang.invoke
 			Return fn
 		End Function
 
-		Friend Shared Function makeVarargsCollector(ByVal target As MethodHandle, ByVal arrayType As [Class]) As MethodHandle
+		Friend Shared Function makeVarargsCollector(  target As MethodHandle,   arrayType As [Class]) As MethodHandle
 			Dim type As MethodType = target.type()
 			Dim last As Integer = type.parameterCount() - 1
 			If type.parameterType(last) IsNot arrayType Then target = target.asType(type.changeParameterType(last, arrayType))
@@ -531,10 +531,10 @@ Namespace java.lang.invoke
 			Private ReadOnly arrayType As  [Class]
 			Private MethodHandle As Stable
 
-			Friend Sub New(ByVal target As MethodHandle, ByVal arrayType As [Class])
+			Friend Sub New(  target As MethodHandle,   arrayType As [Class])
 				Me.New(target.type(), target, arrayType)
 			End Sub
-			Friend Sub New(ByVal type As MethodType, ByVal target As MethodHandle, ByVal arrayType As [Class])
+			Friend Sub New(  type As MethodType,   target As MethodHandle,   arrayType As [Class])
 				MyBase.New(type, target)
 				Me.target = target
 				Me.arrayType = arrayType
@@ -557,12 +557,12 @@ Namespace java.lang.invoke
 				Return target
 			End Function
 
-			Friend Overrides Function setVarargs(ByVal member As MemberName) As MethodHandle
+			Friend Overrides Function setVarargs(  member As MemberName) As MethodHandle
 				If member.varargs Then Return Me
 				Return asFixedArity()
 			End Function
 
-			Public Overrides Function asTypeUncached(ByVal newType As MethodType) As MethodHandle
+			Public Overrides Function asTypeUncached(  newType As MethodType) As MethodHandle
 				Dim type As MethodType = Me.type()
 				Dim collectArg As Integer = type.parameterCount() - 1
 				Dim newArity As Integer = newType.parameterCount()
@@ -591,7 +591,7 @@ Namespace java.lang.invoke
 					Return asTypeCache
 			End Function
 
-			Friend Overrides Function viewAsTypeChecks(ByVal newType As MethodType, ByVal [strict] As Boolean) As Boolean
+			Friend Overrides Function viewAsTypeChecks(  newType As MethodType,   [strict] As Boolean) As Boolean
 				MyBase.viewAsTypeChecks(newType, True)
 				If [strict] Then Return True
 				' extra assertion for non-strict checks:
@@ -602,7 +602,7 @@ Namespace java.lang.invoke
 
 		''' <summary>
 		''' Factory method:  Spread selected argument. </summary>
-		Friend Shared Function makeSpreadArguments(ByVal target As MethodHandle, ByVal spreadArgType As [Class], ByVal spreadArgPos As Integer, ByVal spreadArgCount As Integer) As MethodHandle
+		Friend Shared Function makeSpreadArguments(  target As MethodHandle,   spreadArgType As [Class],   spreadArgPos As Integer,   spreadArgCount As Integer) As MethodHandle
 			Dim targetType As MethodType = target.type()
 
 			For i As Integer = 0 To spreadArgCount - 1
@@ -657,7 +657,7 @@ Namespace java.lang.invoke
 			Return SimpleMethodHandle.make(srcType, form)
 		End Function
 
-		Friend Shared Sub checkSpreadArgument(ByVal av As Object, ByVal n As Integer)
+		Friend Shared Sub checkSpreadArgument(  av As Object,   n As Integer)
 			If av Is Nothing Then
 				If n = 0 Then Return
 			ElseIf TypeOf av Is Object() Then
@@ -697,7 +697,7 @@ Namespace java.lang.invoke
 
 		''' <summary>
 		''' Factory method:  Collect or filter selected argument(s). </summary>
-		Friend Shared Function makeCollectArguments(ByVal target As MethodHandle, ByVal collector As MethodHandle, ByVal collectArgPos As Integer, ByVal retainOriginalArgs As Boolean) As MethodHandle
+		Friend Shared Function makeCollectArguments(  target As MethodHandle,   collector As MethodHandle,   collectArgPos As Integer,   retainOriginalArgs As Boolean) As MethodHandle
 			Dim targetType As MethodType = target.type() ' (a..., c, [b...])=>r
 			Dim collectorType As MethodType = collector.type() ' (b...)=>c
 			Dim collectArgCount As Integer = collectorType.parameterCount()
@@ -748,7 +748,7 @@ Namespace java.lang.invoke
 		End Function
 
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Friend Shared Function selectAlternative(ByVal testResult As Boolean, ByVal target As MethodHandle, ByVal fallback As MethodHandle) As MethodHandle
+		Friend Shared Function selectAlternative(  testResult As Boolean,   target As MethodHandle,   fallback As MethodHandle) As MethodHandle
 			If testResult Then
 				Return target
 			Else
@@ -758,7 +758,7 @@ Namespace java.lang.invoke
 
 		' Intrinsified by C2. Counters are used during parsing to calculate branch frequencies.
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Friend Shared Function profileBoolean(ByVal result As Boolean, ByVal counters As Integer()) As Boolean
+		Friend Shared Function profileBoolean(  result As Boolean,   counters As Integer()) As Boolean
 			' Profile is int[2] where [0] and [1] correspond to false and true occurrences respectively.
 			Dim idx As Integer = If(result, 1, 0)
 			Try
@@ -770,7 +770,7 @@ Namespace java.lang.invoke
 			Return result
 		End Function
 
-		Friend Shared Function makeGuardWithTest(ByVal test As MethodHandle, ByVal target As MethodHandle, ByVal fallback As MethodHandle) As MethodHandle
+		Friend Shared Function makeGuardWithTest(  test As MethodHandle,   target As MethodHandle,   fallback As MethodHandle) As MethodHandle
 			Dim type As MethodType = target.type()
 			assert(test.type().Equals(type.changeReturnType(GetType(Boolean))) AndAlso fallback.type().Equals(type))
 			Dim basicType As MethodType = type.basicType()
@@ -791,7 +791,7 @@ Namespace java.lang.invoke
 		End Function
 
 
-		Friend Shared Function profile(ByVal target As MethodHandle) As MethodHandle
+		Friend Shared Function profile(  target As MethodHandle) As MethodHandle
 			If DONT_INLINE_THRESHOLD >= 0 Then
 				Return makeBlockInlningWrapper(target)
 			Else
@@ -803,7 +803,7 @@ Namespace java.lang.invoke
 		''' Block inlining during JIT-compilation of a target method handle if it hasn't been invoked enough times.
 		''' Corresponding LambdaForm has @DontInline when compiled into bytecode.
 		''' </summary>
-		Friend Shared Function makeBlockInlningWrapper(ByVal target As MethodHandle) As MethodHandle
+		Friend Shared Function makeBlockInlningWrapper(  target As MethodHandle) As MethodHandle
 			Dim lform As LambdaForm = PRODUCE_BLOCK_INLINING_FORM.apply(target)
 			Return New CountingWrapper(target, lform, PRODUCE_BLOCK_INLINING_FORM, PRODUCE_REINVOKER_FORM, DONT_INLINE_THRESHOLD)
 		End Function
@@ -815,7 +815,7 @@ Namespace java.lang.invoke
 		Private Class FunctionAnonymousInnerClassHelper(Of T, R)
 			Implements java.util.function.Function(Of T, R)
 
-			Public Overrides Function apply(ByVal target As MethodHandle) As LambdaForm
+			Public Overrides Function apply(  target As MethodHandle) As LambdaForm
 				Return DelegatingMethodHandle.makeReinvokerForm(target, MethodTypeForm.LF_DELEGATE_BLOCK_INLINING, GetType(CountingWrapper), "reinvoker.dontInline", False, DelegatingMethodHandle.NF_getTarget, CountingWrapper.NF_maybeStopCounting)
 			End Function
 		End Class
@@ -827,7 +827,7 @@ Namespace java.lang.invoke
 		Private Class FunctionAnonymousInnerClassHelper2(Of T, R)
 			Implements java.util.function.Function(Of T, R)
 
-			Public Overrides Function apply(ByVal target As MethodHandle) As LambdaForm
+			Public Overrides Function apply(  target As MethodHandle) As LambdaForm
 				Return DelegatingMethodHandle.makeReinvokerForm(target, MethodTypeForm.LF_DELEGATE, GetType(DelegatingMethodHandle), DelegatingMethodHandle.NF_getTarget)
 			End Function
 		End Class
@@ -848,7 +848,7 @@ Namespace java.lang.invoke
 'JAVA TO VB CONVERTER TODO TASK: There is no VB equivalent to 'volatile':
 			Private isCounting As Boolean
 
-			Private Sub New(ByVal target As MethodHandle, ByVal lform As LambdaForm, ByVal countingFromProducer As java.util.function.Function(Of MethodHandle, LambdaForm), ByVal nonCountingFormProducer As java.util.function.Function(Of MethodHandle, LambdaForm), ByVal count As Integer)
+			Private Sub New(  target As MethodHandle,   lform As LambdaForm,   countingFromProducer As java.util.function.Function(Of MethodHandle, LambdaForm),   nonCountingFormProducer As java.util.function.Function(Of MethodHandle, LambdaForm),   count As Integer)
 				MyBase.New(target.type(), lform)
 				Me.target = target
 				Me.count = count
@@ -864,7 +864,7 @@ Namespace java.lang.invoke
 				End Get
 			End Property
 
-			Public Overrides Function asTypeUncached(ByVal newType As MethodType) As MethodHandle
+			Public Overrides Function asTypeUncached(  newType As MethodType) As MethodHandle
 				Dim newTarget As MethodHandle = target.asType(newType)
 				Dim wrapper As MethodHandle
 				If isCounting Then
@@ -894,7 +894,7 @@ Namespace java.lang.invoke
 			End Function
 
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-			Friend Shared Sub maybeStopCounting(ByVal o1 As Object)
+			Friend Shared Sub maybeStopCounting(  o1 As Object)
 				 Dim wrapper As CountingWrapper = CType(o1, CountingWrapper)
 				 If wrapper.countDown() Then
 					 ' Reached invocation threshold. Replace counting behavior with a non-counting one.
@@ -907,7 +907,7 @@ Namespace java.lang.invoke
 			Friend Shared ReadOnly NF_maybeStopCounting As NamedFunction
 		End Class
 
-		Friend Shared Function makeGuardWithTestForm(ByVal basicType As MethodType) As LambdaForm
+		Friend Shared Function makeGuardWithTestForm(  basicType As MethodType) As LambdaForm
 			Dim lform As LambdaForm = basicType.form().cachedLambdaForm(MethodTypeForm.LF_GWT)
 			If lform IsNot Nothing Then Return lform
 			Const THIS_MH As Integer = 0 ' the BMH_LLL
@@ -984,7 +984,7 @@ Namespace java.lang.invoke
 		''' Having t8 and t10 passed outside and not hardcoded into a lambda form allows to share lambda forms
 		''' among catchException combinators with the same basic type.
 		''' </summary>
-		Private Shared Function makeGuardWithCatchForm(ByVal basicType As MethodType) As LambdaForm
+		Private Shared Function makeGuardWithCatchForm(  basicType As MethodType) As LambdaForm
 			Dim lambdaType As MethodType = basicType.invokerType()
 
 			Dim lform As LambdaForm = basicType.form().cachedLambdaForm(MethodTypeForm.LF_GWC)
@@ -1045,7 +1045,7 @@ Namespace java.lang.invoke
 			Return basicType.form().cachedLambdaFormorm(MethodTypeForm.LF_GWC, lform)
 		End Function
 
-		Friend Shared Function makeGuardWithCatch(ByVal target As MethodHandle, ByVal exType As [Class], ByVal catcher As MethodHandle) As MethodHandle
+		Friend Shared Function makeGuardWithCatch(  target As MethodHandle,   exType As [Class],   catcher As MethodHandle) As MethodHandle
 			Dim type As MethodType = target.type()
 			Dim form As LambdaForm = makeGuardWithCatchForm(type.basicType())
 
@@ -1083,7 +1083,7 @@ Namespace java.lang.invoke
 		''' (see <seealso cref="InvokerBytecodeGenerator#emitGuardWithCatch emitGuardWithCatch"/>).
 		''' </summary>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Friend Shared Function guardWithCatch(ByVal target As MethodHandle, ByVal exType As [Class], ByVal catcher As MethodHandle, ParamArray ByVal av As Object()) As Object
+		Friend Shared Function guardWithCatch(  target As MethodHandle,   exType As [Class],   catcher As MethodHandle, ParamArray   av As Object()) As Object
 			' Use asFixedArity() to avoid unnecessary boxing of last argument for VarargsCollector case.
 			Try
 				Return target.asFixedArity().invokeWithArguments(av)
@@ -1096,14 +1096,14 @@ Namespace java.lang.invoke
 		''' <summary>
 		''' Prepend an element {@code elem} to an {@code array}. </summary>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Private Shared Function prepend(ByVal elem As Object, ByVal array As Object()) As Object()
+		Private Shared Function prepend(  elem As Object,   array As Object()) As Object()
 			Dim newArray As Object() = New Object(array.Length){}
 			newArray(0) = elem
 			Array.Copy(array, 0, newArray, 1, array.Length)
 			Return newArray
 		End Function
 
-		Friend Shared Function throwException(ByVal type As MethodType) As MethodHandle
+		Friend Shared Function throwException(  type As MethodType) As MethodHandle
 			assert(type.parameterType(0).IsSubclassOf(GetType(Throwable)))
 			Dim arity As Integer = type.parameterCount()
 			If arity > 1 Then
@@ -1114,12 +1114,12 @@ Namespace java.lang.invoke
 			Return makePairwiseConvert(Lazy.NF_throwException.resolvedHandle(), type, False, True)
 		End Function
 
-		Friend Shared Function throwException(Of T As Throwable)(ByVal t As T) As sun.invoke.empty.Empty
+		Friend Shared Function throwException(Of T As Throwable)(  t As T) As sun.invoke.empty.Empty
 			Throw t
 		End Function
 
 		Friend Shared FAKE_METHOD_HANDLE_INVOKE As MethodHandle() = New MethodHandle(1){}
-		Friend Shared Function fakeMethodHandleInvoke(ByVal method As MemberName) As MethodHandle
+		Friend Shared Function fakeMethodHandleInvoke(  method As MemberName) As MethodHandle
 			Dim idx As Integer
 			assert(method.methodHandleInvoke)
 			Select Case method.name
@@ -1151,14 +1151,14 @@ Namespace java.lang.invoke
 		''' is sensitive to its caller.  A small number of system methods
 		''' are in this category, including Class.forName and Method.invoke.
 		''' </summary>
-		Friend Shared Function bindCaller(ByVal mh As MethodHandle, ByVal hostClass As [Class]) As MethodHandle
+		Friend Shared Function bindCaller(  mh As MethodHandle,   hostClass As [Class]) As MethodHandle
 			Return BindCaller.bindCaller(mh, hostClass)
 		End Function
 
 		' Put the whole mess into its own nested class.
 		' That way we can lazily load the code and set up the constants.
 		Private Class BindCaller
-			Shared Function bindCaller(ByVal mh As MethodHandle, ByVal hostClass As [Class]) As MethodHandle
+			Shared Function bindCaller(  mh As MethodHandle,   hostClass As [Class]) As MethodHandle
 				' Do not use this function to inject calls into system classes.
 				If hostClass Is Nothing OrElse (hostClass.array OrElse hostClass.primitive OrElse hostClass.name.StartsWith("java.") OrElse hostClass.name.StartsWith("sun.")) Then Throw New InternalError ' does not happen, and should not anyway
 				' For simplicity, convert mh to a varargs-like method.
@@ -1168,7 +1168,7 @@ Namespace java.lang.invoke
 				Return restoreToType(bccInvoker.bindTo(vamh), mh, hostClass)
 			End Function
 
-			Private Shared Function makeInjectedInvoker(ByVal hostClass As [Class]) As MethodHandle
+			Private Shared Function makeInjectedInvoker(  hostClass As [Class]) As MethodHandle
 				Dim bcc As  [Class] = UNSAFE.defineAnonymousClass(hostClass, T_BYTES, Nothing)
 				If hostClass.classLoader IsNot bcc.classLoader Then Throw New InternalError(hostClass.name & " (CL)")
 				Try
@@ -1204,13 +1204,13 @@ Namespace java.lang.invoke
 			Private Class ClassValueAnonymousInnerClassHelper(Of T)
 				Inherits ClassValue(Of T)
 
-				Protected Friend Overrides Function computeValue(ByVal hostClass As [Class]) As MethodHandle
+				Protected Friend Overrides Function computeValue(  hostClass As [Class]) As MethodHandle
 					Return makeInjectedInvoker(hostClass)
 				End Function
 			End Class
 
 			' Adapt mh so that it can be called directly from an injected invoker:
-			Private Shared Function prepareForInvoker(ByVal mh As MethodHandle) As MethodHandle
+			Private Shared Function prepareForInvoker(  mh As MethodHandle) As MethodHandle
 				mh = mh.asFixedArity()
 				Dim mt As MethodType = mh.type()
 				Dim arity As Integer = mt.parameterCount()
@@ -1222,7 +1222,7 @@ Namespace java.lang.invoke
 			End Function
 
 			' Undo the adapter effect of prepareForInvoker:
-			Private Shared Function restoreToType(ByVal vamh As MethodHandle, ByVal original As MethodHandle, ByVal hostClass As [Class]) As MethodHandle
+			Private Shared Function restoreToType(  vamh As MethodHandle,   original As MethodHandle,   hostClass As [Class]) As MethodHandle
 				Dim type As MethodType = original.type()
 				Dim mh As MethodHandle = vamh.asCollector(GetType(Object()), type.parameterCount())
 				Dim member As MemberName = original.internalMemberName()
@@ -1234,7 +1234,7 @@ Namespace java.lang.invoke
 			Private Shared ReadOnly MH_checkCallerClass As MethodHandle
 
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-			Private Shared Function checkCallerClass(ByVal expected As [Class], ByVal expected2 As [Class]) As Boolean
+			Private Shared Function checkCallerClass(  expected As [Class],   expected2 As [Class]) As Boolean
 				' This method is called via MH_checkCallerClass and so it's
 				' correct to ask for the immediate caller here.
 				Dim actual As  [Class] = sun.reflect.Reflection.callerClass
@@ -1248,7 +1248,7 @@ Namespace java.lang.invoke
 			Private Class T
 				Friend Shared Sub init() ' side effect: initializes this class
 				End Sub
-				Friend Shared Function invoke_V(ByVal vamh As MethodHandle, ByVal args As Object()) As Object
+				Friend Shared Function invoke_V(  vamh As MethodHandle,   args As Object()) As Object
 					Return vamh.invokeExact(args)
 				End Function
 			End Class
@@ -1265,7 +1265,7 @@ Namespace java.lang.invoke
 			Private ReadOnly callerClass As  [Class]
 			Private ReadOnly isInvokeSpecial_Renamed As Boolean
 
-			Private Sub New(ByVal target As MethodHandle, ByVal type As MethodType, ByVal member As MemberName, ByVal isInvokeSpecial As Boolean, ByVal callerClass As [Class])
+			Private Sub New(  target As MethodHandle,   type As MethodType,   member As MemberName,   isInvokeSpecial As Boolean,   callerClass As [Class])
 				MyBase.New(type, target)
 				Me.target = target
 				Me.member = member
@@ -1289,7 +1289,7 @@ Namespace java.lang.invoke
 					Return target
 				End Get
 			End Property
-			Public Overrides Function asTypeUncached(ByVal newType As MethodType) As MethodHandle
+			Public Overrides Function asTypeUncached(  newType As MethodType) As MethodHandle
 				' This MH is an alias for target, except for the MemberName
 				' Drop the MemberName if there is any conversion.
 					asTypeCache = target.asType(newType)
@@ -1297,7 +1297,7 @@ Namespace java.lang.invoke
 			End Function
 		End Class
 
-		Friend Shared Function makeWrappedMember(ByVal target As MethodHandle, ByVal member As MemberName, ByVal isInvokeSpecial As Boolean) As MethodHandle
+		Friend Shared Function makeWrappedMember(  target As MethodHandle,   member As MemberName,   isInvokeSpecial As Boolean) As MethodHandle
 			If member.Equals(target.internalMemberName()) AndAlso isInvokeSpecial = target.invokeSpecial Then Return target
 			Return New WrappedMember(target, target.type(), member, isInvokeSpecial, Nothing)
 		End Function
@@ -1326,7 +1326,7 @@ Namespace java.lang.invoke
 			Private ReadOnly target As MethodHandle
 			Private ReadOnly intrinsicName_Renamed As Intrinsic
 
-			Friend Sub New(ByVal target As MethodHandle, ByVal intrinsicName As Intrinsic)
+			Friend Sub New(  target As MethodHandle,   intrinsicName As Intrinsic)
 				MyBase.New(target.type(), target)
 				Me.target = target
 				Me.intrinsicName_Renamed = intrinsicName
@@ -1342,7 +1342,7 @@ Namespace java.lang.invoke
 				Return intrinsicName_Renamed
 			End Function
 
-			Public Overrides Function asTypeUncached(ByVal newType As MethodType) As MethodHandle
+			Public Overrides Function asTypeUncached(  newType As MethodType) As MethodHandle
 				' This MH is an alias for target, except for the intrinsic name
 				' Drop the name if there is any conversion.
 					asTypeCache = target.asType(newType)
@@ -1353,7 +1353,7 @@ Namespace java.lang.invoke
 				Return MyBase.internalProperties() & vbLf & "& Intrinsic=" & intrinsicName_Renamed
 			End Function
 
-			Public Overrides Function asCollector(ByVal arrayType As [Class], ByVal arrayLength As Integer) As MethodHandle
+			Public Overrides Function asCollector(  arrayType As [Class],   arrayLength As Integer) As MethodHandle
 				If intrinsicName_Renamed = Intrinsic.IDENTITY Then
 					Dim resultType As MethodType = type().asCollectorType(arrayType, arrayLength)
 					Dim newArray As MethodHandle = MethodHandleImpl.varargsArray(arrayType, arrayLength)
@@ -1363,18 +1363,18 @@ Namespace java.lang.invoke
 			End Function
 		End Class
 
-		Friend Shared Function makeIntrinsic(ByVal target As MethodHandle, ByVal intrinsicName As Intrinsic) As MethodHandle
+		Friend Shared Function makeIntrinsic(  target As MethodHandle,   intrinsicName As Intrinsic) As MethodHandle
 			If intrinsicName Is target.intrinsicName() Then Return target
 			Return New IntrinsicMethodHandle(target, intrinsicName)
 		End Function
 
-		Friend Shared Function makeIntrinsic(ByVal type As MethodType, ByVal form As LambdaForm, ByVal intrinsicName As Intrinsic) As MethodHandle
+		Friend Shared Function makeIntrinsic(  type As MethodType,   form As LambdaForm,   intrinsicName As Intrinsic) As MethodHandle
 			Return New IntrinsicMethodHandle(SimpleMethodHandle.make(type, form), intrinsicName)
 		End Function
 
 		'/ Collection of multiple arguments.
 
-		Private Shared Function findCollector(ByVal name As String, ByVal nargs As Integer, ByVal rtype As [Class], ParamArray ByVal ptypes As  [Class]()) As MethodHandle
+		Private Shared Function findCollector(  name As String,   nargs As Integer,   rtype As [Class], ParamArray   ptypes As  [Class]()) As MethodHandle
 			Dim type As MethodType = MethodType.genericMethodType(nargs).changeReturnType(rtype).insertParameterTypes(0, ptypes)
 			Try
 				Return IMPL_LOOKUP.findStatic(GetType(MethodHandleImpl), name, type)
@@ -1384,40 +1384,40 @@ Namespace java.lang.invoke
 		End Function
 
 		Private Shared ReadOnly NO_ARGS_ARRAY As Object() = {}
-		Private Shared Function makeArray(ParamArray ByVal args As Object()) As Object()
+		Private Shared Function makeArray(ParamArray   args As Object()) As Object()
 			Return args
 		End Function
 		Private Shared Function array() As Object()
 			Return NO_ARGS_ARRAY
 		End Function
-		Private Shared Function array(ByVal a0 As Object) As Object()
+		Private Shared Function array(  a0 As Object) As Object()
 						Return makeArray(a0)
 		End Function
-		Private Shared Function array(ByVal a0 As Object, ByVal a1 As Object) As Object()
+		Private Shared Function array(  a0 As Object,   a1 As Object) As Object()
 						Return makeArray(a0, a1)
 		End Function
-		Private Shared Function array(ByVal a0 As Object, ByVal a1 As Object, ByVal a2 As Object) As Object()
+		Private Shared Function array(  a0 As Object,   a1 As Object,   a2 As Object) As Object()
 						Return makeArray(a0, a1, a2)
 		End Function
-		Private Shared Function array(ByVal a0 As Object, ByVal a1 As Object, ByVal a2 As Object, ByVal a3 As Object) As Object()
+		Private Shared Function array(  a0 As Object,   a1 As Object,   a2 As Object,   a3 As Object) As Object()
 						Return makeArray(a0, a1, a2, a3)
 		End Function
-		Private Shared Function array(ByVal a0 As Object, ByVal a1 As Object, ByVal a2 As Object, ByVal a3 As Object, ByVal a4 As Object) As Object()
+		Private Shared Function array(  a0 As Object,   a1 As Object,   a2 As Object,   a3 As Object,   a4 As Object) As Object()
 						Return makeArray(a0, a1, a2, a3, a4)
 		End Function
-		Private Shared Function array(ByVal a0 As Object, ByVal a1 As Object, ByVal a2 As Object, ByVal a3 As Object, ByVal a4 As Object, ByVal a5 As Object) As Object()
+		Private Shared Function array(  a0 As Object,   a1 As Object,   a2 As Object,   a3 As Object,   a4 As Object,   a5 As Object) As Object()
 						Return makeArray(a0, a1, a2, a3, a4, a5)
 		End Function
-		Private Shared Function array(ByVal a0 As Object, ByVal a1 As Object, ByVal a2 As Object, ByVal a3 As Object, ByVal a4 As Object, ByVal a5 As Object, ByVal a6 As Object) As Object()
+		Private Shared Function array(  a0 As Object,   a1 As Object,   a2 As Object,   a3 As Object,   a4 As Object,   a5 As Object,   a6 As Object) As Object()
 						Return makeArray(a0, a1, a2, a3, a4, a5, a6)
 		End Function
-		Private Shared Function array(ByVal a0 As Object, ByVal a1 As Object, ByVal a2 As Object, ByVal a3 As Object, ByVal a4 As Object, ByVal a5 As Object, ByVal a6 As Object, ByVal a7 As Object) As Object()
+		Private Shared Function array(  a0 As Object,   a1 As Object,   a2 As Object,   a3 As Object,   a4 As Object,   a5 As Object,   a6 As Object,   a7 As Object) As Object()
 						Return makeArray(a0, a1, a2, a3, a4, a5, a6, a7)
 		End Function
-		Private Shared Function array(ByVal a0 As Object, ByVal a1 As Object, ByVal a2 As Object, ByVal a3 As Object, ByVal a4 As Object, ByVal a5 As Object, ByVal a6 As Object, ByVal a7 As Object, ByVal a8 As Object) As Object()
+		Private Shared Function array(  a0 As Object,   a1 As Object,   a2 As Object,   a3 As Object,   a4 As Object,   a5 As Object,   a6 As Object,   a7 As Object,   a8 As Object) As Object()
 						Return makeArray(a0, a1, a2, a3, a4, a5, a6, a7, a8)
 		End Function
-		Private Shared Function array(ByVal a0 As Object, ByVal a1 As Object, ByVal a2 As Object, ByVal a3 As Object, ByVal a4 As Object, ByVal a5 As Object, ByVal a6 As Object, ByVal a7 As Object, ByVal a8 As Object, ByVal a9 As Object) As Object()
+		Private Shared Function array(  a0 As Object,   a1 As Object,   a2 As Object,   a3 As Object,   a4 As Object,   a5 As Object,   a6 As Object,   a7 As Object,   a8 As Object,   a9 As Object) As Object()
 						Return makeArray(a0, a1, a2, a3, a4, a5, a6, a7, a8, a9)
 		End Function
 		Private Shared Function makeArrays() As MethodHandle()
@@ -1434,58 +1434,58 @@ Namespace java.lang.invoke
 
 		' filling versions of the above:
 		' using Integer len instead of int len and no varargs to avoid bootstrapping problems
-		Private Shared Function fillNewArray(ByVal len As Integer?, ByVal args As Object()) As Object() 'not ...
+		Private Shared Function fillNewArray(  len As Integer?,   args As Object()) As Object() 'not ...
 			Dim a As Object() = New Object(len - 1){}
 			fillWithArguments(a, 0, args)
 			Return a
 		End Function
-		Private Shared Function fillNewTypedArray(ByVal example As Object(), ByVal len As Integer?, ByVal args As Object()) As Object() 'not ...
+		Private Shared Function fillNewTypedArray(  example As Object(),   len As Integer?,   args As Object()) As Object() 'not ...
 			Dim a As Object() = java.util.Arrays.copyOf(example, len)
 			assert(a.GetType() IsNot GetType(Object()))
 			fillWithArguments(a, 0, args)
 			Return a
 		End Function
-		Private Shared Sub fillWithArguments(ByVal a As Object(), ByVal pos As Integer, ParamArray ByVal args As Object())
+		Private Shared Sub fillWithArguments(  a As Object(),   pos As Integer, ParamArray   args As Object())
 			Array.Copy(args, 0, a, pos, args.Length)
 		End Sub
 		' using Integer pos instead of int pos to avoid bootstrapping problems
-		Private Shared Function fillArray(ByVal pos As Integer?, ByVal a As Object(), ByVal a0 As Object) As Object()
+		Private Shared Function fillArray(  pos As Integer?,   a As Object(),   a0 As Object) As Object()
 						fillWithArguments(a, pos, a0)
 						Return a
 		End Function
-		Private Shared Function fillArray(ByVal pos As Integer?, ByVal a As Object(), ByVal a0 As Object, ByVal a1 As Object) As Object()
+		Private Shared Function fillArray(  pos As Integer?,   a As Object(),   a0 As Object,   a1 As Object) As Object()
 						fillWithArguments(a, pos, a0, a1)
 						Return a
 		End Function
-		Private Shared Function fillArray(ByVal pos As Integer?, ByVal a As Object(), ByVal a0 As Object, ByVal a1 As Object, ByVal a2 As Object) As Object()
+		Private Shared Function fillArray(  pos As Integer?,   a As Object(),   a0 As Object,   a1 As Object,   a2 As Object) As Object()
 						fillWithArguments(a, pos, a0, a1, a2)
 						Return a
 		End Function
-		Private Shared Function fillArray(ByVal pos As Integer?, ByVal a As Object(), ByVal a0 As Object, ByVal a1 As Object, ByVal a2 As Object, ByVal a3 As Object) As Object()
+		Private Shared Function fillArray(  pos As Integer?,   a As Object(),   a0 As Object,   a1 As Object,   a2 As Object,   a3 As Object) As Object()
 						fillWithArguments(a, pos, a0, a1, a2, a3)
 						Return a
 		End Function
-		Private Shared Function fillArray(ByVal pos As Integer?, ByVal a As Object(), ByVal a0 As Object, ByVal a1 As Object, ByVal a2 As Object, ByVal a3 As Object, ByVal a4 As Object) As Object()
+		Private Shared Function fillArray(  pos As Integer?,   a As Object(),   a0 As Object,   a1 As Object,   a2 As Object,   a3 As Object,   a4 As Object) As Object()
 						fillWithArguments(a, pos, a0, a1, a2, a3, a4)
 						Return a
 		End Function
-		Private Shared Function fillArray(ByVal pos As Integer?, ByVal a As Object(), ByVal a0 As Object, ByVal a1 As Object, ByVal a2 As Object, ByVal a3 As Object, ByVal a4 As Object, ByVal a5 As Object) As Object()
+		Private Shared Function fillArray(  pos As Integer?,   a As Object(),   a0 As Object,   a1 As Object,   a2 As Object,   a3 As Object,   a4 As Object,   a5 As Object) As Object()
 						fillWithArguments(a, pos, a0, a1, a2, a3, a4, a5)
 						Return a
 		End Function
-		Private Shared Function fillArray(ByVal pos As Integer?, ByVal a As Object(), ByVal a0 As Object, ByVal a1 As Object, ByVal a2 As Object, ByVal a3 As Object, ByVal a4 As Object, ByVal a5 As Object, ByVal a6 As Object) As Object()
+		Private Shared Function fillArray(  pos As Integer?,   a As Object(),   a0 As Object,   a1 As Object,   a2 As Object,   a3 As Object,   a4 As Object,   a5 As Object,   a6 As Object) As Object()
 						fillWithArguments(a, pos, a0, a1, a2, a3, a4, a5, a6)
 						Return a
 		End Function
-		Private Shared Function fillArray(ByVal pos As Integer?, ByVal a As Object(), ByVal a0 As Object, ByVal a1 As Object, ByVal a2 As Object, ByVal a3 As Object, ByVal a4 As Object, ByVal a5 As Object, ByVal a6 As Object, ByVal a7 As Object) As Object()
+		Private Shared Function fillArray(  pos As Integer?,   a As Object(),   a0 As Object,   a1 As Object,   a2 As Object,   a3 As Object,   a4 As Object,   a5 As Object,   a6 As Object,   a7 As Object) As Object()
 						fillWithArguments(a, pos, a0, a1, a2, a3, a4, a5, a6, a7)
 						Return a
 		End Function
-		Private Shared Function fillArray(ByVal pos As Integer?, ByVal a As Object(), ByVal a0 As Object, ByVal a1 As Object, ByVal a2 As Object, ByVal a3 As Object, ByVal a4 As Object, ByVal a5 As Object, ByVal a6 As Object, ByVal a7 As Object, ByVal a8 As Object) As Object()
+		Private Shared Function fillArray(  pos As Integer?,   a As Object(),   a0 As Object,   a1 As Object,   a2 As Object,   a3 As Object,   a4 As Object,   a5 As Object,   a6 As Object,   a7 As Object,   a8 As Object) As Object()
 						fillWithArguments(a, pos, a0, a1, a2, a3, a4, a5, a6, a7, a8)
 						Return a
 		End Function
-		Private Shared Function fillArray(ByVal pos As Integer?, ByVal a As Object(), ByVal a0 As Object, ByVal a1 As Object, ByVal a2 As Object, ByVal a3 As Object, ByVal a4 As Object, ByVal a5 As Object, ByVal a6 As Object, ByVal a7 As Object, ByVal a8 As Object, ByVal a9 As Object) As Object()
+		Private Shared Function fillArray(  pos As Integer?,   a As Object(),   a0 As Object,   a1 As Object,   a2 As Object,   a3 As Object,   a4 As Object,   a5 As Object,   a6 As Object,   a7 As Object,   a8 As Object,   a9 As Object) As Object()
 						fillWithArguments(a, pos, a0, a1, a2, a3, a4, a5, a6, a7, a8, a9)
 						Return a
 		End Function
@@ -1504,7 +1504,7 @@ Namespace java.lang.invoke
 			Return mhs.ToArray()
 		End Function
 
-		Private Shared Function copyAsPrimitiveArray(ByVal w As sun.invoke.util.Wrapper, ParamArray ByVal boxes As Object()) As Object
+		Private Shared Function copyAsPrimitiveArray(  w As sun.invoke.util.Wrapper, ParamArray   boxes As Object()) As Object
 			Dim a As Object = w.makeArray(boxes.Length)
 			w.copyArrayUnboxing(boxes, 0, a, 0, boxes.Length)
 			Return a
@@ -1514,7 +1514,7 @@ Namespace java.lang.invoke
 		''' Return a method handle that takes the indicated number of Object
 		'''  arguments and returns an Object array of them, as if for varargs.
 		''' </summary>
-		Friend Shared Function varargsArray(ByVal nargs As Integer) As MethodHandle
+		Friend Shared Function varargsArray(  nargs As Integer) As MethodHandle
 			Dim mh As MethodHandle = Lazy.ARRAYS(nargs)
 			If mh IsNot Nothing Then Return mh
 			mh = findCollector("array", nargs, GetType(Object()))
@@ -1530,17 +1530,17 @@ Namespace java.lang.invoke
 				Return Lazy.ARRAYS(nargs)
 		End Function
 
-		Private Shared Function assertCorrectArity(ByVal mh As MethodHandle, ByVal arity As Integer) As Boolean
+		Private Shared Function assertCorrectArity(  mh As MethodHandle,   arity As Integer) As Boolean
 			assert(mh.type().parameterCount() = arity) : "arity != " & arity & ": " & mh
 			Return True
 		End Function
 
 		' Array identity function (used as Lazy.MH_arrayIdentity).
-		Friend Shared Function identity(Of T)(ByVal x As T()) As T()
+		Friend Shared Function identity(Of T)(  x As T()) As T()
 			Return x
 		End Function
 
-		Private Shared Function buildVarargsArray(ByVal newArray As MethodHandle, ByVal finisher As MethodHandle, ByVal nargs As Integer) As MethodHandle
+		Private Shared Function buildVarargsArray(  newArray As MethodHandle,   finisher As MethodHandle,   nargs As Integer) As MethodHandle
 			' Build up the result mh as a sequence of fills like this:
 			'   finisher(fill(fill(newArrayWA(23,x1..x10),10,x11..x20),20,x21..x23))
 			' The various fill(_,10*I,___*[J]) are reusable.
@@ -1572,7 +1572,7 @@ Namespace java.lang.invoke
 		'''  fills a[L]..a[N-1] with corresponding arguments,
 		'''  and then returns a.  The value L is a global constant (LEFT_ARGS).
 		''' </summary>
-		Private Shared Function fillToRight(ByVal nargs As Integer) As MethodHandle
+		Private Shared Function fillToRight(  nargs As Integer) As MethodHandle
 			Dim filler As MethodHandle = FILL_ARRAY_TO_RIGHT(nargs)
 			If filler IsNot Nothing Then Return filler
 			filler = buildFiller(nargs)
@@ -1580,7 +1580,7 @@ Namespace java.lang.invoke
 				FILL_ARRAY_TO_RIGHT(nargs) = filler
 				Return FILL_ARRAY_TO_RIGHT(nargs)
 		End Function
-		Private Shared Function buildFiller(ByVal nargs As Integer) As MethodHandle
+		Private Shared Function buildFiller(  nargs As Integer) As MethodHandle
 			If nargs <= LEFT_ARGS Then Return Lazy.MH_arrayIdentity ' no args to fill; return the array unchanged
 			' we need room for both mh and a in mh.invoke(a, arg*[nargs])
 			Dim CHUNK As Integer = LEFT_ARGS
@@ -1620,7 +1620,7 @@ Namespace java.lang.invoke
 		Private Class ClassValueAnonymousInnerClassHelper(Of T)
 			Inherits ClassValue(Of T)
 
-			Protected Friend Overrides Function computeValue(ByVal type As [Class]) As MethodHandle()
+			Protected Friend Overrides Function computeValue(  type As [Class]) As MethodHandle()
 				Return New MethodHandle(255){}
 			End Function
 		End Class
@@ -1632,7 +1632,7 @@ Namespace java.lang.invoke
 		'''  typed arguments and returns an array of them.
 		'''  The type argument is the array type.
 		''' </summary>
-		Friend Shared Function varargsArray(ByVal arrayType As [Class], ByVal nargs As Integer) As MethodHandle
+		Friend Shared Function varargsArray(  arrayType As [Class],   nargs As Integer) As MethodHandle
 			Dim elemType As  [Class] = arrayType.componentType
 			If elemType Is Nothing Then Throw New IllegalArgumentException("not an array: " & arrayType)
 			' FIXME: Need more special casing and caching here.
@@ -1668,14 +1668,14 @@ Namespace java.lang.invoke
 			Return mh
 		End Function
 
-		Private Shared Function buildArrayProducer(ByVal arrayType As [Class]) As MethodHandle
+		Private Shared Function buildArrayProducer(  arrayType As [Class]) As MethodHandle
 			Dim elemType As  [Class] = arrayType.componentType
 			assert(elemType.primitive)
 			Return Lazy.MH_copyAsPrimitiveArray.bindTo(sun.invoke.util.Wrapper.forPrimitiveType(elemType))
 		End Function
 
 		'non-public
-	 Friend Shared Sub assertSame(ByVal mh1 As Object, ByVal mh2 As Object)
+	 Friend Shared Sub assertSame(  mh1 As Object,   mh2 As Object)
 			If mh1 IsNot mh2 Then
 				Dim msg As String = String.Format("mh1 != mh2: mh1 = {0} (form: {1}); mh2 = {2} (form: {3})", mh1, CType(mh1, MethodHandle).form, mh2, CType(mh2, MethodHandle).form)
 				Throw newInternalError(msg)

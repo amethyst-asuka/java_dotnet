@@ -64,7 +64,7 @@ Namespace java.beans.beancontext
 		''' <param name="visible">   The initial visibility.
 		'''  </param>
 
-		Public Sub New(ByVal peer As BeanContextServices, ByVal lcle As java.util.Locale, ByVal dTime As Boolean, ByVal visible As Boolean)
+		Public Sub New(  peer As BeanContextServices,   lcle As java.util.Locale,   dTime As Boolean,   visible As Boolean)
 			MyBase.New(peer, lcle, dTime, visible)
 		End Sub
 
@@ -75,7 +75,7 @@ Namespace java.beans.beancontext
 		''' <param name="lcle">      The current Locale for this BeanContext. </param>
 		''' <param name="dtime">     The initial state, true if in design mode, false if runtime. </param>
 
-		Public Sub New(ByVal peer As BeanContextServices, ByVal lcle As java.util.Locale, ByVal dtime As Boolean)
+		Public Sub New(  peer As BeanContextServices,   lcle As java.util.Locale,   dtime As Boolean)
 			Me.New(peer, lcle, dtime, True)
 		End Sub
 
@@ -85,7 +85,7 @@ Namespace java.beans.beancontext
 		''' <param name="peer">      The peer BeanContext we are supplying an implementation for, if null the this object is its own peer </param>
 		''' <param name="lcle">      The current Locale for this BeanContext. </param>
 
-		Public Sub New(ByVal peer As BeanContextServices, ByVal lcle As java.util.Locale)
+		Public Sub New(  peer As BeanContextServices,   lcle As java.util.Locale)
 			Me.New(peer, lcle, False, True)
 		End Sub
 
@@ -94,7 +94,7 @@ Namespace java.beans.beancontext
 		''' </summary>
 		''' <param name="peer">      The peer BeanContext we are supplying an implementation for, if null the this object is its own peer </param>
 
-		Public Sub New(ByVal peer As BeanContextServices)
+		Public Sub New(  peer As BeanContextServices)
 			Me.New(peer, Nothing, False, True)
 		End Sub
 
@@ -164,7 +164,7 @@ Namespace java.beans.beancontext
 
 				' create an instance of a service ref
 
-				Friend Sub New(ByVal outerInstance As BeanContextServicesSupport.BCSSChild, ByVal sc As [Class], ByVal bcsp As BeanContextServiceProvider, ByVal delegated As Boolean)
+				Friend Sub New(  outerInstance As BeanContextServicesSupport.BCSSChild,   sc As [Class],   bcsp As BeanContextServiceProvider,   delegated As Boolean)
 						Me.outerInstance = outerInstance
 					MyBase.New()
 
@@ -179,7 +179,7 @@ Namespace java.beans.beancontext
 
 				' add a requestor and assoc listener
 
-				Friend Overridable Sub addRequestor(ByVal requestor As Object, ByVal bcsrl As BeanContextServiceRevokedListener)
+				Friend Overridable Sub addRequestor(  requestor As Object,   bcsrl As BeanContextServiceRevokedListener)
 					Dim cbcsrl As BeanContextServiceRevokedListener = CType(requestors(requestor), BeanContextServiceRevokedListener)
 
 					If cbcsrl IsNot Nothing AndAlso (Not cbcsrl.Equals(bcsrl)) Then Throw New java.util.TooManyListenersException
@@ -189,19 +189,19 @@ Namespace java.beans.beancontext
 
 				' remove a requestor
 
-				Friend Overridable Sub removeRequestor(ByVal requestor As Object)
+				Friend Overridable Sub removeRequestor(  requestor As Object)
 					requestors.Remove(requestor)
 				End Sub
 
 				' check a requestors listener
 
-				Friend Overridable Sub verifyRequestor(ByVal requestor As Object, ByVal bcsrl As BeanContextServiceRevokedListener)
+				Friend Overridable Sub verifyRequestor(  requestor As Object,   bcsrl As BeanContextServiceRevokedListener)
 					Dim cbcsrl As BeanContextServiceRevokedListener = CType(requestors(requestor), BeanContextServiceRevokedListener)
 
 					If cbcsrl IsNot Nothing AndAlso (Not cbcsrl.Equals(bcsrl)) Then Throw New java.util.TooManyListenersException
 				End Sub
 
-				Friend Overridable Sub verifyAndMaybeSetProvider(ByVal bcsp As BeanContextServiceProvider, ByVal isDelegated As Boolean)
+				Friend Overridable Sub verifyAndMaybeSetProvider(  bcsp As BeanContextServiceProvider,   isDelegated As Boolean)
 					Dim current As BeanContextServiceProvider
 
 					If isDelegated Then ' the provider is delegated
@@ -262,7 +262,7 @@ Namespace java.beans.beancontext
 					End Get
 				End Property
 
-				Friend Overridable Sub addRef(ByVal delegated As Boolean)
+				Friend Overridable Sub addRef(  delegated As Boolean)
 					If delegated Then
 						delegateRefs += 1
 					Else
@@ -271,7 +271,7 @@ Namespace java.beans.beancontext
 				End Sub
 
 
-				Friend Overridable Sub releaseRef(ByVal delegated As Boolean)
+				Friend Overridable Sub releaseRef(  delegated As Boolean)
 					If delegated Then
 						delegateRefs -= 1
 						If delegateRefs = 0 Then delegateProvider = Nothing
@@ -321,7 +321,7 @@ Namespace java.beans.beancontext
 			Friend Class BCSSCServiceRef
 				Private ReadOnly outerInstance As BeanContextServicesSupport.BCSSChild
 
-				Friend Sub New(ByVal outerInstance As BeanContextServicesSupport.BCSSChild, ByVal scref As BCSSCServiceClassRef, ByVal isDelegated As Boolean)
+				Friend Sub New(  outerInstance As BeanContextServicesSupport.BCSSChild,   scref As BCSSCServiceClassRef,   isDelegated As Boolean)
 						Me.outerInstance = outerInstance
 					serviceClassRef = scref
 					delegated = isDelegated
@@ -356,7 +356,7 @@ Namespace java.beans.beancontext
 				Friend delegated As Boolean = False
 			End Class
 
-			Friend Sub New(ByVal outerInstance As BeanContextServicesSupport, ByVal bcc As Object, ByVal peer As Object)
+			Friend Sub New(  outerInstance As BeanContextServicesSupport,   bcc As Object,   peer As Object)
 					Me.outerInstance = outerInstance
 				MyBase.New(bcc, peer)
 			End Sub

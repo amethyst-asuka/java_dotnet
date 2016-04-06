@@ -116,7 +116,7 @@ Namespace java.nio.channels
 		'''          filtering </exception>
 		''' <exception cref="IOException">
 		'''          If an I/O error occurs </exception>
-		Public MustOverride Function block(ByVal source As java.net.InetAddress) As MembershipKey
+		Public MustOverride Function block(  source As java.net.InetAddress) As MembershipKey
 
 		''' <summary>
 		''' Unblock multicast datagrams from the given source address that was
@@ -130,7 +130,7 @@ Namespace java.nio.channels
 		''' <exception cref="IllegalStateException">
 		'''          If the given source address is not currently blocked or the
 		'''          membership key is no longer valid </exception>
-		Public MustOverride Function unblock(ByVal source As java.net.InetAddress) As MembershipKey
+		Public MustOverride Function unblock(  source As java.net.InetAddress) As MembershipKey
 
 		''' <summary>
 		''' Returns the channel for which this membership key was created. This

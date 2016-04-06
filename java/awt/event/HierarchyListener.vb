@@ -52,7 +52,7 @@ Namespace java.awt.event
 		''' type of change, call <code>HierarchyEvent.getChangeFlags()</code>.
 		''' </summary>
 		''' <seealso cref= HierarchyEvent#getChangeFlags() </seealso>
-		Sub hierarchyChanged(ByVal e As HierarchyEvent)
+		Sub hierarchyChanged(  e As HierarchyEvent)
 	End Interface
 
 End Namespace

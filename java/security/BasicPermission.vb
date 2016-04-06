@@ -81,7 +81,7 @@ Namespace java.security
 		''' <summary>
 		''' initialize a BasicPermission object. Common to all constructors.
 		''' </summary>
-		Private Sub init(ByVal name As String)
+		Private Sub init(  name As String)
 			If name Is Nothing Then Throw New NullPointerException("name can't be null")
 
 			Dim len As Integer = name.length()
@@ -119,7 +119,7 @@ Namespace java.security
 		''' </param>
 		''' <exception cref="NullPointerException"> if {@code name} is {@code null}. </exception>
 		''' <exception cref="IllegalArgumentException"> if {@code name} is empty. </exception>
-		Public Sub New(ByVal name As String)
+		Public Sub New(  name As String)
 			MyBase.New(name)
 			init(name)
 		End Sub
@@ -135,7 +135,7 @@ Namespace java.security
 		''' </param>
 		''' <exception cref="NullPointerException"> if {@code name} is {@code null}. </exception>
 		''' <exception cref="IllegalArgumentException"> if {@code name} is empty. </exception>
-		Public Sub New(ByVal name As String, ByVal actions As String)
+		Public Sub New(  name As String,   actions As String)
 			MyBase.New(name)
 			init(name)
 		End Sub
@@ -156,7 +156,7 @@ Namespace java.security
 		''' </param>
 		''' <returns> true if the passed permission is equal to or
 		''' implied by this permission, false otherwise. </returns>
-		Public Overrides Function implies(ByVal p As Permission) As Boolean
+		Public Overrides Function implies(  p As Permission) As Boolean
 			If (p Is Nothing) OrElse (p.GetType() IsNot Me.GetType()) Then Return False
 
 			Dim that As BasicPermission = CType(p, BasicPermission)
@@ -187,7 +187,7 @@ Namespace java.security
 		''' <param name="obj"> the object we are testing for equality with this object. </param>
 		''' <returns> true if <i>obj</i>'s class is the same as this object's class
 		'''  and has the same name as this BasicPermission object, false otherwise. </returns>
-		Public Overrides Function Equals(ByVal obj As Object) As Boolean
+		Public Overrides Function Equals(  obj As Object) As Boolean
 			If obj Is Me Then Return True
 
 			If (obj Is Nothing) OrElse (obj.GetType() IsNot Me.GetType()) Then Return False
@@ -240,7 +240,7 @@ Namespace java.security
 		''' readObject is called to restore the state of the BasicPermission from
 		''' a stream.
 		''' </summary>
-		Private Sub readObject(ByVal s As java.io.ObjectInputStream)
+		Private Sub readObject(  s As java.io.ObjectInputStream)
 			s.defaultReadObject()
 			' init is called to initialize the rest of the values.
 			init(name)
@@ -311,7 +311,7 @@ Namespace java.security
 		''' 
 		''' </summary>
 
-		Public Sub New(ByVal clazz As [Class])
+		Public Sub New(  clazz As [Class])
 			perms = New Dictionary(Of String, Permission)(11)
 			all_allowed = False
 			permClass = clazz
@@ -331,7 +331,7 @@ Namespace java.security
 		''' </exception>
 		''' <exception cref="SecurityException"> - if this BasicPermissionCollection object
 		'''                                has been marked readonly </exception>
-		Public Overrides Sub add(ByVal permission As Permission)
+		Public Overrides Sub add(  permission As Permission)
 			If Not(TypeOf permission Is BasicPermission) Then Throw New IllegalArgumentException("invalid permission: " & permission)
 			If [readOnly] Then Throw New SecurityException("attempt to add a Permission to a readonly PermissionCollection")
 
@@ -365,7 +365,7 @@ Namespace java.security
 		''' </param>
 		''' <returns> true if "permission" is a proper subset of a permission in
 		''' the set, false if not. </returns>
-		Public Overrides Function implies(ByVal permission As Permission) As Boolean
+		Public Overrides Function implies(  permission As Permission) As Boolean
 			If Not(TypeOf permission Is BasicPermission) Then Return False
 
 			Dim bp As BasicPermission = CType(permission, BasicPermission)
@@ -457,7 +457,7 @@ Namespace java.security
 	'     * serialization compatibility with earlier releases. all_allowed
 	'     * and permClass unchanged.
 	'     
-		Private Sub writeObject(ByVal out As java.io.ObjectOutputStream)
+		Private Sub writeObject(  out As java.io.ObjectOutputStream)
 			' Don't call out.defaultWriteObject()
 
 			' Copy perms into a Hashtable
@@ -480,7 +480,7 @@ Namespace java.security
 		''' readObject is called to restore the state of the
 		''' BasicPermissionCollection from a stream.
 		''' </summary>
-		Private Sub readObject(ByVal [in] As java.io.ObjectInputStream)
+		Private Sub readObject(  [in] As java.io.ObjectInputStream)
 			' Don't call defaultReadObject()
 
 			' Read in serialized fields

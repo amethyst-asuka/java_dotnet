@@ -134,7 +134,7 @@ Namespace java.lang.ref
         Private Class ReferenceHandler
             Inherits Thread
 
-            Friend Sub New(ByVal g As ThreadGroup, ByVal name As String)
+            Friend Sub New(  g As ThreadGroup,   name As String)
                 MyBase.New(g, name)
             End Sub
 
@@ -259,12 +259,12 @@ Namespace java.lang.ref
 
         ' -- Constructors -- 
 
-        Friend Sub New(ByVal referent As T)
+        Friend Sub New(  referent As T)
             Me.New(referent, Nothing)
         End Sub
 
         'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-        Friend Sub New(ByVal referent As T, ByVal queue As ReferenceQueue(Of T))
+        Friend Sub New(  referent As T,   queue As ReferenceQueue(Of T))
             Me.referent = referent
             Me.queue = If(queue Is Nothing, ReferenceQueue.NULL, queue)
         End Sub

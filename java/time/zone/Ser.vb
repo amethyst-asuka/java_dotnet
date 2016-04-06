@@ -107,7 +107,7 @@ Namespace java.time.zone
 		''' </summary>
 		''' <param name="type">  the type </param>
 		''' <param name="object">  the object </param>
-		Friend Sub New(ByVal type As SByte, ByVal [object] As Object)
+		Friend Sub New(  type As SByte,   [object] As Object)
 			Me.type = type
 			Me.object_Renamed = object_Renamed
 		End Sub
@@ -127,15 +127,15 @@ Namespace java.time.zone
 		''' </ul>
 		''' </summary>
 		''' <param name="out">  the data stream to write to, not null </param>
-		Public Overrides Sub writeExternal(ByVal out As java.io.ObjectOutput)
+		Public Overrides Sub writeExternal(  out As java.io.ObjectOutput)
 			writeInternal(type, object_Renamed, out)
 		End Sub
 
-		Friend Shared Sub write(ByVal [object] As Object, ByVal out As java.io.DataOutput)
+		Friend Shared Sub write(  [object] As Object,   out As java.io.DataOutput)
 			writeInternal(ZRULES, object_Renamed, out)
 		End Sub
 
-		Private Shared Sub writeInternal(ByVal type As SByte, ByVal [object] As Object, ByVal out As java.io.DataOutput)
+		Private Shared Sub writeInternal(  type As SByte,   [object] As Object,   out As java.io.DataOutput)
 			out.writeByte(type)
 			Select Case type
 				Case ZRULES
@@ -167,17 +167,17 @@ Namespace java.time.zone
 		''' - {@code ZoneOffsetTransitionRule.of(month, dom, dow, time, timeEndOfDay, timeDefinition, standardOffset, offsetBefore, offsetAfter);}
 		''' </ul> </summary>
 		''' <param name="in">  the data to read, not null </param>
-		Public Overrides Sub readExternal(ByVal [in] As java.io.ObjectInput)
+		Public Overrides Sub readExternal(  [in] As java.io.ObjectInput)
 			type = [in].readByte()
 			object_Renamed = readInternal(type, [in])
 		End Sub
 
-		Friend Shared Function read(ByVal [in] As java.io.DataInput) As Object
+		Friend Shared Function read(  [in] As java.io.DataInput) As Object
 			Dim type As SByte = [in].readByte()
 			Return readInternal(type, [in])
 		End Function
 
-		Private Shared Function readInternal(ByVal type As SByte, ByVal [in] As java.io.DataInput) As Object
+		Private Shared Function readInternal(  type As SByte,   [in] As java.io.DataInput) As Object
 			Select Case type
 				Case ZRULES
 					Return ZoneRules.readExternal([in])
@@ -205,7 +205,7 @@ Namespace java.time.zone
 		''' <param name="offset">  the offset, not null </param>
 		''' <param name="out">  the output stream, not null </param>
 		''' <exception cref="IOException"> if an error occurs </exception>
-		Friend Shared Sub writeOffset(ByVal offset As java.time.ZoneOffset, ByVal out As java.io.DataOutput)
+		Friend Shared Sub writeOffset(  offset As java.time.ZoneOffset,   out As java.io.DataOutput)
 			Dim offsetSecs As Integer = offset.totalSeconds
 			Dim offsetByte As Integer = If(offsetSecs Mod 900 = 0, offsetSecs \ 900, 127) ' compress to -72 to +72
 			out.writeByte(offsetByte)
@@ -218,7 +218,7 @@ Namespace java.time.zone
 		''' <param name="in">  the input stream, not null </param>
 		''' <returns> the created object, not null </returns>
 		''' <exception cref="IOException"> if an error occurs </exception>
-		Friend Shared Function readOffset(ByVal [in] As java.io.DataInput) As java.time.ZoneOffset
+		Friend Shared Function readOffset(  [in] As java.io.DataInput) As java.time.ZoneOffset
 			Dim offsetByte As Integer = [in].readByte()
 			Return (If(offsetByte = 127, java.time.ZoneOffset.ofTotalSeconds([in].readInt()), java.time.ZoneOffset.ofTotalSeconds(offsetByte * 900)))
 		End Function
@@ -230,7 +230,7 @@ Namespace java.time.zone
 		''' <param name="epochSec">  the epoch seconds, not null </param>
 		''' <param name="out">  the output stream, not null </param>
 		''' <exception cref="IOException"> if an error occurs </exception>
-		Friend Shared Sub writeEpochSec(ByVal epochSec As Long, ByVal out As java.io.DataOutput)
+		Friend Shared Sub writeEpochSec(  epochSec As Long,   out As java.io.DataOutput)
 			If epochSec >= -4575744000L AndAlso epochSec < 10413792000L AndAlso epochSec Mod 900 = 0 Then ' quarter hours between 1825 and 2300
 				Dim store As Integer = CInt((epochSec + 4575744000L) \ 900)
 				out.writeByte((CInt(CUInt(store) >> 16)) And 255)
@@ -248,7 +248,7 @@ Namespace java.time.zone
 		''' <param name="in">  the input stream, not null </param>
 		''' <returns> the epoch seconds, not null </returns>
 		''' <exception cref="IOException"> if an error occurs </exception>
-		Friend Shared Function readEpochSec(ByVal [in] As java.io.DataInput) As Long
+		Friend Shared Function readEpochSec(  [in] As java.io.DataInput) As Long
 			Dim hiByte As Integer = [in].readByte() And 255
 			If hiByte = 255 Then
 				Return [in].readLong()

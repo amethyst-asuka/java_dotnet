@@ -54,7 +54,7 @@ Namespace java.awt.print
 		''' with the string representation of the specified
 		''' <seealso cref="IOException"/>. </summary>
 		''' <param name="exception"> the specified <code>IOException</code> </param>
-		Public Sub New(ByVal exception_Renamed As java.io.IOException)
+		Public Sub New(  exception_Renamed As java.io.IOException)
 			initCause(Nothing) ' Disallow subsequent initCause
 			mException = exception_Renamed
 		End Sub

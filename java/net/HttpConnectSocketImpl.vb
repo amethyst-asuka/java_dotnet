@@ -77,12 +77,12 @@ Namespace java.net
 			End Function
 		End Class
 
-		Friend Sub New(ByVal server As String, ByVal port As Integer)
+		Friend Sub New(  server As String,   port As Integer)
 			Me.server = server
 			Me.port = port
 		End Sub
 
-		Friend Sub New(ByVal proxy_Renamed As Proxy)
+		Friend Sub New(  proxy_Renamed As Proxy)
 			Dim a As SocketAddress = proxy_Renamed.address()
 			If Not(TypeOf a Is InetSocketAddress) Then Throw New IllegalArgumentException("Unsupported address type")
 
@@ -91,7 +91,7 @@ Namespace java.net
 			port = ad.port
 		End Sub
 
-		Protected Friend Overrides Sub connect(ByVal endpoint As SocketAddress, ByVal timeout As Integer)
+		Protected Friend Overrides Sub connect(  endpoint As SocketAddress,   timeout As Integer)
 			If endpoint Is Nothing OrElse Not(TypeOf endpoint Is InetSocketAddress) Then Throw New IllegalArgumentException("Unsupported address type")
 			Dim epoint As InetSocketAddress = CType(endpoint, InetSocketAddress)
 			Dim destHost As String = If(epoint.unresolved, epoint.hostName, epoint.address.hostAddress)
@@ -125,7 +125,7 @@ Namespace java.net
 			End Try
 		End Sub
 
-		Public Overrides Sub setOption(ByVal opt As Integer, ByVal val As Object)
+		Public Overrides Sub setOption(  opt As Integer,   val As Object)
 			MyBase.optionion(opt, val)
 
 			If external_address IsNot Nothing Then Return ' we're connected, just return
@@ -134,7 +134,7 @@ Namespace java.net
 			optionsMap(opt) = val
 		End Sub
 
-		Private Function privilegedDoTunnel(ByVal urlString As String, ByVal timeout As Integer) As Socket
+		Private Function privilegedDoTunnel(  urlString As String,   timeout As Integer) As Socket
 			Try
 				Return java.security.AccessController.doPrivileged(New PrivilegedExceptionActionAnonymousInnerClassHelper(Of T)
 			Catch pae As java.security.PrivilegedActionException
@@ -150,7 +150,7 @@ Namespace java.net
 			End Function
 		End Class
 
-		Private Function doTunnel(ByVal urlString As String, ByVal connectTimeout As Integer) As Socket
+		Private Function doTunnel(  urlString As String,   connectTimeout As Integer) As Socket
 			Dim proxy_Renamed As New Proxy(Proxy.Type.HTTP, New InetSocketAddress(server, port))
 			Dim destURL As New URL(urlString)
 			Dim conn As HttpURLConnection = CType(destURL.openConnection(proxy_Renamed), HttpURLConnection)
@@ -166,7 +166,7 @@ Namespace java.net
 			End Try
 		End Function
 
-		Private Sub doTunneling(ByVal conn As HttpURLConnection)
+		Private Sub doTunneling(  conn As HttpURLConnection)
 			Try
 				doTunneling_Renamed.invoke(conn)
 			Catch x As ReflectiveOperationException

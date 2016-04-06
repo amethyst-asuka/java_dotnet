@@ -48,7 +48,7 @@ Namespace java.nio.file
         ''' <summary>
         ''' Returns the {@code FileSystemProvider} to delegate to.
         ''' </summary>
-        Private Shared Function provider(ByVal path As Path) As java.nio.file.spi.FileSystemProvider
+        Private Shared Function provider(  path As Path) As java.nio.file.spi.FileSystemProvider
             Return path.fileSystem.provider()
         End Function
 
@@ -56,7 +56,7 @@ Namespace java.nio.file
         ''' Convert a Closeable to a Runnable by converting checked IOException
         ''' to UncheckedIOException
         ''' </summary>
-        Private Shared Function asUncheckedRunnable(ByVal c As java.io.Closeable) As Runnable
+        Private Shared Function asUncheckedRunnable(  c As java.io.Closeable) As Runnable
             Return () ->
 				Try
 					c.close()
@@ -99,7 +99,7 @@ Namespace java.nio.file
         '''          In the case of the default provider, and a security manager is
         '''          installed, the <seealso cref="SecurityManager#checkRead(String) checkRead"/>
         '''          method is invoked to check read access to the file. </exception>
-        Public Shared Function newInputStream(ByVal path As Path, ParamArray ByVal options As OpenOption()) As java.io.InputStream
+        Public Shared Function newInputStream(  path As Path, ParamArray   options As OpenOption()) As java.io.InputStream
             Return provider(path).newInputStream(path, options)
         End Function
 
@@ -160,7 +160,7 @@ Namespace java.nio.file
         '''          SecurityManager#checkDelete(String) checkDelete} method is
         '''          invoked to check delete access if the file is opened with the
         '''          {@code DELETE_ON_CLOSE} option. </exception>
-        Public Shared Function newOutputStream(ByVal path As Path, ParamArray ByVal options As OpenOption()) As java.io.OutputStream
+        Public Shared Function newOutputStream(  path As Path, ParamArray   options As OpenOption()) As java.io.OutputStream
             Return provider(path).newOutputStream(path, options)
         End Function
 
@@ -300,7 +300,7 @@ Namespace java.nio.file
         '''          {@code DELETE_ON_CLOSE} option.
         ''' </exception>
         ''' <seealso cref= java.nio.channels.FileChannel#open(Path,Set,FileAttribute[]) </seealso>
-        Public Shared Function newByteChannel(Of T1 As OpenOption, T2)(ByVal path As Path, ByVal options As java.util.Set(Of T1), ParamArray ByVal attrs As java.nio.file.attribute.FileAttribute(Of T2)()) As java.nio.channels.SeekableByteChannel
+        Public Shared Function newByteChannel(Of T1 As OpenOption, T2)(  path As Path,   options As java.util.Set(Of T1), ParamArray   attrs As java.nio.file.attribute.FileAttribute(Of T2)()) As java.nio.channels.SeekableByteChannel
             Return provider(path).newByteChannel(path, options, attrs)
         End Function
 
@@ -341,7 +341,7 @@ Namespace java.nio.file
         '''          {@code DELETE_ON_CLOSE} option.
         ''' </exception>
         ''' <seealso cref= java.nio.channels.FileChannel#open(Path,OpenOption[]) </seealso>
-        Public Shared Function newByteChannel(ByVal path As Path, ParamArray ByVal options As OpenOption()) As java.nio.channels.SeekableByteChannel
+        Public Shared Function newByteChannel(  path As Path, ParamArray   options As OpenOption()) As java.nio.channels.SeekableByteChannel
             Dim [set] As java.util.Set(Of OpenOption) = New HashSet(Of OpenOption)(options.Length)
             java.util.Collections.addAll([set], options)
             Return newByteChannel(path, [set])
@@ -355,7 +355,7 @@ Namespace java.nio.file
             Private Sub New()
             End Sub
 
-            Public Overrides Function accept(ByVal entry As Path) As Boolean
+            Public Overrides Function accept(  entry As Path) As Boolean
                 Return True
             End Function
 
@@ -392,7 +392,7 @@ Namespace java.nio.file
         '''          In the case of the default provider, and a security manager is
         '''          installed, the <seealso cref="SecurityManager#checkRead(String) checkRead"/>
         '''          method is invoked to check read access to the directory. </exception>
-        Public Shared Function newDirectoryStream(ByVal dir As Path) As DirectoryStream(Of Path)
+        Public Shared Function newDirectoryStream(  dir As Path) As DirectoryStream(Of Path)
             Return provider(dir).newDirectoryStream(dir, AcceptAllFilter.FILTER)
         End Function
 
@@ -444,7 +444,7 @@ Namespace java.nio.file
         '''          In the case of the default provider, and a security manager is
         '''          installed, the <seealso cref="SecurityManager#checkRead(String) checkRead"/>
         '''          method is invoked to check read access to the directory. </exception>
-        Public Shared Function newDirectoryStream(ByVal dir As Path, ByVal glob As String) As DirectoryStream(Of Path)
+        Public Shared Function newDirectoryStream(  dir As Path,   glob As String) As DirectoryStream(Of Path)
             ' avoid creating a matcher if all entries are required.
             If glob.Equals("*") Then Return newDirectoryStream(dir)
 
@@ -519,7 +519,7 @@ Namespace java.nio.file
         '''          installed, the <seealso cref="SecurityManager#checkRead(String) checkRead"/>
         '''          method is invoked to check read access to the directory. </exception>
         'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-        Public Shared Function newDirectoryStream(Of T1)(ByVal dir As Path, ByVal filter As DirectoryStream.Filter(Of T1)) As DirectoryStream(Of Path)
+        Public Shared Function newDirectoryStream(Of T1)(  dir As Path,   filter As DirectoryStream.Filter(Of T1)) As DirectoryStream(Of Path)
             Return provider(dir).newDirectoryStream(dir, filter)
         End Function
 
@@ -557,7 +557,7 @@ Namespace java.nio.file
         '''          In the case of the default provider, and a security manager is
         '''          installed, the <seealso cref="SecurityManager#checkWrite(String) checkWrite"/>
         '''          method is invoked to check write access to the new file. </exception>
-        Public Shared Function createFile(Of T1)(ByVal path As Path, ParamArray ByVal attrs As java.nio.file.attribute.FileAttribute(Of T1)()) As Path
+        Public Shared Function createFile(Of T1)(  path As Path, ParamArray   attrs As java.nio.file.attribute.FileAttribute(Of T1)()) As Path
             Dim options As java.util.EnumSet(Of StandardOpenOption) = java.util.EnumSet.of(Of StandardOpenOption)(StandardOpenOption.CREATE_NEW, StandardOpenOption.WRITE)
             newByteChannel(path, options, attrs).close()
             Return path
@@ -597,7 +597,7 @@ Namespace java.nio.file
         '''          In the case of the default provider, and a security manager is
         '''          installed, the <seealso cref="SecurityManager#checkWrite(String) checkWrite"/>
         '''          method is invoked to check write access to the new directory. </exception>
-        Public Shared Function createDirectory(Of T1)(ByVal dir As Path, ParamArray ByVal attrs As java.nio.file.attribute.FileAttribute(Of T1)()) As Path
+        Public Shared Function createDirectory(Of T1)(  dir As Path, ParamArray   attrs As java.nio.file.attribute.FileAttribute(Of T1)()) As Path
             provider(dir).createDirectory(dir, attrs)
             Return dir
         End Function
@@ -645,7 +645,7 @@ Namespace java.nio.file
         '''          This may invoke the security manager's {@link
         '''          SecurityManager#checkPropertyAccess(String) checkPropertyAccess}
         '''          method to check access to the system property {@code user.dir} </exception>
-        Public Shared Function createDirectories(Of T1)(ByVal dir As Path, ParamArray ByVal attrs As java.nio.file.attribute.FileAttribute(Of T1)()) As Path
+        Public Shared Function createDirectories(Of T1)(  dir As Path, ParamArray   attrs As java.nio.file.attribute.FileAttribute(Of T1)()) As Path
             ' attempt to create the directory
             Try
                 createAndCheckIsDirectory(dir, attrs)
@@ -696,7 +696,7 @@ Namespace java.nio.file
         ''' Used by createDirectories to attempt to create a directory. A no-op
         ''' if the directory already exists.
         ''' </summary>
-        Private Shared Sub createAndCheckIsDirectory(Of T1)(ByVal dir As Path, ParamArray ByVal attrs As java.nio.file.attribute.FileAttribute(Of T1)())
+        Private Shared Sub createAndCheckIsDirectory(Of T1)(  dir As Path, ParamArray   attrs As java.nio.file.attribute.FileAttribute(Of T1)())
             Try
                 createDirectory(dir, attrs)
             Catch x As FileAlreadyExistsException
@@ -761,7 +761,7 @@ Namespace java.nio.file
         '''          In the case of the default provider, and a security manager is
         '''          installed, the <seealso cref="SecurityManager#checkWrite(String) checkWrite"/>
         '''          method is invoked to check write access to the file. </exception>
-        Public Shared Function createTempFile(Of T1)(ByVal dir As Path, ByVal prefix As String, ByVal suffix As String, ParamArray ByVal attrs As java.nio.file.attribute.FileAttribute(Of T1)()) As Path
+        Public Shared Function createTempFile(Of T1)(  dir As Path,   prefix As String,   suffix As String, ParamArray   attrs As java.nio.file.attribute.FileAttribute(Of T1)()) As Path
             Return TempFileHelper.createTempFile(java.util.Objects.requireNonNull(dir), prefix, suffix, attrs)
         End Function
 
@@ -800,7 +800,7 @@ Namespace java.nio.file
         '''          In the case of the default provider, and a security manager is
         '''          installed, the <seealso cref="SecurityManager#checkWrite(String) checkWrite"/>
         '''          method is invoked to check write access to the file. </exception>
-        Public Shared Function createTempFile(Of T1)(ByVal prefix As String, ByVal suffix As String, ParamArray ByVal attrs As java.nio.file.attribute.FileAttribute(Of T1)()) As Path
+        Public Shared Function createTempFile(Of T1)(  prefix As String,   suffix As String, ParamArray   attrs As java.nio.file.attribute.FileAttribute(Of T1)()) As Path
             Return TempFileHelper.createTempFile(Nothing, prefix, suffix, attrs)
         End Function
 
@@ -848,7 +848,7 @@ Namespace java.nio.file
         '''          installed, the <seealso cref="SecurityManager#checkWrite(String) checkWrite"/>
         '''          method is invoked to check write access when creating the
         '''          directory. </exception>
-        Public Shared Function createTempDirectory(Of T1)(ByVal dir As Path, ByVal prefix As String, ParamArray ByVal attrs As java.nio.file.attribute.FileAttribute(Of T1)()) As Path
+        Public Shared Function createTempDirectory(Of T1)(  dir As Path,   prefix As String, ParamArray   attrs As java.nio.file.attribute.FileAttribute(Of T1)()) As Path
             Return TempFileHelper.createTempDirectory(java.util.Objects.requireNonNull(dir), prefix, attrs)
         End Function
 
@@ -884,7 +884,7 @@ Namespace java.nio.file
         '''          installed, the <seealso cref="SecurityManager#checkWrite(String) checkWrite"/>
         '''          method is invoked to check write access when creating the
         '''          directory. </exception>
-        Public Shared Function createTempDirectory(Of T1)(ByVal prefix As String, ParamArray ByVal attrs As java.nio.file.attribute.FileAttribute(Of T1)()) As Path
+        Public Shared Function createTempDirectory(Of T1)(  prefix As String, ParamArray   attrs As java.nio.file.attribute.FileAttribute(Of T1)()) As Path
             Return TempFileHelper.createTempDirectory(Nothing, prefix, attrs)
         End Function
 
@@ -932,7 +932,7 @@ Namespace java.nio.file
         '''          is installed, it denies <seealso cref="LinkPermission"/><tt>("symbolic")</tt>
         '''          or its <seealso cref="SecurityManager#checkWrite(String) checkWrite"/>
         '''          method denies write access to the path of the symbolic link. </exception>
-        Public Shared Function createSymbolicLink(Of T1)(ByVal link As Path, ByVal target As Path, ParamArray ByVal attrs As java.nio.file.attribute.FileAttribute(Of T1)()) As Path
+        Public Shared Function createSymbolicLink(Of T1)(  link As Path,   target As Path, ParamArray   attrs As java.nio.file.attribute.FileAttribute(Of T1)()) As Path
             provider(link).createSymbolicLink(link, target, attrs)
             Return link
         End Function
@@ -974,7 +974,7 @@ Namespace java.nio.file
         '''          or its <seealso cref="SecurityManager#checkWrite(String) checkWrite"/>
         '''          method denies write access to either the link or the
         '''          existing file. </exception>
-        Public Shared Function createLink(ByVal link As Path, ByVal existing As Path) As Path
+        Public Shared Function createLink(  link As Path,   existing As Path) As Path
             provider(link).createLink(link, existing)
             Return link
         End Function
@@ -1013,7 +1013,7 @@ Namespace java.nio.file
         '''          In the case of the default provider, and a security manager is
         '''          installed, the <seealso cref="SecurityManager#checkDelete(String)"/> method
         '''          is invoked to check delete access to the file </exception>
-        Public Shared Sub delete(ByVal path As Path)
+        Public Shared Sub delete(  path As Path)
             provider(path).delete(path)
         End Sub
 
@@ -1051,7 +1051,7 @@ Namespace java.nio.file
         '''          In the case of the default provider, and a security manager is
         '''          installed, the <seealso cref="SecurityManager#checkDelete(String)"/> method
         '''          is invoked to check delete access to the file. </exception>
-        Public Shared Function deleteIfExists(ByVal path As Path) As Boolean
+        Public Shared Function deleteIfExists(  path As Path) As Boolean
             Return provider(path).deleteIfExists(path)
         End Function
 
@@ -1154,7 +1154,7 @@ Namespace java.nio.file
         '''          to check write access to the target file. If a symbolic link is
         '''          copied the security manager is invoked to check {@link
         '''          LinkPermission}{@code ("symbolic")}. </exception>
-        Public Shared Function copy(ByVal source As Path, ByVal target As Path, ParamArray ByVal options As CopyOption()) As Path
+        Public Shared Function copy(  source As Path,   target As Path, ParamArray   options As CopyOption()) As Path
             Dim provider As java.nio.file.spi.FileSystemProvider = provider(source)
             If provider(target) Is provider Then
                 ' same provider
@@ -1272,7 +1272,7 @@ Namespace java.nio.file
         '''          installed, the <seealso cref="SecurityManager#checkWrite(String) checkWrite"/>
         '''          method is invoked to check write access to both the source and
         '''          target file. </exception>
-        Public Shared Function move(ByVal source As Path, ByVal target As Path, ParamArray ByVal options As CopyOption()) As Path
+        Public Shared Function move(  source As Path,   target As Path, ParamArray   options As CopyOption()) As Path
             Dim provider As java.nio.file.spi.FileSystemProvider = provider(source)
             If provider(target) Is provider Then
                 ' same provider
@@ -1311,7 +1311,7 @@ Namespace java.nio.file
         '''          In the case of the default provider, and a security manager
         '''          is installed, it checks that {@code FilePermission} has been
         '''          granted with the "{@code readlink}" action to read the link. </exception>
-        Public Shared Function readSymbolicLink(ByVal link As Path) As Path
+        Public Shared Function readSymbolicLink(  link As Path) As Path
             Return provider(link).readSymbolicLink(link)
         End Function
 
@@ -1339,7 +1339,7 @@ Namespace java.nio.file
         '''          method is invoked to check read access to the file, and in
         '''          addition it checks <seealso cref="RuntimePermission"/><tt>
         '''          ("getFileStoreAttributes")</tt> </exception>
-        Public Shared Function getFileStore(ByVal path As Path) As FileStore
+        Public Shared Function getFileStore(  path As Path) As FileStore
             Return provider(path).getFileStore(path)
         End Function
 
@@ -1381,7 +1381,7 @@ Namespace java.nio.file
         '''          method is invoked to check read access to both files.
         ''' </exception>
         ''' <seealso cref= java.nio.file.attribute.BasicFileAttributes#fileKey </seealso>
-        Public Shared Function isSameFile(ByVal path As Path, ByVal path2 As Path) As Boolean
+        Public Shared Function isSameFile(  path As Path,   path2 As Path) As Boolean
             Return provider(path).isSameFile(path, path2)
         End Function
 
@@ -1407,7 +1407,7 @@ Namespace java.nio.file
         '''          In the case of the default provider, and a security manager is
         '''          installed, the <seealso cref="SecurityManager#checkRead(String) checkRead"/>
         '''          method is invoked to check read access to the file. </exception>
-        Public Shared Function isHidden(ByVal path As Path) As Boolean
+        Public Shared Function isHidden(  path As Path) As Boolean
             Return provider(path).isHidden(path)
         End Function
 
@@ -1494,7 +1494,7 @@ Namespace java.nio.file
         ''' <exception cref="SecurityException">
         '''          If a security manager is installed and it denies an unspecified
         '''          permission required by a file type detector implementation. </exception>
-        Public Shared Function probeContentType(ByVal path As Path) As String
+        Public Shared Function probeContentType(  path As Path) As String
             ' try installed file type detectors
             For Each detector As java.nio.file.spi.FileTypeDetector In FileTypeDetectors.installeDetectors
                 Dim result As String = detector.probeContentType(path)
@@ -1548,7 +1548,7 @@ Namespace java.nio.file
         ''' </param>
         ''' <returns>  a file attribute view of the specified type, or {@code null} if
         '''          the attribute view type is not available </returns>
-        Public Shared Function getFileAttributeView(Of V As java.nio.file.attribute.FileAttributeView)(ByVal path As Path, ByVal type As [Class], ParamArray ByVal options As LinkOption()) As V
+        Public Shared Function getFileAttributeView(Of V As java.nio.file.attribute.FileAttributeView)(  path As Path,   type As [Class], ParamArray   options As LinkOption()) As V
             Return provider(path).getFileAttributeView(path, type, options)
         End Function
 
@@ -1605,7 +1605,7 @@ Namespace java.nio.file
         '''          method is invoked to check read access to the file. If this
         '''          method is invoked to read security sensitive attributes then the
         '''          security manager may be invoke to check for additional permissions. </exception>
-        Public Shared Function readAttributes(Of A As java.nio.file.attribute.BasicFileAttributes)(ByVal path As Path, ByVal type As [Class], ParamArray ByVal options As LinkOption()) As A
+        Public Shared Function readAttributes(Of A As java.nio.file.attribute.BasicFileAttributes)(  path As Path,   type As [Class], ParamArray   options As LinkOption()) As A
             Return provider(path).readAttributes(path, type, options)
         End Function
 
@@ -1669,7 +1669,7 @@ Namespace java.nio.file
         '''          method denies write access to the file. If this method is invoked
         '''          to set security sensitive attributes then the security manager
         '''          may be invoked to check for additional permissions. </exception>
-        Public Shared Function setAttribute(ByVal path As Path, ByVal attribute As String, ByVal value As Object, ParamArray ByVal options As LinkOption()) As Path
+        Public Shared Function setAttribute(  path As Path,   attribute As String,   value As Object, ParamArray   options As LinkOption()) As Path
             provider(path).attributeute(path, attribute, value, options)
             Return path
         End Function
@@ -1726,7 +1726,7 @@ Namespace java.nio.file
         '''          method denies read access to the file. If this method is invoked
         '''          to read security sensitive attributes then the security manager
         '''          may be invoked to check for additional permissions. </exception>
-        Public Shared Function getAttribute(ByVal path As Path, ByVal attribute As String, ParamArray ByVal options As LinkOption()) As Object
+        Public Shared Function getAttribute(  path As Path,   attribute As String, ParamArray   options As LinkOption()) As Object
             ' only one attribute should be read
             If attribute.IndexOf("*"c) >= 0 OrElse attribute.IndexOf(","c) >= 0 Then Throw New IllegalArgumentException(attribute)
             Dim map As IDictionary(Of String, Object) = readAttributes(path, attribute, options)
@@ -1819,7 +1819,7 @@ Namespace java.nio.file
         '''          method denies read access to the file. If this method is invoked
         '''          to read security sensitive attributes then the security manager
         '''          may be invoke to check for additional permissions. </exception>
-        Public Shared Function readAttributes(ByVal path As Path, ByVal attributes As String, ParamArray ByVal options As LinkOption()) As IDictionary(Of String, Object)
+        Public Shared Function readAttributes(  path As Path,   attributes As String, ParamArray   options As LinkOption()) As IDictionary(Of String, Object)
             Return provider(path).readAttributes(path, attributes, options)
         End Function
 
@@ -1855,7 +1855,7 @@ Namespace java.nio.file
         '''          installed, and it denies <seealso cref="RuntimePermission"/><tt>("accessUserInformation")</tt>
         '''          or its <seealso cref="SecurityManager#checkRead(String) checkRead"/> method
         '''          denies read access to the file. </exception>
-        Public Shared Function getPosixFilePermissions(ByVal path As Path, ParamArray ByVal options As LinkOption()) As java.util.Set(Of java.nio.file.attribute.PosixFilePermission)
+        Public Shared Function getPosixFilePermissions(  path As Path, ParamArray   options As LinkOption()) As java.util.Set(Of java.nio.file.attribute.PosixFilePermission)
             Return readAttributes(path, GetType(java.nio.file.attribute.PosixFileAttributes), options).permissions()
         End Function
 
@@ -1888,7 +1888,7 @@ Namespace java.nio.file
         '''          installed, it denies <seealso cref="RuntimePermission"/><tt>("accessUserInformation")</tt>
         '''          or its <seealso cref="SecurityManager#checkWrite(String) checkWrite"/>
         '''          method denies write access to the file. </exception>
-        Public Shared Function setPosixFilePermissions(ByVal path As Path, ByVal perms As java.util.Set(Of java.nio.file.attribute.PosixFilePermission)) As Path
+        Public Shared Function setPosixFilePermissions(  path As Path,   perms As java.util.Set(Of java.nio.file.attribute.PosixFilePermission)) As Path
             Dim view As java.nio.file.attribute.PosixFileAttributeView = getFileAttributeView(path, GetType(java.nio.file.attribute.PosixFileAttributeView))
             If view Is Nothing Then Throw New UnsupportedOperationException
             view.permissions = perms
@@ -1919,7 +1919,7 @@ Namespace java.nio.file
         '''          installed, it denies <seealso cref="RuntimePermission"/><tt>("accessUserInformation")</tt>
         '''          or its <seealso cref="SecurityManager#checkRead(String) checkRead"/> method
         '''          denies read access to the file. </exception>
-        Public Shared Function getOwner(ByVal path As Path, ParamArray ByVal options As LinkOption()) As java.nio.file.attribute.UserPrincipal
+        Public Shared Function getOwner(  path As Path, ParamArray   options As LinkOption()) As java.nio.file.attribute.UserPrincipal
             Dim view As java.nio.file.attribute.FileOwnerAttributeView = getFileAttributeView(path, GetType(java.nio.file.attribute.FileOwnerAttributeView), options)
             If view Is Nothing Then Throw New UnsupportedOperationException
             Return view.owner
@@ -1962,7 +1962,7 @@ Namespace java.nio.file
         ''' </exception>
         ''' <seealso cref= FileSystem#getUserPrincipalLookupService </seealso>
         ''' <seealso cref= java.nio.file.attribute.UserPrincipalLookupService </seealso>
-        Public Shared Function setOwner(ByVal path As Path, ByVal owner As java.nio.file.attribute.UserPrincipal) As Path
+        Public Shared Function setOwner(  path As Path,   owner As java.nio.file.attribute.UserPrincipal) As Path
             Dim view As java.nio.file.attribute.FileOwnerAttributeView = getFileAttributeView(path, GetType(java.nio.file.attribute.FileOwnerAttributeView))
             If view Is Nothing Then Throw New UnsupportedOperationException
             view.owner = owner
@@ -1988,7 +1988,7 @@ Namespace java.nio.file
         '''          In the case of the default provider, and a security manager is
         '''          installed, its <seealso cref="SecurityManager#checkRead(String) checkRead"/>
         '''          method denies read access to the file. </exception>
-        Public Shared Function isSymbolicLink(ByVal path As Path) As Boolean
+        Public Shared Function isSymbolicLink(  path As Path) As Boolean
             Try
                 Return readAttributes(path, GetType(java.nio.file.attribute.BasicFileAttributes), LinkOption.NOFOLLOW_LINKS).symbolicLink
             Catch ioe As java.io.IOException
@@ -2024,7 +2024,7 @@ Namespace java.nio.file
         '''          In the case of the default provider, and a security manager is
         '''          installed, its <seealso cref="SecurityManager#checkRead(String) checkRead"/>
         '''          method denies read access to the file. </exception>
-        Public Shared Function isDirectory(ByVal path As Path, ParamArray ByVal options As LinkOption()) As Boolean
+        Public Shared Function isDirectory(  path As Path, ParamArray   options As LinkOption()) As Boolean
             Try
                 Return readAttributes(path, GetType(java.nio.file.attribute.BasicFileAttributes), options).directory
             Catch ioe As java.io.IOException
@@ -2060,7 +2060,7 @@ Namespace java.nio.file
         '''          In the case of the default provider, and a security manager is
         '''          installed, its <seealso cref="SecurityManager#checkRead(String) checkRead"/>
         '''          method denies read access to the file. </exception>
-        Public Shared Function isRegularFile(ByVal path As Path, ParamArray ByVal options As LinkOption()) As Boolean
+        Public Shared Function isRegularFile(  path As Path, ParamArray   options As LinkOption()) As Boolean
             Try
                 Return readAttributes(path, GetType(java.nio.file.attribute.BasicFileAttributes), options).regularFile
             Catch ioe As java.io.IOException
@@ -2095,7 +2095,7 @@ Namespace java.nio.file
         '''          method denies read access to the file.
         ''' </exception>
         ''' <seealso cref= BasicFileAttributes#lastModifiedTime </seealso>
-        Public Shared Function getLastModifiedTime(ByVal path As Path, ParamArray ByVal options As LinkOption()) As java.nio.file.attribute.FileTime
+        Public Shared Function getLastModifiedTime(  path As Path, ParamArray   options As LinkOption()) As java.nio.file.attribute.FileTime
             Return readAttributes(path, GetType(java.nio.file.attribute.BasicFileAttributes), options).lastModifiedTime()
         End Function
 
@@ -2131,7 +2131,7 @@ Namespace java.nio.file
         '''          to check write access to file
         ''' </exception>
         ''' <seealso cref= BasicFileAttributeView#setTimes </seealso>
-        Public Shared Function setLastModifiedTime(ByVal path As Path, ByVal time As java.nio.file.attribute.FileTime) As Path
+        Public Shared Function setLastModifiedTime(  path As Path,   time As java.nio.file.attribute.FileTime) As Path
             getFileAttributeView(path, GetType(java.nio.file.attribute.BasicFileAttributeView)).timesmes(time, Nothing, Nothing)
             Return path
         End Function
@@ -2156,7 +2156,7 @@ Namespace java.nio.file
         '''          method denies read access to the file.
         ''' </exception>
         ''' <seealso cref= BasicFileAttributes#size </seealso>
-        Public Shared Function size(ByVal path As Path) As Long
+        Public Shared Function size(  path As Path) As Long
             Return readAttributes(path, GetType(java.nio.file.attribute.BasicFileAttributes)).size()
         End Function
 
@@ -2165,7 +2165,7 @@ Namespace java.nio.file
         ''' <summary>
         ''' Returns {@code false} if NOFOLLOW_LINKS is present.
         ''' </summary>
-        Private Shared Function followLinks(ParamArray ByVal options As LinkOption()) As Boolean
+        Private Shared Function followLinks(ParamArray   options As LinkOption()) As Boolean
             Dim followLinks_Renamed As Boolean = True
             For Each opt As LinkOption In options
                 If opt Is LinkOption.NOFOLLOW_LINKS Then
@@ -2205,7 +2205,7 @@ Namespace java.nio.file
         '''          read access to the file.
         ''' </exception>
         ''' <seealso cref= #notExists </seealso>
-        Public Shared Function exists(ByVal path As Path, ParamArray ByVal options As LinkOption()) As Boolean
+        Public Shared Function exists(  path As Path, ParamArray   options As LinkOption()) As Boolean
             Try
                 If followLinks(options) Then
                     provider(path).checkAccess(path)
@@ -2252,7 +2252,7 @@ Namespace java.nio.file
         '''          In the case of the default provider, the {@link
         '''          SecurityManager#checkRead(String)} is invoked to check
         '''          read access to the file. </exception>
-        Public Shared Function notExists(ByVal path As Path, ParamArray ByVal options As LinkOption()) As Boolean
+        Public Shared Function notExists(  path As Path, ParamArray   options As LinkOption()) As Boolean
             Try
                 If followLinks(options) Then
                     provider(path).checkAccess(path)
@@ -2273,7 +2273,7 @@ Namespace java.nio.file
         ''' <summary>
         ''' Used by isReadbale, isWritable, isExecutable to test access to a file.
         ''' </summary>
-        Private Shared Function isAccessible(ByVal path As Path, ParamArray ByVal modes As AccessMode()) As Boolean
+        Private Shared Function isAccessible(  path As Path, ParamArray   modes As AccessMode()) As Boolean
             Try
                 provider(path).checkAccess(path, modes)
                 Return True
@@ -2308,7 +2308,7 @@ Namespace java.nio.file
         '''          In the case of the default provider, and a security manager is
         '''          installed, the <seealso cref="SecurityManager#checkRead(String) checkRead"/>
         '''          is invoked to check read access to the file. </exception>
-        Public Shared Function isReadable(ByVal path As Path) As Boolean
+        Public Shared Function isReadable(  path As Path) As Boolean
             Return isAccessible(path, AccessMode.READ)
         End Function
 
@@ -2338,7 +2338,7 @@ Namespace java.nio.file
         '''          In the case of the default provider, and a security manager is
         '''          installed, the <seealso cref="SecurityManager#checkWrite(String) checkWrite"/>
         '''          is invoked to check write access to the file. </exception>
-        Public Shared Function isWritable(ByVal path As Path) As Boolean
+        Public Shared Function isWritable(  path As Path) As Boolean
             Return isAccessible(path, AccessMode.WRITE)
         End Function
 
@@ -2372,7 +2372,7 @@ Namespace java.nio.file
         '''          In the case of the default provider, and a security manager is
         '''          installed, the {@link SecurityManager#checkExec(String)
         '''          checkExec} is invoked to check execute access to the file. </exception>
-        Public Shared Function isExecutable(ByVal path As Path) As Boolean
+        Public Shared Function isExecutable(  path As Path) As Boolean
             Return isAccessible(path, AccessMode.EXECUTE)
         End Function
 
@@ -2468,7 +2468,7 @@ Namespace java.nio.file
         ''' <exception cref="IOException">
         '''          if an I/O error is thrown by a visitor method </exception>
         'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-        Public Shared Function walkFileTree(Of T1)(ByVal start As Path, ByVal options As java.util.Set(Of FileVisitOption), ByVal maxDepth As Integer, ByVal visitor As FileVisitor(Of T1)) As Path
+        Public Shared Function walkFileTree(Of T1)(  start As Path,   options As java.util.Set(Of FileVisitOption),   maxDepth As Integer,   visitor As FileVisitor(Of T1)) As Path
             ''' <summary>
             ''' Create a FileTreeWalker to walk the file tree, invoking the visitor
             ''' for each event.
@@ -2545,7 +2545,7 @@ Namespace java.nio.file
         ''' <exception cref="IOException">
         '''          if an I/O error is thrown by a visitor method </exception>
         'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-        Public Shared Function walkFileTree(Of T1)(ByVal start As Path, ByVal visitor As FileVisitor(Of T1)) As Path
+        Public Shared Function walkFileTree(Of T1)(  start As Path,   visitor As FileVisitor(Of T1)) As Path
             Return walkFileTree(start, java.util.EnumSet.noneOf(GetType(FileVisitOption)),  java.lang.[Integer].Max_Value, visitor)
         End Function
 
@@ -2580,7 +2580,7 @@ Namespace java.nio.file
         '''          method is invoked to check read access to the file.
         ''' </exception>
         ''' <seealso cref= #readAllLines </seealso>
-        Public Shared Function newBufferedReader(ByVal path As Path, ByVal cs As java.nio.charset.Charset) As java.io.BufferedReader
+        Public Shared Function newBufferedReader(  path As Path,   cs As java.nio.charset.Charset) As java.io.BufferedReader
             Dim decoder As java.nio.charset.CharsetDecoder = cs.newDecoder()
             Dim reader As java.io.Reader = New java.io.InputStreamReader(newInputStream(path), decoder)
             Return New java.io.BufferedReader(reader)
@@ -2612,7 +2612,7 @@ Namespace java.nio.file
         '''          method is invoked to check read access to the file.
         ''' 
         ''' @since 1.8 </exception>
-        Public Shared Function newBufferedReader(ByVal path As Path) As java.io.BufferedReader
+        Public Shared Function newBufferedReader(  path As Path) As java.io.BufferedReader
             Return newBufferedReader(path, java.nio.charset.StandardCharsets.UTF_8)
         End Function
 
@@ -2651,7 +2651,7 @@ Namespace java.nio.file
         '''          method is invoked to check write access to the file.
         ''' </exception>
         ''' <seealso cref= #write(Path,Iterable,Charset,OpenOption[]) </seealso>
-        Public Shared Function newBufferedWriter(ByVal path As Path, ByVal cs As java.nio.charset.Charset, ParamArray ByVal options As OpenOption()) As java.io.BufferedWriter
+        Public Shared Function newBufferedWriter(  path As Path,   cs As java.nio.charset.Charset, ParamArray   options As OpenOption()) As java.io.BufferedWriter
             Dim encoder As java.nio.charset.CharsetEncoder = cs.newEncoder()
             Dim writer As java.io.Writer = New java.io.OutputStreamWriter(newOutputStream(path, options), encoder)
             Return New java.io.BufferedWriter(writer)
@@ -2687,14 +2687,14 @@ Namespace java.nio.file
         '''          method is invoked to check write access to the file.
         ''' 
         ''' @since 1.8 </exception>
-        Public Shared Function newBufferedWriter(ByVal path As Path, ParamArray ByVal options As OpenOption()) As java.io.BufferedWriter
+        Public Shared Function newBufferedWriter(  path As Path, ParamArray   options As OpenOption()) As java.io.BufferedWriter
             Return newBufferedWriter(path, java.nio.charset.StandardCharsets.UTF_8, options)
         End Function
 
         ''' <summary>
         ''' Reads all bytes from an input stream and writes them to an output stream.
         ''' </summary>
-        Private Shared Function copy(ByVal source As java.io.InputStream, ByVal sink As java.io.OutputStream) As Long
+        Private Shared Function copy(  source As java.io.InputStream,   sink As java.io.OutputStream) As Long
             Dim nread As Long = 0L
             Dim buf As SByte() = New SByte(BUFFER_SIZE - 1) {}
             Dim n As Integer
@@ -2771,7 +2771,7 @@ Namespace java.nio.file
         '''          {@code REPLACE_EXISTING} option is specified, the security
         '''          manager's <seealso cref="SecurityManager#checkDelete(String) checkDelete"/>
         '''          method is invoked to check that an existing file can be deleted. </exception>
-        Public Shared Function copy(ByVal [in] As java.io.InputStream, ByVal target As Path, ParamArray ByVal options As CopyOption()) As Long
+        Public Shared Function copy(  [in] As java.io.InputStream,   target As Path, ParamArray   options As CopyOption()) As Long
             ' ensure not null before opening file
             java.util.Objects.requireNonNull([in])
 
@@ -2850,7 +2850,7 @@ Namespace java.nio.file
         '''          In the case of the default provider, and a security manager is
         '''          installed, the <seealso cref="SecurityManager#checkRead(String) checkRead"/>
         '''          method is invoked to check read access to the file. </exception>
-        Public Shared Function copy(ByVal source As Path, ByVal out As java.io.OutputStream) As Long
+        Public Shared Function copy(  source As Path,   out As java.io.OutputStream) As Long
             ' ensure not null before opening file
             java.util.Objects.requireNonNull(out)
 
@@ -2882,7 +2882,7 @@ Namespace java.nio.file
         '''          if an I/O error occurs reading from the stream </exception>
         ''' <exception cref="OutOfMemoryError">
         '''          if an array of the required size cannot be allocated </exception>
-        Private Shared Function read(ByVal source As java.io.InputStream, ByVal initialSize As Integer) As SByte()
+        Private Shared Function read(  source As java.io.InputStream,   initialSize As Integer) As SByte()
             Dim capacity As Integer = initialSize
             Dim buf As SByte() = New SByte(capacity - 1) {}
             Dim nread As Integer = 0
@@ -2938,7 +2938,7 @@ Namespace java.nio.file
         '''          In the case of the default provider, and a security manager is
         '''          installed, the <seealso cref="SecurityManager#checkRead(String) checkRead"/>
         '''          method is invoked to check read access to the file. </exception>
-        Public Shared Function readAllBytes(ByVal path As Path) As SByte()
+        Public Shared Function readAllBytes(  path As Path) As SByte()
             Using sbc As java.nio.channels.SeekableByteChannel = Files.newByteChannel(path), [in] As java.io.InputStream = java.nio.channels.Channels.newInputStream(sbc)
                 Dim size As Long = sbc.size()
                 If size > (Long)MAX_BUFFER_SIZE Then Throw New OutOfMemoryError("Required array size too large")
@@ -2985,7 +2985,7 @@ Namespace java.nio.file
         '''          method is invoked to check read access to the file.
         ''' </exception>
         ''' <seealso cref= #newBufferedReader </seealso>
-        Public Shared Function readAllLines(ByVal path As Path, ByVal cs As java.nio.charset.Charset) As IList(Of String)
+        Public Shared Function readAllLines(  path As Path,   cs As java.nio.charset.Charset) As IList(Of String)
             Using reader As java.io.BufferedReader = newBufferedReader(path, cs)
                 Dim result As IList(Of String) = New List(Of String)
                 Do
@@ -3023,7 +3023,7 @@ Namespace java.nio.file
         '''          method is invoked to check read access to the file.
         ''' 
         ''' @since 1.8 </exception>
-        Public Shared Function readAllLines(ByVal path As Path) As IList(Of String)
+        Public Shared Function readAllLines(  path As Path) As IList(Of String)
             Return readAllLines(path, java.nio.charset.StandardCharsets.UTF_8)
         End Function
 
@@ -3067,7 +3067,7 @@ Namespace java.nio.file
         '''          In the case of the default provider, and a security manager is
         '''          installed, the <seealso cref="SecurityManager#checkWrite(String) checkWrite"/>
         '''          method is invoked to check write access to the file. </exception>
-        Public Shared Function write(ByVal path As Path, ByVal bytes As SByte(), ParamArray ByVal options As OpenOption()) As Path
+        Public Shared Function write(  path As Path,   bytes As SByte(), ParamArray   options As OpenOption()) As Path
             ' ensure bytes is not null before opening file
             java.util.Objects.requireNonNull(bytes)
 
@@ -3122,7 +3122,7 @@ Namespace java.nio.file
         '''          In the case of the default provider, and a security manager is
         '''          installed, the <seealso cref="SecurityManager#checkWrite(String) checkWrite"/>
         '''          method is invoked to check write access to the file. </exception>
-        Public Shared Function write(Of T1 As CharSequence)(ByVal path As Path, ByVal lines As Iterable(Of T1), ByVal cs As java.nio.charset.Charset, ParamArray ByVal options As OpenOption()) As Path
+        Public Shared Function write(Of T1 As CharSequence)(  path As Path,   lines As Iterable(Of T1),   cs As java.nio.charset.Charset, ParamArray   options As OpenOption()) As Path
             ' ensure lines is not null before opening file
             java.util.Objects.requireNonNull(lines)
             Dim encoder As java.nio.charset.CharsetEncoder = cs.newEncoder()
@@ -3166,7 +3166,7 @@ Namespace java.nio.file
         '''          method is invoked to check write access to the file.
         ''' 
         ''' @since 1.8 </exception>
-        Public Shared Function write(Of T1 As CharSequence)(ByVal path As Path, ByVal lines As Iterable(Of T1), ParamArray ByVal options As OpenOption()) As Path
+        Public Shared Function write(Of T1 As CharSequence)(  path As Path,   lines As Iterable(Of T1), ParamArray   options As OpenOption()) As Path
             Return write(path, lines, java.nio.charset.StandardCharsets.UTF_8, options)
         End Function
 
@@ -3219,7 +3219,7 @@ Namespace java.nio.file
         ''' </exception>
         ''' <seealso cref=     #newDirectoryStream(Path)
         ''' @since   1.8 </seealso>
-        Public Shared Function list(ByVal dir As Path) As java.util.stream.Stream(Of Path)
+        Public Shared Function list(  dir As Path) As java.util.stream.Stream(Of Path)
             Dim ds As DirectoryStream(Of Path) = Files.newDirectoryStream(dir)
             Try
                 Dim [delegate] As IEnumerator(Of Path) = ds.GetEnumerator()
@@ -3340,7 +3340,7 @@ Namespace java.nio.file
         ''' <exception cref="IOException">
         '''          if an I/O error is thrown when accessing the starting file.
         ''' @since   1.8 </exception>
-        Public Shared Function walk(ByVal start As Path, ByVal maxDepth As Integer, ParamArray ByVal options As FileVisitOption()) As java.util.stream.Stream(Of Path)
+        Public Shared Function walk(  start As Path,   maxDepth As Integer, ParamArray   options As FileVisitOption()) As java.util.stream.Stream(Of Path)
             Dim [iterator] As New FileTreeIterator(start, maxDepth, options)
             Try
                 Return java.util.stream.StreamSupport.stream(java.util.Spliterators.spliteratorUnknownSize([iterator], java.util.Spliterator.DISTINCT), False).onClose([iterator]: close).map(entry -> entry.file())
@@ -3389,7 +3389,7 @@ Namespace java.nio.file
         ''' </exception>
         ''' <seealso cref=     #walk(Path, int, FileVisitOption...)
         ''' @since   1.8 </seealso>
-        Public Shared Function walk(ByVal start As Path, ParamArray ByVal options As FileVisitOption()) As java.util.stream.Stream(Of Path)
+        Public Shared Function walk(  start As Path, ParamArray   options As FileVisitOption()) As java.util.stream.Stream(Of Path)
             Return walk(start,  java.lang.[Integer].Max_Value, options)
         End Function
 
@@ -3445,7 +3445,7 @@ Namespace java.nio.file
         ''' </exception>
         ''' <seealso cref=     #walk(Path, int, FileVisitOption...)
         ''' @since   1.8 </seealso>
-        Public Shared Function find(ByVal start As Path, ByVal maxDepth As Integer, ByVal matcher As java.util.function.BiPredicate(Of Path, java.nio.file.attribute.BasicFileAttributes), ParamArray ByVal options As FileVisitOption()) As java.util.stream.Stream(Of Path)
+        Public Shared Function find(  start As Path,   maxDepth As Integer,   matcher As java.util.function.BiPredicate(Of Path, java.nio.file.attribute.BasicFileAttributes), ParamArray   options As FileVisitOption()) As java.util.stream.Stream(Of Path)
             Dim [iterator] As New FileTreeIterator(start, maxDepth, options)
             Try
                 Return java.util.stream.StreamSupport.stream(java.util.Spliterators.spliteratorUnknownSize([iterator], java.util.Spliterator.DISTINCT), False).onClose([iterator]: close).filter(entry -> matcher.test(entry.file(), entry.attributes())).map(entry -> entry.file())
@@ -3499,7 +3499,7 @@ Namespace java.nio.file
         ''' <seealso cref=     #newBufferedReader(Path, Charset) </seealso>
         ''' <seealso cref=     java.io.BufferedReader#lines()
         ''' @since   1.8 </seealso>
-        Public Shared Function lines(ByVal path As Path, ByVal cs As java.nio.charset.Charset) As java.util.stream.Stream(Of String)
+        Public Shared Function lines(  path As Path,   cs As java.nio.charset.Charset) As java.util.stream.Stream(Of String)
             Dim br As java.io.BufferedReader = Files.newBufferedReader(path, cs)
             Try
                 Return br.lines().onClose(asUncheckedRunnable(br))
@@ -3541,7 +3541,7 @@ Namespace java.nio.file
         '''          method is invoked to check read access to the file.
         ''' 
         ''' @since 1.8 </exception>
-        Public Shared Function lines(ByVal path As Path) As java.util.stream.Stream(Of String)
+        Public Shared Function lines(  path As Path) As java.util.stream.Stream(Of String)
             Return lines(path, java.nio.charset.StandardCharsets.UTF_8)
         End Function
     End Class

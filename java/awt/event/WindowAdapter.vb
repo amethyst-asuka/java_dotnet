@@ -57,51 +57,51 @@ Namespace java.awt.event
 		''' <summary>
 		''' Invoked when a window has been opened.
 		''' </summary>
-		Public Overridable Sub windowOpened(ByVal e As WindowEvent) Implements WindowListener.windowOpened
+		Public Overridable Sub windowOpened(  e As WindowEvent) Implements WindowListener.windowOpened
 		End Sub
 
 		''' <summary>
 		''' Invoked when a window is in the process of being closed.
 		''' The close operation can be overridden at this point.
 		''' </summary>
-		Public Overridable Sub windowClosing(ByVal e As WindowEvent) Implements WindowListener.windowClosing
+		Public Overridable Sub windowClosing(  e As WindowEvent) Implements WindowListener.windowClosing
 		End Sub
 
 		''' <summary>
 		''' Invoked when a window has been closed.
 		''' </summary>
-		Public Overridable Sub windowClosed(ByVal e As WindowEvent) Implements WindowListener.windowClosed
+		Public Overridable Sub windowClosed(  e As WindowEvent) Implements WindowListener.windowClosed
 		End Sub
 
 		''' <summary>
 		''' Invoked when a window is iconified.
 		''' </summary>
-		Public Overridable Sub windowIconified(ByVal e As WindowEvent) Implements WindowListener.windowIconified
+		Public Overridable Sub windowIconified(  e As WindowEvent) Implements WindowListener.windowIconified
 		End Sub
 
 		''' <summary>
 		''' Invoked when a window is de-iconified.
 		''' </summary>
-		Public Overridable Sub windowDeiconified(ByVal e As WindowEvent) Implements WindowListener.windowDeiconified
+		Public Overridable Sub windowDeiconified(  e As WindowEvent) Implements WindowListener.windowDeiconified
 		End Sub
 
 		''' <summary>
 		''' Invoked when a window is activated.
 		''' </summary>
-		Public Overridable Sub windowActivated(ByVal e As WindowEvent) Implements WindowListener.windowActivated
+		Public Overridable Sub windowActivated(  e As WindowEvent) Implements WindowListener.windowActivated
 		End Sub
 
 		''' <summary>
 		''' Invoked when a window is de-activated.
 		''' </summary>
-		Public Overridable Sub windowDeactivated(ByVal e As WindowEvent) Implements WindowListener.windowDeactivated
+		Public Overridable Sub windowDeactivated(  e As WindowEvent) Implements WindowListener.windowDeactivated
 		End Sub
 
 		''' <summary>
 		''' Invoked when a window state is changed.
 		''' @since 1.4
 		''' </summary>
-		Public Overridable Sub windowStateChanged(ByVal e As WindowEvent) Implements WindowStateListener.windowStateChanged
+		Public Overridable Sub windowStateChanged(  e As WindowEvent) Implements WindowStateListener.windowStateChanged
 		End Sub
 
 		''' <summary>
@@ -111,7 +111,7 @@ Namespace java.awt.event
 		''' 
 		''' @since 1.4
 		''' </summary>
-		Public Overridable Sub windowGainedFocus(ByVal e As WindowEvent) Implements WindowFocusListener.windowGainedFocus
+		Public Overridable Sub windowGainedFocus(  e As WindowEvent) Implements WindowFocusListener.windowGainedFocus
 		End Sub
 
 		''' <summary>
@@ -121,7 +121,7 @@ Namespace java.awt.event
 		''' 
 		''' @since 1.4
 		''' </summary>
-		Public Overridable Sub windowLostFocus(ByVal e As WindowEvent) Implements WindowFocusListener.windowLostFocus
+		Public Overridable Sub windowLostFocus(  e As WindowEvent) Implements WindowFocusListener.windowLostFocus
 		End Sub
 	End Class
 

@@ -145,7 +145,7 @@ Namespace java.awt
         ''' <summary>
         ''' Returns the orientation that is appropriate for the given locale. </summary>
         ''' <param name="locale"> the specified locale </param>
-        Public Shared Function getOrientation(ByVal locale As java.util.Locale) As ComponentOrientation
+        Public Shared Function getOrientation(  locale As java.util.Locale) As ComponentOrientation
 			' A more flexible implementation would consult a ResourceBundle
 			' to find the appropriate orientation.  Until pluggable locales
 			' are introduced however, the flexiblity isn't really needed.
@@ -171,7 +171,7 @@ Namespace java.awt
         ''' </summary>
         ''' @deprecated As of J2SE 1.4, use <seealso cref="#getOrientation(java.util.Locale)"/>. 
         <Obsolete("As of J2SE 1.4, use <seealso cref=""#getOrientation(java.util.Locale)""/>.")>
-        Public Shared Function getOrientation(ByVal bdl As java.util.ResourceBundle) As ComponentOrientation
+        Public Shared Function getOrientation(  bdl As java.util.ResourceBundle) As ComponentOrientation
 			Dim result As ComponentOrientation = Nothing
 
 			Try
@@ -186,7 +186,7 @@ Namespace java.awt
 
 		Private orientation As Integer
 
-		Private Sub New(ByVal value As Integer)
+		Private Sub New(  value As Integer)
 			orientation = value
 		End Sub
 	End Class

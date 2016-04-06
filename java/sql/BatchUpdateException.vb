@@ -91,7 +91,7 @@ Namespace java.sql
 	  ''' @since 1.2 </param>
 	  ''' <seealso cref= #BatchUpdateException(java.lang.String, java.lang.String, int, long[],
 	  ''' java.lang.Throwable) </seealso>
-	  Public Sub New(ByVal reason As String, ByVal SQLState As String, ByVal vendorCode As Integer, ByVal updateCounts As Integer())
+	  Public Sub New(  reason As String,   SQLState As String,   vendorCode As Integer,   updateCounts As Integer())
 		  MyBase.New(reason, SQLState, vendorCode)
 		  Me.updateCounts = If(updateCounts Is Nothing, Nothing, java.util.Arrays.copyOf(updateCounts, updateCounts.Length))
 		  Me.longUpdateCounts = If(updateCounts Is Nothing, Nothing, copyUpdateCount(updateCounts))
@@ -124,7 +124,7 @@ Namespace java.sql
 	  ''' @since 1.2 </param>
 	  ''' <seealso cref= #BatchUpdateException(java.lang.String, java.lang.String, int, long[],
 	  ''' java.lang.Throwable) </seealso>
-	  Public Sub New(ByVal reason As String, ByVal SQLState As String, ByVal updateCounts As Integer())
+	  Public Sub New(  reason As String,   SQLState As String,   updateCounts As Integer())
 		  Me.New(reason, SQLState, 0, updateCounts)
 	  End Sub
 
@@ -154,7 +154,7 @@ Namespace java.sql
 	  ''' @since 1.2 </param>
 	  ''' <seealso cref= #BatchUpdateException(java.lang.String, java.lang.String, int, long[],
 	  ''' java.lang.Throwable) </seealso>
-	  Public Sub New(ByVal reason As String, ByVal updateCounts As Integer())
+	  Public Sub New(  reason As String,   updateCounts As Integer())
 		  Me.New(reason, Nothing, 0, updateCounts)
 	  End Sub
 
@@ -182,7 +182,7 @@ Namespace java.sql
 	  ''' @since 1.2 </param>
 	  ''' <seealso cref= #BatchUpdateException(java.lang.String, java.lang.String, int, long[],
 	  ''' java.lang.Throwable) </seealso>
-	  Public Sub New(ByVal updateCounts As Integer())
+	  Public Sub New(  updateCounts As Integer())
 		  Me.New(Nothing, Nothing, 0, updateCounts)
 	  End Sub
 
@@ -217,7 +217,7 @@ Namespace java.sql
 	  ''' @since 1.6 </param>
 	  ''' <seealso cref= #BatchUpdateException(java.lang.String, java.lang.String, int, long[],
 	  ''' java.lang.Throwable) </seealso>
-	  Public Sub New(ByVal cause As Throwable)
+	  Public Sub New(  cause As Throwable)
 		  Me.New((If(cause Is Nothing, Nothing, cause.ToString())), Nothing, 0, CType(Nothing, Integer()), cause)
 	  End Sub
 
@@ -249,7 +249,7 @@ Namespace java.sql
 	  ''' @since 1.6 </param>
 	  ''' <seealso cref= #BatchUpdateException(java.lang.String, java.lang.String, int, long[],
 	  ''' java.lang.Throwable) </seealso>
-	  Public Sub New(ByVal updateCounts As Integer (), ByVal cause As Throwable)
+	  Public Sub New(  updateCounts As Integer (),   cause As Throwable)
 		  Me.New((If(cause Is Nothing, Nothing, cause.ToString())), Nothing, 0, updateCounts, cause)
 	  End Sub
 
@@ -279,7 +279,7 @@ Namespace java.sql
 	  ''' @since 1.6 </param>
 	  ''' <seealso cref= #BatchUpdateException(java.lang.String, java.lang.String, int, long[],
 	  ''' java.lang.Throwable) </seealso>
-	  Public Sub New(ByVal reason As String, ByVal updateCounts As Integer (), ByVal cause As Throwable)
+	  Public Sub New(  reason As String,   updateCounts As Integer (),   cause As Throwable)
 		  Me.New(reason, Nothing, 0, updateCounts, cause)
 	  End Sub
 
@@ -311,7 +311,7 @@ Namespace java.sql
 	  ''' @since 1.6 </param>
 	  ''' <seealso cref= #BatchUpdateException(java.lang.String, java.lang.String, int, long[],
 	  ''' java.lang.Throwable) </seealso>
-	  Public Sub New(ByVal reason As String, ByVal SQLState As String, ByVal updateCounts As Integer (), ByVal cause As Throwable)
+	  Public Sub New(  reason As String,   SQLState As String,   updateCounts As Integer (),   cause As Throwable)
 		  Me.New(reason, SQLState, 0, updateCounts, cause)
 	  End Sub
 
@@ -344,7 +344,7 @@ Namespace java.sql
 	  ''' @since 1.6 </param>
 	  ''' <seealso cref= #BatchUpdateException(java.lang.String, java.lang.String, int, long[],
 	  ''' java.lang.Throwable) </seealso>
-	  Public Sub New(ByVal reason As String, ByVal SQLState As String, ByVal vendorCode As Integer, ByVal updateCounts As Integer (), ByVal cause As Throwable)
+	  Public Sub New(  reason As String,   SQLState As String,   vendorCode As Integer,   updateCounts As Integer (),   cause As Throwable)
 			MyBase.New(reason, SQLState, vendorCode, cause)
 			Me.updateCounts = If(updateCounts Is Nothing, Nothing, java.util.Arrays.copyOf(updateCounts, updateCounts.Length))
 			Me.longUpdateCounts = If(updateCounts Is Nothing, Nothing, copyUpdateCount(updateCounts))
@@ -410,7 +410,7 @@ Namespace java.sql
 	  ''' (which is saved for later retrieval by the <code>getCause()</code> method);
 	  ''' may be null indicating the cause is non-existent or unknown.
 	  ''' @since 1.8 </param>
-	  Public Sub New(ByVal reason As String, ByVal SQLState As String, ByVal vendorCode As Integer, ByVal updateCounts As Long (), ByVal cause As Throwable)
+	  Public Sub New(  reason As String,   SQLState As String,   vendorCode As Integer,   updateCounts As Long (),   cause As Throwable)
 		  MyBase.New(reason, SQLState, vendorCode, cause)
 		  Me.longUpdateCounts = If(updateCounts Is Nothing, Nothing, java.util.Arrays.copyOf(updateCounts, updateCounts.Length))
 		  Me.updateCounts = If(longUpdateCounts Is Nothing, Nothing, copyUpdateCount(longUpdateCounts))
@@ -487,7 +487,7 @@ Namespace java.sql
 	'  
 	'   * Utility method to copy int[] updateCount to long[] updateCount
 	'   
-	  Private Shared Function copyUpdateCount(ByVal uc As Integer()) As Long()
+	  Private Shared Function copyUpdateCount(  uc As Integer()) As Long()
 		  Dim copy As Long() = New Long(uc.Length - 1){}
 		  For i As Integer = 0 To uc.Length - 1
 			  copy(i) = uc(i)
@@ -500,7 +500,7 @@ Namespace java.sql
 	'   * No checks for overflow will be done as it is expected a  user will call
 	'   * getLargeUpdateCounts.
 	'   
-	  Private Shared Function copyUpdateCount(ByVal uc As Long()) As Integer()
+	  Private Shared Function copyUpdateCount(  uc As Long()) As Integer()
 		  Dim copy As Integer() = New Integer(uc.Length - 1){}
 		  For i As Integer = 0 To uc.Length - 1
 			  copy(i) = CInt(uc(i))
@@ -511,7 +511,7 @@ Namespace java.sql
 		''' readObject is called to restore the state of the
 		''' {@code BatchUpdateException} from a stream.
 		''' </summary>
-		Private Sub readObject(ByVal s As java.io.ObjectInputStream)
+		Private Sub readObject(  s As java.io.ObjectInputStream)
 
 		   Dim fields As java.io.ObjectInputStream.GetField = s.readFields()
 		   Dim tmp As Integer() = CType(fields.get("updateCounts", Nothing), Integer())
@@ -528,7 +528,7 @@ Namespace java.sql
 		''' writeObject is called to save the state of the {@code BatchUpdateException}
 		''' to a stream.
 		''' </summary>
-		Private Sub writeObject(ByVal s As java.io.ObjectOutputStream)
+		Private Sub writeObject(  s As java.io.ObjectOutputStream)
 
 			Dim fields As java.io.ObjectOutputStream.PutField = s.putFields()
 			fields.put("updateCounts", updateCounts)

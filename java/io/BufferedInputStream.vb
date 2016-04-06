@@ -177,7 +177,7 @@ Namespace java.io
         ''' buffer array is created and  stored in <code>buf</code>.
         ''' </summary>
         ''' <param name="in">   the underlying input stream. </param>
-        Public Sub New(ByVal [in] As InputStream)
+        Public Sub New(  [in] As InputStream)
 			Me.New([in], DEFAULT_BUFFER_SIZE)
 		End Sub
 
@@ -192,7 +192,7 @@ Namespace java.io
 		''' <param name="in">     the underlying input stream. </param>
 		''' <param name="size">   the buffer size. </param>
 		''' <exception cref="IllegalArgumentException"> if {@code size <= 0}. </exception>
-		Public Sub New(ByVal [in] As InputStream, ByVal size As Integer)
+		Public Sub New(  [in] As InputStream,   size As Integer)
 			MyBase.New([in])
 			If size <= 0 Then Throw New IllegalArgumentException("Buffer size <= 0")
 			buf = New SByte(size - 1){}
@@ -260,7 +260,7 @@ Namespace java.io
 		''' Read characters into a portion of an array, reading from the underlying
 		''' stream at most once if necessary.
 		''' </summary>
-		Private Function read1(ByVal b As SByte(), ByVal [off] As Integer, ByVal len As Integer) As Integer
+		Private Function read1(  b As SByte(),   [off] As Integer,   len As Integer) As Integer
 			Dim avail As Integer = count - pos
 			If avail <= 0 Then
 	'             If the requested length is at least as large as the buffer, and

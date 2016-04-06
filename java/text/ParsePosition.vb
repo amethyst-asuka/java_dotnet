@@ -74,7 +74,7 @@ Namespace java.text
 			Get
 				Return index
 			End Get
-			Set(ByVal index As Integer)
+			Set(  index As Integer)
 				Me.index = index
 			End Set
 		End Property
@@ -84,7 +84,7 @@ Namespace java.text
 		''' Create a new ParsePosition with the given initial index.
 		''' </summary>
 		''' <param name="index"> initial index </param>
-		Public Sub New(ByVal index As Integer)
+		Public Sub New(  index As Integer)
 			Me.index = index
 		End Sub
 		''' <summary>
@@ -95,7 +95,7 @@ Namespace java.text
 		''' <param name="ei"> the index at which an error occurred
 		''' @since 1.2 </param>
 		Public Overridable Property errorIndex As Integer
-			Set(ByVal ei As Integer)
+			Set(  ei As Integer)
 				errorIndex = ei
 			End Set
 			Get
@@ -107,7 +107,7 @@ Namespace java.text
 		''' <summary>
 		''' Overrides equals
 		''' </summary>
-		Public Overrides Function Equals(ByVal obj As Object) As Boolean
+		Public Overrides Function Equals(  obj As Object) As Boolean
 			If obj Is Nothing Then Return False
 			If Not(TypeOf obj Is ParsePosition) Then Return False
 			Dim other As ParsePosition = CType(obj, ParsePosition)

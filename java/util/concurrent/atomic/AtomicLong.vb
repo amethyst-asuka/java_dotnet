@@ -93,7 +93,7 @@ Namespace java.util.concurrent.atomic
 		''' Creates a new AtomicLong with the given initial value.
 		''' </summary>
 		''' <param name="initialValue"> the initial value </param>
-		Public Sub New(ByVal initialValue As Long)
+		Public Sub New(  initialValue As Long)
 			value = initialValue
 		End Sub
 
@@ -115,7 +115,7 @@ Namespace java.util.concurrent.atomic
 		''' Sets to the given value.
 		''' </summary>
 		''' <param name="newValue"> the new value </param>
-		Public Sub [set](ByVal newValue As Long)
+		Public Sub [set](  newValue As Long)
 			value = newValue
 		End Sub
 
@@ -124,7 +124,7 @@ Namespace java.util.concurrent.atomic
 		''' </summary>
 		''' <param name="newValue"> the new value
 		''' @since 1.6 </param>
-		Public Sub lazySet(ByVal newValue As Long)
+		Public Sub lazySet(  newValue As Long)
 			unsafe.putOrderedLong(Me, valueOffset, newValue)
 		End Sub
 
@@ -133,7 +133,7 @@ Namespace java.util.concurrent.atomic
 		''' </summary>
 		''' <param name="newValue"> the new value </param>
 		''' <returns> the previous value </returns>
-		Public Function getAndSet(ByVal newValue As Long) As Long
+		Public Function getAndSet(  newValue As Long) As Long
 			Return unsafe.getAndSetLong(Me, valueOffset, newValue)
 		End Function
 
@@ -145,7 +145,7 @@ Namespace java.util.concurrent.atomic
 		''' <param name="update"> the new value </param>
 		''' <returns> {@code true} if successful. False return indicates that
 		''' the actual value was not equal to the expected value. </returns>
-		Public Function compareAndSet(ByVal expect As Long, ByVal update As Long) As Boolean
+		Public Function compareAndSet(  expect As Long,   update As Long) As Boolean
 			Return unsafe.compareAndSwapLong(Me, valueOffset, expect, update)
 		End Function
 
@@ -160,7 +160,7 @@ Namespace java.util.concurrent.atomic
 		''' <param name="expect"> the expected value </param>
 		''' <param name="update"> the new value </param>
 		''' <returns> {@code true} if successful </returns>
-		Public Function weakCompareAndSet(ByVal expect As Long, ByVal update As Long) As Boolean
+		Public Function weakCompareAndSet(  expect As Long,   update As Long) As Boolean
 			Return unsafe.compareAndSwapLong(Me, valueOffset, expect, update)
 		End Function
 
@@ -189,7 +189,7 @@ Namespace java.util.concurrent.atomic
 		''' </summary>
 		''' <param name="delta"> the value to add </param>
 		''' <returns> the previous value </returns>
-		Public Function getAndAdd(ByVal delta As Long) As Long
+		Public Function getAndAdd(  delta As Long) As Long
 			Return unsafe.getAndAddLong(Me, valueOffset, delta)
 		End Function
 
@@ -214,7 +214,7 @@ Namespace java.util.concurrent.atomic
 		''' </summary>
 		''' <param name="delta"> the value to add </param>
 		''' <returns> the updated value </returns>
-		Public Function addAndGet(ByVal delta As Long) As Long
+		Public Function addAndGet(  delta As Long) As Long
 			Return unsafe.getAndAddLong(Me, valueOffset, delta) + delta
 		End Function
 
@@ -227,7 +227,7 @@ Namespace java.util.concurrent.atomic
 		''' <param name="updateFunction"> a side-effect-free function </param>
 		''' <returns> the previous value
 		''' @since 1.8 </returns>
-		Public Function getAndUpdate(ByVal updateFunction As java.util.function.LongUnaryOperator) As Long
+		Public Function getAndUpdate(  updateFunction As java.util.function.LongUnaryOperator) As Long
 			Dim prev, [next] As Long
 			Do
 				prev = [get]()
@@ -245,7 +245,7 @@ Namespace java.util.concurrent.atomic
 		''' <param name="updateFunction"> a side-effect-free function </param>
 		''' <returns> the updated value
 		''' @since 1.8 </returns>
-		Public Function updateAndGet(ByVal updateFunction As java.util.function.LongUnaryOperator) As Long
+		Public Function updateAndGet(  updateFunction As java.util.function.LongUnaryOperator) As Long
 			Dim prev, [next] As Long
 			Do
 				prev = [get]()
@@ -267,7 +267,7 @@ Namespace java.util.concurrent.atomic
 		''' <param name="accumulatorFunction"> a side-effect-free function of two arguments </param>
 		''' <returns> the previous value
 		''' @since 1.8 </returns>
-		Public Function getAndAccumulate(ByVal x As Long, ByVal accumulatorFunction As java.util.function.LongBinaryOperator) As Long
+		Public Function getAndAccumulate(  x As Long,   accumulatorFunction As java.util.function.LongBinaryOperator) As Long
 			Dim prev, [next] As Long
 			Do
 				prev = [get]()
@@ -289,7 +289,7 @@ Namespace java.util.concurrent.atomic
 		''' <param name="accumulatorFunction"> a side-effect-free function of two arguments </param>
 		''' <returns> the updated value
 		''' @since 1.8 </returns>
-		Public Function accumulateAndGet(ByVal x As Long, ByVal accumulatorFunction As java.util.function.LongBinaryOperator) As Long
+		Public Function accumulateAndGet(  x As Long,   accumulatorFunction As java.util.function.LongBinaryOperator) As Long
 			Dim prev, [next] As Long
 			Do
 				prev = [get]()

@@ -64,7 +64,7 @@ Namespace java.security.acl
 		''' already a principal set for this entry.
 		''' </returns>
 		''' <seealso cref= #getPrincipal </seealso>
-		Function setPrincipal(ByVal user As java.security.Principal) As Boolean
+		Function setPrincipal(  user As java.security.Principal) As Boolean
 
 		''' <summary>
 		''' Returns the principal for which permissions are granted or denied by
@@ -104,7 +104,7 @@ Namespace java.security.acl
 		''' </param>
 		''' <returns> true if the permission was added, false if the
 		''' permission was already part of this entry's permission set. </returns>
-		Function addPermission(ByVal permission As Permission) As Boolean
+		Function addPermission(  permission As Permission) As Boolean
 
 		''' <summary>
 		''' Removes the specified permission from this ACL entry.
@@ -113,7 +113,7 @@ Namespace java.security.acl
 		''' </param>
 		''' <returns> true if the permission is removed, false if the
 		''' permission was not part of this entry's permission set. </returns>
-		Function removePermission(ByVal permission As Permission) As Boolean
+		Function removePermission(  permission As Permission) As Boolean
 
 		''' <summary>
 		''' Checks if the specified permission is part of the
@@ -123,7 +123,7 @@ Namespace java.security.acl
 		''' </param>
 		''' <returns> true if the permission is part of the
 		''' permission set in this entry, false otherwise. </returns>
-		Function checkPermission(ByVal permission As Permission) As Boolean
+		Function checkPermission(  permission As Permission) As Boolean
 
 		''' <summary>
 		''' Returns an enumeration of the permissions in this ACL entry.

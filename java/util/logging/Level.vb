@@ -188,7 +188,7 @@ Namespace java.util.logging
 		''' <param name="name">  the name of the Level, for example "SEVERE". </param>
 		''' <param name="value"> an integer value for the level. </param>
 		''' <exception cref="NullPointerException"> if the name is null </exception>
-		Protected Friend Sub New(ByVal name As String, ByVal value As Integer)
+		Protected Friend Sub New(  name As String,   value As Integer)
 			Me.New(name, value, Nothing)
 		End Sub
 
@@ -202,13 +202,13 @@ Namespace java.util.logging
 		'''    localizing the given name. If the resourceBundleName is null
 		'''    or an empty string, it is ignored. </param>
 		''' <exception cref="NullPointerException"> if the name is null </exception>
-		Protected Friend Sub New(ByVal name As String, ByVal value As Integer, ByVal resourceBundleName As String)
+		Protected Friend Sub New(  name As String,   value As Integer,   resourceBundleName As String)
 			Me.New(name, value, resourceBundleName, True)
 		End Sub
 
 		' private constructor to specify whether this instance should be added
 		' to the KnownLevel list from which Level.parse method does its look up
-		Private Sub New(ByVal name As String, ByVal value As Integer, ByVal resourceBundleName As String, ByVal visible As Boolean)
+		Private Sub New(  name As String,   value As Integer,   resourceBundleName As String,   visible As Boolean)
 			If name Is Nothing Then Throw New NullPointerException
 			Me.name = name
 			Me.value = value
@@ -261,7 +261,7 @@ Namespace java.util.logging
 			End Get
 		End Property
 
-		Private Function computeLocalizedLevelName(ByVal newLocale As java.util.Locale) As String
+		Private Function computeLocalizedLevelName(  newLocale As java.util.Locale) As String
 			Dim rb As java.util.ResourceBundle = java.util.ResourceBundle.getBundle(resourceBundleName, newLocale)
 			Dim localizedName_Renamed As String = rb.getString(name)
 
@@ -333,7 +333,7 @@ Namespace java.util.logging
 		' that overrides Level.getLocalizedName() to return a different string
 		' than what's returned by the default implementation.
 		'
-		Shared Function findLevel(ByVal name As String) As Level
+		Shared Function findLevel(  name As String) As Level
 			If name Is Nothing Then Throw New NullPointerException
 
 			Dim level_Renamed As KnownLevel
@@ -423,7 +423,7 @@ Namespace java.util.logging
 		''' Passing an integer that does not (e.g., 1) will return a new level name
 		''' initialized to that value. </returns>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Shared Function parse(ByVal name As String) As Level
+		Public Shared Function parse(  name As String) As Level
 			' Check that name is not null.
 			name.length()
 
@@ -463,7 +463,7 @@ Namespace java.util.logging
 		''' <summary>
 		''' Compare two objects for value equality. </summary>
 		''' <returns> true if and only if the two objects have the same level value. </returns>
-		Public Overrides Function Equals(ByVal ox As Object) As Boolean
+		Public Overrides Function Equals(  ox As Object) As Boolean
 			Try
 				Dim lx As Level = CType(ox, Level)
 				Return (lx.value = Me.value)
@@ -504,7 +504,7 @@ Namespace java.util.logging
 			Private Shared intToLevels As IDictionary(Of Integer?, IList(Of KnownLevel)) = New Dictionary(Of Integer?, IList(Of KnownLevel))
 			Friend ReadOnly levelObject As Level ' instance of Level class or Level subclass
 			Friend ReadOnly mirroredLevel As Level ' mirror of the custom Level
-			Friend Sub New(ByVal l As Level)
+			Friend Sub New(  l As Level)
 				Me.levelObject = l
 				If l.GetType() Is GetType(Level) Then
 					Me.mirroredLevel = l
@@ -515,7 +515,7 @@ Namespace java.util.logging
 			End Sub
 
 			<MethodImpl(MethodImplOptions.Synchronized)> _
-			Friend Shared Sub add(ByVal l As Level)
+			Friend Shared Sub add(  l As Level)
 				' the mirroredLevel object is always added to the list
 				' before the custom Level instance
 				Dim o As New KnownLevel(l)
@@ -536,7 +536,7 @@ Namespace java.util.logging
 
 			' Returns a KnownLevel with the given non-localized name.
 			<MethodImpl(MethodImplOptions.Synchronized)> _
-			Shared Function findByName(ByVal name As String) As KnownLevel
+			Shared Function findByName(  name As String) As KnownLevel
 				Dim list As IList(Of KnownLevel) = nameToLevels(name)
 				If list IsNot Nothing Then Return list(0)
 				Return Nothing
@@ -544,7 +544,7 @@ Namespace java.util.logging
 
 			' Returns a KnownLevel with the given value.
 			<MethodImpl(MethodImplOptions.Synchronized)> _
-			Shared Function findByValue(ByVal value As Integer) As KnownLevel
+			Shared Function findByValue(  value As Integer) As KnownLevel
 				Dim list As IList(Of KnownLevel) = intToLevels(value)
 				If list IsNot Nothing Then Return list(0)
 				Return Nothing
@@ -556,7 +556,7 @@ Namespace java.util.logging
 			' This method does not call Level.getLocalizedName() that may
 			' be overridden in a subclass implementation
 			<MethodImpl(MethodImplOptions.Synchronized)> _
-			Shared Function findByLocalizedLevelName(ByVal name As String) As KnownLevel
+			Shared Function findByLocalizedLevelName(  name As String) As KnownLevel
 				For Each levels As IList(Of KnownLevel) In nameToLevels.Values
 					For Each l As KnownLevel In levels
 						Dim lname As String = l.levelObject.localizedLevelName
@@ -567,7 +567,7 @@ Namespace java.util.logging
 			End Function
 
 			<MethodImpl(MethodImplOptions.Synchronized)> _
-			Shared Function matches(ByVal l As Level) As KnownLevel
+			Shared Function matches(  l As Level) As KnownLevel
 				Dim list As IList(Of KnownLevel) = nameToLevels(l.name)
 				If list IsNot Nothing Then
 					For Each level_Renamed As KnownLevel In list

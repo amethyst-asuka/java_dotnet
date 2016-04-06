@@ -51,7 +51,7 @@ Namespace java.awt.datatransfer
 		''' notifications should be occasional.
 		''' </summary>
 		''' <param name="e">  a <code>FlavorEvent</code> object </param>
-		Sub flavorsChanged(ByVal e As FlavorEvent)
+		Sub flavorsChanged(  e As FlavorEvent)
 	End Interface
 
 End Namespace

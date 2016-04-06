@@ -82,7 +82,7 @@ Namespace java.awt.image
         ''' <param name="numBands">  The number of bands for the image data. </param>
         ''' <exception cref="IllegalArgumentException"> if <code>dataType</code> is not
         '''         one of the supported data types </exception>
-        Public Sub New(ByVal dataType As Integer, ByVal w As Integer, ByVal h As Integer, ByVal numBands As Integer)
+        Public Sub New(  dataType As Integer,   w As Integer,   h As Integer,   numBands As Integer)
             MyBase.New(dataType, w, h, 1, w, BandedSampleModel.createIndicesArray(numBands), BandedSampleModel.createOffsetArray(numBands))
         End Sub
 

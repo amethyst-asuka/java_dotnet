@@ -75,7 +75,7 @@ Namespace java.util.spi
 		''' <exception cref="NullPointerException"> if <code>ID</code> or <code>locale</code>
 		'''     is null </exception>
 		''' <seealso cref= java.util.TimeZone#getDisplayName(boolean, int, java.util.Locale) </seealso>
-		Public MustOverride Function getDisplayName(ByVal ID As String, ByVal daylight As Boolean, ByVal style As Integer, ByVal locale As java.util.Locale) As String
+		Public MustOverride Function getDisplayName(  ID As String,   daylight As Boolean,   style As Integer,   locale As java.util.Locale) As String
 
 		''' <summary>
 		''' Returns a generic name for the given time zone {@code ID} that's suitable
@@ -102,7 +102,7 @@ Namespace java.util.spi
 		''' <exception cref="NullPointerException"> if <code>ID</code> or <code>locale</code>
 		'''     is {@code null}
 		''' @since 1.8 </exception>
-		Public Overridable Function getGenericDisplayName(ByVal ID As String, ByVal style As Integer, ByVal locale_Renamed As java.util.Locale) As String
+		Public Overridable Function getGenericDisplayName(  ID As String,   style As Integer,   locale_Renamed As java.util.Locale) As String
 			Return Nothing
 		End Function
 	End Class

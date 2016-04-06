@@ -123,7 +123,7 @@ Namespace java.awt
 		''' <exception cref="HeadlessException"> if GraphicsEnvironment.isHeadless()
 		''' returns true. </exception>
 		''' <seealso cref= java.awt.GraphicsEnvironment#isHeadless </seealso>
-		Public Sub New(ByVal text As String)
+		Public Sub New(  text As String)
 			Me.New(text, LEFT)
 		End Sub
 
@@ -140,7 +140,7 @@ Namespace java.awt
 		''' <exception cref="HeadlessException"> if GraphicsEnvironment.isHeadless()
 		''' returns true. </exception>
 		''' <seealso cref= java.awt.GraphicsEnvironment#isHeadless </seealso>
-		Public Sub New(ByVal text As String, ByVal alignment As Integer)
+		Public Sub New(  text As String,   alignment As Integer)
 			GraphicsEnvironment.checkHeadless()
 			Me.text = text
 			alignment = alignment
@@ -154,7 +154,7 @@ Namespace java.awt
 		''' @serial
 		''' @since 1.4 </exception>
 		''' <seealso cref= java.awt.GraphicsEnvironment#isHeadless </seealso>
-		Private Sub readObject(ByVal s As java.io.ObjectInputStream)
+		Private Sub readObject(  s As java.io.ObjectInputStream)
 			GraphicsEnvironment.checkHeadless()
 			s.defaultReadObject()
 		End Sub
@@ -192,7 +192,7 @@ Namespace java.awt
 			Get
 				Return alignment
 			End Get
-			Set(ByVal alignment As Integer)
+			Set(  alignment As Integer)
 				Select Case alignment
 				  Case LEFT, CENTER, RIGHT
 					Me.alignment = alignment
@@ -214,7 +214,7 @@ Namespace java.awt
 			Get
 				Return text
 			End Get
-			Set(ByVal text As String)
+			Set(  text As String)
 				Dim testvalid As Boolean = False
 				SyncLock Me
 					If text <> Me.text AndAlso (Me.text Is Nothing OrElse (Not Me.text.Equals(text))) Then
@@ -298,7 +298,7 @@ Namespace java.awt
 	'         
 			Private Const serialVersionUID As Long = -3568967560160480438L
 
-			Public Sub New(ByVal outerInstance As Label)
+			Public Sub New(  outerInstance As Label)
 					Me.outerInstance = outerInstance
 				MyBase.New()
 			End Sub

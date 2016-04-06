@@ -58,7 +58,7 @@ Namespace java.net
 		''' </exception>
 		''' <exception cref="IllegalArgumentException">
 		'''          If the error index is less than {@code -1} </exception>
-		Public Sub New(ByVal input As String, ByVal reason As String, ByVal index As Integer)
+		Public Sub New(  input As String,   reason As String,   index As Integer)
 			MyBase.New(reason)
 			If (input Is Nothing) OrElse (reason Is Nothing) Then Throw New NullPointerException
 			If index < -1 Then Throw New IllegalArgumentException
@@ -75,7 +75,7 @@ Namespace java.net
 		''' </param>
 		''' <exception cref="NullPointerException">
 		'''          If either the input or reason strings are {@code null} </exception>
-		Public Sub New(ByVal input As String, ByVal reason As String)
+		Public Sub New(  input As String,   reason As String)
 			Me.New(input, reason, -1)
 		End Sub
 

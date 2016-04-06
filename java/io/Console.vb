@@ -165,7 +165,7 @@ Namespace java.io
 	   '''          of the formatter class specification.
 	   ''' </exception>
 	   ''' <returns>  This console </returns>
-		Public Function format(ByVal fmt As String, ParamArray ByVal args As Object()) As Console
+		Public Function format(  fmt As String, ParamArray   args As Object()) As Console
 			formatter.format(fmt, args).flush()
 			Return Me
 		End Function
@@ -203,7 +203,7 @@ Namespace java.io
 	   '''          formatter class specification.
 	   ''' </exception>
 	   ''' <returns>  This console </returns>
-		Public Function printf(ByVal format As String, ParamArray ByVal args As Object()) As Console
+		Public Function printf(  format As String, ParamArray   args As Object()) As Console
 			Return format(format, args)
 		End Function
 
@@ -237,7 +237,7 @@ Namespace java.io
 	   ''' <returns>  A string containing the line read from the console, not
 	   '''          including any line-termination characters, or <tt>null</tt>
 	   '''          if an end of stream has been reached. </returns>
-		Public Function readLine(ByVal fmt As String, ParamArray ByVal args As Object()) As String
+		Public Function readLine(  fmt As String, ParamArray   args As Object()) As String
 			Dim line As String = Nothing
 			SyncLock writeLock
 				SyncLock readLock
@@ -297,7 +297,7 @@ Namespace java.io
 	   ''' <returns>  A character array containing the password or passphrase read
 	   '''          from the console, not including any line-termination characters,
 	   '''          or <tt>null</tt> if an end of stream has been reached. </returns>
-		Public Function readPassword(ByVal fmt As String, ParamArray ByVal args As Object()) As Char()
+		Public Function readPassword(  fmt As String, ParamArray   args As Object()) As Char()
 			Dim passwd As Char() = Nothing
 			SyncLock writeLock
 				SyncLock readLock
@@ -365,11 +365,11 @@ Namespace java.io
 		End Function
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Private Shared Function echo(ByVal [on] As Boolean) As Boolean
+		Private Shared Function echo(  [on] As Boolean) As Boolean
 		End Function
 		Private Shared echoOff As Boolean
 
-		Private Function readline(ByVal zeroOut As Boolean) As Char()
+		Private Function readline(  zeroOut As Boolean) As Char()
 			Dim len As Integer = reader_Renamed.read(rcb, 0, rcb.Length)
 			If len < 0 Then Return Nothing 'EOL
 			If rcb(len-1) = ControlChars.Cr Then
@@ -403,7 +403,7 @@ Namespace java.io
 			Private cb As Char()
 			Private nChars, nextChar As Integer
 			Friend leftoverLF As Boolean
-			Friend Sub New(ByVal outerInstance As Console, ByVal [in] As Reader)
+			Friend Sub New(  outerInstance As Console,   [in] As Reader)
 					Me.outerInstance = outerInstance
 				Me.in = [in]
 				cb = New Char(1023){}

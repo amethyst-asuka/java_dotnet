@@ -42,7 +42,7 @@ Namespace java.io
 		''' Constructs a NotSerializableException object with message string.
 		''' </summary>
 		''' <param name="classname"> Class of the instance being serialized/deserialized. </param>
-		Public Sub New(ByVal classname As String)
+		Public Sub New(  classname As String)
 			MyBase.New(classname)
 		End Sub
 

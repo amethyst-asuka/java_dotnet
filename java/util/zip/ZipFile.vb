@@ -110,7 +110,7 @@ Namespace java.util.zip
 		'''         <code>checkRead</code> method doesn't allow read access to the file.
 		''' </exception>
 		''' <seealso cref= SecurityManager#checkRead(java.lang.String) </seealso>
-		Public Sub New(ByVal name As String)
+		Public Sub New(  name As String)
 			Me.New(New File(name), OPEN_READ)
 		End Sub
 
@@ -138,7 +138,7 @@ Namespace java.util.zip
 		''' <exception cref="IllegalArgumentException"> if the <tt>mode</tt> argument is invalid </exception>
 		''' <seealso cref= SecurityManager#checkRead(java.lang.String)
 		''' @since 1.3 </seealso>
-		Public Sub New(ByVal file As java.io.File, ByVal mode As Integer)
+		Public Sub New(  file As java.io.File,   mode As Integer)
 			Me.New(file, mode, java.nio.charset.StandardCharsets.UTF_8)
 		End Sub
 
@@ -151,7 +151,7 @@ Namespace java.util.zip
 		''' <param name="file"> the ZIP file to be opened for reading </param>
 		''' <exception cref="ZipException"> if a ZIP format error has occurred </exception>
 		''' <exception cref="IOException"> if an I/O error has occurred </exception>
-		Public Sub New(ByVal file As java.io.File)
+		Public Sub New(  file As java.io.File)
 			Me.New(file, OPEN_READ)
 		End Sub
 
@@ -188,7 +188,7 @@ Namespace java.util.zip
 		''' <seealso cref= SecurityManager#checkRead(java.lang.String)
 		''' 
 		''' @since 1.7 </seealso>
-		Public Sub New(ByVal file As java.io.File, ByVal mode As Integer, ByVal charset As java.nio.charset.Charset)
+		Public Sub New(  file As java.io.File,   mode As Integer,   charset As java.nio.charset.Charset)
 			If ((mode And OPEN_READ) = 0) OrElse ((mode And Not(OPEN_READ Or OPEN_DELETE)) <> 0) Then Throw New IllegalArgumentException("Illegal mode: 0x" &  java.lang.[Integer].toHexString(mode))
 			Dim name_Renamed As String = file.path
 			Dim sm As SecurityManager = System.securityManager
@@ -230,7 +230,7 @@ Namespace java.util.zip
 		''' <seealso cref= SecurityManager#checkRead(java.lang.String)
 		''' 
 		''' @since 1.7 </seealso>
-		Public Sub New(ByVal name As String, ByVal charset As java.nio.charset.Charset)
+		Public Sub New(  name As String,   charset As java.nio.charset.Charset)
 			Me.New(New File(name), OPEN_READ, charset)
 		End Sub
 
@@ -248,7 +248,7 @@ Namespace java.util.zip
 		''' <exception cref="IOException"> if an I/O error has occurred
 		''' 
 		''' @since 1.7 </exception>
-		Public Sub New(ByVal file As java.io.File, ByVal charset As java.nio.charset.Charset)
+		Public Sub New(  file As java.io.File,   charset As java.nio.charset.Charset)
 			Me.New(file, OPEN_READ, charset)
 		End Sub
 
@@ -278,7 +278,7 @@ Namespace java.util.zip
 		''' <param name="name"> the name of the entry </param>
 		''' <returns> the zip file entry, or null if not found </returns>
 		''' <exception cref="IllegalStateException"> if the zip file has been closed </exception>
-		Public Overridable Function getEntry(ByVal name As String) As ZipEntry
+		Public Overridable Function getEntry(  name As String) As ZipEntry
 			If name Is Nothing Then Throw New NullPointerException("name")
 			Dim jzentry As Long = 0
 			SyncLock Me
@@ -295,13 +295,13 @@ Namespace java.util.zip
 
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Private Shared Function getEntry(ByVal jzfile As Long, ByVal name As SByte(), ByVal addSlash As Boolean) As Long
+		Private Shared Function getEntry(  jzfile As Long,   name As SByte(),   addSlash As Boolean) As Long
 		End Function
 
 		' freeEntry releases the C jzentry struct.
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Private Shared Sub freeEntry(ByVal jzfile As Long, ByVal jzentry As Long)
+		Private Shared Sub freeEntry(  jzfile As Long,   jzentry As Long)
 		End Sub
 
 		' the outstanding inputstreams that need to be closed,
@@ -321,7 +321,7 @@ Namespace java.util.zip
 		''' <exception cref="ZipException"> if a ZIP format error has occurred </exception>
 		''' <exception cref="IOException"> if an I/O error has occurred </exception>
 		''' <exception cref="IllegalStateException"> if the zip file has been closed </exception>
-		Public Overridable Function getInputStream(ByVal entry As ZipEntry) As java.io.InputStream
+		Public Overridable Function getInputStream(  entry As ZipEntry) As java.io.InputStream
 			If entry Is Nothing Then Throw New NullPointerException("entry")
 			Dim jzentry As Long = 0
 			Dim [in] As ZipFileInputStream = Nothing
@@ -368,7 +368,7 @@ Namespace java.util.zip
 			Private eof As Boolean = False
 			Private ReadOnly zfin As ZipFileInputStream
 
-			Friend Sub New(ByVal outerInstance As ZipFile, ByVal zfin As ZipFileInputStream, ByVal inf As Inflater, ByVal size As Integer)
+			Friend Sub New(  outerInstance As ZipFile,   zfin As ZipFileInputStream,   inf As Inflater,   size As Integer)
 					Me.outerInstance = outerInstance
 				MyBase.New(zfin, inf, size)
 				Me.zfin = zfin
@@ -432,7 +432,7 @@ Namespace java.util.zip
 	'    
 	'     * Releases the specified inflater to the list of available inflaters.
 	'     
-		Private Sub releaseInflater(ByVal inf As Inflater)
+		Private Sub releaseInflater(  inf As Inflater)
 			If False = inf.ended() Then
 				inf.reset()
 				SyncLock inflaterCache
@@ -460,7 +460,7 @@ Namespace java.util.zip
 
 			Private i As Integer = 0
 
-			Public Sub New(ByVal outerInstance As ZipFile)
+			Public Sub New(  outerInstance As ZipFile)
 					Me.outerInstance = outerInstance
 				outerInstance.ensureOpen()
 			End Sub
@@ -524,7 +524,7 @@ Namespace java.util.zip
 			Return java.util.stream.StreamSupport.stream(java.util.Spliterators.spliterator(New ZipEntryIterator(Me), size(), java.util.Spliterator.ORDERED Or java.util.Spliterator.DISTINCT Or java.util.Spliterator.IMMUTABLE Or java.util.Spliterator.NONNULL), False)
 		End Function
 
-		Private Function getZipEntry(ByVal name As String, ByVal jzentry As Long) As ZipEntry
+		Private Function getZipEntry(  name As String,   jzentry As Long) As ZipEntry
 			Dim e As New ZipEntry
 			e.flag = getEntryFlag(jzentry) ' get the flag first
 			If name IsNot Nothing Then
@@ -558,7 +558,7 @@ Namespace java.util.zip
 
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Private Shared Function getNextEntry(ByVal jzfile As Long, ByVal i As Integer) As Long
+		Private Shared Function getNextEntry(  jzfile As Long,   i As Integer) As Long
 		End Function
 
 		''' <summary>
@@ -634,7 +634,7 @@ Namespace java.util.zip
 
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Private Shared Sub close(ByVal jzfile As Long)
+		Private Shared Sub close(  jzfile As Long)
 		End Sub
 
 		Private Sub ensureOpen()
@@ -663,7 +663,7 @@ Namespace java.util.zip
 			Protected Friend [rem] As Long ' number of remaining bytes within entry
 			Protected Friend size_Renamed As Long ' uncompressed size of this entry
 
-			Friend Sub New(ByVal outerInstance As ZipFile, ByVal jzentry As Long)
+			Friend Sub New(  outerInstance As ZipFile,   jzentry As Long)
 					Me.outerInstance = outerInstance
 				pos = 0
 				[rem] = getEntryCSize(jzentry)

@@ -52,24 +52,24 @@ Namespace java.lang
 			Public MustOverride Return intStream(() -> java.util.Spliterators.spliteratorUnknownSize(New CodePointIterator, java.util.Spliterator.ORDERED), java.util.Spliterator.ORDERED, False);
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 			Public MustOverride Return toCodePoint(c1, c2);
-			Public Function [if](Character.isHighSurrogate(c1) AndAlso cur < ByVal length As ) As [MustOverride]
-			Public Function [if](cur >= ByVal length As ) As [MustOverride]
-			Public Function accept(Character.toCodePoint(c1, c2) ByVal As ) As [MustOverride]
-			Public Function [if](Character.isLowSurrogate(c2) ByVal As ) As [MustOverride]
+			Public Function [if](Character.isHighSurrogate(c1) AndAlso cur <   length As ) As [MustOverride]
+			Public Function [if](cur >=   length As ) As [MustOverride]
+			Public Function accept(Character.toCodePoint(c1, c2)   As ) As [MustOverride]
+			Public Function [if](Character.isLowSurrogate(c2)   As ) As [MustOverride]
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 			Public MustOverride  accept(c1);
-			Public Function [if]((Not Character.isHighSurrogate(c1)) OrElse i >= ByVal length As ) As [MustOverride]
-			Public Function [while](i < ByVal length As ) As [MustOverride]
+			Public Function [if]((Not Character.isHighSurrogate(c1)) OrElse i >=   length As ) As [MustOverride]
+			Public Function [while](i <   length As ) As [MustOverride]
 			Public MustOverride Function codePoints() As default
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 			Public MustOverride Return intStream(() -> java.util.Spliterators.spliterator(New CharIterator, length(), java.util.Spliterator.ORDERED), java.util.Spliterator.SUBSIZED | java.util.Spliterator.SIZED | java.util.Spliterator.ORDERED, False);
-			Public Function accept(charAt(cur) ByVal As ) As [MustOverride]
+			Public Function accept(charAt(cur)   As ) As [MustOverride]
 'JAVA TO VB CONVERTER TODO TASK: Assignments within expressions are not supported in VB
-			Public Function [for](; cur < length(); cur += ByVal 1 As ) As [MustOverride]
-			Public MustOverride Sub forEachRemaining(ByVal block As java.util.function.IntConsumer) Implements CharSequence.forEachRemaining
+			Public Function [for](; cur < length(); cur +=   1 As ) As [MustOverride]
+			Public MustOverride Sub forEachRemaining(  block As java.util.function.IntConsumer) Implements CharSequence.forEachRemaining
 			Public MustOverride Function NoSuchElementException() As throw
-				Friend ByVal += 1
-				Public MustOverride Function charAt(cur ByVal As ) As [Return] Implements CharSequence.charAt
+				Friend   += 1
+				Public MustOverride Function charAt(cur   As ) As [Return] Implements CharSequence.charAt
 			Public MustOverride [if](hasNext())
 			Public MustOverride Integer nextInt()
 			Public MustOverride Boolean hasNext()

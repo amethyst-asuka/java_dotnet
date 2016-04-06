@@ -112,7 +112,7 @@ Namespace java.awt
 		''' <param name="cycleMethod"> either NO_CYCLE, REFLECT, or REPEAT </param>
 		''' <param name="colorSpace"> which colorspace to use for interpolation,
 		'''                   either SRGB or LINEAR_RGB </param>
-		Friend Sub New(ByVal paint As RadialGradientPaint, ByVal cm As java.awt.image.ColorModel, ByVal deviceBounds As Rectangle, ByVal userBounds As java.awt.geom.Rectangle2D, ByVal t As java.awt.geom.AffineTransform, ByVal hints As RenderingHints, ByVal cx As Single, ByVal cy As Single, ByVal r As Single, ByVal fx As Single, ByVal fy As Single, ByVal fractions As Single(), ByVal colors As Color(), ByVal cycleMethod As java.awt.MultipleGradientPaint.CycleMethod, ByVal colorSpace As java.awt.MultipleGradientPaint.ColorSpaceType)
+		Friend Sub New(  paint As RadialGradientPaint,   cm As java.awt.image.ColorModel,   deviceBounds As Rectangle,   userBounds As java.awt.geom.Rectangle2D,   t As java.awt.geom.AffineTransform,   hints As RenderingHints,   cx As Single,   cy As Single,   r As Single,   fx As Single,   fy As Single,   fractions As Single(),   colors As Color(),   cycleMethod As java.awt.MultipleGradientPaint.CycleMethod,   colorSpace As java.awt.MultipleGradientPaint.ColorSpaceType)
 			MyBase.New(paint, cm, deviceBounds, userBounds, t, hints, fractions, colors, cycleMethod, colorSpace)
 
 			' copy some parameters

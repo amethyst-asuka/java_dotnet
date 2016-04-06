@@ -203,7 +203,7 @@ Namespace java.lang
         ''' </summary>
         ''' <param name="d">   the {@code double} to be converted. </param>
         ''' <returns> a string representation of the argument. </returns>
-        Public Shared Function ToString(ByVal d As Double) As String
+        Public Shared Function ToString(  d As Double) As String
             Return sun.misc.FloatingDecimal.toJavaFormatString(d)
         End Function
 
@@ -280,7 +280,7 @@ Namespace java.lang
         ''' <returns> a hex string representation of the argument.
         ''' @since 1.5
         ''' @author Joseph D. Darcy </returns>
-        Public Shared Function toHexString(ByVal d As Double) As String
+        Public Shared Function toHexString(  d As Double) As String
             '        
             '         * Modeled after the "a" conversion specifier in C99, section
             '         * 7.19.6.1; however, the output of this method is more
@@ -492,7 +492,7 @@ Namespace java.lang
         '''             represented by the {@code String} argument. </returns>
         ''' <exception cref="NumberFormatException">  if the string does not contain a
         '''             parsable number. </exception>
-        Public Shared Function valueOf(ByVal s As String) As Double?
+        Public Shared Function valueOf(  s As String) As Double?
             Return New Double?(parseDouble(s))
         End Function
 
@@ -508,7 +508,7 @@ Namespace java.lang
         ''' <param name="d"> a double value. </param>
         ''' <returns> a {@code Double} instance representing {@code d}.
         ''' @since  1.5 </returns>
-        Public Shared Function valueOf(ByVal d As Double) As Double?
+        Public Shared Function valueOf(  d As Double) As Double?
             Return New Double?(d)
         End Function
 
@@ -526,7 +526,7 @@ Namespace java.lang
         '''         a parsable {@code double}. </exception>
         ''' <seealso cref=    java.lang.Double#valueOf(String)
         ''' @since 1.2 </seealso>
-        Public Shared Function parseDouble(ByVal s As String) As Double
+        Public Shared Function parseDouble(  s As String) As Double
             Return sun.misc.FloatingDecimal.parseDouble(s)
         End Function
 
@@ -537,7 +537,7 @@ Namespace java.lang
         ''' <param name="v">   the value to be tested. </param>
         ''' <returns>  {@code true} if the value of the argument is NaN;
         '''          {@code false} otherwise. </returns>
-        Public Shared Function isNaN(ByVal v As Double) As Boolean
+        Public Shared Function isNaN(  v As Double) As Boolean
             Return (v <> v)
         End Function
 
@@ -548,7 +548,7 @@ Namespace java.lang
         ''' <param name="v">   the value to be tested. </param>
         ''' <returns>  {@code true} if the value of the argument is positive
         '''          infinity or negative infinity; {@code false} otherwise. </returns>
-        Public Shared Function isInfinite(ByVal v As Double) As Boolean
+        Public Shared Function isInfinite(  v As Double) As Boolean
             Return (v = POSITIVE_INFINITY) OrElse (v = NEGATIVE_INFINITY)
         End Function
 
@@ -561,7 +561,7 @@ Namespace java.lang
         ''' <returns> {@code true} if the argument is a finite
         ''' floating-point value, {@code false} otherwise.
         ''' @since 1.8 </returns>
-        Public Shared Function isFinite(ByVal d As Double) As Boolean
+        Public Shared Function isFinite(  d As Double) As Boolean
             Return System.Math.abs(d) <= sun.misc.DoubleConsts.MAX_VALUE
         End Function
 
@@ -577,7 +577,7 @@ Namespace java.lang
         ''' represents the primitive {@code double} argument.
         ''' </summary>
         ''' <param name="value">   the value to be represented by the {@code Double}. </param>
-        Sub New(ByVal value As Double)
+        Sub New(  value As Double)
             Me.value = value
         End Sub
 
@@ -591,7 +591,7 @@ Namespace java.lang
         ''' <exception cref="NumberFormatException">  if the string does not contain a
         '''            parsable number. </exception>
         ''' <seealso cref=       java.lang.Double#valueOf(java.lang.String) </seealso>
-        Sub New(ByVal s As String)
+        Sub New(  s As String)
             value = parseDouble(s)
         End Sub
 
@@ -729,7 +729,7 @@ Namespace java.lang
         ''' <param name="value"> the value to hash </param>
         ''' <returns> a hash code value for a {@code double} value.
         ''' @since 1.8 </returns>
-        Public Overloads Shared Function GetHashCode(ByVal value As Double) As Integer
+        Public Overloads Shared Function GetHashCode(  value As Double) As Integer
             Dim bits As Long = doubleToLongBits(value)
             Return CInt(Fix(bits Xor (CLng(CULng(bits) >> 32))))
         End Function
@@ -772,7 +772,7 @@ Namespace java.lang
         ''' <returns>  {@code true} if the objects are the same;
         '''          {@code false} otherwise. </returns>
         ''' <seealso cref= java.lang.Double#doubleToLongBits(double) </seealso>
-        Public Overrides Function Equals(ByVal obj As Object) As Boolean
+        Public Overrides Function Equals(  obj As Object) As Boolean
             Return (TypeOf obj Is Double?) AndAlso (doubleToLongBits(CDbl(obj).value) = doubleToLongBits(value))
         End Function
 
@@ -807,7 +807,7 @@ Namespace java.lang
         ''' </summary>
         ''' <param name="value">   a {@code double} precision floating-point number. </param>
         ''' <returns> the bits that represent the floating-point number. </returns>
-        Public Shared Function doubleToLongBits(ByVal value As Double) As Long
+        Public Shared Function doubleToLongBits(  value As Double) As Long
             Dim result As Long = doubleToRawLongBits(value)
             ' Check for NaN based on values of bit fields, maximum
             ' exponent and nonzero significand.
@@ -852,7 +852,7 @@ Namespace java.lang
         ''' @since 1.3 </returns>
         'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
         <DllImport("unknown")>
-        Public Shared Function doubleToRawLongBits(ByVal value As Double) As Long
+        Public Shared Function doubleToRawLongBits(  value As Double) As Long
         End Function
 
         ''' <summary>
@@ -917,7 +917,7 @@ Namespace java.lang
         '''          bit pattern. </returns>
         'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
         <DllImport("unknown")>
-        Public Shared Function longBitsToDouble(ByVal bits As Long) As Double
+        Public Shared Function longBitsToDouble(  bits As Long) As Double
         End Function
 
         ''' <summary>
@@ -949,7 +949,7 @@ Namespace java.lang
         '''          {@code anotherDouble}.
         ''' 
         ''' @since   1.2 </returns>
-        Public Function compareTo(ByVal anotherDouble As Double?) As Integer
+        Public Function compareTo(  anotherDouble As Double?) As Integer
             Return java.lang.[Double].compare(value, anotherDouble.Value)
         End Function
 
@@ -970,7 +970,7 @@ Namespace java.lang
         '''          if {@code d1} is numerically greater than
         '''          {@code d2}.
         ''' @since 1.4 </returns>
-        Public Shared Function compare(ByVal d1 As Double, ByVal d2 As Double) As Integer
+        Public Shared Function compare(  d1 As Double,   d2 As Double) As Integer
             If d1 < d2 Then Return -1 ' Neither val is NaN, thisVal is smaller
             If d1 > d2 Then Return 1 ' Neither val is NaN, thisVal is larger
 
@@ -990,7 +990,7 @@ Namespace java.lang
         ''' @jls 4.2.4 Floating-Point Operations </returns>
         ''' <seealso cref= java.util.function.BinaryOperator
         ''' @since 1.8 </seealso>
-        Public Shared Function sum(ByVal a As Double, ByVal b As Double) As Double
+        Public Shared Function sum(  a As Double,   b As Double) As Double
             Return a + b
         End Function
 
@@ -1003,7 +1003,7 @@ Namespace java.lang
         ''' <returns> the greater of {@code a} and {@code b} </returns>
         ''' <seealso cref= java.util.function.BinaryOperator
         ''' @since 1.8 </seealso>
-        Public Shared Function max(ByVal a As Double, ByVal b As Double) As Double
+        Public Shared Function max(  a As Double,   b As Double) As Double
             Return System.Math.max(a, b)
         End Function
 
@@ -1016,7 +1016,7 @@ Namespace java.lang
         ''' <returns> the smaller of {@code a} and {@code b}. </returns>
         ''' <seealso cref= java.util.function.BinaryOperator
         ''' @since 1.8 </seealso>
-        Public Shared Function min(ByVal a As Double, ByVal b As Double) As Double
+        Public Shared Function min(  a As Double,   b As Double) As Double
             Return System.Math.min(a, b)
         End Function
 

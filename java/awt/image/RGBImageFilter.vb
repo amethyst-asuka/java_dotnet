@@ -108,7 +108,7 @@ Namespace java.awt.image
 		''' <seealso cref= ImageConsumer </seealso>
 		''' <seealso cref= ColorModel#getRGBdefault </seealso>
 		Public Overridable Property colorModel As java.awt.image.ColorModel
-			Set(ByVal model As java.awt.image.ColorModel)
+			Set(  model As java.awt.image.ColorModel)
 				If canFilterIndexColorModel AndAlso (TypeOf model Is IndexColorModel) Then
 					Dim newcm As java.awt.image.ColorModel = filterIndexColorModel(CType(model, IndexColorModel))
 					substituteColorModel(model, newcm)
@@ -126,7 +126,7 @@ Namespace java.awt.image
 		''' untouched (but with the new ColorModel object). </summary>
 		''' <param name="oldcm"> the ColorModel object to be replaced on the fly </param>
 		''' <param name="newcm"> the ColorModel object to replace oldcm on the fly </param>
-		Public Overridable Sub substituteColorModel(ByVal oldcm As java.awt.image.ColorModel, ByVal newcm As java.awt.image.ColorModel)
+		Public Overridable Sub substituteColorModel(  oldcm As java.awt.image.ColorModel,   newcm As java.awt.image.ColorModel)
 			origmodel = oldcm
 			newmodel = newcm
 		End Sub
@@ -140,7 +140,7 @@ Namespace java.awt.image
 		''' <param name="icm"> the IndexColorModel object to be filtered </param>
 		''' <exception cref="NullPointerException"> if <code>icm</code> is null </exception>
 		''' <returns> a new IndexColorModel representing the filtered colors </returns>
-		Public Overridable Function filterIndexColorModel(ByVal icm As IndexColorModel) As IndexColorModel
+		Public Overridable Function filterIndexColorModel(  icm As IndexColorModel) As IndexColorModel
 			Dim mapsize As Integer = icm.mapSize
 			Dim r As SByte() = New SByte(mapsize - 1){}
 			Dim g As SByte() = New SByte(mapsize - 1){}

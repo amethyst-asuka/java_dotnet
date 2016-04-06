@@ -206,7 +206,7 @@ Namespace java.awt
 		''' <code>FlowLayout.CENTER</code>, <code>FlowLayout.LEADING</code>,
 		''' or <code>FlowLayout.TRAILING</code>. </summary>
 		''' <param name="align"> the alignment value </param>
-		Public Sub New(ByVal align As Integer)
+		Public Sub New(  align As Integer)
 			Me.New(align, 5, 5)
 		End Sub
 
@@ -225,7 +225,7 @@ Namespace java.awt
 		''' <param name="vgap">    the vertical gap between components
 		'''                     and between the components and the
 		'''                     borders of the <code>Container</code> </param>
-		Public Sub New(ByVal align As Integer, ByVal hgap As Integer, ByVal vgap As Integer)
+		Public Sub New(  align As Integer,   hgap As Integer,   vgap As Integer)
 			Me.hgap = hgap
 			Me.vgap = vgap
 			alignment = align
@@ -244,7 +244,7 @@ Namespace java.awt
 			Get
 				Return newAlign
 			End Get
-			Set(ByVal align As Integer)
+			Set(  align As Integer)
 				Me.newAlign = align
     
 				' this.align is used only for serialization compatibility,
@@ -277,7 +277,7 @@ Namespace java.awt
 			Get
 				Return hgap
 			End Get
-			Set(ByVal hgap As Integer)
+			Set(  hgap As Integer)
 				Me.hgap = hgap
 			End Set
 		End Property
@@ -297,7 +297,7 @@ Namespace java.awt
 			Get
 				Return vgap
 			End Get
-			Set(ByVal vgap As Integer)
+			Set(  vgap As Integer)
 				Me.vgap = vgap
 			End Set
 		End Property
@@ -312,7 +312,7 @@ Namespace java.awt
 		'''                        vertically aligned on their baseline
 		''' @since 1.6 </param>
 		Public Overridable Property alignOnBaseline As Boolean
-			Set(ByVal alignOnBaseline As Boolean)
+			Set(  alignOnBaseline As Boolean)
 				Me.alignOnBaseline = alignOnBaseline
 			End Set
 			Get
@@ -326,7 +326,7 @@ Namespace java.awt
 		''' Not used by this class. </summary>
 		''' <param name="name"> the name of the component </param>
 		''' <param name="comp"> the component to be added </param>
-		Public Overridable Sub addLayoutComponent(ByVal name As String, ByVal comp As Component) Implements LayoutManager.addLayoutComponent
+		Public Overridable Sub addLayoutComponent(  name As String,   comp As Component) Implements LayoutManager.addLayoutComponent
 		End Sub
 
 		''' <summary>
@@ -334,7 +334,7 @@ Namespace java.awt
 		''' Not used by this class. </summary>
 		''' <param name="comp"> the component to remove </param>
 		''' <seealso cref=       java.awt.Container#removeAll </seealso>
-		Public Overridable Sub removeLayoutComponent(ByVal comp As Component) Implements LayoutManager.removeLayoutComponent
+		Public Overridable Sub removeLayoutComponent(  comp As Component) Implements LayoutManager.removeLayoutComponent
 		End Sub
 
 		''' <summary>
@@ -347,7 +347,7 @@ Namespace java.awt
 		''' <seealso cref= Container </seealso>
 		''' <seealso cref= #minimumLayoutSize </seealso>
 		''' <seealso cref=       java.awt.Container#getPreferredSize </seealso>
-		Public Overridable Function preferredLayoutSize(ByVal target As Container) As Dimension Implements LayoutManager.preferredLayoutSize
+		Public Overridable Function preferredLayoutSize(  target As Container) As Dimension Implements LayoutManager.preferredLayoutSize
 		  SyncLock target.treeLock
 			Dim [dim] As New Dimension(0, 0)
 			Dim nmembers As Integer = target.componentCount
@@ -393,7 +393,7 @@ Namespace java.awt
 		''' <seealso cref= #preferredLayoutSize </seealso>
 		''' <seealso cref=       java.awt.Container </seealso>
 		''' <seealso cref=       java.awt.Container#doLayout </seealso>
-		Public Overridable Function minimumLayoutSize(ByVal target As Container) As Dimension Implements LayoutManager.minimumLayoutSize
+		Public Overridable Function minimumLayoutSize(  target As Container) As Dimension Implements LayoutManager.minimumLayoutSize
 		  SyncLock target.treeLock
 			Dim useBaseline As Boolean = alignOnBaseline
 			Dim [dim] As New Dimension(0, 0)
@@ -452,7 +452,7 @@ Namespace java.awt
 		''' <param name="descent"> Ascent for the components. This is only valid if
 		'''               useBaseline is true. </param>
 		''' <returns> actual row height </returns>
-		Private Function moveComponents(ByVal target As Container, ByVal x As Integer, ByVal y As Integer, ByVal width As Integer, ByVal height As Integer, ByVal rowStart As Integer, ByVal rowEnd As Integer, ByVal ltr As Boolean, ByVal useBaseline As Boolean, ByVal ascent As Integer(), ByVal descent As Integer()) As Integer
+		Private Function moveComponents(  target As Container,   x As Integer,   y As Integer,   width As Integer,   height As Integer,   rowStart As Integer,   rowEnd As Integer,   ltr As Boolean,   useBaseline As Boolean,   ascent As Integer(),   descent As Integer()) As Integer
 			Select Case newAlign
 			Case LEFT
 				x += If(ltr, 0, width)
@@ -513,7 +513,7 @@ Namespace java.awt
 		''' <param name="target"> the specified component being laid out </param>
 		''' <seealso cref= Container </seealso>
 		''' <seealso cref=       java.awt.Container#doLayout </seealso>
-		Public Overridable Sub layoutContainer(ByVal target As Container) Implements LayoutManager.layoutContainer
+		Public Overridable Sub layoutContainer(  target As Container) Implements LayoutManager.layoutContainer
 		  SyncLock target.treeLock
 			Dim insets_Renamed As Insets = target.insets
 			Dim maxwidth As Integer = target.width - (insets_Renamed.left + insets_Renamed.right + hgap*2)
@@ -586,7 +586,7 @@ Namespace java.awt
 		''' objects written by older versions of the class that didn't contain all
 		''' of the fields we use now..
 		''' </summary>
-		Private Sub readObject(ByVal stream As java.io.ObjectInputStream)
+		Private Sub readObject(  stream As java.io.ObjectInputStream)
 			stream.defaultReadObject()
 
 			If serialVersionOnStream < 1 Then alignment = Me.align

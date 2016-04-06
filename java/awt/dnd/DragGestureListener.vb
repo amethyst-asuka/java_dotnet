@@ -58,7 +58,7 @@ Namespace java.awt.dnd
 		''' <param name="dge"> the <code>DragGestureEvent</code> describing
 		''' the gesture that has just occurred </param>
 
-		 Sub dragGestureRecognized(ByVal dge As DragGestureEvent)
+		 Sub dragGestureRecognized(  dge As DragGestureEvent)
 	 End Interface
 
 End Namespace

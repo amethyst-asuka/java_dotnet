@@ -130,7 +130,7 @@ Namespace java.lang
 		''' <exception cref="NullPointerException"> if the specified object is null </exception>
 		''' <exception cref="ClassCastException"> if the specified object's type prevents it
 		'''         from being compared to this object. </exception>
-		Function compareTo(ByVal o As T) As Integer
+		Function compareTo(  o As T) As Integer
 	End Interface
 
 End Namespace

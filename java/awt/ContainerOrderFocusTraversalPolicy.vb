@@ -105,17 +105,17 @@ Namespace java.awt
 	'     * A striking example of such a descendant is the javax.swing.SortingFocusTraversalPolicy.
 	'     
 		'protected
-	 Private Function getFocusTraversalCycle(ByVal aContainer As Container) As IList(Of Component)
+	 Private Function getFocusTraversalCycle(  aContainer As Container) As IList(Of Component)
 			Dim cycle As IList(Of Component) = New List(Of Component)
 			enumerateCycle(aContainer, cycle)
 			Return cycle
 	 End Function
 		'protected
-	 Private Function getComponentIndex(ByVal cycle As IList(Of Component), ByVal aComponent As Component) As Integer
+	 Private Function getComponentIndex(  cycle As IList(Of Component),   aComponent As Component) As Integer
 			Return cycle.IndexOf(aComponent)
 	 End Function
 
-		Private Sub enumerateCycle(ByVal container_Renamed As Container, ByVal cycle As IList(Of Component))
+		Private Sub enumerateCycle(  container_Renamed As Container,   cycle As IList(Of Component))
 			If Not(container_Renamed.visible AndAlso container_Renamed.displayable) Then Return
 
 			cycle.Add(container_Renamed)
@@ -135,7 +135,7 @@ Namespace java.awt
 			Next i
 		End Sub
 
-		Private Function getTopmostProvider(ByVal focusCycleRoot As Container, ByVal aComponent As Component) As Container
+		Private Function getTopmostProvider(  focusCycleRoot As Container,   aComponent As Component) As Container
 			Dim aCont As Container = aComponent.parent
 			Dim ftp As Container = Nothing
 			Do While aCont IsNot focusCycleRoot AndAlso aCont IsNot Nothing
@@ -153,7 +153,7 @@ Namespace java.awt
 	'     * @return a Component to traverse focus to if {@code comp} is a root or provider
 	'     *         and implicit down-cycle is set, otherwise {@code null}
 	'     
-		Private Function getComponentDownCycle(ByVal comp As Component, ByVal traversalDirection As Integer) As Component
+		Private Function getComponentDownCycle(  comp As Component,   traversalDirection As Integer) As Component
 			Dim retComp As Component = Nothing
 
 			If TypeOf comp Is Container Then
@@ -197,7 +197,7 @@ Namespace java.awt
 		''' <exception cref="IllegalArgumentException"> if aContainer is not a focus cycle
 		'''         root of aComponent or focus traversal policy provider, or if either aContainer or
 		'''         aComponent is null </exception>
-		Public Overrides Function getComponentAfter(ByVal aContainer As Container, ByVal aComponent As Component) As Component
+		Public Overrides Function getComponentAfter(  aContainer As Container,   aComponent As Component) As Component
 			If log.isLoggable(sun.util.logging.PlatformLogger.Level.FINE) Then log.fine("### Searching in " & aContainer & " for component after " & aComponent)
 
 			If aContainer Is Nothing OrElse aComponent Is Nothing Then Throw New IllegalArgumentException("aContainer and aComponent cannot be null")
@@ -285,7 +285,7 @@ Namespace java.awt
 		''' <exception cref="IllegalArgumentException"> if aContainer is not a focus cycle
 		'''         root of aComponent or focus traversal policy provider, or if either aContainer or
 		'''         aComponent is null </exception>
-		Public Overrides Function getComponentBefore(ByVal aContainer As Container, ByVal aComponent As Component) As Component
+		Public Overrides Function getComponentBefore(  aContainer As Container,   aComponent As Component) As Component
 			If aContainer Is Nothing OrElse aComponent Is Nothing Then Throw New IllegalArgumentException("aContainer and aComponent cannot be null")
 			If (Not aContainer.focusTraversalPolicyProvider) AndAlso (Not aContainer.focusCycleRoot) Then
 				Throw New IllegalArgumentException("aContainer should be focus cycle root or focus traversal policy provider")
@@ -368,7 +368,7 @@ Namespace java.awt
 		''' <returns> the first Component in the traversal cycle of aContainer,
 		'''         or null if no suitable Component can be found </returns>
 		''' <exception cref="IllegalArgumentException"> if aContainer is null </exception>
-		Public Overrides Function getFirstComponent(ByVal aContainer As Container) As Component
+		Public Overrides Function getFirstComponent(  aContainer As Container) As Component
 			Dim cycle As IList(Of Component)
 
 			If log.isLoggable(sun.util.logging.PlatformLogger.Level.FINE) Then log.fine("### Getting first component in " & aContainer)
@@ -412,7 +412,7 @@ Namespace java.awt
 		''' <returns> the last Component in the traversal cycle of aContainer,
 		'''         or null if no suitable Component can be found </returns>
 		''' <exception cref="IllegalArgumentException"> if aContainer is null </exception>
-		Public Overrides Function getLastComponent(ByVal aContainer As Container) As Component
+		Public Overrides Function getLastComponent(  aContainer As Container) As Component
 			Dim cycle As IList(Of Component)
 			If log.isLoggable(sun.util.logging.PlatformLogger.Level.FINE) Then log.fine("### Getting last component in " & aContainer)
 
@@ -462,7 +462,7 @@ Namespace java.awt
 		'''         or null if no suitable Component can be found </returns>
 		''' <seealso cref= #getFirstComponent </seealso>
 		''' <exception cref="IllegalArgumentException"> if aContainer is null </exception>
-		Public Overrides Function getDefaultComponent(ByVal aContainer As Container) As Component
+		Public Overrides Function getDefaultComponent(  aContainer As Container) As Component
 			Return getFirstComponent(aContainer)
 		End Function
 
@@ -481,7 +481,7 @@ Namespace java.awt
 		''' <seealso cref= #getImplicitDownCycleTraversal </seealso>
 		''' <seealso cref= #getFirstComponent </seealso>
 		Public Overridable Property implicitDownCycleTraversal As Boolean
-			Set(ByVal implicitDownCycleTraversal As Boolean)
+			Set(  implicitDownCycleTraversal As Boolean)
 				Me.implicitDownCycleTraversal = implicitDownCycleTraversal
 			End Set
 			Get
@@ -499,7 +499,7 @@ Namespace java.awt
 		'''        be tested </param>
 		''' <returns> <code>true</code> if aComponent is visible, displayable,
 		'''         enabled, and focusable; <code>false</code> otherwise </returns>
-		Protected Friend Overridable Function accept(ByVal aComponent As Component) As Boolean
+		Protected Friend Overridable Function accept(  aComponent As Component) As Boolean
 			If Not aComponent.canBeFocusOwner() Then Return False
 
 			' Verify that the Component is recursively enabled. Disabling a

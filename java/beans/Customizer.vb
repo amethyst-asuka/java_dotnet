@@ -51,13 +51,13 @@ Namespace java.beans
 		''' </summary>
 		''' <param name="listener">  An object to be invoked when a PropertyChange
 		'''          event is fired. </param>
-		 Sub addPropertyChangeListener(ByVal listener As PropertyChangeListener)
+		 Sub addPropertyChangeListener(  listener As PropertyChangeListener)
 
 		''' <summary>
 		''' Remove a listener for the PropertyChange event.
 		''' </summary>
 		''' <param name="listener">  The PropertyChange listener to be removed. </param>
-		Sub removePropertyChangeListener(ByVal listener As PropertyChangeListener)
+		Sub removePropertyChangeListener(  listener As PropertyChangeListener)
 
 	End Interface
 

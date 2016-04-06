@@ -278,7 +278,7 @@ Namespace java.text
 		''' <returns> The character index of the nth boundary from the current position
 		''' or <code>BreakIterator.DONE</code> if either first or last text boundary
 		''' has been reached. </returns>
-		Public MustOverride Function [next](ByVal n As Integer) As Integer
+		Public MustOverride Function [next](  n As Integer) As Integer
 
 		''' <summary>
 		''' Returns the boundary following the current boundary. If the current boundary
@@ -315,7 +315,7 @@ Namespace java.text
 		''' as the offset. </returns>
 		''' <exception cref="IllegalArgumentException"> if the specified offset is less than
 		''' the first text boundary or greater than the last text boundary. </exception>
-		Public MustOverride Function following(ByVal offset As Integer) As Integer
+		Public MustOverride Function following(  offset As Integer) As Integer
 
 		''' <summary>
 		''' Returns the last boundary preceding the specified character offset. If the
@@ -331,7 +331,7 @@ Namespace java.text
 		''' <exception cref="IllegalArgumentException"> if the specified offset is less than
 		''' the first text boundary or greater than the last text boundary.
 		''' @since 1.2 </exception>
-		Public Overridable Function preceding(ByVal offset As Integer) As Integer
+		Public Overridable Function preceding(  offset As Integer) As Integer
 			' NOTE:  This implementation is here solely because we can't add new
 			' abstract methods to an existing class.  There is almost ALWAYS a
 			' better, faster way to do this.
@@ -350,7 +350,7 @@ Namespace java.text
 		''' <exception cref="IllegalArgumentException"> if the specified offset is less than
 		''' the first text boundary or greater than the last text boundary.
 		''' @since 1.2 </exception>
-		Public Overridable Function isBoundary(ByVal offset As Integer) As Boolean
+		Public Overridable Function isBoundary(  offset As Integer) As Boolean
 			' NOTE: This implementation probably is wrong for most situations
 			' because it fails to take into account the possibility that a
 			' CharacterIterator passed to setText() may not have a begin offset
@@ -393,7 +393,7 @@ Namespace java.text
 		''' position is reset to first(). </summary>
 		''' <param name="newText"> new text to scan. </param>
 		Public Overridable Property text As String
-			Set(ByVal newText As String)
+			Set(  newText As String)
 				text = New StringCharacterIterator(newText)
 			End Set
 		End Property
@@ -426,7 +426,7 @@ Namespace java.text
 		''' <param name="locale"> the desired locale </param>
 		''' <returns> A break iterator for word breaks </returns>
 		''' <exception cref="NullPointerException"> if <code>locale</code> is null </exception>
-		Public Shared Function getWordInstance(ByVal locale As java.util.Locale) As BreakIterator
+		Public Shared Function getWordInstance(  locale As java.util.Locale) As BreakIterator
 			Return getBreakInstance(locale, WORD_INDEX)
 		End Function
 
@@ -448,7 +448,7 @@ Namespace java.text
 		''' <param name="locale"> the desired locale </param>
 		''' <returns> A break iterator for line breaks </returns>
 		''' <exception cref="NullPointerException"> if <code>locale</code> is null </exception>
-		Public Shared Function getLineInstance(ByVal locale As java.util.Locale) As BreakIterator
+		Public Shared Function getLineInstance(  locale As java.util.Locale) As BreakIterator
 			Return getBreakInstance(locale, LINE_INDEX)
 		End Function
 
@@ -470,7 +470,7 @@ Namespace java.text
 		''' <param name="locale"> the desired locale </param>
 		''' <returns> A break iterator for character breaks </returns>
 		''' <exception cref="NullPointerException"> if <code>locale</code> is null </exception>
-		Public Shared Function getCharacterInstance(ByVal locale As java.util.Locale) As BreakIterator
+		Public Shared Function getCharacterInstance(  locale As java.util.Locale) As BreakIterator
 			Return getBreakInstance(locale, CHARACTER_INDEX)
 		End Function
 
@@ -492,11 +492,11 @@ Namespace java.text
 		''' <param name="locale"> the desired locale </param>
 		''' <returns> A break iterator for sentence breaks </returns>
 		''' <exception cref="NullPointerException"> if <code>locale</code> is null </exception>
-		Public Shared Function getSentenceInstance(ByVal locale As java.util.Locale) As BreakIterator
+		Public Shared Function getSentenceInstance(  locale As java.util.Locale) As BreakIterator
 			Return getBreakInstance(locale, SENTENCE_INDEX)
 		End Function
 
-		Private Shared Function getBreakInstance(ByVal locale As java.util.Locale, ByVal type As Integer) As BreakIterator
+		Private Shared Function getBreakInstance(  locale As java.util.Locale,   type As Integer) As BreakIterator
 			If iterCache(type) IsNot Nothing Then
 				Dim cache As BreakIteratorCache = iterCache(type).get()
 				If cache IsNot Nothing Then
@@ -510,14 +510,14 @@ Namespace java.text
 			Return result
 		End Function
 
-		Private Shared Function createBreakInstance(ByVal locale As java.util.Locale, ByVal type As Integer) As BreakIterator
+		Private Shared Function createBreakInstance(  locale As java.util.Locale,   type As Integer) As BreakIterator
 			Dim adapter As sun.util.locale.provider.LocaleProviderAdapter = sun.util.locale.provider.LocaleProviderAdapter.getAdapter(GetType(java.text.spi.BreakIteratorProvider), locale)
 			Dim [iterator] As BreakIterator = createBreakInstance(adapter, locale, type)
 			If [iterator] Is Nothing Then [iterator] = createBreakInstance(sun.util.locale.provider.LocaleProviderAdapter.forJRE(), locale, type)
 			Return [iterator]
 		End Function
 
-		Private Shared Function createBreakInstance(ByVal adapter As sun.util.locale.provider.LocaleProviderAdapter, ByVal locale As java.util.Locale, ByVal type As Integer) As BreakIterator
+		Private Shared Function createBreakInstance(  adapter As sun.util.locale.provider.LocaleProviderAdapter,   locale As java.util.Locale,   type As Integer) As BreakIterator
 			Dim breakIteratorProvider As java.text.spi.BreakIteratorProvider = adapter.breakIteratorProvider
 			Dim [iterator] As BreakIterator = Nothing
 			Select Case type
@@ -558,7 +558,7 @@ Namespace java.text
 			Private iter As BreakIterator
 			Private locale As java.util.Locale
 
-			Friend Sub New(ByVal locale As java.util.Locale, ByVal iter As BreakIterator)
+			Friend Sub New(  locale As java.util.Locale,   iter As BreakIterator)
 				Me.locale = locale
 				Me.iter = CType(iter.clone(), BreakIterator)
 			End Sub

@@ -126,7 +126,7 @@ Namespace java.text
 		''' <exception cref="java.util.MissingResourceException">
 		'''             if the resources for the specified locale cannot be
 		'''             found or cannot be loaded. </exception>
-		Public Sub New(ByVal locale As java.util.Locale)
+		Public Sub New(  locale As java.util.Locale)
 			initializeData(locale)
 		End Sub
 
@@ -315,7 +315,7 @@ Namespace java.text
 		''' <returns> a <code>DateFormatSymbols</code> instance. </returns>
 		''' <exception cref="NullPointerException"> if <code>locale</code> is null
 		''' @since 1.6 </exception>
-		Public Shared Function getInstance(ByVal locale As java.util.Locale) As DateFormatSymbols
+		Public Shared Function getInstance(  locale As java.util.Locale) As DateFormatSymbols
 			Dim dfs As DateFormatSymbols = getProviderInstance(locale)
 			If dfs IsNot Nothing Then Return dfs
 			Throw New RuntimeException("DateFormatSymbols instance creation failed.")
@@ -327,13 +327,13 @@ Namespace java.text
 		''' not its clone. Therefore, the instance should never be given to
 		''' an application.
 		''' </summary>
-		Shared Function getInstanceRef(ByVal locale As java.util.Locale) As DateFormatSymbols
+		Shared Function getInstanceRef(  locale As java.util.Locale) As DateFormatSymbols
 			Dim dfs As DateFormatSymbols = getProviderInstance(locale)
 			If dfs IsNot Nothing Then Return dfs
 			Throw New RuntimeException("DateFormatSymbols instance creation failed.")
 		End Function
 
-		Private Shared Function getProviderInstance(ByVal locale As java.util.Locale) As DateFormatSymbols
+		Private Shared Function getProviderInstance(  locale As java.util.Locale) As DateFormatSymbols
 			Dim adapter As sun.util.locale.provider.LocaleProviderAdapter = sun.util.locale.provider.LocaleProviderAdapter.getAdapter(GetType(java.text.spi.DateFormatSymbolsProvider), locale)
 			Dim provider As java.text.spi.DateFormatSymbolsProvider = adapter.dateFormatSymbolsProvider
 			Dim dfsyms As DateFormatSymbols = provider.getInstance(locale)
@@ -351,7 +351,7 @@ Namespace java.text
 			Get
 				Return java.util.Arrays.copyOf(eras, eras.Length)
 			End Get
-			Set(ByVal newEras As String())
+			Set(  newEras As String())
 				eras = java.util.Arrays.copyOf(newEras, newEras.Length)
 				cachedHashCode = 0
 			End Set
@@ -376,7 +376,7 @@ Namespace java.text
 			Get
 				Return java.util.Arrays.copyOf(months, months.Length)
 			End Get
-			Set(ByVal newMonths As String())
+			Set(  newMonths As String())
 				months = java.util.Arrays.copyOf(newMonths, newMonths.Length)
 				cachedHashCode = 0
 			End Set
@@ -401,7 +401,7 @@ Namespace java.text
 			Get
 				Return java.util.Arrays.copyOf(shortMonths, shortMonths.Length)
 			End Get
-			Set(ByVal newShortMonths As String())
+			Set(  newShortMonths As String())
 				shortMonths = java.util.Arrays.copyOf(newShortMonths, newShortMonths.Length)
 				cachedHashCode = 0
 			End Set
@@ -416,7 +416,7 @@ Namespace java.text
 			Get
 				Return java.util.Arrays.copyOf(weekdays, weekdays.Length)
 			End Get
-			Set(ByVal newWeekdays As String())
+			Set(  newWeekdays As String())
 				weekdays = java.util.Arrays.copyOf(newWeekdays, newWeekdays.Length)
 				cachedHashCode = 0
 			End Set
@@ -431,7 +431,7 @@ Namespace java.text
 			Get
 				Return java.util.Arrays.copyOf(shortWeekdays, shortWeekdays.Length)
 			End Get
-			Set(ByVal newShortWeekdays As String())
+			Set(  newShortWeekdays As String())
 				shortWeekdays = java.util.Arrays.copyOf(newShortWeekdays, newShortWeekdays.Length)
 				cachedHashCode = 0
 			End Set
@@ -445,7 +445,7 @@ Namespace java.text
 			Get
 				Return java.util.Arrays.copyOf(ampms, ampms.Length)
 			End Get
-			Set(ByVal newAmpms As String())
+			Set(  newAmpms As String())
 				ampms = java.util.Arrays.copyOf(newAmpms, newAmpms.Length)
 				cachedHashCode = 0
 			End Set
@@ -493,7 +493,7 @@ Namespace java.text
 			Get
 				Return getZoneStringsImpl(True)
 			End Get
-			Set(ByVal newZoneStrings As String()())
+			Set(  newZoneStrings As String()())
 				Dim aCopy As String()() = New String(newZoneStrings.Length - 1)(){}
 				For i As Integer = 0 To newZoneStrings.Length - 1
 					Dim len As Integer = newZoneStrings(i).Length
@@ -514,7 +514,7 @@ Namespace java.text
 			Get
 				Return localPatternChars
 			End Get
-			Set(ByVal newLocalPatternChars As String)
+			Set(  newLocalPatternChars As String)
 				' Call toString() to throw an NPE in case the argument is null
 				localPatternChars = newLocalPatternChars.ToString()
 				cachedHashCode = 0
@@ -560,7 +560,7 @@ Namespace java.text
 		''' <summary>
 		''' Override equals
 		''' </summary>
-		Public Overrides Function Equals(ByVal obj As Object) As Boolean
+		Public Overrides Function Equals(  obj As Object) As Boolean
 			If Me Is obj Then Return True
 			If obj Is Nothing OrElse Me.GetType() IsNot obj.GetType() Then Return False
 			Dim that As DateFormatSymbols = CType(obj, DateFormatSymbols)
@@ -589,7 +589,7 @@ Namespace java.text
 		<NonSerialized> _
 		Friend cachedHashCode As Integer = 0
 
-		Private Sub initializeData(ByVal desiredLocale As java.util.Locale)
+		Private Sub initializeData(  desiredLocale As java.util.Locale)
 			locale = desiredLocale
 
 			' Copy values of a cached instance if any.
@@ -635,7 +635,7 @@ Namespace java.text
 			End If
 		End Sub
 
-		Private Shared Function toOneBasedArray(ByVal src As String()) As String()
+		Private Shared Function toOneBasedArray(  src As String()) As String()
 			Dim len As Integer = src.Length
 			Dim dst As String() = New String(len){}
 			dst(0) = ""
@@ -654,7 +654,7 @@ Namespace java.text
 		''' <returns> the index of the given time zone ID.  Returns -1 if
 		''' the given time zone ID can't be located in the DateFormatSymbols object. </returns>
 		''' <seealso cref= java.util.SimpleTimeZone </seealso>
-		Friend Function getZoneIndex(ByVal ID As String) As Integer
+		Friend Function getZoneIndex(  ID As String) As Integer
 			Dim zoneStrings_Renamed As String()() = zoneStringsWrapper
 
 	'        
@@ -690,7 +690,7 @@ Namespace java.text
 			End Get
 		End Property
 
-		Private Function getZoneStringsImpl(ByVal needsCopy As Boolean) As String()()
+		Private Function getZoneStringsImpl(  needsCopy As Boolean) As String()()
 			If zoneStrings Is Nothing Then zoneStrings = sun.util.locale.provider.TimeZoneNameUtility.getZoneStrings(locale)
 
 			If Not needsCopy Then Return zoneStrings
@@ -714,7 +714,7 @@ Namespace java.text
 		''' the target DateFormatSymbols. This is only for subclasses. </summary>
 		''' <param name="src"> the source DateFormatSymbols. </param>
 		''' <param name="dst"> the target DateFormatSymbols. </param>
-		Private Sub copyMembers(ByVal src As DateFormatSymbols, ByVal dst As DateFormatSymbols)
+		Private Sub copyMembers(  src As DateFormatSymbols,   dst As DateFormatSymbols)
 			dst.eras = java.util.Arrays.copyOf(src.eras, src.eras.Length)
 			dst.months = java.util.Arrays.copyOf(src.months, src.months.Length)
 			dst.shortMonths = java.util.Arrays.copyOf(src.shortMonths, src.shortMonths.Length)
@@ -737,7 +737,7 @@ Namespace java.text
 		''' 
 		''' @since 1.6
 		''' </summary>
-		Private Sub writeObject(ByVal stream As java.io.ObjectOutputStream)
+		Private Sub writeObject(  stream As java.io.ObjectOutputStream)
 			If zoneStrings Is Nothing Then zoneStrings = sun.util.locale.provider.TimeZoneNameUtility.getZoneStrings(locale)
 			stream.defaultWriteObject()
 		End Sub

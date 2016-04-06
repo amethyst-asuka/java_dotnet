@@ -559,7 +559,7 @@ Namespace java.lang.management
 		''' </exception>
 		''' <exception cref="java.io.IOException"> if a communication problem
 		''' occurred when accessing the <tt>MBeanServerConnection</tt>. </exception>
-		Public Shared Function newPlatformMXBeanProxy(Of T)(ByVal connection As javax.management.MBeanServerConnection, ByVal mxbeanName As String, ByVal mxbeanInterface As [Class]) As T
+		Public Shared Function newPlatformMXBeanProxy(Of T)(  connection As javax.management.MBeanServerConnection,   mxbeanName As String,   mxbeanInterface As [Class]) As T
 
 			' Only allow MXBean interfaces from rt.jar loaded by the
 			' bootstrap class loader
@@ -620,7 +620,7 @@ Namespace java.lang.management
 		''' not a singleton platform MXBean.
 		''' 
 		''' @since 1.7 </exception>
-		Public Shared Function getPlatformMXBean(Of T As PlatformManagedObject)(ByVal mxbeanInterface As [Class]) As T
+		Public Shared Function getPlatformMXBean(Of T As PlatformManagedObject)(  mxbeanInterface As [Class]) As T
 			Dim pc As PlatformComponent = PlatformComponent.getPlatformComponent(mxbeanInterface)
 			If pc Is Nothing Then
 				Dim mbean As T = sun.management.ExtendedPlatformComponent.getMXBean(mxbeanInterface)
@@ -653,7 +653,7 @@ Namespace java.lang.management
 		''' is not a platform management interface.
 		''' 
 		''' @since 1.7 </exception>
-		Public Shared Function getPlatformMXBeans(Of T As PlatformManagedObject)(ByVal mxbeanInterface As [Class]) As IList(Of T)
+		Public Shared Function getPlatformMXBeans(Of T As PlatformManagedObject)(  mxbeanInterface As [Class]) As IList(Of T)
 			Dim pc As PlatformComponent = PlatformComponent.getPlatformComponent(mxbeanInterface)
 			If pc Is Nothing Then
 				Dim mbean As T = sun.management.ExtendedPlatformComponent.getMXBean(mxbeanInterface)
@@ -697,7 +697,7 @@ Namespace java.lang.management
 		''' </exception>
 		''' <seealso cref= #newPlatformMXBeanProxy
 		''' @since 1.7 </seealso>
-		Public Shared Function getPlatformMXBean(Of T As PlatformManagedObject)(ByVal connection As javax.management.MBeanServerConnection, ByVal mxbeanInterface As [Class]) As T
+		Public Shared Function getPlatformMXBean(Of T As PlatformManagedObject)(  connection As javax.management.MBeanServerConnection,   mxbeanInterface As [Class]) As T
 			Dim pc As PlatformComponent = PlatformComponent.getPlatformComponent(mxbeanInterface)
 			If pc Is Nothing Then
 				Dim mbean As T = sun.management.ExtendedPlatformComponent.getMXBean(mxbeanInterface)
@@ -738,7 +738,7 @@ Namespace java.lang.management
 		''' </exception>
 		''' <seealso cref= #newPlatformMXBeanProxy
 		''' @since 1.7 </seealso>
-		Public Shared Function getPlatformMXBeans(Of T As PlatformManagedObject)(ByVal connection As javax.management.MBeanServerConnection, ByVal mxbeanInterface As [Class]) As IList(Of T)
+		Public Shared Function getPlatformMXBeans(Of T As PlatformManagedObject)(  connection As javax.management.MBeanServerConnection,   mxbeanInterface As [Class]) As IList(Of T)
 			Dim pc As PlatformComponent = PlatformComponent.getPlatformComponent(mxbeanInterface)
 			If pc Is Nothing Then
 				Dim mbean As T = sun.management.ExtendedPlatformComponent.getMXBean(mxbeanInterface)
@@ -779,7 +779,7 @@ Namespace java.lang.management
 		''' <summary>
 		''' Registers an MXBean.
 		''' </summary>
-		Private Shared Sub addMXBean(ByVal mbs As javax.management.MBeanServer, ByVal pmo As PlatformManagedObject)
+		Private Shared Sub addMXBean(  mbs As javax.management.MBeanServer,   pmo As PlatformManagedObject)
 			' Make DynamicMBean out of MXBean by wrapping it with a StandardMBean
 			Try
 				java.security.AccessController.doPrivileged(New PrivilegedExceptionActionAnonymousInnerClassHelper(Of T)
@@ -809,7 +809,7 @@ Namespace java.lang.management
 		''' <summary>
 		''' Registers a DynamicMBean.
 		''' </summary>
-		Private Shared Sub addDynamicMBean(ByVal mbs As javax.management.MBeanServer, ByVal dmbean As javax.management.DynamicMBean, ByVal [on] As javax.management.ObjectName)
+		Private Shared Sub addDynamicMBean(  mbs As javax.management.MBeanServer,   dmbean As javax.management.DynamicMBean,   [on] As javax.management.ObjectName)
 			Try
 				java.security.AccessController.doPrivileged(New PrivilegedExceptionActionAnonymousInnerClassHelper2(Of T)
 			Catch e As java.security.PrivilegedActionException

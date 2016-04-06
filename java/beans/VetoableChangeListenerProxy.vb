@@ -53,7 +53,7 @@ Namespace java.beans
 		''' </summary>
 		''' <param name="propertyName">  the name of the property to listen on </param>
 		''' <param name="listener">      the listener object </param>
-		Public Sub New(ByVal propertyName As String, ByVal listener As VetoableChangeListener)
+		Public Sub New(  propertyName As String,   listener As VetoableChangeListener)
 			MyBase.New(listener)
 			Me.propertyName = propertyName
 		End Sub
@@ -65,7 +65,7 @@ Namespace java.beans
 		''' </param>
 		''' <exception cref="PropertyVetoException"> if the recipient wishes the property
 		'''                                  change to be rolled back </exception>
-		Public Overridable Sub vetoableChange(ByVal [event] As PropertyChangeEvent) Implements VetoableChangeListener.vetoableChange
+		Public Overridable Sub vetoableChange(  [event] As PropertyChangeEvent) Implements VetoableChangeListener.vetoableChange
 			listener.vetoableChange([event])
 		End Sub
 

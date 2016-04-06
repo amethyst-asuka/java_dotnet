@@ -55,7 +55,7 @@ Namespace java.awt
 	'		ACCEPT_IMMEDIATELY
 	'	};
 
-		Function acceptEvent(ByVal ev As AWTEvent) As FilterAction
+		Function acceptEvent(  ev As AWTEvent) As FilterAction
 	End Interface
 
 End Namespace

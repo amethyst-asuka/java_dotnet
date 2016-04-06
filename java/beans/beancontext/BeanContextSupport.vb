@@ -77,7 +77,7 @@ Namespace java.beans.beancontext
 		''' <param name="visible">   The initial visibility. </param>
 		''' <seealso cref= java.util.Locale#getDefault() </seealso>
 		''' <seealso cref= java.util.Locale#setDefault(java.util.Locale) </seealso>
-		Public Sub New(ByVal peer As BeanContext, ByVal lcle As java.util.Locale, ByVal dTime As Boolean, ByVal visible As Boolean)
+		Public Sub New(  peer As BeanContext,   lcle As java.util.Locale,   dTime As Boolean,   visible As Boolean)
 			MyBase.New(peer)
 
 			locale = If(lcle IsNot Nothing, lcle, java.util.Locale.default)
@@ -101,7 +101,7 @@ Namespace java.beans.beancontext
 		'''                  <tt>false</tt> if runtime. </param>
 		''' <seealso cref= java.util.Locale#getDefault() </seealso>
 		''' <seealso cref= java.util.Locale#setDefault(java.util.Locale) </seealso>
-		Public Sub New(ByVal peer As BeanContext, ByVal lcle As java.util.Locale, ByVal dtime As Boolean)
+		Public Sub New(  peer As BeanContext,   lcle As java.util.Locale,   dtime As Boolean)
 			Me.New(peer, lcle, dtime, True)
 		End Sub
 
@@ -120,7 +120,7 @@ Namespace java.beans.beancontext
 		'''                  instance. </param>
 		''' <seealso cref= java.util.Locale#getDefault() </seealso>
 		''' <seealso cref= java.util.Locale#setDefault(java.util.Locale) </seealso>
-		Public Sub New(ByVal peer As BeanContext, ByVal lcle As java.util.Locale)
+		Public Sub New(  peer As BeanContext,   lcle As java.util.Locale)
 			Me.New(peer, lcle, False, True)
 		End Sub
 
@@ -131,7 +131,7 @@ Namespace java.beans.beancontext
 		'''                  supplying an implementation for,
 		'''                  or <tt>null</tt> if this object
 		'''                  is its own peer </param>
-		Public Sub New(ByVal peer As BeanContext)
+		Public Sub New(  peer As BeanContext)
 			Me.New(peer, Nothing, False, True)
 		End Sub
 
@@ -169,7 +169,7 @@ Namespace java.beans.beancontext
 		''' <exception cref="ClassNotFoundException"> if the class
 		''' identified by the beanName parameter is not found </exception>
 		''' <returns> the new object </returns>
-		Public Overridable Function instantiateChild(ByVal beanName As String) As Object Implements BeanContext.instantiateChild
+		Public Overridable Function instantiateChild(  beanName As String) As Object Implements BeanContext.instantiateChild
 			Dim bc As BeanContext = beanContextPeer
 
 			Return java.beans.Beans.instantiate(bc.GetType().classLoader, beanName, bc)
@@ -206,7 +206,7 @@ Namespace java.beans.beancontext
 		''' is currently a child of this <tt>BeanContext</tt>. </summary>
 		''' <param name="o"> the Object in question </param>
 		''' <returns> if this object is a child </returns>
-		Public Overridable Function contains(ByVal o As Object) As Boolean
+		Public Overridable Function contains(  o As Object) As Boolean
 			SyncLock children
 				Return children.ContainsKey(o)
 			End SyncLock
@@ -217,7 +217,7 @@ Namespace java.beans.beancontext
 		''' is currently a child of this <tt>BeanContext</tt>. </summary>
 		''' <param name="o"> the Object in question </param>
 		''' <returns> if this object is a child </returns>
-		Public Overridable Function containsKey(ByVal o As Object) As Boolean
+		Public Overridable Function containsKey(  o As Object) As Boolean
 			SyncLock children
 				Return children.ContainsKey(o)
 			End SyncLock
@@ -250,7 +250,7 @@ Namespace java.beans.beancontext
 		''' <param name="arry"> The array of object
 		''' types that are of interest. </param>
 		''' <returns> an array of children </returns>
-		Public Overridable Function toArray(ByVal arry As Object()) As Object()
+		Public Overridable Function toArray(  arry As Object()) As Object()
 			SyncLock children
 				Return children.Keys.ToArray(arry)
 			End SyncLock
@@ -268,7 +268,7 @@ Namespace java.beans.beancontext
 		Protected Friend NotInheritable Class BCSIterator
 			Implements IEnumerator
 
-			Friend Sub New(ByVal i As IEnumerator)
+			Friend Sub New(  i As IEnumerator)
 				MyBase.New()
 				src = i
 			End Sub
@@ -304,7 +304,7 @@ Namespace java.beans.beancontext
 
 		Private Const serialVersionUID As Long = -5815286101609939109L
 
-			Friend Sub New(ByVal outerInstance As BeanContextSupport, ByVal bcc As Object, ByVal peer As Object)
+			Friend Sub New(  outerInstance As BeanContextSupport,   bcc As Object,   peer As Object)
 					Me.outerInstance = outerInstance
 				MyBase.New()
 
@@ -319,7 +319,7 @@ Namespace java.beans.beancontext
 			End Property
 
 			Friend Overridable Property removePending As Boolean
-				Set(ByVal v As Boolean)
+				Set(  v As Boolean)
 					removePending = v
 				End Set
 				Get
@@ -360,7 +360,7 @@ Namespace java.beans.beancontext
 		''' <param name="targetChild"> the child to create the Child on behalf of </param> </param>
 		''' <param name="peer">        the peer if the tragetChild and the peer are related by an implementation of BeanContextProxy     * <returns> Subtype-specific subclass of Child without overriding collection methods </returns>
 
-		Protected Friend Overridable Function createBCSChild(ByVal targetChild As Object, ByVal peer As Object) As BCSChild
+		Protected Friend Overridable Function createBCSChild(  targetChild As Object,   peer As Object) As BCSChild
 			Return New BCSChild(Me, targetChild, peer)
 		End Function
 
@@ -380,7 +380,7 @@ Namespace java.beans.beancontext
 		''' within this <tt>BeanContext</tt> </param>
 		''' <returns> true if the child was added successfully. </returns>
 		''' <seealso cref= #validatePendingAdd </seealso>
-		Public Overridable Function add(ByVal targetChild As Object) As Boolean
+		Public Overridable Function add(  targetChild As Object) As Boolean
 
 			If targetChild Is Nothing Then Throw New IllegalArgumentException
 
@@ -488,7 +488,7 @@ Namespace java.beans.beancontext
 		''' for adding then this method throws an IllegalStateException. </summary>
 		''' <param name="targetChild"> The child objects to remove </param>
 		''' <seealso cref= #validatePendingRemove </seealso>
-		Public Overridable Function remove(ByVal targetChild As Object) As Boolean
+		Public Overridable Function remove(  targetChild As Object) As Boolean
 			Return remove(targetChild, True)
 		End Function
 
@@ -501,7 +501,7 @@ Namespace java.beans.beancontext
 		''' the child should be notified that it is no
 		''' longer nested in this <tt>BeanContext</tt>. </param>
 		''' <returns> whether or not was present before being removed </returns>
-		Protected Friend Overridable Function remove(ByVal targetChild As Object, ByVal callChildSetBC As Boolean) As Boolean
+		Protected Friend Overridable Function remove(  targetChild As Object,   callChildSetBC As Boolean) As Boolean
 
 			If targetChild Is Nothing Then Throw New IllegalArgumentException
 
@@ -574,7 +574,7 @@ Namespace java.beans.beancontext
 		''' <returns> <tt>true</tt> if all objects
 		''' in the collection are children of
 		''' this <tt>BeanContext</tt>, false if not. </returns>
-		Public Overridable Function containsAll(ByVal c As ICollection) As Boolean
+		Public Overridable Function containsAll(  c As ICollection) As Boolean
 			SyncLock children
 				Dim i As IEnumerator = c.GetEnumerator()
 				Do While i.hasNext()
@@ -590,7 +590,7 @@ Namespace java.beans.beancontext
 		''' implementations must synchronized on the hierarchy lock and "children" protected field </summary>
 		''' <exception cref="UnsupportedOperationException"> thrown unconditionally by this implementation </exception>
 		''' <returns> this implementation unconditionally throws {@code UnsupportedOperationException} </returns>
-		Public Overridable Function addAll(ByVal c As ICollection) As Boolean
+		Public Overridable Function addAll(  c As ICollection) As Boolean
 			Throw New UnsupportedOperationException
 		End Function
 
@@ -600,7 +600,7 @@ Namespace java.beans.beancontext
 		''' <exception cref="UnsupportedOperationException"> thrown unconditionally by this implementation </exception>
 		''' <returns> this implementation unconditionally throws {@code UnsupportedOperationException}
 		'''  </returns>
-		Public Overridable Function removeAll(ByVal c As ICollection) As Boolean
+		Public Overridable Function removeAll(  c As ICollection) As Boolean
 			Throw New UnsupportedOperationException
 		End Function
 
@@ -610,7 +610,7 @@ Namespace java.beans.beancontext
 		''' implementations must synchronized on the hierarchy lock and "children" protected field </summary>
 		''' <exception cref="UnsupportedOperationException"> thrown unconditionally by this implementation </exception>
 		''' <returns> this implementation unconditionally throws {@code UnsupportedOperationException} </returns>
-		Public Overridable Function retainAll(ByVal c As ICollection) As Boolean
+		Public Overridable Function retainAll(  c As ICollection) As Boolean
 			Throw New UnsupportedOperationException
 		End Function
 
@@ -628,7 +628,7 @@ Namespace java.beans.beancontext
 		''' <param name="bcml"> the BeanContextMembershipListener to add </param>
 		''' <exception cref="NullPointerException"> if the argument is null </exception>
 
-		Public Overridable Sub addBeanContextMembershipListener(ByVal bcml As BeanContextMembershipListener) Implements BeanContext.addBeanContextMembershipListener
+		Public Overridable Sub addBeanContextMembershipListener(  bcml As BeanContextMembershipListener) Implements BeanContext.addBeanContextMembershipListener
 			If bcml Is Nothing Then Throw New NullPointerException("listener")
 
 			SyncLock bcmListeners
@@ -646,7 +646,7 @@ Namespace java.beans.beancontext
 		''' <param name="bcml"> the BeanContextMembershipListener to remove </param>
 		''' <exception cref="NullPointerException"> if the argument is null </exception>
 
-		Public Overridable Sub removeBeanContextMembershipListener(ByVal bcml As BeanContextMembershipListener) Implements BeanContext.removeBeanContextMembershipListener
+		Public Overridable Sub removeBeanContextMembershipListener(  bcml As BeanContextMembershipListener) Implements BeanContext.removeBeanContextMembershipListener
 			If bcml Is Nothing Then Throw New NullPointerException("listener")
 
 			SyncLock bcmListeners
@@ -664,7 +664,7 @@ Namespace java.beans.beancontext
 		''' <returns>  the requested resource as an InputStream </returns>
 		''' <exception cref="NullPointerException"> if the argument is null </exception>
 
-		Public Overridable Function getResourceAsStream(ByVal name As String, ByVal bcc As BeanContextChild) As java.io.InputStream Implements BeanContext.getResourceAsStream
+		Public Overridable Function getResourceAsStream(  name As String,   bcc As BeanContextChild) As java.io.InputStream Implements BeanContext.getResourceAsStream
 			If name Is Nothing Then Throw New NullPointerException("name")
 			If bcc Is Nothing Then Throw New NullPointerException("bcc")
 
@@ -682,7 +682,7 @@ Namespace java.beans.beancontext
 		''' </param>
 		''' <returns> the requested resource as an InputStream </returns>
 
-		Public Overridable Function getResource(ByVal name As String, ByVal bcc As BeanContextChild) As java.net.URL Implements BeanContext.getResource
+		Public Overridable Function getResource(  name As String,   bcc As BeanContextChild) As java.net.URL Implements BeanContext.getResource
 			If name Is Nothing Then Throw New NullPointerException("name")
 			If bcc Is Nothing Then Throw New NullPointerException("bcc")
 
@@ -700,7 +700,7 @@ Namespace java.beans.beancontext
 		''' <param name="dTime"> the new designTime value </param>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
 		Public Overridable Property designTime Implements DesignMode.setDesignTime As Boolean
-			Set(ByVal dTime As Boolean)
+			Set(  dTime As Boolean)
 				If designTime <> dTime Then
 					designTime = dTime
     
@@ -721,7 +721,7 @@ Namespace java.beans.beancontext
 		''' <exception cref="PropertyVetoException"> if the new value is rejected </exception>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
 		Public Overridable Property locale As java.util.Locale
-			Set(ByVal newLocale As java.util.Locale)
+			Set(  newLocale As java.util.Locale)
     
 				If (locale IsNot Nothing AndAlso (Not locale.Equals(newLocale))) AndAlso newLocale IsNot Nothing Then
 					Dim old As java.util.Locale = locale
@@ -863,7 +863,7 @@ Namespace java.beans.beancontext
 		''' <param name="oos"> the {@code ObjectOutputStream} to use during serialization </param>
 		''' <exception cref="IOException"> if serialization failed </exception>
 
-		Protected Friend Overridable Sub bcsPreSerializationHook(ByVal oos As java.io.ObjectOutputStream)
+		Protected Friend Overridable Sub bcsPreSerializationHook(  oos As java.io.ObjectOutputStream)
 		End Sub
 
 		''' <summary>
@@ -880,14 +880,14 @@ Namespace java.beans.beancontext
 		''' <exception cref="IOException"> if deserialization failed </exception>
 		''' <exception cref="ClassNotFoundException"> if needed classes are not found </exception>
 
-		Protected Friend Overridable Sub bcsPreDeserializationHook(ByVal ois As java.io.ObjectInputStream)
+		Protected Friend Overridable Sub bcsPreDeserializationHook(  ois As java.io.ObjectInputStream)
 		End Sub
 
 		''' <summary>
 		''' Called by readObject with the newly deserialized child and BCSChild. </summary>
 		''' <param name="child"> the newly deserialized child </param>
 		''' <param name="bcsc"> the newly deserialized BCSChild </param>
-		Protected Friend Overridable Sub childDeserializedHook(ByVal child As Object, ByVal bcsc As BCSChild)
+		Protected Friend Overridable Sub childDeserializedHook(  child As Object,   bcsc As BCSChild)
 			SyncLock children
 				children(child) = bcsc
 			End SyncLock
@@ -899,7 +899,7 @@ Namespace java.beans.beancontext
 		''' to use during serialization </param>
 		''' <param name="coll"> the <tt>Collection</tt> to serialize </param>
 		''' <exception cref="IOException"> if serialization failed </exception>
-		Protected Friend Sub serialize(ByVal oos As java.io.ObjectOutputStream, ByVal coll As ICollection)
+		Protected Friend Sub serialize(  oos As java.io.ObjectOutputStream,   coll As ICollection)
 			Dim count As Integer = 0
 			Dim objects As Object() = coll.ToArray()
 
@@ -931,7 +931,7 @@ Namespace java.beans.beancontext
 		''' <param name="coll"> the Collection </param>
 		''' <exception cref="IOException"> if deserialization failed </exception>
 		''' <exception cref="ClassNotFoundException"> if needed classes are not found </exception>
-		Protected Friend Sub deserialize(ByVal ois As java.io.ObjectInputStream, ByVal coll As ICollection)
+		Protected Friend Sub deserialize(  ois As java.io.ObjectInputStream,   coll As ICollection)
 			Dim count As Integer = 0
 
 			count = ois.readInt()
@@ -951,7 +951,7 @@ Namespace java.beans.beancontext
 		''' <param name="oos"> the <tt>ObjectOutputStream</tt>
 		''' to use during serialization </param>
 		''' <exception cref="IOException"> if serialization failed </exception>
-		Public Sub writeChildren(ByVal oos As java.io.ObjectOutputStream)
+		Public Sub writeChildren(  oos As java.io.ObjectOutputStream)
 			If serializable <= 0 Then Return
 
 			Dim prev As Boolean = serializing
@@ -999,7 +999,7 @@ Namespace java.beans.beancontext
 		''' <param name="oos"> the ObjectOutputStream </param>
 
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Private Sub writeObject(ByVal oos As java.io.ObjectOutputStream)
+		Private Sub writeObject(  oos As java.io.ObjectOutputStream)
 			serializing = True
 
 			SyncLock BeanContext.globalHierarchyLock
@@ -1025,7 +1025,7 @@ Namespace java.beans.beancontext
 		''' <exception cref="IOException"> if deserialization failed </exception>
 		''' <exception cref="ClassNotFoundException"> if needed classes are not found </exception>
 
-		Public Sub readChildren(ByVal ois As java.io.ObjectInputStream)
+		Public Sub readChildren(  ois As java.io.ObjectInputStream)
 			Dim count As Integer = serializable
 
 			Dim tempVar As Boolean = count > 0
@@ -1085,7 +1085,7 @@ Namespace java.beans.beancontext
 		''' </summary>
 
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Private Sub readObject(ByVal ois As java.io.ObjectInputStream)
+		Private Sub readObject(  ois As java.io.ObjectInputStream)
 
 			SyncLock BeanContext.globalHierarchyLock
 				ois.defaultReadObject()
@@ -1105,7 +1105,7 @@ Namespace java.beans.beancontext
 		''' subclasses may envelope to monitor veto child property changes.
 		''' </summary>
 
-		Public Overridable Sub vetoableChange(ByVal pce As java.beans.PropertyChangeEvent)
+		Public Overridable Sub vetoableChange(  pce As java.beans.PropertyChangeEvent)
 			Dim propertyName As String = pce.propertyName
 			Dim source As Object = pce.source
 
@@ -1124,7 +1124,7 @@ Namespace java.beans.beancontext
 		''' subclasses may envelope to monitor child property changes.
 		''' </summary>
 
-		Public Overridable Sub propertyChange(ByVal pce As java.beans.PropertyChangeEvent)
+		Public Overridable Sub propertyChange(  pce As java.beans.PropertyChangeEvent)
 			Dim propertyName As String = pce.propertyName
 			Dim source As Object = pce.source
 
@@ -1151,7 +1151,7 @@ Namespace java.beans.beancontext
 		''' <param name="targetChild"> the child to create the Child on behalf of </param>
 		''' <returns> true iff the child may be added to this BeanContext, otherwise false. </returns>
 
-		Protected Friend Overridable Function validatePendingAdd(ByVal targetChild As Object) As Boolean
+		Protected Friend Overridable Function validatePendingAdd(  targetChild As Object) As Boolean
 			Return True
 		End Function
 
@@ -1165,7 +1165,7 @@ Namespace java.beans.beancontext
 		''' <param name="targetChild"> the child to create the Child on behalf of </param>
 		''' <returns> true iff the child may be removed from this BeanContext, otherwise false. </returns>
 
-		Protected Friend Overridable Function validatePendingRemove(ByVal targetChild As Object) As Boolean
+		Protected Friend Overridable Function validatePendingRemove(  targetChild As Object) As Boolean
 			Return True
 		End Function
 
@@ -1176,7 +1176,7 @@ Namespace java.beans.beancontext
 		''' <param name="child"> the child </param>
 		''' <param name="bcsc"> the BCSChild </param>
 
-		Protected Friend Overridable Sub childJustAddedHook(ByVal child As Object, ByVal bcsc As BCSChild)
+		Protected Friend Overridable Sub childJustAddedHook(  child As Object,   bcsc As BCSChild)
 		End Sub
 
 		''' <summary>
@@ -1186,14 +1186,14 @@ Namespace java.beans.beancontext
 		''' <param name="child"> the child </param>
 		''' <param name="bcsc"> the BCSChild </param>
 
-		Protected Friend Overridable Sub childJustRemovedHook(ByVal child As Object, ByVal bcsc As BCSChild)
+		Protected Friend Overridable Sub childJustRemovedHook(  child As Object,   bcsc As BCSChild)
 		End Sub
 
 		''' <summary>
 		''' Gets the Component (if any) associated with the specified child. </summary>
 		''' <param name="child"> the specified child </param>
 		''' <returns> the Component (if any) associated with the specified child. </returns>
-		Protected Friend Shared Function getChildVisibility(ByVal child As Object) As java.beans.Visibility
+		Protected Friend Shared Function getChildVisibility(  child As Object) As java.beans.Visibility
 			Try
 				Return CType(child, java.beans.Visibility)
 			Catch cce As  ClassCastException
@@ -1205,7 +1205,7 @@ Namespace java.beans.beancontext
 		''' Gets the Serializable (if any) associated with the specified Child </summary>
 		''' <param name="child"> the specified child </param>
 		''' <returns> the Serializable (if any) associated with the specified Child </returns>
-		Protected Friend Shared Function getChildSerializable(ByVal child As Object) As java.io.Serializable
+		Protected Friend Shared Function getChildSerializable(  child As Object) As java.io.Serializable
 			Try
 				Return CType(child, java.io.Serializable)
 			Catch cce As  ClassCastException
@@ -1218,7 +1218,7 @@ Namespace java.beans.beancontext
 		''' (if any) of the specified child </summary>
 		''' <param name="child"> the specified child </param>
 		''' <returns> the PropertyChangeListener (if any) of the specified child </returns>
-		Protected Friend Shared Function getChildPropertyChangeListener(ByVal child As Object) As java.beans.PropertyChangeListener
+		Protected Friend Shared Function getChildPropertyChangeListener(  child As Object) As java.beans.PropertyChangeListener
 			Try
 				Return CType(child, java.beans.PropertyChangeListener)
 			Catch cce As  ClassCastException
@@ -1231,7 +1231,7 @@ Namespace java.beans.beancontext
 		''' (if any) of the specified child </summary>
 		''' <param name="child"> the specified child </param>
 		''' <returns> the VetoableChangeListener (if any) of the specified child </returns>
-		Protected Friend Shared Function getChildVetoableChangeListener(ByVal child As Object) As java.beans.VetoableChangeListener
+		Protected Friend Shared Function getChildVetoableChangeListener(  child As Object) As java.beans.VetoableChangeListener
 			Try
 				Return CType(child, java.beans.VetoableChangeListener)
 			Catch cce As  ClassCastException
@@ -1244,7 +1244,7 @@ Namespace java.beans.beancontext
 		''' (if any) of the specified child </summary>
 		''' <param name="child"> the specified child </param>
 		''' <returns> the BeanContextMembershipListener (if any) of the specified child </returns>
-		Protected Friend Shared Function getChildBeanContextMembershipListener(ByVal child As Object) As BeanContextMembershipListener
+		Protected Friend Shared Function getChildBeanContextMembershipListener(  child As Object) As BeanContextMembershipListener
 			Try
 				Return CType(child, BeanContextMembershipListener)
 			Catch cce As  ClassCastException
@@ -1257,7 +1257,7 @@ Namespace java.beans.beancontext
 		''' <param name="child"> the specified child </param>
 		''' <returns>  the BeanContextChild (if any) of the specified child </returns>
 		''' <exception cref="IllegalArgumentException"> if child implements both BeanContextChild and BeanContextProxy </exception>
-		Protected Friend Shared Function getChildBeanContextChild(ByVal child As Object) As BeanContextChild
+		Protected Friend Shared Function getChildBeanContextChild(  child As Object) As BeanContextChild
 			Try
 				Dim bcc As BeanContextChild = CType(child, BeanContextChild)
 
@@ -1279,7 +1279,7 @@ Namespace java.beans.beancontext
 		''' Fire a BeanContextshipEvent on the BeanContextMembershipListener interface </summary>
 		''' <param name="bcme"> the event to fire </param>
 
-		Protected Friend Sub fireChildrenAdded(ByVal bcme As BeanContextMembershipEvent)
+		Protected Friend Sub fireChildrenAdded(  bcme As BeanContextMembershipEvent)
 			Dim copy As Object()
 
 			SyncLock bcmListeners
@@ -1295,7 +1295,7 @@ Namespace java.beans.beancontext
 		''' Fire a BeanContextshipEvent on the BeanContextMembershipListener interface </summary>
 		''' <param name="bcme"> the event to fire </param>
 
-		Protected Friend Sub fireChildrenRemoved(ByVal bcme As BeanContextMembershipEvent)
+		Protected Friend Sub fireChildrenRemoved(  bcme As BeanContextMembershipEvent)
 			Dim copy As Object()
 
 			SyncLock bcmListeners
@@ -1338,7 +1338,7 @@ Namespace java.beans.beancontext
 		'             * behaved Serializable child.
 		'             
 
-			Public Overridable Sub propertyChange(ByVal pce As java.beans.PropertyChangeEvent)
+			Public Overridable Sub propertyChange(  pce As java.beans.PropertyChangeEvent)
 				outerInstance.propertyChange(pce)
 			End Sub
 		End Class
@@ -1353,7 +1353,7 @@ Namespace java.beans.beancontext
 		'             * behaved Serializable child.
 		'             
 
-			Public Overridable Sub vetoableChange(ByVal pce As java.beans.PropertyChangeEvent)
+			Public Overridable Sub vetoableChange(  pce As java.beans.PropertyChangeEvent)
 				outerInstance.vetoableChange(pce)
 			End Sub
 		End Class
@@ -1373,7 +1373,7 @@ Namespace java.beans.beancontext
 		''' <param name="first"> the first object </param>
 		''' <param name="second"> the second object </param>
 		''' <returns> true if equal, false if not </returns>
-		Protected Friend Shared Function classEquals(ByVal first As [Class], ByVal second As [Class]) As Boolean
+		Protected Friend Shared Function classEquals(  first As [Class],   second As [Class]) As Boolean
 			Return first.Equals(second) OrElse first.name.Equals(second.name)
 		End Function
 

@@ -104,7 +104,7 @@ Namespace java.nio
 
 		' Primary constructor
 		'
-		Friend Sub New(ByVal cap As Integer) ' package-private
+		Friend Sub New(  cap As Integer) ' package-private
 
 
 
@@ -159,7 +159,7 @@ Namespace java.nio
 
 		' For memory-mapped buffers -- invoked by FileChannelImpl via reflection
 		'
-		Protected Friend Sub New(ByVal cap As Integer, ByVal addr As Long, ByVal fd As java.io.FileDescriptor, ByVal unmapper As Runnable)
+		Protected Friend Sub New(  cap As Integer,   addr As Long,   fd As java.io.FileDescriptor,   unmapper As Runnable)
 
 
 
@@ -174,7 +174,7 @@ Namespace java.nio
 
 		' For duplicates and slices
 		'
-		Friend Sub New(ByVal db As sun.nio.ch.DirectBuffer, ByVal mark As Integer, ByVal pos As Integer, ByVal lim As Integer, ByVal cap As Integer, ByVal [off] As Integer) ' package-private
+		Friend Sub New(  db As sun.nio.ch.DirectBuffer,   mark As Integer,   pos As Integer,   lim As Integer,   cap As Integer,   [off] As Integer) ' package-private
 
 
 
@@ -271,7 +271,7 @@ Namespace java.nio
 
 
 
-		Public Overrides Function put(ByVal x As SByte) As ByteBuffer
+		Public Overrides Function put(  x As SByte) As ByteBuffer
 
 
 
@@ -280,7 +280,7 @@ Namespace java.nio
 
 		End Function
 
-		Public Overrides Function put(ByVal i As Integer, ByVal x As SByte) As ByteBuffer
+		Public Overrides Function put(  i As Integer,   x As SByte) As ByteBuffer
 
 
 
@@ -289,7 +289,7 @@ Namespace java.nio
 
 		End Function
 
-		Public Overrides Function put(ByVal src As ByteBuffer) As ByteBuffer
+		Public Overrides Function put(  src As ByteBuffer) As ByteBuffer
 
 
 
@@ -330,7 +330,7 @@ Namespace java.nio
 
 		End Function
 
-		Public Overrides Function put(ByVal src As SByte(), ByVal offset As Integer, ByVal length As Integer) As ByteBuffer
+		Public Overrides Function put(  src As SByte(),   offset As Integer,   length As Integer) As ByteBuffer
 
 
 
@@ -455,11 +455,11 @@ Namespace java.nio
 
 
 
-		Friend Overrides Function _get(ByVal i As Integer) As SByte ' package-private
+		Friend Overrides Function _get(  i As Integer) As SByte ' package-private
 			Return unsafe.getByte(address + i)
 		End Function
 
-		Friend Overrides Sub _put(ByVal i As Integer, ByVal b As SByte) ' package-private
+		Friend Overrides Sub _put(  i As Integer,   b As SByte) ' package-private
 
 
 
@@ -488,7 +488,7 @@ Namespace java.nio
 
 
 
-		Private Function putChar(ByVal a As Long, ByVal x As Char) As ByteBuffer
+		Private Function putChar(  a As Long,   x As Char) As ByteBuffer
 
 
 
@@ -502,7 +502,7 @@ Namespace java.nio
 
 		End Function
 
-		Public Overrides Function putChar(ByVal x As Char) As ByteBuffer
+		Public Overrides Function putChar(  x As Char) As ByteBuffer
 
 
 
@@ -511,7 +511,7 @@ Namespace java.nio
 
 		End Function
 
-		Public Overrides Function putChar(ByVal i As Integer, ByVal x As Char) As ByteBuffer
+		Public Overrides Function putChar(  i As Integer,   x As Char) As ByteBuffer
 
 
 
@@ -555,7 +555,7 @@ Namespace java.nio
 
 
 
-		Private Function putShort(ByVal a As Long, ByVal x As Short) As ByteBuffer
+		Private Function putShort(  a As Long,   x As Short) As ByteBuffer
 
 
 
@@ -569,7 +569,7 @@ Namespace java.nio
 
 		End Function
 
-		Public Overrides Function putShort(ByVal x As Short) As ByteBuffer
+		Public Overrides Function putShort(  x As Short) As ByteBuffer
 
 
 
@@ -578,7 +578,7 @@ Namespace java.nio
 
 		End Function
 
-		Public Overrides Function putShort(ByVal i As Integer, ByVal x As Short) As ByteBuffer
+		Public Overrides Function putShort(  i As Integer,   x As Short) As ByteBuffer
 
 
 
@@ -622,7 +622,7 @@ Namespace java.nio
 
 
 
-		Private Function putInt(ByVal a As Long, ByVal x As Integer) As ByteBuffer
+		Private Function putInt(  a As Long,   x As Integer) As ByteBuffer
 
 
 
@@ -636,7 +636,7 @@ Namespace java.nio
 
 		End Function
 
-		Public Overrides Function putInt(ByVal x As Integer) As ByteBuffer
+		Public Overrides Function putInt(  x As Integer) As ByteBuffer
 
 
 
@@ -645,7 +645,7 @@ Namespace java.nio
 
 		End Function
 
-		Public Overrides Function putInt(ByVal i As Integer, ByVal x As Integer) As ByteBuffer
+		Public Overrides Function putInt(  i As Integer,   x As Integer) As ByteBuffer
 
 
 
@@ -689,7 +689,7 @@ Namespace java.nio
 
 
 
-		Private Function putLong(ByVal a As Long, ByVal x As Long) As ByteBuffer
+		Private Function putLong(  a As Long,   x As Long) As ByteBuffer
 
 
 
@@ -703,7 +703,7 @@ Namespace java.nio
 
 		End Function
 
-		Public Overrides Function putLong(ByVal x As Long) As ByteBuffer
+		Public Overrides Function putLong(  x As Long) As ByteBuffer
 
 
 
@@ -712,7 +712,7 @@ Namespace java.nio
 
 		End Function
 
-		Public Overrides Function putLong(ByVal i As Integer, ByVal x As Long) As ByteBuffer
+		Public Overrides Function putLong(  i As Integer,   x As Long) As ByteBuffer
 
 
 
@@ -756,7 +756,7 @@ Namespace java.nio
 
 
 
-		Private Function putFloat(ByVal a As Long, ByVal x As Single) As ByteBuffer
+		Private Function putFloat(  a As Long,   x As Single) As ByteBuffer
 
 
 
@@ -770,7 +770,7 @@ Namespace java.nio
 
 		End Function
 
-		Public Overrides Function putFloat(ByVal x As Single) As ByteBuffer
+		Public Overrides Function putFloat(  x As Single) As ByteBuffer
 
 
 
@@ -779,7 +779,7 @@ Namespace java.nio
 
 		End Function
 
-		Public Overrides Function putFloat(ByVal i As Integer, ByVal x As Single) As ByteBuffer
+		Public Overrides Function putFloat(  i As Integer,   x As Single) As ByteBuffer
 
 
 
@@ -823,7 +823,7 @@ Namespace java.nio
 
 
 
-		Private Function putDouble(ByVal a As Long, ByVal x As Double) As ByteBuffer
+		Private Function putDouble(  a As Long,   x As Double) As ByteBuffer
 
 
 
@@ -837,7 +837,7 @@ Namespace java.nio
 
 		End Function
 
-		Public Overrides Function putDouble(ByVal x As Double) As ByteBuffer
+		Public Overrides Function putDouble(  x As Double) As ByteBuffer
 
 
 
@@ -846,7 +846,7 @@ Namespace java.nio
 
 		End Function
 
-		Public Overrides Function putDouble(ByVal i As Integer, ByVal x As Double) As ByteBuffer
+		Public Overrides Function putDouble(  i As Integer,   x As Double) As ByteBuffer
 
 
 

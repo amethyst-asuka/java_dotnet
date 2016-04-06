@@ -151,7 +151,7 @@ Namespace java.awt.font
 		''' <exception cref="IndexOutOfBoundsException"> if <code>glyphIndex</code>
 		''' is less than 0 or greater than or equal to the
 		''' number of glyphs in this <code>GlyphVector</code> </exception>
-		Public MustOverride Function getGlyphCode(ByVal glyphIndex As Integer) As Integer
+		Public MustOverride Function getGlyphCode(  glyphIndex As Integer) As Integer
 
 		''' <summary>
 		''' Returns an array of glyphcodes for the specified glyphs.
@@ -174,7 +174,7 @@ Namespace java.awt.font
 		'''   <code>beginGlyphIndex</code> and <code>numEntries</code> is
 		'''   greater than the number of glyphs in this
 		'''   <code>GlyphVector</code> </exception>
-		Public MustOverride Function getGlyphCodes(ByVal beginGlyphIndex As Integer, ByVal numEntries As Integer, ByVal codeReturn As Integer()) As Integer()
+		Public MustOverride Function getGlyphCodes(  beginGlyphIndex As Integer,   numEntries As Integer,   codeReturn As Integer()) As Integer()
 
 		''' <summary>
 		''' Returns the character index of the specified glyph.
@@ -185,7 +185,7 @@ Namespace java.awt.font
 		''' <param name="glyphIndex"> the index of the glyph </param>
 		''' <returns> the index of the first character represented by the glyph
 		''' @since 1.4 </returns>
-		Public Overridable Function getGlyphCharIndex(ByVal glyphIndex As Integer) As Integer
+		Public Overridable Function getGlyphCharIndex(  glyphIndex As Integer) As Integer
 			Return glyphIndex
 		End Function
 
@@ -204,7 +204,7 @@ Namespace java.awt.font
 		''' <param name="codeReturn"> the array into which to return the character indices </param>
 		''' <returns> an array of character indices, one per glyph.
 		''' @since 1.4 </returns>
-		Public Overridable Function getGlyphCharIndices(ByVal beginGlyphIndex As Integer, ByVal numEntries As Integer, ByVal codeReturn As Integer()) As Integer()
+		Public Overridable Function getGlyphCharIndices(  beginGlyphIndex As Integer,   numEntries As Integer,   codeReturn As Integer()) As Integer()
 			If codeReturn Is Nothing Then codeReturn = New Integer(numEntries - 1){}
 			Dim i As Integer = 0
 			Dim j As Integer = beginGlyphIndex
@@ -251,7 +251,7 @@ Namespace java.awt.font
 		''' <param name="y"> the y-coordinate at which to render this <code>GlyphVector</code>. </param>
 		''' <returns> a <code>Rectangle</code> bounding the pixels that would be affected.
 		''' @since 1.4 </returns>
-		Public Overridable Function getPixelBounds(ByVal renderFRC As FontRenderContext, ByVal x As Single, ByVal y As Single) As java.awt.Rectangle
+		Public Overridable Function getPixelBounds(  renderFRC As FontRenderContext,   x As Single,   y As Single) As java.awt.Rectangle
 					Dim rect As java.awt.geom.Rectangle2D = visualBounds
 					Dim l As Integer = CInt(Fix (System.Math.Floor(rect.x + x)))
 					Dim t As Integer = CInt(Fix (System.Math.Floor(rect.y + y)))
@@ -277,7 +277,7 @@ Namespace java.awt.font
 		''' <returns> a <code>Shape</code> that is the outline of this
 		'''   <code>GlyphVector</code> when rendered at the specified
 		'''   coordinates. </returns>
-		Public MustOverride Function getOutline(ByVal x As Single, ByVal y As Single) As java.awt.Shape
+		Public MustOverride Function getOutline(  x As Single,   y As Single) As java.awt.Shape
 
 		''' <summary>
 		''' Returns a <code>Shape</code> whose interior corresponds to the
@@ -292,7 +292,7 @@ Namespace java.awt.font
 		''' <exception cref="IndexOutOfBoundsException"> if <code>glyphIndex</code>
 		'''   is less than 0 or greater than or equal to the number
 		'''   of glyphs in this <code>GlyphVector</code> </exception>
-		Public MustOverride Function getGlyphOutline(ByVal glyphIndex As Integer) As java.awt.Shape
+		Public MustOverride Function getGlyphOutline(  glyphIndex As Integer) As java.awt.Shape
 
 		''' <summary>
 		''' Returns a <code>Shape</code> whose interior corresponds to the
@@ -311,7 +311,7 @@ Namespace java.awt.font
 		'''   is less than 0 or greater than or equal to the number
 		'''   of glyphs in this <code>GlyphVector</code>
 		''' @since 1.4 </exception>
-		Public Overridable Function getGlyphOutline(ByVal glyphIndex As Integer, ByVal x As Single, ByVal y As Single) As java.awt.Shape
+		Public Overridable Function getGlyphOutline(  glyphIndex As Integer,   x As Single,   y As Single) As java.awt.Shape
 			Dim s As java.awt.Shape = getGlyphOutline(glyphIndex)
 			Dim at As java.awt.geom.AffineTransform = java.awt.geom.AffineTransform.getTranslateInstance(x,y)
 			Return at.createTransformedShape(s)
@@ -331,7 +331,7 @@ Namespace java.awt.font
 		'''   is less than 0 or greater than the number of glyphs
 		'''   in this <code>GlyphVector</code> </exception>
 		''' <seealso cref= #setGlyphPosition </seealso>
-		Public MustOverride Function getGlyphPosition(ByVal glyphIndex As Integer) As java.awt.geom.Point2D
+		Public MustOverride Function getGlyphPosition(  glyphIndex As Integer) As java.awt.geom.Point2D
 
 		''' <summary>
 		''' Sets the position of the specified glyph within this
@@ -347,7 +347,7 @@ Namespace java.awt.font
 		'''   is less than 0 or greater than the number of glyphs
 		'''   in this <code>GlyphVector</code> </exception>
 		''' <seealso cref= #getGlyphPosition </seealso>
-		Public MustOverride Sub setGlyphPosition(ByVal glyphIndex As Integer, ByVal newPos As java.awt.geom.Point2D)
+		Public MustOverride Sub setGlyphPosition(  glyphIndex As Integer,   newPos As java.awt.geom.Point2D)
 
 		''' <summary>
 		''' Returns the transform of the specified glyph within this
@@ -362,7 +362,7 @@ Namespace java.awt.font
 		'''   is less than 0 or greater than or equal to the number
 		'''   of glyphs in this <code>GlyphVector</code> </exception>
 		''' <seealso cref= #setGlyphTransform </seealso>
-		Public MustOverride Function getGlyphTransform(ByVal glyphIndex As Integer) As java.awt.geom.AffineTransform
+		Public MustOverride Function getGlyphTransform(  glyphIndex As Integer) As java.awt.geom.AffineTransform
 
 		''' <summary>
 		''' Sets the transform of the specified glyph within this
@@ -378,7 +378,7 @@ Namespace java.awt.font
 		'''   is less than 0 or greater than or equal to the number
 		'''   of glyphs in this <code>GlyphVector</code> </exception>
 		''' <seealso cref= #getGlyphTransform </seealso>
-		Public MustOverride Sub setGlyphTransform(ByVal glyphIndex As Integer, ByVal newTX As java.awt.geom.AffineTransform)
+		Public MustOverride Sub setGlyphTransform(  glyphIndex As Integer,   newTX As java.awt.geom.AffineTransform)
 
 		''' <summary>
 		''' Returns flags describing the global state of the GlyphVector.
@@ -468,7 +468,7 @@ Namespace java.awt.font
 		'''   <code>beginGlyphIndex</code> and <code>numEntries</code>
 		'''   is greater than the number of glyphs in this
 		'''   <code>GlyphVector</code> plus one </exception>
-		Public MustOverride Function getGlyphPositions(ByVal beginGlyphIndex As Integer, ByVal numEntries As Integer, ByVal positionReturn As Single()) As Single()
+		Public MustOverride Function getGlyphPositions(  beginGlyphIndex As Integer,   numEntries As Integer,   positionReturn As Single()) As Single()
 
 		''' <summary>
 		''' Returns the logical bounds of the specified glyph within this
@@ -488,7 +488,7 @@ Namespace java.awt.font
 		'''   is less than 0 or greater than or equal to the number
 		'''   of glyphs in this <code>GlyphVector</code> </exception>
 		''' <seealso cref= #getGlyphVisualBounds </seealso>
-		Public MustOverride Function getGlyphLogicalBounds(ByVal glyphIndex As Integer) As java.awt.Shape
+		Public MustOverride Function getGlyphLogicalBounds(  glyphIndex As Integer) As java.awt.Shape
 
 		''' <summary>
 		''' Returns the visual bounds of the specified glyph within the
@@ -504,7 +504,7 @@ Namespace java.awt.font
 		'''   is less than 0 or greater than or equal to the number
 		'''   of glyphs in this <code>GlyphVector</code> </exception>
 		''' <seealso cref= #getGlyphLogicalBounds </seealso>
-		Public MustOverride Function getGlyphVisualBounds(ByVal glyphIndex As Integer) As java.awt.Shape
+		Public MustOverride Function getGlyphVisualBounds(  glyphIndex As Integer) As java.awt.Shape
 
 		''' <summary>
 		''' Returns the pixel bounds of the glyph at index when this
@@ -523,7 +523,7 @@ Namespace java.awt.font
 		''' <param name="y"> the Y position at which to render this <code>GlyphVector</code>. </param>
 		''' <returns> a <code>Rectangle</code> bounding the pixels that would be affected.
 		''' @since 1.4 </returns>
-		Public Overridable Function getGlyphPixelBounds(ByVal index As Integer, ByVal renderFRC As FontRenderContext, ByVal x As Single, ByVal y As Single) As java.awt.Rectangle
+		Public Overridable Function getGlyphPixelBounds(  index As Integer,   renderFRC As FontRenderContext,   x As Single,   y As Single) As java.awt.Rectangle
 					Dim rect As java.awt.geom.Rectangle2D = getGlyphVisualBounds(index).bounds2D
 					Dim l As Integer = CInt(Fix (System.Math.Floor(rect.x + x)))
 					Dim t As Integer = CInt(Fix (System.Math.Floor(rect.y + y)))
@@ -543,7 +543,7 @@ Namespace java.awt.font
 		''' <exception cref="IndexOutOfBoundsException"> if <code>glyphIndex</code>
 		'''   is less than 0 or greater than or equal to the number
 		'''   of glyphs in this <code>GlyphVector</code> </exception>
-		Public MustOverride Function getGlyphMetrics(ByVal glyphIndex As Integer) As java.awt.font.GlyphMetrics
+		Public MustOverride Function getGlyphMetrics(  glyphIndex As Integer) As java.awt.font.GlyphMetrics
 
 		''' <summary>
 		''' Returns the justification information for the glyph at
@@ -558,7 +558,7 @@ Namespace java.awt.font
 		''' <exception cref="IndexOutOfBoundsException"> if <code>glyphIndex</code>
 		'''   is less than 0 or greater than or equal to the number
 		'''   of glyphs in this <code>GlyphVector</code> </exception>
-		Public MustOverride Function getGlyphJustificationInfo(ByVal glyphIndex As Integer) As java.awt.font.GlyphJustificationInfo
+		Public MustOverride Function getGlyphJustificationInfo(  glyphIndex As Integer) As java.awt.font.GlyphJustificationInfo
 
 		'
 		' general utility methods
@@ -571,7 +571,7 @@ Namespace java.awt.font
 		''' <returns> <code>true</code> if the specified
 		'''   <code>GlyphVector</code> equals this <code>GlyphVector</code>;
 		'''   <code>false</code> otherwise. </returns>
-		Public MustOverride Function Equals(ByVal [set] As GlyphVector) As Boolean
+		Public MustOverride Function Equals(  [set] As GlyphVector) As Boolean
 	End Class
 
 End Namespace

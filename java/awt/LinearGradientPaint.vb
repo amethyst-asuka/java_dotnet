@@ -127,7 +127,7 @@ Namespace java.awt
 		''' or {@code colors} is less than 2 in size,
 		''' or a {@code fractions} value is less than 0.0 or greater than 1.0,
 		''' or the {@code fractions} are not provided in strictly increasing order </exception>
-		Public Sub New(ByVal startX As Single, ByVal startY As Single, ByVal endX As Single, ByVal endY As Single, ByVal fractions As Single(), ByVal colors As Color())
+		Public Sub New(  startX As Single,   startY As Single,   endX As Single,   endY As Single,   fractions As Single(),   colors As Color())
 			Me.New(New java.awt.geom.Point2D.Float(startX, startY), New java.awt.geom.Point2D.Float(endX, endY), fractions, colors, CycleMethod.NO_CYCLE)
 		End Sub
 
@@ -159,7 +159,7 @@ Namespace java.awt
 		''' or {@code colors} is less than 2 in size,
 		''' or a {@code fractions} value is less than 0.0 or greater than 1.0,
 		''' or the {@code fractions} are not provided in strictly increasing order </exception>
-		Public Sub New(ByVal startX As Single, ByVal startY As Single, ByVal endX As Single, ByVal endY As Single, ByVal fractions As Single(), ByVal colors As Color(), ByVal cycleMethod As CycleMethod)
+		Public Sub New(  startX As Single,   startY As Single,   endX As Single,   endY As Single,   fractions As Single(),   colors As Color(),   cycleMethod As CycleMethod)
 			Me.New(New java.awt.geom.Point2D.Float(startX, startY), New java.awt.geom.Point2D.Float(endX, endY), fractions, colors, cycleMethod)
 		End Sub
 
@@ -183,7 +183,7 @@ Namespace java.awt
 		''' or {@code colors} is less than 2 in size,
 		''' or a {@code fractions} value is less than 0.0 or greater than 1.0,
 		''' or the {@code fractions} are not provided in strictly increasing order </exception>
-		Public Sub New(ByVal start As java.awt.geom.Point2D, ByVal [end] As java.awt.geom.Point2D, ByVal fractions As Single(), ByVal colors As Color())
+		Public Sub New(  start As java.awt.geom.Point2D,   [end] As java.awt.geom.Point2D,   fractions As Single(),   colors As Color())
 			Me.New(start, [end], fractions, colors, CycleMethod.NO_CYCLE)
 		End Sub
 
@@ -210,7 +210,7 @@ Namespace java.awt
 		''' or {@code colors} is less than 2 in size,
 		''' or a {@code fractions} value is less than 0.0 or greater than 1.0,
 		''' or the {@code fractions} are not provided in strictly increasing order </exception>
-		Public Sub New(ByVal start As java.awt.geom.Point2D, ByVal [end] As java.awt.geom.Point2D, ByVal fractions As Single(), ByVal colors As Color(), ByVal cycleMethod As CycleMethod)
+		Public Sub New(  start As java.awt.geom.Point2D,   [end] As java.awt.geom.Point2D,   fractions As Single(),   colors As Color(),   cycleMethod As CycleMethod)
 			Me.New(start, [end], fractions, colors, cycleMethod, ColorSpaceType.SRGB, New java.awt.geom.AffineTransform)
 		End Sub
 
@@ -242,7 +242,7 @@ Namespace java.awt
 		''' or a {@code fractions} value is less than 0.0 or greater than 1.0,
 		''' or the {@code fractions} are not provided in strictly increasing order </exception>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Sub New(ByVal start As java.awt.geom.Point2D, ByVal [end] As java.awt.geom.Point2D, ByVal fractions As Single(), ByVal colors As Color(), ByVal cycleMethod As CycleMethod, ByVal colorSpace As ColorSpaceType, ByVal gradientTransform As java.awt.geom.AffineTransform)
+		Public Sub New(  start As java.awt.geom.Point2D,   [end] As java.awt.geom.Point2D,   fractions As Single(),   colors As Color(),   cycleMethod As CycleMethod,   colorSpace As ColorSpaceType,   gradientTransform As java.awt.geom.AffineTransform)
 			MyBase.New(fractions, colors, cycleMethod, colorSpace, gradientTransform)
 
 			' check input parameters
@@ -282,7 +282,7 @@ Namespace java.awt
 		''' <seealso cref= Rectangle2D </seealso>
 		''' <seealso cref= AffineTransform </seealso>
 		''' <seealso cref= RenderingHints </seealso>
-		Public Overrides Function createContext(ByVal cm As java.awt.image.ColorModel, ByVal deviceBounds As Rectangle, ByVal userBounds As java.awt.geom.Rectangle2D, ByVal transform As java.awt.geom.AffineTransform, ByVal hints As RenderingHints) As PaintContext
+		Public Overrides Function createContext(  cm As java.awt.image.ColorModel,   deviceBounds As Rectangle,   userBounds As java.awt.geom.Rectangle2D,   transform As java.awt.geom.AffineTransform,   hints As RenderingHints) As PaintContext
 			' avoid modifying the user's transform...
 			transform = New java.awt.geom.AffineTransform(transform)
 			' incorporate the gradient transform

@@ -203,7 +203,7 @@ Namespace java.util.concurrent
 		''' <returns> {@code true} if this executor terminated and
 		'''         {@code false} if the timeout elapsed before termination </returns>
 		''' <exception cref="InterruptedException"> if interrupted while waiting </exception>
-		Function awaitTermination(ByVal timeout As Long, ByVal unit As TimeUnit) As Boolean
+		Function awaitTermination(  timeout As Long,   unit As TimeUnit) As Boolean
 
 		''' <summary>
 		''' Submits a value-returning task for execution and returns a
@@ -227,7 +227,7 @@ Namespace java.util.concurrent
 		''' <exception cref="RejectedExecutionException"> if the task cannot be
 		'''         scheduled for execution </exception>
 		''' <exception cref="NullPointerException"> if the task is null </exception>
-		 Function submit(Of T)(ByVal task As Callable(Of T)) As Future(Of T)
+		 Function submit(Of T)(  task As Callable(Of T)) As Future(Of T)
 
 		''' <summary>
 		''' Submits a Runnable task for execution and returns a Future
@@ -241,7 +241,7 @@ Namespace java.util.concurrent
 		''' <exception cref="RejectedExecutionException"> if the task cannot be
 		'''         scheduled for execution </exception>
 		''' <exception cref="NullPointerException"> if the task is null </exception>
-		 Function submit(Of T)(ByVal task As Runnable, ByVal result As T) As Future(Of T)
+		 Function submit(Of T)(  task As Runnable,   result As T) As Future(Of T)
 
 		''' <summary>
 		''' Submits a Runnable task for execution and returns a Future
@@ -254,7 +254,7 @@ Namespace java.util.concurrent
 		'''         scheduled for execution </exception>
 		''' <exception cref="NullPointerException"> if the task is null </exception>
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-		Function submit(ByVal task As Runnable) As Future(Of ?)
+		Function submit(  task As Runnable) As Future(Of ?)
 
 		''' <summary>
 		''' Executes the given tasks, returning a list of Futures holding
@@ -276,7 +276,7 @@ Namespace java.util.concurrent
 		''' <exception cref="NullPointerException"> if tasks or any of its elements are {@code null} </exception>
 		''' <exception cref="RejectedExecutionException"> if any task cannot be
 		'''         scheduled for execution </exception>
-		 Function invokeAll(Of T, T1 As Callable(Of T)(ByVal tasks As ICollection(Of T1)) As IList(Of Future(Of T))
+		 Function invokeAll(Of T, T1 As Callable(Of T)(  tasks As ICollection(Of T1)) As IList(Of Future(Of T))
 
 		''' <summary>
 		''' Executes the given tasks, returning a list of Futures holding
@@ -305,7 +305,7 @@ Namespace java.util.concurrent
 		'''         unit are {@code null} </exception>
 		''' <exception cref="RejectedExecutionException"> if any task cannot be scheduled
 		'''         for execution </exception>
-		 Function invokeAll(Of T, T1 As Callable(Of T)(ByVal tasks As ICollection(Of T1), ByVal timeout As Long, ByVal unit As TimeUnit) As IList(Of Future(Of T))
+		 Function invokeAll(Of T, T1 As Callable(Of T)(  tasks As ICollection(Of T1),   timeout As Long,   unit As TimeUnit) As IList(Of Future(Of T))
 
 		''' <summary>
 		''' Executes the given tasks, returning the result
@@ -325,7 +325,7 @@ Namespace java.util.concurrent
 		''' <exception cref="ExecutionException"> if no task successfully completes </exception>
 		''' <exception cref="RejectedExecutionException"> if tasks cannot be scheduled
 		'''         for execution </exception>
-		 Function invokeAny(Of T, T1 As Callable(Of T)(ByVal tasks As ICollection(Of T1)) As T
+		 Function invokeAny(Of T, T1 As Callable(Of T)(  tasks As ICollection(Of T1)) As T
 
 		''' <summary>
 		''' Executes the given tasks, returning the result
@@ -349,7 +349,7 @@ Namespace java.util.concurrent
 		''' <exception cref="ExecutionException"> if no task successfully completes </exception>
 		''' <exception cref="RejectedExecutionException"> if tasks cannot be scheduled
 		'''         for execution </exception>
-		 Function invokeAny(Of T, T1 As Callable(Of T)(ByVal tasks As ICollection(Of T1), ByVal timeout As Long, ByVal unit As TimeUnit) As T
+		 Function invokeAny(Of T, T1 As Callable(Of T)(  tasks As ICollection(Of T1),   timeout As Long,   unit As TimeUnit) As T
 	End Interface
 
 End Namespace

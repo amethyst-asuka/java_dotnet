@@ -69,7 +69,7 @@ Namespace java.lang
 			Next i
 		End Sub
 
-		Friend Shared Function toLowerCaseEx(ByVal src As String, ByVal index As Integer, ByVal locale As java.util.Locale) As Integer
+		Friend Shared Function toLowerCaseEx(  src As String,   index As Integer,   locale As java.util.Locale) As Integer
 			Dim result As Char() = lookUpTable(src, index, locale, True)
 
 			If result IsNot Nothing Then
@@ -84,7 +84,7 @@ Namespace java.lang
 			End If
 		End Function
 
-		Friend Shared Function toUpperCaseEx(ByVal src As String, ByVal index As Integer, ByVal locale As java.util.Locale) As Integer
+		Friend Shared Function toUpperCaseEx(  src As String,   index As Integer,   locale As java.util.Locale) As Integer
 			Dim result As Char() = lookUpTable(src, index, locale, False)
 
 			If result IsNot Nothing Then
@@ -99,11 +99,11 @@ Namespace java.lang
 			End If
 		End Function
 
-		Friend Shared Function toLowerCaseCharArray(ByVal src As String, ByVal index As Integer, ByVal locale As java.util.Locale) As Char()
+		Friend Shared Function toLowerCaseCharArray(  src As String,   index As Integer,   locale As java.util.Locale) As Char()
 			Return lookUpTable(src, index, locale, True)
 		End Function
 
-		Friend Shared Function toUpperCaseCharArray(ByVal src As String, ByVal index As Integer, ByVal locale As java.util.Locale) As Char()
+		Friend Shared Function toUpperCaseCharArray(  src As String,   index As Integer,   locale As java.util.Locale) As Char()
 			Dim result As Char() = lookUpTable(src, index, locale, False)
 			If result IsNot Nothing Then
 				Return result
@@ -112,7 +112,7 @@ Namespace java.lang
 			End If
 		End Function
 
-		Private Shared Function lookUpTable(ByVal src As String, ByVal index As Integer, ByVal locale As java.util.Locale, ByVal bLowerCasing As Boolean) As Char()
+		Private Shared Function lookUpTable(  src As String,   index As Integer,   locale As java.util.Locale,   bLowerCasing As Boolean) As Char()
 			Dim [set] As HashSet(Of Entry) = entryTable(New Integer?(src.codePointAt(index)))
 			Dim ret As Char() = Nothing
 
@@ -132,7 +132,7 @@ Namespace java.lang
 			Return ret
 		End Function
 
-		Private Shared Function isConditionMet(ByVal src As String, ByVal index As Integer, ByVal locale As java.util.Locale, ByVal condition As Integer) As Boolean
+		Private Shared Function isConditionMet(  src As String,   index As Integer,   locale As java.util.Locale,   condition As Integer) As Boolean
 			Select Case condition
 			Case FINAL_CASED
 				Return isFinalCased(src, index, locale)
@@ -164,7 +164,7 @@ Namespace java.lang
 		'''   Before C: [{cased==true}][{wordBoundary!=true}]*
 		'''   After C: !([{wordBoundary!=true}]*[{cased}])
 		''' </summary>
-		Private Shared Function isFinalCased(ByVal src As String, ByVal index As Integer, ByVal locale As java.util.Locale) As Boolean
+		Private Shared Function isFinalCased(  src As String,   index As Integer,   locale As java.util.Locale) As Boolean
 			Dim wordBoundary As java.text.BreakIterator = java.text.BreakIterator.getWordInstance(locale)
 			wordBoundary.text = src
 			Dim ch As Integer
@@ -203,7 +203,7 @@ Namespace java.lang
 		''' Regular Expression:
 		'''   Before C: [I]([{cc!=230}&{cc!=0}])*
 		''' </summary>
-		Private Shared Function isAfterI(ByVal src As String, ByVal index As Integer) As Boolean
+		Private Shared Function isAfterI(  src As String,   index As Integer) As Boolean
 			Dim ch As Integer
 			Dim cc As Integer
 
@@ -233,7 +233,7 @@ Namespace java.lang
 		''' Regular Expression:
 		'''   Before C: [{Soft_Dotted==true}]([{cc!=230}&{cc!=0}])*
 		''' </summary>
-		Private Shared Function isAfterSoftDotted(ByVal src As String, ByVal index As Integer) As Boolean
+		Private Shared Function isAfterSoftDotted(  src As String,   index As Integer) As Boolean
 			Dim ch As Integer
 			Dim cc As Integer
 
@@ -262,7 +262,7 @@ Namespace java.lang
 		''' Regular Expression:
 		'''   After C: [{cc!=0}]*[{cc==230}]
 		''' </summary>
-		Private Shared Function isMoreAbove(ByVal src As String, ByVal index As Integer) As Boolean
+		Private Shared Function isMoreAbove(  src As String,   index As Integer) As Boolean
 			Dim ch As Integer
 			Dim cc As Integer
 			Dim len As Integer = src.length()
@@ -294,7 +294,7 @@ Namespace java.lang
 		''' Regular Expression:
 		'''   After C: ([{cc!=230}&{cc!=0}])*[\u0307]
 		''' </summary>
-		Private Shared Function isBeforeDot(ByVal src As String, ByVal index As Integer) As Boolean
+		Private Shared Function isBeforeDot(  src As String,   index As Integer) As Boolean
 			Dim ch As Integer
 			Dim cc As Integer
 			Dim len As Integer = src.length()
@@ -325,7 +325,7 @@ Namespace java.lang
 		''' The uppercase and lowercase property values are specified in the data
 		''' file DerivedCoreProperties.txt in the Unicode Character Database.
 		''' </summary>
-		Private Shared Function isCased(ByVal ch As Integer) As Boolean
+		Private Shared Function isCased(  ch As Integer) As Boolean
 			Dim type As Integer = Character.getType(ch)
 			If type = Character.LOWERCASE_LETTER OrElse type = Character.UPPERCASE_LETTER OrElse type = Character.TITLECASE_LETTER Then
 				Return True
@@ -364,7 +364,7 @@ Namespace java.lang
 			End If
 		End Function
 
-		Private Shared Function isSoftDotted(ByVal ch As Integer) As Boolean
+		Private Shared Function isSoftDotted(  ch As Integer) As Boolean
 			Select Case ch
 			Case &H69, &H6A, &H12F, &H268, &H456, &H458, &H1D62, &H1E2D, &H1ECB, &H2071 ' Soft_Dotted # L&       LATIN SMALL LETTER I
 				Return True
@@ -383,7 +383,7 @@ Namespace java.lang
 			Friend lang As String
 			Friend condition As Integer
 
-			Friend Sub New(ByVal ch As Integer, ByVal lower As Char(), ByVal upper As Char(), ByVal lang As String, ByVal condition As Integer)
+			Friend Sub New(  ch As Integer,   lower As Char(),   upper As Char(),   lang As String,   condition As Integer)
 				Me.ch = ch
 				Me.lower = lower
 				Me.upper = upper

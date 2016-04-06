@@ -58,7 +58,7 @@ Namespace java.io
 		''' <exception cref="IOException">  if the named file exists but is a directory rather
 		'''                  than a regular file, does not exist but cannot be
 		'''                  created, or cannot be opened for any other reason </exception>
-		Public Sub New(ByVal fileName As String)
+		Public Sub New(  fileName As String)
 			MyBase.New(New FileOutputStream(fileName))
 		End Sub
 
@@ -72,7 +72,7 @@ Namespace java.io
 		''' <exception cref="IOException">  if the named file exists but is a directory rather
 		'''                  than a regular file, does not exist but cannot be
 		'''                  created, or cannot be opened for any other reason </exception>
-		Public Sub New(ByVal fileName As String, ByVal append As Boolean)
+		Public Sub New(  fileName As String,   append As Boolean)
 			MyBase.New(New FileOutputStream(fileName, append))
 		End Sub
 
@@ -83,7 +83,7 @@ Namespace java.io
 		''' <exception cref="IOException">  if the file exists but is a directory rather than
 		'''                  a regular file, does not exist but cannot be created,
 		'''                  or cannot be opened for any other reason </exception>
-		Public Sub New(ByVal file_Renamed As File)
+		Public Sub New(  file_Renamed As File)
 			MyBase.New(New FileOutputStream(file_Renamed))
 		End Sub
 
@@ -99,7 +99,7 @@ Namespace java.io
 		'''                  a regular file, does not exist but cannot be created,
 		'''                  or cannot be opened for any other reason
 		''' @since 1.4 </exception>
-		Public Sub New(ByVal file_Renamed As File, ByVal append As Boolean)
+		Public Sub New(  file_Renamed As File,   append As Boolean)
 			MyBase.New(New FileOutputStream(file_Renamed, append))
 		End Sub
 
@@ -107,7 +107,7 @@ Namespace java.io
 		''' Constructs a FileWriter object associated with a file descriptor.
 		''' </summary>
 		''' <param name="fd">  FileDescriptor object to write to. </param>
-		Public Sub New(ByVal fd As FileDescriptor)
+		Public Sub New(  fd As FileDescriptor)
 			MyBase.New(New FileOutputStream(fd))
 		End Sub
 

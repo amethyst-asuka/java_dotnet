@@ -65,7 +65,7 @@ Namespace java.sql
 	  ''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 	  ''' this method
 	  ''' @since 1.2 </exception>
-	  Sub writeString(ByVal x As String)
+	  Sub writeString(  x As String)
 
 	  ''' <summary>
 	  ''' Writes the next attribute to the stream as a Java  java.lang.[Boolean].
@@ -77,7 +77,7 @@ Namespace java.sql
 	  ''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 	  ''' this method
 	  ''' @since 1.2 </exception>
-	  Sub writeBoolean(ByVal x As Boolean)
+	  Sub writeBoolean(  x As Boolean)
 
 	  ''' <summary>
 	  ''' Writes the next attribute to the stream as a Java java.lang.[Byte].
@@ -89,7 +89,7 @@ Namespace java.sql
 	  ''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 	  ''' this method
 	  ''' @since 1.2 </exception>
-	  Sub writeByte(ByVal x As SByte)
+	  Sub writeByte(  x As SByte)
 
 	  ''' <summary>
 	  ''' Writes the next attribute to the stream as a Java  java.lang.[Short].
@@ -101,7 +101,7 @@ Namespace java.sql
 	  ''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 	  ''' this method
 	  ''' @since 1.2 </exception>
-	  Sub writeShort(ByVal x As Short)
+	  Sub writeShort(  x As Short)
 
 	  ''' <summary>
 	  ''' Writes the next attribute to the stream as a Java int.
@@ -113,7 +113,7 @@ Namespace java.sql
 	  ''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 	  ''' this method
 	  ''' @since 1.2 </exception>
-	  Sub writeInt(ByVal x As Integer)
+	  Sub writeInt(  x As Integer)
 
 	  ''' <summary>
 	  ''' Writes the next attribute to the stream as a Java java.lang.[Long].
@@ -125,7 +125,7 @@ Namespace java.sql
 	  ''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 	  ''' this method
 	  ''' @since 1.2 </exception>
-	  Sub writeLong(ByVal x As Long)
+	  Sub writeLong(  x As Long)
 
 	  ''' <summary>
 	  ''' Writes the next attribute to the stream as a Java float.
@@ -137,7 +137,7 @@ Namespace java.sql
 	  ''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 	  ''' this method
 	  ''' @since 1.2 </exception>
-	  Sub writeFloat(ByVal x As Single)
+	  Sub writeFloat(  x As Single)
 
 	  ''' <summary>
 	  ''' Writes the next attribute to the stream as a Java java.lang.[Double].
@@ -149,7 +149,7 @@ Namespace java.sql
 	  ''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 	  ''' this method
 	  ''' @since 1.2 </exception>
-	  Sub writeDouble(ByVal x As Double)
+	  Sub writeDouble(  x As Double)
 
 	  ''' <summary>
 	  ''' Writes the next attribute to the stream as a java.math.BigDecimal object.
@@ -161,7 +161,7 @@ Namespace java.sql
 	  ''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 	  ''' this method
 	  ''' @since 1.2 </exception>
-	  Sub writeBigDecimal(ByVal x As Decimal)
+	  Sub writeBigDecimal(  x As Decimal)
 
 	  ''' <summary>
 	  ''' Writes the next attribute to the stream as an array of bytes.
@@ -173,7 +173,7 @@ Namespace java.sql
 	  ''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 	  ''' this method
 	  ''' @since 1.2 </exception>
-	  Sub writeBytes(ByVal x As SByte())
+	  Sub writeBytes(  x As SByte())
 
 	  ''' <summary>
 	  ''' Writes the next attribute to the stream as a java.sql.Date object.
@@ -185,7 +185,7 @@ Namespace java.sql
 	  ''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 	  ''' this method
 	  ''' @since 1.2 </exception>
-	  Sub writeDate(ByVal x As java.sql.Date)
+	  Sub writeDate(  x As java.sql.Date)
 
 	  ''' <summary>
 	  ''' Writes the next attribute to the stream as a java.sql.Time object.
@@ -197,7 +197,7 @@ Namespace java.sql
 	  ''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 	  ''' this method
 	  ''' @since 1.2 </exception>
-	  Sub writeTime(ByVal x As java.sql.Time)
+	  Sub writeTime(  x As java.sql.Time)
 
 	  ''' <summary>
 	  ''' Writes the next attribute to the stream as a java.sql.Timestamp object.
@@ -209,7 +209,7 @@ Namespace java.sql
 	  ''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 	  ''' this method
 	  ''' @since 1.2 </exception>
-	  Sub writeTimestamp(ByVal x As java.sql.Timestamp)
+	  Sub writeTimestamp(  x As java.sql.Timestamp)
 
 	  ''' <summary>
 	  ''' Writes the next attribute to the stream as a stream of Unicode characters.
@@ -219,7 +219,7 @@ Namespace java.sql
 	  ''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 	  ''' this method
 	  ''' @since 1.2 </exception>
-	  Sub writeCharacterStream(ByVal x As java.io.Reader)
+	  Sub writeCharacterStream(  x As java.io.Reader)
 
 	  ''' <summary>
 	  ''' Writes the next attribute to the stream as a stream of ASCII characters.
@@ -229,7 +229,7 @@ Namespace java.sql
 	  ''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 	  ''' this method
 	  ''' @since 1.2 </exception>
-	  Sub writeAsciiStream(ByVal x As java.io.InputStream)
+	  Sub writeAsciiStream(  x As java.io.InputStream)
 
 	  ''' <summary>
 	  ''' Writes the next attribute to the stream as a stream of uninterpreted
@@ -240,7 +240,7 @@ Namespace java.sql
 	  ''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 	  ''' this method
 	  ''' @since 1.2 </exception>
-	  Sub writeBinaryStream(ByVal x As java.io.InputStream)
+	  Sub writeBinaryStream(  x As java.io.InputStream)
 
 	  '================================================================
 	  ' Methods for writing items of SQL user-defined types to the stream.
@@ -272,7 +272,7 @@ Namespace java.sql
 	  ''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 	  ''' this method
 	  ''' @since 1.2 </exception>
-	  Sub writeObject(ByVal x As SQLData)
+	  Sub writeObject(  x As SQLData)
 
 	  ''' <summary>
 	  ''' Writes an SQL <code>REF</code> value to the stream.
@@ -283,7 +283,7 @@ Namespace java.sql
 	  ''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 	  ''' this method
 	  ''' @since 1.2 </exception>
-	  Sub writeRef(ByVal x As Ref)
+	  Sub writeRef(  x As Ref)
 
 	  ''' <summary>
 	  ''' Writes an SQL <code>BLOB</code> value to the stream.
@@ -295,7 +295,7 @@ Namespace java.sql
 	  ''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 	  ''' this method
 	  ''' @since 1.2 </exception>
-	  Sub writeBlob(ByVal x As Blob)
+	  Sub writeBlob(  x As Blob)
 
 	  ''' <summary>
 	  ''' Writes an SQL <code>CLOB</code> value to the stream.
@@ -307,7 +307,7 @@ Namespace java.sql
 	  ''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 	  ''' this method
 	  ''' @since 1.2 </exception>
-	  Sub writeClob(ByVal x As Clob)
+	  Sub writeClob(  x As Clob)
 
 	  ''' <summary>
 	  ''' Writes an SQL structured type value to the stream.
@@ -319,7 +319,7 @@ Namespace java.sql
 	  ''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 	  ''' this method
 	  ''' @since 1.2 </exception>
-	  Sub writeStruct(ByVal x As Struct)
+	  Sub writeStruct(  x As Struct)
 
 	  ''' <summary>
 	  ''' Writes an SQL <code>ARRAY</code> value to the stream.
@@ -331,7 +331,7 @@ Namespace java.sql
 	  ''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 	  ''' this method
 	  ''' @since 1.2 </exception>
-	  Sub writeArray(ByVal x As Array)
+	  Sub writeArray(  x As Array)
 
 		 '--------------------------- JDBC 3.0 ------------------------
 
@@ -345,7 +345,7 @@ Namespace java.sql
 		 ''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		 ''' this method
 		 ''' @since 1.4 </exception>
-		 Sub writeURL(ByVal x As java.net.URL)
+		 Sub writeURL(  x As java.net.URL)
 
 		 '--------------------------- JDBC 4.0 ------------------------
 
@@ -363,7 +363,7 @@ Namespace java.sql
 	  ''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 	  ''' this method
 	  ''' @since 1.6 </exception>
-	  Sub writeNString(ByVal x As String)
+	  Sub writeNString(  x As String)
 
 	  ''' <summary>
 	  ''' Writes an SQL <code>NCLOB</code> value to the stream.
@@ -375,7 +375,7 @@ Namespace java.sql
 	  ''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 	  ''' this method
 	  ''' @since 1.6 </exception>
-	  Sub writeNClob(ByVal x As NClob)
+	  Sub writeNClob(  x As NClob)
 
 
 	  ''' <summary>
@@ -388,7 +388,7 @@ Namespace java.sql
 	  ''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 	  ''' this method
 	  ''' @since 1.6 </exception>
-	  Sub writeRowId(ByVal x As RowId)
+	  Sub writeRowId(  x As RowId)
 
 
 	  ''' <summary>
@@ -406,7 +406,7 @@ Namespace java.sql
 	  ''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 	  ''' this method
 	  ''' @since 1.6 </exception>
-	  Sub writeSQLXML(ByVal x As SQLXML)
+	  Sub writeSQLXML(  x As SQLXML)
 
 	  '--------------------------JDBC 4.2 -----------------------------
 
@@ -441,7 +441,7 @@ Namespace java.sql
 	  ''' <seealso cref= JDBCType </seealso>
 	  ''' <seealso cref= SQLType
 	  ''' @since 1.8 </seealso>
-	  default Sub writeObject(ByVal x As Object, ByVal targetSqlType As SQLType)
+	  default Sub writeObject(  x As Object,   targetSqlType As SQLType)
 			throw Function SQLFeatureNotSupportedException() As New
 
 	 End Interface

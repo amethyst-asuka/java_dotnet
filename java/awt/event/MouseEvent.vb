@@ -541,7 +541,7 @@ Namespace java.awt.event
 		''' <seealso cref= #isPopupTrigger() </seealso>
 		''' <seealso cref= #getButton()
 		''' @since 1.4 </seealso>
-		Public Sub New(ByVal source As java.awt.Component, ByVal id As Integer, ByVal [when] As Long, ByVal modifiers As Integer, ByVal x As Integer, ByVal y As Integer, ByVal clickCount As Integer, ByVal popupTrigger As Boolean, ByVal button_Renamed As Integer)
+		Public Sub New(  source As java.awt.Component,   id As Integer,   [when] As Long,   modifiers As Integer,   x As Integer,   y As Integer,   clickCount As Integer,   popupTrigger As Boolean,   button_Renamed As Integer)
 			Me.New(source, id, [when], modifiers, x, y, 0, 0, clickCount, popupTrigger, button_Renamed)
 			Dim eventLocationOnScreen As New java.awt.Point(0, 0)
 			Try
@@ -604,7 +604,7 @@ Namespace java.awt.event
 		''' <seealso cref= #getY() </seealso>
 		''' <seealso cref= #getClickCount() </seealso>
 		''' <seealso cref= #isPopupTrigger() </seealso>
-		 Public Sub New(ByVal source As java.awt.Component, ByVal id As Integer, ByVal [when] As Long, ByVal modifiers As Integer, ByVal x As Integer, ByVal y As Integer, ByVal clickCount As Integer, ByVal popupTrigger As Boolean)
+		 Public Sub New(  source As java.awt.Component,   id As Integer,   [when] As Long,   modifiers As Integer,   x As Integer,   y As Integer,   clickCount As Integer,   popupTrigger As Boolean)
 			Me.New(source, id, [when], modifiers, x, y, clickCount, popupTrigger, NOBUTTON)
 		 End Sub
 
@@ -717,7 +717,7 @@ Namespace java.awt.event
         ''' <seealso cref= java.awt.MouseInfo#getNumberOfButtons() </seealso>
         ''' <seealso cref= InputEvent#getMaskForButton(int)
         ''' @since 1.6 </seealso>
-        Public Sub New(ByVal source As java.awt.Component, ByVal id As Integer, ByVal [when] As Long, ByVal modifiers As Integer, ByVal x As Integer, ByVal y As Integer, ByVal xAbs As Integer, ByVal yAbs As Integer, ByVal clickCount As Integer, ByVal popupTrigger As Boolean, ByVal button_Renamed As Integer)
+        Public Sub New(  source As java.awt.Component,   id As Integer,   [when] As Long,   modifiers As Integer,   x As Integer,   y As Integer,   xAbs As Integer,   yAbs As Integer,   clickCount As Integer,   popupTrigger As Boolean,   button_Renamed As Integer)
 			MyBase.New(source, id, [when], modifiers)
 			Me.x = x
 			Me.y = y
@@ -806,7 +806,7 @@ Namespace java.awt.event
 		''' <param name="y"> the vertical y value to add to the current y
 		'''            coordinate position </param>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Sub translatePoint(ByVal x As Integer, ByVal y As Integer)
+		Public Overridable Sub translatePoint(  x As Integer,   y As Integer)
 			Me.x += x
 			Me.y += y
 		End Sub
@@ -919,7 +919,7 @@ Namespace java.awt.event
 		'''                  keys and mouse buttons that were down during the event </returns>
 		''' <seealso cref= InputEvent#getModifiersExText(int)
 		''' @since 1.4 </seealso>
-		Public Shared Function getMouseModifiersText(ByVal modifiers As Integer) As String
+		Public Shared Function getMouseModifiersText(  modifiers As Integer) As String
 			Dim buf As New StringBuilder
 			If (modifiers And InputEvent.ALT_MASK) <> 0 Then
 				buf.append(java.awt.Toolkit.getProperty("AWT.alt", "Alt"))
@@ -1076,7 +1076,7 @@ Namespace java.awt.event
 		''' Sets new modifiers by the old ones.
 		''' @serial
 		''' </summary>
-		Private Sub readObject(ByVal s As java.io.ObjectInputStream)
+		Private Sub readObject(  s As java.io.ObjectInputStream)
 			s.defaultReadObject()
 			If modifiers <> 0 AndAlso modifiersEx = 0 Then newModifiersers()
 		End Sub

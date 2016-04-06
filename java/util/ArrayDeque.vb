@@ -127,7 +127,7 @@ Namespace java.util
 		''' Allocates empty array to hold the given number of elements.
 		''' </summary>
 		''' <param name="numElements">  the number of elements to hold </param>
-		Private Sub allocateElements(ByVal numElements As Integer)
+		Private Sub allocateElements(  numElements As Integer)
 			Dim initialCapacity As Integer = MIN_INITIAL_CAPACITY
 			' Find the best power of two to hold elements.
 			' Tests "<=" because arrays aren't kept full.
@@ -170,7 +170,7 @@ Namespace java.util
 		''' that the array is large enough to hold all elements in the deque.
 		''' </summary>
 		''' <returns> its argument </returns>
-		Private Function copyElements(Of T)(ByVal a As T()) As T()
+		Private Function copyElements(Of T)(  a As T()) As T()
 			If head < tail Then
 				Array.Copy(elements, head, a, 0, size())
 			ElseIf head > tail Then
@@ -194,7 +194,7 @@ Namespace java.util
 		''' sufficient to hold the specified number of elements.
 		''' </summary>
 		''' <param name="numElements">  lower bound on initial capacity of the deque </param>
-		Public Sub New(ByVal numElements As Integer)
+		Public Sub New(  numElements As Integer)
 			allocateElements(numElements)
 		End Sub
 
@@ -207,7 +207,7 @@ Namespace java.util
 		''' </summary>
 		''' <param name="c"> the collection whose elements are to be placed into the deque </param>
 		''' <exception cref="NullPointerException"> if the specified collection is null </exception>
-		Public Sub New(Of T1 As E)(ByVal c As Collection(Of T1))
+		Public Sub New(Of T1 As E)(  c As Collection(Of T1))
 			allocateElements(c.size())
 			addAll(c)
 		End Sub
@@ -221,7 +221,7 @@ Namespace java.util
 		''' </summary>
 		''' <param name="e"> the element to add </param>
 		''' <exception cref="NullPointerException"> if the specified element is null </exception>
-		Public Overridable Sub addFirst(ByVal e As E)
+		Public Overridable Sub addFirst(  e As E)
 			If e Is Nothing Then Throw New NullPointerException
 'JAVA TO VB CONVERTER TODO TASK: Assignments within expressions are not supported in VB
 			elements(head = (head - 1) And (elements.Length - 1)) = e
@@ -235,7 +235,7 @@ Namespace java.util
 		''' </summary>
 		''' <param name="e"> the element to add </param>
 		''' <exception cref="NullPointerException"> if the specified element is null </exception>
-		Public Overridable Sub addLast(ByVal e As E)
+		Public Overridable Sub addLast(  e As E)
 			If e Is Nothing Then Throw New NullPointerException
 			elements(tail) = e
 			tail = (tail + 1) And (elements.Length - 1)
@@ -248,7 +248,7 @@ Namespace java.util
 		''' <param name="e"> the element to add </param>
 		''' <returns> {@code true} (as specified by <seealso cref="Deque#offerFirst"/>) </returns>
 		''' <exception cref="NullPointerException"> if the specified element is null </exception>
-		Public Overridable Function offerFirst(ByVal e As E) As Boolean
+		Public Overridable Function offerFirst(  e As E) As Boolean
 			addFirst(e)
 			Return True
 		End Function
@@ -259,7 +259,7 @@ Namespace java.util
 		''' <param name="e"> the element to add </param>
 		''' <returns> {@code true} (as specified by <seealso cref="Deque#offerLast"/>) </returns>
 		''' <exception cref="NullPointerException"> if the specified element is null </exception>
-		Public Overridable Function offerLast(ByVal e As E) As Boolean
+		Public Overridable Function offerLast(  e As E) As Boolean
 			addLast(e)
 			Return True
 		End Function
@@ -341,7 +341,7 @@ Namespace java.util
 		''' </summary>
 		''' <param name="o"> element to be removed from this deque, if present </param>
 		''' <returns> {@code true} if the deque contained the specified element </returns>
-		Public Overridable Function removeFirstOccurrence(ByVal o As Object) As Boolean Implements Deque(Of E).removeFirstOccurrence
+		Public Overridable Function removeFirstOccurrence(  o As Object) As Boolean Implements Deque(Of E).removeFirstOccurrence
 			If o Is Nothing Then Return False
 			Dim mask As Integer = elements.Length - 1
 			Dim i As Integer = head
@@ -369,7 +369,7 @@ Namespace java.util
 		''' </summary>
 		''' <param name="o"> element to be removed from this deque, if present </param>
 		''' <returns> {@code true} if the deque contained the specified element </returns>
-		Public Overridable Function removeLastOccurrence(ByVal o As Object) As Boolean Implements Deque(Of E).removeLastOccurrence
+		Public Overridable Function removeLastOccurrence(  o As Object) As Boolean Implements Deque(Of E).removeLastOccurrence
 			If o Is Nothing Then Return False
 			Dim mask As Integer = elements.Length - 1
 			Dim i As Integer = (tail - 1) And mask
@@ -396,7 +396,7 @@ Namespace java.util
 		''' <param name="e"> the element to add </param>
 		''' <returns> {@code true} (as specified by <seealso cref="Collection#add"/>) </returns>
 		''' <exception cref="NullPointerException"> if the specified element is null </exception>
-		Public Overridable Function add(ByVal e As E) As Boolean
+		Public Overridable Function add(  e As E) As Boolean
 			addLast(e)
 			Return True
 		End Function
@@ -409,7 +409,7 @@ Namespace java.util
 		''' <param name="e"> the element to add </param>
 		''' <returns> {@code true} (as specified by <seealso cref="Queue#offer"/>) </returns>
 		''' <exception cref="NullPointerException"> if the specified element is null </exception>
-		Public Overridable Function offer(ByVal e As E) As Boolean
+		Public Overridable Function offer(  e As E) As Boolean
 			Return offerLast(e)
 		End Function
 
@@ -475,7 +475,7 @@ Namespace java.util
 		''' </summary>
 		''' <param name="e"> the element to push </param>
 		''' <exception cref="NullPointerException"> if the specified element is null </exception>
-		Public Overridable Sub push(ByVal e As E)
+		Public Overridable Sub push(  e As E)
 			addFirst(e)
 		End Sub
 
@@ -507,7 +507,7 @@ Namespace java.util
 		''' that its semantics differ from those of <seealso cref="List#remove(int)"/>.
 		''' </summary>
 		''' <returns> true if elements moved backwards </returns>
-		Private Function delete(ByVal i As Integer) As Boolean
+		Private Function delete(  i As Integer) As Boolean
 			checkInvariants()
 			Dim elements As Object() = Me.elements
 			Dim mask As Integer = elements.Length - 1
@@ -585,7 +585,7 @@ Namespace java.util
 
 			Private ReadOnly outerInstance As ArrayDeque
 
-			Public Sub New(ByVal outerInstance As ArrayDeque)
+			Public Sub New(  outerInstance As ArrayDeque)
 				Me.outerInstance = outerInstance
 			End Sub
 
@@ -632,7 +632,7 @@ Namespace java.util
 			End Sub
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Overridable Sub forEachRemaining(Of T1)(ByVal action As java.util.function.Consumer(Of T1)) Implements Iterator(Of E).forEachRemaining
+			Public Overridable Sub forEachRemaining(Of T1)(  action As java.util.function.Consumer(Of T1)) Implements Iterator(Of E).forEachRemaining
 				Objects.requireNonNull(action)
 				Dim a As Object() = outerInstance.elements
 				Dim m As Integer = a.Length - 1, f As Integer = fence, i As Integer = cursor
@@ -652,7 +652,7 @@ Namespace java.util
 
 			Private ReadOnly outerInstance As ArrayDeque
 
-			Public Sub New(ByVal outerInstance As ArrayDeque)
+			Public Sub New(  outerInstance As ArrayDeque)
 				Me.outerInstance = outerInstance
 			End Sub
 
@@ -696,7 +696,7 @@ Namespace java.util
 		''' </summary>
 		''' <param name="o"> object to be checked for containment in this deque </param>
 		''' <returns> {@code true} if this deque contains the specified element </returns>
-		Public Overridable Function contains(ByVal o As Object) As Boolean Implements Deque(Of E).contains
+		Public Overridable Function contains(  o As Object) As Boolean Implements Deque(Of E).contains
 			If o Is Nothing Then Return False
 			Dim mask As Integer = elements.Length - 1
 			Dim i As Integer = head
@@ -722,7 +722,7 @@ Namespace java.util
 		''' </summary>
 		''' <param name="o"> element to be removed from this deque, if present </param>
 		''' <returns> {@code true} if this deque contained the specified element </returns>
-		Public Overridable Function remove(ByVal o As Object) As Boolean Implements Deque(Of E).remove
+		Public Overridable Function remove(  o As Object) As Boolean Implements Deque(Of E).remove
 			Return removeFirstOccurrence(o)
 		End Function
 
@@ -797,7 +797,7 @@ Namespace java.util
 		'''         this deque </exception>
 		''' <exception cref="NullPointerException"> if the specified array is null </exception>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Overridable Function toArray(Of T)(ByVal a As T()) As T()
+		Public Overridable Function toArray(Of T)(  a As T()) As T()
 			Dim size As Integer = size()
 			If a.Length < size Then a = CType(java.lang.reflect.Array.newInstance(a.GetType().GetElementType(), size), T())
 			copyElements(a)
@@ -832,7 +832,7 @@ Namespace java.util
 		''' followed by all of its elements (each an object reference) in
 		''' first-to-last order.
 		''' </summary>
-		Private Sub writeObject(ByVal s As java.io.ObjectOutputStream)
+		Private Sub writeObject(  s As java.io.ObjectOutputStream)
 			s.defaultWriteObject()
 
 			' Write out size
@@ -850,7 +850,7 @@ Namespace java.util
 		''' <summary>
 		''' Reconstitutes this deque from a stream (that is, deserializes it).
 		''' </summary>
-		Private Sub readObject(ByVal s As java.io.ObjectInputStream)
+		Private Sub readObject(  s As java.io.ObjectInputStream)
 			s.defaultReadObject()
 
 			' Read in size and allocate array
@@ -890,7 +890,7 @@ Namespace java.util
 
 			''' <summary>
 			''' Creates new spliterator covering the given array and range </summary>
-			Friend Sub New(ByVal deq As ArrayDeque(Of E), ByVal origin As Integer, ByVal fence As Integer)
+			Friend Sub New(  deq As ArrayDeque(Of E),   origin As Integer,   fence As Integer)
 				Me.deq = deq
 				Me.index = origin
 				Me.fence = fence
@@ -921,7 +921,7 @@ Namespace java.util
 			End Function
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Sub forEachRemaining(Of T1)(ByVal consumer As java.util.function.Consumer(Of T1)) Implements Spliterator(Of E).forEachRemaining
+			Public Sub forEachRemaining(Of T1)(  consumer As java.util.function.Consumer(Of T1)) Implements Spliterator(Of E).forEachRemaining
 				If consumer Is Nothing Then Throw New NullPointerException
 				Dim a As Object() = deq.elements
 				Dim m As Integer = a.Length - 1, f As Integer = fence, i As Integer = index
@@ -936,7 +936,7 @@ Namespace java.util
 			End Sub
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Function tryAdvance(Of T1)(ByVal consumer As java.util.function.Consumer(Of T1)) As Boolean Implements Spliterator(Of E).tryAdvance
+			Public Function tryAdvance(Of T1)(  consumer As java.util.function.Consumer(Of T1)) As Boolean Implements Spliterator(Of E).tryAdvance
 				If consumer Is Nothing Then Throw New NullPointerException
 				Dim a As Object() = deq.elements
 				Dim m As Integer = a.Length - 1, f As Integer = fence, i As Integer = index

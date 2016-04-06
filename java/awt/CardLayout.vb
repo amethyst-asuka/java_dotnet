@@ -74,7 +74,7 @@ Namespace java.awt
 			Friend Const serialVersionUID As Long = 6640330810709497518L
 			Public name As String
 			Public comp As Component
-			Public Sub New(ByVal outerInstance As CardLayout, ByVal cardName As String, ByVal cardComponent As Component)
+			Public Sub New(  outerInstance As CardLayout,   cardName As String,   cardComponent As Component)
 					Me.outerInstance = outerInstance
 				name = cardName
 				comp = cardComponent
@@ -131,7 +131,7 @@ Namespace java.awt
 		''' edges. </summary>
 		''' <param name="hgap">   the horizontal gap. </param>
 		''' <param name="vgap">   the vertical gap. </param>
-		Public Sub New(ByVal hgap As Integer, ByVal vgap As Integer)
+		Public Sub New(  hgap As Integer,   vgap As Integer)
 			Me.hgap = hgap
 			Me.vgap = vgap
 		End Sub
@@ -146,7 +146,7 @@ Namespace java.awt
 			Get
 				Return hgap
 			End Get
-			Set(ByVal hgap As Integer)
+			Set(  hgap As Integer)
 				Me.hgap = hgap
 			End Set
 		End Property
@@ -161,7 +161,7 @@ Namespace java.awt
 			Get
 				Return vgap
 			End Get
-			Set(ByVal vgap As Integer)
+			Set(  vgap As Integer)
 				Me.vgap = vgap
 			End Set
 		End Property
@@ -179,7 +179,7 @@ Namespace java.awt
 		'''                                        card in the layout. </param>
 		''' <seealso cref=       java.awt.CardLayout#show(java.awt.Container, java.lang.String) </seealso>
 		''' <exception cref="IllegalArgumentException">  if the constraint is not a string. </exception>
-		Public Overridable Sub addLayoutComponent(ByVal comp As Component, ByVal constraints As Object) Implements LayoutManager2.addLayoutComponent
+		Public Overridable Sub addLayoutComponent(  comp As Component,   constraints As Object) Implements LayoutManager2.addLayoutComponent
 		  SyncLock comp.treeLock
 			  If constraints Is Nothing Then constraints = ""
 			If TypeOf constraints Is String Then
@@ -193,7 +193,7 @@ Namespace java.awt
 		''' @deprecated   replaced by
 		'''      <code>addLayoutComponent(Component, Object)</code>. 
 		<Obsolete("  replaced by")> _
-		Public Overridable Sub addLayoutComponent(ByVal name As String, ByVal comp As Component) Implements LayoutManager.addLayoutComponent
+		Public Overridable Sub addLayoutComponent(  name As String,   comp As Component) Implements LayoutManager.addLayoutComponent
 			SyncLock comp.treeLock
 				If vector.Count > 0 Then comp.visible = False
 				For i As Integer = 0 To vector.Count - 1
@@ -212,7 +212,7 @@ Namespace java.awt
 		''' <param name="comp">   the component to be removed. </param>
 		''' <seealso cref=     java.awt.Container#remove(java.awt.Component) </seealso>
 		''' <seealso cref=     java.awt.Container#removeAll() </seealso>
-		Public Overridable Sub removeLayoutComponent(ByVal comp As Component) Implements LayoutManager.removeLayoutComponent
+		Public Overridable Sub removeLayoutComponent(  comp As Component) Implements LayoutManager.removeLayoutComponent
 			SyncLock comp.treeLock
 				For i As Integer = 0 To vector.Count - 1
 					If CType(vector(i), Card).comp Is comp Then
@@ -237,7 +237,7 @@ Namespace java.awt
 		'''                of the specified container </returns>
 		''' <seealso cref=     java.awt.Container#getPreferredSize </seealso>
 		''' <seealso cref=     java.awt.CardLayout#minimumLayoutSize </seealso>
-		Public Overridable Function preferredLayoutSize(ByVal parent As Container) As Dimension Implements LayoutManager.preferredLayoutSize
+		Public Overridable Function preferredLayoutSize(  parent As Container) As Dimension Implements LayoutManager.preferredLayoutSize
 			SyncLock parent.treeLock
 				Dim insets_Renamed As Insets = parent.insets
 				Dim ncomponents As Integer = parent.componentCount
@@ -261,7 +261,7 @@ Namespace java.awt
 		'''                subcomponents of the specified container </returns>
 		''' <seealso cref=       java.awt.Container#doLayout </seealso>
 		''' <seealso cref=       java.awt.CardLayout#preferredLayoutSize </seealso>
-		Public Overridable Function minimumLayoutSize(ByVal parent As Container) As Dimension Implements LayoutManager.minimumLayoutSize
+		Public Overridable Function minimumLayoutSize(  parent As Container) As Dimension Implements LayoutManager.minimumLayoutSize
 			SyncLock parent.treeLock
 				Dim insets_Renamed As Insets = parent.insets
 				Dim ncomponents As Integer = parent.componentCount
@@ -285,7 +285,7 @@ Namespace java.awt
 		''' <seealso cref= Container </seealso>
 		''' <seealso cref= #minimumLayoutSize </seealso>
 		''' <seealso cref= #preferredLayoutSize </seealso>
-		Public Overridable Function maximumLayoutSize(ByVal target As Container) As Dimension Implements LayoutManager2.maximumLayoutSize
+		Public Overridable Function maximumLayoutSize(  target As Container) As Dimension Implements LayoutManager2.maximumLayoutSize
 			Return New Dimension( java.lang.[Integer].Max_Value,  java.lang.[Integer].Max_Value)
 		End Function
 
@@ -296,7 +296,7 @@ Namespace java.awt
 		''' where 0 represents alignment along the origin, 1 is aligned
 		''' the furthest away from the origin, 0.5 is centered, etc.
 		''' </summary>
-		Public Overridable Function getLayoutAlignmentX(ByVal parent As Container) As Single Implements LayoutManager2.getLayoutAlignmentX
+		Public Overridable Function getLayoutAlignmentX(  parent As Container) As Single Implements LayoutManager2.getLayoutAlignmentX
 			Return 0.5f
 		End Function
 
@@ -307,7 +307,7 @@ Namespace java.awt
 		''' where 0 represents alignment along the origin, 1 is aligned
 		''' the furthest away from the origin, 0.5 is centered, etc.
 		''' </summary>
-		Public Overridable Function getLayoutAlignmentY(ByVal parent As Container) As Single Implements LayoutManager2.getLayoutAlignmentY
+		Public Overridable Function getLayoutAlignmentY(  parent As Container) As Single Implements LayoutManager2.getLayoutAlignmentY
 			Return 0.5f
 		End Function
 
@@ -315,7 +315,7 @@ Namespace java.awt
 		''' Invalidates the layout, indicating that if the layout manager
 		''' has cached information it should be discarded.
 		''' </summary>
-		Public Overridable Sub invalidateLayout(ByVal target As Container) Implements LayoutManager2.invalidateLayout
+		Public Overridable Sub invalidateLayout(  target As Container) Implements LayoutManager2.invalidateLayout
 		End Sub
 
 		''' <summary>
@@ -327,7 +327,7 @@ Namespace java.awt
 		''' </summary>
 		''' <param name="parent"> the parent container in which to do the layout </param>
 		''' <seealso cref=       java.awt.Container#doLayout </seealso>
-		Public Overridable Sub layoutContainer(ByVal parent As Container) Implements LayoutManager.layoutContainer
+		Public Overridable Sub layoutContainer(  parent As Container) Implements LayoutManager.layoutContainer
 			SyncLock parent.treeLock
 				Dim insets_Renamed As Insets = parent.insets
 				Dim ncomponents As Integer = parent.componentCount
@@ -348,7 +348,7 @@ Namespace java.awt
 		''' Make sure that the Container really has a CardLayout installed.
 		''' Otherwise havoc can ensue!
 		''' </summary>
-		Friend Overridable Sub checkLayout(ByVal parent As Container)
+		Friend Overridable Sub checkLayout(  parent As Container)
 			If parent.layout IsNot Me Then Throw New IllegalArgumentException("wrong parent for CardLayout")
 		End Sub
 
@@ -356,7 +356,7 @@ Namespace java.awt
 		''' Flips to the first card of the container. </summary>
 		''' <param name="parent">   the parent container in which to do the layout </param>
 		''' <seealso cref=       java.awt.CardLayout#last </seealso>
-		Public Overridable Sub first(ByVal parent As Container)
+		Public Overridable Sub first(  parent As Container)
 			SyncLock parent.treeLock
 				checkLayout(parent)
 				Dim ncomponents As Integer = parent.componentCount
@@ -381,7 +381,7 @@ Namespace java.awt
 		''' first card in the layout. </summary>
 		''' <param name="parent">   the parent container in which to do the layout </param>
 		''' <seealso cref=       java.awt.CardLayout#previous </seealso>
-		Public Overridable Sub [next](ByVal parent As Container)
+		Public Overridable Sub [next](  parent As Container)
 			SyncLock parent.treeLock
 				checkLayout(parent)
 				Dim ncomponents As Integer = parent.componentCount
@@ -406,7 +406,7 @@ Namespace java.awt
 		''' last card in the layout. </summary>
 		''' <param name="parent">   the parent container in which to do the layout </param>
 		''' <seealso cref=       java.awt.CardLayout#next </seealso>
-		Public Overridable Sub previous(ByVal parent As Container)
+		Public Overridable Sub previous(  parent As Container)
 			SyncLock parent.treeLock
 				checkLayout(parent)
 				Dim ncomponents As Integer = parent.componentCount
@@ -425,7 +425,7 @@ Namespace java.awt
 			End SyncLock
 		End Sub
 
-		Friend Overridable Sub showDefaultComponent(ByVal parent As Container)
+		Friend Overridable Sub showDefaultComponent(  parent As Container)
 			If parent.componentCount > 0 Then
 				currentCard = 0
 				parent.getComponent(0).visible = True
@@ -437,7 +437,7 @@ Namespace java.awt
 		''' Flips to the last card of the container. </summary>
 		''' <param name="parent">   the parent container in which to do the layout </param>
 		''' <seealso cref=       java.awt.CardLayout#first </seealso>
-		Public Overridable Sub last(ByVal parent As Container)
+		Public Overridable Sub last(  parent As Container)
 			SyncLock parent.treeLock
 				checkLayout(parent)
 				Dim ncomponents As Integer = parent.componentCount
@@ -463,7 +463,7 @@ Namespace java.awt
 		''' <param name="parent">   the parent container in which to do the layout </param>
 		''' <param name="name">     the component name </param>
 		''' <seealso cref=       java.awt.CardLayout#addLayoutComponent(java.awt.Component, java.lang.Object) </seealso>
-		Public Overridable Sub show(ByVal parent As Container, ByVal name As String)
+		Public Overridable Sub show(  parent As Container,   name As String)
 			SyncLock parent.treeLock
 				checkLayout(parent)
 				Dim [next] As Component = Nothing
@@ -501,7 +501,7 @@ Namespace java.awt
 		''' <summary>
 		''' Reads serializable fields from stream.
 		''' </summary>
-		Private Sub readObject(ByVal s As java.io.ObjectInputStream)
+		Private Sub readObject(  s As java.io.ObjectInputStream)
 			Dim f As java.io.ObjectInputStream.GetField = s.readFields()
 
 			hgap = f.get("hgap", 0)
@@ -531,7 +531,7 @@ Namespace java.awt
 		''' <summary>
 		''' Writes serializable fields to stream.
 		''' </summary>
-		Private Sub writeObject(ByVal s As java.io.ObjectOutputStream)
+		Private Sub writeObject(  s As java.io.ObjectOutputStream)
 			Dim tab As New Dictionary(Of String, Component)
 			Dim ncomponents As Integer = vector.Count
 			For i As Integer = 0 To ncomponents - 1

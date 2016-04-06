@@ -53,7 +53,7 @@ Namespace java.security
 		'''          specified domain.
 		''' </param>
 		''' <returns> boolean true if the permission is granted to the domain. </returns>
-		Protected Friend MustOverride Function engineImplies(ByVal domain As ProtectionDomain, ByVal permission As Permission) As Boolean
+		Protected Friend MustOverride Function engineImplies(  domain As ProtectionDomain,   permission As Permission) As Boolean
 
 		''' <summary>
 		''' Refreshes/reloads the policy configuration. The behavior of this method
@@ -85,7 +85,7 @@ Namespace java.security
 		'''          and it must support heterogeneous Permission types.
 		'''          If this operation is not supported,
 		'''          Policy.UNSUPPORTED_EMPTY_COLLECTION is returned. </returns>
-		Protected Friend Overridable Function engineGetPermissions(ByVal codesource As CodeSource) As PermissionCollection
+		Protected Friend Overridable Function engineGetPermissions(  codesource As CodeSource) As PermissionCollection
 			Return Policy.UNSUPPORTED_EMPTY_COLLECTION
 		End Function
 
@@ -107,7 +107,7 @@ Namespace java.security
 		'''          and it must support heterogeneous Permission types.
 		'''          If this operation is not supported,
 		'''          Policy.UNSUPPORTED_EMPTY_COLLECTION is returned. </returns>
-		Protected Friend Overridable Function engineGetPermissions(ByVal domain As ProtectionDomain) As PermissionCollection
+		Protected Friend Overridable Function engineGetPermissions(  domain As ProtectionDomain) As PermissionCollection
 			Return Policy.UNSUPPORTED_EMPTY_COLLECTION
 		End Function
 	End Class

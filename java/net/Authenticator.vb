@@ -120,7 +120,7 @@ Namespace java.net
 		''' <seealso cref= java.net.NetPermission </seealso>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
 		Public Shared Property [default] As Authenticator
-			Set(ByVal a As Authenticator)
+			Set(  a As Authenticator)
 				Dim sm As SecurityManager = System.securityManager
 				If sm IsNot Nothing Then
 					Dim defaultPermissionion As New NetPermission("setDefaultAuthenticator")
@@ -157,7 +157,7 @@ Namespace java.net
 		''' </exception>
 		''' <seealso cref= SecurityManager#checkPermission </seealso>
 		''' <seealso cref= java.net.NetPermission </seealso>
-		Public Shared Function requestPasswordAuthentication(ByVal addr As InetAddress, ByVal port As Integer, ByVal protocol As String, ByVal prompt As String, ByVal scheme As String) As PasswordAuthentication
+		Public Shared Function requestPasswordAuthentication(  addr As InetAddress,   port As Integer,   protocol As String,   prompt As String,   scheme As String) As PasswordAuthentication
 
 			Dim sm As SecurityManager = System.securityManager
 			If sm IsNot Nothing Then
@@ -211,7 +211,7 @@ Namespace java.net
 		''' <seealso cref= SecurityManager#checkPermission </seealso>
 		''' <seealso cref= java.net.NetPermission
 		''' @since 1.4 </seealso>
-		Public Shared Function requestPasswordAuthentication(ByVal host As String, ByVal addr As InetAddress, ByVal port As Integer, ByVal protocol As String, ByVal prompt As String, ByVal scheme As String) As PasswordAuthentication
+		Public Shared Function requestPasswordAuthentication(  host As String,   addr As InetAddress,   port As Integer,   protocol As String,   prompt As String,   scheme As String) As PasswordAuthentication
 
 			Dim sm As SecurityManager = System.securityManager
 			If sm IsNot Nothing Then
@@ -268,7 +268,7 @@ Namespace java.net
 		''' <seealso cref= java.net.NetPermission
 		''' 
 		''' @since 1.5 </seealso>
-		Public Shared Function requestPasswordAuthentication(ByVal host As String, ByVal addr As InetAddress, ByVal port As Integer, ByVal protocol As String, ByVal prompt As String, ByVal scheme As String, ByVal url As URL, ByVal reqType As RequestorType) As PasswordAuthentication
+		Public Shared Function requestPasswordAuthentication(  host As String,   addr As InetAddress,   port As Integer,   protocol As String,   prompt As String,   scheme As String,   url As URL,   reqType As RequestorType) As PasswordAuthentication
 
 			Dim sm As SecurityManager = System.securityManager
 			If sm IsNot Nothing Then

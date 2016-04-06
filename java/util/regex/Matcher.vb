@@ -218,7 +218,7 @@ Namespace java.util.regex
 		''' <summary>
 		''' All matchers have the state used by Pattern during a match.
 		''' </summary>
-		Friend Sub New(ByVal parent As Pattern, ByVal text As CharSequence)
+		Friend Sub New(  parent As Pattern,   text As CharSequence)
 			Me.parentPattern = parent
 			Me.text = text
 
@@ -269,7 +269,7 @@ Namespace java.util.regex
 		''' <exception cref="IllegalArgumentException">
 		'''          If newPattern is <tt>null</tt>
 		''' @since 1.5 </exception>
-		Public Function usePattern(ByVal newPattern As Pattern) As Matcher
+		Public Function usePattern(  newPattern As Pattern) As Matcher
 			If newPattern Is Nothing Then Throw New IllegalArgumentException("Pattern cannot be null")
 			parentPattern = newPattern
 
@@ -324,7 +324,7 @@ Namespace java.util.regex
 		'''         The new input character sequence
 		''' </param>
 		''' <returns>  This matcher </returns>
-		Public Function reset(ByVal input As CharSequence) As Matcher
+		Public Function reset(  input As CharSequence) As Matcher
 			text = input
 			Return reset()
 		End Function
@@ -365,7 +365,7 @@ Namespace java.util.regex
 		''' <exception cref="IndexOutOfBoundsException">
 		'''          If there is no capturing group in the pattern
 		'''          with the given index </exception>
-		Public Function start(ByVal group As Integer) As Integer Implements MatchResult.start
+		Public Function start(  group As Integer) As Integer Implements MatchResult.start
 			If first < 0 Then Throw New IllegalStateException("No match available")
 			If group < 0 OrElse group > groupCount() Then Throw New IndexOutOfBoundsException("No group " & group)
 			Return groups(group * 2)
@@ -391,7 +391,7 @@ Namespace java.util.regex
 		'''          If there is no capturing group in the pattern
 		'''          with the given name
 		''' @since 1.8 </exception>
-		Public Function start(ByVal name As String) As Integer
+		Public Function start(  name As String) As Integer
 			Return groups(getMatchedGroupIndex(name) * 2)
 		End Function
 
@@ -431,7 +431,7 @@ Namespace java.util.regex
 		''' <exception cref="IndexOutOfBoundsException">
 		'''          If there is no capturing group in the pattern
 		'''          with the given index </exception>
-		Public Function [end](ByVal group As Integer) As Integer Implements MatchResult.end
+		Public Function [end](  group As Integer) As Integer Implements MatchResult.end
 			If first < 0 Then Throw New IllegalStateException("No match available")
 			If group < 0 OrElse group > groupCount() Then Throw New IndexOutOfBoundsException("No group " & group)
 			Return groups(group * 2 + 1)
@@ -457,7 +457,7 @@ Namespace java.util.regex
 		'''          If there is no capturing group in the pattern
 		'''          with the given name
 		''' @since 1.8 </exception>
-		Public Function [end](ByVal name As String) As Integer
+		Public Function [end](  name As String) As Integer
 			Return groups(getMatchedGroupIndex(name) * 2 + 1)
 		End Function
 
@@ -517,7 +517,7 @@ Namespace java.util.regex
 		''' <exception cref="IndexOutOfBoundsException">
 		'''          If there is no capturing group in the pattern
 		'''          with the given index </exception>
-		Public Function group(ByVal group_Renamed As Integer) As String Implements MatchResult.group
+		Public Function group(  group_Renamed As Integer) As String Implements MatchResult.group
 			If first < 0 Then Throw New IllegalStateException("No match found")
 			If group_Renamed < 0 OrElse group_Renamed > groupCount() Then Throw New IndexOutOfBoundsException("No group " & group_Renamed)
 			If (groups(group_Renamed*2) = -1) OrElse (groups(group_Renamed*2+1) = -1) Then Return Nothing
@@ -550,7 +550,7 @@ Namespace java.util.regex
 		'''          If there is no capturing group in the pattern
 		'''          with the given name
 		''' @since 1.7 </exception>
-		Public Function group(ByVal name As String) As String
+		Public Function group(  name As String) As String
 			Dim group_Renamed As Integer = getMatchedGroupIndex(name)
 			If (groups(group_Renamed*2) = -1) OrElse (groups(group_Renamed*2+1) = -1) Then Return Nothing
 			Return getSubSequence(groups(group_Renamed * 2), groups(group_Renamed * 2 + 1)).ToString()
@@ -632,7 +632,7 @@ Namespace java.util.regex
 		''' <returns>  <tt>true</tt> if, and only if, a subsequence of the input
 		'''          sequence starting at the given index matches this matcher's
 		'''          pattern </returns>
-		Public Function find(ByVal start As Integer) As Boolean
+		Public Function find(  start As Integer) As Boolean
 			Dim limit As Integer = textLength
 			If (start < 0) OrElse (start > limit) Then Throw New IndexOutOfBoundsException("Illegal start index")
 			reset()
@@ -670,7 +670,7 @@ Namespace java.util.regex
 		''' <param name="s"> The string to be literalized </param>
 		''' <returns>  A literal string replacement
 		''' @since 1.5 </returns>
-		Public Shared Function quoteReplacement(ByVal s As String) As String
+		Public Shared Function quoteReplacement(  s As String) As String
 			If (s.IndexOf("\"c) = -1) AndAlso (s.IndexOf("$"c) = -1) Then Return s
 			Dim sb As New StringBuilder
 			For i As Integer = 0 To s.length() - 1
@@ -760,7 +760,7 @@ Namespace java.util.regex
 		''' <exception cref="IndexOutOfBoundsException">
 		'''          If the replacement string refers to a capturing group
 		'''          that does not exist in the pattern </exception>
-		Public Function appendReplacement(ByVal sb As StringBuffer, ByVal replacement As String) As Matcher
+		Public Function appendReplacement(  sb As StringBuffer,   replacement As String) As Matcher
 
 			' If no match, return error
 			If first < 0 Then Throw New IllegalStateException("No match available")
@@ -852,7 +852,7 @@ Namespace java.util.regex
 		'''         The target string buffer
 		''' </param>
 		''' <returns>  The target string buffer </returns>
-		Public Function appendTail(ByVal sb As StringBuffer) As StringBuffer
+		Public Function appendTail(  sb As StringBuffer) As StringBuffer
 			sb.append(text, lastAppendPosition, textLength)
 			Return sb
 		End Function
@@ -890,7 +890,7 @@ Namespace java.util.regex
 		''' <returns>  The string constructed by replacing each matching subsequence
 		'''          by the replacement string, substituting captured subsequences
 		'''          as needed </returns>
-		Public Function replaceAll(ByVal replacement As String) As String
+		Public Function replaceAll(  replacement As String) As String
 			reset()
 			Dim result As Boolean = find()
 			If result Then
@@ -937,7 +937,7 @@ Namespace java.util.regex
 		''' <returns>  The string constructed by replacing the first matching
 		'''          subsequence by the replacement string, substituting captured
 		'''          subsequences as needed </returns>
-		Public Function replaceFirst(ByVal replacement As String) As String
+		Public Function replaceFirst(  replacement As String) As String
 			If replacement Is Nothing Then Throw New NullPointerException("replacement")
 			reset()
 			If Not find() Then Return text.ToString()
@@ -971,7 +971,7 @@ Namespace java.util.regex
 		'''          start is greater than end. </exception>
 		''' <returns>  this matcher
 		''' @since 1.5 </returns>
-		Public Function region(ByVal start As Integer, ByVal [end] As Integer) As Matcher
+		Public Function region(  start As Integer,   [end] As Integer) As Matcher
 			If (start < 0) OrElse (start > textLength) Then Throw New IndexOutOfBoundsException("start")
 			If ([end] < 0) OrElse ([end] > textLength) Then Throw New IndexOutOfBoundsException("end")
 			If start > [end] Then Throw New IndexOutOfBoundsException("start > end")
@@ -1050,7 +1050,7 @@ Namespace java.util.regex
 		''' <returns> this matcher </returns>
 		''' <seealso cref= java.util.regex.Matcher#hasTransparentBounds
 		''' @since 1.5 </seealso>
-		Public Function useTransparentBounds(ByVal b As Boolean) As Matcher
+		Public Function useTransparentBounds(  b As Boolean) As Matcher
 			transparentBounds = b
 			Return Me
 		End Function
@@ -1094,7 +1094,7 @@ Namespace java.util.regex
 		''' <returns> this matcher </returns>
 		''' <seealso cref= java.util.regex.Matcher#hasAnchoringBounds
 		''' @since 1.5 </seealso>
-		Public Function useAnchoringBounds(ByVal b As Boolean) As Matcher
+		Public Function useAnchoringBounds(  b As Boolean) As Matcher
 			anchoringBounds = b
 			Return Me
 		End Function
@@ -1162,7 +1162,7 @@ Namespace java.util.regex
 		''' calls to the search methods start at a new "soft" boundary which is
 		''' the end of the previous match.
 		''' </summary>
-		Friend Function search(ByVal [from] As Integer) As Boolean
+		Friend Function search(  [from] As Integer) As Boolean
 			Me.hitEnd_Renamed = False
 			Me.requireEnd_Renamed = False
 			[from] = If([from] < 0, 0, [from])
@@ -1184,7 +1184,7 @@ Namespace java.util.regex
 		''' root of the state machine is called. The state machine will hold the
 		''' state of the match as it proceeds in this matcher.
 		''' </summary>
-		Friend Function match(ByVal [from] As Integer, ByVal anchor As Integer) As Boolean
+		Friend Function match(  [from] As Integer,   anchor As Integer) As Boolean
 			Me.hitEnd_Renamed = False
 			Me.requireEnd_Renamed = False
 			[from] = If([from] < 0, 0, [from])
@@ -1216,7 +1216,7 @@ Namespace java.util.regex
 		''' <param name="beginIndex">   the beginning index, inclusive </param>
 		''' <param name="endIndex">     the ending index, exclusive </param>
 		''' <returns> A String generated from this Matcher's input </returns>
-		Friend Function getSubSequence(ByVal beginIndex As Integer, ByVal endIndex As Integer) As CharSequence
+		Friend Function getSubSequence(  beginIndex As Integer,   endIndex As Integer) As CharSequence
 			Return text.subSequence(beginIndex, endIndex)
 		End Function
 
@@ -1224,7 +1224,7 @@ Namespace java.util.regex
 		''' Returns this Matcher's input character at index i.
 		''' </summary>
 		''' <returns> A char from the specified index </returns>
-		Friend Function charAt(ByVal i As Integer) As Char
+		Friend Function charAt(  i As Integer) As Char
 			Return text.Chars(i)
 		End Function
 
@@ -1232,7 +1232,7 @@ Namespace java.util.regex
 		''' Returns the group index of the matched capturing group.
 		''' </summary>
 		''' <returns> the index of the named-capturing group </returns>
-		Friend Function getMatchedGroupIndex(ByVal name As String) As Integer
+		Friend Function getMatchedGroupIndex(  name As String) As Integer
 			java.util.Objects.requireNonNull(name, "Group name")
 			If first < 0 Then Throw New IllegalStateException("No match found")
 			If Not parentPattern.namedGroups().containsKey(name) Then Throw New IllegalArgumentException("No group with name <" & name & ">")

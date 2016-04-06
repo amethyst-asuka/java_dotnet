@@ -58,7 +58,7 @@ Namespace java.awt
 		''' used for painting </param>
 		''' <param name="anchor"> the <code>Rectangle2D</code> in user space used to
 		''' anchor and replicate the texture </param>
-		Public Sub New(ByVal txtr As java.awt.image.BufferedImage, ByVal anchor As java.awt.geom.Rectangle2D)
+		Public Sub New(  txtr As java.awt.image.BufferedImage,   anchor As java.awt.geom.Rectangle2D)
 			Me.bufImg = txtr
 			Me.tx = anchor.x
 			Me.ty = anchor.y
@@ -114,7 +114,7 @@ Namespace java.awt
 		''' <seealso cref= Rectangle2D </seealso>
 		''' <seealso cref= AffineTransform </seealso>
 		''' <seealso cref= RenderingHints </seealso>
-		Public Overridable Function createContext(ByVal cm As java.awt.image.ColorModel, ByVal deviceBounds As Rectangle, ByVal userBounds As java.awt.geom.Rectangle2D, ByVal xform As java.awt.geom.AffineTransform, ByVal hints As RenderingHints) As PaintContext Implements Paint.createContext
+		Public Overridable Function createContext(  cm As java.awt.image.ColorModel,   deviceBounds As Rectangle,   userBounds As java.awt.geom.Rectangle2D,   xform As java.awt.geom.AffineTransform,   hints As RenderingHints) As PaintContext Implements Paint.createContext
 			If xform Is Nothing Then
 				xform = New java.awt.geom.AffineTransform
 			Else

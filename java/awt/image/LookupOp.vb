@@ -81,7 +81,7 @@ Namespace java.awt.image
 		''' <param name="lookup"> the specified <code>LookupTable</code> </param>
 		''' <param name="hints"> the specified <code>RenderingHints</code>,
 		'''        or <code>null</code> </param>
-		Public Sub New(ByVal lookup As LookupTable, ByVal hints As java.awt.RenderingHints)
+		Public Sub New(  lookup As LookupTable,   hints As java.awt.RenderingHints)
 			Me.ltable = lookup
 			Me.hints = hints
 			numComponents = ltable.numComponents
@@ -116,7 +116,7 @@ Namespace java.awt.image
 		'''         <code>LookupTable</code> does not meet the restrictions
 		'''         described in the class comments, or if the source image
 		'''         has an <code>IndexColorModel</code>. </exception>
-		Public Function filter(ByVal src As BufferedImage, ByVal dst As BufferedImage) As BufferedImage Implements BufferedImageOp.filter
+		Public Function filter(  src As BufferedImage,   dst As BufferedImage) As BufferedImage Implements BufferedImageOp.filter
 			Dim srcCM As ColorModel = src.colorModel
 			Dim numBands As Integer = srcCM.numColorComponents
 			Dim dstCM As ColorModel
@@ -207,7 +207,7 @@ Namespace java.awt.image
 		'''         number of arrays in the <code>LookupTable</code> does
 		'''         not meet the restrictions described in the class comments.
 		'''  </exception>
-		Public Function filter(ByVal src As Raster, ByVal dst As WritableRaster) As WritableRaster Implements RasterOp.filter
+		Public Function filter(  src As Raster,   dst As WritableRaster) As WritableRaster Implements RasterOp.filter
 			Dim numBands As Integer = src.numBands
 			Dim dstLength As Integer = dst.numBands
 			Dim height As Integer = src.height
@@ -274,7 +274,7 @@ Namespace java.awt.image
 		''' change. </summary>
 		''' <param name="src"> the <code>BufferedImage</code> to be filtered </param>
 		''' <returns> the bounds of the filtered definition image. </returns>
-		Public Function getBounds2D(ByVal src As BufferedImage) As java.awt.geom.Rectangle2D Implements BufferedImageOp.getBounds2D
+		Public Function getBounds2D(  src As BufferedImage) As java.awt.geom.Rectangle2D Implements BufferedImageOp.getBounds2D
 			Return getBounds2D(src.raster)
 		End Function
 
@@ -284,7 +284,7 @@ Namespace java.awt.image
 		''' change. </summary>
 		''' <param name="src"> the <code>Raster</code> to be filtered </param>
 		''' <returns> the bounds of the filtered definition <code>Raster</code>. </returns>
-		Public Function getBounds2D(ByVal src As Raster) As java.awt.geom.Rectangle2D Implements RasterOp.getBounds2D
+		Public Function getBounds2D(  src As Raster) As java.awt.geom.Rectangle2D Implements RasterOp.getBounds2D
 			Return src.bounds
 
 		End Function
@@ -297,7 +297,7 @@ Namespace java.awt.image
 		''' <param name="destCM">    the destination's <code>ColorModel</code>, which
 		'''                  can be <code>null</code>. </param>
 		''' <returns> a filtered destination <code>BufferedImage</code>. </returns>
-		Public Overridable Function createCompatibleDestImage(ByVal src As BufferedImage, ByVal destCM As ColorModel) As BufferedImage Implements BufferedImageOp.createCompatibleDestImage
+		Public Overridable Function createCompatibleDestImage(  src As BufferedImage,   destCM As ColorModel) As BufferedImage Implements BufferedImageOp.createCompatibleDestImage
 			Dim image_Renamed As BufferedImage
 			Dim w As Integer = src.width
 			Dim h As Integer = src.height
@@ -358,7 +358,7 @@ Namespace java.awt.image
 		''' correct size and number of bands, given this source. </summary>
 		''' <param name="src"> the <code>Raster</code> to be transformed </param>
 		''' <returns> the zeroed-destination <code>Raster</code>. </returns>
-		Public Overridable Function createCompatibleDestRaster(ByVal src As Raster) As WritableRaster Implements RasterOp.createCompatibleDestRaster
+		Public Overridable Function createCompatibleDestRaster(  src As Raster) As WritableRaster Implements RasterOp.createCompatibleDestRaster
 			Return src.createCompatibleWritableRaster()
 		End Function
 
@@ -374,7 +374,7 @@ Namespace java.awt.image
 		'''        in the destination </param>
 		''' <returns> the <code>Point2D</code> in the destination that
 		'''         corresponds to the specified point in the source. </returns>
-		Public Function getPoint2D(ByVal srcPt As java.awt.geom.Point2D, ByVal dstPt As java.awt.geom.Point2D) As java.awt.geom.Point2D Implements BufferedImageOp.getPoint2D, RasterOp.getPoint2D
+		Public Function getPoint2D(  srcPt As java.awt.geom.Point2D,   dstPt As java.awt.geom.Point2D) As java.awt.geom.Point2D Implements BufferedImageOp.getPoint2D, RasterOp.getPoint2D
 			If dstPt Is Nothing Then dstPt = New java.awt.geom.Point2D.Float
 			dstPt.locationion(srcPt.x, srcPt.y)
 
@@ -391,7 +391,7 @@ Namespace java.awt.image
 			End Get
 		End Property
 
-		Private Sub byteFilter(ByVal lookup As ByteLookupTable, ByVal src As Raster, ByVal dst As WritableRaster, ByVal width As Integer, ByVal height As Integer, ByVal numBands As Integer)
+		Private Sub byteFilter(  lookup As ByteLookupTable,   src As Raster,   dst As WritableRaster,   width As Integer,   height As Integer,   numBands As Integer)
 			Dim srcPix As Integer() = Nothing
 
 			' Find the ref to the table and the offset
@@ -430,7 +430,7 @@ Namespace java.awt.image
 			Next y
 		End Sub
 
-		Private Sub shortFilter(ByVal lookup As ShortLookupTable, ByVal src As Raster, ByVal dst As WritableRaster, ByVal width As Integer, ByVal height As Integer, ByVal numBands As Integer)
+		Private Sub shortFilter(  lookup As ShortLookupTable,   src As Raster,   dst As WritableRaster,   width As Integer,   height As Integer,   numBands As Integer)
 			Dim band As Integer
 			Dim srcPix As Integer() = Nothing
 

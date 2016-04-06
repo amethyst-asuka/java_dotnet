@@ -63,7 +63,7 @@ Namespace java.security.cert
 		''' <param name="params"> the initialization parameters (may be {@code null}) </param>
 		''' <exception cref="InvalidAlgorithmParameterException"> if the initialization
 		''' parameters are inappropriate for this {@code CertStoreSpi} </exception>
-		Public Sub New(ByVal params As CertStoreParameters)
+		Public Sub New(  params As CertStoreParameters)
 		End Sub
 
 		''' <summary>
@@ -91,7 +91,7 @@ Namespace java.security.cert
 		'''         match the specified selector (never {@code null}) </returns>
 		''' <exception cref="CertStoreException"> if an exception occurs </exception>
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-		Public MustOverride Function engineGetCertificates(ByVal selector As CertSelector) As ICollection(Of ? As Certificate)
+		Public MustOverride Function engineGetCertificates(  selector As CertSelector) As ICollection(Of ? As Certificate)
 
 		''' <summary>
 		''' Returns a {@code Collection} of {@code CRL}s that
@@ -118,7 +118,7 @@ Namespace java.security.cert
 		'''         match the specified selector (never {@code null}) </returns>
 		''' <exception cref="CertStoreException"> if an exception occurs </exception>
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-		Public MustOverride Function engineGetCRLs(ByVal selector As CRLSelector) As ICollection(Of ? As CRL)
+		Public MustOverride Function engineGetCRLs(  selector As CRLSelector) As ICollection(Of ? As CRL)
 	End Class
 
 End Namespace

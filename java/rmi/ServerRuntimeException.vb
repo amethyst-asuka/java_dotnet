@@ -60,7 +60,7 @@ Namespace java.rmi
 		''' @deprecated no replacement
 		''' @since JDK1.1 
 		<Obsolete("no replacement")> _
-		Public Sub New(ByVal s As String, ByVal ex As Exception)
+		Public Sub New(  s As String,   ex As Exception)
 			MyBase.New(s, ex)
 		End Sub
 	End Class

@@ -166,7 +166,7 @@ Namespace java.awt.event
 		''' <seealso cref= #getID() </seealso>
 		''' <seealso cref= #getAdjustmentType() </seealso>
 		''' <seealso cref= #getValue() </seealso>
-		Public Sub New(ByVal source As java.awt.Adjustable, ByVal id As Integer, ByVal type As Integer, ByVal value As Integer)
+		Public Sub New(  source As java.awt.Adjustable,   id As Integer,   type As Integer,   value As Integer)
 			Me.New(source, id, type, value, False)
 		End Sub
 
@@ -196,7 +196,7 @@ Namespace java.awt.event
 		''' <seealso cref= #getAdjustmentType() </seealso>
 		''' <seealso cref= #getValue() </seealso>
 		''' <seealso cref= #getValueIsAdjusting() </seealso>
-		Public Sub New(ByVal source As java.awt.Adjustable, ByVal id As Integer, ByVal type As Integer, ByVal value As Integer, ByVal isAdjusting As Boolean)
+		Public Sub New(  source As java.awt.Adjustable,   id As Integer,   type As Integer,   value As Integer,   isAdjusting As Boolean)
 			MyBase.New(source, id)
 			adjustable = source
 			Me.adjustmentType = type

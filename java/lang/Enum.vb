@@ -109,7 +109,7 @@ Namespace java.lang
         ''' <param name="ordinal"> - The ordinal of this enumeration constant (its position
         '''         in the enum declaration, where the initial constant is assigned
         '''         an ordinal of zero). </param>
-        Protected Friend Sub New(ByVal name As String, ByVal ordinal As Integer)
+        Protected Friend Sub New(  name As String,   ordinal As Integer)
             Me.name_Renamed = name
             Me.ordinal_Renamed = ordinal
         End Sub
@@ -132,7 +132,7 @@ Namespace java.lang
         ''' <param name="other"> the object to be compared for equality with this object. </param>
         ''' <returns>  true if the specified object is equal to this
         '''          enum constant. </returns>
-        Public NotOverridable Overrides Function Equals(ByVal other As Object) As Boolean
+        Public NotOverridable Overrides Function Equals(  other As Object) As Boolean
             Return Me Is other
         End Function
 
@@ -163,7 +163,7 @@ Namespace java.lang
         ''' same enum type.  The natural order implemented by this
         ''' method is the order in which the constants are declared.
         ''' </summary>
-        Public Function compareTo(ByVal o As E) As Integer Implements Comparable(Of E).compareTo
+        Public Function compareTo(  o As E) As Integer Implements Comparable(Of E).compareTo
             Dim other As [Enum](Of E) = CType(DirectCast(o, Object), [Enum](Of E))
             Dim self As [Enum](Of E) = Me
             If self.GetType() IsNot other.GetType() AndAlso self.declaringClass IsNot other.declaringClass Then _ ' optimization Throw New ClassCastException
@@ -216,7 +216,7 @@ Namespace java.lang
         ''' <exception cref="NullPointerException"> if {@code enumType} or {@code name}
         '''         is null
         ''' @since 1.5 </exception>
-        Public Shared Function valueOf(Of T As [Enum](Of E))(ByVal enumType As [Class], ByVal name As String) As T
+        Public Shared Function valueOf(Of T As [Enum](Of E))(  enumType As [Class],   name As String) As T
             Dim result As T = enumType.enumConstantDirectory()(name)
             If result IsNot Nothing Then Return result
             If name Is Nothing Then Throw New NullPointerException("Name is null")
@@ -232,7 +232,7 @@ Namespace java.lang
         ''' <summary>
         ''' prevent default deserialization
         ''' </summary>
-        Private Sub readObject(ByVal [in] As java.io.ObjectInputStream)
+        Private Sub readObject(  [in] As java.io.ObjectInputStream)
             Throw New java.io.InvalidObjectException("can't deserialize enum")
         End Sub
 

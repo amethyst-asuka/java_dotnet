@@ -61,7 +61,7 @@ Namespace java.security
 		''' </param>
 		''' <exception cref="InvalidKeyException"> if the key is improperly
 		''' encoded, parameters are missing, and so on. </exception>
-		Protected Friend MustOverride Sub engineInitVerify(ByVal publicKey As PublicKey)
+		Protected Friend MustOverride Sub engineInitVerify(  publicKey As PublicKey)
 
 		''' <summary>
 		''' Initializes this signature object with the specified
@@ -72,7 +72,7 @@ Namespace java.security
 		''' </param>
 		''' <exception cref="InvalidKeyException"> if the key is improperly
 		''' encoded, parameters are missing, and so on. </exception>
-		Protected Friend MustOverride Sub engineInitSign(ByVal privateKey As PrivateKey)
+		Protected Friend MustOverride Sub engineInitSign(  privateKey As PrivateKey)
 
 		''' <summary>
 		''' Initializes this signature object with the specified
@@ -87,7 +87,7 @@ Namespace java.security
 		''' </param>
 		''' <exception cref="InvalidKeyException"> if the key is improperly
 		''' encoded, parameters are missing, and so on. </exception>
-		Protected Friend Overridable Sub engineInitSign(ByVal privateKey As PrivateKey, ByVal random_Renamed As SecureRandom)
+		Protected Friend Overridable Sub engineInitSign(  privateKey As PrivateKey,   random_Renamed As SecureRandom)
 				Me.appRandom = random_Renamed
 				engineInitSign(privateKey)
 		End Sub
@@ -100,7 +100,7 @@ Namespace java.security
 		''' </param>
 		''' <exception cref="SignatureException"> if the engine is not initialized
 		''' properly. </exception>
-		Protected Friend MustOverride Sub engineUpdate(ByVal b As SByte)
+		Protected Friend MustOverride Sub engineUpdate(  b As SByte)
 
 		''' <summary>
 		''' Updates the data to be signed or verified, using the
@@ -112,7 +112,7 @@ Namespace java.security
 		''' </param>
 		''' <exception cref="SignatureException"> if the engine is not initialized
 		''' properly </exception>
-		Protected Friend MustOverride Sub engineUpdate(ByVal b As SByte(), ByVal [off] As Integer, ByVal len As Integer)
+		Protected Friend MustOverride Sub engineUpdate(  b As SByte(),   [off] As Integer,   len As Integer)
 
 		''' <summary>
 		''' Updates the data to be signed or verified using the specified
@@ -123,7 +123,7 @@ Namespace java.security
 		''' </summary>
 		''' <param name="input"> the ByteBuffer
 		''' @since 1.5 </param>
-		Protected Friend Overridable Sub engineUpdate(ByVal input As java.nio.ByteBuffer)
+		Protected Friend Overridable Sub engineUpdate(  input As java.nio.ByteBuffer)
 			If input.hasRemaining() = False Then Return
 			Try
 				If input.hasArray() Then
@@ -202,7 +202,7 @@ Namespace java.security
 		''' than the actual signature length.
 		''' 
 		''' @since 1.2 </exception>
-		Protected Friend Overridable Function engineSign(ByVal outbuf As SByte(), ByVal offset As Integer, ByVal len As Integer) As Integer
+		Protected Friend Overridable Function engineSign(  outbuf As SByte(),   offset As Integer,   len As Integer) As Integer
 			Dim sig As SByte() = engineSign()
 			If len < sig.Length Then Throw New SignatureException("partial signatures not returned")
 			If outbuf.Length - offset < sig.Length Then Throw New SignatureException("insufficient space in the output buffer to store the " & "signature")
@@ -221,7 +221,7 @@ Namespace java.security
 		''' initialized properly, the passed-in signature is improperly
 		''' encoded or of the wrong type, if this signature algorithm is unable to
 		''' process the input data provided, etc. </exception>
-		Protected Friend MustOverride Function engineVerify(ByVal sigBytes As SByte()) As Boolean
+		Protected Friend MustOverride Function engineVerify(  sigBytes As SByte()) As Boolean
 
 		''' <summary>
 		''' Verifies the passed-in signature in the specified array
@@ -241,7 +241,7 @@ Namespace java.security
 		''' encoded or of the wrong type, if this signature algorithm is unable to
 		''' process the input data provided, etc.
 		''' @since 1.4 </exception>
-		Protected Friend Overridable Function engineVerify(ByVal sigBytes As SByte(), ByVal offset As Integer, ByVal length As Integer) As Boolean
+		Protected Friend Overridable Function engineVerify(  sigBytes As SByte(),   offset As Integer,   length As Integer) As Boolean
 			Dim sigBytesCopy As SByte() = New SByte(length - 1){}
 			Array.Copy(sigBytes, offset, sigBytesCopy, 0, length)
 			Return engineVerify(sigBytesCopy)
@@ -271,7 +271,7 @@ Namespace java.security
 		''' #engineSetParameter(java.security.spec.AlgorithmParameterSpec)
 		''' engineSetParameter}. 
 		<Obsolete("Replaced by {@link")> _
-		Protected Friend MustOverride Sub engineSetParameter(ByVal param As String, ByVal value As Object)
+		Protected Friend MustOverride Sub engineSetParameter(  param As String,   value As Object)
 
 		''' <summary>
 		''' <p>This method is overridden by providers to initialize
@@ -285,7 +285,7 @@ Namespace java.security
 		''' <exception cref="InvalidAlgorithmParameterException"> if this method is
 		''' overridden by a provider and the given parameters
 		''' are inappropriate for this signature engine </exception>
-		Protected Friend Overridable Sub engineSetParameter(ByVal params As java.security.spec.AlgorithmParameterSpec)
+		Protected Friend Overridable Sub engineSetParameter(  params As java.security.spec.AlgorithmParameterSpec)
 				Throw New UnsupportedOperationException
 		End Sub
 
@@ -332,7 +332,7 @@ Namespace java.security
 		''' 
 		''' @deprecated </exception>
 		<Obsolete> _
-		Protected Friend MustOverride Function engineGetParameter(ByVal param As String) As Object
+		Protected Friend MustOverride Function engineGetParameter(  param As String) As Object
 
 		''' <summary>
 		''' Returns a clone if the implementation is cloneable.

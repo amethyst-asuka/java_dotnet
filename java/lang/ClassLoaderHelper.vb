@@ -36,7 +36,7 @@ Namespace java.lang
 		''' file may be located at the alternate location.
 		''' For most platforms, this behavior is not supported and returns null.
 		''' </summary>
-		Friend Shared Function mapAlternativeName(ByVal [lib] As java.io.File) As java.io.File
+		Friend Shared Function mapAlternativeName(  [lib] As java.io.File) As java.io.File
 			Return Nothing
 		End Function
 	End Class

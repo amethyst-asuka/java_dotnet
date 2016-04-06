@@ -107,7 +107,7 @@ Namespace java.lang.reflect
 		''' instantiation of these objects in Java code from the java.lang
 		''' package via sun.reflect.LangReflectAccess.
 		''' </summary>
-		Friend Sub New(ByVal declaringClass As [Class], ByVal name As String, ByVal parameterTypes As  [Class](), ByVal returnType As [Class], ByVal checkedExceptions As  [Class](), ByVal modifiers As Integer, ByVal slot As Integer, ByVal signature As String, ByVal annotations As SByte(), ByVal parameterAnnotations As SByte(), ByVal annotationDefault As SByte())
+		Friend Sub New(  declaringClass As [Class],   name As String,   parameterTypes As  [Class](),   returnType As [Class],   checkedExceptions As  [Class](),   modifiers As Integer,   slot As Integer,   signature As String,   annotations As SByte(),   parameterAnnotations As SByte(),   annotationDefault As SByte())
 			Me.clazz = declaringClass
 			Me.name = name
 			Me.parameterTypes = parameterTypes
@@ -307,7 +307,7 @@ Namespace java.lang.reflect
 		''' they were declared by the same class and have the same name
 		''' and formal parameter types and return type.
 		''' </summary>
-		Public Overrides Function Equals(ByVal obj As Object) As Boolean
+		Public Overrides Function Equals(  obj As Object) As Boolean
 			If obj IsNot Nothing AndAlso TypeOf obj Is Method Then
 				Dim other As Method = CType(obj, Method)
 				If (declaringClass Is other.declaringClass) AndAlso (name = other.name) Then
@@ -356,7 +356,7 @@ Namespace java.lang.reflect
 			Return sharedToString(Modifier.methodModifiers(), [default], parameterTypes, exceptionTypes)
 		End Function
 
-		Friend Overrides Sub specificToStringHeader(ByVal sb As StringBuilder)
+		Friend Overrides Sub specificToStringHeader(  sb As StringBuilder)
 			sb.append(returnType.typeName).append(" "c)
 			sb.append(declaringClass.typeName).append("."c)
 			sb.append(name)
@@ -404,7 +404,7 @@ Namespace java.lang.reflect
 			Return sharedToGenericString(Modifier.methodModifiers(), [default])
 		End Function
 
-		Friend Overrides Sub specificToGenericStringHeader(ByVal sb As StringBuilder)
+		Friend Overrides Sub specificToGenericStringHeader(  sb As StringBuilder)
 			Dim genRetType As Type = genericReturnType
 			sb.append(genRetType.typeName).append(" "c)
 			sb.append(declaringClass.typeName).append("."c)
@@ -468,7 +468,7 @@ Namespace java.lang.reflect
 		''' <exception cref="ExceptionInInitializerError"> if the initialization
 		''' provoked by this method fails. </exception>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Function invoke(ByVal obj As Object, ParamArray ByVal args As Object()) As Object
+		Public Function invoke(  obj As Object, ParamArray   args As Object()) As Object
 			If Not override Then
 				If Not sun.reflect.Reflection.quickCheckMemberAccess(clazz, modifiers) Then
 					Dim caller As  [Class] = sun.reflect.Reflection.callerClass
@@ -559,7 +559,7 @@ Namespace java.lang.reflect
 			Get
 				Return methodAccessor
 			End Get
-			Set(ByVal accessor As sun.reflect.MethodAccessor)
+			Set(  accessor As sun.reflect.MethodAccessor)
 				methodAccessor = accessor
 				' Propagate up
 				If root IsNot Nothing Then root.methodAccessor = accessor
@@ -596,7 +596,7 @@ Namespace java.lang.reflect
 		''' {@inheritDoc} </summary>
 		''' <exception cref="NullPointerException">  {@inheritDoc}
 		''' @since 1.5 </exception>
-		Public Overrides Function getAnnotation(Of T As Annotation)(ByVal annotationClass As [Class]) As T
+		Public Overrides Function getAnnotation(Of T As Annotation)(  annotationClass As [Class]) As T
 			Return MyBase.getAnnotation(annotationClass)
 		End Function
 
@@ -630,7 +630,7 @@ Namespace java.lang.reflect
 			End Get
 		End Property
 
-		Friend Overrides Sub handleParameterNumberMismatch(ByVal resultLength As Integer, ByVal numParameters As Integer)
+		Friend Overrides Sub handleParameterNumberMismatch(  resultLength As Integer,   numParameters As Integer)
 			Throw New AnnotationFormatError("Parameter annotations don't match number of parameters")
 		End Sub
 	End Class

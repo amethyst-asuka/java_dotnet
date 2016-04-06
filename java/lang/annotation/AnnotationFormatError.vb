@@ -45,7 +45,7 @@ Namespace java.lang.annotation
 		''' detail message.
 		''' </summary>
 		''' <param name="message">   the detail message. </param>
-		Public Sub New(ByVal message As String)
+		Public Sub New(  message As String)
 			MyBase.New(message)
 		End Sub
 
@@ -58,7 +58,7 @@ Namespace java.lang.annotation
 		''' <param name="message"> the detail message </param>
 		''' <param name="cause"> the cause (A <tt>null</tt> value is permitted, and
 		'''     indicates that the cause is nonexistent or unknown.) </param>
-		Public Sub New(ByVal message As String, ByVal cause As Throwable)
+		Public Sub New(  message As String,   cause As Throwable)
 			MyBase.New(message, cause)
 		End Sub
 
@@ -71,7 +71,7 @@ Namespace java.lang.annotation
 		''' </summary>
 		''' <param name="cause"> the cause (A <tt>null</tt> value is permitted, and
 		'''     indicates that the cause is nonexistent or unknown.) </param>
-		Public Sub New(ByVal cause As Throwable)
+		Public Sub New(  cause As Throwable)
 			MyBase.New(cause)
 		End Sub
 	End Class

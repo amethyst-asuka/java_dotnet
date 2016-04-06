@@ -50,7 +50,7 @@ Namespace java.net
 		''' </summary>
 		''' <param name="userName"> the user name </param>
 		''' <param name="password"> the user's password </param>
-		Public Sub New(ByVal userName As String, ByVal password As Char())
+		Public Sub New(  userName As String,   password As Char())
 			Me.userName = userName
 			Me.password = password.clone()
 		End Sub

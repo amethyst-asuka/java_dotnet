@@ -99,7 +99,7 @@ Namespace java.util
         ''' </summary>
         ''' <exception cref="ClassCastException">   {@inheritDoc} </exception>
         ''' <exception cref="NullPointerException"> {@inheritDoc} </exception>
-        Public Overridable Function contains(ByVal o As Object) As Boolean Implements Collection(Of E).contains
+        Public Overridable Function contains(  o As Object) As Boolean Implements Collection(Of E).contains
             Dim it As [Iterator](Of E) = [iterator]()
             If o Is Nothing Then
                 Do While it.hasNext()
@@ -173,7 +173,7 @@ Namespace java.util
         ''' <exception cref="ArrayStoreException">  {@inheritDoc} </exception>
         ''' <exception cref="NullPointerException"> {@inheritDoc} </exception>
         'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-        Public Overridable Function toArray(Of T)(ByVal a As T()) As T() Implements Collection(Of E).toArray
+        Public Overridable Function toArray(Of T)(  a As T()) As T() Implements Collection(Of E).toArray
             ' Estimate size of array; be prepared to see more or fewer elements
             Dim size As Integer = size()
             Dim r As T() = If(a.Length >= size, a, CType(java.lang.reflect.Array.newInstance(a.GetType().GetElementType(), size), T()))
@@ -215,7 +215,7 @@ Namespace java.util
         ''' <returns> array containing the elements in the given array, plus any
         '''         further elements returned by the iterator, trimmed to size </returns>
         'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-        Private Shared Function finishToArray(Of T, T1)(ByVal r As T(), ByVal it As [Iterator](Of T1)) As T()
+        Private Shared Function finishToArray(Of T, T1)(  r As T(),   it As [Iterator](Of T1)) As T()
             Dim i As Integer = r.Length
             Do While it.MoveNext()
                 Dim cap As Integer = r.Length
@@ -233,7 +233,7 @@ Namespace java.util
             Return If(i = r.Length, r, Arrays.copyOf(r, i))
         End Function
 
-        Private Shared Function hugeCapacity(ByVal minCapacity As Integer) As Integer
+        Private Shared Function hugeCapacity(  minCapacity As Integer) As Integer
             If minCapacity < 0 Then ' overflow Throw New OutOfMemoryError("Required array size too large")
                 Return If(minCapacity > MAX_ARRAY_SIZE,  java.lang.[Integer].Max_Value, MAX_ARRAY_SIZE)
         End Function
@@ -251,7 +251,7 @@ Namespace java.util
         ''' <exception cref="NullPointerException">          {@inheritDoc} </exception>
         ''' <exception cref="IllegalArgumentException">      {@inheritDoc} </exception>
         ''' <exception cref="IllegalStateException">         {@inheritDoc} </exception>
-        Public Overridable Function add(ByVal e As E) As Boolean
+        Public Overridable Function add(  e As E) As Boolean
             Throw New UnsupportedOperationException
         End Function
 
@@ -270,7 +270,7 @@ Namespace java.util
         ''' <exception cref="UnsupportedOperationException"> {@inheritDoc} </exception>
         ''' <exception cref="ClassCastException">            {@inheritDoc} </exception>
         ''' <exception cref="NullPointerException">          {@inheritDoc} </exception>
-        Public Overridable Function remove(ByVal o As Object) As Boolean Implements Collection(Of E).remove
+        Public Overridable Function remove(  o As Object) As Boolean Implements Collection(Of E).remove
             Dim it As [Iterator](Of E) = [iterator]()
             If o Is Nothing Then
                 Do While it.MoveNext()
@@ -304,7 +304,7 @@ Namespace java.util
         ''' <exception cref="ClassCastException">            {@inheritDoc} </exception>
         ''' <exception cref="NullPointerException">          {@inheritDoc} </exception>
         ''' <seealso cref= #contains(Object) </seealso>
-        Public Overridable Function containsAll(Of T1)(ByVal c As Collection(Of T1)) As Boolean Implements Collection(Of E).containsAll
+        Public Overridable Function containsAll(Of T1)(  c As Collection(Of T1)) As Boolean Implements Collection(Of E).containsAll
             For Each e As Object In c
                 If Not contains(e) Then Return False
             Next e
@@ -328,7 +328,7 @@ Namespace java.util
         ''' <exception cref="IllegalStateException">         {@inheritDoc}
         ''' </exception>
         ''' <seealso cref= #add(Object) </seealso>
-        Public Overridable Function addAll(Of T1 As E)(ByVal c As Collection(Of T1)) As Boolean Implements Collection(Of E).addAll
+        Public Overridable Function addAll(Of T1 As E)(  c As Collection(Of T1)) As Boolean Implements Collection(Of E).addAll
             Dim modified As Boolean = False
             For Each e As E In c
                 If add(e) Then modified = True
@@ -356,7 +356,7 @@ Namespace java.util
         ''' </exception>
         ''' <seealso cref= #remove(Object) </seealso>
         ''' <seealso cref= #contains(Object) </seealso>
-        Public Overridable Function removeAll(Of T1)(ByVal c As Collection(Of T1)) As Boolean Implements Collection(Of E).removeAll
+        Public Overridable Function removeAll(Of T1)(  c As Collection(Of T1)) As Boolean Implements Collection(Of E).removeAll
             Objects.requireNonNull(c)
             Dim modified As Boolean = False
             'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
@@ -390,7 +390,7 @@ Namespace java.util
         ''' </exception>
         ''' <seealso cref= #remove(Object) </seealso>
         ''' <seealso cref= #contains(Object) </seealso>
-        Public Overridable Function retainAll(Of T1)(ByVal c As Collection(Of T1)) As Boolean Implements Collection(Of E).retainAll
+        Public Overridable Function retainAll(Of T1)(  c As Collection(Of T1)) As Boolean Implements Collection(Of E).retainAll
             Objects.requireNonNull(c)
             Dim modified As Boolean = False
             Dim it As [Iterator](Of E) = [iterator]()

@@ -55,12 +55,12 @@ Namespace java.net
 			' Nothing needed
 		End Sub
 
-		Friend Sub New(ByVal server As String, ByVal port As Integer)
+		Friend Sub New(  server As String,   port As Integer)
 			Me.server = server
 			Me.serverPort = (If(port = -1, DEFAULT_PORT, port))
 		End Sub
 
-		Friend Sub New(ByVal proxy_Renamed As Proxy)
+		Friend Sub New(  proxy_Renamed As Proxy)
 			Dim a As SocketAddress = proxy_Renamed.address()
 			If TypeOf a Is InetSocketAddress Then
 				Dim ad As InetSocketAddress = CType(a, InetSocketAddress)
@@ -75,7 +75,7 @@ Namespace java.net
 		End Sub
 
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Private Sub privilegedConnect(ByVal host As String, ByVal port As Integer, ByVal timeout As Integer)
+		Private Sub privilegedConnect(  host As String,   port As Integer,   timeout As Integer)
 			Try
 				java.security.AccessController.doPrivileged(New PrivilegedExceptionActionAnonymousInnerClassHelper(Of T)
 			Catch pae As java.security.PrivilegedActionException
@@ -94,11 +94,11 @@ Namespace java.net
 			End Function
 		End Class
 
-		Private Sub superConnectServer(ByVal host As String, ByVal port As Integer, ByVal timeout As Integer)
+		Private Sub superConnectServer(  host As String,   port As Integer,   timeout As Integer)
 			MyBase.connect(New InetSocketAddress(host, port), timeout)
 		End Sub
 
-		Private Shared Function remainingMillis(ByVal deadlineMillis As Long) As Integer
+		Private Shared Function remainingMillis(  deadlineMillis As Long) As Integer
 			If deadlineMillis = 0L Then Return 0
 
 			Dim remaining As Long = deadlineMillis - System.currentTimeMillis()
@@ -107,11 +107,11 @@ Namespace java.net
 			Throw New SocketTimeoutException
 		End Function
 
-		Private Function readSocksReply(ByVal [in] As java.io.InputStream, ByVal data As SByte()) As Integer
+		Private Function readSocksReply(  [in] As java.io.InputStream,   data As SByte()) As Integer
 			Return readSocksReply([in], data, 0L)
 		End Function
 
-		Private Function readSocksReply(ByVal [in] As java.io.InputStream, ByVal data As SByte(), ByVal deadlineMillis As Long) As Integer
+		Private Function readSocksReply(  [in] As java.io.InputStream,   data As SByte(),   deadlineMillis As Long) As Integer
 			Dim len As Integer = data.Length
 			Dim received As Integer = 0
 			Dim attempts As Integer = 0
@@ -132,11 +132,11 @@ Namespace java.net
 		''' <summary>
 		''' Provides the authentication machanism required by the proxy.
 		''' </summary>
-		Private Function authenticate(ByVal method As SByte, ByVal [in] As java.io.InputStream, ByVal out As java.io.BufferedOutputStream) As Boolean
+		Private Function authenticate(  method As SByte,   [in] As java.io.InputStream,   out As java.io.BufferedOutputStream) As Boolean
 			Return authenticate(method, [in], out, 0L)
 		End Function
 
-		Private Function authenticate(ByVal method As SByte, ByVal [in] As java.io.InputStream, ByVal out As java.io.BufferedOutputStream, ByVal deadlineMillis As Long) As Boolean
+		Private Function authenticate(  method As SByte,   [in] As java.io.InputStream,   out As java.io.BufferedOutputStream,   deadlineMillis As Long) As Boolean
 			' No Authentication required. We're done then!
 			If method = NO_AUTH Then Return True
 			''' <summary>
@@ -251,7 +251,7 @@ Namespace java.net
 			End Function
 		End Class
 
-		Private Sub connectV4(ByVal [in] As java.io.InputStream, ByVal out As java.io.OutputStream, ByVal endpoint As InetSocketAddress, ByVal deadlineMillis As Long)
+		Private Sub connectV4(  [in] As java.io.InputStream,   out As java.io.OutputStream,   endpoint As InetSocketAddress,   deadlineMillis As Long)
 			If Not(TypeOf endpoint.address Is Inet4Address) Then Throw New SocketException("SOCKS V4 requires IPv4 only addresses")
 			out.write(PROTO_VERS4)
 			out.write(CONNECT)
@@ -304,7 +304,7 @@ Namespace java.net
 		'''                          doesn't allow the connection </exception>
 		''' <exception cref="IllegalArgumentException"> if endpoint is null or a
 		'''          SocketAddress subclass not supported by this socket </exception>
-		Protected Friend Overrides Sub connect(ByVal endpoint As SocketAddress, ByVal timeout As Integer)
+		Protected Friend Overrides Sub connect(  endpoint As SocketAddress,   timeout As Integer)
 			Dim deadlineMillis As Long
 
 			If timeout = 0 Then
@@ -527,7 +527,7 @@ Namespace java.net
 			End Function
 		End Class
 
-		Private Sub bindV4(ByVal [in] As java.io.InputStream, ByVal out As java.io.OutputStream, ByVal baddr As InetAddress, ByVal lport As Integer)
+		Private Sub bindV4(  [in] As java.io.InputStream,   out As java.io.OutputStream,   baddr As InetAddress,   lport As Integer)
 			If Not(TypeOf baddr Is Inet4Address) Then Throw New SocketException("SOCKS V4 requires IPv4 only addresses")
 			MyBase.bind(baddr, lport)
 			Dim addr1 As SByte() = baddr.address
@@ -593,7 +593,7 @@ Namespace java.net
 		''' <param name="saddr">   the Socket address of the remote host. </param>
 		''' <exception cref="IOException">  if an I/O error occurs when binding this socket. </exception>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Protected Friend Overridable Sub socksBind(ByVal saddr As InetSocketAddress)
+		Protected Friend Overridable Sub socksBind(  saddr As InetSocketAddress)
 			If socket_Renamed IsNot Nothing Then Return
 
 			' Connects to the SOCKS server
@@ -824,7 +824,7 @@ Namespace java.net
 		'''               connection from </param>
 		''' <exception cref="IOException">  if an I/O error occurs when accepting the
 		'''               connection. </exception>
-		Protected Friend Overridable Sub acceptFrom(ByVal s As SocketImpl, ByVal saddr As InetSocketAddress)
+		Protected Friend Overridable Sub acceptFrom(  s As SocketImpl,   saddr As InetSocketAddress)
 			If cmdsock Is Nothing Then Return
 			Dim [in] As java.io.InputStream = cmdIn
 			' Sends the "SOCKS BIND" request.

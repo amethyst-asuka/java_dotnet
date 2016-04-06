@@ -190,7 +190,7 @@ Namespace java.util.prefs
 		''' <exception cref="IllegalArgumentException"> if <tt>name</tt> contains a slash
 		'''          (<tt>'/'</tt>),  or <tt>parent</tt> is <tt>null</tt> and
 		'''          name isn't <tt>""</tt>. </exception>
-		Protected Friend Sub New(ByVal parent As AbstractPreferences, ByVal name As String)
+		Protected Friend Sub New(  parent As AbstractPreferences,   name As String)
 			If parent Is Nothing Then
 				If Not name.Equals("") Then Throw New IllegalArgumentException("Root name '" & name & "' must be """"")
 				Me.absolutePath_Renamed = "/"
@@ -224,7 +224,7 @@ Namespace java.util.prefs
 		'''       <tt>MAX_VALUE_LENGTH</tt>. </exception>
 		''' <exception cref="IllegalStateException"> if this node (or an ancestor) has been
 		'''         removed with the <seealso cref="#removeNode()"/> method. </exception>
-		Public Overrides Sub put(ByVal key As String, ByVal value As String)
+		Public Overrides Sub put(  key As String,   value As String)
 			If key Is Nothing OrElse value Is Nothing Then Throw New NullPointerException
 			If key.length() > MAX_KEY_LENGTH Then Throw New IllegalArgumentException("Key too long: " & key)
 			If value.length() > MAX_VALUE_LENGTH Then Throw New IllegalArgumentException("Value too long: " & value)
@@ -258,7 +258,7 @@ Namespace java.util.prefs
 		'''         removed with the <seealso cref="#removeNode()"/> method. </exception>
 		''' <exception cref="NullPointerException"> if key is <tt>null</tt>.  (A
 		'''         <tt>null</tt> default <i>is</i> permitted.) </exception>
-		Public Overrides Function [get](ByVal key As String, ByVal def As String) As String
+		Public Overrides Function [get](  key As String,   def As String) As String
 			If key Is Nothing Then Throw New NullPointerException("Null key")
 			SyncLock lock
 				If removed Then Throw New IllegalStateException("Node has been removed.")
@@ -287,7 +287,7 @@ Namespace java.util.prefs
 		''' <exception cref="IllegalStateException"> if this node (or an ancestor) has been
 		'''         removed with the <seealso cref="#removeNode()"/> method. </exception>
 		''' <exception cref="NullPointerException"> {@inheritDoc}. </exception>
-		Public Overrides Sub remove(ByVal key As String)
+		Public Overrides Sub remove(  key As String)
 			Objects.requireNonNull(key, "Specified key cannot be null")
 			SyncLock lock
 				If removed Then Throw New IllegalStateException("Node has been removed.")
@@ -334,7 +334,7 @@ Namespace java.util.prefs
 		'''         <tt>MAX_KEY_LENGTH</tt>. </exception>
 		''' <exception cref="IllegalStateException"> if this node (or an ancestor) has been
 		'''         removed with the <seealso cref="#removeNode()"/> method. </exception>
-		Public Overrides Sub putInt(ByVal key As String, ByVal value As Integer)
+		Public Overrides Sub putInt(  key As String,   value As Integer)
 			put(key, Convert.ToString(value))
 		End Sub
 
@@ -359,7 +359,7 @@ Namespace java.util.prefs
 		''' <exception cref="IllegalStateException"> if this node (or an ancestor) has been
 		'''         removed with the <seealso cref="#removeNode()"/> method. </exception>
 		''' <exception cref="NullPointerException"> if <tt>key</tt> is <tt>null</tt>. </exception>
-		Public Overrides Function getInt(ByVal key As String, ByVal def As Integer) As Integer
+		Public Overrides Function getInt(  key As String,   def As Integer) As Integer
 			Dim result As Integer = def
 			Try
 				Dim value As String = [get](key, Nothing)
@@ -386,7 +386,7 @@ Namespace java.util.prefs
 		'''         <tt>MAX_KEY_LENGTH</tt>. </exception>
 		''' <exception cref="IllegalStateException"> if this node (or an ancestor) has been
 		'''         removed with the <seealso cref="#removeNode()"/> method. </exception>
-		Public Overrides Sub putLong(ByVal key As String, ByVal value As Long)
+		Public Overrides Sub putLong(  key As String,   value As Long)
 			put(key, Convert.ToString(value))
 		End Sub
 
@@ -411,7 +411,7 @@ Namespace java.util.prefs
 		''' <exception cref="IllegalStateException"> if this node (or an ancestor) has been
 		'''         removed with the <seealso cref="#removeNode()"/> method. </exception>
 		''' <exception cref="NullPointerException"> if <tt>key</tt> is <tt>null</tt>. </exception>
-		Public Overrides Function getLong(ByVal key As String, ByVal def As Long) As Long
+		Public Overrides Function getLong(  key As String,   def As Long) As Long
 			Dim result As Long = def
 			Try
 				Dim value As String = [get](key, Nothing)
@@ -438,7 +438,7 @@ Namespace java.util.prefs
 		'''         <tt>MAX_KEY_LENGTH</tt>. </exception>
 		''' <exception cref="IllegalStateException"> if this node (or an ancestor) has been
 		'''         removed with the <seealso cref="#removeNode()"/> method. </exception>
-		Public Overrides Sub putBoolean(ByVal key As String, ByVal value As Boolean)
+		Public Overrides Sub putBoolean(  key As String,   value As Boolean)
 			put(key, Convert.ToString(value))
 		End Sub
 
@@ -466,7 +466,7 @@ Namespace java.util.prefs
 		''' <exception cref="IllegalStateException"> if this node (or an ancestor) has been
 		'''         removed with the <seealso cref="#removeNode()"/> method. </exception>
 		''' <exception cref="NullPointerException"> if <tt>key</tt> is <tt>null</tt>. </exception>
-		Public Overrides Function getBoolean(ByVal key As String, ByVal def As Boolean) As Boolean
+		Public Overrides Function getBoolean(  key As String,   def As Boolean) As Boolean
 			Dim result As Boolean = def
 			Dim value As String = [get](key, Nothing)
 			If value IsNot Nothing Then
@@ -495,7 +495,7 @@ Namespace java.util.prefs
 		'''         <tt>MAX_KEY_LENGTH</tt>. </exception>
 		''' <exception cref="IllegalStateException"> if this node (or an ancestor) has been
 		'''         removed with the <seealso cref="#removeNode()"/> method. </exception>
-		Public Overrides Sub putFloat(ByVal key As String, ByVal value As Single)
+		Public Overrides Sub putFloat(  key As String,   value As Single)
 			put(key, Convert.ToString(value))
 		End Sub
 
@@ -520,7 +520,7 @@ Namespace java.util.prefs
 		''' <exception cref="IllegalStateException"> if this node (or an ancestor) has been
 		'''         removed with the <seealso cref="#removeNode()"/> method. </exception>
 		''' <exception cref="NullPointerException"> if <tt>key</tt> is <tt>null</tt>. </exception>
-		Public Overrides Function getFloat(ByVal key As String, ByVal def As Single) As Single
+		Public Overrides Function getFloat(  key As String,   def As Single) As Single
 			Dim result As Single = def
 			Try
 				Dim value As String = [get](key, Nothing)
@@ -547,7 +547,7 @@ Namespace java.util.prefs
 		'''         <tt>MAX_KEY_LENGTH</tt>. </exception>
 		''' <exception cref="IllegalStateException"> if this node (or an ancestor) has been
 		'''         removed with the <seealso cref="#removeNode()"/> method. </exception>
-		Public Overrides Sub putDouble(ByVal key As String, ByVal value As Double)
+		Public Overrides Sub putDouble(  key As String,   value As Double)
 			put(key, Convert.ToString(value))
 		End Sub
 
@@ -572,7 +572,7 @@ Namespace java.util.prefs
 		''' <exception cref="IllegalStateException"> if this node (or an ancestor) has been
 		'''         removed with the <seealso cref="#removeNode()"/> method. </exception>
 		''' <exception cref="NullPointerException"> if <tt>key</tt> is <tt>null</tt>. </exception>
-		Public Overrides Function getDouble(ByVal key As String, ByVal def As Double) As Double
+		Public Overrides Function getDouble(  key As String,   def As Double) As Double
 			Dim result As Double = def
 			Try
 				Dim value As String = [get](key, Nothing)
@@ -595,7 +595,7 @@ Namespace java.util.prefs
 		'''         or if value.length exceeds MAX_VALUE_LENGTH*3/4. </exception>
 		''' <exception cref="IllegalStateException"> if this node (or an ancestor) has been
 		'''         removed with the <seealso cref="#removeNode()"/> method. </exception>
-		Public Overrides Sub putByteArray(ByVal key As String, ByVal value As SByte())
+		Public Overrides Sub putByteArray(  key As String,   value As SByte())
 			put(key, Base64.byteArrayToBase64(value))
 		End Sub
 
@@ -615,7 +615,7 @@ Namespace java.util.prefs
 		'''         removed with the <seealso cref="#removeNode()"/> method. </exception>
 		''' <exception cref="NullPointerException"> if <tt>key</tt> is <tt>null</tt>.  (A
 		'''         <tt>null</tt> value for <tt>def</tt> <i>is</i> permitted.) </exception>
-		Public Overrides Function getByteArray(ByVal key As String, ByVal def As SByte()) As SByte()
+		Public Overrides Function getByteArray(  key As String,   def As SByte()) As SByte()
 			Dim result As SByte() = def
 			Dim value As String = [get](key, Nothing)
 			Try
@@ -755,7 +755,7 @@ Namespace java.util.prefs
 		'''         with a slash character and is more than one character long). </exception>
 		''' <exception cref="IllegalStateException"> if this node (or an ancestor) has been
 		'''         removed with the <seealso cref="#removeNode()"/> method. </exception>
-		Public Overrides Function node(ByVal path As String) As Preferences
+		Public Overrides Function node(  path As String) As Preferences
 			SyncLock lock
 				If removed Then Throw New IllegalStateException("Node has been removed.")
 				If path.Equals("") Then Return Me
@@ -770,7 +770,7 @@ Namespace java.util.prefs
 		''' <summary>
 		''' tokenizer contains <name> {'/' <name>}*
 		''' </summary>
-		Private Function node(ByVal path As StringTokenizer) As Preferences
+		Private Function node(  path As StringTokenizer) As Preferences
 			Dim token As String = path.nextToken()
 			If token.Equals("/") Then ' Check for consecutive slashes Throw New IllegalArgumentException("Consecutive slashes in path")
 			SyncLock lock
@@ -807,7 +807,7 @@ Namespace java.util.prefs
 		''' <exception cref="IllegalStateException"> if this node (or an ancestor) has been
 		'''         removed with the <seealso cref="#removeNode()"/> method and
 		'''         <tt>pathname</tt> is not the empty string (<tt>""</tt>). </exception>
-		Public Overrides Function nodeExists(ByVal path As String) As Boolean
+		Public Overrides Function nodeExists(  path As String) As Boolean
 			SyncLock lock
 				If path.Equals("") Then Return Not removed
 				If removed Then Throw New IllegalStateException("Node has been removed.")
@@ -822,7 +822,7 @@ Namespace java.util.prefs
 		''' <summary>
 		''' tokenizer contains <name> {'/' <name>}*
 		''' </summary>
-		Private Function nodeExists(ByVal path As StringTokenizer) As Boolean
+		Private Function nodeExists(  path As StringTokenizer) As Boolean
 			Dim token As String = path.nextToken()
 			If token.Equals("/") Then ' Check for consecutive slashes Throw New IllegalArgumentException("Consecutive slashes in path")
 			SyncLock lock
@@ -958,7 +958,7 @@ Namespace java.util.prefs
 			End Function
 		End Class
 
-		Public Overrides Sub addPreferenceChangeListener(ByVal pcl As PreferenceChangeListener)
+		Public Overrides Sub addPreferenceChangeListener(  pcl As PreferenceChangeListener)
 			If pcl Is Nothing Then Throw New NullPointerException("Change listener is null.")
 			SyncLock lock
 				If removed Then Throw New IllegalStateException("Node has been removed.")
@@ -972,7 +972,7 @@ Namespace java.util.prefs
 			startEventDispatchThreadIfNecessary()
 		End Sub
 
-		Public Overrides Sub removePreferenceChangeListener(ByVal pcl As PreferenceChangeListener)
+		Public Overrides Sub removePreferenceChangeListener(  pcl As PreferenceChangeListener)
 			SyncLock lock
 				If removed Then Throw New IllegalStateException("Node has been removed.")
 				If (prefListeners_Renamed Is Nothing) OrElse (prefListeners_Renamed.Length = 0) Then Throw New IllegalArgumentException("Listener not registered.")
@@ -994,7 +994,7 @@ Namespace java.util.prefs
 			End SyncLock
 		End Sub
 
-		Public Overrides Sub addNodeChangeListener(ByVal ncl As NodeChangeListener)
+		Public Overrides Sub addNodeChangeListener(  ncl As NodeChangeListener)
 			If ncl Is Nothing Then Throw New NullPointerException("Change listener is null.")
 			SyncLock lock
 				If removed Then Throw New IllegalStateException("Node has been removed.")
@@ -1013,7 +1013,7 @@ Namespace java.util.prefs
 			startEventDispatchThreadIfNecessary()
 		End Sub
 
-		Public Overrides Sub removeNodeChangeListener(ByVal ncl As NodeChangeListener)
+		Public Overrides Sub removeNodeChangeListener(  ncl As NodeChangeListener)
 			SyncLock lock
 				If removed Then Throw New IllegalStateException("Node has been removed.")
 				If (nodeListeners_Renamed Is Nothing) OrElse (nodeListeners_Renamed.Length = 0) Then Throw New IllegalArgumentException("Listener not registered.")
@@ -1042,7 +1042,7 @@ Namespace java.util.prefs
 		''' <p>This method is invoked with the lock on this node held. </summary>
 		''' <param name="key"> the key </param>
 		''' <param name="value"> the value </param>
-		Protected Friend MustOverride Sub putSpi(ByVal key As String, ByVal value As String)
+		Protected Friend MustOverride Sub putSpi(  key As String,   value As String)
 
 		''' <summary>
 		''' Return the value associated with the specified key at this preference
@@ -1063,7 +1063,7 @@ Namespace java.util.prefs
 		''' <returns> the value associated with the specified key at this preference
 		'''          node, or <tt>null</tt> if there is no association for this
 		'''          key, or the association cannot be determined at this time. </returns>
-		Protected Friend MustOverride Function getSpi(ByVal key As String) As String
+		Protected Friend MustOverride Function getSpi(  key As String) As String
 
 		''' <summary>
 		''' Remove the association (if any) for the specified key at this
@@ -1073,7 +1073,7 @@ Namespace java.util.prefs
 		''' 
 		''' <p>This method is invoked with the lock on this node held. </summary>
 		''' <param name="key"> the key </param>
-		Protected Friend MustOverride Sub removeSpi(ByVal key As String)
+		Protected Friend MustOverride Sub removeSpi(  key As String)
 
 		''' <summary>
 		''' Removes this preference node, invalidating it and any preferences that
@@ -1163,7 +1163,7 @@ Namespace java.util.prefs
 		''' <exception cref="BackingStoreException"> if this operation cannot be completed
 		'''         due to a failure in the backing store, or inability to
 		'''         communicate with it. </exception>
-		Protected Friend Overridable Function getChild(ByVal nodeName As String) As AbstractPreferences
+		Protected Friend Overridable Function getChild(  nodeName As String) As AbstractPreferences
 			SyncLock lock
 				' assert kidCache.get(nodeName)==null;
 				Dim kidNames As String() = childrenNames()
@@ -1204,7 +1204,7 @@ Namespace java.util.prefs
 		''' <param name="name"> The name of the child node to return, relative to
 		'''        this preference node. </param>
 		''' <returns> The named child node. </returns>
-		Protected Friend MustOverride Function childSpi(ByVal name As String) As AbstractPreferences
+		Protected Friend MustOverride Function childSpi(  name As String) As AbstractPreferences
 
 		''' <summary>
 		''' Returns the absolute path name of this preferences node.
@@ -1365,7 +1365,7 @@ Namespace java.util.prefs
 			Private ReadOnly outerInstance As AbstractPreferences
 
 			Private Const serialVersionUID As Long = -6743557530157328528L
-			Friend Sub New(ByVal outerInstance As AbstractPreferences, ByVal parent As Preferences, ByVal child As Preferences)
+			Friend Sub New(  outerInstance As AbstractPreferences,   parent As Preferences,   child As Preferences)
 					Me.outerInstance = outerInstance
 				MyBase.New(parent, child)
 			End Sub
@@ -1376,7 +1376,7 @@ Namespace java.util.prefs
 			Private ReadOnly outerInstance As AbstractPreferences
 
 			Private Const serialVersionUID As Long = 8735497392918824837L
-			Friend Sub New(ByVal outerInstance As AbstractPreferences, ByVal parent As Preferences, ByVal child As Preferences)
+			Friend Sub New(  outerInstance As AbstractPreferences,   parent As Preferences,   child As Preferences)
 					Me.outerInstance = outerInstance
 				MyBase.New(parent, child)
 			End Sub
@@ -1470,7 +1470,7 @@ Namespace java.util.prefs
 		''' preference change listeners unless there are no registered
 		''' listeners.  Invoked with this.lock held.
 		''' </summary>
-		Private Sub enqueuePreferenceChangeEvent(ByVal key As String, ByVal newValue As String)
+		Private Sub enqueuePreferenceChangeEvent(  key As String,   newValue As String)
 			If prefListeners_Renamed.Length <> 0 Then
 				SyncLock eventQueue
 					eventQueue.add(New PreferenceChangeEvent(Me, key, newValue))
@@ -1484,7 +1484,7 @@ Namespace java.util.prefs
 		''' listeners unless there are no registered listeners.  Invoked with
 		''' this.lock held.
 		''' </summary>
-		Private Sub enqueueNodeAddedEvent(ByVal child As Preferences)
+		Private Sub enqueueNodeAddedEvent(  child As Preferences)
 			If nodeListeners_Renamed.Length <> 0 Then
 				SyncLock eventQueue
 					eventQueue.add(New NodeAddedEvent(Me, Me, child))
@@ -1498,7 +1498,7 @@ Namespace java.util.prefs
 		''' listeners unless there are no registered listeners.  Invoked with
 		''' this.lock held.
 		''' </summary>
-		Private Sub enqueueNodeRemovedEvent(ByVal child As Preferences)
+		Private Sub enqueueNodeRemovedEvent(  child As Preferences)
 			If nodeListeners_Renamed.Length <> 0 Then
 				SyncLock eventQueue
 					eventQueue.add(New NodeRemovedEvent(Me, Me, child))
@@ -1516,7 +1516,7 @@ Namespace java.util.prefs
 		'''         results in an <tt>IOException</tt>. </exception>
 		''' <exception cref="BackingStoreException"> if preference data cannot be read from
 		'''         backing store. </exception>
-		Public Overridable Sub exportNode(ByVal os As OutputStream)
+		Public Overridable Sub exportNode(  os As OutputStream)
 			XmlSupport.export(os, Me, False)
 		End Sub
 
@@ -1529,7 +1529,7 @@ Namespace java.util.prefs
 		'''         results in an <tt>IOException</tt>. </exception>
 		''' <exception cref="BackingStoreException"> if preference data cannot be read from
 		'''         backing store. </exception>
-		Public Overridable Sub exportSubtree(ByVal os As OutputStream)
+		Public Overridable Sub exportSubtree(  os As OutputStream)
 			XmlSupport.export(os, Me, True)
 		End Sub
 	End Class

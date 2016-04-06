@@ -56,7 +56,7 @@ Namespace java.util.prefs
 		''' </summary>
 		''' <param name="parent">  The parent of the node that was added or removed. </param>
 		''' <param name="child">   The node that was added or removed. </param>
-		Public Sub New(ByVal parent As Preferences, ByVal child As Preferences)
+		Public Sub New(  parent As Preferences,   child As Preferences)
 			MyBase.New(parent)
 			Me.child = child
 		End Sub
@@ -85,7 +85,7 @@ Namespace java.util.prefs
 		''' Throws NotSerializableException, since NodeChangeEvent objects are not
 		''' intended to be serializable.
 		''' </summary>
-		 Private Sub writeObject(ByVal out As java.io.ObjectOutputStream)
+		 Private Sub writeObject(  out As java.io.ObjectOutputStream)
 			 Throw New java.io.NotSerializableException("Not serializable.")
 		 End Sub
 
@@ -93,7 +93,7 @@ Namespace java.util.prefs
 		''' Throws NotSerializableException, since NodeChangeEvent objects are not
 		''' intended to be serializable.
 		''' </summary>
-		 Private Sub readObject(ByVal [in] As java.io.ObjectInputStream)
+		 Private Sub readObject(  [in] As java.io.ObjectInputStream)
 			 Throw New java.io.NotSerializableException("Not serializable.")
 		 End Sub
 

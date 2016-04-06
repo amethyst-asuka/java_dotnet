@@ -182,7 +182,7 @@ Namespace java.time
 		''' <returns> the zone-offset, not null </returns>
 		''' <exception cref="DateTimeException"> if the offset ID is invalid </exception>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Shared Function [of](ByVal offsetId As String) As ZoneOffset
+		Public Shared Function [of](  offsetId As String) As ZoneOffset
 			java.util.Objects.requireNonNull(offsetId, "offsetId")
 			' "Z" is always in the cache
 			Dim offset As ZoneOffset = ID_CACHE.get(offsetId)
@@ -233,7 +233,7 @@ Namespace java.time
 		''' <param name="pos">  the position to parse, valid </param>
 		''' <param name="precededByColon">  should this number be prefixed by a precededByColon </param>
 		''' <returns> the parsed number, from 0 to 99 </returns>
-		Private Shared Function parseNumber(ByVal offsetId As CharSequence, ByVal pos As Integer, ByVal precededByColon As Boolean) As Integer
+		Private Shared Function parseNumber(  offsetId As CharSequence,   pos As Integer,   precededByColon As Boolean) As Integer
 			If precededByColon AndAlso offsetId.Chars(pos - 1) IsNot ":"c Then Throw New DateTimeException("Invalid ID for ZoneOffset, colon not found when expected: " & offsetId)
 			Dim ch1 As Char = offsetId.Chars(pos)
 			Dim ch2 As Char = offsetId.Chars(pos + 1)
@@ -248,7 +248,7 @@ Namespace java.time
 		''' <param name="hours">  the time-zone offset in hours, from -18 to +18 </param>
 		''' <returns> the zone-offset, not null </returns>
 		''' <exception cref="DateTimeException"> if the offset is not in the required range </exception>
-		Public Shared Function ofHours(ByVal hours As Integer) As ZoneOffset
+		Public Shared Function ofHours(  hours As Integer) As ZoneOffset
 			Return ofHoursMinutesSeconds(hours, 0, 0)
 		End Function
 
@@ -264,7 +264,7 @@ Namespace java.time
 		''' <param name="minutes">  the time-zone offset in minutes, from 0 to &plusmn;59, sign matches hours </param>
 		''' <returns> the zone-offset, not null </returns>
 		''' <exception cref="DateTimeException"> if the offset is not in the required range </exception>
-		Public Shared Function ofHoursMinutes(ByVal hours As Integer, ByVal minutes As Integer) As ZoneOffset
+		Public Shared Function ofHoursMinutes(  hours As Integer,   minutes As Integer) As ZoneOffset
 			Return ofHoursMinutesSeconds(hours, minutes, 0)
 		End Function
 
@@ -280,7 +280,7 @@ Namespace java.time
 		''' <param name="seconds">  the time-zone offset in seconds, from 0 to &plusmn;59, sign matches hours and minutes </param>
 		''' <returns> the zone-offset, not null </returns>
 		''' <exception cref="DateTimeException"> if the offset is not in the required range </exception>
-		Public Shared Function ofHoursMinutesSeconds(ByVal hours As Integer, ByVal minutes As Integer, ByVal seconds As Integer) As ZoneOffset
+		Public Shared Function ofHoursMinutesSeconds(  hours As Integer,   minutes As Integer,   seconds As Integer) As ZoneOffset
 			validate(hours, minutes, seconds)
 			Dim totalSeconds_Renamed As Integer = totalSeconds(hours, minutes, seconds)
 			Return ofTotalSeconds(totalSeconds_Renamed)
@@ -306,7 +306,7 @@ Namespace java.time
 		''' <param name="temporal">  the temporal object to convert, not null </param>
 		''' <returns> the zone-offset, not null </returns>
 		''' <exception cref="DateTimeException"> if unable to convert to an {@code ZoneOffset} </exception>
-		Public Shared Function [from](ByVal temporal As java.time.temporal.TemporalAccessor) As ZoneOffset
+		Public Shared Function [from](  temporal As java.time.temporal.TemporalAccessor) As ZoneOffset
 			java.util.Objects.requireNonNull(temporal, "temporal")
 			Dim offset As ZoneOffset = temporal.query(java.time.temporal.TemporalQueries.offset())
 			If offset Is Nothing Then Throw New DateTimeException("Unable to obtain ZoneOffset from TemporalAccessor: " & temporal & " of type " & temporal.GetType().name)
@@ -321,7 +321,7 @@ Namespace java.time
 		''' <param name="minutes">  the time-zone offset in minutes, from 0 to &plusmn;59 </param>
 		''' <param name="seconds">  the time-zone offset in seconds, from 0 to &plusmn;59 </param>
 		''' <exception cref="DateTimeException"> if the offset is not in the required range </exception>
-		Private Shared Sub validate(ByVal hours As Integer, ByVal minutes As Integer, ByVal seconds As Integer)
+		Private Shared Sub validate(  hours As Integer,   minutes As Integer,   seconds As Integer)
 			If hours < -18 OrElse hours > 18 Then Throw New DateTimeException("Zone offset hours not in valid range: value " & hours & " is not in the range -18 to 18")
 			If hours > 0 Then
 				If minutes < 0 OrElse seconds < 0 Then Throw New DateTimeException("Zone offset minutes and seconds must be positive because hours is positive")
@@ -342,7 +342,7 @@ Namespace java.time
         ''' <param name="minutes">  the time-zone offset in minutes, from 0 to &plusmn;59, sign matches hours and seconds </param>
         ''' <param name="seconds">  the time-zone offset in seconds, from 0 to &plusmn;59, sign matches hours and minutes </param>
         ''' <returns> the total in seconds </returns>
-        Private Shared Function totalSeconds(ByVal hours As Integer, ByVal minutes As Integer, ByVal seconds As Integer) As Integer
+        Private Shared Function totalSeconds(  hours As Integer,   minutes As Integer,   seconds As Integer) As Integer
             Return hours * SECONDS_PER_HOUR + minutes * SECONDS_PER_MINUTE + seconds
         End Function
 
@@ -355,7 +355,7 @@ Namespace java.time
         ''' <param name="totalSeconds">  the total time-zone offset in seconds, from -64800 to +64800 </param>
         ''' <returns> the ZoneOffset, not null </returns>
         ''' <exception cref="DateTimeException"> if the offset is not in the required range </exception>
-        Public Shared Function ofTotalSeconds(ByVal totalSeconds As Integer) As ZoneOffset
+        Public Shared Function ofTotalSeconds(  totalSeconds As Integer) As ZoneOffset
             If System.Math.Abs(totalSeconds) > MAX_SECONDS Then Throw New DateTimeException("Zone offset not in valid range: -18:00 to +18:00")
             If totalSeconds Mod (15 * SECONDS_PER_MINUTE) = 0 Then
                 Dim totalSecs As Integer? = totalSeconds
@@ -377,13 +377,13 @@ Namespace java.time
         ''' Constructor.
         ''' </summary>
         ''' <param name="totalSeconds">  the total time-zone offset in seconds, from -64800 to +64800 </param>
-        Private Sub New(ByVal totalSeconds As Integer)
+        Private Sub New(  totalSeconds As Integer)
             MyBase.New()
             Me.totalSeconds_Renamed = totalSeconds
             id = buildId(totalSeconds)
         End Sub
 
-        Private Shared Function buildId(ByVal totalSeconds As Integer) As String
+        Private Shared Function buildId(  totalSeconds As Integer) As String
             If totalSeconds = 0 Then
                 Return "Z"
             Else
@@ -463,7 +463,7 @@ Namespace java.time
 		''' </summary>
 		''' <param name="field">  the field to check, null returns false </param>
 		''' <returns> true if the field is supported on this offset, false if not </returns>
-		Public Overrides Function isSupported(ByVal field As java.time.temporal.TemporalField) As Boolean
+		Public Overrides Function isSupported(  field As java.time.temporal.TemporalField) As Boolean
 			If TypeOf field Is java.time.temporal.ChronoField Then Return field = OFFSET_SECONDS
 			Return field IsNot Nothing AndAlso field.isSupportedBy(Me)
 		End Function
@@ -490,7 +490,7 @@ Namespace java.time
 		''' <returns> the range of valid values for the field, not null </returns>
 		''' <exception cref="DateTimeException"> if the range for the field cannot be obtained </exception>
 		''' <exception cref="UnsupportedTemporalTypeException"> if the field is not supported </exception>
-		Public Overrides Function range(ByVal field As java.time.temporal.TemporalField) As java.time.temporal.ValueRange ' override for Javadoc
+		Public Overrides Function range(  field As java.time.temporal.TemporalField) As java.time.temporal.ValueRange ' override for Javadoc
 			Return outerInstance.range(field)
 		End Function
 
@@ -518,7 +518,7 @@ Namespace java.time
 		''' <exception cref="UnsupportedTemporalTypeException"> if the field is not supported or
 		'''         the range of values exceeds an {@code int} </exception>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
-		Public Overrides Function [get](ByVal field As java.time.temporal.TemporalField) As Integer ' override for Javadoc and performance
+		Public Overrides Function [get](  field As java.time.temporal.TemporalField) As Integer ' override for Javadoc and performance
 			If field = OFFSET_SECONDS Then
 				Return totalSeconds_Renamed
 			ElseIf TypeOf field Is java.time.temporal.ChronoField Then
@@ -548,7 +548,7 @@ Namespace java.time
 		''' <exception cref="DateTimeException"> if a value for the field cannot be obtained </exception>
 		''' <exception cref="UnsupportedTemporalTypeException"> if the field is not supported </exception>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
-		Public Overrides Function getLong(ByVal field As java.time.temporal.TemporalField) As Long
+		Public Overrides Function getLong(  field As java.time.temporal.TemporalField) As Long
 			If field = OFFSET_SECONDS Then
 				Return totalSeconds_Renamed
 			ElseIf TypeOf field Is java.time.temporal.ChronoField Then
@@ -576,7 +576,7 @@ Namespace java.time
 		''' <exception cref="DateTimeException"> if unable to query (defined by the query) </exception>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs (defined by the query) </exception>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Overrides Function query(Of R)(ByVal query_Renamed As java.time.temporal.TemporalQuery(Of R)) As R
+		Public Overrides Function query(Of R)(  query_Renamed As java.time.temporal.TemporalQuery(Of R)) As R
 			If query_Renamed Is java.time.temporal.TemporalQueries.offset() OrElse query_Renamed Is java.time.temporal.TemporalQueries.zone() Then Return CType(Me, R)
 			Return outerInstance.query(query_Renamed)
 		End Function
@@ -604,7 +604,7 @@ Namespace java.time
 		''' <returns> the adjusted object, not null </returns>
 		''' <exception cref="DateTimeException"> if unable to make the adjustment </exception>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
-		Public Overrides Function adjustInto(ByVal temporal As java.time.temporal.Temporal) As java.time.temporal.Temporal
+		Public Overrides Function adjustInto(  temporal As java.time.temporal.Temporal) As java.time.temporal.Temporal
 			Return temporal.with(OFFSET_SECONDS, totalSeconds_Renamed)
 		End Function
 
@@ -621,7 +621,7 @@ Namespace java.time
 		''' <param name="other">  the other date to compare to, not null </param>
 		''' <returns> the comparator value, negative if less, postive if greater </returns>
 		''' <exception cref="NullPointerException"> if {@code other} is null </exception>
-		Public Overrides Function compareTo(ByVal other As ZoneOffset) As Integer Implements Comparable(Of ZoneOffset).compareTo
+		Public Overrides Function compareTo(  other As ZoneOffset) As Integer Implements Comparable(Of ZoneOffset).compareTo
 			Return other.totalSeconds_Renamed - totalSeconds_Renamed
 		End Function
 
@@ -634,7 +634,7 @@ Namespace java.time
 		''' </summary>
 		''' <param name="obj">  the object to check, null returns false </param>
 		''' <returns> true if this is equal to the other offset </returns>
-		Public Overrides Function Equals(ByVal obj As Object) As Boolean
+		Public Overrides Function Equals(  obj As Object) As Boolean
 			If Me Is obj Then Return True
 			If TypeOf obj Is ZoneOffset Then Return totalSeconds_Renamed = CType(obj, ZoneOffset).totalSeconds_Renamed
 			Return False
@@ -681,23 +681,23 @@ Namespace java.time
 		''' </summary>
 		''' <param name="s"> the stream to read </param>
 		''' <exception cref="InvalidObjectException"> always </exception>
-		Private Sub readObject(ByVal s As java.io.ObjectInputStream)
+		Private Sub readObject(  s As java.io.ObjectInputStream)
 			Throw New java.io.InvalidObjectException("Deserialization via serialization delegate")
 		End Sub
 
-		Friend Overrides Sub write(ByVal out As java.io.DataOutput)
+		Friend Overrides Sub write(  out As java.io.DataOutput)
 			out.writeByte(Ser.ZONE_OFFSET_TYPE)
 			writeExternal(out)
 		End Sub
 
-		Friend Sub writeExternal(ByVal out As java.io.DataOutput)
+		Friend Sub writeExternal(  out As java.io.DataOutput)
 			Dim offsetSecs As Integer = totalSeconds_Renamed
 			Dim offsetByte As Integer = If(offsetSecs Mod 900 = 0, offsetSecs \ 900, 127) ' compress to -72 to +72
 			out.writeByte(offsetByte)
 			If offsetByte = 127 Then out.writeInt(offsetSecs)
 		End Sub
 
-		Shared Function readExternal(ByVal [in] As java.io.DataInput) As ZoneOffset
+		Shared Function readExternal(  [in] As java.io.DataInput) As ZoneOffset
 			Dim offsetByte As Integer = [in].readByte()
 			Return (If(offsetByte = 127, ZoneOffset.ofTotalSeconds([in].readInt()), ZoneOffset.ofTotalSeconds(offsetByte * 900)))
 		End Function

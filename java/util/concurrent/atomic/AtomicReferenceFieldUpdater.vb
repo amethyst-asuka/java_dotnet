@@ -92,7 +92,7 @@ Namespace java.util.concurrent.atomic
         ''' exception if the class does not hold field or is the wrong type,
         ''' or the field is inaccessible to the caller according to Java language
         ''' access control </exception>
-        Public Shared Function newUpdater(ByVal tclass As [Class], ByVal vclass As [Class], ByVal fieldName As String) As AtomicReferenceFieldUpdater(Of T, V)
+        Public Shared Function newUpdater(  tclass As [Class],   vclass As [Class],   fieldName As String) As AtomicReferenceFieldUpdater(Of T, V)
             Return New AtomicReferenceFieldUpdaterImpl(tclass, vclass, fieldName, sun.reflect.Reflection.callerClass)
         End Function
 
@@ -113,7 +113,7 @@ Namespace java.util.concurrent.atomic
         ''' <param name="expect"> the expected value </param>
         ''' <param name="update"> the new value </param>
         ''' <returns> {@code true} if successful </returns>
-        Public MustOverride Function compareAndSet(ByVal obj As T, ByVal expect As V, ByVal update As V) As Boolean
+        Public MustOverride Function compareAndSet(  obj As T,   expect As V,   update As V) As Boolean
 
         ''' <summary>
         ''' Atomically sets the field of the given object managed by this updater
@@ -130,7 +130,7 @@ Namespace java.util.concurrent.atomic
         ''' <param name="expect"> the expected value </param>
         ''' <param name="update"> the new value </param>
         ''' <returns> {@code true} if successful </returns>
-        Public MustOverride Function weakCompareAndSet(ByVal obj As T, ByVal expect As V, ByVal update As V) As Boolean
+        Public MustOverride Function weakCompareAndSet(  obj As T,   expect As V,   update As V) As Boolean
 
         ''' <summary>
         ''' Sets the field of the given object managed by this updater to the
@@ -139,7 +139,7 @@ Namespace java.util.concurrent.atomic
         ''' </summary>
         ''' <param name="obj"> An object whose field to set </param>
         ''' <param name="newValue"> the new value </param>
-        Public MustOverride Sub [set](ByVal obj As T, ByVal newValue As V)
+        Public MustOverride Sub [set](  obj As T,   newValue As V)
 
         ''' <summary>
         ''' Eventually sets the field of the given object managed by this
@@ -148,7 +148,7 @@ Namespace java.util.concurrent.atomic
         ''' <param name="obj"> An object whose field to set </param>
         ''' <param name="newValue"> the new value
         ''' @since 1.6 </param>
-        Public MustOverride Sub lazySet(ByVal obj As T, ByVal newValue As V)
+        Public MustOverride Sub lazySet(  obj As T,   newValue As V)
 
         ''' <summary>
         ''' Gets the current value held in the field of the given object managed
@@ -156,7 +156,7 @@ Namespace java.util.concurrent.atomic
         ''' </summary>
         ''' <param name="obj"> An object whose field to get </param>
         ''' <returns> the current value </returns>
-        Public MustOverride Function [get](ByVal obj As T) As V
+        Public MustOverride Function [get](  obj As T) As V
 
         ''' <summary>
         ''' Atomically sets the field of the given object managed by this updater
@@ -165,7 +165,7 @@ Namespace java.util.concurrent.atomic
         ''' <param name="obj"> An object whose field to get and set </param>
         ''' <param name="newValue"> the new value </param>
         ''' <returns> the previous value </returns>
-        Public Overridable Function getAndSet(ByVal obj As T, ByVal newValue As V) As V
+        Public Overridable Function getAndSet(  obj As T,   newValue As V) As V
             Dim prev As V
             Do
                 prev = [get](obj)
@@ -183,7 +183,7 @@ Namespace java.util.concurrent.atomic
         ''' <param name="updateFunction"> a side-effect-free function </param>
         ''' <returns> the previous value
         ''' @since 1.8 </returns>
-        Public Function getAndUpdate(ByVal obj As T, ByVal updateFunction As java.util.function.UnaryOperator(Of V)) As V
+        Public Function getAndUpdate(  obj As T,   updateFunction As java.util.function.UnaryOperator(Of V)) As V
             Dim prev, [next] As V
             Do
                 prev = [get](obj)
@@ -202,7 +202,7 @@ Namespace java.util.concurrent.atomic
         ''' <param name="updateFunction"> a side-effect-free function </param>
         ''' <returns> the updated value
         ''' @since 1.8 </returns>
-        Public Function updateAndGet(ByVal obj As T, ByVal updateFunction As java.util.function.UnaryOperator(Of V)) As V
+        Public Function updateAndGet(  obj As T,   updateFunction As java.util.function.UnaryOperator(Of V)) As V
             Dim prev, [next] As V
             Do
                 prev = [get](obj)
@@ -225,7 +225,7 @@ Namespace java.util.concurrent.atomic
         ''' <param name="accumulatorFunction"> a side-effect-free function of two arguments </param>
         ''' <returns> the previous value
         ''' @since 1.8 </returns>
-        Public Function getAndAccumulate(ByVal obj As T, ByVal x As V, ByVal accumulatorFunction As java.util.function.BinaryOperator(Of V)) As V
+        Public Function getAndAccumulate(  obj As T,   x As V,   accumulatorFunction As java.util.function.BinaryOperator(Of V)) As V
             Dim prev, [next] As V
             Do
                 prev = [get](obj)
@@ -248,7 +248,7 @@ Namespace java.util.concurrent.atomic
         ''' <param name="accumulatorFunction"> a side-effect-free function of two arguments </param>
         ''' <returns> the updated value
         ''' @since 1.8 </returns>
-        Public Function accumulateAndGet(ByVal obj As T, ByVal x As V, ByVal accumulatorFunction As java.util.function.BinaryOperator(Of V)) As V
+        Public Function accumulateAndGet(  obj As T,   x As V,   accumulatorFunction As java.util.function.BinaryOperator(Of V)) As V
             Dim prev, [next] As V
             Do
                 prev = [get](obj)
@@ -278,7 +278,7 @@ Namespace java.util.concurrent.atomic
             '         * screenings fail.
             '         
 
-            Friend Sub New(ByVal tclass As [Class], ByVal vclass As [Class], ByVal fieldName As String, ByVal caller As [Class])
+            Friend Sub New(  tclass As [Class],   vclass As [Class],   fieldName As String,   caller As [Class])
                 Dim field As Field
                 Dim fieldClass As [Class]
                 Dim modifiers As Integer
@@ -324,7 +324,7 @@ Namespace java.util.concurrent.atomic
             ''' classloader's delegation chain.
             ''' Equivalent to the inaccessible: first.isAncestor(second).
             ''' </summary>
-            Private Shared Function isAncestor(ByVal first As ClassLoader, ByVal second As ClassLoader) As Boolean
+            Private Shared Function isAncestor(  first As ClassLoader,   second As ClassLoader) As Boolean
                 Dim acl As ClassLoader = first
                 Do
                     acl = acl.parent
@@ -333,49 +333,49 @@ Namespace java.util.concurrent.atomic
                 Return False
             End Function
 
-            Friend Sub targetCheck(ByVal obj As T)
+            Friend Sub targetCheck(  obj As T)
                 If Not tclass.isInstance(obj) Then Throw New ClassCastException
                 If cclass IsNot Nothing Then ensureProtectedAccess(obj)
             End Sub
 
-            Friend Sub updateCheck(ByVal obj As T, ByVal update As V)
+            Friend Sub updateCheck(  obj As T,   update As V)
                 If (Not tclass.isInstance(obj)) OrElse (update IsNot Nothing AndAlso vclass IsNot Nothing AndAlso (Not vclass.isInstance(update))) Then Throw New ClassCastException
                 If cclass IsNot Nothing Then ensureProtectedAccess(obj)
             End Sub
 
-            Public Function compareAndSet(ByVal obj As T, ByVal expect As V, ByVal update As V) As Boolean
+            Public Function compareAndSet(  obj As T,   expect As V,   update As V) As Boolean
                 If obj Is Nothing OrElse obj.GetType() IsNot tclass OrElse cclass IsNot Nothing OrElse (update IsNot Nothing AndAlso vclass IsNot Nothing AndAlso vclass IsNot update.GetType()) Then updateCheck(obj, update)
                 Return unsafe.compareAndSwapObject(obj, offset, expect, update)
             End Function
 
-            Public Function weakCompareAndSet(ByVal obj As T, ByVal expect As V, ByVal update As V) As Boolean
+            Public Function weakCompareAndSet(  obj As T,   expect As V,   update As V) As Boolean
                 ' same implementation as strong form for now
                 If obj Is Nothing OrElse obj.GetType() IsNot tclass OrElse cclass IsNot Nothing OrElse (update IsNot Nothing AndAlso vclass IsNot Nothing AndAlso vclass IsNot update.GetType()) Then updateCheck(obj, update)
                 Return unsafe.compareAndSwapObject(obj, offset, expect, update)
             End Function
 
-            Public Sub [set](ByVal obj As T, ByVal newValue As V)
+            Public Sub [set](  obj As T,   newValue As V)
                 If obj Is Nothing OrElse obj.GetType() IsNot tclass OrElse cclass IsNot Nothing OrElse (newValue IsNot Nothing AndAlso vclass IsNot Nothing AndAlso vclass IsNot newValue.GetType()) Then updateCheck(obj, newValue)
                 unsafe.putObjectVolatile(obj, offset, newValue)
             End Sub
 
-            Public Sub lazySet(ByVal obj As T, ByVal newValue As V)
+            Public Sub lazySet(  obj As T,   newValue As V)
                 If obj Is Nothing OrElse obj.GetType() IsNot tclass OrElse cclass IsNot Nothing OrElse (newValue IsNot Nothing AndAlso vclass IsNot Nothing AndAlso vclass IsNot newValue.GetType()) Then updateCheck(obj, newValue)
                 unsafe.putOrderedObject(obj, offset, newValue)
             End Sub
 
             'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-            Public Function [get](ByVal obj As T) As V
+            Public Function [get](  obj As T) As V
                 If obj Is Nothing OrElse obj.GetType() IsNot tclass OrElse cclass IsNot Nothing Then targetCheck(obj)
                 Return CType(unsafe.getObjectVolatile(obj, offset), V)
             End Function
 
-            Public Function getAndSet(ByVal obj As T, ByVal newValue As V) As V
+            Public Function getAndSet(  obj As T,   newValue As V) As V
                 If obj Is Nothing OrElse obj.GetType() IsNot tclass OrElse cclass IsNot Nothing OrElse (newValue IsNot Nothing AndAlso vclass IsNot Nothing AndAlso vclass IsNot newValue.GetType()) Then updateCheck(obj, newValue)
                 Return CType(unsafe.getAndSetObject(obj, offset, newValue), V)
             End Function
 
-            Private Sub ensureProtectedAccess(ByVal obj As T)
+            Private Sub ensureProtectedAccess(  obj As T)
                 If cclass.isInstance(obj) Then Return
 
                 Dim ex As New IllegalAccessException("Class " & cclass.name & " can not access a protected member of class " & tclass.name & " using an instance of " & obj.GetType().Name)

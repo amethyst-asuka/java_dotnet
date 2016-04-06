@@ -36,7 +36,7 @@ Namespace java.net
 		Friend Sub New()
 		End Sub
 
-		Protected Friend Overrides Sub create(ByVal stream As Boolean)
+		Protected Friend Overrides Sub create(  stream As Boolean)
 			If Not stream Then Throw New UnsupportedOperationException("Must be a stream socket")
 			fd = sun.net.sdp.SdpSupport.createSocket()
 			If socket_Renamed IsNot Nothing Then socket_Renamed.createdted()

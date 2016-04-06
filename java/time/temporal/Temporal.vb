@@ -148,7 +148,7 @@ Namespace java.time.temporal
 		''' </summary>
 		''' <param name="unit">  the unit to check, null returns false </param>
 		''' <returns> true if the unit can be added/subtracted, false if not </returns>
-		Function isSupported(ByVal unit As TemporalUnit) As Boolean
+		Function isSupported(  unit As TemporalUnit) As Boolean
 
 		''' <summary>
 		''' Returns an adjusted object of the same type as this object with the adjustment made.
@@ -184,7 +184,7 @@ Namespace java.time.temporal
 		''' <returns> an object of the same type with the specified adjustment made, not null </returns>
 		''' <exception cref="DateTimeException"> if unable to make the adjustment </exception>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
-		default Function [with](ByVal adjuster As TemporalAdjuster) As Temporal
+		default Function [with](  adjuster As TemporalAdjuster) As Temporal
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 			Return adjuster.adjustInto(Me);
 
@@ -219,7 +219,7 @@ Namespace java.time.temporal
 		''' <exception cref="DateTimeException"> if the field cannot be set </exception>
 		''' <exception cref="UnsupportedTemporalTypeException"> if the field is not supported </exception>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
-		Function [with](ByVal field As TemporalField, ByVal newValue As Long) As Temporal
+		Function [with](  field As TemporalField,   newValue As Long) As Temporal
 
 		'-----------------------------------------------------------------------
 		''' <summary>
@@ -254,7 +254,7 @@ Namespace java.time.temporal
 		''' <returns> an object of the same type with the specified adjustment made, not null </returns>
 		''' <exception cref="DateTimeException"> if the addition cannot be made </exception>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
-		default Function plus(ByVal amount As TemporalAmount) As Temporal
+		default Function plus(  amount As TemporalAmount) As Temporal
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 			Return amount.addTo(Me);
 
@@ -289,7 +289,7 @@ Namespace java.time.temporal
 		''' <exception cref="DateTimeException"> if the unit cannot be added </exception>
 		''' <exception cref="UnsupportedTemporalTypeException"> if the unit is not supported </exception>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
-		Function plus(ByVal amountToAdd As Long, ByVal unit As TemporalUnit) As Temporal
+		Function plus(  amountToAdd As Long,   unit As TemporalUnit) As Temporal
 
 		'-----------------------------------------------------------------------
 		''' <summary>
@@ -324,7 +324,7 @@ Namespace java.time.temporal
 		''' <returns> an object of the same type with the specified adjustment made, not null </returns>
 		''' <exception cref="DateTimeException"> if the subtraction cannot be made </exception>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
-		default Function minus(ByVal amount As TemporalAmount) As Temporal
+		default Function minus(  amount As TemporalAmount) As Temporal
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 			Return amount.subtractFrom(Me);
 
@@ -359,8 +359,8 @@ Namespace java.time.temporal
 		''' <exception cref="DateTimeException"> if the unit cannot be subtracted </exception>
 		''' <exception cref="UnsupportedTemporalTypeException"> if the unit is not supported </exception>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
-		default Function minus(ByVal amountToSubtract As Long, ByVal unit As TemporalUnit) As Temporal
-			Sub [New](amountToSubtract == java.lang.[Long].MIN_VALUE ? plus(Long.MAX_VALUE, unit).plus(1, unit) : plus(-amountToSubtract, unit) ByVal  As )
+		default Function minus(  amountToSubtract As Long,   unit As TemporalUnit) As Temporal
+			Sub [New](amountToSubtract == java.lang.[Long].MIN_VALUE ? plus(Long.MAX_VALUE, unit).plus(1, unit) : plus(-amountToSubtract, unit)    As )
 
 		'-----------------------------------------------------------------------
 		''' <summary>
@@ -435,7 +435,7 @@ Namespace java.time.temporal
 		'''  temporal cannot be converted to the same type as this temporal </exception>
 		''' <exception cref="UnsupportedTemporalTypeException"> if the unit is not supported </exception>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
-		Function [until](ByVal endExclusive As Temporal, ByVal unit As TemporalUnit) As Long
+		Function [until](  endExclusive As Temporal,   unit As TemporalUnit) As Long
 
 	End Interface
 

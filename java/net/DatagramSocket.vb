@@ -120,7 +120,7 @@ Namespace java.net
 		''' <param name="port">    The remote port </param>
 		''' <exception cref="SocketException"> if binding the socket fails. </exception>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Private Sub connectInternal(ByVal address As InetAddress, ByVal port As Integer)
+		Private Sub connectInternal(  address As InetAddress,   port As Integer)
 			If port < 0 OrElse port > &HFFFF Then Throw New IllegalArgumentException("connect: " & port)
 			If address Is Nothing Then Throw New IllegalArgumentException("connect: null address")
 			checkAddress(address, "connect")
@@ -191,7 +191,7 @@ Namespace java.net
 		''' <param name="impl"> an instance of a <B>DatagramSocketImpl</B>
 		'''        the subclass wishes to use on the DatagramSocket.
 		''' @since   1.4 </param>
-		Protected Friend Sub New(ByVal impl As DatagramSocketImpl)
+		Protected Friend Sub New(  impl As DatagramSocketImpl)
 			If impl Is Nothing Then Throw New NullPointerException
 			Me.impl = impl
 			checkOldImpl()
@@ -219,7 +219,7 @@ Namespace java.net
 		''' </exception>
 		''' <seealso cref= SecurityManager#checkListen
 		''' @since   1.4 </seealso>
-		Public Sub New(ByVal bindaddr As SocketAddress)
+		Public Sub New(  bindaddr As SocketAddress)
 			' create a datagram socket.
 			createImpl()
 			If bindaddr IsNot Nothing Then
@@ -250,7 +250,7 @@ Namespace java.net
 		'''             {@code checkListen} method doesn't allow the operation.
 		''' </exception>
 		''' <seealso cref= SecurityManager#checkListen </seealso>
-		Public Sub New(ByVal port As Integer)
+		Public Sub New(  port As Integer)
 			Me.New(port, Nothing)
 		End Sub
 
@@ -277,7 +277,7 @@ Namespace java.net
 		''' </exception>
 		''' <seealso cref= SecurityManager#checkListen
 		''' @since   JDK1.1 </seealso>
-		Public Sub New(ByVal port As Integer, ByVal laddr As InetAddress)
+		Public Sub New(  port As Integer,   laddr As InetAddress)
 			Me.New(New InetSocketAddress(laddr, port))
 		End Sub
 
@@ -353,7 +353,7 @@ Namespace java.net
 		'''         not supported by this socket.
 		''' @since 1.4 </exception>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Sub bind(ByVal addr As SocketAddress)
+		Public Overridable Sub bind(  addr As SocketAddress)
 			If closed Then Throw New SocketException("Socket is closed")
 			If bound Then Throw New SocketException("already bound")
 			If addr Is Nothing Then addr = New InetSocketAddress(0)
@@ -374,7 +374,7 @@ Namespace java.net
 			bound = True
 		End Sub
 
-		Friend Overridable Sub checkAddress(ByVal addr As InetAddress, ByVal op As String)
+		Friend Overridable Sub checkAddress(  addr As InetAddress,   op As String)
 			If addr Is Nothing Then Return
 			If Not(TypeOf addr Is Inet4Address OrElse TypeOf addr Is Inet6Address) Then Throw New IllegalArgumentException(op & ": invalid address type")
 		End Sub
@@ -425,7 +425,7 @@ Namespace java.net
 		'''         not permit access to the given remote address
 		''' </exception>
 		''' <seealso cref= #disconnect </seealso>
-		Public Overridable Sub connect(ByVal address As InetAddress, ByVal port As Integer)
+		Public Overridable Sub connect(  address As InetAddress,   port As Integer)
 			Try
 				connectInternal(address, port)
 			Catch se As SocketException
@@ -454,7 +454,7 @@ Namespace java.net
 		'''         not permit access to the given remote address
 		''' 
 		''' @since 1.4 </exception>
-		Public Overridable Sub connect(ByVal addr As SocketAddress)
+		Public Overridable Sub connect(  addr As SocketAddress)
 			If addr Is Nothing Then Throw New IllegalArgumentException("Address can't be null")
 			If Not(TypeOf addr Is InetSocketAddress) Then Throw New IllegalArgumentException("Unsupported address type")
 			Dim epoint As InetSocketAddress = CType(addr, InetSocketAddress)
@@ -617,7 +617,7 @@ Namespace java.net
 		''' <seealso cref=        SecurityManager#checkConnect
 		''' @revised 1.4
 		''' @spec JSR-51 </seealso>
-		Public Overridable Sub send(ByVal p As DatagramPacket)
+		Public Overridable Sub send(  p As DatagramPacket)
 			Dim packetAddress As InetAddress = Nothing
 			SyncLock p
 				If closed Then Throw New SocketException("Socket is closed")
@@ -685,7 +685,7 @@ Namespace java.net
 		''' @revised 1.4
 		''' @spec JSR-51 </seealso>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Sub receive(ByVal p As DatagramPacket)
+		Public Overridable Sub receive(  p As DatagramPacket)
 			SyncLock p
 				If Not bound Then bind(New InetSocketAddress(0))
 				If connectState = ST_NOT_CONNECTED Then
@@ -769,7 +769,7 @@ Namespace java.net
 			End SyncLock
 		End Sub
 
-		Private Function checkFiltering(ByVal p As DatagramPacket) As Boolean
+		Private Function checkFiltering(  p As DatagramPacket) As Boolean
 			bytesLeftToFilter -= p.length
 			If bytesLeftToFilter <= 0 OrElse impl.dataAvailable() <= 0 Then
 				explicitFilter = False
@@ -846,7 +846,7 @@ Namespace java.net
 		''' <seealso cref= #getSoTimeout() </seealso>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
 		Public Overridable Property soTimeout As Integer
-			Set(ByVal timeout As Integer)
+			Set(  timeout As Integer)
 				If closed Then Throw New SocketException("Socket is closed")
 				impl.optionion(SocketOptions.SO_TIMEOUT, New Integer?(timeout))
 			End Set
@@ -894,7 +894,7 @@ Namespace java.net
 		''' <seealso cref= #getSendBufferSize() </seealso>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
 		Public Overridable Property sendBufferSize As Integer
-			Set(ByVal size As Integer)
+			Set(  size As Integer)
 				If Not(size > 0) Then Throw New IllegalArgumentException("negative send size")
 				If closed Then Throw New SocketException("Socket is closed")
 				impl.optionion(SocketOptions.SO_SNDBUF, New Integer?(size))
@@ -938,7 +938,7 @@ Namespace java.net
 		''' <seealso cref= #getReceiveBufferSize() </seealso>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
 		Public Overridable Property receiveBufferSize As Integer
-			Set(ByVal size As Integer)
+			Set(  size As Integer)
 				If size <= 0 Then Throw New IllegalArgumentException("invalid receive size")
 				If closed Then Throw New SocketException("Socket is closed")
 				impl.optionion(SocketOptions.SO_RCVBUF, New Integer?(size))
@@ -988,7 +988,7 @@ Namespace java.net
 		''' <seealso cref= #isClosed() </seealso>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
 		Public Overridable Property reuseAddress As Boolean
-			Set(ByVal [on] As Boolean)
+			Set(  [on] As Boolean)
 				If closed Then Throw New SocketException("Socket is closed")
 				' Integer instead of Boolean for compatibility with older DatagramSocketImpl
 				If oldImpl Then
@@ -1023,7 +1023,7 @@ Namespace java.net
 		''' <seealso cref= #getBroadcast() </seealso>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
 		Public Overridable Property broadcast As Boolean
-			Set(ByVal [on] As Boolean)
+			Set(  [on] As Boolean)
 				If closed Then Throw New SocketException("Socket is closed")
 				impl.optionion(SocketOptions.SO_BROADCAST, Convert.ToBoolean([on]))
 			End Set
@@ -1072,7 +1072,7 @@ Namespace java.net
 		''' <seealso cref= #getTrafficClass </seealso>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
 		Public Overridable Property trafficClass As Integer
-			Set(ByVal tc As Integer)
+			Set(  tc As Integer)
 				If tc < 0 OrElse tc > 255 Then Throw New IllegalArgumentException("tc is not in range 0 -- 255")
     
 				If closed Then Throw New SocketException("Socket is closed")
@@ -1177,7 +1177,7 @@ Namespace java.net
 		''' @since 1.3 </seealso>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
 		Public Shared Property datagramSocketImplFactory As DatagramSocketImplFactory
-			Set(ByVal fac As DatagramSocketImplFactory)
+			Set(  fac As DatagramSocketImplFactory)
 				If factory IsNot Nothing Then Throw New SocketException("factory already defined")
 				Dim security As SecurityManager = System.securityManager
 				If security IsNot Nothing Then security.checkSetFactory()

@@ -50,7 +50,7 @@ Namespace java.nio.channels
 		'''          The result of the I/O operation. </param>
 		''' <param name="attachment">
 		'''          The object attached to the I/O operation when it was initiated. </param>
-		Sub completed(ByVal result As V, ByVal attachment As A)
+		Sub completed(  result As V,   attachment As A)
 
 		''' <summary>
 		''' Invoked when an operation fails.
@@ -59,7 +59,7 @@ Namespace java.nio.channels
 		'''          The exception to indicate why the I/O operation failed </param>
 		''' <param name="attachment">
 		'''          The object attached to the I/O operation when it was initiated. </param>
-		Sub failed(ByVal exc As Throwable, ByVal attachment As A)
+		Sub failed(  exc As Throwable,   attachment As A)
 	End Interface
 
 End Namespace

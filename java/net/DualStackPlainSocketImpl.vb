@@ -49,16 +49,16 @@ Namespace java.net
 		' emulates SO_REUSEADDR when exclusiveBind is true
 		Private isReuseAddress As Boolean
 
-		Public Sub New(ByVal exclBind As Boolean)
+		Public Sub New(  exclBind As Boolean)
 			exclusiveBind = exclBind
 		End Sub
 
-		Public Sub New(ByVal fd As java.io.FileDescriptor, ByVal exclBind As Boolean)
+		Public Sub New(  fd As java.io.FileDescriptor,   exclBind As Boolean)
 			Me.fd = fd
 			exclusiveBind = exclBind
 		End Sub
 
-		Friend Overrides Sub socketCreate(ByVal stream As Boolean)
+		Friend Overrides Sub socketCreate(  stream As Boolean)
 			If fd Is Nothing Then Throw New SocketException("Socket closed")
 
 			Dim newfd As Integer = socket0(stream, False) 'v6 Only
@@ -66,7 +66,7 @@ Namespace java.net
 			fdAccess.set(fd, newfd)
 		End Sub
 
-		Friend Overrides Sub socketConnect(ByVal address As InetAddress, ByVal port As Integer, ByVal timeout As Integer)
+		Friend Overrides Sub socketConnect(  address As InetAddress,   port As Integer,   timeout As Integer)
 			Dim nativefd As Integer = checkAndReturnNativeFD()
 
 			If address Is Nothing Then Throw New NullPointerException("inet address argument is null.")
@@ -91,7 +91,7 @@ Namespace java.net
 			If localport = 0 Then localport = localPort0(nativefd)
 		End Sub
 
-		Friend Overrides Sub socketBind(ByVal address As InetAddress, ByVal port As Integer)
+		Friend Overrides Sub socketBind(  address As InetAddress,   port As Integer)
 			Dim nativefd As Integer = checkAndReturnNativeFD()
 
 			If address Is Nothing Then Throw New NullPointerException("inet address argument is null.")
@@ -106,13 +106,13 @@ Namespace java.net
 			Me.address = address
 		End Sub
 
-		Friend Overrides Sub socketListen(ByVal backlog As Integer)
+		Friend Overrides Sub socketListen(  backlog As Integer)
 			Dim nativefd As Integer = checkAndReturnNativeFD()
 
 			listen0(nativefd, backlog)
 		End Sub
 
-		Friend Overrides Sub socketAccept(ByVal s As SocketImpl)
+		Friend Overrides Sub socketAccept(  s As SocketImpl)
 			Dim nativefd As Integer = checkAndReturnNativeFD()
 
 			If s Is Nothing Then Throw New NullPointerException("socket is null")
@@ -145,7 +145,7 @@ Namespace java.net
 			Return available0(nativefd)
 		End Function
 
-		Friend Overrides Sub socketClose0(ByVal useDeferredClose As Boolean) 'unused
+		Friend Overrides Sub socketClose0(  useDeferredClose As Boolean) 'unused
 			If fd Is Nothing Then Throw New SocketException("Socket closed")
 
 			If Not fd.valid() Then Return
@@ -155,14 +155,14 @@ Namespace java.net
 			close0(nativefd)
 		End Sub
 
-		Friend Overrides Sub socketShutdown(ByVal howto As Integer)
+		Friend Overrides Sub socketShutdown(  howto As Integer)
 			Dim nativefd As Integer = checkAndReturnNativeFD()
 			shutdown0(nativefd, howto)
 		End Sub
 
 		' Intentional fallthrough after SO_REUSEADDR
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Friend Overrides Sub socketSetOption(ByVal opt As Integer, ByVal [on] As Boolean, ByVal value As Object)
+		Friend Overrides Sub socketSetOption(  opt As Integer,   [on] As Boolean,   value As Object)
 			Dim nativefd As Integer = checkAndReturnNativeFD()
 
 			If opt = SO_TIMEOUT Then ' timeout implemented through select. Return
@@ -194,7 +194,7 @@ Namespace java.net
 			intOptionion(nativefd, opt, optionValue)
 		End Sub
 
-		Friend Overrides Function socketGetOption(ByVal opt As Integer, ByVal iaContainerObj As Object) As Integer
+		Friend Overrides Function socketGetOption(  opt As Integer,   iaContainerObj As Object) As Integer
 			Dim nativefd As Integer = checkAndReturnNativeFD()
 
 			' SO_BINDADDR is not a socket option.
@@ -215,7 +215,7 @@ Namespace java.net
 			Return value
 		End Function
 
-		Friend Overrides Sub socketSendUrgentData(ByVal data As Integer)
+		Friend Overrides Sub socketSendUrgentData(  data As Integer)
 			Dim nativefd As Integer = checkAndReturnNativeFD()
 			sendOOB(nativefd, data)
 		End Sub
@@ -241,82 +241,82 @@ Namespace java.net
 
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Friend Shared Function socket0(ByVal stream As Boolean, ByVal v6Only As Boolean) As Integer
+		Friend Shared Function socket0(  stream As Boolean,   v6Only As Boolean) As Integer
 		End Function
 
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Friend Shared Sub bind0(ByVal fd As Integer, ByVal localAddress As InetAddress, ByVal localport As Integer, ByVal exclBind As Boolean)
+		Friend Shared Sub bind0(  fd As Integer,   localAddress As InetAddress,   localport As Integer,   exclBind As Boolean)
 		End Sub
 
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Friend Shared Function connect0(ByVal fd As Integer, ByVal remote As InetAddress, ByVal remotePort As Integer) As Integer
+		Friend Shared Function connect0(  fd As Integer,   remote As InetAddress,   remotePort As Integer) As Integer
 		End Function
 
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Friend Shared Sub waitForConnect(ByVal fd As Integer, ByVal timeout As Integer)
+		Friend Shared Sub waitForConnect(  fd As Integer,   timeout As Integer)
 		End Sub
 
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Friend Shared Function localPort0(ByVal fd As Integer) As Integer
+		Friend Shared Function localPort0(  fd As Integer) As Integer
 		End Function
 
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Friend Shared Sub localAddress(ByVal fd As Integer, ByVal [in] As InetAddressContainer)
+		Friend Shared Sub localAddress(  fd As Integer,   [in] As InetAddressContainer)
 		End Sub
 
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Friend Shared Sub listen0(ByVal fd As Integer, ByVal backlog As Integer)
+		Friend Shared Sub listen0(  fd As Integer,   backlog As Integer)
 		End Sub
 
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Friend Shared Function accept0(ByVal fd As Integer, ByVal isaa As InetSocketAddress()) As Integer
+		Friend Shared Function accept0(  fd As Integer,   isaa As InetSocketAddress()) As Integer
 		End Function
 
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Friend Shared Sub waitForNewConnection(ByVal fd As Integer, ByVal timeout As Integer)
+		Friend Shared Sub waitForNewConnection(  fd As Integer,   timeout As Integer)
 		End Sub
 
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Friend Shared Function available0(ByVal fd As Integer) As Integer
+		Friend Shared Function available0(  fd As Integer) As Integer
 		End Function
 
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Friend Shared Sub close0(ByVal fd As Integer)
+		Friend Shared Sub close0(  fd As Integer)
 		End Sub
 
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Friend Shared Sub shutdown0(ByVal fd As Integer, ByVal howto As Integer)
+		Friend Shared Sub shutdown0(  fd As Integer,   howto As Integer)
 		End Sub
 
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Friend Shared Sub setIntOption(ByVal fd As Integer, ByVal cmd As Integer, ByVal optionValue As Integer)
+		Friend Shared Sub setIntOption(  fd As Integer,   cmd As Integer,   optionValue As Integer)
 		End Sub
 
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Friend Shared Function getIntOption(ByVal fd As Integer, ByVal cmd As Integer) As Integer
+		Friend Shared Function getIntOption(  fd As Integer,   cmd As Integer) As Integer
 		End Function
 
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Friend Shared Sub sendOOB(ByVal fd As Integer, ByVal data As Integer)
+		Friend Shared Sub sendOOB(  fd As Integer,   data As Integer)
 		End Sub
 
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Friend Shared Sub configureBlocking(ByVal fd As Integer, ByVal blocking As Boolean)
+		Friend Shared Sub configureBlocking(  fd As Integer,   blocking As Boolean)
 		End Sub
 	End Class
 

@@ -51,7 +51,7 @@ Namespace java.nio
 	'
 	'    
 
-		Friend Sub New(ByVal cap As Integer, ByVal lim As Integer) ' package-private
+		Friend Sub New(  cap As Integer,   lim As Integer) ' package-private
 
 
 
@@ -64,7 +64,7 @@ Namespace java.nio
 
 		End Sub
 
-		Friend Sub New(ByVal buf As Char(), ByVal [off] As Integer, ByVal len As Integer) ' package-private
+		Friend Sub New(  buf As Char(),   [off] As Integer,   len As Integer) ' package-private
 
 
 
@@ -77,7 +77,7 @@ Namespace java.nio
 
 		End Sub
 
-		Protected Friend Sub New(ByVal buf As Char(), ByVal mark As Integer, ByVal pos As Integer, ByVal lim As Integer, ByVal cap As Integer, ByVal [off] As Integer)
+		Protected Friend Sub New(  buf As Char(),   mark As Integer,   pos As Integer,   lim As Integer,   cap As Integer,   [off] As Integer)
 
 
 
@@ -152,7 +152,7 @@ Namespace java.nio
 			End Get
 		End Property
 
-		Public Overrides Function put(ByVal x As Char) As CharBuffer
+		Public Overrides Function put(  x As Char) As CharBuffer
 
 
 
@@ -161,7 +161,7 @@ Namespace java.nio
 
 		End Function
 
-		Public Overrides Function put(ByVal i As Integer, ByVal x As Char) As CharBuffer
+		Public Overrides Function put(  i As Integer,   x As Char) As CharBuffer
 
 
 
@@ -170,7 +170,7 @@ Namespace java.nio
 
 		End Function
 
-		Public Overrides Function put(ByVal src As Char(), ByVal offset As Integer, ByVal length As Integer) As CharBuffer
+		Public Overrides Function put(  src As Char(),   offset As Integer,   length As Integer) As CharBuffer
 
 
 
@@ -183,7 +183,7 @@ Namespace java.nio
 
 		End Function
 
-		Public Overrides Function put(ByVal src As CharBuffer) As CharBuffer
+		Public Overrides Function put(  src As CharBuffer) As CharBuffer
 
 
 
@@ -550,7 +550,7 @@ Namespace java.nio
 
 
 
-		Friend Overrides Function ToString(ByVal start As Integer, ByVal [end] As Integer) As String ' package-private
+		Friend Overrides Function ToString(  start As Integer,   [end] As Integer) As String ' package-private
 			Try
 				Return New String(hb, start + offset, [end] - start)
 			Catch x As StringIndexOutOfBoundsException
@@ -561,7 +561,7 @@ Namespace java.nio
 
 		' --- Methods to support CharSequence ---
 
-		Public Overrides Function subSequence(ByVal start As Integer, ByVal [end] As Integer) As CharBuffer
+		Public Overrides Function subSequence(  start As Integer,   [end] As Integer) As CharBuffer
 			If (start < 0) OrElse ([end] > length()) OrElse (start > [end]) Then Throw New IndexOutOfBoundsException
 			Dim pos As Integer = position()
 			Return New HeapCharBufferR(hb, -1, pos + start, pos + [end], capacity(), offset)

@@ -43,7 +43,7 @@ Namespace java.util.function
 		''' </summary>
 		''' <param name="t"> the function argument </param>
 		''' <returns> the function result </returns>
-		Function apply(ByVal t As T) As R
+		Function apply(  t As T) As R
 
 		''' <summary>
 		''' Returns a composed function that first applies the {@code before}
@@ -63,7 +63,7 @@ Namespace java.util.function
 		default <V> Function<V, R> compose(Function<? MyBase V, ? extends T> before)
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 			java.util.Objects.requireNonNull(before);
-			Sub [New](ByVal v As V)
+			Sub [New](  v As V)
 
 		''' <summary>
 		''' Returns a composed function that first applies this function to
@@ -83,7 +83,7 @@ Namespace java.util.function
 		default <V> Function<T, V> andThen(Function<? MyBase R, ? extends V> after)
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 			java.util.Objects.requireNonNull(after);
-			Sub [New](ByVal t As T)
+			Sub [New](  t As T)
 
 		''' <summary>
 		''' Returns a function that always returns its input argument.

@@ -45,12 +45,12 @@ Namespace java.awt.event
 		''' <summary>
 		''' Invoked when the text entered through an input method has changed.
 		''' </summary>
-		Sub inputMethodTextChanged(ByVal [event] As InputMethodEvent)
+		Sub inputMethodTextChanged(  [event] As InputMethodEvent)
 
 		''' <summary>
 		''' Invoked when the caret within composed text has changed.
 		''' </summary>
-		Sub caretPositionChanged(ByVal [event] As InputMethodEvent)
+		Sub caretPositionChanged(  [event] As InputMethodEvent)
 
 	End Interface
 

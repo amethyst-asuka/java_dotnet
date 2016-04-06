@@ -33,7 +33,7 @@ Namespace java.beans
 		Private methodRef As SoftReference(Of Method)
 		Private typeRef As WeakReference(Of [Class])
 
-		Friend Sub [set](ByVal method As Method)
+		Friend Sub [set](  method As Method)
 			If method Is Nothing Then
 				Me.signature = Nothing
 				Me.methodRef = Nothing
@@ -67,7 +67,7 @@ Namespace java.beans
 			Return If(isPackageAccessible(method.declaringClass), method, Nothing)
 		End Function
 
-		Private Shared Function find(ByVal type As [Class], ByVal signature As String) As Method
+		Private Shared Function find(  type As [Class],   signature As String) As Method
 			If type IsNot Nothing Then
 				For Each method As Method In type.methods
 					If type.Equals(method.declaringClass) Then

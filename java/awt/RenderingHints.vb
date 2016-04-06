@@ -107,7 +107,7 @@ Namespace java.awt
 			End Property
 
 			<MethodImpl(MethodImplOptions.Synchronized)> _
-			Private Shared Sub recordIdentity(ByVal k As Key)
+			Private Shared Sub recordIdentity(  k As Key)
 				Dim identity_Renamed As Object = k.identity
 				Dim otherref As Object = identitymap(identity_Renamed)
 				If otherref IsNot Nothing Then
@@ -146,7 +146,7 @@ Namespace java.awt
 			''' object of a given class with the same integer key as a
 			''' pre-existing instance of that subclass of Key. </summary>
 			''' <param name="privatekey"> the specified key </param>
-			Protected Friend Sub New(ByVal privatekey As Integer)
+			Protected Friend Sub New(  privatekey As Integer)
 				Me.privatekey = privatekey
 				recordIdentity(Me)
 			End Sub
@@ -157,7 +157,7 @@ Namespace java.awt
 			''' <param name="val"> the <code>Object</code> to test for validity </param>
 			''' <returns> <code>true</code> if <code>val</code> is valid;
 			'''         <code>false</code> otherwise. </returns>
-			Public MustOverride Function isCompatibleValue(ByVal val As Object) As Boolean
+			Public MustOverride Function isCompatibleValue(  val As Object) As Boolean
 
 			''' <summary>
 			''' Returns the private integer key that the subclass
@@ -181,7 +181,7 @@ Namespace java.awt
 			''' The equals method for all Key objects will return the same
 			''' result as the equality operator '=='.
 			''' </summary>
-			Public NotOverridable Overrides Function Equals(ByVal o As Object) As Boolean
+			Public NotOverridable Overrides Function Equals(  o As Object) As Boolean
 				Return Me Is o
 			End Function
 		End Class
@@ -875,7 +875,7 @@ Namespace java.awt
 		''' from the specified Map object which may be null. </summary>
 		''' <param name="init"> a map of key/value pairs to initialize the hints
 		'''          or null if the object should be empty </param>
-		Public Sub New(Of T1)(ByVal init As IDictionary(Of T1))
+		Public Sub New(Of T1)(  init As IDictionary(Of T1))
 			If init IsNot Nothing Then hintmap.putAll(init)
 		End Sub
 
@@ -884,7 +884,7 @@ Namespace java.awt
 		''' <param name="key"> the key of the particular hint property </param>
 		''' <param name="value"> the value of the hint property specified with
 		''' <code>key</code> </param>
-		Public Sub New(ByVal key As Key, ByVal value As Object)
+		Public Sub New(  key As Key,   value As Object)
 			hintmap(key) = value
 		End Sub
 
@@ -920,7 +920,7 @@ Namespace java.awt
 		'''          contains a mapping for the specified key. </returns>
 		''' <exception cref="ClassCastException"> if the key can not
 		'''            be cast to {@code RenderingHints.Key} </exception>
-		Public Overridable Function containsKey(ByVal key As Object) As Boolean
+		Public Overridable Function containsKey(  key As Object) As Boolean
 			Return hintmap.ContainsKey(CType(key, Key))
 		End Function
 
@@ -941,7 +941,7 @@ Namespace java.awt
 		'''          <code>RenderingHints</code> is to be tested. </param>
 		''' <returns> <code>true</code> if this <code>RenderingHints</code>
 		'''           maps one or more keys to the specified value. </returns>
-		Public Overridable Function containsValue(ByVal value As Object) As Boolean
+		Public Overridable Function containsValue(  value As Object) As Boolean
 			Return hintmap.ContainsValue(value)
 		End Function
 
@@ -954,7 +954,7 @@ Namespace java.awt
 		''' <exception cref="ClassCastException"> if the key can not
 		'''            be cast to {@code RenderingHints.Key} </exception>
 		''' <seealso cref=     #put(Object, Object) </seealso>
-		Public Overridable Function [get](ByVal key As Object) As Object
+		Public Overridable Function [get](  key As Object) As Object
 			Return hintmap(CType(key, Key))
 		End Function
 
@@ -978,7 +978,7 @@ Namespace java.awt
 		'''            method of the specified key returns false for the
 		'''            specified value </exception>
 		''' <seealso cref=     #get(Object) </seealso>
-		Public Overridable Function put(ByVal key As Object, ByVal value As Object) As Object
+		Public Overridable Function put(  key As Object,   value As Object) As Object
 			If Not CType(key, Key).isCompatibleValue(value) Then Throw New IllegalArgumentException(value & " incompatible with " & key)
 				hintmap(CType(key, Key)) = value
 				Return hintmap(CType(key, Key))
@@ -992,7 +992,7 @@ Namespace java.awt
 		''' <code>RenderingHints</code> object are not affected. </summary>
 		''' <param name="hints"> the set of key/value pairs to be added to this
 		''' <code>RenderingHints</code> object </param>
-		Public Overridable Sub add(ByVal hints As RenderingHints)
+		Public Overridable Sub add(  hints As RenderingHints)
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET Dictionary equivalent to the Java 'putAll' method:
 			hintmap.putAll(hints.hintmap)
 		End Sub
@@ -1015,7 +1015,7 @@ Namespace java.awt
 		''' <returns>  the value to which the key had previously been mapped in this
 		'''          {@code RenderingHints} object, or {@code null}
 		'''          if the key did not have a mapping. </returns>
-		Public Overridable Function remove(ByVal key As Object) As Object
+		Public Overridable Function remove(  key As Object) As Object
 			Return hintmap.Remove(CType(key, Key))
 		End Function
 
@@ -1032,7 +1032,7 @@ Namespace java.awt
 		'''          of a key or value in the specified {@code Map}
 		'''           prevents it from being stored in
 		'''            this {@code RenderingHints}. </exception>
-		Public Overridable Sub putAll(Of T1)(ByVal m As IDictionary(Of T1))
+		Public Overridable Sub putAll(Of T1)(  m As IDictionary(Of T1))
 			' ## javac bug?
 			'if (m instanceof RenderingHints) {
 			If GetType(RenderingHints).isInstance(m) Then
@@ -1135,7 +1135,7 @@ Namespace java.awt
 		''' this <code>RenderingHints</code>. </param>
 		''' <returns> <code>true</code> if the specified <code>Object</code>
 		''' is equal to this <code>RenderingHints</code>. </returns>
-		Public Overrides Function Equals(ByVal o As Object) As Boolean
+		Public Overrides Function Equals(  o As Object) As Boolean
 			If TypeOf o Is RenderingHints Then
 				Return hintmap.Equals(CType(o, RenderingHints).hintmap)
 			ElseIf TypeOf o Is IDictionary Then

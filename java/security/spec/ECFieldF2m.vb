@@ -47,7 +47,7 @@ Namespace java.security.spec
 		''' <param name="m"> with 2^{@code m} being the number of elements. </param>
 		''' <exception cref="IllegalArgumentException"> if {@code m}
 		''' is not positive. </exception>
-		Public Sub New(ByVal m As Integer)
+		Public Sub New(  m As Integer)
 			If m <= 0 Then Throw New IllegalArgumentException("m is not positive")
 			Me.m = m
 			Me.ks = Nothing
@@ -75,7 +75,7 @@ Namespace java.security.spec
 		''' <exception cref="IllegalArgumentException"> if {@code m}
 		''' is not positive, or {@code rp} does not represent
 		''' a valid reduction polynomial. </exception>
-		Public Sub New(ByVal m As Integer, ByVal rp As System.Numerics.BigInteger)
+		Public Sub New(  m As Integer,   rp As System.Numerics.BigInteger)
 			' check m and rp
 			Me.m = m
 			Me.rp = rp
@@ -117,7 +117,7 @@ Namespace java.security.spec
 		''' is neither 1 nor 3, or values in {@code ks}
 		''' are not between {@code m}-1 and 1 (inclusive)
 		''' and in descending order. </exception>
-		Public Sub New(ByVal m As Integer, ByVal ks As Integer())
+		Public Sub New(  m As Integer,   ks As Integer())
 			' check m and ks
 			Me.m = m
 			Me.ks = ks.clone()
@@ -194,7 +194,7 @@ Namespace java.security.spec
 		''' <returns> true if {@code obj} is an instance
 		''' of ECFieldF2m and both {@code m} and the reduction
 		''' polynomial match, false otherwise. </returns>
-		Public Overrides Function Equals(ByVal obj As Object) As Boolean
+		Public Overrides Function Equals(  obj As Object) As Boolean
 			If Me Is obj Then Return True
 			If TypeOf obj Is ECFieldF2m Then Return ((m = CType(obj, ECFieldF2m).m) AndAlso (java.util.Arrays.Equals(ks, CType(obj, ECFieldF2m).ks)))
 			Return False

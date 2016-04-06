@@ -82,7 +82,7 @@ Namespace java.beans
 		''' Constructs a <code>PropertyChangeSupport</code> object.
 		''' </summary>
 		''' <param name="sourceBean">  The bean to be given as the source for any events. </param>
-		Public Sub New(ByVal sourceBean As Object)
+		Public Sub New(  sourceBean As Object)
 			If sourceBean Is Nothing Then Throw New NullPointerException
 			source = sourceBean
 		End Sub
@@ -96,7 +96,7 @@ Namespace java.beans
 		''' is taken.
 		''' </summary>
 		''' <param name="listener">  The PropertyChangeListener to be added </param>
-		Public Overridable Sub addPropertyChangeListener(ByVal listener As PropertyChangeListener)
+		Public Overridable Sub addPropertyChangeListener(  listener As PropertyChangeListener)
 			If listener Is Nothing Then Return
 			If TypeOf listener Is PropertyChangeListenerProxy Then
 				Dim proxy As PropertyChangeListenerProxy = CType(listener, PropertyChangeListenerProxy)
@@ -117,7 +117,7 @@ Namespace java.beans
 		''' thrown and no action is taken.
 		''' </summary>
 		''' <param name="listener">  The PropertyChangeListener to be removed </param>
-		Public Overridable Sub removePropertyChangeListener(ByVal listener As PropertyChangeListener)
+		Public Overridable Sub removePropertyChangeListener(  listener As PropertyChangeListener)
 			If listener Is Nothing Then Return
 			If TypeOf listener Is PropertyChangeListenerProxy Then
 				Dim proxy As PropertyChangeListenerProxy = CType(listener, PropertyChangeListenerProxy)
@@ -176,7 +176,7 @@ Namespace java.beans
 		''' </summary>
 		''' <param name="propertyName">  The name of the property to listen on. </param>
 		''' <param name="listener">  The PropertyChangeListener to be added </param>
-		Public Overridable Sub addPropertyChangeListener(ByVal propertyName As String, ByVal listener As PropertyChangeListener)
+		Public Overridable Sub addPropertyChangeListener(  propertyName As String,   listener As PropertyChangeListener)
 			If listener Is Nothing OrElse propertyName Is Nothing Then Return
 			listener = Me.map.extract(listener)
 			If listener IsNot Nothing Then Me.map.add(propertyName, listener)
@@ -194,7 +194,7 @@ Namespace java.beans
 		''' </summary>
 		''' <param name="propertyName">  The name of the property that was listened on. </param>
 		''' <param name="listener">  The PropertyChangeListener to be removed </param>
-		Public Overridable Sub removePropertyChangeListener(ByVal propertyName As String, ByVal listener As PropertyChangeListener)
+		Public Overridable Sub removePropertyChangeListener(  propertyName As String,   listener As PropertyChangeListener)
 			If listener Is Nothing OrElse propertyName Is Nothing Then Return
 			listener = Me.map.extract(listener)
 			If listener IsNot Nothing Then Me.map.remove(propertyName, listener)
@@ -210,7 +210,7 @@ Namespace java.beans
 		'''         or if <code>propertyName</code> is null, an empty array is
 		'''         returned.
 		''' @since 1.4 </returns>
-		Public Overridable Function getPropertyChangeListeners(ByVal propertyName As String) As PropertyChangeListener()
+		Public Overridable Function getPropertyChangeListeners(  propertyName As String) As PropertyChangeListener()
 			Return Me.map.getListeners(propertyName)
 		End Function
 
@@ -227,7 +227,7 @@ Namespace java.beans
 		''' <param name="propertyName">  the programmatic name of the property that was changed </param>
 		''' <param name="oldValue">      the old value of the property </param>
 		''' <param name="newValue">      the new value of the property </param>
-		Public Overridable Sub firePropertyChange(ByVal propertyName As String, ByVal oldValue As Object, ByVal newValue As Object)
+		Public Overridable Sub firePropertyChange(  propertyName As String,   oldValue As Object,   newValue As Object)
 			If oldValue Is Nothing OrElse newValue Is Nothing OrElse (Not oldValue.Equals(newValue)) Then firePropertyChange(New PropertyChangeEvent(Me.source, propertyName, oldValue, newValue))
 		End Sub
 
@@ -244,7 +244,7 @@ Namespace java.beans
 		''' <param name="propertyName">  the programmatic name of the property that was changed </param>
 		''' <param name="oldValue">      the old value of the property </param>
 		''' <param name="newValue">      the new value of the property </param>
-		Public Overridable Sub firePropertyChange(ByVal propertyName As String, ByVal oldValue As Integer, ByVal newValue As Integer)
+		Public Overridable Sub firePropertyChange(  propertyName As String,   oldValue As Integer,   newValue As Integer)
 			If oldValue <> newValue Then firePropertyChange(propertyName, Convert.ToInt32(oldValue), Convert.ToInt32(newValue))
 		End Sub
 
@@ -261,7 +261,7 @@ Namespace java.beans
 		''' <param name="propertyName">  the programmatic name of the property that was changed </param>
 		''' <param name="oldValue">      the old value of the property </param>
 		''' <param name="newValue">      the new value of the property </param>
-		Public Overridable Sub firePropertyChange(ByVal propertyName As String, ByVal oldValue As Boolean, ByVal newValue As Boolean)
+		Public Overridable Sub firePropertyChange(  propertyName As String,   oldValue As Boolean,   newValue As Boolean)
 			If oldValue <> newValue Then firePropertyChange(propertyName, Convert.ToBoolean(oldValue), Convert.ToBoolean(newValue))
 		End Sub
 
@@ -273,7 +273,7 @@ Namespace java.beans
 		''' No event is fired if the given event's old and new values are equal and non-null.
 		''' </summary>
 		''' <param name="event">  the {@code PropertyChangeEvent} to be fired </param>
-		Public Overridable Sub firePropertyChange(ByVal [event] As PropertyChangeEvent)
+		Public Overridable Sub firePropertyChange(  [event] As PropertyChangeEvent)
 			Dim oldValue As Object = [event].oldValue
 			Dim newValue As Object = [event].newValue
 			If oldValue Is Nothing OrElse newValue Is Nothing OrElse (Not oldValue.Equals(newValue)) Then
@@ -287,7 +287,7 @@ Namespace java.beans
 			End If
 		End Sub
 
-		Private Shared Sub fire(ByVal listeners As PropertyChangeListener(), ByVal [event] As PropertyChangeEvent)
+		Private Shared Sub fire(  listeners As PropertyChangeListener(),   [event] As PropertyChangeEvent)
 			If listeners IsNot Nothing Then
 				For Each listener As PropertyChangeListener In listeners
 					listener.propertyChange([event])
@@ -310,7 +310,7 @@ Namespace java.beans
 		''' <param name="oldValue">      the old value of the property </param>
 		''' <param name="newValue">      the new value of the property
 		''' @since 1.5 </param>
-		Public Overridable Sub fireIndexedPropertyChange(ByVal propertyName As String, ByVal index As Integer, ByVal oldValue As Object, ByVal newValue As Object)
+		Public Overridable Sub fireIndexedPropertyChange(  propertyName As String,   index As Integer,   oldValue As Object,   newValue As Object)
 			If oldValue Is Nothing OrElse newValue Is Nothing OrElse (Not oldValue.Equals(newValue)) Then firePropertyChange(New IndexedPropertyChangeEvent(source, propertyName, oldValue, newValue, index))
 		End Sub
 
@@ -329,7 +329,7 @@ Namespace java.beans
 		''' <param name="oldValue">      the old value of the property </param>
 		''' <param name="newValue">      the new value of the property
 		''' @since 1.5 </param>
-		Public Overridable Sub fireIndexedPropertyChange(ByVal propertyName As String, ByVal index As Integer, ByVal oldValue As Integer, ByVal newValue As Integer)
+		Public Overridable Sub fireIndexedPropertyChange(  propertyName As String,   index As Integer,   oldValue As Integer,   newValue As Integer)
 			If oldValue <> newValue Then fireIndexedPropertyChange(propertyName, index, Convert.ToInt32(oldValue), Convert.ToInt32(newValue))
 		End Sub
 
@@ -348,7 +348,7 @@ Namespace java.beans
 		''' <param name="oldValue">      the old value of the property </param>
 		''' <param name="newValue">      the new value of the property
 		''' @since 1.5 </param>
-		Public Overridable Sub fireIndexedPropertyChange(ByVal propertyName As String, ByVal index As Integer, ByVal oldValue As Boolean, ByVal newValue As Boolean)
+		Public Overridable Sub fireIndexedPropertyChange(  propertyName As String,   index As Integer,   oldValue As Boolean,   newValue As Boolean)
 			If oldValue <> newValue Then fireIndexedPropertyChange(propertyName, index, Convert.ToBoolean(oldValue), Convert.ToBoolean(newValue))
 		End Sub
 
@@ -359,7 +359,7 @@ Namespace java.beans
 		''' </summary>
 		''' <param name="propertyName">  the property name. </param>
 		''' <returns> true if there are one or more listeners for the given property </returns>
-		Public Overridable Function hasListeners(ByVal propertyName As String) As Boolean
+		Public Overridable Function hasListeners(  propertyName As String) As Boolean
 			Return Me.map.hasListeners(propertyName)
 		End Function
 
@@ -369,7 +369,7 @@ Namespace java.beans
 		''' At serialization time we skip non-serializable listeners and
 		''' only serialize the serializable listeners.
 		''' </summary>
-		Private Sub writeObject(ByVal s As java.io.ObjectOutputStream)
+		Private Sub writeObject(  s As java.io.ObjectOutputStream)
 			Dim children As Dictionary(Of String, PropertyChangeSupport) = Nothing
 			Dim listeners As PropertyChangeListener() = Nothing
 			SyncLock Me.map
@@ -399,7 +399,7 @@ Namespace java.beans
 			s.writeObject(Nothing)
 		End Sub
 
-		Private Sub readObject(ByVal s As java.io.ObjectInputStream)
+		Private Sub readObject(  s As java.io.ObjectInputStream)
 			Me.map = New PropertyChangeListenerMap
 
 			Dim fields As java.io.ObjectInputStream.GetField = s.readFields()
@@ -457,7 +457,7 @@ Namespace java.beans
 			''' </summary>
 			''' <param name="length">  the array length </param>
 			''' <returns>        an array with specified length </returns>
-			Protected Friend Overrides Function newArray(ByVal length As Integer) As PropertyChangeListener()
+			Protected Friend Overrides Function newArray(  length As Integer) As PropertyChangeListener()
 				Return If(0 < length, New PropertyChangeListener(length - 1){}, EMPTY)
 			End Function
 
@@ -468,14 +468,14 @@ Namespace java.beans
 			''' <param name="name">      the name of the property to listen on </param>
 			''' <param name="listener">  the listener to process events </param>
 			''' <returns>          a {@code PropertyChangeListenerProxy} object </returns>
-			Protected Friend Overrides Function newProxy(ByVal name As String, ByVal listener As PropertyChangeListener) As PropertyChangeListener
+			Protected Friend Overrides Function newProxy(  name As String,   listener As PropertyChangeListener) As PropertyChangeListener
 				Return New PropertyChangeListenerProxy(name, listener)
 			End Function
 
 			''' <summary>
 			''' {@inheritDoc}
 			''' </summary>
-			Public Function extract(ByVal listener As PropertyChangeListener) As PropertyChangeListener
+			Public Function extract(  listener As PropertyChangeListener) As PropertyChangeListener
 				Do While TypeOf listener Is PropertyChangeListenerProxy
 					listener = CType(listener, PropertyChangeListenerProxy).listener
 				Loop

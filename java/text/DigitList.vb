@@ -124,7 +124,7 @@ Namespace java.text
 		''' Set the rounding mode
 		''' </summary>
 		Friend Property roundingMode As java.math.RoundingMode
-			Set(ByVal r As java.math.RoundingMode)
+			Set(  r As java.math.RoundingMode)
 				roundingMode = r
 			End Set
 		End Property
@@ -144,7 +144,7 @@ Namespace java.text
 		''' <summary>
 		''' Appends a digit to the list, extending the list when necessary.
 		''' </summary>
-		Public Sub append(ByVal digit As Char)
+		Public Sub append(  digit As Char)
 			If count = digits.Length Then
 				Dim data As Char() = New Char(count + 100 - 1){}
 				Array.Copy(digits, 0, data, 0, count)
@@ -221,7 +221,7 @@ Namespace java.text
 		''' <param name="ignoreNegativeZero"> true if -0 should be regarded as identical to
 		''' +0; otherwise they are considered distinct </param>
 		''' <returns> true if this number fits into a Java long </returns>
-		Friend Function fitsIntoLong(ByVal isPositive As Boolean, ByVal ignoreNegativeZero As Boolean) As Boolean
+		Friend Function fitsIntoLong(  isPositive As Boolean,   ignoreNegativeZero As Boolean) As Boolean
 			' Figure out if the result will fit in a java.lang.[Long].  We have to
 			' first look for nonzero digits after the decimal point;
 			' then check the size.  If the digit count is 18 or less, then
@@ -266,7 +266,7 @@ Namespace java.text
 		''' or a value <= 0. </param>
 		''' <param name="maximumFractionDigits"> The most fractional digits which should
 		''' be converted. </param>
-		Friend Sub [set](ByVal isNegative As Boolean, ByVal source As Double, ByVal maximumFractionDigits As Integer)
+		Friend Sub [set](  isNegative As Boolean,   source As Double,   maximumFractionDigits As Integer)
 			[set](isNegative, source, maximumFractionDigits, True)
 		End Sub
 
@@ -280,7 +280,7 @@ Namespace java.text
 		''' be converted. </param>
 		''' <param name="fixedPoint"> If true, then maximumDigits is the maximum
 		''' fractional digits to be converted.  If false, total digits. </param>
-		Friend Sub [set](ByVal isNegative As Boolean, ByVal source As Double, ByVal maximumDigits As Integer, ByVal fixedPoint As Boolean)
+		Friend Sub [set](  isNegative As Boolean,   source As Double,   maximumDigits As Integer,   fixedPoint As Boolean)
 
 			Dim fdConverter As sun.misc.FloatingDecimal.BinaryToASCIIConverter = sun.misc.FloatingDecimal.getBinaryToASCIIConverter(source)
 			Dim hasBeenRoundedUp As Boolean = fdConverter.digitsRoundedUp()
@@ -297,7 +297,7 @@ Namespace java.text
 		''' <param name="roundedUp"> whether or not rounding up has already happened. </param>
 		''' <param name="valueExactAsDecimal"> whether or not collected digits provide
 		''' an exact decimal representation of the value. </param>
-		Private Sub [set](ByVal isNegative As Boolean, ByVal s As String, ByVal roundedUp As Boolean, ByVal valueExactAsDecimal As Boolean, ByVal maximumDigits As Integer, ByVal fixedPoint As Boolean)
+		Private Sub [set](  isNegative As Boolean,   s As String,   roundedUp As Boolean,   valueExactAsDecimal As Boolean,   maximumDigits As Integer,   fixedPoint As Boolean)
 
 			Me.isNegative = isNegative
 			Dim len As Integer = s.length()
@@ -380,7 +380,7 @@ Namespace java.text
 		''' an exact decimal representation of the value.
 		''' 
 		''' Upon return, count will be less than or equal to maximumDigits. </param>
-		Private Sub round(ByVal maximumDigits As Integer, ByVal alreadyRounded As Boolean, ByVal valueExactAsDecimal As Boolean)
+		Private Sub round(  maximumDigits As Integer,   alreadyRounded As Boolean,   valueExactAsDecimal As Boolean)
 			' Eliminate digits beyond maximum digits to be displayed.
 			' Round up if appropriate.
 			If maximumDigits >= 0 AndAlso maximumDigits < count Then
@@ -432,7 +432,7 @@ Namespace java.text
 		'''            mode being set to RoundingMode.UNNECESSARY </exception>
 		''' <returns> true if digit <code>maximumDigits-1</code> should be
 		''' incremented </returns>
-		Private Function shouldRoundUp(ByVal maximumDigits As Integer, ByVal alreadyRounded As Boolean, ByVal valueExactAsDecimal As Boolean) As Boolean
+		Private Function shouldRoundUp(  maximumDigits As Integer,   alreadyRounded As Boolean,   valueExactAsDecimal As Boolean) As Boolean
 			If maximumDigits < count Then
 	'            
 	'             * To avoid erroneous double-rounding or truncation when converting
@@ -560,7 +560,7 @@ Namespace java.text
 		''' <summary>
 		''' Utility routine to set the value of the digit list from a long
 		''' </summary>
-		Friend Sub [set](ByVal isNegative As Boolean, ByVal source As Long)
+		Friend Sub [set](  isNegative As Boolean,   source As Long)
 			[set](isNegative, source, 0)
 		End Sub
 
@@ -572,7 +572,7 @@ Namespace java.text
 		''' <param name="maximumDigits"> The most digits which should be converted.
 		''' If maximumDigits is lower than the number of significant digits
 		''' in source, the representation will be rounded.  Ignored if <= 0. </param>
-		Friend Sub [set](ByVal isNegative As Boolean, ByVal source As Long, ByVal maximumDigits As Integer)
+		Friend Sub [set](  isNegative As Boolean,   source As Long,   maximumDigits As Integer)
 			Me.isNegative = isNegative
 
 			' This method does not expect a negative number. However,
@@ -623,7 +623,7 @@ Namespace java.text
 		''' be converted. </param>
 		''' <param name="fixedPoint"> If true, then maximumDigits is the maximum
 		''' fractional digits to be converted.  If false, total digits. </param>
-		Friend Sub [set](ByVal isNegative As Boolean, ByVal source As Decimal, ByVal maximumDigits As Integer, ByVal fixedPoint As Boolean)
+		Friend Sub [set](  isNegative As Boolean,   source As Decimal,   maximumDigits As Integer,   fixedPoint As Boolean)
 			Dim s As String = source.ToString()
 			extendDigits(s.length())
 
@@ -637,7 +637,7 @@ Namespace java.text
 		''' <param name="maximumDigits"> The most digits which should be converted.
 		''' If maximumDigits is lower than the number of significant digits
 		''' in source, the representation will be rounded.  Ignored if <= 0. </param>
-		Friend Sub [set](ByVal isNegative As Boolean, ByVal source As System.Numerics.BigInteger, ByVal maximumDigits As Integer)
+		Friend Sub [set](  isNegative As Boolean,   source As System.Numerics.BigInteger,   maximumDigits As Integer)
 			Me.isNegative = isNegative
 			Dim s As String = source.ToString()
 			Dim len As Integer = s.length()
@@ -659,7 +659,7 @@ Namespace java.text
 		''' <summary>
 		''' equality test between two digit lists.
 		''' </summary>
-		Public Overrides Function Equals(ByVal obj As Object) As Boolean
+		Public Overrides Function Equals(  obj As Object) As Boolean
 			If Me Is obj Then ' quick check Return True
 			If Not(TypeOf obj Is DigitList) Then ' (1) same object? Return False
 			Dim other As DigitList = CType(obj, DigitList)
@@ -715,7 +715,7 @@ Namespace java.text
 			End Get
 		End Property
 
-		Private Shared Function parseInt(ByVal str As Char(), ByVal offset As Integer, ByVal strLen As Integer) As Integer
+		Private Shared Function parseInt(  str As Char(),   offset As Integer,   strLen As Integer) As Integer
 			Dim c As Char
 			Dim positive As Boolean = True
 			c = str(offset)
@@ -765,11 +765,11 @@ Namespace java.text
 			End Get
 		End Property
 
-		Private Sub extendDigits(ByVal len As Integer)
+		Private Sub extendDigits(  len As Integer)
 			If len > digits.Length Then digits = New Char(len - 1){}
 		End Sub
 
-		Private Function getDataChars(ByVal length As Integer) As Char()
+		Private Function getDataChars(  length As Integer) As Char()
 			If data Is Nothing OrElse data.Length < length Then data = New Char(length - 1){}
 			Return data
 		End Function

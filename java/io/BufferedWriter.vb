@@ -85,7 +85,7 @@ Namespace java.io
 		''' output buffer.
 		''' </summary>
 		''' <param name="out">  A Writer </param>
-		Public Sub New(ByVal out As Writer)
+		Public Sub New(  out As Writer)
 			Me.New(out, defaultCharBufferSize)
 		End Sub
 
@@ -97,7 +97,7 @@ Namespace java.io
 		''' <param name="sz">   Output-buffer size, a positive integer
 		''' </param>
 		''' <exception cref="IllegalArgumentException">  If {@code sz <= 0} </exception>
-		Public Sub New(ByVal out As Writer, ByVal sz As Integer)
+		Public Sub New(  out As Writer,   sz As Integer)
 			MyBase.New(out)
 			If sz <= 0 Then Throw New IllegalArgumentException("Buffer size <= 0")
 			Me.out = out
@@ -132,7 +132,7 @@ Namespace java.io
 		''' Writes a single character.
 		''' </summary>
 		''' <exception cref="IOException">  If an I/O error occurs </exception>
-		Public Overrides Sub write(ByVal c As Integer)
+		Public Overrides Sub write(  c As Integer)
 			SyncLock lock
 				ensureOpen()
 				If nextChar >= nChars Then flushBuffer()
@@ -145,7 +145,7 @@ Namespace java.io
 		''' Our own little min method, to avoid loading java.lang.Math if we've run
 		''' out of file descriptors and we're trying to print a stack trace.
 		''' </summary>
-		Private Function min(ByVal a As Integer, ByVal b As Integer) As Integer
+		Private Function min(  a As Integer,   b As Integer) As Integer
 			If a < b Then Return a
 			Return b
 		End Function

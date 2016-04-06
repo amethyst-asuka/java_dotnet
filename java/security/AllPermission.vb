@@ -72,7 +72,7 @@ Namespace java.security
 		''' </summary>
 		''' <param name="name"> ignored </param>
 		''' <param name="actions"> ignored. </param>
-		Public Sub New(ByVal name As String, ByVal actions As String)
+		Public Sub New(  name As String,   actions As String)
 			Me.New()
 		End Sub
 
@@ -83,7 +83,7 @@ Namespace java.security
 		''' <param name="p"> the permission to check against.
 		''' </param>
 		''' <returns> return </returns>
-		Public Overrides Function implies(ByVal p As Permission) As Boolean
+		Public Overrides Function implies(  p As Permission) As Boolean
 			 Return True
 		End Function
 
@@ -93,7 +93,7 @@ Namespace java.security
 		''' </summary>
 		''' <param name="obj"> the object we are testing for equality with this object. </param>
 		''' <returns> true if <i>obj</i> is an AllPermission, false otherwise. </returns>
-		Public Overrides Function Equals(ByVal obj As Object) As Boolean
+		Public Overrides Function Equals(  obj As Object) As Boolean
 			Return (TypeOf obj Is AllPermission)
 		End Function
 
@@ -174,7 +174,7 @@ Namespace java.security
 		''' <exception cref="SecurityException"> - if this AllPermissionCollection object
 		'''                                has been marked readonly </exception>
 
-		Public Overrides Sub add(ByVal permission As Permission)
+		Public Overrides Sub add(  permission As Permission)
 			If Not(TypeOf permission Is AllPermission) Then Throw New IllegalArgumentException("invalid permission: " & permission)
 			If [readOnly] Then Throw New SecurityException("attempt to add a Permission to a readonly PermissionCollection")
 
@@ -189,7 +189,7 @@ Namespace java.security
 		''' </param>
 		''' <returns> always returns true. </returns>
 
-		Public Overrides Function implies(ByVal permission As Permission) As Boolean
+		Public Overrides Function implies(  permission As Permission) As Boolean
 			Return all_allowed ' No sync; staleness OK
 		End Function
 

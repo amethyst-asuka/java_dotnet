@@ -99,7 +99,7 @@ Namespace java.awt.image
 		''' <exception cref="ImagingOpException"> if the transform is non-invertible. </exception>
 		''' <seealso cref= java.awt.RenderingHints#KEY_INTERPOLATION </seealso>
 		''' <seealso cref= java.awt.RenderingHints#KEY_RENDERING </seealso>
-		Public Sub New(ByVal xform As java.awt.geom.AffineTransform, ByVal hints As java.awt.RenderingHints)
+		Public Sub New(  xform As java.awt.geom.AffineTransform,   hints As java.awt.RenderingHints)
 			validateTransform(xform)
 			Me.xform = CType(xform.clone(), java.awt.geom.AffineTransform)
 			Me.hints = hints
@@ -136,7 +136,7 @@ Namespace java.awt.image
 		''' <seealso cref="#TYPE_BILINEAR TYPE_BILINEAR"/>,
 		''' <seealso cref="#TYPE_BICUBIC TYPE_BICUBIC"/>. </param>
 		''' <exception cref="ImagingOpException"> if the transform is non-invertible. </exception>
-		Public Sub New(ByVal xform As java.awt.geom.AffineTransform, ByVal interpolationType As Integer)
+		Public Sub New(  xform As java.awt.geom.AffineTransform,   interpolationType As Integer)
 			validateTransform(xform)
 			Me.xform = CType(xform.clone(), java.awt.geom.AffineTransform)
 			Select Case interpolationType
@@ -193,7 +193,7 @@ Namespace java.awt.image
 		'''         caused by an invalid image format, tile format, or
 		'''         image-processing operation, or any other unsupported
 		'''         operation. </exception>
-		Public Function filter(ByVal src As BufferedImage, ByVal dst As BufferedImage) As BufferedImage Implements BufferedImageOp.filter
+		Public Function filter(  src As BufferedImage,   dst As BufferedImage) As BufferedImage Implements BufferedImageOp.filter
 
 			If src Is Nothing Then Throw New NullPointerException("src image is null")
 			If src Is dst Then Throw New IllegalArgumentException("src image cannot be the " & "same as the dst image")
@@ -292,7 +292,7 @@ Namespace java.awt.image
 		'''         caused by an invalid image format, tile format, or
 		'''         image-processing operation, or any other unsupported
 		'''         operation. </exception>
-		Public Function filter(ByVal src As Raster, ByVal dst As WritableRaster) As WritableRaster Implements RasterOp.filter
+		Public Function filter(  src As Raster,   dst As WritableRaster) As WritableRaster Implements RasterOp.filter
 			If src Is Nothing Then Throw New NullPointerException("src image is null")
 			If dst Is Nothing Then dst = createCompatibleDestRaster(src)
 			If src Is dst Then Throw New IllegalArgumentException("src image cannot be the " & "same as the dst image")
@@ -312,7 +312,7 @@ Namespace java.awt.image
 		''' </param>
 		''' <returns> The <CODE>Rectangle2D</CODE> representing the destination's
 		''' bounding box. </returns>
-		Public Function getBounds2D(ByVal src As BufferedImage) As java.awt.geom.Rectangle2D Implements BufferedImageOp.getBounds2D
+		Public Function getBounds2D(  src As BufferedImage) As java.awt.geom.Rectangle2D Implements BufferedImageOp.getBounds2D
 			Return getBounds2D(src.raster)
 		End Function
 
@@ -326,7 +326,7 @@ Namespace java.awt.image
 		''' </param>
 		''' <returns> The <CODE>Rectangle2D</CODE> representing the destination's
 		''' bounding box. </returns>
-		Public Function getBounds2D(ByVal src As Raster) As java.awt.geom.Rectangle2D Implements RasterOp.getBounds2D
+		Public Function getBounds2D(  src As Raster) As java.awt.geom.Rectangle2D Implements RasterOp.getBounds2D
 			Dim w As Integer = src.width
 			Dim h As Integer = src.height
 
@@ -370,7 +370,7 @@ Namespace java.awt.image
 		''' an appropriate <CODE>ColorModel</CODE> is used.
 		''' </param>
 		''' <returns> The zeroed destination image. </returns>
-		Public Overridable Function createCompatibleDestImage(ByVal src As BufferedImage, ByVal destCM As ColorModel) As BufferedImage Implements BufferedImageOp.createCompatibleDestImage
+		Public Overridable Function createCompatibleDestImage(  src As BufferedImage,   destCM As ColorModel) As BufferedImage Implements BufferedImageOp.createCompatibleDestImage
 			Dim image_Renamed As BufferedImage
 			Dim r As java.awt.Rectangle = getBounds2D(src).bounds
 
@@ -405,7 +405,7 @@ Namespace java.awt.image
 		''' <param name="src"> The <CODE>Raster</CODE> to be transformed.
 		''' </param>
 		''' <returns> The zeroed destination <CODE>Raster</CODE>. </returns>
-		Public Overridable Function createCompatibleDestRaster(ByVal src As Raster) As WritableRaster Implements RasterOp.createCompatibleDestRaster
+		Public Overridable Function createCompatibleDestRaster(  src As Raster) As WritableRaster Implements RasterOp.createCompatibleDestRaster
 			Dim r As java.awt.geom.Rectangle2D = getBounds2D(src)
 
 			Return src.createCompatibleWritableRaster(CInt(Fix(r.x)), CInt(Fix(r.y)), CInt(Fix(r.width)), CInt(Fix(r.height)))
@@ -422,7 +422,7 @@ Namespace java.awt.image
 		''' </param>
 		''' <returns> The <CODE>Point2D</CODE> in the destination that corresponds to
 		''' the specified point in the source. </returns>
-		Public Function getPoint2D(ByVal srcPt As java.awt.geom.Point2D, ByVal dstPt As java.awt.geom.Point2D) As java.awt.geom.Point2D Implements BufferedImageOp.getPoint2D, RasterOp.getPoint2D
+		Public Function getPoint2D(  srcPt As java.awt.geom.Point2D,   dstPt As java.awt.geom.Point2D) As java.awt.geom.Point2D Implements BufferedImageOp.getPoint2D, RasterOp.getPoint2D
 			Return xform.transform(srcPt, dstPt)
 		End Function
 
@@ -466,7 +466,7 @@ Namespace java.awt.image
 		' We need to be able to invert the transform if we want to
 		' transform the image.  If the determinant of the matrix is 0,
 		' then we can't invert the transform.
-		Friend Overridable Sub validateTransform(ByVal xform As java.awt.geom.AffineTransform)
+		Friend Overridable Sub validateTransform(  xform As java.awt.geom.AffineTransform)
 			If System.Math.Abs(xform.determinant) <= java.lang.[Double].MIN_VALUE Then Throw New ImagingOpException("Unable to invert transform " & xform)
 		End Sub
 	End Class

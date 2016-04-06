@@ -163,7 +163,7 @@ Namespace java.lang.invoke
 		''' <exception cref="NullPointerException"> if either argument is null </exception>
 		''' <exception cref="IllegalArgumentException"> if the two method types do not match </exception>
 		''' <seealso cref= MethodHandles#guardWithTest </seealso>
-		Public Overridable Function guardWithTest(ByVal target As MethodHandle, ByVal fallback As MethodHandle) As MethodHandle
+		Public Overridable Function guardWithTest(  target As MethodHandle,   fallback As MethodHandle) As MethodHandle
 			If mcs.target Is K_false Then Return fallback ' already invalid
 			Return MethodHandles.guardWithTest(mcsInvoker, target, fallback)
 		End Function
@@ -208,7 +208,7 @@ Namespace java.lang.invoke
 		''' <param name="switchPoints"> an array of call sites to be synchronized </param>
 		''' <exception cref="NullPointerException"> if the {@code switchPoints} array reference is null
 		'''                              or the array contains a null </exception>
-		Public Shared Sub invalidateAll(ByVal switchPoints As SwitchPoint())
+		Public Shared Sub invalidateAll(  switchPoints As SwitchPoint())
 			If switchPoints.Length = 0 Then Return
 			Dim sites As MutableCallSite() = New MutableCallSite(switchPoints.Length - 1){}
 			For i As Integer = 0 To switchPoints.Length - 1

@@ -44,7 +44,7 @@ Namespace java.awt.geom
 		Friend arcSegs As Integer
 		Friend lineSegs As Integer
 
-		Friend Sub New(ByVal a As Arc2D, ByVal at As AffineTransform)
+		Friend Sub New(  a As Arc2D,   at As AffineTransform)
 			Me.w = a.width / 2
 			Me.h = a.height / 2
 			Me.x = a.x + w
@@ -187,7 +187,7 @@ Namespace java.awt.geom
 	'     *     = sin(angb) / (1 + cos(angb))
 	'     *
 	'     
-		Private Shared Function btan(ByVal increment As Double) As Double
+		Private Shared Function btan(  increment As Double) As Double
 			increment /= 2.0
 			Return 4.0 / 3.0 * System.Math.Sin(increment) / (1.0 + System.Math.Cos(increment))
 		End Function
@@ -209,7 +209,7 @@ Namespace java.awt.geom
 		''' <seealso cref= #SEG_QUADTO </seealso>
 		''' <seealso cref= #SEG_CUBICTO </seealso>
 		''' <seealso cref= #SEG_CLOSE </seealso>
-		Public Overridable Function currentSegment(ByVal coords As Single()) As Integer Implements PathIterator.currentSegment
+		Public Overridable Function currentSegment(  coords As Single()) As Integer Implements PathIterator.currentSegment
 			If done Then Throw New NoSuchElementException("arc iterator out of bounds")
 			Dim angle As Double = angStRad
 			If index = 0 Then
@@ -258,7 +258,7 @@ Namespace java.awt.geom
 		''' <seealso cref= #SEG_QUADTO </seealso>
 		''' <seealso cref= #SEG_CUBICTO </seealso>
 		''' <seealso cref= #SEG_CLOSE </seealso>
-		Public Overridable Function currentSegment(ByVal coords As Double()) As Integer Implements PathIterator.currentSegment
+		Public Overridable Function currentSegment(  coords As Double()) As Integer Implements PathIterator.currentSegment
 			If done Then Throw New NoSuchElementException("arc iterator out of bounds")
 			Dim angle As Double = angStRad
 			If index = 0 Then

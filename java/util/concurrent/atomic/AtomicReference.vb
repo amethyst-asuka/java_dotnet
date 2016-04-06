@@ -66,7 +66,7 @@ Namespace java.util.concurrent.atomic
 		''' Creates a new AtomicReference with the given initial value.
 		''' </summary>
 		''' <param name="initialValue"> the initial value </param>
-		Public Sub New(ByVal initialValue As V)
+		Public Sub New(  initialValue As V)
 			value = initialValue
 		End Sub
 
@@ -88,7 +88,7 @@ Namespace java.util.concurrent.atomic
 		''' Sets to the given value.
 		''' </summary>
 		''' <param name="newValue"> the new value </param>
-		Public Sub [set](ByVal newValue As V)
+		Public Sub [set](  newValue As V)
 			value = newValue
 		End Sub
 
@@ -97,7 +97,7 @@ Namespace java.util.concurrent.atomic
 		''' </summary>
 		''' <param name="newValue"> the new value
 		''' @since 1.6 </param>
-		Public Sub lazySet(ByVal newValue As V)
+		Public Sub lazySet(  newValue As V)
 			unsafe.putOrderedObject(Me, valueOffset, newValue)
 		End Sub
 
@@ -108,7 +108,7 @@ Namespace java.util.concurrent.atomic
 		''' <param name="update"> the new value </param>
 		''' <returns> {@code true} if successful. False return indicates that
 		''' the actual value was not equal to the expected value. </returns>
-		Public Function compareAndSet(ByVal expect As V, ByVal update As V) As Boolean
+		Public Function compareAndSet(  expect As V,   update As V) As Boolean
 			Return unsafe.compareAndSwapObject(Me, valueOffset, expect, update)
 		End Function
 
@@ -123,7 +123,7 @@ Namespace java.util.concurrent.atomic
 		''' <param name="expect"> the expected value </param>
 		''' <param name="update"> the new value </param>
 		''' <returns> {@code true} if successful </returns>
-		Public Function weakCompareAndSet(ByVal expect As V, ByVal update As V) As Boolean
+		Public Function weakCompareAndSet(  expect As V,   update As V) As Boolean
 			Return unsafe.compareAndSwapObject(Me, valueOffset, expect, update)
 		End Function
 
@@ -133,7 +133,7 @@ Namespace java.util.concurrent.atomic
 		''' <param name="newValue"> the new value </param>
 		''' <returns> the previous value </returns>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Function getAndSet(ByVal newValue As V) As V
+		Public Function getAndSet(  newValue As V) As V
 			Return CType(unsafe.getAndSetObject(Me, valueOffset, newValue), V)
 		End Function
 
@@ -146,7 +146,7 @@ Namespace java.util.concurrent.atomic
 		''' <param name="updateFunction"> a side-effect-free function </param>
 		''' <returns> the previous value
 		''' @since 1.8 </returns>
-		Public Function getAndUpdate(ByVal updateFunction As java.util.function.UnaryOperator(Of V)) As V
+		Public Function getAndUpdate(  updateFunction As java.util.function.UnaryOperator(Of V)) As V
 			Dim prev, [next] As V
 			Do
 				prev = [get]()
@@ -164,7 +164,7 @@ Namespace java.util.concurrent.atomic
 		''' <param name="updateFunction"> a side-effect-free function </param>
 		''' <returns> the updated value
 		''' @since 1.8 </returns>
-		Public Function updateAndGet(ByVal updateFunction As java.util.function.UnaryOperator(Of V)) As V
+		Public Function updateAndGet(  updateFunction As java.util.function.UnaryOperator(Of V)) As V
 			Dim prev, [next] As V
 			Do
 				prev = [get]()
@@ -186,7 +186,7 @@ Namespace java.util.concurrent.atomic
 		''' <param name="accumulatorFunction"> a side-effect-free function of two arguments </param>
 		''' <returns> the previous value
 		''' @since 1.8 </returns>
-		Public Function getAndAccumulate(ByVal x As V, ByVal accumulatorFunction As java.util.function.BinaryOperator(Of V)) As V
+		Public Function getAndAccumulate(  x As V,   accumulatorFunction As java.util.function.BinaryOperator(Of V)) As V
 			Dim prev, [next] As V
 			Do
 				prev = [get]()
@@ -208,7 +208,7 @@ Namespace java.util.concurrent.atomic
 		''' <param name="accumulatorFunction"> a side-effect-free function of two arguments </param>
 		''' <returns> the updated value
 		''' @since 1.8 </returns>
-		Public Function accumulateAndGet(ByVal x As V, ByVal accumulatorFunction As java.util.function.BinaryOperator(Of V)) As V
+		Public Function accumulateAndGet(  x As V,   accumulatorFunction As java.util.function.BinaryOperator(Of V)) As V
 			Dim prev, [next] As V
 			Do
 				prev = [get]()

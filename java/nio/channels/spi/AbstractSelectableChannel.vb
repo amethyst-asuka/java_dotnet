@@ -74,7 +74,7 @@ Namespace java.nio.channels.spi
 		''' </summary>
 		''' <param name="provider">
 		'''         The provider that created this channel </param>
-		Protected Friend Sub New(ByVal provider As SelectorProvider)
+		Protected Friend Sub New(  provider As SelectorProvider)
 			Me.provider_Renamed = provider
 		End Sub
 
@@ -89,7 +89,7 @@ Namespace java.nio.channels.spi
 
 		' -- Utility methods for the key set --
 
-		Private Sub addKey(ByVal k As SelectionKey)
+		Private Sub addKey(  k As SelectionKey)
 			Debug.Assert(Thread.holdsLock(keyLock))
 			Dim i As Integer = 0
 			If (keys IsNot Nothing) AndAlso (keyCount < keys.Length) Then
@@ -113,7 +113,7 @@ Namespace java.nio.channels.spi
 			keyCount += 1
 		End Sub
 
-		Private Function findKey(ByVal sel As Selector) As SelectionKey
+		Private Function findKey(  sel As Selector) As SelectionKey
 			SyncLock keyLock
 				If keys Is Nothing Then Return Nothing
 				For i As Integer = 0 To keys.Length - 1
@@ -123,7 +123,7 @@ Namespace java.nio.channels.spi
 			End SyncLock
 		End Function
 
-		Friend Overridable Sub removeKey(ByVal k As SelectionKey) ' package-private
+		Friend Overridable Sub removeKey(  k As SelectionKey) ' package-private
 			SyncLock keyLock
 				For i As Integer = 0 To keys.Length - 1
 					If keys(i) Is k Then
@@ -156,7 +156,7 @@ Namespace java.nio.channels.spi
 			End Get
 		End Property
 
-		Public NotOverridable Overrides Function keyFor(ByVal sel As Selector) As SelectionKey
+		Public NotOverridable Overrides Function keyFor(  sel As Selector) As SelectionKey
 			Return findKey(sel)
 		End Function
 
@@ -185,7 +185,7 @@ Namespace java.nio.channels.spi
 		''' <exception cref="CancelledKeyException"> {@inheritDoc}
 		''' </exception>
 		''' <exception cref="IllegalArgumentException"> {@inheritDoc} </exception>
-		Public NotOverridable Overrides Function register(ByVal sel As Selector, ByVal ops As Integer, ByVal att As Object) As SelectionKey
+		Public NotOverridable Overrides Function register(  sel As Selector,   ops As Integer,   att As Object) As SelectionKey
 			SyncLock regLock
 				If Not open Then Throw New ClosedChannelException
 				If (ops And (Not validOps())) <> 0 Then Throw New IllegalArgumentException
@@ -271,7 +271,7 @@ Namespace java.nio.channels.spi
 		''' implConfigureBlocking} method, while holding the appropriate locks, in
 		''' order to change the mode.  </p>
 		''' </summary>
-		Public NotOverridable Overrides Function configureBlocking(ByVal block As Boolean) As SelectableChannel
+		Public NotOverridable Overrides Function configureBlocking(  block As Boolean) As SelectableChannel
 			SyncLock regLock
 				If Not open Then Throw New ClosedChannelException
 				If blocking = block Then Return Me
@@ -296,7 +296,7 @@ Namespace java.nio.channels.spi
 		''' </param>
 		''' <exception cref="IOException">
 		'''         If an I/O error occurs </exception>
-		Protected Friend MustOverride Sub implConfigureBlocking(ByVal block As Boolean)
+		Protected Friend MustOverride Sub implConfigureBlocking(  block As Boolean)
 
 	End Class
 

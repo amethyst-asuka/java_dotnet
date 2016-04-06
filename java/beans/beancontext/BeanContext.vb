@@ -64,7 +64,7 @@ Namespace java.beans.beancontext
 		''' <exception cref="IOException"> if an IO problem occurs </exception>
 		''' <exception cref="ClassNotFoundException"> if the class identified
 		''' by the beanName parameter is not found </exception>
-		Function instantiateChild(ByVal beanName As String) As Object
+		Function instantiateChild(  beanName As String) As Object
 
 		''' <summary>
 		''' Analagous to <code>java.lang.ClassLoader.getResourceAsStream()</code>,
@@ -79,7 +79,7 @@ Namespace java.beans.beancontext
 		''' be found. </returns>
 		''' <exception cref="IllegalArgumentException"> if
 		''' the resource is not valid </exception>
-		Function getResourceAsStream(ByVal name As String, ByVal bcc As BeanContextChild) As java.io.InputStream
+		Function getResourceAsStream(  name As String,   bcc As BeanContextChild) As java.io.InputStream
 
 		''' <summary>
 		''' Analagous to <code>java.lang.ClassLoader.getResource()</code>, this
@@ -93,7 +93,7 @@ Namespace java.beans.beancontext
 		''' resource for the specified child </returns>
 		''' <exception cref="IllegalArgumentException">
 		''' if the resource is not valid </exception>
-		Function getResource(ByVal name As String, ByVal bcc As BeanContextChild) As java.net.URL
+		Function getResource(  name As String,   bcc As BeanContextChild) As java.net.URL
 
 		 ''' <summary>
 		 ''' Adds the specified <code>BeanContextMembershipListener</code>
@@ -102,7 +102,7 @@ Namespace java.beans.beancontext
 		 ''' or removes a child <code>Component</code>(s).
 		 ''' </summary>
 		 ''' <param name="bcml"> the BeanContextMembershipListener to be added </param>
-		Sub addBeanContextMembershipListener(ByVal bcml As BeanContextMembershipListener)
+		Sub addBeanContextMembershipListener(  bcml As BeanContextMembershipListener)
 
 		 ''' <summary>
 		 ''' Removes the specified <code>BeanContextMembershipListener</code>
@@ -111,7 +111,7 @@ Namespace java.beans.beancontext
 		 ''' </summary>
 		 ''' <param name="bcml"> the <code>BeanContextMembershipListener</code>
 		 ''' to be removed </param>
-		Sub removeBeanContextMembershipListener(ByVal bcml As BeanContextMembershipListener)
+		Sub removeBeanContextMembershipListener(  bcml As BeanContextMembershipListener)
 
 		''' <summary>
 		''' This global lock is used by both <code>BeanContext</code>

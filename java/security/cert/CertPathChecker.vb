@@ -50,7 +50,7 @@ Namespace java.security.cert
 		'''        {@code false}, from trust anchor to target (reverse). </param>
 		''' <exception cref="CertPathValidatorException"> if this {@code CertPathChecker} is
 		'''         unable to check certificates in the specified order </exception>
-		Sub init(ByVal forward As Boolean)
+		Sub init(  forward As Boolean)
 
 		''' <summary>
 		''' Indicates if forward checking is supported. Forward checking refers
@@ -70,7 +70,7 @@ Namespace java.security.cert
 		''' <param name="cert"> the {@code Certificate} to be checked </param>
 		''' <exception cref="CertPathValidatorException"> if the specified certificate does
 		'''         not pass the check </exception>
-		Sub check(ByVal cert As Certificate)
+		Sub check(  cert As Certificate)
 	End Interface
 
 End Namespace

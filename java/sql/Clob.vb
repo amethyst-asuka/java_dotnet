@@ -89,7 +89,7 @@ Namespace java.sql
 	  ''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 	  ''' this method
 	  ''' @since 1.2 </exception>
-	  Function getSubString(ByVal pos As Long, ByVal length As Integer) As String
+	  Function getSubString(  pos As Long,   length As Integer) As String
 
 	  ''' <summary>
 	  ''' Retrieves the <code>CLOB</code> value designated by this <code>Clob</code>
@@ -136,7 +136,7 @@ Namespace java.sql
 	  ''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 	  ''' this method
 	  ''' @since 1.2 </exception>
-	  Function position(ByVal searchstr As String, ByVal start As Long) As Long
+	  Function position(  searchstr As String,   start As Long) As Long
 
 	  ''' <summary>
 	  ''' Retrieves the character position at which the specified
@@ -154,7 +154,7 @@ Namespace java.sql
 	  ''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 	  ''' this method
 	  ''' @since 1.2 </exception>
-	  Function position(ByVal searchstr As Clob, ByVal start As Long) As Long
+	  Function position(  searchstr As Clob,   start As Long) As Long
 
 		'---------------------------- jdbc 3.0 -----------------------------------
 
@@ -185,7 +185,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.4 </exception>
-		Function setString(ByVal pos As Long, ByVal str As String) As Integer
+		Function setString(  pos As Long,   str As String) As Integer
 
 		''' <summary>
 		''' Writes <code>len</code> characters of <code>str</code>, starting
@@ -216,7 +216,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.4 </exception>
-		Function setString(ByVal pos As Long, ByVal str As String, ByVal offset As Integer, ByVal len As Integer) As Integer
+		Function setString(  pos As Long,   str As String,   offset As Integer,   len As Integer) As Integer
 
 		''' <summary>
 		''' Retrieves a stream to be used to write Ascii characters to the
@@ -244,7 +244,7 @@ Namespace java.sql
 		''' <seealso cref= #getAsciiStream
 		''' 
 		''' @since 1.4 </seealso>
-		Function setAsciiStream(ByVal pos As Long) As java.io.OutputStream
+		Function setAsciiStream(  pos As Long) As java.io.OutputStream
 
 		''' <summary>
 		''' Retrieves a stream to be used to write a stream of Unicode characters
@@ -273,7 +273,7 @@ Namespace java.sql
 		''' <seealso cref= #getCharacterStream
 		''' 
 		''' @since 1.4 </seealso>
-		Function setCharacterStream(ByVal pos As Long) As java.io.Writer
+		Function setCharacterStream(  pos As Long) As java.io.Writer
 
 		''' <summary>
 		''' Truncates the <code>CLOB</code> value that this <code>Clob</code>
@@ -294,7 +294,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.4 </exception>
-		Sub truncate(ByVal len As Long)
+		Sub truncate(  len As Long)
 
 		''' <summary>
 		''' This method frees the <code>Clob</code> object and releases the resources the resources
@@ -329,7 +329,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.6 </exception>
-		Function getCharacterStream(ByVal pos As Long, ByVal length As Long) As java.io.Reader
+		Function getCharacterStream(  pos As Long,   length As Long) As java.io.Reader
 
 	End Interface
 

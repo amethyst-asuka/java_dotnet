@@ -86,7 +86,7 @@ Namespace java.awt.dnd
 		'''                                  description for <seealso cref="DragGestureEvent"/> </exception>
 		''' <seealso cref= java.awt.dnd.DnDConstants </seealso>
 
-		Public Sub New(Of T1 As java.awt.event.InputEvent)(ByVal dgr As DragGestureRecognizer, ByVal act As Integer, ByVal ori As java.awt.Point, ByVal evs As IList(Of T1))
+		Public Sub New(Of T1 As java.awt.event.InputEvent)(  dgr As DragGestureRecognizer,   act As Integer,   ori As java.awt.Point,   evs As IList(Of T1))
 			MyBase.New(dgr)
 
 			component_Renamed = dgr.component
@@ -178,7 +178,7 @@ Namespace java.awt.dnd
 		''' <P> </param>
 		''' <returns> an array of the events comprising the gesture </returns>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Overridable Function toArray(ByVal array As Object()) As Object()
+		Public Overridable Function toArray(  array As Object()) As Object()
 			Return events.ToArray(array)
 		End Function
 
@@ -230,7 +230,7 @@ Namespace java.awt.dnd
 		'''         still executing. </exception>
 		''' <exception cref="NullPointerException"> if the {@code Transferable} is {@code null}
 		''' @since 1.4 </exception>
-		Public Overridable Sub startDrag(ByVal dragCursor As java.awt.Cursor, ByVal transferable As java.awt.datatransfer.Transferable)
+		Public Overridable Sub startDrag(  dragCursor As java.awt.Cursor,   transferable As java.awt.datatransfer.Transferable)
 			dragSource.startDrag(Me, dragCursor, transferable, Nothing)
 		End Sub
 
@@ -254,7 +254,7 @@ Namespace java.awt.dnd
 		''' attempts to start a drag while an existing
 		''' drag operation is still executing. </exception>
 
-		Public Overridable Sub startDrag(ByVal dragCursor As java.awt.Cursor, ByVal transferable As java.awt.datatransfer.Transferable, ByVal dsl As DragSourceListener)
+		Public Overridable Sub startDrag(  dragCursor As java.awt.Cursor,   transferable As java.awt.datatransfer.Transferable,   dsl As DragSourceListener)
 			dragSource.startDrag(Me, dragCursor, transferable, dsl)
 		End Sub
 
@@ -282,7 +282,7 @@ Namespace java.awt.dnd
 		''' attempts to start a drag while an existing
 		''' drag operation is still executing. </exception>
 
-		Public Overridable Sub startDrag(ByVal dragCursor As java.awt.Cursor, ByVal dragImage As java.awt.Image, ByVal imageOffset As java.awt.Point, ByVal transferable As java.awt.datatransfer.Transferable, ByVal dsl As DragSourceListener)
+		Public Overridable Sub startDrag(  dragCursor As java.awt.Cursor,   dragImage As java.awt.Image,   imageOffset As java.awt.Point,   transferable As java.awt.datatransfer.Transferable,   dsl As DragSourceListener)
 			dragSource.startDrag(Me, dragCursor, dragImage, imageOffset, transferable, dsl)
 		End Sub
 
@@ -299,7 +299,7 @@ Namespace java.awt.dnd
 		'''             <code>null</code>.
 		''' @since 1.4
 		''' </summary>
-		Private Sub writeObject(ByVal s As java.io.ObjectOutputStream)
+		Private Sub writeObject(  s As java.io.ObjectOutputStream)
 			s.defaultWriteObject()
 
 			s.writeObject(If(SerializationTester.test(events), events, Nothing))
@@ -319,7 +319,7 @@ Namespace java.awt.dnd
 		''' 
 		''' @since 1.4
 		''' </summary>
-		Private Sub readObject(ByVal s As java.io.ObjectInputStream)
+		Private Sub readObject(  s As java.io.ObjectInputStream)
 			Dim f As java.io.ObjectInputStream.GetField = s.readFields()
 
 			Dim newDragSource As DragSource = CType(f.get("dragSource", Nothing), DragSource)

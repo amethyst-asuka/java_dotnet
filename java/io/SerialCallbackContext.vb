@@ -47,7 +47,7 @@ Namespace java.io
 		''' </summary>
 		Private thread As Thread
 
-		Public Sub New(ByVal obj As Object, ByVal desc As ObjectStreamClass)
+		Public Sub New(  obj As Object,   desc As ObjectStreamClass)
 			Me.obj = obj
 			Me.desc = desc
 			Me.thread = Thread.CurrentThread

@@ -104,7 +104,7 @@ Namespace java.rmi.activation
 		''' <exception cref="RemoteException"> if remote call fails
 		''' @since 1.2 </exception>
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-		Function activate(ByVal id As ActivationID, ByVal force As Boolean) As java.rmi.MarshalledObject(Of ? As java.rmi.Remote)
+		Function activate(  id As ActivationID,   force As Boolean) As java.rmi.MarshalledObject(Of ? As java.rmi.Remote)
 
 	End Interface
 

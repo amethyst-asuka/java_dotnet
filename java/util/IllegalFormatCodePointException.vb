@@ -49,7 +49,7 @@ Namespace java.util
 		''' </summary>
 		''' <param name="c">
 		'''         The illegal Unicode code point </param>
-		Public Sub New(ByVal c As Integer)
+		Public Sub New(  c As Integer)
 			Me.c = c
 		End Sub
 

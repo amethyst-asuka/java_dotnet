@@ -76,7 +76,7 @@ Namespace java.awt.image
 		''' <param name="matrix"> The matrix to use for the band combine operation. </param>
 		''' <param name="hints"> The <CODE>RenderingHints</CODE> object for this operation.
 		''' Not currently used so it can be null. </param>
-		Public Sub New(ByVal matrix As Single()(), ByVal hints As java.awt.RenderingHints)
+		Public Sub New(  matrix As Single()(),   hints As java.awt.RenderingHints)
 			nrows = matrix.Length
 			ncols = matrix(0).Length
 			Me.matrix = New Single(nrows - 1)(){}
@@ -124,7 +124,7 @@ Namespace java.awt.image
 		''' </returns>
 		''' <exception cref="IllegalArgumentException"> If the number of bands in the
 		''' source or destination is incompatible with the matrix. </exception>
-		Public Overridable Function filter(ByVal src As Raster, ByVal dst As WritableRaster) As WritableRaster Implements RasterOp.filter
+		Public Overridable Function filter(  src As Raster,   dst As WritableRaster) As WritableRaster Implements RasterOp.filter
 			Dim nBands As Integer = src.numBands
 			If ncols <> nBands AndAlso ncols <> (nBands+1) Then Throw New IllegalArgumentException("Number of columns in the " & "matrix (" & ncols & ") must be equal to the number" & " of bands ([+1]) in src (" & nBands & ").")
 			If dst Is Nothing Then
@@ -213,7 +213,7 @@ Namespace java.awt.image
 		''' </returns>
 		''' <exception cref="IllegalArgumentException"> If the number of bands in the source
 		''' is incompatible with the matrix. </exception>
-		Public Function getBounds2D(ByVal src As Raster) As java.awt.geom.Rectangle2D Implements RasterOp.getBounds2D
+		Public Function getBounds2D(  src As Raster) As java.awt.geom.Rectangle2D Implements RasterOp.getBounds2D
 			Return src.bounds
 		End Function
 
@@ -228,7 +228,7 @@ Namespace java.awt.image
 		''' <param name="src"> The <CODE>Raster</CODE> to be filtered.
 		''' </param>
 		''' <returns> The zeroed destination <CODE>Raster</CODE>. </returns>
-		Public Overridable Function createCompatibleDestRaster(ByVal src As Raster) As WritableRaster Implements RasterOp.createCompatibleDestRaster
+		Public Overridable Function createCompatibleDestRaster(  src As Raster) As WritableRaster Implements RasterOp.createCompatibleDestRaster
 			Dim nBands As Integer = src.numBands
 			If (ncols <> nBands) AndAlso (ncols <> (nBands+1)) Then Throw New IllegalArgumentException("Number of columns in the " & "matrix (" & ncols & ") must be equal to the number" & " of bands ([+1]) in src (" & nBands & ").")
 			If src.numBands = nrows Then
@@ -251,7 +251,7 @@ Namespace java.awt.image
 		''' </param>
 		''' <returns> The <CODE>Point2D</CODE> in the destination image that
 		''' corresponds to the specified point in the source image. </returns>
-		Public Function getPoint2D(ByVal srcPt As java.awt.geom.Point2D, ByVal dstPt As java.awt.geom.Point2D) As java.awt.geom.Point2D Implements RasterOp.getPoint2D
+		Public Function getPoint2D(  srcPt As java.awt.geom.Point2D,   dstPt As java.awt.geom.Point2D) As java.awt.geom.Point2D Implements RasterOp.getPoint2D
 			If dstPt Is Nothing Then dstPt = New java.awt.geom.Point2D.Float
 			dstPt.locationion(srcPt.x, srcPt.y)
 

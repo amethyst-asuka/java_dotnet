@@ -158,7 +158,7 @@ Namespace java.util
 		'''          possible formatting errors, see the <a
 		'''          href="../util/Formatter.html#detail">Details</a> section of the
 		'''          formatter class specification. </exception>
-		Sub formatTo(ByVal formatter As Formatter, ByVal flags As Integer, ByVal width As Integer, ByVal precision As Integer)
+		Sub formatTo(  formatter As Formatter,   flags As Integer,   width As Integer,   precision As Integer)
 	End Interface
 
 End Namespace

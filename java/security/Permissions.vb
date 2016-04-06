@@ -113,7 +113,7 @@ Namespace java.security
 		''' </exception>
 		''' <seealso cref= PermissionCollection#isReadOnly() </seealso>
 
-		Public Overrides Sub add(ByVal permission As Permission)
+		Public Overrides Sub add(  permission As Permission)
 			If [readOnly] Then Throw New SecurityException("attempt to add a Permission to a readonly Permissions object")
 
 			Dim pc As PermissionCollection
@@ -155,7 +155,7 @@ Namespace java.security
 		''' PermissionCollection it
 		''' belongs to, false if not. </returns>
 
-		Public Overrides Function implies(ByVal permission As Permission) As Boolean
+		Public Overrides Function implies(  permission As Permission) As Boolean
 			' No sync; staleness -> skip optimization, which is OK
 			If allPermission IsNot Nothing Then
 				Return True ' AllPermission has already been added
@@ -218,7 +218,7 @@ Namespace java.security
 		''' adding an empty PermissionCollection that will just return false.
 		''' It should be set to true when invoked from add().
 		''' </summary>
-		Private Function getPermissionCollection(ByVal p As Permission, ByVal createEmpty As Boolean) As PermissionCollection
+		Private Function getPermissionCollection(  p As Permission,   createEmpty As Boolean) As PermissionCollection
 			Dim c As  [Class] = p.GetType()
 
 			Dim pc As PermissionCollection = permsMap(c)
@@ -253,7 +253,7 @@ Namespace java.security
 		''' <returns> PermissionCollection containing the unresolved permissions,
 		'''  or null if there were no unresolved permissions of type p.
 		'''  </returns>
-		Private Function getUnresolvedPermissions(ByVal p As Permission) As PermissionCollection
+		Private Function getUnresolvedPermissions(  p As Permission) As PermissionCollection
 			' Called from within synchronized method so permsMap doesn't need lock
 
 			Dim uc As UnresolvedPermissionCollection = CType(permsMap(GetType(UnresolvedPermission)), UnresolvedPermissionCollection)
@@ -324,7 +324,7 @@ Namespace java.security
 	'     * serialization compatibility with earlier releases. allPermission
 	'     * unchanged.
 	'     
-		Private Sub writeObject(ByVal out As java.io.ObjectOutputStream)
+		Private Sub writeObject(  out As java.io.ObjectOutputStream)
 			' Don't call out.defaultWriteObject()
 
 			' Copy perms into a Hashtable
@@ -346,7 +346,7 @@ Namespace java.security
 	'     * Reads in a Hashtable of Class/PermissionCollections and saves them in the
 	'     * permsMap field. Reads in allPermission.
 	'     
-		Private Sub readObject(ByVal [in] As java.io.ObjectInputStream)
+		Private Sub readObject(  [in] As java.io.ObjectInputStream)
 			' Don't call defaultReadObject()
 
 			' Read in serialized fields
@@ -378,7 +378,7 @@ Namespace java.security
 		' the current set
 		Private permset As System.Collections.IEnumerator(Of Permission)
 
-		Friend Sub New(ByVal e As IEnumerator(Of PermissionCollection))
+		Friend Sub New(  e As IEnumerator(Of PermissionCollection))
 			perms = e
 			permset = nextEnumWithMore
 		End Sub
@@ -466,7 +466,7 @@ Namespace java.security
 		''' </summary>
 		''' <param name="permission"> the Permission object to add. </param>
 
-		Public Overrides Sub add(ByVal permission As Permission)
+		Public Overrides Sub add(  permission As Permission)
 			SyncLock Me
 				permsMap(permission) = permission
 			End SyncLock
@@ -481,7 +481,7 @@ Namespace java.security
 		''' <returns> true if "permission" is a proper subset of a permission in
 		''' the set, false if not. </returns>
 
-		Public Overrides Function implies(ByVal permission As Permission) As Boolean
+		Public Overrides Function implies(  permission As Permission) As Boolean
 			' attempt a fast lookup and implies. If that fails
 			' then enumerate through all the permissions.
 			SyncLock Me
@@ -528,7 +528,7 @@ Namespace java.security
 	'     * Writes the contents of the permsMap field out as a Hashtable for
 	'     * serialization compatibility with earlier releases.
 	'     
-		Private Sub writeObject(ByVal out As java.io.ObjectOutputStream)
+		Private Sub writeObject(  out As java.io.ObjectOutputStream)
 			' Don't call out.defaultWriteObject()
 
 			' Copy perms into a Hashtable
@@ -548,7 +548,7 @@ Namespace java.security
 	'     * Reads in a Hashtable of Permission/Permission and saves them in the
 	'     * permsMap field.
 	'     
-		Private Sub readObject(ByVal [in] As java.io.ObjectInputStream)
+		Private Sub readObject(  [in] As java.io.ObjectInputStream)
 			' Don't call defaultReadObject()
 
 			' Read in serialized fields

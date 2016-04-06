@@ -48,7 +48,7 @@ Namespace java.nio.file
 		''' </param>
 		''' <exception cref="NullPointerException">
 		'''          if the cause is {@code null} </exception>
-		Public Sub New(ByVal cause As java.io.IOException)
+		Public Sub New(  cause As java.io.IOException)
 			MyBase.New(java.util.Objects.requireNonNull(cause))
 		End Sub
 
@@ -68,7 +68,7 @@ Namespace java.nio.file
 		''' <exception cref="InvalidObjectException">
 		'''          if the object is invalid or has a cause that is not
 		'''          an {@code IOException} </exception>
-		Private Sub readObject(ByVal s As java.io.ObjectInputStream)
+		Private Sub readObject(  s As java.io.ObjectInputStream)
 			s.defaultReadObject()
 			Dim cause_Renamed As Throwable = MyBase.cause
 			If Not(TypeOf cause_Renamed Is java.io.IOException) Then Throw New java.io.InvalidObjectException("Cause must be an IOException")

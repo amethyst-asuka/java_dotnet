@@ -54,7 +54,7 @@ Namespace java.awt.datatransfer
 		''' Creates a <code>Transferable</code> capable of transferring
 		''' the specified <code>String</code>.
 		''' </summary>
-		Public Sub New(ByVal data As String)
+		Public Sub New(  data As String)
 			Me.data = data
 		End Sub
 
@@ -85,7 +85,7 @@ Namespace java.awt.datatransfer
 		'''   <code>DataFlavor.plainTextFlavor</code>; false if <code>flavor</code>
 		'''   is not one of the above flavors </returns>
 		''' <exception cref="NullPointerException"> if flavor is <code>null</code> </exception>
-		Public Overridable Function isDataFlavorSupported(ByVal flavor As DataFlavor) As Boolean Implements Transferable.isDataFlavorSupported
+		Public Overridable Function isDataFlavorSupported(  flavor As DataFlavor) As Boolean Implements Transferable.isDataFlavorSupported
 			' JCK Test StringSelection0003: if 'flavor' is null, throw NPE
 			For i As Integer = 0 To flavors.Length - 1
 				If flavor.Equals(flavors(i)) Then Return True
@@ -116,7 +116,7 @@ Namespace java.awt.datatransfer
 		'''         subclass may. </exception>
 		''' <exception cref="NullPointerException"> if flavor is <code>null</code> </exception>
 		''' <seealso cref= java.io.Reader </seealso>
-		Public Overridable Function getTransferData(ByVal flavor As DataFlavor) As Object Implements Transferable.getTransferData
+		Public Overridable Function getTransferData(  flavor As DataFlavor) As Object Implements Transferable.getTransferData
 			' JCK Test StringSelection0007: if 'flavor' is null, throw NPE
 			If flavor.Equals(flavors([STRING])) Then
 				Return CObj(data)
@@ -127,7 +127,7 @@ Namespace java.awt.datatransfer
 			End If
 		End Function
 
-		Public Overridable Sub lostOwnership(ByVal clipboard As Clipboard, ByVal contents As Transferable) Implements ClipboardOwner.lostOwnership
+		Public Overridable Sub lostOwnership(  clipboard As Clipboard,   contents As Transferable) Implements ClipboardOwner.lostOwnership
 		End Sub
 	End Class
 

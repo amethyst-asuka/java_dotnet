@@ -99,7 +99,7 @@ Namespace java.awt.dnd
 		'''         if srcActions is not a bitwise mask of <code>DnDConstants</code>. </exception>
 		''' <exception cref="IllegalArgumentException"> if dtc is <code>null</code>. </exception>
 
-		Public Sub New(ByVal dtc As DropTargetContext, ByVal cursorLocn As java.awt.Point, ByVal dropAction As Integer, ByVal srcActions As Integer)
+		Public Sub New(  dtc As DropTargetContext,   cursorLocn As java.awt.Point,   dropAction As Integer,   srcActions As Integer)
 			MyBase.New(dtc)
 
 			If cursorLocn Is Nothing Then Throw New NullPointerException("cursorLocn")
@@ -137,7 +137,7 @@ Namespace java.awt.dnd
 		''' <exception cref="IllegalArgumentException"> if srcActions is not a bitwise mask of <code>DnDConstants</code>. </exception>
 		''' <exception cref="IllegalArgumentException">  if dtc is <code>null</code>. </exception>
 
-		Public Sub New(ByVal dtc As DropTargetContext, ByVal cursorLocn As java.awt.Point, ByVal dropAction As Integer, ByVal srcActions As Integer, ByVal isLocal As Boolean)
+		Public Sub New(  dtc As DropTargetContext,   cursorLocn As java.awt.Point,   dropAction As Integer,   srcActions As Integer,   isLocal As Boolean)
 			Me.New(dtc, cursorLocn, dropAction, srcActions)
 
 			isLocalTx = isLocal
@@ -189,7 +189,7 @@ Namespace java.awt.dnd
 		''' <P> </param>
 		''' <returns> if the DataFlavor specified is available from the source </returns>
 
-		Public Overridable Function isDataFlavorSupported(ByVal df As java.awt.datatransfer.DataFlavor) As Boolean
+		Public Overridable Function isDataFlavorSupported(  df As java.awt.datatransfer.DataFlavor) As Boolean
 			Return dropTargetContext.isDataFlavorSupported(df)
 		End Function
 
@@ -230,7 +230,7 @@ Namespace java.awt.dnd
 		''' <P> </summary>
 		''' <param name="dropAction"> the specified action </param>
 
-		Public Overridable Sub acceptDrop(ByVal dropAction As Integer)
+		Public Overridable Sub acceptDrop(  dropAction As Integer)
 			dropTargetContext.acceptDrop(dropAction)
 		End Sub
 
@@ -248,7 +248,7 @@ Namespace java.awt.dnd
 		''' <P> </summary>
 		''' <param name="success"> a <code>boolean</code> indicating that the drop transfer(s) are completed. </param>
 
-		Public Overridable Sub dropComplete(ByVal success As Boolean)
+		Public Overridable Sub dropComplete(  success As Boolean)
 			dropTargetContext.dropComplete(success)
 		End Sub
 

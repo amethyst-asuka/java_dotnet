@@ -75,7 +75,7 @@ Namespace java.rmi.activation
 		''' detail message.
 		''' </summary>
 		''' <param name="s"> the detail message </param>
-		Public Sub New(ByVal s As String)
+		Public Sub New(  s As String)
 			MyBase.New(s)
 			initCause(Nothing) ' Disallow subsequent initCause
 		End Sub
@@ -87,7 +87,7 @@ Namespace java.rmi.activation
 		''' </summary>
 		''' <param name="s"> the detail message </param>
 		''' <param name="cause"> the cause </param>
-		Public Sub New(ByVal s As String, ByVal cause As Throwable)
+		Public Sub New(  s As String,   cause As Throwable)
 			MyBase.New(s)
 			initCause(Nothing) ' Disallow subsequent initCause
 			detail = cause

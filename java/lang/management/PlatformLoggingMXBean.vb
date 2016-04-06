@@ -90,7 +90,7 @@ Namespace java.lang.management
 		'''         exist, {@code null} is returned.
 		''' </returns>
 		''' <seealso cref= java.util.logging.Logger#getLevel </seealso>
-		Function getLoggerLevel(ByVal loggerName As String) As String
+		Function getLoggerLevel(  loggerName As String) As String
 
 		''' <summary>
 		''' Sets the specified logger to the specified new
@@ -117,7 +117,7 @@ Namespace java.lang.management
 		''' the caller does not have LoggingPermission("control").
 		''' </exception>
 		''' <seealso cref= java.util.logging.Logger#setLevel </seealso>
-		Sub setLoggerLevel(ByVal loggerName As String, ByVal levelName As String)
+		Sub setLoggerLevel(  loggerName As String,   levelName As String)
 
 		''' <summary>
 		''' Returns the name of the
@@ -133,7 +133,7 @@ Namespace java.lang.management
 		'''         an empty string if the specified logger is the root logger.
 		'''         If the specified logger does not exist, {@code null}
 		'''         is returned. </returns>
-		Function getParentLoggerName(ByVal loggerName As String) As String
+		Function getParentLoggerName(  loggerName As String) As String
 	End Interface
 
 End Namespace

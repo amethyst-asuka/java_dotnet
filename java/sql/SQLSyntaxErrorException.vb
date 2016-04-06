@@ -64,7 +64,7 @@ Namespace java.sql
 			''' <p> </summary>
 			''' <param name="reason"> a description of the exception
 			''' @since 1.6 </param>
-			Public Sub New(ByVal reason As String)
+			Public Sub New(  reason As String)
 					MyBase.New(reason)
 			End Sub
 
@@ -80,7 +80,7 @@ Namespace java.sql
 			''' <param name="reason"> a description of the exception </param>
 			''' <param name="SQLState"> an XOPEN or SQL:2003 code identifying the exception
 			''' @since 1.6 </param>
-			Public Sub New(ByVal reason As String, ByVal SQLState As String)
+			Public Sub New(  reason As String,   SQLState As String)
 					MyBase.New(reason, SQLState)
 			End Sub
 
@@ -97,7 +97,7 @@ Namespace java.sql
 			''' <param name="SQLState"> an XOPEN or SQL:2003 code identifying the exception </param>
 			''' <param name="vendorCode"> a database vendor specific exception code
 			''' @since 1.6 </param>
-			Public Sub New(ByVal reason As String, ByVal SQLState As String, ByVal vendorCode As Integer)
+			Public Sub New(  reason As String,   SQLState As String,   vendorCode As Integer)
 					MyBase.New(reason, SQLState, vendorCode)
 			End Sub
 
@@ -113,7 +113,7 @@ Namespace java.sql
 		''' <param name="cause"> the underlying reason for this <code>SQLException</code> (which is saved for later retrieval by the <code>getCause()</code> method); may be null indicating
 		'''     the cause is non-existent or unknown.
 		''' @since 1.6 </param>
-		Public Sub New(ByVal cause As Throwable)
+		Public Sub New(  cause As Throwable)
 			MyBase.New(cause)
 		End Sub
 
@@ -128,7 +128,7 @@ Namespace java.sql
 		''' <param name="cause"> the underlying reason for this <code>SQLException</code> (which is saved for later retrieval by the <code>getCause()</code> method); may be null indicating
 		'''     the cause is non-existent or unknown.
 		''' @since 1.6 </param>
-		Public Sub New(ByVal reason As String, ByVal cause As Throwable)
+		Public Sub New(  reason As String,   cause As Throwable)
 			MyBase.New(reason, cause)
 		End Sub
 
@@ -143,7 +143,7 @@ Namespace java.sql
 		''' <param name="cause"> the (which is saved for later retrieval by the <code>getCause()</code> method); may be null indicating
 		'''     the cause is non-existent or unknown.
 		''' @since 1.6 </param>
-		Public Sub New(ByVal reason As String, ByVal SQLState As String, ByVal cause As Throwable)
+		Public Sub New(  reason As String,   SQLState As String,   cause As Throwable)
 			MyBase.New(reason, SQLState, cause)
 		End Sub
 
@@ -159,7 +159,7 @@ Namespace java.sql
 		''' <param name="cause"> the underlying reason for this <code>SQLException</code> (which is saved for later retrieval by the <code>getCause()</code> method); may be null indicating
 		'''     the cause is non-existent or unknown.
 		''' @since 1.6 </param>
-		Public Sub New(ByVal reason As String, ByVal SQLState As String, ByVal vendorCode As Integer, ByVal cause As Throwable)
+		Public Sub New(  reason As String,   SQLState As String,   vendorCode As Integer,   cause As Throwable)
 			MyBase.New(reason, SQLState, vendorCode, cause)
 		End Sub
 

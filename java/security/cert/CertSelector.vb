@@ -54,7 +54,7 @@ Namespace java.security.cert
 		''' <param name="cert">    the {@code Certificate} to be checked </param>
 		''' <returns>  {@code true} if the {@code Certificate}
 		''' should be selected, {@code false} otherwise </returns>
-		Function match(ByVal cert As Certificate) As Boolean
+		Function match(  cert As Certificate) As Boolean
 
 		''' <summary>
 		''' Makes a copy of this {@code CertSelector}. Changes to the

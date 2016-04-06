@@ -40,7 +40,7 @@ Namespace java.awt
 	Public MustInherit Class MultipleGradientPaint
 		Implements Paint
 
-			Public MustOverride Function createContext(ByVal cm As java.awt.image.ColorModel, ByVal deviceBounds As Rectangle, ByVal userBounds As java.awt.geom.Rectangle2D, ByVal xform As java.awt.geom.AffineTransform, ByVal hints As RenderingHints) As PaintContext Implements Paint.createContext
+			Public MustOverride Function createContext(  cm As java.awt.image.ColorModel,   deviceBounds As Rectangle,   userBounds As java.awt.geom.Rectangle2D,   xform As java.awt.geom.AffineTransform,   hints As RenderingHints) As PaintContext Implements Paint.createContext
 
 		''' <summary>
 		''' The method to use when painting outside the gradient bounds.
@@ -141,7 +141,7 @@ Namespace java.awt
 		''' or {@code colors} is less than 2 in size,
 		''' or a {@code fractions} value is less than 0.0 or greater than 1.0,
 		''' or the {@code fractions} are not provided in strictly increasing order </exception>
-		Friend Sub New(ByVal fractions As Single(), ByVal colors As Color(), ByVal cycleMethod As CycleMethod, ByVal colorSpace As ColorSpaceType, ByVal gradientTransform As java.awt.geom.AffineTransform)
+		Friend Sub New(  fractions As Single(),   colors As Color(),   cycleMethod As CycleMethod,   colorSpace As ColorSpaceType,   gradientTransform As java.awt.geom.AffineTransform)
 			If fractions Is Nothing Then Throw New NullPointerException("Fractions array cannot be null")
 
 			If colors Is Nothing Then Throw New NullPointerException("Colors array cannot be null")

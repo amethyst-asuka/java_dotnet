@@ -124,7 +124,7 @@ Namespace java.util
 		''' </summary>
 		''' <param name="seed"> the initial seed </param>
 		''' <seealso cref=   #setSeed(long) </seealso>
-		Public Sub New(ByVal seed As Long)
+		Public Sub New(  seed As Long)
 			If Me.GetType() = GetType(Random) Then
 				Me.seed = New java.util.concurrent.atomic.AtomicLong(initialScramble(seed))
 			Else
@@ -134,7 +134,7 @@ Namespace java.util
 			End If
 		End Sub
 
-		Private Shared Function initialScramble(ByVal seed As Long) As Long
+		Private Shared Function initialScramble(  seed As Long) As Long
 			Return (seed Xor multiplier) And mask
 		End Function
 
@@ -158,7 +158,7 @@ Namespace java.util
 		''' <param name="seed"> the initial seed </param>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
 		Public Overridable Property seed As Long
-			Set(ByVal seed As Long)
+			Set(  seed As Long)
 				Me.seed.set(initialScramble(seed))
 				haveNextNextGaussian = False
 			End Set
@@ -188,7 +188,7 @@ Namespace java.util
 		''' <returns> the next pseudorandom value from this random number
 		'''         generator's sequence
 		''' @since  1.1 </returns>
-		Protected Friend Overridable Function [next](ByVal bits_Renamed As Integer) As Integer
+		Protected Friend Overridable Function [next](  bits_Renamed As Integer) As Integer
 			Dim oldseed, nextseed As Long
 			Dim seed_Renamed As java.util.concurrent.atomic.AtomicLong = Me.seed
 			Do
@@ -216,7 +216,7 @@ Namespace java.util
 		''' <param name="bytes"> the byte array to fill with random bytes </param>
 		''' <exception cref="NullPointerException"> if the byte array is null
 		''' @since  1.1 </exception>
-		Public Overridable Sub nextBytes(ByVal bytes As SByte())
+		Public Overridable Sub nextBytes(  bytes As SByte())
 			Dim i As Integer = 0
 			Dim len As Integer = bytes.Length
 			Do While i < len
@@ -239,7 +239,7 @@ Namespace java.util
 		''' <param name="origin"> the least value, unless greater than bound </param>
 		''' <param name="bound"> the upper bound (exclusive), must not equal origin </param>
 		''' <returns> a pseudorandom value </returns>
-		Friend Function internalNextLong(ByVal origin As Long, ByVal bound As Long) As Long
+		Friend Function internalNextLong(  origin As Long,   bound As Long) As Long
 			Dim r As Long = nextLong()
 			If origin < bound Then
 				Dim n As Long = bound - origin, m As Long = n - 1
@@ -271,7 +271,7 @@ Namespace java.util
 		''' <param name="origin"> the least value, unless greater than bound </param>
 		''' <param name="bound"> the upper bound (exclusive), must not equal origin </param>
 		''' <returns> a pseudorandom value </returns>
-		Friend Function internalNextInt(ByVal origin As Integer, ByVal bound As Integer) As Integer
+		Friend Function internalNextInt(  origin As Integer,   bound As Integer) As Integer
 			If origin < bound Then
 				Dim n As Integer = bound - origin
 				If n > 0 Then
@@ -294,7 +294,7 @@ Namespace java.util
 		''' <param name="origin"> the least value, unless greater than bound </param>
 		''' <param name="bound"> the upper bound (exclusive), must not equal origin </param>
 		''' <returns> a pseudorandom value </returns>
-		Friend Function internalNextDouble(ByVal origin As Double, ByVal bound As Double) As Double
+		Friend Function internalNextDouble(  origin As Double,   bound As Double) As Double
 			Dim r As Double = nextDouble()
 			If origin < bound Then
 				r = r * (bound - origin) + origin
@@ -376,7 +376,7 @@ Namespace java.util
 		'''         from this random number generator's sequence </returns>
 		''' <exception cref="IllegalArgumentException"> if bound is not positive
 		''' @since 1.2 </exception>
-		Public Overridable Function nextInt(ByVal bound As Integer) As Integer
+		Public Overridable Function nextInt(  bound As Integer) As Integer
 			If bound <= 0 Then Throw New IllegalArgumentException(BadBound)
 
 			Dim r As Integer = [next](31)
@@ -604,7 +604,7 @@ Namespace java.util
 		''' <exception cref="IllegalArgumentException"> if {@code streamSize} is
 		'''         less than zero
 		''' @since 1.8 </exception>
-		Public Overridable Function ints(ByVal streamSize As Long) As java.util.stream.IntStream
+		Public Overridable Function ints(  streamSize As Long) As java.util.stream.IntStream
 			If streamSize < 0L Then Throw New IllegalArgumentException(BadSize)
 			Return java.util.stream.StreamSupport.intStream(New RandomIntsSpliterator(Me, 0L, streamSize,  java.lang.[Integer].Max_Value, 0), False)
 		End Function
@@ -656,7 +656,7 @@ Namespace java.util
 		'''         less than zero, or {@code randomNumberOrigin}
 		'''         is greater than or equal to {@code randomNumberBound}
 		''' @since 1.8 </exception>
-		Public Overridable Function ints(ByVal streamSize As Long, ByVal randomNumberOrigin As Integer, ByVal randomNumberBound As Integer) As java.util.stream.IntStream
+		Public Overridable Function ints(  streamSize As Long,   randomNumberOrigin As Integer,   randomNumberBound As Integer) As java.util.stream.IntStream
 			If streamSize < 0L Then Throw New IllegalArgumentException(BadSize)
 			If randomNumberOrigin >= randomNumberBound Then Throw New IllegalArgumentException(BadRange)
 			Return java.util.stream.StreamSupport.intStream(New RandomIntsSpliterator(Me, 0L, streamSize, randomNumberOrigin, randomNumberBound), False)
@@ -694,7 +694,7 @@ Namespace java.util
 		''' <exception cref="IllegalArgumentException"> if {@code randomNumberOrigin}
 		'''         is greater than or equal to {@code randomNumberBound}
 		''' @since 1.8 </exception>
-		Public Overridable Function ints(ByVal randomNumberOrigin As Integer, ByVal randomNumberBound As Integer) As java.util.stream.IntStream
+		Public Overridable Function ints(  randomNumberOrigin As Integer,   randomNumberBound As Integer) As java.util.stream.IntStream
 			If randomNumberOrigin >= randomNumberBound Then Throw New IllegalArgumentException(BadRange)
 			Return java.util.stream.StreamSupport.intStream(New RandomIntsSpliterator(Me, 0L, java.lang.[Long].Max_Value, randomNumberOrigin, randomNumberBound), False)
 		End Function
@@ -711,7 +711,7 @@ Namespace java.util
 		''' <exception cref="IllegalArgumentException"> if {@code streamSize} is
 		'''         less than zero
 		''' @since 1.8 </exception>
-		Public Overridable Function longs(ByVal streamSize As Long) As java.util.stream.LongStream
+		Public Overridable Function longs(  streamSize As Long) As java.util.stream.LongStream
 			If streamSize < 0L Then Throw New IllegalArgumentException(BadSize)
 			Return java.util.stream.StreamSupport.longStream(New RandomLongsSpliterator(Me, 0L, streamSize, java.lang.[Long].Max_Value, 0L), False)
 		End Function
@@ -768,7 +768,7 @@ Namespace java.util
 		'''         less than zero, or {@code randomNumberOrigin}
 		'''         is greater than or equal to {@code randomNumberBound}
 		''' @since 1.8 </exception>
-		Public Overridable Function longs(ByVal streamSize As Long, ByVal randomNumberOrigin As Long, ByVal randomNumberBound As Long) As java.util.stream.LongStream
+		Public Overridable Function longs(  streamSize As Long,   randomNumberOrigin As Long,   randomNumberBound As Long) As java.util.stream.LongStream
 			If streamSize < 0L Then Throw New IllegalArgumentException(BadSize)
 			If randomNumberOrigin >= randomNumberBound Then Throw New IllegalArgumentException(BadRange)
 			Return java.util.stream.StreamSupport.longStream(New RandomLongsSpliterator(Me, 0L, streamSize, randomNumberOrigin, randomNumberBound), False)
@@ -811,7 +811,7 @@ Namespace java.util
 		''' <exception cref="IllegalArgumentException"> if {@code randomNumberOrigin}
 		'''         is greater than or equal to {@code randomNumberBound}
 		''' @since 1.8 </exception>
-		Public Overridable Function longs(ByVal randomNumberOrigin As Long, ByVal randomNumberBound As Long) As java.util.stream.LongStream
+		Public Overridable Function longs(  randomNumberOrigin As Long,   randomNumberBound As Long) As java.util.stream.LongStream
 			If randomNumberOrigin >= randomNumberBound Then Throw New IllegalArgumentException(BadRange)
 			Return java.util.stream.StreamSupport.longStream(New RandomLongsSpliterator(Me, 0L, java.lang.[Long].Max_Value, randomNumberOrigin, randomNumberBound), False)
 		End Function
@@ -829,7 +829,7 @@ Namespace java.util
 		''' <exception cref="IllegalArgumentException"> if {@code streamSize} is
 		'''         less than zero
 		''' @since 1.8 </exception>
-		Public Overridable Function doubles(ByVal streamSize As Long) As java.util.stream.DoubleStream
+		Public Overridable Function doubles(  streamSize As Long) As java.util.stream.DoubleStream
 			If streamSize < 0L Then Throw New IllegalArgumentException(BadSize)
 			Return java.util.stream.StreamSupport.doubleStream(New RandomDoublesSpliterator(Me, 0L, streamSize, java.lang.[Double].Max_Value, 0.0), False)
 		End Function
@@ -877,7 +877,7 @@ Namespace java.util
 		''' <exception cref="IllegalArgumentException"> if {@code randomNumberOrigin}
 		'''         is greater than or equal to {@code randomNumberBound}
 		''' @since 1.8 </exception>
-		Public Overridable Function doubles(ByVal streamSize As Long, ByVal randomNumberOrigin As Double, ByVal randomNumberBound As Double) As java.util.stream.DoubleStream
+		Public Overridable Function doubles(  streamSize As Long,   randomNumberOrigin As Double,   randomNumberBound As Double) As java.util.stream.DoubleStream
 			If streamSize < 0L Then Throw New IllegalArgumentException(BadSize)
 			If Not(randomNumberOrigin < randomNumberBound) Then Throw New IllegalArgumentException(BadRange)
 			Return java.util.stream.StreamSupport.doubleStream(New RandomDoublesSpliterator(Me, 0L, streamSize, randomNumberOrigin, randomNumberBound), False)
@@ -909,7 +909,7 @@ Namespace java.util
 		''' <exception cref="IllegalArgumentException"> if {@code randomNumberOrigin}
 		'''         is greater than or equal to {@code randomNumberBound}
 		''' @since 1.8 </exception>
-		Public Overridable Function doubles(ByVal randomNumberOrigin As Double, ByVal randomNumberBound As Double) As java.util.stream.DoubleStream
+		Public Overridable Function doubles(  randomNumberOrigin As Double,   randomNumberBound As Double) As java.util.stream.DoubleStream
 			If Not(randomNumberOrigin < randomNumberBound) Then Throw New IllegalArgumentException(BadRange)
 			Return java.util.stream.StreamSupport.doubleStream(New RandomDoublesSpliterator(Me, 0L, java.lang.[Long].Max_Value, randomNumberOrigin, randomNumberBound), False)
 		End Function
@@ -930,7 +930,7 @@ Namespace java.util
 			Friend ReadOnly fence As Long
 			Friend ReadOnly origin As Integer
 			Friend ReadOnly bound As Integer
-			Friend Sub New(ByVal rng As Random, ByVal index As Long, ByVal fence As Long, ByVal origin As Integer, ByVal bound As Integer)
+			Friend Sub New(  rng As Random,   index As Long,   fence As Long,   origin As Integer,   bound As Integer)
 				Me.rng = rng
 				Me.index = index
 				Me.fence = fence
@@ -952,7 +952,7 @@ Namespace java.util
 				Return (Spliterator.SIZED Or Spliterator.SUBSIZED Or Spliterator.NONNULL Or Spliterator.IMMUTABLE)
 			End Function
 
-			Public Function tryAdvance(ByVal consumer As java.util.function.IntConsumer) As Boolean
+			Public Function tryAdvance(  consumer As java.util.function.IntConsumer) As Boolean
 				If consumer Is Nothing Then Throw New NullPointerException
 				Dim i As Long = index, f As Long = fence
 				If i < f Then
@@ -963,7 +963,7 @@ Namespace java.util
 				Return False
 			End Function
 
-			Public Sub forEachRemaining(ByVal consumer As java.util.function.IntConsumer)
+			Public Sub forEachRemaining(  consumer As java.util.function.IntConsumer)
 				If consumer Is Nothing Then Throw New NullPointerException
 				Dim i As Long = index, f As Long = fence
 				If i < f Then
@@ -989,7 +989,7 @@ Namespace java.util
 			Friend ReadOnly fence As Long
 			Friend ReadOnly origin As Long
 			Friend ReadOnly bound As Long
-			Friend Sub New(ByVal rng As Random, ByVal index As Long, ByVal fence As Long, ByVal origin As Long, ByVal bound As Long)
+			Friend Sub New(  rng As Random,   index As Long,   fence As Long,   origin As Long,   bound As Long)
 				Me.rng = rng
 				Me.index = index
 				Me.fence = fence
@@ -1011,7 +1011,7 @@ Namespace java.util
 				Return (Spliterator.SIZED Or Spliterator.SUBSIZED Or Spliterator.NONNULL Or Spliterator.IMMUTABLE)
 			End Function
 
-			Public Function tryAdvance(ByVal consumer As java.util.function.LongConsumer) As Boolean
+			Public Function tryAdvance(  consumer As java.util.function.LongConsumer) As Boolean
 				If consumer Is Nothing Then Throw New NullPointerException
 				Dim i As Long = index, f As Long = fence
 				If i < f Then
@@ -1022,7 +1022,7 @@ Namespace java.util
 				Return False
 			End Function
 
-			Public Sub forEachRemaining(ByVal consumer As java.util.function.LongConsumer)
+			Public Sub forEachRemaining(  consumer As java.util.function.LongConsumer)
 				If consumer Is Nothing Then Throw New NullPointerException
 				Dim i As Long = index, f As Long = fence
 				If i < f Then
@@ -1049,7 +1049,7 @@ Namespace java.util
 			Friend ReadOnly fence As Long
 			Friend ReadOnly origin As Double
 			Friend ReadOnly bound As Double
-			Friend Sub New(ByVal rng As Random, ByVal index As Long, ByVal fence As Long, ByVal origin As Double, ByVal bound As Double)
+			Friend Sub New(  rng As Random,   index As Long,   fence As Long,   origin As Double,   bound As Double)
 				Me.rng = rng
 				Me.index = index
 				Me.fence = fence
@@ -1071,7 +1071,7 @@ Namespace java.util
 				Return (Spliterator.SIZED Or Spliterator.SUBSIZED Or Spliterator.NONNULL Or Spliterator.IMMUTABLE)
 			End Function
 
-			Public Function tryAdvance(ByVal consumer As java.util.function.DoubleConsumer) As Boolean
+			Public Function tryAdvance(  consumer As java.util.function.DoubleConsumer) As Boolean
 				If consumer Is Nothing Then Throw New NullPointerException
 				Dim i As Long = index, f As Long = fence
 				If i < f Then
@@ -1082,7 +1082,7 @@ Namespace java.util
 				Return False
 			End Function
 
-			Public Sub forEachRemaining(ByVal consumer As java.util.function.DoubleConsumer)
+			Public Sub forEachRemaining(  consumer As java.util.function.DoubleConsumer)
 				If consumer Is Nothing Then Throw New NullPointerException
 				Dim i As Long = index, f As Long = fence
 				If i < f Then
@@ -1113,7 +1113,7 @@ Namespace java.util
 		''' Reconstitute the {@code Random} instance from a stream (that is,
 		''' deserialize it).
 		''' </summary>
-		Private Sub readObject(ByVal s As java.io.ObjectInputStream)
+		Private Sub readObject(  s As java.io.ObjectInputStream)
 
 			Dim fields As ObjectInputStream.GetField = s.readFields()
 

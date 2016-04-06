@@ -241,7 +241,7 @@ Namespace java.lang.reflect
 		'''     type is present on this element, else false </returns>
 		''' <exception cref="NullPointerException"> if the given annotation class is null
 		''' @since 1.5 </exception>
-		default Function isAnnotationPresent(ByVal annotationClass As [Class]) As Boolean
+		default Function isAnnotationPresent(  annotationClass As [Class]) As Boolean
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 			Return getAnnotation(annotationClass) != Nothing;
 
@@ -256,7 +256,7 @@ Namespace java.lang.reflect
 	   '''     present on this element, else null </returns>
 	   ''' <exception cref="NullPointerException"> if the given annotation class is null
 	   ''' @since 1.5 </exception>
-		 Function getAnnotation(Of T As Annotation)(ByVal annotationClass As [Class]) As T
+		 Function getAnnotation(Of T As Annotation)(  annotationClass As [Class]) As T
 
 		''' <summary>
 		''' Returns annotations that are <em>present</em> on this element.
@@ -305,7 +305,7 @@ Namespace java.lang.reflect
 		'''     associated with this element, else an array of length zero </returns>
 		''' <exception cref="NullPointerException"> if the given annotation class is null
 		''' @since 1.8 </exception>
-		default Function getAnnotationsByType(ByVal annotationClass As [Class]) As T(Of T As Annotation)()
+		default Function getAnnotationsByType(  annotationClass As [Class]) As T(Of T As Annotation)()
 	'         
 	'          * Definition of associated: directly or indirectly present OR
 	'          * neither directly nor indirectly present AND the element is
@@ -316,10 +316,10 @@ Namespace java.lang.reflect
 'JAVA TO VB CONVERTER TODO TASK: Interfaces cannot contain fields in .NET:
 '			 T[] result = getDeclaredAnnotationsByType(annotationClass);
 
-			 Sub [New](result.length == 0 && Me instanceof Class && sun.reflect.annotation.AnnotationType.getInstance(annotationClass).isInherited() ByVal  As ) ' Inheritable -  the element is a class -  Neither directly nor indirectly present
+			 Sub [New](result.length == 0 && Me instanceof Class && sun.reflect.annotation.AnnotationType.getInstance(annotationClass).isInherited()    As ) ' Inheritable -  the element is a class -  Neither directly nor indirectly present
 'JAVA TO VB CONVERTER TODO TASK: Interfaces cannot contain fields in .NET:
 '				 Class superClass = ((Class) Me).getSuperclass();
-				 Sub [New](superClass != ByVal [Nothing] As )
+				 Sub [New](superClass !=   [Nothing] As )
 					 ' Determine if the annotation is associated with the
 					 ' superclass
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
@@ -347,12 +347,12 @@ Namespace java.lang.reflect
 		'''     directly present on this element, else null </returns>
 		''' <exception cref="NullPointerException"> if the given annotation class is null
 		''' @since 1.8 </exception>
-		default Function getDeclaredAnnotation(ByVal annotationClass As [Class]) As T(Of T As Annotation)
+		default Function getDeclaredAnnotation(  annotationClass As [Class]) As T(Of T As Annotation)
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 			 java.util.Objects.requireNonNull(annotationClass);
 			 ' Loop over all directly-present annotations looking for a matching one
-			 Sub [New](Annotation annotation : getDeclaredAnnotations() ByVal  As )
-				 Sub [New](annotationClass.equals(annotation.annotationType()) ByVal  As )
+			 Sub [New](Annotation annotation : getDeclaredAnnotations()    As )
+				 Sub [New](annotationClass.equals(annotation.annotationType())    As )
 					 ' More robust to do a dynamic cast at runtime instead
 					 ' of compile-time only.
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
@@ -403,7 +403,7 @@ Namespace java.lang.reflect
 		'''     directly or indirectly present on this element, else an array of length zero </returns>
 		''' <exception cref="NullPointerException"> if the given annotation class is null
 		''' @since 1.8 </exception>
-		default Function getDeclaredAnnotationsByType(ByVal annotationClass As [Class]) As T(Of T As Annotation)()
+		default Function getDeclaredAnnotationsByType(  annotationClass As [Class]) As T(Of T As Annotation)()
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 			java.util.Objects.requireNonNull(annotationClass);
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:

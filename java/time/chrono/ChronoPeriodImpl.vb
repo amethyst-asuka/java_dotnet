@@ -109,7 +109,7 @@ Namespace java.time.chrono
 		''' <summary>
 		''' Creates an instance.
 		''' </summary>
-		Friend Sub New(ByVal chrono As Chronology, ByVal years As Integer, ByVal months As Integer, ByVal days As Integer)
+		Friend Sub New(  chrono As Chronology,   years As Integer,   months As Integer,   days As Integer)
 			java.util.Objects.requireNonNull(chrono, "chrono")
 			Me.chrono = chrono
 			Me.years = years
@@ -118,7 +118,7 @@ Namespace java.time.chrono
 		End Sub
 
 		'-----------------------------------------------------------------------
-		Public Overrides Function [get](ByVal unit As java.time.temporal.TemporalUnit) As Long Implements ChronoPeriod.get
+		Public Overrides Function [get](  unit As java.time.temporal.TemporalUnit) As Long Implements ChronoPeriod.get
 			If unit = java.time.temporal.ChronoUnit.YEARS Then
 				Return years
 			ElseIf unit = java.time.temporal.ChronoUnit.MONTHS Then
@@ -156,12 +156,12 @@ Namespace java.time.chrono
 		End Property
 
 		'-----------------------------------------------------------------------
-		Public Overrides Function plus(ByVal amountToAdd As java.time.temporal.TemporalAmount) As ChronoPeriod Implements ChronoPeriod.plus
+		Public Overrides Function plus(  amountToAdd As java.time.temporal.TemporalAmount) As ChronoPeriod Implements ChronoPeriod.plus
 			Dim amount As ChronoPeriodImpl = validateAmount(amountToAdd)
 			Return New ChronoPeriodImpl(chrono, System.Math.addExact(years, amount.years), System.Math.addExact(months, amount.months), System.Math.addExact(days, amount.days))
 		End Function
 
-		Public Overrides Function minus(ByVal amountToSubtract As java.time.temporal.TemporalAmount) As ChronoPeriod Implements ChronoPeriod.minus
+		Public Overrides Function minus(  amountToSubtract As java.time.temporal.TemporalAmount) As ChronoPeriod Implements ChronoPeriod.minus
 			Dim amount As ChronoPeriodImpl = validateAmount(amountToSubtract)
 			Return New ChronoPeriodImpl(chrono, System.Math.subtractExact(years, amount.years), System.Math.subtractExact(months, amount.months), System.Math.subtractExact(days, amount.days))
 		End Function
@@ -171,7 +171,7 @@ Namespace java.time.chrono
 		''' </summary>
 		''' <param name="amount">  the temporal amount to convert, not null </param>
 		''' <returns> the period, not null </returns>
-		Private Function validateAmount(ByVal amount As java.time.temporal.TemporalAmount) As ChronoPeriodImpl
+		Private Function validateAmount(  amount As java.time.temporal.TemporalAmount) As ChronoPeriodImpl
 			java.util.Objects.requireNonNull(amount, "amount")
 			If TypeOf amount Is ChronoPeriodImpl = False Then Throw New java.time.DateTimeException("Unable to obtain ChronoPeriod from TemporalAmount: " & amount.GetType())
 			Dim period_Renamed As ChronoPeriodImpl = CType(amount, ChronoPeriodImpl)
@@ -180,7 +180,7 @@ Namespace java.time.chrono
 		End Function
 
 		'-----------------------------------------------------------------------
-		Public Overrides Function multipliedBy(ByVal scalar As Integer) As ChronoPeriod Implements ChronoPeriod.multipliedBy
+		Public Overrides Function multipliedBy(  scalar As Integer) As ChronoPeriod Implements ChronoPeriod.multipliedBy
 			If Me.zero OrElse scalar = 1 Then Return Me
 			Return New ChronoPeriodImpl(chrono, System.Math.multiplyExact(years, scalar), System.Math.multiplyExact(months, scalar), System.Math.multiplyExact(days, scalar))
 		End Function
@@ -210,7 +210,7 @@ Namespace java.time.chrono
 		End Function
 
 		'-------------------------------------------------------------------------
-		Public Overrides Function addTo(ByVal temporal As java.time.temporal.Temporal) As java.time.temporal.Temporal Implements ChronoPeriod.addTo
+		Public Overrides Function addTo(  temporal As java.time.temporal.Temporal) As java.time.temporal.Temporal Implements ChronoPeriod.addTo
 			validateChrono(temporal)
 			If months = 0 Then
 				If years <> 0 Then temporal = temporal.plus(years, YEARS)
@@ -229,7 +229,7 @@ Namespace java.time.chrono
 
 
 
-		Public Overrides Function subtractFrom(ByVal temporal As java.time.temporal.Temporal) As java.time.temporal.Temporal Implements ChronoPeriod.subtractFrom
+		Public Overrides Function subtractFrom(  temporal As java.time.temporal.Temporal) As java.time.temporal.Temporal Implements ChronoPeriod.subtractFrom
 			validateChrono(temporal)
 			If months = 0 Then
 				If years <> 0 Then temporal = temporal.minus(years, YEARS)
@@ -249,14 +249,14 @@ Namespace java.time.chrono
 		''' <summary>
 		''' Validates that the temporal has the correct chronology.
 		''' </summary>
-		Private Sub validateChrono(ByVal temporal As java.time.temporal.TemporalAccessor)
+		Private Sub validateChrono(  temporal As java.time.temporal.TemporalAccessor)
 			java.util.Objects.requireNonNull(temporal, "temporal")
 			Dim temporalChrono As Chronology = temporal.query(java.time.temporal.TemporalQueries.chronology())
 			If temporalChrono IsNot Nothing AndAlso chrono.Equals(temporalChrono) = False Then Throw New java.time.DateTimeException("Chronology mismatch, expected: " & chrono.id & ", actual: " & temporalChrono.id)
 		End Sub
 
 		'-----------------------------------------------------------------------
-		Public Overrides Function Equals(ByVal obj As Object) As Boolean
+		Public Overrides Function Equals(  obj As Object) As Boolean
 			If Me Is obj Then Return True
 			If TypeOf obj Is ChronoPeriodImpl Then
 				Dim other As ChronoPeriodImpl = CType(obj, ChronoPeriodImpl)
@@ -305,18 +305,18 @@ Namespace java.time.chrono
 		''' </summary>
 		''' <param name="s"> the stream to read </param>
 		''' <exception cref="InvalidObjectException"> always </exception>
-		Private Sub readObject(ByVal s As java.io.ObjectInputStream)
+		Private Sub readObject(  s As java.io.ObjectInputStream)
 			Throw New java.io.InvalidObjectException("Deserialization via serialization delegate")
 		End Sub
 
-		Friend Sub writeExternal(ByVal out As java.io.DataOutput)
+		Friend Sub writeExternal(  out As java.io.DataOutput)
 			out.writeUTF(chrono.id)
 			out.writeInt(years)
 			out.writeInt(months)
 			out.writeInt(days)
 		End Sub
 
-		Shared Function readExternal(ByVal [in] As java.io.DataInput) As ChronoPeriodImpl
+		Shared Function readExternal(  [in] As java.io.DataInput) As ChronoPeriodImpl
 			Dim chrono As Chronology = Chronology.of([in].readUTF())
 			Dim years As Integer = [in].readInt()
 			Dim months As Integer = [in].readInt()

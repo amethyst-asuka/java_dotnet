@@ -30,7 +30,7 @@ Namespace java.lang.invoke
 	Friend Class TypeConvertingMethodAdapter
 		Inherits jdk.internal.org.objectweb.asm.MethodVisitor
 
-		Friend Sub New(ByVal mv As jdk.internal.org.objectweb.asm.MethodVisitor)
+		Friend Sub New(  mv As jdk.internal.org.objectweb.asm.MethodVisitor)
 			MyBase.New(jdk.internal.org.objectweb.asm.Opcodes.ASM5, mv)
 		End Sub
 
@@ -83,7 +83,7 @@ Namespace java.lang.invoke
 			FROM_TYPE_SORT(jdk.internal.org.objectweb.asm.Type.BOOLEAN) = sun.invoke.util.Wrapper.BOOLEAN
 		End Sub
 
-		Private Shared Sub initWidening(ByVal [to] As sun.invoke.util.Wrapper, ByVal opcode As Integer, ParamArray ByVal [from] As sun.invoke.util.Wrapper())
+		Private Shared Sub initWidening(  [to] As sun.invoke.util.Wrapper,   opcode As Integer, ParamArray   [from] As sun.invoke.util.Wrapper())
 			For Each f As sun.invoke.util.Wrapper In [from]
 				wideningOpcodes(f.ordinal())([to].ordinal()) = opcode
 			Next f
@@ -93,12 +93,12 @@ Namespace java.lang.invoke
 		''' Class name to Wrapper hash, derived from Wrapper.hashWrap() </summary>
 		''' <param name="xn"> </param>
 		''' <returns> The hash code 0-15 </returns>
-		Private Shared Function hashWrapperName(ByVal xn As String) As Integer
+		Private Shared Function hashWrapperName(  xn As String) As Integer
 			If xn.length() < 3 Then Return 0
 			Return (3 * AscW(xn.Chars(1)) + AscW(xn.Chars(2))) Mod 16
 		End Function
 
-		Private Function wrapperOrNullFromDescriptor(ByVal desc As String) As sun.invoke.util.Wrapper
+		Private Function wrapperOrNullFromDescriptor(  desc As String) As sun.invoke.util.Wrapper
 			If Not desc.StartsWith(WRAPPER_PREFIX) Then Return Nothing
 			' Pare it down to the simple class name
 			Dim cname As String = desc.Substring(WRAPPER_PREFIX.length(), desc.length() - 1 - (WRAPPER_PREFIX.length()))
@@ -111,35 +111,35 @@ Namespace java.lang.invoke
 			End If
 		End Function
 
-		Private Shared Function wrapperName(ByVal w As sun.invoke.util.Wrapper) As String
+		Private Shared Function wrapperName(  w As sun.invoke.util.Wrapper) As String
 			Return "java/lang/" & w.wrapperSimpleName()
 		End Function
 
-		Private Shared Function unboxMethod(ByVal w As sun.invoke.util.Wrapper) As String
+		Private Shared Function unboxMethod(  w As sun.invoke.util.Wrapper) As String
 			Return w.primitiveSimpleName() & "Value"
 		End Function
 
-		Private Shared Function boxingDescriptor(ByVal w As sun.invoke.util.Wrapper) As String
+		Private Shared Function boxingDescriptor(  w As sun.invoke.util.Wrapper) As String
 			Return String.Format("({0})L{1};", w.basicTypeChar(), wrapperName(w))
 		End Function
 
-		Private Shared Function unboxingDescriptor(ByVal w As sun.invoke.util.Wrapper) As String
+		Private Shared Function unboxingDescriptor(  w As sun.invoke.util.Wrapper) As String
 			Return "()" & w.basicTypeChar()
 		End Function
 
-		Friend Overridable Sub boxIfTypePrimitive(ByVal t As jdk.internal.org.objectweb.asm.Type)
+		Friend Overridable Sub boxIfTypePrimitive(  t As jdk.internal.org.objectweb.asm.Type)
 			Dim w As sun.invoke.util.Wrapper = FROM_TYPE_SORT(t.sort)
 			If w IsNot Nothing Then box(w)
 		End Sub
 
-		Friend Overridable Sub widen(ByVal ws As sun.invoke.util.Wrapper, ByVal wt As sun.invoke.util.Wrapper)
+		Friend Overridable Sub widen(  ws As sun.invoke.util.Wrapper,   wt As sun.invoke.util.Wrapper)
 			If ws IsNot wt Then
 				Dim opcode As Integer = wideningOpcodes(ws.ordinal())(wt.ordinal())
 				If opcode <> jdk.internal.org.objectweb.asm.Opcodes.NOP Then visitInsn(opcode)
 			End If
 		End Sub
 
-		Friend Overridable Sub box(ByVal w As sun.invoke.util.Wrapper)
+		Friend Overridable Sub box(  w As sun.invoke.util.Wrapper)
 			visitMethodInsn(jdk.internal.org.objectweb.asm.Opcodes.INVOKESTATIC, wrapperName(w), NAME_BOX_METHOD, boxingDescriptor(w), False)
 		End Sub
 
@@ -147,11 +147,11 @@ Namespace java.lang.invoke
 		''' Convert types by unboxing. The source type is known to be a primitive wrapper. </summary>
 		''' <param name="sname"> A primitive wrapper corresponding to wrapped reference source type </param>
 		''' <param name="wt"> A primitive wrapper being converted to </param>
-		Friend Overridable Sub unbox(ByVal sname As String, ByVal wt As sun.invoke.util.Wrapper)
+		Friend Overridable Sub unbox(  sname As String,   wt As sun.invoke.util.Wrapper)
 			visitMethodInsn(jdk.internal.org.objectweb.asm.Opcodes.INVOKEVIRTUAL, sname, unboxMethod(wt), unboxingDescriptor(wt), False)
 		End Sub
 
-		Private Function descriptorToName(ByVal desc As String) As String
+		Private Function descriptorToName(  desc As String) As String
 			Dim last As Integer = desc.length() - 1
 			If desc.Chars(0) = "L"c AndAlso desc.Chars(last) = ";"c Then
 				' In descriptor form
@@ -162,17 +162,17 @@ Namespace java.lang.invoke
 			End If
 		End Function
 
-		Friend Overridable Sub cast(ByVal ds As String, ByVal dt As String)
+		Friend Overridable Sub cast(  ds As String,   dt As String)
 			Dim ns As String = descriptorToName(ds)
 			Dim nt As String = descriptorToName(dt)
 			If (Not nt.Equals(ns)) AndAlso (Not nt.Equals(NAME_OBJECT)) Then visitTypeInsn(jdk.internal.org.objectweb.asm.Opcodes.CHECKCAST, nt)
 		End Sub
 
-		Private Function isPrimitive(ByVal w As sun.invoke.util.Wrapper) As Boolean
+		Private Function isPrimitive(  w As sun.invoke.util.Wrapper) As Boolean
 			Return w IsNot OBJECT
 		End Function
 
-		Private Function toWrapper(ByVal desc As String) As sun.invoke.util.Wrapper
+		Private Function toWrapper(  desc As String) As sun.invoke.util.Wrapper
 			Dim first As Char = desc.Chars(0)
 			If first = "["c OrElse first = "("c Then first = "L"c
 			Return sun.invoke.util.Wrapper.forBasicType(first)
@@ -184,7 +184,7 @@ Namespace java.lang.invoke
 		''' <param name="arg"> </param>
 		''' <param name="target"> </param>
 		''' <param name="functional"> </param>
-		Friend Overridable Sub convertType(ByVal arg As [Class], ByVal target As [Class], ByVal functional As [Class])
+		Friend Overridable Sub convertType(  arg As [Class],   target As [Class],   functional As [Class])
 			If arg.Equals(target) AndAlso arg.Equals(functional) Then Return
 			If arg Is Void.TYPE OrElse target Is Void.TYPE Then Return
 			If arg.primitive Then
@@ -257,7 +257,7 @@ Namespace java.lang.invoke
 		''' and fast Java bytecode manipulation framework.
 		''' Copyright (c) 2000-2005 INRIA, France Telecom All rights reserved.
 		''' </summary>
-		Friend Overridable Sub iconst(ByVal cst As Integer)
+		Friend Overridable Sub iconst(  cst As Integer)
 			If cst >= -1 AndAlso cst <= 5 Then
 				mv.visitInsn(jdk.internal.org.objectweb.asm.Opcodes.ICONST_0 + cst)
 			ElseIf cst >= java.lang.[Byte].MIN_VALUE AndAlso cst <= java.lang.[Byte].Max_Value Then
@@ -280,7 +280,7 @@ End Namespace
 '	arrays with inner arrays of the same length.
 '----------------------------------------------------------------------------------------
 Partial Friend Class RectangularArrays
-    Friend Shared Function ReturnRectangularIntegerArray(ByVal Size1 As Integer, ByVal Size2 As Integer) As Integer()()
+    Friend Shared Function ReturnRectangularIntegerArray(  Size1 As Integer,   Size2 As Integer) As Integer()()
         Dim Array As Integer()() = New Integer(Size1 - 1)() {}
         For Array1 As Integer = 0 To Size1 - 1
             Array(Array1) = New Integer(Size2 - 1) {}

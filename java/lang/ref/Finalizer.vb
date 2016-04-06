@@ -71,17 +71,17 @@ Namespace java.lang.ref
 			End SyncLock
 		End Sub
 
-		Private Sub New(ByVal finalizee As Object)
+		Private Sub New(  finalizee As Object)
 			MyBase.New(finalizee, queue)
 			add()
 		End Sub
 
 		' Invoked by VM 
-		Friend Shared Sub register(ByVal finalizee As Object)
+		Friend Shared Sub register(  finalizee As Object)
 			Dim TempFinalizer As Finalizer = New Finalizer(finalizee)
 		End Sub
 
-		Private Sub runFinalizer(ByVal jla As sun.misc.JavaLangAccess)
+		Private Sub runFinalizer(  jla As sun.misc.JavaLangAccess)
 			SyncLock Me
 				If hasBeenFinalized() Then Return
 				remove()
@@ -113,7 +113,7 @@ Namespace java.lang.ref
 	'       The advantage of creating a fresh thread, however, is that it insulates
 	'       invokers of these methods from a stalled or deadlocked finalizer thread.
 	'     
-		Private Shared Sub forkSecondaryFinalizer(ByVal proc As Runnable)
+		Private Shared Sub forkSecondaryFinalizer(  proc As Runnable)
 			java.security.AccessController.doPrivileged(New PrivilegedActionAnonymousInnerClassHelper(Of T)
 		End Sub
 
@@ -196,7 +196,7 @@ Namespace java.lang.ref
 
 'JAVA TO VB CONVERTER TODO TASK: There is no VB equivalent to 'volatile':
 			Private running As Boolean
-			Friend Sub New(ByVal g As ThreadGroup)
+			Friend Sub New(  g As ThreadGroup)
 				MyBase.New(g, "Finalizer")
 			End Sub
 			Public Overrides Sub run()

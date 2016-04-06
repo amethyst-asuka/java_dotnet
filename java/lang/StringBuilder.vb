@@ -98,7 +98,7 @@ Namespace java.lang
 		''' <param name="capacity">  the initial capacity. </param>
 		''' <exception cref="NegativeArraySizeException">  if the {@code capacity}
 		'''               argument is less than {@code 0}. </exception>
-		Public Sub New(ByVal capacity As Integer)
+		Public Sub New(  capacity As Integer)
 			MyBase.New(capacity)
 		End Sub
 
@@ -108,7 +108,7 @@ Namespace java.lang
 		''' {@code 16} plus the length of the string argument.
 		''' </summary>
 		''' <param name="str">   the initial contents of the buffer. </param>
-		Public Sub New(ByVal str As String)
+		Public Sub New(  str As String)
 			MyBase.New(str.length() + 16)
 			append(str)
 		End Sub
@@ -120,16 +120,16 @@ Namespace java.lang
 		''' {@code CharSequence} argument.
 		''' </summary>
 		''' <param name="seq">   the sequence to copy. </param>
-		Public Sub New(ByVal seq As CharSequence)
+		Public Sub New(  seq As CharSequence)
 			Me.New(seq.length() + 16)
 			append(seq)
 		End Sub
 
-		Public Overrides Function append(ByVal obj As Object) As StringBuilder
+		Public Overrides Function append(  obj As Object) As StringBuilder
 			Return append(Convert.ToString(obj))
 		End Function
 
-		Public Overrides Function append(ByVal str As String) As StringBuilder
+		Public Overrides Function append(  str As String) As StringBuilder
 			MyBase.append(str)
 			Return Me
 		End Function
@@ -152,59 +152,59 @@ Namespace java.lang
 		''' </summary>
 		''' <param name="sb">   the {@code StringBuffer} to append. </param>
 		''' <returns>  a reference to this object. </returns>
-		Public Overrides Function append(ByVal sb As StringBuffer) As StringBuilder
+		Public Overrides Function append(  sb As StringBuffer) As StringBuilder
 			MyBase.append(sb)
 			Return Me
 		End Function
 
-		Public Overrides Function append(ByVal s As CharSequence) As StringBuilder
+		Public Overrides Function append(  s As CharSequence) As StringBuilder
 			MyBase.append(s)
 			Return Me
 		End Function
 
 		''' <exception cref="IndexOutOfBoundsException"> {@inheritDoc} </exception>
-		Public Overrides Function append(ByVal s As CharSequence, ByVal start As Integer, ByVal [end] As Integer) As StringBuilder
+		Public Overrides Function append(  s As CharSequence,   start As Integer,   [end] As Integer) As StringBuilder
 			MyBase.append(s, start, [end])
 			Return Me
 		End Function
 
-		Public Overrides Function append(ByVal str As Char()) As StringBuilder
+		Public Overrides Function append(  str As Char()) As StringBuilder
 			MyBase.append(str)
 			Return Me
 		End Function
 
 		''' <exception cref="IndexOutOfBoundsException"> {@inheritDoc} </exception>
-		Public Overrides Function append(ByVal str As Char(), ByVal offset As Integer, ByVal len As Integer) As StringBuilder
+		Public Overrides Function append(  str As Char(),   offset As Integer,   len As Integer) As StringBuilder
 			MyBase.append(str, offset, len)
 			Return Me
 		End Function
 
-		Public Overrides Function append(ByVal b As Boolean) As StringBuilder
+		Public Overrides Function append(  b As Boolean) As StringBuilder
 			MyBase.append(b)
 			Return Me
 		End Function
 
-		Public Overrides Function append(ByVal c As Char) As StringBuilder
+		Public Overrides Function append(  c As Char) As StringBuilder
 			MyBase.append(c)
 			Return Me
 		End Function
 
-		Public Overrides Function append(ByVal i As Integer) As StringBuilder
+		Public Overrides Function append(  i As Integer) As StringBuilder
 			MyBase.append(i)
 			Return Me
 		End Function
 
-		Public Overrides Function append(ByVal lng As Long) As StringBuilder
+		Public Overrides Function append(  lng As Long) As StringBuilder
 			MyBase.append(lng)
 			Return Me
 		End Function
 
-		Public Overrides Function append(ByVal f As Single) As StringBuilder
+		Public Overrides Function append(  f As Single) As StringBuilder
 			MyBase.append(f)
 			Return Me
 		End Function
 
-		Public Overrides Function append(ByVal d As Double) As StringBuilder
+		Public Overrides Function append(  d As Double) As StringBuilder
 			MyBase.append(d)
 			Return Me
 		End Function
@@ -212,114 +212,114 @@ Namespace java.lang
 		''' <summary>
 		''' @since 1.5
 		''' </summary>
-		Public Overrides Function appendCodePoint(ByVal codePoint As Integer) As StringBuilder
+		Public Overrides Function appendCodePoint(  codePoint As Integer) As StringBuilder
 			MyBase.appendCodePoint(codePoint)
 			Return Me
 		End Function
 
 		''' <exception cref="StringIndexOutOfBoundsException"> {@inheritDoc} </exception>
-		Public Overrides Function delete(ByVal start As Integer, ByVal [end] As Integer) As StringBuilder
+		Public Overrides Function delete(  start As Integer,   [end] As Integer) As StringBuilder
 			MyBase.delete(start, [end])
 			Return Me
 		End Function
 
 		''' <exception cref="StringIndexOutOfBoundsException"> {@inheritDoc} </exception>
-		Public Overrides Function deleteCharAt(ByVal index As Integer) As StringBuilder
+		Public Overrides Function deleteCharAt(  index As Integer) As StringBuilder
 			MyBase.deleteCharAt(index)
 			Return Me
 		End Function
 
 		''' <exception cref="StringIndexOutOfBoundsException"> {@inheritDoc} </exception>
-		Public Overrides Function replace(ByVal start As Integer, ByVal [end] As Integer, ByVal str As String) As StringBuilder
+		Public Overrides Function replace(  start As Integer,   [end] As Integer,   str As String) As StringBuilder
 			MyBase.replace(start, [end], str)
 			Return Me
 		End Function
 
 		''' <exception cref="StringIndexOutOfBoundsException"> {@inheritDoc} </exception>
-		Public Overrides Function insert(ByVal index As Integer, ByVal str As Char(), ByVal offset As Integer, ByVal len As Integer) As StringBuilder
+		Public Overrides Function insert(  index As Integer,   str As Char(),   offset As Integer,   len As Integer) As StringBuilder
 			MyBase.insert(index, str, offset, len)
 			Return Me
 		End Function
 
 		''' <exception cref="StringIndexOutOfBoundsException"> {@inheritDoc} </exception>
-		Public Overrides Function insert(ByVal offset As Integer, ByVal obj As Object) As StringBuilder
+		Public Overrides Function insert(  offset As Integer,   obj As Object) As StringBuilder
 				MyBase.insert(offset, obj)
 				Return Me
 		End Function
 
 		''' <exception cref="StringIndexOutOfBoundsException"> {@inheritDoc} </exception>
-		Public Overrides Function insert(ByVal offset As Integer, ByVal str As String) As StringBuilder
+		Public Overrides Function insert(  offset As Integer,   str As String) As StringBuilder
 			MyBase.insert(offset, str)
 			Return Me
 		End Function
 
 		''' <exception cref="StringIndexOutOfBoundsException"> {@inheritDoc} </exception>
-		Public Overrides Function insert(ByVal offset As Integer, ByVal str As Char()) As StringBuilder
+		Public Overrides Function insert(  offset As Integer,   str As Char()) As StringBuilder
 			MyBase.insert(offset, str)
 			Return Me
 		End Function
 
 		''' <exception cref="IndexOutOfBoundsException"> {@inheritDoc} </exception>
-		Public Overrides Function insert(ByVal dstOffset As Integer, ByVal s As CharSequence) As StringBuilder
+		Public Overrides Function insert(  dstOffset As Integer,   s As CharSequence) As StringBuilder
 				MyBase.insert(dstOffset, s)
 				Return Me
 		End Function
 
 		''' <exception cref="IndexOutOfBoundsException"> {@inheritDoc} </exception>
-		Public Overrides Function insert(ByVal dstOffset As Integer, ByVal s As CharSequence, ByVal start As Integer, ByVal [end] As Integer) As StringBuilder
+		Public Overrides Function insert(  dstOffset As Integer,   s As CharSequence,   start As Integer,   [end] As Integer) As StringBuilder
 			MyBase.insert(dstOffset, s, start, [end])
 			Return Me
 		End Function
 
 		''' <exception cref="StringIndexOutOfBoundsException"> {@inheritDoc} </exception>
-		Public Overrides Function insert(ByVal offset As Integer, ByVal b As Boolean) As StringBuilder
+		Public Overrides Function insert(  offset As Integer,   b As Boolean) As StringBuilder
 			MyBase.insert(offset, b)
 			Return Me
 		End Function
 
 		''' <exception cref="IndexOutOfBoundsException"> {@inheritDoc} </exception>
-		Public Overrides Function insert(ByVal offset As Integer, ByVal c As Char) As StringBuilder
+		Public Overrides Function insert(  offset As Integer,   c As Char) As StringBuilder
 			MyBase.insert(offset, c)
 			Return Me
 		End Function
 
 		''' <exception cref="StringIndexOutOfBoundsException"> {@inheritDoc} </exception>
-		Public Overrides Function insert(ByVal offset As Integer, ByVal i As Integer) As StringBuilder
+		Public Overrides Function insert(  offset As Integer,   i As Integer) As StringBuilder
 			MyBase.insert(offset, i)
 			Return Me
 		End Function
 
 		''' <exception cref="StringIndexOutOfBoundsException"> {@inheritDoc} </exception>
-		Public Overrides Function insert(ByVal offset As Integer, ByVal l As Long) As StringBuilder
+		Public Overrides Function insert(  offset As Integer,   l As Long) As StringBuilder
 			MyBase.insert(offset, l)
 			Return Me
 		End Function
 
 		''' <exception cref="StringIndexOutOfBoundsException"> {@inheritDoc} </exception>
-		Public Overrides Function insert(ByVal offset As Integer, ByVal f As Single) As StringBuilder
+		Public Overrides Function insert(  offset As Integer,   f As Single) As StringBuilder
 			MyBase.insert(offset, f)
 			Return Me
 		End Function
 
 		''' <exception cref="StringIndexOutOfBoundsException"> {@inheritDoc} </exception>
-		Public Overrides Function insert(ByVal offset As Integer, ByVal d As Double) As StringBuilder
+		Public Overrides Function insert(  offset As Integer,   d As Double) As StringBuilder
 			MyBase.insert(offset, d)
 			Return Me
 		End Function
 
-		Public Overrides Function indexOf(ByVal str As String) As Integer
+		Public Overrides Function indexOf(  str As String) As Integer
 			Return MyBase.IndexOf(str)
 		End Function
 
-		Public Overrides Function indexOf(ByVal str As String, ByVal fromIndex As Integer) As Integer
+		Public Overrides Function indexOf(  str As String,   fromIndex As Integer) As Integer
 			Return MyBase.IndexOf(str, fromIndex)
 		End Function
 
-		Public Overrides Function lastIndexOf(ByVal str As String) As Integer
+		Public Overrides Function lastIndexOf(  str As String) As Integer
 			Return MyBase.LastIndexOf(str)
 		End Function
 
-		Public Overrides Function lastIndexOf(ByVal str As String, ByVal fromIndex As Integer) As Integer
+		Public Overrides Function lastIndexOf(  str As String,   fromIndex As Integer) As Integer
 			Return MyBase.LastIndexOf(str, fromIndex)
 		End Function
 
@@ -344,7 +344,7 @@ Namespace java.lang
 		'''             characters currently stored in the string builder, in which
 		'''             case extra characters are ignored.
 		''' </summary>
-		Private Sub writeObject(ByVal s As java.io.ObjectOutputStream)
+		Private Sub writeObject(  s As java.io.ObjectOutputStream)
 			s.defaultWriteObject()
 			s.writeInt(count)
 			s.writeObject(value)
@@ -354,7 +354,7 @@ Namespace java.lang
 		''' readObject is called to restore the state of the StringBuffer from
 		''' a stream.
 		''' </summary>
-		Private Sub readObject(ByVal s As java.io.ObjectInputStream)
+		Private Sub readObject(  s As java.io.ObjectInputStream)
 			s.defaultReadObject()
 			count = s.readInt()
 			value = CType(s.readObject(), Char())

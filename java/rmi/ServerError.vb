@@ -50,7 +50,7 @@ Namespace java.rmi
 		''' <param name="s"> the detail message </param>
 		''' <param name="err"> the nested error
 		''' @since JDK1.1 </param>
-		Public Sub New(ByVal s As String, ByVal err As [Error])
+		Public Sub New(  s As String,   err As [Error])
 			MyBase.New(s, err)
 		End Sub
 	End Class

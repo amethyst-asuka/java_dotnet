@@ -47,7 +47,7 @@ Namespace java.beans
 		''' </summary>
 		''' <param name="beanClass">  The Class object of the Java class that implements
 		'''          the bean.  For example sun.beans.OurButton.class. </param>
-		Public Sub New(ByVal beanClass As [Class])
+		Public Sub New(  beanClass As [Class])
 			Me.New(beanClass, Nothing)
 		End Sub
 
@@ -58,7 +58,7 @@ Namespace java.beans
 		'''          the bean.  For example sun.beans.OurButton.class. </param>
 		''' <param name="customizerClass">  The Class object of the Java class that implements
 		'''          the bean's Customizer.  For example sun.beans.OurButtonCustomizer.class. </param>
-		Public Sub New(ByVal beanClass As [Class], ByVal customizerClass As [Class])
+		Public Sub New(  beanClass As [Class],   customizerClass As [Class])
 			Me.beanClassRef = getWeakReference(beanClass)
 			Me.customizerClassRef = getWeakReference(customizerClass)
 
@@ -94,13 +94,13 @@ Namespace java.beans
 	'     * Package-private dup constructor
 	'     * This must isolate the new object from any changes to the old object.
 	'     
-		Friend Sub New(ByVal old As BeanDescriptor)
+		Friend Sub New(  old As BeanDescriptor)
 			MyBase.New(old)
 			beanClassRef = old.beanClassRef
 			customizerClassRef = old.customizerClassRef
 		End Sub
 
-		Friend Overrides Sub appendTo(ByVal sb As StringBuilder)
+		Friend Overrides Sub appendTo(  sb As StringBuilder)
 			appendTo(sb, "beanClass", Me.beanClassRef)
 			appendTo(sb, "customizerClass", Me.customizerClassRef)
 		End Sub

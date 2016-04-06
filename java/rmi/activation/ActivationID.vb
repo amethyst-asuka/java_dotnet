@@ -83,7 +83,7 @@ Namespace java.rmi.activation
 		''' <exception cref="UnsupportedOperationException"> if and only if activation is
 		'''         not supported by this implementation
 		''' @since 1.2 </exception>
-		Public Sub New(ByVal activator As Activator)
+		Public Sub New(  activator As Activator)
 			Me.activator = activator
 		End Sub
 
@@ -98,7 +98,7 @@ Namespace java.rmi.activation
 		''' <exception cref="UnknownObjectException"> if the object is unknown </exception>
 		''' <exception cref="RemoteException"> if remote call fails
 		''' @since 1.2 </exception>
-		Public Overridable Function activate(ByVal force As Boolean) As java.rmi.Remote
+		Public Overridable Function activate(  force As Boolean) As java.rmi.Remote
 			Try
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 				Dim mobj As java.rmi.MarshalledObject(Of ? As java.rmi.Remote) = activator.activate(Me, force)
@@ -134,7 +134,7 @@ Namespace java.rmi.activation
 		''' <returns>  true if these Objects are equal; false otherwise. </returns>
 		''' <seealso cref=             java.util.Hashtable
 		''' @since 1.2 </seealso>
-		Public Overrides Function Equals(ByVal obj As Object) As Boolean
+		Public Overrides Function Equals(  obj As Object) As Boolean
 			If TypeOf obj Is ActivationID Then
 				Dim id As ActivationID = CType(obj, ActivationID)
 				Return (uid.Equals(id.uid) AndAlso activator.Equals(id.activator))
@@ -189,7 +189,7 @@ Namespace java.rmi.activation
 		''' specification.
 		''' 
 		''' </summary>
-		Private Sub writeObject(ByVal out As java.io.ObjectOutputStream)
+		Private Sub writeObject(  out As java.io.ObjectOutputStream)
 			out.writeObject(uid)
 
 			Dim ref As java.rmi.server.RemoteRef
@@ -243,7 +243,7 @@ Namespace java.rmi.activation
 		''' case the <code>RemoteRef</code> will be an instance of
 		''' that implementation-specific class.
 		''' </summary>
-		Private Sub readObject(ByVal [in] As java.io.ObjectInputStream)
+		Private Sub readObject(  [in] As java.io.ObjectInputStream)
 			uid = CType([in].readObject(), java.rmi.server.UID)
 
 			Try

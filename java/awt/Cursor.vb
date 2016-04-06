@@ -214,7 +214,7 @@ Namespace java.awt
 
             'JAVA TO VB CONVERTER TODO TASK: There is no VB equivalent to 'volatile':
             Friend pData As Long
-            Public Sub New(ByVal pData As Long)
+            Public Sub New(  pData As Long)
                 Me.pData = pData
             End Sub
             Public Overridable Sub dispose()
@@ -224,7 +224,7 @@ Namespace java.awt
         <NonSerialized>
         Friend disposer As CursorDisposer
         Private WriteOnly Property pData As Long
-            Set(ByVal pData As Long)
+            Set(  pData As Long)
                 Me.pData = pData
                 If GraphicsEnvironment.headless Then Return
                 If disposer Is Nothing Then
@@ -252,7 +252,7 @@ Namespace java.awt
         ''' <returns> the specified predefined cursor </returns>
         ''' <exception cref="IllegalArgumentException"> if the specified cursor type is
         '''         invalid </exception>
-        Public Shared Function getPredefinedCursor(ByVal type As Integer) As Cursor
+        Public Shared Function getPredefinedCursor(  type As Integer) As Cursor
             If type < Cursor.DEFAULT_CURSOR OrElse type > Cursor.MOVE_CURSOR Then Throw New IllegalArgumentException("illegal cursor type")
             Dim c As Cursor = predefinedPrivate(type)
             If c Is Nothing Then
@@ -272,7 +272,7 @@ Namespace java.awt
         ''' <returns> the system specific custom cursor named </returns>
         ''' <exception cref="HeadlessException"> if
         ''' <code>GraphicsEnvironment.isHeadless</code> returns true </exception>
-        Public Shared Function getSystemCustomCursor(ByVal name As String) As Cursor
+        Public Shared Function getSystemCustomCursor(  name As String) As Cursor
             GraphicsEnvironment.checkHeadless()
             Dim cursor_Renamed As Cursor = systemCustomCursors(name)
 
@@ -358,7 +358,7 @@ Namespace java.awt
         ''' <exception cref="IllegalArgumentException"> if the specified cursor type
         ''' is invalid </exception>
         'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-        Public Sub New(ByVal type As Integer)
+        Public Sub New(  type As Integer)
             If type < Cursor.DEFAULT_CURSOR OrElse type > Cursor.MOVE_CURSOR Then Throw New IllegalArgumentException("illegal cursor type")
             Me.type = type
 
@@ -373,7 +373,7 @@ Namespace java.awt
         ''' use Toolkit.createCustomCursor(). </summary>
         ''' <param name="name"> the user-visible name of the cursor. </param>
         ''' <seealso cref= java.awt.Toolkit#createCustomCursor </seealso>
-        Protected Friend Sub New(ByVal name As String)
+        Protected Friend Sub New(  name As String)
             Me.type = Cursor.CUSTOM_CURSOR
             Me.name = name
         End Sub
@@ -443,7 +443,7 @@ Namespace java.awt
         End Class
 
         <DllImport("unknown")>
-        Private Shared Sub finalizeImpl(ByVal pData As Long)
+        Private Shared Sub finalizeImpl(  pData As Long)
         End Sub
     End Class
 

@@ -49,14 +49,14 @@ Namespace java.awt
 		''' constraint object. </summary>
 		''' <param name="comp"> the component to be added </param>
 		''' <param name="constraints">  where/how the component is added to the layout. </param>
-		Sub addLayoutComponent(ByVal comp As Component, ByVal constraints As Object)
+		Sub addLayoutComponent(  comp As Component,   constraints As Object)
 
 		''' <summary>
 		''' Calculates the maximum size dimensions for the specified container,
 		''' given the components it contains. </summary>
 		''' <seealso cref= java.awt.Component#getMaximumSize </seealso>
 		''' <seealso cref= LayoutManager </seealso>
-		Function maximumLayoutSize(ByVal target As Container) As Dimension
+		Function maximumLayoutSize(  target As Container) As Dimension
 
 		''' <summary>
 		''' Returns the alignment along the x axis.  This specifies how
@@ -65,7 +65,7 @@ Namespace java.awt
 		''' where 0 represents alignment along the origin, 1 is aligned
 		''' the furthest away from the origin, 0.5 is centered, etc.
 		''' </summary>
-		Function getLayoutAlignmentX(ByVal target As Container) As Single
+		Function getLayoutAlignmentX(  target As Container) As Single
 
 		''' <summary>
 		''' Returns the alignment along the y axis.  This specifies how
@@ -74,13 +74,13 @@ Namespace java.awt
 		''' where 0 represents alignment along the origin, 1 is aligned
 		''' the furthest away from the origin, 0.5 is centered, etc.
 		''' </summary>
-		Function getLayoutAlignmentY(ByVal target As Container) As Single
+		Function getLayoutAlignmentY(  target As Container) As Single
 
 		''' <summary>
 		''' Invalidates the layout, indicating that if the layout manager
 		''' has cached information it should be discarded.
 		''' </summary>
-		Sub invalidateLayout(ByVal target As Container)
+		Sub invalidateLayout(  target As Container)
 
 	End Interface
 

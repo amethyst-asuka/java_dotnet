@@ -49,7 +49,7 @@ Namespace java.util.stream
 		'''        <seealso cref="StreamOpFlag"/> </param>
 		''' <param name="parallel"> {@code true} if the pipeline is parallel </param>
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-		Friend Sub New(Of T1 As java.util.Spliterator(Of ?)(ByVal source As java.util.function.Supplier(Of T1), ByVal sourceFlags As Integer, ByVal parallel As Boolean)
+		Friend Sub New(Of T1 As java.util.Spliterator(Of ?)(  source As java.util.function.Supplier(Of T1),   sourceFlags As Integer,   parallel As Boolean)
 			MyBase.New(source, sourceFlags, parallel)
 		End Sub
 
@@ -60,7 +60,7 @@ Namespace java.util.stream
 		''' <param name="sourceFlags"> The source flags for the stream source, described in
 		'''        <seealso cref="StreamOpFlag"/> </param>
 		''' <param name="parallel"> {@code true} if the pipeline is parallel </param>
-		Friend Sub New(Of T1)(ByVal source As java.util.Spliterator(Of T1), ByVal sourceFlags As Integer, ByVal parallel As Boolean)
+		Friend Sub New(Of T1)(  source As java.util.Spliterator(Of T1),   sourceFlags As Integer,   parallel As Boolean)
 			MyBase.New(source, sourceFlags, parallel)
 		End Sub
 
@@ -69,7 +69,7 @@ Namespace java.util.stream
 		''' pipeline.
 		''' </summary>
 		''' <param name="upstream"> the upstream element source. </param>
-		Friend Sub New(Of T1)(ByVal upstream As AbstractPipeline(Of T1), ByVal opFlags As Integer)
+		Friend Sub New(Of T1)(  upstream As AbstractPipeline(Of T1),   opFlags As Integer)
 			MyBase.New(upstream, opFlags)
 		End Sub
 
@@ -81,24 +81,24 @@ Namespace java.util.stream
 			End Get
 		End Property
 
-		Friend Overrides Function evaluateToNode(Of P_IN)(ByVal helper As PipelineHelper(Of P_OUT), ByVal spliterator As java.util.Spliterator(Of P_IN), ByVal flattenTree As Boolean, ByVal generator As java.util.function.IntFunction(Of P_OUT())) As Node(Of P_OUT)
+		Friend Overrides Function evaluateToNode(Of P_IN)(  helper As PipelineHelper(Of P_OUT),   spliterator As java.util.Spliterator(Of P_IN),   flattenTree As Boolean,   generator As java.util.function.IntFunction(Of P_OUT())) As Node(Of P_OUT)
 			Return Nodes.collect(helper, spliterator, flattenTree, generator)
 		End Function
 
-		Friend Overrides Function wrap(Of P_IN)(ByVal ph As PipelineHelper(Of P_OUT), ByVal supplier As java.util.function.Supplier(Of java.util.Spliterator(Of P_IN)), ByVal isParallel As Boolean) As java.util.Spliterator(Of P_OUT)
+		Friend Overrides Function wrap(Of P_IN)(  ph As PipelineHelper(Of P_OUT),   supplier As java.util.function.Supplier(Of java.util.Spliterator(Of P_IN)),   isParallel As Boolean) As java.util.Spliterator(Of P_OUT)
 			Return New StreamSpliterators.WrappingSpliterator(Of )(ph, supplier, isParallel)
 		End Function
 
-		Friend Overrides Function lazySpliterator(Of T1 As java.util.Spliterator(Of P_OUT)(ByVal supplier As java.util.function.Supplier(Of T1)) As java.util.Spliterator(Of P_OUT)
+		Friend Overrides Function lazySpliterator(Of T1 As java.util.Spliterator(Of P_OUT)(  supplier As java.util.function.Supplier(Of T1)) As java.util.Spliterator(Of P_OUT)
 			Return New StreamSpliterators.DelegatingSpliterator(Of )(supplier)
 		End Function
 
-		Friend Overrides Sub forEachWithCancel(ByVal spliterator As java.util.Spliterator(Of P_OUT), ByVal sink As Sink(Of P_OUT))
+		Friend Overrides Sub forEachWithCancel(  spliterator As java.util.Spliterator(Of P_OUT),   sink As Sink(Of P_OUT))
 			Do
 			Loop While (Not sink.cancellationRequested()) AndAlso spliterator.tryAdvance(sink)
 		End Sub
 
-		Friend Overrides Function makeNodeBuilder(ByVal exactSizeIfKnown As Long, ByVal generator As java.util.function.IntFunction(Of P_OUT())) As Node.Builder(Of P_OUT)
+		Friend Overrides Function makeNodeBuilder(  exactSizeIfKnown As Long,   generator As java.util.function.IntFunction(Of P_OUT())) As Node.Builder(Of P_OUT)
 			Return Nodes.builder(exactSizeIfKnown, generator)
 		End Function
 
@@ -122,13 +122,13 @@ Namespace java.util.stream
 		Private Class StatelessOpAnonymousInnerClassHelper(Of E_IN, E_OUT)
 			Inherits StatelessOp(Of E_IN, E_OUT)
 
-			Friend Overrides Function opWrapSink(ByVal flags As Integer, ByVal sink As Sink(Of P_OUT)) As Sink(Of P_OUT)
+			Friend Overrides Function opWrapSink(  flags As Integer,   sink As Sink(Of P_OUT)) As Sink(Of P_OUT)
 				Return sink
 			End Function
 		End Class
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Overrides Function filter(Of T1)(ByVal predicate As java.util.function.Predicate(Of T1)) As Stream(Of P_OUT) Implements Stream(Of P_OUT).filter
+		Public Overrides Function filter(Of T1)(  predicate As java.util.function.Predicate(Of T1)) As Stream(Of P_OUT) Implements Stream(Of P_OUT).filter
 			java.util.Objects.requireNonNull(predicate)
 			Return New StatelessOpAnonymousInnerClassHelper2(Of E_IN, E_OUT)
 		End Function
@@ -136,7 +136,7 @@ Namespace java.util.stream
 		Private Class StatelessOpAnonymousInnerClassHelper2(Of E_IN, E_OUT)
 			Inherits StatelessOp(Of E_IN, E_OUT)
 
-			Friend Overrides Function opWrapSink(ByVal flags As Integer, ByVal sink As Sink(Of P_OUT)) As Sink(Of P_OUT)
+			Friend Overrides Function opWrapSink(  flags As Integer,   sink As Sink(Of P_OUT)) As Sink(Of P_OUT)
 'JAVA TO VB CONVERTER TODO TASK: Anonymous inner classes are not converted to VB if the base type is not defined in the code being converted:
 '				Return New Sink.ChainedReference<P_OUT, P_OUT>(sink)
 	'			{
@@ -156,7 +156,7 @@ Namespace java.util.stream
 
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Overrides Function map(Of R, T1 As R)(ByVal mapper As java.util.function.Function(Of T1)) As Stream(Of R) Implements Stream(Of P_OUT).map
+		Public Overrides Function map(Of R, T1 As R)(  mapper As java.util.function.Function(Of T1)) As Stream(Of R) Implements Stream(Of P_OUT).map
 			java.util.Objects.requireNonNull(mapper)
 			Return New StatelessOpAnonymousInnerClassHelper3(Of E_IN, E_OUT)
 		End Function
@@ -164,7 +164,7 @@ Namespace java.util.stream
 		Private Class StatelessOpAnonymousInnerClassHelper3(Of E_IN, E_OUT)
 			Inherits StatelessOp(Of E_IN, E_OUT)
 
-			Friend Overrides Function opWrapSink(ByVal flags As Integer, ByVal sink As Sink(Of R)) As Sink(Of P_OUT)
+			Friend Overrides Function opWrapSink(  flags As Integer,   sink As Sink(Of R)) As Sink(Of P_OUT)
 'JAVA TO VB CONVERTER TODO TASK: Anonymous inner classes are not converted to VB if the base type is not defined in the code being converted:
 '				Return New Sink.ChainedReference<P_OUT, R>(sink)
 	'			{
@@ -177,7 +177,7 @@ Namespace java.util.stream
 		End Class
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Overrides Function mapToInt(Of T1)(ByVal mapper As java.util.function.ToIntFunction(Of T1)) As IntStream Implements Stream(Of P_OUT).mapToInt
+		Public Overrides Function mapToInt(Of T1)(  mapper As java.util.function.ToIntFunction(Of T1)) As IntStream Implements Stream(Of P_OUT).mapToInt
 			java.util.Objects.requireNonNull(mapper)
 			Return New StatelessOpAnonymousInnerClassHelper(Of E_IN)
 		End Function
@@ -185,7 +185,7 @@ Namespace java.util.stream
 		Private Class StatelessOpAnonymousInnerClassHelper(Of E_IN)
 			Inherits StatelessOp(Of E_IN)
 
-			Friend Overrides Function opWrapSink(ByVal flags As Integer, ByVal sink As Sink(Of Integer?)) As Sink(Of P_OUT)
+			Friend Overrides Function opWrapSink(  flags As Integer,   sink As Sink(Of Integer?)) As Sink(Of P_OUT)
 'JAVA TO VB CONVERTER TODO TASK: Anonymous inner classes are not converted to VB if the base type is not defined in the code being converted:
 '				Return New Sink.ChainedReference<P_OUT, java.lang.Integer>(sink)
 	'			{
@@ -198,7 +198,7 @@ Namespace java.util.stream
 		End Class
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Overrides Function mapToLong(Of T1)(ByVal mapper As java.util.function.ToLongFunction(Of T1)) As LongStream Implements Stream(Of P_OUT).mapToLong
+		Public Overrides Function mapToLong(Of T1)(  mapper As java.util.function.ToLongFunction(Of T1)) As LongStream Implements Stream(Of P_OUT).mapToLong
 			java.util.Objects.requireNonNull(mapper)
 			Return New StatelessOpAnonymousInnerClassHelper(Of E_IN)
 		End Function
@@ -206,7 +206,7 @@ Namespace java.util.stream
 		Private Class StatelessOpAnonymousInnerClassHelper(Of E_IN)
 			Inherits StatelessOp(Of E_IN)
 
-			Friend Overrides Function opWrapSink(ByVal flags As Integer, ByVal sink As Sink(Of Long?)) As Sink(Of P_OUT)
+			Friend Overrides Function opWrapSink(  flags As Integer,   sink As Sink(Of Long?)) As Sink(Of P_OUT)
 'JAVA TO VB CONVERTER TODO TASK: Anonymous inner classes are not converted to VB if the base type is not defined in the code being converted:
 '				Return New Sink.ChainedReference<P_OUT, java.lang.Long>(sink)
 	'			{
@@ -219,7 +219,7 @@ Namespace java.util.stream
 		End Class
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Overrides Function mapToDouble(Of T1)(ByVal mapper As java.util.function.ToDoubleFunction(Of T1)) As DoubleStream Implements Stream(Of P_OUT).mapToDouble
+		Public Overrides Function mapToDouble(Of T1)(  mapper As java.util.function.ToDoubleFunction(Of T1)) As DoubleStream Implements Stream(Of P_OUT).mapToDouble
 			java.util.Objects.requireNonNull(mapper)
 			Return New StatelessOpAnonymousInnerClassHelper(Of E_IN)
 		End Function
@@ -227,7 +227,7 @@ Namespace java.util.stream
 		Private Class StatelessOpAnonymousInnerClassHelper(Of E_IN)
 			Inherits StatelessOp(Of E_IN)
 
-			Friend Overrides Function opWrapSink(ByVal flags As Integer, ByVal sink As Sink(Of Double?)) As Sink(Of P_OUT)
+			Friend Overrides Function opWrapSink(  flags As Integer,   sink As Sink(Of Double?)) As Sink(Of P_OUT)
 'JAVA TO VB CONVERTER TODO TASK: Anonymous inner classes are not converted to VB if the base type is not defined in the code being converted:
 '				Return New Sink.ChainedReference<P_OUT, java.lang.Double>(sink)
 	'			{
@@ -241,7 +241,7 @@ Namespace java.util.stream
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-		Public Overrides Function flatMap(Of R, T1 As Stream(Of ? As R)(ByVal mapper As java.util.function.Function(Of T1)) As Stream(Of R) Implements Stream(Of P_OUT).flatMap
+		Public Overrides Function flatMap(Of R, T1 As Stream(Of ? As R)(  mapper As java.util.function.Function(Of T1)) As Stream(Of R) Implements Stream(Of P_OUT).flatMap
 			java.util.Objects.requireNonNull(mapper)
 			' We can do better than this, by polling cancellationRequested when stream is infinite
 			Return New StatelessOpAnonymousInnerClassHelper4(Of E_IN, E_OUT)
@@ -250,7 +250,7 @@ Namespace java.util.stream
 		Private Class StatelessOpAnonymousInnerClassHelper4(Of E_IN, E_OUT)
 			Inherits StatelessOp(Of E_IN, E_OUT)
 
-			Friend Overrides Function opWrapSink(ByVal flags As Integer, ByVal sink As Sink(Of R)) As Sink(Of P_OUT)
+			Friend Overrides Function opWrapSink(  flags As Integer,   sink As Sink(Of R)) As Sink(Of P_OUT)
 'JAVA TO VB CONVERTER TODO TASK: Anonymous inner classes are not converted to VB if the base type is not defined in the code being converted:
 '				Return New Sink.ChainedReference<P_OUT, R>(sink)
 	'			{
@@ -273,7 +273,7 @@ Namespace java.util.stream
 		End Class
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Overrides Function flatMapToInt(Of T1 As IntStream)(ByVal mapper As java.util.function.Function(Of T1)) As IntStream Implements Stream(Of P_OUT).flatMapToInt
+		Public Overrides Function flatMapToInt(Of T1 As IntStream)(  mapper As java.util.function.Function(Of T1)) As IntStream Implements Stream(Of P_OUT).flatMapToInt
 			java.util.Objects.requireNonNull(mapper)
 			' We can do better than this, by polling cancellationRequested when stream is infinite
 			Return New StatelessOpAnonymousInnerClassHelper2(Of E_IN)
@@ -282,7 +282,7 @@ Namespace java.util.stream
 		Private Class StatelessOpAnonymousInnerClassHelper2(Of E_IN)
 			Inherits StatelessOp(Of E_IN)
 
-			Friend Overrides Function opWrapSink(ByVal flags As Integer, ByVal sink As Sink(Of Integer?)) As Sink(Of P_OUT)
+			Friend Overrides Function opWrapSink(  flags As Integer,   sink As Sink(Of Integer?)) As Sink(Of P_OUT)
 'JAVA TO VB CONVERTER TODO TASK: Anonymous inner classes are not converted to VB if the base type is not defined in the code being converted:
 '				Return New Sink.ChainedReference<P_OUT, java.lang.Integer>(sink)
 	'			{
@@ -306,7 +306,7 @@ Namespace java.util.stream
 		End Class
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Overrides Function flatMapToDouble(Of T1 As DoubleStream)(ByVal mapper As java.util.function.Function(Of T1)) As DoubleStream Implements Stream(Of P_OUT).flatMapToDouble
+		Public Overrides Function flatMapToDouble(Of T1 As DoubleStream)(  mapper As java.util.function.Function(Of T1)) As DoubleStream Implements Stream(Of P_OUT).flatMapToDouble
 			java.util.Objects.requireNonNull(mapper)
 			' We can do better than this, by polling cancellationRequested when stream is infinite
 			Return New StatelessOpAnonymousInnerClassHelper2(Of E_IN)
@@ -315,7 +315,7 @@ Namespace java.util.stream
 		Private Class StatelessOpAnonymousInnerClassHelper2(Of E_IN)
 			Inherits StatelessOp(Of E_IN)
 
-			Friend Overrides Function opWrapSink(ByVal flags As Integer, ByVal sink As Sink(Of Double?)) As Sink(Of P_OUT)
+			Friend Overrides Function opWrapSink(  flags As Integer,   sink As Sink(Of Double?)) As Sink(Of P_OUT)
 'JAVA TO VB CONVERTER TODO TASK: Anonymous inner classes are not converted to VB if the base type is not defined in the code being converted:
 '				Return New Sink.ChainedReference<P_OUT, java.lang.Double>(sink)
 	'			{
@@ -339,7 +339,7 @@ Namespace java.util.stream
 		End Class
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Overrides Function flatMapToLong(Of T1 As LongStream)(ByVal mapper As java.util.function.Function(Of T1)) As LongStream Implements Stream(Of P_OUT).flatMapToLong
+		Public Overrides Function flatMapToLong(Of T1 As LongStream)(  mapper As java.util.function.Function(Of T1)) As LongStream Implements Stream(Of P_OUT).flatMapToLong
 			java.util.Objects.requireNonNull(mapper)
 			' We can do better than this, by polling cancellationRequested when stream is infinite
 			Return New StatelessOpAnonymousInnerClassHelper2(Of E_IN)
@@ -348,7 +348,7 @@ Namespace java.util.stream
 		Private Class StatelessOpAnonymousInnerClassHelper2(Of E_IN)
 			Inherits StatelessOp(Of E_IN)
 
-			Friend Overrides Function opWrapSink(ByVal flags As Integer, ByVal sink As Sink(Of Long?)) As Sink(Of P_OUT)
+			Friend Overrides Function opWrapSink(  flags As Integer,   sink As Sink(Of Long?)) As Sink(Of P_OUT)
 'JAVA TO VB CONVERTER TODO TASK: Anonymous inner classes are not converted to VB if the base type is not defined in the code being converted:
 '				Return New Sink.ChainedReference<P_OUT, java.lang.Long>(sink)
 	'			{
@@ -372,7 +372,7 @@ Namespace java.util.stream
 		End Class
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Overrides Function peek(Of T1)(ByVal action As java.util.function.Consumer(Of T1)) As Stream(Of P_OUT) Implements Stream(Of P_OUT).peek
+		Public Overrides Function peek(Of T1)(  action As java.util.function.Consumer(Of T1)) As Stream(Of P_OUT) Implements Stream(Of P_OUT).peek
 			java.util.Objects.requireNonNull(action)
 			Return New StatelessOpAnonymousInnerClassHelper5(Of E_IN, E_OUT)
 		End Function
@@ -380,7 +380,7 @@ Namespace java.util.stream
 		Private Class StatelessOpAnonymousInnerClassHelper5(Of E_IN, E_OUT)
 			Inherits StatelessOp(Of E_IN, E_OUT)
 
-			Friend Overrides Function opWrapSink(ByVal flags As Integer, ByVal sink As Sink(Of P_OUT)) As Sink(Of P_OUT)
+			Friend Overrides Function opWrapSink(  flags As Integer,   sink As Sink(Of P_OUT)) As Sink(Of P_OUT)
 'JAVA TO VB CONVERTER TODO TASK: Anonymous inner classes are not converted to VB if the base type is not defined in the code being converted:
 '				Return New Sink.ChainedReference<P_OUT, P_OUT>(sink)
 	'			{
@@ -404,16 +404,16 @@ Namespace java.util.stream
 		End Function
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Overrides Function sorted(Of T1)(ByVal comparator As IComparer(Of T1)) As Stream(Of P_OUT) Implements Stream(Of P_OUT).sorted
+		Public Overrides Function sorted(Of T1)(  comparator As IComparer(Of T1)) As Stream(Of P_OUT) Implements Stream(Of P_OUT).sorted
 			Return SortedOps.makeRef(Me, comparator)
 		End Function
 
-		Public Overrides Function limit(ByVal maxSize As Long) As Stream(Of P_OUT) Implements Stream(Of P_OUT).limit
+		Public Overrides Function limit(  maxSize As Long) As Stream(Of P_OUT) Implements Stream(Of P_OUT).limit
 			If maxSize < 0 Then Throw New IllegalArgumentException(Convert.ToString(maxSize))
 			Return SliceOps.makeRef(Me, 0, maxSize)
 		End Function
 
-		Public Overrides Function skip(ByVal n As Long) As Stream(Of P_OUT) Implements Stream(Of P_OUT).skip
+		Public Overrides Function skip(  n As Long) As Stream(Of P_OUT) Implements Stream(Of P_OUT).skip
 			If n < 0 Then Throw New IllegalArgumentException(Convert.ToString(n))
 			If n = 0 Then
 				Return Me
@@ -425,17 +425,17 @@ Namespace java.util.stream
 		' Terminal operations from Stream
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Overrides Sub forEach(Of T1)(ByVal action As java.util.function.Consumer(Of T1)) Implements Stream(Of P_OUT).forEach
+		Public Overrides Sub forEach(Of T1)(  action As java.util.function.Consumer(Of T1)) Implements Stream(Of P_OUT).forEach
 			evaluate(ForEachOps.makeRef(action, False))
 		End Sub
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Overrides Sub forEachOrdered(Of T1)(ByVal action As java.util.function.Consumer(Of T1)) Implements Stream(Of P_OUT).forEachOrdered
+		Public Overrides Sub forEachOrdered(Of T1)(  action As java.util.function.Consumer(Of T1)) Implements Stream(Of P_OUT).forEachOrdered
 			evaluate(ForEachOps.makeRef(action, True))
 		End Sub
 
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Overrides Function toArray(Of A)(ByVal generator As java.util.function.IntFunction(Of A())) As A() Implements Stream(Of P_OUT).toArray
+		Public Overrides Function toArray(Of A)(  generator As java.util.function.IntFunction(Of A())) As A() Implements Stream(Of P_OUT).toArray
 			' Since A has no relation to U (not possible to declare that A is an upper bound of U)
 			' there will be no static type checking.
 			' Therefore use a raw type and assume A == U rather than propagating the separation of A and U
@@ -453,17 +453,17 @@ Namespace java.util.stream
 		End Function
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Overrides Function anyMatch(Of T1)(ByVal predicate As java.util.function.Predicate(Of T1)) As Boolean Implements Stream(Of P_OUT).anyMatch
+		Public Overrides Function anyMatch(Of T1)(  predicate As java.util.function.Predicate(Of T1)) As Boolean Implements Stream(Of P_OUT).anyMatch
 			Return evaluate(MatchOps.makeRef(predicate, MatchOps.MatchKind.ANY))
 		End Function
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Overrides Function allMatch(Of T1)(ByVal predicate As java.util.function.Predicate(Of T1)) As Boolean Implements Stream(Of P_OUT).allMatch
+		Public Overrides Function allMatch(Of T1)(  predicate As java.util.function.Predicate(Of T1)) As Boolean Implements Stream(Of P_OUT).allMatch
 			Return evaluate(MatchOps.makeRef(predicate, MatchOps.MatchKind.ALL))
 		End Function
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Overrides Function noneMatch(Of T1)(ByVal predicate As java.util.function.Predicate(Of T1)) As Boolean Implements Stream(Of P_OUT).noneMatch
+		Public Overrides Function noneMatch(Of T1)(  predicate As java.util.function.Predicate(Of T1)) As Boolean Implements Stream(Of P_OUT).noneMatch
 			Return evaluate(MatchOps.makeRef(predicate, MatchOps.MatchKind.NONE))
 		End Function
 
@@ -475,22 +475,22 @@ Namespace java.util.stream
 			Return evaluate(FindOps.makeRef(False))
 		End Function
 
-		Public Overrides Function reduce(ByVal identity As P_OUT, ByVal accumulator As java.util.function.BinaryOperator(Of P_OUT)) As P_OUT
+		Public Overrides Function reduce(  identity As P_OUT,   accumulator As java.util.function.BinaryOperator(Of P_OUT)) As P_OUT
 			Return evaluate(ReduceOps.makeRef(identity, accumulator, accumulator))
 		End Function
 
-		Public Overrides Function reduce(ByVal accumulator As java.util.function.BinaryOperator(Of P_OUT)) As java.util.Optional(Of P_OUT) Implements Stream(Of P_OUT).reduce
+		Public Overrides Function reduce(  accumulator As java.util.function.BinaryOperator(Of P_OUT)) As java.util.Optional(Of P_OUT) Implements Stream(Of P_OUT).reduce
 			Return evaluate(ReduceOps.makeRef(accumulator))
 		End Function
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Overrides Function reduce(Of R, T1)(ByVal identity As R, ByVal accumulator As java.util.function.BiFunction(Of T1), ByVal combiner As java.util.function.BinaryOperator(Of R)) As R
+		Public Overrides Function reduce(Of R, T1)(  identity As R,   accumulator As java.util.function.BiFunction(Of T1),   combiner As java.util.function.BinaryOperator(Of R)) As R
 			Return evaluate(ReduceOps.makeRef(identity, accumulator, combiner))
 		End Function
 
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Overrides Function collect(Of R, A, T1)(ByVal collector As Collector(Of T1)) As R Implements Stream(Of P_OUT).collect
+		Public Overrides Function collect(Of R, A, T1)(  collector As Collector(Of T1)) As R Implements Stream(Of P_OUT).collect
 			Dim container As A
 			If parallel AndAlso (collector.characteristics().contains(Collector.Characteristics.CONCURRENT)) AndAlso ((Not ordered) OrElse collector.characteristics().contains(Collector.Characteristics.UNORDERED)) Then
 				container = collector.supplier().get()
@@ -505,17 +505,17 @@ Namespace java.util.stream
 		End Function
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Overrides Function collect(Of R, T1)(ByVal supplier As java.util.function.Supplier(Of R), ByVal accumulator As java.util.function.BiConsumer(Of T1), ByVal combiner As java.util.function.BiConsumer(Of R, R)) As R Implements Stream(Of P_OUT).collect
+		Public Overrides Function collect(Of R, T1)(  supplier As java.util.function.Supplier(Of R),   accumulator As java.util.function.BiConsumer(Of T1),   combiner As java.util.function.BiConsumer(Of R, R)) As R Implements Stream(Of P_OUT).collect
 			Return evaluate(ReduceOps.makeRef(supplier, accumulator, combiner))
 		End Function
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Overrides Function max(Of T1)(ByVal comparator As IComparer(Of T1)) As java.util.Optional(Of P_OUT) Implements Stream(Of P_OUT).max
+		Public Overrides Function max(Of T1)(  comparator As IComparer(Of T1)) As java.util.Optional(Of P_OUT) Implements Stream(Of P_OUT).max
 			Return reduce(java.util.function.BinaryOperator.maxBy(comparator))
 		End Function
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Overrides Function min(Of T1)(ByVal comparator As IComparer(Of T1)) As java.util.Optional(Of P_OUT) Implements Stream(Of P_OUT).min
+		Public Overrides Function min(Of T1)(  comparator As IComparer(Of T1)) As java.util.Optional(Of P_OUT) Implements Stream(Of P_OUT).min
 			Return reduce(java.util.function.BinaryOperator.minBy(comparator))
 
 		End Function
@@ -544,7 +544,7 @@ Namespace java.util.stream
 			''' <param name="sourceFlags"> the source flags for the stream source, described
 			'''                    in <seealso cref="StreamOpFlag"/> </param>
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-			Friend Sub New(Of T1 As java.util.Spliterator(Of ?)(ByVal source As java.util.function.Supplier(Of T1), ByVal sourceFlags As Integer, ByVal parallel As Boolean)
+			Friend Sub New(Of T1 As java.util.Spliterator(Of ?)(  source As java.util.function.Supplier(Of T1),   sourceFlags As Integer,   parallel As Boolean)
 				MyBase.New(source, sourceFlags, parallel)
 			End Sub
 
@@ -554,7 +554,7 @@ Namespace java.util.stream
 			''' <param name="source"> {@code Spliterator} describing the stream source </param>
 			''' <param name="sourceFlags"> the source flags for the stream source, described
 			'''                    in <seealso cref="StreamOpFlag"/> </param>
-			Friend Sub New(Of T1)(ByVal source As java.util.Spliterator(Of T1), ByVal sourceFlags As Integer, ByVal parallel As Boolean)
+			Friend Sub New(Of T1)(  source As java.util.Spliterator(Of T1),   sourceFlags As Integer,   parallel As Boolean)
 				MyBase.New(source, sourceFlags, parallel)
 			End Sub
 
@@ -562,14 +562,14 @@ Namespace java.util.stream
 				Throw New UnsupportedOperationException
 			End Function
 
-			Friend Overrides Function opWrapSink(ByVal flags As Integer, ByVal sink As Sink(Of E_OUT)) As Sink(Of E_IN)
+			Friend Overrides Function opWrapSink(  flags As Integer,   sink As Sink(Of E_OUT)) As Sink(Of E_IN)
 				Throw New UnsupportedOperationException
 			End Function
 
 			' Optimized sequential terminal operations for the head of the pipeline
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Overrides Sub forEach(Of T1)(ByVal action As java.util.function.Consumer(Of T1))
+			Public Overrides Sub forEach(Of T1)(  action As java.util.function.Consumer(Of T1))
 				If Not parallel Then
 					sourceStageSpliterator().forEachRemaining(action)
 				Else
@@ -578,7 +578,7 @@ Namespace java.util.stream
 			End Sub
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Overrides Sub forEachOrdered(Of T1)(ByVal action As java.util.function.Consumer(Of T1))
+			Public Overrides Sub forEachOrdered(Of T1)(  action As java.util.function.Consumer(Of T1))
 				If Not parallel Then
 					sourceStageSpliterator().forEachRemaining(action)
 				Else
@@ -603,7 +603,7 @@ Namespace java.util.stream
 			''' <param name="upstream"> The upstream pipeline stage </param>
 			''' <param name="inputShape"> The stream shape for the upstream pipeline stage </param>
 			''' <param name="opFlags"> Operation flags for the new stage </param>
-			Friend Sub New(Of T1)(ByVal upstream As AbstractPipeline(Of T1), ByVal inputShape As StreamShape, ByVal opFlags As Integer)
+			Friend Sub New(Of T1)(  upstream As AbstractPipeline(Of T1),   inputShape As StreamShape,   opFlags As Integer)
 				MyBase.New(upstream, opFlags)
 				Debug.Assert(upstream.outputShape = inputShape)
 			End Sub
@@ -628,7 +628,7 @@ Namespace java.util.stream
 			''' <param name="upstream"> The upstream pipeline stage </param>
 			''' <param name="inputShape"> The stream shape for the upstream pipeline stage </param>
 			''' <param name="opFlags"> Operation flags for the new stage </param>
-			Friend Sub New(Of T1)(ByVal upstream As AbstractPipeline(Of T1), ByVal inputShape As StreamShape, ByVal opFlags As Integer)
+			Friend Sub New(Of T1)(  upstream As AbstractPipeline(Of T1),   inputShape As StreamShape,   opFlags As Integer)
 				MyBase.New(upstream, opFlags)
 				Debug.Assert(upstream.outputShape = inputShape)
 			End Sub
@@ -637,7 +637,7 @@ Namespace java.util.stream
 				Return True
 			End Function
 
-			Friend MustOverride Overrides Function opEvaluateParallel(Of P_IN)(ByVal helper As PipelineHelper(Of E_OUT), ByVal spliterator As java.util.Spliterator(Of P_IN), ByVal generator As java.util.function.IntFunction(Of E_OUT())) As Node(Of E_OUT)
+			Friend MustOverride Overrides Function opEvaluateParallel(Of P_IN)(  helper As PipelineHelper(Of E_OUT),   spliterator As java.util.Spliterator(Of P_IN),   generator As java.util.function.IntFunction(Of E_OUT())) As Node(Of E_OUT)
 		End Class
 	End Class
 

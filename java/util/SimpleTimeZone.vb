@@ -152,7 +152,7 @@ Namespace java.util
 		''' </summary>
 		''' <param name="rawOffset">  The base time zone offset in milliseconds to GMT. </param>
 		''' <param name="ID">         The time zone name that is given to this instance. </param>
-		Public Sub New(ByVal rawOffset As Integer, ByVal ID As String)
+		Public Sub New(  rawOffset As Integer,   ID As String)
 			Me.rawOffset = rawOffset
 			iD = ID
 			dstSavings = millisPerHour ' In case user sets rules later
@@ -206,7 +206,7 @@ Namespace java.util
 		'''                        time in this case. </param>
 		''' <exception cref="IllegalArgumentException"> if the month, day, dayOfWeek, or time
 		''' parameters are out of range for the start or end rule </exception>
-		Public Sub New(ByVal rawOffset As Integer, ByVal ID As String, ByVal startMonth As Integer, ByVal startDay As Integer, ByVal startDayOfWeek As Integer, ByVal startTime As Integer, ByVal endMonth As Integer, ByVal endDay As Integer, ByVal endDayOfWeek As Integer, ByVal endTime As Integer)
+		Public Sub New(  rawOffset As Integer,   ID As String,   startMonth As Integer,   startDay As Integer,   startDayOfWeek As Integer,   startTime As Integer,   endMonth As Integer,   endDay As Integer,   endDayOfWeek As Integer,   endTime As Integer)
 			Me.New(rawOffset, ID, startMonth, startDay, startDayOfWeek, startTime, WALL_TIME, endMonth, endDay, endDayOfWeek, endTime, WALL_TIME, millisPerHour)
 		End Sub
 
@@ -257,7 +257,7 @@ Namespace java.util
 		''' <exception cref="IllegalArgumentException"> if the month, day, dayOfWeek, or time
 		''' parameters are out of range for the start or end rule
 		''' @since 1.2 </exception>
-		Public Sub New(ByVal rawOffset As Integer, ByVal ID As String, ByVal startMonth As Integer, ByVal startDay As Integer, ByVal startDayOfWeek As Integer, ByVal startTime As Integer, ByVal endMonth As Integer, ByVal endDay As Integer, ByVal endDayOfWeek As Integer, ByVal endTime As Integer, ByVal dstSavings As Integer)
+		Public Sub New(  rawOffset As Integer,   ID As String,   startMonth As Integer,   startDay As Integer,   startDayOfWeek As Integer,   startTime As Integer,   endMonth As Integer,   endDay As Integer,   endDayOfWeek As Integer,   endTime As Integer,   dstSavings As Integer)
 			Me.New(rawOffset, ID, startMonth, startDay, startDayOfWeek, startTime, WALL_TIME, endMonth, endDay, endDayOfWeek, endTime, WALL_TIME, dstSavings)
 		End Sub
 
@@ -305,7 +305,7 @@ Namespace java.util
 		''' <seealso cref= #UTC_TIME
 		''' 
 		''' @since 1.4 </seealso>
-		Public Sub New(ByVal rawOffset As Integer, ByVal ID As String, ByVal startMonth As Integer, ByVal startDay As Integer, ByVal startDayOfWeek As Integer, ByVal startTime As Integer, ByVal startTimeMode As Integer, ByVal endMonth As Integer, ByVal endDay As Integer, ByVal endDayOfWeek As Integer, ByVal endTime As Integer, ByVal endTimeMode As Integer, ByVal dstSavings As Integer)
+		Public Sub New(  rawOffset As Integer,   ID As String,   startMonth As Integer,   startDay As Integer,   startDayOfWeek As Integer,   startTime As Integer,   startTimeMode As Integer,   endMonth As Integer,   endDay As Integer,   endDayOfWeek As Integer,   endTime As Integer,   endTimeMode As Integer,   dstSavings As Integer)
 
 			iD = ID
 			Me.rawOffset = rawOffset
@@ -331,7 +331,7 @@ Namespace java.util
 		''' </summary>
 		''' <param name="year">  The daylight saving starting year. </param>
 		Public Overridable Property startYear As Integer
-			Set(ByVal year As Integer)
+			Set(  year As Integer)
 				startYear = year
 				invalidateCache()
 			End Set
@@ -354,7 +354,7 @@ Namespace java.util
 		'''                        time, which is local standard time in this case. </param>
 		''' <exception cref="IllegalArgumentException"> if the <code>startMonth</code>, <code>startDay</code>,
 		''' <code>startDayOfWeek</code>, or <code>startTime</code> parameters are out of range </exception>
-		Public Overridable Sub setStartRule(ByVal startMonth As Integer, ByVal startDay As Integer, ByVal startDayOfWeek As Integer, ByVal startTime As Integer)
+		Public Overridable Sub setStartRule(  startMonth As Integer,   startDay As Integer,   startDayOfWeek As Integer,   startTime As Integer)
 			Me.startMonth = startMonth
 			Me.startDay = startDay
 			Me.startDayOfWeek = startDayOfWeek
@@ -379,7 +379,7 @@ Namespace java.util
 		''' <exception cref="IllegalArgumentException"> if the <code>startMonth</code>,
 		''' <code>startDayOfMonth</code>, or <code>startTime</code> parameters are out of range
 		''' @since 1.2 </exception>
-		Public Overridable Sub setStartRule(ByVal startMonth As Integer, ByVal startDay As Integer, ByVal startTime As Integer)
+		Public Overridable Sub setStartRule(  startMonth As Integer,   startDay As Integer,   startTime As Integer)
 			startRuleule(startMonth, startDay, 0, startTime)
 		End Sub
 
@@ -401,7 +401,7 @@ Namespace java.util
 		''' <exception cref="IllegalArgumentException"> if the <code>startMonth</code>, <code>startDay</code>,
 		''' <code>startDayOfWeek</code>, or <code>startTime</code> parameters are out of range
 		''' @since 1.2 </exception>
-		Public Overridable Sub setStartRule(ByVal startMonth As Integer, ByVal startDay As Integer, ByVal startDayOfWeek As Integer, ByVal startTime As Integer, ByVal after As Boolean)
+		Public Overridable Sub setStartRule(  startMonth As Integer,   startDay As Integer,   startDayOfWeek As Integer,   startTime As Integer,   after As Boolean)
 			' TODO: this method doesn't check the initial values of dayOfMonth or dayOfWeek.
 			If after Then
 				startRuleule(startMonth, startDay, -startDayOfWeek, startTime)
@@ -428,7 +428,7 @@ Namespace java.util
 		'''                        time in this case. </param>
 		''' <exception cref="IllegalArgumentException"> if the <code>endMonth</code>, <code>endDay</code>,
 		''' <code>endDayOfWeek</code>, or <code>endTime</code> parameters are out of range </exception>
-		Public Overridable Sub setEndRule(ByVal endMonth As Integer, ByVal endDay As Integer, ByVal endDayOfWeek As Integer, ByVal endTime As Integer)
+		Public Overridable Sub setEndRule(  endMonth As Integer,   endDay As Integer,   endDayOfWeek As Integer,   endTime As Integer)
 			Me.endMonth = endMonth
 			Me.endDay = endDay
 			Me.endDayOfWeek = endDayOfWeek
@@ -453,7 +453,7 @@ Namespace java.util
 		''' <exception cref="IllegalArgumentException"> the <code>endMonth</code>, <code>endDay</code>,
 		''' or <code>endTime</code> parameters are out of range
 		''' @since 1.2 </exception>
-		Public Overridable Sub setEndRule(ByVal endMonth As Integer, ByVal endDay As Integer, ByVal endTime As Integer)
+		Public Overridable Sub setEndRule(  endMonth As Integer,   endDay As Integer,   endTime As Integer)
 			endRuleule(endMonth, endDay, 0, endTime)
 		End Sub
 
@@ -476,7 +476,7 @@ Namespace java.util
 		''' <exception cref="IllegalArgumentException"> the <code>endMonth</code>, <code>endDay</code>,
 		''' <code>endDayOfWeek</code>, or <code>endTime</code> parameters are out of range
 		''' @since 1.2 </exception>
-		Public Overridable Sub setEndRule(ByVal endMonth As Integer, ByVal endDay As Integer, ByVal endDayOfWeek As Integer, ByVal endTime As Integer, ByVal after As Boolean)
+		Public Overridable Sub setEndRule(  endMonth As Integer,   endDay As Integer,   endDayOfWeek As Integer,   endTime As Integer,   after As Boolean)
 			If after Then
 				endRuleule(endMonth, endDay, -endDayOfWeek, endTime)
 			Else
@@ -494,12 +494,12 @@ Namespace java.util
 		''' <returns> the amount of time in milliseconds to add to UTC to get
 		''' local time.
 		''' @since 1.4 </returns>
-		Public Overrides Function getOffset(ByVal [date] As Long) As Integer
+		Public Overrides Function getOffset(  [date] As Long) As Integer
 			Return getOffsets(date_Renamed, Nothing)
 		End Function
 
 		''' <seealso cref= TimeZone#getOffsets </seealso>
-		Friend Overrides Function getOffsets(ByVal [date] As Long, ByVal offsets As Integer()) As Integer
+		Friend Overrides Function getOffsets(  [date] As Long,   offsets As Integer()) As Integer
 			Dim offset_Renamed As Integer = rawOffset
 
 		  computeOffset:
@@ -556,7 +556,7 @@ Namespace java.util
 	   ''' <exception cref="IllegalArgumentException"> the <code>era</code>,
 	   '''                  <code>month</code>, <code>day</code>, <code>dayOfWeek</code>,
 	   '''                  or <code>millis</code> parameters are out of range </exception>
-		Public Overrides Function getOffset(ByVal era As Integer, ByVal year As Integer, ByVal month As Integer, ByVal day As Integer, ByVal dayOfWeek As Integer, ByVal millis As Integer) As Integer
+		Public Overrides Function getOffset(  era As Integer,   year As Integer,   month As Integer,   day As Integer,   dayOfWeek As Integer,   millis As Integer) As Integer
 			If era <> GregorianCalendar.AD AndAlso era <> GregorianCalendar.BC Then Throw New IllegalArgumentException("Illegal era " & era)
 
 			Dim y As Integer = year
@@ -606,7 +606,7 @@ Namespace java.util
 			Return getOffset(cal, [cdate], y, time)
 		End Function
 
-		Private Function getOffset(ByVal cal As sun.util.calendar.BaseCalendar, ByVal [cdate] As sun.util.calendar.BaseCalendar.Date, ByVal year As Integer, ByVal time As Long) As Integer
+		Private Function getOffset(  cal As sun.util.calendar.BaseCalendar,   [cdate] As sun.util.calendar.BaseCalendar.Date,   year As Integer,   time As Long) As Integer
 			SyncLock Me
 				If cacheStart <> 0 Then
 					If time >= cacheStart AndAlso time < cacheEnd Then Return rawOffset + dstSavings
@@ -648,20 +648,20 @@ Namespace java.util
 			Return offset_Renamed
 		End Function
 
-		Private Function getStart(ByVal cal As sun.util.calendar.BaseCalendar, ByVal [cdate] As sun.util.calendar.BaseCalendar.Date, ByVal year As Integer) As Long
+		Private Function getStart(  cal As sun.util.calendar.BaseCalendar,   [cdate] As sun.util.calendar.BaseCalendar.Date,   year As Integer) As Long
 			Dim time As Integer = startTime
 			If startTimeMode <> UTC_TIME Then time -= rawOffset
 			Return getTransition(cal, [cdate], startMode, year, startMonth, startDay, startDayOfWeek, time)
 		End Function
 
-		Private Function getEnd(ByVal cal As sun.util.calendar.BaseCalendar, ByVal [cdate] As sun.util.calendar.BaseCalendar.Date, ByVal year As Integer) As Long
+		Private Function getEnd(  cal As sun.util.calendar.BaseCalendar,   [cdate] As sun.util.calendar.BaseCalendar.Date,   year As Integer) As Long
 			Dim time As Integer = endTime
 			If endTimeMode <> UTC_TIME Then time -= rawOffset
 			If endTimeMode = WALL_TIME Then time -= dstSavings
 			Return getTransition(cal, [cdate], endMode, year, endMonth, endDay, endDayOfWeek, time)
 		End Function
 
-		Private Function getTransition(ByVal cal As sun.util.calendar.BaseCalendar, ByVal [cdate] As sun.util.calendar.BaseCalendar.Date, ByVal mode As Integer, ByVal year As Integer, ByVal month As Integer, ByVal dayOfMonth As Integer, ByVal dayOfWeek As Integer, ByVal timeOfDay As Integer) As Long
+		Private Function getTransition(  cal As sun.util.calendar.BaseCalendar,   [cdate] As sun.util.calendar.BaseCalendar.Date,   mode As Integer,   year As Integer,   month As Integer,   dayOfMonth As Integer,   dayOfWeek As Integer,   timeOfDay As Integer) As Long
 			[cdate].normalizedYear = year
 			[cdate].month = month + 1
 			Select Case mode
@@ -694,7 +694,7 @@ Namespace java.util
 				' we have the historical time zone data in place.
 				Return rawOffset
 			End Get
-			Set(ByVal offsetMillis As Integer)
+			Set(  offsetMillis As Integer)
 				Me.rawOffset = offsetMillis
 			End Set
 		End Property
@@ -709,7 +709,7 @@ Namespace java.util
 		''' <seealso cref= #getDSTSavings
 		''' @since 1.2 </seealso>
 		Public Overridable Property dSTSavings As Integer
-			Set(ByVal millisSavedDuringDST As Integer)
+			Set(  millisSavedDuringDST As Integer)
 				If millisSavedDuringDST <= 0 Then Throw New IllegalArgumentException("Illegal daylight saving value: " & millisSavedDuringDST)
 				dstSavings = millisSavedDuringDST
 			End Set
@@ -743,7 +743,7 @@ Namespace java.util
 		''' Queries if the given date is in daylight saving time. </summary>
 		''' <returns> true if daylight saving time is in effective at the
 		''' given date; false otherwise. </returns>
-		Public Overrides Function inDaylightTime(ByVal [date] As Date) As Boolean
+		Public Overrides Function inDaylightTime(  [date] As Date) As Boolean
 			Return (getOffset(date_Renamed.time) <> rawOffset)
 		End Function
 
@@ -768,7 +768,7 @@ Namespace java.util
 		''' <param name="obj">  The <code>SimpleTimeZone</code> object to be compared with. </param>
 		''' <returns>     True if the given <code>obj</code> is the same as this
 		'''             <code>SimpleTimeZone</code> object; false otherwise. </returns>
-		Public Overrides Function Equals(ByVal obj As Object) As Boolean
+		Public Overrides Function Equals(  obj As Object) As Boolean
 			If Me Is obj Then Return True
 			If Not(TypeOf obj Is SimpleTimeZone) Then Return False
 
@@ -783,7 +783,7 @@ Namespace java.util
 		''' <returns> <code>true</code> if the given zone is a SimpleTimeZone and has the
 		''' same rules and offset as this one
 		''' @since 1.2 </returns>
-		Public Overrides Function hasSameRules(ByVal other As TimeZone) As Boolean
+		Public Overrides Function hasSameRules(  other As TimeZone) As Boolean
 			If Me Is other Then Return True
 			If Not(TypeOf other Is SimpleTimeZone) Then Return False
 			Dim that As SimpleTimeZone = CType(other, SimpleTimeZone)
@@ -1384,7 +1384,7 @@ Namespace java.util
 		''' Given an array of bytes produced by packRules, interpret them
 		''' as the start and end rules.
 		''' </summary>
-		Private Sub unpackRules(ByVal rules As SByte())
+		Private Sub unpackRules(  rules As SByte())
 			startDay = rules(0)
 			startDayOfWeek = rules(1)
 			endDay = rules(2)
@@ -1412,7 +1412,7 @@ Namespace java.util
 		''' Unpack the start and end times from an array of bytes.  This is required
 		''' as of serial version 2.
 		''' </summary>
-		Private Sub unpackTimes(ByVal times As Integer())
+		Private Sub unpackTimes(  times As Integer())
 			startTime = times(0)
 			endTime = times(1)
 		End Sub
@@ -1433,7 +1433,7 @@ Namespace java.util
 		''' mode <code>DOW_IN_MONTH_MODE</code>, which is the only mode recognized by
 		''' JDK 1.1.
 		''' </summary>
-		Private Sub writeObject(ByVal stream As java.io.ObjectOutputStream)
+		Private Sub writeObject(  stream As java.io.ObjectOutputStream)
 			' Construct a binary rule
 			Dim rules As SByte() = packRules()
 			Dim times As Integer() = packTimes()
@@ -1461,7 +1461,7 @@ Namespace java.util
 		''' We handle both JDK 1.1
 		''' binary formats and full formats with a packed byte array.
 		''' </summary>
-		Private Sub readObject(ByVal stream As java.io.ObjectInputStream)
+		Private Sub readObject(  stream As java.io.ObjectInputStream)
 			stream.defaultReadObject()
 
 			If serialVersionOnStream < 1 Then

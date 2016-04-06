@@ -153,7 +153,7 @@ Namespace java.time.chrono
 		''' </summary>
 		''' <param name="eraValue">  the era value, validated </param>
 		''' <param name="since">  the date representing the first date of the era, validated not null </param>
-		Private Sub New(ByVal eraValue As Integer, ByVal since As java.time.LocalDate)
+		Private Sub New(  eraValue As Integer,   since As java.time.LocalDate)
 			Me.eraValue = eraValue
 			Me.since = since
 		End Sub
@@ -180,7 +180,7 @@ Namespace java.time.chrono
 		''' <param name="japaneseEra">  the era to represent </param>
 		''' <returns> the {@code JapaneseEra} singleton, not null </returns>
 		''' <exception cref="DateTimeException"> if the value is invalid </exception>
-		Public Shared Function [of](ByVal japaneseEra_Renamed As Integer) As JapaneseEra
+		Public Shared Function [of](  japaneseEra_Renamed As Integer) As JapaneseEra
 			If japaneseEra_Renamed < MEIJI.eraValue OrElse japaneseEra_Renamed + ERA_OFFSET > KNOWN_ERAS.Length Then Throw New java.time.DateTimeException("Invalid era: " & japaneseEra_Renamed)
 			Return KNOWN_ERAS(ordinal(japaneseEra_Renamed))
 		End Function
@@ -194,7 +194,7 @@ Namespace java.time.chrono
 		''' <param name="japaneseEra">  the japaneseEra name; non-null </param>
 		''' <returns> the {@code JapaneseEra} singleton, never null </returns>
 		''' <exception cref="IllegalArgumentException"> if there is not JapaneseEra with the specified name </exception>
-		Public Shared Function valueOf(ByVal japaneseEra_Renamed As String) As JapaneseEra
+		Public Shared Function valueOf(  japaneseEra_Renamed As String) As JapaneseEra
 			java.util.Objects.requireNonNull(japaneseEra_Renamed, "japaneseEra")
 			For Each era As JapaneseEra In KNOWN_ERAS
 				If era.name.Equals(japaneseEra_Renamed) Then Return era
@@ -222,7 +222,7 @@ Namespace java.time.chrono
 		''' </summary>
 		''' <param name="date">  the date, not null </param>
 		''' <returns> the Era singleton, never null </returns>
-		Shared Function [from](ByVal [date] As java.time.LocalDate) As JapaneseEra
+		Shared Function [from](  [date] As java.time.LocalDate) As JapaneseEra
 			If date_Renamed.isBefore(MEIJI_6_ISODATE) Then Throw New java.time.DateTimeException("JapaneseDate before Meiji 6 are not supported")
 			For i As Integer = KNOWN_ERAS.Length - 1 To 1 Step -1
 				Dim era As JapaneseEra = KNOWN_ERAS(i)
@@ -231,14 +231,14 @@ Namespace java.time.chrono
 			Return Nothing
 		End Function
 
-		Shared Function toJapaneseEra(ByVal privateEra As sun.util.calendar.Era) As JapaneseEra
+		Shared Function toJapaneseEra(  privateEra As sun.util.calendar.Era) As JapaneseEra
 			For i As Integer = ERA_CONFIG.Length - 1 To 0 Step -1
 				If ERA_CONFIG(i).Equals(privateEra) Then Return KNOWN_ERAS(i)
 			Next i
 			Return Nothing
 		End Function
 
-		Friend Shared Function privateEraFrom(ByVal isoDate As java.time.LocalDate) As sun.util.calendar.Era
+		Friend Shared Function privateEraFrom(  isoDate As java.time.LocalDate) As sun.util.calendar.Era
 			For i As Integer = KNOWN_ERAS.Length - 1 To 1 Step -1
 				Dim era As JapaneseEra = KNOWN_ERAS(i)
 				If isoDate.CompareTo(era.since) >= 0 Then Return ERA_CONFIG(i)
@@ -252,7 +252,7 @@ Namespace java.time.chrono
 		''' </summary>
 		''' <param name="eraValue">  the era value to convert to the index </param>
 		''' <returns> the index of the current Era </returns>
-		Private Shared Function ordinal(ByVal eraValue As Integer) As Integer
+		Private Shared Function ordinal(  eraValue As Integer) As Integer
 			Return eraValue + ERA_OFFSET - 1
 		End Function
 
@@ -296,7 +296,7 @@ Namespace java.time.chrono
 		''' <returns> the range of valid values for the field, not null </returns>
 		''' <exception cref="DateTimeException"> if the range for the field cannot be obtained </exception>
 		''' <exception cref="UnsupportedTemporalTypeException"> if the unit is not supported </exception>
-		Public Overrides Function range(ByVal field As java.time.temporal.TemporalField) As java.time.temporal.ValueRange Implements Era.range ' override as super would return range from 0 to 1
+		Public Overrides Function range(  field As java.time.temporal.TemporalField) As java.time.temporal.ValueRange Implements Era.range ' override as super would return range from 0 to 1
 			If field = ERA Then Return JapaneseChronology.INSTANCE.range(ERA)
 			Return outerInstance.range(field)
 		End Function
@@ -326,7 +326,7 @@ Namespace java.time.chrono
 		''' </summary>
 		''' <param name="s"> the stream to read </param>
 		''' <exception cref="InvalidObjectException"> always </exception>
-		Private Sub readObject(ByVal s As java.io.ObjectInputStream)
+		Private Sub readObject(  s As java.io.ObjectInputStream)
 			Throw New java.io.InvalidObjectException("Deserialization via serialization delegate")
 		End Sub
 
@@ -345,11 +345,11 @@ Namespace java.time.chrono
 			Return New Ser(Ser.JAPANESE_ERA_TYPE, Me)
 		End Function
 
-		Friend Sub writeExternal(ByVal out As java.io.DataOutput)
+		Friend Sub writeExternal(  out As java.io.DataOutput)
 			out.writeByte(Me.value)
 		End Sub
 
-		Shared Function readExternal(ByVal [in] As java.io.DataInput) As JapaneseEra
+		Shared Function readExternal(  [in] As java.io.DataInput) As JapaneseEra
 			Dim eraValue As SByte = [in].readByte()
 			Return JapaneseEra.of(eraValue)
 		End Function

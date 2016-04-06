@@ -143,12 +143,12 @@ Namespace java.time.format
 		End Function
 
 		'-----------------------------------------------------------------------
-		Public Overrides Function isSupported(ByVal field As java.time.temporal.TemporalField) As Boolean
+		Public Overrides Function isSupported(  field As java.time.temporal.TemporalField) As Boolean
 			If fieldValues.ContainsKey(field) OrElse ([date] IsNot Nothing AndAlso [date].isSupported(field)) OrElse (time IsNot Nothing AndAlso time.isSupported(field)) Then Return True
 			Return field IsNot Nothing AndAlso (TypeOf field Is java.time.temporal.ChronoField = False) AndAlso field.isSupportedBy(Me)
 		End Function
 
-		Public Overrides Function getLong(ByVal field As java.time.temporal.TemporalField) As Long
+		Public Overrides Function getLong(  field As java.time.temporal.TemporalField) As Long
 			java.util.Objects.requireNonNull(field, "field")
 			Dim value As Long? = fieldValues(field)
 			If value IsNot Nothing Then Return value
@@ -159,7 +159,7 @@ Namespace java.time.format
 		End Function
 
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Overrides Function query(Of R)(ByVal query_Renamed As java.time.temporal.TemporalQuery(Of R)) As R
+		Public Overrides Function query(Of R)(  query_Renamed As java.time.temporal.TemporalQuery(Of R)) As R
 			If query_Renamed Is java.time.temporal.TemporalQueries.zoneId() Then
 				Return CType(zone, R)
 			ElseIf query_Renamed Is java.time.temporal.TemporalQueries.chronology() Then
@@ -187,7 +187,7 @@ Namespace java.time.format
 		''' <returns> this, for method chaining </returns>
 		''' <exception cref="DateTimeException"> if resolving one field results in a value for
 		'''  another field that is in conflict </exception>
-		Friend Function resolve(ByVal resolverStyle As ResolverStyle, ByVal resolverFields As java.util.Set(Of java.time.temporal.TemporalField)) As java.time.temporal.TemporalAccessor
+		Friend Function resolve(  resolverStyle As ResolverStyle,   resolverFields As java.util.Set(Of java.time.temporal.TemporalField)) As java.time.temporal.TemporalAccessor
 			If resolverFields IsNot Nothing Then fieldValues.Keys.retainAll(resolverFields)
 			Me.resolverStyle = resolverStyle
 			resolveFields()
@@ -262,7 +262,7 @@ Namespace java.time.format
 			End If
 		End Sub
 
-		Private Sub updateCheckConflict(ByVal targetField As java.time.temporal.TemporalField, ByVal changeField As java.time.temporal.TemporalField, ByVal changeValue As Long?)
+		Private Sub updateCheckConflict(  targetField As java.time.temporal.TemporalField,   changeField As java.time.temporal.TemporalField,   changeValue As Long?)
 				fieldValues(changeField) = changeValue
 				Dim old As Long? = fieldValues(changeField)
 			If old IsNot Nothing AndAlso old <> changeValue Then Throw New java.time.DateTimeException("Conflict found: " & changeField & " " & old & " differs from " & changeField & " " & changeValue & " while resolving  " & targetField)
@@ -284,7 +284,7 @@ Namespace java.time.format
 			End If
 		End Sub
 
-		Private Sub resolveInstantFields0(ByVal selectedZone As java.time.ZoneId)
+		Private Sub resolveInstantFields0(  selectedZone As java.time.ZoneId)
 			Dim instant_Renamed As java.time.Instant = java.time.Instant.ofEpochSecond(fieldValues.Remove(INSTANT_SECONDS))
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 			Dim zdt As java.time.chrono.ChronoZonedDateTime(Of ?) = chrono.zonedDateTime(instant_Renamed, selectedZone)
@@ -297,7 +297,7 @@ Namespace java.time.format
 			updateCheckConflict(chrono.resolveDate(fieldValues, resolverStyle))
 		End Sub
 
-		Private Sub updateCheckConflict(ByVal cld As java.time.chrono.ChronoLocalDate)
+		Private Sub updateCheckConflict(  cld As java.time.chrono.ChronoLocalDate)
 			If [date] IsNot Nothing Then
 				If cld IsNot Nothing AndAlso [date].Equals(cld) = False Then Throw New java.time.DateTimeException("Conflict found: Fields resolved to two different dates: " & [date] & " " & cld)
 			ElseIf cld IsNot Nothing Then
@@ -449,7 +449,7 @@ Namespace java.time.format
 			End If
 		End Sub
 
-		Private Sub resolveTime(ByVal hod As Long, ByVal moh As Long, ByVal som As Long, ByVal nos As Long)
+		Private Sub resolveTime(  hod As Long,   moh As Long,   som As Long,   nos As Long)
 			If resolverStyle = ResolverStyle.LENIENT Then
 				Dim totalNanos As Long = System.Math.multiplyExact(hod, 3600_000_000_000L)
 				totalNanos = System.Math.addExact(totalNanos, System.Math.multiplyExact(moh, 60_000_000_000L))
@@ -513,7 +513,7 @@ Namespace java.time.format
 			End If
 		End Sub
 
-		Private Sub updateCheckConflict(ByVal timeToSet As java.time.LocalTime, ByVal periodToSet As java.time.Period)
+		Private Sub updateCheckConflict(  timeToSet As java.time.LocalTime,   periodToSet As java.time.Period)
 			If time IsNot Nothing Then
 				If time.Equals(timeToSet) = False Then Throw New java.time.DateTimeException("Conflict found: Fields resolved to different times: " & time & " " & timeToSet)
 				If excessDays.zero = False AndAlso periodToSet.zero = False AndAlso excessDays.Equals(periodToSet) = False Then
@@ -538,7 +538,7 @@ Namespace java.time.format
 			End If
 		End Sub
 
-		Private Sub crossCheck(ByVal target As java.time.temporal.TemporalAccessor)
+		Private Sub crossCheck(  target As java.time.temporal.TemporalAccessor)
 			Dim it As IEnumerator(Of KeyValuePair(Of java.time.temporal.TemporalField, Long?)) = fieldValues.GetEnumerator()
 			Do While it.MoveNext()
 				Dim entry As KeyValuePair(Of java.time.temporal.TemporalField, Long?) = it.Current

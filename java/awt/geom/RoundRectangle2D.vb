@@ -125,7 +125,7 @@ Namespace java.awt.geom
 			'''             corners of the newly constructed
 			'''             <code>RoundRectangle2D</code>
 			''' @since 1.2 </param>
-			Public Sub New(ByVal x As Single, ByVal y As Single, ByVal w As Single, ByVal h As Single, ByVal arcw As Single, ByVal arch As Single)
+			Public Sub New(  x As Single,   y As Single,   w As Single,   h As Single,   arcw As Single,   arch As Single)
 				roundRectect(x, y, w, h, arcw, arch)
 			End Sub
 
@@ -217,7 +217,7 @@ Namespace java.awt.geom
 			''' <param name="arch"> the height to which to set the arc of this
 			'''             <code>RoundRectangle2D</code>
 			''' @since 1.2 </param>
-			Public Overridable Sub setRoundRect(ByVal x As Single, ByVal y As Single, ByVal w As Single, ByVal h As Single, ByVal arcw As Single, ByVal arch As Single)
+			Public Overridable Sub setRoundRect(  x As Single,   y As Single,   w As Single,   h As Single,   arcw As Single,   arch As Single)
 				Me.x = x
 				Me.y = y
 				Me.width = w
@@ -230,7 +230,7 @@ Namespace java.awt.geom
 			''' {@inheritDoc}
 			''' @since 1.2
 			''' </summary>
-			Public Overrides Sub setRoundRect(ByVal x As Double, ByVal y As Double, ByVal w As Double, ByVal h As Double, ByVal arcw As Double, ByVal arch As Double)
+			Public Overrides Sub setRoundRect(  x As Double,   y As Double,   w As Double,   h As Double,   arcw As Double,   arch As Double)
 				Me.x = CSng(x)
 				Me.y = CSng(y)
 				Me.width = CSng(w)
@@ -244,7 +244,7 @@ Namespace java.awt.geom
 			''' @since 1.2
 			''' </summary>
 			Public Overrides Property roundRect As RoundRectangle2D
-				Set(ByVal rr As RoundRectangle2D)
+				Set(  rr As RoundRectangle2D)
 					Me.x = CSng(rr.x)
 					Me.y = CSng(rr.y)
 					Me.width = CSng(rr.width)
@@ -349,7 +349,7 @@ Namespace java.awt.geom
 			'''             corners of the newly constructed
 			'''             <code>RoundRectangle2D</code>
 			''' @since 1.2 </param>
-			Function java.lang.Double(ByVal x As Double, ByVal y As Double, ByVal w As Double, ByVal h As Double, ByVal arcw As Double, ByVal arch As Double) As [Public] Overridable
+			Function java.lang.Double(  x As Double,   y As Double,   w As Double,   h As Double,   arcw As Double,   arch As Double) As [Public] Overridable
 				roundRectect(x, y, w, h, arcw, arch)
 			End Function
 
@@ -427,7 +427,7 @@ Namespace java.awt.geom
 			''' {@inheritDoc}
 			''' @since 1.2
 			''' </summary>
-			Public Overrides Sub setRoundRect(ByVal x As Double, ByVal y As Double, ByVal w As Double, ByVal h As Double, ByVal arcw As Double, ByVal arch As Double)
+			Public Overrides Sub setRoundRect(  x As Double,   y As Double,   w As Double,   h As Double,   arcw As Double,   arch As Double)
 				Me.x = x
 				Me.y = y
 				Me.width = w
@@ -441,7 +441,7 @@ Namespace java.awt.geom
 			''' @since 1.2
 			''' </summary>
 			Public Overrides Property roundRect As RoundRectangle2D
-				Set(ByVal rr As RoundRectangle2D)
+				Set(  rr As RoundRectangle2D)
 					Me.x = rr.x
 					Me.y = rr.y
 					Me.width = rr.width
@@ -512,7 +512,7 @@ Namespace java.awt.geom
 		''' <param name="arcHeight"> the height to which to set the arc of this
 		'''                  <code>RoundRectangle2D</code>
 		''' @since 1.2 </param>
-		Public MustOverride Sub setRoundRect(ByVal x As Double, ByVal y As Double, ByVal w As Double, ByVal h As Double, ByVal arcWidth As Double, ByVal arcHeight As Double)
+		Public MustOverride Sub setRoundRect(  x As Double,   y As Double,   w As Double,   h As Double,   arcWidth As Double,   arcHeight As Double)
 
 		''' <summary>
 		''' Sets this <code>RoundRectangle2D</code> to be the same as the
@@ -520,7 +520,7 @@ Namespace java.awt.geom
 		''' <param name="rr"> the specified <code>RoundRectangle2D</code>
 		''' @since 1.2 </param>
 		Public Overridable Property roundRect As RoundRectangle2D
-			Set(ByVal rr As RoundRectangle2D)
+			Set(  rr As RoundRectangle2D)
 				roundRectect(rr.x, rr.y, rr.width, rr.height, rr.arcWidth, rr.arcHeight)
 			End Set
 		End Property
@@ -529,7 +529,7 @@ Namespace java.awt.geom
 		''' {@inheritDoc}
 		''' @since 1.2
 		''' </summary>
-		Public Overrides Sub setFrame(ByVal x As Double, ByVal y As Double, ByVal w As Double, ByVal h As Double)
+		Public Overrides Sub setFrame(  x As Double,   y As Double,   w As Double,   h As Double)
 			roundRectect(x, y, w, h, arcWidth, arcHeight)
 		End Sub
 
@@ -537,7 +537,7 @@ Namespace java.awt.geom
 		''' {@inheritDoc}
 		''' @since 1.2
 		''' </summary>
-		Public Overrides Function contains(ByVal x As Double, ByVal y As Double) As Boolean
+		Public Overrides Function contains(  x As Double,   y As Double) As Boolean
 			If empty Then Return False
 			Dim rrx0 As Double = x
 			Dim rry0 As Double = y
@@ -560,7 +560,7 @@ Namespace java.awt.geom
 			Return (x * x + y * y <= 1.0)
 		End Function
 
-		Private Function classify(ByVal coord As Double, ByVal left As Double, ByVal right As Double, ByVal arcsize As Double) As Integer
+		Private Function classify(  coord As Double,   left As Double,   right As Double,   arcsize As Double) As Integer
 			If coord < left Then
 				Return 0
 			ElseIf coord < left + arcsize Then
@@ -578,7 +578,7 @@ Namespace java.awt.geom
 		''' {@inheritDoc}
 		''' @since 1.2
 		''' </summary>
-		Public Overrides Function intersects(ByVal x As Double, ByVal y As Double, ByVal w As Double, ByVal h As Double) As Boolean
+		Public Overrides Function intersects(  x As Double,   y As Double,   w As Double,   h As Double) As Boolean
 			If empty OrElse w <= 0 OrElse h <= 0 Then Return False
 			Dim rrx0 As Double = x
 			Dim rry0 As Double = y
@@ -623,7 +623,7 @@ Namespace java.awt.geom
 		''' {@inheritDoc}
 		''' @since 1.2
 		''' </summary>
-		Public Overrides Function contains(ByVal x As Double, ByVal y As Double, ByVal w As Double, ByVal h As Double) As Boolean
+		Public Overrides Function contains(  x As Double,   y As Double,   w As Double,   h As Double) As Boolean
 			If empty OrElse w <= 0 OrElse h <= 0 Then Return False
 			Return (contains(x, y) AndAlso contains(x + w, y) AndAlso contains(x, y + h) AndAlso contains(x + w, y + h))
 		End Function
@@ -643,7 +643,7 @@ Namespace java.awt.geom
 		'''          geometry of the outline of this
 		'''          <code>RoundRectangle2D</code>, one segment at a time.
 		''' @since 1.2 </returns>
-		Public Overridable Function getPathIterator(ByVal at As AffineTransform) As PathIterator
+		Public Overridable Function getPathIterator(  at As AffineTransform) As PathIterator
 			Return New RoundRectIterator(Me, at)
 		End Function
 
@@ -674,7 +674,7 @@ Namespace java.awt.geom
 		'''          of <code>RoundRectangle2D</code> and has the same values;
 		'''          <code>false</code> otherwise.
 		''' @since 1.6 </returns>
-		Public Overrides Function Equals(ByVal obj As Object) As Boolean
+		Public Overrides Function Equals(  obj As Object) As Boolean
 			If obj Is Me Then Return True
 			If TypeOf obj Is RoundRectangle2D Then
 				Dim rr2d As RoundRectangle2D = CType(obj, RoundRectangle2D)

@@ -67,7 +67,7 @@ Namespace java.nio.file
 
         Friend Const serialVersionUID As Long = -1441492453772213220L
 
-        Private Sub checkName(ByVal name As String)
+        Private Sub checkName(  name As String)
             If (Not name.Equals("hard")) AndAlso (Not name.Equals("symbolic")) Then Throw New IllegalArgumentException("name: " & name)
         End Sub
 
@@ -79,7 +79,7 @@ Namespace java.nio.file
         ''' </param>
         ''' <exception cref="IllegalArgumentException">
         '''          if name is empty or invalid </exception>
-        Public Sub New(ByVal name As String)
+        Public Sub New(  name As String)
             MyBase.New(name)
             checkName(name)
         End Sub
@@ -95,7 +95,7 @@ Namespace java.nio.file
         ''' </param>
         ''' <exception cref="IllegalArgumentException">
         '''          if name is empty or invalid, or actions is a non-empty string </exception>
-        Public Sub New(ByVal name As String, ByVal actions As String)
+        Public Sub New(  name As String,   actions As String)
             MyBase.New(name)
             checkName(name)
             If actions IsNot Nothing AndAlso actions.Length() > 0 Then Throw New IllegalArgumentException("actions: " & actions)

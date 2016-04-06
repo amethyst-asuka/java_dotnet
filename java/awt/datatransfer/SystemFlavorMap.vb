@@ -266,7 +266,7 @@ Namespace java.awt.datatransfer
         ''' Copied code from java.util.Properties. Parsing the data ourselves is the
         ''' only way to handle duplicate keys and values.
         ''' </summary>
-        Private Sub parseAndStoreReader(ByVal [in] As java.io.BufferedReader)
+        Private Sub parseAndStoreReader(  [in] As java.io.BufferedReader)
             Do
                 ' Get next line
                 Dim line As String = [in].readLine()
@@ -399,7 +399,7 @@ Namespace java.awt.datatransfer
         ''' <summary>
         ''' Copied from java.util.Properties.
         ''' </summary>
-        Private Function continueLine(ByVal line As String) As Boolean
+        Private Function continueLine(  line As String) As Boolean
             Dim slashCount As Integer = 0
             Dim index As Integer = line.Length() - 1
             Dim tempVar As Boolean = (index >= 0) AndAlso (line.Chars(index) = "\"c)
@@ -415,7 +415,7 @@ Namespace java.awt.datatransfer
         ''' <summary>
         ''' Copied from java.util.Properties.
         ''' </summary>
-        Private Function loadConvert(ByVal theString As String) As String
+        Private Function loadConvert(  theString As String) As String
             Dim aChar As Char
             Dim len As Integer = theString.Length()
             Dim outBuffer As New StringBuilder(len)
@@ -473,7 +473,7 @@ Namespace java.awt.datatransfer
         ''' the appropriate Map location, but rather will be appended to a List
         ''' stored in that location.
         ''' </summary>
-        Private Sub store(Of H, L)(ByVal hashed As H, ByVal listed As L, ByVal map As IDictionary(Of H, java.util.LinkedHashSet(Of L)))
+        Private Sub store(Of H, L)(  hashed As H,   listed As L,   map As IDictionary(Of H, java.util.LinkedHashSet(Of L)))
             Dim list_Renamed As java.util.LinkedHashSet(Of L) = map(hashed)
             If list_Renamed Is Nothing Then
                 list_Renamed = New java.util.LinkedHashSet(Of )(1)
@@ -488,7 +488,7 @@ Namespace java.awt.datatransfer
         ''' case, a new DataFlavor is synthesized, stored, and returned, if and
         ''' only if the specified native is encoded as a Java MIME type.
         ''' </summary>
-        Private Function nativeToFlavorLookup(ByVal nat As String) As java.util.LinkedHashSet(Of DataFlavor)
+        Private Function nativeToFlavorLookup(  nat As String) As java.util.LinkedHashSet(Of DataFlavor)
             Dim flavors As java.util.LinkedHashSet(Of DataFlavor) = nativeToFlavor(nat)
 
 
@@ -540,7 +540,7 @@ Namespace java.awt.datatransfer
         ''' encoding the DataFlavor's MIME type. Otherwise an empty List is returned
         ''' and 'flavorToNative' remains unaffected.
         ''' </summary>
-        Private Function flavorToNativeLookup(ByVal flav As DataFlavor, ByVal synthesize As Boolean) As java.util.LinkedHashSet(Of String)
+        Private Function flavorToNativeLookup(  flav As DataFlavor,   synthesize As Boolean) As java.util.LinkedHashSet(Of String)
 
             Dim natives As java.util.LinkedHashSet(Of String) = flavorToNative.Get(flav)
 
@@ -604,7 +604,7 @@ Namespace java.awt.datatransfer
         ''' <seealso cref= #encodeDataFlavor
         ''' @since 1.4 </seealso>
         <MethodImpl(MethodImplOptions.Synchronized)>
-        Public Overrides Function getNativesForFlavor(ByVal flav As DataFlavor) As IList(Of String) Implements FlavorTable.getNativesForFlavor
+        Public Overrides Function getNativesForFlavor(  flav As DataFlavor) As IList(Of String) Implements FlavorTable.getNativesForFlavor
             Dim retval As java.util.LinkedHashSet(Of String) = nativesForFlavorCache.check(flav)
             If retval IsNot Nothing Then Return New List(Of )(retval)
 
@@ -687,7 +687,7 @@ Namespace java.awt.datatransfer
         ''' <seealso cref= #encodeJavaMIMEType
         ''' @since 1.4 </seealso>
         <MethodImpl(MethodImplOptions.Synchronized)>
-        Public Overrides Function getFlavorsForNative(ByVal nat As String) As IList(Of DataFlavor) Implements FlavorTable.getFlavorsForNative
+        Public Overrides Function getFlavorsForNative(  nat As String) As IList(Of DataFlavor) Implements FlavorTable.getFlavorsForNative
             Dim returnValue As java.util.LinkedHashSet(Of DataFlavor) = flavorsForNativeCache.check(nat)
             If returnValue IsNot Nothing Then
                 Return New util.List(Of DataFlavor)(returnValue)
@@ -717,7 +717,7 @@ Namespace java.awt.datatransfer
             Return New util.List(Of DataFlavor)(returnValue)
         End Function
 
-        Private Shared Function convertMimeTypeToDataFlavors(ByVal baseType As String) As java.util.Set(Of DataFlavor)
+        Private Shared Function convertMimeTypeToDataFlavors(  baseType As String) As java.util.Set(Of DataFlavor)
 
             Dim returnValue As java.util.Set(Of DataFlavor) = New java.util.LinkedHashSet(Of DataFlavor)
 
@@ -794,7 +794,7 @@ Namespace java.awt.datatransfer
 
         Private Shared ReadOnly htmlDocumntTypes As String() = {"all", "selection", "fragment"}
 
-        Private Shared Function handleHtmlMimeTypes(ByVal baseType As String, ByVal mimeType_Renamed As String) As java.util.LinkedHashSet(Of String)
+        Private Shared Function handleHtmlMimeTypes(  baseType As String,   mimeType_Renamed As String) As java.util.LinkedHashSet(Of String)
 
             Dim returnValues As New java.util.LinkedHashSet(Of String)
 
@@ -831,7 +831,7 @@ Namespace java.awt.datatransfer
         ''' <seealso cref= #getNativesForFlavor </seealso>
         ''' <seealso cref= #encodeDataFlavor </seealso>
         <MethodImpl(MethodImplOptions.Synchronized)>
-        Public Overrides Function getNativesForFlavors(ByVal flavors As DataFlavor()) As IDictionary(Of DataFlavor, String) Implements FlavorMap.getNativesForFlavors
+        Public Overrides Function getNativesForFlavors(  flavors As DataFlavor()) As IDictionary(Of DataFlavor, String) Implements FlavorMap.getNativesForFlavors
             ' Use getNativesForFlavor to generate extra natives for text flavors
             ' and stringFlavor
 
@@ -875,7 +875,7 @@ Namespace java.awt.datatransfer
         ''' <seealso cref= #getFlavorsForNative </seealso>
         ''' <seealso cref= #encodeJavaMIMEType </seealso>
         <MethodImpl(MethodImplOptions.Synchronized)>
-        Public Overrides Function getFlavorsForNatives(ByVal natives As String()) As IDictionary(Of String, DataFlavor) Implements FlavorMap.getFlavorsForNatives
+        Public Overrides Function getFlavorsForNatives(  natives As String()) As IDictionary(Of String, DataFlavor) Implements FlavorMap.getFlavorsForNatives
             ' Use getFlavorsForNative to generate extra flavors for text natives
             If natives Is Nothing Then
                 Dim nativesList As IList(Of String) = getNativesForFlavor(Nothing)
@@ -912,7 +912,7 @@ Namespace java.awt.datatransfer
         ''' <seealso cref= #addFlavorForUnencodedNative
         ''' @since 1.4 </seealso>
         <MethodImpl(MethodImplOptions.Synchronized)>
-        Public Sub addUnencodedNativeForFlavor(ByVal flav As DataFlavor, ByVal nat As String)
+        Public Sub addUnencodedNativeForFlavor(  flav As DataFlavor,   nat As String)
             java.util.Objects.requireNonNull(nat, "Null native not permitted")
             java.util.Objects.requireNonNull(flav, "Null flavor not permitted")
 
@@ -953,7 +953,7 @@ Namespace java.awt.datatransfer
         ''' <seealso cref= #setFlavorsForNative
         ''' @since 1.4 </seealso>
         <MethodImpl(MethodImplOptions.Synchronized)>
-        Public Sub setNativesForFlavor(ByVal flav As DataFlavor, ByVal natives As String())
+        Public Sub setNativesForFlavor(  flav As DataFlavor,   natives As String())
             java.util.Objects.requireNonNull(natives, "Null natives not permitted")
             java.util.Objects.requireNonNull(flav, "Null flavors not permitted")
 
@@ -983,7 +983,7 @@ Namespace java.awt.datatransfer
         ''' <seealso cref= #addUnencodedNativeForFlavor
         ''' @since 1.4 </seealso>
         <MethodImpl(MethodImplOptions.Synchronized)>
-        Public Sub addFlavorForUnencodedNative(ByVal nat As String, ByVal flav As DataFlavor)
+        Public Sub addFlavorForUnencodedNative(  nat As String,   flav As DataFlavor)
             java.util.Objects.requireNonNull(nat, "Null native not permitted")
             java.util.Objects.requireNonNull(flav, "Null flavor not permitted")
 
@@ -1023,7 +1023,7 @@ Namespace java.awt.datatransfer
         ''' <seealso cref= #setNativesForFlavor
         ''' @since 1.4 </seealso>
         <MethodImpl(MethodImplOptions.Synchronized)>
-        Public Sub setFlavorsForNative(ByVal nat As String, ByVal flavors As DataFlavor())
+        Public Sub setFlavorsForNative(  nat As String,   flavors As DataFlavor())
             java.util.Objects.requireNonNull(nat, "Null native not permitted")
             java.util.Objects.requireNonNull(flavors, "Null flavors not permitted")
 
@@ -1053,7 +1053,7 @@ Namespace java.awt.datatransfer
         ''' <param name="mimeType"> the MIME type to encode </param>
         ''' <returns> the encoded <code>String</code>, or <code>null</code> if
         '''         mimeType is <code>null</code> </returns>
-        Public Shared Function encodeJavaMIMEType(ByVal mimeType_Renamed As String) As String
+        Public Shared Function encodeJavaMIMEType(  mimeType_Renamed As String) As String
             Return If(mimeType_Renamed IsNot Nothing, JavaMIME + mimeType_Renamed, Nothing)
         End Function
 
@@ -1079,7 +1079,7 @@ Namespace java.awt.datatransfer
         ''' <param name="flav"> the <code>DataFlavor</code> to encode </param>
         ''' <returns> the encoded <code>String</code>, or <code>null</code> if
         '''         flav is <code>null</code> or has a <code>null</code> MIME type </returns>
-        Public Shared Function encodeDataFlavor(ByVal flav As DataFlavor) As String
+        Public Shared Function encodeDataFlavor(  flav As DataFlavor) As String
             Return If(flav IsNot Nothing, SystemFlavorMap.encodeJavaMIMEType(flav.mimeType), Nothing)
         End Function
 
@@ -1090,7 +1090,7 @@ Namespace java.awt.datatransfer
         ''' <param name="str"> the <code>String</code> to test </param>
         ''' <returns> <code>true</code> if the <code>String</code> is encoded;
         '''         <code>false</code> otherwise </returns>
-        Public Shared Function isJavaMIMEType(ByVal str As String) As Boolean
+        Public Shared Function isJavaMIMEType(  str As String) As Boolean
             Return (str IsNot Nothing AndAlso str.StartsWith(JavaMIME, 0))
         End Function
 
@@ -1100,7 +1100,7 @@ Namespace java.awt.datatransfer
         ''' <param name="nat"> the <code>String</code> to decode </param>
         ''' <returns> the decoded Java MIME type, or <code>null</code> if nat is not
         '''         an encoded <code>String</code> native </returns>
-        Public Shared Function decodeJavaMIMEType(ByVal nat As String) As String
+        Public Shared Function decodeJavaMIMEType(  nat As String) As String
             Return If(isJavaMIMEType(nat), nat.Substring(JavaMIME.Length(), nat.Length() - (JavaMIME.Length())).Trim(), Nothing)
         End Function
 
@@ -1111,7 +1111,7 @@ Namespace java.awt.datatransfer
         ''' <param name="nat"> the <code>String</code> to decode </param>
         ''' <returns> the decoded <code>DataFlavor</code>, or <code>null</code> if
         '''         nat is not an encoded <code>String</code> native </returns>
-        Public Shared Function decodeDataFlavor(ByVal nat As String) As DataFlavor
+        Public Shared Function decodeDataFlavor(  nat As String) As DataFlavor
             Dim retval_str As String = SystemFlavorMap.decodeJavaMIMEType(nat)
             Return If(retval_str IsNot Nothing, New DataFlavor(retval_str), Nothing)
         End Function
@@ -1119,18 +1119,18 @@ Namespace java.awt.datatransfer
         Private NotInheritable Class SoftCache(Of K, V)
             Friend cache As IDictionary(Of K, SoftReference(Of java.util.LinkedHashSet(Of V)))
 
-            Public Sub put(ByVal key As K, ByVal value As java.util.LinkedHashSet(Of V))
+            Public Sub put(  key As K,   value As java.util.LinkedHashSet(Of V))
                 If cache Is Nothing Then cache = New Dictionary(Of )(1)
                 cache(key) = New SoftReference(Of )(value)
             End Sub
 
-            Public Sub remove(ByVal key As K)
+            Public Sub remove(  key As K)
                 If cache Is Nothing Then Return
                 cache.Remove(Nothing)
                 cache.Remove(key)
             End Sub
 
-            Public Function check(ByVal key As K) As java.util.LinkedHashSet(Of V)
+            Public Function check(  key As K) As java.util.LinkedHashSet(Of V)
                 If cache Is Nothing Then Return Nothing
                 Dim ref As SoftReference(Of java.util.LinkedHashSet(Of V)) = cache(key)
                 If ref IsNot Nothing Then Return ref.get()

@@ -48,7 +48,7 @@ Namespace java.lang
 		''' to append to a file does not open the file in a manner that guarantees
 		''' that writes by the child process will be atomic.
 		''' </summary>
-		Private Shared Function newFileOutputStream(ByVal f As java.io.File, ByVal append As Boolean) As java.io.FileOutputStream
+		Private Shared Function newFileOutputStream(  f As java.io.File,   append As Boolean) As java.io.FileOutputStream
 			If append Then
 				Dim path As String = f.path
 				Dim sm As SecurityManager = System.securityManager

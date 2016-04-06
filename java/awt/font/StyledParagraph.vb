@@ -82,7 +82,7 @@ Namespace java.awt.font
 		''' Create a new StyledParagraph over the given styled text. </summary>
 		''' <param name="aci"> an iterator over the text </param>
 		''' <param name="chars"> the characters extracted from aci </param>
-		Public Sub New(ByVal aci As java.text.AttributedCharacterIterator, ByVal chars As Char())
+		Public Sub New(  aci As java.text.AttributedCharacterIterator,   chars As Char())
 
 			Dim start As Integer = aci.beginIndex
 			Dim [end] As Integer = aci.endIndex
@@ -124,7 +124,7 @@ Namespace java.awt.font
 		''' Adjust indices in starts to reflect an insertion after pos.
 		''' Any index in starts greater than pos will be increased by 1.
 		''' </summary>
-		Private Shared Sub insertInto(ByVal pos As Integer, ByVal starts As Integer(), ByVal numStarts As Integer)
+		Private Shared Sub insertInto(  pos As Integer,   starts As Integer(),   numStarts As Integer)
 
 			numStarts -= 1
 			Do While starts(numStarts) > pos
@@ -144,7 +144,7 @@ Namespace java.awt.font
 		''' <param name="insertPos"> the index of the new character in aci </param>
 		''' <param name="oldParagraph"> a StyledParagraph for the text in aci before the
 		'''     insertion </param>
-		Public Shared Function insertChar(ByVal aci As java.text.AttributedCharacterIterator, ByVal chars As Char(), ByVal insertPos As Integer, ByVal oldParagraph As StyledParagraph) As StyledParagraph
+		Public Shared Function insertChar(  aci As java.text.AttributedCharacterIterator,   chars As Char(),   insertPos As Integer,   oldParagraph As StyledParagraph) As StyledParagraph
 
             '			' If the styles at insertPos match those at insertPos-1,
             '			' oldParagraph will be reused.  Otherwise we create a new
@@ -176,7 +176,7 @@ Namespace java.awt.font
 		''' It is the caller's responsibility to make sure that no 0-length
 		''' runs result.
 		''' </summary>
-		Private Shared Sub deleteFrom(ByVal deleteAt As Integer, ByVal starts As Integer(), ByVal numStarts As Integer)
+		Private Shared Sub deleteFrom(  deleteAt As Integer,   starts As Integer(),   numStarts As Integer)
 
 			numStarts -= 1
 			Do While starts(numStarts) > deleteAt
@@ -196,7 +196,7 @@ Namespace java.awt.font
 		''' <param name="deletePos"> the index where a character was removed </param>
 		''' <param name="oldParagraph"> a StyledParagraph for the text in aci before the
 		'''     insertion </param>
-		Public Shared Function deleteChar(ByVal aci As java.text.AttributedCharacterIterator, ByVal chars As Char(), ByVal deletePos As Integer, ByVal oldParagraph As StyledParagraph) As StyledParagraph
+		Public Shared Function deleteChar(  aci As java.text.AttributedCharacterIterator,   chars As Char(),   deletePos As Integer,   oldParagraph As StyledParagraph) As StyledParagraph
 
 			' We will reuse oldParagraph unless there was a length-1 run
 			' at deletePos.  We could do more work and check the individual
@@ -224,7 +224,7 @@ Namespace java.awt.font
 		''' <param name="index"> a valid index in the paragraph </param>
 		''' <returns> the first index where there is a change in attributes from
 		'''      those at index </returns>
-		Public Function getRunLimit(ByVal index As Integer) As Integer
+		Public Function getRunLimit(  index As Integer) As Integer
 
 			If index < 0 OrElse index >= length Then Throw New IllegalArgumentException("index out of range")
 			Dim limit1 As Integer = length
@@ -244,7 +244,7 @@ Namespace java.awt.font
 		''' Return the Decoration in effect at the given index. </summary>
 		''' <param name="index"> a valid index in the paragraph </param>
 		''' <returns> the Decoration at index. </returns>
-		Public Function getDecorationAt(ByVal index As Integer) As sun.font.Decoration
+		Public Function getDecorationAt(  index As Integer) As sun.font.Decoration
 
 			If index < 0 OrElse index >= length Then Throw New IllegalArgumentException("index out of range")
 			If decorations Is Nothing Then Return decoration
@@ -258,7 +258,7 @@ Namespace java.awt.font
 		''' it is. </summary>
 		''' <param name="index"> a valid index in the paragraph </param>
 		''' <returns> the Font or GraphicAttribute at index. </returns>
-		Public Function getFontOrGraphicAt(ByVal index As Integer) As Object
+		Public Function getFontOrGraphicAt(  index As Integer) As Object
 
 			If index < 0 OrElse index >= length Then Throw New IllegalArgumentException("index out of range")
 			If fonts Is Nothing Then Return font_Renamed
@@ -271,7 +271,7 @@ Namespace java.awt.font
 		''' must be in increasing order, with at least one element greater
 		''' than index.
 		''' </summary>
-		Private Shared Function findRunContaining(ByVal index As Integer, ByVal starts As Integer()) As Integer
+		Private Shared Function findRunContaining(  index As Integer,   starts As Integer()) As Integer
 
 			Dim i As Integer=1
 			Do
@@ -287,7 +287,7 @@ Namespace java.awt.font
 		''' new array is created and returned.
 		''' </summary>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Private Shared Function addToVector(ByVal obj As Object, ByVal index As Integer, ByVal v As ArrayList, ByVal starts As Integer()) As Integer()
+		Private Shared Function addToVector(  obj As Object,   index As Integer,   v As ArrayList,   starts As Integer()) As Integer()
 
 			If Not v(v.Count - 1).Equals(obj) Then
 				v.Add(obj)
@@ -306,7 +306,7 @@ Namespace java.awt.font
 		''' Add a new Decoration run with the given Decoration at the
 		''' given index.
 		''' </summary>
-		Private Sub addDecoration(ByVal d As sun.font.Decoration, ByVal index As Integer)
+		Private Sub addDecoration(  d As sun.font.Decoration,   index As Integer)
 
 			If decorations IsNot Nothing Then
 				decorationStarts = addToVector(d, index, decorations, decorationStarts)
@@ -328,7 +328,7 @@ Namespace java.awt.font
 		''' Add a new Font/GraphicAttribute run with the given object at the
 		''' given index.
 		''' </summary>
-		Private Sub addFont(ByVal f As Object, ByVal index As Integer)
+		Private Sub addFont(  f As Object,   index As Integer)
 
 			If fonts IsNot Nothing Then
 				fontStarts = addToVector(f, index, fonts, fontStarts)
@@ -351,7 +351,7 @@ Namespace java.awt.font
 		''' font runs for each.
 		''' </summary>
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-		Private Sub addFonts(Of T1 As java.text.AttributedCharacterIterator.Attribute, ?)(ByVal chars As Char(), ByVal attributes As IDictionary(Of T1), ByVal start As Integer, ByVal limit As Integer)
+		Private Sub addFonts(Of T1 As java.text.AttributedCharacterIterator.Attribute, ?)(  chars As Char(),   attributes As IDictionary(Of T1),   start As Integer,   limit As Integer)
 
 			'Dim resolver As sun.font.FontResolver = sun.font.FontResolver.instance
 			'Dim iter As sun.text.CodePointIterator = sun.text.CodePointIterator.create(chars, start, limit)
@@ -367,7 +367,7 @@ Namespace java.awt.font
         ''' Return a Map with entries from oldStyles, as well as input
         ''' method entries, if any.
         ''' </summary>
-        Friend Shared Function addInputMethodAttrs(Of T1 As java.text.AttributedCharacterIterator.Attribute, ?)(ByVal oldStyles As IDictionary(Of T1)) As IDictionary(Of ? As java.text.AttributedCharacterIterator.Attribute, ?)
+        Friend Shared Function addInputMethodAttrs(Of T1 As java.text.AttributedCharacterIterator.Attribute, ?)(  oldStyles As IDictionary(Of T1)) As IDictionary(Of ? As java.text.AttributedCharacterIterator.Attribute, ?)
 
 			'Dim value As Object = oldStyles(TextAttribute.INPUT_METHOD_HIGHLIGHT)
 
@@ -409,7 +409,7 @@ Namespace java.awt.font
         ''' If attributes does not contain a GraphicAttribute, Font, or
         ''' Font family entry this method returns null.
         ''' </summary>
-        Private Shared Function getGraphicOrFont(Of T1 As java.text.AttributedCharacterIterator.Attribute, ?)(ByVal attributes As IDictionary(Of T1)) As Object
+        Private Shared Function getGraphicOrFont(Of T1 As java.text.AttributedCharacterIterator.Attribute, ?)(  attributes As IDictionary(Of T1)) As Object
 
 			'Dim value As Object = attributes(TextAttribute.CHAR_REPLACEMENT)
 			'If value IsNot Nothing Then Return value

@@ -49,7 +49,7 @@ Namespace java.beans
 		''' </summary>
 		''' <param name="length">  the array length </param>
 		''' <returns>        an array with specified length </returns>
-		Protected Friend MustOverride Function newArray(ByVal length As Integer) As L()
+		Protected Friend MustOverride Function newArray(  length As Integer) As L()
 
 		''' <summary>
 		''' Creates a proxy listener for the specified property.
@@ -57,7 +57,7 @@ Namespace java.beans
 		''' <param name="name">      the name of the property to listen on </param>
 		''' <param name="listener">  the listener to process events </param>
 		''' <returns>          a proxy listener </returns>
-		Protected Friend MustOverride Function newProxy(ByVal name As String, ByVal listener As L) As L
+		Protected Friend MustOverride Function newProxy(  name As String,   listener As L) As L
 
 		''' <summary>
 		''' Adds a listener to the list of listeners for the specified property.
@@ -66,7 +66,7 @@ Namespace java.beans
 		''' <param name="name">      the name of the property to listen on </param>
 		''' <param name="listener">  the listener to process events </param>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Sub add(ByVal name As String, ByVal listener As L)
+		Public Sub add(  name As String,   listener As L)
 			If Me.map Is Nothing Then Me.map = New Dictionary(Of )
 			Dim array As L() = Me.map(name)
 			Dim size As Integer = If(array IsNot Nothing, array.Length, 0)
@@ -85,7 +85,7 @@ Namespace java.beans
 		''' <param name="name">      the name of the property to listen on </param>
 		''' <param name="listener">  the listener to process events </param>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Sub remove(ByVal name As String, ByVal listener As L)
+		Public Sub remove(  name As String,   listener As L)
 			If Me.map IsNot Nothing Then
 				Dim array As L() = Me.map(name)
 				If array IsNot Nothing Then
@@ -114,7 +114,7 @@ Namespace java.beans
 		''' <param name="name">  the name of the property </param>
 		''' <returns>      the corresponding list of listeners </returns>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Function [get](ByVal name As String) As L()
+		Public Function [get](  name As String) As L()
 			Return If(Me.map IsNot Nothing, Me.map(name), Nothing)
 		End Function
 
@@ -123,7 +123,7 @@ Namespace java.beans
 		''' </summary>
 		''' <param name="name">       the name of the property </param>
 		''' <param name="listeners">  new list of listeners </param>
-		Public Sub [set](ByVal name As String, ByVal listeners As L())
+		Public Sub [set](  name As String,   listeners As L())
 			If listeners IsNot Nothing Then
 				If Me.map Is Nothing Then Me.map = New Dictionary(Of )
 				Me.map(name) = listeners
@@ -166,7 +166,7 @@ Namespace java.beans
 		''' </summary>
 		''' <param name="name">  the name of the property </param>
 		''' <returns> an array of listeners for the named property </returns>
-		Public Function getListeners(ByVal name As String) As L()
+		Public Function getListeners(  name As String) As L()
 			If name IsNot Nothing Then
 				Dim listeners_Renamed As L() = [get](name)
 				If listeners_Renamed IsNot Nothing Then Return listeners_Renamed.clone()
@@ -182,7 +182,7 @@ Namespace java.beans
 		''' <returns>      {@code true} if at least one listener exists or
 		'''              {@code false} otherwise </returns>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Function hasListeners(ByVal name As String) As Boolean
+		Public Function hasListeners(  name As String) As Boolean
 			If Me.map Is Nothing Then Return False
 			Dim array As L() = Me.map(Nothing)
 			Return (array IsNot Nothing) OrElse ((name IsNot Nothing) AndAlso (Nothing IsNot Me.map(name)))
@@ -206,7 +206,7 @@ Namespace java.beans
 		''' It is necessary because default proxy class is not serializable.
 		''' </summary>
 		''' <returns> a real listener </returns>
-		Public MustOverride Function extract(ByVal listener As L) As L
+		Public MustOverride Function extract(  listener As L) As L
 	End Class
 
 End Namespace

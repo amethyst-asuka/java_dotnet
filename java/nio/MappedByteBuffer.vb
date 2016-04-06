@@ -77,12 +77,12 @@ Namespace java.nio
 
 		' This should only be invoked by the DirectByteBuffer constructors
 		'
-		Friend Sub New(ByVal mark As Integer, ByVal pos As Integer, ByVal lim As Integer, ByVal cap As Integer, ByVal fd As java.io.FileDescriptor) ' package-private
+		Friend Sub New(  mark As Integer,   pos As Integer,   lim As Integer,   cap As Integer,   fd As java.io.FileDescriptor) ' package-private
 			MyBase.New(mark, pos, lim, cap)
 			Me.fd = fd
 		End Sub
 
-		Friend Sub New(ByVal mark As Integer, ByVal pos As Integer, ByVal lim As Integer, ByVal cap As Integer) ' package-private
+		Friend Sub New(  mark As Integer,   pos As Integer,   lim As Integer,   cap As Integer) ' package-private
 			MyBase.New(mark, pos, lim, cap)
 			Me.fd = Nothing
 		End Sub
@@ -99,11 +99,11 @@ Namespace java.nio
 			Return If(offset >= 0, offset, (ps + offset))
 		End Function
 
-		Private Function mappingAddress(ByVal mappingOffset As Long) As Long
+		Private Function mappingAddress(  mappingOffset As Long) As Long
 			Return address - mappingOffset
 		End Function
 
-		Private Function mappingLength(ByVal mappingOffset As Long) As Long
+		Private Function mappingLength(  mappingOffset As Long) As Long
 			Return CLng(capacity()) + mappingOffset
 		End Function
 
@@ -198,15 +198,15 @@ Namespace java.nio
 
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Private Function isLoaded0(ByVal address As Long, ByVal length As Long, ByVal pageCount As Integer) As Boolean
+		Private Function isLoaded0(  address As Long,   length As Long,   pageCount As Integer) As Boolean
 		End Function
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Private Sub load0(ByVal address As Long, ByVal length As Long)
+		Private Sub load0(  address As Long,   length As Long)
 		End Sub
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Private Sub force0(ByVal fd As java.io.FileDescriptor, ByVal address As Long, ByVal length As Long)
+		Private Sub force0(  fd As java.io.FileDescriptor,   address As Long,   length As Long)
 		End Sub
 	End Class
 

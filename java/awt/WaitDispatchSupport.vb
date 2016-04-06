@@ -77,7 +77,7 @@ Namespace java.awt
 		'''        should not stop dispatching events while waiting
 		''' 
 		''' @since 1.7 </param>
-		Public Sub New(ByVal dispatchThread As EventDispatchThread)
+		Public Sub New(  dispatchThread As EventDispatchThread)
 			Me.New(dispatchThread, Nothing)
 		End Sub
 
@@ -91,7 +91,7 @@ Namespace java.awt
 		'''        if the loop should be terminated
 		''' 
 		''' @since 1.7 </param>
-		Public Sub New(ByVal dispatchThread As EventDispatchThread, ByVal extCond As Conditional)
+		Public Sub New(  dispatchThread As EventDispatchThread,   extCond As Conditional)
 			If dispatchThread Is Nothing Then Throw New IllegalArgumentException("The dispatchThread can not be null")
 
 			Me.dispatchThread = dispatchThread
@@ -134,7 +134,7 @@ Namespace java.awt
 		'''        there is no guarantee to stop it in the given time
 		''' 
 		''' @since 1.7 </param>
-		Public Sub New(ByVal dispatchThread As EventDispatchThread, ByVal extCondition As Conditional, ByVal filter As EventFilter, ByVal interval As Long)
+		Public Sub New(  dispatchThread As EventDispatchThread,   extCondition As Conditional,   filter As EventFilter,   interval As Long)
 			Me.New(dispatchThread, extCondition)
 			Me.filter = filter
 			If interval < 0 Then Throw New IllegalArgumentException("The interval value must be >= 0")

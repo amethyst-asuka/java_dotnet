@@ -150,7 +150,7 @@ Namespace java.net
 		'''             method to specify the encoding. 
 		''' <returns>  the translated {@code String}. </returns>
 		<Obsolete("The resulting string may vary depending on the platform's")> _
-		Public Shared Function encode(ByVal s As String) As String
+		Public Shared Function encode(  s As String) As String
 
 			Dim str As String = Nothing
 
@@ -184,7 +184,7 @@ Namespace java.net
 		'''             If the named encoding is not supported </exception>
 		''' <seealso cref= URLDecoder#decode(java.lang.String, java.lang.String)
 		''' @since 1.4 </seealso>
-		Public Shared Function encode(ByVal s As String, ByVal enc As String) As String
+		Public Shared Function encode(  s As String,   enc As String) As String
 
 			Dim needToChange As Boolean = False
 			Dim out As New StringBuffer(s.length())

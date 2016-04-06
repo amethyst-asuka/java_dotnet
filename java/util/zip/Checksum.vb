@@ -35,14 +35,14 @@ Namespace java.util.zip
 		''' Updates the current checksum with the specified java.lang.[Byte].
 		''' </summary>
 		''' <param name="b"> the byte to update the checksum with </param>
-		Sub update(ByVal b As Integer)
+		Sub update(  b As Integer)
 
 		''' <summary>
 		''' Updates the current checksum with the specified array of bytes. </summary>
 		''' <param name="b"> the byte array to update the checksum with </param>
 		''' <param name="off"> the start offset of the data </param>
 		''' <param name="len"> the number of bytes to use for the update </param>
-		Sub update(ByVal b As SByte(), ByVal [off] As Integer, ByVal len As Integer)
+		Sub update(  b As SByte(),   [off] As Integer,   len As Integer)
 
 		''' <summary>
 		''' Returns the current checksum value. </summary>

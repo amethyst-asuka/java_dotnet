@@ -124,7 +124,7 @@ Namespace java.util
 		''' <returns> A spliterator for an array </returns>
 		''' <exception cref="NullPointerException"> if the given array is {@code null} </exception>
 		''' <seealso cref= Arrays#spliterator(Object[]) </seealso>
-		Public Shared Function spliterator(Of T)(ByVal array As Object(), ByVal additionalCharacteristics As Integer) As Spliterator(Of T)
+		Public Shared Function spliterator(Of T)(  array As Object(),   additionalCharacteristics As Integer) As Spliterator(Of T)
 			Return New ArraySpliterator(Of )(Objects.requireNonNull(array), additionalCharacteristics)
 		End Function
 
@@ -156,7 +156,7 @@ Namespace java.util
 		'''         {@code toIndex} is less than {@code fromIndex}, or
 		'''         {@code toIndex} is greater than the array size </exception>
 		''' <seealso cref= Arrays#spliterator(Object[], int, int) </seealso>
-		Public Shared Function spliterator(Of T)(ByVal array As Object(), ByVal fromIndex As Integer, ByVal toIndex As Integer, ByVal additionalCharacteristics As Integer) As Spliterator(Of T)
+		Public Shared Function spliterator(Of T)(  array As Object(),   fromIndex As Integer,   toIndex As Integer,   additionalCharacteristics As Integer) As Spliterator(Of T)
 			checkFromToBounds(Objects.requireNonNull(array).length, fromIndex, toIndex)
 			Return New ArraySpliterator(Of )(array, fromIndex, toIndex, additionalCharacteristics)
 		End Function
@@ -183,7 +183,7 @@ Namespace java.util
 		''' <returns> A spliterator for an array </returns>
 		''' <exception cref="NullPointerException"> if the given array is {@code null} </exception>
 		''' <seealso cref= Arrays#spliterator(int[]) </seealso>
-		Public Shared Function spliterator(ByVal array As Integer(), ByVal additionalCharacteristics As Integer) As Spliterator.OfInt
+		Public Shared Function spliterator(  array As Integer(),   additionalCharacteristics As Integer) As Spliterator.OfInt
 			Return New IntArraySpliterator(Objects.requireNonNull(array), additionalCharacteristics)
 		End Function
 
@@ -214,7 +214,7 @@ Namespace java.util
 		'''         {@code toIndex} is less than {@code fromIndex}, or
 		'''         {@code toIndex} is greater than the array size </exception>
 		''' <seealso cref= Arrays#spliterator(int[], int, int) </seealso>
-		Public Shared Function spliterator(ByVal array As Integer(), ByVal fromIndex As Integer, ByVal toIndex As Integer, ByVal additionalCharacteristics As Integer) As Spliterator.OfInt
+		Public Shared Function spliterator(  array As Integer(),   fromIndex As Integer,   toIndex As Integer,   additionalCharacteristics As Integer) As Spliterator.OfInt
 			checkFromToBounds(Objects.requireNonNull(array).length, fromIndex, toIndex)
 			Return New IntArraySpliterator(array, fromIndex, toIndex, additionalCharacteristics)
 		End Function
@@ -241,7 +241,7 @@ Namespace java.util
 		''' <returns> A spliterator for an array </returns>
 		''' <exception cref="NullPointerException"> if the given array is {@code null} </exception>
 		''' <seealso cref= Arrays#spliterator(long[]) </seealso>
-		Public Shared Function spliterator(ByVal array As Long(), ByVal additionalCharacteristics As Integer) As Spliterator.OfLong
+		Public Shared Function spliterator(  array As Long(),   additionalCharacteristics As Integer) As Spliterator.OfLong
 			Return New LongArraySpliterator(Objects.requireNonNull(array), additionalCharacteristics)
 		End Function
 
@@ -276,7 +276,7 @@ Namespace java.util
 		'''         {@code toIndex} is less than {@code fromIndex}, or
 		'''         {@code toIndex} is greater than the array size </exception>
 		''' <seealso cref= Arrays#spliterator(long[], int, int) </seealso>
-		Public Shared Function spliterator(ByVal array As Long(), ByVal fromIndex As Integer, ByVal toIndex As Integer, ByVal additionalCharacteristics As Integer) As Spliterator.OfLong
+		Public Shared Function spliterator(  array As Long(),   fromIndex As Integer,   toIndex As Integer,   additionalCharacteristics As Integer) As Spliterator.OfLong
 			checkFromToBounds(Objects.requireNonNull(array).length, fromIndex, toIndex)
 			Return New LongArraySpliterator(array, fromIndex, toIndex, additionalCharacteristics)
 		End Function
@@ -303,7 +303,7 @@ Namespace java.util
 		''' <returns> A spliterator for an array </returns>
 		''' <exception cref="NullPointerException"> if the given array is {@code null} </exception>
 		''' <seealso cref= Arrays#spliterator(double[]) </seealso>
-		Public Shared Function spliterator(ByVal array As Double(), ByVal additionalCharacteristics As Integer) As Spliterator.OfDouble
+		Public Shared Function spliterator(  array As Double(),   additionalCharacteristics As Integer) As Spliterator.OfDouble
 			Return New DoubleArraySpliterator(Objects.requireNonNull(array), additionalCharacteristics)
 		End Function
 
@@ -338,7 +338,7 @@ Namespace java.util
 		'''         {@code toIndex} is less than {@code fromIndex}, or
 		'''         {@code toIndex} is greater than the array size </exception>
 		''' <seealso cref= Arrays#spliterator(double[], int, int) </seealso>
-		Public Shared Function spliterator(ByVal array As Double(), ByVal fromIndex As Integer, ByVal toIndex As Integer, ByVal additionalCharacteristics As Integer) As Spliterator.OfDouble
+		Public Shared Function spliterator(  array As Double(),   fromIndex As Integer,   toIndex As Integer,   additionalCharacteristics As Integer) As Spliterator.OfDouble
 			checkFromToBounds(Objects.requireNonNull(array).length, fromIndex, toIndex)
 			Return New DoubleArraySpliterator(array, fromIndex, toIndex, additionalCharacteristics)
 		End Function
@@ -352,7 +352,7 @@ Namespace java.util
 		''' <exception cref="ArrayIndexOutOfBoundsException"> if the start index is greater than
 		''' the end index, if the start index is negative, or the end index is
 		''' greater than the array length </exception>
-		Private Shared Sub checkFromToBounds(ByVal arrayLength As Integer, ByVal origin As Integer, ByVal fence As Integer)
+		Private Shared Sub checkFromToBounds(  arrayLength As Integer,   origin As Integer,   fence As Integer)
 			If origin > fence Then Throw New ArrayIndexOutOfBoundsException("origin(" & origin & ") > fence(" & fence & ")")
 			If origin < 0 Then Throw New ArrayIndexOutOfBoundsException(origin)
 			If fence > arrayLength Then Throw New ArrayIndexOutOfBoundsException(fence)
@@ -377,7 +377,7 @@ Namespace java.util
 		'''        are additionally reported unless {@code CONCURRENT} is supplied. </param>
 		''' <returns> A spliterator from an iterator </returns>
 		''' <exception cref="NullPointerException"> if the given collection is {@code null} </exception>
-		Public Shared Function spliterator(Of T, T1 As T)(ByVal c As Collection(Of T1), ByVal characteristics As Integer) As Spliterator(Of T)
+		Public Shared Function spliterator(Of T, T1 As T)(  c As Collection(Of T1),   characteristics As Integer) As Spliterator(Of T)
 			Return New IteratorSpliterator(Of )(Objects.requireNonNull(c), characteristics)
 		End Function
 
@@ -404,7 +404,7 @@ Namespace java.util
 		'''        are additionally reported unless {@code CONCURRENT} is supplied. </param>
 		''' <returns> A spliterator from an iterator </returns>
 		''' <exception cref="NullPointerException"> if the given iterator is {@code null} </exception>
-		Public Shared Function spliterator(Of T, T1 As T)(ByVal [iterator] As [Iterator](Of T1), ByVal size As Long, ByVal characteristics As Integer) As Spliterator(Of T)
+		Public Shared Function spliterator(Of T, T1 As T)(  [iterator] As [Iterator](Of T1),   size As Long,   characteristics As Integer) As Spliterator(Of T)
 			Return New IteratorSpliterator(Of )(Objects.requireNonNull([iterator]), size, characteristics)
 		End Function
 
@@ -428,7 +428,7 @@ Namespace java.util
 		'''        ignored and are not reported.) </param>
 		''' <returns> A spliterator from an iterator </returns>
 		''' <exception cref="NullPointerException"> if the given iterator is {@code null} </exception>
-		Public Shared Function spliteratorUnknownSize(Of T, T1 As T)(ByVal [iterator] As [Iterator](Of T1), ByVal characteristics As Integer) As Spliterator(Of T)
+		Public Shared Function spliteratorUnknownSize(Of T, T1 As T)(  [iterator] As [Iterator](Of T1),   characteristics As Integer) As Spliterator(Of T)
 			Return New IteratorSpliterator(Of )(Objects.requireNonNull([iterator]), characteristics)
 		End Function
 
@@ -455,7 +455,7 @@ Namespace java.util
 		'''        are additionally reported unless {@code CONCURRENT} is supplied. </param>
 		''' <returns> A spliterator from an iterator </returns>
 		''' <exception cref="NullPointerException"> if the given iterator is {@code null} </exception>
-		Public Shared Function spliterator(ByVal [iterator] As PrimitiveIterator.OfInt, ByVal size As Long, ByVal characteristics As Integer) As Spliterator.OfInt
+		Public Shared Function spliterator(  [iterator] As PrimitiveIterator.OfInt,   size As Long,   characteristics As Integer) As Spliterator.OfInt
 			Return New IntIteratorSpliterator(Objects.requireNonNull([iterator]), size, characteristics)
 		End Function
 
@@ -479,7 +479,7 @@ Namespace java.util
 		'''        ignored and are not reported.) </param>
 		''' <returns> A spliterator from an iterator </returns>
 		''' <exception cref="NullPointerException"> if the given iterator is {@code null} </exception>
-		Public Shared Function spliteratorUnknownSize(ByVal [iterator] As PrimitiveIterator.OfInt, ByVal characteristics As Integer) As Spliterator.OfInt
+		Public Shared Function spliteratorUnknownSize(  [iterator] As PrimitiveIterator.OfInt,   characteristics As Integer) As Spliterator.OfInt
 			Return New IntIteratorSpliterator(Objects.requireNonNull([iterator]), characteristics)
 		End Function
 
@@ -506,7 +506,7 @@ Namespace java.util
 		'''        are additionally reported unless {@code CONCURRENT} is supplied. </param>
 		''' <returns> A spliterator from an iterator </returns>
 		''' <exception cref="NullPointerException"> if the given iterator is {@code null} </exception>
-		Public Shared Function spliterator(ByVal [iterator] As PrimitiveIterator.OfLong, ByVal size As Long, ByVal characteristics As Integer) As Spliterator.OfLong
+		Public Shared Function spliterator(  [iterator] As PrimitiveIterator.OfLong,   size As Long,   characteristics As Integer) As Spliterator.OfLong
 			Return New LongIteratorSpliterator(Objects.requireNonNull([iterator]), size, characteristics)
 		End Function
 
@@ -530,7 +530,7 @@ Namespace java.util
 		'''        ignored and are not reported.) </param>
 		''' <returns> A spliterator from an iterator </returns>
 		''' <exception cref="NullPointerException"> if the given iterator is {@code null} </exception>
-		Public Shared Function spliteratorUnknownSize(ByVal [iterator] As PrimitiveIterator.OfLong, ByVal characteristics As Integer) As Spliterator.OfLong
+		Public Shared Function spliteratorUnknownSize(  [iterator] As PrimitiveIterator.OfLong,   characteristics As Integer) As Spliterator.OfLong
 			Return New LongIteratorSpliterator(Objects.requireNonNull([iterator]), characteristics)
 		End Function
 
@@ -557,7 +557,7 @@ Namespace java.util
 		'''        are additionally reported unless {@code CONCURRENT} is supplied. </param>
 		''' <returns> A spliterator from an iterator </returns>
 		''' <exception cref="NullPointerException"> if the given iterator is {@code null} </exception>
-		Public Shared Function spliterator(ByVal [iterator] As PrimitiveIterator.OfDouble, ByVal size As Long, ByVal characteristics As Integer) As Spliterator.OfDouble
+		Public Shared Function spliterator(  [iterator] As PrimitiveIterator.OfDouble,   size As Long,   characteristics As Integer) As Spliterator.OfDouble
 			Return New DoubleIteratorSpliterator(Objects.requireNonNull([iterator]), size, characteristics)
 		End Function
 
@@ -581,7 +581,7 @@ Namespace java.util
 		'''        ignored and are not reported.) </param>
 		''' <returns> A spliterator from an iterator </returns>
 		''' <exception cref="NullPointerException"> if the given iterator is {@code null} </exception>
-		Public Shared Function spliteratorUnknownSize(ByVal [iterator] As PrimitiveIterator.OfDouble, ByVal characteristics As Integer) As Spliterator.OfDouble
+		Public Shared Function spliteratorUnknownSize(  [iterator] As PrimitiveIterator.OfDouble,   characteristics As Integer) As Spliterator.OfDouble
 			Return New DoubleIteratorSpliterator(Objects.requireNonNull([iterator]), characteristics)
 		End Function
 
@@ -598,7 +598,7 @@ Namespace java.util
 		''' <param name="spliterator"> The spliterator </param>
 		''' <returns> An iterator </returns>
 		''' <exception cref="NullPointerException"> if the given spliterator is {@code null} </exception>
-		Public Shared Function [iterator](Of T, T1 As T)(ByVal spliterator As Spliterator(Of T1)) As [Iterator](Of T)
+		Public Shared Function [iterator](Of T, T1 As T)(  spliterator As Spliterator(Of T1)) As [Iterator](Of T)
 			Objects.requireNonNull(spliterator)
 'JAVA TO VB CONVERTER TODO TASK: Local classes are not converted by Java to VB Converter:
 '			class Adapter implements Iterator(Of T), java.util.function.Consumer(Of T)
@@ -645,7 +645,7 @@ Namespace java.util
 		''' <param name="spliterator"> The spliterator </param>
 		''' <returns> An iterator </returns>
 		''' <exception cref="NullPointerException"> if the given spliterator is {@code null} </exception>
-		Public Shared Function [iterator](ByVal spliterator As Spliterator.OfInt) As PrimitiveIterator.OfInt
+		Public Shared Function [iterator](  spliterator As Spliterator.OfInt) As PrimitiveIterator.OfInt
 			Objects.requireNonNull(spliterator)
 'JAVA TO VB CONVERTER TODO TASK: Local classes are not converted by Java to VB Converter:
 '			class Adapter implements PrimitiveIterator.OfInt, java.util.function.IntConsumer
@@ -692,7 +692,7 @@ Namespace java.util
 		''' <param name="spliterator"> The spliterator </param>
 		''' <returns> An iterator </returns>
 		''' <exception cref="NullPointerException"> if the given spliterator is {@code null} </exception>
-		Public Shared Function [iterator](ByVal spliterator As Spliterator.OfLong) As PrimitiveIterator.OfLong
+		Public Shared Function [iterator](  spliterator As Spliterator.OfLong) As PrimitiveIterator.OfLong
 			Objects.requireNonNull(spliterator)
 'JAVA TO VB CONVERTER TODO TASK: Local classes are not converted by Java to VB Converter:
 '			class Adapter implements PrimitiveIterator.OfLong, java.util.function.LongConsumer
@@ -739,7 +739,7 @@ Namespace java.util
 		''' <param name="spliterator"> The spliterator </param>
 		''' <returns> An iterator </returns>
 		''' <exception cref="NullPointerException"> if the given spliterator is {@code null} </exception>
-		Public Shared Function [iterator](ByVal spliterator As Spliterator.OfDouble) As PrimitiveIterator.OfDouble
+		Public Shared Function [iterator](  spliterator As Spliterator.OfDouble) As PrimitiveIterator.OfDouble
 			Objects.requireNonNull(spliterator)
 'JAVA TO VB CONVERTER TODO TASK: Local classes are not converted by Java to VB Converter:
 '			class Adapter implements PrimitiveIterator.OfDouble, java.util.function.DoubleConsumer
@@ -786,12 +786,12 @@ Namespace java.util
 				Return Nothing
 			End Function
 
-			Public Overridable Function tryAdvance(ByVal consumer As C) As Boolean
+			Public Overridable Function tryAdvance(  consumer As C) As Boolean
 				Objects.requireNonNull(consumer)
 				Return False
 			End Function
 
-			Public Overridable Sub forEachRemaining(ByVal consumer As C)
+			Public Overridable Sub forEachRemaining(  consumer As C)
 				Objects.requireNonNull(consumer)
 			End Sub
 
@@ -864,7 +864,7 @@ Namespace java.util
 			''' <param name="additionalCharacteristics"> Additional spliterator characteristics
 			''' of this spliterator's source or elements beyond {@code SIZED} and
 			''' {@code SUBSIZED} which are are always reported </param>
-			Public Sub New(ByVal array As Object(), ByVal additionalCharacteristics As Integer)
+			Public Sub New(  array As Object(),   additionalCharacteristics As Integer)
 				Me.New(array, 0, array.Length, additionalCharacteristics)
 			End Sub
 
@@ -876,7 +876,7 @@ Namespace java.util
 			''' <param name="additionalCharacteristics"> Additional spliterator characteristics
 			''' of this spliterator's source or elements beyond {@code SIZED} and
 			''' {@code SUBSIZED} which are are always reported </param>
-			Public Sub New(ByVal array As Object(), ByVal origin As Integer, ByVal fence As Integer, ByVal additionalCharacteristics As Integer)
+			Public Sub New(  array As Object(),   origin As Integer,   fence As Integer,   additionalCharacteristics As Integer)
 				Me.array = array
 				Me.index = origin
 				Me.fence = fence
@@ -891,7 +891,7 @@ Namespace java.util
 
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Overrides Sub forEachRemaining(Of T1)(ByVal action As java.util.function.Consumer(Of T1)) Implements Spliterator(Of T).forEachRemaining
+			Public Overrides Sub forEachRemaining(Of T1)(  action As java.util.function.Consumer(Of T1)) Implements Spliterator(Of T).forEachRemaining
 				Dim a As Object() ' hoist accesses and checks from loop
 				Dim i, hi As Integer
 				If action Is Nothing Then Throw New NullPointerException
@@ -908,7 +908,7 @@ Namespace java.util
 			End Sub
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Overrides Function tryAdvance(Of T1)(ByVal action As java.util.function.Consumer(Of T1)) As Boolean Implements Spliterator(Of T).tryAdvance
+			Public Overrides Function tryAdvance(Of T1)(  action As java.util.function.Consumer(Of T1)) As Boolean Implements Spliterator(Of T).tryAdvance
 				If action Is Nothing Then Throw New NullPointerException
 				If index >= 0 AndAlso index < fence Then
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
@@ -953,7 +953,7 @@ Namespace java.util
 			''' <param name="additionalCharacteristics"> Additional spliterator characteristics
 			'''        of this spliterator's source or elements beyond {@code SIZED} and
 			'''        {@code SUBSIZED} which are are always reported </param>
-			Public Sub New(ByVal array As Integer(), ByVal additionalCharacteristics As Integer)
+			Public Sub New(  array As Integer(),   additionalCharacteristics As Integer)
 				Me.New(array, 0, array.Length, additionalCharacteristics)
 			End Sub
 
@@ -965,7 +965,7 @@ Namespace java.util
 			''' <param name="additionalCharacteristics"> Additional spliterator characteristics
 			'''        of this spliterator's source or elements beyond {@code SIZED} and
 			'''        {@code SUBSIZED} which are are always reported </param>
-			Public Sub New(ByVal array As Integer(), ByVal origin As Integer, ByVal fence As Integer, ByVal additionalCharacteristics As Integer)
+			Public Sub New(  array As Integer(),   origin As Integer,   fence As Integer,   additionalCharacteristics As Integer)
 				Me.array = array
 				Me.index = origin
 				Me.fence = fence
@@ -978,7 +978,7 @@ Namespace java.util
 				Return If(lo >= mid, Nothing, New IntArraySpliterator(array, lo, index = mid, characteristics_Renamed))
 			End Function
 
-			Public Overrides Sub forEachRemaining(ByVal action As java.util.function.IntConsumer)
+			Public Overrides Sub forEachRemaining(  action As java.util.function.IntConsumer)
 				Dim a As Integer() ' hoist accesses and checks from loop
 				Dim i, hi As Integer
 				If action Is Nothing Then Throw New NullPointerException
@@ -994,7 +994,7 @@ Namespace java.util
 				End If
 			End Sub
 
-			Public Overrides Function tryAdvance(ByVal action As java.util.function.IntConsumer) As Boolean
+			Public Overrides Function tryAdvance(  action As java.util.function.IntConsumer) As Boolean
 				If action Is Nothing Then Throw New NullPointerException
 				If index >= 0 AndAlso index < fence Then
 					action.accept(array(index))
@@ -1039,7 +1039,7 @@ Namespace java.util
 			''' <param name="additionalCharacteristics"> Additional spliterator characteristics
 			'''        of this spliterator's source or elements beyond {@code SIZED} and
 			'''        {@code SUBSIZED} which are are always reported </param>
-			Public Sub New(ByVal array As Long(), ByVal additionalCharacteristics As Integer)
+			Public Sub New(  array As Long(),   additionalCharacteristics As Integer)
 				Me.New(array, 0, array.Length, additionalCharacteristics)
 			End Sub
 
@@ -1051,7 +1051,7 @@ Namespace java.util
 			''' <param name="additionalCharacteristics"> Additional spliterator characteristics
 			'''        of this spliterator's source or elements beyond {@code SIZED} and
 			'''        {@code SUBSIZED} which are are always reported </param>
-			Public Sub New(ByVal array As Long(), ByVal origin As Integer, ByVal fence As Integer, ByVal additionalCharacteristics As Integer)
+			Public Sub New(  array As Long(),   origin As Integer,   fence As Integer,   additionalCharacteristics As Integer)
 				Me.array = array
 				Me.index = origin
 				Me.fence = fence
@@ -1064,7 +1064,7 @@ Namespace java.util
 				Return If(lo >= mid, Nothing, New LongArraySpliterator(array, lo, index = mid, characteristics_Renamed))
 			End Function
 
-			Public Overrides Sub forEachRemaining(ByVal action As java.util.function.LongConsumer)
+			Public Overrides Sub forEachRemaining(  action As java.util.function.LongConsumer)
 				Dim a As Long() ' hoist accesses and checks from loop
 				Dim i, hi As Integer
 				If action Is Nothing Then Throw New NullPointerException
@@ -1080,7 +1080,7 @@ Namespace java.util
 				End If
 			End Sub
 
-			Public Overrides Function tryAdvance(ByVal action As java.util.function.LongConsumer) As Boolean
+			Public Overrides Function tryAdvance(  action As java.util.function.LongConsumer) As Boolean
 				If action Is Nothing Then Throw New NullPointerException
 				If index >= 0 AndAlso index < fence Then
 					action.accept(array(index))
@@ -1125,7 +1125,7 @@ Namespace java.util
 			''' <param name="additionalCharacteristics"> Additional spliterator characteristics
 			'''        of this spliterator's source or elements beyond {@code SIZED} and
 			'''        {@code SUBSIZED} which are are always reported </param>
-			Public Sub New(ByVal array As Double(), ByVal additionalCharacteristics As Integer)
+			Public Sub New(  array As Double(),   additionalCharacteristics As Integer)
 				Me.New(array, 0, array.Length, additionalCharacteristics)
 			End Sub
 
@@ -1137,7 +1137,7 @@ Namespace java.util
 			''' <param name="additionalCharacteristics"> Additional spliterator characteristics
 			'''        of this spliterator's source or elements beyond {@code SIZED} and
 			'''        {@code SUBSIZED} which are are always reported </param>
-			Public Sub New(ByVal array As Double(), ByVal origin As Integer, ByVal fence As Integer, ByVal additionalCharacteristics As Integer)
+			Public Sub New(  array As Double(),   origin As Integer,   fence As Integer,   additionalCharacteristics As Integer)
 				Me.array = array
 				Me.index = origin
 				Me.fence = fence
@@ -1150,7 +1150,7 @@ Namespace java.util
 				Return If(lo >= mid, Nothing, New DoubleArraySpliterator(array, lo, index = mid, characteristics_Renamed))
 			End Function
 
-			Public Overrides Sub forEachRemaining(ByVal action As java.util.function.DoubleConsumer)
+			Public Overrides Sub forEachRemaining(  action As java.util.function.DoubleConsumer)
 				Dim a As Double() ' hoist accesses and checks from loop
 				Dim i, hi As Integer
 				If action Is Nothing Then Throw New NullPointerException
@@ -1166,7 +1166,7 @@ Namespace java.util
 				End If
 			End Sub
 
-			Public Overrides Function tryAdvance(ByVal action As java.util.function.DoubleConsumer) As Boolean
+			Public Overrides Function tryAdvance(  action As java.util.function.DoubleConsumer) As Boolean
 				If action Is Nothing Then Throw New NullPointerException
 				If index >= 0 AndAlso index < fence Then
 					action.accept(array(index))
@@ -1237,7 +1237,7 @@ Namespace java.util
 			''' <param name="additionalCharacteristics"> properties of this spliterator's
 			'''        source or elements.  If {@code SIZED} is reported then this
 			'''        spliterator will additionally report {@code SUBSIZED}. </param>
-			Protected Friend Sub New(ByVal est As Long, ByVal additionalCharacteristics As Integer)
+			Protected Friend Sub New(  est As Long,   additionalCharacteristics As Integer)
 				Me.est = est
 				Me.characteristics_Renamed = If((additionalCharacteristics And Spliterator.SIZED) <> 0, additionalCharacteristics Or Spliterator.SUBSIZED, additionalCharacteristics)
 			End Sub
@@ -1247,7 +1247,7 @@ Namespace java.util
 
 				Friend value As Object
 
-				Public Overrides Sub accept(ByVal value As T)
+				Public Overrides Sub accept(  value As T)
 					Me.value = value
 				End Sub
 			End Class
@@ -1356,7 +1356,7 @@ Namespace java.util
 			''' <param name="additionalCharacteristics"> properties of this spliterator's
 			'''        source or elements.  If {@code SIZED} is reported then this
 			'''        spliterator will additionally report {@code SUBSIZED}. </param>
-			Protected Friend Sub New(ByVal est As Long, ByVal additionalCharacteristics As Integer)
+			Protected Friend Sub New(  est As Long,   additionalCharacteristics As Integer)
 				Me.est = est
 				Me.characteristics_Renamed = If((additionalCharacteristics And Spliterator.SIZED) <> 0, additionalCharacteristics Or Spliterator.SUBSIZED, additionalCharacteristics)
 			End Sub
@@ -1366,7 +1366,7 @@ Namespace java.util
 
 				Friend value As Integer
 
-				Public Overrides Sub accept(ByVal value As Integer)
+				Public Overrides Sub accept(  value As Integer)
 					Me.value = value
 				End Sub
 			End Class
@@ -1462,7 +1462,7 @@ Namespace java.util
 			''' <param name="additionalCharacteristics"> properties of this spliterator's
 			'''        source or elements.  If {@code SIZED} is reported then this
 			'''        spliterator will additionally report {@code SUBSIZED}. </param>
-			Protected Friend Sub New(ByVal est As Long, ByVal additionalCharacteristics As Integer)
+			Protected Friend Sub New(  est As Long,   additionalCharacteristics As Integer)
 				Me.est = est
 				Me.characteristics_Renamed = If((additionalCharacteristics And Spliterator.SIZED) <> 0, additionalCharacteristics Or Spliterator.SUBSIZED, additionalCharacteristics)
 			End Sub
@@ -1472,7 +1472,7 @@ Namespace java.util
 
 				Friend value As Long
 
-				Public Overrides Sub accept(ByVal value As Long)
+				Public Overrides Sub accept(  value As Long)
 					Me.value = value
 				End Sub
 			End Class
@@ -1568,7 +1568,7 @@ Namespace java.util
 			''' <param name="additionalCharacteristics"> properties of this spliterator's
 			'''        source or elements.  If {@code SIZED} is reported then this
 			'''        spliterator will additionally report {@code SUBSIZED}. </param>
-			Protected Friend Sub New(ByVal est As Long, ByVal additionalCharacteristics As Integer)
+			Protected Friend Sub New(  est As Long,   additionalCharacteristics As Integer)
 				Me.est = est
 				Me.characteristics_Renamed = If((additionalCharacteristics And Spliterator.SIZED) <> 0, additionalCharacteristics Or Spliterator.SUBSIZED, additionalCharacteristics)
 			End Sub
@@ -1578,7 +1578,7 @@ Namespace java.util
 
 				Friend value As Double
 
-				Public Overrides Sub accept(ByVal value As Double)
+				Public Overrides Sub accept(  value As Double)
 					Me.value = value
 				End Sub
 			End Class
@@ -1661,7 +1661,7 @@ Namespace java.util
 			''' <param name="c"> the collection </param>
 			''' <param name="characteristics"> properties of this spliterator's
 			'''        source or elements. </param>
-			Public Sub New(Of T1 As T)(ByVal collection As Collection(Of T1), ByVal characteristics As Integer)
+			Public Sub New(Of T1 As T)(  collection As Collection(Of T1),   characteristics As Integer)
 				Me.collection = collection
 				Me.it = Nothing
 				Me.characteristics_Renamed = If((characteristics And Spliterator.CONCURRENT) = 0, characteristics Or Spliterator.SIZED Or Spliterator.SUBSIZED, characteristics)
@@ -1676,7 +1676,7 @@ Namespace java.util
 			''' <param name="size"> the number of elements in the source </param>
 			''' <param name="characteristics"> properties of this spliterator's
 			''' source or elements. </param>
-			Public Sub New(Of T1 As T)(ByVal [iterator] As [Iterator](Of T1), ByVal size As Long, ByVal characteristics As Integer)
+			Public Sub New(Of T1 As T)(  [iterator] As [Iterator](Of T1),   size As Long,   characteristics As Integer)
 				Me.collection = Nothing
 				Me.it = [iterator]
 				Me.est = size
@@ -1691,7 +1691,7 @@ Namespace java.util
 			''' <param name="iterator"> the iterator for the source </param>
 			''' <param name="characteristics"> properties of this spliterator's
 			''' source or elements. </param>
-			Public Sub New(Of T1 As T)(ByVal [iterator] As [Iterator](Of T1), ByVal characteristics As Integer)
+			Public Sub New(Of T1 As T)(  [iterator] As [Iterator](Of T1),   characteristics As Integer)
 				Me.collection = Nothing
 				Me.it = [iterator]
 				Me.est = java.lang.[Long].Max_Value
@@ -1742,7 +1742,7 @@ Namespace java.util
 			End Function
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Overrides Sub forEachRemaining(Of T1)(ByVal action As java.util.function.Consumer(Of T1)) Implements Spliterator(Of T).forEachRemaining
+			Public Overrides Sub forEachRemaining(Of T1)(  action As java.util.function.Consumer(Of T1)) Implements Spliterator(Of T).forEachRemaining
 				If action Is Nothing Then Throw New NullPointerException
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 				Dim i As [Iterator](Of ? As T)
@@ -1756,7 +1756,7 @@ Namespace java.util
 			End Sub
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-			Public Overrides Function tryAdvance(Of T1)(ByVal action As java.util.function.Consumer(Of T1)) As Boolean Implements Spliterator(Of T).tryAdvance
+			Public Overrides Function tryAdvance(Of T1)(  action As java.util.function.Consumer(Of T1)) As Boolean Implements Spliterator(Of T).tryAdvance
 				If action Is Nothing Then Throw New NullPointerException
 				If it Is Nothing Then
 					it = collection.GetEnumerator()
@@ -1813,7 +1813,7 @@ Namespace java.util
 			''' <param name="size"> the number of elements in the source </param>
 			''' <param name="characteristics"> properties of this spliterator's
 			''' source or elements. </param>
-			Public Sub New(ByVal [iterator] As PrimitiveIterator.OfInt, ByVal size As Long, ByVal characteristics As Integer)
+			Public Sub New(  [iterator] As PrimitiveIterator.OfInt,   size As Long,   characteristics As Integer)
 				Me.it = [iterator]
 				Me.est = size
 				Me.characteristics_Renamed = If((characteristics And Spliterator.CONCURRENT) = 0, characteristics Or Spliterator.SIZED Or Spliterator.SUBSIZED, characteristics)
@@ -1827,7 +1827,7 @@ Namespace java.util
 			''' <param name="iterator"> the iterator for the source </param>
 			''' <param name="characteristics"> properties of this spliterator's
 			''' source or elements. </param>
-			Public Sub New(ByVal [iterator] As PrimitiveIterator.OfInt, ByVal characteristics As Integer)
+			Public Sub New(  [iterator] As PrimitiveIterator.OfInt,   characteristics As Integer)
 				Me.it = [iterator]
 				Me.est = java.lang.[Long].Max_Value
 				Me.characteristics_Renamed = characteristics And Not(Spliterator.SIZED Or Spliterator.SUBSIZED)
@@ -1853,12 +1853,12 @@ Namespace java.util
 				Return Nothing
 			End Function
 
-			Public Overrides Sub forEachRemaining(ByVal action As java.util.function.IntConsumer)
+			Public Overrides Sub forEachRemaining(  action As java.util.function.IntConsumer)
 				If action Is Nothing Then Throw New NullPointerException
 				it.forEachRemaining(action)
 			End Sub
 
-			Public Overrides Function tryAdvance(ByVal action As java.util.function.IntConsumer) As Boolean
+			Public Overrides Function tryAdvance(  action As java.util.function.IntConsumer) As Boolean
 				If action Is Nothing Then Throw New NullPointerException
 				If it.hasNext() Then
 					action.accept(it.Next())
@@ -1903,7 +1903,7 @@ Namespace java.util
 			''' <param name="size"> the number of elements in the source </param>
 			''' <param name="characteristics"> properties of this spliterator's
 			''' source or elements. </param>
-			Public Sub New(ByVal [iterator] As PrimitiveIterator.OfLong, ByVal size As Long, ByVal characteristics As Integer)
+			Public Sub New(  [iterator] As PrimitiveIterator.OfLong,   size As Long,   characteristics As Integer)
 				Me.it = [iterator]
 				Me.est = size
 				Me.characteristics_Renamed = If((characteristics And Spliterator.CONCURRENT) = 0, characteristics Or Spliterator.SIZED Or Spliterator.SUBSIZED, characteristics)
@@ -1917,7 +1917,7 @@ Namespace java.util
 			''' <param name="iterator"> the iterator for the source </param>
 			''' <param name="characteristics"> properties of this spliterator's
 			''' source or elements. </param>
-			Public Sub New(ByVal [iterator] As PrimitiveIterator.OfLong, ByVal characteristics As Integer)
+			Public Sub New(  [iterator] As PrimitiveIterator.OfLong,   characteristics As Integer)
 				Me.it = [iterator]
 				Me.est = java.lang.[Long].Max_Value
 				Me.characteristics_Renamed = characteristics And Not(Spliterator.SIZED Or Spliterator.SUBSIZED)
@@ -1943,12 +1943,12 @@ Namespace java.util
 				Return Nothing
 			End Function
 
-			Public Overrides Sub forEachRemaining(ByVal action As java.util.function.LongConsumer)
+			Public Overrides Sub forEachRemaining(  action As java.util.function.LongConsumer)
 				If action Is Nothing Then Throw New NullPointerException
 				it.forEachRemaining(action)
 			End Sub
 
-			Public Overrides Function tryAdvance(ByVal action As java.util.function.LongConsumer) As Boolean
+			Public Overrides Function tryAdvance(  action As java.util.function.LongConsumer) As Boolean
 				If action Is Nothing Then Throw New NullPointerException
 				If it.hasNext() Then
 					action.accept(it.nextLong())
@@ -1993,7 +1993,7 @@ Namespace java.util
 			''' <param name="size"> the number of elements in the source </param>
 			''' <param name="characteristics"> properties of this spliterator's
 			''' source or elements. </param>
-			Public Sub New(ByVal [iterator] As PrimitiveIterator.OfDouble, ByVal size As Long, ByVal characteristics As Integer)
+			Public Sub New(  [iterator] As PrimitiveIterator.OfDouble,   size As Long,   characteristics As Integer)
 				Me.it = [iterator]
 				Me.est = size
 				Me.characteristics_Renamed = If((characteristics And Spliterator.CONCURRENT) = 0, characteristics Or Spliterator.SIZED Or Spliterator.SUBSIZED, characteristics)
@@ -2007,7 +2007,7 @@ Namespace java.util
 			''' <param name="iterator"> the iterator for the source </param>
 			''' <param name="characteristics"> properties of this spliterator's
 			''' source or elements. </param>
-			Public Sub New(ByVal [iterator] As PrimitiveIterator.OfDouble, ByVal characteristics As Integer)
+			Public Sub New(  [iterator] As PrimitiveIterator.OfDouble,   characteristics As Integer)
 				Me.it = [iterator]
 				Me.est = java.lang.[Long].Max_Value
 				Me.characteristics_Renamed = characteristics And Not(Spliterator.SIZED Or Spliterator.SUBSIZED)
@@ -2033,12 +2033,12 @@ Namespace java.util
 				Return Nothing
 			End Function
 
-			Public Overrides Sub forEachRemaining(ByVal action As java.util.function.DoubleConsumer)
+			Public Overrides Sub forEachRemaining(  action As java.util.function.DoubleConsumer)
 				If action Is Nothing Then Throw New NullPointerException
 				it.forEachRemaining(action)
 			End Sub
 
-			Public Overrides Function tryAdvance(ByVal action As java.util.function.DoubleConsumer) As Boolean
+			Public Overrides Function tryAdvance(  action As java.util.function.DoubleConsumer) As Boolean
 				If action Is Nothing Then Throw New NullPointerException
 				If it.hasNext() Then
 					action.accept(it.NextDouble())

@@ -97,7 +97,7 @@ Namespace java.awt.image
 		''' <param name="offsets"> the specified offsets </param>
 		''' <param name="hints"> the specified <code>RenderingHints</code>, or
 		'''        <code>null</code> </param>
-		Public Sub New(ByVal scaleFactors As Single(), ByVal offsets As Single(), ByVal hints As java.awt.RenderingHints)
+		Public Sub New(  scaleFactors As Single(),   offsets As Single(),   hints As java.awt.RenderingHints)
 			length = scaleFactors.Length
 			If length > offsets.Length Then length = offsets.Length
 
@@ -120,7 +120,7 @@ Namespace java.awt.image
 		''' <param name="offset"> the specified offset </param>
 		''' <param name="hints"> the specified <code>RenderingHints</code>, or
 		'''        <code>null</code> </param>
-		Public Sub New(ByVal scaleFactor As Single, ByVal offset As Single, ByVal hints As java.awt.RenderingHints)
+		Public Sub New(  scaleFactor As Single,   offset As Single,   hints As java.awt.RenderingHints)
 			length = 1
 			Me.scaleFactors = New Single(0){}
 			Me.offsets = New Single(0){}
@@ -136,7 +136,7 @@ Namespace java.awt.image
 		''' <param name="scaleFactors"> the array to contain the scale factors of
 		'''        this <code>RescaleOp</code> </param>
 		''' <returns> the scale factors of this <code>RescaleOp</code>. </returns>
-		Public Function getScaleFactors(ByVal scaleFactors As Single()) As Single()
+		Public Function getScaleFactors(  scaleFactors As Single()) As Single()
 			If scaleFactors Is Nothing Then Return CType(Me.scaleFactors.clone(), Single())
 			Array.Copy(Me.scaleFactors, 0, scaleFactors, 0, System.Math.Min(Me.scaleFactors.Length, scaleFactors.Length))
 			Return scaleFactors
@@ -149,7 +149,7 @@ Namespace java.awt.image
 		''' <param name="offsets"> the array to contain the offsets of
 		'''        this <code>RescaleOp</code> </param>
 		''' <returns> the offsets of this <code>RescaleOp</code>. </returns>
-		Public Function getOffsets(ByVal offsets As Single()) As Single()
+		Public Function getOffsets(  offsets As Single()) As Single()
 			If offsets Is Nothing Then Return CType(Me.offsets.clone(), Single())
 
 			Array.Copy(Me.offsets, 0, offsets, 0, System.Math.Min(Me.offsets.Length, offsets.Length))
@@ -575,7 +575,7 @@ End Namespace
 '	arrays with inner arrays of the same length.
 '----------------------------------------------------------------------------------------
 Partial Friend Class RectangularArrays
-    Friend Shared Function ReturnRectangularSByteArray(ByVal Size1 As Integer, ByVal Size2 As Integer) As SByte()()
+    Friend Shared Function ReturnRectangularSByteArray(  Size1 As Integer,   Size2 As Integer) As SByte()()
         Dim Array As SByte()() = New SByte(Size1 - 1)() {}
         For Array1 As Integer = 0 To Size1 - 1
             Array(Array1) = New SByte(Size2 - 1) {}
@@ -583,7 +583,7 @@ Partial Friend Class RectangularArrays
         Return Array
     End Function
 
-    Friend Shared Function ReturnRectangularShortArray(ByVal Size1 As Integer, ByVal Size2 As Integer) As Short()()
+    Friend Shared Function ReturnRectangularShortArray(  Size1 As Integer,   Size2 As Integer) As Short()()
         Dim Array As Short()() = New Short(Size1 - 1)() {}
         For Array1 As Integer = 0 To Size1 - 1
             Array(Array1) = New Short(Size2 - 1) {}

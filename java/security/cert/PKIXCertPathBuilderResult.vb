@@ -76,7 +76,7 @@ Namespace java.security.cert
 		''' <exception cref="NullPointerException"> if the {@code certPath},
 		''' {@code trustAnchor} or {@code subjectPublicKey} parameters
 		''' are {@code null} </exception>
-		Public Sub New(ByVal certPath As CertPath, ByVal trustAnchor As TrustAnchor, ByVal policyTree As PolicyNode, ByVal subjectPublicKey As java.security.PublicKey)
+		Public Sub New(  certPath As CertPath,   trustAnchor As TrustAnchor,   policyTree As PolicyNode,   subjectPublicKey As java.security.PublicKey)
 			MyBase.New(trustAnchor, policyTree, subjectPublicKey)
 			If certPath Is Nothing Then Throw New NullPointerException("certPath must be non-null")
 			Me.certPath = certPath

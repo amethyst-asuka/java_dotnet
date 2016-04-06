@@ -189,7 +189,7 @@ Namespace java.nio.channels
 		''' </exception>
 		''' <exception cref="CancelledKeyException">
 		'''          If this key has been cancelled </exception>
-		Public MustOverride Function interestOps(ByVal ops As Integer) As SelectionKey
+		Public MustOverride Function interestOps(  ops As Integer) As SelectionKey
 
 		''' <summary>
 		''' Retrieves this key's ready-operation set.
@@ -377,7 +377,7 @@ Namespace java.nio.channels
 		''' </param>
 		''' <returns>  The previously-attached object, if any,
 		'''          otherwise <tt>null</tt> </returns>
-		Public Function attach(ByVal ob As Object) As Object
+		Public Function attach(  ob As Object) As Object
 			Return attachmentUpdater.getAndSet(Me, ob)
 		End Function
 

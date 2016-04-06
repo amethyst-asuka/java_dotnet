@@ -56,7 +56,7 @@ Namespace java.util.concurrent
 		''' <param name="unit"> the time unit </param>
 		''' <returns> the remaining delay; zero or negative values indicate
 		''' that the delay has already elapsed </returns>
-		Function getDelay(ByVal unit As TimeUnit) As Long
+		Function getDelay(  unit As TimeUnit) As Long
 	End Interface
 
 End Namespace

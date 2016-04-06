@@ -40,7 +40,7 @@ Namespace java.io
 		''' Create an ObjectStreamException with the specified argument.
 		''' </summary>
 		''' <param name="classname"> the detailed message for the exception </param>
-		Protected Friend Sub New(ByVal classname As String)
+		Protected Friend Sub New(  classname As String)
 			MyBase.New(classname)
 		End Sub
 

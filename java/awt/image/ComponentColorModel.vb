@@ -264,7 +264,7 @@ Namespace java.awt.image
 		''' </exception>
 		''' <seealso cref= ColorSpace </seealso>
 		''' <seealso cref= java.awt.Transparency </seealso>
-		Public Sub New(ByVal colorSpace As java.awt.color.ColorSpace, ByVal bits As Integer(), ByVal hasAlpha As Boolean, ByVal isAlphaPremultiplied As Boolean, ByVal transparency As Integer, ByVal transferType As Integer)
+		Public Sub New(  colorSpace As java.awt.color.ColorSpace,   bits As Integer(),   hasAlpha As Boolean,   isAlphaPremultiplied As Boolean,   transparency As Integer,   transferType As Integer)
 			MyBase.New(bitsHelper(transferType, colorSpace, hasAlpha), bitsArrayHelper(bits, transferType, colorSpace, hasAlpha), colorSpace, hasAlpha, isAlphaPremultiplied, transparency, transferType)
 			Select Case transferType
 				Case DataBuffer.TYPE_BYTE, DataBuffer.TYPE_USHORT, DataBuffer.TYPE_INT
@@ -327,18 +327,18 @@ Namespace java.awt.image
 		''' <seealso cref= ColorSpace </seealso>
 		''' <seealso cref= java.awt.Transparency
 		''' @since 1.4 </seealso>
-		Public Sub New(ByVal colorSpace As java.awt.color.ColorSpace, ByVal hasAlpha As Boolean, ByVal isAlphaPremultiplied As Boolean, ByVal transparency As Integer, ByVal transferType As Integer)
+		Public Sub New(  colorSpace As java.awt.color.ColorSpace,   hasAlpha As Boolean,   isAlphaPremultiplied As Boolean,   transparency As Integer,   transferType As Integer)
 			Me.New(colorSpace, Nothing, hasAlpha, isAlphaPremultiplied, transparency, transferType)
 		End Sub
 
-		Private Shared Function bitsHelper(ByVal transferType As Integer, ByVal colorSpace As java.awt.color.ColorSpace, ByVal hasAlpha As Boolean) As Integer
+		Private Shared Function bitsHelper(  transferType As Integer,   colorSpace As java.awt.color.ColorSpace,   hasAlpha As Boolean) As Integer
 			Dim numBits As Integer = DataBuffer.getDataTypeSize(transferType)
 			Dim numComponents_Renamed As Integer = colorSpace.numComponents
 			If hasAlpha Then numComponents_Renamed += 1
 			Return numBits * numComponents_Renamed
 		End Function
 
-		Private Shared Function bitsArrayHelper(ByVal origBits As Integer(), ByVal transferType As Integer, ByVal colorSpace As java.awt.color.ColorSpace, ByVal hasAlpha As Boolean) As Integer()
+		Private Shared Function bitsArrayHelper(  origBits As Integer(),   transferType As Integer,   colorSpace As java.awt.color.ColorSpace,   hasAlpha As Boolean) As Integer()
 			Select Case transferType
 				Case DataBuffer.TYPE_BYTE, DataBuffer.TYPE_USHORT, DataBuffer.TYPE_INT
 					If origBits IsNot Nothing Then Return origBits
@@ -541,7 +541,7 @@ Namespace java.awt.image
 			End If
 		End Sub
 
-		Private Function getRGBComponent(ByVal pixel As Integer, ByVal idx As Integer) As Integer
+		Private Function getRGBComponent(  pixel As Integer,   idx As Integer) As Integer
 			If numComponents > 1 Then Throw New IllegalArgumentException("More than one component per pixel")
 			If signed Then Throw New IllegalArgumentException("Component value is signed")
 			If needScaleInit Then initScale()
@@ -583,7 +583,7 @@ Namespace java.awt.image
 		''' one component in this <CODE>ColorModel</CODE>. </exception>
 		''' <exception cref="IllegalArgumentException"> If the component value for this
 		''' <CODE>ColorModel</CODE> is signed </exception>
-		Public Overrides Function getRed(ByVal pixel As Integer) As Integer
+		Public Overrides Function getRed(  pixel As Integer) As Integer
 			Return getRGBComponent(pixel, 0)
 		End Function
 
@@ -604,7 +604,7 @@ Namespace java.awt.image
 		''' one component in this <CODE>ColorModel</CODE>. </exception>
 		''' <exception cref="IllegalArgumentException"> If the component value for this
 		''' <CODE>ColorModel</CODE> is signed </exception>
-		Public Overrides Function getGreen(ByVal pixel As Integer) As Integer
+		Public Overrides Function getGreen(  pixel As Integer) As Integer
 			Return getRGBComponent(pixel, 1)
 		End Function
 
@@ -625,7 +625,7 @@ Namespace java.awt.image
 		''' one component in this <CODE>ColorModel</CODE>. </exception>
 		''' <exception cref="IllegalArgumentException"> If the component value for this
 		''' <CODE>ColorModel</CODE> is signed </exception>
-		Public Overrides Function getBlue(ByVal pixel As Integer) As Integer
+		Public Overrides Function getBlue(  pixel As Integer) As Integer
 			Return getRGBComponent(pixel, 2)
 		End Function
 
@@ -641,7 +641,7 @@ Namespace java.awt.image
 		''' one component in this <CODE>ColorModel</CODE>. </exception>
 		''' <exception cref="IllegalArgumentException"> If the component value for this
 		''' <CODE>ColorModel</CODE> is signed </exception>
-		Public Overrides Function getAlpha(ByVal pixel As Integer) As Integer
+		Public Overrides Function getAlpha(  pixel As Integer) As Integer
 			If supportsAlpha = False Then Return 255
 			If numComponents > 1 Then Throw New IllegalArgumentException("More than one component per pixel")
 			If signed Then Throw New IllegalArgumentException("Component value is signed")
@@ -664,14 +664,14 @@ Namespace java.awt.image
 		''' one component in this <CODE>ColorModel</CODE>. </exception>
 		''' <exception cref="IllegalArgumentException"> If the component value for this
 		''' <CODE>ColorModel</CODE> is signed </exception>
-		Public Overrides Function getRGB(ByVal pixel As Integer) As Integer
+		Public Overrides Function getRGB(  pixel As Integer) As Integer
 			If numComponents > 1 Then Throw New IllegalArgumentException("More than one component per pixel")
 			If signed Then Throw New IllegalArgumentException("Component value is signed")
 
 			Return (getAlpha(pixel) << 24) Or (getRed(pixel) << 16) Or (getGreen(pixel) << 8) Or (getBlue(pixel) << 0)
 		End Function
 
-		Private Function extractComponent(ByVal inData As Object, ByVal idx As Integer, ByVal precision As Integer) As Integer
+		Private Function extractComponent(  inData As Object,   idx As Integer,   precision As Integer) As Integer
 			' Extract component idx from inData.  The precision argument
 			' should be either 8 or 16.  If it's 8, this method will return
 			' an 8-bit value.  If it's 16, this method will return a 16-bit
@@ -772,7 +772,7 @@ Namespace java.awt.image
 			End If
 		End Function
 
-		Private Function getRGBComponent(ByVal inData As Object, ByVal idx As Integer) As Integer
+		Private Function getRGBComponent(  inData As Object,   idx As Integer) As Integer
 			If needScaleInit Then initScale()
 			If is_sRGB_stdScale Then
 				Return extractComponent(inData, idx, 8)
@@ -820,7 +820,7 @@ Namespace java.awt.image
 		''' <CODE>DataBuffer.TYPE_BYTE</CODE>, <CODE>DataBuffer.TYPE_USHORT</CODE>,
 		''' <CODE>DataBuffer.TYPE_INT</CODE>, <CODE>DataBuffer.TYPE_SHORT</CODE>,
 		''' <CODE>DataBuffer.TYPE_FLOAT</CODE>, or <CODE>DataBuffer.TYPE_DOUBLE</CODE>. </exception>
-		Public Overrides Function getRed(ByVal inData As Object) As Integer
+		Public Overrides Function getRed(  inData As Object) As Integer
 			Return getRGBComponent(inData, 0)
 		End Function
 
@@ -854,7 +854,7 @@ Namespace java.awt.image
 		''' <CODE>DataBuffer.TYPE_BYTE</CODE>, <CODE>DataBuffer.TYPE_USHORT</CODE>,
 		''' <CODE>DataBuffer.TYPE_INT</CODE>, <CODE>DataBuffer.TYPE_SHORT</CODE>,
 		''' <CODE>DataBuffer.TYPE_FLOAT</CODE>, or <CODE>DataBuffer.TYPE_DOUBLE</CODE>. </exception>
-		Public Overrides Function getGreen(ByVal inData As Object) As Integer
+		Public Overrides Function getGreen(  inData As Object) As Integer
 			Return getRGBComponent(inData, 1)
 		End Function
 
@@ -888,7 +888,7 @@ Namespace java.awt.image
 		''' <CODE>DataBuffer.TYPE_BYTE</CODE>, <CODE>DataBuffer.TYPE_USHORT</CODE>,
 		''' <CODE>DataBuffer.TYPE_INT</CODE>, <CODE>DataBuffer.TYPE_SHORT</CODE>,
 		''' <CODE>DataBuffer.TYPE_FLOAT</CODE>, or <CODE>DataBuffer.TYPE_DOUBLE</CODE>. </exception>
-		Public Overrides Function getBlue(ByVal inData As Object) As Integer
+		Public Overrides Function getBlue(  inData As Object) As Integer
 			Return getRGBComponent(inData, 2)
 		End Function
 
@@ -918,7 +918,7 @@ Namespace java.awt.image
 		''' <CODE>DataBuffer.TYPE_BYTE</CODE>, <CODE>DataBuffer.TYPE_USHORT</CODE>,
 		''' <CODE>DataBuffer.TYPE_INT</CODE>, <CODE>DataBuffer.TYPE_SHORT</CODE>,
 		''' <CODE>DataBuffer.TYPE_FLOAT</CODE>, or <CODE>DataBuffer.TYPE_DOUBLE</CODE>. </exception>
-		Public Overrides Function getAlpha(ByVal inData As Object) As Integer
+		Public Overrides Function getAlpha(  inData As Object) As Integer
 			If supportsAlpha = False Then Return 255
 
 			Dim alpha_Renamed As Integer = 0
@@ -989,7 +989,7 @@ Namespace java.awt.image
 		''' <CODE>DataBuffer.TYPE_INT</CODE>, <CODE>DataBuffer.TYPE_SHORT</CODE>,
 		''' <CODE>DataBuffer.TYPE_FLOAT</CODE>, or <CODE>DataBuffer.TYPE_DOUBLE</CODE>. </exception>
 		''' <seealso cref= ColorModel#getRGBdefault </seealso>
-		Public Overrides Function getRGB(ByVal inData As Object) As Integer
+		Public Overrides Function getRGB(  inData As Object) As Integer
 			If needScaleInit Then initScale()
 			If is_sRGB_stdScale OrElse is_LinearRGB_stdScale Then
 				Return (getAlpha(inData) << 24) Or (getRed(inData) << 16) Or (getGreen(inData) << 8) Or (getBlue(inData))
@@ -1037,7 +1037,7 @@ Namespace java.awt.image
 		''' </exception>
 		''' <seealso cref= WritableRaster#setDataElements </seealso>
 		''' <seealso cref= SampleModel#setDataElements </seealso>
-		Public Overrides Function getDataElements(ByVal rgb As Integer, ByVal pixel As Object) As Object
+		Public Overrides Function getDataElements(  rgb As Integer,   pixel As Object) As Object
 			' REMIND: Use rendering hints?
 
 			Dim red_Renamed, grn, blu, alp As Integer
@@ -1452,7 +1452,7 @@ Namespace java.awt.image
 	   ''' <exception cref="ArrayIndexOutOfBoundsException"> If the <CODE>components</CODE>
 	   ''' array is not null and is not large enough to hold all the color and
 	   ''' alpha components (starting at offset). </exception>
-		Public Overrides Function getComponents(ByVal pixel As Integer, ByVal components As Integer(), ByVal offset As Integer) As Integer()
+		Public Overrides Function getComponents(  pixel As Integer,   components As Integer(),   offset As Integer) As Integer()
 			If numComponents > 1 Then Throw New IllegalArgumentException("More than one component per pixel")
 			If needScaleInit Then initScale()
 			If noUnnorm Then Throw New IllegalArgumentException("This ColorModel does not support the unnormalized form")
@@ -1500,7 +1500,7 @@ Namespace java.awt.image
 		''' not null and is not large enough to hold all the color and alpha
 		''' components (starting at offset), or if <CODE>pixel</CODE> is not large
 		''' enough to hold a pixel value for this ColorModel. </exception>
-		Public Overrides Function getComponents(ByVal pixel As Object, ByVal components As Integer(), ByVal offset As Integer) As Integer()
+		Public Overrides Function getComponents(  pixel As Object,   components As Integer(),   offset As Integer) As Integer()
 			Dim intpixel As Integer()
 			If needScaleInit Then initScale()
 			If noUnnorm Then Throw New IllegalArgumentException("This ColorModel does not support the unnormalized form")
@@ -1560,7 +1560,7 @@ Namespace java.awt.image
 		''' <exception cref="IllegalArgumentException"> if the length of
 		'''          <code>normComponents</code> minus <code>normOffset</code>
 		'''          is less than <code>numComponents</code> </exception>
-		Public Overrides Function getUnnormalizedComponents(ByVal normComponents As Single(), ByVal normOffset As Integer, ByVal components As Integer(), ByVal offset As Integer) As Integer()
+		Public Overrides Function getUnnormalizedComponents(  normComponents As Single(),   normOffset As Integer,   components As Integer(),   offset As Integer) As Integer()
 			If needScaleInit Then initScale()
 			If noUnnorm Then Throw New IllegalArgumentException("This ColorModel does not support the unnormalized form")
 			Return MyBase.getUnnormalizedComponents(normComponents, normOffset, components, offset)
@@ -1599,7 +1599,7 @@ Namespace java.awt.image
 		''' components. </returns>
 		''' <exception cref="IllegalArgumentException"> If this
 		''' <CODE>ComponentColorModel</CODE> does not support the unnormalized form </exception>
-		Public Overrides Function getNormalizedComponents(ByVal components As Integer(), ByVal offset As Integer, ByVal normComponents As Single(), ByVal normOffset As Integer) As Single()
+		Public Overrides Function getNormalizedComponents(  components As Integer(),   offset As Integer,   normComponents As Single(),   normOffset As Integer) As Single()
 			If needScaleInit Then initScale()
 			If noUnnorm Then Throw New IllegalArgumentException("This ColorModel does not support the unnormalized form")
 			Return MyBase.getNormalizedComponents(components, offset, normComponents, normOffset)
@@ -1618,7 +1618,7 @@ Namespace java.awt.image
 		''' in this <CODE>ColorModel</CODE>. </exception>
 		''' <exception cref="IllegalArgumentException"> If this
 		''' <CODE>ComponentColorModel</CODE> does not support the unnormalized form </exception>
-		Public Overrides Function getDataElement(ByVal components As Integer(), ByVal offset As Integer) As Integer
+		Public Overrides Function getDataElement(  components As Integer(),   offset As Integer) As Integer
 			If needScaleInit Then initScale()
 			If numComponents = 1 Then
 				If noUnnorm Then Throw New IllegalArgumentException("This ColorModel does not support the unnormalized form")
@@ -1667,7 +1667,7 @@ Namespace java.awt.image
 		''' </exception>
 		''' <seealso cref= WritableRaster#setDataElements </seealso>
 		''' <seealso cref= SampleModel#setDataElements </seealso>
-		Public Overrides Function getDataElements(ByVal components As Integer(), ByVal offset As Integer, ByVal obj As Object) As Object
+		Public Overrides Function getDataElements(  components As Integer(),   offset As Integer,   obj As Object) As Object
 			If needScaleInit Then initScale()
 			If noUnnorm Then Throw New IllegalArgumentException("This ColorModel does not support the unnormalized form")
 			If (components.Length-offset) < numComponents Then Throw New IllegalArgumentException("Component array too small" & " (should be " & numComponents)
@@ -1735,7 +1735,7 @@ Namespace java.awt.image
 		'''  hold all of the color and alpha components starting at
 		'''  <code>normOffset</code>
 		''' @since 1.4 </exception>
-		Public Overrides Function getDataElement(ByVal normComponents As Single(), ByVal normOffset As Integer) As Integer
+		Public Overrides Function getDataElement(  normComponents As Single(),   normOffset As Integer) As Integer
 			If numComponents > 1 Then Throw New IllegalArgumentException("More than one component per pixel")
 			If signed Then Throw New IllegalArgumentException("Component value is signed")
 			If needScaleInit Then initScale()
@@ -1788,7 +1788,7 @@ Namespace java.awt.image
 		''' <seealso cref= WritableRaster#setDataElements </seealso>
 		''' <seealso cref= SampleModel#setDataElements
 		''' @since 1.4 </seealso>
-		Public Overrides Function getDataElements(ByVal normComponents As Single(), ByVal normOffset As Integer, ByVal obj As Object) As Object
+		Public Overrides Function getDataElements(  normComponents As Single(),   normOffset As Integer,   obj As Object) As Object
 			Dim needAlpha As Boolean = supportsAlpha AndAlso isAlphaPremultiplied_Renamed
 			Dim stdNormComponents As Single()
 			If needScaleInit Then initScale()
@@ -2021,7 +2021,7 @@ Namespace java.awt.image
 		'''          <code>pixel</code> is not large enough to hold a pixel
 		'''          value for this <code>ColorModel</code>.
 		''' @since 1.4 </exception>
-		Public Overrides Function getNormalizedComponents(ByVal pixel As Object, ByVal normComponents As Single(), ByVal normOffset As Integer) As Single()
+		Public Overrides Function getNormalizedComponents(  pixel As Object,   normComponents As Single(),   normOffset As Integer) As Single()
 			If normComponents Is Nothing Then normComponents = New Single(numComponents+normOffset - 1){}
 			Select Case transferType
 			Case DataBuffer.TYPE_BYTE
@@ -2134,7 +2134,7 @@ Namespace java.awt.image
 		''' <CODE>DataBuffer.TYPE_BYTE</CODE>, <CODE>DataBuffer.TYPE_USHORT</CODE>,
 		''' <CODE>DataBuffer.TYPE_INT</CODE>, <CODE>DataBuffer.TYPE_SHORT</CODE>,
 		''' <CODE>DataBuffer.TYPE_FLOAT</CODE>, or <CODE>DataBuffer.TYPE_DOUBLE</CODE>. </exception>
-		Public Overrides Function coerceData(ByVal raster_Renamed As WritableRaster, ByVal isAlphaPremultiplied As Boolean) As ColorModel
+		Public Overrides Function coerceData(  raster_Renamed As WritableRaster,   isAlphaPremultiplied As Boolean) As ColorModel
 			If (supportsAlpha = False) OrElse (Me.isAlphaPremultiplied_Renamed = isAlphaPremultiplied) Then Return Me
 
 			Dim w As Integer = raster_Renamed.width
@@ -2482,7 +2482,7 @@ Namespace java.awt.image
 		''' </param>
 		''' <returns> <CODE>true</CODE> if <CODE>raster</CODE> is compatible with this
 		''' <CODE>ColorModel</CODE>, <CODE>false</CODE> if it is not. </returns>
-		Public Overrides Function isCompatibleRaster(ByVal raster_Renamed As Raster) As Boolean
+		Public Overrides Function isCompatibleRaster(  raster_Renamed As Raster) As Boolean
 
 			Dim sm As SampleModel = raster_Renamed.sampleModel
 
@@ -2509,7 +2509,7 @@ Namespace java.awt.image
 		''' this <CODE>ColorModel</CODE>. </returns>
 		''' <seealso cref= WritableRaster </seealso>
 		''' <seealso cref= SampleModel </seealso>
-		Public Overrides Function createCompatibleWritableRaster(ByVal w As Integer, ByVal h As Integer) As WritableRaster
+		Public Overrides Function createCompatibleWritableRaster(  w As Integer,   h As Integer) As WritableRaster
 			Dim dataSize As Integer = w*h*numComponents
 			Dim raster_Renamed As WritableRaster = Nothing
 
@@ -2536,7 +2536,7 @@ Namespace java.awt.image
 		''' <CODE>ColorModel</CODE>.
 		''' </returns>
 		''' <seealso cref= SampleModel </seealso>
-		Public Overrides Function createCompatibleSampleModel(ByVal w As Integer, ByVal h As Integer) As SampleModel
+		Public Overrides Function createCompatibleSampleModel(  w As Integer,   h As Integer) As SampleModel
 			Dim bandOffsets As Integer() = New Integer(numComponents - 1){}
 			For i As Integer = 0 To numComponents - 1
 				bandOffsets(i) = i
@@ -2560,7 +2560,7 @@ Namespace java.awt.image
 		''' if it is not.
 		''' </returns>
 		''' <seealso cref= SampleModel </seealso>
-		Public Overrides Function isCompatibleSampleModel(ByVal sm As SampleModel) As Boolean
+		Public Overrides Function isCompatibleSampleModel(  sm As SampleModel) As Boolean
 			If Not(TypeOf sm Is ComponentSampleModel) Then Return False
 
 			' Must have the same number of components
@@ -2586,7 +2586,7 @@ Namespace java.awt.image
 		''' </param>
 		''' <returns> A <CODE>WritableRaster</CODE> containing the image's alpha channel.
 		'''  </returns>
-		Public Overrides Function getAlphaRaster(ByVal raster_Renamed As WritableRaster) As WritableRaster
+		Public Overrides Function getAlphaRaster(  raster_Renamed As WritableRaster) As WritableRaster
 			If hasAlpha() = False Then Return Nothing
 
 			Dim x As Integer = raster_Renamed.minX
@@ -2602,7 +2602,7 @@ Namespace java.awt.image
 		''' <param name="obj"> The object to compare with this color model. </param>
 		''' <returns> <CODE>true</CODE> if the color model objects are equal,
 		''' <CODE>false</CODE> if they are not. </returns>
-		Public Overrides Function Equals(ByVal obj As Object) As Boolean
+		Public Overrides Function Equals(  obj As Object) As Boolean
 			If Not MyBase.Equals(obj) Then Return False
 
 			If obj.GetType() IsNot Me.GetType() Then Return False

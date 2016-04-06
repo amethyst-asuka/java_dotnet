@@ -57,7 +57,7 @@ Namespace java.lang.management
 		'''    <tt>stackDepth</tt> &ge; 0 but <tt>stackFrame</tt> is <tt>null</tt>,
 		'''    or <tt>stackDepth</tt> &lt; 0 but <tt>stackFrame</tt> is not
 		'''       <tt>null</tt>. </exception>
-		Public Sub New(ByVal className As String, ByVal identityHashCode As Integer, ByVal stackDepth As Integer, ByVal stackFrame As StackTraceElement)
+		Public Sub New(  className As String,   identityHashCode As Integer,   stackDepth As Integer,   stackFrame As StackTraceElement)
 			MyBase.New(className, identityHashCode)
 			If stackDepth >= 0 AndAlso stackFrame Is Nothing Then Throw New IllegalArgumentException("Parameter stackDepth is " & stackDepth & " but stackFrame is null")
 			If stackDepth < 0 AndAlso stackFrame IsNot Nothing Then Throw New IllegalArgumentException("Parameter stackDepth is " & stackDepth & " but stackFrame is not null")
@@ -126,7 +126,7 @@ Namespace java.lang.management
 		''' <returns> a <tt>MonitorInfo</tt> object represented
 		'''         by <tt>cd</tt> if <tt>cd</tt> is not <tt>null</tt>;
 		'''         <tt>null</tt> otherwise. </returns>
-		Public Shared Function [from](ByVal cd As javax.management.openmbean.CompositeData) As MonitorInfo
+		Public Shared Function [from](  cd As javax.management.openmbean.CompositeData) As MonitorInfo
 			If cd Is Nothing Then Return Nothing
 
 			If TypeOf cd Is sun.management.MonitorInfoCompositeData Then

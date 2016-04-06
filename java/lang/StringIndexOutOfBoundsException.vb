@@ -54,7 +54,7 @@ Namespace java.lang
 		''' the specified detail message.
 		''' </summary>
 		''' <param name="s">   the detail message. </param>
-		Public Sub New(ByVal s As String)
+		Public Sub New(  s As String)
 			MyBase.New(s)
 		End Sub
 
@@ -63,7 +63,7 @@ Namespace java.lang
 		''' class with an argument indicating the illegal index.
 		''' </summary>
 		''' <param name="index">   the illegal index. </param>
-		Public Sub New(ByVal index As Integer)
+		Public Sub New(  index As Integer)
 			MyBase.New("String index out of range: " & index)
 		End Sub
 	End Class

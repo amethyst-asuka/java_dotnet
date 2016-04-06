@@ -59,7 +59,7 @@ Namespace java.awt.dnd
 		''' </UL>
 		''' </summary>
 		''' <param name="dsde"> the <code>DragSourceDragEvent</code> </param>
-		Sub dragEnter(ByVal dsde As DragSourceDragEvent)
+		Sub dragEnter(  dsde As DragSourceDragEvent)
 
 		''' <summary>
 		''' Called as the cursor's hotspot moves over a platform-dependent drop site.
@@ -73,7 +73,7 @@ Namespace java.awt.dnd
 		''' </UL>
 		''' </summary>
 		''' <param name="dsde"> the <code>DragSourceDragEvent</code> </param>
-		Sub dragOver(ByVal dsde As DragSourceDragEvent)
+		Sub dragOver(  dsde As DragSourceDragEvent)
 
 		''' <summary>
 		''' Called when the user has modified the drop gesture.
@@ -83,7 +83,7 @@ Namespace java.awt.dnd
 		''' modifiers that the user is interacting with.
 		''' </summary>
 		''' <param name="dsde"> the <code>DragSourceDragEvent</code> </param>
-		Sub dropActionChanged(ByVal dsde As DragSourceDragEvent)
+		Sub dropActionChanged(  dsde As DragSourceDragEvent)
 
 		''' <summary>
 		''' Called as the cursor's hotspot exits a platform-dependent drop site.
@@ -104,7 +104,7 @@ Namespace java.awt.dnd
 		''' </UL>
 		''' </summary>
 		''' <param name="dse"> the <code>DragSourceEvent</code> </param>
-		Sub dragExit(ByVal dse As DragSourceEvent)
+		Sub dragExit(  dse As DragSourceEvent)
 
 		''' <summary>
 		''' This method is invoked to signify that the Drag and Drop
@@ -117,7 +117,7 @@ Namespace java.awt.dnd
 		''' associated resources become invalid.
 		''' </summary>
 		''' <param name="dsde"> the <code>DragSourceDropEvent</code> </param>
-		Sub dragDropEnd(ByVal dsde As DragSourceDropEvent)
+		Sub dragDropEnd(  dsde As DragSourceDropEvent)
 	End Interface
 
 End Namespace
