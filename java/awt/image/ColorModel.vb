@@ -2,6 +2,7 @@ Imports Microsoft.VisualBasic
 Imports System
 Imports System.Collections.Generic
 Imports System.Runtime.InteropServices
+Imports java.security
 
 '
 ' * Copyright (c) 1995, 2013, Oracle and/or its affiliates. All rights reserved.
@@ -26,7 +27,7 @@ Imports System.Runtime.InteropServices
 ' *
 ' *
 ' *
-' 
+'
 
 Namespace java.awt.image
 
@@ -175,13 +176,13 @@ Namespace java.awt.image
         ''' <summary>
         ''' This is copied from java.awt.Toolkit since we need the library
         ''' loaded in java.awt.image also:
-        ''' 
+        '''
         ''' WARNING: This is a temporary workaround for a problem in the
         ''' way the AWT loads native libraries. A number of classes in the
         ''' AWT package have a native method, initIDs(), which initializes
         ''' the JNI field and method ids used in the native portion of
         ''' their implementation.
-        ''' 
+        '''
         ''' Since the use and storage of these ids is done by the
         ''' implementation libraries, the implementation of these method is
         ''' provided by the particular AWT implementations (for example,
@@ -192,14 +193,14 @@ Namespace java.awt.image
         ''' would be to provide a separate library which defines java.awt.*
         ''' initIDs, and exports the relevant symbols out to the
         ''' implementation libraries.
-        ''' 
+        '''
         ''' For now, we know it's done by the implementation, and we assume
         ''' that the name of the library is "awt".  -br.
         ''' </summary>
         Private Shared loaded As Boolean = False
         Friend Shared Sub loadLibraries()
             If Not loaded Then
-                java.security.AccessController.doPrivileged(New PrivilegedActionAnonymousInnerClassHelper(Of T)
+                java.security.AccessController.doPrivileged(New PrivilegedActionAnonymousInnerClassHelper(Of T))
                 loaded = True
             End If
         End Sub
@@ -207,9 +208,8 @@ Namespace java.awt.image
         Private Class PrivilegedActionAnonymousInnerClassHelper(Of T)
             Implements PrivilegedAction(Of T)
 
-            Public Overridable Function run() As Void
-                'JAVA TO VB CONVERTER TODO TASK: The library is specified in the 'DllImport' attribute for .NET:
-                '				System.loadLibrary("awt")
+            Public Overridable Function run() As T
+                java.lang.System.loadLibrary("awt")
                 Return Nothing
             End Function
         End Class
@@ -218,11 +218,13 @@ Namespace java.awt.image
         Private Shared Sub initIDs()
         End Sub
         Shared Sub New()
-            ' ensure that the proper libraries are loaded 
+            ' ensure that the proper libraries are loaded
             loadLibraries()
             initIDs()
         End Sub
-        Private Shared RGBdefault As ColorModel
+
+
+        Private Shared _RGBdefault As ColorModel
 
         ''' <summary>
         ''' Returns a <code>DirectColorModel</code> that describes the default
@@ -241,8 +243,8 @@ Namespace java.awt.image
         '''          RGB values. </returns>
         Public Shared ReadOnly Property rGBdefault As ColorModel
             Get
-                If rGBdefault Is Nothing Then rGBdefault = New DirectColorModel(32, &HFF0000, &HFF00, &HFF, &HFF000000L) ' Alpha -  Blue -  Green -  Red
-                Return rGBdefault
+                If _RGBdefault Is Nothing Then _RGBdefault = New DirectColorModel(32, &HFF0000, &HFF00, &HFF, &HFF000000L) ' Alpha -  Blue -  Green -  Red
+                Return _RGBdefault
             End Get
         End Property
 
@@ -1541,16 +1543,16 @@ Namespace java.awt.image
         End Function
 
         FriendShared ReadOnly PropertylinearRGB8TosRGB8LUT As SByte()
-            Get
-                If l8Tos8 Is Nothing Then
+        Get
+        If l8Tos8 Is Nothing Then
                     l8Tos8 = New SByte(255) {}
                     Dim input, output As Single
-                    ' algorithm for linear RGB to nonlinear sRGB conversion
-                    ' is from the IEC 61966-2-1 International Standard,
-                    ' Colour Management - Default RGB colour space - sRGB,
-                    ' First Edition, 1999-10,
-                    ' avaiable for order at http://www.iec.ch
-                    For i As Integer = 0 To 255
+        ' algorithm for linear RGB to nonlinear sRGB conversion
+        ' is from the IEC 61966-2-1 International Standard,
+        ' Colour Management - Default RGB colour space - sRGB,
+        ' First Edition, 1999-10,
+        ' avaiable for order at http://www.iec.ch
+        For i As Integer = 0 To 255
                         input = (CSng(i)) / 255.0F
                         If input <= 0.0031308F Then
                             output = input * 12.92F
@@ -1559,9 +1561,9 @@ Namespace java.awt.image
                         End If
                         l8Tos8(i) = CByte(System.Math.Round(output * 255.0F))
                     Next i
-                End If
-                Return l8Tos8
-            End Get
+        End If
+        Return l8Tos8
+        End Get
         End Property
 
         Friend Shared Function getsRGB8ToLinearRGB8LUT() As SByte()
@@ -1583,12 +1585,12 @@ Namespace java.awt.image
         End Function
 
         FriendShared ReadOnly PropertylinearRGB16TosRGB8LUT As SByte()
-            Get
-                If l16Tos8 Is Nothing Then
+        Get
+        If l16Tos8 Is Nothing Then
                     l16Tos8 = New SByte(65535) {}
                     Dim input, output As Single
-                    ' algorithm from IEC 61966-2-1 International Standard
-                    For i As Integer = 0 To 65535
+        ' algorithm from IEC 61966-2-1 International Standard
+        For i As Integer = 0 To 65535
                         input = (CSng(i)) / 65535.0F
                         If input <= 0.0031308F Then
                             output = input * 12.92F
@@ -1597,9 +1599,9 @@ Namespace java.awt.image
                         End If
                         l16Tos8(i) = CByte(System.Math.Round(output * 255.0F))
                     Next i
-                End If
-                Return l16Tos8
-            End Get
+        End If
+        Return l16Tos8
+        End Get
         End Property
 
         Friend Shared Function getsRGB8ToLinearRGB16LUT() As Short()
@@ -1620,13 +1622,13 @@ Namespace java.awt.image
             Return s8Tol16
         End Function
 
-        '    
+        '
         '     * Return a byte LUT that converts 8-bit gray values in the grayCS
         '     * ColorSpace to the appropriate 8-bit sRGB value.  I.e., if lut
         '     * is the byte array returned by this method and sval = lut[gval],
         '     * then the sRGB triple (sval,sval,sval) is the best match to gval.
         '     * Cache references to any computed LUT in a Map.
-        '     
+        '
         Friend Shared Function getGray8TosRGB8LUT(ByVal grayCS As java.awt.Color.ICC_ColorSpace) As SByte()
             If isLinearGRAYspace(grayCS) Then Return linearRGB8TosRGB8LUT
             If g8Tos8Map IsNot Nothing Then
@@ -1661,11 +1663,11 @@ Namespace java.awt.image
             Return g8Tos8LUT
         End Function
 
-        '    
+        '
         '     * Return a byte LUT that converts 16-bit gray values in the CS_GRAY
         '     * linear gray ColorSpace to the appropriate 8-bit value in the
         '     * grayCS ColorSpace.  Cache references to any computed LUT in a Map.
-        '     
+        '
         Friend Shared Function getLinearGray16ToOtherGray8LUT(ByVal grayCS As java.awt.Color.ICC_ColorSpace) As SByte()
             If lg16Toog8Map IsNot Nothing Then
                 Dim lg16Toog8LUT As SByte() = lg16Toog8Map(grayCS)
@@ -1692,13 +1694,13 @@ Namespace java.awt.image
             Return lg16Toog8LUT
         End Function
 
-        '    
+        '
         '     * Return a byte LUT that converts 16-bit gray values in the grayCS
         '     * ColorSpace to the appropriate 8-bit sRGB value.  I.e., if lut
         '     * is the byte array returned by this method and sval = lut[gval],
         '     * then the sRGB triple (sval,sval,sval) is the best match to gval.
         '     * Cache references to any computed LUT in a Map.
-        '     
+        '
         Friend Shared Function getGray16TosRGB8LUT(ByVal grayCS As java.awt.Color.ICC_ColorSpace) As SByte()
             If isLinearGRAYspace(grayCS) Then Return linearRGB16TosRGB8LUT
             If g16Tos8Map IsNot Nothing Then
@@ -1736,11 +1738,11 @@ Namespace java.awt.image
             Return g16Tos8LUT
         End Function
 
-        '    
+        '
         '     * Return a short LUT that converts 16-bit gray values in the CS_GRAY
         '     * linear gray ColorSpace to the appropriate 16-bit value in the
         '     * grayCS ColorSpace.  Cache references to any computed LUT in a Map.
-        '     
+        '
         Friend Shared Function getLinearGray16ToOtherGray16LUT(ByVal grayCS As java.awt.Color.ICC_ColorSpace) As Short()
             If lg16Toog16Map IsNot Nothing Then
                 Dim lg16Toog16LUT As Short() = lg16Toog16Map(grayCS)

@@ -26,7 +26,7 @@ Imports color
 ' *
 ' *
 ' *
-' 
+'
 
 Namespace java.awt
 
@@ -63,145 +63,145 @@ Namespace java.awt
         ''' <summary>
         ''' The color white.  In the default sRGB space.
         ''' </summary>
-        Public Shared ReadOnly white As New color(255, 255, 255)
+        Public Shared ReadOnly white As New Color(255, 255, 255)
 
         ''' <summary>
         ''' The color white.  In the default sRGB space.
         ''' @since 1.4
         ''' </summary>
-        Public Shared ReadOnly WHITE As color = white
+        Public Shared ReadOnly WHITE As Color = white
 
         ''' <summary>
         ''' The color light gray.  In the default sRGB space.
         ''' </summary>
-        Public Shared ReadOnly lightGray As New color(192, 192, 192)
+        Public Shared ReadOnly lightGray As New Color(192, 192, 192)
 
         ''' <summary>
         ''' The color light gray.  In the default sRGB space.
         ''' @since 1.4
         ''' </summary>
-        Public Shared ReadOnly LIGHT_GRAY As color = lightGray
+        Public Shared ReadOnly LIGHT_GRAY As Color = lightGray
 
         ''' <summary>
         ''' The color gray.  In the default sRGB space.
         ''' </summary>
-        Public Shared ReadOnly gray As New color(128, 128, 128)
+        Public Shared ReadOnly gray As New Color(128, 128, 128)
 
         ''' <summary>
         ''' The color gray.  In the default sRGB space.
         ''' @since 1.4
         ''' </summary>
-        Public Shared ReadOnly GRAY As color = gray
+        Public Shared ReadOnly GRAY As Color = gray
 
         ''' <summary>
         ''' The color dark gray.  In the default sRGB space.
         ''' </summary>
-        Public Shared ReadOnly darkGray As New color(64, 64, 64)
+        Public Shared ReadOnly darkGray As New Color(64, 64, 64)
 
         ''' <summary>
         ''' The color dark gray.  In the default sRGB space.
         ''' @since 1.4
         ''' </summary>
-        Public Shared ReadOnly DARK_GRAY As color = darkGray
+        Public Shared ReadOnly DARK_GRAY As Color = darkGray
 
         ''' <summary>
         ''' The color black.  In the default sRGB space.
         ''' </summary>
-        Public Shared ReadOnly black As New color(0, 0, 0)
+        Public Shared ReadOnly black As New Color(0, 0, 0)
 
         ''' <summary>
         ''' The color black.  In the default sRGB space.
         ''' @since 1.4
         ''' </summary>
-        Public Shared ReadOnly BLACK As color = black
+        Public Shared ReadOnly BLACK As Color = black
 
         ''' <summary>
         ''' The color red.  In the default sRGB space.
         ''' </summary>
-        Public Shared ReadOnly red As New color(255, 0, 0)
+        Public Shared ReadOnly red As New Color(255, 0, 0)
 
         ''' <summary>
         ''' The color red.  In the default sRGB space.
         ''' @since 1.4
         ''' </summary>
-        Public Shared ReadOnly RED As color = red
+        Public Shared ReadOnly RED As Color = red
 
         ''' <summary>
         ''' The color pink.  In the default sRGB space.
         ''' </summary>
-        Public Shared ReadOnly pink As New color(255, 175, 175)
+        Public Shared ReadOnly pink As New Color(255, 175, 175)
 
         ''' <summary>
         ''' The color pink.  In the default sRGB space.
         ''' @since 1.4
         ''' </summary>
-        Public Shared ReadOnly PINK As color = pink
+        Public Shared ReadOnly PINK As Color = pink
 
         ''' <summary>
         ''' The color orange.  In the default sRGB space.
         ''' </summary>
-        Public Shared ReadOnly orange As New color(255, 200, 0)
+        Public Shared ReadOnly orange As New Color(255, 200, 0)
 
         ''' <summary>
         ''' The color orange.  In the default sRGB space.
         ''' @since 1.4
         ''' </summary>
-        Public Shared ReadOnly ORANGE As color = orange
+        Public Shared ReadOnly ORANGE As Color = orange
 
         ''' <summary>
         ''' The color yellow.  In the default sRGB space.
         ''' </summary>
-        Public Shared ReadOnly yellow As New color(255, 255, 0)
+        Public Shared ReadOnly yellow As New Color(255, 255, 0)
 
         ''' <summary>
         ''' The color yellow.  In the default sRGB space.
         ''' @since 1.4
         ''' </summary>
-        Public Shared ReadOnly YELLOW As color = yellow
+        Public Shared ReadOnly YELLOW As Color = yellow
 
         ''' <summary>
         ''' The color green.  In the default sRGB space.
         ''' </summary>
-        Public Shared ReadOnly green As New color(0, 255, 0)
+        Public Shared ReadOnly green As New Color(0, 255, 0)
 
         ''' <summary>
         ''' The color green.  In the default sRGB space.
         ''' @since 1.4
         ''' </summary>
-        Public Shared ReadOnly GREEN As color = green
+        Public Shared ReadOnly GREEN As Color = green
 
         ''' <summary>
         ''' The color magenta.  In the default sRGB space.
         ''' </summary>
-        Public Shared ReadOnly magenta As New color(255, 0, 255)
+        Public Shared ReadOnly magenta As New Color(255, 0, 255)
 
         ''' <summary>
         ''' The color magenta.  In the default sRGB space.
         ''' @since 1.4
         ''' </summary>
-        Public Shared ReadOnly MAGENTA As color = magenta
+        Public Shared ReadOnly MAGENTA As Color = magenta
 
         ''' <summary>
         ''' The color cyan.  In the default sRGB space.
         ''' </summary>
-        Public Shared ReadOnly cyan As New color(0, 255, 255)
+        Public Shared ReadOnly cyan As New Color(0, 255, 255)
 
         ''' <summary>
         ''' The color cyan.  In the default sRGB space.
         ''' @since 1.4
         ''' </summary>
-        Public Shared ReadOnly CYAN As color = cyan
+        Public Shared ReadOnly CYAN As Color = cyan
 
         ''' <summary>
         ''' The color blue.  In the default sRGB space.
         ''' </summary>
-        Public Shared ReadOnly blue As New color(0, 0, 255)
+        Public Shared ReadOnly blue As New Color(0, 0, 255)
 
         ''' <summary>
         ''' The color blue.  In the default sRGB space.
         ''' @since 1.4
         ''' </summary>
-        Public Shared ReadOnly BLUE As color = blue
+        Public Shared ReadOnly BLUE As Color = blue
 
         ''' <summary>
         ''' The color value.
@@ -247,11 +247,11 @@ Namespace java.awt
         ''' <seealso cref= #getColor </seealso>
         ''' <seealso cref= #getColorSpace </seealso>
         ''' <seealso cref= #getColorComponents </seealso>
-        Private cs As java.awt.color.ColorSpace = Nothing
+        Private cs As java.awt.Color.colorSpace = Nothing
 
-        '    
+        '
         '     * JDK 1.1 serialVersionUID
-        '     
+        '
         Private Const serialVersionUID As Long = 118526816881161077L
 
         ''' <summary>
@@ -269,10 +269,10 @@ Namespace java.awt
             ''' ** initialized. DON'T DO IT!!!
             ''' **
             ''' ** Toolkit.getDefaultToolkit();
-            ''' 
+            '''
             ''' </summary>
 
-            ' ensure that the necessary native libraries are loaded 
+            ' ensure that the necessary native libraries are loaded
             Toolkit.loadLibraries()
             If Not GraphicsEnvironment.headless Then initIDs()
         End Sub
@@ -528,7 +528,7 @@ Namespace java.awt
         ''' <returns> the red component. </returns>
         ''' <seealso cref= #getRGB </seealso>
         Public Function red() As Integer
-            Return (rGB >> 16) And &HFF
+            Return (rGB() >> 16) And &HFF
         End Function
 
         ''' <summary>
@@ -537,7 +537,7 @@ Namespace java.awt
         ''' <returns> the green component. </returns>
         ''' <seealso cref= #getRGB </seealso>
         Public Function green() As Integer
-            Return (rGB >> 8) And &HFF
+            Return (rGB() >> 8) And &HFF
         End Function
 
         ''' <summary>
@@ -546,7 +546,7 @@ Namespace java.awt
         ''' <returns> the blue component. </returns>
         ''' <seealso cref= #getRGB </seealso>
         Public Function blue() As Integer
-            Return (rGB >> 0) And &HFF
+            Return (rGB() >> 0) And &HFF
         End Function
 
         ''' <summary>
@@ -554,7 +554,7 @@ Namespace java.awt
         ''' <returns> the alpha component. </returns>
         ''' <seealso cref= #getRGB </seealso>
         Public Function alpha() As Integer
-            Return (rGB >> 24) And &HFF
+            Return (rGB() >> 24) And &HFF
         End Function
 
         ''' <summary>
@@ -592,24 +592,24 @@ Namespace java.awt
         '''                 with the same {@code alpha} value. </returns>
         ''' <seealso cref=        java.awt.Color#darker
         ''' @since      JDK1.0 </seealso>
-        Public Function brighter() As color
+        Public Function brighter() As Color
             Dim r As Integer = red
             Dim g As Integer = green
             Dim b As Integer = blue
-            Dim alpha_Renamed As Integer = alpha
+            Dim alpha_Renamed As Integer = alpha()
 
             '         From 2D group:
             '         * 1. black.brighter() should return grey
             '         * 2. applying brighter to blue will always return blue, brighter
             '         * 3. non pure color (non zero rgb) will eventually return white
-            '         
+            '
             Dim i As Integer = CInt(Fix(1.0 / (1.0 - FACTOR)))
             If r = 0 AndAlso g = 0 AndAlso b = 0 Then Return New Color(i, i, i, alpha_Renamed)
             If r > 0 AndAlso r < i Then r = i
             If g > 0 AndAlso g < i Then g = i
             If b > 0 AndAlso b < i Then b = i
 
-            Return New color(System.Math.Min(CInt(Fix(r / FACTOR)), 255), System.Math.Min(CInt(Fix(g / FACTOR)), 255), System.Math.Min(CInt(Fix(b / FACTOR)), 255), alpha_Renamed)
+            Return New Color(System.Math.Min(CInt(Fix(r / FACTOR)), 255), System.Math.Min(CInt(Fix(g / FACTOR)), 255), System.Math.Min(CInt(Fix(b / FACTOR)), 255), alpha_Renamed)
         End Function
 
         ''' <summary>
@@ -629,8 +629,8 @@ Namespace java.awt
         '''                    with the same {@code alpha} value. </returns>
         ''' <seealso cref=        java.awt.Color#brighter
         ''' @since      JDK1.0 </seealso>
-        Public Function darker() As color
-            Return New color(System.Math.Max(CInt(Fix(red * FACTOR)), 0), System.Math.Max(CInt(Fix(green * FACTOR)), 0), System.Math.Max(CInt(Fix(blue * FACTOR)), 0), alpha)
+        Public Function darker() As Color
+            Return New Color(System.Math.Max(CInt(Fix(red * FACTOR)), 0), System.Math.Max(CInt(Fix(green * FACTOR)), 0), System.Math.Max(CInt(Fix(blue * FACTOR)), 0), alpha)
         End Function
 
         ''' <summary>
@@ -654,7 +654,7 @@ Namespace java.awt
         '''                             <code>false</code> otherwise.
         ''' @since   JDK1.0 </returns>
         Public Overrides Function Equals(obj As Object) As Boolean
-            Return TypeOf obj Is color AndAlso CType(obj, color).rGB = Me.rGB
+            Return TypeOf obj Is Color AndAlso CType(obj, Color).rGB = Me.rGB
         End Function
 
         ''' <summary>
@@ -666,7 +666,7 @@ Namespace java.awt
         ''' </summary>
         ''' <returns>  a string representation of this <code>Color</code>. </returns>
         Public Overrides Function ToString() As String
-            Return Me.GetType().name & "[r=" & red & ",g=" & green & ",b=" & blue & "]"
+            Return Me.GetType().Name & "[r=" & red & ",g=" & green & ",b=" & blue & "]"
         End Function
 
         ''' <summary>
@@ -681,10 +681,10 @@ Namespace java.awt
         '''                      be interpreted as a decimal,
         '''                      octal, or hexadecimal  java.lang.[Integer].
         ''' @since      JDK1.1 </exception>
-        Public Shared Function decode(nm As String) As color 'throws NumberFormatException
+        Public Shared Function decode(nm As String) As Color 'throws NumberFormatException
             Dim intval As Integer? = java.lang.[Integer].decode(nm)
             Dim i As Integer = intval
-            Return New color((i >> 16) And &HFF, (i >> 8) And &HFF, i And &HFF)
+            Return New Color((i >> 16) And &HFF, (i >> 8) And &HFF, i And &HFF)
         End Function
 
         ''' <summary>
@@ -704,7 +704,7 @@ Namespace java.awt
         ''' <seealso cref=      java.lang.Integer#getInteger(java.lang.String) </seealso>
         ''' <seealso cref=      java.awt.Color#Color(int)
         ''' @since    JDK1.0 </seealso>
-        Public Shared Function getColor(nm As String) As color
+        Public Shared Function getColor(nm As String) As Color
             Return getColor(nm, Nothing)
         End Function
 
@@ -727,11 +727,11 @@ Namespace java.awt
         ''' <seealso cref=      java.lang.Integer#getInteger(java.lang.String) </seealso>
         ''' <seealso cref=      java.awt.Color#Color(int)
         ''' @since    JDK1.0 </seealso>
-        Public Shared Function getColor(nm As String, y As color) As color
+        Public Shared Function getColor(nm As String, y As Color) As Color
             Dim intval As Integer? = java.lang.[Integer].getInteger(nm)
             If intval Is Nothing Then Return v
             Dim i As Integer = intval
-            Return New color((i >> 16) And &HFF, (i >> 8) And &HFF, i And &HFF)
+            Return New Color((i >> 16) And &HFF, (i >> 8) And &HFF, i And &HFF)
         End Function
 
         ''' <summary>
@@ -754,10 +754,10 @@ Namespace java.awt
         ''' <seealso cref=      java.lang.Integer#getInteger(java.lang.String) </seealso>
         ''' <seealso cref=      java.awt.Color#Color(int)
         ''' @since    JDK1.0 </seealso>
-        Public Shared Function getColor(nm As String, y As Integer) As color
+        Public Shared Function getColor(nm As String, y As Integer) As Color
             Dim intval As Integer? = java.lang.[Integer].getInteger(nm)
             Dim i As Integer = If(intval IsNot Nothing, intval, v)
-            Return New color((i >> 16) And &HFF, (i >> 8) And &HFF, (i >> 0) And &HFF)
+            Return New Color((i >> 16) And &HFF, (i >> 8) And &HFF, (i >> 0) And &HFF)
         End Function
         ''' <summary>
         ''' Converts the components of a color, as specified by the HSB
@@ -784,7 +784,7 @@ Namespace java.awt
         ''' <seealso cref=       java.awt.Color#getRGB() </seealso>
         ''' <seealso cref=       java.awt.Color#Color(int) </seealso>
         ''' <seealso cref=       java.awt.image.ColorModel#getRGBdefault()
-        ''' @since     JDK1.0 </seealso> 
+        ''' @since     JDK1.0 </seealso>
         Public Shared Function HSBtoRGB(hue As Single, saturation As Single, brightness As Single) As Integer
             Dim r As Integer = 0, g As Integer = 0, b As Integer = 0
             If saturation = 0 Then
@@ -913,7 +913,7 @@ Namespace java.awt
         ''' <param name="compArray"> an array that this method fills with
         '''                  color and alpha components and returns </param>
         ''' <returns> the RGBA components in a <code>float</code> array. </returns>
-        Public Function getRGBComponents(Single() compArray) As Single()
+        Public Function getRGBComponents(compArray As Single()) As Single()
             Dim f As Single()
             If compArray Is Nothing Then
                 f = New Single(3) {}
@@ -924,7 +924,7 @@ Namespace java.awt
                 f(0) = (CSng(red)) / 255.0F
                 f(1) = (CSng(green)) / 255.0F
                 f(2) = (CSng(blue)) / 255.0F
-                f(3) = (CSng(alpha)) / 255.0F
+                f(3) = (CSng(alpha())) / 255.0F
             Else
                 f(0) = frgbvalue(0)
                 f(1) = frgbvalue(1)
@@ -943,24 +943,24 @@ Namespace java.awt
         ''' <param name="compArray"> an array that this method fills with color
         '''          components and returns </param>
         ''' <returns> the RGB components in a <code>float</code> array. </returns>
-        Public Single() getRGBColorComponents(Single() compArray)
-			Dim f As Single()
-        If compArray Is Nothing Then
-				f = New Single(2){}
-			Else
-				f = compArray
-			End If
-        If frgbvalue Is Nothing Then
-				f(0) = (CSng(red))/255f
-				f(1) = (CSng(green))/255f
-				f(2) = (CSng(blue))/255f
-			Else
-				f(0) = frgbvalue(0)
-				f(1) = frgbvalue(1)
-				f(2) = frgbvalue(2)
-			End If
-        Return f
-
+        Public Function getRGBColorComponents(compArray As Single()) As Single()
+            Dim f As Single()
+            If compArray Is Nothing Then
+                f = New Single(2) {}
+            Else
+                f = compArray
+            End If
+            If frgbvalue Is Nothing Then
+                f(0) = (CSng(red)) / 255.0F
+                f(1) = (CSng(green)) / 255.0F
+                f(2) = (CSng(blue)) / 255.0F
+            Else
+                f(0) = frgbvalue(0)
+                f(1) = frgbvalue(1)
+                f(2) = frgbvalue(2)
+            End If
+            Return f
+        End Function
         ''' <summary>
         ''' Returns a <code>float</code> array containing the color and alpha
         ''' components of the <code>Color</code>, in the
@@ -976,20 +976,21 @@ Namespace java.awt
         '''          <code>ColorSpace</code> and returns </param>
         ''' <returns> the color and alpha components in a <code>float</code>
         '''          array. </returns>
-        Public Single() getComponents(Single() compArray)
-			If fvalue Is Nothing Then Return getRGBComponents(compArray)
-			Dim f As Single()
-        Dim n As Integer = fvalue.Length
-        If compArray Is Nothing Then
-				f = New Single(n){}
-			Else
-				f = compArray
-			End If
-        For i As Integer = 0 To n - 1
-				f(i) = fvalue(i)
-			Next i
-			f(n) = falpha
-			Return f
+        Public Function getComponents(compArray As Single()) As Single()
+            If fvalue Is Nothing Then Return getRGBComponents(compArray)
+            Dim f As Single()
+            Dim n As Integer = fvalue.Length
+            If compArray Is Nothing Then
+                f = New Single(n) {}
+            Else
+                f = compArray
+            End If
+            For i As Integer = 0 To n - 1
+                f(i) = fvalue(i)
+            Next i
+            f(n) = falpha
+            Return f
+        End Function
 
         ''' <summary>
         ''' Returns a <code>float</code> array containing only the color
@@ -1005,19 +1006,20 @@ Namespace java.awt
         '''          components of this <code>Color</code> in its
         '''          <code>ColorSpace</code> and returns </param>
         ''' <returns> the color components in a <code>float</code> array. </returns>
-        Public Single() getColorComponents(Single() compArray)
-			If fvalue Is Nothing Then Return getRGBColorComponents(compArray)
-			Dim f As Single()
-        Dim n As Integer = fvalue.Length
-        If compArray Is Nothing Then
-				f = New Single(n - 1){}
-			Else
-				f = compArray
-			End If
-        For i As Integer = 0 To n - 1
-				f(i) = fvalue(i)
-			Next i
-        Return f
+        Public Function getColorComponents(compArray As Single()) As Single()
+            If fvalue Is Nothing Then Return getRGBColorComponents(compArray)
+            Dim f As Single()
+            Dim n As Integer = fvalue.Length
+            If compArray Is Nothing Then
+                f = New Single(n - 1) {}
+            Else
+                f = compArray
+            End If
+            For i As Integer = 0 To n - 1
+                f(i) = fvalue(i)
+            Next i
+            Return f
+        End Function
 
         ''' <summary>
         ''' Returns a <code>float</code> array containing the color and alpha
@@ -1034,29 +1036,30 @@ Namespace java.awt
         '''          the specified <code>ColorSpace</code> and returns </param>
         ''' <returns> the color and alpha components in a <code>float</code>
         '''          array. </returns>
-        Public Single() getComponents(java.awt.color.ColorSpace cspace, Single() compArray)
-			If cs Is Nothing Then cs = java.awt.color.ColorSpace.getInstance(java.awt.color.ColorSpace.CS_sRGB)
-			Dim f As Single()
-        If fvalue Is Nothing Then
-				f = New Single(2){}
-				f(0) = (CSng(red))/255f
-				f(1) = (CSng(green))/255f
-				f(2) = (CSng(blue))/255f
-			Else
-				f = fvalue
-			End If
-        Dim tmp As Single() = cs.toCIEXYZ(f)
-        Dim tmpout As Single() = cspace.fromCIEXYZ(tmp)
-        If compArray Is Nothing Then compArray = New Single(tmpout.Length){}
-			For i As Integer = 0 To tmpout.Length - 1
-				compArray(i) = tmpout(i)
-			Next i
-        If fvalue Is Nothing Then
-				compArray(tmpout.Length) = (CSng(alpha))/255f
-			Else
-				compArray(tmpout.Length) = falpha
-			End If
-        Return compArray
+        Public Function getComponents(cspace As java.awt.Color.colorSpace, compArray As Single()) As Single()
+            If cs Is Nothing Then cs = java.awt.Color.colorSpace.getInstance(java.awt.Color.colorSpace.CS_sRGB)
+            Dim f As Single()
+            If fvalue Is Nothing Then
+                f = New Single(2) {}
+                f(0) = (CSng(red)) / 255.0F
+                f(1) = (CSng(green)) / 255.0F
+                f(2) = (CSng(blue)) / 255.0F
+            Else
+                f = fvalue
+            End If
+            Dim tmp As Single() = cs.toCIEXYZ(f)
+            Dim tmpout As Single() = cspace.fromCIEXYZ(tmp)
+            If compArray Is Nothing Then compArray = New Single(tmpout.Length) {}
+            For i As Integer = 0 To tmpout.Length - 1
+                compArray(i) = tmpout(i)
+            Next i
+            If fvalue Is Nothing Then
+                compArray(tmpout.Length) = (CSng(alpha())) / 255.0F
+            Else
+                compArray(tmpout.Length) = falpha
+            End If
+            Return compArray
+        End Function
 
         ''' <summary>
         ''' Returns a <code>float</code> array containing only the color
@@ -1072,8 +1075,8 @@ Namespace java.awt
         '''          components of this <code>Color</code> in the specified
         '''          <code>ColorSpace</code> </param>
         ''' <returns> the color components in a <code>float</code> array. </returns>
-        Public Function getColorComponents(java.awt.color.ColorSpace cspace, Single() compArray) As Single()
-            If cs Is Nothing Then cs = java.awt.color.ColorSpace.getInstance(java.awt.color.ColorSpace.CS_sRGB)
+        Public Function getColorComponents(cspace As java.awt.Color.colorSpace, compArray As Single()) As Single()
+            If cs Is Nothing Then cs = java.awt.Color.colorSpace.getInstance(java.awt.Color.colorSpace.CS_sRGB)
             Dim f As Single()
             If fvalue Is Nothing Then
                 f = New Single(2) {}
@@ -1125,8 +1128,8 @@ Namespace java.awt
         ''' <seealso cref= Rectangle2D </seealso>
         ''' <seealso cref= AffineTransform </seealso>
         ''' <seealso cref= RenderingHints </seealso>
-        Public Function createContext(java.awt.image.ColorModel cm, Rectangle r, java.awt.geom.Rectangle2D r2d, java.awt.geom.AffineTransform xform, RenderingHints hints) As PaintContext
-            Return New ColorPaintContext(RGB, cm)
+        Public Function createContext(cm As java.awt.image.ColorModel, r As Rectangle, r2d As java.awt.geom.Rectangle2D, xform As java.awt.geom.AffineTransform, hints As RenderingHints) As PaintContext
+            Return New ColorPaintContext(rGB, cm)
         End Function
 
         ''' <summary>
