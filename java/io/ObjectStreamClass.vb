@@ -29,7 +29,7 @@ Imports java.lang.reflect
 ' *
 ' *
 ' *
-' 
+'
 
 Namespace java.io
 
@@ -38,11 +38,11 @@ Namespace java.io
     ''' Serialization's descriptor for classes.  It contains the name and
     ''' serialVersionUID of the class.  The ObjectStreamClass for a specific class
     ''' loaded in this Java VM can be found/created using the lookup method.
-    ''' 
+    '''
     ''' <p>The algorithm to compute the SerialVersionUID is described in
     ''' <a href="../../../platform/serialization/spec/class.html#4100">Object
     ''' Serialization Specification, Section 4.6, Stream Unique Identifiers</a>.
-    ''' 
+    '''
     ''' @author      Mike Warres
     ''' @author      Roger Riggs </summary>
     ''' <seealso cref= ObjectStreamField </seealso>
@@ -125,7 +125,7 @@ Namespace java.io
             Private ReadOnly className As String
             Private ReadOnly message As String
 
-            Friend Sub New(  cn As String,   msg As String)
+            Friend Sub New(cn As String, msg As String)
                 className = cn
                 message = msg
             End Sub
@@ -143,9 +143,9 @@ Namespace java.io
         ''' <summary>
         ''' exception (if any) thrown while attempting to resolve class </summary>
         Private resolveEx As ClassNotFoundException
-		''' <summary>
-		''' exception (if any) to throw if non-enum deserialization attempted </summary>
-		Private deserializeEx As ExceptionInfo
+        ''' <summary>
+        ''' exception (if any) to throw if non-enum deserialization attempted </summary>
+        Private deserializeEx As ExceptionInfo
         ''' <summary>
         ''' exception (if any) to throw if non-enum serialization attempted </summary>
         Private serializeEx As ExceptionInfo
@@ -220,7 +220,7 @@ Namespace java.io
         ''' </summary>
         ''' <param name="cl"> class for which to get the descriptor </param>
         ''' <returns>  the class descriptor for the specified class </returns>
-        Public Shared Function lookup(  cl As [Class]) As ObjectStreamClass
+        Public Shared Function lookup(cl As [Class]) As ObjectStreamClass
             Return lookup(cl, False)
         End Function
 
@@ -231,7 +231,7 @@ Namespace java.io
         ''' <param name="cl"> class for which to get the descriptor </param>
         ''' <returns>       the class descriptor for the specified class
         ''' @since 1.6 </returns>
-        Public Shared Function lookupAny(  cl As [Class]) As ObjectStreamClass
+        Public Shared Function lookupAny(cl As [Class]) As ObjectStreamClass
             Return lookup(cl, True)
         End Function
 
@@ -308,7 +308,7 @@ Namespace java.io
         ''' <param name="name"> the name of the data field to look for </param>
         ''' <returns>  The ObjectStreamField object of the named field or null if
         '''          there is no such named field. </returns>
-        Public Overridable Function getField(  name As String) As ObjectStreamField
+        Public Overridable Function getField(name As String) As ObjectStreamField
             Return getField(name, Nothing)
         End Function
 
@@ -326,7 +326,7 @@ Namespace java.io
         ''' <param name="cl"> class to look up </param>
         ''' <param name="all"> if true, return descriptors for all classes; if false, only
         '''          return descriptors for serializable classes </param>
-        Shared Function lookup(  cl As [Class],   all As Boolean) As ObjectStreamClass
+        Shared Function lookup(cl As [Class], all As Boolean) As ObjectStreamClass
             If Not (all OrElse cl.IsSubclassOf(GetType(Serializable))) Then Return Nothing
             processQueue(Caches.localDescsQueue, Caches.localDescs)
             Dim key As New WeakClassKey(cl, Caches.localDescsQueue)
@@ -351,12 +351,12 @@ Namespace java.io
                 If TypeOf entry Is EntryFuture Then
                     future = CType(entry, EntryFuture)
                     If future.owner Is Thread.CurrentThread Then
-                        '                
+                        '
                         '                 * Handle nested call situation described by 4803747: waiting
                         '                 * for future value to be set by a lookup() call further up the
                         '                 * stack will result in deadlock, so calculate and set the
                         '                 * future value here instead.
-                        '                 
+                        '
                         entry = Nothing
                     Else
                         entry = future.get()
@@ -409,7 +409,7 @@ Namespace java.io
             ''' or notification occurs, and false is returned.
             ''' </summary>
             <MethodImpl(MethodImplOptions.Synchronized)>
-            Friend Overridable Function [set](  entry As Object) As Boolean
+            Friend Overridable Function [set](entry As Object) As Boolean
                 If Me.entry IsNot unset Then Return False
                 Me.entry = entry
                 notifyAll()
@@ -459,7 +459,7 @@ Namespace java.io
         ''' <summary>
         ''' Creates local class descriptor representing given class.
         ''' </summary>
-        Private Sub New(  cl As [Class])
+        Private Sub New(cl As [Class])
             Me.cl = cl
             name = cl.name
             isProxy_Renamed = proxy.isProxyClass(cl)
@@ -517,7 +517,7 @@ Namespace java.io
                     outerInstance.fields = getSerialFields(outerInstance.cl)
                     outerInstance.computeFieldOffsets()
                 Catch e As InvalidClassException
-                    outerInstance.deserializeEx = New ExceptionInfo(e.classname, e.Message)
+                    outerInstance.deserializeEx = New ExceptionInfo(e.classname, e.message)
                     outerInstance.serializeEx = outerInstance.deserializeEx
                     outerInstance.fields = NO_FIELDS
                 End Try
@@ -547,7 +547,7 @@ Namespace java.io
         ''' <summary>
         ''' Initializes class descriptor representing a proxy class.
         ''' </summary>
-        Friend Overridable Sub initProxy(  cl As [Class],   resolveEx As ClassNotFoundException,   superDesc As ObjectStreamClass)
+        Friend Overridable Sub initProxy(cl As [Class], resolveEx As ClassNotFoundException, superDesc As ObjectStreamClass)
             Dim osc As ObjectStreamClass = Nothing
             If cl IsNot Nothing Then
                 osc = lookup(cl, True)
@@ -576,7 +576,7 @@ Namespace java.io
         ''' <summary>
         ''' Initializes class descriptor representing a non-proxy class.
         ''' </summary>
-        Friend Overridable Sub initNonProxy(  model As ObjectStreamClass,   cl As [Class],   resolveEx As ClassNotFoundException,   superDesc As ObjectStreamClass)
+        Friend Overridable Sub initNonProxy(model As ObjectStreamClass, cl As [Class], resolveEx As ClassNotFoundException, superDesc As ObjectStreamClass)
             Dim suid As Long = Convert.ToInt64(model.serialVersionUID)
             Dim osc As ObjectStreamClass = Nothing
             If cl IsNot Nothing Then
@@ -633,7 +633,7 @@ Namespace java.io
         ''' used as input to the ObjectInputStream.resolveClass() and
         ''' ObjectStreamClass.initNonProxy() methods.
         ''' </summary>
-        Friend Overridable Sub readNonProxy(  [in] As ObjectInputStream)
+        Friend Overridable Sub readNonProxy([in] As ObjectInputStream)
             name = [in].readUTF()
             suid = Convert.ToInt64([in].readLong())
             isProxy_Renamed = False
@@ -667,7 +667,7 @@ Namespace java.io
         ''' <summary>
         ''' Writes non-proxy class descriptor information to given output stream.
         ''' </summary>
-        Friend Overridable Sub writeNonProxy(  out As ObjectOutputStream)
+        Friend Overridable Sub writeNonProxy(out As ObjectOutputStream)
             out.writeUTF(name)
             out.writeLong(serialVersionUID)
 
@@ -697,7 +697,7 @@ Namespace java.io
         ''' resolve local class corresponding to this class descriptor.
         ''' </summary>
         Friend Overridable Property resolveException As ClassNotFoundException
-			Get
+            Get
                 Return resolveEx
             End Get
         End Property
@@ -772,7 +772,7 @@ Namespace java.io
         ''' descriptor's field array is returned, otherwise the array itself is
         ''' returned.
         ''' </summary>
-        Friend Overridable Function getFields(  copy As Boolean) As ObjectStreamField()
+        Friend Overridable Function getFields(copy As Boolean) As ObjectStreamField()
             Return If(copy, fields.Clone(), fields)
         End Function
 
@@ -782,7 +782,7 @@ Namespace java.io
         ''' non-primitive types, and any other non-null type matches assignable
         ''' types only.  Returns matching field, or null if no match found.
         ''' </summary>
-        Friend Overridable Function getField(  name As String,   type As [Class]) As ObjectStreamField
+        Friend Overridable Function getField(name As String, type As [Class]) As ObjectStreamField
             For i As Integer = 0 To fields.Length - 1
                 Dim f As ObjectStreamField = fields(i)
                 If f.name.Equals(name) Then
@@ -948,7 +948,7 @@ Namespace java.io
         ''' associated with a [Class], or if the class is externalizable,
         ''' non-serializable or does not define writeObject.
         ''' </summary>
-        Friend Overridable Sub invokeWriteObject(  obj As Object,   out As ObjectOutputStream)
+        Friend Overridable Sub invokeWriteObject(obj As Object, out As ObjectOutputStream)
             requireInitialized()
             If writeObjectMethod IsNot Nothing Then
                 Try
@@ -975,7 +975,7 @@ Namespace java.io
         ''' associated with a [Class], or if the class is externalizable,
         ''' non-serializable or does not define readObject.
         ''' </summary>
-        Friend Overridable Sub invokeReadObject(  obj As Object,   [in] As ObjectInputStream)
+        Friend Overridable Sub invokeReadObject(obj As Object, [in] As ObjectInputStream)
             requireInitialized()
             If readObjectMethod IsNot Nothing Then
                 Try
@@ -1004,7 +1004,7 @@ Namespace java.io
         ''' not associated with a [Class], or if the class is externalizable,
         ''' non-serializable or does not define readObjectNoData.
         ''' </summary>
-        Friend Overridable Sub invokeReadObjectNoData(  obj As Object)
+        Friend Overridable Sub invokeReadObjectNoData(obj As Object)
             requireInitialized()
             If readObjectNoDataMethod IsNot Nothing Then
                 Try
@@ -1031,7 +1031,7 @@ Namespace java.io
         ''' descriptor is not associated with a [Class], or if the class is
         ''' non-serializable or does not define writeReplace.
         ''' </summary>
-        Friend Overridable Function invokeWriteReplace(  obj As Object) As Object
+        Friend Overridable Function invokeWriteReplace(obj As Object) As Object
             requireInitialized()
             If writeReplaceMethod IsNot Nothing Then
                 Try
@@ -1059,7 +1059,7 @@ Namespace java.io
         ''' descriptor is not associated with a [Class], or if the class is
         ''' non-serializable or does not define readResolve.
         ''' </summary>
-        Friend Overridable Function invokeReadResolve(  obj As Object) As Object
+        Friend Overridable Function invokeReadResolve(obj As Object) As Object
             requireInitialized()
             If readResolveMethod IsNot Nothing Then
                 Try
@@ -1096,7 +1096,7 @@ Namespace java.io
             ''' true if serialized form includes data for this slot's descriptor </summary>
             Friend ReadOnly hasData As Boolean
 
-            Friend Sub New(  desc As ObjectStreamClass,   hasData As Boolean)
+            Friend Sub New(desc As ObjectStreamClass, hasData As Boolean)
                 Me.desc = desc
                 Me.hasData = hasData
             End Sub
@@ -1203,7 +1203,7 @@ Namespace java.io
         ''' responsibility of the caller to ensure that obj is of the proper type if
         ''' non-null.
         ''' </summary>
-        Friend Overridable Sub getPrimFieldValues(  obj As Object,   buf As SByte())
+        Friend Overridable Sub getPrimFieldValues(obj As Object, buf As SByte())
             fieldRefl.getPrimFieldValues(obj, buf)
         End Sub
 
@@ -1213,7 +1213,7 @@ Namespace java.io
         ''' responsibility of the caller to ensure that obj is of the proper type if
         ''' non-null.
         ''' </summary>
-        Friend Overridable Sub setPrimFieldValues(  obj As Object,   buf As SByte())
+        Friend Overridable Sub setPrimFieldValues(obj As Object, buf As SByte())
             fieldRefl.primFieldValuesues(obj, buf)
         End Sub
 
@@ -1222,7 +1222,7 @@ Namespace java.io
         ''' them in array vals starting at offset 0.  It is the responsibility of
         ''' the caller to ensure that obj is of the proper type if non-null.
         ''' </summary>
-        Friend Overridable Sub getObjFieldValues(  obj As Object,   vals As Object())
+        Friend Overridable Sub getObjFieldValues(obj As Object, vals As Object())
             fieldRefl.getObjFieldValues(obj, vals)
         End Sub
 
@@ -1231,7 +1231,7 @@ Namespace java.io
         ''' array vals starting at offset 0.  It is the responsibility of the caller
         ''' to ensure that obj is of the proper type if non-null.
         ''' </summary>
-        Friend Overridable Sub setObjFieldValues(  obj As Object,   vals As Object())
+        Friend Overridable Sub setObjFieldValues(obj As Object, vals As Object())
             fieldRefl.objFieldValuesues(obj, vals)
         End Sub
 
@@ -1281,7 +1281,7 @@ Namespace java.io
         ''' descriptor, returns reference to this class descriptor.  Otherwise,
         ''' returns variant of this class descriptor bound to given class.
         ''' </summary>
-        Private Function getVariantFor(  cl As [Class]) As ObjectStreamClass
+        Private Function getVariantFor(cl As [Class]) As ObjectStreamClass
             If Me.cl Is cl Then Return Me
             Dim desc As New ObjectStreamClass
             If isProxy_Renamed Then
@@ -1298,7 +1298,7 @@ Namespace java.io
         ''' the defining class may still be non-public.
         ''' </summary>
         'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-        Private Shared Function getExternalizableConstructor(  cl As [Class]) As Constructor(Of ?)
+        Private Shared Function getExternalizableConstructor(cl As [Class]) As Constructor(Of ?)
             Try
                 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
                 Dim cons As Constructor(Of ?) = cl.getDeclaredConstructor(CType(Nothing, Class()))
@@ -1315,23 +1315,23 @@ Namespace java.io
         ''' returned constructor (if any).
         ''' </summary>
         'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-        Private Shared Function getSerializableConstructor(  cl As [Class]) As Constructor(Of ?)
-            Dim initCl As [Class] = cl
-            Do While initCl.IsSubclassOf(GetType(Serializable))
-                initCl = initCl.BaseType
-                If initCl Is Nothing Then Return Nothing
-            Loop
-            Try
-                'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-                Dim cons As Constructor(Of ?) = initCl.getDeclaredConstructor(CType(Nothing, Class()))
-				Dim mods As Integer = cons.modifiers
-                If (mods And Modifier.PRIVATE) <> 0 OrElse ((mods And (Modifier.PUBLIC Or Modifier.PROTECTED)) = 0 AndAlso (Not packageEquals(cl, initCl))) Then Return Nothing
-                cons = reflFactory.newConstructorForSerialization(cl, cons)
-                cons.accessible = True
-                Return cons
-            Catch ex As NoSuchMethodException
-                Return Nothing
-            End Try
+        Private Shared Function getSerializableConstructor(cl As [Class]) As Constructor(Of ?)
+            'Dim initCl As [Class] = cl
+            'Do While initCl.IsSubclassOf(GetType(Serializable))
+            '    initCl = initCl.BaseType
+            '    If initCl Is Nothing Then Return Nothing
+            'Loop
+            'Try
+            '    'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
+            '    Dim cons As Constructor(Of ?) = initCl.getDeclaredConstructor(CType(Nothing, [Class]()))
+            '    Dim mods As Integer = cons.modifiers
+            '    If (mods And Modifier.PRIVATE) <> 0 OrElse ((mods And (Modifier.PUBLIC Or Modifier.PROTECTED)) = 0 AndAlso (Not packageEquals(cl, initCl))) Then Return Nothing
+            '    cons = reflFactory.newConstructorForSerialization(cl, cons)
+            '    cons.accessible = True
+            '    Return cons
+            'Catch ex As NoSuchMethodException
+            '    Return Nothing
+            'End Try
         End Function
 
         ''' <summary>
@@ -1340,30 +1340,30 @@ Namespace java.io
         ''' null if no match found.  Access checks are disabled on the returned
         ''' method (if any).
         ''' </summary>
-        Private Shared Function getInheritableMethod(  cl As [Class],   name As String,   argTypes As [Class](),   returnType As [Class]) As Method
-            Dim meth As Method = Nothing
-            Dim defCl As [Class] = cl
-            Do While defCl IsNot Nothing
-                Try
-                    meth = defCl.getDeclaredMethod(name, argTypes)
-                    Exit Do
-                Catch ex As NoSuchMethodException
-                    defCl = defCl.BaseType
-                End Try
-            Loop
+        Private Shared Function getInheritableMethod(cl As [Class], name As String, argTypes As [Class](), returnType As [Class]) As Method
+            'Dim meth As Method = Nothing
+            'Dim defCl As [Class] = cl
+            'Do While defCl IsNot Nothing
+            '    Try
+            '        meth = defCl.getDeclaredMethod(name, argTypes)
+            '        Exit Do
+            '    Catch ex As NoSuchMethodException
+            '        defCl = defCl.BaseType
+            '    End Try
+            'Loop
 
-            If (meth Is Nothing) OrElse (meth.returnType IsNot returnType) Then Return Nothing
-            meth.accessible = True
-            Dim mods As Integer = meth.modifiers
-            If (mods And (Modifier.STATIC Or Modifier.ABSTRACT)) <> 0 Then
-                Return Nothing
-            ElseIf (mods And (Modifier.PUBLIC Or Modifier.PROTECTED)) <> 0 Then
-                Return meth
-            ElseIf (mods And Modifier.PRIVATE) <> 0 Then
-                Return If(cl Is defCl, meth, Nothing)
-            Else
-                Return If(packageEquals(cl, defCl), meth, Nothing)
-            End If
+            'If (meth Is Nothing) OrElse (meth.returnType IsNot returnType) Then Return Nothing
+            'meth.accessible = True
+            'Dim mods As Integer = meth.modifiers
+            'If (mods And (Modifier.STATIC Or Modifier.ABSTRACT)) <> 0 Then
+            '    Return Nothing
+            'ElseIf (mods And (Modifier.PUBLIC Or Modifier.PROTECTED)) <> 0 Then
+            '    Return meth
+            'ElseIf (mods And Modifier.PRIVATE) <> 0 Then
+            '    Return If(cl Is defCl, meth, Nothing)
+            'Else
+            '    Return If(packageEquals(cl, defCl), meth, Nothing)
+            'End If
         End Function
 
         ''' <summary>
@@ -1371,7 +1371,7 @@ Namespace java.io
         ''' [Class], or null if none found.  Access checks are disabled on the
         ''' returned method (if any).
         ''' </summary>
-        Private Shared Function getPrivateMethod(  cl As [Class],   name As String,   argTypes As [Class](),   returnType As [Class]) As Method
+        Private Shared Function getPrivateMethod(cl As [Class], name As String, argTypes As [Class](), returnType As [Class]) As Method
             Try
                 Dim meth As Method = cl.getDeclaredMethod(name, argTypes)
                 meth.accessible = True
@@ -1386,14 +1386,14 @@ Namespace java.io
         ''' Returns true if classes are defined in the same runtime package, false
         ''' otherwise.
         ''' </summary>
-        Private Shared Function packageEquals(  cl1 As [Class],   cl2 As [Class]) As Boolean
+        Private Shared Function packageEquals(cl1 As [Class], cl2 As [Class]) As Boolean
             Return (cl1.classLoader Is cl2.classLoader AndAlso getPackageName(cl1).Equals(getPackageName(cl2)))
         End Function
 
         ''' <summary>
         ''' Returns package name of given class.
         ''' </summary>
-        Private Shared Function getPackageName(  cl As [Class]) As String
+        Private Shared Function getPackageName(cl As [Class]) As String
             Dim s As String = cl.name
             Dim i As Integer = s.LastIndexOf("["c)
             If i >= 0 Then s = s.Substring(i + 2)
@@ -1405,7 +1405,7 @@ Namespace java.io
         ''' Compares class names for equality, ignoring package names.  Returns true
         ''' if class names equal, false otherwise.
         ''' </summary>
-        Private Shared Function classNamesEqual(  name1 As String,   name2 As String) As Boolean
+        Private Shared Function classNamesEqual(name1 As String, name2 As String) As Boolean
             name1 = name1.Substring(name1.LastIndexOf("."c) + 1)
             name2 = name2.Substring(name2.LastIndexOf("."c) + 1)
             Return name1.Equals(name2)
@@ -1414,44 +1414,44 @@ Namespace java.io
         ''' <summary>
         ''' Returns JVM type signature for given class.
         ''' </summary>
-        Private Shared Function getClassSignature(  cl As [Class]) As String
-            Dim sbuf As New StringBuilder
-            Do While cl.array
-                sbuf.append("["c)
-                cl = cl.componentType
-            Loop
-            If cl.primitive Then
-                If cl Is java.lang.[Integer].TYPE Then
-                    sbuf.append("I"c)
-                ElseIf cl Is java.lang.[Byte].TYPE Then
-                    sbuf.append("B"c)
-                ElseIf cl Is java.lang.[Long].TYPE Then
-                    sbuf.append("J"c)
-                ElseIf cl Is Float.TYPE Then
-                    sbuf.append("F"c)
-                ElseIf cl Is java.lang.[Double].TYPE Then
-                    sbuf.append("D"c)
-                ElseIf cl Is java.lang.[Short].TYPE Then
-                    sbuf.append("S"c)
-                ElseIf cl Is Character.TYPE Then
-                    sbuf.append("C"c)
-                ElseIf cl Is java.lang.[Boolean].TYPE Then
-                    sbuf.append("Z"c)
-                ElseIf cl Is Void.TYPE Then
-                    sbuf.append("V"c)
-                Else
-                    Throw New InternalError
-                End If
-            Else
-                sbuf.append(AscW("L"c) + cl.name.Replace("."c, "/"c) + AscW(";"c))
-            End If
-            Return sbuf.ToString()
+        Private Shared Function getClassSignature(cl As [Class]) As String
+            'Dim sbuf As New StringBuilder
+            'Do While cl.array
+            '    sbuf.append("["c)
+            '    cl = cl.componentType
+            'Loop
+            'If cl.primitive Then
+            '    If cl Is java.lang.[Integer].TYPE Then
+            '        sbuf.append("I"c)
+            '    ElseIf cl Is java.lang.[Byte].TYPE Then
+            '        sbuf.append("B"c)
+            '    ElseIf cl Is java.lang.[Long].TYPE Then
+            '        sbuf.append("J"c)
+            '    ElseIf cl Is Float.TYPE Then
+            '        sbuf.append("F"c)
+            '    ElseIf cl Is java.lang.[Double].TYPE Then
+            '        sbuf.append("D"c)
+            '    ElseIf cl Is java.lang.[Short].TYPE Then
+            '        sbuf.append("S"c)
+            '    ElseIf cl Is Character.TYPE Then
+            '        sbuf.append("C"c)
+            '    ElseIf cl Is java.lang.[Boolean].TYPE Then
+            '        sbuf.append("Z"c)
+            '    ElseIf cl Is Void.TYPE Then
+            '        sbuf.append("V"c)
+            '    Else
+            '        Throw New InternalError
+            '    End If
+            'Else
+            '    sbuf.append(AscW("L"c) + cl.name.Replace("."c, "/"c) + AscW(";"c))
+            'End If
+            'Return sbuf.ToString()
         End Function
 
         ''' <summary>
         ''' Returns JVM type signature for given list of parameters and return type.
         ''' </summary>
-        Private Shared Function getMethodSignature(  paramTypes As [Class](),   retType As [Class]) As String
+        Private Shared Function getMethodSignature(paramTypes As [Class](), retType As [Class]) As String
             Dim sbuf As New StringBuilder
             sbuf.append("("c)
             For i As Integer = 0 To paramTypes.Length - 1
@@ -1467,7 +1467,7 @@ Namespace java.io
         ''' RuntimeException, Error, or of some unexpected type (in which case it is
         ''' wrapped inside an IOException).
         ''' </summary>
-        Private Shared Sub throwMiscException(  th As Throwable)
+        Private Shared Sub throwMiscException(th As Throwable)
             If TypeOf th Is RuntimeException Then
                 Throw CType(th, RuntimeException)
             ElseIf TypeOf th Is Error Then
@@ -1486,7 +1486,7 @@ Namespace java.io
         ''' Field objects.  Throws InvalidClassException if the (explicitly
         ''' declared) serializable fields are invalid.
         ''' </summary>
-        Private Shared Function getSerialFields(  cl As [Class]) As ObjectStreamField()
+        Private Shared Function getSerialFields(cl As [Class]) As ObjectStreamField()
             Dim fields_Renamed As ObjectStreamField()
             If cl.IsSubclassOf(GetType(Serializable)) AndAlso (Not cl.IsSubclassOf(GetType(Externalizable))) AndAlso (Not proxy.isProxyClass(cl)) AndAlso (Not cl.interface) Then
                 fields_Renamed = getDeclaredSerialFields(cl)
@@ -1509,7 +1509,7 @@ Namespace java.io
         ''' InvalidClassException if the declared serializable fields are
         ''' invalid--e.g., if multiple fields share the same name.
         ''' </summary>
-        Private Shared Function getDeclaredSerialFields(  cl As [Class]) As ObjectStreamField()
+        Private Shared Function getDeclaredSerialFields(cl As [Class]) As ObjectStreamField()
             Dim serialPersistentFields As ObjectStreamField() = Nothing
             Try
                 Dim f As Field = cl.getDeclaredField("serialPersistentFields")
@@ -1552,7 +1552,7 @@ Namespace java.io
         ''' contains a Field object for the field it represents.  If no default
         ''' serializable fields exist, NO_FIELDS is returned.
         ''' </summary>
-        Private Shared Function getDefaultSerialFields(  cl As [Class]) As ObjectStreamField()
+        Private Shared Function getDefaultSerialFields(cl As [Class]) As ObjectStreamField()
             Dim clFields As Field() = cl.declaredFields
             Dim list As New List(Of ObjectStreamField)
             Dim mask As Integer = Modifier.STATIC Or Modifier.TRANSIENT
@@ -1568,7 +1568,7 @@ Namespace java.io
         ''' Returns explicit serial version UID value declared by given [Class], or
         ''' null if none.
         ''' </summary>
-        Private Shared Function getDeclaredSUID(  cl As [Class]) As Long?
+        Private Shared Function getDeclaredSUID(cl As [Class]) As Long?
             Try
                 Dim f As Field = cl.getDeclaredField("serialVersionUID")
                 Dim mask As Integer = Modifier.STATIC Or Modifier.FINAL
@@ -1584,7 +1584,7 @@ Namespace java.io
         ''' <summary>
         ''' Computes the default serial version UID value for the given class.
         ''' </summary>
-        Private Shared Function computeDefaultSUID(  cl As [Class]) As Long
+        Private Shared Function computeDefaultSUID(cl As [Class]) As Long
             If (Not cl.IsSubclassOf(GetType(Serializable))) OrElse proxy.isProxyClass(cl) Then Return 0L
 
             Try
@@ -1595,20 +1595,20 @@ Namespace java.io
 
                 Dim classMods As Integer = cl.modifiers And (Modifier.PUBLIC Or Modifier.FINAL Or Modifier.INTERFACE Or Modifier.ABSTRACT)
 
-                '            
+                '
                 '             * compensate for javac bug in which ABSTRACT bit was set for an
                 '             * interface only if the interface declared methods
-                '             
+                '
                 Dim methods As Method() = cl.declaredMethods
                 If (classMods And Modifier.INTERFACE) <> 0 Then classMods = If(methods.Length > 0, (classMods Or Modifier.ABSTRACT), (classMods And (Not Modifier.ABSTRACT)))
                 dout.writeInt(classMods)
 
                 If Not cl.array Then
-                    '                
+                    '
                     '                 * compensate for change in 1.2FCS in which
                     '                 * Class.getInterfaces() was modified to return Cloneable and
                     '                 * Serializable for array classes.
-                    '                 
+                    '
                     Dim interfaces As [Class]() = cl.interfaces
                     Dim ifaceNames As String() = New String(interfaces.Length - 1) {}
                     For i As Integer = 0 To interfaces.Length - 1
@@ -1693,7 +1693,7 @@ Namespace java.io
         Private Class ComparatorAnonymousInnerClassHelper(Of T)
             Implements IComparer(Of T)
 
-            Public Overridable Function compare(  ms1 As MemberSignature,   ms2 As MemberSignature) As Integer
+            Public Overridable Function compare(ms1 As MemberSignature, ms2 As MemberSignature) As Integer
                 Return ms1.name.CompareTo(ms2.name)
             End Function
         End Class
@@ -1701,7 +1701,7 @@ Namespace java.io
         Private Class ComparatorAnonymousInnerClassHelper2(Of T)
             Implements IComparer(Of T)
 
-            Public Overridable Function compare(  ms1 As MemberSignature,   ms2 As MemberSignature) As Integer
+            Public Overridable Function compare(ms1 As MemberSignature, ms2 As MemberSignature) As Integer
                 Return ms1.signature.CompareTo(ms2.signature)
             End Function
         End Class
@@ -1709,7 +1709,7 @@ Namespace java.io
         Private Class ComparatorAnonymousInnerClassHelper3(Of T)
             Implements IComparer(Of T)
 
-            Public Overridable Function compare(  ms1 As MemberSignature,   ms2 As MemberSignature) As Integer
+            Public Overridable Function compare(ms1 As MemberSignature, ms2 As MemberSignature) As Integer
                 Dim comp As Integer = ms1.name.CompareTo(ms2.name)
                 If comp = 0 Then comp = ms1.signature.CompareTo(ms2.signature)
                 Return comp
@@ -1722,7 +1722,7 @@ Namespace java.io
         ''' </summary>
         'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
         <DllImport("unknown")>
-        Private Shared Function hasStaticInitializer(  cl As [Class]) As Boolean
+        Private Shared Function hasStaticInitializer(cl As [Class]) As Boolean
         End Function
 
         ''' <summary>
@@ -1735,19 +1735,19 @@ Namespace java.io
             Public ReadOnly name As String
             Public ReadOnly signature As String
 
-            Public Sub New(  field As Field)
+            Public Sub New(field As Field)
                 member = field
                 name = field.name
                 signature = getClassSignature(field.type)
             End Sub
 
-            Public Sub New(Of T1)(  cons As Constructor(Of T1))
+            Public Sub New(Of T1)(cons As Constructor(Of T1))
                 member = cons
                 name = cons.name
                 signature = getMethodSignature(cons.parameterTypes, Void.TYPE)
             End Sub
 
-            Public Sub New(  meth As Method)
+            Public Sub New(meth As Method)
                 member = meth
                 name = meth.name
                 signature = getMethodSignature(meth.parameterTypes, meth.returnType)
@@ -1793,7 +1793,7 @@ Namespace java.io
             ''' treated as filler, for which get operations return default values
             ''' and set operations discard given values.
             ''' </summary>
-            Friend Sub New(  fields As ObjectStreamField())
+            Friend Sub New(fields As ObjectStreamField())
                 Me.fields = fields
                 Dim nfields As Integer = fields.Length
                 readKeys = New Long(nfields - 1) {}
@@ -1836,12 +1836,12 @@ Namespace java.io
             ''' marshals them into byte array buf starting at offset 0.  The caller
             ''' is responsible for ensuring that obj is of the proper type.
             ''' </summary>
-            Friend Overridable Sub getPrimFieldValues(  obj As Object,   buf As SByte())
+            Friend Overridable Sub getPrimFieldValues(obj As Object, buf As SByte())
                 If obj Is Nothing Then Throw New NullPointerException
                 '             assuming checkDefaultSerialize() has been called on the class
                 '             * descriptor this FieldReflector was obtained from, no field keys
                 '             * in array should be equal to Unsafe.INVALID_FIELD_OFFSET.
-                '             
+                '
                 For i As Integer = 0 To numPrimFields - 1
                     Dim key As Long = readKeys(i)
                     Dim [off] As Integer = offsets(i)
@@ -1881,7 +1881,7 @@ Namespace java.io
             ''' unmarshalled from byte array buf starting at offset 0.  The caller
             ''' is responsible for ensuring that obj is of the proper type.
             ''' </summary>
-            Friend Overridable Sub setPrimFieldValues(  obj As Object,   buf As SByte())
+            Friend Overridable Sub setPrimFieldValues(obj As Object, buf As SByte())
                 If obj Is Nothing Then Throw New NullPointerException
                 For i As Integer = 0 To numPrimFields - 1
                     Dim key As Long = writeKeys(i)
@@ -1923,12 +1923,12 @@ Namespace java.io
             ''' stores them in array vals starting at offset 0.  The caller is
             ''' responsible for ensuring that obj is of the proper type.
             ''' </summary>
-            Friend Overridable Sub getObjFieldValues(  obj As Object,   vals As Object())
+            Friend Overridable Sub getObjFieldValues(obj As Object, vals As Object())
                 If obj Is Nothing Then Throw New NullPointerException
                 '             assuming checkDefaultSerialize() has been called on the class
                 '             * descriptor this FieldReflector was obtained from, no field keys
                 '             * in array should be equal to Unsafe.INVALID_FIELD_OFFSET.
-                '             
+                '
                 For i As Integer = numPrimFields To fields.Length - 1
                     Select Case typeCodes(i)
                         Case "L"c, "["c
@@ -1947,7 +1947,7 @@ Namespace java.io
             ''' field with a value of the wrong type will trigger an appropriate
             ''' ClassCastException.
             ''' </summary>
-            Friend Overridable Sub setObjFieldValues(  obj As Object,   vals As Object())
+            Friend Overridable Sub setObjFieldValues(obj As Object, vals As Object())
                 If obj Is Nothing Then Throw New NullPointerException
                 For i As Integer = numPrimFields To fields.Length - 1
                     Dim key As Long = writeKeys(i)
@@ -1977,7 +1977,7 @@ Namespace java.io
         ''' discard given values).  Throws InvalidClassException if unresolvable
         ''' type conflicts exist between the two sets of fields.
         ''' </summary>
-        Private Shared Function getReflector(  fields As ObjectStreamField(),   localDesc As ObjectStreamClass) As FieldReflector
+        Private Shared Function getReflector(fields As ObjectStreamField(), localDesc As ObjectStreamClass) As FieldReflector
             ' class irrelevant if no fields
             Dim cl As [Class] = If(localDesc IsNot Nothing AndAlso fields.Length > 0, localDesc.cl, Nothing)
             processQueue(Caches.reflectorsQueue, Caches.reflectors)
@@ -2037,7 +2037,7 @@ Namespace java.io
             Private ReadOnly hash As Integer
             Private ReadOnly nullClass As Boolean
 
-            Friend Sub New(  cl As [Class],   fields As ObjectStreamField(),   queue As ReferenceQueue(Of [Class]))
+            Friend Sub New(cl As [Class], fields As ObjectStreamField(), queue As ReferenceQueue(Of [Class]))
                 MyBase.New(cl, queue)
                 nullClass = (cl Is Nothing)
                 Dim sbuf As New StringBuilder
@@ -2053,7 +2053,7 @@ Namespace java.io
                 Return hash
             End Function
 
-            Public Overrides Function Equals(  obj As Object) As Boolean
+            Public Overrides Function Equals(obj As Object) As Boolean
                 If obj Is Me Then Return True
 
                 If TypeOf obj Is FieldReflectorKey Then
@@ -2078,10 +2078,10 @@ Namespace java.io
         ''' ObjectStreamFields.  Throws InvalidClassException if unresolvable type
         ''' conflicts exist between the two sets of fields.
         ''' </summary>
-        Private Shared Function matchFields(  fields As ObjectStreamField(),   localDesc As ObjectStreamClass) As ObjectStreamField()
+        Private Shared Function matchFields(fields As ObjectStreamField(), localDesc As ObjectStreamClass) As ObjectStreamField()
             Dim localFields As ObjectStreamField() = If(localDesc IsNot Nothing, localDesc.fields, NO_FIELDS)
 
-            '        
+            '
             '         * Even if fields == localFields, we cannot simply return localFields
             '         * here.  In previous implementations of serialization,
             '         * ObjectStreamField.getType() returned Object.class if the
@@ -2090,7 +2090,7 @@ Namespace java.io
             '         * behavior, the ObjectStreamField instances returned by matchFields
             '         * cannot report non-primitive types other than Object.class; hence
             '         * localFields cannot be returned directly.
-            '         
+            '
 
             Dim matches As ObjectStreamField() = New ObjectStreamField(fields.Length - 1) {}
             For i As Integer = 0 To fields.Length - 1
@@ -2130,8 +2130,8 @@ Namespace java.io
 
         ''' <summary>
         '''  Weak key for Class objects.
-        ''' 
-        ''' 
+        '''
+        '''
         ''' </summary>
         Friend Class WeakClassKey
             Inherits WeakReference(Of [Class])

@@ -183,47 +183,47 @@ Namespace java.io
 		''' <param name="mask"> the actions mask to use.
 		'''  </param>
 		Private Sub init(  mask As Integer)
-			If (mask And ALL) <> mask Then Throw New IllegalArgumentException("invalid actions mask")
+            'If (mask And ALL) <> mask Then Throw New IllegalArgumentException("invalid actions mask")
 
-			If mask = NONE Then Throw New IllegalArgumentException("invalid actions mask")
+            'If mask = NONE Then Throw New IllegalArgumentException("invalid actions mask")
 
-			cpath = name
-			If cpath Is Nothing Then Throw New NullPointerException("name can't be null")
+            'cpath = name
+            'If cpath Is Nothing Then Throw New NullPointerException("name can't be null")
 
-			Me.mask = mask
+            'Me.mask = mask
 
-			If cpath.Equals("<<ALL FILES>>") Then
-				directory = True
-				recursive = True
-				cpath = ""
-				Return
-			End If
+            'If cpath.Equals("<<ALL FILES>>") Then
+            '	directory = True
+            '	recursive = True
+            '	cpath = ""
+            '	Return
+            'End If
 
-			' store only the canonical cpath if possible
-			cpath = AccessController.doPrivileged(New PrivilegedActionAnonymousInnerClassHelper(Of T)
+            '         ' store only the canonical cpath if possible
+            '         cpath = AccessController.doPrivileged(New PrivilegedActionAnonymousInnerClassHelper(Of T))
 
-			Dim len As Integer = cpath.length()
-			Dim last As Char = (If(len > 0, cpath.Chars(len - 1), 0))
+            '         Dim len As Integer = cpath.length()
+            'Dim last As Char = (If(len > 0, cpath.Chars(len - 1), 0))
 
-			If last = RECURSIVE_CHAR AndAlso cpath.Chars(len - 2) = System.IO.Path.DirectorySeparatorChar Then
-				directory = True
-				recursive = True
-				len -= 1
-				cpath = cpath.Substring(0, len)
-			ElseIf last = WILD_CHAR AndAlso cpath.Chars(len - 2) = System.IO.Path.DirectorySeparatorChar Then
-				directory = True
-				'recursive = false;
-				len -= 1
-				cpath = cpath.Substring(0, len)
-			Else
-				' overkill since they are initialized to false, but
-				' commented out here to remind us...
-				'directory = false;
-				'recursive = false;
-			End If
+            'If last = RECURSIVE_CHAR AndAlso cpath.Chars(len - 2) = System.IO.Path.DirectorySeparatorChar Then
+            '	directory = True
+            '	recursive = True
+            '	len -= 1
+            '	cpath = cpath.Substring(0, len)
+            'ElseIf last = WILD_CHAR AndAlso cpath.Chars(len - 2) = System.IO.Path.DirectorySeparatorChar Then
+            '	directory = True
+            '	'recursive = false;
+            '	len -= 1
+            '	cpath = cpath.Substring(0, len)
+            'Else
+            '	' overkill since they are initialized to false, but
+            '	' commented out here to remind us...
+            '	'directory = false;
+            '	'recursive = false;
+            'End If
 
-			' XXX: at this point the path should be absolute. die if it isn't?
-		End Sub
+            '' XXX: at this point the path should be absolute. die if it isn't?
+        End Sub
 
 		Private Class PrivilegedActionAnonymousInnerClassHelper(Of T)
 			Implements PrivilegedAction(Of T)

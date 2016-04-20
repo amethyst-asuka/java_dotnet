@@ -24,7 +24,7 @@ Imports sun.java2d.StateTrackable.State
 ' *
 ' *
 ' *
-' 
+'
 
 ' ****************************************************************
 ' ******************************************************************
@@ -68,61 +68,38 @@ Namespace java.awt.image
 
         ''' <summary>
         ''' Tag for unsigned byte data. </summary>
-        'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
         Public Const TYPE_BYTE As Integer = 0
 
-		''' <summary>
-		''' Tag for unsigned short data. </summary>
-'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Const TYPE_USHORT As Integer = 1
+        ''' <summary>
+        ''' Tag for unsigned short data. </summary>
+        Public Const TYPE_USHORT As Integer = 1
 
-		''' <summary>
-		''' Tag for signed short data.  Placeholder for future use. </summary>
-'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Const TYPE_SHORT As Integer = 2
+        ''' <summary>
+        ''' Tag for signed short data.  Placeholder for future use. </summary>
+        Public Const TYPE_SHORT As Integer = 2
 
-		''' <summary>
-		''' Tag for int data. </summary>
-'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Const TYPE_INT As Integer = 3
+        ''' <summary>
+        ''' Tag for int data. </summary>
+        Public Const TYPE_INT As Integer = 3
 
-		''' <summary>
-		''' Tag for float data.  Placeholder for future use. </summary>
-'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Const TYPE_FLOAT As Integer = 4
+        ''' <summary>
+        ''' Tag for float data.  Placeholder for future use. </summary>
+        Public Const TYPE_FLOAT As Integer = 4
 
-		''' <summary>
-		''' Tag for double data.  Placeholder for future use. </summary>
-'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Const TYPE_DOUBLE As Integer = 5
+        ''' <summary>
+        ''' Tag for double data.  Placeholder for future use. </summary>
+        Public Const TYPE_DOUBLE As Integer = 5
 
-		''' <summary>
-		''' Tag for undefined data. </summary>
-'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Const TYPE_UNDEFINED As Integer = 32
+        ''' <summary>
+        ''' Tag for undefined data. </summary>
+        Public Const TYPE_UNDEFINED As Integer = 32
 
-		''' <summary>
-		''' The data type of this DataBuffer. </summary>
-		Protected Friend dataType As Integer
+        ''' <summary>
+        ''' Offsets into all banks. </summary>
+        Protected Friend _offsets As Integer()
 
-		''' <summary>
-		''' The number of banks in this DataBuffer. </summary>
-		Protected Friend banks As Integer
-
-		''' <summary>
-		''' Offset into default (first) bank from which to get the first element. </summary>
-		Protected Friend offset As Integer
-
-		''' <summary>
-		''' Usable size of all banks. </summary>
-		Protected Friend size As Integer
-
-		''' <summary>
-		''' Offsets into all banks. </summary>
-		Protected Friend offsets As Integer()
-
-		' The current StateTrackable state. 
-		Friend theTrackable As sun.java2d.StateTrackableDelegate
+        ' The current StateTrackable state.
+        Friend theTrackable As sun.java2d.StateTrackableDelegate
 
 		''' <summary>
 		''' Size of the data types indexed by DataType tags defined above. </summary>
@@ -282,35 +259,23 @@ Namespace java.awt.image
         '''  Returns the data type of this DataBuffer. </summary>
         '''   <returns> the data type of this <code>DataBuffer</code>. </returns>
         Public Overridable ReadOnly Property dataType As Integer
-            Get
-                Return dataType
-            End Get
-        End Property
 
         ''' <summary>
         '''  Returns the size (in array elements) of all banks. </summary>
         '''   <returns> the size of all banks. </returns>
         Public Overridable ReadOnly Property size As Integer
-            Get
-                Return size
-            End Get
-        End Property
 
         ''' <summary>
         ''' Returns the offset of the default bank in array elements. </summary>
         '''  <returns> the offset of the default bank. </returns>
         Public Overridable ReadOnly Property offset As Integer
-            Get
-                Return offset
-            End Get
-        End Property
 
         ''' <summary>
         ''' Returns the offsets (in array elements) of all the banks. </summary>
         '''  <returns> the offsets of all banks. </returns>
         Public Overridable ReadOnly Property offsets As Integer()
             Get
-                Return CType(offsets.Clone(), Integer())
+                Return CType(_offsets.Clone(), Integer())
             End Get
         End Property
 
@@ -318,10 +283,6 @@ Namespace java.awt.image
         ''' Returns the number of banks in this DataBuffer. </summary>
         '''  <returns> the number of banks. </returns>
         Public Overridable ReadOnly Property numBanks As Integer
-            Get
-                Return banks
-            End Get
-        End Property
 
         ''' <summary>
         ''' Returns the requested data array element from the first (default) bank
@@ -510,35 +471,34 @@ Namespace java.awt.image
 		End Function
 
 		Shared Sub New()
-'JAVA TO VB CONVERTER TODO TASK: Anonymous inner classes are not converted to VB if the base type is not defined in the code being converted:
-'			sun.awt.image.SunWritableRaster.setDataStealer(New sun.awt.image.SunWritableRaster.DataStealer()
-	'		{
-	'			public byte[] getData(DataBufferByte dbb, int bank)
-	'			{
-	'				Return dbb.bankdata[bank];
-	'			}
-	'
-	'			public short[] getData(DataBufferUShort dbus, int bank)
-	'			{
-	'				Return dbus.bankdata[bank];
-	'			}
-	'
-	'			public int[] getData(DataBufferInt dbi, int bank)
-	'			{
-	'				Return dbi.bankdata[bank];
-	'			}
-	'
-	'			public StateTrackableDelegate getTrackable(DataBuffer db)
-	'			{
-	'				Return db.theTrackable;
-	'			}
-	'
-	'			public  Sub  setTrackable(DataBuffer db, StateTrackableDelegate trackable)
-	'			{
-	'				db.theTrackable = trackable;
-	'			}
-	'		});
-		End Sub
+            '			sun.awt.image.SunWritableRaster.setDataStealer(New sun.awt.image.SunWritableRaster.DataStealer()
+            '		{
+            '			public byte[] getData(DataBufferByte dbb, int bank)
+            '			{
+            '				Return dbb.bankdata[bank];
+            '			}
+            '
+            '			public short[] getData(DataBufferUShort dbus, int bank)
+            '			{
+            '				Return dbus.bankdata[bank];
+            '			}
+            '
+            '			public int[] getData(DataBufferInt dbi, int bank)
+            '			{
+            '				Return dbi.bankdata[bank];
+            '			}
+            '
+            '			public StateTrackableDelegate getTrackable(DataBuffer db)
+            '			{
+            '				Return db.theTrackable;
+            '			}
+            '
+            '			public  Sub  setTrackable(DataBuffer db, StateTrackableDelegate trackable)
+            '			{
+            '				db.theTrackable = trackable;
+            '			}
+            '		});
+        End Sub
 	End Class
 
 End Namespace

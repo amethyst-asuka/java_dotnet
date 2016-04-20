@@ -285,7 +285,7 @@ Namespace java.awt
         ''' <param name="g"> the Green component </param>
         ''' <param name="b"> the Blue component
         '''  </param>
-        Private Shared Sub testColorValueRange(  r As Integer,   g As Integer,   b As Integer,   a As Integer)
+        Private Shared Sub testColorValueRange(r As Integer, g As Integer, b As Integer, a As Integer)
             Dim rangeError As Boolean = False
             Dim badComponentString As String = ""
 
@@ -317,7 +317,7 @@ Namespace java.awt
         ''' <param name="g"> the Green component </param>
         ''' <param name="b"> the Blue component
         '''  </param>
-        Private Shared Sub testColorValueRange(  r As Single,   g As Single,   b As Single,   a As Single)
+        Private Shared Sub testColorValueRange(r As Single, g As Single, b As Single, a As Single)
             Dim rangeError As Boolean = False
             Dim badComponentString As String = ""
             If a < 0.0 OrElse a > 1.0 Then
@@ -357,7 +357,7 @@ Namespace java.awt
         ''' <seealso cref= #getGreen </seealso>
         ''' <seealso cref= #getBlue </seealso>
         ''' <seealso cref= #getRGB </seealso>
-        Public Sub New(  r As Integer,   g As Integer,   b As Integer)
+        Public Sub New(r As Integer, g As Integer, b As Integer)
             Me.New(r, g, b, 255)
         End Sub
 
@@ -378,7 +378,7 @@ Namespace java.awt
         ''' <seealso cref= #getAlpha </seealso>
         ''' <seealso cref= #getRGB </seealso>
         'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-        Public Sub New(  r As Integer,   g As Integer,   b As Integer,   a As Integer)
+        Public Sub New(r As Integer, g As Integer, b As Integer, a As Integer)
             value = ((a And &HFF) << 24) Or ((r And &HFF) << 16) Or ((g And &HFF) << 8) Or ((b And &HFF) << 0)
             testColorValueRange(r, g, b, a)
         End Sub
@@ -397,7 +397,7 @@ Namespace java.awt
         ''' <seealso cref= #getGreen </seealso>
         ''' <seealso cref= #getBlue </seealso>
         ''' <seealso cref= #getRGB </seealso>
-        Public Sub New(  rgb As Integer)
+        Public Sub New(rgb As Integer)
             value = &HFF000000L Or rgb
         End Sub
 
@@ -417,7 +417,7 @@ Namespace java.awt
         ''' <seealso cref= #getBlue </seealso>
         ''' <seealso cref= #getAlpha </seealso>
         ''' <seealso cref= #getRGB </seealso>
-        Public Sub New(  rgba As Integer,   hasalpha As Boolean)
+        Public Sub New(rgba As Integer, hasalpha As Boolean)
             If hasalpha Then
                 value = rgba
             Else
@@ -442,7 +442,7 @@ Namespace java.awt
         ''' <seealso cref= #getGreen </seealso>
         ''' <seealso cref= #getBlue </seealso>
         ''' <seealso cref= #getRGB </seealso>
-        Public Sub New(  r As Single,   g As Single,   b As Single)
+        Public Sub New(r As Single, g As Single, b As Single)
             Me.New(CInt(Fix(r * 255 + 0.5)), CInt(Fix(g * 255 + 0.5)), CInt(Fix(b * 255 + 0.5)))
             testColorValueRange(r, g, b, 1.0F)
             frgbvalue = New Single(2) {}
@@ -470,7 +470,7 @@ Namespace java.awt
         ''' <seealso cref= #getBlue </seealso>
         ''' <seealso cref= #getAlpha </seealso>
         ''' <seealso cref= #getRGB </seealso>
-        Public Sub New(  r As Single,   g As Single,   b As Single,   a As Single)
+        Public Sub New(r As Single, g As Single, b As Single, a As Single)
             Me.New(CInt(Fix(r * 255 + 0.5)), CInt(Fix(g * 255 + 0.5)), CInt(Fix(b * 255 + 0.5)), CInt(Fix(a * 255 + 0.5)))
             frgbvalue = New Single(2) {}
             frgbvalue(0) = r
@@ -899,8 +899,8 @@ Namespace java.awt
         ''' <returns>  a <code>Color</code> object with the specified hue,
         '''                                 saturation, and brightness.
         ''' @since   JDK1.0 </returns>
-        Public Shared Function getHSBColor(h As Single, s As Single, b As Single) As color
-            Return New color(HSBtoRGB(h, s, b))
+        Public Shared Function getHSBColor(h As Single, s As Single, b As Single) As Color
+            Return New Color(HSBtoRGB(h, s, b))
         End Function
         ''' <summary>
         ''' Returns a <code>float</code> array containing the color and alpha
@@ -1097,8 +1097,8 @@ Namespace java.awt
         ''' <summary>
         ''' Returns the <code>ColorSpace</code> of this <code>Color</code>. </summary>
         ''' <returns> this <code>Color</code> object's <code>ColorSpace</code>. </returns>
-        Public Function colorSpace() As java.awt.color.ColorSpace
-            If cs Is Nothing Then cs = java.awt.color.colorSpace.getInstance(java.awt.color.colorSpace.CS_sRGB)
+        Public Function colorSpace() As java.awt.Color.colorSpace
+            If cs Is Nothing Then cs = java.awt.Color.colorSpace.getInstance(java.awt.Color.colorSpace.CS_sRGB)
             Return cs
         End Function
         ''' <summary>
@@ -1140,7 +1140,8 @@ Namespace java.awt
         ''' <seealso cref= Transparency </seealso>
         ''' <seealso cref= #createContext </seealso>
         Public Function transparency() As Integer
-            Dim alpha_Renamed As Integer = alpha
+            Dim alpha_Renamed As Integer = alpha()
+
             If alpha_Renamed = &HFF Then
                 Return transparency.OPAQUE
             ElseIf alpha_Renamed = 0 Then

@@ -640,7 +640,7 @@ Namespace java.lang.invoke
                 Return OBJ
             ElseIf c Is GetType(Object()) Then
                 Return OBJARY
-            ElseIf c Is GetType(Class) Then
+            ElseIf c Is GetType([Class]) Then
                 Return CLS
             ElseIf c Is GetType(MethodHandle) Then
                 Return MH
@@ -671,99 +671,99 @@ Namespace java.lang.invoke
         ''' Generate an invoker method for the passed <seealso cref="LambdaForm"/>.
         ''' </summary>
         Private Function generateCustomizedCodeBytes() As SByte()
-            classFilePrologue()
+            'classFilePrologue()
 
-            ' Suppress this method in backtraces displayed to the user.
-            mv.visitAnnotation("Ljava/lang/invoke/LambdaForm$Hidden;", True)
+            '' Suppress this method in backtraces displayed to the user.
+            'mv.visitAnnotation("Ljava/lang/invoke/LambdaForm$Hidden;", True)
 
-            ' Mark this method as a compiled LambdaForm
-            mv.visitAnnotation("Ljava/lang/invoke/LambdaForm$Compiled;", True)
+            '' Mark this method as a compiled LambdaForm
+            'mv.visitAnnotation("Ljava/lang/invoke/LambdaForm$Compiled;", True)
 
-            If lambdaForm.forceInline Then
-                ' Force inlining of this invoker method.
-                mv.visitAnnotation("Ljava/lang/invoke/ForceInline;", True)
-            Else
-                mv.visitAnnotation("Ljava/lang/invoke/DontInline;", True)
-            End If
+            'If lambdaForm.forceInline Then
+            '    ' Force inlining of this invoker method.
+            '    mv.visitAnnotation("Ljava/lang/invoke/ForceInline;", True)
+            'Else
+            '    mv.visitAnnotation("Ljava/lang/invoke/DontInline;", True)
+            'End If
 
-            If lambdaForm.customized IsNot Nothing Then
-                ' Since LambdaForm is customized for a particular MethodHandle, it's safe to substitute
-                ' receiver MethodHandle (at slot #0) with an embedded constant and use it instead.
-                ' It enables more efficient code generation in some situations, since embedded constants
-                ' are compile-time constants for JIT compiler.
-                mv.visitLdcInsn(constantPlaceholder(lambdaForm.customized))
-                mv.visitTypeInsn(Opcodes.CHECKCAST, MH)
-                Assert(checkActualReceiver()) ' expects MethodHandle on top of the stack
-                mv.visitVarInsn(Opcodes.ASTORE, localsMap(0))
-            End If
+            'If lambdaForm.customized IsNot Nothing Then
+            '    ' Since LambdaForm is customized for a particular MethodHandle, it's safe to substitute
+            '    ' receiver MethodHandle (at slot #0) with an embedded constant and use it instead.
+            '    ' It enables more efficient code generation in some situations, since embedded constants
+            '    ' are compile-time constants for JIT compiler.
+            '    mv.visitLdcInsn(constantPlaceholder(lambdaForm.customized))
+            '    mv.visitTypeInsn(Opcodes.CHECKCAST, MH)
+            '    Assert(checkActualReceiver()) ' expects MethodHandle on top of the stack
+            '    mv.visitVarInsn(Opcodes.ASTORE, localsMap(0))
+            'End If
 
-            ' iterate over the form's names, generating bytecode instructions for each
-            ' start iterating at the first name following the arguments
-            Dim onStack As Name = Nothing
-            For i As Integer = lambdaForm.arity_Renamed To lambdaForm.names.Length - 1
-                Dim name As Name = lambdaForm.names(i)
+            '' iterate over the form's names, generating bytecode instructions for each
+            '' start iterating at the first name following the arguments
+            'Dim onStack As Name = Nothing
+            'For i As Integer = lambdaForm.arity_Renamed To lambdaForm.names.Length - 1
+            '    Dim name As Name = lambdaForm.names(i)
 
-                emitStoreResult(onStack)
-                onStack = name ' unless otherwise modified below
-                Dim intr As MethodHandleImpl.Intrinsic = name.function.intrinsicName()
-                Select Case intr
-                    Case SELECT_ALTERNATIVE
-                        Debug.Assert(isSelectAlternative(i))
-                        If PROFILE_GWT Then
-                            Assert(TypeOf name.arguments(0) Is Name AndAlso nameRefersTo(CType(name.arguments(0), Name), GetType(MethodHandleImpl), "profileBoolean"))
-                            mv.visitAnnotation("Ljava/lang/invoke/InjectedProfile;", True)
-                        End If
-                        onStack = emitSelectAlternative(name, lambdaForm.names(i + 1))
-                        i += 1 ' skip MH.invokeBasic of the selectAlternative result
-                        Continue For
-                    Case GUARD_WITH_CATCH
-                        Debug.Assert(isGuardWithCatch(i))
-                        onStack = emitGuardWithCatch(i)
-                        i = i + 2 ' Jump to the end of GWC idiom
-                        Continue For
-                    Case NEW_ARRAY
-                        Dim rtype As [Class] = name.function.methodType().returnType()
-                        If isStaticallyNameable(rtype) Then
-                            emitNewArray(name)
-                            Continue For
-                        End If
-                    Case ARRAY_LOAD
-                        emitArrayLoad(name)
-                        Continue For
-                    Case ARRAY_STORE
-                        emitArrayStore(name)
-                        Continue For
-                    Case identity()
-                        Assert(name.arguments.Length = 1)
-                        emitPushArguments(name)
-                        Continue For
-                    Case ZERO
-                        Assert(name.arguments.Length = 0)
-                        emitConst(name.type.basicTypeWrapper().zero())
-                        Continue For
-                    Case NONE
-                        ' no intrinsic associated
-                    Case Else
-                        Throw New InternalError("Unknown intrinsic: " & intr)
-                End Select
+            '    emitStoreResult(onStack)
+            '    onStack = name ' unless otherwise modified below
+            '    Dim intr As MethodHandleImpl.Intrinsic = name.function.intrinsicName()
+            '    Select Case intr
+            '        Case SELECT_ALTERNATIVE
+            '            Debug.Assert(isSelectAlternative(i))
+            '            If PROFILE_GWT Then
+            '                Assert(TypeOf name.arguments(0) Is Name AndAlso nameRefersTo(CType(name.arguments(0), Name), GetType(MethodHandleImpl), "profileBoolean"))
+            '                mv.visitAnnotation("Ljava/lang/invoke/InjectedProfile;", True)
+            '            End If
+            '            onStack = emitSelectAlternative(name, lambdaForm.names(i + 1))
+            '            i += 1 ' skip MH.invokeBasic of the selectAlternative result
+            '            Continue For
+            '        Case GUARD_WITH_CATCH
+            '            Debug.Assert(isGuardWithCatch(i))
+            '            onStack = emitGuardWithCatch(i)
+            '            i = i + 2 ' Jump to the end of GWC idiom
+            '            Continue For
+            '        Case NEW_ARRAY
+            '            Dim rtype As [Class] = name.function.methodType().returnType()
+            '            If isStaticallyNameable(rtype) Then
+            '                emitNewArray(name)
+            '                Continue For
+            '            End If
+            '        Case ARRAY_LOAD
+            '            emitArrayLoad(name)
+            '            Continue For
+            '        Case ARRAY_STORE
+            '            emitArrayStore(name)
+            '            Continue For
+            '        Case identity()
+            '            Assert(name.arguments.Length = 1)
+            '            emitPushArguments(name)
+            '            Continue For
+            '        Case ZERO
+            '            Assert(name.arguments.Length = 0)
+            '            emitConst(name.type.basicTypeWrapper().zero())
+            '            Continue For
+            '        Case NONE
+            '            ' no intrinsic associated
+            '        Case Else
+            '            Throw New InternalError("Unknown intrinsic: " & intr)
+            '    End Select
 
-                Dim member As MemberName = name.function.member()
-                If isStaticallyInvocable(member) Then
-                    emitStaticInvoke(member, name)
-                Else
-                    emitInvoke(name)
-                End If
-            Next i
+            '    Dim member As MemberName = name.function.member()
+            '    If isStaticallyInvocable(member) Then
+            '        emitStaticInvoke(member, name)
+            '    Else
+            '        emitInvoke(name)
+            '    End If
+            'Next i
 
-            ' return statement
-            emitReturn(onStack)
+            '' return statement
+            'emitReturn(onStack)
 
-            classFileEpilogue()
-            bogusMethod(lambdaForm)
+            'classFileEpilogue()
+            'bogusMethod(lambdaForm)
 
-            Dim classFile As SByte() = cw.toByteArray()
-            maybeDump(className, classFile)
-            Return classFile
+            'Dim classFile As SByte() = cw.toByteArray()
+            'maybeDump(className, classFile)
+            'Return classFile
         End Function
 
         Friend Overridable Sub emitArrayLoad(  name As Name)
@@ -838,20 +838,20 @@ Namespace java.lang.invoke
         End Function
 
         Friend Shared Function isStaticallyNameable(  cls As [Class]) As Boolean
-            If cls Is GetType(Object) Then Return True
-            Do While cls.array
-                cls = cls.componentType
-            Loop
-            If cls.primitive Then Return True ' int[].class, for example
-            If sun.reflect.misc.ReflectUtil.isVMAnonymousClass(cls) Then ' FIXME: switch to supported API once it is added Return False
-                ' could use VerifyAccess.isClassAccessible but the following is a safe approximation
-                If cls.classLoader IsNot GetType(Object).classLoader Then Return False
-                If sun.invoke.util.VerifyAccess.isSamePackage(GetType(MethodHandle), cls) Then Return True
-                If Not Modifier.isPublic(cls.modifiers) Then Return False
-                For Each pkgcls As [Class] In STATICALLY_INVOCABLE_PACKAGES
-                    If sun.invoke.util.VerifyAccess.isSamePackage(pkgcls, cls) Then Return True
-                Next pkgcls
-                Return False
+            'If cls Is GetType(Object) Then Return True
+            'Do While cls.array
+            '    cls = cls.componentType
+            'Loop
+            'If cls.primitive Then Return True ' int[].class, for example
+            'If sun.reflect.misc.ReflectUtil.isVMAnonymousClass(cls) Then ' FIXME: switch to supported API once it is added Return False
+            '    ' could use VerifyAccess.isClassAccessible but the following is a safe approximation
+            '    If cls.classLoader IsNot GetType(Object).classLoader Then Return False
+            '    If sun.invoke.util.VerifyAccess.isSamePackage(GetType(MethodHandle), cls) Then Return True
+            '    If Not Modifier.isPublic(cls.modifiers) Then Return False
+            '    For Each pkgcls As [Class] In STATICALLY_INVOCABLE_PACKAGES
+            '        If sun.invoke.util.VerifyAccess.isSamePackage(pkgcls, cls) Then Return True
+            '    Next pkgcls
+            '    Return False
         End Function
 
         Friend Overridable Sub emitStaticInvoke(  name As Name)
@@ -862,96 +862,96 @@ Namespace java.lang.invoke
         ''' Emit an invoke for the given name, using the MemberName directly.
         ''' </summary>
         Friend Overridable Sub emitStaticInvoke(  member As MemberName,   name As Name)
-            Assert(member.Equals(name.function.member()))
-            Dim defc As [Class] = member.declaringClass
-            Dim cname As String = getInternalName(defc)
-            Dim mname As String = member.name
-            Dim mtype As String
-            Dim refKind As SByte = member.referenceKind
-            If refKind = REF_invokeSpecial Then
-                ' in order to pass the verifier, we need to convert this to invokevirtual in all cases
-                Assert(member.canBeStaticallyBound()) : member
-                refKind = REF_invokeVirtual
-            End If
+            'Assert(member.Equals(name.function.member()))
+            'Dim defc As [Class] = member.declaringClass
+            'Dim cname As String = getInternalName(defc)
+            'Dim mname As String = member.name
+            'Dim mtype As String
+            'Dim refKind As SByte = member.referenceKind
+            'If refKind = REF_invokeSpecial Then
+            '    ' in order to pass the verifier, we need to convert this to invokevirtual in all cases
+            '    Assert(member.canBeStaticallyBound()) : member
+            '    refKind = REF_invokeVirtual
+            'End If
 
-            If member.declaringClass.interface AndAlso refKind = REF_invokeVirtual Then refKind = REF_invokeInterface
+            'If member.declaringClass.interface AndAlso refKind = REF_invokeVirtual Then refKind = REF_invokeInterface
 
-            ' push arguments
-            emitPushArguments(name)
+            '' push arguments
+            'emitPushArguments(name)
 
-            ' invocation
-            If member.method Then
-                mtype = member.methodType.toMethodDescriptorString()
-                mv.visitMethodInsn(refKindOpcode(refKind), cname, mname, mtype, member.declaringClass.interface)
-            Else
-                mtype = methodType.toFieldDescriptorString(member.fieldType)
-                mv.visitFieldInsn(refKindOpcode(refKind), cname, mname, mtype)
-            End If
-            ' Issue a type assertion for the result, so we can avoid casts later.
-            If name.type = L_TYPE Then
-                Dim rtype As [Class] = member.invocationType.returnType()
-                Assert((Not rtype.primitive))
-                If rtype IsNot GetType(Object) AndAlso (Not rtype.interface) Then assertStaticType(rtype, name)
-            End If
+            '' invocation
+            'If member.method Then
+            '    mtype = member.methodType.toMethodDescriptorString()
+            '    mv.visitMethodInsn(refKindOpcode(refKind), cname, mname, mtype, member.declaringClass.interface)
+            'Else
+            '    mtype = methodType.toFieldDescriptorString(member.fieldType)
+            '    mv.visitFieldInsn(refKindOpcode(refKind), cname, mname, mtype)
+            'End If
+            '' Issue a type assertion for the result, so we can avoid casts later.
+            'If name.type = L_TYPE Then
+            '    Dim rtype As [Class] = member.invocationType.returnType()
+            '    Assert((Not rtype.primitive))
+            '    If rtype IsNot GetType(Object) AndAlso (Not rtype.interface) Then assertStaticType(rtype, name)
+            'End If
         End Sub
 
         Friend Overridable Sub emitNewArray(  name As Name)
-            Dim rtype As [Class] = name.function.methodType().returnType()
-            If name.arguments.Length = 0 Then
-                ' The array will be a constant.
-                Dim emptyArray As Object
-                Try
-                    emptyArray = name.function.resolvedHandle.invoke()
-                Catch ex As Throwable
-                    Throw newInternalError(ex)
-                End Try
-                Assert(java.lang.reflect.Array.getLength(emptyArray) = 0)
-                Assert(emptyArray.GetType() Is rtype) ' exact typing
-                mv.visitLdcInsn(constantPlaceholder(emptyArray))
-                emitReferenceCast(rtype, emptyArray)
-                Return
-            End If
-            Dim arrayElementType As [Class] = rtype.componentType
-            Assert(arrayElementType IsNot Nothing)
-            emitIconstInsn(name.arguments.Length)
-            Dim xas As Integer = Opcodes.AASTORE
-            If Not arrayElementType.primitive Then
-                mv.visitTypeInsn(Opcodes.ANEWARRAY, getInternalName(arrayElementType))
-            Else
-                Dim tc As SByte = arrayTypeCode(sun.invoke.util.Wrapper.forPrimitiveType(arrayElementType))
-                xas = arrayInsnOpcode(tc, xas)
-                mv.visitIntInsn(Opcodes.NEWARRAY, tc)
-            End If
-            ' store arguments
-            For i As Integer = 0 To name.arguments.Length - 1
-                mv.visitInsn(Opcodes.DUP)
-                emitIconstInsn(i)
-                emitPushArgument(name, i)
-                mv.visitInsn(xas)
-            Next i
-            ' the array is left on the stack
-            assertStaticType(rtype, name)
+            'Dim rtype As [Class] = name.function.methodType().returnType()
+            'If name.arguments.Length = 0 Then
+            '    ' The array will be a constant.
+            '    Dim emptyArray As Object
+            '    Try
+            '        emptyArray = name.function.resolvedHandle.invoke()
+            '    Catch ex As Throwable
+            '        Throw newInternalError(ex)
+            '    End Try
+            '    Assert(java.lang.reflect.Array.getLength(emptyArray) = 0)
+            '    Assert(emptyArray.GetType() Is rtype) ' exact typing
+            '    mv.visitLdcInsn(constantPlaceholder(emptyArray))
+            '    emitReferenceCast(rtype, emptyArray)
+            '    Return
+            'End If
+            'Dim arrayElementType As [Class] = rtype.componentType
+            'Assert(arrayElementType IsNot Nothing)
+            'emitIconstInsn(name.arguments.Length)
+            'Dim xas As Integer = Opcodes.AASTORE
+            'If Not arrayElementType.primitive Then
+            '    mv.visitTypeInsn(Opcodes.ANEWARRAY, getInternalName(arrayElementType))
+            'Else
+            '    Dim tc As SByte = arrayTypeCode(sun.invoke.util.Wrapper.forPrimitiveType(arrayElementType))
+            '    xas = arrayInsnOpcode(tc, xas)
+            '    mv.visitIntInsn(Opcodes.NEWARRAY, tc)
+            'End If
+            '' store arguments
+            'For i As Integer = 0 To name.arguments.Length - 1
+            '    mv.visitInsn(Opcodes.DUP)
+            '    emitIconstInsn(i)
+            '    emitPushArgument(name, i)
+            '    mv.visitInsn(xas)
+            'Next i
+            '' the array is left on the stack
+            'assertStaticType(rtype, name)
         End Sub
         Friend Overridable Function refKindOpcode(  refKind As SByte) As Integer
-            Select Case refKind
-                Case REF_invokeVirtual
-                    Return Opcodes.INVOKEVIRTUAL
-                Case REF_invokeStatic
-                    Return Opcodes.INVOKESTATIC
-                Case REF_invokeSpecial
-                    Return Opcodes.INVOKESPECIAL
-                Case REF_invokeInterface
-                    Return Opcodes.INVOKEINTERFACE
-                Case REF_getField
-                    Return Opcodes.GETFIELD
-                Case REF_putField
-                    Return Opcodes.PUTFIELD
-                Case REF_getStatic
-                    Return Opcodes.GETSTATIC
-                Case REF_putStatic
-                    Return Opcodes.PUTSTATIC
-            End Select
-            Throw New InternalError("refKind=" & refKind)
+            'Select Case refKind
+            '    Case REF_invokeVirtual
+            '        Return Opcodes.INVOKEVIRTUAL
+            '    Case REF_invokeStatic
+            '        Return Opcodes.INVOKESTATIC
+            '    Case REF_invokeSpecial
+            '        Return Opcodes.INVOKESPECIAL
+            '    Case REF_invokeInterface
+            '        Return Opcodes.INVOKEINTERFACE
+            '    Case REF_getField
+            '        Return Opcodes.GETFIELD
+            '    Case REF_putField
+            '        Return Opcodes.PUTFIELD
+            '    Case REF_getStatic
+            '        Return Opcodes.GETSTATIC
+            '    Case REF_putStatic
+            '        Return Opcodes.PUTSTATIC
+            'End Select
+            'Throw New InternalError("refKind=" & refKind)
         End Function
 
         ''' <summary>
@@ -1084,56 +1084,56 @@ Namespace java.lang.invoke
         '''  }}
         ''' </summary>
         Private Function emitGuardWithCatch(  pos As Integer) As Name
-            Dim args As Name = lambdaForm.names(pos)
-            Dim invoker As Name = lambdaForm.names(pos + 1)
-            Dim result As Name = lambdaForm.names(pos + 2)
+            'Dim args As Name = lambdaForm.names(pos)
+            'Dim invoker As Name = lambdaForm.names(pos + 1)
+            'Dim result As Name = lambdaForm.names(pos + 2)
 
-            Dim L_startBlock As New Label
-            Dim L_endBlock As New Label
-            Dim L_handler As New Label
-            Dim L_done As New Label
+            'Dim L_startBlock As New Label
+            'Dim L_endBlock As New Label
+            'Dim L_handler As New Label
+            'Dim L_done As New Label
 
-            Dim returnType As [Class] = result.function.resolvedHandle.type().returnType()
-            Dim type As MethodType = args.function.resolvedHandle.type().dropParameterTypes(0, 1).changeReturnType(returnType)
+            'Dim returnType As [Class] = result.function.resolvedHandle.type().returnType()
+            'Dim type As MethodType = args.function.resolvedHandle.type().dropParameterTypes(0, 1).changeReturnType(returnType)
 
-            mv.visitTryCatchBlock(L_startBlock, L_endBlock, L_handler, "java/lang/Throwable")
+            'mv.visitTryCatchBlock(L_startBlock, L_endBlock, L_handler, "java/lang/Throwable")
 
-            ' Normal case
-            mv.visitLabel(L_startBlock)
-            ' load target
-            emitPushArgument(invoker, 0)
-            emitPushArguments(args, 1) ' skip 1st argument: method handle
-            mv.visitMethodInsn(Opcodes.INVOKEVIRTUAL, MH, "invokeBasic", type.basicType().toMethodDescriptorString(), False)
-            mv.visitLabel(L_endBlock)
-            mv.visitJumpInsn(Opcodes.GOTO, L_done)
+            '' Normal case
+            'mv.visitLabel(L_startBlock)
+            '' load target
+            'emitPushArgument(invoker, 0)
+            'emitPushArguments(args, 1) ' skip 1st argument: method handle
+            'mv.visitMethodInsn(Opcodes.INVOKEVIRTUAL, MH, "invokeBasic", type.basicType().toMethodDescriptorString(), False)
+            'mv.visitLabel(L_endBlock)
+            'mv.visitJumpInsn(Opcodes.GOTO, L_done)
 
-            ' Exceptional case
-            mv.visitLabel(L_handler)
+            '' Exceptional case
+            'mv.visitLabel(L_handler)
 
-            ' Check exception's type
-            mv.visitInsn(Opcodes.DUP)
-            ' load exception class
-            emitPushArgument(invoker, 1)
-            mv.visitInsn(Opcodes.SWAP)
-            mv.visitMethodInsn(Opcodes.INVOKEVIRTUAL, "java/lang/Class", "isInstance", "(Ljava/lang/Object;)Z", False)
-            Dim L_rethrow As New Label
-            mv.visitJumpInsn(Opcodes.IFEQ, L_rethrow)
+            '' Check exception's type
+            'mv.visitInsn(Opcodes.DUP)
+            '' load exception class
+            'emitPushArgument(invoker, 1)
+            'mv.visitInsn(Opcodes.SWAP)
+            'mv.visitMethodInsn(Opcodes.INVOKEVIRTUAL, "java/lang/Class", "isInstance", "(Ljava/lang/Object;)Z", False)
+            'Dim L_rethrow As New Label
+            'mv.visitJumpInsn(Opcodes.IFEQ, L_rethrow)
 
-            ' Invoke catcher
-            ' load catcher
-            emitPushArgument(invoker, 2)
-            mv.visitInsn(Opcodes.SWAP)
-            emitPushArguments(args, 1) ' skip 1st argument: method handle
-            Dim catcherType As MethodType = type.insertParameterTypes(0, GetType(Throwable))
-            mv.visitMethodInsn(Opcodes.INVOKEVIRTUAL, MH, "invokeBasic", catcherType.basicType().toMethodDescriptorString(), False)
-            mv.visitJumpInsn(Opcodes.GOTO, L_done)
+            '' Invoke catcher
+            '' load catcher
+            'emitPushArgument(invoker, 2)
+            'mv.visitInsn(Opcodes.SWAP)
+            'emitPushArguments(args, 1) ' skip 1st argument: method handle
+            'Dim catcherType As MethodType = type.insertParameterTypes(0, GetType(Throwable))
+            'mv.visitMethodInsn(Opcodes.INVOKEVIRTUAL, MH, "invokeBasic", catcherType.basicType().toMethodDescriptorString(), False)
+            'mv.visitJumpInsn(Opcodes.GOTO, L_done)
 
-            mv.visitLabel(L_rethrow)
-            mv.visitInsn(Opcodes.ATHROW)
+            'mv.visitLabel(L_rethrow)
+            'mv.visitInsn(Opcodes.ATHROW)
 
-            mv.visitLabel(L_done)
+            'mv.visitLabel(L_done)
 
-            Return result
+            'Return result
         End Function
 
         Private Sub emitPushArguments(  args As Name)
@@ -1218,77 +1218,77 @@ Namespace java.lang.invoke
             '      long        -     l2i,i2b   l2i,i2s  l2i,i2c    l2i      <->      l2f      l2d
             '      float       -     f2i,i2b   f2i,i2s  f2i,i2c    f2i      f2l      <->      f2d
             '      double      -     d2i,i2b   d2i,i2s  d2i,i2c    d2i      d2l      d2f      <->
-            If [from] Is [to] Then Return
-            If [from].subwordOrInt Then
-                ' cast from {byte,short,char,int} to anything
-                emitI2X([to])
-            Else
-                ' cast from {long,float,double} to anything
-                If [to].subwordOrInt Then
-                    ' cast to {byte,short,char,int}
-                    emitX2I([from])
-                    If [to].bitWidth() < 32 Then emitI2X([to])
-                Else
-                    ' cast to {long,float,double} - this is verbose
-                    Dim error_Renamed As Boolean = False
-                    Select Case [from]
-                        Case Long
-                            Select Case [to]
-                                Case Float
-                                    mv.visitInsn(Opcodes.L2F)
-                                Case Double
-                                    mv.visitInsn(Opcodes.L2D)
-                                Case Else
-                                    error_Renamed = True
-                            End Select
-                        Case Float
-                            Select Case [to]
-                                Case Long
-                                    mv.visitInsn(Opcodes.F2L)
-                                Case Double
-                                    mv.visitInsn(Opcodes.F2D)
-                                Case Else
-                                    error_Renamed = True
-                            End Select
-                        Case Double
-                            Select Case [to]
-                                Case Long
-                                    mv.visitInsn(Opcodes.D2L)
-                                Case Float
-                                    mv.visitInsn(Opcodes.D2F)
-                                Case Else
-                                    error_Renamed = True
-                            End Select
-                        Case Else
-                            error_Renamed = True
-                    End Select
-                    If error_Renamed Then Throw New IllegalStateException("unhandled prim cast: " & [from] & "2" & [to])
-                End If
-            End If
+            'If [from] Is [to] Then Return
+            'If [from].subwordOrInt Then
+            '    ' cast from {byte,short,char,int} to anything
+            '    emitI2X([to])
+            'Else
+            '    ' cast from {long,float,double} to anything
+            '    If [to].subwordOrInt Then
+            '        ' cast to {byte,short,char,int}
+            '        emitX2I([from])
+            '        If [to].bitWidth() < 32 Then emitI2X([to])
+            '    Else
+            '        ' cast to {long,float,double} - this is verbose
+            '        Dim error_Renamed As Boolean = False
+            '        Select Case [from]
+            '            Case Long
+            '                Select Case [to]
+            '                    Case Float
+            '                        mv.visitInsn(Opcodes.L2F)
+            '                    Case Double
+            '                        mv.visitInsn(Opcodes.L2D)
+            '                    Case Else
+            '                        error_Renamed = True
+            '                End Select
+            '            Case Float
+            '                Select Case [to]
+            '                    Case Long
+            '                        mv.visitInsn(Opcodes.F2L)
+            '                    Case Double
+            '                        mv.visitInsn(Opcodes.F2D)
+            '                    Case Else
+            '                        error_Renamed = True
+            '                End Select
+            '            Case Double
+            '                Select Case [to]
+            '                    Case Long
+            '                        mv.visitInsn(Opcodes.D2L)
+            '                    Case Float
+            '                        mv.visitInsn(Opcodes.D2F)
+            '                    Case Else
+            '                        error_Renamed = True
+            '                End Select
+            '            Case Else
+            '                error_Renamed = True
+            '        End Select
+            '        If error_Renamed Then Throw New IllegalStateException("unhandled prim cast: " & [from] & "2" & [to])
+            '    End If
+            'End If
         End Sub
 
         Private Sub emitI2X(  type As sun.invoke.util.Wrapper)
-            Select Case type
-                Case Byte
-                    mv.visitInsn(Opcodes.I2B)
-                Case Short
-                    mv.visitInsn(Opcodes.I2S)
-                Case Char
-                    mv.visitInsn(Opcodes.I2C)
-                Case Int() ' naught
-                Case Long
-                    mv.visitInsn(Opcodes.I2L)
-                Case Float
-                    mv.visitInsn(Opcodes.I2F)
-                Case Double
-                    mv.visitInsn(Opcodes.I2D)
-                Case Boolean
-                    ' For compatibility with ValueConversions and explicitCastArguments:
-                    mv.visitInsn(Opcodes.ICONST_1)
-                    mv.visitInsn(Opcodes.IAND)
-                Case Else
-                    Throw New InternalError("unknown type: " & type)
-            End Select
+            'Select Case type
+            '    Case Byte
+            '        mv.visitInsn(Opcodes.I2B)
+            '    Case Short
+            '        mv.visitInsn(Opcodes.I2S)
+            '    Case Char
+            '        mv.visitInsn(Opcodes.I2C)
+            '    Case Int() ' naught
+            '    Case Long
+            '        mv.visitInsn(Opcodes.I2L)
+            '    Case Float
+            '        mv.visitInsn(Opcodes.I2F)
+            '    Case Double
+            '        mv.visitInsn(Opcodes.I2D)
+            '    Case Boolean
+            '        ' For compatibility with ValueConversions and explicitCastArguments:
+            '        mv.visitInsn(Opcodes.ICONST_1)
+            '        mv.visitInsn(Opcodes.IAND)
+            '    Case Else
+            '        Throw New InternalError("unknown type: " & type)
+            'End Select
         End Sub
 
         Private Sub emitX2I(  type As sun.invoke.util.Wrapper)
@@ -1431,16 +1431,16 @@ Namespace java.lang.invoke
         ''' for debugging purposes.
         ''' </summary>
         Private Sub bogusMethod(ParamArray   os As Object())
-            If DUMP_CLASS_FILES Then
-                mv = cw.visitMethod(Opcodes.ACC_STATIC, "dummy", "()V", Nothing, Nothing)
-                For Each o As Object In os
-                    mv.visitLdcInsn(o.ToString())
-                    mv.visitInsn(Opcodes.POP)
-                Next o
-                mv.visitInsn(Opcodes.RETURN)
-                mv.visitMaxs(0, 0)
-                mv.visitEnd()
-            End If
+            'If DUMP_CLASS_FILES Then
+            '    mv = cw.visitMethod(Opcodes.ACC_STATIC, "dummy", "()V", Nothing, Nothing)
+            '    For Each o As Object In os
+            '        mv.visitLdcInsn(o.ToString())
+            '        mv.visitInsn(Opcodes.POP)
+            '    Next o
+            '    mv.visitInsn(Opcodes.RETURN)
+            '    mv.visitMaxs(0, 0)
+            '    mv.visitEnd()
+            'End If
         End Sub
     End Class
 
