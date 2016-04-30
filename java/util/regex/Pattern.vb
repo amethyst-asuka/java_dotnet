@@ -1472,75 +1472,75 @@ Namespace java.util.regex
 		''' equivalent.
 		''' </summary>
 		Private Function producePermutations(  input As String) As String()
-			If input.length() = countChars(input, 0, 1) Then Return New String() {input}
+            '		If input.length() = countChars(input, 0, 1) Then Return New String() {input}
 
-			If input.length() = countChars(input, 0, 2) Then
-				Dim c0 As Integer = Character.codePointAt(input, 0)
-				Dim c1 As Integer = Character.codePointAt(input, Character.charCount(c0))
-				If getClass(c1) = getClass(c0) Then Return New String() {input}
-				Dim result As String() = New String(1){}
-				result(0) = input
-				Dim sb As New StringBuilder(2)
-				sb.appendCodePoint(c1)
-				sb.appendCodePoint(c0)
-				result(1) = sb.ToString()
-				Return result
-			End If
+            '		If input.length() = countChars(input, 0, 2) Then
+            '			Dim c0 As Integer = Character.codePointAt(input, 0)
+            '			Dim c1 As Integer = Character.codePointAt(input, Character.charCount(c0))
+            '			If getClass(c1) = getClass(c0) Then Return New String() {input}
+            '			Dim result As String() = New String(1){}
+            '			result(0) = input
+            '			Dim sb As New StringBuilder(2)
+            '			sb.appendCodePoint(c1)
+            '			sb.appendCodePoint(c0)
+            '			result(1) = sb.ToString()
+            '			Return result
+            '		End If
 
-			Dim length As Integer = 1
-			Dim nCodePoints As Integer = countCodePoints(input)
-			For x As Integer = 1 To nCodePoints - 1
-				length = length * (x+1)
-			Next x
+            '		Dim length As Integer = 1
+            '		Dim nCodePoints As Integer = countCodePoints(input)
+            '		For x As Integer = 1 To nCodePoints - 1
+            '			length = length * (x+1)
+            '		Next x
 
-			Dim temp As String() = New String(length - 1){}
+            '		Dim temp As String() = New String(length - 1){}
 
-			Dim combClass As Integer() = New Integer(nCodePoints - 1){}
-			Dim x As Integer=0
-			Dim i As Integer=0
-			Do While x<nCodePoints
-				Dim c As Integer = Character.codePointAt(input, i)
-				combClass(x) = getClass(c)
-				i += Character.charCount(c)
-				x += 1
-			Loop
+            '		Dim combClass As Integer() = New Integer(nCodePoints - 1){}
+            '		Dim x As Integer=0
+            '		Dim i As Integer=0
+            '		Do While x<nCodePoints
+            '			Dim c As Integer = Character.codePointAt(input, i)
+            '			combClass(x) = getClass(c)
+            '			i += Character.charCount(c)
+            '			x += 1
+            '		Loop
 
-			' For each char, take it out and add the permutations
-			' of the remaining chars
-			Dim index As Integer = 0
-			Dim len As Integer
-			' offset maintains the index in code units.
-	loop:
-	x = 0
-	Dim offset As Integer=0
-	Do While x<nCodePoints
-				len = countChars(input, offset, 1)
-				Dim skip As Boolean = False
-				For y As Integer = x-1 To 0 Step -1
-					If combClass(y) = combClass(x) Then GoTo loop
-				Next y
-				Dim sb As New StringBuilder(input)
-				Dim otherChars As String = sb.delete(offset, offset+len).ToString()
-				Dim subResult As String() = producePermutations(otherChars)
+            '		' For each char, take it out and add the permutations
+            '		' of the remaining chars
+            '		Dim index As Integer = 0
+            '		Dim len As Integer
+            '		' offset maintains the index in code units.
+            'loop:
+            'x = 0
+            'Dim offset As Integer=0
+            'Do While x<nCodePoints
+            '			len = countChars(input, offset, 1)
+            '			Dim skip As Boolean = False
+            '			For y As Integer = x-1 To 0 Step -1
+            '				If combClass(y) = combClass(x) Then GoTo loop
+            '			Next y
+            '			Dim sb As New StringBuilder(input)
+            '			Dim otherChars As String = sb.delete(offset, offset+len).ToString()
+            '			Dim subResult As String() = producePermutations(otherChars)
 
-				Dim prefix As String = input.Substring(offset, len)
-				For y As Integer = 0 To subResult.Length - 1
-					temp(index) = prefix + subResult(y)
-					index += 1
-				Next y
-		x += 1
-		offset+=len
-	Loop
-			Dim result As String() = New String(index - 1){}
-			For x As Integer = 0 To index - 1
-				result(x) = temp(x)
-			Next x
-			Return result
-		End Function
+            '			Dim prefix As String = input.Substring(offset, len)
+            '			For y As Integer = 0 To subResult.Length - 1
+            '				temp(index) = prefix + subResult(y)
+            '				index += 1
+            '			Next y
+            '	x += 1
+            '	offset+=len
+            'Loop
+            '		Dim result As String() = New String(index - 1){}
+            '		For x As Integer = 0 To index - 1
+            '			result(x) = temp(x)
+            '		Next x
+            '		Return result
+        End Function
 
 		Private Function getClass(  c As Integer) As Integer
-			Return sun.text.Normalizer.getCombiningClass(c)
-		End Function
+            '	Return sun.text.Normalizer.getCombiningClass(c)
+        End Function
 
 		''' <summary>
 		''' Attempts to compose input by combining the first character
@@ -1562,672 +1562,674 @@ Namespace java.util.regex
 			End If
 		End Function
 
-		''' <summary>
-		''' Preprocess any \Q...\E sequences in `temp', meta-quoting them.
-		''' See the description of `quotemeta' in perlfunc(1).
-		''' </summary>
-		Private Sub RemoveQEQuoting()
-			Dim pLen As Integer = patternLength
-			Dim i As Integer = 0
-			Do While i < pLen-1
-				If temp(i) <> AscW("\"c) Then
-					i += 1
-				ElseIf temp(i + 1) <> AscW("Q"c) Then
-					i += 2
-				Else
-					Exit Do
-				End If
-			Loop
-			If i >= pLen - 1 Then ' No \Q sequence found Return
-			Dim j As Integer = i
-			i += 2
-			Dim newtemp As Integer() = New Integer(j + 3*(pLen-i) + 2 - 1){}
-			Array.Copy(temp, 0, newtemp, 0, j)
+        ''' <summary>
+        ''' Preprocess any \Q...\E sequences in `temp', meta-quoting them.
+        ''' See the description of `quotemeta' in perlfunc(1).
+        ''' </summary>
+        Private Sub RemoveQEQuoting()
+            '       Dim pLen As Integer = patternLength
+            '       Dim i As Integer = 0
+            '       Do While i < pLen - 1
+            '           If temp(i) <> AscW("\"c) Then
+            '               i += 1
+            '           ElseIf temp(i + 1) <> AscW("Q"c) Then
+            '               i += 2
+            '           Else
+            '               Exit Do
+            '           End If
+            '       Loop
+            '       If i >= pLen - 1 Then ' No \Q sequence found Return
+            '           Dim j As Integer = i
+            '           i += 2
+            '           Dim newtemp As Integer() = New Integer(j + 3 * (pLen - i) + 2 - 1) {}
+            '           Array.Copy(temp, 0, newtemp, 0, j)
 
-			Dim inQuote As Boolean = True
-			Dim beginQuote As Boolean = True
-			Do While i < pLen
-				Dim c As Integer = temp(i)
-				i += 1
-				If (Not ASCII.isAscii(c)) OrElse ASCII.isAlpha(c) Then
-					newtemp(j) = c
-					j += 1
-				ElseIf ASCII.isDigit(c) Then
-					If beginQuote Then newtemp(j) = """c; j += 1; newtemp[j++] = "x"c; newtemp[j++] = "3"c; } newtemp[j++] = c; } else if (c != "\"c) { if (inQuote) newtemp[j++] = "\"c; newtemp[j++] = c; } else if (inQuote) { if (temp[i] == "E"c) { i++; inQuote = false; } else { newtemp[j++] = "\"c; newtemp[j++] = "\"c; } } else { if (temp[i] == "Q"c) { i++; inQuote = true; beginQuote = true; continue; } else { newtemp[j++] = c; if (i != pLen) newtemp[j++] = temp[i++]; } } beginQuote = false; } patternLength = j; temp = Arrays.copyOf(newtemp, j + 2); } private  Sub  compile() { if (has(CANON_EQ) && !has(LITERAL)) { normalize(); } else { normalizedPattern = pattern; } patternLength = normalizedPattern.length(); temp = new int[patternLength + 2]; hasSupplementary = false; int c, count = 0; for (int x = 0; x < patternLength; x += Character.charCount(c)) { c = normalizedPattern.codePointAt(x); if (isSupplementary(c)) { hasSupplementary = true; } temp[count++] = c; } patternLength = count; if (! has(LITERAL)) RemoveQEQuoting(); buffer = new int[32]; groupNodes = new GroupHead[10]; namedGroups = null; if (has(LITERAL)) { matchRoot = newSlice(temp, patternLength, hasSupplementary); matchRoot.next = lastAccept; } else { matchRoot = expr(lastAccept); if (patternLength != cursor) { if (peek() == ")"c) { throw error("Unmatched closing ')'"); } else { throw error("Unexpected internal error"); } } } if (matchRoot instanceof Slice) { root = BnM.optimize(matchRoot); if (root == matchRoot) { root = hasSupplementary ? new StartS(matchRoot) : new Start(matchRoot); } } else if (matchRoot instanceof Begin || matchRoot instanceof First) { root = matchRoot; } else { root = hasSupplementary ? new StartS(matchRoot) : new Start(matchRoot); } temp = null; buffer = null; groupNodes = null; patternLength = 0; compiled = true; } Map<String, Integer> namedGroups() { if (namedGroups == null) namedGroups = new HashMap<>(2); return namedGroups; } private static  Sub  printObjectTree(Node node) { while(node != null) { if (node instanceof Prolog) { System.out.println(node); printObjectTree(((Prolog)node).loop); System.out.println("**** end contents prolog loop"); } else if (node instanceof Loop) { System.out.println(node); printObjectTree(((Loop)node).body); System.out.println("**** end contents Loop body"); } else if (node instanceof Curly) { System.out.println(node); printObjectTree(((Curly)node).atom); System.out.println("**** end contents Curly body"); } else if (node instanceof GroupCurly) { System.out.println(node); printObjectTree(((GroupCurly)node).atom); System.out.println("**** end contents GroupCurly body"); } else if (node instanceof GroupTail) { System.out.println(node); System.out.println("Tail next is "+node.next); return; } else { System.out.println(node); } node = node.next; if (node != null) System.out.println("->next:"); if (node == Pattern.accept) { System.out.println("Accept Node"); node = null; } } } static final class TreeInfo { int minLength; int maxLength; boolean maxValid; boolean deterministic; TreeInfo() { reset(); }  Sub  reset() { minLength = 0; maxLength = 0; maxValid = true; deterministic = true; } } private boolean has(int f) { return (flags & f) != 0; } private  Sub  accept(int ch, String s) { int testChar = temp[cursor++]; if (has(COMMENTS)) testChar = parsePastWhitespace(testChar); if (ch != testChar) { throw error(s); } } private  Sub  mark(int c) { temp[patternLength] = c; } private int peek() { int ch = temp[cursor]; if (has(COMMENTS)) ch = peekPastWhitespace(ch); return ch; } private int read() { int ch = temp[cursor++]; if (has(COMMENTS)) ch = parsePastWhitespace(ch); return ch; } private int readEscaped() { int ch = temp[cursor++]; return ch; } private int next() { int ch = temp[++cursor]; if (has(COMMENTS)) ch = peekPastWhitespace(ch); return ch; } private int nextEscaped() { int ch = temp[++cursor]; return ch; } private int peekPastWhitespace(int ch) { while (ASCII.isSpace(ch) || ch == "#"c) { while (ASCII.isSpace(ch)) ch = temp[++cursor]; if (ch == "#"c) { ch = peekPastLine(); } } return ch; } private int parsePastWhitespace(int ch) { while (ASCII.isSpace(ch) || ch == "#"c) { while (ASCII.isSpace(ch)) ch = temp[cursor++]; if (ch == "#"c) ch = parsePastLine(); } return ch; } private int parsePastLine() { int ch = temp[cursor++]; while (ch != 0 && !isLineSeparator(ch)) ch = temp[cursor++]; return ch; } private int peekPastLine() { int ch = temp[++cursor]; while (ch != 0 && !isLineSeparator(ch)) ch = temp[++cursor]; return ch; } private boolean isLineSeparator(int ch) { if (has(UNIX_LINES)) { return ch == ControlChars.Lf; } else { return (ch == ControlChars.Lf || ch == ControlChars.Cr || (ch|1) == ChrW(&H2029) || ch == ChrW(&H0085)); } } private int skip() { int i = cursor; int ch = temp[i+1]; cursor = i + 2; return ch; } private  Sub  unread() { cursor--; } private PatternSyntaxException error(String s) { return new PatternSyntaxException(s, normalizedPattern,  cursor - 1); } private boolean findSupplementary(int start, int end) { for (int i = start; i < end; i++) { if (isSupplementary(temp[i])) return true; } return false; } private static final boolean isSupplementary(int ch) { return ch >= Character.MIN_SUPPLEMENTARY_CODE_POINT || Character.isSurrogate((char)ch); } private Node expr(Node end) { Node prev = null; Node firstTail = null; Branch branch = null; Node branchConn = null; for (;;) { Node node = sequence(end); Node nodeTail = root; if (prev == null) { prev = node; firstTail = nodeTail; } else { if (branchConn == null) { branchConn = new BranchConn(); branchConn.next = end; } if (node == end) { node = null; } else { nodeTail.next = branchConn; } if (prev == branch) { branch.add(node); } else { if (prev == end) { prev = null; } else { firstTail.next = branchConn; } prev = branch = new Branch(prev, node, branchConn); } } if (peek() != "|"c) { return prev; } next(); } } @SuppressWarnings("fallthrough") private Node sequence(Node end) { Node head = null; Node tail = null; Node node = null; LOOP: for (;;) { int ch = peek(); switch (ch) { case "("c: node = group0(); if (node == null) continue; if (head == null) head = node; else tail.next = node; tail = root; continue; case "["c: node = clazz(true); break; case "\"c: ch = nextEscaped(); if (ch == "p"c || ch == "P"c) { boolean oneLetter = true; boolean comp = (ch == "P"c); ch = next(); if (ch != "{"c) { unread(); } else { oneLetter = false; } node = family(oneLetter, comp); } else { unread(); node = atom(); } break; case "^"c: next(); if (has(MULTILINE)) { if (has(UNIX_LINES)) node = new UnixCaret(); else node = new Caret(); } else { node = new Begin(); } break; case "$"c: next(); if (has(UNIX_LINES)) node = new UnixDollar(has(MULTILINE)); else node = new Dollar(has(MULTILINE)); break; case "."c: next(); if (has(DOTALL)) { node = new All(); } else { if (has(UNIX_LINES)) node = new UnixDot(); else { node = new Dot(); } } break; case "|"c: case ")"c: break LOOP; case "]"c: case " ' Now interpreting dangling ] and } as literals -  Consume { if present
-'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
-					"c: node = atom(); break; case "?"c: case "*"c: case " & "c: next(); throw error("Dangling meta character
-					' Fall through
-		''' <summary>
-		''' Parse and add a new Single or Slice.
-		''' </summary>
-					' Unwind meta escape sequence
-					' Fall through
-		''' <summary>
-		''' Parses a backref greedily, taking as many numbers as it
-		''' can. The first digit is always treated as a backref, but
-		''' multi digit numbers are only treated as a backref if at
-		''' least that many backrefs exist at this point in the regex.
-		''' </summary>
-					' Add another number if it doesn't make a group
-					' that doesn't exist
-		''' <summary>
-		''' Parses an escape sequence to determine the actual value that needs
-		''' to be matched.
-		''' If -1 is returned and create was true a new object was added to the tree
-		''' to handle the escape sequence.
-		''' If the returned value is greater than zero, it is the value that
-		''' matches the escape sequence.
-		''' </summary>
-				' '\v' was implemented as VT/0x0B in releases < 1.8 (though
-				' undocumented). In JDK8 '\v' is specified as a predefined
-				' character class for all vertical whitespace characters.
-				' So [-1, root=VertWS node] pair is returned (instead of a
-				' single 0x0B). This breaks the range if '\v' is used as
-				' the start or end value, such as [\v-...] or [...-\v], in
-				' which a single definite value (0x0B) is expected. For
-				' compatibility concern '\013'/0x0B is returned if isrange.
-		''' <summary>
-		''' Parse a character [Class], and return the node that matches it.
-		''' 
-		''' Consumes a ] on the way out if consume is true. Usually consume
-		''' is true except for the case of [abc&&def] where def is a separate
-		''' right hand node with "understood" brackets.
-		''' </summary>
-						' Negates if first char in a [Class], otherwise literal
-							' ^ not first in [Class], treat as literal
-							' treat as a literal &
-	'         Bits can only handle codepoints in [u+0000-u+00ff] range.
-	'           Use "single" node instead of bits when dealing with unicode
-	'           case folding for codepoints listed below.
-	'           (1)Uppercase out of range: u+00ff, u+00b5
-	'              toUpperCase(u+00ff) -> u+0178
-	'              toUpperCase(u+00b5) -> u+039c
-	'           (2)LatinSmallLetterLongS u+17f
-	'              toUpperCase(u+017f) -> u+0053
-	'           (3)LatinSmallLetterDotlessI u+131
-	'              toUpperCase(u+0131) -> u+0049
-	'           (4)LatinCapitalLetterIWithDotAbove u+0130
-	'              toLowerCase(u+0130) -> u+0069
-	'           (5)KelvinSign u+212a
-	'              toLowerCase(u+212a) ==> u+006B
-	'           (6)AngstromSign u+212b
-	'              toLowerCase(u+212b) ==> u+00e5
-	'        
-		''' <summary>
-		''' Parse a single character or a character range in a character class
-		''' and return its representative node.
-		''' </summary>
-					' Consume { if present
-		''' <summary>
-		''' Parses a Unicode character family and returns its representative node.
-		''' </summary>
-				' property construct \p{name=value}
-					' \p{inBlockName}
-					' \p{isGeneralCategory} and \p{isScriptName}
-		''' <summary>
-		''' Returns a CharProperty matching all characters belong to
-		''' a UnicodeScript.
-		''' </summary>
-		''' <summary>
-		''' Returns a CharProperty matching all characters in a UnicodeBlock.
-		''' </summary>
-		''' <summary>
-		''' Returns a CharProperty matching all characters in a named property.
-		''' </summary>
-		''' <summary>
-		''' Parses and returns the name of a "named capturing group", the trailing
-		''' ">" is consumed after parsing.
-		''' </summary>
-		''' <summary>
-		''' Parses a group and returns the head node of a set of nodes that process
-		''' the group. Sometimes a double return system is used where the tail is
-		''' returned in root.
-		''' </summary>
-						' named captured group
-			' Check for quantifiers
-				' Discover if the group is deterministic
-		''' <summary>
-		''' Create group head and tail nodes using double return. If the group is
-		''' created with anonymous true then it is a pure group and should not
-		''' affect group counting.
-		''' </summary>
-		''' <summary>
-		''' Parses inlined match flags and set them appropriately.
-		''' </summary>
-		''' <summary>
-		''' Parses the second part of inlined match flags and turns off
-		''' flags appropriately.
-		''' </summary>
-		''' <summary>
-		''' Processes repetition. If the next character peeked is a quantifier
-		''' then new nodes must be appended to handle the repetition.
-		''' Prev could be a single or a group, so it could be a chain of nodes.
-		''' </summary>
-		''' <summary>
-		'''  Utility method for parsing control escape sequences.
-		''' </summary>
-		''' <summary>
-		'''  Utility method for parsing octal escape sequences.
-		''' </summary>
-		''' <summary>
-		'''  Utility method for parsing hexadecimal escape sequences.
-		''' </summary>
-		''' <summary>
-		'''  Utility method for parsing unicode escape sequences.
-		''' </summary>
-		'
-		' Utility methods for code point support
-		'
-			' optimization
-		''' <summary>
-		'''  Creates a bit vector for matching Latin-1 values. A normal BitClass
-		'''  never matches values above Latin-1, and a complemented BitClass always
-		'''  matches values above Latin-1.
-		''' </summary>
-		''' <summary>
-		'''  Returns a suitably optimized, single character matcher.
-		''' </summary>
-		''' <summary>
-		'''  Utility method for creating a string slice matcher.
-		''' </summary>
-		''' <summary>
-		''' The following classes are the building components of the object
-		''' tree that represents a compiled regular expression. The object tree
-		''' is made of individual elements that handle constructs in the Pattern.
-		''' Each type of object knows how to match its equivalent construct with
-		''' the match() method.
-		''' </summary>
-		''' <summary>
-		''' Base class for all node classes. Subclasses should override the match()
-		''' method as appropriate. This class is an accepting node, so its match()
-		''' always returns true.
-		''' </summary>
-			''' <summary>
-			''' This method implements the classic accept node.
-			''' </summary>
-			''' <summary>
-			''' This method is good for all zero length assertions.
-			''' </summary>
-			''' <summary>
-			''' This method implements the classic accept node with
-			''' the addition of a check to see if the match occurred
-			''' using all of the input.
-			''' </summary>
-		''' <summary>
-		''' Used for REs that can start anywhere within the input string.
-		''' This basically tries to match repeatedly at each spot in the
-		''' input string, moving forward after each try. An anchored search
-		''' or a BnM will bypass this node completely.
-		''' </summary>
-	'    
-	'     * StartS supports supplementary characters, including unpaired surrogates.
-	'     
-					'if ((ret = next.match(matcher, i, seq)) || i == guard)
-					' Optimization to move to the next character. This is
-					' faster than countChars(seq, i, 1).
-		''' <summary>
-		''' Node to anchor at the beginning of input. This object implements the
-		''' match for a \A sequence, and the caret anchor will use this if not in
-		''' multiline mode.
-		''' </summary>
-		''' <summary>
-		''' Node to anchor at the end of input. This is the absolute end, so this
-		''' should not match at the last newline before the end as $ will.
-		''' </summary>
-		''' <summary>
-		''' Node to anchor at the beginning of a line. This is essentially the
-		''' object to match for the multiline ^.
-		''' </summary>
-				' Perl does not match ^ at end of input even after newline
-					' Should treat /r/n as one newline
-		''' <summary>
-		''' Node to anchor at the beginning of a line when in unixdot mode.
-		''' </summary>
-				' Perl does not match ^ at end of input even after newline
-		''' <summary>
-		''' Node to match the location where the last match ended.
-		''' This is used for the \G construct.
-		''' </summary>
-		''' <summary>
-		''' Node to anchor at the end of a line or the end of input based on the
-		''' multiline mode.
-		''' 
-		''' When not in multiline mode, the $ can only match at the very end
-		''' of the input, unless the input ends in a line terminator in which
-		''' it matches right before the last line terminator.
-		''' 
-		''' Note that \r\n is considered an atomic line terminator.
-		''' 
-		''' Like ^ the $ operator matches at a position, it does not match the
-		''' line terminators themselves.
-		''' </summary>
-				' Matches before any line terminator; also matches at the
-				' end of input
-				' Before line terminator:
-				' If multiline, we match here no matter what
-				' If not multiline, fall through so that the end
-				' is marked as hit; this must be a /r/n or a /n
-				' at the very end so the end was hit; more input
-				' could make this not match here
-						 ' No match between \r\n
-				' Matched at current end so hit end
-				' If a $ matches because of end of input, then more input
-				' could cause it to fail!
-		''' <summary>
-		''' Node to anchor at the end of a line or the end of input based on the
-		''' multiline mode when in unix lines mode.
-		''' </summary>
-						' If not multiline, then only possible to
-						' match at very end or one before end
-						' If multiline return next.match without setting
-						' matcher.hitEnd
-				' Matching because at the end or 1 before the end;
-				' more input could change this so set hitEnd
-				' If a $ matches because of end of input, then more input
-				' could cause it to fail!
-		''' <summary>
-		''' Node class that matches a Unicode line ending '\R'
-		''' </summary>
-				' (u+000Du+000A|[u+000Au+000Bu+000Cu+000Du+0085u+2028u+2029])
-		''' <summary>
-		''' Abstract node class to match one character satisfying some
-		''' boolean property.
-		''' </summary>
-		''' <summary>
-		''' Optimized version of CharProperty that works only for
-		''' properties never satisfied by Supplementary characters.
-		''' </summary>
-		''' <summary>
-		''' Node class that matches a Supplementary Unicode character
-		''' </summary>
-		''' <summary>
-		''' Optimization -- matches a given BMP character
-		''' </summary>
-		''' <summary>
-		''' Case insensitive matches a given BMP character
-		''' </summary>
-		''' <summary>
-		''' Unicode case insensitive matches a given Unicode character
-		''' </summary>
-		''' <summary>
-		''' Node class that matches a Unicode block.
-		''' </summary>
-		''' <summary>
-		''' Node class that matches a Unicode script
-		''' </summary>
-		''' <summary>
-		''' Node class that matches a Unicode category.
-		''' </summary>
-		''' <summary>
-		''' Node class that matches a Unicode "type"
-		''' </summary>
-		''' <summary>
-		''' Node class that matches a POSIX type.
-		''' </summary>
-		''' <summary>
-		''' Node class that matches a Perl vertical whitespace
-		''' </summary>
-		''' <summary>
-		''' Node class that matches a Perl horizontal whitespace
-		''' </summary>
-		''' <summary>
-		''' Base class for all Slice nodes
-		''' </summary>
-		''' <summary>
-		''' Node class for a case sensitive/BMP-only sequence of literal
-		''' characters.
-		''' </summary>
-		''' <summary>
-		''' Node class for a case_insensitive/BMP-only sequence of literal
-		''' characters.
-		''' </summary>
-		''' <summary>
-		''' Node class for a unicode_case_insensitive/BMP-only sequence of
-		''' literal characters. Uses unicode case folding.
-		''' </summary>
-		''' <summary>
-		''' Node class for a case sensitive sequence of literal characters
-		''' including supplementary characters.
-		''' </summary>
-		''' <summary>
-		''' Node class for a case insensitive sequence of literal characters
-		''' including supplementary characters.
-		''' </summary>
-		''' <summary>
-		''' Node class for a case insensitive sequence of literal characters.
-		''' Uses unicode case folding.
-		''' </summary>
-		''' <summary>
-		''' Returns node for matching characters within an explicit value range.
-		''' </summary>
-		''' <summary>
-		''' Returns node for matching characters within an explicit value
-		''' range in a case insensitive manner.
-		''' </summary>
-		''' <summary>
-		''' Implements the Unicode category ALL and the dot metacharacter when
-		''' in dotall mode.
-		''' </summary>
-		''' <summary>
-		''' Node class for the dot metacharacter when dotall is not enabled.
-		''' </summary>
-		''' <summary>
-		''' Node class for the dot metacharacter when dotall is not enabled
-		''' but UNIX_LINES is enabled.
-		''' </summary>
-		''' <summary>
-		''' The 0 or 1 quantifier. This one class implements all three types.
-		''' </summary>
-		''' <summary>
-		''' Handles the curly-brace style repetition with a specified minimum and
-		''' maximum occurrences. The * quantifier is handled as a special case.
-		''' This class handles the three types.
-		''' </summary>
-			' Greedy match.
-			' i is the index to start matching at
-			' j is the number of atoms that have matched
-					' We have matched the maximum... continue with the rest of
-					' the regular expression
-					' k is the length of this match
-					' Move up index and number matched
-					' We are greedy so match as many as we can
-					' Handle backing off if match fails
-			' Reluctant match. At this point, the minimum has been satisfied.
-			' i is the index to start matching at
-			' j is the number of atoms that have matched
-					' Try finishing match without consuming any more
-					' At the maximum, no match found
-					' Okay, must try one more atom
-					' If we haven't moved forward then must break out
-					' Move up index and number matched
-				' Save original info
-		''' <summary>
-		''' Handles the curly-brace style repetition with a specified minimum and
-		''' maximum occurrences in deterministic cases. This is an iterative
-		''' optimization over the Prolog and Loop system which would handle this
-		''' in a recursive way. The * quantifier is handled as a special case.
-		''' If capture is true then this class saves group settings and ensures
-		''' that groups are unset when backing off of a group match.
-		''' </summary>
-				' Notify GroupTail there is no need to setup group info
-				' because it will be set here
-			' Aggressive group match
-				' don't back off passing the starting "j"
-						' backing off
-			' Reluctant matching
-			' Possessive matching
-				' Save original info
-		''' <summary>
-		''' A Guard node at the end of each atom node in a Branch. It
-		''' serves the purpose of chaining the "match" operation to
-		''' "next" but not the "study", so we can collect the TreeInfo
-		''' of each atom node without including the TreeInfo of the
-		''' "next".
-		''' </summary>
-		''' <summary>
-		''' Handles the branching of alternations. Note this is also used for
-		''' the ? quantifier to branch between the case where it matches once
-		''' and where it does not occur.
-		''' </summary>
-		''' <summary>
-		''' The GroupHead saves the location where the group begins in the locals
-		''' and restores them when the match is done.
-		''' 
-		''' The matchRef is used when a reference to this group is accessed later
-		''' in the expression. The locals will have a negative value in them to
-		''' indicate that we do not want to unset the group if the reference
-		''' doesn't match.
-		''' </summary>
-		''' <summary>
-		''' Recursive reference to a group in the regular expression. It calls
-		''' matchRef because if the reference fails to match we would not unset
-		''' the group.
-		''' </summary>
-		''' <summary>
-		''' The GroupTail handles the setting of group beginning and ending
-		''' locations when groups are successfully matched. It must also be able to
-		''' unset groups that have to be backed off of.
-		''' 
-		''' The GroupTail node is also used when a previous group is referenced,
-		''' and in that case no group information needs to be set.
-		''' </summary>
-					' Save the group so we can unset it if it
-					' backs off of a match.
-					' This is a group reference case. We don't need to save any
-					' group info because it isn't really a group.
-		''' <summary>
-		''' This sets up a loop to handle a recursive quantifier structure.
-		''' </summary>
-		''' <summary>
-		''' Handles the repetition count for a greedy Curly. The matchInit
-		''' is called from the Prolog to save the index of where the group
-		''' beginning is stored. A zero length group check occurs in the
-		''' normal match but is skipped in the matchInit.
-		''' </summary>
-				' Avoid infinite loop in zero-length case.
-					' This block is for before we reach the minimum
-					' iterations required for the loop to match
-						' If match failed we must backtrack, so
-						' the loop count should NOT be incremented
-						' Return success or failure since we are under
-						' minimum
-					' This block is for after we have the minimum
-					' iterations required for the loop to match
-						' If match failed we must backtrack, so
-						' the loop count should NOT be incremented
-		''' <summary>
-		''' Handles the repetition count for a reluctant Curly. The matchInit
-		''' is called from the Prolog to save the index of where the group
-		''' beginning is stored. A zero length group check occurs in the
-		''' normal match but is skipped in the matchInit.
-		''' </summary>
-				' Check for zero length group
-						' If match failed we must backtrack, so
-						' the loop count should NOT be incremented
-						' If match failed we must backtrack, so
-						' the loop count should NOT be incremented
-		''' <summary>
-		''' Refers to a group in the regular expression. Attempts to match
-		''' whatever the group referred to last matched.
-		''' </summary>
-				' If the referenced group didn't match, neither can this
-				' If there isn't enough input left no match
-				' Check each new char to make sure it matches what the group
-				' referenced matched last time around
-				' If the referenced group didn't match, neither can this
-				' If there isn't enough input left no match
-				' Check each new char to make sure it matches what the group
-				' referenced matched last time around
-		''' <summary>
-		''' Searches until the next instance of its atom. This is useful for
-		''' finding the atom efficiently without passing an instance of it
-		''' (greedy problem) and without a lot of wasted search time (reluctant
-		''' problem).
-		''' </summary>
-		''' <summary>
-		''' Zero width positive lookahead.
-		''' </summary>
-				' Relax transparent region boundaries for lookahead
-					' Reinstate region boundaries
-		''' <summary>
-		''' Zero width negative lookahead.
-		''' </summary>
-				' Relax transparent region boundaries for lookahead
-						' If a negative lookahead succeeds then more input
-						' could cause it to fail!
-					' Reinstate region boundaries
-		''' <summary>
-		''' For use with lookbehinds; matches the position where the lookbehind
-		''' was encountered.
-		''' </summary>
-		''' <summary>
-		''' Zero width positive lookbehind.
-		''' </summary>
-				' Set end boundary
-				' Relax transparent region boundaries for lookbehind
-		''' <summary>
-		''' Zero width positive lookbehind, including supplementary
-		''' characters or unpaired surrogates.
-		''' </summary>
-				' Set end boundary
-				' Relax transparent region boundaries for lookbehind
-		''' <summary>
-		''' Zero width negative lookbehind.
-		''' </summary>
-				' Relax transparent region boundaries for lookbehind
-				' Reinstate region boundaries
-		''' <summary>
-		''' Zero width negative lookbehind, including supplementary
-		''' characters or unpaired surrogates.
-		''' </summary>
-				' Relax transparent region boundaries for lookbehind
-				'Reinstate region boundaries
-		''' <summary>
-		''' Returns the set union of two CharProperty nodes.
-		''' </summary>
-		''' <summary>
-		''' Returns the set intersection of two CharProperty nodes.
-		''' </summary>
-		''' <summary>
-		''' Returns the set difference of two CharProperty nodes.
-		''' </summary>
-		''' <summary>
-		''' Handles word boundaries. Includes a field to allow this one class to
-		''' deal with the different types of word boundaries we can match. The word
-		''' characters include underscores, letters, and digits. Non spacing marks
-		''' can are also part of a word if they have a base character, otherwise
-		''' they are ignored for purposes of finding word boundaries.
-		''' </summary>
-					' Tried to access char past the end
-					' The addition of another char could wreck a boundary
-		''' <summary>
-		''' Non spacing marks only count as word characters in bounds calculations
-		''' if they have a base character.
-		''' </summary>
-		''' <summary>
-		''' Attempts to match a slice in the input using the Boyer-Moore string
-		''' matching algorithm. The algorithm is based on the idea that the
-		''' pattern can be shifted farther ahead in the search text if it is
-		''' matched right to left.
-		''' <p>
-		''' The pattern is compared to the input one character at a time, from
-		''' the rightmost character in the pattern to the left. If the characters
-		''' all match the pattern has been found. If a character does not match,
-		''' the pattern is shifted right a distance that is the maximum of two
-		''' functions, the bad character shift and the good suffix shift. This
-		''' shift moves the attempted match position through the input more
-		''' quickly than a naive one position at a time check.
-		''' <p>
-		''' The bad character shift is based on the character from the text that
-		''' did not match. If the character does not appear in the pattern, the
-		''' pattern can be shifted completely beyond the bad character. If the
-		''' character does occur in the pattern, the pattern can be shifted to
-		''' line the pattern up with the next occurrence of that character.
-		''' <p>
-		''' The good suffix shift is based on the idea that some subset on the right
-		''' side of the pattern has matched. When a bad character is found, the
-		''' pattern can be shifted right by the pattern length if the subset does
-		''' not occur again in pattern, or by the amount of distance to the
-		''' next occurrence of the subset in the pattern.
-		''' 
-		''' Boyer-Moore search methods adapted from code by Amy Yu.
-		''' </summary>
-			''' <summary>
-			''' Pre calculates arrays needed to generate the bad character
-			''' shift and the good suffix shift. Only the last seven bits
-			''' are used to see if chars match; This keeps the tables small
-			''' and covers the heavily used ASCII range, but occasionally
-			''' results in an aliased match for the bad character shift.
-			''' </summary>
-				' The BM algorithm requires a bit of overhead;
-				' If the pattern is short don't use it, since
-				' a shift larger than the pattern length cannot
-				' be used anyway.
-				' Precalculate part of the bad character shift
-				' It is a table for where in the pattern each
-				' lower 7-bit value occurs
-				' Precalculate the good suffix shift
-				' i is the shift amount being considered
-					' j is the beginning index of suffix being considered
-						' Testing for good suffix
-							' src[j..len] is a good suffix
-							' No match. The array has already been
-							' filled up with correct values before.
-					' This fills up the remaining of optoSft
-					' any suffix can not have larger shift amount
-					' then its sub-suffix. Why???
-				' Set the guard value because of unicode compression
-				' Loop over all possible match positions in text
-					' Loop over pattern from right to left
-							' Shift search to the right by the maximum of the
-							' bad character shift and the good suffix shift
-					' Entire pattern matched starting at i
-				' BnM is only used as the leading node in the unanchored case,
-				' and it replaced its Start() which always searches to the end
-				' if it doesn't find what it's looking for, so hitEnd is true.
-		''' <summary>
-		''' Supplementary support version of BnM(). Unpaired surrogates are
-		''' also handled by this class.
-		''' </summary>
-				' Loop over all possible match positions in text
-					' Loop over pattern from right to left
-							' Shift search to the right by the maximum of the
-							' bad character shift and the good suffix shift
-					' Entire pattern matched starting at i
-	'/////////////////////////////////////////////////////////////////////////////
-	'/////////////////////////////////////////////////////////////////////////////
-		''' <summary>
-		'''  This must be the very first initializer.
-		''' </summary>
-				' Unicode character property aliases, defined in
-				' http://www.unicode.org/Public/UNIDATA/PropertyValueAliases.txt
-				' Posix regular expression character classes, defined in
-				' http://www.unix.org/onlinepubs/009695399/basedefs/xbd_chap09.html
-				' Java character properties, defined by methods in Character.java
-		''' <summary>
-		''' Creates a predicate which can be used to match a string.
-		''' </summary>
-		''' <returns>  The predicate which can be used for matching on a string
-		''' @since   1.8 </returns>
-		''' <summary>
-		''' Creates a stream from the given input sequence around matches of this
-		''' pattern.
-		''' 
-		''' <p> The stream returned by this method contains each substring of the
-		''' input sequence that is terminated by another subsequence that matches
-		''' this pattern or is terminated by the end of the input sequence.  The
-		''' substrings in the stream are in the order in which they occur in the
-		''' input. Trailing empty strings will be discarded and not encountered in
-		''' the stream.
-		''' 
-		''' <p> If this pattern does not match any subsequence of the input then
-		''' the resulting stream has just one element, namely the input sequence in
-		''' string form.
-		''' 
-		''' <p> When there is a positive-width match at the beginning of the input
-		''' sequence then an empty leading substring is included at the beginning
-		''' of the stream. A zero-width match at the beginning however never produces
-		''' such empty leading substring.
-		''' 
-		''' <p> If the input sequence is mutable, it must remain constant during the
-		''' execution of the terminal stream operation.  Otherwise, the result of the
-		''' terminal stream operation is undefined.
-		''' </summary>
-		''' <param name="input">
-		'''          The character sequence to be split
-		''' </param>
-		''' <returns>  The stream of strings computed by splitting the input
-		'''          around matches of this pattern </returns>
-		''' <seealso cref=     #split(CharSequence)
-		''' @since   1.8 </seealso>
-				' The start position of the next sub-sequence of input
-				' when current == input.length there are no more elements
-				' null if the next element, if any, needs to obtained
-				' > 0 if there are N next empty elements
-					' Consume the next matching element
-					' Count sequence of matching empty elements
-												  ' match at the beginning of the input
-					' Consume last matching element
-						' Ignore a terminal sequence of matching empty elements
+            '           Dim inQuote As Boolean = True
+            '           Dim beginQuote As Boolean = True
+            '           Do While i < pLen
+            '               Dim c As Integer = temp(i)
+            '               i += 1
+            '               If (Not ASCII.isAscii(c)) OrElse ASCII.isAlpha(c) Then
+            '                   newtemp(j) = c
+            '                   j += 1
+            '               ElseIf ASCII.isDigit(c) Then
+            '                   If beginQuote Then newtemp(j) = """c; j += 1; newtemp[j++] = " x"c; newtemp[j++] = "3"c; } newtemp[j++] = c; } else if (c != "\"c) { if (inQuote) newtemp[j++] = "\"c; newtemp[j++] = c; } else if (inQuote) { if (temp[i] == "E"c) { i++; inQuote = false; } else { newtemp[j++] = "\"c; newtemp[j++] = "\"c; } } else { if (temp[i] == "Q"c) { i++; inQuote = true; beginQuote = true; continue; } else { newtemp[j++] = c; if (i != pLen) newtemp[j++] = temp[i++]; } } beginQuote = false; } patternLength = j; temp = Arrays.copyOf(newtemp, j + 2); } private  Sub  compile() { if (has(CANON_EQ) && !has(LITERAL)) { normalize(); } else { normalizedPattern = pattern; } patternLength = normalizedPattern.length(); temp = new int[patternLength + 2]; hasSupplementary = false; int c, count = 0; for (int x = 0; x < patternLength; x += Character.charCount(c)) { c = normalizedPattern.codePointAt(x); if (isSupplementary(c)) { hasSupplementary = true; } temp[count++] = c; } patternLength = count; if (! has(LITERAL)) RemoveQEQuoting(); buffer = new int[32]; groupNodes = new GroupHead[10]; namedGroups = null; if (has(LITERAL)) { matchRoot = newSlice(temp, patternLength, hasSupplementary); matchRoot.next = lastAccept; } else { matchRoot = expr(lastAccept); if (patternLength != cursor) { if (peek() == ")"c) { throw error("Unmatched closing ')'"); } else { throw error("Unexpected internal error"); } } } if (matchRoot instanceof Slice) { root = BnM.optimize(matchRoot); if (root == matchRoot) { root = hasSupplementary ? new StartS(matchRoot) : new Start(matchRoot); } } else if (matchRoot instanceof Begin || matchRoot instanceof First) { root = matchRoot; } else { root = hasSupplementary ? new StartS(matchRoot) : new Start(matchRoot); } temp = null; buffer = null; groupNodes = null; patternLength = 0; compiled = true; } Map<String, Integer> namedGroups() { if (namedGroups == null) namedGroups = new HashMap<>(2); return namedGroups; } private static  Sub  printObjectTree(Node node) { while(node != null) { if (node instanceof Prolog) { System.out.println(node); printObjectTree(((Prolog)node).loop); System.out.println("**** end contents prolog loop"); } else if (node instanceof Loop) { System.out.println(node); printObjectTree(((Loop)node).body); System.out.println("**** end contents Loop body"); } else if (node instanceof Curly) { System.out.println(node); printObjectTree(((Curly)node).atom); System.out.println("**** end contents Curly body"); } else if (node instanceof GroupCurly) { System.out.println(node); printObjectTree(((GroupCurly)node).atom); System.out.println("**** end contents GroupCurly body"); } else if (node instanceof GroupTail) { System.out.println(node); System.out.println("Tail next is "+node.next); return; } else { System.out.println(node); } node = node.next; if (node != null) System.out.println("->next:"); if (node == Pattern.accept) { System.out.println("Accept Node"); node = null; } } } static final class TreeInfo { int minLength; int maxLength; boolean maxValid; boolean deterministic; TreeInfo() { reset(); }  Sub  reset() { minLength = 0; maxLength = 0; maxValid = true; deterministic = true; } } private boolean has(int f) { return (flags & f) != 0; } private  Sub  accept(int ch, String s) { int testChar = temp[cursor++]; if (has(COMMENTS)) testChar = parsePastWhitespace(testChar); if (ch != testChar) { throw error(s); } } private  Sub  mark(int c) { temp[patternLength] = c; } private int peek() { int ch = temp[cursor]; if (has(COMMENTS)) ch = peekPastWhitespace(ch); return ch; } private int read() { int ch = temp[cursor++]; if (has(COMMENTS)) ch = parsePastWhitespace(ch); return ch; } private int readEscaped() { int ch = temp[cursor++]; return ch; } private int next() { int ch = temp[++cursor]; if (has(COMMENTS)) ch = peekPastWhitespace(ch); return ch; } private int nextEscaped() { int ch = temp[++cursor]; return ch; } private int peekPastWhitespace(int ch) { while (ASCII.isSpace(ch) || ch == "#"c) { while (ASCII.isSpace(ch)) ch = temp[++cursor]; if (ch == "#"c) { ch = peekPastLine(); } } return ch; } private int parsePastWhitespace(int ch) { while (ASCII.isSpace(ch) || ch == "#"c) { while (ASCII.isSpace(ch)) ch = temp[cursor++]; if (ch == "#"c) ch = parsePastLine(); } return ch; } private int parsePastLine() { int ch = temp[cursor++]; while (ch != 0 && !isLineSeparator(ch)) ch = temp[cursor++]; return ch; } private int peekPastLine() { int ch = temp[++cursor]; while (ch != 0 && !isLineSeparator(ch)) ch = temp[++cursor]; return ch; } private boolean isLineSeparator(int ch) { if (has(UNIX_LINES)) { return ch == ControlChars.Lf; } else { return (ch == ControlChars.Lf || ch == ControlChars.Cr || (ch|1) == ChrW(&H2029) || ch == ChrW(&H0085)); } } private int skip() { int i = cursor; int ch = temp[i+1]; cursor = i + 2; return ch; } private  Sub  unread() { cursor--; } private PatternSyntaxException error(String s) { return new PatternSyntaxException(s, normalizedPattern,  cursor - 1); } private boolean findSupplementary(int start, int end) { for (int i = start; i < end; i++) { if (isSupplementary(temp[i])) return true; } return false; } private static final boolean isSupplementary(int ch) { return ch >= Character.MIN_SUPPLEMENTARY_CODE_POINT || Character.isSurrogate((char)ch); } private Node expr(Node end) { Node prev = null; Node firstTail = null; Branch branch = null; Node branchConn = null; for (;;) { Node node = sequence(end); Node nodeTail = root; if (prev == null) { prev = node; firstTail = nodeTail; } else { if (branchConn == null) { branchConn = new BranchConn(); branchConn.next = end; } if (node == end) { node = null; } else { nodeTail.next = branchConn; } if (prev == branch) { branch.add(node); } else { if (prev == end) { prev = null; } else { firstTail.next = branchConn; } prev = branch = new Branch(prev, node, branchConn); } } if (peek() != "|"c) { return prev; } next(); } } @SuppressWarnings("fallthrough") private Node sequence(Node end) { Node head = null; Node tail = null; Node node = null; LOOP: for (;;) { int ch = peek(); switch (ch) { case "("c: node = group0(); if (node == null) continue; if (head == null) head = node; else tail.next = node; tail = root; continue; case "["c: node = clazz(true); break; case "\"c: ch = nextEscaped(); if (ch == "p"c || ch == "P"c) { boolean oneLetter = true; boolean comp = (ch == "P"c); ch = next(); if (ch != "{"c) { unread(); } else { oneLetter = false; } node = family(oneLetter, comp); } else { unread(); node = atom(); } break; case "^"c: next(); if (has(MULTILINE)) { if (has(UNIX_LINES)) node = new UnixCaret(); else node = new Caret(); } else { node = new Begin(); } break; case "$"c: next(); if (has(UNIX_LINES)) node = new UnixDollar(has(MULTILINE)); else node = new Dollar(has(MULTILINE)); break; case "."c: next(); if (has(DOTALL)) { node = new All(); } else { if (has(UNIX_LINES)) node = new UnixDot(); else { node = new Dot(); } } break; case "|"c: case ")"c: break LOOP; case "]"c: case " ' Now interpreting dangling ] and } as literals -  Consume { if present
+
+            '"c: node = atom(); break; case "?"c: case "*"c: case " & "c: next(); throw error("Dangling meta character
+            '               ' Fall through
+        End Sub
+
+    ''' <summary>
+    ''' Parse and add a new Single or Slice.
+    ''' </summary>
+    ' Unwind meta escape sequence
+    ' Fall through
+    ''' <summary>
+    ''' Parses a backref greedily, taking as many numbers as it
+    ''' can. The first digit is always treated as a backref, but
+    ''' multi digit numbers are only treated as a backref if at
+    ''' least that many backrefs exist at this point in the regex.
+    ''' </summary>
+    ' Add another number if it doesn't make a group
+    ' that doesn't exist
+    ''' <summary>
+    ''' Parses an escape sequence to determine the actual value that needs
+    ''' to be matched.
+    ''' If -1 is returned and create was true a new object was added to the tree
+    ''' to handle the escape sequence.
+    ''' If the returned value is greater than zero, it is the value that
+    ''' matches the escape sequence.
+    ''' </summary>
+    ' '\v' was implemented as VT/0x0B in releases < 1.8 (though
+    ' undocumented). In JDK8 '\v' is specified as a predefined
+    ' character class for all vertical whitespace characters.
+    ' So [-1, root=VertWS node] pair is returned (instead of a
+    ' single 0x0B). This breaks the range if '\v' is used as
+    ' the start or end value, such as [\v-...] or [...-\v], in
+    ' which a single definite value (0x0B) is expected. For
+    ' compatibility concern '\013'/0x0B is returned if isrange.
+    ''' <summary>
+    ''' Parse a character [Class], and return the node that matches it.
+    ''' 
+    ''' Consumes a ] on the way out if consume is true. Usually consume
+    ''' is true except for the case of [abc&&def] where def is a separate
+    ''' right hand node with "understood" brackets.
+    ''' </summary>
+    ' Negates if first char in a [Class], otherwise literal
+    ' ^ not first in [Class], treat as literal
+    ' treat as a literal &
+    '         Bits can only handle codepoints in [u+0000-u+00ff] range.
+    '           Use "single" node instead of bits when dealing with unicode
+    '           case folding for codepoints listed below.
+    '           (1)Uppercase out of range: u+00ff, u+00b5
+    '              toUpperCase(u+00ff) -> u+0178
+    '              toUpperCase(u+00b5) -> u+039c
+    '           (2)LatinSmallLetterLongS u+17f
+    '              toUpperCase(u+017f) -> u+0053
+    '           (3)LatinSmallLetterDotlessI u+131
+    '              toUpperCase(u+0131) -> u+0049
+    '           (4)LatinCapitalLetterIWithDotAbove u+0130
+    '              toLowerCase(u+0130) -> u+0069
+    '           (5)KelvinSign u+212a
+    '              toLowerCase(u+212a) ==> u+006B
+    '           (6)AngstromSign u+212b
+    '              toLowerCase(u+212b) ==> u+00e5
+    '        
+    ''' <summary>
+    ''' Parse a single character or a character range in a character class
+    ''' and return its representative node.
+    ''' </summary>
+    ' Consume { if present
+    ''' <summary>
+    ''' Parses a Unicode character family and returns its representative node.
+    ''' </summary>
+    ' property construct \p{name=value}
+    ' \p{inBlockName}
+    ' \p{isGeneralCategory} and \p{isScriptName}
+    ''' <summary>
+    ''' Returns a CharProperty matching all characters belong to
+    ''' a UnicodeScript.
+    ''' </summary>
+    ''' <summary>
+    ''' Returns a CharProperty matching all characters in a UnicodeBlock.
+    ''' </summary>
+    ''' <summary>
+    ''' Returns a CharProperty matching all characters in a named property.
+    ''' </summary>
+    ''' <summary>
+    ''' Parses and returns the name of a "named capturing group", the trailing
+    ''' ">" is consumed after parsing.
+    ''' </summary>
+    ''' <summary>
+    ''' Parses a group and returns the head node of a set of nodes that process
+    ''' the group. Sometimes a double return system is used where the tail is
+    ''' returned in root.
+    ''' </summary>
+    ' named captured group
+    ' Check for quantifiers
+    ' Discover if the group is deterministic
+    ''' <summary>
+    ''' Create group head and tail nodes using double return. If the group is
+    ''' created with anonymous true then it is a pure group and should not
+    ''' affect group counting.
+    ''' </summary>
+    ''' <summary>
+    ''' Parses inlined match flags and set them appropriately.
+    ''' </summary>
+    ''' <summary>
+    ''' Parses the second part of inlined match flags and turns off
+    ''' flags appropriately.
+    ''' </summary>
+    ''' <summary>
+    ''' Processes repetition. If the next character peeked is a quantifier
+    ''' then new nodes must be appended to handle the repetition.
+    ''' Prev could be a single or a group, so it could be a chain of nodes.
+    ''' </summary>
+    ''' <summary>
+    '''  Utility method for parsing control escape sequences.
+    ''' </summary>
+    ''' <summary>
+    '''  Utility method for parsing octal escape sequences.
+    ''' </summary>
+    ''' <summary>
+    '''  Utility method for parsing hexadecimal escape sequences.
+    ''' </summary>
+    ''' <summary>
+    '''  Utility method for parsing unicode escape sequences.
+    ''' </summary>
+    '
+    ' Utility methods for code point support
+    '
+    ' optimization
+    ''' <summary>
+    '''  Creates a bit vector for matching Latin-1 values. A normal BitClass
+    '''  never matches values above Latin-1, and a complemented BitClass always
+    '''  matches values above Latin-1.
+    ''' </summary>
+    ''' <summary>
+    '''  Returns a suitably optimized, single character matcher.
+    ''' </summary>
+    ''' <summary>
+    '''  Utility method for creating a string slice matcher.
+    ''' </summary>
+    ''' <summary>
+    ''' The following classes are the building components of the object
+    ''' tree that represents a compiled regular expression. The object tree
+    ''' is made of individual elements that handle constructs in the Pattern.
+    ''' Each type of object knows how to match its equivalent construct with
+    ''' the match() method.
+    ''' </summary>
+    ''' <summary>
+    ''' Base class for all node classes. Subclasses should override the match()
+    ''' method as appropriate. This class is an accepting node, so its match()
+    ''' always returns true.
+    ''' </summary>
+    ''' <summary>
+    ''' This method implements the classic accept node.
+    ''' </summary>
+    ''' <summary>
+    ''' This method is good for all zero length assertions.
+    ''' </summary>
+    ''' <summary>
+    ''' This method implements the classic accept node with
+    ''' the addition of a check to see if the match occurred
+    ''' using all of the input.
+    ''' </summary>
+    ''' <summary>
+    ''' Used for REs that can start anywhere within the input string.
+    ''' This basically tries to match repeatedly at each spot in the
+    ''' input string, moving forward after each try. An anchored search
+    ''' or a BnM will bypass this node completely.
+    ''' </summary>
+    '    
+    '     * StartS supports supplementary characters, including unpaired surrogates.
+    '     
+    'if ((ret = next.match(matcher, i, seq)) || i == guard)
+    ' Optimization to move to the next character. This is
+    ' faster than countChars(seq, i, 1).
+    ''' <summary>
+    ''' Node to anchor at the beginning of input. This object implements the
+    ''' match for a \A sequence, and the caret anchor will use this if not in
+    ''' multiline mode.
+    ''' </summary>
+    ''' <summary>
+    ''' Node to anchor at the end of input. This is the absolute end, so this
+    ''' should not match at the last newline before the end as $ will.
+    ''' </summary>
+    ''' <summary>
+    ''' Node to anchor at the beginning of a line. This is essentially the
+    ''' object to match for the multiline ^.
+    ''' </summary>
+    ' Perl does not match ^ at end of input even after newline
+    ' Should treat /r/n as one newline
+    ''' <summary>
+    ''' Node to anchor at the beginning of a line when in unixdot mode.
+    ''' </summary>
+    ' Perl does not match ^ at end of input even after newline
+    ''' <summary>
+    ''' Node to match the location where the last match ended.
+    ''' This is used for the \G construct.
+    ''' </summary>
+    ''' <summary>
+    ''' Node to anchor at the end of a line or the end of input based on the
+    ''' multiline mode.
+    ''' 
+    ''' When not in multiline mode, the $ can only match at the very end
+    ''' of the input, unless the input ends in a line terminator in which
+    ''' it matches right before the last line terminator.
+    ''' 
+    ''' Note that \r\n is considered an atomic line terminator.
+    ''' 
+    ''' Like ^ the $ operator matches at a position, it does not match the
+    ''' line terminators themselves.
+    ''' </summary>
+    ' Matches before any line terminator; also matches at the
+    ' end of input
+    ' Before line terminator:
+    ' If multiline, we match here no matter what
+    ' If not multiline, fall through so that the end
+    ' is marked as hit; this must be a /r/n or a /n
+    ' at the very end so the end was hit; more input
+    ' could make this not match here
+    ' No match between \r\n
+    ' Matched at current end so hit end
+    ' If a $ matches because of end of input, then more input
+    ' could cause it to fail!
+    ''' <summary>
+    ''' Node to anchor at the end of a line or the end of input based on the
+    ''' multiline mode when in unix lines mode.
+    ''' </summary>
+    ' If not multiline, then only possible to
+    ' match at very end or one before end
+    ' If multiline return next.match without setting
+    ' matcher.hitEnd
+    ' Matching because at the end or 1 before the end;
+    ' more input could change this so set hitEnd
+    ' If a $ matches because of end of input, then more input
+    ' could cause it to fail!
+    ''' <summary>
+    ''' Node class that matches a Unicode line ending '\R'
+    ''' </summary>
+    ' (u+000Du+000A|[u+000Au+000Bu+000Cu+000Du+0085u+2028u+2029])
+    ''' <summary>
+    ''' Abstract node class to match one character satisfying some
+    ''' boolean property.
+    ''' </summary>
+    ''' <summary>
+    ''' Optimized version of CharProperty that works only for
+    ''' properties never satisfied by Supplementary characters.
+    ''' </summary>
+    ''' <summary>
+    ''' Node class that matches a Supplementary Unicode character
+    ''' </summary>
+    ''' <summary>
+    ''' Optimization -- matches a given BMP character
+    ''' </summary>
+    ''' <summary>
+    ''' Case insensitive matches a given BMP character
+    ''' </summary>
+    ''' <summary>
+    ''' Unicode case insensitive matches a given Unicode character
+    ''' </summary>
+    ''' <summary>
+    ''' Node class that matches a Unicode block.
+    ''' </summary>
+    ''' <summary>
+    ''' Node class that matches a Unicode script
+    ''' </summary>
+    ''' <summary>
+    ''' Node class that matches a Unicode category.
+    ''' </summary>
+    ''' <summary>
+    ''' Node class that matches a Unicode "type"
+    ''' </summary>
+    ''' <summary>
+    ''' Node class that matches a POSIX type.
+    ''' </summary>
+    ''' <summary>
+    ''' Node class that matches a Perl vertical whitespace
+    ''' </summary>
+    ''' <summary>
+    ''' Node class that matches a Perl horizontal whitespace
+    ''' </summary>
+    ''' <summary>
+    ''' Base class for all Slice nodes
+    ''' </summary>
+    ''' <summary>
+    ''' Node class for a case sensitive/BMP-only sequence of literal
+    ''' characters.
+    ''' </summary>
+    ''' <summary>
+    ''' Node class for a case_insensitive/BMP-only sequence of literal
+    ''' characters.
+    ''' </summary>
+    ''' <summary>
+    ''' Node class for a unicode_case_insensitive/BMP-only sequence of
+    ''' literal characters. Uses unicode case folding.
+    ''' </summary>
+    ''' <summary>
+    ''' Node class for a case sensitive sequence of literal characters
+    ''' including supplementary characters.
+    ''' </summary>
+    ''' <summary>
+    ''' Node class for a case insensitive sequence of literal characters
+    ''' including supplementary characters.
+    ''' </summary>
+    ''' <summary>
+    ''' Node class for a case insensitive sequence of literal characters.
+    ''' Uses unicode case folding.
+    ''' </summary>
+    ''' <summary>
+    ''' Returns node for matching characters within an explicit value range.
+    ''' </summary>
+    ''' <summary>
+    ''' Returns node for matching characters within an explicit value
+    ''' range in a case insensitive manner.
+    ''' </summary>
+    ''' <summary>
+    ''' Implements the Unicode category ALL and the dot metacharacter when
+    ''' in dotall mode.
+    ''' </summary>
+    ''' <summary>
+    ''' Node class for the dot metacharacter when dotall is not enabled.
+    ''' </summary>
+    ''' <summary>
+    ''' Node class for the dot metacharacter when dotall is not enabled
+    ''' but UNIX_LINES is enabled.
+    ''' </summary>
+    ''' <summary>
+    ''' The 0 or 1 quantifier. This one class implements all three types.
+    ''' </summary>
+    ''' <summary>
+    ''' Handles the curly-brace style repetition with a specified minimum and
+    ''' maximum occurrences. The * quantifier is handled as a special case.
+    ''' This class handles the three types.
+    ''' </summary>
+    ' Greedy match.
+    ' i is the index to start matching at
+    ' j is the number of atoms that have matched
+    ' We have matched the maximum... continue with the rest of
+    ' the regular expression
+    ' k is the length of this match
+    ' Move up index and number matched
+    ' We are greedy so match as many as we can
+    ' Handle backing off if match fails
+    ' Reluctant match. At this point, the minimum has been satisfied.
+    ' i is the index to start matching at
+    ' j is the number of atoms that have matched
+    ' Try finishing match without consuming any more
+    ' At the maximum, no match found
+    ' Okay, must try one more atom
+    ' If we haven't moved forward then must break out
+    ' Move up index and number matched
+    ' Save original info
+    ''' <summary>
+    ''' Handles the curly-brace style repetition with a specified minimum and
+    ''' maximum occurrences in deterministic cases. This is an iterative
+    ''' optimization over the Prolog and Loop system which would handle this
+    ''' in a recursive way. The * quantifier is handled as a special case.
+    ''' If capture is true then this class saves group settings and ensures
+    ''' that groups are unset when backing off of a group match.
+    ''' </summary>
+    ' Notify GroupTail there is no need to setup group info
+    ' because it will be set here
+    ' Aggressive group match
+    ' don't back off passing the starting "j"
+    ' backing off
+    ' Reluctant matching
+    ' Possessive matching
+    ' Save original info
+    ''' <summary>
+    ''' A Guard node at the end of each atom node in a Branch. It
+    ''' serves the purpose of chaining the "match" operation to
+    ''' "next" but not the "study", so we can collect the TreeInfo
+    ''' of each atom node without including the TreeInfo of the
+    ''' "next".
+    ''' </summary>
+    ''' <summary>
+    ''' Handles the branching of alternations. Note this is also used for
+    ''' the ? quantifier to branch between the case where it matches once
+    ''' and where it does not occur.
+    ''' </summary>
+    ''' <summary>
+    ''' The GroupHead saves the location where the group begins in the locals
+    ''' and restores them when the match is done.
+    ''' 
+    ''' The matchRef is used when a reference to this group is accessed later
+    ''' in the expression. The locals will have a negative value in them to
+    ''' indicate that we do not want to unset the group if the reference
+    ''' doesn't match.
+    ''' </summary>
+    ''' <summary>
+    ''' Recursive reference to a group in the regular expression. It calls
+    ''' matchRef because if the reference fails to match we would not unset
+    ''' the group.
+    ''' </summary>
+    ''' <summary>
+    ''' The GroupTail handles the setting of group beginning and ending
+    ''' locations when groups are successfully matched. It must also be able to
+    ''' unset groups that have to be backed off of.
+    ''' 
+    ''' The GroupTail node is also used when a previous group is referenced,
+    ''' and in that case no group information needs to be set.
+    ''' </summary>
+    ' Save the group so we can unset it if it
+    ' backs off of a match.
+    ' This is a group reference case. We don't need to save any
+    ' group info because it isn't really a group.
+    ''' <summary>
+    ''' This sets up a loop to handle a recursive quantifier structure.
+    ''' </summary>
+    ''' <summary>
+    ''' Handles the repetition count for a greedy Curly. The matchInit
+    ''' is called from the Prolog to save the index of where the group
+    ''' beginning is stored. A zero length group check occurs in the
+    ''' normal match but is skipped in the matchInit.
+    ''' </summary>
+    ' Avoid infinite loop in zero-length case.
+    ' This block is for before we reach the minimum
+    ' iterations required for the loop to match
+    ' If match failed we must backtrack, so
+    ' the loop count should NOT be incremented
+    ' Return success or failure since we are under
+    ' minimum
+    ' This block is for after we have the minimum
+    ' iterations required for the loop to match
+    ' If match failed we must backtrack, so
+    ' the loop count should NOT be incremented
+    ''' <summary>
+    ''' Handles the repetition count for a reluctant Curly. The matchInit
+    ''' is called from the Prolog to save the index of where the group
+    ''' beginning is stored. A zero length group check occurs in the
+    ''' normal match but is skipped in the matchInit.
+    ''' </summary>
+    ' Check for zero length group
+    ' If match failed we must backtrack, so
+    ' the loop count should NOT be incremented
+    ' If match failed we must backtrack, so
+    ' the loop count should NOT be incremented
+    ''' <summary>
+    ''' Refers to a group in the regular expression. Attempts to match
+    ''' whatever the group referred to last matched.
+    ''' </summary>
+    ' If the referenced group didn't match, neither can this
+    ' If there isn't enough input left no match
+    ' Check each new char to make sure it matches what the group
+    ' referenced matched last time around
+    ' If the referenced group didn't match, neither can this
+    ' If there isn't enough input left no match
+    ' Check each new char to make sure it matches what the group
+    ' referenced matched last time around
+    ''' <summary>
+    ''' Searches until the next instance of its atom. This is useful for
+    ''' finding the atom efficiently without passing an instance of it
+    ''' (greedy problem) and without a lot of wasted search time (reluctant
+    ''' problem).
+    ''' </summary>
+    ''' <summary>
+    ''' Zero width positive lookahead.
+    ''' </summary>
+    ' Relax transparent region boundaries for lookahead
+    ' Reinstate region boundaries
+    ''' <summary>
+    ''' Zero width negative lookahead.
+    ''' </summary>
+    ' Relax transparent region boundaries for lookahead
+    ' If a negative lookahead succeeds then more input
+    ' could cause it to fail!
+    ' Reinstate region boundaries
+    ''' <summary>
+    ''' For use with lookbehinds; matches the position where the lookbehind
+    ''' was encountered.
+    ''' </summary>
+    ''' <summary>
+    ''' Zero width positive lookbehind.
+    ''' </summary>
+    ' Set end boundary
+    ' Relax transparent region boundaries for lookbehind
+    ''' <summary>
+    ''' Zero width positive lookbehind, including supplementary
+    ''' characters or unpaired surrogates.
+    ''' </summary>
+    ' Set end boundary
+    ' Relax transparent region boundaries for lookbehind
+    ''' <summary>
+    ''' Zero width negative lookbehind.
+    ''' </summary>
+    ' Relax transparent region boundaries for lookbehind
+    ' Reinstate region boundaries
+    ''' <summary>
+    ''' Zero width negative lookbehind, including supplementary
+    ''' characters or unpaired surrogates.
+    ''' </summary>
+    ' Relax transparent region boundaries for lookbehind
+    'Reinstate region boundaries
+    ''' <summary>
+    ''' Returns the set union of two CharProperty nodes.
+    ''' </summary>
+    ''' <summary>
+    ''' Returns the set intersection of two CharProperty nodes.
+    ''' </summary>
+    ''' <summary>
+    ''' Returns the set difference of two CharProperty nodes.
+    ''' </summary>
+    ''' <summary>
+    ''' Handles word boundaries. Includes a field to allow this one class to
+    ''' deal with the different types of word boundaries we can match. The word
+    ''' characters include underscores, letters, and digits. Non spacing marks
+    ''' can are also part of a word if they have a base character, otherwise
+    ''' they are ignored for purposes of finding word boundaries.
+    ''' </summary>
+    ' Tried to access char past the end
+    ' The addition of another char could wreck a boundary
+    ''' <summary>
+    ''' Non spacing marks only count as word characters in bounds calculations
+    ''' if they have a base character.
+    ''' </summary>
+    ''' <summary>
+    ''' Attempts to match a slice in the input using the Boyer-Moore string
+    ''' matching algorithm. The algorithm is based on the idea that the
+    ''' pattern can be shifted farther ahead in the search text if it is
+    ''' matched right to left.
+    ''' <p>
+    ''' The pattern is compared to the input one character at a time, from
+    ''' the rightmost character in the pattern to the left. If the characters
+    ''' all match the pattern has been found. If a character does not match,
+    ''' the pattern is shifted right a distance that is the maximum of two
+    ''' functions, the bad character shift and the good suffix shift. This
+    ''' shift moves the attempted match position through the input more
+    ''' quickly than a naive one position at a time check.
+    ''' <p>
+    ''' The bad character shift is based on the character from the text that
+    ''' did not match. If the character does not appear in the pattern, the
+    ''' pattern can be shifted completely beyond the bad character. If the
+    ''' character does occur in the pattern, the pattern can be shifted to
+    ''' line the pattern up with the next occurrence of that character.
+    ''' <p>
+    ''' The good suffix shift is based on the idea that some subset on the right
+    ''' side of the pattern has matched. When a bad character is found, the
+    ''' pattern can be shifted right by the pattern length if the subset does
+    ''' not occur again in pattern, or by the amount of distance to the
+    ''' next occurrence of the subset in the pattern.
+    ''' 
+    ''' Boyer-Moore search methods adapted from code by Amy Yu.
+    ''' </summary>
+    ''' <summary>
+    ''' Pre calculates arrays needed to generate the bad character
+    ''' shift and the good suffix shift. Only the last seven bits
+    ''' are used to see if chars match; This keeps the tables small
+    ''' and covers the heavily used ASCII range, but occasionally
+    ''' results in an aliased match for the bad character shift.
+    ''' </summary>
+    ' The BM algorithm requires a bit of overhead;
+    ' If the pattern is short don't use it, since
+    ' a shift larger than the pattern length cannot
+    ' be used anyway.
+    ' Precalculate part of the bad character shift
+    ' It is a table for where in the pattern each
+    ' lower 7-bit value occurs
+    ' Precalculate the good suffix shift
+    ' i is the shift amount being considered
+    ' j is the beginning index of suffix being considered
+    ' Testing for good suffix
+    ' src[j..len] is a good suffix
+    ' No match. The array has already been
+    ' filled up with correct values before.
+    ' This fills up the remaining of optoSft
+    ' any suffix can not have larger shift amount
+    ' then its sub-suffix. Why???
+    ' Set the guard value because of unicode compression
+    ' Loop over all possible match positions in text
+    ' Loop over pattern from right to left
+    ' Shift search to the right by the maximum of the
+    ' bad character shift and the good suffix shift
+    ' Entire pattern matched starting at i
+    ' BnM is only used as the leading node in the unanchored case,
+    ' and it replaced its Start() which always searches to the end
+    ' if it doesn't find what it's looking for, so hitEnd is true.
+    ''' <summary>
+    ''' Supplementary support version of BnM(). Unpaired surrogates are
+    ''' also handled by this class.
+    ''' </summary>
+    ' Loop over all possible match positions in text
+    ' Loop over pattern from right to left
+    ' Shift search to the right by the maximum of the
+    ' bad character shift and the good suffix shift
+    ' Entire pattern matched starting at i
+    '/////////////////////////////////////////////////////////////////////////////
+    '/////////////////////////////////////////////////////////////////////////////
+    ''' <summary>
+    '''  This must be the very first initializer.
+    ''' </summary>
+    ' Unicode character property aliases, defined in
+    ' http://www.unicode.org/Public/UNIDATA/PropertyValueAliases.txt
+    ' Posix regular expression character classes, defined in
+    ' http://www.unix.org/onlinepubs/009695399/basedefs/xbd_chap09.html
+    ' Java character properties, defined by methods in Character.java
+    ''' <summary>
+    ''' Creates a predicate which can be used to match a string.
+    ''' </summary>
+    ''' <returns>  The predicate which can be used for matching on a string
+    ''' @since   1.8 </returns>
+    ''' <summary>
+    ''' Creates a stream from the given input sequence around matches of this
+    ''' pattern.
+    ''' 
+    ''' <p> The stream returned by this method contains each substring of the
+    ''' input sequence that is terminated by another subsequence that matches
+    ''' this pattern or is terminated by the end of the input sequence.  The
+    ''' substrings in the stream are in the order in which they occur in the
+    ''' input. Trailing empty strings will be discarded and not encountered in
+    ''' the stream.
+    ''' 
+    ''' <p> If this pattern does not match any subsequence of the input then
+    ''' the resulting stream has just one element, namely the input sequence in
+    ''' string form.
+    ''' 
+    ''' <p> When there is a positive-width match at the beginning of the input
+    ''' sequence then an empty leading substring is included at the beginning
+    ''' of the stream. A zero-width match at the beginning however never produces
+    ''' such empty leading substring.
+    ''' 
+    ''' <p> If the input sequence is mutable, it must remain constant during the
+    ''' execution of the terminal stream operation.  Otherwise, the result of the
+    ''' terminal stream operation is undefined.
+    ''' </summary>
+    ''' <param name="input">
+    '''          The character sequence to be split
+    ''' </param>
+    ''' <returns>  The stream of strings computed by splitting the input
+    '''          around matches of this pattern </returns>
+    ''' <seealso cref=     #split(CharSequence)
+    ''' @since   1.8 </seealso>
+    ' The start position of the next sub-sequence of input
+    ' when current == input.length there are no more elements
+    ' null if the next element, if any, needs to obtained
+    ' > 0 if there are N next empty elements
+    ' Consume the next matching element
+    ' Count sequence of matching empty elements
+    ' match at the beginning of the input
+    ' Consume last matching element
+    ' Ignore a terminal sequence of matching empty elements
 
 End Namespace
